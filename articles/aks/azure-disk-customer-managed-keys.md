@@ -2,17 +2,14 @@
 title: Ügyfél által felügyelt kulcs használata Azure-lemezek titkosításához az Azure Kubernetes szolgáltatásban (ak)
 description: Saját kulcsok (BYOK-EK) használatával titkosíthatja az AK-OS operációs rendszert és az adatlemezeket.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/12/2020
-ms.author: mlearned
-ms.openlocfilehash: 1852ba059d13a8886b739cac439798b4d031a531
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bb6ba5e6dd4ace9e33043079c0f435c10baf5cb2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932622"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596504"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Saját kulcsok (BYOK) használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 
@@ -21,7 +18,7 @@ Az Azure Storage minden olyan adattárolót titkosít, amely egy Storage-fiókba
 > [!NOTE]
 > A Linux-és Windows-alapú BYOK-fürtök az Azure Managed Disks kiszolgálóoldali titkosítását támogató [Azure-régiókban][supported-regions] érhetők el.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 * Ez a cikk azt feltételezi, hogy *új AK-fürtöt*hoz létre.
 

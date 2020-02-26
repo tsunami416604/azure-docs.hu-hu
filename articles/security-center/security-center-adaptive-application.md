@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/23/2019
 ms.author: memildin
-ms.openlocfilehash: 862fb4f8a9dcd357148f73a729ffc7e92ba0083a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1dc94c5ec08cc27fb1819ccc16fd766c62aad796
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353446"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604675"
 ---
-# <a name="adaptive-application-controls"></a>Adaptív alkalmazásvezérlés
+# <a name="adaptive-application-controls"></a>Adaptív alkalmazásvezérlők
 Az útmutató azt ismerteti, hogyan konfigurálható az alkalmazásvezérlés az Azure Security Centerben.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Mire szolgálnak a Security Center adaptív alkalmazásvezérlői?
@@ -174,11 +174,10 @@ Azure Security Center lehetővé teszi az alkalmazás engedélyezési szabályza
 > A **számítógép áthelyezése**gombra kattintás után kattintson a **Mentés** gombra. Ha nem kattint a **Save (Mentés**) gombra, akkor a számítógép nem lesz áthelyezve.
 
 ## <a name="next-steps"></a>Következő lépések
-Ebből a dokumentumból megtudhatta, hogyan használhatja az adaptív alkalmazások vezérlését Azure Security Center az Azure-ban és a nem Azure-beli virtuális gépeken futó alkalmazások engedélyezési listájának használatához. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
+Ebből a dokumentumból megtudhatta, hogyan használhatja az adaptív alkalmazások vezérlését Azure Security Center az Azure-ban és a nem Azure-beli virtuális gépeken futó alkalmazások engedélyezési listájának használatához. A Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). A Security Center-riasztások kezelését és a biztonsági eseményekre való válaszadást ismertető útmutató.
 * [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md). Az Azure-erőforrások állapotának figyelését ismertető útmutató.
 * [Az Azure Security Center biztonsági riasztásainak megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). A különböző típusú biztonsági riasztásokat ismertető útmutató.
 * [Azure Security Center – Hibaelhárítási útmutató](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). A Security Center gyakori problémáinak elhárítását ismereti.
-* [Azure Security Center – gyakori kérdések](security-center-faq.md) Gyakori kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

@@ -3,16 +3,15 @@ title: NFS (Network File System) Ubuntu-kiszolgáló létrehozása az Azure Kube
 description: Megtudhatja, hogyan hozhat létre manuálisan NFS Ubuntu Linux Server-kötetet a hüvelyekkel való használatra az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 author: ozboms
-ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 9b9c4b326596887774d9dfc0dd792052ec672be2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e5676710bc47557318f3e2adcf36ec0ed13d47de
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063815"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596623"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>NFS-(hálózati fájlrendszer) Linux Server-kötet manuális létrehozása és használata az Azure Kubernetes szolgáltatással (ak)
 A tárolók közötti adatmegosztás gyakran a Container-alapú szolgáltatások és alkalmazások szükséges összetevője. Általában különböző hüvelyek vannak, amelyekhez ugyanahhoz az információhoz kell hozzáférni egy külső állandó köteten.    

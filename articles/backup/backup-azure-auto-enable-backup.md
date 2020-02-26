@@ -3,12 +3,12 @@ title: Biztonsági mentés automatikus engedélyezése a virtuális gép Azure P
 description: A cikk azt ismerteti, hogyan használható a Azure Policy az adott hatókörben létrehozott összes virtuális gép biztonsági mentésének automatikus engedélyezéséhez
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 7a3b526d654936d4e7ec89127a9074146c1b0179
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450121"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584268"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Biztonsági mentés automatikus engedélyezése a virtuális gép Azure Policyval végzett létrehozásakor
 
@@ -16,9 +16,9 @@ A szervezet biztonsági mentési vagy megfelelőségi rendszergazdájának egyik
 
 Napjainkban a Azure Backup egy beépített szabályzatot (Azure Policy használatával) biztosít, amely az **előfizetésen vagy az erőforráscsoport egy adott helyén lévő összes Azure-beli virtuális**géphez hozzárendelhető. Ha a szabályzatot egy adott hatókörhöz rendeli hozzá, az abban a hatókörben létrehozott összes új virtuális gépet a rendszer automatikusan konfigurálja egy meglévő tárolóba **ugyanazon a helyen és előfizetésben**. A felhasználó megadhatja a tárolót és az adatmegőrzési házirendet, amelyhez a biztonsági másolatba mentett virtuális gépek társítva lesznek.
 
-## <a name="supported-scenarios"></a>Támogatott helyzetek 
+## <a name="supported-scenarios"></a>Támogatott helyzetek
 
-* A beépített szabályzat jelenleg csak Azure-beli virtuális gépek esetén támogatott. A felhasználóknak ügyelniük kell arra, hogy a hozzárendelés során megadott adatmegőrzési szabályzat a virtuális gép adatmegőrzési szabályzata legyen. Tekintse át [ezt](https://aka.ms/PolicySupportedSKUs) a dokumentumot a szabályzat által támogatott összes virtuális gép SKU megtekintéséhez.
+* A beépített szabályzat jelenleg csak Azure-beli virtuális gépek esetén támogatott. A felhasználóknak ügyelniük kell arra, hogy a hozzárendelés során megadott adatmegőrzési szabályzat a virtuális gép adatmegőrzési szabályzata legyen. Tekintse át [ezt](https://docs.microsoft.com/azure/backup/backup-azure-policy-supported-skus) a dokumentumot a szabályzat által támogatott összes virtuális gép SKU megtekintéséhez.
 
 * A szabályzat egyszerre egyetlen helyhez és előfizetéshez is hozzárendelhető. Ha engedélyezni szeretné a virtuális gépek biztonsági mentését a helyek és az előfizetések között, a házirend-hozzárendelés több példányát is létre kell hoznia, egyet a hely és az előfizetés minden kombinációja esetében.
 
@@ -54,6 +54,6 @@ A szabályzatnak a szükséges hatókörhöz való hozzárendeléséhez kövesse
 >
 > Javasoljuk, hogy a házirendet egyszerre ne rendelje hozzá több mint 200 virtuális géphez. Ha a házirend több mint 200 virtuális géphez van hozzárendelve, akkor a biztonsági mentés néhány órával később is elindítható, mint amelyet az ütemterv meghatároz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További információ a Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview)

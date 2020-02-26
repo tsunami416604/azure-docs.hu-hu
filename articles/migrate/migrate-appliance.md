@@ -3,12 +3,12 @@ title: Azure Migrate-berendezés
 description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1b1e35c3b7a9d98e57ec4261f6f913c370bbb365
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425459"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597541"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -34,7 +34,7 @@ Fizikai gép |  Azure Migrate: kiszolgáló értékelése |  Fizikai kiszolgál�
 **Engedély** | A letöltött Appliance-sablon egy Windows Server 2016 próbaverziós licenccel rendelkezik, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
 **Üzembe helyezés** | A készüléket VMware virtuális gépként kell üzembe helyezni. Elegendő erőforrásra van szüksége a vCenter Server egy virtuális gép lefoglalásához 32 GB RAM-mal, 8 vCPU, körülbelül 80 GB lemezes tárterülettel és külső virtuális kapcsolóval.<br/> A berendezéshez közvetlenül vagy proxyn keresztül kell internet-hozzáférést igényelni.<br/> A készülék egyetlen vCenter Serverhoz tud csatlakozni.
 **Hardver** | A vCenter erőforrásai a 32 GB-os RAM 8 vCPU, a 80 GB és egy külső virtuális kapcsoló használatával foglalják el a virtuális gépeket. 
-**Kivonat értéke** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256:4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
+**Kivonat értéke** | [Itt](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security) tekintheti meg
 **vCenter-kiszolgáló/-gazdagép** | A berendezés virtuális gépnek a 5,5-es vagy újabb verzióját futtató ESXi-gazdagépre kell telepítenie.<br/><br/> vCenter Server fut 5,5, 6,0, 6,5 vagy 6,7.
 **Azure Migrate projekt** | Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> 
 **Felfedezés** | A készülékek akár 10 000 VMware virtuális gépet is felfedezhetnek vCenter Serveron.<br/> Egy berendezés egyetlen vCenter Serverhoz tud csatlakozni.
@@ -52,7 +52,7 @@ Fizikai gép |  Azure Migrate: kiszolgáló értékelése |  Fizikai kiszolgál�
 **Engedély** | A letöltött Appliance-sablon egy Windows Server 2016 próbaverziós licenccel rendelkezik, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
 **Berendezések üzembe helyezése**   |  A berendezést Hyper-V virtuális gépként kell üzembe helyezni.<br/> Az Azure Migrate által biztosított Appliance VM a Hyper-V VM 5,0-es verziója.<br/> A Hyper-V-gazdagépen Windows Server 2012 R2 vagy újabb rendszernek kell futnia.<br/> A gazdagépnek elegendő helyet kell biztosítania 16 GB RAM, 8 vCPU, körülbelül 80 GB tárterület és egy külső kapcsoló lefoglalásához a készülék virtuális gépe számára.<br/> A készüléknek statikus vagy dinamikus IP-címnek, valamint internet-hozzáférésre van szüksége.
 **Hardver** | A Hyper-V-gazdagépen található erőforrások 16 GB RAM-ot, 8 vCPU, körülbelül 80 GB tárterületet és külső kapcsolót foglalnak le a készülék virtuális géphez.
-**Kivonat értéke** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+**Kivonat értéke** | [Itt](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security) tekintheti meg
 **Hyper-V gazdagép** | Windows Server 2012 R2 vagy újabb operációs rendszer fut.
 **Azure Migrate projekt** | Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> 
 **Felfedezés** | Egy készülék legfeljebb 5000 Hyper-V virtuális gépet képes felderíteni.<br/> Egy készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
@@ -67,7 +67,7 @@ Fizikai gép |  Azure Migrate: kiszolgáló értékelése |  Fizikai kiszolgál�
 **Letöltési hivatkozás** | [Letöltési hivatkozás](https://go.microsoft.com/fwlink/?linkid=2105112)
 **Letöltési méret** | 59,7 MB
 **Hardver** | Dedikált fizikai gép vagy virtuális gép használata. A készüléket futtató gépnek 16 GB RAM-mal, 8 vCPU, körülbelül 80 GB tárhellyel és külső kapcsolóval kell rendelkeznie.<br/> A készüléknek statikus vagy dinamikus IP-címnek, valamint internet-hozzáférésre van szüksége.
-**Kivonat értéke** | MD5:1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256: a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+**Kivonat értéke** | [Itt](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security) tekintheti meg
 **Operációs rendszer** | A készüléket futtató gépnek Windows Server 2016 rendszernek kell futnia. 
 **Berendezések üzembe helyezése**   |  A készülék telepítőjének parancsfájlját a rendszer letölti a portálról (tömörített mappában). <br/> Bontsa ki a mappát, és futtassa a PowerShell-szkriptet (AzureMigrateInstaller. ps1).
 **Felfedezés** | A berendezések akár 250 fizikai kiszolgálót is felfedezhetnek.

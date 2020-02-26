@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 1688e85c6e6ed57892ccdffdf0813c8628127cc5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3f27753b0775f44cbdf9d4c478a19e423b8e1f19
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202464"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604553"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Rendszerfrissítések alkalmazása Azure Security Center
 Azure Security Center a napi Windows és Linux rendszerű virtuális gépeket (VM) és számítógépeket figyeli az operációs rendszer frissítéseinek hiányában. Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját Windows Update vagy Windows Server Update Services (WSUS) szolgáltatásból attól függően, hogy melyik szolgáltatást konfigurálja a Windows rendszerű számítógépen. A Security Center a Linux rendszerekben a legújabb frissítéseket is ellenőrzi. Ha a virtuális gép vagy számítógép nem rendelkezik rendszerfrissítéssel, Security Center javasolja, hogy alkalmazza a rendszerfrissítéseket.
@@ -44,19 +44,19 @@ Ebben a példában a **számítást**fogjuk használni.
 
    Az irányítópult alján a virtuális gépek és számítógépek összes hiányzó frissítése szerepel, valamint a hiányzó frissítés súlyossága.  A lista a következőket tartalmazza:
 
-    - NÉV: A hiányzó frissítés neve.
-    - NEM. Virtuális gépek & számítógépek: A frissítésből hiányzó virtuális gépek és számítógépek száma összesen.
-    - ÁLLAPOT A javaslat jelenlegi állapota:
+    - NÉV: a hiányzó frissítés neve.
+    - nem. Virtuális gépek & számítógépek: azon virtuális gépek és számítógépek teljes száma, amelyek esetében ez a frissítés hiányzik.
+    - ÁLLAPOT: a javaslat jelenlegi állapota:
 
-      - Nyissa meg A javaslat még nem lett megcímezve.
-      - Folyamatban: A javaslatot jelenleg az adott erőforrásokra alkalmazza a rendszer, és nincs szükség beavatkozásra.
-      - Oldható Az ajánlás már befejeződött. (A probléma megoldása után a bejegyzés halványan jelenik meg.)
+      - Megnyitás: a javaslat még nincs megcímezve.
+      - Folyamatban: a javaslat jelenleg az adott erőforrásokra van alkalmazva, és nincs szükség beavatkozásra.
+      - Megoldott: a javaslat már befejeződött. (A probléma megoldása után a bejegyzés halványan jelenik meg.)
 
-    - SÚLYOSSÁG Az adott javaslat súlyosságát írja le:
+    - SÚLYOSSÁG: az adott javaslat súlyosságát írja le:
 
-      - Magas A biztonsági rés egy értelmes erőforrással (alkalmazás, virtuális gép vagy hálózati biztonsági csoport) van, és figyelmet igényel.
-      - Közepes A folyamat elvégzéséhez vagy a biztonsági rések megszüntetéséhez nem kritikus vagy további lépések szükségesek.
-      - Alacsony A biztonsági rést meg kell oldani, de nincs szükség azonnali beavatkozásra. (Az alacsony súlyosságú javaslatok alapértelmezés szerint nem láthatók, de a szűrővel bekapcsolhatja megjelenítésüket.)
+      - High (magas): egy értelmes erőforrás (alkalmazás, virtuális gép vagy hálózati biztonsági csoport) biztonsági rése van, és figyelmet igényel.
+      - Közepes: nem kritikus vagy további lépések szükségesek egy folyamat befejezéséhez vagy egy biztonsági rés megszüntetéséhez.
+      - Alacsony: A biztonsági rést orvosolni kell, de nincs szükség azonnali beavatkozásra. (Az alacsony súlyosságú javaslatok alapértelmezés szerint nem láthatók, de a szűrővel bekapcsolhatja megjelenítésüket.)
 
 3. A részletek megtekintéséhez válasszon ki egy hiányzó frissítést a listából.
 
@@ -70,15 +70,14 @@ Ebben a példában a **számítást**fogjuk használni.
 
     ![Azure Monitor naplók keresése][5]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.
 * [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
-* [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
-* [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
+* [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Ez a cikk ismerteti a partnermegoldások biztonsági állapotának figyelését.
 * [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
 <!--Image references-->

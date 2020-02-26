@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: memildin
-ms.openlocfilehash: b2ab769fc2595af9fd1ea41f1ef492944cb5e7fa
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: a600b17ce25a467b788671e12e3c2425ad20b809
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665768"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604082"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Biztonsági incidensek kezelése Azure Security Center
 
-A biztonsági riasztások osztályozása és kivizsgálása időigényes lehet a legképzettebb biztonsági elemzők számára is, és sokak számára nehéz megismerni, hogy hol kell kezdeni. A különálló [biztonsági riasztások](security-center-managing-and-responding-alerts.md) adatait összekapcsoló [elemzési szolgáltatások](security-center-detection-capabilities.md) alkalmazásával a Security Center a támadássorozatot és az összes kapcsolódó riasztást egyetlen nézetben jeleníti meg, így gyorsan áttekinthetővé válnak a támadó által végrehajtott műveletek és az érintett erőforrások.
+A biztonsági riasztások osztályozása és kivizsgálása időigényes lehet a legképzettebb biztonsági elemzők számára is, és sokak számára nehéz megismerni, hogy hol kell kezdeni. A különálló [biztonsági riasztások](security-center-detection-capabilities.md) adatait összekapcsoló [elemzési szolgáltatások](security-center-managing-and-responding-alerts.md) alkalmazásával a Security Center a támadássorozatot és az összes kapcsolódó riasztást egyetlen nézetben jeleníti meg, így gyorsan áttekinthetővé válnak a támadó által végrehajtott műveletek és az érintett erőforrások.
 
 Ez a témakör a Security Center incidenseit, valamint a riasztások szervizelését ismerteti.
 
@@ -57,11 +57,10 @@ A következő témakörök azt ismertetik, hogyan használják a Security Center
 * [Szolgáltatási réteggel kapcsolatos riasztások](security-center-alerts-service-layer.md)
 * [Veszélyforrások észlelése az Azure WAF és Azure DDoS Protection](security-center-alerts-integration.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Ebben a dokumentumban megismerkedhetett a Security Center biztonságiincidens-kezelési képességeinek használatával. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Azure Security Center biztonsági riasztások](security-center-alerts-overview.md).
 * [Biztonsági riasztások kezelése](security-center-managing-and-responding-alerts.md)
 * [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md)
-* [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

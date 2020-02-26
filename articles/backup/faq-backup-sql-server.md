@@ -4,12 +4,12 @@ description: Válaszok az Azure-beli virtuális gépeken található SQL Server 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 73224164286e35f8c9447dd24cd81d7242fbb7b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172019"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597082"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentését futtató SQL Server-adatbázisokról
 
@@ -37,13 +37,15 @@ Automatikus gyógyulás, mivel a funkció alapértelmezés szerint engedélyezve
 - Mentse a módosításokat, és zárjuk be a fájlt.
 - A SQL Server-példányon nyissa meg a **feladat kezelése** , majd a **AzureWLBackupCoordinatorSvc** szolgáltatás újraindítása műveletet.
 
-## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>Szabályozható, hogy hány párhuzamos biztonsági mentés fut az SQL Serveren?
+## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Szabályozható, hogy hány párhuzamos biztonsági mentés fut az SQL Serveren?
 
 Igen. A biztonsági mentési házirend futási arányának szabályozásával csökkentheti a SQL Server-példányra gyakorolt hatást. A beállítás módosítása:
 
 1. A SQL Server-példányon, a *C:\Program Files\Azure munkaterhelés Backup\bin* mappában hozza létre a *ExtensionSettingsOverrides. JSON* fájlt.
 2. A *ExtensionSettingsOverrides. JSON* fájlban módosítsa a **DefaultBackupTasksThreshold** beállítást alacsonyabb értékre (például 5). <br>
   `{"DefaultBackupTasksThreshold": 5}`
+<br>
+A DefaultBackupTasksThreshold alapértelmezett értéke **20**.
 
 3. Mentse a módosításokat, és zárjuk be a fájlt.
 4. A SQL Server-példányon nyissa meg a **Feladatkezelő eszközt**. Indítsa újra a **AzureWLBackupCoordinatorSvc** szolgáltatást.<br/> <br/>

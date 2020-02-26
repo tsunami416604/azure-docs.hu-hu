@@ -4,12 +4,12 @@ description: A Jenkins Build és Deploy Automation-kiszolgáló üzemeltetése a
 keywords: jenkins, azure, devops, áttekintés
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 84d9a62c432208893ac5ff960a5f7aec743680d1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5991505dac0cf6f7ff2cac5dfabd06f4c90dc20f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479346"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605694"
 ---
 # <a name="azure-and-jenkins"></a>Az Azure és a Jenkins
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja az Azure Jenkinsszel való használatának alapjait, és ré
 A Jenkins Azure-ban való üzemeltetésével központosíthatja a buildek automatizálását, valamint a szoftverprojektek igényeinek megfelelően kibővítheti üzemi környezetét. A következő lehetőségei vannak a Jenkins Azure-ban való üzembe helyezésére:
  
 - Az Azure Marketplace-en elérhető [Jenkins-megoldássablonnal](install-jenkins-solution-template.md)
-- [Azure-beli virtuális gépekkel](/azure/virtual-machines/linux/overview) A Jenkins-példány virtuális gépen történő létrehozásának lépéseit lásd az [oktatóanyagban](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd).
+- [Azure-beli virtuális gépekkel](/azure/virtual-machines/linux/overview) A Jenkins-példány virtuális gépen történő létrehozásának lépéseit lásd az [oktatóanyagban](tutorial-jenkins-github-docker-cicd.md).
 - Az [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough) szolgáltatásban futó Kubernetes-fürt esetében lásd a [használati útmutatót](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
 
 Az Azure Jenkins üzembe helyezését [Azure monitor naplók](/azure/log-analytics/log-analytics-overview) és az [Azure CLI](/cli/azure)használatával figyelheti és kezelheti.

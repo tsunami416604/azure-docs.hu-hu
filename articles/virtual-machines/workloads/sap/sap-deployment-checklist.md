@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/21/2020
+ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56b78f4296709206cefb762c87d4d1471bff2df7
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 2c3c52fc85e6c915587db27a3f5ce247fd05ea51
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291515"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598323"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -48,10 +48,13 @@ Ebben a fázisban az SAP-munkaterhelések áttelepítését tervezzük az Azure 
     - Üzletmenet-folytonosság és vész-helyreállítási architektúra.
     - Részletes információk az operációs rendszer, az adatbázis, a kernel és az SAP támogatási csomagjának verzióiról. Nem feltétlenül igaz, hogy az SAP NetWeaver vagy az S/4HANA által támogatott összes operációsrendszer-kiadás támogatott az Azure-beli virtuális gépeken. Ugyanez érvényes az adatbázis-kezelői kiadások esetében is. Az SAP-és az Azure-támogatás biztosításához az alábbi forrásokból tájékozódhat, és szükség esetén frissítse az SAP-kiadásokat, az adatbázis-kezelői kiadásokat és az operációs rendszert Az SAP és az Azure által támogatott kiadási kombinációkat kell használnia az SAP és a Microsoft teljes körű támogatásához. Szükség esetén meg kell terveznie bizonyos szoftver-összetevők frissítését. A támogatott SAP-, operációsrendszer-és adatbázis-kezelő szoftverekkel kapcsolatos további részleteket a következő dokumentáció ismerteti:
         - [SAP-támogatás megjegyzés #1928533](https://launchpad.support.sap.com/#/notes/1928533). Ez a Megjegyzés az Azure-beli virtuális gépeken támogatott minimális operációsrendszer-kiadásokat határozza meg. Meghatározza továbbá a legtöbb nem HANA-adatbázishoz szükséges minimális adatbázis-kiadásokat is. Végezetül az SAP által támogatott Azure VM-típusok SAP-méretezését biztosítja.
+        - [SAP-támogatás megjegyzés #2015553](https://launchpad.support.sap.com/#/notes/2015553). Ez a Megjegyzés az Azure Storage és a Microsoft által igényelt támogatási kapcsolatokra vonatkozó támogatási szabályzatokat határozza meg.
         - [SAP-támogatás megjegyzés #2039619](https://launchpad.support.sap.com/#/notes/2039619). Ez a Megjegyzés az Azure-hoz készült Oracle-támogatási mátrixot határozza meg. Az Oracle csak a Windows és Oracle Linux operációs rendszerként támogatja az Azure-beli SAP-munkaterheléseket. Ez a támogatási utasítás az SAP-példányokat futtató SAP-alkalmazás rétegére is vonatkozik. Az Oracle azonban nem támogatja a magas rendelkezésre állást az SAP központi szolgáltatásaihoz Oracle Linux a Pacemakeren keresztül. Ha a ASCS magas rendelkezésre állásra van szüksége a Oracle Linuxon, akkor a Linux rendszerhez készült SIOS Protection Suite-t kell használnia. A részletes SAP-tanúsítványokra vonatkozó információkért lásd: SAP-támogatás Megjegyzés [#1662610 – támogatás a Linux rendszerhez készült SIOS Protection Suite számára](https://launchpad.support.sap.com/#/notes/1662610). A Windows esetében az SAP által támogatott Windows Server feladatátvételi fürtszolgáltatás az SAP központi szolgáltatásokhoz az Oracle-sel együtt támogatott az adatbázis-kezelő rétegként.
         - [SAP-támogatás megjegyzés #2235581](https://launchpad.support.sap.com/#/notes/2235581). Ez a Megjegyzés a támogatási mátrixot ismerteti SAP HANA különböző operációsrendszer-kiadásokon.
         - SAP HANA által támogatott Azure-beli virtuális gépek és [HANA nagyméretű példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) listája az [SAP webhelyén](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)található.
         - [SAP-termék rendelkezésre állási mátrixa](https://support.sap.com/en/).
+        - [SAP-támogatás Megjegyzés #2555629-SAP HANA 2,0 Dynamic rétegű – hypervisor és Cloud support](https://launchpad.support.sap.com/#/notes/2555629)
+        - [SAP-támogatás Megjegyzés #1662610 – támogatás a SIOS Protection Suite for Linux rendszerhez](https://launchpad.support.sap.com/#/notes/1662610)
         - SAP-megjegyzések más SAP-specifikus termékekhez.     
     - Javasoljuk, hogy az SAP éles rendszerek esetében szigorú háromrétegű kialakítást biztosítson. A ASCS és/vagy az adatbázis-kezelő és/vagy az alkalmazás-kiszolgálók egyetlen virtuális gépen való egyesítését nem javasoljuk. Az SAP Central Services több SID-alapú fürt-konfigurációjának használatával támogatott az Azure-beli Windows vendég operációs rendszerek esetében. Ez a konfiguráció azonban nem támogatott az Azure-beli Linux operációs rendszereken futó SAP központi szolgáltatások esetében. A Windows vendég operációs rendszer forgatókönyvének dokumentációja a következő cikkekben található:
         - [SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és a megosztott lemezzel az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
@@ -102,7 +105,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
         - Értékelje ki és tesztelje az Azure-beli virtuális gépek méretezését a tervezési fázisban kiválasztott virtuálisgép-típusok maximális tárolási sebessége és hálózati átviteli sebessége tekintetében. Itt megtalálja az itt található adatfájlokat:
            -  [A Windows rendszerű virtuális gépek méretei az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Fontos, hogy figyelembe vegye a *gyorsítótár nélküli lemez maximális átviteli sebességét* a méretezéshez.
            -  [A Linux rendszerű virtuális gépek méretei az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Fontos, hogy figyelembe vegye a *gyorsítótár nélküli lemez maximális átviteli sebességét* a méretezéshez.
-   2. A tárterület.
+   2. Storage.
         - Legalább az [Azure standard SSD Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd) -t használja az SAP-alkalmazási rétegeket képviselő virtuális gépekhez, valamint olyan adatbázis-kezelők üzembe helyezéséhez, amelyek nem érzékenyek a teljesítményre.
         - Általánosságban elmondható, hogy az [Azure standard HDD-lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd)használatát nem javasoljuk.
         - Az [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) bármely olyan adatbázis-kezelő virtuális gép esetében használható, amely távoli teljesítményre érzékeny.
@@ -148,6 +151,21 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
             - SameSubNetDelay = 2000
             - SameSubNetThreshold = 15
             - RoutingHistorylength = 30
+    6. OPERÁCIÓSRENDSZER-beállítások vagy javítások
+        - A HANA az SAP-on való futtatásához olvassa el a következő megjegyzéseket és dokumentációkat:
+            -   [SAP-támogatás Megjegyzés #2814271 – SAP HANA biztonsági mentés az Azure-ban sikertelen, ellenőrzőösszeg-hiba esetén](https://launchpad.support.sap.com/#/notes/2814271)
+            -   [SAP-támogatás Megjegyzés #2753418 – lehetséges teljesítmény-romlás az időzítő tartaléka miatt](https://launchpad.support.sap.com/#/notes/2753418)
+            -   [SAP-támogatás Megjegyzés #2791572 – teljesítmény romlása az Azure-beli Hyper-V VDSO-támogatásának hiánya miatt](https://launchpad.support.sap.com/#/notes/2791572)
+            -   [SAP-támogatás Megjegyzés #2382421 – a hálózati konfiguráció optimalizálása a HANA-és az operációs rendszer szintjén](https://launchpad.support.sap.com/#/notes/2382421)
+            -   [SAP-támogatás Megjegyzés #2694118 – Red Hat Enterprise Linux HA Azure-beli bővítmény](https://launchpad.support.sap.com/#/notes/2694118)
+            -   [SAP-támogatás Megjegyzés #1984787 – SUSE LINUX Enterprise Server 12: telepítési megjegyzések](https://launchpad.support.sap.com/#/notes/1984787)
+            -   [SAP-támogatás Megjegyzés #2002167-Red Hat Enterprise Linux 7. x: telepítés és frissítés](https://launchpad.support.sap.com/#/notes/0002002167)
+            -   [SAP-támogatás Megjegyzés #2292690-SAP HANA DB: ajánlott operációsrendszer-beállítások a RHEL 7 rendszerhez](https://launchpad.support.sap.com/#/notes/0002292690)
+            -   [SAP-támogatás Megjegyzés #2772999-Red Hat Enterprise Linux 8. x: telepítés és konfigurálás](https://launchpad.support.sap.com/#/notes/2772999)
+            -   [SAP-támogatás Megjegyzés #2777782-SAP HANA DB: ajánlott operációsrendszer-beállítások a RHEL 8](https://launchpad.support.sap.com/#/notes/2777782)
+            -   [SAP-támogatás Megjegyzés #2578899-SUSE Linux Enterprise Server 15: telepítési Megjegyzés](https://launchpad.support.sap.com/#/notes/2578899)
+            -   [SAP-támogatás megjegyzése: # https://launchpad.support.sap.com/#/notes/0002455582)(https://launchpad.support.sap.com/#/notes/0002455582)
+            -    [SAP-támogatási Megjegyzés #2729475 – a HWCCT nem sikerült – a "hypervisor nem támogatott" hibaüzenetet a SAP HANA számára tanúsított Azure-beli virtuális gépeken](https://launchpad.support.sap.com/#/notes/2729475)
 1. Tesztelje a magas rendelkezésre állást és a vész-helyreállítási eljárásokat.
    1. Feladatátvételi helyzetek szimulálása a virtuális gépek (Windows vendég operációs rendszerek) leállításával vagy az operációs rendszerek pánik módba helyezésével (Linux vendég operációs rendszerek). Ez a lépés segít kideríteni, hogy a feladatátvételi konfigurációk a tervezettnek megfelelően működnek-e.
    1. Azt méri, hogy mennyi ideig tart a feladatátvétel végrehajtása. Ha az idő túl hosszú, vegye figyelembe a következőket:
@@ -160,7 +178,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
    1.  Ellenőrizze, hogy a [hálózati biztonsági csoport és az ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) -szabályok a várt módon működnek-e, és védi a védett erőforrásokat.
    1.  Győződjön meg arról, hogy az összes titkosítani kívánt erőforrás titkosítva van. Megadhatja és implementálhatja a tanúsítványok biztonsági mentésére, tárolására és elérésére szolgáló folyamatokat, és visszaállíthatja a titkosított entitásokat.
    1.  Az operációsrendszer-lemezek [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) használata, ha lehetséges, az operációs rendszer által támogatott nézetből.
-   1.  Ügyeljen arra, hogy ne használjon túl sok titkosítási réteget. Bizonyos esetekben érdemes Azure Disk Encryption együtt használni az adatbázis-kezelői transzparens adattitkosítás módszerek egyikével, hogy az ugyanazon a kiszolgálón lévő különböző lemezeket vagy összetevőket védjék.  Az SAP adatbázis-kezelő kiszolgálókon például a Azure Disk Encryption (ADE) engedélyezhető az operációs rendszer rendszerindító lemezén (ha az operációs rendszer támogatja az ADE-t), és azokat az adatlemezeket, amelyeket az adatbázis-kezelői adatmegőrzési fájlok nem használnak.  Erre példa az az ADE használata az adatbázis-kezelő TDE titkosítási kulcsait tároló lemezen.
+   1.  Ügyeljen arra, hogy ne használjon túl sok titkosítási réteget. Bizonyos esetekben érdemes Azure Disk Encryption együtt használni az adatbázis-kezelői transzparens adattitkosítás módszerek egyikével, hogy az ugyanazon a kiszolgálón lévő különböző lemezeket vagy összetevőket védjék.  Például egy SAP adatbázis-kezelő kiszolgálón a Azure Disk Encryption (ADE) engedélyezhető az operációs rendszer rendszerindító lemezén (ha az operációs rendszer támogatja az ADE-t), és azokat az adatlemezeket, amelyeket az adatbázis-kezelői adatmegőrzési fájlok nem használnak.  Erre példa az az ADE használata az adatbázis-kezelő TDE titkosítási kulcsait tároló lemezen.
 1. Teljesítmény tesztelése. Az SAP-ben SAP-nyomkövetés és-mérések alapján végezze el az alábbi összehasonlításokat:
    - Ha szükséges, hasonlítsa össze az első 10 online jelentést a jelenlegi megvalósításával.
    - Ha alkalmazható, hasonlítsa össze az első 10 batch-feladatot a jelenlegi implementációval.
@@ -188,7 +206,7 @@ Ebben a fázisban általában fejlesztési rendszereket, egység-tesztelési ren
 10. Az infrastruktúra üzembe helyezése után tesztelje és értékelje ki a hálózati késést az SAP-alkalmazások és az adatbázis-kezelő virtuális gépek között, az SAP-támogatási megjegyzések [#500235](https://launchpad.support.sap.com/#/notes/500235) és [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)alapján. Értékelje ki az eredményeket a hálózati késéssel kapcsolatos útmutatóban az [SAP-támogatási megjegyzés #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). A hálózati késésnek közepes vagy jó tartományban kell lennie. A kivételek a virtuális gépek és a HANA nagyméretű példányok közötti forgalomra vonatkoznak, a [jelen cikkben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)leírtak szerint. Győződjön meg arról, hogy az [azure Virtual Machines adatbázis-kezelő rendszerbe állításához az SAP-munkaterhelések](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#azure-network-considerations) , valamint az [Azure-SAP HANA infrastruktúra-konfigurációk és-műveletek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) egyike sem vonatkozik az üzemelő példányra.
 11. Győződjön meg arról, hogy a virtuális gépek a megfelelő [Azure közelségi elhelyezési csoportba](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)vannak telepítve, az [Azure Proximity-elhelyezési csoportok az SAP-alkalmazásokkal való optimális hálózati késés](sap-proximity-placement-scenarios.md)érdekében című témakörben leírtak szerint.
 11. A számítási feladatok alkalmazása előtt végezze el az összes többi, a koncepció igazolására szolgáló szakaszt.
-12. A számítási feladatok alkalmazása esetén jegyezze fel a rendszerek erőforrás-felhasználását az Azure-ban. Hasonlítsa össze ezt a felhasználást a régi platform rekordjaival. A jövőbeli központi telepítések VM-méretezésének módosítása, ha úgy látja, hogy nagy különbségek vannak. Ne feledje, hogy a virtuális gépek tárolási és hálózati sávszélességének csökkentése is csökkenni fog.
+12. A számítási feladatok alkalmazása esetén jegyezze fel a rendszerek erőforrás-felhasználását az Azure-ban. Hasonlítsa össze ezt a felhasználást a régi platform rekordjaival. A jövőbeli központi telepítések VM-méretezésének módosítása, ha úgy látja, hogy nagy különbségek vannak. Ne feledje, hogy ha a virtuális gépek számának csökkentése, tárolása és hálózati sávszélessége is csökken.
     - [A Windows rendszerű virtuális gépek méretei az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)
     - [A Linux rendszerű virtuális gépek méretei az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 13. Kísérletezzen a rendszermásolási funkciókkal és folyamatokkal. A cél az, hogy megkönnyítse egy fejlesztési rendszer vagy egy tesztelési rendszer másolását, így a Project csapatok gyorsan új rendszerekhez juthatnak. Ezeket a feladatokat az [SAP láma](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) használatával érdemes használni.
@@ -209,7 +227,7 @@ Ebben a fázisban gyűjti a tapasztalt és megtanult adatokat a nem éles körny
     - Ha az áttelepítést SAP-kiadási frissítéssel kell kombinálni, használja az [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) folyamatot. Ne feledje, hogy a forrás-adatbázis-kezelő és a cél adatbázis-kezelő összes kombinációja nem támogatott. A DMO különböző kiadásaira vonatkozó SAP-támogatási megjegyzésekben talál további információt. Például: [adatbázis-áttelepítési beállítás (DMO), SUM 2,0 SP04](https://launchpad.support.sap.com/#/notes/2644872).
     - Ellenőrizze, hogy az adatátvitel sebessége jobb-e az interneten vagy a ExpressRoute keresztül, ha biztonsági másolatokat vagy SAP-exportálási fájlokat kell áthelyeznie. Ha az interneten keresztül helyezi át az adatátvitelt, előfordulhat, hogy módosítania kell néhány hálózati biztonsági csoport/alkalmazás biztonsági csoportra vonatkozó szabályt, amelyekre szüksége lesz a jövőbeli éles rendszerekhez.
 1.  Mielőtt a régi platformról az Azure-ba helyezi a rendszereket, Gyűjtse össze az erőforrás-felhasználási adatokat. A hasznos adatok közé tartoznak a CPU-használat, a tárolási sebesség és a IOPS-adatok. Különösen ezeket az adatokat az adatbázis-kezelő réteg egységei gyűjtik, de az alkalmazási rétegből is gyűjthetik. A hálózati és a tárolási késést is méri.
-1.  Az SAP-támogatási megjegyzések, a SAP HANA hardver könyvtára és az SAP PAM ismételt ellenőrzését. Győződjön meg arról, hogy az Azure-beli támogatott virtuális gépeken nem történt változás, támogatott operációsrendszer-kiadások a virtuális gépeken, valamint a támogatott SAP-és adatbázis-kezelői kiadások.
+1.  Az SAP-támogatási megjegyzések és a szükséges operációsrendszer-beállítások, a SAP HANA hardverek és az SAP PAM újrajelölése. Győződjön meg arról, hogy az Azure-beli támogatott virtuális gépeken nem történt változás, támogatott operációsrendszer-kiadások a virtuális gépeken, valamint a támogatott SAP-és adatbázis-kezelői kiadások.
 1.  Frissítse az üzembe helyezési parancsfájlokat, hogy figyelembe vegye a virtuálisgép-típusokon és az Azure-funkciókon elvégzett legújabb döntéseket.
 1.  Az infrastruktúra és az alkalmazások üzembe helyezése után ellenőrizze az alábbiakat:
     - A megfelelő virtuálisgép-típusok üzembe helyezése a megfelelő attribútumokkal és tárolási méretekkel.
@@ -219,7 +237,7 @@ Ebben a fázisban gyűjti a tapasztalt és megtanult adatokat a nem éles körny
     - A virtuális gépek üzembe helyezése az Azure rendelkezésre állási csoportjaiba történt a tervezett módon.
     - Az Azure Premium Storage a késésre érzékeny lemezekhez használatos, vagy a [99,9%-os egyszeri virtuális gépre vonatkozó SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) -t kell megadni.
     - Az Azure írásgyorsító megfelelően van telepítve.
-        - Győződjön meg arról, hogy a virtuális gépeken belül a tárolóhelyek és a csíkozott készletek megfelelően lettek kiépítve a írásgyorsítót igénylő lemezeken.
+        - Győződjön meg arról, hogy a virtuális gépeken belül a tárolóhelyek és a csíkkészletek megfelelően lettek kiépítve a írásgyorsítót igénylő lemezeken.
         - A [szoftveres RAID konfigurációjának megtekintése Linux rendszeren](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid).
         - Az [LVM konfigurálása az Azure-beli Linux rendszerű virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm).
     - Az [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) használata kizárólag.
@@ -244,7 +262,7 @@ A Go-Live fázisban mindenképpen kövesse a korábbi fázisokban fejlesztett fo
         - Átlagos CPU-idő, minden egyes processzor (128 processzor a M128 virtuális gépeken)
         - CPU kernel-idő, minden egyes processzor
         - CPU felhasználói idő, minden egyes processzor
-    - Memory.
+    - Memória.
         - Szabad memória
         - Memória lap/másodperc
         - Memória lap kimenő/második
@@ -255,7 +273,7 @@ A Go-Live fázisban mindenképpen kövesse a korábbi fázisokban fejlesztett fo
         - Lemez írása kbit/s-ban, külön lemezenként
         - Lemez írása/másodperc, egyéni lemezenként
         - Lemezes írás a másodpercenkénti/olvasási, egyenkénti lemezen
-    - Hálózat:
+    - Hálózati.
         - Hálózati csomagok/másodperc
         - Kimenő hálózati csomagok/másodperc
         - Hálózati KB/másodperc

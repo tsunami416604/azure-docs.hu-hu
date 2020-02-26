@@ -2,17 +2,14 @@
 title: Több Node-készlet használata az Azure Kubernetes szolgáltatásban (ak)
 description: Ismerje meg, hogyan hozhat létre és kezelhet több Node-készletet egy fürthöz az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 02/14/2020
-ms.author: mlearned
-ms.openlocfilehash: e77710fe446810ec566ebc7088d802f0721806d2
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 846425e6d36462636ea1f4e82d6c7233dcb28ac9
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443924"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592883"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Fürthöz tartozó több Node-készlet létrehozása és kezelése az Azure Kubernetes szolgáltatásban (ak)
 

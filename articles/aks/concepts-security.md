@@ -2,17 +2,14 @@
 title: Fogalmak – biztonság az Azure Kubernetes Servicesben (ak)
 description: Ismerje meg az Azure Kubernetes szolgáltatással (ak) kapcsolatos biztonságot, beleértve a Master és Node kommunikációt, a hálózati házirendeket és a Kubernetes titkokat.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: e461f9de8b20e4f6c8f027b1ae81ae21e54ece86
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 7238e6cd7ab3625e2953a4408c82802d43372256
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547931"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595943"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) található alkalmazások és fürtök biztonsági fogalmai
 
@@ -65,7 +62,7 @@ További információ: AK- [fürt frissítése][aks-upgrade-cluster].
 
 A helyszíni hálózatokkal létesített kapcsolat és biztonság érdekében az AK-fürtöt meglévő Azure-beli virtuális hálózati alhálózatokra is telepítheti. Ezek a virtuális hálózatok rendelkezhetnek Azure-helyek közötti VPN-vagy Express Route-kapcsolattal a helyszíni hálózathoz. A Kubernetes bemenő vezérlőket privát, belső IP-címekkel lehet meghatározni, hogy a szolgáltatások csak ezen a belső hálózati kapcsolaton keresztül legyenek elérhetők.
 
-### <a name="azure-network-security-groups"></a>Azure-beli hálózati biztonsági csoportok
+### <a name="azure-network-security-groups"></a>Azure hálózati biztonsági csoportok
 
 A virtuális hálózatok forgalmának szűréséhez az Azure hálózati biztonsági csoportokra vonatkozó szabályokat használ. Ezek a szabályok határozzák meg az erőforrásokhoz való hozzáférést engedélyező vagy megtagadott forrás-és cél IP-tartományokat, portokat és protokollokat. Az alapértelmezett szabályok úgy jönnek létre, hogy engedélyezzék a TLS-forgalmat a Kubernetes API-kiszolgálónak. Amikor terheléselosztó, port-hozzárendelés vagy bejövő útvonalak használatával hoz létre szolgáltatásokat, az AK automatikusan módosítja a hálózati biztonsági csoportot a megfelelő forgalomra.
 

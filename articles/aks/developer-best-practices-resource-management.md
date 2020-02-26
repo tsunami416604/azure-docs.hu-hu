@@ -3,22 +3,21 @@ title: Fejlesztői ajánlott eljárások – erőforrás-kezelés az Azure Kuber
 description: Ismerje meg az Azure Kubernetes Service (ak) erőforrás-kezelésével kapcsolatos ajánlott eljárásokat az alkalmazások fejlesztéséhez
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: e98a1f49ebf0fd8811be8efe8d001d450959369a
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 66676c90e73d1886c86d8afda8cbbecce239a005
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549240"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596028"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az alkalmazások fejlesztői számára az erőforrások kezeléséhez az Azure Kubernetes szolgáltatásban (ak)
 
 Az Azure Kubernetes szolgáltatásban (ak) futó alkalmazások fejlesztése és futtatása során néhány fontos területet figyelembe kell venni. Az alkalmazások központi telepítésének kezelése negatív hatással lehet az Ön által biztosított szolgáltatások végfelhasználói élményére. A sikeres működés érdekében érdemes figyelembe venni néhány ajánlott gyakorlatot, amelyet követve az AK-ban végezheti el az alkalmazások fejlesztését és futtatását.
 
-Ez az ajánlott eljárás a fürt és a számítási feladatok alkalmazások fejlesztői perspektívából való futtatására koncentrál. További információ az ajánlott felügyeleti gyakorlatokról: a [cluster operátor ajánlott eljárásai az elkülönítéshez és az erőforrás-kezeléshez az Azure Kubernetes szolgáltatásban (ak)][operator-best-practices-isolation]. Ez a cikk a következőket ismerteti:
+Ez az ajánlott eljárás a fürt és a számítási feladatok alkalmazások fejlesztői perspektívából való futtatására koncentrál. További információ az ajánlott felügyeleti gyakorlatokról: a [cluster operátor ajánlott eljárásai az elkülönítéshez és az erőforrás-kezeléshez az Azure Kubernetes szolgáltatásban (ak)][operator-best-practices-isolation]. Ez a cikk bemutatja:
 
 > [!div class="checklist"]
 > * Mik a pod-erőforrásokra vonatkozó kérelmek és korlátozások

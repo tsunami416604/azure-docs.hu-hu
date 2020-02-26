@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 0c7ca6236adc5a476fbcf2bfbd54f4cc283bd607
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 7d382ace16305d38b9a65b3a857fd27dfa9e3a2b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201973"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603878"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Az Azure Security Center és Linux rendszerű Azure-beli virtuális gépek
 [Az Azure Security Center](https://azure.microsoft.com/services/security-center/) lehetővé teszi a fenyegetések megelőzését, észlelését és kezelését. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
@@ -46,7 +46,7 @@ Az Azure Security Centert használatának elkezdése előtt tudnia kell és meg 
 
 * Szüksége lesz egy Microsoft Azure-előfizetésre. A Security Center ingyenes és standard csomagjairól a [ Security Center díjszabását](https://azure.microsoft.com/pricing/details/security-center/) ismertető oldalon talál további információt.
 * Tervezze meg a Security Center bevezetését az[Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md) című dokumentum segítségével, amely további információkat nyújt a tervezés és működtetés szempontjairól.
-* További információ a támogatott operációs rendszerekről: [Azure Security Centerhez kapcsolódó gyakori kérdések (GYIK)](security-center-faq.md). 
+* További információ a támogatott operációs rendszerekről: [Azure Security Centerhez kapcsolódó gyakori kérdések (GYIK)](faq-vms.md). 
 
 ## <a name="set-security-policy"></a>Biztonsági házirend beállítása
 Engedélyezze az adatgyűjtést, hogy az Azure Security Center összegyűjthesse a szükséges információkat a beállított biztonsági házirend alapján létrehozott javaslatok és riasztások biztosításához. Az alábbi ábrán látható, hogy az **Adatgyűjtés** állapota **Be** van kapcsolva.
@@ -70,7 +70,7 @@ Miután beállított egy biztonsági házirendet, a Security Center elemzi az Ö
 | Operációs rendszerek sebezhetőségeinek javítása|Javasolja, hogy az operációs rendszer konfigurálását az ajánlott konfigurációs szabályok szerint végezze, például ne engedélyezze a jelszavak mentését. |
 | Rendszerfrissítések alkalmazása|Javasolja, hogy végezze el a hiányzó rendszerbiztonsági és kritikus frissítések központi telepítését a virtuális gépeken. |
 | Rendszerfrissítések utáni újraindítás|Javasolja, hogy a rendszerfrissítések alkalmazási folyamatának befejezéséhez indítson újra egy virtuális gépet. |
-| VM-ügynök engedélyezése|Lehetővé teszi a virtuálisgép-ügynök alkalmazását igénylő virtuális gépek megtekintését. A virtuálisgép-ügynöknek telepítve kell lennie a virtuális gépeken a javítás- és alapkonfiguráció-keresés, valamint a kártevőirtó programok üzembe helyezéséhez. Az Azure Marketplace-ről üzembe helyezett virtuális gépek esetében a virtuálisgép-ügynök alapértelmezés szerint telepítve van. A virtuálisgép-ügynök telepítéséről a [Virtuális gép-ügynök és -bővítmények – 2. rész](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) cikkben talál információkat. |
+| Virtuálisgép-ügynök engedélyezése|Lehetővé teszi a virtuálisgép-ügynök alkalmazását igénylő virtuális gépek megtekintését. A virtuálisgép-ügynöknek telepítve kell lennie a virtuális gépeken a javítás- és alapkonfiguráció-keresés, valamint a kártevőirtó programok üzembe helyezéséhez. Az Azure Marketplace-ről üzembe helyezett virtuális gépek esetében a virtuálisgép-ügynök alapértelmezés szerint telepítve van. A virtuálisgép-ügynök telepítéséről a [Virtuális gép-ügynök és -bővítmények – 2. rész](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) cikkben talál információkat. |
 | Lemeztitkosítás alkalmazása |Javasolja, hogy végezze el a virtuális gép titkosítását az Azure Disk Encryption használatával (Windows és Linux rendszerű virtuális gépek esetében). A titkosítás elvégzése az operációs rendszer és az adatkötetek esetében egyaránt javasolt a virtuális gépen. |
 
 
@@ -90,7 +90,7 @@ A valós fenyegetések észlelése és a téves riasztások számának csökkent
 
 Válasszon ki egy biztonsági riasztást, ha többet szeretne megtudni a riasztást kiváltó esemény(ek)ről, és arról, hogy milyen lépéseket kell tennie a támadás elhárítása érdekében. A biztonsági riasztások típus és dátum szerint vannak csoportosítva.
 
-## <a name="monitor-security-health"></a>Biztonsági állapot figyelése
+## <a name="monitor-security-health"></a>A biztonsági állapot figyelése
 Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsági szabályzatokat](tutorial-security-policy.md), a Security Center elvégzi az erőforrások biztonsági elemzését, és azonosítja a potenciális sebezhető pontokat.  A **Resource Security Health** (Erőforrás biztonsági állapota) panelen megtekintheti az erőforrások biztonsági állapotát, valamint az esetleg felmerülő problémákat. A **Resources security health** (Erőforrás biztonsági állapota) csempe **Virtual machines** (Virtuális gépek) elemére kattintva megnyithatja a **Virtual machines** (Virtuális gépek) panelt, amelyen megtekintheti a virtuális gépekkel kapcsolatos javaslatokat. 
 
 ![Biztonsági állapot](./media/security-center-linux-virtual-machine/security-center-linux-virtual-machine-fig4.png)
@@ -105,5 +105,5 @@ A Security Centerrel kapcsolatos további információkért olvassa el a követk
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
-* [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
+* [Gyakori kérdések – Virtual Machines](faq-vms.md) – a szolgáltatás használatával kapcsolatos gyakori kérdések megkeresése.
 

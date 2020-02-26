@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: e1e19f985c9aa02759c6fff3c634c216c7ef42ef
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525549"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580628"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-erőforrások létrehozása, futtatása és törlése a REST használatával
 
@@ -401,6 +401,23 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 ```
 
 `202 Accepted` választ kell kapnia, és a visszaadott fejlécekben egy `Location` URI-t kell megadnia. Ezt az URI-t beolvashatja a központi telepítéssel kapcsolatos információkért, beleértve a hasznos hibakeresési információkat is, ha probléma merül fel az egyik függő erőforrással kapcsolatban (például ha elfelejtette a rendszergazdai hozzáférés engedélyezését a tároló beállításjegyzékében). 
+
+## <a name="troubleshooting"></a>Hibakeresés
+
+### <a name="resource-provider-errors"></a>Erőforrás-szolgáltatói hibák
+
+[!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
+
+### <a name="moving-the-workspace"></a>A munkaterület áthelyezése
+
+> [!WARNING]
+> Ha áthelyezi a Azure Machine Learning munkaterületet egy másik előfizetésbe, vagy áthelyezi a tulajdonosi előfizetést egy új bérlőre, nem támogatott. Ez hibákhoz vezethet.
+
+### <a name="deleting-the-azure-container-registry"></a>A Azure Container Registry törlése
+
+A Azure Machine Learning munkaterület egyes műveletekhez Azure Container Registry (ACR) használ. Automatikusan létrehoz egy ACR-példányt, amikor először szüksége lesz rá.
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

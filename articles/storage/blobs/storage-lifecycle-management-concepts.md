@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: fdc98991134e0857d24575d22962a52e43266cbe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 238c12baf55b525a24107a727d09588ef06a6bef
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939242"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598306"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob Storage-életciklus felügyelete
 
@@ -38,7 +38,7 @@ Az életciklus-kezelési házirend általános célú v2 (GPv2) fiókokkal, blob
 
 Az életciklus-kezelési szolgáltatás díjmentes. Az ügyfelek a [List Blobok](https://docs.microsoft.com/rest/api/storageservices/list-blobs) szokásos üzemeltetési költségeit és a [blob-rétegek](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API-hívásait terhelik. A törlési művelet ingyenes. A díjszabással kapcsolatos további információkért lásd a [Blobok díjszabásának blokkolása](https://azure.microsoft.com/pricing/details/storage/blobs/)című témakört.
 
-## <a name="regional-availability"></a>Regionális elérhetőség
+## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
 Az életciklus-kezelési funkció az összes Azure-régióban elérhető.
 
@@ -46,7 +46,7 @@ Az életciklus-kezelési funkció az összes Azure-régióban elérhető.
 
 A szabályzatokat a következő módszerek bármelyikével adhatja hozzá, szerkesztheti vagy távolíthatja el:
 
-* [Azure Portal](https://portal.azure.com)
+* [Azure Portalra](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [REST API-k](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
@@ -58,7 +58,7 @@ A szabályzatok teljes mértékben olvashatók vagy írhatók. A részleges fris
 
 Ez a cikk bemutatja, hogyan kezelheti a szabályzatokat a portál és a PowerShell-metódusok használatával.  
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Két módon adhat hozzá házirendet a Azure Portalon keresztül. 
 
@@ -67,7 +67,7 @@ Két módon adhat hozzá házirendet a Azure Portalon keresztül.
 
 #### <a name="azure-portal-list-view"></a>Azure Portal listanézet
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. A Azure Portal keresse meg és válassza ki a Storage-fiókját. 
 
@@ -88,7 +88,7 @@ Két módon adhat hozzá házirendet a Azure Portalon keresztül.
 9. Az új szabályzat hozzáadásához válassza a **Hozzáadás** lehetőséget.
 
 #### <a name="azure-portal-code-view"></a>Azure Portal kód nézet
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. A Azure Portal keresse meg és válassza ki a Storage-fiókját.
 
@@ -128,7 +128,7 @@ Két módon adhat hozzá házirendet a Azure Portalon keresztül.
 
 6. A JSON-példával kapcsolatos további információkért tekintse meg a [szabályzatok](#policy) és [szabályok](#rules) szakaszt.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 A következő PowerShell-szkripttel adhat hozzá szabályzatot a Storage-fiókhoz. Az `$rgname` változót inicializálni kell az erőforráscsoport nevével. A `$accountName` változót inicializálni kell a Storage-fiók nevével.
 
@@ -158,7 +158,7 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 ```
 
-# <a name="templatetabtemplate"></a>[Sablon](#tab/template)
+# <a name="template"></a>[Sablon](#tab/template)
 
 Az életciklus-kezelést megadhatja Azure Resource Manager sablonok használatával. Itt látható egy sablon az RA-GRS GPv2 Storage-fiók életciklus-kezelési házirenddel való üzembe helyezéséhez.
 
@@ -232,12 +232,12 @@ A szabályzatok a szabályok gyűjteményei:
 
 A szabályzaton belüli szabályok több paraméterrel rendelkeznek:
 
-| Paraméter neve | Paraméter típusa | Megjegyzések | Szükséges |
+| Paraméter neve | Paraméter típusa | Megjegyzések | Kötelező |
 |----------------|----------------|-------|----------|
-| `name`         | Sztring |A szabály neve legfeljebb 256 alfanumerikus karaktert tartalmazhat. A szabály neve megkülönbözteti a kis-és nagybetűket.  Egy szabályzaton belül egyedinek kell lennie. | Igaz |
-| `enabled`      | Logikai | Egy nem kötelező logikai érték, amely lehetővé teszi egy szabály ideiglenes letiltását. Az alapértelmezett érték igaz, ha nincs beállítva. | Hamis | 
-| `type`         | Enumerálási érték | Az aktuális érvényes típus `Lifecycle`. | Igaz |
-| `definition`   | Az életciklus-szabályt meghatározó objektum | Mindegyik definíció egy szűrő készletből és egy műveleti készletből áll. | Igaz |
+| `name`         | Sztring |A szabály neve legfeljebb 256 alfanumerikus karaktert tartalmazhat. A szabály neve megkülönbözteti a kis-és nagybetűket.  Egy szabályzaton belül egyedinek kell lennie. | True (Igaz) |
+| `enabled`      | Logikai | Egy nem kötelező logikai érték, amely lehetővé teszi egy szabály ideiglenes letiltását. Az alapértelmezett érték igaz, ha nincs beállítva. | False (Hamis) | 
+| `type`         | Enumerálási érték | Az aktuális érvényes típus `Lifecycle`. | True (Igaz) |
+| `definition`   | Az életciklus-szabályt meghatározó objektum | Mindegyik definíció egy szűrő készletből és egy műveleti készletből áll. | True (Igaz) |
 
 ## <a name="rules"></a>Szabályok
 
@@ -432,13 +432,13 @@ A gyakran használt és a teljes élettartamon keresztül elért adatmennyisége
 }
 ```
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 **Létrehoztam egy új szabályzatot, miért nem azonnal futnak a műveletek?**  
 A platform naponta egyszer futtatja az életciklus-szabályzatot. Miután konfigurálta a házirendet, akár 24 órát is igénybe vehet, hogy egyes műveletek első alkalommal fussanak.  
 
 **Ha frissítek egy meglévő szabályzatot, mennyi ideig tart a műveletek futtatása?**  
-A frissített szabályzat akár 24 óráig is eltarthat. Ha a házirend érvényben van, akár 24 óráig is eltarthat a műveletek futtatása. Ezért a házirend végrehajtása akár 48 órát is igénybe vehet.   
+A frissített szabályzat akár 24 óráig is eltarthat. Ha a házirend érvényben van, akár 24 óráig is eltarthat a műveletek futtatása. Ezért a házirend-műveletek végrehajtása akár 48 óráig is eltarthat.   
 
 **Manuálisan rehidratáltam egy archivált blobot, hogyan tudom megakadályozni, hogy átmenetileg visszakerüljön az archiválási szintre?**  
 Ha egy blobot egy hozzáférési rétegből egy másikba helyez át, az utolsó módosítás időpontja nem változik. Ha az archivált blobokat manuálisan rehidratálja a gyors szintre, az életciklus-kezelő motor vissza fogja helyezni az archiválási szintre. Tiltsa le az ezt a blobot érintő szabályt ideiglenesen annak megakadályozása érdekében, hogy az archiválható legyen. Engedélyezze újra a szabályt, ha a blob biztonságosan visszahelyezhető az archiválási szintre. Azt is megteheti, hogy a blobot egy másik helyre másolja, ha a gyors vagy lassú elérésű szinten kell maradni.

@@ -2,17 +2,14 @@
 title: HTTPS-bejövő forgalom létrehozása az Azure Kubernetes Service (ak) fürttel
 description: Megtudhatja, hogyan telepíthet és konfigurálhat egy olyan NGINX beáramlási vezérlőt, amely egy Azure Kubernetes-szolgáltatási (ak-) fürtön használja az automatikus TLS-tanúsítvány létrehozását.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.author: mlearned
-ms.openlocfilehash: 661ed72265b81f47cbe8e9cf26595632360ec352
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6b465aeb08f14e48249be9587e5fdee1f4b08ba4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898811"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595535"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>HTTPS bejövő adatkezelő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -28,7 +25,7 @@ További lehetőségek:
 - [Saját TLS-tanúsítványokat használó bejövő adatkezelő létrehozása][aks-ingress-own-tls]
 - [Hozzon létre egy olyan bejövő adatkezelőt, amely a let titkosítást használja a statikus nyilvános IP-címmel rendelkező TLS-tanúsítványok automatikus létrehozásához][aks-ingress-static-tls]
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 

@@ -1,10 +1,10 @@
 ---
-title: Magas rendelkezésre állás az NFS-hez az Azure-beli virtuális gépeken SUSE Linux Enterprise Serveron | Microsoft Docs
+title: Magas rendelkezésre állás NFS-hez Azure-beli virtuális gépeken a SLES-on | Microsoft Docs
 description: Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
-ms.author: sedusch
-ms.openlocfilehash: c20fc2142718d3cc49d4b80c6a5e22e26a350335
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: radeltch
+ms.openlocfilehash: efba617f9aeefa2e9374f5a7551338e003e70f56
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824864"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598731"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken
 
@@ -120,7 +120,7 @@ Az összes szükséges erőforrás üzembe helyezéséhez használhatja a GitHub
    4. Rendszergazdai Felhasználónév és rendszergazdai jelszó  
       Létrejön egy új felhasználó, amely használható a gépre való bejelentkezéshez.
    5. Alhálózat azonosítója  
-      Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint a/Subscriptions/ **&lt;előfizetés-azonosító&gt;** /resourceGroups/ **&lt;erőforráscsoport neve&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;virtuális hálózat neve&gt;** /subnets/ **&lt;alhálózat neve&gt;**
+      Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint a/Subscriptions/ **&lt;előfizetés-azonosító&gt;** /resourceGroups/ **&lt;erőforráscsoport neve&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;virtuális hálózat neve&gt;** /Subnets/ **&lt;alhálózat neve&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>A Linux telepítése manuálisan Azure Portal használatával
 
@@ -143,7 +143,7 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
             1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
             1. Adja meg az új előtér-IP-készlet nevét (például **NW1-frontend**)
             1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **10.0.0.4**).
-            1. Kattintson az OK gombra
+            1. Kattintson az OK gombra.
          1. NW2 IP-10.0.0.5
             * Ismételje meg a fenti lépéseket a NW2
       1. A háttér-készletek létrehozása
@@ -161,7 +161,7 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
             1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
             1. Adja meg az új állapot-mintavétel nevét (például **NW1-HP**)
             1. Válassza a TCP protokollt, a 610**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
-            1. Kattintson az OK gombra
+            1. Kattintson az OK gombra.
          1. A NW2 61001-es portja
             * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a NW2
       1. Terheléselosztási szabályok
@@ -171,7 +171,7 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
          1. Válassza a **hektár portok**lehetőséget.
          1. Üresjárati időkorlát 30 percre növelve
          1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
-         1. Kattintson az OK gombra
+         1. Kattintson az OK gombra.
          * A fenti lépések megismétlésével hozzon létre terheléselosztási szabályt a NW2
    1. Ha a forgatókönyv alapszintű Load balancert igényel, kövesse az alábbi utasításokat:
       1. Az előtérbeli IP-címek létrehozása
@@ -179,7 +179,7 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
             1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
             1. Adja meg az új előtér-IP-készlet nevét (például **NW1-frontend**)
             1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **10.0.0.4**).
-            1. Kattintson az OK gombra
+            1. Kattintson az OK gombra.
          1. NW2 IP-10.0.0.5
             * Ismételje meg a fenti lépéseket a NW2
       1. A háttér-készletek létrehozása
@@ -189,7 +189,7 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
             1. Kattintson a virtuális gép hozzáadása elemre.
             1. Válassza ki a korábban létrehozott rendelkezésre állási készletet
             1. Az NFS-fürt virtuális gépei kiválasztása
-            1. Kattintson az OK gombra
+            1. Kattintson az OK gombra.
          1. A NW2 NFS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
             * A fenti lépések megismétlésével hozzon létre egy háttér-készletet a NW2 számára
       1. Az állapot-mintavételek létrehozása
@@ -197,7 +197,7 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
             1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
             1. Adja meg az új állapot-mintavétel nevét (például **NW1-HP**)
             1. Válassza a TCP protokollt, a 610**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
-            1. Kattintson az OK gombra
+            1. Kattintson az OK gombra.
          1. A NW2 61001-es portja
             * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a NW2
       1. Terheléselosztási szabályok
@@ -208,7 +208,7 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
             1. Tartsa meg a protokoll **TCP**-t, írja be a **2049** portot
             1. Üresjárati időkorlát 30 percre növelve
             1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
-            1. Kattintson az OK gombra
+            1. Kattintson az OK gombra.
          1. 2049 UDP a NW1
             * Ismételje meg a fenti lépéseket a 2049-es és a NW1-es porton.
          1. 2049 TCP a NW2
@@ -228,9 +228,9 @@ Kövesse az Azure-beli [SUSE Linux Enterprise Server a pacemaker beállítása a
 
 ### <a name="configure-nfs-server"></a>Az NFS-kiszolgáló konfigurálása
 
-A következő elemek van fűzve előtagként vagy **[A]** – az összes csomópont alkalmazandó **[1]** – 1. csomópont csak érvényes vagy **: [2]** – 2. csomópont csak érvényes.
+A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes csomópontra érvényesek, **[1]** – csak az 1. vagy **[2]** csomópontra érvényesek, csak a 2. csomópontra.
 
-1. **[A]**  Állomásnév-feloldás beállítása
+1. **[A]** telepítési állomásnév feloldása
 
    DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
    Cserélje le az IP-címet és a gazdagépet a következő parancsokra

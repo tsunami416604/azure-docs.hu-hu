@@ -2,17 +2,14 @@
 title: SSH az Azure Kubernetes Service (ak) fürtcsomópontok számára
 description: Ismerje meg, hogyan hozhat létre SSH-kapcsolatokat az Azure Kubernetes Service (ak) fürtcsomópontok használatával a hibaelhárítási és karbantartási feladatok elvégzéséhez.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.author: mlearned
-ms.openlocfilehash: 5ff79dc597571f4e6ef3d7c2c20bce61c0d061ad
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dfdcda40a24142f85bbeb360aacf0971d72d181f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926373"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593631"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Kapcsolódás az SSH-val az Azure Kubernetes Service (ak) csomópontjaihoz karbantartáshoz vagy hibaelhárításhoz
 
@@ -20,7 +17,7 @@ Az Azure Kubernetes-szolgáltatás (ak) fürtjének életciklusa során előford
 
 Ez a cikk bemutatja, hogyan hozhat létre SSH-kapcsolatokat egy AK-csomóponttal magánhálózati IP-címeik használatával.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 

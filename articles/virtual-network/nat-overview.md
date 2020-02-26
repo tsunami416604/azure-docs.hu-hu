@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/20/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 6c8a341a089ef95d99669f592dbea81922d67682
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: b27baed20d8e36bf5790036e2fdc0804a94a4ea1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526314"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589436"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Mi az Virtual Network NAT (nyilvános előzetes verzió)?
 
@@ -139,9 +139,6 @@ A NAT jelenleg a következő régiókban érhető el:
 ## <a name = "enable-preview"></a>Nyilvános előzetes részvétel
 
 Az előfizetéseket regisztrálni kell a nyilvános előzetes verzióban való részvétel engedélyezéséhez.  A részvételhez két lépésből álló folyamatra van szükség, és az Azure CLI és a Azure PowerShell esetében az alábbi utasításokat kell megadnia.  Az aktiválás végrehajtása több percet is igénybe vehet.
-
-> [!IMPORTANT]
-> Ha Virtual Network NAT [előzetes verziója engedélyezve van](./nat-overview.md#enable-preview) az előfizetésben, az https://aka.ms/natportal használatával férhet hozzá a portálhoz.
 
 ### <a name="azure-cli"></a>Azure CLI
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 68d37bfbc629062a788ba32793b95c6f1653ff42
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 55a4aa066739203f8697fb4c9083869f5a05ef4f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749660"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603376"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Hibaelhárítási útmutató
 
@@ -66,7 +66,7 @@ Ha megnyitja a szolgáltatáskezelő konzolt (services.msc), a Microsoft Monitor
 
 Az ügynök verziójának ellenőrzéséhez nyissa meg a **Feladatkezelőt**, a **Folyamatok** lapon keresse meg a **Microsoft Monitoring Agent szolgáltatást**, kattintson rá a jobb gombbal. és kattintson a **Tulajdonságok** elemre. A **Részletek** lapon keresse meg a fájlverziót az alábbi módon:
 
-![File](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
+![Fájl](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
 ## <a name="microsoft-monitoring-agent-installation-scenarios"></a>A Microsoft Monitoring Agent telepítési forgatókönyvei
 
@@ -136,11 +136,11 @@ Ha problémákat tapasztal a Security Center irányítópultjának betöltése s
 
 Bizonyos problémák a jelen cikk irányelveinek használatával azonosíthatók, a továbbiak leírása pedig a Security Center nyilvános [fórumában](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) található meg. Ha további hibaelhárításra van szüksége, az alábbi képen látható módon nyithat meg új támogatási kérelmet az **Azure Portalon**:
 
-![Microsoft ügyfélszolgálata](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
+![Microsoft támogatási szolgálat](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-Ebben a dokumentumban megtanulhatta az Azure Security Center biztonsági szabályzatainak konfigurálását. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
+Ebben a dokumentumban megtanulhatta az Azure Security Center biztonsági szabályzatainak konfigurálását. A Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md) – Az Azure Security Center tervezésével, valamint a bevezetés során fontos elemekkel kapcsolatos útmutató.
 * [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) – Útmutató az Azure-erőforrások állapotának megfigyeléséhez.
@@ -154,5 +154,5 @@ Ebben a dokumentumban megtanulhatta az Azure Security Center biztonsági szabál
 * [Incidensek és riasztások vizsgálata az Azure Security Centerben](security-center-investigation.md)
 * [Az Azure Security Center észlelési képességei](security-center-detection-capabilities.md)
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) – Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
-* [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center – gyakran ismételt kérdések) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
+* [Azure Security Center FAQ](faq-general.md) (Azure Security Center – gyakran ismételt kérdések) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

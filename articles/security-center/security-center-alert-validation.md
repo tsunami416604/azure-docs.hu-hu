@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 709ac3a9f5e7cf0bd13a6e387f0b80caf2608fe0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 10ea15168d61d5e73aff976ef641e07b6327dbca
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748466"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604563"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Riasztás érvényesítése (EICAR-teszt fájl) Azure Security Center
 A dokumentum ismerteti, hogyan ellenőrizheti, hogy a rendszere megfelelően konfigurálva van-e az Azure Security Center riasztásaihoz.
@@ -37,7 +37,7 @@ További információ: [biztonsági riasztások a Security Centerban](security-c
 
 Miután telepítette Security Center ügynököt a számítógépre, hajtsa végre az alábbi lépéseket azon a számítógépen, amelyen a riasztás megtámadott erőforrását szeretné használni:
 
-1. Másoljon egy végrehajtható fájlt (például a **Calc. exe**fájlt) a számítógép asztalára vagy más kényelmi címtárba, és nevezze át **ASC_AlertTest_662jfi039N. exe**néven.
+1. Másoljon egy végrehajtható fájlt (például a **Calc. exe**fájlt) a számítógép asztalára vagy az Ön kényelmének más könyvtárába, és nevezze át **ASC_AlertTest_662jfi039N. exe**néven.
 1. Nyissa meg a parancssort, és hajtsa végre a fájlt argumentummal (csak egy hamis argumentum neve), például: ```ASC_AlertTest_662jfi039N.exe -foo```
 1. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Az alábbi [példához](#alert-validate) hasonló riasztást kell megjeleníteni:
 
@@ -49,7 +49,7 @@ Miután telepítette Security Center ügynököt a számítógépre, hajtsa vég
 ## Riasztások ellenőrzése Linux rendszerű virtuális gépeken<a name="validate-linux"></a>
 
 Miután telepítette Security Center ügynököt a számítógépre, hajtsa végre az alábbi lépéseket azon a számítógépen, amelyen a riasztás megtámadott erőforrását szeretné használni:
-1. Másolja a végrehajtható fájlt egy kényelmes helyre, és nevezze át a **./asc_alerttest_662jfi039n**névre, például:
+1. Másolja a végrehajtható fájlt egy kényelmes helyre, és nevezze át a (z **)./asc_alerttest_662jfi039nre**, például:
 
     ```cp /bin/echo ./asc_alerttest_662jfi039n```
 
@@ -72,12 +72,11 @@ Ha az Azure Kubernetes szolgáltatás integrálásának Security Center előzete
 
 Az Azure Kubernetes Service és a Azure Security Center integrálásával kapcsolatos további információkért tekintse meg [ezt a cikket](azure-kubernetes-service-integration.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk a riasztások érvényesítési folyamatát mutatta be. Most, hogy már ismeri az érvényesítést, tekintse meg a következő cikkeket:
 
 * [Biztonsági riasztások kezelése és válaszadás a Azure Security Centerban](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) – Ismerje meg, hogyan kezelheti a riasztásokat, és hogyan reagálhat a Security Center biztonsági incidensekre.
 * A [Azure Security Center biztonsági állapotának monitorozása](security-center-monitoring.md) – megismerheti az Azure-erőforrások állapotának figyelését.
 * A [biztonsági riasztások megismerése Azure Security Centerban](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) – a különböző típusú biztonsági riasztások ismertetése.
 * [Azure Security Center hibaelhárítási útmutató](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide) – a Security Center gyakori problémáinak elhárítása.
-* [Azure Security Center GYIK](security-center-faq.md) – gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

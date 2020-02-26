@@ -3,12 +3,12 @@ title: MABS & System Center DPM támogatási mátrix
 description: Ez a cikk Azure Backup támogatást összegzi, ha Microsoft Azure Backup Servert (MABS) vagy System Center DPM használ a helyszíni és az Azure-beli virtuális gépek erőforrásainak biztonsági mentésére.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9441f7ce9069cd85475877f37abe669f3c4fd516
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 6664f7b226b75b364fd1c83f2abc56b5a275eff9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444026"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582653"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Támogatási mátrix a Microsoft Azure Backup Server vagy System Center DPM való biztonsági mentéshez
 
@@ -113,11 +113,34 @@ A MABS üzembe helyezhető egy Azure Stack virtuális gépen, így egyetlen hely
 
 A DPM-kiszolgálónak/MABS hozzá kell férnie az alábbi URL-címekhez:
 
-- http://www.msftncsi.com/ncsi.txt
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.microsoftonline.com
 - *.windows.net
+
+### <a name="azure-expressroute-support"></a>Azure ExpressRoute-támogatás
+
+Az Azure ExpressRoute-on keresztül biztonsági mentést készíthet az adatairól a nyilvános (a régi áramkörökhöz elérhető) és a Microsoft-partnerek számára. A privát kapcsolaton keresztüli biztonsági mentés nem támogatott.
+
+Nyilvános társítás esetén: a következő tartományokhoz/címekhez való hozzáférés biztosítása:
+
+* `http://www.msftncsi.com/ncsi.txt`
+* `microsoft.com`
+* `.WindowsAzure.com`
+* `.microsoftonline.com`
+* `.windows.net`
+
+A Microsoft-partnerekkel válassza ki a következő szolgáltatásokat/régiókat és a vonatkozó közösségi értékeket:
+
+* Azure Active Directory (12076:5060)
+* Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)
+* Azure Storage (az Recovery Services-tároló helyének megfelelően)
+
+További részletekért tekintse meg a [ExpressRoute útválasztási követelményeit](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+
+>[!NOTE]
+>Az új áramkörök esetében a nyilvános társítás elavult.
 
 ### <a name="dpmmabs-connectivity-to-azure-backup"></a>DPM/MABS-kapcsolat Azure Backup
 

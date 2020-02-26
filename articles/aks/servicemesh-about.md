@@ -2,22 +2,21 @@
 title: A szolgáltatás rácsvonalai
 description: Tekintse át a szolgáltatás rácsvonalait, azok architektúráját és képességeit, valamint azt, hogy milyen szempontokat kell figyelembe vennie, amikor kiválasztja az egyiket az üzembe helyezéshez.
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 226a4e5cf97be2e23ef13a95b80be07b7fbf5d7a
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530705"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594311"
 ---
 # <a name="about-service-meshes"></a>A szolgáltatás rácsvonalai
 
 A Service Mesh olyan képességeket biztosít, mint például a forgalomirányítási, a rugalmasság, a házirend, a biztonság, az erős identitás és a munkaterhelések megfigyelése. Az alkalmazás elválasztja ezeket az üzemeltetési képességeket, és a szolgáltatás rácsvonala áthelyezi őket az alkalmazási rétegből, és leállítja az infrastruktúra réteget.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
 Íme néhány olyan forgatókönyv, amely a szolgáltatásbeli háló használatakor engedélyezhető a számítási feladatokhoz:
 
@@ -39,7 +38,7 @@ Az **adatsík** jellemzően olyan proxyból áll, amely transzparens módon van 
 
 ![Jellemző a Service Mesh architektúrája](media/servicemesh/typical-architecture.png)
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
 Az egyes szolgáltatásokhoz tartozó rácsvonalak természetes illeszkedéssel rendelkeznek, és a konkrét forgatókönyvek támogatására összpontosítanak, de általában úgy találja, hogy a legtöbb esetben a következő lehetőségek közül több is megvalósítható.
 

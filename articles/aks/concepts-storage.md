@@ -2,17 +2,14 @@
 title: Fogalmak – tárolás az Azure Kubernetes Servicesben (ak)
 description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) tárolóját, beleértve a köteteket, az állandó köteteket, a tárolási osztályokat és a jogcímeket.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: d6c14f78fd3cefa5ec41a686ca385639eb3fcb67
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 4bb19d7da971a82aef9c0e1fc092cc648ac49c4c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549274"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595994"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes szolgáltatásban (ak) lévő alkalmazások tárolási lehetőségei
 
@@ -56,7 +53,7 @@ A PersistentVolume lehet *statikusan* létrehozni, vagy a Kubernetes API-kiszolg
 
 ## <a name="storage-classes"></a>Tárolási osztályok
 
-A különböző tárolási rétegek (például a prémium és a standard) definiálásához létrehozhat egy *StorageClass*. A StorageClass a *reclaimPolicy*is meghatározza. Ez a reclaimPolicy az alapul szolgáló Azure Storage-erőforrás viselkedését szabályozza a pod törlésekor, és előfordulhat, hogy az állandó kötetre már nincs szükség. A mögöttes tárolási erőforrás törölhető vagy megtartható egy későbbi Pod-nal való használathoz.
+A különböző tárolási rétegek (például a prémium és a standard) definiálásához létrehozhat egy *StorageClass*. A StorageClass a *reclaimPolicy*is meghatározza. Ez reclaimPolicy az alapul szolgáló Azure storage-erőforrások viselkedését vezérlő, amikor a pod törlődik, és a tartós kötet már nem szükséges. Az alapul szolgáló tárolási erőforrás törölték, vagy a jövőbeli podot segítségével őrzi meg.
 
 Az AK-ban két kezdeti StorageClasses jön létre:
 
@@ -81,7 +78,7 @@ parameters:
 
 A PersistentVolumeClaim egy adott StorageClass, elérési módra és méretre vonatkozó lemez-vagy file Storage-t kér. A Kubernetes API-kiszolgáló dinamikusan kiépítheti a mögöttes tárolási erőforrást az Azure-ban, ha nincs meglévő erőforrás a jogcím teljesítéséhez a definiált StorageClass alapján. A pod definíciója tartalmazza a kötet csatlakoztatását, ha a kötet csatlakoztatva van a pod-hoz.
 
-![Állandó mennyiségi jogcímek egy Azure Kubernetes Services (ak) fürtben](media/concepts-storage/persistent-volume-claims.png)
+![Tartós kötet jogcímek, az Azure Kubernetes szolgáltatás (AKS)-fürt](media/concepts-storage/persistent-volume-claims.png)
 
 Egy PersistentVolume egy PersistentVolumeClaim van *kötve* , amint egy rendelkezésre álló tárolási erőforrás hozzá lett rendelve az azt kérő Pod-hez. Az állandó kötetek 1:1-es leképezése a jogcímekre történik.
 

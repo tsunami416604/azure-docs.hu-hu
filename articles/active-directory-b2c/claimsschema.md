@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fc01bd5c868cddd448e3a262960af64f50b78d74
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 2861b882d9b4c00a1c4db87b2dd49d49dfeb53a6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372990"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581106"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -175,6 +175,8 @@ A **korlátozási** elem a következő elemeket tartalmazza:
 
 #### <a name="enumeration"></a>Enumerálás
 
+A **számbavételi** elem a felhasználó számára elérhető beállításokat definiálja a felhasználói felületen lévő jogcímek kiválasztásához, például egy `CheckboxMultiSelect`, `DropdownSingleSelect`vagy `RadioSingleSelect`értékének megadásához. Azt is megteheti, hogy megadhatja és honosíthatja az elérhető beállításokat a [LocalizedCollections](localization.md#localizedcollections) elemmel. Ha meg szeretne keresni egy elemet egy jogcím- **enumerálási** gyűjteményből, használja a [GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) jogcím-átalakítást.
+
 A **számbavételi** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
@@ -209,7 +211,7 @@ A **minta** elem a következő attribútumokat tartalmazhatja:
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | RegularExpression | Igen | Ahhoz, hogy az ilyen típusú jogcímek érvényesek legyenek, a reguláris kifejezésnek egyeznie kell. |
-| HelpText | Nem | A jogcím mintája vagy reguláris kifejezése. |
+| HelpText | Nem | Hibaüzenet a felhasználók számára, ha a reguláris kifejezés-ellenőrzés sikertelen. |
 
 Az alábbi példa egy **e-mail-** jogcímet konfigurál a reguláris kifejezéses beviteli ellenőrzéssel és a Súgó szöveggel:
 
@@ -247,7 +249,7 @@ A **UserInputType** elem elérhető felhasználói bemeneti típusok:
 |Bekezdés | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`|Egy olyan mező, amely csak szöveget jelenít meg egy bekezdés címkéjében. |
 |Jelszó | `string` |Jelszó szövegmezője|
 |RadioSingleSelect |`string` | Választógombok gyűjteménye A jogcím értéke a kijelölt érték.|
-|ReadOnly | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Csak olvasási szövegmező. |
+|ReadOnly | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Írásvédett szövegmező. |
 |TextBox |`boolean`, `int`, `string` |Egy egysoros szövegmező. |
 
 
@@ -407,5 +409,3 @@ A **bekezdés** felhasználói beviteli típusa olyan mező megadására szolgá
   </Restriction>
 </ClaimType>
 ```
-
-Egy **responseMsg** jogcím egyik **enumerálási** értékének megjelenítéséhez használja `GetMappedValueFromLocalizedCollection` vagy `CreateStringClaim` jogcím-átalakítást. További információ: karakterlánc- [jogcímek átalakítása](string-transformations.md)

@@ -2,17 +2,16 @@
 title: A OpenFaaS használata az Azure Kubernetes szolgáltatással (ak)
 description: A OpenFaaS üzembe helyezése és használata az Azure Kubernetes szolgáltatással (ak)
 author: justindavies
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 7949735eff4478d2d04700e1c6df69d28fe25979
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: e684aee1469f855ec651567b805262c71aaf32e5
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278477"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594923"
 ---
 # <a name="using-openfaas-on-aks"></a>OpenFaaS használata az AK-on
 
@@ -109,7 +108,7 @@ gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP  
 
 A OpenFaaS rendszer teszteléséhez keresse meg a külső IP-címet a 8080-as porton, `http://52.186.64.52:8080` ebben a példában. A rendszer kérni fogja, hogy jelentkezzen be. A jelszó beolvasásához írja be a következőt: `echo $PASSWORD`.
 
-![OpenFaaS felhasználói felület](media/container-service-serverless/openfaas.png)
+![OpenFaaS UI](media/container-service-serverless/openfaas.png)
 
 Végül telepítse a OpenFaaS CLI-t. Ez a példa a brewt használta, további lehetőségekért tekintse meg a [OPENFAAS CLI dokumentációját][open-faas-cli] .
 
@@ -243,7 +242,7 @@ A függvényt a OpenFaaS felhasználói felületén is tesztelheti.
 
 ![helyettesítő szöveg](media/container-service-serverless/OpenFaaSUI.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Továbbra is megismerheti a OpenFaaS workshopot olyan gyakorlati laborok segítségével, amelyek olyan témaköröket ölelnek fel, mint például a saját GitHub-robot létrehozása, a titkok felhasználása, a metrikák megtekintése és az automatikus skálázás.
 

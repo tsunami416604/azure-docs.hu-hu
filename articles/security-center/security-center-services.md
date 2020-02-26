@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 7ffab200b50a7c4d1af60a230f237b18e8afc621
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8700421551af227f158abaa38d5f96c8e2987ba3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754221"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603402"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>A Azure Security Centerban elérhető támogatott szolgáltatások
 
@@ -33,11 +33,11 @@ A következő szakaszban Security Center a [támogatott platformokhoz](security-
 
 ## Virtuális gép/kiszolgáló által támogatott funkciók<a name="vm-server-features"></a>
 
-### <a name="windowstabfeatures-windows"></a>[Windows](#tab/features-windows)
+### <a name="windows"></a>[Windows](#tab/features-windows)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-||**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Nem Azure-beli gépek**|**Díjszabás**
+||**Azure Virtual Machines**|**Azure-Virtual Machine Scale Sets**|**Nem Azure-beli gépek**|**Díjszabás**
 |[Microsoft Defender ATP-integráció](security-center-wdatp.md)|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|Standard|
 |[A virtuális gép viselkedési elemzési veszélyforrások észlelésével kapcsolatos riasztások](security-center-alerts-iaas.md)|✔|✔|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
 |[A fájlok nem észlelhető veszélyforrások észlelésével kapcsolatos riasztások](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
@@ -59,11 +59,11 @@ A következő szakaszban Security Center a [támogatott platformokhoz](security-
 |[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|Ingyenes|
 
 
-### <a name="linuxtabfeatures-linux"></a>[Linux](#tab/features-linux)
+### <a name="linux"></a>[Linux](#tab/features-linux)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-||**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Nem Azure-beli gépek**|**Díjszabás**
+||**Azure Virtual Machines**|**Azure-Virtual Machine Scale Sets**|**Nem Azure-beli gépek**|**Díjszabás**
 |[Microsoft Defender ATP-integráció](security-center-wdatp.md)|-|-|-|Standard|
 |[A virtuális gép viselkedési elemzési veszélyforrások észlelésével kapcsolatos riasztások](security-center-alerts-iaas.md)|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
 |[A fájlok nem észlelhető veszélyforrások észlelésével kapcsolatos riasztások](alerts-reference.md#alerts-windows)|-|-|-|Standard|
@@ -95,7 +95,7 @@ A következő táblázat a következőkhöz nyújt mátrixot:
 
 További információ az egyes védelemekhez kapcsolódó javaslatok létrehozásáról: [Endpoint Protection Értékelés és javaslatok](security-center-endpoint-protection.md).
 
-| Endpoint Protection| Platformok | Security Center telepítése | Security Center felderítése |
+| Endpoint Protection (Végpontok védelme)| Platformok | Security Center telepítése | Security Center felderítése |
 |------|------|-----|-----|
 | Windows Defender (Microsoft-kártevőirtó)| Windows Server 2016| Nincs, az operációs rendszerbe van beépítve| Igen |
 | System Center Endpoint Protection (Microsoft-kártevőirtó) | Windows Server 2012 R2, 2012, 2008 R2 (lásd az alábbi megjegyzést) | Bővítmény útján | Igen |
@@ -118,7 +118,7 @@ A Azure Security Center a következő Pásti-erőforrásokat támogatja:
 
 |Szolgáltatás|Javaslatok (ingyenes)|Fenyegetések észlelésével kapcsolatos riasztások (standard)|Sebezhetőségi felmérés (standard)|
 |----|:----:|:----:|:----:|
-|SQL-adatbázisok|✔|✔|✔|
+|SQL Database-adatbázisok|✔|✔|✔|
 |Azure Container Registry|-|-|✔|
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Database for PostgreSQL *|✔|✔|-|
@@ -129,17 +129,17 @@ A Azure Security Center a következő Pásti-erőforrásokat támogatja:
 |App Service|✔|✔|-|
 |Függvényalkalmazás|✔|-|-|
 |Felhőszolgáltatások|✔|-|-|
-|Virtual Network (Virtuális hálózat)|✔|-|-|
+|Virtual Network|✔|-|-|
 |Alhálózat|✔|-|-|
 |Hálózati adapter|✔|-|-|
-|Hálózati biztonsági csoportok|✔|-|-|
-|Előfizetés|✔ * *|✔|-|
+|Network Security Groups (Hálózati biztonsági csoportok)|✔|-|-|
+|Előfizetést|✔ **|✔|-|
 |Batch-fiók|✔|-|-|
 |Service Fabric fiók|✔|-|-|
 |Automation-fiók|✔|-|-|
-|Terheléselosztó|✔|-|-|
+|Load Balancer|✔|-|-|
 |Cognitive Search|✔|-|-|
-|Service Bus névtér|✔|-|-|
+|Service Bus-névtér|✔|-|-|
 |Stream Analytics|✔|-|-|
 |Eseményközpont-névtér|✔|-|-|
 |Logikai alkalmazások|✔|-|-|
@@ -159,5 +159,5 @@ A Azure Security Center a következő Pásti-erőforrásokat támogatja:
 - Megtudhatja, hogyan [tervezheti meg és értelmezheti a Azure Security Center elfogadásához szükséges tervezési szempontokat](security-center-planning-and-operations-guide.md).
 - Tekintse át a [Security centert támogató platformokat](security-center-os-coverage.md).
 - További információ a [Azure Security Center-beli virtuális gépek & kiszolgálói veszélyforrások észleléséről](security-center-alerts-iaas.md).
-- [Gyakori kérdések a Azure Security Center használatáról](security-center-faq.md).
+- [Gyakori kérdések a Azure Security Centerról](faq-general.md).
 - [Blogbejegyzések az Azure biztonsági és megfelelőségi](https://blogs.msdn.com/b/azuresecurity/)funkcióiról.

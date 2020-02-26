@@ -1,10 +1,10 @@
 ---
-title: SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és a megosztott lemezzel az Azure-ban | Microsoft Docs
+title: SAP ASCS/SCS multi-SID HA a WSFC & megosztott lemezzel rendelkezik az Azure-ban | Microsoft Docs
 description: Többszörös SID magas rendelkezésre állása egy SAP ASCS/SCS-példányhoz a Windows Server feladatátvételi fürtszolgáltatással és az Azure-beli megosztott lemezzel
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f7e9551e6a48350b8f23e9d6ce1d47a1a903c63
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 446091263596a1fd5503f38c6a60316f9b0b6843
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75643253"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598510"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -254,11 +254,11 @@ A két magas rendelkezésre állású SAP-rendszerrel rendelkező teljes környe
 
 Az infrastruktúra előkészítéséhez telepítsen egy további SAP ASCS/SCS-példányt a következő paraméterekkel:
 
-| Paraméter neve | Value (Díj) |
+| Paraméter neve | Érték |
 | --- | --- |
-| SAP-ASCS/SCS SID |PR1-LB – ASCs |
+| SAP ASCS/SCS SID |PR1-LB – ASCs |
 | SAP adatbázis-kezelő belső terheléselosztó | PR5 |
-| SAP virtuális gazdagép neve | PR5 – SAP-CL |
+| SAP virtuális gazdagép neve | pr5-sap-cl |
 | SAP ASCS/SCS virtuális gazdagép IP-címe (további Azure Load Balancer IP-cím) | 10.0.0.50 |
 | SAP-ASCS/SCS-példány száma | 50 |
 | ILB mintavételi port további SAP ASCS/SCS-példányhoz | 62350 |
@@ -273,7 +273,7 @@ További SAP ASCS/SCS-példányokat is telepíthet a meglévő WSFC-fürtbe két
 | Virtuális gépi szerepkör | Virtuális gép gazdagépének neve | Statikus IP-cím |
 | --- | --- | --- |
 | Első fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-0 |10.0.0.10 |
-| Második fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-1 |10.0.0.9 címek |
+| Második fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-1 |10.0.0.9 |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Virtuális állomásnév létrehozása a fürtözött SAP ASCS/SCS-példányhoz a DNS-kiszolgálón
 
@@ -281,7 +281,7 @@ A következő paraméterek használatával létrehozhat egy DNS-bejegyzést a AS
 
 | Új SAP ASCS/SCS virtuális gazdagép neve | Társított IP-cím |
 | --- | --- |
-|PR5 – SAP-CL |10.0.0.50 |
+|pr5-sap-cl |10.0.0.50 |
 
 Az új állomásnév és IP-cím a DNS-kezelőben jelenik meg, az alábbi képernyőképen látható módon:
 

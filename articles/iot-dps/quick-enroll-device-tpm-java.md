@@ -9,21 +9,27 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: df18e721a7400a1e45b7f1fcd74fdafdbfdf026c
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: c199d5be4c103c80a6fcc126af70f48367909f64
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462258"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605363"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Gyors útmutató: TPM-eszköz regisztrálása IoT Hub Device Provisioning Service a Java Service SDK-val
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
+Ebben a rövid útmutatóban programozott módon hozzon létre egy egyéni regisztrációt egy szimulált TPM-eszközhöz az Azure IoT Hub Device Provisioning Service a Java Service SDK-val egy minta Java-alkalmazás segítségével.
 
-Ezek a lépések bemutatják, hogyan hozhat létre egyéni regisztrációt szimulált TPM-eszközhöz programozott módon az Azure IoT Hub Device Provisioning Service-ben a [Java szolgáltatásoldali SDK](https://azure.github.io/azure-iot-sdk-java/service/), valamint egy Java-mintaalkalmazás használatával. Bár a Java szolgáltatásoldali SDK Windows és Linux rendszerű gépeken is működik, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ a regisztrációs folyamat bemutatására.
+## <a name="prerequisites"></a>Előfeltételek
 
-A folytatás előtt [állítsa be az IoT Hub Device Provisioning Service-t az Azure Portallal](./quick-setup-auto-provision.md), valamint [szimulálja a TPM-eszközt](quick-create-simulated-device.md#simulatetpm).
+- A [IoT hub Device Provisioning Service beállításának befejezése a Azure Portal](./quick-setup-auto-provision.md).
+- Az [olvasási titkosítási kulcsok befejezése a TPM-eszközről](quick-create-simulated-device.md#simulatetpm).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks). Ez a rövid útmutató telepíti a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) -t alább. Windows és Linux rendszereken egyaránt működik. Ez a rövid útmutató a Windowst használja.
+- [Maven 3](https://maven.apache.org/download.cgi).
+- [Git](https://git-scm.com/download/).
 
 <a id="setupdevbox"></a>
 
@@ -56,7 +62,7 @@ A folytatás előtt [állítsa be az IoT Hub Device Provisioning Service-t az Az
 
 Ez a szakasz bemutatja, hogyan adhatja hozzá a TPM-eszköz kiépítési adatait a mintakódhoz. 
 
-1. Nyisson meg egy parancssort. Klónozza a GitHub-adattárat az eszközregisztráció kódmintájához a Java szolgáltatásoldali SDK használatával:
+1. Nyisson meg egy parancssort. A GitHub-tárház klónozása az eszköz beléptetési kódjához a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/)használatával:
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -124,7 +130,7 @@ Ez a szakasz bemutatja, hogyan adhatja hozzá a TPM-eszköz kiépítési adatait
     mvn install -DskipTests
     ```
 
-   Ez a parancs letölti a [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) Maven-csomagot a számítógépre. A csomag tartalmazza a Java szolgáltatásoldali SDK bináris fájljait, amelyeket a mintakódnak létre kell hoznia. 
+   Ez a parancs letölti a [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) Maven-csomagot a számítógépre. Ez a csomag tartalmazza a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/)bináris fájljait, amelyeket a mintakód létrehozásához szükséges. 
 
 3. Futtassa a mintát a következő parancsokkal a parancsablakban:
 

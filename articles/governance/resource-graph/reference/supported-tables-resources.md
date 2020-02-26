@@ -1,14 +1,14 @@
 ---
 title: Támogatott Resource Manager-erőforrástípusok
 description: Adja meg az Azure Resource Graph és a Change History által támogatott Resource Manager-erőforrástípusok listáját.
-ms.date: 02/20/2020
+ms.date: 02/25/2020
 ms.topic: reference
-ms.openlocfilehash: 130b11f0060f7f27091a21652aa481f0340b288f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: dc08c4a33ec9e0c20b865ffa4d7c6ff9d5248e90
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77530223"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602571"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Az Azure Resource Graph táblázat-és erőforrástípus-referenciája
 
@@ -116,6 +116,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. számítás/sharedvmimages
 - Microsoft. számítási/sharedvmimages/verziók
 - Microsoft. számítás/Pillanatképek
+- Microsoft. számítás/sshpublickeys
 - Microsoft. számítás/virtualmachines
 - Microsoft. számítás/virtualmachines/bővítmények
 - Microsoft. számítás/virtualmachinescalesets
@@ -277,6 +278,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Network/firewallpolicies
 - Microsoft. Network/frontdoors
 - Microsoft. Network/frontdoorwebapplicationfirewallpolicies
+- Microsoft. Network/ipallocations
 - Microsoft. Network/ipgroups
 - Microsoft. Network/loadbalancers
 - Microsoft. Network/localnetworkgateways

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: d2df67479d8b6ab490bf06bda1ec033f9bf7866e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: fadf42e7bd7d754dea64542f06866a439eb460ec
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429697"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588773"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-powershell"></a>Gyors útmutató: NAT-átjáró létrehozása Azure PowerShell használatával
 
@@ -34,9 +34,6 @@ Ez a rövid útmutató bemutatja, hogyan használhatja az Azure Virtual Network 
 Ezt az oktatóanyagot a Azure Cloud Shell használatával vagy a parancsok helyi futtatásával végezheti el.  Ha még nem használta Azure Cloud Shellt, [Jelentkezzen be most](https://shell.azure.com).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-> [!IMPORTANT]
-> Ha Virtual Network NAT [előzetes verziója engedélyezve van](./nat-overview.md#enable-preview) az előfizetésben, az https://aka.ms/natportal használatával férhet hozzá a portálhoz.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -284,7 +281,7 @@ Ha már nincs rá szükség, a [Remove-AzResourceGroup](https://docs.microsoft.c
 Remove-AzResourceGroup -Name myResourceGroupNAT
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy NAT-átjárót és egy virtuális gépet a használatára. 
 

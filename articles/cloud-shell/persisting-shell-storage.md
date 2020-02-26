@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 0b3b0b2cc97c86fefe37055e0744b747d4f31687
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385556"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598748"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Fájlok megőrzése Azure Cloud Shell
 A Cloud Shell az Azure file Storage-t használja a fájlok munkamenetek közötti megőrzéséhez. A kezdeti indításkor Cloud Shell egy új vagy meglévő fájlmegosztás hozzárendelését kéri a fájlok munkamenetek közötti megőrzéséhez.
@@ -62,15 +62,25 @@ Cloud Shell egy Azure-fájlmegosztást használ egy Storage-fiókban egy adott e
 A felhasználók a fájlokhoz való hozzáférést a Storage-fiók vagy az előfizetési szint engedélyeinek beállításával zárolják.
 
 ## <a name="supported-storage-regions"></a>Támogatott tárolási régiók
-A társított Azure Storage-fiókoknak ugyanabban a régióban kell lenniük, mint a csatlakoztatni kívánt Cloud Shell géppel. Ha szeretné megkeresni az aktuális régiót, `env` a bash-ben, és keresse meg a változót `ACC_LOCATION`. A fájlmegosztás egy 5 GB-os rendszerképet kap, amely a `$Home` könyvtárának megtartására lett létrehozva.
+Ha szeretné megkeresni az aktuális régiót, `env` a bash-ben, és keresse meg a `ACC_LOCATION`változót, vagy a PowerShell futtatási `$env:ACC_LOCATION`. A fájlmegosztás egy 5 GB-os rendszerképet kap, amely a `$Home` könyvtárának megtartására lett létrehozva.
 
 Cloud Shell gépek léteznek a következő régiókban:
 
-|Terület|Region (Régió)|
+|Terület|Régió|
 |---|---|
-|Észak-, Dél- és Közép-Amerika|USA keleti régiója, USA déli középső régiója, USA nyugati régiója|
+|Amerika|USA keleti régiója, USA déli középső régiója, USA nyugati régiója|
 |Európa|Észak-Európa, Nyugat-Európa|
 |Ázsia és a Csendes-óceáni térség|Közép-India, Délkelet-Ázsia|
+
+Az ügyfeleknek az elsődleges régiót kell választaniuk, kivéve, ha olyan követelményük van, hogy a tárolt adataik egy adott régióban legyenek tárolva. Ha ilyen követelmény, másodlagos tárolási régiót kell használni.
+
+### <a name="secondary-storage-regions"></a>Másodlagos tárolási régiók
+Másodlagos tárolási régió használata esetén a társított Azure Storage-fiók egy másik régióban található, mint a csatlakoztatni kívánt Cloud Shell gép. Például Jane beállíthatja, hogy a Storage-fiókja kelet-Kanadában, egy másodlagos régióban legyen elhelyezve, de a gép, amelyhez csatlakoztatva van, továbbra is egy elsődleges régióban található. A nyugalmi állapotban lévő adatok Kanadában találhatók, de a rendszer a Egyesült Államokban dolgozza fel.
+
+> [!NOTE]
+> Másodlagos régió használata esetén előfordulhat, hogy a fájlokhoz való hozzáférés és a Cloud Shell indítási ideje lassabb.
+
+A felhasználók a PowerShellben `(Get-CloudDrive | Get-AzStorageAccount).Location` futtathatják a fájlmegosztás helyét.
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Erőforrás-létrehozás korlátozása Azure-erőforrás-házirenddel
 A Cloud Shellban létrehozott Storage-fiókok `ms-resource-usage:azure-cloud-shell`címkével rendelkeznek. Ha azt szeretné, hogy a felhasználók ne hozzanak létre Storage-fiókokat a Cloud Shellban, hozzon létre egy Azure-erőforrás-szabályzatot az adott címke által aktivált [címkékhez](../azure-policy/json-samples.md) .

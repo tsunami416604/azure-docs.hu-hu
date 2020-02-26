@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: e95a0b4b9f071a0fd3949d50eeee17b811dfb8ea
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e01be0442f6d968613ffd800f076705d33e3e16e
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064818"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598204"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub üzenet-útválasztási lekérdezés szintaxisa
 
@@ -88,7 +88,7 @@ $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 
 A támogatott operátorok és függvények teljes listája a [kifejezés és a kikötések között](iot-hub-devguide-query-language.md#expressions-and-conditions)látható.
 
-## <a name="message-routing-query-based-on-message-body"></a>Üzenet-útválasztási lekérdezés üzenet törzse alapján 
+## <a name="message-routing-query-based-on-message-body"></a>Üzenet-útválasztási lekérdezés üzenet törzse alapján
 
 Az üzenettörzs lekérdezésének engedélyezéséhez az üzenetnek egy UTF-8, UTF-16 vagy UTF-32 kódolású JSON-fájlban kell lennie. A `contentType` `application/JSON` és `contentEncoding`ra kell beállítani a rendszertulajdonságban támogatott UTF-kódolások egyikére. Ha ezek a tulajdonságok nincsenek megadva, a IoT Hub nem értékeli ki a lekérdezési kifejezést az üzenet törzsében. 
 
@@ -140,6 +140,10 @@ deviceClient.sendEvent(message, (err, res) => {
     if (res) console.log('status: ' + res.constructor.name);
 });
 ```
+
+> [!NOTE] 
+> Ez azt mutatja be, hogyan kezelhető a törzs kódolása a JavaScriptben. Ha szeretné megtekinteni a mintát C#, töltse le az [Azure IoT C# -mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Bontsa ki a Master. zip fájlt. A Visual Studio megoldás *SimulatedDevice*program.cs-fájlja azt mutatja be, hogyan lehet üzeneteket kódolni és elküldeni egy IoT hubba. Ez ugyanaz a minta, amely az üzenet-útválasztás tesztelésére szolgál az üzenet- [útválasztási oktatóanyagban](tutorial-routing.md)leírtak szerint. A Program.cs alján is van egy módszer az egyik kódolt fájl olvasására, dekódolására, és az ASCII-ként való kiírására, hogy el tudja olvasni. 
+
 
 ### <a name="query-expressions"></a>Lekérdezési kifejezések
 

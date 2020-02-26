@@ -2,17 +2,14 @@
 title: Kezelői ajánlott eljárások – speciális Scheduler-funkciók az Azure Kubernetes Servicesben (ak)
 description: Ismerje meg a fürt operátorának ajánlott eljárásait a speciális Scheduler-funkciók, például a szennyező elemek és a tolerálás, a csomópont-választók és az affinitás, illetve az Azure Kubernetes szolgáltatásban (ak) közötti affinitás és affinitás
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: mlearned
-ms.openlocfilehash: 2ac66e46d449100fcdd004627820252473f6e2f3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 546c1d6ae25a33c6df93469ccf8c230b4b1c474b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293657"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594991"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az Azure Kubernetes Service (ak) speciális ütemező funkcióiról
 
@@ -176,7 +173,7 @@ A jó példa egy olyan webalkalmazás, amely egy Azure cache-t is használ a Red
 
 | **1. csomópont** | **2. csomópont** | **3. csomópont** |
 |------------|------------|------------|
-| WebApp-1   | WebApp – 2   | WebApp – 3   |
+| WebApp-1   | webapp-2   | webapp-3   |
 | gyorsítótár – 1    | gyorsítótár – 2    | gyorsítótár – 3    |
 
 Ez a példa összetettebb üzembe helyezés, mint a csomópont-választó vagy a csomópont-affinitás használata. Az üzembe helyezés lehetővé teszi, hogy a Kubernetes hogyan ütemezze a csomópontokon a hüvelyeket, és képes legyen logikai módon elkülöníteni az erőforrásokat. A webalkalmazásnak az Azure cache for Redis példaként való teljes példáját lásd: [a hüvelyek együttes megkeresése ugyanazon a csomóponton][k8s-pod-affinity].

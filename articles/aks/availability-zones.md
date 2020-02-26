@@ -2,18 +2,15 @@
 title: Rendelkezésre állási zónák használata az Azure Kubernetes szolgáltatásban (ak)
 description: Megtudhatja, hogyan hozhat létre olyan fürtöt, amely a csomópontokat a rendelkezésre állási zónák között osztja el az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
-author: mlearned
 ms.custom: fasttrack-edit
-ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
-ms.author: mlearned
-ms.openlocfilehash: b73cb09f95fa2b23fb23fb719fe57143e1731ceb
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5693d9e90de9ba68e7b76e0f2bd5b75141dbda71
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086522"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596810"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Rendelkezésre állási zónákat használó Azure Kubernetes-szolgáltatásbeli (ak-) fürt létrehozása
 

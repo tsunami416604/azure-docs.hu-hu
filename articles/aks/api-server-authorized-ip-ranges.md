@@ -2,17 +2,14 @@
 title: Az API-kiszolgáló által jóváhagyott IP-címtartományok az Azure Kubernetes szolgáltatásban (ak)
 description: Ismerje meg, hogyan biztonságossá teheti a fürtöt IP-címtartomány használatával az Azure Kubernetes szolgáltatásban (ak) lévő API-kiszolgálóhoz való hozzáféréshez
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.author: mlearned
-ms.openlocfilehash: 5f3e6cf8c5de8d5f3de17ad0b5d4bb4c004c06df
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 80a8504e42eda966554d0151f54668015cf7ee83
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442982"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596709"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Biztonságos hozzáférés az API-kiszolgálóhoz a jogosult IP-címtartományok használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -23,7 +20,7 @@ Ebből a cikkből megtudhatja, hogyan használható az API-kiszolgáló által e
 > [!IMPORTANT]
 > Az új fürtökön az API-kiszolgáló által engedélyezett IP-címtartományok csak a *standard* SKU Load Balancer esetében támogatottak. Az *alapszintű* SKU Load Balancer és a konfigurált API-kiszolgáló által jóváhagyott IP-címtartományok meglévő fürtök továbbra is ugyanúgy működnek, mint a *standard* SKU Load Balancer. Ezek a meglévő fürtök továbbra is működni fognak, ha a Kubernetes verziója vagy a vezérlő síkja frissül.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az API-kiszolgáló által jóváhagyott IP-címtartományok csak a létrehozott új AK-fürtök esetében működnek. Ez a cikk bemutatja, hogyan hozhat létre egy AK-fürtöt az Azure CLI használatával.
 
@@ -65,7 +62,7 @@ az aks create \
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>A standard SKU Load Balancer kimenő IP-címeinek megadása
 
-AK-fürt létrehozásakor, ha megadja a fürt kimenő IP-címeit vagy előtagjait, akkor ezek a címek vagy előtagok is engedélyezettek. Példa:
+AK-fürt létrehozásakor, ha megadja a fürt kimenő IP-címeit vagy előtagjait, akkor ezek a címek vagy előtagok is engedélyezettek. Például:
 
 ```azurecli-interactive
 az aks create \
@@ -117,7 +114,7 @@ A *0.0.0.0/32* -et is használhatja a *--API-Server-Allowed-IP-Ranges* paraméte
 
 ## <a name="disable-authorized-ip-ranges"></a>A hitelesítő IP-címtartományok letiltása
 
-Az engedélyezett IP-címtartományok letiltásához használja az [az AK Update][az-aks-update] parancsot, és az API-kiszolgáló által engedélyezett IP-címtartományok letiltásához használjon üres tartományt. Példa:
+Az engedélyezett IP-címtartományok letiltásához használja az [az AK Update][az-aks-update] parancsot, és az API-kiszolgáló által engedélyezett IP-címtartományok letiltásához használjon üres tartományt. Például:
 
 ```azurecli-interactive
 az aks update \

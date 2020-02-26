@@ -2,17 +2,14 @@
 title: Alapszintű bejövő adatkezelő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 description: Megtudhatja, hogyan telepíthet és konfigurálhat egy alapszintű NGINX beáramlási vezérlőt egy Azure Kubernetes-szolgáltatási (ak-) fürtben.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 12/20/2019
-ms.author: mlearned
-ms.openlocfilehash: 4299846f48524799084efa5456c169d18af4185d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: e37f7aa677be129aa9fe568880c53cc860947e30
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75728871"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595637"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Bejövő adatvezérlő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -27,7 +24,7 @@ További lehetőségek:
 - [Saját TLS-tanúsítványokat használó bejövő adatkezelő létrehozása][aks-ingress-own-tls]
 - Hozzon létre egy olyan bejövő vezérlőt, amely lehetővé teszi a titkosítást [egy dinamikus nyilvános IP-címmel][aks-ingress-tls] vagy [statikus nyilvános IP-címmel rendelkező][aks-ingress-static-tls] TLS-tanúsítványok automatikus létrehozásához
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk a Helm használatával telepíti az NGINX beáramló vezérlőt és egy minta webalkalmazást.
 

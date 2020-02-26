@@ -2,18 +2,15 @@
 title: Az Azure-on futó Kubernetes oktatóanyaga – Alkalmazás üzembe helyezése
 description: Az Azure Kubernetes Service (AKS) ezen oktatóanyagában üzembe fog helyezni egy többtárolós alkalmazást a fürtön egy, az Azure Container Registryben tárolt egyéni rendszerkép használatával.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: cc01b12e493f3e0d3cd63786c27819d4704f97f4
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 3b614fcb6692f35884af2fc4e19210267ab8ab04
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263872"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593274"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások futtatása az Azure Kubernetes Service-ben (AKS)
 
@@ -28,7 +25,7 @@ A további oktatóanyagokban az alkalmazás méretezése és frissítése megtö
 
 A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára vonatkozó alapvető ismeretekkel. További információ: [Az Azure Kubernetes Service (ak) Kubernetes alapfogalmai][kubernetes-concepts].
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe, a rendszerképet feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt.
 
@@ -68,7 +65,7 @@ containers:
   image: <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
-Mentse és zárja be a fájlt. @No__t – 0 esetében használja a `:wq` értéket.
+Mentse és zárja be a fájlt. `vi`használja `:wq`.
 
 ## <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
 
@@ -105,7 +102,7 @@ Kezdetben az *Azure-vote-elülső* szolgáltatás *külső IP-címe* az *alábbi
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
-Ha a *külső IP* -cím *függőben* ÁLLAPOTRÓL tényleges nyilvános IP-címről változik, a `kubectl` figyelési folyamat leállításához használja a `CTRL-C` elemet. A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
+Ha a *külső IP-* cím *függőben* ÁLLAPOTRÓL tényleges nyilvános IP-címről változik, a `CTRL-C` használatával állítsa le a `kubectl` figyelési folyamatát. A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
 
 ```
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s

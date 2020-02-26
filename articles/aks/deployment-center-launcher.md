@@ -2,18 +2,16 @@
 title: Az Azure Kubernetes üzembe helyezési központja
 description: Az Azure DevOps üzembe helyezési központja leegyszerűsíti a robusztus Azure DevOps-folyamat beállítását az alkalmazáshoz
 ms.author: puagarw
-ms.prod: devops
-ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 5384180720d391c6b4ae830f9316a70e80003063
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 84e5533a17dc70fb5c835089f3a3cec1a86e35bf
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972977"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596079"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Az Azure Kubernetes üzembe helyezési központja
 
@@ -59,15 +57,15 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
    ![beállítások](media/deployment-center-launcher/settings.png)
 
-1. Válassza ki a kód helyét, és kattintson a **Tovább gombra**. Ezután válassza ki az egyik jelenleg támogatott tárházat: **[Azure-repók](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** vagy **GitHub**.
+1. Válassza ki a kód helyét, és kattintson a **Tovább gombra**. Ezután válassza ki az egyik jelenleg támogatott tárházat: **[Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** vagy **GitHub**.
 
     Az Azure Repos olyan verziókövetés-eszközök összessége, amelyek segítenek a kód kezelésében. Azt jelzi, hogy a szoftveres projekt mérete nagy vagy kicsi, jó ötlet a verziókövetés a lehető leghamarabb.
 
-    - **Azure-repók**: Válasszon egy tárházat a meglévő projektből és szervezetből.
+    - **Azure Repos**: válasszon egy tárházat a meglévő projektből és szervezetből.
 
-        ![Azure Repos](media/deployment-center-launcher/azure-repos.gif)
+        ![Azure-repók](media/deployment-center-launcher/azure-repos.gif)
 
-    - **GitHub**: Engedélyezze és válassza ki a GitHub-fiók adattárát.
+    - **GitHub**: engedélyezze és válassza ki a GitHub-fiók adattárát.
 
         ![GitHub](media/deployment-center-launcher/github.gif)
 
@@ -90,7 +88,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 1. Az üzembe helyezés befejezése után megjelenik a sikeres naplók.
 
-    ![Logs](media/deployment-center-launcher/logs.png)
+    ![Naplók](media/deployment-center-launcher/logs.png)
 
 ## <a name="examine-the-ci-pipeline"></a>A CI-folyamat vizsgálata
 
@@ -140,6 +138,6 @@ A Deployment Center automatikusan létrehozza és konfigurálja az Azure DevOps-
 
 A létrehozott kapcsolódó erőforrásokat törölheti, ha már nincs rájuk szükség. Használja a DELETE funkciót a DevOps Projects irányítópulton.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Másik lehetőségként ezt a CI/CD modellt is használhatja sablonként a többi folyamathoz.

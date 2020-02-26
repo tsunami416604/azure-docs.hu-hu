@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/01/2020
-ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964770"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587294"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>A virtuális mag és a DTU beszerzési modelljei közül választhat
 
@@ -77,7 +77,7 @@ A virtuális mag-alapú vásárlási modell lehetővé teszi a számítási és 
 
 > [!IMPORTANT]
 > A számítási erőforrások, az I/O-műveletek, valamint az adatok és a naplók tárolása adatbázis vagy rugalmas készlet alapján történik. A biztonsági mentési tárterületet minden adatbázis alapján számítjuk fel. A felügyelt példányok díjaival kapcsolatos további információkért lásd: [felügyelt példányok](sql-database-managed-instance.md).
-> **Régióra vonatkozó korlátozások:** A támogatott régiók aktuális listájáért lásd: [régiók által elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Ha felügyelt példányt szeretne létrehozni olyan régióban, amely jelenleg nem támogatott, [küldjön egy támogatási kérést a Azure Portalon keresztül](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
+> **Régióra vonatkozó korlátozások:** A támogatott régiók aktuális listájáért lásd: [régiók által elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Ha felügyelt példányt szeretne létrehozni olyan régióban, amely jelenleg nem támogatott, [küldjön egy támogatási kérést a Azure Portalon keresztül](quota-increase-request.md).
 
 Ha az önálló adatbázis vagy a rugalmas készlet több mint 300 DTU használ, akkor a virtuális mag-alapú vásárlási modellre való áttérés csökkentheti a költségeket. A konverziót a választható API-k használatával vagy a Azure Portal használatával végezheti el állásidő nélkül. Azonban a konverzió nem szükséges, és nem történik meg automatikusan. Ha a DTU-alapú vásárlási modell megfelel a teljesítményre és az üzleti követelményekre, akkor továbbra is használja.
 
@@ -102,7 +102,7 @@ A munkaterhelés által használt erőforrások nem érintik az Azure-felhőben 
 
 ![határolókeret](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-A DTU leghasznosabb az Azure SQL Database-adatbázisok számára a különböző számítási méreteken és szolgáltatási szinteknél lefoglalt relatív erőforrások megismerése. Példa:
+A DTU leghasznosabb az Azure SQL Database-adatbázisok számára a különböző számítási méreteken és szolgáltatási szinteknél lefoglalt relatív erőforrások megismerése. Például:
 
 - A DTU megkettőzése az adatbázis számítási méretének növelésével egyenlő az adatbázis számára elérhető erőforrások készletének megkettőzésével.
 - A prémium szintű szolgáltatási szint P11-adatbázisa és a 1750 DTU 350x több DTU számítási teljesítményt nyújt, mint az alapszintű szolgáltatási szint adatbázisa 5 DTU.  

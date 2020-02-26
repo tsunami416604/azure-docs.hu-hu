@@ -2,17 +2,14 @@
 title: Statikus kötet létrehozása hüvelyekhez az Azure Kubernetes szolgáltatásban (ak)
 description: Megtudhatja, hogyan hozhat létre manuálisan Azure-lemezekkel rendelkező köteteket az Azure Kubernetes Service (ak) szolgáltatásban található Pod használatával
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: 9017c8cf721fbb9c493dc18da769b9d6e83ddf05
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: b84f62dd02aa29a4c1aa64e3235c0a1e7cc66522
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67616138"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596742"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure-lemezekkel rendelkező kötet manuális létrehozása és használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -27,13 +24,13 @@ A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-be
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A verzió megkereséséhez futtassa a `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ## <a name="create-an-azure-disk"></a>Azure-lemez létrehozása
 
-Ha az AK-val való használatra létrehoz egy Azure-lemezt, akkor a **csomópont** -erőforráscsoport létrehozhatja a lemez erőforrását. Ez a megközelítés lehetővé teszi az AK-fürt számára a lemez erőforrásának elérését és kezelését. Ha ehelyett egy különálló erőforráscsoporthoz hozza létre a lemezt, akkor a fürthöz `Contributor` tartozó Azure Kubernetes szolgáltatás (ak) egyszerű szolgáltatásnév számára meg kell adnia a szerepkört a lemez erőforráscsoporthoz.
+Ha az AK-val való használatra létrehoz egy Azure-lemezt, akkor a **csomópont** -erőforráscsoport létrehozhatja a lemez erőforrását. Ez a megközelítés lehetővé teszi az AK-fürt számára a lemez erőforrásának elérését és kezelését. Ha ehelyett külön erőforráscsoporthoz hozza létre a lemezt, akkor a fürthöz tartozó Azure Kubernetes szolgáltatás (ak) egyszerű szolgáltatásnevet kell megadnia az `Contributor` szerepkörnek a lemez erőforráscsoporthoz.
 
-Ehhez a cikkhez hozza létre a lemezt a csomópont-erőforráscsoporthoz. Először kérje le az erőforráscsoport nevét az az [az AK show][az-aks-show] paranccsal, és adja hozzá `--query nodeResourceGroup` a lekérdezési paramétert. A következő példa lekéri a csomópont-erőforráscsoportot az AK-fürt neve *myAKSCluster* az erőforráscsoport neve *myResourceGroup*:
+Ehhez a cikkhez hozza létre a lemezt a csomópont-erőforráscsoporthoz. Először kérje le az erőforráscsoport nevét az az [AK show][az-aks-show] paranccsal, és adja hozzá a `--query nodeResourceGroup` Query paramétert. A következő példa lekéri a csomópont-erőforráscsoportot az AK-fürt neve *myAKSCluster* az erőforráscsoport neve *myResourceGroup*:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -41,7 +38,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Most hozzon létre egy lemezt az az [Disk Create][az-disk-create] paranccsal. Adja meg az előző parancsban beszerzett csomópont-erőforráscsoport nevét, majd a lemez erőforrásának nevét, például *myAKSDisk*. A következő példa egy *20*GIB-lemezt hoz létre, és a létrehozás után kiírja a lemez azonosítóját. Ha létre kell hoznia egy lemezt a Windows Server-tárolókkal való használatra (jelenleg előzetes verzióban érhető el) `--os-type windows` , adja hozzá a paramétert a lemez megfelelő formázásához.
+Most hozzon létre egy lemezt az az [Disk Create][az-disk-create] paranccsal. Adja meg az előző parancsban beszerzett csomópont-erőforráscsoport nevét, majd a lemez erőforrásának nevét, például *myAKSDisk*. A következő példa egy *20*GIB-lemezt hoz létre, és a létrehozás után kiírja a lemez azonosítóját. Ha létre kell hoznia egy lemezt a Windows Server-tárolókkal való használatra (jelenleg előzetes verzióban érhető el), adja hozzá a `--os-type windows` paramétert a lemez helyes formázásához.
 
 ```azurecli-interactive
 az disk create \
@@ -62,7 +59,7 @@ A lemez erőforrás-azonosítója a parancs sikeres befejeződése után jelenik
 
 ## <a name="mount-disk-as-volume"></a>Lemez csatlakoztatása kötetként
 
-Az Azure-lemez Pod-ba való csatlakoztatásához konfigurálja a kötetet a tároló specifikációjában. Hozzon létre egy nevű `azure-disk-pod.yaml` új fájlt a következő tartalommal. Frissítse `diskName` az előző lépésben létrehozott lemez nevét és `diskURI` a lemez létrehozása parancs kimenetében látható lemez azonosítóját. Ha szükséges, frissítse a `mountPath`-t, amely az az elérési út, ahol az Azure-lemez csatlakoztatva van a pod-hoz. A Windows Server-tárolók esetében (jelenleg előzetes verzióban) a Windows PATH Convention, például a *'d: "* *mountPath* használatával adható meg.
+Az Azure-lemez Pod-ba való csatlakoztatásához konfigurálja a kötetet a tároló specifikációjában. hozzon létre egy új, `azure-disk-pod.yaml` nevű fájlt a következő tartalommal. Frissítse `diskName` az előző lépésben létrehozott lemez nevével, és `diskURI` a lemez létrehozása parancs kimenetében látható lemez azonosítójával. Ha szükséges, frissítse a `mountPath`, amely az az elérési út, ahol az Azure-lemez csatlakoztatva van a pod-hoz. A Windows Server-tárolók esetében (jelenleg előzetes verzióban) a Windows PATH Convention, például a *'d: "* *mountPath* használatával adható meg.
 
 ```yaml
 apiVersion: v1
@@ -91,13 +88,13 @@ spec:
           diskURI: /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
 ```
 
-`kubectl` A parancs használatával hozza létre a pod-t.
+A pod létrehozásához használja a `kubectl` parancsot.
 
 ```console
 kubectl apply -f azure-disk-pod.yaml
 ```
 
-Most már rendelkezik egy futó Pod lemezzel, amely a következőhöz `/mnt/azure`van csatlakoztatva:. A használatával `kubectl describe pod mypod` ellenőrizheti, hogy a lemez csatlakoztatása sikeres volt-e. A következő összefoglalt példa kimenet a tárolóban csatlakoztatott kötetet mutatja:
+Most már rendelkezik egy futó Pod lemezzel, amelyen `/mnt/azure`található. A `kubectl describe pod mypod` használatával ellenőrizheti, hogy a lemez csatlakoztatása sikeres volt-e. A következő összefoglalt példa kimenet a tárolóban csatlakoztatott kötetet mutatja:
 
 ```
 [...]
@@ -124,11 +121,11 @@ Events:
 [...]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 
-További információ az AK-fürtökről az Azure-lemezekkel kapcsolatban: [Kubernetes beépülő modul Azure][kubernetes-disks]-lemezekhez.
+További információ az AK-fürtökről az Azure-lemezekkel kapcsolatban: [Kubernetes beépülő modul Azure-lemezekhez][kubernetes-disks].
 
 <!-- LINKS - external -->
 [kubernetes-disks]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md

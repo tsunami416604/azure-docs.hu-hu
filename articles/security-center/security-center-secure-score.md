@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2019
 ms.author: memildin
-ms.openlocfilehash: 79154a13722654ef5cbbe7ac99bb67d4b761fe60
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 15a94a9724fac29d36f6bb88ee4810b3bc7ca607
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903444"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603486"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Javítsa a biztonságos pontszámot Azure Security Center
 
@@ -29,7 +29,7 @@ ms.locfileid: "76903444"
 >
 > Az előzetes verzióban való részvételhez nyissa meg az Azure Portalt, indítsa el Azure Security Center, és válassza a biztonságos pontszám lehetőséget. Innen egy szalagcím jelenik meg az oldal tetején, amely az új biztonságos pontszám élményét kínálja. Másik lehetőségként kattintson [ide](https://aka.ms/ascnewscore).
 
-Számos olyan szolgáltatás, amely biztonsági előnyöket kínál, gyakran nehéz megismerni, hogy milyen lépéseket kell elvégeznie a számítási feladatok biztonságossá tételéhez és megerősítéséhez. Az Azure Secure pontszáma a biztonsági javaslatok áttekintését és rangsorolását végzi el Önnek, így biztos lehet benne, hogy mely ajánlásokat kell elvégeznie. Ez segít megtalálni a legsúlyosabb biztonsági réseket, hogy rangsorolni lehessen a vizsgálatot. A Biztonsági pontszám olyan eszköz, amely segít felmérni a számítási feladatok biztonsági helyzetét.
+Számos olyan szolgáltatás, amely biztonsági előnyöket kínál, gyakran nehéz megismerni, hogy milyen lépéseket kell elvégeznie a számítási feladatok biztonságossá tételéhez és megerősítéséhez. A biztonságos pontszám áttekinti a biztonsági javaslatokat, és rangsorolja őket az Ön számára, így biztos lehet benne, hogy mely ajánlásokat kell elvégeznie. Ez segít megtalálni a legsúlyosabb biztonsági réseket, hogy rangsorolni lehessen a vizsgálatot. A biztonságos pontszám egy olyan eszköz, amely segít felmérni a munkaterhelés biztonsági helyzetét.
 
 ## <a name="secure-score-calculation"></a>Biztonságos pontszám kiszámítása
 
@@ -47,21 +47,21 @@ A teljes biztonsági pontszám megtekintése:
 1. Az Azure-irányítópulton kattintson a **Security Center** , majd a **biztonságos pontszám**elemre.
 
 2. A felső részen a biztonságos pontszám Kiemelt jellemzői láthatók:
-   - A **teljes biztonsági pontszám** a szabályzatonkénti és kiválasztott előfizetésenkénti pontszámot jelöli.
+   - A **teljes biztonsági pontszám** a pontszám/szabályzatok alapján kiválasztott előfizetésre vonatkozik
    - A **biztonságos pontszám kategóriánként** megmutatja, hogy mely erőforrásokra van szükség a legnagyobb figyelmet
    - A **biztonságos pontszám hatásával kapcsolatos leggyakoribb javaslatok alapján** megtekintheti azokat az ajánlásokat, amelyek a lehető leghatékonyabban javítják a biztonságos pontszámot.
  
-   ![biztonságos pontszám](./media/security-center-secure-score/secure-score-dashboard.png)
+   ![Biztonságos pontszám](./media/security-center-secure-score/secure-score-dashboard.png)
 
 3. Az alábbi táblázatban megtekintheti az egyes előfizetéseket, valamint a teljes biztonságos pontszámot.
 
    > [!NOTE]
-   > Az egyes előfizetések biztonsági pontszámának összege nem egyenlő a teljes biztonsági pontszámmal. A biztonsági pontszám a kifogástalan állapotú erőforrások és a teljes erőforrások javaslatonkénti arányán alapuló számítás, nem pedig az előfizetések biztonsági pontszámainak összege. 
+   > Az egyes előfizetések biztonságos pontszámának összege nem egyenlő a teljes biztonsági pontszámmal. A biztonságos pontszám kiszámítása az egészséges erőforrások és a teljes erőforrások közötti arány alapján történik, nem pedig az előfizetések összes biztonságos pontszáma. 
    >
 4. Kattintson a **javaslatok megtekintése** lehetőségre, és tekintse meg az előfizetésre vonatkozó javaslatokat, amelyekkel javíthatja a biztonságos pontszámot.
 4. A javaslatok listájában láthatja, hogy minden javaslathoz van egy oszlop, amely a **biztonságos pontszám hatását**jelöli. Ez a szám azt jelzi, hogy a teljes biztonsági pontszám milyen mértékben javul, ha követi a javaslatokat. Például az alábbi képernyőn, ha elhárítja a biztonsági **réseket a tároló biztonsági konfigurációjában**, akkor a biztonságos pontszám 35 ponttal nő.
 
-   ![biztonságos pontszám](./media/security-center-secure-score/security-center-secure-score1.png)
+   ![Biztonságos pontszám](./media/security-center-secure-score/security-center-secure-score1.png)
 
 
 
@@ -69,9 +69,9 @@ A teljes biztonsági pontszám megtekintése:
 
 Emellett az egyes biztonsági pontszámok megtekintéséhez az egyes javaslatok panelen is megtalálhatja ezeket.  
 
-A **javaslat biztonsági pontszáma** a kifogástalan állapotú erőforrások és a teljes erőforrások arányán alapuló számítás. Ha a kifogástalan állapotú erőforrások száma megegyezik az erőforrások teljes számával, a javaslat az 50 pontot, a maximális biztonsági pontszámot kapja. A biztonsági pontszám maximális pontszámhoz való közelítése érdekében javítsa ki a sérült erőforrásokat az alábbi javaslatok szerint.
+A **biztonságos pontszám** kiszámítása az egészséges erőforrások és a teljes erőforrások aránya alapján történik. Ha a kifogástalan erőforrások száma megegyezik az erőforrások teljes számával, akkor a 50-es javaslat maximális biztonságos pontszámát kapja meg. Ha szeretné, hogy a biztonsági pontszáma közelebb kerüljön a maximális pontszámhoz, javítsa ki a nem megfelelő állapotú erőforrásokat a javaslatok követésével.
 
-A **Javaslat hatása** megmutatja, milyen mértékben javítja a javaslat lépéseinek alkalmazása a biztonsági pontszámot. Például ha a biztonsági pontszám 42, és a **Javaslat hatása** +3, akkor a pontszám a javaslat lépéseinek végrehajtása után 45-re emelkedik.
+Az **ajánlási hatás** azt mutatja, hogy a biztonsági pontszám milyen mértékben javul, ha alkalmazza a javaslat lépéseit. Ha például a biztonságos pontszám 42, és a **javaslat hatása** a + 3, a javaslatban ismertetett lépések végrehajtásával javítsa a pontszámot, hogy 45 váljon.
 
 A javaslat azt mutatja, hogy a számítási feladatok milyen veszélyforrásokkal vannak kitéve, ha a Szervizelési lépések nem teljesülnek.
 
@@ -80,13 +80,9 @@ A javaslat azt mutatja, hogy a számítási feladatok milyen veszélyforrásokka
 
 
 
-
-
-
 ## <a name="next-steps"></a>Következő lépések
 Ebből a cikkből megtudhatta, hogyan javíthatja biztonsági állapotát a Azure Security Center **biztonságos pontszámának** használatával. A Security Centerról további információt a következő témakörben talál:
 
-* [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) – Megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
-
-
+* [Azure Security Center GYIK](faq-general.md)– gyakori kérdések a szolgáltatással és a biztonságos pontszámmal kapcsolatban.
+* [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) –Tanulja meg az Azure-erőforrások állapotfigyelésének módját.
+* [Biztonságos pontszám – továbbfejlesztett](secure-score-security-controls.md)– megismerheti, hogy jelenleg előzetes verzióban érhető el a fokozott biztonságú pontszám előnye.

@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: cd45d38759bcf41307ba42d68d504266719579d2
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 2d54c39577a359499cf6dc3aca84cebc4fa6e206
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493422"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598017"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>A virtuális gépek méreteinek korábbi generációi
 
@@ -210,6 +210,24 @@ Premium Storage gyorsítótárazás: nem támogatott
 <sup>1</sup> a VM-család a következő CPU-k egyikén futhat: 2,2 GHz-es intel Xeon® E5-2660 v2, 2,4 GHz-es intel Xeon® E5-2673 v3 (Haswell) vagy 2,3 GHz-es intel Xeon® E5-2673 v4 (Broadwell)  
 
 <br>
+
+## <a name="preview-dc-series"></a>Előzetes verzió: DC-sorozat
+
+Premium Storage: támogatott
+
+Premium Storage gyorsítótárazás: támogatott
+
+A DC sorozat a SGX ENKLÁVÉHOZ technológiával rendelkező 3,7 GHz-es Intel XEON E-2176G processzor legújabb generációját használja, az Intel Turbo Boost technológiája pedig akár 4,7 GHz-es is lehet. 
+
+| Méret          | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+|---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
+| Standard_DC2s | 2    | 8           | 100                    | 2              | 4000 / 32 (43)                                                          | 3200 /48                                  | 2 / 1500                                     |
+| Standard_DC4s | 4    | 16          | 200                    | 4              | 8000 / 64 (86)                                                          | 6400 /96                                  | 2 / 3000                                     |
+
+> [!IMPORTANT]
+>
+> A DC sorozatú virtuális gépek [2. generációs virtuális gépek](./linux/generation-2.md#creating-a-generation-2-vm) , és csak `Gen2` lemezképeket támogatják.
+
 
 ### <a name="ds-series"></a>DS-sorozat  
 

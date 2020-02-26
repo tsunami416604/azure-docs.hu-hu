@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás visszaállítása
 description: Ebből a témakörből megtudhatja, hogyan állíthatja vissza a teljes fájlmegosztást vagy adott fájlokat a Azure Backup által létrehozott visszaállítási pontról a Azure Portal használatával.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 8ecb5850c90e5a92e59d17f7949bd5b6cd6205f5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c22078ebd89f5f6f8299e1424d4d9e21edce8b92
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930687"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586879"
 ---
 # <a name="restore-azure-file-shares"></a>Azure-fájlmegosztás visszaállítása
 
@@ -21,6 +21,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 * A visszaállítási művelet állapotának nyomon követése.
 
 ## <a name="steps-to-perform-a-restore-operation"></a>A visszaállítási művelet végrehajtásának lépései
+
 A visszaállítási művelet végrehajtásához kövesse az alábbi lépéseket.
 
 ### <a name="select-the-file-share-to-restore"></a>Válassza ki a visszaállítani kívánt fájlmegosztást
@@ -110,7 +111,7 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja az egyes fájlokat v
 
     ![Az elemszintű helyreállítás eredeti helye](./media/restore-afs/original-location-item-level.png)
 
-2. Válassza a **fájl kiválasztása** lehetőséget a visszaállítani kívánt fájlok vagy mappák kiválasztásához.
+1. Válassza a **fájl kiválasztása** lehetőséget a visszaállítani kívánt fájlok vagy mappák kiválasztásához.
 
     ![Válassza a fájl kiválasztása lehetőséget.](./media/restore-afs/select-file.png)
 

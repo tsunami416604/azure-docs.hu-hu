@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: rendszerképek besorolása TensorFlow-modell betanítása és üzembe helyezése a Visual Studio Code Azure Machine Learning használatával'
+title: 'Oktatóanyag: modell betanítása és üzembe helyezése a Visual Studio Code bővítmény használatával'
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan lehet betanítani és üzembe helyezni a lemezkép-besorolási modellt a TensorFlow és a Azure Machine Learning Visual Studio Code bővítmény használatával
 services: machine-learning
@@ -8,28 +8,28 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 01/16/2019
-ms.openlocfilehash: 899681f2bb9c3ef2a0368015a58db30a843738f5
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/24/2020
+ms.openlocfilehash: ba9cd2e7dc0248aa351cb7bc4519689763f1adda
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157555"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602546"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Képbesorolási TensorFlow modell betanítása és üzembe helyezése a Visual Studio Code Azure Machine Learning használatával
 
-Megtudhatja, hogyan taníthat a képbesorolási modellt a kézzel írt számok TensorFlow és a Visual Studio Code Azure Machine Learning használatával való felismeréséhez.
+Megtudhatja, hogyan taníthat és helyezhet üzembe egy képbesorolási modellt a kézzel írt számok TensorFlow és a Visual Studio Code Azure Machine Learning használatával való felismeréséhez.
 
-Eben az oktatóanyagban az alábbi feladatokkal fog megismerkedni:
+Ez az oktatóanyag a következő feladatokat ismerteti:
 
 > [!div class="checklist"]
 > * A kód értelmezése
-> * Munkaterületek létrehozása
+> * Munkaterület létrehozása
 > * Kísérlet létrehozása
 > * Számítógép-tárolók konfigurálása
 > * Konfigurációs fájl futtatása
 > * Modell betanítása
-> * Modell regisztrálása
+> * Regisztrálja a modellt
 > * Modell üzembe helyezése
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -46,7 +46,7 @@ Ennek az oktatóanyagnak a kódja a TensorFlow-t használja a képbesorolás Mac
 
 Az oktatóanyag kódjának beszerzéséhez töltse le és a dezipping a [vs Code-eszközöket az AI-tárházhoz](https://github.com/microsoft/vscode-tools-for-ai/archive/master.zip) bárhol a számítógépen.
 
-## <a name="create-a-workspace"></a>Munkaterületek létrehozása
+## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
 Ahhoz, hogy egy alkalmazást Azure Machine Learning hozzon létre, egy munkaterületet kell létrehoznia. A munkaterület a modellek betanításához, valamint a betanított modellekhez is tartalmaz erőforrásokat. További információ: [Mi az a munkaterület](./concept-workspace.md). 
 
@@ -56,11 +56,11 @@ Ahhoz, hogy egy alkalmazást Azure Machine Learning hozzon létre, egy munkater�
     > [!div class="mx-imgBorder"]
     > ![Munkaterület létrehozása](./media/tutorial-train-deploy-image-classification-model-vscode/create-workspace.png)
 
-1. Alapértelmezés szerint a létrehozás dátumát és időpontját tartalmazó név jön létre. A parancs palettáján módosítsa a nevet "TeamWorkspace" értékre, majd nyomja le az **ENTER**billentyűt.
-1. Válassza az **Új erőforráscsoport létrehozása** elemet a parancs palettáján. 
-1. A Command paletta szövegmezőbe írja be a "TeamWorkspace-RG" kifejezést, majd nyomja le az **ENTER**billentyűt. 
-1. A parancs palettáján válassza ki a munkaterület helyét. Ajánlott olyan helyet választani, amely a modell üzembe helyezéséhez legközelebb eső helyen található. Ebben az esetben válassza az **USA 2. nyugati**régióját.
-1. Amikor a rendszer rákérdez a munkaterület SKU kiválasztására, válassza az **alapszintű** lehetőséget egy alapszintű munkaterület létrehozásához. A különböző munkaterület-ajánlatokkal kapcsolatos további információkért lásd: [Azure Machine learning áttekintése](./overview-what-is-azure-ml.md#sku).
+1. Alapértelmezés szerint a létrehozás dátumát és időpontját tartalmazó név jön létre. A szövegbeviteli mezőben módosítsa a nevet "TeamWorkspace" értékre, majd nyomja le az **ENTER**billentyűt.
+1. Válassza **az új erőforráscsoport létrehozása**lehetőséget. 
+1. Nevezze el az erőforráscsoportot "TeamWorkspace-RG" néven, majd nyomja le az **ENTER**billentyűt. 
+1. Válassza ki a munkaterület helyét. Ajánlott olyan helyet választani, amely a modell üzembe helyezéséhez legközelebb eső helyen található. Például: "USA nyugati régiója 2".
+1. Amikor a rendszer rákérdez a munkaterület típusának kiválasztására, válassza az **alapszintű** lehetőséget egy alapszintű munkaterület létrehozásához. A különböző munkaterület-ajánlatokkal kapcsolatos további információkért lásd: [Azure Machine learning áttekintése](./overview-what-is-azure-ml.md#sku).
 
 Ezen a ponton a rendszer egy új munkaterületet hoz létre a fiókjában. Néhány perc elteltével az új munkaterület megjelenik az előfizetési csomópontban. 
 
@@ -77,7 +77,7 @@ Egy vagy több kísérlet hozható létre a munkaterületen, és nyomon követhe
     > [!div class="mx-imgBorder"]
     > ![Kísérlet létrehozása](./media/tutorial-train-deploy-image-classification-model-vscode/create-experiment.png)
 
-1. A parancssorba írja be a "MNIST" nevű kísérletet, majd nyomja le az **ENTER** billentyűt az új kísérlet létrehozásához. 
+1. Adja a "MNIST" nevű kísérletet, majd nyomja le az **ENTER** billentyűt az új kísérlet létrehozásához. 
 
 A munkaterületekhez hasonlóan a rendszer küld egy kérelmet az Azure-nak, hogy hozzon létre egy kísérletet a megadott konfigurációkkal. Néhány perc elteltével az új kísérlet a munkaterület *kísérletek* csomópontjában jelenik meg. 
 
@@ -96,8 +96,8 @@ Számítási cél létrehozása:
     > ![számítási cél létrehozása](./media/tutorial-train-deploy-image-classification-model-vscode/create-compute.png)
 
 1. Válassza ki **Azure Machine learning számítást (AmlCompute)** . Azure Machine Learning a számítás egy felügyelt számítási infrastruktúra, amely lehetővé teszi a felhasználó számára, hogy egyszerűen hozzon létre egy vagy több csomópontos számítást, amelyet a munkaterület más felhasználóival is használhatnak.
-1. Válassza ki a virtuális gép méretét. A parancssorban válassza a **Standard_F2s_v2**lehetőséget. A virtuális gép mérete hatással van a modellek betanításához szükséges idő mennyiségére. A virtuális gépek méretével kapcsolatos további információkért lásd: [a Linux rendszerű virtuális gépek méretei az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
-1. A parancssorba írja be a "TeamWkspc-com" számítási nevet, majd nyomja le az **ENTER** billentyűt a számítás létrehozásához.
+1. Válassza ki a virtuális gép méretét. Válassza ki a **Standard_F2s_v2** elemet a lehetőségek listájából. A virtuális gép mérete hatással van a modellek betanításához szükséges idő mennyiségére. A virtuális gépek méretével kapcsolatos további információkért lásd: [a Linux rendszerű virtuális gépek méretei az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+1. Hozza létre a számítási "TeamWkspc-com" nevet, majd nyomja le az **ENTER** billentyűt a számítás létrehozásához.
 
 Néhány perc elteltével megjelenik az új számítási cél a munkaterület *számítási* csomópontján.
 
@@ -115,10 +115,10 @@ Futtatási konfiguráció létrehozása:
     > [!div class="mx-imgBorder"]
     > ![futtatási konfiguráció létrehozása](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
 
-1. A parancssorban adja meg a Run konfiguráció "MNIST-RC" nevét, majd nyomja le az **ENTER** billentyűt a számítás létrehozásához.
+1. Nevezze el a futtatási konfigurációt "MNIST-RC" néven, majd nyomja le az **ENTER** billentyűt a futtatási konfiguráció létrehozásához.
 1. Ezután válassza a **TensorFlow egycsomópontos képzés** lehetőséget a betanítási feladattípusként.
 1. Nyomja le az **ENTER** billentyűt, és tallózással keresse meg a parancsfájlt a számításhoz. Ebben az esetben a modell betanítására szolgáló parancsfájl a `train.py` fájl a `vscode-tools-for-ai/mnist-vscode-docs-sample` könyvtárban.
-1. A szükséges csomagok megadásához írja be a következőt a parancssorba.
+1. Adja meg a következőt a beviteli mezőben a szükséges csomagok megadásához.
     
     ```text
     pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
@@ -177,7 +177,7 @@ Futtatási konfiguráció létrehozása:
 
 A `MNIST-rc` futtatási konfigurációt a *TeamWkspc-com* számítási csomópont alatt adja hozzá a rendszer.
 
-## <a name="train-the-model"></a>A modell tanítása
+## <a name="train-the-model"></a>A modell betanítása
 
 A betanítási folyamat során a rendszer létrehoz egy TensorFlow-modellt a besorolt betanítási és a hozzájuk tartozó tanulási minták feldolgozásával. 
 
@@ -192,7 +192,7 @@ Azure Machine Learning kísérlet futtatása:
     > [!div class="mx-imgBorder"]
     > ![kísérlet futtatása](./media/tutorial-train-deploy-image-classification-model-vscode/run-experiment.png)
 
-1. A parancs palettáján válassza ki a **TeamWkspc-com** számítási célt.
+1. A számítási cél beállításainak listájából válassza ki a **TeamWkspc-com** számítási célt.
 1. Ezután válassza ki a **MNIST-RC** futtatási konfigurációt.
 1. Ezen a ponton a rendszer elküld egy kérést az Azure-nak, hogy futtassa a kísérletet a munkaterület kiválasztott számítási célján. Ez a folyamat több percig is eltarthat. A betanítási feladatok futtatásának időtartamát számos tényező befolyásolja, például a számítási típus és a betanítási adatok mérete. A kísérlet előrehaladásának nyomon követéséhez kattintson a jobb gombbal a jelenlegi Futtatás csomópontra, és válassza a **futtatás Azure Portalban**lehetőséget.
 1. Amikor megjelenik a külső webhely megnyitását kérő párbeszédpanel, válassza a **Megnyitás**lehetőséget.
@@ -202,7 +202,7 @@ Azure Machine Learning kísérlet futtatása:
 
 Ha a modell elkészült, a Futtatás csomópont frissítései mellett a "befejezett" állapot felirat látható.
 
-## <a name="register-the-model"></a>A modell regisztrálása
+## <a name="register-the-model"></a>Regisztrálja a modellt
 
 Most, hogy betanítta a modellt, regisztrálhatja azt a munkaterületen. 
 
@@ -222,9 +222,9 @@ A modell regisztrálása:
     > [!div class="mx-imgBorder"]
     > ![modell regisztrálása](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
 
-1. A parancssorban nevezze el a "MNIST-TensorFlow-Model" modellt, majd nyomja le az **ENTER**billentyűt.
-1. A TensorFlow modellek több fájlból állnak. Válassza ki a **modell mappáját** a modell elérési útja formátumban a parancs palettáján. 
-1. Válassza ki a `azureml_outputs/Run_1/outputs/Run_1/outputs/outputs/model` könyvtárat.
+1. Nevezze el az "MNIST-TensorFlow-Model" modellt, majd nyomja le az **ENTER**billentyűt.
+1. A TensorFlow modellek több fájlból állnak. A lehetőségek listájából válassza a modell **mappa** lehetőséget a modell elérési útjaként. 
+1. Válassza ki a `azureml_outputs/Run_1/outputs/outputs/model` könyvtárat.
 
     A modell konfigurációit tartalmazó fájl a Visual Studio Code-ban jelenik meg, az alábbihoz hasonló tartalommal:
 
@@ -234,7 +234,7 @@ A modell regisztrálása:
         "tags": {
             "": ""
         },
-        "modelPath": "c:\\Dev\\vscode-tools-for-ai\\mnist-vscode-docs-sample\\azureml_outputs\\Run_1\\outputs\\Run_1\\outputs\\outputs\\model",
+        "modelPath": "c:\\Dev\\vscode-tools-for-ai\\mnist-vscode-docs-sample\\azureml_outputs\\Run_1\\outputs\\outputs\\model",
         "description": ""
     }
     ```
@@ -247,7 +247,7 @@ A modell regisztrálása:
 
 Néhány perc elteltével a modell a *modellek* csomópont alatt jelenik meg.
 
-## <a name="deploy-the-model"></a>A modell rendszerbe állítása
+## <a name="deploy-the-model"></a>A modell üzembe helyezése
 
 A Visual Studio Code-ban a modellt webszolgáltatásként helyezheti üzembe a következőhöz:
 
@@ -266,10 +266,10 @@ Webszolgáltatás üzembe helyezése ACI-ként:
     > [!div class="mx-imgBorder"]
     > ![A modell üzembe helyezése](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
 
-1. A parancs palettáján válassza a **Azure Container instances**lehetőséget.
-1. Nevezze el a szolgáltatást "mnist-tensorflow-SVC" néven, majd nyomja le az **ENTER billentyűt** a parancs palettáján.
-1. Válassza ki a tárolóban futtatni kívánt parancsfájlt. Ehhez nyomja le az **ENTER billentyűt** a parancssorban, és tallózással keresse meg a `score.py` fájlt a `mnist-vscode-docs-sample` könyvtárban.
-1. Adja meg a parancsfájl futtatásához szükséges függőségeket, ha lenyomja az **ENTER billentyűt** a parancssorban, és megkeresi a `env.yml` fájlt a `mnist-vscode-docs-sample` könyvtárban.
+1. Válassza a **Azure Container instances**lehetőséget.
+1. Nevezze el a szolgáltatást "mnist-tensorflow-SVC" néven, majd nyomja le az **ENTER**billentyűt.
+1. Válassza ki a tárolóban futtatni kívánt parancsfájlt az **ENTER billentyű** lenyomásával a beviteli mezőben, és tallózással keresse meg a `score.py` fájlt a `mnist-vscode-docs-sample` könyvtárban.
+1. Adja meg a parancsfájl futtatásához szükséges függőségeket, ha lenyomja az **ENTER billentyűt** a beviteli mezőben, és megkeresi a `env.yml` fájlt a `mnist-vscode-docs-sample` könyvtárban.
 
     A modell konfigurációit tartalmazó fájl a Visual Studio Code-ban jelenik meg, az alábbihoz hasonló tartalommal:
 

@@ -3,12 +3,12 @@ title: Azure Migrate készülék beállítása a VMware-hez
 description: Ismerje meg, hogyan állíthat be egy Azure Migrate készüléket a VMware virtuális gépek felméréséhez és áttelepítéséhez.
 ms.topic: article
 ms.date: 11/18/2019
-ms.openlocfilehash: 139b694bafb9d67192e6f182ff879e86e2b73ce4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: e331d45d3e87f8007642675a0349839e7494958c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291940"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598153"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Készülék beállítása VMware virtuális gépekhez
 
@@ -35,7 +35,7 @@ A készülék beállítása:
 2. A **Gépek felderítése** > **Virtualizáltak a gépek?** területen kattintson az **Igen, a VMware vSphere hipervizorral** lehetőségre.
 3. Kattintson a **Letöltés** gombra az .OVA sablonfájl letöltéséhez.
 
-
+  ![A PETESEJT-fájlok letöltésének kiválasztása](./media/tutorial-assess-vmware/download-ova.png)
 
 ### <a name="verify-security"></a>Biztonság ellenőrzése
 
@@ -45,12 +45,8 @@ A telepítése előtt győződjön meg arról, hogy a petesejtek fájlja biztons
 2. Futtassa a következő parancsot a petesejtek kivonatának létrehozásához:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. A készülék legújabb verziójához a generált kivonatnak meg kell egyeznie ezekkel a beállításokkal.
+3. A készülék legújabb verziójához a generált kivonatnak meg kell egyeznie ezekkel a [beállításokkal](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security).
 
-  **Algoritmus** | **Kivonat értéke**
-  --- | ---
-  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
-  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 
 ## <a name="create-the-appliance-vm"></a>A berendezés virtuális gép létrehozása
@@ -58,6 +54,8 @@ A telepítése előtt győződjön meg arról, hogy a petesejtek fájlja biztons
 Importálja a letöltött fájlt, és hozzon létre egy virtuális gépet.
 
 1. A vSphere Client-konzolon kattintson a **Fájl** > **OVF-sablon telepítése** elemre.
+![OVF-sablon üzembe helyezéséhez használható menüparancsok](./media/tutorial-assess-vmware/deploy-ovf.png)
+
 2. A OVF-sablon központi telepítése varázslóban > **forrás**mezőben határozza meg a petesejt-fájl helyét.
 3. A **név** és **hely**mezőben adjon meg egy rövid nevet a virtuális gép számára. Válassza ki azt a leltár objektumot, amelyben a virtuális gép üzemeltetve lesz.
 5. A **gazdagép/fürt**területen adja meg azt a gazdagépet vagy fürtöt, amelyen a virtuális gép futni fog.
@@ -84,7 +82,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 4. A webalkalmazás-> **Előfeltételek beállítása**lapon tegye a következőket:
     - **Licenc**: fogadja el a licencfeltételeket, és olvassa el a harmadik féltől származó információkat.
     - **Kapcsolat**: az alkalmazás ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel. Ha a virtuális gép proxyt használ:
-        - Kattintson a **Proxybeállítások**elemre, és határozza meg a proxy címe és a figyelő portját http://ProxyIPAddress vagy http://ProxyFQDN formában.
+        - Kattintson a **Proxybeállítások**elemre, és határozza meg a proxy címe és a figyelő portját http://ProxyIPAddress vagy http://ProxyFQDNformában.
         - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
         - Csak a HTTP-proxyk használata támogatott.
     - **Idő szinkronizálása**: az idő ellenőrzése megtörtént. A készüléken az idő, hogy a felderítés megfelelően működjön, szinkronizálva kell lennie az internettel.
@@ -124,7 +122,7 @@ Az alkalmazások, szerepkörök és szolgáltatások felderítéséhez, valamint
 2. Válassza ki az **operációs rendszert**.
 3. Adjon meg egy rövid nevet a hitelesítő adatokhoz.
 4. A **Felhasználónév** és a **jelszó**mezőben olyan fiókot válasszon, amely legalább vendég hozzáféréssel rendelkezik a virtuális gépeken.
-5. Kattintson a **Hozzáadás** parancsra.
+5. Kattintson az **Hozzáadás** parancsra.
 
 Miután megadta a vCenter Server és a virtuális gép hitelesítő adatait (nem kötelező), kattintson a Save (Mentés) gombra, **és indítsa el a felderítést** a helyszíni környezet felderítésének megkezdéséhez.
 

@@ -2,18 +2,15 @@
 title: Azure-on futó Kubernetes oktatóanyag – Alkalmazások skálázása
 description: Ebben az Azure Kubernetes Service-hez (AKS-hez) tartozó oktatóanyagban megismerheti, hogyan skálázhat csomópontokat és podokat a Kubernetesben, és hogyan valósíthatja meg a podok horizontális felskálázását.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 01/14/2019
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b668d2bfecfba53c2a1b0904a8b6b77805ad965b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5335cd2931fee98bb5fa59f0c2bb642a01c296f6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967425"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593240"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service-ben (AKS)
 
@@ -26,7 +23,7 @@ Ha követte az oktatóanyagokat, rendelkezik egy működő Kubernetes-fürttel a
 
 A további oktatóanyagokban az Azure vote alkalmazás új verzióra frissül.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az előző oktatóanyagokban egy alkalmazás egy tároló-rendszerképbe van csomagolva. A rendszerkép fel lett töltve Azure Container Registryba, és létrehozott egy AK-fürtöt. Az alkalmazás ezután üzembe lett helyezve az AK-fürtön. Ha még nem tette meg ezeket a lépéseket, és követni szeretné a lépéseket, kezdje az [1. oktatóanyag – tároló lemezképek létrehozásával][aks-tutorial-prepare-app].
 

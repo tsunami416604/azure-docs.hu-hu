@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: 341bfddb86885df225874100400a854cf12120db
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: aab6a4de7be57df1f691861533a4528a0bcae571
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757799"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605686"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Összetevők és korlátozások Load Balancer
 Azure Load Balancer számos kulcsfontosságú összetevőt tartalmaz a működéséhez.  Ezek az összetevők az előfizetésben a Azure Portal, az Azure CLI vagy a Azure PowerShell használatával konfigurálhatók.  
@@ -73,7 +73,9 @@ További információ: [Azure Load Balancer elosztási módjának konfigurálás
 
 A következő kép a kivonatalapú elosztást szemlélteti:
 
-  ![Kivonatalapú elosztás](./media/load-balancer-overview/load-balancer-distribution.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-distribution.svg" width="512" title="Kivonatalapú elosztás">
+</p>
 
   *Ábra: Kivonatalapú elosztás*
 
@@ -132,9 +134,11 @@ A nyilvános Load Balancer leképezi a nyilvános IP-címet és a bejövő forga
 
 Az alábbi ábra egy elosztott terhelésű végpontot mutat be a webes forgalomhoz, amely a nyilvános és a 80-as TCP-porton három virtuális gép között van megosztva. Ez a három virtuális gép egy elosztott terhelésű készlet részeit képezi.
 
-![Nyilvános Load Balancer-példa](./media/load-balancer-overview/IC727496.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-http.svg" width="256" title="Nyilvános Load Balancer">
+</p>
 
-*Ábra: webes forgalom kiegyensúlyozása nyilvános Load Balancer használatával*
+*Ábra: webes forgalom kiegyensúlyozása nyilvános terheléselosztó használatával*
 
 Az internetes ügyfelek a 80-as TCP-porton lévő webalkalmazás nyilvános IP-címére küldenek webszolgáltatási kéréseket. Azure Load Balancer elosztja a kérelmeket a három virtuális gép között a terheléselosztási készletben. Load Balancer algoritmusokkal kapcsolatos további információkért lásd: [Load Balancer fogalmak](concepts-limitations.md#load-balancer-concepts).
 
@@ -151,7 +155,10 @@ Egy belső Load Balancer a következő típusú terheléselosztásokat teszi leh
 * **Többrétegű alkalmazások esetén**: terheléselosztás az internetre irányuló, többrétegű alkalmazásokhoz, ahol a háttérbeli rétegek nem internetre néznek. A háttérrendszer a forgalmi terheléselosztást igényli az internetre irányuló rétegben. Lásd a következő ábrát.
 * **Üzletági alkalmazásoknál**: Terheléselosztás üzletági alkalmazásokhoz, amelyek további terheléselosztó hardverek vagy szoftverek nélkül üzemelnek az Azure-ban. Ez a forgatókönyv olyan helyszíni kiszolgálókat tartalmaz, amelyek azon számítógépek készletében találhatók, amelyeknek a forgalma elosztott.
 
-![Belső Load Balancer-példa](./media/load-balancer-overview/IC744147.png)
+
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer.svg" width="256" title="Nyilvános Load Balancer">
+</p>
 
 *Ábra: többrétegű alkalmazások terheléselosztása nyilvános és belső Load Balancer használatával*
 

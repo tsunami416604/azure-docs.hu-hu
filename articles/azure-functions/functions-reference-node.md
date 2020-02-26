@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a JavaScript hasz
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: ee6b886c6ed18aad54092005d800b4087280190b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714797"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584489"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -100,7 +100,7 @@ module.exports = async function (context, req) {
 ## <a name="bindings"></a>Kötések 
 A JavaScriptben a [kötések](functions-triggers-bindings.md) konfigurálva és definiálva vannak egy függvény function. JSON fájljában. A függvények számos módon működnek együtt a kötésekkel.
 
-### <a name="inputs"></a>Bevitelek
+### <a name="inputs"></a>Bemenetek
 A bemenet két kategóriára oszlik Azure Functionsban: az egyik az trigger bemenete, a másik pedig a további bemenet. Az trigger és az egyéb bemeneti kötések (`direction === "in"`) a függvények által háromféle módon olvashatók:
  - **_[Ajánlott]_ A függvénynek átadott paraméterek.** A függvénynek a *function. JSON*fájlban megadott sorrendben adják át őket. A *function. JSON* fájlban definiált `name` tulajdonságnak nem kell megegyeznie a paraméter nevével, bár az értéknek kell lennie.
  
@@ -232,7 +232,7 @@ Kiválaszthatja, hogy a `context.binding` objektum helyett a `context.done` met�
 context.bindingData
 ```
 
-Egy elnevezett objektumot ad vissza, amely trigger-metaadatokat és függvény Meghívási adatokat tartalmaz (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Az eseményindító metaadatainak példáját itt tekintheti meg: [példa az Event hub](functions-bindings-event-hubs.md#trigger)-ra.
+Egy elnevezett objektumot ad vissza, amely trigger-metaadatokat és függvény Meghívási adatokat tartalmaz (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Az eseményindító metaadatainak példáját itt tekintheti meg: [példa az Event hub](functions-bindings-event-hubs-trigger.md)-ra.
 
 ### <a name="contextdone-method"></a>Context. Done metódus
 
@@ -418,14 +418,17 @@ A FUNCTIONS_WORKER_PROCESS_COUNT minden olyan gazdagépre vonatkozik, amelyet a 
 
 ## <a name="node-version"></a>Csomópont verziója
 
-A következő táblázat a függvények futtatókörnyezetének egyes főbb verziói által használt Node. js-verziót mutatja be:
+A következő táblázat az operációs rendszer által támogatott Node. js-verziókat jeleníti meg a functions futtatókörnyezet egyes főbb verzióihoz:
 
-| Függvények verziója | Node. js-verzió | 
-|---|---|
-| 1. x | 6.11.2 (a futtatókörnyezet zárolta) |
-| 2. x  | _Aktív LTS_ -és _karbantartási LTS_ Node. js-verziók (~ 10 ajánlott). A verzió megcélzása az Azure-ban a WEBSITE_NODE_DEFAULT_VERSION [alkalmazás beállításának](functions-how-to-use-azure-function-app-settings.md#settings) `~10`re való beállításával.|
+| Függvények verziója | Csomópont verziója (Windows) | Csomópont verziója (Linux) |
+|---|---| --- |
+| 1. x | 6.11.2 (a futtatókörnyezet zárolta) | n/a |
+| 2. x  | ~ 8<br/>~ 10 (ajánlott)<br/>~ 12<sup>*</sup> | ~ 8 (ajánlott)<br/>~ 10  |
+| 3.x | ~ 10<br/>~ 12 (ajánlott)  | ~ 10<br/>~ 12 (ajánlott) |
 
-A futtatókörnyezet által használt aktuális verziót úgy tekintheti meg, ha ellenőrzi a fenti alkalmazás beállítását, vagy kinyomtatja `process.version` bármely függvényből.
+<sup>*</sup> A (z) ~ 12 csomópont jelenleg engedélyezett a functions futtatókörnyezet 2. x verziójában. A legjobb teljesítmény érdekében azonban javasoljuk, hogy a functions Runtime 3. x verzióját használja a ~ 12 csomóponttal. 
+
+A futtatókörnyezet által használt aktuális verziót úgy tekintheti meg, ha ellenőrzi a fenti alkalmazás beállítását, vagy kinyomtatja `process.version` bármely függvényből. A verzió megcélzása az Azure-ban [a WEBSITE_NODE_DEFAULT_VERSION Alkalmazásbeállítások](functions-how-to-use-azure-function-app-settings.md#settings) egy támogatott LTS-verzióra való beállításával, például `~10`.
 
 ## <a name="dependency-management"></a>Függőségkezelés
 Ha a JavaScript-kódban a közösségi kódtárakat szeretné használni, ahogy az az alábbi példában is látható, gondoskodnia kell arról, hogy az Azure-ban minden függőség telepítve legyen az függvényalkalmazás.

@@ -1,5 +1,5 @@
 ---
-title: Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver-on SUSE Linux Enterprise Server a Azure NetApp Files-mel | Microsoft Docs
+title: Azure-beli virtuális gépek magas rendelkezésre állása az SAP NW számára a SLES-ben Azure NetApp Files | Microsoft Docs
 description: Magas rendelkezésre állási útmutató az SAP NetWeaver-hez a SUSE Linux Enterprise Server Azure NetApp Files SAP-alkalmazásokhoz
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: 1a413ce55604ef8b5c3219e8de466fcc23d41bac
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 18aecfc5ea40c8368fbf4d4a07f86e71047265f7
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990941"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598646"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz
 
@@ -102,7 +102,7 @@ Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA
 > Az SAP ASCS/ERS multi-SID fürtszolgáltatása az Azure-beli virtuális gépeken található vendég operációs rendszerként a SUSE Linux rendszerben **nem támogatott**. A többszörös SID-fürtszolgáltatás több SAP ASCS/ERS példány telepítését ismerteti különböző SID-kiszolgálókkal egy pacemaker-fürtben
 
 
-### <a name="ascs"></a>Egy SCS
+### <a name="ascs"></a>(A)SCS
 
 * Előtér-konfiguráció
   * IP-10.1.1.20
@@ -253,7 +253,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
          1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új előtér-IP-készlet nevét (például a **frontend. QAS. ASCS**)
          1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **10.1.1.20**).
-         1. Kattintson az OK gombra
+         1. Kattintson az OK gombra.
       1. A ASCS IP-10.1.1.21
          * Ismételje meg a fenti lépéseket az "a" alatt, és hozzon létre egy IP-címet az ERS számára (például **10.1.1.21** és **frontend. QAS. ERS**)
    1. A háttér-készletek létrehozása
@@ -269,7 +269,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
          1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új állapotadatok (például az **állapot) nevét. QAS. ASCS**)
          1. Válassza a TCP protokollt, a 620**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
-         1. Kattintson az OK gombra
+         1. Kattintson az OK gombra.
       1. Port 621**01** ASCS-eseknél
             * A "c" alatt a fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a ERS számára (például 621**01** és **Health. QAS. ERS**)
    1. Terheléselosztási szabályok
@@ -280,7 +280,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
          1. **Ha portok** kiválasztása
          1. Üresjárati időkorlát 30 percre növelve
          1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
-         1. Kattintson az OK gombra
+         1. Kattintson az OK gombra.
          * A fenti lépések megismétlésével hozzon létre terheléselosztási szabályokat az ERS számára (például **LB). QAS. ERS**)
 1. Ha a forgatókönyvben alapszintű terheléselosztó (belső) szükséges, kövesse az alábbi lépéseket:  
    1. Az előtérbeli IP-címek létrehozása
@@ -288,7 +288,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
          1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új előtér-IP-készlet nevét (például a **frontend. QAS. ASCS**)
          1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **10.1.1.20**).
-         1. Kattintson az OK gombra
+         1. Kattintson az OK gombra.
       1. A ASCS IP-10.1.1.21
          * Ismételje meg a fenti lépéseket az "a" alatt, és hozzon létre egy IP-címet az ERS számára (például **10.1.1.21** és **frontend. QAS. ERS**)
    1. A háttér-készletek létrehozása
@@ -298,13 +298,13 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
          1. Kattintson a virtuális gép hozzáadása elemre.
          1. Válassza ki a ASCS korábban létrehozott rendelkezésre állási készletet 
          1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket.
-         1. Kattintson az OK gombra
+         1. Kattintson az OK gombra.
    1. Az állapot-mintavételek létrehozása
       1. A ASCS 620**00** portja
          1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új állapotadatok (például az **állapot) nevét. QAS. ASCS**)
          1. Válassza a TCP protokollt, a 620**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
-         1. Kattintson az OK gombra
+         1. Kattintson az OK gombra.
       1. Port 621**01** ASCS-eseknél
             * A "c" alatt a fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a ERS számára (például 621**01** és **Health. QAS. ERS**)
    1. Terheléselosztási szabályok
@@ -315,7 +315,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
          1. Tartsa meg a protokoll **TCP**-t, írja be a **3200** portot
          1. Üresjárati időkorlát 30 percre növelve
          1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
-         1. Kattintson az OK gombra
+         1. Kattintson az OK gombra.
       1. További portok a ASCS
          * Ismételje meg a fenti lépéseket a "d" alatt a 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 és TCP ASCS
       1. További portok a ASCS-ESEK számára
@@ -384,13 +384,13 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
 3. **[A]** telepítési állomásnév feloldása
 
-   Használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa a/etc/hosts fájl használatát mutatja be.
+   DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
    Cserélje le az IP-címet és a gazdagépet a következő parancsokra
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Szúrja be a következő sorokat a/etc/hosts. Az IP-cím és az állomásnév módosítása a környezetnek megfelelően   
+   Helyezze be a következő sorokat Hosts. Módosítsa az IP-cím és a környezet megfelelő állomásnév   
 
    <pre><code>
    # IP address of cluster node 1
@@ -763,7 +763,7 @@ A (z) **[a]** előtaggal rendelkező következő elemek a Pas és az AAS esetéb
 
 1. **[A]** operációs rendszer konfigurálása
 
-   Csökkentse a piszkos gyorsítótár méretét. További információ: [alacsony írási teljesítmény a SLES 11/12-kiszolgálókon nagyméretű RAM-mal](https://www.suse.com/support/kb/doc/?id=7010287).
+   A szabálytalan gyorsítótár méretének csökkentésére. További információ: [alacsony írási teljesítmény a SLES 11/12-kiszolgálókon nagyméretű RAM-mal](https://www.suse.com/support/kb/doc/?id=7010287).
 
    <pre><code>
    sudo vi /etc/sysctl.conf
@@ -774,14 +774,14 @@ A (z) **[a]** előtaggal rendelkező következő elemek a Pas és az AAS esetéb
 
 1. **[A]** telepítési állomásnév feloldása
 
-   Használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa a/etc/hosts fájl használatát mutatja be.
+   DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
    Cserélje le az IP-címet és a gazdagépet a következő parancsokra
 
    ```bash
    sudo vi /etc/hosts
    ```
 
-   Szúrja be a következő sorokat a/etc/hosts. Az IP-cím és az állomásnév módosítása a környezetnek megfelelően
+   Helyezze be a következő sorokat Hosts. Módosítsa az IP-cím és a környezet megfelelő állomásnév
 
    <pre><code>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS/SCS

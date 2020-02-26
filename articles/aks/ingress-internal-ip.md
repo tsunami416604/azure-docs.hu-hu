@@ -2,23 +2,20 @@
 title: Bejövő vezérlő létrehozása belső hálózathoz az Azure Kubernetes szolgáltatásban (ak)
 description: Megtudhatja, hogyan telepítheti és konfigurálhatja az NGINX beáramlási vezérlőt egy belső, magánhálózat Azure Kubernetes Service-(ak-) fürtben.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: mlearned
-ms.openlocfilehash: 935b96bd553c9ae73b55086483baa0ea7c4aeaa4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8c3eeaf2f9a92f1be9c691091d8e33d09a60b22d
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615468"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595654"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Bejövő vezérlő létrehozása belső virtuális hálózathoz az Azure Kubernetes szolgáltatásban (ak)
 
 A bejövő vezérlő egy olyan szoftver, amely fordított proxyt, konfigurálható forgalmi útválasztást és TLS-megszakítást biztosít a Kubernetes-szolgáltatásokhoz. A Kubernetes bejövő erőforrásai az egyes Kubernetes-szolgáltatások bejövő szabályainak és útvonalának konfigurálására szolgálnak. A bejövő és a bejövő forgalomra vonatkozó szabályok használatával egyetlen IP-cím segítségével átirányíthatja a forgalmat több szolgáltatásba egy Kubernetes-fürtben.
 
-Ez a cikk bemutatja, hogyan helyezheti üzembe az [NGINX][nginx-ingress] beléptetési vezérlőt egy Azure Kubernetes-szolgáltatási (ak-) fürtben. A bejövő vezérlő belső, magánhálózati virtuális hálózaton és IP-címen van konfigurálva. Nincs engedélyezve külső hozzáférés. Ezután két alkalmazás fut az AK-fürtben, amelyek mindegyike elérhető egyetlen IP-címen keresztül.
+Ez a cikk bemutatja, hogyan helyezheti üzembe az NGINX beléptetési [vezérlőt][nginx-ingress] egy Azure Kubernetes-szolgáltatási (ak-) fürtben. A bejövő vezérlő belső, magánhálózati virtuális hálózaton és IP-címen van konfigurálva. Nincs engedélyezve külső hozzáférés. Ezután két alkalmazás fut az AK-fürtben, amelyek mindegyike elérhető egyetlen IP-címen keresztül.
 
 További lehetőségek:
 
@@ -47,15 +44,15 @@ controller:
       service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 ```
 
-Most telepítse az *Nginx-* beléptetési diagramot a Helm szolgáltatással. Az előző lépésben létrehozott manifest-fájl használatához adja hozzá a `-f internal-ingress.yaml` paramétert. A hozzáadott redundancia érdekében az NGINX bejövő adatkezelők két replikája van telepítve a `--set controller.replicaCount` paraméterrel. Ahhoz, hogy teljes mértékben élvezhesse a bejövő vezérlő replikáit, győződjön meg arról, hogy az AK-fürt több csomópontja van.
+Most telepítse az *Nginx-* beléptetési diagramot a Helm szolgáltatással. Az előző lépésben létrehozott manifest-fájl használatához adja hozzá a `-f internal-ingress.yaml` paramétert. A hozzáadott redundancia érdekében az NGINX bejövő vezérlő két replikája van telepítve a `--set controller.replicaCount` paraméterrel. Ahhoz, hogy teljes mértékben élvezhesse a bejövő vezérlő replikáit, győződjön meg arról, hogy az AK-fürt több csomópontja van.
 
-A bejövő vezérlőt egy Linux-csomóponton is ütemezni kell. A Windows Server-csomópontok (az AK-ban jelenleg előzetes verzióban) nem futtathatják a bejövő vezérlőt. A (z) `--set nodeSelector` paraméter használatával adja meg a csomópont-választót a Kubernetes Scheduler számára, hogy a Linux-alapú csomóponton futtassa az NGINX beáramló vezérlőt.
-
-> [!TIP]
-> A következő példa egy Kubernetes névteret hoz létre a bejövő erőforrások *–* alapszintű forgalomhoz. Szükség szerint adja meg a saját környezetének névterét. Ha az AK-fürt nincs engedélyezve RBAC, adja `--set rbac.create=false` hozzá a parancsot a Helm parancshoz.
+A bejövő vezérlőt egy Linux-csomóponton is ütemezni kell. A Windows Server-csomópontok (az AK-ban jelenleg előzetes verzióban) nem futtathatják a bejövő vezérlőt. A csomópont-választó a `--set nodeSelector` paraméterrel adható meg, hogy a Kubernetes ütemező az NGINX bejövő adatkezelőt Linux-alapú csomóponton futtassa.
 
 > [!TIP]
-> Ha engedélyezni szeretné az [ügyfél forrásának IP-megőrzését][client-source-ip] a fürtben lévő tárolók kéréseire, adja `--set controller.service.externalTrafficPolicy=Local` hozzá a parancsot a Helm install parancshoz. Az ügyfél forrásának IP-címét a kérelem fejlécében tárolja a rendszer az *X által továbbított – esetében*. Ha olyan bejövő adatkezelőt használ, amelyen engedélyezve van az ügyfél forrásának IP-címe, az SSL-továbbítás nem fog működni.
+> A következő példa egy Kubernetes névteret hoz létre a bejövő erőforrások *– alapszintű*forgalomhoz. Szükség szerint adja meg a saját környezetének névterét. Ha az AK-fürt nincs engedélyezve RBAC, adja hozzá a `--set rbac.create=false` a Helm parancshoz.
+
+> [!TIP]
+> Ha engedélyezni szeretné az ügyfél- [forrás IP-megőrzését][client-source-ip] a fürtön lévő tárolók kéréseire, adja hozzá `--set controller.service.externalTrafficPolicy=Local` a Helm install parancshoz. Az ügyfél forrásának IP-címét a kérelem fejlécében tárolja a rendszer az *X által továbbított – esetében*. Ha olyan bejövő adatkezelőt használ, amelyen engedélyezve van az ügyfél forrásának IP-címe, az SSL-továbbítás nem fog működni.
 
 ```console
 # Create a namespace for your ingress resources
@@ -111,9 +108,9 @@ helm install azure-samples/aks-helloworld \
 
 Mindkét alkalmazás már fut a Kubernetes-fürtön. Az egyes alkalmazásokra irányuló forgalom irányításához hozzon létre egy Kubernetes-bejövő erőforrást. A bejövő erőforrás konfigurálja azokat a szabályokat, amelyek átirányítják a forgalmat a két alkalmazás egyikére.
 
-A következő példában a címnek `http://10.240.0.42/` való adatforgalom a nevű `aks-helloworld`szolgáltatáshoz lesz irányítva. A `http://10.240.0.42/hello-world-two` `ingress-demo` rendszer átirányítja a címnek a szolgáltatás felé irányuló forgalmat.
+A következő példában a `http://10.240.0.42/`re irányuló forgalmat a rendszer átirányítja a `aks-helloworld`nevű szolgáltatáshoz. A `http://10.240.0.42/hello-world-two` felé irányuló forgalmat a rendszer átirányítja a `ingress-demo` szolgáltatáshoz.
 
-Hozzon létre egy `hello-world-ingress.yaml` nevű fájlt, és másolja a következő példában YAML.
+Hozzon létre egy `hello-world-ingress.yaml` nevű fájlt, és másolja a következő példában szereplő YAML.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -155,19 +152,19 @@ A beáramló vezérlő útvonalának teszteléséhez keresse meg a két alkalmaz
 kubectl run -it --rm aks-ingress-test --image=debian --namespace ingress-basic
 ```
 
-Telepítés `curl` a pod használatával `apt-get`:
+Telepítse a `curl`t a pod használatával `apt-get`:
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-Most nyissa meg a Kubernetes-bejövő adatkezelő- `curl`vezérlő címeit *http://10.240.0.42* a használatával, például:. Adja meg saját belső IP-címét, ha a beléptetési vezérlőt a cikk első lépésében telepítette.
+Most nyissa meg a Kubernetes bejövő adatkezelője címe `curl`használatával, például *http://10.240.0.42val* . Adja meg saját belső IP-címét, ha a beléptetési vezérlőt a cikk első lépésében telepítette.
 
 ```console
 curl -L http://10.240.0.42
 ```
 
-Nincs további elérési út megadva a címnek, így a bejövő vezérlő alapértelmezett értéke az */* útvonal. A rendszer az első bemutató alkalmazást adja vissza, ahogy az a következő tömörített példában is látható:
+Nincs további elérési út megadva a címnek, így a bejövő vezérlő alapértelmezett értéke a */* útvonal. A rendszer az első bemutató alkalmazást adja vissza, ahogy az a következő tömörített példában is látható:
 
 ```
 $ curl -L 10.240.0.42
@@ -180,7 +177,7 @@ $ curl -L 10.240.0.42
 [...]
 ```
 
-Most adja hozzá a */Hello-World-Two* elérési útját a *http://10.240.0.42/hello-world-two* címnek, például:. A rendszer az egyéni címmel rendelkező második bemutató alkalmazást adja vissza, ahogy az az alábbi tömörített példában is látható:
+Most adja hozzá a */Hello-World-Two* elérési útját a címnek, például *http://10.240.0.42/hello-world-two* . A rendszer az egyéni címmel rendelkező második bemutató alkalmazást adja vissza, ahogy az az alábbi tömörített példában is látható:
 
 ```
 $ curl -L -k http://10.240.0.42/hello-world-two
@@ -213,7 +210,7 @@ helm repo remove azure-samples
 
 ### <a name="delete-resources-individually"></a>Erőforrások egyenkénti törlése
 
-Azt is megteheti, hogy egy részletesebb megközelítéssel törli a létrehozott egyéni erőforrásokat. Sorolja fel `helm list` az paranccsal a Helm kiadásait. Keresse meg az *Nginx-* beáramló és az *AK-HelloWorld*nevű diagramot az alábbi példában látható módon:
+Azt is megteheti, hogy egy részletesebb megközelítéssel törli a létrehozott egyéni erőforrásokat. Sorolja fel a Helm kiadásait az `helm list` paranccsal. Keresse meg az *Nginx-beáramló* és az *AK-HelloWorld*nevű diagramot az alábbi példában látható módon:
 
 ```
 $ helm list
@@ -252,7 +249,7 @@ Végezetül törölheti saját maga is a névteret. Használja a `kubectl delete
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk néhány külső összetevőt tartalmaz az ak-nak. Ha többet szeretne megtudni ezekről az összetevőkről, tekintse meg a következő Project-lapokat:
 

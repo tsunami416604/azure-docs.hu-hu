@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 2983be507fdc40d033623afa37c72eb2507d99ca
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157268"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597168"
 ---
 # <a name="storage-account-overview"></a>Tárfiókok áttekintése
 
@@ -72,7 +72,7 @@ A BlockBlobStorage-fiókok jelenleg nem támogatják a leválasztást a gyakori,
 
 A FileStorage-fiók a prémium fájlmegosztás tárolására és létrehozására szolgáló speciális Storage-fiók. Ez a Storage-fióktípus támogatja a fájlokat, de nem blokkolja a blobokat, hozzáfűzi a blobokat, a blobokat, a táblákat és a várólistákat
 
-A FileStorage-fiókok egyedi teljesítménnyel kapcsolatos jellemzőket kínálnak, például a IOPS-kitörést. A jellemzőkkel kapcsolatos további információkért tekintse meg a fájlok tervezési útmutató [fájlmegosztás teljesítmény szintjei](../files/storage-files-planning.md#file-share-performance-tiers) című szakaszát.
+A FileStorage-fiókok egyedi teljesítmény-dedikált jellemzőket kínálnak, például a IOPS-kitörést. A jellemzőkkel kapcsolatos további információkért tekintse meg a fájlok tervezési útmutató [fájlmegosztás tárolási szintjei](../files/storage-files-planning.md#storage-tiers) című szakaszát.
 
 ## <a name="naming-storage-accounts"></a>Tárolási fiókok elnevezése
 

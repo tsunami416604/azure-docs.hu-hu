@@ -2,18 +2,15 @@
 title: Migrálás az Azure Kubernetes szolgáltatásba (ak)
 description: Migrálás az Azure Kubernetes szolgáltatásba (ak).
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 11/07/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: c4ed78dc9fd277fc61a923364519e338a9f720c2
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: bc96d3e8e5a595c80822065801873a44642be078
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290393"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596844"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrálás az Azure Kubernetes szolgáltatásba (ak)
 
@@ -81,7 +78,7 @@ Előfordulhat, hogy a fürtök áttelepítésekor külső Azure-szolgáltatások
 * Azure Container Registry
 * Log Analytics
 * Application Insights
-* Forgalomkezelő
+* Traffic Manager
 * Tárfiók
 * Külső adatbázisok
 

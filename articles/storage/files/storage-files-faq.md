@@ -3,16 +3,16 @@ title: Gyakori kérdések (GYIK) a Azure Files | Microsoft Docs
 description: Válaszokat talál a Azure Filesekkel kapcsolatos gyakori kérdésekre.
 author: roygara
 ms.service: storage
-ms.date: 02/19/2020
+ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: c6503f2782832b7155c0c081aab9769296e08a8e
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565060"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598187"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Gyakran ismételt kérdések (GYIK) a Azure Filesról
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
@@ -85,7 +85,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 
 * <a id="afs-region-availability"></a>
   a **Azure file Sync támogatott régiókat?**  
-    Az elérhető régiók listája a Azure File Sync tervezési útmutató [régió rendelkezésre állása](storage-sync-files-planning.md#region-availability) szakaszában található. Folyamatosan bővítjük a további régiókat, köztük a nem nyilvános régiókat is.
+    Az elérhető régiók listája a Azure File Sync tervezési útmutató [régió rendelkezésre állása](storage-sync-files-planning.md#azure-file-sync-region-availability) szakaszában található. Folyamatosan bővítjük a további régiókat, köztük a nem nyilvános régiókat is.
 
 * <a id="cross-domain-sync"></a>
   **tartományhoz csatlakoztatott és tartományhoz nem csatlakoztatott kiszolgálók is vannak ugyanabban a szinkronizálási csoportban?**  
@@ -155,13 +155,13 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 
     Ha engedélyezte a Azure Backup a file Sync Managed file shares szolgáltatásban, a fájl ACL-ek továbbra is visszaállíthatók a biztonsági mentés visszaállítási munkafolyamatának részeként. Ez a teljes megosztásra vagy egyedi fájlokra/könyvtárakra is használható.
 
-    Ha pillanatképeket használ a fájl-szinkronizálás által felügyelt fájlmegosztás saját felügyeletű biztonsági mentési megoldásának részeként, akkor előfordulhat, hogy az ACL-ek nem állíthatók be megfelelően az NTFS ACL-re, ha a pillanatképek a 2020. február 24. előtt történtek. Ha ez történik, vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
+    Ha pillanatképeket használ a fájl-szinkronizálás által kezelt fájlmegosztás saját felügyeletű biztonsági mentési megoldásának részeként, akkor előfordulhat, hogy az ACL-ek nem állíthatók be megfelelően az NTFS ACL-re, ha a pillanatképek a 2020. február 24. előtt készültek. Ha ez történik, vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
     
 ## <a name="security-authentication-and-access-control"></a>Biztonság, hitelesítés és hozzáférés-vezérlés
 * <a id="ad-support"></a>
 **a Azure Files által támogatott identitás-alapú hitelesítés és hozzáférés-vezérlés?**  
     
-    Igen, Azure Files támogatja az identitás-alapú hitelesítést és a hozzáférés-vezérlést. Az identitás-alapú hozzáférés-vezérlést kétféleképpen is használhatja: Azure Active Directory Domain Services (Azure AD DS) (GA) vagy Active Directory (AD) (előzetes verzió). Azure Files az Azure AD DS az SMB protokollon keresztüli hitelesítés lehetővé teszi, hogy az Azure AD DS tartományhoz csatlakoztatott Windows virtuális gépek hozzáférjenek a megosztásokhoz, könyvtárakhoz és fájlokhoz az Azure AD hitelesítő adataival. Az AD támogatja a hitelesítést az AD-tartományhoz csatlakoztatott, helyszíni vagy Azure-beli számítógépeken az Azure-fájlmegosztás SMB-kapcsolaton keresztüli eléréséhez. További részletekért lásd: [az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítés támogatásának áttekintése](storage-files-active-directory-overview.md). 
+    Igen, Azure Files támogatja az identitás-alapú hitelesítést és a hozzáférés-vezérlést. Az identitás-alapú hozzáférés-vezérlést kétféleképpen használhatja: Active Directory (AD) (előzetes verzió) vagy Azure Active Directory Domain Services (Azure AD DS) (GA). Az AD támogatja a hitelesítést az AD-tartományhoz csatlakoztatott, helyszíni vagy Azure-beli számítógépeken az Azure-fájlmegosztás SMB-kapcsolaton keresztüli eléréséhez. Azure Files az Azure AD DS az SMB protokollon keresztüli hitelesítés lehetővé teszi, hogy az Azure AD DS tartományhoz csatlakoztatott Windows virtuális gépek hozzáférjenek a megosztásokhoz, könyvtárakhoz és fájlokhoz az Azure AD hitelesítő adataival. További részletekért lásd: [az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítés támogatásának áttekintése](storage-files-active-directory-overview.md). 
 
     A Azure Files két további módszert kínál a hozzáférés-vezérlés kezelésére:
 
@@ -199,14 +199,12 @@ van olyan **REST API-k, amelyek támogatják a beolvasási/beállítási/másol�
 * <a id="ad-multiple-forest"></a>
 **Azure Files ad-hitelesítés támogatja a több erdőt használó ad-környezettel való integrációt?**    
 
-    Azure Files AD-hitelesítés csak az AD tartományi szolgáltatás azon erdőjét integrálja, amelyhez a Storage-fiók regisztrálva van. Egy másik AD-erdő hitelesítésének támogatásához a környezetnek megfelelően kell konfigurálnia az erdőszintű megbízhatóságot. Azure Files a regisztráció egy AD tartományi szolgáltatásba, amely általában azonos a normál fájlkiszolgálón, ahol az AD-fiókot hoz létre a hitelesítéshez. Az egyetlen különbség, hogy a Storage-fiók regisztrált SPN-je "file.core.windows.net" értékkel végződik, amely nem felel meg a tartomány utótagjának.
-
-    Tekintse meg a tartományi rendszergazdát, és ellenőrizze, hogy szükséges-e a DNS-útválasztási házirend frissítése a több erdős hitelesítés engedélyezéséhez.
+    Azure Files AD-hitelesítés csak az AD tartományi szolgáltatás azon erdőjét integrálja, amelyhez a Storage-fiók regisztrálva van. Egy másik AD-erdő hitelesítésének támogatásához a környezetnek megfelelően kell konfigurálnia az erdőszintű megbízhatóságot. Az Active Directory tartományi szolgáltatásokhoz való Azure Files regisztrációja általában azonos a normál fájlkiszolgálón, ahol identitást (számítógép vagy szolgáltatás bejelentkezési fiókját) hoz létre az AD-ben a hitelesítéshez. Az egyetlen különbség, hogy a Storage-fiók regisztrált SPN-je "file.core.windows.net" értékkel végződik, amely nem felel meg a tartomány utótagjának. Tekintse meg a tartományi rendszergazdát, és ellenőrizze, hogy szükséges-e a DNS-útválasztási házirend frissítése a különböző tartományi utótag miatti több erdős hitelesítés engedélyezéséhez.
 
 * <a id=""></a>
 **milyen régiók érhetők el Azure Files ad-hitelesítéshez (előzetes verzió)?**
 
-    A részletekért tekintse meg az [ad regionális elérhetőségét](storage-files-active-directory-domain-services-enable.md#regional-availability) ismertető témakört.
+    A részletekért tekintse meg az [ad regionális elérhetőségét](storage-files-identity-auth-active-directory-enable.md#regional-availability) ismertető témakört.
 
 * <a id="ad-aad-smb-afs"></a>
 **kihasználható Azure Files Azure AD DS Authentication vagy Active Directory (ad) hitelesítés (előzetes verzió) a Azure file Sync által felügyelt fájlmegosztás esetén?**
@@ -347,7 +345,7 @@ Mennyibe **kerül a pillanatképek megosztása?**
 
 * <a id="need-larger-share"></a>
 **milyen méretek érhetők el az Azure file shares szolgáltatásban?**  
-    Az Azure fájlmegosztás mérete (prémium és standard) akár 100 TiB-ra is méretezhető. A standard szinthez tartozó nagyobb fájlmegosztás előkészítéséhez tekintse meg a bevezetési útmutató a további [fájlmegosztás (standard szint)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) című szakaszát.
+    Az Azure fájlmegosztás mérete (prémium és standard) akár 100 TiB-ra is méretezhető. A standard szinthez tartozó nagyobb fájlmegosztás előkészítéséhez tekintse meg a bevezetési útmutató a további [fájlmegosztás (standard szint)](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) című szakaszát.
 
 * <a id="lfs-performance-impact"></a>
 **kibővíti a fájlmegosztás kvótáját a számítási feladatokra vagy a Azure file Syncra?**

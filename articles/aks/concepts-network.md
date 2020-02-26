@@ -1,18 +1,15 @@
 ---
 title: Fogalmak – hálózatkezelés az Azure Kubernetes Servicesben (ak)
 description: Ismerje meg a hálózatkezelést az Azure Kubernetes szolgáltatásban (ak), beleértve a kubenet és az Azure CNI hálózatkezelését, a bejövő vezérlőket, a terheléselosztó és a statikus IP-címeket.
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.custom: fasttrack-edit
-ms.author: mlearned
-ms.openlocfilehash: 06825f184365cfc439167be15580eb19bf5ecb38
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5800254ab44b5b0f1048ce2200f90c06a8d1666a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084280"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596164"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) futó alkalmazások hálózati fogalmai
 

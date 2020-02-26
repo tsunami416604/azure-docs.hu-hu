@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 8b1e4c60e6054141e71d2509fe34c7ca9baf9ca6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163194"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598459"
 ---
 # <a name="import-data-module"></a>Adatmodul importálása
 
@@ -48,9 +48,7 @@ Ha a forrásadatok megváltoznak, frissítheti az adatkészletet, és új adatok
 
 1. Adja hozzá az **adatimportálási** modult a folyamathoz. Ezt a modult a tervező **adatbevitel és kimenet** kategóriájában találja.
 
-1. Az adatforrás varázsló használatával történő konfigurálásához kattintson az **adatimportálás indítása varázsló** elemre.
-
-    A varázsló lekéri a fiók nevét és a hitelesítő adatokat, és segítséget nyújt más beállítások konfigurálásához. Ha meglévő konfigurációt szerkeszt, először az aktuális értékeket tölti be.
+1. Válassza ki a modult a jobb oldali ablaktábla megnyitásához.
 
 1. Válassza **az adatforrás lehetőséget, majd**válassza ki az adatforrás típusát. Ez lehet HTTP vagy adattár.
 
@@ -60,6 +58,11 @@ Ha a forrásadatok megváltoznak, frissítheti az adatkészletet, és új adatok
 
     ![Importálás – adatelőnézet](media/module/import-data.png)
 
+1. A **kimenet újragenerált**jelölőnégyzete határozza meg, hogy végrehajtja-e a modult a kimenet újralétrehozásához a futási időben. 
+
+    Alapértelmezés szerint nincs kiválasztva, ami azt jelenti, hogy ha a modult korábban ugyanazokkal a paraméterekkel hajtották végre, a rendszer a legutóbbi futtatásból a futási idő csökkentése érdekében újra fogja használni a kimenetet. 
+
+    Ha be van jelölve, a rendszer ismét végrehajtja a modult a kimenet újralétrehozásához. Ezért válassza ezt a lehetőséget, ha a tárterületen alapuló adatokat frissíti a rendszer, így a legfrissebb adatokat is beolvashatja.
 
 
 1. A folyamat futtatása.

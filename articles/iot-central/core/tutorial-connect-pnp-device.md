@@ -8,16 +8,21 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: af588db37970ee890b8640e45a98f8a1782c332b
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 84db3996b49a95d1ef6a9f1e80299605cc31d669
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500508"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602593"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Oktatóanyag: eszköz-képesség modell használata IoT Plug and Play (előzetes verzió) eszköz létrehozásához és a IoT Central alkalmazáshoz csatlakoztatásához
 
 Az _eszköz képességi modellje_ (DCM) a [IoT Plug and Play (előzetes verzió)](../../iot-pnp/overview-iot-plug-and-play.md) eszköz képességeit ismerteti. IoT Central a DCM használatával létrehozhat egy eszköz sablont és vizualizációkat az eszközhöz, amikor az eszköz az első alkalommal csatlakozik.
+
+A [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) támogatása előzetes verzióban érhető el, és csak a kiválasztott régiókban támogatott.
+
+> [!NOTE]
+> Forduljon a technikai támogatási szolgálathoz, és hozzon létre egy előnézeti alkalmazást, amely támogatja a IoT Plug and Play-eszközök használatát.
 
 Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 

@@ -3,12 +3,12 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup-jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 5c43efc8d61d7aa6c8fc94c6c39294d744cd6b87
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: cefe81e53e89b8d7903469e836f3c5d2665febea
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501120"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582704"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -41,11 +41,11 @@ Alapértelmezés szerint a LA munkaterületen tárolt adat 30 napig tart. Ha hos
 
 Azure Resource Manager erőforrások, például Recovery Services-tárolók, rögzítik az ütemezett műveletekkel és a felhasználó által aktivált műveletekkel kapcsolatos információkat diagnosztikai adatként. 
 
-A Recovery Services-tároló figyelés szakaszában válassza a **diagnosztikai beállítások** elemet, és adja meg a Recovery Services tároló diagnosztikai adataihoz tartozó célt. [További információ a diagnosztikai események használatáról](https://aka.ms/AzureBackupDiagnosticDocs).
+A Recovery Services-tároló figyelés szakaszában válassza a **diagnosztikai beállítások** elemet, és adja meg a Recovery Services tároló diagnosztikai adataihoz tartozó célt. [További információ a diagnosztikai események használatáról](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events).
 
 ![Diagnosztikai beállítások panel](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-A Azure Backup beépített Azure Policy is biztosít, amely automatizálja az adott hatókörben lévő összes tároló diagnosztikai beállításainak konfigurációját. A következő cikkből megtudhatja, hogyan használhatja ezt a házirendet: tár [diagnosztikai beállításainak konfigurálása nagy méretekben](https://aka.ms/AzureBackupDiagnosticsPolicyDocs)
+A Azure Backup beépített Azure Policy is biztosít, amely automatizálja az adott hatókörben lévő összes tároló diagnosztikai beállításainak konfigurációját. A következő cikkből megtudhatja, hogyan használhatja ezt a házirendet: tár [diagnosztikai beállításainak konfigurálása nagy méretekben](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 3. **Jelentések megtekintése a Azure Portalon:**
 
@@ -53,7 +53,7 @@ Ha úgy konfigurálta a tárolókat, hogy az adatait a LA-nek küldje, tekintse 
 
 ![Tár irányítópultja](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
 
-A hivatkozásra kattintva megnyílik a biztonsági mentési jelentés munkafüzete. 
+A hivatkozásra kattintva megnyílik a biztonsági mentési jelentés munkafüzete.
 
 > [!NOTE]
 > Jelenleg a jelentés kezdeti terhelése akár 1 percet is igénybe vehet.

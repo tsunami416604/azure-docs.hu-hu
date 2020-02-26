@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 5b496523f6205532ea7a4278671e3be6986935a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1034eb47010da2b0e795ee8c79646f06151cac1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355286"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603279"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center javaslatok használata a biztonság növelése érdekében
 A biztonsági szabályzat konfigurálásával, majd a Azure Security Center által biztosított javaslatok végrehajtásával csökkentheti a jelentős biztonsági események esélyét. Ebből a cikkből megtudhatja, hogyan használhatja a biztonsági házirendeket és javaslatokat a Security Center a biztonsági támadások enyhítése érdekében. 
@@ -28,14 +28,14 @@ Security Center automatikusan folyamatos vizsgálatokat futtat az Azure-erőforr
 - Az operációs rendszer biztonsági konfigurációs javaslatai 48 órán belül frissülnek
 - A Endpoint Protection kapcsolatos javaslatok 8 órán belül frissülnek
 
-## <a name="scenario"></a>Alkalmazási helyzet
+## <a name="scenario"></a>Forgatókönyv
 Ebből a forgatókönyvből megtudhatja, Security Center Hogyan csökkentheti a biztonsági incidensek esélyét a Security Center javaslatok figyelésével és a műveletek elvégzésével. A forgatókönyv a Security Center [tervezési és üzemeltetési útmutatóban](security-center-planning-and-operations-guide.md#security-roles-and-access-controls)ismertetett fiktív vállalatot, contosot és szerepköröket használja. Ebben a forgatókönyvben a következő personák szerepköreire koncentrálunk:
 
 ![Forgatókönyv szerepkörei](./media/security-center-using-recommendations/scenario-roles.png)
 
 A contoso nemrég áttelepített néhány helyszíni erőforrást az Azure-ba. A contoso szeretné megóvni erőforrásaikat, és csökkenti a felhőben lévő erőforrásaik sebezhetőségét.
 
-## <a name="use-azure-security-center"></a>Az Azure Security Center használata
+## <a name="use-azure-security-center"></a>Azure Security Center használata
 David, a contoso informatikai biztonsága már kiválasztotta a Security Center a contoso előfizetéseit, hogy Azure Security Center a biztonsági rések megelőzése és észlelése érdekében. 
 
 Security Center automatikusan elemzi a contoso Azure-erőforrásainak biztonsági állapotát, és alkalmazza az alapértelmezett biztonsági házirendeket. Ha Security Center felismeri a lehetséges biztonsági réseket, a biztonsági házirendben beállított vezérlők alapján **javaslatokat** hoz létre. 

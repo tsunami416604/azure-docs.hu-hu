@@ -3,19 +3,19 @@ title: VMware-Migrálás támogatása Azure Migrateban
 description: További információ a VMware virtuális gépek áttelepítésének támogatásáról Azure Migrateban.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: e5a2f40611f6b358a8b5ff1dfb99cadebae4fab6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: eea2ef1f84e5c31dd18ea4ef65ccf2796231352b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77013994"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597983"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-Migrálás támogatási mátrixa
 
 Ez a cikk a VMware virtuális gépek [Azure Migrate: kiszolgáló áttelepítéssel](migrate-services-overview.md#azure-migrate-server-migration-tool) történő áttelepítésére vonatkozó támogatási beállításokat és korlátozásokat foglalja össze. Ha a VMware virtuális gépeknek az Azure-ba való áttelepítésre való vizsgálatával kapcsolatos információkat keres, tekintse át az [értékelés támogatási mátrixát](migrate-support-matrix-vmware.md).
 
 
-## <a name="migration-options"></a>Áttelepítési beállítások
+## <a name="migration-options"></a>Áttelepítési lehetőségek
 
 A VMware virtuális gépeket több módon is áttelepítheti:
 
@@ -35,7 +35,7 @@ Tekintse át [ezt a cikket](server-migrate-overview.md) , hogy kiderítse, melyi
 --- | ---
 **VMware vCenter Server** | 5,5, 6,0, 6,5 vagy 6,7.
 **VMware vSphere ESXI-gazdagép** | 5,5, 6,0, 6,5 vagy 6,7.
-**engedélyek vCenter Server** | Az ügynök nélküli áttelepítés az áttelepítési [készüléket](migrate-appliance.md)használja. A készüléknek ezekre az engedélyekre van szüksége:<br/><br/> - **adattár. Tallózás**: engedélyezi a virtuális gépek naplófájljainak böngészését a pillanatképek létrehozásával és törlésével kapcsolatos hibák megoldásához.<br/><br/> **Adattár. LowLevelFileOperations**: olvasási/írási/törlési/átnevezési műveletek engedélyezése az adattár böngészőben a pillanatképek létrehozásához és törléséhez.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: engedélyezheti vagy letilthatja a virtuálisgép-lemezek módosításának nyomon követését, így a pillanatképek között megváltoztathatja az adatblokkokat.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: a virtuális gép lemez-címbérleti műveleteinek engedélyezése a lemez olvasásához a VMware vSphere Virtual Disk Development Kit (VDDK) használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowReadOnlyDiskAccess**: lehetővé teszi a lemez megnyitását egy virtuális gépen, hogy beolvassa a lemezt a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowVirtualMachineDownload**: engedélyezi az olvasási műveleteket a virtuális géphez társított fájlokon, letölti a naplókat, és hiba esetén hibaelhárítást végez.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: lehetővé teszi a virtuális gépek pillanatképek létrehozását és kezelését a replikáláshoz.<br/><br/> - **virtuális gép. interakció.** kikapcsolás: lehetővé teszi, hogy a virtuális gép ki legyen kapcsolva az Azure-ba való áttelepítés során.
+**engedélyek vCenter Server** | Az ügynök nélküli áttelepítés az áttelepítési [készüléket](migrate-appliance.md)használja. A készüléknek ezekre az engedélyekre van szüksége:<br/><br/> - **adattár. Tallózás**: engedélyezi a virtuális gépek naplófájljainak böngészését a pillanatképek létrehozásával és törlésével kapcsolatos hibák megoldásához.<br/><br/> - **adattár. LowLevelFileOperations**: olvasási/írási/törlési/átnevezési műveletek engedélyezése az adattár böngészőben a pillanatképek létrehozásához és törléséhez.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: engedélyezheti vagy letilthatja a virtuálisgép-lemezek módosításának nyomon követését, így a pillanatképek között megváltoztathatja az adatblokkokat.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: a virtuális gép lemez-címbérleti műveleteinek engedélyezése a lemez olvasásához a VMware vSphere Virtual Disk Development Kit (VDDK) használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowDiskAccess**: (kifejezetten a vSphere 6,0-es és újabb verziók esetében) lehetővé teszi, hogy a virtuális gép lemezét véletlenszerű olvasási hozzáféréssel lehessen megnyitni a LEMEZEN a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowReadOnlyDiskAccess**: lehetővé teszi a lemez megnyitását egy virtuális gépen, hogy beolvassa a lemezt a VDDK használatával.<br/><br/>- **VirtualMachine. kiépítés. AllowVirtualMachineDownload**: engedélyezi az olvasási műveleteket a virtuális géphez társított fájlokon, letölti a naplókat, és hiba esetén hibaelhárítást végez.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: lehetővé teszi a virtuális gépek pillanatképek létrehozását és kezelését a replikáláshoz.<br/><br/> - **virtuális gép. interakció.** kikapcsolás: lehetővé teszi, hogy a virtuális gép ki legyen kapcsolva az Azure-ba való áttelepítés során.
 
 
 
@@ -129,7 +129,7 @@ Amikor beállítja a replikációs berendezést az Azure Migrate központban meg
 
 **Eszköz** | **Kapcsolat**
 --- | ---
-VG | A virtuális gépeken futó mobilitási szolgáltatás a replikációs felügyelet érdekében a HTTPS 443 bejövő porton keresztül kommunikál a helyszíni replikációs berendezéssel (konfigurációs kiszolgálóval).<br/><br/> A virtuális gépek replikációs adatküldést küldenek a folyamat-kiszolgálónak (amely a konfigurációs kiszolgáló gépen fut) a HTTPS 9443 bejövő porton. Ez a port módosítható.
+Virtuális gépek | A virtuális gépeken futó mobilitási szolgáltatás a replikációs felügyelet érdekében a HTTPS 443 bejövő porton keresztül kommunikál a helyszíni replikációs berendezéssel (konfigurációs kiszolgálóval).<br/><br/> A virtuális gépek replikációs adatküldést küldenek a folyamat-kiszolgálónak (amely a konfigurációs kiszolgáló gépen fut) a HTTPS 9443 bejövő porton. Ez a port módosítható.
 Replikációs berendezés | A replikációs berendezés az Azure-ba irányuló replikációt a HTTPS 443 kimenő porton keresztül hangolja össze.
 Kiszolgáló feldolgozása | A Process Server replikációs adatokat fogad, optimalizálja és titkosítja, majd az Azure Storage-ba küldi az 443-as porton keresztül.<br/> Alapértelmezés szerint a Process Server fut a replikációs berendezésen.
 
@@ -146,7 +146,7 @@ Operációsrendszer-lemezek száma | 1 | Az ellenőrzés sikertelen, ha nem tám
 Adatlemezek száma | 64 vagy kevesebb. | Az ellenőrzés sikertelen, ha nem támogatott.
 Adatlemez mérete | Legfeljebb 4 095 GB | Az ellenőrzés sikertelen, ha nem támogatott.
 Hálózati adapterek | Több adapter is támogatott. |
-Megosztott virtuális merevlemez | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
+Megosztott VHD | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
 FC-lemez | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
 BitLocker | Nem támogatott. | A számítógép replikálásának engedélyezése előtt le kell tiltani a BitLockert.
 a virtuális gép neve | 1 – 63 karakter.<br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A gép nevének betűvel vagy számmal kell kezdődnie és végződnie. |  Frissítse az értéket a Site Recovery számítógép tulajdonságai között.

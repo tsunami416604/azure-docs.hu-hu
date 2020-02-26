@@ -3,7 +3,7 @@ title: Mi az az Azure Sentinel? | Microsoft Docs
 description: Tudjon meg többet az Azure Sentinelről, annak főbb képességeiről és működéséről.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 10cce91a-421b-4959-acdf-7177d261f6f2
@@ -15,13 +15,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
-ms.author: rkarlin
-ms.openlocfilehash: 5f3a8fa7b9619958db1d7213236e27d00b417c54
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.author: yelevin
+ms.openlocfilehash: 7d0f246a96072a6e433b0762256467f1c20a45fe
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939116"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581718"
 ---
 # <a name="what-is-azure-sentinel"></a>Mi az Azure Sentinel?
 
@@ -59,7 +59,7 @@ Miután az [adatforrásokat](quickstart-onboard.md) az Azure Sentinel szolgál
 
 A zaj csökkentése és a riasztások számának csökkentése érdekében az Azure Sentinel az elemzések segítségével összekapcsolja a [riasztásokat az incidensekkel](tutorial-detect-threats-built-in.md). Az **incidensek** a kapcsolódó riasztások csoportjai, amelyek együttesen a megvizsgálható és oldható fenyegetést jelenthetnek. Használhatja a beépített korrelációs szabályokat, vagy kiindulási pontként használhatja a saját létrehozásához. Az Azure Sentinel gépi tanulási szabályokat is biztosít a hálózat működésének feltérképezéséhez, majd az erőforrások közötti rendellenességek kereséséhez. Ezek az elemzések összekapcsolják a pontokat a különböző entitások alacsony hűséggel kapcsolatos riasztásait a lehetséges magas szintű biztonsági incidensekkel.
 
-![Események](./media/tutorial-investigate-cases/incident-severity.png)
+![Incidensek](./media/tutorial-investigate-cases/incident-severity.png)
 
 
 ## <a name="security-automation--orchestration"></a>Biztonsági automatizálás &

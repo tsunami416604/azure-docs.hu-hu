@@ -2,17 +2,14 @@
 title: Statikus IP-cím és DNS-címke használata az Azure Kubernetes Service (ak) terheléselosztó használatával
 description: Ismerje meg, hogyan hozhat létre és használhat statikus IP-címet az Azure Kubernetes Service (ak) terheléselosztó használatával.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 11/06/2019
-ms.author: mlearned
-ms.openlocfilehash: 5e1f88e82d994c7f912b21781271448d35b5d726
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: d5177494ecdd112342b2cd719e9305bfab97902c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77558905"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593597"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statikus nyilvános IP-cím és DNS-címke használata az Azure Kubernetes Service (ak) terheléselosztó használatával
 
@@ -154,7 +151,7 @@ Events:
   Warning  CreatingLoadBalancerFailed  6s (x2 over 12s)  service-controller  Error creating load balancer (will retry): Failed to create load balancer for service default/azure-load-balancer: user supplied IP Address 40.121.183.52 was not found
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazásokra irányuló hálózati forgalom további szabályozása érdekében érdemes lehet [egy bejövő vezérlőt létrehozni][aks-ingress-basic]. Egy [statikus nyilvános IP-címmel rendelkező bejövő vezérlőt is létrehozhat][aks-static-ingress].
 

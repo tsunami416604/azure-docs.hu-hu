@@ -3,16 +3,15 @@ title: Azure NetApp Files integrálása az Azure Kubernetes szolgáltatással
 description: Ismerje meg, hogyan integrálható Azure NetApp Files az Azure Kubernetes Service-szel
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
-ms.openlocfilehash: 84192a831e3b1f24e20eb07a6c8695516c28970f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 42985e57d63c01553532928b2ba04ed5ee3dd8fb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329330"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596640"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files integrálása az Azure Kubernetes szolgáltatással
 
@@ -24,7 +23,7 @@ Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtr
 > [!IMPORTANT]
 > Az AK-fürtnek olyan régióban is kell lennie [, amely támogatja a Azure NetApp Files][anf-regions].
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A verzió megkereséséhez futtassa a `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ### <a name="limitations"></a>Korlátozások
 
@@ -33,7 +32,8 @@ A Azure NetApp Files használatakor a következő korlátozások érvényesek:
 * Azure NetApp Files csak [a kiválasztott Azure-régiókban][anf-regions]érhető el.
 * Azure NetApp Files használata előtt hozzáférést kell biztosítania a Azure NetApp Files szolgáltatáshoz. A hozzáférésre való jelentkezéshez használhatja a [Azure NetApp Files várólista-beküldési űrlapot][anf-waitlist]. A Azure NetApp Files szolgáltatás addig nem érhető el, amíg nem kapja meg a hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól.
 * A Azure NetApp Files szolgáltatást ugyanabban a virtuális hálózatban kell létrehozni, mint az AK-fürtöt.
-* Csak a Azure NetApp Files statikus kiépítés támogatott az AK-ban.
+* Egy AK-fürt kezdeti üzembe helyezése után a Azure NetApp Files csak a statikus kiépítés támogatott.
+* Ha Azure NetApp Files használatával szeretne dinamikus kiépíteni, telepítse és konfigurálja a [NetApp Trident](https://netapp-trident.readthedocs.io/) 19,07-es vagy újabb verzióját.
 
 ## <a name="configure-azure-netapp-files"></a>Azure NetApp Files konfigurálása
 
@@ -49,7 +49,7 @@ az provider register --namespace Microsoft.NetApp --wait
 > [!NOTE]
 > Ez hosszabb időt is igénybe vehet.
 
-Amikor létrehoz egy Azure NetApp-fiókot az AK-val való használatra, létre kell hoznia a fiókot a **csomópont** -erőforráscsoporthoz. Először kérje le az erőforráscsoport nevét az az [az AK show][az-aks-show] paranccsal, és adja hozzá a `--query nodeResourceGroup` lekérdezési paramétert. A következő példa lekéri a *myAKSCluster* nevű AK-fürthöz tartozó csomópont-erőforráscsoportot az erőforráscsoport neve *myResourceGroup*:
+Amikor létrehoz egy Azure NetApp-fiókot az AK-val való használatra, létre kell hoznia a fiókot a **csomópont** -erőforráscsoporthoz. Először kérje le az erőforráscsoport nevét az az [AK show][az-aks-show] paranccsal, és adja hozzá a `--query nodeResourceGroup` Query paramétert. A következő példa lekéri a *myAKSCluster* nevű AK-fürthöz tartozó csomópont-erőforráscsoportot az erőforráscsoport neve *myResourceGroup*:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -57,7 +57,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Hozzon létre egy Azure NetApp Files fiókot a **csomópont** -erőforráscsoport és az AK-fürttel azonos régióban az [az netappfiles Account Create][az-netappfiles-account-create]paranccsal. A következő példa létrehoz egy *myaccount1* nevű fiókot a *MC_myResourceGroup_myAKSCluster_eastus* erőforráscsoport és a *eastus* régiójában:
+Hozzon létre egy Azure NetApp Files fiókot a **csomópont** -erőforráscsoport és az AK-fürttel azonos régióban az [az netappfiles Account Create][az-netappfiles-account-create]paranccsal. A következő példa létrehoz egy *myaccount1* nevű fiókot a *MC_myResourceGroup_myAKSCluster_eastus* erőforráscsoporthoz és a *eastus* régióban:
 
 ```azure-cli
 az netappfiles account create \
@@ -143,7 +143,7 @@ $ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $AN
 }
 ```
 
-Hozzon létre egy `pv-nfs.yaml` PersistentVolume definiálásával. Cserélje le a `path` értéket a *creationToken* és a `server` értékre az előző parancs *IP* -címe alapján. Példa:
+Hozzon létre egy `pv-nfs.yaml` a PersistentVolume definiálásával. Cserélje le a `path`t a *creationToken* és a `server` az *IP* -cím elemre az előző parancsban. Például:
 
 ```yaml
 ---
@@ -175,7 +175,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>A PersistentVolumeClaim létrehozása
 
-Hozzon létre egy `pvc-nfs.yaml` PersistentVolume definiálásával. Példa:
+Hozzon létre egy `pvc-nfs.yaml` a PersistentVolume definiálásával. Például:
 
 ```yaml
 apiVersion: v1
@@ -205,7 +205,7 @@ kubectl describe pvc pvc-nfs
 
 ## <a name="mount-with-a-pod"></a>Csatlakoztatás Pod-mel
 
-Hozzon létre egy `nginx-nfs.yaml` értéket a PersistentVolumeClaim használó Pod definiálásával. Példa:
+Hozzon létre egy `nginx-nfs.yaml`, amely a PersistentVolumeClaim használó Pod-t határozza meg. Például:
 
 ```yaml
 kind: Pod
@@ -241,7 +241,7 @@ Ellenőrizze, hogy *fut* -e a pod a [kubectl leíró][kubectl-describe] parancs 
 kubectl describe pod nginx-nfs
 ```
 
-Ellenőrizze, hogy a kötet csatlakoztatva van-e a pod-hoz a [kubectl exec][kubectl-exec] használatával, majd `df -h` parancs megadásával ellenőrizze, hogy a kötet csatlakoztatva van-e.
+Ellenőrizze, hogy a kötet csatlakoztatva van-e a pod-ban a [kubectl exec][kubectl-exec] használatával a pod-hoz való csatlakozáshoz, majd `df -h` annak ellenőrzéséhez, hogy a kötet csatlakoztatva van-e.
 
 ```console
 $ kubectl exec -it nginx-nfs -- bash
@@ -253,7 +253,7 @@ Filesystem             Size  Used Avail Use% Mounted on
 ...
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure NetApp Filesről: [Mi az Azure NetApp Files][anf]. További információ az NFS-sel való használatáról: [NFS (hálózati fájlrendszer) Linux Server-kötet létrehozása és használata az Azure Kubernetes szolgáltatással (ak)][aks-nfs].
 

@@ -3,12 +3,12 @@ title: A DPM-munkaterhelések biztonsági mentése a PowerShell használatával
 description: Megtudhatja, hogyan helyezheti üzembe és kezelheti Data Protection Manager (DPM) Azure Backup a PowerShell használatával
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: d3a8b2ff95957b69bab4932ce8a7e5a1ab4bfa44
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: cd735406a19ca1e03f520f75a7d2f39322725b8d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172406"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583096"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése DPM-kiszolgálókon a PowerShell-lel
 
@@ -117,7 +117,7 @@ Az ügynök megjelenik a telepített programok listájában. A telepített progr
 
 ![Ügynök telepítve](./media/backup-dpm-automation/installed-agent-listing.png)
 
-### <a name="installation-options"></a>Telepítési beállítások
+### <a name="installation-options"></a>Telepítési lehetőségek
 
 A parancssorban elérhető összes lehetőség megtekintéséhez használja a következő parancsot:
 
@@ -154,7 +154,7 @@ $credsfilename
 C:\downloads\testvault\_Sun Apr 10 2016.VaultCredentials
 ```
 
-A DPM-kiszolgálón futtassa a [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) parancsmagot a gép a tárolóban való regisztrálásához.
+A DPM-kiszolgálón futtassa a [Start-OBRegistration](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obregistration?view=winserver2012-ps) parancsmagot a gép a tárolóban való regisztrálásához.
 
 ```powershell
 $cred = $credspath + $credsfilename
@@ -171,13 +171,13 @@ Machine registration succeeded.
 
 ### <a name="initial-configuration-settings"></a>Kezdeti konfigurációs beállítások
 
-Ha a DPM-kiszolgáló regisztrálva van a Recovery Services-tárolóban, az alapértelmezett előfizetési beállításokkal kezdődik. Ezek az előfizetési beállítások közé tartoznak a hálózatkezelés, a titkosítás és az átmeneti környezet. Az előfizetési beállítások módosításához először a [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) parancsmag használatával kell beolvasnia a meglévő (alapértelmezett) beállításokat a következővel:
+Ha a DPM-kiszolgáló regisztrálva van a Recovery Services-tárolóban, az alapértelmezett előfizetési beállításokkal kezdődik. Ezek az előfizetési beállítások közé tartoznak a hálózatkezelés, a titkosítás és az átmeneti környezet. Az előfizetési beállítások módosításához először a [Get-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) parancsmag használatával kell beolvasnia a meglévő (alapértelmezett) beállításokat a következővel:
 
 ```powershell
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-A rendszer minden módosítást végrehajt a helyi PowerShell-objektumon ```$setting```, majd a teljes objektum elkötelezett a DPM és a Azure Backup a [set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) parancsmag használatával történő mentéshez. A módosítások megőrzése érdekében a ```–Commit``` jelzőt kell használnia. A rendszer nem alkalmazza a beállításokat, és nem használja a Azure Backup, hacsak nincs véglegesítve.
+A rendszer minden módosítást végrehajt a helyi PowerShell-objektumon ```$setting```, majd a teljes objektum elkötelezett a DPM és a Azure Backup a [set-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) parancsmag használatával történő mentéshez. A módosítások megőrzése érdekében a ```–Commit``` jelzőt kell használnia. A rendszer nem alkalmazza a beállításokat, és nem használja a Azure Backup, hacsak nincs véglegesítve.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -185,7 +185,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="networking"></a>Hálózat
 
-Ha a DPM-gép a Azure Backup szolgáltatáshoz való kapcsolódása egy proxykiszolgálón keresztül történik, akkor a sikeres biztonsági mentéshez meg kell adni a proxykiszolgáló beállításait. Ezt a ```-ProxyServer```és a ```-ProxyPort```, a ```-ProxyUsername``` és a ```ProxyPassword``` paraméterekkel végezheti el a [set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) parancsmag használatával. Ebben a példában nincs proxykiszolgáló, ezért explicit módon töröljük a proxyval kapcsolatos információkat.
+Ha a DPM-gép a Azure Backup szolgáltatáshoz való kapcsolódása egy proxykiszolgálón keresztül történik, akkor a sikeres biztonsági mentéshez meg kell adni a proxykiszolgáló beállításait. Ezt a ```-ProxyServer```és a ```-ProxyPort```, a ```-ProxyUsername``` és a ```ProxyPassword``` paraméterekkel végezheti el a [set-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) parancsmag használatával. Ebben a példában nincs proxykiszolgáló, ezért explicit módon töröljük a proxyval kapcsolatos információkat.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
@@ -199,7 +199,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="configuring-the-staging-area"></a>Az átmeneti környezet konfigurálása
 
-A DPM-kiszolgálón futó Azure Backup ügynöknek ideiglenes tárterületre van szüksége a felhőből visszaállított adatokról (helyi átmeneti terület). Konfigurálja az előkészítési körzetet a [set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) parancsmag és a ```-StagingAreaPath``` paraméter használatával.
+A DPM-kiszolgálón futó Azure Backup ügynöknek ideiglenes tárterületre van szüksége a felhőből visszaállított adatokról (helyi átmeneti terület). Konfigurálja az előkészítési körzetet a [set-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) parancsmag és a ```-StagingAreaPath``` paraméter használatával.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -StagingAreaPath "C:\StagingArea"
@@ -234,20 +234,20 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 Ebben a szakaszban egy üzemi kiszolgálót fog hozzáadni a DPM, majd az adatvédelmet a helyi DPM-tárolóba, majd Azure Backup. A példákban bemutatjuk, hogyan lehet biztonsági másolatot készíteni a fájlokról és mappákról. A logika egyszerűen bővíthető a DPM által támogatott adatforrások biztonsági mentéséhez. Az összes DPM biztonsági mentést egy olyan védelmi csoport (PG) szabályozza, amely négy részből áll:
 
-1. A **csoporttagok** az összes olyan védhető objektum (más néven *adatforrások* a DPM) listája, amelyeket a védelemmel ellátott csoportban kíván védelemmel ellátni. Előfordulhat például, hogy egy védelmi csoportba tartozó üzemi virtuális gépeket szeretne védelemmel ellátni, és egy másik védelmi csoportban lévő adatbázisokat SQL Server, mivel azok eltérő biztonsági mentési követelményekkel rendelkezhetnek. Mielőtt biztonsági mentést szeretne készíteni egy üzemi kiszolgáló adatforrásáról, győződjön meg arról, hogy a DPM-ügynök telepítve van a kiszolgálón, és felügyeli a DPM. Kövesse a DPM- [ügynök telepítésének](https://technet.microsoft.com/library/bb870935.aspx) és a megfelelő DPM-kiszolgálóhoz való csatolásának lépéseit.
+1. A **csoporttagok** az összes olyan védhető objektum (más néven *adatforrások* a DPM) listája, amelyeket a védelemmel ellátott csoportban kíván védelemmel ellátni. Előfordulhat például, hogy egy védelmi csoportba tartozó üzemi virtuális gépeket szeretne védelemmel ellátni, és egy másik védelmi csoportban lévő adatbázisokat SQL Server, mivel azok eltérő biztonsági mentési követelményekkel rendelkezhetnek. Mielőtt biztonsági mentést szeretne készíteni egy üzemi kiszolgáló adatforrásáról, győződjön meg arról, hogy a DPM-ügynök telepítve van a kiszolgálón, és felügyeli a DPM. Kövesse a DPM- [ügynök telepítésének](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2007/bb870935(v=technet.10)) és a megfelelő DPM-kiszolgálóhoz való csatolásának lépéseit.
 2. Az **adatvédelmi módszer** megadja a cél biztonsági mentési helyeit – szalag, lemez és felhő. A példánkban a helyi lemezre és a felhőbe is biztosítjuk az adatvédelmet.
 3. Egy **biztonsági mentési ütemezés** , amely meghatározza, hogy mikor kell a biztonsági mentést készíteni, és milyen gyakran kell szinkronizálni az adatokat a DPM-kiszolgáló és az üzemi kiszolgáló között.
 4. Egy **adatmegőrzési ütemterv** , amely meghatározza, hogy mennyi ideig kell megőrizni a helyreállítási pontokat az Azure-ban.
 
 ### <a name="creating-a-protection-group"></a>Védelmi csoport létrehozása
 
-Először hozzon létre egy új védelmi csoportot a [New-DPMProtectionGroup](https://technet.microsoft.com/library/hh881722) parancsmag használatával.
+Először hozzon létre egy új védelmi csoportot a [New-DPMProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/new-dpmprotectiongroup?view=systemcenter-ps-2019) parancsmag használatával.
 
 ```powershell
 $PG = New-DPMProtectionGroup -DPMServerName " TestingServer " -Name "ProtectGroup01"
 ```
 
-A fenti parancsmag létrehoz egy *ProtectGroup01*nevű védelmi csoportot. Egy meglévő védelmi csoport később is módosítható a biztonsági mentés Azure-felhőbe való hozzáadásához. Ahhoz azonban, hogy a védelmi csoport módosításait – új vagy meglévő – a [Get-DPMModifiableProtectionGroup](https://technet.microsoft.com/library/hh881713) parancsmag használatával egy *módosítható* objektumhoz kell beszereznie a leírót.
+A fenti parancsmag létrehoz egy *ProtectGroup01*nevű védelmi csoportot. Egy meglévő védelmi csoport később is módosítható a biztonsági mentés Azure-felhőbe való hozzáadásához. Ahhoz azonban, hogy a védelmi csoport módosításait – új vagy meglévő – a [Get-DPMModifiableProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmmodifiableprotectiongroup?view=systemcenter-ps-2019) parancsmag használatával egy *módosítható* objektumhoz kell beszereznie a leírót.
 
 ```powershell
 $MPG = Get-ModifiableProtectionGroup $PG
@@ -262,13 +262,13 @@ Minden DPM-ügynök ismeri azon a kiszolgálón lévő adatforrások listáját,
 3. A kiszolgálón található összes adatforrás listájának beolvasása.
 4. Válasszon ki egy vagy több adatforrást, és vegye fel őket a védelmi csoportba.
 
-Azon kiszolgálók listáját, amelyeken a DPM-ügynök telepítve van, és a DPM-kiszolgáló felügyeli, a [Get-DPMProductionServer](https://technet.microsoft.com/library/hh881600) parancsmaggal szerezheti be. Ebben a példában a (z) *productionserver01* nevű PS-t fogjuk szűrni és konfigurálni a biztonsági mentéshez.
+Azon kiszolgálók listáját, amelyeken a DPM-ügynök telepítve van, és a DPM-kiszolgáló felügyeli, a [Get-DPMProductionServer](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) parancsmaggal szerezheti be. Ebben a példában a (z) *productionserver01* nevű PS-t fogjuk szűrni és konfigurálni a biztonsági mentéshez.
 
 ```powershell
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}
 ```
 
-Most olvassa be a ```$server``` adatforrások listáját a [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) parancsmag használatával. Ebben a példában a *D:\\* a biztonsági mentéshez konfigurálni kívánt kötetre szűrünk. Ezt az adatforrást Ezután hozzáadja a védelmi csoporthoz az [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) parancsmag használatával. Ne felejtse el használni a *módosítható* védelmi csoport objektumot ```$MPG``` a hozzáadások végrehajtásához.
+Most olvassa be a ```$server``` adatforrások listáját a [Get-DPMDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmdatasource?view=systemcenter-ps-2019) parancsmag használatával. Ebben a példában a *D:\\* a biztonsági mentéshez konfigurálni kívánt kötetre szűrünk. Ezt az adatforrást Ezután hozzáadja a védelmi csoporthoz az [Add-DPMChildDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) parancsmag használatával. Ne felejtse el használni a *módosítható* védelmi csoport objektumot ```$MPG``` a hozzáadások végrehajtásához.
 
 ```powershell
 $DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains "D:\" }
@@ -280,7 +280,7 @@ Ismételje meg ezt a lépést a szükségesnél többször is, amíg hozzá nem 
 
 ### <a name="selecting-the-data-protection-method"></a>Adatvédelmi módszer kiválasztása
 
-Miután hozzáadta az adatforrásokat a védelmi csoporthoz, a következő lépés a védelmi módszer megadása a [set-DPMProtectionType](https://technet.microsoft.com/library/hh881725) parancsmag használatával. Ebben a példában a védelmi csoport a helyi lemez és a felhő biztonsági mentésének beállítása. Az [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732.aspx) parancsmag és az-online jelző használatával is meg kell adnia a felhőben védetté tenni kívánt adatforrást.
+Miután hozzáadta az adatforrásokat a védelmi csoporthoz, a következő lépés a védelmi módszer megadása a [set-DPMProtectionType](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmprotectiontype?view=systemcenter-ps-2019) parancsmag használatával. Ebben a példában a védelmi csoport a helyi lemez és a felhő biztonsági mentésének beállítása. Az [Add-DPMChildDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) parancsmag és az-online jelző használatával is meg kell adnia a felhőben védetté tenni kívánt adatforrást.
 
 ```powershell
 Set-DPMProtectionType -ProtectionGroup $MPG -ShortTerm Disk –LongTerm Online
@@ -289,7 +289,7 @@ Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Online
 
 ### <a name="setting-the-retention-range"></a>A megőrzési tartomány beállítása
 
-Állítsa be a biztonsági mentési pontok megőrzését a [set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) parancsmag használatával. Habár a biztonsági mentési ütemterv meghatározása előtt furcsának tűnhet, hogy a ```Set-DPMPolicyObjective``` parancsmag automatikusan beállítja az alapértelmezett biztonsági mentési ütemtervet, amely módosítható. A biztonsági mentési ütemtervet először is be kell állítani, és a megőrzési házirendet követően.
+Állítsa be a biztonsági mentési pontok megőrzését a [set-DPMPolicyObjective](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) parancsmag használatával. Habár a biztonsági mentési ütemterv meghatározása előtt furcsának tűnhet, hogy a ```Set-DPMPolicyObjective``` parancsmag automatikusan beállítja az alapértelmezett biztonsági mentési ütemtervet, amely módosítható. A biztonsági mentési ütemtervet először is be kell állítani, és a megőrzési házirendet követően.
 
 Az alábbi példában a parancsmag beállítja a lemezes biztonsági mentések megőrzési paramétereit. Ez 10 napig megőrzi a biztonsági mentéseket, és 6 óránként szinkronizálja az adatokat az üzemi kiszolgáló és a DPM-kiszolgáló között. A ```SynchronizationFrequencyMinutes``` nem határozza meg, hogy a rendszer milyen gyakran hozza létre a biztonsági mentési pontokat, de milyen gyakran történik az Adatmásolás a DPM-kiszolgálóra.  Ez a beállítás megakadályozza, hogy a biztonsági másolatok túlságosan nagy méretűek legyenek.
 
@@ -297,7 +297,7 @@ Az alábbi példában a parancsmag beállítja a lemezes biztonsági mentések m
 Set-DPMPolicyObjective –ProtectionGroup $MPG -RetentionRangeInDays 10 -SynchronizationFrequencyMinutes 360
 ```
 
-Az Azure-ba irányuló biztonsági mentések esetén (a DPM az őket online biztonsági mentésként hivatkozik). a megőrzési tartományok a [nagyapa-apa-Son séma (GFS) használatával konfigurálhatók a hosszú távú megőrzéshez](backup-azure-backup-cloud-as-tape.md). Ez azt is megteheti, hogy a napi, heti, havi és éves adatmegőrzési házirendeket tartalmazó kombinált adatmegőrzési szabályzatot határoz meg. Ebben a példában egy tömböt hozunk létre, amely a kívánt összetett adatmegőrzési sémát jelképezi, majd a [set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) parancsmag használatával konfigurálja a megőrzési tartományt.
+Az Azure-ba irányuló biztonsági mentések esetén (a DPM az őket online biztonsági mentésként hivatkozik). a megőrzési tartományok a [nagyapa-apa-Son séma (GFS) használatával konfigurálhatók a hosszú távú megőrzéshez](backup-azure-backup-cloud-as-tape.md). Ez azt is megteheti, hogy a napi, heti, havi és éves adatmegőrzési házirendeket tartalmazó kombinált adatmegőrzési szabályzatot határoz meg. Ebben a példában egy tömböt hozunk létre, amely a kívánt összetett adatmegőrzési sémát jelképezi, majd a [set-DPMPolicyObjective](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) parancsmag használatával konfigurálja a megőrzési tartományt.
 
 ```powershell
 $RRlist = @()
@@ -310,7 +310,7 @@ Set-DPMPolicyObjective –ProtectionGroup $MPG -OnlineRetentionRangeList $RRlist
 
 ### <a name="set-the-backup-schedule"></a>A biztonsági mentési ütemterv beállítása
 
-A DPM automatikusan beállítja az alapértelmezett biztonsági mentési ütemtervet, ha a ```Set-DPMPolicyObjective``` parancsmaggal adja meg a védelmi célt. Az alapértelmezett ütemtervek módosításához használja a [Get-DPMPolicySchedule](https://technet.microsoft.com/library/hh881749) parancsmagot, majd a [set-DPMPolicySchedule](https://technet.microsoft.com/library/hh881723) parancsmagot.
+A DPM automatikusan beállítja az alapértelmezett biztonsági mentési ütemtervet, ha a ```Set-DPMPolicyObjective``` parancsmaggal adja meg a védelmi célt. Az alapértelmezett ütemtervek módosításához használja a [Get-DPMPolicySchedule](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmpolicyschedule?view=systemcenter-ps-2019) parancsmagot, majd a [set-DPMPolicySchedule](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyschedule?view=systemcenter-ps-2019) parancsmagot.
 
 ```powershell
 $onlineSch = Get-DPMPolicySchedule -ProtectionGroup $mpg -LongTerm Online
@@ -332,7 +332,7 @@ Tehát ha módosítania kell a heti ütemtervet, a ```$onlineSch[1]```ra kell hi
 
 ### <a name="initial-backup"></a>Kezdeti biztonsági mentés
 
-Amikor első alkalommal készít biztonsági másolatot egy adatforrásról, a DPM-nek létre kell tennie a kezdeti replikát, amely létrehozza az adatforrásnak a DPM-replika kötetén védeni kívánt teljes másolatát. Ez a tevékenység egy adott időpontra ütemezhető, vagy manuálisan is elindítható a [set-DPMReplicaCreationMethod](https://technet.microsoft.com/library/hh881715) parancsmaggal a következő paraméterrel: ```-NOW```.
+Amikor első alkalommal készít biztonsági másolatot egy adatforrásról, a DPM-nek létre kell tennie a kezdeti replikát, amely létrehozza az adatforrásnak a DPM-replika kötetén védeni kívánt teljes másolatát. Ez a tevékenység egy adott időpontra ütemezhető, vagy manuálisan is elindítható a [set-DPMReplicaCreationMethod](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmreplicacreationmethod?view=systemcenter-ps-2019) parancsmaggal a következő paraméterrel: ```-NOW```.
 
 ```powershell
 Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
@@ -340,11 +340,11 @@ Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>DPM-replika méretének módosítása & helyreállítási pont kötete
 
-A DPM-replika kötetét és az árnyékmásolat-kötet méretét a [set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) parancsmaggal is módosíthatja a következő példában látható módon: Get-DatasourceDiskAllocation-DataSource $DS set-DatasourceDiskAllocation-DataSource $DS-ProtectionGroup $mpg-Manual-ReplicaArea (2GB) – ShadowCopyArea (2GB)
+A DPM-replika kötetét és az árnyékmásolat-kötet méretét a [set-DPMDatasourceDiskAllocation](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmdatasourcediskallocation?view=systemcenter-ps-2019) parancsmaggal is módosíthatja a következő példában látható módon: Get-DatasourceDiskAllocation-DataSource $DS set-DatasourceDiskAllocation-DataSource $DS-ProtectionGroup $mpg-Manual-ReplicaArea (2GB) – ShadowCopyArea (2GB)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>A védelmi csoport módosításainak véglegesítése
 
-Végezetül a módosításokat véglegesíteni kell, mielőtt a DPM a biztonsági mentést az új védelmi csoport konfigurációjában. Ezt a [set-DPMProtectionGroup](https://technet.microsoft.com/library/hh881758) parancsmag használatával lehet megvalósítani.
+Végezetül a módosításokat véglegesíteni kell, mielőtt a DPM a biztonsági mentést az új védelmi csoport konfigurációjában. Ezt a [set-DPMProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmprotectiongroup?view=systemcenter-ps-2019) parancsmag használatával lehet megvalósítani.
 
 ```powershell
 Set-DPMProtectionGroup -ProtectionGroup $MPG
@@ -352,7 +352,7 @@ Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 ## <a name="view-the-backup-points"></a>A biztonsági mentési pontok megtekintése
 
-A [Get-DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) parancsmag használatával lekérheti az adatforrások összes helyreállítási pontjának listáját. Ebben a példában a következőket tesszük:
+A [Get-DPMRecoveryPoint](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmrecoverypoint?view=systemcenter-ps-2019) parancsmag használatával lekérheti az adatforrások összes helyreállítási pontjának listáját. Ebben a példában a következőket tesszük:
 
 * beolvassa az összes PGs-t a DPM-kiszolgálón, és egy tömbben tárolja ```$PG```
 * a ```$PG[0]```nak megfelelő adatforrások beolvasása
@@ -370,7 +370,7 @@ Az adatvisszaállítás egy ```RecoverableItem``` objektum és egy ```RecoveryOp
 
 Az alábbi példában bemutatjuk, hogyan állíthatja vissza a Hyper-V rendszerű virtuális gépeket Azure Backupről a biztonsági mentési pontok és a helyreállítás céljának kombinálásával. Ez a példa a következőket tartalmazza:
 
-* Helyreállítási lehetőség létrehozása a [New-DPMRecoveryOption](https://technet.microsoft.com/library/hh881592) parancsmag használatával.
+* Helyreállítási lehetőség létrehozása a [New-DPMRecoveryOption](https://docs.microsoft.com/powershell/module/dataprotectionmanager/new-dpmrecoveryoption?view=systemcenter-ps-2019) parancsmag használatával.
 * A biztonsági mentési pontok tömbjét a ```Get-DPMRecoveryPoint``` parancsmaggal olvashatja be.
 * Válasszon ki egy biztonsági mentési pontot a visszaállításhoz.
 

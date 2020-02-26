@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/10/2019
+ms.date: 02/25/2020
 ms.author: juergent
-ms.openlocfilehash: e7de3e8026b15342c06eff9718242c08d33a53a4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a4b3378909d40fe2b770f70f83054a97f2646bd3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72783787"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602363"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -422,6 +422,9 @@ sudo crm configure property maintenance-mode=false</pre></code>
 ### <a name="configure-azure-load-balancer"></a>Az Azure Load Balancer konfigurálása
 Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) -t használja, majd tegye a következőket:
 
+> [!NOTE]
+> A standard Load Balancer SKU korlátozza a nyilvános IP-címek elérését a Load Balancer alatti csomópontok között. Az [Azure standard Load Balancer az SAP magas rendelkezésre állási forgatókönyvekben való használatával történő Virtual Machines nyilvános végponti kapcsolata](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) című cikk leírja, hogyan engedélyezheti a csomópontok számára a nyilvános IP-címek elérését.
+
 1. Előtér-IP-címkészlet létrehozása:
 
    a. A Azure Portal nyissa meg a Azure Load Balancer, válassza a előtéri **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
@@ -483,7 +486,7 @@ A HADR-konfiguráció elsődleges példányához való kapcsolódáshoz az SAP-a
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/\<SID>/global/db6/db2cli.ini
+/sapmnt/\<SID >/Global/DB6/db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 

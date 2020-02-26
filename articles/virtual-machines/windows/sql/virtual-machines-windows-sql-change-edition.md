@@ -14,12 +14,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7d096f721869e43e9a860733d0f6893f224a6776
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: bd9622d3e34198402bc45e5d855d05b0c8e35eb8
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772571"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605460"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Az SQL Server Edition helyszíni módosítása az Azure-beli virtuális gépen
 
@@ -35,7 +35,7 @@ A SQL Server kiadásának helyben történő megváltoztatásához a következő
 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
 - Az [SQL VM erőforrás-szolgáltatónál](virtual-machines-windows-sql-register-with-resource-provider.md)regisztrált [Windows-SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) .
-- Állítsa be az adathordozót SQL Server **kívánt kiadásával** . A frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) rendelkező ügyfelek a [mennyiségi licencelési központból](https://www.microsoft.com/Licensing/servicecenter/default.aspx)szerezhetik be a telepítési adathordozót. Azok az ügyfelek, akik nem rendelkeznek frissítési garanciával, a kívánt kiadással rendelkező Azure Marketplace SQL Server VM-rendszerkép telepítési adathordozóját használhatják (általában `c:\SQLInstalls`). 
+- Állítsa be az adathordozót SQL Server **kívánt kiadásával** . A frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) rendelkező ügyfelek a [mennyiségi licencelési központból](https://www.microsoft.com/Licensing/servicecenter/default.aspx)szerezhetik be a telepítési adathordozót. Azok az ügyfelek, akik nem rendelkeznek frissítési garanciával, a kívánt kiadással rendelkező Azure Marketplace SQL Server VM-rendszerkép telepítési adathordozóját használhatják (általában `C:\SQLServerFull`). 
 
 
 ## <a name="upgrade-an-edition"></a>Kiadás frissítése
@@ -77,7 +77,7 @@ A SQL Server kiadásának visszaminősítése után módosítsa a Azure Portal S
 
 Miután módosította SQL Server kiadását a telepítési adathordozó használatával, és regisztrálta a SQL Server VM az [SQL VM erőforrás-szolgáltatóval](virtual-machines-windows-sql-register-with-resource-provider.md), a Azure Portal használatával módosíthatja a SQL Server VM kiadási tulajdonságát a számlázási célokra. Ehhez kövesse az alábbi lépéseket: 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
 1. Nyissa meg a SQL Server virtuális gép erőforrását. 
 1. A **Beállítások**területen válassza a **Konfigurálás**lehetőséget. Ezután válassza ki az SQL Server kívánt kiadását a **kiadás**alatti legördülő listából. 
 

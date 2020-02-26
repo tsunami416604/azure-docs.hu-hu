@@ -2,17 +2,14 @@
 title: A fürt automéretező használata az Azure Kubernetes szolgáltatásban (ak)
 description: Ismerje meg, hogyan használható a fürt automatikus méretezése, hogy a fürt automatikusan méretezhető legyen az alkalmazások igényeinek kielégítéséhez egy Azure Kubernetes-szolgáltatásbeli (ak-beli) fürtben.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.author: mlearned
-ms.openlocfilehash: 12e5ee1b5c56e642cef117963d7cd879cf9b0633
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 0b94865d81afc56c24d470012c668662f003a1b8
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524288"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596249"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Fürt automatikus méretezése az alkalmazások igényeinek kielégítéséhez az Azure Kubernetes szolgáltatásban (ak)
 

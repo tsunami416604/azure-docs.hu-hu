@@ -4,12 +4,12 @@ description: Azure-beli virtuális gép visszaállítása helyreállítási pont
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: d83c7dae65c214e546cf309bbefe507d3d591a2d
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 05ad6c4eab61ccf5bc0884da63ebda7ba76ac583
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371302"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597558"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure-beli virtuális gépekre vonatkozó Azure Portal visszaállítása
 
@@ -217,7 +217,7 @@ A visszaállítási művelet elindítását követően a Backup szolgáltatás l
 A virtuális gépek visszaállítása után számos dolgot érdemes megjegyezni:
 
 - A biztonsági mentési konfigurációban lévő bővítmények telepítve vannak, de nem engedélyezettek. Ha problémát tapasztal, telepítse újra a bővítményeket.
-- Ha a biztonsági másolatban szereplő virtuális gép statikus IP-címmel rendelkezik, a visszaállított virtuális gép dinamikus IP-címmel fog rendelkezni, hogy elkerülje az ütközést. [Statikus IP-címet adhat hozzá a visszaállított virtuális géphez](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip#how-to-add-a-static-internal-ip-to-an-existing-vm).
+- Ha a biztonsági másolatban szereplő virtuális gép statikus IP-címmel rendelkezik, a visszaállított virtuális gép dinamikus IP-címmel fog rendelkezni, hogy elkerülje az ütközést. [Statikus IP-címet adhat hozzá a visszaállított virtuális géphez](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description).
 - A helyreállított virtuális gépek nem rendelkeznek rendelkezésre állási csoporttal. Ha a lemez visszaállítása lehetőséget használja, [megadhat egy rendelkezésre állási készletet](../virtual-machines/windows/tutorial-availability-sets.md) , ha a megadott sablonnal vagy PowerShell-lel hozza létre a virtuális gépet a lemezről.
 - Ha felhő-init-alapú Linux-disztribúciót, például Ubuntut használ, biztonsági okokból a rendszer letiltja a jelszót a visszaállítás után. A [jelszó alaphelyzetbe állításához](../virtual-machines/linux/reset-password.md)használja a VISSZAÁLLÍTOTT virtuális gép VMAccess bővítményét. Javasoljuk, hogy SSH-kulcsokat használjon ezeken a disztribúciókban, így a visszaállítás után nem kell alaphelyzetbe állítania a jelszót.
 - Ha a virtuális gép a tartományvezérlővel megszakadt kapcsolat miatt nem fér hozzá a virtuális géphez, akkor az alábbi lépéseket követve hozza létre a virtuális gépet:

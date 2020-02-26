@@ -1,15 +1,14 @@
 ---
 author: paulbouwer
-ms.service: container-service
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 2a1249d134c23f47f939913fa1c9887d2a8e1f63
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: b7d832ba375925d30a976dfde63a776b5d0742bb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72600972"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593721"
 ---
 ## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>Töltse le és telepítse a Linkerd Linkerd-ügyfél bináris fájlját
 
@@ -24,7 +23,7 @@ $LINKERD_VERSION="stable-2.6.0"
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github.com/linkerd/linkerd2/releases/download/$LINKERD_VERSION/linkerd2-cli-$LINKERD_VERSION-windows.exe" -OutFile "linkerd2-cli-$LINKERD_VERSION-windows.exe"
 ```
 
-A `linkerd`-ügyfél bináris fájlja fut az ügyfélszámítógépen, és lehetővé teszi a Linkerd szolgáltatás hálójának kezelését. A következő parancsokkal telepítheti a Linkerd `linkerd`-ügyfél bináris fájlját PowerShell-alapú rendszerhéjba Windows rendszeren. Ezek a parancsok a `linkerd`-ügyfél bináris fájljait egy Linkerd mappába másolják, majd azonnal elérhetővé teszik (a jelenlegi rendszerhéjban) és véglegesen (a rendszerhéj újraindításakor) a `PATH` keresztül. A parancsok futtatásához nincs szükség emelt szintű (rendszergazdai) jogosultságokra, és nem kell újraindítani a rendszerhéjat.
+A `linkerd`-ügyfél bináris fájlja fut az ügyfélszámítógépen, és lehetővé teszi a Linkerd szolgáltatás hálójának kezelését. A következő parancsokkal telepítheti a Linkerd `linkerd`-ügyfél bináris fájlját PowerShell-alapú rendszerhéjba Windows rendszeren. Ezek a parancsok a `linkerd`-ügyfél bináris fájljait egy Linkerd mappába másolják, majd azonnal elérhetővé teszik (a jelenlegi rendszerhéjban) és véglegesen (a rendszerhéj újraindításakor) a `PATH`keresztül. A parancsok futtatásához nincs szükség emelt szintű (rendszergazdai) jogosultságokra, és nem kell újraindítani a rendszerhéjat.
 
 ```powershell
 # Copy linkerd.exe to C:\Linkerd

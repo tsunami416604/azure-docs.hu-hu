@@ -2,17 +2,14 @@
 title: Kezelői ajánlott eljárások – alapszintű Scheduler-funkciók az Azure Kubernetes Servicesben (ak)
 description: Az Azure Kubernetes Service (ak) szolgáltatás alapszintű ütemező funkcióinak, például az erőforrás-kvóták és a pod-megszakadási költségvetések használatára vonatkozó ajánlott eljárásainak megismerése
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: mlearned
-ms.openlocfilehash: 3661f435b5c2dd88aa8e17ca396f9af43aea5224
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: cccc476a944b28d24c53a947e434d465c94f94ee
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293606"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594651"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az Azure Kubernetes szolgáltatás alapszintű ütemező funkcióinak használatához (ak)
 

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09c704237e3c1fde8a7591d610d1b801dd016c46
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7ccc5fe314d49ea65aaa8750937170ab79a8c04f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836660"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581463"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -38,7 +38,7 @@ Azure AD B2C az SAML együttműködési képességet kétféleképpen éri el:
 
 A két nem kizárólagos alapszintű forgatókönyvek összefoglalása az SAML használatával:
 
-| Alkalmazási helyzet | Azure AD B2C szerepkör | Útmutató: |
+| Forgatókönyv | Azure AD B2C szerepkör | Használati útmutató |
 | -------- | ----------------- | ------- |
 | Az alkalmazás egy SAML-állítást vár a hitelesítés elvégzéséhez. | **Azure AD B2C identitás-szolgáltatóként (identitásszolgáltató) működik**<br />Azure AD B2C SAML-identitásszolgáltató viselkedik az alkalmazásokban. | Ez a cikk. |
 | A felhasználóknak egyszeri bejelentkezésre van szükségük egy SAML-kompatibilis identitás-szolgáltatóval, például az ADFS, a Salesforce vagy a Shibboleth.  | **Azure AD B2C szolgáltatóként működik (SP)**<br />A Azure AD B2C szolgáltatóként működik, amikor az SAML-identitás szolgáltatóhoz csatlakozik. Ez egy összevonási proxy az alkalmazás és a SAML-identitás szolgáltatója között.  | <ul><li>[Bejelentkezés beállítása SAML-identitásszolgáltató az ADFS-ben egyéni szabályzatok használatával](identity-provider-adfs2016-custom.md)</li><li>[Bejelentkezés beállítása Salesforce SAML-szolgáltatóval egyéni szabályzatok használatával](identity-provider-salesforce-custom.md)</li></ul> |
@@ -259,7 +259,7 @@ A végleges függő entitás házirend-fájljának a következőhöz hasonlóan 
 
 Mentse a módosításokat, és töltse fel az új házirend-fájlt. Miután feltöltötte mindkét szabályzatot (a kiterjesztést és a függő entitás fájljait), nyisson meg egy webböngészőt, és navigáljon a szabályzat metaadataihoz.
 
-A Azure AD B2C szabályzat metaadatai a következő URL-címen érhetők el. Cserélje le a `tenant-name`t a Azure AD B2C bérlő nevére, és `policy-name` a házirend nevét (AZONOSÍTÓját):
+Azure AD B2C Policy IDENTITÁSSZOLGÁLTATÓ metaadatok az SAML-protokollban használt információk, amelyek lehetővé teszik az SAML-identitások szolgáltatójának konfigurálását. A metaadatok határozzák meg a szolgáltatások helyét, például a bejelentkezést és a kijelentkezést, a tanúsítványokat, a bejelentkezési metódusokat és egyebeket. A Azure AD B2C szabályzat metaadatai a következő URL-címen érhetők el. Cserélje le a `tenant-name`t a Azure AD B2C bérlő nevére, és `policy-name` a házirend nevét (AZONOSÍTÓját):
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -269,7 +269,7 @@ Most már készen áll az egyéni házirend-és Azure AD B2C-bérlőre. Ezután 
 
 ### <a name="41-register-your-application-in-azure-active-directory"></a>4,1 az alkalmazás regisztrálása Azure Active Directory
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
 1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.

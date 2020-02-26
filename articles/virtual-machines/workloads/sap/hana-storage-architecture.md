@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/04/2019
+ms.date: 02/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 256aaf94175394fd737e53c6281f2d8b45e8af41
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d25201c8195fa6c4c36e159904b5b71a20a45ea
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099644"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598493"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (nagyméretű példányok) tárolási architektúrája
 
@@ -36,6 +36,8 @@ Tekintse meg az alábbi táblázatot a tárolók kiosztása szempontjából. A t
 | S192 | 4,608 GB | 1 024 GB | 1 536 GB | 1 024 GB |
 | S192m | 11 520 GB | 1 536 GB | 1 792 GB | 1 536 GB |
 | S192xm |  11 520 GB |  1 536 GB |  1 792 GB |  1 536 GB |
+| S224 |  4 224 GB |  512 GB |  1 024 GB |  512 GB |
+| S224m |  8 448 GB |  512 GB |  1 024 GB |  512 GB |
 | S384 | 11 520 GB | 1 536 GB | 1 792 GB | 1 536 GB |
 | S384m | 12 000 GB | 2 050 GB | 2 050 GB | 2 040 GB |
 | S384xm | 16 000 GB | 2 050 GB | 2 050 GB | 2 040 GB |
@@ -72,13 +74,13 @@ Tekintse át a [HLI által támogatott forgatókönyveket](hana-supported-scenar
 
 Több aktív SAP HANA példány is üzemeltethető HANA nagyméretű példány-egységeken. A tárolási Pillanatképek és a vész-helyreállítási funkciók biztosításához a konfigurációhoz egy példány szükséges. A HANA nagyméretű példányai jelenleg a következőképpen oszthatók fel:
 
-- **S72, S72m, S96, S144, S192**: 256 GB-os növekmények esetén 256 GB a legkisebb kezdő egységgel. A különböző növekmények (például 256 GB és 512 GB) kombinálhatók az egység memóriájának maximális értékével.
-- **S144m és S192m**: 256 GB-os növekményekben, 512 GB a legkisebb egységgel. A különböző növekmények (például 512 GB és 768 GB) kombinálhatók az egység memóriájának maximális értékével.
-- **Type II osztály**: 512 GB-onként, a legkisebb kezdő egységgel 2 TB. A különböző növekmények (például 512 GB, 1 TB és 1,5 TB) kombinálhatók az egység memóriájának maximális értékével.
+- **S72, S72m, S96, S144, S192**: 256 GB-onként, 256 GB a legkisebb kezdő egységgel. A különböző növekmények (például 256 GB és 512 GB) kombinálhatók az egység memóriájának maximális értékével.
+- **S144m és S192m**: 256 GB-onként, 512 GB a legkisebb egységgel. A különböző növekmények (például 512 GB és 768 GB) kombinálhatók az egység memóriájának maximális értékével.
+- **II. típus**: 512 GB-onként, a legkisebb kezdő egységgel 2 TB. A különböző növekmények (például 512 GB, 1 TB és 1,5 TB) kombinálhatók az egység memóriájának maximális értékével.
 
 Néhány példa több SAP HANA-példány futtatására a következőhöz hasonló lehet.
 
-| SKU | Memóriaméret | Tároló mérete | Méretek több adatbázissal |
+| SKU | Memória mérete | Tárterület mérete | Méretek több adatbázissal |
 | --- | --- | --- | --- |
 | S72 | 768 GB | 3 TB | 1x768 – GB HANA-példány<br /> vagy 1x512-GB példány + 1x256-GB példány<br /> vagy 3x256-GB példányok | 
 | S72m | 1,5 TB | 6 TB | 3x512GB HANA-példányok<br />vagy 1x512-GB példány + 1x1-TB példány<br />vagy 6x256-GB példányok<br />vagy 1x 1.5 TB-példány | 

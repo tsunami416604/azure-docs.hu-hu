@@ -3,16 +3,15 @@ title: Azure Kubernetes szolgáltatásbeli (ak-) fürt méretezése
 description: Megtudhatja, hogyan méretezheti a csomópontok számát egy Azure Kubernetes-szolgáltatásbeli (ak-) fürtben.
 services: container-service
 author: iainfoulds
-ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 719f45aeeb5c7aa7e9b5e597ed461808c9d2b005
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2071ba93e826fabc4778426e2b4404b7475d1bd2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472588"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594397"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Csomópontok számának skálázása Azure Kubernetes szolgáltatásbeli (ak-) fürtben
 
@@ -72,7 +71,7 @@ A következő példa kimenete azt mutatja, hogy a fürt egy csomópontra való s
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben manuálisan méretezhető egy AK-fürtöt a csomópontok számának növeléséhez vagy csökkentéséhez. A fürt automatikus [méretezésével][cluster-autoscaler] is automatikusan méretezheti a fürtöt.
 

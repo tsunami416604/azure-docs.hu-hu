@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (ak) fürt frissítése
 description: Ismerje meg, hogyan frissíthet egy Azure Kubernetes-szolgáltatási (ak-) fürtöt
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: mlearned
-ms.openlocfilehash: e1ef87471c81fbf0d242837bd94fdc17f686387f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 9acf08765ee42401229bc464b4513856127e9f66
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889403"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592985"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (ak) fürt frissítése
 
@@ -20,7 +17,7 @@ Egy AK-alapú fürt életciklusának részeként gyakran frissítenie kell a leg
 
 A több csomópontot vagy Windows Server-csomópontokat (jelenleg előzetes verzióban) használó AK-fürtök esetében lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ehhez a cikkhez az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 

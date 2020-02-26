@@ -1,35 +1,34 @@
 ---
-title: Ellenőrizze a Kubernetes-üzembehelyezés az Azure-ban az ajánlott eljárások végrehajtásához
-description: Ismerje meg, hogyan ellenőrizheti az üzembe helyezéseket az Azure Kubernetes Service kube-tanácsadó használatáról az ajánlott eljárások végrehajtása
+title: Az Azure-beli Kubernetes-telepítések keresése az ajánlott eljárások megvalósításához
+description: Ismerje meg, hogyan tekintheti meg az Azure Kubernetes Service-ben üzemelő példányok ajánlott eljárásainak megvalósítását az Kube-Advisor használatával
 services: container-service
 author: seanmck
-ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 03c5eb2e32a0a8ec51844511276d9efba5651068
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 29ea7dba1df8bc7c68e3d17563a51b784ce4a561
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "65073761"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595433"
 ---
-# <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Kubernetes-ajánlott eljárások a fürtben lévő keresése
+# <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Kubernetes ajánlott eljárásainak ellenőrzése a fürtben
 
-Nincsenek számos ajánlott eljárásokat, amelyek segítséget a legjobb teljesítmény és rugalmasság, az alkalmazások biztosításához a Kubernetes üzemelő példányok esetében. A kube-advisor eszköz segítségével keressen üzemelő példánya, amely nem a következő ezeket a javaslatokat.
+Az Kubernetes üzemelő példányok esetében számos ajánlott eljárás szükséges, így biztosítható az alkalmazások legjobb teljesítménye és rugalmassága. Az Kube-Advisor eszközzel olyan központi telepítéseket kereshet, amelyek nem követik ezeket a javaslatokat.
 
-## <a name="about-kube-advisor"></a>Kube-advisor szolgáltatásról
+## <a name="about-kube-advisor"></a>Tudnivalók a Kube-Advisor szolgáltatásról
 
-A [kube-advisor eszköz] [ kube-advisor-github] egy egyetlen tároló lehet a fürtön futnak. További információ a központi telepítések Kubernetes API-kiszolgálót és a javasolt javítások készletét adja vissza.
+A [Kube-Advisor eszköz][kube-advisor-github] egyetlen tároló, amely a fürtön való futtatásra lett tervezve. Lekérdezi a Kubernetes API-kiszolgálót az üzemelő példányokkal kapcsolatos információkért, és a javasolt fejlesztéseket adja vissza.
 
-A kube-advisor eszköz jelentései erőforrás kérelem és a hiányzó PodSpecs a Windows-alkalmazások, valamint a Linuxos alkalmazások korlátai, de a kube-advisor eszköz magát egy Linux-pod ütemezése. Egy adott operációs rendszer használatával egy csomópont készleten való futtatáshoz podot ütemezhet egy [csomópont választó] [ k8s-node-selector] a pod-konfigurációban.
+Az Kube-Advisor eszköz jelentést készíthet az erőforrás-kérésekről, valamint a Windows-alkalmazások és a Linux-alkalmazások PodSpecs hiányzó korlátairól, de a Kube-Advisor eszköznek egy linuxos Pod-on kell ütemeznie. Egy Pod-t úgy ütemezhet, hogy egy adott operációs rendszert futtató csomópont-készleten fusson a pod konfigurációjában a [csomópont-választó][k8s-node-selector] használatával.
 
 > [!NOTE]
-> A kube-advisor eszköz támogatja a Microsoft legjobb történik. Hibák és javaslatok kell benyújtani a Githubon.
+> A Kube-Advisor eszközt a Microsoft a legjobb erőfeszítésekkel támogatja. Problémákat és javaslatokat kell benyújtani a GitHubon.
 
-## <a name="running-kube-advisor"></a>Az advisor-kube fut
+## <a name="running-kube-advisor"></a>Kube-Advisor futtatása
 
-Az eszköz futtatásához egy konfigurált fürtön [szerepköralapú hozzáférés-vezérlés (RBAC)](azure-ad-integration.md), az alábbi parancsok használatával. Az első parancs létrehoz egy Kubernetes-szolgáltatásfiókot. A második parancs az eszköz fut egy pod a szolgáltatási fiókot használva, és konfigurálja a pod a törlés után kilép. 
+Az eszköz [szerepköralapú hozzáférés-vezérléshez (RBAC)](azure-ad-integration.md)konfigurált fürtön való futtatásához használja a következő parancsokat. Az első parancs létrehoz egy Kubernetes szolgáltatásfiókot. A második parancs futtatja az eszközt az adott szolgáltatásfiókot használó Pod-ban, és a kilépést követően beállítja a pod-t a törléshez. 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
@@ -37,39 +36,39 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }"
 ```
 
-Az RBAC nem használ, ha módon futtathatja a parancsot:
+Ha nem használja a RBAC-t, a parancsot a következőképpen futtathatja:
 
 ```bash
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never
 ```
 
-Néhány másodpercen belül megtekintheti az egy táblázat megtalálhatja a javítási lehetőségeket az üzemelő példányokhoz.
+Néhány másodpercen belül megjelenik egy táblázat, amely leírja az üzemelő példányok lehetséges fejlesztéseit.
 
-![Az advisor Kube kimenet](media/kube-advisor-tool/kube-advisor-output.png)
+![Kube – Advisor kimenet](media/kube-advisor-tool/kube-advisor-output.png)
 
 ## <a name="checks-performed"></a>Végrehajtott ellenőrzések
 
-Az eszköz többféle Kubernetes ajánlott, amelyek mindegyike saját javasolt szervizelés érvényesíti.
+Az eszköz számos Kubernetes ajánlott eljárást érvényesít, amelyek mindegyike saját javasolt szervizeléssel rendelkezik.
 
-### <a name="resource-requests-and-limits"></a>Erőforrás-kérelmek és korlátozások
+### <a name="resource-requests-and-limits"></a>Erőforrás-kérelmek és-korlátok
 
-Kubernetes támogatja meghatározása [erőforrás-kérelmek, és korlátozza a pod-specifikációk][kube-cpumem]. A kérelem határozza meg a minimális CPU és memória, a tároló futtatásához szükséges. A korlát határozza meg, a maximális CPU és memória forgalomként kell engedélyezni.
+A Kubernetes támogatja [az erőforrás-kérelmek definiálását és a pod-specifikációk korlátozásait][kube-cpumem]. A kérelem meghatározza a tároló futtatásához szükséges minimális PROCESSZORt és memóriát. A korlát határozza meg a maximálisan engedélyezett PROCESSZORt és memóriát.
 
-Alapértelmezés szerint nincs kérések vagy a korlátok a pod-specifikációk vannak beállítva. Ez a csomópont alatt overscheduled és a tárolók folyamatban fogy ki vezethet. A kube-advisor eszköz kiemeli a podok kérelmek nélkül, és a set-korlátok.
+Alapértelmezés szerint a pod-specifikációk nincsenek megadva kérelmek vagy korlátok. Ez vezethet a csomópontok túlütemezett és a tárolók éheznek. A Kube-Advisor eszköz kiemeli a hüvelyeket kérelmek és korlátok nélkül.
 
 ## <a name="cleaning-up"></a>Takarítás
 
-Ha a fürt RBAC engedélyezve van, törölheti is a `ClusterRoleBinding` után az eszköz a következő parancs futtatása után:
+Ha a fürtön engedélyezve van a RBAC, a következő paranccsal törölheti a `ClusterRoleBinding` az eszköz futtatása után:
 
 ```bash
 kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 ```
 
-Ha az eszköz egy fürtöt, amely nem az RBAC-t futtat, nem karbantartása nem szükséges.
+Ha az eszközt olyan fürtön futtatja, amely nem RBAC-kompatibilis, nincs szükség karbantartásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Kubernetes Service szolgáltatással kapcsolatos problémák elhárítása](troubleshooting.md)
+- [Az Azure Kubernetes szolgáltatással kapcsolatos problémák elhárítása](troubleshooting.md)
 
 <!-- RESOURCES -->
 

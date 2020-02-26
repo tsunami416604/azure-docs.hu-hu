@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/21/2020
+ms.date: 02/25/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: abbacf57f6e00411c6041422cfc47e68fd46bb15
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: d6efad8160115347469fb387108812ddc9adecc1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566029"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77601935"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -120,8 +120,17 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 
 ## <a name="change-log"></a>Változásnapló
+- 02/25/2020: az [IBM DB2-LUW magas rendelkezésre állásának megváltozása az Azure-beli virtuális gépeken SUSE Linux Enterprise Server és a pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm) használatával, amely leírja a nyilvános végponthoz való hozzáférést a standard Azure Load balancerrel
+- 02/21/2020: változás a [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , hogy az új ajánlást képviselje a/Hana/Data, és adja hozzá az I/O-ütemező beállítását.
+- 02/21/2020: a HANA nagyméretű példányainak dokumentumaiban bekövetkezett változások a S224 és a S224m újonnan hitelesített SKU-ának felelnek meg
 - 02/21/2020: az Azure-beli [virtuális gépek magas rendelkezésre állásának módosítása az SAP NETWEAVER RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel) és Azure-beli [virtuális gépek magas rendelkezésre ÁLLÁSa a RHEL-hez Azure NetApp Files készült SAP NetWeaver számára a](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) sorba helyezni Server Replication 2 architektúra (ENSA2) architektúrájának módosításához
 - 02/20/2020: az [SAP NetWeaver magas rendelkezésre állásának változása az Azure-beli virtuális gépeken a SLES multi-SID útmutatóban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid) a SUSE multi-SID-fürtre mutató hivatkozás hozzáadásához
+- 02/13/2020: az [Azure Virtual Machines tervezésének és megvalósításának változásai az SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) számára az új dokumentumokra mutató hivatkozások megvalósításához
+- 02/13/2020: új dokumentum SAP számítási feladat hozzáadva [Az Azure-beli virtuális gépek támogatott forgatókönyvéhez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)
+- 02/13/2020: új dokumentum lett hozzáadva, [mely SAP szoftvereket támogatja az Azure-beli üzembe helyezés](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)
+- 02/13/2020: az [IBM DB2-LUW magas rendelkezésre állásának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-ibm-db2-luw) megváltozása Red Hat Enterprise Linux-kiszolgálón lévő Azure-beli virtuális gépeken, a nyilvános végponthoz való hozzáféréshez és a standard Azure Load Balancerhez való hozzáférést leíró dokumentumhoz
+- 02/13/2020: adja hozzá az új virtuálisgép-típusokat az [Microsoft Azure-on futó SAP-tanúsítványokhoz és-konfigurációkhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications) .
+- 02/13/2020: új SAP-támogatás megjegyzései [SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
 - 02/13/2020: az Azure-beli [virtuális gépek magas rendelkezésre állásának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel) megváltozása a RHEL és az Azure-beli virtuális gépek magas rendelkezésre állása esetén az SAP [netweaver számára a Azure NetApp Files RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) -ben a fürt erőforrásainak időtúllépése a Red Hat időtúllépési javaslataihoz
 - 02/11/2020: SAP HANA kiadása az [Azure-beli nagyméretű példányok Azure-ba való áttelepítésének Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration)
 - 02/07/2020: változás a [nyilvános végponti kapcsolaton a virtuális gépekhez az Azure standard ILB használatával SAP ha-forgatókönyvekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) a minta NSG-képernyőkép frissítése
@@ -157,10 +166,5 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 - 08/16/2019: változások a [pacemaker beállítása Red Hat Enterprise Linux az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) , hogy emlékeztesse az ügyfeleket az egyéni szerepkör műveleteinek frissítésére, ha az Azure kerítési ügynök új verziójára frissít.  
 - 08/15/2019: a [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) változásai az ultra Disk (korábban Ultra SSD) általánosan elérhetővé tételének tükrözéséhez
 - 08/01/2019: változások az [Azure-beli SUSE Linux Enterprise Server pacemaker beállításához](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) , hogy integrálják a módosításokat kifejezetten a 15. SLES 
-- 07/23/2019: változások a [fürtben egy SAP ASCS/SCS-példány egy Windows feladatátvevő fürtön egy Azure-beli fájlmegosztás használatával](sap-high-availability-guide-wsfc-file-share.md) , amely a közvetlen tárolóhelyek Azure site Recovery szolgáltatások általi támogatását tükrözi
-- 07/14/2019: [Azure Proximity-elhelyezési csoportok kiadása az optimális hálózati késés érdekében SAP-alkalmazásokkal](sap-proximity-placement-scenarios.md)
-- 07/11/2019: a HANA nagy példányokra kiterjedő különböző dokumentumok változásai a HANA nagy példányok 4. változatának fedezésére
-- 07/09/2019: az IBM DB2 HADR új útmutatójának kiadása a [Red Hat Enterprise Serveren](high-availability-guide-rhel-ibm-db2-luw.md)
-- 06/13/2019: az [SAP NetWeaver magas rendelkezésre állásának kiadása Red Hat Enterprise Linux Azure NETAPP Files SAP-alkalmazásokhoz](high-availability-guide-rhel-netapp-files.md)
 
 

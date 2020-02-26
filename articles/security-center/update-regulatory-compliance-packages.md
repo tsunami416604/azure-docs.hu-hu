@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: f76b5443d6c1e3fd2cebf87cba39ba0a6bbdeaee
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: cfa39799e44cee0a2d36efccd454ccf8ca15157f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521786"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603228"
 ---
 # <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard-preview"></a>Frissítés dinamikus megfelelőségi csomagokra a szabályozási megfelelőségi irányítópulton (előzetes verzió)
 
@@ -65,7 +65,7 @@ A következő lépések azt ismertetik, hogyan adható hozzá a dinamikus csomag
     [![szabályozási megfelelőségi irányítópult a régi és az új Azure CIS-t ábrázolva](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png)](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png#lightbox)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta a következőket:
 
@@ -75,6 +75,5 @@ Ebben a cikkben megtanulta a következőket:
 Más kapcsolódó anyagok esetében tekintse meg a következő cikkeket: 
 
 - [A Security Center szabályozási megfelelőségi irányítópultja](security-center-compliance-dashboard.md)
-- [A biztonsági szabályzatok használata](tutorial-security-policy.md)
+- [Biztonsági szabályzatok használata](tutorial-security-policy.md)
 - [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan használhatók a javaslatok a Azure Security Centerban az Azure-erőforrások védelme érdekében.
-- [Azure Security Center GYIK](security-center-faq.md) – választ kaphat a Security Center használatával kapcsolatos gyakori kérdésekre.

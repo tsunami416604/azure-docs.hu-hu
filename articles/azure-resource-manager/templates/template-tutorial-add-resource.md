@@ -2,15 +2,15 @@
 title: Oktatóanyag – erőforrás hozzáadása sablonhoz
 description: Az első Azure Resource Manager-sablon létrehozásának lépéseit ismerteti. Megismerheti a sablonfájl szintaxisát és a Storage-fiók központi telepítését.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 02/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8686b15501e267ab23efe654d28a3e67369a8d03
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: af571b6503f04c809b62c530f6d6254082b838be
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765590"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586682"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Oktatóanyag: erőforrás hozzáadása a Resource Manager-sablonhoz
 
@@ -26,7 +26,10 @@ A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővít
 
 A Storage-fiók definíciójának meglévő sablonhoz való hozzáadásához tekintse meg a Kiemelt JSON-t a következő példában. A sablon részeinek másolása helyett másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
 
-Cserélje le a **{ad-Unique-Name}** nevet egy egyedi Storage-fiók nevére. A tárfiók nevének egyedinek kell lennie az egész Azure rendszerben. A névnek csak kisbetűvel vagy számmal kell rendelkeznie. Nem lehet hosszabb 24 karakternél. Lehet, hogy megpróbál egy elnevezési mintát használni, például a **store1** előtagként való használatát, majd hozzáadja a monogramját és a mai dátumot. A használt név például a következőhöz hasonló: **store1abc09092019**.
+Cserélje le a **{ad-Unique-Name}** nevet egy egyedi Storage-fiók nevére.
+
+> [!IMPORTANT]
+> A tárfiók nevének egyedinek kell lennie az egész Azure rendszerben. A névnek csak kisbetűvel vagy számmal kell rendelkeznie. Nem lehet hosszabb 24 karakternél. Lehet, hogy megpróbál egy elnevezési mintát használni, például a **store1** előtagként való használatát, majd hozzáadja a monogramját és a mai dátumot. A használt név például a következőhöz hasonló: **store1abc09092019**.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
@@ -58,7 +61,7 @@ A sablont üzembe helyezheti a Storage-fiók létrehozásához. Adjon egy másik
 
 Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -67,7 +70,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile $templateFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -94,7 +97,7 @@ Ez a telepítés hosszabb időt vesz igénybe, mint az üres sablon üzembe hely
 
 A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
 1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
 1. Láthatja, hogy a Storage-fiók telepítve van.

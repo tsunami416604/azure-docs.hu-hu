@@ -2,17 +2,14 @@
 title: Statikus kötet létrehozása több hüvely számára az Azure Kubernetes szolgáltatásban (ak)
 description: Megtudhatja, hogyan hozhat létre manuálisan olyan köteteket, Azure Files amelyekkel több párhuzamos hüvely használható az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: 7b5f7c25cd1627475d8e37a539956f01ae6151ab
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 084ab5cd6736c9148bcab1faf048d3d9081855d4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914020"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596402"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Azure Files megosztással rendelkező kötet manuális létrehozása és használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -20,7 +17,7 @@ A tároló-alapú alkalmazásoknak gyakran kell elérniük és megőrizniük az 
 
 A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-beli alkalmazások tárolási beállításai][concepts-storage].
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
@@ -163,7 +160,7 @@ spec:
 
 Ha 1.8.0-1.8.4-alapú fürtöt használ, a *runAsUser* értékkel megadható egy biztonsági környezet, amely a *0*értékre van állítva. A pod biztonsági környezettel kapcsolatos további információkért lásd: [biztonsági környezet konfigurálása][kubernetes-security-context].
 
-A csatlakoztatási beállítások frissítéséhez hozzon létre egy *azurefile-mount-options-PV. YAML* fájlt egy *PersistentVolume*. Példa:
+A csatlakoztatási beállítások frissítéséhez hozzon létre egy *azurefile-mount-options-PV. YAML* fájlt egy *PersistentVolume*. Például:
 
 ```yaml
 apiVersion: v1
@@ -189,7 +186,7 @@ spec:
   - nobrl
 ```
 
-Hozzon létre egy *azurefile-mount-options-PVC. YAML* fájlt egy olyan *PersistentVolumeClaim* , amely a *PersistentVolume*használja. Példa:
+Hozzon létre egy *azurefile-mount-options-PVC. YAML* fájlt egy olyan *PersistentVolumeClaim* , amely a *PersistentVolume*használja. Például:
 
 ```yaml
 apiVersion: v1
@@ -221,7 +218,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-A tároló specifikációjának frissítésével hivatkozhat a *PersistentVolumeClaim* , és frissítheti a pod-t. Példa:
+A tároló specifikációjának frissítésével hivatkozhat a *PersistentVolumeClaim* , és frissítheti a pod-t. Például:
 
 ```yaml
 ...

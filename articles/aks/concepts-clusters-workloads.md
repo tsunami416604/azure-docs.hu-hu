@@ -2,17 +2,14 @@
 title: Fogalmak – az Azure Kubernetes Services (ak) Kubernetes alapjai
 description: Ismerje meg a Kubernetes alapszintű fürt-és munkaterhelés-összetevőit, valamint azt, hogy azok hogyan kapcsolódnak az Azure Kubernetes szolgáltatás (ak) szolgáltatásaihoz
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: mlearned
-ms.openlocfilehash: 9efd053bde11a29c37e3ff6afb7c6fc4492338db
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967552"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596232"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) Kubernetes alapvető fogalmai
 
@@ -20,7 +17,7 @@ Mivel az alkalmazásfejlesztés egy tároló alapú megközelítés irányába m
 
 Ez a cikk bemutatja a legfontosabb Kubernetes infrastruktúra-összetevőket, például a *vezérlési síkot*, a *csomópontokat*és a *csomópont-készleteket*. A munkaterhelések erőforrásai, például a *hüvelyek*, a *központi telepítések*és a *készletek* , valamint az erőforrások *névterek*szerinti csoportosítása is bevezethető.
 
-## <a name="what-is-kubernetes"></a>Mi a Kubernetes?
+## <a name="what-is-kubernetes"></a>Mi az a Kubernetes?
 
 A Kubernetes egy gyorsan változó platform, amely a tároló-alapú alkalmazásokat és a hozzájuk társított hálózatkezelési és tárolási összetevőket kezeli. A hangsúly az alkalmazás munkaterhelésén, nem pedig az alapul szolgáló infrastruktúra-összetevőkön van. A Kubernetes a központi telepítések deklaratív megközelítését biztosítja, amely az API-k robusztus készletével támogatott a felügyeleti műveletekhez.
 
@@ -106,7 +103,7 @@ A csomópontok teljesítményének és funkcióinak fenntartásához az erőforr
     - a következő 112 GB memória 6%-a (legfeljebb 128 GB)
     - a 128 GB-nál nagyobb memória 2%-a
 
-A memóriára és a CPU-elosztásra vonatkozó fenti szabályok az ügynök csomópontjainak kifogástalan megőrzésére szolgálnak Ezek a kiosztási szabályok azt is okozják, hogy a csomópont kevésbé lefoglalható memóriát és CPU-t jelent, mint a Kubernetes-fürt része. A fenti erőforrás-foglalások nem módosíthatók.
+A memóriára és a CPU-elosztásra vonatkozó fenti szabályok az ügynök csomópontjainak kifogástalan megőrzésére szolgálnak, beleértve a fürt állapotának kritikus fontosságú részét képező üzemeltetési rendszerhüvelyeket is. Ezek a kiosztási szabályok azt is okozják, hogy a csomópont kevésbé lefoglalható memóriát és CPU-t jelent, mint a Kubernetes-fürt része. A fenti erőforrás-foglalások nem módosíthatók.
 
 Ha például egy csomópont 7 GB-ot biztosít, akkor a 750Mi-kiürítési küszöbértéken felül nem foglalható memória 34%-át fogja jelenteni.
 
@@ -148,7 +145,7 @@ spec:
 
 További információ a hüvelyek ütemezésének szabályozásáról: [ajánlott eljárások a speciális Scheduler-funkciókhoz az AK-ban][operator-best-practices-advanced-scheduler].
 
-## <a name="pods"></a>Podok
+## <a name="pods"></a>Hüvely
 
 A Kubernetes *hüvelyek* használatával futtatja az alkalmazás egy példányát. A pod az alkalmazás egy példányát jelöli. A hüvelyek általában egy tárolóval rendelkező 1:1-es hozzárendeléssel rendelkeznek, bár a pod több tárolót is tartalmazhat. Ezek a többtárolós hüvelyek ugyanazon a csomóponton vannak ütemezve, és lehetővé teszik a tárolók számára a kapcsolódó erőforrások megosztását.
 
@@ -224,7 +221,7 @@ Az ilyen típusú alkalmazások kezeléséhez két Kubernetes-erőforrás szüks
 
 ### <a name="statefulsets"></a>StatefulSets
 
-A modern alkalmazásfejlesztés gyakran az állapot nélküli alkalmazások megvalósítását célozza, de a *StatefulSets* állapot-nyilvántartó alkalmazásokhoz, például adatbázis-összetevőket tartalmazó alkalmazásokhoz is használható. Egy StatefulSet hasonló a központi telepítéshez, amely egy vagy több azonos hüvelyt hoz létre és felügyel. A StatefulSet lévő replikák az üzembe helyezés, a méretezés, a frissítések és a megszakítások kecses, szekvenciális megközelítését követik. A StatefulSet az elnevezési konvenció, a hálózati nevek és a tárolók is megmaradnak, mint a replikák.
+A modern alkalmazásfejlesztés gyakran az állapot nélküli alkalmazások megvalósítását célozza, de a *StatefulSets* állapot-nyilvántartó alkalmazásokhoz, például adatbázis-összetevőket tartalmazó alkalmazásokhoz is használható. Egy StatefulSet hasonló a központi telepítéshez, amely egy vagy több azonos hüvelyt hoz létre és felügyel. A StatefulSet lévő replikák az üzembe helyezés, a méretezés, a frissítések és a megszakítások kecses, szekvenciális megközelítését követik. A StatefulSet (mint replikák átütemezett) az elnevezési konvenció, a hálózati nevek és a tárterület megmaradnak.
 
 Az alkalmazást YAML formátumban kell megadni `kind: StatefulSet`használatával, és a StatefulSet vezérlő kezeli a szükséges replikák telepítését és felügyeletét. A rendszer az Azure Managed Disks vagy Azure Files által biztosított állandó tárolóba írja az adattárolást. A StatefulSets esetében a mögöttes állandó tárterület még a StatefulSet törlésekor is marad.
 

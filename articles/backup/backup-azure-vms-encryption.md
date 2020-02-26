@@ -3,12 +3,12 @@ title: Titkosított Azure-beli virtuális gépek biztonsági mentése és vissza
 description: A titkosított Azure-beli virtuális gépek biztonsági mentését és visszaállítását ismerteti a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 754a0899d25f2672c6a66eeafe5013f98b7a8f4d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3719f26211677a1b726d3c3dc1d217fb58db1fb2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513779"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583174"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Titkosított Azure-beli virtuális gép biztonsági mentése és visszaállítása
 
@@ -30,7 +30,7 @@ Az Azure-beli virtuális gépek biztonsági mentését és visszaállítását A
 **Felügyelt** | Igen | Igen
 **Felügyelt**  | Igen | Igen
 
-- További információ az [ade](../security/azure-security-disk-encryption-overview.md), a [Key Vault](../key-vault/key-vault-overview.md)és a [KEK](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/).
+- További információ az [ade](../security/azure-security-disk-encryption-overview.md), a [Key Vault](../key-vault/key-vault-overview.md)és a [KEK](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek/).
 - Olvassa el az Azure-beli virtuális gép lemezének titkosításával kapcsolatos [gyakori kérdéseket](../security/azure-security-disk-encryption-faq.md) .
 
 ### <a name="limitations"></a>Korlátozások
@@ -66,7 +66,7 @@ Emellett van néhány dolog, amit bizonyos esetekben szükség lehet:
 
       ![Forgatókönyv panel](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-5. A **biztonsági mentési szabályzat** > **válassza a biztonsági mentési szabályzat**lehetőséget, majd válassza ki a tárolóhoz társítandó szabályzatot. Ezután kattintson az **OK** gombra.
+5. A **biztonsági mentési szabályzat** > **válassza a biztonsági mentési szabályzat**lehetőséget, majd válassza ki a tárolóhoz társítandó szabályzatot. Végül kattintson az **OK** gombra.
     - A biztonsági mentési szabályzat meghatározza, hogy mikor készüljön biztonsági mentés, és mennyi ideig tárolja a rendszer.
     - Az alapértelmezett házirend részletei megtalálhatók a legördülő menüben.
 
@@ -98,7 +98,7 @@ A kezdeti biztonsági mentés az ütemterv szerint fog futni, de az alábbiak sz
 2. A **biztonsági másolati elemek**területen kattintson az Azure-beli **virtuális gép**elemre.
 3. A **biztonsági mentési elemek** listában kattintson a három pontra (...).
 4. Kattintson a **biztonsági mentés**gombra.
-5. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ezután kattintson az **OK** gombra.
+5. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Végül kattintson az **OK** gombra.
 6. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > a **biztonsági mentési feladatok** > **folyamatban**van. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
 
 ## <a name="provide-permissions"></a>Engedélyek megadása

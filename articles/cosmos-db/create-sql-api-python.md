@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 4b156ad12238e6ab33aaa40283cdd324bddce206
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: d73d85471269bafb6f6d2e080a68f0cab10e3962
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134436"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585968"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók használatával
 
@@ -129,26 +129,27 @@ Az alábbi kódrészletek mind a *cosmos_get_started.* file fájlból származna
 
 * A CosmosClient inicializálva van. Győződjön meg arról, hogy a "végpont" és a "kulcs" értékeket frissíti a [kapcsolódási karakterlánc frissítése](#update-your-connection-string) című szakaszban leírtak szerint. 
 
-    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_cosmos_client)]
+    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="create_cosmos_client":::
 
 * A rendszer létrehozza az új adatbázist.
 
-    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_database_if_not_exists)]
+    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="create_database_if_not_exists":::
 
 * Létrejön egy új tároló, amely a [kiépített átviteli sebesség](request-units.md)400 ru/s. A [partíciós kulcsként](partitioning-overview.md#choose-partitionkey)`lastName` választjuk, ami lehetővé teszi, hogy hatékony lekérdezéseket végezzen a tulajdonság szűrésére. 
 
-    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_container_if_not_exists)]
+    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="create_container_if_not_exists":::
 
 * Egyes elemek hozzá vannak adva a tárolóhoz. A tárolók olyan elemek (JSON-dokumentumok) gyűjteményei, amelyek változatos sémával rendelkezhetnek. A segítő metódusok ```get_[name]_family_item``` Azure Cosmos DB JSON-dokumentumként tárolt családhoz tartozó reprezentációkat adnak vissza.
 
-    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_item)]
+    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="create_item":::
 
 * A pont olvasása (a kulcs értékének keresése) a `read_item` metódus használatával történik. Minden egyes művelet esetében ki kell nyomtatni az [ru díját](request-units.md) .
-    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=read_item)]
+
+    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="read_item":::
 
 * A lekérdezés SQL-lekérdezési szintaxis használatával történik. Mivel a WHERE záradékban a ```lastName``` partíciós kulcsának értékeit használjuk, Azure Cosmos DB a lekérdezéseket hatékonyan irányítja át a megfelelő partíciókhoz, így javul a teljesítmény.
 
-    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=query_items)]
+    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="query_items":::
    
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 

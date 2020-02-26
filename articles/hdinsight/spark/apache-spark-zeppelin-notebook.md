@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e313048986beca1991e38ce2e65ea12f954170d2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484808"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598272"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin notebookok használata Apache Spark-fürttel az Azure HDInsight
 
@@ -150,6 +150,25 @@ A Zeppelin jegyzetfüzetek a fürt átjárócsomópontokkal lesznek mentve. Teh�
 ![Jegyzetfüzet letöltése](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "A jegyzetfüzet letöltése")
 
 Ekkor a rendszer a jegyzetfüzetet JSON-fájlként menti a letöltési helyen.
+
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>A Shiro használata a Zeppelin-tolmácsokhoz való hozzáférés konfigurálásához Enterprise Security Package (ESP) fürtökben
+A fentiekben leírtaknak megfelelően a `%sh` tolmács nem támogatott a HDInsight 4,0-től kezdődően. Továbbá, mivel `%sh` értelmező olyan biztonsági problémákat is bevezet, mint például a parancssori felületi parancsok használatával történő hozzáférés-vezérlés, a HDInsight 3,6 ESP-fürtökből is el lett távolítva. Ez azt jelenti, hogy `%sh` tolmács nem érhető el, ha az **új Megjegyzés létrehozása** vagy a tolmács felhasználói felülete alapértelmezés szerint lehetőségre kattint. 
+
+A Kiemelt jogosultságú tartományi felhasználók a `Shiro.ini` fájlt használhatják a tolmács felhasználói felületéhez való hozzáférés szabályozására. Így csak ezek a felhasználók hozhatnak létre új `%sh` tolmácsokat, és engedélyeket állíthatnak be az egyes új `%sh` tolmácsok számára. A `shiro.ini` fájl használatával történő hozzáférés vezérléséhez kövesse az alábbi lépéseket:
+
+1. Adjon meg egy új szerepkört egy meglévő tartományi csoport neve alapján. A következő példában `adminGroupName` a Kiemelt felhasználók csoportja a HRE-ben. Ne használjon speciális karaktereket vagy szóközöket a csoport nevében. Azok a karakterek, amelyek után a `=` megadja a szerepkör engedélyeit. `*` azt jelenti, hogy a csoport teljes körű engedélyekkel rendelkezik.
+
+    ```
+    [roles]
+    adminGroupName = *
+    ```
+
+2. Adja hozzá az új szerepkört a Zeppelin-tolmácsokhoz való hozzáféréshez. A következő példában a `adminGroupName` összes felhasználója hozzáférést kap a Zeppelin-tolmácsokhoz, és új tolmácsokat tud létrehozni. `roles[]`zárójelek között több szerepkört is beállíthat, vesszővel elválasztva. Ezután a szükséges engedélyekkel rendelkező felhasználók hozzáférhetnek a Zeppelin-tolmácsokhoz.
+
+    ```
+    [urls]
+    /api/interpreter/** = authc, roles[adminGroupName]
+    ```
 
 ## <a name="livy-session-management"></a>Livy munkamenet-kezelés
 

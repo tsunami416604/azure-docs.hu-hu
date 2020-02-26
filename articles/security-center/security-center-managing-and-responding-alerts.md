@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: 46ed2af51f34a25c1cdc1abb6152169feedd989e
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 203e3718cedca693dc029a4ba20a86ca50ab3e32
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666295"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603856"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és reagálás Azure Security Center
 
@@ -40,7 +40,7 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
 
 1. A Security Center irányítópulton tekintse meg a **fenyegetések elleni védelem** csempéjét a riasztások megtekintéséhez és áttekintéséhez.
 
-    ![Biztonsági riasztások csempe a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-dashboard-alert.png)
+    ![A Biztonsági riasztások csempe a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-dashboard-alert.png)
 
 1. A riasztásokkal kapcsolatos további részletek megtekintéséhez kattintson a csempére.
 
@@ -65,7 +65,7 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
     > [!NOTE]
     >Bizonyos esetekben a forrás IP-címe nem érhető el, néhány Windows biztonsági eseménynapló nem tartalmazza az IP-címet.
 
-1. A Security Center által javasolt elhárítási lépések a biztonsági riasztástól függően eltérők lehetnek. Mindegyik riasztásnál kövesse ezeket. Bizonyos esetekben a fenyegetések észlelésével kapcsolatos riasztások enyhítése érdekében előfordulhat, hogy más Azure-vezérlőket vagy-szolgáltatásokat kell használnia az ajánlott szervizelés megvalósításához. 
+1. A Security Center által javasolt szervizelési lépések a biztonsági riasztástól függően változnak. Mindegyik riasztásnál kövesse ezeket. Bizonyos esetekben a fenyegetések észlelésével kapcsolatos riasztások enyhítése érdekében előfordulhat, hogy más Azure-vezérlőket vagy-szolgáltatásokat kell használnia az ajánlott szervizelés megvalósításához. 
 
     Az alábbi témakörök a különböző riasztásokat ismertetik az erőforrástípusok szerint:
     
@@ -78,12 +78,10 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
     * [Szolgáltatási réteggel kapcsolatos riasztások](security-center-alerts-service-layer.md)
     * [Veszélyforrások észlelése az Azure WAF és Azure DDoS Protection](security-center-alerts-integration.md)
     
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 Ebből a dokumentumból megismerte a Security Center biztonsági szabályzatainak konfigurálását. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Azure Security Center biztonsági riasztások](security-center-alerts-overview.md).
 * [Biztonsági incidensek kezelésével](security-center-incident.md)
 * [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md)
-* [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center: Gyakran ismételt kérdések) – Válaszok a szolgáltatás használatára vonatkozó gyakori kérdésekre.
-* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

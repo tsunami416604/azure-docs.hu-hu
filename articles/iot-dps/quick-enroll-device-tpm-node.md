@@ -9,26 +9,26 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 82e78801225659a1d79829a5d26741a885931919
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e21aaa20edf6d3a2f690bf9f77e8c9973a7b1c52
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974750"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604930"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>Gyors útmutató: TPM-eszköz regisztrálása IoT Hub Device Provisioning Service a Node. js szolgáltatás SDK-val
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
-
-Ezek a lépések bemutatják, hogyan hozhat létre egyéni regisztrációt TPM-eszközhöz programozott módon az Azure IoT Hub Device Provisioning Service-be a [Node.js szolgáltatási SDK](https://github.com/Azure/azure-iot-sdk-node), valamint egy Node.js-mintaalkalmazás használatával. Emellett egy szimulált TPM-eszközt is regisztrálhat a kiépítési szolgáltatásba ezzel az egyéni regisztrációs bejegyzéssel. Bár ezek a lépések Windows és Linux rendszerű gépeken is használhatóak, ehhez a cikkhez egy Windows rendszerű fejlesztői gépet fogunk használni.
+Ebben a rövid útmutatóban programozott módon hozzon létre egy egyéni regisztrációt a TPM-eszközhöz az Azure IoT Hub Device Provisioning Service a Node. js szolgáltatási SDK és egy minta Node. js-alkalmazás használatával. Emellett egy szimulált TPM-eszközt is regisztrálhat a kiépítési szolgáltatásba ezzel az egyéni regisztrációs bejegyzéssel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A folytatás előtt végezze el az [IoT Hub Device Provisioning Service az Azure Portallal való beállítását ismertető](./quick-setup-auto-provision.md) szakasz lépéseit. 
--  Győződjön meg arról, hogy a [Node.js 4.0-s vagy újabb verziója](https://nodejs.org) telepítve van a gépén.
-- Ha a rövid útmutató végén szeretne regisztrálni egy szimulált eszközt, kövesse a [szimulált eszköz létrehozásával és](quick-create-simulated-device.md) kiépítésével kapcsolatos lépéseket egészen addig a lépésig, ahol az eszközhöz tartozó záradékot kap. Jegyezze fel a jóváhagyó kulcsot, amelyet később a rövid útmutatóban fog használni. **Ne kövesse az egyéni regisztráció Azure Portallal való létrehozásának lépéseit.**
- 
+- A [IoT hub Device Provisioning Service beállításának befejezése a Azure Portal](./quick-setup-auto-provision.md).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Node. js v 4.0 +](https://nodejs.org). Ez a rövid útmutató telepíti a [Node. js szolgáltatási SDK](https://github.com/Azure/azure-iot-sdk-node) -t alább.
+- Hátirat kulcs (nem kötelező). Kövesse a [szimulált eszköz létrehozása és kiépítése](quick-create-simulated-device.md) a kulcs beszerzése előtt című témakör lépéseit. Ne hozzon létre egyéni regisztrációt a Azure Portal használatával.
+
 ## <a name="create-the-individual-enrollment-sample"></a>Az egyéni regisztrációs minta létrehozása 
 
  
@@ -76,7 +76,7 @@ Ezek a lépések bemutatják, hogyan hozhat létre egyéni regisztrációt TPM-e
        ![A kiépítési szolgáltatás kapcsolati sztringjének lekérése a portálról](./media/quick-enroll-device-tpm-node/get-service-connection-string.png) 
 
 
-2. Emellett az eszköz ellenőrzőkulcsára is szüksége lesz. Ha a [szimulált eszköz létrehozásával és kiépítésével](quick-create-simulated-device.md) kapcsolatos rövid útmutató lépéseit követte a szimulált TPM-eszköz létrehozásához, használja az adott eszközhöz létrehozott kulcsot. Egyéb esetben egyéni regisztrációs minta létrehozásához használhatja a következő, az SDK-hoz mellékelt ellenőrzőkulcsot:
+2. Emellett az eszköz ellenőrzőkulcsára is szüksége lesz. Ha a [szimulált eszköz létrehozásával és kiépítésével](quick-create-simulated-device.md) kapcsolatos rövid útmutató lépéseit követte a szimulált TPM-eszköz létrehozásához, használja az adott eszközhöz létrehozott kulcsot. Egyéb esetben a következő, a [Node. js szolgáltatás SDK](https://github.com/Azure/azure-iot-sdk-node)-hoz mellékelt záradék használatával hozhat létre egyéni regisztrációt:
 
     ```
     AToAAQALAAMAsgAgg3GXZ0SEs/gakMyNRqXXJP1S124GUgtk8qHaGzMUaaoABgCAAEMAEAgAAAAAAAEAxsj2gUScTk1UjuioeTlfGYZrrimExB+bScH75adUMRIi2UOMxG1kw4y+9RW/IVoMl4e620VxZad0ARX2gUqVjYO7KPVt3dyKhZS3dkcvfBisBhP1XH9B33VqHG9SHnbnQXdBUaCgKAfxome8UmBKfe+naTsE5fkvjb/do3/dD6l4sGBwFCnKRdln4XpM03zLpoHFao8zOwt8l/uP3qUIxmCYv9A7m69Ms+5/pCkTu/rK4mRDsfhZ0QLfbzVI6zQFOKF/rwsfBtFeWlWtcuJMKlXdD8TXWElTzgh7JS4qhFzreL0c1mI0GCj+Aws0usZh7dLIVPnlgZcBhgy1SSDQMQ==

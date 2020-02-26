@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 7174003485d51cf582c798c4b18404b1b72de0fb
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 23a00c766dbb38853c57c91e7f59ec364390c44b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530952"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603806"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
@@ -47,7 +47,7 @@ A Security Centerből üzembe helyezett Azure biztonsági megoldások automatiku
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Integrált Azure biztonsági megoldások és egyéb adatforrások kezelése
 
-1. Jelentkezzen be az [Azure portálra](https://azure.microsoft.com/features/azure-portal/).
+1. Jelentkezzen be az [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 
 2. A **Microsoft Azure menüben** válassza a **Security Center** elemet. Megnyílik a **Security Center – Áttekintés** képernyő.
 
@@ -82,7 +82,7 @@ A partneri megoldások állapota a következőket teheti:
    - **Megoldás törlése**.
    - **Konfigurálás**.
 
-   ![Partneri megoldás részletei](./media/security-center-partner-solutions/partner-solutions-detail.png)
+   ![Partnermegoldás részletei](./media/security-center-partner-solutions/partner-solutions-detail.png)
 
 ### <a name="discovered-solutions"></a>Felderített megoldások
 
@@ -113,7 +113,7 @@ Azure Security Center összes eseménye Azure Monitor Azure- [tevékenység napl
 
 A következő szakaszok azt ismertetik, hogyan konfigurálható az Event hub adatfolyamként való továbbítása. A lépések azt feltételezik, hogy már van Azure Security Center konfigurálva az Azure-előfizetésében.
 
-### <a name="high-level-overview"></a>Áttekintés
+### <a name="high-level-overview"></a>Magas szintű áttekintés
 
 ![Magas szintű áttekintés](media/security-center-export-data-to-siem/overview.png)
 
@@ -129,13 +129,13 @@ Mielőtt elkezdené, [hozzon létre egy Event Hubs névteret](../event-hubs/even
 
 #### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Az Azure-tevékenység naplójának továbbítása Event Hubs
 
-Tekintse meg a következő cikk [stream Activity naplóját Event Hubs](../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+Tekintse meg a következő cikk [stream Activity naplóját, hogy Event Hubs](../azure-monitor/platform/activity-logs-stream-event-hubs.md).
 
 #### <a name="install-a-partner-siem-connector"></a>Partner SIEM-összekötő telepítése 
 
 A monitorozási adatait az Azure Monitor segítségével könnyedén integrálhatja a partner SIEM-és figyelési eszközeivel.
 
-A [támogatott Siem](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-platform-logs-sent-to-an-event-hub) -listák listáját a következő cikkben tekintheti meg
+A [támogatott Siem](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)-listák listáját a következő cikkben tekintheti meg.
 
 ### <a name="example-for-querying-data"></a>Példa az adatlekérdezésre 
 
@@ -143,15 +143,13 @@ A [támogatott Siem](../azure-monitor/platform/resource-logs-stream-event-hubs.m
 
 | **A lekérdezés leírása** | **Lekérdezés** |
 |----|----|
-| Minden riasztás| index = fő Microsoft. Security/Locations/riasztások|
+| Minden riasztás| index=main Microsoft.Security/locations/alerts|
 | Műveletek számának összefoglalása a nevük alapján| index = Main forrás típusa = "Adorján: biztonság" \| Table operationName \| stats Count by operationName|
 | Riasztások információinak beolvasása: idő, név, állapot, azonosító és előfizetés | index = fő Microsoft. Security/Locations/riasztások \| tábla \_idő, tulajdonságok. eventName, állapot, tulajdonságok. operationId, am_subscriptionId |
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megismerkedett a partnermegoldások Security Centerrel való integrálásával. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
+Ebben a cikkben megismerkedett a partnermegoldások Security Centerrel való integrálásával. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő cikket:
 
 * [Biztonsági állapot monitorozása a Security Centerben](security-center-monitoring.md). Az Azure-erőforrások állapotának figyelését ismertető útmutató.
-* [Azure Security Center – gyakori kérdések](security-center-faq.md) Választ találhat a Security Center használatával kapcsolatos gyakori kérdésekre.
-* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/). Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

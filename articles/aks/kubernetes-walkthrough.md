@@ -2,11 +2,8 @@
 title: 'Gyors útmutató: Azure Kubernetes Service-fürt üzembe helyezése'
 description: Megtudhatja, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogyan helyezhet üzembe egy alkalmazást, és hogyan figyelheti a teljesítményt az Azure Kubernetes szolgáltatásban (ak) az Azure CLI használatával.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.author: mlearned
 ms.custom:
 - H1Hack27Feb2017
 - mvc
@@ -14,12 +11,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: f7e7804b2fc60976ef0ec9af9dcd22e2a2bd9db0
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 3b4e09bb74b80f10bbc3cf497798f0c31fe51691
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929119"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595280"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Gyors útmutató: Azure Kubernetes Service-fürt üzembe helyezése az Azure CLI használatával
 

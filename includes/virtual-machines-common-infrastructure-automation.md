@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 525eba8a5a4e891526eb32a24287ea3887ee6743
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 9cbc48d8bca2f7491d0464be1c5bd64054927dc9
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474169"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77608740"
 ---
 Hozzon létre, és kezeli az Azure-beli virtuális gépek (VM) egységes módon végrehajtott, ipari méretekben, valamilyen automatizált általában van szükség. Nincsenek számos eszközöket és megoldásokat, amelyek lehetővé teszik a teljes Azure-infrastruktúra üzembe helyezés és felügyelet életciklusának automatizálásához. Ez a cikk egy részét az infrastruktúra automatizálási eszközöket, amelyek is használhatja az Azure-ban mutatja be. Ezek az eszközök általában pontosan a következő módszerek egyikét:
 
@@ -40,7 +40,7 @@ A [Chef](https://www.chef.io/) egy automatizálási platform, amely segít megha
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 - [A Chef automatizálásának üzembe helyezése az Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview).
-- [Telepítse a cheft Windows rendszeren, és hozzon létre Azure virtuális gépeket](../articles/virtual-machines/windows/chef-automation.md).
+- [Telepítse a cheft Windows rendszeren, és hozzon létre Azure virtuális gépeket](../articles/chef/chef-automation.md).
 
 
 ## <a name="puppet"></a>Puppet
@@ -128,7 +128,7 @@ A [Jenkins](https://www.jenkins.io) egy folyamatos integrációs kiszolgáló, a
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [Fejlesztési infrastruktúra létrehozása Linux rendszerű virtuális gépen az Azure-ban a Jenkins, a GitHub és a Docker](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md).
+- [Fejlesztési infrastruktúra létrehozása Linux rendszerű virtuális gépen az Azure-ban a Jenkins, a GitHub és a Docker](../articles/jenkins/tutorial-jenkins-github-docker-cicd.md).
 
 
 ## <a name="next-steps"></a>Következő lépések

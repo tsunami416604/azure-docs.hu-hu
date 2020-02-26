@@ -3,16 +3,15 @@ title: GPU használata az Azure Kubernetes szolgáltatásban (ak)
 description: Ismerje meg, hogyan használhatók a GPU-k nagy teljesítményű számítási vagy grafikus igényű munkaterhelésekhez az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
-ms.openlocfilehash: a68bd124f323225062a86a3e1fc178d2fc089c5d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 9179d8bbf16913b89f7384fcee7519f8a205012b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276018"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595586"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>A GPU használata nagy számítási igényű munkaterhelésekhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -23,7 +22,7 @@ A grafikus feldolgozási egységek (GPU-k) gyakran nagy számítási igényű mu
 
 Jelenleg a GPU-t használó csomópont-készletek használata csak Linux-csomópontos készletek esetén érhető el.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel a GPU-t támogató csomópontokkal. Az AK-fürtnek a 1,10-es vagy újabb Kubernetes kell futnia. Ha szüksége van egy AK-fürtre, amely megfelel ezeknek a követelményeknek, tekintse meg a cikk első szakaszát [egy AK-fürt létrehozásához](#create-an-aks-cluster).
 

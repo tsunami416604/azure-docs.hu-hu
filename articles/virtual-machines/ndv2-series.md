@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 79e7f2a8dad59de4dc9d84a26d24c82889c14c2f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 6c002838d5a4f515a594d61e5137196c4d391795
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493318"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605438"
 ---
 # <a name="updated-ndv2-series-preview"></a>Frissített NDv2 sorozat (előzetes verzió)
 
@@ -24,13 +24,16 @@ A NDv2-példányok kiváló teljesítményt nyújtanak a HPC-és AI-munkaterhel�
 
 Kritikus fontosságú, hogy a NDv2 mind a számítási szempontból intenzív felskálázás (8 GPU-s virtuális gép kihasználása), mind a Kibővítés (több virtuális gép a közös munkával együtt) munkaterhelések használatával készült. A NDv2 sorozat mostantól a 100-Gigabit InfiniBand EDR háttér-hálózatkezelést támogatja, hasonlóan a HB-sorozathoz elérhető HPC virtuális gépekhez, így lehetővé teszi a nagy teljesítményű fürtözést párhuzamos forgatókönyvek esetén, beleértve az AI és a ML elosztott képzését is. Ez a háttérrendszer támogatja az összes jelentősebb InfiniBand-protokollt, beleértve az NVIDIA NCCL2-könyvtárainak használatát is, ami lehetővé teszi a GPU-k zökkenőmentes fürtözését.
 
+
+> [!NOTE]
 > Ha [engedélyezi a InfiniBand](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) a ND40rs_v2 virtuális gépen, használja a 4.7-1.0.0.1 Mellanox OFED-illesztőprogramot.
-
+>
 > A GPU-memória megnövekedett mérete miatt az új ND40rs_v2 virtuális gépen a [2. generációs virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) és a Piactéri rendszerképek használata szükséges. 
-
+>
 > [Regisztráljon, hogy korai hozzáférést Kérjen a NDv2 virtuális gép előzetes verziójához.](https://aka.ms/AzureNDrv2Preview)
-
+>
 > Megjegyzés: a GPU memóriával rendelkező ND40s_v2 a már nem érhető el az előzetes verzióhoz, és a frissített ND40rs_v2 felülírt.
+
 <br>
 
 Premium Storage: támogatott

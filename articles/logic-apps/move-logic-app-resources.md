@@ -1,27 +1,29 @@
 ---
-title: Logikai alkalmazások áthelyezése előfizetések, erőforráscsoportok vagy régiók között
+title: Logikai alkalmazások migrálása előfizetések, erőforráscsoportok vagy régiók között
 description: Logikai alkalmazások vagy integrációs fiókok áttelepíthetők más Azure-előfizetésekre,-erőforráscsoportok vagy-helyszínekre (régiók)
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: d6250238edd15126e7a56bd821fbd1c736ebda07
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f5944accb185f1311c811cf65a8ea8348fd569db
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965894"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605606"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Logic apps-erőforrások áthelyezése más Azure-előfizetésekre,-csoportokra vagy-régiókba
 
-Ha át szeretné helyezni a logikai alkalmazást vagy a kapcsolódó erőforrásokat egy másik Azure-előfizetésbe, erőforráscsoporthoz vagy régióba, többféleképpen is elvégezheti ezeket a feladatokat, például a Azure Portal, az Azure PowerShell, az Azure CLI és a REST API. Az erőforrások áthelyezése előtt tekintse át a következő szempontokat: 
+Ha a logikai alkalmazást vagy a kapcsolódó erőforrásokat egy másik Azure-előfizetésbe, erőforráscsoporthoz vagy régióba kívánja áttelepíteni, többféle módon is elvégezheti ezeket a feladatokat, például a Azure Portal, az Azure PowerShell, az Azure CLI és a REST API. Az erőforrások áthelyezése előtt tekintse át a következő szempontokat: 
 
 * Az Azure-erőforráscsoportok és-előfizetések között csak [bizonyos logikai alkalmazás-erőforrástípusok](../azure-resource-manager/management/move-support-resources.md#microsoftlogic) helyezhetők át.
 
 * Tekintse [meg az](../logic-apps/logic-apps-limits-and-config.md) Azure-előfizetésében és az egyes Azure-régiókban elérhető logikai alkalmazások erőforrásainak számát. Ezek a korlátozások hatással vannak arra, hogy adott erőforrástípusok áthelyezhetők-e, ha a régió az előfizetések és az erőforráscsoportok esetében is ugyanaz marad. Az egyes Azure-előfizetésekben például csak egy ingyenes rétegbeli integrációs fiók lehet.
 
-* Az erőforrások áthelyezésekor az Azure új erőforrás-azonosítókat hoz létre. Ezért ügyeljen arra, hogy az új azonosítókat használja helyette, és frissítse az áthelyezett erőforrásokhoz társított parancsfájlokat vagy eszközöket. Miután áthelyezte a logikai alkalmazásokat az előfizetések, erőforráscsoportok vagy régiók között, újra létre kell hoznia vagy újra engedélyeznie kell a OAuth-alapú kapcsolatokat.
+* Miután áttelepítette a logikai alkalmazásokat az előfizetések, az erőforráscsoportok vagy a régiók között, újra létre kell hoznia vagy újra engedélyeznie kell a nyitott hitelesítést igénylő kapcsolatokat (OAuth).
+
+* Amikor erőforrásokat helyez át, az Azure új erőforrás-azonosítókat hoz létre. Ezért ügyeljen arra, hogy az új azonosítókat használja helyette, és frissítse az áthelyezett erőforrásokhoz társított parancsfájlokat vagy eszközöket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -84,7 +86,7 @@ A Logic apps üzembe helyezési sablonjaival kapcsolatos további információk�
 * [Azure Resource Manager-sablonok létrehozása a Azure Logic Appshoz](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
 * [Azure Logic Apps Azure Resource Manager sablonjainak üzembe helyezése](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 
-### <a name="related-resources"></a>Kapcsolódó források
+### <a name="related-resources"></a>Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
 
 Egyes Azure-erőforrások, például a helyszíni adatátjáró-erőforrások az Azure-ban olyan régióban létezhetnek, amely eltér az erőforrásokat használó logikai alkalmazástól. A többi Azure-erőforrásnak, például a társított integrációs fiókoknak azonban ugyanabban a régióban kell lenniük, mint a logikai alkalmazásoknak. A forgatókönyv alapján győződjön meg arról, hogy a logikai alkalmazások el tudják érni azokat az erőforrásokat, amelyeknek az alkalmazásai várhatóan ugyanabban a régióban vannak.
 

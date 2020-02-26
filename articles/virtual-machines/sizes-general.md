@@ -12,14 +12,14 @@ ms.service: virtual-machines
 ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 674197bd4d1562d8492a2605d8929572d450af90
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: d8a13d9013b2ad526c8e332cf3ea74e04f253d98
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493578"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597711"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Általános célú virtuálisgép-méretek
 
@@ -31,7 +31,7 @@ Az általános célú virtuálisgép-méretek kiegyensúlyozott processzor-memó
 
 - A [Dav4 és a Dasv4 sorozat](dav4-dasv4-series.md) új méretek az AMD 2.35 GHz EPYC<sup>TM</sup> 7452 processzorát egy többszálas konfigurációban, akár 256 MB L3-os gyorsítótárral, 8 GB-ot kihasználva minden 8 mag számára, amely növeli az ügyfelek számára az általános célú munkaterhelések futtatásának lehetőségét. A Dav4-sorozat és a Dasv4-sorozat ugyanazokkal a memória-és lemez-konfigurációval rendelkezik, mint a D & Dsv3 sorozat.
 
-- A [DC sorozat](dc-series.md) az Azure-beli virtuális gépek egyik családja, amely az adatok és a kód titkosságának és integritásának védelmét segíti a nyilvános felhőben történő feldolgozás során. Ezeket a gépeket a SGX ENKLÁVÉHOZ technológiával rendelkező 3,7 GHz-es Intel® Xeon® E-2176G processzor legújabb generációja támogatja. Az Intel Turbo Boost technológiával ezek a gépek akár 4,7 GHz-re is felléphetnek. A DC sorozat példányai lehetővé teszik, hogy az ügyfelek biztonságos enklávé-alapú alkalmazásokat hozzanak létre a kódok és az adataik használat közbeni védelméhez.
+- A [DCv2 sorozat](dcv2-series.md) a nyilvános felhőben feldolgozott adatok és kódok titkosságának és integritásának védelmét is lehetővé teszi. Ezeket a gépeket a SGX ENKLÁVÉHOZ technológiával rendelkező Intel XEON E-2288G processzor legújabb generációja támogatja. Az Intel Turbo Boost technológiával ezek a gépek akár 5,0 GHz-re is felmehetnek. A DCv2 sorozat példányai lehetővé teszik, hogy az ügyfelek biztonságos enklávé-alapú alkalmazásokat hozzanak létre a kódok és az adataik használat közbeni védelméhez.
 
 - [Dv2 és Dsv2 sorozat](dv2-dsv2-series.md) A virtuális gépek, amelyek az eredeti D sorozaton alapulnak, hatékonyabb CPU-és optimális CPU-memória-konfigurációt biztosítanak, így a legtöbb éles számítási feladathoz megfelelőek. A Dv2 sorozat körülbelül 35%-kal gyorsabb a D sorozatnál. A Dv2 sorozat az Intel® Xeon® 8171M 2.1 GHz-es (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorral fut, amely az Intel Turbo Boost Technology 2,0. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 7b6bd33346df9496c4c30353b68c11bdd7fad7a2
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b37b386273947f8c39fe182e4f29b7b080addf7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486393"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605626"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Vállalati biztonsági Azure Machine Learning
 
@@ -37,7 +37,6 @@ A többtényezős hitelesítés akkor támogatott, ha a Azure Active Directory (
 [![hitelesítés Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
 
 További információ: [Azure Machine learning erőforrások és munkafolyamatok hitelesítésének beállítása](how-to-setup-authentication.md). Ez a cikk a hitelesítéssel kapcsolatos információkat és példákat tartalmaz, beleértve az egyszerű szolgáltatások és az automatizált munkafolyamatok használatát.
-
 
 ### <a name="authentication-for-web-service-deployment"></a>Hitelesítés a webszolgáltatások üzembe helyezéséhez
 
@@ -77,6 +76,9 @@ A következő táblázat a főbb Azure Machine Learning-műveleteit és az azoka
 | Webszolgáltatás hívása | ✓ | ✓ | ✓ |
 
 Ha a beépített szerepkörök nem felelnek meg az igényeinek, létrehozhat egyéni szerepköröket is. Az egyéni szerepkörök csak a munkaterületen lévő műveleteknél és Machine Learning Compute támogatottak. Az egyéni szerepkörök olvasási, írási és törlési engedélyekkel rendelkezhetnek a munkaterületen és a munkaterületen lévő számítási erőforráson. A szerepkört egy adott munkaterület-szinten, egy adott erőforráscsoport-szinten vagy egy adott előfizetési szinten is elérhetővé teheti. További információ: [felhasználók és szerepkörök kezelése Azure Machine learning munkaterületen](how-to-assign-roles.md).
+
+> [!WARNING]
+> A Azure Machine Learning jelenleg nem támogatott Azure Active Directory vállalatközi együttműködéssel.
 
 ### <a name="securing-compute-targets-and-data"></a>Számítási célok és adatok biztonságossá tétele
 
@@ -254,7 +256,7 @@ A pontozási kérelmek részleteit a Application Insights tárolja. A munkaterü
 * UserAgent
 * ComputeType
 * RequestUrl
-* statusCode
+* StatusCode
 * Kérelemazonosító
 * Időtartam
 

@@ -2,17 +2,14 @@
 title: Statikus IP-címmel rendelkező HTTP-bejövő adatvezérlő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 description: Megtudhatja, hogyan telepíthet és konfigurálhat egy, az Azure Kubernetes Service (ak) fürtben statikus nyilvános IP-címmel rendelkező NGINX bejövő adatforgalom-vezérlőt.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: mlearned
-ms.openlocfilehash: 73798bf496f600e2ef98940051070a0ee117bdb3
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: a72312e2921b4721a4a5944cf62241b513da1e0a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261857"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595518"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Statikus nyilvános IP-címmel rendelkező bejövő vezérlő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -27,7 +24,7 @@ További lehetőségek:
 - [Saját TLS-tanúsítványokat használó bejövő adatkezelő létrehozása][aks-ingress-own-tls]
 - [Hozzon létre egy adatforgalom-vezérlőt, amely a let titkosítást használja a dinamikus nyilvános IP-címmel rendelkező TLS-tanúsítványok automatikus létrehozásához][aks-ingress-tls]
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 

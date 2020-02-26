@@ -2,17 +2,14 @@
 title: A pod biztonsági szabályzatok használata az Azure Kubernetes szolgáltatásban (ak)
 description: Megtudhatja, hogyan vezérelheti a pod-felvételeket az Azure Kubernetes Service (ak) PodSecurityPolicy használatával
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
-ms.author: mlearned
-ms.openlocfilehash: 5aec645c19ee5f813fdefb57d728c14688da8712
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: bc22a577777e50724fbafa04cf01f28362113cc7
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926411"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592832"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Előzetes verzió – a fürt biztonságossá tétele a pod biztonsági szabályzatok használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -24,7 +21,7 @@ Az AK-fürt biztonságának növelése érdekében korlátozhatja, hogy a hüvel
 > * [AK-támogatási szabályzatok][aks-support-policies]
 > * [Azure-támogatás – gyakori kérdések][aks-faq]
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 

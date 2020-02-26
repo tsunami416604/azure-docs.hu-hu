@@ -2,16 +2,15 @@
 title: A Istio áttekintése
 description: A Istio áttekintésének beszerzése
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 3db2a3d75df08e7c668b1983ad9b4493446475df
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 8518e30a54c2486abf84cd9ac026cc4dccb3fa84
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530510"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593900"
 ---
 # <a name="istio"></a>Istio
 
@@ -61,7 +60,7 @@ A következő tervezési célok a Istio projektet [ismertetik][design-goals] :
 - **Házirend-egységesség** – a házirend-definíció konzisztenciája számos különböző erőforrásban.
 
 
-### <a name="capabilities"></a>Képességek
+### <a name="capabilities"></a>Funkciók
 
 A Istio a következő funkciókat biztosítja:
 
@@ -75,7 +74,7 @@ A Istio a következő funkciókat biztosítja:
 
 - **Megfigyelhetőség** – arany mérőszámok, tükrözés, nyomkövetés, egyéni adapterek, Prometheus, grafana
 
-### <a name="scenarios"></a>Alkalmazási helyzetek
+### <a name="scenarios"></a>Forgatókönyvek
 
 A Istio kiválóan alkalmas a következő helyzetekben:
 

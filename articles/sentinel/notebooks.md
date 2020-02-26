@@ -2,20 +2,20 @@
 title: Jegyzetfüzetek használata az Azure Sentinel használatával a biztonsági vadászathoz
 description: Ez a cikk bemutatja, hogyan használhatók a jegyzetfüzetek az Azure Sentinel vadászati képességeivel.
 services: sentinel
-author: rkarlin
-ms.author: rkarlin
+author: yelevin
+ms.author: yelevin
 ms.assetid: 1721d0da-c91e-4c96-82de-5c7458df566b
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/25/2019
-ms.openlocfilehash: 44a37fb8d06040b0d872f15ab25bdd2c7ff685b8
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 84b72a71ed2de910bce44b0c3f3309782f096680
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563700"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581837"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter-jegyzetfüzetek használata biztonsági fenyegetések vadászatához
 
@@ -62,7 +62,7 @@ Az Azure Sentinelből közvetlenül is futtathat egy jegyzetfüzetet, vagy az ö
  
 1. A Azure Portal navigáljon az **Azure sentinel** > **veszélyforrások kezelése** > **jegyzetfüzetekhez**, ahol láthatja az Azure Sentinel által biztosított jegyzetfüzeteket. 
 
-2. Válassza az egyéni jegyzetfüzetek lehetőséget a leírások, a szükséges adattípusok és az adatforrások olvasásához. Példa:
+2. Válassza az egyéni jegyzetfüzetek lehetőséget a leírások, a szükséges adattípusok és az adatforrások olvasásához. Például:
     
     > [!div class="mx-imgBorder"]
     > ![notebook elindítása](./media/notebooks/sentinel-azure-notebooks-launch.png)
@@ -86,7 +86,7 @@ Ez az eljárás létrehoz egy Azure Notebooks projektet az Ön számára, amely 
 
    ![Jegyzetfüzet importálása](./media/notebooks/sentinel-create-project.png)
 
-4. Nyissa meg az imént létrehozott projektet, majd nyissa meg a **jegyzetfüzetek** mappát a jegyzetfüzetek megtekintéséhez. Példa:
+4. Nyissa meg az imént létrehozott projektet, majd nyissa meg a **jegyzetfüzetek** mappát a jegyzetfüzetek megtekintéséhez. Például:
 
    ![Adattár importálása](./media/notebooks/sentinel-open-notebook1.png)
 

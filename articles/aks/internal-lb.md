@@ -2,17 +2,14 @@
 title: Belső terheléselosztó létrehozása az Azure Kubernetes Service-ben (ak)
 description: Megtudhatja, hogyan hozhat létre és használhat belső Load balancert a szolgáltatások Azure Kubernetes szolgáltatással (ak) való elérhetővé tétele érdekében.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: mlearned
-ms.openlocfilehash: 8b0b0358534c30407c9841d5c23560623545cf64
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: ff102ebe50dd4d2169090718ced9e550701b1b09
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045004"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595467"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Belső terheléselosztó használata az Azure Kubernetes szolgáltatással (ak)
 
@@ -21,7 +18,7 @@ Ha korlátozni szeretné az alkalmazásaihoz való hozzáférést az Azure Kuber
 > [!NOTE]
 > Azure Load Balancer két SKU-ban érhető el – *Alapszintű* és *standard*. Alapértelmezés szerint a standard SKU-t használja a rendszer, amikor egy AK-fürtöt hoz létre.  Ha terheléselosztó típusú szolgáltatást hoz létre, ugyanazt az LB-típust fogja kapni, mint a fürt kiépítésekor. További információ: [Azure Load BALANCER SKU-összehasonlítás][azure-lb-comparison].
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
