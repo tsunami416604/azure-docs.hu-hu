@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 940ac7b0a2720283b669fc7ea5a9dbc163ddbe64
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 5681efc202df511745532e4a314e88b319e9880a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460211"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623406"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -26,7 +26,7 @@ Miután létrehozta az előfizetéséhez tartozó Azure Cosmos-fiókot, a fiókb
 | Maximális RUs/tároló ([dedikált teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) |
 | Maximális RUs/adatbázis ([megosztott teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) |
 | Maximális RUs/(logikai) partíciós kulcs | 10,000 |
-| Maximális tárterület az összes elem/(logikai) partíciós kulcs között| 10 GB |
+| Maximális tárterület az összes elem/(logikai) partíciós kulcs között| 20 GB |
 | Eltérő (logikai) partíciós kulcsok maximális száma | Korlátlan |
 | Tárolók maximális száma | Korlátlan |
 | Tárolók maximális száma adatbázis szerint | Korlátlan |

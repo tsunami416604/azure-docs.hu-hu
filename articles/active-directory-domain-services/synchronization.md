@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: b2a1bcedcc459a21bbc8a461ba9c8d9a8d65aebe
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132207"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612931"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Az objektumok és a hitelesítő adatok szinkronizálása egy Azure AD Domain Services felügyelt tartományban
 
@@ -47,9 +47,9 @@ A következő táblázat néhány gyakori attribútumot sorol fel, valamint azt,
 | A felhasználók és csoportok SID-előzményei | Helyszíni elsődleges felhasználó és csoport biztonsági azonosítója | Az Azure AD DS felhasználók és csoportok *SIDHistory* attribútuma úgy van beállítva, hogy megfeleljen a megfelelő elsődleges felhasználó vagy csoport biztonsági azonosítójának egy helyszíni AD DS környezetben. Ez a funkció segít a helyszíni alkalmazások Azure AD DSba való átállásának megkönnyítésében, mivel nem kell újrakonfigurálnia az erőforrásokat. |
 
 > [!TIP]
-> **Bejelentkezés a felügyelt tartományba UPN-formátum használatával** Előfordulhat, hogy a *sAMAccountName* attribútum, például a `CONTOSO\driley`automatikusan létrejön egy Azure AD DS felügyelt tartomány egyes felhasználói fiókjaihoz. A felhasználók automatikusan létrehozott *sAMAccountName* eltérőek lehetnek az UPN-előtagtól, ezért nem mindig megbízható a bejelentkezés.
+> **Bejelentkezés a felügyelt tartományba UPN-formátum használatával** Előfordulhat, hogy a *sAMAccountName* attribútum, például a `AADDSCONTOSO\driley`automatikusan létrejön egy Azure AD DS felügyelt tartomány egyes felhasználói fiókjaihoz. A felhasználók automatikusan létrehozott *sAMAccountName* eltérőek lehetnek az UPN-előtagtól, ezért nem mindig megbízható a bejelentkezés.
 >
-> Ha például több felhasználó ugyanazzal a *mailNickname* attribútummal rendelkezik, vagy a felhasználók túl hosszú UPN-előtagokkal rendelkeznek, előfordulhat, hogy a felhasználók *sAMAccountName* automatikusan létrejön. Az egyszerű felhasználónév formátuma (például `driley@contoso.com`) használatával megbízhatóan bejelentkezhet egy Azure AD DS felügyelt tartományba.
+> Ha például több felhasználó ugyanazzal a *mailNickname* attribútummal rendelkezik, vagy a felhasználók túl hosszú UPN-előtagokkal rendelkeznek, előfordulhat, hogy a felhasználók *sAMAccountName* automatikusan létrejön. Az egyszerű felhasználónév formátuma (például `driley@aaddscontoso.com`) használatával megbízhatóan bejelentkezhet egy Azure AD DS felügyelt tartományba.
 
 ### <a name="attribute-mapping-for-user-accounts"></a>Attribútum-hozzárendelés felhasználói fiókokhoz
 

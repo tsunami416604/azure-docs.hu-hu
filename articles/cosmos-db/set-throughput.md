@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 39eacbb9a87fa18cc6ef92e319fbfbd3e415337b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 236ae017832d5d613d0bf9fc948d16a7218d2269
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525515"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621947"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Átviteli sebesség kiosztása tárolókra és adatbázisokra
 
@@ -108,7 +108,7 @@ A tárolók vagy adatbázisok kiépített átviteli sebességét bármikor mére
 |Egy adott tárolóhoz rendelt vagy elérhető RUs|Nincs garancia. Az adott tárolóhoz rendelt RUs a tulajdonságoktól függ. A tulajdonságok választhatják a tárolók partíciós kulcsait, amelyek osztoznak az átviteli sebességen, a munkaterhelés eloszlásán és a tárolók számánál. |A tároló konfigurált fenntartott egységek kizárólag a tároló számára vannak fenntartva.|
 |Egy tároló maximális tárterülete|Korlátlan.|Korlátlan.|
 |Egy adott tároló logikai partíció egységenkénti maximális adatátviteli sebesség|10 ezer kérelemegység|10 ezer kérelemegység|
-|Maximális tárterület (adatok + index) egy adott tároló logikai partíciónként|10 GB|10 GB|
+|Maximális tárterület (adatok + index) egy adott tároló logikai partíciónként|20 GB|20 GB|
 
 ## <a name="next-steps"></a>Következő lépések
 

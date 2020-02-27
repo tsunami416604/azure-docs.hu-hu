@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 0dd3cb12c52e23a0a8acd57bf401ba68acfb9925
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424932"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623692"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Lekérdezési problémák elhárítása Azure Cosmos DB használatakor
 
@@ -22,6 +22,20 @@ Ez a cikk részletesen ismerteti a Azure Cosmos DB-lekérdezések hibaelhárít�
 A lekérdezési optimalizálásokat széles körben kategorizálhatja Azure Cosmos DBban: optimalizálások, amelyek csökkentik a lekérdezési egység (RU) díját és optimalizálását, ami csak csökkenti a késést. Ha csökkenti egy lekérdezés RU-díját, szinte biztosan csökkenti a késést is.
 
 Ez a dokumentum olyan példákat fog használni, amelyeket a [táplálkozási](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) adatkészlet használatával lehet újból létrehozni.
+
+## <a name="important"></a>Fontos
+
+- A legjobb teljesítmény érdekében kövesse a [teljesítménnyel kapcsolatos tippeket](performance-tips.md).
+    > [!NOTE] 
+    > A Windows 64 bites gazdagépek feldolgozása a jobb teljesítmény érdekében ajánlott. Az SQL SDK tartalmaz egy natív ServiceInterop. dll fájlt a lekérdezések helyi elemzéséhez és optimalizálásához, és csak a Windows x64 platformon támogatott. A Linux és egyéb nem támogatott platformok esetében, ahol a ServiceInterop. dll nem érhető el, a rendszer további hálózati hívást hajt végre az átjárón az optimalizált lekérdezés beszerzéséhez. 
+- Cosmos DB lekérdezés nem támogatja a minimális elemek darabszámát.
+    - A kódnak a 0 és az elemek maximális száma között kell kezelnie a lapok méretét
+    - A lap elemeinek száma bármilyen értesítés nélkül megváltozhat.
+- A rendszer üres lapokat vár a lekérdezésekhez, és bármikor megjelenhet. 
+    - Az SDK-k lehetővé teszik az üres lapok megjelenítését, így több lehetőség nyílik a lekérdezés megszakítására. Emellett egyértelművé teszi, hogy az SDK több hálózati hívást hajt végre.
+    - Az üres lapok megjelenhetnek a meglévő számítási feladatokban, mert egy fizikai partíció Cosmos DB van felosztva. Az első partíció most 0 eredménnyel rendelkezik, ami az üres lapot okozza.
+    - Az üres lapokat a preempting háttér okozta, mert a lekérdezés több időt vesz igénybe, mint a háttérben a dokumentumok beolvasása. Ha Cosmos DB megelőz egy lekérdezést, a folytatási tokent ad vissza, amely lehetővé teszi a lekérdezés folytatását. 
+- Ügyeljen arra, hogy a lekérdezés teljes mértékben le legyen ürítve. Tekintse meg az SDK-mintákat, és használjon egy ciklust a `FeedIterator.HasMoreResults` a teljes lekérdezés kiürítéséhez.
 
 ### <a name="obtaining-query-metrics"></a>Lekérdezési metrikák beszerzése:
 
@@ -144,7 +158,7 @@ Indexelési házirend:
 }
 ```
 
-**Ru díj:** 409,51 ru
+**Ru díj:** 409,51 RUs
 
 ### <a name="optimized"></a>Optimalizált
 
@@ -163,7 +177,7 @@ Frissített indexelési házirend:
 }
 ```
 
-**Ru díj:** 2,98 ru
+**Ru díj:** 2,98 RUs
 
 Bármikor hozzáadhat további tulajdonságokat az indexelési szabályzathoz, és nem befolyásolhatja a rendelkezésre állást és a teljesítményt. Ha új tulajdonságot ad az indexhez, az ezt a tulajdonságot használó lekérdezések azonnal az új elérhető indexet fogják használni. A lekérdezés az új indexet fogja használni a kiépítés során. Ennek eredményeképpen a lekérdezési eredmények inkonzisztensek lehetnek, mert az index újraépítése folyamatban van. Ha egy új tulajdonság indexelve van, a rendszer csak a meglévő indexeket használó lekérdezéseket fogja érinteni az index újraépítése során. [Nyomon követheti az index átalakításának folyamatát](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
 
@@ -217,7 +231,7 @@ Indexelési házirend:
 }
 ```
 
-**Ru díj:** 44,28 ru
+**Ru díj:** 44,28 RUs
 
 ### <a name="optimized"></a>Optimalizált
 
@@ -257,7 +271,7 @@ Frissített indexelési házirend:
 
 ```
 
-**Ru díj:** 8,86 ru
+**Ru díj:** 8,86 RUs
 
 ## <a name="optimize-join-expressions-by-using-a-subquery"></a>ILLESZTÉSi kifejezések optimalizálása segédlekérdezés használatával
 A többértékű allekérdezések optimalizálhatja `JOIN` kifejezéseket úgy, hogy az összes Select-many kifejezés után lenyomja a predikátumokat, és nem a `WHERE` záradékban lévő összes kereszthivatkozást.
@@ -274,7 +288,7 @@ WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
 AND n.nutritionValue < 10) AND s.amount > 1
 ```
 
-**Ru díj:** 167,62 ru
+**Ru díj:** 167,62 RUs
 
 Ennél a lekérdezésnél az index minden olyan dokumentumhoz megfelel, amelynek a neve "Infant formula" nevű címkével rendelkezik, és a nutritionValue nagyobb, mint 1. A `JOIN` kifejezés itt fogja elvégezni a címkék, a tápanyagok és a minden egyező dokumentum összes elemének szorzatát a szűrők alkalmazása előtt. A `WHERE` záradék Ezután alkalmazza a szűrő predikátumot az egyes `<c, t, n, s>` rekordokra.
 
@@ -290,7 +304,7 @@ JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutr
 JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 ```
 
-**Ru díj:** 22,17 ru
+**Ru díj:** 22,17 RUs
 
 Tegyük fel, hogy a címkék tömbben csak egy elem felel meg a szűrőnek, és öt elem van a tápanyagok számára, és tömböket is kiszolgál. A `JOIN` kifejezések 1 x 1 x 5 x 5 = 25 elemre lesznek kiterjesztve, az első lekérdezésben szereplő 1 000-elemek helyett.
 

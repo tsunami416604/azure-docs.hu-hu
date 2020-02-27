@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: e6ef4cc825d40615fa8a6aee7dff8d4542407974
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4f9da6cbfe8d1e6b92c39148b275de193730c8f1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970863"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623580"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Első lépések az Azure IT-kezelők számára
 
@@ -102,7 +102,7 @@ Az adattárolási és-kezelési szolgáltatások:
 
 - Azure Cache for Redis
 
-### <a name="application-services"></a>Alkalmazásszolgáltatások
+### <a name="application-services"></a>Application Services
 
 Szolgáltatások az alkalmazások létrehozásához és üzemeltetéséhez:
 
@@ -112,7 +112,7 @@ Szolgáltatások az alkalmazások létrehozásához és üzemeltetéséhez:
 
 - Azure-HDInsight big data feldolgozásához
 
-- Azure Scheduler
+- Azure Logic Apps integrációs és előkészítési munkafolyamatokhoz
 
 - Azure Media Services
 
@@ -122,7 +122,7 @@ Szolgáltatások az Azure-ban és az Azure-beli és a helyszíni adatközpontok 
 
 - Azure Virtual Network
 
-- Azure ExpressRoute
+- Azure-ExpressRoute
 
 - Azure által biztosított DNS
 
@@ -140,11 +140,11 @@ Az Azure egy globális felhőalapú platform, amely világszerte számos régió
 
 Az Azure használatának egyik előnye, hogy az alkalmazásait különböző adatközpontokban helyezheti üzembe az egész világon. A választott régió hatással lehet az alkalmazás teljesítményére. A hálózati kérések késésének csökkentése érdekében optimális megoldás, ha olyan régiót szeretne kiválasztani, amely közelebb van az ügyfelekhez. Azt is megteheti, hogy kijelöl egy régiót, amely megfelel az alkalmazás bizonyos országokban/régiókban való terjesztésének jogi követelményeinek.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 A Azure Portal egy webalapú alkalmazás, amely Azure-erőforrások és-szolgáltatások létrehozásához, kezeléséhez és eltávolításához használható. A Azure Portal a következő helyen található: [Portal.Azure.com](https://portal.azure.com). Tartalmaz egy testreszabható irányítópultot és az Azure-erőforrások kezelésére szolgáló eszközöket. Emellett számlázási és előfizetési információkat is biztosít. További információ: [Microsoft Azure Portal áttekintése](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) és az [Azure-erőforrások kezelése a portálon keresztül](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
-### <a name="resources"></a>Segédanyagok és eszközök
+### <a name="resources"></a>További források
 
 Az Azure-erőforrások az Azure-előfizetésbe telepített egyéni számítási, hálózati, adatkezelési és alkalmazás-üzemeltetési szolgáltatások. Néhány gyakori erőforrás a virtuális gépek, a Storage-fiókok vagy az SQL-adatbázisok. Az Azure-szolgáltatások gyakran több kapcsolódó Azure-erőforrásból állnak. Előfordulhat például, hogy egy Azure-beli virtuális gép tartalmaz egy virtuális gépet, egy Storage-fiókot, egy hálózati adaptert és egy nyilvános IP-címet. Ezek az erőforrások egyenként vagy csoportként hozhatók létre, kezelhetők és törölhetők. Az Azure-erőforrásokat az útmutató későbbi részében részletesebben tárgyaljuk.
 
@@ -152,11 +152,11 @@ Az Azure-erőforrások az Azure-előfizetésbe telepített egyéni számítási,
 
 Az Azure-erőforráscsoport egy olyan tároló, amely egy Azure-megoldáshoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport magában foglalhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket csoportként szeretne kezelni. Az Azure-erőforráscsoportok részletesebben az útmutató későbbi részében találhatók.
 
-### <a name="resource-manager-templates"></a>Erőforrás-kezelői sablonok
+### <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
 Az Azure Resource Manager sablon egy JavaScript Object Notation (JSON) fájl, amely egy vagy több olyan erőforrást határoz meg, amelyet egy erőforráscsoporthoz kíván üzembe helyezni. Meghatározza továbbá az üzembe helyezett erőforrások közötti függőségeket is. A Resource Manager-sablonokat az útmutató későbbi részében részletesebben tárgyaljuk.
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Automatizálás
 
 A Azure Portal használatával az erőforrások létrehozása, kezelése és törlése mellett a PowerShell vagy az Azure parancssori felület (CLI) segítségével automatizálhatja ezeket a tevékenységeket.
 
@@ -164,7 +164,7 @@ A Azure Portal használatával az erőforrások létrehozása, kezelése és tö
 
 Azure PowerShell az Azure kezelésére szolgáló parancsmagokat biztosító modulok összessége. A parancsmagok használatával Azure-szolgáltatásokat hozhat létre, kezelhet és távolíthat el. A parancsmagok segítségével konzisztens, ismételhető és kihasználható központi telepítéseket érhet el. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/install-Az-ps) foglalkozó témakörben talál.
 
-#### <a name="azure-command-line-interface"></a>Azure parancssori felület
+#### <a name="azure-command-line-interface"></a>Azure parancssori felületén
 
 Az Azure parancssori felület egy eszköz, amellyel Azure-erőforrásokat hozhat létre, kezelhet és eltávolíthat a parancssorból. Az Azure CLI Linux, Mac OS X és Windows rendszerekhez érhető el. További információ és technikai részletek: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
@@ -316,7 +316,7 @@ Amikor üzembe helyez egy Azure-beli virtuális gépet, kiválaszthat egy rendsz
 
 Több méretben is létrehozhat virtuális gépeket. A virtuális gép mérete olyan erőforrás-kiosztást diktál, mint például a feldolgozás, a memória és a tárolókapacitás. Bizonyos esetekben, például a RDMA-kompatibilis hálózati adapterek és SSD-lemezek csak bizonyos virtuálisgép-méretekben érhetők el. A virtuálisgép-méretek és-képességek teljes listáját az Azure-beli virtuális gépek méretei [Windows](../../virtual-machines/windows/sizes.md) és [Linux](../../virtual-machines/linux/sizes.md)rendszerhez című témakörben tekintheti meg.
 
-### <a name="use-cases"></a>Használati példák
+### <a name="use-cases"></a>Használati esetek
 
 Mivel az Azure Virtual Machines szolgáltatás teljes körű felügyeletet biztosít a konfiguráció felett, a kiszolgálói munkaterhelések széles köre számára ideálisak, amelyek nem illeszkednek a Pásti modellbe. A kiszolgálói munkaterhelések, például az adatbázis-kiszolgálók (SQL Server, Oracle vagy MongoDB), a Windows Server Active Directory, a Microsoft SharePoint, és számos további lehetséges a Microsoft Azure platformon való futtatás. Ha kívánja, áthelyezheti az ilyen számítási feladatokat egy helyszíni adatközpontból egy vagy több Azure-régióba anélkül, hogy nagy mennyiségű újrakonfigurálást kellene használnia.
 
@@ -362,21 +362,21 @@ Az Azure Storage-fiókok különböző szintű redundanciával konfigurálhatók
 
 - A **READ-Access geo-redundáns tárolás** a Geo-redundáns tárolás, valamint a másodlagos régióban tárolt adatolvasási képesség. Ez a funkció lehetővé teszi a részleges katasztrófa utáni helyreállítást. Ha az elsődleges régióval kapcsolatos probléma merül fel, módosíthatja az alkalmazást úgy, hogy csak olvasási hozzáféréssel rendelkezzen a párosított régióhoz.
 
-### <a name="use-cases"></a>Használati példák
+### <a name="use-cases"></a>Használati esetek
 
 Mindegyik tárolási típus eltérő használati esettel rendelkezik.
 
-#### <a name="blob-storage"></a>Blobtároló
+#### <a name="blob-storage"></a>Blob Storage
 
 A Word *blob* a *bináris nagyméretű objektum*betűszója. A Blobok strukturálatlan fájlok, például a számítógépen tárolt fájlok. A Blob Storage képes tárolni bármilyen szöveget vagy bináris adatot, például dokumentumot, médiafájlt vagy egy alkalmazástelepítőt. A Blob Storage más néven objektumtárnak is hívható. Az Azure Blob Storage az Azure Virtual Machines adatlemezeket is tartalmazza.
 
 Az Azure Storage háromféle blobot támogat:
 
-- A **blokkos Blobok** a szokásos, legfeljebb 195 GB méretű fájlok tárolására használhatók (4 MB × 50 000 blokk). A blokkblobok elsődleges felhasználási módja olyan fájlok tárolása, amelyeket az elejüktől a végükig olvasnak, ilyenek például a médiafájlok vagy a képfájlok webhelyekhez. Ezek neve blokk Blobok, mert a 64 MB-nál nagyobb fájlokat kis blokkként kell feltölteni. Ezeket a blokkokat ezután összevonják (vagy véglegesítik) a végső blobba.
+- A **blokkos Blobok** a szokásos, legfeljebb 195 GB méretű fájlok tárolására használhatók (4 MB × 50 000 blokk). A blokkos Blobok elsődleges használati esete az elejétől a végéig beolvasott fájlok tárolása, például médiafájlok vagy képfájlok a webhelyekhez. Ezek neve blokk Blobok, mert a 64 MB-nál nagyobb fájlokat kis blokkként kell feltölteni. Ezeket a blokkokat ezután összevonják (vagy véglegesítik) a végső blobba.
 
-- Az **oldal Blobok** a véletlenszerűen hozzáférő fájlok legfeljebb 1 TB méretű tárolására használhatók. Az oldal-Blobok elsődlegesen az Azure-Virtual Machines, az Azure-beli IaaS számítási szolgáltatás számára tartós lemezeket biztosító virtuális merevlemezek biztonsági másolatának tárolására szolgálnak. Azért hívják őket lapbloboknak, mert 512 bájtos oldalakhoz biztosítanak véletlenszerű olvasási/írási hozzáférést.
+- Az **oldal Blobok** a véletlenszerűen hozzáférő fájlok legfeljebb 1 TB méretű tárolására használhatók. Az oldal-Blobok elsődlegesen az Azure-Virtual Machines, az Azure-beli IaaS számítási szolgáltatás számára tartós lemezeket biztosító virtuális merevlemezek biztonsági másolatának tárolására szolgálnak. Ezek neve oldal Blobok, mert véletlenszerű olvasási/írási hozzáférést biztosítanak a 512 bájtos lapokhoz.
 
-- A **hozzáfűzési Blobok** olyan blokkokat tartalmaznak, mint a blokkos Blobok, de a hozzáfűzési műveletekre vannak optimalizálva. Ezeket gyakran használják egy vagy több forrásból származó adatok ugyanarra a blobba való naplózására. Előfordulhat például, hogy az összes nyomkövetési naplózást ugyanabba a hozzáfűző blobba írja, mint egy több virtuális gépen futó alkalmazáshoz. Egy hozzáfűző blob akár 195 GB méretű is lehet.
+- A **hozzáfűzési Blobok** olyan blokkokat tartalmaznak, mint a blokkos Blobok, de a hozzáfűzési műveletekre vannak optimalizálva. Ezeket gyakran használják egy vagy több forrásból származó adatok ugyanarra a blobba való naplózására. Előfordulhat például, hogy az összes nyomkövetési naplózást ugyanabba a hozzáfűző blobba írja, mint egy több virtuális gépen futó alkalmazáshoz. Egyetlen hozzáfűző blob akár 195 GB is lehet.
 
 További információ: az [Azure Blob Storage használatának első lépései a .NET használatával](../../storage/blobs/storage-dotnet-how-to-use-blobs.md).
 
@@ -465,7 +465,7 @@ A helyszíni hálózatot ExpressRoute vagy helyek közötti VPN-kapcsolat haszn�
 Mivel az Azure-beli virtuális hálózat a helyszíni hálózathoz csatlakozik, a létesítmények közötti virtuális hálózatoknak a szervezet által használt címterület egyedi részét kell használniuk. Ugyanúgy, ahogy a különböző vállalati helyek egy adott IP-alhálózathoz vannak rendelve, az Azure a hálózat kibővítésekor egy másik helyen lesz.
 A virtuális hálózatok telepítéséhez több lehetőség is rendelkezésre áll.
 
-- [Portál](../..//virtual-network/quick-create-portal.md)
+- [Portal](../..//virtual-network/quick-create-portal.md)
 
 - [PowerShell](../../virtual-network/quick-create-powershell.md)
 

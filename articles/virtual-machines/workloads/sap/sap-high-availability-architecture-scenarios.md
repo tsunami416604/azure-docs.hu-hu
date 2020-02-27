@@ -1,10 +1,10 @@
 ---
-title: Azure Virtual Machines magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver szolgáltatáshoz | Microsoft Docs
+title: Azure virtuális gépek HA architektúra és forgatókönyvek az SAP NetWeaver esetében | Microsoft Docs
 description: Magas rendelkezésre állású architektúra és forgatókönyvek az Azure-beli SAP NetWeaver-Virtual Machines
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/21/2019
-ms.author: rclaus
+ms.date: 02/25/2020
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: b974869d1462f449e8a241a5925ef345170b493a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291481"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623858"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver-hoz
 
@@ -249,7 +249,7 @@ Az Azure-ban az SAP magas rendelkezésre állása három típusba különíthet�
 
 * **SAP-alkalmazás magas rendelkezésre állása**: 
 
-    Az SAP-rendszerek teljes körű rendelkezésre állásának eléréséhez meg kell felelnie az összes kritikus fontosságú SAP-rendszerösszetevőnek. Példa:
+    Az SAP-rendszerek teljes körű rendelkezésre állásának eléréséhez meg kell felelnie az összes kritikus fontosságú SAP-rendszerösszetevőnek. Például:
     * Redundáns SAP-alkalmazás-kiszolgálók.
     * Egyedi összetevők. Ilyen lehet például egy meghibásodási pont (SPOF) összetevő (például egy SAP ASCS/SCS-példány vagy egy adatbázis-kezelő rendszer).
 
@@ -267,7 +267,7 @@ A számítás alapja havi 30 nap, vagy 43 200 perc. Például a 0,05%-os állás
 
 (Rendelkezésre állási szolgáltatás #1/100) * (rendelkezésre állási szolgáltatás #2/100) * (rendelkezésre állási szolgáltatás #3/100) \*...
 
-Példa:
+Például:
 
 (99,95/100) * (99,9/100) * (99,9/100) = 0,9975 vagy a 99,75% teljes rendelkezésre állása.
 
@@ -288,7 +288,7 @@ A rendelkezésre állási csoport a magas rendelkezésre állás eléréséhez h
 * Fürtök két vagy több csomóponttal (például a virtuális gépekkel), amelyek védik a SPOFs, például egy SAP ASCS/SCS-példányt vagy egy adatbázis-kezelő rendszert.
 
 
-### <a name="azure-availability-zones"></a>Azure-beli rendelkezésre állási zónák
+### <a name="azure-availability-zones"></a>Azure Availability Zones
 Az Azure a különböző [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/) [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) fogalmakat ismerteti. Az Azure-régiókban, ahol a Availability Zones kínálják, az Azure-régiók több adatközponttal rendelkeznek, amelyek függetlenek az áramforrás, a hűtés és a hálózat kínálatával. A különböző zónák egyetlen Azure-régión belüli felajánlásának oka az, hogy lehetővé teszi az alkalmazások üzembe helyezését két vagy három Availability Zonesban. Feltételezve, hogy az áramforrások és/vagy a hálózatok problémái csak az egyik rendelkezésre állási zóna infrastruktúráját érintik, az alkalmazások Azure-régión belüli üzembe helyezése továbbra is teljesen működőképes. Az egyes zónákban lévő virtuális gépek esetében előfordulhat, hogy a rendszer néhány kisebb kapacitással is elvész. A másik két zónában lévő virtuális gépek azonban még mindig működnek. A zónákat felkínáló Azure-régiók a [Azure Availability Zonesban](https://docs.microsoft.com/azure/availability-zones/az-overview)szerepelnek.
 
 A Availability Zones használatával néhány megfontolandó szempontot figyelembe kell venni. A szempontok listája, például:
@@ -334,7 +334,7 @@ További információ erről a megközelítésről: [Az Azure-infrastruktúra vi
 
 ## <a name="baed0eb3-c662-4405-b114-24c10a62954e"></a>SAP-alkalmazások magas rendelkezésre állása az Azure IaaS
 
-Az SAP-rendszerek teljes körű rendelkezésre állásának eléréséhez meg kell felelnie az összes kritikus fontosságú SAP-rendszerösszetevőnek. Példa:
+Az SAP-rendszerek teljes körű rendelkezésre állásának eléréséhez meg kell felelnie az összes kritikus fontosságú SAP-rendszerösszetevőnek. Például:
   * Redundáns SAP-alkalmazás-kiszolgálók.
   * Egyedi összetevők. Ilyen lehet például egy meghibásodási pont (SPOF) összetevő (például egy SAP ASCS/SCS-példány vagy egy adatbázis-kezelő rendszer).
 
@@ -391,6 +391,8 @@ WSFC-megoldás használatával biztosíthatja az SAP ASCS/SCS-példányok elleni
 
 * **Fürt az SAP ASCS/SCS-példány a fájlmegosztás használatával**: az architektúrával kapcsolatos további információkért lásd: [SAP ASCS/SCS-példány fürthöz való használata Windows feladatátvevő fürtön a fájlmegosztás használatával][sap-high-availability-guide-wsfc-file-share].
 
+* **Az SAP ASCS/SCS-példány fürtje a ANF SMB-megosztás használatával**: az architektúrával kapcsolatos további információkért tekintse meg a fürt [SAP ASCS/SCS-példánya egy Windows FELADATÁTVEVŐ FÜRTön ANF SMB-fájlmegosztás használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)című részt.
+
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Magas rendelkezésre állású architektúra egy SAP ASCS/SCS-példányhoz Linux rendszeren
 
 > ![Linux][Logo_Linux] Linux
@@ -404,13 +406,20 @@ Az SAP ASCS/SCS-példány Red Hat cluster Framework használatával történő f
 
 > ![Windows][Logo_Windows] Windows
 > 
-> Jelenleg a többszörös SID csak a WSFC esetében támogatott. A többszörös SID a fájlmegosztás és a megosztott lemez használata esetén támogatott.
+> A többszörös SID a WSFC és a megosztott lemez használatával támogatott.
 > 
-> A többszörös SID magas rendelkezésre állási architektúrával kapcsolatos további információkért lásd:
+> A multi-SID magas rendelkezésre állású architektúrával kapcsolatos további információkért tekintse meg a következőt:
 
 * [SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatás és a fájlmegosztás számára][sap-ascs-ha-multi-sid-wsfc-file-share]
 
 * [SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatás és a megosztott lemez számára][sap-ascs-ha-multi-sid-wsfc-shared-disk]
+
+> ![Linux][Logo_Linux] Linux
+> 
+> A többszörös SID-fürtszolgáltatás támogatott a Linux pacemaker-fürtökön az SAP ASCS/ERS számára, amely ugyanazon a fürtön **öt** SAP-SID-re korlátozódik.
+> A több SID magas rendelkezésre állású architektúrával kapcsolatos további információkért lásd:
+
+* [HA SAP NW Azure-beli virtuális gépeken, SLES for SAP Applications multi-SID útmutató](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
 
 ### <a name="high-availability-dbms-instance"></a>Magas rendelkezésre állású adatbázis-kezelő példány
 

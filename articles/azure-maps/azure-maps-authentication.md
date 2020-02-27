@@ -9,16 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ee8b166077c64ae5e0f2cce18ee0bc77e8c996f4
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 171219c001f43137a52f29b282fb1705b3d836aa
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210123"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649823"
 ---
 # <a name="authentication-with-azure-maps"></a>Hitelesítés az Azure Maps használatával
 
 Azure Maps a kérelmek hitelesítésének két módját támogatja: megosztott kulcsos hitelesítés és Azure Active Directory hitelesítés. Ez a cikk ezeket a hitelesítési módszereket ismerteti Azure Maps szolgáltatások megvalósításának elősegítése érdekében.
+
+> [!NOTE]
+> A Azure Mapsekkel való biztonságos kommunikáció javítása érdekében mostantól támogatjuk a Transport Layer Security (TLS) 1,2, és a TLS 1,0 és 1,1 támogatását kihasználjuk. A szolgáltatás megszakadásának elkerülése érdekében **frissítse a kiszolgálókat és az alkalmazásokat a TLS 1,2 használatára a 2020. április 2. előtt**.  Ha jelenleg a TLS 1. x protokollt használja, értékelje ki a TLS 1,2 készültséget, és fejlesszen egy áttelepítési tervet a [tls 1,0-probléma megoldása](https://docs.microsoft.com/security/solving-tls1-problem)című cikkben ismertetett teszteléssel.
 
 ## <a name="shared-key-authentication"></a>Megosztott kulcsos hitelesítés
 

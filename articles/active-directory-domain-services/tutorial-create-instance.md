@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: 8905f2a0a306ec4c9c6e19479c6adb96a6ed39ca
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 86097a8706956a768def107dd312c9a20c63c6ff
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931269"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612345"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Oktatóanyag: Azure Active Directory Domain Services-példány létrehozása és konfigurálása
 
@@ -22,7 +22,7 @@ Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartomány
 
 Felügyelt tartományt a Hálózatkezelés és a szinkronizálás alapértelmezett konfigurációs beállításaival hozhat létre, vagy [manuálisan is megadhatja ezeket a beállításokat][tutorial-create-instance-advanced]. Ez az oktatóanyag bemutatja, hogyan használható az alapértelmezett beállítások egy Azure AD DS-példány létrehozására és konfigurálására a Azure Portal használatával.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * A felügyelt tartomány DNS-követelményeinek megismerése
@@ -68,17 +68,17 @@ Azure AD DS-példány létrehozásakor meg kell adnia egy DNS-nevet. A DNS-név 
 * **Nem irányítható tartomány utótagja:** Általában azt javasoljuk, hogy kerülje a nem átirányítható tartománynevek utótagját, például a *contoso. local*nevet. A *. local* utótag nem irányítható, és a DNS-feloldással kapcsolatos problémákat okozhat.
 
 > [!TIP]
-> Ha egyéni tartománynevet hoz létre, gondoskodjon a meglévő DNS-névterekről. Javasoljuk, hogy adjon meg egy egyedi előtagot a tartománynévhez. Ha például a DNS-gyökér neve *contoso.com*, hozzon létre egy Azure AD DS felügyelt tartományt a *corp.contoso.com* vagy a *DS.contoso.com*egyéni tartománynevével. A helyszíni AD DS környezettel rendelkező hibrid környezetekben ezek az előtagok már használatban vannak. Használjon egyedi előtagot az Azure AD DShoz.
+> Ha egyéni tartománynevet hoz létre, gondoskodjon a meglévő DNS-névterekről. Azt javasoljuk, hogy a tartománynevet a meglévő Azure-beli vagy helyszíni DNS-névtértől elkülönítve használja.
 >
-> Használhatja az Azure AD DS felügyelt tartományának legfelső szintű DNS-nevét, de előfordulhat, hogy további DNS-rekordokat kell létrehoznia a környezetében lévő más szolgáltatásokhoz. Ha például olyan webkiszolgálót futtat, amely a gyökér DNS-nevet használja, akkor olyan elnevezési ütközések lehetnek, amelyek további DNS-bejegyzéseket igényelnek.
+> Ha például meglévő DNS- *contoso.com*rendelkezik, hozzon létre egy Azure AD DS felügyelt tartományt a *aaddscontoso.com*egyéni tartománynevével. Ha biztonságos LDAP-t kell használnia, regisztrálnia kell az egyéni tartománynevet a szükséges tanúsítványok létrehozásához.
 >
-> Ezekben az oktatóanyagokban és útmutatókban a *aadds.contoso.com* egyéni tartományát használjuk rövid példaként. Az összes parancsban adja meg a saját tartománynevét, amely tartalmazhat egy egyedi előtagot.
+> Előfordulhat, hogy létre kell hoznia néhány további DNS-rekordot a környezetében lévő más szolgáltatásokhoz, vagy feltételes DNS-továbbítókat a környezet meglévő DNS-neve között. Ha például olyan webkiszolgálót futtat, amely a gyökér DNS-nevet használja, akkor olyan elnevezési ütközések lehetnek, amelyek további DNS-bejegyzéseket igényelnek.
 >
-> További információ: [válasszon egy elnevezési előtagot a tartományhoz][naming-prefix].
+> Ezekben az oktatóanyagokban és útmutatókban a *aaddscontoso.com* egyéni tartományát használjuk rövid példaként. Az összes parancsban adja meg a saját tartománynevét.
 
 A DNS-név következő korlátozásai is érvényesek:
 
-* **Tartományi előtagra vonatkozó korlátozások:** Nem hozhat létre 15 karakternél hosszabb előtaggal rendelkező felügyelt tartományt. A megadott tartománynév előtagja (például a *contoso* a *contoso.com* tartománynévben) legfeljebb 15 karaktert tartalmazhat.
+* **Tartományi előtagra vonatkozó korlátozások:** Nem hozhat létre 15 karakternél hosszabb előtaggal rendelkező felügyelt tartományt. A megadott tartománynév előtagja (például a *aaddscontoso.com* tartomány *aaddscontoso* ) legalább 15 karakterből állhat.
 * **Hálózati név ütközése:** A felügyelt tartomány DNS-tartományneve még nem létezik a virtuális hálózaton. Konkrétan a következő helyzetekben érdemes megkeresni a nevek ütközését:
     * Ha már rendelkezik egy Active Directory tartománnyal ugyanazzal a DNS-tartománynévvel az Azure-beli virtuális hálózaton.
     * Ha a virtuális hálózat, amelyen engedélyezni szeretné a felügyelt tartományt, VPN-kapcsolattal rendelkezik a helyszíni hálózattal. Ebben az esetben győződjön meg arról, hogy nem rendelkezik ugyanazzal a DNS-tartománynévvel rendelkező tartománnyal a helyszíni hálózaton.
@@ -120,7 +120,7 @@ A varázsló **Összefoglalás** lapján tekintse át a felügyelt tartomány ko
     ![Értesítés a telepítés Azure Portal folyamatban](./media/tutorial-create-instance/deployment-in-progress.png)
 
 1. A lap a telepítési folyamat frissítéseivel töltődik be, beleértve a címtárban lévő új erőforrások létrehozását is.
-1. Válassza ki az erőforráscsoportot, például *myResourceGroup*, majd válassza ki az Azure AD DS példányát az Azure-erőforrások listájából, például *aadds.contoso.com*. Az **Áttekintés** lapon látható, hogy a felügyelt tartomány jelenleg *telepítve*van. A felügyelt tartományt nem lehet a teljes kiépítés előtt konfigurálni.
+1. Válassza ki az erőforráscsoportot, például *myResourceGroup*, majd válassza ki az Azure AD DS példányát az Azure-erőforrások listájából, például *aaddscontoso.com*. Az **Áttekintés** lapon látható, hogy a felügyelt tartomány jelenleg *telepítve*van. A felügyelt tartományt nem lehet a teljes kiépítés előtt konfigurálni.
 
     ![Tartományi szolgáltatások állapota a kiépítési állapotban](./media/tutorial-create-instance/provisioning-in-progress.png)
 

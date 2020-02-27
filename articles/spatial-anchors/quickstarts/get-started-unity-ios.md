@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3cbf0fa4a32145add0a5475f22ea0d936584c9bf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37a82c4001dd42a4cfbbb9dabec29f28359afd75
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465193"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615388"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Gyors útmutató: Unity iOS-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -34,7 +34,7 @@ A következőket fogja megtanulni:
 
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- Egy, az <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 +</a>-t, a <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>legújabb verzióját és a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> -t futtató MacOS-gép.
+- Egy <a href="https://unity3d.com/get-unity/download" target="_blank">2019,1 vagy 2019,2 egységgel</a>rendelkező MacOS-gép, amely a <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>legújabb verzióját és a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> -t telepítette.
 - A git telepítése a HomeBrew használatával történik. Adja meg a következő parancsot a terminál egyetlen sorában: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ezután futtassa `brew install git` és `brew install git-lfs`.
 - A fejlesztők által engedélyezett <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit-kompatibilis</a> IOS-eszköz.
 
@@ -66,7 +66,7 @@ A horgonyok elhelyezéséhez és felidézéséhez kövesse az alkalmazás utasí
 
 Ha elkészült, állítsa le az alkalmazást a **Leállítás** a Xcode gomb megnyomásával.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 ### <a name="rendering-issues"></a>Renderelési problémák
 
@@ -81,6 +81,10 @@ brew update
 brew install cocoapods --build-from-source
 brew link --overwrite cocoapods
 ```
+
+### <a name="unity-20193"></a>Unity 2019,3
+
+A változtatások miatt a 2019,3 egység jelenleg nem támogatott. Használja a 2019,1 vagy a 2019,2 egységet.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

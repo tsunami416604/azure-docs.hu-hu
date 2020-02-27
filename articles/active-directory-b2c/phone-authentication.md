@@ -1,24 +1,24 @@
 ---
-title: Telefonos regisztráció és bejelentkezés egyéni szabályzatokkal
+title: Telefonos regisztráció és bejelentkezés egyéni szabályzatokkal (előzetes verzió)
 titleSuffix: Azure AD B2C
-description: Megtudhatja, hogyan küldhet egyszeri jelszavakat szöveges üzenetekben az alkalmazás felhasználói telefonjára egyéni szabályzatokkal Azure Active Directory B2Cban.
+description: Egyszeri jelszó (OTP) küldése szöveges üzenetekben az alkalmazás felhasználói telefonokra egyéni szabályzatokkal Azure Active Directory B2Cban.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 02/25/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 50e7d66fef67e2728c95790947393de8d58398c2
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840332"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647528"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>A telefonos regisztráció és a bejelentkezés beállítása egyéni szabályzatokkal Azure AD B2C
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Telefonos regisztráció és bejelentkezés beállítása egyéni szabályzatokkal Azure AD B2Cban (előzetes verzió)
 
 A telefonos regisztráció és bejelentkezés Azure Active Directory B2C (Azure AD B2C) lehetővé teszi a felhasználók számára, hogy egy szöveges üzenetben SMS-ben küldött egyszeri jelszó (OTP) használatával regisztráljanak és jelentkezzenek be az alkalmazásaiba. Az egyszeri jelszavak segítségével csökkentheti a felhasználók felejtésének kockázatát, vagy megsérült a jelszavuk.
 
@@ -26,7 +26,13 @@ A cikk lépéseit követve az egyéni szabályzatok használatával engedélyezh
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
+## <a name="pricing"></a>Díjszabás
+
+Az egyszeri jelszavakat SMS szöveges üzenetek formájában küldi el a felhasználók számára, és minden egyes elküldött üzenet után díjat számítunk fel. A díjszabással kapcsolatos információkért tekintse meg a [Azure Active Directory B2C díjszabásának](https://azure.microsoft.com/pricing/details/active-directory-b2c/) **külön** díjszabását ismertető szakaszt.
+
 ## <a name="prerequisites"></a>Előfeltételek
+
+Az OTP beállítása előtt a következő erőforrásokra van szükség.
 
 * [Azure AD B2C bérlő](tutorial-create-tenant.md)
 * A bérlőben [regisztrált webalkalmazás](tutorial-register-applications.md)
@@ -69,6 +75,22 @@ Az egyes fájlok feltöltésekor az Azure hozzáadja a `B2C_1A_`előtagot.
 1. A **Válasz URL-címének kiválasztása lapon**válassza a `https://jwt.ms`lehetőséget.
 1. Válassza a **Futtatás most** lehetőséget, és regisztráljon e-mail-cím vagy telefonszám használatával.
 1. Kattintson ismét a **Futtatás** gombra, és jelentkezzen be ugyanazzal a fiókkal, és ellenőrizze, hogy megfelelő-e a konfigurációja.
+
+## <a name="get-user-account-by-phone-number"></a>Felhasználói fiók beolvasása telefonszám alapján
+
+Egy olyan felhasználó, amely regisztrál egy telefonszámot, de nem biztosít helyreállítási e-mail-címet, a rendszer a bejelentkezési nevüknek megfelelő telefonszámon rögzíti a Azure AD B2C könyvtárban. Ha a felhasználó ezután módosítani szeretné a telefonszámát, akkor az ügyfélszolgálatnak vagy a támogatási csapatnak először meg kell keresnie a fiókját, majd frissítenie kell a telefonszámát.
+
+A felhasználó telefonszáma alapján (bejelentkezési név) a [Microsoft Graph](manage-user-accounts-graph-api.md)használatával kereshet:
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
+```
+
+Például:
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

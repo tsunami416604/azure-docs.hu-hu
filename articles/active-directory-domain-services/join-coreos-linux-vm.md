@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: ddf6c9238cabedfbdeeb8056864072edc543c342
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9a0691bd2a556219b3e3d989a3bbc465fa56b4bf
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712611"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613804"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>CoreOS virtuális gép csatlakoztatása Azure AD Domain Services felügyelt tartományhoz
 
@@ -63,13 +63,13 @@ sudo vi /etc/hosts
 
 A *gazdagépek* fájlban frissítse a *localhost* -címeket. A következő példában:
 
-* a *aadds.contoso.com* az Azure AD DS felügyelt tartományának DNS-tartományneve.
+* a *aaddscontoso.com* az Azure AD DS felügyelt tartományának DNS-tartományneve.
 * a *CoreOS* a felügyelt tartományhoz csatlakozó CoreOS-alapú virtuális gép állomásneve.
 
 Frissítse ezeket a neveket a saját értékeivel:
 
 ```console
-127.0.0.1 coreos coreos.aadds.contoso.com
+127.0.0.1 coreos coreos.aaddscontoso.com
 ```
 
 Ha elkészült, mentse és zárja be a *hosts* fájlt a szerkesztő `:wq` parancsának használatával.
@@ -95,15 +95,15 @@ Adja meg saját Azure AD DS felügyelt tartománynevét a következő paraméter
 [sssd]
 config_file_version = 2
 services = nss, pam
-domains = AADDS.CONTOSO.COM
+domains = AADDSCONTOSO.COM
 
-[domain/AADDS.CONTOSO.COM]
+[domain/AADDSCONTOSO.COM]
 id_provider = ad
 auth_provider = ad
 chpass_provider = ad
 
-ldap_uri = ldap://aadds.contoso.com
-ldap_search_base = dc=aadds.contoso,dc=com
+ldap_uri = ldap://aaddscontoso.com
+ldap_search_base = dc=aaddscontoso,dc=com
 ldap_schema = rfc2307bis
 ldap_sasl_mech = GSSAPI
 ldap_user_object_class = user
@@ -114,32 +114,32 @@ ldap_account_expire_policy = ad
 ldap_force_upper_case_realm = true
 fallback_homedir = /home/%d/%u
 
-krb5_server = aadds.contoso.com
-krb5_realm = AADDS.CONTOSO.COM
+krb5_server = aaddscontoso.com
+krb5_realm = AADDSCONTOSO.COM
 ```
 
 ## <a name="join-the-vm-to-the-managed-domain"></a>A virtuális gép csatlakoztatása a felügyelt tartományhoz
 
 A SSSD konfigurációs fájljának frissítése után most csatlakoztassa a virtuális gépet a felügyelt tartományhoz.
 
-1. Először a `adcli info` parancs használatával ellenőrizze, hogy látható-e az Azure AD DS felügyelt tartományával kapcsolatos információ. A következő példában a AADDS tartományra vonatkozó információk olvashatók be *. CONTOSO.COM*. Adja meg saját Azure AD DS felügyelt tartománynevét az összes nagybetűvel:
+1. Először a `adcli info` parancs használatával ellenőrizze, hogy látható-e az Azure AD DS felügyelt tartományával kapcsolatos információ. A következő példában a *AADDSCONTOSO.com*tartományra vonatkozó információk olvashatók be. Adja meg saját Azure AD DS felügyelt tartománynevét az összes nagybetűvel:
 
     ```console
-    sudo adcli info AADDS.CONTOSO.COM
+    sudo adcli info AADDSCONTOSO.COM
     ```
 
    Ha az `adcli info` parancs nem találja az Azure AD DS felügyelt tartományát, tekintse át a következő hibaelhárítási lépéseket:
 
-    * Győződjön meg arról, hogy a tartomány elérhető a virtuális gépről. Próbálja meg `ping aadds.contoso.com` a pozitív válasz visszaadása.
+    * Győződjön meg arról, hogy a tartomány elérhető a virtuális gépről. Próbálja meg `ping aaddscontoso.com` a pozitív válasz visszaadása.
     * Győződjön meg arról, hogy a virtuális gép üzembe helyezése ugyanarra a virtuális gépre történik, ahol az Azure AD DS felügyelt tartomány elérhető.
     * Győződjön meg arról, hogy a virtuális hálózat DNS-kiszolgálójának beállításai frissítve lettek, hogy az Azure AD DS felügyelt tartományának tartományvezérlőjére mutasson.
 
 1. Most csatlakoztassa a virtuális gépet az Azure AD DS felügyelt tartományhoz a `adcli join` paranccsal. Olyan felhasználót válasszon, amely a *HRE DC-rendszergazdák* csoportjához tartozik. Ha szükséges, [vegyen fel egy felhasználói fiókot egy csoportba az Azure ad-ben](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Ismét az Azure AD DS felügyelt tartománynevet minden nagybetűvel meg kell adni. A következő példában az `contosoadmin@aadds.contoso.com` nevű fiók a Kerberos inicializálására szolgál. Adja meg saját felhasználói fiókját, amely az *HRE DC-rendszergazdák* csoport tagja.
+    Ismét az Azure AD DS felügyelt tartománynevet minden nagybetűvel meg kell adni. A következő példában az `contosoadmin@aaddscontoso.com` nevű fiók a Kerberos inicializálására szolgál. Adja meg saját felhasználói fiókját, amely az *HRE DC-rendszergazdák* csoport tagja.
 
     ```console
-    sudo adcli join -D AADDS.CONTOSO.COM -U contosoadmin@AADDS.CONTOSO.COM -K /etc/krb5.keytab -H coreos.aadds.contoso.com -N coreos
+    sudo adcli join -D AADDSCONTOSO.COM -U contosoadmin@AADDSCONTOSO.COM -K /etc/krb5.keytab -H coreos.aaddscontoso.com -N coreos
     ```
 
     A `adcli join` parancs nem ad vissza semmilyen információt, ha a virtuális gép sikeresen csatlakozott az Azure AD DS felügyelt tartományhoz.
@@ -154,10 +154,10 @@ A SSSD konfigurációs fájljának frissítése után most csatlakoztassa a virt
 
 Annak ellenőrzéséhez, hogy a virtuális gép sikeresen csatlakozott-e az Azure AD DS felügyelt tartományhoz, indítson el egy új SSH-kapcsolódást egy tartományi felhasználói fiók használatával. Győződjön meg arról, hogy a kezdőkönyvtár létrejött, és a rendszer a tartományból származó csoporttagság alkalmazását alkalmazza.
 
-1. Hozzon létre egy új SSH-kapcsolatokat a konzolon. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik a `ssh -l` parancs használatával, például `contosoadmin@aadds.contoso.com`, majd adja meg a virtuális gép (például *CoreOS.aadds.contoso.com*) címeit. Ha a Azure Cloud Shell használja, a belső DNS-név helyett használja a virtuális gép nyilvános IP-címét.
+1. Hozzon létre egy új SSH-kapcsolatokat a konzolon. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik a `ssh -l` parancs használatával, például `contosoadmin@aaddscontoso.com`, majd adja meg a virtuális gép (például *CoreOS.aaddscontoso.com*) címeit. Ha a Azure Cloud Shell használja, a belső DNS-név helyett használja a virtuális gép nyilvános IP-címét.
 
     ```console
-    ssh -l contosoadmin@AADDS.CONTOSO.com coreos.aadds.contoso.com
+    ssh -l contosoadmin@AADDSCONTOSO.com coreos.aaddscontoso.com
     ```
 
 1. Most győződjön meg arról, hogy a csoporttagságok megfelelően vannak feloldva:

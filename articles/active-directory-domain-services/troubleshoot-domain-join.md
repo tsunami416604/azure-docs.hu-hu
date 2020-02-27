@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 73a76c4442bb8af70168e54a294f2cb100ff653c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 286e2ad460e98cfeceab52a3ac21bcba8da2cc7f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703658"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612807"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services felügyelt tartományhoz való csatlakozással kapcsolatos problémák elhárítása
 
@@ -32,7 +32,7 @@ Ha a virtuális gép nem találja az Azure AD DS felügyelt tartományt, által�
 
 1. Győződjön meg arról, hogy a virtuális gép ugyanahhoz a virtuális géphez van csatlakoztatva, vagy egy olyan, az Azure AD DS számára engedélyezett virtuális hálózathoz csatlakozik. Ha nem, a virtuális gép nem találja és nem tud csatlakozni a tartományhoz a csatlakozáshoz.
     * Ha a virtuális gép nem csatlakozik ugyanahhoz a virtuális hálózathoz, győződjön meg arról, hogy a virtuális hálózati társ-vagy VPN-kapcsolat *aktív* vagy *csatlakoztatva* van, hogy a forgalom megfelelően működjön.
-1. Próbálja meg pingelni a tartományt az Azure AD DS felügyelt tartományának tartományneve (például `ping aadds.contoso.com`) használatával.
+1. Próbálja meg pingelni a tartományt az Azure AD DS felügyelt tartományának tartományneve (például `ping aaddscontoso.com`) használatával.
     * Ha a pingelési válasz sikertelen, próbálja meg pingelni a tartományhoz tartozó IP-címeket a portál áttekintés lapján az Azure AD DS felügyelt tartományhoz, például `ping 10.0.0.4`hoz.
     * Ha sikeresen Pingeli az IP-címet, de a tartományt nem, a DNS helytelenül van konfigurálva. Győződjön meg arról, hogy konfigurálta az Azure AD DS felügyelt tartomány DNS-kiszolgálóit a virtuális hálózathoz.
 1. Próbálja meg kiüríteni a DNS-feloldó gyorsítótárát a virtuális gépen, például `ipconfig /flushdns`.
@@ -53,7 +53,7 @@ Ha olyan párbeszédpanelt kap, amely a hitelesítő adatok megadását kéri az
 
 A hitelesítő adatokkal kapcsolatos problémák elhárításához tekintse át a következő hibaelhárítási lépéseket:
 
-1. Próbálja meg az UPN formátumot használni a hitelesítő adatok megadásához, például `dee@contoso.onmicrosoft.com`. Győződjön meg arról, hogy az UPN helyesen van konfigurálva az Azure AD-ben.
+1. Próbálja meg az UPN formátumot használni a hitelesítő adatok megadásához, például `dee@aaddscontoso.onmicrosoft.com`. Győződjön meg arról, hogy az UPN helyesen van konfigurálva az Azure AD-ben.
     * Előfordulhat, hogy a fiókhoz tartozó *sAMAccountName* automatikusan létrejön, ha több felhasználó rendelkezik UGYANAZZAL az UPN-előtaggal a bérlőben, vagy ha az UPN-előtag túl hosszú. Ezért előfordulhat, hogy a fiók *sAMAccountName* -formátuma eltér a helyszíni tartományban várttól vagy használattól.
 1. Próbáljon meg egy olyan felhasználói fiók hitelesítő adatait használni, amely a *HRE DC-rendszergazdák* csoportba tartozik, és csatlakoztassa a virtuális gépeket az Azure AD DS felügyelt tartományhoz.
 1. Győződjön meg arról, hogy [engedélyezte a jelszó-szinkronizálást][enable-password-sync] , és elég sokáig várt a jelszó-szinkronizálás kezdeti befejezéséhez.

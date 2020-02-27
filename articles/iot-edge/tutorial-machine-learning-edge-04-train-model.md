@@ -8,12 +8,12 @@ ms.date: 2/10/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5f576d28d30907f3834600d0a6a5c152025cf912
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a5c754373ba9437c631e62acbb5d6d246db4c862
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133523"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650758"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Oktatóanyag: Azure Machine Learning modell betanítása és üzembe helyezése
 
@@ -83,7 +83,7 @@ Tekintsük át a Azure Notebooks-projektbe feltöltött fájlokat. Az oktatóany
 * **01 – turbofan\_regresszió. ipynb:** Ez a jegyzetfüzet a Machine Learning szolgáltatás munkaterületen hozza létre és futtatja a Machine learning-kísérletet. A jegyzetfüzet széles körben a következő lépéseket hajtja végre:
 
   1. Az eszköz által létrehozott Azure Storage-fiókból származó adatok letöltése.
-  1. Felderíti és előkészíti az adatképzést és az osztályozó ad-modellt.
+  1. Felderíti és előkészíti az adatgyűjtést, majd az adatosztályozó modell betanítására használja fel azokat.
   1. Értékelje ki a modellt a kísérletből egy tesztelési adatkészlet használatával (teszt\_FD003. txt).
   1. Közzéteszi a legjobb osztályozó modellt a Machine Learning szolgáltatás munkaterületen.
 

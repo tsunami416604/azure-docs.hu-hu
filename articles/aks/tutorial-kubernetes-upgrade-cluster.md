@@ -3,14 +3,14 @@ title: Az Azure-on futó Kubernetes oktatóanyaga – Fürtök frissítése
 description: Ebben az Azure Kubernetes Service-hez (AKS-hez) tartozó oktatóanyagban megismerheti, hogyan frissítheti a meglévő AKS-fürtöket a legújabb elérhető Kubernetes-verzióra.
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 57cad9472c599bf0ad8f3e3d2ff53cb224db689a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4d9ef061904fb1a0fff25506eedb82158971bed5
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593128"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622028"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Oktatóanyag: A Kubernetes frissítése az Azure Kubernetes Service (AKS) szolgáltatásban
 
@@ -37,12 +37,12 @@ A fürtök frissítése előtt az [az aks get-upgrades][] paranccsal ellenőrizz
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-A következő példában az aktuális verzió a *1.13.10*, és az elérhető verziók a *frissítések* oszlopban láthatók.
+A következő példában az aktuális verzió a *1.14.8*, és az elérhető verziók a *frissítések* oszlopban láthatók.
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 -------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.13.10          1.13.10            1.14.5, 1.14.6
+default  myResourceGroup  1.14.8           1.14.8             1.15.5, 1.15.7
 ```
 
 ## <a name="upgrade-a-cluster"></a>Fürt frissítése
@@ -58,13 +58,13 @@ Az alkalmazások futtatásának minimalizálásához az AK-csomópontok körült
 Az AKS-fürtök az [az aks upgrade][] paranccsal frissíthetők. A következő példa frissíti a fürtöt a Kubernetes verzió *1.14.6*.
 
 > [!NOTE]
-> Egyszerre csak egy alverzió frissíthető. Például a *1.12. x* verzióról *1.13. x*-re frissítheti, de a *1.12. x* -ről a *1.14. x* -re nem lehet közvetlenül frissíteni. A 1.12. *x* és *1.14. x*verzióra való frissítéshez először *a 1.12. x* -ről *1.13. x*-re kell frissíteni, majd egy újabb frissítést kell végrehajtani 1.13. *x* és *1.14. x*között.
+> Egyszerre csak egy alverzió frissíthető. Például a *1.14. x* -ről a *1.15. x*-re frissítheti, de a *1.14. x* verziójáról nem lehet közvetlenül az *1.16. x* -re frissíteni. Ha a *1.14. x* -ről *1.16. x*-re szeretne frissíteni, először frissítse a *1.14. x* -ről *1.15. x*-re, majd végezzen újabb frissítést *1.15. x* -ről *1.16. x*-re.
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.14.6
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.15.5
 ```
 
-A következő összetömörített példa kimenete a *kubernetesVersion* most jelentések *1.14.6*mutatja:
+A következő összetömörített példa kimenete a *kubernetesVersion* most jelentések *1.15.5*mutatja:
 
 ```json
 {
@@ -82,7 +82,7 @@ A következő összetömörített példa kimenete a *kubernetesVersion* most jel
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.14.6",
+  "kubernetesVersion": "1.15.5",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -97,12 +97,12 @@ Az alábbiak szerint ellenőrizze az [az aks show][] paranccsal, hogy sikerült-
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-A következő példa kimenete azt mutatja, hogy az AK-fürt *KubernetesVersion 1.14.6*fut:
+A következő példa kimenete azt mutatja, hogy az AK-fürt *KubernetesVersion 1.15.5*fut:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.14.6               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.15.5               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>A fürt törlése

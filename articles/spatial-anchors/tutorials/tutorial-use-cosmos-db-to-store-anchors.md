@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 57bf9c9752cf2203ffcac08c213373fd71a79148
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 71b3027d86400d6921895f86e257ddff2961f91f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276881"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615153"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Oktatóanyag: Azure térbeli horgonyok megosztása munkamenetek és eszközök között egy Azure Cosmos DB háttérrel
 
@@ -42,6 +42,12 @@ Keresse meg az `#define INMEMORY_DEMO` a fájl tetején, és írja be a megjegyz
 Keresse meg a `StorageConnectionString` tulajdonságot, és állítsa be az értéket úgy, hogy megegyezzen az [adatbázis-fiók létrehozása lépésben](#create-a-database-account)átmásolt `Connection String` értékkel. Mentse a fájlt.
 
 Közzéteheti a megosztási szolgáltatást, és futtathatja a minta alkalmazást.
+
+## <a name="troubleshooting"></a>Hibakeresés
+
+### <a name="unity-20193"></a>Unity 2019,3
+
+A változtatások miatt a 2019,3 egység jelenleg nem támogatott. Használja a 2019,1 vagy a 2019,2 egységet.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

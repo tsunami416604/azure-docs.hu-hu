@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 02/20/2020
 ms.author: diberry
-ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513609"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623587"
 ---
 # <a name="offline-evaluation"></a>Offline értékelés
 
@@ -49,6 +49,16 @@ A következő fontos szempontokat kell figyelembe venni a reprezentatív kapcsol
 A személyre szabott kiértékelési folyamat használatával automatikusan felderíthető az optimális tanulási szabályzat.
 
 Az offline értékelés elvégzése után a személyre szabás az aktuális online házirenddel összehasonlítva az új szabályzattal megtekinthető. Ezt követően alkalmazhatja ezt a tanulási szabályzatot, hogy azonnal érvénybe vigye a személyre szabott, a letöltéssel és a modellek és a házirend paneljén való feltöltéssel. A későbbi elemzésekhez vagy használathoz is letöltheti.
+
+A kiértékelésben szereplő jelenlegi szabályzatok:
+
+| Tanulási beállítások | Cél|
+|--|--|
+|**Online házirend**| A személyre szabott alkalmazásban használt aktuális tanulási szabályzat |
+|**Alapkonfiguráció**|Az alkalmazás alapértelmezett értéke (amelyet a Rank-hívásokban elindított első művelet határoz meg)|
+|**Véletlenszerű házirend**|Egy képzeletbeli rangsorolási viselkedés, amely mindig véletlenszerű választ ad vissza a megadott műveletek közül.|
+|**Egyéni házirendek**|A próbaverzió indításakor feltöltött további képzési szabályzatok.|
+|**Optimalizált szabályzat**|Ha a kiértékelést az optimalizált szabályzat felderítésére szolgáló lehetőséggel indította el, azt a rendszer összehasonlítja, és letöltheti, vagy elvégezheti az online tanulási szabályzatot, amely az aktuálisat váltja fel.|
 
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Az offline kiértékelés eredményeinek ismertetése
 
@@ -92,7 +102,7 @@ Javasoljuk, hogy tekintse meg a funkciók értékeléseit, és kérje a követke
 
 * Az alkalmazás vagy a rendszer további funkciói lehetővé teszik, hogy az alkalmazások és a rendszerek milyen vonalakban legyenek hatékonyabbak?
 * Milyen funkciókat lehet eltávolítani az alacsony hatékonyság miatt? Az alacsony hatékonyságú funkciók a gépi tanulásban növelik a _zajt_ .
-* Vannak olyan funkciók, amelyek véletlenül beletartoznak a szolgáltatásba? Ilyenek például a személyes azonosításra alkalmas adatok, a duplikált azonosítók stb.
+* Vannak olyan funkciók, amelyek véletlenül beletartoznak a szolgáltatásba? Ilyenek például a következők: felhasználó által azonosítható információk, duplikált azonosítók stb.
 * Vannak olyan nemkívánatos funkciók, amelyek nem használhatók a jogszabályi vagy a felelősségteljes használati megfontolások miatt? Vannak-e olyan szolgáltatások, amelyek proxyként (azaz szorosan tükrözve vagy korrelálva) nemkívánatos funkciókkal rendelkeznek?
 
 

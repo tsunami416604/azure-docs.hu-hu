@@ -7,23 +7,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 49129bede62e456cf2807cc879b7fc5e1793b65b
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 4a0593ccd6bdf37520e73ba8ed421ec4b10ea52c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424949"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623309"
 ---
 # <a name="streaming-ingestion-preview"></a>Folyamatos átvitel (előzetes verzió)
 
 Az adatfolyamok betöltése olyan forgatókönyvek esetén fordul elő, amelyek kis késést igényelnek, és a betöltési idő kevesebb, mint 10 másodperc a különböző mennyiségi adatok esetében. A rendszer a sok tábla működési feldolgozásának optimalizálására használatos egy vagy több adatbázisban, ahol az egyes táblákba irányuló adatstream viszonylag kicsi (néhány rekord másodpercenként), de a teljes adatfeldolgozási kötet magas (több ezer rekord másodpercenként).
 
 Az adatfolyamok betöltése helyett a klasszikus (tömeges) betöltést használja, ha az adatmennyiség másodpercenként 1 MB-onként nő. A különböző betöltési módszerekkel kapcsolatos további információkért olvassa el az [adatfeldolgozás áttekintése című témakört](/azure/data-explorer/ingest-data-overview) .
-
-> [!NOTE]
-> A streaming betöltés nem támogatja a következő funkciókat:
-> * [Adatbázis-kurzorok](/azure/kusto/management/databasecursor).
-> * [Adatleképezés](/azure/kusto/management/mappings). Csak az [előre létrehozott](/azure/kusto/management/tables#create-ingestion-mapping) adatleképezés támogatott. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,6 +27,9 @@ Az adatfolyamok betöltése helyett a klasszikus (tömeges) betöltést használ
 * [Azure adatkezelő-fürt és-adatbázis](create-cluster-database-portal.md) létrehozása
 
 ## <a name="enable-streaming-ingestion-on-your-cluster"></a>Folyamatos átvitel engedélyezése a fürtön
+
+> [!WARNING]
+> A gőzölés betöltésének engedélyezése előtt tekintse át a [korlátozásokat](#limitations) .
 
 1. A Azure Portal nyissa meg az Azure Adatkezelő-fürtöt. A **Beállítások**területen válassza a **konfigurációk**lehetőséget. 
 1. A **konfigurációk** ablaktáblán válassza **a** be lehetőséget a **streaming**betöltésének engedélyezéséhez.
@@ -49,8 +47,9 @@ Az adatfolyamok betöltése helyett a klasszikus (tömeges) betöltést használ
 
 Két támogatott adatfolyam-betöltési típus létezik:
 
-* Az [Event hub](/azure/data-explorer/ingest-data-event-hub) adatforrásként használatos
-* Az egyéni betöltéshez olyan alkalmazást kell írnia, amely az Azure Adatkezelő ügyféloldali kódtárainak egyikét használja. Lásd: streaming betöltési [minta](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) egy minta alkalmazáshoz.
+
+* Az [**Event hub**](/azure/data-explorer/ingest-data-event-hub) adatforrásként használatos
+* Az **Egyéni** betöltéshez olyan alkalmazást kell írnia, amely az egyik Azure adatkezelő ügyféloldali kódtárat használja. Lásd: streaming betöltési [minta](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) egy minta alkalmazáshoz.
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>Válassza ki a megfelelő adatfolyam-betöltési típust
 
@@ -78,6 +77,10 @@ Két támogatott adatfolyam-betöltési típus létezik:
 * A sémák frissítései, például a táblák és a betöltési leképezések létrehozása és módosítása akár 5 percet is igénybe vehet a streaming betöltési szolgáltatás számára.
 * Az adatfolyamok betöltésének engedélyezése egy fürtön, még akkor is, ha az adatok nem a folyamatos átvitelen keresztül kerülnek betöltésre, a a fürt helyi SSD-lemezének részét képezi a betöltési adatok átviteléhez, és csökkenti a gyors gyorsítótár számára elérhető tárterületet
 * Az adatfolyam-betöltési adatmennyiség [nem állítható](/azure/kusto/management/extents-overview.md#extent-tagging) be.
+
+A streaming betöltés nem támogatja a következő funkciókat:
+* [Adatbázis-kurzorok](/azure/kusto/management/databasecursor).
+* [Adatleképezés](/azure/kusto/management/mappings). Csak az [előre létrehozott](/azure/kusto/management/tables#create-ingestion-mapping) adatleképezés támogatott. 
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -9,17 +9,17 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 3990a9d53a8e53ddd29683440917031bc1bb6448
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 39ab222f64d964e95b16e043c9cdeccd8170ace3
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904651"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651015"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Kapcsolódás SAP-rendszerekhez Azure Logic Apps
 
 > [!IMPORTANT]
-> A korábbi SAP-alkalmazáskiszolgáló és az SAP Message Server-összekötők ütemezése a 2020. február 29-én elavult. A jelenlegi SAP-összekötő összevonja ezeket az előző SAP-összekötőket, így nem kell módosítania a kapcsolat típusát, teljes mértékben kompatibilis az előző összekötővel, számos további képességet biztosít, és folytatja az SAP .net-összekötő függvénytár használatát ( SAP-NKH).
+> A korábbi SAP-alkalmazáskiszolgáló és az SAP Message Server-összekötők a 2020. február 29-én elavultak. A jelenlegi SAP-összekötő összevonja ezeket az előző SAP-összekötőket, így nem kell módosítania a kapcsolat típusát, teljes mértékben kompatibilis az előző összekötővel, számos további képességet biztosít, és folytatja az SAP .net-összekötő függvénytár használatát ( SAP-NKH).
 >
 > A régebbi összekötőket használó logikai alkalmazások esetében [telepítse át a legújabb összekötőt](#migrate) az Érvénytelenítési dátum előtt. Ellenkező esetben ezek a logikai alkalmazások a végrehajtási hibákat tapasztalják, és nem tudnak üzeneteket küldeni az SAP-rendszernek.
 
@@ -300,7 +300,7 @@ Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDOCs egy csomagból
 
 1. A Kezdés előtt egy SAP-triggerrel rendelkező logikai alkalmazásra van szükség. Ha még nem rendelkezik ezzel a logikai alkalmazással, az ebben a témakörben ismertetett lépéseket követve [beállíthat egy SAP-triggerrel rendelkező logikai alkalmazást](#receive-from-sap).
 
-   Példa:
+   Például:
 
    ![SAP-trigger hozzáadása a logikai alkalmazáshoz](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
@@ -556,7 +556,10 @@ Az SAP-összekötő jelenleg ismert problémái és korlátai:
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az [összekötő hivatkozási oldalát](/connectors/sap/).
+Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](https://docs.microsoft.com/connectors/sap/).
+
+> [!NOTE]
+> Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
 ## <a name="next-steps"></a>Következő lépések
 

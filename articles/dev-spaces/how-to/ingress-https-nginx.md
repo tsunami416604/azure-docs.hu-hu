@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Megtudhatja, hogyan konfigurálhatja az Azure dev Spaces-t egyéni NGINX bejövő vezérlő használatára, és hogyan konfigurálhatja a HTTPS-t az adott bejövő vezérlő használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: 39f17636779c4160867311af67ebc621b685f2d3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9c3598ea39dd7b48c622126a9adbaa75d4c9d934
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486202"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622421"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Egyéni NGINX bemenő vezérlő használata és HTTPS konfigurálása
 
@@ -96,7 +96,11 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-Nyissa meg a [Values. YAML][values-yaml] , és cserélje le a *< REPLACE_ME_WITH_HOST_SUFFIX >* összes példányát Nginx-mel *. MY_CUSTOM_DOMAIN* a tartományt a *MY_CUSTOM_DOMAINhoz*. Cserélje le a *kubernetes.IO/ingress.Class: Nginx-azds # dev Spaces-specifikust* a *kubernetes.IO/ingress.Class: Nginx # Custom beáramló*kifejezésre. Az alábbi példa egy frissített `values.yaml` fájlt mutat be:
+Nyissa meg a [Values. YAML][values-yaml] , és végezze el a következő frissítéseket:
+* Cserélje le a *< REPLACE_ME_WITH_HOST_SUFFIX >* összes példányát Nginx-vel *. MY_CUSTOM_DOMAIN* a tartományt a *MY_CUSTOM_DOMAINhoz*. 
+* Cserélje le a *kubernetes.IO/ingress.Class: traefik-azds # dev Spaces-specifikus* with *kubernetes.IO/ingress.Class: Nginx # Custom beáramló*. 
+
+Az alábbi példa egy frissített `values.yaml` fájlt mutat be:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -149,6 +153,9 @@ http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
 Nyissa meg a *bikesharingweb* szolgáltatást a `azds list-uris` parancs nyilvános URL-címének megnyitásával. A fenti példában a *bikesharingweb* szolgáltatás nyilvános URL-címe `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`.
+
+> [!NOTE]
+> Ha a *bikesharingweb* szolgáltatás helyett hibaüzenet jelenik meg, ellenőrizze, hogy a *kubernetes.IO/ingress.Class* jegyzetét és a gazdagépet **is** frissítette-e a *Values. YAML* fájlban.
 
 A `azds space select` parancs használatával hozzon létre egy gyermek területet a *fejlesztői* területen, és sorolja fel az URL-címeket a gyermek fejlesztői terület eléréséhez.
 

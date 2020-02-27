@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 7bf01eea71134d932305cce7665c68d4dcc655cb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e3dffca1d5e98de60941aab4400469810c9cfc30
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712569"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613758"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Windows Server rendszerű virtuális gép csatlakoztatása egy Azure Active Directory Domain Services felügyelt tartományhoz Resource Manager-sablon használatával
 
@@ -86,15 +86,15 @@ Ha Windows Server rendszerű virtuális gépet szeretne létrehozni, csatlakozta
 
     | Beállítás                   | Érték |
     |---------------------------|-------|
-    | -előfizetés              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services. |
+    | Előfizetést              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services. |
     | Erőforráscsoport            | Válassza ki a virtuális géphez tartozó erőforráscsoportot. |
     | Hely                  | Válassza ki a virtuális gép helyét. |
     | Meglévő VNET neve        | Annak a meglévő virtuális hálózatnak a neve, amelyhez a virtuális gépet (például *myVnet*) szeretné kapcsolni. |
     | Létező alhálózat neve      | A meglévő virtuális hálózat alhálózatának neve, például *munkaterhelések*. |
     | DNS-címke előtagja          | Adja meg a virtuális gép számára használandó DNS-nevet (például *myvm*). |
     | Virtuális gép mérete                   | Meg kell adni a virtuális gép méretét, például *Standard_DS2_v2*. |
-    | Csatlakozás tartományhoz            | Az Azure AD DS felügyelt tartomány DNS-neve, például *aadds.contoso.com*. |
-    | Tartomány felhasználóneve           | Az Azure AD DS felügyelt tartomány felhasználói fiókja, amelyet a virtuális gép a felügyelt tartományhoz való csatlakoztatásához kell használni, például `contosoadmin@aadds.contoso.com`. Ennek a fióknak az *Azure ad DC-rendszergazdák* csoport tagjának kell lennie. |
+    | Csatlakozás tartományhoz            | Az Azure AD DS felügyelt tartomány DNS-neve, például *aaddscontoso.com*. |
+    | Tartomány felhasználóneve           | Az Azure AD DS felügyelt tartomány felhasználói fiókja, amelyet a virtuális gép a felügyelt tartományhoz való csatlakoztatásához kell használni, például `contosoadmin@aaddscontoso.com`. Ennek a fióknak az *Azure ad DC-rendszergazdák* csoport tagjának kell lennie. |
     | Tartományi jelszó           | Az előző beállításban megadott felhasználói fiók jelszava. |
     | Választható szervezeti egység elérési útja          | Az az egyéni szervezeti egység, amelyben hozzá szeretné adni a virtuális gépet. Ha nem ad meg értéket ehhez a paraméterhez, a rendszer hozzáadja a virtuális gépet az alapértelmezett *HRE DC számítógépek* szervezeti egységhez. |
     | Virtuális gép rendszergazdai felhasználóneve         | A virtuális gépen létrehozandó helyi rendszergazdai fiókot kell megadnia. |
@@ -119,11 +119,11 @@ Ha meglévő Windows Server rendszerű virtuális gépet szeretne csatlakoztatni
 
     | Beállítás                   | Érték |
     |---------------------------|-------|
-    | -előfizetés              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services. |
+    | Előfizetést              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services. |
     | Erőforráscsoport            | Válassza ki az erőforráscsoportot a meglévő virtuális géppel. |
     | Hely                  | Válassza ki a meglévő virtuális gép helyét. |
     | VIRTUÁLIS gépek listája                   | Adja meg az Azure AD DS felügyelt tartományhoz (például *myVM1, myVM2*) való csatlakozáshoz használandó meglévő virtuális gép (ek) vesszővel tagolt listáját. |
-    | Tartományhoz való csatlakozás felhasználóneve     | Az Azure AD DS felügyelt tartomány felhasználói fiókja, amelyet a virtuális gép a felügyelt tartományhoz való csatlakoztatásához kell használni, például `contosoadmin@aadds.contoso.com`. Ennek a fióknak az *Azure ad DC-rendszergazdák* csoport tagjának kell lennie. |
+    | Tartományhoz való csatlakozás felhasználóneve     | Az Azure AD DS felügyelt tartomány felhasználói fiókja, amelyet a virtuális gép a felügyelt tartományhoz való csatlakoztatásához kell használni, például `contosoadmin@aaddscontoso.com`. Ennek a fióknak az *Azure ad DC-rendszergazdák* csoport tagjának kell lennie. |
     | Tartományhoz való csatlakozás felhasználói jelszava | Az előző beállításban megadott felhasználói fiók jelszava. |
     | Választható szervezeti egység elérési útja          | Az az egyéni szervezeti egység, amelyben hozzá szeretné adni a virtuális gépet. Ha nem ad meg értéket ehhez a paraméterhez, a rendszer hozzáadja a virtuális gépet az alapértelmezett *HRE DC számítógépek* szervezeti egységhez. |
 

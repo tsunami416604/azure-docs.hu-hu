@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: iainfou
-ms.openlocfilehash: e63f330d463be21905467869474527fdf9d6abff
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 2daadb539bc08df37f15c187866b735e45309288
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030197"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612796"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Azure Active Directory Domain Services felügyelt tartomány létrehozása Azure Resource Manager sablon használatával
 
@@ -45,17 +45,17 @@ Azure AD DS-példány létrehozásakor meg kell adnia egy DNS-nevet. A DNS-név 
 * **Nem irányítható tartomány utótagja:** Általában azt javasoljuk, hogy kerülje a nem átirányítható tartománynevek utótagját, például a *contoso. local*nevet. A *. local* utótag nem irányítható, és a DNS-feloldással kapcsolatos problémákat okozhat.
 
 > [!TIP]
-> Ha egyéni tartománynevet hoz létre, gondoskodjon a meglévő DNS-névterekről. Javasoljuk, hogy adjon meg egy egyedi előtagot a tartománynévhez. Ha például a DNS-gyökér neve *contoso.com*, hozzon létre egy Azure AD DS felügyelt tartományt a *corp.contoso.com* vagy a *DS.contoso.com*egyéni tartománynevével. A helyszíni AD DS környezettel rendelkező hibrid környezetekben ezek az előtagok már használatban vannak. Használjon egyedi előtagot az Azure AD DShoz.
+> Ha egyéni tartománynevet hoz létre, gondoskodjon a meglévő DNS-névterekről. Azt javasoljuk, hogy a tartománynevet a meglévő Azure-beli vagy helyszíni DNS-névtértől elkülönítve használja.
 >
-> Használhatja az Azure AD DS felügyelt tartományának legfelső szintű DNS-nevét, de előfordulhat, hogy további DNS-rekordokat kell létrehoznia a környezetében lévő más szolgáltatásokhoz. Ha például olyan webkiszolgálót futtat, amely a gyökér DNS-nevet használja, akkor olyan elnevezési ütközések lehetnek, amelyek további DNS-bejegyzéseket igényelnek.
+> Ha például meglévő DNS- *contoso.com*rendelkezik, hozzon létre egy Azure AD DS felügyelt tartományt a *aaddscontoso.com*egyéni tartománynevével. Ha biztonságos LDAP-t kell használnia, regisztrálnia kell az egyéni tartománynevet a szükséges tanúsítványok létrehozásához.
 >
-> Ezekben az oktatóanyagokban és útmutatókban a *aadds.contoso.com* egyéni tartományát használjuk rövid példaként. Az összes parancsban adja meg a saját tartománynevét, amely tartalmazhat egy egyedi előtagot.
+> Előfordulhat, hogy létre kell hoznia néhány további DNS-rekordot a környezetében lévő más szolgáltatásokhoz, vagy feltételes DNS-továbbítókat a környezet meglévő DNS-neve között. Ha például olyan webkiszolgálót futtat, amely a gyökér DNS-nevet használja, akkor olyan elnevezési ütközések lehetnek, amelyek további DNS-bejegyzéseket igényelnek.
 >
-> További információ: [válasszon egy elnevezési előtagot a tartományhoz][naming-prefix].
+> Ezekben az oktatóanyagokban és útmutatókban a *aaddscontoso.com* egyéni tartományát használjuk rövid példaként. Az összes parancsban adja meg a saját tartománynevét.
 
 A DNS-név következő korlátozásai is érvényesek:
 
-* **Tartományi előtagra vonatkozó korlátozások:** Nem hozhat létre 15 karakternél hosszabb előtaggal rendelkező felügyelt tartományt. A megadott tartománynév előtagja (például a *contoso* a *contoso.com* tartománynévben) legfeljebb 15 karaktert tartalmazhat.
+* **Tartományi előtagra vonatkozó korlátozások:** Nem hozhat létre 15 karakternél hosszabb előtaggal rendelkező felügyelt tartományt. A megadott tartománynév előtagja (például a *aaddscontoso.com* tartomány *aaddscontoso* ) legalább 15 karakterből állhat.
 * **Hálózati név ütközése:** A felügyelt tartomány DNS-tartományneve még nem létezik a virtuális hálózaton. Konkrétan a következő helyzetekben érdemes megkeresni a nevek ütközését:
     * Ha már rendelkezik egy Active Directory tartománnyal ugyanazzal a DNS-tartománynévvel az Azure-beli virtuális hálózaton.
     * Ha a virtuális hálózat, amelyen engedélyezni szeretné a felügyelt tartományt, VPN-kapcsolattal rendelkezik a helyszíni hálózattal. Ebben az esetben győződjön meg arról, hogy nem rendelkezik ugyanazzal a DNS-tartománynévvel rendelkező tartománnyal a helyszíni hálózaton.
@@ -88,7 +88,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 Ha létrehozta a *HRE DC-rendszergazdák* csoportot, adjon hozzá egy felhasználót a csoporthoz az [Add-AzureADGroupMember][Add-AzureADGroupMember] parancsmag használatával. Először a Get [-AzureADGroup][Get-AzureADGroup] parancsmaggal szerezheti be a *HRE DC rendszergazdák* csoportjának azonosítóját, majd a kívánt felhasználó objektumazonosítót a [Get-AzureADUser][Get-AzureADUser] parancsmag használatával.
 
-A következő példában a fiók felhasználói objektumának azonosítója a `admin@contoso.onmicrosoft.com`egyszerű felhasználónevével. Cserélje le ezt a felhasználói fiókot annak a felhasználónak a UPN-fiókjára, amelyet hozzá szeretne adni a *HRE DC-rendszergazdák* csoporthoz:
+A következő példában a fiók felhasználói objektumának azonosítója a `admin@aaddscontoso.onmicrosoft.com`egyszerű felhasználónevével. Cserélje le ezt a felhasználói fiókot annak a felhasználónak a UPN-fiókjára, amelyet hozzá szeretne adni a *HRE DC-rendszergazdák* csoporthoz:
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -98,7 +98,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@aaddscontoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -121,19 +121,19 @@ Nem kell konfigurálnia az Azure AD DS a zónák közötti elosztására. Az Azu
 
 A Resource Manager erőforrás-definíciójának részeként a következő konfigurációs paramétereket kell megadni:
 
-| Paraméter               | Value (Díj) |
+| Paraméter               | Érték |
 |-------------------------|---------|
-| domainName              | A felügyelt tartomány DNS-tartományneve, amely figyelembe veszi az előtagok és az ütközések elnevezésére vonatkozó korábbi pontokat. |
+| DomainName              | A felügyelt tartomány DNS-tartományneve, amely figyelembe veszi az előtagok és az ütközések elnevezésére vonatkozó korábbi pontokat. |
 | filteredSync            | Az Azure AD DS lehetővé teszi az Azure AD-ben elérhető *összes* felhasználó és csoport szinkronizálását, vagy csak bizonyos csoportok *hatókörön* belüli szinkronizálását. Ha úgy dönt, hogy az összes felhasználót és csoportot szinkronizálja, később nem dönthet úgy, hogy csak hatókörön belüli szinkronizálást hajt végre.<br /> A hatókörön belüli szinkronizálással kapcsolatos további információkért lásd: [Azure ad Domain Services hatókörön belüli szinkronizálás][scoped-sync].|
 | notificationSettings    | Ha az Azure AD DS felügyelt tartományában bármilyen riasztás jön létre, a rendszer e-mail-értesítéseket küldhet. <br />Az Azure-bérlő *globális rendszergazdái* és a *HRE DC-rendszergazdák* csoport tagjai is *engedélyezhetők* ezekhez az értesítésekhez.<br /> Ha kívánja, további címzetteket is hozzáadhat az értesítésekhez, ha olyan riasztásokra van szükség, amelyeknek figyelmet igényelnek.|
 | domainConfigurationType | Alapértelmezés szerint az Azure AD DS felügyelt tartomány *felhasználói* erdőként jön létre. Ez a típusú erdő az Azure AD összes objektumát szinkronizálja, beleértve a helyszíni AD DS környezetben létrehozott felhasználói fiókokat is. Felhasználói erdő létrehozásához nem kell *tartománykonfigurációt* értéket megadnia.<br /> Az *erőforrás* -erdő csak a közvetlenül az Azure ad-ben létrehozott felhasználókat és csoportokat szinkronizálja. Az erőforrás-erdők jelenleg előzetes verzióban érhetők el. Állítsa a *ResourceTrusting* értéket az erőforrás-erdő létrehozásához.<br />Az *erőforrás* -erdőkkel kapcsolatos további információkért, beleértve az egyiket, és hogyan hozhat létre erdőszintű megbízhatósági kapcsolatot a helyszíni AD DS-tartományokkal, tekintse meg az [Azure AD DS Resource Forests – áttekintés][resource-forests]című témakört.|
 
-A következő tömörített paraméterek definíciója az értékek deklarált módját mutatja be. Létrejön egy *aadds.contoso.com* nevű felhasználói erdő az Azure ad-vel az Azure AD DS felügyelt tartományhoz szinkronizált összes felhasználóval:
+A következő tömörített paraméterek definíciója az értékek deklarált módját mutatja be. Létrejön egy *aaddscontoso.com* nevű felhasználói erdő az Azure ad-vel az Azure AD DS felügyelt tartományhoz szinkronizált összes felhasználóval:
 
 ```json
 "parameters": {
     "domainName": {
-        "value": "aadds.contoso.com"
+        "value": "aaddscontoso.com"
     },
     "filteredSync": {
         "value": "Disabled"
@@ -176,7 +176,7 @@ Ezek a paraméterek és erőforrástípus egy szélesebb körű Resource Manager
 
 ## <a name="create-a-managed-domain-using-sample-template"></a>Felügyelt tartomány létrehozása sablon használatával
 
-A következő teljes Resource Manager-sablon létrehoz egy Azure AD DS felügyelt tartományt és a támogató virtuális hálózat, alhálózat és hálózati biztonsági csoport szabályait. A hálózati biztonsági csoport szabályai a felügyelt tartomány biztonságossá tételéhez szükségesek, és gondoskodni kell a forgalom megfelelő áramlását. Létrejön egy *aadds.contoso.com* DNS-névvel rendelkező felhasználói erdő, amely az Azure ad-ből szinkronizált összes felhasználóval rendelkezik:
+A következő teljes Resource Manager-sablon létrehoz egy Azure AD DS felügyelt tartományt és a támogató virtuális hálózat, alhálózat és hálózati biztonsági csoport szabályait. A hálózati biztonsági csoport szabályai a felügyelt tartomány biztonságossá tételéhez szükségesek, és gondoskodni kell a forgalom megfelelő áramlását. Létrejön egy *aaddscontoso.com* DNS-névvel rendelkező felhasználói erdő, amely az Azure ad-ből szinkronizált összes felhasználóval rendelkezik:
 
 ```json
 {
@@ -190,7 +190,7 @@ A következő teljes Resource Manager-sablon létrehoz egy Azure AD DS felügyel
             "value": "FullySynced"
         },
         "domainName": {
-            "value": "aadds.contoso.com"
+            "value": "aaddscontoso.com"
         },
         "filteredSync": {
             "value": "Disabled"

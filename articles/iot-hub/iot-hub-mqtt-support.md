@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 694697be85b61ad2d59a0a4be1ced3581873cb77
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111754"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648495"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -161,28 +161,27 @@ A tárház tartalma:
 
 **Windows esetén:**
 
-• TelemetryMQTTWin32: olyan kódot tartalmaz, amely telemetria üzenetet küld egy Azure IoT hub-ra, amely egy Windows rendszerű gépen lett létrehozva és futtatva.
+* TelemetryMQTTWin32: olyan kódot tartalmaz, amely telemetria üzenetet küld egy Azure IoT hub-ra, amely Windows rendszerű gépen lett létrehozva és futtatva.
 
-• SubscribeMQTTWin32: olyan kódot tartalmaz, amely egy Windows rendszerű gépen lévő adott IoT hub eseményeire fizet elő.
+* SubscribeMQTTWin32: olyan kódot tartalmaz, amely egy Windows rendszerű gépen lévő adott IoT hub eseményeire fizet elő.
 
-• DeviceTwinMQTTWin32: olyan kódot tartalmaz, amely lekérdezi és Előfizeti a Windows rendszerű számítógépeken lévő Azure IoT hub eszközön található eszközök kettős eseményeit.
+* DeviceTwinMQTTWin32: olyan kódot tartalmaz, amely lekérdezi és előfizet egy eszköznek az Azure IoT hub-ban egy Windows rendszerű gépen lévő eszközének kettős eseményeire.
 
-• PnPMQTTWin32: olyan kódot tartalmaz, amely egy telemetria-üzenetet küld a IoT beépülő & modulnak, amely a Windows rendszerű gépeken létrehozott és futtatott Azure-beli IoT-eszközökön is megtekinthető. További információ a IoT Plug & [játékról](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
+* PnPMQTTWin32: olyan kódot tartalmaz, amely egy telemetria-üzenetet küld a IoT beépülő & modulnak, amely a Windows rendszerű gépeken létrehozott és futtatott Azure IoT hub-eszközökre vonatkozó képességeket jelenít meg. További információ a IoT Plug & [játékról](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
 
 **Linux esetén:**
 
-• MQTTLinux: tartalmazza a kód és a Build szkriptet a Linuxon való futtatáshoz (WSL, Ubuntu és Raspbian).
+* MQTTLinux: kód-és Build-szkriptet tartalmaz a Linuxon való futtatáshoz (WSL, Ubuntu és Raspbian).
 
-• LinuxConsoleVS2019: ugyanazt a kódot tartalmazza, de egy VS2019-projekt WSL (Windows Linux alrendszer). Ez a projekt lehetővé teszi a Linux lépésről lépésre futó kód hibakeresését a Visual studióból.
+* LinuxConsoleVS2019: ugyanazt a kódot tartalmazza, de egy VS2019-projekt WSL (Windows Linux alrendszer). Ez a projekt lehetővé teszi a Linux lépésről lépésre futó kód hibakeresését a Visual studióból.
 
 **Mosquitto_pub esetén:**
 
-• Ez a mappa két mintát tartalmaz, amelyeket a Mosquitto.org által biztosított mosquitto_pub Utility eszközzel használ.
+Ez a mappa két, a Mosquitto.org által biztosított mosquitto_pub segédprogram eszközzel használható mintát tartalmaz.
 
-Mosquitto_sendmessage: egyszerű szöveges üzenet küldése egy eszközként működő Azure IoT hub-nak.
+* Mosquitto_sendmessage: egyszerű szöveges üzenet küldése egy eszközként működő Azure IoT hub-nak.
 
-Mosquitto_subscribe: az Azure IoT hub-ban előforduló események megtekintéséhez.
-
+* Mosquitto_subscribe: az Azure IoT hub-ban előforduló események megtekintéséhez.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>A MQTT protokoll használata közvetlenül (modulként)
 
@@ -342,7 +341,7 @@ A lehetséges állapotkódok a következők:
 
 |status | Leírás |
 | ----- | ----------- |
-| 204 | Sikeres (a rendszer nem ad vissza tartalmat) |
+| 200 | Sikeres |
 | 429 | Túl sok kérés (szabályozott) a [IoT hub szabályozása](iot-hub-devguide-quotas-throttling.md) szerint |
 | 5** | Kiszolgálói hibák |
 
@@ -373,7 +372,7 @@ A lehetséges állapotkódok a következők:
 
 |status | Leírás |
 | ----- | ----------- |
-| 200 | Sikeres |
+| 204 | Sikeres (a rendszer nem ad vissza tartalmat) |
 | 400 | Hibás kérelem. Helytelen formátumú JSON |
 | 429 | Túl sok kérés (szabályozott) a [IoT hub szabályozása](iot-hub-devguide-quotas-throttling.md) szerint |
 | 5** | Kiszolgálói hibák |

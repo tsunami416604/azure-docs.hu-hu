@@ -3,12 +3,12 @@ title: A Jenkins Azure dev Spaces beépülő moduljának használata az Azure Ku
 description: Ismerje meg, hogyan használható az Azure dev Spaces beépülő modul a folyamatos integrációs folyamatokban.
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 9dba0307db8ebbf07422fd770ea336b2abc031bd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 10dfbdb7d89d6f3870ec3b9dbd87d4d315360815
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209674"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619978"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Oktatóanyag: a Jenkins Azure dev Spaces beépülő moduljának használata az Azure Kubernetes Service használatával 
 
@@ -409,16 +409,5 @@ az group delete -y --no-wait -n MyResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a cikkből megtudhatta, hogyan használhatja a Jenkins-hez készült Azure dev Spaces beépülő modult és a Azure Container Registry beépülő modult a kód összeállításához és a fejlesztői területekre való üzembe helyezéshez.
-
-Az alábbi források további információkat nyújtanak az Azure fejlesztői tárhelyekről, az ACR-feladatokról és a CI/CD-ről a Jenkins segítségével.
-
-Azure dev-helyek:
-* [Az Azure Dev Spaces működése és konfigurálása](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works)
-
-ACR-feladatok:
-* [Operációs rendszer és keretrendszer javításának automatizálása az ACR Tasksszal](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-* [Automatikus Build kód véglegesítve](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-
-CI/CD az Azure-beli Jenkins-szel:
-* [Jenkins folyamatos üzembe helyezése](https://docs.microsoft.com/azure/aks/jenkins-continuous-deployment)
+> [!div class="nextstepaction"]
+> [CI/CD az Azure-beli Jenkins-szel](jenkins-continuous-deployment.md)

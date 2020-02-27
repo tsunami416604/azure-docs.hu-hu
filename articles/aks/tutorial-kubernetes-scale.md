@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 01/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 5335cd2931fee98bb5fa59f0c2bb642a01c296f6
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 7db80e9bf0bd864762a88680132d77a3c5d21f19
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593240"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621094"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service-ben (AKS)
 
@@ -54,7 +54,7 @@ kubectl scale --replicas=5 deployment/azure-vote-front
 Futtassa újra a [kubectl][kubectl-get] , és ellenőrizze, hogy az AK létrehozza-e a további hüvelyeket. Hozzávetőleg egy perc elteltével az újabb podok elérhetők a fürtön:
 
 ```console
-$ kubectl get pods
+kubectl get pods
 
                                     READY     STATUS    RESTARTS   AGE
 azure-vote-back-2606967446-nmpcf    1/1       Running   0          15m
@@ -131,13 +131,13 @@ spec:
 Használja a `kubectl apply` az `azure-vote-hpa.yaml` jegyzékfájlban definiált autoskálázás alkalmazásához.
 
 ```
-$ kubectl apply -f azure-vote-hpa.yaml
+kubectl apply -f azure-vote-hpa.yaml
 ```
 
 Az automatikus skálázó állapotának megtekintéséhez használja a `kubectl get hpa` parancsot a következőképpen:
 
 ```
-$ kubectl get hpa
+kubectl get hpa
 
 NAME               REFERENCE                     TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
 azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        3          2m
