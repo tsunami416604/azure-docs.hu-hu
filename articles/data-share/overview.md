@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: d1bfad64175ad5b29e4ec158ebe8d8e982b8b100
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 363feda1409d2bb54e60d1b2168cba38f2a8a41c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964447"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621856"
 ---
 # <a name="what-is-azure-data-share"></a>Mi az az Azure Data Share?
 
@@ -23,7 +23,7 @@ Az Azure-beli adatmegosztás lehetővé teszi, hogy a szervezetek egyszerűen é
 
 Az adatszolgáltatók az adatmegosztásra vonatkozó használati feltételek megadásával szabályozhatják az adatkezelés módját. Az adatfelhasználónak el kell fogadnia ezeket a feltételeket ahhoz, hogy adatokat fogadhasson. Az adatszolgáltatók meghatározhatják, hogy az adatfelhasználók milyen gyakorisággal kapjanak frissítéseket. Az új frissítésekhez való hozzáférést az adatszolgáltató bármikor visszavonhatja. 
 
-Az Azure-adatmegosztás segít az elemzések fejlesztésében azáltal, hogy megkönnyíti a harmadik féltől származó adatok egyesítését az elemzési és AI-forgatókönyvekhez. Az Azure-adatmegosztás használatával könnyedén felkészítheti, feldolgozhatja és elemezheti az Azure-beli adatmegosztással megosztott adatkezelési eszközöket. 
+Az Azure-adatmegosztás segít az elemzések fejlesztésében azáltal, hogy megkönnyíti a harmadik féltől származó adatok egyesítését az elemzési és AI-forgatókönyvekhez. Az Azure Analytics eszközeinek segítségével könnyedén felkészítheti, feldolgozhatja és elemezheti az Azure-adatmegosztás használatával megosztott adatmennyiségeket. 
 
 Az adatszolgáltatónak és az adatfogyasztónak is rendelkeznie kell egy Azure-előfizetéssel az adatmegosztáshoz és az adatfogadáshoz. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
@@ -35,7 +35,7 @@ Az Azure-adatmegosztás használatával egy adott iparág számára is létrehoz
 
 Az Azure-adatmegosztás egy másik használati esete egy adatkonzorcium létrehozása. Például számos különböző kutatóintézet egyetlen megbízható törzstel oszthatja meg az adatmegosztást. Az adatokat elemezze, összesíti vagy dolgozza fel az Azure Analytics-eszközök használatával, majd megoszthatja őket az érdekelt felekkel. 
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
 Az Azure-beli adatmegosztás jelenleg pillanatkép-alapú megosztást és helyi megosztást biztosít. 
 
@@ -49,7 +49,7 @@ Amikor az adatfogyasztó elfogad egy adatmegosztást, a rendszer az adott adatt�
 
 A helyszíni megosztással az adatszolgáltatók megoszthatják az adatok másolását az adatok másolása nélkül. Miután megtörténik a megosztási kapcsolat létrehozása a Meghívási folyamaton keresztül, a rendszer egy szimbolikus hivatkozást hoz létre az adatszolgáltató forrás-adattára és az adatfogyasztó céljának adattára között. Az adatfogyasztók valós időben tudják olvasni és lekérdezni az adataikat a saját adattárával. A forrás adattár változásai azonnal elérhetők az adatfogyasztó számára. A helyszíni megosztás jelenleg előzetes verzióban érhető el az Azure Adatkezelő.
 
-## <a name="key-capabilities"></a>Főbb képességek
+## <a name="key-capabilities"></a>Főbb funkciók
 
 Az Azure-adatmegosztás lehetővé teszi az adatszolgáltatók számára a következőket:
 

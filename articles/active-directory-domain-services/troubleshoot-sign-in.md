@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: aa03e388019bf696324ea7af6062ec98386df5fa
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0585ced3bc53f216ab203b4686b5800b5e14bbbd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827051"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612745"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services felügyelt tartományhoz tartozó bejelentkezési problémák elhárítása
 
@@ -32,7 +32,7 @@ Egy olyan felhasználói fiók leggyakoribb oka, amely nem tud bejelentkezni egy
 
 A címtár méretétől függően eltarthat egy ideig, amíg a felhasználói fiókok és a hitelesítőadat-kivonatok elérhetők lesznek az Azure AD DSban. Nagyméretű könyvtárak esetén ez az Azure AD-ből származó első egyirányú szinkronizálás néhány órát és akár két napot is igénybe vehet. Győződjön meg arról, hogy elég sokáig vár a hitelesítés újrapróbálkozása előtt.
 
-Olyan hibrid környezetek esetén, amelyeket a felhasználó Azure AD Connect a helyszíni címtáradatok Azure AD-ba való szinkronizálására, győződjön meg arról, hogy a Azure AD Connect legújabb verzióját futtatja, és úgy [konfigurálta a Azure ad Connect, hogy az Azure engedélyezése után teljes szinkronizálást végezzen. AD DS][azure-ad-connect-phs]. Ha letiltja az Azure AD DS, majd újra engedélyezi, kövesse az alábbi lépéseket.
+Olyan hibrid környezetek esetén, amelyeket a felhasználó Azure AD Connect a helyszíni címtáradatok Azure AD-ba való szinkronizálására, győződjön meg arról, hogy a Azure AD Connect legújabb verzióját futtatja, és az [azure AD DS engedélyezése után teljes szinkronizálást konfigurált Azure ad Connect][azure-ad-connect-phs]. Ha letiltja az Azure AD DS, majd újra engedélyezi, kövesse az alábbi lépéseket.
 
 Ha továbbra is problémákba ütközik a Azure AD Connect használatával nem szinkronizált fiókok esetében, indítsa újra a Azure AD-szinkronizáló szolgáltatást. Nyisson meg egy parancssori ablakot a Azure AD Connect telepített számítógépen, és futtassa a következő parancsokat:
 
@@ -59,7 +59,7 @@ Az Azure AD DS felügyelt tartományokat nem helyszíni szinkronizálás nélkü
     * [Módosítsa a fiók jelszavát][enable-user-accounts] a szükséges jelszó-kivonatok létrehozásához, majd várjon 15 percet, mielőtt újra bejelentkezik.
     * Ha letiltja az Azure AD DS, majd újra engedélyezi, minden fióknak újra kell követnie a lépéseket a jelszavuk módosításához és a szükséges jelszó-kivonatok létrehozásához.
 * **Igen, a jelszó megváltozott.**
-    * Próbáljon meg az *egyszerű felhasználónév (UPN* ) formátumával bejelentkezni, például `driley@contoso.com`, a *sAMAccountName* formátum helyett, például `CONTOSO\deeriley`.
+    * Próbáljon meg az *egyszerű felhasználónév (UPN* ) formátumával bejelentkezni, például a `driley@aaddscontoso.com`t a *sAMAccountName* formátum helyett, például `AADDSCONTOSO\deeriley`.
     * Előfordulhat, hogy a *sAMAccountName* automatikusan jön létre azon felhasználók számára, akiknek UPN-előtagja túl hosszú, vagy a felügyelt tartomány egy másik felhasználója. Az *UPN* formátuma garantáltan egyedi az Azure ad-bérlőn belül.
 
 ## <a name="the-account-is-locked-out"></a>A fiók ki van zárva
@@ -70,7 +70,7 @@ Alapértelmezés szerint, ha 2 percen belül 5 hibás jelszóval próbálkozik, 
 
 További információ és a fiókzárolási problémák megoldása: fiókzárolási [problémák elhárítása az Azure ad DSban][troubleshoot-account-lockout].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha továbbra sem sikerül csatlakoztatni a virtuális gépet az Azure AD DS felügyelt tartományhoz, [keressen segítséget a Azure Active Directory támogatási jegyének megnyitásához][azure-ad-support].
 

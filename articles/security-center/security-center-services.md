@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8700421551af227f158abaa38d5f96c8e2987ba3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 8d905da733ea0573b91b289da43684ed8083c804
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603402"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616373"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>A Azure Security Centerban elérhető támogatott szolgáltatások
 
@@ -39,9 +39,9 @@ A következő szakaszban Security Center a [támogatott platformokhoz](security-
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure Virtual Machines**|**Azure-Virtual Machine Scale Sets**|**Nem Azure-beli gépek**|**Díjszabás**
 |[Microsoft Defender ATP-integráció](security-center-wdatp.md)|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|Standard|
-|[A virtuális gép viselkedési elemzési veszélyforrások észlelésével kapcsolatos riasztások](security-center-alerts-iaas.md)|✔|✔|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
+|[A virtuális gép viselkedési elemzési veszélyforrások észlelésével kapcsolatos riasztások](threat-protection.md)|✔|✔|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
 |[A fájlok nem észlelhető veszélyforrások észlelésével kapcsolatos riasztások](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
-|[Hálózati veszélyforrások észlelésével kapcsolatos riasztások](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[Hálózati veszélyforrások észlelésével kapcsolatos riasztások](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[VIRTUÁLIS gépek igény szerinti elérése](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Natív sebezhetőségi felmérés](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Fájl integritásának figyelése](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
@@ -67,7 +67,7 @@ A következő szakaszban Security Center a [támogatott platformokhoz](security-
 |[Microsoft Defender ATP-integráció](security-center-wdatp.md)|-|-|-|Standard|
 |[A virtuális gép viselkedési elemzési veszélyforrások észlelésével kapcsolatos riasztások](security-center-alerts-iaas.md)|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
 |[A fájlok nem észlelhető veszélyforrások észlelésével kapcsolatos riasztások](alerts-reference.md#alerts-windows)|-|-|-|Standard|
-|[Hálózati veszélyforrások észlelésével kapcsolatos riasztások](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[Hálózati veszélyforrások észlelésével kapcsolatos riasztások](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[VIRTUÁLIS gépek igény szerinti elérése](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Natív sebezhetőségi felmérés](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Fájl integritásának figyelése](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|

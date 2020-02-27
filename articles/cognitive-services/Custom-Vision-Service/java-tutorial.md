@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 02/25/2020
 ms.author: areddish
-ms.openlocfilehash: 2b3c6fc404e9a5fefc15aa7b7162ff5573c3be5a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: a0cfa49dfe247a71e5c2d546e2bb7e9d9b2efc18
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166138"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616350"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>Rövid útmutató: Képosztályozási projekt létrehozása a Javához készült Custom Vision SDK-val
 
@@ -25,14 +25,14 @@ Ez a cikk bemutatja, hogyan kezdheti el a Custom Vision Java SDK-t a rendszerké
 
 - Egy tetszőleges Java IDE
 - Telepített [JDK 7 vagy 8](https://aka.ms/azure-jdks).
-- Telepített Maven
+- Telepített [Maven](https://maven.apache.org/)
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>A Custom Vision SDK és a mintakód letöltése
 
 A Custom Visiont használó Java-alkalmazás megírásához a Custom Vision Maven-csomagokra lesz szüksége. Ezek a csomagok a letöltött minta projekt részét képezik, de ezeket külön-külön is elérheti.
 
-A Custom Vision SDK telepíthető a maven központi tárából:
+A Custom Vision SDK a Maven központi adattárában található:
 
 - [Betanítási SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 - [Előrejelzési SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
@@ -43,7 +43,10 @@ Ez a Java-projekt létrehoz egy új képosztályozási Custom Vision-projektet _
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
-A program a konfigurációja szerint az azonosító adatait környezeti változókként tárolja. A változók beállításához lépjen a **Vision/CustomVision** mappára a PowerShellben. Ezután írja be a következő parancsokat:
+A program úgy van konfigurálva, hogy környezeti változókként hivatkozzon a legfontosabb adataira. Lépjen a **jövőkép/CustomVision** mappára, és adja meg a következő PowerShell-parancsokat a környezeti változók beállításához. 
+
+> [!NOTE]
+> Ha nem Windows operációs rendszert használ, tekintse meg a [környezeti változók konfigurálása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication) az utasításokhoz című témakört.
 
 ```powershell
 $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
@@ -88,9 +91,9 @@ Az előrejelzési végpont (itt a `predictor` objektum jelöli) az a hivatkozás
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-A megoldás a Mavennel való fordításához és futtatásához futtassa a következő parancsot a PowerShellben lévő projektkönyvtárban:
+A megoldás a Maven használatával történő fordításához és futtatásához navigáljon a Project Directory (**jövőkép/CustomVision**) parancssorba, és hajtsa végre a Run parancsot:
 
-```powershell
+```bash
 mvn compile exec:java
 ```
 

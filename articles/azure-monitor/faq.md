@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/23/2020
-ms.openlocfilehash: 33af9c8f3fbe4de57d65be432f249d4aeb5d3e27
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 169cc3f6a195a7339ab33eb9f00d9937451a93e0
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485335"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620449"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -56,7 +56,7 @@ A Azure Monitor különböző forrásokból gyűjt adatokat, beleértve az Azure
 Azure Monitor a különböző forrásokból származó adatokat [naplókba](platform/data-platform-logs.md) vagy [metrikába](platform/data-platform-metrics.md)gyűjti. Az egyes adattípusok viszonylagos előnyökkel rendelkeznek, és mindegyikük a Azure Monitor szolgáltatásainak egy adott készletét támogatja. Minden Azure-előfizetéshez egyetlen metrikai adatbázis van, míg a követelményektől függően több Log Analytics munkaterületet is létrehozhat a naplók gyűjtéséhez. Lásd: [Azure monitor adatplatform](platform/data-platform.md).
 
 ### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>Van-e a Azure Monitor összegyűjtött adatok maximális mennyisége?
-A begyűjthető metrikus adatok mennyisége nincs korlátozva, de ezeket az adatokat legfeljebb 93 napig tároljuk. Lásd: [mérőszámok megőrzése](platform/data-platform-metrics.md#retention-of-metrics). Az összegyűjtött naplózási adatok mennyisége nincs korlátozva, de a Log Analytics munkaterülethez választott díjszabási szinten is hatással lehet. Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/monitor/).
+A begyűjthető metrikus adatok mennyisége nincs korlátozva, de ezeket az adatokat legfeljebb 93 napig tároljuk. Lásd: [mérőszámok megőrzése](platform/data-platform-metrics.md#retention-of-metrics). Az összegyűjtött naplózási adatok mennyisége nem korlátozható, de a Log Analytics munkaterülethez választott díjszabási szinten is hatással lehet. Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>Hogyan Azure Monitor által gyűjtött adatokhoz való hozzáférést?
 Az elemzések és megoldások egyéni felhasználói élményt biztosítanak a Azure Monitor tárolt adatkezelési feladatok elvégzéséhez. A Kusto lekérdezési nyelvben (KQL) írt napló lekérdezéssel közvetlenül is dolgozhat a naplózási adataival. A Azure Portalban lekérdezéseket írhat és futtathat, és interaktív módon elemezheti az adatelemzést Log Analytics használatával. A Azure Portal metrikáinak elemzése a Metrikaböngésző. Lásd: a [naplózási információk elemzése Azure monitor](log-query/log-query-overview.md) és [Az Azure Metrikaböngésző első lépései](platform/metrics-getting-started.md).

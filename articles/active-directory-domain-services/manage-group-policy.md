@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 32020341c7ac3bf33082ba365f053a613dcdffc2
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 74d9aa8228e841b17313fb3c15efe459ccd7339a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705080"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613583"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Csoportházirend felügyelete Azure AD Domain Services felügyelt tartományban
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan telepítheti a Csoportházirend felügyeleti eszköz
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
@@ -53,7 +53,7 @@ Csoportházirend objektum (GPO-k) létrehozásához és konfigurálásához tele
 1. A **Kiszolgálókezelő** ablak *irányítópult* paneljén válassza a **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
 1. A *szerepkörök és szolgáltatások hozzáadása varázsló*alapismeretek **lapján kattintson a** **Tovább gombra**.
 1. A *telepítés típusa*beállításnál hagyja bejelölve a **szerepköralapú vagy a szolgáltatáson alapuló telepítési** beállítást, majd kattintson a **Tovább gombra**.
-1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.aadds.contoso.com*, majd kattintson a **tovább**gombra.
+1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.aaddscontoso.com*, majd kattintson a **tovább**gombra.
 1. A **kiszolgálói szerepkörök** lapon kattintson a **tovább**gombra.
 1. A **szolgáltatások** lapon válassza ki a **csoportházirend felügyeleti** funkciót.
 
@@ -76,7 +76,7 @@ Alapértelmezett csoportházirend-objektumok (GPO-k) léteznek az Azure AD DS fe
 
 Két beépített Csoportházirend objektum (GPO) van egy Azure AD DS felügyelt tartományhoz – egyet a *AADDC számítógépek* tárolóhoz, egyet pedig a *AADDC-felhasználók* tárolóhoz. Ezeket a csoportházirend-objektumokat testreszabhatja úgy, hogy szükség szerint konfigurálja a csoportházirendet az Azure AD DS felügyelt tartományon belül.
 
-1. A **csoportházirend felügyeleti** konzolon bontsa ki az **erdő: aadds.contoso.com** csomópontot. Ezután bontsa ki a **tartományok** csomópontokat.
+1. A **csoportházirend felügyeleti** konzolon bontsa ki az **erdő: aaddscontoso.com** csomópontot. Ezután bontsa ki a **tartományok** csomópontokat.
 
     Két beépített tároló létezik a *AADDC számítógépek* és a *AADDC-felhasználók*számára. Ezen tárolók mindegyike alapértelmezett GPO-t alkalmaz.
 
