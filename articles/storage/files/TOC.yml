@@ -37,18 +37,12 @@
       href: storage-snapshots-files.md
     - name: Méretezhetőségi és teljesítménycélok
       href: storage-files-scale-targets.md
-    - name: Biztonság
-      items:
-        - name: Engedélyezés
-          href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure Storage-titkosítás
-          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Identitásalapú hitelesítés és engedélyezés
-          href: storage-files-active-directory-overview.md
-        - name: Az Azure Private Endpoints használata
-          href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Megfelelőségi ajánlatok
-          href: ../common/storage-compliance-offerings.md
+    - name: Identitásalapú hitelesítés és engedélyezés
+      href: storage-files-active-directory-overview.md
+    - name: Inaktív adatok titkosítása
+      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Megfelelőségi ajánlatok
+      href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Fejlesztés
       items:
         - name: Egyidejűség kezelése
@@ -67,17 +61,13 @@
           href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Storage Analytics-metrikák (klasszikus)
           href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Adatredundancia
-      href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Vészhelyreállítás és feladatátvétel
-      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: GYIK
       href: storage-files-faq.md
 - name: Útmutatók
   items:
     - name: Létrehozás
       items:
-        - name: Standard szintű fájlmegosztás létrehozása
+        - name: Fájlmegosztás létrehozása
           href: storage-how-to-create-file-share.md
         - name: Nagy fájlok megosztásának engedélyezése
           href: storage-files-how-to-create-large-file-share.md
@@ -129,20 +119,8 @@
       items:
         - name: Migrálás az Azure File Syncre
           href: storage-sync-offline-data-transfer.md
-        - name: Adatok áthelyezése az Azure Storage szolgáltatásba vagy onnan máshová
-          href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Migrálás StorSimple-ből Azure File Syncre
           href: storage-sync-files-storsimple-migration.md
-        - name: Adatok áthelyezése az AzCopyval
-          items:
-            - name: Bevezetés
-              href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Használat a Files szolgáltatással
-              href: ../common/storage-use-azcopy-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: 'Konfigurálás, optimalizálás, hibaelhárítás'
-              href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Adatok átvitele az adatátviteli kódtárral
-              href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Fejlesztés
       items:
         - name: Kapcsolati sztringek konfigurálása
@@ -174,9 +152,9 @@
         - name: Biztonságos átvitel megkövetelése
           href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: AD-hitelesítés és -engedélyezés engedélyezése
-          href: storage-files-active-directory-domain-services-enable.md
+          href: storage-files-identity-auth-active-directory-enable.md
         - name: Az Azure AD tartományi szolgáltatások hitelesítésének és engedélyezésének engedélyezése
-          href: storage-files-active-directory-enable.md
+          href: storage-files-identity-auth-active-directory-domain-service-enable.md
         - name: Biztonságos TLS engedélyezése az Azure Storage-ügyfélnek
           href: ../common/storage-security-tls.md
     - name: Hibaelhárítás
@@ -235,42 +213,6 @@
       href: 'https://azure.github.io/azure-storage-ios/'
     - name: Android
       href: 'https://azure.github.io/azure-storage-android'
-    - name: AzCopy (10-es verzió)
-      items:
-        - name: azcopy
-          href: ../common/storage-ref-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy bench
-          href: ../common/storage-ref-azcopy-bench.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy copy
-          href: ../common/storage-ref-azcopy-copy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy doc
-          href: ../common/storage-ref-azcopy-doc.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy env
-          href: ../common/storage-ref-azcopy-env.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy jobs
-          href: ../common/storage-ref-azcopy-jobs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy jobs clean
-          href: ../common/storage-ref-azcopy-jobs-clean.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy jobs list
-          href: ../common/storage-ref-azcopy-jobs-list.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy jobs remove
-          href: ../common/storage-ref-azcopy-jobs-remove.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy jobs resume
-          href: ../common/storage-ref-azcopy-jobs-resume.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy jobs show
-          href: ../common/storage-ref-azcopy-jobs-show.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy list
-          href: ../common/storage-ref-azcopy-list.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy login
-          href: ../common/storage-ref-azcopy-login.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy logout
-          href: ../common/storage-ref-azcopy-logout.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy make
-          href: ../common/storage-ref-azcopy-make.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy remove
-          href: ../common/storage-ref-azcopy-remove.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy sync
-          href: ../common/storage-ref-azcopy-sync.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Resource Manager-sablon
       displayName: arm
       href: /azure/templates/microsoft.storage/allversions
@@ -282,18 +224,6 @@
       href: 'https://azure.microsoft.com/updates/?category=storage'
     - name: Az Azure File Sync kibocsátási megjegyzései
       href: storage-files-release-notes.md
-    - name: Azure Storage Explorer
-      items:
-        - name: A Storage Explorer letöltése
-          href: 'https://azure.microsoft.com/features/storage-explorer/'
-        - name: A Storage Explorer használatának első lépései
-          href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: A Storage Explorer kibocsátási megjegyzései
-          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: A Storage Explorer hibaelhárítása
-          href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Storage Explorer – kisegítő lehetőségek
-          href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Azure Storage-fórum
       href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
     - name: Az Azure Storage a Stack Overflow-n

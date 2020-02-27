@@ -62,10 +62,12 @@
               href: threat-modeling-tool-releases-71601261.md
             - name: 'A Threat Modeling Tool frissített kiadása: 7.1.60408.1 – 2019. április 9.'
               href: threat-modeling-tool-releases-71604081.md
-            - name: 'A Threat Modeling Tool frissített kiadása: 7.1.60702.1 – 7/02/2019'
+            - name: 'A Threat Modeling Tool frissített kiadása: 7.1.60702.1 – 2019. július 2.'
               href: threat-modeling-tool-releases-71607021.md
-            - name: 'A Threat Modeling Tool frissített kiadása: 7.1.61015.1 – 2019. 10. 16.'
+            - name: 'A Threat Modeling Tool frissített kiadása: 7.1.61015.1 – 2019. október 16.'
               href: threat-modeling-tool-releases-71610151.md
+            - name: 'A Threat Modeling Tool frissített kiadása: 7.3.00206.1 – 2020. február 11.'
+              href: threat-modeling-tool-releases-73002061.md
         - name: Kezelési lehetőségek
           href: threat-modeling-tool-mitigations.md
           items:

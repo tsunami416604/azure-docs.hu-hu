@@ -23,9 +23,11 @@
     - name: A Personalizer működése
       href: how-personalizer-works.md
       displayName: 'rank, reward, api, explore, exploit, score, design, research, loop, action, context, feature, JSON, event, inactive, model'
-    - name: Hol használhatja a Personalizert?
+    - name: Hol érdemes használni a Personalizert?
       href: where-can-you-use-personalizer.md
       displayName: 'checklist, considerations, effectiveness, recommendation engine'
+    - name: Terminológia
+      href: terminology.md
     - name: Etika és felelős használat
       href: ethics-responsible-use.md
       displayName: 'best practice, design'
@@ -34,9 +36,11 @@
         - name: Funkciók – Művelet és környezet
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set, ID, guid, event id,'
-        - name: Aktív és inaktív események
+        - name: Tanulási szabályzat
           href: concept-active-learning.md
           displayName: 'active, inactive'
+        - name: Aktív és inaktív események
+          href: concept-active-inactive-events.md
         - name: Jutalmak
           href: concept-rewards.md
           displayName: 'reward, wait time, default reward'
@@ -56,15 +60,15 @@
       href: concepts-scalability-performance.md
 - name: Útmutatók
   items:
-    - name: Személyre szabó létrehozása és konfigurálása
+    - name: Personalizer-erőforrás létrehozása
+      href: how-to-create-resource.md
+    - name: Tanulási hurok konfigurálása
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
-    - name: A tanulási szabályzat kezelése
-      href: how-to-learning-policy.md
-    - name: Elemzés
-      items:
-        - name: Offline értékelés
-          href: how-to-offline-evaluation.md
+    - name: Modell- és tanulási beállítások kezelése
+      href: how-to-manage-model.md
+    - name: Elemzés offline értékeléssel
+      href: how-to-offline-evaluation.md
 - name: Referencia
   items:
     - name: Példák

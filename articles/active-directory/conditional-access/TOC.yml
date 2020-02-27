@@ -43,7 +43,7 @@
       href: location-condition.md
     - name: Lehetőségelemzési eszköz
       href: what-if-tool.md
-    - name: Vezérlők
+    - name: Egyéni vezérlők
       href: controls.md
     - name: Klasszikus szabályzatok migrálása
       href: policy-migration.md

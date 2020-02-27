@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 0c6a712f1dfb4410f3eee0fbd0192c6147618f96
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: b926e651200a4ab23306b0ec2443cb64400b8f7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539586"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605247"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
 
@@ -24,7 +24,7 @@ Ha hatékonyabban szeretné elhárítani a problémákat, érdemes lehet részle
 
 A Visual Studio bővítménynél állítsa a `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` környezeti változó értékét 1-re. Ügyeljen arra, hogy a Visual Studio for a környezeti változó érvénybe léptetéséhez indítsa újra. Ha engedélyezve van, a részletes naplók a `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` könyvtárba íródnak.
 
-A CLI-ben további információkat adhat meg a parancs végrehajtása során a `--verbose` kapcsoló használatával. `%TEMP%\Azure Dev Spaces`részletesebb naplókat is kereshet. Mac gépen a TEMP könyvtár a `echo $TMPDIR` futtatásával érhető el egy terminál-ablakban. A Linux rendszerű számítógépeken általában a TEMP könyvtár `/tmp`.
+A CLI-ben további információkat adhat meg a parancs végrehajtása során a `--verbose` kapcsoló használatával. `%TEMP%\Azure Dev Spaces`részletesebb naplókat is kereshet. Mac gépen a *temp* könyvtár a `echo $TMPDIR` futtatásával érhető el egy terminál-ablakban. A Linux rendszerű számítógépeken általában a *temp* könyvtár `/tmp`. Továbbá ellenőrizze, hogy a naplózás engedélyezve van-e az [Azure CLI konfigurációs fájljában](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables).
 
 Az Azure dev Spaces is működik a legjobban, ha egyetlen példányt vagy Pod-t tesz elérhetővé. A `azds.yaml` fájl egy *replicaCount*-beállítást tartalmaz, amely megadja, hogy a Kubernetes hány hüvelyt futtat a szolgáltatásban. Ha úgy módosítja a *replicaCount* , hogy úgy konfigurálja az alkalmazást, hogy több hüvelyt futtasson egy adott szolgáltatáshoz, akkor a hibakereső az első hüvelyhez csatlakozik, amikor betűrendbe van sorolva. A hibakereső egy másik Pod-hoz csatlakozik, amikor az eredeti Pod újrahasznosítja, ami valószínűleg váratlan viselkedést eredményez.
 
@@ -474,7 +474,7 @@ Ha engedélyezni szeretné az Azure dev Spaces szolgáltatást egy AK-fürtön, 
 | cloudflare.docker.com | HTTPS:443 | A Linux Alpine és más Azure dev Spaces-lemezképek lekérése |
 | gcr.io | HTTP: 443 | A Helm/Tiller-lemezképek lekérése|
 | storage.googleapis.com | HTTP: 443 | A Helm/Tiller-lemezképek lekérése|
-| azds –<guid>.<location>. azds.io | HTTPS:443 | Kommunikáció az Azure dev Spaces háttér-szolgáltatásaival a vezérlőhöz. A pontos FQDN a (z) "dataplaneFqdn" elemben található a következőben:% felhasználói név%\.azds\settings.JSON|
+| azds –<guid>.<location>.azds.io | HTTPS:443 | Kommunikáció az Azure dev Spaces háttér-szolgáltatásaival a vezérlőhöz. A pontos FQDN a (z) "dataplaneFqdn" elemben található a következőben:% felhasználói név%\.azds\settings.JSON|
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Hiba: "nem található a fürt \<a fürt\> az előfizetésben \<subscriptionId\>"
 

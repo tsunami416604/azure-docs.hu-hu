@@ -141,15 +141,17 @@
       items:
         - name: Tárolórendszerképek összeállításának automatizálása
           items:
-            - name: Összeállítás a forráskörnyezet alapján
+            - name: 1 – Összeállítás a forráskörnyezet alapján
               href: container-registry-tutorial-quick-task.md
-            - name: Összeállítás kódvéglegesítéskor
+            - name: 2a – Összeállítás kódvéglegesítéskor
               href: container-registry-tutorial-build-task.md
-            - name: Többlépéses feladatok kódvéglegesítéskor
+            - name: 2b – Többlépéses feladatok kódvéglegesítéskor
               href: container-registry-tutorial-multistep-task.md
-            - name: Összeállítás az alapként szolgáló rendszerképek frissítésekor
+            - name: 3a – Összeállítás az alapként szolgáló rendszerképek frissítésekor
               href: container-registry-tutorial-base-image-update.md
-            - name: Feladat ütemezése
+            - name: 3b – Összeállítás a privát alapként szolgáló rendszerképek frissítésekor
+              href: container-registry-tutorial-private-base-image-update.md
+            - name: 4 – Összeállítás ütemezés szerint
               href: container-registry-tasks-scheduled.md
     - name: Példák
       expanded: false
@@ -160,6 +162,8 @@
       items:
         - name: Többlépéses feladatok
           href: container-registry-tasks-multi-step.md
+        - name: Az alapként szolgáló rendszerképek frissítése
+          href: container-registry-tasks-base-images.md
     - name: Útmutatók
       expanded: false
       items:

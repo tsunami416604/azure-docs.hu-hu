@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: HeidiSteen
   ms.author: heidist
-  ms.date: 09/20/2019
-  ms.openlocfilehash: 3d011bdf1f0da04efec86adc121326a877532b6f
-  ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+  ms.date: 02/25/2020
+  ms.openlocfilehash: b1df45b155e9c9d1bd4433d7ddc765c126686a07
+  ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 01/24/2020
-  ms.locfileid: "76721064"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77614973"
 landingContent:
 - title: A Cognitive Search bemutatása
   linkLists:
@@ -24,15 +24,29 @@ landingContent:
     links:
     - text: Mi az az Azure Cognitive Search?
       url: search-what-is-azure-search.md
-  - linkListType: architecture
-    links:
-    - text: A teljes szöveges keresés működése a Cognitive Searchben
-      url: search-lucene-query-architecture.md
+    - text: Mi az az AI-vel bővítés?
+      url: cognitive-search-concept-intro.md
+    - text: Mi az az indexelő?
+      url: search-indexer-overview.md
   - linkListType: video
     links:
     - text: Mi az a Cognitive Search (1 perc 27 másodperc)
       url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
-- title: Bevezetés
+- title: Azure-adatok indexelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Indexelés Azure Blob Storage-ből
+      url: search-blob-storage-integration.md
+    - text: Indexelés Azure SQL Database-ből
+      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+    - text: Indexelés Cosmos DB-ből
+      url: search-howto-index-cosmosdb.md
+  - linkListType: tutorial
+    links:
+    - text: Részben strukturált blobadatok indexelése
+      url: search-semi-structured-data.md
+- title: 10 perces gyorsútmutatók
   linkLists:
   - linkListType: quickstart
     links:
@@ -40,64 +54,34 @@ landingContent:
       url: search-create-service-portal.md
     - text: Index létrehozása
       url: search-get-started-portal.md
-    - text: Bővítési folyamat létrehozása
-      url: cognitive-search-quickstart-blob.md
-  - linkListType: tutorial
-    links:
     - text: Alkalmazás létrehozása
-      url: tutorial-csharp-create-first-app.md
-  - linkListType: learn
-    links:
-    - text: Bevezetés az Azure Cognitive Search használatába
-      url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
-- title: Használat blobtárolóval
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: AI használata blobadatok megismerésére
-      url: search-blob-ai-integration.md
-    - text: Keresés a blobtartalomban
-      url: search-blob-storage-integration.md
-    - text: AI-bővítések tárolása
-      url: knowledge-store-concept-intro.md
-  - linkListType: tutorial
-    links:
-    - text: Részben strukturált blobadatok indexelése
-      url: search-semi-structured-data.md
+      url: search-create-app-portal.md
+    - text: Nyers szöveg és képek betöltése és kinyerése
+      url: cognitive-search-quickstart-blob.md
 - title: Adatok indexelése
   linkLists:
   - linkListType: concept
     links:
-    - text: Index definíciója
+    - text: Index definiálása
       url: search-what-is-an-index.md
     - text: Adatok importálása
       url: search-what-is-data-import.md
-    - text: Indexelő használata
-      url: search-indexer-overview.md
-  - linkListType: how-to-guide
-    links:
-    - text: Indexelés Azure SQL Database-ből
-      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-    - text: Indexelés Cosmos DB-adatokból
-      url: search-howto-index-cosmosdb.md
   - linkListType: reference
     links:
     - text: Index létrehozása (REST)
       url: https://docs.microsoft.com/rest/api/searchservice/create-index
     - text: Indexelő létrehozása (REST)
       url: https://docs.microsoft.com/rest/api/searchservice/create-indexer
-- title: Adatok bővítése
+- title: Bővítés mesterséges intelligenciával
   linkLists:
   - linkListType: concept
     links:
-    - text: MI-bővítési folyamat
-      url: cognitive-search-concept-intro.md
     - text: Készségek
       url: cognitive-search-defining-skillset.md
     - text: Tudástárak
       url: knowledge-store-concept-intro.md
     - text: Leképezések
-      url: knowledge-store-projection-overview.md
+      url: knowledge-store-projections-examples.md
   - linkListType: how-to-guide
     links:
     - text: A Cognitive Services csatolása
@@ -114,7 +98,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Áttekintés
+    - text: Lekérdezéstípusok és összeállítás
       url: search-query-overview.md
     - text: Egyszerű szintaxis (alapértelmezett)
       url: query-simple-syntax.md

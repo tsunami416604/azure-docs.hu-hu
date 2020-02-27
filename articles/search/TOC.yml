@@ -109,6 +109,8 @@
           href: search-capacity-planning.md
         - name: Teljesítményorientált skálázás
           href: search-performance-optimization.md
+        - name: Szolgáltatás áthelyezése régiók között
+          href: search-howto-move-across-regions.md
         - name: Több-bérlős architektúra
           href: search-modeling-multitenant-saas-applications.md
     - name: Biztonság

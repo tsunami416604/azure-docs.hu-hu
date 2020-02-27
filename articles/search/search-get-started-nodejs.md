@@ -8,42 +8,47 @@ ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: fd8a053eb4ff0805b95dc11db4206e1dd2edb184
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/25/2020
+ms.openlocfilehash: cbef6029b93f134f95ee54aa87ce0dd65bcdf50d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406935"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623997"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Node. js-ben REST API-k használatával
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
-> * [Portál](search-get-started-portal.md)
+> * [Portal](search-get-started-portal.md)
 > * [PowerShell](search-create-index-rest-api.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Hozzon létre egy Node. js-alkalmazást, amely egy Azure Cognitive Search indexet hoz létre, tölt be és kérdez le. Ez a cikk bemutatja, hogyan hozhatja létre az alkalmazást lépésről lépésre. Másik lehetőségként [letöltheti a forráskódot és](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) az adatforrást, és futtathatja az alkalmazást a parancssorból.
+Hozzon létre egy Node. js-alkalmazást, amely egy Azure Cognitive Search indexet hoz létre, tölt be és kérdez le. Ez a cikk bemutatja, hogyan hozhatja létre az alkalmazást lépésről lépésre. Azt is megteheti, hogy [letölti a forráskódot és](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) az adatforrást, és futtatja az alkalmazást a parancssorból.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a rövid útmutatóban a következő szolgáltatásokat, eszközöket és adatfájlokat használja a rendszer.
+A rövid útmutató összeállításához és teszteléséhez a következő szoftvereket és szolgáltatásokat használtuk:
 
-+ [Node.js](https://nodejs.org).
-+ A [NPM](https://www.npmjs.com) -et a Node. js-nek kell telepítenie.
-+ Ebben a cikkben vagy a tárház rövid útmutató [ könyvtárában](https://github.com/Azure-Samples/azure-search-javascript-samples/)talál egy minta-index struktúrát és a megfelelő dokumentumokat.
++ [Node.js](https://nodejs.org)
+
++ A [NPM](https://www.npmjs.com) a Node. js-ben kell telepíteni
+
++ Ebben a cikkben a minta index struktúrája és a megfelelő dokumentumok szerepelnek, vagy a tárház [ **Gyorsindítás** könyvtárából](https://github.com/Azure-Samples/azure-search-javascript-samples/)
+
 + [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat.
 
 Ajánlott:
 
-* [Visual Studio Code](https://code.visualstudio.com).
+* [Visual Studio Code](https://code.visualstudio.com)
+
 * A VSCode [szebb](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) és [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) bővítményei.
 
 <a name="get-service-info"></a>
+
 ## <a name="get-keys-and-urls"></a>Kulcsok és URL-címek lekérése
 
 A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési kulcsot igényelnek minden kérelemben. A Search szolgáltatás mindkettővel jön létre, így ha az előfizetéshez hozzáadta az Azure Cognitive Searcht, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
@@ -108,16 +113,17 @@ Először nyisson meg egy PowerShell-konzolt vagy más környezetet, amelyben te
       }
     }
     ```
-Hozzon létre egy **azure_search_config. JSON** fájlt a keresési szolgáltatás adatai tárolásához:
 
-```json
-{
-    "serviceName" : "[SERVICE_NAME]",
-    "adminKey" : "[ADMIN_KEY]",
-    "queryKey" : "[QUERY_KEY]",
-    "indexName" : "hotels-quickstart"
-}
-```
+5. Hozzon létre egy **azure_search_config. JSON** fájlt a keresési szolgáltatás adatai tárolásához:
+
+    ```json
+    {
+        "serviceName" : "[SEARCH_SERVICE_NAME]",
+        "adminKey" : "[ADMIN_KEY]",
+        "queryKey" : "[QUERY_KEY]",
+        "indexName" : "hotels-quickstart"
+    }
+    ```
 
 Cserélje le a `[SERVICE_NAME]` értéket a keresési szolgáltatás nevére. Cserélje le a `[ADMIN_KEY]` és a `[QUERY_KEY]` értéket a korábban feljegyzett kulcsokra. 
 
@@ -403,7 +409,7 @@ A [ **NConf** csomag](https://github.com/indexzero/nconf) lehetővé teszi, hogy
 ```javascript
 function getAzureConfiguration() {
     const config = nconf.file({ file: 'azure_search_config.json' });
-    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME' ) {
+    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME]' ) {
         throw new Error("You have not set the values in your azure_search_config.json file. Change them to match your search service's values.");
     }
     return config;
@@ -433,7 +439,7 @@ Végül a fő aszinkron `run` függvényt kell megadnia és meghívnia. Ez a fü
 const run = async () => {
     try {
         const cfg = getAzureConfiguration();
-        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get["serviceName"]);
+        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get("indexName));
         
         const exists = await client.indexExistsAsync();
         await exists ? client.deleteIndexAsync() : Promise.resolve();

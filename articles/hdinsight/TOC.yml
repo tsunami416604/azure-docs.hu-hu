@@ -69,7 +69,7 @@
               href: ./hdinsight-hadoop-create-linux-clusters-portal.md
             - name: Fürtök létrehozása sablonokkal
               href: ./hdinsight-hadoop-create-linux-clusters-arm-templates.md
-            - name: Fürtök létrehozása a parancssorból
+            - name: Fürtök létrehozása Azure CLI-vel
               href: ./hdinsight-hadoop-create-linux-clusters-azure-cli.md
             - name: Fürtök létrehozása a PowerShell-lel
               href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md

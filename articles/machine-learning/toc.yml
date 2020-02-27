@@ -329,23 +329,18 @@
           href: how-to-deploy-existing-model.md
         - name: Hibakeresés és hibaelhárítás
           href: how-to-troubleshoot-deployment.md
-    - name: Webszolgáltatások felhasználása
-      items:
-        - name: Felhasználás valós időben
+        - name: Ügyfelek létrehozása
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: A tervező köteg-előrejelzései
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
-    - name: Modellek monitorozása
-      items:
-        - name: Modelladatok gyűjtése és kiértékelése
-          displayName: track production
-          href: how-to-enable-data-collection.md
-        - name: Adateltérés észlelése
-          href: how-to-monitor-data-drift.md
-        - name: Monitorozás az Application Insights segítségével
-          href: how-to-enable-app-insights.md
+        - name: Modellek monitorozása
+          items:
+            - name: Modelladatok gyűjtése és kiértékelése
+              displayName: track production
+              href: how-to-enable-data-collection.md
+            - name: Adateltérés észlelése
+              href: how-to-monitor-data-drift.md
+            - name: Monitorozás az Application Insights segítségével
+              href: how-to-enable-app-insights.md
     - name: ML-folyamatok összeállítása és használata
       displayName: pipelines
       items:
@@ -372,6 +367,9 @@
         - name: Párhuzamos futtatási lépés hibakeresése és hibaelhárítása
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
+        - name: A tervező köteg-előrejelzései
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
     - name: Erőforráskvóták kezelése
       displayName: limits
       href: how-to-manage-quotas.md

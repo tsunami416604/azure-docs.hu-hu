@@ -62,10 +62,14 @@
       href: load-balancer-security-controls.md
 - name: Útmutató
   items:
-    - name: 'Egy alapszintű, nyilvános Load Balancer standard szintű, nyilvános Load Balancerre való frissítésének lépései'
-      href: upgrade-basic-standard.md
-    - name: 'Egy alapszintű, belső Load Balancer standard szintű, belső Load Balancerre való frissítésének lépései'
-      href: upgrade-basicInternal-standard.md
+    - name: Egy alapszintű Load Balancer standard szintű Load Balancerre való frissítése
+      items:
+        - name: Alapszintű nyilvános Load Balancer frissítése
+          href: upgrade-basic-standard.md
+        - name: 'Egy alapszintű, belső Load Balancer frissítése – kimenő kapcsolat nélkül'
+          href: upgrade-basicInternal-standard.md
+        - name: 'Egy alapszintű, belső Load Balancer frissítése – kimenő kapcsolattal'
+          href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Kimenő szabályok konfigurálása
       items:
         - name: Azure Portal

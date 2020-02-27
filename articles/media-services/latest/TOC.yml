@@ -148,6 +148,8 @@
           href: live-event-states-billing.md
         - name: Késés
           href: live-event-latency.md
+        - name: Élő események hibakódjai
+          href: live-event-error-codes.md
     - name: Figyelés
       items:
         - name: Események az Event Griddel
@@ -175,6 +177,8 @@
           items:
             - name: Streamvégpont-hibakódok
               href: streaming-endpoint-error-codes.md
+            - name: Élő események hibakódjai
+              href: live-event-error-codes.md
             - name: Feladathibakódok
               href: job-error-codes.md
     - name: Útmutatás a 2-esről a 3-as verzióra való migráláshoz
@@ -325,6 +329,8 @@
       items:
         - name: Streamvégpont-hibakódok
           href: streaming-endpoint-error-codes.md
+        - name: Élő események hibakódjai
+          href: live-event-error-codes.md
         - name: Feladathibakódok
           href: job-error-codes.md
 - name: További források

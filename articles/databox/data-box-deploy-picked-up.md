@@ -77,7 +77,7 @@ Győződjön meg arról, hogy az adatok eszközre történő másolása befejez�
 
 ::: zone-end
 
-## <a name="in-us-canada-europetabin-us-canada-europe"></a>[Az Egyesült Államokban, Kanadában és Európában](#tab/in-us-canada-europe)
+## <a name="in-us-canada-europe"></a>[Az Egyesült Államokban, Kanadában és Európában](#tab/in-us-canada-europe)
 
 Az alábbi lépéseket akkor végezze el, ha az eszközt az Egyesült Államokban, Kanadában vagy Európában küldi vissza.
 
@@ -114,7 +114,7 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
 ::: zone-end
 
 
-## <a name="in-australiatabin-australia"></a>[Ausztráliában](#tab/in-australia)
+## <a name="in-australia"></a>[Ausztráliában](#tab/in-australia)
 
 Az Ausztráliában található Azure-adatközpontok egy további biztonsági értesítéssel rendelkeznek. Az összes bejövő csomagnak előzetes értesítéssel kell rendelkeznie. Az Ausztráliában történő szállításhoz az alábbi lépéseket végezze el.
 
@@ -143,7 +143,7 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
 
 ::: zone-end
 
-## <a name="in-japantabin-japan"></a>[Japánban](#tab/in-japan) 
+## <a name="in-japan"></a>[Japánban](#tab/in-japan) 
 
 1. Őrizze meg az eszköz szállításához használt eredeti dobozt a visszaküldéshez.
 2. Kapcsolja ki az eszközt, és távolítsa el a kábeleket.
@@ -191,7 +191,7 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
 
 ::: zone-end
 
-## <a name="in-singaporetabin-singapore"></a>[Szingapúrban](#tab/in-singapore) 
+## <a name="in-singapore"></a>[Szingapúrban](#tab/in-singapore) 
 
 1. Őrizze meg az eszköz szállításához használt eredeti dobozt a visszaküldéshez.
 2. Jegyezze fel a nyomkövetési számot (ez a Data Box helyi webes felhasználói felületének „Prepare to Ship” (Szállítás előkészítése) lapján hivatkozási számként (reference number) jelenik meg). Ez akkor érhető el, amikor a szállítás-előkészítési lépés sikeresen befejeződik. Töltse le a fuvarlevélcímkét erről az oldalról, és rögzítse a dobozra. 
@@ -273,7 +273,7 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 ::: zone-end
 -->
 
-## <a name="self-managedtabin-selfmanaged"></a>[Self-Managed](#tab/in-selfmanaged) (Önállóan felügyelt) 
+## <a name="self-managed"></a>[Önállóan felügyelt](#tab/in-selfmanaged) 
 
 Ha a Data Boxot Japánban, Szingapúrban, Koreában vagy Nyugat-Európában használja, és a rendelés létrehozása során a Self-Managed (Önállóan felügyelt) szállítás lehetőséget választotta, kövesse az alábbi utasításokat. 
 

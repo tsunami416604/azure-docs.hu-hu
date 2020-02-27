@@ -181,6 +181,20 @@
   items:
     - name: REST API-k
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: Azure Security Center – gyakori kérdések
+      items:
+        - name: Általános kérdések
+          href: faq-general.md
+        - name: Számlázással kapcsolatos kérdések
+          href: faq-billing.md
+        - name: Engedélyekkel kapcsolatos kérdések
+          href: faq-permissions.md
+        - name: Adatgyűjtéssel és ügynökkel kapcsolatos kérdések
+          href: faq-data-collection-agents.md
+        - name: A Virtual Machines szolgáltatással kapcsolatos kérdések
+          href: faq-vms.md
+        - name: Meglévő Azure Log Analytics-felhasználók
+          href: faq-azure-monitor-logs.md
     - name: Kibocsátási megjegyzések
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Funkciók és API kivezetése (2019. július)
@@ -195,8 +209,6 @@
       href: security-center-privacy.md
     - name: Azure Security Center for IoT – dokumentáció
       href: 'https://docs.microsoft.com/azure/asc-for-iot/'
-    - name: GYIK
-      href: security-center-faq.md
     - name: Az Azure biztonsági dokumentációja
       href: /azure/security/
     - name: Azure-frissítések

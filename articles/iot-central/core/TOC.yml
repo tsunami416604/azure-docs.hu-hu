@@ -21,6 +21,8 @@
   items:
     - name: Csatlakozás
       items:
+        - name: Eszköz csatlakoztatása
+          href: tutorial-connect-device.md
         - name: Plug and Play-eszköz (előzetes verzió) csatlakoztatása
           href: tutorial-connect-pnp-device.md
         - name: Átjáró-eszközsablon létrehozása

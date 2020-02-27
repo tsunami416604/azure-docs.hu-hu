@@ -1,0 +1,11 @@
+- name: A webhelyek megbízhatósági tervezésének (SRE) dokumentációja
+  href: ../index.yml
+- name: További források
+  expanded: true
+  items:
+    - name: SRE-könyvek
+      href: books.md
+    - name: SRE-események
+      href: events.md
+    - name: SRE-hivatkozásgyűjtemények és kivonatok
+      href: links.md
