@@ -123,6 +123,8 @@
           href: large-number-tasks.md
         - name: Hibakeresés feladatokban és tevékenységekben
           href: batch-job-task-error-checking.md
+        - name: A Batch szolgáltatás hibáinak észlelése és kezelése
+          href: batch-retry-after-errors.md
     - name: Erőforrásfájlok létrehozása
       href: resource-files.md
     - name: Feladatok és tevékenységek kimenetének megőrzése

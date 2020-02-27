@@ -105,8 +105,8 @@
               href: developer-best-practices-pod-security.md
     - name: Kvóták és regionális korlátok
       href: quotas-skus-regions.md
-    - name: Migrálás ACS-ről AKS rendszerre
-      href: acs-aks-migration.md
+    - name: Migrálás az AKS-be
+      href: aks-migration.md
     - name: Támogatott Kubernetes-verzió
       href: supported-kubernetes-versions.md
     - name: A biztonság megerősítése a gazda operációs rendszeren

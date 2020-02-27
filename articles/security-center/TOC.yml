@@ -49,7 +49,7 @@
           href: azure-container-registry-integration.md
         - name: Integráció az Azure Kubernetes Service-szel
           href: azure-kubernetes-service-integration.md
-    - name: Fenyegetésészlelési riasztások és incidensek
+    - name: Fenyegetésvédelem és biztonsági riasztások
       items:
         - name: Biztonsági riasztások áttekintése
           href: security-center-alerts-overview.md
@@ -59,16 +59,8 @@
           href: security-center-managing-and-responding-alerts.md
         - name: Biztonsági incidensek kezelése
           href: security-center-incident.md
-        - name: Virtuális gépek és kiszolgálók fenyegetéseinek észlelése
-          href: security-center-alerts-iaas.md
-        - name: Felhőalapú alkalmazások és tárolók fenyegetéseinek észlelése
-          href: security-center-alerts-compute.md
-        - name: Adatszolgáltatások fenyegetéseinek észlelése
-          href: security-center-alerts-data-services.md
-        - name: Azure-szolgáltatásrétegek fenyegetésészlelése
-          href: security-center-alerts-service-layer.md
-        - name: Az Azure WAF és az Azure DDoS Protection fenyegetésészlelési riasztásai
-          href: security-center-alerts-integration.md
+        - name: Fenyegetésvédelem az Azure Security Centerben
+          href: threat-protection.md
         - name: Felhőbeli intelligens riasztások korrelációi (incidensek)
           href: security-center-alerts-cloud-smart.md
         - name: Biztonsági riasztások térképe és fenyegetések felderítése

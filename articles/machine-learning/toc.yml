@@ -83,8 +83,10 @@
       href: concept-workspace.md
     - name: Környezetek
       href: concept-environments.md
-    - name: Adatok
+    - name: Az adatok elérése
       href: concept-data.md
+    - name: Adatfeldolgozás
+      href: concept-data-ingestion.md
     - name: A modell betanítása
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
