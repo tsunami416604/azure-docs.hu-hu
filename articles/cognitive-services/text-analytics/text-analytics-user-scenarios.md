@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/29/2019
+ms.date: 02/25/2020
 ms.author: aahi
-ms.openlocfilehash: 19df2cfc58f0653b09600b43e5859753781d7151
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 560f34d21a68cecc4950db5dcceb9c8ef7b05a49
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560792"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614431"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Példa a Text Analytics API felhasználói forgatókönyvei
 
@@ -45,7 +45,13 @@ Felhasználói termékkel kapcsolatos visszajelzések figyelése a termék Twitt
 
 ![Egy rendszerkép, amely leírja, hogyan figyelheti meg a termékeit és a vállalati visszajelzéseket a közösségi médián a kulcsfontosságú kifejezés kibontásával](media/use-cases/social-feed.svg)
 
-## <a name="next-steps"></a>További lépések
+## <a name="classify-and-redact-documents-that-have-sensitive-information"></a>Bizalmas adatokat tartalmazó dokumentumok besorolása és kivonása
+
+Az elnevezett entitások felismerésével azonosíthatja a dokumentumok személyes és bizalmas információit. A dokumentumok osztályozása vagy kivonása, hogy biztonságosan megoszthatók legyenek.
+
+![Egy rendszerkép, amely leírja, hogyan használható a személyes adatok észlelése és kivonása a dokumentumok használatával](media/use-cases/sensitive-docs.jpg)
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Text Analytics API?](overview.md)
 * [Kérelem küldése a Text Analytics APInak az ügyféloldali kódtár használatával](quickstarts/text-analytics-sdk.md)

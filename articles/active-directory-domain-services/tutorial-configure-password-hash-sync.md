@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: deca7477c79fd2952bb57c0194202c382cd5279d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: c2a751367a96c995a24457d0357aa6a2bfe987e5
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132217"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612565"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Oktatóanyag: a jelszó-szinkronizálás engedélyezése Azure Active Directory Domain Services hibrid környezetekben
 
@@ -68,7 +68,7 @@ A Azure AD Connect az Azure AD-vel való szinkronizálásra van telepítve és k
 
     Ebben a példában a képernyőképen a következő összekötők használatosak:
 
-    * Az Azure AD-összekötő neve *contoso.onmicrosoft.com-HRE*
+    * Az Azure AD-összekötő neve *aaddscontoso.onmicrosoft.com-HRE*
     * A helyszíni AD DS-összekötő neve *onprem.contoso.com*
 
 1. Másolja és illessze be a következő PowerShell-parancsfájlt a számítógépre, amelyen Azure AD Connect telepítve van. A parancsfájl egy teljes jelszó-szinkronizálást indít el, amely örökölt jelszó-kivonatokat tartalmaz. Frissítse a `$azureadConnector` és az `$adConnector` változókat az előző lépésben szereplő összekötők neveivel.

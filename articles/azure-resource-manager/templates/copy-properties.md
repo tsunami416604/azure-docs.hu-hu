@@ -3,18 +3,18 @@ title: Egy tulajdonság több példányának meghatározása
 description: A másolási művelettel egy Azure Resource Manager sablonban több alkalommal is megismételheti a tulajdonságok egy erőforráson való létrehozásakor.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: b1e31f981f361b4cfbe7e7930f2c70bfce8b8656
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b759389cd1065c399658bd8d0c1ddd263054697c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210865"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622863"
 ---
 # <a name="property-iteration-in-azure-resource-manager-templates"></a>Tulajdonság-iteráció Azure Resource Manager-sablonokban
 
 Ez a cikk bemutatja, hogyan hozhat létre egy tulajdonság több példányát a Azure Resource Manager-sablonban. Ha hozzáadja a **Másolás** elemet a sablon egyik erőforrásának Properties (Tulajdonságok) szakaszához, akkor dinamikusan állíthatja be a tulajdonság elemeinek számát a telepítés során. Emellett ne kelljen megismételni a sablon szintaxisát.
 
-A másolást [erőforrásokkal](copy-resources.md) és [változókkal](copy-variables.md)is elvégezheti.
+A másolás [erőforrásokat](copy-resources.md), [változókat](copy-variables.md)és [kimeneteket](copy-outputs.md)is használhat.
 
 ## <a name="property-iteration"></a>Tulajdonság iterációja
 
@@ -192,7 +192,10 @@ Az alábbi példa egy olyan általános forgatókönyvet mutat be, amely egy tul
 ## <a name="next-steps"></a>Következő lépések
 
 * Az oktatóanyag lépéseinek megismeréséhez lásd [: oktatóanyag: több erőforrás-példány létrehozása Resource Manager-sablonok használatával](template-tutorial-create-multiple-instances.md).
-* A másolási elem egyéb felhasználási módjaiért lásd: [erőforrás-iteráció Azure Resource Manager sablonokban](copy-resources.md) és [változó iteráció Azure Resource Manager-sablonokban](copy-variables.md).
+* A másolási elem egyéb felhasználási módjaiért lásd:
+  * [Erőforrás-iteráció Azure Resource Manager-sablonokban](copy-resources.md)
+  * [Változó iteráció Azure Resource Manager-sablonokban](copy-variables.md)
+  * [Kimeneti iteráció Azure Resource Manager-sablonokban](copy-outputs.md)
 * Ha szeretné megismerni a sablonok egyes részeit, olvassa el a [Azure Resource Manager sablonok készítése](template-syntax.md)című szakaszt.
 * A sablon üzembe helyezésével kapcsolatos további információkért lásd: [alkalmazások központi telepítése Azure Resource Manager sablonnal](deploy-powershell.md).
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 601574cc2a478dc53a261cfcb074e43a556dd4c0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 76dc964b7fe7f5e8acfcfb03b2e89bebb2caa176
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979518"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613389"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>A meglévő Azure AD Domain Services felügyelt tartományokhoz tartozó eltérő címtárbeli hibák elhárítása
 
@@ -26,7 +26,7 @@ Ez a cikk a hiba okait és megoldását ismerteti.
 
 ## <a name="what-causes-this-error"></a>Mi okozza ezt a hibát?
 
-Nem egyező címtárbeli hiba történik, amikor egy Azure AD DS felügyelt tartomány és virtuális hálózat két különböző Azure AD-bérlőhöz tartozik. Előfordulhat például, hogy rendelkezik egy *aadds.contoso.com* nevű Azure AD DS felügyelt tartománnyal, amely a contoso Azure ad-bérlőben fut. A felügyelt tartományhoz tartozó Azure-beli virtuális hálózat azonban a fabrikam Azure AD-bérlő részét képezi.
+Nem egyező címtárbeli hiba történik, amikor egy Azure AD DS felügyelt tartomány és virtuális hálózat két különböző Azure AD-bérlőhöz tartozik. Előfordulhat például, hogy rendelkezik egy *aaddscontoso.com* nevű Azure AD DS felügyelt tartománnyal, amely a contoso Azure ad-bérlőben fut. A felügyelt tartományhoz tartozó Azure-beli virtuális hálózat azonban a fabrikam Azure AD-bérlő részét képezi.
 
 Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) használ az erőforrásokhoz való hozzáférés korlátozására. Az Azure AD DS Azure AD-bérlőben való engedélyezésekor a rendszer a hitelesítő adatok kivonatait szinkronizálja a felügyelt tartományba. Ehhez a művelethez az Azure AD-címtárhoz tartozó bérlői rendszergazdának kell lennie, és a hitelesítő adatokhoz való hozzáférés szabályozása szükséges. Ahhoz, hogy erőforrásokat helyezzen üzembe az Azure-beli virtuális hálózatra, és szabályozza a forgalmat, rendszergazdai jogosultságokkal kell rendelkeznie azon a virtuális hálózaton, amelyben az Azure AD DS üzembe helyezi.
 

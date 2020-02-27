@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 1c06c1d0403e526e1ed58a193cfe9b57bb9fe561
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 0a7012d9daa808933a51ac05862a8a9aa4cfcf77
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780239"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614799"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>BLOB-adatok rehidratálása az archív szintről
 
@@ -51,8 +51,8 @@ Az archiválási szinten lévő blobokat legalább 180 napig kell tárolni. Az a
 ## <a name="quickstart-scenarios"></a>Rövid útmutatóul szolgáló forgatókönyvek
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Archív blob rehidratálása online szintre
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. A Azure Portal keresse meg és válassza ki az **összes erőforrás**elemet.
 
@@ -70,14 +70,14 @@ Az archiválási szinten lévő blobokat legalább 180 napig kell tárolni. Az a
 
 ![Storage-fiók szintjeinek módosítása](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Az alábbi PowerShell-parancsfájl segítségével módosíthatja az archív Blobok blob-szintjét. Az `$rgName` változót inicializálni kell az erőforráscsoport nevével. A `$accountName` változót inicializálni kell a Storage-fiók nevével. A `$containerName` változót inicializálni kell a tároló nevével. A `$blobName` változót inicializálni kell a blob nevével. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
 $accountName = ""
 $containerName = ""
-$blobName == ""
+$blobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
@@ -99,8 +99,8 @@ $rgName = ""
 $accountName = ""
 $srcContainerName = ""
 $destContainerName = ""
-$srcBlobName == ""
-$destBlobName == ""
+$srcBlobName = ""
+$destBlobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
@@ -110,7 +110,7 @@ $ctx = $storageAccount.Context
 Start-AzStorageBlobCopy -SrcContainer $srcContainerName -SrcBlob $srcBlobName -DestContainer $destContainerName -DestBlob $destBlobName -StandardBlobTier Hot -RehydratePriority Standard -Context $ctx
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Tudnivalók a Blob Storage szintjeiről](storage-blob-storage-tiers.md)
 * [A gyakori és ritka elérésű, valamint az archív tárolási szint díjszabásának régiók szerinti ellenőrzése Blob Storage- és GPv2-fiókok esetében](https://azure.microsoft.com/pricing/details/storage/)

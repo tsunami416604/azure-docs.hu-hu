@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: ee4c41ca3179eead0e4fd470a02a5cdfa4a6d43a
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: e1836f91b8afc1bb4f5b7e141949f3724c57c857
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705235"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614031"
 ---
 # <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Azure Active Directory Domain Services felügyelt tartomány törlése a Azure Portal használatával
 
@@ -35,7 +35,7 @@ Ha már nincs szüksége felügyelt tartományra, törölheti Azure Active Direc
 Azure AD DS felügyelt tartomány törléséhez hajtsa végre a következő lépéseket:
 
 1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services**lehetőséget.
-1. Válassza ki az Azure AD DS felügyelt tartományának nevét, például *aadds.contoso.com*.
+1. Válassza ki az Azure AD DS felügyelt tartományának nevét, például *aaddscontoso.com*.
 1. Az **Áttekintés** oldalon válassza a **Törlés** elemet. A törlés megerősítéséhez írja be újra a felügyelt tartomány tartománynevét, majd válassza a **Törlés**lehetőséget.
 
 Az Azure AD DS felügyelt tartományának törléséhez akár 15-20 percet is igénybe vehet.

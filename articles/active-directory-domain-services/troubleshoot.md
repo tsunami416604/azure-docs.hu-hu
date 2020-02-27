@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 2c6f594b16aac40abf885e0d058c7aba48d32f9c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3cb57fae2b1c67ece321a294e56612f49358405a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512623"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612718"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Gyakori hibák és hibaelhárítási lépések a Azure Active Directory Domain Services
 
@@ -28,9 +28,9 @@ Ez a cikk az Azure AD DS gyakori problémáinak hibaelhárítási lépéseit ism
 
 Ha problémába ütközik az Azure AD DS engedélyezésekor, tekintse át a következő gyakori hibákat és lépéseket a megoldásához:
 
-| **Példa hibaüzenet** | **Felbontás** |
+| **Példa hibaüzenet** | **Resolution** (Osztás) |
 | --- |:--- |
-| *A contoso.com név már használatban van ezen a hálózaton. Olyan nevet adjon meg, amely nincs használatban.* |[Tartománynév-ütközés a virtuális hálózaton](troubleshoot.md#domain-name-conflict) |
+| *A addscontoso.com név már használatban van ezen a hálózaton. Olyan nevet adjon meg, amely nincs használatban.* |[Tartománynév-ütközés a virtuális hálózaton](troubleshoot.md#domain-name-conflict) |
 | *Nem lehet engedélyezni a tartományi szolgáltatásokat ebben az Azure AD-bérlőben. A szolgáltatás nem rendelkezik megfelelő engedélyekkel a (z) "Azure AD Domain Services Sync" nevű alkalmazáshoz. Törölje a "Azure AD Domain Services Sync" nevű alkalmazást, majd próbálja meg engedélyezni az Azure AD-bérlő tartományi szolgáltatásait.* |[A tartományi szolgáltatások nem rendelkeznek megfelelő engedélyekkel a Azure AD Domain Services Sync alkalmazáshoz](troubleshoot.md#inadequate-permissions) |
 | *Nem lehet engedélyezni a tartományi szolgáltatásokat ebben az Azure AD-bérlőben. Az Azure AD-bérlőben található tartományi szolgáltatások alkalmazás nem rendelkezik a tartományi szolgáltatások engedélyezéséhez szükséges engedélyekkel. Törölje az alkalmazást az alkalmazás-azonosító d87dcbc6-a371-462e-88e3-28ad15ec4e64, majd próbálja meg engedélyezni az Azure AD-bérlő tartományi szolgáltatásait.* |[A tartományi szolgáltatások alkalmazás nincs megfelelően konfigurálva az Azure AD-bérlőben](troubleshoot.md#invalid-configuration) |
 | *Nem lehet engedélyezni a tartományi szolgáltatásokat ebben az Azure AD-bérlőben. Az Microsoft Azure AD alkalmazás le van tiltva az Azure AD-bérlőben. Engedélyezze az alkalmazást az 00000002-0000-0000-C000-000000000000 alkalmazás-azonosítóval, majd próbálja meg engedélyezni az Azure AD-bérlő tartományi szolgáltatásait.* |[Az Microsoft Graph alkalmazás le van tiltva az Azure AD-bérlőben](troubleshoot.md#microsoft-graph-disabled) |
@@ -39,11 +39,11 @@ Ha problémába ütközik az Azure AD DS engedélyezésekor, tekintse át a köv
 
 **Hibaüzenet**
 
-*A contoso.com név már használatban van ezen a hálózaton. Olyan nevet adjon meg, amely nincs használatban.*
+*A aaddscontoso.com név már használatban van ezen a hálózaton. Olyan nevet adjon meg, amely nincs használatban.*
 
-**Felbontás**
+**Resolution** (Osztás)
 
-Győződjön meg arról, hogy nem rendelkezik olyan meglévő AD DS-környezettel, amelynek azonos a tartományneve ugyanazon a tartományon, vagy egy egyenrangú virtuális hálózaton. Előfordulhat például, hogy rendelkezik egy *contoso.com* nevű AD DS tartománnyal, amely Azure-beli virtuális gépeken fut. Ha olyan Azure AD DS felügyelt tartományt próbál engedélyezni, amelynek a *contoso.com* ugyanaz a tartományneve a virtuális hálózaton, a kért művelet meghiúsul.
+Győződjön meg arról, hogy nem rendelkezik olyan meglévő AD DS-környezettel, amelynek azonos a tartományneve ugyanazon a tartományon, vagy egy egyenrangú virtuális hálózaton. Előfordulhat például, hogy rendelkezik egy *aaddscontoso.com* nevű AD DS tartománnyal, amely Azure-beli virtuális gépeken fut. Ha olyan Azure AD DS felügyelt tartományt próbál engedélyezni, amelynek a *aaddscontoso.com* ugyanaz a tartományneve a virtuális hálózaton, a kért művelet meghiúsul.
 
 Ezt a hibát az okozza, hogy a virtuális hálózaton lévő tartománynév ütközik a tartomány nevével. A DNS-keresés ellenőrzi, hogy egy meglévő AD DS környezet válaszol-e a kért tartománynévre. A hiba megoldásához használjon másik nevet az Azure AD DS felügyelt tartomány beállításához, vagy szüntesse meg a meglévő AD DS tartomány kiépítését, majd próbálkozzon újra az Azure AD DS engedélyezésével.
 
@@ -53,7 +53,7 @@ Ezt a hibát az okozza, hogy a virtuális hálózaton lévő tartománynév ütk
 
 *Nem lehet engedélyezni a tartományi szolgáltatásokat ebben az Azure AD-bérlőben. A szolgáltatás nem rendelkezik megfelelő engedélyekkel a (z) "Azure AD Domain Services Sync" nevű alkalmazáshoz. Törölje a "Azure AD Domain Services Sync" nevű alkalmazást, majd próbálja meg engedélyezni az Azure AD-bérlő tartományi szolgáltatásait.*
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Ellenőrizze, hogy van-e *Azure ad Domain Services Sync* nevű alkalmazás az Azure ad-címtárban. Ha az alkalmazás létezik, törölje, majd próbálkozzon újra az Azure AD DS engedélyezéséhez. Ha egy meglévő alkalmazást szeretne megkeresni, és szükség esetén törölni szeretné, hajtsa végre a következő lépéseket:
 
@@ -68,7 +68,7 @@ Ellenőrizze, hogy van-e *Azure ad Domain Services Sync* nevű alkalmazás az Az
 
 *Nem lehet engedélyezni a tartományi szolgáltatásokat ebben az Azure AD-bérlőben. Az Azure AD-bérlőben található tartományi szolgáltatások alkalmazás nem rendelkezik a tartományi szolgáltatások engedélyezéséhez szükséges engedélyekkel. Törölje az alkalmazást az alkalmazás-azonosító d87dcbc6-a371-462e-88e3-28ad15ec4e64, majd próbálja meg engedélyezni az Azure AD-bérlő tartományi szolgáltatásait.*
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Ellenőrizze, hogy rendelkezik-e egy *AzureActiveDirectoryDomainControllerServices* nevű meglévő alkalmazással az Azure ad-címtárban található *d87dcbc6-a371-462e-88e3-28ad15ec4e64* alkalmazás-azonosítójával. Ha az alkalmazás létezik, törölje, majd próbálja újra az Azure AD DS engedélyezéséhez.
 
@@ -112,7 +112,7 @@ if ($sp -ne $null)
 
 *Nem lehet engedélyezni a tartományi szolgáltatásokat ebben az Azure AD-bérlőben. Az Microsoft Azure AD alkalmazás le van tiltva az Azure AD-bérlőben. Engedélyezze az alkalmazást az 00000002-0000-0000-C000-000000000000 alkalmazás-azonosítóval, majd próbálja meg engedélyezni az Azure AD-bérlő tartományi szolgáltatásait.*
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Ellenőrizze, hogy a *00000002-0000-0000-C000-000000000000*azonosítójú alkalmazást letiltotta-e. Ez az alkalmazás a Microsoft Azure AD alkalmazás, és Graph API hozzáférést biztosít az Azure AD-bérlőhöz. Az Azure AD-bérlő szinkronizálásához engedélyezni kell az alkalmazást.
 
@@ -128,9 +128,9 @@ Az alkalmazás állapotának vizsgálatához és szükség esetén történő en
 
 Ha az Azure AD-bérlő egy vagy több felhasználója nem tud bejelentkezni az Azure AD DS felügyelt tartományba, hajtsa végre a következő hibaelhárítási lépéseket:
 
-* **Hitelesítő adatok formátuma** – próbálja meg az UPN formátumot használni a hitelesítő adatok megadásához, például `dee@contoso.onmicrosoft.com`. Az egyszerű felhasználónév formátuma az ajánlott módszer a hitelesítő adatok megadására az Azure AD DSban. Győződjön meg arról, hogy az UPN helyesen van konfigurálva az Azure AD-ben.
+* **Hitelesítő adatok formátuma** – próbálja meg az UPN formátumot használni a hitelesítő adatok megadásához, például `dee@aaddscontoso.onmicrosoft.com`. Az egyszerű felhasználónév formátuma az ajánlott módszer a hitelesítő adatok megadására az Azure AD DSban. Győződjön meg arról, hogy az UPN helyesen van konfigurálva az Azure AD-ben.
 
-    A fiókhoz tartozó *sAMAccountName* , például a *CONTOSO\driley* automatikusan előállíthatók, ha több felhasználó rendelkezik ugyanazzal az UPN-előtaggal a bérlőben, vagy ha az UPN-előtag túl hosszú. Ezért előfordulhat, hogy a fiók *sAMAccountName* -formátuma eltér a helyszíni tartományban várttól vagy használattól.
+    A fiókhoz tartozó *sAMAccountName* , például a *AADDSCONTOSO\driley* automatikusan előállíthatók, ha több felhasználó rendelkezik ugyanazzal az UPN-előtaggal a bérlőben, vagy ha az UPN-előtag túl hosszú. Ezért előfordulhat, hogy a fiók *sAMAccountName* -formátuma eltér a helyszíni tartományban várttól vagy használattól.
 
 * **Jelszó-szinkronizálás** – ellenőrizze, hogy engedélyezte-e a jelszó-szinkronizálást a [csak felhőalapú felhasználók][cloud-only-passwords] vagy a [hibrid környezetek számára a Azure ad Connect használatával][hybrid-phs].
     * **Hibrid szinkronizált fiókok:** Ha az érintett felhasználói fiókok egy helyszíni címtárból vannak szinkronizálva, ellenőrizze a következő területeket:

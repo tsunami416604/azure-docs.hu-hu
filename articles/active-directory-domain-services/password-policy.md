@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: b08c3854ef330081b4c55331cb410c5925f00dec
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c4402c1ce2f051c8d1911e7c0332d4cac787ce1d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512759"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613198"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Jelszó-és fiókzárolási házirendek a felügyelt tartományokban
 
@@ -27,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat részlete
 > [!NOTE]
 > A jelszóházirend csak a Resource Manager-alapú üzemi modell használatával létrehozott Azure AD DS felügyelt tartományokhoz érhető el. A klasszikus használatával létrehozott régebbi felügyelt tartományok esetében [telepítse át a klasszikus virtuális hálózati modellből a Resource Managerbe][migrate-from-classic].
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
@@ -87,7 +87,7 @@ Egyéni jelszóházirend létrehozásához a Active Directory felügyeleti eszk�
 
 1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik a rendelkezésre álló felügyeleti eszközök listája, amely az oktatóanyagban a [felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm]lett telepítve.
 1. A szervezeti egységek létrehozásához és kezeléséhez válassza ki a **Active Directory felügyeleti központ** elemet a felügyeleti eszközök listájából.
-1. A bal oldali ablaktáblán válassza ki az Azure AD DS felügyelt tartományát, például *aadds.contoso.com*.
+1. A bal oldali ablaktáblán válassza ki az Azure AD DS felügyelt tartományát, például *aaddscontoso.com*.
 1. Nyissa meg a **rendszer** tárolót, majd a **jelszóbeállítás-tároló**.
 
     Megjelenik az Azure AD DS felügyelt tartomány beépített jelszavas szabályzata. Ez a beépített házirend nem módosítható. Ehelyett hozzon létre egy egyéni jelszóházirend-szabályzatot az alapértelmezett házirend felülbírálásához.
@@ -112,7 +112,7 @@ Egyéni jelszóházirend létrehozásához a Active Directory felügyeleti eszk�
 
     ![Válassza ki azokat a felhasználókat és csoportokat, amelyekre alkalmazni szeretné a jelszóházirend alkalmazását](./media/how-to/fgpp-applies-to.png)
 
-1. A jelszóházirend csak csoportokra alkalmazható. A **helyszínek** párbeszédpanelen bontsa ki a tartománynevet (például *aadds.contoso.com*), majd válasszon ki egy szervezeti egységet, például a **AADDC-felhasználók**elemet. Ha olyan egyéni szervezeti egységtel rendelkezik, amely az alkalmazni kívánt felhasználói csoportot tartalmazza, válassza ki azt a szervezeti egységet.
+1. A jelszóházirend csak csoportokra alkalmazható. A **helyszínek** párbeszédpanelen bontsa ki a tartománynevet (például *aaddscontoso.com*), majd válasszon ki egy szervezeti egységet, például a **AADDC-felhasználók**elemet. Ha olyan egyéni szervezeti egységtel rendelkezik, amely az alkalmazni kívánt felhasználói csoportot tartalmazza, válassza ki azt a szervezeti egységet.
 
     ![Válassza ki azt a szervezeti egységet, amelyhez a csoport tartozik](./media/how-to/fgpp-container.png)
 

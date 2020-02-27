@@ -2,19 +2,20 @@
 title: Az Azure-regisztráció során elutasított bankkártyával kapcsolatos probléma elhárítása
 description: Az Azure Portalon vagy a Fiókközpontban az Azure-regisztráció során elutasított hitelkártyával kapcsolatos probléma megoldása.
 author: v-miegge
+services: cost-management-billing
+manager: dcscontentpm
 ms.reviewer: judupont
 editor: v-jesits
-tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: ea30fe715bc01b4cd621a2a99c68167f45e5fd36
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 04bd8b82e301778db6c68791925f1cd668fb7859
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200469"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560558"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Az Azure-regisztráció során elutasított bankkártyával kapcsolatos probléma elhárítása
 

@@ -3,12 +3,12 @@ title: A DPM-munkaterhelések biztonsági mentése a PowerShell használatával
 description: Megtudhatja, hogyan helyezheti üzembe és kezelheti Data Protection Manager (DPM) Azure Backup a PowerShell használatával
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: cd735406a19ca1e03f520f75a7d2f39322725b8d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 06c138a4015a0b730369e091fc57a34d2190051d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583096"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616737"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése DPM-kiszolgálókon a PowerShell-lel
 
@@ -234,7 +234,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 Ebben a szakaszban egy üzemi kiszolgálót fog hozzáadni a DPM, majd az adatvédelmet a helyi DPM-tárolóba, majd Azure Backup. A példákban bemutatjuk, hogyan lehet biztonsági másolatot készíteni a fájlokról és mappákról. A logika egyszerűen bővíthető a DPM által támogatott adatforrások biztonsági mentéséhez. Az összes DPM biztonsági mentést egy olyan védelmi csoport (PG) szabályozza, amely négy részből áll:
 
-1. A **csoporttagok** az összes olyan védhető objektum (más néven *adatforrások* a DPM) listája, amelyeket a védelemmel ellátott csoportban kíván védelemmel ellátni. Előfordulhat például, hogy egy védelmi csoportba tartozó üzemi virtuális gépeket szeretne védelemmel ellátni, és egy másik védelmi csoportban lévő adatbázisokat SQL Server, mivel azok eltérő biztonsági mentési követelményekkel rendelkezhetnek. Mielőtt biztonsági mentést szeretne készíteni egy üzemi kiszolgáló adatforrásáról, győződjön meg arról, hogy a DPM-ügynök telepítve van a kiszolgálón, és felügyeli a DPM. Kövesse a DPM- [ügynök telepítésének](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2007/bb870935(v=technet.10)) és a megfelelő DPM-kiszolgálóhoz való csatolásának lépéseit.
+1. A **csoporttagok** az összes olyan védhető objektum (más néven *adatforrások* a DPM) listája, amelyeket a védelemmel ellátott csoportban kíván védelemmel ellátni. Előfordulhat például, hogy egy védelmi csoportba tartozó üzemi virtuális gépeket szeretne védelemmel ellátni, és egy másik védelmi csoportban lévő adatbázisokat SQL Server, mivel azok eltérő biztonsági mentési követelményekkel rendelkezhetnek. Mielőtt biztonsági mentést szeretne készíteni egy üzemi kiszolgáló adatforrásáról, győződjön meg arról, hogy a DPM-ügynök telepítve van a kiszolgálón, és felügyeli a DPM. Kövesse a DPM- [ügynök telepítésének](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) és a megfelelő DPM-kiszolgálóhoz való csatolásának lépéseit.
 2. Az **adatvédelmi módszer** megadja a cél biztonsági mentési helyeit – szalag, lemez és felhő. A példánkban a helyi lemezre és a felhőbe is biztosítjuk az adatvédelmet.
 3. Egy **biztonsági mentési ütemezés** , amely meghatározza, hogy mikor kell a biztonsági mentést készíteni, és milyen gyakran kell szinkronizálni az adatokat a DPM-kiszolgáló és az üzemi kiszolgáló között.
 4. Egy **adatmegőrzési ütemterv** , amely meghatározza, hogy mennyi ideig kell megőrizni a helyreállítási pontokat az Azure-ban.

@@ -3,22 +3,22 @@ title: Az Azure-beli SAP HANA architektúrája (nagyméretű példányok) | Micr
 description: A SAP HANA üzembe helyezésének architektúrája az Azure-ban (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1373221502db5b2d511bc6f32bd529090caa9e60
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 041da4198b0bdd040a4916008a1135aa2e2a5f7d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101302"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614522"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>SAP HANA (nagyméretű példányok) architektúrája az Azure-ban
 
@@ -33,24 +33,24 @@ Az Azure-beli SAP HANA általános architektúrája (nagyméretű példányok) e
 
 A bemutatott architektúra három szakaszra oszlik:
 
-- **Jobb**: Egy olyan helyszíni infrastruktúrát mutat be, amely különböző alkalmazásokat futtat az adatközpontokban, így a végfelhasználók hozzáférhetnek az ÜZLETÁGI alkalmazásokhoz, például az SAP-hoz. Ideális esetben ez a helyszíni infrastruktúra a [ExpressRoute](https://azure.microsoft.com/services/expressroute/)-mel csatlakozik az Azure-hoz.
+- **Right**: olyan helyszíni infrastruktúrát mutat be, amely különböző alkalmazásokat futtat az adatközpontokban, így a végfelhasználók hozzáférhetnek az üzletági alkalmazásokhoz, például az SAP-hoz. Ideális esetben ez a helyszíni infrastruktúra a [ExpressRoute](https://azure.microsoft.com/services/expressroute/)-mel csatlakozik az Azure-hoz.
 
-- **Központ**: Megjeleníti az Azure IaaS, és ebben az esetben a virtuális gépeket olyan SAP-vagy más alkalmazások üzemeltetéséhez, amelyek a SAP HANA adatbázis-kezelő rendszerként használják. Kisebb HANA-példányok, amelyek a virtuális gépek által biztosított memóriával működnek, az alkalmazás rétegével együtt. További információ a virtuális gépekről: [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/).
+- **Központ**: megjeleníti az Azure IaaS, és ebben az esetben a virtuális gépeket az olyan SAP-vagy más alkalmazások üzemeltetésére használja, amelyek a SAP HANA adatbázis-kezelő rendszerként használják. Kisebb HANA-példányok, amelyek a virtuális gépek által biztosított memóriával működnek, az alkalmazás rétegével együtt. További információ a virtuális gépekről: [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/).
 
    Az Azure hálózati szolgáltatásai az SAP-rendszerek és más alkalmazások virtuális hálózatokra való csoportosítására szolgálnak. Ezek a virtuális hálózatok a helyszíni rendszerekhez kapcsolódnak, valamint az Azure-ban (nagyméretű példányokon) SAP HANA.
 
-   Az Azure-ban futtatott SAP NetWeaver-alkalmazások és-adatbázisok esetében lásd [: SAP-támogatás Megjegyzés #1928533 – SAP-alkalmazások az Azure-ban: Támogatott termékek és Azure-beli](https://launchpad.support.sap.com/#/notes/1928533)virtuális gépek típusai. Az SAP-megoldások Azure-beli üzembe helyezésével kapcsolatos dokumentációért lásd:
+   Az Azure-ban futtatott SAP NetWeaver-alkalmazások és-adatbázisok esetében lásd: [SAP-támogatás megjegyzés #1928533 – SAP-alkalmazások az Azure-ban: támogatott termékek és Azure VM-típusok](https://launchpad.support.sap.com/#/notes/1928533). Az SAP-megoldások Azure-beli üzembe helyezésével kapcsolatos dokumentációért lásd:
 
   -  [Az SAP használata Windows rendszerű virtuális gépeken](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   -  [SAP-megoldások használata Azure-beli virtuális gépeken](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-- **Balra**: Megjeleníti a SAP HANA TDI-tanúsítvánnyal rendelkező hardvert az Azure nagyméretű példányának bélyegében. A HANA nagyméretű példányok egységei az Azure-előfizetéshez tartozó virtuális hálózatokhoz kapcsolódnak, és ugyanazt a technológiát használják, mint a helyszíni kapcsolat az Azure-ba. A május 2019-es verziójától kezdve egy optimalizálás lett bevezetve, amely lehetővé teszi a HANA nagyméretű példány-egységek és az Azure-beli virtuális gépek közötti kommunikációt a ExpressRoute-átjáró bevonása nélkül. Ebben az architektúrában az ExpressRoute Fast Path nevű optimalizálás jelenik meg (piros vonal). 
+- **Left**: a SAP HANA TDI-tanúsítvánnyal rendelkező hardvert jeleníti meg az Azure nagyméretű példányának bélyegében. A HANA nagyméretű példányok egységei az Azure-előfizetéshez tartozó virtuális hálózatokhoz kapcsolódnak, és ugyanazt a technológiát használják, mint a helyszíni kapcsolat az Azure-ba. A május 2019-es verziójától kezdve egy optimalizálás lett bevezetve, amely lehetővé teszi a HANA nagyméretű példány-egységek és az Azure-beli virtuális gépek közötti kommunikációt a ExpressRoute-átjáró bevonása nélkül. Ebben az architektúrában az ExpressRoute Fast Path nevű optimalizálás jelenik meg (piros vonal). 
 
 Az Azure nagyméretű példányának bélyegzője maga ötvözi a következő összetevőket:
 
-- **Számítástechnika**: Azok a kiszolgálók, amelyek a szükséges számítástechnikai képességet biztosító Intel Xeon processzorok különböző generációján alapulnak, és SAP HANA minősítéssel rendelkeznek.
-- **Hálózat**: Egységes, nagy sebességű hálózati háló, amely összekapcsolódik a számítástechnikai, tárolási és LAN-összetevőkkel.
-- **Tárterület**: Egy egységes hálózati hálón keresztül elérhető tárolási infrastruktúra. A megadott tárolási kapacitás az Azure (nagyméretű példányok) telepített konfigurációjának adott SAP HANA függ. A tárterület további kapacitása további havi díj ellenében vehető igénybe.
+- **Számítástechnika**: azok a kiszolgálók, amelyek a szükséges számítástechnikai képességet biztosító Intel Xeon processzorok különböző generációján alapulnak, és SAP HANA minősítéssel rendelkeznek.
+- **Hálózat**: egységes, nagy sebességű hálózati háló, amely összekapcsolódik a számítástechnikai, tárolási és LAN-összetevőkkel.
+- **Storage**: egy egységes hálózati hálón keresztül elérhető tárolási infrastruktúra. A megadott tárolási kapacitás az Azure (nagyméretű példányok) telepített konfigurációjának adott SAP HANA függ. A tárterület további kapacitása további havi díj ellenében vehető igénybe.
 
 A nagyméretű példányok Stamp több-bérlős infrastruktúráján belül az ügyfelek elkülönített bérlőként települnek. A bérlő üzembe helyezése során egy Azure-előfizetést kell megkeresnie az Azure-regisztráción belül. Ezt az Azure-előfizetést a HANA nagyméretű példány számlázása képezi. Ezek a bérlők 1:1 kapcsolattal rendelkeznek az Azure-előfizetéssel. A hálózat esetében lehetséges, hogy egy, a különböző Azure-előfizetésekhez tartozó különböző virtuális hálózatokból egy adott bérlőn üzembe helyezett HANA nagyméretű példány-egységhez fér hozzá. Ezeknek az Azure-előfizetéseknek ugyanahhoz az Azure-regisztrációhoz kell tartozniuk. 
 

@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b49949c1765c3cb1598d728e21479c65037930
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714490"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648425"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
@@ -41,11 +41,11 @@ Ez a cikk áttekintést nyújt a naplózási jelentésről.
  
 ## <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 
-* A **biztonsági rendszergazda**, a **biztonsági olvasó**, a **jelentéskészítő** vagy a **globális rendszergazdai** szerepkör felhasználói
+* A **biztonsági rendszergazda**, a **biztonsági olvasó**, a **jelentéskészítő olvasó** , a **globális olvasó** vagy a **globális rendszergazdai** szerepkör felhasználói
 
 ## <a name="audit-logs"></a>Naplók
 
-Az Azure AD-naplók megfelelőségi adatokat biztosítanak a rendszertevékenységekről. A naplózási jelentés eléréséhez válassza a **naplók** lehetőséget a **Azure Active Directory** **tevékenység** szakaszában. Vegye figyelembe, hogy a naplók késése akár egy óráig is tarthat, így a naplózási tevékenység adatai a feladat befejezése után a portálon jelennek meg.
+Az Azure AD-naplók megfelelőségi adatokat biztosítanak a rendszertevékenységekről. A naplózási jelentés eléréséhez válassza a **naplók** lehetőséget a **Azure Active Directory** **figyelés** szakaszában. Vegye figyelembe, hogy a naplók késése akár egy óráig is tarthat, így a naplózási tevékenység adatai a feladat befejezése után a portálon jelennek meg.
 
 
 
@@ -90,16 +90,20 @@ A naplózási adat a következő mezőkön szűrhető:
 A **szolgáltatás** szűrője lehetővé teszi, hogy a következő szolgáltatások legördülő listájából válasszon ki:
 
 - Összes
+- HRE-kezelés UX
 - Hozzáférési felülvizsgálatok
-- Fiók kiépítése 
-- Alkalmazás egyszeri bejelentkezés
+- Fiók kiépítése
+- Alkalmazásproxy
 - Hitelesítési módszerek
 - B2C
 - Feltételes hozzáférés
 - Alapvető könyvtár
 - Jogosultságok kezelése
+- Hibrid hitelesítés
 - Identity Protection
 - Meghívott felhasználók
+- MIM szolgáltatás
+- MyApps
 - PIM
 - Önkiszolgáló csoportkezelés
 - Önkiszolgáló jelszókezelés
@@ -110,7 +114,7 @@ A **Kategória** szűrővel a következő szűrők közül választhat:
 - Összes
 - AdministrativeUnit
 - ApplicationManagement
-- Hitelesítés
+- Authentication
 - Engedélyezés
 - Kapcsolattartó
 - Eszköz
@@ -118,7 +122,11 @@ A **Kategória** szűrővel a következő szűrők közül választhat:
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
+- KerberosDomain
+- Kulcskezelő
+- Címke
 - Egyéb
+- PermissionGrantPolicy
 - Szabályzat
 - ResourceManagement
 - RoleManagement
@@ -131,17 +139,16 @@ Az összes naplózási tevékenység listáját a Graph API használatával érh
 Az **állapot** szűrő lehetővé teszi a szűrést egy naplózási művelet állapota alapján. Az állapot a következők egyike lehet:
 
 - Összes
-- Siker
+- Sikeres
 - Hiba
 
-A **célként** megadott szűrő lehetővé teszi egy adott cél keresését név vagy egyszerű felhasználónév (UPN) alapján. A cél neve és az UPN megkülönbözteti a kis-és nagybetűket. 
+A **célként** megadott szűrő lehetővé teszi egy adott cél keresését a név vagy az egyszerű felhasználónév (UPN) megkezdésével. A cél neve és az UPN megkülönbözteti a kis-és nagybetűket. 
 
-A **kezdeményező** szűrő lehetővé teszi egy szereplő nevének vagy egy univerzális egyszerű név (UPN) megadását. A név és az UPN megkülönbözteti a kis-és nagybetűket.
+A **kezdeményező** szűrővel megadhatja, hogy a színész neve vagy egy univerzális egyszerű felhasználónév (UPN) kezdődjön. A név és az UPN megkülönbözteti a kis-és nagybetűket.
 
 A **dátumtartomány** -szűrő lehetővé teszi, hogy meghatározza a visszaadott adatok időkeretét.  
 Lehetséges értékek:
 
-- 1 hónap
 - 7 nap
 - 24 óra
 - Egyéni
@@ -179,11 +186,11 @@ A felhasználó- és csoportalapú naplózási jelentésekkel az alábbi kérdé
 
 - Milyen licencek lettek hozzárendelve egy adott csoporthoz vagy felhasználóhoz?
 
-Ha csak a felhasználókhoz kapcsolódó naplózási adatellenőrzéseket szeretné áttekinteni, a **felhasználók** lap **tevékenység** szakaszában a **naplók** területen található szűrt nézetet is megtalálhatja. Ennek a belépési pontnak a **UserManagement** van, mint az előválasztott kategória.
+Ha csak a felhasználókhoz kapcsolódó naplózási adatelemzést szeretné áttekinteni, a **felhasználók** lap **figyelés** területén a **naplók** területen található szűrt nézetet is megtalálhatja. Ennek a belépési pontnak a **UserManagement** van, mint az előválasztott kategória.
 
 ![Naplók](./media/concept-audit-logs/users.png "Naplók")
 
-Ha csak a csoportokhoz kapcsolódó naplózási adatellenőrzéseket szeretné áttekinteni, a **csoportok** lap **tevékenység** szakaszában talál egy szűrt nézetet a **naplók** területen. Ennek a belépési pontnak a **GroupManagement** van, mint az előválasztott kategória.
+Ha csak a csoportokhoz kapcsolódó naplózási adatellenőrzéseket szeretné áttekinteni, a **csoportok** lap **figyelés** területén a **naplók** területen található szűrt nézeteket is megtalálhatja. Ennek a belépési pontnak a **GroupManagement** van, mint az előválasztott kategória.
 
 ![Naplók](./media/concept-audit-logs/groups.png "Naplók")
 

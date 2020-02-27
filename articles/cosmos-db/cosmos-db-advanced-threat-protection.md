@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 5cea2f1dac50744c974917347b4428bc39aa737d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcc1c6ffe7cdec4aed325a67969235ae993a5109
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445531"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614835"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>A Azure Cosmos DB komplex veszélyforrások elleni védelme (előzetes verzió)
 
@@ -49,7 +49,7 @@ A Azure Cosmos DB komplex veszélyforrások elleni védelme olyan rendellenes te
 3. A **speciális biztonsági** beállítások panelen:
 
     * Kattintson a komplex **veszélyforrások elleni védelem** lehetőségre a **beállításához.**
-    * Az új vagy frissített Advanced Threat Protection-szabályzat mentéséhez kattintson a **Mentés** lehetőségre.   
+    * Kattintson a **Save (Mentés** ) gombra az új vagy frissített összetett veszélyforrások elleni védelmi szabályzat mentéséhez.   
 
 ### <a name="set-up-atp-using-rest-api"></a>ATP beállítása REST API használatával
 
@@ -105,7 +105,7 @@ A rendszer a riasztás részleteivel és a javasolt műveletekkel kapcsolatos e-
 
 ## <a name="cosmos-db-atp-alerts"></a>ATP-riasztások Cosmos DB
 
- A Azure Cosmos DB-fiókok figyelése során generált riasztások listájának megtekintéséhez tekintse meg a Security Center dokumentációjának [Cosmos db riasztások](../security-center/security-center-alerts-data-services.md#cosmos-db) című szakaszát.
+ A Azure Cosmos DB-fiókok figyelése során generált riasztások listájának megtekintéséhez tekintse meg a Azure Security Center dokumentációjának [Cosmos db riasztások](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos) című szakaszát.
 
 ## <a name="next-steps"></a>Következő lépések
 

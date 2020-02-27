@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 46557d802222190c0ed82f6243dd2a9b997ecaa5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 18395f2b839aef88491f71aeed660eb2ce011e2c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960567"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614239"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>Meglévő Azure AD Domain Services felügyelt tartomány SKU-jának módosítása
 
@@ -23,7 +23,7 @@ Azure Active Directory Domain Services (Azure AD DS) esetében a rendelkezésre 
 
 Ez a cikk bemutatja, hogyan módosíthatja az SKU-t egy meglévő Azure AD DS felügyelt tartományhoz a Azure Portal használatával.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
@@ -46,7 +46,7 @@ További információ ezekről a korlátokról: [Azure AD DS SKU-funkciók és k
 
 Ha egy Azure AD DS felügyelt tartomány SKU-át szeretné módosítani a Azure Portal használatával, hajtsa végre a következő lépéseket:
 
-1. A Azure Portal tetején keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a felügyelt tartományt a listából, például *aadds.contoso.com*.
+1. A Azure Portal tetején keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a felügyelt tartományt a listából, például *aaddscontoso.com*.
 1. Az Azure AD DS lap bal oldali menüjében válassza a **beállítások > SKU**lehetőséget.
 
     ![Válassza ki az SKU menüpontot az Azure AD DS felügyelt tartományhoz a Azure Portal](media/change-sku/overview-change-sku.png)

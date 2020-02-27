@@ -4,7 +4,7 @@ description: Magas rendelkezésre állás biztosítása SAP HANA számára az Az
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71212532"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615090"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Magas rendelkezésre állás beállítása a SUSE-ben a STONITH használatával
 Ez a dokumentum részletes útmutatást nyújt a SUSE operációs rendszer magas rendelkezésre állásának beállításához a STONITH eszköz használatával.
@@ -130,8 +130,8 @@ Ez a szakasz a SUSE HEKTÁRos fürt beállításának lépéseit ismerteti.
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
 ```
-![zypperpatternha_sles.png](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
-![zypperpatternSAPHANASR-doc.png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
+![zypperpatternha_sles. png](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
+![zypperpatternSAPHANASR-doc. png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3,2 a fürt beállítása
 3.2.1 használhatja a *Ha-cluster-init* parancsot is, vagy a YaST2 varázslóval állíthatja be a fürtöt. Ebben az esetben a rendszer a YaST2 varázslót használja. Ezt a lépést **csak az elsődleges csomóponton**hajthatja végre.
@@ -320,7 +320,7 @@ crm configure load update crm-vip.txt
 ### <a name="74-validate-the-resources"></a>7,4 az erőforrások ellenőrzése
 
 A Command *crm_mon*futtatásakor Itt láthatja a két erőforrást.
-![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
+![crm_mon_command. png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
 Emellett megtekintheti az állapotot a *https://\<csomópont IP-címe >: 7630/CIB/Live/State*
 
@@ -397,7 +397,7 @@ Tekintse át a módosításokat, és nyomja meg az OK gombot
 
 A csomag telepítése ![YaST-Performing-Installation. png](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
-Kattintson a Next (Tovább) gombra.
+Kattintson a Next (Tovább) gombra
 
 ![yast-installation-report.png](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
 
@@ -413,7 +413,7 @@ zypper -n install libyui-qt
 ```
 ![Zypper-install-ligyui. png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
 ![Zypper-install-ligyui_part2. png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png) Yast2 meg kell tudnia nyitni a grafikus nézetet most az itt látható módon.
-![yast2-control-center.png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
+![YaST2-Control-Center. png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
 ### <a name="scenario-3-yast2-does-not-high-availability-option"></a>3\. forgatókönyv: a YaST2 nem magas rendelkezésre állású beállítás
 Ahhoz, hogy a magas rendelkezésre állás lehetőség megjelenjen a YaST2-vezérlési központban, telepítenie kell a további csomagokat.
@@ -433,8 +433,8 @@ A YaST2 > szoftverek használata > szoftverfejlesztés
 
 Mintázatok kiválasztása
 
-![yast-pattern1.png](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
-![yast-pattern2.png](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
+![YaST-pattern1. png](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
+![YaST-pattern2. png](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
 
 Kattintson az **elfogadás** gombra.
 

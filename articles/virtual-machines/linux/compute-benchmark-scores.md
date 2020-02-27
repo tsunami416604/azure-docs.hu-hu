@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 234c4b0493a4f03ed89162318090d57621740cb0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6662f109f9a8227ec45d44a730abc91ebcd8dd70
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036697"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650844"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>A Linux rendszerű virtuális gépek számítási teljesítményteszt-pontszámai
 Az alábbi összehasonlító teljesítménytesztek eredményei az Azure nagy teljesítményű virtuálisgép-felállásának számítási teljesítményét mutatják be Ubuntu rendszeren. A számítási teljesítménytesztek pontszámai a [Windows rendszerű virtuális gépek](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)esetében is elérhetők.
@@ -52,6 +52,8 @@ Az alábbi összehasonlító teljesítménytesztek eredményei az Azure nagy tel
 | Standard_A8m_v2 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 8 | 1 | 62,9 | 49 838 | 633 | 1,27% | 182 |
 | Standard_A8m_v2 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 8 | 1 | 62,9 | 49 123 | 2 483 | 5,05% | 259 |
 
+Megjegyzés: a Av2 sorozatú virtuális gépek számos különböző hardvereszközön és processzoron is üzembe helyezhetők (a fentiekben látható módon). A Av2 sorozatú virtuális gépekhez a CPU-teljesítmény és a memória-konfigurációk a legmegfelelőbbek a belépési szintű munkaterhelésekhez, például a fejlesztéshez A méret szabályozása úgy történik, hogy viszonylag konzisztens processzor-teljesítményt nyújtson a futó példány számára, függetlenül attól, hogy milyen hardvert helyeztek üzembe. az újabb processzor-optimalizálások előnyeit kihasználó szoftverek azonban jelentősebb eltéréseket tekinthetnek meg a processzorok különböző típusaiban.
+
 ## <a name="b---burstable"></a>B – feltört
 (3/15/2019 12:27:08 AM PBI 3897709)
 
@@ -69,6 +71,10 @@ Az alábbi összehasonlító teljesítménytesztek eredményei az Azure nagy tel
 | Standard_B4ms | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 4 | 1 | 15,7 | 54 051 | 1 260 | 2,33% | 672 |
 | Standard_B8ms | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 8 | 1 | 31,4 | 111 929 | 1 562 | 1,40% | 35 |
 | Standard_B8ms | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 8 | 1 | 31,4 | 109 537 | 1 354 | 1,24% | 665 |
+
+Megjegyzés: a B sorozatú virtuális gépek a feldolgozható teljesítménnyel kapcsolatos követelményekkel rendelkeznek. A virtuálisgép-példányok akkor halmoznak fel kreditet, ha az alaptervnél kevesebbet használ. Ha a virtuális gép felhalmozott Kredittel rendelkezik, a virtuális gép az alapkonfiguráció felett akár 100%-ot is megadhat, hogy megfeleljen a rövid CPU-burst követelményeinek. A burst idő a virtuális gép méretének és időpontjának függvényében elérhető kredittől függ.  
+
+A Megjegyzés egy rövid ideig futó teszt, amely általában a rendelkezésre álló burst krediteken belül fejeződik be.  Ezért a fenti számok általában a virtuális gép burst teljesítményének felelnek meg, ami azt jelenti, hogy a rövid, a burst számítási feladatok (jellemző a B sorozatú) teljesítménye általában a következő lesz:.
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 – általános számítás + Premium Storage
 (3/12/2019 6:52:03 PM PBI 3897709)

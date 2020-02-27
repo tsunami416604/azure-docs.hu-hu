@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 42ab32e80ef0a1a7f3c02d8a8eedbb8ab13c4b88
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 89fa2297c50b6f28045f6f934092de3fd5d6c879
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132247"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613060"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services biztonsági naplózásának engedélyezése
 
@@ -84,7 +84,7 @@ Az Azure AD DS biztonsági naplózási események az Azure Portal használatáva
 > Az Azure AD DS biztonsági naplózása nem visszamenőleges. Múltbeli események nem kérhetők le és nem játszhatók vissza. Az Azure AD DS csak a biztonsági naplózás engedélyezése után elvégezhető eseményeket küldheti el.
 
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
-1. A Azure Portal tetején keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a felügyelt tartományt, például *aadds.contoso.com*.
+1. A Azure Portal tetején keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a felügyelt tartományt, például *aaddscontoso.com*.
 1. Az Azure AD DS ablakban válassza a **diagnosztikai beállítások** elemet a bal oldali oldalon.
 1. Alapértelmezés szerint egyetlen diagnosztika sincs konfigurálva. Első lépésként válassza a **diagnosztikai beállítás hozzáadása**elemet.
 

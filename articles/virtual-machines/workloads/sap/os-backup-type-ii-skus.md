@@ -4,7 +4,7 @@ description: Operációs rendszer biztonsági mentésének és visszaállítás�
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,16 +13,16 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 046daed4f548d24010c3d3bef177cee8cf24a55e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 100e1b974e54d8c0065194bc7beb18f458011434
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098725"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616865"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>Az operációs rendszer biztonsági mentése és visszaállítása a 3. típusú bélyegzők II. típusához
 
-Ez a dokumentum ismerteti az operációsrendszer-fájlok biztonsági mentésének és visszaállításának lépéseit a 3. típusú HANA nagyméretű példányainak **II** . típusára vonatkozóan. 
+Ez a dokumentum ismerteti az operációsrendszer-fájlok biztonsági mentésének és visszaállításának lépéseit a 3. típusú HANA nagyméretű példányainak **II. típusára** vonatkozóan. 
 
 >[!Important]
 > **Ez a cikk nem vonatkozik a II. típusú, nagyméretű HANA-példányok esetében a 2. változatra.** A 2. típusú Hana nagyméretű példányú, 4 HANA nagyméretű példányú bélyegekkel üzembe helyezett rendszerindító LUN-lemezekről biztonsági mentés készíthető a Storage-pillanatképekkel, mivel ez a helyzet a 3. változatban már használatos
@@ -31,7 +31,7 @@ Ez a dokumentum ismerteti az operációsrendszer-fájlok biztonsági mentéséne
 >[!NOTE]
 >Az operációs rendszer biztonsági mentési parancsfájljai a hátsó szoftvert használják, amely előre telepítve van a-kiszolgálón.  
 
-Miután a Microsoft `Service Management` csapata elvégezte a kiépítés befejezését, alapértelmezés szerint a kiszolgáló két biztonsági mentési ütemtervtel van konfigurálva, hogy biztonsági másolatot készítsen az operációs rendszer fájlrendszeri szintjéről. A biztonsági mentési feladatok ütemezett listáját a következő paranccsal tekintheti meg:
+Miután a Microsoft `Service Management` csapata elvégezte a kiépítés befejezését, a kiszolgáló alapértelmezés szerint két biztonsági mentési ütemtervre van konfigurálva, hogy biztonsági másolatot készítsen az operációs rendszer fájlrendszeri szintjéről. A biztonsági mentési feladatok ütemezett listáját a következő paranccsal tekintheti meg:
 ```
 #crontab –l
 ```
@@ -86,7 +86,7 @@ A **hátsó** biztonsági mentési csomagok telepítéséhez használja a követ
 ```
 #yum install rear -y
 ```
-A hátsó eszköz konfigurálásához frissítenie kell a **OUTPUT_URL** és a **BACKUP_URL** paramétereket a */etc/Rear/local.conf fájlban*.
+A hátsó eszköz konfigurálásához frissítenie kell a paramétereket **OUTPUT_URL** és **BACKUP_URL** a *fájl/etc/Rear/local.conf*.
 ```
 OUTPUT=ISO
 ISO_MKISOFS_BIN=/usr/bin/ebiso
@@ -99,4 +99,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-A következő képernyőfelvétel a teljes biztonsági mentés visszaállítását mutatja be: ![RearToolConfiguration. PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+A következő képernyőképen a teljes biztonsági mentés visszaállítása látható: ![RearToolConfiguration. PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

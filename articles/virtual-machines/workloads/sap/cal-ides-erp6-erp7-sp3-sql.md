@@ -4,7 +4,7 @@ description: SAP ide EHP7 SP3 telepítése SAP ERP 6,0-hez az Azure-ban
 services: virtual-machines-windows
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 66921280403027d1723b27f104b42d2c83271213
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100067"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616703"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>SAP ide EHP7 SP3 telepítése SAP ERP 6,0-hez az Azure-ban
 Ez a cikk bemutatja, hogyan helyezhet üzembe egy SQL Server és az Azure-beli Windows operációs rendszert futtató SAP ide-rendszert az SAP Cloud Appliance Library (SAP CAL) 3,0 használatával. A képernyőképen a lépésenkénti folyamat látható. Egy másik megoldás üzembe helyezéséhez kövesse ugyanezen lépéseket.
 
-Az SAP CAL elindításához lépjen az [SAP Cloud Appliance Library](https://cal.sap.com/) webhelyére. Az SAP az új [SAP Cloud Appliance Library 3,0](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience)-es könyvtáráról is tartalmaz blogot. 
+Az SAP CAL elindításához lépjen az [SAP Cloud Appliance Library](https://cal.sap.com/) webhelyére. Az SAP az új [SAP Cloud Appliance Library 3,0-es könyvtáráról](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience)is tartalmaz blogot. 
 
 > [!NOTE]
 > 2017. május 29-én az SAP CAL üzembe helyezéséhez a kevésbé előnyben részesített klasszikus üzemi modell mellett használhatja a Azure Resource Manager üzemi modellt is. Javasoljuk, hogy az új Resource Manager-alapú üzemi modellt használja, és hagyja figyelmen kívül a klasszikus üzemi modellt.
@@ -46,7 +46,7 @@ Az SAP CAL-be való bejelentkezés után az első oldal általában a **megoldá
     c. Adja meg az SAP CAL engedélyt az Azure-előfizetésében való üzembe helyezéshez.
 
    > [!NOTE]
-   >  A következő lépések bemutatják, hogyan hozhat létre SAP CAL-fiókot a Resource Manager-alapú üzemelő példányokhoz. Ha már rendelkezik egy, a klasszikus üzemi modellel társított SAP CAL-fiókkal, akkor az alábbi lépéseket követve hozzon létre egy új SAP Cal-fiókot. Az új SAP CAL-fióknak üzembe kell helyeznie a Resource Manager-modellben.
+   >  A következő lépések bemutatják, hogyan hozhat létre SAP CAL-fiókot a Resource Manager-alapú üzemelő példányokhoz. Ha már rendelkezik egy, a klasszikus üzemi modellel társított SAP CAL-fiókkal *, akkor az* alábbi lépéseket követve hozzon létre egy új SAP Cal-fiókot. Az új SAP CAL-fióknak üzembe kell helyeznie a Resource Manager-modellben.
 
 1. Új SAP CAL-fiók létrehozásához a **fiókok** lapon két lehetőség látható az Azure-hoz: 
 
@@ -72,7 +72,7 @@ Az SAP CAL-be való bejelentkezés után az első oldal általában a **megoldá
 
     ![Az Internet Explorer Cloud Services megerősítése](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic5a.PNG)
 
-1. Kattintson a **fogadja el**. Ha az engedélyezés sikeres, az SAP CAL-fiók definíciója ismét megjelenik. Rövid idő elteltével egy üzenet megerősíti, hogy az engedélyezési folyamat sikeres volt.
+1. Kattintson az **elfogadás**gombra. Ha az engedélyezés sikeres, az SAP CAL-fiók definíciója ismét megjelenik. Rövid idő elteltével egy üzenet megerősíti, hogy az engedélyezési folyamat sikeres volt.
 
 1. Ha az újonnan létrehozott SAP CAL-fiókot szeretné hozzárendelni a felhasználóhoz, adja meg a **felhasználói azonosítóját** a jobb oldali szövegmezőben, majd kattintson a **Hozzáadás**gombra. 
 
@@ -95,17 +95,17 @@ Sikeresen létrehozott egy SAP CAL-fiókot, amely a következőket teszi lehető
 ### <a name="deploy-a-solution"></a>Megoldás üzembe helyezése
 1. Miután beállította az SAP CAL-fiókot, válassza ki **a Windows és SQL Server megoldás SAP ide-megoldását** . Kattintson a **példány létrehozása**lehetőségre, és erősítse meg a használati és használati feltételeket. 
 
-1. **Alapszintű módban: Példány** létrehozása oldalon a következőket kell tennie:
+1. Az **alapszintű mód: példány létrehozása** lapon a következőket kell tennie:
 
     a. Adja meg a példány **nevét**.
 
-    b. Válasszon ki egyAzure-régiót. Előfordulhat, hogy egy SAP CAL-előfizetésre van szüksége, hogy több Azure-régió is elérhető legyen.
+    b. Válasszon ki egy Azure- **régiót**. Előfordulhat, hogy egy SAP CAL-előfizetésre van szüksége, hogy több Azure-régió is elérhető legyen.
 
     c.  Adja meg a megoldás fő **jelszavát** , az alábbiak szerint:
 
-    ![SAP CAL alapszintű mód: Példány létrehozása](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
+    ![SAP CAL alapszintű mód: példány létrehozása](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-1. Kattintson a **Create** (Létrehozás) gombra. Némi várakozás után a megoldás méretétől és összetettségének függvényében (az SAP CAL becslést biztosít) az állapot aktívként jelenik meg, és készen áll a használatra: 
+1. Kattintson a **Létrehozás** gombra. Némi várakozás után a megoldás méretétől és összetettségének függvényében (az SAP CAL becslést biztosít) az állapot aktívként jelenik meg, és készen áll a használatra: 
 
     ![SAP CAL-példányok](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

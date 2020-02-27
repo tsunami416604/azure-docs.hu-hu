@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: e6645a131766b7ec055ba1c8bb639f054f50c80b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: cc126af67a0d8627d61e595cee56f3df8973340d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704385"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613040"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Hatókörön belüli szinkronizálás konfigurálása az Azure AD-ből Azure Active Directory Domain Services
 
@@ -70,7 +70,7 @@ Ha a Azure Portal azt mutatja, hogy az Azure AD DS felügyelt tartománya befeje
 
 Azon csoportok listájának módosításához, amelyeknek a felhasználóit szinkronizálni szeretné az Azure AD DS felügyelt tartományával, hajtsa végre a következő lépéseket:
 
-1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a példányt, például *aadds.contoso.com*.
+1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a példányt, például *aaddscontoso.com*.
 1. Válassza a **szinkronizálás** lehetőséget a bal oldali menüben.
 1. Csoport hozzáadásához válassza a felül a **+ csoportok kiválasztása** lehetőséget, majd válassza ki a hozzáadni kívánt csoportokat.
 1. Ha el szeretne távolítani egy csoportot a szinkronizálási hatókörből, válassza ki a jelenleg szinkronizált csoportok listájából, majd válassza a **csoportok eltávolítása**lehetőséget.
@@ -82,7 +82,7 @@ A szinkronizálás hatókörének módosítása miatt az Azure AD DS felügyelt 
 
 Ha le szeretné tiltani a csoport alapú hatókörű szinkronizálást egy Azure AD DS felügyelt tartományhoz, hajtsa végre a következő lépéseket:
 
-1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a példányt, például *aadds.contoso.com*.
+1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a példányt, például *aaddscontoso.com*.
 1. Válassza a **szinkronizálás** lehetőséget a bal oldali menüben.
 1. Állítsa be a szinkronizálási hatókört a **hatókörből** az **összesre**, majd válassza a **szinkronizálási hatókör mentése**lehetőséget.
 
@@ -194,11 +194,11 @@ A lépések végrehajtásához használja a PowerShellt. Tekintse át a [Azure A
 
 1. Most hozza létre az Azure AD DS felügyelt tartományt, és engedélyezze a csoport-alapú hatókörű szinkronizálást. Adja meg a *"filteredSync" = "enabled* " *tulajdonságot a-Properties* paraméterben.
 
-    Állítsa be az Azure-előfizetés AZONOSÍTÓját, majd adja meg a felügyelt tartomány nevét (például *aadds.contoso.com*). Az előfizetés-azonosítót a [Get-AzSubscription][Get-AzSubscription] parancsmaggal kérheti le. Állítsa be az erőforráscsoport nevét, a virtuális hálózat nevét és a régiót az előző lépésekben használt értékekre a támogató Azure-erőforrások létrehozásához:
+    Állítsa be az Azure-előfizetés AZONOSÍTÓját, majd adja meg a felügyelt tartomány nevét (például *aaddscontoso.com*). Az előfizetés-azonosítót a [Get-AzSubscription][Get-AzSubscription] parancsmaggal kérheti le. Állítsa be az erőforráscsoport nevét, a virtuális hálózat nevét és a régiót az előző lépésekben használt értékekre a támogató Azure-erőforrások létrehozásához:
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "aadds.contoso.com"
+   $ManagedDomainName = "aaddscontoso.com"
    $ResourceGroupName = "myResourceGroup"
    $VnetName = "myVnet"
    $AzureLocation = "westus"
