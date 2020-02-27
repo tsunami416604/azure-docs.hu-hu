@@ -6,12 +6,12 @@ ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 01/16/2020
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 1cd7b3db92de339b7614a4271f9e6793cdf8f2ad
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: f0948cb58ba9403a34fbfd61ec43c29bed3440bc
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292893"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621006"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Az Azure Functions bemutatása
 
@@ -19,9 +19,9 @@ Azure Functions lehetővé teszi, hogy kisebb kódrészleteket ("functions") fut
 
 Egy függvényt egy adott típusú esemény "aktivál". A [támogatott eseményindítók](./functions-triggers-bindings.md) például az adatváltozások megválaszolására, az üzenetek megválaszolására, az ütemezett futtatásra vagy egy HTTP-kérelem eredményére reagálnak.
 
-Habár a közvetlenül a számtalan szolgáltatással való integrációt végezheti el, a más szolgáltatásokkal való integrálás a kötések használatával egyszerűsíthető. A kötések lehetővé teszi, [hogy deklaratív hozzáférést biztosítson az Azure és a külső szolgáltatások széles választékához](./functions-triggers-bindings.md).
+Habár a közvetlenül a számtalan szolgáltatással való integrációt végezheti el, a más szolgáltatásokkal való integrálás a kötések használatával egyszerűsíthető. A kötések lehetővé teszi, [hogy az Azure és a harmadik féltől származó szolgáltatások széles köréhez férhet hozzá](./functions-triggers-bindings.md).
 
-## <a name="features"></a>Jellemzők
+## <a name="features"></a>Szolgáltatások
 
 A Azure Functions főbb funkciói a következők:
 
@@ -79,7 +79,7 @@ Azure Functions háromféle díjszabási csomaggal rendelkezik. Válassza azt, a
 
 További információt a szolgáltatási csomagokról [az Azure Functions szolgáltatási csomagok áttekintésében](functions-scale.md) talál. Az árképzés további részleteiért lásd [a Functions díjszabási oldalát](https://azure.microsoft.com/pricing/details/functions/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az első Azure-függvény létrehozása](functions-create-first-function-vs-code.md)  
   Ismerkedjen meg a [Visual Studio Code](functions-create-first-function-vs-code.md), a [parancssor](functions-create-first-azure-function-azure-cli.md)használatával, vagy használja a [Azure Portal](functions-create-first-azure-function.md).

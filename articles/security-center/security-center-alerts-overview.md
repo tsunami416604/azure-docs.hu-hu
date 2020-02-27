@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 826cc155bae037121ddc303a6e1bf300e2d50a27
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 514de1435519282335124bfd67bac82669240b78
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589300"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616513"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Biztonsági riasztások az Azure Security Centerben
 
@@ -98,14 +98,20 @@ Ezek az egyesített erőfeszítések új és hatékonyabb észleléseket eredmé
 
 Az alábbi témakörök a különböző riasztásokat ismertetik az erőforrástípusok szerint:
 
-* [IaaS virtuális gépek és kiszolgálók riasztásai](security-center-alerts-iaas.md)
-* [Natív számítási riasztások](security-center-alerts-compute.md)
-* [Adatszolgáltatási riasztások](security-center-alerts-data-services.md)
+* [Riasztások a IaaS Windows rendszerű gépekhez](threat-protection.md#windows-machines)
+* [IaaS Linux rendszerű gépekre vonatkozó riasztások](threat-protection.md#linux-machines)
+* [Riasztások Azure App Service](threat-protection.md#app-services)
+* [Azure-tárolókkal kapcsolatos riasztások](threat-protection.md#azure-containers)
+* [Riasztások SQL Database és SQL Data Warehouse](threat-protection.md#data-sql)
+* [Azure Storage-riasztások](threat-protection.md#azure-storage)
+* [Riasztások Cosmos DB](threat-protection.md#cosmos-db)
 
 A következő témakörök azt ismertetik, hogyan használják a Security Center az Azure-infrastruktúrával való integrálás során gyűjtött különböző telemetria, hogy az Azure-ban üzembe helyezett erőforrások további védelmi rétegeit is alkalmazni lehessen:
 
-* [Szolgáltatási réteggel kapcsolatos riasztások](security-center-alerts-service-layer.md)
-* [Veszélyforrások észlelése az Azure WAF és Azure DDoS Protection](security-center-alerts-integration.md)
+* [Riasztások az Azure felügyeleti rétegéhez (Azure Resource Manager) (előzetes verzió)](threat-protection.md#management-layer)
+* [Riasztások Azure Key Vault (előzetes verzió)](threat-protection.md#azure-keyvault)
+* [Riasztások az Azure hálózati réteghez](threat-protection.md#network-layer)
+* [Más szolgáltatásokból származó riasztások](threat-protection.md#alerts-other)
 
 ## <a name="what-are-security-incidents"></a>Mik azok a biztonsági incidensek?
 

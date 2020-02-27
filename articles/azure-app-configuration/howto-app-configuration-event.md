@@ -1,28 +1,24 @@
 ---
-title: 'Oktatóanyag: események küldése webes végpontnak az Azure app Configuration használatával'
-titleSuffix: Azure App Configuration
-description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-alkalmazás konfigurációs esemény-előfizetéseit a kulcs-érték módosítási események webes végpontra való küldéséhez.
+title: Események küldése webes végpontnak az Azure app Configuration használatával
+description: Ismerje meg, hogy az Azure-alkalmazás konfigurációs esemény-előfizetéseit használva küldje el a kulcs-érték módosítási eseményeket egy webes végpontra
 services: azure-app-configuration
-documentationcenter: ''
-author: jimmyca
-editor: ''
+author: lisaguthrie
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.topic: tutorial
-ms.date: 05/30/2019
+ms.topic: how-to
+ms.date: 02/25/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 2a80f931f2060d421483b9e26940985091c9bb5c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 93700af5e7fb3a4a1253424996ed04532c01f88c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899693"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619591"
 ---
-# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Gyors útmutató: Azure-alkalmazás konfigurációs eseményeinek átirányítása webes végpontra az Azure CLI-vel
+# <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Azure-alkalmazás konfigurációs eseményeinek átirányítása webes végpontra az Azure CLI-vel
 
-Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be az Azure-alkalmazás konfigurációs esemény-előfizetéseit a kulcs-érték módosítási események webes végpontra való küldéséhez. Az Azure-alkalmazások konfigurációjának felhasználói előfizethetnek olyan eseményekre, amelyek a kulcs-érték módosításakor lettek kibocsátva. Ezek az események indíthatnak webhookokat, Azure Functionseket, Azure Storage-várólistákat vagy bármely más, a Azure Event Grid által támogatott eseménykezelőt. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
+Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure-alkalmazás konfigurációs esemény-előfizetéseit a kulcs-érték módosítási események webes végpontra való küldéséhez. Az Azure-alkalmazások konfigurációjának felhasználói előfizethetnek a kulcs-érték módosításakor kibocsátott eseményekre. Ezek az események indíthatnak webhookokat, Azure Functionseket, Azure Storage-várólistákat vagy bármely más, a Azure Event Grid által támogatott eseménykezelőt. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,7 +26,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be az Azure-alka
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI legújabb verzióját (2.0.24 vagy újabb verzió) kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha helyi telepítése és használata a parancssori felület, ez a cikk megköveteli, hogy az Azure CLI legújabb verzióját futtatja-e (2.0.24 vagy újabb). A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 Ha nem a Cloud Shellt használja, először be kell jelentkeznie az `az login` paranccsal.
 
@@ -46,15 +42,16 @@ A következő példában létrehozunk egy `<resource_group_name>` nevű erőforr
 az group create --name <resource_group_name> --location westus
 ```
 
-## <a name="create-an-app-configuration"></a>Alkalmazás konfigurációjának létrehozása
+## <a name="create-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló létrehozása
 
-Cserélje le a `<appconfig_name>`t az alkalmazás konfigurációjának egyedi nevére, és `<resource_group_name>` a korábban létrehozott erőforráscsoporthoz. A névnek egyedinek kell lennie, mert DNS-névként van használatban.
+Cserélje le a `<appconfig_name>`t a konfigurációs tároló egyedi nevére, és `<resource_group_name>` a korábban létrehozott erőforráscsoporthoz. A névnek egyedinek kell lennie, mert DNS-névként van használatban.
 
 ```azurecli-interactive
 az appconfig create \
   --name <appconfig_name> \
   --location westus \
-  --resource-group <resource_group_name>
+  --resource-group <resource_group_name> \
+  --sku free
 ```
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
@@ -78,7 +75,7 @@ A helynek megjelenített üzenetek nélkül kell megjelennie.
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-your-app-configuration"></a>Előfizetés az alkalmazás konfigurációjához
+## <a name="subscribe-to-your-app-configuration-store"></a>Előfizetés az alkalmazás konfigurációs tárolójára
 
 A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni, és hová szeretné küldeni azokat. Az alábbi példa előfizet a létrehozott alkalmazás-konfigurációra, és átadja az URL-címet a webalkalmazásból az eseményekről szóló értesítés végpontjának. Az `<event_subscription_name>` elemet cserélje le az esemény-előfizetéshez választott névre. A `<resource_group_name>` és `<appconfig_name>` elemnél a korábban létrehozott értékeket adja meg.
 
@@ -122,7 +119,6 @@ az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
   "dataVersion": "1",
   "metadataVersion": "1"
 }]
-
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

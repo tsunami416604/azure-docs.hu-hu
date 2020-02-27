@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 543227ac9c07207112177dfaccbd00723b61a314
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 8d3f4294a5c8b09a132d56cd72ccb36ce766e0dd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566399"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616724"
 ---
-# <a name="upgrade-azure-internal-load-balancer-from-basic-sku-to-standard-sku"></a>Az Azure belső Load Balancer frissítése alapszintű SKU-ról standard SKU-ra
+# <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure belső Load Balancer frissítése – nincs szükség kimenő kapcsolatok megtételére
 Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
 
 A frissítés két szakaszból áll:
@@ -28,12 +28,12 @@ Ez a cikk a konfiguráció áttelepítését ismerteti. A virtuális gépeknek a
 
 Olyan Azure PowerShell-parancsfájl érhető el, amely a következő műveleteket végzi el:
 
-* Létrehoz egy szabványos belső SKU Load Balancer az erőforráscsoport és a megadott helyen.
-* Zökkenőmentesen másolja az alapszintű SKU belső Load Balancer konfigurációit az újonnan létrehozott Standard belső Load Balancerra.
+* Létrehoz egy szabványos belső SKU Load Balancer a megadott helyen. Vegye figyelembe, hogy a szabványos belső Load Balancer nem biztosít [kimenő kapcsolatokat](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) .
+* Zökkenőmentesen másolja az alapszintű SKU Load Balancer konfigurációit az újonnan létrehozott standard Load Balancerra.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* A parancsfájl csak a belső Load Balancer frissítését támogatja. A belső alapszintű Load Balancer verziófrissítéshez hozzon létre egy szabványos belső Load Balancer, ha a kimenő kapcsolat nem kívánatos, és hozzon létre egy szabványos belső Load Balancer és egy szabványos belső Load Balancer, ha kimenő kapcsolatra van szükség.
+* A parancsfájl csak a belső Load Balancer frissítését támogatja, ha nincs szükség kimenő kapcsolatok használatára. Ha egyes virtuális gépekhez [Kimenő kapcsolatok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) szükségesek, tekintse meg ezt az [oldalt](upgrade-InternalBasic-To-PublicStandard.md) . 
 * A standard Load Balancer új nyilvános címmel rendelkezik. A meglévő alapszintű Load Balancerekhez kapcsolódó IP-címeket nem lehet zökkenőmentesen áthelyezni, mivel azok eltérő SKU-k használatával standard Load Balancer.
 * Ha a standard Load Balancer egy másik régióban lett létrehozva, akkor a régi régióban meglévő virtuális gépeket nem lehet az újonnan létrehozott standard Load Balancerhoz rendelni. A korlátozás megkerüléséhez hozzon létre egy új virtuális gépet az új régióban.
 * Ha a Load Balancer nem rendelkezik előtér-IP-konfigurációval vagy háttér-készlettel, valószínűleg a parancsfájl futtatásakor hiba lépett fel. Ügyeljen arra, hogy ne legyenek üresek.
@@ -122,6 +122,6 @@ Nem. A Azure PowerShell szkript csak a konfigurációt telepíti át. A tényleg
   
 E-mailt küldhet slbupgradesupport@microsoft.comnak, megnyithat egy támogatási esetet az Azure-támogatással, vagy mindkettőt elvégezheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók a standard Load Balancer](load-balancer-overview.md)

@@ -1,5 +1,5 @@
 ---
-title: Lapelrendezés verziói
+title: Oldalelrendezési verziók
 titleSuffix: Azure AD B2C
 description: Az egyéni házirendek felhasználói felületének testreszabása az oldalelrendezés korábbi verzióiban.
 services: active-directory-b2c
@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 02/26/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2a0a786d3e2135467c7279c76bae273bff0ba2d0
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: b24e8cc5f6bb6213bf021362c5654afd4d5266fb
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149507"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620614"
 ---
-# <a name="page-layout-versions"></a>Lapelrendezés verziói
+# <a name="page-layout-versions"></a>Oldalelrendezési verziók
 
 A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalmazzanak javításokat és javításokat a lapok elemeiben. A következő változási napló meghatározza az egyes verziókban bevezetett módosításokat.
 
@@ -33,7 +33,7 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
 
 - Minden oldal
   - Kisegítő lehetőségek – javítások
-  - Most hozzáadhatja a `data-preload="true"` attribútumot a HTML-címkékben a CSS és a JavaScript betöltési sorrendjének szabályozásához.
+  - Most hozzáadhatja a `data-preload="true"` attribútumot a [HTML-címkékben](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) a CSS és a JavaScript betöltési sorrendjének szabályozásához.
     - A csatolt CSS-fájlokat a HTML-sablonnal megegyező időben töltse be, így nem "villódzásmentes" a fájlok betöltése között.
     - Szabályozhatja, hogy a rendszer hogyan olvassa be és hajtsa végre a `script` címkék sorrendjét az oldal betöltése előtt.
   - Az e-mail-mező mostantól `type=email` és a mobil billentyűzetek biztosítják a megfelelő javaslatokat

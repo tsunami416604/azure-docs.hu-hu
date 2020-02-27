@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Ismerje meg, hogyan konfigurálhatja az Azure dev Spaces-t egyéni traefik bemenő vezérlő használatára, és hogyan konfigurálhatja a HTTPS-t az adott bejövő vezérlő használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: 4fc9dfbb4c437210de3ab9a88aafca2680dd363c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9e0c726d97fc87a25d559ecc3478d3f85df4eeb8
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486185"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623159"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Egyéni bejövő traefik-vezérlő használata és HTTPS konfigurálása
 
@@ -49,15 +49,18 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 Hozzon létre egy Kubernetes-névteret a traefik beáramló vezérlőhöz, és telepítse azt `helm`használatával.
 
+> [!NOTE]
+> Ha az AK-ban nincs engedélyezve a RBAC, távolítsa el a *--set RBAC. enabled = True* paramétert.
+
 ```console
 kubectl create ns traefik
-helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0
+helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set fullnameOverride=customtraefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0
 ```
 
 > [!NOTE]
 > A fenti példa egy nyilvános végpontot hoz létre a bejövő vezérlőhöz. Ha ehelyett privát végpontot kell használnia a bejövő adatvezérlőhöz, adja hozzá a *--set Service. Megjegyzések kifejezést. " Service\\. Beta\\. kubernetes\\. IO/Azure-Load-Balancer-Internal "= true* paraméter a *Helm install* parancshoz.
 > ```console
-> helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
+> helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set fullnameOverride=customtraefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
 > ```
 > Ez a titkos végpont a virtuális hálózaton belül van, ahol az AK-beli fürtöt telepítették.
 
@@ -95,7 +98,11 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-Nyissa meg a [Values. YAML][values-yaml] , és cserélje le a *< REPLACE_ME_WITH_HOST_SUFFIX >* összes példányát a *traefik. MY_CUSTOM_DOMAIN* a tartományt a *MY_CUSTOM_DOMAINhoz*. Cserélje le a *kubernetes.IO/ingress.Class: traefik-azds # dev Spaces-specifikust* a *kubernetes.IO/ingress.Class: traefik # Custom beáramló*kifejezésre. Az alábbi példa egy frissített `values.yaml` fájlt mutat be:
+Nyissa meg a [Values. YAML][values-yaml] , és végezze el a következő frissítéseket:
+* Cserélje le a *< REPLACE_ME_WITH_HOST_SUFFIX >* összes példányát a *traefik. MY_CUSTOM_DOMAIN* a tartományt a *MY_CUSTOM_DOMAINhoz*. 
+* Cserélje le a *kubernetes.IO/ingress.Class: traefik-azds # dev Spaces-specifikus* with *kubernetes.IO/ingress.Class: traefik # Custom beáramló*. 
+
+Az alábbi példa egy frissített `values.yaml` fájlt mutat be:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -148,6 +155,9 @@ http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
 Nyissa meg a *bikesharingweb* szolgáltatást a `azds list-uris` parancs nyilvános URL-címének megnyitásával. A fenti példában a *bikesharingweb* szolgáltatás nyilvános URL-címe `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`.
+
+> [!NOTE]
+> Ha a *bikesharingweb* szolgáltatás helyett hibaüzenet jelenik meg, ellenőrizze, hogy a *kubernetes.IO/ingress.Class* jegyzetét és a gazdagépet **is** frissítette-e a *Values. YAML* fájlban.
 
 A `azds space select` parancs használatával hozzon létre egy gyermek területet a *fejlesztői* területen, és sorolja fel az URL-címeket a gyermek fejlesztői terület eléréséhez.
 

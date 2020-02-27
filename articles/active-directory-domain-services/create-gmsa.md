@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 9dc7e6341f77fc17ae26f34ea029b3eb5414dcbc
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 58749e4518f6fa73c8641ce38483c101576047aa
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705315"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614078"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Csoportosan felügyelt szolgáltatásfiók (gMSA) létrehozása Azure AD Domain Services
 
@@ -26,7 +26,7 @@ Ehelyett egy csoportosan felügyelt szolgáltatásfiók (gMSA) hozható létre a
 
 Ez a cikk bemutatja, hogyan hozhat létre gMSA egy Azure AD DS felügyelt tartományban Azure PowerShell használatával.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
@@ -65,32 +65,32 @@ Először hozzon létre egy egyéni szervezeti egységet a [New-ADOrganizational
 > [!TIP]
 > A lépések gMSA létrehozásához [használja a felügyeleti virtuális gépet][tutorial-create-management-vm]. Ennek a felügyeleti virtuális gépnek már rendelkeznie kell a szükséges AD PowerShell-parancsmagokkal és a felügyelt tartományhoz való kapcsolódással.
 
-A következő példa létrehoz egy *myNewOU* nevű egyéni szervezeti egységet az Azure AD DS felügyelt tartomány *aadds.contoso.com*nevű felügyelt tartományában. Saját szervezeti egység és felügyelt tartománynév használata:
+A következő példa létrehoz egy *myNewOU* nevű egyéni szervezeti egységet az Azure AD DS felügyelt tartomány *aaddscontoso.com*nevű felügyelt tartományában. Saját szervezeti egység és felügyelt tartománynév használata:
 
 ```powershell
-New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=contoso,DC=COM"
+New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
 ```
 
 Most hozzon létre egy gMSA a [New-ADServiceAccount][New-ADServiceAccount] parancsmag használatával. A következő példa paraméterek vannak meghatározva:
 
 * **-A name** értéke *WebFarmSvc*
 * **-Path** paraméter adja meg az előző lépésben létrehozott gMSA tartozó egyéni szervezeti egységet.
-* A DNS-bejegyzések és egyszerű szolgáltatásnév *WebFarmSvc.aadds.contoso.com* vannak beállítva
-* A *contoso-Server $* rendszerbiztonsági tag számára engedélyezett a jelszó beolvasása az identitás használatával.
+* A DNS-bejegyzések és egyszerű szolgáltatásnév *WebFarmSvc.aaddscontoso.com* vannak beállítva
+* A *AADDSCONTOSO-Server $* rendszerbiztonsági tag jogosult a jelszó beolvasására az identitás használatát.
 
 Adja meg a saját nevét és tartományneveit.
 
 ```powershell
 New-ADServiceAccount -Name WebFarmSvc `
-    -DNSHostName WebFarmSvc.aadds.contoso.com `
-    -Path "OU=MYNEWOU,DC=contoso,DC=com" `
+    -DNSHostName WebFarmSvc.aaddscontoso.com `
+    -Path "OU=MYNEWOU,DC=aaddscontoso,DC=com" `
     -KerberosEncryptionType AES128, AES256 `
     -ManagedPasswordIntervalInDays 30 `
-    -ServicePrincipalNames http/WebFarmSvc.aadds.contoso.com/aadds.contoso.com, `
-        http/WebFarmSvc.aadds.contoso.com/contoso, `
-        http/WebFarmSvc/aadds.contoso.com, `
-        http/WebFarmSvc/contoso `
-    -PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
+    -ServicePrincipalNames http/WebFarmSvc.aaddscontoso.com/aaddscontoso.com, `
+        http/WebFarmSvc.aaddscontoso.com/aaddscontoso, `
+        http/WebFarmSvc/aaddscontoso.com, `
+        http/WebFarmSvc/aaddscontoso `
+    -PrincipalsAllowedToRetrieveManagedPassword AADDSCONTOSO-SERVER$
 ```
 
 Az alkalmazások és a szolgáltatások mostantól úgy konfigurálhatók, hogy igény szerint használják a gMSA.

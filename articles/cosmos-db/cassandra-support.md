@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 8598be504f62089cf20123918779c310b2fb8ec8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ee8dec821e8cbb4657323c167a463b94b7935ab1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445647"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623420"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 
@@ -74,7 +74,7 @@ Az Azure Cosmos DB Cassandra API a következő CQL-adattípusokat támogatja:
 Az Azure Cosmos DB Cassandra API a következő CQL-függvényeket támogatja:
 
 * Jogkivonat  
-* Aggregátumfüggvények
+* Összesítő függvények
   * min., max., átlag, darabszám
 * Blob-konverziós függvények 
   * typeAsBlob(value)  
@@ -94,9 +94,9 @@ Az Azure Cosmos DB Cassandra API a következő CQL-függvényeket támogatja:
   
 
 
-## <a name="cassandra-api-limits"></a>Cassandra API korlátok
+## <a name="cassandra-api-limits"></a>A Cassandra API korlátai
 
-Az Azure Cosmos DB Cassandra API nem rendelkezik semmilyen korláttal a táblában tárolt adatok méretére vonatkozóan. Több száz terabájtnyi vagy petabájtnyi adat tárolható, ha biztosítva van a partíciókulcs korlátainak betartása. Hasonlóképpen, minden entitás vagy sor megfelelője nem korlátozza az oszlopok számát. Az entitás teljes mérete azonban nem haladhatja meg a 2 MB-ot. Az adat/partíciós kulcs nem haladhatja meg a 10 GB-ot az összes többi API-ban.
+Az Azure Cosmos DB Cassandra API nem rendelkezik semmilyen korláttal a táblában tárolt adatok méretére vonatkozóan. Több száz terabájtnyi vagy petabájtnyi adat tárolható, ha biztosítva van a partíciókulcs korlátainak betartása. Hasonlóképpen, minden entitás vagy sor megfelelője nem korlátozza az oszlopok számát. Az entitás teljes mérete azonban nem haladhatja meg a 2 MB-ot. Az adat/partíciós kulcs nem haladhatja meg a 20 GB-ot az összes többi API-ban.
 
 ## <a name="tools"></a>Eszközök 
 
@@ -149,7 +149,7 @@ Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra AP
 * USE 
 * INSERT 
 * SELECT 
-* HÍR 
+* UPDATE 
 * BATCH – csak nem naplózott parancsok használata támogatott 
 * DELETE
 
@@ -194,7 +194,7 @@ ALTER TABLE gks1.t1 WITH cosmosdb_provisioned_throughput=10000 ;
 ```
 
 
-## <a name="usage-of-cassandra-retry-connection-policy"></a>Cassandra újrapróbálkozás kapcsolatok házirendjének használata
+## <a name="usage-of-cassandra-retry-connection-policy"></a>A Cassandra csatlakozási újrapróbálkozásra vonatkozó szabályzatának használata
 
 A Azure Cosmos DB erőforrás-szabályozású rendszer. Ez azt jelenti, hogy egy adott másodpercben bizonyos számú műveletet végrehajthat a műveletek által felhasznált kérelmek egységei alapján. Ha egy alkalmazás túllépi ezt a korlátot egy adott másodpercben, a kérések száma korlátozott, és a rendszer a kivételeket is eldönti. A Azure Cosmos DB Cassandra API lefordítja ezeket a kivételeket a Cassandra Native protokollon túlterhelt hibák esetén. Annak biztosítása érdekében, hogy az alkalmazás képes legyen feltartóztatni és újrapróbálkozni a kérelmeket az eseti korlátozás, a [Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) és a [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) -bővítmények megadásával. Ha más SDK-kat használ a Azure Cosmos DB Cassandra APIhoz való hozzáféréshez, hozzon létre egy kapcsolati szabályzatot, amely újrapróbálkozik ezekkel a kivételekkel.
 

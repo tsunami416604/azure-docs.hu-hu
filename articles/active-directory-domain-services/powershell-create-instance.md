@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: iainfou
-ms.openlocfilehash: dddbc15a80fe741b9ad1634aac18cb13819dc235
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ee85002aea962dfa675ac6c09a6bfbaeba8e9e79
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704433"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613236"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Azure Active Directory Domain Services engedélyezése a PowerShell használatával
 
@@ -64,7 +64,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 Ha létrehozta a *HRE DC-rendszergazdák* csoportot, adjon hozzá egy felhasználót a csoporthoz az [Add-AzureADGroupMember][Add-AzureADGroupMember] parancsmag használatával. Először a Get [-AzureADGroup][Get-AzureADGroup] parancsmaggal szerezheti be a *HRE DC rendszergazdák* csoportjának azonosítóját, majd a kívánt felhasználó objektumazonosítót a [Get-AzureADUser][Get-AzureADUser] parancsmag használatával.
 
-A következő példában a fiók felhasználói objektumának azonosítója a `admin@contoso.onmicrosoft.com`egyszerű felhasználónevével. Cserélje le ezt a felhasználói fiókot annak a felhasználónak a UPN-fiókjára, amelyet hozzá szeretne adni a *HRE DC-rendszergazdák* csoporthoz:
+A következő példában a fiók felhasználói objektumának azonosítója a `admin@aaddscontoso.onmicrosoft.com`egyszerű felhasználónevével. Cserélje le ezt a felhasználói fiókot annak a felhasználónak a UPN-fiókjára, amelyet hozzá szeretne adni a *HRE DC-rendszergazdák* csoporthoz:
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -74,7 +74,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@aaddscontoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -128,7 +128,7 @@ $Vnet= New-AzVirtualNetwork `
 
 ## <a name="create-an-azure-ad-ds-managed-domain"></a>Azure AD DS felügyelt tartomány létrehozása
 
-Most hozzunk létre egy Azure AD DS felügyelt tartományt. Állítsa be az Azure-előfizetés AZONOSÍTÓját, majd adja meg a felügyelt tartomány nevét (például *aadds.contoso.com*). Az előfizetés-azonosítót a [Get-AzSubscription][Get-AzSubscription] parancsmaggal kérheti le.
+Most hozzunk létre egy Azure AD DS felügyelt tartományt. Állítsa be az Azure-előfizetés AZONOSÍTÓját, majd adja meg a felügyelt tartomány nevét (például *aaddscontoso.com*). Az előfizetés-azonosítót a [Get-AzSubscription][Get-AzSubscription] parancsmaggal kérheti le.
 
 Ha olyan régiót választ, amely támogatja az Availability Zones-t, az Azure AD DS erőforrásai a további redundancia érdekében a zónák között oszlanak meg.
 
@@ -138,7 +138,7 @@ Nem kell konfigurálnia az Azure AD DS a zónák közötti elosztására. Az Azu
 
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "aadds.contoso.com"
+$ManagedDomainName = "aaddscontoso.com"
 
 # Enable Azure AD Domain Services for the directory.
 New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
@@ -167,12 +167,12 @@ A következő teljes PowerShell-parancsfájl ötvözi a cikkben látható össze
 
 ```powershell
 # Change the following values to match your deployment.
-$AaddsAdminUserUpn = "admin@contoso.onmicrosoft.com"
+$AaddsAdminUserUpn = "admin@aaddscontoso.onmicrosoft.com"
 $ResourceGroupName = "myResourceGroup"
 $VnetName = "myVnet"
 $AzureLocation = "westus"
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "aadds.contoso.com"
+$ManagedDomainName = "aaddscontoso.com"
 
 # Connect to your Azure AD directory.
 Connect-AzureAD

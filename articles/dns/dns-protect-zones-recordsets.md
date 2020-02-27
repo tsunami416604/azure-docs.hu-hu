@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: cef242f920178b9d2f4c4103310df21c80721ada
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 72c0278c6f13d641b12b205cd8ca0a2f158a454f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526569"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614408"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS-zónák és-rekordok elleni védelem
 
@@ -264,7 +264,7 @@ A következő PowerShell-parancs egy CanNotDelete-zárolást hoz létre a megado
 ```azurepowershell
 # Protect against zone delete with CanNotDelete lock on the record set
 
-$lvl = "CanNotDelete
+$lvl = "CanNotDelete"
 $lnm = "<lock name>"
 $rsc = "<zone name>/@"
 $rty = "Microsoft.Network/DNSZones/SOA"

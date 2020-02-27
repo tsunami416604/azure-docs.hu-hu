@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cosmos DB Cassandra API a Spark DDL-műveletek
-description: Ez a cikk részletesen kulcstér és tábla ellen az Azure Cosmos DB Cassandra API a Spark DDL-műveletek.
+title: DDL-műveletek a Azure Cosmos DB Cassandra API a Sparkból
+description: Ebből a cikkből megtudhatja, hogyan helyezheti el a Azure Cosmos DB Cassandra API a Sparkból a webtárhely és a táblázat DDL
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,18 +8,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 5c12787cd6e0df19fd842dd44da49aa5ea97aa05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0df05eff5dc84ef24e1ed5afcaf705d99f447ef
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60898882"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622580"
 ---
-# <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Az Azure Cosmos DB Cassandra API a Spark DDL-műveletek
+# <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>DDL-műveletek a Azure Cosmos DB Cassandra API a Sparkból
 
-Ez a cikk részletesen kulcstér és tábla ellen az Azure Cosmos DB Cassandra API a Spark DDL-műveletek.
+Ebből a cikkből megtudhatja, hogyan helyezheti el a Azure Cosmos DB Cassandra API a Sparkból a webtárhely és a táblázat DDL
 
-## <a name="cassandra-api-related-configuration"></a>Cassandra API-kapcsolódó konfiguráció 
+## <a name="cassandra-api-related-configuration"></a>Cassandra API kapcsolatos konfiguráció 
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -48,9 +48,9 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="keyspace-ddl-operations"></a>Kulcstér DDL-műveletek
+## <a name="keyspace-ddl-operations"></a>Címterület DDL-műveletei
 
-### <a name="create-a-keyspace"></a>Hozzon létre egy kulcstér
+### <a name="create-a-keyspace"></a>Szóköz létrehozása
 
 ```scala
 //Cassandra connector instance
@@ -60,34 +60,34 @@ val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("CREATE KEYSPACE IF NOT EXISTS books_ks WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1 } "))
 ```
 
-#### <a name="validate-in-cqlsh"></a>Ellenőrizze az cqlsh
+#### <a name="validate-in-cqlsh"></a>Érvényesítés a cqlsh
 
-Futtassa a következő parancsot a cqlsh, és a korábban létrehozott kulcstér kell megjelennie.
+Futtassa a következő parancsot a cqlsh-ben, és látnia kell a korábban létrehozott lemezterületet.
 
 ```bash
 DESCRIBE keyspaces;
 ```
 
-### <a name="drop-a-keyspace"></a>Dobja el a kulcstér
+### <a name="drop-a-keyspace"></a>Szóköz eldobása
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("DROP KEYSPACE books_ks"))
 ```
 
-#### <a name="validate-in-cqlsh"></a>Ellenőrizze az cqlsh
+#### <a name="validate-in-cqlsh"></a>Érvényesítés a cqlsh
 
 ```bash
 DESCRIBE keyspaces;
 ```
-## <a name="table-ddl-operations"></a>TABLE DDL-műveletek
+## <a name="table-ddl-operations"></a>Táblázatos DDL-műveletek
 
-**Megfontolandó szempontok:**  
+**Szempontok**  
 
-- Átviteli sebesség a create table utasítás használatával a tábla szintjén is hozzárendelhető.  
-- A partíciókulcs egy 10 GB adatot tárolhat.  
-- Egy rekord egy legfeljebb 2 MB adatot képes tárolni.  
-- Egy partíciókulcs-tartományok tárolhat több partíciós kulccsal.
+- Az átviteli sebességet a CREATE TABLE utasítással lehet hozzárendelni a tábla szintjén.  
+- Egy partíciós kulcs 20 GB-nyi adat tárolására képes.  
+- Egy rekord legfeljebb 2 MB adat tárolására képes.  
+- Egy partíciós kulcs tartománya több partíciós kulcsot is tárolhat.
 
 ### <a name="create-a-table"></a>Tábla létrehozása
 
@@ -96,53 +96,53 @@ val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXISTS books_ks.books(book_id TEXT PRIMARY KEY,book_author TEXT, book_name TEXT,book_pub_year INT,book_price FLOAT) WITH cosmosdb_provisioned_throughput=4000 , WITH default_time_to_live=630720000;"))
 ```
 
-#### <a name="validate-in-cqlsh"></a>Ellenőrizze az cqlsh
+#### <a name="validate-in-cqlsh"></a>Érvényesítés a cqlsh
 
-Futtassa a következő parancsot a cqlsh, és megjelenik a táblázat neve "könyvek: 
+Futtassa a következő parancsot a cqlsh-ben, és látnia kell a "könyvek: 
 
 ```bash
 USE books_ks;
 DESCRIBE books;
 ```
 
-Kiosztott átviteli sebesség és az alapértelmezett élettartam-értékek nem jelennek meg az előző parancs kimenetét, ezeket az értékeket is beszerzése a portálról.
+A kiépített átviteli sebesség és az alapértelmezett TTL-értékek nem jelennek meg az előző parancs kimenetében, ezeket az értékeket a portálon érheti el.
 
-### <a name="alter-table"></a>Az ALTER table
+### <a name="alter-table"></a>Módosítási táblázat
 
-Az alter table parancs használatával módosítható a következő értékeket:
+A következő értékeket módosíthatja az ALTER TABLE parancs használatával:
 
 * kiosztott átviteli sebesség 
-* idő-érték
-<br>Oszlop módosítása jelenleg nem támogatott.
+* élettartam értéke
+<br>Az oszlopok módosításai jelenleg nem támogatottak.
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("ALTER TABLE books_ks.books WITH cosmosdb_provisioned_throughput=8000, WITH default_time_to_live=0;"))
 ```
 
-### <a name="drop-table"></a>DROP table
+### <a name="drop-table"></a>Táblázat eldobása
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("DROP TABLE IF EXISTS books_ks.books;"))
 ```
 
-#### <a name="validate-in-cqlsh"></a>Ellenőrizze az cqlsh
+#### <a name="validate-in-cqlsh"></a>Érvényesítés a cqlsh
 
-Futtassa a következő parancsot a cqlsh, és megjelenik, hogy a "könyvek" tábla már nem érhető el:
+Futtassa a következő parancsot a cqlsh-ben, és látnia kell, hogy a "könyvek" tábla már nem érhető el:
 
 ```bash
 USE books_ks;
 DESCRIBE tables;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Miután létrehozta a kulcstér és a tábla, folytassa a következő cikkek CRUD-műveleteket és más rendszerekhez:
+A térköz és a tábla létrehozása után folytassa a következő cikkekkel a SZIFILISZi műveletekhez és egyebekhez:
  
-* [Hozzon létre/beszúrási műveletek](cassandra-spark-create-ops.md)  
-* [olvasási műveletek](cassandra-spark-read-ops.md)  
-* [Upsert művelet](cassandra-spark-upsert-ops.md)  
-* [Törlési műveletek](cassandra-spark-delete-ops.md)  
+* [Műveletek létrehozása/beszúrása](cassandra-spark-create-ops.md)  
+* [Olvasási műveletek](cassandra-spark-read-ops.md)  
+* [Upsert-műveletek](cassandra-spark-upsert-ops.md)  
+* [Műveletek törlése](cassandra-spark-delete-ops.md)  
 * [Összesítési műveletek](cassandra-spark-aggregation-ops.md)  
-* [Tábla másolási műveletek](cassandra-spark-table-copy-ops.md)  
+* [Táblázatos másolási műveletek](cassandra-spark-table-copy-ops.md)  

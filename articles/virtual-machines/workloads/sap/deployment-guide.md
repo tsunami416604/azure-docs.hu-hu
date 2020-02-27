@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan helyezhet üzembe SAP-szoftvereket Linux rendsz
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: e7a61cc64ae72adfcbeb347ddd076065ccc3a321
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 19dc9f25cc7355eb540b68f009a77b1ca1e5fb86
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645854"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614899"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben
 
@@ -361,7 +361,7 @@ A következő információk ismerete az SAP-méretezéshez:
 
 Az Azure Resource Manager az Azure-előfizetésében lévő összes alkalmazás-erőforrást az erőforráscsoportok használatával kezelheti. További információk: [Azure Resource Manager overview][resource-group-overview] (Az Azure Resource Manager áttekintése).
 
-## <a name="resources"></a>Segédanyagok és eszközök
+## <a name="resources"></a>További források
 
 ### <a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP-erőforrások
 
@@ -912,7 +912,7 @@ A proxybeállítások a \\ban, például\\waagent. conf fájl a szükséges virt
 
   Emellett útvonalakat is hozzá kell adnia az \\-ban felsorolt IP-címekhez, például\\regionserverclnt. cfg. Az alábbi ábrán egy példa látható:
 
-  ![Kényszerített bújtatás][deployment-guide-figure-50]
+  ![Alagúthasználat kényszerítése][deployment-guide-figure-50]
 
 
 * **RHEL**
@@ -947,7 +947,7 @@ Az Azure-bővítmény telepítése az SAP-hez a PowerShell használatával:
     Set-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
     ```
 
-A fiókadatok megadása és az Azure-beli virtuális gép azonosítása után a parancsfájl telepíti a szükséges bővítményeket, és engedélyezi a szükséges szolgáltatásokat. Ez néhány percig tarthat.
+A fiókadatok megadása és az Azure-beli virtuális gép azonosítása után a parancsfájl telepíti a szükséges bővítményeket, és engedélyezi a szükséges szolgáltatásokat. Ez több percet is igénybe vehet.
 További információ a `Set-AzVMAEMExtension`ról: [set-AzVMAEMExtension][msdn-set-Azvmaemextension].
 
 ![Az SAP-specifikus Azure-parancsmag-AzVMAEMExtension sikeres végrehajtása][deployment-guide-figure-900]

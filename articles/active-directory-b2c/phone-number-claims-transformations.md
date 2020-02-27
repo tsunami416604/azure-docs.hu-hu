@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/26/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c5beef98f03c52ca022a7ab8047d3b392755c0bf
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 34a6d15090cd13a775ad3faa694718ec58738471
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212190"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620630"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Telefonszám-jogcímek átalakításának meghatározása Azure AD B2C
 
@@ -26,9 +26,39 @@ Ez a cikk a Azure Active Directory B2C (Azure AD B2C) identitás-keretrendszer s
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
+## <a name="convertphonenumberclaimtostring"></a>ConvertPhoneNumberClaimToString
+
+Egy `phoneNumber` adattípus átalakítása `string` adattípusba.
+
+| Elem | TransformationClaimType | Adattípus | Megjegyzések |
+| ---- | ----------------------- | --------- | ----- |
+| inputClaim | Telefonszám | Telefonszám |  A ClaimType karakterlánccá alakítja át. |
+| outputClaim | phoneNumberString | sztring | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
+
+Ebben a példában a `phoneNumber` cellPhoneNumber jogcímet a rendszer a `string`értékkel rendelkező mobil jogcímre konvertálja.
+
+```XML
+<ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="cellPhoneNumber" TransformationClaimType="phoneNumber" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="cellPhone" TransformationClaimType="phoneNumberString" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Példa
+
+- Bemeneti jogcímek:
+  - **telefonszám**: + 11234567890 (telefonszám)
+- Kimeneti jogcímek:
+  - **phoneNumberString**: + 11234567890 (karakterlánc)
+
+
 ## <a name="convertstringtophonenumberclaim"></a>ConvertStringToPhoneNumberClaim
 
-Ez a jogcím érvényesíti a telefonszám formátumát. Ha érvényes formátumú, módosítsa az Azure AD B2C által használt szabványos formátumra. Ha a megadott telefonszám formátuma érvénytelen, hibaüzenetet kap.
+Ez a jogcím-átalakítás érvényesíti a telefonszám formátumát. Ha érvényes formátumú, módosítsa az Azure AD B2C által használt szabványos formátumra. Ha a megadott telefonszám formátuma érvénytelen, hibaüzenetet kap.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
@@ -68,10 +98,10 @@ A jogcímek átalakítását tartalmazó, az érvényesítési technikai profilt
 ### <a name="example-1"></a>1\. példa
 
 - Bemeneti jogcímek:
-  - **phoneNumberString**: 045 456-7890
+  - **phoneNumberString**: 033 456-7890
   - **ország**: DK
 - Kimeneti jogcímek:
-  - **outputClaim**: + 450546148120
+  - **outputClaim**: + 450334567890
 
 ### <a name="example-2"></a>2\. példa
 
@@ -79,6 +109,7 @@ A jogcímek átalakítását tartalmazó, az érvényesítési technikai profilt
   - **phoneNumberString**: + 1 (123) 456-7890
 - Kimeneti jogcímek: 
   - **outputClaim**: + 11234567890
+
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString
 

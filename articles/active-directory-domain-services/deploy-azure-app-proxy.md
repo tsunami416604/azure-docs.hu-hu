@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/6/2019
 ms.author: iainfou
-ms.openlocfilehash: c0fcb8c2c5f9afa7fabe2ffa63a715ec24aa4a26
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c6e4e6a45fbbeab64184d8ae4b0684ba055d7735
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720491"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613985"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD Application Proxy üzembe helyezése egy Azure AD Domain Services felügyelt tartomány belső alkalmazásaihoz való biztonságos hozzáféréshez
 
@@ -74,7 +74,7 @@ Ha a virtuális gép készen áll az Azure AD Application Proxy-összekötőkén
         > [!NOTE]
         > Az összekötő regisztrálásához használt globális rendszergazdai fióknak ugyanahhoz a címtárhoz kell tartoznia, ahol engedélyezte az alkalmazásproxy szolgáltatást.
         >
-        > Ha például az Azure AD-tartomány *contoso.com*, a globális rendszergazdának `admin@contoso.com` vagy egy másik érvényes aliasnak kell lennie az adott tartományban.
+        > Ha például az Azure AD-tartomány *aaddscontoso.com*, a globális rendszergazdának `admin@aaddscontoso.com` vagy egy másik érvényes aliasnak kell lennie az adott tartományban.
 
    * Ha az Internet Explorer fokozott biztonsági beállításai be vannak kapcsolva ahhoz a virtuális géphez, amelyen az összekötőt telepíti, lehetséges, hogy a regisztrációs képernyő blokkolva van. A hozzáférés engedélyezéséhez kövesse a hibaüzenet utasításait, vagy kapcsolja ki az Internet Explorer fokozott biztonságát a telepítési folyamat során.
    * Ha az összekötő regisztrálása meghiúsul, tekintse meg az [alkalmazásproxy hibaelhárítása](../active-directory/manage-apps/application-proxy-troubleshoot.md)című témakört.
@@ -99,21 +99,21 @@ További információ: [a Kerberos által korlátozott delegálás (KCD) konfigu
 
 A [Get-ADComputer][Get-ADComputer] használatával beolvashatja azon számítógép beállításait, amelyre az Azure ad Application proxy Connector telepítve van. Futtassa a következő parancsmagokat a tartományhoz csatlakoztatott felügyeleti virtuális gépről, és jelentkezzen be felhasználói fiókként, amely az *Azure ad DC-rendszergazdák* csoport tagja.
 
-Az alábbi példa a *appproxy.contoso.com*nevű számítógépfiók adatait olvassa be. Adja meg az előző lépésekben konfigurált Azure AD Application Proxy virtuális géphez tartozó saját számítógép nevét.
+Az alábbi példa a *appproxy.aaddscontoso.com*nevű számítógépfiók adatait olvassa be. Adja meg az előző lépésekben konfigurált Azure AD Application Proxy virtuális géphez tartozó saját számítógép nevét.
 
 ```powershell
-$ImpersonatingAccount = Get-ADComputer -Identity appproxy.contoso.com
+$ImpersonatingAccount = Get-ADComputer -Identity appproxy.aaddscontoso.com
 ```
 
-Az Azure AD Application Proxyt futtató összes alkalmazás-kiszolgáló esetében használja a [set-ADComputer PowerShell-][Set-ADComputer] parancsmagot az erőforrás-alapú KCD konfigurálásához. Az alábbi példában az Azure AD Application Proxy-összekötő engedélyt kap a *appserver.contoso.com* -számítógép használatára:
+Az Azure AD Application Proxyt futtató összes alkalmazás-kiszolgáló esetében használja a [set-ADComputer PowerShell-][Set-ADComputer] parancsmagot az erőforrás-alapú KCD konfigurálásához. Az alábbi példában az Azure AD Application Proxy-összekötő engedélyt kap a *appserver.aaddscontoso.com* -számítógép használatára:
 
 ```powershell
-Set-ADComputer appserver.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
 ```
 
 Ha több Azure AD Application Proxy-összekötőt helyez üzembe, az egyes összekötő-példányokhoz erőforrás-alapú KCD kell konfigurálnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure AD DS integrált Azure-AD Application Proxy az alkalmazások közzétételét teszik elérhetővé a felhasználók számára. További információ: [alkalmazások közzététele az Azure ad Application proxy használatával](../active-directory/manage-apps/application-proxy-publish-azure-portal.md).
 

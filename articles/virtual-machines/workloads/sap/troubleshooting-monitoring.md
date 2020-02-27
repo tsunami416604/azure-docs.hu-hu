@@ -3,22 +3,22 @@ title: Az Azure-beli SAP HANA figyelése (nagyméretű példányok) | Microsoft 
 description: SAP HANA figyelése az Azure-ban (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0aea4dddef65600fe30f36499d4ad2a4f461245
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 50a6b4f15a7de02533e3bb51e5659f7b4c078b40
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70077936"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617290"
 ---
 # <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>SAP HANA (nagyméretű példányok) figyelése az Azure-ban
 
@@ -39,7 +39,7 @@ Az Azure Virtual Machines segítségével meg kell állapítania, hogy a fent ne
 
 **Lemezterület:** A lemezterület-felhasználás általában az idő múlásával növekszik. A leggyakoribb okok a következők: az adatmennyiség nő, a tranzakciónaplók biztonsági másolatainak végrehajtása, a nyomkövetési fájlok tárolása és a tárolási Pillanatképek végrehajtása. Ezért fontos a lemezterület-használat figyelése és a HANA nagyméretű példány-egységhez társított lemezterület kezelése.
 
-A HANA nagyméretű példányainak **II. típusú SKU** -ban a kiszolgáló az előre betöltött diagnosztikai eszközöket tartalmazza. Ezeket a diagnosztikai eszközöket a rendszerállapot-ellenőrzés elvégzéséhez használhatja. A következő parancs futtatásával hozza létre az állapot-ellenőrzési naplófájlt a/var/log/health_check. címen.
+A HANA nagyméretű példányainak **II. típusú SKU** -ban a kiszolgáló az előre betöltött diagnosztikai eszközöket tartalmazza. Ezeket a diagnosztikai eszközöket a rendszerállapot-ellenőrzés elvégzéséhez használhatja. A következő parancs futtatásával hozza létre az állapot-ellenőrzési naplófájlt a/var/log/health_check.
 ```
 /opt/sgi/health_check/microsoft_tdi.sh
 ```

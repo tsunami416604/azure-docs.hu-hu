@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 673cda4005d9c985d8d6ee5ef1d28a3d8c241ac0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 883f24e529f9479f0c6ee6597c1324a0089ece7b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482884"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620381"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor for VMs általánosan elérhető (GA) gyakran ismételt kérdések
 
@@ -25,8 +25,6 @@ Megjelent a Azure Monitor for VMs új verziója. A virtuális gépek Azure-figye
 Ezzel a frissítéssel a Azure Monitor for VMs teljesítményadatokat ugyanabban a *InsightsMetrics* -táblában tároljuk, mint a [tárolók Azure monitor](container-insights-overview.md), ami megkönnyíti a két adathalmaz lekérdezését. Azt is megteheti, hogy több különböző adatkészletet is tárolhat, amelyeket nem sikerült tárolni a korábban használt táblázatban. 
 
 A teljesítménnyel kapcsolatos nézeteink mostantól a *InsightsMetrics* táblában tárolt adathalmazokat használják.  Ha még nem frissítette a legújabb VMInsights-megoldás használatát a munkaterületen, a diagramok többé nem fognak adatokat megjeleníteni.  Az alább leírtak szerint frissíthet az **első lépések** lapról.
-
-Ezzel a frissítéssel Azure Monitor for VMs teljesítményadatokat ugyanabban a *InsightsMetrics* -táblában tárolják, mint a [tárolók Azure monitor](container-insights-overview.md) , így könnyebben lehet lekérdezni a két adathalmazt. Emellett több különböző adatkészletet is tárolhat, amelyeket nem sikerült tárolni a korábban használt táblázatban. 
 
 Tisztában vagyunk azzal, hogy a meglévő ügyfelek frissítésének megkérdezése megszakítja a munkafolyamatot, ezért most úgy döntöttünk, hogy a GA után még a nyilvános előzetes verzióban is elvégezték.
 

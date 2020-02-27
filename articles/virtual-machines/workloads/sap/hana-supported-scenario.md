@@ -4,7 +4,7 @@ description: Támogatott forgatókönyvek és az Azure-beli SAP HANA architektú
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb8278b053ef52f43171137b02e729bfed085e67
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894699"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617182"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>A HANA nagyméretű példányainak támogatott forgatókönyvei
 Ez a cikk a HANA Large instances (HLI) támogatott forgatókönyveit és architektúrájának részleteit ismerteti.
@@ -50,7 +50,7 @@ A származtatott architektúra kialakítása kizárólag infrastruktúra szempon
 Ez a cikk az egyes Támogatott architektúrák két összetevőjének részleteit ismerteti:
 
 - Ethernet
-- Adattárolás
+- Tárterület
 
 ### <a name="ethernet"></a>Ethernet
 
@@ -65,11 +65,11 @@ Minden egyes kiépített kiszolgáló az előre konfigurált Ethernet-adapterek 
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Csomópont – csomópont|
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | STONITH |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Csomópont – csomópont|
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | STONITH |
 
 A felületet a HLI egységen konfigurált topológia alapján választhatja ki. A "B" illesztőfelület például a csomópontok közötti kommunikációhoz van beállítva, ami akkor lehet hasznos, ha kibővíthető topológia van konfigurálva. Ez az illesztőfelület nem használatos egyetlen csomóponthoz, Felskálázási konfigurációhoz. Az illesztőfelület-használattal kapcsolatos további információkért tekintse át a szükséges forgatókönyveket (a cikk későbbi részében). 
@@ -96,7 +96,7 @@ A HANA rendszer replikálása vagy a HANA kibővítő üzembe helyezése esetén
 - A "D" Ethernetet kizárólag a szívritmus-STONITH eszközeinek eléréséhez szabad használni. Ez az interfész akkor szükséges, ha a HANA rendszerreplikációt konfigurálja, és az operációs rendszer automatikus feladatátvételét szeretné elérni egy SBD-alapú eszköz használatával.
 
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A tárterület előre konfigurálva van a kért topológia alapján. A kötetek mérete és a csatlakoztatási pontok a kiszolgálók számától, az SKU-számtól és a konfigurált topológiától függően változnak. További információkért tekintse át a szükséges forgatókönyveket (a cikk későbbi részében). Ha több tárterületre van szüksége, akkor 1 TB-os növekményekben vásárolhatja meg.
 
 >[!NOTE]
@@ -137,14 +137,14 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 | Csatlakozási pont | Használati eset | 
@@ -172,14 +172,14 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 | Csatlakozási pont | Használati eset | 
@@ -212,14 +212,14 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 | Csatlakozási pont | Használati eset | 
@@ -253,14 +253,14 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 | Csatlakozási pont | Használati eset | 
@@ -308,14 +308,14 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | A STONITH esetében használatos |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | A STONITH esetében használatos |
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 | Csatlakozási pont | Használati eset | 
@@ -354,14 +354,14 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | A STONITH esetében használatos |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | A STONITH esetében használatos |
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 | Csatlakozási pont | Használati eset | 
@@ -413,14 +413,14 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Csomópont-csomópont típusú kommunikáció |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Csomópont-csomópont típusú kommunikáció |
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 | Csatlakozási pont | Használati eset | 
@@ -454,14 +454,14 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Csomópont-csomópont típusú kommunikáció |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Csomópont-csomópont típusú kommunikáció |
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 | Csatlakozási pont | Használati eset | 
@@ -490,14 +490,14 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Csomópont-csomópont típusú kommunikáció |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Csomópont-csomópont típusú kommunikáció |
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 | Csatlakozási pont | Használati eset | 
@@ -529,14 +529,14 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Csomópont-csomópont típusú kommunikáció |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Csomópont-csomópont típusú kommunikáció |
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 | Csatlakozási pont | Használati eset | 
@@ -574,14 +574,14 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI/HSR |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI/HSR |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A következő csatlakoztatási pontok előre konfigurálva vannak a HLI-egységeken (elsődleges és DR):
 
 | Csatlakozási pont | Használati eset | 
@@ -615,14 +615,14 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI/HSR |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI/HSR |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 | Csatlakozási pont | Használati eset | 
@@ -665,14 +665,14 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI/HSR |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI/HSR |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 | Csatlakozási pont | Használati eset | 
@@ -710,14 +710,14 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI/HSR |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI/HSR |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 | Csatlakozási pont | Használati eset | 
@@ -761,14 +761,14 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI/HSR |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Csomópont-csomópont típusú kommunikáció |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo > | team0. Bérlő | Ügyfél – HLI/HSR |
 | B | II. TÍPUS | VLAN\<tenantNo + 2 > | team0. Bérlő + 2 | Csomópont-csomópont típusú kommunikáció |
-| C# | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo + 1 > | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo + 3 > | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 | Csatlakozási pont | Használati eset | 

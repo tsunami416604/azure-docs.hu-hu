@@ -17,12 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0282336cb5df7d010571a15e9d1f9d93b82d461e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: f24412aa7e53c52f0fcbf0c266b57db077d41eb1
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160321"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612040"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform Code Samples (v 2.0 végpont)
 
@@ -46,11 +46,11 @@ Ezek a minták azt mutatják be, hogyan lehet egy egyoldalas alkalmazást bizton
 
 | Platform | Leírás | Hivatkozás |
 | -------- | --------------------- | -------- |
-| ![ez a képen a JavaScript-embléma](media/sample-v2-code/logo_js.png) [JavaScript (msal. js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Hívások Microsoft Graph |[JavaScript-graphapi-web-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
+| ![ez a képen a JavaScript-embléma](media/sample-v2-code/logo_js.png) [JavaScript (msal. js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Hívások Microsoft Graph |[JavaScript-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![ez a képen a JavaScript-embléma](media/sample-v2-code/logo_js.png) [JavaScript (msal. js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | B2C-hívások |[B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
 | ![ez a képen a JavaScript-embléma](media/sample-v2-code/logo_js.png) [JavaScript (msal. js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Saját webes API meghívása |[JavaScript-singlepageapp-DotNet-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |
 | ![ez a képen a szögletes JS embléma](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL AngularJS) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs)| Hívások Microsoft Graph  | [MsalAngularjsDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/MsalAngularjsDemoApp)
-| ![ez a képen a szögletes embléma](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL szögletes) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| Hívások Microsoft Graph  | [MSALAngularDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/MSALAngularDemoApp) |
+| ![ez a képen a szögletes embléma](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL szögletes) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| Hívások Microsoft Graph  | [JavaScript – singlepageapp – szögletes](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
 
 ## <a name="web-applications"></a>Webalkalmazások
 

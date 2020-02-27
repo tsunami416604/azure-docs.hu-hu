@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 016107248399e84b7a82a656c9d590c3cbe0cdbe
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 7d1a77800093ae01bc4eb1e1269d1e9a60f9ce26
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466926"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616651"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés Apache Hive a HDInsight JDBC-illesztőn keresztül
 
@@ -36,6 +36,18 @@ Az Azure-beli HDInsight-fürtökkel létesített JDBC-kapcsolatok az 443-as port
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
 Cserélje le a `CLUSTERNAME` kifejezést a HDInsight-fürt nevére.
+
+Vagy a Ambari felhasználói felületén keresztül is lekérheti a **> kaptár > konfigurációk > Advanced**.
+
+![JDBC-kapcsolatok karakterláncának beolvasása a Ambari használatával](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png)
+
+### <a name="host-name-in-connection-string"></a>Állomásnév a kapcsolódó karakterláncban
+
+A (z) "CLUSTERNAME.azurehdinsight.net" állomásnév a kapcsolatok karakterláncában megegyezik a fürt URL-címével. Azure Portal használatával szerezheti be. 
+
+### <a name="port-in-connection-string"></a>Port a csatlakozási karakterláncban
+
+Az 443-es **portot** csak az Azure-beli virtuális hálózaton kívüli helyekről lehet csatlakozni a fürthöz. A HDInsight egy felügyelt szolgáltatás, ami azt jelenti, hogy a fürthöz való összes kapcsolat biztonságos átjárón keresztül lett felügyelve. Az 10001-es vagy a 10000-es portokon közvetlenül nem tud csatlakozni a 2. HiveServer-hez, mert ezek a portok nincsenek kitéve a kívülre. 
 
 ## <a name="authentication"></a>Authentication
 
@@ -138,6 +150,15 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 1. Lépjen ki a Mókusból, majd nyissa meg azt a könyvtárat, ahol a mókus telepítve van a rendszeren, talán `C:\Program Files\squirrel-sql-4.0.0\lib`. A mókus könyvtárában a `lib` könyvtár alatt cserélje le a meglévő Commons-codec. jar fájlt a HDInsight-fürtről letöltöttre.
 
 1. Indítsa újra a mókust. A hiba többé nem fordulhat elő, amikor a HDInsight-beli struktúrához csatlakozik.
+
+### <a name="connection-disconnected-by-hdinsight"></a>Kapcsolat leválasztva a HDInsight
+
+**Tünetek**: Ha nagy mennyiségű (több GBS) adatmennyiséget szeretne LETÖLTENI a JDBC/ODBC-n keresztül, a kapcsolat a HDInsight váratlanul megszakad a letöltés során. 
+
+**OK**: ezt a hibát az átjáró-csomópontok korlátozásai okozzák. Az adatok JDBC/ODBC-ből való lekérése során minden adatnak át kell haladnia az átjáró csomópontján. Az átjárók azonban nem úgy lettek kialakítva, hogy hatalmas mennyiségű adatokat töltsenek le, így előfordulhat, hogy az átjáró lezárta a kapcsolatokat, ha az nem tudja kezelni a forgalmat.
+
+**Megoldás**: ne használja a JDBC/ODBC-illesztőt nagy mennyiségű adatforrás letöltéséhez. Adatok másolása közvetlenül a blob Storage-ból.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

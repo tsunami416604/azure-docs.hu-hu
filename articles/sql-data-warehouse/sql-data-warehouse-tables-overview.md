@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9220d3adb31005551b6358034207f1071065b1a7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: da06112b0990898227191c919b209c8a95d15197
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692383"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616536"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Táblázatok tervezése Azure SQL Data Warehouseban
 
@@ -43,8 +43,8 @@ A SQL Data Warehouseban lévő táblák szervezetének megjelenítéséhez haszn
 
 | Wideworldimportersdw adattárházat táblázat  | Tábla típusa | SQL Data Warehouse |
 |:-----|:-----|:------|:-----|
-| Város | Dimenzió | WWI. DimCity |
-| Rendelés | Fact | WWI. FactOrder |
+| Város | Dimenzió | wwi.DimCity |
+| Rendelés | Fact | wwi.FactOrder |
 
 
 ## <a name="table-persistence"></a>Tábla megőrzése 
@@ -93,10 +93,10 @@ A tábla kategóriája általában meghatározza, hogy melyik lehetőséget kell
 |:---------------|:--------------------|
 | Fact           | Használjon kivonatoló eloszlást a fürtözött oszlopcentrikus index használatával. A teljesítmény akkor javul, ha két kivonatoló tábla ugyanahhoz a terjesztési oszlophoz van csatlakoztatva. |
 | Dimenzió      | Kisebb táblák esetében replikált használata. Ha a táblák túl nagyok az egyes számítási csomópontokon való tároláshoz, használja a kivonatoló eloszlást. |
-| Előkészítés        | Ciklikus multiplexelés használata az előkészítési táblához. A CTAS terhelése gyors. Ha az adatgyűjtés az előkészítési táblában található, használja az INSERT... Ezzel a beállítással áthelyezheti az adatlemezeket az éles táblákba. |
+| Átmeneti        | Ciklikus multiplexelés használata az előkészítési táblához. A CTAS terhelése gyors. Ha az adatgyűjtés az előkészítési táblában található, használja az INSERT... Ezzel a beállítással áthelyezheti az adatlemezeket az éles táblákba. |
 
 ## <a name="table-partitions"></a>Táblapartíciók
-A particionált táblák az adattartományok szerint tárolják és végrehajtják a táblázat sorain lévő műveleteket. Egy tábla lehet például nap, hónap vagy év szerint particionálva. Javíthatja a lekérdezési teljesítményt a partíciók eltávolításán keresztül, ami korlátozza a lekérdezési vizsgálatát egy partíción belül. Az adattárolást partíciós váltással is megtarthatja. Mivel a SQL Data Warehouseban lévő adat már el van terjesztve, túl sok partíció lassítja a lekérdezések teljesítményét. További információ: [particionálási útmutató](sql-data-warehouse-tables-partition.md).  Ha a partíció nem üres táblázatos partícióra vált, érdemes lehet a TRUNCATE_TARGET beállítást használni az [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) utasításban, ha a meglévő adatok csonkítva lesznek. Az alábbi kód az átalakított napi adatértékeket a SalesFact felülírja a meglévő összes adattal. 
+A particionált táblák az adattartományok szerint tárolják és végrehajtják a táblázat sorain lévő műveleteket. Egy tábla lehet például nap, hónap vagy év szerint particionálva. Javíthatja a lekérdezési teljesítményt a partíciók eltávolításán keresztül, ami korlátozza a lekérdezési vizsgálatát egy partíción belül. Az adattárolást partíciós váltással is megtarthatja. Mivel a SQL Data Warehouseban lévő adat már el van terjesztve, túl sok partíció lassítja a lekérdezések teljesítményét. További információ: [particionálási útmutató](sql-data-warehouse-tables-partition.md).  Ha a partíció nem üres táblázatos partícióra vált, érdemes lehet az [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) utasítás TRUNCATE_TARGET kapcsolóját használni, ha a meglévő adatok csonkítva lesznek. Az alábbi kód az átalakított napi adatértékeket a SalesFact felülírja a meglévő összes adattal. 
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -213,6 +213,7 @@ LEFT OUTER JOIN (select * from sys.pdw_column_distribution_properties where dist
 LEFT OUTER JOIN sys.columns c
     ON cdp.[object_id] = c.[object_id]
     AND cdp.[column_id] = c.[column_id]
+WHERE pn.[type] = 'COMPUTE'
 )
 , size
 AS
@@ -342,5 +343,5 @@ ORDER BY    distribution_id
 ;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután létrehozta az adattárházhoz tartozó táblákat, a következő lépés az adatai betöltése a táblába.  A betöltési oktatóanyagért lásd: az [Adatbetöltése SQL Data Warehouseba](load-data-wideworldimportersdw.md).

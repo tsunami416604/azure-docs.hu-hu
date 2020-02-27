@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 29a939452d9b90bd8afda7db4e115d10956ee5e5
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 68d975a1b8bb8d47011bb292d3cf897956b31712
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606632"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623602"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Az ügyfél által felügyelt webhelyek (VMM) közötti vész-helyreállítás elavult Azure Site Recovery használatával
 
@@ -26,9 +26,9 @@ DR System Center Virtual Machine Manager (SCVMM) által kezelt, az ügyfél ált
 
 ## <a name="what-changes-should-you-expect"></a>Milyen módosításokat kell elvárnia?
 
-- November 2019-től kezdődően a rendszer nem engedélyezi az új felhasználók beszállását ezen forgatókönyvek esetén. A **meglévő replikálások és felügyeleti műveletek** , beleértve a feladatátvételt, a feladatátvételi tesztet, a figyelést stb. **nem érintik**.
+- A 2020 márciusa után Azure Portal értesítéseket kap, & e-mailes kommunikációt a Hyper-V virtuális gépek helyek közötti replikálásának közelgő elavulása alapján. Az elavultság tervezett értéke 2023 március.
 
-- Ha rendelkezik meglévő konfigurációval, nem regisztrálhat új VMMs.
+- Ha rendelkezik meglévő konfigurációval, a beállítás nem lesz hatással.
 
 - Ha a forgatókönyvek elavultak, kivéve, ha az ügyfél nem követi az alternatív módszereket, a meglévő replikálások megszakadnak. Az ügyfelek nem tekinthetik meg, kezelhetik és nem hajthatják végre a DR-vel kapcsolatos műveleteket a Azure Portal Azure Site Recovery felületén keresztül.
  

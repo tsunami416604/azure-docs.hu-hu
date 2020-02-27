@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 038e53251bd81552fd3379f2d7645570fbcda4ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6b36694c2fe1bf264c876944b054d39371db616c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471346"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614279"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -66,7 +66,7 @@ A következő táblázat azt mutatja be, hogy milyen típusú Storage-fiókok t�
 |    FileStorage    | Nyugat-Európa<br /> USA keleti régiója    |    Csak Azure Files    |
 
 <sup>1</sup> az archiválási szint jelenleg nem támogatott a ZRS-fiókok esetében.<br />
-<sup>2</sup> a virtuális gépekhez tartozó Azure-lemezek, beleértve a felügyelt és a nem felügyelt lemezeket is, csak a LRS támogatják. Nem támogatják a ZRS vagy a GZRS. A felügyelt lemezekkel kapcsolatos további információkért lásd: [Az Azure Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
+<sup>2</sup> a virtuális gépekhez készült Azure Managed Disks-t tartalmazó Storage-fiókok mindig a LRS-t használják. Az Azure Unmanaged Disks szolgáltatásnak a LRS is használnia kell. Létrehozhat egy Storage-fiókot az Azure nem felügyelt, GRS használó lemezek számára, de az aszinkron geo-replikációval kapcsolatos lehetséges problémák miatt nem ajánlott. Sem a felügyelt, sem a nem felügyelt lemezek támogatják a ZRS vagy a GZRS. A felügyelt lemezekkel kapcsolatos további információkért lásd: [Az Azure Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 További információ arról, hogy mely régiók támogatják a ZRS-t: a **szolgáltatások támogatása régiók szerint** a [Mi a Azure Availability Zones?](../../availability-zones/az-overview.md).
 

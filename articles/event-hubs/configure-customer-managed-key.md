@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 50d12a0aba9018b1ecb30c018249e8f94ebe6d95
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 43e626355feaf1e51fc840f82506c559a1859b84
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903291"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621988"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Event Hubs-adatok inaktív titkosításához a Azure Portal használatával
 Az Azure Event Hubs az Azure Storage Service Encryption (Azure SSE) segítségével titkosítja az inaktív adatok titkosítását. Event Hubs az Azure Storage-ra támaszkodik az adattárolásra, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal titkosították a Microsoft által felügyelt kulcsokkal. 
@@ -96,20 +96,20 @@ Az alábbi lépéseket követve engedélyezheti a naplók számára az ügyfél 
 
     ![Válassza az ügyfél által felügyelt kulcs felhasználói naplók lehetőséget](./media/configure-customer-managed-key/select-customer-managed-key-user-logs.png)
 
-## <a name="log-schema"></a>Napló sémája 
-Az összes napló JavaScript Object Notation (JSON) formátumban van tárolva. Minden bejegyzés tartalmaz egy karakterlánc-mezőt, amely az alábbi táblázatban ismertetett formátumot használja. 
+## <a name="log-schema"></a>Séma 
+Az összes napló JavaScript Object Notation (JSON) formátumban vannak tárolva. Minden bejegyzés tartalmaz egy karakterlánc-mezőt, amely az alábbi táblázatban ismertetett formátumot használja. 
 
-| Név | Leírás |
+| Name (Név) | Leírás |
 | ---- | ----------- | 
-| Feladatnév | A sikertelen feladat leírása. |
+| Feladatnév | Leírás a sikertelen feladat. |
 | Tevékenységazonosító | A nyomon követéshez használt belső azonosító. |
 | category | Meghatározza a feladat besorolását. Ha például a kulcstartó kulcsa le van tiltva, akkor az egy információs kategória lenne, vagy ha egy kulcs nem csomagolható ki, a hiba a következő lehet:. |
 | resourceId | Erőforrás-azonosító Azure Resource Manager |
 | keyVault | A Key Vault teljes neve. |
 | kulcs | Az Event Hubs névtér titkosításához használt kulcsnév. |
 | version | A használt kulcs verziószáma. |
-| művelet | A Key vaultban a kulcsban végrehajtott művelet. Például letilthatja/engedélyezheti a kulcsot, becsomagolhatja vagy kicsomagolhatja |
-| kód | A művelethez társított kód. Példa: hibakód, 404 azt jelenti, hogy a kulcs nem található. |
+| operation | A Key vaultban a kulcsban végrehajtott művelet. Például letilthatja/engedélyezheti a kulcsot, becsomagolhatja vagy kicsomagolhatja |
+| code | A művelethez társított kód. Példa: hibakód, 404 azt jelenti, hogy a kulcs nem található. |
 | message | A művelethez társított hibaüzenetek |
 
 Íme egy példa egy ügyfél által felügyelt kulcs naplójára:
@@ -143,6 +143,262 @@ Az összes napló JavaScript Object Notation (JSON) formátumban van tárolva. M
    "message": "",
 }
 ```
+
+## <a name="use-resource-manager-template-to-enable-encryption"></a>A titkosítás engedélyezése Resource Manager-sablon használatával
+Ez a szakasz bemutatja, hogyan végezheti el a következő feladatokat **Azure Resource Manager sablonok**használatával. 
+
+1. Hozzon létre egy **Event Hubs névteret** egy felügyelt szolgáltatás identitásával.
+2. Hozzon létre egy **kulcstartót** , és adja meg a szolgáltatás identitásának hozzáférését a kulcstartóhoz. 
+3. Frissítse a Event Hubs névteret a Key Vault-információkkal (kulcs/érték). 
+
+
+### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Event Hubs-fürt és-névtér létrehozása felügyelt szolgáltatás identitásával
+Ebből a szakaszból megtudhatja, hogyan hozhat létre egy felügyelt szolgáltatás-identitással rendelkező Azure Event Hubs névteret egy Azure Resource Manager sablonnal és a PowerShell használatával. 
+
+1. Hozzon létre egy Azure Resource Manager sablont egy felügyelt szolgáltatás identitásával rendelkező Event Hubs névtér létrehozásához. Nevezze el a fájlt: **CreateEventHubClusterAndNamespace. JSON**: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Event Hub cluster."
+             }
+          },
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.EventHub/clusters",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('clusterName')]",
+             "location":"[parameters('location')]",
+             "sku":{
+                "name":"Dedicated",
+                "capacity":1
+             }
+          },
+          {
+             "type":"Microsoft.EventHub/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Standard",
+                "tier":"Standard",
+                "capacity":1
+             },
+             "properties":{
+                "isAutoInflateEnabled":false,
+                "maximumThroughputUnits":0,
+                "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]"
+             },
+             "dependsOn":[
+                "[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]"
+             ]
+          }
+       ],
+       "outputs":{
+          "EventHubNamespaceId":{
+             "type":"string",
+             "value":"[resourceId('Microsoft.EventHub/namespaces',parameters('namespaceName'))]"
+          }
+       }
+    }
+    ```
+2. Hozzon létre egy sablon-paraméter nevű fájlt: **CreateEventHubClusterAndNamespaceParams. JSON**. 
+
+    > [!NOTE]
+    > Cserélje le a következő értékeket: 
+    > - `<EventHubsClusterName>` – a Event Hubs-fürt neve    
+    > - `<EventHubsNamespaceName>` – a Event Hubs névtér neve
+    > - `<Location>` – a Event Hubs névtér helye
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "value":"<EventHubsClusterName>"
+          },
+          "namespaceName":{
+             "value":"<EventHubsNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          }
+       }
+    }
+    
+    ```
+3. Futtassa a következő PowerShell-parancsot a sablon üzembe helyezéséhez Event Hubs névtér létrehozásához. Ezután kérje le a Event Hubs névtér AZONOSÍTÓját, hogy később használhassa. A parancs futtatása előtt cserélje le a `{MyRG}`t az erőforráscsoport nevére.  
+
+    ```powershell
+    $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
+
+    $EventHubNamespaceId = $outputs.Outputs["eventHubNamespaceId"].value
+    ```
+ 
+### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>Event Hubs névtér-identitás hozzáférésének engedélyezése a Key vaulthoz
+
+1. A következő parancs futtatásával hozzon létre egy Key vaultot a **kiürítési védelemmel** , és engedélyezze a helyreállítható **törlést** . 
+
+    ```powershell
+    New-AzureRmKeyVault -Name {keyVaultName} -ResourceGroupName {RGName}  -Location {location} -EnableSoftDelete -EnablePurgeProtection    
+    ```     
+    
+    VAGY    
+    
+    Futtassa a következő parancsot egy **meglévő kulcstartó**frissítéséhez. A parancs futtatása előtt határozza meg az erőforráscsoport és a kulcstároló nevének értékét. 
+    
+    ```powershell
+    ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
+    ``` 
+2. Állítsa be a Key Vault hozzáférési házirendjét úgy, hogy a Event Hubs névtér felügyelt identitása hozzáférhessen a Key Vault kulcs értékéhez. Használja a Event Hubs névtér AZONOSÍTÓját az előző szakaszból. 
+
+    ```powershell
+    $identity = (Get-AzureRmResource -ResourceId $EventHubNamespaceId -ExpandProperties).Identity
+    
+    Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
+    ```
+
+### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>Adatok titkosítása Event Hubs névtérben az ügyfél által felügyelt kulccsal a Key vaultból
+A következő lépéseket eddig végrehajtotta: 
+
+1. Létrehozott egy prémium szintű névteret egy felügyelt identitással.
+2. Hozzon létre egy kulcstartót, és biztosítson hozzáférést a Key vaulthoz a felügyelt identitáshoz. 
+
+Ebben a lépésben frissíteni fogja a Event Hubs névteret a Key Vault-információkkal. 
+
+1. Hozzon létre egy **CreateEventHubClusterAndNamespace. JSON** nevű JSON-fájlt a következő tartalommal: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Event Hub cluster."
+             }
+          },
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          },
+          "keyVaultUri":{
+             "type":"string",
+             "metadata":{
+                "description":"URI of the KeyVault."
+             }
+          },
+          "keyName":{
+             "type":"string",
+             "metadata":{
+                "description":"KeyName."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.EventHub/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Standard",
+                "tier":"Standard",
+                "capacity":1
+             },
+             "properties":{
+                "isAutoInflateEnabled":false,
+                "maximumThroughputUnits":0,
+                "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]",
+                "encryption":{
+                   "keySource":"Microsoft.KeyVault",
+                   "keyVaultProperties":[
+                      {
+                         "keyName":"[parameters('keyName')]",
+                         "keyVaultUri":"[parameters('keyVaultUri')]"
+                      }
+                   ]
+                }
+             }
+          }
+       ]
+    }
+    ``` 
+
+2. Hozzon létre egy sablon-paramétert tartalmazó fájlt: **UpdateEventHubClusterAndNamespaceParams. JSON**. 
+
+    > [!NOTE]
+    > Cserélje le a következő értékeket: 
+    > - `<EventHubsClusterName>` – a Event Hubs-fürt neve.        
+    > - `<EventHubsNamespaceName>` – a Event Hubs névtér neve
+    > - `<Location>` – a Event Hubs névtér helye
+    > - `<KeyVaultName>` – a Key Vault neve
+    > - `<KeyName>` – a kulcs neve a Key vaultban
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "value":"<EventHubsClusterName>"
+          },
+          "namespaceName":{
+             "value":"<EventHubsNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          },
+          "keyName":{
+             "value":"<KeyName>"
+          },
+          "keyVaultUri":{
+             "value":"https://<KeyVaultName>.vault.azure.net"
+          }
+       }
+    }
+    ```             
+3. Futtassa a következő PowerShell-parancsot a Resource Manager-sablon üzembe helyezéséhez. A parancs futtatása előtt cserélje le a `{MyRG}`t az erőforráscsoport nevére. 
+
+    ```powershell
+    New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
+    ```
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 Ajánlott eljárásként mindig engedélyezze a naplókat, például az előző szakaszban láthatókat. Segít a tevékenységek nyomon követésében, ha a BYOK titkosítás engedélyezve van. Emellett segít a problémák megoldásában.

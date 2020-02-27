@@ -4,7 +4,7 @@ description: SAP HANA telepítése Azure-beli SAP HANA (nagyméretű példányok
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c08036f16cd30a1c10963accd8d486d77c9683ee
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: ca59305b22fcf1e81ef518612910731cb6edea5d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264169"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617098"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (nagyméretű példányok) telepítése és konfigurálása az Azure-ban
 
@@ -60,10 +60,10 @@ Pontosan vizsgálja meg a következő paramétereket, és végül a következőh
 
 - net. Core. rmem_max = 16777216
 - net. Core. wmem_max = 16777216
-- net. Core. rmem_default = 16777216
-- net. Core. wmem_default = 16777216
-- net. Core. optmem_max = 16777216
-- net. IPv4. tcp_rmem = 65536 16777216 16777216
+- net.core.rmem_default = 16777216
+- net.core.wmem_default = 16777216
+- net.core.optmem_max = 16777216
+- net.ipv4.tcp_rmem = 65536 16777216 16777216
 - net. IPv4. tcp_wmem = 65536 16777216 16777216
 
 A SLES12 SP1 és a RHEL 7,2 verziótól kezdődően ezeket a paramétereket be kell állítani egy konfigurációs fájlban a/etc/sysctl.d könyvtárban. Például létre kell hozni egy 91-NetApp-HANA. conf nevű konfigurációs fájlt. A régebbi SLES és RHEL kiadások esetében ezeket a paramétereket a/etc/sysctl. conf fájlban kell megadni.
@@ -115,7 +115,7 @@ A következő SAP-támogatási megjegyzések a Red Hat SAP HANA megvalósítás�
 - [SAP-támogatás Megjegyzés #2397039 – gyakori kérdések: SAP on RHEL](https://launchpad.support.sap.com/#/notes/2397039)
 - [SAP-támogatás Megjegyzés #2002167-Red Hat Enterprise Linux 7. x: telepítés és frissítés](https://launchpad.support.sap.com/#/notes/2002167)
 
-### <a name="time-synchronization"></a>Időszinkronizálás
+### <a name="time-synchronization"></a>Idő szinkronizálása
 
 Az SAP NetWeaver architektúrára épülő SAP-alkalmazások érzékenyek az SAP-rendszer részét képező különböző összetevők időbeli eltérésére. Az SAP ABAP rövid memóriaképei a ZDATE\_nagy\_idő\_DIFF valószínűleg ismerősek. Ennek az az oka, hogy ezek a rövid memóriaképek akkor jelennek meg, ha a különböző kiszolgálók vagy virtuális gépek rendszerideje túl távol sodródik egymástól.
 
@@ -124,7 +124,7 @@ SAP HANA az Azure-ban (nagyméretű példányok) az Azure-ban végzett időszink
 Ennek eredményeképpen be kell állítania egy külön időkiszolgálót, amelyet az Azure-beli virtuális gépeken futó SAP-alkalmazások és a HANA nagyméretű példányokon futó SAP HANA adatbázis-példányok használhatnak. A nagyméretű példányokban tárolt tárolási infrastruktúra időközben szinkronizálva van az NTP-kiszolgálókkal.
 
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 Feltételezzük, hogy követte az Azure-beli virtuális hálózatok megtervezésének és a virtuális hálózatok a HANA nagyméretű példányokhoz való csatlakoztatásának javaslatait, az alábbi dokumentumokban leírtak szerint:
 
 - [SAP HANA (nagyméretű példány) áttekintése és architektúrája az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
@@ -134,7 +134,7 @@ Néhány részletet érdemes megemlíteni az önálló egységek hálózatkezel�
 
 Az architektúra Ethernet-adataival kapcsolatos további információkért tekintse meg a [HLI által támogatott forgatókönyveket](hana-supported-scenario.md).
 
-## <a name="storage"></a>Adattárolás
+## <a name="storage"></a>Tárterület
 
 Az Azure-beli SAP HANA (nagyméretű példányok) tárolási elrendezését az Azure-`service management` az SAP által ajánlott irányelvek segítségével konfigurálja SAP HANA. Ezek az irányelvek dokumentálva vannak a [SAP HANA Storage-követelmények](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) című tanulmányban. 
 
@@ -147,7 +147,7 @@ A tárolási kötetek elnevezési konvenciói az alábbi táblázatban látható
 | HANA-adathalmazok | /hana/data/SID/mnt0000\<m > | Storage IP:/hana_data_SID_mnt00001_tenant_vol |
 | HANA-napló | /hana/log/SID/mnt0000\<m > | Storage IP:/hana_log_SID_mnt00001_tenant_vol |
 | HANA-napló biztonsági mentése | /hana/log/backups | Storage IP:/hana_log_backups_SID_mnt00001_tenant_vol |
-| HANA megosztott | /hana/shared/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/Shared |
+| HANA megosztott | /hana/shared/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/shared |
 | usr/SAP | /usr/sap/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
 
 A *SID* a HANA-példány rendszer-azonosítója. 
@@ -188,7 +188,7 @@ Az alábbi SAP HANA konfigurációs paraméterek megadásával optimalizálhatja
 
 - max_parallel_io_requests 128
 - async_read_submit bekapcsolva
-- async_write_submit_active bekapcsolva
+- async_write_submit_active on
 - összes async_write_submit_blocks
  
 A SAP HANA 1,0 verziójú SPS12-ig ezek a paraméterek a SAP HANA-adatbázis telepítése során állíthatók be, az [SAP HANA-adatbázis SAP-megjegyzés #2267798 – konfiguráció](https://launchpad.support.sap.com/#/notes/2267798)szakaszában leírtak szerint.
@@ -200,7 +200,7 @@ A HANA nagyméretű példányaiban használt tárterület fájlméret-korlátoz�
 > [!IMPORTANT]
 > Annak megakadályozása érdekében, hogy a HANA a HANA nagyméretű példányok tárterületének 16 TB-os fájlméret-korlátján kívüli adatfájlokat próbáljon növelni, a következő paramétereket kell beállítania a SAP HANA Global. ini konfigurációs fájlban.
 > 
-> - datavolume_striping = igaz
+> - datavolume_striping=true
 > - datavolume_striping_size_gb = 15000
 > - Lásd még: SAP-Megjegyzés [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
 > - Vegye figyelembe az SAP-Megjegyzés [#2631285](https://launchpad.support.sap.com/#/notes/2631285)

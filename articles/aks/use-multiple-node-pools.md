@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre és kezelhet több Node-készlete
 services: container-service
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 846425e6d36462636ea1f4e82d6c7233dcb28ac9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 3e0890a0e8600526da2047cabc0b50af8177ea37
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592883"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615695"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Fürthöz tartozó több Node-készlet létrehozása és kezelése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -29,8 +29,7 @@ Szüksége lesz az Azure CLI-verzió 2.0.76 vagy újabb verziójára, és konfig
 A több csomópontot támogató AK-fürtök létrehozásakor és kezelésekor a következő korlátozások érvényesek:
 
 * Tekintse [meg a kvótákat, a virtuális gépek méretére vonatkozó korlátozásokat és a régió elérhetőségét az Azure Kubernetes szolgáltatásban (ak)][quotas-skus-regions].
-* Az alapértelmezett (első) csomópont-készlet nem törölhető.
-* A HTTP-alkalmazás útválasztási bővítménye nem használható.
+* A rendszercsomópont-készlet nem törölhető, alapértelmezés szerint az első csomópont-készlet.
 * Az AK-fürtnek a standard SKU Load balancert kell használnia több Node-készlet használatához, a szolgáltatás alapszintű SKU-terheléselosztó esetén nem támogatott.
 * Az AK-fürtnek virtuálisgép-méretezési csoportokat kell használnia a csomópontokhoz.
 * A csomópontok készletének neve csak kisbetűket és kisbetűs karaktereket tartalmazhat. A Linux-csomópontok készletei esetében a hossznak 1 és 12 karakter közöttinek kell lennie, a Windows-csomópontok esetében a hossznak 1 és 6 karakter közöttinek kell lennie.

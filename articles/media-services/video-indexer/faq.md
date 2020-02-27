@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d08c0b8817c0008a0ecfbab1a9d38243ec0bea79
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eacbeca275192e1a68b6682c3036da2d5c09bd54
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705683"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619879"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer gyakori kérdések
 
@@ -59,7 +59,7 @@ Nem, Video Indexer több gépi tanulási modell integrálását is lehetővé te
 
 ### <a name="what-media-formats-does-video-indexer-support"></a>Milyen adathordozó-formátumokat támogat Video Indexer?
 
-A Video Indexer a legtöbb gyakori médiaformátumot támogatja. További részletekért tekintse meg a [Azure Media Encoder standard formats (szabványos formátumok](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) ) listát.
+A Video Indexer a leggyakoribb adathordozó-formátumokat támogatja. További részletekért tekintse meg a [Azure Media Encoder standard formats (szabványos formátumok](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) ) listát.
 
 ### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>Hogyan tölthetők fel adathordozók a Video Indexerba?
 
@@ -76,6 +76,14 @@ Igen, integrálhatja a Video Indexert olyan kiszolgáló nélküli technológiá
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>Mely Azure-régiók érhetők el a video Indexer szolgáltatásban?
 
 Láthatja, hogy mely Azure-régiók érhetők el Video Indexer a [régiók](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all) lapon.
+
+### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>Testreszabhatók Video Indexer-modellek a konkrét használati esetekhez? 
+
+Igen. Video Indexer a rendelkezésre álló modellek némelyikét testreszabhatja az igényeinek megfelelően. 
+
+A person-modell például támogatja a Celebrity-felismeréshez készült, beépített 1 000 000 arcok használatát, de betaníthatja azt is, hogy felismerje a többi olyan arcot, amely nem található meg az adatbázisban. 
+
+Részletekért tekintse meg a [személy](customize-person-model-overview.md), a [márkák](customize-brands-model-overview.md)és a [nyelvi](customize-language-model-overview.md) modellek testreszabásával foglalkozó cikkeket. 
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Mi a Video Indexer SLA-ja?
 
@@ -119,6 +127,21 @@ A Video Indexer a [Microsoft adatvédelmi nyilatkozata](https://privacy.microsof
 
 Video Indexer jelenleg a SOC-minősítéssel rendelkezik. Video Indexer minősítésének áttekintéséhez tekintse meg a [Microsoft adatvédelmi központját](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure).
 
+### <a name="what-is-the-difference-between-private-and-public-videos"></a>Mi a különbség a magán-és a nyilvános videók között? 
+
+A videók Video Indexerba való feltöltésekor két adatvédelmi beállítás közül választhat: magán-és nyilvános. A nyilvános videók mindenki számára elérhetők, beleértve a névtelen és az azonosítatlan felhasználókat is. A magánjellegűek kizárólag a fiókok tagjaira korlátozódnak. 
+
+### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>Megpróbáltam nyilvánosként feltölteni egy videót, és nem megfelelő vagy sértő tartalomra jelölték meg, mit jelent ez? 
+
+Amikor Video Indexer videót tölt fel, az algoritmusok és a modellek automatikusan elvégzik a tartalom elemzését annak érdekében, hogy a nem megfelelő tartalom ne legyen nyilvánosan elérhető. Ha egy videó gyanúsnak minősül, és explicit tartalmat tartalmaz, akkor nem lehet nyilvánosként beállítani. Azonban a fiókok tagjai továbbra is hozzáférhetnek privát videóként (megtekinthetik, le is tölthetik és kinyerték az összetevőket, és egyéb műveleteket is elvégezhetnek a fiókok tagjai számára).   
+
+A videó nyilvános hozzáféréshez való beállításához a következők közül választhat: 
+
+* Hozzon létre saját felületet (például alkalmazás vagy webhely), és használja a Video Indexer szolgáltatással való interakcióhoz. Így a videó továbbra is magánjellegű a portálon, és a felhasználók a felületen keresztül kezelhetik azt. Így például továbbra is megtekintheti az eredményeket, vagy engedélyezheti a videó megtekintését a saját felületén. 
+* Kérje a tartalom emberi áttekintését, ami a korlátozás eltávolítását eredményezné, feltételezve, hogy a tartalom nem egyértelmű. 
+
+    Ezt a lehetőséget akkor lehet megvizsgálni, ha a Video Indexer webhelyet közvetlenül a felhasználók használják felületi rétegként, illetve nyilvános (nem hitelesített) megtekintésre. 
+
 ## <a name="api-questions"></a>API-kérdések
 
 ### <a name="what-apis-does-video-indexer-offer"></a>Milyen API-kat Video Indexer ajánlatot?
@@ -161,7 +184,7 @@ A Video Indexer egy egyszerű utólagos elszámolású díjszabási modellt hasz
 
 ### <a name="when-am-i-billed-for-using-video-indexer"></a>Mikor kell fizetnem a Video Indexer használatáról?
 
-Videó indexelésre való elküldésénél a felhasználó eldöntheti, hogy az indexelés videóelemzés, hangelemzés vagy mindkettő legyen-e. Ez határozza meg, hogy mely termékváltozatban történjen a díjak felszámítása. Ha a feldolgozás során kritikus hiba lép fel, válaszként egy hibakód lesz visszaküldve. Ilyen esetben nem számítunk fel díjat.  Kritikus hibát okozhat egy kódbeli hiba vagy a szolgáltatás egyik belső függőségének kritikus meghibásodása. A hibás azonosítás vagy hibás információkinyerés nem számít kritikus hibának, és ilyen esetben választ is küld a rendszer. Díjat számolunk fel minden olyan esetben, amikor egy érvényes (nem hibakódot tartalmazó) választ ad vissza a rendszer.
+Ha indexelni kíván egy videót, a felhasználó megadhatja az indexelést a videó elemzése, a hang elemzése vagy mindkettő számára. Ez határozza meg, hogy mely SKU-ket számoljuk fel. Ha a feldolgozás során kritikus szintű hiba történt, a rendszer egy hibakódot ad vissza válaszként. Ilyen esetben nem történik számlázás.  Kritikus hiba oka lehet a kód hibája, vagy egy, a szolgáltatás belső függőségében kritikus hiba. A hibák, például a helytelen azonosítás vagy az elemzések kinyerése nem tekintendő kritikusnak, és a rendszer választ ad vissza. Minden olyan esetben, amikor érvényes (nem hibakód) választ ad vissza, a számlázás történik.
  
 ### <a name="does-video-indexer-offer-a-free-trial"></a>Kínál Video Indexer ingyenes próbaverziót?
 

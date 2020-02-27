@@ -13,12 +13,12 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: a0f0f3be1647c820591923a094ef7fce86ab9672
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d0497ad68e7b29e6d8c83dd860ba8f509e229579
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699444"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611889"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Fiókok és bérlői profilok (Android)
 
@@ -52,7 +52,7 @@ A Microsoft Identity platform egyik fiókja a következőkből áll:
 
 ## <a name="account-overview-diagram"></a>Fiók áttekintése diagram
 
-![Fiók áttekintése diagram](./media/accounts-overview/accounts-overview.png)
+![Fiók áttekintése diagram](./media/accounts-overview/accounts-overview.svg)
 
 A fenti ábrán:
 
@@ -97,7 +97,7 @@ IAccount account = app.getAccount("<tom@live.com woodgrovebank user object id>")
 A hozzáférési token igénylése mellett a MSAL is minden bérlőtől kér azonosító jogkivonatot. Ezt mindig a következő hatókörökre kéri:
 
 - OpenID
-- profil
+- profile
 
 Az azonosító jogkivonat a jogcímek listáját tartalmazza. `Claims` a fiókhoz tartozó név-érték párok, és a kérést használják.
 
@@ -105,7 +105,7 @@ Ahogy azt korábban említettük, az egyes bérlők, ahol egy fiók létezik, k�
 
 Habár egy fiók lehet tag vagy vendég több szervezeten belül, a MSAL nem kérdez le egy szolgáltatást, hogy lekérje azon bérlők listáját, amelyeknek a fiók tagja. Ehelyett a MSAL létrehoz egy listát azokról a bérlők listájáról, amelyeken a fiók szerepel, a jogkivonat-kérelmek eredményeképpen.
 
-A fiók objektumon közzétett jogcímek mindig a fiók "Kezdőlap bérlője"/{Authority} származó jogcímek. Ha ez a fiók nem használ jogkivonatot a saját bérlője számára, a MSAL nem tud jogcímeket biztosítani a fiók objektumon keresztül.  Példa:
+A fiók objektumon közzétett jogcímek mindig a fiók "Kezdőlap bérlője"/{Authority} származó jogcímek. Ha ez a fiók nem használ jogkivonatot a saját bérlője számára, a MSAL nem tud jogcímeket biztosítani a fiók objektumon keresztül.  Például:
 
 ```java
 // Psuedo Code
@@ -125,7 +125,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 
 ### <a name="access-tenant-profile-claims"></a>Bérlői profil jogcímeinek elérése
 
-Ha más bérlők által megjelenő fiókhoz szeretne jogcímeket elérni, először el kell végeznie a fiók objektumát `IMultiTenantAccount`. Az összes fiók több-bérlő lehet, de a MSAL-n keresztül elérhető bérlői profilok száma attól függ, hogy mely bérlők igényeltek jogkivonatot az aktuális fiók használatával.  Példa:
+Ha más bérlők által megjelenő fiókhoz szeretne jogcímeket elérni, először el kell végeznie a fiók objektumát `IMultiTenantAccount`. Az összes fiók több-bérlő lehet, de a MSAL-n keresztül elérhető bérlői profilok száma attól függ, hogy mely bérlők igényeltek jogkivonatot az aktuális fiók használatával.  Például:
 
 ```java
 // Psuedo Code
@@ -140,7 +140,7 @@ multiTenantAccount.getTenantProfiles().get("tenantid for contoso").getClaims().g
 
 A fiókok frissítési jogkivonatai nem oszthatók meg a B2C-szabályzatok között. Ennek eredményeképpen a tokeneket használó egyszeri bejelentkezés nem lehetséges. Ez nem jelenti azt, hogy az egyszeri bejelentkezés nem lehetséges. Ez azt jelenti, hogy az egyszeri bejelentkezéshez olyan interaktív élményt kell használni, amelyben az egyszeri bejelentkezés lehetővé teszi a cookie-t.
 
-Ez azt is jelenti, hogy a MSAL esetén, ha különböző B2C-szabályzatokat használó jogkivonatokat vásárol, ezeket külön fiókokként kezeli a rendszer, amelyek mindegyike saját azonosítóval rendelkezik. Ha `acquireTokenSilent`használatával szeretne jogkivonatot kérni egy fiókkal, akkor ki kell választania a fiókot azon fiókok listájából, amelyek megfelelnek a jogkivonat-kérelemmel használt szabályzatnak. Példa:
+Ez azt is jelenti, hogy a MSAL esetén, ha különböző B2C-szabályzatokat használó jogkivonatokat vásárol, ezeket külön fiókokként kezeli a rendszer, amelyek mindegyike saját azonosítóval rendelkezik. Ha `acquireTokenSilent`használatával szeretne jogkivonatot kérni egy fiókkal, akkor ki kell választania a fiókot azon fiókok listájából, amelyek megfelelnek a jogkivonat-kérelemmel használt szabályzatnak. Például:
 
 ```java
 // Get Account For Policy

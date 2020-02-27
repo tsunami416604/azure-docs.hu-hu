@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 140edb3162d4f76c741a5692faa19325581a3ba7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5507579338ad0d87bc6223b56283fe7ed46af7d8
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704489"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613298"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>E-mail-értesítések konfigurálása a Azure Active Directory Domain Services kapcsolatos problémákhoz
 
@@ -58,7 +58,7 @@ Azt is megteheti, hogy az Azure AD-címtár minden *globális rendszergazdája* 
 A meglévő e-mailes értesítés címzettjeinek áttekintéséhez vagy további címzettek hozzáadásához hajtsa végre a következő lépéseket:
 
 1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services**lehetőséget.
-1. Válassza ki az Azure AD DS felügyelt tartományát, például *aadds.contoso.com*.
+1. Válassza ki az Azure AD DS felügyelt tartományát, például *aaddscontoso.com*.
 1. Az Azure AD DS erőforrás ablak bal oldalán válassza az **értesítési beállítások**lehetőséget. Az e-mail értesítések meglévő címzettjei jelennek meg.
 1. E-mail címzett hozzáadásához írja be az e-mail-címet a további címzettek táblába.
 1. Ha elkészült, válassza a **Mentés** lehetőséget a felső navigációs sávon.
@@ -76,7 +76,7 @@ Riasztás feloldásakor a rendszer törli a riasztást a Azure Portalról. A leg
 
 Ha nem tud hozzáférni a Azure Portal értesítési beállítások lapjához, nem rendelkezik az Azure AD DS felügyelt tartományának szerkesztéséhez szükséges engedélyekkel. Kérje meg a globális rendszergazdát, hogy kérjen engedélyt az Azure AD DS erőforrásának szerkesztésére, vagy távolítsa el a címzettek listájáról.
 
-### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Úgy tűnik, hogy nem Fogadok e-mailes értesítéseket, bár az e-mail címem is megérkezett. Miért?
+### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Úgy tűnik, hogy nem Fogadok e-mailes értesítéseket, bár az e-mail címem is megérkezett. Hogy miért?
 
 Ellenőrizze az e-mailben küldött levélszemét-vagy Levélszemét-mappát az értesítéshez, és győződjön meg arról, hogy engedélyezi a `azure-noreply@microsoft.com`küldőjét.
 

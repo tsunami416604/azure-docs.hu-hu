@@ -2,13 +2,13 @@
 title: Sablon szerkezete és szintaxisa
 description: Ismerteti Azure Resource Manager sablonok felépítését és tulajdonságait a deklaratív JSON-szintaxis használatával.
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 9cd602644ecf803e97254189cfc157d60713cc6c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/25/2020
+ms.openlocfilehash: 08c688da3e812a4a67070c926cf11512bfc60667
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209460"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622900"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése
 
@@ -260,10 +260,14 @@ A következő példa egy kimeneti definíciót szerkezetét mutatja:
 
 ```json
 "outputs": {
-  "<output-name>" : {
+  "<output-name>": {
     "condition": "<boolean-value-whether-to-output-value>",
-    "type" : "<type-of-output-value>",
-    "value": "<output-value-expression>"
+    "type": "<type-of-output-value>",
+    "value": "<output-value-expression>",
+    "copy": {
+      "count": <number-of-iterations>,
+      "input": <values-for-the-variable>
+    }
   }
 }
 ```
@@ -273,7 +277,8 @@ A következő példa egy kimeneti definíciót szerkezetét mutatja:
 | kimenet – név |Igen |A kimeneti érték neve. Érvényes JavaScript-azonosítónak kell lennie. |
 | condition |Nem | Logikai érték, amely jelzi, hogy a rendszer visszaadja-e ezt a kimeneti értéket. Ha `true`, az érték szerepel a központi telepítés kimenetében. Ha `false`, a rendszer kihagyja a kimeneti értéket a központi telepítéshez. Ha nincs megadva, az alapértelmezett érték `true`. |
 | type |Igen |A kimeneti érték típusát. Sablon bemeneti paraméterként azonos kimeneti értékeket támogatásához. Ha a kimeneti típushoz **SecureString** ad meg, az érték nem jelenik meg a telepítési előzményekben, és nem kérhető le másik sablonból. Ha egy titkos értéket több sablonban szeretne használni, tárolja a titkot egy Key Vaultban, és hivatkozzon a titkos kulcsra a paraméter fájljában. További információ: [a Azure Key Vault használata a biztonságos paraméterek értékének](key-vault-parameter.md)átadására az üzembe helyezés során. |
-| érték |Igen |Sablonnyelv-kifejezés, amely értékeli ki és adja vissza a kimeneti értéket. |
+| érték |Nem |Sablonnyelv-kifejezés, amely értékeli ki és adja vissza a kimeneti értéket. Adjon meg **értéket** vagy **másolatot**. |
+| másolja |Nem | Egy kimenet egynél több értékének visszaküldésére szolgál. **Érték** vagy **Másolás**megadása. További információ: [a kimenet iterációja Azure Resource Manager-sablonokban](copy-outputs.md). |
 
 Példák a kimenetek használatára: [Azure Resource Manager sablon kimenetei](template-outputs.md).
 
@@ -379,7 +384,7 @@ Nem adhat hozzá metaadat-objektumot felhasználó által definiált függvénye
 
 ## <a name="multi-line-strings"></a>Többsoros karakterláncok
 
-A sztringeket több sorba is lehet bontani. Például a Location tulajdonság és az alábbi JSON-példa egyik megjegyzése.
+A sztringeket több sorba is lehet bontani. Például tekintse meg a Location (hely) tulajdonságot, és az alábbi JSON-példa egyik megjegyzését.
 
 ```json
 {

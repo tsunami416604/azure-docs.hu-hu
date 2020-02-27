@@ -6,14 +6,14 @@ ms.service: service-bus
 documentationcenter: ''
 author: axisc
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 02/25/2020
 ms.author: aschhab
-ms.openlocfilehash: 6d20d4031f0ed4d1be4dddf9e33946251d6dd523
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: aeb9a9730ddc61793e49c9e042906457e0068d9a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903320"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624089"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Service Bus adatok titkosításához a Azure Portal használatával
 A Azure Service Bus Premium az Azure Storage Service Encryption (Azure SSE) szolgáltatásban tárolt adatok titkosítását teszi lehetővé. Service Bus Premium az Azure Storage szolgáltatásban tárolja az adattárolást, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal a Microsoft által felügyelt kulcsokkal titkosítva van. 
@@ -78,22 +78,22 @@ Miután engedélyezte az ügyfél által felügyelt kulcsokat, hozzá kell rende
     1. Adja meg a kulcs részleteit, és kattintson a **kiválasztás**elemre. Ez lehetővé teszi a névtérben tárolt adatok titkosítását az ügyfél által felügyelt kulccsal. 
 
 
-> [!IMPORTANT]
-> Ha a Geo vész-helyreállítással együtt szeretné használni az ügyfél által felügyelt kulcsot, tekintse át a következőt: 
->
-> Ha az ügyfél által felügyelt kulccsal kívánja engedélyezni a titkosítást, a rendszer az Service Bus felügyelt identitására vonatkozó [hozzáférési szabályzatot](../key-vault/key-vault-secure-your-key-vault.md) hoz létre a megadott Azure-kulcstartón. Ez biztosítja az Azure kulcstartónak az Azure Service Bus névtérből való szabályozott hozzáférését.
->
-> Ennek oka:
-> 
->   * Ha a Geo vész- [helyreállítási](service-bus-geo-dr.md) funkció már engedélyezve van a Service Bus névtérhez, és engedélyezni szeretné az ügyfél által felügyelt kulcsot, 
->     * A párosítás megszüntetése
->     * Állítsa be az elsődleges és a másodlagos névtér felügyelt identitásához tartozó [hozzáférési házirendet](../key-vault/managed-identity.md) a kulcstartóba.
->     * Állítsa be a titkosítást az elsődleges névtérben.
->     * Az elsődleges és a másodlagos névterek újbóli párosítása.
-> 
->   * Ha azt szeretné, hogy a Geo-DR olyan Service Bus névteren legyen engedélyezve, amelyben az ügyfél által felügyelt kulcs már be van állítva, akkor
->     * Állítsa be a másodlagos névtér felügyelt identitásához tartozó [hozzáférési házirendet](../key-vault/managed-identity.md) a Key vaultba.
->     * Az elsődleges és a másodlagos névterek párosítása.
+    > [!IMPORTANT]
+    > Ha a Geo vész-helyreállítással együtt szeretné használni az ügyfél által felügyelt kulcsot, tekintse át a következőt: 
+    >
+    > Ha az ügyfél által felügyelt kulccsal kívánja engedélyezni a titkosítást, a rendszer az Service Bus felügyelt identitására vonatkozó [hozzáférési szabályzatot](../key-vault/key-vault-secure-your-key-vault.md) hoz létre a megadott Azure-kulcstartón. Ez biztosítja az Azure kulcstartónak az Azure Service Bus névtérből való szabályozott hozzáférését.
+    >
+    > Ennek oka:
+    > 
+    >   * Ha a Geo vész- [helyreállítási](service-bus-geo-dr.md) funkció már engedélyezve van a Service Bus névtérhez, és engedélyezni szeretné az ügyfél által felügyelt kulcsot, 
+    >     * A párosítás megszüntetése
+    >     * Állítsa be az elsődleges és a másodlagos névtér felügyelt identitásához tartozó [hozzáférési házirendet](../key-vault/managed-identity.md) a kulcstartóba.
+    >     * Állítsa be a titkosítást az elsődleges névtérben.
+    >     * Az elsődleges és a másodlagos névterek újbóli párosítása.
+    > 
+    >   * Ha azt szeretné, hogy a Geo-DR olyan Service Bus névteren legyen engedélyezve, amelyben az ügyfél által felügyelt kulcs már be van állítva, akkor
+    >     * Állítsa be a másodlagos névtér felügyelt identitásához tartozó [hozzáférési házirendet](../key-vault/managed-identity.md) a Key vaultba.
+    >     * Az elsődleges és a másodlagos névterek párosítása.
 
 
 ## <a name="rotate-your-encryption-keys"></a>A titkosítási kulcsok elforgatása
@@ -105,6 +105,224 @@ A Key vaultban az Azure Key Vaults rotációs mechanizmus használatával forgat
 A titkosítási kulcsokhoz való hozzáférés visszavonása nem törli az Service Busból származó adatok törlését. Azonban az adatok nem érhetők el a Service Bus névtérből. A titkosítási kulcsot a hozzáférési házirendben vagy a kulcs törlésével vonhatja vissza. További információ a hozzáférési házirendekről és a Key Vault biztonságossá [tételéről a kulcstartó biztonságos eléréséről](../key-vault/key-vault-secure-your-key-vault.md).
 
 A titkosítási kulcs visszavonása után a titkosított névtér Service Bus szolgáltatása inműködőképes lesz. Ha a kulcshoz való hozzáférés engedélyezve van, vagy a törölt kulcs vissza lett állítva, Service Bus a szolgáltatás kiválasztja a kulcsot, hogy hozzáférjen az adatokhoz a titkosított Service Bus névtérből.
+
+## <a name="use-resource-manager-template-to-enable-encryption"></a>A titkosítás engedélyezése Resource Manager-sablon használatával
+Ez a szakasz bemutatja, hogyan végezheti el a következő feladatokat **Azure Resource Manager sablonok**használatával. 
+
+1. Hozzon létre egy **prémium** szintű Service Bus névteret egy **felügyelt szolgáltatás identitásával**.
+2. Hozzon létre egy **kulcstartót** , és adja meg a szolgáltatás identitásának hozzáférését a kulcstartóhoz. 
+3. Frissítse a Service Bus névteret a Key Vault-információkkal (kulcs/érték). 
+
+
+### <a name="create-a-premium-service-bus-namespace-with-managed-service-identity"></a>Prémium szintű Service Bus névtér létrehozása felügyelt szolgáltatás identitásával
+Ebből a szakaszból megtudhatja, hogyan hozhat létre egy Azure Service Bus névteret felügyelt szolgáltatás identitásával egy Azure Resource Manager sablonnal és a PowerShell használatával. 
+
+1. Hozzon létre egy Azure Resource Manager sablont egy olyan Service Bus prémium szintű névtér létrehozásához, amelynek felügyelt szolgáltatás identitása van. Nevezze el a fájlt: **CreateServiceBusPremiumNamespace. JSON**: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.ServiceBus/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Premium",
+                "tier":"Premium",
+                "capacity":1
+             },
+             "properties":{
+    
+             }
+          }
+       ],
+       "outputs":{
+          "ServiceBusNamespaceId":{
+             "type":"string",
+             "value":"[resourceId('Microsoft.ServiceBus/namespaces',parameters('namespaceName'))]"
+          }
+       }
+    }
+    ```
+2. Hozzon létre egy sablon-paraméter nevű fájlt: **CreateServiceBusPremiumNamespaceParams. JSON**. 
+
+    > [!NOTE]
+    > Cserélje le a következő értékeket: 
+    > - `<ServiceBusNamespaceName>` – a Service Bus névtér neve
+    > - `<Location>` – a Service Bus névtér helye
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "value":"<ServiceBusNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          }
+       }
+    }
+    ```
+3. Futtassa a következő PowerShell-parancsot a sablon üzembe helyezéséhez Premium Service Bus névtér létrehozásához. Ezután kérje le a Service Bus névtér AZONOSÍTÓját, hogy később használhassa. A parancs futtatása előtt cserélje le a `{MyRG}`t az erőforráscsoport nevére.  
+
+    ```powershell
+    $outputs = New-AzResourceGroupDeployment -Name CreateServiceBusPremiumNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateServiceBusPremiumNamespace.json -TemplateParameterFile ./CreateServiceBusPremiumNamespaceParams.json
+    
+    $ServiceBusNamespaceId = $outputs.Outputs["serviceBusNamespaceId"].value
+    ```
+ 
+### <a name="grant-service-bus-namespace-identity-access-to-key-vault"></a>Service Bus névtér-identitás hozzáférésének engedélyezése a Key vaulthoz
+
+1. A következő parancs futtatásával hozzon létre egy Key vaultot a **kiürítési védelemmel** , és engedélyezze a helyreállítható **törlést** . 
+
+    ```powershell
+    New-AzureRmKeyVault -Name "{keyVaultName}" -ResourceGroupName {RGName}  -Location "{location}" -EnableSoftDelete -EnablePurgeProtection    
+    ```
+    
+    VAGY
+    
+    Futtassa a következő parancsot egy **meglévő kulcstartó**frissítéséhez. A parancs futtatása előtt határozza meg az erőforráscsoport és a kulcstároló nevének értékét. 
+    
+    ```powershell
+    ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
+    ``` 
+2. Állítsa be a Key Vault hozzáférési házirendjét úgy, hogy a Service Bus névtér felügyelt identitása hozzáférhessen a Key Vault kulcs értékéhez. Használja a Service Bus névtér AZONOSÍTÓját az előző szakaszból. 
+
+    ```powershell
+    $identity = (Get-AzureRmResource -ResourceId $ServiceBusNamespaceId -ExpandProperties).Identity
+    
+    Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
+    ```
+
+### <a name="encrypt-data-in-service-bus-namespace-with-customer-managed-key-from-key-vault"></a>Adatok titkosítása Service Bus névtérben az ügyfél által felügyelt kulccsal a Key vaultból
+A következő lépéseket eddig végrehajtotta: 
+
+1. Létrehozott egy prémium szintű névteret egy felügyelt identitással.
+2. Hozzon létre egy kulcstartót, és biztosítson hozzáférést a Key vaulthoz a felügyelt identitáshoz. 
+
+Ebben a lépésben frissíteni fogja a Service Bus névteret a Key Vault-információkkal. 
+
+1. Hozzon létre egy **UpdateServiceBusNamespaceWithEncryption. JSON** nevű JSON-fájlt a következő tartalommal: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          },
+          "keyVaultUri":{
+             "type":"string",
+             "metadata":{
+                "description":"URI of the KeyVault."
+             }
+          },
+          "keyName":{
+             "type":"string",
+             "metadata":{
+                "description":"KeyName."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.ServiceBus/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Premium",
+                "tier":"Premium",
+                "capacity":1
+             },
+             "properties":{
+                "encryption":{
+                   "keySource":"Microsoft.KeyVault",
+                   "keyVaultProperties":[
+                      {
+                         "keyName":"[parameters('keyName')]",
+                         "keyVaultUri":"[parameters('keyVaultUri')]"
+                      }
+                   ]
+                }
+             }
+          }
+       ]
+    }
+    ``` 
+
+2. Hozzon létre egy sablon-paramétert tartalmazó fájlt: **UpdateServiceBusNamespaceWithEncryptionParams. JSON**.
+
+    > [!NOTE]
+    > Cserélje le a következő értékeket: 
+    > - `<ServiceBusNamespaceName>` – a Service Bus névtér neve
+    > - `<Location>` – a Service Bus névtér helye
+    > - `<KeyVaultName>` – a Key Vault neve
+    > - `<KeyName>` – a kulcs neve a Key vaultban  
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "value":"<ServiceBusNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          },
+          "keyName":{
+             "value":"<KeyName>"
+          },
+          "keyVaultUri":{
+             "value":"https://<KeyVaultName>.vault.azure.net"
+          }
+       }
+    }
+    ```             
+3. Futtassa a következő PowerShell-parancsot a Resource Manager-sablon üzembe helyezéséhez. A parancs futtatása előtt cserélje le a `{MyRG}`t az erőforráscsoport nevére. 
+
+    ```powershell
+    New-AzResourceGroupDeployment -Name UpdateServiceBusNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateServiceBusNamespaceWithEncryption.json -TemplateParameterFile ./UpdateServiceBusNamespaceWithEncryptionParams.json
+    ```
+    
 
 ## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:

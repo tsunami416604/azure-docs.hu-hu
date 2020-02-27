@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 88062c2134600d5b1460858c3799cfc8daa83744
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: fc441ef64f98ace04b7b847c03d575215656f9db
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775230"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611835"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó Daemon-alkalmazás – kód konfigurálása
 
@@ -59,7 +59,7 @@ A konfigurációs fájl határozza meg a következőket:
 - Az alkalmazás regisztrálásakor kapott ügyfél-azonosító.
 - Vagy egy ügyfél titka vagy egy tanúsítvány.
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 a [appSettings. JSON](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) fájlt a [.net Core Console Daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) mintából.
 
@@ -75,7 +75,7 @@ a [appSettings. JSON](https://github.com/Azure-Samples/active-directory-dotnetco
 
 `ClientSecret` vagy `CertificateName`biztosít. Ezek a beállítások kizárólagosak.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Ha titkos ügyfelet hoz létre az ügyfél titkos kulcsaival, a [Python Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) -minta [Parameters. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) konfigurációs fájlja a következő:
 
@@ -102,18 +102,13 @@ Ha tanúsítványokkal rendelkező bizalmas ügyfelet hoz létre, a [Python Daem
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
-
-A [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java) a MSAL Java dev-minták konfigurálásához használt osztály:
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
-public class TestData {
-
-    final static String TENANT_SPECIFIC_AUTHORITY = "https://login.microsoftonline.com/<TenantId>/";
-    final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
-    final static String CONFIDENTIAL_CLIENT_ID = "";
-    final static String CONFIDENTIAL_CLIENT_SECRET = "";
-}
+ private final static String CLIENT_ID = "";
+ private final static String AUTHORITY = "https://login.microsoftonline.com/<tenant>/";
+ private final static String CLIENT_SECRET = "";
+ private final static Set<String> SCOPE = Collections.singleton("https://graph.microsoft.com/.default");
 ```
 
 ---
@@ -128,7 +123,7 @@ Az építkezés eltérő, attól függően, hogy az ügyfél titkos kulcsait vag
 
 Hivatkozzon a MSAL csomagra az alkalmazás kódjában.
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 Adja hozzá a [Microsoft. IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet-csomagot az alkalmazáshoz.
 A MSAL.NET-ben a bizalmas ügyfélalkalmazás a `IConfidentialClientApplication` felület által reprezentált.
@@ -139,19 +134,22 @@ using Microsoft.Identity.Client;
 IConfidentialClientApplication app;
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 import msal
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 import com.microsoft.aad.msal4j.ClientCredentialFactory;
 import com.microsoft.aad.msal4j.ClientCredentialParameters;
 import com.microsoft.aad.msal4j.ConfidentialClientApplication;
 import com.microsoft.aad.msal4j.IAuthenticationResult;
+import com.microsoft.aad.msal4j.IClientCredential;
+import com.microsoft.aad.msal4j.MsalException;
+import com.microsoft.aad.msal4j.SilentParameters;
 ```
 
 ---
@@ -160,7 +158,7 @@ import com.microsoft.aad.msal4j.IAuthenticationResult;
 
 Az alábbi kód segítségével hozhatja létre a bizalmas ügyfélalkalmazás egy ügyfél titkos kulcsával:
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 ```csharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
@@ -169,7 +167,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .Build();
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -184,14 +182,16 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
-ConfidentialClientApplication app = ConfidentialClientApplication.builder(
-        TestData.CONFIDENTIAL_CLIENT_ID,
-        ClientCredentialFactory.create(TestData.CONFIDENTIAL_CLIENT_SECRET))
-        .authority(TestData.TENANT_SPECIFIC_AUTHORITY)
-        .build();
+IClientCredential credential = ClientCredentialFactory.createFromSecret(CLIENT_SECRET);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
 ```
 
 ---
@@ -200,7 +200,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 A következő kód segítségével hozhat létre egy alkalmazást egy tanúsítvánnyal:
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 ```csharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
@@ -210,7 +210,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .Build();
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -225,7 +225,7 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 A MSAL Java-ban két építő található a bizalmas ügyfélalkalmazás tanúsítványokkal történő létrehozásához:
 
@@ -234,11 +234,13 @@ A MSAL Java-ban két építő található a bizalmas ügyfélalkalmazás tanús�
 InputStream pkcs12Certificate = ... ; /* Containing PCKS12-formatted certificate*/
 string certificatePassword = ... ;    /* Contains the password to access the certificate */
 
-ConfidentialClientApplication app = ConfidentialClientApplication.builder(
-        TestData.CONFIDENTIAL_CLIENT_ID,
-        ClientCredentialFactory.create(pkcs12Certificate, certificatePassword))
-        .authority(TestData.TENANT_SPECIFIC_AUTHORITY)
-        .build();
+IClientCredential credential = ClientCredentialFactory.createFromCertificate(pkcs12Certificate, certificatePassword);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
 ```
 
 vagy
@@ -247,18 +249,20 @@ vagy
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
 X509Certificate publicCertificate = getPublicCertificate(); /* x509 public certificate used as a thumbprint */
 
-ConfidentialClientApplication app = ConfidentialClientApplication.builder(
-        TestData.CONFIDENTIAL_CLIENT_ID,
-        ClientCredentialFactory.create(rsaPrivateKey, publicKeyCertificate))
-        .authority(TestData.TENANT_SPECIFIC_AUTHORITY)
-        .build();
+IClientCredential credential = ClientCredentialFactory.createFromCertificate(key, publicCertificate);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
 ```
 
 ---
 
 #### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>Speciális forgatókönyv: a bizalmas ügyfélalkalmazás példánya az ügyfél-kijelentésekkel
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 Az ügyfél titkos kulcsa vagy tanúsítványa helyett a bizalmas ügyfélalkalmazás is igazolhatja az identitását az ügyfél-kijelentések használatával.
 
@@ -291,7 +295,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 További részletekért lásd: [ügyfél-kijelentések](msal-net-client-assertions.md).
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 A MSAL Pythonban megadhatja az ügyfél jogcímeit a `ConfidentialClientApplication`titkos kulcsa által aláírt jogcímek használatával.
 
@@ -311,25 +315,33 @@ app = msal.ConfidentialClientApplication(
 
 Részletekért tekintse meg a MSAL Python dokumentációját a [ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__).
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-A MSAL Java nyilvános előzetes verzióban érhető el. Az aláírt kijelentések még nem támogatottak.
+```Java
+IClientCredential credential = ClientCredentialFactory.createFromClientAssertion(assertion);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
+```
 
 ---
 
 ## <a name="next-steps"></a>Következő lépések
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
 > [Daemon-alkalmazás – jogkivonatok beszerzése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
 > [Daemon-alkalmazás – jogkivonatok beszerzése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
 > [Daemon-alkalmazás – jogkivonatok beszerzése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
