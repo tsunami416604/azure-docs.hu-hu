@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: bc19c6358ff116b3d7299673783e8fbd6e8cd4f5
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 82cd596f08136f6d9b327fc83122c0f32d8f9914
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201050"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649296"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyorsútmutató: Költségek feltérképezése és elemzése költségelemzés használatával
 
@@ -50,7 +50,7 @@ A kezdő költségelemzési nézet a következő területeket foglalja magába.
 
 **Tényleges költség**: Az aktuális hónap összes keletkező és a számlán megjelenő használati és vásárlási költségét mutatja.
 
-**Előrejelzés**: A választott időszak összes előrevetített költségét jeleníti meg. (Az előrejelzés előzetes verzióban érhető el.)
+**Előrejelzés**: A választott időszak összes előrevetített költségét jeleníti meg.
 
 **Költségkeret**: A kijelölt hatókör tervezett költségkeretét jeleníti meg, amennyiben az elérhető.
 
