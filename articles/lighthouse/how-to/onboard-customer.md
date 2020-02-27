@@ -3,12 +3,12 @@ title: Ügyfél előkészítése az Azure által delegált erőforrás-kezelésh
 description: Ismerje meg, hogyan végezheti el az ügyfelek bevezetését az Azure-beli delegált erőforrás-kezelési szolgáltatásba, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők.
 ms.date: 01/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 34c6173211a9125cace59d77ea942d301919aa26
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 33cf880098e174c2c230a3d78e125ad8df7d894a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526212"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649789"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Ügyfél előkészítése az Azure által delegált erőforrás-kezeléshez
 
@@ -16,7 +16,7 @@ Ez a cikk azt ismerteti, hogy Ön, mint szolgáltató, hogyan helyezhet üzembe 
 
 Ezt a folyamatot megismételheti, ha több ügyfél erőforrásait kezeli. Ezután, amikor egy jogosult felhasználó bejelentkezik a bérlőbe, a felhasználó jogosult lehet az ügyfél-kihelyezés hatókörében a felügyeleti műveletek végrehajtására anélkül, hogy be kellene jelentkeznie minden egyes ügyfél-bérlőre.
 
-Ha nyomon szeretné követni az ügyfelek bevonásait és az elismerést, társítsa a Microsoft Partner Network (MPN) AZONOSÍTÓját a beérkező előfizetésekhez. További információ: [partner-azonosító csatolása az Azure-fiókokhoz](../../billing/billing-partner-admin-link-started.md). Vegye figyelembe, hogy ezt a társítást a szolgáltatói bérlőben kell végrehajtania.
+Ha nyomon szeretné követni az ügyfelek bevonásait és az elismerést, társítsa a Microsoft Partner Network (MPN) AZONOSÍTÓját legalább egy olyan felhasználói fiókkal, amely hozzáfér a beérkező előfizetésekhez. Vegye figyelembe, hogy ezt a társítást a szolgáltatói bérlőben kell végrehajtania. Az egyszerűség kedvéért javasoljuk, hogy hozzon létre egy egyszerű szolgáltatásnevet a bérlőben, amely az MPN-AZONOSÍTÓhoz van társítva, és hogy az olvasó hozzáférést biztosítson az összes felhasználóhoz. További információ: [partner-azonosító csatolása az Azure-fiókokhoz](../../billing/billing-partner-admin-link-started.md). 
 
 > [!NOTE]
 > Az ügyfelek akkor is bevonhatók, ha az Azure Marketplace-en közzétett, felügyelt szolgáltatások (nyilvános vagy privát) vásárlási ajánlatot vásárolnak. További információ: [felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-](publish-managed-services-offers.md)en. Az itt ismertetett bevezetési folyamatot az Azure Marketplace-en közzétett ajánlattal együtt is használhatja.

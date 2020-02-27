@@ -12,12 +12,12 @@ ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7ccc5fe314d49ea65aaa8750937170ab79a8c04f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 5ec83857ebabc92bf86f9f84a43746a0e561218a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77581463"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647601"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -276,7 +276,6 @@ Most már készen áll az egyéni házirend-és Azure AD B2C-bérlőre. Ezután 
 1. Adja meg az alkalmazás **nevét** . Például: *SAMLApp1*.
 1. A **támogatott fióktípus**területen válassza az **ebben a szervezeti könyvtárban lévő fiókok** lehetőséget
 1. Az **átirányítási URI**területen válassza a **web**lehetőséget, majd írja be a `https://localhost`. Ezt az értéket később módosíthatja az alkalmazás regisztrációs jegyzékfájljában.
-1. Válassza **a rendszergazdai jóváhagyás megadása az OpenID-hez és a offline_access engedélyeket**.
 1. Kattintson a **Register** (Regisztrálás) elemre.
 
 ### <a name="42-update-the-app-manifest"></a>4,2 az alkalmazás jegyzékfájljának frissítése
@@ -338,7 +337,7 @@ Az utolsó lépés a Azure AD B2C engedélyezése SAML-identitásszolgáltató a
 Általában a következők szükségesek:
 
 * **Metaadatok**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **Kiállító**: `https://tenant-name.onmicrosoft.com/policy-name`
+* **Kiállító**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name`
 * **Bejelentkezési URL-cím/SAML-végpont/SAML URL-cím**: a metaadat-fájlban található érték bejelölése
 * **Tanúsítvány**: ez *B2C_1A_SamlIdpCert*, de a titkos kulcs nélkül. A tanúsítvány nyilvános kulcsának beszerzése:
 

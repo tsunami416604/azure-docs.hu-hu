@@ -3,12 +3,12 @@ title: Oktatóanyag – ACR-feladat beosztása
 description: Ebből az oktatóanyagból megtudhatja, hogyan futtathat egy Azure Container Registry feladatot egy meghatározott ütemterven egy vagy több időzítő-eseményindító beállításával
 ms.topic: article
 ms.date: 06/27/2019
-ms.openlocfilehash: 37247289ef11873ac37dc78ad56548994220f894
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 4c0962a38cca73e4a03a7417baaa595cf0d97009
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454675"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617444"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>ACR-feladat futtatása meghatározott ütemterven
 
@@ -197,6 +197,14 @@ Minden mezőhöz a következő típusú értékek tartozhatnak:
 |`"30 9 * * 1-5"`|minden hétköznap 9:30 UTC-kor|
 |`"30 9 * Jan Mon"`|Január 9:30-kor, minden hétfőn|
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha el szeretné távolítani az oktatóanyag-sorozatban létrehozott összes erőforrást, beleértve a tároló-beállításjegyzéket vagy a jegyzékeket, a tároló-példányt, a kulcstartót és a szolgáltatásnevet, adja ki a következő parancsokat:
+
+```azurecli-interactive
+az group delete --resource-group $RES_GROUP
+az ad sp delete --id http://$ACR_NAME-pull
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

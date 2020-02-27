@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 11/04/2019
-ms.openlocfilehash: 0da5fe56bd56d360cd8052976bdde0cdc910c9a5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 49ee00d43820d5aeb50e44cff1b6c5a448b4ce81
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904280"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623918"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>Eseményvezérelt gépi tanulási munkafolyamatok létrehozása (előzetes verzió)
 
@@ -25,15 +25,15 @@ További információ: [Azure Machine learning integráció a Event Grid](concep
 
 A Event Grid használatával engedélyezze a gyakori forgatókönyveket, például a következőket:
 
-* Folyamatok újraképzésének indítása
+* E-mailek küldése Futtatás befejezésekor
+* Azure-függvény használata a modell regisztrálása után
 * Azure Machine Learning különböző végpontokra irányuló folyamatos átviteli események
+* ML-folyamat elindítása a drift észlelésekor
 
 ## <a name="prerequisites"></a>Előfeltételek
-
 * Közreműködői vagy tulajdonosi hozzáférés az Azure Machine Learning munkaterülethez, amelyekhez eseményeket fog létrehozni.
-* Válasszon eseménykezelő-végpontot, például egy webhookot vagy egy Event hubot. További információ: [eseménykezelők](https://docs.microsoft.com/azure/event-grid/event-handlers). 
 
-## <a name="configure-machine-learning-events-using-the-azure-portal"></a>Gépi tanulási események konfigurálása a Azure Portal használatával
+### <a name="configure-eventgrid-using-the-azure-portal"></a>EventGrid konfigurálása a Azure Portal használatával
 
 1. Nyissa meg a [Azure Portal](https://portal.azure.com) , és lépjen a Azure Machine learning munkaterületére.
 
@@ -51,7 +51,7 @@ A Event Grid használatával engedélyezze a gyakori forgatókönyveket, példá
 
 Miután megerősítette a kijelölést, kattintson a __Létrehozás__gombra. A konfigurálás után ezeket az eseményeket a rendszer leküldi a végpontnak.
 
-## <a name="set-up-azure-event-grid-using-cli"></a>Azure Event Grid beállítása a parancssori felület használatával
+### <a name="configure-eventgrid-using-the-cli"></a>EventGrid konfigurálása a parancssori felület használatával
 
 Telepítheti a legújabb [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t, vagy használhatja az Azure-előfizetésének részeként biztosított Azure Cloud Shell is.
 
@@ -61,7 +61,7 @@ A Event Grid bővítmény telepítéséhez használja az alábbi parancsot a par
 az add extension --name eventgrid
 ```
 
-Az alábbi példa bemutatja, hogyan választhat ki egy Azure-előfizetést, majd hozzon létre egy új esemény-előfizetést a Azure Machine Learninghoz:
+Az alábbi példa bemutatja, hogyan választhat ki egy Azure-előfizetést, és létrehoz egy új esemény-előfizetést a Azure Machine Learning számára:
 
 ```azurecli-interactive
 # Select the Azure subscription that contains the workspace
@@ -76,7 +76,13 @@ az eventgrid event-subscription create \
   --subject-begins-with "models/mymodelname"
 ```
 
-## <a name="sample-scenarios"></a>Használati példák
+## <a name="sample-scenarios"></a>Példák a forgatókönyvekre
+
+### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>A Azure Functions használata a modellek címkék alapján történő üzembe helyezéséhez
+
+Az Azure Machine Learning Model objektum olyan paramétereket tartalmaz, amelyekkel az üzemelő példányok elhelyezhetők, például a modell neve, verziója, címkéje és tulajdonsága. A modell regisztrációs eseménye elindíthat egy végpontot, és használhat egy Azure-függvényt egy modell üzembe helyezéséhez a paraméterek értéke alapján.
+
+Példaként tekintse meg a [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) adattárat, és kövesse a **readme** fájlban található lépéseket.
 
 ### <a name="use-a-logic-app-to-send-email-alerts"></a>E-mail értesítések küldése logikai alkalmazás használatával
 
@@ -158,12 +164,6 @@ Ekkor a rendszer a folyamatban lévő adatfeldolgozási folyamatot indítja el a
 
 ![munkaterület megtekintése](./media/how-to-use-event-grid/view-in-workspace.png)
 
-
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>A Azure Functions használata a modellek címkék alapján történő üzembe helyezéséhez
-
-Az Azure Machine Learning Model objektum olyan paramétereket tartalmaz, amelyekkel az üzemelő példányok elhelyezhetők, például a modell neve, verziója, címkéje és tulajdonsága. A modell regisztrációs eseménye elindíthat egy végpontot, és használhat egy Azure-függvényt egy modell üzembe helyezéséhez a paraméterek értéke alapján.
-
-Példaként tekintse meg a [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) adattárat, és kövesse a **readme** fájlban található lépéseket.
 
 ## <a name="next-steps"></a>Következő lépések
 

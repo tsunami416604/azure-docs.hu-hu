@@ -8,31 +8,35 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 07924201d4208a502aa979dda476c57cf6edd749
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 3ca3026a259e7f23bbfa01398a96cbdbfae1321c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430550"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623982"
 ---
-# <a name="set-up-advanced-threat-protection-for-azure-key-vault-preview"></a>Komplex veszélyforrások elleni védelem beállítása a Azure Key Vaulthoz (előzetes verzió)
+# <a name="threat-protection-for-azure-key-vault-preview"></a>Veszélyforrások elleni védelem Azure Key Vault (előzetes verzió)
 
 A Azure Key Vault komplex veszélyforrások elleni védelme további biztonsági intelligencia réteget biztosít. Ez az eszköz észleli a Key Vault fiókok elérését vagy kiaknázását okozó potenciálisan káros kísérleteket. A Azure Security Center natív komplex veszélyforrások elleni védelem használatával a fenyegetéseket biztonsági szakértő nélkül, a további biztonsági figyelési rendszerek megismerése nélkül kezelheti.
 
 Amikor Security Center észleli a rendellenes tevékenységeket, riasztásokat jelenít meg. Emellett e-mailben elküldi az előfizetés-rendszergazdának a gyanús tevékenységek részleteit, és javaslatokat tesz az azonosított fenyegetések kivizsgálására és szervizelésére.
 
-## <a name="set-up-advanced-threat-protection-from-azure-security-center"></a>Összetett veszélyforrások elleni védelem beállítása Azure Security Center
+## <a name="configuring-threat-protection-from-security-center"></a>Veszélyforrások elleni védelem konfigurálása Security Center
 
-Alapértelmezés szerint a komplex veszélyforrások elleni védelem minden Key Vault-fiók esetében engedélyezve van a Security Center Standard csomagra való előfizetéskor. További információ: [díjszabás](security-center-pricing.md).
+Alapértelmezés szerint a komplex veszélyforrások elleni védelem minden Key Vault-fiók esetében engedélyezve van, amikor előfizet a Security Center Standard díjszabási szintjére. További információ: [díjszabás](security-center-pricing.md).
 
-Egy adott előfizetés védelmének engedélyezéséhez vagy letiltásához kövesse az alábbi lépéseket.
+Egy adott előfizetés védelmének engedélyezése vagy letiltása:
 
 1. Security Center bal oldali ablaktábláján válassza a **díjszabás & beállítások**lehetőséget.
+
 1. Válassza ki azt a Storage-fiókot tartalmazó előfizetést, amelyhez engedélyezni vagy tiltani szeretné a veszélyforrások elleni védelmet.
+
 1. Válassza a **Tarifacsomag** lehetőséget,
+
 1. Az **árképzési csomag kiválasztása erőforrástípus alapján** csoportban keresse meg a **Key Vaults** sort, és válassza az **engedélyezve** vagy a **Letiltva**lehetőséget.
 
     [![Key Vault speciális veszélyforrások elleni védelmének engedélyezése vagy letiltása Azure Security Center](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png)](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png#lightbox)
+
 1. Kattintson a **Mentés** gombra.
 
 
@@ -40,6 +44,7 @@ Egy adott előfizetés védelmének engedélyezéséhez vagy letiltásához köv
 
 Ebben a cikkben megtanulta, hogyan engedélyezheti és tilthatja le a Azure Key Vault komplex veszélyforrások elleni védelmét. 
 
-Más kapcsolódó anyagok esetében tekintse meg a következő cikket:
+A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket:
 
-- [Veszélyforrások észlelése a Security Center Azure-szolgáltatások rétegeiben](security-center-alerts-service-layer.md): Ez a cikk a Azure Key Vault komplex veszélyforrások elleni védelmével kapcsolatos riasztásokat ismerteti.
+- [Veszélyforrások elleni védelem Azure Security Centerban](threat-protection.md)– ez a cikk a Azure Security Center biztonsági riasztások forrásait ismerteti.
+- [Key Vault biztonsági riasztások](alerts-reference.md#alerts-azurekv)– az összes Azure Security Center riasztáshoz tartozó hivatkozási tábla Key Vault szakasza

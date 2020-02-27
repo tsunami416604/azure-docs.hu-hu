@@ -1,5 +1,5 @@
 ---
-title: Automatikus biztonsági mentés a SQL Server 2014 Azure Virtual Machineshoz | Microsoft Docs
+title: Automatikus biztonsági mentés a SQL Server 2014 Azure Virtual Machines
 description: Ismerteti az Azure-ban futó SQL Server 2014 virtuális gépek automatizált biztonsági mentési funkcióját. Ez a cikk a Resource Managert használó virtuális gépekre jellemző.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fdb7d9ed5164171407443596de256df02cb7e8de
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c7dea85d8de17a0f65e6e73b5b5fbe619d464d3d
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790603"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650332"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 Virtual Machines automatikus biztonsági mentése (Resource Manager)
 
@@ -42,7 +42,7 @@ Az automatikus biztonsági mentés használatához vegye figyelembe a következ�
 
 **SQL Server verzió/kiadás**:
 
-- SQL Server 2014 standard
+- SQL Server 2014 Standard
 - SQL Server 2014 Enterprise
 
 > [!IMPORTANT]
@@ -68,15 +68,12 @@ Az alábbi táblázat az automatikus biztonsági mentéshez konfigurálható be�
 | **Titkosítás** | Engedélyezés/letiltás (letiltva) | Engedélyezheti vagy letilthatja a titkosítást. Ha engedélyezve van a titkosítás, a biztonsági mentés visszaállításához használt tanúsítványok ugyanabban a `automaticbackup` tárolóban találhatók, ugyanazon elnevezési konvenció használatával. Ha a jelszó megváltozik, új tanúsítvány jön létre ezzel a jelszóval, de a régi tanúsítvány továbbra is a korábbi biztonsági mentéseket állítja vissza. |
 | **Jelszó** | Jelszó szövege | A titkosítási kulcsok jelszava. Erre csak akkor van szükség, ha engedélyezve van a titkosítás. A titkosított biztonsági mentés visszaállításához a biztonsági másolat készítésének időpontjában használt jelszóval és kapcsolódó tanúsítvánnyal kell rendelkeznie. |
 
-## <a name="configure-in-the-portal"></a>Konfigurálás a portálon
-
-A Azure Portal használatával automatikus biztonsági mentést konfigurálhat a kiépítés vagy a meglévő SQL Server 2014 virtuális gépek esetében.
 
 ## <a name="configure-new-vms"></a>Új virtuális gépek konfigurálása
 
 Ha új SQL Server 2014 virtuális gépet hoz létre a Resource Manager-alapú üzemi modellben, a Azure Portal segítségével konfigurálja az automatikus biztonsági mentést.
 
-A **SQL Server beállítások** lapon görgessen le az **automatikus biztonsági mentés** elemre, és válassza az **Engedélyezés**lehetőséget. Megadhatja a megőrzési időszakot és a Storage-fiókot, valamint engedélyezheti a titkosítást, a rendszeradatbázisok biztonsági mentését és a biztonsági mentési ütemterv konfigurálását is.  Az alábbi Azure Portal képernyőképen az **SQL-alapú automatikus biztonsági mentési** beállítások láthatók.
+A **SQL Server beállítások** lapon görgessen le az **automatikus biztonsági mentés** elemre, és válassza az **Engedélyezés**lehetőséget. Az alábbi Azure Portal képernyőképen az **SQL-alapú automatikus biztonsági mentési** beállítások láthatók.
 
 ![SQL-alapú automatikus biztonsági mentési konfiguráció a Azure Portal](./media/virtual-machines-windows-sql-automated-backup/azure-sql-arm-autobackup.png)
 
@@ -84,13 +81,15 @@ A **SQL Server beállítások** lapon görgessen le az **automatikus biztonsági
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-Meglévő SQL Server virtuális gépek esetében navigáljon az [SQL Virtual Machines erőforráshoz](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) , majd válassza a **biztonsági másolatok**lehetőséget. 
+Meglévő SQL Server virtuális gépek esetében engedélyezheti és letilthatja az automatizált biztonsági mentéseket, megváltoztathatja a megőrzési időt, megadhatja a Storage-fiókot, és engedélyezheti a titkosítást a Azure Portal. 
+
+Keresse meg a SQL Server 2014 virtuális gép SQL-alapú [virtuális gépek erőforrását](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) , majd válassza a **biztonsági mentések**lehetőséget. 
 
 ![SQL automatikus biztonsági mentés meglévő virtuális gépekhez](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-existing-vms.png)
 
 Ha elkészült, kattintson a **biztonsági másolatok** oldal alján található **alkalmaz** gombra a módosítások mentéséhez.
 
-Ha első alkalommal engedélyezi az automatikus biztonsági mentést, az Azure a háttérben konfigurálja a SQL Server IaaS-ügynököt. Ebben az időszakban előfordulhat, hogy a Azure Portal nem jelenik meg, hogy az automatikus biztonsági mentés konfigurálva van. Várjon néhány percet, amíg az ügynök telepítve van, konfigurálva van. Ezt követően a Azure Portal az új beállításokat fogja tükrözni.
+Ha első alkalommal engedélyezi az automatikus biztonsági mentést, az Azure a háttérben konfigurálja a SQL Server IaaS-ügynököt. Ebben az időszakban előfordulhat, hogy a Azure Portal nem jelenik meg, hogy az automatikus biztonsági mentés konfigurálva van. Várjon néhány percet, amíg az ügynök telepítve és konfigurálva van. Ezt követően a Azure Portal az új beállításokat fogja tükrözni.
 
 > [!NOTE]
 > Az automatikus biztonsági mentést sablon használatával is konfigurálhatja. További információ: Azure gyors üzembe helyezési [sablon az automatikus biztonsági mentéshez](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-autobackup-update).
@@ -100,7 +99,7 @@ Ha első alkalommal engedélyezi az automatikus biztonsági mentést, az Azure a
 Az automatikus biztonsági mentést a PowerShell használatával is konfigurálhatja. A Kezdés előtt a következőket kell tennie:
 
 - [Töltse le és telepítse a legújabb Azure PowerShell](https://aka.ms/webpi-azps).
-- Nyissa meg a Windows PowerShellt, és társítsa azt a fiókhoz a **AzAccount** paranccsal.
+- Nyissa meg a Windows PowerShellt, és társítsa azt a fiókhoz a **AzAccount** paranccsal. 
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -258,7 +257,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>Figyelés
 
 A SQL Server 2014-es automatikus biztonsági mentés figyeléséhez két fő lehetőség közül választhat. Mivel az automatikus biztonsági mentés a SQL Server felügyelt biztonsági mentési szolgáltatást használja, ugyanaz a figyelési módszer is érvényes mindkét eszközre.
 

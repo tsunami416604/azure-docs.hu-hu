@@ -4,25 +4,25 @@ ms.service: api-management
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
-ms.openlocfilehash: dff01f8bc4a4cf58d1ed503b69a29dadc367fecb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9e601c72395b4910850714460321a83a3113e69
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66248797"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649541"
 ---
-## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>Az SSL-tanúsítványok a TLS-kézfogás az APIM-Proxy kiszolgáló reakciója
+## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>Hogyan válaszol a APIM proxykiszolgáló az SSL-tanúsítványokkal a TLS-kézfogásban
 
-### <a name="clients-calling-with-sni-header"></a>Fejléc SNI-hívó ügyfelek
-Az ügyfél konfigurálva Proxy egy vagy több egyéni tartománnyal rendelkezik, APIM válaszolni tud HTTPS-kéréseket az egyéni tartomány (például contoso.com), valamint alapértelmezett tartomány (például az apim-szolgáltatás-name.azure-API.NET webhelyen). APIM válaszként a kiszolgálónév jelzése (SNI) fejléc adatai alapján a megfelelő kiszolgálói tanúsítványt.
+### <a name="clients-calling-with-sni-header"></a>SNI-fejlécet hívó ügyfelek
+Ha az ügyfél egy vagy több, proxyhoz konfigurált egyéni tartománnyal rendelkezik, a APIM válaszolhat a HTTPS-kérelmekre az egyéni tartomány (ok) ból (például contoso.com) és az alapértelmezett tartományba (például apim-service-name.azure-api.net). A (z) Kiszolgálónév jelzése (SNI) fejlécben található információk alapján a APIM a megfelelő kiszolgálói tanúsítvánnyal válaszol.
 
-### <a name="clients-calling-without-sni-header"></a>SNI-fejléc nélküli meghívó ügyfelek
-Ha az ügyfél használja az ügyfél, amely nem küld a [SNI](https://tools.ietf.org/html/rfc6066#section-3) fejléc APIM válaszok a következő logika alapján hoz létre:
+### <a name="clients-calling-without-sni-header"></a>SNI-fejléc nélküli hívást igénylő ügyfelek
+Ha az ügyfél olyan ügyfelet használ, amely nem küldi el a [SNI](https://tools.ietf.org/html/rfc6066#section-3) -fejlécet, a APIM a következő logika alapján hoz létre válaszokat:
 
-* A szolgáltatásnak van konfigurálva Proxy egy egyéni tartományt, az alapértelmezett tanúsítvány-e a Proxy egyéni tartományhoz kiadott tanúsítványt.
-* Ha a szolgáltatás több egyéni tartományok beállítva proxy (csak a támogatott a **prémium** réteg), az ügyfél melyik tanúsítványt kell lennie az alapértelmezett tanúsítvány is kijelölhet. Az alapértelmezett tanúsítvány beállítása a [defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) tulajdonság állítható igaz ("defaultSslBinding": "true"). Ha az ügyfél nem állítja be a tulajdonság, az alapértelmezett tanúsítvány alapértelmezett Proxy tartomány *.azure-API.NET webhelyen üzemeltetett kiadott tanúsítvánnyal.
+* Ha a szolgáltatáshoz csak egy egyéni tartomány van konfigurálva a proxyhoz, az alapértelmezett tanúsítvány a proxy egyéni tartomány számára kiállított tanúsítvány.
+* Ha a szolgáltatás több egyéni tartományt konfigurált a proxyhoz (a **fejlesztő** és a **prémium** szint támogatott), az ügyfél kijelölheti, hogy melyik tanúsítvány legyen az alapértelmezett tanúsítvány. Az alapértelmezett tanúsítvány beállításához a [defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) tulajdonságot igaz értékre kell beállítani ("defaultSslBinding": "true"). Ha az ügyfél nem állítja be a tulajdonságot, az alapértelmezett tanúsítvány az a tanúsítvány, amelyet a rendszer a *. azure-api.net-ben üzemeltetett alapértelmezett proxy tartományhoz állít ki.
 
-## <a name="support-for-putpost-request-with-large-payload"></a>A nagyméretű adattartalom PUT/POST kérés támogatása
+## <a name="support-for-putpost-request-with-large-payload"></a>Nagy adattartalommal rendelkező PUT/POST kérelem támogatása
 
-APIM-proxykiszolgáló-kérésekre, és nagyméretű adattartalom támogatja az ügyféloldali tanúsítványok használatával a HTTPS (például adattartalom > 40 KB). A kiszolgálói kérelem fagy megakadályozni, ügyfelek állíthatja be a tulajdonság ["negotiateClientCertificate": "true"](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/CreateOrUpdate#hostnameconfiguration) a Proxy gazdagépnevét. Ha a tulajdonság értéke igaz, az ügyfél tanúsítványt kér, SSL/TLS-kapcsolati idő, mielőtt bármilyen HTTP-kérelem exchange. Mivel a beállítás jelenleg csak a **Proxyeszköznév** szint összes csatlakozási kérések kérje meg az ügyféltanúsítványt. Ügyfelek is legfeljebb 20 egyéni tartományok konfigurálása a proxyhoz (csak a támogatott a **prémium** réteg) ezt a korlátozást úgy tudnak dolgozni.
+A APIM proxykiszolgáló támogatja a nagy adattartalommal rendelkező kérelmeket, amikor ügyféloldali tanúsítványokat használ a HTTPS-ben (például adattartalom > 40 KB). Ha meg szeretné akadályozni, hogy a kiszolgáló lefagyjon, a "NegotiateClientCertificate" tulajdonságot a proxy állomásnévnél állíthatja be [: "true" (igaz](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/CreateOrUpdate#hostnameconfiguration) ). Ha a tulajdonság értéke TRUE (igaz), az ügyféltanúsítvány SSL/TLS kapcsolati időpontban, a HTTP-kérések cseréje előtt szükséges. Mivel a beállítás a **proxy állomásnév** szintjén érvényes, az összes kapcsolatkérelem kéri az ügyféltanúsítványt. Az ügyfelek legfeljebb 20 egyéni tartományt állíthatnak be a proxyhoz (csak a **prémium** szint esetében támogatott), és megkerülheti ezt a korlátozást.
 

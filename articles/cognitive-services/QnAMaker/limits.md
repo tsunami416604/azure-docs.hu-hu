@@ -3,12 +3,12 @@ title: Korlátozások és határok – QnA Maker
 description: A QnA Maker részei a Tudásbázis és a szolgáltatás metaadat-korlátokkal rendelkeznek. Fontos, hogy a Tudásbázis tesztelése és közzététele érdekében ezeket korlátokon belül.
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: ba53513f21cfc2a4f16fe17decdf0df41570201c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252008"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650367"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>A QnA Maker Tudásbázis korlátok és határok
 
@@ -55,7 +55,7 @@ A QnAs egy URL-lapról való kinyeréséhez feltérképezhető mély hivatkozás
 
 ## <a name="metadata-limits"></a>Metaadat-korlátok
 
-A metaadatok tárolása és összehasonlítása alacsonyabb esetben történik.
+A metaadatok szöveges kulcsként jelennek meg: érték pár, például `product:windows 10`. A rendszer kisbetűvel tárolja és hasonlítja össze.
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Az Azure Cognitive Search díjszabási szintje szerint
 
@@ -71,8 +71,8 @@ A metaadatok nevének és értékének hosszát és elfogadható karaktereit a k
 
 |Elem|Engedélyezett karakterek|Regex-minta egyezése|Karakterek maximális száma|
 |--|--|--|--|
-|Name (Név)|Lehetővé teszi<br>alfanumerikus karakterek (betűk és számjegyek)<br>`_` (aláhúzás)|`^[a-zA-Z0-9_]+$`|100|
-|Érték|Mindent lehetővé tesz, kivéve<br>`:` (kettőspont)<br>`|` (függőleges cső)|`^[^:|]+$`|500|
+|Név (kulcs)|Lehetővé teszi<br>alfanumerikus karakterek (betűk és számjegyek)<br>`_` (aláhúzás)<br> Nem tartalmazhat szóközt.|`^[a-zA-Z0-9_]+$`|100|
+|Érték|Mindent lehetővé tesz, kivéve<br>`:` (kettőspont)<br>`|` (függőleges cső)<br>Csak egy érték engedélyezett.|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>Tudásbázis-tartalmat korlátok
@@ -103,4 +103,4 @@ Ezek a frissítési műveletek korlátainak felelnek meg; a UpdateKnowledgeBase 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Megtudhatja, mikor és hogyan módosíthatja a [szolgáltatás díjszabási szintjeit](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker).
+Megtudhatja, mikor és hogyan módosíthatja a [szolgáltatás díjszabási szintjeit](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku).

@@ -1,14 +1,14 @@
 ---
 title: 'Gyors útmutató: terv létrehozása REST API'
 description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az összetevők létrehozásához, definiálásához és üzembe helyezéséhez a REST API használatával.
-ms.date: 11/21/2019
+ms.date: 02/26/2020
 ms.topic: quickstart
-ms.openlocfilehash: 13a6cce25b17fdfbfa5f62dbf16cd2cfbbdc4fe2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436599"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650231"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Gyors útmutató: Azure Blueprint definiálása és hozzárendelése REST API
 
@@ -16,7 +16,8 @@ A tervek létrehozásának és hozzárendelésének elsajátítása lehetővé t
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
+- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
+- Regisztrálja a `Microsoft.Blueprint` erőforrás-szolgáltatót. Az utasításokért lásd: [erőforrás-szolgáltatók és típusok](../../azure-resource-manager/management/resource-providers-and-types.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -47,7 +48,7 @@ $restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-vers
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
-A **$restUri** változóban a `{subscriptionId}` helyére írja be a saját előfizetését az információkérés tárgyaként. A $response változó tárolja az `Invoke-RestMethod` parancsmag által visszaadott eredményt, amely a [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) és hasonló parancsmagok által elemezhető. Ha a REST API szolgáltatásvégpontja **kérelemtörzset** vár, adjon meg egy JSON formátumú változót az `Invoke-RestMethod``-Body` paraméterében.
+A `{subscriptionId}`$restUri**változóban a** helyére írja be a saját előfizetését az információkérés tárgyaként. A $response változó tárolja az `Invoke-RestMethod` parancsmag által visszaadott eredményt, amely a [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) és hasonló parancsmagok által elemezhető. Ha a REST API szolgáltatásvégpontja **kérelemtörzset** vár, adjon meg egy JSON formátumú változót az `-Body``Invoke-RestMethod` paraméterében.
 
 ## <a name="create-a-blueprint"></a>Terv létrehozása
 

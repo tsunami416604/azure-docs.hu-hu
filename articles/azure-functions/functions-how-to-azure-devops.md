@@ -1,16 +1,16 @@
 ---
 title: Function app-kód folyamatos frissítése az Azure DevOps
 description: Megtudhatja, hogyan állíthat be olyan Azure DevOps-folyamatot, amely Azure Functions célozza meg.
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
-ms.author: aelnably
-ms.openlocfilehash: e6ea7edb16aa28428754cbe920e1d350aded0cff
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.author: cshoe
+ms.openlocfilehash: 1d627329a6d5f4c283a4480c1b0b1077a8e856cf
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834028"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649942"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Folyamatos kézbesítés az Azure DevOps használatával
 
@@ -25,11 +25,11 @@ A folyamat definiálásának két lehetősége van:
 
 YAML-alapú folyamat létrehozásához először létre kell hoznia az alkalmazást, majd telepítenie kell az alkalmazást.
 
-### <a name="build-your-app"></a>Alkalmazás létrehozása
+### <a name="build-your-app"></a>Az alkalmazás létrehozása
 
 Az alkalmazás Azure-folyamatokban való létrehozása az alkalmazás programozási nyelvtől függ. Az egyes nyelveken olyan speciális összeállítási lépések vannak, amelyek üzembe helyezési összetevőt hoznak létre. Az üzembe helyezési összetevő használatával üzembe helyezhetők a Function alkalmazás az Azure-ban.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 A következő minta használatával létrehozhat egy YAML-fájlt egy .NET-alkalmazás létrehozásához:
 
@@ -60,7 +60,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A következő minta használatával létrehozhat egy YAML-fájlt egy JavaScript-alkalmazás létrehozásához:
 
@@ -88,7 +88,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 A következő minták egyikével létrehozhat egy YAML-fájlt egy adott Python-verzióhoz készült alkalmazás létrehozásához. A Python csak Linux rendszeren futó Function apps esetén támogatott.
 
@@ -150,7 +150,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 A következő minta használatával létrehozhat egy YAML-fájlt egy PowerShell-alkalmazás előkészítéséhez. A PowerShell csak Windows Azure Functions esetén támogatott.
 
@@ -215,7 +215,7 @@ steps:
 
 Az Azure DevOps lévő sablonok előre definiált, alkalmazások létrehozására vagy üzembe helyezésére szolgáló tevékenységek.
 
-### <a name="build-your-app"></a>Alkalmazás létrehozása
+### <a name="build-your-app"></a>Az alkalmazás létrehozása
 
 Az alkalmazás Azure-folyamatokban való létrehozása az alkalmazás programozási nyelvtől függ. Az egyes nyelveken olyan speciális összeállítási lépések vannak, amelyek üzembe helyezési összetevőt hoznak létre. Az üzembe helyezési összetevő segítségével frissítheti a Function alkalmazást az Azure-ban.
 

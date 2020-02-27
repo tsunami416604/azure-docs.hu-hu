@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Serv
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: e59dccbcc7514f12e148bfb2f771593a53e85dc5
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594566"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649507"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Privát Azure Kubernetes Service-fürt létrehozása (előzetes verzió)
 
@@ -55,6 +55,18 @@ A vezérlő síkja vagy az API-kiszolgáló egy Azure Kubernetes szolgáltatásb
 * USA nyugati régiója, 2.
 * USA 2. keleti régiója
 
+## <a name="currently-supported-availability-zones"></a>Jelenleg támogatott Availability Zones
+
+* USA középső régiója
+* USA keleti régiója
+* USA 2. keleti régiója
+* Közép-Franciaország
+* Kelet-Japán
+* Észak-Európa
+* Délkelet-Ázsia
+* Az Egyesült Királyság déli régiója
+* Nyugat-Európa
+* USA nyugati régiója, 2.
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>Az Azure CLI legújabb előzetes verziójának telepítése
 
@@ -115,6 +127,7 @@ Where *--enable-Private-cluster* kötelező jelző egy privát fürthöz.
 > Ha a Docker-híd CIDR (172.17.0.1/16) ütközne az alhálózati CIDR, módosítsa a Docker-híd megfelelőjét.
 
 ## <a name="connect-to-the-private-cluster"></a>Kapcsolódás a privát fürthöz
+
 Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Ennek következtében létre kell hoznia egy Azure-beli virtuális gépet (VM) egy virtuális hálózatban, és kapcsolódnia kell az API-kiszolgálóhoz. Ehhez tegye a következőket:
 
 1. Hitelesítő adatok beszerzése a fürthöz való kapcsolódáshoz.
@@ -148,7 +161,8 @@ Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Ennek következté
 * Ha egyéni DNS-kiszolgálót szeretne használni, telepítsen egy DNS-t használó AD-kiszolgálót az IP-168.63.129.16 való továbbításhoz
 
 ## <a name="limitations"></a>Korlátozások 
-* Availability Zones jelenleg csak az USA 2. keleti régiójában és az USA 2. nyugati régiójában támogatott
+* Az IP-címekre jogosult tartományok nem alkalmazhatók a privát API-kiszolgálói végpontra, csak a nyilvános API-kiszolgálóra érvényesek.
+* A Availability Zones jelenleg bizonyos régiókban támogatott, tekintse meg a dokumentum elejét 
 * Az [Azure Private link Service korlátozásai][private-link-service] a privát fürtökre, az Azure privát végpontokra és a virtuális hálózati szolgáltatás-végpontokra vonatkoznak, amelyek jelenleg nem támogatottak ugyanabban a virtuális hálózatban.
 * A privát fürtben lévő virtuális csomópontok nem támogatják a privát Azure-beli virtuális hálózatokon lévő Azure Container Instances (ACI) használatát
 * Nem támogatott az Azure DevOps integrációja a privát fürtökkel rendelkező dobozból

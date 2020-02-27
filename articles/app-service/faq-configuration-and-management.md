@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 598fdd5e3682226253ef8f2611ede2bbeba596f7
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: afa3b0f3ed345ccc7f4c627ec485351838ab2bee
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190442"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649278"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurációs és felügyeleti GYIK az Azure-beli Web Apps
 
@@ -199,7 +199,7 @@ Jelenleg nem rendelkezhet pont – hely típusú VPN-kapcsolattal olyan virtuál
 
 Jelenleg nem támogatott egy App Service webalkalmazás csatlakoztatása egy statikus útválasztási (házirend-alapú) átjáróval rendelkező virtuális hálózathoz. Ha a célként megadott virtuális hálózat már létezik, akkor az alkalmazáshoz való csatlakozás előtt a pont – hely típusú VPN-nek engedélyezve kell lennie, és dinamikus útválasztási átjárót kell használnia. Ha az átjáró statikus útválasztásra van beállítva, akkor nem engedélyezheti pont – hely típusú VPN-t. 
 
-További információ: [alkalmazás integrálása Azure-beli virtuális hálózattal](web-sites-integrate-with-vnet.md#getting-started).
+További információ: [alkalmazás integrálása Azure-beli virtuális hálózattal](web-sites-integrate-with-vnet.md).
 
 ## <a name="in-my-app-service-environment-why-can-i-create-only-one-app-service-plan-even-though-i-have-two-workers-available"></a>A saját App Service Environmenton miért hozhatok létre csak egy App Service csomagot, még ha van két feldolgozóm?
 

@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/27/2020
+ms.date: 02/26/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 69503968ece5e68b6e4777d72713565158009949
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e5b9b989ed8111e2bf36194ae2c8a333db7e66b4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843854"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650799"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Gyors útmutató: Load Balancer létrehozása a virtuális gépek terheléselosztásához Azure Resource Manager sablon használatával
 
 A terheléselosztás magasabb szintű rendelkezésre állást és méretezést biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe olyan Azure Resource Manager-sablont, amely létrehoz egy standard Load balancert a virtuális gépek terheléselosztásához. A Resource Manager-sablon használata kevesebb lépést vesz igénybe a többi üzembe helyezési módszer összehasonlításával.
 
-A [Resource Manager-sablon](../azure-resource-manager/templates/overview.md) egy JavaScript Object Notation (JSON) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját. A sablon deklaratív szintaxist használ, amely lehetővé teszi, hogy a telepítéshez szükséges programozási parancsok sorrendjének megírása nélkül adja meg az üzembe helyezni kívánt adatokat. Ha többet szeretne megtudni a Resource Manager-sablonok fejlesztéséről, tekintse meg a [Resource Manager dokumentációját](/azure/azure-resource-manager/) és a [sablon referenciáját](/azure/templates/microsoft.network/loadbalancers).
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -34,22 +34,25 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A Load Balancer és a nyilvános IP-címeknek egyezniük kell. Standard Load Balancer létrehozásakor létre kell hoznia egy új szabványos nyilvános IP-címet is, amely a standard Load Balancer előtérben van konfigurálva. Ha alapszintű Load Balancer szeretne létrehozni, használja [ezt a sablont](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/). A Microsoft a standard SKU használatát javasolja üzemi számítási feladatokhoz.
 
-Az ebben a rövid útmutatóban használt sablon egy rövid útmutató [sablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json).
+### <a name="review-the-template"></a>A sablon áttekintése
 
-[!code-json[<Azure Resource Manager template create standard load balancer>](~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json)]
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json)származik.
+
+:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json" range="1-150" highlight="58-122":::
 
 Több Azure-erőforrás van definiálva a sablonban:
 
-- **Microsoft. Network/loadBalancers**
-- **Microsoft. Network/nyilvános IP**: a terheléselosztó számára.
-- **Microsoft. Network/networkSecurityGroups**
-- **Microsoft. Network/virtualNetworks**
-- **Microsoft. számítási/virutalMachines** (3)
-- **Microsoft. Network/nyilvános IP** (3): mindhárom virtuális géphez.
-- **Microsoft. Network/networkInterfaces** (3 közülük)
-- **Microsoft. számítás/virtualMachine/Extensions** (3): az IIS és a weblapok konfigurálására használható.
+- [**Microsoft. Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicipaddresses): a terheléselosztó és a három virtuális gép mindegyike számára.
+- [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft. számítási/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3)
+- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (3 közülük)
+- [**Microsoft. számítás/virtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3): az IIS és a weblapok konfigurálására használható.
 
 A Azure Load Balancer kapcsolódó további sablonok kereséséhez tekintse meg az [Azure Gyorsindítás sablonjait](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
+
+### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 1. Válassza a **kipróbálás** a következő kódrészletből lehetőséget a Azure Cloud Shell megnyitásához, majd kövesse az utasításokat az Azure-ba való bejelentkezéshez.
 
@@ -88,7 +91,7 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
 ## <a name="test-the-load-balancer"></a>A terheléselosztó tesztelése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. Válassza ki az **erőforráscsoportok** elemet a bal oldali ablaktáblán.
 

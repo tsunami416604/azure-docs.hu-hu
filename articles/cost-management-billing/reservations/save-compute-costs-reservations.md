@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: c6a8547235c302f52aacd0e6ae4a8fbf08b538b8
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: c1cced862bee1ec4579f3e6e5145968dec7613e4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443635"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500569"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -20,7 +20,7 @@ Az Azure Reservationsszel csökkentheti költségeit, ha egy- vagy hároméves c
 
 A foglalásért fizethet előre vagy havonta. A foglalások előre vagy havonta fizetett összege megegyezik, és ha a havi fizetést választja, nem kell extra díjakat fizetnie. A havi fizetés csak az Azure Reservations esetében érhető el, harmadik féltől származó termékek esetében nem.
 
-Foglalásokat az [Azure Portalon](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) vásárolhat.
+Foglalásokat az [Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) vásárolhat.
 
 ## <a name="why-buy-a-reservation"></a>Miért érdemes foglalást vásárolnia?
 

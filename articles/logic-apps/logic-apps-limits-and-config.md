@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 059894d441897bd89be525abcc7e1c7ab6ba23e7
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 514ead43159b416752f968da3883e644fb0ccc2f
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485046"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650895"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>A Azure Logic Apps korlátai és konfigurációs adatai
 
@@ -149,11 +149,13 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 | Bejövő kérelem | 120 másodperc <br>(2 perc) | 240 másodperc <br>(4 perc) | A bejövő kérésekre példák például a kérelem-eseményindítók és a webhook-eseményindítók által fogadott hívások. <p><p>**Megjegyzés**: ahhoz, hogy az eredeti hívó megkapja a választ, a válaszban szereplő összes lépésnek befejeznie kell a korláton belül, kivéve, ha egy másik logikai alkalmazást beágyazott munkafolyamatként hív meg. További információ: a [logikai alkalmazások hívása, triggere vagy beágyazása](../logic-apps/logic-apps-http-endpoint.md). |
 |||||
 
+<a name="message-size-limits"></a>
+
 #### <a name="message-size"></a>Üzenet mérete
 
 | Name (Név) | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Megjegyzések |
 |------|--------------------|---------------------------------------|-------|
-| Üzenet mérete | 100 MB | 200 MB | A korlát megkerüléséhez lásd: [nagy méretű üzenetek kezelése darabolással](../logic-apps/logic-apps-handle-large-messages.md). Előfordulhat azonban, hogy egyes összekötők és API-k nem támogatják a darabolást, vagy akár az alapértelmezett korlátot is. |
+| Üzenet mérete | 100 MB | 200 MB | Az ISE által címkézett összekötők az ISE korlátot használják, nem a nem ISE-összekötő korlátait. <p><p>A korlát megkerüléséhez lásd: [nagy méretű üzenetek kezelése darabolással](../logic-apps/logic-apps-handle-large-messages.md). Előfordulhat azonban, hogy egyes összekötők és API-k nem támogatják a darabolást, vagy akár az alapértelmezett korlátot is. |
 | Az üzenetek mérete darabolással | 1 GB | 5 GB | Ez a korlát olyan műveletekre vonatkozik, amelyek natív módon támogatják a darabolást, vagy lehetővé teszik a darabolást a futásidejű konfigurációjában. <p>Az integrációs szolgáltatási környezet esetében a Logic Apps motor támogatja ezt a korlátot, de az összekötők a motor korlátján belül saját darabolási korlátokkal rendelkeznek, például lásd: az [Azure Blob Storage CONNECTOR API-referenciája](https://docs.microsoft.com/connectors/azureblob/). További információk a darabolásról: [nagy méretű üzenetek kezelése darabolással](../logic-apps/logic-apps-handle-large-messages.md). |
 |||||
 

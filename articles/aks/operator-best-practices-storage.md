@@ -4,12 +4,12 @@ description: A fürt operátor ajánlott eljárások tárolás, az adattitkosít
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 6521655ded45f0a1d15c3ec40a44993d757b8854
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: a58a42f65472a9c4b495e0cb964eefa40bf82041
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594668"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649619"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Gyakorlati tanácsok a tárolási és biztonsági másolatokat az Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ Az alábbi táblázat ismerteti a rendelkezésre álló tárhely és azok képes
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | A megosztott konfiguráció       | Azure Files   | Igen | Igen | Igen | Igen |
 | Strukturált adatokat        | Azure Disks   | Igen | Nem  | Nem  | Igen |
-| Teljes strukturálatlan adatmennyiséget tárolni rendszerműveletekről fájl | [BlobFuse (előzetes verzió)][blobfuse] | Igen | Igen | Igen | Nem |
+| Teljes strukturálatlan adatmennyiséget tárolni rendszerműveletekről fájl | [BlobFuse][blobfuse] | Igen | Igen | Igen | Nem |
 
 A két elsődleges típusú kötetek az aks-ben biztosított Azure-lemezek vagy az Azure Files biztonsági. A biztonság növelése érdekében mindkét tárolási típust kínál, amely titkosítja az inaktív adatok alapértelmezés szerint az Azure Storage Service Encryption (SSE) használja. Lemezek jelenleg nem lehet a az AKS csomópont szintjén az Azure Disk Encryption használatával titkosított.
 

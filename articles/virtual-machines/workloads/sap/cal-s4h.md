@@ -4,7 +4,7 @@ description: SAP S/4HANA vagy BW/4HANA üzembe helyezése Azure-beli virtuális 
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 2fa68d9dc3052263b5354086ee802cc31fa35ace
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101439"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616210"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>SAP S/4HANA vagy BW/4HANA üzembe helyezése az Azure-ban
 Ez a cikk bemutatja, hogyan helyezhet üzembe S/4HANA az Azure-ban az SAP Cloud Appliance Library (SAP CAL) 3,0 használatával. Más SAP HANA-alapú megoldások, például a BW/4HANA üzembe helyezéséhez kövesse ugyanezeket a lépéseket.
@@ -49,7 +49,7 @@ A **megoldások** lapon az Azure-on elérhető SAP Cal HANA-alapú megoldások l
     c. Adja meg az SAP CAL engedélyt az Azure-előfizetésében való üzembe helyezéshez.
 
    > [!NOTE]
-   >  A következő lépések bemutatják, hogyan hozhat létre SAP CAL-fiókot a Resource Manager-alapú üzemelő példányokhoz. Ha már rendelkezik egy, a klasszikus üzemi modellel társított SAP CAL-fiókkal, akkor az alábbi lépéseket követve hozzon létre egy új SAP Cal-fiókot. Az új SAP CAL-fióknak üzembe kell helyeznie a Resource Manager-modellben.
+   >  A következő lépések bemutatják, hogyan hozhat létre SAP CAL-fiókot a Resource Manager-alapú üzemelő példányokhoz. Ha már rendelkezik egy, a klasszikus üzemi modellel társított SAP CAL-fiókkal *, akkor az* alábbi lépéseket követve hozzon létre egy új SAP Cal-fiókot. Az új SAP CAL-fióknak üzembe kell helyeznie a Resource Manager-modellben.
 
 1. Hozzon létre egy új SAP CAL-fiókot. A **fiókok** lapon három választási lehetőség látható az Azure-hoz: 
 
@@ -75,7 +75,7 @@ A **megoldások** lapon az Azure-on elérhető SAP Cal HANA-alapú megoldások l
 
    ![Az Internet Explorer Cloud Services megerősítése](./media/cal-s4h/s4h-pic5a.png)
 
-1. Kattintson a **fogadja el**. Ha az engedélyezés sikeres, az SAP CAL-fiók definíciója ismét megjelenik. Rövid idő elteltével egy üzenet megerősíti, hogy az engedélyezési folyamat sikeres volt.
+1. Kattintson az **elfogadás**gombra. Ha az engedélyezés sikeres, az SAP CAL-fiók definíciója ismét megjelenik. Rövid idő elteltével egy üzenet megerősíti, hogy az engedélyezési folyamat sikeres volt.
 
 1. Ha az újonnan létrehozott SAP CAL-fiókot szeretné hozzárendelni a felhasználóhoz, adja meg a **felhasználói azonosítóját** a jobb oldali szövegmezőben, majd kattintson a **Hozzáadás**gombra.
 
@@ -115,11 +115,11 @@ Itt mutatjuk be az üzembe helyezés alapvető elérési útját.
 
     b. Adja meg a példány **nevét**.
 
-    c. Válasszon ki egyAzure-régiót. Az SAP CAL a régiót javasolja. Ha egy másik Azure-régióra van szüksége, és nem rendelkezik SAP CAL-előfizetéssel, az SAP-val kell rendelnie egy CAL-előfizetést.
+    c. Válasszon ki egy Azure- **régiót**. Az SAP CAL a régiót javasolja. Ha egy másik Azure-régióra van szüksége, és nem rendelkezik SAP CAL-előfizetéssel, az SAP-val kell rendelnie egy CAL-előfizetést.
 
     d. Adja meg a nyolc vagy kilenc karakterből álló megoldás fő **jelszavát** . A jelszót a különböző összetevők rendszergazdái használják.
 
-   ![SAP CAL alapszintű mód: Példány létrehozása](./media/cal-s4h/s4h-pic10a.png)
+   ![SAP CAL alapszintű mód: példány létrehozása](./media/cal-s4h/s4h-pic10a.png)
 
 1. Kattintson a **Létrehozás**gombra, és a megjelenő üzenetablakban kattintson **az OK**gombra.
 
@@ -139,7 +139,7 @@ Itt mutatjuk be az üzembe helyezés alapvető elérési útját.
 
    ![Az új portálon üzembe helyezett SAP CAL-objektumok](./media/cal-s4h/sapcaldeplyment_portalview.png)
 
-1. Az SAP CAL portálon az állapot aktívként jelenikmeg. A megoldáshoz való kapcsolódáshoz kattintson a **Kapcsolódás**gombra. A különböző összetevőkhöz való kapcsolódás különböző beállításai a megoldáson belül vannak telepítve.
+1. Az SAP CAL portálon az állapot **aktívként**jelenik meg. A megoldáshoz való kapcsolódáshoz kattintson a **Kapcsolódás**gombra. A különböző összetevőkhöz való kapcsolódás különböző beállításai a megoldáson belül vannak telepítve.
 
    ![SAP CAL-példányok](./media/cal-s4h/active_solution.png)
 

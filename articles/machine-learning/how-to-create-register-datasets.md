@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 0bfaef72be23f148c01e02e910b11128cec1659e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6b6d63d956f46587d89edf1b080f1bb9bd3ca67e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116702"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649090"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning adatkészletek létrehozása
 
@@ -76,7 +76,7 @@ Adatkészletek létrehozása Azure- [adattárból](how-to-access-data.md) a Pyth
 
 TabularDatasets az SDK-n keresztül vagy a Azure Machine Learning Studio használatával hozhat létre. 
 
-A `TabularDatasetFactory` osztály [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) metódusával olvassa be a. csv vagy a. TSV formátumú fájlokat, és hozzon létre egy nem regisztrált TabularDataset. Ha több fájlt olvas be, az eredmények egy táblázatos ábrázolásba lesznek összesítve.
+A `TabularDatasetFactory` osztály [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) metódusával olvassa be a. csv vagy a. TSV formátumú fájlokat, és hozzon létre egy nem regisztrált TabularDataset. Ha több fájlt olvas be, az eredmények egy táblázatos ábrázolásba lesznek összesítve. 
 
 ```Python
 from azureml.core import Workspace, Datastore, Dataset
@@ -96,7 +96,10 @@ datastore_paths = [(datastore, 'ather/2018/11.csv'),
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
-Alapértelmezés szerint a TabularDataset létrehozásakor a rendszer automatikusan kikövetkezteti az oszlop adattípusait. Ha a késleltetett típusok nem felelnek meg az elvárásainak, az alábbi kód használatával megadhatja az oszlopok típusait. [További információ a támogatott adattípusokról](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)is.
+Alapértelmezés szerint a TabularDataset létrehozásakor a rendszer automatikusan kikövetkezteti az oszlop adattípusait. Ha a késleltetett típusok nem felelnek meg az elvárásainak, az alábbi kód használatával megadhatja az oszlopok típusait. Ha a tároló egy virtuális hálózat vagy tűzfal mögött található, akkor adja meg a paramétereket `validate=False` és `infer_column_types=False` a `from_delimited_files()` metódusban. Ezzel megkerüli a kezdeti ellenőrzési ellenőrzést, és gondoskodik arról, hogy az adatkészletet ezekből a biztonságos fájlokból hozza létre. [További információ a támogatott adattípusokról](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)is.
+
+> [!NOTE] 
+>A `infer_column_type` paraméter csak tagolt fájlokból létrehozott adatkészletek esetében alkalmazható. 
 
 ```Python
 from azureml.data.dataset_factory import DataType
@@ -149,7 +152,7 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 
 #### <a name="create-a-filedataset"></a>FileDataset létrehozása
 
-A `FileDatasetFactory` osztály [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) metódusának használatával bármilyen formátumban betöltheti a fájlokat, és nem regisztrált FileDataset hozhat létre:
+A `FileDatasetFactory` osztály [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) metódusával bármilyen formátumban betöltheti a fájlokat, és nem regisztrált FileDataset hozhat létre. Ha a tároló egy virtuális hálózat vagy tűzfal mögött van, állítsa a `validate =False` paramétert a `from_files()` metódusban. Ezzel megkerüli a kezdeti ellenőrzési lépést, és gondoskodik arról, hogy az adatkészletet ezekből a biztonságos fájlokból lehessen létrehozni.
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively

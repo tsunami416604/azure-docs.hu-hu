@@ -3,14 +3,14 @@ author: mmacy
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 02/26/2020
 ms.author: marsma
-ms.openlocfilehash: 9612abbe078ab8d9e8c10c2da923a9a9b233d094
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 4cf8eba9632c51ce9b5bcc42feae2446348890c2
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373122"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77651694"
 ---
 ## <a name="use-custom-page-content"></a>Egyéni oldal tartalmának használata
 
@@ -61,7 +61,7 @@ Ha saját HTML-és CSS-fájlokat használ a felhasználói felület testreszabá
 ## <a name="guidelines-for-using-custom-page-content"></a>Irányelvek egyéni lapok tartalmának használatához
 
 - Használjon abszolút URL-címet, ha olyan külső erőforrásokat is tartalmaz, mint például a média, a CSS és a JavaScript-fájlok a HTML-fájlban.
-- Adja hozzá a HTML-címkék `data-preload="true"` attribútumát a CSS és a JavaScript betöltési sorrendjének szabályozásához. A `data-preload=true`használatával a lapot a rendszer a felhasználó számára megjelenő módon építi ki. Ez az attribútum segít megakadályozni, hogy az oldal "vibrál" legyen a CSS-fájl előzetes betöltésével anélkül, hogy a felhasználóhoz nem tartozó HTML-fájlt kellene megjeleníteni. A következő HTML-kódrészlet a `data-preload` címke használatát mutatja be.
+- A 1.2.0 és újabb [verzióinak](../articles/active-directory-b2c/page-layout.md) használatakor a HTML-címkék `data-preload="true"` attribútumát adhatja hozzá a CSS és a JavaScript betöltési sorrendjének szabályozásához. A `data-preload=true`használatával a lapot a rendszer a felhasználó számára megjelenő módon építi ki. Ez az attribútum segít megakadályozni, hogy az oldal "vibrál" legyen a CSS-fájl előzetes betöltésével anélkül, hogy a felhasználóhoz nem tartozó HTML-fájlt kellene megjeleníteni. A következő HTML-kódrészlet a `data-preload` címke használatát mutatja be.
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```

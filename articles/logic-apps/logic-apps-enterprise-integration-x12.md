@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/31/2017
-ms.openlocfilehash: 77ec5434b83c4246dc448578dcf2902e19f42e95
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: cbf0a1f033ddafc68debab8de26dff29d73cc98e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792314"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651474"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-üzenetek a B2B vállalati integrációhoz Azure Logic Appsban Enterprise Integration Pack
 
@@ -34,7 +34,7 @@ Miután [létrehozott egy integrációs fiókot](../logic-apps/logic-apps-enterp
 
 ## <a name="create-an-x12-agreement"></a>X12-szerződés létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com "Azure Portal"). 
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com "Azure Portal"). 
 
 2. Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. 
    A keresőmezőbe írja be az "integráció" kifejezést, majd válassza az **integrációs fiókok**elemet.  
@@ -66,7 +66,7 @@ Miután [létrehozott egy integrációs fiókot](../logic-apps/logic-apps-enterp
 
     | Tulajdonság | Leírás |
     | --- | --- |
-    | Név |A szerződés neve |
+    | Name (Név) |A szerződés neve |
     | Szerződés típusa | X12 kell lennie |
     | Gazda partner |Egy szerződéshez a gazdagép és a vendég partner is szükséges. A fogadó partner a szerződést konfiguráló szervezetet jelöli. |
     | Gazdagép identitása |A gazdagép-partner azonosítója |
@@ -146,7 +146,7 @@ Válasszon sémát az egyes tranzakciótípusok (ST1-EK) és a küldő alkalmaz�
 | Csoport vezérlőelem-szám másodpéldányának letiltása |Duplikált csoport típusú vezérlőelemekkel rendelkező adatmódosítások letiltása. |
 | A tranzakciónapló-vezérlők számának duplikálása nem engedélyezett |Duplikált tranzakciós csoport vezérlőelem-számokkal rendelkező változások blokkolása. |
 
-### <a name="validations"></a>Érvényesítések
+### <a name="validation"></a>Ellenőrzés
 
 ![Fogadott üzenetek érvényesítési tulajdonságainak beállítása](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
 
@@ -216,7 +216,7 @@ A szerződés most már készen áll a kiválasztott beállításoknak megfelel�
 | --- | --- |
 | Verzió |Válassza ki a X12 verzióját |
 | Tranzakció típusa (ST01) |Válassza ki a tranzakció típusát |
-| SÉMA |Válassza ki a használni kívánt sémát. A sémák az integrációs fiókban találhatók. Ha először a séma lehetőséget választja, a automatikusan konfigurálja a verziót és a tranzakció típusát  |
+| SCHEMA |Válassza ki a használni kívánt sémát. A sémák az integrációs fiókban találhatók. Ha először a séma lehetőséget választja, a automatikusan konfigurálja a verziót és a tranzakció típusát  |
 
 > [!NOTE]
 > Konfigurálja az [integrációs fiókba](../logic-apps/logic-apps-enterprise-integration-accounts.md)feltöltött szükséges [sémát](../logic-apps/logic-apps-enterprise-integration-schemas.md) .
@@ -248,7 +248,7 @@ A szerződés most már készen áll a kiválasztott beállításoknak megfelel�
 | Adatcsere-vezérlési szám (ISA13) |Kötelező megadni az adatcsere-vezérlő számának tartományát. Adjon meg egy numerikus értéket legalább 1 értékkel, legfeljebb 999999999 |
 | Csoport vezérlőelem száma (GS06) |Kötelező megadni a csoport vezérlőelem számának tartományát. Adjon meg egy numerikus értéket legalább 1 értékkel, legfeljebb 999999999 |
 | Tranzakciónapló-vezérlő száma (ST02) |Kötelező, adja meg a tranzakciónapló-vezérlő számának tartományát. Adja meg a numerikus értékek tartományát legalább 1 értékkel, legfeljebb 999999999 |
-| Körzetszám |Nem kötelező, amelyet a rendszer a visszaigazoláshoz használt tranzakciótípusok vezérlőelem-számok tartományához jelöl. Adjon meg egy numerikus értéket a középső két mezőhöz, valamint egy alfanumerikus értéket (ha szükséges) az előtag és az utótag mezőhöz. A középső mezőket kötelező megadni, és tartalmaznia kell a vezérlő számának minimális és maximális értékét. |
+| Előtag |Nem kötelező, amelyet a rendszer a visszaigazoláshoz használt tranzakciótípusok vezérlőelem-számok tartományához jelöl. Adjon meg egy numerikus értéket a középső két mezőhöz, valamint egy alfanumerikus értéket (ha szükséges) az előtag és az utótag mezőhöz. A középső mezőket kötelező megadni, és tartalmaznia kell a vezérlő számának minimális és maximális értékét. |
 | Utótag |Nem kötelező, amelyet a rendszer a visszaigazolásban használt tranzakciótípusok vezérlőelem-számok tartományához jelöl. Adjon meg egy numerikus értéket a középső két mezőhöz, és egy alfanumerikus értéket (ha szükséges) az előtag és az utótag mezőhöz. A középső mezőket kötelező megadni, és tartalmaznia kell a vezérlő számának minimális és maximális értékét. |
 
 ### <a name="character-sets-and-separators"></a>Karakterkészletek és elválasztók
@@ -296,9 +296,13 @@ Az egyes ellenőrzési sorok elvégzése után a rendszer automatikusan hozzáad
 
     ![Válassza a "szerződések" csempét](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
-## <a name="view-the-swagger"></a>A hencegés megtekintése
-Tekintse meg a [hencegés részleteit](/connectors/x12/). 
+## <a name="connector-reference"></a>Összekötő-referencia
 
-## <a name="learn-more"></a>További információ
-* [További információ a Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack")  
+Az összekötő részletes technikai részleteit, például az összekötő hencegő fájljában leírt műveleteket és korlátokat az összekötő [hivatkozási oldalán](https://docs.microsoft.com/connectors/x12/)találja. 
 
+> [!NOTE]
+> Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
+
+## <a name="next-steps"></a>Következő lépések
+
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

@@ -4,14 +4,14 @@ description: Az Azure HPC cache használatának előfeltételei
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/20/2020
 ms.author: rohogue
-ms.openlocfilehash: 135c231f84d95ea2418fab4647d715473378e41c
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251957"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651066"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Az Azure HPC cache használatának előfeltételei
 
@@ -95,7 +95,9 @@ Ha NFS-tárolót használ (például egy helyszíni hardveres NAS-rendszer), ell
 > [!NOTE]
 > A tárolási cél létrehozása sikertelen lesz, ha a gyorsítótár nem rendelkezik megfelelő hozzáféréssel az NFS-tárolási rendszerhez.
 
-* **Hálózati kapcsolat:** Az Azure HPC-gyorsítótár nagy sávszélességű hálózati hozzáférést igényel a gyorsítótár-alhálózat és az NFS-szolgáltatás adatközpontja között. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) vagy hasonló hozzáférés ajánlott. VPN használata esetén előfordulhat, hogy úgy kell beállítania, hogy a 1350-es számú TCP-MSS-t használja, hogy a nagyméretű csomagok ne legyenek letiltva.
+További információt a [NAS-konfiguráció és az NFS-tárolási cél problémáinak elhárítása](troubleshoot-nas.md)című témakör tartalmaz.
+
+* **Hálózati kapcsolat:** Az Azure HPC-gyorsítótár nagy sávszélességű hálózati hozzáférést igényel a gyorsítótár-alhálózat és az NFS-szolgáltatás adatközpontja között. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) vagy hasonló hozzáférés ajánlott. VPN használata esetén előfordulhat, hogy úgy kell beállítania, hogy a 1350-es számú TCP-MSS-t használja, hogy a nagyméretű csomagok ne legyenek letiltva. A VPN- [csomagok méretére vonatkozó korlátozások](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) beolvasása További segítség a VPN-beállítások hibaelhárításához.
 
 * **Port hozzáférése:** A gyorsítótárnak hozzá kell férnie az adott TCP/UDP-portokhoz a tárolási rendszeren. A különböző típusú tárolók különböző portokra vonatkozó követelményekkel rendelkeznek.
 
@@ -109,6 +111,8 @@ Ha NFS-tárolót használ (például egy helyszíni hardveres NAS-rendszer), ell
     rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
     ```
 
+  Győződjön meg arról, hogy a ``rpcinfo`` lekérdezés által visszaadott összes port engedélyezi az Azure HPC cache alhálózatának korlátozás nélküli forgalmát.
+
   * A `rpcinfo` parancs által visszaadott portok mellett győződjön meg arról, hogy ezek a gyakran használt portok engedélyezik a bejövő és kimenő forgalmat:
 
     | Protokoll | Port  | Szolgáltatás  |
@@ -121,16 +125,20 @@ Ha NFS-tárolót használ (például egy helyszíni hardveres NAS-rendszer), ell
 
   * Ellenőrizze, hogy a tűzfalbeállítások engedélyezik-e a forgalmat az összes szükséges porton. Ügyeljen arra, hogy ellenőrizze az Azure-ban használt tűzfalakat és a helyszíni tűzfalakat az adatközpontban.
 
-* **Címtár-hozzáférés:** Engedélyezze a `showmount` parancsot a tárolási rendszeren. Az Azure HPC cache ezt a parancsot használja annak ellenőrzéséhez, hogy a tárolási cél konfigurációja érvényes exportálásra mutat-e, valamint hogy több csatlakoztatás nem fér hozzá ugyanahhoz az alkönyvtárakhoz (amelyek a fájlok ütközését veszélyeztetik).
+* **Címtár-hozzáférés:** Engedélyezze a `showmount` parancsot a tárolási rendszeren. Az Azure HPC cache ezt a parancsot használja annak ellenőrzéséhez, hogy a tárolási cél konfigurációja érvényes exportálásra mutat-e, valamint hogy több csatlakoztatás nem fér hozzá ugyanahhoz az alkönyvtárakhoz (a fájlok ütközésének kockázata).
 
   > [!NOTE]
   > Ha az NFS-tárolási rendszer a NetApp ONTAP 9,2 operációs rendszert használja, ne **engedélyezze `showmount`** . Segítségért [forduljon a Microsoft szolgáltatáshoz és a támogatási](hpc-cache-support-ticket.md) szolgálathoz.
+
+  További információ a címtárbeli hozzáférésről az NFS-tárolási cél [hibaelhárítási cikkében](troubleshoot-nas.md#enable-export-listing).
 
 * **Legfelső szintű hozzáférés:** A cache 0 felhasználói AZONOSÍTÓként csatlakozik a háttérrendszer-rendszerhez. A következő beállítások megadásával a tárolási rendszeren:
   
   * `no_root_squash`engedélyezése. Ezzel a beállítással biztosíthatja, hogy a távoli legfelső szintű felhasználó hozzáférhessen a root tulajdonában lévő fájlokhoz.
 
   * Ellenőrizze az exportálási szabályzatokat, és győződjön meg arról, hogy nem tartalmaznak korlátozásokat a gyorsítótár alhálózatához való rendszergazdai hozzáféréshez.
+
+  * Ha a tároló olyan exportálással rendelkezik, amely egy másik exportálás alkönyvtára, akkor győződjön meg arról, hogy a gyorsítótárban rendszergazdai hozzáférés van az elérési út legalacsonyabb szegmenséhez. A részletekért olvassa el az NFS-tárolási cél hibaelhárítási cikkének [elérési útját a gyökérkönyvtár](troubleshoot-nas.md#allow-root-access-on-directory-paths) eléréséhez.
 
 * Az NFS-háttérbeli tárterületnek kompatibilis hardver/szoftver platformnak kell lennie. Részletekért forduljon az Azure HPC cache csapatához.
 

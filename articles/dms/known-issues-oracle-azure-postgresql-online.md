@@ -3,21 +3,21 @@ title: 'Ismert problémák: áttelepítés Oracle-ből Azure Database for Postgr
 titleSuffix: Azure Database Migration Service
 description: Ismerje meg az ismert problémákat és az áttelepítési korlátozásokat az Oracle-ből származó online áttelepítéssel, hogy a Azure Database Migration Service használatával Azure Database for PostgreSQL egyetlen kiszolgálóra.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 11/05/2019
-ms.openlocfilehash: 0a1f46698ddb966c315d08a794dd710a74295f97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 6ab1050290119a53ee0fb674e6939938a3b855e0
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437817"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648598"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Ismert problémák/áttelepítési korlátozások az Oracle-ből az Azure-ba való online áttelepítéssel a PostgreSQL-hez – egyetlen kiszolgáló
 
@@ -40,7 +40,7 @@ Azure Database Migration Service támogatja az áttelepítést a Azure Database 
 
 A következő adattípusok **nem** lesznek áttelepítve:
 
-- BFÁJL
+- BFILE
 - ROWID
 - REF
 - UROWID

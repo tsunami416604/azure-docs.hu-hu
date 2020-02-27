@@ -3,8 +3,8 @@ title: SAP HANA kibővíthető HSR-pacemaker az Azure-beli virtuális gépek SLE
 description: Útmutató az Azure Virtual Machines szolgáltatásban futó SLES 12 SP3 rendszerű, összetett SAP HANA kibővíthető magas rendelkezésre állási konfigurációjának vizsgálatához és hibakereséséhez SAP HANA rendszerreplikáció (HSR) és a pacemaker alapján
 services: virtual-machines-linux
 documentationcenter: ''
-author: hermannd
-manager: gwallace
+author: hermanndms
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: fb90bfff72f41d8d7ccc34d3ad6dd0e9206bb88e
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566233"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617119"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>A kibővíthető magas rendelkezésre állású telepítés ellenőrzése és SAP HANA megoldása a SLES 12 SP3 rendszeren 
 
@@ -976,7 +976,7 @@ Ez a végső képernyőkép egy átmeneti átmenet **részleteit** mutatja be. A
 ![Hawk Single Transition](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a hibaelhárítási útmutató a SAP HANA magas rendelkezésre állását ismerteti a kibővíthető konfigurációban. Az adatbázison kívül az SAP-környezet egy másik fontos összetevője az SAP NetWeaver stack. Ismerje meg az [SAP NetWeaver magas rendelkezésre állását a SUSE Enterprise Linux Servert használó Azure-beli virtuális gépeken][sap-nw-ha-guide-sles].
 

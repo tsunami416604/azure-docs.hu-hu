@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 9b156193035d87472c462bae37e405e0317d8402
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045208"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650299"
 ---
 # <a name="vcore-model-overview"></a>Virtuálismag-alapú modell áttekintése
 
@@ -31,10 +31,10 @@ A virtuális mag modellben található szolgáltatási rétegek beállításai k
 
 ||**Általános célú**|**Üzleti szempontból kritikus**|**Nagy kapacitású**|
 |---|---|---|---|
-|Mikor ajánljuk|A legtöbb üzleti számítási feladat. A szolgáltatás költségvetés-orientált, kiegyensúlyozott és méretezhető számítási és tárolási lehetőségeket kínál. |Több elkülönített replika használatával a lehető legnagyobb rugalmasságot nyújtja az üzleti alkalmazások számára, és az adatbázis-replikák esetében a legmagasabb I/O-teljesítményt biztosítja.|A legtöbb üzleti számítási feladat nagy mértékben méretezhető tárolási és olvasási méretezési követelményekkel.  Nagyobb rugalmasságot biztosít a hibákhoz azáltal, hogy lehetővé teszi több elkülönített adatbázis-replika konfigurációját. |
-|Adattárolás|Távoli tárterületet használ.<br/>**Önálló adatbázisok és rugalmas készletek kiépített számítási felszámítása**:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**Felügyelt példány**: 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**Önálló adatbázisok és rugalmas készletek kiépített számítási felszámítása**:<br/>5 GB – 4 TB<br/>**Felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
+|A következőkre alkalmas|A legtöbb üzleti számítási feladat. A szolgáltatás költségvetés-orientált, kiegyensúlyozott és méretezhető számítási és tárolási lehetőségeket kínál. |Több elkülönített replika használatával a lehető legnagyobb rugalmasságot nyújtja az üzleti alkalmazások számára, és az adatbázis-replikák esetében a legmagasabb I/O-teljesítményt biztosítja.|A legtöbb üzleti számítási feladat nagy mértékben méretezhető tárolási és olvasási méretezési követelményekkel.  Nagyobb rugalmasságot biztosít a hibákhoz azáltal, hogy lehetővé teszi több elkülönített adatbázis-replika konfigurációját. |
+|Tárterület|Távoli tárterületet használ.<br/>**Önálló adatbázisok és rugalmas készletek kiépített számítási felszámítása**:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**Felügyelt példány**: 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**Önálló adatbázisok és rugalmas készletek kiépített számítási felszámítása**:<br/>5 GB – 4 TB<br/>**Felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
 |IOPS és átviteli sebesség (hozzávetőleges)|**Önálló adatbázisok és rugalmas készletek**: az [önálló adatbázisok](../sql-database/sql-database-vcore-resource-limits-single-databases.md) és a [rugalmas készletek](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)erőforrás-korlátai.<br/>**Felügyelt példány**: Tekintse át az [Áttekintés Azure SQL Database felügyelt példány erőforrás-korlátai](../sql-database/sql-database-managed-instance-resource-limits.md#service-tier-characteristics)című témakört.|Tekintse meg az [önálló adatbázisok](../sql-database/sql-database-vcore-resource-limits-single-databases.md) és a [rugalmas készletek](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)erőforrás-korlátozásait.|A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS és az átviteli sebesség a munkaterheléstól függ.|
-|Elérhetőség|1 replika, nincsenek olvasási méretezésű replikák|3 replika, 1 [olvasási léptékű replika](sql-database-read-scale-out.md),<br/>zóna – redundáns magas rendelkezésre állás (HA)|1 írható-olvasható replika, valamint 0-4 [-es olvasási léptékű replika](sql-database-read-scale-out.md)|
+|Rendelkezésre állás|1 replika, nincsenek olvasási méretezésű replikák|3 replika, 1 [olvasási léptékű replika](sql-database-read-scale-out.md),<br/>zóna – redundáns magas rendelkezésre állás (HA)|1 írható-olvasható replika, valamint 0-4 [-es olvasási léptékű replika](sql-database-read-scale-out.md)|
 |Biztonsági másolatok|[Olvasási hozzáférés – geo-redundáns tárolás (ra-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 nap (alapértelmezés szerint 7 nap)|[Ra-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 nap (alapértelmezés szerint 7 nap)|Pillanatkép-alapú biztonsági másolatok az Azure-beli távoli tárolóban. A visszaállítja ezeket a pillanatképeket a gyors helyreállításhoz. A biztonsági másolatok azonnaliek, és nem befolyásolják a számítási I/O-teljesítményt. A visszaállítások gyorsak, és nem az adatmennyiség (óra vagy nap helyett percekben).|
 |Memóriabeli|Nem támogatott|Támogatott|Nem támogatott|
 |||
@@ -54,7 +54,7 @@ Az adott munkaterhelés szolgáltatási szintjeinek kiválasztásával kapcsolat
 A virtuális mag modellben a számítási rétegek lehetőségei közé tartoznak a kiépített és a kiszolgáló nélküli számítási szintek.
 
 
-### <a name="provisioned-compute"></a>Kiépített számítási teljesítmény
+### <a name="provisioned-compute"></a>Kiépített számítás
 
 A kiépített számítási szintek meghatározott mennyiségű számítási erőforrást biztosítanak, amelyek a munkaterhelés-tevékenységektől függetlenül folyamatosan vannak kiépítve, és az óránként rögzített számítási kapacitás mennyiségét számlázzák.
 
@@ -89,13 +89,13 @@ Azokon a régiókban, ahol elérhető a Fsv2 sorozat, tekintse meg a [Fsv2-soroz
 - Az M-sorozat egy memória-optimalizált hardveres beállítás, amely több memóriát és nagyobb számítási korlátot igényel, mint amennyit a Gen5 biztosít.
 - Az M-sorozat 29 GB-ot biztosít virtuális mag és 128 virtuális mag, ami növeli a Gen5 viszonyított memória korlátját a 8x-tól közel 4 TB-ig.
 
-Az M-sorozat hardverének az előfizetéshez és a régióhoz való engedélyezéséhez meg kell nyitni egy támogatási kérést. Ha a támogatási kérést jóváhagyják, az M sorozat kiválasztási és kiépítési tapasztalatai ugyanazt a mintát követik, mint az egyéb hardveres generációk esetében. Az m-sorozat rendelkezésre állását tartalmazó régiók esetében lásd: az [m-sorozat elérhetősége](#m-series).
+Az M-sorozat hardverének az előfizetéshez és a régióhoz való engedélyezéséhez meg kell nyitni egy támogatási kérést. Az előfizetésnek fizetős ajánlat típusúnak kell lennie, beleértve az utólagos elszámolású vagy a Nagyvállalati Szerződés (EA) szolgáltatásokat.  Ha a támogatási kérést jóváhagyják, az M sorozat kiválasztási és kiépítési tapasztalatai ugyanazt a mintát követik, mint az egyéb hardveres generációk esetében. Az m-sorozat rendelkezésre állását tartalmazó régiók esetében lásd: az [m-sorozat elérhetősége](#m-series).
 
 
 ### <a name="compute-and-memory-specifications"></a>Számítási és memória-specifikációk
 
 
-|Hardver létrehozása  |Számítási szolgáltatások  |Memória  |
+|Hardver létrehozása  |Számítás  |Memory (Memória)  |
 |:---------|:---------|:---------|
 |Gen4     |-Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorok<br>-Akár 24 virtuális mag (1 virtuális mag = 1 fizikai mag)  |-7 GB/virtuális mag<br>– Akár 168 GB-nyi kiépítés|
 |Gen5     |**Kiépített számítás**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz és Intel SP-8160 (Skylake) processzorok<br>– Akár 80 virtuális mag (1 virtuális mag = 1 Hyper-thread)<br><br>**Kiszolgáló nélküli számítás**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz és Intel SP-8160 (Skylake) processzorok<br>– Akár 16 virtuális mag automatikus méretezés (1 virtuális mag = 1 Hyper-thread)|**Kiépített számítás**<br>-5,1 GB/virtuális mag<br>– Akár 408 GB-nyi kiépítés<br><br>**Kiszolgáló nélküli számítás**<br>– Akár 24 GB-os automatikus méretezés virtuális mag<br>-Legfeljebb 48 GB-ig terjedő automatikus méretezés|
@@ -142,7 +142,7 @@ Az **alapvető beállítások** lapon válassza az **adatbázis konfigurálása*
   
 **Meglévő felügyelt példány hardveres létrehozásának módosítása**
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 A felügyelt példány lapon válassza ki az **árképzési** csomag hivatkozását a beállítások szakaszban.
 
@@ -150,43 +150,25 @@ A felügyelt példány lapon válassza ki az **árképzési** csomag hivatkozás
 
 A **díjszabási** csomag lapon az előző lépésekben leírtaknak megfelelően módosíthatja a hardverek generációját.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Használja a következő PowerShell-parancsfájlt:
 
 ```powershell-interactive
-$subscriptionId = "**************"
-Select-AzSubscription -Subscription $subscriptionId
-
-$instanceName = "********"
-$resourceGroup = "****"
-
-# THIS IS IMPORTANT PARAMETER:
-$sku = @{name = "GP_Gen5" }
-
-# NOTE: These properties are not necessary, but it would be good to set them to the current values:
-# You might want to change vCores or storage with hardware generation
-# $admin_login = "******"
-# $admin_pass = "******"
-# $location = "***** # for example: ""northeurope"
-# $vCores = 8
-# $maxStorage = 1024
-# $license = "BasePrice"
-# $subnetId = "/subscriptions/****/subnets/*******"
-
-## NOTE: Uncomment some of the properties below if you have set them.
-$properties = New-Object System.Object
-# $properties | Add-Member -type NoteProperty -name subnetId -Value $subnetId
-# $properties | Add-Member -type NoteProperty -name administratorLogin -Value $admin_login
-# $properties | Add-Member -type NoteProperty -name administratorLoginPassword -Value $admin_pass
-# $properties | Add-Member -type NoteProperty -name vCores -Value $vCores
-# $properties | Add-Member -type NoteProperty -name storageSizeInGB -Value $maxStorage
-# $properties | Add-Member -type NoteProperty -name licenseType -Value $license
-
-Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
+Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-Ügyeljen rá, hogy megadja a felügyelt példány előfizetési AZONOSÍTÓját, nevét és erőforrás-csoportját.
+További részletekért keresse [meg a set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) parancsot.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Használja az alábbi CLI-parancsot:
+
+```azurecli-interactive
+az sql mi update -g mygroup -n myinstance --family Gen5
+```
+
+További részletekért lásd [az SQL mi Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) parancsot.
 
 ---
 
@@ -194,7 +176,7 @@ Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType
 
 #### <a name="gen4gen5-1"></a>Gen4/Gen5
 
-Az új Gen4-adatbázisok már nem támogatottak a Kelet-Ausztrália vagy Brazília déli régiójában. 
+A Gen4 hardverek fokozatos kiépítése [folyamatban](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) van, és az új központi telepítések esetében már nem érhető el. Minden új adatbázist telepíteni kell a Gen5 hardveren.
 
 A Gen5 a világ legtöbb régiójában elérhető.
 

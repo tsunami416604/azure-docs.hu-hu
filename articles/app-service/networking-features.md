@@ -4,15 +4,15 @@ description: Ismerkedjen meg a Azure App Service hálózati szolgáltatásaival,
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 02/27/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 208bf37bfcdf0f86fad11611279d1b4e642fb18a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0fd904b15a830e2b261057a11d1a8f3a4d584fe1
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971757"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649226"
 ---
 # <a name="app-service-networking-features"></a>Hálózati szolgáltatások App Service
 
@@ -27,8 +27,8 @@ A Azure App Service egy elosztott rendszer. A bejövő HTTP/HTTPS-kérelmeket ke
 | Bejövő funkciók | Kimenő funkciók |
 |---------------------|-------------------|
 | Alkalmazáshoz rendelt címe | Hibrid kapcsolatok |
-| Hozzáférési korlátozások | Átjáró szükséges VNet-integráció |
-| Service Endpoints – szolgáltatásvégpont | VNet-integráció (előzetes verzió) |
+| Hozzáférési korlátozások | átjáró szükséges VNet-integráció |
+| Szolgáltatási végpontok | VNet-integráció |
 
 Ha másként nincs megadva, az összes funkció együtt használható. A különböző problémák megoldásához kombinálhatja a szolgáltatásokat.
 
@@ -36,27 +36,29 @@ Ha másként nincs megadva, az összes funkció együtt használható. A külön
 
 A probléma megoldásához bizonyos használati eseteket is használhat.  A megfelelő szolgáltatást esetenként a használati eseten kívüli okok miatt is érdemes használni. A következő bejövő használati esetek azt sugallják, hogyan használhatók a App Service hálózatkezelési funkciói az alkalmazásra irányuló forgalom szabályozásával kapcsolatos problémák megoldásához. 
  
-| Bejövő használati esetek | Szolgáltatás |
+| Bejövő használati esetek | Funkció |
 |---------------------|-------------------|
-| Az alkalmazás IP-alapú SSL-igényeinek támogatása | alkalmazáshoz rendelt címe |
-| Nem megosztott, dedikált bejövő címe az alkalmazáshoz | alkalmazáshoz rendelt címe |
+| Az alkalmazás IP-alapú SSL-igényeinek támogatása | Alkalmazáshoz rendelt címe |
+| Nem megosztott, dedikált bejövő címe az alkalmazáshoz | Alkalmazáshoz rendelt címe |
 | Az alkalmazáshoz való hozzáférés korlátozása jól meghatározott címekből | Hozzáférési korlátozások |
-| Saját alkalmazás közzététele saját IP-VNet | ILB </br> Application Gateway szolgáltatás-végpontokkal |
-| Az alkalmazáshoz való hozzáférés korlátozása VNet lévő erőforrásokkal | Service Endpoints – szolgáltatásvégpont </br> ILB |
+| Saját alkalmazás közzététele saját IP-VNet | ILB </br> Application Gateway szolgáltatásvégpontokkal |
+| Az alkalmazáshoz való hozzáférés korlátozása VNet lévő erőforrásokkal | Szolgáltatási végpontok </br> ILB |
 | Saját alkalmazás közzététele privát IP-VNet | ILB </br> magánhálózati IP-cím bejövő Application Gateway szolgáltatási végpontokkal |
-| Az alkalmazás védetté WAF | Application Gateway + ILB </br> Application Gateway szolgáltatás-végpontokkal </br> Azure bejárati ajtó hozzáférési korlátozásokkal |
+| Az alkalmazás védetté WAF | Application Gateway + ILB </br> Application Gateway szolgáltatásvégpontokkal </br> Azure bejárati ajtó hozzáférési korlátozásokkal |
 | A különböző régiókban lévő alkalmazások forgalmának elosztása | Azure bejárati ajtó hozzáférési korlátozásokkal | 
 | Azonos régióban lévő forgalom terheléselosztása | [Application Gateway szolgáltatás-végpontokkal][appgwserviceendpoints] | 
 
 A következő kimenő használati esetek azt mutatják be, hogyan használhatók a App Service hálózatkezelési funkciói az alkalmazás kimenő hozzáférési igényeinek megoldásához. 
 
-| Kimenő használati esetek | Szolgáltatás |
+| Kimenő használati esetek | Funkció |
 |---------------------|-------------------|
 | Egy adott régióban található Azure-Virtual Network erőforrásainak elérése | VNet-integráció </br> ASE |
-| Erőforrásokhoz való hozzáférés egy másik régióban lévő Azure-Virtual Network | Átjáró szükséges VNet-integráció </br> VNet-társítás |
+| Erőforrásokhoz való hozzáférés egy másik régióban lévő Azure-Virtual Network | átjáró szükséges VNet-integráció </br> VNet-társítás |
 | A szolgáltatási végpontokkal védett erőforrások elérése | VNet-integráció </br> ASE |
 | Hozzáférés az Azure-hoz nem csatlakozó magánhálózat erőforrásaihoz | Hibrid kapcsolatok |
-| Erőforrások elérése ExpressRoute-áramkörök között | VNet-integráció (a jelenleg RFC 1918-címekre korlátozódik) </br> ASE | 
+| Erőforrások elérése ExpressRoute-áramkörök között | VNet-integráció </br> ASE | 
+| Biztonságos kimenő forgalom a webalkalmazásból | VNet-integrációs és hálózati biztonsági csoportok </br> ASE | 
+| A kimenő forgalom irányítása a webalkalmazásból | VNet-integráció és-útválasztási táblák </br> ASE | 
 
 
 ### <a name="default-networking-behavior"></a>Alapértelmezett hálózatkezelési viselkedés
@@ -130,11 +132,11 @@ Mivel a funkció lehetővé teszi a helyszíni erőforrásokhoz való hozzáfér
 
 Habár a Hibrid kapcsolatok népszerű a fejlesztéshez, számos éles alkalmazásban is használható. Kiválóan alkalmas webszolgáltatások vagy adatbázisok elérésére, de a sok kapcsolat létrehozásával kapcsolatos helyzetekben nem megfelelő. 
 
-### <a name="gateway-required-vnet-integration"></a>Átjáró szükséges VNet-integráció 
+### <a name="gateway-required-vnet-integration"></a>átjáró szükséges VNet-integráció 
 
 Az átjáró szükséges App Service VNet integrációs funkciója lehetővé teszi, hogy az alkalmazás **kimenő** kéréseket hozzon egy Azure-Virtual Networkba. A szolgáltatás úgy működik, hogy csatlakoztatja a gazdagépet, amely egy pont – hely típusú VPN-kapcsolattal rendelkező VNet Virtual Network átjáróján fut. A szolgáltatás konfigurálásakor az alkalmazás megkapja az egyes példányokhoz rendelt pont – hely címek egyikét. Ez a funkció lehetővé teszi az erőforrások elérését bármely régióban a klasszikus vagy a Resource Manager-virtuális hálózatok. 
 
-![Átjáró szükséges VNet-integráció](media/networking-features/gw-vnet-integration.png)
+![átjáró szükséges VNet-integráció](media/networking-features/gw-vnet-integration.png)
 
 Ez a funkció megoldja a más virtuális hálózatok lévő erőforrások elérésének problémáját, és akár egy VNet keresztül csatlakozhat más virtuális hálózatok, vagy akár a helyszínen is. Nem működik a ExpressRoute csatlakoztatott virtuális hálózatok, hanem a helyek közötti VPN-kapcsolattal rendelkező hálózatokkal. Általában nem célszerű ezt a funkciót egy App Service Environment (betanító) alkalmazásból használni, mert a betanító már szerepel a VNet. A funkció által megoldott használati esetek a következők:
 
@@ -146,15 +148,17 @@ Ha ez a funkció engedélyezve van, az alkalmazás azt a DNS-kiszolgálót fogja
 
 ### <a name="vnet-integration"></a>VNet-integráció
 
-Az átjáró szükséges VNet-integrációs funkciója nagyon hasznos, de továbbra sem oldja meg az erőforrások elérését a ExpressRoute között. Ahhoz, hogy az alkalmazások ExpressRoute-kapcsolatokon keresztül is elérhetők legyenek, az alkalmazásoknak meg kell tudniuk hívni a végpontok által biztosított szolgáltatásait. A további igények megoldásához egy másik VNet integrációs képesség lett hozzáadva. Az új VNet-integrációs funkció lehetővé teszi, hogy az alkalmazás hátterét egy ugyanabban a régióban található Resource Manager-VNet egy alhálózatán helyezze el. Ez a funkció nem érhető el egy olyan App Service Environmentból, amely már egy VNet van. A funkció az alábbi lehetőségeket kínálja:
+Az átjáró szükséges VNet-integrációs funkciója nagyon hasznos, de továbbra sem oldja meg az erőforrások elérését a ExpressRoute között. Ahhoz, hogy az alkalmazások ExpressRoute-kapcsolatokon keresztül is elérhetők legyenek, az alkalmazásoknak meg kell tudniuk hívni a végpontok által biztosított szolgáltatásait. A további igények megoldásához egy másik VNet integrációs képesség lett hozzáadva. Az új VNet-integrációs funkció lehetővé teszi, hogy az alkalmazás hátterét egy ugyanabban a régióban található Resource Manager-VNet egy alhálózatán helyezze el. Ez a funkció nem érhető el egy olyan App Service Environmentból, amely már egy VNet van. Ez a funkció lehetővé teszi a következőket:
 
 * Erőforrások elérése erőforrás-kezelő virtuális hálózatok ugyanabban a régióban
 * A szolgáltatás-végpontokkal védett erőforrások elérése 
 * ExpressRoute-vagy VPN-kapcsolaton keresztül elérhető erőforrások elérése
+* Az összes kimenő forgalom biztonságossá tétele 
+* Az összes kimenő forgalom bújtatásának kényszerítése. 
 
 ![VNet-integráció](media/networking-features/vnet-integration.png)
 
-Ez a funkció előzetes verzióban érhető el, és nem használható éles munkaterhelésekhez. Ha többet szeretne megtudni erről a szolgáltatásról, olvassa el [app Service VNet integrációjának][vnetintegration]dokumentációját.
+Ha többet szeretne megtudni erről a szolgáltatásról, olvassa el [app Service VNet integrációjának][vnetintegration]dokumentációját.
 
 ## <a name="app-service-environment"></a>App Service-környezet 
 

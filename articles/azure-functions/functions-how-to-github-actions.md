@@ -1,16 +1,16 @@
 ---
 title: A GitHub-műveletek használata a Azure Functions a kód frissítéseinek elvégzéséhez
 description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe Azure Functions-projekteket a GitHubon a GitHub-műveletek használatával.
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: aelnably
-ms.openlocfilehash: c34847577b7e83228fafad431f541497be9a21ae
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: cshoe
+ms.openlocfilehash: dd74fd5c38e5a8800d2092afc1db1b412b126861
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769149"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649908"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Folyamatos teljesítés a GitHub-művelet használatával
 
@@ -69,7 +69,7 @@ A GitHub mostantól képes hitelesíteni az Azure-beli Function-alkalmazást.
 
 A környezet beállítása a nyelvspecifikus közzétételi beállítás használatával történik.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setup-node` műveletet használja a környezet beállításához:
 
@@ -84,7 +84,7 @@ Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setu
         node-version: '10.x'
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setup-python` műveletet használja a környezet beállításához:
 
@@ -99,7 +99,7 @@ Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setu
         python-version: 3.6
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setup-dotnet` műveletet használja a környezet beállításához:
 
@@ -114,7 +114,7 @@ Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setu
         dotnet-version: '2.2.300'
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setup-java` műveletet használja a környezet beállításához:
 
@@ -138,7 +138,7 @@ Ez a Azure Functions által támogatott nyelvtől és nyelvtől függ. a szakasz
 
 Az alábbi példa bemutatja a munkafolyamat azon részét, amely létrehozza a Function alkalmazást, amely a nyelvspecifikus:
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -153,7 +153,7 @@ Az alábbi példa bemutatja a munkafolyamat azon részét, amely létrehozza a F
         popd
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```yaml
     - name: 'Run pip'
@@ -167,7 +167,7 @@ Az alábbi példa bemutatja a munkafolyamat azon részét, amely létrehozza a F
         popd
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -180,7 +180,7 @@ Az alábbi példa bemutatja a munkafolyamat azon részét, amely létrehozza a F
         popd
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```yaml
     - name: 'Run mvn'

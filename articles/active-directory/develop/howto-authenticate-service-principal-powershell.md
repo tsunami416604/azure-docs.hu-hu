@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: c6c07c48bf94b50d46a50a47f57857fdd15a0e8e
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8e428732fb49d27e3991071b87abee53b6e375b2
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697251"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648393"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Útmutató: egyszerű szolgáltatásnév létrehozása a Azure PowerShell használatával
 
@@ -46,11 +46,11 @@ A legegyszerűbben a portálon ellenőrizheti, hogy rendelkezik-e megfelelő jog
 ## <a name="assign-the-application-to-a-role"></a>Az alkalmazás társítása szerepkörhöz
 Az előfizetés erőforrásainak eléréséhez hozzá kell rendelnie az alkalmazást egy szerepkörhöz. Döntse el, melyik szerepkör kínálja a megfelelő engedélyeket az alkalmazáshoz. Az elérhető szerepkörökről a [RBAC: beépített szerepkörök](/azure/role-based-access-control/built-in-roles)című témakörben olvashat bővebben.
 
-Megadhatja a hatókört az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. Az engedélyek a hatókör alacsonyabb szintjein vannak örökölve. Ha például hozzáad egy alkalmazást az erőforráscsoport *olvasó* szerepköréhez, az azt jelenti, hogy elolvashatja az erőforráscsoportot és a benne található összes erőforrást. Ha engedélyezni szeretné, hogy az alkalmazás olyan műveleteket hajtson végre, mint például az újraindítás, a példányok elindítása és leállítása, válassza ki a *közreműködő* szerepkört.
+Megadhatja a hatókört az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. Alacsonyabb szintű hatókör, az engedélyek öröklődnek. Ha például hozzáad egy alkalmazást az erőforráscsoport *olvasó* szerepköréhez, az azt jelenti, hogy elolvashatja az erőforráscsoportot és a benne található összes erőforrást. Ha engedélyezni szeretné, hogy az alkalmazás olyan műveleteket hajtson végre, mint például az újraindítás, a példányok elindítása és leállítása, válassza ki a *közreműködő* szerepkört.
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Szolgáltatásnév létrehozása önaláírt tanúsítvánnyal
 
-Az alábbi példa egy egyszerű forgatókönyvet követ. A [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) használatával létrehoz egy önaláírt tanúsítvánnyal rendelkező szolgáltatásnevet, és a [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) használatával rendeli hozzá az [olvasó](/azure/role-based-access-control/built-in-roles#reader) szerepkört az egyszerű szolgáltatáshoz. A szerepkör-hozzárendelés hatóköre az aktuális Azure-előfizetés. Másik előfizetés kiválasztásához használja a [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
+Az alábbi példa egy egyszerű forgatókönyvet követ. A [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) használatával létrehoz egy önaláírt tanúsítvánnyal rendelkező szolgáltatásnevet, és a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) használatával rendeli hozzá az [olvasó](/azure/role-based-access-control/built-in-roles#reader) szerepkört az egyszerű szolgáltatáshoz. A szerepkör-hozzárendelés hatóköre az aktuális Azure-előfizetés. Másik előfizetés kiválasztásához használja a [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
 
 > [!NOTE]
 > A New-SelfSignedCertificate parancsmag és a PKI modul jelenleg nem támogatott a PowerShell Core-ban. 

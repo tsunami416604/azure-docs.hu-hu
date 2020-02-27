@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: a5fee604a529e9ca6153f6c189f199577ae65426
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 521277b2eed7edfba016f6a80e8f877decfb0ac5
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356149"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651100"
 ---
 # <a name="return-or-replace-your-azure-data-box-edge-device"></a>Azure Data Box Edge eszköz visszaküldése vagy cseréje
 
@@ -36,8 +36,8 @@ Az Alaphelyzetbe állítás előtt hozzon létre egy másolatot a helyi adatmenn
 
 Ha az eszközt a helyi webes felületen szeretné visszaállítani, hajtsa végre az alábbi lépéseket.
 
-1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > eszköz**alaphelyzetbe állítása elemre.
-2. Válassza az **eszköz**alaphelyzetbe állítása lehetőséget.
+1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > eszköz alaphelyzetbe állítása**elemre.
+2. Válassza az **eszköz alaphelyzetbe állítása**lehetőséget.
 
     ![Eszköz alaphelyzetbe állítása](media/data-box-edge-return-device/device-reset-1.png)
 
@@ -47,7 +47,7 @@ Ha az eszközt a helyi webes felületen szeretné visszaállítani, hajtsa végr
 
 Az Alaphelyzetbe állítás törli az adat-adatlemezekről. Az eszközön tárolt adatmennyiségtől függően ez a folyamat körülbelül 30-40 percet vesz igénybe.
 
-Másik lehetőségként kapcsolódjon az eszköz PowerShell-felületéhez, és `Reset-HcsAppliance` használja a parancsmagot az adatok adatlemezekről való törléséhez. További információ: [az eszköz](data-box-edge-connect-powershell-interface.md#reset-your-device)alaphelyzetbe állítása.
+Azt is megteheti, hogy az eszköz PowerShell-felületéhez csatlakozik, és a `Reset-HcsAppliance` parancsmag használatával törli az adatlemezekről származó adatokból. További információ: [az eszköz alaphelyzetbe állítása](data-box-edge-connect-powershell-interface.md#reset-your-device).
 
 > [!NOTE]
 > - Ha új eszközre cserél vagy frissít, javasoljuk, hogy csak az új eszköz megérkezése után állítsa alaphelyzetbe az eszközt.
@@ -62,7 +62,7 @@ A visszatérési folyamat elindításához hajtsa végre az alábbi lépéseket.
     ![Támogatási jegy megnyitása](media/data-box-edge-return-device/open-support-ticket-1.png)  
 
 2. Egy Microsoft ügyfélszolgálata mérnök felveszi Önnel A kapcsolatot. Adja meg a szállítási adatokat.
-3. Ha visszatérési szállítási mezőbe van szüksége, kérheti. Az **Igen** kérdésre adandó válaszhoz **üres mezőt kell**visszaadnia.
+3. Ha visszatérési szállítási mezőbe van szüksége, kérheti. Az **Igen** kérdésre adandó válaszhoz **üres mezőt kell visszaadnia**.
 
 
 ## <a name="schedule-a-pickup"></a>Pickup beosztása
@@ -72,7 +72,7 @@ A visszatérési folyamat elindításához hajtsa végre az alábbi lépéseket.
 3. Húzza ki az energiaellátási kábeleket, és távolítsa el az összes hálózati kábelt az eszközről.
 4. Készítse elő a szállítólevél-csomagot saját vagy az Azure-ból kapott üres mező használatával. Helyezze el az eszközt a dobozba, és az eszközzel szállított tápkábeleket.
 5. Helyezze az Azure-ból kapott szállítási címkét a csomagba.
-6. Ütemezzen egy felvételt a regionális szolgáltatóval. Ha visszaadja az eszközt az USA-ban, a szolgáltató felveszi a kapcsolatot. Felvételi ütemterv:
+6. Egyeztessen egy csomagfelvételi időpontot helyi szolgáltatójával. Ha visszaadja az eszközt az USA-ban, akkor a fuvarozó a UPS vagy a FedEx lehet. Felvétel beosztása a UPS-sel:
 
     1. Hívja meg a helyi UPS-t (országspecifikus díjmentes szám).
     2. A hívásban adja meg a fordított szállítólevél nyomon követésének számát a nyomtatott címkén látható módon.
@@ -103,7 +103,7 @@ A következő lépésekkel törölheti az eszközt és az erőforrást Azure Por
 
 2. Az **eszköz törlése** panelen írja be a törölni kívánt eszköz nevét, és válassza a **Törlés**lehetőséget.
 
-    ![Törlés jóváhagyása](media/data-box-edge-return-device/delete-resource-2.png)
+    ![Törlés megerősítése](media/data-box-edge-return-device/delete-resource-2.png)
 
 Az eszköz és a hozzá tartozó erőforrás sikeres törlése után értesítést kap.
 
@@ -117,11 +117,11 @@ Szükség van egy helyettesítő eszközre, ha a meglévő eszköz hardveres hib
 4. Az eredeti eszköz visszaküldéséhez kövesse az összes lépést:
     1. Nyisson meg egy másik jegyet az eredeti eszköz visszaküldéséhez.
     2. [Az eszközön lévő adat törlése](#erase-data-from-the-device).
-    3. [Pickup](#schedule-a-pickup)beosztása.
+    3. [Pickup beosztása](#schedule-a-pickup).
     5. [Törölje a](#delete-the-resource) visszaadott eszközhöz hozzárendelt erőforrást.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További tudnivalókat a [sávszélesség-kezeléssel foglalkozó részben](data-box-edge-manage-bandwidth-schedules.md) talál.

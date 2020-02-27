@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 025a31c08ac97783ddf1a608c2899eadd9b89725
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: be331f36a6305b05ce83a2b2d5fdfb73a154ce3d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561773"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623115"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Apache Hive használata kinyerési, átalakítási és betöltési (ETL) eszközként
 
@@ -75,13 +75,13 @@ A kaptár használatával több célra is elvégezheti az adatokat, többek köz
 * Azok az alkalmazások vagy szolgáltatások, amelyeknek az adatok meghatározott formátumokba való feldolgozására, vagy adott típusú adatszerkezetet tartalmazó fájlokra van szükségük.
 * Egy JSON-dokumentum tárolója, például [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/).
 
-## <a name="considerations"></a>Megfontolandó szempontok
+## <a name="considerations"></a>Megfontolások
 
 Az ETL modellt általában a következő esetekben használja a rendszer:
 
 * Egy meglévő adatbázisba vagy információs rendszerbe betöltheti a külső forrásokból származó, részben strukturált vagy strukturálatlan adatok adatfolyamait vagy nagy mennyiségű részét.
 * Megtisztíthatja, átalakíthatja és érvényesítheti az adataikat a betöltés előtt, például a fürtön keresztül egynél több transzformációs folyamat használatával.
-* Jelentéseket és vizualizációkat készíthet, amelyek rendszeresen frissülnek.  Ha például a jelentés túl hosszú időt vesz igénybe a nap folyamán, a jelentést a következő időpontban is futtathatja:.  Az Azure Scheduler és a PowerShell használatával automatikusan futtathat egy kaptár-lekérdezést.
+* Jelentéseket és vizualizációkat készíthet, amelyek rendszeresen frissülnek. Ha például a jelentés túl hosszú időt vesz igénybe a nap folyamán, a jelentést a következő időpontban is futtathatja:. A kaptár-lekérdezések automatikus futtatásához használhatja a [Azure Logic apps](../../logic-apps/logic-apps-overview.md) és a PowerShellt is.
 
 Ha az adatelérési cél nem adatbázis, a lekérdezésen belül, például egy CSV-fájlban is létrehozhatja a megfelelő formátumú fájlt. Ez a fájl ezután importálható az Excelbe vagy a Power BIba.
 

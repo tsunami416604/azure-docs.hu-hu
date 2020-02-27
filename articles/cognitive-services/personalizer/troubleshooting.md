@@ -2,14 +2,14 @@
 title: Hibaelhárítás – személyre szabás
 description: Ez a cikk a személyre szabással kapcsolatos gyakran ismételt hibaelhárítási kérdésekre adott válaszokat tartalmazza.
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/26/2020
 ms.author: diberry
-ms.openlocfilehash: fec403da7f54098dbf197d14f3b16afd30bf5efc
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 432b33243bdb38cf359d4fea1a336500eb244464
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469544"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650520"
 ---
 # <a name="personalizer-troubleshooting"></a>Személyre szabás – hibaelhárítás
 
@@ -32,6 +32,19 @@ Ez a cikk a személyre szabással kapcsolatos gyakran ismételt hibaelhárítás
 </details>
 
 ## <a name="learning-loop"></a>Tanulási hurok
+
+<details>
+<summary>
+<b>A tanulási ciklus nem éri el a rendszer 100%-os egyeztetését személyre szabás nélkül. Hogyan javítsa ezt?</b></summary>
+
+**Válasz**: az az oka, hogy nem éri el a célt a tanulási ciklusban:
+* Nincs elég funkció a Rank API-hívással
+* Az elküldött funkciók hibái – például a nem összesített funkciók adatainak, például az időbélyegek az API-ba való küldésének
+* Hurkok feldolgozásával kapcsolatos hibák – például a jutalmazási adatok küldése az események jutalmazására
+
+A javításhoz módosítania kell a feldolgozást a hurokra küldött funkciók módosításával, vagy győződjön meg arról, hogy a jutalom a rangsor válaszának megfelelő kiértékelése.
+
+</details>
 
 <details>
 <summary>
@@ -91,7 +104,7 @@ Az új frissítési időszak megkezdése után a rendszer a frissített modellt 
 <details>
 <summary><b>Hogyan importálni egy képzési szabályzatot?</b></summary>
 
-**Válasz**: További információ a [tanulási szabályzatokkal kapcsolatos fogalmakról](concept-active-learning.md#understand-learning-policy-settings) , valamint az új képzési szabályzatok [alkalmazásáról](how-to-learning-policy.md) . Ha nem szeretne kiválasztani egy képzési szabályzatot, az [Offline értékelés](how-to-offline-evaluation.md) használatával javaslatot tehet a tanulási szabályzatra az aktuális események alapján.
+**Válasz**: További információ a [tanulási szabályzatokkal kapcsolatos fogalmakról](concept-active-learning.md#understand-learning-policy-settings) , valamint az új képzési szabályzatok [alkalmazásáról](how-to-manage-model.md) . Ha nem szeretne kiválasztani egy képzési szabályzatot, az [Offline értékelés](how-to-offline-evaluation.md) használatával javaslatot tehet a tanulási szabályzatra az aktuális események alapján.
 
 </details>
 

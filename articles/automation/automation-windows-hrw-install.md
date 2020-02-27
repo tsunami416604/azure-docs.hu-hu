@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: a6d2e2d912f176a88dc993803d750e37cff1acb6
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 9f3e06f66996be4a2b43b64e6100c62a2fa41381
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443664"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649959"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker üzembe helyezése
 
@@ -19,6 +19,9 @@ A Azure Automation Hybrid Runbook Worker szolgáltatásával a runbookok közvet
 A runbook-feldolgozó sikeres üzembe helyezése után tekintse át a [Runbookok futtatása hibrid runbook-feldolgozón](automation-hrw-run-runbooks.md) című témakört, amelyből megtudhatja, hogyan konfigurálhatja a runbookok a helyszíni adatközpontban vagy más felhőalapú környezetben lévő folyamatok automatizálására.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+>[!NOTE]
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
 
 ## <a name="windows-hybrid-runbook-worker-installation-and-configuration"></a>Windows hibrid Runbook Worker telepítése és konfigurálása
 
@@ -51,7 +54,8 @@ A hibrid Runbook-feldolgozók további hálózati követelményeinek eléréséh
 ### <a name="server-onboarding-for-management-with-automation-dsc"></a>Kiszolgáló bevezetését Automation DSC
 
 További információ a DSC-vel való felügyelethez szükséges bevezetési kiszolgálókról: [bevezetési gépek a Azure Automation DSC általi felügyelethez](automation-dsc-onboarding.md).
-Ha engedélyezi a [Update Management megoldást](../operations-management-suite/oms-solution-update-management.md), a log Analytics-munkaterülethez csatlakoztatott összes Windows-számítógép automatikusan hibrid Runbook-feldolgozóként van konfigurálva a megoldásban foglalt runbookok támogatásához. Azonban nincs regisztrálva az Automation-fiókban már definiált hibrid feldolgozói csoportokkal. 
+
+Ha engedélyezi a [Update Management megoldást](../operations-management-suite/oms-solution-update-management.md), a log Analytics-munkaterülethez csatlakoztatott összes Windows-számítógép automatikusan hibrid Runbook-feldolgozóként van konfigurálva a megoldásban foglalt runbookok támogatásához. Azonban nincs regisztrálva az Automation-fiókban már definiált hibrid feldolgozói csoportokkal.
 
 ### <a name="adding-the-computer-to-a-hybrid-runbook-worker-group"></a>A számítógép hozzáadása egy hibrid Runbook Worker-csoporthoz
 
@@ -65,19 +69,17 @@ A célszámítógépen hajtsa végre a következő lépéseket a Windows hibrid 
 
 Töltse le a New-OnPremiseHybridWorker. ps1 parancsfájlt a [PowerShell-Galéria](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker) közvetlenül a hibrid Runbook-feldolgozói szerepkört futtató számítógépről vagy a környezet egy másik számítógépéről. Másolja a szkriptet a feldolgozóba. A New-OnPremiseHybridWorker. ps1 parancsfájl a következő paramétereket igényli a végrehajtás során:
 
-   * *AAResourceGroupName* (kötelező): az Automation-fiókhoz társított erőforráscsoport neve.
-   * *OMSResourceGroupName* (nem kötelező): az erőforráscsoport neve a log Analytics munkaterülethez. Ha ez az erőforráscsoport nincs megadva, a rendszer a *AAResourceGroupName* használja.
-   * *SubscriptionID* (kötelező): az Automation-fiókhoz tartozó Azure-előfizetés azonosítója.
-   * *TenantID* (nem kötelező): az Automation-fiókhoz társított bérlői szervezet azonosítója.
-   * *WorkspaceName* (nem kötelező): a log Analytics munkaterület neve. Ha nem rendelkezik Log Analytics munkaterülettel, a szkript létrehoz és konfigurál egyet.
-   * *AutomationAccountName* (kötelező): az Automation-fiók neve.
-   * *HybridGroupName* (kötelező): annak a hibrid Runbook-feldolgozói csoportnak a neve, amelyet a jelen forgatókönyvet támogató runbookok célként határozhat meg.
-   * *Hitelesítő adatok* (nem kötelező): az Azure-környezetbe való bejelentkezéskor használandó hitelesítő adatok.
+* *AAResourceGroupName* (kötelező): az Automation-fiókhoz társított erőforráscsoport neve.
+* *OMSResourceGroupName* (nem kötelező): az erőforráscsoport neve a log Analytics munkaterülethez. Ha ez az erőforráscsoport nincs megadva, a rendszer a *AAResourceGroupName* használja.
+* *SubscriptionID* (kötelező): az Automation-fiókhoz tartozó Azure-előfizetés azonosítója.
+* *TenantID* (nem kötelező): az Automation-fiókhoz társított bérlői szervezet azonosítója.
+* *WorkspaceName* (nem kötelező): a log Analytics munkaterület neve. Ha nem rendelkezik Log Analytics munkaterülettel, a szkript létrehoz és konfigurál egyet.
+* *AutomationAccountName* (kötelező): az Automation-fiók neve.
+* *HybridGroupName* (kötelező): annak a hibrid Runbook-feldolgozói csoportnak a neve, amelyet a jelen forgatókönyvet támogató runbookok célként határozhat meg.
+* *Hitelesítő adatok* (nem kötelező): az Azure-környezetbe való bejelentkezéskor használandó hitelesítő adatok.
   
-   > [!NOTE]
-   > A megoldások engedélyezésekor csak bizonyos régiók esetén lehet összekapcsolni egy Log Analytics-munkaterületet és egy Automation-fiókot.
-   >
-   > A támogatott leképezési párok listáját lásd: [az Automation-fiók és a log Analytics munkaterület-hozzárendelési területe](how-to/region-mappings.md).
+> [!NOTE]
+> A megoldások engedélyezésekor csak bizonyos régiók támogatottak Log Analytics munkaterület és egy Automation-fiók összekapcsolásához. A támogatott leképezési párok listáját lásd: [az Automation-fiók és a log Analytics munkaterület-hozzárendelési területe](how-to/region-mappings.md).
 
 ### <a name="2-open-windows-powershell-command-line-shell"></a>2. Nyissa meg a Windows PowerShell parancssori rendszerhéjt
 

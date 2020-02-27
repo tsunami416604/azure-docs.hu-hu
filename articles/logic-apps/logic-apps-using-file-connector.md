@@ -8,16 +8,16 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: bc2067dbde1e99619fb6e384be4e70f606c8518d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2a00405a2100c3e565ca4f8ea4149540a5199b43
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792774"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651406"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Kapcsolódás helyi fájlrendszerekhez Azure Logic Apps
 
-A fájlrendszer-összekötő és a Azure Logic Apps használatával olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek egy helyszíni fájlmegosztás számára hoznak létre és kezelhetnek fájlokat, például:  
+A Azure Logic Apps és a fájlrendszer-összekötővel olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek egy helyszíni fájlmegosztás fájljainak létrehozására és kezelésére használhatók, például:
 
 - Fájlok létrehozása, beolvasása, hozzáfűzése, frissítése és törlése.
 - Mappákban vagy gyökérkönyvtárban található fájlok listázása.
@@ -65,7 +65,7 @@ Ez a cikk bemutatja, hogyan kapcsolódhat a helyi fájlrendszerhez a példa pél
 
    ![Kapcsolat létrehozása](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    | -------- | -------- | ----- | ----------- |
    | **Kapcsolat neve** | Igen | <a *kapcsolatok neve*> | A kapcsolatok kívánt neve |
    | **Gyökérmappa** | Igen | <*gyökér-mappa neve*> | A fájlrendszer gyökérkönyvtára, például ha telepítette a helyszíni adatátjárót, például egy helyi mappát azon a számítógépen, amelyen a helyszíni adatátjáró telepítve van, vagy egy hálózati megosztás mappája, amelyhez a számítógép hozzáférhet. <p>Például:`\\PublicShare\\DropboxFiles` <p>A gyökérmappa a fő szülő mappa, amely a fájlokkal kapcsolatos összes művelet relatív elérési útjaihoz használható. |
@@ -93,7 +93,10 @@ Ez a cikk bemutatja, hogyan kapcsolódhat a helyi fájlrendszerhez a példa pél
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/fileconnector/).
+Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](https://docs.microsoft.com/connectors/fileconnector/).
+
+> [!NOTE]
+> Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
 ## <a name="next-steps"></a>Következő lépések
 

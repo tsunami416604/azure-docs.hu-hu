@@ -4,12 +4,12 @@ description: Ismerje meg az ismert korlátozásokat a Windows Server Node-készl
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 6d951652e3522b7ff926b72a3916bffe97575054
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 157f890c65efd0de9fa7d8d7aa5cb43b4a902dfa
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592493"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615641"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>A Windows Server Node-készletek és az alkalmazások számítási feladatainak jelenlegi korlátai az Azure Kubernetes szolgáltatásban (ak)
 
@@ -51,9 +51,9 @@ Egy AK-fürt fő csomópontjai (a vezérlő síkja) a szolgáltatásban találha
 
 A Windows Node-készletekkel rendelkező AK-fürtöknek az Azure CNI (Advanced) hálózatkezelési modellt kell használniuk. A Kubenet (alapszintű) hálózatkezelés nem támogatott. További információ a hálózati modellekkel kapcsolatos különbségekről: az [AK-beli alkalmazások hálózati fogalmai][azure-network-models]. – Az Azure CNI Network Model további tervezést és szempontokat igényel az IP-címek kezeléséhez. Az Azure-CNI tervezésével és megvalósításával kapcsolatos további információkért lásd: [Az Azure CNI hálózatkezelésének konfigurálása az AK-ban][configure-azure-cni].
 
-## <a name="can-i-change-the-min--of-pods-per-node"></a>Megváltoztathatom a hüvelyek percenkénti számát.
+## <a name="can-i-change-the-max--of-pods-per-node"></a>Módosítható a max. a hüvelyek száma egy csomóponton?
 
-A fürtök megbízhatóságának biztosítása érdekében jelenleg követelmény, hogy legalább 30 hüvelyre legyen beállítva.
+A fürtök megbízhatóságának biztosítása érdekében jelenleg legfeljebb 30 hüvelyre van szükség.
 
 ## <a name="how-do-patch-my-windows-nodes"></a>Hogyan végezhető el a Windows-csomópontok javítása?
 

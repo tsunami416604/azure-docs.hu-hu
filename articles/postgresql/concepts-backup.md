@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: be6b9c30fe462b0754ae5e5c1a7eeac242af00f1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 02/25/2020
+ms.openlocfilehash: 3e6dfd5882e49ad903e8cff6f0ec7f3d6bd4a8b7
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769863"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619627"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Biztonsági mentés és visszaállítás Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -20,6 +20,8 @@ Azure Database for PostgreSQL automatikusan létrehozza a kiszolgáló biztonsá
 ## <a name="backups"></a>Biztonsági másolatok
 
 Azure Database for PostgreSQL biztonsági másolatokat készít az adatfájlokról és a tranzakciónaplóról. A maximálisan támogatott tárterület méretétől függően teljes és különbözeti biztonsági mentéseket (4 TB-os maximális tárolási kiszolgálókat) vagy pillanatképes biztonsági mentést (legfeljebb 16 TB-os maximális tárolási kiszolgálót) használhat. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is beállíthatja. Az összes biztonsági mentés titkosítása AES 256 bites titkosítás használatával történik.
+
+Ezeket a biztonságimásolat-fájlokat nem lehet exportálni. A biztonsági másolatok csak Azure Database for PostgreSQL visszaállítási műveleteihez használhatók. Az adatbázis másolásához [pg_dump](howto-migrate-using-dump-and-restore.md) használható.
 
 ### <a name="backup-frequency"></a>Biztonsági mentés gyakorisága
 
@@ -52,7 +54,7 @@ A helyreállítás becsült ideje több tényezőtől függ, többek között az
 > [!IMPORTANT]
 > A törölt kiszolgálók **nem** állíthatók vissza. Ha törli a kiszolgálót, a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. A kiszolgálói erőforrások, a telepítés után a véletlen törlés vagy a váratlan módosítások elleni védelem érdekében a rendszergazdák kihasználhatják a [felügyeleti zárolásokat](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
-### <a name="point-in-time-restore"></a>Időponthoz kötött visszaállítás
+### <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
 
 A biztonsági mentési redundancia-beállítástól függetlenül a biztonsági másolatok megőrzési időszakán belül bármikor elvégezheti a visszaállítást. A rendszer létrehoz egy új kiszolgálót ugyanabban az Azure-régióban, mint az eredeti kiszolgálót. A rendszer az eredeti kiszolgáló konfigurációját hozza létre a díjszabási csomag, a számítási generáció, a virtuális mag száma, a tárterület mérete, a biztonsági másolatok megőrzési időtartama és a biztonsági mentési redundancia beállítás esetében.
 
@@ -73,7 +75,7 @@ A Geo-visszaállítás során a megváltoztatható kiszolgálói konfigurációk
 A helyreállítási mechanizmusból való visszaállítás után a következő feladatokat kell elvégeznie a felhasználók és alkalmazások biztonsági mentésének és futtatásának visszaszerzéséhez:
 
 - Ha az új kiszolgáló lecseréli az eredeti kiszolgálót, átirányítja az ügyfeleket és az ügyfélalkalmazások az új kiszolgálóra
-- Gondoskodjon arról, hogy a felhasználók a megfelelő kiszolgálói szintű tűzfalszabályok legyenek a kapcsolódáshoz
+- Gondoskodjon arról, hogy a felhasználók csatlakozzanak a megfelelő kiszolgálói szintű tűzfal-és VNet-szabályokhoz. Ezeket a szabályokat a rendszer nem másolja át az eredeti kiszolgálóról.
 - Győződjön meg arról, hogy a megfelelő bejelentkezések és az adatbázis-szintű engedélyek vannak érvényben
 - Konfigurálja a riasztásokat, ha szükséges.
 

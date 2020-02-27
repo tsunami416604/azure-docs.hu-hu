@@ -7,18 +7,21 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/11/2020
-ms.openlocfilehash: a093eea8b1961482722211017174018a649e2c4f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 02/21/2020
+ms.openlocfilehash: 6eb8f86d7bfa1c140c6422753840ded8a37ce3c4
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484842"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616090"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus méretezése
 
 > [!Important]
-> Az autoscale funkció csak a 2019. május 8. után létrehozott Apache Spark, ApacheHive, LLAP és Apache HBase-fürtökön működik. Az LLAP-és HBase-méretezési funkció előzetes verzióban érhető el.
+> Az Azure HDInsight autoscale funkciójának kiadása a Spark-és Hadoop-fürtökre vonatkozó 2019, november 7-én általánosan elérhető, és a szolgáltatás előzetes verziójában nem érhető el. Ha a Spark-fürtöt a 2019 november 7. előtt hozta létre, és szeretné használni az autoscale funkciót a fürtön, az ajánlott elérési út egy új fürt létrehozása, és az autoskálázás engedélyezése az új fürtön. 
+>
+>Az interaktív lekérdezés (LLAP) és a HBase-fürtök autoskálázása még előzetes verzióban érhető el. Az autoskálázás csak a Spark, a Hadoop, az interaktív lekérdezés és a HBase-fürtökön érhető el. 
+
 
 Az Azure HDInsight fürt automatikus méretezési funkciója automatikusan felfelé és lefelé méretezi a munkavégző csomópontok számát a fürtben. A fürtben lévő más típusú csomópontok jelenleg nem méretezhetők.  Új HDInsight-fürt létrehozása során beállítható a munkavégző csomópontok minimális és maximális száma. Az automatikus skálázás ezután figyeli az elemzési terhelés erőforrás-követelményeit, és a feldolgozói csomópontok számát felfelé vagy lefelé méretezi. Ehhez a szolgáltatáshoz nem számítunk fel további díjat.
 

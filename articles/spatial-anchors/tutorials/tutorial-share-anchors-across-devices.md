@@ -8,18 +8,18 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f0029fcf8e9efdea529212a7cca49cc8660c623f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3b377f87bdba40c90cb3af6caef2c089d7b7de49
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276965"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615495"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Oktatóanyag: Azure térbeli horgonyok megosztása a munkamenetek és az eszközök között
 
 Ebből az oktatóanyagból megtudhatja, hogyan használhatók az [Azure térbeli horgonyok](../overview.md) egy adott munkamenetben, majd megkereshetik őket ugyanazon az eszközön vagy egy másikon. Ugyanezeket a horgonyokat több eszköz is elhelyezheti ugyanazon a helyen és egyidejűleg.
 
-![Kitartás](./media/persistence.gif)
+![Perzisztencia](./media/persistence.gif)
 
 Az Azure térbeli horgonyok egy többplatformos fejlesztői szolgáltatás, amely lehetővé teszi, hogy vegyes valóságot hozzon létre olyan objektumok használatával, amelyek az adott helyen maradnak a helyükön az egyes eszközökön. Ha elkészült, egy olyan alkalmazással fog rendelkezni, amely két vagy több eszközre is telepíthető. Az egyik példány által létrehozott Azure térbeli horgonyok megoszthatók másokkal.
 
@@ -44,13 +44,13 @@ A következőket fogja megtanulni:
 
 ## <a name="deploy-your-sharing-anchors-service"></a>A megosztási horgonyok szolgáltatás üzembe helyezése
 
-## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/VS)
+## <a name="visual-studio"></a>[Visual Studio](#tab/VS)
 
 Nyissa meg a Visual studiót, és nyissa meg a projektet a `Sharing\SharingServiceSample` mappában.
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
-## <a name="visual-studio-codetabvsc"></a>[Visual Studio Code](#tab/VSC)
+## <a name="visual-studio-code"></a>[Visual Studio Code](#tab/VSC)
 
 A szolgáltatás a VS Code-ban való üzembe helyezése előtt létre kell hoznia egy erőforráscsoportot és egy App Service tervet.
 
@@ -89,6 +89,12 @@ Nyissa meg a Visual Studio Code-ot, és nyissa meg a projektet a `Sharing\Sharin
 ## <a name="deploy-the-sample-app"></a>A minta alkalmazás üzembe helyezése
 
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
+
+## <a name="troubleshooting"></a>Hibakeresés
+
+### <a name="unity-20193"></a>Unity 2019,3
+
+A változtatások miatt a 2019,3 egység jelenleg nem támogatott. Használja a 2019,1 vagy a 2019,2 egységet.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

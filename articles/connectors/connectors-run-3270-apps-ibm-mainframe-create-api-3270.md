@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 309cf59c4b27c2a5906acfc519edd5306dece2d5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a9d3d0287e7839d6396553d532ba6f293fb19b68
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789239"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647665"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>A 3270-es képernyő-vezérelt alkalmazások integrálása az Azure-ba a Azure Logic Apps és az IBM 3270 Connector használatával
 
@@ -218,13 +218,13 @@ Ebben a példában tegyük fel, hogy egy "WBGB" nevű CICS-tranzakciót futtat, 
 
 Azt is tegyük fel, hogy megismétli ezeket a lépéseket, de helytelen adatbevitelt végez, így a hibát bemutató képernyő rögzíthető. Itt láthatók a rögzített képernyők:
 
-* MSG – 10
+* MSG-10
 * CICS Üdvözöljük
 * Üres
 * WBGB_1 (bemenet)
 * WBGB_2 (hiba)
 * Empty_1
-* MSG – 10_1
+* MSG-10_1
 
 Bár itt számos képernyő egyedi nevet kap, néhány képernyő ugyanaz a képernyő, például "MSG-10" és "Empty". Ismétlődő képernyő esetén a tervben csak egy példányt használhat a képernyőn. Az alábbi példák bemutatják, hogyan lehet egy különálló csomagot, a csatlakoztatási tervet, a leválasztási tervet, valamint egy kombinált tervet keresni:
 
@@ -358,7 +358,7 @@ Ha befejezi ezeket a lépéseket, használhatja a logikai alkalmazásban létreh
 
 1. Ha még nem létezik kapcsolatok, adja meg a szükséges adatokat a kapcsolatban, és válassza a **Létrehozás**lehetőséget.
 
-   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
    | **Kapcsolat neve** | Igen | <a *kapcsolatok neve*> | A kapcsolatok neve |
    | **Integrációs fiók azonosítója** | Igen | <*integráció – fiók neve*> | Az integrációs fiók neve |
@@ -372,19 +372,19 @@ Ha befejezi ezeket a lépéseket, használhatja a logikai alkalmazásban létreh
    | **Ellenőrzi a gazdagép SSL-tanúsítványát?** | Nem | Be vagy ki | Kapcsolja be vagy kapcsolja ki a kiszolgáló tanúsítványának érvényesítését. |
    ||||
 
-   Példa:
+   Például:
 
    ![Kapcsolat tulajdonságai](./media/connectors-create-api-3270/connection-properties.png)
 
 1. Adja meg a művelethez szükséges adatokat:
 
-   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
    | **Hidx neve** | Igen | <*HIDX-fájl neve*> | Válassza ki a használni kívánt 3270 HIDX-fájlt. |
    | **Metódus neve** | Igen | <*metódus – név*> | Válassza ki a használni kívánt HIDX-fájl metódusát. Miután kiválasztott egy metódust, megjelenik az **új paraméterek hozzáadása** lista, ahol kiválaszthatja a metódussal használandó paramétereket. |
    ||||
 
-   Példa:
+   Például:
 
    **HIDX-fájl kiválasztása**
 
@@ -409,7 +409,10 @@ Ha befejezi ezeket a lépéseket, használhatja a logikai alkalmazásban létreh
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az [összekötő hivatkozási oldalát](/connectors/si3270/).
+Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](https://docs.microsoft.com/connectors/si3270/).
+
+> [!NOTE]
+> Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -5,27 +5,29 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/30/2018
+ms.date: 02/25/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cc17df68280c342f863e69e6a253788d20caeba8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5d6a12a4dbeba4ce35bacd5c2a0fdcb43442b9b8
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178962"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619801"
 ---
 ### <a name="to-add-additional-address-space"></a>További címterek felvétele
 
-1. További címtartomány hozzáadásához a címtér a a **beállítások** a virtuális hálózat lapjának, válassza ki a szakasz **címtér**. A **címtér** lap jelenik meg.
-2. Adja hozzá a további címtartományt, és válassza ki **mentése** az oldal tetején.
+1. Ha további címtartományt szeretne hozzáadni a Címterület számára, akkor a virtuális hálózat lap **Beállítások** szakaszában válassza a **címterület**lehetőséget. Megjelenik a **címterület** lap.
+2. Adja hozzá a további címtartományt, majd kattintson a **Save (Mentés** ) gombra az oldal tetején.
 
-   ![Címtartomány felvétele](./media/vpn-gateway-additional-address-space-include/address_space.png)
+   ![Címtartomány felvétele](./media/vpn-gateway-additional-address-space-include/add-space.png)
 
 ### <a name="to-create-additional-subnets"></a>További alhálózatok létrehozása
 
-1. Az alhálózatok, létrehozásához a **beállítások** a virtuális hálózat lapjának, válassza ki a szakasz **alhálózatok**. A **alhálózatok** lap jelenik meg. 
-2. Válassza ki **alhálózati** megnyitásához a **alhálózat hozzáadása** lapot. Adja meg a **neve** az új alhálózat, és adja meg a **címtartomány**.
+1. További alhálózatok létrehozásához a virtuális hálózat lapjának **Beállítások** **szakaszában válassza az alhálózatok**lehetőséget. Megjelenik az **alhálózatok** lap.
+1. Válassza a **+ alhálózat** lehetőséget az **alhálózat hozzáadása** lap megnyitásához.
 
-   ![Alhálózat-beállítások](./media/vpn-gateway-additional-address-space-include/add_subnet.png)
-3. A módosítások mentéséhez válassza **OK** az oldal alján.
+   ![Alhálózat hozzáadása](./media/vpn-gateway-additional-address-space-include/subnet.png)
+1. Adja meg az új alhálózat **nevét** , és adja meg a **címtartományt**. A módosítások mentéséhez kattintson az **OK gombra** a lap alján.
+
+   ![Alhálózat-beállítások](./media/vpn-gateway-additional-address-space-include/add-subnet.png)

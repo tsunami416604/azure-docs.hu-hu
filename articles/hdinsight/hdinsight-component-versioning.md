@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 02/02/2020
-ms.openlocfilehash: 13c064701a5ecae2090a99980249f5daaa8d5395
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/26/2020
+ms.openlocfilehash: 9c801f5c039996ac36c4f4479318d64cccdd204d
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198956"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649993"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Milyen Apache Hadoop-összetevők és-verziók érhetők el a HDInsight-ben?
 
@@ -62,6 +62,12 @@ A Hadoop ökoszisztéma-összetevők HDInsight társított verziói a HDInsight 
 A HDInsight legújabb verzióiban további kibocsátási megjegyzéseket a [HDInsight kibocsátási megjegyzései](hdinsight-release-notes.md) című témakörben talál.
 
 ## <a name="supported-hdinsight-versions"></a>Támogatott HDInsight-verziók
+
+### <a name="support-expiration-and-retirement-for-hdinsight-versions"></a>A HDInsight-verziók lejáratának és kivonulásának támogatása
+
+A **támogatás lejárata** azt jelenti, hogy a Microsoft többé nem nyújt támogatást a megadott HDInsight-verzióhoz, és a továbbiakban nem lesz érhető el. a fürt létrehozásához Azure Portal. Ezek a verziók azonban továbbra is létrehozhatók az Azure CLI-vel vagy a különböző SDK-k használatával. 
+
+**A HDInsight** -verziók kivonása azt jelenti, hogy a meglévő fürtök továbbra is futni fognak. Azonban a verzió új fürtök nem hozhatók létre semmilyen módon (beleértve a CLI-t és az SDK-kat is). Az egyéb vezérlési sík funkciók (például a manuális skálázás és az automatikus skálázás) a nyugdíjazás után is nem működnek. A támogatás nem érhető el a kivont verziókhoz.
 
 A következő táblázat a HDInsight verzióját sorolja fel. A támogatási lejárati és a nyugdíjazási dátumok is megadhatók, ha ismertek.
 

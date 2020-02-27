@@ -9,12 +9,12 @@ ms.reviewer: valthom, logicappspm
 ms.topic: article
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: 489f53a4f4c1c0d5bd782f42a9daf73217234793
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6bfd626c1ce69029ee720d24b0b143e7b4c3dd56
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118052"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650947"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Kapcsolódás IBM MQ-kiszolgálóhoz Azure Logic Apps
 
@@ -134,7 +134,10 @@ Az **üzenetek küldése** művelet hozzáadásakor az első korábban konfigur�
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-A műveletekkel és korlátokkal kapcsolatos technikai részletekért, amelyeket az összekötő OpenAPI (korábban hencegett) leírása ismertet, tekintse át az összekötő [hivatkozási oldalát](/connectors/mq/).
+Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](https://docs.microsoft.com/connectors/mq/).
+
+> [!NOTE]
+> Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -5,18 +5,18 @@ author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 831d0876c67aa36248a54f3935e5ce7884c736ef
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: b034159c3d12927f6425b3dc3c5b5609af9b0b76
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186630"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649364"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Webalkalmazási tűzfal sebességének korlátozási szabályának konfigurálása Azure PowerShell használatával
-Az Azure-beli Azure webalkalmazási tűzfal (WAF) díjszabási szabálya az Azure-beli bejárati ajtónál az egyperces időtartam alatt egyetlen ügyfél-IP-címről engedélyezett kérelmek számát szabályozza.
-Ez a cikk bemutatja, hogyan konfigurálhat egy WAF-korlátozási szabályt, amely az adott ügyfél által az Azure PowerShell használatával az URL-címen található */promo* tartalmazó webalkalmazások számára engedélyezett kérelmek számát vezérli.
+Az Azure-beli előtérben lévő Azure webalkalmazási tűzfal (WAF) díjszabási szabálya az ügyfelek által az egyperces időtartam alatt engedélyezett kérelmek számát szabályozza.
+Ez a cikk bemutatja, hogyan konfigurálhat egy WAF-korlátozási szabályt, amely meghatározza az ügyfelek által az Azure PowerShell használatával az URL-címben szereplő */promo* tartalmazó webalkalmazásoknak engedélyezett kérelmek számát.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -27,12 +27,12 @@ Az Azure PowerShell olyan parancsmagok készletét kínálja, amelyek az [Azure 
 
 Az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/overview) telepítheti a helyi számítógépen és bármely PowerShell-munkamenetben használhatja. Kövesse az oldalon megjelenő utasításokat, és jelentkezzen be az Azure-beli hitelesítő adataival, és telepítse az az PowerShell-modult.
 
-#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Kapcsolódás az Azure-hoz interaktív párbeszédablak a bejelentkezéshez
+#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Kapcsolódás az Azure-hoz egy interaktív párbeszédablak a bejelentkezéshez
 ```
 Connect-AzAccount
 
 ```
-A Front Door-modul telepítése előtt győződjön meg arról, hogy telepítve van a PowerShellGet aktuális verziója. Futtassa az alábbi parancsot, majd nyissa meg a PowerShellt újból.
+Mielőtt telepítené a bejárati modult, győződjön meg arról, hogy a PowerShellGet aktuális verziója telepítve van. Futtassa a következő parancsot, majd nyissa meg újra a PowerShellt.
 
 ```
 Install-Module PowerShellGet -Force -AllowClobber
@@ -73,7 +73,7 @@ Adja meg a díjszabási korlátot a [New-AzFrontDoorWafCustomRuleObject](/powers
 
 Keresse meg annak az erőforráscsoportnak a nevét, amely az `Get-AzureRmResourceGroup`használatával tartalmazza a bejárati ajtót. Ezután állítson be egy biztonsági házirendet egyéni díjszabási szabályként a [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) használatával a megadott erőforráscsoport, amely tartalmazza az előtérben profilt.
 
-Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használja azzal a feltételezéssel, hogy létrehozta a bevezető ajtó profilt a rövid útmutatóban található utasításokkal [: hozzon létre egy bejárati ajtót](../../frontdoor/quickstart-create-front-door.md) .
+Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használja azzal a feltételezéssel, hogy létrehozta a bevezető ajtaját a gyors útmutató [: Create a](../../frontdoor/quickstart-create-front-door.md) bejárati ajtóról szóló cikket.
 
  a [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)használata.
 
@@ -89,7 +89,7 @@ Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használ
 Csatolja a biztonsági házirend objektumot egy meglévő előtér-előtéri gazdagéphez, és frissítse a bejárati ajtó tulajdonságait. Először a [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor) parancs használatával olvassa be az előtérben lévő objektumot.
 Ezután állítsa be az előtér- *WebApplicationFirewallPolicyLink* tulajdonságot az előző lépésben létrehozott "$RatePolicy" *resourceId* a [set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) parancs használatával. 
 
-Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használja azzal a feltételezéssel, hogy létrehozta a bevezető ajtó profilt a rövid útmutatóban található utasításokkal [: hozzon létre egy bejárati ajtót](../../frontdoor/quickstart-create-front-door.md) . Emellett az alábbi példában cserélje le a $frontDoorName nevet a bejárati ajtó profiljának nevére. 
+Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használja azzal a feltételezéssel, hogy létrehozta a bevezető ajtaját a gyors útmutató [: Create a](../../frontdoor/quickstart-create-front-door.md) bejárati ajtóról szóló cikket. Emellett az alábbi példában cserélje le a $frontDoorName nevet a bejárati ajtó profiljának nevére. 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `

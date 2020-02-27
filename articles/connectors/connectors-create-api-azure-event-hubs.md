@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: a0ba747fcc3015df961aa40de794071828d73a33
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32fa54ef0d8eccaf8745ee37cb028d4f3c6d73eb
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446168"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650878"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Események figyelése, fogadása és küldése az Azure Event Hubs és Azure Logic Apps
 
@@ -33,7 +33,7 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure L
 
 Győződjön meg arról, hogy a logikai alkalmazás hozzáfér az Event hub-hoz, ellenőrizze az engedélyeket, és szerezze be a Event Hubs névtérhez tartozó kapcsolati karakterláncot.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. Nyissa meg a Event Hubs *névteret*, nem egy adott Event hub-t. 
 
@@ -74,7 +74,7 @@ Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-mu
 
    ![Eseményindító tulajdonságai](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-   | Tulajdonság | Szükséges | Leírás |
+   | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
    | **Event hub neve** | Igen | A figyelni kívánt Event hub neve |
    | **Tartalom típusa** | Nem | Az esemény tartalomtípusa. A mező alapértelmezett értéke: `application/octet-stream`. |
@@ -86,7 +86,7 @@ Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-mu
 
    **További tulajdonságok**
 
-   | Tulajdonság | Szükséges | Leírás |
+   | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
    | **Tartalmi séma** | Nem | Az Event hub-ból beolvasni kívánt események JSON-tartalmának sémája. Ha például megadja a tartalmi sémát, a logikai alkalmazást csak azokhoz az eseményekhez aktiválhatja, amelyek megfelelnek a sémának. |
    | **Minimális partíciós kulcs** | Nem | Adja meg az olvasni kívánt [partíció](../event-hubs/event-hubs-features.md#partitions) -azonosító minimális értéket. Alapértelmezés szerint a rendszer az összes partíciót beolvassa. |
@@ -130,12 +130,12 @@ A műveletek listából válassza a következő műveletet: **esemény küldése
 
    ![Válassza ki az Event hub nevét, és adja meg az esemény tartalmát](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
-   | Tulajdonság | Szükséges | Leírás |
+   | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
    | **Event hub neve** | Igen | Az Event hub, ahová el szeretné küldeni az eseményt |
    | **Tartalom** | Nem | Az elküldeni kívánt esemény tartalma |
    | **Tulajdonságok** | Nem | A küldendő alkalmazás tulajdonságai és értékei |
-   | **Partíciókulcs** | Nem | Az esemény küldési helyének [partíció](../event-hubs/event-hubs-features.md#partitions) -azonosítója |
+   | **Partíciós kulcs** | Nem | Az esemény küldési helyének [partíció](../event-hubs/event-hubs-features.md#partitions) -azonosítója |
    ||||
 
    Elküldheti például a kimenetet a Event Hubs eseményindítóból egy másik Event hubhoz:
@@ -152,13 +152,13 @@ A műveletek listából válassza a következő műveletet: **esemény küldése
 
 1. Ha a rendszer a kapcsolódási adatok megadását kéri, adja meg a következő adatokat:
 
-   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
    | **Kapcsolat neve** | Igen | <a *kapcsolatok neve*> | A kapcsolódáshoz létrehozandó név |
    | **Event Hubs névtér** | Igen | <*Event-hubok-namespace*> | Válassza ki a használni kívánt Event Hubs névteret. |
    |||||  
 
-   Példa:
+   Például:
 
    ![Event hub-kapcsolat létrehozása](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-1.png)
 
@@ -173,8 +173,11 @@ A műveletek listából válassza a következő műveletet: **esemény küldése
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő OpenAPI (korábban hencegő) fájljában leírtak szerint tekintse [meg az összekötő hivatkozási oldalát](/connectors/eventhubs/).
+A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő hencegő fájlja ismerteti, lásd az [összekötő hivatkozási oldalát](https://docs.microsoft.com/connectors/eventhubs/).
+
+> [!NOTE]
+> Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

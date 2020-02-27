@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 009a480add9d808115f24a69a400118fec7cb293
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 458012982531e228f7c4968f29e79e8b2e29aa48
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790580"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651431"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatizált Backup v2 Azure Virtual Machineshoz (Resource Manager)
 
@@ -118,11 +118,7 @@ Ezt követően pedig 6 órán keresztül 10 órakor, az összes adatbázis telje
 > [!IMPORTANT]
 > A napi biztonsági mentések ütemezésekor ajánlott a széles körű időszak ütemezése, hogy az összes adatbázisról biztonsági másolat készüljön. Ez különösen fontos abban az esetben, ha nagy mennyiségű adattal kell biztonsági másolatot készíteni.
 
-## <a name="configure-in-the-portal"></a>Konfigurálás a portálon
-
-A Azure Portal használatával konfigurálhatja az automatizált Backup v2-t a kiépítés során, vagy a meglévő SQL Server 2016/2017 virtuális gépekhez.
-
-## <a name="configure-for-new-vms"></a>Konfigurálás új virtuális gépekhez
+## <a name="configure-new-vms"></a>Új virtuális gépek konfigurálása
 
 Ha a Resource Manager-alapú üzemi modellben új SQL Server 2016 vagy 2017 virtuális gépet hoz létre, a Azure Portal segítségével konfigurálja az automatikus biztonsági mentés v2-es verzióját.
 
@@ -315,7 +311,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>Figyelés
 
 A SQL Server 2016/2017-es automatikus biztonsági mentés figyeléséhez két fő lehetőség közül választhat. Mivel az automatikus biztonsági mentés a SQL Server felügyelt biztonsági mentési szolgáltatást használja, ugyanaz a figyelési módszer is érvényes mindkét eszközre.
 

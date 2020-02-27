@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 37f2f98e594f558a9cd3c3e5994bf17a71ff1899
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 09c976f3076ea41a0441ea62a14ba4d45395a1d4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191251"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648291"
 ---
 # <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>Oktatóanyag: logisztikai regressziós modell létrehozása az R-ben a Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +51,7 @@ A munkaterületet az Azure-erőforrások kezeléséhez használható webalapú k
 
 ## <a name="azure"></a>Jegyzetfüzet-mappa klónozása
 
-Ez a példa a Felhőbeli notebook-kiszolgálót használja a munkaterületen a telepítés ingyenes és előre konfigurált felületén. [Saját környezetét](how-to-configure-environment.md#local) használhatja, ha a környezetét, a csomagokat és a függőségeket szeretné vezérelni.
+Ez a példa a Felhőbeli notebook-kiszolgálót használja a munkaterületen a telepítés ingyenes és előre konfigurált felületén. [Saját környezetét](https://azure.github.io/azureml-sdk-for-r/articles/installation.html) használhatja, ha a környezetét, a csomagokat és a függőségeket szeretné vezérelni.
 
 A következő kísérletet a Azure Machine Learning Studióban, egy összevont felületen végezheti el, amely magában foglalja a gépi tanulási eszközöket, amelyekkel adatelemzési forgatókönyvek végezhetők el az összes képzettségi szinthez tartozó adatelemző szakemberek számára.
 

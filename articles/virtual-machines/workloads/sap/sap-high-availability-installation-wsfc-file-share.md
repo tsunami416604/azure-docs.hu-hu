@@ -3,8 +3,8 @@ title: SAP NetWeaver magas rendelkezésre állású telepítés Windows feladat�
 description: SAP NetWeaver magas rendelkezésre állású telepítés Windows feladatátvevő fürtön és fájlmegosztás SAP ASCS/SCS-példányokhoz
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9fe17c8657b183f9f5370b6096d678e12f7d629
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: a393c1ac09283f1570908cea72750ed5ae28f81e
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472502"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617329"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Az SAP NetWeaver magas rendelkezésre állásának telepítése Windows feladatátvevő fürtön és fájlmegosztás az Azure-beli SAP ASCS/SCS-példányok esetén
 

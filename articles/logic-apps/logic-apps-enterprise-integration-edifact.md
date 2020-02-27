@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/26/2016
-ms.openlocfilehash: b6a6ee21774ba931d9982d82b99008f312d19736
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3ada12a0cde122fb78815a1d3241d8acb9da2580
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793020"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651457"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange EDIFACT-üzenetek a B2B vállalati integrációhoz Azure Logic Appsban Enterprise Integration Pack
 
@@ -36,7 +36,7 @@ Az alábbi elemek szükségesek:
 
 ## <a name="create-an-edifact-agreement"></a>EDIFACT-szerződés létrehozása 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com "Azure Portal"). 
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com "Azure Portal"). 
 
 2. Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. A keresőmezőbe írja be az "integráció" kifejezést, majd válassza az **integrációs fiókok**elemet.
 
@@ -63,7 +63,7 @@ Az alábbi elemek szükségesek:
 
    | Tulajdonság | Leírás |
    | --- | --- |
-   | Név |A szerződés neve |
+   | Name (Név) |A szerződés neve |
    | Szerződés típusa | EDIFACT kell lennie |
    | Gazda partner |Egy szerződéshez a gazdagép és a vendég partner is szükséges. A fogadó partner a szerződést konfiguráló szervezetet jelöli. |
    | Gazdagép identitása |A gazdagép-partner azonosítója |
@@ -112,9 +112,10 @@ A szerződés most már készen áll a kiválasztott beállításoknak megfelel�
 | UNH 2.5 (TÁRSÍTOTT HOZZÁRENDELT KÓD) |Adja meg a hozzárendelt kódot. (Legfeljebb, hat karakter. Alfanumerikusnak kell lennie). |
 | UNG 2.1 (ALKALMAZÁS FELADÓJÁNAK AZONOSÍTÓJA) |Írjon be egy alfanumerikus értéket legalább egy karakterrel, és legfeljebb 35 karaktert. |
 | UNG 2.2 (ALKALMAZÁS KÜLDŐJE KÓD MINŐSÍTŐJE) |Írjon be egy alfanumerikus értéket, amely legfeljebb négy karakter hosszú lehet. |
-| SÉMA |Válassza ki azt a korábban feltöltött sémát, amelyet a társított integrációs fiókból szeretne használni. |
+| SCHEMA |Válassza ki azt a korábban feltöltött sémát, amelyet a társított integrációs fiókból szeretne használni. |
 
 ### <a name="control-numbers"></a>Vezérlőelemek száma
+
 | Tulajdonság | Leírás |
 | --- | --- |
 | Az adatcsere-vezérlési szám másodpéldányának letiltása |Ha meg szeretné tiltani az ismétlődő módosításokat, válassza ki ezt a tulajdonságot. Ha bejelöli ezt a jelölőnégyzetet, a EDIFACT dekódolása művelet ellenőrzi, hogy a fogadott adatcsere esetében (UNB5) nem egyezik-e a korábban feldolgozott adatcsere-vezérlőelem számával. Ha a rendszer egyezést észlel, akkor a rendszer nem dolgozza fel a csomópontot. |
@@ -123,7 +124,7 @@ A szerződés most már készen áll a kiválasztott beállításoknak megfelel�
 | A tranzakciónapló-vezérlők számának duplikálása nem engedélyezett |A duplikált tranzakciónapló-vezérlők számával (UNH1) való adatmódosítások blokkolásához válassza ezt a tulajdonságot. |
 | EDIFACT nyugtázási vezérlő száma |Ha meg szeretné határozni a tranzakciónapló hivatkozási számait a nyugtán való használatra, adja meg az előtag értékét, a hivatkozási számok egy tartományát és egy utótagot. |
 
-### <a name="validations"></a>Érvényesítések
+### <a name="validation"></a>Ellenőrzés
 
 Az egyes ellenőrzési sorok elvégzése után a rendszer automatikusan hozzáadja a másikat. Ha nem ad meg szabályokat, az érvényesítés az "alapértelmezett" sort használja.
 
@@ -173,6 +174,7 @@ A szerződés most már készen áll a kiválasztott beállításoknak megfelel�
 | UNB7 (alkalmazás-hivatkozási azonosító) |Írjon be egy alfanumerikus értéket legalább egy karakterrel, és legfeljebb 14 karakterből állhat. |
 
 ### <a name="acknowledgment"></a>Tudomásul vétele
+
 | Tulajdonság | Leírás |
 | --- | --- |
 | Üzenet fogadása (CONTRL) |Jelölje be ezt a jelölőnégyzetet, ha az üzemeltetett partner technikai (CONTRL) nyugtát szeretne kapni. Ez a beállítás azt határozza meg, hogy az üzenetet küldő üzemeltetett partner visszaigazolást kér a vendég partnertől. |
@@ -180,14 +182,16 @@ A szerződés most már készen áll a kiválasztott beállításoknak megfelel�
 | SG1/SG4 hurok előállítása az elfogadott tranzakciótípusok esetében |Ha a funkcionális visszaigazolás igénylését választotta, jelölje be ezt a jelölőnégyzetet, ha a SG1/SG4 hurkok létrehozását szeretné kényszeríteni az elfogadott tranzakciótípusok esetében a funkcionális CONTRL-visszaigazolásokban. |
 
 ### <a name="schemas"></a>Sémák
+
 | Tulajdonság | Leírás |
 | --- | --- |
 | UNH 2.1 (TÍPUS) |Válasszon egy készlettranzakció-típust. |
 | UNH 2.2 (VERZIÓ) |Adja meg az üzenet verziószámát. |
 | UNH 2.3 (KIADÁS) |Adja meg az üzenet kiadásának számát. |
-| SÉMA |Válassza ki a használni kívánt sémát. A sémák az integrációs fiókban találhatók. A sémák eléréséhez először csatolja az integrációs fiókot a logikai alkalmazáshoz. |
+| SCHEMA |Válassza ki a használni kívánt sémát. A sémák az integrációs fiókban találhatók. A sémák eléréséhez először csatolja az integrációs fiókot a logikai alkalmazáshoz. |
 
 ### <a name="envelopes"></a>Borítékoknak
+
 | Tulajdonság | Leírás |
 | --- | --- |
 | UNB8 (prioritási kód feldolgozása) |Adjon meg egy olyan ABC-értéket, amely nem több karakternél hosszabb. |
@@ -202,7 +206,7 @@ A karakterkészleten kívül más elválasztó karakterek is megadhatók az egye
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| UNB 1.1 (rendszerazonosító) |Válassza ki a kimenő adatcserére alkalmazni kívánt EDIFACT karakterkészletet. |
+| UNB1.1 (System Identifier) |Válassza ki a kimenő adatcserére alkalmazni kívánt EDIFACT karakterkészletet. |
 | Séma |Válasszon ki egy sémát a legördülő listából. Az egyes sorok elvégzése után automatikusan létrejön egy új sor. A kiválasztott séma esetében válassza ki a használni kívánt elválasztó készletet az alábbi elválasztó leírások alapján. |
 | Bemenet típusa |Válasszon egy bemeneti típust a legördülő listából. |
 | Összetevő-elválasztó |Az összetett adatelemek elkülönítéséhez adjon meg egyetlen karaktert. |
@@ -211,13 +215,14 @@ A karakterkészleten kívül más elválasztó karakterek is megadhatók az egye
 | Utótag |Válassza ki a szegmens azonosítójával használt karaktert. Ha kijelöl egy utótagot, a szegmens lezáró adatelem üres is lehet. Ha a szegmens lezáró üresen marad, akkor meg kell jelölnie egy utótagot. |
 
 ### <a name="control-numbers"></a>Vezérlőelemek száma
+
 | Tulajdonság | Leírás |
 | --- | --- |
 | UNB5 (Interchange Control Number) |Adjon meg egy előtagot, egy értéktartomány-tartományt és egy utótagot. Ezek az értékek a kimenő adatcsere létrehozásához használhatók. Az előtag és az utótag nem kötelező, a vezérlő számának megadása kötelező. Minden új üzenetnél nő a vezérlő száma; az előtag és az utótag változatlan marad. |
 | UNG5 (csoport vezérlőelem száma) |Adjon meg egy előtagot, egy értéktartomány-tartományt és egy utótagot. Ezek az értékek a csoport vezérlőelem számának létrehozásához használhatók. Az előtag és az utótag nem kötelező, a vezérlő számának megadása kötelező. A rendszer minden új üzenetnél megnöveli a vezérlő számát, amíg el nem éri a maximális értéket. az előtag és az utótag változatlan marad. |
 | UNH1 (üzenet fejlécének hivatkozási száma) |Adjon meg egy előtagot, egy értéktartomány-tartományt és egy utótagot. Ezek az értékek az üzenet fejlécének hivatkozási számának előállítására szolgálnak. Az előtag és az utótag nem kötelező, míg a hivatkozási számot kötelező megadni. Minden új üzenetnél nő a hivatkozási szám. az előtag és az utótag változatlan marad. |
 
-### <a name="validations"></a>Érvényesítések
+### <a name="validation"></a>Ellenőrzés
 
 Az egyes ellenőrzési sorok elvégzése után a rendszer automatikusan hozzáadja a másikat. Ha nem ad meg szabályokat, az érvényesítés az "alapértelmezett" sort használja.
 
@@ -240,9 +245,13 @@ Az egyes ellenőrzési sorok elvégzése után a rendszer automatikusan hozzáad
 
     ![Válassza a "szerződések" csempét](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
-## <a name="view-swagger-file"></a>Hencegő fájl megtekintése
-A EDIFACT-összekötőhöz tartozó felvágási részletek megtekintéséhez lásd: [EDIFACT](/connectors/edifact/).
+## <a name="connector-reference"></a>Összekötő-referencia
 
-## <a name="learn-more"></a>További információ
-* [További információ a Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack")  
+Az összekötő részletes technikai részleteit, például az összekötő hencegő fájljában leírt műveleteket és korlátokat az összekötő [hivatkozási oldalán](https://docs.microsoft.com/connectors/edifact/)találja.
 
+> [!NOTE]
+> Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
+
+## <a name="next-steps"></a>Következő lépések
+
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

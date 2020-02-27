@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: fb501a158c839e6d4d71fc2af5ae50e48c248466
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 60acd128495176cd0a90418c61edf53bdcd88e5a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789154"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647579"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail küldése az SMTP-fiókból Azure Logic Apps
 
@@ -49,7 +49,7 @@ A Azure Logic Apps és a Simple Mail Transfer Protocol (SMTP) összekötővel au
 
 1. Ha a rendszer kéri, adja meg a következő kapcsolódási adatokat:
 
-   | Tulajdonság | Szükséges | Leírás |
+   | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
    | **Kapcsolat neve** | Igen | Az SMTP-kiszolgálóhoz való kapcsolódás neve | 
    | **SMTP-kiszolgáló címe** | Igen | Az SMTP-kiszolgáló címe | 
@@ -65,12 +65,10 @@ A Azure Logic Apps és a Simple Mail Transfer Protocol (SMTP) összekötővel au
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/smtpconnector/).
+Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](https://docs.microsoft.com/connectors/smtpconnector/).
 
-## <a name="get-support"></a>Támogatás kérése
-
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
+> [!NOTE]
+> Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
 ## <a name="next-steps"></a>Következő lépések
 

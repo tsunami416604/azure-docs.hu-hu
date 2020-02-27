@@ -4,16 +4,16 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/27/2018
 ms.author: iainfou
-ms.openlocfilehash: 56b13a0ba6a93f1acd8edf1ce6c95561f63758c8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 858bc0814bc798cec31fb2be22608122a95c09db
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179670"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77651538"
 ---
 > [!WARNING]
->  **Az Azure Container Service (ACS) elavult. Az ACS jelennek meg semmilyen új szolgáltatásokat és funkciókat. Az összes API-k, portálja, CLI-parancsok és dokumentáció lesznek megjelölve elavultként.**
+>  **A Azure Container Service (ACS) elavult. Nincs új funkció vagy funkció az ACS-ben való hozzáadásakor. Az API-k, a portálok, a CLI-parancsok és a dokumentációk elavultként vannak megjelölve.**
 >
-> 2017-ben vezettük be az Azure Kubernetes Service-t (AKS-t) a Kubernetes kezelésének, üzembe helyezésének és üzemeltetésének egyszerűbbé tételéhez. Ha Ön a Kubernetes-vezénylőt használja, térjen át az AKS használatára 2020. január 31. előtt. Első lépésként lásd [migrálása az Azure Kubernetes Service](../articles/aks/acs-aks-migration.md).
+> 2017-ben bevezetjük az Azure Kubernetes Service (ak) szolgáltatást, amely egyszerűbbé teszi a Kubernetes-felügyeletet, az üzembe helyezést és a műveleteket. Ha a Kubernetes-Orchestrator használja, akkor a 2020-es verzióra kell migrálni az AK-ra. január 31-ig. Első lépésként olvassa el az [áttelepítés az Azure Kubernetes Service-be](../articles/aks/aks-migration.md)című témakört.
 >
-> További információkért lásd: a [az Azure.com webhelyen az Azure Container Service elavulással kapcsolatos bejelentés](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/).
+> További információkért tekintse meg a [Azure.com-ről szóló Azure Container Service elavult közleményt](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/).

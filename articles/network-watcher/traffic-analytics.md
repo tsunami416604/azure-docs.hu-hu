@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47d9508c891d2b4fe74b42114783b02c58e8c91f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77426224"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620006"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -201,7 +201,7 @@ A Traffic Analytics szolgáltatást a Azure PowerShell [set-AzNetworkWatcherConf
 
 ## <a name="view-traffic-analytics"></a>Traffic Analytics megtekintése
 
-A portál bal oldalán válassza a **minden szolgáltatás**lehetőséget, majd a **szűrő** mezőbe írja be a *figyelőt* . Ha a **figyelő** megjelenik a keresési eredmények között, válassza ki. A Traffic Analytics és képességei megismeréséhez válassza a **Network Watcher**, majd a **Traffic Analytics**lehetőséget.
+Traffic Analytics megtekintéséhez keresse meg a **Network Watchert** a portál keresési sávján. Network Watcher belül, a Traffic Analytics és annak képességeinek megismeréséhez válassza a bal oldali menüben a **Traffic Analytics** lehetőséget. 
 
 ![A Traffic Analytics irányítópult elérése](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 

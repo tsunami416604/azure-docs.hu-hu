@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 2e2fea90f125cae6de44afbc82dd749a421ff3e2
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566012"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650861"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Blobok létrehozása és kezelése az Azure Blob Storageban Azure Logic Apps használatával
 
@@ -121,7 +121,7 @@ Ez a példa csak egy blob tartalmát kéri le. A tartalom megtekintéséhez adjo
 
 1. Amikor a rendszer felszólítja a kapcsolódás létrehozására, adja meg a következő információkat:
 
-   | Tulajdonság | Szükséges | Érték | Leírás |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
    | **Kapcsolat neve** | Igen | <a *kapcsolatok neve*> | A kapcsolódáshoz létrehozandó név |
    | **Tárfiók** | Igen | <*Storage – fiók*> | Válassza ki a Storage-fiókját a listából. |
@@ -137,7 +137,10 @@ Ez a példa csak egy blob tartalmát kéri le. A tartalom megtekintéséhez adjo
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő Open API (korábban hencegő) fájlja ismerteti, lásd az [összekötő hivatkozási oldalát](https://docs.microsoft.com/connectors/azureblobconnector/).
+Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](https://docs.microsoft.com/connectors/azureblobconnector/).
+
+> [!NOTE]
+> Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
 <a name="storage-firewalls"></a>
 
@@ -201,6 +204,6 @@ A kivétel és a felügyelt identitás támogatásának beállításához köves
 
 Ha [API Management](../api-management/api-management-key-concepts.md)dedikált szintet használ, a tárolási API-t a API Management használatával is elvégezheti, és engedélyezheti az utóbbi IP-címeit a tűzfalon keresztül. Alapvetően adja hozzá a API Management által használt Azure-beli virtuális hálózatot a Storage-fiók tűzfal-beállításához. Ezután használhatja a API Management műveletet vagy a HTTP-műveletet az Azure Storage API-k meghívásához. Ha azonban ezt a lehetőséget választja, a hitelesítési folyamatot saját kezűleg kell kezelnie. További információ: [Simple Enterprise Integration Architecture](https://aka.ms/aisarch).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

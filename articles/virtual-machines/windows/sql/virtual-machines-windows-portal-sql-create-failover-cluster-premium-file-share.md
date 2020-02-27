@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 57dc7bb98bf4c2f733be0f2c94e17481a429be6d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906800"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651361"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása prémium fájlmegosztás esetén az Azure Virtual Machines szolgáltatásban
 
@@ -28,7 +28,7 @@ Ez a cikk azt ismerteti, hogyan hozható létre egy SQL Server feladatátvevő f
 A prémium szintű fájlmegosztás SSD-alapú, következetesen alacsony késésű fájlmegosztás, amely teljes mértékben támogatott a Windows Server 2012 vagy újabb rendszerű feladatátvevő fürt példányaival SQL Server 2012-es vagy későbbi verzióiban. A prémium szintű fájlmegosztás nagyobb rugalmasságot biztosít, ami lehetővé teszi a fájlmegosztás átméretezését és méretezését leállás nélkül.
 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A Kezdés előtt néhány dologra van szükség.
 
@@ -149,11 +149,11 @@ Ezeknek az előfeltételeknek a megkezdése után elkezdheti felépíteni a fela
 
    1. Válassza a **tovább**, majd az **Eltávolítás**lehetőséget.
 
-1. <a name="ports"></a>Nyissa meg a tűzfal portjait.
+1. <span id="ports"></span> Nyissa meg a tűzfal portjait.  
 
    Az egyes virtuális gépeken nyissa meg ezeket a portokat a Windows tűzfalon:
 
-   | Rendeltetés | TCP-port | Megjegyzések
+   | Cél | TCP-port | Megjegyzések
    | ------ | ------ | ------
    | SQL Server | 1433 | Normál port a SQL Server alapértelmezett példányaihoz. Ha a katalógusból rendszerképet használt, a rendszer automatikusan megnyitja a portot.
    | Állapotadat-mintavétel | 59999 | Bármilyen nyitott TCP-port. Egy későbbi lépésben konfigurálja a terheléselosztó [állapotának](#probe) mintavételét és a fürtöt, hogy ezt a portot használja.
@@ -369,7 +369,7 @@ A terheléselosztó létrehozása:
 
 1. Válassza a **Hozzáadás** lehetőséget.
 
-1. Az **állapotfelmérés hozzáadása** panelen állítsa be a következő <a name="probe"> </a>állapot-mintavételi paramétereket.
+1. Az **állapotfelmérés hozzáadása** panelen állítsa be a következő <span id="probe"></span> állapot-mintavételi paramétereket.
 
    - **Name (név**): az állapot mintavételének neve.
    - **Protokoll**: TCP.
@@ -465,7 +465,7 @@ Az Azure Virtual Machines szolgáltatásban az MSDTC nem támogatott a Windows S
 - A fürtözött MSDTC-erőforrás nem konfigurálható megosztott tároló használatára. Windows Server 2016 rendszeren, ha MSDTC-erőforrást hoz létre, az nem fog tudni használni megosztott tárterületet, még akkor sem, ha rendelkezésre áll tárterület. Ezt a problémát a Windows Server 2019-es verzióban javítottuk.
 - Az alapszintű Load Balancer nem kezeli az RPC-portokat.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

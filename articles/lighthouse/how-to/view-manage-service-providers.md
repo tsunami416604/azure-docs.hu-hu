@@ -1,18 +1,18 @@
 ---
 title: Szolgáltatók megtekintése és kezelése
 description: Az ügyfelek a Azure Portal szolgáltatók lapján tekinthetik meg a szolgáltatók, a szolgáltatói ajánlatok és a delegált erőforrások adatait.
-ms.date: 01/15/2020
+ms.date: 02/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: ff3c37c02c580a833008a65315009d1e42e49043
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 94103c293ffa7ccfb9d7da0a237dc1b1c6540b72
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046123"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649738"
 ---
 # <a name="view-and-manage-service-providers"></a>Szolgáltatók megtekintése és kezelése
 
-Az ügyfelek a Azure Portal **szolgáltatók** lapján tekinthetik meg [](https://portal.azure.com) a szolgáltatókkal és a szolgáltatói ajánlatokkal kapcsolatos információkat, az Azure-beli [delegált erőforrás-kezeléssel](../concepts/azure-delegated-resource-management.md), valamint a további szolgáltatói ajánlatok vásárlásával. Noha a szolgáltatók és az ügyfelekre is hivatkozunk, a több bérlőt kezelő vállalatok ugyanazt a folyamatot használhatják a kezelési élményük megszilárdítására.
+Az ügyfelek a Azure Portal **szolgáltatók** lapján tekinthetik meg [](https://portal.azure.com) a szolgáltatókkal és a szolgáltatói ajánlatokkal kapcsolatos információkat, az Azure-beli [delegált erőforrás-kezeléssel](../concepts/azure-delegated-resource-management.md)és az új szolgáltatói ajánlatok vásárlásával. Noha a szolgáltatók és az ügyfelekre is hivatkozunk, a több bérlőt kezelő vállalatok ugyanazt a folyamatot használhatják a kezelési élményük megszilárdítására.
 
 A Azure Portal **szolgáltatók** lapjának eléréséhez az ügyfél kiválaszthatja az **összes szolgáltatást**, majd kereshet **a szolgáltatók között, és kiválaszthatja** azt. Azt is megtalálják, hogy beírja a "szolgáltatók" kifejezést a Azure Portal tetején található keresőmezőbe.
 
@@ -23,7 +23,7 @@ Ne feledje, hogy a **szolgáltatók lapon csak** azok az adatok jelennek meg, am
 
 ## <a name="view-service-provider-details"></a>Szolgáltató adatainak megtekintése
 
-Ha az ügyfél által használt szolgáltató (k) adatait szeretné megtekinteni **, a szolgáltatók oldal bal** oldalán választhat **szolgáltatói ajánlatokat** .
+A szolgáltatókról szóló információk megtekintéséhez az **ügyfél a szolgáltatók oldal bal** oldalán a **szolgáltatói ajánlatokat** is kiválaszthatja.
 
 Az ügyfél minden szolgáltatói ajánlatnál látni fogja a szolgáltató nevét és a hozzá társított ajánlatot, valamint azt a nevet, amelyet az ügyfél a bevezetési folyamat során megadott.
 
@@ -59,12 +59,20 @@ A módosítások áttekintése után az ügyfél dönthet úgy, hogy frissíti a
 
 A delegálások azokat a szerepkör-hozzárendeléseket jelölik, amelyek engedélyeket biztosítanak a szolgáltatónak az ügyfelek által delegált erőforrások számára. Az információ megtekintéséhez válassza a **szolgáltatók** lap bal oldalán található **delegálások** lehetőséget.
 
-Az oldal tetején lévő szűrők segítségével rendezheti és csoportosíthatja a delegálási adatokat, illetve szűrheti az egyes ügyfelek, ajánlatok vagy kulcsszavak alapján.
+A lap tetején lévő szűrők lehetővé teszik a delegálási adatok rendezését és csoportosítását. A szűrést meghatározott ügyfelek, ajánlatok vagy kulcsszavak alapján is elvégezheti.
 
 > [!NOTE]
 > Az ügyfelek nem látják ezeket a szerepkör-hozzárendeléseket, illetve azon szolgáltatói bérlőtől származó felhasználókat, akik megkapták ezeket a szerepköröket, amikor a Azure Portal vagy API-kon keresztül [megtekintik a delegált hatókörhöz tartozó szerepkör-hozzárendelési adatokat](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="audit-delegations-in-your-environment"></a>Delegálások naplózása a környezetben
 
+Előfordulhat, hogy az ügyfelek meg szeretnék jeleníteni azokat az előfizetéseket és/vagy erőforráscsoportokat, amelyeket az Azure-beli [meghatalmazott erőforrás-kezelés](../concepts/azure-delegated-resource-management.md)céljából delegáltak a szolgáltatók számára. Ez különösen hasznos azoknak az ügyfeleknek, akik nagy számú előfizetéssel rendelkeznek, vagy akiknél sok felhasználó végzi a felügyeleti feladatokat.
+
+Egy [Azure Policy beépített szabályzat-definíciót](../../governance/policy/samples/built-in-policies.md#lighthouse) biztosítunk a hatókörök delegálásának naplózásához egy felügyeleti bérlőhöz. Ezt a házirendet hozzárendelheti egy felügyeleti csoporthoz, amely tartalmazza az összes naplózni kívánt előfizetést. Ha bejelöli a szabályzatnak való megfelelést, minden olyan delegált előfizetés és/vagy erőforráscsoport (a felügyeleti csoporton belül, amelyhez a házirend hozzá van rendelve) nem megfelelő állapotban jelenik meg. Ezután ellenőrizheti az eredményeket, és ellenőrizheti, hogy nincsenek-e váratlan delegálások.
+
+A szabályzatok hozzárendeléséről és a megfelelőségi állapot eredményeinek megtekintéséhez lásd: gyors útmutató [: szabályzat-hozzárendelés létrehozása](../../governance/policy/assign-policy-portal.md).
+
+## <a name="next-steps"></a>Következő lépések
+ 
 - További információ az [Azure Lighthouse](../overview.md)-ról.
 - Ismerje meg, hogy a szolgáltatók hogyan [tekinthetik meg és kezelhetik az ügyfeleket](view-manage-customers.md) , ha a Azure Portal **ügyfeleit** szeretnék megtekinteni.

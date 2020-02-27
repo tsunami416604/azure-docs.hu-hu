@@ -1,31 +1,32 @@
 ---
-title: Integrálás az Azure felügyelt identitásokkal
-description: Ismerje meg, hogyan használhatja az Azure-beli felügyelt identitásokat a hitelesítéshez és az Azure-alkalmazások konfigurálásához való hozzáféréshez
+title: Hitelesítés az Azure felügyelt identitások használatával
+titleSuffix: Azure App Configuration
+description: Hitelesítés az Azure-alkalmazások konfigurációjában az Azure által felügyelt identitások használatával
 ms.service: azure-app-configuration
 author: lisaguthrie
 ms.topic: conceptual
-ms.date: 12/29/2019
+ms.date: 2/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 2cdeb0d513230cac5d03f85f2189f15c818798fd
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 66bf27c1b1e8349c1a0e822c457412fdfca58e82
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500406"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619464"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integrálás az Azure felügyelt identitásokkal
 
-Azure Active Directory [felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) megkönnyítik a Felhőbeli alkalmazásokkal kapcsolatos titkok kezelését. Felügyelt identitás esetén a kód használhatja azt az egyszerű szolgáltatásnevet, amelyet a futtatott Azure-szolgáltatáshoz hozott létre. A felügyelt identitást nem külön hitelesítő adat, hanem Azure Key Vault vagy helyi kapcsolatok karakterlánca tárolja. 
+Azure Active Directory [felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md) egyszerűbbé teszik a Felhőbeli alkalmazások titkok kezelését. Felügyelt identitás esetén a kód a szolgáltatásban futtatott Azure-szolgáltatáshoz létrehozott egyszerű szolgáltatásnevet is használhatja. A felügyelt identitást nem külön hitelesítő adat, hanem Azure Key Vault vagy helyi kapcsolatok karakterlánca tárolja. 
 
-Az Azure app Configuration és a .NET Core, a .NET Framework és a Java Spring-ügyfél kódtárai felügyelt identitás-támogatással rendelkeznek. Habár nem szükséges a használatához, a felügyelt identitás szükségtelenné teszi a titkos kulcsokat tartalmazó hozzáférési token használatát. A kód csak a szolgáltatási végpont használatával férhet hozzá az alkalmazás konfigurációs tárolójához. Ezt az URL-címet közvetlenül a kódban ágyazhatja be anélkül, hogy bármilyen titkos kulcsot kellene kitennie.
+Az Azure app Configuration és a .NET Core, a .NET Framework és a Java Spring-ügyfél kódtárai felügyelt identitás-támogatással rendelkeznek. Habár nem szükséges a használatához, a felügyelt identitás szükségtelenné teszi a titkos kulcsokat tartalmazó hozzáférési token használatát. A kód csak a szolgáltatási végpont használatával férhet hozzá az alkalmazás konfigurációs tárolójához. Ezt az URL-címet közvetlenül a kódban ágyazhatja be, és nem teheti közzé a titkos kódot.
 
-Ez az oktatóanyag bemutatja, hogyan veheti igénybe a felügyelt identitást az alkalmazások konfigurációjának eléréséhez. A szolgáltatás a gyors útmutatókban bemutatott webalkalmazásra épül. A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alkalmazás-konfigurációval](./quickstart-aspnet-core-app.md) először.
+Ez a cikk bemutatja, hogyan veheti igénybe a felügyelt identitást az alkalmazások konfigurációjának eléréséhez. A szolgáltatás a gyors útmutatókban bemutatott webalkalmazásra épül. A folytatás előtt [hozzon létre egy ASP.net Core alkalmazást az alkalmazás konfigurálásával](./quickstart-aspnet-core-app.md) először.
 
-Ez az oktatóanyag azt is bemutatja, hogyan használható a felügyelt identitás az alkalmazás konfigurációjának Key Vault hivatkozásaival együtt. Egyetlen felügyelt identitással zökkenőmentesen érheti el mindkét titkot Key Vault és konfigurációs értékektől az alkalmazás konfigurációjában. Ha szeretné felfedezni ezt a képességet, fejezze be [a Key Vault referenciák használatát a ASP.net Core](./use-key-vault-references-dotnet-core.md) először.
+A cikk azt is bemutatja, hogyan használható a felügyelt identitás az alkalmazás konfigurációjának Key Vault hivatkozásaival együtt. Egyetlen felügyelt identitással zökkenőmentesen érheti el mindkét titkot Key Vault és konfigurációs értékektől az alkalmazás konfigurációjában. Ha szeretné felfedezni ezt a képességet, fejezze be [a Key Vault referenciák használatát a ASP.net Core](./use-key-vault-references-dotnet-core.md) először.
 
 Az oktatóanyag lépéseihez bármilyen Kódszerkesztő használható. A [Visual Studio Code](https://code.visualstudio.com/) kiváló lehetőség a Windows, MacOS és Linux platformokon.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Felügyelt identitás elérésének biztosítása az alkalmazás konfigurációjához.

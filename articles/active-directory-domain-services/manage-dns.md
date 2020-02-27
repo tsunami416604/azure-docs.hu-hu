@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: f47f112991a4fe2e5b245920db98e5ae7617161a
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2694a5f250b746748a1b42ac4d211aa28ef1ebad
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704936"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613688"
 ---
 # <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>DNS felügyelete Azure AD Domain Services felügyelt tartományban
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan telepítheti a DNS-kiszolgálói eszközöket, majd 
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
@@ -52,7 +52,7 @@ Az Azure AD DS DNS-rekordjainak létrehozásához és módosításához telepít
 1. A **Kiszolgálókezelő** ablak *irányítópult* paneljén válassza a **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
 1. A *szerepkörök és szolgáltatások hozzáadása varázsló*alapismeretek **lapján kattintson a** **Tovább gombra**.
 1. A *telepítés típusa*beállításnál hagyja bejelölve a **szerepköralapú vagy a szolgáltatáson alapuló telepítési** beállítást, majd kattintson a **Tovább gombra**.
-1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.aadds.contoso.com*, majd kattintson a **tovább**gombra.
+1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.aaddscontoso.com*, majd kattintson a **tovább**gombra.
 1. A **kiszolgálói szerepkörök** lapon kattintson a **tovább**gombra.
 1. A **szolgáltatások** lapon bontsa ki a **Távoli kiszolgálófelügyelet eszközei** csomópontot, majd bontsa ki a **szerepkör-felügyeleti eszközök** csomópontot. A szerepkör-felügyeleti eszközök listájából válassza a **DNS-kiszolgálói eszközök** lehetőséget.
 
@@ -69,7 +69,7 @@ A DNS-kiszolgálói eszközök telepítése után felügyelheti a DNS-rekordokat
 > A DNS Azure AD DS felügyelt tartományban való felügyeletéhez be kell jelentkeznie egy olyan felhasználói fiókba, amely tagja az *HRE DC-rendszergazdák* csoportjának.
 
 1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik az elérhető felügyeleti eszközök listája, beleértve az előző szakaszban telepített **DNS-t** is. Válassza a **DNS** lehetőséget a DNS-kezelő konzol elindításához.
-1. A **Kapcsolódás a DNS-kiszolgálóhoz** párbeszédpanelen válassza ki **a következő számítógépet**, majd adja meg a felügyelt tartomány DNS-tartománynevét, például *aadds.contoso.com*:
+1. A **Kapcsolódás a DNS-kiszolgálóhoz** párbeszédpanelen válassza ki **a következő számítógépet**, majd adja meg a felügyelt tartomány DNS-tartománynevét, például *aaddscontoso.com*:
 
     ![Kapcsolódás az Azure AD DS felügyelt tartományhoz a DNS-konzolon](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
 

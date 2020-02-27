@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 409e73f05366065f1c4159e9f1cd7e5bf8bb5ceb
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 880f1c601cf4132fdec9e5d25b1bf1f2ff175ab7
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486243"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650537"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Teljesítményre vonatkozó irányelvek az Azure-beli SQL Server Virtual Machines
 
@@ -136,7 +136,7 @@ A prémium SSD-ket támogató virtuális gépek esetében a TempDB olyan lemezen
      > [!WARNING]
      > Állítsa le a SQL Server szolgáltatást az Azure-beli virtuálisgép-lemezek gyorsítótár-beállításainak módosításakor, hogy elkerülje az adatbázis sérülésének lehetőségét.
 
-* **NTFS-foglalási egység mérete**: az adatlemez formázása esetén ajánlott 64 KB-os foglalási egység méretet használni az adatfájlok és a naplófájlok, valamint a tempdb számára.
+* **NTFS-foglalási egység mérete**: az adatlemez formázása esetén ajánlott 64 KB-os foglalási egység méretet használni az adatfájlok és a naplófájlok, valamint a tempdb számára. Ha a TempDB az ideiglenes lemezre van helyezve (D:\ meghajtó) a meghajtót kihasználó teljesítmény meghaladja a 64 KB-os foglalási egység méretének szükségességét. 
 
 * **Lemezkezelés – ajánlott eljárások**: adatlemez eltávolításakor vagy a gyorsítótár típusának módosításához állítsa le a SQL Server szolgáltatást a módosítás során. Ha megváltoznak a gyorsítótárazási beállítások az operációsrendszer-lemezen, az Azure leállítja a virtuális gépet, megváltoztatja a gyorsítótár típusát, és újraindítja a virtuális gépet. Az adatlemezek gyorsítótár-beállításainak módosításakor a virtuális gép nem áll le, de az adatlemez le van választva a virtuális gépről a módosítás során, majd újra csatolva lesz.
 
