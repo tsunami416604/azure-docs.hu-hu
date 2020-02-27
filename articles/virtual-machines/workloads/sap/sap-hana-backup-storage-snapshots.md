@@ -4,24 +4,24 @@ description: Az Azure Virtual Machines szolgáltatásban SAP HANA két fő bizto
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: rclaus
-ms.openlocfilehash: 8bcfdefa2ea9de12ca6029839a41c91111a5c61c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: hermannd
+ms.openlocfilehash: c977bc7db5608e5718e98a26ed594e5ebf2be998
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078602"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617414"
 ---
-# <a name="sap-hana-backup-based-on-storage-snapshots"></a>Tárolási pillanatképeken alapuló biztonsági mentés SAP HANA-hoz
+# <a name="sap-hana-backup-based-on-storage-snapshots"></a>SAP HANA biztonsági mentés tárolási Pillanatképek alapján
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 Ez egy, a SAP HANA biztonsági mentéssel kapcsolatos cikkek három részből álló sorozatának részét képezi. Az [Azure Virtual Machines SAP HANA biztonsági mentési útmutatója](sap-hana-backup-guide.md) áttekintést nyújt az első lépésekről, és a fájlok [szintjén SAP HANA Azure Backup](sap-hana-backup-file-level.md) a fájl alapú biztonsági mentési lehetőségre is kiterjed.
 
@@ -51,10 +51,10 @@ A lemezen a pillanatkép megjelenik a SAP HANA adatkönyvtárban.
 
 Az egyiknek biztosítania kell, hogy a fájlrendszer konzisztenciája is garantált legyen a tárolási pillanatkép futtatása előtt, miközben SAP HANA a pillanatkép-előkészítési módban van. A [SAP HANA Virtual Machines Azure-beli biztonsági mentési útmutatójában](sap-hana-backup-guide.md)tekintse meg az _SAP HANA adatkonzisztencia a tárolási Pillanatképek_ készítésekor című cikket.
 
-A tárolási pillanatkép elvégzése után elengedhetetlen a SAP HANA pillanatkép megerősítése. Egy megfelelő SQL-utasítás fut: Biztonsági mentési adatok BEZÁRÁSának PILLANATKÉPe (lásd: biztonsági másolati [adatok bezárásának pillanatkép-utasítása (biztonsági mentés és helyreállítás)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm)).
+A tárolási pillanatkép elvégzése után elengedhetetlen a SAP HANA pillanatkép megerősítése. Van egy megfelelő SQL-utasítás a futtatásához: biztonsági másolati adatok BEZÁRÁSának PILLANATKÉPe (lásd: [biztonsági mentési adatok bezárásának pillanatkép-utasítása (biztonsági mentés és helyreállítás)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm)).
 
 > [!IMPORTANT]
-> Erősítse meg a HANA-pillanatképet. A másolási és írási műveletek miatt előfordulhat&quot; , hogy a SAP HANA további lemezterületre van szükség a pillanatkép-előkészítési módban, és nem lehet új biztonsági mentéseket elindítani, amíg meg nem erősíti a SAP HANA pillanatképet. &quot;
+> Erősítse meg a HANA-pillanatképet. A &quot;írásos másolás miatt előfordulhat, hogy&quot; SAP HANA további lemezterületre van szükség a pillanatkép-előkészítési módban, és nem lehet új biztonsági másolatokat elindítani, amíg meg nem történik a SAP HANA pillanatképének megerősítése.
 
 ## <a name="hana-vm-backup-via-azure-backup-service"></a>HANA virtuális gép biztonsági mentése Azure Backup szolgáltatáson keresztül
 
@@ -62,19 +62,19 @@ A Azure Backup szolgáltatás biztonsági mentési ügynöke Linux rendszerű vi
 
 Ellenkező esetben csak a teljes linuxos virtuális gép biztonsági mentése lehetséges a Azure Backup szolgáltatáson keresztül. További információkért tekintse meg [a Azure Backup funkcióinak áttekintését](../../../backup/backup-introduction-to-azure-backup.md) .
 
-A Azure Backup szolgáltatás lehetőséget kínál a virtuális gép biztonsági mentésére és visszaállítására. További információ erről a szolgáltatásról és annak működéséről a [virtuális gép biztonsági mentési infrastruktúrájának](../../../backup/backup-azure-vms-introduction.md)megtervezése az Azure-ban című cikkben található.
+A Azure Backup szolgáltatás lehetőséget kínál a virtuális gép biztonsági mentésére és visszaállítására. További információ erről a szolgáltatásról és annak működéséről a [virtuális gép biztonsági mentési infrastruktúrájának megtervezése az Azure-ban](../../../backup/backup-azure-vms-introduction.md)című cikkben található.
 
 A cikk alapján két fontos szempontot kell figyelembe venni:
 
-_&quot;Linux rendszerű virtuális gépek esetén csak a fájlokkal konzisztens biztonsági másolatok lehetségesek, mivel a Linux nem rendelkezik a VSS-vel egyenértékű platformmal.&quot;_
+_a Linux rendszerű virtuális gépek &quot;csak a fájlokkal konzisztens biztonsági mentések lehetségesek, mivel a Linux nem rendelkezik megfelelő platformmal a VSS-hez.&quot;_
 
-_&quot;Az alkalmazásoknak saját &quot;javítási&quot; mechanizmust kell alkalmazniuk a visszaállított adattárolón.&quot;_
+_&quot;alkalmazásoknak a visszaállított adat&quot;i&quot; mechanizmust kell alkalmazniuk.&quot;_
 
-Ezért az egyiknek gondoskodnia kell arról, hogy SAP HANA konzisztens állapotban legyen a lemezen a biztonsági mentés indításakor. Lásd a dokumentumban korábban ismertetett _SAP HANA_ -pillanatképeket. Ha azonban SAP HANA marad ebben a pillanatkép-előkészítési módban, lehetséges probléma van. További információt a [tárolási pillanatkép (SAP HANA Studio) létrehozása](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm) című témakörben talál.
+Ezért az egyiknek gondoskodnia kell arról, hogy SAP HANA konzisztens állapotban legyen a lemezen a biztonsági mentés indításakor. Lásd a dokumentumban korábban ismertetett _SAP HANA-pillanatképeket_ . Ha azonban SAP HANA marad ebben a pillanatkép-előkészítési módban, lehetséges probléma van. További információt a [tárolási pillanatkép (SAP HANA Studio) létrehozása](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm) című témakörben talál.
 
 A cikk állapota:
 
-_&quot;Javasoljuk, hogy a létrehozása után a lehető leghamarabb erősítse meg vagy hagyjon le egy tárolási pillanatképet. Amíg a rendszer előkészíti vagy létrehozza a tárolási pillanatképet, a pillanatképhez kapcsolódó adatok zárolva vannak. Amíg a pillanatképhez kapcsolódó adatok megmaradnak, a változtatások továbbra is elérhetők lesznek az adatbázisban. Ezek a változások nem eredményezik a rögzített pillanatkép-releváns adatok módosítását. Ehelyett a módosításokat a rendszer az adatterületen lévő, a tárolási pillanatképtől eltérő pozíciókba írja. A módosításokat a rendszer a naplóba is írja. A pillanatképhez kapcsolódó adatokat azonban továbbra is zárolják, annál nagyobb mennyiségű adat növekszik.&quot;_
+_&quot;javasoljuk, hogy a létrehozása után a lehető leghamarabb erősítse meg vagy hagyjon le egy tárolási pillanatképet. Amíg a rendszer előkészíti vagy létrehozza a tárolási pillanatképet, a pillanatképhez kapcsolódó adatok zárolva vannak. Amíg a pillanatképhez kapcsolódó adatok megmaradnak, a változtatások továbbra is elérhetők lesznek az adatbázisban. Ezek a változások nem eredményezik a rögzített pillanatkép-releváns adatok módosítását. Ehelyett a módosításokat a rendszer az adatterületen lévő, a tárolási pillanatképtől eltérő pozíciókba írja. A módosításokat a rendszer a naplóba is írja. A pillanatképhez kapcsolódó adatokat azonban továbbra is zárolják, annál nagyobb mennyiségű adat növekszik.&quot;_
 
 Azure Backup az Azure virtuálisgép-bővítmények használatával gondoskodik a fájlrendszer konzisztenciájáról. Ezek a bővítmények nem érhetők el különállóként, és csak Azure Backup szolgáltatással együtt működnek. Azonban továbbra is követelmény, hogy parancsfájlokat hozzon létre és töröljön egy SAP HANA pillanatképet az alkalmazások konzisztenciájának garantálása érdekében.
 
@@ -105,7 +105,7 @@ Az Azure Backup által készített alkalmazás-konzisztens biztonsági másolat 
 
 ## <a name="hana-license-key-and-vm-restore-via-azure-backup-service"></a>HANA-licenckulcs és virtuális gép visszaállítása Azure Backup szolgáltatáson keresztül
 
-A Azure Backup szolgáltatás úgy lett kialakítva, hogy a visszaállítás során hozzon létre egy új virtuális gépet. Jelenleg nincs terv &quot;a meglévő Azure-beli virtuális gépek helyben&quot; történő visszaállítására.
+A Azure Backup szolgáltatás úgy lett kialakítva, hogy a visszaállítás során hozzon létre egy új virtuális gépet. Egy meglévő Azure-beli virtuális gép visszaállításának &quot;helyben&quot; helyreállítására nincs terv.
 
 ![Ez az ábra az Azure-szolgáltatás visszaállítási lehetőségét mutatja Azure Portal](media/sap-hana-backup-storage-snapshots/image019.png)
 
@@ -146,7 +146,7 @@ Csak az Azure-beli virtuális gépek adatlemezei állíthatók vissza, így elke
 
 Ha a blob-Pillanatképek előtt SAP HANA leállítani, az eljárás kevésbé összetett. Ebben az esetben az egyik kihagyhatja a HANA-pillanatképet, és ha semmi más nem történik a rendszeren, hagyja ki a fájlrendszert is. A hozzáadott komplexitás a képbe kerül, amikor a pillanatképek elvégzése minden online állapotban van. A [SAP HANA Virtual Machines Azure-beli biztonsági mentési útmutatójában](sap-hana-backup-guide.md)tekintse meg az _SAP HANA adatkonzisztencia a tárolási Pillanatképek_ készítésekor című cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az Azure Virtual Machines SAP HANA biztonsági mentési útmutatója](sap-hana-backup-guide.md) áttekintést nyújt az első lépésekről.
 * [SAP HANA a biztonsági mentés fájl szintjén](sap-hana-backup-file-level.md) a fájl alapú biztonsági mentés lehetőségre.
 * Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és hogyan tervezheti meg az Azure-beli SAP HANA vész-helyreállítását (nagyméretű példányok), tekintse meg [a SAP HANA (nagyméretű példányok) magas rendelkezésre állását és a](hana-overview-high-availability-disaster-recovery.md)

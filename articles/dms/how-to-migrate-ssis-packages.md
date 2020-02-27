@@ -3,21 +3,21 @@ title: SSIS-csomagok újbóli üzembe helyezése az SQL Single Database-ben
 titleSuffix: Azure Database Migration Service
 description: Megtudhatja, hogyan telepíthet át vagy telepíthet át SQL Server Integration Services csomagokat és projekteket úgy, hogy az Azure Database Migration Service és Data Migration Assistant használatával egyetlen adatbázist Azure SQL Database.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 06/08/2019
-ms.openlocfilehash: b1889410a6c6925ebba5632a08c34bc967ced627
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 90a39b8fe3604a05f1d35a875ae4e34491b47d72
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437968"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648529"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>SSIS-csomagok újbóli üzembe helyezése Azure SQL Databasere Azure Database Migration Service
 

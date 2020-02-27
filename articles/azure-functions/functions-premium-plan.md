@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 81db0889294360f74cb42d388e5d875de91c1019
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: cf70124f2e310dd62fd32de0e17edb40c047a318
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212472"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615681"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium csomag Azure Functions
 
@@ -107,28 +107,29 @@ Az alábbiakban láthatók az egyes operációs rendszerek jelenleg támogatott 
 |--| -- | -- |
 |Ausztrália középső régiója| ✔<sup>1</sup> | |
 |Ausztrália 2. középső régiója| ✔<sup>1</sup> | |
-|Kelet-Ausztrália| ✔ | |
+|Kelet-Ausztrália| ✔ | ✔<sup>1</sup> |
 |Délkelet-Ausztrália | ✔ | ✔<sup>1</sup> |
 |Dél-Brazília| ✔<sup>2</sup> |  |
-|Közép-Kanada| ✔ |  |
+|Közép-Kanada| ✔ | ✔<sup>1</sup> |
 |USA középső régiója| ✔ |  |
 |Kelet-Ázsia| ✔ |  |
 |USA keleti régiója | ✔ | ✔<sup>1</sup> |
-|USA 2. keleti régiója| ✔ |  |
+|USA 2. keleti régiója| ✔ | ✔<sup>1</sup> |
 |Közép-Franciaország| ✔ |  |
 |Középnyugat-Németország| ✔ | |
 |Kelet-Japán| ✔ | ✔<sup>1</sup> |
-|Nyugat-Japán| ✔ | |
-|Korea középső régiója| ✔ |  |
+|Nyugat-Japán| ✔ | ✔<sup>1</sup> |
+|Dél-Korea középső régiója| ✔ | ✔<sup>1</sup> |
 |USA északi középső régiója| ✔ |  |
 |Észak-Európa| ✔ | ✔<sup>1</sup> |
 |USA déli középső régiója| ✔ | ✔<sup>1</sup> |
 |Dél-India | ✔ | |
 |Délkelet-Ázsia| ✔ | ✔<sup>1</sup> |
-|Az Egyesült Királyság déli régiója| ✔ | |
+|Az Egyesült Királyság déli régiója| ✔ | ✔<sup>1</sup> |
 |Az Egyesült Királyság nyugati régiója| ✔ |  |
 |Nyugat-Európa| ✔ | ✔<sup>1</sup> |
 |Nyugat-India| ✔ |  |
+|USA nyugati középső régiója| | ✔<sup>1</sup> |
 |USA nyugati régiója| ✔ | ✔<sup>1</sup> |
 |USA nyugati régiója, 2.| ✔ |  |
 

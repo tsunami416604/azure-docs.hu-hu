@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 54ad9109a23b0fb25470987c2bc863934864b83f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b31d0237f04ef535fa6528d5b3a04e5ee7256e22
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77580678"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623678"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Az Azure Storage-szolgáltatásokban tárolt adathozzáférés
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -84,13 +84,12 @@ Az 1. és a 2. Azure Data Lake Storage adattárolók esetében azonban ez az ell
 
 Az összes regisztrálási módszer a [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) osztályban található, és az űrlap `register_azure_*`.
 
-A `register()` módszernek a [Azure Portal](https://portal.azure.com)használatával történő feltöltéséhez szükséges információkat a következő módon találja:
+A [Azure Portal](https://portal.azure.com)`register()` módszerének feltöltéséhez szükséges adatokat megtalálja.
+Válassza ki a **Storage-fiókok** elemet a bal oldali ablaktáblán, és válassza ki a regisztrálni kívánt Storage-fiókot. Az **áttekintő** oldal olyan információkat tartalmaz, mint például a fióknév, a tároló és a fájlmegosztás neve. 
 
-1. Válassza ki a **Storage-fiókok** elemet a bal oldali ablaktáblán, és válassza ki a regisztrálni kívánt Storage-fiókot. 
-2. A fiók neve, a tároló és a fájlmegosztás neve például az **Áttekintés oldalon olvasható** . 
-3. A hitelesítési adatokhoz (például a fiók kulcsa vagy az SAS-tokenhez) lépjen a **Beállítások** ablaktábla **hozzáférési kulcsok** elemére. 
+* A hitelesítési elemek, például a fiók kulcsa vagy az SAS-token esetében a **Beállítások** ablaktáblán lépjen a **fiókok kulcsai** elemre. 
 
-4. Az egyszerű szolgáltatások, például a bérlői azonosító és az ügyfél-azonosító esetében lépjen a **Alkalmazásregisztrációk** **Áttekintés** lapjára. 
+* Az egyszerű szolgáltatások, például a bérlői azonosító és az ügyfél-azonosító esetében lépjen a **Alkalmazásregisztrációk** , és válassza ki a használni kívánt alkalmazást. A kapcsolódó **áttekintő** lap ezeket az elemeket fogja tartalmazni.
 
 > [!IMPORTANT]
 > Ha a Storage-fiókja egy virtuális hálózaton van, csak a blob, a fájlmegosztás, a ADLS Gen 1 és a ADLS Gen 2 adattárolók létrehozása támogatott **az SDK-n keresztül** . Ha meg szeretné adni a munkaterület hozzáférését a Storage-fiókhoz, állítsa a `grant_workspace_access` paramétert `True`re.
@@ -137,7 +136,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 #### <a name="azure-data-lake-storage-generation-2"></a>2\. generációs Azure Data Lake Storage
 
-Egy Azure Data Lake Storage 2. generációs (ADLS Gen 2) adattár esetében a [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) használatával regisztrálja az Azure DataLake Gen 2 tárolóhoz csatlakoztatott hitelesítő adatokat az [egyszerű szolgáltatás engedélyeivel](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Az egyszerű szolgáltatás használatához [regisztrálnia kell az alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). További információ a [2. generációs ADLS-hez beállított hozzáférés-vezérlésről](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
+Egy Azure Data Lake Storage 2. generációs (ADLS Gen 2) adattár esetében a [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) használatával regisztrálja az Azure DataLake Gen 2 tárolóhoz csatlakoztatott hitelesítő adatokat az [egyszerű szolgáltatás engedélyeivel](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Az egyszerű szolgáltatás használatához [regisztrálnia kell az alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) , és be kell állítania a szerepkör-hozzárendeléseket az olvasó és az adathozzáféréshez. További információ a [2. generációs ADLS-hez beállított hozzáférés-vezérlésről](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
 A következő kód létrehozza és regisztrálja a `adlsgen2_datastore_name` adattárt a `ws` munkaterületen. Ez az adattár fér hozzá a fájlrendszer `test` a `account_name` Storage-fiókban a megadott egyszerű szolgáltatás hitelesítő adataival.
 
@@ -177,7 +176,7 @@ Itt megtalálhatja azokat az adatokat, amelyekre az űrlapot fel kell töltenie 
 
 * A hitelesítési elemek, például a fiók kulcsa vagy az SAS-token esetében a **Beállítások** ablaktáblán lépjen a **fiókok kulcsai** elemre. 
 
-* Az egyszerű szolgáltatások, például a bérlői azonosító és az ügyfél-azonosító esetében lépjen a **Alkalmazásregisztrációk** **Áttekintés** lapjára. 
+* Az egyszerű szolgáltatások, például a bérlői azonosító és az ügyfél-azonosító esetében lépjen a **Alkalmazásregisztrációk** , és válassza ki a használni kívánt alkalmazást. A kapcsolódó **áttekintő** lap ezeket az elemeket fogja tartalmazni. 
 
 Az alábbi példa bemutatja, hogyan néz ki az űrlap az Azure Blob-adattár létrehozásakor: 
     

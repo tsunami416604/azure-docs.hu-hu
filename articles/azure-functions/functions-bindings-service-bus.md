@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: b505a90057a213d7f64d4d168a6a70da0ff03c2f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 44e4114b328701d5de363e91f5562f1daad351c6
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485301"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621076"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Az Azure Szolgáltatásbusz-kötések az Azure Functions szolgáltatáshoz
 
@@ -30,11 +30,11 @@ Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra 
 
 | Nyelv                                        | Hozzáadás...                                   | Megjegyzések 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | A [NuGet-csomag], 3. x verziójának telepítése | |
+| C#                                              | A 4. x verziójú [NuGet-csomag]telepítése | |
 | C#Parancsfájl, Java, JavaScript, Python, PowerShell | A [kiterjesztési csomag] regisztrálása          | Az [Azure-eszközök bővítmény] használata ajánlott a Visual Studio Code használatával. |
 | C#Parancsfájl (csak online – Azure Portal)         | Kötés hozzáadása                            | Ha frissíteni szeretné a meglévő kötési bővítményeket anélkül, hogy újra közzé kellene tennie a Function alkalmazást, tekintse [Bővítmények frissítése]című témakört. |
 
-[NuGet-csomag]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus
+[NuGet-csomag]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/
 [core tools]: ./functions-run-local.md
 [kiterjesztési csomag]: ./functions-bindings-register.md#extension-bundles
 [Bővítmények frissítése]: ./install-update-binding-extensions-manual.md

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 2114d9ecff5ee49c63d737cf13278fe45f1f9f73
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: c16d7247b781fea04cfa2d53b8854cff14e039c7
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589960"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616450"
 ---
 # <a name="overview-of-azure-security-baselines"></a>Az Azure biztonsági alaptervek áttekintése
 
@@ -25,7 +25,7 @@ Minden javaslat a következő információkat tartalmazza:
 - **Azure ID**: a javaslatnak megfelelő Azure biztonsági TELJESÍTMÉNYTESZT-azonosító.
 - **Javaslat**: közvetlenül az Azure-azonosító után a javaslat magas szintű leírást nyújt a vezérlőről.
 - **Útmutató**: a javaslat indoklása és a megvalósításával kapcsolatos útmutatásra mutató hivatkozások. Ha Azure Security Center támogatja az ajánlást, a rendszer ezeket az információkat is felsorolja.
-- **Felelősség**: felelős a vezérlő végrehajtásáért. A lehetséges forgatókönyvek az ügyfél felelőssége, a Microsoft felelőssége vagy a felelősség megosztása.
+- **Felelősség**: felelős a vezérlő végrehajtásáért. A lehetséges forgatókönyvek az ügyfél felelőssége, a Microsoft felelőssége vagy a megosztott felelősség.
 - **Azure Security Center figyelés**: azt határozza meg, hogy a vezérlőt Azure Security Center figyeli-e, hivatkozással.
 
-Az alapkonfiguráció minden olyan javaslatot tartalmaz, amely nem alkalmazható erre a szolgáltatásra, így teljes képet kaphat arról, hogyan kapcsolódik az Azure biztonsági teljesítményteszt az egyes szolgáltatásokhoz. Esetenként olyan vezérlők is lehetnek, amelyek különböző okokból nem alkalmazhatók – például IaaS/számítási központú vezérlők (például az operációs rendszer konfigurációjának felügyeletére vonatkozó vezérlők) nem alkalmazhatók a Pásti-szolgáltatásokra.
+Az alapkonfiguráció minden olyan javaslatot tartalmaz, amely nem alkalmazható erre a szolgáltatásra, így teljes képet kaphat arról, hogyan kapcsolódik az Azure biztonsági teljesítményteszt az egyes szolgáltatásokhoz. Előfordulhat, hogy esetenként olyan vezérlőkre van szükség, amelyek különböző okok miatt nem alkalmazhatók – például IaaS/számítási központú vezérlők (például az operációs rendszer konfigurálásához tartozó vezérlők esetében) – előfordulhat, hogy nem alkalmazhatók a Pásti-szolgáltatásokra.

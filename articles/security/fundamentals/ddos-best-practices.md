@@ -1,5 +1,5 @@
 ---
-title: Azure DDoS Protection – rugalmas megoldások tervezése | Microsoft Docs
+title: Rugalmas megoldások tervezése Azure DDoS Protection
 description: Ismerje meg, hogy miként használhatók a naplózási információk az alkalmazással kapcsolatos mélyreható elemzésekhez.
 services: security
 author: barclayn
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: ac36a4c59dbec8bf27850de1565e86b78643148a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8d3fc809999508bf3d49c3765c90017e89e80fa7
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595421"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624056"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection – rugalmas megoldások tervezése
 
@@ -35,7 +35,7 @@ A platformon a DDoS elleni védelem mellett a [Azure DDoS Protection standard](h
 
 A következő fejezetekben részletes útmutatást talál a DDoS-rugalmas szolgáltatások Azure-beli létrehozásához.
 
-### <a name="design-for-security"></a>Biztonság – tervezés
+### <a name="design-for-security"></a>Biztonsági tervezés
 
 Győződjön meg arról, hogy a biztonság az alkalmazás teljes életciklusa alatt, a tervezéstől és a megvalósítástól az üzembe helyezésig és a műveletekig prioritás. Az alkalmazások olyan hibával rendelkezhetnek, amely lehetővé teszi, hogy viszonylag alacsony mennyiségű kérést használjon az erőforrások meghívására, ami a szolgáltatás kimaradását eredményezi. 
 

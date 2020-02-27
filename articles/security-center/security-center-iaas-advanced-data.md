@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: memildin
-ms.openlocfilehash: 068fb9f61b7dcb3948e4f03c284ddfa680522c85
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: a2970ea3f5ad360deaedd7efc82154cd3bc50337
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907046"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617109"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Speciális adatbiztonság az Azure-beli SQL-kiszolgálókon Virtual Machines (előzetes verzió)
 Az Azure Virtual Machines-beli SQL serverek speciális adatbiztonsága egy egységes csomag a fejlett SQL-alapú biztonsági funkciókhoz. Ez az előzetes verziójú funkció a lehetséges adatbázis-sebezhetőségek azonosítására és enyhítésére, valamint a rendellenes tevékenységek észlelésére, amelyek az adatbázis fenyegetéseit jelezhetik. 
@@ -61,7 +61,7 @@ A speciális adatbiztonság engedélyezése az SQL-kiszolgálókon Virtual Machi
 A SQL Server gazdagép munkaterülethez való összekapcsolásához kövesse a [Windows rendszerű számítógépek összekötése a Azure monitorhoz](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)című témakör utasításait.
 
 
-## <a name="set-up-email-notification-for-atp-alerts"></a>E-mail-értesítés beállítása ATP-riasztásokhoz 
+## <a name="set-up-email-notification-for-security-alerts"></a>E-mail-értesítések beállítása biztonsági riasztásokhoz 
 
 Megadhatja a címzettek listáját, amely e-mailben értesítést kap a Security Center riasztások létrehozásakor. Az e-mail tartalmaz egy közvetlen hivatkozást a riasztáshoz Azure Security Center az összes releváns részletet. 
 

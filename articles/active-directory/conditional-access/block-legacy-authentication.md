@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a65145fe9752a90e3328c308ce603c8626d8708
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7f7f6f31c4d2f67660fef507ce101b2d15897d51
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380860"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620855"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: az Azure AD-val való örökölt hitelesítés letiltása feltételes hozzáféréssel   
 
@@ -48,13 +48,30 @@ A feltételes hozzáférési házirendeket az első tényezős hitelesítés bef
 
 Ez a szakasz azt ismerteti, hogyan lehet feltételes hozzáférési szabályzatot konfigurálni a régi hitelesítés blokkolására. 
 
+### <a name="legacy-authentication-protocols"></a>Örökölt hitelesítési protokollok
+
+A következő beállítások tekinthetők örökölt hitelesítési protokolloknak
+
+- Hitelesített SMTP – a POP és az IMAP-ügyfél által használt e-mail üzenetek küldésére használható.
+- Automatikus észlelés – az Outlook és az EAS-ügyfelek által használt postaládák keresése és kapcsolódás az Exchange Online-ban.
+- Exchange Online PowerShell – az Exchange Online-hoz való kapcsolódáshoz használt távoli PowerShell-lel. Ha letiltja az Exchange Online PowerShell alapszintű hitelesítését, a kapcsolódáshoz az Exchange Online PowerShell-modult kell használnia. Útmutatásért lásd: [Kapcsolódás az Exchange Online powershellhez a multi-Factor Authentication használatával](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
+- Exchange Web Services (EWS) – az Outlook, az Outlook for Mac és a harmadik féltől származó alkalmazások által használt programozási felület.
+- IMAP4 – az IMAP e-mail ügyfélprogramok által használt.
+- MAPI HTTP-n keresztül (MAPI/HTTP) – az Outlook 2010-es és újabb verzióiban használt.
+- Offline címjegyzék (OAB) – az Outlook által letöltött és használt címlista-gyűjtemények másolata.
+- Outlook Anywhere (HTTP-n keresztüli RPC) – az Outlook 2016-es és korábbi verzióiban használatos.
+- Outlook-szolgáltatás – a Windows 10 rendszerhez készült mail és naptár alkalmazás használja.
+- POP3 – a POP e-mail ügyfélprogramok által használt.
+- Jelentéskészítési webszolgáltatások – a Jelentésadatok beolvasására szolgálnak az Exchange Online-ban.
+- Egyéb ügyfelek – az örökölt hitelesítés használatával azonosított egyéb protokollok.
+
 ### <a name="identify-legacy-authentication-use"></a>Örökölt hitelesítési használat azonosítása
 
 Mielőtt blokkolni tudja az örökölt hitelesítést a címtárban, először meg kell értenie, hogy a felhasználók rendelkeznek-e örökölt hitelesítést használó alkalmazásokkal, és hogy ez milyen hatással van a teljes címtárra. Az Azure AD bejelentkezési naplói segítségével megtudhatja, hogy örökölt hitelesítést használ-e.
 
 1. Navigáljon a **Azure Portal** > **Azure Active Directory** a **bejelentkezések** > .
 1. Ha nem látható, akkor adja hozzá az ügyfélalkalmazás oszlopot, ha az **oszlopok** > **ügyfélalkalmazás**elemre kattint.
-1. **Szűrők hozzáadása** > **ügyfélalkalmazás** > válassza ki a **többi ügyfél** összes beállítását, és kattintson az **alkalmaz**gombra.
+1. **Vegyen fel szűrőket** > **ügyfélalkalmazás** > jelölje ki az összes örökölt hitelesítési protokollt, és kattintson az **alkalmaz**gombra.
 
 A szűrés csak az örökölt hitelesítési protokollok által végrehajtott bejelentkezési kísérleteket fogja megjeleníteni. Az egyes bejelentkezési kísérletekre kattintva további részleteket is megtudhat. Az **alapinformációk** lapon található **ügyfélalkalmazás** mező jelzi, hogy melyik örökölt hitelesítési protokollt használta a rendszer.
 
@@ -90,7 +107,7 @@ A biztonsági szolgáltatásra azért van szükség, mert az *összes felhaszná
 
 Ezt a biztonsági funkciót úgy érheti el, ha kizárja az egyik felhasználót a szabályzatból. Ideális esetben meg kell határoznia néhány [vészhelyzeti hozzáférésű rendszergazdai fiókot az Azure ad-ben](../users-groups-roles/directory-emergency-access.md) , és ki kell zárnia azokat a szabályzatból.
 
-## <a name="policy-deployment"></a>Házirend központi telepítése
+## <a name="policy-deployment"></a>Házirend alkalmazása
 
 A szabályzat éles környezetben történő üzembe helyezése előtt gondoskodjon a következőről:
  

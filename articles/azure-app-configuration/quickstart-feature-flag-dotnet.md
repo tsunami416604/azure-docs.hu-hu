@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: bdb00bfbadec68fa110f747858d264a2c34f8bd1
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120869"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619321"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása .NET-keretrendszerbeli alkalmazáshoz
 
@@ -31,11 +31,18 @@ A .NET-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendszert a 
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET-keretrendszer 4.7.2](https://dotnet.microsoft.com/download)
+- [.NET-keretrendszer 4,8](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló létrehozása
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. Válassza a **Feature Manager** >  **+ Hozzáadás** elemet, és vegyen fel egy `Beta`nevű szolgáltatás-jelölőt.
+
+    > [!div class="mx-imgBorder"]
+    > ![a Beta](media/add-beta-feature-flag.png) nevű funkció engedélyezése
+
+    Most ne adjon meg `label`.
 
 ## <a name="create-a-net-console-app"></a>.NET-konzol alkalmazás létrehozása
 
@@ -43,7 +50,7 @@ A .NET-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendszert a 
 
 1. A **create a New Project (új projekt létrehozása**) területen szűrje a **konzol** projekt típusát, és kattintson a **Console app (.NET-keretrendszer)** elemre. Kattintson a **Tovább** gombra.
 
-1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.NET-keretrendszer 4.7.1** vagy újabb lehetőséget. Kattintson a **Create** (Létrehozás) gombra.
+1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.net-keretrendszer 4,8** vagy újabb lehetőséget. Kattintson a **Létrehozás** gombra.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
@@ -67,13 +74,8 @@ A .NET-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendszert a 
 1. Frissítse a `Main` metódust az alkalmazás-konfigurációhoz való kapcsolódáshoz, adja meg a `UseFeatureFlags` beállítást, hogy lekérje a szolgáltatás jelzőit. Ekkor megjelenik egy üzenet, ha a `Beta` funkció jelzője engedélyezve van.
 
     ```csharp
-        public static void Main(string[] args)
-        {
-            AsyncMain().Wait();
-        }
-
-        private static async Task AsyncMain()
-        {
+        public static async Task Main(string[] args)
+        {         
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .AddAzureAppConfiguration(options =>
                 {

@@ -3,21 +3,21 @@ title: SSIS-csomagok migrálása SQL felügyelt példányra
 titleSuffix: Azure Database Migration Service
 description: Megtudhatja, hogyan telepíthet át SQL Server Integration Services (SSIS) csomagokat és projekteket egy Azure SQL Database felügyelt példányra az Azure Database Migration Service vagy a Data Migration Assistant használatával.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 22f3e6a0e4c041024e826a7ed724d788ce77da62
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: a0669724888f02672d18ef9e8f725eef1c744f90
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751218"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650964"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>SQL Server Integration Services csomagok migrálása Azure SQL Database felügyelt példányra
 Ha SQL Server Integration Servicest (SSIS) használ, és szeretné áttelepíteni a SSIS-projekteket/csomagokat a SQL Server által üzemeltetett forrás-SSISDB a Azure SQL Database felügyelt példány által üzemeltetett cél SSISDB, használhatja a Azure Database Migration Service.

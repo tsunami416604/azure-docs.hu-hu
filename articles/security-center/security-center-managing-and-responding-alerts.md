@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: 203e3718cedca693dc029a4ba20a86ca50ab3e32
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 5c199d074a6655ad14a0c66925e4302f70424970
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603856"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615982"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és reagálás Azure Security Center
 
@@ -65,19 +65,27 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
     > [!NOTE]
     >Bizonyos esetekben a forrás IP-címe nem érhető el, néhány Windows biztonsági eseménynapló nem tartalmazza az IP-címet.
 
-1. A Security Center által javasolt szervizelési lépések a biztonsági riasztástól függően változnak. Mindegyik riasztásnál kövesse ezeket. Bizonyos esetekben a fenyegetések észlelésével kapcsolatos riasztások enyhítése érdekében előfordulhat, hogy más Azure-vezérlőket vagy-szolgáltatásokat kell használnia az ajánlott szervizelés megvalósításához. 
+1. A Security Center által javasolt szervizelési lépések a biztonsági riasztástól függően változnak. Mindegyik riasztásnál kövesse ezeket. 
+
+    Bizonyos esetekben a fenyegetések észlelésével kapcsolatos riasztások enyhítése érdekében előfordulhat, hogy más Azure-vezérlőket vagy-szolgáltatásokat kell használnia az ajánlott szervizelés megvalósításához. 
 
     Az alábbi témakörök a különböző riasztásokat ismertetik az erőforrástípusok szerint:
     
-    * [IaaS virtuális gépek és kiszolgálók riasztásai](security-center-alerts-iaas.md)
-    * [Natív számítási riasztások](security-center-alerts-compute.md)
-    * [Adatszolgáltatási riasztások](security-center-alerts-data-services.md)
-    
+    * [Riasztások a IaaS Windows rendszerű gépekhez](threat-protection.md#windows-machines)
+    * [IaaS Linux rendszerű gépekre vonatkozó riasztások](threat-protection.md#linux-machines)
+    * [Riasztások Azure App Service](threat-protection.md#app-services)
+    * [Azure-tárolókkal kapcsolatos riasztások](threat-protection.md#azure-containers)
+    * [Riasztások SQL Database és SQL Data Warehouse](threat-protection.md#data-sql)
+    * [Azure Storage-riasztások](threat-protection.md#azure-storage)
+    * [Riasztások Cosmos DB](threat-protection.md#cosmos-db)
+
     A következő témakörök azt ismertetik, hogyan használják a Security Center az Azure-infrastruktúrával való integrálás során gyűjtött különböző telemetria, hogy az Azure-ban üzembe helyezett erőforrások további védelmi rétegeit is alkalmazni lehessen:
     
-    * [Szolgáltatási réteggel kapcsolatos riasztások](security-center-alerts-service-layer.md)
-    * [Veszélyforrások észlelése az Azure WAF és Azure DDoS Protection](security-center-alerts-integration.md)
-    
+    * [Riasztások az Azure felügyeleti rétegéhez (Azure Resource Manager) (előzetes verzió)](threat-protection.md#management-layer)
+    * [Riasztások Azure Key Vault (előzetes verzió)](threat-protection.md#azure-keyvault)
+    * [Riasztások az Azure hálózati réteghez](threat-protection.md#network-layer)
+    * [Más szolgáltatásokból származó riasztások](threat-protection.md#alerts-other)    
+
 ## <a name="see-also"></a>Lásd még
 
 Ebből a dokumentumból megismerte a Security Center biztonsági szabályzatainak konfigurálását. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:

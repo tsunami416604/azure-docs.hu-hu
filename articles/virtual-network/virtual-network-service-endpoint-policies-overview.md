@@ -3,89 +3,118 @@ title: Azure-beli virtuális hálózati szolgáltatásvégpontokra vonatkozó sz
 description: Tudnivalók az Azure-beli szolgáltatási erőforrásokba irányuló virtuális hálózati forgalom szolgáltatásvégpont-szabályzatokkal történő szűréséről
 services: virtual-network
 documentationcenter: na
-author: sumeetmittal
+author: RDhillon
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
-ms.author: sumi
-ms.openlocfilehash: 1aa4328a6d5367ef356ce33807289a873c93d90f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/21/2020
+ms.author: rdhillon
+ms.openlocfilehash: 926da07ffaf0c61ca2a7fd02351ef3635ec4d73b
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77056699"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651294"
 ---
-# <a name="virtual-network-service-endpoint-policies-preview"></a>Virtuális hálózati szolgáltatásvégpont-szabályzatok (előzetes verzió)
+# <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Virtuális hálózati szolgáltatás végponti házirendjei az Azure Storage-hoz
 
-A virtuális hálózati (VNet) szolgáltatásvégpont-szabályzatok lehetővé teszik az Azure-szolgáltatásokba irányuló virtuális hálózati forgalom szűrését, mivel csak bizonyos Azure-beli szolgáltatási erőforrásokat engednek át a szolgáltatásvégpontokon. A végpontszabályzatok lehetővé teszik az Azure-szolgáltatásokba irányuló virtuális hálózati forgalom részletes hozzáférés-vezérlését.
+A Virtual Network (VNet) szolgáltatás-végponti házirendek lehetővé teszik a kimenő virtuális hálózati forgalom szűrését az Azure Storage-fiókokon keresztül a szolgáltatási végponton keresztül, és lehetővé teszi, hogy az adatok csak bizonyos Azure Storage-fiókokra kiszűrése. A végponti szabályzatok részletes hozzáférés-vezérlést biztosítanak az Azure Storage-ba irányuló virtuális hálózati forgalomhoz, amikor a szolgáltatás-végpontot
 
-Ez a funkció __előzetes__ verzióban érhető el az Azure STorage összes nyilvános Azure-régiójában.
+![A virtuális hálózat kimenő forgalmának védelme az Azure Storage-fiókokkal](./media/virtual-network-service-endpoint-policies-overview/vnet-service-endpoint-policies-overview.png)
 
-Az előzetes verzióval kapcsolatos legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
-
-> [!NOTE]  
-> Az előzetes verzió során a virtuális hálózati szolgáltatásvégpontok rendelkezésre állása és megbízhatósága eltérő lehet az általánosan elérhető kiadásétól. További részletekért lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Ez a funkció általánosan elérhető az __Azure Storage__ -hoz az __összes globális Azure-régióban__.
 
 ## <a name="key-benefits"></a>Főbb előnyök
 
 A virtuális hálózati szolgáltatásvégpont-szabályzatok a következő előnyöket biztosítják:
 
-- __Nagyobb biztonság az Azure-szolgáltatásokba irányuló virtuális hálózati adatforgalomnak__
+- __Nagyobb biztonság az Azure Storage-ba irányuló Virtual Network-forgalom számára__
 
-  [A hálózati biztonság csoportokhoz elérhető Azure-szolgáltatáscímkék](https://aka.ms/servicetags) lehetővé teszik, hogy a virtuális hálózatok kimenő forgalmát egyes Azure-szolgáltatásokra korlátozza, ez a forgalom azonban egy adott Azure-szolgáltatás bármely erőforrására irányulhat. 
+  [A hálózati biztonsági csoportok Azure-szolgáltatási címkéi](https://aka.ms/servicetags) lehetővé teszik a virtuális hálózat kimenő forgalmának korlátozását adott Azure Storage-régiókra. Ez azonban lehetővé teszi, hogy a forgalmat a kiválasztott Azure Storage-régióban lévő fiókokra irányítsa.
   
-  A szolgáltatásvégpont-szabályzatokkal most megteheti, hogy a virtuális hálózat kimenő forgalmának hozzáférését egyes Azure-erőforrásokra korlátozza. Így sokkal inkább a kezében tarthatja a virtuális hálózatban elért adatok védelmét. 
+  A végponti házirendek segítségével megadhatja azokat az Azure Storage-fiókokat, amelyek engedélyezik a virtuális hálózat kimenő elérését, és korlátozza a hozzáférést az összes többi Storage-fiókhoz. Ez sokkal részletesebb biztonsági szabályozást biztosít a virtuális hálózatról származó adatok kiszűrése védelméhez.
 
 - __Méretezhető, magas rendelkezésre állású szabályzatok az Azure-szolgáltatások adatforgalmának szűréséhez__
 
    A végpontszabályzatok horizontálisan skálázható, magas rendelkezésre állású megoldásokat biztosítanak a virtuális hálózatokból a szolgáltatásvégpontokon keresztül az Azure-szolgáltatásokba érkező forgalom szűrésére. Nincs szükség további erőforrásokra, hogy központi hálózati berendezéseket kelljen fenntartani a virtuális hálózat ezen forgalmához.
 
+## <a name="json-object-for-service-endpoint-policies"></a>JSON-objektum a szolgáltatási végpont házirendjeihez
+Vessünk egy gyors pillantást a szolgáltatás-végponti házirend objektumra.
+
+```json
+"serviceEndpointPolicyDefinitions": [
+    {
+            "description": null,
+            "name": "MySEP-Definition",
+            "resourceGroup": "MySEPDeployment",
+            "service": "Microsoft.Storage",
+            "serviceResources": [ 
+                    "/subscriptions/subscriptionID/resourceGroups/MySEPDeployment/providers/Microsoft.Storage/storageAccounts/mystgacc"
+            ],
+            "type": "Microsoft.Network/serviceEndpointPolicies/serviceEndpointPolicyDefinitions"
+    }
+]
+```
+
 ## <a name="configuration"></a>Konfiguráció
 
-- A végpontszabályzatokat konfigurálhatja úgy, hogy a virtuális hálózatok forgalmát egyes Azure-szolgáltatásokra korlátozzák. Az előzetes verzió az Azure Storage végpontszabályzatait támogatja. 
-- A végpontszabályzatot a virtuális hálózat egy alhálózatán kell konfigurálni. A szolgáltatásvégpontok számára az alhálózaton kell engedélyezni a szabályzat alkalmazását a szabályzatban szerelő összes Azure-szolgáltatásra.
-- A végpontszabályzat lehetővé teszi bizonyos Azure-beli szolgáltatási erőforrások engedélyezését az erőforrás-azonosító formátum használatával. Dönthet úgy, hogy egy adott előfizetés vagy erőforráscsoport összes erőforrásának hozzáférését korlátozza, de a korlátozás vonatkozhat egy-egy erőforrásra is. 
-- Alapértelmezett esetben, ha nincsenek szabályzatok csatolva egy végponttal rendelkező alhálózathoz, akkor a szolgáltatásban megtalálható összes erőforráshoz hozzáférhet. Amint konfigurált egy szabályzatot az alhálózaton, kizárólag a szabályzatban meghatározott erőforrásokhoz lehet hozzáférni az adott alhálózat számítási példányairól. A rendszer az érintett szolgáltatás minden más erőforrásának hozzáférését megtagadja. 
-- Az Azure-beli szolgáltatási erőforrásokba irányuló forgalmat azokban a régiókban szűrheti, amelyekben a szolgáltatásvégpont konfigurálva van. A más régiókban található szolgáltatás-erőforrásokhoz való hozzáférést a rendszer alapértelmezés szerint engedélyezi. 
+-   A végpont-házirendeket beállíthatja úgy, hogy az adott Azure Storage-fiókokra korlátozza a virtuális hálózati forgalmat.
+-   A végpontszabályzatot a virtuális hálózat egy alhálózatán kell konfigurálni. Az Azure Storage szolgáltatási végpontait engedélyezni kell az alhálózaton a szabályzat alkalmazásához.
+-   A végponti házirend lehetővé teszi adott Azure Storage-fiókok hozzáadását a listához a resourceID formátum használatával. Korlátozhatja a hozzáférést
+    - az előfizetésben lévő összes Storage-fiók<br>
+      `E.g. /subscriptions/subscriptionId`
 
-  > [!NOTE]  
-  > Annak érdekében, hogy a virtuális hálózatok csakis a szolgáltatásvégpont-régiókban található Azure-erőforrásokhoz férjenek hozzá, úgy kell konfigurálnia a hálózati biztonsági csoportok szabályait, hogy azok kizárólag a szolgáltatásvégpont-régiókba irányuló forgalmat engedélyezzék (ezt [szolgáltatáscímkékkel](security-overview.md#service-tags) lehet beállítani).
-
-- Egy alhálózaton több szabályzatot is életbe léptethet. Ha több szabályzat van egy alhálózathoz rendelve, minden olyan virtuális hálózati forgalom engedélyezve lesz, amely az ugyanazon szolgáltatáshoz tartozó, a szabályzatok valamelyikében szereplő erőforrásra irányul. A szabályzatokban nem meghatározott szolgáltatási erőforrásokhoz való hozzáférést a rendszer megtagadja. 
-
-  > [!NOTE]  
-  > A szabályzat csak a virtuális hálózatról engedélyezi a felsorolt szolgáltatási erőforrásokhoz való hozzáférést. A rendszer minden más, a szolgáltatásba irányuló forgalmat megtagad, ha bizonyos erőforrásokat hozzáad a szabályzathoz. Győződjön meg arról, hogy az alkalmazások szolgáltatási erőforrásokhoz kapcsolódó összes függősége azonosítható és felsorolható a szabályzatban.
-
-  > [!WARNING]  
-  > A virtuális hálózatokban üzembe helyezett Azure-szolgáltatások, mint például az Azure HDInsight, más Azure-szolgáltatásokhoz, például az Azure Storage-hoz férnek hozzá, hogy lekérjék az infrastruktúrával kapcsolatos követelményeket. A végpontszabályzatok bizonyos erőforrásokra történő korlátozása meggátolhatja, hogy a virtuális hálózatában üzembe helyezett szolgáltatások hozzáférjenek ezekhez az infrastruktúra-erőforrásokhoz. Az adott szolgáltatásokra vonatkozó [korlátozásokat itt találja](#limitations). Az előzetes verzióban a szolgáltatásvégpont-szabályzatok nem támogatják a virtuális hálózatban üzembe helyezett felügyelt Azure-szolgáltatásokat.
-
-- Azure Storage esetén: 
-  -  A hozzáférést a tárfiók Azure Resource Manager *resourceId* értékének felsorolásával korlátozhatja. Ez lefedi a blobokba, táblákba, üzenetsorokba, fájlokba és az Azure Data Lake Storage Gen2-be irányuló forgalmat.
-
-     Az Azure Storage-fiókok például a következő módon is felsorolhatók a végpontszabályzat definíciójában:
-    
-     Adott tárfiók engedélyezéséhez:         
-     `subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Storage/storageAccounts/storageAccountName`
-      
-     Adott előfizetésben és erőforráscsoportban található összes fiók engedélyezéséhez: `/subscriptions/subscriptionId/resourceGroups/resourceGroup`
+    - egy erőforráscsoport összes Storage-fiókja<br>
+      `E.g. subscriptions/subscriptionId/resourceGroups/resourceGroupName`
      
-     Egy előfizetésben található összes fiók engedélyezéséhez: `/subscriptions/subscriptionId`
-    
-- Csak az Azure Resource-modellt használó tárfiókokat lehet megadni a végpontszabályzatban.  
+    - egy egyedi Storage-fiók a megfelelő Azure Resource Manager resourceId listázásával. Ez lefedi a blobokba, táblákba, üzenetsorokba, fájlokba és az Azure Data Lake Storage Gen2-be irányuló forgalmat. <br>
+    `E.g. /subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/storageAccountName`
+-   Alapértelmezés szerint, ha egyetlen házirend sincs csatlakoztatva végpontokkal rendelkező alhálózathoz, akkor a szolgáltatásban lévő összes Storage-fiókhoz hozzáférhet. Amint konfigurált egy szabályzatot az alhálózaton, kizárólag a szabályzatban meghatározott erőforrásokhoz lehet hozzáférni az adott alhálózat számítási példányairól. A rendszer megtagadja az összes többi Storage-fiók elérését.
+-   Ha szolgáltatási végponti házirendeket alkalmaz egy alhálózaton, az Azure Storage *szolgáltatás végponti hatóköre* a regionálisról a **globálisra**lesz frissítve. Ez azt jelenti, hogy az Azure Storage-ba irányuló összes forgalmat a szolgáltatás végpontja biztosítja. A szolgáltatás-végponti szabályzatok globálisan is alkalmazhatók, így a nem kifejezetten engedélyezett Storage-fiókok esetében a rendszer letiltja a hozzáférést. 
+-   Egy alhálózaton több szabályzatot is életbe léptethet. Ha több házirend van társítva az alhálózathoz, akkor az ezen házirendek bármelyikében megadott erőforrásokhoz tartozó virtuális hálózati forgalom engedélyezve lesz. A szabályzatokban nem meghatározott szolgáltatási erőforrásokhoz való hozzáférést a rendszer megtagadja.
 
-  > [!NOTE]  
-  > A klasszikus tárfiókokhoz való hozzáférést a végpontszabályzatok meggátolják.
+    > [!NOTE]  
+    > A szolgáltatás-végponti házirendek **lehetővé teszik a házirendek használatát**, így a megadott erőforrásokon kívül minden más erőforrás korlátozott. Győződjön meg arról, hogy az alkalmazásokhoz tartozó összes szolgáltatási erőforrás-függőség azonosítható és szerepel a szabályzatban.
 
-- A felsorolásban szereplő fiók elsődleges helyének a szolgáltatásvégpont alhálózathoz földrajzilag párosított régiójában kell lennie. 
+- Csak az Azure Resource-modellt használó tárfiókokat lehet megadni a végpontszabályzatban. A klasszikus Azure Storage-fiókok nem támogatják az Azure szolgáltatás-végponti házirendjeit.
+- Az RA-GRS másodlagos hozzáférést automatikusan engedélyezi a rendszer, ha az elsődleges fiók szerepel a listán.
+- A tárfiókok a virtuális hálózattal megegyező vagy attól eltérő előfizetéshez vagy Azure Active Directory-bérlőhöz is tartozhatnak.
 
-  > [!NOTE]  
-  > A szabályzatok lehetővé teszik más régiókból származó szolgáltatás-erőforrások meghatározását. A virtuális hálózat Azure-szolgáltatásokhoz való hozzáférését csak a földrajzilag párosított régiókra szűri a rendszer. Ha a hálózati biztonsági csoportok nincsenek az Azure Storage földrajzilag párosított régióira korlátozva, a virtuális hálózat az összes földrajzilag párosított régión kívüli tárfiókhoz hozzáférhet.
+## <a name="scenarios"></a>Forgatókönyvek
 
-- Az RA-GRS másodlagos hozzáférést automatikusan engedélyezi a rendszer, ha az elsődleges fiók szerepel a listán. 
-- A tárfiókok a virtuális hálózattal megegyező vagy attól eltérő előfizetéshez vagy Azure Active Directory-bérlőhöz is tartozhatnak. 
+- **Társviszonyban álló, csatlakoztatott vagy többszörös virtuális hálózatok**: A társviszonyban álló virtuális hálózatok forgalmának szűréséhez a végpontszabályzatokat egyenként kell érvényesíteni az egyes virtuális hálózatokon.
+- Az **internetes forgalom szűrése hálózati berendezésekkel vagy Azure Firewallekkel**: az Azure-szolgáltatások forgalmának szűrése házirendekkel, a szolgáltatási végpontokon keresztül, valamint az internetes vagy az Azure-adatforgalom szűrése készülékeken vagy Azure Firewall keresztül.
+- A **virtuális hálózatokon üzembe helyezett Azure-szolgáltatások forgalmának szűrése**: jelenleg az Azure-szolgáltatás végponti házirendjei nem támogatottak a virtuális hálózaton üzembe helyezett felügyelt Azure-szolgáltatásokban. 
+- **A helyszínről az Azure-szolgáltatásokba irányuló forgalom szűrése**: A szolgáltatásvégpont-szabályzatok csak a szabályzatokhoz társított alhálózatokról érkező forgalomra vonatkoznak. Az egyes Azure-beli szolgáltatási erőforrásokhoz való helyszíni hozzáférés engedélyezéséhez a forgalmat virtuális hálózati berendezésekkel vagy tűzfalakkal szűrheti.
+
+## <a name="logging-and-troubleshooting"></a>Naplózás és hibaelhárítás
+Szolgáltatásvégpont-szabályzatokhoz a központi naplózás nem érhető el. A szolgáltatásdiagnosztikai naplókkal kapcsolatos további részletekért tekintse meg a [szolgáltatásvégpontok naplózásával](virtual-network-service-endpoints-overview.md#logging-and-troubleshooting) foglalkozó témakört.
+
+### <a name="troubleshooting-scenarios"></a>Hibaelhárítási forgatókönyvek
+- Hozzáférés megtagadva az előzetes verzióban működő Storage-fiókokban (nem a Geo-párosítási régióban)
+  - Az Azure Storage a globális szolgáltatási címkék használatára való frissítésével a szolgáltatási végpontok és a szolgáltatás-végponti házirendek hatóköre már globális. Így az Azure Storage-ba irányuló adatforgalom titkosítva van a szolgáltatási végpontokon, és csak a szabályzatban kifejezetten felsorolt tárolási fiókok férhetnek hozzá.
+  - A hozzáférés visszaállításához explicit módon engedélyezze az összes szükséges Storage-fiók listáját.  
+  - Forduljon az Azure ügyfélszolgálatához.
+- A végpontszabályzatokban szereplő fiókokhoz való hozzáférés meg van tagadva
+  - A hálózati biztonsági csoportok vagy a tűzfalak használatával történő szűrés blokkolhatja a hozzáférést
+  - Ha a szabályzat eltávolítása/újbóli életbe léptetése miatt megszűnik a kapcsolat:
+    - Ellenőrizze, hogy az Azure-szolgáltatás úgy van-e konfigurálva, hogy engedélyezze a virtuális hálózat végpontokon keresztüli elérését, vagy hogy az erőforrás alapértelmezett házirendje az *összes engedélyezése*értékre van állítva.
+    - Ellenőrizze, hogy a szolgáltatásdiagnosztika megjeleníti-e a végpontokon átmenő forgalmat.
+    - Ellenőrizze, hogy a hálózati biztonsági csoport forgalmának naplói és a tárolási naplók a várakozásoknak megfelelően a végpontokon keresztül történő hozzáférést mutatják-e.
+    - Forduljon az Azure ügyfélszolgálatához.
+- A szolgáltatásvégpont-szabályzatokban nem szereplő fiókok hozzáférése meg van tagadva
+  - Ellenőrizze, hogy az Azure Storage konfigurálva van-e a virtuális hálózat végpontokon keresztüli elérésének engedélyezésére, vagy hogy az erőforrás alapértelmezett házirendje az *összes engedélyezése*értékre van-e állítva.
+  - Győződjön meg arról, hogy a fiókok nem **klasszikus tárolási fiókok** az alhálózaton szolgáltatási végponti házirendekkel.
+- Egy felügyelt Azure-szolgáltatás leállt a szolgáltatás-végponti házirendnek az alhálózaton való alkalmazása után.
+  - A felügyelt szolgáltatások jelenleg nem támogatottak a szolgáltatás-végponti házirendekkel. *Tekintse meg ezt a helyet a frissítésekhez*.
+
+## <a name="provisioning"></a>Kiépítés
+
+A szolgáltatásvégpont-szabályzatokat az alhálózatokon egy olyan felhasználó konfigurálhatja, akinek írási hozzáférése van egy virtuális hálózathoz. További információkat is megtudhat az Azure [beépített szerepköreiről](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és az egyes engedélyek [egyéni szerepkörökhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) való hozzárendeléséről.
+
+A virtuális hálózatok és az Azure Storage-fiókok lehetnek azonos vagy eltérő előfizetésekben, vagy Azure Active Directory bérlők.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -93,86 +122,12 @@ A virtuális hálózati szolgáltatásvégpont-szabályzatok a következő előn
 - A virtuális hálózatoknak és a szolgáltatásvégpont-szabályzatnak ugyanabban a régióban kell lenniük.
 - Csak akkor alkalmazhat szolgáltatásvégpont-szabályzatokat egy alhálózaton, ha a szolgáltatásvégpontok a szabályzatban szereplő Azure-szolgáltatásokhoz vannak konfigurálva.
 - A saját helyszíni hálózatáról az Azure-szolgáltatásokba irányuló forgalomhoz nem használhat szolgáltatásvégpont-szabályzatokat.
-- A végpontszabályzatokat nem lehet alkalmazni olyan, felügyelt Azure-szolgáltatásokkal rendelkező alhálózatokon, amelyeknek Azure-szolgáltatásoktól kell lekérniük az infrastruktúrára vonatkozó követelményeket. 
+- Az Azure által felügyelt szolgáltatások jelenleg nem támogatják a végponti házirendeket. Ez magában foglalja a megosztott alhálózatokban üzembe helyezett felügyelt szolgáltatásokat (például *Azure HDInsight, Azure batch, Azure Hozzáadás, Azure APplication Gateway, Azure VPN Gateway, Azure Firewall*) vagy a dedikált alhálózatokhoz (például *Azure app Service Environment, Azure Redis Cache, Azure API Management, Azure SQL mi, klasszikus felügyelt szolgáltatás*).
 
-  > [!WARNING]  
-  > A virtuális hálózatokban üzembe helyezett Azure-szolgáltatások, mint például az Azure HDInsight, más Azure-szolgáltatásokhoz, például az Azure Storage-hoz férnek hozzá, hogy lekérjék az infrastruktúrával kapcsolatos követelményeket. A végpontszabályzatok bizonyos erőforrásokra történő korlátozása meggátolhatja, hogy a virtuális hálózatában üzembe helyezett Azure-szolgáltatások hozzáférjenek ezekhez az infrastruktúra-erőforrásokhoz.
-  
-  - Egyes Azure-szolgáltatások más számítási példányokkal rendelkező alhálózatokon is üzembe helyezhetők. Bizonyosodjon meg róla, hogy a rendszer nem alkalmaz végpontszabályzatokat az alhálózaton, ha azon az alább felsorolt felügyelt szolgáltatások vannak üzembe helyezve.
-   
-    - Azure HDInsight
-    - Azure Batch (Azure Resource Manager)
-    - Azure Active Directory Domain Services (Azure Resource Manager)
-    - Azure Application Gateway (Azure Resource Manager)
-    - Azure VPN Gateway (Azure Resource Manager)
-    - Azure Firewall
+ > [!WARNING]
+ > A virtuális hálózatokban üzembe helyezett Azure-szolgáltatások, mint például az Azure HDInsight, más Azure-szolgáltatásokhoz, például az Azure Storage-hoz férnek hozzá, hogy lekérjék az infrastruktúrával kapcsolatos követelményeket. A végpontszabályzatok bizonyos erőforrásokra történő korlátozása meggátolhatja, hogy a virtuális hálózatában üzembe helyezett Azure-szolgáltatások hozzáférjenek ezekhez az infrastruktúra-erőforrásokhoz.
 
-  - Bizonyos Azure-szolgáltatások dedikált alhálózatokon kerülnek üzembe helyezésre. Az előzetes verzióban az alábbiakban felsorolt összes ilyen szolgáltatás esetében blokkolva vannak a végpontszabályzatok. 
-
-     - Azure App Service Environment
-     - Azure Rediscache
-     - Azure API Management
-     - Felügyelt Azure SQL-példány
-     - Azure Active Directory tartományi szolgáltatások
-     - Azure Application Gateway (klasszikus)
-     - Azure VPN Gateway (klasszikus)
-
-- Azure Storage: a klasszikus tárfiókok nem támogatottak a végpontszabályzatokban. Alapértelmezés szerint a szabályzatok minden klasszikus tárfiókhoz megtagadják a hozzáférést. Ha az alkalmazásának hozzá kell férnie az Azure Resource Managerhez és a klasszikus tárfiókokhoz, ne használjon végpontszabályzatokat a köztük zajló forgalom vezérléséhez. 
-
-## <a name="nsgs-with-service-endpoint-policies"></a>Szolgáltatásvégpont-szabályzatokkal rendelkező NSG-k
-- Alapértelmezés szerint az NSG-k engedélyezik a kimenő internetforgalmat, beleértve az Azure-szolgáltatások felé irányuló virtuális hálózati forgalmat is.
-- Ha szeretne megtagadni minden kimenő internetforgalmat, és csak a meghatározott Azure-beli szolgáltatási erőforrások felé irányuló forgalmat szeretné engedélyezni: 
-
-  1\. lépés: Konfigurálja úgy az NSG-ket, hogy csak a végpontrégiókban található Azure-szolgáltatások felé irányuló kimenő forgalmat engedélyezzék *Azure-szolgáltatáscímkék* használatával. További információért lásd az [NSG-khez elérhető szolgáltatáscímkéket](https://aka.ms/servicetags) ismertető szakaszt.
-      
-  A hálózati biztonsági csoportok olyan szabályai, amelyek a végpontrégiókra korlátozzák a hozzáférést, a következőképpen néznek ki:
-
-  ```
-  Allow AzureStorage.WestUS2,
-  Allow AzureStorage.WestCentralUS,
-  Deny all
-  ```
-
-  2\. lépés: Léptessen életbe olyan szolgáltatásvégpont-szabályzatot, amely csak bizonyos Azure-beli szolgáltatási erőforrás hozzáférését engedélyezi.
-
-  > [!WARNING]  
-  > Ha a hálózati biztonsági csoport nem úgy van konfigurálva, hogy a végpontrégiókra korlátozza egy virtuális hálózat Azure-szolgáltatásokhoz való hozzáférését, más régiókban is hozzáférhet a szolgáltatási erőforrásokhoz, még akkor is, ha a szolgáltatásvégpont-szabályzat életbe lépett.
-
-## <a name="scenarios"></a>Forgatókönyvek
-
-- **Társviszonyban álló, csatlakoztatott vagy többszörös virtuális hálózatok**: A társviszonyban álló virtuális hálózatok forgalmának szűréséhez a végpontszabályzatokat egyenként kell érvényesíteni az egyes virtuális hálózatokon.
-- **Internetforgalom szűrése hálózati berendezésekkel vagy Azure Firewall-lal**: Az Azure-szolgáltatások forgalmát végpontokon keresztül, szabályzatokkal szűrheti, és az egyéb internetes vagy Azure-forgalom szűréséhez berendezéseket vagy Azure Firewallt használhat. 
-- **Virtuális hálózatokon üzembe helyezett Azure-szolgáltatások forgalmának szűrése**: Az előzetes verzióban a szolgáltatásvégpont-szabályzatokat a virtuális hálózatban üzembe helyezett egyik felügyelt Azure-szolgáltatás sem támogatja. 
- Tekintse meg az egyes szolgáltatásokra vonatkozó [korlátozásokat.](#limitations)
-- **A helyszínről az Azure-szolgáltatásokba irányuló forgalom szűrése**: A szolgáltatásvégpont-szabályzatok csak a szabályzatokhoz társított alhálózatokról érkező forgalomra vonatkoznak. Az egyes Azure-beli szolgáltatási erőforrásokhoz való helyszíni hozzáférés engedélyezéséhez a forgalmat virtuális hálózati berendezésekkel vagy tűzfalakkal szűrheti.
-
-## <a name="logging-and-troubleshooting"></a>Naplózás és hibaelhárítás
-Szolgáltatásvégpont-szabályzatokhoz a központi naplózás nem érhető el. A szolgáltatásdiagnosztikai naplókkal kapcsolatos további részletekért tekintse meg a [szolgáltatásvégpontok naplózásával](virtual-network-service-endpoints-overview.md#logging-and-troubleshooting) foglalkozó témakört.
-
-### <a name="troubleshooting-scenarios"></a>Hibaelhárítási forgatókönyvek
-- A végpontszabályzatokban nem szereplő tárfiókokhoz való hozzáférés engedélyezése
-  - A hálózati biztonsági csoportok más régiókban is lehetővé tehetik az internethez vagy Azure Storage-fiókokhoz való hozzáférést.
-  - A hálózati biztonsági csoportokat úgy kell konfigurálni, hogy megtagadjanak minden kimenő internetes forgalmat, és csak az egyes Azure Storage-régiókba irányuló forgalmat engedélyezzék. Részletekért lásd: hálózati biztonsági csoportok.
-- A végpontszabályzatokban szereplő fiókokhoz való hozzáférés meg van tagadva
-  - A hálózati biztonsági csoportok vagy a tűzfalak használatával történő szűrés blokkolhatja a hozzáférést
-  - Ha a szabályzat eltávolítása/újbóli életbe léptetése miatt megszűnik a kapcsolat:
-    - Ellenőrizze, hogy az Azure-szolgáltatás úgy van-e konfigurálva, hogy engedélyezze a virtuális hálózatokról való hozzáférést a végpontokon keresztül, illetve hogy az erőforrás alapértelmezett szabályzatában az *összes engedélyezésének* lehetősége van-e megadva.
-      > [!NOTE]      
-      > A szolgáltatás-erőforrásokat virtuális hálózatokhoz kell kötni, hogy hozzáférést lehessen biztosítani a végpontszabályzatokkal. Biztonságra vonatkozó ajánlott eljárásként azt javasoljuk, hogy a szolgáltatás-erőforrásokat a megbízható hálózataihoz, például az Azure-beli virtuális hálózatokhoz a végpontokon keresztül kösse le, vagy a helyszínen egy IP-tűzfalon keresztül.
-  
-    - Ellenőrizze, hogy a szolgáltatásdiagnosztika megjeleníti-e a végpontokon átmenő forgalmat.
-    - Ellenőrizze, hogy a hálózati biztonsági csoport forgalmának naplói és a tárolási naplók a várakozásoknak megfelelően a végpontokon keresztül történő hozzáférést mutatják-e.
-    - Forduljon az Azure ügyfélszolgálatához.
-- A szolgáltatásvégpont-szabályzatokban nem szereplő fiókok hozzáférése meg van tagadva
-  - A hálózati biztonsági csoportok vagy a tűzfalak használatával történő szűrés blokkolhatja a hozzáférést. Bizonyosodjon meg róla, hogy az *Azure Storage* szolgáltatáscímkéje engedélyezve van a végpontrégiókban. A szabályzatok korlátozásaival kapcsolatos részletekért tekintse meg a [korlátozásokkal](#limitations) foglalkozó témakört.
-  A rendszer például megtagadja a klasszikus tárfiókok általi hozzáférést, ha egy szabályzat érvényben van.
-  - Ellenőrizze, hogy az Azure-szolgáltatás úgy van-e konfigurálva, hogy engedélyezze a virtuális hálózatokról való hozzáférést a végpontokon keresztül, illetve hogy az erőforrás alapértelmezett szabályzatában az *összes engedélyezésének* lehetősége van-e megadva.
-
-## <a name="provisioning"></a>Kiépítés
-
-A szolgáltatásvégpont-szabályzatokat az alhálózatokon egy olyan felhasználó konfigurálhatja, akinek írási hozzáférése van egy virtuális hálózathoz. További információkat is megtudhat az Azure [beépített szerepköreiről](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és az egyes engedélyek [egyéni szerepkörökhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) való hozzárendeléséről.
-
-A virtuális hálózatok és az Azure-beli szolgáltatási erőforrások tartozhatnak ugyanahhoz az előfizetéshez vagy Azure Active Directory-bérlőkhöz, de különböző előfizetésekhez és bérlőkhöz is. 
+- A klasszikus Storage-fiókok nem támogatottak a végponti házirendekben. Alapértelmezés szerint a szabályzatok minden klasszikus tárfiókhoz megtagadják a hozzáférést. Ha az alkalmazásának hozzá kell férnie az Azure Resource Managerhez és a klasszikus tárfiókokhoz, ne használjon végpontszabályzatokat a köztük zajló forgalom vezérléséhez.
 
 ## <a name="pricing-and-limits"></a>Díjszabás és korlátok
 
@@ -190,4 +145,3 @@ A következő korlátozásokat érvényesíti a rendszer a szolgáltatásvégpon
 
 - Tudnivalók [a virtuális hálózati szolgáltatásvégpont-szabályzatok konfigurálásáról](virtual-network-service-endpoint-policies-portal.md)
 - További információk a [virtuális hálózati szolgáltatásvégpontokról](virtual-network-service-endpoints-overview.md)
-

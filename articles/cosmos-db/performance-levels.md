@@ -1,106 +1,106 @@
 ---
-title: Kivont Azure Cosmos DB teljesítményszintek
-description: Ismerje meg az S1, S2 és S3 teljesítményszintek korábban elérhető az Azure Cosmos DB-ben.
+title: Kivont Azure Cosmos DB teljesítményszint
+description: Ismerkedjen meg a Azure Cosmos DBban korábban elérhető S1, S2 és S3 teljesítmény szintjével.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 06fa98ae4acc2252d8866858ed0e2194ed84ff79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60928296"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623333"
 ---
-# <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Az S1, S2 és S3 teljesítményszintek kivonása
+# <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Az S1, az S2 és az S3 teljesítmény szintjének kivonása
 
 > [!IMPORTANT] 
-> A cikkben tárgyalt S1, S2 és S3 teljesítményszintek van vezetve, és már nem érhetők el új Azure Cosmos DB-fiókok esetében.
+> A cikkben ismertetett S1, S2 és S3 szintű teljesítményszint megszűnik, és az új Azure Cosmos DB fiókok esetében már nem érhetők el.
 >
 
-Ez a cikk az S1, S2 és S3 teljesítményszintek nyújt áttekintést, és bemutatja, hogyan használja ezeket a teljesítményszinteket gyűjtemények lehet egyetlen áttelepített particionált gyűjtemények. Ez a cikk elolvasása után is elérheti az alábbi kérdések megválaszolásához:
+Ez a cikk az S1, az S2 és az S3 teljesítményszint áttekintését tartalmazza, és bemutatja, hogyan telepíthetők át az ezeket a teljesítményadatokat használó gyűjtemények egy particionált gyűjteményekbe. Ez a cikk elolvasása után is elérheti az alábbi kérdések megválaszolásához:
 
-- [Miért vannak az S1, S2 és S3 teljesítményszintek vannak vezetve?](#why-retired)
-- [Hogyan tegye egypartíciós gyűjtemények és a particionált gyűjtemények hasonlítsa össze az S1, S2 és S3 teljesítményszintek?](#compare)
-- [Mit kell tennem saját adatokhoz való zavartalan hozzáférés biztosítására?](#uninterrupted-access)
-- [Hogyan változik a saját gyűjteményembe az áttelepítés után?](#collection-change)
-- [Hogyan változik a történik a számlázás a szeretnék az egypartíciós gyűjteményeket használok áttelepítése után?](#billing-change)
-- [Mi történik, ha több mint 10 GB tárhelyet kell?](#more-storage-needed)
-- [Módosítható között az S1, S2 és S3 teljesítményszintek megelőzően a tervezett áttelepítés?](#change-before)
-- [Hogyan migrálhatom az S1, S2 és S3 teljesítményszintű önálló egypartíciós gyűjtemények?](#migrate-diy)
-- [Hogyan vagyok érintett a Ha nagyvállalati szerződéssel rendelkező ügyfelek vagyok?](#ea-customer)
+- [Miért kerül kivonásra az S1, S2 és S3 szintű teljesítményszint?](#why-retired)
+- [Hogyan hasonlítható össze az egypartíciós gyűjtemények és a particionált gyűjtemények az S1, az S2 és az S3 teljesítmény szintjével?](#compare)
+- [Mit kell tennem az adataim zavartalan elérésének biztosításához?](#uninterrupted-access)
+- [Hogyan változik a gyűjtemény az áttelepítés után?](#collection-change)
+- [Hogyan változik a számlázási változás a különálló partíciós gyűjteményekbe való Migrálás után?](#billing-change)
+- [Mi a teendő, ha több mint 20 GB tárterületre van szükségem?](#more-storage-needed)
+- [Válthatok az S1, az S2 és az S3 teljesítményszint között a tervezett áttelepítés előtt?](#change-before)
+- [Hogyan Migrálás az S1, S2 és S3 teljesítményszint között az önálló partíciós gyűjteményekbe?](#migrate-diy)
+- [Milyen hatással vagyok az EA-ügyfelek?](#ea-customer)
 
 <a name="why-retired"></a>
 
-## <a name="why-are-the-s1-s2-and-s3-performance-levels-being-retired"></a>Miért vannak az S1, S2 és S3 szintű teljesítmény szintjeit kivezetjük?
+## <a name="why-are-the-s1-s2-and-s3-performance-levels-being-retired"></a>Miért kerül kivonásra az S1, S2 és S3 szintű teljesítményszint?
 
-Az S1, S2 és S3 teljesítményszintek nem kínál a szabványos Azure Cosmos DB-ajánlat biztosít rugalmasságot. Az átviteli sebesség és a tárolási kapacitást az S1, S2 és S3 teljesítményszintek, előre beállított, és nem ajánlja fel rugalmasság. Az Azure Cosmos DB most kínál a testreszabása az átviteli sebesség és a tárolás, felkínálva sokkal nagyobb rugalmasságot biztosít arra, hogy az igényeinek megfelelően méretezhető.
+Az S1, S2 és S3 teljesítményszint nem nyújt rugalmasságot a standard Azure Cosmos DB ajánlat számára. Az S1, S2, S3 teljesítményszint esetében az átviteli sebesség és a tárolókapacitás is előre be lett állítva, és nem nyújtott rugalmasságot. A Azure Cosmos DB mostantól lehetővé teszi az átviteli sebesség és a tárterület testreszabását, ami sokkal nagyobb rugalmasságot kínál az igényeinek megfelelő skálázáshoz.
 
 <a name="compare"></a>
 
-## <a name="how-do-single-partition-collections-and-partitioned-collections-compare-to-the-s1-s2-s3-performance-levels"></a>Hogyan tegye egypartíciós gyűjtemények és a particionált gyűjtemények hasonlítsa össze az S1, S2 és S3 teljesítményszintek?
+## <a name="how-do-single-partition-collections-and-partitioned-collections-compare-to-the-s1-s2-s3-performance-levels"></a>Hogyan hasonlítható össze az egypartíciós gyűjtemények és a particionált gyűjtemények az S1, az S2 és az S3 teljesítmény szintjével?
 
-Az alábbi táblázat összehasonlítja az adatátviteli és tárolási lehetőségek egypartíciós gyűjteményeket, particionált gyűjteményeket, és az S1, S2 és S3 teljesítményszintek. Íme egy példa az USA keleti régiója 2 régióban:
+Az alábbi táblázat összehasonlítja az egypartíciós gyűjtemények, a particionált gyűjtemények, valamint az S1, S2 és S3 teljesítményszint esetében elérhető átviteli sebességet és tárolási lehetőségeket. Példa az USA 2. keleti régiójára:
 
-|   |A particionált gyűjtemény|Különálló partíciós gyűjteménybe|S1|S2|S3|
+|   |Particionált gyűjtemény|Egyetlen partíciós gyűjtemény|S1|S2|S3|
 |---|---|---|---|---|---|
-|Maximális átviteli kapacitás|Korlátlan|10 ezer Kérelemegység/s|250 RU/s|1 ezer Kérelemegység/s|2.5 ezer Kérelemegység/s|
-|Minimum átviteli kapacitás|2.5 ezer Kérelemegység/s|400 Kérelemegység/s|250 RU/s|1 ezer Kérelemegység/s|2.5 ezer Kérelemegység/s|
-|Maximális tárhely|Korlátlan|10 GB|10 GB|10 GB|10 GB|
-|Ár (havonta)|Átviteli sebesség: $6 / 100 RU/s<br><br>Storage: $ 0,25/GB|Átviteli sebesség: $6 / 100 RU/s<br><br>Storage: $ 0,25/GB|25 USD|50 USD|100 USD|
+|Maximális átviteli sebesség|Korlátlan|10K RU/s|250 RU/s|1 K RU/s|2,5 K RU/s|
+|Minimális átviteli sebesség|2,5 K RU/s|400 RU/s|250 RU/s|1 K RU/s|2,5 K RU/s|
+|Maximális tárolóméret|Korlátlan|20 GB|20 GB|20 GB|20 GB|
+|Díj (havi)|Átviteli sebesség: $6/100 RU/s<br><br>Tárterület: 0,25/GB|Átviteli sebesség: $6/100 RU/s<br><br>Tárterület: 0,25/GB|$25 USD|$50 USD|$100 USD|
 
-Ön nagyvállalati szerződéssel rendelkező ügyfelek? Ha igen, tekintse meg a [hogyan vagyok I érint, ha nagyvállalati szerződéssel rendelkező ügyfelek vagyok?](#ea-customer)
+EA-ügyfél? Ha igen, tekintse meg, hogyan érintettem, [Ha EA-ügyfél vagyok?](#ea-customer)
 
 <a name="uninterrupted-access"></a>
 
-## <a name="what-do-i-need-to-do-to-ensure-uninterrupted-access-to-my-data"></a>Mit kell tennem saját adatokhoz való zavartalan hozzáférés biztosítására?
+## <a name="what-do-i-need-to-do-to-ensure-uninterrupted-access-to-my-data"></a>Mit kell tennem az adataim zavartalan elérésének biztosításához?
 
-Ha egy S1, S2 vagy S3 szintű gyűjtemény, át kell telepítenie a gyűjtemény egyetlen különálló partíciós gyűjteménybe való programozott módon [a .NET SDK-val](#migrate-diy). 
+Ha S1, S2 vagy S3 gyűjteménysel rendelkezik, a gyűjteményt a [.net SDK használatával programozott módon](#migrate-diy)telepítse át egyetlen partíciós gyűjteményre. 
 
 <a name="collection-change"></a>
 
-## <a name="how-will-my-collection-change-after-the-migration"></a>Hogyan változik a saját gyűjteményembe az áttelepítés után?
+## <a name="how-will-my-collection-change-after-the-migration"></a>Hogyan változik a gyűjtemény az áttelepítés után?
 
-Ha egy S1 szintű gyűjteményt, áttelepítheti azokat egyetlen különálló partíciós gyűjteménybe 400 RU/s átviteli sebességgel. 400 Kérelemegység/s a legalacsonyabb átviteli sebesség érhető el az egypartíciós gyűjteményeket. Azonban költsége 400 RU/s az egyetlen különálló partíciós gyűjteménybe körülbelül azonos módon, az S1 szintű gyűjteményt és 250 RU/s – volt és ezért nem fizetnie az extra 150 RU/s elérhető.
+Ha S1-es gyűjteménysel rendelkezik, áttelepítheti őket egyetlen, 400 RU/s sebességű partíciós gyűjteménybe. a 400 RU/s az egyetlen partíciós gyűjteményeknél elérhető legalacsonyabb átviteli sebesség. Az egypartíciós gyűjteményben lévő 400 RU/s díja azonban nagyjából megegyeznek az S1-gyűjtemény és a 250 RU/s használatával, így Ön nem fizet a további 150 RU/s számára.
 
-Ha az S2-gyűjteményt, áttelepítheti azokat egy különálló partíciós gyűjteménybe 1 ezer Kérelemegység/s. Az átviteli sebesség szinten jelenik meg nem változik.
+Ha van S2-gyűjteménye, áttelepítheti őket egyetlen partíciós gyűjteménybe 1 K RU/s használatával. A rendszer nem módosítja az átviteli sebesség szintjét.
 
-Ha egy S3 szintű gyűjtemény, áttelepítheti azokat egy különálló partíciós gyűjteménybe 2,5 ezer Kérelemegység/s. Az átviteli sebesség szinten jelenik meg nem változik.
+Ha rendelkezik S3-gyűjteménysel, áttelepítheti őket egyetlen partíciós gyűjteménybe, 2,5 K RU/s használatával. A rendszer nem módosítja az átviteli sebesség szintjét.
 
-Az egyes ezekben az esetekben miután áttelepítette a gyűjtemény lesz az átviteli sebesség szinten testreszabásához, vagy felfelé és lefelé közel valós idejű elérést biztosíthat a felhasználók igény szerint skálázza fel. 
+Ezekben az esetekben a gyűjtemény áttelepítése után testre szabhatja az átviteli sebességet, vagy igény szerint méretezheti, hogy a felhasználók számára alacsony késésű hozzáférést biztosítson. 
 
 <a name="billing-change"></a>
 
-## <a name="how-will-my-billing-change-after-i-migrated-to-the-single-partition-collections"></a>Hogyan változik a történik a számlázás a szeretnék az egypartíciós gyűjtemények áttelepítése után?
+## <a name="how-will-my-billing-change-after-i-migrated-to-the-single-partition-collections"></a>Hogyan változik a számlázási változás az egyetlen partíciós gyűjteményre való Migrálás után?
 
-Feltételezve, hogy 10 S1 szintű gyűjtemények, 1 GB-nyi mindegyik esetében az USA keleti régiójában lévő tároló rendelkezik, és ezek 10 S1 szintű gyűjteményt telepít át 10 egypartíciós gyűjtemények 400 RU/s (a minimális szint). A számla módon fog kinézni, ha egy teljes hónapig tárolja a 10 egypartíciós gyűjtemények:
+Tegyük fel, hogy 10 S1-es gyűjteményt tartalmaz, 1 GB tárterületet az USA keleti régiójában, és a 10 S1-es gyűjteményt 10 egypartíciós gyűjteménybe telepíti át a 400 RU/s (a minimális szint) értékre. A számla a következőképpen jelenik meg, ha a 10 egypartíciós gyűjteményt egy teljes hónapra vonatkozóan tartja:
 
-![Hogyan viszonyul a 10 gyűjtemények díjszabása S1 10 gyűjtemények használatával egyetlen különálló partíciós gyűjteménybe díjszabása](./media/performance-levels/s1-vs-standard-pricing.png)
+![Az S1 díjszabása 10 gyűjtemény esetében 10 gyűjtemény összehasonlításával egyetlen partíciós gyűjtemény díjszabása alapján](./media/performance-levels/s1-vs-standard-pricing.png)
 
 <a name="more-storage-needed"></a>
 
-## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>Mi történik, ha több mint 10 GB tárhelyet kell?
+## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>Mi a teendő, ha több mint 20 GB tárterületre van szükségem?
 
-E rendelkezik az S1, S2 vagy S3 teljesítményszintű gyűjtemény, vagy egyetlen különálló partíciós gyűjteménybe, amelyek mindegyike rendelkezik, 10 GB tárhelyet érhető el, az Azure Cosmos DB adatáttelepítés eszközzel áttelepíteni az adatokat egy particionált gyűjteménybe, az gyakorlatilag korlátlan tárolási kapacitás Egy particionált gyűjteménybe előnyeivel kapcsolatos információk: [particionálás és skálázás az Azure Cosmos DB](sql-api-partition-data.md). 
+Akár S1, S2 vagy S3 szintű teljesítménnyel rendelkezik, akár egyetlen partíciós gyűjteményrel rendelkezik, amelyek mindegyike 20 GB tárterülettel rendelkezik, a Azure Cosmos DB adatáttelepítési eszköz használatával áttelepítheti az adatait egy particionált gyűjteménybe gyakorlatilag korlátlan tárterület. További információ a particionált gyűjtemények előnyeiről: [particionálás és skálázás Azure Cosmos DBban](sql-api-partition-data.md). 
 
 <a name="change-before"></a>
 
-## <a name="can-i-change-between-the-s1-s2-and-s3-performance-levels-before-the-planned-migration"></a>Módosítható között az S1, S2 és S3 teljesítményszintek megelőzően a tervezett áttelepítés?
+## <a name="can-i-change-between-the-s1-s2-and-s3-performance-levels-before-the-planned-migration"></a>Válthatok az S1, az S2 és az S3 teljesítményszint között a tervezett áttelepítés előtt?
 
-S1, S2 és S3 teljesítményű csak meglévő fiókok is módosítható, és módosítsa a szolgáltatói teljesítményszintek programozott módon [a .NET SDK-val](#migrate-diy). Ha egyetlen különálló partíciós gyűjteménybe módosítja az S1, az S3 vagy az S3, az S1, S2 vagy S3 teljesítményszintek nem lehet visszatérni.
+Csak az S1, S2 és S3 teljesítményű meglévő fiókok módosíthatók, és [a .net SDK használatával](#migrate-diy)programozott módon módosíthatók a teljesítményszint szintjei. Ha S1-ről, S3-ról vagy S3-ról egyetlen partíciós gyűjteményre vált, nem térhet vissza az S1, az S2 vagy az S3 teljesítmény szintjére.
 
 <a name="migrate-diy"></a>
 
-## <a name="how-do-i-migrate-from-the-s1-s2-s3-performance-levels-to-single-partition-collections-on-my-own"></a>Hogyan migrálhatom az S1, S2 és S3 teljesítményszintű önálló egypartíciós gyűjtemények?
+## <a name="how-do-i-migrate-from-the-s1-s2-s3-performance-levels-to-single-partition-collections-on-my-own"></a>Hogyan Migrálás az S1, S2 és S3 teljesítményszint között az önálló partíciós gyűjteményekbe?
 
-Áttelepítheti az S1, S2 és S3 teljesítményszintek az egypartíciós gyűjtemények programozott módon [a .NET SDK-val](#migrate-diy). Ezt megteheti a saját maga számára, hogy a rugalmas átviteli sebesség érhető el az egypartíciós gyűjtemények beállításokat a tervezett áttelepítés előtt.
+Az S1, az S2 és az S3 teljesítmény szintjéről is áttelepíthetők az egypartíciós gyűjtemények programozott [módon a .net SDK használatával](#migrate-diy). Ezt megteheti, mielőtt a tervezett áttelepítés kihasználja az egypartíciós gyűjteményeknél elérhető rugalmas átviteli sebességi lehetőségeket.
 
-### <a name="migrate-to-single-partition-collections-by-using-the-net-sdk"></a>A .NET SDK-val egypartíciós gyűjtemények áttelepítése
+### <a name="migrate-to-single-partition-collections-by-using-the-net-sdk"></a>Migrálás egyetlen partíciós gyűjteményre a .NET SDK használatával
 
-Ez a szakasz csak ismertet a naplógyűjtési teljesítmény módosítása szintű használatával a [SQL .NET API](sql-api-sdk-dotnet.md), azonban a folyamat hasonlít a más SDK-Ink.
+Ez a szakasz csak a gyűjtemény teljesítményi szintjének az [SQL .NET API](sql-api-sdk-dotnet.md)-val történő módosítását fedi le, a folyamat azonban hasonló a többi SDK-hoz.
 
-Itt láthat egy kódrészletet, az a gyűjtemény kapacitásának módosítása a következőre összesen 5 000 kérelemegység / s:
+Az alábbi kódrészlet a gyűjtemény átviteli sebességének a másodpercenkénti 5 000-kérelmekre való módosítására szolgál:
     
 ```csharp
     //Fetch the resource to be updated
@@ -116,7 +116,7 @@ Itt láthat egy kódrészletet, az a gyűjtemény kapacitásának módosítása 
     await client.ReplaceOfferAsync(offer);
 ```
 
-Látogasson el [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) további példákat és további információ az ajánlat módszerek:
+Az [MSDN webhelyen](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) további példákat tekinthet meg, és további információkat tudhat meg az ajánlati módszerekről:
 
 * [**ReadOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readofferasync.aspx)
 * [**ReadOffersFeedAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readoffersfeedasync.aspx)
@@ -125,13 +125,13 @@ Látogasson el [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.d
 
 <a name="ea-customer"></a>
 
-## <a name="how-am-i-impacted-if-im-an-ea-customer"></a>Hogyan vagyok érintett a Ha nagyvállalati szerződéssel rendelkező ügyfelek vagyok?
+## <a name="how-am-i-impacted-if-im-an-ea-customer"></a>Milyen hatással vagyok az EA-ügyfelek?
 
-Nagyvállalati szerződéssel rendelkező ügyfelek aktuális szerződésük lejáratáig védett díja lesz.
+Az EA-ügyfelek az aktuális szerződésük végéig érvényes áron lesznek védve.
 
-## <a name="next-steps"></a>További lépések
-Díjszabás és adatkezelési Azure Cosmos DB-vel kapcsolatos további tudnivalókért ezekben a forrásanyagokban:
+## <a name="next-steps"></a>Következő lépések
+Ha többet szeretne megtudni az Azure Cosmos DBekkel kapcsolatos díjszabásról és adatkezelésről, tekintse meg ezeket az erőforrásokat:
 
-1.  [Adatparticionálás a Cosmos DB](sql-api-partition-data.md). Egypartíciós tárolók és a particionált tárolók, valamint tippekkel szolgál az zökkenőmentesen skálázható particionálási stratégia megvalósításához közötti különbségek megértése.
-2.  [A cosmos DB díjszabása](https://azure.microsoft.com/pricing/details/cosmos-db/). Ismerje meg az átviteli sebesség kiépítésének és felhasználásának tárolási költsége.
-3.  [Kérelemegységek](request-units.md). Ismerje meg, az átviteli sebesség eltérő művelet típusok, például olvasási, írási, lekérdezés felhasználását.
+1.  [Adatparticionálás Cosmos DBban](sql-api-partition-data.md). Ismerje meg az egypartíciós tároló és a particionált tárolók közötti különbséget, valamint tippeket, hogyan lehet zökkenőmentesen méretezni a particionálási stratégiát.
+2.  [Cosmos db díjszabása](https://azure.microsoft.com/pricing/details/cosmos-db/). Ismerje meg az átviteli sebesség és a tárolás költségeit.
+3.  [Kérelmek egységei](request-units.md) Megtudhatja, hogyan használható a különböző műveleti típusok átviteli sebessége, például olvasás, írás, lekérdezés.

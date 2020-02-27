@@ -7,15 +7,18 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 08/22/2019
-ms.openlocfilehash: 9f72edecc07c34a0f176e52f6b70644f9ceb16e0
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.date: 02/27/2020
+ms.openlocfilehash: 0ce813e91750db3cdfa1e651a68fbb82d593eb32
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666703"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650562"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange AS2-üzenetek a B2B vállalati integrációhoz Azure Logic Apps a Enterprise Integration Pack
+
+> [!IMPORTANT]
+> Az eredeti AS2-összekötő elavult, ezért ne felejtse el használni az **AS2 (v2)** összekötőt. Ez a verzió ugyanazokat a képességeket biztosítja, mint az eredeti verzió, a Logic Apps futtatókörnyezetnek natív, és jelentős teljesítménybeli továbbfejlesztéseket biztosít az átviteli sebesség és az üzenetek mérete tekintetében. Emellett a natív v2-összekötő nem igényli, hogy az integrációs fiókhoz hozzon létre egy kapcsolódást. Ehelyett az előfeltételek szakaszban leírtaknak megfelelően ügyeljen arra, hogy összekapcsolja az integrációs fiókját ahhoz a logikai alkalmazáshoz, ahol az összekötőt használni szeretné.
 
 Az AS2-üzenetek Azure Logic Appsban való használatához használhatja az AS2-összekötőt, amely az AS2-kommunikáció kezelésére szolgáló eseményindítókat és műveleteket biztosít. Ha például az üzenetek továbbításakor meg szeretné teremteni a biztonságot és a megbízhatóságot, a következő műveleteket használhatja:
 
@@ -46,9 +49,6 @@ Az AS2-üzenetek Azure Logic Appsban való használatához használhatja az AS2-
 
 Ez a cikk bemutatja, hogyan adhatja hozzá az AS2-kódolást és a dekódolási műveleteket egy meglévő logikai alkalmazáshoz.
 
-> [!IMPORTANT]
-> Az eredeti AS2-összekötő elavult lesz, ezért ne felejtse el használni az **AS2 (v2)** összekötőt. Ez a verzió ugyanazokat a képességeket biztosítja, mint az eredeti verzió, a Logic Apps futtatókörnyezetnek natív, és jelentős teljesítménybeli továbbfejlesztéseket biztosít az átviteli sebesség és az üzenetek mérete tekintetében. Emellett a natív v2-összekötő nem igényli, hogy az integrációs fiókhoz hozzon létre egy kapcsolódást. Ehelyett az előfeltételek szakaszban leírtaknak megfelelően ügyeljen arra, hogy összekapcsolja az integrációs fiókját ahhoz a logikai alkalmazáshoz, ahol az összekötőt használni szeretné.
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha még nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
@@ -63,9 +63,9 @@ Ez a cikk bemutatja, hogyan adhatja hozzá az AS2-kódolást és a dekódolási 
 
 * Ha [Azure Key Vaultt](../key-vault/key-vault-overview.md) használ a Tanúsítványkezelők számára, ellenőrizze, hogy a tároló kulcsai engedélyezik-e a **titkosítási** és a **visszafejtési** műveleteket. Ellenkező esetben a kódolási és a dekódolási műveletek meghiúsulnak.
 
-  A Azure Portal lépjen a kulcstartóba, tekintse meg a tár kulcsának **engedélyezett műveleteit**, és ellenőrizze, hogy ki van-e választva a **titkosítási** és a **visszafejtési** művelet.
+  A Azure Portal nyissa meg a Key Vault kulcsát, tekintse át a kulcs **engedélyezett műveleteit**, és győződjön meg arról, hogy a **titkosítási** és **visszafejtési** műveletek ki vannak választva, például:
 
-  ![A Vault-kulcsok műveleteinek megtekintése](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
+  ![A Vault-kulcsok műveleteinek megtekintése](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
 <a name="encode"></a>
 
@@ -88,9 +88,12 @@ Ez a cikk bemutatja, hogyan adhatja hozzá az AS2-kódolást és a dekódolási 
    | **AS2-ből** | Az AS2-szerződés által meghatározott üzenet-fogadó azonosítója |
    |||
 
-   Példa:
+   Például:
 
    ![Üzenet kódolásának tulajdonságai](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
+
+> [!TIP]
+> Ha aláírt vagy titkosított üzenetek küldésével kapcsolatos problémákat tapasztal, érdemes lehet különböző SHA256-algoritmusokat kipróbálni. Az AS2-specifikáció nem biztosít semmilyen információt a SHA256-formátumokról, így minden szolgáltató saját implementációt vagy formátumot használ.
 
 <a name="decode"></a>
 
@@ -110,14 +113,17 @@ Ez a cikk bemutatja, hogyan adhatja hozzá az AS2-kódolást és a dekódolási 
 
    ![Törzs és fejlécek kiválasztása a kérelmek kimenetei közül](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png)
 
-## <a name="sample"></a>Minta
+## <a name="sample"></a>Sample
 
 Egy teljesen működőképes logikai alkalmazás és példa AS2-forgatókönyv üzembe helyezéséhez tekintse meg az [AS2 Logic app-sablon és-forgatókönyv](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/)című témakört.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő OpenAPI (korábban hencegő) fájljában leírtak szerint tekintse [meg az összekötő hivatkozási oldalát](/connectors/as2/).
+Az összekötő részletes technikai részleteit, például az összekötő hencegő fájljában leírt műveleteket és korlátokat az összekötő [hivatkozási oldalán](https://docs.microsoft.com/connectors/as2/)találja. 
+
+> [!NOTE]
+> Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében ez az összekötő eredeti ISE-címkével ellátott verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

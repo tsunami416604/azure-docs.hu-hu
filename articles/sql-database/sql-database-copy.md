@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 11/14/2019
-ms.openlocfilehash: e1df345fb9a89972ad1857a937c22d6e10ad1fba
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 02/24/2020
+ms.openlocfilehash: f27042679280581dc3a03113d75c5fb787bbf711
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289407"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616002"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Azure SQL Database-adatbázis tranzakciós szempontból konzisztens másolatának másolása
 
@@ -31,13 +31,13 @@ A másolási kérelem időpontját tartalmazó adatbázis-másolat a forrásadat
 
 ## <a name="logins-in-the-database-copy"></a>Bejelentkezések az adatbázis-másolatban
 
-Ha ugyanarra a SQL Database kiszolgálóra másol egy adatbázist, ugyanazokat a bejelentkezéseket is használhatja mindkét adatbázison. Az adatbázis másolásához használt rendszerbiztonsági tag lesz az adatbázis tulajdonosa az új adatbázisban. Minden adatbázis-felhasználó, a hozzá tartozó engedélyek és a biztonsági azonosítók (SID-ek) át lesznek másolva az adatbázis-másolatba.  
+Ha ugyanarra a SQL Database kiszolgálóra másol egy adatbázist, ugyanazokat a bejelentkezéseket is használhatja mindkét adatbázison. Az adatbázis másolásához használt rendszerbiztonsági tag lesz az adatbázis tulajdonosa az új adatbázisban. 
 
-Ha egy másik SQL Database-kiszolgálóra másol egy adatbázist, az új kiszolgálón lévő rendszerbiztonsági tag lesz az adatbázis tulajdonosa az új adatbázisban. Ha [tárolt adatbázis-felhasználókat](sql-database-manage-logins.md) használ az adatokhoz való hozzáféréshez, győződjön meg arról, hogy mind az elsődleges, mind a másodlagos adatbázis ugyanazokkal a felhasználói hitelesítő adatokkal rendelkezik, így a másolás befejeződése után azonnal elérheti ugyanazokkal a hitelesítő adatokkal.
+Ha egy adatbázist egy másik SQL Database kiszolgálóra másol, akkor a célkiszolgáló másolási műveletét kezdeményező rendszerbiztonsági tag lesz az új adatbázis tulajdonosa. 
 
-Ha [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)használ, teljes mértékben kizárja a hitelesítő adatoknak a másolatban való kezelésének szükségességét. Ha azonban új kiszolgálóra másolja az adatbázist, előfordulhat, hogy a bejelentkezési alapú hozzáférés nem működik, mert a bejelentkezések nem léteznek az új kiszolgálón. Ha más SQL Database-kiszolgálóra másol egy adatbázist, a bejelentkezések kezelésével kapcsolatos további információkért lásd: [Az Azure SQL Database biztonságának kezelése](sql-database-geo-replication-security-config.md)a vész-helyreállítás után.
+A célkiszolgálótől függetlenül a rendszer az összes adatbázis-felhasználót, az engedélyeiket és a biztonsági azonosítókat (SID-ket) az adatbázis-másolatba másolja. A [tárolt adatbázis-felhasználók](sql-database-manage-logins.md) adathozzáféréshez való használata biztosítja, hogy a másolt adatbázis ugyanazzal a felhasználói hitelesítő adatokkal rendelkezik, így a másolás befejezése után azonnal elérheti ugyanazokkal a hitelesítő adatokkal.
 
-A másolás sikeres és a többi felhasználó újraleképezése után csak a másolást kezdeményező bejelentkezést, az adatbázis tulajdonosát lehet bejelentkezni az új adatbázisba. A másolási művelet befejezését követően a bejelentkezések feloldásához tekintse meg a [bejelentkezések feloldása](#resolve-logins)című témakört.
+Ha kiszolgálói szintű bejelentkezést használ az adatok eléréséhez, és az adatbázist egy másik kiszolgálóra másolja, előfordulhat, hogy a bejelentkezési alapú hozzáférés nem működik. Ez azért fordulhat elő, mert a bejelentkezési adatok nem léteznek a célkiszolgálón, vagy mert a jelszavuk és a biztonsági azonosítóik (SID) eltérnek. Ha más SQL Database-kiszolgálóra másol egy adatbázist, a bejelentkezések kezelésével kapcsolatos további információkért lásd: [Az Azure SQL Database biztonságának kezelése](sql-database-geo-replication-security-config.md)a vész-helyreállítás után. Miután a másolási művelet egy másik kiszolgálóra sikeres, és a többi felhasználó újraleképezése előtt, csak az adatbázis-tulajdonoshoz tartozó bejelentkezési azonosító, vagy a kiszolgáló rendszergazdája jelentkezhet be a másolt adatbázisba. A bejelentkezések feloldásához és az adathozzáférés létrehozásához a másolási művelet befejezése után tekintse meg a [bejelentkezések feloldása](#resolve-logins)című témakört.
 
 ## <a name="copy-a-database-by-using-the-azure-portal"></a>Adatbázis másolása a Azure Portal használatával
 
@@ -45,11 +45,11 @@ Ha a Azure Portal használatával szeretne másolni egy adatbázist, nyissa meg 
 
    ![Adatbázis másolása](./media/sql-database-copy/database-copy.png)
 
-## <a name="copy-a-database-by-using-powershell"></a>Adatbázis másolása a PowerShell használatával
+## <a name="copy-a-database-by-using-powershell-or-azure-cli"></a>Adatbázis másolása a PowerShell vagy az Azure CLI használatával
 
 Adatbázis másolásához használja az alábbi példákat.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 A PowerShell esetében használja a [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) parancsmagot.
 
@@ -63,7 +63,9 @@ New-AzSqlDatabaseCopy -ResourceGroupName "<resourceGroup>" -ServerName $sourcese
 
 Az adatbázis másolása aszinkron művelet, de a céladatbázis közvetlenül a kérelem elfogadása után jön létre. Ha még folyamatban van a másolási művelet megszakítása, a [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) parancsmag használatával dobja el a céladatbázis-adatbázist.
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+A teljes PowerShell-parancsfájlhoz lásd: [adatbázis másolása új kiszolgálóra](scripts/sql-database-copy-database-to-new-server-powershell.md).
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azure-cli
 az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myResourceGroup" --dest-server $targetserver `
@@ -73,8 +75,6 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 Az adatbázis másolása aszinkron művelet, de a céladatbázis közvetlenül a kérelem elfogadása után jön létre. Ha még folyamatban van a másolási művelet megszakítása, dobja el a célként megadott adatbázist az az [SQL db delete](/cli/azure/sql/db#az-sql-db-delete) paranccsal.
 
 * * *
-
-A teljes minta parancsfájlt itt tekintheti [meg: adatbázis másolása új kiszolgálóra](scripts/sql-database-copy-database-to-new-server-powershell.md).
 
 ## <a name="rbac-roles-to-manage-database-copy"></a>RBAC szerepkörök az adatbázis-másolat kezeléséhez
 
@@ -104,13 +104,17 @@ Ha szeretné megtekinteni a központi telepítések alatt lévő műveleteket a 
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Adatbázis másolása a Transact-SQL használatával
 
-Jelentkezzen be a Master adatbázisba a kiszolgálói szintű rendszerbiztonsági tag bejelentkezési azonosítójával vagy a másolni kívánt adatbázist létrehozó bejelentkezéssel. Az adatbázis sikeres másolásához a kiszolgáló szintű rendszerbiztonsági tag nem a DBManager szerepkör tagjának kell lennie. További információ a bejelentkezésekről és a kiszolgálóhoz való csatlakozásról: [bejelentkezések kezelése](sql-database-manage-logins.md).
+Jelentkezzen be a Master adatbázisba a kiszolgáló-rendszergazdai bejelentkezéssel vagy a másolni kívánt adatbázist létrehozó bejelentkezéssel. Az adatbázis sikeres másolásához a kiszolgáló rendszergazdájának nem a `dbmanager` szerepkör tagjának kell lennie. További információ a bejelentkezésekről és a kiszolgálóhoz való csatlakozásról: [bejelentkezések kezelése](sql-database-manage-logins.md).
 
-Az [adatbázis létrehozása](https://msdn.microsoft.com/library/ms176061.aspx) utasítással indítsa el a forrásadatbázis másolását. Az utasítás végrehajtása elindítja az adatbázis másolási folyamatát. Mivel az adatbázis másolása aszinkron folyamat, a CREATE DATABASE utasítás adja vissza az adatbázis másolásának befejeződése előtt.
+A forrásadatbázis másolásának megkezdése az [adatbázis létrehozása... AZ utasítás MÁSOLATa](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#copy-a-database) . A T-SQL-utasítás addig fut, amíg az adatbázis-másolási művelet be nem fejeződik.
+
+> [!NOTE]
+> A T-SQL-utasítás leállítása nem szakítja meg az adatbázis-másolási műveletet. A művelet befejezéséhez dobja el a céladatbázis-adatbázist.
+>
 
 ### <a name="copy-a-sql-database-to-the-same-server"></a>SQL-adatbázis másolása ugyanarra a kiszolgálóra
 
-Jelentkezzen be a Master adatbázisba a kiszolgálói szintű rendszerbiztonsági tag bejelentkezési azonosítójával vagy a másolni kívánt adatbázist létrehozó bejelentkezéssel. Az adatbázis sikeres másolásához a kiszolgáló szintű rendszerbiztonsági tag nem a DBManager szerepkör tagjának kell lennie.
+Jelentkezzen be a Master adatbázisba a kiszolgáló-rendszergazdai bejelentkezéssel vagy a másolni kívánt adatbázist létrehozó bejelentkezéssel. A sikeres adatbázis-másoláshoz a kiszolgáló rendszergazdájának nem a `dbmanager` szerepkör tagjának kell lennie.
 
 Ez a parancs egy Adatbázis2 nevű új adatbázisba másolja a Adatbázis1 ugyanazon a kiszolgálón. Az adatbázis méretétől függően a másolási művelet végrehajtása hosszabb időt is igénybe vehet.
 
@@ -121,7 +125,7 @@ Ez a parancs egy Adatbázis2 nevű új adatbázisba másolja a Adatbázis1 ugyan
 
 ### <a name="copy-a-sql-database-to-a-different-server"></a>SQL-adatbázis másolása másik kiszolgálóra
 
-Jelentkezzen be a célkiszolgáló főadatbázisára, az SQL Database-kiszolgálóra, amelyen létre szeretné hozni az új adatbázist. Használjon olyan bejelentkezési azonosítót, amelynek a neve és jelszava megegyezik a forrás-SQL Database kiszolgálón található forrásadatbázis adatbázis-tulajdonosával. A célkiszolgálón a DBManager szerepkör tagjának kell lennie, vagy a kiszolgálói szintű rendszerbiztonsági tag bejelentkezési azonosítójának kell lennie.
+Jelentkezzen be az új adatbázist létrehozó célkiszolgáló főadatbázisába. Használjon olyan bejelentkezési azonosítót, amelynek a neve és jelszava megegyezik a forráskiszolgálón lévő forrásadatbázis adatbázis-tulajdonosával. A célkiszolgálón a `dbmanager` szerepkör tagjának kell lennie, vagy a kiszolgáló-rendszergazdai bejelentkezési azonosítónak kell lennie.
 
 Ez a parancs a Adatbázis1-t a Kiszolgáló1-ről egy új, Adatbázis2 nevű adatbázisra másolja a Kiszolgáló2-on. Az adatbázis méretétől függően a másolási művelet végrehajtása hosszabb időt is igénybe vehet.
 
@@ -131,33 +135,33 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 ```
 
 > [!IMPORTANT]
-> Mindkét kiszolgáló tűzfalát úgy kell konfigurálni, hogy engedélyezze a bejövő kapcsolatokat a T-SQL COPY parancsot kiállító ügyfél IP-címéről.
+> Mindkét kiszolgáló tűzfalát úgy kell konfigurálni, hogy engedélyezze a bejövő kapcsolatokat a T-SQL CREATE ADATBÁZIST kiállító ügyfél IP-címéről... A parancs MÁSOLATa.
 
 ### <a name="copy-a-sql-database-to-a-different-subscription"></a>SQL-adatbázis másolása másik előfizetésre
 
-Az előző szakaszban ismertetett lépéseket követve másolhatja az adatbázist egy másik előfizetésben lévő SQL Database-kiszolgálóra. Győződjön meg arról, hogy olyan bejelentkezési azonosítót használ, amelynek a neve és jelszava megegyezik a forrásadatbázis adatbázis-tulajdonosával, és a DBManager szerepkör tagja, vagy a kiszolgáló szintű rendszerbiztonsági tag. 
+Az [SQL Database-adatbázis másolása másik kiszolgálóra](#copy-a-sql-database-to-a-different-server) című szakasz lépéseit követve másolhatja az adatbázist egy másik előfizetésben található SQL Database-kiszolgálóra a T-SQL használatával. Győződjön meg arról, hogy olyan bejelentkezési azonosítót használ, amelynek a neve és jelszava megegyezik a forrásadatbázis adatbázis-tulajdonosával. Emellett a bejelentkezésnek a `dbmanager` szerepkör vagy egy kiszolgáló-rendszergazda tagjának kell lennie a forrás-és a célkiszolgálón is.
 
 > [!NOTE]
-> A [Azure Portal](https://portal.azure.com) nem támogatja a másolást egy másik előfizetésre, mert a portál meghívja az ARM API-t, és az előfizetési tanúsítványokat használja a Geo-replikációban érintett mindkét kiszolgáló eléréséhez.  
+> A [Azure Portal](https://portal.azure.com), a PowerShell és az Azure CLI nem támogatja az adatbázis másolását egy másik előfizetésre.
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>A másolási művelet állapotának figyelése
 
-Figyelje a másolási folyamatot a sys. Databases és a sys. dm_database_copies nézetek lekérdezésével. A másolás folyamatban van, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **másolásra**van beállítva.
+Figyelje a másolási folyamatot a [sys. Databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [sys. dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database.md)és [sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database.md) nézetek lekérdezésével. A másolás folyamatban van, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **másolásra**van beállítva.
 
 * Ha a másolás meghiúsul, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **gyanúsnak**van beállítva. Hajtsa végre a DROP utasítást az új adatbázison, majd próbálkozzon újra később.
 * Ha a másolás sikeres, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **online**értékre van állítva. A másolás befejeződött, és az új adatbázis egy normál adatbázis, amely a forrás-adatbázistól függetlenül módosítható.
 
 > [!NOTE]
-> Ha úgy dönt, hogy megszakítja a másolást, amíg folyamatban van, hajtsa végre a [drop Database](https://msdn.microsoft.com/library/ms178613.aspx) utasítást az új adatbázison. Azt is megteheti, hogy a forrás-adatbázis DROP DATABASE utasításának végrehajtása megszakítja a másolási folyamatot.
+> Ha úgy dönt, hogy megszakítja a másolást, amíg folyamatban van, hajtsa végre a [drop Database](https://docs.microsoft.com/sql/t-sql/statements/drop-database-transact-sql) utasítást az új adatbázison.
 
 > [!IMPORTANT]
-> Ha olyan másolatot kell létrehoznia, amely lényegesen kisebb SLO-val rendelkezik, mint a forrás, akkor előfordulhat, hogy a céladatbázis nem rendelkezik elegendő erőforrással a kiindulási folyamat befejezéséhez, és a másolási művelet meghiúsulhat. Ebben a forgatókönyvben egy geo-visszaállítási kérelem használatával hozzon létre egy másolatot egy másik kiszolgálón és/vagy egy másik régióban. További információkért lásd: [Azure SQL Database-adatbázis helyreállítása az adatbázis biztonsági másolatainak használatával](sql-database-recovery-using-backups.md#geo-restore) .
+> Ha olyan másolatot kell létrehoznia, amely lényegesen kisebb szolgáltatási céllal rendelkezik, mint a forrás, akkor előfordulhat, hogy a céladatbázis nem rendelkezik elegendő erőforrással a kiindulási folyamat befejezéséhez, és a másolási Opera meghibásodását okozhatja. Ebben a forgatókönyvben egy geo-visszaállítási kérelem használatával hozzon létre egy másolatot egy másik kiszolgálón és/vagy egy másik régióban. További információ: [Azure SQL Database helyreállítása adatbázis-másolatok használatával](sql-database-recovery-using-backups.md#geo-restore) .
 
 ## <a name="resolve-logins"></a>Bejelentkezések feloldása
 
-Miután az új adatbázis online állapotú a célkiszolgálón, az [Alter User](https://msdn.microsoft.com/library/ms176060.aspx) utasítással újra felhasználhatja a felhasználókat az új adatbázisból a célkiszolgálón való bejelentkezéshez. Az árva felhasználók megoldásához tekintse meg az [árva felhasználók hibaelhárítása](https://msdn.microsoft.com/library/ms175475.aspx)című témakört. Lásd még: [Az Azure SQL Database biztonságának kezelése a vész-helyreállítás után](sql-database-geo-replication-security-config.md).
+Miután az új adatbázis online állapotú a célkiszolgálón, az [Alter User](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current) utasítással újra felhasználhatja a felhasználókat az új adatbázisból a célkiszolgálón való bejelentkezéshez. Az árva felhasználók megoldásához tekintse meg az [árva felhasználók hibaelhárítása](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)című témakört. Lásd még: [Az Azure SQL Database biztonságának kezelése a vész-helyreállítás után](sql-database-geo-replication-security-config.md).
 
-Az új adatbázisban lévő összes felhasználó megőrzi a forrás-adatbázisban lévő engedélyeket. Az adatbázis-másolatot kezdeményező felhasználó az új adatbázis adatbázis-tulajdonosa lesz, és új biztonsági azonosítót (SID) kap. A másolás sikeres és a többi felhasználó újraleképezése után csak a másolást kezdeményező bejelentkezést, az adatbázis tulajdonosát lehet bejelentkezni az új adatbázisba.
+Az új adatbázisban lévő összes felhasználó megőrzi a forrás-adatbázisban lévő engedélyeket. Az adatbázis-példányt kezdeményező felhasználó az új adatbázis adatbázis-tulajdonosa lesz. A másolás sikeres és a többi felhasználó újraleképezése után csak az adatbázis tulajdonosa jelentkezhet be az új adatbázisba.
 
 Ha egy másik SQL Database-kiszolgálóra másol egy adatbázist a felhasználók és a bejelentkezések kezelésével kapcsolatban, tekintse meg az [Azure SQL Database biztonságának kezelése a vész-helyreállítás után](sql-database-geo-replication-security-config.md)című témakört.
 
@@ -165,9 +169,9 @@ Ha egy másik SQL Database-kiszolgálóra másol egy adatbázist a felhasználó
 
 A következő hibák fordulhatnak elő az adatbázisok Azure SQL Databaseban történő másolása során. További információk az [Azure SQL-adatbázis másolása](sql-database-copy.md) című részben.
 
-| Hibakód | Súlyosság | Leírás |
+| Hibakód | Severity | Leírás |
 | ---:| ---:|:--- |
-| 40635 |16 |A (z)% IP-címmel rendelkező ügyfél. &#x2a;az ls átmenetileg le van tiltva. |
+| 40635 |16 |Ügyfél IP-címmel ( '%.&#x2a;ls' ) ideiglenesen le van tiltva. |
 | 40637 |16 |Az adatbázis-másolat létrehozása jelenleg le van tiltva. |
 | 40561 |16 |Az adatbázis másolása sikertelen volt. A forrás-vagy a céladatbázis nem létezik. |
 | 40562 |16 |Az adatbázis másolása sikertelen volt. A forrásadatbázis el lett dobva. |

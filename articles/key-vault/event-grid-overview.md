@@ -1,21 +1,21 @@
 ---
-title: 'Oktatóanyag: Key Vault figyelése Azure Event Grid'
-description: 'Oktatóanyag: Azure Event Grid használata Key Vault eseményekre való előfizetéshez'
-services: media-services
+title: Key Vault figyelése Azure Event Grid
+description: Azure Event Grid használata Key Vault eseményekre való előfizetéshez
+services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5771af365b763d2152eea4ef4f662e08769b378c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2424fbac3c95c1c60e6ef61cba53e481f4bb478a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133344"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650741"
 ---
-# <a name="tutorial-monitoring-key-vault-with-azure-event-grid-preview"></a>Oktatóanyag: Key Vault figyelése Azure Event Grid (előzetes verzió)
+# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Key Vault figyelése Azure Event Grid (előzetes verzió)
 
 Key Vault a Event Grid-integráció jelenleg előzetes verzióban érhető el. Lehetővé teszi a felhasználók számára, hogy értesítést kapjanak, ha a Key vaultban tárolt titkos kód állapota megváltozott. Az állapotváltozás olyan titokként van definiálva, amely hamarosan lejár (a lejárat napjától számított 30 napon belül), egy lejárt titkos kulcsot vagy egy új verziót tartalmazó titkos kulcsot. Az értesítések mind a három titkos típus (kulcs, tanúsítvány és titkos) esetében támogatottak.
 
@@ -27,10 +27,10 @@ Az Event Grid [esemény-előfizetések](../event-grid/concepts.md#event-subscrip
 
 További információ: [Key Vault esemény sémája](../event-grid/event-schema-key-vault.md).
 
-> [!NOTE]
-> Az események csak az előfizetés beállítása után létrehozott titkos verzióknál (mindhárom típusnál) aktiválódnak.
->
-> A meglévő titkok esetében új verziókat kell előállítani.
+> [!WARNING]
+> Az értesítési események csak a titkok, kulcsok és tanúsítványok új verzióin aktiválódnak, és az értesítések fogadásához először elő kell fizetnie az eseményre a kulcstartóban.
+> 
+> A tanúsítványokra vonatkozó értesítési eseményeket csak akkor kapja meg, ha a tanúsítvány automatikusan megújul a tanúsítványhoz megadott szabályzatnak megfelelően.
 
 ## <a name="practices-for-consuming-events"></a>Az események felhasználásának eljárásai
 
@@ -41,7 +41,7 @@ Az Key Vault eseményeket kezelő alkalmazásoknak néhány ajánlott gyakorlato
 * Figyelmen kívül hagyhatja a nem értelmezhető mezőket.  Ez a gyakorlat segít megőrizni a jövőben esetlegesen hozzáadott új funkciókkal való ellenálló képességet.
 * Az események adott eseményre való korlátozásához használja a "tárgy" előtagot és utótagot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Key Vault áttekintése](key-vault-overview.md)
 - [Azure Event Grid áttekintése](../event-grid/overview.md)

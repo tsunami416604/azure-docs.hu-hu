@@ -4,7 +4,7 @@ description: Magas rendelkezésre állás biztosítása és az Azure-beli SAP HA
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d0150aeace3960d075bbf61c1dd0bba4865aaf2b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0585c1251ba18e1390f3eee28a989edee6eb8591
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099705"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616935"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Magas rendelkezésre állású és vész-helyreállítási SAP HANA Large Instances az Azure-ban 
 
@@ -32,9 +32,9 @@ A magas rendelkezésre állás és a vész-helyreállítás (DR) kulcsfontosság
 
 A Microsoft számos SAP HANA magas rendelkezésre állású képességet támogat a HANA nagyméretű példányaival. Ezek a képességek a következők:
 
-- **Tárolási replikáció**: A tárolási rendszerek képesek az összes információ replikálására egy másik, nagyméretű HANA-példány bélyegzőbe egy másik Azure-régióban. SAP HANA a metódustól függetlenül működik. Ez a funkció a HANA nagy példányok számára elérhető alapértelmezett vész-helyreállítási mechanizmus.
-- **HANA rendszerreplikáció**: A [SAP HANAban lévő összes információ replikálása](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) egy különálló SAP HANA rendszerbe. A helyreállítási idő célkitűzése az adatreplikáció rendszeres időközönkénti csökkentése. SAP HANA támogatja az aszinkron, szinkron memóriabeli és szinkron üzemmódot. A szinkron mód csak olyan SAP HANA rendszerek esetében használatos, amelyek ugyanabban az adatközpontban találhatók, vagy kevesebb mint 100 km távolságban. A HANA nagyméretű példányainak aktuális kialakításával a HANA rendszer replikálása csak egy régión belül használható magas rendelkezésre álláshoz. A HANA rendszerreplikációhoz egy harmadik féltől származó fordított proxy vagy útválasztási összetevő szükséges a vész-helyreállítási konfigurációkhoz egy másik Azure-régióban. 
-- **Gazdagép automatikus feladatátvétele**: Egy helyi hibajavítási megoldás SAP HANA, amely a HANA rendszerreplikáció alternatívája. Ha a főcsomópont elérhetetlenné válik, egy vagy több készenléti SAP HANA-csomópontot konfigurálhat kibővített módban, és SAP HANA automatikusan feladatátvételt hajt végre egy készenléti csomóponton.
+- **Tárolási replikáció**: a tárolási rendszerek képesek az összes információ replikálására egy másik, nagyméretű HANA-példányra egy másik Azure-régióban. SAP HANA a metódustól függetlenül működik. Ez a funkció a HANA nagy példányok számára elérhető alapértelmezett vész-helyreállítási mechanizmus.
+- **HANA rendszer replikálása**: a [SAP HANAban lévő összes információ replikálása](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) egy különálló SAP HANA rendszerbe. A helyreállítási idő célkitűzése az adatreplikáció rendszeres időközönkénti csökkentése. SAP HANA támogatja az aszinkron, szinkron memóriabeli és szinkron üzemmódot. A szinkron mód csak olyan SAP HANA rendszerek esetében használatos, amelyek ugyanabban az adatközpontban találhatók, vagy kevesebb mint 100 km távolságban. A HANA nagyméretű példányainak aktuális kialakításával a HANA rendszer replikálása csak egy régión belül használható magas rendelkezésre álláshoz. A HANA rendszerreplikációhoz egy harmadik féltől származó fordított proxy vagy útválasztási összetevő szükséges a vész-helyreállítási konfigurációkhoz egy másik Azure-régióban. 
+- **Gazdagép automatikus feladatátvétele**: egy helyi hibajavítási megoldás, amely a HANA rendszer replikálásának alternatívája SAP HANA. Ha a főcsomópont elérhetetlenné válik, egy vagy több készenléti SAP HANA-csomópontot konfigurálhat kibővített módban, és SAP HANA automatikusan feladatátvételt hajt végre egy készenléti csomóponton.
 
 A SAP HANA az Azure-ban (nagyméretű példányok) négy geopolitikai területen (USA, Ausztrália, Európa és Japán) két Azure-régióban is elérhető. Egy geopolitikai terület két régiója, amely a HANA nagyméretű példányainak tárolására szolgál, külön dedikált hálózati áramkörökhöz csatlakozik. Ezek a tárolási Pillanatképek replikálására szolgálnak a vész-helyreállítási módszerek biztosításához. A replikáció alapértelmezés szerint nem jön létre, de be van állítva a vész-helyreállítási funkciókat megrendelő ügyfelek számára. A tárterület-replikáció a HANA nagyméretű példányaihoz tartozó tárolási Pillanatképek használatától függ. Az Azure-régiót nem lehet olyan DR-régióként választani, amely egy másik geopolitikai területen található. 
 
@@ -43,7 +43,7 @@ A következő táblázat a jelenleg támogatott magas rendelkezésre állású �
 | A HANA nagyméretű példányai által támogatott forgatókönyv | Magas rendelkezésre állási beállítás | Vész-helyreállítási beállítás | Megjegyzések |
 | --- | --- | --- | --- |
 | Egyetlen csomópont | Nem érhető el. | Dedikált DR telepítő.<br /> Többcélú DR-telepítés. | |
-| Gazdagép automatikus feladatátvétele: Felskálázás (készenléti állapottal vagy anélkül)<br /> többek között 1 + 1 | Lehetséges, hogy az aktív szerepkört készenléti állapotba helyezi.<br /> A HANA vezérli a szerepkör kapcsolóját. | Dedikált DR telepítő.<br /> Többcélú DR-telepítés.<br /> DR-szinkronizálás a tárolási replikáció használatával. | A HANA-kötetek az összes csomóponthoz vannak csatolva.<br /> A DR-helynek azonos számú csomóponttal kell rendelkeznie. |
+| Gazdagép automatikus feladatátvétele: kibővíthető (készenléti állapottal vagy anélkül)<br /> többek között 1 + 1 | Lehetséges, hogy az aktív szerepkört készenléti állapotba helyezi.<br /> A HANA vezérli a szerepkör kapcsolóját. | Dedikált DR telepítő.<br /> Többcélú DR-telepítés.<br /> DR-szinkronizálás a tárolási replikáció használatával. | A HANA-kötetek az összes csomóponthoz vannak csatolva.<br /> A DR-helynek azonos számú csomóponttal kell rendelkeznie. |
 | HANA rendszerreplikáció | Az elsődleges vagy másodlagos beállítással lehetséges.<br /> Másodlagos áthelyezés elsődleges szerepkörre egy feladatátvételi esetben.<br /> A HANA rendszerreplikáció és az operációs rendszer vezérlésének feladatátvétele. | Dedikált DR telepítő.<br /> Többcélú DR-telepítés.<br /> DR-szinkronizálás a tárolási replikáció használatával.<br /> A HANA rendszerreplikáció használatával a DR a harmadik féltől származó összetevők nélkül még nem lehetséges. | A kötetek külön készlete van csatolva az egyes csomópontokhoz.<br /> Csak az üzemi helyen található másodlagos replika lemezeit replikálja a rendszer a DR helyre.<br /> A DR helyen a kötetek egyikét kell megadni. | 
 
 Egy dedikált DR-telepítés, ahol a DR hely HANA nagyméretű példánya egysége nem használható más számítási feladatok vagy nem éles környezetek futtatására. Az egység passzív, és csak akkor kerül üzembe, ha vészhelyzeti feladatátvételt hajt végre. Bár ez a beállítás számos ügyfelünk számára nem ajánlott.
@@ -51,7 +51,7 @@ Egy dedikált DR-telepítés, ahol a DR hely HANA nagyméretű példánya egysé
 Tekintse át a [HLI által támogatott forgatókönyveket](hana-supported-scenario.md) az architektúra tárolási elrendezésének és Ethernet-adatainak megismeréséhez.
 
 > [!NOTE]
-> [SAP HANA MCOD](https://launchpad.support.sap.com/#/notes/1681092) üzemelő példányok (több HANA-példány egy egységen) az átfedési forgatókönyvek a táblázatban felsorolt HA és DR metódusokkal működnek. Kivételt képez a HANA rendszerreplikáció használata egy automatikus feladatátvevő fürttel a pacemaker alapján. Ilyen eset egységenként csak egy HANA-példányt támogat. [SAP HANA MDC](https://launchpad.support.sap.com/#/notes/2096000) üzemelő példányok esetében csak a nem Storage-alapú ha-és Dr-metódusok működnek, ha egynél több bérlő van üzembe helyezve. Az egyik bérlő üzembe helyezése esetén a felsorolt metódusok érvényesek.  
+> [SAP HANA MCOD](https://launchpad.support.sap.com/#/notes/1681092) üzemelő példányok (több HANA-példány egy egységen) az átfedési forgatókönyvek a táblázatban felsorolt ha és Dr metódusokkal működnek. Kivételt képez a HANA rendszerreplikáció használata egy automatikus feladatátvevő fürttel a pacemaker alapján. Ilyen eset egységenként csak egy HANA-példányt támogat. [SAP HANA MDC](https://launchpad.support.sap.com/#/notes/2096000) üzemelő példányok esetében csak a nem Storage-alapú ha-és Dr-metódusok működnek, ha egynél több bérlő van üzembe helyezve. Az egyik bérlő üzembe helyezése esetén a felsorolt metódusok érvényesek.  
 
 A többcélú DR-telepítés, ahol a DR helyen található HANA nagyméretű példány egysége nem éles környezetben üzemelő számítási feladatot futtat. Vészhelyzet esetén állítsa le a nem éles rendszerű rendszerállapotot, csatlakoztassa a Storage-replikált (további) köteteket, majd indítsa el az üzemi HANA-példányt. A HANA nagyméretű példány vész-helyreállítási funkcióit használó ügyfeleink többsége ezt a konfigurációt használja. 
 
@@ -81,7 +81,7 @@ A következő ábra egy rugalmas konfigurációt mutat be a vész-helyreállít�
 
 Az előző, a HANA nagyméretű példányokkal rendelkező helyreállítási beállításokra vonatkozó követelményei mellett a következőket kell tennie:
 
-- Az Azure-ban (nagyméretű példányok) az üzemi SKU-kal megegyező méretű SKU-ket SAP HANA rendelni, és a vész-helyreállítási régióban üzembe helyezheti azokat. Az aktuális ügyfél-telepítésekben ezek a példányok nem éles környezetben futó HANA-példányok futtatására szolgálnak. Ezeket a konfigurációkat nevezzük *többcélú Dr*-telepítésnek.   
+- Az Azure-ban (nagyméretű példányok) az üzemi SKU-kal megegyező méretű SKU-ket SAP HANA rendelni, és a vész-helyreállítási régióban üzembe helyezheti azokat. Az aktuális ügyfél-telepítésekben ezek a példányok nem éles környezetben futó HANA-példányok futtatására szolgálnak. Ezeket a konfigurációkat nevezzük *többcélú Dr-telepítésnek*.   
 - Rendeljen további tárhelyet a DR-webSAP HANA helyhez az Azure-beli (nagyméretű példányok) SKU-ra, amelyet a vész-helyreállítási helyen kíván helyreállítani. A további tárterület vásárlása lehetővé teszi a tárolási kötetek lefoglalását. Lefoglalhatja azokat a köteteket, amelyek az éles környezetbeli Azure-régióból származó tárolási replikálás célját jelentik a vész-helyreállítási Azure-régióban.
 - Abban az esetben, ha az elsődleges HSR van beállítva, és Storage-alapú replikációt telepít a DR-helyre, további tárhelyet kell vásárolnia a DR helyen, hogy az elsődleges és a másodlagos csomópontok is replikálva legyenek a DR-helyre.
 

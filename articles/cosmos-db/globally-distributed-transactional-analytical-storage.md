@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c2b79f8d0641b1a1386329a2add14ded766bf5a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445403"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623382"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Globálisan elosztott tranzakciós és analitikai tároló az Azure Cosmos-tárolók számára
 
@@ -27,16 +27,16 @@ Az Azure Cosmos-tárolót a két Storage-motor és egy frissíthető analitikai 
 A tranzakciós tárolási motort a helyi SSD-k végzik, az analitikai tárterületet pedig egy nem fürtözött SSD-tárolón tároljuk. Az alábbi táblázat a tranzakciós és az analitikai tároló közötti jelentős különbségeket rögzíti.
 
 
-|Szolgáltatás  |Tranzakciós tár  |Analitikai tár |
+|Funkció  |Tranzakciós tár  |Analitikai tár |
 |---------|---------|---------|
 |Maximális tárterület egy Azure Cosmos-tárolóban |   Korlátlan      |    Korlátlan     |
-|Maximális tárterület logikai partíciós kulcs alapján   |   10 GB      |   Korlátlan      |
+|Maximális tárterület logikai partíciós kulcs alapján   |   20 GB      |   Korlátlan      |
 |Tárolási kódolás  |   Sor-orientált, belső formátum használatával.   |   Oszlop-orientált, Apache Parquet formátumot használva. |
 |Tárolási helység |   Helyi vagy fürtön belüli SSD-k által támogatott replikált tároló. |  A replikált tárolót az olcsó távoli/off-cluster SSD-k támogatták.       |
 |Tartósság  |    99,99999 (7-9 s)     |  99,99999 (7-9 s)       |
 |Az adatelérést biztosító API-k  |   SQL, MongoDB, Cassandra, Gremlin, Tables és etcd.       | Apache Spark         |
 |Megőrzés (élettartam vagy TTL)   |  Házirend-alapú, az Azure Cosmos-tárolón konfigurált `DefaultTimeToLive` tulajdonság használatával.       |   Házirend-alapú, az Azure Cosmos-tárolón konfigurált `ColumnStoreTimeToLive` tulajdonság használatával.      |
-|Díj GB-onként    |   Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/)     |   Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
+|Díj/GB    |   Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/)     |   Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
 |Tárolási tranzakciók díja    |  Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/)         |   Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
 
 ## <a name="benefits-of-transactional-and-analytical-storage"></a>A tranzakciós és analitikai tárolás előnyei

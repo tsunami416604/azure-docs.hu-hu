@@ -4,7 +4,7 @@ description: Gyors útmutató az Egypéldányos SAP HANA Azure-beli telepítés�
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 630f094ffc6c57a0137d1abc46476f5abe64f616
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0090ffe977dee3e493d726c9eb4d151bcbeb503f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750365"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617248"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Gyors útmutató: egypéldányos SAP HANA manuális telepítése az Azure-on Virtual Machines
 ## <a name="introduction"></a>Introduction (Bevezetés)
@@ -118,7 +118,7 @@ Ez a szakasz a manuális, egypéldányos SAP HANA telepítésének főbb lépés
 8. Adja meg a/etc/hosts-fájlban a teszt virtuális gépek helyi IP-címeit.
 9. Adja meg a **nem hibás** paramétert az/etc/fstab fájlban.
 10. A Linux kernel paramétereinek beállítása a használt Linux operációs rendszer kiadásának megfelelően. További információ: a HANA és a "kernel parameters" című szakaszban szereplő SAP-megjegyzések című rész a jelen útmutatóban.
-11. Adja meg a swap-területet.
+11. A lapozóterület bővítése.
 12. Szükség esetén a tesztelési virtuális gépeken is telepíthet grafikus asztali gépeket. Ellenkező esetben használjon távoli SAPinst-telepítést.
 13. Töltse le az SAP-szoftvert az SAP szolgáltatás Piactérről.
 14. Telepítse az SAP ASCS-példányt az App Server virtuális gépre.
@@ -140,7 +140,7 @@ Ez a szakasz a manuális, egypéldányos SAP HANA telepítésének főbb lépés
 8. Adja meg a/etc/hosts-fájlban a teszt virtuális gépek helyi IP-címeit.
 9. Adja meg a **nem hibás** paramétert az/etc/fstab fájlban.
 10. Állítsa be a rendszermag paramétereit a használt Linux operációs rendszer kiadásának megfelelően. További információ: a HANA és a "kernel parameters" című szakaszban szereplő SAP-megjegyzések című rész a jelen útmutatóban.
-11. Adja meg a swap-területet.
+11. A lapozóterület bővítése.
 12. Szükség esetén a tesztelési virtuális gépeken is telepíthet grafikus asztali gépeket. Ellenkező esetben használjon távoli SAPinst-telepítést.
 13. Töltse le az SAP-szoftvert az SAP szolgáltatás Piactérről.
 14. Hozzon létre egy sapsys a 1001 AZONOSÍTÓJÚ csoporttal a HANA DB kiszolgálói virtuális gépen.
@@ -149,7 +149,7 @@ Ez a szakasz a manuális, egypéldányos SAP HANA telepítésének főbb lépés
 17. Ossza meg a/sapmnt könyvtárat a teszt virtuális gépek között az NFS használatával. Az alkalmazáskiszolgáló virtuális gép az NFS-kiszolgáló.
 18. Telepítse a HANA-t tartalmazó adatbázis-példányt a HANA DB Server virtuális gépen a SWPM használatával.
 19. Telepítse az elsődleges alkalmazáskiszolgáló alkalmazást az alkalmazáskiszolgáló virtuális gépre.
-20. Indítsa el az SAP MC-t. Az SAP grafikus felhasználói felületén vagy a HANA studión keresztül kapcsolódhat.
+20. Start SAP MC. Az SAP grafikus felhasználói felületén vagy a HANA studión keresztül kapcsolódhat.
 
 ## <a name="prepare-azure-vms-for-a-manual-installation-of-sap-hana"></a>Azure-beli virtuális gépek előkészítése SAP HANA manuális telepítésére
 Ez a szakasz a következő témaköröket tartalmazza:
@@ -177,8 +177,8 @@ Az alábbi példa bemutatja, hogyan ellenőrizhetők a SUSE Linux rendelkezésre
 A probléma típusától függően a javítások kategória és súlyosság szerint vannak osztályozva. A kategória leggyakrabban használt értékei a következők: 
 - Biztonság
 - Ajánlott
-- Választható
-- Szolgáltatás
+- Optional
+- Funkció
 - Dokumentum
 - YaST
 
@@ -202,7 +202,7 @@ Az Azure-beli Linux rendszerű virtuális gépen a gyökér fájlrendszer méret
 
 A [SAP HANA TDI tárolási követelményei](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)alapján a következő Azure Premium Storage-konfiguráció javasolt: 
 
-| VM SKU | RAM |  /Hana/Data és/Hana/log <br /> az LVM vagy a mdadm szalagos | /hana/shared | /root-kötet | /usr/sap |
+| Virtuális gép termékváltozata | RAM |  /Hana/Data és/Hana/log <br /> az LVM vagy a mdadm szalagos | /hana/shared | /root-kötet | /usr/sap |
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
@@ -358,7 +358,7 @@ Miután telepítette az ASCS-példányt az App Server-alapú virtuális gépre, 
 
 ![SAP felügyeleti konzol, amely az App Server virtuális gépen telepített ASCS-példányt zöld ikon használatával mutatja be](./media/hana-get-started/image016.jpg)
 
-Az App Server-alapú virtuális gépen a/sapmnt könyvtárat az **RW** és a **no_root_squash** beállítások használatával kell megosztani az NFS-en keresztül. Az alapértelmezett érték a **ro** és a **root_squash**, ami problémákat okozhat az adatbázis-példány telepítésekor.
+Az App Server-alapú virtuális gépen a/sapmnt könyvtárat az **RW** és a **no_root_squash** kapcsolók használatával osztja meg az NFS-en keresztül. Az alapértelmezett értékek a **ro** és a **root_squash**, ami problémákat okozhat az adatbázis-példány telepítésekor.
 
 ![A/sapmnt könyvtár megosztása az NFS-en keresztül az RW és a no_root_squash beállítások használatával](./media/hana-get-started/image017b.jpg)
 

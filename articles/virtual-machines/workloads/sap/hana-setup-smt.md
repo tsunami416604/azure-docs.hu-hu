@@ -4,21 +4,21 @@ description: SMT-kiszolgáló beállítása az Azure-beli SAP HANAhoz (nagymére
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d9e86e54a4c94db97b6c89b3ef8799855963020
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099766"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616991"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Az SMT-kiszolgáló beállítása SUSE Linux rendszerhez
 SAP HANA nagyméretű példányai nem rendelkeznek közvetlen kapcsolattal az internettel. Ez nem egy egyszerű folyamat, amellyel regisztrálhatja az adott egységet az operációs rendszer szolgáltatójával, valamint letöltheti és alkalmazhatja a frissítéseket. A SUSE Linux rendszerhez készült megoldás egy SMT-kiszolgáló beállítása egy Azure-beli virtuális gépen. A virtuális gépet egy olyan Azure-beli virtuális hálózatban üzemelteti, amely a HANA Large-példányhoz csatlakozik. Ilyen SMT-kiszolgáló esetén a HANA nagyméretű példány egysége regisztrálhatja és letöltheti a frissítéseket. 
@@ -32,9 +32,9 @@ A HANA nagyméretű példányokra vonatkozó feladatot teljesítő SMT-kiszolgá
 
 ## <a name="install-smt-server-on-an-azure-virtual-machine"></a>Az SMT-kiszolgáló telepítése Azure-beli virtuális gépen
 
-Először jelentkezzen be a [SUSE Customer Center](https://scc.suse.com/)webhelyre.
+Először jelentkezzen be a [SUSE Customer Center webhelyre](https://scc.suse.com/).
 
-Lépjen a **szervezeti** > **szervezet hitelesítő adataihoz**. Ebben a szakaszban az SMT-kiszolgáló beállításához szükséges hitelesítő adatokat kell megkeresnie.
+Nyissa meg a **szervezet** > **szervezet hitelesítő adatait**. Ebben a szakaszban az SMT-kiszolgáló beállításához szükséges hitelesítő adatokat kell megkeresnie.
 
 Ezután telepítsen egy SUSE Linux rendszerű virtuális GÉPET az Azure Virtual Network-ben. A virtuális gép üzembe helyezéséhez készítsen SLES 12 SP2 katalógust az Azure-ról (válassza a BYOS SUSE-lemezképet). A telepítési folyamat során ne adjon meg DNS-nevet, és ne használjon statikus IP-címeket.
 
@@ -151,7 +151,7 @@ Ha olyan problémába ütközik, amelyet a SUSE-cikk lépései alapján kell kij
 
 Az Azure-beli virtuális gépen telepített SMT-kiszolgálóhoz való kapcsolódáshoz konfigurálta a HANA nagyméretű példány-egység SMT-ügyfelét. Most már elvégezheti a "Zypper up" vagy a "Zypper in" lehetőséget az operációs rendszer frissítéseinek a HANA nagyméretű példányokra való telepítéséhez, vagy további csomagok telepítéséhez. Csak az SMT-kiszolgálón letöltött frissítéseket lehet letölteni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [HANA-telepítés a HLI-on](hana-example-installation.md).
 
 

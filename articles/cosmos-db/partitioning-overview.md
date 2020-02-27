@@ -1,19 +1,19 @@
 ---
-title: Particionálás az Azure Cosmos DB-ben
+title: Particionálás Azure Cosmos DB
 description: Tudnivalók a particionálásról Azure Cosmos DB, ajánlott eljárások a partíciós kulcs kiválasztásakor és a logikai partíciók kezeléséhez
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: c781c5e12f3f678ef640c6017a768e7ac14448f9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 551703b5dcca082904197010366ee059998dde4b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871992"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621879"
 ---
-# <a name="partitioning-in-azure-cosmos-db"></a>Particionálás az Azure Cosmos DB-ben
+# <a name="partitioning-in-azure-cosmos-db"></a>Particionálás Azure Cosmos DB
 
 A Azure Cosmos DB particionálás használatával méretezi az egyes tárolókat egy adatbázisban az alkalmazás teljesítménybeli igényeinek kielégítése érdekében. A particionálás során a tároló elemei a *logikai partíciók*nevű különálló részhalmazokra vannak osztva. A logikai partíciók a tároló egyes elemeihez társított *partíciós kulcs* értéke alapján jönnek létre. Egy logikai partíció összes elemének ugyanaz a partíciós kulcs értéke.
 
@@ -37,7 +37,7 @@ Ha többet szeretne megtudni arról, hogyan kezeli a Azure Cosmos DB a partíci�
 
 A következő hasznos útmutatást nyújt a partíciós kulcs kiválasztásához:
 
-* Egyetlen logikai partíció 10 GB-os felső korláttal rendelkezik.  
+* Egyetlen logikai partícióhoz legfeljebb 20 GB tárterület tartozik.  
 
 * Az Azure Cosmos-tárolók minimális átviteli sebessége 400 másodpercenként (RU/s). Ha az átviteli sebesség egy adatbázison van kiépítve, a tárolók minimális száma másodpercenként 100 (RU/s). Az ugyanahhoz a partíciós kulcshoz küldött kérések nem léphetik túl a partícióhoz lefoglalt átviteli sebességet. Ha a kérések túllépik a lefoglalt átviteli sebességet, a kérések száma korlátozott. Ezért fontos, hogy olyan partíciós kulcsot válasszon, amely nem eredményez "forró pontokat" az alkalmazáson belül.
 

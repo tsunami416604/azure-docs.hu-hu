@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f4e8450593b8ff0f73c09f236f17eb4ef09334c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e4581ab89f74425682f569425f62714ead2c27c5
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549502"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620934"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Az Azure AD Connect felhőalapú jogosultságkiosztási ügynök telepítése
 Ez a dokumentum végigvezeti a Azure Active Directory-(Azure AD-) kapcsolat létesítési ügynökének telepítési folyamatán, és azt, hogy miként konfigurálható először a Azure Portal.
@@ -67,7 +67,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látható-e az 
 1. Jelentkezzen be az Azure portálra.
 1. A bal oldalon válassza a **Azure Active Directory** > **Azure ad Connect**lehetőséget. A központban válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
 
-   ![Azure portál](media/how-to-install/install6.png)</br>
+   ![Azure Portal](media/how-to-install/install6.png)</br>
 
 1.  Az **Azure ad-kiépítés (előzetes verzió)** képernyőn válassza az **összes ügynök áttekintése**lehetőséget.
 
@@ -96,7 +96,7 @@ Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket.
     ![Szolgáltatások képernyő](media/how-to-troubleshoot/troubleshoot1.png)
 
 >[!IMPORTANT]
->Az ügynök telepítve van, de konfigurálni és engedélyezni kell a felhasználók szinkronizálásának megkezdése előtt. Új ügynök konfigurálásához tekintse meg a következőt: [Azure ad Connect Cloud kiépítés új ügynök konfigurálása](how-to-configure.md).
+>Az ügynök telepítve van, de konfigurálni és engedélyezni kell a felhasználók szinkronizálásának megkezdése előtt. Új ügynök konfigurálásához tekintse meg az [Új konfiguráció létrehozása Azure ad Connect felhőalapú kiépítés számára](how-to-configure.md)című témakört.
 
 
 

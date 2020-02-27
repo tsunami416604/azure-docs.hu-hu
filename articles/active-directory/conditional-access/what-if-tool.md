@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185882"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620687"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Hibakeresés a What If eszköz használatával a feltételes hozzáférésben
 
@@ -98,7 +98,7 @@ A kiértékelés elindításához kattintson a **What if**gombra. A kiértékel�
 
 Ha a kiválasztott felhőalapú alkalmazásokhoz [klasszikus szabályzatok](policy-migration.md#classic-policies) vannak megadva, a rendszer megjelenít egy kijelzőt. A kijelzőre kattintva a rendszer átirányítja a klasszikus házirendek lapra. A klasszikus szabályzatok oldalon áttelepítheti a klasszikus házirendeket, vagy letilthatja azt. Az oldal bezárásával visszatérhet a kiértékelési eredményhez.
 
-A kiválasztott felhasználóra vonatkozó szabályzatok listáján megtalálhatja az [engedélyezési vezérlők](controls.md#grant-controls) és [munkamenet](controls.md#session-controls) -vezérlők listáját, amelyet a felhasználónak teljesítenie kell.
+A kiválasztott felhasználóra vonatkozó szabályzatok listáján megtalálhatja az [engedélyezési vezérlők](concept-conditional-access-grant.md) és [munkamenet-vezérlők](concept-conditional-access-session.md) listáját, amelyet a felhasználónak teljesítenie kell.
 
 Azon házirendek listáján, amelyek nem érvényesek a felhasználóra, megtalálhatja azokat az okokat is, amelyek miatt ezek a szabályzatok nem érvényesek. Az egyes felsorolt szabályzatok esetében az ok az első olyan feltételt jelenti, amely nem teljesült. Egy nem alkalmazott házirend lehetséges oka a letiltott házirend, mivel azokat a rendszer nem értékeli ki.   
 

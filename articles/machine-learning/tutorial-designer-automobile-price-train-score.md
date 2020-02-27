@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/30/2020
-ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 972f0aa1f6d05c3cc65c62c0991fad87ab4676c4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982603"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623634"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -155,7 +155,7 @@ A modellek betanításakor meg kell tennie valamit a hiányzó információkkal 
 
     A diagramon megjegyzések jelennek meg, amelyek segítenek a folyamat rendszerezésében.
 
-### <a name="clean-missing-data"></a>Hiányzó adatértékek törlése
+### <a name="clean-missing-data"></a>Hiányzó adatok tisztítása
 
 A **normalizált veszteségek** oszlop eltávolítása után az adatkészlet továbbra is hiányzó értékeket tartalmaz. A fennmaradó hiányzó adatelemet a **tiszta hiányzó** adatmodul használatával távolíthatja el.
 
@@ -203,7 +203,7 @@ Az adatok felosztása gyakori feladat a gépi tanulásban. Az adatokat két kül
 
 1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **Megjegyzés** mezőt, majd adja meg *az adatkészlet felosztása betanítási készletbe (0,7) és a test set (0,3)* értéket.
 
-### <a name="train-the-model"></a>A modell tanítása
+### <a name="train-the-model"></a>A modell betanítása
 
 A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algoritmus létrehoz egy modellt, amely ismerteti a funkciók és a betanítási információ által bemutatott ár közötti kapcsolatot.
 
@@ -260,7 +260,7 @@ A **modell kiértékelése** modul használatával kiértékelheti, hogy a model
 
 ## <a name="run-the-pipeline"></a>A folyamat futtatása
 
-Most, hogy elvégezte a folyamat összes beállítását, elküldheti a folyamat futtatását.
+Most, hogy elvégezte a folyamat minden beállítását, elküldheti a folyamat futtatását a Machine learning-modell betanításához. A folyamatokat bármikor elküldheti, miközben a tervezőben felépíti a folyamatokat. Ezt megteheti a munka ellenőrzéséhez, és a folyamat működésének ellenőrzéséhez a várt módon.
 
 1. A vászon tetején válassza a **Futtatás**lehetőséget.
 

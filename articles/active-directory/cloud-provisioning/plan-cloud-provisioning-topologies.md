@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 142974423816b07d754a5425017aedc3195e2f4e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793996"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620871"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect felhőalapú üzembe helyezés támogatott topológiák és forgatókönyvek
 Ez a cikk a Felhőbeli kiépítést Azure AD Connect használó különböző helyszíni és Azure Active Directory (Azure AD) topológiákat ismerteti. Ez a cikk csak a támogatott konfigurációkat és forgatókönyveket tartalmazza.
@@ -33,12 +33,16 @@ A következő lista azokat az információkat tartalmazza, amelyeket érdemes fi
 - Az objektumok forrás-horgonya automatikusan kiválasztva.  Ha van, MS-DS-ConsistencyGuid-t használ, máskülönben ObjectGUID van használatban.
 - A forrás-horgonyhoz használt attribútum nem módosítható.
 
+## <a name="single-forest-single-azure-ad-tenant"></a>Egyetlen erdő, egyetlen Azure AD-bérlő
+![Egyetlen erdő és egyetlen bérlő topológiája](media/plan-cloud-provisioning-topologies/single-forest.png)
+
+A legegyszerűbb topológia egyetlen helyszíni erdő, amely egy vagy több tartománnyal és egyetlen Azure AD-Bérlővel rendelkezik.  Példa erre az esetre [: oktatóanyag: egyetlen erdő egyetlen Azure ad-Bérlővel](tutorial-single-forest.md)
 
 
 ## <a name="multi-forest-single-azure-ad-tenant"></a>Több erdős, egyetlen Azure AD-bérlő
 ![Több erdő és egyetlen bérlő topológiája](media/plan-cloud-provisioning-topologies/multi-forest.png)
 
-A leggyakoribb topológia több AD-erdő, egy vagy több tartománnyal, valamint egyetlen Azure AD-Bérlővel.  
+A gyakori topológia több AD-erdő, egy vagy több tartománnyal és egyetlen Azure AD-Bérlővel.  
 
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>Meglévő erdő Azure AD Connect, új erdővel a Felhőbeli kiépítés során
 ![Egyetlen erdő és egyetlen bérlő topológiája](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
@@ -50,10 +54,7 @@ Ez a forgatókönyv a többerdős forgatókönyvhöz hasonló, azonban egy megl�
 
 Példa erre a forgatókönyvre [: oktatóanyag: kísérleti Azure ad Connect felhőalapú kiépítés egy meglévő szinkronizált ad-erdőben](tutorial-pilot-aadc-aadccp.md)
 
-## <a name="single-forest-single-azure-ad-tenant"></a>Egyetlen erdő, egyetlen Azure AD-bérlő
-![Egyetlen erdő és egyetlen bérlő topológiája](media/plan-cloud-provisioning-topologies/single-forest.png)
 
-A legegyszerűbb topológia egyetlen helyszíni erdő, amely egy vagy több tartománnyal és egyetlen Azure AD-Bérlővel rendelkezik.  Példa erre az esetre [: oktatóanyag: egyetlen erdő egyetlen Azure ad-Bérlővel](tutorial-single-forest.md)
 
 ## <a name="next-steps"></a>Következő lépések 
 

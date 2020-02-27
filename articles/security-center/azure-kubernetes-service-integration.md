@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 9d8c5f98cfd8b4b3831bcbd7e65285f93e6c323f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 0743499b019bd1c7b985636e886eee9352284a55
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441952"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616070"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center-preview"></a>Az Azure Kubernetes Services integrációja Security Center (előzetes verzió)
 Az Azure Kubernetes Service (ak) a Microsoft által felügyelt szolgáltatás a tároló alkalmazások fejlesztéséhez, üzembe helyezéséhez és kezeléséhez. 
@@ -45,7 +45,7 @@ A két szolgáltatás együttes használata a következőket biztosítja:
     * Nyers biztonsági események, például a hálózati adatfeldolgozás és a folyamat létrehozása
     * A Kubernetes naplója
 
-    További információ: [veszélyforrások észlelése Azure-tárolók esetén](security-center-alerts-compute.md#azure-containers-)
+    További információ: [veszélyforrások elleni védelem Azure-tárolók](threat-protection.md#azure-containers) esetén
 
     A lehetséges riasztások listájáért tekintse meg a riasztások hivatkozási táblázatának következő részeit: [AK-fürt szintű riasztások](alerts-reference.md#alerts-akscluster) és [tároló-gazdagép szintű riasztások](alerts-reference.md#alerts-containerhost).  
 

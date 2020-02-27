@@ -4,12 +4,12 @@ description: Hibaelhárítás, Azure Backup Server regisztrációja, valamint az
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 3a83c496191baaebc30f6fe0aedda790827644cb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 018a6cee3f00531752684b12f4988cac174d3d26
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605749"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617589"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Az Azure Backup Server hibaelhárítása
 
@@ -32,7 +32,7 @@ Javasoljuk, hogy a Microsoft Azure Backup Server (MABS) hibaelhárítása előtt
 
 | Művelet | A hiba részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Regisztráció egy tárba | A tároló megadott hitelesítő adatai érvénytelenek. A fájl sérült, vagy nem rendelkezik a helyreállítási szolgáltatáshoz társított legújabb hitelesítő adatokkal. | Javasolt művelet: <br> <ul><li> Töltse le a legújabb hitelesítő adatokat tartalmazó fájlt a tárból, és próbálkozzon újra. <br>VAGY</li> <li> Ha az előző művelet nem működött, próbálja meg letölteni a hitelesítő adatokat egy másik helyi könyvtárba, vagy hozzon létre egy új tárolót. <br>VAGY</li> <li> Próbálja meg frissíteni a dátum-és időbeállításokat a [blogbejegyzésben](https://azure.microsoft.com/blog/troubleshooting-common-configuration-issues-with-azure-backup/)leírtak szerint. <br>VAGY</li> <li> Ellenőrizze, hogy a c:\Windows\Temp több mint 65000 fájllal rendelkezik-e. Helyezze át az elavult fájlokat egy másik helyre, vagy törölje a temp mappában lévő elemeket. <br>VAGY</li> <li> A tanúsítványok állapotának ellenőrzését. <br> a. Nyissa meg a **számítógép-tanúsítványok kezelése** (a Vezérlőpulton). <br> b. Bontsa ki a **személyes** csomópontot és annak alárendelt csomópontjának **tanúsítványait**.<br> c.  Távolítsa el a **Windows Azure-eszközök**tanúsítványát. <br> d. Próbálja megismételni a regisztrációt az Azure Backup-ügyfélen. <br> VAGY </li> <li> Ellenőrizze, hogy van-e érvényben a csoportházirend. </li></ul> |
+| Regisztráció egy tárba | A tároló megadott hitelesítő adatai érvénytelenek. A fájl sérült, vagy nem rendelkezik a helyreállítási szolgáltatáshoz társított legújabb hitelesítő adatokkal. | Javasolt művelet: <br> <ul><li> Töltse le a legújabb hitelesítő adatokat tartalmazó fájlt a tárból, és próbálkozzon újra. <br>VAGY</li> <li> Ha az előző művelet nem működött, próbálja meg letölteni a hitelesítő adatokat egy másik helyi könyvtárba, vagy hozzon létre egy új tárolót. <br>VAGY</li> <li> Próbálja meg frissíteni a dátum-és időbeállításokat a [jelen cikkben](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#invalid-vault-credentials-provided)leírtak szerint. <br>VAGY</li> <li> Ellenőrizze, hogy a c:\Windows\Temp több mint 65000 fájllal rendelkezik-e. Helyezze át az elavult fájlokat egy másik helyre, vagy törölje a temp mappában lévő elemeket. <br>VAGY</li> <li> A tanúsítványok állapotának ellenőrzését. <br> a. Nyissa meg a **számítógép-tanúsítványok kezelése** (a Vezérlőpulton). <br> b. Bontsa ki a **személyes** csomópontot és annak alárendelt csomópontjának **tanúsítványait**.<br> c.  Távolítsa el a **Windows Azure-eszközök**tanúsítványát. <br> d. Próbálja megismételni a regisztrációt az Azure Backup-ügyfélen. <br> VAGY </li> <li> Ellenőrizze, hogy van-e érvényben a csoportházirend. </li></ul> |
 
 ## <a name="replica-is-inconsistent"></a>A replika inkonzisztens
 
@@ -62,7 +62,7 @@ Javasoljuk, hogy a Microsoft Azure Backup Server (MABS) hibaelhárítása előtt
 
 | Művelet | A hiba részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Ügynök (ek) leküldése a védett kiszolgálókra | Az ügynök művelete sikertelen volt, mert kommunikációs hiba történt a (z) \<ServerName > DPM-ügynökkoordinátor szolgáltatásával. | **Ha a termékben bemutatott javasolt művelet nem működik, hajtsa végre a következő lépéseket**: <ul><li> Ha nem megbízható tartományból csatlakoztat egy számítógépet, kövesse [az alábbi lépéseket](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757801(v=sc.12)). <br> VAGY </li><li> Ha megbízható tartományból csatlakoztat egy számítógépet, a [jelen blogban](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)ismertetett lépések végrehajtásával hibaelhárítást végezhet. <br>VAGY</li><li> Próbálja meg letiltani a víruskeresőt hibaelhárítási lépésként. Ha feloldja a problémát, módosítsa a vírusvédelmi beállításokat a [jelen cikkben](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12))javasolt módon.</li></ul> |
+| Ügynök (ek) leküldése a védett kiszolgálókra | Az ügynök művelete sikertelen volt, mert kommunikációs hiba történt a (z) \<ServerName > DPM-ügynökkoordinátor szolgáltatásával. | **Ha a termékben bemutatott javasolt művelet nem működik, hajtsa végre a következő lépéseket**: <ul><li> Ha nem megbízható tartományból csatlakoztat egy számítógépet, kövesse [az alábbi lépéseket](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019). <br> VAGY </li><li> Ha megbízható tartományból csatlakoztat egy számítógépet, a [jelen blogban](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)ismertetett lépések végrehajtásával hibaelhárítást végezhet. <br>VAGY</li><li> Próbálja meg letiltani a víruskeresőt hibaelhárítási lépésként. Ha feloldja a problémát, módosítsa a vírusvédelmi beállításokat a [jelen cikkben](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12))javasolt módon.</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>A telepítő nem tudja frissíteni a beállításjegyzék metaadatait
 
@@ -75,7 +75,7 @@ Javasoljuk, hogy a Microsoft Azure Backup Server (MABS) hibaelhárítása előtt
 
 | Művelet | A hiba részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Ügynök (ek) leküldése a védett kiszolgálókra | A kiszolgálóhoz megadott hitelesítő adatok érvénytelenek. | **Ha a termékben bemutatott javasolt művelet nem működik, hajtsa végre a következő lépéseket**: <br> Próbálja meg manuálisan telepíteni a védelmi ügynököt az üzemi kiszolgálón az ebben a [cikkben](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12))megadott módon.|
+| Ügynök (ek) leküldése a védett kiszolgálókra | A kiszolgálóhoz megadott hitelesítő adatok érvénytelenek. | **Ha a termékben bemutatott javasolt művelet nem működik, hajtsa végre a következő lépéseket**: <br> Próbálja meg manuálisan telepíteni a védelmi ügynököt az üzemi kiszolgálón az ebben a [cikkben](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)megadott módon.|
 | Azure Backup ügynök nem tudott csatlakozni a Azure Backup szolgáltatáshoz (azonosító: 100050) | A Azure Backup ügynök nem tudott kapcsolódni a Azure Backup szolgáltatáshoz. | **Ha a termékben bemutatott javasolt művelet nem működik, hajtsa végre a következő lépéseket**: <br>1. Futtassa a következő parancsot egy emelt szintű parancssorból: **PsExec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**. Ekkor megnyílik az Internet Explorer ablaka. <br/> 2. Lépjen az **eszközök** > Internetbeállítások > **kapcsolatok** > **LAN-beállítások** **lehetőségre** . <br/> 3. módosítsa a beállításokat a proxykiszolgáló használatára. Ezután adja meg a proxykiszolgáló részleteit.<br/> 4. Ha a számítógépén korlátozott az Internet-hozzáférés, győződjön meg arról, hogy a számítógép vagy a proxy tűzfal beállításai lehetővé teszik ezeket az [URL-címeket](backup-configure-vault.md#verify-internet-access) és [IP-címeket](backup-configure-vault.md#verify-internet-access).|
 | Azure Backup ügynök telepítése nem sikerült | A Microsoft Azure Recovery Services telepítése sikertelen volt. A rendszer által a Microsoft Azure Recovery Services telepítés során végrehajtott összes módosítás vissza lett állítva. (AZONOSÍTÓ: 4024) | Manuálisan telepítse az Azure-ügynököt.
 

@@ -4,21 +4,21 @@ description: A HANA telepítése SAP HANAon az Azure-ban (nagyméretű példány
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d266f458894d93540977c995ff7e8ab71414083f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101279"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617212"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>A HANA telepítése SAP HANAon az Azure-ban (nagyméretű példányok)
 
@@ -39,7 +39,7 @@ A HANA nagyméretű példányok egysége nem kapcsolódik közvetlenül az inter
 
 Szüksége van egy SAP S-User vagy más felhasználóra, amely lehetővé teszi az SAP piactér elérését.
 
-1. Jelentkezzen be, és lépjen az [SAP Service Marketplace](https://support.sap.com/en/index.html)webhelyre. Válassza a **Szoftvertelepítés** > letöltése**és a frissítés** > **ABC-index alapján**lehetőséget. Ezután válassza **a H – SAP HANA platform kiadása** > **SAP HANA platform Edition 2,0** > -**telepítés**lehetőséget. Töltse le az alábbi képernyőképen látható fájlokat.
+1. Jelentkezzen be, és lépjen az [SAP Service Marketplace](https://support.sap.com/en/index.html)webhelyre. Válassza a **szoftver** > **telepítések letöltése és** a > frissítése ABC- **index alapján**lehetőséget. Ezután válassza **a H – SAP HANA platform kiadása** > **SAP HANA platform Edition 2,0** > **telepítés**lehetőséget. Töltse le az alábbi képernyőképen látható fájlokat.
 
    ![Képernyőkép a letölteni kívánt fájlokról](./media/hana-installation/image16_download_hana.PNG)
 
@@ -68,7 +68,7 @@ rpm –qa | grep gtk2
 
 (A későbbi lépésekben a SAP HANA a telepítőt a grafikus felhasználói felülettel jelenítjük meg.)
 
-Lépjen be a telepítési könyvtárba, és navigáljon az alkönyvtár HDB_LCM_LINUX_X86_64. 
+Lépjen be a telepítési könyvtárba, és navigáljon a HDB_LCM_LINUX_X86_64 alkönyvtárba. 
 
 A könyvtárból indítsa el a következőket:
 
@@ -130,7 +130,7 @@ A telepítés befejezésekor a következőhöz hasonló képernyőnek kell megje
 A SAP HANA példánynak most már működnie kell, és használatra készen kell állnia. Csatlakoznia kell hozzá SAP HANA studióból. Győződjön meg arról is, hogy megkeresi és alkalmazza a legújabb frissítéseket.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Magas rendelkezésre állású és vész-helyreállítási SAP HANA Large Instances az Azure-ban](hana-overview-high-availability-disaster-recovery.md)
 

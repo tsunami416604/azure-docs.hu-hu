@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 179d0ff8143b526e100b89cffbbac0bbc29ca3e1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 83cac961eb3cd700451f16c684c64185b35e9bd3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776663"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616755"
 ---
-# <a name="upgrade-azure-public-load-balancer-from-basic-sku-to-standard-sku"></a>Azure Public Load Balancer frissítése alapszintű SKU-ról standard SKU-ra
+# <a name="upgrade-azure-public-load-balancer"></a>Azure nyilvános Load Balancer frissítése
 Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
 
 A frissítés két szakaszból áll:
@@ -28,8 +28,8 @@ Ez a cikk a konfiguráció áttelepítését ismerteti. A virtuális gépeknek a
 
 Olyan Azure PowerShell-parancsfájl érhető el, amely a következő műveleteket végzi el:
 
-* Létrehoz egy szabványos nyilvános SKU-Load Balancer az erőforráscsoport és a megadott helyen.
-* Zökkenőmentesen másolja az alapszintű SKU nyilvános Load Balancer konfigurációit az újonnan létrehozott Standard nyilvános Load Balancerra.
+* Létrehoz egy szabványos SKU-Load Balancer az erőforráscsoport és a megadott helyen.
+* Zökkenőmentesen másolja az alapszintű SKU Load Balancer konfigurációit az újonnan létrehozott standard Load Balancerra.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
@@ -70,18 +70,9 @@ A szkript futtatása:
 
 1. A `Import-Module Az` használatával importálja az az modulokat.
 
-1. `Get-Help AzureLBUpgrade.ps1` futtatása a szükséges paraméterek vizsgálatához:
+1. Vizsgálja meg a szükséges paramétereket:
 
-   ```
-   AzurePublicLBUpgrade.ps1
-    -oldRgName <name of the Resource Group where Basic Load Balancer exists>
-    -oldLBName <name of existing Basic Load Balancer>
-    -newrgName <Name of the Resource Group where the new Standard Load Balancer will be created>
-    -newlocation <Name of the location where the new Standard Load Balancer will be created>
-    -newLBName <Name of the Standard Load Balancer to be created>
-   ```
-   A parancsfájl paraméterei:
-   * **oldRgName: [string]: kötelező** – ez a meglévő alapszintű Load Balancerhez tartozó erőforráscsoport, amelyet frissíteni kíván. A karakterlánc értékének megkereséséhez navigáljon az Azure Portalra, válassza ki az alapszintű Load Balancer forrását, és kattintson a terheléselosztó **áttekintésére** . Az erőforráscsoport ezen az oldalon található.
+   * **oldRgName: [string]: kötelező** – ez a meglévő alapszintű Load Balancerhez tartozó erőforráscsoport, amelyet frissíteni kíván. A karakterlánc értékének megkereséséhez navigáljon Azure Portal, válassza ki az alapszintű Load Balancer forrását, és kattintson a terheléselosztó **áttekintésére** . Az erőforráscsoport ezen az oldalon található.
    * **oldLBName: [string]: kötelező** – ez a meglévő alapszintű, frissíteni kívánt alapbalancer neve. 
    * **newrgName: [string]: kötelező** – ez az az erőforráscsoport, amelyben a rendszer létrehozza a standard Load Balancer. Ez lehet egy új erőforráscsoport vagy egy meglévő. Ha kiválaszt egy meglévő erőforráscsoportot, vegye figyelembe, hogy a Load Balancer nevének egyedinek kell lennie az erőforráscsoport belül. 
    * **newlocation: [string]: kötelező** – ez az a hely, ahol a standard Load Balancer létre lesz hozva. Javasoljuk, hogy a kiválasztott alapszintű Load Balancer ugyanazon helyét örökli a standard Load Balancer a többi meglévő erőforrással való jobb együttműködés érdekében.

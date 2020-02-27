@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 5c820b7e11c06f2d785da036f5174298caf56da6
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960606"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651338"
 ---
 #    <a name="custom-entity-lookup-cognitive-skill-preview"></a>Egyéni entitások keresése – kognitív képesség (előzetes verzió)
 
@@ -48,7 +48,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 | Bemeneti név      | Leírás                   |
 |---------------|-------------------------------|
 | szöveg          | Az elemezni kívánt szöveg.          |
-| languageCode  | Választható. Az alapértelmezett szint a `"en"`.  |
+| languageCode  | Választható. Az alapértelmezett érték a `"en"`.  |
 
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
@@ -63,7 +63,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 
 Az egyéni entitások keresési képességeinek megjelenítéséhez 3 különböző módszer áll rendelkezésre. Megadhatja a listát a alkalmazásban. CSV-fájl, a. JSON-fájl vagy beágyazott definícióként a szaktudás definíciójának részeként.  
 
-Ha a definíciós fájl egy. CSV vagy. JSON-fájl, a fájl elérési útját kell megadni a *entitiesDefitionUri* paraméter részeként. Ebben az esetben a fájl minden indexelő futtatásának elején le lesz töltve. A fájlnak elérhetőnek kell lennie, feltéve, hogy az indexelő futtatni kívánja.
+Ha a definíciós fájl egy. CSV vagy. JSON-fájl, a fájl elérési útját kell megadni a *entitiesDefitionUri* paraméter részeként. Ebben az esetben a fájl minden indexelő futtatásának elején le lesz töltve. A fájlnak elérhetőnek kell lennie, feltéve, hogy az indexelő futtatni kívánja. Emellett a fájlnak UTF-8 kódolással kell rendelkeznie.
 
 Ha a definíciót beágyazottként adták meg, akkor azt a *inlineEntitiesDefinition* skill paraméter tartalmának megfelelően kell megadni. 
 
@@ -148,7 +148,7 @@ Az alábbi táblázatok részletesen ismertetik a különböző konfigurációs 
 | név | A legfelső szintű entitás leírója A képzettségi kimenetben szereplő egyezések ezen név szerint vannak csoportosítva, és a talált szöveg "normalizált" formáját jelölik.  |
 | leírás  | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
 | type | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
-| Altípus | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
+| altípus | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
 | id | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
 | caseSensitive | Választható Az alapértelmezett érték a false. Logikai érték, amely azt jelzi, hogy az entitás nevével való összehasonlításnak érzékenynek kell lennie a karakterkészletre. Példa a kis-és nagybetűket megkülönböztető "Microsoft" találatokra: Microsoft, microSoft, MICROSOFT |
 | fuzzyEditDistance | Választható Az alapértelmezett érték 0. A maximális érték 5. Annak az eltérő karaktereknek az elfogadható számát jelöli, amelyek továbbra is egyeznek az entitás nevével. A rendszer a megadott egyezések legkisebb lehetséges bizonytalanság adja vissza.  Ha például a szerkesztési távolság értéke 3, a "Windows 10" továbbra is egyezik a "Windows", a "Windows10" és a "Windows 7" értékkel. <br/> Ha a kis-és nagybetűk megkülönböztetése hamis értékre van állítva, a kis-és nagybetűk nem számítanak bele a bizonytalanság-tűrésbe, de máskülönben |
@@ -296,7 +296,7 @@ Ha úgy dönt, hogy egy mutatót ad az entitások definíciós fájljához, a en
   } 
 ```
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Beépített szaktudás](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: bd20bb008c52b7d99416aed7a0599a6e78d2acf2
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 114a460b3db67af278f813de2e7a18d571cf3c28
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161647"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613435"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Azure AD Domain Services migrálása a klasszikus virtuális hálózati modellből a Resource Managerbe
 
@@ -206,12 +206,12 @@ Az Azure AD DS felügyelt tartomány áttelepítésre való előkészítéséhez
     $creds = Get-Credential
     ```
 
-1. Most futtassa a `Migrate-Aadds` parancsmagot a *-Prepare* paraméter használatával. Adja meg a *-ManagedDomainFqdn* saját Azure AD DS felügyelt tartományhoz, például *contoso.com*:
+1. Most futtassa a `Migrate-Aadds` parancsmagot a *-Prepare* paraméter használatával. Adja meg a *-ManagedDomainFqdn* saját Azure AD DS felügyelt tartományhoz, például *aaddscontoso.com*:
 
     ```powershell
     Migrate-Aadds `
         -Prepare `
-        -ManagedDomainFqdn contoso.com `
+        -ManagedDomainFqdn aaddscontoso.com `
         -Credentials $creds
     ```
 
@@ -219,7 +219,7 @@ Az Azure AD DS felügyelt tartomány áttelepítésre való előkészítéséhez
 
 Ha az Azure AD DS felügyelt tartománya előkészített és biztonsági mentést végez, a tartomány migrálható. Ez a lépés újra létrehozza a Azure AD Domain Services tartományvezérlő virtuális gépeket a Resource Manager-alapú üzemi modell használatával. Ez a lépés 1 – 3 órát is igénybe vehet.
 
-Futtassa a `Migrate-Aadds` parancsmagot a *-commit* paraméter használatával. Adja meg az *ManagedDomainFqdn* az előző szakaszban előkészített saját Azure AD DS felügyelt tartományhoz, például *contoso.com*:
+Futtassa a `Migrate-Aadds` parancsmagot a *-commit* paraméter használatával. Adja meg az *ManagedDomainFqdn* az előző szakaszban előkészített saját Azure AD DS felügyelt tartományhoz, például *aaddscontoso.com*:
 
 Válassza ki azt a célként megadott erőforráscsoportot, amely az Azure AD DS áttelepíteni kívánt virtuális hálózatot tartalmazza, például *myResourceGroup*. Adja meg a cél virtuális hálózatot, például a *myVnet*és az alhálózatot, például a *DomainServices*.
 
@@ -228,7 +228,7 @@ A parancs futtatása után visszaállíthatja a következőt:
 ```powershell
 Migrate-Aadds `
     -Commit `
-    -ManagedDomainFqdn contoso.com `
+    -ManagedDomainFqdn aaddscontoso.com `
     -VirtualNetworkResourceGroupName myResourceGroup `
     -VirtualNetworkName myVnet `
     -VirtualSubnetName DomainServices `
@@ -265,7 +265,7 @@ Most tesztelje a virtuális hálózati kapcsolatokat és a névfeloldást. A Res
 
 1. Ellenőrizze, hogy tud-e pingelni az egyik tartományvezérlő IP-címét, például `ping 10.1.0.4`
     * A tartományvezérlők IP-címei az Azure AD DS felügyelt tartomány **tulajdonságlapján** jelennek meg a Azure Portalban.
-1. A felügyelt tartomány névfeloldásának ellenőrzése, például `nslookup contoso.com`
+1. A felügyelt tartomány névfeloldásának ellenőrzése, például `nslookup aaddscontoso.com`
     * Adja meg a saját Azure AD DS felügyelt tartományának DNS-nevét annak ellenőrzéséhez, hogy a DNS-beállítások helyesek-e, majd oldja fel.
 
 Az áttelepítési parancsmag befejezését követően a második tartományvezérlő 1-2 órán belül elérhetőnek kell lennie. A második tartományvezérlő elérhetővé tételének vizsgálatához tekintse meg az Azure AD DS felügyelt tartomány **tulajdonságlapját** a Azure Portalban. Ha két IP-cím látható, a második tartományvezérlő készen áll.
@@ -309,12 +309,12 @@ Az áttelepítési folyamat egy bizonyos pontjáig dönthet úgy, hogy visszaál
 
 Ha hiba lép fel, amikor a PowerShell-parancsmagot a 2. lépésben vagy a 3. lépésben az áttelepítésre való felkészülésre készíti elő, az Azure AD DS felügyelt tartomány visszaállíthatja az eredeti konfigurációt. A visszaállításhoz az eredeti klasszikus virtuális hálózat szükséges. Vegye figyelembe, hogy az IP-címek továbbra is változhatnak a visszaállítás után.
 
-Futtassa a `Migrate-Aadds` parancsmagot a *-megszakítás* paraméter használatával. Adja meg a *-ManagedDomainFqdn* a saját Azure AD DS felügyelt tartomány egy korábbi szakaszban előkészített, például a *contoso.com*és a klasszikus virtuális hálózat nevét, például *myClassicVnet*:
+Futtassa a `Migrate-Aadds` parancsmagot a *-megszakítás* paraméter használatával. Adja meg a *-ManagedDomainFqdn* a saját Azure AD DS felügyelt tartomány egy korábbi szakaszban előkészített, például a *Aaddscontoso.com*és a klasszikus virtuális hálózat nevét, például *myClassicVnet*:
 
 ```powershell
 Migrate-Aadds `
     -Abort `
-    -ManagedDomainFqdn contoso.com `
+    -ManagedDomainFqdn aaddscontoso.com `
     -ClassicVirtualNetworkName myClassicVnet `
     -Credentials $creds
 ```

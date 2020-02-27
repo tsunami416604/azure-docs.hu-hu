@@ -3,18 +3,18 @@ title: Több erőforrás-példány üzembe helyezése
 description: A másolási művelet és tömbök használata Azure Resource Manager sablonban az erőforrástípus többszöri üzembe helyezéséhez.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 38b5bcd38e0dc8ba8c758e9aa8371857541ba55e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e90673504ceaccdc25a477e856defa77eed37d86
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210826"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620221"
 ---
 # <a name="resource-iteration-in-azure-resource-manager-templates"></a>Erőforrás-iteráció Azure Resource Manager-sablonokban
 
 Ez a cikk bemutatja, hogyan hozhat létre egy erőforrás több példányát a Azure Resource Manager-sablonban. Ha hozzáadja a **Másolás** elemet a sablon erőforrások szakaszához, akkor dinamikusan beállíthatja a telepítendő erőforrások számát. Emellett ne kelljen megismételni a sablon szintaxisát.
 
-A másolást [tulajdonságokat](copy-properties.md) és [változókat](copy-variables.md)is használhatja.
+A másolást a [Tulajdonságok](copy-properties.md), a [változók](copy-variables.md) és a [kimenetek](copy-outputs.md)segítségével is használhatja.
 
 Ha meg kell adnia, hogy az erőforrás telepítve van-e, tekintse meg a [feltétel elemet](conditional-resource-deployment.md).
 
@@ -130,6 +130,8 @@ A következő példa egy Storage-fiókot hoz létre a paraméterben megadott min
   "outputs": {}
 }
 ```
+
+Ha a központilag telepített erőforrások értékeit szeretné visszaadni, a [kimenetek szakaszban a másolás](copy-outputs.md)lehetőséget használhatja.
 
 ## <a name="serial-or-parallel"></a>Soros vagy párhuzamos
 
@@ -279,7 +281,10 @@ Az alábbi példák egy erőforrás vagy tulajdonság egynél több példányán
 ## <a name="next-steps"></a>Következő lépések
 
 * Az oktatóanyag lépéseinek megismeréséhez lásd [: oktatóanyag: több erőforrás-példány létrehozása Resource Manager-sablonok használatával](template-tutorial-create-multiple-instances.md).
-* A másolási elem egyéb felhasználási módjaiért lásd: [Tulajdonságok iterációja Azure Resource Manager sablonokban](copy-properties.md) és [változó iteráció Azure Resource Manager sablonokban](copy-variables.md).
+* A másolási elem egyéb felhasználási módjaiért lásd:
+  * [Tulajdonság-iteráció Azure Resource Manager-sablonokban](copy-properties.md)
+  * [Változó iteráció Azure Resource Manager-sablonokban](copy-variables.md)
+  * [Kimeneti iteráció Azure Resource Manager-sablonokban](copy-outputs.md)
 * További információ a másolás beágyazott sablonokkal történő használatáról: [a másolás használata](linked-templates.md#using-copy).
 * Ha szeretné megismerni a sablonok egyes részeit, olvassa el a [Azure Resource Manager sablonok készítése](template-syntax.md)című szakaszt.
 * A sablon üzembe helyezésével kapcsolatos további információkért lásd: [alkalmazások központi telepítése Azure Resource Manager sablonnal](deploy-powershell.md).

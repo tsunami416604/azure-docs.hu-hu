@@ -2,13 +2,13 @@
 title: Kimenetek a sablonokban
 description: Ismerteti, hogyan lehet kimeneti értékeket definiálni egy Azure Resource Manager sablonban.
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 7244e1ac0eff973d550a2bae8a70fa5055ca2248
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/25/2020
+ms.openlocfilehash: ec96b45cdc5ccf488d46c2d8da03caf16d002dfa
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483920"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622842"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Kimenetek Azure Resource Manager sablonban
 
@@ -16,7 +16,7 @@ Ez a cikk bemutatja, hogyan határozhatja meg a kimeneti értékeket a Azure Res
 
 ## <a name="define-output-values"></a>Kimeneti értékek definiálása
 
-Az alábbi példa azt szemlélteti, hogyan lehet visszaadni egy nyilvános IP-cím erőforrás-AZONOSÍTÓját:
+Az alábbi példa bemutatja, hogyan állítható vissza a nyilvános IP-cím erőforrás-azonosító:
 
 ```json
 "outputs": {
@@ -43,7 +43,25 @@ A kimenetek szakaszban feltételesen adhat vissza értéket. A kimenetekben jell
 
 A feltételes kimenet egyszerű példáját lásd: [feltételes kimeneti sablon](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
 
-## <a name="linked-templates"></a>Összekapcsolt sablonok
+## <a name="dynamic-number-of-outputs"></a>Kimenetek dinamikus száma
+
+Bizonyos helyzetekben nem tudja, hogy hány példányban kell visszaadni a sablon létrehozásakor. A **copy** elem használatával változó számú értéket adhat vissza.
+
+```json
+"outputs": {
+  "storageEndpoints": {
+    "type": "array",
+    "copy": {
+      "count": "[parameters('storageCount')]",
+      "input": "[reference(concat(copyIndex(), variables('baseName'))).primaryEndpoints.blob]"
+    }
+  }
+}
+```
+
+További információ: [outputs iteráció Azure Resource Manager-sablonokban](copy-outputs.md).
+
+## <a name="linked-templates"></a>Hivatkozott sablonok
 
 Egy csatolt sablon kimeneti értékének lekéréséhez használja a fölérendelt sablon [hivatkozási](template-functions-resource.md#reference) függvényét. A fölérendelt sablon szintaxisa a következőket eredményezi:
 
@@ -51,7 +69,7 @@ Egy csatolt sablon kimeneti értékének lekéréséhez használja a fölérende
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
 ```
 
-Ha csatolt sablonból kap kimeneti tulajdonságot, a tulajdonság neve nem tartalmazhat kötőjelet.
+Amikor egy kimeneti tulajdonság lekérése egy hivatkozott sablonnak, a tulajdonság neve nem tartalmazhatja az kötőjellel.
 
 Az alábbi példa bemutatja, hogyan állíthatja be az IP-címet egy terheléselosztó számára egy érték egy csatolt sablonból való beolvasásával.
 
@@ -61,7 +79,7 @@ Az alábbi példa bemutatja, hogyan állíthatja be az IP-címet egy terhelésel
 }
 ```
 
-[Beágyazott sablon](linked-templates.md#nested-template)kimenetek szakaszában nem használhatja a `reference` függvényt. Egy beágyazott sablonban lévő üzembe helyezett erőforrás értékeinek visszaküldéséhez alakítsa át a beágyazott sablont egy csatolt sablonba.
+[Beágyazott sablon](linked-templates.md#nested-template)kimenetek szakaszában nem használhatja a `reference` függvényt. Az értékeket egy üzembe helyezett erőforrás visszaadása egy beágyazott sablont, váltson egy hivatkozott sablonnak a beágyazott sablont.
 
 ## <a name="get-output-values"></a>Kimeneti értékek beolvasása
 
@@ -69,7 +87,7 @@ Az üzembe helyezés sikeressége után a rendszer automatikusan visszaadja a ki
 
 A telepítési előzményekből származó kimeneti értékek lekéréséhez használhatja a parancsfájlt.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -77,7 +95,7 @@ A telepítési előzményekből származó kimeneti értékek lekéréséhez has
   -Name <deployment-name>).Outputs.resourceID.value
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group deployment show \
@@ -88,15 +106,15 @@ az group deployment show \
 
 ---
 
-## <a name="example-templates"></a>Példák sablonokra
+## <a name="example-templates"></a>Példa sablonok
 
 Az alábbi példák a kimenetek használatának forgatókönyveit mutatják be.
 
 |Sablon  |Leírás  |
 |---------|---------|
-|[Változók másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Összetett változókat hoz létre, és megjeleníti ezeket az értékeket. Nem helyez üzembe semmilyen erőforrást. |
-|[Nyilvános IP-cím](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Létrehoz egy nyilvános IP-címet, és kiírja az erőforrás-azonosítót. |
-|[Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Az előző sablonra mutató hivatkozások. A terheléselosztó létrehozásakor a kimenetben lévő erőforrás-azonosítót használja. |
+|[Változók másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Komplex változók hoz létre, és kiírja ezeket az értékeket. Nem telepíti az erőforrásokat. |
+|[Nyilvános IP-cím](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Létrehoz egy nyilvános IP-címet, és kiírja az erőforrás-azonosítója. |
+|[Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Az előző sablon mutató hivatkozásokat tartalmaz. A terheléselosztó létrehozásakor használja a kimenetben az erőforrás-azonosítója. |
 
 ## <a name="next-steps"></a>Következő lépések
 

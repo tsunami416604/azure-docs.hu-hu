@@ -7,12 +7,12 @@ ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 0f6e32056783a816d847db191de4fcdae2616ab7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32b482607827ee4420e39b1936586d64f9ea3139
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446182"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651381"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Az IBM DB2-erőforrások elérése és kezelése Azure Logic Apps használatával
 
@@ -80,7 +80,7 @@ A cikkben szereplő példák az **ismétlődési** eseményindítót használjá
 
 A kapcsolat beállításához adja meg a kapcsolódási adatokat, ha a rendszer kéri, válassza a **Létrehozás**lehetőséget, majd mentse a logikai alkalmazást:
 
-| Tulajdonság | Szükséges | Leírás |
+| Tulajdonság | Kötelező | Leírás |
 |----------|----------|-------------|
 | **Kapcsolat helyszíni átjárón keresztül** | Nem | Csak helyszíni kapcsolatokra vonatkozik. |
 | **Kapcsolat neve** | Igen | A kapcsolatok neve, például "MyLogicApp-DB2-kapcsolatok" |
@@ -90,7 +90,7 @@ A kapcsolat beállításához adja meg a kapcsolódási adatokat, ha a rendszer 
 | **Jelszó** | Igen | Az adatbázis jelszava |
 ||||
 
-Példa:
+Például:
 
 ![A felhőalapú adatbázisok kapcsolati adatai](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
 
@@ -100,7 +100,7 @@ Példa:
 
 A kapcsolatok létrehozása előtt már telepítve kell lennie a helyszíni adatátjárónak. Ellenkező esetben nem lehet befejezni a kapcsolatok beállítását. Ha telepítette az átjárót, folytassa a kapcsolat részleteinek megadásával, majd válassza a **Létrehozás**lehetőséget.
 
-| Tulajdonság | Szükséges | Leírás |
+| Tulajdonság | Kötelező | Leírás |
 |----------|----------|-------------|
 | **Kapcsolat helyszíni átjárón keresztül** | Igen | Akkor érvényes, ha helyszíni csatlakozást szeretne használni, és megjeleníti a helyszíni kapcsolódási tulajdonságokat. |
 | **Kapcsolat neve** | Igen | A kapcsolatok neve, például "MyLogicApp-DB2-kapcsolatok" | 
@@ -112,7 +112,7 @@ A kapcsolatok létrehozása előtt már telepítve kell lennie a helyszíni adat
 | **Átjáró** | Igen | A telepített helyszíni adatátjáró neve <p><p>**Megjegyzés**: válassza ki ezt az értéket a listából, amely tartalmazza az Azure-előfizetésben és az erőforráscsoporthoz található összes telepített adatátjárót. |
 ||||
 
-Példa:
+Például:
 
 ![A helyszíni adatbázisok kapcsolati adatai](./media/connectors-create-api-db2/create-db2-on-premises-connection.png)
 
@@ -151,7 +151,7 @@ Egy DB2-adatbázistábla egyik rekordjának beolvasásához használja a logikai
 
 1. Az összes szükséges tulajdonság (*) értékének megadása. A tábla kiválasztása után a művelet megjeleníti az adott tábla rekordjaira vonatkozó megfelelő tulajdonságokat.
 
-   | Tulajdonság | Szükséges | Leírás |
+   | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
    | **Tábla neve** | Igen | A kívánt rekordot tartalmazó tábla, például "térség" ebben a példában |
    | **Területi azonosító** | Igen | A kívánt rekord azonosítója (például "99999") ebben a példában |
@@ -231,7 +231,7 @@ Ha egyetlen rekordot szeretne hozzáadni egy DB2-adatbázis táblához, használ
 
    Ebben a példában a tulajdonságok a következők:
 
-   | Tulajdonság | Szükséges | Leírás |
+   | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
    | **Tábla neve** | Igen | A rekord hozzáadására szolgáló tábla, például "térség" |
    | **Területi azonosító** | Igen | A hozzáadandó régió azonosítója, például "99999" |
@@ -239,7 +239,7 @@ Ha egyetlen rekordot szeretne hozzáadni egy DB2-adatbázis táblához, használ
    | **Régió azonosítója** | Igen | A hozzáadandó régió azonosítója, például: "102" |
    |||| 
 
-   Példa:
+   Például:
 
    ![Tábla kiválasztása](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
@@ -278,7 +278,7 @@ Ha egy DB2-adatbázistábla egyetlen rekordját szeretné frissíteni, használj
 
    Ebben a példában a tulajdonságok a következők:
 
-   | Tulajdonság | Szükséges | Leírás |
+   | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
    | **Tábla neve** | Igen | A rekord frissítésére szolgáló tábla, például "térség" |
    | **Sor azonosítója** | Igen | A frissítendő rekord azonosítója, például: "99999" |
@@ -287,7 +287,7 @@ Ha egy DB2-adatbázistábla egyetlen rekordját szeretné frissíteni, használj
    | **Régió azonosítója** | Igen | Az új régió azonosítója, például "102" |
    ||||
 
-   Példa:
+   Például:
 
    ![Tábla kiválasztása](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
@@ -326,13 +326,13 @@ Ha egyetlen rekordot szeretne törölni egy DB2-adatbázis táblából, használ
 
    Ebben a példában a tulajdonságok a következők:
 
-   | Tulajdonság | Szükséges | Leírás |
+   | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
    | **Tábla neve** | Igen | A rekord törlésére szolgáló tábla, például "térség" |
    | **Sor azonosítója** | Igen | A törlendő rekord azonosítója, például: "99999" |
    ||||
 
-   Példa:
+   Például:
 
    ![Tábla kiválasztása](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 
@@ -359,7 +359,10 @@ Bontsa ki a **sor törlése** műveletet.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő OpenAPI (korábban hencegő) fájljában leírtak szerint tekintse [meg az összekötő hivatkozási oldalát](/connectors/db2/).
+Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](https://docs.microsoft.com/connectors/db2/).
+
+> [!NOTE]
+> Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
 ## <a name="next-steps"></a>Következő lépések
 

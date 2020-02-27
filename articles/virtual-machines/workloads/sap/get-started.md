@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/25/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6efad8160115347469fb387108812ddc9adecc1
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: c9d287d5bfc091fcbbff46095da5458fa08de73d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77601935"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624168"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -34,23 +34,20 @@ Az Azure SAP HANA-hoz való egyedisége egy olyan ajánlat, amely az Azure-t egy
 Az Azure SAP munkaterhelés-forgatókönyvek üzemeltetése az identitás-integrációra és az egyszeri bejelentkezésre vonatkozó követelményeket is képes létrehozni. Ez a helyzet akkor fordulhat elő, ha Azure Active Directory (Azure AD) használatával csatlakozik a különböző SAP-összetevőkhöz és az SAP-szolgáltatásokhoz (SaaS) vagy a szolgáltatásként kínált platformokhoz. Az Azure AD-val és az SAP-entitásokkal kapcsolatos ilyen integrációs és egyszeri bejelentkezési forgatókönyvek listáját a "HRE SAP Identity Integration és az egyszeri bejelentkezés" című szakaszban ismertetjük és dokumentáljuk.
 
 ## <a name="changes-to-the-sap-workload-section"></a>Az SAP munkaterhelés szakasz változásai
-Az SAP on Azure munkaterhelés című szakaszban szereplő dokumentumok módosításai a cikk végén találhatók.
+Az SAP on Azure munkaterhelés című szakaszban szereplő dokumentumok módosításai a cikk végén találhatók. A módosítási napló bejegyzései körülbelül 180 napig tartanak.
 
+## <a name="you-want-to-know"></a>Tudni szeretné
+Ha konkrét kérdései vannak, egy adott dokumentumra vagy folyamatra fogunk rámutatni, amely a Kezdőlap ezen szakaszában található. A következőket szeretné tudni:
 
+- Az Azure-beli virtuális gépeket és a HANA nagyméretű példány-egységeket a SAP-szoftverek és az operációs rendszer verziószámai támogatják. Olvassa el az [Azure-beli üzembe helyezéshez támogatott SAP-szoftvereket](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) és az információk megkeresésének folyamatát ismertető dokumentumot.
+- Milyen SAP-telepítési forgatókönyvek támogatottak az Azure-beli virtuális gépek és a HANA Large-példányok esetében. A támogatott forgatókönyvekkel kapcsolatos információk a következő dokumentumokban találhatók:
+    - [SAP számítási feladatok az Azure-beli virtuális gépek által támogatott forgatókönyvekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)
+    - [A HANA nagyméretű példányának támogatott forgatókönyvei](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)
+
+ 
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA az Azure-ban (nagyméretű példányok)
 
-A dokumentumok egy sorozata az Azure-ban (nagyméretű példányokon), vagy rövid, HANA nagyméretű példányokon SAP HANA. A HANA Large instances következő területeivel kapcsolatos információkért lásd:
-
-- [Az Azure-beli SAP HANA áttekintése (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
-- [A SAP HANA architektúrája az Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-architecture)
-- [Infrastruktúra és kapcsolódás az Azure-SAP HANAhoz (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
-- [SAP HANA telepítése az Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)
-- [A SAP HANA magas rendelkezésre állása és vész-helyreállítása az Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
-- [Az Azure-beli SAP HANA hibakeresése és figyelése (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
-
-Következő lépések:
-
-- [A SAP HANA áttekintése és architektúrája az Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+A dokumentumok egy sorozata az Azure-ban (nagyméretű példányokon), vagy rövid, HANA nagyméretű példányokon SAP HANA. A HANA nagyméretű példányaival kapcsolatos információkért tekintse meg a dokumentum [áttekintését és az Azure-beli SAP HANA architektúráját (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) , és tekintse át a nagyméretű Hana-példányok című szakasz kapcsolódó dokumentációját.
 
 
 
@@ -120,7 +117,9 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 
 ## <a name="change-log"></a>Változásnapló
+- 02/25/2020: változás a [magas rendelkezésre állású architektúrában és az SAP-forgatókönyvekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios) az újabb ha-cikkekre mutató hivatkozások hozzáadásához
 - 02/25/2020: az [IBM DB2-LUW magas rendelkezésre állásának megváltozása az Azure-beli virtuális gépeken SUSE Linux Enterprise Server és a pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm) használatával, amely leírja a nyilvános végponthoz való hozzáférést a standard Azure Load balancerrel
+- 02/21/2020: az SAP [bevezetésének Azure Virtual Machines adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase) című cikk teljes felülvizsgálata
 - 02/21/2020: változás a [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , hogy az új ajánlást képviselje a/Hana/Data, és adja hozzá az I/O-ütemező beállítását.
 - 02/21/2020: a HANA nagyméretű példányainak dokumentumaiban bekövetkezett változások a S224 és a S224m újonnan hitelesített SKU-ának felelnek meg
 - 02/21/2020: az Azure-beli [virtuális gépek magas rendelkezésre állásának módosítása az SAP NETWEAVER RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel) és Azure-beli [virtuális gépek magas rendelkezésre ÁLLÁSa a RHEL-hez Azure NetApp Files készült SAP NetWeaver számára a](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) sorba helyezni Server Replication 2 architektúra (ENSA2) architektúrájának módosításához

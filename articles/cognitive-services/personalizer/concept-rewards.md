@@ -1,27 +1,22 @@
 ---
 title: Jutalom pontszáma – személyre szabás
-titleSuffix: Azure Cognitive Services
 description: A jutalmazási pontszám azt jelzi, hogy a felhasználó személyre szabása milyen mértékben RewardActionID. A jutalom pontszám értékét az üzleti logikája határozza meg, a felhasználói viselkedés megfigyelése alapján. A személyre szabott gépi tanulási modelljeit a jutalmak kiértékelésével teheti meg.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
+ms.date: 02/20/2020
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: diberry
-ms.openlocfilehash: a47d6014e51dce81c9caf82f8624896c439f050d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490877"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623785"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>A jutalom pontszámai a személyre szabás sikerességét jelzik
 
 A jutalmazási pontszám azt jelzi, hogy a felhasználó személyre szabása milyen mértékben [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response). A jutalom pontszám értékét az üzleti logikája határozza meg, a felhasználói viselkedés megfigyelése alapján.
 
-A személyre szabott gépi tanulási modelljeit a jutalmak kiértékelésével teheti meg. 
+A személyre szabott gépi tanulási modelljeit a jutalmak kiértékelésével teheti meg.
+
+Megtudhatja, [Hogyan](how-to-settings.md#configure-rewards-for-the-feedback-loop) konfigurálhatja az alapértelmezett jutalom pontszámát a Azure Portal személyre szabott erőforrásához.
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Jutalmazási pontszám küldése a személyre szabáshoz a jutalmazási API használatával
 
@@ -47,16 +42,16 @@ Ezeket a jeleket és viselkedéseket érdemes figyelembe venni a jutalom pontsz�
 
 A jutalom pontszámát az üzleti logikában kell kiszámítani. A pontszám a következőképpen jeleníthető meg:
 
-* Egyszeri elküldéses szám 
+* Egyszeri elküldéses szám
 * Azonnal eljuttatott pontszám (például 0,8), és egy további, később eljuttatott pontszám (általában 0,2).
 
 ## <a name="default-rewards"></a>Alapértelmezett jutalmak
 
 Ha a [jutalmazási várakozási időn](#reward-wait-time)belül nem érkezik jutalom, az időtartam a rangsorolási hívás óta, a személyre szabott, implicit módon alkalmazza az **alapértelmezett jutalmat** erre a rangsorolási eseményre.
 
-## <a name="building-up-rewards-with-multiple-factors"></a>Előnyök kiépítése több tényezővel  
+## <a name="building-up-rewards-with-multiple-factors"></a>Előnyök kiépítése több tényezővel
 
-A hatékony személyre szabás érdekében több tényező alapján is felépítheti a jutalmazási pontszámot. 
+A hatékony személyre szabás érdekében több tényező alapján is felépítheti a jutalmazási pontszámot.
 
 Ezeket a szabályokat például alkalmazhatja a videó tartalmának személyre szabásához:
 
@@ -93,10 +88,10 @@ A jutalmazási pontszámok hozzáadásával a végső jutalom a várt pontszám-
 * A nem **szándékolt következmények megfontolása**: hozzon létre jutalmazási funkciókat, amelyek az [etikai és a felelősségteljes használat](ethics-responsible-use.md)érdekében vezetnek a felelős eredményekhez.
 
 * **Növekményes jutalmak használata**: a kisebb felhasználói viselkedésmódokkal kapcsolatos részleges jutalmak hozzáadásával a személyre szabott előnyökkel lehet elérni a jobb jutalmakat. Ez a növekményes jutalom lehetővé teszi az algoritmus számára, hogy megismerje, hogy minél közelebb kerüljön a felhasználóhoz a végső kívánt viselkedésben.
-    * Ha a filmek listáját jeleníti meg, ha a felhasználó az elsőre mutat a további információk megtekintéséhez, akkor megtudhatja, hogy az egyes felhasználók bevonása történt. A viselkedés a 0,1 értékű jutalmazási pontszámmal számítható fel. 
-    * Ha a felhasználó megnyitotta a lapot, és kilépett, a jutalom pontszáma 0,2 lehet. 
+    * Ha a filmek listáját jeleníti meg, ha a felhasználó az elsőre mutat a további információk megtekintéséhez, akkor megtudhatja, hogy az egyes felhasználók bevonása történt. A viselkedés a 0,1 értékű jutalmazási pontszámmal számítható fel.
+    * Ha a felhasználó megnyitotta a lapot, és kilépett, a jutalom pontszáma 0,2 lehet.
 
-## <a name="reward-wait-time"></a>jutalom várakozási ideje
+## <a name="reward-wait-time"></a>Jutalom várakozási ideje
 
 A személyre szabás a rangsorolási hívások információit a modell betanítása érdekében a jutalmazási hívásokban elküldett jutalmakkal fogja összekapcsolni. Ezek különböző időpontokban is előfordulhatnak. A személyre szabás csak korlátozott ideig vár, a rangsor meghívásakor, még akkor is, ha a rangsor hívása inaktív eseményként történt, és később aktiválva lett.
 
@@ -106,12 +101,12 @@ Ha a **jutalmazási várakozási idő** lejár, és nincs jutalomra vonatkozó i
 
 A jobb eredmények érdekében kövesse ezeket az ajánlásokat.
 
-* A megtérülési várakozási időt a lehető legrövidebb időn belül elhagyhatja a felhasználói visszajelzések elvégzéséhez. 
+* A megtérülési várakozási időt a lehető legrövidebb időn belül elhagyhatja a felhasználói visszajelzések elvégzéséhez.
 
 * Ne válasszon olyan időtartamot, amely rövidebb, mint a visszajelzés kéréséhez szükséges idő. Ha például egy adott jutalom egy felhasználónál 1 perces videó megtekintése után következik be, a kísérlet hosszának legalább kétszeresnak kell lennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Megerősítő tanulás](concepts-reinforcement-learning.md) 
+* [Megerősítő tanulás](concepts-reinforcement-learning.md)
 * [A Rank API kipróbálása](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)
 * [A jutalmazási API kipróbálása](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)

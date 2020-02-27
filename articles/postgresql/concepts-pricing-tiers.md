@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.openlocfilehash: b5a2d8a812c5b3b0021ad4f74fc705049807cb1b
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 02/25/2020
+ms.openlocfilehash: 9ce88c687df4e329acd2949d0b26033dc10c94ea
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485063"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619476"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Árképzési szintek Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -87,7 +87,7 @@ Ne feledje, hogy a tárterület csak akkor méretezhető, ha nem.
 
 ## <a name="backup"></a>Biztonsági mentés
 
-A szolgáltatás automatikusan biztonsági másolatot készít a kiszolgálóról. A biztonsági mentések minimális megőrzési ideje hét nap. 35 napos megőrzési időtartamot is beállíthat. A megőrzés a kiszolgáló élettartama alatt bármikor módosítható. A helyileg redundáns és a Geo-redundáns biztonsági mentések közül választhat. A Geo-redundáns biztonsági mentéseket a kiszolgáló által létrehozott régió [földrajzi összepárosítású régiójában](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) is tárolja a rendszer. Ez a redundancia katasztrófa esetén nyújt védelmet. Lehetősége van arra is, hogy a kiszolgálót bármely olyan Azure-régióba visszaállítsa, amelyben a szolgáltatás a Geo-redundáns biztonsági mentésekkel elérhető. A kiszolgáló létrehozása után a két biztonsági mentési tárolási lehetőség között nem lehet módosítani.
+A szolgáltatás automatikusan biztonsági másolatot készít a kiszolgálóról. A megőrzési időtartamot 7 és 35 nap közé is kiválaszthatja. A általános célú és a memóriára optimalizált kiszolgálók dönthetnek úgy, hogy a biztonsági mentések földrajzilag redundáns tárolóhelyet biztosítanak. További információ a biztonsági mentésekről a [fogalmakat ismertető cikkben](concepts-backup.md).
 
 ## <a name="scale-resources"></a>Erőforrások skálázása
 

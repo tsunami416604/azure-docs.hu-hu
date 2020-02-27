@@ -3,21 +3,21 @@ title: 'Ismert problémák: az online áttelepítés SQL Database'
 titleSuffix: Azure Database Migration Service
 description: Ismerkedjen meg az ismert problémákkal/áttelepítési korlátozásokkal az online Migrálás Azure SQL Database a Azure Database Migration Service használatával.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 07/27/2019
-ms.openlocfilehash: bf747b6deb4b3c25df74364143ac48c59eb48ae1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: e7efdb7244e2c7e4651a4507b538123f8d320c1e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437828"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650775"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure SQL Database
 
@@ -28,7 +28,7 @@ Az SQL Serverról Azure SQL Databasere való online áttelepítéssel kapcsolato
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>Az ideiglenes táblák migrálása nem támogatott
 
-**Tünet**
+**Jelenség**
 
 Ha a forrásadatbázis egy vagy több ideiglenes táblából áll, az adatbázis áttelepítése a "teljes adatterhelés" művelet során meghiúsul, és a következő üzenet jelenhet meg:
 
@@ -40,7 +40,7 @@ Ha a forrásadatbázis egy vagy több ideiglenes táblából áll, az adatbázis
 
 **Áthidaló megoldás**
 
-Hajtsa végre a következő lépéseket.
+Kövesse az alábbi lépéseket.
 
 1. Az alábbi lekérdezéssel megkeresheti a forrás sémában található időbeli táblákat.
 
@@ -52,13 +52,13 @@ Hajtsa végre a következő lépéseket.
 
 3. Futtassa újra az áttelepítési tevékenységet.
 
-**Forrásanyagok**
+**Erőforrások**
 
 További információkért tekintse meg a cikk [időbeli táblázatait](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017).
 
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>A táblák áttelepítése egy vagy több oszlopot tartalmaz a hierarchyid adattípussal.
 
-**Tünet**
+**Jelenség**
 
 A "teljes adatterhelés" művelet során az "ntext nem kompatibilis a hierarchyid" nevű SQL-kivételt láthatja:
 
@@ -66,7 +66,7 @@ A "teljes adatterhelés" művelet során az "ntext nem kompatibilis a hierarchyi
 
 **Áthidaló megoldás**
 
-Hajtsa végre a következő lépéseket.
+Kövesse az alábbi lépéseket.
 
 1. Keresse meg a hierarchyid adattípusú oszlopokat tartalmazó felhasználói táblákat az alábbi lekérdezés használatával.
 
@@ -82,7 +82,7 @@ Hajtsa végre a következő lépéseket.
 
 **Áthidaló megoldás**
 
-Hajtsa végre a következő lépéseket.
+Kövesse az alábbi lépéseket.
 
 1. Keresse meg a forrás adatbázisban jelenleg aktív eseményindítókat az alábbi lekérdezés használatával:
 
@@ -96,7 +96,7 @@ Hajtsa végre a következő lépéseket.
 
 ### <a name="support-for-lob-data-types"></a>LOB-adattípusok támogatása
 
-**Tünet**
+**Jelenség**
 
 Ha a nagyméretű objektum (LOB) oszlop hossza meghaladja a 32 KB-ot, a célhelyen az adatmennyiség lerövidíthető. A LOB-oszlop hosszát az alábbi lekérdezéssel tekintheti meg:
 
@@ -110,7 +110,7 @@ Ha 32 KB-nál nagyobb LOB-oszloppal rendelkezik, lépjen kapcsolatba a mérnöki
 
 ### <a name="issues-with-timestamp-columns"></a>Időbélyeg-oszlopokkal kapcsolatos problémák
 
-**Tünet**
+**Jelenség**
 
 Azure Database Migration Service nem telepíti át a forrás timestamp értékét; Ehelyett a Azure Database Migration Service új időbélyeg-értéket hoz létre a cél táblában.
 
@@ -120,7 +120,7 @@ Ha Azure Database Migration Servicera van szüksége a forrás táblában tárol
 
 ### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>Az adatáttelepítési hibák nem biztosítanak további részleteket az adatbázis részletes állapot paneljén.
 
-**Tünet**
+**Jelenség**
 
 Ha az adatbázisok részletek állapota nézetben áttelepítési hibákba ütközik, a felső menüszalagon lévő **adatáttelepítési hibák** hivatkozásra kattintva nem adhat meg további részleteket az áttelepítési hibákról.
 
@@ -138,7 +138,7 @@ Az adott hiba részleteinek megismeréséhez kövesse az alábbi lépéseket.
 
 ### <a name="geography-datatype-not-supported-in-sqldb-online-migration"></a>Az SQLDB online Migrálás nem támogatja a földrajzi adattípust
 
-**Tünet**
+**Jelenség**
 
 Az áttelepítés meghiúsul, és a következő szöveget tartalmazó hibaüzenet jelenik meg:
 
@@ -150,7 +150,7 @@ Míg a Azure Database Migration Service támogatja az offline Migrálás földra
 
 ### <a name="supported-editions"></a>Támogatott kiadások
 
-**Tünet**
+**Jelenség**
 
 Az áttelepítés meghiúsul, és a következő szöveget tartalmazó hibaüzenet jelenik meg:
 

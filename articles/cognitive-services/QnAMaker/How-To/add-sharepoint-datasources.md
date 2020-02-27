@@ -3,12 +3,12 @@ title: SharePoint-fájlok – QnA Maker
 description: Biztonságos SharePoint-adatforrásokat adhat hozzá a tudásbázishoz, hogy a tudásbázist a Active Directory által védett kérdésekkel és válaszokkal gazdagítsa.
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: ec77d3ac217991ff191d80249bc86805e7c8ba35
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 402d8239ee9fbac01e64e3624a7e4d8a13f2e7d8
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544164"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650435"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Biztonságos SharePoint-adatforrás hozzáadása a tudásbázishoz
 
@@ -20,7 +20,8 @@ Ha a QnA Maker Tudásbázis-kezelő nem a Active Directory Manager, akkor a foly
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A QnA Maker az engedélyeket Microsoft Graph használja. Ha a SharePoint helyszíni, nem tud kinyerni a SharePointból, mert Microsoft Graph nem fogja tudni meghatározni az engedélyeket.
+* A felhőalapú SharePoint-QnA Maker az engedélyeket Microsoft Graph használja. Ha a SharePoint helyszíni, nem tud kinyerni a SharePointból, mert Microsoft Graph nem fogja tudni meghatározni az engedélyeket.
+* URL-formátum – QnA Maker csak a megosztáshoz létrehozott SharePoint URL-címeket támogatja, és a https://*. SharePoint. com formátumú.
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Támogatott fájltípusok hozzáadása a tudásbázishoz
 

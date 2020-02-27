@@ -3,8 +3,8 @@ title: Az Azure-beli SAP HANA áttekintése (nagyméretű példányok) | Microso
 description: A SAP HANA üzembe helyezésének áttekintése az Azure-ban (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ea337101a5fe44e42ce85c17fec32028c75d3b85
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101169"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616953"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Mi az SAP HANA az Azure-ban (nagy méretű példányok)?
 
@@ -26,9 +26,9 @@ A SAP HANA az Azure-ban (nagyméretű példányok) egyedülálló megoldás az A
 
 Az infrastruktúra-bélyegzőn belüli ügyfél-elkülönítést a bérlők végzik, amelyek a következőképpen néznek ki:
 
-- **Hálózatkezelés**: Az infrastruktúra-veremben lévő ügyfelek elkülönítése az ügyfél által hozzárendelt bérlői virtuális hálózatokon keresztül. A bérlő egyetlen ügyfélhez van rendelve. Egy ügyfél több Bérlővel is rendelkezhet. A bérlők hálózati elkülönítése tiltja a bérlők közötti hálózati kommunikációt az infrastruktúra-Stamp szintjén, még akkor is, ha a bérlők ugyanahhoz az ügyfélhez tartoznak.
-- **Tárolási összetevők**: Elkülönítés olyan tárolási virtuális gépeken keresztül, amelyekhez tárolási kötetek vannak rendelve. A tárolási kötetek csak egy tároló virtuális géphez rendelhetők hozzá. A tároló virtuális gépek kizárólag egyetlen bérlőhöz vannak hozzárendelve a SAP HANA TDI Certified infrastruktúra-veremben. Ennek eredményeképpen a tároló virtuális géphez rendelt tárolási kötetek csak egy adott és kapcsolódó bérlőhöz érhetők el. Nem láthatók a különböző telepített bérlők között.
-- **Kiszolgáló vagy gazdagép**: Egy kiszolgáló vagy egy gazda egység nincs megosztva az ügyfelek vagy A bérlők között. Egy ügyfélre telepített kiszolgáló vagy gazdagép egy olyan atomi operációs rendszer nélküli számítási egység, amely egyetlen bérlőhöz van rendelve. *Nincs* szükség hardver particionálásra vagy lágy particionálásra, ami a gazdagép vagy a kiszolgáló másik ügyféllel való megosztását eredményezheti. Az adott bérlő tároló virtuális géphez hozzárendelt tárolási kötetek egy ilyen kiszolgálóhoz vannak csatlakoztatva. A bérlők egy vagy több, kizárólag a különböző SKU-ban hozzárendelt kiszolgálói egységhez tartozhatnak.
+- **Hálózatkezelés**: az infrastruktúra-veremben lévő ügyfelek elkülönítése az ügyfél által hozzárendelt bérlői virtuális hálózatok használatával. A bérlő egyetlen ügyfélhez van rendelve. Egy ügyfél több Bérlővel is rendelkezhet. A bérlők hálózati elkülönítése tiltja a bérlők közötti hálózati kommunikációt az infrastruktúra-Stamp szintjén, még akkor is, ha a bérlők ugyanahhoz az ügyfélhez tartoznak.
+- **Tárolási összetevők**: a tároló virtuális gépeken keresztüli elkülönítés, amelyekhez tárolási kötetek vannak rendelve. A tárolási kötetek csak egy tároló virtuális géphez rendelhetők hozzá. A tároló virtuális gépek kizárólag egyetlen bérlőhöz vannak hozzárendelve a SAP HANA TDI Certified infrastruktúra-veremben. Ennek eredményeképpen a tároló virtuális géphez rendelt tárolási kötetek csak egy adott és kapcsolódó bérlőhöz érhetők el. Nem láthatók a különböző telepített bérlők között.
+- **Kiszolgáló vagy gazdagép**: nem oszlik meg A kiszolgálók vagy A gazdagépek az ügyfelek vagy a bérlők között. Egy ügyfélre telepített kiszolgáló vagy gazdagép egy olyan atomi operációs rendszer nélküli számítási egység, amely egyetlen bérlőhöz van rendelve. *Nincs* szükség hardver particionálásra vagy lágy particionálásra, ami a gazdagép vagy a kiszolgáló másik ügyféllel való megosztását eredményezheti. Az adott bérlő tároló virtuális géphez hozzárendelt tárolási kötetek egy ilyen kiszolgálóhoz vannak csatlakoztatva. A bérlők egy vagy több, kizárólag a különböző SKU-ban hozzárendelt kiszolgálói egységhez tartozhatnak.
 - Az Azure-beli (nagyméretű példányok) infrastruktúra-bélyegzőn belüli SAP HANA számos különböző bérlőt helyezünk üzembe és különítenek el egymástól a bérlői fogalmakkal a hálózatkezelés, a tárolás és a számítási szint alapján. 
 
 
@@ -36,10 +36,10 @@ Ezek az operációs rendszer nélküli kiszolgálói egységek csak SAP HANA fut
 
 Július 2019-én megkülönböztetjük a HANA nagy példányszámú bélyegek két különböző változatát és az üzemelő példányok helyét:
 
-- "3. változat" (Rev 3): Az ügyfél számára elérhetővé tett bélyegek a 2019 júliusa előtt lettek telepítve.
-- "4. változat" (Rev 4): Új Stamp-kialakítás, amely az Azure-beli virtuális gépek gazdagépei közelében van üzembe helyezve, és amely eddig a következő Azure-régiókban jelent meg:
+- "3. változat" (Rev 3): azok a bélyegek, amelyeket az ügyfél számára elérhetővé tettek a 2019 júliusa előtt.
+- "4. változat" (Rev 4): új Stamp-kialakítás, amely az Azure-beli virtuálisgép-gazdagépek közelében van üzembe helyezve, és amely eddig a következő Azure-régiókban jelent meg:
     -  USA 2. nyugati régiója 
-    -  East US 
+    -  USA keleti régiója 
     -  Nyugat-Európa
     -  Észak-Európa
 

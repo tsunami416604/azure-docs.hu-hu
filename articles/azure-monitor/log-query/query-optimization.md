@@ -6,25 +6,25 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/24/2019
-ms.openlocfilehash: 32eee22aa8e9b707d404cb85db6b7fae90d11987
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 02/25/2019
+ms.openlocfilehash: 521fd84e79196439ea220bd7ffa7cc6d0750f045
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589843"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648835"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Naplók optimalizálása Azure Monitorban
-Azure Monitor naplók az [Azure adatkezelő (ADX)](/azure/data-explorer/) használatával tárolják és kezelhetik a naplókat és a lekérdezéseket. Létrehozza, kezeli és karbantartja a ADX-fürtöket, és optimalizálja azokat a log Analysis számítási feladatokhoz. Amikor lekérdezést futtat, az optimalizált, és a munkaterületet tároló megfelelő ADX-fürtre irányítja át. A Azure Monitor-naplók és az Azure Adatkezelő számos automatikus lekérdezés-optimalizálási mechanizmust használ. Míg az automatikus optimalizálások jelentős lökést nyújtanak, bizonyos esetekben jelentősen növelheti a lekérdezési teljesítményt. Ez a cikk ismerteti a teljesítménnyel kapcsolatos szempontokat és számos technikát a kijavításához.
+Azure Monitor naplók az [Azure adatkezelő (ADX)](/azure/data-explorer/) használatával tárolják a naplófájlokat, és lekérdezéseket futtatnak az adatok elemzéséhez. Létrehozza, kezeli és karbantartja a ADX-fürtöket, és optimalizálja azokat a log Analysis számítási feladatokhoz. Amikor lekérdezést futtat, az optimalizált, és a munkaterület-adatok tárolására szolgáló megfelelő ADX-fürtre irányítja. A Azure Monitor-naplók és az Azure Adatkezelő számos automatikus lekérdezés-optimalizálási mechanizmust használ. Míg az automatikus optimalizálások jelentős lökést nyújtanak, bizonyos esetekben jelentősen növelheti a lekérdezési teljesítményt. Ez a cikk ismerteti a teljesítménnyel kapcsolatos szempontokat és számos technikát a kijavításához.
 
-A módszerek többsége gyakori az Azure-Adatkezelőon futtatott lekérdezéseknél, és Azure Monitor a naplókban, bár számos egyedi Azure Monitor naplózási szempontot ismertetünk. További Azure Adatkezelő optimalizálási tippek: [lekérdezés – ajánlott eljárások](/azure/kusto/query/best-practices).
+A módszerek többsége gyakori az Azure-Adatkezelő és Azure Monitor naplókon futtatott lekérdezések esetében, bár számos egyedi Azure Monitor naplózási szempontot ismertetünk. További Azure Adatkezelő optimalizálási tippek: [lekérdezés – ajánlott eljárások](/azure/kusto/query/best-practices).
 
 Az optimalizált lekérdezések a következőket teszik:
 
 - A lekérdezés-végrehajtás teljes időtartamának csökkentése a gyorsabb futtatással.
 - Kisebb eséllyel szabályozható vagy elutasított.
 
-Ügyeljen arra, hogy az ismétlődő és a feltört használathoz használt lekérdezések, például az irányítópultok és a Power BI számára is figyelmet szenteljenek. A nem hatékony lekérdezések hatása ezekben az esetekben jelentős.
+Ügyeljen arra, hogy az ismétlődő és a burst használatra használt lekérdezések, például az irányítópultok, a riasztások, a Logic Apps és a Power BI. A nem hatékony lekérdezések hatása ezekben az esetekben jelentős.
 
 ## <a name="query-performance-pane"></a>Lekérdezési teljesítmény ablaktábla
 Miután lefuttatott egy lekérdezést a Log Analyticsban, a lekérdezési eredmények fölötti lefelé mutató nyílra kattintva megtekintheti a lekérdezési teljesítmény panelt, amely a lekérdezés számos teljesítménymutatójának eredményét jeleníti meg. Ezeket a teljesítménymutatókat a következő szakaszban ismertetjük.
@@ -38,11 +38,11 @@ A következő lekérdezési teljesítménymutatók érhetők el minden végrehaj
 
 - [Összes CPU](#total-cpu): teljes számítási művelet, amely a lekérdezés feldolgozására szolgál az összes számítási csomóponton. Ez a módszer a számítástechnikai, elemzési és beolvasási időt jelöli. 
 
-- [Feldolgozott lekérdezéshez használt adatmennyiség](#data-used-for-query-processing): a lekérdezés feldolgozásához elért összesített adatmennyiség. A cél tábla mérete, a használt időtartomány, az alkalmazott szűrők és a hivatkozott oszlopok száma befolyásolja.
+- [Feldolgozott lekérdezéshez használt adatmennyiség](#data-used-for-processed-query): a lekérdezés feldolgozásához elért összesített adatmennyiség. A cél tábla mérete, a használt időtartomány, az alkalmazott szűrők és a hivatkozott oszlopok száma befolyásolja.
 
-- A [feldolgozott lekérdezés időbeli](#time-range-of-the-data-processed)időtartama: a lekérdezés feldolgozásához használt legújabb és legrégebbi adatmennyiség közötti különbség. Befolyásolja a lekérdezés explicit időtartománya és a szűrők alkalmazása. Az adatparticionálás miatt nagyobb lehet a explicit időtartománynál.
+- A [feldolgozott lekérdezés időbeli](#time-span-of-the-processed-query)időtartama: a lekérdezés feldolgozásához használt legújabb és legrégebbi adatmennyiség közötti különbség. A lekérdezéshez megadott explicit időtartomány befolyásolja.
 
-- A [feldolgozott adatmennyiség kora](#age-of-the-oldest-data-used): a jelenlegi és a legrégebbi, a lekérdezés feldolgozásához elért adatmennyiség. Ez nagy mértékben befolyásolja az beolvasás hatékonyságát.
+- A [feldolgozott adatmennyiség kora](#age-of-processed-data): a jelenlegi és a legrégebbi, a lekérdezés feldolgozásához elért adatmennyiség. Ez nagy mértékben befolyásolja az beolvasás hatékonyságát.
 
 - [Munkaterületek száma](#number-of-workspaces): az implicit vagy explicit kijelölés miatt a lekérdezés feldolgozásakor hány munkaterület érhető el.
 
@@ -123,7 +123,7 @@ Perf
 by CounterPath
 ```
 
-A CPU-használatot befolyásolhatja az olyan feltételek vagy kibővített oszlopok esetében is, amelyek intenzív számítástechnikai Igényűek. Minden olyan triviális karakterlánc-összehasonlítás, mint például az [EQUAL = =](/azure/kusto/query/datatypes-string-operators) és a [startswith](/azure/kusto/query/datatypes-string-operators) , nagyjából ugyanaz a CPU-hatás, míg a speciális szöveges találatok nagyobb hatással vannak. Pontosabban a has operátora hatékonyabb, hogy a tartalmazza az operátort. A karakterlánc-kezelési technikák miatt hatékonyabb a rövid sztringnél hosszabb karakterláncok megkeresése.
+A CPU-használatot befolyásolhatja az olyan feltételek vagy kibővített oszlopok esetében is, amelyek intenzív számítástechnikai Igényűek. Minden olyan triviális karakterlánc-összehasonlítás, mint például az [EQUAL = =](/azure/kusto/query/datatypes-string-operators) és a [startswith](/azure/kusto/query/datatypes-string-operators) , nagyjából ugyanaz a CPU-hatás, míg a speciális szöveges találatok nagyobb hatással vannak. Pontosabban a [has](/azure/kusto/query/datatypes-string-operators) operátora hatékonyabb, hogy a [tartalmazza](/azure/kusto/query/datatypes-string-operators) az operátort. A karakterlánc-kezelési technikák miatt hatékonyabb a rövid sztringnél hosszabb karakterláncok megkeresése.
 
 Az alábbi lekérdezések például a számítógép elnevezési házirendjétől függően hasonló eredményeket hoznak létre, a második pedig hatékonyabb:
 
@@ -151,7 +151,7 @@ Heartbeat
 > Ez a mutató csak a közvetlen fürtből származó CPU-t jeleníti meg. A többrégiós lekérdezésekben csak az egyik régiót jelöli. Több munkaterület lekérdezése esetén előfordulhat, hogy nem tartalmazza az összes munkaterületet.
 
 
-## <a name="data-used-for-query-processing"></a>A lekérdezések feldolgozásához használt adatértékek
+## <a name="data-used-for-processed-query"></a>Feldolgozott lekérdezéshez használt adatértékek
 
 A lekérdezés feldolgozásának kritikus tényezője a lekérdezett és a lekérdezések feldolgozásához használt adatmennyiség. Az Azure Adatkezelő agresszív optimalizációt használ, amely jelentősen csökkenti az adatmennyiséget más adatplatformokhoz képest. A lekérdezésben kritikus tényezők is vannak, amelyek befolyásolhatják a használt adatmennyiséget.
 Azure Monitor naplókban a **TimeGenerated** oszlop használható az adatindexeléshez. Ha a **TimeGenerated** értékeket úgy korlátozzák, hogy a lehető legkeskenyebbek legyenek, jelentős javulást eredményez a lekérdezési teljesítmény, mivel jelentősen korlátozza a feldolgozandó adatok mennyiségét.
@@ -209,7 +209,7 @@ SecurityEvent
 | summarize count(), dcount(EventID), avg(Level) by Computer  
 ```
 
-## <a name="time-range-of-the-data-processed"></a>A feldolgozott adattartomány
+## <a name="time-span-of-the-processed-query"></a>A feldolgozott lekérdezés időbeli időtartama
 
 Azure Monitor naplókban lévő összes napló particionálva van a **TimeGenerated** oszlop szerint. Az elérni kívánt partíciók száma közvetlenül kapcsolódik az időtartományhoz. Az időtartomány csökkentése a leghatékonyabb megoldás a gyors lekérdezés-végrehajtás biztosításához.
 
@@ -259,14 +259,10 @@ by Computer
 ) on Computer
 ```
 
-A mérés mindig nagyobb, mint a megadott tényleges idő. Ha például a lekérdezés szűrője 7 nap, a rendszer 7,5 vagy 8,1 napot vizsgálhat. Ennek az az oka, hogy a rendszer a változó méretű adattömbökbe particionálja az adathalmazokat. Annak biztosítása érdekében, hogy a rendszer az összes releváns rekordot megvizsgálja, megvizsgálja a teljes partíciót, amely több óráig is eltarthat, és akár egy napnál is hosszabb időt is igénybe vehet.
+> [!IMPORTANT]
+> Ez a kijelző nem érhető el a régiók közötti lekérdezéseknél.
 
-Több eset is létezik, ha a rendszer nem tud pontos mérési értéket biztosítani az időtartományhoz. Ez a legtöbb esetben fordul elő, amikor a lekérdezés egy napnál rövidebb ideig vagy több-munkaterület lekérdezésekben van.
-
-> [!NOTE]
-> Ez a kijelző csak a közvetlen fürtben feldolgozott adatfeldolgozást jeleníti meg. A többrégiós lekérdezésekben csak az egyik régiót jelöli. Több munkaterület lekérdezése esetén előfordulhat, hogy nem tartalmazza az összes munkaterületet.
-
-## <a name="age-of-the-oldest-data-used"></a>A legrégebbi felhasznált adatmennyiség kora
+## <a name="age-of-processed-data"></a>Feldolgozott adatmennyiség kora
 Az Azure Adatkezelő számos tárolási szintet használ: memóriabeli, helyi SSD-lemezeket és sokkal lassabb Azure-blobokat. Minél újabb adatról van szó, annál nagyobb a valószínűsége, hogy egy nagyobb teljesítményű, kisebb késéssel rendelkező, a lekérdezés időtartamát és a PROCESSZORt is csökkenti. Az adatoktól eltérő esetben a rendszer gyorsítótárat is tartalmaz a metaadatokhoz. Minél régebbiek az adatok, annál kisebb a metaadatok a gyorsítótárban.
 
 Míg egyes lekérdezések a régi adatok használatát igénylik, vannak olyan esetek, amikor a régi adatokat tévesen használják. Ez akkor fordul elő, ha a lekérdezések végrehajtása nem biztosít időtartományt a meta-adatokban, és nem minden táblázat hivatkozása tartalmazza a **TimeGenerated** oszlop szűrőjét. Ezekben az esetekben a rendszer megvizsgálja az adott táblázatban tárolt összes adattípust. Ha az adatok megőrzése hosszú, akkor a hosszú időtartományokra, így az adatmegőrzési időszakot megelőzően lévő adatokra is vonatkozhat.
@@ -289,7 +285,7 @@ A régiók közötti lekérdezés végrehajtása megköveteli, hogy a rendszer s
 Ha nincs valós ok az összes ilyen régió vizsgálatára, állítsa be úgy a hatókört, hogy kevesebb régióra kiterjedjen. Ha az erőforrás hatóköre kisebb, de még sok régiót használ, előfordulhat, hogy helytelen a konfiguráció. A naplókat és a diagnosztikai beállításokat például különböző régiókban lévő különböző munkaterületekre küldik, vagy több diagnosztikai beállítási konfiguráció is van. 
 
 > [!IMPORTANT]
-> Ha egy lekérdezés több régióban fut, a processzor és az adatmérések nem lesznek pontosak, és csak az egyik régióban jelennek meg a mérések.
+> Ez a kijelző nem érhető el a régiók közötti lekérdezéseknél.
 
 ## <a name="number-of-workspaces"></a>Munkaterületek száma
 A munkaterületek logikai tárolók, amelyek a naplók adatai elkülönítésére és felügyeletére szolgálnak. A háttérrendszer a kiválasztott régióban található fizikai fürtökön a munkaterület elhelyezéseit optimalizálja.
@@ -305,7 +301,7 @@ A lekérdezések régiók közötti és több fürtre kiterjedő végrehajtása 
 > Egyes többmunkaterületos helyzetekben a processzor-és adatmérések nem pontosak, és a mérések csak néhány munkaterületnek felelnek meg.
 
 ## <a name="parallelism"></a>Párhuzamosság
-Azure Monitor naplók az Azure Adatkezelő nagyméretű fürtjét használják a lekérdezések végrehajtásához. Ezek a fürtök mérete változó, ami akár 140 számítási csomópontot is igénybe vesz. A rendszer a munkaterület elhelyezési logikája és kapacitása alapján automatikusan méretezi a fürtöket.
+Azure Monitor naplók az Azure Adatkezelő nagyméretű fürtjét használják a lekérdezések futtatásához, és ezek a fürtök mérettől függően változnak. A rendszer a munkaterület elhelyezési logikája és kapacitása alapján automatikusan méretezi a fürtöket.
 
 A lekérdezés hatékony végrehajtásához particionálni és terjeszteni kell a számítási csomópontokat a feldolgozáshoz szükséges adatok alapján. Vannak olyan helyzetek, amikor a rendszer nem tudja ezt hatékonyan végrehajtani. Ez hosszú időtartamot eredményezhet a lekérdezésben. 
 

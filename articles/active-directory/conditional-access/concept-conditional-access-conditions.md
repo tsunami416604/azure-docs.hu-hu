@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fe24e4a2b25b1ef3f0da2b1a5e1c0f29251df1
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192232"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620729"
 ---
 # <a name="conditional-access-conditions"></a>Feltételes hozzáférés: feltételek
 
@@ -52,7 +52,9 @@ A hely feltételként való konfigurálásakor a szervezetek dönthetnek úgy, h
 
 Ha **bármilyen helyet**tartalmaz, ez a beállítás az interneten található, nem csak az elnevezett helyeket konfigurált IP-címeket tartalmazza. **Bármely hely**kiválasztásakor a rendszergazdák dönthetnek úgy, hogy kizárják az **összes megbízható** vagy **kiválasztott helyet**.
 
-Előfordulhat például, hogy egyes szervezetek nem igénylik a többtényezős hitelesítést, ha a felhasználók megbízható helyen, például a fizikai központban csatlakoznak a hálózathoz. A rendszergazdák olyan szabályzatot hozhatnak létre, amely bármilyen helyet tartalmaz, de kizárja a központ hálózatának kiválasztott helyeit.
+Előfordulhat például, hogy egyes szervezetek nem igénylik a többtényezős hitelesítést, ha a felhasználók megbízható helyen, például a fizikai központban csatlakoznak a hálózathoz. A rendszergazdák létrehozhatnak egy olyan szabályzatot, amely bármilyen helyet tartalmaz, de kizárja a kijelölt helyeket a saját főhadiszállása hálózatához.
+
+A helyekkel kapcsolatos további információkért tekintse meg a következő témakört: a [feltételes hozzáférés Azure Active Directory a hely feltétele](location-condition.md).
 
 ## <a name="client-apps-preview"></a>Ügyfélalkalmazások (előzetes verzió)
 
@@ -64,9 +66,21 @@ A feltételes hozzáférési szabályzatok alapértelmezés szerint a modern hit
    - Modern hitelesítési ügyfelek
       - Ez a beállítás olyan alkalmazásokat is tartalmaz, mint például az Office asztali és a telefonos alkalmazások.
    - Exchange ActiveSync-ügyfelek
+      - Alapértelmezés szerint ez magában foglalja az Exchange ActiveSync (EAS) protokoll használatát. A **házirend alkalmazása csak a támogatott platformokra** lehetőség választása esetén a támogatott platformok, például az iOS, az Android és a Windows rendszerre lesznek korlátozva.
       - Ha a házirend letiltja az Exchange ActiveSync használatát, az érintett felhasználó egyetlen karanténba helyezett e-mailt fog kapni. Ez az e-mail-cím tartalmazza a blokkolásuk okát, és ha tud, szervizelési utasításokat is tartalmaz.
    - Más ügyfelek
-      - Ez a beállítás olyan ügyfeleket tartalmaz, amelyek alapszintű/örökölt hitelesítési protokollokat használnak, beleértve az IMAP, a MAPI, a POP, az SMTP és a régi Office-alkalmazásokat, amelyek nem támogatják a modern
+      - Ez a beállítás olyan ügyfeleket tartalmaz, amelyek olyan alapszintű/örökölt hitelesítési protokollokat használnak, amelyek nem támogatják a modern hitelesítést.
+         - Hitelesített SMTP – a POP és az IMAP-ügyfél által használt e-mail üzenetek küldésére használható.
+         - Automatikus észlelés – az Outlook és az EAS-ügyfelek által használt postaládák keresése és kapcsolódás az Exchange Online-ban.
+         - Exchange Online PowerShell – az Exchange Online-hoz való kapcsolódáshoz használt távoli PowerShell-lel. Ha letiltja az Exchange Online PowerShell alapszintű hitelesítését, a kapcsolódáshoz az Exchange Online PowerShell-modult kell használnia. Útmutatásért lásd: [Kapcsolódás az Exchange Online powershellhez a multi-Factor Authentication használatával](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
+         - Exchange Web Services (EWS) – az Outlook, az Outlook for Mac és a harmadik féltől származó alkalmazások által használt programozási felület.
+         - IMAP4 – az IMAP e-mail ügyfélprogramok által használt.
+         - MAPI HTTP-n keresztül (MAPI/HTTP) – az Outlook 2010-es és újabb verzióiban használt.
+         - Offline címjegyzék (OAB) – az Outlook által letöltött és használt címlista-gyűjtemények másolata.
+         - Outlook Anywhere (HTTP-n keresztüli RPC) – az Outlook 2016-es és korábbi verzióiban használatos.
+         - Outlook-szolgáltatás – a Windows 10 rendszerhez készült mail és naptár alkalmazás használja.
+         - POP3 – a POP e-mail ügyfélprogramok által használt.
+         - Jelentéskészítési webszolgáltatások – a Jelentésadatok beolvasására szolgálnak az Exchange Online-ban.
 
 Ezeket a feltételeket általában a felügyelt eszköz megkövetelése, a régi hitelesítés blokkolása és a webalkalmazások blokkolása, de a mobil-vagy asztali alkalmazások engedélyezése esetén használják.
 
@@ -139,7 +153,7 @@ Ez a beállítás hatással van a következő Mobile apps és asztali ügyfelek 
 | Outlook 2016, Outlook 2013 (modern hitelesítéssel), Skype vállalati verzió (modern hitelesítéssel) | Office 365 Exchange Online | Windows 8,1, Windows 7 |
 | Outlook Mobile alkalmazás | Office 365 Exchange Online | Android, iOS |
 | Power BI alkalmazás | Power BI szolgáltatás | Windows 10, Windows 8,1, Windows 7, Android és iOS |
-| Skype Vállalati verzió | Office 365 Exchange Online| Android, IOS |
+| Skype Vállalati verzió | Office 365 Exchange Online| Android, iOS |
 | Visual Studio Team Services-alkalmazás | Visual Studio Team Services | Windows 10, Windows 8,1, Windows 7, iOS és Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync-ügyfelek

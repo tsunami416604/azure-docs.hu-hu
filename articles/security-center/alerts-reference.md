@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2020
+ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 5453793c7e1bb1ef766939d2e7fdf32a1ac1ec72
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 01397ad078bc741977c4928f67d1834f05e1db8d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77499945"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623968"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások – útmutató
 
@@ -33,7 +33,7 @@ A riasztások táblázat alatti táblázat a riasztások szándékának kategori
 
 ## <a name="alerts-windows"></a>Windows rendszerű gépekre vonatkozó riasztások
 
-[További részletek és megjegyzések](security-center-alerts-iaas.md#windows-)
+[További részletek és megjegyzések](threat-protection.md#windows-machines)
 
 |Riasztás|Leírás|Szándék (további[információ](#intentions))|
 |----|----|:----:|
@@ -124,7 +124,7 @@ A riasztások táblázat alatti táblázat a riasztások szándékának kategori
 
 ## <a name="alerts-linux"></a>Riasztások Linux rendszerű gépekhez
 
-[További részletek és megjegyzések](security-center-alerts-iaas.md#linux-)
+[További részletek és megjegyzések](threat-protection.md#linux-machines)
 
 |Riasztás|Leírás|Szándék (további[információ](#intentions))|
 |----|----|:----:|
@@ -213,7 +213,7 @@ A riasztások táblázat alatti táblázat a riasztások szándékának kategori
 
 ## <a name="alerts-azureappserv"></a>Riasztások Azure App Service
 
-[További részletek és megjegyzések](security-center-alerts-compute.md#azure-app-service-)
+[További részletek és megjegyzések](threat-protection.md#app-services)
 
 |Riasztás|Leírás|Szándék (további[információ](#intentions))|
 |----|----|:----:|
@@ -238,7 +238,7 @@ A riasztások táblázat alatti táblázat a riasztások szándékának kategori
 
 ## <a name="alerts-akscluster"></a>Tárolók riasztásai – Azure Kubernetes Service-fürtök
 
-[További részletek és megjegyzések](security-center-alerts-compute.md#azure-containers-)
+[További részletek és megjegyzések](threat-protection.md#azure-containers)
 
 |Riasztás|Leírás|Szándék (további[információ](#intentions))|
 |----|----|:----:|
@@ -253,7 +253,7 @@ A riasztások táblázat alatti táblázat a riasztások szándékának kategori
 
 ## <a name="alerts-containerhost"></a>Tárolók riasztásai – gazdagép szintje
 
-[További részletek és megjegyzések](security-center-alerts-compute.md#azure-containers-)
+[További részletek és megjegyzések](threat-protection.md#azure-containers)
 
 |Riasztás|Leírás|Szándék (további[információ](#intentions))|
 |----|----|:----:|
@@ -269,7 +269,7 @@ A riasztások táblázat alatti táblázat a riasztások szándékának kategori
 
 ## <a name="alerts-sql-db-and-warehouse"></a>Riasztások SQL Database és SQL Data Warehouse
 
-[További részletek és megjegyzések](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
+[További részletek és megjegyzések](threat-protection.md#data-sql)
 
 |Riasztás|Leírás|Szándék (további[információ](#intentions))|
 |----|----|:----:|
@@ -287,7 +287,7 @@ A riasztások táblázat alatti táblázat a riasztások szándékának kategori
 
 ## <a name="alerts-azurestorage"></a>Azure Storage-riasztások
 
-[További részletek és megjegyzések](security-center-alerts-data-services.md#azure-storage-)
+[További részletek és megjegyzések](threat-protection.md#azure-storage)
 
 |Riasztás|Leírás|Szándék (további[információ](#intentions))|
 |----|----|:----:|
@@ -308,7 +308,7 @@ A riasztások táblázat alatti táblázat a riasztások szándékának kategori
 
 ## <a name="alerts-azurecosmos"></a>Riasztások Azure Cosmos DB (előzetes verzió)
 
-[További részletek és megjegyzések](security-center-alerts-data-services.md#azure-cosmos-db)
+[További részletek és megjegyzések](threat-protection.md#cosmos-db)
 
 |Riasztás|Leírás|Szándék (további[információ](#intentions))|
 |----|----|:----:|
@@ -319,7 +319,7 @@ A riasztások táblázat alatti táblázat a riasztások szándékának kategori
 
 ## <a name="alerts-azurenetlayer"></a>Riasztások az Azure hálózati réteghez
 
-[További részletek és megjegyzések](security-center-alerts-service-layer.md#azure-network-layer)
+[További részletek és megjegyzések](threat-protection.md#network-layer)
 
 |Riasztás|Leírás|Szándék (további[információ](#intentions))|
 |----|----|:----:|
@@ -344,7 +344,7 @@ A riasztások táblázat alatti táblázat a riasztások szándékának kategori
 
 ## <a name="alerts-azureresourceman"></a>Riasztások Azure Resource Manager (előzetes verzió)
 
-[További részletek és megjegyzések](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
+[További részletek és megjegyzések](threat-protection.md#management-layer)
 
 |Riasztás|Leírás|Szándék (további[információ](#intentions))|
 |----|----|:----:|
@@ -363,7 +363,7 @@ A riasztások táblázat alatti táblázat a riasztások szándékának kategori
 
 ## <a name="alerts-azurekv"></a>Riasztások Azure Key Vault (előzetes verzió)
 
-[További részletek és megjegyzések](security-center-alerts-service-layer.md#azure-keyvault)
+[További részletek és megjegyzések](threat-protection.md#azure-keyvault)
 
 |Riasztás|Leírás|Szándék (további[információ](#intentions))|
 |----|----|:----:|
@@ -381,7 +381,7 @@ A riasztások táblázat alatti táblázat a riasztások szándékának kategori
 
 ## <a name="alerts-azureddos"></a>Riasztások Azure DDoS Protection
 
-[További részletek és megjegyzések](security-center-alerts-integration.md#azure-ddos)
+[További részletek és megjegyzések](threat-protection.md#azure-ddos)
 
 |Riasztás|Leírás|Szándék (további[információ](#intentions))|
 |----|----|:----:|
@@ -418,6 +418,7 @@ A Security Center támogatott kill Chain-leképezések a következő táblázatb
 ## <a name="next-steps"></a>Következő lépések
 A riasztásokkal kapcsolatos további tudnivalókért tekintse meg a következőket:
 
+* [Veszélyforrások elleni védelem Azure Security Center](threat-protection.md)
 * [Biztonsági riasztások az Azure Security Centerben](security-center-alerts-overview.md)
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)
 * [Biztonsági riasztások és javaslatok exportálása (előzetes verzió)](continuous-export.md)

@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 4efdc47e65f0f29f74f1477b02efdc6b8767ffb2
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 401019c537cb0eb51fa6002637e170a79210f7d2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264763"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617636"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Adatcsere (előzetes verzió) észlelése az adatkészleteken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -61,7 +61,7 @@ Létrehozhat egy adatkészlet-figyelőt az adathalmaz új adateltolódásának �
 
 Elméletileg három fő forgatókönyv áll rendelkezésre az adatkészlet-figyelők beállításához Azure Machine Learningban.
 
-Alkalmazási helyzet | Leírás
+Forgatókönyv | Leírás
 ---|---
 A modellnek a modell betanítási adatokból való eltolódására szolgáló adatok figyelése | Ennek a forgatókönyvnek az eredményei a modell pontosságára szolgáló proxy figyelésére használhatók, mivel a modell pontossága csökkenti, ha a kiszolgált adatok a betanítási adatokból származnak.
 Idősorozat-adatkészlet figyelése egy korábbi időszakból származó eltolódáshoz. | Ez a forgatókönyv általánosabb, és a modell kiépítése során a felsőbb rétegbeli vagy az ahhoz kapcsolódó adatkészletek figyelésére használható.  A célként megadott adatkészletnek időbélyeg-oszloptal kell rendelkeznie, míg az alapkonfiguráció adatkészlete bármely táblázatos adatkészlet lehet, amely közösen tartalmazza a célként megadott adatkészletet.
@@ -135,7 +135,7 @@ Ez a táblázat az adatkészlet-figyelő alapszintű beállításait tartalmazza
 | Alapterv-adatkészlet | Táblázatos adatkészlet, amely a célként megadott adatkészlet időbeli összehasonlításához használt alapkonfigurációként fog megjelenni. | Az alapadatkészletnek a célként megadott adatkészlettel közös szolgáltatásokkal kell rendelkeznie. Az alaptervet általában a modell betanítási adatkészletére vagy a célként megadott adatkészlet egy szeletére kell beállítani. | Nem |
 | Cél adatkészlet | A táblázatos adatkészlet, amely az adateltolódás elemzésére szolgáló időbélyeg-oszloppal van megadva. | A célként megadott adatkészletnek közös szolgáltatásokkal kell rendelkeznie az alapadatkészlet esetében, és `timeseries` adatkészletnek kell lennie, amelybe a rendszer hozzáfűzi az új adatokat. A célként megadott adatkészletben lévő korábbi adatokat elemezni lehet, vagy az új adatokat lehet figyelni. | Nem | 
 | Frequency | A folyamat feladatainak beütemezett és a korábbi adatok elemzéséhez használt gyakoriság, ha backfill fut. A beállítások a következők: naponta, hetente vagy havonta. | Módosítsa ezt a beállítást úgy, hogy az az alaptervhez hasonló adatméretet tartalmazzon. | Nem | 
-| Jellemzők | Azoknak a szolgáltatásoknak a listája, amelyeket az adateltolódás az idő múlásával elemezni fog. | A modell kimeneti funkciójának beállítása a koncepciók eltolódásának mérésére. Ne tartalmazzon olyan funkciókat, amelyek természetesen az idő függvényében sodródnak (hónap, év, index stb.). A szolgáltatások listájának módosítása után a backfill és a meglévő adatdrift-figyelő is megadható. | Igen | 
+| Szolgáltatások | Azoknak a szolgáltatásoknak a listája, amelyeket az adateltolódás az idő múlásával elemezni fog. | A modell kimeneti funkciójának beállítása a koncepciók eltolódásának mérésére. Ne tartalmazzon olyan funkciókat, amelyek természetesen az idő függvényében sodródnak (hónap, év, index stb.). A szolgáltatások listájának módosítása után a backfill és a meglévő adatdrift-figyelő is megadható. | Igen | 
 | Számítási cél | Azure Machine Learning számítási célt az adatkészlet-figyelő feladatok futtatásához. | | Igen | 
 
 ### <a name="monitor-settings"></a>Beállítások figyelése
@@ -144,9 +144,9 @@ Ezek a beállítások az ütemezett adatkészlet-figyelő folyamathoz tartoznak,
 
 | Beállítás | Leírás | Tippek | Változtatható | 
 | ------- | ----------- | ---- | ------- |
-| Engedélyezés | Az adatkészlet-figyelő folyamatának ütemezett engedélyezése vagy letiltása | Tiltsa le az ütemtervet, hogy elemezze a korábbi adatértékeket a backfill beállítással. Az adatkészlet-figyelő létrehozása után is engedélyezhető. | Igen | 
+| Bekapcsolás | Az adatkészlet-figyelő folyamatának ütemezett engedélyezése vagy letiltása | Tiltsa le az ütemtervet, hogy elemezze a korábbi adatértékeket a backfill beállítással. Az adatkészlet-figyelő létrehozása után is engedélyezhető. | Igen | 
 | Késés | Az adatkészletbe való beérkezéshez szükséges idő (óra). Ha például három napot vesz igénybe az adatkészletet tároló SQL-ADATBÁZISba való beérkezési adat, a késést állítsa 72-re. | Az adatkészlet-figyelő létrehozása után nem módosítható | Nem | 
-| E-mail-címek | A riasztások e-mail-címei az adateltolódás százalékos küszöbértékének megszegése alapján. | Az e-maileket Azure Monitor küldi el a rendszer. | Igen | 
+| E-mail cím | A riasztások e-mail-címei az adateltolódás százalékos küszöbértékének megszegése alapján. | Az e-maileket Azure Monitor küldi el a rendszer. | Igen | 
 | Küszöbérték | Az e-mail riasztások százalékos küszöbértéke az e-mailek küldéséhez. | További riasztások és események a munkaterület társított Application Insights erőforrásának számos más metrikáján is megadhatók. | Igen | 
 
 ### <a name="backfill-settings"></a>Backfill-beállítások
@@ -156,7 +156,7 @@ Ezek a beállítások a múltbeli adatok backfill futtatására szolgálnak az a
 | Beállítás | Leírás | Tippek |
 | ------- | ----------- | ---- |
 | Kezdő dátum | A backfill-feladathoz tartozó kezdési dátum. | | 
-| Záródátum | A backfill-feladathoz tartozó befejezési dátum. | A befejezési dátum nem lehet több, mint 31 * gyakorisági egység a kezdő dátumtól. Egy meglévő adatkészlet-figyelőn a metrikák visszatöltötte a korábbi adatok elemzéséhez, illetve a metrikák a frissített beállításokkal való lecseréléséhez. |
+| Befejező dátum | A backfill-feladathoz tartozó befejezési dátum. | A befejezési dátum nem lehet több, mint 31 * gyakorisági egység a kezdő dátumtól. Egy meglévő adatkészlet-figyelőn a metrikák visszatöltötte a korábbi adatok elemzéséhez, illetve a metrikák a frissített beállításokkal való lecseréléséhez. |
 
 ## <a name="create-dataset-monitors"></a>Adatkészlet-figyelők létrehozása 
 
@@ -173,7 +173,7 @@ A munkaterület funkciójának megerősítése után navigáljon a Studio kezdő
 
 Kattintson a **+ figyelő létrehozása** gombra, és folytassa a varázslót **a Tovább gombra kattintva.**
 
-![Varázsló](./media/how-to-monitor-datasets/wizard.png)
+![varázsló](./media/how-to-monitor-datasets/wizard.png)
 
 Az eredményül kapott adatkészlet figyelője megjelenik a listában. Válassza ki, hogy megnyissa a figyelő részleteket tartalmazó lapját.
 
@@ -307,7 +307,7 @@ Meglévő műveleti csoportot is használhat, vagy létrehozhat egy újat, hogy 
 
 ![Új műveleti csoport](./media/how-to-monitor-datasets/action-group.png)
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Korlátozások és ismert problémák:
 
@@ -319,13 +319,13 @@ Korlátozások és ismert problémák:
 
 Az adatkészletben lévő oszlopok vagy szolgáltatások a következő táblázatban szereplő feltételek alapján kategorikusnak vagy numerikusnak minősülnek. Ha a szolgáltatás nem felel meg az alábbi feltételeknek – például egy string típusú oszlop, amely > 100 egyedi értéket tartalmaz – a szolgáltatás az adateltolódási algoritmusból kerül eldobásra, de a rendszer továbbra is felhasználja a fájlt. 
 
-| Szolgáltatás típusa | Data type | Állapot | Korlátozások | 
+| Szolgáltatás típusa | Adattípus | Állapot | Korlátozások | 
 | ------------ | --------- | --------- | ----------- |
 | Kategorikus | karakterlánc, bool, int, float | A szolgáltatásban található egyedi értékek száma kevesebb, mint 100, és a sorok száma kevesebb, mint 5%. | A Null érték a saját kategóriája. | 
 | Numerikus | int, float | A szolgáltatás értékei numerikus adattípussal rendelkeznek, és nem felelnek meg a kategorikus funkció feltételének. | A szolgáltatás el lett dobva, ha az értékek 15%-a null értékű >. | 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Hozzon létre egy adatkészlet-figyelőt a [Azure Machine learning Studióban](https://ml.azure.com) vagy a [Python-jegyzetfüzetben](https://aka.ms/datadrift-notebook) .
+* Hozzon létre egy adatkészlet-figyelőt a [Azure Machine learning Studióban](https://ml.azure.com) vagy a [Python-jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb) .
 * Ismerje meg, hogyan állíthatja be az adateltolódást az [Azure Kubernetes szolgáltatásban üzembe helyezett modelleken](how-to-monitor-data-drift.md).
 * Adatkészlet-drift figyelők beállítása az [Event Grid](how-to-use-event-grid.md)használatával. 

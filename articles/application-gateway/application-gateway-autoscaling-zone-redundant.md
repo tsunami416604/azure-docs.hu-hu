@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/09/2019
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 8fe38870f593dd57d8e4dad5601ea404e99c3d10
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 39b7e94747f556b61f661968f7126d122156d9cf
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031560"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622013"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikusan skálázó és zónaredundáns Application Gateway v2 
 
@@ -26,8 +26,8 @@ Az új v2 SKU a következő fejlesztéseket tartalmazza:
   A zóna redundancia csak akkor érhető el, ha az Azure-zónák elérhetők. Más régiókban a többi funkció is támogatott. További információ: [Mi a Availability Zones az Azure-ban?](../availability-zones/az-overview.md#services-support-by-region)
 - **Statikus VIP**: a Application Gateway v2 SKU kizárólag a statikus VIP-típust támogatja. Ez biztosítja, hogy az Application gatewayhez társított virtuális IP-cím ne változzon az üzemelő példány életciklusa alatt, még újraindítás után is.  Nem létezik statikus virtuális IP-cím a v1-ben, ezért az Application Gateway URL-címe helyett a tartománynév-útválasztáshoz használt IP-címet kell használnia az Application Gateway használatával App Services.
 - **Fejléc újraírása**: a Application Gateway lehetővé teszi a HTTP-kérések és a válasz-fejlécek hozzáadását, eltávolítását vagy frissítését v2 SKU-val. További információt a HTTP- [fejlécek újraírása a Application Gatewaysal](rewrite-http-headers.md) című témakörben talál.
-- **Key Vault Integration (előzetes verzió)** : a Application Gateway v2 támogatja a https-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványok Key Vault (nyilvános előzetes verzió) integrációját. További információ: SSL- [lezárás Key Vault tanúsítványokkal](key-vault-certs.md).
-- **Azure Kubernetes Service beáramlási vezérlő (előzetes verzió)** : a Application Gateway v2 beáramló vezérlő lehetővé teszi, hogy az Azure Application Gateway használható legyen a bemenő forgalomként egy Azure Kubernetes szolgáltatás (ak) néven, az AK-fürt. További információkért tekintse meg a [dokumentációs oldalt](https://azure.github.io/application-gateway-kubernetes-ingress/).
+- **Key Vault integráció**: a Application Gateway v2 támogatja az Key Vault-integrációt a https-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványokhoz. További információ: SSL- [lezárás Key Vault tanúsítványokkal](key-vault-certs.md).
+- **Azure Kubernetes-szolgáltatás bejövő adatkezelője**: a Application Gateway v2 beáramló vezérlő lehetővé teszi, hogy az azure-Application Gateway használható legyen a bejövő forgalomként egy Azure Kubernetes szolgáltatás (ak) számára, az úgynevezett AK-fürt. További információ: [Mi az a Application Gateway beáramló vezérlő?](ingress-controller-overview.md).
 - **Teljesítménybeli fejlesztések**: a v2 SKU a standard/WAF SKU-hoz képest akár 5x-ös nagyobb SSL-kiszervezési teljesítményt nyújt.
 - **Gyorsabb üzembe helyezés és frissítés ideje** A v2 SKU gyorsabb üzembe helyezést és frissítési időt biztosít a standard/WAF SKU-hoz képest. Ez magában foglalja a WAF konfigurációs változásait is.
 
