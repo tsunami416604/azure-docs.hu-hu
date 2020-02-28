@@ -1,18 +1,16 @@
 ---
-title: Az Azure Log Analytics Agent kezelése | Microsoft Docs
+title: Az Azure Log Analytics-ügynök kezelése
 description: Ez a cikk azokat a különböző felügyeleti feladatokat ismerteti, amelyeket általában a gépen üzembe helyezett Log Analytics Windows vagy Linux rendszerű ügynök életciklusa során fog elvégezni.
-ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 7e9725c2a33bd63b7ce6751f346da17eb68fe6f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364781"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668689"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>A Windows és a Linux Log Analytics ügynökének kezelése és karbantartása
 
@@ -34,7 +32,7 @@ Ha a Windows rendszerű virtuális gépen lévő ügynököt a Log Analytics vir
 
 Az alábbi lépések végrehajtásával letöltheti a Windows-ügynök legújabb verzióját a Log Analytics munkaterületről.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek**lehetőséget.
 
@@ -58,7 +56,7 @@ Az alábbi lépések végrehajtásával letöltheti a Windows-ügynök legújabb
 
 4. A **Microsoft monitoring Agent telepítése** **párbeszédpanelen kattintson az Elfogadom gombra a** licencszerződés elfogadásához.
 
-5. A **Microsoft Monitoring Agent beállítása** párbeszédpanelen kattintson a **Frissítés** lehetőségre. Az állapotlapon megjelenik a frissítés állapota.
+5. A **Microsoft monitoring Agent telepítése** párbeszédpanelen kattintson a **frissítés**elemre. Az állapot lapon a frissítés állapota látható.
 
 6. Ha a **Microsoft monitoring Agent konfigurálása sikeresen befejeződött.** lap jelenik meg, kattintson a **Befejezés**gombra.
 
@@ -68,7 +66,7 @@ Az alábbi lépések végrehajtásával letöltheti a Windows-ügynök legújabb
 
 2. Az ügynök telepítési fájljainak kibontásához egy rendszergazda jogú parancssorból futtassa `MMASetup-<platform>.exe /c`, és a rendszer kérni fogja a fájlok kinyerésének elérési útját. Másik lehetőségként megadhatja az elérési utat a `MMASetup-<platform>.exe /c /t:<Full Path>`argumentumok átadásával.
 
-3. Futtassa a következő parancsot, amelyben a D:\ a frissítési naplófájl helye.
+3. Futtassa a következő parancsot, ahol a D:\ a frissítési naplófájl helye.
 
     ```dos
     setup.exe /qn /l*v D:\logs\AgentUpgrade.log AcceptEndUserLicenseAgreement=1

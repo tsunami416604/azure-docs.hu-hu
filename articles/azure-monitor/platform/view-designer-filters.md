@@ -1,18 +1,17 @@
 ---
 title: Szűrők Azure Monitor nézetekben | Microsoft Docs
 description: A Azure Monitor nézetben lévő szűrők lehetővé teszik a felhasználók számára, hogy egy adott tulajdonság értékét a nézet módosítása nélkül szűrhetik.  Ez a cikk azt ismerteti, hogyan használható egy szűrő, és hogyan adhat hozzá egyet egyéni nézethez.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: 03950c7c87f659c5d1c032b5d3c1f74d136697c7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931982"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658574"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Szűrők Azure Monitor nézetekben
 A [Azure monitor nézetben](view-designer.md) lévő **szűrők** lehetővé teszik a felhasználók számára, hogy egy adott tulajdonság értékét a nézet módosítása nélkül szűrhetik.  Például engedélyezheti a nézet felhasználói számára, hogy csak egy adott számítógépről vagy számítógépekről származó adatokra szűrje a nézetet.  Egyetlen nézetben több szűrőt is létrehozhat, így a felhasználók több tulajdonság alapján szűrhetők.  Ez a cikk azt ismerteti, hogyan használható egy szűrő, és hogyan adhat hozzá egyet egyéni nézethez.
@@ -34,7 +33,7 @@ Ha eltávolít egy szűrő összes értékét, akkor a szűrő többé nem lesz 
 
 Hozzon létre egy szűrőt a **szűrők** lapról a [nézet szerkesztésekor](view-designer.md).  A szűrő globális a nézet számára, és a nézet összes részére érvényes.  
 
-![Szűrési beállítások](media/view-designer-filters/filters-settings.png)
+![Szűrés beállításai](media/view-designer-filters/filters-settings.png)
 
 A következő táblázat a szűrők beállításait ismerteti.
 
@@ -51,8 +50,8 @@ Az alábbi táblázat néhány példát tartalmaz a gyakori szűrőkre.
 | Mezőnév | Értékek lekérdezése | Címke |
 |:--|:--|:--|
 | Computer   | Szívverés &#124; különböző számítógépének &#124; rendezése számítógép ASC szerint | Számítógépek |
-| EventLevelName | Esemény &#124; eltérő EventLevelName | Súlyosság |
-| SeverityLevel | Syslog &#124; – különböző SeverityLevel | Súlyosság |
+| EventLevelName | Event &#124; distinct EventLevelName | Severity |
+| Súlyossági szint | Syslog &#124; – különböző SeverityLevel | Severity |
 | SvcChangeType | Konfigurációváltozás &#124; – eltérő svcChangeType | ChangeType |
 
 

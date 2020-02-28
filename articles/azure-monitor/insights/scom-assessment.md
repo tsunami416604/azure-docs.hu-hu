@@ -1,18 +1,17 @@
 ---
 title: Optimalizálja System Center Operations Manager-környezetét az Azure Log Analyticstal | Microsoft Docs
 description: A System Center Operations Manager Health Check megoldással rendszeres időközönként felmérhetővé teheti a környezetek kockázatait és állapotát.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 5ec0f181d9d22e9e1183a59a4fbd7d77e658862e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c8add2acb8f263c54f6014699f792380d256d9b0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402869"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663470"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>A környezet optimalizálása a System Center Operations Manager Health Check (előzetes verzió) megoldással
 
@@ -58,7 +57,7 @@ A System Center Operations Manager Health Check-megoldás az alábbi forrásokb�
 * Registry
 * Windows Management Instrumentation (WMI)
 * Eseménynapló
-* Fájladatok
+* Fájlinformációk
 * Közvetlenül a Operations Manager PowerShell-és SQL-lekérdezések használatával a megadott felügyeleti kiszolgálóról.  
 
 Az adatok gyűjtése a felügyeleti kiszolgálón történik, és hét naponta Log Analytics továbbítva.  
@@ -83,7 +82,7 @@ A folytatás előtt a futtató fióknak a következő követelményeknek kell me
 4. Az **Általános tulajdonságok** lapon válassza a **Windows** lehetőséget a **futtató fiók típusa:** listában.
 5. Írjon be egy megjelenítendő nevet a **megjelenítendő név** szövegmezőbe, és szükség esetén adjon meg egy leírást a **Leírás** mezőben, majd kattintson a **tovább**gombra.
 6. A **terjesztés biztonsága** **lapon válassza a biztonságosabb lehetőséget**.
-7. Kattintson a **Create** (Létrehozás) gombra.  
+7. Kattintson a **Létrehozás** gombra.  
 
 Most, hogy létrejött a futtató fiók, meg kell céloznia a felügyeleti kiszolgálókat a felügyeleti csoportban, és egy előre definiált futtató profilhoz kell rendelni, hogy a munkafolyamatok a hitelesítő adatok használatával fussanak.  
 
@@ -148,7 +147,7 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 A System Center Operations Manager Health Check-megoldás felügyeleti csomagja tartalmazza a *Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya*nevű szabályt. Ez a szabály felelős az állapot-ellenőrzés futtatásához. A szabály engedélyezéséhez és a gyakoriság konfigurálásához használja az alábbi eljárásokat.
 
-Alapértelmezés szerint a Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya le van tiltva. Az állapot-ellenőrzési szolgáltatás futtatásához engedélyeznie kell a szabályt egy felügyeleti kiszolgálón. Hajtsa végre a következő lépéseket.
+Alapértelmezés szerint a Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya le van tiltva. Az állapot-ellenőrzési szolgáltatás futtatásához engedélyeznie kell a szabályt egy felügyeleti kiszolgálón. Kövesse az alábbi lépéseket.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>Egy adott felügyeleti kiszolgáló szabályának engedélyezése
 
@@ -273,7 +272,7 @@ Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létreh
 
 *Ha a System Center Operations Manager Health Check-megoldás hozzáadása után egy másik kiszolgáló is fel van derítve, a rendszer ellenőrzi?* Igen, a felderítés után a rendszer alapértelmezés szerint minden hét nap múlva bejelöli a következőt:.
 
-*Mi az adatgyűjtés folyamatának neve?* AdvisorAssessment. exe
+*Mi az adatgyűjtés folyamatának neve?* AdvisorAssessment.exe
 
 *Hová fut a AdvisorAssessment. exe folyamat?* A AdvisorAssessment. exe azon felügyeleti kiszolgáló HealthService folyamatán fut, amelyen az állapot-ellenőrzési szabály engedélyezve van. Ezzel a folyamattal a teljes környezet felderítése a távoli adatgyűjtésen keresztül érhető el.
 

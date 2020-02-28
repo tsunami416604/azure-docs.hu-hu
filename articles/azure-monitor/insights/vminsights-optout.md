@@ -1,18 +1,17 @@
 ---
 title: Figyelés letiltása Azure Monitor for VMsban (előzetes verzió) | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan lehet leállítani a virtuális gépek figyelését Azure Monitor for VMsban.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/05/2018
-ms.openlocfilehash: b2d58b501429a47c3011fc727f756edeeb7775e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb4347e610920380792a17bb620e6d97a7d72505
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399308"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669505"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms-preview"></a>Virtuális gépek figyelésének letiltása Azure Monitor for VMsban (előzetes verzió)
 
@@ -43,7 +42,7 @@ Ha továbbra is szüksége van a Log Analytics munkaterületre, a Azure Monitor 
 >Ha a Service Map-figyelési megoldást használta a Azure Monitor for VMs engedélyezése előtt, és továbbra is támaszkodik rá, ne távolítsa el ezt a megoldást az alábbi eljárás utolsó lépésében leírtak szerint.  
 >
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a bemenet alapján szűri a javaslatokat. Válassza a **Log Analytics** elemet.
 3. Log Analytics munkaterületek listájában válassza ki a Azure Monitor for VMs engedélyezésekor kiválasztott munkaterületet.
 4. A bal oldalon válassza a **megoldások**elemet.  
@@ -64,7 +63,7 @@ Ha a Log Analytics-munkaterületnek továbbra is támogatnia kell más források
 >
 > Ha eltávolítja a Log Analytics ügynököt, megakadályozza, hogy a szolgáltatások és megoldások proaktív módon kezelhesse a virtuális gépet. 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
 2. A Azure Portal válassza a **Virtual Machines**lehetőséget. 
 3. Válasszon ki egy virtuális gépet a listából. 
 4. A bal oldalon válassza a **bővítmények**lehetőséget. A **bővítmények** lapon válassza a **DependencyAgent**lehetőséget.

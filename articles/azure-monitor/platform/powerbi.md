@@ -1,18 +1,17 @@
 ---
 title: Azure-Log Analytics-beli adatimportálás az Power BIba | Microsoft Docs
 description: A Power BI egy felhőalapú üzleti elemzési szolgáltatás a Microsofttól, amely sokoldalú vizualizációkat és jelentéseket nyújt a különböző adatkészletek elemzéséhez.  Ez a cikk ismerteti, hogyan konfigurálhatja és importálhatja Log Analyticsi az információkat a Power BIba, és hogyan konfigurálhatja az automatikus frissítéshez.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 8c703cc2fd93900e13d39021992bc11247881b47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394708"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659283"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Monitor naplózási adatnaplóba való importálás Power BI
 
@@ -51,7 +50,7 @@ A Power BI Desktop egy asztali alkalmazás, amely lehetővé teszi, hogy a Power
 
 
 
-## <a name="publish-to-power-bi"></a>Közzététel a Power BI szolgáltatásban
+## <a name="publish-to-power-bi"></a>Közzététel Power BI
 Amikor közzéteszi a Power BI, egy adatkészletet és egy jelentést fog létrehozni.  Ha Power BI Desktop-ban hoz létre jelentést, akkor a rendszer közzéteszi az adatait.  Ha nem, akkor a rendszer üres jelentést hoz létre.  A jelentést Power BI módosíthatja, vagy létrehozhat egy újat az adatkészlet alapján.
 
 1. Hozzon létre egy jelentést az adatai alapján.  Ha még nem ismeri, használja [Power bi Desktop dokumentációt](https://docs.microsoft.com/power-bi/desktop-report-view) .  
@@ -63,7 +62,7 @@ Amikor közzéteszi a Power BI, egy adatkészletet és egy jelentést fog létre
 1. A közzététel befejezésekor kattintson a **megnyitás Power bi** lehetőségre a Power bi új adatkészlettel való megnyitásához.
 
 
-### <a name="configure-scheduled-refresh"></a>Ütemezett frissítés beállítása
+### <a name="configure-scheduled-refresh"></a>Ütemezett frissítés konfigurálása
 A Power BIban létrehozott adatkészlet ugyanazokat az adatokat fogja tartalmazni, amelyeket korábban a Power BI Desktop látott.  A lekérdezés újbóli futtatásához frissítenie kell az adatkészletet, és fel kell töltenie a Azure Monitor legújabb adataival.  
 
 1. Kattintson arra a munkaterületre, ahol feltöltötte a jelentést, és válassza az **adatkészletek** menüt. 

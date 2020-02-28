@@ -1,21 +1,19 @@
 ---
 title: Naplózási és előre aggregált mérőszámok az Azure Application Insightsban | Microsoft Docs
 description: Miért érdemes a log-alapú és az előre összevont mérőszámokat használni az Azure-ban Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 384e3c9032b324ee92762db9156c628a05e5e862
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65abc9c7153aaf2973d5927400e27467066098f9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406591"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669760"
 ---
-# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Naplóalapú és előre összesített metrikák az Application Insightsban
+# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Napló alapú és előre összevont metrikák a Application Insights
 
 Ez a cikk a "hagyományos" Application Insights a naplókon alapuló mérőszámok és a jelenleg nyilvános előzetes verzióban elérhető előre összevont mérőszámok közötti különbséget ismerteti. Mindkét típusú metrika elérhető a Application Insights felhasználók számára, és mindegyik egyedi értéket biztosít az alkalmazás állapotának, diagnosztizálásának és elemzésének figyeléséhez. Az alkalmazásokat kiépítő fejlesztők eldönthetik, hogy az alkalmazás méretétől, a várt telemetria és a metrikák pontosságára és riasztására vonatkozó üzleti követelményektől függően milyen típusú metrika felel meg legjobban az adott forgatókönyvnek.
 
@@ -63,7 +61,7 @@ Az egyéni metrikák dimenzióinak gyűjteménye alapértelmezés szerint ki van
 
 [Azure Monitor Metrikaböngésző](../platform/metrics-getting-started.md) használatával diagramokat rajzolhat előre összesített és naplózott metrikák alapján, valamint irányítópultokat hozhat létre a diagramokkal. A kívánt Application Insights erőforrás kiválasztása után a névtér-választóval válthat a standard (előzetes) és a log-alapú metrikák között, vagy kijelölhet egy egyéni metrikai névteret:
 
-![Metrika névtere](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
+![Metrikai névtér](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

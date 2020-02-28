@@ -1,19 +1,17 @@
 ---
 title: Intelligens észlelési szabályok beállításai – Azure Application Insights
 description: Az Azure Application Insights intelligens észlelési szabályok kezelésének és konfigurálásának automatizálása Azure Resource Manager-sablonokkal
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bc66a286bee193b377731a549129446bba431cb3
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 3c028a97c2fb554b13035026025437d5331104c2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749040"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669709"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Application Insights intelligens észlelési szabályok kezelése Azure Resource Manager-sablonok használatával
 
@@ -178,7 +176,7 @@ Az alábbi táblázat az intelligens észlelési szabályok neveit mutatja, ahog
 > [!NOTE]
 > Az _előzetesként_ megjelölt intelligens észlelési szabályok nem támogatják az e-mailes értesítéseket. Ezért csak a szabályok _engedélyezve_ tulajdonságát állíthatja be. 
 
-| Azure Portal szabály neve | Belső név
+| Azure Portal szabály neve | A belső név
 |:---|:---|
 | Lassú oldal betöltési ideje | slowpageloadtime |
 | Lassú kiszolgáló válaszideje | slowserverresponsetime |
@@ -191,7 +189,7 @@ Az alábbi táblázat az intelligens észlelési szabályok neveit mutatja, ahog
 | Lehetséges biztonsági probléma észlelhető (előzetes verzió) | extension_securityextensionspackage |
 | A napi adatmennyiség rendellenes növekedése (előzetes verzió) | extension_billingdatavolumedailyspikeextension |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az automatikus észlelésről:
 

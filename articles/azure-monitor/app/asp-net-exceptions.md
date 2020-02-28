@@ -1,18 +1,14 @@
 ---
 title: Hibák és kivételek diagnosztizálása az Azure Application Insights
 description: A ASP.NET-alkalmazásokból származó kivételek rögzítése a kérelem telemetria együtt.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/11/2019
-ms.openlocfilehash: f89149de9b1173a659176f686053e8dc564ab85c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 24b7acfa6610c2040daf0f7d8d25f25391140303
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432657"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666156"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>A webalkalmazások kivételeinek diagnosztizálása a Application Insights
 Az élő webalkalmazásban lévő kivételeket [Application Insights](../../azure-monitor/app/app-insights-overview.md). A sikertelen kérelmeket a kivételekkel és más eseményekkel is összekapcsolhatja az ügyfélen és a kiszolgálón is, így gyorsan diagnosztizálhatja az okokat.
@@ -79,7 +75,7 @@ Erre számos lehetősége van:
 
 Az események megjelenítéséhez nyissa meg a bal oldali menü [Keresés](../../azure-monitor/app/diagnostic-search.md) elemét, válassza a legördülő menü **eseménytípus**lehetőséget, majd válassza az egyéni esemény, nyomkövetés vagy kivétel lehetőséget.
 
-![Részletezés](./media/asp-net-exceptions/customevents.png)
+![Áthatoló részletezést](./media/asp-net-exceptions/customevents.png)
 
 > [!NOTE]
 > Ha az alkalmazása sok telemetriát hoz létre, az adaptív mintavételezési modul automatikusan csökkenti a portálra küldött mennyiséget, és csupán az eseményeket megjelenítő töredékeket küld. Az azonos művelet részét képező események ki lesznek választva, vagy ki lesznek választva a csoportnak, így a kapcsolódó események között lehet navigálni. [További tudnivalók a mintavételezésről.](../../azure-monitor/app/sampling.md)
@@ -96,7 +92,7 @@ A kérelem részletei nem tartalmazzák az alkalmazásba egy POST-hívásban tov
 ## <a name="exceptions"></a>Kivételek és kapcsolódó diagnosztikai adat rögzítése
 Először nem jelenik meg a portálon az alkalmazás hibáit okozó kivételek. A böngészőre vonatkozó kivételek jelennek meg (ha a [JavaScript SDK](../../azure-monitor/app/javascript.md) -t használja a weboldalain). Az IIS azonban a legtöbb kiszolgálói kivételt felveszi, és egy kódot kell megírnia, hogy megtekintse őket.
 
-Előnyök:
+A következőket teheti:
 
 * A kivételek jelentéséhez szúrja be a kivételeket úgy, hogy a kivételeket a kód beszúrásával **explicit módon naplózza** .
 * A **kivételek automatikus rögzítése** a ASP.NET-keretrendszer konfigurálásával. A szükséges hozzáadások eltérőek a különböző típusú keretrendszerekhez.
@@ -201,7 +197,7 @@ Ha azonban aktív átirányítással rendelkezik, adja hozzá a következő soro
 ## <a name="mvc"></a>MVC
 A Application Insights web SDK 2,6-es verziójától (beta3 és újabb verzióktól) kezdve a Application Insights a nem kezelt kivételeket az MVC 5 + Controller metódusokban automatikusan kiváltva gyűjti. Ha korábban már hozzáadott egy egyéni kezelőt az ilyen kivételek nyomon követéséhez (az alábbi példákban leírtak szerint), akkor előfordulhat, hogy a kivételek kétszeres nyomon követésének megakadályozásához eltávolíthatja azt.
 
-Számos esetben a kivétel szűrői nem kezelhetik. Példa:
+Számos esetben a kivétel szűrői nem kezelhetik. Például:
 
 * A vezérlő konstruktorai által kiváltott kivételek.
 * Az üzenetkezelők által kiváltott kivételek.
@@ -293,7 +289,7 @@ A AiHandleErrorAttribute regisztrálása globális szűrőként a FilterConfig.c
 ## <a name="web-api"></a>Webes API
 A Application Insights web SDK 2,6-es verziójától (beta3 és újabb verzióktól) kezdve a Application Insights a vezérlő metódusokban automatikusan kiváltott kezeletlen kivételeket gyűjt a WebAPI 2 +-hoz. Ha korábban már hozzáadott egy egyéni kezelőt az ilyen kivételek nyomon követéséhez (az alábbi példákban leírtak szerint), akkor előfordulhat, hogy a kivételek kétszeres nyomon követésének megakadályozásához eltávolíthatja azt.
 
-Számos esetben a kivétel szűrői nem kezelhetik. Példa:
+Számos esetben a kivétel szűrői nem kezelhetik. Például:
 
 * A vezérlő konstruktorai által kiváltott kivételek.
 * Az üzenetkezelők által kiváltott kivételek.
@@ -308,8 +304,8 @@ A vezérlőkből származó nem kezelt kivételek általában 500 "belső kiszol
 ### <a name="prior-versions-support"></a>Korábbi verziók támogatása
 Ha Application Insights web SDK 2,5 (és korábbi) WebAPI 1 (és korábbi) használatát használja, a kivételek nyomon követéséhez tekintse meg az alábbi példákat.
 
-#### <a name="web-api-1x"></a>Webes API 1. x
-Felülbírálja a System. Web. http. Filters. ExceptionFilterAttribute:
+#### <a name="web-api-1x"></a>Web API 1.x
+Override System.Web.Http.Filters.ExceptionFilterAttribute:
 
 ```csharp
     using System.Web.Http.Filters;
@@ -358,7 +354,7 @@ Ezt a felülbírált attribútumot adott vezérlőkhöz hozzáadhatja, vagy hozz
 
 [Minta](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-#### <a name="web-api-2x"></a>Webes API 2. x
+#### <a name="web-api-2x"></a>Web API 2.x
 Adja hozzá a Iexceptionlogger felület implementációját:
 
 ```csharp

@@ -2,20 +2,19 @@
 title: Webhook meghívása klasszikus metrikai riasztással Azure Monitor
 description: Ismerje meg, hogyan irányíthatja át az Azure metrikus riasztásokat más, nem Azure rendszerekre.
 author: harelbr
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
-ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: fd4bf2d404a7152da04e72d323f463c18167f5bf
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705513"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665068"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Webhook meghívása klasszikus metrikai riasztással Azure Monitor
+
 A webhookok használatával átirányíthat egy Azure-riasztási értesítést más rendszerekre a feldolgozás utáni vagy egyéni műveletekhez. A riasztások segítségével egy webhook használatával átirányíthatja azt a szolgáltatásba, amely SMS-üzeneteket küld, a hibák naplózása, a csapat csevegési vagy üzenetküldési szolgáltatásokon keresztüli értesítése, illetve egyéb műveletek esetén. 
 
 Ez a cikk azt ismerteti, hogyan állítható be egy webhook egy Azure metrikai riasztásban. Emellett azt is bemutatja, hogy a HTTP-közzététel milyen hasznos adatokat keres egy webhookban. További információ az Azure-beli tevékenységekre vonatkozó riasztások beállításáról és sémáról (riasztás az eseményekről): [webhook meghívása Azure-beli tevékenység naplójának riasztására](alerts-log-webhook.md).
@@ -72,17 +71,17 @@ A POST művelet a következő JSON-adattartalmat és sémát tartalmazza az öss
 | Mező | Kötelező | Rögzített értékek halmaza | Megjegyzések |
 |:--- |:--- |:--- |:--- |
 | status |I |Aktiválva, megoldva |A riasztás állapota a beállított feltételek alapján. |
-| összefüggésben |I | |A riasztás kontextusa. |
+| context |I | |A riasztás kontextusa. |
 | időbélyeg |I | |A riasztás aktiválásának időpontja. |
 | id |I | |Minden riasztási szabály egyedi AZONOSÍTÓval rendelkezik. |
 | név |I | |A riasztás neve. |
 | leírás |I | |A riasztás leírása. |
 | conditionType |I |Metrika, esemény |Két típusú riasztás támogatott: metrika és esemény. A metrikai riasztások metrikai feltételen alapulnak. Az események riasztásai a tevékenység naplójában lévő eseményen alapulnak. Ezzel az értékkel ellenőrizhető, hogy a riasztás metrikán vagy eseményen alapul-e. |
-| feltétel |I | |A **conditionType** érték alapján ellenőrizhető konkrét mezők. |
+| condition |I | |A **conditionType** érték alapján ellenőrizhető konkrét mezők. |
 | metricName |Metrikus riasztások esetén | |Annak a mérőszámnak a neve, amely meghatározza, hogy mi a szabály figyeli. |
 | metricUnit |Metrikus riasztások esetén |Bájtok, BytesPerSecond, Darabszám, CountPerSecond, százalék, másodperc |A mérőszámban engedélyezett egység. Lásd az [engedélyezett értékeket](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
 | metricValue |Metrikus riasztások esetén | |A riasztást kiváltó metrika tényleges értéke. |
-| küszöb |Metrikus riasztások esetén | |Az a küszöbérték, amelyen a riasztás aktiválva van. |
+| threshold |Metrikus riasztások esetén | |Az a küszöbérték, amelyen a riasztás aktiválva van. |
 | windowSize |Metrikus riasztások esetén | |A riasztási tevékenység küszöbérték alapján történő figyeléséhez használt időtartam. Az értéknek 5 perc és 1 nap közé kell esnie. Az értéknek ISO 8601 időtartam formátumúnak kell lennie. |
 | timeAggregation |Metrikus riasztások esetén |Átlag, utolsó, maximum, minimum, none, összesen |Az összegyűjtött adatok időbeli összevonása. Az alapértelmezett érték az átlag. Lásd az [engedélyezett értékeket](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
 | operátor |Metrikus riasztások esetén | |Az aktuális metrikai adatok meghatározott küszöbértékhez való összehasonlításához használt operátor. |
@@ -93,7 +92,7 @@ A POST művelet a következő JSON-adattartalmat és sémát tartalmazza az öss
 | resourceId |I | |Az érintett erőforrás erőforrás-azonosítója. |
 | resourceRegion |I | |Az érintett erőforrás régiója vagy helye. |
 | portalLink |I | |Közvetlen hivatkozás a portál erőforrás-összefoglalás lapjára. |
-| properties |N |Választható |Az esemény részleteit tartalmazó kulcs/érték párok halmaza. Például: `Dictionary<String, String>`. A Properties (Tulajdonságok) mező nem kötelező. Egyéni felhasználói felületen vagy logikai alkalmazáson alapuló munkafolyamatban a felhasználók megadhatják azokat a kulcs/érték párokat, amelyek átadhatók a hasznos adatokon keresztül. Az egyéni tulajdonságok a webhookba való visszaállításának másik módja a webhook URI-ja (lekérdezési paraméterek). |
+| properties |N |Optional |Az esemény részleteit tartalmazó kulcs/érték párok halmaza. Például: `Dictionary<String, String>`. A Properties (Tulajdonságok) mező nem kötelező. Egyéni felhasználói felületen vagy logikai alkalmazáson alapuló munkafolyamatban a felhasználók megadhatják azokat a kulcs/érték párokat, amelyek átadhatók a hasznos adatokon keresztül. Az egyéni tulajdonságok a webhookba való visszaállításának másik módja a webhook URI-ja (lekérdezési paraméterek). |
 
 > [!NOTE]
 > A **Properties (Tulajdonságok** ) mezőt csak [Azure monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx)-k használatával állíthatja be.

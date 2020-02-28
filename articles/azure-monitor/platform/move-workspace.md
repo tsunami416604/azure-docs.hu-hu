@@ -1,18 +1,17 @@
 ---
 title: Log Analytics munkaterület áthelyezése Azure Monitorban | Microsoft Docs
 description: Megtudhatja, hogyan helyezheti át Log Analytics munkaterületét egy másik előfizetésbe vagy erőforráscsoporthoz.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: 4baa65ca5dda6b266cd6c739225ebd01d011268c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9213ddf034e725f6e31c9280d47bd13e4703b3f4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980089"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659492"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics munkaterület áthelyezése másik előfizetésre vagy erőforráscsoport-csoportba
 
@@ -35,8 +34,8 @@ A munkaterületen telepített felügyelt megoldások a Log Analytics munkaterül
 Olyan megoldások, amelyeket el kell távolítani az Automation-fiók csatolásának megszüntetése előtt:
 
 - Frissítéskezelés
-- Változáskövetés
-- Virtuális gépek munkaidőn kívüli elindítása/leállítása
+- Változások követése
+- Virtuális gépek indítása és leállítása munkaidőn kívül
 
 
 ### <a name="delete-in-azure-portal"></a>Törlés az Azure Portalon
@@ -82,7 +81,7 @@ Az Automation-fiók a munkaterületről a Azure Portal használatával való lev
 
 ## <a name="move-your-workspace"></a>Munkaterület áthelyezése
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 A következő eljárás használatával helyezheti át a munkaterületet a Azure Portal használatával:
 
 1. Nyissa meg a **log Analytics munkaterületek** menüt, majd válassza ki a munkaterületet.

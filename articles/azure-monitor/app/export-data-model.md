@@ -1,25 +1,21 @@
 ---
 title: Az Azure Application Insights adatmodellje | Microsoft Docs
 description: Leírja a folyamatos exportálásból a JSON-ban exportált tulajdonságokat, és szűrőként használatos.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/08/2019
-ms.openlocfilehash: 8f84e3179a6f949e4a322a2218736fc9ebe60442
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e4dd2310169476e54c06083fee11b2e4cccecd8d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677914"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663875"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights adatmodell exportálása
 Ez a táblázat a [Application Insights](../../azure-monitor/app/app-insights-overview.md) SDK-k által a portálra eljuttatott telemetria tulajdonságait sorolja fel.
 Ezek a tulajdonságok a [folyamatos exportálásból](export-telemetry.md)származó adatkimenetben jelennek meg.
 Emellett megjelennek a tulajdonságok szűrői a [metrika-kezelőben](../../azure-monitor/app/metrics-explorer.md) és a [diagnosztikai keresésben](../../azure-monitor/app/diagnostic-search.md).
 
-Megjegyzés:
+Tudnivalók:
 
 * az alábbi táblázatokban szereplő `[0]` egy olyan pontot jelöl, amelyben az indexet be kell szúrnia. Ez azonban nem mindig 0.
 * Az időtartamok egy másodpercen belül vannak, így 10000000 = = 1 másodperc.
@@ -109,13 +105,13 @@ Megjegyzés:
 ## <a name="context"></a>Környezet
 A telemetria összes típusát egy környezeti szakasz kíséri. A mezők nem mindegyike kerül továbbításra minden adatponttal.
 
-| Útvonal | Type (Típus) | Megjegyzések |
+| Útvonal | Típus | Megjegyzések |
 | --- | --- | --- |
 | Context. Custom. dimensions [0] |objektum [] |Egyéni tulajdonságok paraméterrel beállított kulcs-érték karakterlánc-párok. A kulcs maximális hossza 100, az értékek maximális hossza 1024. Több mint 100 egyedi érték, a tulajdonság kereshető, de nem használható szegmentáláshoz. Maximális 200 kulcs/rendszerállapotkulcsot. |
-| Context. Custom. mérőszámok [0] |objektum [] |Egyéni mérési paraméterek és TrackMetrics szerint beállított kulcs-érték párok. A kulcs maximális hossza 100, az értékek numerikusak lehetnek. |
+| context.custom.metrics [0] |objektum [] |Egyéni mérési paraméterek és TrackMetrics szerint beállított kulcs-érték párok. A kulcs maximális hossza 100, az értékek numerikusak lehetnek. |
 | Context. eventTime |sztring |UTC |
-| Context. isSynthetic |logikai |Úgy tűnik, hogy a kérelem egy robotból vagy egy webes tesztből származik. |
-| Context. samplingRate |szám |A portálra eljuttatott SDK által generált telemetria százalékos aránya. Tartomány 0,0 – 100.0. |
+| context.data.isSynthetic |logikai |Úgy tűnik, hogy a kérelem egy robotból vagy egy webes tesztből származik. |
+| context.data.samplingRate |szám |A telemetriát a portálra küldött SDK által generált százalékos értéke. Tartomány 0,0-100.0. |
 | környezet. eszköz |objektum |Ügyféleszközök |
 | Context. Device. Browser |sztring |IE, Chrome,... |
 | Context. Device. browserVersion |sztring |Chrome 48,0,... |
@@ -127,8 +123,8 @@ A telemetria összes típusát egy környezeti szakasz kíséri. A mezők nem mi
 | Context. Device. oemName |sztring | |
 | Context. Device. os |sztring | |
 | Context. Device. osVersion |sztring |Gazdagép operációs rendszere |
-| Context. Device. roleInstance |sztring |A kiszolgáló gazdagépének azonosítója |
-| Context. Device. roleName |sztring | |
+| context.device.roleInstance |sztring |Kiszolgáló állomás azonosítója |
+| context.device.roleName |sztring | |
 | Context. Device. screenResolution |sztring | |
 | Context. Device. Type |sztring |SZÁMÍTÓGÉP, böngésző,... |
 | környezet. hely |objektum |Ügyfélip származtatva. |
@@ -139,26 +135,26 @@ A telemetria összes típusát egy környezeti szakasz kíséri. A mezők nem mi
 | környezet. hely. tartomány |sztring |Állam vagy megye |
 | context.operation.id |sztring |Az azonos műveleti azonosítóval rendelkező elemek a portálon kapcsolódó elemként jelennek meg. Általában a kérelem azonosítója. |
 | context.operation.name |sztring |URL-cím vagy kérelem neve |
-| Context. Operation. parentId |sztring |Lehetővé teszi a beágyazott kapcsolódó elemek használatát. |
+| context.operation.parentId |sztring |Lehetővé teszi a beágyazott kapcsolódó elemek használatát. |
 | context.session.id |sztring |Ugyanabból a forrásból származó műveletek csoportjának azonosítója. Egy művelet nélküli, 30 perces időszak a munkamenet végét jelzi. |
 | Context. Session. isFirst |logikai | |
 | Context. user. accountAcquisitionDate |sztring | |
-| Context. user. accountId |sztring | |
-| Context. user. anonAcquisitionDate |sztring | |
-| Context. user. anonId |sztring | |
-| Context. user. authAcquisitionDate |sztring |[Hitelesített felhasználó](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
-| Context. user. authId |sztring | |
-| Context. user. isAuthenticated |logikai | |
+| context.user.accountId |sztring | |
+| context.user.anonAcquisitionDate |sztring | |
+| context.user.anonId |sztring | |
+| context.user.authAcquisitionDate |sztring |[Hitelesített felhasználó](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
+| context.user.authId |sztring | |
+| context.user.isAuthenticated |logikai | |
 | Context. user. storeRegion |sztring | |
-| belső. documentVersion |sztring | |
+| internal.data.documentVersion |sztring | |
 | internal.data.id |sztring | Az elemek betöltésének Application Insightséhez hozzárendelt egyedi azonosító |
 
 ## <a name="events"></a>Események
 A [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)által generált egyéni események.
 
-| Útvonal | Type (Típus) | Megjegyzések |
+| Útvonal | Típus | Megjegyzések |
 | --- | --- | --- |
-| esemény [0] darabszám |egész szám |100/([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Például: 4 = &gt; 25%. |
+| esemény [0] darabszám |egész szám |100/([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Például: 4 =&gt; 25%. |
 | esemény [0] név |sztring |Esemény neve.  Maximális hosszúság 250. |
 | esemény [0] URL-cím |sztring | |
 | esemény [0] urlData. Base |sztring | |
@@ -167,10 +163,10 @@ A [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackeven
 ## <a name="exceptions"></a>Kivételek
 A kiszolgáló és a böngésző [kivételeit](../../azure-monitor/app/asp-net-exceptions.md) jelenti.
 
-| Útvonal | Type (Típus) | Megjegyzések |
+| Útvonal | Típus | Megjegyzések |
 | --- | --- | --- |
 | basicException [0] szerelvény |sztring | |
-| basicException [0] darabszám |egész szám |100/([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Például: 4 = &gt; 25%. |
+| basicException [0] darabszám |egész szám |100/([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Például: 4 =&gt; 25%. |
 | basicException [0] exceptionGroup |sztring | |
 | basicException [0] exceptionType |sztring | |
 | basicException [0] failedUserCodeMethod |sztring | |
@@ -196,7 +192,7 @@ A kiszolgáló és a böngésző [kivételeit](../../azure-monitor/app/asp-net-e
 ## <a name="trace-messages"></a>Nyomkövetési üzenetek
 A [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)és a [naplózási adapterek](../../azure-monitor/app/asp-net-trace-logs.md)küldik.
 
-| Útvonal | Type (Típus) | Megjegyzések |
+| Útvonal | Típus | Megjegyzések |
 | --- | --- | --- |
 | üzenet [0] loggerName |sztring | |
 | üzenet [0] paraméter |sztring | |
@@ -206,12 +202,12 @@ A [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)�
 ## <a name="remote-dependency"></a>Távoli függőség
 A TrackDependency küldte. A kiszolgáló [függőségeinek](../../azure-monitor/app/asp-net-dependencies.md) és a BÖNGÉSZŐBEN található Ajax-hívásoknak a teljesítményére és használatára irányuló hívások jelentésére szolgál.
 
-| Útvonal | Type (Típus) | Megjegyzések |
+| Útvonal | Típus | Megjegyzések |
 | --- | --- | --- |
 | remoteDependency [0] aszinkron |logikai | |
 | remoteDependency [0] baseName |sztring | |
 | remoteDependency [0] commandName |sztring |Például "Home/index" |
-| remoteDependency [0] darabszám |egész szám |100/([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Például: 4 = &gt; 25%. |
+| remoteDependency [0] darabszám |egész szám |100/([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Például: 4 =&gt; 25%. |
 | remoteDependency [0] dependencyTypeName |sztring |HTTP, SQL,... |
 | remoteDependency [0] durationMetric. Value |szám |A meghívástól a válasz befejezésére való függőség szerinti idő |
 | remoteDependency [0] azonosító |sztring | |
@@ -227,9 +223,9 @@ A TrackDependency küldte. A kiszolgáló [függőségeinek](../../azure-monitor
 ## <a name="requests"></a>Kérelmek
 A [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)küldte. A standard modulok ezt a kiszolgálót használják a kiszolgálón mért válaszidő megjelentéséhez.
 
-| Útvonal | Type (Típus) | Megjegyzések |
+| Útvonal | Típus | Megjegyzések |
 | --- | --- | --- |
-| kérelem [0] darabszám |egész szám |100/([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Például: 4 = &gt; 25%. |
+| kérelem [0] darabszám |egész szám |100/([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Például: 4 =&gt; 25%. |
 | kérelem [0] durationMetric. Value |szám |A kérelemtől érkező válasz időpontja. 1e7 = = 1s |
 | kérelem [0] azonosító |sztring |Művelet azonosítója |
 | kérelem [0] név |sztring |GET/POST + URL-cím alapja.  Maximális hossz 250 |
@@ -245,7 +241,7 @@ A böngésző küldte. Megméri egy oldal feldolgozásának idejét, a felhaszn�
 
 A környezeti értékek az ügyfél operációs rendszerének és a böngészőnek a verzióját mutatják.
 
-| Útvonal | Type (Típus) | Megjegyzések |
+| Útvonal | Típus | Megjegyzések |
 | --- | --- | --- |
 | clientPerformance [0] clientProcess. Value |egész szám |A HTML-fájl fogadásának vége a lap megjelenítéséhez. |
 | clientPerformance [0] név |sztring | |
@@ -262,9 +258,9 @@ A környezeti értékek az ügyfél operációs rendszerének és a böngészőn
 ## <a name="page-views"></a>Lapok nézetei
 TrackPageView () vagy [stopTrackPage](../../azure-monitor/app/api-custom-events-metrics.md#page-views) küldte
 
-| Útvonal | Type (Típus) | Megjegyzések |
+| Útvonal | Típus | Megjegyzések |
 | --- | --- | --- |
-| nézet [0] száma |egész szám |100/([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Például: 4 = &gt; 25%. |
+| nézet [0] száma |egész szám |100/([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Például: 4 =&gt; 25%. |
 | [0] durationMetric. Value megtekintése |egész szám |Az érték opcionálisan be van állítva a trackPageView () vagy a startTrackPage ()-stopTrackPage () paraméterrel. Nem ugyanaz, mint a clientPerformance értéke. |
 | nézet [0] neve |sztring |Lap címe  Maximális hossz 250 |
 | [0] URL-cím megtekintése |sztring | |
@@ -272,18 +268,18 @@ TrackPageView () vagy [stopTrackPage](../../azure-monitor/app/api-custom-events-
 | a [0] urlData. hashTag megtekintése |sztring | |
 | a (z) [0] urlData. Host megtekintése |sztring | |
 
-## <a name="availability"></a>Elérhetőség
+## <a name="availability"></a>Rendelkezésre állás
 Jelentések [rendelkezésre állását ismertető webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md).
 
-| Útvonal | Type (Típus) | Megjegyzések |
+| Útvonal | Típus | Megjegyzések |
 | --- | --- | --- |
 | rendelkezésre állás [0] availabilityMetric.name |sztring |rendelkezésre állás |
-| rendelkezésre állás [0] availabilityMetric. Value |szám |1,0 vagy 0,0 |
-| rendelkezésre állás [0] darabszám |egész szám |100/([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Például: 4 = &gt; 25%. |
+| rendelkezésre állás [0] availabilityMetric. Value |szám |1.0-s vagy 0,0 |
+| rendelkezésre állás [0] darabszám |egész szám |100/([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Például: 4 =&gt; 25%. |
 | rendelkezésre állás [0] dataSizeMetric.name |sztring | |
 | rendelkezésre állás [0] dataSizeMetric. Value |egész szám | |
 | rendelkezésre állás [0] durationMetric.name |sztring | |
-| rendelkezésre állás [0] durationMetric. Value |szám |A teszt időtartama. 1e7 = = 1s |
+| rendelkezésre állás [0] durationMetric. Value |szám |A teszt időtartama. 1e7==1s |
 | rendelkezésre állás [0] üzenet |sztring |Sikertelen diagnosztika |
 | rendelkezésre állás [0] eredmény |sztring |Pass/Fail |
 | rendelkezésre állás [0] runLocation |sztring |Http REQ földrajzi forrása |
@@ -291,12 +287,12 @@ Jelentések [rendelkezésre állását ismertető webes tesztek](../../azure-mon
 | rendelkezésre állás [0] testRunId |sztring | |
 | rendelkezésre állás [0] testTimestamp |sztring | |
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 Létrehozta: TrackMetric ().
 
 A metrika értéke a kontextusban található. egyéni. mérőszámok [0]
 
-Példa:
+Például:
 
     {
      "metric": [ ],
@@ -322,7 +318,7 @@ Példa:
     }
 
 ## <a name="about-metric-values"></a>A metrika értékei
-A metrikai jelentésekben és máshol is szereplő metrikus értékeket a standard objektum struktúrája jelenti. Példa:
+A metrikai jelentésekben és máshol is szereplő metrikus értékeket a standard objektum struktúrája jelenti. Például:
 
       "durationMetric": {
         "name": "contoso.org",
@@ -346,7 +342,7 @@ A metrikák előzetes összesítése helyett [mintavételt](../../azure-monitor/
 ### <a name="durations"></a>Időtartamok
 Ha másként nincs jelezve, az időtartamok egy másodperc tizedében jelennek meg, így a 10000000,0 1 másodpercet jelent.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
 * [Folyamatos exportálás](export-telemetry.md)
 * [Kódminták](export-telemetry.md#code-samples)

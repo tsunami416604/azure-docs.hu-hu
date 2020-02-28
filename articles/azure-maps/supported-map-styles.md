@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9cdfd0d029057e36e010203b7c35a5aafee4b574
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a65f20e04603403a1d3a180e364626d5b4440661
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208284"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664503"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps támogatott Térkép stílusa
 A Azure Maps az alább leírtak szerint számos különböző beépített térképi stílust támogat.
@@ -52,7 +52,7 @@ A **műhold** stílusa a szatellit és a légi felvételek kombinációja.
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 Ez a Térkép stílusa a műholdon és a légi képeken behelyezett utak és feliratok hibrid útvonala.
 
-![satellite_road_labels Térkép stílusa](./media/supported-map-styles/satellite_road_labels.png)
+![satellite_road_labels Térkép stílusa](./media/supported-map-styles/satellite-road-labels.png)
 
 **Alkalmazható API-k:**
 * Web SDK Térkép vezérlőelem
@@ -61,7 +61,7 @@ Ez a Térkép stílusa a műholdon és a légi képeken behelyezett utak és fel
 ## <a name="grayscale_dark"></a>grayscale_dark
 a **szürkeárnyalatos sötét** a közúti Térkép stílusának sötét változata.
 
-![gray_scale Térkép stílusa](./media/supported-map-styles/grayscale_dark.png)
+![gray_scale Térkép stílusa](./media/supported-map-styles/grayscale-dark.png)
 
 **Alkalmazható API-k:**
 * [Térkép képe](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
@@ -73,7 +73,7 @@ a **szürkeárnyalatos sötét** a közúti Térkép stílusának sötét válto
 ## <a name="grayscale_light"></a>grayscale_light
 a **szürkeárnyalatos fény** a közúti Térkép stílusának egyszerűsített változata.
 
-![szürkeárnyalatos világos Térkép stílusa](./media/supported-map-styles/grayscale_light.png)
+![szürkeárnyalatos világos Térkép stílusa](./media/supported-map-styles/grayscale-light.png)
 
 **Alkalmazható API-k:**
 * Web SDK Térkép vezérlőelem
@@ -99,6 +99,14 @@ a **közúti árnyékolt Relief** egy Azure Maps fő stílus, amelyet a föld k�
 * Web SDK Térkép vezérlőelem
 * Android Térkép vezérlőelem
 
+## <a name="high_contrast_dark"></a>high_contrast_dark
+
+**high_contrast_dark** egy sötét Térkép stílusa, amelynek nagyobb a kontrasztja, mint a többi stílus.
+
+![kontrasztos sötét Térkép stílusa](./media/supported-map-styles/high-contrast-dark.png)
+
+**Alkalmazható API-k:**
+* Web SDK Térkép vezérlőelem
 
 ## <a name="next-steps"></a>Következő lépések
 

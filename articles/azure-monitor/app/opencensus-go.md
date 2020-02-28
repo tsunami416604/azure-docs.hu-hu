@@ -1,18 +1,14 @@
 ---
 title: OpenCensus go-nyomkövetés az Azure Application Insightskal | Microsoft Docs
 description: Útmutatást nyújt a OpenCensus go-nyomkövetés és a helyi továbbító integrálásához, Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/15/2018
-ms.openlocfilehash: ef67801fee574ae43d83af650d6b715e12426c7e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ddb8dfbf14f2c75e4d16693076e56a711d8861ad
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432550"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669981"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Elosztott Nyomkövetések gyűjtése a go-ból (előzetes verzió)
 
@@ -28,7 +24,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-application-insights-resource"></a>Application Insights erőforrás létrehozása
 
@@ -43,13 +39,13 @@ Először létre kell hoznia egy Application Insights-erőforrást, amely a kial
 
    Megjelenik egy konfigurációs mező. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblát.
 
-   | Beállítások        | Value (Díj)           | Leírás  |
+   | Beállítások        | Érték           | Leírás  |
    | ------------- |:-------------|:-----|
    | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
    | **Erőforráscsoport**     | myResourceGroup      | Az App Insights-adatokat futtató új erőforráscsoport neve |
    | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-2. Kattintson a **Create** (Létrehozás) gombra.
+2. Kattintson a **Létrehozás** gombra.
 
 ## <a name="configure-local-forwarder"></a>Helyi továbbító konfigurálása
 

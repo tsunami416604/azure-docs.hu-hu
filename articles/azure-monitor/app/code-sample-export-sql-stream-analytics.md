@@ -1,18 +1,14 @@
 ---
 title: Exportálás az Azure-ból az SQL-be Application Insights | Microsoft Docs
 description: Application Insights-SQL-adatbázis folyamatos exportálása a Stream Analytics használatával.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/11/2017
-ms.openlocfilehash: 41efcbc7b70395302858638a9f44f3cbba27bf9a
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3ef0420cdab64f11b699fd4031ed2b0134f18609
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678273"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663675"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Útmutató: exportálás az SQL rendszerbe Application Insights használatával Stream Analytics
 Ez a cikk bemutatja, hogyan helyezheti át a telemetria-adatait az [azure Application Insightsból][start] egy Azure SQL Database-be [folyamatos exportálás][export] és [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/)használatával. 
@@ -76,7 +72,7 @@ A folyamatos exportálás mindig az adatokat egy Azure Storage-fiókba exportál
 
 Az események JSON formátumú blob-fájlokba íródnak. Az egyes fájlok egy vagy több eseményt is tartalmazhatnak. Ezért szeretnénk beolvasni az események adatait, és kiszűrni a kívánt mezőket. Az adatkezeléshez sokféle dolog van, de a tervünk szerint a Stream Analytics használatával helyezheti át az SQL Database-be. Ez megkönnyíti a sok érdekes lekérdezés futtatását.
 
-## <a name="create-an-azure-sql-database"></a>Azure SQL Database létrehozása
+## <a name="create-an-azure-sql-database"></a>Azure SQL Database-adatbázis létrehozása
 A [Azure Portal][portal]-előfizetésből való indítás után hozza létre az adatbázist (és egy új kiszolgálót, ha már van ilyen), amelybe az adatok írhatók.
 
 ![Új, adatkezelési, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)

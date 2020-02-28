@@ -3,17 +3,16 @@ title: Egyéni metrikák a Azure Monitorban
 description: Ismerkedjen meg az egyéni metrikákkal a Azure Monitorban és azok modellezésében.
 author: ancav
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 744958fc44a8d10bbc8ca5d44af8c473548ae5ca
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669165"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662348"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Egyéni metrikák a Azure Monitorban
 
@@ -158,7 +157,7 @@ A kibocsátása előtt nem kell előre definiálni egy egyéni metrikát Azure M
 ## <a name="using-custom-metrics"></a>Egyéni metrikák használata
 Miután elküldte az egyéni metrikákat Azure Monitorre, böngészheti őket a Azure Portal, és a Azure Monitor REST API-kon keresztül kérdezheti le őket. Riasztásokat is létrehozhat rajtuk, hogy értesítést kapjon, ha bizonyos feltételek teljesülnek.
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Egyéni metrikák böngészése az Azure Portal használatával
-1.  Nyissa meg az [Azure Portal](https://portal.azure.com).
+1.  Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2.  Válassza a **figyelés** ablaktáblát.
 3.  Válassza a **Metrika** lehetőséget.
 4.  Válassza ki azt az erőforrást, amelyről egyéni metrikákat adott ki.
@@ -172,7 +171,7 @@ A nyilvános előzetes verzióban az egyéni metrikák közzétételének lehet�
 |---|---|
 | **Egyesült Államok és Kanada** | |
 |USA nyugati középső régiója | https:\//westcentralus.monitoring.azure.com/ |
-|USA 2. nyugati régiója       | https:\//westus2.monitoring.azure.com/ |
+|USA nyugati régiója, 2.       | https:\//westus2.monitoring.azure.com/ |
 |USA északi középső régiója | https:\//northcentralus.monitoring.azure.com
 |USA déli középső régiója| https:\//southcentralus.monitoring.azure.com/ |
 |USA középső régiója      | https:\//centralus.monitoring.azure.com |
@@ -181,7 +180,7 @@ A nyilvános előzetes verzióban az egyéni metrikák közzétételének lehet�
 | **Európa** | |
 |Észak-Európa    | https:\//northeurope.monitoring.azure.com/ |
 |Nyugat-Európa     | https:\//westeurope.monitoring.azure.com/ |
-|Egyesült Királyság déli régiója | https:\//uksouth.monitoring.azure.com
+|Az Egyesült Királyság déli régiója | https:\//uksouth.monitoring.azure.com
 |Közép-Franciaország | https:\//francecentral.monitoring.azure.com |
 | **Afrika** | |
 |Dél-Afrika északi régiója | https:\//southafricanorth.monitoring.azure.com
@@ -194,7 +193,7 @@ A nyilvános előzetes verzióban az egyéni metrikák közzétételének lehet�
 |Dél-Korea középső régiója   | https:\//koreacentral.monitoring.azure.com
 
 
-## <a name="quotas-and-limits"></a>Kvóták és korlátok
+## <a name="quotas-and-limits"></a>Kvóták és korlátozások
 A Azure Monitor a következő használati korlátokat szabja meg az egyéni metrikák esetében:
 
 |Kategória|Korlát|
@@ -205,7 +204,7 @@ A Azure Monitor a következő használati korlátokat szabja meg az egyéni metr
 
 Az aktív idősorozatok a metrika, a dimenzióérték vagy a dimenzió érték bármely egyedi kombinációja, amely az elmúlt 12 órában közzétett metrikai értékeket tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Egyéni metrikák használata különböző szolgáltatásokból: 
  - [Virtual Machines](collect-custom-metrics-guestos-resource-manager-vm.md)
  - [Virtuálisgép-méretezési csoport](collect-custom-metrics-guestos-resource-manager-vmss.md)

@@ -1,18 +1,16 @@
 ---
 title: Az Azure Application Insights Agent API-referenciája
 description: Application Insights Agent API-referenciája. Disable-InstrumentationEngine. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: dd546107164632c821c1ee9a1629fe0a1ca071fc
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dafa12db95a10df467bf0d042cfd9395720648b2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899761"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671375"
 ---
 # <a name="application-insights-agent-api-disable-instrumentationengine"></a>Application Insights ügynök API: disable-InstrumentationEngine
 

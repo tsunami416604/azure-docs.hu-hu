@@ -1,19 +1,17 @@
 ---
 title: Profil élő Azure App Service alkalmazások a Application Insightskal | Microsoft Docs
 description: A Azure App Serviceon futó élő alkalmazások a Application Insights Profiler.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d463732fc8e8f488851a57fe520f138b101eb6cf
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ba9a2aca73dbdb8de298b68670fd6ab16f810a4d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899939"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671542"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profil élő Azure App Service alkalmazások Application Insights
 
@@ -31,23 +29,23 @@ Application Insights Profiler az App Services futtatókörnyezet részeként el�
 1. Nyissa meg a Azure Portal **app Services** ablaktábláját.
 1. Navigáljon a **beállítások > Application Insights** panelre.
 
-   ![Az alkalmazás-felismerés engedélyezése App Services portálon](./media/profiler/AppInsights-AppServices.png)
+   ![Az App Insights engedélyezése az App Services portálon](./media/profiler/AppInsights-AppServices.png)
 
 1. Kövesse a panel utasításait egy új erőforrás létrehozásához, vagy válasszon ki egy meglévő alkalmazás-keresési erőforrást az alkalmazás figyeléséhez. Győződjön meg arról is, hogy a Profiler **be van kapcsolva**. Ha a Application Insights erőforrás a App Servicetól eltérő előfizetésben található, nem használhatja ezt a lapot a Application Insights konfigurálásához. Ezt manuálisan is megteheti, ha manuálisan hozza létre a szükséges alkalmazás-beállításokat. [A következő szakasz a Profiler manuális engedélyezésére vonatkozó utasításokat tartalmazza.](#enable-profiler-manually-or-with-azure-resource-manager) 
 
-   ![Alkalmazás-áttekintési hely kiterjesztésének hozzáadása][Enablement UI]
+   ![App Insights-webhelybővítményt hozzáadása][Enablement UI]
 
-1. A Profiler mostantól engedélyezve van egy App Services alkalmazás-beállítás használatával.
+1. Profiler engedélyezve van az App Services Alkalmazásbeállítás használatával.
 
-    ![A Profiler alkalmazásának beállítása][profiler-app-setting]
+    ![A Profiler Alkalmazásbeállítás][profiler-app-setting]
 
 ## <a name="enable-profiler-manually-or-with-azure-resource-manager"></a>A Profiler manuális engedélyezése vagy Azure Resource Manager
 Application Insights Profiler a Azure App Service alkalmazás-beállításainak létrehozásával engedélyezhető. A fent látható beállításokkal rendelkező oldal létrehozza ezeket az Alkalmazásbeállítások. Ezeket a beállításokat azonban a sablonok vagy más eszközök használatával automatizálhatja. Ezek a beállítások abban az esetben is működni fognak, ha a Application Insights erőforrás a Azure App Servicetól eltérő előfizetésben található.
 A Profiler engedélyezéséhez a következő beállítások szükségesek:
 
-|Alkalmazásbeállítás    | Value (Díj)    |
+|Alkalmazásbeállítás    | Érték    |
 |---------------|----------|
-|APPINSIGHTS_INSTRUMENTATIONKEY         | a Application Insights-erőforrás Rendszerállapotkulcsot    |
+|ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY         | a Application Insights-erőforrás Rendszerállapotkulcsot    |
 |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
 |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
@@ -58,7 +56,7 @@ Ezeket az értékeket [Azure Resource Manager sablonokkal](../../azure-monitor/a
 
 Ha engedélyezni szeretné a Profilert más felhők esetében, használhatja az alábbi beállításokat.
 
-|Alkalmazásbeállítás    | USA kormányzati értékei| China Cloud |   
+|Alkalmazásbeállítás    | USA kormányzati értékei| Kínai felhő |   
 |---------------|---------------------|-------------|
 |ApplicationInsightsProfilerEndpoint         | https://agent.serviceprofiler.azure.us    | https://profiler.applicationinsights.azure.cn |
 |ApplicationInsightsEndpoint | https://dc.applicationinsights.us | https://dc.applicationinsights.azure.cn |
@@ -67,7 +65,7 @@ Ha engedélyezni szeretné a Profilert más felhők esetében, használhatja az 
 
 Egy adott alkalmazás példányának leállításához vagy újraindításához a **webes feladatok**területen nyissa meg az alkalmazás erőforrását. A Profiler törléséhez nyissa meg a **bővítmények csomópontot**.
 
-![A Profiler letiltása webes feladatokhoz][disable-profiler-webjob]
+![Profiler letiltása a webjobs-feladat][disable-profiler-webjob]
 
 Azt javasoljuk, hogy az összes alkalmazáson engedélyezve legyen a Profiler, hogy a lehető leghamarabb észlelje a teljesítménnyel kapcsolatos problémákat.
 

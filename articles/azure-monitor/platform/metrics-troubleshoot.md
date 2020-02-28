@@ -3,17 +3,16 @@ title: Azure Monitor metrikai diagramok hibaelhárítása
 description: A metrikai diagramok létrehozásával, testreszabásával vagy értelmezésével kapcsolatos hibák elhárítása
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 072e62d89e8febc4837c10874398daea3b8114ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974872"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659662"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Metrikai diagramok hibaelhárítása
 
@@ -29,7 +28,7 @@ Az **Erőforrás kiválasztása** elemre kattintott, de nem látja az erőforrá
 
 1. Győződjön meg arról, hogy a megfelelő erőforráscsoport van kiválasztva.
     > [!WARNING]
-    > A legjobb teljesítmény érdekében a metrikák Explorer első megnyitásakor az **erőforráscsoport** legördülő menüjében nincsenek előre kiválasztott erőforráscsoportok. Legalább egy csoportot ki kell választania ahhoz, hogy megjelenjenek az erőforrások.
+    > A legjobb teljesítmény érdekében a metrikaböngésző első megnyitásakor az **Erőforráscsoport** legördülő menüben nincs előre kijelölt erőforráscsoport. Legalább egy csoportot ki kell választania ahhoz, hogy megjelenjenek az erőforrások.
 
 ## <a name="chart-shows-no-data"></a>A diagram nem jelenít meg adattípust
 
@@ -49,7 +48,7 @@ Az Azure-ban a metrikák hozzáférését [szerepköralapú hozzáférés-vezér
 
 ### <a name="your-resource-didnt-emit-metrics-during-the-selected-time-range"></a>Az erőforrás nem bocsát ki mérőszámokat a kijelölt időtartományban
 
-Néhány erőforrás nem ad ki folyamatosan metrikákat. Az Azure például nem gyűjt metrikákat a leállított virtuális gépekről. Más erőforrások csak olyan esetben adnak ki metrikákat, amikor valamilyen feltétel teljesül. Az egy tranzakció feldolgozási idejét megjelenítő metrikához például legalább egy tranzakció szükséges. Ha nincsenek tranzakciók a kiválasztott időtartományban, akkor a diagram üres lesz. És bár az Azure-ban a legtöbb metrika gyűjtése percenként történik, egyes metrikáké ritkábban. Az adott metrika dokumentációjában talál további részleteket a megtekinteni kívánt metrikáról.
+Néhány erőforrás nem bocsát ki folyamatosan metrikákat. Az Azure például nem gyűjt metrikákat a leállított virtuális gépekről. Más erőforrások csak olyan esetben bocsátanak ki metrikákat, amikor valamilyen feltétel teljesül. A tranzakciók feldolgozási idejét megjelenítő metrikákhoz például legalább egy tranzakció szükséges. Ha nincsenek tranzakciók a kiválasztott időtartományban, akkor a diagram üres lesz. És bár az Azure-ban a legtöbb metrika gyűjtése percenként történik, egyes metrikáké ritkábban. Az adott metrika dokumentációjában talál további részleteket a megtekinteni kívánt metrikáról.
 
 **Megoldás:** A diagram időpontjának módosítása szélesebb tartományra Az "elmúlt 30 nap" kezdettől kezdve nagyobb részletességgel (vagy az "automatikus időrészletesség" lehetőséggel) lehet kezdeni.
 
@@ -61,13 +60,13 @@ Néhány erőforrás nem ad ki folyamatosan metrikákat. Az Azure például nem 
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>Az összes metrikai érték a zárolt y tengely tartományán kívül esik
 
-A [diagram y tengelye határainak zárolásával](metrics-charts.md#lock-boundaries-of-chart-y-axis) akaratlanul is azt állíthatja be, hogy a diagram megjelenítési területe ne jelenítse meg a diagramvonalat. Ha az y tengely például a 0% és az 50% közötti tartományban van zárolva, és a metrika állandóan 100% értékű, akkor a vonal mindig a látható területen kívülre esik, így a diagram üresnek látszik.
+A [diagram y tengelye határainak zárolásával](metrics-charts.md#lock-boundaries-of-chart-y-axis) akaratlanul is azt állíthatja be, hogy a diagram megjelenítési területén ne jelenjen meg a diagramvonal. Ha az y tengely például a 0% és az 50% közötti tartományban van zárolva, és a metrika állandóan 100% értékű, akkor a vonal mindig a látható területen kívülre esik, így a diagram üresnek látszik.
 
 **Megoldás:** Ellenőrizze, hogy a diagram y tengelyének határai nem zárolva vannak-e a metrikai értékek tartományán kívül. Ha az y tengely határai zárolva vannak, érdemes lehet ideiglenesen alaphelyzetbe állítani őket annak érdekében, hogy a metrikaértékek ne essenek a diagramtartományon kívül. Az y tengely tartományának zárolása nem ajánlott az **összeg**, **min** és **max** összesítésű diagramok automatikus részletessége esetén, mert az értékeik a böngészőablak átméretezésekor vagy az egyik képernyőfelbontásról egy másikra lépéskor a részletességgel együtt változnak. A részletesség módosításakor a diagram megjelenítési területe üres maradhat.
 
 ### <a name="you-are-looking-at-a-guest-os-metric-but-didnt-enable-azure-diagnostic-extension"></a>Egy vendég operációs rendszer metrikáját keresi, de nem engedélyezte az Azure diagnosztikai bővítményt
 
-A **vendég operációs rendszer** metrikák gyűjteményéhez konfigurálni kell az Azure diagnosztikai bővítményt, vagy az erőforrás **Diagnosztikai beállítások** panelén kell azt engedélyezni.
+A **vendég operációs rendszerre** vonatkozó metrikák gyűjteményéhez konfigurálni kell az Azure Diagnostics bővítményt, vagy az erőforrás **Diagnosztikai beállítások** panelén kell azt engedélyezni.
 
 **Megoldás:** Ha a Azure Diagnostics bővítmény engedélyezve van, de továbbra sem tudja megtekinteni a metrikákat, kövesse az [Azure Diagnostics bővítmény hibaelhárítási útmutatójában](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)ismertetett lépéseket. Lásd még: a [vendég operációs rendszer névterének és metrikáinak nem](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics) kiválasztására vonatkozó hibaelhárítási lépések
 

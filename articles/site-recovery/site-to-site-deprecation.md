@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 68d975a1b8bb8d47011bb292d3cf897956b31712
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623602"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661670"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Az ügyfél által felügyelt webhelyek (VMM) közötti vész-helyreállítás elavult Azure Site Recovery használatával
 
@@ -36,10 +36,8 @@ DR System Center Virtual Machine Manager (SCVMM) által kezelt, az ügyfél ált
 
 Az alábbiakban azokat az alternatívákat láthatja, amelyekkel az ügyfél kiválaszthatja, hogy a DR-stratégiájuk ne legyen hatással a forgatókönyv elavulása után. 
 
-- 1\. lehetőség (ajánlott): válassza az [Azure-t a Hyper-V-gazdagépeken futó virtuális gépekhez tartozó Dr célként](hyper-v-azure-tutorial.md).
+- 1\. lehetőség (ajánlott): dönthet úgy, hogy [Az Azure-t használja Dr célként](hyper-v-vmm-azure-tutorial.md).
 
-    > [!IMPORTANT]
-    > Vegye figyelembe, hogy a helyszíni környezet továbbra is rendelkezhet SCVMMM, de az ASR-t csak a Hyper-V-gazdagépekre mutató hivatkozásokkal konfigurálhatja.
 
 - 2\. lehetőség: válassza ki a helyek közötti replikálást a mögöttes [Hyper-V replika megoldás](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)használatával, de nem tudja kezelni a Dr-konfigurációkat a Azure Portal Azure site Recovery használatával. 
 
@@ -50,15 +48,11 @@ Ha az 1. lehetőséget választja, hajtsa végre a következő lépéseket:
 
 1. [Tiltsa le a VMMs társított összes virtuális gép védelmét](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario). A replikáció **letiltása és eltávolítása** lehetőséggel vagy a megemlített szkriptek futtatásával gondoskodhat arról, hogy a helyszíni replikációs beállítások törlődnek. 
 
-2. [Az összes VMM-kiszolgáló regisztrációjának törlése](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server)
+2. [Szüntesse meg az összes VMM-kiszolgáló regisztrációját](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server) a helyek közötti replikációs konfigurációból.
 
 3. [Készítse elő az Azure-erőforrásokat](tutorial-prepare-azure-for-hyperv.md) a virtuális gépek replikálásának engedélyezéséhez.
 4. [Helyszíni Hyper-V kiszolgálók előkészítése](hyper-v-prepare-on-premises-tutorial.md)
-
-> [!IMPORTANT]
-> Vegye figyelembe, hogy nem kell végrehajtania a VMM előkészítése szakaszban leírt lépéseket.
-
-5. [A virtuális gépek replikálásának beállítása](hyper-v-azure-tutorial.md)
+5. [A VMM-felhőben található virtuális gépek replikálásának beállítása](hyper-v-vmm-azure-tutorial.md)
 6. Nem kötelező, de ajánlott: [Dr-részletezés futtatása](tutorial-dr-drill-azure.md)
 
 Ha a Hyper-V replika használatának 2. lehetőségét választja, hajtsa végre a következő lépéseket:

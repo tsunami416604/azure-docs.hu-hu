@@ -1,25 +1,21 @@
 ---
 title: Application Insights függőségi adatmodell Azure Monitor
 description: Application Insights adatmodell a függőségi telemetria
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 5021d3b34816159fc78590a5947ddd3a790303ee
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872638"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671919"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Függőségi telemetria: Application Insights adatmodell
 
 A függőségi telemetria ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)) a figyelt összetevő és egy távoli összetevő, például az SQL vagy egy http-végpont interakcióját jelöli.
 
-## <a name="name"></a>Név
+## <a name="name"></a>Name (Név)
 
 A függőségi hívással kezdeményezett parancs neve. Alacsony kardinális érték. Ilyenek például a tárolt eljárás neve és az URL-cím elérési útja sablon.
 
@@ -31,7 +27,7 @@ A függőségi hívás példányának azonosítója. A függőségi híváshoz t
 
 A függőségi hívás által kezdeményezett parancs. Ilyenek például az SQL-utasítások és a HTTP URL-címek az összes lekérdezési paraméterrel.
 
-## <a name="type"></a>Type (Típus)
+## <a name="type"></a>Típus
 
 Függőségi típus neve A függőségek logikai csoportosításának és más mezők, például a commandName és a resultCode értelmezésének alacsony kardinális értéke. Ilyenek például az SQL, az Azure Table és a HTTP.
 
@@ -43,7 +39,7 @@ A függőségi hívás célhelye. Ilyenek például a kiszolgáló neve, a gazda
 
 Kérelem időtartama (formátum: `DD.HH:MM:SS.MMMMMM`). `1000` napnál rövidebbnek kell lennie.
 
-## <a name="result-code"></a>Eredménykód
+## <a name="result-code"></a>Eredmény kódja
 
 A függőségi hívás eredményének kódja. Ilyenek például az SQL-hibakódok és a HTTP-állapotkód.
 

@@ -1,18 +1,16 @@
 ---
 title: Az Azure Application Insights Agent API-referenciája
-description: Application Insights Agent API-referenciája. Az Enable-ApplicationInsightsMonitoring. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
-ms.service: azure-monitor
-ms.subservice: application-insights
+description: Application Insights Agent API-referenciája. Enable-ApplicationInsightsMonitoring. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: dccd7e617174bef4a85cb6293cbcc459542310f9
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8bbdc96a49fffc91f80d24a9eb0926766f86ee16
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899707"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671307"
 ---
 # <a name="application-insights-agent-api-enable-applicationinsightsmonitoring"></a>Application Insights ügynök API: Enable-ApplicationInsightsMonitoring
 
@@ -50,8 +48,8 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 Ebben a példában:
 - a `MachineFilter` a `'.*'` helyettesítő karakterrel egyezik meg az aktuális számítógéppel.
 - a `AppFilter='WebAppExclude'` `null` kialakítási kulcsot biztosít. A megadott alkalmazás nem lesz kialakítva.
-- `AppFilter='WebAppOne'` – a megadott alkalmazást egyedi kialakítási kulcsként rendeli hozzá.
-- `AppFilter='WebAppTwo'` – a megadott alkalmazást egyedi kialakítási kulcsként rendeli hozzá.
+- `AppFilter='WebAppOne'` egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
+- `AppFilter='WebAppTwo'` egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
 - Végezetül `AppFilter` a `'.*'` helyettesítő karaktert is használja a korábbi szabályoknak nem megfelelő webalkalmazások és az alapértelmezett kialakítási kulcs hozzárendeléséhez.
 - A szóközök hozzáadódnak az olvashatósághoz.
 
@@ -72,7 +70,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
 **Szükséges.** Ezzel a paraméterrel több rendszerállapot-kulcs és az egyes alkalmazások által használt rendszerállapot-kulcsok leképezése is megadható.
-A `MachineFilter` beállítás megadásával egyetlen telepítési parancsfájlt is létrehozhat több számítógép számára.
+A `MachineFilter`beállításával egyetlen telepítési parancsfájlt is létrehozhat több számítógép számára.
 
 > [!IMPORTANT]
 > Az alkalmazások a szabályok megadásának sorrendjében egyeznek meg a szabályokkal. Ezért a legpontosabb szabályokat kell megadnia az első és a legáltalánosabb szabályok közül.

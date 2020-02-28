@@ -1,18 +1,17 @@
 ---
 title: Számítógépek összekötése az Log Analytics átjáró használatával | Microsoft Docs
 description: Az eszközök és a Operations Manager által figyelt számítógépek összekapcsolásához használja az Log Analytics Gatewayt az Azure Automation és Log Analytics szolgáltatásba való adatküldés esetén, amikor nincs internet-hozzáférése.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 30854382b5a6dfd0faabfc2f59340dc21518d6f2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6c5325a21ffa74f5679a74b991f1c814eadc64ff
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773290"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672293"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor
 
@@ -24,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Automation és a Azure 
 
 A Log Analytics átjáró egy http-továbbítási proxy, amely támogatja a http-bújtatást a HTTP-kapcsolat parancs használatával. Ez az átjáró adatokat küld Azure Automation és egy Log Analytics munkaterületre az Azure Monitor azon számítógépek nevében, amelyek nem tudnak közvetlenül csatlakozni az internethez. 
 
-A Log Analytics átjáró a következőket támogatja:
+A Log Analytics-átjáró támogatja:
 
 * Az egyes ügynökökön konfigurált, és a Azure Automation hibrid Runbook-feldolgozókkal konfigurált Log Analytics munkaterületek jelentéskészítése.  
 * Windows rendszerű számítógépek, amelyeken a Microsoft monitoring Agent közvetlenül kapcsolódik egy Log Analytics munkaterülethez Azure Monitorban.
@@ -51,7 +50,7 @@ Az alábbi ábrán a közvetlen ügynököktől, az átjárón keresztül Azure 
 
 ![A közvetlen ügynökkel való kommunikáció diagramja a szolgáltatásokkal](./media/gateway/oms-omsgateway-agentdirectconnect.png)
 
-Az alábbi ábrán egy Operations Manager felügyeleti csoportból Log Analyticsba irányuló adatfolyam látható.   
+Az alábbi ábrán az adatfolyam egy Operations Manager felügyeleti csoportból a Log Analytics szolgáltatásba.   
 
 ![Operations Manager kommunikáció ábrája Log Analytics](./media/gateway/log-analytics-agent-opsmgrconnect.png)
 
@@ -65,14 +64,14 @@ Az Log Analytics átjáró futtatására kijelölt számítógépeknek a követk
 * Legalább 4 magos processzor és 8 GB memória 
 * A Windows rendszerhez készült [log Analytics ügynök](agent-windows.md) , amely az átjárón keresztül kommunikáló ügynökökkel azonos munkaterületre való jelentésre van konfigurálva
 
-### <a name="language-availability"></a>Nyelvi elérhetőség
+### <a name="language-availability"></a>Nyelvi rendelkezésre állása
 
 A Log Analytics átjáró a következő nyelveken érhető el:
 
-- Kínai (egyszerűsített)
-- Kínai (hagyományos)
+- kínai (egyszerűsített)
+- kínai (hagyományos)
 - cseh
-- holland
+- Holland
 - Angol
 - francia
 - német
@@ -81,18 +80,18 @@ A Log Analytics átjáró a következő nyelveken érhető el:
 - japán
 - koreai
 - lengyel
-- Portugál (brazíliai)
-- Portugál (portugáliai)
-- orosz
+- portugál (brazíliai)
+- portugál (általános)
+- Orosz
 - Spanyol (nemzetközi)
 
-### <a name="supported-encryption-protocols"></a>Támogatott titkosítási protokollok
+### <a name="supported-encryption-protocols"></a>Támogatott titkosítási protokollokkal
 
 Az Log Analytics-átjáró csak Transport Layer Security (TLS) 1,0, 1,1 és 1,2 protokollt támogat.  Nem támogatja SSL (SSL) használatát.  A Log Analytics felé irányuló adatforgalom biztonsága érdekében konfigurálja az átjárót legalább TLS 1,2 használatára. A TLS vagy az SSL régebbi verziói sebezhetőek. Bár jelenleg lehetővé teszik a visszamenőleges kompatibilitást, ne használja őket.  
 
 További információkért tekintse át az [adatok biztonságos küldését a TLS 1,2 használatával](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
-### <a name="supported-number-of-agent-connections"></a>Az ügynökök kapcsolatainak támogatott száma
+### <a name="supported-number-of-agent-connections"></a>Támogatott ügynök-kapcsolatok száma
 
 Az alábbi táblázat azt mutatja be, hogy hány ügynök tud kommunikálni egy átjáró-kiszolgálóval. A támogatás olyan ügynökökön alapul, amelyek 6 másodpercenként 200 KB adatmennyiséget töltenek fel. Minden tesztelt ügynök esetében az adatmennyiség körülbelül 2,7 GB.
 
@@ -101,7 +100,7 @@ Az alábbi táblázat azt mutatja be, hogy hány ügynök tud kommunikálni egy 
 |CPU: Intel Xeon processzor E5-2660 v3 \@ 2,6 GHz 2 mag<br> Memória: 4 GB<br> Hálózati sávszélesség: 1 GB/s| 600|  
 |CPU: Intel Xeon processzor E5-2660 v3 \@ 2,6 GHz 4 mag<br> Memória: 8 GB<br> Hálózati sávszélesség: 1 GB/s| 1000|  
 
-## <a name="download-the-log-analytics-gateway"></a>Az Log Analytics-átjáró letöltése
+## <a name="download-the-log-analytics-gateway"></a>A Log Analytics-átjáró letöltése
 
 Szerezze be a Log Analytics átjáró telepítési fájljának legújabb verzióját a Microsoft letöltőközpontból ([letöltési hivatkozás](https://go.microsoft.com/fwlink/?linkid=837444)) vagy a Azure Portal.
 
@@ -132,10 +131,10 @@ Ha az átjárót a telepítővarázsló segítségével szeretné telepíteni, k
 1. A **licencszerződés** lapon jelölje be az **Elfogadom a licencszerződés feltételeit** , hogy fogadja el a Microsoft szoftverlicenc-szerződést, majd kattintson a **tovább**gombra.
 1. A **port és a proxy címe** lapon:
 
-   a. Adja meg az átjáróhoz használandó TCP-portszámot. A telepítő ezt a portszámot használja egy bejövő szabály konfigurálásához a Windows tűzfalon.  Az alapértelmezett érték a 8080.
-      A portszám érvényes tartománya 1 – 65535. Ha a bemenet nem ebbe a tartományba esik, hibaüzenet jelenik meg.
+   a. Adja meg az átjáróhoz használandó TCP-portszámot. A telepítő ezt a portszámot használja egy bejövő szabály konfigurálásához a Windows tűzfalon.  Az alapértelmezett érték: 8080-as.
+      A portszám érvényes tartománya 1 – 65535. Ha a bemeneti nem esik a tartományba, hibaüzenet jelenik meg.
 
-   b. Ha az átjárót telepítő kiszolgálónak proxyn keresztül kell kommunikálnia, adja meg azt a proxy-címeket, ahová az átjárónak csatlakoznia kell. Adja meg például a következőt: `http://myorgname.corp.contoso.com:80`.  Ha ezt a mezőt üresen hagyja, akkor az átjáró közvetlenül csatlakozik az internethez.  Ha a proxykiszolgáló hitelesítést igényel, adjon meg egy felhasználónevet és egy jelszót.
+   b. Ha az átjárót telepítő kiszolgálónak proxyn keresztül kell kommunikálnia, adja meg azt a proxy-címeket, ahová az átjárónak csatlakoznia kell. Adja meg például a következőt: `http://myorgname.corp.contoso.com:80`.  Ha ezt a mezőt üresen hagyja, akkor az átjáró közvetlenül csatlakozik az internethez.  Ha a proxykiszolgáló hitelesítést igényel, adjon meg egy felhasználónevet és jelszót.
 
    c. Kattintson a **Tovább** gombra.
 
@@ -184,23 +183,23 @@ A telepítés után ellenőrizheti a beállításokat (kivéve a felhasználóne
 - **Get-OMSGatewayConfig** – az átjáró által a figyelésre konfigurált TCP-portot adja vissza.
 - **Get-OMSGatewayRelayProxy** – Visszaadja annak a proxykiszolgálónek az IP-címét, amelyet a szolgáltatással való kommunikációra konfigurált.
 
-## <a name="configure-network-load-balancing"></a>Hálózati terheléselosztás konfigurálása
+## <a name="configure-network-load-balancing"></a>Hálózati terheléselosztás beállítása
 
-A hálózati terheléselosztás (NLB) használatával a magas rendelkezésre állású átjárót a Microsoft hálózati terheléselosztás [(NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing), a [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)vagy a hardveres terheléselosztó segítségével állíthatja be. A terheléselosztó úgy kezeli a forgalmat, hogy átirányítja a kért kapcsolatokat a Log Analytics ügynököktől, vagy Operations Manager a felügyeleti kiszolgálókat a csomópontokon keresztül. Ha egy átjárókiszolgáló leáll, a rendszer átirányítja a forgalmat a többi csomópontra.
+A hálózati terheléselosztás (NLB) használatával a magas rendelkezésre állású átjárót a Microsoft hálózati terheléselosztás [(NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing), a [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)vagy a hardveres terheléselosztó segítségével állíthatja be. A terheléselosztó forgalmat kezeli a csomópontok között a Log Analytics-ügynökök kért kapcsolatot, vagy az Operations Manager felügyeleti kiszolgálók átirányításával. Egy átjáró kiszolgáló leáll, ha más csomópontokhoz átirányítja a forgalmat.
 
 ### <a name="microsoft-network-load-balancing"></a>Microsoft hálózati terheléselosztás
 
 A Windows Server 2016 hálózati terheléselosztási fürt kialakításával és üzembe helyezésével kapcsolatos információkért lásd: [hálózati](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing)terheléselosztás. A következő lépések a Microsoft hálózati terheléselosztási fürtök konfigurálását ismertetik.  
 
-1. Jelentkezzen be arra a Windows Serverre, amely az NLB-fürt tagja egy rendszergazdai fiókkal.  
+1. Jelentkezzen be a Windows server, amely tagja a rendszergazdák rendszergazdai fiókkal az NLB-fürt.  
 2. Nyissa meg a hálózati terheléselosztás kezelőjét a Kiszolgálókezelőben, kattintson az **eszközök**, majd a **hálózati terheléselosztás kezelője**lehetőségre.
 3. Ha egy Log Analytics átjáró-kiszolgálót a Microsoft monitoring agenttel kíván csatlakozni, kattintson a jobb gombbal a fürt IP-címére, majd kattintson a **gazdagép hozzáadása a fürthöz**lehetőségre. 
 
     ![Hálózati terheléselosztás kezelője – gazdagép hozzáadása fürthöz](./media/gateway/nlb02.png)
  
-4. Adja meg a csatlakozni kívánt átjárókiszolgáló IP-címét. 
+4. Adja meg az IP-cím, az átjárókiszolgáló, amely kapcsolódni szeretne. 
 
-    ![Hálózati terheléselosztás kezelője – gazdagép hozzáadása fürthöz: Kapcsolódás](./media/gateway/nlb03.png) 
+    ![Hálózati terheléselosztás kezelője – a gazdagépet a fürthöz: csatlakozás](./media/gateway/nlb03.png) 
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
@@ -271,7 +270,7 @@ Az Log Analytics-integráció befejezése után távolítsa el a változást a `
 
    ![Képernyőkép a Operations Managerről, amely a proxykiszolgáló címeit jeleníti meg](./media/gateway/scom02.png)
 
-1. Válassza a **Finish** (Befejezés) elemet. A Operations Manager felügyeleti csoport úgy van konfigurálva, hogy az átjáró-kiszolgálón keresztül kommunikáljon a Log Analytics szolgáltatással.
+1. Válassza a **Finish** (Befejezés) elemet. Az Operations Manager felügyeleti csoportban most már a Log Analytics szolgáltatás az átjárókiszolgálón keresztül kommunikációra van konfigurálva.
 
 ### <a name="configure-operations-manager-where-specific-agents-use-a-proxy-server"></a>Operations Manager konfigurálása, ahol az egyes ügynökök proxykiszolgálót használnak
 
@@ -306,13 +305,13 @@ Az egyes régiók URL-címének megkereséséhez tekintse meg az Automation doku
 
 Ha a számítógép automatikusan hibrid Runbook-feldolgozóként van regisztrálva, például ha a Update Management megoldás egy vagy több virtuális gépre van engedélyezve, kövesse az alábbi lépéseket:
 
-1. Adja hozzá a feladatok futtatókörnyezetének adatszolgáltatásának URL-címeit az Log Analytics-átjárón lévő engedélyezett gazdagépek listájához. Például:`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+1. Adja hozzá a Feladatadatok futásidejű szolgáltatás URL-címeinek a gazdagépen engedélyezett a Log Analytics-átjáró-listája. Például:`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 1. Indítsa újra a Log Analytics Gateway szolgáltatást a következő PowerShell-parancsmag használatával: `Restart-Service OMSGatewayService`
 
 Ha a számítógép a hibrid Runbook Worker Registration parancsmag használatával csatlakozik Azure Automationhoz, kövesse az alábbi lépéseket:
 
-1. Adja hozzá az ügynök szolgáltatás regisztrációs URL-címét az engedélyezett gazdagépek listájához az Log Analytics-átjárón. Például:`Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
-1. Adja hozzá a feladatok futtatókörnyezetének adatszolgáltatásának URL-címeit az Log Analytics-átjárón lévő engedélyezett gazdagépek listájához. Például:`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+1. A Log Analytics-átjáró engedélyezett gazdagép listájában adja hozzá az ügynök regisztrációs URL-címe. Például:`Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
+1. Adja hozzá a Feladatadatok futásidejű szolgáltatás URL-címeinek a gazdagépen engedélyezett a Log Analytics-átjáró-listája. Például:`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 1. Indítsa újra a Log Analytics-átjáró szolgáltatást.
     `Restart-Service OMSGatewayService`
 
@@ -321,27 +320,27 @@ Ha a számítógép a hibrid Runbook Worker Registration parancsmag használatá
 A Log Analytics átjáró konfigurációs beállításainak frissítéséhez parancsmagokat használhat a feladatok végrehajtásához. A parancsmagok használata előtt ügyeljen a következőre:
 
 1. Telepítse a Log Analytics átjárót (Microsoft Windows Installer).
-1. Nyisson meg egy PowerShell-konzolablak ablakát.
+1. Nyisson meg egy PowerShell-konzolablakot.
 1. Importálja a modult a következő parancs beírásával: `Import-Module OMSGateway`
-1. Ha az előző lépésben nem történt hiba, a modul importálása sikeres volt, és a parancsmagok is használhatók. Adja meg `Get-Module OMSGateway`
+1. Ha nem történt hiba az előző lépésben, a modul importálása sikeresen megtörtént, és a parancsmag is használható. Adja meg `Get-Module OMSGateway`
 1. Miután a parancsmagok használatával módosításokat hajt végre, indítsa újra a OMS-átjáró szolgáltatást.
 
 A 3. lépésben szereplő hiba azt jelenti, hogy a modult nem importálták. A hiba akkor fordulhat elő, ha a PowerShell nem találja a modult. A modult a OMS-átjáró telepítési útvonalán találja: *C:\Program FILES\MICROSOFT OMS Gateway\PowerShell\OmsGateway*.
 
 | **Parancsmag** | **Paraméterek** | **Leírás** | **Példa** |
 | --- | --- | --- | --- |  
-| `Get-OMSGatewayConfig` |Jelmagyarázat |A szolgáltatás konfigurációjának beolvasása |`Get-OMSGatewayConfig` |  
-| `Set-OMSGatewayConfig` |Kulcs (kötelező) <br> Value (Díj) |A szolgáltatás konfigurációjának módosítása |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
-| `Get-OMSGatewayRelayProxy` | |A Relay (upstream) proxy címe |`Get-OMSGatewayRelayProxy` |  
-| `Set-OMSGatewayRelayProxy` |Cím<br> Felhasználónév<br> Jelszó |A Relay (upstream) proxy címe (és hitelesítő adatai) beállítása |1. Állítsa be a továbbító proxyt és a hitelesítő adatokat:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. olyan továbbító proxyt állítson be, amely nem igényel hitelesítést: `Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. törölje a továbbítási proxy beállítását:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
+| `Get-OMSGatewayConfig` |Paraméter |A szolgáltatás konfigurációjának beolvasása |`Get-OMSGatewayConfig` |  
+| `Set-OMSGatewayConfig` |Kulcs (kötelező) <br> Érték |A szolgáltatás konfigurációjának módosítása |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
+| `Get-OMSGatewayRelayProxy` | |Relay-(upstream) proxy címét |`Get-OMSGatewayRelayProxy` |  
+| `Set-OMSGatewayRelayProxy` |Cím<br> Felhasználónév<br> Jelszó |Beállítja a relay (upstream) proxy címét (vagy hitelesítő adatok) |1. Állítsa be a továbbító proxyt és a hitelesítő adatokat:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. olyan továbbító proxyt állítson be, amely nem igényel hitelesítést: `Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. törölje a továbbítási proxy beállítását:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
 | `Get-OMSGatewayAllowedHost` | |A jelenleg engedélyezett gazdagép beolvasása (csak a helyileg konfigurált engedélyezett gazdagép, az engedélyezett gazdagépek nem tölthetők le automatikusan) |`Get-OMSGatewayAllowedHost` | 
-| `Add-OMSGatewayAllowedHost` |Gazdagép (kötelező) |Hozzáadja a gazdagépet az engedélyezett listához. |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
-| `Remove-OMSGatewayAllowedHost` |Gazdagép (kötelező) |Eltávolítja a gazdagépet az engedélyezési listáról. |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  
-| `Add-OMSGatewayAllowedClientCertificate` |Tárgy (kötelező) |Hozzáadja az ügyféltanúsítványt az engedélyezett listához |`Add-OMSGatewayAllowed`<br>`ClientCertificate` <br> `-Subject mycert` |  
-| `Remove-OMSGatewayAllowedClientCertificate` |Tárgy (kötelező) |Eltávolítja az ügyféltanúsítvány tárgyát az engedélyezett listából. |`Remove-OMSGatewayAllowed` <br> `ClientCertificate` <br> `-Subject mycert` |  
+| `Add-OMSGatewayAllowedHost` |A gazdagép (kötelező) |Hozzáadja a gazdagépet, az engedélyezett listára |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
+| `Remove-OMSGatewayAllowedHost` |A gazdagép (kötelező) |A gazdagép eltávolítása az engedélyezett listára |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  
+| `Add-OMSGatewayAllowedClientCertificate` |Tulajdonos (kötelező) |Az engedélyezett listára vonatkoznak az ügyféltanúsítvány hozzáadása |`Add-OMSGatewayAllowed`<br>`ClientCertificate` <br> `-Subject mycert` |  
+| `Remove-OMSGatewayAllowedClientCertificate` |Tulajdonos (kötelező) |Az ügyfél-tanúsítvány tulajdonosának távolít el az engedélyezett listára |`Remove-OMSGatewayAllowed` <br> `ClientCertificate` <br> `-Subject mycert` |  
 | `Get-OMSGatewayAllowedClientCertificate` | |A jelenleg engedélyezett ügyféltanúsítvány-alanyok beolvasása (csak a helyileg konfigurált engedélyezett alanyok, az engedélyezett témák nem tölthetők le automatikusan) |`Get-`<br>`OMSGatewayAllowed`<br>`ClientCertificate` |  
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Az átjáró által naplózott események gyűjtéséhez telepítenie kell a Log Analytics ügynököt.
 
@@ -356,7 +355,7 @@ A következő táblázat a Log Analytics átjáró eseményeinek esemény-azonos
 | 400 |Bármilyen alkalmazáshiba, amely nem rendelkezik egyedi AZONOSÍTÓval. |
 | 401 |Helytelen konfiguráció. Például: listenPort = "text", egész szám helyett. |
 | 402 |Kivétel történt a TLS-kézfogási üzenetek elemzésekor. |
-| 403 |Hálózati hiba. Nem lehet például csatlakozni a célkiszolgálóra. |
+| 403 |Hálózati hiba történt. Nem lehet például csatlakozni a célkiszolgálóra. |
 | 100 |Általános információk. |
 | 101 |A szolgáltatás elindult. |
 | 102 |A szolgáltatás leállt. |
@@ -364,19 +363,19 @@ A következő táblázat a Log Analytics átjáró eseményeinek esemény-azonos
 | 104 |Nem HTTP-csatlakozási parancs. |
 | 105 |A célkiszolgáló nincs engedélyezve a listán, vagy a célport nem biztonságos (443). <br> <br> Győződjön meg arról, hogy az OMS-átjárókiszolgáló és az OMS-átjáróval kommunikáló ügynökök az MMA-ügynök ugyanahhoz a Log Analytics munkaterülethez csatlakoznak. |
 | 105 |HIBA TcpConnection – érvénytelen ügyféltanúsítvány: CN = Gateway. <br><br> Győződjön meg arról, hogy a OMS Gateway 1.0.395.0 vagy újabb verzióját használja. Győződjön meg arról is, hogy az OMS-átjárókiszolgáló és az OMS-átjáróval kommunikáló ügynökök az MMA-ügynök ugyanahhoz a Log Analytics-munkaterülethez csatlakoznak. |
-| 106 |A TLS/SSL protokoll verziója nem támogatott.<br><br> A Log Analytics átjáró csak a TLS 1,0, TLS 1,1 és 1,2 protokollt támogatja. Nem támogatja az SSL használatát.|
+| 106 |A TLS/SSL protokoll verziója nem támogatott.<br><br> A Log Analytics átjáró csak a TLS 1,0, TLS 1,1 és 1,2 protokollt támogatja. Nem támogatja az SSL.|
 | 107 |A TLS-munkamenet ellenőrzése megtörtént. |
 
 ### <a name="performance-counters-to-collect"></a>A gyűjteni kívánt teljesítményszámlálók
 
-A következő táblázat a Log Analytics átjáró számára elérhető teljesítményszámlálókat mutatja be. A teljesítményszámlálók hozzáadásához használja a Teljesítményfigyelőt.
+Az alábbi táblázat a Log Analytics-átjáró esetében rendelkezésre álló teljesítményszámlálók. A teljesítményszámlálók hozzáadásához használja a Teljesítményfigyelőt.
 
 | **Name (Név)** | **Leírás** |
 | --- | --- |
-| Átjáró/aktív ügyfélkapcsolat Log Analytics |Az aktív ügyfél-hálózati (TCP-) kapcsolatok száma |
-| Log Analytics átjáró/hibák száma |Hibák száma |
-| Átjáró/csatlakoztatott ügyfél Log Analytics |Csatlakoztatott ügyfelek száma |
-| Log Analytics átjáró/elutasítások száma |A TLS-érvényesítési hiba miatt elutasítások száma |
+| Log Analytics-aktív átjáró ügyfél-kapcsolat |Aktív ügyfél (TCP) hálózati kapcsolatok száma |
+| Log Analytics-átjáró/hibák száma |Hibák száma |
+| Log Analytics-átjáró/csatlakozott ügyfél |Csatlakoztatott ügyfelek száma |
+| Log Analytics Gateway/elutasító száma |Bármely TLS-érvényesítési hiba miatt elutasítások száma |
 
 ![Képernyőkép a Log Analytics átjáró felületéről, a teljesítményszámlálók megjelenítéséhez](./media/gateway/counters.png)
 

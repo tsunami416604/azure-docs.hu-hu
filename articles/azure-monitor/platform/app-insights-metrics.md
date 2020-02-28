@@ -3,17 +3,16 @@ title: Azure Application Insights log-alapú mérőszámok | Microsoft Docs
 description: Ez a cikk a támogatott összesítésekkel és Dimenziókkal rendelkező Azure Application Insights mérőszámokat sorolja fel. A log-alapú metrikák részletei tartalmazzák a mögöttes Kusto-lekérdezési utasításokat.
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 847c56faae61483813286c46190764327e287783
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887257"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664915"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights log-alapú metrikák
 
@@ -64,7 +63,7 @@ A *rendelkezésre állási teszt időtartamának* mérőszáma azt mutatja, hogy
 
 |Mértékegység|Támogatott összesítések|Támogatott méretek|
 |---|---|---|---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|Futtatás helye, teszt neve, teszt eredménye
+|Ezredmásodperc|Átlag, min, Max|Futtatás helye, teszt neve, teszt eredménye
 
 ```Kusto
 availabilityResults
@@ -99,7 +98,7 @@ A böngésző metrikáit a Application Insights JavaScript SDK gyűjti a valós 
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|None|
+|Ezredmásodperc|Átlag, min, Max|Nincs|
 
 ```Kusto
 browserTimings
@@ -115,7 +114,7 @@ browserTimings
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|None|
+|Ezredmásodperc|Átlag, min, Max|Nincs|
 
 ```Kusto
 browserTimings
@@ -131,7 +130,7 @@ browserTimings
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|None|
+|Ezredmásodperc|Átlag, min, Max|Nincs|
 
 ```Kusto
 browserTimings
@@ -147,7 +146,7 @@ browserTimings
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|None|
+|Ezredmásodperc|Átlag, min, Max|Nincs|
 
 ```Kusto
 browserTimings
@@ -163,7 +162,7 @@ browserTimings
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|None|
+|Ezredmásodperc|Átlag, min, Max|Nincs|
 
 ```Kusto
 browserTimings
@@ -185,7 +184,7 @@ Ez a metrika a böngészőben futó alkalmazás kódjából kiváltott kivétele
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
 |---|---|---|---|
-|Darabszám|Darabszám|None|A log-alapú verzió a **Sum** összesítést használja.|
+|Darabszám|Darabszám|Nincs|A log-alapú verzió a **Sum** összesítést használja.|
 
 ```Kusto
 exceptions
@@ -200,7 +199,7 @@ A sikertelen függőségi hívások száma.
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
 |---|---|---|---|
-|Darabszám|Darabszám|None|A log-alapú verzió a **Sum** összesítést használja.|
+|Darabszám|Darabszám|Nincs|A log-alapú verzió a **Sum** összesítést használja.|
 
 ```Kusto
 dependencies

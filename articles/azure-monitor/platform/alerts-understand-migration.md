@@ -1,18 +1,17 @@
 ---
 title: Ismerje meg, hogy az önkéntes áttelepítési eszköz hogyan működik Azure Monitor riasztások esetén
 description: Ismerje meg, hogy a riasztások áttelepítési eszköze hogyan működik és hibaelhárítási problémákkal rendelkezik.
-author: yalavi
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
+author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 493fa4ac51bf593b7856b236c5d861ec029769d3
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 8cc77d13567910797cd519ac193b848f3ea434da
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680681"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665272"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Az áttelepítési eszköz működésének megismerése
 
@@ -56,10 +55,10 @@ A rendszer minden klasszikus riasztást áttelepíthet a tárolási fiókokon, k
 
 - PercentAuthorizationError
 - PercentClientOtherError
-- PercentNetworkError
+- Percentnetworkerror értéket mutatnak
 - PercentServerOtherError
 - PercentSuccess
-- PercentThrottlingError
+- Percentthrottlingerror értéket mutatnak
 - Percenttimeouterror értéket mutatnak
 - AnonymousThrottlingError
 - SASThrottlingError
@@ -75,7 +74,7 @@ Cosmos DB metrikákkal kapcsolatos klasszikus riasztások áttelepíthetők, kiv
 
 - Másodpercenkénti átlagos kérelmek
 - Konzisztenciaszint
-- Http-2xx
+- Http 2xx
 - Http-3xx
 - Http 400
 - HTTP 401
@@ -93,7 +92,7 @@ Cosmos DB metrikákkal kapcsolatos klasszikus riasztások áttelepíthetők, kiv
 - Megfigyelt olvasási késés
 - Megfigyelt írási késés
 - Szolgáltatás rendelkezésre állása
-- Storage kapacitása
+- Tárkapacitás
 - Szabályozott kérelmek
 - Összes kérelem
 
@@ -113,12 +112,12 @@ Ezek a klasszikus riasztási szabályok a korábban támogatott metrikák eseté
 
 | Erőforrás típusa| Elavult metrika (ek) |
 |-------------|----------------- |
-| Microsoft. DBforMySQL/kiszolgálók | compute_consumption_percent, compute_limit |
-| Microsoft. DBforPostgreSQL/kiszolgálók | compute_consumption_percent, compute_limit |
+| Microsoft.DBforMySQL/servers | compute_consumption_percent, compute_limit |
+| Microsoft.DBforPostgreSQL/servers | compute_consumption_percent, compute_limit |
 | Microsoft.Network/publicIPAddresses | defaultddostriggerrate |
-| Microsoft. SQL/kiszolgálók/adatbázisok | service_level_objective, storage_limit, storage_used, szabályozás, dtu_consumption_percent, storage_used |
-| Microsoft. Web/hostingEnvironments/multirolepools | averagememoryworkingset |
-| Microsoft. Web/hostingEnvironments/workerpools | BytesReceived, httpqueuelength |
+| Microsoft.SQL/servers/databases | service_level_objective, storage_limit, storage_used, throttling, dtu_consumption_percent, storage_used |
+| Microsoft.Web/hostingEnvironments/multirolepools | averagememoryworkingset |
+| Microsoft.Web/hostingEnvironments/workerpools | BytesReceived, httpqueuelength |
 
 ## <a name="how-equivalent-new-alert-rules-and-action-groups-are-created"></a>Hogyan hozhatók létre egyenértékű új riasztási szabályok és műveleti csoportok
 
@@ -131,7 +130,7 @@ Az áttelepítési eszköz a klasszikus riasztási szabályokat egyenértékű �
 
 A következő fejezetekben részletesen ismertetjük az új rendszer különböző, egyenértékű metrikával rendelkező mérőszámait. A klasszikus és az új riasztási szabályoknál változatlan maradó mérőszámok nem szerepelnek a felsorolásban. [Itt](metrics-supported.md)megtalálhatja az új rendszer által támogatott mérőszámok listáját.
 
-### <a name="microsoftstorageaccountsservices"></a>Microsoft. StorageAccounts/szolgáltatások
+### <a name="microsoftstorageaccountsservices"></a>Microsoft.StorageAccounts/services
 
 A Storage-fiókokhoz, például a blobhoz, a táblához, a fájlokhoz és a várólistákhoz a következő metrikák az alábbi módon vannak leképezve az egyenértékű mérőszámokra:
 
@@ -165,10 +164,10 @@ A Storage-fiókokhoz, például a blobhoz, a táblához, a fájlokhoz és a vár
 | Sikeres | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "sikeres" | |
 | TotalBillableRequests| Tranzakciók | |
 | TotalEgress | Kimenő forgalom | |
-| TotalIngress | Belépő | |
+| TotalIngress | Bejövő forgalom | |
 | TotalRequests | Tranzakciók | |
 
-### <a name="microsoftinsightscomponents"></a>Microsoft. bepillantások/összetevők
+### <a name="microsoftinsightscomponents"></a>Microsoft.insights/components
 
 Application Insights esetén az egyenértékű mérőszámok az alábbiak szerint jelennek meg:
 
@@ -176,29 +175,29 @@ Application Insights esetén az egyenértékű mérőszámok az alábbiak szerin
 |--------------------------|---------------------------------|---------|
 | rendelkezésre állás. availabilityMetric. Value | availabilityResults/availabilityPercentage|   |
 | rendelkezésre állás. durationMetric. Value | availabilityResults/időtartam| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
-| basicExceptionBrowser. Count | kivételek/böngésző|  A "Sum" helyett használja a "Count" `aggregationType`. |
-| basicExceptionServer. Count | kivételek/kiszolgáló| A "Sum" helyett használja a "Count" `aggregationType`.  |
+| basicExceptionBrowser.count | kivételek/böngésző|  A "Sum" helyett használja a "Count" `aggregationType`. |
+| basicExceptionServer.count | kivételek/kiszolgáló| A "Sum" helyett használja a "Count" `aggregationType`.  |
 | clientPerformance. clientProcess. Value | browserTimings/processingDuration| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
-| clientPerformance. networkConnection. Value | browserTimings/networkDuration|  Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van. |
-| clientPerformance. receiveRequest. Value | browserTimings/receiveDuration| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
-| clientPerformance. SendRequest hívás. Value | browserTimings/sendDuration| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
+| clientPerformance.networkConnection.value | browserTimings/networkDuration|  Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van. |
+| clientPerformance.receiveRequest.value | browserTimings/receiveDuration| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
+| clientPerformance.sendRequest.value | browserTimings/sendDuration| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
 | clientPerformance. Total. Value | browserTimings/totalDuration| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
 | performanceCounter. available_bytes. Value | performanceCounters/memoryAvailableBytes|   |
-| performanceCounter. io_data_bytes_per_sec. Value | performanceCounters/processIOBytesPerSecond|   |
-| performanceCounter. number_of_exceps_thrown_per_sec. Value | performanceCounters/exceptionsPerSecond|   |
-| performanceCounter. percentage_processor_time_normalized. Value | performanceCounters/processCpuPercentage|   |
-| performanceCounter. percentage_processor_time. Value | performanceCounters/processCpuPercentage| A küszöbértéket megfelelő módon módosítani kell, mivel az eredeti metrika az összes mag esetében módosult, és az új metrika egy mag szerint van normalizálva. Az áttelepítési eszköz nem változtatja meg a küszöbértékeket.  |
-| performanceCounter. percentage_processor_total. Value | performanceCounters/processorCpuPercentage|   |
+| performanceCounter.io_data_bytes_per_sec.value | performanceCounters/processIOBytesPerSecond|   |
+| performanceCounter.number_of_exceps_thrown_per_sec.value | performanceCounters/exceptionsPerSecond|   |
+| performanceCounter.percentage_processor_time_normalized.value | performanceCounters/processCpuPercentage|   |
+| performanceCounter.percentage_processor_time.value | performanceCounters/processCpuPercentage| A küszöbértéket megfelelő módon módosítani kell, mivel az eredeti metrika az összes mag esetében módosult, és az új metrika egy mag szerint van normalizálva. Az áttelepítési eszköz nem változtatja meg a küszöbértékeket.  |
+| performanceCounter.percentage_processor_total.value | performanceCounters/processorCpuPercentage|   |
 | performanceCounter. process_private_bytes. Value | performanceCounters/processPrivateBytes|   |
-| performanceCounter. request_execution_time. Value | performanceCounters/requestExecutionTime|   |
-| performanceCounter. requests_in_application_queue. Value | performanceCounters/requestsInQueue|   |
+| performanceCounter.request_execution_time.value | performanceCounters/requestExecutionTime|   |
+| performanceCounter.requests_in_application_queue.value | performanceCounters/requestsInQueue|   |
 | performanceCounter. requests_per_sec. Value | performanceCounters/requestsPerSecond|   |
 | kérelem. időtartam | kérelmek/időtartam| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
 | kérelem. arány | kérelmek/díjszabás|   |
 | requestFailed. Count | kérelmek/sikertelen| A "Sum" helyett használja a "Count" `aggregationType`.   |
 | megtekintés. darabszám | Oldalmegtekintések/darabszám| A "Sum" helyett használja a "Count" `aggregationType`.   |
 
-### <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. DocumentDB/databaseAccounts
+### <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
 Cosmos DB esetén az egyenértékű mérőszámok az alábbiak szerint jelennek meg:
 
@@ -236,8 +235,8 @@ Az áttelepítési eszköz fázisokban van a klasszikus riasztási szabályokat 
 
 Az előfizetések többsége jelenleg készként van megjelölve az áttelepítésre. Csak azok az előfizetések állnak készen az áttelepítésre, amelyek klasszikus riasztásokkal rendelkeznek a következő erőforrás-típusokon.
 
-- Microsoft. classicCompute/tartománynév/bővítőhely/szerepkörök
-- Microsoft. bepillantások/összetevők
+- Microsoft.classicCompute/domainNames/slots/roles
+- Microsoft.insights/components
 
 ## <a name="who-can-trigger-the-migration"></a>Kik indíthatják el az áttelepítést?
 
@@ -245,7 +244,7 @@ Minden olyan felhasználó, aki rendelkezik az előfizetés szintjén a figyelé
 
 - */read
 - Microsoft. bepillantások/actiongroups/*
-- Microsoft. bepillantások/AlertRules/*
+- Microsoft.Insights/AlertRules/*
 - Microsoft. bepillantások/metricAlerts/*
 - Microsoft. AlertsManagement/smartDetectorAlertRules/*
 

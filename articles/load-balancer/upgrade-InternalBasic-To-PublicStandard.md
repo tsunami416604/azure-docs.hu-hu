@@ -7,21 +7,22 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: f5ff4ca94f9e9c6bd03cde6b948331e42cc6225a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 346fc3d5a4e7b165caafd9847b9797abae0c9113
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77618203"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659985"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure belső Load Balancer frissítése – kimenő kapcsolatok szükségesek
 Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus). Mivel a standard belső Load Balancer nem biztosít kimenő kapcsolatokat, megoldást biztosítunk a standard nyilvános Load Balancer létrehozására.
 
-A frissítés három szakaszból áll:
+A frissítésnek négy szakasza van:
 
 1. Telepítse át a konfigurációt a standard nyilvános Load Balancer
 2. Virtuális gépek hozzáadása szabványos nyilvános Load Balancer háttérbeli készletekhez
-3. NSG szabályok beállítása az alhálózathoz/virtuális gépekhez, amelyeknek az internetre kell tartózkodniuk
+3. Kimenő szabály létrehozása a Load Balancer kimenő kapcsolatok esetén
+4. NSG szabályok beállítása az alhálózathoz/virtuális gépekhez, amelyeknek az internetre kell tartózkodniuk
 
 Ez a cikk a konfiguráció áttelepítését ismerteti. A virtuális gépeknek a háttérbeli készletekbe való felvétele az adott környezettől függően változhat. Bizonyos magas szintű általános javaslatok azonban [megtalálhatók](#add-vms-to-backend-pools-of-standard-load-balancer).
 
@@ -83,7 +84,7 @@ A szkript futtatása:
     **Példa**
 
    ```azurepowershell
-   ./AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Virtuális gépek hozzáadása standard Load Balancer backend-készletéhez
@@ -109,6 +110,12 @@ Először ellenőrizze, hogy a parancsfájl sikeresen létrehozott-e egy új sta
 
 * **Új virtuális gépek létrehozása az újonnan létrehozott Standard nyilvános Load Balancer háttér-készletekhez való hozzáadásához**.
     * További információ a virtuális gép létrehozásával és a standard Load Balancerhoz való hozzárendelésével kapcsolatban [itt](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)található.
+
+### <a name="create-an-outbound-rule-for-outbound-connection"></a>Kimenő szabály létrehozása a kimenő kapcsolatok számára
+
+Kövesse az [utasításokat](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration) egy kimenő szabály létrehozásához, hogy
+* Adja meg a kimenő NAT-t a semmiből.
+* A meglévő kimenő NAT működésének skálázása és finomhangolása.
 
 ### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>NSG szabályok létrehozása olyan virtuális gépekhez, amelyek nem tudnak kommunikálni az internetről
 Ha azt szeretné, hogy az internetes forgalom ne jusson el a virtuális gépekhez, létrehozhat egy [NSG-szabályt](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) a virtuális gépek hálózati adapterén.

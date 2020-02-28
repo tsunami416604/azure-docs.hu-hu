@@ -1,18 +1,16 @@
 ---
 title: Az Azure Application Insights Agent áttekintése | Microsoft Docs
 description: A Application Insights-ügynök áttekintése. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 61c3721745550b43aea730d0bcd2230b0435ff53
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4a240bc62816a46bc37108777a8b081b74047738
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899600"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671171"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>A helyszíni kiszolgálók Azure Monitor Application Insights ügynökének üzembe helyezése
 
@@ -48,11 +46,11 @@ Application Insights ügynök itt található: https://www.powershellgallery.com
 - [Start – ApplicationInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
 
 ## <a name="troubleshooting"></a>Hibakeresés
-- [hibaelhárítással](status-monitor-v2-troubleshoot.md)
+- [Hibaelhárítás](status-monitor-v2-troubleshoot.md)
 - [Ismert problémák](status-monitor-v2-troubleshoot.md#known-issues)
 
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 - Támogatja a Application Insights ügynök a proxy telepítéseit?
 

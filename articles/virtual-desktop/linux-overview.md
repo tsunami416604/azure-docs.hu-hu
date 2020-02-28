@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: 47e38d79e8aa4656b8164c94b4ef439bf431e01d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: af5ab05cb772909cd36e2e6bfe1c100a5b83841c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049666"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660036"
 ---
 # <a name="linux-support"></a>Linux-támogatás
 
@@ -21,6 +21,9 @@ A Windows rendszerű virtuális asztali Linux SDK-val különálló Windowsos vi
 ## <a name="what-is-the-linux-sdk"></a>Mi a Linux SDK?
 
 Az SDK API-k segítségével lekérheti az erőforrás-hírcsatornákat, csatlakozhat asztali vagy távoli alkalmazás-munkamenetekhez, és számos olyan átirányítást használhat, amelyet az első féltől származó ügyfelek támogatnak.
+
+> [!NOTE]
+> Az SDK jelenleg fejlesztés alatt áll. Ezt a dokumentumot az elérhető SDK-hoz való hozzáférésre vonatkozó utasításokkal frissítjük.
 
 ### <a name="supported-linux-distributions"></a>Támogatott Linux-disztribúciók
 
@@ -54,8 +57,6 @@ A Linux-ügyfél Windows rendszerű virtuális asztali környezethez való fejle
 2. Tesztelje az elérhető első féltől származó ügyfeleket a Windows rendszerű virtuális asztali felhasználói élmény megismeréséhez.
 
 ## <a name="next-steps"></a>Következő lépések
-
-Az SDK jelenleg fejlesztés alatt áll. Ezt a dokumentumot az elérhető SDK-hoz való hozzáférésre vonatkozó utasításokkal frissítjük.
 
 Tekintse meg a következő ügyfelek dokumentációját:
 

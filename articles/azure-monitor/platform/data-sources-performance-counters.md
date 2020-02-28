@@ -1,18 +1,17 @@
 ---
 title: Teljesítményszámlálók összegyűjtése és elemzése a Azure Monitorban | Microsoft Docs
 description: A teljesítményszámlálókat a Azure Monitor gyűjti a Windows-és Linux-ügynökök teljesítményének elemzéséhez.  Ez a cikk bemutatja, hogyan konfigurálhatja a teljesítményszámlálók gyűjteményét Windows-és Linux-ügynökökhöz, a munkaterületen tárolt adatokat, valamint azt, hogyan elemezheti őket a Azure Portalban.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 624996c86423bf486111fde8743117ea888862e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363829"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670542"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-és Linux-teljesítményű adatforrások a Azure Monitor
 A Windows és Linux rendszerű teljesítményszámlálók betekintést nyújtanak a hardver-összetevők, operációs rendszerek és alkalmazások teljesítményére.  A Azure Monitor a teljesítményadatok a hosszú távú elemzéshez és jelentéskészítéshez való közel valós idejű (vizsgálja) elemzéshez is összegyűjthetők.
@@ -52,10 +51,10 @@ Kövesse ezt az eljárást egy új Windows-teljesítményszámláló hozzáadás
 
 Kövesse ezt az eljárást egy új Linux-teljesítményszámláló hozzáadásához a gyűjtéshez.
 
-1. Alapértelmezés szerint a rendszer az összes konfigurációs módosítást automatikusan leküldi az összes ügynöknek.  Linux-ügynökök esetében a rendszer egy konfigurációs fájlt küld a Fluent-adatgyűjtőnek.  Ha ezt a fájlt manuálisan kívánja módosítani minden Linux-ügynökön, törölje a jelet az *alábbi konfiguráció alkalmazása a Linux rendszerű gépekre* lehetőségre, és kövesse az alábbi útmutatást.
+1. Alapértelmezés szerint az összes konfigurációs módosítást automatikusan leküld az összes ügynököt.  Linux-ügynökök esetében a rendszer egy konfigurációs fájlt küld a Fluent-adatgyűjtőnek.  Ha ezt a fájlt manuálisan kívánja módosítani minden Linux-ügynökön, törölje a jelet az *alábbi konfiguráció alkalmazása a Linux rendszerű gépekre* lehetőségre, és kövesse az alábbi útmutatást.
 2. Írja be a számláló nevét a Format *objektum (példány) \ számláló*szövegmezőbe.  A gépelés megkezdése után a rendszer a gyakori számlálók megfelelő listáját mutatja be.  Kiválaszthat egy számlálót a listából, vagy megadhatja a kívánt értéket.  
 3. Kattintson **+** vagy nyomja le az **ENTER** billentyűt a számláló az objektumhoz tartozó egyéb számlálók listájához való hozzáadásához.
-4. Egy objektum összes számlálója ugyanazt a **mintavételi időközt**használja.  Az alapértelmezett érték a 10 másodperc.  Ezt magasabb értékre kell módosítani, amely legfeljebb 1800 másodperc (30 perc) lehet, ha csökkenteni szeretné az összegyűjtött teljesítményadatok tárolási követelményeit.
+4. Egy objektum összes számlálója ugyanazt a **mintavételi időközt**használja.  Az alapértelmezett érték 10 másodperc.  Ezt magasabb értékre kell módosítani, amely legfeljebb 1800 másodperc (30 perc) lehet, ha csökkenteni szeretné az összegyűjtött teljesítményadatok tárolási követelményeit.
 5. Ha elkészült a számlálók hozzáadásával, kattintson a képernyő felső részén található **Mentés** gombra a konfiguráció mentéséhez.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Linux-teljesítményszámlálók konfigurálása a konfigurációs fájlban
@@ -89,33 +88,33 @@ A következő táblázat felsorolja a konfigurációs fájlban megadható objekt
 | Logikai lemez | Szabad inode%-ban |
 | Logikai lemez | Szabad terület százalékos aránya |
 | Logikai lemez | Felhasznált inode%-ban |
-| Logikai lemez | Felhasznált terület (%) |
+| Logikai lemez | Foglalt hely % |
 | Logikai lemez | Lemezolvasás sebessége bájt/mp-ben |
 | Logikai lemez | Lemezolvasások/mp |
-| Logikai lemez | Lemez átvitele másodpercenként |
+| Logikai lemez | Átvitel/mp |
 | Logikai lemez | Lemezírás sebessége bájt/mp-ben |
 | Logikai lemez | Lemezírások/mp |
-| Logikai lemez | Szabad terület (MB) |
-| Logikai lemez | Logikai lemez sebessége (bájt/s) |
-| Memória | Rendelkezésre álló memória%-ban |
-| Memória | Rendelkezésre álló swap-terület (%) |
-| Memória | Felhasznált memória (%) |
-| Memória | Felhasznált swap-terület%-ban |
-| Memória | Rendelkezésre álló memória (MB) |
-| Memória | Rendelkezésre álló memória (MB) |
-| Memória | Olvasott lap/mperc |
-| Memória | Írt lap/mperc |
-| Memória | Mozgatott lapok (lap/sec) |
-| Memória | Felhasznált memória (MB) – lapozófájl |
-| Memória | Felhasznált memória (MB) |
-| Network (Hálózat) | Továbbított bájtok összesen |
-| Network (Hálózat) | Fogadott bájtok összesen |
-| Network (Hálózat) | Bájtok összesen |
-| Network (Hálózat) | Továbbított csomagok összesen |
-| Network (Hálózat) | Fogadott csomagok összesen |
-| Network (Hálózat) | Rx-hibák összesen |
-| Network (Hálózat) | TX-hibák összesen |
-| Network (Hálózat) | Ütközések összesen |
+| Logikai lemez | Szabad hely MB-ban |
+| Logikai lemez | Logikai lemez bájt/mp |
+| Memory (Memória) | Rendelkezésre álló memória%-ban |
+| Memory (Memória) | Rendelkezésre álló swap-terület (%) |
+| Memory (Memória) | Felhasznált memória (%) |
+| Memory (Memória) | Felhasznált swap-terület%-ban |
+| Memory (Memória) | Rendelkezésre álló memória |
+| Memory (Memória) | Rendelkezésre álló memória (MB) |
+| Memory (Memória) | Olvasott lap/mperc |
+| Memory (Memória) | Írt lap/mperc |
+| Memory (Memória) | Mozgatott lapok (lap/sec) |
+| Memory (Memória) | Felhasznált memória (MB) – lapozófájl |
+| Memory (Memória) | Felhasznált memória (MB) |
+| Hálózat | Küldött bájtok száma összesen |
+| Hálózat | Fogadott bájtok teljes száma |
+| Hálózat | Bájtok összesen |
+| Hálózat | Továbbított csomagok összesen |
+| Hálózat | Fogadott csomagok összesen |
+| Hálózat | Rx-hibák összesen |
+| Hálózat | TX-hibák összesen |
+| Hálózat | Ütközések összesen |
 | Fizikai lemez | Átlagos írási idő (mp/olvasás) |
 | Fizikai lemez | Átlagos műveleti idő (mp/átvitel) |
 | Fizikai lemez | Átlagos írási idő (mp/írás) |
@@ -125,7 +124,7 @@ A következő táblázat felsorolja a konfigurációs fájlban megadható objekt
 | Folyamat | Felhasznált memória (kilobájt) |
 | Folyamat | Virtuális megosztott memória |
 | Processzor | % DPC idő |
-| Processzor | Üresjáratban eltöltött időhányad (%) |
+| Processzor | Üresjárati idő%-ban |
 | Processzor | Megszakítási idő%-ban |
 | Processzor | I/o várakozási idő%-ban |
 | Processzor | % Nice idő |
@@ -183,7 +182,7 @@ A teljesítményadatokat a teljesítmény **típusa és a** következő tábláz
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Computer |Az a számítógép, amelyre az eseményt gyűjtötték. |
+| Computer |Az esemény gyűjtötte a program a számítógép. |
 | CounterName |A teljesítményszámláló neve |
 | CounterPath |A számláló teljes elérési útja az űrlapon \\\\\<számítógép >\\objektum (példány)\\számláló. |
 | Kártyabirtokos számlájának megterhelését |A számláló numerikus értéke. |
@@ -202,7 +201,7 @@ Az alábbi táblázat különböző példákat tartalmaz a teljesítményadatoka
 
 | Lekérdezés | Leírás |
 |:--- |:--- |
-| Perf |Minden teljesítményadatok |
+| Teljesítmény |Minden teljesítményadatok |
 | A &#124; Perf, ahol a Computer = = "Sajátgép" |Egy adott számítógépről származó összes teljesítményadatok |
 | A &#124; Perf, ahol a CounterName = = "a lemez aktuális várólistájának hossza" |Egy adott számláló összes teljesítményadatokat |
 | A &#124; Perf, ahol a ObjectName = = "Processor" és a CounterName = = "% Processor Time" és a példánynév &#124; = = "_Total" összefoglaló AVGCPU = AVG (kártyabirtokos számlájának megterhelését) a számítógépen |A CPU átlagos kihasználtsága az összes számítógépen |

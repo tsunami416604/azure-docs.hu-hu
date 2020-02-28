@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2019
+ms.date: 02/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 64161451c0c8b1af7666fcd104d337856e5803c7
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8c5db13b343783a86dc04b84e09746bc4406186b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821447"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660699"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Egyéni szerepkörök az Azure-erőforrásokhoz
 
 Ha az [Azure-erőforrások beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. A beépített szerepkörökhöz hasonlóan egyéni szerepköröket is hozzárendelhet a felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz az előfizetés, az erőforráscsoport és az erőforrás-hatókörök esetében.
 
-Az egyéni szerepkörök megoszthatók az azonos Azure AD-címtárban megbízható előfizetések között. A címtárban legfeljebb **5 000** egyéni szerepkör lehet. (Speciális felhők, például az Azure Government, az Azure Germany és az Azure China 21Vianet esetében a korlát 2 000 egyéni szerepkör.) Az egyéni szerepkörök a Azure PowerShell, az Azure CLI vagy a REST API használatával hozhatók létre.
+Az egyéni szerepkörök megoszthatók az azonos Azure AD-címtárban megbízható előfizetések között. A címtárban legfeljebb **5 000** egyéni szerepkör lehet. (Speciális felhők, például az Azure Government, az Azure Germany és az Azure China 21Vianet esetében a korlát 2 000 egyéni szerepkör.) Egyéni szerepköröket a Azure Portal (előzetes verzió), az Azure PowerShell, az Azure CLI vagy a REST API használatával hozhat létre.
 
 ## <a name="custom-role-example"></a>Példa egyéni szerepkörre
 
@@ -70,7 +70,7 @@ Ha egyéni szerepkört hoz létre, az Azure Portal narancssárga erőforrás iko
 
 1. Döntse el, hogyan szeretné létrehozni az egyéni szerepkört
 
-    A [Azure PowerShell](custom-roles-powershell.md), az [Azure CLI](custom-roles-cli.md)vagy a [REST API](custom-roles-rest.md)használatával hozhat létre egyéni szerepköröket.
+    Egyéni szerepköröket a [Azure Portal](custom-roles-portal.md) (előzetes verzió), az [Azure PowerShell](custom-roles-powershell.md), az [Azure CLI](custom-roles-cli.md)vagy a [REST API](custom-roles-rest.md)használatával hozhat létre.
 
 1. A szükséges engedélyek meghatározása
 
@@ -90,7 +90,7 @@ Az egyéni szerepkörök létrehozásával kapcsolatos részletes oktatóanyagé
 
 Az egyéni szerepkör a következő tulajdonságokkal rendelkezik.
 
-| Tulajdonság | Szükséges | Type (Típus) | Leírás |
+| Tulajdonság | Kötelező | Típus | Leírás |
 | --- | --- | --- | --- |
 | `Name` | Igen | Sztring | Az egyéni szerepkör megjelenített neve. Míg a szerepkör-definíció egy előfizetési szintű erőforrás, a szerepkör-definíció több előfizetésben is használható, amelyek ugyanazt az Azure AD-címtárat használják. Ennek a megjelenítendő névnek egyedinek kell lennie az Azure AD-címtár hatókörében. Tartalmazhat betűket, számokat, szóközöket és speciális karaktereket is. A karakterek maximális száma 128. |
 | `Id` | Igen | Sztring | Az egyéni szerepkör egyedi azonosítója. A Azure PowerShell és az Azure CLI esetében ez az azonosító automatikusan létrejön, amikor új szerepkört hoz létre. |
@@ -113,7 +113,6 @@ A beépített szerepkörökhöz hasonlóan a `AssignableScopes` tulajdonság hat
 | Egyéni szerepkör megtekintése | `Microsoft.Authorization/ roleDefinitions/read` | Azok a felhasználók, akik egy hatókörben engedélyezik ezt a műveletet, megtekinthetik az adott hatókörben való hozzárendeléshez elérhető egyéni szerepköröket. Az összes beépített szerepkör lehetővé teszi, hogy az egyéni szerepkörök elérhetők legyenek a hozzárendeléshez. |
 
 ## <a name="next-steps"></a>Következő lépések
-- [Egyéni szerepkörök létrehozása Azure-erőforrásokhoz az Azure PowerShell használatával](custom-roles-powershell.md)
-- [Egyéni szerepkörök létrehozása Azure-erőforrásokhoz az Azure CLI használatával](custom-roles-cli.md)
+- [Egyéni Azure-szerepkörök létrehozása vagy frissítése a Azure Portal használatával (előzetes verzió)](custom-roles-portal.md)
 - [Az Azure-erőforrások szerepkör-definícióinak megismerése](role-definitions.md)
 - [Azure-erőforrások RBAC kapcsolatos hibák](troubleshooting.md)

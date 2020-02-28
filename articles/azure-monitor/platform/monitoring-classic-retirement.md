@@ -3,17 +3,16 @@ title: A klasszikus riasztások & figyelésének frissítése Azure Monitor
 description: A klasszikus figyelési szolgáltatások és funkciók kivonásának leírása, amely korábban a riasztások (klasszikus) alatt Azure Portal látható.
 author: yanivlavi
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: f4639d46a796924b4fe1dcbb46735abea128388f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: dec4d6824644cabf8b1872da207b8554fee0b3d3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307088"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659475"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Az egyesített riasztási & figyelése Azure Monitor helyettesíti a klasszikus riasztási & figyelését
 
@@ -76,14 +75,14 @@ Ez a cikk folyamatosan frissül az új Azure Monitoring & riasztási funkciókka
 
 ## <a name="pricing-for-migrated-alert-rules"></a>Az áttelepített riasztási szabályok díjszabása
 
-Áttelepítési eszközt vezetünk be, amely segít áttelepíteni a Azure Monitor [klasszikus riasztásokat](../../azure-monitor/platform/alerts-classic.overview.md) az új riasztások felületére. A migrált riasztási szabályok és a megfelelő migrált műveletcsoportok (e-mail, webhook vagy LogicApp) továbbra is ingyenesek maradnak. A klasszikus értesítések funkciói – így a küszöbnek, az összesítéstípusnak és az összesítés részletességének szerkesztése – továbbra is ingyenesen elérhető marad a migrált riasztási szabállyal. Azonban ha úgy szerkeszti a migrált riasztási szabályt, hogy az az új riasztási platform funkcióit, értesítéseit vagy művelettípusait alkalmazza, az díjat von maga után. További információ a riasztási szabályok és értesítések díjszabásáról: [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/).
+Áttelepítési eszközt vezetünk be, amely segít áttelepíteni a Azure Monitor [klasszikus riasztásokat](../../azure-monitor/platform/alerts-classic.overview.md) az új riasztások felületére. Az áttelepített riasztási szabályok és a megfelelő áttelepített műveleti csoportok (e-mailek, webhookok vagy LogicApp-EK) díjmentesen maradnak. A klasszikus riasztásokkal rendelkező funkciók, beleértve a küszöbérték, az összesítési típus és az Összesítés részletességének módosítását is, továbbra is ingyenesen elérhetők lesznek az áttelepített riasztási szabállyal. Ha azonban az áttelepített riasztási szabályt úgy szerkeszti, hogy az új riasztási platform funkcióit, értesítéseket vagy műveleti típusokat használja, a megfelelő díjat kell fizetnie. További információ a riasztási szabályok és értesítések díjszabásáról: [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/).
 
-Íme néhány példa a riasztási szabályhoz tartozó díjakra:
+Az alábbiakban példákat talál arra az esetre, amikor díjat kell fizetnie a riasztási szabályhoz:
 
-- Új (nem migrált),ingyenes egységeken kívül létrehozott riasztási szabály az új Azure Monitor platformon
-- Az ingyenes egységeken kívül betöltött és megőrzött adatok az Azure Monitorban
-- Többtesztes webtesztek az Application Insightsban
-- Az ingyenes egységeken kívül tárolt egyéni metrikák az Azure Monitorban
+- Az új Azure Monitor platformon az ingyenes egységeken kívül létrehozott új (nem áttelepített) riasztási szabályok
+- A Azure Monitor által tartalmazott ingyenes egységeken kívül betöltött és megőrzött adatmennyiség
+- A Application Insights által végrehajtott többtesztes webes tesztek
+- A Azure Monitorban foglalt ingyenes egységeken kívül tárolt egyéni metrikák
 - Minden olyan áttelepített riasztási szabály, amely újabb metrikus riasztási funkciók, például gyakoriság, több erőforrás/dimenzió, [dinamikus küszöbértékek](alerts-dynamic-thresholds.md), erőforrás/jel módosítása stb. használatára van módosítva.
 - Minden olyan áttelepített műveleti csoport, amely újabb értesítések használatára van szerkesztve, vagy olyan típusú műveleteket, mint például az SMS, a hanghívás és/vagy a ITSM-integráció.
 

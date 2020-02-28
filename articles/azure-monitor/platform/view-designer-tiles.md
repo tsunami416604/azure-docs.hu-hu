@@ -1,18 +1,17 @@
 ---
 title: Útmutató a tervezői csempék Azure Monitorhoz való áttekintéséhez | Microsoft Docs
 description: A Azure Monitorban megjelenő tervező használatával létrehozhat olyan egyéni nézeteket, amelyek megjelennek a Azure Portalban, és a Log Analytics munkaterületen lévő adatvizualizációk különböző vizualizációit is tartalmazhatják. Ez a cikk az egyéni nézetekben elérhető csempék beállításairól nyújt útmutatást.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
-ms.openlocfilehash: 4141a4728ef5a7dd8896e4e3f21ee6d1d4dce958
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0320be3a2cfbb96367799577a6e56bcf5da87dcb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931957"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658506"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Útmutató a tervezői csempék Azure Monitor való megtekintéséhez
 A Azure Monitor Tervező nézetében számos egyéni nézetet hozhat létre a Azure Portalban, amelyek segíthetnek a Log Analytics munkaterületen lévő adatmegjelenítésben. Ez a cikk az egyéni nézetekben elérhető csempék beállításairól nyújt útmutatást.
@@ -46,7 +45,7 @@ A **szám** csempe a rekordok számát jeleníti meg egy napló lekérdezésből
 
 | Beállítás | Leírás |
 |:--- |:--- |
-| Név |A csempe tetején megjelenő szöveg |
+| Name (Név) |A csempe tetején megjelenő szöveg |
 | Leírás |A csempe neve alatt megjelenő szöveg |
 | **Csempe** | |
 | Jelmagyarázat |Az érték alatt megjelenő szöveg |
@@ -64,7 +63,7 @@ Ez a csempe a rekordok számát jeleníti meg két különböző naplózási lek
 
 | Beállítás | Leírás |
 |:--- |:--- |
-| Név |A csempe tetején megjelenő szöveg |
+| Name (Név) |A csempe tetején megjelenő szöveg |
 | Leírás |A csempe neve alatt megjelenő szöveg |
 | **Első csempe** | |
 | Jelmagyarázat |Az érték alatt megjelenő szöveg |
@@ -85,7 +84,7 @@ A **fánk** csempe egyetlen számot jelenít meg, amely összefoglalja a log lek
 
 | Beállítás | Leírás |
 |:--- |:--- |
-| Név |A csempe tetején megjelenő szöveg |
+| Name (Név) |A csempe tetején megjelenő szöveg |
 | Leírás |A csempe neve alatt megjelenő szöveg |
 | **Fánk** | |
 | Lekérdezés |A fánkhoz futtatott lekérdezés. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus érték. A lekérdezés általában a *mérték* kulcsszó használatával összegzi az eredményeket. |
@@ -109,13 +108,13 @@ Ez a csempe egy olyan vonalas diagram, amely egyszerre több adatsorozatot jelen
 
 | Beállítás | Leírás |
 |:--- |:--- |
-| Név |A csempe tetején megjelenő szöveg |
+| Name (Név) |A csempe tetején megjelenő szöveg |
 | Leírás |A csempe neve alatt megjelenő szöveg |
 | **Vonalas diagram** | |
 | Lekérdezés |A vonalas diagramhoz futtatott lekérdezés Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus érték. A lekérdezés általában a *mérték* kulcsszó használatával összegzi az eredményeket. Ha a lekérdezés az *intervallum* kulcsszót használja, az x tengely ezt az időtartamot használja. Ha a lekérdezés nem használja az *intervallum* kulcsszót, az x tengely óránkénti időközöket használ. |
 | **Vonalas diagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ezt a hivatkozást, ha logaritmikus méretezést szeretne használni az y tengelyhez. |
-| egység |Adja meg a lekérdezés által visszaadott értékek egységeit. Ezek az adatok a diagramon lévő feliratok megjelenítésére szolgálnak, amelyek az értékeket és opcionálisan az értékek átalakítását jelzik. Az **egység típusa** határozza meg az egység kategóriáját, és meghatározza az **aktuálisan elérhető egység típusú** értékeket. Ha kijelöl egy értéket a **Konvertálás** értékre, akkor a rendszer a numerikus értékeket az **aktuális egység** típusról a **Konvertálás** típusra konvertálja. |
+| Egység |Adja meg a lekérdezés által visszaadott értékek egységeit. Ezek az adatok a diagramon lévő feliratok megjelenítésére szolgálnak, amelyek az értékeket és opcionálisan az értékek átalakítását jelzik. Az **egység típusa** határozza meg az egység kategóriáját, és meghatározza az **aktuálisan elérhető egység típusú** értékeket. Ha kijelöl egy értéket a **Konvertálás** értékre, akkor a rendszer a numerikus értékeket az **aktuális egység** típusról a **Konvertálás** típusra konvertálja. |
 | Egyéni címke |Az y tengelyen megjelenített szöveg az *egység* típusához tartozó címke mellett. Ha nincs megadva címke, csak az *egység* típusa jelenik meg. |
 | **Speciális** |**Adatfolyam-ellenőrzés >** |
 | Engedélyezve |Válassza ezt a hivatkozást, ha az adatfolyam-ellenőrzést engedélyezni kell a csempén. Ez a megközelítés egy másik üzenetet biztosít, ha az információ nem érhető el. Általában arra használja a megközelítést, hogy a nézet telepítésekor az ideiglenes időszakban üzenetet szolgáltasson, és az adatmennyiség elérhetővé válik. |
@@ -130,7 +129,7 @@ Ez a csempe egy olyan vonalas diagrammal is rendelkezik, amely egyszerre több a
 
 | Beállítás | Leírás |
 |:--- |:--- |
-| Név |A csempe tetején megjelenő szöveg |
+| Name (Név) |A csempe tetején megjelenő szöveg |
 | Leírás |A csempe neve alatt megjelenő szöveg |
 | **Vonalas diagram** | |
 | Lekérdezés |A vonalas diagramhoz futtatott lekérdezés Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus érték. A lekérdezés általában a *mérték* kulcsszó használatával összegzi az eredményeket. Ha a lekérdezés az *intervallum* kulcsszót használja, az x tengely ezt az időtartamot használja. Ha a lekérdezés nem használja az *intervallum* kulcsszót, az x tengely óránkénti időközöket használ. |
@@ -140,7 +139,7 @@ Ez a csempe egy olyan vonalas diagrammal is rendelkezik, amely egyszerre több a
 | Művelet |A Value tulajdonságon végrehajtott művelet, amely egyetlen értékként összegzi a képfeliratot.<ul><li>Average (átlag): az összes rekord értékének átlaga.</li><li>Darabszám: a lekérdezés által visszaadott összes rekord száma.</li><li>Utolsó minta: a diagramon szereplő utolsó intervallum értéke.</li><li>Max: a diagramban található intervallumok maximális értéke.</li><li>Min: a diagramban szereplő intervallumok minimális értéke.</li><li>Sum: az összes rekord értékének összege.</li></ul> |
 | **Vonalas diagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ezt a hivatkozást, ha logaritmikus méretezést szeretne használni az y tengelyhez. |
-| egység |Adja meg a lekérdezés által visszaadott értékek egységeit. Ezek az adatok az értékek típusát jelző, és opcionálisan az értékek átalakítására szolgáló diagram-címkék megjelenítésére szolgálnak. Az *egység* típusa határozza meg az egység kategóriáját, és meghatározza a rendelkezésre álló *aktuális egység* típusú értékeket. Ha a *Konvertálás a*értékre lehetőséget választja, a rendszer a numerikus értékeket az *aktuális egység* típusról a *Konvertálás* típusra konvertálja. |
+| Egység |Adja meg a lekérdezés által visszaadott értékek egységeit. Ezek az adatok az értékek típusát jelző, és opcionálisan az értékek átalakítására szolgáló diagram-címkék megjelenítésére szolgálnak. Az *egység* típusa határozza meg az egység kategóriáját, és meghatározza a rendelkezésre álló *aktuális egység* típusú értékeket. Ha a *Konvertálás a*értékre lehetőséget választja, a rendszer a numerikus értékeket az *aktuális egység* típusról a *Konvertálás* típusra konvertálja. |
 | Egyéni címke |Az y tengelyen megjelenített szöveg az *egység* típusához tartozó címke mellett. Ha nincs megadva címke, csak az *egység* típusa jelenik meg. |
 | **Speciális** |**Adatfolyam-ellenőrzés >** |
 | Engedélyezve |Válassza ezt a hivatkozást, ha az adatfolyam-ellenőrzést engedélyezni kell a csempén. Ez a megközelítés egy másik üzenetet biztosít, ha az információ nem érhető el. Általában arra használja a megközelítést, hogy a nézet telepítésekor az ideiglenes időszakban üzenetet szolgáltasson, és az adatmennyiség elérhetővé válik. |
@@ -155,7 +154,7 @@ A **két idővonal** csempe a két naplózási lekérdezés eredményét jelení
 
 | Beállítás | Leírás |
 |:--- |:--- |
-| Név |A csempe tetején megjelenő szöveg |
+| Name (Név) |A csempe tetején megjelenő szöveg |
 | Leírás |A csempe neve alatt megjelenő szöveg |
 | Első diagram | |
 | Jelmagyarázat |Az első adatsorozat ábrafelirata alatt megjelenő szöveg |

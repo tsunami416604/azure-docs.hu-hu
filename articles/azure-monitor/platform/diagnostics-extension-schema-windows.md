@@ -1,18 +1,17 @@
 ---
 title: Windows Diagnostics bővítmény sémája
 description: A Windows diagnosztikai bővítmény (WAD) konfigurációs sémájának referenciája Azure Monitorban.
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 5b4d68ab5be2566310ddcc2eaf591d9908d35ad1
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 3adf4b59c0605859ada75577c083094541815984
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472582"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672361"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Diagnostics bővítmény sémája
 A Azure Diagnostics Extension olyan Azure Monitor ügynöke, amely a vendég operációs rendszerből és az Azure számítási erőforrások munkaterhelésével kapcsolatos figyelési adatokat gyűjt. Ez a cikk részletesen ismerteti a diagnosztikai bővítmény konfigurálásához használt sémát a Windows rendszerű virtuális gépeken és más számítási erőforrásokon.

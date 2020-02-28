@@ -3,17 +3,16 @@ title: Ismerkedés az Azure mérőszámok Explorerrel
 description: Ismerje meg, hogyan hozhatja létre első metrikai diagramját az Azure Metrics Explorerrel.
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: ceaefffaf04a3ab266cde300e8c4b93a5e804796
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861079"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662281"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Első lépések az Azure Metrikaböngésző
 
@@ -28,11 +27,11 @@ Azure Monitor a metrikák Explorer a Microsoft Azure Portal egy olyan összetev�
 
 ## <a name="create-your-first-metric-chart"></a>Az első metrikai diagram létrehozása
 
-Metrikus diagram létrehozásához az erőforrás, Erőforráscsoport, előfizetés vagy Azure Monitor nézetben nyissa meg a metrikák lapot, és kövesse az alábbi lépéseket:
+Metrikus diagram létrehozásához az erőforrás, Erőforráscsoport, előfizetés vagy Azure Monitor nézetben nyissa meg a **metrikák** lapot, és kövesse az alábbi lépéseket:
 
-1. Az erőforrás-választó használatával válassza ki azt az erőforrást, amelyre vonatkozóan meg szeretné jeleníteni a metrikákat. (Az erőforrás előre be van jelölve, ha egy adott erőforrás kontextusában nyitott meg mérőszámokat).
+1. Az erőforrás-választó használatával válassza ki azt az erőforrást, amelyre vonatkozóan meg szeretné jeleníteni a metrikákat. (Az erőforrás előre be van jelölve, ha egy adott erőforrás kontextusában nyitott meg **mérőszámokat** ).
 
-    > ![Válasszon erőforrást](./media/metrics-getting-started/resource-picker.png)
+    > ![Erőforrás kiválasztása](./media/metrics-getting-started/resource-picker.png)
 
 2. Egyes erőforrások esetében ki kell választania egy névteret. A névtér csak a mérőszámok rendszerezését teszi lehetővé, így könnyen megtalálhatja őket. A Storage-fiókok például különálló névtereket biztosítanak a fájlok, táblák, blobok és várólisták metrikáinak tárolásához. Számos erőforrástípus csak egy névteret tartalmaz.
 
@@ -45,9 +44,9 @@ Metrikus diagram létrehozásához az erőforrás, Erőforráscsoport, előfizet
 > [!NOTE]
 > Használja a **metrika hozzáadása** gombot, és ismételje meg ezeket a lépéseket, ha több, ugyanabban a diagramban ábrázolt mérőszámot szeretne látni. Ha egy nézetben több diagramot szeretne megjeleníteni, kattintson a felül található **diagram hozzáadása** gombra.
 
-## <a name="select-a-time-range"></a>Időtartomány megadása
+## <a name="select-a-time-range"></a>Válasszon időtartományt
 
-Alapértelmezés szerint a diagram a legutóbbi 24 órányi metrikai adatokat jeleníti meg. Használja az időválasztó panelt a diagram időtartományának, nagyításának vagy kicsinyítésének módosításához. 
+Alapértelmezés szerint a diagram a legutóbbi 24 órányi metrikai adatokat jeleníti meg. Használja az **időválasztó** panelt a diagram időtartományának, nagyításának vagy kicsinyítésének módosításához. 
 
 ![Időtartomány-panel módosítása](./media/metrics-getting-started/time-picker.png)
 
@@ -58,7 +57,7 @@ Alapértelmezés szerint a diagram a legutóbbi 24 órányi metrikai adatokat je
 
 A [szűrés](metrics-charts.md#apply-filters-to-charts) és a [felosztás](metrics-charts.md#apply-splitting-to-a-chart) a dimenziókkal rendelkező mérőszámok hatékony diagnosztikai eszközei. Ezek a funkciók azt mutatják be, hogy a különböző metrikai szegmensek ("dimenzió értékek") milyen hatással vannak a metrika összesített értékére, és lehetővé teszik a lehetséges kiugró értékek azonosítását.
 
-- A szűréssel kiválaszthatja, hogy mely dimenzió értékeket tartalmazza a diagram. Előfordulhat például, hogy meg szeretné jeleníteni a sikeres kérelmeket a *kiszolgáló válaszideje* mérőszámának ábrázolásakor. A szűrőt a kérelem dimenziójának *sikerességére* kell alkalmaznia. 
+- A **szűréssel** kiválaszthatja, hogy mely dimenzió értékeket tartalmazza a diagram. Előfordulhat például, hogy meg szeretné jeleníteni a sikeres kérelmeket a *kiszolgáló válaszideje* mérőszámának ábrázolásakor. A szűrőt a kérelem dimenziójának *sikerességére* kell alkalmaznia. 
 
 - A **felosztás** azt szabályozza, hogy a diagram külön sorokat jelenít-e meg egy dimenzió minden értékéhez, vagy összesíti az értékeket egyetlen sorba. Láthatja például, hogy egy sor az összes kiszolgálópéldány átlagos válaszideje, vagy az egyes kiszolgálókhoz külön sorok találhatók. A különálló sorok megjelenítéséhez a *kiszolgálópéldány* -dimenzióra kell alkalmaznia a felosztást.
 
@@ -68,7 +67,7 @@ Tekintse át a szűrést és a felosztást alkalmazó [diagramok példáit](metr
 
 Testreszabhatja a diagram stílusát, címét és a speciális diagram beállításainak módosítását. Ha végzett a testreszabással, rögzítse azt egy irányítópulton, hogy mentse a munkáját. A metrikák riasztásait is konfigurálhatja. A [termék dokumentációját](metrics-charts.md) követve megismerheti a Azure monitor Metrics Explorer egyéb speciális funkcióit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a Metrikaböngésző speciális funkcióiról](metrics-charts.md)
 * [Hibaelhárítási Metrikaböngésző](metrics-troubleshoot.md)

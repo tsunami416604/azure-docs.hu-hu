@@ -1,18 +1,14 @@
 ---
 title: Azure-Application Insights automatizálása a PowerShell használatával | Microsoft Docs
 description: Erőforrások, riasztások és rendelkezésre állási tesztek létrehozása és kezelése a PowerShellben egy Azure Resource Manager sablon használatával.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 82b406d6f2d9f9dc4464472108c8136c7b65c67a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 06fedb3d345cfe6790f7a19b88fbfdb36470638f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977820"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669794"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-erőforrások kezelése a PowerShell használatával
 
@@ -354,7 +350,7 @@ Az árképzési tervet egy meglévő Application Insights erőforráson is beál
                -appName myApp
 ```
 
-|priceCode|útiterv|
+|priceCode|csomag|
 |---|---|
 |1|GB-onként (korábbi csomag néven)|
 |2|/Csomópont (korábban a vállalati csomag neve)|

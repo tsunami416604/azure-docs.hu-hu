@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 01/07/2020
+ms.date: 02/25/2020
 ms.author: juliako
-ms.openlocfilehash: b1c094689c7669f03d5355be7a77b1836c90974c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d4a206bbddedfe9f23a943df27c6ac4b5fe17e8a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750855"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665749"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Media Services eseményekhez Azure Event Grid sémák
 
@@ -32,7 +32,7 @@ A JobStateChange eseményre való feliratkozással regisztrálhat az összes ese
 
 ### <a name="monitoring-job-state-changes"></a>Figyelési feladatok állapotának változásai
 
-| Eseménytípus | Leírás |
+| Esemény típusa | Leírás |
 | ---------- | ----------- |
 | Microsoft. Media. JobStateChange| Esemény beolvasása a feladatok állapotának változásaihoz. |
 | Microsoft. Media. JobScheduled| Esemény beolvasása a feladatok ütemezett állapotba való átváltásakor. |
@@ -52,7 +52,7 @@ Az egyes **feladatok** magasabb szinten lesznek, mint a **JobOutput**, így a fe
 
 `JobFinished`, `JobCanceled``JobError` a hibaüzenetek kimenete az egyes feladatok kimenetének összesített eredményeit jeleníti meg – ha mindegyik elkészült. Míg a feladat kimeneti eseményei az egyes feladatok befejeződése után következnek be. Ha például kódolási kimenettel rendelkezik, amelyet egy videó-elemzési kimenet követ, akkor a végső JobFinished esemény előtt két eseményt kell beolvasnia, mielőtt az összesített adatokat beolvassa.
 
-| Eseménytípus | Leírás |
+| Esemény típusa | Leírás |
 | ---------- | ----------- |
 | Microsoft. Media. JobOutputStateChange| Esemény beolvasása a feladatok kimeneti állapotának változásaihoz. |
 | Microsoft. Media. JobOutputScheduled| Esemény beolvasása, amikor a feladatok kimenete ütemezett állapotba kerül. |
@@ -66,7 +66,7 @@ Lásd: az alábbi [séma-példák](#event-schema-examples) .
 
 ### <a name="monitoring-job-output-progress"></a>A feladatok kimeneti folyamatának figyelése
 
-| Eseménytípus | Leírás |
+| Esemény típusa | Leírás |
 | ---------- | ----------- |
 | Microsoft. Media. JobOutputProgress| Ez az esemény a feladatok feldolgozásának folyamatát tükrözi, 0%-ról 100%-ra. A szolgáltatás egy eseményt próbál elküldeni, ha a folyamatjelző értéke 5% vagy nagyobb, vagy a legutóbbi esemény (szívverés) óta több mint 30 másodperc volt. A Progress érték nem garantált 0%-os indításra, vagy a 100% elérésére, és nem garantált, hogy az idő múlásával folyamatosan növekszik. Ez az esemény nem használható annak megállapításához, hogy a feldolgozás befejeződött-e, Ehelyett használja az állapotváltozás eseményeit.|
 
@@ -80,11 +80,11 @@ A Media Services az alább leírt **élő** események típusait is kibocsátja.
 
 Adatfolyam-szintű események jönnek létre adatfolyamként vagy kapcsolatonként. Minden eseményhez tartozik egy `StreamId` paraméter, amely a kapcsolat vagy a stream azonosítására szolgál. Minden adatfolyam vagy-kapcsolatok egy vagy több különböző típusú sávot tartalmaz. Előfordulhat például, hogy egy kódoló egyik csatlakoztatása egy hangsávval és négy videóval rendelkezik. A stream-események típusai a következők:
 
-| Eseménytípus | Leírás |
+| Esemény típusa | Leírás |
 | ---------- | ----------- |
-| Microsoft. Media. LiveEventConnectionRejected | A kódoló csatlakozási kísérlete el lett utasítva. |
-| Microsoft. Media. LiveEventEncoderConnected | A kódoló élő eseménnyel létesít kapcsolatot. |
-| Microsoft. Media. LiveEventEncoderDisconnected | A kódoló bontja a kapcsolatot. |
+| Microsoft.Media.LiveEventConnectionRejected | A kódoló csatlakozási kísérlete el lett utasítva. |
+| Microsoft.Media.LiveEventEncoderConnected | A kódoló élő eseménnyel létesít kapcsolatot. |
+| Microsoft.Media.LiveEventEncoderDisconnected | A kódoló bontja a kapcsolatot. |
 
 Lásd: az alábbi [séma-példák](#event-schema-examples) .
 
@@ -97,14 +97,14 @@ A nyomkövetési szintű események száma nyomon követhető.
 
 A nyomkövetési szintű események típusai a következők:
 
-| Eseménytípus | Leírás |
+| Esemény típusa | Leírás |
 | ---------- | ----------- |
-| Microsoft. Media. LiveEventIncomingDataChunkDropped | A Media Server elveszi az adatrészletet, mert túl késő, vagy átfedésben van az időbélyegzővel (az új adattömb időbélyege kevesebb, mint az előző adatrészlet befejezési időpontja). |
-| Microsoft. Media. LiveEventIncomingStreamReceived | A Media Server a streamben vagy a kapcsolaton belül minden egyes nyomkövetési adatrészletet fogad. |
-| Microsoft. Media. LiveEventIncomingStreamsOutOfSync | A Media Server észleli a hang-és video-adatfolyamok szinkronizálását. Figyelmeztetésként használható, mert lehetséges, hogy a felhasználói élmény nem érinti. |
-| Microsoft. Media. LiveEventIncomingVideoStreamsOutOfSync | A Media Server észleli, hogy a külső kódolótól érkező két videó stream nincs szinkronban. Figyelmeztetésként használható, mert lehetséges, hogy a felhasználói élmény nem érinti. |
-| Microsoft. Media. LiveEventIngestHeartbeat | Az élő esemény futása során minden egyes pályán 20 másodpercenként közzétettek. Betöltési állapot összegzését biztosítja.<br/><br/>A kódoló kezdeti csatlakoztatása után a szívverési esemény továbbra is 20 másodpercenként bocsátja ki, hogy a kódoló még csatlakoztatva van-e. |
-| Microsoft. Media. LiveEventTrackDiscontinuityDetected | A Media Server a bejövő nyomon követésben észleli a megszakításokat. |
+| Microsoft.Media.LiveEventIncomingDataChunkDropped | A Media Server elveszi az adatrészletet, mert túl késő, vagy átfedésben van az időbélyegzővel (az új adattömb időbélyege kevesebb, mint az előző adatrészlet befejezési időpontja). |
+| Microsoft.Media.LiveEventIncomingStreamReceived | A Media Server a streamben vagy a kapcsolaton belül minden egyes nyomkövetési adatrészletet fogad. |
+| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | A Media Server észleli a hang-és video-adatfolyamok szinkronizálását. Figyelmeztetésként használható, mert lehetséges, hogy a felhasználói élmény nem érinti. |
+| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | A Media Server észleli, hogy a külső kódolótól érkező két videó stream nincs szinkronban. Figyelmeztetésként használható, mert lehetséges, hogy a felhasználói élmény nem érinti. |
+| Microsoft.Media.LiveEventIngestHeartbeat | Az élő esemény futása során minden egyes pályán 20 másodpercenként közzétettek. Betöltési állapot összegzését biztosítja.<br/><br/>A kódoló kezdeti csatlakoztatása után a szívverési esemény továbbra is 20 másodpercenként bocsátja ki, hogy a kódoló még csatlakoztatva van-e. |
+| Microsoft.Media.LiveEventTrackDiscontinuityDetected | A Media Server a bejövő nyomon követésben észleli a megszakításokat. |
 
 Lásd: az alábbi [séma-példák](#event-schema-examples) .
 
@@ -134,7 +134,7 @@ Az alábbi példa a **JobStateChange** esemény sémáját mutatja be:
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | previousState | sztring | A feladattípus állapota az esemény előtt. |
 | state | sztring | Az eseményben szereplő feladatok új állapota. Például "ütemezett: a művelet készen áll a kezdésre" vagy "kész: a művelet befejeződött".|
@@ -204,9 +204,9 @@ Az egyes végső feladatok állapotának változásaihoz (például JobFinished,
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| kimenetek | Tömb | A feladatok kimenetének beolvasása.|
+| outputs | Tömb | A feladatok kimenetének beolvasása.|
 
 ### <a name="joboutputstatechange"></a>JobOutputStateChange
 
@@ -320,7 +320,7 @@ Az alábbi példa a **LiveEventConnectionRejected** esemény sémáját mutatja 
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | Streamazonosítója | sztring | Az adatfolyam vagy a kapcsolatok azonosítója. A kódoló vagy az ügyfél feladata, hogy hozzáadja ezt az azonosítót a betöltési URL-címben. |  
 | ingestUrl | sztring | Betöltési URL-cím, amelyet az élő esemény biztosít. |  
@@ -328,18 +328,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | encoderPort | sztring | Annak a kódolónak a portja, ahonnan a stream érkezik. |
 | resultCode | sztring | A rendszer elutasította a csatlakozás okát. Az eredmény-kódokat a következő táblázat tartalmazza. |
 
-Az eredmény-kódok a következők:
-
-| Eredménykód | Leírás |
-| ----------- | ----------- |
-| MPE_RTMP_APPID_AUTH_FAILURE | Helytelen betöltési URL-cím |
-| MPE_INGEST_ENCODER_CONNECTION_DENIED | A kódoló IP-címe nem található a beállított IP-engedélyezési listán |
-| MPE_INGEST_RTMP_SETDATAFRAME_NOT_RECEIVED | A kódoló nem küldött metaadatokat a streamről. |
-| MPE_INGEST_CODEC_NOT_SUPPORTED | A megadott kodek nem támogatott. |
-| MPE_INGEST_DESCRIPTION_INFO_NOT_RECEIVED | A rendszer megkapta a töredéket az adott adatfolyam fogadása és fejléce előtt. |
-| MPE_INGEST_MEDIA_QUALITIES_EXCEEDED | A megadott tulajdonságok száma meghaladja az engedélyezett maximális korlátot. |
-| MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED | Az összesített bitráta meghaladja a maximálisan megengedett korlátot. |
-| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | A videó-vagy hangFLVTag időbélyege érvénytelen az RTMP-kódolótól. |
+A hibák eredményének kódjait az [élő események](live-event-error-codes.md)hibakódjában találja.
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -367,7 +356,7 @@ Az alábbi példa a **LiveEventEncoderConnected** esemény sémáját mutatja be
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | Streamazonosítója | sztring | Az adatfolyam vagy a kapcsolatok azonosítója. A kódoló vagy az ügyfél felelős azért, hogy ezt az azonosítót a betöltési URL-címben adja meg. |
 | ingestUrl | sztring | Betöltési URL-cím, amelyet az élő esemény biztosít. |
@@ -401,7 +390,7 @@ Az alábbi példa a **LiveEventEncoderDisconnected** esemény sémáját mutatja
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | Streamazonosítója | sztring | Az adatfolyam vagy a kapcsolatok azonosítója. A kódoló vagy az ügyfél feladata, hogy hozzáadja ezt az azonosítót a betöltési URL-címben. |  
 | ingestUrl | sztring | Betöltési URL-cím, amelyet az élő esemény biztosít. |  
@@ -409,18 +398,11 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | encoderPort | sztring | Annak a kódolónak a portja, ahonnan a stream érkezik. |
 | resultCode | sztring | A kódoló kibontásának oka. Előfordulhat, hogy a rendszer kecsesen leválasztja vagy hibát észlelt. Az eredmény-kódokat a következő táblázat tartalmazza. |
 
-A hiba eredményének kódja a következő:
-
-| Eredménykód | Leírás |
-| ----------- | ----------- |
-| MPE_RTMP_SESSION_IDLE_TIMEOUT | Az RTMP-munkamenet időtúllépést követően időtúllépést követett el az engedélyezett időkorlát után. |
-| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | A videó-vagy hangFLVTag időbélyege érvénytelen az RTMP-kódolótól. |
-| MPE_CAPACITY_LIMIT_REACHED | A kódoló túl gyorsan küldi az adatokat. |
-| Ismeretlen hibakódok | Ezek a hibakódok a kivonatoló leképezésben a memóriából a duplikált bejegyzések között lehetnek. |
+A hibák eredményének kódjait az [élő események](live-event-error-codes.md)hibakódjában találja.
 
 A kecses leválasztási eredmények kódjai a következők:
 
-| Eredménykód | Leírás |
+| Eredmény kódja | Leírás |
 | ----------- | ----------- |
 | S_OK | A kódoló leválasztása sikeresen megtörtént. |
 | MPE_CLIENT_TERMINATED_SESSION | A kódoló leválasztva (RTMP). |
@@ -458,13 +440,13 @@ Az alábbi példa a **LiveEventIncomingDataChunkDropped** esemény sémáját mu
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | sztring | A pálya típusa (hang/videó). |
 | trackName | sztring | A pálya neve. |
-| Sávszélességű | egész szám | A pálya bitrátája. |
+| bitrate | egész szám | A pálya bitrátája. |
 | időbélyeg | sztring | Az adattömb eldobott időbélyegzője. |
-| időskála | sztring | Az időbélyeg időkerete. |
+| timescale | sztring | Az időbélyeg időkerete. |
 | resultCode | sztring | Az adattömb eldobásának oka. **FragmentDrop_OverlapTimestamp** vagy **FragmentDrop_NonIncreasingTimestamp**. |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
@@ -498,16 +480,16 @@ Az alábbi példa a **LiveEventIncomingStreamReceived** esemény sémáját muta
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | sztring | A pálya típusa (hang/videó). |
 | trackName | sztring | A nyomkövetés neve (amelyet a kódoló biztosít, vagy ha RTMP esetén a kiszolgáló *TrackType_Bitrate* formátumban hozza létre). |
-| Sávszélességű | egész szám | A pálya bitrátája. |
+| bitrate | egész szám | A pálya bitrátája. |
 | ingestUrl | sztring | Betöltési URL-cím, amelyet az élő esemény biztosít. |
 | encoderIp | sztring  | A kódoló IP-címe. |
 | encoderPort | sztring | Annak a kódolónak a portja, ahonnan a stream érkezik. |
 | időbélyeg | sztring | A fogadott adathalmaz első időbélyege. |
-| időskála | sztring | Az időbélyeg megjelenítésének időkerete. |
+| timescale | sztring | Az időbélyeg megjelenítésének időkerete. |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -537,7 +519,7 @@ Az alábbi példa a **LiveEventIncomingStreamsOutOfSync** esemény sémáját mu
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | minLastTimestamp | sztring | Az összes műsorszám (hang vagy videó) utolsó időbélyegének minimális száma. |
 | typeOfTrackWithMinLastTimestamp | sztring | A pálya (hang vagy videó) minimális utolsó időbélyeg-típusa. |
@@ -573,13 +555,13 @@ Az alábbi példa a **LiveEventIncomingVideoStreamsOutOfSync** esemény sémáj�
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | firstTimestamp | sztring | A videó típusú számok/minőségi szintek egyikéhez tartozó időbélyeg érkezett. |
 | firstDuration | sztring | Az adathalmaz időtartama az első időbélyeggel. |
 | secondTimestamp | sztring  | A videó típusának más követési/minőségi szintjéhez tartozó időbélyeg érkezett. |
 | secondDuration | sztring | Az adattömb időtartama második időbélyegzővel. |
-| időskála | sztring | Az időbélyegek és az időtartam időkerete.|
+| timescale | sztring | Az időbélyegek és az időtartam időkerete.|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -615,20 +597,20 @@ Az alábbi példa a **LiveEventIngestHeartbeat** esemény sémáját mutatja be:
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | sztring | A pálya típusa (hang/videó). |
 | trackName | sztring | A nyomkövetés neve (amelyet a kódoló biztosít, vagy ha RTMP esetén a kiszolgáló *TrackType_Bitrate* formátumban hozza létre). |
-| Sávszélességű | egész szám | A pálya bitrátája. |
+| bitrate | egész szám | A pálya bitrátája. |
 | incomingBitrate | egész szám | A kódolóból érkező adattömbök alapján számított bitráta. |
 | lastTimestamp | sztring | Utolsó 20 másodpercben egy nyomkövetéshez tartozó legutóbbi időbélyeg érkezett. |
-| időskála | sztring | Az időbélyegek kiértékelési időkerete. |
+| timescale | sztring | Az időbélyegek kiértékelési időkerete. |
 | overlapCount | egész szám | Az átfedő időbélyegek száma az elmúlt 20 másodpercben. |
 | discontinuityCount | egész szám | Az elmúlt 20 másodpercben megfigyelt megszakítások száma. |
 | nonIncreasingCount | egész szám | A múltban az időbélyegzővel rendelkező adattömbök száma az elmúlt 20 másodpercben érkezett. |
-| unexpectedBitrate | logikai | Ha a várt érték és a tényleges bitsebességek az elmúlt 20 másodpercben több mint megengedett korláttal térnek el egymástól. Igaz, ha és csak akkor, ha incomingBitrate > = 2 * bitráta vagy incomingBitrate < = bitráta/2 vagy IncomingBitrate = 0. |
+| unexpectedBitrate | bool | Ha a várt érték és a tényleges bitsebességek az elmúlt 20 másodpercben több mint megengedett korláttal térnek el egymástól. Igaz, ha és csak akkor, ha incomingBitrate > = 2 * bitráta vagy incomingBitrate < = bitráta/2 vagy IncomingBitrate = 0. |
 | state | sztring | Az élő esemény állapota. |
-| kifogástalan | logikai | Azt jelzi, hogy a betöltés kifogástalan állapotú-e a számok és a jelzők alapján. Az kifogástalan érték igaz, ha overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
+| healthy | bool | Azt jelzi, hogy a betöltés kifogástalan állapotú-e a számok és a jelzők alapján. Az kifogástalan érték igaz, ha overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
@@ -659,36 +641,37 @@ Az alábbi példa a **LiveEventTrackDiscontinuityDetected** esemény sémáját 
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | sztring | A pálya típusa (hang/videó). |
 | trackName | sztring | A nyomkövetés neve (amelyet a kódoló biztosít, vagy ha RTMP esetén a kiszolgáló *TrackType_Bitrate* formátumban hozza létre). |
-| Sávszélességű | egész szám | A pálya bitrátája. |
+| bitrate | egész szám | A pálya bitrátája. |
 | previousTimestamp | sztring | Az előző töredék időbélyegzője. |
 | newTimestamp | sztring | Az aktuális töredék időbélyegzője. |
 | discontinuityGap | sztring | A két időbélyeg közötti különbség. |
-| időskála | sztring | Az az időkeret, amelyben az időbélyegző és a folytonossági hézag is szerepel. |
+| timescale | sztring | Az az időkeret, amelyben az időbélyegző és a folytonossági hézag is szerepel. |
 
 ### <a name="common-event-properties"></a>Gyakori esemény tulajdonságai
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | sztring | A EventGrid témakör. Ez a tulajdonság a Media Services fiók erőforrás-azonosítójával rendelkezik. |
-| tárgy | sztring | A Media Services fiók Media Servicesi csatornájának erőforrás-elérési útja. A témakör és a tárgy összefűzésével megadhatja a feladatokhoz tartozó erőforrás-azonosítót. |
-| EventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. Például: "Microsoft. Media. JobStateChange". |
-| EventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| subject | sztring | A Media Services fiók Media Servicesi csatornájának erőforrás-elérési útja. A témakör és a tárgy összefűzésével megadhatja a feladatokhoz tartozó erőforrás-azonosítót. |
+| eventType | sztring | Az eseményforrás egyik regisztrált eseménytípus. Például: "Microsoft. Media. JobStateChange". |
+| eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
 | data | objektum | Media Services az eseményekre vonatkozó adatgyűjtést. |
-| dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
-| metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
+| dataVersion | sztring | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
+| metadataVersion | sztring | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
 
 ## <a name="next-steps"></a>Következő lépések
 
 [Regisztrálja a feladatok állapotának változási eseményeit](job-state-events-cli-how-to.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [A Media Service-eseményeket tartalmazó EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Media Services események definíciói](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
+- [Élő események hibakódja](live-event-error-codes.md)

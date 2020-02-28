@@ -6,19 +6,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: 39217a883863fd663b02cafea699dcbc4e070dfb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/25/2020
+ms.openlocfilehash: 13c51f0db468c1591ca29de17f1744752589a1c8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435730"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663745"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Használja az Apache Beeline-ügyfelet Apache Hive
 
 Ismerje meg, hogyan használható az [Apache beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) Apache Hive lekérdezések futtatásához a HDInsight.
 
-A Beeline egy kaptár-ügyfél, amely a HDInsight-fürt fő csomópontjain található. Ha helyileg szeretné telepíteni a beelinet, tekintse meg az alábbi, a [Beeline-ügyfél telepítése](#install-beeline-client)című témakört. A Beeline JDBC használatával csatlakozik a HDInsight-fürtön üzemeltetett HiveServer2-hez. A Beeline használatával távolról is elérheti a HDInsight a struktúrát az interneten keresztül. Az alábbi példák a HDInsight való kapcsolódáshoz használt leggyakoribb kapcsolati karakterláncokat biztosítják a következő esetekben:
+A Beeline egy kaptár-ügyfél, amely a HDInsight-fürt fő csomópontjain található. Ha helyileg szeretné telepíteni a beelinet, tekintse meg az alábbi, a [Beeline-ügyfél telepítése](#install-beeline-client)című témakört. A Beeline JDBC használatával csatlakozik a HDInsight-fürtön üzemeltetett HiveServer2-hez. A Beeline használatával távolról is elérheti a HDInsight a struktúrát az interneten keresztül. A következő példák a HDInsight való kapcsolódáshoz használt leggyakoribb kapcsolati karakterláncokat biztosítják a Beeline szolgáltatásból.
 
 ## <a name="types-of-connections"></a>A kapcsolatok típusai
 
@@ -59,7 +59,9 @@ Cserélje le a `<username>`t egy olyan fiók nevére, amely a fürt eléréséhe
 
 ### <a name="over-public-or-private-endpoints"></a>Nyilvános vagy privát végpontokon keresztül
 
-Ha nyilvános vagy privát végpontokat használó fürthöz csatlakozik, meg kell adnia a fürt bejelentkezési fiókjának nevét (az alapértelmezett `admin`) és a jelszót. Ha például egy ügyfélrendszer beelinét használja a `clustername.azurehdinsight.net`-címnek való kapcsolódáshoz. Ez a kapcsolat a `443`porton keresztül történik, és SSL használatával titkosítva:
+Ha nyilvános vagy privát végpontokat használó fürthöz csatlakozik, meg kell adnia a fürt bejelentkezési fiókjának nevét (az alapértelmezett `admin`) és a jelszót. Ha például egy ügyfélrendszer beelinét használja a `clustername.azurehdinsight.net`-címnek való kapcsolódáshoz. Ez a kapcsolat a `443`porton keresztül történik, és SSL használatával titkosítva van.
+
+Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje le a `admin`t a fürthöz tartozó bejelentkezési fiókkal. ESP-fürtök esetén használja a teljes egyszerű felhasználónevet (például user@domain.com). Cserélje le a `password`t a fürt bejelentkezési fiókjának jelszavára.
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
@@ -71,19 +73,17 @@ vagy privát végpont esetén:
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
-Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje le a `admin`t a fürthöz tartozó bejelentkezési fiókkal. ESP-fürtök esetén használja a teljes egyszerű felhasználónevet (például user@domain.com). Cserélje le a `password`t a fürt bejelentkezési fiókjának jelszavára.
-
 A privát végpontok alapszintű Load balancerre mutatnak, amely csak ugyanabban a régióban található virtuális hálózatok érhető el. További információért tekintse [meg a globális VNet-társítási és terheléselosztó-korlátozásokat](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . A `curl` parancsot használhatja `-v` lehetőséggel a nyilvános vagy privát végpontokkal kapcsolatos csatlakozási problémák elhárításához a beelin használata előtt.
 
 ---
 
-### <a id="sparksql"></a>A Beeline használata a Apache Spark
+### <a name="use-beeline-with-apache-spark"></a>A Beeline használata a Apache Spark
 
 Apache Spark a HiveServer2 saját implementációját biztosítja, amelyet más néven a Spark-takarékossági kiszolgálónak nevezünk. Ez a szolgáltatás a Spark SQL-t használja a lekérdezések feloldásához a struktúra helyett, és a lekérdezéstől függően jobb teljesítményt nyújthat.
 
 #### <a name="through-public-or-private-endpoints"></a>Nyilvános vagy privát végpontokon keresztül
 
-A használt kapcsolatok karakterlánca némileg eltér. Ahelyett, hogy a `httpPath=/hive2` `httpPath/sparkhive2`:
+A használt kapcsolatok karakterlánca némileg eltér. Ahelyett, hogy a `httpPath=/hive2` `httpPath/sparkhive2`. Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje le a `admin`t a fürthöz tartozó bejelentkezési fiókkal. ESP-fürtök esetén használja a teljes egyszerű felhasználónevet (például user@domain.com). Cserélje le a `password`t a fürt bejelentkezési fiókjának jelszavára.
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
@@ -94,8 +94,6 @@ vagy privát végpont esetén:
 ```bash
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
-
-Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje le a `admin`t a fürthöz tartozó bejelentkezési fiókkal. ESP-fürtök esetén használja a teljes egyszerű felhasználónevet (például user@domain.com). Cserélje le a `password`t a fürt bejelentkezési fiókjának jelszavára.
 
 A privát végpontok alapszintű Load balancerre mutatnak, amely csak ugyanabban a régióban található virtuális hálózatok érhető el. További információért tekintse [meg a globális VNet-társítási és terheléselosztó-korlátozásokat](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . A `curl` parancsot használhatja `-v` lehetőséggel a nyilvános vagy privát végpontokkal kapcsolatos csatlakozási problémák elhárításához a beelin használata előtt.
 
@@ -111,7 +109,7 @@ Ha közvetlenül a fürt fő csomópontja vagy egy, a HDInsight-fürttel azonos 
 
 ---
 
-## <a id="prereq"></a>Előfeltételek
+## <a name="prerequisites-for-examples"></a>Példák az előfeltételekre
 
 * Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
 
@@ -121,7 +119,7 @@ Ha közvetlenül a fürt fő csomópontja vagy egy, a HDInsight-fürttel azonos 
 
 * 2\. lehetőség: helyi Beeline-ügyfél.
 
-## <a id="beeline"></a>Struktúra-lekérdezés futtatása
+## <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
 
 Ez a példa a Beeline-ügyfél SSH-kapcsolatban való használatára épül.
 
@@ -188,24 +186,21 @@ Ez a példa a Beeline-ügyfél SSH-kapcsolatban való használatára épül.
         t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
-    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs 
-        WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' 
+    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
+        WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log'
         GROUP BY t4;
     ```
 
     Ezek az utasítások a következő műveleteket végzik el:
 
-    * `DROP TABLE` – ha a tábla létezik, törölve lett.
-
-    * `CREATE EXTERNAL TABLE` – **külső** táblát hoz létre a struktúrában. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen marad.
-
-    * `ROW FORMAT` – az adat formázása. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.
-
-    * `STORED AS TEXTFILE LOCATION` – az adattárolást és a fájlformátumot.
-
-    * `SELECT` – kiválasztja az összes olyan sor számát, ahol a **T4** oszlop tartalmazza a **[hiba]** értéket. Ez a lekérdezés **3** értéket ad vissza, mert három sor tartalmazza ezt az értéket.
-
-    * `INPUT__FILE__NAME LIKE '%.log'` – a struktúra megpróbálja alkalmazni a sémát a címtárban található összes fájlra. Ebben az esetben a könyvtár olyan fájlokat tartalmaz, amelyek nem egyeznek a sémával. Ha meg szeretné akadályozni, hogy az eredmények ne kerüljenek az adatokba, ez az utasítás azt ismerteti, hogy a kaptár csak a. log fájlban végződő fájlokból tér vissza.
+    |Kimutatás |Leírás |
+    |---|---|
+    |TÁBLÁZAT ELDOBÁSA|Ha a tábla létezik, törölve lett.|
+    |KÜLSŐ TÁBLA LÉTREHOZÁSA|Létrehoz egy **külső** táblát a struktúrában. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen marad.|
+    |SOR FORMÁTUMA|Az adat formázása. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.|
+    |TEXTFILE HELYEN TÁROLVA|Az adattárolás helye és a fájl formátuma.|
+    |SELECT|Kiválasztja az összes olyan sor számát, ahol a **T4** oszlop tartalmazza a **[hiba]** értéket. Ez a lekérdezés **3** értéket ad vissza, mert három sor tartalmazza ezt az értéket.|
+    |INPUT__FILE__NAME például: "%. log"|A struktúra megpróbálja alkalmazni a sémát a címtárban található összes fájlra. Ebben az esetben a könyvtár olyan fájlokat tartalmaz, amelyek nem egyeznek a sémával. Ha meg szeretné akadályozni, hogy az eredmények ne kerüljenek az adatokba, ez az utasítás azt ismerteti, hogy a kaptár csak a. log fájlban végződő fájlokból tér vissza.|
 
    > [!NOTE]  
    > Külső táblákat kell használni, ha várható, hogy a mögöttes adatokat külső forrás frissíti. Például egy automatizált adatfeltöltési folyamat vagy egy MapReduce művelet.
@@ -236,7 +231,11 @@ Ez a példa a Beeline-ügyfél SSH-kapcsolatban való használatára épül.
         +----------+--------+--+
         1 row selected (47.351 seconds)
 
-6. A Beeline kilépéséhez használja a `!exit`.
+6. Kilépés Beeline:
+
+    ```bash
+    !exit
+    ```
 
 ## <a name="run-a-hiveql-file"></a>HiveQL-fájl futtatása
 
@@ -248,7 +247,7 @@ Ez az előző példa folytatása. A következő lépésekkel hozzon létre egy f
     nano query.hql
     ```
 
-2. Használja a következő szöveget a fájl tartalmának megfelelően. Ez a lekérdezés egy új, **alkalmazásnaplókat**nevű belső táblát hoz létre:
+1. Használja a következő szöveget a fájl tartalmának megfelelően. Ez a lekérdezés egy új, **alkalmazásnaplókat**nevű belső táblát hoz létre:
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -257,16 +256,18 @@ Ez az előző példa folytatása. A következő lépésekkel hozzon létre egy f
 
     Ezek az utasítások a következő műveleteket végzik el:
 
-   * **CREATE TABLE, ha nem létezik** – ha a tábla még nem létezik, létrejön. Mivel a **külső** kulcsszó nincs használatban, az utasítás belső táblát hoz létre. A belső táblák a struktúra adattárházában tárolódnak, és a struktúra teljes mértékben felügyeli őket.
-   * **Ork-ként tárolva** – az adatok tárolása optimalizált sor oszlopos (ORK) formátumban történik. Az ork formátum a kaptárak adatok tárolására szolgáló, kiválóan optimalizált és hatékony formátum.
-   * **felülírás beszúrása... SELECT (kijelölés** ) – kiválasztja **a log4jLogs** tábla azon sorait, amelyek **[Error]** karaktert tartalmaznak, majd beszúrja az adatait a **alkalmazásnaplókat** táblába.
+    |Kimutatás |Leírás |
+    |---|---|
+    |CREATE TABLE, HA NEM LÉTEZIK|Ha a tábla még nem létezik, akkor létrejön. Mivel a **külső** kulcsszó nincs használatban, az utasítás belső táblát hoz létre. A belső táblák a struktúra adattárházában tárolódnak, és a struktúra teljes mértékben felügyeli őket.|
+    |ORK-KÉNT TÁROLVA|Az adatok az optimalizált sorok oszlopos (ORK) formátumban vannak tárolva. Az ork formátum a kaptárak adatok tárolására szolgáló, kiválóan optimalizált és hatékony formátum.|
+    |FELÜLÍRÁS BESZÚRÁSA... Válassza|A **[Error]** karaktert tartalmazó sorok kiválasztása a **log4jLogs** táblából, majd az adatok beillesztése a **alkalmazásnaplókat** táblába.|
 
     > [!NOTE]  
     > A külső tábláktól eltérően a belső tábla eldobása a mögöttes adatokat is törli.
 
-3. A fájl mentéséhez használja a CTRL+**X** **billentyűkombinációt** , majd írja be az **Y**értéket, és végül **írja be**a következőt:.
+1. A fájl mentéséhez használja a CTRL+**X** **billentyűkombinációt** , majd írja be az **Y**értéket, és végül **írja be**a következőt:.
 
-4. A következő paranccsal futtathatja a fájlt a Beeline használatával:
+1. A következő paranccsal futtathatja a fájlt a Beeline használatával:
 
     ```bash
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i query.hql
@@ -275,7 +276,7 @@ Ez az előző példa folytatása. A következő lépésekkel hozzon létre egy f
     > [!NOTE]  
     > A `-i` paraméter elindítja és futtatja a `query.hql` fájlban szereplő utasításokat. A lekérdezés befejeződése után megérkezik a `jdbc:hive2://headnodehost:10001/>` parancssorba. A `-f` paraméterrel is futtathat egy fájlt, amely a lekérdezés befejeződése után kilép.
 
-5. A **alkalmazásnaplókat** tábla létrehozásának ellenőrzéséhez használja a következő utasítást a **alkalmazásnaplókat**összes sorának visszaküldéséhez:
+1. A **alkalmazásnaplókat** tábla létrehozásának ellenőrzéséhez használja a következő utasítást a **alkalmazásnaplókat**összes sorának visszaküldéséhez:
 
     ```hiveql
     SELECT * from errorLogs;
@@ -310,7 +311,9 @@ Bár a Beeline a HDInsight-fürt fő csomópontjain szerepel, érdemes lehet egy
         sudo apt install openjdk-11-jre-headless
         ```
 
-    1. Módosítsa a bashrc fájlt (általában a ~/.bashrc-ben található). Nyissa meg a fájlt `nano ~/.bashrc`, majd adja hozzá a következő sort a fájl végén:
+    1. Nyissa meg a bashrc fájlt (általában a ~/.bashrc-ben található): `nano ~/.bashrc`.
+
+    1. Módosítsa a bashrc fájlt. Adja hozzá a következő sort a fájl végéhez:
 
         ```bash
         export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
@@ -335,11 +338,12 @@ Bár a Beeline a HDInsight-fürt fő csomópontjain szerepel, érdemes lehet egy
 1. Módosítsa a bashrc-fájlt. Meg kell határoznia azt az elérési utat, ahová az archívumok kicsomagolása megtörtént. Ha a [Linux Windows alrendszerét](https://docs.microsoft.com/windows/wsl/install-win10)használja, és pontosan követte a lépéseket, az elérési út `/mnt/c/Users/user/`lesz, ahol `user` a felhasználónevét.
 
     1. Nyissa meg a fájlt: `nano ~/.bashrc`
+
     1. Módosítsa az alábbi parancsokat a megfelelő elérési úttal, majd írja be őket a bashrc fájl végére:
 
         ```bash
-        export HADOOP_HOME=/$(path_where_the_archives_were_unpacked)/hadoop-2.7.3
-        export HIVE_HOME=/$(path_where_the_archives_were_unpacked)/apache-hive-1.2.1-bin
+        export HADOOP_HOME=/path_where_the_archives_were_unpacked/hadoop-2.7.3
+        export HIVE_HOME=/path_where_the_archives_were_unpacked/apache-hive-1.2.1-bin
         PATH=$PATH:$HIVE_HOME/bin
         ```
 

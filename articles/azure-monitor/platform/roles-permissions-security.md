@@ -3,17 +3,16 @@ title: Szerepkörök, engedélyek és biztonság a Azure Monitorban
 description: Megtudhatja, hogyan használhatja a Azure Monitor beépített szerepköreit és engedélyeit a figyelési erőforrásokhoz való hozzáférés korlátozására.
 author: johnkemnetz
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: d223c3483becdc8ba44bc14ec16150cf1b001943
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 81309f0b5781e6302887a5b079ed359e70659834
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894539"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658982"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Szerepkörök, engedélyek és biztonság a Azure Monitorban
 
@@ -73,23 +72,23 @@ Ha a fenti beépített szerepkörök nem felelnek meg a csoport pontos igényein
 
 | Művelet | Leírás |
 | --- | --- |
-| Microsoft. ininsights/ActionGroups/[olvasás, írás, törlés] |A műveleti csoportok olvasása/írása/törlése. |
-| Microsoft. ininsights/ActivityLogAlerts/[olvasás, írás, törlés] |Olvasási/írási/törlési műveletnapló riasztásai. |
-| Microsoft. ininsights/AlertRules/[olvasás, írás, törlés] |Riasztási szabályok olvasása/írása/törlése (a klasszikus riasztásokból). |
-| Microsoft. ininsights/AlertRules/incidensek/olvasás |Az incidensek listázása (riasztási szabály előzményei) a riasztási szabályokhoz. Ez csak a portálra vonatkozik. |
-| Microsoft. ininsights/AutoscaleSettings/[olvasás, írás, törlés] |Az autoskálázási beállítások olvasása/írása/törlése. |
-| Microsoft. ininsights/DiagnosticSettings/[olvasás, írás, törlés] |Diagnosztikai beállítások olvasása/írása/törlése. |
-| Microsoft. bepillantások/EventCategories/olvasás |A tevékenység naplójában lehetséges összes kategória enumerálása. A Azure Portal használja. |
-| Microsoft. bepillantások/eventtypes/digestevents/olvasás |Ez az engedély olyan felhasználók számára szükséges, akiknek a portálon keresztül kell hozzáférnie a tevékenység naplóihoz. |
-| Microsoft. bepillantások/eventtypes/értékek/olvasás |Az előfizetésben szereplő tevékenység-naplózási események (kezelési események) listázása. Ez az engedély mind a programozási, mind a portálhoz való hozzáférésre alkalmazható a tevékenység naplójában. |
-| Microsoft. ininsights/ExtendedDiagnosticSettings/[olvasás, írás, törlés] | Hálózati folyamatok naplóihoz tartozó diagnosztikai beállítások olvasása/írása/törlése. |
-| Microsoft. bepillantások/LogDefinitions/olvasás |Ez az engedély olyan felhasználók számára szükséges, akiknek a portálon keresztül kell hozzáférnie a tevékenység naplóihoz. |
-| Microsoft. ininsights/LogProfiles/[olvasás, írás, törlés] |Olvasási/írási/törlési napló profiljai (adatfolyam-tevékenységek naplója az Event hub vagy a Storage-fiók számára). |
-| Microsoft. ininsights/MetricAlerts/[olvasás, írás, törlés] |Olvasási/írási/törlési közel valós idejű metrikai riasztások |
-| Microsoft. bepillantások/MetricDefinitions/olvasás |A metrikai definíciók (az adott erőforráshoz elérhető metrikai típusok listája) olvasása. |
-| Microsoft. bepillantások/mérőszámok/olvasás |Erőforrás metrikáinak olvasása. |
-| Microsoft. elemzések/regisztráció/művelet |Regisztrálja a Azure Monitor erőforrás-szolgáltatót. |
-| Microsoft. ininsights/ScheduledQueryRules/[olvasás, írás, törlés] |Olvasási/írási és törlési naplózási riasztások a Azure Monitorban. |
+| Microsoft.Insights/ActionGroups/[Read, Write, Delete] |A műveleti csoportok olvasása/írása/törlése. |
+| Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |Olvasási/írási/törlési műveletnapló riasztásai. |
+| Microsoft.Insights/AlertRules/[Read, Write, Delete] |Riasztási szabályok olvasása/írása/törlése (a klasszikus riasztásokból). |
+| Microsoft.Insights/AlertRules/Incidents/Read |Az incidensek listázása (riasztási szabály előzményei) a riasztási szabályokhoz. Ez csak a portálra vonatkozik. |
+| Microsoft.Insights/AutoscaleSettings/[Read, Write, Delete] |Az autoskálázási beállítások olvasása/írása/törlése. |
+| Microsoft.Insights/DiagnosticSettings/[Read, Write, Delete] |Diagnosztikai beállítások olvasása/írása/törlése. |
+| Microsoft.Insights/EventCategories/Read |A tevékenység naplójában lehetséges összes kategória enumerálása. A Azure Portal használja. |
+| Microsoft.Insights/eventtypes/digestevents/Read |Ez az engedély olyan felhasználók számára szükséges, akiknek a portálon keresztül kell hozzáférnie a tevékenység naplóihoz. |
+| Microsoft.Insights/eventtypes/values/Read |Az előfizetésben szereplő tevékenység-naplózási események (kezelési események) listázása. Ez az engedély mind a programozási, mind a portálhoz való hozzáférésre alkalmazható a tevékenység naplójában. |
+| Microsoft.Insights/ExtendedDiagnosticSettings/[Read, Write, Delete] | Hálózati folyamatok naplóihoz tartozó diagnosztikai beállítások olvasása/írása/törlése. |
+| Microsoft.Insights/LogDefinitions/Read |Ez az engedély olyan felhasználók számára szükséges, akiknek a portálon keresztül kell hozzáférnie a tevékenység naplóihoz. |
+| Microsoft.Insights/LogProfiles/[Read, Write, Delete] |Olvasási/írási/törlési napló profiljai (adatfolyam-tevékenységek naplója az Event hub vagy a Storage-fiók számára). |
+| Microsoft.Insights/MetricAlerts/[Read, Write, Delete] |Olvasási/írási/törlési közel valós idejű metrikai riasztások |
+| Microsoft.Insights/MetricDefinitions/Read |A metrikai definíciók (az adott erőforráshoz elérhető metrikai típusok listája) olvasása. |
+| Microsoft.Insights/Metrics/Read |Erőforrás metrikáinak olvasása. |
+| Microsoft.Insights/Register/Action |Regisztrálja a Azure Monitor erőforrás-szolgáltatót. |
+| Microsoft.Insights/ScheduledQueryRules/[Read, Write, Delete] |Olvasási/írási és törlési naplózási riasztások a Azure Monitorban. |
 
 
 

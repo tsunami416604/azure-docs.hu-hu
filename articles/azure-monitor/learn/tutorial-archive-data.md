@@ -3,18 +3,17 @@ title: Azure-metrikák és naplóadatok archiválása az Azure Storage használa
 description: Az Azure-erőforrások által egy Storage-fiókba létrehozott napló-és metrikai adatok archiválása.
 author: johnkemnetz
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 87b05256103790c706f3ba0df7ea72c169b79f16
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3ed00b1c68c41bc392b09c97dd47c9cdb8fa890d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979815"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661725"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure-metrikák és naplóadatok archiválása az Azure Storage használatával
 
@@ -38,9 +37,9 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Először be kell állítania egy tárfiókot, amelybe a monitorozási adatokat archiválja. Ehhez [kövesse ezeket a lépéseket](../../storage/common/storage-account-create.md).
 
@@ -96,7 +95,7 @@ Most konfiguráljuk az erőforrás-szintű adatokat (erőforrás-metrikákat és
 
 6. Állítsa a **Megőrzés (nap)** csúszkát a 30 értékre. Ez a csúszka beállítja a monitorozási adatok tárfiókban való megőrzésének időtartamát napokban. Az Azure Monitor automatikusan törli a megadott számú napnál régebbi adatokat. A nulla értékű megőrzési időszak határozatlan ideig tárolja az adatokat.
 
-7. Kattintson a **Mentés** gombra.
+7. Kattintson a **Save** (Mentés) gombra.
 
 Az erőforrás monitorozási adatai mostantól a tárfiókba kerülnek.
 
@@ -137,7 +136,7 @@ Az erőforrás monitorozási adatai mostantól a tárfiókba kerülnek.
 
 9. A megjelenő szakaszban válassza ki az előző, **Tárfiók létrehozása** című lépésben létrehozott tárfiókot.
 
-10. Kattintson a **Mentés** gombra.
+10. Kattintson a **Save** (Mentés) gombra.
 
 Az virtuális gépek monitorozási adatai mostantól a tárfiókba kerülnek.
 

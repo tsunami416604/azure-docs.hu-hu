@@ -1,18 +1,14 @@
 ---
 title: Telemetria folyamatos exportálása a Application Insightsból | Microsoft Docs
 description: A diagnosztikai és használati adatok exportálása a Microsoft Azure tárolóba, és onnan tölthető le.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/25/2019
-ms.openlocfilehash: 6504661c2df66bda81af03a6364703b4b10f7485
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 33158919980514b70c3b0e438691427a34eed834
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819552"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663913"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetria exportálása a Application Insightsból
 Szeretné megőrizni a telemetria a normál megőrzési időtartamnál hosszabb ideig? Vagy dolgozza fel valamilyen speciális módon? A folyamatos exportálás ideális ehhez. A Application Insights-portálon megjelenített események JSON formátumban exportálhatók Microsoft Azureba. Innen letöltheti az adatait, és bármilyen kódot írhat, amelyet fel kell dolgoznia.  
@@ -120,7 +116,7 @@ Az időtartamok a kullancsokban vannak, ahol a 10 000-es osztásjelek = 1 ms. Ez
 [Részletes adatmodell-referenciák a tulajdonságok típusaihoz és értékeihez.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Az adatfeldolgozás
-Kis léptékben írhat egy kódot, amely lekéri az adatait, beolvashatja azt egy számolótáblába, és így tovább. Példa:
+Kis léptékben írhat egy kódot, amely lekéri az adatait, beolvashatja azt egy számolótáblába, és így tovább. Például:
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {
@@ -158,7 +154,7 @@ A folyamatos exportálás újra fog indulni.
 
 Nagyobb lépték esetén vegye fontolóra a [HDInsight](https://azure.microsoft.com/services/hdinsight/) Hadoop-fürtöket a felhőben. A HDInsight számos különböző technológiát biztosít a big data felügyeletéhez és elemzéséhez, és felhasználhatja az Application Insightsból exportált adatok feldolgozására.
 
-## <a name="q--a"></a>Kérdések és válaszok
+## <a name="q--a"></a>Q & A
 * *Azonban csak egy diagram egyszeri letöltésére van szükség.*  
 
     Igen, ezt megteheti. A lap tetején kattintson az **adatexportálás**elemre.
@@ -183,7 +179,7 @@ Nagyobb lépték esetén vegye fontolóra a [HDInsight](https://azure.microsoft.
     Szerkessze az exportálást, és nyissa meg az Exportálás célhelye lapot. hagyja ki ugyanazt a tárolót, mint korábban, majd a megerősítéshez kattintson az OK gombra. Az Exportálás újra fog indulni. Ha a módosítás az elmúlt néhány napon belül volt, nem veszíti el az adatvesztést.
 * *Szüneteltethető az Exportálás?*
 
-    Igen. Kattintson a Letiltás gombra.
+    Igen. Kattintson a Letiltás lehetőségre.
 
 ## <a name="code-samples"></a>Kódminták
 

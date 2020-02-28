@@ -1,18 +1,17 @@
 ---
 title: Optimalizálja SQL Server-környezetét Azure Monitorkal | Microsoft Docs
 description: A Azure Monitor használatával az SQL Health-ellenőrzési megoldással rendszeres időközönként felmérhetővé teheti a környezetek kockázatait és állapotát.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: 23b1391033713fc8eeccf2d0872c49a4291b8292
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: ceaed0800df01bf2c44fee13d98b01b6e726200d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168899"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662484"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Az SQL-környezet optimalizálása a SQL Server Health-ellenőrzési megoldással Azure Monitor
 
@@ -79,14 +78,14 @@ Az alábbi információk segítségével állíthatja be az SQL Health-ellenőrz
 
 1. A Operations Managerban nyissa meg az operatív konzolt, majd kattintson az **Adminisztráció**elemre.
 2. A **futtató konfiguráció**alatt kattintson a **profilok**elemre, majd nyissa meg **SQL Assessment futtató profilt**.
-3. A **Futtató fiókok** lapon kattintson **Hozzáadás** lehetőségre.
+3. A **futtató fiókok** lapon kattintson a **Hozzáadás**gombra.
 4. Válasszon olyan Windows rendszerű futtató fiókot, amely tartalmazza a SQL Serverhoz szükséges hitelesítő adatokat, vagy kattintson az **új** elemre egy létrehozásához.
 
    > [!NOTE]
    > A futtató fiók típusának Windowsnak kell lennie. A futtató fióknak a helyi Rendszergazdák csoport részét kell képeznie a SQL Server példányokat üzemeltető összes Windows-kiszolgálón.
    >
    >
-5. Kattintson a **Mentés** gombra.
+5. Kattintson a **Save** (Mentés) gombra.
 6. Módosítsa, majd hajtsa végre az alábbi T-SQL-mintát minden SQL Server példányon, hogy az állapot-ellenőrzés elvégzéséhez szükséges minimális engedélyeket adja meg a futtató fiók számára. Ezt azonban nem kell megtennie, ha egy futtató fiók már része a sysadmin (rendszergazda) kiszolgálói szerepkörnek SQL Server példányokon.
 
 ```
@@ -206,7 +205,7 @@ SQLAssessmentRecommendation
 | distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
 | sort by FocusArea,ActionArea, Recommendation
 ```
-Az eredmények az Excel programba exportálhatók további áttekintés céljából.
+Az eredményeket ezután exportálhatók Excelbe további ellenőrzésre.
 
 
 *Milyen gyakran fut az állapot-ellenőrzési funkció?*
@@ -227,7 +226,7 @@ Az eredmények az Excel programba exportálhatók további áttekintés céljáb
 
 *Mi az adatgyűjtés folyamatának neve?*
 
-* AdvisorAssessment. exe
+* AdvisorAssessment.exe
 
 *Mennyi időt vesz igénybe az adatok gyűjtése?*
 

@@ -1,20 +1,18 @@
 ---
 title: Intelligens csoportok
 description: Az intelligens csoportok olyan riasztások összesítései, amelyek segítenek csökkenteni a riasztási zajt
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
+ms.subservice: alerts
 ms.date: 05/15/2018
-ms.openlocfilehash: 83ea68ad92a6c78ccf56483e1f0c2cbcbcd7d22a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552348"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665493"
 ---
 # <a name="smart-groups"></a>Intelligens csoportok
+
 A riasztások kezelése során felmerülő gyakori kihívás, hogy megtudja, mi a helyzet, ha az intelligens csoportok a probléma megoldására szolgálnak.  
 
 Az intelligens csoportok automatikusan létrejönnek a gépi tanulási algoritmusok használatával, amelyek egyetlen problémát jelképező kapcsolódó riasztásokat egyesítenek.  Riasztás létrehozásakor az algoritmus hozzáadja azt egy új intelligens csoporthoz vagy egy meglévő intelligens csoporthoz olyan információk alapján, mint például a korábbi minták, a hasonló tulajdonságok és a hasonló struktúra. Ha például egy előfizetésben egyszerre több virtuális gépen található% CPU több különböző riasztáshoz vezet, és ha az ilyen riasztások a múltban bármikor bekövetkeztek, akkor ezek a riasztások valószínűleg egyetlen intelligens csoportba vannak csoportosítva, ami arra utal, hogy a lehetséges gyakori kiváltó ok. Ez azt jelenti, hogy ha valaki hibaelhárítási riasztást használ, az intelligens csoportok nem csak a zaj csökkentését teszik lehetővé a kapcsolódó riasztások egyetlen aggregált egységként való kezelésével, a riasztások lehetséges gyakori kiváltó okaival is.
@@ -24,15 +22,16 @@ Az algoritmus jelenleg csak ugyanazon figyelő szolgáltatásból származó ria
 Megtekintheti az intelligens csoportok részleteit, és a riasztásokhoz hasonlóan állíthatja be az állapotot is. Mindegyik riasztás egy és csak egy intelligens csoport tagja. 
 
 ## <a name="smart-group-state"></a>Intelligens csoport állapota
+
 Az intelligens csoport állapota a riasztási állapothoz hasonló fogalom, amely lehetővé teszi a megoldási folyamat kezelését egy intelligens csoport szintjén. Hasonlóan a riasztási állapothoz, amikor egy intelligens csoportot hoznak létre, az **új** állapottal rendelkezik, amely módosítható a **nyugtázott** vagy a **lezárt**értékre is.
 
 A következő intelligens csoportos állapotok támogatottak.
 
-| Állami | Leírás |
+| Állapot | Leírás |
 |:---|:---|
 | Új | A probléma nemrég észlelhető, és még nem lett ellenőrizve. |
-| Elismerte | A rendszergazda áttekintette az intelligens csoportot, és megkezdte a munkát. |
-| zárt | A probléma megoldódott. Egy intelligens csoport bezárása után újra megnyithatja azt egy másik állapotba való módosításával. |
+| Arra vonatkozik | A rendszergazda áttekintette az intelligens csoportot, és megkezdte a munkát. |
+| Lezárva | A probléma megoldódott. Egy intelligens csoport bezárása után újra megnyithatja azt egy másik állapotba való módosításával. |
 
 [Megtudhatja, hogyan módosíthatja az intelligens csoport állapotát.](https://aka.ms/managing-alert-smart-group-states)
 
@@ -50,7 +49,7 @@ Az intelligens csoport részleteit tartalmazó oldal a következő részekből �
 
 | Section | Leírás |
 |:---|:---|
-| Értesítések | Felsorolja az intelligens csoportban található egyes riasztásokat. Válasszon ki egy riasztást a riasztás részletei lap megnyitásához. |
+| Riasztások | Felsorolja az intelligens csoportban található egyes riasztásokat. Válasszon ki egy riasztást a riasztás részletei lap megnyitásához. |
 | Előzmények | Felsorolja az intelligens csoport által végrehajtott összes műveletet, valamint a rajta végrehajtott módosításokat. Ez jelenleg csak az állapot változásaira és a riasztások tagságának változásaira korlátozódik. |
 
 ## <a name="smart-group-taxonomy"></a>Intelligens csoport besorolása

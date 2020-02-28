@@ -1,18 +1,14 @@
 ---
 title: Exportálás Power BI az Azure Application Insightsból | Microsoft Docs
 description: Az elemzési lekérdezések a Power BIban is megjeleníthetők.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/10/2018
-ms.openlocfilehash: 3ec20f82bc12b60e5b88a02bb92a4a0ada4dcae7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668014"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663997"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Hírcsatorna-Power BI Application Insights
 A [Power bi](https://www.powerbi.com/) egy olyan üzleti eszköz, amely megkönnyíti az adatok elemzését és az elemzések megosztását. A gazdag irányítópultok minden eszközön elérhetők. Több forrásból is egyesítheti az adatait, beleértve az [Azure Application Insightsból](../../azure-monitor/app/app-insights-overview.md)származó elemzési lekérdezéseket is.
@@ -81,7 +77,7 @@ Telepítse a [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
    ![Képernyőkép a Power BI Desktopről, a cím módosítása kiemelve](./media/export-power-bi/changetitle.png)
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 A hitelesítő adatokkal vagy az adatkészlet méretétől kapcsolatos hibák merülhetnek fel. Itt talál néhány információt arról, hogy mi a teendő a hibákkal kapcsolatban.
 
@@ -148,7 +144,7 @@ Szerkesztheti az irányítópultot, kombinálhatja a Application Insights diagra
 
 A kezdeti importálás után az irányítópult és a jelentések naponta frissülnek. A frissítési ütemtervet az adatkészleten is szabályozhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Power BI – Learn](https://www.powerbi.com/learning/)
 * [Elemzési oktatóanyag](../../azure-monitor/log-query/get-started-portal.md)
 

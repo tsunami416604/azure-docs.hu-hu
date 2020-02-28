@@ -1,19 +1,18 @@
 ---
 title: Futásidejű kivételek diagnosztizálása az Azure Application Insights használatával | Microsoft Docs
 description: Oktatóanyag az alkalmazásában előforduló futásidejű kivételek észleléséhez és diagnosztizálásához az Azure Application Insights használatával.
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: d56b81dbe8c78b9b48f122d79f4567d0b0f42e27
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91a0e4b052571a509ec7122e4440a8eaf58839be
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398530"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670423"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Futásidejű kivételek észlelése és diagnosztizálása az Azure Application Insights segítségével
 
@@ -84,9 +83,9 @@ A Snapshot Debugger az alkalmazásában leggyakrabban előforduló kivételekrő
 
     ![Hibakeresési pillanatkép](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. Ezután letöltheti ezt a pillanatképet a Visual studióba, ahol megtalálhatja a javítani kívánt kódot. Ehhez kattintson a **Pillanatkép letöltése**elemre.
+4. Ezután vannak arra, hogy letöltse ezt a pillanatfelvételt a Visual studióba, ahol megkereshetjük a javításra szoruló kódot. Ehhez kattintson a **Pillanatkép letöltése**elemre.
 5. A rendszer betölti a pillanatfelvételt a Visual Studióba.
-6. Most már futtathat egy hibakeresési munkamenetet a Visual Studio Enterprise-ban, amely gyorsan azonosítja a kivételt okozó kód sorát.
+6. Most futtathatja a hibakeresési munkamenet a Visual Studio Enterprise, amely gyorsan azonosítja a kivételt okozó kódsorra.
 
     ![Kivétel a kódban](media/tutorial-runtime-exceptions/exception-code.png)
 

@@ -1,18 +1,17 @@
 ---
 title: A Azure Monitor View Designer részeire mutató útmutató Microsoft Docs
 description: A Azure Monitorban megjelenő tervező használatával létrehozhat olyan egyéni nézeteket, amelyek megjelennek a Azure Portalban, és a Log Analytics munkaterületen lévő adatvizualizációk különböző vizualizációit is tartalmazhatják. Ez a cikk az egyéni nézetekben elérhető vizualizációs részek beállításait ismerteti.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 853f0153283f31c9242b884babf5778f96cce141
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7dc4164cac1998a02ae62d7682f9630aa4faa619
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931996"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658557"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Útmutató a Designer vizualizációs részeinek megtekintéséhez Azure Monitor
 A Azure Monitor Tervező nézetében számos egyéni nézetet hozhat létre a Azure Portalban, amelyek segíthetnek a Log Analytics munkaterületen lévő adatmegjelenítésben. Ez a cikk az egyéni nézetekben elérhető vizualizációs részek beállításait ismerteti.
@@ -82,8 +81,8 @@ A fejléc egyetlen számot jelenít meg, amely egy napló lekérdezésében lév
 | Név és érték elválasztója |A Text tulajdonság több értékre való elemzéséhez használt egykarakteres határolójel. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Listáját** |**> Oszlopok címei** |
-| Név |Az első oszlop tetején megjelenő szöveg |
-| Value (Díj) |A második oszlop tetején megjelenő szöveg |
+| Name (Név) |Az első oszlop tetején megjelenő szöveg |
+| Érték |A második oszlop tetején megjelenő szöveg |
 | **Listáját** |**> Küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
 
@@ -113,8 +112,8 @@ A fejlécnek két száma van, amely a rekordok számát jeleníti meg a különb
 | Név és érték elválasztója |A Text tulajdonság több értékre való elemzéséhez használt egykarakteres határolójel. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Listáját** |**> Oszlopok címei** |
-| Név |Az első oszlop tetején megjelenő szöveg |
-| Value (Díj) |A második oszlop tetején megjelenő szöveg |
+| Name (Név) |Az első oszlop tetején megjelenő szöveg |
+| Érték |A második oszlop tetején megjelenő szöveg |
 | **Listáját** |**> Küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
 
@@ -154,8 +153,8 @@ A fejléc egyetlen számot jelenít meg, amely összegzi a log lekérdezés Valu
 | Név és érték elválasztója |A Text tulajdonság több értékre való elemzéséhez használt egykarakteres határolójel. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Listáját** |**> Oszlopok címei** |
-| Név |Az első oszlop tetején megjelenő szöveg |
-| Value (Díj) |A második oszlop tetején megjelenő szöveg |
+| Name (Név) |Az első oszlop tetején megjelenő szöveg |
+| Érték |A második oszlop tetején megjelenő szöveg |
 | **Listáját** |**> Küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
 
@@ -186,8 +185,8 @@ A fejléc a két naplózási lekérdezés eredményét jeleníti meg az oszlopok
 | Művelet |Az értékgörbe számára végrehajtandó művelet. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Listáját** |**> Oszlopok címei** |
-| Név |Az első oszlop tetején megjelenő szöveg |
-| Value (Díj) |A második oszlop tetején megjelenő szöveg |
+| Name (Név) |Az első oszlop tetején megjelenő szöveg |
+| Érték |A második oszlop tetején megjelenő szöveg |
 | **Listáját** |**> Küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
 
@@ -203,7 +202,7 @@ A fejlécben statikus szöveg és opcionális hivatkozás látható. A lista egy
 | Új csoport |Válassza ezt a hivatkozást, ha új csoportot szeretne létrehozni a nézetben, az aktuális nézettől kezdődően. |
 | Szín |A fejléc háttérszíne |
 | **Fejléc** | |
-| Kép |A fejlécben megjelenő képfájl. |
+| Image (Kép) |A fejlécben megjelenő képfájl. |
 | Címke |A fejlécben megjelenített szöveg |
 | **Fejléc** |**> Hivatkozás** |
 | Címke |A hivatkozás szövege |
@@ -236,7 +235,7 @@ A fejlécben egy olyan vonalas diagram látható, amely több adatsorozatból á
 | Művelet |Az érték tulajdonságon végrehajtandó művelet, amely egyetlen értékként összegzi a képfeliratot.<ul><li>Average (átlag): az összes rekord értékének átlaga.</li><li>Darabszám: a lekérdezés által visszaadott összes rekord száma.</li><li>Utolsó minta: a diagramon szereplő utolsó intervallum értéke.</li><li>Max: a diagramban szereplő intervallumok maximális értéke.</li><li>Min: a diagramban szereplő intervallumok minimális értéke.</li><li>Sum: az összes rekord értékének összege.</li></ul> |
 | **Vonalas diagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ezt a hivatkozást, ha logaritmikus méretezést szeretne használni az y tengelyhez. |
-| egység |Adja meg a lekérdezés által visszaadott értékek egységeit. Ezek az adatok az értékek típusát jelző, és opcionálisan az értékek átalakítására szolgáló diagram-címkék megjelenítésére szolgálnak. Az *egység* típusa határozza meg az egység kategóriáját, és meghatározza a rendelkezésre álló *aktuális egység* típusú értékeket. Ha a *Konvertálás a*értékre lehetőséget választja, a rendszer a numerikus értékeket az *aktuális egység* típusról a *Konvertálás* típusra konvertálja. |
+| Egység |Adja meg a lekérdezés által visszaadott értékek egységeit. Ezek az adatok az értékek típusát jelző, és opcionálisan az értékek átalakítására szolgáló diagram-címkék megjelenítésére szolgálnak. Az *egység* típusa határozza meg az egység kategóriáját, és meghatározza a rendelkezésre álló *aktuális egység* típusú értékeket. Ha a *Konvertálás a*értékre lehetőséget választja, a rendszer a numerikus értékeket az *aktuális egység* típusról a *Konvertálás* típusra konvertálja. |
 | Egyéni címke |Az y tengelyen megjelenített szöveg az *egység* típusához tartozó címke mellett. Ha nincs megadva címke, csak az *egység* típusa jelenik meg. |
 | **Listáját** | |
 | Lekérdezés |A listához futtatandó lekérdezés. Megjelenik a lekérdezés által visszaadott rekordok száma. |
@@ -247,8 +246,8 @@ A fejlécben egy olyan vonalas diagram látható, amely több adatsorozatból á
 | Név és érték elválasztója |A Text tulajdonság több értékre való elemzéséhez használt egykarakteres határolójel. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Listáját** |**> Oszlopok címei** |
-| Név |Az első oszlop tetején megjelenő szöveg |
-| Value (Díj) |A második oszlop tetején megjelenő szöveg |
+| Name (Név) |Az első oszlop tetején megjelenő szöveg |
+| Érték |A második oszlop tetején megjelenő szöveg |
 | **Listáját** |**> Küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
 
@@ -272,7 +271,7 @@ A fejléc több adatsorozatot tartalmazó vonalas diagramot jelenít meg a napl�
 | Kattintás – Navigálás | A fejlécre való kattintáskor végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Vonalas diagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ezt a hivatkozást, ha logaritmikus méretezést szeretne használni az y tengelyhez. |
-| egység |Adja meg a lekérdezés által visszaadott értékek egységeit. Ezek az adatok az értékek típusát jelző, és opcionálisan az értékek átalakítására szolgáló diagram-címkék megjelenítésére szolgálnak. Az *egység* típusa határozza meg az egység kategóriáját, és meghatározza a rendelkezésre álló *aktuális egység* típusú értékeket. Ha a *Konvertálás a*értékre lehetőséget választja, a rendszer a numerikus értékeket az *aktuális egység* típusról a *Konvertálás* típusra konvertálja. |
+| Egység |Adja meg a lekérdezés által visszaadott értékek egységeit. Ezek az adatok az értékek típusát jelző, és opcionálisan az értékek átalakítására szolgáló diagram-címkék megjelenítésére szolgálnak. Az *egység* típusa határozza meg az egység kategóriáját, és meghatározza a rendelkezésre álló *aktuális egység* típusú értékeket. Ha a *Konvertálás a*értékre lehetőséget választja, a rendszer a numerikus értékeket az *aktuális egység* típusról a *Konvertálás* típusra konvertálja. |
 | Egyéni címke |Az y tengelyen megjelenített szöveg az *egység* típusához tartozó címke mellett. Ha nincs megadva címke, csak az *egység* típusa jelenik meg. |
 | **Listáját** | |
 | Lekérdezés |A listához futtatandó lekérdezés. Megjelenik a lekérdezés által visszaadott rekordok száma. |
@@ -283,8 +282,8 @@ A fejléc több adatsorozatot tartalmazó vonalas diagramot jelenít meg a napl�
 | Név és érték elválasztója |A Text tulajdonság több értékre való elemzéséhez használt egykarakteres határolójel. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Listáját** |**> Oszlopok címei** |
-| Név |Az első oszlop tetején megjelenő szöveg |
-| Value (Díj) |A második oszlop tetején megjelenő szöveg |
+| Name (Név) |Az első oszlop tetején megjelenő szöveg |
+| Érték |A második oszlop tetején megjelenő szöveg |
 | **Listáját** |**> Küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
 
@@ -307,7 +306,7 @@ A sor diagramja három különálló diagramot jelenít meg, több adatsorozatot
 | Kattintás – Navigálás | A fejlécre való kattintáskor végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Diagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ezt a hivatkozást, ha logaritmikus méretezést szeretne használni az y tengelyhez. |
-| egység |Adja meg a lekérdezés által visszaadott értékek egységeit. Ezek az adatok az értékek típusát jelző, és opcionálisan az értékek átalakítására szolgáló diagram-címkék megjelenítésére szolgálnak. Az *egység* típusa határozza meg az egység kategóriáját, és meghatározza a rendelkezésre álló *aktuális egység* típusú értékeket. Ha a *Konvertálás a*értékre lehetőséget választja, a rendszer a numerikus értékeket az *aktuális egység* típusról a *Konvertálás* típusra konvertálja. |
+| Egység |Adja meg a lekérdezés által visszaadott értékek egységeit. Ezek az adatok az értékek típusát jelző, és opcionálisan az értékek átalakítására szolgáló diagram-címkék megjelenítésére szolgálnak. Az *egység* típusa határozza meg az egység kategóriáját, és meghatározza a rendelkezésre álló *aktuális egység* típusú értékeket. Ha a *Konvertálás a*értékre lehetőséget választja, a rendszer a numerikus értékeket az *aktuális egység* típusról a *Konvertálás* típusra konvertálja. |
 | Egyéni címke |Az y tengelyen megjelenített szöveg az *egység* típusához tartozó címke mellett. Ha nincs megadva címke, csak az *egység* típusa jelenik meg. |
 
 ## <a name="common-settings"></a>Általános beállítások
@@ -327,7 +326,7 @@ A következő táblázat a kattintásra navigáció beállításait ismerteti.
 |:--|:--|
 | Naplók keresése (automatikus) | A fejléc-elem kiválasztásakor futtatandó naplózási lekérdezés.  Ez ugyanaz a log-lekérdezés, amelyre az elem alapul.
 | Naplók keresése        | A listában szereplő elemek kiválasztásakor futtatandó naplózási lekérdezés.  Írja be a lekérdezést a **navigációs lekérdezés** mezőbe.   A *{kiválasztott Item}* használatával adja meg a felhasználó által kiválasztott tétel szintaxisát.  Ha például a lekérdezés egy *számítógép* nevű oszloppal rendelkezik, és a navigációs lekérdezés *{kiválasztott elem}* , a számítógép kiválasztásakor egy lekérdezés, például a *Computer = "Sajátgép"* fut. Ha a navigációs lekérdezés *típusa = Event {kiválasztott elem}* , a lekérdezés *típusa = Event Computer = "Sajátgép"* fut. |
-| Megtekintés              | A megnyitható nézet, amikor kijelöl egy fejléc elemet vagy egy listaelemet a listában.  A nézet **neve** mezőben válassza ki a nézet nevét a munkaterületen. |
+| Nézet              | A megnyitható nézet, amikor kijelöl egy fejléc elemet vagy egy listaelemet a listában.  A nézet **neve** mezőben válassza ki a nézet nevét a munkaterületen. |
 
 
 
@@ -353,8 +352,8 @@ A következő táblázat a küszöbértékek beállításait ismerteti:
 | Beállítás | Leírás |
 |:--- |:--- |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást, ha egy szín ikont szeretne megjeleníteni az egyes értékek bal oldalán. Az ikon jelzi az érték állapotát a megadott küszöbértékekhez viszonyítva. |
-| Név |A küszöb értékének neve |
-| Küszöb |A küszöbérték értéke. Az egyes listaelemek állapotának színe az adott értéknél nagyobb legmagasabb küszöbérték színét adja meg. Ha nem lépi túl a küszöbértéket, a rendszer egy alapértelmezett színt használ. |
+| Name (Név) |A küszöb értékének neve |
+| Küszöbérték |A küszöbérték értéke. Az egyes listaelemek állapotának színe az adott értéknél nagyobb legmagasabb küszöbérték színét adja meg. Ha nem lépi túl a küszöbértéket, a rendszer egy alapértelmezett színt használ. |
 | Szín |A küszöbértéket jelző szín |
 
 ## <a name="next-steps"></a>Következő lépések

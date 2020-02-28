@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4438851ef7ea015060926075f46822de877b85b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4a8d7f50ecf385388b63b9d83525a39737e0d157
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766438"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655752"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Spring boot-alkalmazáshoz
 
@@ -21,9 +21,9 @@ A tavaszi rendszerindítási szolgáltatás felügyeleti kódtárai kiterjesztik
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-- Támogatott [Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk) a 8-as verzióval.
-- Az [Apache Maven](https://maven.apache.org/download.cgi) 3,0-es vagy újabb verziója.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* Támogatott [Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk) a 8-as verzióval.
+* Az [Apache Maven](https://maven.apache.org/download.cgi) 3,0-es vagy újabb verziója.
 
 ## <a name="create-an-app-configuration-instance"></a>Alkalmazás-konfigurációs példány létrehozása
 
@@ -42,14 +42,14 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 1. Nyissa meg a következő címet: <https://start.spring.io/>.
 
-2. A következő beállításokat kell megadnia:
+1. Adja meg a következő beállításokat:
 
-   - **Maven** -projekt létrehozása **Javával**.
-   - Olyan **Spring boot** -verziót válasszon, amely egyenlő vagy nagyobb, mint 2,0.
-   - Adja meg az alkalmazás **csoport** -és **lelet** -nevét.  Ez a cikk `com.example` és `demo`t használ.
-   - Adja hozzá a **rugó webes** függőségét.
+   * Hozzon létre egy **Maven** projektet **Javával**.
+   * Olyan **Spring boot** -verziót válasszon, amely egyenlő vagy nagyobb, mint 2,0.
+   * Adja meg az alkalmazáshoz tartozó **Group** (Csoport) és **Artifact** (Összetevő) neveket.  Ez a cikk `com.example` és `demo`t használ.
+   * Adja hozzá a **rugó webes** függőségét.
 
-3. Az előző beállítások megadása után válassza a **projekt létrehozása**lehetőséget. Ha a rendszer kéri, töltse le a projektet a helyi számítógépre.
+1. Az előző beállítások megadása után válassza a **projekt létrehozása**lehetőséget. Ha a rendszer kéri, töltse le a projektet a helyi számítógépre.
 
 ## <a name="add-feature-management"></a>Szolgáltatások felügyeletének hozzáadása
 
@@ -57,20 +57,41 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 1. Nyissa meg a *Pom. XML* fájlt egy szövegszerkesztőben, és adja hozzá a következőt a `<dependencies>`listájához:
 
+### <a name="spring-cloud-11x"></a>Spring Cloud 1.1. x
+
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.2.1</version>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.2.1</version>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    ```
+
+### <a name="spring-cloud-12x"></a>Spring Cloud 1.2. x
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
     ```
 
@@ -108,6 +129,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
         }
     }
     ```
+
 1. Hozzon létre egy új, *MessageProperties. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába.
 
     ```java
@@ -131,7 +153,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
     }
     ```
 
-1. Hozzon létre egy új, *HelloController. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába. 
+1. Hozzon létre egy új, *HelloController. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába.
 
     ```java
     package com.example.demo;
@@ -220,42 +242,42 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
     ```
 
-6. Hozzon létre egy CSS nevű új mappát a `static` alatt, és a benne lévő új CSS-fájlt a *Main. css*néven.
+1. Hozzon létre egy CSS nevű új mappát a `static` alatt, és a benne lévő új CSS-fájlt a *Main. css*néven.
 
     ```css
     html {
-    position: relative;
-    min-height: 100%;
+     position: relative;
+     min-height: 100%;
     }
     body {
-    margin-bottom: 60px;
+     margin-bottom: 60px;
     }
     .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    background-color: #f5f5f5;
+     position: absolute;
+     bottom: 0;
+     width: 100%;
+     height: 60px;
+     line-height: 60px;
+     background-color: #f5f5f5;
     }
 
     body > .container {
-    padding: 60px 15px 0;
+     padding: 60px 15px 0;
     }
 
     .footer > .container {
-    padding-right: 15px;
-    padding-left: 15px;
+     padding-right: 15px;
+     padding-left: 15px;
     }
 
     code {
-    font-size: 80%;
+     font-size: 80%;
     }
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>Az alkalmazás helyi létrehozása és futtatása
 
-1. Készítse elő a Spring boot-alkalmazást a Maven használatával, és futtassa.
+1. Állítsa össze a Spring Boot-alkalmazást a Mavennel, és futtassa.
 
     ```shell
     mvn clean package
@@ -268,9 +290,9 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 1. Az alkalmazás konfigurációs portálján válassza a **Feature Manager**elemet, és módosítsa a **bétaverzió** **állapotát a következőre:**
 
-    | Jelmagyarázat | Állami |
+    | Paraméter | Állapot |
     |---|---|
-    | Beta | Be |
+    | Beta | Bekapcsolva |
 
 1. A böngésző oldalának frissítésével tekintheti meg az új konfigurációs beállításokat.
 
@@ -284,6 +306,6 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta egy Spring boot-webalkalmazás funkcióinak kezeléséhez a [Feature Management librarys](https://go.microsoft.com/fwlink/?linkid=2074664)használatával.
 
-- További információ a [szolgáltatások kezeléséről](./concept-feature-management.md).
-- [Szolgáltatás-jelzők kezelése](./manage-feature-flags.md).
-- [A Feature Flags szolgáltatást egy Spring boot Core-alkalmazásban használhatja](./use-feature-flags-spring-boot.md).
+* További információ a [szolgáltatások kezeléséről](./concept-feature-management.md).
+* [Szolgáltatás-jelzők kezelése](./manage-feature-flags.md).
+* [A Feature Flags szolgáltatást egy Spring boot Core-alkalmazásban használhatja](./use-feature-flags-spring-boot.md).

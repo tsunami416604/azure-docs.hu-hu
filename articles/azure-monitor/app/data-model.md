@@ -3,22 +3,18 @@ title: Az Azure Application Insights Telemetria adatmodellje | Microsoft Docs
 description: Az Application Insights adatmodell áttekintése
 services: application-insights
 documentationcenter: .net
-author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: b14ce5cc83dcbbeef2379d21027d4bca337fd9fd
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 94013a12e1cf48a8007fce2547c200d82a657b71
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376024"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671834"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetria adatmodell
 
@@ -34,7 +30,7 @@ Az alkalmazás végrehajtásának figyeléséhez a következő típusú telemetr
 
     A **művelet** a kérelmeket feldolgozó végrehajtási szálakat dolgozza fel. Más típusú műveletek figyelésére is [kódot írhat](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) , például egy olyan webes feladat vagy függvény felébresztését, amely rendszeresen dolgozza fel az adatfeldolgozást.  Minden művelet rendelkezik AZONOSÍTÓval. Ez az azonosító a kérelem feldolgozásakor az alkalmazás által létrehozott összes telemetria [csoportosítására](../../azure-monitor/app/correlation.md) használható. Minden művelet sikeres vagy sikertelen, és időtartammal rendelkezik.
 * [**Kivétel**](data-model-exception-telemetry.md) – a művelet általában egy olyan kivételt jelöl, amely egy műveletet eredményez.
-* [**Függőség**](data-model-dependency-telemetry.md) – az alkalmazástól érkező hívást egy külső szolgáltatásra vagy tárhelyre, például egy REST API vagy SQL-példányra hívja. A ASP.NET-ben az SQL-függőségi hívások `System.Data` értékkel vannak meghatározva. A HTTP-végpontokra irányuló hívásokat a `System.Net` határozza meg. 
+* [**Függőség**](data-model-dependency-telemetry.md) – az alkalmazástól érkező hívást egy külső szolgáltatásra vagy tárhelyre, például egy REST API vagy SQL-példányra hívja. A ASP.NET-ben a függőségi hívások az SQL-hez `System.Data`vannak meghatározva. A HTTP-végpontokra irányuló hívásokat a `System.Net`határozza meg. 
 
 A Application Insights három további adattípust biztosít az egyéni telemetria:
 

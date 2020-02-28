@@ -1,19 +1,18 @@
 ---
 title: Felügyeleti megoldás fájljának létrehozása az Azure-ban | Microsoft Docs
 description: A felügyeleti megoldások olyan csomagolt felügyeleti forgatókönyveket biztosítanak, amelyeket az ügyfelek hozzáadhatnak az Azure-környezethez.  Ez a cikk részletesen ismerteti, hogyan hozhat létre a saját környezetében használt felügyeleti megoldásokat, illetve hogyan teheti elérhetővé az ügyfelek számára.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977699"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662537"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Felügyeleti megoldás fájljának létrehozása az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -77,7 +76,7 @@ Az alábbi táblázat az összes felügyeleti megoldás szabványos paraméterei
 >
 >
 
-| Paraméter | Type (Típus) | Leírás |
+| Paraméter | Típus | Leírás |
 |:--- |:--- |:--- |
 | accountName |sztring |Azure Automation fiók neve. |
 | pricingTier |sztring |A Log Analytics munkaterület és Azure Automation fiók díjszabási szintje. |
@@ -154,14 +153,14 @@ Meghatározhat olyan összetett változókat is, amelyek több halmazt tartalmaz
 
 Ebben az esetben a megoldáson keresztül változó értékeket tekint a szintaxis **változói ("változó neve"). tulajdonsággal**.  Ha például a megoldás neve változót szeretné elérni, használja a **változókat ("megoldás"). Név**.
 
-## <a name="resources"></a>Segédanyagok és eszközök
+## <a name="resources"></a>További források
 Az [erőforrások](../../azure-resource-manager/templates/template-syntax.md#resources) határozzák meg azokat a különböző erőforrásokat, amelyeket a felügyeleti megoldás telepíteni és konfigurálni fog.  Ez lesz a sablon legnagyobb és legbonyolultabb része.  Megtekintheti az erőforrás-elemek szerkezetét és leírását [Azure Resource Manager sablonok létrehozásához](../../azure-resource-manager/templates/template-syntax.md#resources).  A különböző erőforrások, amelyeket általában meghatároz, az ebben a dokumentációban található egyéb cikkekben talál részletes leírást. 
 
 
 ### <a name="dependencies"></a>Függőségek
 A **dependsOn** elem egy másik erőforrás [függőségét](../../azure-resource-manager/templates/define-resource-dependency.md) határozza meg.  Ha a megoldás telepítve van, a rendszer nem hozza létre az erőforrást, amíg az összes függőségét nem hozták létre.  Előfordulhat például, hogy a megoldás [elindít egy runbook](solutions-resources-automation.md#runbooks) , ha a [feladatot erőforrással](solutions-resources-automation.md#automation-jobs)telepíti.  A runbook erőforrástól függ, hogy a runbook létrejött-e a feladatokhoz.
 
-### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics munkaterület és Automation-fiók
+### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics-munkaterületet és Automation-fiók
 A felügyeleti megoldásokhoz [log Analytics munkaterületre](../../azure-monitor/platform/manage-access.md) van szükség, hogy a runbookok és a kapcsolódó erőforrásokat tartalmazó nézeteket és [Automation-fiókot](../../automation/automation-security-overview.md#automation-account-overview) tartalmazzon.  Ezeknek elérhetőnek kell lenniük a megoldás erőforrásainak létrehozása előtt, és a megoldásban nem kell őket meghatározni.  A felhasználónak [meg kell adnia egy munkaterületet és fiókot](solutions.md#log-analytics-workspace-and-automation-account) a megoldás telepítésekor, de a szerzőnek a következő szempontokat kell figyelembe vennie.
 
 
@@ -213,7 +212,7 @@ A megoldás erőforrásának tulajdonságai a következő táblázatban láthat�
 
 A fenti példa egy runbook, egy ütemtervet és egy nézetet tartalmazó megoldás.  Az ütemterv és a runbook a **Tulajdonságok** elemre *hivatkoznak* , így azok nem törlődnek a megoldás eltávolításakor.  A rendszer a nézetet is *tárolja* , ezért a rendszer eltávolítja a megoldás eltávolításakor.
 
-### <a name="plan"></a>Felkészülés
+### <a name="plan"></a>Csomag
 A megoldás erőforrásának **csomag** entitása a következő táblázatban található tulajdonságokkal rendelkezik.
 
 | Tulajdonság | Leírás |
@@ -221,7 +220,7 @@ A megoldás erőforrásának **csomag** entitása a következő táblázatban ta
 | név |A megoldás neve. |
 | version |A megoldásnak a szerző által meghatározott verziója. |
 | product |Egyedi karakterlánc a megoldás azonosításához. |
-| közzétevő |A megoldás közzétevője. |
+| publisher |A megoldás közzétevője. |
 
 
 
