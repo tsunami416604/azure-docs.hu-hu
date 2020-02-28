@@ -366,6 +366,24 @@
           href: hybrid-use-benefit-licensing.md
         - name: "Többvállalatos üzemeltetési jogosultságok használata Windows\_10-hez"
           href: windows-desktop-multitenant-hosting-deployment.md
+    - name: Migrálás a klasszikusból Azure Resource Manager-alapú környezetbe
+      items:
+        - name: 2023. március 1-től kezdődő kivezetések
+          href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Áttekintés
+          href: migration-classic-resource-manager-overview.md
+        - name: Az áttelepítés részletes bemutatása
+          href: migration-classic-resource-manager-deep-dive.md
+        - name: Az áttelepítés megtervezése
+          href: migration-classic-resource-manager-plan.md
+        - name: Áttelepítés a PowerShell-lel
+          href: migration-classic-resource-manager-ps.md
+        - name: Gyakori áttelepítési hibák
+          href: migration-classic-resource-manager-errors.md
+        - name: Közösségi eszközök áttelepítéshez
+          href: migration-classic-resource-manager-community-tools.md
+        - name: GYIK
+          href: migration-classic-resource-manager-faq.md
     - name: Virtuális gépek védelme
       items:
         - name: Javaslatok
@@ -677,7 +695,7 @@
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
     - name: Virtuálisgép-bővítmények használata
       href: ../extensions/overview.md
-    - name: Virtuális gépek áthelyezése és migrálása
+    - name: Virtuális gépek áthelyezése
       items:
         - name: Előfizetés vagy erőforráscsoport módosítása
           href: move-vm.md
@@ -694,21 +712,6 @@
               href: aws-to-azure.md
             - name: Az Azure Site Recovery használata
               href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Áttelepítés a klasszikusból Azure Resource Manager-alapú környezetbe
-          href: migration-classic-resource-manager-overview.md
-          items:
-            - name: Az áttelepítés részletes bemutatása
-              href: migration-classic-resource-manager-deep-dive.md
-            - name: Az áttelepítés megtervezése
-              href: migration-classic-resource-manager-plan.md
-            - name: Áttelepítés a PowerShell-lel
-              href: migration-classic-resource-manager-ps.md
-            - name: Gyakori áttelepítési hibák
-              href: migration-classic-resource-manager-errors.md
-            - name: Közösségi eszközök áttelepítéshez
-              href: migration-classic-resource-manager-community-tools.md
-            - name: GYIK
-              href: migration-classic-resource-manager-faq.md
 - name: Hibaelhárítás
   href: ../troubleshooting/index.yml
 - name: Referencia

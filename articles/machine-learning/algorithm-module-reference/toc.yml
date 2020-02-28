@@ -46,6 +46,8 @@
       href: select-columns-transform.md
     - name: Oszlopok kiválasztása az adathalmazban
       href: select-columns-in-dataset.md
+    - name: Adatok felosztása
+      href: split-data.md
 - name: Szolgáltatás kiválasztása
   items:
     - name: Szűrőalapú szolgáltatásválasztás
@@ -142,5 +144,11 @@
       href: score-svd-recommender.md
     - name: SVD-ajánló betanítása
       href: train-svd-recommender.md
+- name: Rendellenességek észlelése
+  items:
+    - name: PCA-alapú rendellenesség-észlelés
+      href: pca-based-anomaly-detection.md
+    - name: Rendellenesség-észlelési modell betanítása
+      href: train-anomaly-detection-model.md
 - name: Modulhibák és hibaelhárítás
   href: designer-error-codes.md

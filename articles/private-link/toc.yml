@@ -6,22 +6,18 @@
       href: private-link-overview.md
 - name: Rövid útmutatók
   items:
-    - name: Privát végpont létrehozása
-      items:
-        - name: Azure Portal
-          href: create-private-endpoint-portal.md
-        - name: Azure CLI
-          href: create-private-endpoint-cli.md
-        - name: Azure PowerShell
-          href: create-private-endpoint-powershell.md
-    - name: Privát kapcsolati szolgáltatás létrehozása
-      items:
-        - name: Azure Portal
-          href: create-private-link-service-portal.md
-        - name: Azure PowerShell
-          href: create-private-link-service-powershell.md
-        - name: Azure CLI
-          href: create-private-link-service-cli.md
+    - name: Privát végpont létrehozása – Portal
+      href: create-private-endpoint-portal.md
+    - name: Privát végpont létrehozása – PowerShell
+      href: create-private-endpoint-powershell.md
+    - name: Privát végpont létrehozása – Azure CLI
+      href: create-private-endpoint-cli.md
+    - name: Privát kapcsolati szolgáltatás létrehozása – Portal
+      href: create-private-link-service-portal.md
+    - name: Privát kapcsolati szolgáltatás létrehozása – PowerShell
+      href: create-private-link-service-powershell.md
+    - name: Privát kapcsolati szolgáltatás létrehozása – Azure CLI
+      href: create-private-link-service-cli.md
 - name: Alapelvek
   items:
     - name: Privát végpont

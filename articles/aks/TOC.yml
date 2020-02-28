@@ -375,6 +375,8 @@
           href: kube-advisor-tool.md
         - name: SSH-csomópont elérése
           href: ssh.md
+        - name: Linux-teljesítménynövelő eszközök
+          href: troubleshoot-linux.md
 - name: Referencia
   items:
     - name: Azure CLI

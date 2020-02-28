@@ -116,6 +116,8 @@
           items:
             - name: Diagnosztikai és auditnaplók (előzetes verzió)
               href: container-registry-diagnostics-audit-logs.md
+            - name: Megfelelőség naplózása az Azure Policyval (előzetes verzió)
+              href: container-registry-azure-policy.md
         - name: Hibaelhárítás
           expanded: false
           items:

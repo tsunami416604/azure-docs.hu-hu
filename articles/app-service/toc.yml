@@ -203,10 +203,14 @@
           href: app-service-web-restore-snapshots.md
         - name: Alkalmazás klónozása
           href: app-service-web-app-cloning.md
-        - name: Erőforrások áthelyezése
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
         - name: Törölt App Service visszaállítása
           href: app-service-undelete.md
+    - name: Alkalmazás áthelyezése
+      items:
+        - name: Áthelyezés régiók között
+          href: manage-move-across-regions.md
+        - name: Előfizetések áthelyezése
+          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
     - name: Háttérfeladatok futtatása
       items:
         - name: WebJobs-feladatok létrehozása

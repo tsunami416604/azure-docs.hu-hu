@@ -50,6 +50,8 @@
       items:
         - name: Egyéni szabályok
           href: ./afds/waf-front-door-custom-rules.md
+        - name: Kizárási listák
+          href: ./afds/waf-front-door-exclusion.md
         - name: Szabályzatbeállítások
           href: ./afds/waf-front-door-policy-settings.md
         - name: Geoszűrés

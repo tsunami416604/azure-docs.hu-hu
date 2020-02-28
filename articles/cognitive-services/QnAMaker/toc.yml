@@ -88,6 +88,8 @@
         - name: Fejlesztési életciklus
           href: Concepts/development-lifecycle-knowledge-base.md
           displayName: 'version control, test, index, publish, monitor usage, create'
+        - name: Fejlesztés aktív tanulási javaslatokkal
+          href: Concepts/active-learning-suggestions.md
     - name: Tudásbázis lekérdezése
       items:
         - name: Válasz kérése

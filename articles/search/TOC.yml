@@ -35,7 +35,7 @@
       href: search-get-started-python.md
 - name: Oktatóanyagok
   items:
-    - name: 'Az első C#-alkalmazás létrehozása'
+    - name: 'C#-alkalmazás létrehozása'
       items:
         - name: 1 – Alapszintű keresőoldal
           href: tutorial-csharp-create-first-app.md
@@ -47,13 +47,15 @@
           href: tutorial-csharp-facets.md
         - name: 5 – Találatok rendezésének hozzáadása
           href: tutorial-csharp-orders.md
-    - name: Az Azure SQL Database indexelése
-      href: search-indexer-tutorial.md
-    - name: Azure JSON blobok indexelése
-      href: search-semi-structured-data.md
-    - name: Több Azure-beli adatforrás indexelése
-      href: tutorial-multiple-data-sources.md
-    - name: Bővítés és gazdagítás mesterséges intelligenciával (kognitív keresés)
+    - name: Azure-adatok indexelése
+      items:
+        - name: Az Azure SQL Database indexelése
+          href: search-indexer-tutorial.md
+        - name: Azure JSON blobok indexelése
+          href: search-semi-structured-data.md
+        - name: Több Azure-beli adatforrás indexelése
+          href: tutorial-multiple-data-sources.md
+    - name: Tartalom létrehozása MI-vel
       items:
         - name: 'C#'
           href: cognitive-search-tutorial-blob-dotnet.md
