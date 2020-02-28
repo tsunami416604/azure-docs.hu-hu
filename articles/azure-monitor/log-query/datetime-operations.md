@@ -1,18 +1,17 @@
 ---
 title: A dátum-és időértékek használata Azure Monitor log-lekérdezésekben | Microsoft Docs
 description: Ismerteti, hogyan használhatók a dátum-és időadatok Azure Monitor naplók lekérdezésében.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: d659be5b817317e7cec5726718f154825674349e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ea7c98a1b5b4059c5fea0cf1e8ea2ff5ef08d9d1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365342"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655378"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>A dátum-és időértékek használata Azure Monitor log-lekérdezésekben
 
@@ -31,11 +30,11 @@ A időtávok tizedes törtként van megadva, majd egy időegység után:
 
 |rövid függvényneve   | időegység    |
 |:---|:---|
-|d           | napon          |
-|ó           | hour         |
-|p           | minute       |
-|s           | second       |
-|ms          | ezredmásodperc  |
+|d           | nap          |
+|h           | óra         |
+|m           | percenként       |
+|s           | második       |
+|ms          | ezredmásodperces  |
 |mikromásodperces | mikromásodperces  |
 |osztásjel        | NS   |
 

@@ -1,15 +1,14 @@
 ---
 title: Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a OpsGenie webhookok használatával
 description: Személyre szabott értesítések beszerzése a OpsGenie-példány szolgáltatás állapotával kapcsolatos eseményekről.
-ms.service: service-health
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: d1f0ddb506b915697335ec71eab341a7cdb73dd7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: def12d5e7b1b93b8370cd7be61538fca53531ae1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465231"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654137"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a OpsGenie webhookok használatával
 

@@ -1,18 +1,17 @@
 ---
 title: Teljesítményfigyelő funkció az Azure Log Analytics Network Performance Monitor megoldásában | Microsoft Docs
 description: A Network Performance Monitor Teljesítményfigyelő funkciója segíti a hálózati kapcsolatok figyelését a hálózat különböző pontjai között. A Felhőbeli üzemelő példányokat, a helyszíni helyszíneket, több adatközpontot és fiókirodát, valamint a kritikus többrétegű alkalmazásokat és a-szolgáltatásokat is figyelheti.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 745ec6ee8e69ad911e42b6360b3408d79d660718
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dfbc4ea8e168ced95a4239dd100cf7277e0adf7b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898837"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654528"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor megoldás: teljesítményfigyelés
 

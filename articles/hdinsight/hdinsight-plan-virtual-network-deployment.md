@@ -5,25 +5,25 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 1e6a21e8bf9c284c83af09885aa66b612b52ad7c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.custom: hdinsightactive
+ms.date: 02/25/2020
+ms.openlocfilehash: 30664d533215cb49fa6f436ec4cf88fa319c3300
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044712"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659866"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Virtuális hálózat megtervezése az Azure HDInsight
 
-Ez a cikk háttér-információkat nyújt az Azure-beli [virtuális hálózatok](../virtual-network/virtual-networks-overview.md) Azure HDInsight való használatáról. Emellett ismerteti a tervezési és megvalósítási döntéseket is, amelyeket el kell végezni ahhoz, hogy a HDInsight-fürthöz virtuális hálózatot lehessen megvalósítani. Ha a tervezési fázis elkészült, akkor folytathatja a [virtuális hálózatok létrehozását az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md). A hálózati biztonsági csoportok és a felhasználó által definiált útvonalak megfelelő konfigurálásához szükséges HDInsight-felügyeleti IP-címekkel kapcsolatos további információkért lásd: [HDInsight-felügyeleti IP-címek](hdinsight-management-ip-addresses.md).
+Ez a cikk az Azure [Virtual Networks](../virtual-network/virtual-networks-overview.md) (virtuális hálózatok) Azure HDInsight való használatával kapcsolatos háttér-információkat tartalmazza. Emellett ismerteti a tervezési és megvalósítási döntéseket is, amelyeket el kell végezni ahhoz, hogy a HDInsight-fürthöz virtuális hálózatot lehessen megvalósítani. Ha a tervezési fázis elkészült, akkor folytathatja a [virtuális hálózatok létrehozását az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md). A hálózati biztonsági csoportok (NSG) és a felhasználó által definiált útvonalak megfelelő konfigurálásához szükséges HDInsight-felügyeleti IP-címekkel kapcsolatos további információkért lásd: [HDInsight-felügyeleti IP-címek](hdinsight-management-ip-addresses.md).
 
 Az Azure Virtual Network a következő forgatókönyvek használatát teszi lehetővé:
 
 * Csatlakozás a HDInsight közvetlenül egy helyszíni hálózatról.
 * HDInsight csatlakoztatása az adattárakhoz egy Azure-beli virtuális hálózaton.
-* Közvetlen hozzáférés az interneten keresztül nyilvánosan nem elérhető [Apache Hadoop](https://hadoop.apache.org/) -szolgáltatásokhoz. Például [Apache Kafka](https://kafka.apache.org/) API-kat vagy az [Apache HBase](https://hbase.apache.org/) Java API-t.
+* Közvetlen hozzáférés Apache Hadoop olyan szolgáltatásokhoz, amelyek nem érhetők el nyilvánosan az interneten keresztül. Például Apache Kafka API-kat vagy az Apache HBase Java API-t.
 
 > [!IMPORTANT]
 > A HDInsight-fürt VNET való létrehozása számos hálózati erőforrást hoz létre, például hálózati adaptereket és terheléselosztókat. Ne **Törölje ezeket** a hálózati erőforrásokat, mivel azok szükségesek ahhoz, hogy a fürt megfelelően működjön a VNET.
@@ -64,19 +64,19 @@ Az ebben a szakaszban ismertetett lépések segítségével megtudhatja, hogyan 
 2. Hálózati biztonsági csoportokat, felhasználó által megadott útvonalakat vagy Virtual Network készülékeket használ a virtuális hálózatra vagy onnan érkező forgalom korlátozására?
 
     Felügyelt szolgáltatásként a HDInsight korlátozás nélküli hozzáférést igényel az Azure-adatközpont több IP-címéhez. Ezen IP-címekkel való kommunikáció engedélyezéséhez frissítse a meglévő hálózati biztonsági csoportokat vagy a felhasználó által megadott útvonalakat.
-    
+
     A HDInsight több szolgáltatást üzemeltet, amelyek számos portot használnak. Ne blokkolja ezen portok forgalmát. A virtuális berendezési tűzfalakon keresztül engedélyezhető portok listáját a biztonsági szakaszban találja.
-    
+
     A meglévő biztonsági beállítások megkereséséhez használja a következő Azure PowerShell vagy Azure CLI-parancsokat:
 
-    * Hálózati biztonsági csoportok
+    * Network security groups (Hálózati biztonsági csoportok)
 
         Cserélje le a `RESOURCEGROUP`t a virtuális hálózatot tartalmazó erőforráscsoport nevére, majd írja be a parancsot:
-    
+
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
         ```
-    
+
         ```azurecli
         az network nsg list --resource-group RESOURCEGROUP
         ```
@@ -86,7 +86,7 @@ Az ebben a szakaszban ismertetett lépések segítségével megtudhatja, hogyan 
         > [!IMPORTANT]  
         > A hálózati biztonsági csoport szabályait a rendszer a szabály prioritása alapján alkalmazza. A forgalmi mintának megfelelő első szabály lesz alkalmazva, és a rendszer nem alkalmazza másokat erre a forgalomra. A legtöbb engedékenység és a legkevésbé megengedő szabályok sorrendje. További információ: [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/security-overview.md) dokumentum.
 
-    * Felhasználó által definiált útvonalak
+    * Felhasználó által megadott útvonalak
 
         Cserélje le a `RESOURCEGROUP`t a virtuális hálózatot tartalmazó erőforráscsoport nevére, majd írja be a parancsot:
 
@@ -125,7 +125,7 @@ Az Azure a virtuális hálózatban telepített Azure-szolgáltatások névfelold
 
     Mindkét csomópont közvetlenül tud kommunikálni egymással és a HDInsight egyéb csomópontjaival belső DNS-nevek használatával.
 
-Az alapértelmezett névfeloldás __nem__ teszi lehetővé a HDInsight számára a virtuális hálózathoz csatlakoztatott hálózatokban lévő erőforrások nevének feloldását. Például gyakori a helyszíni hálózat csatlakoztatása a virtuális hálózathoz. Csak az alapértelmezett névfeloldással a HDInsight nem fér hozzá a helyszíni hálózat erőforrásaihoz név szerint. Ellenkező esetben is igaz, a helyszíni hálózaton lévő erőforrások név szerint nem férhetnek hozzá a virtuális hálózat erőforrásaihoz.
+Az alapértelmezett névfeloldás __nem__ teszi lehetővé a HDInsight számára a virtuális hálózathoz csatlakoztatott hálózatokban lévő erőforrások nevének feloldását. Például gyakori a helyszíni hálózat csatlakoztatása a virtuális hálózathoz. Csak az alapértelmezett névfeloldással a HDInsight nem fér hozzá az erőforrásokhoz a helyszíni hálózaton név szerint. Ellenkező esetben is igaz, a helyszíni hálózaton lévő erőforrások név szerint nem férnek hozzá a virtuális hálózat erőforrásaihoz.
 
 > [!WARNING]  
 > A HDInsight-fürt létrehozása előtt létre kell hoznia az egyéni DNS-kiszolgálót, és konfigurálnia kell a virtuális hálózatot.
@@ -141,7 +141,7 @@ Ha engedélyezni szeretné a névfeloldást a virtuális hálózat és az össze
 4. Konfigurálja a DNS-kiszolgálók közötti továbbítást. A konfiguráció a távoli hálózat típusától függ.
 
    * Ha a távoli hálózat egy helyszíni hálózat, a DNS-t a következőképpen konfigurálja:
-        
+
      * __Egyéni DNS__ (a virtuális hálózaton):
 
          * Továbbítson kérelmeket a virtuális hálózat DNS-utótagjának az Azure rekurzív feloldó (168.63.129.16) számára. Az Azure kezeli a virtuális hálózatban lévő erőforrásokra vonatkozó kéréseket
@@ -235,12 +235,12 @@ További információ a HDInsight-fürtök kimenő forgalmának szabályozásár
 
 #### <a name="forced-tunneling-to-on-premises"></a>Kényszerített bújtatás a helyszíni környezetbe
 
-A kényszerített bújtatás egy felhasználó által megadott útválasztási konfiguráció, amelyben az alhálózat összes forgalma egy adott hálózatra vagy helyre, például a helyszíni hálózatra van kényszerítve. A HDInsight __nem__ támogatja a helyszíni hálózatokra irányuló forgalom kényszerített bújtatását. 
+A kényszerített bújtatás egy felhasználó által megadott útválasztási konfiguráció, amelyben az alhálózat összes forgalma egy adott hálózatra vagy helyre, például a helyszíni hálózatra van kényszerítve. A HDInsight __nem__ támogatja a helyszíni hálózatokra irányuló forgalom kényszerített bújtatását.
 
 ## <a id="hdinsight-ip"></a>Szükséges IP-címek
 
 Ha hálózati biztonsági csoportokat vagy felhasználó által megadott útvonalakat használ a forgalom vezérléséhez, tekintse meg a [HDInsight-felügyeleti IP-címek](hdinsight-management-ip-addresses.md)című témakört.
-    
+
 ## <a id="hdinsight-ports"></a>Szükséges portok
 
 Ha **tűzfalat** szeretne használni, és bizonyos portokon kívülről fér hozzá a fürthöz, lehetséges, hogy engedélyeznie kell a forgalmat az adott forgatókönyvhöz szükséges portokon. Alapértelmezés szerint a portok speciális engedélyezési beállításai nem szükségesek, ha az előző szakaszban ismertetett Azure felügyeleti forgalom a 443-es porton keresztül érhető el a fürt számára.
@@ -251,13 +251,16 @@ A virtuális készülékekre vonatkozó tűzfalszabályok részletes ismertetés
 
 ## <a name="load-balancing"></a>Terheléselosztás
 
-HDInsight-fürt létrehozásakor a terheléselosztó is létrejön. A terheléselosztó típusa az alapszintű [SKU szintjén](../load-balancer/concepts-limitations.md#skus) van, amely bizonyos korlátozásokkal rendelkezik. Ezen megkötések egyike az, hogy ha két virtuális hálózattal rendelkezik különböző régiókban, akkor nem lehet alapszintű terheléselosztóhoz csatlakozni. További információért lásd [a Virtual Networks gyakori kérdések: a globális vnet-társítás korlátozásai](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)című témakört.
+HDInsight-fürt létrehozásakor a terheléselosztó is létrejön. A terheléselosztó típusa az alapszintű [SKU szintjén](../load-balancer/concepts-limitations.md#skus)van, amely bizonyos korlátozásokkal rendelkezik. Ezen megkötések egyike az, hogy ha két virtuális hálózattal rendelkezik különböző régiókban, akkor nem lehet alapszintű terheléselosztóhoz csatlakozni. További információért lásd [a Virtual Networks gyakori kérdések: a globális vnet-társítás korlátozásai](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)című témakört.
 
 ## <a name="transport-layer-security"></a>Transport Layer Security
 
 A fürtön a nyilvános fürt végpontján keresztül létesített kapcsolatok `https://<clustername>.azurehdinsight.net` a fürt átjárójának csomópontjain keresztül. Ezek a kapcsolatok a TLS nevű protokoll használatával biztonságosak. A TLS magasabb verzióinak kényszerítése az átjárók esetében javítja a kapcsolatok biztonságát. További információ a TLS újabb verzióinak használatáról: [a tls 1,0-probléma megoldása](https://docs.microsoft.com/security/solving-tls1-problem).
 
-A HDInsight-fürt átjáró-csomópontjain támogatott minimális TLS-verzió (ka) t a *minSupportedTlsVersion* tulajdonsággal szabályozhatja egy Resource Manager-sablonban a telepítési idő alatt. Minta sablon: [HDInsight minimális TLS 1,2 rövid útmutató sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Ez a tulajdonság három értéket támogat: "1,0", "1,1" és "1,2", amely a TLS 1.0 +, a TLS 1.1 + és a TLS 1.2 + értéknek felel meg. Alapértelmezés szerint a tulajdonság megadása nélkül az Azure HDInsight-fürtök elfogadják a TLS 1,2-kapcsolatokat a nyilvános HTTPS-végpontokon, valamint a régebbi verziókat a visszamenőleges kompatibilitás érdekében. A HDInsight végül a TLS 1,2-es vagy újabb verzióját fogja érvényesíteni az összes átjáró csomópont-kapcsolaton.
+Alapértelmezés szerint az Azure HDInsight-fürtök elfogadják a TLS 1,2-kapcsolatokat a nyilvános HTTPS-végpontokon, valamint a régebbi verziókat a visszamenőleges kompatibilitás érdekében. A fürt létrehozása során a Azure Portal vagy egy Resource Manager-sablon használatával szabályozhatja az átjáró csomópontjain támogatott minimális TLS-verziót. A portálon válassza ki a TLS-verziót a **Biztonság + hálózatkezelés** lapon a fürt létrehozása során. A Resource Manager-sablonok központi telepítésének ideje alatt használja a **minSupportedTlsVersion** tulajdonságot. Minta sablon: [HDInsight minimális TLS 1,2 rövid útmutató sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Ez a tulajdonság három értéket támogat: "1,0", "1,1" és "1,2", amely a TLS 1.0 +, a TLS 1.1 + és a TLS 1.2 + értéknek felel meg.
+
+> [!IMPORTANT]
+> Az Azure HDInsight az 2020. június 30-ig az összes HTTPS-kapcsolathoz a TLS 1,2-es vagy újabb verziókat fogja érvényesíteni. Javasoljuk, hogy minden ügyfél készen álljon a TLS 1,2-es vagy újabb verzióinak kezelésére. További információ: [Azure HDINSIGHT TLS 1,2 kényszerítés](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/).
 
 ## <a name="next-steps"></a>Következő lépések
 

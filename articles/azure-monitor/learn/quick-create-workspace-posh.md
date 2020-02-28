@@ -1,29 +1,28 @@
 ---
-title: Log Analytics munkaterület létrehozása a Azure PowerShell használatával | Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre Log Analytics munkaterületet, amely lehetővé teszi a felügyeleti megoldások és adatgyűjtést a felhőből és a helyszíni környezetből a Azure PowerShell használatával.
-ms.service: azure-monitor
+title: Hozzon létre egy Log Analytics-munkaterületet az Azure PowerShell-lel |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre egy Log Analytics-munkaterület ahhoz, hogy felügyeleti megoldások és az adatgyűjtésről a felhőbeli és helyszíni környezetből az Azure PowerShell használatával.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: 87550e7ee3008418fde84596a811d44d02191cee
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a2765aaf36aa5f7e541e0ee7fb3178246d2cca5d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513524"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659900"
 ---
-# <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Log Analytics munkaterület létrehozása Azure PowerShell
+# <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Log Analytics-munkaterület létrehozása az Azure PowerShell használatával
 
 Az Azure PowerShell-modul az Azure-erőforrások PowerShell-parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy Log Analytics-munkaterületet a Azure Monitorban a Azure PowerShell modul használatával. A Log Analytics munkaterület egy egyedi környezet, amely Azure Monitor naplózza az adatnaplót. Az egyes munkaterületek saját adattárral és konfigurációval rendelkeznek, és az adatforrások és megoldások úgy vannak konfigurálva, hogy egy adott munkaterületen tárolják az adataikat. Ha a következő forrásokból szeretne adatgyűjtést végrehajtani, Log Analytics munkaterületre van szüksége:
 
-* Azure-erőforrások az előfizetésében  
-* System Center Operations Manager által figyelt helyszíni számítógépek  
+* Az előfizetés Azure-erőforrások  
+* A helyszíni System Center Operations Manager által felügyelt számítógépek  
 * Configuration Managerból származó eszközök gyűjteményei  
 * Diagnosztikai vagy naplóadatok az Azure Storage-ból  
  
-Más forrásokhoz, például az Azure-beli virtuális gépekhez és a környezetben található Windows-vagy Linux-alapú virtuális gépekhez a következő témakörökben talál további információt:
+Más forrásokból, például az Azure virtuális gépek és a Windows vagy Linux rendszerű virtuális gépek a környezetben a következő témakörökben talál:
 
 * [Adatok gyűjtése az Azure Virtual Machines szolgáltatásból](../learn/quick-collect-azurevm.md)
 * [Adatok gyűjtése hibrid Linux rendszerű számítógépről](../learn/quick-collect-linux-computer.md)
@@ -37,21 +36,21 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre [egy in
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz a Azure PowerShell az modul szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissítésre van szükség, olvassa el az [Azure PowerShell-modul telepítését ismertető](/powershell/azure/install-az-ps) szakaszt. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="create-a-workspace"></a>Munkaterületek létrehozása
-Hozzon létre egy új munkaterületet a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). Az alábbi példa egy munkaterületet hoz létre a *eastus* helyen a helyi számítógép Resource Manager-sablonjának használatával. A JSON-sablon úgy van konfigurálva, hogy csak a munkaterület nevére Kérdezzen, és a többi olyan paraméter alapértelmezett értékét adja meg, amely valószínűleg a környezetben megszokott konfigurációként lenne felhasználva. 
+## <a name="create-a-workspace"></a>Munkaterület létrehozása
+Hozzon létre egy új munkaterületet a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). Az alábbi példa egy munkaterületet hoz létre a *eastus* helyen a helyi számítógép Resource Manager-sablonjának használatával. A JSON-sablon csak kéri a munkaterület nevére van beállítva, és valószínűleg használni kívánt szabványos konfigurációt a környezetében, a többi paraméter alapértelmezett értéket határoz meg. 
 
 További információ a támogatott régiókkal kapcsolatban: [régiók log Analytics](https://azure.microsoft.com/regions/services/) a (Azure monitor), és keressen rá a **termék** keresése elemre. 
 
-A következő paraméterek alapértelmezett értéket állítanak be:
+A következő paraméterekkel állítsa be az alapértelmezett érték:
 
-* Location (alapértelmezett) – az USA keleti régiója
-* SKU – alapértelmezett érték az új GB-os díjszabási szinten, amely az áprilisi 2018 díjszabási modellben jelent meg
+* hely – USA keleti RÉGIÓJA, az alapértelmezett érték
+* Termékváltozat - alapértelmezés szerint a 2018 áprilisi díjszabási modell megjelent új GB-onkénti tarifacsomag kiválasztása
 
 >[!WARNING]
 >Ha Log Analytics munkaterületet hoz létre vagy konfigurál egy olyan előfizetésben, amely az új, április 2018 díjszabási modellbe van lefoglalva, az egyetlen érvényes Log Analytics díjszabási csomag **PerGB2018**. 
 >
 
-### <a name="create-and-deploy-template"></a>Sablon létrehozása és üzembe helyezése
+### <a name="create-and-deploy-template"></a>Hozzon létre, és a sablon üzembe helyezése
 
 1. Másolja és illessze be a következő JSON-szintaxist a létrehozott fájlba:
 
@@ -109,7 +108,7 @@ A következő paraméterek alapértelmezett értéket állítanak be:
     }
     ```
 
-2. Szerkessze a sablont, hogy megfeleljen a követelményeinek. Tekintse át a [Microsoft. OperationalInsights/munkaterületek sablonjának](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) hivatkozását, hogy megtudja, milyen tulajdonságokat és értékeket támogat a rendszer. 
+2. Szerkessze a sablont az igényeknek. Tekintse át a [Microsoft. OperationalInsights/munkaterületek sablonjának](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) hivatkozását, hogy megtudja, milyen tulajdonságokat és értékeket támogat a rendszer. 
 3. Mentse ezt a fájlt **deploylaworkspacetemplate. JSON** néven egy helyi mappába.   
 4. Készen áll a sablon üzembe helyezésére. Használja az alábbi parancsokat a sablont tartalmazó mappából. Ha a rendszer a munkaterület nevének megadását kéri, adjon meg egy olyan nevet, amely globálisan egyedi az összes Azure-előfizetésen belül.
 
@@ -117,12 +116,12 @@ A következő paraméterek alapértelmezett értéket állítanak be:
         New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
     ```
 
-Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, a következőhöz hasonló üzenet jelenik meg, amely tartalmazza az eredményt:
+Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, megjelenik egy üzenet, amely tartalmazza az eredmény az alábbihoz hasonló:
 
-![Példa az üzembe helyezés befejezésekor bekövetkezett eredményre](media/quick-create-workspace-posh/template-output-01.png)
+![Ha üzembe helyezés kész eredményének](media/quick-create-workspace-posh/template-output-01.png)
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy elérhetővé tett egy munkaterületet, beállíthatja a figyelési telemetria gyűjteményét, futtathatja a naplók kereséseit az adatelemzéshez, és hozzáadhat egy felügyeleti megoldást további információk és elemzési elemzések megadásához.  
+Most, hogy a munkaterület érhető el, figyelési telemetriai adatok gyűjtésének konfigurálása, naplókereséseket elemezheti az adatokat, és adjon hozzá egy felügyeleti megoldás, további adat- és elemzési elemzéseket biztosít.  
 
 * Az Azure-erőforrások Azure Diagnostics vagy az Azure Storage szolgáltatással történő gyűjtésének engedélyezéséhez lásd: az [Azure-szolgáltatások naplófájljainak és metrikáinak gyűjtése a Azure monitor való használatra](../platform/collect-azure-metrics-logs.md).  
 * Adja hozzá [System Center Operations Manager adatforrásként](../platform/om-agents.md) az Operations Manager felügyeleti csoportot jelentő ügynököktől származó adatok gyűjtéséhez, és tárolja azt a log Analytics munkaterületen.  

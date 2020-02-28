@@ -4,18 +4,17 @@ description: Összetett jelentéskészítés egyszerűsítése előre elkészít
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 1d1ee243fa9df8a77a6ce80ecb9d8e5336e8b19b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 380b8a7ce286ab06b6935bf63bf3a0e82f371c2f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872757"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658013"
 ---
 # <a name="workbook-time-parameters"></a>Munkafüzet-idő paraméterei
 
@@ -64,8 +63,8 @@ A munkafüzet a következőképpen fog kinézni, mint az olvasási módban.
 ## <a name="time-parameter-options"></a>Az idő paraméter beállításai
 | Paraméter | Magyarázat | Példa |
 | ------------- |:-------------|:-------------|
-| `{TimeRange}` | Időtartomány felirata | Az utolsó 24 óra |
-| `{TimeRange:label}` | Időtartomány felirata | Az utolsó 24 óra |
+| `{TimeRange}` | Időtartomány felirata | Az elmúlt 24 óra |
+| `{TimeRange:label}` | Időtartomány felirata | Az elmúlt 24 óra |
 | `{TimeRange:value}` | Időtartomány értéke | > ago (1d) |
 | `{TimeRange:query}` | Időtartomány-lekérdezés | > ago (1d) |
 | `{TimeRange:start}` | Időtartomány kezdési időpontja | 3/20/2019 4:18 PM |

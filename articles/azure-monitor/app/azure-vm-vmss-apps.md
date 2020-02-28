@@ -1,18 +1,14 @@
 ---
 title: Azure-beli virtuális gépek teljesítményének figyelése – Azure Application Insights
 description: Alkalmazások teljesítményének figyelése Azure-beli virtuális gépekhez és Azure-beli virtuálisgép-méretezési csoportokhoz. A diagram betöltésének és a válaszidő, a függőségi adatok és a riasztások beállítása a teljesítményre.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/26/2019
-ms.openlocfilehash: 2fdd07d01e6bb1258a3f2ae2e856e440e5ed2818
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d75e14dccef565f0029d06583e74d5693726dd99
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407340"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661328"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>A Azure Monitor Application Insights-ügynök üzembe helyezése Azure-beli virtuális gépeken és Azure-beli virtuálisgép-méretezési csoportokban
 
@@ -167,7 +163,7 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myResourceGroup>/providers/Microsoft.Compute/virtualMachineScaleSets/<myVmssName>/extensions/ApplicationMonitoringWindows
 ```
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Hibaelhárítási tippek az Azure-beli virtuális gépeken és virtuálisgép-méretezési csoportokon futó .NET-alkalmazások Application Insights monitorozási ügynökének bővítményéhez.
 

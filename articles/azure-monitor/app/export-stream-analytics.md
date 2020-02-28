@@ -1,18 +1,14 @@
 ---
 title: Exportálás az Azure Application Insights Stream Analytics használatával | Microsoft Docs
 description: Stream Analytics a Application Insightsból exportált adatok folyamatos átalakítását, szűrését és átirányítását is elvégezheti.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/08/2019
-ms.openlocfilehash: 3be1a643cbe942c0b740ae8ebcc2c7f2dda24854
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: b93bc49d005e3e54f1e5db84e6ff1adc49e25a65
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677952"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664014"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Stream Analytics használata az exportált adatok feldolgozásához Application Insights
 A [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ideális eszköz a [Application Insightsból exportált](export-telemetry.md)adatok feldolgozásához. A Stream Analytics különböző forrásokból származó adatok lekérésére használható. Átalakíthatja és szűrheti az adatmennyiséget, majd átirányíthatja azt különböző mosdók számára.
@@ -111,7 +107,7 @@ Ebben a példában:
 > 
 
 ## <a name="add-new-output"></a>Új kimenet hozzáadása
-Most válassza ki a feladatot > **kimenetek**  > **Hozzáadás**elemet.
+Most válassza ki a feladatot > **kimenetek** > **Hozzáadás**elemet.
 
 ![](./media/export-stream-analytics/SA006.png)
 
@@ -205,7 +201,7 @@ Ezt az adatkészletet most már használhatja jelentésekben és irányítópult
 
 ![A Power BI területen válassza ki az adatkészletet és a mezőket.](./media/export-stream-analytics/210.png)
 
-## <a name="no-data"></a>Nincsenek adatok?
+## <a name="no-data"></a>Nincs adat?
 * Győződjön meg arról, hogy a dátumformátum helyesen van megadva éééé-hh-nn [értékre](#set-path-prefix-pattern) (kötőjelekkel).
 
 ## <a name="video"></a>Videó

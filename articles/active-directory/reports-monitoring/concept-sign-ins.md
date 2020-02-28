@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/09/2019
+ms.date: 02/26/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ffb2ff87eb78ed4088225f832b6df55726196493
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429767"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656610"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -47,7 +47,7 @@ Ez a cikk áttekintést nyújt a bejelentkezési jelentésről.
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Milyen Azure AD-licencre van szükség a bejelentkezési tevékenységhez való hozzáféréshez?
 
-* A bejelentkezési tevékenységek teljes jelentésének megtekintéséhez a bérlőnek Prémium szintű Microsoft Azure AD-licenccel kell rendelkeznie. A Azure Active Directory kiadásának frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md) témakört. A frissítés előtt néhány napig is eltarthat, hogy az adatai megjelenjenek a jelentésekben, miután a frissítés előtt adattevékenység nélküli prémium szintű licencre frissít.
+* A bérlőnek prémium szintű Azure AD licenccel kell rendelkeznie ahhoz, hogy láthassa az összes bejelentkezési tevékenység jelentését. A Azure Active Directory kiadásának frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md) témakört. A frissítés előtt néhány napig is eltarthat, hogy az adatai megjelenjenek a jelentésekben, miután a frissítés előtt adattevékenység nélküli prémium szintű licencre frissít.
 
 ## <a name="sign-ins-report"></a>Bejelentkezések jelentés
 
@@ -101,59 +101,90 @@ Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
 ## <a name="filter-sign-in-activities"></a>A bejelentkezési tevékenységek szűrése
 
-Először Szűkítse le a jelentett adathalmazt egy olyan szintre, amely az Ön számára működik. Másodszor, a Date mezőt használó bejelentkezési adatok szűrése alapértelmezett szűrőként. Az Azure AD a további beállítható szűrők széles választékát kínálja.
+Először Szűkítse le a jelentett adathalmazt egy olyan szintre, amely az Ön számára működik. Másodszor, a Date mezőt használó bejelentkezési adatok szűrése alapértelmezett szűrőként. Az Azure AD számos további szűrőt is beállíthat:
 
 ![Bejelentkezési tevékenység](./media/concept-sign-ins/04.png "Bejelentkezési tevékenység")
 
-A **Felhasználó** szűrővel egy konkrét felhasználó nevét vagy egyszerű felhasználónevét (UPN) adhatja meg.
+**Kérelem azonosítója** – a kért kérés azonosítója.
 
-Az **Alkalmazás** szűrővel egy konkrét alkalmazás nevét adhatja meg.
+**Felhasználó** – a felhasználó nevét vagy egyszerű felhasználónevét (UPN) adja meg.
 
-A **Bejelentkezési állapot** szűrővel az alábbi lehetőségek közül választhat:
+**Alkalmazás** – a célalkalmazás neve.
+ 
+**Állapot** – a bejelentkezési állapot, amely érdekli:
 
-- Mind
 - Sikeres
+
 - Hiba
 
-A **feltételes hozzáférés** szűrővel kiválaszthatja a bejelentkezéshez használt hitelesítésszolgáltatói házirend állapotát:
+- Megszakadt
 
-- Mind
-- Nincs alkalmazva
+
+**IP-cím** – a bérlőhöz való kapcsolódáshoz használt eszköz IP-címe.
+
+A **hely** – a hálózatról kezdeményezett hely:
+
+- Város
+
+- Állam/megye
+
+- Ország/régió
+
+
+**Erőforrás** – a bejelentkezéshez használt szolgáltatás neve.
+
+
+**Erőforrás-azonosító** – a bejelentkezéshez használt szolgáltatás azonosítója.
+
+
+**Ügyfélalkalmazás** – a bérlőhöz való kapcsolódáshoz használt ügyfélalkalmazás típusa:
+
+![Ügyfélalkalmazás-szűrő](./media/concept-sign-ins/client-app-filter.png)
+
+
+|Name (Név)|Modern hitelesítés|Leírás|
+|---|:-:|---|
+|Hitelesített SMTP| |Az e-mail-üzenetek küldéséhez használja a POP és az IMAP-ügyfél.|
+|Automatikus észlelési| |Az Outlook és az EAS-ügyfelek használják a postaládák keresésére és az Exchange Online-ban való kapcsolódására.|
+|Exchange ActiveSync| |Ez a szűrő az összes olyan bejelentkezési kísérletet megjeleníti, ahol az EAS-protokollt megkísérelték.|
+|Böngésző|![Jelölőnégyzet](./media/concept-sign-ins/check.png)|Az összes bejelentkezési kísérlet megjelenítése a felhasználóktól a böngészőben|
+|Exchange ActiveSync| | A felhasználók által az Exchange Online-hoz való kapcsolódáshoz használt ActiceSync használó összes bejelentkezési kísérlet megjelenítése|
+|Exchange Online PowerShell| |Az Exchange Online-hoz távoli PowerShell-lel való kapcsolódáshoz használatos. Ha letiltja az Exchange Online PowerShell alapszintű hitelesítését, a kapcsolódáshoz az Exchange Online PowerShell-modult kell használnia. Útmutatásért lásd: [Kapcsolódás az Exchange Online powershellhez a multi-Factor Authentication használatával](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
+|Exchange-webszolgáltatások| |Az Outlook, az Outlook for Mac és a harmadik féltől származó alkalmazások által használt programozási felület.|
+|IMAP4| |Egy örökölt levelezési ügyfélprogram, amely az IMAP használatával kéri le az e-maileket.|
+|MAPI HTTP-n keresztül| |Az Outlook 2010 és újabb verziók használják.|
+|Mobilalkalmazások és asztali ügyfelek|![Jelölőnégyzet](./media/concept-sign-ins/check.png)|Megjeleníti a felhasználók által a Mobile apps és az asztali ügyfelek használatával történő bejelentkezési kísérleteket.|
+|Offline címjegyzék| |Az Outlook által letöltött és használt címlista-gyűjtemények másolata.|
+|Outlook bárhol (RPC HTTP-n keresztül)| |Az Outlook 2016 és korábbi verziók használják.|
+|Outlook-szolgáltatás| |A Windows 10 rendszerhez készült mail és naptár alkalmazás használja.|
+|POP3| |Egy örökölt levelezési ügyfélprogram, amely a POP3 használatával kéri le az e-maileket.|
+|Jelentéskészítési webszolgáltatások| |A Jelentésadatok az Exchange Online-ban való lekéréséhez használatos.|
+|Más ügyfelek| |Megjeleníti az összes olyan bejelentkezési kísérletet, amely a felhasználóktól nem tartalmaz vagy ismeretlen ügyfélalkalmazás.|
+
+
+
+**Operációs rendszer** – az eszközön futó operációs rendszer a bérlőre való bejelentkezést használta. 
+
+
+**Eszköz böngészője** – ha a kapcsolat egy böngészőből indult el, ez a mező lehetővé teszi a szűrést a böngésző neve alapján.
+
+
+**Korrelációs azonosító** – a tevékenység korrelációs azonosítója.
+
+
+**Feltételes hozzáférés** – az alkalmazott feltételes hozzáférési szabályok állapota
+
+- Nincs alkalmazva 
+
 - Sikeres
+
 - Hiba
 
-A **Dátum** szűrővel időkeretet lehet meghatározni a visszaadott adatokhoz.  
-Lehetséges értékek:
 
-- Egy hónap
-- 7 nap
-- 24 óra
-- Egyéni időintervallum
 
-Egyéni időkeret kiválasztásakor beállíthatja a kezdő és a záró időpontot.
 
-Ha további mezőket ad hozzá a bejelentkezési nézethez, a rendszer automatikusan hozzáadja a mezőket a szűrőlistához. Például az **Ügyfélalkalmazás** mező listához való hozzáadásával kap egy további szűrőlehetőséget, amellyel a következő szűrőket állíthatja be:  
-![Bejelentkezési tevékenység](./media/concept-sign-ins/12.png "Bejelentkezési tevékenység")
 
-- **Böngésző**  
-    Ez a szűrő megjeleníti az összes olyan eseményt, amelyben a bejelentkezési kísérletek a böngészőalapú folyamatokkal próbálkoztak.
-- **Exchange ActiveSync (támogatott)**  
-    Ez a szűrő az összes olyan bejelentkezési kísérletet megjeleníti, ahol az Exchange ActiveSync (EAS) protokoll a támogatott platformokon, például az iOS, az Android és a Windows Phone-telefon által lett megkísérelve.
-- **Exchange ActiveSync (nem támogatott)**  
-    Ez a szűrő az összes olyan bejelentkezési kísérletet megjeleníti, ahol az EAS protokollt a nem támogatott platformok, például a Linux-disztribúciók próbálták meg.
-- **Mobile apps és asztali ügyfelek** A szűrő az összes olyan bejelentkezési kísérletet megjeleníti, amely nem használ böngészőalapú folyamatokat. Például a Mobile apps bármely platformról bármely protokoll használatával vagy asztali ügyfélalkalmazások, például az Office Windows vagy MacOS rendszeren.
-  
-- **Egyéb ügyfelek**
-    - **IMAP**  
-        Egy örökölt levelezési ügyfélprogram, amely az IMAP használatával kéri le az e-maileket.
-    - **MAPI**  
-        Office 2013, ahol a ADAL engedélyezve van, és a MAPI-t használja.
-    - **Régi Office-ügyfelek**  
-        Az Office 2013 az alapértelmezett konfigurációban, ahol a ADAL nincs engedélyezve, és a MAPI vagy az Office 2016, ahol a ADAL le van tiltva.
-    - **POP**  
-        Egy örökölt levelezési ügyfélprogram, amely a POP3 használatával kéri le az e-maileket.
-    - **SMTP**  
-        Egy örökölt levelezési ügyfélprogram, amely az SMTP protokollal küld e-mailt.
+
 
 ## <a name="download-sign-in-activities"></a>Bejelentkezési tevékenységek letöltése
 
@@ -195,9 +226,9 @@ Az elemekre kattintva részletes információk érhetők el a bejelentkezési m�
 - Felhasználó
 - Felhasználónév
 - Alkalmazásazonosító
-- Jelentkezés
+- Alkalmazás
 - Ügyfél
-- Földrajzi egység
+- Hely
 - IP-cím
 - Dátum
 - Az MFA megadása kötelező
@@ -228,7 +259,7 @@ Az alkalmazás-használati gráfok hetente összesítik az első három alkalmaz
 
 Igény esetén egy adott alkalmazást is kiemelhet.
 
-![Jelentéskészítés](./media/concept-sign-ins/single-app-usage-graph.png "Jelentések")
+![Jelentéskészítés](./media/concept-sign-ins/single-app-usage-graph.png "Jelentéskészítés")
 
 Az alkalmazáshasználati grafikon egyik napjára kattintva részletes listát kap a bejelentkezési tevékenységekről.
 

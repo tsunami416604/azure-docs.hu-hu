@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor hálózatok számára (előzetes verzió)
 description: A hálózat Azure Monitor gyors áttekintése, amely az összes telepített hálózati erőforrás állapotának és metrikáinak átfogó áttekintését teszi lehetővé konfiguráció nélkül.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 3bb92b85779366081349dab777be67e063469678
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73840053"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654868"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor hálózatok számára (előzetes verzió)
 A hálózati Azure Monitor a konfiguráció nélkül átfogó képet nyújt az összes telepített hálózati erőforrás állapotáról és mérőszámáról. A speciális keresési funkció segítséget nyújt az erőforrás-függőségek azonosításában, így olyan forgatókönyvek engedélyezésével, mint például a webhelyet üzemeltető erőforrások azonosítása, egyszerűen csak a szolgáltatott webhely nevét keresi.
@@ -21,7 +20,7 @@ A hálózatok Azure Monitor **áttekintése** lap egy könnyed módszert biztos�
 
 - Keresés és szűrés
 - Resource Health és mérőszámok
-- Értesítések 
+- Riasztások 
 - Függőség nézet
 
 ![Áttekintő lap](media/network-insights-overview/overview.png)
@@ -45,7 +44,7 @@ A két nem elérhető ER és VPN kapcsolatra kattintva metrikai nézetet indít 
 
 A rács nézet minden elemére rákattinthat. Kattintson a Health (állapot) ikonra az adott kapcsolatok erőforrás-állapotának átirányításához. Kattintson a riasztások elemre, hogy átirányítsa a riasztások és metrikák lapra az adott kapcsolatban. 
 
-## <a name="alerts"></a>Értesítések
+## <a name="alerts"></a>Riasztások
 A jobb oldali **riasztások** rács a kiválasztott erőforrásokhoz generált összes riasztást megjeleníti az összes előfizetésben. Kattintson a riasztások száma gombra a részletes riasztások oldal megtekintéséhez.
 
 ## <a name="dependency-view"></a>Függőség nézet
@@ -69,6 +68,6 @@ A különböző szűrők segítségével leszűkítheti az adott elérési utat 
 
 Kattintson a **részletes mérőszám nézetre** egy előre konfigurált munkafüzet elindításához az Application Gateway, az összes háttér-készlet erőforrásai és az előtér-IP-címek részletes mérőszámával. 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - További információ a hálózati monitorozásról: Mi az az [Azure Network Watcher?](/azure/network-watcher/network-watcher-monitoring-overview).

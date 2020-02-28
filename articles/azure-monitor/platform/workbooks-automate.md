@@ -4,18 +4,17 @@ description: Egyszerűsítse a komplex jelentéskészítést az előre összeál
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: e3d29beab7b1d82f73c706897af9650b68be11f5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 2c2d70d1c945e700a3fa42609f8aa0e1607ba77c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872910"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658404"
 ---
 # <a name="programmatically-manage-workbooks"></a>Munkafüzetek programozott kezelése
 
@@ -113,7 +112,7 @@ Ez a sablon bemutatja, hogyan helyezhet üzembe egy egyszerű munkafüzetet, ame
 ### <a name="workbook-types"></a>Munkafüzetek típusai
 A munkafüzetek típusai határozzák meg, hogy melyik munkafüzet-gyűjteménybe írja be az új munkafüzet-példányt. A lehetőségek a következők:
 
-| Type (Típus) | Gyűjtemény helye |
+| Típus | Gyűjtemény helye |
 | :------------- |:-------------|
 | `workbook` | A legtöbb jelentésben használt alapértelmezett érték, beleértve a munkafüzetek Application Insights, Azure Monitor stb. gyűjteményét.  |
 | `tsg` | A hibaelhárítási útmutatók gyűjteménye Application Insights |

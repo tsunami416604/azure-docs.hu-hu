@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 01397ad078bc741977c4928f67d1834f05e1db8d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: f83385e1c0a360689569424dbba0c4548751916c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623968"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661959"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások – útmutató
 
@@ -399,8 +399,8 @@ A Security Center támogatott kill Chain-leképezések a következő táblázatb
 
 |Szándék|Leírás|
 |------|-------|
-|**Szondázás**|A szondázás lehet egy adott erőforráshoz való hozzáférésre irányuló kísérlet, függetlenül a kártékony szándéktól, vagy egy, a megcélzott rendszerhez való hozzáférésre tett sikertelen kísérlet a kiaknázás előtt. Ezt a lépést általában kísérletként észleli a rendszer a hálózaton kívülről, a célhely vizsgálatára és egy belépési pont azonosítására.|
-|**Kihasználásának**|A kihasználás az a fázis, ahol a támadók a megtámadott erőforráson bejuthatnak a lábát. Ez a szakasz a számítási gazdagépek és erőforrások (például felhasználói fiókok, tanúsítványok stb.) szempontjából fontos. Ennek a szakasznak az elvégzése után a fenyegetéseket kezelő szereplők gyakran tudják vezérelni az erőforrást.|
+|**Előtámadás**</br>(kicseréli a szondázást)|Az előtámadás lehet egy adott erőforráshoz való hozzáférésre irányuló kísérlet, függetlenül a kártékony szándéktól, vagy egy, a megcélzott rendszerhez való hozzáférésre tett sikertelen kísérlet a kiaknázás előtt. Ezt a lépést általában kísérletként észleli a rendszer a hálózaton kívülről, a célhely vizsgálatára és egy belépési pont azonosítására.</br>Az előtámadási szakasz további részletei a [Mitre oldalán](https://attack.mitre.org/matrices/pre/)olvashatók.|
+|**InitialAccess**</br>(kicseréli a kitermelést)|A InitialAccess az a szakasz, ahol egy támadó a megtámadott erőforráshoz tartozó lábát kap. Ez a szakasz a számítási gazdagépek és erőforrások (például felhasználói fiókok, tanúsítványok stb.) szempontjából fontos. Ennek a szakasznak az elvégzése után a fenyegetéseket kezelő szereplők gyakran tudják vezérelni az erőforrást.|
 |**Kitartás**|Az adatmegőrzés bármely olyan rendszerhez való hozzáférés, művelet vagy konfigurációs módosítás, amely a fenyegetést a rendszer állandó jelenlétét biztosítja. A veszélyforrásoknak gyakran kell fenntartaniuk a rendszerekhez való hozzáférést megszakításokkal, például a rendszer újraindításával, a hitelesítő adatok elvesztésével vagy más olyan hibákkal, amelyek a távelérési eszköz újraindítását igénylik, vagy alternatív Backdoor-t biztosítanak számukra a hozzáférés visszanyeréséhez.|
 |**PrivilegeEscalation**|A jogosultság-eszkaláció az a művelet, amely lehetővé teszi, hogy a támadók magasabb szintű engedélyeket kapjanak a rendszer vagy a hálózat számára. Bizonyos eszközök vagy műveletek magasabb szintű jogosultságot igényelnek a működéshez, és valószínűleg sok ponton szükségesek a művelet során. Azok a felhasználói fiókok, amelyek jogosultak bizonyos rendszerek elérésére, vagy bizonyos, a jogcímek eléréséhez szükséges specifikus funkciók elvégzésére, a jogosultság kiterjesztésére is vonatkozhatnak.|
 |**DefenseEvasion**|A védelmi adócsalás olyan technikákat tartalmaz, amelyeket a támadók kihasználhatnak az észlelés vagy más védelem elkerülése érdekében. Előfordulhat, hogy ezek a műveletek ugyanazok, mint a más kategóriákban található módszerek (vagy változatok), amelyek az adott védelem vagy a mérséklés további előnyét képezik.|

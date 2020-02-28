@@ -1,15 +1,14 @@
 ---
 title: Azure Resource Health-események beszerzése a REST API használatával | Microsoft Docs
 description: Használja az Azure REST API-kat az Azure-erőforrások állapotának beszerzéséhez.
-ms.custom: REST
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/06/2017
-ms.openlocfilehash: 353bd65b0466902e450e38677a350a177a1d602c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6964a6c4e85c38d532b12e730a02c4df73be76e5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451388"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654001"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>Resource Health beolvasása a REST API használatával 
 
@@ -25,21 +24,21 @@ A következő `GET` HTTP-kérelem használatával sorolja fel az előfizetéséh
 https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&%24filter=eventTimestamp%20ge%20'2018-05-16T04%3A36%3A37.6407898Z'%20and%20eventTimestamp%20le%20'2018-06-20T04%3A36%3A37.6407898Z'
 ```
 
-### <a name="request-headers"></a>Kérésfejlécek
+### <a name="request-headers"></a>Kérelemfejlécek
 
 A következő fejlécek megadása kötelező: 
 
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
 |*Content-Type* (Tartalomtípus):|Kötelező. Állítsa `application/json` értékre.|  
-|*Authorization* (Engedélyezés):|Kötelező. Érvényes `Bearer` [hozzáférési tokenre](/rest/api/azure/#authorization-code-grant-interactive-clients)van állítva. |  
+|*Authorization* (Engedélyezés):|Kötelező. Állítsa egy érvényes `Bearer` [hozzáférési jogkivonatra](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ### <a name="uri-parameters"></a>URI-paraméterek
 
-| Név | Leírás |
+| Name (Név) | Leírás |
 | :--- | :---------- |
 | subscriptionId | Az Azure-előfizetést azonosító előfizetés azonosítója. Ha több előfizetéssel rendelkezik, tekintse meg [a több előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)című témakört. |
-| api-verzió | A kérelemhez használandó API-verzió.<br /><br /> Ez a dokumentum a fenti URL-cím részét képező API-Version `2015-04-01`tartalmazza.  |
+| api-version | A kérelemhez használandó API-verzió.<br /><br /> Ez a dokumentum a fenti URL-cím részét képező API-Version `2015-04-01`tartalmazza.  |
 | $filter | A visszaadott eredmények készletének csökkentésére szolgáló szűrési beállítás. A paraméter engedélyezett mintái a [tevékenységi naplók műveletéhez tartozó hivatkozásban](/rest/api/monitor/activitylogs/list#uri-parameters)érhetők el. A megjelenített példa a 2018-05-16 és 2018-06-20 közötti időtartományban lévő összes eseményt rögzíti. |
 | &nbsp; | &nbsp; |
 

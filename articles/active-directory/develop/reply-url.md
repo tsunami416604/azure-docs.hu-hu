@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8fdc64632be8b5fcb3dca8de2ee833fef25719fe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983095"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656738"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Átirányítási URI/válasz URL-cím korlátozásai
 
@@ -54,7 +54,7 @@ Az Azure AD-alkalmazás modelljében nem támogatottak a személyes Microsoft-fi
 > [!NOTE]
 > Az új [Alkalmazásregisztrációki](https://go.microsoft.com/fwlink/?linkid=2083908) felület nem teszi lehetővé a fejlesztők számára, hogy helyettesítő URI-ket adjanak hozzá a felhasználói felületen. A munkahelyi vagy iskolai fiókokat bejelentkező alkalmazások wilcard URI-ja csak az alkalmazás jegyzékfájl-szerkesztőjében támogatott. Az új alkalmazások nem fogják tudni használni a helyettesítő karaktereket az átirányítási URI-ban. Az átirányítási URI-k helyettesítő karaktereit tartalmazó régebbi alkalmazások azonban továbbra is működni fognak.
 
-Ha a forgatókönyv több átirányítási URI-t igényel, mint az engedélyezett maximális korlát, a helyettesítő karakteres átirányítási URI-k hozzáadása helyett vegye figyelembe az alábbi módszerek egyikét.
+Ha a forgatókönyv több átirányítási URI-t igényel, mint az engedélyezett maximális korlát, a helyettesítő karakteres átirányítási URI-k hozzáadása helyett vegye figyelembe az alábbi megközelítést.
 
 ### <a name="use-a-state-parameter"></a>Állapot paraméterének használata
 
@@ -70,10 +70,6 @@ Ebben a megközelítésben:
 
 > [!NOTE]
 > Ez a módszer lehetővé teszi a feltört ügyfél számára, hogy módosítsa az állapot paraméterében eljuttatott további paramétereket, így átirányítja a felhasználót egy másik URL-címre, amely az RFC 6819-ben leírt [nyílt átirányító fenyegetés](https://tools.ietf.org/html/rfc6819#section-4.2.4) . Ezért az ügyfélnek védenie kell ezeket a paramétereket az állapot titkosításával vagy más módon történő ellenőrzésével, például az átirányítási URI-azonosítóban lévő tartománynév érvényesítésével.
-
-### <a name="add-redirect-uris-to-service-principals"></a>Átirányítási URI-k hozzáadása az egyszerű szolgáltatásokhoz
-
-Egy másik módszer az, hogy átirányítási URI-ket adjon [hozzá az alkalmazás](app-objects-and-service-principals.md#application-and-service-principal-relationship) regisztrálásához bármely Azure ad-bérlőben. Ezt a módszert akkor használhatja, ha nem használhat State paramétert, vagy ha a forgatókönyv megköveteli, hogy új átirányítási URI azonosítókat adjon az alkalmazás regisztrálásához minden Ön által támogatott új bérlőhöz. 
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,18 +1,17 @@
 ---
 title: Gyakori kérdések – Network Performance Monitor megoldás az Azure-ban | Microsoft Docs
 description: Ez a cikk az Azure-Network Performance Monitorokkal kapcsolatos gyakori kérdéseket rögzíti. Network Performance Monitor (NPM) segít a hálózatok teljesítményének közel valós idejű figyelésében, valamint a hálózati teljesítmény szűk keresztmetszetének észlelésében és megkeresésében.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 7ee593a8db020134e13ea853f17f097d716f7814
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538189"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654433"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -69,7 +68,7 @@ Minden figyelni kívánt alhálózathoz legalább egy ügynököt kell használn
 ### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Legfeljebb hány ügynököt használhatok, vagy hibaüzenetet látok. elérte a konfigurációs korlátot?
 A NPM az IP-címek számát 5000 IP-címekre korlátozza munkaterületen. Ha egy csomópont IPv4-és IPv6-címeket is tartalmaz, akkor ez a csomópont 2 IP-címének számít. Ezért a 5000 IP-cím korlátja határozza meg az ügynökök számának felső határát. A NPM > csomópontok lapján törölheti az inaktív ügynököket, > a konfigurálást. A NPM az összes olyan IP-cím előzményeit is fenntartja, amely az ügynököt futtató virtuális géphez lett társítva, és mindegyik külön IP-címmel van elfoglalva, amely a felső határ 5000 IP-címeihez járul hozzá. A munkaterülethez tartozó IP-címek felszabadításához használhatja a csomópontok lapot a nem használt IP-címek törléséhez.
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>Figyelés
 
 ### <a name="how-are-loss-and-latency-calculated"></a>A veszteségek és a késések kiszámítása
 A forrásoldali ügynökök TCP SYN-kérelmeket küldenek (ha a TCP protokoll figyelésre van kiválasztva) vagy ICMP ECHO-kéréseket (ha az ICMP protokoll figyelésre van kiválasztva) a cél IP-címhez rendszeres időközönként, így biztosítva a forrás-cél IP-cím közötti összes elérési utat. a kombinációt a rendszer fedezi. Az egyes elérési utak elvesztésének és késésének kiszámításához a fogadott csomagok százalékos arányát és az oda-és bejárási időt kell mérni. Ezeket az adatokat a lekérdezési időköz és az összes elérési út alapján összesíti a rendszer az adott lekérdezési időközhöz tartozó IP-kombinációhoz tartozó veszteségek és késések összesített értékeinek beszerzéséhez.
@@ -225,7 +224,7 @@ Mivel az A és B közötti hálózati elérési utak a B és A közötti hálóz
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Miért nem észlelhetők a ExpressRoute-áramkörök és a társ-összekapcsolási kapcsolatok?
 A NPM most felfedi a ExpressRoute-áramköröket és az összes olyan előfizetésben lévő kapcsolatot, amelyhez a felhasználónak hozzáférése van. Válassza ki az összes olyan előfizetést, ahol az expressz útvonal-erőforrások össze vannak kapcsolva, és engedélyezze a figyelést minden felderített erőforráshoz A NPM megkeresi a kapcsolatok objektumait, amikor felvesz egy privát társítást, ezért ellenőrizze, hogy van-e társítva VNET a társával.
 
-### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>Az ER-figyelő funkció diagnosztikai üzenettel rendelkezik, "a forgalom nem halad át semmilyen áramkörön". What does that mean? (Megfelel-e a Microsoft Azure a jogszabályi előírásoknak? Mit kell érteni ez alatt?)
+### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>Az ER-figyelő funkció diagnosztikai üzenettel rendelkezik, "a forgalom nem halad át semmilyen áramkörön". az mit jelent?
 
 Előfordulhat, hogy a helyszíni és az Azure-csomópontok közötti kapcsolat kifogástalan, de a forgalom nem halad át a NPM által figyelt ExpressRoute-áramkörön. 
 
@@ -258,7 +257,7 @@ Ez akkor fordulhat elő, ha egy vagy több igaz:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>A szolgáltatás-kapcsolódási figyelő képességben a szolgáltatás válaszideje NA, de a hálózati veszteség, valamint a késés érvényes
 Ez akkor fordulhat elő, ha a célként megadott szolgáltatás nem webalkalmazás, de a teszt webes tesztként van konfigurálva. Szerkessze a teszt konfigurációját, és válassza ki a teszt típusát a web helyett hálózatként.
 
-## <a name="miscellaneous"></a>Egyéb rendelkezések
+## <a name="miscellaneous"></a>Egyéb
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Hatással van-e a figyelésre használt csomópont teljesítményére?
 A NPM folyamat úgy van beállítva, hogy leálljon, ha a gazdagép CPU-erőforrásainak több mint 5%-át használja. Ezzel biztosíthatja, hogy a csomópontokat a szokásos számítási feladatokhoz a teljesítmény befolyásolása nélkül tudja használni.

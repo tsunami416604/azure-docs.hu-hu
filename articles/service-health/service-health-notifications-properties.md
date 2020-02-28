@@ -1,14 +1,14 @@
 ---
 title: Mi az Azure Service Health Notifications?
 description: A szolgáltatás állapotával kapcsolatos értesítések segítségével megtekintheti Microsoft Azure által közzétett szolgáltatás-egészségügyi üzeneteket.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 4/12/2018
-ms.openlocfilehash: f2d79dc920129241c801c75cc9009b3ba8f34b78
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e40538ac98bbc7b79311d4fb0da7568d56a84e18
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451557"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653968"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Szolgáltatás állapotára vonatkozó értesítések megtekintése az Azure Portalon
 
@@ -43,11 +43,11 @@ category | Ez a tulajdonság mindig **ServiceHealth**.
 resourceId | Az érintett erőforrás erőforrás-azonosítója.
 Tulajdonságok. cím | A kommunikáció honosított címe. Az alapértelmezett érték az angol.
 Tulajdonságok. kommunikáció | A HTML-jelöléssel folytatott kommunikáció honosított adatai. Az alapértelmezett érték az angol.
-Properties. incidentType | A következő értékek egyike: **beavatkozás szükséges**, **tájékoztató**, **incidens**, **karbantartás**vagy **Biztonság**.
-Properties. trackingId | Az az incidens, amellyel ez az esemény társítva van. Ezzel a művelettel korrelálhatja az incidensekhez kapcsolódó eseményeket.
-Properties. impactedServices | Egy Escape-JSON-blob, amely leírja az incidens által érintett szolgáltatásokat és régiókat. A tulajdonság tartalmazza azon szolgáltatások listáját, amelyek mindegyike **szolgáltatásnév**, valamint az érintett régiók listája, amelyek mindegyike rendelkezik **RegionName**.
-Properties. defaultLanguageTitle | Az angol nyelvű kommunikáció.
-Properties. defaultLanguageContent | Az angol nyelvű kommunikáció HTML-kódban vagy egyszerű szövegként.
+Properties.incidentType | A következő értékek egyike: **beavatkozás szükséges**, **tájékoztató**, **incidens**, **karbantartás**vagy **Biztonság**.
+Properties.trackingId | Az az incidens, amellyel ez az esemény társítva van. Ezzel a művelettel korrelálhatja az incidensekhez kapcsolódó eseményeket.
+Properties.impactedServices | Egy Escape-JSON-blob, amely leírja az incidens által érintett szolgáltatásokat és régiókat. A tulajdonság tartalmazza azon szolgáltatások listáját, amelyek mindegyike **szolgáltatásnév**, valamint az érintett régiók listája, amelyek mindegyike rendelkezik **RegionName**.
+Properties.defaultLanguageTitle | Az angol nyelvű kommunikáció.
+Properties.defaultLanguageContent | Az angol nyelvű kommunikáció HTML-kódban vagy egyszerű szövegként.
 Tulajdonságok. fázis | Az **incidens**lehetséges értékei, valamint a **Biztonság** **aktív,** **megoldott** vagy **RCA**. A **beavatkozás szükséges** vagy a **tájékoztatási** szolgáltatás esetében az egyetlen érték **aktív.** A **karbantartáshoz** a következők tartoznak: **aktív**, **tervezett**, **befejezetlen**, **megszakított**, **újraütemezett**, **megoldott**vagy **befejezett**.
 Properties. communicationId | Az a kommunikáció, amellyel ez az esemény társítva van.
 

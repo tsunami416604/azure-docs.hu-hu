@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b5d74c7c599f31694a68e7582a6447af8471508
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a727cd57e470f248321011d505f8037808f64298
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984948"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656874"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 
@@ -63,7 +63,7 @@ Ezek a lépések a címtár szintjén hoznak létre beállításokat, amelyek a 
    ```
    Ez a parancsmag-hívás az összes elérhető sablont visszaadja:
   
-   ```powershell
+   ``` PowerShell
    Id                                   DisplayName         Description
    --                                   -----------         -----------
    62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified       ...
@@ -77,7 +77,7 @@ Ezek a lépések a címtár szintjén hoznak létre beállításokat, amelyek a 
   
    ```powershell
    $TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
-   $Template = Get-AzureADDirectorySettingTemplate -Id $TemplateId
+   $Template = Get-AzureADDirectorySettingTemplate | where -Property Id -Value $TemplateId -EQ
    ```
 3. Ezután hozzon létre egy új beállítási objektumot a sablon alapján:
   
@@ -171,7 +171,7 @@ Itt láthatók a Group. Unified SettingsTemplate megadott beállítások. Ha má
    ```
 2. Ha a csoportok számára a címtár szintjén szeretné beállítani a vendég házirendet, a Group. Unified sablonra van szükség.
    ```powershell
-   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+   $Template = Get-AzureADDirectorySettingTemplate | where -Property Id -Value "62375ab9-6b52-47ed-826b-58e47e0e304b" -EQ
    ```
 3. Ezután hozzon létre egy új beállítási objektumot a sablon alapján:
   
@@ -262,7 +262,7 @@ Ezzel a lépéssel eltávolítja a beállításokat a címtár szintjén, amely 
    ```
 2. A groups. Unified. Guest sablon sablon objektumának beolvasása:
    ```powershell
-   $Template1 = Get-AzureADDirectorySettingTemplate -Id 08d542b9-071f-4e16-94b0-74abb372e3d9
+   $Template1 = Get-AzureADDirectorySettingTemplate | where -Property Id -Value "08d542b9-071f-4e16-94b0-74abb372e3d9" -EQ
    ```
 3. Hozzon létre egy új beállítási objektumot a sablonból:
    ```powershell

@@ -1,18 +1,15 @@
 ---
 title: A Azure Monitorrel integrált partnerek
 description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozzá az integrációhoz szükséges dokumentációhoz.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: e111bcdde9381e8e418e7027d8294aa7dad7e39d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40ba4c4f0a90d5bca03afea67302a5dbb77de027
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023871"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659458"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -247,7 +244,7 @@ A Sumo Logic egy biztonságos, Felhőbeli natív, gépi adatelemzési szolgálta
 
 ![Turbonomic embléma](./media/partners/Turbonomic.png)
 
-A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizálását a teljesítmény, a költségek és a megfelelőség valós időben való párhuzamos optimalizálásával. A Turbonomic segít a szervezeteknek az Azure Estate-ben való rugalmas működésében azáltal, hogy folyamatosan optimalizálja a hagyatékot, így biztosítva, hogy az alkalmazások folyamatosan megkapják a szolgáltatói szerződésük teljesítéséhez szükséges erőforrásokat, valamint a IaaS és a Péter számára nem több számítási, tárolási és hálózati teljesítményt réteg. A szervezetek szimulálják az áttelepítést, megfelelően méretezhetik a munkaterheléseket, és kivonják az adatközponti erőforrásokat, hogy az Azure-on időben, a teljesítmény és a megfelelőség biztosításával is biztosítva legyenek. A Turbonomic API-vezérelt, és ügynök nélküli virtuális gépként fut az Azure-ban vagy a helyszínen.
+A Turbonomic a teljesítmény, a költséghatékonyság és a megfelelőség valós idejű optimalizálása révén biztosítja a számítási feladatok automatizálását a hibrid felhők számára. A Turbonomic segít a szervezeteknek az Azure Estate-ben való rugalmas működésében azáltal, hogy folyamatosan optimalizálja a hagyatékot, így biztosítva, hogy az alkalmazások folyamatosan megkapják a szolgáltatói szerződésük teljesítéséhez szükséges erőforrásokat, valamint a IaaS és a Péter számára nem több számítási, tárolási és hálózati teljesítményt réteg. A szervezetek szimulálják az áttelepítést, megfelelően méretezhetik a munkaterheléseket, és kivonják az adatközponti erőforrásokat, hogy az Azure-on időben, a teljesítmény és a megfelelőség biztosításával is biztosítva legyenek. Az Turbonomic API-alapú, és ügynök nélküli virtuális gépként fut az Azure-ban és a helyszínen.
 
 [Részletek][turbonomic-doc]
 

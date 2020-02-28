@@ -1,14 +1,14 @@
 ---
 title: Azure szolgáltatás állapotára vonatkozó riasztások küldése a ServiceNow
 description: Személyre szabott értesítések beszerzése a ServiceNow-példány szolgáltatás állapotával kapcsolatos eseményekről.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: f332b1e0e188797da172b4ae63f6e5ef1a97e59c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551607"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654103"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a ServiceNow webhookok használatával
 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
 
 1.  Adjon hozzá egy **nevet** a REST APIhoz, és állítsa be az **API-azonosítót** `azureservicehealth`re.
 
-1.  Válassza a **Küldés** lehetőséget.
+1.  Válassza a **Küldés**lehetőséget.
 
     ![A "REST API beállítások" a ServiceNow](./media/webhook-alerts/servicenow-restapi-settings.png)
 

@@ -3,17 +3,16 @@ title: Klasszikus Windowsos VM-metrikák küldése Azure Monitor metrikák adatb
 description: Vendég operációs rendszer metrikáinak küldése a Windows rendszerű virtuális gépek Azure Monitor adattárához (klasszikus)
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: d911a6b65ba0d63bca09437f6451019addcbc0b3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 65bb1a3915ece384974da12b4e7a1ad0c1e08133
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977622"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655815"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Vendég operációs rendszer metrikáinak küldése a Windows rendszerű virtuális gépek Azure Monitor metrikáinak adatbázisába (klasszikus)
 
@@ -60,7 +59,7 @@ Adja meg az alkalmazásnak a "figyelési metrika közzétevője" engedélyt ahho
 
 ## <a name="author-diagnostics-extension-configuration"></a>Diagnosztikai bővítmény konfigurációjának létrehozása
 
-1. Készítse elő a diagnosztikai bővítmény konfigurációs fájlját. Ez a fájl határozza meg, hogy mely naplók és teljesítményszámlálók esetében kell gyűjteni a diagnosztikai bővítményt a klasszikus virtuális géphez. Íme egy példa:
+1. Készítse elő a diagnosztikai bővítmény konfigurációs fájlját. Ez a fájl határozza meg, hogy mely naplók és teljesítményszámlálók esetében kell gyűjteni a diagnosztikai bővítményt a klasszikus virtuális géphez. A következő példa egy példát mutat be:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>

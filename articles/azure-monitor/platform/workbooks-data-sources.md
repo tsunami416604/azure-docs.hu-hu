@@ -5,18 +5,17 @@ services: azure-monitor
 documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 368da2baaea1be41331d77f4dae1bdd9567b8cc5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872893"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658371"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor munkafüzetek adatforrásai
 
@@ -35,7 +34,7 @@ A munkafüzet szerzője olyan KQL-lekérdezéseket használhat, amelyek átalak�
 
 A munkafüzet szerzője könnyedén lekérdezheti a több erőforrást egy valóban egységes, gazdag jelentéskészítési felület létrehozásával.
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 
 Az Azure-erőforrások olyan [metrikákat](data-platform-metrics.md) bocsátanak ki, amelyek munkafüzetek használatával érhetők el. A metrikák egy speciális vezérlőn keresztül érhetők el a munkafüzetekben, így megadhatja a cél erőforrásokat, a kívánt mérőszámokat és azok összesítését. Ezeket az adatsorokat diagramokban vagy rácsokban lehet ábrázolni.
 

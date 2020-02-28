@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 02/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5df7eedcd92d338d3f741f7092ff6ef73f3442d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: d3df906936cc4e47ee1f43adb0fcbaa0e8c04b0f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585883"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656313"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -55,7 +55,7 @@ Ha bejelöli ezt a jelölőnégyzetet, a felhasználóknak az Azure Multi-Factor
 
 A Microsoft Intune központilag telepített szervezetek a megfelelőségi követelményeknek megfelelő eszközök azonosítására használhatják az eszközük által visszaadott adatokat. A szabályzat megfelelőségi információi továbbítva lesznek az Intune-ból az Azure AD-ba, ahol a feltételes hozzáférés az erőforrásokhoz való hozzáférés engedélyezésére vagy letiltására vonatkozó döntéseket hozhat. A megfelelőségi szabályzatokkal kapcsolatos további információkért tekintse [meg az eszközökön a szervezet erőforrásaihoz való hozzáférés engedélyezése az Intune-](https://docs.microsoft.com/intune/protect/device-compliance-get-started)nal című cikket.
 
-Az eszközök az Intune (bármilyen eszköz operációs rendszer esetén) vagy külső gyártótól származó, Windows 10-es eszközökhöz tartozó MDM-rendszerek szerint megfelelőként jelölhetők meg. A harmadik féltől származó MDM rendszerek nem Windows 10 rendszerű eszközökön használhatók.
+Az eszközök az Intune (bármilyen eszköz operációs rendszer esetén) vagy külső gyártótól származó, Windows 10-es eszközökhöz tartozó MDM-rendszerek szerint megfelelőként jelölhetők meg. A JAMF Pro az egyetlen támogatott harmadik féltől származó MDM-rendszer. További információ az integrációról: a [JAMF Pro integrálása az Intune](/intune/protect/conditional-access-integrate-jamf)-nal a megfelelőség érdekében.
 
 Az eszközöknek regisztrálva kell lenniük az Azure AD-ben, mielőtt azok megfelelőként jelölhetők meg. Az eszközök regisztrálásával kapcsolatos további információkért tekintse meg a következő cikket: [Mi az az eszköz identitása](../devices/overview.md).
 

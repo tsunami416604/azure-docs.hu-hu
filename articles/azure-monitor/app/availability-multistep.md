@@ -1,21 +1,17 @@
 ---
 title: Többlépéses webes tesztek figyelése – Azure Application Insights
 description: Többlépéses webes tesztek beállítása a webalkalmazások Azure-beli figyeléséhez Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 8e630f324a7a0ebdfcc74941e760b80fabefa8d3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3b8baad127b16a1bd9d071d0c3d4df68da8c3304
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928966"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655940"
 ---
-# <a name="multi-step-web-tests"></a>Többlépéses webes teszt
+# <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 
 A webhelyeken a többlépéses webes tesztek segítségével figyelheti az URL-címek és interakciók rögzített sorozatát. Ebből a cikkből megtudhatja, hogyan hozhat létre többlépéses webes tesztet a Visual Studio Enterprise használatával.
 
@@ -62,7 +58,7 @@ A Visual Studio webes tesztek létrehozásával kapcsolatos útmutatásért teki
 | **HTTP-válasz** | A visszaadott állapotkód, amely sikeresnek számít. A 200-as kód jelzi, hogy normál weblap lett visszaküldve.|
 | **Tartalom egyezése** | Egy karakterlánc, például "Welcome!" Teszteljük, hogy minden válaszban előfordul-e a kis- és nagybetűket figyelembe véve is pontos egyezés. Egyszerű sztringnek kell lennie helyettesítő karakterek nélkül. Ne feledje, hogy ha a laptartalom megváltozik, lehet, hogy ezt is frissíteni kell. **A tartalmi egyezés csak az angol karaktereket támogatja** |
 
-### <a name="alerts"></a>Értesítések
+### <a name="alerts"></a>Riasztások
 
 |Beállítás| Magyarázat
 |----|----|----|
@@ -113,9 +109,9 @@ Minden esetben ajánlott létrehozni egy fiókot az alkalmazásában tesztelési
 | Célközönség URI-ja | Az SAML-jogkivonat célközönségének URI-ja.  Ez a Access Control Service (ACS) URI-ja – beleértve az ACS-névteret és a gazdagép nevét. |
 | Tanúsítvány jelszava | Az ügyféltanúsítvány jelszava, amely hozzáférést biztosít a beágyazott titkos kulcshoz. |
 | Ügyféltanúsítvány  | Az ügyféltanúsítvány értéke Base64 kódolású formátumú titkos kulccsal. |
-| Névazonosító | A jogkivonat nevének azonosítója |
-| Lejárati idő | Az a TimeSpan, amelyhez a jogkivonat érvényes lesz.  Az alapértelmezett érték 5 perc. |
-| Hatálybalépési idő | Az a TimeSpan, amelyhez a múltban létrehozott jogkivonat érvényes lesz (az időeltérések megcímzéséhez).  Az alapértelmezett érték (negatív) 5 perc. |
+| Név azonosítója | A jogkivonat nevének azonosítója |
+| Nem később | Az a TimeSpan, amelyhez a jogkivonat érvényes lesz.  Az alapértelmezett érték 5 perc. |
+| Nem előtte | Az a TimeSpan, amelyhez a múltban létrehozott jogkivonat érvényes lesz (az időeltérések megcímzéséhez).  Az alapértelmezett érték (negatív) 5 perc. |
 | Cél környezeti paraméter neve | A generált állítást fogadó környezeti paraméter. |
 
 

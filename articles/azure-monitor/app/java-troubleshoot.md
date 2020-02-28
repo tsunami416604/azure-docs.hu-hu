@@ -1,18 +1,14 @@
 ---
 title: Java-webprojektek Application Insightsának hibáinak megoldása
 description: Hibaelhárítási útmutató – élő Java-alkalmazások figyelése Application Insightsokkal.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: aea0adc9217a7729c9bf14211cf5da422ac9e198
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 04e98938bc5dd17816ae873f122073212275a414
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432537"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657180"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Hibaelhárítás, kérdések és válaszok: Application Insights Java-hoz
 [Az Azure Application Insights-][java]mel kapcsolatos kérdések és problémák Java-ban? Íme néhány tipp.
@@ -99,7 +95,7 @@ Az XML-metódus használatával újra kell indítania az alkalmazást az érték
 
 Ha további információkat szeretne megtudni arról, hogy mi történik az API-ban, adja hozzá `<SDKLogger/>` a ApplicationInsights. xml konfigurációs fájl legfelső csomópontjában.
 
-### <a name="applicationinsightsxml"></a>ApplicationInsights. XML
+### <a name="applicationinsightsxml"></a>ApplicationInsights.xml
 
 Azt is utasíthatja, hogy a naplózó fájlba írja a kimenetet:
 
@@ -192,7 +188,7 @@ A Application Insights `org.apache.http`használ. Ezt a rendszer a névtér `com
 * [Kód írása az alkalmazás használatának nyomon követéséhez][track]
 * [Diagnosztikai naplók rögzítése][javalogs]
 
-## <a name="get-help"></a>Segítség
+## <a name="get-help"></a>Segítségkérés
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [Probléma fájl a GitHubon](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 

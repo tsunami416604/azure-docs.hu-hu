@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor terminológiai frissítések | Microsoft Docs
 description: Ismerteti az Azure monitoring Services közelmúltbeli terminológiai módosításait.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 01d4c8b3b803c5fce4fe24a5c96e649212fc4dca
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0c5e1096b0780d2f9e50389f772e63344935012b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894351"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657843"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor elnevezési és terminológiai változások
 Jelentős változások történtek a közelmúltban, és az Azure-ügyfelek figyelésének egyszerűsítése érdekében a különböző szolgáltatások összevonása is megtörténik a Azure Monitor. Ez a cikk a Azure Monitor dokumentációjának közelmúltbeli nevét és terminológiájának változásait ismerteti.

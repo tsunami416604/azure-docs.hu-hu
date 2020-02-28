@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor naplók szerkezete | Microsoft Docs
 description: A naplózási adatok Azure Monitorból való lekéréséhez naplózási lekérdezés szükséges.  Ez a cikk azt ismerteti, hogyan használhatók az új naplók a Azure Monitorban, és olyan fogalmakat tartalmaz, amelyeket meg kell értenie, mielőtt újat hozna létre.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 6ce8470da6b444cedb7bff1d14bcc6448b52fe94
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893637"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662076"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor naplók szerkezete
 A Azure Monitor hatékony funkciója, hogy gyorsan betekintést nyerjen az adataiba a [log lekérdezés](log-query-overview.md) használatával. Hatékony és hasznos lekérdezések létrehozásához ismernie kell néhány olyan alapfogalmakat, mint például a keresett adatok, valamint a strukturált adatok. Ez a cikk az első lépésekhez szükséges alapvető fogalmakat ismerteti.
@@ -53,7 +52,7 @@ Amikor Application Insightsban hoz létre alkalmazást, a rendszer automatikusan
 
 A Log Analytics munkaterülettől eltérően egy Application Insights alkalmazásnak van egy rögzített készlete. Más adatforrások nem konfigurálhatók az alkalmazásba való íráshoz, így további táblák nem hozhatók létre. 
 
-| Table | Leírás | 
+| Tábla | Leírás | 
 |:---|:---|
 | availabilityResults | A rendelkezésre állási tesztek összesített adatai. |
 | browserTimings      | Az ügyfél teljesítményére vonatkozó adat, például a bejövő adat feldolgozásához szükséges idő. |
@@ -76,7 +75,7 @@ Míg Azure Monitor naplók minden táblája saját sémával rendelkezik, az ös
 | Log Analytics-munkaterület | Application Insights alkalmazás | Leírás |
 |:---|:---|:---|
 | TimeGenerated | időbélyeg  | A rekord létrehozásának dátuma és időpontja. |
-| Type (Típus)          | itemType   | Annak a táblának a neve, amelyből a rekordot beolvasták. |
+| Típus          | ItemType   | Annak a táblának a neve, amelyből a rekordot beolvasták. |
 | _ResourceId   |            | Azon erőforrás egyedi azonosítója, amelyhez a rekord társítva van. |
 | _IsBillable   |            | Meghatározza, hogy a betöltött adatmennyiség számlázható-e. |
 | _BilledSize   |            | Meghatározza a számlázandó adatmennyiség bájtban kifejezett méretét. |

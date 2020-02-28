@@ -1,18 +1,17 @@
 ---
 title: Keresési lekérdezések Azure Monitor naplókban | Microsoft Docs
 description: Ez a cikk útmutatást nyújt az első lépések végrehajtásához a Azure Monitor log lekérdezésekben.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
-ms.openlocfilehash: d92cd42f0fceadee16035b605e8d25c6bc23bc67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933003"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660240"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Keresési lekérdezések Azure Monitor naplókban
 Azure Monitor a naplózási lekérdezések táblázatos névvel vagy keresési paranccsal kezdődhetnek. Ez az oktatóanyag a keresési alapú lekérdezéseket ismerteti. Az egyes módszerek előnyei vannak.
@@ -30,7 +29,7 @@ search "error"
 Habár egyszerűen használhatók, a nem hatókörű lekérdezések, mint például a fentiekben láthatók, nem hatékonyak, és sok lényegtelen eredményt adnak vissza. A jobb gyakorlat a megfelelő táblában, vagy akár egy adott oszlopban is megkereshető.
 
 ### <a name="table-scoping"></a>Táblázat hatóköre
-Egy adott tábla kifejezésének kereséséhez adja hozzá a `in (table-name)` értéket közvetlenül a **keresési** operátor után:
+Egy adott tábla kifejezésének kereséséhez vegyen fel `in (table-name)` közvetlenül a **keresési** operátor után:
 
 ```Kusto
 search in (Event) "error"
@@ -52,7 +51,7 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> Ha a `==` értéket használja `:` helyett, akkor az eredmények olyan rekordokat tartalmaznak, amelyekben a *forrás* oszlop pontos értéke "Error", és ebben a pontos esetben. A ":" használatával olyan rekordokat fog tartalmazni, amelyekben a *forrás* olyan értékekkel rendelkezik, mint például a "hibakód 404" vagy a "hiba".
+> Ha `:`helyett `==` használ, az eredmények olyan rekordokat tartalmaznak, amelyekben a *forrás* oszlop pontos értéke "Error", és ebben a pontos esetben. A ":" használatával olyan rekordokat fog tartalmazni, amelyekben a *forrás* olyan értékekkel rendelkezik, mint például a "hibakód 404" vagy a "hiba".
 
 ## <a name="case-sensitivity"></a>Kis-és nagybetűk megkülönböztetése
 Alapértelmezés szerint a kifejezéses keresés a kis-és nagybetűk megkülönböztetése, ezért a "DNS" keresése olyan eredményeket eredményezhet, mint például a "DNS", a "DNS" vagy a "DNS". A keresési kis-és nagybetűk megkülönböztetéséhez használja a `kind` kapcsolót:
@@ -90,12 +89,12 @@ search in (Event) "corp*.com"
 | take 100
 ```
 
-Egy táblában is mindent megtudhat, ha csak egy Wild kártyát használ: `search in (Event) *`, de az csak `Event`.
+Egy táblában is mindent megtudhat, ha csak egy Wild kártyát használ: `search in (Event) *`, de ez ugyanaz lenne, mint a csak `Event`írásakor.
 
 > [!TIP]
-> Habár a `search *` használatával minden oszlopból lekérheti az összes oszlopot, azt javasoljuk, hogy a lekérdezéseket mindig az adott táblákra szűkítse. A nem hatókörű lekérdezések végrehajtása hosszabb időt is igénybe vehet, és előfordulhat, hogy túl sok eredményt ad vissza.
+> Habár a `search *` segítségével minden táblázatból lekérheti az összes oszlopot, azt javasoljuk, hogy a lekérdezéseket mindig a megadott táblákra szűkítse. A nem hatókörű lekérdezések végrehajtása hosszabb időt is igénybe vehet, és előfordulhat, hogy túl sok eredményt ad vissza.
 
-## <a name="add-and--or-to-search-queries"></a>Hozzáadás *és* / *vagy* lekérdezések keresése
+## <a name="add-and--or-to-search-queries"></a>Lekérdezések hozzáadása *és* / *vagy* keresés
 A **és** a használatával több kifejezést tartalmazó rekordokat kereshet:
 
 ```Kusto

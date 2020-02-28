@@ -1,18 +1,15 @@
 ---
 title: Azure Monitor parancssori felület gyors üzembe helyezési mintái
 description: CLI-parancsok Azure Monitor szolgáltatásokhoz. A Azure Monitor egy Microsoft Azure-szolgáltatás, amely riasztási értesítések küldését teszi lehetővé, a konfigurált telemetria-adatok értékei alapján meghívja a webes URL-címeket, valamint az Cloud Services, a Virtual Machines és a Web Apps.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 05/16/2018
-ms.openlocfilehash: 0def528e0c432ecbc706622f0b8c29c2d610c663
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 69687cee8b8a907b82f2c848242ac64d54dedb87
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893535"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663504"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Azure Monitor parancssori felület gyors üzembe helyezési mintái
 Ez a cikk a parancssori felület (CLI) parancsait mutatja be Azure Monitor szolgáltatások elérésének megkönnyítéséhez. A Azure Monitor lehetővé teszi a Cloud Services, a Virtual Machines és a Web Apps autoskálázását, illetve riasztási értesítések küldését vagy webes URL-címek meghívását a konfigurált telemetria-adatok értékei alapján.

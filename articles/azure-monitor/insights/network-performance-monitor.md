@@ -1,18 +1,17 @@
 ---
 title: Network Performance Monitor megoldás az Azure-ban | Microsoft Docs
 description: A Network Performance Monitor az Azure-ban a hálózat teljesítményének közel valós idejű figyelését segíti a hálózati teljesítménnyel kapcsolatos szűk keresztmetszetek észlelése és megkeresése érdekében.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 396652e3f8a0a8d9e18effb94a48a362054dde96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cb906f6b3cf333e3fb3a24a934e5d9f11fc10cda
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75403142"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654477"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -47,18 +46,18 @@ A NPM a világ bármely részén lévő hálózatok és alkalmazások közötti 
 * USA középső régiója
 * USA keleti régiója
 * USA 2. keleti régiója
-* USA 2. nyugati régiója
+* USA nyugati régiója, 2.
 * Kelet-Japán
 * Délkelet-Ázsia
 * Dél-Kelet-Ausztrália
 * Ausztrália középső régiója
-* Ausztrália keleti régiója
+* Kelet-Ausztrália
 * Dél-Egyesült Királyság
 * Kelet-Ázsia
 * Dél-Korea középső régiója
 * Közép-India
 * USA-beli kormányzati Virginia
-* Kína 2. keleti régiója
+* Kelet-Kína 2
 
 
 A ExpressRoute-figyelő támogatott régiói listája a [dokumentációban](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117)érhető el.
@@ -86,7 +85,7 @@ A Network Performance Monitor szintetikus tranzakciókat használ a forrás-és 
 
 * **TCP protokoll**: Ha a TCP protokollt választja a figyeléshez, nyissa meg a tűzfal portját a Network Performance monitor és a ExpressRoute figyeléséhez használt ügynökökön, és győződjön meg arról, hogy az ügynökök csatlakozhatnak egymáshoz. A port megnyitásához futtassa a [EnableRules. ps1](https://aka.ms/npmpowershellscript) PowerShell-szkriptet a PowerShell-ablakban található paraméterek nélkül, rendszergazdai jogosultságokkal.
 
-    A parancsfájl a megoldáshoz szükséges beállításkulcsokat hoz létre. Emellett Windows tűzfal-szabályokat is létrehoz, amelyek lehetővé teszik, hogy az ügynökök TCP-kapcsolatokat hozzanak létre egymással. A parancsfájl által létrehozott beállításkulcsok határozzák meg, hogy naplózzák-e a hibakeresési naplókat és a naplófájlok elérési útját. A parancsfájl a kommunikációhoz használt ügynök TCP-portját is meghatározza. A kulcsok értékeit a parancsfájl automatikusan beállítja. Ezeket a kulcsokat ne módosítsa manuálisan. Alapértelmezés szerint a 8084-es port van megnyitva. Egyéni portot úgy használhat, hogy a portszám paramétert a parancsfájlhoz adja. Ugyanazt a portot használja az összes olyan számítógépen, amelyen a parancsfájl fut. 
+    A parancsfájl a megoldáshoz szükséges beállításkulcsokat hoz létre. Emellett Windows tűzfal-szabályokat is létrehoz, amelyek lehetővé teszik, hogy az ügynökök TCP-kapcsolatokat hozzanak létre egymással. A parancsfájl által létrehozott beállításkulcsok határozzák meg, hogy naplózzák-e a hibakeresési naplókat és a naplófájlok elérési útját. A parancsfájl a kommunikációhoz használt ügynök TCP-portját is meghatározza. Ezek a kulcsok értékeit a parancsfájl által automatikusan beállítva. Ezeket a kulcsokat ne módosítsa manuálisan. Alapértelmezés szerint a 8084-es port van megnyitva. Egyéni portot úgy használhat, hogy a portszám paramétert a parancsfájlhoz adja. Ugyanazt a portot használja az összes olyan számítógépen, amelyen a parancsfájl fut. 
 
     >[!NOTE]
     > A parancsfájl csak a Windows tűzfalat konfigurálja helyileg. Ha hálózati tűzfallal rendelkezik, győződjön meg arról, hogy az Network Performance Monitor által használt TCP-portra irányuló forgalmat engedélyezi.
@@ -166,7 +165,7 @@ Konfigurálja a kívánt képességeket:
 
  
 
-## <a name="data-collection-details"></a>Adatgyűjtés részletei
+## <a name="data-collection-details"></a>Adatok gyűjtése részletei
 A veszteség-és késési adatok gyűjtéséhez Network Performance Monitor TCP SYN-SYNACK-ACK kézfogási csomagokat használ, ha a TCP protokollt választja. A Network Performance Monitor ICMP ECHO ICMP ECHO választ használ, ha az ICMP protokollt választja. A nyomkövetési útvonal a topológiai információk beolvasására is használatos.
 
 Az alábbi táblázat az adatgyűjtés módszereit és a Network Performance Monitor adatok gyűjtésének egyéb részleteit mutatja be.
@@ -184,7 +183,7 @@ A megoldás szintetikus tranzakciókat használ a hálózat állapotának felmé
 >[!NOTE]
 > Bár az ügynökök gyakran kommunikálnak egymással, nem jelentenek jelentős hálózati forgalmat a tesztek végrehajtása során. Az ügynökök csak a TCP SYN-SYNACK-ACK kézfogási csomagok alapján határozzák meg a veszteséget és a késést. Az adatcsomagok cseréje nem történik meg. A folyamat során az ügynökök csak szükség esetén kommunikálnak egymással. Az ügynök kommunikációs topológiája a hálózati forgalom csökkentése érdekében van optimalizálva.
 
-## <a name="use-the-solution"></a>A megoldás használata 
+## <a name="use-the-solution"></a>A megoldás használatához 
 
 ### <a name="network-performance-monitor-overview-tile"></a>Network Performance Monitor áttekintés csempe 
 
@@ -254,7 +253,7 @@ A térképen látható topológia 3. rétegbeli topológia, és nem tartalmaz 2.
 
 Az Network Performance Monitor-irányítópulton és-részletezésen keresztül elérhetővé tett összes adat natív módon, a [napló lekérdezésekben](../log-query/log-query-overview.md)is elérhető. A tárházban lévő adatok interaktív elemzését elvégezheti, és különböző forrásokból származó adatokhoz kapcsolhatók. Létrehozhat egyéni riasztásokat és nézeteket is, és exportálhatja az adatfájlokat az Excelbe, Power BIba vagy egy megosztható hivatkozásba. Az irányítópult **gyakori lekérdezések** területén néhány hasznos lekérdezés található, amelyeket kiindulási pontként használhat a saját lekérdezések és jelentések létrehozásához. 
 
-## <a name="alerts"></a>Értesítések
+## <a name="alerts"></a>Riasztások
 
 Network Performance Monitor a [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)riasztási képességeit használja.
 

@@ -1,18 +1,14 @@
 ---
 title: Az Azure Application Insights folyamatainak automatizálása Logic Apps használatával
 description: Megtudhatja, hogyan automatizálható a megismételhető folyamatok gyors automatizálásához, ha hozzáadja a Application Insights-összekötőt a logikai alkalmazáshoz.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/11/2019
-ms.openlocfilehash: 95a3577d352b6bc4b56d36b5b79658571a6be1ff
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9a7f411ca5ec47e3f25d8120d0388fb030b00c72
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407522"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655004"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Application Insights folyamatok automatizálása Logic Apps használatával
 
@@ -27,7 +23,7 @@ További műveleteket is hozzáadhat. Azure App Service Logic Apps funkciója t�
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre olyan logikai alkalmazást, amely az analitikai autocluster algoritmus használatával csoportosítja az attribútumokat egy webalkalmazásban. A folyamat automatikusan e-mailben küldi el az eredményeket, csupán egy példát arra, hogyan használhatja Application Insights elemzéseket, és hogyan Logic Apps együtt. 
 
 ### <a name="step-1-create-a-logic-app"></a>1\. lépés: logikai alkalmazás létrehozása
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Kattintson **az erőforrás létrehozása**elemre, válassza a **web és mobil**lehetőséget, majd válassza a **logikai alkalmazás**lehetőséget.
 
     ![Új logikai alkalmazás ablak](./media/automate-with-logic-apps/1createlogicapp.png)
@@ -119,7 +115,7 @@ Amikor létrehoz egy saját lekérdezést, ellenőrizze, hogy megfelelően műk�
       ![Office 365 e-mail konfigurációs képernyő](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>7\. lépés: a logikai alkalmazás mentése és tesztelése
-* Kattintson a **Mentés** gombra a módosítások mentéséhez.
+* A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
 
 Megvárhatja, hogy a trigger futtassa a logikai alkalmazást, vagy azonnal futtathatja a logikai alkalmazást a **Futtatás**lehetőség kiválasztásával.
 

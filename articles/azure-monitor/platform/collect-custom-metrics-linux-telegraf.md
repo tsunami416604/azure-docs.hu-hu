@@ -3,17 +3,16 @@ title: Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a Infl
 description: Útmutatás arról, hogyan helyezheti üzembe a InfluxData-gyártói ügynököt egy Linux rendszerű virtuális gépen az Azure-ban, és hogyan konfigurálhatja az ügynököt a metrikák közzétételére Azure Monitor.
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 365330aa445bcf8e5b1aec575d5e646d533ceaf7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 0ed9144116c1d716124025ef0aae39e7783c5934
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901321"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655463"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a InfluxData-ben-Graf ügynökkel
 
@@ -29,7 +28,7 @@ A-ben egy olyan beépülő modulra [épülő](https://docs.influxdata.com/telegr
 
 Ebben az oktatóanyagban egy Linux rendszerű virtuális gépet telepítünk, amely az Ubuntu 16,04 LTS operációs rendszert futtatja. A-ben a legtöbb Linux operációs rendszer támogatja a a Grafi ügynököt. A Debian és az RPM csomagok is elérhetők a [InfluxData letöltési portálján](https://portal.influxdata.com/downloads)a kicsomagolt linuxos bináris fájlokkal együtt. További telepítési utasításokért és beállításokért tekintse meg ezt a [Grafi telepítési útmutatót](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) . 
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 Új linuxos virtuális gép létrehozása: 
 
@@ -106,7 +105,7 @@ Az ügynök mostantól összegyűjti a megadott bemeneti beépülő modulok metr
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>A saját Graf metrikáinak ábrázolása a Azure Portalban 
 
-1. Nyissa meg az [Azure portált](https://portal.azure.com). 
+1. Nyissa meg az [Azure Portal](https://portal.azure.com). 
 
 1. Navigáljon az új **figyelő** lapra. Ezután válassza a **metrikák**lehetőséget.  
 

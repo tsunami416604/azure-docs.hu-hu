@@ -3,17 +3,16 @@ title: Azure platform-naplók továbbítása egy Event hubhoz
 description: Ismerje meg, hogyan továbbíthatja az Azure-beli erőforrás-naplókat egy Event hub-ba, ha külső rendszerekre, például harmadik féltől származó SIEM-re és más log Analytics-megoldásokra küldi az információkat
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 00dcc1c1a1d823ab0f2497e47641916d391ee37b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 72341b6da0068ba4b7e3f53b08e6015cafb70f09
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750354"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658914"
 ---
 # <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>Azure platform-naplók továbbítása az Azure Event Hubsba
 Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenységeket és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azoktól függő Azure-platformról.  Ez a cikk a streaming platform naplófájljait ismerteti az Event hubok számára az adatküldés külső rendszerekre, például harmadik féltől származó SIEM-re és más log Analytics-megoldásokra.

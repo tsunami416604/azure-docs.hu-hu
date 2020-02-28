@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: NA
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 02/25/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 3c84277603420567485b5199cdd2fa63ee3a2654
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1f3c16e6fe1855cf7882d83e620c70d15ce3cb92
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378381"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657583"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Eldobott értesítések diagnosztizálása az Azure-ban Notification Hubs
 
@@ -41,7 +41,7 @@ A kezdeti tesztelési/előkészítési fázisban az értesítések kézbesítés
 
 A következő szakasz olyan forgatókönyveket mutat be, amelyekben a rendszer a gyakoritól a ritkaig terjedő értesítéseket is elhagyhatja.
 
-## <a name="notification-hubs-misconfiguration"></a>Helytelen konfiguráció Notification Hubs ##
+## <a name="notification-hubs-misconfiguration"></a>Helytelen konfiguráció Notification Hubs
 
 Ahhoz, hogy az értesítéseket a megfelelő leküldéses értesítési szolgáltatáshoz küldje, Notification Hubs az alkalmazás kontextusában hitelesítenie kell magát. Létre kell hoznia egy fejlesztői fiókot a cél platform értesítési szolgáltatásával (Microsoft, Apple, Google stb.). Ezt követően regisztrálnia kell az alkalmazást az operációs rendszerrel, ahol a cél PNS való együttműködéshez használt jogkivonatot vagy kulcsot kap.
 
@@ -54,19 +54,20 @@ A folyamat elvégzéséhez szükséges részletes utasításokért tekintse meg 
 ### <a name="notification-hub-name-location"></a>Értesítési központ nevének helye
 
 Győződjön meg arról, hogy az értesítési központ neve (az elírások nélkül) ugyanaz, mint a következő helyen:
-   * Az ügyfél regisztrációja
-   * Honnan küld értesítést a háttérből
-   * A leküldéses értesítési szolgáltatás hitelesítő adatainak konfigurálása
+
+* Az ügyfél regisztrációja
+* Honnan küld értesítést a háttérből
+* A leküldéses értesítési szolgáltatás hitelesítő adatainak konfigurálása
 
 Győződjön meg arról, hogy a megfelelő közös hozzáférésű aláírás-konfigurációs karakterláncokat használja az ügyfélen és az alkalmazás hátterét. Általában a **DefaultListenSharedAccessSignature** -t kell használnia az ügyfélen és a **DefaultFullSharedAccessSignature** az alkalmazás háttér-végpontján. Ez engedélyt ad az értesítések küldésére Notification Hubs.
 
-### <a name="apn-configuration"></a>APN-konfiguráció ###
+### <a name="apn-configuration"></a>APN-konfiguráció
 
 Két különböző hubokat kell fenntartania: az egyiket a termeléshez, egy másikat pedig a teszteléshez. A homokozóban használt tanúsítványt egy külön hubhoz kell feltöltenie, mint az éles környezetben használt tanúsítvány/hub. Ne próbálkozzon különböző típusú tanúsítványok feltöltésével ugyanahhoz a hubhoz. Ez az értesítési hibákat okoz.
 
 Ha a különböző típusú tanúsítványokat véletlenül ugyanarra a központba tölti fel, akkor törölnie kell a hubot, és új hubhoz kell kezdenie. Ha valamilyen okból nem tudja törölni a hubot, legalább törölnie kell az összes meglévő regisztrációt a központból.
 
-### <a name="fcm-configuration"></a>FCM-konfiguráció ###
+### <a name="fcm-configuration"></a>FCM-konfiguráció
 
 1. Győződjön meg arról, hogy a Firebase-ből beszerzett *kiszolgáló kulcsa* megegyezik a Azure Portalban regisztrált kiszolgáló kulcsával.
 
@@ -76,9 +77,9 @@ Ha a különböző típusú tanúsítványokat véletlenül ugyanarra a központ
 
    ![Firebase projekt azonosítója][1]
 
-## <a name="application-issues"></a>Alkalmazásokkal kapcsolatos problémák ##
+## <a name="application-issues"></a>Alkalmazásokkal kapcsolatos problémák
 
-### <a name="tags-and-tag-expressions"></a>Címkék és címkézési kifejezések ###
+### <a name="tags-and-tag-expressions"></a>Címkék és címkézési kifejezések
 
 Ha címkéket vagy címkéző kifejezéseket használ a célközönség szegmentálásához, akkor előfordulhat, hogy az értesítés küldésekor nem található cél. Ez a hiba a küldési hívásban megadott címkék vagy címkézési kifejezések alapján történik.
 
@@ -86,11 +87,11 @@ Tekintse át a regisztrációkat, és győződjön meg arról, hogy a címkék e
 
 Tegyük fel például, hogy az összes regisztrációja Notification Hubs használja a "Politics" címkét. Ha ezt követően értesítést küld a "sport" címkével, az értesítés nem lesz elküldve egyetlen eszközre sem. Egy összetett eset olyan címkézési kifejezéseket tartalmazhat, amelyekben az "A címkével" *vagy* a "B" címkével regisztrálva van, de a "címke a & & a b címkét". A cikk későbbi részében a saját diagnosztikai tippek című szakasz bemutatja, hogyan tekintheti át a regisztrációkat és azok címkéit.
 
-### <a name="template-issues"></a>Sablonokkal kapcsolatos problémák ###
+### <a name="template-issues"></a>Sablonokkal kapcsolatos problémák
 
 Ha sablonokat használ, ügyeljen arra, hogy kövesse a [sablonok]című témakör útmutatásait.
 
-### <a name="invalid-registrations"></a>Érvénytelen regisztrációk ###
+### <a name="invalid-registrations"></a>Érvénytelen regisztrációk
 
 Ha az értesítési központ helyesen lett konfigurálva, és a címkék vagy a címkézési kifejezések helyesen lettek alkalmazva, akkor a rendszer érvényes célokat talál. Az értesítéseket el kell juttatni ezekre a célokba. Notification Hubs ezután több feldolgozási köteget indít el párhuzamosan. Az egyes kötegek üzeneteket küldenek egy regisztrációs csoportba.
 
@@ -121,13 +122,13 @@ A Notification Hubs használatával egy coalescing-kulcsot egy HTTP-fejlécen ke
 
 Itt láthatók az eldobott értesítések kiváltó okának diagnosztizálására szolgáló elérési utak Notification Hubs.
 
-### <a name="verify-credentials"></a>Hitelesítő adatok ellenőrzése ###
+### <a name="verify-credentials"></a>Hitelesítő adatok ellenőrzése
 
-#### <a name="push-notification-service-developer-portal"></a>Leküldéses értesítési szolgáltatás – fejlesztői portál ####
+#### <a name="push-notification-service-developer-portal"></a>Leküldéses értesítési szolgáltatás – fejlesztői portál
 
 Ellenőrizze a hitelesítő adatokat a megfelelő leküldéses értesítési szolgáltatás fejlesztői portálján (APNs, FCM, Windows Notification Service stb.). További információ: [oktatóanyag: értesítések küldése univerzális Windows-platform alkalmazásoknak az Azure Notification Hubs használatával](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
 
-#### <a name="azure-portal"></a>Azure portál ####
+#### <a name="azure-portal"></a>Azure Portal
 
 A leküldéses értesítési szolgáltatás fejlesztői portálján beszerzett hitelesítő adatok áttekintéséhez és egyeztetéséhez lépjen a Azure Portal **hozzáférési szabályzatok** lapjára.
 
@@ -135,46 +136,48 @@ A leküldéses értesítési szolgáltatás fejlesztői portálján beszerzett h
 
 ### <a name="verify-registrations"></a>Regisztrációk ellenőrzése
 
-#### <a name="visual-studio"></a>Visual Studio ####
+#### <a name="visual-studio"></a>Visual Studio
 
 A Visual Studióban a Server Explorerben csatlakozhat az Azure-hoz, így több Azure-szolgáltatást is megtekinthet és kezelhet, beleértve a Notification Hubst is. Ez a parancsikon elsősorban fejlesztési és tesztelési környezetben hasznos.
 
-![A Visual Studio Server Explorer][9]
+![Visual Studio Server Explorer][9]
+
+![Server Explorer (Kiszolgálókezelő)](media/notification-hubs-push-notification-fixer/vsserverexplorer2.png)
 
 A hub összes regisztrációját megtekintheti és kezelheti. A regisztrációk a platform, a natív vagy a sablon regisztrálása, a leküldéses értesítési szolgáltatás azonosítója, a regisztrációs azonosító és a lejárati dátum szerint kategorizálva is megadhatók. Ezen az oldalon szerkesztheti a regisztrációt is. Ez különösen hasznos a címkék szerkesztéséhez.
 
 Kattintson a jobb gombbal az értesítési központra a **Server Explorerben**, és válassza a **Diagnosztizálás**lehetőséget. 
 
-![Visual Studio Server Explorer: Diagnosztizálás menü](./media/notification-hubs-diagnosing/diagnose-menu.png)
+![Visual Studio Server Explorer: Diagnosztizálás menü](./media/notification-hubs-push-notification-fixer/diagnose-menu.png)
 
 A következő oldal jelenik meg:
 
-![Visual Studio: diagnosztika lap](./media/notification-hubs-diagnosing/diagnose-page.png)
+![Visual Studio: diagnosztika lap](./media/notification-hubs-push-notification-fixer/diagnose-page.png)
 
 Váltson az **eszköz regisztrációi** lapra:
 
-![Visual Studio: eszközök regisztrációja](./media/notification-hubs-diagnosing/VSRegistrations.png)
+![Visual Studio: eszközök regisztrációja](./media/notification-hubs-push-notification-fixer/VSRegistrations.png)
 
 A teszt **küldése** lapot használhatja a teszt értesítési üzenet elküldéséhez:
 
-![Visual Studio: küldési teszt](./media/notification-hubs-diagnosing/test-send-vs.png)
+![Visual Studio: küldési teszt](./media/notification-hubs-push-notification-fixer/test-send-vs.png)
 
 > [!NOTE]
 > A Visual Studióval csak a fejlesztés/tesztelés során és korlátozott számú regisztrációval szerkesztheti a regisztrációkat. Ha tömegesen kell szerkesztenie a regisztrációkat, érdemes lehet a regisztrációk [tömeges exportálása és módosítása](https://msdn.microsoft.com/library/dn790624.aspx)című témakörben ismertetett exportálási és importálási funkciókat használni.
 
-#### <a name="service-bus-explorer"></a>Service Bus Explorer ####
+#### <a name="service-bus-explorer"></a>Service Bus Explorer
 
 Számos ügyfél [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) használatával tekintheti meg és kezelheti az értesítési hubokat. Service Bus Explorer egy nyílt forráskódú projekt. 
 
 ### <a name="verify-message-notifications"></a>Üzenetek értesítéseinek ellenőrzése
 
-#### <a name="azure-portal"></a>Azure portál ####
+#### <a name="azure-portal"></a>Azure Portal
 
 Ha teszt-értesítést szeretne küldeni az ügyfeleknek anélkül, hogy a szolgáltatást vissza kellene állítani, és nem fut, a **támogatás + hibaelhárítás**területen válassza a **küldési teszt**lehetőséget.
 
 ![Küldési funkció tesztelése az Azure-ban][7]
 
-#### <a name="visual-studio"></a>Visual Studio ####
+#### <a name="visual-studio"></a>Visual Studio
 
 A Visual studióból is küldhet tesztelési értesítéseket.
 
@@ -188,7 +191,7 @@ A Notification Hubs és a Visual Studio Server Explorer használatával kapcsola
 
 ### <a name="debug-failed-notifications-and-review-notification-outcome"></a>Sikertelen értesítések hibakeresése és az értesítés eredményének áttekintése
 
-#### <a name="enabletestsend-property"></a>EnableTestSend tulajdonság ####
+#### <a name="enabletestsend-property"></a>EnableTestSend tulajdonság
 
 Ha Notification Hubson keresztül küld értesítést, az értesítés kezdetben várólistára kerül. Notification Hubs meghatározza a helyes célokat, majd elküldi az értesítést a leküldéses értesítési szolgáltatásnak. Ha a REST API vagy az ügyféloldali SDK-kat használja, a küldési hívás visszaküldése csak azt jelenti, hogy az üzenet a Notification Hubs. Nem nyújt betekintést arról, hogy mi történt, amikor Notification Hubs Végül elküldte az értesítést a leküldéses értesítési szolgáltatásnak.
 
@@ -196,13 +199,13 @@ Ha az értesítés nem érkezik meg az ügyfél-eszközre, akkor hiba történt,
 
 A leküldéses értesítési szolgáltatás hibáinak megismeréséhez használhatja a [EnableTestSend] tulajdonságot. Ez a tulajdonság automatikusan engedélyezve lesz, amikor tesztüzenet küld a portálról vagy a Visual Studio-ügyfélről. Ennek a tulajdonságnak a használatával részletes hibakeresési információkat és API-kat is megtekintheti. Jelenleg a .NET SDK-ban is használható. A rendszer az összes ügyfél SDK-nak végül hozzáadja.
 
-Ha a REST-hívással szeretné használni a `EnableTestSend` tulajdonságot, fűzze hozzá a küldési hívás végén a *test* nevű lekérdezési karakterlánc paramétert. Példa:
+Ha a REST-hívással szeretné használni a `EnableTestSend` tulajdonságot, fűzze hozzá a küldési hívás végén a *test* nevű lekérdezési karakterlánc paramétert. Például:
 
 ```text
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
 ```
 
-#### <a name="net-sdk-example"></a>.NET SDK – példa ####
+#### <a name="net-sdk-example"></a>.NET SDK – példa
 
 Íme egy példa arra, hogyan lehet a .NET SDK-t natív előugró (Toast) értesítések küldésére használni:
 
@@ -229,7 +232,7 @@ Ezután használhatja a `EnableTestSend` Boolean tulajdonságot. A `Notification
     }
 ```
 
-#### <a name="sample-output"></a>Példa kimenet ####
+#### <a name="sample-output"></a>Példa kimenet
 
 ```text
 DetailedStateAvailable
@@ -243,9 +246,9 @@ Ez az üzenet azt jelzi, hogy a Notification Hubsban konfigurált hitelesítő a
 > [!NOTE]
 > A `EnableTestSend` tulajdonság használata erősen szabályozott. Ezt a lehetőséget csak fejlesztési és tesztelési környezetben, valamint korlátozott számú regisztrációval használhatja. A hibakeresési értesítések csak 10 eszközre lesznek elküldve. A hibakeresési műveletek másodpercenként 10 percenként is megadhatók.
 
-### <a name="review-telemetry"></a>Telemetria áttekintése ###
+### <a name="review-telemetry"></a>Telemetria áttekintése
 
-#### <a name="azure-portal"></a>Azure portál ####
+#### <a name="azure-portal"></a>Azure Portal
 
 A portálon gyors áttekintést kaphat az értesítési központban található összes tevékenységről.
 
@@ -261,7 +264,7 @@ A portálon gyors áttekintést kaphat az értesítési központban található 
 
 4. Ha az értesítési központ hitelesítési beállításai helytelenek, megjelenik az üzenet **PNS hitelesítési hiba** . A leküldéses értesítési szolgáltatás hitelesítő adatait érdemes megnézni.
 
-#### <a name="programmatic-access"></a>Programozott hozzáférés ####
+#### <a name="programmatic-access"></a>Szoftveres hozzáférés
 
 További információ a programozott hozzáférésről: [programozott hozzáférés](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100)).
 
@@ -271,16 +274,16 @@ További információ a programozott hozzáférésről: [programozott hozzáfér
 > A telemetria-hez kapcsolódó funkciók használatához először győződjön meg arról, hogy a standard szintű szolgáltatási szintet használó Azure Portal.  
 
 <!-- IMAGES -->
-[0]: ./media/notification-hubs-diagnosing/Architecture.png
-[1]: ./media/notification-hubs-diagnosing/FCMConfigure.png
-[3]: ./media/notification-hubs-diagnosing/FCMServerKey.png
+[0]: ./media/notification-hubs-push-notification-fixer/Architecture.png
+[1]: ./media/notification-hubs-push-notification-fixer/FCMConfigure.png
+[3]: ./media/notification-hubs-push-notification-fixer/FCMServerKey.png
 [4]: ../../includes/media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png
-[5]: ./media/notification-hubs-diagnosing/PortalDashboard.png
-[6]: ./media/notification-hubs-diagnosing/PortalAnalytics.png
+[5]: ./media/notification-hubs-push-notification-fixer/PortalDashboard.png
+[6]: ./media/notification-hubs-push-notification-fixer/PortalAnalytics.png
 [7]: ./media/notification-hubs-ios-get-started/notification-hubs-test-send.png
-[8]: ./media/notification-hubs-diagnosing/VSRegistrations.png
-[9]: ./media/notification-hubs-diagnosing/VSServerExplorer.png
-[10]: ./media/notification-hubs-diagnosing/VSTestNotification.png
+[8]: ./media/notification-hubs-push-notification-fixer/VSRegistrations.png
+[9]: ./media/notification-hubs-push-notification-fixer/vsserverexplorer.png
+[10]: ./media/notification-hubs-push-notification-fixer/VSTestNotification.png
 
 <!-- LINKS -->
 [Notification Hubs áttekintése]: notification-hubs-push-notification-overview.md

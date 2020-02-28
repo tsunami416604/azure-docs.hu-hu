@@ -1,18 +1,17 @@
 ---
 title: Adatok megjelenítése Azure Monitorból | Microsoft Docs
 description: A Azure Monitorban tárolt metrika és naplózási adatok megjelenítéséhez elérhető módszerek összegzését tartalmazza.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/24/2018
-ms.openlocfilehash: c350cb1f8e7343f6d8e7a416aa0bba71388eaa86
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7bace6ff6eb7dd1c02e4907e338fc0be9d66471c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597838"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657809"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Adatok megjelenítése Azure Monitorból
 Ez a cikk az Azure Monitorban tárolt napló-és metrikai adatok megjelenítéséhez használható módszerek összegzését tartalmazza.
@@ -26,7 +25,7 @@ Az [Azure irányítópultok](../azure-portal/azure-portal-dashboards.md) az Azur
 
 ![Irányítópult](media/visualizations/dashboard.png)
 
-### <a name="advantages"></a>Előnyei
+### <a name="advantages"></a>Előnyök
 - Mélyreható integráció az Azure-ba. A vizualizációk több Azure-oldalról is rögzíthetők az irányítópultokon, például Metrikaböngésző, Log Analytics és Application Insights.
 - A a metrikákat és a naplókat is támogatja.
 - Több forrásból származó adatok egyesítése, beleértve a [metrikák Explorer](platform/metrics-charts.md), a [naplók](log-query/log-query-overview.md)és a [leképezések](app/app-map.md) kimenetét Application Insightsban.
@@ -48,9 +47,9 @@ Az [Azure irányítópultok](../azure-portal/azure-portal-dashboards.md) az Azur
 ## <a name="azure-monitor-views"></a>Azure Monitor nézetek
 [A Azure monitor nézetei](platform/view-designer.md) lehetővé teszik, hogy egyéni vizualizációkat hozzon létre a naplózási adattal. Ezeket a [figyelési megoldások](insights/solutions.md) használják a gyűjtött adatok bemutatására.
 
-![Megtekintés](media/visualizations/view.png)
+![Nézet](media/visualizations/view.png)
 
-### <a name="advantages"></a>Előnyei
+### <a name="advantages"></a>Előnyök
 - Rich vizualizációk a naplózási adatmegjelenítéshez.
 - A nézetek exportálásával és importálásával továbbíthatja azokat más erőforráscsoportok és előfizetések számára.
 - Integrálható Azure Monitor felügyeleti modellbe munkaterületekkel és figyelési megoldásokkal.
@@ -71,7 +70,7 @@ A [munkafüzetek](../azure-monitor/app/usage-workbooks.md) olyan interaktív dok
 
 ![Munkafüzet](media/visualizations/workbook.png)
 
-### <a name="advantages"></a>Előnyei
+### <a name="advantages"></a>Előnyök
 - A a metrikákat és a naplókat is támogatja.
 - A támogatja azokat a paramétereket, amelyek interaktív jelentéseket tesznek lehetővé, ahol a táblázatban lévő elemek kiválasztásával dinamikusan frissülnek a társított diagramok és vizualizációk.
 - Dokumentumhoz hasonló folyamat.
@@ -89,7 +88,7 @@ A [munkafüzetek](../azure-monitor/app/usage-workbooks.md) olyan interaktív dok
 
 ![Power BI](media/visualizations/power-bi.png)
 
-### <a name="advantages"></a>Előnyei
+### <a name="advantages"></a>Előnyök
 - Sokoldalú vizualizációk.
 - Széleskörű interaktivitás, beleértve a nagyítást és a szűrést.
 - Könnyen megosztható a szervezeten belül.
@@ -109,7 +108,7 @@ A [Grafana](https://grafana.com/) egy nyílt platform, amely kiemelkedik az oper
 
 ![Grafana](media/visualizations/grafana.png)
 
-### <a name="advantages"></a>Előnyei
+### <a name="advantages"></a>Előnyök
 - Sokoldalú vizualizációk.
 - Az adatforrások gazdag ökoszisztémája.
 - Adatinteraktivitás, beleértve a nagyítást is.
@@ -123,7 +122,7 @@ A [Grafana](https://grafana.com/) egy nyílt platform, amely kiemelkedik az oper
 ## <a name="build-your-own-custom-application"></a>Saját egyéni alkalmazás létrehozása
 A naplózási és metrikai adatokban lévő adatokhoz a Azure Monitor API-n keresztül férhet hozzá a REST-ügyfél használatával, amely lehetővé teszi saját egyéni webhelyek és alkalmazások létrehozását.
 
-### <a name="advantages"></a>Előnyei
+### <a name="advantages"></a>Előnyök
 - Teljes rugalmasság a felhasználói felületen, a vizualizációban, az interaktivitásban és a funkciókban.
 - Metrikák és adatok naplózása más adatforrásokkal.
 

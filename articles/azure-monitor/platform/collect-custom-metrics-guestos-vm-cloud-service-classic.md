@@ -3,17 +3,16 @@ title: Klasszikus Cloud Services metrikák küldése Azure Monitor metrikai adat
 description: Ismerteti a vendég operációs rendszer teljesítményére vonatkozó metrikák küldésének folyamatát a klasszikus Azure-Cloud Services a Azure Monitor metrika-tárolóba.
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: fb13bb7ec2de2633796aecb5216ae8b9e2574a57
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3b390ffa20cf3cf79b8fb6311ad05b2978bd5d24
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971189"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655794"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Vendég operációs rendszer metrikáinak küldése a klasszikus Azure Monitor metrikai tárolóba Cloud Services 
 

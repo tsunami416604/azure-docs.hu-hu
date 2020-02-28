@@ -1,19 +1,15 @@
 ---
 title: ApplicationInsights. config – útmutató – Azure | Microsoft Docs
 description: Az adatgyűjtési modulok engedélyezése vagy letiltása, valamint teljesítményszámlálók és egyéb paraméterek hozzáadása.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.openlocfilehash: f7f32cc7f160a7ac9253b60e8c0c13926c110ac2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b2c407036277b17c0f8c08f3261c932a6dc66624
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407106"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655481"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 A Application Insights .NET SDK számos NuGet-csomagot tartalmaz. Az [alapcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights) biztosítja az API-t, amely telemetria küld a Application Insightsnak. A [további csomagok](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) telemetria *modulokat* és *inicializáló* csomagokat biztosítanak az alkalmazás és a környezet telemetria automatikus nyomon követéséhez. A konfigurációs fájl módosításával engedélyezheti vagy letilthatja a telemetria-modulokat és-inicializálók beállításait, és beállíthat paramétereket.
@@ -89,7 +85,7 @@ A HTTP [-kérések válaszideje és eredmény-kódjának](../../azure-monitor/ap
 * `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
 * [Microsoft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
-### <a name="microsoftapplicationinsights"></a>Microsoft. ApplicationInsights
+### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
 A Microsoft. ApplicationInsights csomag biztosítja az SDK [alapvető API](https://msdn.microsoft.com/library/mt420197.aspx) -ját. A többi telemetria-modul ezt használja, és azt is [használhatja a saját telemetria definiálásához](../../azure-monitor/app/api-custom-events-metrics.md).
 
 * Nincs bejegyzés a ApplicationInsights. config fájlban.

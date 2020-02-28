@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: fadf42e7bd7d754dea64542f06866a439eb460ec
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 7e8cbadf2c68b97451b40afb876ceb7d88d3758e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588773"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661056"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-powershell"></a>Gyors útmutató: NAT-átjáró létrehozása Azure PowerShell használatával
 
@@ -238,7 +238,7 @@ $sshPublicKey = cat ~/.ssh/id_rsa.pub
 Add-AzVMSshPublicKey -VM $vmconfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 ```
-A konfigurációs definíciók kombinálásával hozzon létre egy **myVM** nevű virtuális gépet a [New-AzVM]((https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.8.0)) a **myResourceGroupNAT**-ben.
+A konfigurációs definíciók kombinálásával hozzon létre egy **myVM** nevű virtuális gépet a [New-AzVM](/powershell/module/az.compute/new-azvm?view=azps-2.8.0) a **myResourceGroupNAT**-ben.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'

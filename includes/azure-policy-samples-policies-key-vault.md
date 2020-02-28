@@ -2,18 +2,18 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 270a5557de6edbd26a9a204ed2ce24f6c35e736e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b699a3c329fe2ac8e430f4b58d1fce2637b35469
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495260"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780745"
 ---
 |Name (Név) |Leírás |Hatás (ok) |Verzió |Forrás |
-|---|---|---|---|
-|[Key Vault diagnosztikai beállításainak üzembe helyezése az Event hub-ban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed7c8c13-51e7-49d1-8a43-8490431a0da2) |Központilag telepíti a Key Vault diagnosztikai beállításait egy regionális Event hubhoz, ha bármely olyan Key Vault, amelyből hiányzik ez a diagnosztikai beállítás, létrejön vagy frissül. |deployIfNotExists |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_DiagnosticLog_Deploy.json)
+|---|---|---|---|---|
+|[Key Vault diagnosztikai beállításainak üzembe helyezése az Event hub-ban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed7c8c13-51e7-49d1-8a43-8490431a0da2) |Központilag telepíti a Key Vault diagnosztikai beállításait egy regionális Event hubhoz, ha bármely olyan Key Vault, amelyből hiányzik ez a diagnosztikai beállítás, létrejön vagy frissül. |deployIfNotExists |2.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_DiagnosticLog_Deploy.json)
 |[A Key Vault lévő diagnosztikai naplókat engedélyezni kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |Diagnosztikai naplók engedélyezésének naplózása. Ez lehetővé teszi, hogy újból létrehozza a vizsgálati célokra használandó tevékenység-nyomvonalat; biztonsági incidens bekövetkezésekor vagy a hálózat biztonsága esetén |AuditIfNotExists, letiltva |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json)
 |[Key Vault objektumoknak helyreállítható kell lenniük](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |Ez a házirend azt naplózza, hogy a Key Vault-objektumok nem állnak-e helyreállítva. A Soft delete funkció segítségével még a TÖRLÉSi művelet után is hatékonyan megtarthatja az adott megőrzési időtartam (90 nap) erőforrásait, miközben megadhatja az objektum törlésének megjelenését. Ha a kiürítési védelem be van kapcsolva, a tároló vagy a törölt állapotban lévő objektum nem törölhető, amíg a 90 napos megőrzési idő el nem telt. Ezek a tárolók és objektumok továbbra is helyreállíthatók, így biztosítva az ügyfelek számára, hogy az adatmegőrzési szabályzatot követni fogjuk. |Naplózás, letiltva |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json)
 |[Az engedélyezett tanúsítványok kulcs-típusainak kezelése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1151cede-290b-4ba0-8b38-0ad145ac888f) |Ez a szabályzat a tanúsítványok engedélyezett kulcs-típusait kezeli. |naplózás, megtagadás, letiltva |1.0.0 – előzetes verzió |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_AllowedKeyTypes.json)

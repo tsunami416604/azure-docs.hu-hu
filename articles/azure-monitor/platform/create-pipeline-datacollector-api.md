@@ -1,18 +1,17 @@
 ---
 title: Adatfolyamat létrehozása a Azure Monitor adatgyűjtő API-val | Microsoft Docs
 description: A Azure Monitor HTTP-adatgyűjtő API-val hozzáadhat JSON-adatok a Log Analytics munkaterülethez bármely olyan ügyfélről, amely képes meghívni a REST API. Ez a cikk a fájlokban tárolt adatok automatizált módon történő feltöltését ismerteti.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 3074d8d9dfcb3dbca31821d73cfd6daee056edb9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0300b44577725ddb272086713220d3318f1726fe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363965"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655334"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Adatfolyamat létrehozása az adatgyűjtő API-val
 

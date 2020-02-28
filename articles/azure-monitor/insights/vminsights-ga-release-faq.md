@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor for VMs (GA) – gyakori kérdések | Microsoft Docs
 description: A Azure Monitor for VMs az Azure-ban olyan megoldás, amely az Azure-beli virtuális gép operációs rendszerének állapotát és teljesítményét ötvözi, valamint az alkalmazás-összetevők és a függőségek automatikus felfedését más erőforrásokkal, és leképezi a közötti kommunikációt őket. Ez a cikk a GA kiadásával kapcsolatos gyakori kérdésekre ad választ.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 883f24e529f9479f0c6ee6597c1324a0089ece7b
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 0af5e4b92b52b4ecfc4e0e302b5d2a7701297908
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620381"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656194"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor for VMs általánosan elérhető (GA) gyakran ismételt kérdések
 

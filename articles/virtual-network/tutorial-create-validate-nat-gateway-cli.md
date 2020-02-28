@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 26a427baddc99fa702b638c36b5378750364c849
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 988bd6dbb157276a9ee37c8ca3051a808f8b6499
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587022"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661073"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Oktatóanyag: NAT-átjáró létrehozása az Azure CLI használatával és a NAT szolgáltatás tesztelése
 
@@ -62,7 +62,7 @@ A nyilvános internethez való hozzáféréshez szüksége lesz egy vagy több n
 
 ### <a name="create-a-public-ip-prefix"></a>Nyilvános IP-előtag létrehozása
 
-Használhat egy vagy több nyilvános IP-cím-erőforrást, nyilvános IP-előtagot vagy mindkettőt a NAT-átjáróval. Ehhez a forgatókönyvhöz egy nyilvános IP-előtag-erőforrást adunk hozzá, amely bemutatja a következőt:.   Az [az Network Public-IP előtag Create](https://docs.microsoft.com/cli/azure/network/public-ip-prefix) paranccsal hozzon létre egy **myPublicIPprefixsource** nevű nyilvános IP-előtag-erőforrást a **myResourceGroupNAT**.
+Használhat egy vagy több nyilvános IP-cím-erőforrást, nyilvános IP-előtagot vagy mindkettőt a NAT-átjáróval. Ehhez a forgatókönyvhöz egy nyilvános IP-előtag-erőforrást adunk hozzá, amely bemutatja a következőt:.   Az [az Network Public-IP előtag Create](/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) paranccsal hozzon létre egy **myPublicIPprefixsource** nevű nyilvános IP-előtag-erőforrást a **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network public-ip prefix create \

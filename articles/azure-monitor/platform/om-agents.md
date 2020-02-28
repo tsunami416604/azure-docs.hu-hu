@@ -1,18 +1,17 @@
 ---
 title: Operations Manager összekötése Azure Monitorhoz | Microsoft Docs
 description: Meglévő System Center Operations Manager-befektetései kamatoztatása, és a Log Analytics képességeinek kiterjesztése érdekében az Operations Managert integrálhatja munkaterületével.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 5dc9412c7884eb62795fd04240f6cfa7d103e3be
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363659"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659407"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager összekötése a Azure Monitor
 
@@ -51,10 +50,10 @@ A Kezdés előtt tekintse át az alábbi követelményeket.
     - USA keleti régiója
     - Délkelet-Ázsia
     - Kelet-Japán
-    - Egyesült Királyság déli régiója
+    - Az Egyesült Királyság déli régiója
     - Közép-India
     - Közép-Kanada
-    - USA 2. nyugati régiója
+    - USA nyugati régiója, 2.
 
 >[!NOTE]
 >Az Azure API-k legutóbbi módosításai megakadályozzák, hogy az ügyfelek sikeresen konfigurálhatják a felügyeleti csoportjuk és a Azure Monitor közötti integrációt. Azon ügyfelek esetében, akik már integrálták a felügyeleti csoportot a szolgáltatással, nem érinti a rendszer, kivéve, ha újra kell konfigurálnia a meglévő kapcsolatokat.  
@@ -66,7 +65,7 @@ A Kezdés előtt tekintse át az alábbi követelményeket.
 >- System Center Operations Manager 2012 R2 esetén töltse le [innen](https://www.microsoft.com/download/details.aspx?id=57171)a felügyeleti csomagot.  
 
 
-### <a name="network"></a>Network (Hálózat)
+### <a name="network"></a>Hálózat
 
 Az alábbi információk a Operations Manager ügynökhöz, a felügyeleti kiszolgálókhoz és az operatív konzolhoz szükséges proxy-és tűzfal-konfigurációs adatokat felsorolják Azure Monitorekkel való kommunikációhoz. Az egyes összetevőktől érkező forgalom a hálózatról Azure Monitorra van kifelé.
 
@@ -94,7 +93,7 @@ Az alábbi információk a Operations Manager ügynökhöz, a felügyeleti kiszo
 |api.loganalytics.io| 80 és 443||
 |docs.loganalytics.io| 80 és 443||  
 
-### <a name="tls-12-protocol"></a>TLS 1,2 protokoll
+### <a name="tls-12-protocol"></a>A TLS 1.2 protokoll
 
 A Azure Monitor felé irányuló adatforgalom biztosításához határozottan javasoljuk, hogy az ügynököt és a felügyeleti csoportot legalább Transport Layer Security (TLS) 1,2 használatára konfigurálja. A TLS/SSL (SSL) régebbi verziói sebezhetőnek találták, és miközben jelenleg is működnek a visszamenőleges kompatibilitás érdekében, **nem ajánlottak**. További információkért tekintse át az [adatok biztonságos küldését a TLS 1,2 használatával](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
 
@@ -148,7 +147,7 @@ Ha a felügyeleti csoport és a Azure Monitor között belső proxykiszolgáló 
 1. Nyissa meg az Operations Manager-konzolt, és válassza ki az **Administration** (Adminisztráció) munkaterületet.
 1. Bontsa ki a Microsoft Operations Management Suite elemet, majd kattintson a **Kapcsolatok** gombra.
 1. Az OMS Connection (OMS-kapcsolat) nézetben kattintson a **Configure Proxy Server** (Proxykiszolgáló konfigurálása) lehetőségre.
-1. Az **Operational Management Suite varázsló Proxykiszolgáló lapján** válassza a **Use a proxy server to access the Operations Management Suite** (Proxykiszolgáló használata az Operations Management Suite eléréséhez) lehetőséget, majd írja be az URL-címet a portszámmal együtt (például: http://corpproxy:80 ), majd kattintson a **Befejezés** gombra.
+1. Az **Operational Management Suite varázsló Proxykiszolgáló lapján** válassza a **Use a proxy server to access the Operations Management Suite** (Proxykiszolgáló használata az Operations Management Suite eléréséhez) lehetőséget, majd írja be az URL-címet a portszámmal együtt (például: http://corpproxy:80), majd kattintson a **Befejezés** gombra.
 
 Ha a proxykiszolgáló hitelesítést igényel, a következő lépésekkel konfigurálhatja azokat a hitelesítő adatokat és beállításokat, amelyeket a felügyeleti csoportba Azure Monitor jelentésekkel rendelkező felügyelt számítógépekre kell terjeszteni.
 

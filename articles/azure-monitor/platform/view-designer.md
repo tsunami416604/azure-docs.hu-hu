@@ -1,18 +1,17 @@
 ---
 title: Nézetek létrehozása a naplófájlok elemzéséhez Azure Monitorban | Microsoft Docs
 description: A Azure Monitorban megjelenő tervező használatával létrehozhat olyan egyéni nézeteket, amelyek megjelennek a Azure Portalban, és a Log Analytics munkaterületen lévő adatvizualizációk különböző vizualizációit is tartalmazhatják. Ez a cikk a Tervező nézet áttekintését és az egyéni nézetek létrehozásához és szerkesztéséhez szükséges eljárásokat mutatja be.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
-ms.openlocfilehash: e5d707200d1e1eab9becbb30181649525f3a5a7b
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77166463"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658489"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Egyéni nézetek létrehozása a Azure Monitor View Designer használatával
 A Azure Monitor Tervező nézetében számos egyéni nézetet hozhat létre a Azure Portalban, amelyek segíthetnek a Log Analytics munkaterületen lévő adatmegjelenítésben. Ez a cikk áttekintést nyújt az egyéni nézetek létrehozásához és szerkesztéséhez szükséges tervezőről és eljárásokról.

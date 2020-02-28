@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 4ca8c18d448297cc2d2e2249a1dbbe04ecccd092
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019417"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656925"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálásával és kezelésével kapcsolatos problémák: gyakori kérdések (GYIK)
 
@@ -115,7 +115,7 @@ További információkért tekintse át a következő cikkeket:
 - [Felhőalapú szolgáltatás indítási feladatainak konfigurálása és futtatása](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
 - [Gyakori Cloud Service indítási feladatai](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
 
-## <a name="monitoring-and-logging"></a>Figyelés és naplózás
+## <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 
 ### <a name="what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications"></a>Melyek az Azure Portal közelgő Cloud Service-képességei, amelyek segíthetnek az alkalmazások kezelésében és figyelésében?
 
@@ -137,7 +137,7 @@ Kimerítette a helyi tárolási kvótát a naplózási könyvtárba való írás
 * Növelje a helyi erőforrások kvótájának korlátját.
 
 További információ a következő dokumentumokban található:
-* [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](cloud-services-dotnet-diagnostics-storage.md)
+* [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](/azure/storage/common/storage-introduction)
 * [IIS-naplók – írások leállítása a Cloud Service-ben](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Hogyan a WAD-naplózás engedélyezése a Cloud Serviceshoz?
@@ -196,7 +196,7 @@ A Windows 10 és a Windows Server 2016 támogatja a HTTP/2-t mind az ügyfél, m
 5. Indítsa újra a kiszolgálót.
 6. Nyissa meg az **alapértelmezett** webhelyet, és a **kötések**területen hozzon létre egy új TLS-kötést az imént létrehozott önaláírt tanúsítvánnyal. 
 
-További információ eléréséhez lásd:
+További információkért lásd:
 
 - [HTTP/2 az IIS-kiszolgálón](https://blogs.iis.net/davidso/http2)
 - [Videó: HTTP/2 a Windows 10-es verzióban: böngésző, alkalmazások és webkiszolgáló](https://channel9.msdn.com/Events/Build/2015/3-88)
@@ -311,7 +311,7 @@ A SNI kötést a következő PowerShell **-** parancsmaggal konfigurálhatja egy
     
 Az [itt](https://technet.microsoft.com/library/ee790567.aspx)leírtak szerint a $sslFlags az alábbi értékek egyike lehet:
 
-|Value (Díj)|Jelentés|
+|Érték|Jelentés|
 ------|------
 |0|Nincs SNI|
 |1|SNI engedélyezve|

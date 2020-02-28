@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/13/2020
+ms.date: 02/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4cc4db9ffcb700d4b65a7f5c21d258e9af52d164
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 155498aeaea30bf2da1d5aa0dbcb322aeb43bbdd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598527"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661294"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
@@ -35,6 +35,10 @@ Ezekről a lemezekről a lemez [típusának kiválasztása](https://docs.microso
 Az Azure két üzembe helyezési módszert kínál a VHD-k számára az Azure standard és a Premium Storage. Ha az általános forgatókönyv lehetővé teszi, használja ki az [Azure Managed Disk](https://azure.microsoft.com/services/managed-disks/) üzemelő példányait. 
 
 A IOPS és a tárolási átviteli sebességű tárolási típusok listáját és SLA-kat a [felügyelt lemezek Azure-dokumentációjában](https://azure.microsoft.com/pricing/details/managed-disks/)tekintheti meg.
+
+> [!IMPORTANT]
+> A kiválasztott Azure Storage-típustól függetlenül az adott operációs rendszer és az adatbázis-kezelő rendszer számára az SAP-nak támogatnia kell a tárterületen használt fájlrendszert. Az [SAP-támogatási megjegyzés #405827](https://launchpad.support.sap.com/#/notes/405827) a különböző operációs rendszerekhez és adatbázisokhoz támogatott fájlrendszerek listáját tartalmazza, beleértve a SAP HANA is. Ez minden olyan kötetre vonatkozik, SAP HANA a feladathoz való olvasáshoz és íráshoz is hozzáférhet. Kifejezetten az Azure-beli NFS-t használja a SAP HANAhoz, az NFS-verziók további korlátozásait a cikk későbbi részében leírtak szerint alkalmazza 
+
 
 A különböző tárolási típusok minimális SAP HANA tanúsított feltételei a következők: 
 

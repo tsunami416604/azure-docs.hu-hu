@@ -1,24 +1,23 @@
 ---
 title: Azure Monitor szolgáltatási korlátok | Microsoft Docs
 description: A Azure Monitor különböző területein lévő korlátozásokat listázza.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
-ms.openlocfilehash: 236e41bcbb7055c4fda55ecd535bb0eccf224bcd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d2a2230613f9e4be3e0c9359a082843a4701b6f8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394239"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657911"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Monitor szolgáltatási korlátok
 
 Ez a cikk a Azure Monitor különböző területein lévő korlátozásokat sorolja fel.
 
-## <a name="alerts"></a>Értesítések
+## <a name="alerts"></a>Riasztások
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-alerts.md)]
 
@@ -38,8 +37,8 @@ Ez a cikk a Azure Monitor különböző területein lévő korlátozásokat soro
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-app-insights.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Az Azure Monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/)
+- [Díjszabás Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/)
 - [A használat és a becsült költségek figyelése Azure Monitor](platform/usage-estimated-costs.md)
-- [Használat és költségek kezelése az Application Insights szolgáltatásban](app/pricing.md)
+- [A Application Insights használatának és költségeinek kezelése](app/pricing.md)

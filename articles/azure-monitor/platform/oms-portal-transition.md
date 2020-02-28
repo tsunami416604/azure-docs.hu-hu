@@ -1,18 +1,17 @@
 ---
 title: OMS-portál áthelyezése az Azure-ba | Microsoft Docs
 description: A OMS-portál a Azure Portalra áthelyezett összes funkcióval elérhetővé vált. Ez a cikk az áttérés részleteit ismerteti.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 170973d15b5f49021a0507bdd2fd6a2632777d48
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932150"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659254"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS-portál áthelyezése az Azure-ba
 
@@ -84,7 +83,7 @@ A riasztás-felügyeleti megoldás által gyűjtött adatok (a riasztási típus
 A OMS Mobile alkalmazás a OMS-portálral együtt lesz kivezetve. A OMS Mobile App helyett az informatikai infrastruktúrával, az irányítópultokkal és a mentett lekérdezésekkel kapcsolatos információkhoz férhet hozzá a Azure Portal közvetlenül a mobileszközön lévő böngészőjéből. Riasztások beszerzéséhez konfigurálnia kell az [Azure-műveleti csoportokat](action-groups.md) , hogy SMS vagy hanghívás formájában fogadják az értesítéseket
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights Connector és megoldás
-A [Application Insights Connector](app-insights-connector.md) lehetővé teszi Application Insights-adatLog Analytics munkaterületre való felvételét. Ez az adatismétlődés az infrastruktúra és az alkalmazásadatok láthatóságának engedélyezéséhez szükséges. A 2019 márciusában kibővített adatmegőrzési támogatással, valamint a [több Azure Monitor Application Insights erőforrás megtekintését](../log-query/unify-app-resource-data.md)is lehetővé tenni, ha több [erőforrást](../log-query/cross-workspace-query.md) is el lehetne végezni, nincs szükség a duplikált adatokra Application Insights a Application Insights erőforrásaiból származó adatok, és elküldése a Log Analyticsnak. Emellett az összekötő az alkalmazások tulajdonságainak egy részhalmazát is elküldi Log Analyticsra, a több erőforrásra kiterjedő lekérdezések pedig fokozott rugalmasságot biztosítanak.  
+A [Application Insights Connector](app-insights-connector.md) lehetővé teszi Application Insights-adatLog Analytics munkaterületre való felvételét. Ez az adatismétlődés az infrastruktúra és az alkalmazásadatok láthatóságának engedélyezéséhez szükséges. A 2019 márciusában kibővített adatmegőrzési támogatással és az [erőforrások több Azure Monitor Application Insights erőforrással](../log-query/unify-app-resource-data.md) [való ellátásának](../log-query/cross-workspace-query.md) lehetősége mellett nem szükséges duplikálni az Application Insights-erőforrások adatait, és nem kell elküldeni a log Analyticsba. Application Insights Emellett az összekötő az alkalmazások tulajdonságainak egy részhalmazát is elküldi Log Analyticsra, a több erőforrásra kiterjedő lekérdezések pedig fokozott rugalmasságot biztosítanak.  
 
 Ennek megfelelően a Application Insights Connector elavult, és az Azure Marketplace-en lett eltávolítva, valamint a OMS-portál elavult a 2019. március 30-án. A meglévő kapcsolatok 2019 június 30-ig továbbra is működni fognak. A OMS-portál elavult használata esetén nincs lehetőség a meglévő kapcsolatok konfigurálására és eltávolítására a portálon. Ez a 2019 januárban elérhetővé válik, és REST API az [Azure Updates](https://azure.microsoft.com/updates/)szolgáltatásban értesítést fog kapni. 
 

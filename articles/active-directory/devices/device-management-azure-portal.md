@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c8e94a1b15ad8cd55019f9351c82f58130e472d
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e09de5911ca0946bfcbcb77d1ad4131c8feac9f0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420600"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654664"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Az eszközök identitásának kezelése a Azure Portal használatával
 
@@ -29,15 +29,10 @@ A cikk tartalma:
 
 ## <a name="manage-device-identities"></a>Eszközidentitások kezelése
 
-Az Azure AD-portál központi helyet biztosít az eszköz identitásának kezeléséhez. Ezt a helyet a [közvetlen hivatkozás](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) használatával vagy a manuális lépések követésével érheti el:
+Az Azure AD-portál központi helyet biztosít az eszköz identitásának kezeléséhez. Ezt a helyet [közvetlen hivatkozással](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) vagy a következőkkel érheti el:
 
-1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
-
-2. Keresse meg és válassza ki **Azure Active Directory** vagy válassza ki a **kezdőlapon** .
-
-3. A **kezelés** szakaszban kattintson az **eszközök**elemre.
-
-   ![Eszközbeállítások konfigurálása](./media/device-management-azure-portal/74.png)
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Tallózással keresse meg **Azure Active Directory** > **eszközöket**.
 
 Az **eszközök** lap a következőket teszi lehetővé:
 
@@ -50,13 +45,11 @@ Az **eszközök** lap a következőket teszi lehetővé:
 
 Az eszköz identitásának Azure AD-portálon való kezeléséhez az eszközöknek [regisztrálva](overview.md) kell lenniük, vagy hozzá kell csatlakozniuk az Azure ad-hez. Rendszergazdaként az eszközbeállítások konfigurálásával részletesen beállíthatja az eszközök regisztrálásának és csatlakoztatásának folyamatát.
 
-![Eszközbeállítások konfigurálása](./media/device-management-azure-portal/22.png)
-
-Az eszközbeállítások oldalon a következőket konfigurálhatja:
+Az eszközbeállítások lapon konfigurálhatja az eszköz identitásával kapcsolatos beállításokat:
 
 ![Intune-eszköz kezelése](./media/device-management-azure-portal/21.png)
 
-- A **felhasználók csatlakozhatnak az eszközökhöz az Azure ad** -ben – ezzel a beállítással kiválaszthatja azokat a felhasználókat, akik regisztrálhatják az eszközeiket az Azure ad-hez csatlakoztatott eszközökként. Az alapértelmezett érték az **összes**.
+- A **felhasználók csatlakozhatnak az eszközökhöz az Azure ad** -ben – ezzel a beállítással kiválaszthatja azokat a felhasználókat, akik regisztrálhatják az eszközeiket az Azure ad-hez csatlakoztatott eszközökként. Az alapértelmezett érték a **Mind**.
 
 > [!NOTE]
 > Előfordulhat, hogy a **felhasználók az Azure ad-be való csatlakoztatáshoz** csak az Azure ad-csatlakozásra vonatkoznak a Windows 10 rendszeren.
@@ -81,12 +74,7 @@ Ez a lehetőség olyan prémium szintű funkció, amely a prémium szintű Azure
 A regisztrált és a csatlakoztatott eszközök keresésére két lehetőség áll rendelkezésre:
 
 - Az **eszközök** lap **kezelés** szakaszában található **összes eszköz**  
-
-   ![Minden eszköz](./media/device-management-azure-portal/41.png)
-
 - A **felhasználói** oldal **kezelés** szakaszában lévő **eszközök**
-
-   ![Minden eszköz](./media/device-management-azure-portal/43.png)
 
 Mindkét lehetőséggel megtekintheti a következőket:
 
@@ -94,7 +82,7 @@ Mindkét lehetőséggel megtekintheti a következőket:
 - Részletes áttekintést nyújt a regisztrált és csatlakoztatott eszközökről
 - Lehetővé teszi az eszközök általános felügyeleti feladatainak elvégzését
 
-![Minden eszköz](./media/device-management-azure-portal/51.png)
+![Minden eszköz:](./media/device-management-azure-portal/51.png)
 
 >[!TIP]
 >
@@ -193,13 +181,11 @@ Az eszközök tevékenységeit a tevékenység naplóiban érheti el. Ezek a nap
 
 A naplózási adathoz való belépési pont az **eszközök** lap **tevékenység** szakaszában található **naplók** .
 
-![Naplók](./media/device-management-azure-portal/61.png)
-
-Az auditnapló alapértelmezett listanézete az alábbi adatokat jeleníti meg:
+A napló egy alapértelmezett listanézet, amely a következőket jeleníti meg:
 
 - Az előfordulás dátuma és időpontja
 - A célok
-- Egy tevékenység kezdeményezője/szereplője
+- egy tevékenység kezdeményezője/szereplője
 - A tevékenység (mi)
 
 ![Naplók](./media/device-management-azure-portal/63.png)
@@ -214,13 +200,13 @@ A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mez�
 - Tevékenység erőforrástípusa
 - Tevékenység
 - Dátumtartomány
-- Target
+- Cél
 - Kezdeményező (színész)
 
 A szűrők mellett megkeresheti az adott bejegyzéseket is.
 
 ![Naplók](./media/device-management-azure-portal/65.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Elavult eszközök kezelése az Azure AD-ben](manage-stale-devices.md)

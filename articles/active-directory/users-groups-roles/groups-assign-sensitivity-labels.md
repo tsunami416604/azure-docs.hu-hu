@@ -9,31 +9,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 02/24/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07859299805c5f7be869350adbdbfa675775888c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 51b242a76e1daec7d401d797e8c9887821117246
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404808"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656942"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Érzékenységi címkék társítása az Office 365-csoportokhoz Azure Active Directory (előzetes verzió)
 
-Azure Active Directory (Azure AD) támogatja az [Microsoft 365 megfelelőségi központ](https://sip.protection.office.com/homepage) által az Office 365-csoportok számára közzétett érzékenységi címkék alkalmazását. Az érzékenységi címkék olyan szolgáltatásokra vonatkoznak, mint az Outlook, a Microsoft Teams és a SharePoint. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+Azure Active Directory (Azure AD) támogatja az [Microsoft 365 megfelelőségi központ](https://sip.protection.office.com/homepage) által az Office 365-csoportok számára közzétett érzékenységi címkék alkalmazását. Az érzékenységi címkék olyan szolgáltatásokra vonatkoznak, mint az Outlook, a Microsoft Teams és a SharePoint. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. Az Office 365-alkalmazások támogatásával kapcsolatos további információkért lásd: [office 365-támogatás az érzékenységi címkékhez](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
 
 > [!IMPORTANT]
-> Az Office 365-csoportok Azure AD-érzékenységi címkéjének használatához prémium szintű Azure Active Directory P1-licenc szükséges.
-
-## <a name="group-settings-controlled-by-labels"></a>Címkék által vezérelt csoportok beállításai
-
-A címkéhez két beállítás társítható:
-
-- **Adatvédelem**: a rendszergazdák az adatvédelmi beállításokat a címkével társítva megadhatják, hogy a csoport nyilvános vagy magánjellegű.
-- **Vendég hozzáférés**: a rendszergazdák az összes olyan csoportra kihasználhatják a vendég házirendet, amelyhez a címke hozzá van rendelve. Ez a házirend határozza meg, hogy a vendégek hozzáadhatók-e tagként vagy sem. Ha a vendég házirend címkére van konfigurálva, akkor a címkét hozzárendelő csoportok nem teszik lehetővé a AllowToAddGuests beállítás módosítását.
+> A szolgáltatás konfigurálásához legalább egy aktív prémium szintű Azure Active Directory P1-licenccel kell rendelkeznie az Azure AD-szervezetben.
 
 ## <a name="enable-sensitivity-label-support-in-powershell"></a>Az érzékenységi címke támogatásának engedélyezése a PowerShellben
 
@@ -87,11 +80,11 @@ Ennyi az egész. Engedélyezte a funkciót, és közzétett címkéket alkalmazh
 
 1. Mentse a módosításokat, és válassza a **Létrehozás**lehetőséget.
 
-A rendszer létrehozza a csoportot, és automatikusan kényszeríti a kiválasztott címkéhez társított házirendeket.
+A rendszer létrehozza a csoportot, és a kiválasztott címkéhez társított hely-és csoportfiókok automatikusan érvénybe lép.
 
 ## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Címke kiosztása meglévő csoporthoz Azure Portal
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) globális rendszergazdai vagy csoportos rendszergazdai fiókkal, vagy egy csoport tulajdonosaként.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy csoport-rendszergazdai fiókkal vagy egy csoport tulajdonosaként.
 1. Válassza a **csoportok**lehetőséget.
 1. A **minden csoport** lapon válassza ki a címkézni kívánt csoportot.
 1. A kiválasztott csoport lapon válassza a **Tulajdonságok** lehetőséget, és válasszon egy érzékenységi címkét a listából.
@@ -109,22 +102,9 @@ A rendszer létrehozza a csoportot, és automatikusan kényszeríti a kiválaszt
 1. Válassza az **Eltávolítás** lehetőséget.
 1. A módosítások alkalmazásához válassza a **Mentés** lehetőséget.
 
-## <a name="office-365-app-support-for-sensitivity-labels"></a>Office 365-alkalmazások támogatása az érzékenységi címkékhez
-
-Az alábbi Office 365-alkalmazások és-szolgáltatások támogatják az előnézet érzékenységi címkéit:
-
-- Azure AD felügyeleti központ
-- Microsoft 365 megfelelőségi központ
-- SharePoint
-- Webes Outlook
-- Csapatok
-- SharePoint felügyeleti központ
-
-Az Office 365-alkalmazások támogatásával kapcsolatos további információkért lásd: [office 365-támogatás az érzékenységi címkékhez](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
-
 ## <a name="using-classic-azure-ad-classifications"></a>Klasszikus Azure AD-besorolások használata
 
-A szolgáltatás engedélyezése után az Office 365 már nem támogatja az új csoportok "klasszikus" besorolását. A klasszikus besorolások a régi besorolások, amelyet az Azure AD PowerShell `ClassificationList` beállításának értékeinek meghatározásával állíthat be. Ha ez a szolgáltatás engedélyezve van, a rendszer nem alkalmazza ezeket a besorolásokat a csoportokra.
+A funkció engedélyezése után a csoportok "klasszikus" besorolása csak a meglévő csoportokat és helyeket fogja megjelenni, és csak akkor használja őket az új csoportokhoz, ha olyan alkalmazásokban hoz létre csoportokat, amelyek nem támogatják az érzékenységi címkéket. A rendszergazda szükség esetén később is átalakíthatja az érzékenységi címkéket. A klasszikus besorolások a régi besorolások, amelyet az Azure AD PowerShell `ClassificationList` beállításának értékeinek meghatározásával állíthat be. Ha ez a szolgáltatás engedélyezve van, a rendszer nem alkalmazza ezeket a besorolásokat a csoportokra.
 
 ## <a name="troubleshooting-issues"></a>Hibaelhárítási problémák
 
@@ -136,9 +116,7 @@ Az érzékenységi címke beállítás csak akkor jelenik meg a csoportok eseté
 1. A szolgáltatás engedélyezve van, a EnableMIPLabels True értékre van állítva a PowerShellben.
 1. A csoport egy Office 365-csoport.
 1. A bérlő aktív prémium szintű Azure Active Directory P1 licenccel rendelkezik.
-1. A jelenleg bejelentkezett felhasználó hozzáférhet a közzétett címkékhez.
 1. A jelenlegi bejelentkezett felhasználónak megfelelő jogosultsága van a címkék hozzárendeléséhez. A felhasználónak globális rendszergazdának, csoport rendszergazdának vagy a csoport tulajdonosának kell lennie.
-1. A jelenlegi bejelentkezett felhasználónak van egy Office 365-licence rendelve. A licencekre vonatkozó követelményekkel kapcsolatos további információkért lásd: [az Office-alkalmazások érzékenységi címkéi](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-office-apps).
 
 Győződjön meg arról, hogy az összes feltétel teljesül, hogy címkéket rendeljen egy csoporthoz.
 
@@ -149,7 +127,7 @@ Ha a keresett címke nem szerepel a listán, akkor ez a következő okok egyike 
 - Előfordulhat, hogy a címke nem kerül közzétételre a Microsoft 365 megfelelőségi központban. Ez a már nem közzétett címkékre is alkalmazható. További információért forduljon a rendszergazdához.
 - Előfordulhat, hogy a címke közzé van téve, de nem érhető el a bejelentkezett felhasználó számára. Kérjen segítséget a rendszergazdától a címke elérésének módjával kapcsolatban.
 
-### <a name="how-can-i-change-the-label-on-a-group"></a>Hogyan változtathatom meg egy csoport címkéjét?
+### <a name="how-to-change-the-label-on-a-group"></a>Csoport címkéének módosítása
 
 A címkék bármikor felcserélhetők, ha ugyanazokat a lépéseket használják, mint a címkék egy meglévő csoportba való hozzárendelésével, az alábbiak szerint:
 

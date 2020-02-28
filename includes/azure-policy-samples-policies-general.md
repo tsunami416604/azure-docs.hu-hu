@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 34a75559c25b23d719101bb3bcfb42c155074a2d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 29d34cc4f64a7d942e377b11299aeaad0f18c76d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495574"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780356"
 ---
 |Name (Név) |Leírás |Hatás (ok) |Verzió |Forrás |
-|---|---|---|---|
+|---|---|---|---|---|
 |[Engedélyezett helyek](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe56962a6-4747-49cd-b67b-bf8b01975c4c) |Ezzel a szabályzattal korlátozható azon helyek köre, amelyeket a szervezet megadhat az erőforrások üzembe helyezésekor. A földrajzi megfelelőségi követelmények betartására szolgál. Az erőforráscsoportok, a Microsoft. AzureActiveDirectory/b2cDirectories és a "globális" régiót használó erőforrások kizárása. |tagadja |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/AllowedLocations_Deny.json)
 |[Erőforráscsoportok engedélyezett helyei](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe765b5de-1225-4ba3-bd56-1ac6695af988) |Ez a szabályzat lehetővé teszi, hogy korlátozza a szervezete által az erőforráscsoportok létrehozásához szükséges helyet. A földrajzi megfelelőségi követelmények betartására szolgál. |tagadja |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/ResourceGroupAllowedLocations_Deny.json)
 |[Engedélyezett erőforrástípusok](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa08ec900-254a-4555-9bf5-e42af04b5c5c) |Ez a szabályzat lehetővé teszi a szervezet által üzembe helyezhető erőforrástípusok megadását. Ez a szabályzat csak a "címkéket" és a "location" támogatást támogató erőforrásokat fogja érinteni. Az összes erőforrás korlátozásához ismételje meg ezt a házirendet, és módosítsa a "Mode" beállítást az "all" értékre. |tagadja |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/AllowedResourceTypes_Deny.json)

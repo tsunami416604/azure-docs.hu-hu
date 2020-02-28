@@ -1,18 +1,17 @@
 ---
 title: Felszíni hubok figyelése Azure Monitorokkal | Microsoft Docs
 description: A Surface Hub megoldással nyomon követheti a felszíni hubok állapotát, és megtudhatja, hogyan használják őket.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 32ac14a06230341d21ff1b14a33cbcdd0992e4fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7999735bf2d182b2811d01172adcfc89cba27dc8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400897"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662501"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Felszíni hubok figyelése Azure Monitorekkel az állapotuk nyomon követéséhez
 
@@ -22,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan használható a Azure Monitor Surface Hub megold
 
 Minden Surface Hub telepítve van a Microsoft monitoring Agent. Az ügynökön keresztül, amelyről a Surface Hub adatait elküldheti a Azure Monitor Log Analytics munkaterületére. A naplófájlokat a rendszer beolvassa a Surface hub-ból, és a rendszer elküldi őket a Azure Monitornak. Problémák, például offline kiszolgálók, a naptár szinkronizálása nem történik meg, vagy ha az eszköz fiókja nem tud bejelentkezni a Skype-ba, a Azure Monitor Surface Hub irányítópultján jelennek meg. Az irányítópulton található adatai segítségével azonosíthatja azokat az eszközöket, amelyek nem futnak, vagy amelyek más problémákba ütköznek, és esetleg az észlelt problémákra vonatkozó javításokat is alkalmazhatnak.
 
-## <a name="install-and-configure-the-solution"></a>A megoldás telepítése és konfigurálása
+## <a name="install-and-configure-the-solution"></a>Telepítse és konfigurálja a megoldást
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat. A felszíni hubok Azure Monitor-ben való kezeléséhez a következőkre lesz szüksége:
 
 * [Log Analytics előfizetési](https://azure.microsoft.com/pricing/details/log-analytics/) szint, amely a figyelni kívánt eszközök számát fogja támogatni. A Log Analytics díjszabása attól függően változik, hogy hány eszköz regisztrálva van, és mennyi az adatfeldolgozás. Ezt figyelembe kell vennie a Surface Hub bevezetésének megtervezése során.
@@ -44,7 +43,7 @@ Az Intune egy Microsoft-termék, amely lehetővé teszi, hogy központilag felü
 2. Navigáljon a **beállítások** > **csatlakoztatott források**elemre.
 3. Hozzon létre vagy szerkesszen egy házirendet a Surface Hub sablon alapján.
 4. Navigáljon a szabályzat Azure Operational Insights szakaszához, és adja hozzá a Log Analytics- *munkaterület azonosítóját* és a *munkaterület kulcsát* a szabályzathoz.
-5. Mentse a szabályzatot.
+5. A házirend mentéséhez.
 6. Társítsa a szabályzatot a megfelelő eszközök csoportjához.
 
    ![Intune-házirend](./media/surface-hubs/intune.png)

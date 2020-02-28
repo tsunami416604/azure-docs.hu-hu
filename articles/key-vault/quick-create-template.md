@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/17/2019
 ms.author: jgao
-ms.openlocfilehash: 0462039efa02998b41560d6c308653809875ab1c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b2561a4e065fc82cc08e8275965ab0b403fc66f0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982136"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654562"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Rövid útmutató: titkos kód beállítása és lekérése Azure Key Vault Resource Manager-sablon használatával
 
@@ -33,7 +33,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
     1. Futtassa a következő Azure PowerShell vagy Azure CLI-parancsot a **kipróbálás**lehetőség kiválasztásával, majd illessze be a szkriptet a rendszerhéj ablaktáblába. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**lehetőséget.
 
-        # <a name="clitabcli"></a>[Parancssori felület](#tab/CLI)
+        # <a name="cli"></a>[Parancssori felület](#tab/CLI)
         ```azurecli-interactive
         echo "Enter your email address that is used to sign in to Azure:" &&
         read upn &&
@@ -41,7 +41,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
         echo "Press [ENTER] to continue ..."
         ```
 
-        # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+        # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
         ```azurepowershell-interactive
         $upn = Read-Host -Prompt "Enter your email address used to sign in to Azure"
         (Get-AzADUser -UserPrincipalName $upn).Id
@@ -54,16 +54,20 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 ## <a name="create-a-vault-and-a-secret"></a>Tár és titkos kód létrehozása
 
+### <a name="review-the-template"></a>A sablon áttekintése
+
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-key-vault-create/)származik.
 
-[!code-json[<Azure Resource Manager template create key vault>](~/quickstart-templates/101-key-vault-create/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-key-vault-create/azuredeploy.json" range="1-150" highlight="107-148":::
 
 Két Azure-erőforrás van definiálva a sablonban:
 
-* **Microsoft. kulcstartó/** tárolók: hozzon létre egy Azure Key vaultot.
-* **Microsoft. kulcstartó/tárolók/titkok**: Create a Key Vault Secret.
+* [**Microsoft. kulcstartó/** ](/azure/templates/microsoft.keyvault/vaults)tárolók: hozzon létre egy Azure Key vaultot.
+* [**Microsoft. kulcstartó/tárolók/titkok**](/azure/templates/microsoft.keyvault/vaults/secrets): Create a Key Vault Secret.
 
 [Itt](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault)több Azure Key Vault sablon is található.
+
+### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy kulcstartót és egy titkos kulcsot.
 
@@ -90,11 +94,11 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 A Azure Portal a sablon üzembe helyezéséhez használható. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-powershell.md).
 
-## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
+## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
 A Azure Portal segítségével megtekintheti a kulcstartót és a titkos kulcsot, vagy a következő Azure CLI-vagy Azure PowerShell-szkripttel listázhatja a létrehozott titkos kulcsot.
 
-# <a name="clitabcli"></a>[Parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter your key vault name:" &&
@@ -103,7 +107,7 @@ az keyvault secret list --vault-name $keyVaultName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $keyVaultName = Read-Host -Prompt "Enter your key vault name"
@@ -115,11 +119,11 @@ Write-Host "Press [ENTER] to continue..."
 
 A kimenet a következőhöz hasonlóan néz ki:
 
-# <a name="clitabcli"></a>[Parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 ![Resource Manager-sablon, Key Vault integráció, portál-ellenőrzési kimenet üzembe helyezése](./media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ![Resource Manager-sablon, Key Vault integráció, portál-ellenőrzési kimenet üzembe helyezése](./media/quick-create-template/resource-manager-template-portal-deployment-powershell-output.png)
 
@@ -127,9 +131,9 @@ A kimenet a következőhöz hasonlóan néz ki:
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Erre a rövid útmutatóra egyéb Key Vault-útmutatók és oktatóanyagok is épülnek. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, ne törölje ezeket az erőforrásokat.
-Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a kulcstartót és a kapcsolódó erőforrásokat is. Az erőforráscsoport törlése az Azure CLI vagy az Azure PowerShell használatával:
+Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a kulcstartót és a kapcsolódó erőforrásokat is. Az erőforráscsoport törlése az Azure CLI vagy a Azure PowerShell használatával:
 
-# <a name="clitabcli"></a>[Parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -138,7 +142,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

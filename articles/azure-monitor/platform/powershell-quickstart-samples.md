@@ -1,18 +1,15 @@
 ---
 title: Azure Monitor PowerShell – gyors üzembe helyezési minták
 description: A PowerShell használatával férhet hozzá olyan Azure Monitor-funkciókhoz, mint például az autoscale, a riasztások, a webhookok és a keresési tevékenységek naplói.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 2/14/2018
-ms.openlocfilehash: d1aa4b4e2d72f10ca73616bc7e69b0d02f13a501
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9f039f71954998ef561d1efd1e559318740c86ab
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551851"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659298"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor PowerShell – gyors üzembe helyezési minták
 Ebből a cikkből megtudhatja, hogyan érheti el Azure Monitor szolgáltatásait a PowerShell-parancsok segítségével.
@@ -145,18 +142,18 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 ## <a name="create-metric-alerts"></a>Metrikákhoz kapcsolódó riasztások létrehozása
 A riasztási szabály létrehozásához, frissítéséhez vagy letiltásához a `Add-AlertRule` parancsmagot használhatja.
 
-Az e-mailek és webhook-tulajdonságok a `New-AzAlertRuleEmail` és a `New-AzAlertRuleWebhook` használatával hozhatók létre. A riasztási szabály parancsmagban ezeket a tulajdonságokat adja hozzá műveletként a riasztási szabály **műveletek** tulajdonságához.
+Az e-mailek és webhook-tulajdonságok a `New-AzAlertRuleEmail` és a `New-AzAlertRuleWebhook`használatával hozhatók létre. A riasztási szabály parancsmagban ezeket a tulajdonságokat adja hozzá műveletként a riasztási szabály **műveletek** tulajdonságához.
 
 A következő táblázat a riasztások metrika használatával történő létrehozásához használt paramétereket és értékeket ismerteti.
 
-| Paraméter | érték |
+| paraméter | érték |
 | --- | --- |
-| Név |simpletestdiskwrite |
+| Name (Név) |simpletestdiskwrite |
 | A riasztási szabály helye |USA keleti régiója |
 | ResourceGroup |legtöbbször |
-| Targetresourceid azonosítója |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| A létrehozott riasztás MetricName |\PhysicalDisk (összesen) \ írás/mp. Tekintse meg a `Get-MetricDefinitions` parancsmagot a pontos metrikák nevének beolvasásáról |
-| üzemeltető |GreaterThan |
+| TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
+| A létrehozott riasztás MetricName |\PhysicalDisk (_Total) \ írás gyakorisága (művelet/s). Tekintse meg a `Get-MetricDefinitions` parancsmagot a pontos metrikák nevének beolvasásáról |
+| operátor |GreaterThan |
 | Küszöbérték (darabszám/mp a metrika esetében) |1 |
 | WindowSize (óó: PP: SS formátum) |00:05:00 |
 | gyűjtő (a metrika statisztikája, amely az átlagot használja, ebben az esetben) |Átlag |
@@ -218,7 +215,7 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 
 ```
 
-A további webhook-tulajdonságok nem kötelezőek. @No__t_0 használatával visszaállíthatja a tevékenység naplójának tartalmát.
+A további webhook-tulajdonságok nem kötelezőek. `Get-AzActivityLogAlert`használatával visszaállíthatja a tevékenység naplójának tartalmát.
 
 ## <a name="create-and-manage-autoscale-settings"></a>Az autoskálázási beállítások létrehozása és kezelése
 Egy erőforrás (webalkalmazás, virtuális gép, felhőalapú szolgáltatás vagy virtuálisgép-méretezési csoport) csak egy, a számára konfigurált méretezési beállítással rendelkezhet.
@@ -309,7 +306,7 @@ Remove-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## <a name="manage-log-profiles-for-activity-log"></a>A műveletnapló profiljainak kezelése
-Létrehozhat egy log- *profilt* , és exportálhatja az adatait a tevékenység naplójából egy Storage-fiókba, és beállíthatja az adatmegőrzést. Igény szerint továbbíthatja az adatait az Event hub-ba is. Ez a szolgáltatás jelenleg előzetes verzióban érhető el, és előfizetéshez csak egy naplózási profilt hozhat létre. A következő parancsmagokat használhatja a jelenlegi előfizetésével a log profilok létrehozásához és kezeléséhez. Kiválaszthat egy adott előfizetést is. Habár a PowerShell alapértelmezés szerint a jelenlegi előfizetést használja, bármikor módosíthatja a `Set-AzContext` használatával. A műveletnapló konfigurálásával az adott előfizetésen belül bármely Storage-fiókra vagy Event hub-ra irányíthatja az adatútvonalat. Az adatfájlok JSON formátumú blob-fájlként íródnak.
+Létrehozhat egy log- *profilt* , és exportálhatja az adatait a tevékenység naplójából egy Storage-fiókba, és beállíthatja az adatmegőrzést. Igény szerint továbbíthatja az adatait az Event hub-ba is. Ez a szolgáltatás jelenleg előzetes verzióban érhető el, és előfizetéshez csak egy naplózási profilt hozhat létre. A következő parancsmagokat használhatja a jelenlegi előfizetésével a log profilok létrehozásához és kezeléséhez. Kiválaszthat egy adott előfizetést is. Habár a PowerShell alapértelmezés szerint a jelenlegi előfizetést használja, bármikor módosíthatja a `Set-AzContext`használatával. A műveletnapló konfigurálásával az adott előfizetésen belül bármely Storage-fiókra vagy Event hub-ra irányíthatja az adatútvonalat. Az adatfájlok JSON formátumú blob-fájlként íródnak.
 
 ### <a name="get-a-log-profile"></a>Log-profil beolvasása
 A meglévő log-profilok beolvasásához használja a `Get-AzLogProfile` parancsmagot.
@@ -388,7 +385,7 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-in
 
 ```
 
-Vegye figyelembe, hogy a munkaterület azonosítója tulajdonság a munkaterület *erőforrás-azonosítóját* veszi át. A Log Analytics munkaterület erőforrás-AZONOSÍTÓját a következő paranccsal szerezheti be:
+Vegye figyelembe, hogy a munkaterület azonosítója tulajdonság a munkaterület *erőforrás-azonosítóját* veszi át. Az erőforrás-Azonosítóját a Log Analytics-munkaterület a következő paranccsal szerezheti be:
 
 ```powershell
 (Get-AzOperationalInsightsWorkspace).ResourceId

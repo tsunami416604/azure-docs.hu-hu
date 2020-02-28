@@ -3,17 +3,16 @@ title: Az Azure platform naplói – áttekintés | Microsoft Docs
 description: A Azure Monitor naplófájljainak áttekintése, amelyek gazdag és gyakori információkat biztosítanak az Azure-erőforrások működéséről.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 5f02368bfb0c084691376300980d4cdee0d9b3be
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 89de6b3737c8a1e91832aba8f749078806b64e90
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530884"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659320"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Az Azure platform naplófájljainak áttekintése
 A platform naplói részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokhoz és az Azure-platformtól függenek. Ezek automatikusan létrejönnek, bár bizonyos platform-naplókat egy vagy több megőrzött célhelyre kell továbbítani. Ez a cikk áttekintést nyújt a platform naplóiról, beleértve az általuk biztosított információkat, valamint azt, hogy hogyan konfigurálhatja őket gyűjteményekhez és elemzésekhez.
@@ -24,7 +23,7 @@ A következő táblázat felsorolja az Azure különböző rétegeiben elérhet�
 | Napló | Réteg | Leírás |
 |:---|:---|:---|
 | Erőforrásnaplók | Azure-erőforrások | Betekintést nyerhet az Azure-erőforrásokon (az *adatsíkon*) végrehajtott műveletekre, például a titkos kulcs beszerzése egy Key Vault vagy egy adatbázisra vonatkozó kérelem elkészítése. Az erőforrás-naplók tartalma az Azure-szolgáltatás és az erőforrás típusa szerint változik.<br><br>*Az erőforrás-naplókat korábban diagnosztikai naplóknak nevezzük.*  |
-| Tevékenységnapló | Azure-előfizetés | Betekintést nyújt a műveletekre az előfizetésben lévő egyes Azure-erőforrásokon kívülről (*a felügyeleti síkon*), valamint a Service Health események frissítései mellett. A tevékenység naplójának használatával meghatározhatja a _mi_, _ki_és _Mikor_ az előfizetésben lévő erőforrásokra vonatkozó írási műveletek (Put, post, DELETE) esetében. Emellett megismerheti a művelet állapotát és az egyéb kapcsolódó tulajdonságokat is.  Minden egyes Azure-előfizetéshez egyetlen tevékenységi napló van. |
+| Tevékenységnapló | Azure-előfizetés | Betekintést nyújt a műveletekre az előfizetésben lévő egyes Azure-erőforrásokon kívülről (*a felügyeleti síkon*), valamint a Service Health események frissítései mellett. A tevékenység naplójának használatával meghatározhatja a _mi_, _ki_és _Mikor_ az előfizetésben lévő erőforrásokra vonatkozó írási műveletek (Put, post, DELETE) esetében. A művelet és az egyéb releváns tulajdonságok állapotát is ismernie is.  Minden egyes Azure-előfizetéshez egyetlen tevékenységi napló van. |
 | Naplók Azure Active Directory | Azure-bérlő |  A bejelentkezési tevékenység előzményeit és a Azure Active Directory egy adott bérlő esetében végrehajtott módosítások naplózási nyomvonalát tartalmazza. Lásd: [Mi a Azure Active Directory-jelentés?](../../active-directory/reports-monitoring/overview-reports.md) a Azure Active Directory naplók teljes leírását.   |
 
 > [!NOTE]
@@ -42,13 +41,13 @@ A különböző Azure platform-naplók megtekintésére és elemzésére külön
 - Azure Active Directory biztonsági és tevékenységi jelentések megtekintése a Azure Portalban. Lásd: [Mik azok a Azure Active Directory-jelentések?](../../active-directory/reports-monitoring/overview-reports.md)  a részletekért.
 - Az erőforrás-naplókat a támogatott Azure-erőforrások automatikusan létrehozzák, de csak akkor érhetők el, ha nem küldi őket a [célhelyre](#destinations). 
 
-## <a name="destinations"></a>Célhelyek
+## <a name="destinations"></a>Destinations
 A figyelési követelményektől függően a következő táblázatban szereplő célok közül egy vagy több célhelyre is küldhet platform-naplókat. [Diagnosztikai beállítások létrehozásával](diagnostic-settings.md)konfigurálja a platform-naplók célhelyeit.
 
-| Cél | Alkalmazási helyzet | Tudástár |
+| Cél | Forgatókönyv | Referencia |
 |:---|:---|:---|:---|
 | Log Analytics-munkaterület | Elemezze a naplókat más figyelési adattal, és használja ki Azure Monitor funkciókat, például a naplózási lekérdezéseket és a riasztásokat. | [Műveletnapló és erőforrás-naplók](resource-logs-collect-workspace.md)<br>[Azure-tevékenység könyvtárának naplói](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
-| Azure Storage | Archiválja a naplókat a naplózáshoz, a statikus elemzéshez vagy a biztonsági mentéshez. |[Műveletnapló és erőforrás-naplók](archive-diagnostic-logs.md)<br>[Azure-tevékenység könyvtárának naplói](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
+| Azure Storage tárterület | Archiválja a naplókat a naplózáshoz, a statikus elemzéshez vagy a biztonsági mentéshez. |[Műveletnapló és erőforrás-naplók](archive-diagnostic-logs.md)<br>[Azure-tevékenység könyvtárának naplói](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
 | Eseményközpont | A naplók továbbítása harmadik féltől származó naplózási és telemetria rendszerekre.  |[Műveletnapló és erőforrás-naplók](resource-logs-stream-event-hubs.md)<br>[Azure-tevékenység könyvtárának naplói](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) |
 
 

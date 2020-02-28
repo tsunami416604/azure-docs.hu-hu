@@ -7,19 +7,18 @@ author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
-ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 11c51ab702399c73dc93f850d4abde49b45b3775
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 11b61612a261b32e2d15b5dc70005b18aa112ed4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398940"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659849"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Adatok gyűjtése egy Windows rendszerű számítógépről hibrid környezetben Azure Monitor
 
@@ -29,15 +28,15 @@ A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Window
  
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
 
-## <a name="create-a-workspace"></a>Munkaterületek létrehozása
+## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
 1. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek**lehetőséget.
 
-    ![Azure portál](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
+    ![Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Válassza a **Létrehozás**lehetőséget, majd válassza ki a kívánt beállításokat a következő elemekhez:
 

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 372850975873c9a6af02846612445edc2899c308
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: a3a1696d3a7f9956636d815b527fa4a774b3ad9b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494999"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780701"
 ---
 |Name (Név) |Leírás |Hatás (ok) |Verzió |Forrás |
-|---|---|---|---|
+|---|---|---|---|---|
 |[Engedélyezett virtuális gépek SKU-i](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcccc23c7-8427-4f53-ad12-b6a63eb452b3) |Ezzel a szabályzattal megadhatók a virtuális gépek azon termékváltozatai, amelyeket a szervezet üzembe helyezhet. |Megtagadás |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSkusAllowed_Deny.json)
 |[Virtuális gépek naplózása vész-helyreállítás nélkül konfigurálva](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |Olyan virtuális gépek naplózása, amelyek nem rendelkeznek a vész-helyreállítási beállításokkal. Ha többet szeretne megtudni a vész-helyreállításról, látogasson el https://aka.ms/asr-docra. |auditIfNotExists |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json)
 |[Felügyelt lemezeket nem használó virtuális gépek naplózása](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F06a78e20-9358-41c9-923c-fb736d382a4d) |Ez a házirend a felügyelt lemezeket nem használó virtuális gépeket naplózza |ellenőrzési |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMRequireManagedDisk_Audit.json)
@@ -23,4 +23,4 @@ ms.locfileid: "77494999"
 |[Csak a jóváhagyott virtuálisgép-bővítményeket kell telepíteni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc0e996f8-39cf-4af9-9f45-83fbde810432) |Ez a házirend a nem jóváhagyott virtuálisgép-bővítményeket szabályozza. |Naplózás, megtagadás, letiltva |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VirtualMachines_ApprovedExtensions_Audit.json)
 |[Az operációsrendszer-rendszerkép automatikus javításának megkövetelése Virtual Machine Scale Sets](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F465f0161-0087-490a-9ad9-ad6217f4f43a) |Ez a szabályzat kényszeríti a Virtual Machine Scale Sets automatikus operációsrendszer-lemezképek javításának engedélyezését, hogy minden hónapban biztonságosan alkalmazza a Virtual Machines biztonságát a legújabb biztonsági javítások biztonságos alkalmazásával. |tagadja |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSSOSUpgradeHealthCheck_Deny.json)
 |[A nem csatolt lemezeket titkosítani kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fb2) |Ez a házirend minden nem csatlakoztatott lemezt naplóz a titkosítás engedélyezése nélkül. |Naplózás, letiltva |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/UnattachedDisk_Encryption_Audit.json)
-|[A virtuális gépeket át kell telepíteni az új Azure Resource Manager erőforrásokra](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |A virtuális gépek új Azure Resource Manager használatával olyan biztonsági fejlesztéseket biztosíthat, mint például a következők: erősebb hozzáférés-vezérlés (RBAC), jobb auditálás, ARM-alapú üzembe helyezés és irányítás, felügyelt identitásokhoz való hozzáférés, a Key Vault for Secrets, Azure Az AD-alapú hitelesítés és a címkék és erőforráscsoportok támogatása a könnyebb biztonság kezeléséhez |Naplózás, megtagadás, letiltva |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)
+|[A virtuális gépeket át kell telepíteni az új Azure Resource Manager erőforrásokra](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |A virtuális gépek új Azure Resource Manager használatával olyan biztonsági fejlesztéseket biztosíthat, mint például a következők: erősebb hozzáférés-vezérlés (RBAC), jobb auditálás, Azure Resource Manager alapú üzembe helyezés és irányítás, felügyelt identitásokhoz való hozzáférés, hozzáférés a Key vaulthoz Secrets, Azure AD-alapú hitelesítés és a címkék és erőforráscsoportok támogatása a könnyebb biztonság kezeléséhez |Naplózás, megtagadás, letiltva |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)

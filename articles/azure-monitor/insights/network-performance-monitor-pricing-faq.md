@@ -1,18 +1,17 @@
 ---
 title: Az Azure Network Performance Monitor díjszabása – GYIK | Microsoft Docs
 description: Gyakori kérdések – Azure Network Performance Monitor
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: 3d69637c2851764363209ed8dfbe8c24c636ffba
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898790"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654392"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Az Azure Network Performance Monitor díjszabásának változásai
 
@@ -110,7 +109,7 @@ A kapcsolat egy végpont (URL-cím vagy hálózati szolgáltatás) egyetlen ügy
 
 A végpontok teljes hónapra történő figyelésének költségeit a [Kapcsolódás figyelése](https://azure.microsoft.com/pricing/details/network-watcher/) című szakaszban találja. Az adatfeltöltés az adatfeldolgozási szakaszban Log Analytics [díjszabási oldalán](https://azure.microsoft.com/pricing/details/log-analytics/) érhető el.
 
-## <a name="references"></a>Tudástár
+## <a name="references"></a>Referencia
 
 [Log Analytics díjszabás – gyakori](https://azure.microsoft.com/pricing/details/log-analytics/)kérdések: a GYIK szakasz az ingyenes csomaggal, a csomópontok díjszabásával és egyéb díjszabással kapcsolatos információkat tartalmaz.
 

@@ -1,19 +1,15 @@
 ---
 title: Azure-Application Insights a konzol alkalmazásaihoz | Microsoft Docs
 description: Webes alkalmazások figyelése a rendelkezésre állás, a teljesítmény és a használat érdekében.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/02/2019
 ms.reviewer: lmolkova
-ms.openlocfilehash: c8c71fa3798b7c56550b742a8b19c83336bb6ddf
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: baaea0f8055eeff0314fcf5fde00729ea8091d12
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889141"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655429"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights a .NET-konzol alkalmazásaihoz
 
@@ -26,7 +22,7 @@ ms.locfileid: "74889141"
 
 ## <a name="getting-started"></a>Bevezetés
 
-* [Hozzon létre egy Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md) az [Azure Portalon](https://portal.azure.com). Az alkalmazás típusa mezőben válassza az **általános**lehetőséget.
+* [Hozzon létre egy Application Insights-erőforrást](https://portal.azure.com) az [Azure Portalon](../../azure-monitor/app/create-new-resource.md). Az alkalmazás típusa mezőben válassza az **általános**lehetőséget.
 * Végezze el a kialakítási kulcs másolását. Keresse meg a kulcsot a létrehozott új erőforrás **Essentials** legördülő menüjében.
 * Telepítse a legújabb [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) csomagot.
 * Adja meg a kialakítási kulcsot a kódban a telemetria követése előtt (vagy állítsa be APPINSIGHTS_INSTRUMENTATIONKEY környezeti változót). Ezután manuálisan nyomon követheti a telemetria, és megtekintheti a Azure Portal

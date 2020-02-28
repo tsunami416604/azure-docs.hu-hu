@@ -1,18 +1,17 @@
 ---
 title: Network Performance Monitor megoldás az Azure Log Analyticsban | Microsoft Docs
 description: A Network Performance Monitor ExpressRoute-figyelő funkciójának használatával figyelheti a végpontok közötti kapcsolatot és a teljesítményt a fiókirodák és az Azure között az Azure ExpressRoute-en keresztül.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 5383402816eddba4c631c240585723b7c7119cef
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898883"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660750"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 
@@ -28,7 +27,7 @@ A [Network Performance monitor](network-performance-monitor.md) Azure ExpressRou
 A Network Performance Monitor konfigurációjának megnyitásához nyissa meg a [Network Performance monitor megoldást](network-performance-monitor.md) , és válassza a **Konfigurálás**lehetőséget.
 
 ### <a name="configure-network-security-group-rules"></a>A hálózati biztonsági csoport szabályainak konfigurálása 
-Az Azure-ban a Network Performance Monitor-on keresztül történő figyelésre használt kiszolgálók esetében konfigurálja a hálózati biztonsági csoport (NSG) szabályait úgy, hogy engedélyezzék a TCP-forgalmat a Network Performance Monitor által a szintetikus tranzakciók esetében használt porton. Az alapértelmezett port a 8084. Ez a konfiguráció lehetővé teszi, hogy az Azure-beli virtuális gépeken telepített Log Analytics-ügynök kommunikáljon egy helyszíni figyelő ügynökkel. 
+Az Azure-ban a Network Performance Monitor-on keresztül történő figyelésre használt kiszolgálók esetében konfigurálja a hálózati biztonsági csoport (NSG) szabályait úgy, hogy engedélyezzék a TCP-forgalmat a Network Performance Monitor által a szintetikus tranzakciók esetében használt porton. Az alapértelmezett port: 8084. Ez a konfiguráció lehetővé teszi, hogy az Azure-beli virtuális gépeken telepített Log Analytics-ügynök kommunikáljon egy helyszíni figyelő ügynökkel. 
 
 További információ a NSG: [hálózati biztonsági csoportok](../../virtual-network/manage-network-security-group.md). 
 
@@ -76,7 +75,7 @@ Az Network Performance Monitor irányítópult áttekintést nyújt a ExpressRou
 
 ### <a name="circuits-list"></a>Áramkörök listája 
 
-Az összes figyelt ExpressRoute-áramkör listájának megtekintéséhez válassza a ExpressRoute-áramkörök csempét. Kiválaszthat egy áramkört, megtekintheti az állapotot, a csomagok elvesztésével, a sávszélesség kihasználtságával és a késéssel kapcsolatos trend-diagramokat. A diagramok interaktívak. Kiválaszthat egy egyéni időablakot a diagramok ábrázolásához. Húzza az egeret a diagram egyik területére a nagyításhoz, és tekintse meg a részletes adatpontokat. 
+Az összes figyelt ExpressRoute-áramkör listájának megtekintéséhez válassza a ExpressRoute-áramkörök csempét. Válassza ki egy kapcsolatcsoportot, és megtekintheti annak állapotát, trenddiagramok csomagvesztés, a sávszélesség kihasználtságát és a késés. A diagramok használata interaktív. Kiválaszthat egy küldik az ábrázolást a diagramok egyéni időtartományából. Húzza az egeret a diagram egyik területére a nagyításhoz, és tekintse meg a részletes adatpontokat. 
 
 ![ExpressRoute-áramkörök listája](media/network-performance-monitor-expressroute/expressroute-circuits.png) 
 
@@ -88,7 +87,7 @@ A sávszélesség kihasználtsága, a késés és a veszteségek diagramjai inte
 
 ### <a name="peerings-list"></a>Társítások listája 
 
-Ha szeretné, hogy a virtuális hálózatok közötti összes kapcsolat összekapcsolva legyen, válassza ki a **privát társak** csempét az irányítópulton. Itt választhatja ki a virtuális hálózati kapcsolatokat, és megtekintheti az állapotát, a csomagok elvesztésének, a sávszélesség kihasználtságának és a késésnek a trend-diagramokat. 
+Ha szeretné, hogy a virtuális hálózatok közötti összes kapcsolat összekapcsolva legyen, válassza ki a **privát társak** csempét az irányítópulton. Itt kiválaszthatja a virtuális hálózati kapcsolat, és megtekintheti annak állapotát, trenddiagramok csomagvesztés, a sávszélesség kihasználtságát és a késés. 
 
 ![ExpressRoute-társítások](media/network-performance-monitor-expressroute/expressroute-peerings.png) 
 

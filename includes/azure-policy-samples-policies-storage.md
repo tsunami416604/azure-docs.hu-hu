@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: f51946ea2461cd8a72cfadc8848e250e9a053758
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 22dd1fa33e6ecec29d1a79be483afbe5a16d2050
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495017"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780539"
 ---
 |Name (Név) |Leírás |Hatás (ok) |Verzió |Forrás |
-|---|---|---|---|
+|---|---|---|---|---|
 |[Engedélyezett tárfiók-termékváltozatok](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7433c107-6db4-4ad1-b57a-a76dce0154a1) |Ez a szabályzat lehetővé teszi, hogy megadhatja a szervezet által üzembe helyezhető Storage Account SKU-készletet. |Megtagadás |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/AllowedStorageSkus_Deny.json)
 |[Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |Naplózza a nem korlátozott hálózati hozzáférést a Storage-fiók tűzfala beállításaiban. Ehelyett konfigurálja úgy a hálózati szabályokat, hogy csak az engedélyezett hálózatokból származó alkalmazások férhessenek hozzá a Storage-fiókhoz. Az adott internetről vagy helyi ügyfelekről érkező kapcsolatok engedélyezéséhez hozzáférés adható a megadott Azure-beli virtuális hálózatoktól vagy a nyilvános internetes IP-címtartományok felé irányuló forgalom számára. |Naplózás, letiltva |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json)
 |[Komplex veszélyforrások elleni védelem üzembe helyezése a Storage-fiókokon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F361c2074-3595-4e5d-8cab-4f21dffc835c) |Ez a szabályzat lehetővé teszi a komplex veszélyforrások elleni védelmet a Storage-fiókokban. |DeployIfNotExists, letiltva |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAdvancedThreatProtection_Deploy.json)

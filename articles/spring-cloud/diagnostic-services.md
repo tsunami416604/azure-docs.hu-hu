@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: fc1f81c616dc6ee664bb5be924f2a1586646d16d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 90ff59bb76bceaacc7b0528ed0461b76832dc7fd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279163"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662127"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Naplók és mérőszámok elemzése diagnosztikai beállításokkal
 
@@ -30,7 +30,7 @@ Válassza ki a figyelni kívánt naplózási kategóriát és metrikai kategóri
 | **ApplicationConsole** | Az összes felhasználói alkalmazás konzoljának naplója. | 
 | **SystemLogs** | Jelenleg csak a [Spring Cloud config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) naplózza ezt a kategóriát. |
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 
 A metrikák teljes listájáért lásd: [Spring Cloud mérőszámok](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
 
@@ -114,7 +114,7 @@ Ha többet szeretne megtudni a Log Analytics használt lekérdezési nyelvről, 
 1. Az alkalmazás naplófájljainak áttekintéséhez keressen rá az elemzések **-naplók-applicationconsole**nevű tárolóra.
 1. Az alkalmazás metrikáinak áttekintéséhez keressen rá a következő nevű tárolóra: **pt1m**.
 
-A diagnosztikai adatok Storage-fiókba való küldésével kapcsolatos további tudnivalókért lásd: [diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-to-storage).
+A diagnosztikai adatok Storage-fiókba való küldésével kapcsolatos további tudnivalókért lásd: [diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](../storage/common/storage-introduction.md).
 
 ### <a name="use-your-event-hub"></a>Az Event hub használata
 

@@ -1,18 +1,14 @@
 ---
 title: Az Azure app Services teljesítményének figyelése | Microsoft Docs
 description: Az alkalmazások teljesítményének figyelése az Azure app Servicesben. A diagram betöltésének és a válaszidő, a függőségi adatok és a riasztások beállítása a teljesítményre.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/11/2019
-ms.openlocfilehash: 3ca9cbf2e282e3f67af3c5da470a3d81e6055f98
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 03d332af182f8f40ede634fbd563f7b064751f32
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189589"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655798"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service teljesítményének figyelése
 
@@ -39,7 +35,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
 
 ## <a name="enable-agent-based-monitoring"></a>Ügynök alapú figyelés engedélyezése
 
-# <a name="nettabnet"></a>[.NET](#tab/net)
+# <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > A APPINSIGHTS_JAVASCRIPT_ENABLED és a urlCompression kombinációja nem támogatott. További információ: a [Hibaelhárítás szakasz](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)magyarázata.
@@ -75,7 +71,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
 
     * A támogatott adaptív mintavételi telemetria processzor-beállításainak listájáért tekintse meg a [kódot](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) és a [kapcsolódó dokumentációt](https://docs.microsoft.com/azure/azure-monitor/app/sampling).
 
-# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 A .NET Core következő verziói támogatottak: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0
 
@@ -96,15 +92,15 @@ A .NET Core, az önálló üzemelő példányok és a Linux-alapú alkalmazások
 
     ![Beállítások kiválasztása platformon](./media/azure-web-apps/choose-options-new-net-core.png)
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 A App Service webalkalmazás **Beállítások** területén > válassza a **Application Insights** > **Engedélyezés**lehetőséget. A Node. js-ügynök alapú figyelés jelenleg előzetes verzióban érhető el.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 A Java App Service-alapú webalkalmazások jelenleg nem támogatják az automatikus ügynök/bővítmény alapú figyelést. A Java-alkalmazás figyelésének engedélyezéséhez manuálisan kell megadnia [az alkalmazást](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started).
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 A Python App Service-alapú webalkalmazások jelenleg nem támogatják az automatikus ügynök/bővítmény alapú figyelést. A Python-alkalmazás figyelésének engedélyezéséhez manuálisan kell megadnia [az alkalmazást](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
 
@@ -112,7 +108,7 @@ A Python App Service-alapú webalkalmazások jelenleg nem támogatják az automa
 
 ## <a name="enable-client-side-monitoring"></a>Ügyféloldali figyelés engedélyezése
 
-# <a name="nettabnet"></a>[.NET](#tab/net)
+# <a name="net"></a>[.NET](#tab/net)
 
 Az ügyféloldali figyelés ASP.NET. Az ügyféloldali figyelés engedélyezése:
 
@@ -129,7 +125,7 @@ Az ügyféloldali figyelés ASP.NET. Az ügyféloldali figyelés engedélyezése
 
 Az ügyféloldali figyelés letiltásához távolítsa el a társított kulcs értéke párt az Alkalmazásbeállítások közül, vagy állítsa hamis értékre.
 
-# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 Az ügyféloldali figyelés **alapértelmezés szerint engedélyezve** van a .net Core-alkalmazások számára az **ajánlott gyűjteménysel**, függetlenül attól, hogy szerepel-e az alkalmazás "APPINSIGHTS_JAVASCRIPT_ENABLED" beállítása.
 
@@ -146,15 +142,15 @@ Ha valamilyen oknál fogva le szeretné tiltani az ügyféloldali figyelést:
 
 ![Az Alkalmazásbeállítások felhasználói felületének képernyőképe](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 Ha engedélyezni szeretné az ügyféloldali figyelést a Node. js-alkalmazáshoz, [manuálisan kell hozzáadnia az ügyféloldali JavaScript SDK-t az alkalmazáshoz](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 A Java-alkalmazás ügyféloldali figyelésének engedélyezéséhez [manuálisan kell hozzáadnia az ügyféloldali JavaScript SDK-t az alkalmazáshoz](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 A Python-alkalmazás ügyféloldali figyelésének engedélyezéséhez [manuálisan kell hozzáadnia az ügyféloldali JavaScript SDK-t az alkalmazáshoz](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 
@@ -379,7 +375,7 @@ Az alábbiakban részletes hibaelhárítási útmutatót talál az Azure App Ser
 
 Az alábbi táblázat részletesen ismerteti, hogy mit jelentenek ezek az értékek, a kiváltó okok és az ajánlott javítások:
 
-|Probléma értéke|Magyarázat|Javítás
+|Probléma értéke|Magyarázat|Hibajavítás
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Ez az érték azt jelzi, hogy a bővítmény azt észlelte, hogy az SDK bizonyos aspektusai már szerepelnek az alkalmazásban, és a szolgáltatás vissza fog térni. Ennek oka lehet `System.Diagnostics.DiagnosticSource`, `Microsoft.AspNet.TelemetryCorrelation`vagy `Microsoft.ApplicationInsights`re mutató hivatkozás  | Távolítsa el a hivatkozásokat. A hivatkozások némelyike alapértelmezés szerint a Visual Studio-sablonokból adódik hozzá, a Visual Studio régebbi verziói pedig a `Microsoft.ApplicationInsights`ra mutató hivatkozásokat is hozzáadhatnak.
 |`AppAlreadyInstrumented:true` | Ha az alkalmazás a .NET Core 2,1-es vagy a 2,2-es verzióra vonatkozik, és a [Microsoft. AspNetCore. All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) meta-csomagra hivatkozik, akkor Application Insights, és a bővítmény vissza fog térni. | A .NET Core 2.1-es és 2.2-es ügyfeleinek [ajánlott](https://github.com/aspnet/Announcements/issues/287) a Microsoft. AspNetCore. app meta-Package használata.|

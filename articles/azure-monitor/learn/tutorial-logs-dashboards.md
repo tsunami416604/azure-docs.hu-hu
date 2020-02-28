@@ -1,19 +1,18 @@
 ---
 title: Irányítópultok létrehozása és megosztása Azure Log Analytics-adatokból | Microsoft Docs
 description: Ez az oktatóanyag segít megérteni, hogy Log Analytics irányítópultok hogyan láthatják el az összes mentett napló lekérdezését, így egyetlen lencsével megtekintheti a környezetét.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
 ms.custom: mvc
-ms.openlocfilehash: d06ead285321b780490c816dc3d902dac1b6916f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 76ba79561df4a75004369d24c4c6af82de9b1cfc
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365564"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661532"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Irányítópultok létrehozása és megosztása Log Analytics-adatokból
 
@@ -27,13 +26,13 @@ Log Analytics irányítópultok képesek megjeleníteni az összes mentett napl�
 
 Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre, amely [a Log Analytics-munkaterülethez csatlakozik](quick-collect-azurevm.md).  
  
-## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
 
 ## <a name="create-a-shared-dashboard"></a>Megosztott irányítópult létrehozása
 Válassza az **irányítópult** lehetőséget az alapértelmezett [irányítópult](../../azure-portal/azure-portal-dashboards.md)megnyitásához. Az irányítópult az alábbi példától eltérően fog megjelenni.
 
-![Azure Portal irányítópultja](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
+![Az Azure portal irányítópultján](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
 
 Itt összeállíthatók az informatikai szempontból legfontosabb működési adatok az összes Azure-erőforrásra vonatkozóan, beleértve az Azure Log Analyticsből származó telemetriákat.  Mielőtt megkezdené a naplózási lekérdezés megjelenítését, először hozzon létre egy irányítópultot, és ossza meg azt.  Ezután a példában szereplő Teljesítménynapló-lekérdezésre koncentrálunk, amely diagramként fog megjelenni, és hozzáadja az irányítópulthoz.  
 

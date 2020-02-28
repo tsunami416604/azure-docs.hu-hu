@@ -1,18 +1,17 @@
 ---
 title: Felkészülés Azure Monitor klasszikus riasztások áttelepítésére a Logic apps és a runbookok frissítésével
-author: yanivlavi
 description: Ismerje meg, hogyan módosítható a webhookok, a Logic apps és a runbookok az önkéntes áttelepítés előkészítéséhez.
-ms.service: azure-monitor
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 58ba95ff60ddccf909578a673110c870caf57376
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9219e105acb98424939030af76b526d475585619
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705564"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665592"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>A logikai alkalmazások és runbookok előkészítése a klasszikus riasztási szabályok áttelepítéséhez
 
@@ -32,7 +31,7 @@ A következő táblázat a klasszikus és az új riasztások programozott interf
 |         |Klasszikus riasztások  |Új metrikai riasztások |
 |---------|---------|---------|
 |REST API     | [Microsoft. bepillantások/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [Microsoft. bepillantások/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
-|Azure parancssori felület (CLI)     | [az monitor Alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor Metrics Alert](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|Azure CLI     | [az monitor Alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor Metrics Alert](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
 |PowerShell      | [Referencia](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Referencia](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager-sablon | [Klasszikus riasztások esetén](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Új metrikai riasztások esetén](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
 
@@ -44,7 +43,7 @@ A következő táblázat segítségével leképezheti a webhook hasznos adatait 
 
 |  |Klasszikus riasztások  |Új metrikai riasztások |
 |---------|---------|---------|
-|Aktiválták vagy megoldották a riasztást?    | **állapot**       | **az adat. status** |
+|Aktiválták vagy megoldották a riasztást?    | **állapota**       | **az adat. status** |
 |A riasztás kontextusával kapcsolatos információk     | **összefüggésben**        | **az adat. Context**        |
 |A riasztás aktiválásának vagy feloldásának időbélyegzője     | **Context. timestamp**       | **az adat. Context. timestamp**        |
 | Riasztási szabály azonosítója | **context.id** | **data.context.id** |
@@ -53,11 +52,11 @@ A következő táblázat segítségével leképezheti a webhook hasznos adatait 
 | Riasztási szabály feltétele | **Context. Condition** | **az adat. Context. Condition** |
 | Metrika neve | **Context. Condition. metricName** | **az. Context. Condition. allOf [0]. metricName** |
 | Idő összesítése (a mérőszám összesítésének módja a próbaverziós ablakban)| **Context. Condition. timeAggregation** | **Context. Condition. timeAggregation** |
-| Kiértékelési időszak | **Context. Condition. windowSize** | **az adat. Context. Condition. windowSize** |
+| Próbaidőszak | **Context. Condition. windowSize** | **az adat. Context. Condition. windowSize** |
 | Operátor (az összesített metrikai érték összehasonlítása a küszöbértékkel) | **Context. Condition. operátor** | **az adat. Context. Condition. operátor** |
 | Küszöbérték | **Context. Condition. küszöbérték** | **az. Context. Condition. allOf [0]. küszöbérték** |
 | Metrika értéke | **Context. Condition. metricValue** | **az. Context. Condition. allOf [0]. metricValue** |
-| Subscription ID (Előfizetés azonosítója) | **Context. subscriptionId** | **az adat. Context. subscriptionId** |
+| Előfizetés azonosítója | **Context. subscriptionId** | **az adat. Context. subscriptionId** |
 | Az érintett erőforrás erőforráscsoport | **Context. resourceGroup** | **az adat. Context. resourceGroup** |
 | Az érintett erőforrás neve | **Context. resourceName** | **az adat. Context. resourceName** |
 | Az érintett erőforrás típusa | **Context. resourceType** | **az adat. Context. resourceType** |

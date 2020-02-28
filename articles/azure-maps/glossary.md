@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: a6c1e14e332f6081111d2a58a30702093b99a876
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c9d5c2efc14dec5beee0eaf81a4f628421ef3d49
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198241"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657044"
 ---
 # <a name="glossary"></a>Szószedet
 
@@ -47,9 +47,9 @@ Az alábbi lista a Azure Maps-szolgáltatásokhoz használt általános szavakat
 
 <a name="asynchronous-request"></a>**Aszinkron kérelem**: egy olyan HTTP-kérelem, amely megnyit egy kapcsolódást, és kérést küld a kiszolgálónak, amely visszaadja az aszinkron kérelem azonosítóját, majd bezárja a kapcsolódást. A kiszolgáló továbbra is feldolgozza a kérést, és a felhasználó az azonosítót használva megtekintheti az állapotot. A kérelem feldolgozása után a felhasználó letöltheti a választ. Ez a típusú kérelem hosszú ideig futó folyamatokhoz használható.
 
-<a name="autocomplete"></a>**Automatikus kiegészítés**: az alkalmazás egyik funkciója előre jelzi, hogy egy felhasználó begépeli a többi szót. 
+<a name="autocomplete"></a>**Automatikus kiegészítés**: az alkalmazás egy funkciója, amely egy felhasználó begépelését jelzi. 
 
-<a name="autosuggest"></a>Automatikus **kiegészítés: az**alkalmazás egyik funkciója, amely a felhasználó által begépelt logikai lehetőségeket jelzi.
+<a name="autosuggest"></a>Automatikus **kiegészítés: az**alkalmazás egyik funkciója, amely a felhasználó begépelésének logikai lehetőségeit Jósolja meg.
 
 <a name="azure-location-based-services-lbs"></a>**Azure Location based Services (LBS)** : a Azure Maps korábbi neve, amikor az előzetes verzióban volt.
 

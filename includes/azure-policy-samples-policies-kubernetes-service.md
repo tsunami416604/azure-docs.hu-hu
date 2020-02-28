@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 8aff431b5160548599055c56d1317065236e7a68
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 93963005ece192d9fe8a477473800e43c0b53552
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495261"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780246"
 ---
 |Name (Név) |Leírás |Hatás (ok) |Verzió |Forrás |
-|---|---|---|---|
+|---|---|---|---|---|
 |[\[korlátozott előzetes verzió\]: \[AK\] nem engedélyezi a privilegizált tárolókat az AK-ban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7ce7ac02-a5c6-45d6-8d1b-844feb1c1531) |Ez a szabályzat nem engedélyezi a privilegizált tárolók létrehozását az Azure Kubernetes Service-fürtben. A korlátozott előzetes verziójú szabályzatok csak regisztrált előfizetések esetén működnek. A regisztráláshoz lépjen a https://aka.ms/akspolicyonboarding. A szabályzat használatával kapcsolatos útmutatásért lépjen https://aka.ms/akspolicydoc. |EnforceRegoPolicy, letiltva |1.0.0 – előzetes verzió |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/ContainerNoPrivilege_EnforceRegoPolicy.json)
 |[\[korlátozott előzetes verzió\]: \[AK\] a HTTPS bejövő forgalmat kényszeríti az AK-ban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2fbff515-eecc-4b7e-9b63-fcc7138b7dc3) |Ez a szabályzat az Azure Kubernetes Service-fürtben lévő HTTPS bejövő forgalmat kényszeríti ki. A korlátozott előzetes verziójú szabályzatok csak regisztrált előfizetések esetén működnek. A regisztráláshoz lépjen a https://aka.ms/akspolicyonboarding. A szabályzat használatával kapcsolatos útmutatásért lépjen https://aka.ms/akspolicydoc. |EnforceRegoPolicy, letiltva |1.0.0 – előzetes verzió |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/IngressHttpsOnly_EnforceRegoPolicy.json)
 |[\[korlátozott előzetes verzió\]: \[AK\] belső terheléselosztó kikényszerítve az AK-ban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa74d8f00-2fd9-4ce4-968e-0ee1eb821698) |Ez a szabályzat azt kényszeríti, hogy a terheléselosztó nem rendelkezik nyilvános IP-címmel az Azure Kubernetes Service-fürtben. A korlátozott előzetes verziójú szabályzatok csak regisztrált előfizetések esetén működnek. A regisztráláshoz lépjen a https://aka.ms/akspolicyonboarding. A szabályzat használatával kapcsolatos útmutatásért lépjen https://aka.ms/akspolicydoc. |EnforceRegoPolicy, letiltva |1.0.0 – előzetes verzió |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/LoadbalancerNoPublicIPs_EnforceRegoPolicy.json)

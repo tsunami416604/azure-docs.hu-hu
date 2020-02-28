@@ -1,18 +1,14 @@
 ---
 title: Ismerkedés a Java-nyomkövetési naplókkal az Azure Application Insights
 description: Log4J-vagy Logback-nyomkövetés keresése a Application Insightsban
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: f552ccdbc67df93913c698e5d763dbb62b48a4ad
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927247"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657214"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Ismerkedjen meg a Java-nyomkövetési naplók Application Insights
 Ha a nyomkövetéshez Logback vagy Log4J (v 1.2 vagy v 2.0) használ, a nyomkövetési naplókat automatikusan elküldheti Application Insights ahol megtekintheti és megkeresheti őket.
@@ -130,11 +126,11 @@ Ezután frissítse a projekt függőségeit a letöltött bináris fájlok letö
 #### <a name="otherwise-"></a>Egyéb esetben...
 Kövesse az irányelveket a Application Insights Java SDK manuális telepítéséhez, töltse le a jar-t (a Maven Central oldalának megérkezése után kattintson a "jar" hivatkozásra a letöltési szakaszban) a megfelelő hozzáfűzéshez, és adja hozzá a letöltött append jar-t a projekthez.
 
-| Tuskózó | Letöltés | Részletes ismertetés |
+| Tuskózó | Letöltés | Kódtár |
 | --- | --- | --- |
-| Logback |[Logback-hozzáfűző jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights – naplózás – logback |
-| Log4J 2.0-s verzió |[Log4J v2 hozzáfűzése jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights – naplózás – log4j2 |
-| Log4j 2.0-s verzió |[Log4J v 1.2 hozzáfűzése jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights – naplózás – log4j1_2 |
+| Logback |[Logback-hozzáfűző jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
+| Log4J v2.0 |[Log4J v2 hozzáfűzése jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
+| Log4j 2.0-s verzió |[Log4J v 1.2 hozzáfűzése jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
 ### <a name="add-the-appender-to-your-logging-framework"></a>A hozzáfűzése hozzáadása a naplózási keretrendszerhez

@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/03/2019
-ms.openlocfilehash: 5cc54c95759ba1490f498305f05cc49a4411686d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 02/26/2020
+ms.openlocfilehash: aa71f7d2f3b277ca34e1e5fea76ada6adf93e573
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930318"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655063"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory leképezési adatfolyam keresési transzformációja
 
@@ -36,9 +36,19 @@ A keresési transzformáció használata után hozzáadhat egy feltételes felos
 
 ## <a name="first-or-last-value"></a>Első vagy utolsó érték
 
-Ha a Keresés több egyezést is tartalmaz, érdemes lehet csökkenteni a több egyező sort az első vagy az utolsó egyezés kiválasztásával. Ezt a keresés után egy összesített átalakítással végezheti el.
+A keresési transzformáció a bal oldali külső illesztésként van megvalósítva. Ha a Keresés több egyezést is tartalmaz, érdemes lehet csökkenteni a több egyező sort úgy, hogy kiveszi az első egyező sort, az utolsó egyezést vagy bármely véletlenszerű sort.
 
-Ebben az esetben egy ```PickFirst``` nevű összesített átalakítás használatos a keresési egyezések első értékének kiválasztásához.
+### <a name="option-1"></a>1\. lehetőség
+
+![Egysoros keresés](media/data-flow/singlerowlookup.png "Egysoros keresés")
+
+* Több sor egyeztetése: hagyja üresen, hogy egy sor egyezését adja vissza
+* Egyezés: válassza az első, az utolsó vagy a bármely egyezés lehetőséget
+* Rendezési feltételek: Ha az első vagy az utolsó lehetőséget választja, az ADF-nek meg kell rendelnie az adatait, hogy az első és az utolsó mögöttes logika legyen.
+
+### <a name="option-2"></a>2\. lehetőség
+
+Ezt a keresés után is elvégezheti egy összesített transzformáció használatával. Ebben az esetben egy ```PickFirst``` nevű összesített átalakítás használatos a keresési egyezések első értékének kiválasztásához.
 
 ![Keresési összesítés](media/data-flow/lookup333.png "Keresési összesítés")
 
@@ -48,7 +58,7 @@ Ebben az esetben egy ```PickFirst``` nevű összesített átalakítás használa
 
 Data Factory az adatfolyamatok kibővített Spark-környezetekben futnak. Ha az adatkészlet elfér a munkavégző csomópont memóriájában, optimalizálhatja a keresési teljesítményt.
 
-![Szórásos csatlakozás](media/data-flow/broadcast.png "Szórt csatlakozás")
+![Szórásos csatlakozás](media/data-flow/broadcast.png "Szórásos csatlakozás")
 
 ### <a name="broadcast-join"></a>Szórásos csatlakozás
 

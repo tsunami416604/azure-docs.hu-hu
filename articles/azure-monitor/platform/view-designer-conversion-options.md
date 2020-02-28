@@ -3,16 +3,15 @@ title: Azure Monitor a Designer és a munkafüzetek közötti átalakítási be�
 description: ''
 author: austonli
 ms.author: aul
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: f04ebc1a4a53825709479ca3f1dc7ce1245fc67f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 7bfa831332451718c0c9c05023b90104d2b8b02b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171552"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658710"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-conversion-options"></a>Azure Monitor a Designer és a munkafüzetek közötti átalakítási beállítások megjelenítése
 A [tervező](view-designer.md) a Azure monitor egyik funkciója, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti a log Analytics-munkaterületen lévő, diagramokkal, listákkal és időpontokkal kapcsolatos adatait. A rendszer fokozatosan lecseréli azokat a munkafüzetekkel, amelyek további funkciókat biztosítanak. Ez a cikk összehasonlítja a két és a munkafüzetek nézeteinek konvertálására szolgáló lehetőségek alapvető fogalmait.

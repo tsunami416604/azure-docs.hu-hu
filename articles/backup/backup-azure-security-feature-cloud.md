@@ -3,16 +3,16 @@ title: Biztonsági funkciók a Felhőbeli munkaterhelések védelme érdekében
 description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentéseket a Azure Backup biztonsági funkciói segítségével.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 20cf322dec0827c00b15a62bf4f7695fc4ed0992
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 3435b9455af3362cdce2dceb20e183a8b05a15dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705496"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660835"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Biztonsági funkciók a Azure Backupt használó Felhőbeli munkaterhelések védelmének biztosításához
 
-A biztonsági veszélyforrások, például a kártevők, a zsarolóprogramok és a jogosulatlan behatolások egyre jelentősebb problémát okoznak. Ezek a biztonsági fenyegetések egyre nagyobb költséggel is járnak pénzben és adatban kifejezve egyaránt. Az ilyen támadások elleni védelem érdekében Azure Backup mostantól biztonsági funkciókat biztosít a biztonsági mentési adatainak a törlés után még a védelme érdekében.
+A biztonsági problémákkal, például a kártevővel, a ransomware és a behatolással kapcsolatos problémák egyre nagyobbak. Ezek a biztonsági problémák költségesek lehetnek a pénz és az adatmennyiség tekintetében. Az ilyen támadások elleni védelem érdekében Azure Backup mostantól biztonsági funkciókat biztosít a biztonsági mentési adatainak a törlés után még a védelme érdekében.
 
 Az egyik ilyen funkció a Soft delete. A helyreállítható törléssel, még akkor is, ha egy rosszindulatú szereplő töröl egy virtuális gép biztonsági mentését (vagy véletlenül törli a biztonsági mentési adatmennyiséget), a biztonsági mentési adat 14 további napig marad, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. A "Soft Delete" állapotban lévő biztonsági mentési adatok további 14 napos megőrzése nem jár költséggel az ügyfélnek. Az Azure az adatok védelmének biztosítása érdekében a [Storage Service encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) használatával is titkosítja az összes biztonsági másolatban tárolt adatait.
 
@@ -133,7 +133,7 @@ A biztonsági mentési elemek "DeleteState" állapota "NotDeleted" lesz. A véde
 
 ## <a name="disabling-soft-delete"></a>A Soft delete letiltása
 
-A Soft delete alapértelmezés szerint engedélyezve van az újonnan létrehozott tárolókban a biztonsági mentési adatok véletlen vagy rosszindulatú törlésből való védelme érdekében.  A funkció letiltása nem ajánlott. Ha a védett elemek új tárolóba való áthelyezését tervezi, és nem várja meg a törlés és az ismételt védelem (például egy tesztkörnyezetben) előtt, nem várhatja el a szükséges 14 napot. Csak a biztonsági mentési rendszergazda tilthatja le ezt a funkciót. Ha letiltja ezt a funkciót, a védett elemek összes törlése azonnali eltávolítást eredményez, a visszaállítás lehetősége nélkül. A szolgáltatás letiltását megelőzően a törölt állapotban lévő biztonsági mentési állapotok helyreállított állapotban maradnak. Ha véglegesen törölni kívánja ezeket a fájlokat, törölnie kell a törlést, majd újra törölnie kell őket a végleges törléshez.
+A Soft delete alapértelmezés szerint engedélyezve van az újonnan létrehozott tárolókban a biztonsági mentési adatok véletlen vagy rosszindulatú törlésből való védelme érdekében.  A funkció letiltása nem ajánlott. Ha a védett elemek új tárolóba való áthelyezését tervezi, és nem várja meg a törlés és az ismételt védelem (például egy tesztkörnyezetben) előtt, nem várhatja el a szükséges 14 napot. Csak a tár tulajdonosa tilthatja le ezt a funkciót. Ha letiltja ezt a funkciót, a védett elemek minden jövőbeli törlése azonnali eltávolítást eredményez, a visszaállítási lehetőség nélkül. A szolgáltatás letiltását megelőzően a Soft Deleted állapotban lévő biztonsági mentési adatmennyiséget a rendszer 14 napig változatlanul törli. Ha véglegesen törölni kívánja ezeket a fájlokat, törölnie kell a törlést, majd újra törölnie kell őket a végleges törléshez.
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>A Soft delete letiltása a Azure Portal használatával
 
@@ -236,7 +236,7 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
 ```
 
-### <a name="using-rest-api"></a>A REST API használatával
+### <a name="using-rest-api"></a>A REST API használata
 
 Ha törölve lettek az elemek, mielőtt a rendszer letiltotta a törlést, akkor a rendszer a törölt állapotot fogja törölni. Ha azonnal törölni szeretné őket, a törlési műveletnek sztornírozva kell lennie, majd újra el kell végrehajtania.
 

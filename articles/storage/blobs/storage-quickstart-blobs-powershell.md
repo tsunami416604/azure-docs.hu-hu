@@ -7,14 +7,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/04/2019
+ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: c5d32b91043d310e51143357ad51631463f7e991
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 4cc58838827d1ee9337216d9ccb56696735ead7e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892498"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664252"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Rövid útmutató: Blobok feltöltése, letöltése és listázása a PowerShell-lel
 
@@ -97,16 +97,13 @@ Get-AzStorageBlobContent -Blob "Image002.png" `
 
 ## <a name="data-transfer-with-azcopy"></a>Adatátvitel az AzCopy használatával
 
-Az [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) segédprogram az Azure Storage esetében egy további lehetőséget kínál az adatok nagy teljesítményű, parancsfájlalapú átvitelére. Az AzCopy segítségével blob, fájl és tábla típusú tárolókból és tárolókba vihet át adatokat.
+A AzCopy parancssori segédprogram nagy teljesítményű, parancsfájl-továbbítást biztosít az Azure Storage-hoz. A AzCopy használatával adatok vihetők át a blob Storage-ba és a Azure Filesba. A AzCopy legújabb verziójával kapcsolatos további információkért lásd: AzCopy v10, a [AzCopy első lépései](../common/storage-use-azcopy-v10.md). Az AzCopy v10 blob Storage-mel történő használatáról további információt az [adatok átvitele a AzCopy és a blob Storage](../common/storage-use-azcopy-blobs.md)szolgáltatással című témakörben talál.
 
-Gyors példaként íme a *myfile.txt* nevű fájlnak a *mystoragecontainer* tárolóba való feltöltésére szolgáló, egy PowerShell-ablakból futtatható AzCopy-parancs.
+A következő példa a AzCopy-t használja egy helyi fájl blobba való feltöltéséhez. Ne felejtse el lecserélni a minták értékeit a saját értékeire:
 
 ```powershell
-./AzCopy `
-    /Source:C:\myfolder `
-    /Dest:https://mystorageaccount.blob.core.windows.net/mystoragecontainer `
-    /DestKey:<storage-account-access-key> `
-    /Pattern:"myfile.txt"
+azcopy login
+azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

@@ -1,14 +1,14 @@
 ---
 title: Service Health áttekintése | Microsoft Docs
 description: Személyre szabott információk arról, hogy az Azure-alkalmazások milyen hatással vannak a jelenlegi és jövőbeli Azure-szolgáltatásokkal kapcsolatos problémákra és karbantartásra.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 6a06ae22493292e33c94cc83cba1f17361bce45f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: db9d74e2883e755c3e5c3dbbe9d6570f1e78c4a6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451578"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654018"
 ---
 # <a name="service-health-overview"></a>Service Health áttekintése
 
@@ -47,7 +47,7 @@ A probléma kezelésére szolgáló hivatkozásra kattintva kérheti le a probl�
 
 ![Szolgáltatási probléma kezelése – probléma kezelése](./media/service-health-overview/azure-service-health-overview-3.png)
 
-## <a name="get-support-from-microsoft"></a>Támogatás a Microsofttól
+## <a name="get-support-from-microsoft"></a>Támogatás kérése a Microsofttól
 
 Forduljon az ügyfélszolgálathoz, ha az erőforrás a probléma megoldása után is rossz állapotban marad.  Használja az oldal jobb oldalán található támogatási hivatkozásokat.  
 

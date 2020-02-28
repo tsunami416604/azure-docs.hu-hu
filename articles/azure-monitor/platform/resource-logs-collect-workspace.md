@@ -3,17 +3,16 @@ title: Azure-beli erőforrás-naplók gyűjtése Log Analytics munkaterületen
 description: Ismerje meg, hogyan továbbíthatja az Azure-erőforrás-naplókat Log Analytics munkaterületre Azure Monitorban.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: b0b8757590876669e00e81378411c010514e3036
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 36bd464624118b7671a3879bcc1d34114bba9ce3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750366"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658999"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure platform-naplók gyűjtése Log Analytics munkaterületen Azure Monitor
 Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenységeket és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azoktól függő Azure-platformról. Ez a cikk ismerteti az erőforrás-naplók összegyűjtését egy Log Analytics munkaterületen, amely lehetővé teszi, hogy a rendszer hatékony naplók használatával elemezze Azure Monitor naplókban gyűjtött más figyelési adatokkal, valamint más Azure Monitor funkciók, például riasztások és vizualizációk. 
@@ -55,14 +54,14 @@ Vegye figyelembe a következő példát, ahol a diagnosztikai beállítások gy�
 
 A AzureDiagnostics táblázat a következőképpen jelenik meg:  
 
-| ResourceProvider    | Kategória     | A  | B  | C#  | D  | E  | F  | G  | H  | I  |
+| ResourceProvider    | Kategória     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Microsoft. service1 | AuditLogs    | X1 | y1 | Z1 |    |    |    |    |    |    |
-| Microsoft. service1 | Alkalmazásnaplókat    |    |    |    | első | W1 | E1 csomag |    |    |    |
-| Microsoft. service2 | AuditLogs    |    |    |    |    |    |    | J1 | K1 csomag | L1 |
-| Microsoft. service1 | Alkalmazásnaplókat    |    |    |    | Q2 | W2 | E2 |    |    |    |
-| Microsoft. service2 | AuditLogs    |    |    |    |    |    |    | J3 | K3 | L3 |
-| Microsoft. service1 | AuditLogs    | x5 | y5 | Z5 |    |    |    |    |    |    |
+| Microsoft. service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
+| Microsoft. service1 | Alkalmazásnaplókat    |    |    |    | q1 | W1 | E1 csomag |    |    |    |
+| Microsoft. service2 | AuditLogs    |    |    |    |    |    |    | j1 | K1 csomag | l1 |
+| Microsoft. service1 | Alkalmazásnaplókat    |    |    |    | Q2 | w2 | E2 |    |    |    |
+| Microsoft. service2 | AuditLogs    |    |    |    |    |    |    | J3 | k3 | l3 |
+| Microsoft. service1 | AuditLogs    | x5 | y5 | z5 |    |    |    |    |    |    |
 | ... |
 
 ### <a name="resource-specific"></a>Erőforrás-specifikus
@@ -72,26 +71,26 @@ A fenti példa három tábla létrehozását eredményezi:
  
 - A tábla *Service1AuditLogs* a következőképpen történik:
 
-    | Erőforrás-szolgáltató | Kategória | A | B | C# |
+    | Erőforrás-szolgáltató | Kategória | A | B | C |
     | -- | -- | -- | -- | -- |
-    | Service1 | AuditLogs | X1 | y1 | Z1 |
-    | Service1 | AuditLogs | x5 | y5 | Z5 |
+    | Service1 | AuditLogs | x1 | y1 | z1 |
+    | Service1 | AuditLogs | x5 | y5 | z5 |
     | ... |
 
 - A tábla *Service1ErrorLogs* a következőképpen történik:  
 
     | Erőforrás-szolgáltató | Kategória | D | E | F |
     | -- | -- | -- | -- | -- | 
-    | Service1 | Alkalmazásnaplókat |  első | W1 | E1 csomag |
-    | Service1 | Alkalmazásnaplókat |  Q2 | W2 | E2 |
+    | Service1 | Alkalmazásnaplókat |  q1 | W1 | E1 csomag |
+    | Service1 | Alkalmazásnaplókat |  Q2 | w2 | E2 |
     | ... |
 
 - A tábla *Service2AuditLogs* a következőképpen történik:  
 
     | Erőforrás-szolgáltató | Kategória | G | H | I |
     | -- | -- | -- | -- | -- |
-    | Service2 | AuditLogs | J1 | K1 csomag | L1|
-    | Service2 | AuditLogs | J3 | K3 | L3|
+    | Service2 | AuditLogs | j1 | K1 csomag | l1|
+    | Service2 | AuditLogs | J3 | k3 | l3|
     | ... |
 
 

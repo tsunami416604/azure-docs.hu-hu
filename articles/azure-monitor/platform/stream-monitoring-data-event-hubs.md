@@ -3,17 +3,16 @@ title: Azure monitoring-adatstreamek továbbítása az Event hub szolgáltatásb
 description: Ismerje meg, hogyan továbbíthatja az Azure monitoring-adatait egy Event hub-ba az ADATPARTNER SIEM vagy Analytics eszközbe való beszerzéséhez.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 6a474bdceffa07b18530250a02a9ef94159a8e35
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b22f779d616751ebaa3dad853d5aa23ec4969f23
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750338"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658863"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure monitoring-adatstreamek továbbítása az Event hub szolgáltatásba
 A Azure Monitor teljes körű figyelési megoldást kínál az Azure-ban, más felhőben és a helyszínen található alkalmazások és szolgáltatások számára. Az adatok elemzéséhez és a különböző figyelési helyzetekben való kihasználásához Azure Monitor használata mellett előfordulhat, hogy a környezetében más figyelési eszközökre is el kell küldenie. A legtöbb esetben az [Azure Event Hubs](/azure/event-hubs/)-t használja a leghatékonyabb módszer a megfigyelési és a külső eszközökre való továbbításra. Ez a cikk rövid leírást tartalmaz arról, hogy miként továbbíthatja a különböző forrásokból származó figyelési adatok egy Event hubhoz való továbbítását, és részletes útmutatásra mutató hivatkozásokat talál.
@@ -38,7 +37,7 @@ A [Azure monitor figyelési adatforrásai](data-sources.md) az Azure-alkalmazás
 | [Azure-bérlő](data-sources.md#azure-tenant) | Naplók Azure Active Directory | Adja meg a bérlői diagnosztikai beállítást a HRE-bérlőn. További részletekért lásd az [oktatóanyag: Stream Azure Active Directory naplók az Azure Event hub-](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) ba című témakört. |
 | [Azure-előfizetés](data-sources.md#azure-subscription) | Azure-tevékenységnapló | Hozzon létre egy log-profilt a műveletnapló eseményeinek Event Hubsba való exportálásához.  További részletekért lásd: az [Azure Activity napló exportálása a Storage-ba vagy az azure Event Hubs](activity-log-export.md) . |
 | [Azure-erőforrások](data-sources.md#azure-resources) | Platform metrikái<br> Erőforrásnaplók |A rendszer mindkét típusú adattípust egy erőforrás-diagnosztikai beállítás használatával küldi el az Event hub-nak. További részletekért tekintse meg az [Azure-erőforrás-naplók streamben való továbbítását](resource-logs-stream-event-hubs.md) ismertető témakört. |
-| [Operációs rendszer (vendég)](data-sources.md#operating-system-guest) | Azure-alapú virtuális gépek | Telepítse a [Azure Diagnostics bővítményt](diagnostics-extension-overview.md) az Azure-beli Windows-és Linux-alapú virtuális gépeken. A Windows rendszerű virtuális gépekkel kapcsolatos részletekért tekintse meg [a gyakori Event Hubs elérésű útvonalon található Streaming Azure Diagnostics adatokat](diagnostics-extension-stream-event-hubs.md) , és a Linux rendszerű virtuális gépekkel kapcsolatos részletekért [használja a linuxos diagnosztikai bővítményt](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings) . |
+| [Operációs rendszer (vendég)](data-sources.md#operating-system-guest) | Azure virtuális gépek | Telepítse a [Azure Diagnostics bővítményt](diagnostics-extension-overview.md) az Azure-beli Windows-és Linux-alapú virtuális gépeken. A Windows rendszerű virtuális gépekkel kapcsolatos részletekért tekintse meg [a gyakori Event Hubs elérésű útvonalon található Streaming Azure Diagnostics adatokat](diagnostics-extension-stream-event-hubs.md) , és a Linux rendszerű virtuális gépekkel kapcsolatos részletekért [használja a linuxos diagnosztikai bővítményt](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings) . |
 | [Alkalmazás kódja](data-sources.md#application-code) | Application Insights | A Application Insights nem biztosít közvetlen metódust az adattovábbításhoz az Event hubokba. Beállíthatja a Application Insights-információk [folyamatos exportálását](../../azure-monitor/app/export-telemetry.md) egy Storage-fiókba, majd egy logikai alkalmazás használatával elküldheti az adatátvitelt az Event hubhoz a [logikai alkalmazás manuális továbbítása](#manual-streaming-with-logic-app)című témakörben leírtak szerint. |
 
 ## <a name="manual-streaming-with-logic-app"></a>Manuális átvitel a logikai alkalmazással
@@ -60,7 +59,7 @@ A monitorozási adatait Azure Monitor segítségével átirányíthatja egy Even
 |Logz.io | Igen | További információ: [Ismerkedés az Azure-on futó Java-alkalmazások Logz.IO használatával a figyelés és a naplózás](https://docs.microsoft.com/azure/java/java-get-started-with-logzio) használatába
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A tevékenység naplójának archiválása egy Storage-fiókba](../../azure-monitor/platform/archive-activity-log.md)
 * [Olvassa el az Azure-tevékenység naplójának áttekintését](../../azure-monitor/platform/platform-logs-overview.md)
 * [Riasztás beállítása egy tevékenység naplójának eseménye alapján](../../azure-monitor/platform/alerts-log-webhook.md)

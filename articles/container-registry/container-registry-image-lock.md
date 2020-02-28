@@ -3,12 +3,12 @@ title: Rendszerképek zárolása
 description: Adja meg a tárolók rendszerképének vagy tárházának attribútumait, hogy ne lehessen törölni vagy felülírni az Azure Container registryben.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 93a99f65d5bb21d696ce24365e7c819d2c34a8b0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972933"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659696"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Tároló rendszerképének zárolása egy Azure Container registryben
 
@@ -19,7 +19,7 @@ Ehhez a cikkhez az Azure CLI-t Azure Cloud Shell vagy helyileg kell futtatni (2.
 > [!IMPORTANT]
 > Ez a cikk nem vonatkozik a teljes beállításjegyzék zárolására, például a **beállítások > zárolások** használata a Azure Portal, vagy `az lock` parancs az Azure CLI-ben. A beállításjegyzék-erőforrások zárolása nem akadályozza meg a tárházban lévő adatok létrehozását, frissítését és törlését. A beállításjegyzék zárolása csak olyan felügyeleti műveletekre vonatkozik, mint például a replikálások hozzáadása vagy törlése, vagy magát a beállításjegyzéket kell törölni. További információ a [zárolási erőforrásokról a váratlan változások megelőzése](../azure-resource-manager/management/lock-resources.md)érdekében.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
 Alapértelmezés szerint a Azure Container Registryban lévő címkézett képek *változhatnak*, ezért a megfelelő engedélyekkel többször is frissítheti és leküldheti a rendszerképet ugyanazzal a címkével egy beállításjegyzékbe. A tároló lemezképeit szükség szerint is [törölheti](container-registry-delete.md) . Ez a viselkedés akkor hasznos, ha képeket fejleszt, és a beállításjegyzéknek meg kell őriznie a méretet.
 
@@ -44,7 +44,7 @@ A tárház aktuális attribútumainak megtekintéséhez futtassa a következőt 
 
 ```azurecli
 az acr repository show \
-    --name myregistry --repository myrepo
+    --name myregistry --repository myrepo \
     --output jsonc
 ```
 

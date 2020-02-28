@@ -1,7 +1,6 @@
 ---
 title: Mobil alkalmazások figyelése Azure Monitor Application Insights
 description: Útmutatást nyújt a mobileszközök gyors beállításához Azure Monitor Application Insights és App Center
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
@@ -9,12 +8,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 07e162dc74a514c9e7e6c82c38b51460a2f797fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a59a6841a1db3cecfe52c54135b42f5b6a095ce3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398889"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660291"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>A mobilalkalmazás elemzésének első lépései az App Center és az Application Insights használatával
 
@@ -68,7 +67,7 @@ Ha meg szeretne győződni arról, hogy az App Center fogadja az egyéni esemén
 
 Ha az alkalmazás egyéni eseményeket küld, és az App Center fogadja ezeket az eseményeket, létre kell hoznia egy App Center-típusú Application Insights-erőforrást az Azure Portalon:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. Válassza az **Erőforrás létrehozása** > **Fejlesztői eszközök** > **Application Insights** elemet.
 
     > [!NOTE]
@@ -76,13 +75,13 @@ Ha az alkalmazás egyéni eseményeket küld, és az App Center fogadja ezeket a
 
     Megjelenik egy konfigurációs képernyő. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblázatot.
 
-    | Beállítások        |  Value (Díj)           | Leírás  |
+    | Beállítások        |  Érték           | Leírás  |
    | ------------- |:-------------|:-----|
    | **Name (Név)**      | Néhány globálisan egyedi érték, például „myApp-iOS” | A figyelt alkalmazást azonosító név |
      | **Erőforráscsoport**     | Egy új erőforráscsoport, vagy egy meglévő a menüből | Az erőforráscsoport, amelyben létrehozza az új Application Insights-erőforrást |
    | **Hely** | Egy hely a menüből | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-3. Kattintson a **Create** (Létrehozás) gombra.
+3. Kattintson a **Létrehozás** gombra.
 
 Ha az alkalmazás több platformot (iOS, Android stb.) támogat, érdemes minden platform számára külön Application Insights-erőforrást létrehozni.
 

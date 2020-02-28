@@ -1,18 +1,17 @@
 ---
 title: Az Azure-beli virtuális gépek állapotának megismerése | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan értelmezhető a virtuális gépek és a mögöttes operációs rendszerek állapota a Azure Monitor for VMs használatával.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: e01223783130ea6b276db26bab709e2b51a8f76d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3cecb04a4f299051860c45425f0fc4e13c3722ea
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399793"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656296"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Az Azure-beli virtuális gépek állapotának megismerése
 
@@ -34,7 +33,7 @@ További információ a Azure Monitor for VMs konfigurálásáról: [Azure monit
 
 Ez a szakasz az Azure-beli Windows-és Linux-alapú virtuális gépek figyelésére vonatkozó alapértelmezett állapot-feltételeket ismerteti. Az összes állapotra vonatkozó feltétel előre konfigurálva van, hogy riasztást küldjön, ha nem kifogástalan állapotot azonosítanak.
 
-| Figyelő neve | Gyakoriság (perc) | Lookback időtartama (perc) | Művelet | Küszöbérték | Riasztás állapot szerint | Súlyosság | Munkaterhelés kategóriája | 
+| Figyelő neve | Gyakoriság (perc) | Lookback időtartama (perc) | Művelet | Küszöbérték | Riasztás állapot szerint | Severity | Munkaterhelés kategóriája | 
 |--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
 | Online logikai lemez | 5 | 15 | <> | 1 (igaz) | Kritikus | Sev1 | Linux | 
 | Logikai lemez – Szabad terület | 5 | 15 | < | 200 MB (figyelmeztetés)<br> 100 MB (kritikus) | Figyelmeztetés | Sev1<br> Sev2 | Linux | 
@@ -55,7 +54,7 @@ Ez a szakasz az Azure-beli Windows-és Linux-alapú virtuális gépek figyelés�
 | Lemez aktuális várólistájának hossza (logikai lemez) | 5 | 60 | >= | 32 | Figyelmeztetés | Sev2 | Windows | 
 | Logikai lemez szabad területe (MB) | 15 | 60 | > | 500 MB figyelmeztetés<br> 300 MB kritikus | Kritikus | Sev1<br> Sev2 | Windows | 
 | Logikai lemez szabad területe (%) | 15 | 60 | > | 10%-os figyelmeztetés<br> 5% kritikus | Kritikus | Sev1<br> Sev2 | Windows |
-| Logikai lemez üresjárati ideje (%) | 15 | 360 | <= | 20% | Figyelmeztetés | Sev2 | Windows | 
+| Logikai lemez üresjárati ideje (%) | 15 | 360 | <= | 20 | Figyelmeztetés | Sev2 | Windows | 
 | Használatban lévő sávszélesség százalékos aránya | 5 | 60 | >= | 60% | Figyelmeztetés | Sev2 | Windows | 
 | Felhasznált sávszélesség százalékos aránya összesen | 5 | 60 | >= | 75% | Figyelmeztetés | Sev2 | Windows | 
 | Felhasznált sávszélesség százalékos aránya (írás) | 5 | 60 | >= | 60% | Figyelmeztetés | Sev2 | Windows | 
@@ -73,7 +72,7 @@ Ez a szakasz az Azure-beli Windows-és Linux-alapú virtuális gépek figyelés�
 | Átlagosan használt lemez másodpercenkénti száma | 1 | 15 | > | 0.04 s | Figyelmeztetés | Sev2 | Windows | 
 | Írási idő átlagos másodpercenkénti száma | 1 | 15 | > | 0.04 s | Figyelmeztetés | Sev2 | Windows | 
 | Lemez aktuális várólistájának hossza | 5 | 60 | >= | 32 | Figyelmeztetés | Sev2 | Windows | 
-| Lemez üresjárati ideje (%) | 5 | 60 | >= | 20% | Figyelmeztetés | Sev2 | Windows | 
+| Lemez üresjárati ideje (%) | 5 | 60 | >= | 20 | Figyelmeztetés | Sev2 | Windows | 
 
 >[!NOTE]
 >A Lookback időtartama azt jelzi, hogy a visszatekintő ablak milyen gyakran ellenőrzi a metrika értékeit, például az elmúlt öt percben.  
@@ -264,7 +263,7 @@ Ha többet szeretne megtudni az állapottal kapcsolatos feltételekről, a Tudá
 
 A Azure Monitor for VMs Health szolgáltatásban található összes tudásbáziscikk áttekintéséhez tekintse meg a [Azure monitor Health Knowledge dokumentációját](https://docs.microsoft.com/azure/monitoring/infrastructure-health/).
 
-### <a name="state-changes"></a>Állapotváltozások
+### <a name="state-changes"></a>Állapot módosításai
 
 Az **Health Diagnostics** oldal jobb szélső oszlopa az **állapot változásai**. Ez az oszlop felsorolja az állapotra vonatkozó **feltételek** szakaszban kiválasztott állapottal kapcsolatos összes változást, vagy a virtuális gép állapotának változását, ha a virtuális gép a tábla **összetevő-modell** vagy **állapot-feltételek** oszlopában lett kiválasztva.
 
@@ -282,7 +281,7 @@ Ha például a *lemez-1 d:* lehetőséget választja, a listában az **összetev
 
 A frissített állapot megjelenítéséhez a **frissítés** hivatkozásra kattintva frissítheti az állapot-diagnosztika lapot. Ha az állapotra vonatkozó feltétel állapota az előre definiált lekérdezési időköz alapján frissül, ez a feladat lehetővé teszi, hogy elkerülje a legutóbbi állapot várakozását, és tükrözze azt. Az állapotra **vonatkozó feltételek állapota** olyan szűrő, amely lehetővé teszi az eredmények hatókörét a kiválasztott állapot alapján: kifogástalan, figyelmeztetés, kritikus, ismeretlen és mind. A jobb felső sarokban lévő **utolsó frissítés** az állapot-diagnosztika lap utolsó frissítésekor jelent meg.
 
-## <a name="alerts"></a>Értesítések
+## <a name="alerts"></a>Riasztások
 
 Azure Monitor for VMs az állapot integrálható az [Azure-riasztásokkal](../../azure-monitor/platform/alerts-overview.md). Riasztást küld, ha a rendszer előre definiált feltételek alapján észleli, hogy kifogástalan állapotról sérült állapotra vált. A riasztások súlyosság szerint vannak kategorizálva, a "0" és "4" között, a legmagasabb szinttel 0.
 
@@ -300,16 +299,16 @@ A más erőforrástípusok vagy szolgáltatások riasztásai nem tartoznak ebbe 
 
 A nézet szűréséhez válassza az értékek lehetőséget a lap tetején található legördülő menükben.
 
-|Column |Leírás |
+|Oszlop |Leírás |
 |-------|------------|
-|Előfizetés |Válasszon ki egy Azure-előfizetést. Csak a kijelölt előfizetésben lévő riasztások szerepelnek a nézetben. |
+|Előfizetést |Válasszon ki egy Azure-előfizetést. Csak a kijelölt előfizetésben lévő riasztások szerepelnek a nézetben. |
 |Erőforráscsoport |Válasszon ki egy erőforráscsoportot. Csak a kijelölt erőforráscsoport céljaival rendelkező riasztások szerepelnek a nézetben. |
 |Erőforrás típusa |Válasszon ki egy vagy több erőforrástípust. Alapértelmezés szerint csak a cél **virtuális gépekre** vonatkozó riasztások vannak kiválasztva, és ebben a nézetben szerepelnek. Ez az oszlop csak az erőforráscsoport megadása után érhető el. |
 |Erőforrás |Válasszon ki egy erőforrást. A nézet csak az adott erőforrással rendelkező riasztásokat tartalmazza célként. Ez az oszlop csak az erőforrástípus megadása után érhető el. |
-|Súlyosság |Válasszon ki egy riasztási súlyosságot, vagy válassza az **összes** lehetőséget az összes súlyossági szintű riasztás befoglalásához. |
+|Severity |Válasszon ki egy riasztási súlyosságot, vagy válassza az **összes** lehetőséget az összes súlyossági szintű riasztás befoglalásához. |
 |Figyelési feltétel |Válassza ki a figyelési feltételt a riasztások szűréséhez, ha azokat a rendszer kilőtte vagy feloldotta, ha a feltétel már nem aktív. Vagy válassza az **összes** lehetőséget az összes feltétel riasztásának befoglalásához. |
-|A riasztás állapota |Válassza ki a riasztási állapotot, az **új**, a **nyugtázás**, a **lezárt**vagy az **összes** beállítást, hogy az összes állapotú riasztást tartalmazzon. |
-|Monitorozási szolgáltatás |Válasszon ki egy szolgáltatást, vagy válassza az **összes** lehetőséget az összes szolgáltatás belefoglalásához. Ehhez a szolgáltatáshoz csak a VM-adatokból származó riasztások támogatottak.|
+|Riasztás állapota |Válassza ki a riasztási állapotot, az **új**, a **nyugtázás**, a **lezárt**vagy az **összes** beállítást, hogy az összes állapotú riasztást tartalmazzon. |
+|Szolgáltatás figyelése |Válasszon ki egy szolgáltatást, vagy válassza az **összes** lehetőséget az összes szolgáltatás belefoglalásához. Ehhez a szolgáltatáshoz csak a VM-adatokból származó riasztások támogatottak.|
 |Időtartomány| A nézet csak a kijelölt időintervallumban kilőtt riasztásokat tartalmazza. A támogatott értékek az elmúlt óra, az elmúlt 24 óra, az elmúlt 7 nap és az elmúlt 30 nap. |
 
 Amikor kiválaszt egy riasztást, megjelenik a **riasztás részletei** lap. Ez az oldal a riasztás részleteit tartalmazza, és lehetővé teszi az állapotának módosítását.
@@ -325,7 +324,7 @@ A riasztások kezelésével kapcsolatos további tudnivalókért tekintse meg a 
 Egy vagy több riasztás állapotának megváltoztatásához jelölje ki őket, majd a bal felső sarokban található **minden riasztás** lapon válassza az **Állapot módosítása** lehetőséget. Válassza ki az egyik állapotot a **riasztás állapotának módosítása** panelen, adja meg a módosítás leírását a **Megjegyzés** mezőben, majd kattintson **az OK** gombra a módosítások elvégzéséhez. Amikor az adatok ellenőrzése megtörtént, és a módosítások érvénybe lépnek, a menü **értesítések** részén nyomon követheti a folyamat állapotát.
 
 ### <a name="configure-alerts"></a>Riasztások konfigurálása
-A Azure Portal nem kezelhet bizonyos riasztási felügyeleti feladatokat. Ezeket a feladatokat a [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)használatával kell elvégezni. Konkrétan:
+A Azure Portal nem kezelhet bizonyos riasztási felügyeleti feladatokat. Ezeket a feladatokat a [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)használatával kell elvégezni. Ezek:
 
 - Állapotra vonatkozó riasztás engedélyezése vagy letiltása
 - Értesítések beállítása az állapotra vonatkozó feltételekkel kapcsolatos riasztásokhoz

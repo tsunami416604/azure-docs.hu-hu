@@ -1,18 +1,14 @@
 ---
 title: Java-webalkalmazások teljesítményének monitorozása – Azure Application Insights
 description: A Java-webhely kiterjesztett teljesítmény-és használati figyelése Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/10/2019
-ms.openlocfilehash: 8194c4b16d114be9b2b95ff56dea59d98cfdae10
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b29618179d22eac97a07bf41906465aba1fd7929
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931144"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657027"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Függőségek, kifogott kivételek és metódus-végrehajtási idők figyelése Java-webalkalmazásokban
 
@@ -119,15 +115,15 @@ Ideális esetben ez az eset, amikor az összes szolgáltatás frissítve lett a 
 
 Győződjön meg arról, hogy a  **[bejövő](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) és a kimenő (ügynök) konfigurációk** is pontosan azonosak.
 
-## <a name="view-the-data"></a>Az adatok megtekintése
+## <a name="view-the-data"></a>Az adatgyűjtés megtekintése
 A Application Insights erőforrásban [a teljesítmény csempén][metrics]a távoli függőségi és metódus-végrehajtási idők szerepelnek.
 
 A függőség, a kivétel és a metódus-jelentések egyes példányainak kereséséhez nyissa meg a [keresést][diagnostic].
 
 [Függőségi problémák diagnosztizálása – további információ](../../azure-monitor/app/asp-net-dependencies.md#diagnosis).
 
-## <a name="questions-problems"></a>Kérdése van? Problémái vannak?
-* Nincsenek adatok? [Tűzfal-kivételek beállítása](../../azure-monitor/app/ip-addresses.md)
+## <a name="questions-problems"></a>Kérdései vannak? Problémákat tapasztal?
+* Nincs adat? [Tűzfal-kivételek beállítása](../../azure-monitor/app/ip-addresses.md)
 * [A Java hibaelhárítása](java-troubleshoot.md)
 
 <!--Link references-->

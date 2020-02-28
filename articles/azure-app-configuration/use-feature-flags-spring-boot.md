@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc
-ms.openlocfilehash: 8c66e2995462701f7ddaefc3a2623c02fee883ef
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 090ede85301f9e7aff14394c8fb5c7d558d98dd4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687170"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656024"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Oktatóanyag: funkció-jelzők használata Spring boot-alkalmazásokban
 
@@ -51,11 +51,23 @@ Javasoljuk, hogy az alkalmazáson kívül tartsa meg a szolgáltatás jelölőit
 
 A Spring boot-alkalmazásnak az alkalmazás-konfigurációhoz való összekapcsolásának legegyszerűbb módja a konfigurációs szolgáltatón keresztül:
 
+### <a name="spring-cloud-11x"></a>Spring Cloud 1.1. x
+
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
-    <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-    <version>1.1.0.M4</version>
+    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+    <version>1.1.1</version>
+</dependency>
+```
+
+### <a name="spring-cloud-12x"></a>Spring Cloud 1.2. x
+
+```xml
+<dependency>
+    <groupId>com.microsoft.azure</groupId>
+    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+    <version>1.2.1</version>
 </dependency>
 ```
 
@@ -69,23 +81,22 @@ A Feature Manager támogatja az *Application. YML* konfigurációs forrásként 
 
 ```yml
 feature-management:
-  featureSet:
-    features:
-      FeatureA: true
-      FeatureB: false
-      FeatureC:
-        EnabledFor:
-          -
-            name: Percentage
-            parameters:
-              value: 50
+  feature-set:
+    feature-a: true
+    feature-b: false
+    feature-c:
+      enabled-for:
+        -
+          name: Percentage
+          parameters:
+            value: 50
 ```
 
 Az egyezmény szerint a YML-dokumentum `feature-management` szakasza a szolgáltatás-jelölő beállításaihoz használatos. Az előző példában három funkció-jelző látható a `EnabledFor` tulajdonságban definiált szűrőkkel:
 
-* `FeatureA` *bekapcsolva*.
-* `FeatureB` *ki van kapcsolva*.
-* `FeatureC` a `Percentage` nevű szűrőt adja meg `Parameters` tulajdonsággal. `Percentage` konfigurálható szűrő. Ebben a példában a `Percentage` 50 százalékos valószínűséget *ad meg a*`FeatureC` jelzőhöz.
+* `feature-a` *bekapcsolva*.
+* `feature-b` *ki van kapcsolva*.
+* `feature-c` a `Percentage` nevű szűrőt adja meg `parameters` tulajdonsággal. `Percentage` konfigurálható szűrő. Ebben a példában a `Percentage` 50 százalékos valószínűséget *ad meg a*`feature-c` jelzőhöz.
 
 ## <a name="feature-flag-checks"></a>Szolgáltatás-jelző ellenőrzése
 
@@ -94,7 +105,7 @@ A szolgáltatások felügyeletének alapszintű mintája először ellenőrizze,
 ```java
 private FeatureManager featureManager;
 ...
-if (featureManager.isEnabled("FeatureA"))
+if (featureManager.isEnabledAsync("feature-a"))
 {
     // Run the following code
 }
@@ -118,11 +129,11 @@ public class HomeController {
 
 ## <a name="controller-actions"></a>Vezérlő műveletei
 
-Az MVC-vezérlőkben a `@FeatureGate` attribútum használatával szabályozhatja, hogy egy adott művelet engedélyezve van-e. A következő `Index` művelet végrehajtásához `FeatureA` kell lennie *a* futtatásához:
+Az MVC-vezérlőkben a `@FeatureGate` attribútum használatával szabályozhatja, hogy egy adott művelet engedélyezve van-e. A következő `Index` művelet végrehajtásához `feature-a` kell lennie *a* futtatásához:
 
 ```java
 @GetMapping("/")
-@FeatureGate(feature = "FeatureA")
+@FeatureGate(feature = "feature-a")
 public String index(Model model) {
     ...
 }
@@ -132,7 +143,7 @@ Ha egy MVC vezérlő vagy művelet le van tiltva, mert a vezérlő funkció jelz
 
 ## <a name="mvc-filters"></a>MVC-szűrők
 
-Az MVC-szűrőket beállíthatja úgy, hogy azok a szolgáltatás jelzőjének állapota alapján legyenek aktiválva. A következő kód egy `FeatureFlagFilter`nevű MVC-szűrőt hoz létre. Ez a szűrő csak akkor aktiválódik az MVC-folyamaton belül, ha `FeatureA` engedélyezve van.
+Az MVC-szűrőket beállíthatja úgy, hogy azok a szolgáltatás jelzőjének állapota alapján legyenek aktiválva. A következő kód egy `FeatureFlagFilter`nevű MVC-szűrőt hoz létre. Ez a szűrő csak akkor aktiválódik az MVC-folyamaton belül, ha `feature-a` engedélyezve van.
 
 ```java
 @Component
@@ -144,7 +155,7 @@ public class FeatureFlagFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        if(!featureManager.isEnabled("FeatureA")) {
+        if(!featureManager.isEnabled("feature-a")) {
             chain.doFilter(request, response);
             return;
         }
@@ -156,11 +167,11 @@ public class FeatureFlagFilter implements Filter {
 
 ## <a name="routes"></a>Útvonalak
 
-Az útvonalak átirányításához használhatja a szolgáltatás jelzőit. A következő kód átirányítja a felhasználót `FeatureA`ről, ha engedélyezve van:
+Az útvonalak átirányításához használhatja a szolgáltatás jelzőit. A következő kód átirányítja a felhasználót `feature-a`ről, ha engedélyezve van:
 
 ```java
 @GetMapping("/redirect")
-@FeatureGate(feature = "FeatureA", fallback = "/getOldFeature")
+@FeatureGate(feature = "feature-a", fallback = "/getOldFeature")
 public String getNewFeature() {
     // Some New Code
 }

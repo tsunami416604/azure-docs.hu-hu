@@ -1,18 +1,17 @@
 ---
 title: A lekérdezés hatókörének naplózása Azure Monitor Log Analyticsban | Microsoft Docs
 description: A Azure Monitor Log Analyticsban lévő napló lekérdezés hatókörét és időtartományát ismerteti.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2019
-ms.openlocfilehash: dec81bfde160cd9913db07bb99629b8fbcc37364
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365206"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660309"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>A lekérdezés hatókörének és időtartományának naplózása Azure Monitor Log Analytics
 Ha [a Azure Portal log Analyticsban](get-started-portal.md)futtat [naplózási lekérdezést](log-query-overview.md) , a lekérdezés által kiértékelt adatok halmaza a hatókörtől és a kiválasztott időtartománytól függ. Ez a cikk a hatókört és az időtartományt ismerteti, valamint azt, hogyan állíthatja be az egyes igényektől függően. Emellett leírja a különböző típusú hatókörök viselkedését is.
@@ -32,7 +31,7 @@ A hatókört a Log Analytics elindításához használt módszer határozza meg,
 | Log Analytics-munkaterület | A Log Analytics munkaterület összes rekordja. | Válassza a **naplók** lehetőséget a **Azure monitor** menüben vagy a **log Analytics munkaterületek** menüből.  | A hatókört bármely más erőforrástípus esetében módosíthatja. |
 | Application Insights alkalmazás | A Application Insights alkalmazás összes rekordja. | A Application Insights **Áttekintés** lapján válassza az **elemzés** lehetőséget. | A hatókört csak egy másik Application Insights alkalmazásra lehet módosítani. |
 | Erőforráscsoport | Az erőforráscsoport összes erőforrása által létrehozott rekordok. Több Log Analytics munkaterületről származó adatok is szerepelhetnek. | Válassza ki a **naplókat** az erőforráscsoport menüjében. | A hatókör nem módosítható.|
-| Előfizetés | Az előfizetésben található összes erőforrás által létrehozott rekordok. Több Log Analytics munkaterületről származó adatok is szerepelhetnek. | Válassza a **naplók** lehetőséget az előfizetés menüből.   | A hatókör nem módosítható. |
+| Előfizetést | Az előfizetésben található összes erőforrás által létrehozott rekordok. Több Log Analytics munkaterületről származó adatok is szerepelhetnek. | Válassza a **naplók** lehetőséget az előfizetés menüből.   | A hatókör nem módosítható. |
 | Egyéb Azure-erőforrások | Az erőforrás által létrehozott rekordok. Több Log Analytics munkaterületről származó adatok is szerepelhetnek.  | Válassza ki a **naplók** elemet az erőforrás menüben.<br>VAGY<br>Válassza ki a **naplók** elemet a **Azure monitor** menüben, majd válasszon ki egy új hatókört. | A hatókör nem módosítható ugyanarra az erőforrás-típusra. |
 
 ### <a name="limitations-when-scoped-to-a-resource"></a>Erőforrásokra vonatkozó hatókörre vonatkozó korlátozások
@@ -40,7 +39,7 @@ A hatókört a Log Analytics elindításához használt módszer határozza meg,
 Ha a lekérdezési hatókör egy Log Analytics munkaterület vagy egy Application Insights alkalmazás, a Portálon és az összes lekérdezési parancson belül minden lehetőség elérhető. Ha egy erőforrás hatóköre nem érhető el, a portálon az alábbi beállítások nem érhetők el, mert egyetlen munkaterülethez vagy alkalmazáshoz vannak társítva:
 
 - Mentés
-- Lekérdezéskezelő
+- Lekérdezési tallózó
 - Új riasztási szabály
 
 Az alábbi parancsok nem használhatók a lekérdezésekben, ha az erőforrás hatóköre, mivel a lekérdezés hatóköre már tartalmaz minden olyan munkaterületet, amely az adott erőforráshoz vagy erőforrás-készlethez tartozó adattal rendelkezik:
@@ -66,7 +65,7 @@ A lekérdezés le lesz tiltva, ha a hatókör 20 vagy több régióban is tartal
 ## <a name="time-range"></a>Időtartomány
 Az időtartomány meghatározza a lekérdezés által a rekord létrehozásakor kiértékelt rekordok készletét. Ezt a rendszer a munkaterület vagy alkalmazás összes rekordján a következő táblázatban megadott módon definiálja: standard tulajdonság.
 
-| Földrajzi egység | Tulajdonság |
+| Hely | Tulajdonság |
 |:---|:---|
 | Log Analytics-munkaterület          | TimeGenerated |
 | Application Insights alkalmazás | időbélyeg     |

@@ -1,19 +1,18 @@
 ---
 title: Egyéni irányítópultok létrehozása az Azure Application Insightsban | Microsoft Docs
 description: Oktatóanyag egyéni KPI-irányítópultok Azure Application Insights használatával való létrehozásához.
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 47d8eaff5f154e198c277ec2b63a2d09e66f7180
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: caf8b1899cad95ade6297e78e8f2cf35939ef189
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900508"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661634"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Egyéni KPI irányítópultok létrehozása az Azure Application Insights használatával
 
@@ -102,7 +101,7 @@ Mivel az Azure Applications-adatelemzési naplók (Analitika) egy különálló 
     ```
 
 4. A lekérdezés eredményeinek ellenőrzéséhez kattintson a **Futtatás** gombra.
-5. Kattintson a rögzítés ikonra ![Rögzítés ikon](media/tutorial-app-dashboards/pushpin.png) majd válassza ki az irányítópult nevét. Ennek a beállításnak az az oka, hogy egy irányítópultot olyan módon választ ki, amely a legutóbbi irányítópult használatának korábbi lépéseitől eltérően van, mivel a naplók (analitikai) konzol egy különálló szolgáltatás, és az összes elérhető megosztott irányítópult közül ki kell választania.
+5. Kattintson a rögzítés ikonra ![rögzítés ikon](media/tutorial-app-dashboards/pushpin.png) majd válassza ki az irányítópult nevét. Ennek a beállításnak az az oka, hogy egy irányítópultot olyan módon választ ki, amely a legutóbbi irányítópult használatának korábbi lépéseitől eltérően van, mivel a naplók (analitikai) konzol egy különálló szolgáltatás, és az összes elérhető megosztott irányítópult közül ki kell választania.
 
 5. Mielőtt visszalépjen az irányítópultra, adjon hozzá egy másik lekérdezést, de ezúttal diagramként jeleníti meg, így láthatja, hogyan jelenítheti meg a naplók lekérdezéseit az irányítópulton. Indítsa el a következő lekérdezést, amely a 10 legtöbb kivétellel járó műveletet összesíti.
 
@@ -117,7 +116,7 @@ Mivel az Azure Applications-adatelemzési naplók (Analitika) egy különálló 
 
     ![Naplók (analitikai) diagram](media/tutorial-app-dashboards/11querychart.png)
 
-6. Kattintson a rögzítés ikonra ![Rögzítés ikon](media/tutorial-app-dashboards/pushpin.png) kattintson a jobb felső sarokban a diagram irányítópultra való rögzítéséhez, és ezúttal válassza a hivatkozást az irányítópultra való visszatéréshez.
+6. Kattintson a rögzítés ikonra ![rögzítés ikon](media/tutorial-app-dashboards/pushpin.png) kattintson a jobb felső sarokban a diagram irányítópultra való rögzítéséhez, és ezúttal válassza a hivatkozást az irányítópultra való visszatéréshez.
 4. A lekérdezések eredményei most megjelennek az irányítópulton a választott formátumban.  Kattintson és húzza az egyeseket a pozícióba, majd kattintson a **Testreszabás kész**lehetőségre.
 5. Válassza a ceruza ikont ![Ceruza ikon](media/tutorial-app-dashboards/pencil.png) minden címben adjon meg egy leíró címet.
 
