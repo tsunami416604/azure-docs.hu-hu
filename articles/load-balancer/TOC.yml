@@ -150,7 +150,7 @@
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel
-      href: /learn/browse/?products=azure-virtual-machines
+      href: /learn/browse/?products=azure-load-balancer
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Azure Load Balancer – visszajelzés

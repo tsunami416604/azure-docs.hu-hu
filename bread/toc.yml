@@ -289,36 +289,40 @@
         - name: Anomaly Detector
           tocHref: /azure/cognitive-services/anomaly-detector/
           topicHref: /azure/cognitive-services/anomaly-detector/
-        - name: Bing – Automatikus kiegészítés
-          tocHref: /azure/cognitive-services/Bing-Autosuggest/
-          topicHref: /azure/cognitive-services/Bing-Autosuggest/
-        - name: Bing – Egyéni keresés
-          tocHref: /azure/cognitive-services/bing-custom-search/
-          topicHref: /azure/cognitive-services/bing-custom-search/
-        - name: Bing – Entitáskeresés
-          tocHref: /azure/cognitive-services/bing-entities-search/
-          topicHref: /azure/cognitive-services/bing-entities-search/
-        - name: Bing – Képkeresés
-          tocHref: /azure/cognitive-services/bing-image-search/
-          topicHref: /azure/cognitive-services/bing-image-search/
-        - name: Bing – Hírkeresés
-          tocHref: /azure/cognitive-services/bing-news-search/
-          topicHref: /azure/cognitive-services/bing-news-search/
-        - name: Bing – Helyesírás-ellenőrzés
-          tocHref: /azure/cognitive-services/bing-spell-check/
-          topicHref: /azure/cognitive-services/bing-spell-check/
-        - name: Bing – Videokeresés
-          tocHref: /azure/cognitive-services/Bing-Video-Search/
-          topicHref: /azure/cognitive-services/Bing-Video-Search/
-        - name: Bing vizuális keresés
-          tocHref: /azure/cognitive-services/bing-visual-search/
-          topicHref: /azure/cognitive-services/bing-visual-search/
-        - name: Bing – Internetes keresés
-          tocHref: /azure/cognitive-services/bing-web-search/
-          topicHref: /azure/cognitive-services/bing-web-search/
-        - name: Bing Local Business Search
-          tocHref: /azure/cognitive-services/bing-local-business-search/
-          topicHref: /azure/cognitive-services/bing-local-business-search/
+        - name: Bing Search API-k
+          tocHref: /azure/cognitive-services/bing-web-search
+          topicHref: /azure/cognitive-services/bing-web-search
+          items:
+            - name: Bing – Automatikus kiegészítés
+              tocHref: /azure/cognitive-services/Bing-Autosuggest
+              topicHref: /azure/cognitive-services/Bing-Autosuggest/get-suggested-search-terms
+            - name: Bing – Egyéni keresés
+              tocHref: /azure/cognitive-services/bing-custom-search
+              topicHref: /azure/cognitive-services/bing-custom-search/overview
+            - name: Bing – Entitáskeresés
+              tocHref: /azure/cognitive-services/bing-entities-search
+              topicHref: /azure/cognitive-services/bing-entities-search/overview
+            - name: Bing – Képkeresés
+              tocHref: /azure/cognitive-services/bing-image-search
+              topicHref: /azure/cognitive-services/bing-image-search/overview
+            - name: Bing – Hírkeresés
+              tocHref: /azure/cognitive-services/bing-news-search
+              topicHref: /azure/cognitive-services/bing-news-search/search-the-web
+            - name: Bing – Helyesírás-ellenőrzés
+              tocHref: /azure/cognitive-services/bing-spell-check
+              topicHref: /azure/cognitive-services/bing-spell-check/overview
+            - name: Bing – Videokeresés
+              tocHref: /azure/cognitive-services/Bing-Video-Search
+              topicHref: /azure/cognitive-services/Bing-Video-Search/overview
+            - name: Bing vizuális keresés
+              tocHref: /azure/cognitive-services/bing-visual-search
+              topicHref: /azure/cognitive-services/bing-visual-search/overview
+            - name: Bing – Internetes keresés
+              tocHref: /azure/cognitive-services/bing-web-search
+              topicHref: /azure/cognitive-services/bing-web-search/overview
+            - name: Bing Local Business Search
+              tocHref: /azure/cognitive-services/bing-local-business-search
+              topicHref: /azure/cognitive-services/bing-local-business-search/overview
         - name: Számítógépes látástechnológia
           tocHref: /azure/cognitive-services/computer-vision/
           topicHref: /azure/cognitive-services/computer-vision/
