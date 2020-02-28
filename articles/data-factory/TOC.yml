@@ -515,6 +515,8 @@
           href: data-flow-unpivot.md
         - name: Ablak
           href: data-flow-window.md
+        - name: Egybesimítás
+          href: data-flow-flatten.md
     - name: Paraméterezés
       items:
         - name: Társított szolgáltatások paraméterezése
