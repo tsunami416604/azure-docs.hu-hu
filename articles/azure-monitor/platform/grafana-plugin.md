@@ -1,18 +1,15 @@
 ---
 title: Azure-szolgáltatások és-alkalmazások figyelése a Grafana használatával
 description: Átirányíthatja Azure Monitor és Application Insights az Grafana-ben megtekintheti azokat.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 11/06/2017
-ms.openlocfilehash: f5464710d5c7908eeec5dd917bfeff4756ff4e80
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552096"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672208"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Az Azure-szolgáltatások figyelése a Grafana-ben
 Mostantól a [Azure monitor adatforrás beépülő](https://grafana.com/plugins/grafana-azure-monitor-datasource)modullal is figyelheti az Azure-szolgáltatásokat és-alkalmazásokat a [Grafana](https://grafana.com/) . A beépülő modul a Azure Monitor által összegyűjtött alkalmazás-teljesítményadatokat gyűjti, beleértve a különböző naplókat és mérőszámokat. Ezt az Grafana irányítópulton jelenítheti meg.
@@ -45,7 +42,7 @@ Helyi Grafana-kiszolgáló beállításához [töltse le és telepítse a Grafan
 
 ## <a name="sign-in-to-grafana"></a>Bejelentkezés a Grafana
 
-1. A kiszolgáló IP-címének használatával nyissa meg a bejelentkezési oldalt a következő címen *: http://\<IP cím \>:3000* vagy a *\<DNSName > \:3000* a böngészőben. Míg a 3000 az alapértelmezett port, a telepítés során lehetséges, hogy egy másik portot jelölt ki. Ekkor megjelenik a létrehozott Grafana-kiszolgáló bejelentkezési lapja.
+1. A kiszolgáló IP-címének használatával nyissa meg a bejelentkezési oldalt a következő címen *: http://\<IP-cím\>: 3000* vagy a *\<DNSName >\:3000* a böngészőben. Míg a 3000 az alapértelmezett port, a telepítés során lehetséges, hogy egy másik portot jelölt ki. Ekkor megjelenik a létrehozott Grafana-kiszolgáló bejelentkezési lapja.
 
     ![Grafana bejelentkezési képernyő](./media/grafana-plugin/grafana-login-screen.png)
 
@@ -80,7 +77,7 @@ Miután sikeresen bejelentkezett, látnia kell, hogy a Azure Monitor adatforrás
 5. Ha Application Insights használ, a Application Insights API-t és az alkalmazás-azonosítót is használhatja Application Insights-alapú metrikák összegyűjtéséhez. További információ: [az API-kulcs és az alkalmazás-azonosító beszerzése](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 
 6. Válassza a **Mentés**lehetőséget, a Grafana pedig teszteli az egyes API-k hitelesítő adatait. A következőhöz hasonló üzenetnek kell megjelennie.  
-    ![Grafana adatforrás-konfiguráció jóváhagyva ](./media/grafana-plugin/grafana-data-source-config-approved-dark.png)
+    ![Grafana-adatforrás konfigurációja jóváhagyva](./media/grafana-plugin/grafana-data-source-config-approved-dark.png)
 
 ## <a name="build-a-grafana-dashboard"></a>Grafana-irányítópult létrehozása
 
@@ -89,11 +86,11 @@ Miután sikeresen bejelentkezett, látnia kell, hogy a Azure Monitor adatforrás
 2. Az új irányítópulton válassza ki a **diagramot**. Más diagram-beállítási lehetőségeket is kipróbálhat, de ez a cikk a *gráfot* használja példaként.
 
 3. Egy üres gráf jelenik meg az irányítópulton. Kattintson a panel címére, és válassza a **Szerkesztés** lehetőséget, és adja meg a diagramban ábrázolni kívánt adatok részleteit.
-    ![Grafana új gráf ](./media/grafana-plugin/grafana-new-graph-dark.png)
+    ![Grafana új gráf](./media/grafana-plugin/grafana-new-graph-dark.png)
 
 4. Válassza ki a konfigurált Azure Monitor adatforrást.
    * Azure Monitor metrikák összegyűjtése – válassza ki a **Azure monitor** lehetőséget a szolgáltatás legördülő menüben. Megjelenik a választók listája, ahol kiválaszthatja az ebben a diagramban figyelni kívánt erőforrásokat és mérőszámot. A metrikák egy virtuális gépről való összegyűjtéséhez használja a **Microsoft. számítás/VirtualMachines**névteret. Miután kiválasztotta a virtuális gépeket és a metrikákat, elkezdheti az adatok megtekintését az irányítópulton.
-     ![Grafana gráf-konfiguráció Azure Monitor ](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
+     ![Grafana Graph-konfiguráció Azure Monitor](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
    * Azure Monitor naplózási adatok gyűjtése – válassza az **Azure log Analytics** lehetőséget a szolgáltatás legördülő menüben. Válassza ki a lekérdezni kívánt munkaterületet, és állítsa be a lekérdezés szövegét. Ide másolhatja a már meglévő naplózási lekérdezéseket, vagy újat is létrehozhat. Amikor beírja a lekérdezést, az IntelliSense megjelenik, és javaslatot tesz az automatikus kiegészítési lehetőségekre. Válassza ki a vizualizáció típusát, az **idősorozat** - **táblázatot**, majd futtassa a lekérdezést.
     
      > [!NOTE]
@@ -104,7 +101,7 @@ Miután sikeresen bejelentkezett, látnia kell, hogy a Azure Monitor adatforrás
      ![Grafana Graph-konfiguráció az Azure Log Analytics](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
 
 5. A következő egy egyszerű irányítópult két diagrammal. A bal oldalon a két virtuális gép CPU-hányada látható. A jobb oldali diagram egy Azure Storage-fiókban lévő tranzakciókat jeleníti meg, a tranzakció API-típusa szerinti bontásban.
-    ![Grafana két diagramot, például ](media/grafana-plugin/grafana6.png)
+    ![Grafana két diagramot, például](media/grafana-plugin/grafana6.png)
 
 
 ## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>Nem kötelező: az egyéni metrikák figyelése ugyanabban a Grafana-kiszolgálón
@@ -119,7 +116,7 @@ Az alábbiakban a InfluxDB, a Prometheus és a Docker használatával foglalkoz�
  - [A Docker-gazdagépek,-tárolók és-tároló szolgáltatások figyelési megoldása](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
 
 Itt látható egy olyan teljes Grafana-irányítópult képe, amely Azure Monitor és Application Insights metrikákkal rendelkezik.
-![Grafana példa metrikák ](media/grafana-plugin/grafana8.png)
+![Grafana példa metrikák](media/grafana-plugin/grafana8.png)
 
 ## <a name="advanced-grafana-features"></a>Speciális Grafana funkciók
 
@@ -135,7 +132,7 @@ Usage
 Beállíthat egy változót, amely felsorolja az összes elérhető **megoldási** értéket, majd frissíti a lekérdezést annak használatára.
 Új változó létrehozásához kattintson az irányítópult beállítások gombjára a jobb felső részen, válassza a **változók**, majd az **új**lehetőséget.
 A változó lapon adja meg az adatforrás és a lekérdezés futtatását az értékek listájának lekéréséhez.
-![Grafana változó konfigurálása ](./media/grafana-plugin/grafana-configure-variable-dark.png)
+![Grafana változó konfigurálása](./media/grafana-plugin/grafana-configure-variable-dark.png)
 
 A létrehozást követően állítsa be úgy a lekérdezést, hogy a kijelölt érték (ek) et használja, és a diagramok ennek megfelelően válaszolnak:
 ```

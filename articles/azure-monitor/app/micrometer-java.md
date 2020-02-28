@@ -1,18 +1,16 @@
 ---
 title: A Mikrométer használata az Azure Application Insights Java SDK-val
 description: Részletes útmutató a Mikrométerek használatáról Application Insights Spring boot-és nem tavaszi rendszerindító alkalmazásaival.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: c9f1c6f6742f36d376668422f9c37c6c5a2228a4
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872995"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670066"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>A Mikrométer használata az Azure Application Insights Java SDK-val
 A Mikrométer alkalmazás-figyelési mérőszámai a JVM-alapú alkalmazás kódjára vonatkoznak, és lehetővé teszi az adatok exportálását kedvenc megfigyelési rendszerbe. Ez a cikk bemutatja, hogyan használható a Mikrométer a Application Insights a Spring boot és a nem rugós rendszerindítási alkalmazásokhoz.
@@ -96,19 +94,19 @@ Alapértelmezett mérőszámok:
 Az automatikus metrikák gyűjtésének kikapcsolása: 
  
 - JVM metrikák: 
-    - felügyeleti. mérőszámok. kötések. JVM. enabled = false 
+    - management.metrics.binders.jvm.enabled=false 
 - Logback metrikák: 
-    - felügyeleti. mérőszámok. kötések. logback. enabled = false
+    - management.metrics.binders.logback.enabled=false
 - Üzemidő mérőszámai: 
-    - felügyeleti. mérőszámok. kötések. üzemidő. enabled = false 
+    - management.metrics.binders.uptime.enabled=false 
 - Processzor Metrikái:
-    -  felügyeleti. mérőszámok. kötések. processzor. enabled = false 
+    -  management.metrics.binders.processor.enabled=false 
 - FileDescriptorMetrics:
-    - felügyeleti. mérőszámok. kötések. files. enabled = false 
+    - management.metrics.binders.files.enabled=false 
 - Hystrix metrikák, ha a osztályútvonal lévő könyvtár: 
-    - felügyeleti. mérőszámok. kötések. Hystrix. enabled = false 
+    - management.metrics.binders.hystrix.enabled=false 
 - AspectJ metrikák, ha a osztályútvonal lévő könyvtár: 
-    - Spring. AOP. enabled = false 
+    - spring.aop.enabled=false 
 
 > [!NOTE]
 > Adja meg a fenti tulajdonságokat a Spring boot-alkalmazás Application. properties vagy Application. YML fájljában.

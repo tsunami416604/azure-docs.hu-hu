@@ -1,18 +1,16 @@
 ---
 title: Egyéni rendelkezésre állási tesztek létrehozása és futtatása Azure Functions használatával
 description: Ez a dokumentum azt ismerteti, hogyan hozhat létre egy Azure-függvényt a TrackAvailability () használatával, amely rendszeres időközönként a TimerTrigger függvényben megadott konfigurációnak megfelelően fog futni. A teszt eredményét a rendszer elküldi a Application Insights-erőforrásnak, ahol a rendelkezésre állási eredmények adataira vonatkozó lekérdezéssel és riasztással kapcsolatos értesítéseket fog kapni. A testreszabott tesztek lehetővé teszik az összetettebb rendelkezésre állási tesztek megírását, mint amennyi a portál felhasználói felületén lehetséges, figyelheti az alkalmazást az Azure-VNET belül, módosíthatja a végponti címeket, vagy létrehozhat egy rendelkezésre állási tesztet, ha az nem érhető el a régióban.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: morgangrobin
 ms.author: mogrobin
 ms.date: 11/22/2019
-ms.openlocfilehash: c7a8ffb9873fd70353f38bb2b2bbfdb584992377
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815617"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665799"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Egyéni rendelkezésre állási tesztek létrehozása és futtatása Azure Functions használatával
 

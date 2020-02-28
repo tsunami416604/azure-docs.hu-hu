@@ -1,18 +1,16 @@
 ---
 title: Azure Application Insights-ügynök hibaelhárítása és ismert problémái | Microsoft Docs
 description: Application Insights-ügynök ismert problémái és a hibaelhárítási példák. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 30172bf65be52ba1ddd2b9127c3e2b5a284d48dc
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 217629ba5c386557455cc2d2b8bd47f85fa8f84e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899594"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671154"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights ügynök hibaelhárítása (korábbi nevén Állapotmonitor v2)
 
@@ -26,9 +24,9 @@ Ha olyan problémát tapasztal, amely itt nem szerepel, felveheti velünk a kapc
 
 Ha a DLL-fájlok bármelyike megtalálható a bin könyvtárban, a figyelés sikertelen lehet:
 
-- Microsoft. ApplicationInsights. dll
-- Microsoft. AspNet. TelemetryCorrelation. dll
-- System. Diagnostics. DiagnosticSource. dll
+- Microsoft.ApplicationInsights.dll
+- Microsoft.AspNet.TelemetryCorrelation.dll
+- System.Diagnostics.DiagnosticSource.dll
 
 Ezek a DLL-fájlok a Visual Studio alapértelmezett alkalmazás-sablonjaiba tartoznak, még akkor is, ha az alkalmazás nem használja őket.
 A hibakeresési eszközök segítségével megtekintheti a tüneti viselkedést:
@@ -113,7 +111,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 ```
 
 #### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>Az Application Insights Agent modul aktuális verziójának meghatározása
-Futtassa a `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` parancsot a következő információk megjelenítéséhez a modulról:
+Futtassa a `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` parancsot az alábbi információk megjelenítéséhez a modulról:
    - PowerShell-modul verziója
    - Application Insights SDK-verzió
    - A PowerShell-modul fájlelérési útjai
@@ -126,7 +124,7 @@ A parancsmag használatának részletes ismertetését az [API-referenciában](s
 Megvizsgálhatja a rendszerbe helyezett számítógépek folyamatait annak megállapítására, hogy az összes DLL-fájl be van-e töltve.
 Ha a figyelés működik, legalább 12 DLL-t be kell tölteni.
 
-A DLL-fájlok a `Get-ApplicationInsightsMonitoringStatus -InspectProcess` paranccsal ellenőrizhetők.
+A DLL-eket a `Get-ApplicationInsightsMonitoringStatus -InspectProcess` parancs használatával ellenőrizhetjük.
 
 A parancsmag használatának részletes ismertetését az [API-referenciában](status-monitor-v2-api-get-status.md) tekintheti meg.
 
@@ -147,7 +145,7 @@ A parancsmag használatának részletes ismertetését az [API-referenciában](s
 
 #### <a name="collecting-logs"></a>Naplók összegyűjtése
 
-1. Rendszergazdai jogosultságokkal rendelkező parancssori konzolon futtassa a `iisreset /stop` parancsot az IIS és az összes webalkalmazás kikapcsolásához.
+1. Rendszergazdai jogosultságokkal rendelkező parancssori konzolon futtassa az `iisreset /stop` parancsot az IIS és az összes webalkalmazás kikapcsolásához.
 2. A Perfview eszköz területen válassza a **gyűjtés indítása**elemet.
 3. Rendszergazdai jogosultságokkal rendelkező parancssori konzolon futtassa az `iisreset /start` parancsot az IIS elindításához.
 4. Próbálja meg megkeresni az alkalmazást.

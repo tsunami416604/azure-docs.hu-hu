@@ -3,18 +3,17 @@ title: Azure-erőforrások automatikus méretezése teljesítményadatok vagy ü
 description: Automatikus méretezési beállítás létrehozása egy App Service-csomaghoz metrikai adatok és egy ütemezés használatával
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: tutorial
 ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 44fecf47ccd1ce07c7e51f7bcf51ef7823f2cf97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85ae76d9dcb0b4a1f95992c2f5da48a81fb12677
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637195"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661652"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Automatikus méretezési beállítás Azure-erőforrásokhoz teljesítményadatok vagy ütemezés alapján
 
@@ -30,14 +29,14 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-web-app-and-app-service-plan"></a>Webalkalmazás és App Service-csomag létrehozása
 1. Kattintson az **Erőforrás létrehozása** lehetőségre a bal oldali navigációs ablaktáblán.
 2. Keresse meg és válassza ki a *Webalkalmazás* elemet, és kattintson a **Létrehozás** elemre.
-3. Adja meg az alkalmazás nevét, például: *MyTestScaleWebApp*. Hozzon létre egy új erőforráscsoportot * myResourceGroup' vagy egy erőforráscsoportot, szabadon helyezze el.
+3. Adja meg az alkalmazás nevét, például: *MyTestScaleWebApp*. Hozzon létre egy új erőforráscsoportot * myResourceGroup, vagy helyezze egy kiválasztott erőforráscsoport-csoportba.
 
 A rendszer néhány percen belül üzembe helyezi az erőforrásokat. Az oktatóanyag fennmaradó részében használja a webalkalmazást és a vonatkozó App Service-csomagot.
 
@@ -89,7 +88,7 @@ A következő néhány lépés segít kitölteni az automatikus skálázási ké
 
 5. Az **Operátor** legyen „Nagyobb, mint”, a **Küszöbérték** legyen „10”, az **Időtartam** pedig legyen „5 perc”.
 
-6. A kiválasztott művelet legyen **„Mennyiség növelése a következővel”**, a **Példányszám** legyen „1”, a **Várakozási idő** pedig „5” perc.
+6. A kiválasztott művelet legyen **„Mennyiség növelése a következővel”** , a **Példányszám** legyen „1”, a **Várakozási idő** pedig „5” perc.
 
 7. Kattintson a **Hozzáadás** gombra.
 
@@ -110,7 +109,7 @@ Javasoljuk, hogy a felskálázási szabályok mellett mindig legyen beállítva 
 
 5. Az **Operátor** legyen „Kisebb, mint”, a **Küszöbérték** legyen „5”, az **Időtartam** pedig legyen „5 perc”.
 
-6. A kiválasztott művelet legyen **„Mennyiség csökkentése a következővel”**, a **Példányszám** legyen „1”, a **Várakozási idő** pedig „5” perc.
+6. A kiválasztott művelet legyen **„Mennyiség csökkentése a következővel”** , a **Példányszám** legyen „1”, a **Várakozási idő** pedig „5” perc.
 
 7. Kattintson a **Hozzáadás** gombra.
 
@@ -170,7 +169,7 @@ Az automatikus méretezési beállítás leskálázási feltétele akkor aktivá
 
 4. A törlés megerősítéséhez írja be a **yes** (igen) szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az alábbiakat végezte el:  
 > [!div class="checklist"]

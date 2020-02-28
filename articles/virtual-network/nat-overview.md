@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: b27baed20d8e36bf5790036e2fdc0804a94a4ea1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0e19271b5c69610dd9f44c3121e195b80732279c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589436"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669539"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Mi az Virtual Network NAT (nyilvános előzetes verzió)?
 
@@ -39,7 +39,7 @@ Virtual Network NAT (hálózati címfordítás) egyszerűbbé teszi a csak kimen
 
 
 >[!NOTE] 
->Virtual Network NAT jelenleg nyilvános előzetes verzióként érhető el. Jelenleg csak korlátozott számú [régióban](#region-availability)érhető el. Ez az előzetes verzió szolgáltatási szintű szerződés nélkül érhető el, ezért nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.comsupport/legal/preview-supplemental-terms).
+>Virtual Network NAT jelenleg nyilvános előzetes verzióként érhető el. Jelenleg csak korlátozott számú [régióban](#region-availability)érhető el. Ez az előzetes verzió szolgáltatási szintű szerződés nélkül érhető el, ezért nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>Statikus IP-címek csak kimenőként
 
@@ -200,5 +200,5 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Ossza meg velünk [
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ a [NAT-átjáró erőforrásáról](./nat-gateway-resource.md).
-- [Ossza meg velünk a következőt a UserVoice-ben](https://aka/natuservoice).
+- [Ossza meg velünk a következőt a UserVoice-ben](https://aka.ms/natuservoice).
 - [Visszajelzés küldése a nyilvános előzetes](https://aka.ms/natfeedback)verzióról.

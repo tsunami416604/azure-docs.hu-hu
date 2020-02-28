@@ -1,24 +1,23 @@
 ---
 title: Erőforrás-naplók összegyűjtése az Azure-erőforrásokból és a Azure Monitor elemzése
 description: Oktatóanyag a diagnosztikai beállítások konfigurálásához az Azure-erőforrásokból származó erőforrás-naplók összegyűjtéséhez egy Log Analytics munkaterületre, ahol egy napló lekérdezéssel elemezhetők.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 90b2a9bc9e3e8aa6297f02a46163717a2bf58a22
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 9f88a69e8d24cfa8654ac2bea3344c9adf81c16a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533558"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670406"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Oktatóanyag: erőforrás-naplók összegyűjtése és elemzése Azure-erőforrásból
 
 Az erőforrás-naplók betekintést nyújtanak az Azure-erőforrások részletes műveleteibe, és hasznosak az állapotuk és a rendelkezésre állásuk monitorozásához. Az Azure-erőforrások automatikusan létrehoznak erőforrás-naplókat, de be kell állítania, hogy hol legyenek összegyűjtve. Ez az oktatóanyag végigvezeti a diagnosztikai beállítás létrehozásának folyamatán, amely az Azure-előfizetésben lévő erőforrásokhoz tartozó erőforrás-naplók összegyűjtését és a napló lekérdezésével történő elemzését ismerteti.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Log Analytics munkaterület létrehozása Azure Monitor
@@ -35,7 +34,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-erőforrásra a figyel
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.
 
 
-## <a name="create-a-workspace"></a>Munkaterületek létrehozása
+## <a name="create-a-workspace"></a>Munkaterület létrehozása
 A Azure Monitor Log Analytics munkaterülete különböző forrásokból gyűjti és indexeli a naplózási adatokat, és lehetővé teszi a speciális elemzést egy hatékony lekérdezési nyelv használatával. A Log Analytics munkaterületnek léteznie kell ahhoz, hogy diagnosztikai beállítást hozzon létre az adatküldéshez. Használhat egy meglévő munkaterületet az Azure-előfizetésében, vagy létrehozhat egyet az alábbi eljárással. 
 
 > [!NOTE]

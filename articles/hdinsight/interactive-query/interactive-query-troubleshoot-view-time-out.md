@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
-ms.openlocfilehash: 6b4050918251d35a460d232dddc0c3113f163ec8
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f00f70e674ac0b83b737d6b2a4bf9d20400736fc
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895079"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672021"
 ---
 # <a name="scenario-apache-hive-view-times-out-when-fetching-a-query-result-in-azure-hdinsight"></a>Forgatókönyv: Apache Hive megtekintési időtúllépés az Azure HDInsight lekérdezési eredményének beolvasása során
 
@@ -31,14 +31,14 @@ java.util.concurrent.TimeoutException: deadline passed
 
 A kaptár nézet alapértelmezett időtúllépési értéke nem lehet megfelelő a futtatott lekérdezéshez. A megadott időtartam túl rövid ahhoz, hogy a struktúra nézet beolvassa a lekérdezés eredményét.
 
-## <a name="resolution"></a>Felbontás
+## <a name="resolution"></a>Megoldás:
 
 Növelje az Apache Ambari-struktúra nézet időtúllépéseit a következő tulajdonságok `/etc/ambari-server/conf/ambari.properties`ban való beállításával.
 
 ```
 views.ambari.request.read.timeout.millis=300000
 views.request.read.timeout.millis=300000
-views.ambari.hive<HIVE_VIEW_INSTANCE_NAME>.result.fetch.timeout=300000
+views.ambari.hive.<HIVE_VIEW_INSTANCE_NAME>.result.fetch.timeout=300000
 ```
 
 `HIVE_VIEW_INSTANCE_NAME` értéke a kaptár nézet URL-címének végén érhető el.

@@ -1,19 +1,15 @@
 ---
 title: Intelligens észlelés – teljesítménybeli rendellenességek | Microsoft Docs
 description: Application Insights az alkalmazás telemetria intelligens elemzését végzi, és figyelmezteti a lehetséges problémákra. Ehhez a szolgáltatáshoz nincs szükség beállításra.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: b9a95bb2ee6ab137e974b46e24738ca5194f3bd2
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820567"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671732"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens észlelés – teljesítménybeli rendellenességek
 
@@ -36,7 +32,7 @@ Az intelligens észlelésnek legalább 8 napos telemetria kell lennie egy műkö
 
 Nem, egy értesítés nem azt jelenti, hogy az alkalmazásnak feltétlenül van problémája. Ezek csupán javaslatok, hogy az adott anomáliát érdemes részletesebben megvizsgálni.
 
-## <a name="how-do-i-fix-it"></a>Hogyan kijavítani?
+## <a name="how-do-i-fix-it"></a>Hogyan javíthatom?
 
 Az értesítések közé tartoznak a diagnosztikai információk. Például:
 
@@ -61,7 +57,7 @@ Az intelligens észlelési értesítések alapértelmezés szerint engedélyezve
 
 Az intelligens Észlelésekkel kapcsolatos e-mailek száma Application Insights erőforráson naponta egy e-mailre korlátozódik. Az e-mail csak akkor lesz elküldve, ha van legalább egy új, az adott napon észlelt probléma. Egyetlen üzenet sem jelenik meg. 
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 * *Tehát a Microsoft munkatársai megvizsgálják az adataikat?*
   * Nem. A szolgáltatás teljesen automatikus. Csak Ön kapja meg az értesítéseket. Az adatai [magánjellegűek](../../azure-monitor/app/data-retention-privacy.md).

@@ -1,34 +1,33 @@
 ---
-title: Műveletcsoportok létrehozása a Resource Manager-sablonokkal
-description: Ismerje meg, hogyan műveletcsoport létrehozása Azure Resource Manager-sablon használatával.
+title: Műveleti csoportok létrehozása Resource Manager-sablonokkal
+description: Megtudhatja, hogyan hozhat létre műveleti csoportot Azure Resource Manager sablon használatával.
 author: dkamstra
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 638dd8efba5e86bb7e8abb78a41196bfac9524df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50ad9d57b24fab9ee57c2f9caae8f4c39d2681f0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60709966"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669080"
 ---
-# <a name="create-an-action-group-with-a-resource-manager-template"></a>Műveletcsoport létrehozása a Resource Manager-sablonnal
-Ez a cikk bemutatja, hogyan használható egy [Azure Resource Manager-sablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) Műveletcsoportok konfigurálása. Sablonok használatával automatikusan állíthat be, amelyek felhasználhatók a meghatározott típusú riasztások Műveletcsoportok. A Műveletcsoportok győződjön meg arról, hogy a megfelelő felek értesítést kapnak, ha a riasztás aktiválódik.
+# <a name="create-an-action-group-with-a-resource-manager-template"></a>Műveleti csoport létrehozása Resource Manager-sablonnal
+Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablont](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) a műveleti csoportok konfigurálásához. A sablonok használatával automatikusan beállíthat olyan műveleti csoportokat, amelyek bizonyos típusú riasztásokban újra felhasználhatók. Ezek a műveleti csoportok biztosítják, hogy az összes megfelelő fél értesítést kapjon, ha riasztást vált ki.
 
 Az alapszintű lépések a következők:
 
-1. Hozzon létre egy sablont, amely azt ismerteti, hogyan hozhat létre a műveletcsoport JSON-fájlként.
+1. Hozzon létre egy sablont JSON-fájlként, amely leírja, hogyan kell létrehozni a műveleti csoportot.
 
-2. A sablon üzembe helyezése használatával [bármely üzembe helyezési módszer](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
+2. Telepítse a sablont [bármely üzembe helyezési módszer](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)használatával.
 
-Első lépésként azt ismertetjük, hogyan hozhat létre a Resource Manager-sablon, ahol a művelet definíciók módosíthatóként a sablonban műveleti csoport számára. Ezután azt ismertetjük, hogyan hozhat létre egy sablont, amely a bemeneti paramétereket a webhook konfigurációs információkat a sablon üzembe helyezésekor.
+Először is leírjuk, hogyan hozhat létre Resource Manager-sablont egy olyan műveleti csoporthoz, ahol a műveleti definíciók a sablonban nehezen kódoltak. Másodszor, leírjuk, hogyan hozhat létre olyan sablont, amely a webhook konfigurációs adatait bemeneti paraméterekként veszi igénybe a sablon telepítésekor.
 
-## <a name="resource-manager-templates-for-an-action-group"></a>Műveletcsoport Resource Manager-sablonokkal
+## <a name="resource-manager-templates-for-an-action-group"></a>A műveleti csoport Resource Manager-sablonjai
 
-Resource Manager-sablonnal műveletcsoport létrehozásához hoz létre a típusú erőforrást `Microsoft.Insights/actionGroups`. Ezután, töltse ki az összes kapcsolódó tulajdonságok. Az alábbiakban a két mintául szolgáló sablont, amely a műveletcsoport létrehozása.
+Ha Resource Manager-sablonnal szeretne létrehozni egy műveleti csoportot, hozzon létre egy `Microsoft.Insights/actionGroups`típusú erőforrást. Ezután töltse ki az összes kapcsolódó tulajdonságot. A következő két minta sablon hozzon létre egy műveleti csoportot.
 
 ```json
 {
@@ -163,8 +162,8 @@ Resource Manager-sablonnal műveletcsoport létrehozásához hoz létre a típus
 ```
 
 
-## <a name="next-steps"></a>További lépések
-* Tudjon meg többet [Műveletcsoportok](../../azure-monitor/platform/action-groups.md).
-* Tudjon meg többet [riasztások](alerts-overview.md).
-* Ismerje meg, hogyan adhat hozzá [Resource Manager-sablon használatával riasztások](../../azure-monitor/platform/alerts-activity-log.md).
+## <a name="next-steps"></a>Következő lépések
+* További információ a [műveleti csoportokról](../../azure-monitor/platform/action-groups.md).
+* További információ a [riasztásokról](alerts-overview.md).
+* Megtudhatja, hogyan adhat hozzá [riasztásokat Resource Manager-sablonok használatával](../../azure-monitor/platform/alerts-activity-log.md).
 

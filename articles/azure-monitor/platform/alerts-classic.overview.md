@@ -1,18 +1,15 @@
 ---
 title: A klasszikus riasztások áttekintése Microsoft Azure és Azure Monitor
 description: A klasszikus riasztások elavultak. A riasztások lehetővé teszik az Azure-erőforrások metrikáinak, eseményeinek vagy naplófájljainak figyelését, és értesítést kapnak, ha teljesül egy megadott feltétel.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 2d150006fb4638d3efb15111013d17e43c8b125e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.subservice: alerts
+ms.openlocfilehash: 098efd3075c6b099bdfc925cb4f09163f83532a5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747016"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668266"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mi a klasszikus riasztás a Microsoft Azureban?
 
@@ -81,7 +78,7 @@ Azonban a régebbi metrikai riasztások nem használnak műveleti csoportokat. E
 
 A webhookok lehetővé teszik az automatizálást és a szervizelést, például a következő használatával:
 - Azure Automation-runbook
-- Azure-függvény
+- Azure Function
 - Azure Logic App
 - harmadik féltől származó szolgáltatás
 

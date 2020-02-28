@@ -1,18 +1,17 @@
 ---
 title: Az Azure Log Analytics Linux-ügynök hibaelhárítása |} A Microsoft Docs
 description: A Azure Monitor Log Analytics-ügynökével kapcsolatos leggyakoribb problémák tüneteinek, okainak és megoldásának leírása.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: b7036b305b4b1041fced3be68024be29d49a4990
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 24aa3462aef4f719e93d17389ff342084f6c7864
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086868"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668757"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynök hibáinak elhárítása 
 

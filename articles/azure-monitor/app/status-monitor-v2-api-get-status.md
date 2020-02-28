@@ -1,18 +1,16 @@
 ---
 title: Az Azure Application Insights Agent API-referenciája
 description: Application Insights Agent API-referenciája. Get-ApplicationInsightsMonitoringStatus. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. A helyszíni, valamint a virtuális gépeken, illetve az Azure-ban üzemeltetett ASP.NET-webappokhoz is használható.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 9b1010404cb876ed818dd54cf527987c6cf0ffe0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 159dab4a228c822ef62c45c9ccceff638a9bea45
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899693"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671256"
 ---
 # <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Application Insights ügynök API: Get-ApplicationInsightsMonitoringStatus
 
@@ -31,7 +29,7 @@ Ez a parancsmag a figyeléshez szükséges kulcsfontosságú fájlokkal kapcsola
 
 ### <a name="example-application-status"></a>Példa: alkalmazás állapota
 
-A webhelyek figyelési állapotának megjelenítéséhez futtassa a következő parancsot: `Get-ApplicationInsightsMonitoringStatus`.
+A webhelyek figyelési állapotának megjelenítéséhez futtassa a `Get-ApplicationInsightsMonitoringStatus` parancsot.
 
 ```
 PS C:\Windows\system32> Get-ApplicationInsightsMonitoringStatus
@@ -133,7 +131,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime
 
 Megvizsgálhatja a folyamatot a műszeres számítógépen, és ellenőrizheti, hogy az összes DLL-fájl be van-e töltve. Ha a figyelés működik, legalább 12 DLL-t be kell tölteni.
 
-Futtassa az `Get-ApplicationInsightsMonitoringStatus -InspectProcess` parancsot:
+Futtassa az `Get-ApplicationInsightsMonitoringStatus -InspectProcess`parancsot:
 
 
 ```
@@ -187,7 +185,7 @@ Emellett letölti a külső eszközöket is annak megállapításához, hogy a s
 
 
 Ha a folyamat bármilyen okból meghiúsul, manuálisan is futtathatja ezeket a parancsokat:
-- iisreset. exe/status
+- iisreset.exe /status
 - [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights
 - [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | findstr/I "InstrumentationEngine AI ApplicationInsights"
 

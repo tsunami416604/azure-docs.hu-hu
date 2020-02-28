@@ -1,14 +1,14 @@
 ---
 title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
-ms.date: 11/26/2019
+ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1e90009a0c34bf166a18659a19988ea5a0c9ab07
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: ade659637f1be6cc58cebae760c5e1b753f3830f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587124"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670780"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -716,6 +716,9 @@ További információ: [[\*] alias kiértékelése](../how-to/author-policies-fo
 
 Kezdeményezések lehetővé teszi több kapcsolódó szabályzatdefiníciót, mert dolgozik egy csoport egyetlen elemként hozzárendelések és a felügyeleti egyszerűsítése érdekében. Ha például be egy egyetlen-kezdeményezéshez kapcsolódó címkézési szabályzatdefiníciók csoportosíthatók. Ahelyett, hogy az egyes házirendek külön-külön rendeli, a kezdeményezés vonatkoznak.
 
+> [!NOTE]
+> A kezdeményezés kiosztása után a kezdeményezésére szintjének paraméterei nem módosíthatók. Ennek oka, hogy a paraméter megadásakor a rendszer a következőt adja meg: **defaultValue** .
+
 Az alábbi példa bemutatja, hogyan hozhat létre egy kezdeményezést két címke kezeléséhez: `costCenter` és `productName`. Két beépített szabályzatokat használ a alkalmazni az alapértelmezett címke értéke.
 
 ```json
@@ -729,13 +732,15 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy kezdeményezést két cím
                 "type": "String",
                 "metadata": {
                     "description": "required value for Cost Center tag"
-                }
+                },
+                "defaultValue": "DefaultCostCenter"
             },
             "productNameValue": {
                 "type": "String",
                 "metadata": {
                     "description": "required value for product Name tag"
-                }
+                },
+                "defaultValue": "DefaultProduct"
             }
         },
         "policyDefinitions": [{

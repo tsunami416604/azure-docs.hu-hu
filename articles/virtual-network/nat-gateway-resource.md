@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 9d9033689472fbc462eefd3d31c2b36a19add81a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 26de7a6d05bde8d80e22bd8801ae9b5dc8faeb36
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589470"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669556"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Virtuális hálózatok tervezése NAT Gateway-erőforrásokkal (nyilvános előzetes verzió)
 
@@ -34,7 +34,7 @@ A NAT-átjáró erőforrásai [Virtual Network NAT](nat-overview.md) részét k�
 
 
 >[!NOTE] 
->Virtual Network NAT jelenleg nyilvános előzetes verzióként érhető el. Jelenleg csak korlátozott számú [régióban](nat-overview.md#region-availability)érhető el. Ez az előzetes verzió szolgáltatási szintű szerződés nélkül érhető el, ezért nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.comsupport/legal/preview-supplemental-terms).
+>Virtual Network NAT jelenleg nyilvános előzetes verzióként érhető el. Jelenleg csak korlátozott számú [régióban](nat-overview.md#region-availability)érhető el. Ez az előzetes verzió szolgáltatási szintű szerződés nélkül érhető el, ezért nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="how-to-deploy-nat"></a>NAT üzembe helyezése
 
@@ -365,5 +365,5 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Ossza meg velünk [
   * [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
   * [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
   * [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
-- [Ossza meg velünk a következőt a UserVoice-ben](https://aka/natuservoice).
+- [Ossza meg velünk a következőt a UserVoice-ben](https://aka.ms/natuservoice).
 - [Visszajelzés küldése a nyilvános előzetes](https://aka.ms/natfeedback)verzióról.

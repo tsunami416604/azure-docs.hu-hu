@@ -10,12 +10,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 172fe646b294ca511a22128094c56172c4268018
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2a7cab3422a0d44e45e622e2d556b5fec4ff659c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750283"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669471"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rövid útmutató: Java Spring-alkalmazás létrehozása az Azure app Configuration szolgáltatással
 
@@ -31,9 +31,9 @@ Ebben a rövid útmutatóban beépíti az Azure-alkalmazások konfigurációját
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
+1. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |---|---|
     | /application/config.message | Üdvözöljük! |
 
@@ -45,30 +45,42 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 1. Nyissa meg a következő címet: <https://start.spring.io/>.
 
-2. Adja meg a következő beállításokat:
+1. Adja meg a következő beállításokat:
 
-   * **Maven** -projekt létrehozása **Javával**.
-   * Olyan **Spring boot** -verziót válasszon, amely egyenlő vagy nagyobb, mint 2,0.
-   * Adja meg az alkalmazás **csoport** -és **lelet** -nevét.
-   * Adja hozzá a **rugó webes** függőségét.
+   - Hozzon létre egy **Maven** projektet **Javával**.
+   - Olyan **Spring boot** -verziót válasszon, amely egyenlő vagy nagyobb, mint 2,0.
+   - Adja meg az alkalmazáshoz tartozó **Group** (Csoport) és **Artifact** (Összetevő) neveket.
+   - Adja hozzá a **rugó webes** függőségét.
 
-3. Az előző beállítások megadása után válassza a **projekt létrehozása**lehetőséget. Ha a rendszer kéri, töltse le a projektet egy elérési útra a helyi számítógépen.
+1. Az előző beállítások megadása után válassza a **projekt létrehozása**lehetőséget. Ha a rendszer kéri, töltse le a projektet a helyi számítógépre.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
 1. Miután kicsomagolta a fájlokat a helyi rendszeren, az egyszerű Spring boot-alkalmazás készen áll a szerkesztésre. Keresse meg a *Pom. XML* fájlt az alkalmazás gyökérkönyvtárában.
 
-2. Nyissa meg a *Pom. XML* fájlt egy szövegszerkesztőben, és adja hozzá a Spring Cloud Azure config Starter-t a `<dependencies>`listájához:
+1. Nyissa meg a *Pom. XML* fájlt egy szövegszerkesztőben, és adja hozzá a Spring Cloud Azure config Starter-t a `<dependencies>`listájához:
+
+    **Spring Cloud 1.1. x**
 
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0</version>
+        <artifactId>spring-cloud-azure-feature-management</artifactId>
+        <version>1.1.2</version>
     </dependency>
     ```
 
-3. Hozzon létre egy új, *MessageProperties. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába. Adja hozzá a következő sorokat:
+    **Spring Cloud 1.2. x**
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-feature-management</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    ```
+
+1. Hozzon létre egy új, *MessageProperties. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába. Adja hozzá a következő sorokat:
 
     ```java
     package com.example.demo;
@@ -89,7 +101,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
     }
     ```
 
-4. Hozzon létre egy új, *HelloController. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába. Adja hozzá a következő sorokat:
+1. Hozzon létre egy új, *HelloController. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába. Adja hozzá a következő sorokat:
 
     ```java
     package com.example.demo;
@@ -112,7 +124,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
     }
     ```
 
-5. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá a `@EnableConfigurationProperties` a funkció engedélyezéséhez.
+1. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá a `@EnableConfigurationProperties` a funkció engedélyezéséhez.
 
     ```java
     import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -126,10 +138,28 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
     }
     ```
 
-6. Hozzon létre egy `bootstrap.properties` nevű új fájlt az alkalmazás erőforrások könyvtára alatt, és adja hozzá a következő sorokat a fájlhoz. Cserélje le a mintavételi értékeket az alkalmazás konfigurációs tárolójának megfelelő tulajdonságaira.
+1. Hozzon létre egy `bootstrap.properties` nevű új fájlt az alkalmazás erőforrások könyvtára alatt, és adja hozzá a következő sorokat a fájlhoz. Cserélje le a mintavételi értékeket az alkalmazás konfigurációs tárolójának megfelelő tulajdonságaira.
 
     ```CLI
-    spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
+    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    ```
+
+1. Állítson be egy **APP_CONFIGURATION_CONNECTION_STRING**nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. A parancssorban futtassa a következő parancsot, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
+
+    ```CLI
+        setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
+    ```
+
+    Ha a Windows PowerShellt használja, futtassa a következő parancsot:
+
+    ```azurepowershell
+        $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
+    ```
+
+    Ha macOS vagy Linux rendszert használ, futtassa a következő parancsot:
+
+    ```console
+        export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>Az alkalmazás helyi létrehozása és futtatása

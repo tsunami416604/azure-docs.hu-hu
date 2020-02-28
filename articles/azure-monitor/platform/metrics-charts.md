@@ -1,152 +1,151 @@
 ---
-title: Fejlett funkcióira Metrikaböngészőt Azure
-description: Az Azure Monitor Metrikaböngészőjének speciális funkcióinak megismerése
+title: Az Azure Metrikaböngésző speciális funkciói
+description: További információ a Azure Monitor speciális funkcióiról Metrikaböngésző
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c754f33ab5f4346413b6603ca2cd404acac5443f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60256782"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662400"
 ---
-# <a name="advanced-features-of-azure-metrics-explorer"></a>Fejlett funkcióira Metrikaböngészőt Azure
+# <a name="advanced-features-of-azure-metrics-explorer"></a>Az Azure Metrikaböngésző speciális funkciói
 
 > [!NOTE]
-> Ez a cikk feltételezi, hogy Ön ismeri a Metrikaböngésző alapszintű szolgáltatásaihoz. Ha szeretné megtudni, hogyan hozzon létre az első metrikadiagram, és új felhasználó [Ismerkedés az Azure Metrikaböngésző](metrics-getting-started.md).
+> Ez a cikk azt feltételezi, hogy ismeri a Metrikaböngésző alapszintű funkcióit. Ha Ön új felhasználó, és szeretné megismerni, hogyan hozhatja létre első mérőszámát, tekintse meg [Az Azure Metrikaböngésző első lépéseivel foglalkozó](metrics-getting-started.md)témakört.
 
 ## <a name="metrics-in-azure"></a>Metrikák az Azure-ban
 
-[Metrikák az Azure monitorban](data-platform-metrics.md) mért értékek sorozata, összegyűjtött és tárolt idővel számát is. Nincsenek metrikák standard (vagy "platform"), és egyéni mérőszámok. A standard mérőszámok az Azure platform saját maga által biztosított Önnek. Standard mérőszámok az Azure-erőforrások állapotát és a használati statisztikáit tükrözik. Mivel az egyéni metrikák használatával az alkalmazások által az Azure-bA küldött a [Application Insights API egyéni eseményekhez és a metrikák](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), [Windows Azure Diagnostics (WAD) bővítmény](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview), vagy [Azure Figyelheti a REST API-val](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api).
+A [Azure monitor metrikái](data-platform-metrics.md) a mért értékek, valamint a begyűjtött és az idő múlásával tárolt számok sorozata. Léteznek standard (vagy "platform") mérőszámok és egyéni metrikák. A standard mérőszámokat maga az Azure platform kapja meg. A standard mérőszámok az Azure-erőforrások állapot-és használati statisztikáit tükrözik. Míg az egyéni metrikákat az alkalmazások az Application Insights API használatával küldik el az Azure-ba az [Egyéni eseményekhez és mérőszámokhoz](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), a [Windows Azure Diagnostics (wad) bővítményhez](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)vagy [Azure monitor Rest APIhoz](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api).
 
-## <a name="create-views-with-multiple-metrics-and-charts"></a>Nézetek létrehozása több mértékek és diagramok
+## <a name="create-views-with-multiple-metrics-and-charts"></a>Nézetek létrehozása több metrikával és diagrammal
 
-Diagramok, amelyek több metrikák vonal megrajzolásához vagy több mérőszám-diagramok megjelenítése egyszerre hozhat létre. Ez a funkció lehetővé teszi:
+Létrehozhat olyan diagramokat, amelyek több mérőszámot ábrázolnak, vagy egyszerre több metrikai diagramot is megjeleníthetnek. Ez a funkció lehetővé teszi a következőket:
 
-- az ugyanazon a grafikonon egy érték összevetését kapcsolódó metrikák kapcsolódik egy másik
-- metrikák megjelenítése a közvetlen egymás közelében lévő különböző mértékegységek
-- vizuálisan összesíteni, és hasonlítsa össze a különböző erőforrásokból származó metrikák
+- a kapcsolódó metrikák korrelálása ugyanazon a gráfon, hogy az egyik érték hogyan kapcsolódjon egymáshoz
+- a metrikák megjelenítése a különböző mértékegységekkel a közeli közelségben
+- több erőforrás metrikáinak vizuális összesítése és összehasonlítása
 
-Például ha 5 tárfiókok rendelkezik, és meg szeretné ismerni a teljes lemezterület felhasznált közöttük, létrehozhat egy (halmozott) területdiagramot, amely az egyéni és az összes érték összegét mutatja adott időpontokban időben.
+Ha például 5 Storage-fiókkal rendelkezik, és szeretné tudni, hogy mekkora a teljes tárterület a közöttük, létrehozhat egy (halmozott) diagramot, amely az adott időpontokban szereplő értékek egyedi és összegét jeleníti meg.
 
-### <a name="multiple-metrics-on-the-same-chart"></a>Több metrika ugyanezen a diagramon
+### <a name="multiple-metrics-on-the-same-chart"></a>Több metrika ugyanazon a diagramon
 
-Először [hozzon létre egy új diagramot](metrics-getting-started.md#create-your-first-metric-chart). Kattintson a **metrika hozzáadása** , és ismételje meg a lépéseket egy másik metrika hozzáadása ugyanezen a diagramon.
+Először [hozzon létre egy új diagramot](metrics-getting-started.md#create-your-first-metric-chart). Kattintson a **metrika hozzáadása** lehetőségre, és ismételje meg a lépéseket egy másik metrika egyazon diagramon való hozzáadásához.
 
    > [!NOTE]
-   > Általában nem érdemes metrikák különböző mértékegységben (pl. "ezredmásodperc" és "kilobájt") vagy jelentősen eltérő méretezési rendelkezik egy diagram. Ehelyett érdemes lehet több diagramot. Kattintson a több diagram létrehozása a metrikaböngészőben diagram hozzáadása gombra.
+   > Általában nem szeretné, hogy a metrikák különböző mértékegységekkel rendelkezzenek (például "ezredmásodpercek" és "kilobájtok"), vagy egy diagramon jelentősen eltérő méretezéssel. Ehelyett érdemes több diagramot használni. Kattintson a diagram hozzáadása gombra, és hozzon létre több diagramot a mérőszámok Explorerben.
 
 ### <a name="multiple-charts"></a>Több diagram
 
-Kattintson a **Hozzáadás diagram** , és hozzon létre egy másik diagramot egy másik metrikát választani.
+Kattintson a **diagram hozzáadása** lehetőségre, és hozzon létre egy másik metrikával rendelkező diagramot.
 
-### <a name="order-or-delete-multiple-charts"></a>Megrendelés vagy több diagram törlése
+### <a name="order-or-delete-multiple-charts"></a>Több diagram megrendelése vagy törlése
 
-Rendelés, vagy törli a több diagramot, kattintson a három pontra ( **...**  ) a diagram menü megnyitásához, és válassza ki a megfelelő menüelem a szimbólum **feljebb**, **lejjebb**, vagy **törlése**.
+Több diagram megrendeléséhez vagy törléséhez kattintson a három pontra ( **..** .) szimbólumra a diagram menü megnyitásához, majd válassza ki a **feljebb,** lejjebbvagy **törölni**kívánt menüelemet.
 
-## <a name="apply-filters-to-charts"></a>Szűrőket alkalmazhat a diagramok
+## <a name="apply-filters-to-charts"></a>Szűrők alkalmazása diagramokra
 
-A diagramok, amelyek megmutatják a dimenziókkal rendelkező metrikák szűrőket is alkalmazhat. Például, ha a "Tranzakciók száma" metrika van egy dimenzió, "Választípus", amely jelzi, hogy a tranzakció válasza sikeres vagy sikertelen volt, majd szűrése e dimenzión lenne jeleníti meg egy diagram sort csak a sikeres (vagy csak sikertelen) tranzakciók. 
+Szűrőket alkalmazhat a diagramokra, amelyek dimenziókat tartalmazó metrikákat jelenítenek meg. Ha például a "tranzakciók száma" mérőszámban szerepel egy dimenzió, "válasz típusa", amely azt jelzi, hogy a tranzakciók válaszai sikeresek vagy sikertelenek voltak, akkor a dimenzió szűrése csak a sikeres (vagy csak sikertelen) tranzakciók esetében fog kirajzolni egy diagram sort. 
 
-### <a name="to-add-a-filter"></a>Szűrő hozzáadása
+### <a name="to-add-a-filter"></a>Szűrő felvétele
 
-1. Válassza ki **szűrő hozzáadása** a diagram felett
+1. Válassza a **szűrő hozzáadása** a diagram felett lehetőséget.
 
-2. Válassza ki a szűrni kívánt dimenzió (tulajdonság)
+2. Válassza ki a szűrni kívánt dimenziót (tulajdonságot)
 
-   ![metrika kép](./media/metrics-charts/00006.png)
+   ![metrika képe](./media/metrics-charts/00006.png)
 
-3. Válassza ki, melyik dimenzióértékek fel szeretne venni a diagram (Ez a példa bemutatja a sikeres tárolási tranzakciók kiszűrése) azonosításakor:
+3. Válassza ki, hogy mely dimenzió értékeket kívánja felvenni a diagram ábrázolásakor (ez a példa a sikeres tárolási tranzakciók szűrését mutatja):
 
-   ![metrika kép](./media/metrics-charts/00007.png)
+   ![metrika képe](./media/metrics-charts/00007.png)
 
-4. A szűrő értékeit kiválasztását követően kattintson a forrásadatok a választó bezárásához. Most a diagram bemutatja, hogy hány tranzakció sikertelen volt:
+4. Miután kiválasztotta a szűrő értékeit, kattintson a szűrési választóból a bezáráshoz. A diagramon most már látható, hogy hány tárolási tranzakciót sikerült végrehajtani:
 
-   ![metrika kép](./media/metrics-charts/00008.png)
+   ![metrika képe](./media/metrics-charts/00008.png)
 
-5. Megismételheti a lépéseket több szűrőket alkalmaz az azonos diagramok 1 – 4.
+5. Az 1-4-es lépések megismétlésével több szűrőt is alkalmazhat ugyanarra a diagramra.
 
 
 
-## <a name="apply-splitting-to-a-chart"></a>Alkalmazza a megosztáshoz, hogy a diagram
+## <a name="apply-splitting-to-a-chart"></a>Felosztás alkalmazása diagramra
 
-Jeleníthetik meg egymással szembeni metrika összehasonlítási különböző szegmensek dimenzió egy metrikát felosztás és a egy dimenzió lakatlan szegmensek azonosítja.
+A mérőszámok dimenzió alapján való felosztásával megjelenítheti, hogy a metrika különböző szakaszai hogyan hasonlítanak össze egymással, és azonosítsa a dimenzió kihelyezett szegmenseit.
 
 ### <a name="apply-splitting"></a>Felosztás alkalmazása
 
-1. Kattintson a **alkalmazni a felosztás** a diagram felett.
+1. Kattintson a diagram feletti **felosztás alkalmazása** elemre.
  
    > [!NOTE]
-   > Felosztás a diagramok, amelyek több metrika nem használható. De bármilyen egy diagramon a alkalmazni csak egyetlen felosztási dimenzió több szűrőt is rendelkezhet.
+   > A felosztás nem használható olyan diagramokkal, amelyek több metrikával rendelkeznek. Emellett több szűrő is lehet, de egyetlen diagramon csak egy felosztási dimenzió alkalmazható.
 
-2. Válassza ki, amelyen vissza szeretné a diagram szegmentálni dimenzió:
+2. Válassza ki azt a dimenziót, amelyre a diagramot szeretné szegmentálni:
 
-   ![metrika kép](./media/metrics-charts/00010.png)
+   ![metrika képe](./media/metrics-charts/00010.png)
 
-   A diagram most már több sort, az egyes szegmensekben dimenzió egyik jeleníti meg:
+   A diagram most már több sort is megjelenít, egyet a dimenzió minden szegmenséhez:
 
-   ![metrika kép](./media/metrics-charts/00012.png)
+   ![metrika képe](./media/metrics-charts/00012.png)
 
-3. Kattintson a a **csoportosítási választó** bezárásához.
+3. Kattintson a **csoportosítási választóból** a bezáráshoz.
 
    > [!NOTE]
-   > Szűrés és a megosztás egyazon dimenzió használatával a szegmensek nem releváns, mivel a forgatókönyvhöz, és könnyebben olvashatóvá teszi a diagramok elrejtése.
+   > A szűrést és a felosztást ugyanazon a dimenzión használhatja a forgatókönyv szempontjából lényegtelen szegmensek elrejtéséhez, és könnyebben olvasható diagramokat készíthet.
 
-## <a name="lock-boundaries-of-chart-y-axis"></a>Zárolási határok diagram y tengely
+## <a name="lock-boundaries-of-chart-y-axis"></a>A diagram y tengelyének határainak zárolása
 
-Az y tengely skáláját zárolás akkor válik fontossá, amikor a diagram bemutatja a nagyobb érték kisebb ingadozások által megkövetelt. 
+Az y tengely tartományának zárolása akkor lesz fontos, ha a diagramon a nagyobb értékek kisebb ingadozásai láthatók. 
 
-Például ha sikeres kérések mennyisége lenyílik 99,99 % 99,5 %-ra, azt tüntetheti jelentős csökkenését a szolgáltatásminőség. Azonban egy kis numerikus érték ingadozása okainak lenne nehezen vagy egyáltalán nem lehetséges a diagram alapértelmezett beállításokkal. Ebben az esetben lehetett zárolni 99 %-os, amely biztosítja, kis legördülő több kétségtelenül fennáll-e a diagram legalacsonyabb határait. 
+Ha például a sikeres kérések mennyisége 99,99%-ról 99,5%-ra csökken, a szolgáltatás minőségének jelentős csökkenését jelenthetheti. Azonban a kis numerikus értékek ingadozása nehéz lenne, vagy az alapértelmezett diagram beállításainál is lehetetlen lenne. Ebben az esetben a diagram legalacsonyabb határát 99%-ra lehet zárolni, ami nyilvánvalóvá tenné ezt a kis csökkenést. 
 
-Egy másik példa egy ingadozás a rendelkezésre álló memória, amely az érték technikailag soha nem eléri a 0. Értéke a tartomány rögzítése előfordulhat, hogy könnyebben a csepp a rendelkezésre álló memória helyszíni. 
+Egy másik példa a rendelkezésre álló memória ingadozása, ahol az érték műszakilag soha nem éri el a 0 értéket. Ha a tartományt magasabb értékre javítja, a kihagyható a rendelkezésre álló memória. 
 
-Az y tengely tartománya szabályozni, használja a "..." diagram menüt, és válassza a **diagram szerkesztése** speciális diagram beállítások eléréséhez. Az y tengely tartománya szakaszban szereplő értékeket módosíthatja, vagy használjon **automatikus** Alapértelmezések visszaállítása gombra.
+Az y tengely tartományának vezérléséhez használja a "..." diagram menü, és a speciális diagram beállításainak eléréséhez válassza a **diagram szerkesztése** lehetőséget. Módosítsa az Y tengely tartománya szakaszban található értékeket, vagy az **automatikus** gomb használatával térjen át az alapértelmezett értékekre.
 
-![metrika kép](./media/metrics-charts/00014-manually-set-granularity.png)
+![metrika képe](./media/metrics-charts/00014-manually-set-granularity.png)
 
 > [!WARNING]
-> Y tengely, hogy a diagramok, amelyek nyomon követik a különböző határain zárolásának számolja, vagy idő (és így használatban lévők száma, sum, minimum vagy maximum összesítések) egy adott időszakban összegzi általában igényel, adjon meg egy rögzített idő részletesség, nem pedig az automatikus alapértelmezett hagyatkoznia. Erre azért szükség, mert a diagramok az értékeket módosíthatja, ha az idő részletessége automatikusan módosította a böngészőablak átméretezése, vagy egy képernyőfelbontás fog egy másik felhasználó. A létrejövő idő részletesség hatásokat megjelenésének módosítása a diagram y tengely tartomány kijelölt érvénytelenítése.
+> Az y tengely azon határainak zárolása, amelyek a különböző számításokat vagy összegeket követik egy adott időtartamon belül (és így a darabszámot, a Sum, a minimum vagy a maximális összesítést használják) általában a rögzített idő részletességét kell megadnia az automatikus alapértékek helyett. Erre azért van szükség, mert a diagramok értékei változnak, amikor az időrészletességet automatikusan módosítja a felhasználó átméretezni a böngészőablakot, vagy az egyik képernyőfelbontásról egy másikra kerül. Az időbeli részletesség változása hatással van a diagram kinézetére, és az y tengely tartományának aktuális kijelölését érvényteleníti.
 
-## <a name="pin-charts-to-dashboards"></a>PIN-kód diagramok, irányítópultok
+## <a name="pin-charts-to-dashboards"></a>Diagramok rögzítése az irányítópultokon
 
-Miután a diagramok, érdemes hozzáadása az irányítópultokhoz, így megtekintheti azt újra, esetleg egyéb figyelési telemetriát összefüggésben vagy megosztásra a csapatával.
+A diagramok konfigurálása után érdemes lehet hozzáadni az irányítópultokhoz, hogy újra megtekinthető legyen, esetleg más figyelési telemetria kontextusában vagy a csapattal való megosztással.
 
-Az irányítópult konfigurált diagram rögzítése:
+Konfigurált diagram rögzítése az irányítópulton:
 
-Miután a diagramot, kattintson a a **diagram műveletek** menüben kattintson a jobb felső sarokban, a diagram, és kattintson a **rögzítés az irányítópulton**.
+A diagram konfigurálása után a diagram jobb felső sarkában kattintson a **diagram műveletek** menüre, majd kattintson a **rögzítés az irányítópulton**elemre.
 
-![metrika kép](./media/metrics-charts/00013.png)
+![metrika képe](./media/metrics-charts/00013.png)
 
 ## <a name="create-alert-rules"></a>Riasztási szabályok létrehozása
 
-A feltételeknek, a metrikák megjelenítéséhez metrika alapján alapuló riasztási szabály meg is használhatja. Az Új riasztási szabály a célként megadott erőforrás, metrika, felosztását és szűrő dimenziók a diagram tartalmazza. Fogja tudni módosítani ezeket a beállításokat később a riasztási szabály létrehozása panelen.
+A mérőszámok metrika-alapú riasztási szabály alapján történő megjelenítéséhez a beállított feltételeket használhatja. Az új riasztási szabály a diagramon a cél erőforrás, metrika, felosztás és szűrés dimenziókat fogja tartalmazni. Ezeket a beállításokat később is módosíthatja a riasztási szabály létrehozási paneljén.
 
-### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Egy új riasztási szabály létrehozásához kattintson a **Új riasztási szabály**
+### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Új riasztási szabály létrehozásához kattintson az **új riasztási szabály** elemre.
 
-![Vörös színnel Új riasztási szabály gomb](./media/metrics-charts/015.png)
+![Piros színnel jelölt új riasztási szabály gomb](./media/metrics-charts/015.png)
 
-Megnyílik a riasztási szabály létrehozása panelre az alapul szolgáló metrika dimenziókkal létrehozni az egyéni riasztási szabályok könnyebb előre fel van töltve a diagram.
+A riasztási szabály létrehozási paneljén a diagramon előre kitöltött mérőszám-dimenziók láthatók, így könnyebben hozhat létre egyéni riasztási szabályokat.
 
 ![Riasztási szabály létrehozása](./media/metrics-charts/016.png)
 
-Tekintse meg ezt [cikk](alerts-metric.md) további metrikákhoz kapcsolódó riasztások beállításával kapcsolatban.
+A metrikai riasztások beállításával kapcsolatos további információkért tekintse meg ezt a [cikket](alerts-metric.md) .
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
-*A diagram nem látható semmilyen adatot.*
+*Nem látok semmilyen információt a diagramon.*
 
-* Szűrők a diagramok a panelen a alkalmazni. Győződjön meg arról, hogy Ön összpontosítunk, egy diagram, amíg nem állította be egy szűrőt, amely nem tartalmazza a másik az adatokat.
+* A szűrők a panelen lévő összes diagramra érvényesek. Győződjön meg arról, hogy az egyik diagramra való összpontosítás közben nem állított be olyan szűrőt, amely kizárja az összes adathalmazt egy másikon.
 
-* Ha azt szeretné, a különböző szűrőivel beállíthatja a különböző diagramok különböző paneljein hozzon létre őket, mentse azokat, külön Kedvencek. Ha azt szeretné, is rögzítheti őket az irányítópulton, hogy tekintheti meg őket egymással párhuzamosan.
+* Ha különböző szűrőket szeretne beállítani különböző diagramokon, hozzon létre különböző lapokon, majd mentse őket külön kedvencekként. Ha szeretné, rögzítheti őket az irányítópulton, hogy azok egymás mellett is megjelenjenek.
 
-* Ha az egyik tulajdonsága, amely nincs meghatározva a metrikát a diagram szegmentálhatja, majd lesz semmi a diagramra. Törölje a Szegmentálás (megosztás), vagy válasszon egy másik tulajdonságot.
+* Ha a diagramot olyan tulajdonság szerint szegmentálja, amely nincs meghatározva a metrikán, akkor a diagramon nem lesz semmi. Próbálja meg törölni a szegmentálást (felosztás), vagy válasszon másik tulajdonságot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-  Olvasási [egyéni KPI irányítópultok létrehozása](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) ajánlott eljárást a gyakorlatban hasznosítható irányítópultokat hoz létre a metrikákkal kapcsolatos.
+  Olvassa el az [Egyéni KPI-irányítópultok létrehozását](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) ismertető témakört, amelyből megtudhatja, hogyan hozhat létre mérőszámokkal rendelkező, gyakorlati irányítópultokat.
 

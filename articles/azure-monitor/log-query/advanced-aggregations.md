@@ -1,18 +1,17 @@
 ---
 title: Speciális összesítések Azure Monitor log-lekérdezésekben | Microsoft Docs
 description: Ismerteti a több speciális aggregációs lehetőséget, amelyek elérhetők Azure Monitor a naplók lekérdezéséhez.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 882582191b5794e3978d955dfa9bded294064037
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398296"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662178"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Speciális összesítések Azure Monitor log lekérdezésekben
 
@@ -140,7 +139,7 @@ Heartbeat
 
 | Kategória | count_ | TimeGenerated |
 |---|---|---|
-| Közvetlen ügynök | [15, 60, 0, 55, 60, 57, 60,...] | ["2017-06-06T17:00:00.0000000 Z", "2017-06-06T18:00:00.0000000 Z", "2017-06-06T19:00:00.0000000 Z", "2017-06-06T20:00:00.0000000 Z", "2017-06-06T21:00:00.0000000 Z",...] |
+| Közvetlen ügynök | [15, 60, 0, 55, 60, 57, 60,...] | ["2017-06-06T17:00:00.0000000Z","2017-06-06T18:00:00.0000000Z","2017-06-06T19:00:00.0000000Z","2017-06-06T20:00:00.0000000Z","2017-06-06T21:00:00.0000000Z",...] |
 | ... | ... | ... |
 
 A *count_* tömb harmadik eleme a várt érték, és a _TimeGenerated_ tömbben a "2017-06-06T19:00:00.0000000 z" egyező időbélyeg szerepel. Ez a tömb formátuma nehezen olvasható. A `mvexpand` használatával bontsa ki a tömböket, és hozza létre a `summarize`által generált formátum kimenetét:

@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 18aecfc5ea40c8368fbf4d4a07f86e71047265f7
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 493414d6e903dba02f126c10c2f4d6a34e0b1549
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598646"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661223"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz
 
@@ -97,10 +97,6 @@ Most már lehetséges, hogy az SAP NetWeaver HA-t megosztott tároló használat
 ![SAP NetWeaver – magas rendelkezésre állás – áttekintés](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
 
 Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA adatbázis virtuális gazdagépeket és virtuális IP-címeket használ. Az Azure-ban a virtuális IP-címek használatához [terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) szükséges. A [standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)használatát javasoljuk. Az alábbi lista az (A) SCS és az ERS Load Balancer konfigurációját mutatja be.
-
-> [!IMPORTANT]
-> Az SAP ASCS/ERS multi-SID fürtszolgáltatása az Azure-beli virtuális gépeken található vendég operációs rendszerként a SUSE Linux rendszerben **nem támogatott**. A többszörös SID-fürtszolgáltatás több SAP ASCS/ERS példány telepítését ismerteti különböző SID-kiszolgálókkal egy pacemaker-fürtben
-
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -1420,6 +1416,7 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
 
 ## <a name="next-steps"></a>Következő lépések
 
+* [HA SAP NW Azure-beli virtuális gépeken, SLES for SAP Applications multi-SID útmutató](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]
 * [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hoz][dbms-guide]

@@ -1,19 +1,15 @@
 ---
 title: Adatmodell a kérelem telemetria – Azure Application Insights
 description: Application Insights adatmodell a kérelem telemetria
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: b253a95a39f118efe82e36ac7261a4d6c62a99d6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928832"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671902"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Kérelem telemetria: Application Insights adatmodell
 
@@ -21,7 +17,7 @@ A kérelem telemetria eleme ( [Application Insights](../../azure-monitor/app/app
 
 A telemetria kérése az egyéni `properties` és `measurements`használatával támogatja a standard bővíthetőségi modellt.
 
-## <a name="name"></a>Név
+## <a name="name"></a>Name (Név)
 
 A kérelem neve a kérelem feldolgozásához a kód elérési útját jelöli. Alacsony kardinális érték a kérelmek jobb csoportosításának lehetővé tételéhez. HTTP-kérelmek esetén a a HTTP-metódust és az URL-cím elérési útját adja meg, például `GET /values/{id}` a tényleges `id` érték nélkül.
 

@@ -1,24 +1,20 @@
 ---
 title: Új Azure Application Insights-erőforrás létrehozása | Microsoft Docs
 description: Application Insights figyelésének manuális beállítása egy új élő alkalmazáshoz.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/02/2019
-ms.openlocfilehash: 1ba6d6e1774db4e9c95b107e1482a0c6ce532bb5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 090c983dcca101557f8dec479d1267275d24908b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432619"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672038"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 
 Az Azure Application Insights Microsoft Azure *erőforrásban*jeleníti meg az alkalmazással kapcsolatos információkat. Egy új erőforrás létrehozása ezért a [Application Insights beállításának része, amely egy új alkalmazás figyelésére][start]szolgál. Miután létrehozta az új erőforrást, megszerezheti a kialakítási kulcsát, és használhatja azt az Application Insights SDK konfigurálásához. A kialakítási kulcs a telemetria az erőforráshoz csatolja.
 
-## <a name="sign-in-to-microsoft-azure"></a>Jelentkezzen be a Microsoft Azure-ba
+## <a name="sign-in-to-microsoft-azure"></a>Bejelentkezés Microsoft Azure
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -28,7 +24,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és hozzon létre 
 
 ![Kattintson a "+" jelre a bal felső sarokban. Válassza a Fejlesztői eszközök, majd a Application Insights](./media/create-new-resource/new-app-insights.png)
 
-   | Beállítások        |  Value (Díj)           | Leírás  |
+   | Beállítások        |  Érték           | Leírás  |
    | ------------- |:-------------|:-----|
    | **Name (Név)**      | Egyedi érték | A figyelt alkalmazást azonosító név. |
    | **Erőforráscsoport**     | myResourceGroup      | Az új vagy meglévő erőforráscsoport neve az alkalmazás-elemzési adatforrások üzemeltetéséhez. |
@@ -73,7 +69,7 @@ New-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Locat
 ```powershell
 New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location eastus
 ```
-#### <a name="results"></a>Eredmények
+#### <a name="results"></a>Results (Eredmények)
 
 ```powershell
 Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/microsoft.insights/components/test1027
@@ -125,7 +121,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location westus2 --kind web -g demoRg --application-type web
 ```
 
-#### <a name="results"></a>Eredmények
+#### <a name="results"></a>Results (Eredmények)
 
 ```azurecli
 az monitor app-insights component create --app demoApp --location eastus --kind web -g demoApp  --application-type web

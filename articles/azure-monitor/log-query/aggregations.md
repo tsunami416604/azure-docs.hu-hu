@@ -1,18 +1,17 @@
 ---
 title: Összesítések a Azure Monitor log lekérdezésekben | Microsoft Docs
 description: Leírja az aggregációs függvényeket Azure Monitor napló lekérdezésekben, amelyek hasznos módszereket kínálnak az adatok elemzéséhez.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 86b84e76b4716c1fddda23a6d52c65c0700c5663
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900412"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670304"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Összesítések Azure Monitor naplóbeli lekérdezésekben
 
@@ -23,7 +22,7 @@ ms.locfileid: "72900412"
 
 Ez a cikk az összesítő függvényeket ismerteti Azure Monitor napló lekérdezésekben, amelyek hasznos módszereket kínálnak az adatok elemzéséhez. Ezek a függvények a `summarize` operátorral működnek, amely a bemeneti tábla összesített eredményeivel rendelkező táblázatot állít elő.
 
-## <a name="counts"></a>Száma
+## <a name="counts"></a>Számok
 
 ### <a name="count"></a>count
 Az eredményhalmazban szereplő sorok számának megszámlálása a szűrők alkalmazása után. A következő példa a _perf_ táblában lévő sorok teljes számát adja vissza az elmúlt 30 percben. Az eredmény egy *count_* nevű oszlopban lesz visszaadva, kivéve, ha egy adott nevet rendel hozzá:

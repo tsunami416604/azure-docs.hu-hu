@@ -1,18 +1,17 @@
 ---
 title: Adatfeldolgozási idő naplózása Azure Monitorban | Microsoft Docs
 description: Ismerteti azokat a különböző tényezőket, amelyek befolyásolják a naplózási adatok Azure Monitorban való gyűjtésének késését.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: bd6590ebbd33dc5c9b65fc193679f4bf99760c3a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894147"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666637"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Adatfeldolgozási idő naplózása Azure Monitor
 A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A naplózási adatok begyűjtése után elérhetővé tételével kapcsolatban gyakran merül fel kérdések. Ez a cikk a késést befolyásoló különféle tényezőket ismerteti.
@@ -76,7 +75,7 @@ Ez a folyamat jelenleg körülbelül 5 percet vesz igénybe, ha kevés az adatme
 ## <a name="checking-ingestion-time"></a>Betöltési idő ellenőrzése
 A betöltési idő különböző körülmények között eltérő lehet. A naplózási lekérdezések segítségével azonosíthatja a környezet adott viselkedését. A következő táblázat azt ismerteti, hogyan határozható meg a rekord különböző időpontja, amikor a rendszer létrehozta és elküldje Azure Monitor.
 
-| Lépés: | Tulajdonság vagy függvény | Megjegyzések |
+| Lépés | Tulajdonság vagy függvény | Megjegyzések |
 |:---|:---|:---|
 | Rekord létrehozva az adatforrásban | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Ha az adatforrás nem állítja be ezt az értéket, akkor a _TimeReceived-val megegyező időpontra lesz beállítva. |
 | Azure Monitor betöltési végpont által fogadott rekord | [_TimeReceived](log-standard-properties.md#_timereceived) | |

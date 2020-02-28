@@ -1,52 +1,50 @@
 ---
-title: Log Analytics riasztás használata REST API
-description: A Log Analytics riasztási REST API lehetővé teszi a riasztások létrehozását és kezelését Log Analyticsban, amely Log Analytics részét képezi.  Ez a cikk részletesen ismerteti az API-t és számos példát a különböző műveletek végrehajtásához.
-ms.service: azure-monitor
+title: A Log Analytics riasztási REST API használatával
+description: A Log Analytics riasztási REST API lehetővé teszi a riasztások létrehozását és kezelését Log Analyticsban, amely Log Analytics részét képezi.  Ez a cikk részletesen az API-val és néhány példa a különféle műveletek végezhetők.
 ms.subservice: logs
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
 ms.date: 07/29/2018
-ms.openlocfilehash: 7112f86ca123c66c5969236617f35fcb8d698030
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: a85dad2ba638505233e5df769e55fa5bd7b8dafd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680664"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665000"
 ---
-# <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Riasztási szabályok létrehozása és kezelése a Log Analyticsban REST API
-A Log Analytics riasztási REST API lehetővé teszi a riasztások létrehozását és kezelését Log Analyticsban.  Ez a cikk részletesen ismerteti az API-t és számos példát a különböző műveletek végrehajtásához.
+# <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Hozzon létre, és a Log Analytics REST API-val riasztási szabályok kezelése 
+
+A Log Analytics Alert REST API lehetővé teszi, hogy hozhat létre, és a Log Analytics-riasztások kezelése.  Ez a cikk részletesen az API-val és néhány példa a különféle műveletek végezhetők.
 
 > [!IMPORTANT]
 > Amint azt [korábban bejelentettük](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), a *2019. június 1* . után létrehozott log Analytics-munkaterület (ek) a riasztási szabályokat **csak** az Azure ScheduledQueryRules [REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/), az [Azure Resource Mananger-sablon](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) és a PowerShell- [parancsmag](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)használatával tudják kezelni. Az ügyfelek könnyedén [válthatnak a riasztási szabályok kezeléséhez](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) a régebbi munkaterületek számára, hogy Azure monitor scheduledQueryRules használják az alapértelmezettként, és számos [új előnyt](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) szerezzenek, mint például a natív PowerShell-parancsmagok használata, a szabályok megnövelt lookback időszaka, a szabályok létrehozása külön erőforráscsoport vagy előfizetés esetén, és még sok minden más.
 
-A Log Analytics keresési REST API REST-vel rendelkezik, és a Azure Resource Manager REST API keresztül érhető el. Ebben a dokumentumban olyan példákat talál, amelyekben az API egy PowerShell-parancssorból érhető el az [ARMClient](https://github.com/projectkudu/ARMClient)használatával, amely leegyszerűsíti a Azure Resource Manager API meghívását. A ARMClient és a PowerShell használata számos lehetőség a Log Analytics Search API eléréséhez. Ezekkel az eszközökkel a REST-Azure Resource Manager API-val hívásokat indíthat Log Analytics munkaterületekre, és keresési parancsokat hajthat végre rajtuk. Az API JSON formátumban jeleníti meg a keresési eredményeket, így a keresési eredmények többféleképpen is használhatók.
+A Log Analytics Search REST API RESTful és az Azure Resource Manager REST API-n keresztül érhető el. Ebben a dokumentumban olyan példákat talál, amelyekben az API egy PowerShell-parancssorból érhető el az [ARMClient](https://github.com/projectkudu/ARMClient)használatával, amely leegyszerűsíti a Azure Resource Manager API meghívását. ARMClient és a PowerShell használata a Log Analytics Search API eléréséhez számos lehetőség. Ezekkel az eszközökkel a REST-alapú Azure Resource Manager API Log Analytics-munkaterületek hívásokat, és végezze el a keresési parancsok azokon belül használhat. Az API-t fog keresési eredményeket is JSON formátumban, lehetővé téve, hogy programozott módon használja a keresési eredmények között számos különböző módon.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Jelenleg a riasztásokat csak Log Analytics mentett kereséssel lehet létrehozni.  További információért tekintse meg a [naplóbeli keresés REST API](../../azure-monitor/log-query/log-query-overview.md) .
+Jelenleg riasztások csak hozhatja létre a Log Analytics mentett keresést.  További információért tekintse meg a [naplóbeli keresés REST API](../../azure-monitor/log-query/log-query-overview.md) .
 
 ## <a name="schedules"></a>Ütemezések
-Egy mentett kereséshez egy vagy több ütemterv is tartozhat. Az ütemterv meghatározza, hogy a keresés milyen gyakran fusson, valamint azt az időtartamot, ameddig a feltételek azonosíthatók.
-Az ütemezett tulajdonságok a következő táblázatban láthatók.
+Mentett keresés egy vagy több ütemezés is rendelkezhet. Az ütemezés határozza meg, hogy milyen gyakran a keresés Futtatás és az az időintervallum, amelyen a feltétel azonosítja.
+Ütemezések a tulajdonságokkal rendelkeznek, az alábbi táblázatban.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Intervallum |A keresés futtatásának gyakorisága. Percekben mérve. |
-| QueryTimeSpan |Az az időtartam, ameddig a feltételek kiértékelése megtörténik. Az értéknek meg kell egyeznie az Intervallumtal vagy nagyobbnak kell lennie. Percekben mérve. |
-| Verzió |A használt API-verzió.  Jelenleg ezt mindig 1-re kell állítani. |
+| Intervallum |Milyen gyakran fut a keresés. Mért percek alatt. |
+| QueryTimeSpan |Az időintervallum, amelyen a feltétel értékeli ki. Intervallum nagyobbnak vagy azzal egyenlőnek kell. Mért percek alatt. |
+| Verzió |A használt API-verzió.  Jelenleg ez mindig meg kell 1-re. |
 
-Tegyük fel például, hogy egy 15 perces időközzel és egy 30 perces TimeSpan rendelkező esemény-lekérdezést. Ebben az esetben a lekérdezés 15 percenként fut, és a rendszer riasztást küld, ha a feltételek továbbra is az igaz értékre vannak állítva egy 30 perces tartományon belül.
+Vegyük példaként egy esemény-lekérdezést a 15 perces időközt, és a egy 30 perces időtartam. Ebben az esetben a lekérdezés 15 percenként fogja futtatni, és a riasztás akkor aktiválódik, ha a kritériumok továbbra is igaz over feloldani egy 30 perces időtartam.
 
-### <a name="retrieving-schedules"></a>Ütemtervek beolvasása
-A Get metódussal kérheti le a mentett keresések összes ütemtervét.
+### <a name="retrieving-schedules"></a>Ütemezések beolvasása
+A Get metódust használatával lekérheti az összes ütemezésekkel egy mentett keresés.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules?api-version=2015-03-20
 
-A Get metódus és egy ütemezett azonosító használatával egy adott ütemtervet kérhet le egy mentett kereséshez.
+Egy ütemezés azonosítót a Get metódust használatával lekérheti az egy meghatározott ütemezést egy mentett keresés.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
 
-Az alábbi példa egy ütemezett választ mutat be.
+Következő egy mintaválaszt ütemezés szerint.
 
 ```json
 {
@@ -62,89 +60,89 @@ Az alábbi példa egy ütemezett választ mutat be.
 }
 ```
 
-### <a name="creating-a-schedule"></a>Ütemterv létrehozása
-Új ütemterv létrehozásához használja a Put metódust egy egyedi ütemterv-AZONOSÍTÓval.  Két ütemterv nem rendelkezhet ugyanazzal az AZONOSÍTÓval, még akkor sem, ha különböző mentett keresésekhez vannak társítva.  Ha a Log Analytics-konzolon hoz létre egy ütemtervet, a rendszer létrehoz egy GUID azonosítót az ütemezett azonosítóhoz.
+### <a name="creating-a-schedule"></a>Ütemezés létrehozása
+Egy ütemezés egyedi azonosítót a Put metódust használatával hozzon létre egy új ütemezést.  Két ütemterv nem rendelkezhet ugyanazzal az AZONOSÍTÓval, még akkor sem, ha különböző mentett keresésekhez vannak társítva.  A Log Analytics-konzolon létrehozott egy ütemezés, egy GUID jön létre a ütemezés azonosítóját.
 
 > [!NOTE]
-> A Log Analytics API-val létrehozott összes mentett keresés, ütemterv és művelet neve csak kisbetűs lehet.
+> A név minden mentett keresést, ütemezését és a Log Analytics API-val létrehozott műveleteket kisbetűs kell lennie.
 
     $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'true' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
 
-### <a name="editing-a-schedule"></a>Ütemterv szerkesztése
+### <a name="editing-a-schedule"></a>Az ütemezés módosítása
 A Put metódust meglévő ütemezett AZONOSÍTÓval használhatja ugyanazon mentett kereséshez az adott ütemterv módosításához; az alábbi példában az ütemterv le van tiltva. A kérelem törzsének tartalmaznia kell az ütemterv *ETAG* .
 
       $scheduleJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\""','properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'false' } }"
       armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
 
 
-### <a name="deleting-schedules"></a>Ütemtervek törlése
-Az ütemterv törléséhez használja a DELETE metódust az ütemterv-AZONOSÍTÓval.
+### <a name="deleting-schedules"></a>Ütemezések törlése
+Egy ütemezés azonosítójú a Delete metódus használatával törölheti az ütemezés.
 
     armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
 
 
 ## <a name="actions"></a>Műveletek
-Egy ütemterv több művelettel is rendelkezhet. Egy művelet egy vagy több folyamatot is meghatározhat, például e-mailek küldését vagy runbook elindítását, vagy meghatározhat egy küszöbértéket, amely meghatározza, hogy egy adott keresési eredmény megfelel-e bizonyos feltételeknek.  Néhány művelet mindkét esetben meghatározza, hogy a rendszer a küszöbérték teljesülése esetén hajtsa végre a folyamatokat.
+Egy több művelet is lehet. Művelet egy vagy több folyamat végrehajtásához, például egy levelet küld, vagy a runbook indítása adhat meg, vagy azt adhat meg egy küszöbértéket, amely azt határozza meg, ha a keresési eredmények bizonyos feltételeknek megfelelő-e.  Bizonyos műveleteket meghatározzuk is, hogy a folyamatok hajtja végre, hogy a küszöbértéket.
 
-Az összes művelet a következő táblázatban található tulajdonságokkal rendelkezik.  A különböző típusú riasztások különböző további tulajdonságokkal rendelkeznek, amelyek leírása alább található.
+Minden művelet a következő táblázatban tárolja a tulajdonságokat.  Riasztások különböző típusait rendelkezik másik további tulajdonságok, amelyek az alábbiakban tekintheti át.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| `Type` |A művelet típusa.  A lehetséges értékek jelenleg a riasztások és a webhookok. |
+| `Type` |A művelet típusa.  Jelenleg a lehetséges értékek: riasztás és a Webhook. |
 | `Name` |A riasztás megjelenítendő neve. |
-| `Version` |A használt API-verzió.  Jelenleg ezt mindig 1-re kell állítani. |
+| `Version` |A használt API-verzió.  Jelenleg ez mindig meg kell 1-re. |
 
 ### <a name="retrieving-actions"></a>Műveletek beolvasása
 
-A Get metódussal kérheti le az összes műveletet egy adott ütemtervhez.
+A Get metódust használatával lekérheti az összes művelet ütemezés.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules/{Schedule ID}/actions?api-version=2015-03-20
 
-Használja a Get metódust a műveleti AZONOSÍTÓval egy adott művelet ütemezett lekéréséhez.
+A művelet azonosítójú a Get metódust használatával lekérheti az egy adott művelet ütemezés.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/actions/{Action ID}?api-version=2015-03-20
 
-### <a name="creating-or-editing-actions"></a>Műveletek létrehozása vagy szerkesztése
-Egy új művelet létrehozásához használja a Put metódust egy olyan műveleti AZONOSÍTÓval, amely egyedi az ütemtervben.  Amikor létrehoz egy műveletet a Log Analytics-konzolon, a műveleti AZONOSÍTÓhoz egy GUID azonosító szükséges.
+### <a name="creating-or-editing-actions"></a>Létrehozási és szerkesztési műveletek
+A Put metódust használja az ütemezéshez hozhat létre egy új művelet egyedi azonosítójú művelet.  A Log Analytics-konzolon egy műveletet hoz létre, amikor egy GUID Azonosítót van-e a művelet azonosítóját.
 
 > [!NOTE]
-> A Log Analytics API-val létrehozott összes mentett keresés, ütemterv és művelet neve csak kisbetűs lehet.
+> A név minden mentett keresést, ütemezését és a Log Analytics API-val létrehozott műveleteket kisbetűs kell lennie.
 
-Használja az Put metódust egy meglévő műveleti AZONOSÍTÓval ugyanahhoz a mentett kereséshez az ütemterv módosításához.  A kérelem törzsének tartalmaznia kell az ütemterv ETAG.
+Az ütemezés módosításához használja az ugyanazon mentett keresésnek egy meglévő művelet azonosítójú a Put metódust.  A kérelem törzsében tartalmaznia kell az etag címkéje az ütemezést.
 
-Az új műveletek létrehozási kérelmi formátuma Művelettípus szerint változik, így ezek a példák az alábbi részekben találhatók.
+Ezért ezekben a példákban vannak megadva, az alábbi szakaszok a művelet típusa eltérő a egy új művelet létrehozására vonatkozó kérés formátuma.
 
 ### <a name="deleting-actions"></a>Műveletek törlése
 
-Művelet törléséhez használja a DELETE metódust a műveleti AZONOSÍTÓval.
+A művelet azonosítójú a Delete metódus használatával törölhet olyan műveleteket.
 
     armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/Actions/{Action ID}?api-version=2015-03-20
 
 ### <a name="alert-actions"></a>Riasztási műveletek
-Az ütemtervnek egy és csak egy riasztási művelettel kell rendelkeznie.  A riasztási műveletekhez a következő táblázat egy vagy több szakaszában található.  Az alábbiakban részletesebben is olvashat.
+Ütemezés csak egy riasztás művelet kell rendelkeznie.  Riasztási műveletek rendelkezik legalább egy, az alábbi táblázatban a szakaszok.  Az egyes részletesebben az alábbi ismertetjük.
 
 | Section | Leírás | Használat |
 |:--- |:--- |:--- |
-| Küszöbérték |A művelet futtatásának feltételei.| Minden riasztáshoz szükséges, az Azure-ra való kiterjesztés előtt vagy után. |
-| Súlyosság |Az aktiváláskor a riasztás osztályozásához használt címke.| Minden riasztáshoz szükséges, az Azure-ra való kiterjesztés előtt vagy után. |
-| Elnyomják |Az értesítések riasztásból való leállításának lehetősége. | Nem kötelező minden riasztáshoz, az Azure-ra való kiterjesztés előtt vagy után. |
-| Műveletcsoportok |Az Azure ActionGroup azonosítói, ahol a szükséges műveletek, például az e-mailek, az SMS-hívások, a hanghívások, a webhookok, az Automation Runbookok, a ITSM-összekötők stb.| A riasztások az Azure-ra való kiterjesztése kötelező|
-| Műveletek testreszabása|A Select műveletek standard kimenetének módosítása a ActionGroup| Minden riasztás esetében választható, ha a riasztások kiterjeszthetők Az Azure-ra. |
+| Küszöbérték |Ha a művelet futtatása feltételeit.| Szükséges minden egyes riasztás előtt vagy után bővítve lettek az Azure-bA. |
+| Severity |Adatvezérelt riasztás osztályozására szolgáló címkéje.| Szükséges minden egyes riasztás előtt vagy után bővítve lettek az Azure-bA. |
+| Mellőzés |Lehetőség van a riasztásból értesítéseket leállítani. | Minden egyes riasztás esetén nem kötelező előtt vagy után bővítve lettek az Azure-bA. |
+| Műveletcsoportok |Ahol szükséges műveletek meg van adva, az Azure ActionGroup azonosítói, például - e-mailek, SMSs, intézett Hanghívásokhoz, Webhookok, Automation-Runbookok, ITSM-összekötő, stb.| Ha a riasztások bővítve lettek az Azure-bA szükséges|
+| Műveletek testreszabása|A normál a kimenetbe ActionGroup a select műveletek módosítása| Minden riasztás esetén nem kötelező használható után a riasztások bővítve lettek az Azure-bA. |
 
 ### <a name="thresholds"></a>Küszöbértékek
-A riasztási műveletnek egy és csak egy küszöbértékkel kell rendelkeznie.  Ha a mentett keresés eredményei megfelelnek a kereséshez társított művelet küszöbértékének, akkor az adott műveletben szereplő többi folyamat is fut.  Egy művelet csak egy küszöbértéket tartalmazhat, hogy olyan más típusú műveletekkel is használható legyen, amelyek nem tartalmaznak küszöbértékeket.
+Riasztási művelet rendelkeznie kell egy és csakis egy küszöbértéket.  A mentett keresés eredménye megfelel a küszöbérték, hogy a keresés társított művelet, ha a művelet a bármely más folyamatok futnak.  Egy műveletet is tartalmazhat, csak egy küszöbértéket, hogy más típusú, amelyek nem tartalmazzák a küszöbértékek műveletekhez használható.
 
-A küszöbértékek tulajdonságai a következő táblázatban láthatók.
+Küszöbértékek a tulajdonságokkal rendelkeznek, az alábbi táblázatban.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| `Operator` |A küszöbérték-összehasonlítás operátora. <br> gt = nagyobb, mint <br> lt = kisebb, mint |
-| `Value` |A küszöbérték értéke. |
+| `Operator` |A küszöbérték-összehasonlítás operátort. <br> gt = nagyobb, mint <br> lt = kisebb, mint |
+| `Value` |Értéke a küszöbérték. |
 
-Vegyünk például egy 15 perces intervallummal rendelkező Event lekérdezést, egy 30 perces TimeSpan és egy 10-nél nagyobb küszöbértéket. Ebben az esetben a lekérdezés 15 percenként fut, és a riasztás akkor aktiválódik, ha 10 olyan eseményt adott vissza, amely egy 30 perces időtartamon belül lett létrehozva.
+Vegyük példaként egy esemény lekérdezés 15 perc, 30 perces Timespan és egy küszöbértéket, a 10-nél nagyobb időközzel. Ebben az esetben a lekérdezés 15 percenként fogja futtatni, és a riasztás akkor aktiválódik, ha a 10 események 30 perces időtartam létrehozott adott vissza.
 
-A következő példa egy olyan műveletre adott választ, amely csak egy küszöbértéket mutat be.  
+Következő művelet csak egy küszöbértékkel egy mintaválasz.  
 
     "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
     "properties": {
@@ -157,26 +155,26 @@ A következő példa egy olyan műveletre adott választ, amely csak egy küszö
         "Version": 1
     }
 
-A Put metódust egyedi műveleti AZONOSÍTÓval használva új küszöbértéket hozhat létre egy ütemezett művelethez.  
+A művelet egyedi azonosítója a Put metódust használatával hozzon létre egy új küszöbérték műveletet ütemezés szerint.  
 
     $thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
-Egy meglévő műveleti AZONOSÍTÓval rendelkező Put metódus használatával módosíthatja egy ütemezett küszöbérték-műveletet.  A kérelem törzsének tartalmaznia kell a művelet ETAG.
+Egy küszöbérték műveletet egy ütemezés módosításához használja egy meglévő azonosítójú művelet a Put metódust.  A kérelem törzsében tartalmaznia kell az etag címkéje a műveletet.
 
     $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
-#### <a name="severity"></a>Súlyosság
-Log Analytics lehetővé teszi a riasztások kategóriákba osztályozását, így könnyebben kezelhető és osztályozható. A riasztás súlyossága definiálva: tájékoztatási, figyelmeztetési és kritikus. Ezek az Azure-riasztások normalizált súlyossági skálájának megfelelően vannak leképezve:
+#### <a name="severity"></a>Severity
+A log Analytics lehetővé teszi, hogy a könnyebb felügyeletet és osztályozási kategóriákba a riasztások besorolása. A riasztás súlyosságát definiálva van: információs, figyelmeztetési és kritikus fontosságú. Ezek az Azure Alerts as normalizált súlyossági méretezése van leképezve:
 
-|Súlyossági szint Log Analytics  |Azure-riasztások súlyossági szintje  |
+|Log Analytics súlyossági szint  |Azure-riasztások súlyossági szint  |
 |---------|---------|
-|`critical` |Sev 0|
+|`critical` |SEV 0|
 |`warning` |Sev 1|
 |`informational` | Sev 2|
 
-A következő példa egy olyan műveletre adott választ, amely csak a küszöbértéket és a súlyosságot követi. 
+Következő csak egy küszöbét és súlyosságát a művelet egy mintaválasz. 
 
     "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
     "properties": {
@@ -189,18 +187,18 @@ A következő példa egy olyan műveletre adott választ, amely csak a küszöb�
         "Severity": "critical",
         "Version": 1    }
 
-A Put metódust egyedi műveleti AZONOSÍTÓval használva hozzon létre egy új műveletet egy súlyosságú ütemtervhez.  
+A művelet egyedi azonosítója a Put metódust használatával hozzon létre egy új művelet ütemezés súlyossági.  
 
     $thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
 
-Egy meglévő műveleti AZONOSÍTÓval rendelkező Put metódus használatával módosíthatja egy adott ütemterv súlyossági műveletét.  A kérelem törzsének tartalmaznia kell a művelet ETAG.
+Egy súlyossági műveletet egy ütemezés módosításához használja a Put metódust egy meglévő azonosítójú művelet.  A kérelem törzsében tartalmaznia kell az etag címkéje a műveletet.
 
     $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
 
-#### <a name="suppress"></a>Elnyomják
-A Log Analytics-alapú lekérdezési riasztások minden alkalommal elérik vagy túllépik a küszöbértéket. A lekérdezésben szereplő logika alapján ez riasztást eredményezhet az intervallumok egy adott időpontjában, ezért az értesítések is folyamatosan lesznek elküldve. Az ilyen helyzetek megelőzése érdekében a felhasználó beállíthatja, hogy a letiltási lehetőség arra utasítja a Log Analyticsot, hogy várjon egy meghatározott időtartamra, mielőtt a riasztási szabály második alkalommal bekerül az értesítésbe. Így ha a Mellőzés 30 percre van beállítva, ezt követően a riasztás az első alkalommal fog megjelenni, és az értesítések küldésére van konfigurálva. A riasztási szabályra vonatkozó értesítés ismételt használata azonban 30 percet is igénybe vehet. Az átmeneti időszak alatt a riasztási szabály továbbra is csak a csak az értesítéseket fogja letiltani Log Analytics a megadott időtartamig, függetlenül attól, hogy a riasztási szabály hányszor lett elindítva ebben az időszakban.
+#### <a name="suppress"></a>Mellőzés
+A log Analytics-alapú riasztások aktiválódnak, minden alkalommal, amikor küszöbérték van elérte vagy túllépte a lekérdezést. A hallgatólagos a lekérdezésben logika alapján, emiatt előfordulhat, hogy az adott időközönként sorozata első aktivált riasztás, és így értesítést is küld a rendszer folyamatosan. Ilyen forgatókönyv megelőzése érdekében mellőzése beállítást a Log Analytics ezt kell várni egy sorba mennyi idő elteltével az értesítés aktiválódik, amikor a riasztási szabály beállítását. Tehát ha le van állítva; 30 percig Ezután a riasztás első alkalommal aktiválódik, és konfigurált értesítések küldése. De Várjon 30 percet, mielőtt újra használta a riasztási szabály értesítést. A köztes időszakban riasztási szabály továbbra is működni fog - csak értesítési van, amelyeket az Eseményszabályozás Log Analytics számára megadott időpontban, függetlenül attól, hogy hányszor a riasztási szabály aktiválva ebben az időszakban.
 
 Log Analytics riasztási szabály tulajdonságának letiltása a *szabályozási* érték és a letiltási időszak használatával a *DurationInMinutes* érték használatával.
 
@@ -220,22 +218,22 @@ A következő példa egy olyan műveletre adott válasz, amely csak a küszöbé
         "Severity": "critical",
         "Version": 1    }
 
-A Put metódust egyedi műveleti AZONOSÍTÓval használva hozzon létre egy új műveletet egy súlyosságú ütemtervhez.  
+A művelet egyedi azonosítója a Put metódust használatával hozzon létre egy új művelet ütemezés súlyossági.  
 
     $AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
 
-Egy meglévő műveleti AZONOSÍTÓval rendelkező Put metódus használatával módosíthatja egy adott ütemterv súlyossági műveletét.  A kérelem törzsének tartalmaznia kell a művelet ETAG.
+Egy súlyossági műveletet egy ütemezés módosításához használja a Put metódust egy meglévő azonosítójú művelet.  A kérelem törzsében tartalmaznia kell az etag címkéje a műveletet.
 
     $AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
 
 #### <a name="action-groups"></a>Műveletcsoportok
-Minden riasztás az Azure-ban, a műveleti csoport használata a műveletek kezelésére szolgáló alapértelmezett mechanizmusként. A műveleti csoport segítségével egyszer adhatja meg a műveleteket, majd a műveleti csoportot több riasztáshoz társíthatja az Azure-on keresztül. Anélkül, hogy szükség lenne rá, hogy ismételten deklarálja ugyanazokat a műveleteket újra és újra. A műveleti csoportok több műveletet is támogatnak – például e-maileket, SMS-t, hanghívást, ITSM, Automation Runbook, webhook URI-t és egyebeket. 
+Az Azure-ban, az összeset műveletcsoport használja az alapértelmezett mechanizmusként műveletek kezelésére. A műveletcsoport adja meg a műveletet egyszer, és társíthatja a műveletcsoport több riasztás – az Azure-ban. Nem szükséges, ismételten deklarálja és újra ugyanazokat a műveleteket. Műveletcsoportok támogatja a több műveletek – például az e-mailben, SMS, hanghívás, az ITSM-kapcsolatot, Automation-Runbook, Webhook URI. 
 
 Azok a felhasználók, akik kibővítették a riasztásokat az Azure-ba, a riasztás létrehozásához a küszöbértékkel együtt át kell adni a műveleti csoport részleteit. Az e-mailek adatait, a webhook URL-jeit, a Runbook Automation részleteit és az egyéb műveleteket a riasztás létrehozása előtt először a műveleti csoportba kell definiálni. Létrehozhat [műveleti csoportot Azure monitor](../../azure-monitor/platform/action-groups.md) a portálon, vagy használhatja a [műveleti csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups)-t.
 
-Ha a műveleti csoport társítását szeretné hozzáadni egy riasztáshoz, adja meg a műveleti csoport egyedi Azure Resource Manager AZONOSÍTÓját a riasztás definíciójában. Alább látható egy minta illusztráció:
+Műveletcsoport társítása egy riasztás hozzáadásához adja meg az egyedi Azure Resource Manager-Azonosítót a műveletcsoport, a riasztás definíciójának. A minta ábra lejjebb:
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -255,21 +253,21 @@ Ha a műveleti csoport társítását szeretné hozzáadni egy riasztáshoz, adj
         "Version": 1
       },
 
-A Put metódust egy egyedi műveleti AZONOSÍTÓval társíthatja, hogy egy már meglévő műveleti csoportot rendeljen hozzá egy ütemtervhez.  A következő példa a használati ábrát szemlélteti.
+Használ a Put metódust a művelet egyedi azonosítója már meglévő műveletcsoport ütemezés.  Az alábbiakban látható a használati minta ábrája.
 
     $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-A Put metódust meglévő műveleti AZONOSÍTÓval használva módosíthatja az ütemtervhez társított műveleti csoportokat.  A kérelem törzsének tartalmaznia kell a művelet ETAG.
+Műveletcsoport hozzárendelt ütemezés módosításához használja a Put metódust egy meglévő azonosítójú művelet.  A kérelem törzsében tartalmaznia kell az etag címkéje a műveletet.
 
     $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': { 'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'] } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 #### <a name="customize-actions"></a>Műveletek testreszabása
-Alapértelmezés szerint a műveletek standard sablont és formátumot követve értesítések küldéséhez. A felhasználó azonban testre szabhatja bizonyos műveleteket, még akkor is, ha azokat műveleti csoportok vezérlik. Jelenleg az e-mailek tárgya és a webhook adattartalma is testreszabható.
+Alapértelmezett műveletek kövesse a Normál sablon és az értesítések formátuma. De a felhasználó szabhatja bizonyos műveleteket, még akkor is, ha azok Műveletcsoportok által vezérelt. Testreszabás jelenleg az E-mail tárgyát és a Webhook hasznos adatai.
 
-##### <a name="customize-e-mail-subject-for-action-group"></a>A műveleti csoport E-Mail tárgyának testreszabása
-Alapértelmezés szerint az e-mailek tárgya a riasztások esetében: riasztási értesítési `<AlertName>` `<WorkspaceName>`. Ez azonban testreszabható, így konkrét szavakat vagy címkéket is használhat, így egyszerűen alkalmazhatja a beérkezett fájlok szűrési szabályait. Az e-mail-fejléc testreszabása részleteit a ActionGroup részleteivel együtt kell elküldeni, ahogy az alábbi példában is látható.
+##### <a name="customize-e-mail-subject-for-action-group"></a>Testre szabhatja az E-Mail tárgyát műveletcsoport
+Alapértelmezés szerint az e-mailek tárgya a riasztások esetében: riasztási értesítési `<AlertName>` `<WorkspaceName>`. Azonban ez testre szabható, így is szó vagy címkék –, hogy könnyedén alkalmazni az Állapotszűrő szabályok a Beérkezett üzenetek mappában. A Testreszabás e-mail részletei kell küldenie az alábbi példa a ActionGroup részleteivel együtt.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -290,20 +288,20 @@ Alapértelmezés szerint az e-mailek tárgya a riasztások esetében: riasztási
         "Version": 1
       },
 
-A Put metódust egy egyedi műveleti AZONOSÍTÓval társíthatja, hogy a már meglévő műveleti csoportot egy ütemezett testreszabással társítsa.  A következő példa a használati ábrát szemlélteti.
+A Put metódust használata a művelet egyedi azonosítója már meglévő műveletcsoport társítandó ütemezés testreszabása.  Az alábbiakban látható a használati minta ábrája.
 
     $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-A Put metódust meglévő műveleti AZONOSÍTÓval használva módosíthatja az ütemtervhez társított műveleti csoportokat.  A kérelem törzsének tartalmaznia kell a művelet ETAG.
+Műveletcsoport hozzárendelt ütemezés módosításához használja a Put metódust egy meglévő azonosítójú művelet.  A kérelem törzsében tartalmaznia kell az etag címkéje a műveletet.
 
     $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-##### <a name="customize-webhook-payload-for-action-group"></a>Webhook-tartalom testreszabása a műveleti csoport számára
-Alapértelmezés szerint a log Analytics műveleti csoportján keresztül továbbított webhook rögzített struktúrával rendelkezik. A JSON-adattartalom azonban az egyes támogatott változók használatával testreszabható, hogy megfeleljen a webhook-végpont követelményeinek. További információ: [webhook művelet a naplózási riasztási szabályokhoz](../../azure-monitor/platform/alerts-log-webhook.md). 
+##### <a name="customize-webhook-payload-for-action-group"></a>A műveletcsoport testre szabhatja a Webhook hasznos adatai
+Alapértelmezés szerint a log Analytics műveletcsoport küldött webhook struktúrája egy rögzített. Azonban egy adott változók támogatott, a webhook-végpontot követelményeinek segítségével testreszabhatja a JSON-adattartalmat. További információ: [webhook művelet a naplózási riasztási szabályokhoz](../../azure-monitor/platform/alerts-log-webhook.md). 
 
-A webhook testreszabása részleteit a ActionGroup részleteivel együtt kell elküldeni, és a rendszer a műveleti csoporton belül megadott összes webhook URI-ra alkalmazza. mint az alábbi példában.
+A Testreszabás webhook részletei kell küldeni ActionGroup részleteivel együtt, és alkalmazható az összes Webhook belül a műveletcsoport; a megadott URI az alábbi példa.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -325,12 +323,12 @@ A webhook testreszabása részleteit a ActionGroup részleteivel együtt kell el
         "Version": 1
       },
 
-A Put metódust egy egyedi műveleti AZONOSÍTÓval társíthatja, hogy a már meglévő műveleti csoportot egy ütemezett testreszabással társítsa.  A következő példa a használati ábrát szemlélteti.
+A Put metódust használata a művelet egyedi azonosítója már meglévő műveletcsoport társítandó ütemezés testreszabása.  Az alábbiakban látható a használati minta ábrája.
 
     $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-A Put metódust meglévő műveleti AZONOSÍTÓval használva módosíthatja az ütemtervhez társított műveleti csoportokat.  A kérelem törzsének tartalmaznia kell a művelet ETAG.
+Műveletcsoport hozzárendelt ütemezés módosításához használja a Put metódust egy meglévő azonosítójú művelet.  A kérelem törzsében tartalmaznia kell az etag címkéje a műveletet.
 
     $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson

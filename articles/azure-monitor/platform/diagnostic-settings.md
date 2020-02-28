@@ -3,17 +3,16 @@ title: Diagnosztikai beállítás létrehozása naplók és metrikák gyűjtés�
 description: Diagnosztikai beállítások létrehozásával továbbíthatja az Azure platform naplófájljait Azure Monitor naplókba, az Azure Storage-ba vagy az Azure Event Hubsba.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 22932121b97c1b0fe91c46b5eea0222a022a4e61
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: fb2f9ff5af68575d9f9d29e9a6aca83d603395b3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751085"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672412"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Diagnosztikai beállítás létrehozása platform-naplók és-metrikák gyűjtéséhez az Azure-ban
 Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenységeket és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azoktól függő Azure-platformról. Ez a cikk részletesen ismerteti, hogyan lehet diagnosztikai beállításokat létrehozni és konfigurálni a platform naplófájljainak különböző célhelyekre küldéséhez.
@@ -32,13 +31,13 @@ Egyetlen diagnosztikai beállítás a célhelyek közül legfeljebb egyet tud me
 > [!NOTE]
 > A rendszer automatikusan gyűjti a [platform metrikáit](metrics-supported.md) [Azure monitor metrikákat](data-platform-metrics.md). A diagnosztikai beállításokkal bizonyos Azure-szolgáltatások metrikáit gyűjthetik be Azure Monitor naplókba más figyelési adatokkal való elemzéshez [a naplók használatával.](../log-query/log-query-overview.md)
 
-## <a name="destinations"></a>Célhelyek 
+## <a name="destinations"></a>Destinations 
 A platform naplói a következő táblázatban szereplő célhelyekre küldhetők el. Az egyes célhelyek konfigurációját ugyanazzal a folyamattal hajtja végre a jelen cikkben ismertetett diagnosztikai beállítások létrehozásához. Az alábbi táblázatban szereplő hivatkozásokra kattintva megtekintheti az adatok erre a célra történő küldésének részleteit.
 
 | Cél | Leírás |
 |:---|:---|
 | [Log Analytics-munkaterület](resource-logs-collect-workspace.md) | A naplók egy Log Analytics munkaterületre való összegyűjtése lehetővé teszi, hogy a nagy teljesítményű naplók segítségével elemezze azokat más, Azure Monitor által gyűjtött figyelési adatokkal, valamint más Azure Monitor funkciók, például riasztások és vizualizációk kihasználása érdekében. |
-| [Event hubok](resource-logs-stream-event-hubs.md) | A naplók küldésének Event Hubs lehetővé teszi az adatok továbbítását külső rendszerekre, például harmadik féltől származó SIEM-re és más log Analytics-megoldásokra. |
+| [Event Hubs](resource-logs-stream-event-hubs.md) | A naplók küldésének Event Hubs lehetővé teszi az adatok továbbítását külső rendszerekre, például harmadik féltől származó SIEM-re és más log Analytics-megoldásokra. |
 | [Azure Storage-fiók](resource-logs-collect-storage.md) | A naplók Azure Storage-fiókba való archiválása a naplózás, a statikus elemzés vagy a biztonsági mentés esetében hasznos. |
 
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>Diagnosztikai beállítások létrehozása a Azure Portalban
@@ -58,13 +57,13 @@ A Azure Portal diagnosztikai beállításait a Azure Monitor menüből vagy az e
 
         ![Diagnosztikai beállítások](media/diagnostic-settings/menu-activity-log.png)
 
-2. Ha nem találhatók beállítások a kiválasztott erőforráson, a rendszer kéri, hogy hozzon létre egy beállítást. Kattintson a **diagnosztikai beállítás hozzáadása**elemre.
+2. Ha a beállítások nem létezik az erőforráson kiválasztott, kéri létre beállítást. Kattintson a **diagnosztikai beállítás hozzáadása**elemre.
 
-   ![Diagnosztikai beállítás hozzáadása – nincsenek meglévő beállítások](media/diagnostic-settings/add-setting.png)
+   ![Diagnosztikai beállítás - beállítások nélkül hozzáadása](media/diagnostic-settings/add-setting.png)
 
    Ha vannak meglévő beállítások az erőforráson, látni fogja a már konfigurált beállítások listáját. Kattintson a **diagnosztikai beállítás hozzáadása** lehetőségre egy új beállítás hozzáadásához vagy egy meglévő **szerkesztési beállítás** megadásához. Az egyes beállítások nem lehetnek többek között a célhelyek közül.
 
-   ![Diagnosztikai beállítások hozzáadása – meglévő beállítások](media/diagnostic-settings/edit-setting.png)
+   ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/diagnostic-settings/edit-setting.png)
 
 3. Adja meg a beállítás nevét, ha még nem rendelkezik ilyennel.
 4. Jelölje be az egyes célhelyek jelölőnégyzetét a naplók elküldéséhez. Kattintson a **Konfigurálás** elemre a beállítások megadásához az alábbi táblázatban leírtak szerint.
@@ -75,9 +74,9 @@ A Azure Portal diagnosztikai beállításait a Azure Monitor menüből vagy az e
     | Tárfiók | A Storage-fiók neve. |
     | Eseményközpont-névtér | Az a névtér, amelyben az Event hub létre lett hozva (ha ez az első adatfolyam-naplók), vagy adatfolyamként továbbítja a (ha már van olyan erőforrás, amely ezen a névtéren keresztül továbbítja a naplózási kategóriát).
     | Event Hubs neve | Opcionálisan megadhat egy Event hub-nevet, amely a beállításban szereplő összes értéket elküldi. Ha nem ad meg nevet, a rendszer minden egyes naplózási kategóriához létrehoz egy Event hub-t. Ha több kategóriát küld, érdemes megadnia egy nevet a létrehozott Event hubok számának korlátozásához. A részletekért tekintse meg az [Azure Event Hubs kvótáit és korlátozásait](../../event-hubs/event-hubs-quotas.md) . |
-    | Event hub-házirend neve | Meghatározza a folyamatos átviteli mechanizmushoz tartozó engedélyeket. |
+    | Eseményközpont szabályzatának neve | Meghatározza a folyamatos átviteli mechanizmushoz tartozó engedélyeket. |
 
-    ![Diagnosztikai beállítások hozzáadása – meglévő beállítások](media/diagnostic-settings/setting-details.png)
+    ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/diagnostic-settings/setting-details.png)
 
 5. Jelölje be az egyes adatkategóriákhoz tartozó jelölőnégyzetet a megadott célhelyre való küldéshez. A kategóriák listája minden egyes Azure-szolgáltatás esetében eltérő lesz.
 
@@ -86,7 +85,7 @@ A Azure Portal diagnosztikai beállításait a Azure Monitor menüből vagy az e
    >
    > *Például*: Egy eseményközpont „Bejövő üzenetek” metrikája üzenetsoronként deríthető fel és ábrázolható. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
 
-6. Kattintson a **Mentés** gombra.
+6. Kattintson a **Save** (Mentés) gombra.
 
 Néhány pillanat elteltével megjelenik az új beállítás az erőforráshoz tartozó beállítások listájában, és a rendszer a naplókat a megadott célhelyre továbbítja az új esemény-adatforrások létrehozásakor. Vegye figyelembe, hogy egy esemény kibocsátása és a [log Analytics munkaterületen való megjelenése](data-ingestion-time.md)között akár tizenöt percet is igénybe vehet.
 

@@ -1,18 +1,17 @@
 ---
 title: Adatgyűjtés a Azure Monitor gyűjtött adatokból | Microsoft Docs
 description: A Collected egy nyílt forráskódú linuxos démon, amely rendszeres időközönként adatokat gyűjt az alkalmazásokból és a rendszerszintű adatokból.  Ez a cikk a Azure Monitor gyűjtött adatok gyűjtésével kapcsolatos információkat tartalmazza.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: 277e6c9736266b64fd717b719dc740525047ae88
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8c09d4ac5d0856eb0d448a1cabd9adc567850c4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395869"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670610"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Adatgyűjtés a Linux-ügynököktől a Azure Monitor-ban gyűjtött adatokból
 A [Collected](https://collectd.org/) egy nyílt forráskódú linuxos démon, amely rendszeresen gyűjti a teljesítmény-mérőszámokat az alkalmazásokból és a rendszerszintű információkból. Például az alkalmazások közé tartozik a Java virtuális gép (JVM), a MySQL-kiszolgáló és az Nginx. Ez a cikk a Azure Monitor gyűjtött teljesítményadatok gyűjtésével kapcsolatos információkat tartalmazza.
@@ -109,12 +108,12 @@ A Log Analytics-ügynök által már összegyűjtött infrastruktúra-metrikák 
 | Begyűjtött metrika mező | Azure Monitor mező |
 |:--|:--|
 | `host` | Computer |
-| `plugin` | None |
+| `plugin` | Nincs |
 | `plugin_instance` | Példány neve<br>Ha **plugin_instance** értéke *Null* , akkor példánynév = " *_Total*" |
 | `type` | ObjectName |
 | `type_instance` | CounterName<br>Ha **type_instance** értéke *Null* , akkor a CounterName =**blank** |
 | `dsnames[]` | CounterName |
-| `dstypes` | None |
+| `dstypes` | Nincs |
 | `values[]` | Kártyabirtokos számlájának megterhelését |
 
 ## <a name="next-steps"></a>Következő lépések

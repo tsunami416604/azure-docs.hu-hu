@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: b13e5e0000cdd8e33f459400cc4c24d107ccaba3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604793"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661839"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>GYIK – általános kérdések Azure Security Center
 
@@ -38,16 +38,17 @@ Az Azure Security Center figyeli a következő Azure-erőforrások:
 * Virtuális gépek (VM-EK) (beleértve a [Cloud Services](../cloud-services/cloud-services-choose-me.md))
 * Virtuálisgép-méretezési csoportok
 * Azure virtuális hálózatok
+* Tárolók
 * Azure SQL service
 * Azure Storage-fiók
 * Azure Web Apps ( [app Service Environment](../app-service/environment/intro.md))
 * Például a webalkalmazási tűzfal a virtuális gépek és az App Service Environment az Azure-előfizetésében integrált partnermegoldások
 
-Emellett a nem Azure (beleértve a helyszíni) számítógépeket is figyelheti Azure Security Center (a [Windows rendszerű számítógépek](./quick-onboard-windows-computer.md) és a Linux rendszerű [számítógépek](./quick-onboard-linux-computer.md) is támogatottak)
+Emellett a nem Azure-t (beleértve a helyszíni gépeket is) Azure Security Center is figyelheti. A [Windows rendszerű gépek](./quick-onboard-windows-computer.md) és a Linux rendszerű [gépek](./quick-onboard-linux-computer.md) egyaránt támogatottak.
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Hogyan tekinthetem meg a saját Azure-erőforrások aktuális biztonsági állapotát?
-A **Security Center áttekintő** oldal a környezet általános biztonsági állapotát mutatja számítás, hálózatkezelés, tárterület & adatok és alkalmazások szerint lebontva. Egyes erőforrástípusok-kijelző ábrázoló van, ha a potenciális biztonsági hiányosságok azonosított. Minden egyes csempére kattintva azonosítja az erőforrást az előfizetésében leltára együtt a Security Center, biztonsági problémák listáját jeleníti meg.
+A **Security Center áttekintő** oldal a környezet általános biztonsági állapotát mutatja számítás, hálózatkezelés, tárterület & adatok és alkalmazások szerint lebontva. Minden erőforrástípus tartalmaz egy mutatót, amely az azonosított biztonsági réseket mutatja be. Minden egyes csempére kattintva azonosítja az erőforrást az előfizetésében leltára együtt a Security Center, biztonsági problémák listáját jeleníti meg.
 
 
 

@@ -1,18 +1,14 @@
 ---
 title: Application Insights a Worker Service-alkalmazásokhoz (nem HTTP-alkalmazások)
 description: A .NET Core/. NET Framework nem HTTP-alkalmazások figyelése Azure Monitor Application Insightsokkal.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/16/2019
-ms.openlocfilehash: bea30ade6d9f6eb77d18c671b824b138ba94fddb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2d4b3a38b059d603c96fc9267b44707ed32c8c1d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406186"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669335"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights Worker Service-alkalmazásokhoz (nem HTTP-alkalmazások)
 
@@ -357,14 +353,14 @@ Gyakran használt beállítások a `ApplicationInsightsServiceOptions`
 
 |Beállítás | Leírás | Alapértelmezett
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | LiveMetrics funkció engedélyezése/letiltása | igaz
-|EnableAdaptiveSampling | Adaptív mintavételezés engedélyezése/letiltása | igaz
-|EnableHeartbeat | A szívverések funkció engedélyezése/letiltása, amely rendszeres időközönként (15 perces alapértelmezett) a "HeartBeatState" nevű egyéni metrikát küldi el a (z), például a .NET-es verzióval, az Azure-környezettel kapcsolatos információkkal, ha vannak ilyenek, stb. | igaz
-|AddAutoCollectedMetricExtractor | Az AutoCollectedMetrics Extractor engedélyezése/letiltása, amely egy olyan TelemetryProcessor, amely előre összevont metrikákat küld a kérelmek/függőségek számára a mintavétel megkezdése előtt. | igaz
+|EnableQuickPulseMetricStream | LiveMetrics funkció engedélyezése/letiltása | true
+|EnableAdaptiveSampling | Adaptív mintavételezés engedélyezése/letiltása | true
+|EnableHeartbeat | A szívverések funkció engedélyezése/letiltása, amely rendszeres időközönként (15 perces alapértelmezett) a "HeartBeatState" nevű egyéni metrikát küldi el a (z), például a .NET-es verzióval, az Azure-környezettel kapcsolatos információkkal, ha vannak ilyenek, stb. | true
+|AddAutoCollectedMetricExtractor | Az AutoCollectedMetrics Extractor engedélyezése/letiltása, amely egy olyan TelemetryProcessor, amely előre összevont metrikákat küld a kérelmek/függőségek számára a mintavétel megkezdése előtt. | true
 
 A legnaprakészebb listához tekintse [meg a `ApplicationInsightsServiceOptions`konfigurálható beállításait](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) .
 
-### <a name="sampling"></a>Mintavétel
+### <a name="sampling"></a>Mintavételezés
 
 Az Application Insights SDK for Worker szolgáltatás a rögzített sebességű és az adaptív mintavételezést is támogatja. Az adaptív mintavételezés alapértelmezés szerint engedélyezve van. A munkavégző szolgáltatás mintavételezésének konfigurálása ugyanúgy történik, mint [ASP.net Core alkalmazásokhoz](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-adaptive-sampling-for-aspnet-core-applications).
 
@@ -539,7 +535,7 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [.Net Core 3,0 Worker szolgáltatás](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Akkor használja ezt a mintát, ha a .NET Core 3,0 Worker szolgáltatásalkalmazás az [alábbi](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-3.0&tabs=visual-studio#worker-service-template) hivatalos útmutatás szerint van
 
-## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
+## <a name="open-source-sdk"></a>Open-source SDK
 
 [Olvassa el és járuljon hozzá a kódhoz](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates).
 

@@ -3,17 +3,16 @@ title: Metrikák küldése a Azure Monitor metrikus adatbázisnak a REST API has
 description: Egyéni metrikák küldése az Azure-erőforrásokhoz az Azure Monitor metrikai tárolóba egy REST API használatával
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: a19b59c758f31ff1ef3416b59031202193d50522
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 84709c022631543101889f784231158ebb96b6f3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285940"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662264"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Egyéni metrikák küldése az Azure-erőforrásokhoz az Azure Monitor metrikai tárolóba egy REST API használatával
 
@@ -43,7 +42,7 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 ```
 Mentse a hozzáférési jogkivonatot a válaszból.
 
-![Hozzáférési jogkivonat](./media/metrics-store-custom-rest-api/accesstoken.png)
+![hozzáférési jogkivonat](./media/metrics-store-custom-rest-api/accesstoken.png)
 
 ## <a name="emit-the-metric-via-the-rest-api"></a>A metrika kibocsátása a REST API használatával 
 
@@ -88,7 +87,7 @@ Mentse a hozzáférési jogkivonatot a válaszból.
 1. Módosítsa a JSON-fájl időbélyegét és értékeit. 
 1. Ismételje meg az előző két lépést néhányszor, így több percig is elvégezheti az adattárolást.
 
-## <a name="troubleshooting"></a>Hibaelhárítás 
+## <a name="troubleshooting"></a>Hibakeresés 
 Ha a folyamat néhány részével hibaüzenetet kap, vegye figyelembe a következő hibaelhárítási információkat:
 
 1. Azure-erőforrásként nem lehet mérőszámokat kiadni egy előfizetéshez vagy erőforráscsoporthoz. 

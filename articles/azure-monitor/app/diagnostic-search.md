@@ -1,18 +1,14 @@
 ---
 title: Keresés használata az Azure Application Insightsban | Microsoft Docs
 description: A webalkalmazás által eljuttatott nyers telemetria keresése és szűrése.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/30/2019
-ms.openlocfilehash: 77cd0a8d0c1a93e7dc1db931e987a172d31978ef
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678070"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669675"
 ---
 # <a name="using-search-in-application-insights"></a>Keresés használata a Application Insightsban
 
@@ -98,19 +94,19 @@ A teljes szavakat, nem alsztringeket is megkeresheti. Használjon idézőjeleket
 
 | Sztring | *Nem* található | Található |
 | --- | --- | --- |
-| HomeController. about |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
+| HomeController.About |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |Egyesült Államok|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
 
 Az alábbi keresési kifejezéseket használhatja:
 
-| Példa lekérdezésre | Következmény |
+| Példa lekérdezésre | Hatás |
 | --- | --- |
 | `apple` |Minden olyan esemény megkeresése az időtartományban, amelynek mezői tartalmazzák az "Apple" szót |
 | `apple AND banana` <br/>`apple banana` |Mindkét szót tartalmazó események megkeresése. A "és a" kifejezés használata nem "és". <br/>Rövid alak. |
 | `apple OR banana` |Olyan események keresése, amelyek bármelyik szót tartalmaznak. Használja a "vagy a", nem "vagy" lehetőséget. |
 | `apple NOT banana` |Olyan eseményeket kereshet, amelyek egyetlen szót tartalmaznak, a másikat azonban nem. |
 
-## <a name="sampling"></a>Mintavétel
+## <a name="sampling"></a>Mintavételezés
 
 Ha az alkalmazás nagy mennyiségű telemetria hoz létre (és a ASP.NET SDK 2.0.0-beta3 vagy újabb verzióját használja), az adaptív mintavételi modul automatikusan csökkenti a portálra küldött kötetet, és csak az események egy reprezentatív hányadát küldi el. Azonban az ugyanahhoz a kéréshez kapcsolódó események ki vannak választva vagy ki lesznek választva egy csoportként, így a kapcsolódó események között lehet navigálni.
 
@@ -152,4 +148,4 @@ Az adatposta automatikus naplózása nem történik meg, de a [TrackTrace vagy a
 * [Összetett lekérdezések írása az elemzésekben](../../azure-monitor/log-query/get-started-portal.md)
 * [Naplók és egyéni telemetria küldése Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Rendelkezésre állási és válaszadási tesztek beállítása](../../azure-monitor/app/monitor-web-app-availability.md)
-* [hibaelhárítással](../../azure-monitor/app/troubleshoot-faq.md)
+* [Hibaelhárítás](../../azure-monitor/app/troubleshoot-faq.md)

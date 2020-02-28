@@ -1,18 +1,16 @@
 ---
 title: Az Azure Kubernetes szolgáltatás (ak) vagy más Kubernetes üzemeltetett alkalmazások figyelése a Application Insights használatával – Azure Monitor | Microsoft Docs
 description: A Azure Monitor a Kubernetes-fürtön a Service Mesh Technology, a Istio használatával biztosítja az alkalmazások figyelését bármely Kubernetes által üzemeltetett alkalmazás számára. Ez lehetővé teszi, hogy összegyűjtse Application Insights telemetria, amely a fürtben futó hüvelyek bejövő és kimenő kéréseire vonatkozik.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: a7821db85d4218cbccb6c10f12ecbc624f2702fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15c75d4add9615df6c42aa6121557659e54354d0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432523"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666786"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Zero Instrumentation-alkalmazás figyelése Kubernetes által üzemeltetett alkalmazásokhoz
 
@@ -33,7 +31,7 @@ A Azure Monitor mostantól kihasználja a Service Mesh Tech szolgáltatást a Ku
 - [Alkalmazás-betekintési erőforrás](create-new-resource.md)
 - Rendelkeznie kell egy szolgáltatás hálóval. Ha a fürtön nincs telepítve a Istio, megtudhatja, hogyan [telepítheti és használhatja a Istio az Azure Kubernetes Service-ben](https://docs.microsoft.com/azure/aks/istio-install).
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
 A Kubernetes által üzemeltetett alkalmazások nulla rendszerállapot-figyelési szolgáltatásával a következőket használhatja:
 
@@ -44,7 +42,7 @@ A Kubernetes által üzemeltetett alkalmazások nulla rendszerállapot-figyelés
 - [Elosztott – nyomkövetés](../../azure-monitor/app/distributed-tracing.md)
 - [Végpontok közötti tranzakciók figyelése](../../azure-monitor/learn/tutorial-performance.md#identify-slow-server-operations)
 
-## <a name="installation-steps"></a>Telepítési lépések
+## <a name="installation-steps"></a>A telepítés lépései
 
 A megoldás engedélyezéséhez végezze el a következő lépéseket:
 - Telepítse az alkalmazást (ha még nincs telepítve).
@@ -98,7 +96,7 @@ A szolgáltatás hálóján kívül futó alkalmazások nem érintettek.
 - Készítse elő a mintavételt az alkalmazáson, hogy ellenőrizze, a figyelés megfelelően működik-e.
 - 3-5 percen belül el kell indítania a telemetria megjelenését a Azure Portalban. Ügyeljen rá, hogy a portálon tekintse meg az Application Insights-erőforrás *alkalmazás-hozzárendelési* szakaszát.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Alább látható az a hibaelhárítási folyamat, amelyet akkor kell használni, ha a telemetria nem jelenik meg a Azure Portal a várt módon.
 
@@ -129,7 +127,7 @@ Alább látható az a hibaelhárítási folyamat, amelyet akkor kell használni,
    ```
    Keresse meg az esetleges hibákat, különösen az *applicationinsightsadapter* -adapterrel való kommunikációra vonatkozó adatokat.
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 A projekt előrehaladásával kapcsolatos legfrissebb információkért látogasson el a Istio- [keverő projekt GitHub-Application Insights adapterére](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq).
 

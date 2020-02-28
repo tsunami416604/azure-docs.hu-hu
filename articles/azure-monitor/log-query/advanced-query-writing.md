@@ -1,18 +1,17 @@
 ---
 title: Speciális lekérdezések a Azure Monitorban | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használható az elemzési portál a Azure Monitor lekérdezések írásához.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
-ms.openlocfilehash: 8895224bef037c8c3f8b28a6085359837478d924
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894501"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670287"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Speciális lekérdezések írása a Azure Monitorban
 
@@ -69,7 +68,7 @@ Event
 | project TimeGenerated, USTimeGenerated, Source, Computer, EventLevel, EventData 
 ```
 
-## <a name="print"></a>Nyomtatási
+## <a name="print"></a>Nyomtatás
 a `print` egy olyan táblát ad vissza, amely egyetlen oszlopból és egy sorból áll, amely a számítás eredményét jeleníti meg. Ezt gyakran használják olyan esetekben, amikor egyszerű számításra van szükség. Ha például az aktuális időt szeretné megkeresni a PST-ben, és hozzá szeretne adni egy oszlopot az EST használatával:
 
 ```Kusto

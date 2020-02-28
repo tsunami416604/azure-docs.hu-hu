@@ -1,19 +1,17 @@
 ---
 title: Felhasználói elemzési eszközök – Azure Application Insights
 description: Hibaelhárítási útmutató – a hely és az alkalmazás használatának elemzése a Application Insights használatával.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa540cdaef1af3016d87ab93768ceb30802cef0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432280"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670916"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>A Application Insights felhasználói viselkedési elemzési eszközeinek hibáinak megoldása
 Kérdése van a [felhasználói viselkedést elemző eszközökkel kapcsolatban Application Insights](usage-overview.md): [felhasználók, munkamenetek, események](usage-segmentation.md), [tölcsérek](usage-funnels.md), [Felhasználókövetés](usage-flows.md), [megőrzés](usage-retention.md)vagy kohorszok? Íme néhány válasz.
@@ -50,6 +48,6 @@ Ha az alkalmazás túl sok egyéni eseményazonosító küldését küldi el, m�
 
 * [A felhasználói viselkedés elemzési eszközeinek áttekintése](usage-overview.md)
 
-## <a name="get-help"></a>Segítség
+## <a name="get-help"></a>Segítségkérés
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

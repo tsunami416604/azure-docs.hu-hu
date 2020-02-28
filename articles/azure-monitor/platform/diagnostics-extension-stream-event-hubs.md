@@ -1,18 +1,17 @@
 ---
 title: Adatok küldése a Windows Azure Diagnostics bővítményből az Azure-Event Hubs
 description: A diagnosztikai bővítmény konfigurálása a Azure Monitorban az Azure Event hub-ba való adatküldéshez, így az Azure-on kívüli helyszínekre is továbbíthatja.
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 573a56c537e48687e310acff8639c50d0d0c6e3d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 5e5034e99d37d3681192c2ad066f28acd1c4aeeb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467963"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672531"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Adatok küldése a Windows Azure Diagnostics bővítményből az Azure-Event Hubs
 Az Azure Diagnostics bővítmény olyan Azure Monitor ügynöke, amely a vendég operációs rendszerből és az Azure-beli virtuális gépek és egyéb számítási erőforrások munkaterhelésével kapcsolatos figyelési adatokat gyűjt. Ez a cikk azt ismerteti, hogyan lehet adatok küldését a Windows Azure diagnosztikai bővítménnyel (WAD) az [azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/) , így az Azure-on kívüli helyekre is továbbíthatja őket.

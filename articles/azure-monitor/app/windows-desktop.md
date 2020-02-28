@@ -1,30 +1,26 @@
 ---
 title: Windowsos asztali alkalmazások használatának és teljesítményének figyelése
 description: A windowsos asztali alkalmazások használatát és teljesítményét az Application Insights segítségével elemezheti.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/29/2019
-ms.openlocfilehash: a9dfc32a0f33db5639d5f74667a90a248dc358a1
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052460"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670831"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasszikus windowsos asztali alkalmazások használatának és teljesítményének figyelése
 
 A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is kihasználhatják az Application Insights előnyeit. Az egyetlen korlát, hogy [engedélyezni kell a kommunikációt](../../azure-monitor/app/ip-addresses.md) az Application Insights szolgáltatással. Az univerzális Windows-platformra (UWP) épülő alkalmazásokhoz a [Visual Studio App Center](../../azure-monitor/learn/mobile-center-quickstart.md) használatát javasoljuk.
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>Klasszikus Windows-alkalmazásból származó telemetriai adatok küldése az Application Insightsba
-1. [Hozzon létre egy Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ) az [Azure Portalon](https://portal.azure.com). Az alkalmazás típusánál válassza az ASP.NET alkalmazás lehetőséget.
+1. [Hozzon létre egy Application Insights-erőforrást](https://portal.azure.com) az [Azure Portalon](../../azure-monitor/app/create-new-resource.md ). Az alkalmazás típusánál válassza az ASP.NET alkalmazás lehetőséget.
 2. Végezze el a kialakítási kulcs másolását. A kulcs az imént létrehozott új erőforrás Alapvető szolgáltatások legördülő menüjében található. 
 3. A Visual Studióban szerkessze az alkalmazási projekt NuGet-csomagjait, és vegye fel a Microsoft.ApplicationInsights.WindowsServer csomagot. (Vagy válassza a Microsoft.ApplicationInsights csomagot, ha csak az API-ra van szüksége a normál telemetriai adatgyűjtő modulok nélkül.)
 4. Állítsa be a kialakítási kulcsot a kódban:
    
-    `TelemetryConfiguration.Active.InstrumentationKey = "`*az Ön kulcsa*`";`
+    `TelemetryConfiguration.Active.InstrumentationKey = "` *a kulcsot* `";`
    
     vagy az ApplicationInsights.config fájlban (ha telepítette valamelyik normál telemetriai csomagot):
    

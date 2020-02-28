@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 4a0593ccd6bdf37520e73ba8ed421ec4b10ea52c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 89772bea818a0ebb57135990b3a04fcb559e2716
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623309"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664932"
 ---
 # <a name="streaming-ingestion-preview"></a>Folyamatos átvitel (előzetes verzió)
 
@@ -76,7 +76,7 @@ Két támogatott adatfolyam-betöltési típus létezik:
 * A betöltési kérések adatméretre vonatkozó korlátozása 4 MB.
 * A sémák frissítései, például a táblák és a betöltési leképezések létrehozása és módosítása akár 5 percet is igénybe vehet a streaming betöltési szolgáltatás számára.
 * Az adatfolyamok betöltésének engedélyezése egy fürtön, még akkor is, ha az adatok nem a folyamatos átvitelen keresztül kerülnek betöltésre, a a fürt helyi SSD-lemezének részét képezi a betöltési adatok átviteléhez, és csökkenti a gyors gyorsítótár számára elérhető tárterületet
-* Az adatfolyam-betöltési adatmennyiség [nem állítható](/azure/kusto/management/extents-overview.md#extent-tagging) be.
+* Az adatfolyam-betöltési adatmennyiség [nem állítható](/azure/kusto/management/extents-overview#extent-tagging) be.
 
 A streaming betöltés nem támogatja a következő funkciókat:
 * [Adatbázis-kurzorok](/azure/kusto/management/databasecursor).

@@ -1,18 +1,14 @@
 ---
 title: Teljesítményszámlálók a Application Insightsban | Microsoft Docs
 description: A rendszer és az egyéni .NET-teljesítményszámlálók figyelése Application Insightsban.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/13/2018
-ms.openlocfilehash: d313fed6a61ac98e596e6f8caca8f0e46a8c9600
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 94d2520c17867f6d70caffd002a76365a425986f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689079"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669879"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Rendszerteljesítmény-számlálók a Application Insightsban
 
@@ -150,7 +146,7 @@ A teljesítményszámlálók támogatása ASP.NET Core korlátozott:
 * A .NET-keretrendszert célzó alkalmazások esetében az SDK összes verziója támogatja a teljesítményszámlálókat.
 * A 2.8.0 és újabb verziójú SDK-verziók támogatják a CPU-/memória-számlálót a Linux rendszerben. A Linux nem támogatja a többi számlálót. A Linux-(és más nem Windows-környezetekben található) rendszerszámlálók használatának ajánlott módja a [EventCounters](eventcounters.md) használata.
 
-## <a name="alerts"></a>Értesítések
+## <a name="alerts"></a>Riasztások
 Más mérőszámokhoz hasonlóan [riasztást is beállíthat](../../azure-monitor/app/alerts.md) , amely figyelmezteti, ha a teljesítményszámláló a megadott korláton kívül esik. Nyissa meg a riasztások ablaktáblát, és kattintson a riasztás hozzáadása lehetőségre.
 
 ## <a name="next"></a>Következő lépések

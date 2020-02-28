@@ -3,17 +3,16 @@ title: Az Azure-tevékenység naplójának exportálása
 description: Exportálja az Azure-beli tevékenység naplóját archiválásra vagy Azure-Event Hubsre az Azure-on kívüli exportáláshoz.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 1c2047fc4b92ecd5776cb835a2f2138c25f5cb65
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845463"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668961"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure-Tevékenységnaplók exportálása a Storage-ba vagy az Azure Event Hubsba
 
@@ -41,7 +40,7 @@ A Storage-fióknak nem kell ugyanabban az előfizetésben lennie, mint az előfi
 > [!TIP]
 > Lásd: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) a biztonságos virtuális hálózat mögötti Storage-fiókhoz való hozzáférés biztosításához.
 
-### <a name="event-hubs"></a>Azure Event Hubs-eseményközpontok
+### <a name="event-hubs"></a>Event Hubs
 Ha egy Event hubhoz küldi a tevékenység naplóját, akkor [létre kell hoznia egy Event hub](../../event-hubs/event-hubs-create.md) -t, ha még nem rendelkezik ilyennel. Ha korábban naplózta a tevékenység naplózási eseményeit erre a Event Hubs névtérre, az Event hub újra fel lesz használva.
 
 A megosztott hozzáférési házirend határozza meg a folyamatos átviteli mechanizmus által biztosított engedélyeket. A Event Hubs való folyamatos átvitelhez a kezelés, a Küldés és a figyelés engedélyek szükségesek. A Event Hubs névtérhez tartozó megosztott hozzáférési házirendeket Azure Portal a Event Hubs névtér configure (Konfigurálás) lapján lehet létrehozni vagy módosítani.
@@ -61,9 +60,9 @@ A napló profilja a következőket határozza meg.
 
 **Az exportálandó régiókat (helyszíneket) exportálni kell.** Minden helyet fel kell vennie, mivel a tevékenység naplójában számos esemény globális esemény.
 
-**Mennyi ideig kell megőrizni a tevékenység naplóját egy Storage-fiókban.** A nulla nap megőrzése azt jelenti, hogy a naplók örökre megmaradnak. Ellenkező esetben az érték tetszőleges számú nap lehet 1 és 365 között.
+**Mennyi ideig kell megőrizni a tevékenység naplóját egy Storage-fiókban.** Egy nulla napnyi adatmegőrzéshez azt jelenti, hogy naplókat tartják örökre. Ellenkező esetben az érték tetszőleges számú nap lehet 1 és 365 között.
 
-Ha adatmegőrzési házirend van beállítva, de a naplófájlok tárolása egy Storage-fiókban le van tiltva, akkor a megőrzési szabályzatok nem lépnek érvénybe. Az adatmegőrzési szabályzatok naponta lesznek alkalmazva, így a nap végén (UTC) az adatmegőrzési házirendben már nem szereplő naplók törlődnek. Ha például egy nap adatmegőrzési szabályzattal rendelkezett, akkor a nap elején a tegnapi nap előtti naplók törlődnek. A törlési folyamat az UTC éjfélkor kezdődik, de vegye figyelembe, hogy a naplók törlését akár 24 óráig is eltarthat a Storage-fiókból.
+Ha adatmegőrzési házirend van beállítva, de a naplófájlok tárolása egy Storage-fiókban le van tiltva, akkor a megőrzési szabályzatok nem lépnek érvénybe. Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén törli a házirendet. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet.
 
 
 > [!IMPORTANT]
@@ -118,12 +117,12 @@ Ha már létezik egy bejelentkezési profil, először el kell távolítania a m
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Tulajdonság | Szükséges | Leírás |
+    | Tulajdonság | Kötelező | Leírás |
     | --- | --- | --- |
-    | Név |Igen |A napló profiljának neve. |
+    | Name (Név) |Igen |A napló profiljának neve. |
     | StorageAccountId |Nem |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni kell a tevékenység naplóját. |
     | serviceBusRuleId |Nem |Service Bus a Service Bus névtérhez tartozó szabály AZONOSÍTÓját, amelybe az Event hub-t létre szeretné hozni. Ez egy karakterlánc a következő formátumban: `{service bus resource ID}/authorizationrules/{key name}`. |
-    | Földrajzi egység |Igen |Azoknak a régióknak a vesszővel tagolt listája, amelyeknek a tevékenység-naplózási eseményeket össze szeretné gyűjteni. |
+    | Hely |Igen |Azoknak a régióknak a vesszővel tagolt listája, amelyeknek a tevékenység-naplózási eseményeket össze szeretné gyűjteni. |
     | RetentionInDays |Igen |Ennyi nap elteltével kell megőrizni az eseményeket a Storage-fiókban 1 és 365 között. A nulla érték határozatlan ideig tárolja a naplókat. |
     | Kategória |Nem |Az összegyűjteni kívánt események kategóriáinak vesszővel tagolt listája. A lehetséges értékek a következők: _írás_, _Törlés_és _művelet_. |
 
@@ -161,13 +160,13 @@ Ha már létezik egy naplózási profil, először el kell távolítania a megl�
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | Tulajdonság | Szükséges | Leírás |
+    | Tulajdonság | Kötelező | Leírás |
     | --- | --- | --- |
     | név |Igen |A napló profiljának neve. |
-    | Storage-Account-ID |Igen |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni szeretné a tevékenység naplóit. |
-    | helyek |Igen |Szóközzel tagolt lista azoknak a régióknak a listájához, amelyeknek a tevékenység-naplózási eseményeket össze szeretné gyűjteni. Az előfizetéshez tartozó összes régió listáját megtekintheti `az account list-locations --query [].name`használatával. |
+    | storage-account-id |Igen |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni szeretné a tevékenység naplóit. |
+    | locations |Igen |Szóközzel tagolt lista azoknak a régióknak a listájához, amelyeknek a tevékenység-naplózási eseményeket össze szeretné gyűjteni. Az előfizetéshez tartozó összes régió listáját megtekintheti `az account list-locations --query [].name`használatával. |
     | nap |Igen |Azon napok száma, amelyekhez meg kell őrizni az eseményeket 1 és 365 között. A nulla érték a naplókat határozatlan ideig (Forever) tárolja.  Ha nulla, akkor az engedélyezett paramétert false értékre kell állítani. |
-    |engedélyezve | Igen |Igaz vagy hamis.  Az adatmegőrzési szabály engedélyezésére vagy letiltására szolgál.  Ha az értéke igaz, akkor a Days paraméternek 0-nál nagyobbnak kell lennie.
+    |enabled | Igen |IGAZ vagy hamis.  Az adatmegőrzési szabály engedélyezésére vagy letiltására szolgál.  Ha az értéke igaz, akkor a Days paraméternek 0-nál nagyobbnak kell lennie.
     | kategóriák |Igen |Az összegyűjteni kívánt események kategóriáinak szóközzel tagolt listája. A lehetséges értékek a következők: írás, törlés és művelet. |
 
 

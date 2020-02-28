@@ -3,17 +3,16 @@ title: Diagnosztikai beállítás létrehozása az Azure-ban Resource Manager-sa
 description: Diagnosztikai beállítások létrehozása Resource Manager-sablonnal az Azure platform naplófájljainak továbbításához Azure Monitor naplók, Azure Storage vagy Azure Event Hubs számára.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 2a171ae89e8314684eddf29f78b9b09bc52f9c9b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977558"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672429"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnosztikai beállítás létrehozása az Azure-ban Resource Manager-sablon használatával
 A Azure Monitor [diagnosztikai beállításai](diagnostic-settings.md) határozzák meg, hogy hová kell elküldeni az Azure-erőforrások által gyűjtött [platform-naplókat](platform-logs-overview.md) , valamint az Azure-platformtól függenek. Ez a cikk azokat a részleteket és példákat ismerteti, amelyekkel [Azure Resource Manager sablon](../../azure-resource-manager/templates/template-syntax.md) használatával hozhat létre és konfigurálhat diagnosztikai beállításokat a különböző célhelyekre gyűjtött platform-naplók összegyűjtéséhez.

@@ -1,18 +1,16 @@
 ---
 title: Az Azure Application Insights Agent API-referenciája
 description: Application Insights Agent API-referenciája. Start-trace. ETW-naplók gyűjtése Állapotmonitor és Application Insights SDK-ból.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: c97315b3a215f10e5b8f9533bf09fa5ac30ee16f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b9680101f1a22dd6d9c1617c8afc13a10ad1c594
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899654"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671222"
 ---
 # <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights Agent API: Start-ApplicationInsightsMonitoringTrace
 
@@ -38,17 +36,17 @@ Ez a parancsmag addig fut, amíg el nem éri az időtúllépési időtartamot (a
 A kód-visszacsatolási futtatókörnyezet ETW eseményeket bocsát ki az IIS indításakor és az alkalmazás indításakor.
 
 Az események összegyűjtése:
-1. Rendszergazdai jogosultságokkal rendelkező cmd-konzolon hajtsa végre az `iisreset /stop` parancsot az IIS és az összes webalkalmazás kikapcsolásához.
+1. Rendszergazdai jogosultságokkal rendelkező cmd-konzolon hajtsa végre `iisreset /stop` az IIS és az összes webalkalmazás kikapcsolásához.
 2. A parancsmag végrehajtása
-3. Rendszergazdai jogosultságokkal rendelkező cmd-konzolon hajtsa végre a `iisreset /start` parancsot az IIS elindításához.
+3. Rendszergazdai jogosultságokkal rendelkező cmd-konzolon futtassa `iisreset /start` az IIS elindításához.
 4. Próbálja meg megkeresni az alkalmazást.
 5. Miután az alkalmazás befejezte a betöltést, manuálisan leállíthatja (`Ctrl + C`), vagy megvárhatja az időtúllépést.
 
 ### <a name="what-events-to-collect"></a>A gyűjteni kívánt események
 
 Az események gyűjtésére három lehetőség áll rendelkezésre:
-1. A Application Insights SDK-ból származó események gyűjtéséhez használja a `-CollectSdkEvents` kapcsolót.
-2. A Állapotmonitor és a Redfield futtatókörnyezet által kibocsátott események összegyűjtéséhez használja a `-CollectRedfieldEvents` kapcsolót. Ezek a naplók az IIS és az alkalmazások indításának diagnosztizálásakor hasznosak.
+1. Az Application Insights SDK-ból kibocsátott események gyűjtéséhez használja a kapcsoló `-CollectSdkEvents`.
+2. Állapotmonitor és a Redfield futtatókörnyezet által kibocsátott események összegyűjtéséhez használja a kapcsoló `-CollectRedfieldEvents`. Ezek a naplók az IIS és az alkalmazások indításának diagnosztizálásakor hasznosak.
 3. Mindkét kapcsolót mindkét eseménytípus összegyűjtésére használhatja.
 4. Alapértelmezés szerint, ha nincs megadva kapcsoló, mindkét eseménytípus összegyűjtve lesz.
 

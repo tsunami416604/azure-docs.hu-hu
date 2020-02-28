@@ -1,18 +1,17 @@
 ---
 title: Egyéni naplók gyűjtése a Azure Monitorban | Microsoft Docs
 description: A Azure Monitor a Windows és Linux rendszerű számítógépeken is gyűjthet eseményeket a szöveges fájlokból.  Ez a cikk azt ismerteti, hogyan határozható meg az új egyéni napló és a Azure Monitorban létrehozott rekordok részletei.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 6d85ada428ab448bd8e96545999ca038e532a32b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450658"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670593"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Egyéni naplók a Azure Monitorban
 
@@ -52,7 +51,7 @@ Az egyéni napló varázsló a Azure Portal fut, és lehetővé teszi, hogy mega
 
 1. A Azure Portal válassza a **log Analytics munkaterületek** > a munkaterület > **Speciális beállítások**lehetőséget.
 2. Kattintson az **adat > ** **egyéni naplók**elemre.
-3. Alapértelmezés szerint a rendszer az összes konfigurációs módosítást automatikusan leküldi az összes ügynöknek. Linux-ügynökök esetében a rendszer egy konfigurációs fájlt küld a Fluent-adatgyűjtőnek.
+3. Alapértelmezés szerint az összes konfigurációs módosítást automatikusan leküld az összes ügynököt. Linux-ügynökök esetében a rendszer egy konfigurációs fájlt küld a Fluent-adatgyűjtőnek.
 4. Kattintson a **Hozzáadás +** elemre az egyéni napló varázsló megnyitásához.
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>2\. lépés Minta napló feltöltése és elemzése
@@ -79,7 +78,7 @@ A következő táblázat példákat tartalmaz a különböző naplófájlok mega
 |:--- |:--- |
 | A *c:\logs mappa* összes fájlja. txt kiterjesztéssel a Windows-ügynökön |C:\logs mappa\\\*. txt |
 | A *c:\logs mappa* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel a Windows-ügynökön |C:\Logs\log\*. txt |
-| A */var/log/audit* összes fájlja. txt kiterjesztéssel a Linux-ügynökön |/var/log/audit/*. txt |
+| A */var/log/audit* összes fájlja. txt kiterjesztéssel a Linux-ügynökön |/var/log/audit/*.txt |
 | A */var/log/audit* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel Linux-ügynökön |/var/log/audit/log\*. txt |
 
 1. Válassza a Windows vagy a Linux lehetőséget a hozzáadni kívánt elérési út megadásához.

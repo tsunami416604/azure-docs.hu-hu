@@ -1,18 +1,15 @@
 ---
 title: A közös riasztási séma integrálása a Logic Apps
 description: Megtudhatja, hogyan hozhat létre egy logikai alkalmazást, amely a gyakori riasztási sémát használja az összes riasztás kezeléséhez.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: ananthradhakrishnan
-ms.author: robb
+ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 50a6067d271ad824f17df1ece36c3dd919c7b55b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555648"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668230"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>A közös riasztási séma integrálása a Logic Apps
 

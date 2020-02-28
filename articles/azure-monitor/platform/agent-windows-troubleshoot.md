@@ -1,24 +1,22 @@
 ---
 title: Log Analytics Agent Windows-ügynökkel kapcsolatos hibák elhárítása
 description: A Azure Monitor Log Analytics ügynökével kapcsolatos leggyakoribb problémák tüneteinek, okainak és megoldásának leírása.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 486c68cb32b5f4c8c8a18b21d1aee139ffda45bf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78625707bfa296eeb7ad8cc658657f46da1dc495
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397457"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668791"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>A Windows Log Analytics ügynökkel kapcsolatos problémák elhárítása 
 
 Ez a cikk segítséget nyújt a Windows rendszerhez készült Log Analytics ügynökkel kapcsolatos hibák elhárításához Azure Monitor és a lehetséges megoldások megoldására.
 
-Ha a fenti lépések egyike sem működik, a következő támogatási csatornák is elérhetők:
+Ha a fentiek egyikével sem működik, a következő támogatási csatornákat is elérhetők:
 
 * A Premier szintű támogatási csomaggal rendelkező ügyfelek a [Premier](https://premier.microsoft.com/)szintű támogatási kérést is megnyithatják.
 * Az Azure-támogatási szerződéssel rendelkező ügyfelek támogatási kérelmet is megnyithatnak [a Azure Portal](https://manage.windowsazure.com/?getsupport=true).
@@ -28,7 +26,7 @@ Ha a fenti lépések egyike sem működik, a következő támogatási csatornák
 
  A Windows Log Analytics ügynökkel kapcsolatos problémák elhárítása érdekében az ügynök az eseményeket a Windows eseménynaplóba naplózza, különösen az *alkalmazás-és a Services\Operations-kezelőben*.  
 
-## <a name="connectivity-issues"></a>Kapcsolódási problémák
+## <a name="connectivity-issues"></a>Csatlakozási problémák
 
 Ha az ügynök egy proxykiszolgálón vagy tűzfalon keresztül kommunikál, előfordulhat, hogy korlátozásokkal jár a forrásszámítógép és a Azure Monitor szolgáltatás közötti kommunikáció megakadályozása. Ha a kommunikáció le van tiltva, a helytelen konfiguráció miatt előfordulhat, hogy a munkaterületre való regisztráció meghiúsul, miközben az ügynököt vagy az ügynököt a telepítés után úgy konfigurálja, hogy egy további munkaterületre jelentsen. Sikeres regisztráció után az ügynök kommunikációja sikertelen lehet. Ez a szakasz a Windows-ügynökkel kapcsolatos ilyen típusú problémák megoldásának módszereit ismerteti.
 
@@ -36,9 +34,9 @@ Ellenőrizze, hogy a tűzfal vagy a proxy úgy van-e konfigurálva, hogy engedé
 
 |Ügynök erőforrása|Portok |Irány |HTTPS-ellenőrzés kihagyása|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |443-es port |Kimenő|Igen |  
-|*.oms.opinsights.azure.com |443-es port |Kimenő|Igen |  
-|*.blob.core.windows.net |443-es port |Kimenő|Igen |  
+|*.ods.opinsights.azure.com |443-as port |Kimenő|Igen |  
+|*.oms.opinsights.azure.com |443-as port |Kimenő|Igen |  
+|*.blob.core.windows.net |443-as port |Kimenő|Igen |  
 
 A Azure Governmentához szükséges tűzfal-információk: [Azure Government Management](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). Ha azt tervezi, hogy a Azure Automation Hybrid Runbook Worker használatával csatlakozik az Automation szolgáltatáshoz, és regisztrálja az runbookok-vagy felügyeleti megoldásokat a környezetben, hozzá kell férnie a portszámhoz és a [hálózat konfigurálása a hibrid Runbook-feldolgozóhoz](../../automation/automation-hybrid-runbook-worker.md#network-planning)című témakörben leírt URL-címekhez. 
 
@@ -62,7 +60,7 @@ Több módon is ellenőrizheti, hogy az ügynök sikeresen kommunikál-e Azure M
 
 - A *Operations Manager* eseménynaplót az **eseményforrás** alapján szűrheti - *állapotfigyelő szolgáltatás modulok*, a *HealthService*és a *szolgáltatás-összekötő* és a szűrés az **eseményvezérelt** *Figyelmeztetés* és a *hiba* alapján, hogy megerősítse, hogy az alábbi táblázatból írt-e. Ha vannak, tekintse át az egyes lehetséges eseményekhez tartozó megoldási lépéseket.
 
-    |Eseményazonosító |Forrás |Leírás |Felbontás |
+    |Eseményazonosító |Forrás |Leírás |Megoldás: |
     |---------|-------|------------|-----------|
     |2133 & 2129 |Állapotfigyelő szolgáltatás |Nem sikerült kapcsolódni a szolgáltatáshoz az ügynöktől. |Ez a hiba akkor fordulhat elő, ha az ügynök nem tud közvetlenül kommunikálni, vagy tűzfalon vagy proxykiszolgálón keresztül a Azure Monitor szolgáltatáshoz. Ellenőrizze az ügynök proxyjának beállításait, illetve azt, hogy a hálózati tűzfal/proxy lehetővé teszi a TCP-forgalmat a számítógépről a szolgáltatásba.|
     |2138 |Állapotfigyelő szolgáltatás modulok |Proxy requires authentication (A proxy hitelesítést igényel) |Konfigurálja az ügynök proxyjának beállításait, és adja meg a proxykiszolgáló hitelesítéséhez szükséges felhasználónevet és jelszót. |
@@ -70,7 +68,7 @@ Több módon is ellenőrizheti, hogy az ügynök sikeresen kommunikál-e Azure M
     |2127 |Állapotfigyelő szolgáltatás modulok |Hiba történt az adatküldés során kapott hibakód miatt |Ha ez csak időnként történik a nap folyamán, akkor csak véletlenszerű anomália lehet, amely figyelmen kívül hagyható. Figyelje meg, hogy milyen gyakran történik. Ha gyakran fordulnak elő a nap folyamán, először ellenőrizze a hálózati konfigurációt és a proxybeállításokat. Ha a leírás tartalmazza a 404-es HTTP-hibakódot, és ez az első alkalom, amikor az ügynök megpróbál elküldeni egy adatküldés a szolgáltatásnak, a rendszer 500 hibát tartalmaz egy belső 404 hibakódtal. 404 nem található, ami azt jelzi, hogy az új munkaterület tárterülete még mindig kiépítve van. A következő próbálkozáskor a rendszer az elvárt módon fogja sikeresen írni a munkaterületet. Az 403-es HTTP-hiba az engedélyt vagy a hitelesítő adatokat is jelezheti. A probléma megoldásához a 403 hibával kapcsolatos további információ található.|
     |4000 |Szolgáltatás-összekötő |A DNS-névfeloldás nem sikerült |A gép nem tudja feloldani az adatok szolgáltatásba való küldésekor használt internetcímet. Ez lehet a DNS-feloldó beállítások a gépen, helytelen proxybeállítások vagy esetleg egy ideiglenes DNS-probléma a szolgáltatónál. Ha ez rendszeres időközönként történik, a hálózattal kapcsolatos átmeneti probléma okozhatja.|
     |4001 |Szolgáltatás-összekötő |Nem sikerült kapcsolódni a szolgáltatáshoz. |Ez a hiba akkor fordulhat elő, ha az ügynök nem tud közvetlenül kommunikálni, vagy tűzfalon vagy proxykiszolgálón keresztül a Azure Monitor szolgáltatáshoz. Ellenőrizze az ügynök proxyjának beállításait, illetve azt, hogy a hálózati tűzfal/proxy lehetővé teszi a TCP-forgalmat a számítógépről a szolgáltatásba.|
-    |4002 |Szolgáltatás-összekötő |A szolgáltatás a 403-as HTTP-állapotkódot adta vissza egy lekérdezésre válaszul. A szolgáltatás állapotáról érdeklődjön a szolgáltatás rendszergazdájánál. A lekérdezés később újra próbálkozik. |Ez a hiba az ügynök kezdeti regisztrációs fázisában van írva, és a következőhöz hasonló URL-címet fog látni: *https://\<munkaterület azonosítója >. OMS. opinsights. Azure. com/AgentService. SVC/AgentTopologyRequest*. Az 403-es hibakód tiltott, és a nem megfelelő típusú munkaterület-azonosító vagy-kulcs okozhatja, vagy helytelenek az adattípusok és az idő a számítógépen. Ha az idő +/-15 perc az aktuális időponttól, akkor a bevezetés sikertelen lesz. Ennek kijavítania a Windows-számítógép dátumát és/vagy időzónáját.|
+    |4002 |Szolgáltatás-összekötő |A szolgáltatás a 403-as HTTP-állapotkódot adta vissza egy lekérdezésre válaszul. A szolgáltatás állapotáról érdeklődjön a szolgáltatás rendszergazdájánál. A lekérdezés később újra próbálkozik. |Ez a hiba az ügynök kezdeti regisztrációs fázisában van írva, és a következőhöz hasonló URL-címet fog látni: *https://\<munkaterület azonosítója >. OMS. opinsights. Azure. com/AgentService. SVC/AgentTopologyRequest*. Az 403-es hibakód tiltott, és a nem megfelelő típusú munkaterület-azonosító vagy-kulcs okozhatja, vagy helytelenek az adattípusok és az idő a számítógépen. Ha az idő +/-aktuális időtől számítva 15 percig, majd előkészítés sikertelen lesz. Ennek kijavítania a Windows-számítógép dátumát és/vagy időzónáját.|
 
 ## <a name="data-collection-issues"></a>Adatgyűjtés – problémák
 
@@ -100,7 +98,7 @@ Ha a lekérdezés az eredményeket adja vissza, akkor meg kell határoznia, hogy
 
 3. Ha néhány perc elteltével nem látja a várt információkat a lekérdezés eredményeiben vagy a vizualizációban, attól függően, hogy egy megoldásból vagy betekintésből származó adatok megtekinthetők-e, az *Operations Manager* eseménynaplóban keressen az **eseményforrás** *HealthService* és a *állapotfigyelő szolgáltatás modulok* elemre, és szűrje az **eseményvezérelt szintű** *figyelmeztetést* és *hibát* , és ellenőrizze, hogy az alábbi táblázatból írt-e az eseményeket.
 
-    |Eseményazonosító |Forrás |Leírás |Felbontás |
+    |Eseményazonosító |Forrás |Leírás |Megoldás: |
     |---------|-------|------------|
     |8000 |HealthService |Ez az esemény azt adja meg, hogy a teljesítménygel, eseménnyel vagy más összegyűjtött adattípussal kapcsolatos munkafolyamatok nem tudnak-e továbbítani a szolgáltatásnak a munkaterületre való betöltéshez. | A forrás HealthService származó 2136-es AZONOSÍTÓJÚ esemény ezzel az eseménnyel együtt van írva, és jelezheti, hogy az ügynök nem tud kommunikálni a szolgáltatással, valószínűleg a proxy-és hitelesítési beállítások helytelen konfigurációja, a hálózati leállás vagy a hálózati tűzfal/proxy nem engedélyezi a számítógépről a szolgáltatás felé irányuló TCP-forgalmat.| 
     |10102 és 10103 |Állapotfigyelő szolgáltatás modulok |A munkafolyamat nem tudja feloldani az adatforrást. |Ez akkor fordulhat elő, ha a megadott teljesítményszámláló vagy példány nem létezik a számítógépen, vagy helytelenül van definiálva a munkaterület adatbeállításaiban. Ha ez egy felhasználó által megadott [teljesítményszámláló](data-sources-performance-counters.md#configuring-performance-counters), ellenőrizze, hogy a megadott információ a megfelelő formátumú-e, és létezik-e a célszámítógépen. |

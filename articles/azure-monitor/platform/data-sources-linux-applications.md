@@ -1,18 +1,17 @@
 ---
 title: A Linux-alkalmazások teljesítményének összegyűjtése a Azure Monitorban | Microsoft Docs
 description: Ez a cikk részletesen ismerteti a Linux rendszerhez készült Log Analytics-ügynök konfigurálását a MySQL-hez és az Apache HTTP-kiszolgálóhoz tartozó teljesítményszámlálók összegyűjtéséhez.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 75fd0453534e3a656bb1d8e2940b716dadfdf869
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395835"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670559"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Teljesítményszámlálók gyűjtése a Azure Monitor linuxos alkalmazásaihoz 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -55,7 +54,7 @@ A MySQL-vel kapcsolatos hitelesítési fájl definiálhat egy alapértelmezett p
 
 A következő táblázat példaként tartalmazza a példányok beállításait 
 
-| Leírás | File |
+| Leírás | Fájl |
 |:--|:--|
 | Az alapértelmezett példány és példány az 3308-as porttal. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | Az alapértelmezett példány és példány a 3308-es porttal és a másik felhasználónévvel és jelszóval. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -77,7 +76,7 @@ A következő táblázat részletesen ismerteti a mycimprovauth használatának 
 | alapértelmezett *kötési Felhasználónév jelszava* | mycimprovauth alapértelmezett 127.0.0.1 root pwd | Beállítja az alapértelmezett példányt a MySQL-t használó hitelesítési fájlban.<br>A jelszó mezőt egyszerű szövegként kell megadni – a MySQL-t tartalmazó hitelesítési fájl jelszava a 64-es alapszintű. |
 | *alapértelmezett vagy port_num* törlése | mycimprovauth 3308 | A megadott példány törlése alapértelmezett vagy portszám alapján. |
 | Súgó | mycimprov Súgó | Kinyomtatja a használni kívánt parancsok listáját. |
-| nyomtatás | mycimprov nyomtatása | Kinyomtat egy könnyen olvasható MySQL-alapú hitelesítési fájlt. |
+| nyomtatási | mycimprov nyomtatása | Kinyomtat egy könnyen olvasható MySQL-alapú hitelesítési fájlt. |
 | a *kötési Felhasználónév jelszavának* frissítése port_num | mycimprov frissítés 3307 127.0.0.1 root pwd | Frissíti a megadott példányt, vagy hozzáadja a példányt, ha az nem létezik. |
 
 A következő példában szereplő parancsok egy alapértelmezett felhasználói fiókot határoznak meg a MySQL-kiszolgálóhoz a localhost-on.  A jelszó mezőt egyszerű szövegként kell megadni – a MySQL-t tartalmazó hitelesítési fájl jelszava a 64-es alapszintű.
@@ -114,24 +113,24 @@ Miután konfigurálta a Linux Log Analytics-ügynökét, hogy adatokat küldjön
 |:--|:--|
 | MySQL-adatbázis | Lemezterület bájtban |
 | MySQL-adatbázis | Táblák |
-| MySQL-kiszolgáló | Megszakított kapcsolatok PCT |
-| MySQL-kiszolgáló | A kapcsolatok használata PCT |
-| MySQL-kiszolgáló | Lemezterület-használat bájtban |
-| MySQL-kiszolgáló | Teljes táblázatos vizsgálat PCT |
-| MySQL-kiszolgáló | InnoDB-puffer találata (PCT) |
-| MySQL-kiszolgáló | A InnoDB Buffer-készlete PCT-t használ |
-| MySQL-kiszolgáló | A InnoDB Buffer-készlete PCT-t használ |
-| MySQL-kiszolgáló | Kulcs gyorsítótárának találati aránya (%) |
-| MySQL-kiszolgáló | A kulcs gyorsítótára a PCT protokollt használja |
-| MySQL-kiszolgáló | Kulcs-gyorsítótárazási írási PCT |
-| MySQL-kiszolgáló | Lekérdezés gyorsítótárának találati aránya (%) |
-| MySQL-kiszolgáló | Lekérdezési gyorsítótár aszalt szilva (PCT) |
-| MySQL-kiszolgáló | A lekérdezési gyorsítótár használata PCT |
-| MySQL-kiszolgáló | A tábla gyorsítótárának találati aránya (%) |
-| MySQL-kiszolgáló | A tábla gyorsítótára a PCT protokollt használja |
-| MySQL-kiszolgáló | Tábla zárolásának feloldása PCT |
+| MySQL Server | Megszakított kapcsolatok PCT |
+| MySQL Server | A kapcsolatok használata PCT |
+| MySQL Server | Lemezterület-használat bájtban |
+| MySQL Server | Teljes táblázatos vizsgálat PCT |
+| MySQL Server | InnoDB-puffer találata (PCT) |
+| MySQL Server | A InnoDB Buffer-készlete PCT-t használ |
+| MySQL Server | A InnoDB Buffer-készlete PCT-t használ |
+| MySQL Server | Kulcs gyorsítótárának találati aránya (%) |
+| MySQL Server | A kulcs gyorsítótára a PCT protokollt használja |
+| MySQL Server | Kulcs-gyorsítótárazási írási PCT |
+| MySQL Server | Lekérdezés gyorsítótárának találati aránya (%) |
+| MySQL Server | Lekérdezési gyorsítótár aszalt szilva (PCT) |
+| MySQL Server | A lekérdezési gyorsítótár használata PCT |
+| MySQL Server | A tábla gyorsítótárának találati aránya (%) |
+| MySQL Server | A tábla gyorsítótára a PCT protokollt használja |
+| MySQL Server | Tábla zárolásának feloldása PCT |
 
-## <a name="apache-http-server"></a>Apache HTTP-kiszolgáló 
+## <a name="apache-http-server"></a>Apache HTTP Server 
 Ha az Apache HTTP-kiszolgáló észlelhető a számítógépen a omsagent csomag telepítésekor, a rendszer automatikusan telepíti az Apache HTTP-kiszolgáló Teljesítményfigyelő szolgáltatóját. Ez a szolgáltató egy Apache-modulra támaszkodik, amelyet be kell tölteni az Apache HTTP-kiszolgálóra a teljesítményadatok elérése érdekében. A modul a következő paranccsal tölthető be:
 ```
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -c
@@ -148,10 +147,10 @@ Miután konfigurálta a Linux Log Analytics-ügynökét, hogy adatokat küldjön
 
 | Objektum neve | Számláló neve |
 |:--|:--|
-| Apache HTTP-kiszolgáló | Foglalt feldolgozók |
-| Apache HTTP-kiszolgáló | Tétlen feldolgozók |
-| Apache HTTP-kiszolgáló | Százalékos elfoglalt feldolgozók |
-| Apache HTTP-kiszolgáló | Teljes PCT CPU |
+| Apache HTTP Server | Foglalt feldolgozók |
+| Apache HTTP Server | Tétlen feldolgozók |
+| Apache HTTP Server | Százalékos elfoglalt feldolgozók |
+| Apache HTTP Server | Teljes PCT CPU |
 | Apache virtuális gazdagép | Hibák percenként – ügyfél |
 | Apache virtuális gazdagép | Hibák percenként – kiszolgáló |
 | Apache virtuális gazdagép | KB/kérelem |

@@ -1,18 +1,17 @@
 ---
 title: BLOB Storage használata IIS-hez és Table Storage a Azure Monitor eseményeihez | Microsoft Docs
 description: A Azure Monitor beolvashatja az Azure-szolgáltatások naplóit, amelyek diagnosztikát írnak a Table Storage vagy a blob Storage-ba írt IIS-naplók számára.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 7edf778dc2429cc1054d1550a513d7461f8e7928
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472556"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672395"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Adatok gyűjtése az Azure Diagnostics bővítményből Azure Monitor naplókba
 Az Azure Diagnostics bővítmény olyan [Azure monitor ügynöke](agents-overview.md) , amely az Azure-beli számítási erőforrások, például a virtuális gépek vendég operációs rendszerének figyelési adatait gyűjti. Ez a cikk azt ismerteti, hogyan gyűjtheti össze a diagnosztikai bővítmény által gyűjtött adatokat az Azure Storage-ból Azure Monitor naplókba.

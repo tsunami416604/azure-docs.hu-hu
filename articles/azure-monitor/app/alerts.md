@@ -1,21 +1,19 @@
 ---
-title: Riasztások beállítása az Azure Application Insightsban | Microsoft Docs
+title: Riasztások beállítása az Azure Application Insights
 description: Értesítést kaphat a lassú válaszidő, a kivételek és a webalkalmazás más teljesítmény-és használati változásairól.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/23/2019
 ms.reviewer: lagayhar
-ms.openlocfilehash: a21e2676d1b03472c58e2f95095a1a59d00b16be
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.subservice: alerts
+ms.openlocfilehash: 80759c94d7cc5b60b6e38a34b85fb64c3c18fd2e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678409"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666717"
 ---
 # <a name="set-alerts-in-application-insights"></a>Riasztások beállítása Application Insightsban
+
 Az [Azure Application Insights][start] riasztást küld a webalkalmazás teljesítmény-és használati metrikáinak változásairól. 
 
 Application Insights figyeli az élő alkalmazást a [különböző platformokon][platforms] , hogy segítsen a teljesítménnyel kapcsolatos problémák diagnosztizálásában és a használati minták értelmezésében.
@@ -28,6 +26,7 @@ Több típusú riasztás létezik:
 * Az előjelzéses [**diagnosztika**](../../azure-monitor/app/proactive-diagnostics.md) automatikusan be van állítva, hogy jelezze a szokatlan teljesítménybeli mintákat.
 
 ## <a name="set-a-metric-alert"></a>Metrika riasztásának beállítása
+
 Nyissa meg a riasztási szabályok lapot, majd használja az Add (Hozzáadás) gombot.
 
 ![A riasztási szabályok lapon válassza a riasztás hozzáadása elemet. Állítsa be az alkalmazást erőforrásként a mértékhez, adja meg a riasztás nevét, és válassza ki a metrikát.](./media/alerts/01-set-metric.png)
@@ -171,11 +170,11 @@ Ez a szakasz csak a klasszikus riasztásokra vonatkozik, és segít optimalizál
 
 Ha a felhasználókat a szerepköreik alapján kell értesítenie, használja az új riasztási élmény/közel valós idejű riasztásokat. A [műveleti csoportokkal](../platform/action-groups.md)e-mailes értesítéseket állíthat be a felhasználók számára a közreműködő/tulajdonos/olvasó szerepkörök bármelyikével (egyetlen lehetőségként nem kombinálva).
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatizálás
 * [A riasztások beállításának automatizálása a PowerShell használatával](../../azure-monitor/app/powershell-alerts.md)
 * [Webhookok használata a riasztásokra való válaszadás automatizálására](../../azure-monitor/platform/alerts-webhooks.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Riasztások beállításának automatizálása](../../azure-monitor/app/powershell-alerts.md)
 * [Proaktív diagnosztika](../../azure-monitor/app/proactive-diagnostics.md) 

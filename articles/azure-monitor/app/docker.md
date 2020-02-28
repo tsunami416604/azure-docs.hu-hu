@@ -1,18 +1,14 @@
 ---
 title: Docker-alkalmazások figyelése az Azure Application Insightsban | Microsoft Docs
 description: A Docker-teljesítményszámlálók, az események és a kivételek a Application Insightson, valamint a tároló alkalmazások telemetria is megjeleníthetők.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 66a2481d25c863bbdbf4d72c4683a309918776db
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677920"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669607"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Docker-alkalmazások figyelése Application Insightsban (elavult)
 
@@ -75,17 +71,17 @@ Kattintson a Docker csempére.
 Hamarosan megtekintheti a Docker-alkalmazásból érkező adatok adatait, különösen akkor, ha a Docker-motoron fut más tárolók.
 
 ### <a name="docker-container-events"></a>Docker-tároló eseményei
-![Például](./media/docker/13.png)
+![Példa](./media/docker/13.png)
 
 Az egyes események kivizsgálásához kattintson a [Keresés](../../azure-monitor/app/diagnostic-search.md)gombra. Keresés és szűrés a kívánt események megkereséséhez. További részletekért kattintson bármelyik eseményre.
 
 ### <a name="exceptions-by-container-name"></a>Kivételek a tároló neve alapján
-![Például](./media/docker/14.png)
+![Példa](./media/docker/14.png)
 
 ### <a name="docker-context-added-to-app-telemetry"></a>Az alkalmazás telemetria felvett Docker-környezet
 Az AI SDK-val az alkalmazásból elkészített telemetria-kérések a Docker környezeti adataival gazdagodnak.
 
-## <a name="q--a"></a>Kérdések és válaszok
+## <a name="q--a"></a>Q & A
 *Mit jelent a Application Insights, hogy nem tudok beolvasni a Docker-ből?*
 
 * Teljesítményszámlálók részletes részletezése tároló és rendszerkép alapján.

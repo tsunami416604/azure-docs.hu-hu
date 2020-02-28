@@ -1,22 +1,20 @@
 ---
 title: Műveletnapló riasztásai Azure Monitor
 description: Értesítés küldése SMS-ben, webhookon, SMS-ben, e-mailben és más üzenetekben, ha bizonyos események történnek a tevékenység naplójában.
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 09/17/2018
-ms.openlocfilehash: c42f72800a93de714f0cc126939a28a8a6b5fce4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 26ecfdb33b92c91010af63ec14089dd148d6bad0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747521"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669013"
 ---
-# <a name="alerts-on-activity-log"></a>Riasztások a tevékenység naplójában 
+# <a name="alerts-on-activity-log"></a>Riasztások a tevékenység naplójában
 
 ## <a name="overview"></a>Áttekintés
+
 A műveletnapló riasztásai olyan riasztások, amelyek akkor [jelentkeznek](activity-log-schema.md) be, amikor a riasztásban megadott feltételeknek megfelelő új műveletnapló-esemény következik be. Az Azure-beli [tevékenység naplójában](platform-logs-overview.md)rögzített események sorrendje és mennyisége alapján a riasztási szabály tüzet fog eredményezni. A műveletnapló riasztási szabályai Azure-erőforrások, így a Azure Resource Manager sablon segítségével hozhatók létre. Emellett a Azure Portal is létrehozhatók, frissíthetők és törölhetők. Ez a cikk a tevékenység naplójának riasztásai mögötti fogalmakat ismerteti. A műveletnapló riasztási szabályainak létrehozásával és használatával kapcsolatos további információkért lásd: [műveletnapló riasztások létrehozása és kezelése](alerts-activity-log.md).
 
 > [!NOTE]
@@ -50,7 +48,7 @@ A műveletnapló riasztásai néhány gyakori lehetőséggel rendelkeznek:
 > [!NOTE]
 > Egy előfizetésben akár 100 riasztási szabály is létrehozható egy hatóköri tevékenységhez: egyetlen erőforrás, az erőforráscsoport összes erőforrása (vagy) a teljes előfizetési szint.
 
-Ha egy műveletnapló-riasztás aktiválva van, a műveletek vagy értesítések létrehozásához egy műveleti csoportot használ. A műveleti csoport az értesítési fogadók újrafelhasználható készlete, például e-mail-címek, webhook URL-címek vagy SMS-telefonszámok. A fogadók több riasztásból is hivatkozhatnak az értesítési csatornák központosítására és csoportosítására. A műveletnapló riasztásának meghatározásakor két lehetőség közül választhat. Előnyök:
+Ha egy műveletnapló-riasztás aktiválva van, a műveletek vagy értesítések létrehozásához egy műveleti csoportot használ. A műveleti csoport az értesítési fogadók újrafelhasználható készlete, például e-mail-címek, webhook URL-címek vagy SMS-telefonszámok. A fogadók több riasztásból is hivatkozhatnak az értesítési csatornák központosítására és csoportosítására. A műveletnapló riasztásának meghatározásakor két lehetőség közül választhat. A következőket teheti:
 
 * Meglévő műveleti csoport használata a tevékenység naplójának riasztásában.
 * Hozzon létre egy új műveleti csoportot.

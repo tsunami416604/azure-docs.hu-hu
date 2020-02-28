@@ -2,18 +2,17 @@
 title: A log-riasztások webhook-műveletei az Azure-riasztásokban
 description: Ez a cikk azt ismerteti, hogyan lehet napló-riasztási szabályt létrehozni a Log Analytics munkaterületen, vagy Application Insights, hogy a riasztás hogyan küldjön le adatokat HTTP-webhookként, valamint a különböző testreszabási lehetőségek részleteit.
 author: yanivlavi
+ms.author: yalavi
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 3a072ae64104f8fded49ff6a00f5b58902c39903
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 7b1956ad2bf9bf38ba9edc4c7234078557564071
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838576"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667703"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>A napló riasztási szabályaihoz kapcsolódó webhook-műveletek
 Ha egy [naplóbeli riasztást hoz létre az Azure-ban](alerts-log.md), akkor beállíthatja, hogy a [műveleti csoportok használatával](action-groups.md) egy vagy több műveletet végezzen. Ez a cikk az elérhető különböző webhook-műveleteket ismerteti, és bemutatja, hogyan konfigurálhat egyéni JSON-alapú webhookot.
@@ -33,7 +32,7 @@ A webhook-műveletekhez a következő táblázatban szereplő tulajdonságok sz�
 | **Egyéni JSON-adattartalom** |A webhooktal küldendő egyéni adattartalom, ha ezt a beállítást a riasztás létrehozásakor választja ki a rendszer. További információ: a [naplózási riasztások kezelése](alerts-log.md).|
 
 > [!NOTE]
-> A log-riasztáshoz tartozó webhookhoz tartozó **Egyéni JSON** -adattartalom belefoglalása a webhookhoz lehetőség mellett megjelenik a minta webhook adattartalma a megadott testreszabáshoz. Nem tartalmaz tényleges adatokat, de a naplózási riasztásokhoz használt JSON-sémára jellemző. 
+> A **log** -riasztáshoz tartozó webhookhoz tartozó **Egyéni JSON-adattartalom belefoglalása** a webhookhoz lehetőség mellett megjelenik a minta webhook adattartalma a megadott testreszabáshoz. Nem tartalmaz tényleges adatokat, de a naplózási riasztásokhoz használt JSON-sémára jellemző. 
 
 A webhookok egy URL-címet és egy JSON-ban formázott hasznos adatot tartalmaznak, amelyet a külső szolgáltatásnak küldenek. Alapértelmezés szerint a hasznos adatok tartalmazzák az alábbi táblázatban szereplő értékeket. Dönthet úgy, hogy lecseréli ezt a hasznos adatot egy saját egyéni felhasználóval. Ebben az esetben használja az egyes paraméterekhez tartozó táblázatban szereplő változókat, hogy az egyéni adattartalomban szereplő értékeket is tartalmazzák.
 
@@ -52,7 +51,7 @@ A webhookok egy URL-címet és egy JSON-ban formázott hasznos adatot tartalmazn
 | *SearchQuery* |#searchquery |A riasztási szabály által használt napló keresési lekérdezése. |
 | *SearchResults* |"IncludeSearchResults": igaz|A lekérdezés által visszaadott, JSON-táblázatként visszaadott rekordok, amelyek az első 1 000-rekordra korlátozódnak, ha a "IncludeSearchResults": true (igaz) értéket adja hozzá egy egyéni JSON webhook-definícióban legfelső szintű tulajdonságként. |
 | *Riasztás típusa*| #alerttype | A [metrika mértékének](alerts-unified-log.md#metric-measurement-alert-rules) vagy az [eredmények számának](alerts-unified-log.md#number-of-results-alert-rules)megfelelően konfigurált log riasztási szabály típusa.|
-| *WorkspaceID* |#workspaceid |A Log Analytics munkaterület azonosítója. |
+| *Munkaterület azonosítója* |#workspaceid |A Log Analytics munkaterület azonosítója. |
 | *Alkalmazás azonosítója* |#applicationid |A Application Insights alkalmazás azonosítója. |
 | *Előfizetés azonosítója* |#subscriptionid |A használt Azure-előfizetés azonosítója. 
 
@@ -124,7 +123,7 @@ A következő minta-adattartalom szabványos webhook-művelethez használható *
  ```
 
 > [!NOTE]
-> A "súlyosság" mező értéke változhat, ha átváltotta az [API](alerts-log-api-switch.md) -t a log Analytics naplózási értesítéseire.
+> A "súlyosság" mező értéke változhat, ha [átváltotta az API](alerts-log-api-switch.md) -t a log Analytics naplózási értesítéseire.
 
 
 #### <a name="log-alert-for-application-insights"></a>Application Insights naplózási riasztása
@@ -205,9 +204,9 @@ A következő minta hasznos adatokat tartalmaz egy egyéni webhook-művelethez a
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tudnivalók a [riasztásokról az Azure-riasztásokban](alerts-unified-log.md).
-- Ismerje meg, hogyan kezelheti a [naplózási riasztásokat az Azure-ban](alerts-log.md).
+- Ismerje meg, hogyan [kezelheti a naplózási riasztásokat az Azure-ban](alerts-log.md).
 - Műveleti csoportok létrehozása és kezelése [Az Azure-ban](action-groups.md).
 - További információ a [Application Insightsról](../../azure-monitor/app/analytics.md).
 - További információ a [naplók lekérdezéséről](../log-query/log-query-overview.md). 

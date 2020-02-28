@@ -1,18 +1,14 @@
 ---
 title: A Node.js szolgáltatások figyelése az Azure Application Insights segítségével | Microsoft Docs
 description: Teljesítmény figyelése és problémák diagnosztizálása a Node.js szolgáltatásokban az Application Insights segítségével.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 81f63380c041ae743a2b38e6ba89558b83e7497a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820719"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670015"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>A Node.js szolgáltatások és appok figyelése az Application Insights segítségével
 
@@ -24,7 +20,7 @@ A Node.js SDK automatikusan képes figyelni a bejövő és kimenő HTTP-kérése
 
 A TelemetryClient API használatával manuálisan beállíthatók és monitorozhatók az alkalmazás és a rendszer további részletei. A TelemetryClient API-t a jelen cikk egy későbbi részében részletesebben ismertetjük.
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Első lépések
 
 Egy alkalmazás vagy szolgáltatás monitorozásának beállításához a következő feladatokat kell elvégezni.
 
@@ -39,7 +35,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik Azure-előfizeté
 ### <a name="resource"></a> Application Insights-erőforrás beállítása
 
 
-1. Jelentkezzen be az [Azure portálra][portal].
+1. Jelentkezzen be az [Azure Portal][portal].
 2. Válassza az **Erőforrás létrehozása** > **Fejlesztői eszközök** > **Application Insights** elemet. Az erőforrás tartalmaz egy végpontot a telemetriai adatok fogadására, valamint az érkező adatok, a mentett jelentések és irányítópultok, a szabály- és riasztási konfigurációk és továbbiak tárolására.
 
 3. Az erőforrás-létrehozási oldalon az **Alkalmazás típusa** mezőben válassza a **Node.js-alkalmazás** elemet. Az alkalmazástípus határozza meg, hogy milyen alapértelmezett irányítópultokat és jelentéseket hoz létre a rendszer. (Bármely Application Insights-erőforrás képes bármilyen nyelvből és platformból adatot gyűjteni.)
@@ -88,7 +84,7 @@ Az alkalmazás részletesebb megismeréséhez és a problémák elhárításáho
 
 ![Vizsgálat szakasz](./media/nodejs/007-investigate-pane.png)
 
-#### <a name="no-data"></a>Nincsenek adatok?
+#### <a name="no-data"></a>Nincs adat?
 
 Mivel az SDK kötegeli az adatokat az elküldéshez, az elemek késve jelenhetnek meg a portálon. Ha nem lát adatokat az erőforrásában, próbálja elvégezni valamelyik javítást az alábbiak közül:
 

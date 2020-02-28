@@ -1,19 +1,17 @@
 ---
 title: Azure-Application Insights | Microsoft Docs
 description: ''
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 03f802297c2ecaac0c126ed3de6401b40e1f804b
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 75c5bd5bd6a7ded8679c30446a45809a1ea4406a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678159"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672004"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Egyéni adatforrásokkal való korreláció Application Insights
 
@@ -47,7 +45,7 @@ Naplózási adatok küldésének megkezdése Azure Monitorba. Több lehetőség 
 
 A Application Insights a Azure Monitor log platformon alapul. Ezért az [erőforrás](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) -összekapcsolással összekapcsolhatja a Azure monitorba betöltött összes adatot a Application Insights-adatként.
 
-Egy "LabLocations_CL" nevű táblába például betöltheti a labor-leltárt és a telephelyeket egy "faLog Analytics" nevű munkaterületen. Ha ezt követően áttekintjük a "myAI" nevű Application Insights alkalmazásban követett kéréseket, és összekapcsoljuk azokat a számítógépneveket, amelyek a kérelmeket a korábban említett egyéni táblázatban tárolt gépek helyeire kézbesítik, a következő lekérdezést futtathatja vagy a Application Insights vagy Azure Monitor kontextus:
+Például betöltheti a labor leltározását és helyszíneit egy "LabLocations_CL" nevű táblába egy "faLog Analytics" nevű munkaterületen. Ha ezt követően áttekintjük a "myAI" nevű Application Insights alkalmazásban követett kéréseket, és összekapcsoljuk azokat a számítógépneveket, amelyek a kérelmeket a korábban említett egyéni táblázatban tárolt gépek helyeire kézbesítik, a következő lekérdezést futtathatja vagy a Application Insights vagy Azure Monitor kontextus:
 
 ```
 app('myAI').requests
@@ -57,7 +55,7 @@ app('myAI').requests
 ) on $left.cloud_RoleInstance == $right.Computer
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg az [adatgyűjtő API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) -referenciát.
 - További információ az [erőforrások közötti illesztésekről](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search).

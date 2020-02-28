@@ -1,18 +1,17 @@
 ---
 title: Felügyeleti megoldás az Azure-ban – ajánlott eljárások | Microsoft Docs
 description: ''
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 28ae01fe28b1b2d6af95567e529c7c9ae17920e4
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 837fb87d73698961ec1550b122840563d1707f8a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553938"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663198"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Ajánlott eljárások a felügyeleti megoldások létrehozásához az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -37,7 +36,7 @@ Ez a cikk az Azure-beli [felügyeleti megoldási fájlok létrehozásával](solu
 - Vegyen fel egy adatfolyam- [ellenőrző](../../azure-monitor/platform/view-designer-tiles.md) üzenetet a megoldás bármely nézetére, hogy utasítsa a felhasználót olyan adatforrásokra, amelyeket be kell állítani a szükséges adatok gyűjtéséhez.
 - Konfigurálja a megoldást úgy, hogy [tartalmazza](solutions-solution-file.md#solution-resource) a nézetet, hogy a rendszer eltávolítsa, ha a megoldás el lett távolítva.
 
-## <a name="alerts"></a>Értesítések
+## <a name="alerts"></a>Riasztások
 - Adja meg a címzettek listáját paraméterként a megoldás fájljában, így a felhasználó megadhatja azokat a megoldás telepítésekor.
 - Konfigurálja a megoldást úgy, hogy a riasztási szabályokra [hivatkozzon](solutions-solution-file.md#solution-resource) , hogy a felhasználó módosíthatja a konfigurációt.  Előfordulhat, hogy olyan módosításokat szeretne végezni, mint például a címzettek listájának módosítása, a riasztás küszöbértékének módosítása vagy a riasztási szabály letiltása. 
 

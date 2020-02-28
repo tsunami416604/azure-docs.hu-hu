@@ -1,18 +1,17 @@
 ---
 title: Log Analytics munkaterületek kezelése Azure Monitorban | Microsoft Docs
 description: A Azure Monitor Log Analytics munkaterületen tárolt adataihoz erőforrás, munkaterület vagy tábla szintű engedélyek használatával kezelheti a hozzáférést. Ez a cikk részletesen ismerteti a befejezését.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 3a75efc8c73c96bfff0ba94ca3e9753ea536fd53
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6d99a7fbe60156c84e184fedaa5582162f5a0d2d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289118"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672106"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>A naplózási és munkaterületekhez való hozzáférés kezelése Azure Monitor
 
@@ -100,7 +99,7 @@ Ha Azure Resource Manager-sablonban szeretné konfigurálni a hozzáférési mó
 
 ## <a name="manage-access-using-workspace-permissions"></a>Hozzáférés kezelése a munkaterület engedélyeivel
 
-Minden munkaterülethez több fiók is társítható, és mindegyik fiók több munkaterülethez is hozzáférhet. A hozzáférés az [Azure szerepköralapú hozzáférés](../../role-based-access-control/role-assignments-portal.md)használatával felügyelhető.
+Minden munkaterülethez társítva több fiókot lehet, és minden egyes fiók férhet hozzá több munkaterülettel. A hozzáférés az [Azure szerepköralapú hozzáférés](../../role-based-access-control/role-assignments-portal.md)használatával felügyelhető.
 
 Az alábbi tevékenységek szintén Azure-engedélyeket igényelnek:
 
@@ -130,15 +129,15 @@ A *Log Analytics olvasó* szerepkör tagjai a következőket végezhetik el:
 * Az összes monitorozási adat megtekintése és keresése
 * A monitorozási beállítások megtekintése, beleértve az Azure Diagnostics konfigurációjának megtekintését az összes Azure-erőforráson.
 
-A Log Analytics olvasó szerepkör a következő Azure-műveleteket tartalmazza:
+A Log Analytics olvasó szerepkör az alábbi Azure műveleteket tartalmazza:
 
-| Type (Típus)    | Engedély | Leírás |
+| Típus    | Engedély | Leírás |
 | ------- | ---------- | ----------- |
-| Műveletek | `*/read`   | Az összes Azure-erőforrás és erőforrás-konfiguráció megtekintésének lehetősége. Ez a következők megtekintését foglalja magában: <br> Virtuális gépi bővítmény állapota <br> Az Azure Diagnostics konfigurációja az erőforrásokon <br> Az összes erőforrás tulajdonságai és beállításai. <br> A munkaterületek számára lehetővé teszi, hogy a teljes korlátozás alá eső engedélyek beolvassák a munkaterület beállításait, és lekérdezéseket végezzenek az adatokon. Lásd a fenti részletesebb beállításokat. |
+| Műveletek | `*/read`   | Lehetővé teszi az összes Azure-erőforrások és erőforrás-konfiguráció megtekintése. Ez a következők megtekintését foglalja magában: <br> Virtuális gépi bővítmény állapota <br> Az Azure Diagnostics konfigurációja az erőforrásokon <br> Az összes erőforrás tulajdonságai és beállításai. <br> A munkaterületek számára lehetővé teszi, hogy a teljes korlátozás alá eső engedélyek beolvassák a munkaterület beállításait, és lekérdezéseket végezzenek az adatokon. Lásd a fenti részletesebb beállításokat. |
 | Műveletek | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Elavult, nincs szükség a felhasználókhoz való hozzárendelésre. |
 | Műveletek | `Microsoft.OperationalInsights/workspaces/search/action` | Elavult, nincs szükség a felhasználókhoz való hozzárendelésre. |
 | Műveletek | `Microsoft.Support/*` | Támogatási esetek nyitása |
-|Nem művelet | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | Az adatgyűjtési API használatához és az ügynökök telepítéséhez szükséges munkaterület-kulcs olvasásának megakadályozása. Ez megakadályozza, hogy a felhasználó új erőforrásokat adjon a munkaterülethez |
+|Nem művelet | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | Olvasását meggátolja az adatgyűjtési API használatához és az ügynökök telepítéséhez szükséges kulcs. Ez megakadályozza, hogy a felhasználó új erőforrásokat ad hozzá a munkaterülethez |
 
 A *Log Analytics közreműködő* szerepkör tagjai a következőket végezhetik el:
 
@@ -147,7 +146,7 @@ A *Log Analytics közreműködő* szerepkör tagjai a következőket végezhetik
 * Felügyeleti megoldások hozzáadása és eltávolítása
 
     > [!NOTE]
-    > Az utolsó két művelet sikeres végrehajtásához ezt az engedélyt az erőforráscsoport vagy az előfizetés szintjén kell megadni.
+    > Annak érdekében, hogy sikeresen megtörtént az utolsó két műveletekre, ezt az engedélyt kell adni az erőforrás-csoportba vagy előfizetésbe szinten.
 
 * Storage-fiók kulcsainak olvasása
 * Naplók gyűjteményének konfigurálása az Azure Storage-ból
@@ -158,7 +157,7 @@ A *Log Analytics közreműködő* szerepkör tagjai a következőket végezhetik
 > [!NOTE]
 > Ezzel a funkcióval virtuális gépi bővítményt adhat a virtuális gépekhez a virtuális gép teljes körű irányítása érdekében.
 
-A Log Analytics közreműködő szerepkör a következő Azure-műveleteket tartalmazza:
+A Log Analytics-közreműködő szerepkört az Azure a következőket tartalmazza:
 
 | Engedély | Leírás |
 | ---------- | ----------- |
@@ -283,7 +282,7 @@ Hozzon létre egy egyéni szerepkört, amely csak a _SecurityBaseline_ tábláho
 ],
 ```
 
-### <a name="considerations"></a>Megfontolandó szempontok
+### <a name="considerations"></a>Megfontolások
 
 * Ha a felhasználó globális olvasási engedéllyel rendelkezik a _\*/Read_ műveletet tartalmazó szabványos olvasó-vagy közreműködői szerepkörökkel, a rendszer felülbírálja a táblán belüli hozzáférés-vezérlést, és hozzáférést biztosít számukra az összes naplózási adathoz.
 * Ha egy felhasználó számára engedélyezett a táblán belüli hozzáférés, de nincs más engedélye, akkor hozzáférhetnek a naplóbeli adatokhoz az API-ból, de nem a Azure Portal. A Azure Portal való hozzáférés biztosításához használja az Log Analytics olvasót alapszerepkörként.

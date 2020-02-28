@@ -2,17 +2,16 @@
 title: Az Azure-tevékenység naplójának összegyűjtése diagnosztikai beállításokkal (előzetes verzió) – Azure Monitor | Microsoft Docs
 description: Diagnosztikai beállításokkal továbbíthatja az Azure-tevékenységek naplóit Azure Monitor naplókba, az Azure Storage-ba vagy az Azure Event Hubsba.
 author: bwren
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: fcdcef5d63163b24fe5de0f547dc2dde00cd674f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: fcf7eef269c9fa8b62217fb64ed792aece1fce4e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016255"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670338"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>Frissítés az Azure Activity log-gyűjteményre és-exportálásra
 Az [Azure-tevékenység naplója](platform-logs-overview.md) egy olyan [platform-napló](platform-logs-overview.md) , amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. Az [Event hub-vagy Storage-fiókba](activity-log-export.md) vagy [log Analytics-munkaterületre](activity-log-collect.md) irányuló tevékenység-naplóbejegyzések küldési módszere a [diagnosztikai beállítások](diagnostic-settings.md)használatára változott. Ez a cikk a módszerek közötti különbséget ismerteti, valamint azt, hogy miként lehet törölni a régi beállításokat az előkészítés során a diagnosztikai beállításokra való váltáshoz.
@@ -20,7 +19,7 @@ Az [Azure-tevékenység naplója](platform-logs-overview.md) egy olyan [platform
 
 ## <a name="differences-between-methods"></a>A módszerek közötti különbségek
 
-### <a name="advantages"></a>Előnyei
+### <a name="advantages"></a>Előnyök
 A diagnosztikai beállítások használata a következő előnyökkel jár az aktuális módszereknél:
 
 - Konzisztens módszer az összes platform naplójának összegyűjtéséhez.
@@ -29,7 +28,7 @@ A diagnosztikai beállítások használata a következő előnyökkel jár az ak
 - Az összes műveletnapló-kategória összegyűjtése. Egyes kategóriák gyűjtése nem a régi metódussal történik.
 - Gyorsabb késés a naplók betöltéséhez. Az előző metódus körülbelül 15 percet vesz igénybe, míg a diagnosztikai beállítások csak 1 percet vesznek fel.
 
-### <a name="considerations"></a>Megfontolandó szempontok
+### <a name="considerations"></a>Megfontolások
 A funkció engedélyezése előtt vegye figyelembe a következő részleteket a tevékenység naplóinak gyűjtéséhez a diagnosztikai beállítások használatával.
 
 - A tevékenység naplójának az Azure Storage-ba való gyűjtésének megőrzési beállítása el lett távolítva, ami azt jelenti, hogy az adatok határozatlan ideig lesznek tárolva, amíg el nem távolítja.
@@ -43,7 +42,7 @@ A következő oszlopok el lettek távolítva. Ezeknek az oszlopoknak a pótlása
 
 | Oszlop eltávolítva | Helyettesítő oszlop |
 |:---|:---|
-| ActivityStatus    | Oszlopazonosítón    |
+| ActivityStatus    | ActivityStatusValue    |
 | ActivitySubstatus | ActivitySubstatusValue |
 | OperationName     | OperationNameValue     |
 | ResourceProvider  | ResourceProviderValue  |

@@ -2,16 +2,15 @@
 title: Klasszikus metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
 description: Ismerje meg, hogyan hozhatja létre, tekintheti meg és kezelheti a klasszikus metrikus riasztási szabályokat a Azure Portal, a CLI vagy a PowerShell használatával.
 author: yanivlavi
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: yalavi
-ms.openlocfilehash: fd15d6bb9442d91c672fdd444313880001880e07
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b770b9bd34c8267889db536ec81332de32cb8776
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705598"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668315"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Klasszikus metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
 
@@ -23,7 +22,7 @@ A klasszikus metrikus riasztások Azure Monitor lehetővé teszik, hogy értesí
 
 2. A **figyelés** szakaszban válassza a **riasztások (klasszikus)** lehetőséget. A szöveg és az ikon némileg eltérő lehet a különböző erőforrások esetében. Ha nem találja a **riasztásokat (klasszikus)** , akkor előfordulhat, hogy **riasztási** vagy **riasztási szabályokban**találja.
 
-    ![Monitoring](media/alerts-classic-portal/AlertRulesButton.png)
+    ![Figyelés](media/alerts-classic-portal/AlertRulesButton.png)
 
 3. Válassza a **metrikai riasztás hozzáadása (klasszikus)** parancsot, majd töltse ki a mezőket.
 

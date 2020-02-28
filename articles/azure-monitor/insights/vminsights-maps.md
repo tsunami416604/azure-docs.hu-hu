@@ -1,18 +1,17 @@
 ---
 title: Alkalmazás függőségeinek megtekintése Azure Monitor for VMs (előzetes verzió)
 description: A Térkép a Azure Monitor for VMs egyik funkciója. A szolgáltatás automatikusan feltérképezi az alkalmazás-összetevőket Windows és Linux rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Ez a cikk részletesen ismerteti, hogyan használhatja a Térkép funkciót különböző helyzetekben.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: d91c4f7c3abdb06bfe0116e0fadf67c5b7a7a394
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cbdcd5cc8fa9475febd338f94f8b6fe1cb2fe406
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450707"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670746"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Az alkalmazás-összetevők megismeréséhez használja a Azure Monitor for VMs (előzetes verzió) funkcióját
 Azure Monitor for VMs a felderített alkalmazás-összetevőket megtekintheti az Azure-ban vagy a környezetben futó Windows-és Linux-alapú virtuális gépeken (VM-EK). A virtuális gépek két módon figyelhetők meg. A térképeket közvetlenül egy virtuális gépről tekintheti meg, vagy megtekintheti az Azure Monitor térképét, hogy megjelenjenek-e az összetevők a virtuális gépek csoportjai között. Ez a cikk segítséget nyújt a két megtekintési módszer és a Térkép funkció használatának megismerésében. 
@@ -20,7 +19,7 @@ Azure Monitor for VMs a felderített alkalmazás-összetevőket megtekintheti az
 További információ a Azure Monitor for VMs konfigurálásáról: [Azure monitor for VMS engedélyezése](vminsights-enable-overview.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
-Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 ## <a name="introduction-to-the-map-experience"></a>A térképes élmény bemutatása
 A térképes élmény megismerése előtt meg kell ismernie, hogyan jeleníti meg és jeleníti meg az információkat. Függetlenül attól, hogy a Térkép funkciót közvetlenül egy virtuális gépről vagy Azure Monitorról választja-e ki, a Térkép funkció egységes felhasználói élményt nyújt. Az egyetlen különbség, hogy a Azure Monitortól kezdve egy Térkép megjeleníti a többrétegű alkalmazások vagy fürtök összes tagját.
@@ -54,7 +53,7 @@ Az Azure-riasztásokkal és a riasztási szabályok létrehozásával kapcsolato
 
 A jobb felső sarokban a **Jelmagyarázat** lehetőség a térképen lévő szimbólumokat és szerepköröket ismerteti. Ha közelebbről szeretné megtekinteni a térképet, és a körére helyezi, használja a jobb alsó sarokban található Nagyítási vezérlőket. Megadhatja a nagyítási szintet, és a térképet az oldal méretéhez is elvégezheti.  
 
-## <a name="connection-metrics"></a>Kapcsolatok metrikái
+## <a name="connection-metrics"></a>Kapcsolati metrika
 A **kapcsolatok** ablaktábla a virtuális gép által a TCP-porton keresztül kiválasztott kapcsolat normál metrikáit jeleníti meg. A metrikák közé tartoznak a válaszidő, a kérelmek percenkénti száma, a forgalom átviteli sebessége és a hivatkozások.  
 
 ![Hálózati kapcsolati diagramok a kapcsolatok ablaktáblán](./media/vminsights-maps/map-group-network-conn-pane-01.png)  

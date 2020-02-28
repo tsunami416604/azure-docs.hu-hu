@@ -2,18 +2,15 @@
 title: Azure Monitor a platform metrikái exportálható diagnosztikai beállítások használatával
 description: Az egyes erőforrástípusok számára elérhető metrikák listája Azure Monitor.
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 02/10/2020
-author: rboucher
-ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: e530663ef4ebfbef9371c48f4c70578b14a63605
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7a75655d1707dd2491065974ed8addc4c2da1a6a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368234"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661362"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Monitor a platform metrikái exportálható diagnosztikai beállítások használatával
 
@@ -1234,15 +1231,15 @@ A tábla a következő oszlopokat tartalmazza.
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_%-os előjegyzett bájtok használatban  |  Előjegyzett memória%-ban használatban  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_% DPC idő  |  % DPC idő  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ szabad inode (%)  |  Szabad inode%-ban  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ szabad terület (%)  |  % Szabad terület  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ szabad terület (%)  |  % Szabad terület  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ szabad terület (%)  |  Szabad terület százalékos aránya  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ szabad terület (%)  |  Szabad terület százalékos aránya  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ üresjárati idő%-ban  |  Üresjárati idő%-ban  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_%-os megszakítási idő  |  Megszakítási idő%-ban  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_% IO várakozási idő  |  I/o várakozási idő%-ban  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_%-os szép idő  |  % Nice idő  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_%-os privilegizált idő  |  %-Os privilegizált idő  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ processzoridő  |  Processzoridő  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ processzoridő  |  Processzoridő  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ processzoridő  |  A processzor kihasználtsága (%)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ processzoridő  |  A processzor kihasználtsága (%)  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ használt inode  |  Felhasznált inode%-ban  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Felhasznált memória Average_%-ban  |  Felhasznált memória (%)  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ felhasznált terület%-ban  |  Foglalt hely %  |  Darabszám  |  Átlag | 
@@ -1251,21 +1248,21 @@ A tábla a következő oszlopokat tartalmazza.
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Available MB-ban  |  Rendelkezésre álló memória  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Available MB memória  |  Rendelkezésre álló memória  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Available MB-ban való swap  |  Rendelkezésre álló memória (MB)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Lemez mp/Olvasás  |  Átlagos írási idő (mp/olvasás)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Lemez mp/Olvasás  |  Átlagos írási idő (mp/olvasás)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Lemez mp/átvitel  |  Átlagos műveleti idő (mp/átvitel)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Lemez mp/írás  |  Átlagos írási idő (mp/írás)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Lemez mp/írás  |  Átlagos írási idő (mp/írás)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.  |  Átlagos írási idő (mp/olvasás)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.  |  Átlagos írási idő (mp/olvasás)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. teljesítmény mp/átvitelben  |  Átlagos műveleti idő (mp/átvitel)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.  |  Átlagos írási idő (mp/írás)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.  |  Átlagos írási idő (mp/írás)  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Fogadott Average_Bytes/mp  |  Fogadott bájtok/mp  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Küldési Average_Bytes másodpercenként  |  Küldött bájtok/s  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Bytes összesen/mp  |  Összes bájt/mp  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Current a lemez várólistájának hossza  |  Lemez aktuális várólistájának hossza  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Olvasási sebesség (bájt/s) Average_Disk  |  Lemezolvasási sebesség (bájt/s)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Olvasási sebesség (bájt/s) Average_Disk  |  Lemezolvasás sebessége bájt/mp-ben  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Olvasási Average_Disk másodpercenként  |  Lemezolvasások/mp  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Olvasási Average_Disk másodpercenként  |  Lemezolvasások/mp  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Disk adatátvitel másodpercenként  |  Átvitel/mp  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Disk adatátvitel másodpercenként  |  Átvitel/mp  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Írási sebesség (bájt/s) Average_Disk  |  Lemezírási sebesség (bájt/s)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Írási sebesség (bájt/s) Average_Disk  |  Lemezírás sebessége bájt/mp-ben  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Írás/mp Average_Disk  |  Lemezírások/mp  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Írás/mp Average_Disk  |  Lemezírások/mp  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Free megabájt  |  Szabad hely MB-ban  |  Darabszám  |  Átlag | 

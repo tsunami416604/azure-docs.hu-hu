@@ -1,24 +1,23 @@
 ---
 title: Eseményekre való válaszadás Azure Log Analytics-riasztásokkal | Microsoft Docs
 description: Az oktatóanyag segítségével megismerheti, hogyan lehet elérni, hogy a Log Analytics-riasztások azonosítsák a munkaterület fontos információit, és proaktívan értesítsék Önt a problémákról, vagy műveleteket indítsanak el ezek megoldására.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: 11ce572cdb8a04dac07689b37eef76f354475df3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 756ce6c8551d259fc27855489b4276d90c7aa771
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365622"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670372"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Eseményekre való válaszadás Azure Monitor-riasztásokkal
 Az Azure Monitor-riasztások azonosítják a Log Analytics-adattárban található fontos információkat. A riasztásokat riasztási szabályok hozzák létre, amelyek rendszeres időközönként automatikusan naplókereséseket futtatnak. Ha a naplókeresés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés, amelyet konfigurálni lehet egy automatikus válasz végrehajtására.  Ez az oktatóanyag a [Log Analytics-adatokat tartalmazó irányítópultok létrehozása és megosztása](tutorial-logs-dashboards.md) oktatóanyag folytatása.   
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Riasztási szabály létrehozása
@@ -26,13 +25,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre, amely [a Log Analytics-munkaterülethez csatlakozik](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
-## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
 
 ## <a name="create-alerts"></a>Riasztások létrehozása
 A riasztásokat riasztási szabályok hozzák létre az Azure Monitorban, és rendszeres időközönként automatikusan mentett lekérdezéseket vagy egyéni naplókereséseket futtathatnak.  Riasztásokat megadott teljesítménymetrikák alapján, illetve bizonyos események létrehozásakor vagy hiányakor hozhat létre, illetve akkor, ha egy adott időtartományon belül több esemény jön létre.  A riasztások segítségével értesülhet például arról, ha az átlagos processzorhasználat meghalad egy bizonyos küszöbértéket, ha hiányzik egy frissítés, vagy ha létrejön egy esemény, amikor egy adott Windows-szolgáltatás vagy Linux-démon nem fut.  Ha a naplókeresés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztás. A szabály ekkor automatikusan futtathat egy vagy több műveletet, például értesíti Önt a riasztásról, vagy meghív egy másik folyamatot. 
 
-A következő példában létrehoz egy metrikamérési riasztási szabályt az [adatok vizualizációját ismertető oktatóanyagban](tutorial-logs-dashboards.md) mentett *Azure-beli virtuális gépek – Processzorhasználat* lekérdezés alapján.  Létrejön egy riasztás minden egyes, a 90%-os küszöbértéket meghaladó virtuális géphez.  
+A következő példában létrehoz egy metrikamérési riasztási szabályt az *adatok vizualizációját ismertető oktatóanyagban* mentett [Azure-beli virtuális gépek – Processzorhasználat](tutorial-logs-dashboards.md) lekérdezés alapján.  Létrejön egy riasztás minden egyes, a 90%-os küszöbértéket meghaladó virtuális géphez.  
 
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 2. Új riasztás létrehozásához a bal oldali panelen válassza a **Riasztások** elemet, majd kattintson az oldal tetején található **Új riasztási szabály** elemre.<br><br> ![Új riasztási szabály létrehozása](./media/tutorial-response/alert-rule-02.png)<br>

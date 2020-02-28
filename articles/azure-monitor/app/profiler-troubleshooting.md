@@ -1,19 +1,17 @@
 ---
 title: Az Azure Application Insights Profiler kapcsolatos problémák elhárítása
 description: Ez a cikk hibaelhárítási lépéseket és információkat tartalmaz a Application Insights Profiler engedélyezésével vagy használatával kapcsolatos problémákat okozó fejlesztők számára.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2bac317d6a3a5c6895a3cea4dae22694b603cabf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f284d4dfbe550c357f81c01fa0a66aa9878b6c1e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024024"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671562"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Az Application Insights Profiler engedélyezésével vagy megtekintésével kapcsolatos problémák elhárítása
 
@@ -51,7 +49,7 @@ A Profiler nyomkövetési üzeneteket és egyéni eseményeket ír a Application
 * Győződjön meg arról, hogy az alkalmazás a .NET-keretrendszer 4,6-es verzióját futtatja.
 * Ha a webalkalmazás egy ASP.NET Core alkalmazás, legalább ASP.NET Core 2,0-at kell futtatnia.
 * Ha a megtekinteni kívánt adatmennyiség régebbi, mint néhány hétig, próbálja meg korlátozni az időszűrőt, és próbálkozzon újra. A Nyomkövetések hét nap után törlődnek.
-* Győződjön meg arról, hogy a proxyk vagy a tűzfal nem tiltotta le a https://gateway.azureserviceprofiler.net elérését.
+* Győződjön meg arról, hogy a proxyk vagy a tűzfal nem tiltotta le a https://gateway.azureserviceprofiler.netelérését.
 * A Profiler ingyenes vagy megosztott app Service-csomagok esetén nem támogatott. Ha ezen csomagok valamelyikét használja, próbálja meg az alapszintű csomagok és a Profiler használatának megkezdését.
 
 ### <a id="double-counting"></a>Dupla számlálás párhuzamos szálakban
@@ -71,9 +69,9 @@ A Profiler megfelelő működéséhez:
 * A webalkalmazásnak Application Insights engedélyezve kell lennie.
 * A webalkalmazásnak a következő alkalmazás-beállításokkal kell rendelkeznie:
 
-    |Alkalmazásbeállítás    | Value (Díj)    |
+    |Alkalmazásbeállítás    | Érték    |
     |---------------|----------|
-    |APPINSIGHTS_INSTRUMENTATIONKEY         | a Application Insights-erőforrás Rendszerállapotkulcsot    |
+    |ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY         | a Application Insights-erőforrás Rendszerállapotkulcsot    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
     |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
@@ -103,9 +101,9 @@ A Profiler konfigurálásakor a rendszer frissíti a webalkalmazás beállítás
 1. A **mindig** be értékre állítása **.**
 1. Az Alkalmazásbeállítások létrehozása:
 
-    |Alkalmazásbeállítás    | Value (Díj)    |
+    |Alkalmazásbeállítás    | Érték    |
     |---------------|----------|
-    |APPINSIGHTS_INSTRUMENTATIONKEY         | a Application Insights-erőforrás Rendszerállapotkulcsot    |
+    |ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY         | a Application Insights-erőforrás Rendszerállapotkulcsot    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
     |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
@@ -171,7 +169,7 @@ A Azure Diagnostics konfigurálásához használt beállítások ellenőrzését
     A nyomkövetés feltöltésekor a következő üzenet jelenik meg: a *nyomkövetés feltöltésének megkezdése*. 
 
 
-## <a name="edit-network-proxy-or-firewall-rules"></a>Hálózati proxy-vagy tűzfalszabályok szerkesztése
+## <a name="edit-network-proxy-or-firewall-rules"></a>Hálózati proxy vagy tűzfal-szabályok szerkesztése
 
 Ha az alkalmazás proxyn vagy tűzfalon keresztül csatlakozik az internethez, előfordulhat, hogy a szabályokat úgy kell módosítania, hogy az alkalmazás kommunikáljon a Application Insights Profiler szolgáltatással. Az Application Insights Profiler által használt IP-címek szerepelnek a Azure Monitor szolgáltatás címkéjén.
 

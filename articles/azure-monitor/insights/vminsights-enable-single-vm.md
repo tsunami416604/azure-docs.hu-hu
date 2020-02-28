@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor for VMs (előzetes verzió) engedélyezése a kiértékeléshez | Microsoft Docs
 description: Megtudhatja, hogyan értékelheti ki Azure Monitor for VMs egyetlen Azure-beli virtuális gépen vagy virtuálisgép-méretezési csoporton.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: c77fabf0220ecfcb889ce7cb71fa075fde27226f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b79eaeed420426fe79b2b6caf19ba1d1be61939
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400596"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664611"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>Azure Monitor for VMs (előzetes verzió) engedélyezése kiértékeléshez
 
@@ -23,7 +22,7 @@ Mielőtt elkezdené, tekintse át az [előfeltételeket](vminsights-enable-overv
 ## <a name="enable-monitoring-for-a-single-azure-vm"></a>Egyetlen Azure-beli virtuális gép figyelésének engedélyezése
 Az Azure-beli virtuális gép monitorozásának engedélyezése:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. Válassza a **Virtual Machines**lehetőséget.
 
@@ -33,7 +32,7 @@ Az Azure-beli virtuális gép monitorozásának engedélyezése:
 
 1. Az **áttekintések (előzetes verzió)** lapon válassza a **kipróbálás most**lehetőséget.
 
-    ![Virtuális gép Azure Monitor for VMsának engedélyezése](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
+    ![A virtuális gépek az Azure Monitor engedélyezése a virtuális gép](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
 1. Ha egy meglévő Log Analytics munkaterülettel rendelkezik ugyanabban az előfizetésben, akkor a **Azure monitor** megállapítások bevezetése lapon válassza ki azt a legördülő listából.  
 
@@ -44,13 +43,13 @@ Az Azure-beli virtuális gép monitorozásának engedélyezése:
 
 A figyelés engedélyezése után előfordulhat, hogy körülbelül 10 percet várnia kell, mielőtt megtekintheti a virtuális gép állapotának mérőszámait.
 
-![Azure Monitor for VMs figyelés telepítésének engedélyezése](./media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Az Azure Monitor engedélyezése a virtuális gépek figyelése a központi telepítés feldolgozása](./media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="enable-monitoring-for-a-single-virtual-machine-scale-set"></a>Egyetlen virtuálisgép-méretezési csoport figyelésének engedélyezése
 
 Az Azure virtuálisgép-méretezési csoport figyelésének engedélyezéséhez tegye a következőket:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. Válassza a **Virtual Machine Scale sets**lehetőséget.
 
@@ -72,7 +71,7 @@ A figyelés engedélyezése után előfordulhat, hogy körülbelül 10 percet v�
 >[!NOTE]
 >Ha a méretezési csoporthoz manuális frissítési modellt használ, frissítse a példányokat a telepítés befejezéséhez. A frissítések elindításához a **példányok** lapon, a **Beállítások** szakaszban olvashat.
 
-![Azure Monitor for VMs figyelés telepítésének engedélyezése](./media/vminsights-enable-single-vm/onboard-vminsights-vmss-portal-status-01.png)
+![Az Azure Monitor engedélyezése a virtuális gépek figyelése a központi telepítés feldolgozása](./media/vminsights-enable-single-vm/onboard-vminsights-vmss-portal-status-01.png)
 
 Most, hogy engedélyezte a virtuális gép vagy a virtuálisgép-méretezési csoport figyelését, a figyelési információk a Azure Monitor for VMs elemzéséhez érhetők el. 
 

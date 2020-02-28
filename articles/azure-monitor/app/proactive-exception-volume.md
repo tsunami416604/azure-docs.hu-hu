@@ -1,18 +1,14 @@
 ---
 title: Rendellenes növekedés a kivételek mennyiségében – Azure Application Insights
 description: Alkalmazás-kivételek figyelése az Azure Application Insights az intelligens észleléssel a kivételt okozó kötet szokatlan mintázata esetén.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/08/2017
-ms.openlocfilehash: b524000f78741b2ff8cf442d2daaef0c7945799a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a08fae4774a8afb9959f55ea3196cd1a45c33439
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432442"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671766"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>Rendellenes növekedés a kivétel mennyisége (előzetes verzió)
 
@@ -27,7 +23,7 @@ A rendszer gépi tanulási algoritmusokat használ a kivételek számának növe
 ## <a name="does-my-app-definitely-have-a-problem"></a>Az alkalmazásom biztosan probléma?
 Nem, egy értesítés nem azt jelenti, hogy az alkalmazásnak feltétlenül van problémája. Bár a kivételek túlzott száma általában egy alkalmazás hibáját jelzi, a kivételek jóindulatú lehetnek, és az alkalmazás megfelelően kezeli őket.
 
-## <a name="how-do-i-fix-it"></a>Hogyan lehet kijavítani a hibát?
+## <a name="how-do-i-fix-it"></a>Hogyan javíthatom?
 Az értesítések közé tartoznak a diagnosztikai információk, amelyek támogatják a diagnosztikai folyamatot:
 1. **Osztályozás.** Az értesítés azt mutatja, hogy hány felhasználó vagy hány kérelem van hatással. Ez segíthet a probléma prioritásának hozzárendelésében.
 2. **Hatókör.** A probléma hatással van az összes forgalomra, vagy csak néhány műveletre? Ezeket az információkat az értesítésből lehet beszerezni.

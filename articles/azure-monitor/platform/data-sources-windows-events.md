@@ -1,18 +1,17 @@
 ---
 title: Windows-eseménynaplók összegyűjtése és elemzése a Azure Monitorban | Microsoft Docs
 description: Ismerteti, hogyan konfigurálható a Windows-eseménynaplók gyűjteménye Azure Monitor és a létrehozott rekordok részleteivel.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: dd8f1e0e79f85c5d91966bcba13052f297422e67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932405"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670508"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Windows Eseménynapló-adatforrások a Azure Monitor-ban
 A Windows-eseménynaplók a leggyakoribb [adatforrások](agent-data-sources.md) , amelyek a Windows-ügynökökkel való adatgyűjtéshez használják, mivel számos alkalmazás ír a Windows-eseménynaplóba.  Az eseményeket összegyűjtheti a szabványos naplókból, például a rendszerből és az alkalmazásból is, és megadhatja a figyelni kívánt alkalmazások által létrehozott egyéni naplókat.
@@ -46,8 +45,8 @@ A Windows-események rekordjainak típusa **esemény** , és a tulajdonságok a 
 | Computer |Annak a számítógépnek a neve, amelyre az eseményt gyűjtötték. |
 | EventCategory |Az esemény kategóriája. |
 | EventData |Az összes eseményvezérelt érték nyers formátumban. |
-| Napszállta |Az esemény száma. |
-| EventLevel |Az esemény súlyossága numerikus formában. |
+| EventID |Az esemény száma. |
+| eventLevel |Az esemény súlyossága numerikus formában. |
 | EventLevelName |Az esemény súlyossága szöveges formában. |
 | EventLog |Annak az Eseménynaplónak a neve, amelyből az eseményt gyűjtötték. |
 | ParameterXml |Az esemény paramétereinek értékei XML formátumban. |
@@ -56,7 +55,7 @@ A Windows-események rekordjainak típusa **esemény** , és a tulajdonságok a 
 | Forrás |Az esemény forrása. |
 | SourceSystem |Az a típusú ügynök, amelyből az eseményt gyűjtötték. <br> OpsManager – Windows-ügynök, közvetlen kapcsolat vagy Operations Manager felügyelt <br> Linux – minden Linux-ügynök  <br> AzureStorage – Azure Diagnostics |
 | TimeGenerated |Az esemény Windowsban történő létrehozásának dátuma és időpontja. |
-| userName |Az eseményt naplózó fiók felhasználóneve. |
+| UserName |Az eseményt naplózó fiók felhasználóneve. |
 
 ## <a name="log-queries-with-windows-events"></a>Lekérdezések naplózása Windows-eseményekkel
 Az alábbi táblázat a Windows-események rekordjait lekérő lekérdezések különböző példáit ismerteti.

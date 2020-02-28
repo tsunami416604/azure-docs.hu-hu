@@ -1,18 +1,17 @@
 ---
 title: Azure Key Vault megoldás a Azure Monitorban | Microsoft Docs
 description: Azure Key Vault naplók áttekintéséhez használhatja a Azure Monitor Azure Key Vault megoldását.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 8d9c5f63a00179903c0920912aba642311a354e7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 7a2becf8cb43568383c324bb9f4f5b2e7b844268
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889107"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667143"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault elemzési megoldás a Azure Monitor
 
@@ -29,7 +28,7 @@ A megoldás használatához engedélyeznie kell a Azure Key Vault diagnosztika n
 >
 >
 
-## <a name="install-and-configure-the-solution"></a>A megoldás telepítése és konfigurálása
+## <a name="install-and-configure-the-solution"></a>Telepítse és konfigurálja a megoldást
 A Azure Key Vault megoldás telepítéséhez és konfigurálásához kövesse az alábbi utasításokat:
 
 1. A Azure Key Vault megoldás Log Analytics-munkaterülethez való hozzáadásához használja a [Solutions Gallery Azure monitor-megoldások hozzáadása](../../azure-monitor/insights/solutions.md) a-ból című témakörben leírt eljárást.

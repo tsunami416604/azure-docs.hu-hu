@@ -1,18 +1,17 @@
 ---
 title: Naplók lekérdezése Azure Monitor for VMsról (előzetes verzió) | Microsoft Docs
 description: Azure Monitor for VMs a megoldás metrikákat és naplózási adatokat gyűjt, és ez a cikk ismerteti a rekordokat, és példákat tartalmaz a lekérdezésekre.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: 690c7ba04cf849d973295a6ec27eaa38f9b807c3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e679345669d0954008e46f48d986930038a84c10
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399320"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670712"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Naplók lekérdezése Azure Monitor for VMsról (előzetes verzió)
 
@@ -56,7 +55,7 @@ A költségeket és a bonyolultságot a kapcsolati rekordok nem jelölik az egye
 |SourceIp |A forrás IP-címe |
 |DestinationIp |A cél IP-címe |
 |DestinationPort |A célhely portszáma |
-|Protocol (Protokoll) |A kapcsolathoz használt protokoll.  Az értékek a *TCP*. |
+|Protokoll |A kapcsolathoz használt protokoll.  Az értékek a *TCP*. |
 
 A csoportosítás hatásának kiszámításához a csoportosított fizikai kapcsolatok számával kapcsolatos információk a rekord következő tulajdonságaiban vannak megadva:
 
@@ -67,7 +66,7 @@ A csoportosítás hatásának kiszámításához a csoportosított fizikai kapcs
 |LinksFailed |Azon fizikai hálózati kapcsolatok száma, amelyek sikertelenek voltak a jelentéskészítési idő ablakában. Ez az információ jelenleg csak a kimenő kapcsolatok esetében érhető el. |
 |LinksLive |A jelentéskészítési idő ablakának végén megnyitott fizikai hálózati kapcsolatok száma|
 
-#### <a name="metrics"></a>Metrikák
+#### <a name="metrics"></a>Mérőszámok
 
 A kapcsolatok számának mérőszámai mellett az adott logikai kapcsolatban vagy hálózati porton küldött és fogadott adatok mennyiségére vonatkozó információk is szerepelni fog a rekord alábbi tulajdonságaiban:
 
@@ -95,7 +94,7 @@ Néhány fontos szempontot figyelembe kell venni:
 
 A kényelem érdekében a kapcsolatok távoli végének IP-címét a RemoteIp tulajdonság tartalmazza. A bejövő kapcsolatok esetében a RemoteIp ugyanaz, mint a SourceIp, míg a kimenő kapcsolatok esetében ugyanaz, mint a DestinationIp. A RemoteDnsCanonicalNames tulajdonság a gép által a RemoteIp számára jelentett DNS-kanonikus neveket jelöli. A RemoteDnsQuestions és a RemoteClassification tulajdonságok későbbi használatra vannak fenntartva. 
 
-#### <a name="geolocation"></a>Földrajzi hely
+#### <a name="geolocation"></a>Térinformatikai
 
 A *VMConnection* az egyes kapcsolatok távoli végére vonatkozó térinformatikai információkat is tartalmaz a rekord alábbi tulajdonságaiban: 
 
@@ -115,11 +114,11 @@ A *VMConnection* táblában lévő összes RemoteIp-tulajdonságot a rendszer az
 |IndicatorThreadType |Az észlelt veszélyforrás a következő értékek egyike: *botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*, *List*.   |
 |Leírás |A megfigyelt fenyegetés leírása. |
 |TLPLevel |A forgalmi lámpa protokoll (TLP) szintje az egyik definiált érték, a *fehér*, a *zöld*, a *sárga*és a *vörös*. |
-|Megbízhatóság |Az értékek *0 – 100*. |
-|Súlyosság |Az értékek *0 – 5*, ahol az *5* a legsúlyosabb, a *0* pedig egyáltalán nem súlyos. Az alapértelmezett érték *3*.  |
+|Confidence |Az értékek *0 – 100*. |
+|Severity |Az értékek *0 – 5*, ahol az *5* a legsúlyosabb, a *0* pedig egyáltalán nem súlyos. Az alapértelmezett érték *3*.  |
 |FirstReportedDateTime |Az első alkalommal, amikor a szolgáltató jelentette a kijelzőt. |
 |LastReportedDateTime |A mutató a folyamat utolsó időpontjában volt látható. |
-|isActive |Azt jelzi, hogy a kijelzők inaktiválva vannak-e *igaz* vagy *hamis* értékkel. |
+|IsActive |Azt jelzi, hogy a kijelzők inaktiválva vannak-e *igaz* vagy *hamis* értékkel. |
 |ReportReferenceLink |Egy adott megfigyelhető jelentéshez kapcsolódó jelentések hivatkozásai. |
 |AdditionalInformation |További információkat biztosít a megfigyelt fenyegetésről. |
 
@@ -132,13 +131,13 @@ A VMBoundPort összes rekordját a következő mezők azonosítják:
 | Tulajdonság | Leírás |
 |:--|:--|
 |Folyamat | Azon folyamat (vagy folyamatok csoportjai) identitása, amelyekhez a port társítva van.|
-|IP | Port IP-címe (lehet helyettesítő IP-cím, *0.0.0.0*) |
+|Ip | Port IP-címe (lehet helyettesítő IP-cím, *0.0.0.0*) |
 |Port |A portszám |
-|Protocol (Protokoll) | A protokoll.  Példa: *TCP* vagy *UDP* (csak a *TCP* jelenleg támogatott).|
+|Protokoll | A protokoll.  Példa: *TCP* vagy *UDP* (csak a *TCP* jelenleg támogatott).|
  
 Az identitás egy port a fenti öt mezőből származik, és a PortId tulajdonságban tárolódik. Ezzel a tulajdonsággal gyorsan megtalálhatja az adott port rekordjait az idő során. 
 
-#### <a name="metrics"></a>Metrikák 
+#### <a name="metrics"></a>Mérőszámok 
 
 A portok rekordjai közé tartoznak a hozzájuk társított kapcsolatokra vonatkozó metrikák. Jelenleg a következő metrikákat mutatjuk be (az egyes mérőszámok részleteit az előző szakaszban találja): 
 
@@ -155,7 +154,7 @@ Néhány fontos szempontot figyelembe kell venni:
 
 ### <a name="vmcomputer-records"></a>VMComputer-rekordok
 
-A *VMComputer* rendelkező rekordok a függőségi ügynökkel rendelkező kiszolgálók leltározási adataival rendelkeznek. Ezek a rekordok a következő táblázatban szereplő tulajdonságokkal rendelkeznek:
+A *VMComputer* rendelkező rekordok a függőségi ügynökkel rendelkező kiszolgálók leltározási adataival rendelkeznek. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
 
 | Tulajdonság | Leírás |
 |:--|:--|
@@ -165,9 +164,9 @@ A *VMComputer* rendelkező rekordok a függőségi ügynökkel rendelkező kiszo
 |Computer | A számítógép teljes tartományneve | 
 |Ügynökazonosító | A Log Analytics ügynök egyedi azonosítója |
 |Gép | A ServiceMap által elérhetővé tett számítógép Azure Resource Manager erőforrásának neve. Az *m-{GUID}* formátumú, ahol a *GUID* ugyanaz, mint a ügynökazonosító. | 
-|Megjelenítendő név | Megjelenített név | 
+|DisplayName | Megjelenített név | 
 |FullDisplayName | Teljes megjelenítendő név | 
-|HostName | A tartománynév nélküli számítógép neve |
+|Állomásnév | A tartománynév nélküli számítógép neve |
 |BootTime | A gép rendszerindítási ideje (UTC) |
 |Időzóna | A normalizált időzóna |
 |VirtualizationState | *virtuális*, *hypervisor*, *fizikai* |
@@ -181,7 +180,7 @@ A *VMComputer* rendelkező rekordok a függőségi ügynökkel rendelkező kiszo
 |OperatingSystemFamily | *Linux*, *Windows* |
 |OperatingSystemFullName | Az operációs rendszer teljes neve | 
 |PhysicalMemoryMB | A fizikai memória megabájtban | 
-|Processzorok | Processzorok száma | 
+|Processzorok | A processzorok száma | 
 |CpuSpeed | A processzor sebessége (MHz) | 
 |VirtualMachineType | *HyperV*, *VMware*, *Xen* |
 |VirtualMachineNativeId | A virtuális gép azonosítója, amelyet a hypervisor rendel hozzá | 
@@ -217,7 +216,7 @@ A *VMComputer* rendelkező rekordok a függőségi ügynökkel rendelkező kiszo
 
 ### <a name="vmprocess-record"></a>VMProcess-rekord
 
-A *VMProcess* rendelkező rekordok a függőségi ügynökkel rendelkező kiszolgálókon a TCP-kapcsolattal rendelkező folyamatok leltározási adataival rendelkeznek. Ezek a rekordok a következő táblázatban szereplő tulajdonságokkal rendelkeznek:
+A *VMProcess* rendelkező rekordok a függőségi ügynökkel rendelkező kiszolgálókon a TCP-kapcsolattal rendelkező folyamatok leltározási adataival rendelkeznek. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
 
 | Tulajdonság | Leírás |
 |:--|:--|
@@ -229,7 +228,7 @@ A *VMProcess* rendelkező rekordok a függőségi ügynökkel rendelkező kiszol
 |Gép | A ServiceMap által elérhetővé tett számítógép Azure Resource Manager erőforrásának neve. Az *m-{GUID}* formátumú, ahol a *GUID* ugyanaz, mint a ügynökazonosító. | 
 |Folyamat | Az Service Map folyamat egyedi azonosítója. A formátuma *p-{GUID}* . 
 |ExecutableName | A folyamat végrehajtható fájljának neve | 
-|Megjelenítendő név | Folyamat megjelenítendő neve |
+|DisplayName | Folyamat megjelenítendő neve |
 |Szerepkör | Szerepkör feldolgozása: *webkiszolgáló*, *appServer*, *databaseServer*, *ldapServer*, *smbServer* |
 |Csoport | A feldolgozó csoport neve. Az ugyanabban a csoportban lévő folyamatok logikailag kapcsolódnak egymáshoz, például ugyanannak a terméknek vagy rendszerösszetevőnek a része. |
 |StartTime | A folyamat készletének kezdési ideje |
@@ -237,7 +236,7 @@ A *VMProcess* rendelkező rekordok a függőségi ügynökkel rendelkező kiszol
 |Leírás | A folyamat leírása |
 |CompanyName | A vállalat neve |
 |InternalName | A belső név |
-|TermékNév | A termék neve |
+|Terméknév | A termék neve |
 |ProductVersion | A termék verziója |
 |FileVersion | A fájl verziója |
 |ExecutablePath |A végrehajtható fájl elérési útja |

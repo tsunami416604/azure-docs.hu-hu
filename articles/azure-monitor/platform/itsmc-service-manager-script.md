@@ -1,18 +1,17 @@
 ---
 title: Automatizált parancsfájl Service Manager webalkalmazás létrehozásához az Azure-beli IT-szolgáltatásmenedzsmenti csatolóhoz való kapcsolódáshoz | Microsoft Docs
 description: Hozzon létre egy Service Manager webalkalmazást automatikus parancsfájl használatával az Azure-beli IT-szolgáltatásmenedzsmenti csatolóhoz való kapcsolódáshoz, valamint a ITSM munkaelemek központi figyeléséhez és kezeléséhez.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: a97ea4d505d17d1d5fb2f2035fb23f3fce94aebe
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f224e58905e2989caf16259e383726595c0206d5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990929"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672191"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Service Manager Webalkalmazás létrehozása az automatikus parancsfájl használatával
 
@@ -22,7 +21,7 @@ Futtassa a szkriptet a következő szükséges részletek megadásával:
 
 - Azure-előfizetés részletei
 - Erőforráscsoport neve
-- Földrajzi egység
+- Hely
 - Service Manager kiszolgáló adatai (kiszolgáló neve, tartomány, Felhasználónév és jelszó)
 - A webalkalmazás helynév-előtagja
 - ServiceBus-névtér.

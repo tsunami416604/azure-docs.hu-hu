@@ -1,18 +1,17 @@
 ---
 title: Windows rendszerű számítógépek összekötése Azure Monitorhoz | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan csatlakoztathatók a más felhőkben vagy a helyszínen üzemeltetett Windows-számítógépek a Windows Log Analytics-ügynökével Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 8918c18c9356c583b9ea23138f0d0a0fb4dcd845
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 21efb16cf519d4bcad520af1c7d8818f36a77218
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689994"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668638"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows rendszerű számítógépek összekapcsolásának Azure Monitor
 
@@ -20,7 +19,7 @@ A helyi adatközpontban található virtuális gépek vagy fizikai számítógé
 
 A figyelt Windows rendszerű számítógépeken az ügynök a Microsoft monitoring Agent szolgáltatásként jelenik meg. A Microsoft monitoring Agent szolgáltatás eseményeket gyűjt a naplófájlokból és a Windows-eseménynaplóból, a teljesítményadatokből és más telemetria. Még ha az ügynök nem tud kommunikálni Azure Monitor it-jelentésekkel, az ügynök továbbra is futni fog, és a figyelt számítógép lemezén lévő összegyűjtött adatokat várólistára helyezi. Ha a rendszer visszaállítja a csatlakozást, a Microsoft monitoring Agent szolgáltatás adatokat küld a szolgáltatásnak.
 
-Az ügynököt az alábbi módszerek egyikével lehet telepíteni. A legtöbb esetben ezek kombinációját használják, hiszen a különböző számítógépeknél más-más módszerre lehet szükség.  Az egyes módszerek használatával kapcsolatos részletes információkat a cikk későbbi részében találja.
+Az ügynököt az alábbi módszerek egyikével lehet telepíteni. A legtöbb telepítés ezeket a metódusokat használja a különböző számítógépek telepítésére, ha szükséges.  Az egyes módszerek használatával kapcsolatos részletes információkat a cikk későbbi részében találja.
 
 * Manuális telepítés. A telepítőt manuálisan kell futtatni a számítógépen a telepítővarázsló, a parancssorból, vagy egy meglévő szoftverterjesztési eszköz használatával.
 * Azure Automation kívánt állapot-konfiguráció (DSC). A DSC használata Azure Automation a környezetben már üzembe helyezett Windows rendszerű számítógépekhez használható parancsfájl használatával.  
@@ -40,7 +39,7 @@ A Windows Log Analytics-ügynök telepítése előtt szüksége lesz a munkater�
 
 1. A Azure Portal keresse meg és válassza ki **log Analytics munkaterületeket**.
 2. Az Log Analytics-munkaterületek listájában válassza ki azt a munkaterületet, amelyet az ügynöknek a jelentésre való bekapcsolásához kíván beállítani.
-3. Válassza ki a **Speciális beállítások** elemet.<br><br> ![Log Analytics speciális beállításai](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
+3. Válassza ki a **Speciális beállítások** elemet.<br><br> ![A Log Analytics speciális beállításai](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
 4. Válassza ki a **Csatlakoztatott források**, majd a **Windowsos kiszolgálók** elemet.   
 5. Másolja és illessze be kedvenc szerkesztőjét, a **munkaterület azonosítóját** és az **elsődleges kulcsot**.    
    
@@ -95,7 +94,7 @@ Az alábbi táblázat az ügynök számára a telepítő által támogatott para
 
 |MMA-specifikus beállítások                   |Megjegyzések         |
 |---------------------------------------|--------------|
-| NOAPM=1                               | Nem kötelező megadni. Telepíti az ügynököt a .NET-alkalmazás teljesítményének figyelése nélkül.|   
+| NOAPM=1                               | Nem kötelező paraméter. Telepíti az ügynököt a .NET-alkalmazás teljesítményének figyelése nélkül.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = az ügynök konfigurálása munkaterületre való jelentéshez                |
 |OPINSIGHTS_WORKSPACE_ID                | Munkaterület-azonosító (GUID) a hozzáadandó munkaterülethez                    |
 |OPINSIGHTS_WORKSPACE_KEY               | A munkaterülettel való első hitelesítéshez használt munkaterület-kulcs |
@@ -136,7 +135,7 @@ Az ügynök csomagjához tartozó 32-bites és 64-bites verziók különböző t
 
 Ha közvetlenül az ügynök telepítési csomagjából szeretné lekérni a termékkód beolvasását, használhatja az Orca. exe fájlt a [Windows SDK összetevőiről Windows Installer fejlesztőknek](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , amely a Windows szoftverfejlesztői készlet összetevője, vagy a PowerShell használatával a Microsoft értékes Professional (MVP) által írt [példaként szolgáló parancsfájlt](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) követve.  Mindkét módszer esetében először ki kell bontania a **MOMagent. msi** fájlt a MMASetup telepítési csomagjából.  Ez a következő szakaszban látható az [ügynök telepítése parancssor használatával](#install-the-agent-using-the-command-line)című szakasz első lépésében.  
 
-1. Importálja a xPSDesiredStateConfiguration DSC modult a [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration ból](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) a Azure Automationba.  
+1. Importálja a xPSDesiredStateConfiguration DSC modult a [https://www.powershellgallery.com/packages/xPSDesiredStateConfigurationból](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) a Azure Automationba.  
 2.  Hozzon létre Azure Automation változó eszközöket *OPSINSIGHTS_WS_ID* és *OPSINSIGHTS_WS_KEYhoz*. Állítsa be *OPSINSIGHTS_WS_ID* a log Analytics munkaterület-azonosítóra, és állítsa *OPSINSIGHTS_WS_KEY* a munkaterület elsődleges kulcsára.
 3.  Másolja a szkriptet, és mentse a MMAgent. ps1 néven.
 

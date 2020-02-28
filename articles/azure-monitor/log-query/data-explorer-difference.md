@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor log lekérdezés nyelvi eltérései | Microsoft Docs
 description: Az Azure Monitor által használt Kusto-lekérdezési nyelvre vonatkozó információk. A Azure Monitor és a Azure Monitor napló lekérdezésekben nem támogatott elemek további elemeit tartalmazza.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 16a221c0530d65e11589ac272a8e032de0cd3d2b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b4601968a318388086a60ef98e4359ae01f652ed
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933099"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662102"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor a naplózási lekérdezés nyelvi különbségeit
 
@@ -31,13 +30,13 @@ A következő szakaszok ismertetik a Kusto lekérdezési nyelvének azon elemeit
 ### <a name="functions-not-supported-in-azure-monitor"></a>A függvények nem támogatottak Azure Monitor
 
 * [fürt ()](/azure/kusto/query/clusterfunction)
-* [cursor_after()](/azure/kusto/query/cursorafterfunction)
-* [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
-* [cursor_current(), current_cursor()](/azure/kusto/query/cursorcurrent)
+* [cursor_after ()](/azure/kusto/query/cursorafterfunction)
+* [cursor_before_or_at ()](/azure/kusto/query/cursorbeforeoratfunction)
+* [cursor_current (), current_cursor ()](/azure/kusto/query/cursorcurrent)
 * [adatbázis ()](/azure/kusto/query/databasefunction)
-* [current_principal()](/azure/kusto/query/current-principalfunction)
-* [extent_id()](/azure/kusto/query/extentidfunction)
-* [extent_tags()](/azure/kusto/query/extenttagsfunction)
+* [current_principal ()](/azure/kusto/query/current-principalfunction)
+* [extent_id ()](/azure/kusto/query/extentidfunction)
+* [extent_tags ()](/azure/kusto/query/extenttagsfunction)
 
 ### <a name="operators-not-supported-in-azure-monitor"></a>Azure Monitor nem támogatott operátorok
 

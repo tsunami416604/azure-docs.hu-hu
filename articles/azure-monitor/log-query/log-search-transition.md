@@ -1,18 +1,17 @@
 ---
 title: Adatok megtekintése és elemzése az Azure Log Analyticsban | Microsoft Docs
 description: Log Analytics naplóbeli keresés felhasználói számára való segítségnyújtás Azure Monitor naplózási lekérdezési élményhez.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: a8d0469d57901f53d8e615f800b5d804944163fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398165"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670134"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Áttérés Log Analytics naplóbeli keresésről Azure Monitor naplókra
 A naplóbeli keresés a Log Analytics nemrég váltotta fel a Azure Monitor naplók elemzésére szolgáló új felhasználói élményt. A naplóbeli keresés oldal jelenleg továbbra is elérhető a **naplók (klasszikus)** menüpontban a Azure Portal **log Analytics munkaterületek** lapján, de 2019. február 15-én el lesz távolítva. Ez a cikk a két funkció közötti különbségeket ismerteti, amelyek segítenek a naplók közötti keresésben való áttérésben. 
@@ -47,7 +46,7 @@ Ha az aktuális lekérdezést Azure Monitor naplókba szeretné menteni, válass
 ## <a name="saved-queries"></a>Mentett lekérdezések
 A naplóbeli keresés során a mentett lekérdezések a művelet sáv **mentett keresések**menüpontján keresztül érhetők el. A Azure Monitor-naplókban a lekérdezés- [kezelőből](../log-query/get-started-portal.md#save-queries)férhet hozzá a mentett lekérdezésekhez.
 
-![Lekérdezéskezelő](media/log-search-transition/query-explorer.png)
+![Lekérdezési tallózó](media/log-search-transition/query-explorer.png)
 
 ## <a name="drill-down-on-summarized-rows"></a>Részletezés az összegzett sorokon
 A naplók keresése elemre kattintva egy összegzett lekérdezés sorára kattintva elindíthat egy másik lekérdezést, amely felsorolja az adott sorban található részletes rekordokat.
@@ -65,7 +64,7 @@ A naplók keresése lehetőségre kattintva [elindíthat egy runbook](take-actio
 
 Azure Monitor naplókban [hozzon létre egy riasztást a napló lekérdezésből](../platform/alerts-log.md). Egy műveleti csoport konfigurálása egy vagy több olyan művelettel, amely a riasztásra adott válaszként fog futni.
 
-![műveleti csoport](media/log-search-transition/action-group.png)
+![Műveleti csoport](media/log-search-transition/action-group.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

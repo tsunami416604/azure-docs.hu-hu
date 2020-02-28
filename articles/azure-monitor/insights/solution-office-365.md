@@ -1,18 +1,17 @@
 ---
 title: Office 365 felügyeleti megoldás az Azure-ban | Microsoft Docs
 description: Ez a cikk részletesen ismerteti az Office 365-megoldás konfigurálását és használatát az Azure-ban.  A Azure Monitorban létrehozott Office 365-rekordok részletes leírását tartalmazza.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: 96d0124941f9f2daa1e1b2d1d254b0b767ffb395
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 0018ae55ab74e691577a34a397c15355587e0fac
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111564"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663255"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -95,7 +94,7 @@ ms.locfileid: "77111564"
 > Az Azure Sentinel beépített, biztonsági szintű irányítópultokat, egyéni riasztási lekérdezéseket, vadászati lekérdezéseket, nyomozást és automatizált reagálási képességeket biztosít az Office 365 és az Azure AD-naplók alapján. További információért tekintse meg az Azure Sentinel GitHubot és oktatóanyagokat:
 >
 > - [Fenyegetések észlelése](../../sentinel/tutorial-detect-threats-built-in.md)
-> - [Egyéni analitikus szabályok létrehozása a gyanús fenyegetések észleléséhez](../../sentinel/tutorial-detect-threats-custom.md)
+> - [Egyéni elemzési szabályok létrehozása gyanús fenyegetések észleléséhez](../../sentinel/tutorial-detect-threats-custom.md)
 > - [Az adatai figyelése](../../sentinel/tutorial-monitor-your-data.md)
 > - [Incidensek vizsgálata az Azure Sentineltel](../../sentinel/tutorial-investigate-cases.md)
 > - [Automatizált veszélyforrásokkal kapcsolatos válaszok beállítása az Azure Sentinelben](../../sentinel/tutorial-respond-threats-playbook.md)
@@ -274,7 +273,7 @@ A következő tulajdonságok minden Office 365-rekordnál közösek.
 | ResultStatus | Azt jelzi, hogy a művelet (a műveleti tulajdonságban megadott művelet) sikeres volt-e. A lehetséges értékek sikeresek, PartiallySucceeded vagy sikertelenek. Exchange-rendszergazdai tevékenység esetén az érték igaz vagy hamis. |
 | UserId | A naplózni kívánt műveletet végrehajtó felhasználó UPN-neve (egyszerű felhasználónév); például my_name@my_domain_name. Vegye figyelembe, hogy a rendszerfiókok (például SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végzett tevékenységekre vonatkozó rekordok is szerepelnek. | 
 | UserKey | A felhasználóazonosító tulajdonságban azonosított felhasználó alternatív azonosítója.  Ez a tulajdonság például a Passport egyedi azonosítójával (PUID) van feltöltve a felhasználók által a SharePointban, a vállalati OneDrive és az Exchange-ben végrehajtott eseményekhez. Ez a tulajdonság a felhasználóazonosító tulajdonsággal megegyező értéket is megadhat a más szolgáltatásokban és a rendszerfiókokban végrehajtott eseményekben előforduló események esetében.|
-| UserType | A műveletet végrehajtó felhasználó típusa.<br><br>rendszergazda<br>Alkalmazás<br>DcAdmin<br>Rendszeres<br>Fenntartva<br>ServicePrincipal<br>Rendszer |
+| UserType | A műveletet végrehajtó felhasználó típusa.<br><br>Rendszergazda<br>Alkalmazás<br>DcAdmin<br>Rendszeres<br>Fenntartva<br>ServicePrincipal<br>Rendszer |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory alapja

@@ -1,19 +1,17 @@
 ---
 title: Az Azure Application Insights telemetria korrelációja | Microsoft Docs
 description: Application Insights telemetria korreláció
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: bc73dfb1c4dc77abe0bd135ecf572fa05ddf6322
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951326"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672055"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
 
@@ -35,7 +33,7 @@ A Service-környezetekben az összetevőkből származó nyomkövetési adatok k
 
 ## <a name="example"></a>Példa
 
-Lássunk egy példát. A tőzsdei díjak nevű alkalmazás a készlet aktuális piaci árát jeleníti meg egy Stock nevű külső API használatával. A tőzsdei díjszabási alkalmazás rendelkezik egy Stock oldal nevű oldallal, amelyet az ügyfél webböngésző `GET /Home/Stock`használatával nyit meg. Az alkalmazás a HTTP-hívás `GET /api/stock/value`használatával kérdezi le a Stock API-t.
+Lássunk erre egy példát. A tőzsdei díjak nevű alkalmazás a készlet aktuális piaci árát jeleníti meg egy Stock nevű külső API használatával. A tőzsdei díjszabási alkalmazás rendelkezik egy Stock oldal nevű oldallal, amelyet az ügyfél webböngésző `GET /Home/Stock`használatával nyit meg. Az alkalmazás a HTTP-hívás `GET /api/stock/value`használatával kérdezi le a Stock API-t.
 
 Az eredményül kapott telemetria a következő lekérdezés futtatásával elemezheti:
 
@@ -47,12 +45,12 @@ Az eredményül kapott telemetria a következő lekérdezés futtatásával elem
 
 Az eredmények között vegye figyelembe, hogy az összes telemetria-elem megosztja a legfelső `operation_Id`. Amikor az oldalról AJAX-hívást kezdeményeznek, a rendszer új egyedi azonosítót (`qJSXU`) rendel a függőségi telemetria, és az oldalmegtekintés AZONOSÍTÓját használja `operation_ParentId`. A kiszolgálói kérelem ezután az Ajax ID-t használja `operation_ParentId`ként.
 
-| itemType   | név                      | ID (Azonosító)           | operation_ParentId | operation_Id |
+| ItemType   | név                      | ID (Azonosító)           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
-| oldalmegtekintést   | Stock lap                |              | STYz               | STYz         |
-| függőségi | /Home/Stock beolvasása           | qJSXU        | STYz               | STYz         |
-| kérés    | Kezdőlap/készlet letöltése            | KqKwlrSt9PA = | qJSXU              | STYz         |
-| függőségi | /API/Stock/Value beolvasása      | bBrf2L7mm2g = | KqKwlrSt9PA =       | STYz         |
+| pageView   | Stock lap                |              | STYz               | STYz         |
+| függőségi | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
+| kérés    | Kezdőlap/készlet letöltése            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| függőségi | /API/Stock/Value beolvasása      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
 Ha egy külső szolgáltatás hívása `GET /api/stock/value`, ismernie kell a kiszolgáló identitását, hogy megfelelően beállítsa a `dependency.target` mezőt. Ha a külső szolgáltatás nem támogatja a figyelést, `target` a szolgáltatás állomásneve (például `stock-prices-api.com`) értékre van állítva. Ha azonban a szolgáltatás egy előre meghatározott HTTP-fejléc visszaadásával azonosítja magát, `target` tartalmazza a szolgáltatás identitását, amely lehetővé teszi, hogy a Application Insights elosztott nyomkövetést hozzon létre a szolgáltatásból származó telemetria lekérdezésével.
 
@@ -206,8 +204,8 @@ A [OpenTracing adatmodell-specifikációja](https://opentracing.io/) és Applica
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | `Span` és `span.kind = server`                  |
-| `Dependency`                          | `Span` és `span.kind = client`                  |
+| `Request`, `PageView`                 | `Span` a `span.kind = server`                  |
+| `Dependency`                          | `Span` a `span.kind = client`                  |
 | `Request` és `Dependency` `Id`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
 | `Operation_ParentId`                  | `ChildOf` típusú `Reference` (a szülő span)   |
@@ -267,7 +265,7 @@ A `id` mező formátuma `<trace-id>.<span-id>`, ahol a `trace-id` a rendszer a k
 
 A `operation_ParentId` mező formátuma `<trace-id>.<parent-id>`, ahol a `trace-id` és a `parent-id` is a kérelemben átadott nyomkövetési fejlécből származik.
 
-### <a name="log-correlation"></a>Napló-összefüggések
+### <a name="log-correlation"></a>Napló korrelációja
 
 A OpenCensus Python lehetővé teszi a naplók összekapcsolását egy nyomkövetési azonosító, egy span-azonosító és egy mintavételi jelző hozzáadásával a rekordok naplózásához. Ezeket az attribútumokat a OpenCensus [naplózási integrációjának](https://pypi.org/project/opencensus-ext-logging/)telepítésével adhatja hozzá. A következő attribútumok lesznek hozzáadva a Python `LogRecord` objektumokhoz: `traceId`, `spanId`és `traceSampled`. Vegye figyelembe, hogy ez csak az integráció után létrehozott naplózók esetén lép életbe.
 

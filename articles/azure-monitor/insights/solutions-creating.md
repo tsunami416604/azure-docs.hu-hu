@@ -1,19 +1,18 @@
 ---
 title: Felügyeleti megoldás létrehozása az Azure-ban | Microsoft Docs
 description: A felügyeleti megoldások közé tartoznak az Azure-ban csomagolt felügyeleti forgatókönyvek, amelyeket az ügyfelek hozzáadhatnak Log Analytics munkaterülethez.  Ez a cikk részletesen ismerteti, hogyan hozhat létre a saját környezetében használt felügyeleti megoldásokat, illetve hogyan teheti elérhetővé az ügyfelek számára.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5465c177cf174ebf8d6b7d4f43c5387bce3adb70
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f1605597c7716ba6a896c7ecdae968f07d66027b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969700"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663215"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Felügyeleti megoldás kialakítása és létrehozása az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -28,7 +27,7 @@ A felügyeleti megoldások olyan Azure-erőforrásokat tartalmaznak, amelyek egy
 Az alapszintű stratégia a felügyeleti megoldás elindítása az Azure-környezet egyes összetevőinek létrehozásával.  A funkciók megfelelő működésének megkezdése után megkezdheti a csomagolást egy [felügyeleti megoldás fájljába]( solutions-solution-file.md). 
 
 
-## <a name="design-your-solution"></a>A megoldás tervezése
+## <a name="design-your-solution"></a>A megoldás megtervezése
 A felügyeleti megoldások leggyakoribb mintája az alábbi ábrán látható.  A minta különböző összetevőit az alábbiakban tárgyaljuk.
 
 ![Felügyeleti megoldás áttekintése](media/solutions-creating/solution-overview.png)
@@ -46,7 +45,7 @@ A [naplók keresése](../../azure-monitor/log-query/log-query-overview.md) a log
 
 Meg kell határoznia azokat a lekérdezéseket, amelyeket úgy gondol, hogy a felhasználó számára hasznos lesz, még akkor is, ha azokat nem használja egyetlen nézet vagy riasztás sem.  Ezek a portálon mentett keresésként lesznek elérhetők a portálon, és a [lekérdezések vizualizációs részét](../../azure-monitor/platform/view-designer-parts.md#list-of-queries-part) is felvehetik az egyéni nézetben.
 
-### <a name="alerts"></a>Értesítések
+### <a name="alerts"></a>Riasztások
 A [log Analytics riasztásai](../../azure-monitor/platform/alerts-overview.md) azonosítják a [naplóbeli keresések](#log-searches) során felmerülő problémákat a tárházban lévő adattárakban.  Vagy értesítik a felhasználót, vagy egy válaszban automatikusan futtatják a műveletet. Meg kell határoznia az alkalmazás különböző riasztási feltételeit, és tartalmaznia kell a megfelelő riasztási szabályokat a megoldás fájljában.
 
 Ha a probléma kijavítása egy automatizált folyamattal lehetséges, akkor általában egy runbook hoz létre Azure Automation a szervizelés végrehajtásához.  A legtöbb Azure-szolgáltatás olyan [parancsmagokkal](/powershell/azure/overview) kezelhető, amelyeket a runbook az ilyen funkciók elvégzésére használhat.

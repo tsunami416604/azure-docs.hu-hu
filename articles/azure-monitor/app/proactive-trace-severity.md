@@ -1,18 +1,14 @@
 ---
 title: A nyomkövetés súlyossági arányának csökkenése – Azure Application Insights
 description: Az alkalmazások nyomon követését az Azure Application Insights az intelligens észleléssel rendelkező nyomkövetési telemetria szokatlan mintázatait figyelheti.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 11/27/2017
-ms.openlocfilehash: b51cb66b59589c9b58d9115dfa6cefce0a20f3c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 30bdd30ac9c49bb79a3c48bae8149ec761756dd4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432414"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671681"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>A nyomkövetés súlyossági arányának csökkenése (előzetes verzió)
 
@@ -26,7 +22,7 @@ Ez a típusú értesítés akkor fordulhat elő, ha a "jó" nyomok (az informác
 ## <a name="does-my-app-definitely-have-a-problem"></a>Az alkalmazásom biztosan probléma?
 Nem, egy értesítés nem azt jelenti, hogy az alkalmazásnak feltétlenül van problémája. Bár a "jó" és a "rossz" nyomkövetési arány közötti csökkenés az alkalmazással kapcsolatos problémát jelezhet, a változás a arányban jóindulatú lehet. Például a növekedés oka az lehet, hogy az alkalmazás egy új folyamata több "rossz" nyomkövetést bocsát ki, mint a meglévő folyamatok esetében.
 
-## <a name="how-do-i-fix-it"></a>Hogyan lehet kijavítani a hibát?
+## <a name="how-do-i-fix-it"></a>Hogyan javíthatom?
 Az értesítések közé tartoznak a diagnosztikai információk, amelyek támogatják a diagnosztikai folyamatot:
 1. **Osztályozás.** Az értesítésből megtudhatja, hogy hány műveletet érint. Ez segíthet a probléma prioritásának hozzárendelésében.
 2. **Hatókör.** A probléma hatással van az összes forgalomra, vagy csak néhány műveletre? Ezeket az információkat az értesítésből lehet beszerezni.

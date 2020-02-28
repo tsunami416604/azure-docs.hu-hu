@@ -1,18 +1,15 @@
 ---
 title: A klasszikus üzembe helyezési modell API-jai kiAzure Monitor a metrikák és az autoskálázás számára
 description: A metrikák és a klasszikus API-k, más néven Azure Service Management (ASM) vagy RDFE üzembe helyezési modell kivonása
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 11/19/2018
-ms.openlocfilehash: 7a93419ee84e6a50ce07cefa941a8df9f85b7b6e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 980f4e840f7778c6ea3025db9b37a3454267bac7
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552197"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663555"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>A klasszikus üzembe helyezési modell API-jai kiAzure Monitor a metrikák és az autoskálázás számára
 
@@ -38,7 +35,7 @@ Ez a cikk Önre vonatkozik, ha a következő összetevőket használja:
 
 Ha nem biztos abban, hogy a kód vagy az egyéni eszközök meghívja a klasszikus API-kat, tekintse meg a következőket:
 
-- Tekintse át a kódban vagy eszközben hivatkozott URI-t. A klasszikus API-k az URI https://management.core.windows.net használják. A Resource Manager-alapú API-k újabb URI-JÁT a https://management.azure.com/ használatával kezdődik.
+- Tekintse át a kódban vagy eszközben hivatkozott URI-t. A klasszikus API-k az URI https://management.core.windows.nethasználják. A Resource Manager-alapú API-k újabb URI-JÁT a https://management.azure.com/használatával kezdődik.
 
 - Hasonlítsa össze a szerelvény nevét a gépen. A régebbi klasszikus szerelvény a következő címen érhető el: https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/.
 
@@ -86,9 +83,9 @@ A rendszer kivonulási értesítést küldött az e-mail-címekre a következő 
 - Fiók-és szolgáltatás-rendszergazdák
 - Társrendszergazdák  
 
-Ha bármilyen kérdése van, vegye fel velünk a kapcsolatot MonitorClassicAPIhelp@microsoft.com címen.  
+Ha bármilyen kérdése van, vegye fel velünk a kapcsolatot MonitorClassicAPIhelp@microsoft.comcímen.  
 
-## <a name="references"></a>Tudástár
+## <a name="references"></a>Referencia
 
 - [Újabb REST API-k a Azure Monitorhoz](https://docs.microsoft.com/rest/api/monitor/) 
 - [Újabb Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights alapértelmezett SDK-végpontok felülbírálása
 description: Az alapértelmezett Azure Monitor Application Insights SDK-végpontok módosítása olyan régiók esetében, mint például a Azure Government.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/26/2019
-ms.openlocfilehash: c04b793512eccf6aaff7d3ed3cc65efdd3dfc303
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3aa18a6b96458533c3dc53f3f420ed264b298a3e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432592"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671987"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights felülbírálja az alapértelmezett végpontokat
 
@@ -45,7 +41,7 @@ Ha Application Insightsről szeretne adatokat küldeni bizonyos régiókba, fel�
 </ApplicationInsights>
 ```
 
-### <a name="aspnet-core"></a>ASP.NET Core
+### <a name="aspnet-core"></a>ASP.NET-mag
 
 Módosítsa a appSettings. JSON fájlt a projektben az alábbiak szerint a fő végpont beállításához:
 
@@ -195,7 +191,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) és az [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide).
 
-|Region (Régió) |  Végpont neve | Value (Díj) |
+|Régió |  Végpont neve | Érték |
 |-----------------|:------------|:-------------|
 | Azure China | Telemetria-csatorna | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure China | QuickPulse (élő metrikák) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -207,7 +203,7 @@ Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government]
 Ha jelenleg a "api.applicationinsights.io"-n keresztül hozzáférő [Application Insights Rest APIt](https://dev.applicationinsights.io/
 ) használja, akkor a régió helyi végpontját kell használnia:
 
-|Region (Régió) |  Végpont neve | Value (Díj) |
+|Régió |  Végpont neve | Érték |
 |-----------------|:------------|:-------------|
 | Azure China | REST API | `api.applicationinsights.azure.cn` |
 | Azure Government | REST API | `api.applicationinsights.us`|

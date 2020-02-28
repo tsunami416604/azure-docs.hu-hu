@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: d0c9fe9ebd040ee59ae8717e95fd1911eaef61be
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff7420619cffc2287ab8ff6332df605d56329549
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560456"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664133"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>A fürt horizontális skálázásának kezelése (horizontális felskálázás) az Azure Adatkezelő a változó igények kielégítése érdekében
 
@@ -59,13 +59,14 @@ Ha a fürt túlzott kihasználtságú állapotot közelít, az optimális teljes
 * A fürtözött példányok száma nem éri el a felhasználó által definiált példányok maximális számát.
 * A gyorsítótár kihasználtsága több mint egy óra alatt magas.
 * A CPU több mint egy óráig magas.
+* A betöltés kihasználtsága több mint egy órán át magas.
 
 > [!NOTE]
 > A Felskálázási logika jelenleg nem veszi figyelembe a betöltés kihasználtságának mérőszámát. Ha ez a metrika a használati eset szempontjából fontos, használja az [Egyéni autoskálázást](#custom-autoscale).
 
 **Skálázás**
 
-Ha a fürt a használaton kívüli állapotot közelíti meg, az alacsonyabb költségekre, de a teljesítmény fenntartására is kiterjed. A rendszer több mérőszámot használ annak ellenőrzéséhez, hogy biztonságos-e a fürt méretezése. A következő szabályok naponta kiértékelésre kerülnek a méretezés előtt 7 napig:
+Ha a fürt a használaton kívüli állapotot közelíti meg, az alacsonyabb költségekre, de a teljesítmény fenntartására is kiterjed. A rendszer több mérőszámot használ annak ellenőrzéséhez, hogy biztonságos-e a fürt méretezése. A következő szabályok óránkénti kiértékelése 6 óráig történik a méretezés előtt:
 * A példányok száma meghaladja a 2 értéket, és meghaladja a definiált példányok minimális számát.
 * Annak biztosítása érdekében, hogy az erőforrások ne legyenek túlterhelve, a következő metrikákat ellenőrizni kell a skálázás végrehajtása előtt: 
     * A gyorsítótár kihasználtsága nem magas
@@ -129,7 +130,7 @@ Az egyéni autoscale használatával dinamikusan méretezheti a fürtöt a megad
 
 Ezzel konfigurálta az Azure Adatkezelő-fürt horizontális skálázását. Adjon hozzá egy másik szabályt a vertikális skálázáshoz. Ha segítségre van szüksége a fürtök skálázásával kapcsolatos problémák megoldásához, [Nyisson meg egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) a Azure Portal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Adatkezelő teljesítményének, állapotának és használatának monitorozása metrikákkal](using-metrics.md)
 * Fürt [vertikális skálázásának kezelése](manage-cluster-vertical-scaling.md) a fürt megfelelő méretezéséhez.

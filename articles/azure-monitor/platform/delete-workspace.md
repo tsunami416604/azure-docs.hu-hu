@@ -1,18 +1,17 @@
 ---
 title: Az Azure Log Analytics munkaterület törlése és helyreállítása | Microsoft Docs
 description: Megtudhatja, hogyan törölheti Log Analytics munkaterületét, ha létrehozott egy személyes előfizetést, vagy átalakította a munkaterület modelljét.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 038cfe04193b734bd26ed0ffd4dec5ae9b267c22
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6f50450702c9ecdc1c1d910514d94e0a759176b8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901275"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670474"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Az Azure Log Analytics munkaterület törlése és visszaállítása
 
@@ -88,10 +87,10 @@ Ha közreműködői engedélyekkel rendelkezik ahhoz az előfizetéshez és erő
 
 A munkaterületet a következő munkaterület-létrehozási metódusok használatával állíthatja helyre: [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) vagy [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) , ha a következő tulajdonságok vannak feltöltve a törölt munkaterület részleteivel:
 
-* Subscription ID (Előfizetés azonosítója)
+* Előfizetés azonosítója
 * Erőforráscsoport neve
 * Munkaterület neve
-* Region (Régió)
+* Régió
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell

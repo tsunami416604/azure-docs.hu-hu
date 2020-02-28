@@ -1,18 +1,17 @@
 ---
 title: Interaktív jelentések létrehozása Azure Monitor for VMs munkafüzetekkel | Microsoft Docs
 description: Egyszerűsítse az összetett jelentéskészítést az előre definiált és az egyéni paraméteres munkafüzetekkel a Azure Monitor for VMs számára.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: b89e61f0c268df0ed6dd69ae1c6d97f00678fc32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ec24f1eca0b2cf1d5ea2c171573f7c5e47319af
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365920"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670678"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interaktív jelentések létrehozása Azure Monitor for VMs munkafüzetekkel
 
@@ -31,7 +30,7 @@ Azure Monitor for VMs több munkafüzetet is tartalmaz az első lépések elkezd
 |----------|-------------|-------|
 | Teljesítmény | A Top N List és Diagrams nézet testreszabható verzióját jeleníti meg egyetlen munkafüzetben, amely az összes engedélyezett Log Analytics teljesítményszámlálókat kihasználja.| Skálán |
 | Teljesítményszámlálók | Felső N diagramos nézet a teljesítményszámlálók széles készletében. | Skálán |
-| Connections (Kapcsolatok) | A kapcsolatok részletes áttekintést nyújtanak a figyelt virtuális gépek bejövő és kimenő kapcsolatairól. | Skálán |
+| Kapcsolatok | A kapcsolatok részletes áttekintést nyújtanak a figyelt virtuális gépek bejövő és kimenő kapcsolatairól. | Skálán |
 | Aktív portok | A figyelt virtuális gépek portjaira és a kiválasztott időkeretbe tartozó tevékenységekre vonatkozó folyamatok listáját jeleníti meg. | Skálán |
 | Nyitott portok | Megadja a megfigyelt virtuális gépeken megnyitott portok számát, valamint a nyitott portok részleteit. | Skálán |
 | Sikertelen kapcsolatok | Megjeleníti a sikertelen kapcsolatok számát a figyelt virtuális gépeken, a meghibásodási trendet, és ha a hibák százalékos aránya növekszik az idő múlásával. | Skálán |
@@ -39,13 +38,13 @@ Azure Monitor for VMs több munkafüzetet is tartalmaz az első lépések elkezd
 | TCP-forgalom | Egy rangsorolt jelentés a megfigyelt virtuális gépekhez, valamint az elküldött, fogadott és teljes hálózati forgalomhoz egy rácsban, és egy trendvonalként jelenik meg. | Skálán |
 | Adatforgalom-összehasonlítás | Ez a munkafüzet lehetővé teszi a hálózati forgalom trendjeinek összehasonlítását egyetlen gép vagy egy számítógépcsoport esetében. | Skálán |
 | Teljesítmény | A teljesítmény nézet testreszabható verzióját nyújtja, amely az összes engedélyezett Log Analytics teljesítményszámlálókat kihasználja. | Egyetlen virtuális gép | 
-| Connections (Kapcsolatok) | A kapcsolatok részletes áttekintést nyújtanak a virtuális gépről érkező bejövő és kimenő kapcsolatokról. | Egyetlen virtuális gép |
+| Kapcsolatok | A kapcsolatok részletes áttekintést nyújtanak a virtuális gépről érkező bejövő és kimenő kapcsolatokról. | Egyetlen virtuális gép |
  
 ## <a name="starting-with-a-template-or-saved-workbook"></a>Kezdés sablon vagy mentett munkafüzet alapján
 
 A munkafüzetek egymástól függetlenül szerkeszthető diagramokat, táblázatokat, szövegeket és beviteli vezérlőket tartalmazó részből állnak. A munkafüzetek jobb megismeréséhez nyisson meg egy sablont, és ismerkedjen meg az egyéni munkafüzetek létrehozásával. 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. Válassza a **Virtual Machines**lehetőséget.
 

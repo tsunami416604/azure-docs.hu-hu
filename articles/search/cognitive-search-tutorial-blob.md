@@ -7,20 +7,20 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/26/2020
+ms.openlocfilehash: 9d18bea70670acba404b2198e6b06ea2e9200c30
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113657"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667023"
 ---
 # <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>Oktatóanyag: szöveg és struktúra kinyerése a JSON-blobokból az Azure-ban REST API-k használatával (Azure Cognitive Search)
 
-Ha strukturálatlan szöveggel vagy képpel rendelkezik az Azure Blob Storage-ban, egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat segítséget nyújt az adatok kinyeréséhez és olyan új tartalmak létrehozásához, amelyek hasznosak a teljes szöveges kereséshez és az adatbányászati forgatókönyvekhez. Bár a folyamat képes a képfájlok (JPG, PNG, TIFF) feldolgozására, ez az oktatóanyag a Word-alapú tartalomra összpontosít, a nyelvfelismerés és a szöveges elemzés alkalmazásával pedig új mezőket és információkat hozhat létre a lekérdezésekben, a dimenziókban és a szűrőkben.
+Ha strukturálatlan szöveget vagy rendszerképeket használ az Azure Blob Storage-ban, egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat kinyerheti az adatokat, és létrehozhat olyan új tartalmakat, amelyek hasznosak a teljes szöveges kereséshez és az adatbányászati forgatókönyvekhez. Bár a folyamatok feldolgozhatják a lemezképeket, ez az oktatóanyag a szövegre, a nyelvfelismerés és a természetes nyelvi feldolgozás alkalmazására koncentrál, hogy új mezőket hozzon létre, amelyeket a lekérdezések, a dimenziók és a szűrők használhatnak.
 
 > [!div class="checklist"]
-> * Az Azure Blob Storage-ban a teljes dokumentumokkal (strukturálatlan szöveggel), például a PDF, az MD, a DOCX és a PPTX formátummal kezdheti meg a használatot.
+> * Az Azure Blob Storage-ban teljes dokumentumokkal (strukturálatlan szöveggel), például PDF-, HTML-, DOCX-és PPTX-verziókkal kezdheti meg a használatot.
 > * Definiáljon egy olyan folyamatot, amely kibontja a szöveget, észleli a nyelvet, felismeri az entitásokat, és észleli a legfontosabb kifejezéseket.
 > * Definiáljon egy indexet a kimenet (nyers tartalom, valamint a folyamat által generált név-érték párok) tárolására.
 > * A folyamat végrehajtásával megkezdheti az átalakításokat és az elemzést, valamint az index létrehozását és betöltését.
@@ -38,7 +38,9 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt nyisson meg egy [ingy
 
 ## <a name="1---create-services"></a>1 – szolgáltatások létrehozása
 
-Ez az útmutató Azure-Cognitive Search használ az indexeléshez és lekérdezésekhez, Cognitive Services az AI-bővítéshez és az Azure Blob Storage-hoz az adatkezeléshez. Ha lehetséges, hozzon létre mindhárom szolgáltatást ugyanabban a régióban és erőforráscsoporthoz a közelség és kezelhetőség érdekében. A gyakorlatban az Azure Storage-fiók bármely régióban lehet.
+Ez az oktatóanyag az Azure Cognitive Searcht használja az indexeléshez és a lekérdezésekhez, Cognitive Services a mesterséges intelligencia-bővítéshez és az Azure Blob Storage-hoz, hogy megadja az adatforrásokat. Ez az oktatóanyag napi 20 tranzakció ingyenes kiosztása alatt marad Cognitive Serviceson, így az egyetlen szükséges szolgáltatás a keresés és a tárolás.
+
+Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforráscsoporthoz a közelség és a kezelhetőség érdekében. A gyakorlatban az Azure Storage-fiók bármely régióban lehet.
 
 ### <a name="start-with-azure-storage"></a>Első lépések az Azure Storage-ban
 
@@ -169,7 +171,7 @@ A [készségkészlet objektum](https://docs.microsoft.com/rest/api/searchservice
    | [Entitások felismerése](cognitive-search-skill-entity-recognition.md) | Kibontja a személyek, szervezetek és helyszínek nevét a blob-tároló tartalmából. |
    | [Nyelvfelismerés](cognitive-search-skill-language-detection.md) | Észleli a tartalom nyelvét. |
    | [Szöveg felosztása](cognitive-search-skill-textsplit.md)  | Megszakítja a nagyméretű tartalmakat kisebb adattömbökbe, mielőtt meghívja a Key kifejezés kinyerési készségét. A kulcskifejezések kinyerése legfeljebb 50 000 karakter méterű bemeneteket fogad el. A mintafájlok közül néhányat fel kell osztani ahhoz, hogy beleférjen a korlátozásba. |
-   | [Kulcskifejezések kinyerése](cognitive-search-skill-keyphrases.md) | Lekéri a legfontosabb mondatokat. |
+   | [Kulcsszókeresés](cognitive-search-skill-keyphrases.md) | Lekéri a legfontosabb mondatokat. |
 
    Minden képesség a dokumentum tartalmán fut le. A feldolgozás során az Azure Cognitive Search kihasználja az egyes dokumentumokat a különböző fájlformátumokból származó tartalmak olvasásához. A forrásfájlban talált szöveg a létrehozott ```content``` mezőbe kerül, amelyből dokumentumonként egy jön létre. Ennek megfelelően a bemenet ```"/document/content"```válik.
 
@@ -481,13 +483,13 @@ Ezek a lekérdezések néhány módszert mutatnak be, amelyekkel a lekérdezési
 
 ## <a name="reset-and-rerun"></a>Alaphelyzetbe állítás és ismételt futtatás
 
-A folyamat-fejlesztés korai kísérleti szakaszaiban a tervezési iterációk legalkalmasabb megközelítése az objektumok törlése az Azure Cognitive Search, és lehetővé teszi a kód újraépítését. Az erőforrásnevek egyediek. Egy objektum törlése révén újból létrehozhatja azt ugyanazzal a névvel.
+A fejlesztés korai szakaszában érdemes törölni az objektumokat az Azure Cognitive Searchból, és lehetővé teheti a kód újraépítését. Az erőforrásnevek egyediek. Egy objektum törlése révén újból létrehozhatja azt ugyanazzal a névvel.
 
-Ha az új definíciókkal újra el szeretné végezni a dokumentumok indexelését:
+A dokumentumok újbóli indexelése az új definíciókkal:
 
 1. Törölje az indexelő, az index és a készségkészlet.
-2. Objektumok módosítása.
-3. Hozza létre újból a szolgáltatást a folyamat futtatásához. 
+2. Objektumok definícióinak módosítása
+3. Hozzon létre újra objektumokat a szolgáltatásban. Az indexelő újbóli létrehozása futtatja a folyamatot. 
 
 A portál használatával törölhet indexeket, indexelő objektumokat és szakértelmével, vagy használhatja a Delete ( **Törlés** ) lehetőséget, és megadhatja az egyes objektumokhoz tartozó URL-címeket. A következő parancs törli az indexelő.
 

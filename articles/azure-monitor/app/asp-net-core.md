@@ -1,18 +1,14 @@
 ---
 title: Azure-Application Insights ASP.NET Core alkalmazásokhoz | Microsoft Docs
 description: ASP.NET Core webalkalmazások figyelése a rendelkezésre állás, a teljesítmény és a használat érdekében.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 5f54605dd5b43236a75fe73aa3b47a4e619530a1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7aa8ae7fd2742e51ab1ccfed26524241f4c11256
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765807"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666258"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights ASP.NET Core alkalmazásokhoz
 
@@ -107,7 +103,7 @@ A [ASP.NET Core Application INSIGHTS SDK](https://nuget.org/packages/Microsoft.A
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Példa:
+    Például:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -197,15 +193,15 @@ A `ApplicationInsightsServiceOptions` beállításainak teljes listája
 
 |Beállítás | Leírás | Alapértelmezett
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | LiveMetrics funkció engedélyezése/letiltása | igaz
-|EnableAdaptiveSampling | Adaptív mintavételezés engedélyezése/letiltása | igaz
-|EnableHeartbeat | A szívverések funkció engedélyezése/letiltása, amely rendszeres időközönként (15 perces alapértelmezett) a "HeartBeatState" nevű egyéni metrikát küldi el a (z), például a .NET-es verzióval, az Azure-környezettel kapcsolatos információkkal, ha vannak ilyenek, stb. | igaz
-|AddAutoCollectedMetricExtractor | Az AutoCollectedMetrics Extractor engedélyezése/letiltása, amely egy olyan TelemetryProcessor, amely előre összevont metrikákat küld a kérelmek/függőségek számára a mintavétel megkezdése előtt. | igaz
+|EnableQuickPulseMetricStream | LiveMetrics funkció engedélyezése/letiltása | true
+|EnableAdaptiveSampling | Adaptív mintavételezés engedélyezése/letiltása | true
+|EnableHeartbeat | A szívverések funkció engedélyezése/letiltása, amely rendszeres időközönként (15 perces alapértelmezett) a "HeartBeatState" nevű egyéni metrikát küldi el a (z), például a .NET-es verzióval, az Azure-környezettel kapcsolatos információkkal, ha vannak ilyenek, stb. | true
+|AddAutoCollectedMetricExtractor | Az AutoCollectedMetrics Extractor engedélyezése/letiltása, amely egy olyan TelemetryProcessor, amely előre összevont metrikákat küld a kérelmek/függőségek számára a mintavétel megkezdése előtt. | true
 |RequestCollectionOptions.TrackExceptions | Engedélyezheti vagy letilthatja a nem kezelt kivételek nyomon követését a kérelmek gyűjtési modulja által. | hamis a NETSTANDARD 2.0-ban (mivel a kivételeket a ApplicationInsightsLoggerProvider követte nyomon), ellenkező esetben igaz.
 
 A legnaprakészebb listához tekintse [meg a `ApplicationInsightsServiceOptions`konfigurálható beállításait](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) .
 
-### <a name="sampling"></a>Mintavétel
+### <a name="sampling"></a>Mintavételezés
 
 A ASP.NET Core Application Insights SDK a rögzített sebességű és az adaptív mintavételezést is támogatja. Az adaptív mintavételezés alapértelmezés szerint engedélyezve van. 
 
@@ -439,7 +435,7 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 Ez az SDK `HttpContext`igényel, ezért nem működik semmilyen nem HTTP-alkalmazásban, beleértve a .NET Core 3,0 Worker Service-alkalmazásokat. Tekintse meg [ezt](worker-service.md) a dokumentumot, amely lehetővé teszi az Application bepillantást az alkalmazásokban az újonnan kiadott Microsoft. ApplicationInsights. WorkerService SDK használatával.
 
-## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
+## <a name="open-source-sdk"></a>Open-source SDK
 
 [Olvassa el és járuljon hozzá a kódhoz](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
 

@@ -1,19 +1,17 @@
 ---
 title: Intelligens észlelési értesítés módosítása – Azure Application Insights
 description: Váltson az alapértelmezett értesítési címzettekre az intelligens észleléstől. Az intelligens észlelés lehetővé teszi az alkalmazások nyomkövetésének figyelését az Azure Application Insights a nyomkövetési telemetria szokatlan mintáit.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 493deea89586347d5847895acd5eb73a866f84ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f73e5bbdd8585b3367e529a8fa00630042e56cac
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432450"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671783"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Az e-mail értesítések intelligens észlelésének változása
 
@@ -21,15 +19,15 @@ Az ügyfelek visszajelzései alapján 2019 április 1-jén módosítjuk azokat a
 
 ## <a name="what-is-changing"></a>Mi változik?
 
-Jelenleg az intelligens észlelési értesítő e-maileket a rendszer alapértelmezés szerint az _előfizetés tulajdonosa_, az _előfizetés közreműködői_és az _előfizetés-olvasó_ szerepkörei számára küldi el. Ezek a szerepkörök gyakran tartalmaznak olyan felhasználókat, akik nem a monitorozás aktív résztvevői, így sokan közülük fölöslegesen kaphatják meg az értesítéseket. A felhasználói élmény javítása érdekében az e-mail értesítések csak a [figyelési olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) és a [közreműködői szerepkörök figyelését](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) teszik elérhetővé.
+Jelenleg az intelligens észlelési értesítő e-maileket a rendszer alapértelmezés szerint az _előfizetés tulajdonosa_, az _előfizetés közreműködői_és az _előfizetés-olvasó_ szerepkörei számára küldi el. Ezek a szerepkörök gyakran tartalmaznak olyan felhasználókat, akik aktívan nem vesznek részt a figyelésben, ami miatt a felhasználók sok esetben szükségtelenül kapják meg az értesítéseket. A felhasználói élmény javítása érdekében az e-mail értesítések csak a [figyelési olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) és a [közreműködői szerepkörök figyelését](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) teszik elérhetővé.
 
 ## <a name="scope-of-this-change"></a>A módosítás hatóköre
 
-Ez a módosítás a következők kivételével az összes intelligens detektálási szabályra érvényes:
+Ez a módosítás az összes intelligens észlelési szabályra hatással lesz, a következők kivételével:
 
-* Az előzetes verzióként megjelölt intelligens detektálási szabályok. Ezek az intelligens észlelési szabályok jelenleg nem támogatják az e-mail-értesítéseket.
+* Az intelligens észlelési szabályok előzetesként vannak megjelölve. Ezek az intelligens észlelési szabályok jelenleg nem támogatják az e-mail-értesítéseket.
 
-* A Hibaanomáliák szabály. Ez a szabály elindítja az új alapértelmezett szerepkörök célzását, miután áttelepítette azt egy klasszikus riasztásból az egyesített riasztások platformra (További információ [itt](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)található.)
+* Hiba anomália szabály. Ez a szabály elindítja az új alapértelmezett szerepkörök célzását, miután áttelepítette azt egy klasszikus riasztásból az egyesített riasztások platformra (További információ [itt](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)található.)
 
 ## <a name="how-to-prepare-for-this-change"></a>Felkészülés ehhez a változáshoz
 

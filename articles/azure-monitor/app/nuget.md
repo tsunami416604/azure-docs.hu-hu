@@ -1,18 +1,14 @@
 ---
 title: Azure Monitor Application Insights NuGet-csomagok
 description: Azure Monitor Application Insights NuGet ASP.NET, ASP.NET Core, Python
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: reference
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/16/2018
-ms.openlocfilehash: 0bac42242bc08fcc07bba12847a4aeb79424dc78
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5675c0fad61f1b75aa7e93db02246eed43967ec2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406570"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669998"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet-csomagok
 
@@ -22,24 +18,24 @@ Alább látható az Application Insights stabil kiadási NuGet csomagjainak aktu
 
 | Csomag neve | Stabil verzió | Leírás | Letöltés |
 |-------------------------------|-----------------------|------------|----|
-| Microsoft. ApplicationInsights | 2.12.0 | Alapvető funkciókat biztosít az összes Application Insights Telemetria-típus átviteléhez, és egy függő csomag az összes többi Application Insights csomaghoz | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
+| Microsoft.ApplicationInsights | 2.12.0 | Alapvető funkciókat biztosít az összes Application Insights Telemetria-típus átviteléhez, és egy függő csomag az összes többi Application Insights csomaghoz | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
 |Microsoft. ApplicationInsights. Agent. lehallgatás | 2.4.0 | Metódus-hívások elfogásának engedélyezése | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent.Intercept/) |
-| Microsoft. ApplicationInsights. DependencyCollector | 2.12.0 | Application Insights függőségi gyűjtő .NET-alkalmazásokhoz. Ez egy függő csomag Application Insights platform-specifikus csomagok számára, és a függőségi telemetria automatikus gyűjtését teszi lehetővé. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
-| Microsoft. ApplicationInsights. PerfCounterCollector | 2.12.0 | A Application Insights teljesítményszámlálók gyűjtője lehetővé teszi, hogy a teljesítményszámlálók által gyűjtött adatokat Application Insights küldje el. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
-| Microsoft. ApplicationInsights. Web | 2.12.0 | Application Insights .NET-alapú webalkalmazásokhoz | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) |
-| Microsoft. ApplicationInsights. WindowsServer | 2.12.0 | Application Insights Windows Server NuGet csomag lehetővé teszi a .NET-alkalmazásokhoz készült Application telemetria automatikus gyűjtését. Ez a csomag függő csomagként használható Application Insights platform-specifikus csomagok számára, vagy önálló csomagként olyan .NET-alkalmazásokhoz, amelyeket nem a platform-specifikus csomagok (például a .NET-feldolgozói szerepkörök) nem fedik le. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  
-| Microsoft. ApplicationInsights. WindowsServer. TelemetryChannel | 2.12.0 | Telemetria csatornát biztosít a Windows Server SDK Application Insights, amely offline helyzetekben megőrzi a telemetria-t. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
+| Microsoft.ApplicationInsights.DependencyCollector | 2.12.0 | Application Insights függőségi gyűjtő .NET-alkalmazásokhoz. Ez egy függő csomag Application Insights platform-specifikus csomagok számára, és a függőségi telemetria automatikus gyűjtését teszi lehetővé. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
+| Microsoft.ApplicationInsights.PerfCounterCollector | 2.12.0 | A Application Insights teljesítményszámlálók gyűjtője lehetővé teszi, hogy a teljesítményszámlálók által gyűjtött adatokat Application Insights küldje el. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
+| Microsoft.ApplicationInsights.Web | 2.12.0 | Application Insights .NET-alapú webalkalmazásokhoz | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) |
+| Microsoft.ApplicationInsights.WindowsServer | 2.12.0 | Application Insights Windows Server NuGet csomag lehetővé teszi a .NET-alkalmazásokhoz készült Application telemetria automatikus gyűjtését. Ez a csomag függő csomagként használható Application Insights platform-specifikus csomagok számára, vagy önálló csomagként olyan .NET-alkalmazásokhoz, amelyeket nem a platform-specifikus csomagok (például a .NET-feldolgozói szerepkörök) nem fedik le. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  
+| Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.12.0 | Telemetria csatornát biztosít a Windows Server SDK Application Insights, amely offline helyzetekben megőrzi a telemetria-t. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 
 ## <a name="common-packages-for-aspnet-core"></a>ASP.NET Core közös csomagjai
 
 | Csomag neve | Stabil verzió | Leírás | Letöltés |
 |-------------------------------|-----------------------|------------|----|
-| Microsoft. ApplicationInsights. AspNetCore | 2.5.0 | Application Insights ASP.NET Core webalkalmazásokhoz. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) |
-| Microsoft. ApplicationInsights | 2.12.0 | Ez a csomag alapvető funkciókat biztosít az összes Application Insights Telemetria-típus átviteléhez, és egy függő csomag az összes többi Application Insights csomaghoz | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
-| Microsoft. ApplicationInsights. DependencyCollector | 2.12.0 | Application Insights függőségi gyűjtő .NET-alkalmazásokhoz. Ez egy függő csomag Application Insights platform-specifikus csomagok számára, és a függőségi telemetria automatikus gyűjtését teszi lehetővé. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
-| Microsoft. ApplicationInsights. PerfCounterCollector | 2.12.0 | A Application Insights teljesítményszámlálók gyűjtője lehetővé teszi, hogy a teljesítményszámlálók által gyűjtött adatokat Application Insights küldje el. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
-| Microsoft. ApplicationInsights. WindowsServer | 2.12.0 | Application Insights Windows Server NuGet csomag lehetővé teszi a .NET-alkalmazásokhoz készült Application telemetria automatikus gyűjtését. Ez a csomag függő csomagként használható Application Insights platform-specifikus csomagok számára, vagy önálló csomagként olyan .NET-alkalmazásokhoz, amelyeket nem a platform-specifikus csomagok (például a .NET-feldolgozói szerepkörök) nem fedik le. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  |
-| Microsoft. ApplicationInsights. WindowsServer. TelemetryChannel | 2.12.0 | Telemetria csatornát biztosít a Windows Server SDK Application Insights, amely offline helyzetekben megőrzi a telemetria-t. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
+| Microsoft.ApplicationInsights.AspNetCore | 2.5.0 | Application Insights ASP.NET Core webalkalmazásokhoz. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) |
+| Microsoft.ApplicationInsights | 2.12.0 | Ez a csomag alapvető funkciókat biztosít az összes Application Insights Telemetria-típus átviteléhez, és egy függő csomag az összes többi Application Insights csomaghoz | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
+| Microsoft.ApplicationInsights.DependencyCollector | 2.12.0 | Application Insights függőségi gyűjtő .NET-alkalmazásokhoz. Ez egy függő csomag Application Insights platform-specifikus csomagok számára, és a függőségi telemetria automatikus gyűjtését teszi lehetővé. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
+| Microsoft.ApplicationInsights.PerfCounterCollector | 2.12.0 | A Application Insights teljesítményszámlálók gyűjtője lehetővé teszi, hogy a teljesítményszámlálók által gyűjtött adatokat Application Insights küldje el. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
+| Microsoft.ApplicationInsights.WindowsServer | 2.12.0 | Application Insights Windows Server NuGet csomag lehetővé teszi a .NET-alkalmazásokhoz készült Application telemetria automatikus gyűjtését. Ez a csomag függő csomagként használható Application Insights platform-specifikus csomagok számára, vagy önálló csomagként olyan .NET-alkalmazásokhoz, amelyeket nem a platform-specifikus csomagok (például a .NET-feldolgozói szerepkörök) nem fedik le. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  |
+| Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.12.0 | Telemetria csatornát biztosít a Windows Server SDK Application Insights, amely offline helyzetekben megőrzi a telemetria-t. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 
 ## <a name="common-packages-for-python-using-opencensus"></a>Általános csomagok a Pythonhoz a OpenCensus használatával
 | Csomag neve | Stabil verzió | Leírás | Letöltés |
@@ -61,20 +57,20 @@ Alább látható az Application Insights stabil kiadási NuGet csomagjainak aktu
 
 | Csomag neve | Stabil verzió | Leírás | Letöltés |
 |-------------------------------|-----------------------|------------|----|
-| Microsoft. ApplicationInsights. DiagnosticSourceListener | 2.7.2 |  Lehetővé teszi, hogy az események továbbítása a DiagnosticSource a Application Insights. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/) |
-| Microsoft. ApplicationInsights. EventSourceListener | 2.7.2 | Application Insights EventSourceListener lehetővé teszi adatok küldését a EventSource-eseményekről a Application Insightsba. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) |
-| Microsoft. ApplicationInsights. EtwCollector | 2.7.2 | Application Insights a EtwCollector lehetővé teszi az adatok Windows esemény-nyomkövetésból (ETW) való elküldését Application Insights. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/) |
-| Microsoft. ApplicationInsights. TraceListener | 2.7.2 | Egy egyéni TraceListener, amely lehetővé teszi nyomkövetési naplók küldését Application Insightsba. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/) |
-| Microsoft. ApplicationInsights. Log4NetAppender | 2.7.2 | Az egyéni hozzáfűzése lehetővé teszi, hogy Log4Net-üzeneteket küldjön a Application Insightsnak. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
-| Microsoft. ApplicationInsights. NLogTarget | 2.7.2 |  egy egyéni cél, amely lehetővé teszi, hogy NLog-üzeneteket küldjön a Application Insightsnak. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
-| Microsoft. ApplicationInsights. Snapshotcollector nugetcsomag | 1.3.1 | Figyeli az alkalmazásban lévő kivételeket, és automatikusan összegyűjti a pillanatképeket az offline elemzéshez. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/)
+| Microsoft.ApplicationInsights.DiagnosticSourceListener | 2.7.2 |  Lehetővé teszi, hogy az események továbbítása a DiagnosticSource a Application Insights. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/) |
+| Microsoft.ApplicationInsights.EventSourceListener | 2.7.2 | Application Insights EventSourceListener lehetővé teszi adatok küldését a EventSource-eseményekről a Application Insightsba. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) |
+| Microsoft.ApplicationInsights.EtwCollector | 2.7.2 | Application Insights a EtwCollector lehetővé teszi az adatok Windows esemény-nyomkövetésból (ETW) való elküldését Application Insights. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/) |
+| Microsoft.ApplicationInsights.TraceListener | 2.7.2 | Egy egyéni TraceListener, amely lehetővé teszi nyomkövetési naplók küldését Application Insightsba. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/) |
+| Microsoft.ApplicationInsights.Log4NetAppender | 2.7.2 | Az egyéni hozzáfűzése lehetővé teszi, hogy Log4Net-üzeneteket küldjön a Application Insightsnak. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+| Microsoft.ApplicationInsights.NLogTarget | 2.7.2 |  egy egyéni cél, amely lehetővé teszi, hogy NLog-üzeneteket küldjön a Application Insightsnak. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+| Microsoft.ApplicationInsights.SnapshotCollector | 1.3.1 | Figyeli az alkalmazásban lévő kivételeket, és automatikusan összegyűjti a pillanatképeket az offline elemzéshez. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/)
 
 ## <a name="service-fabric"></a>Service Fabric
 
 | Csomag neve | Stabil verzió | Leírás | Letöltés |
 |-------------------------------|-----------------------|------------|----|
-| Microsoft. ApplicationInsights. ServiceFabric | 2.2.0 | Ez a csomag a telemetria automatikus díszítését biztosítja a Service Fabric-környezettel, amelyben az alkalmazás fut. Ne használja ezt a NuGet natív Service Fabric alkalmazásokhoz. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric/) |
-| Microsoft. ApplicationInsights. ServiceFabric. Native | 2.2.0 | Application Insights modul a Service Fabric-alkalmazásokhoz. Ezt a NuGet csak natív Service Fabric alkalmazásokhoz használhatja. A tárolókban futó alkalmazások esetében használja a Microsoft. ApplicationInsights. ServiceFabric csomagot. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric.Native/) |  
+| Microsoft.ApplicationInsights.ServiceFabric | 2.2.0 | Ez a csomag a telemetria automatikus díszítését biztosítja a Service Fabric-környezettel, amelyben az alkalmazás fut. Ne használja ezt a NuGet natív Service Fabric alkalmazásokhoz. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric/) |
+| Microsoft.ApplicationInsights.ServiceFabric.Native | 2.2.0 | Application Insights modul a Service Fabric-alkalmazásokhoz. Ezt a NuGet csak natív Service Fabric alkalmazásokhoz használhatja. A tárolókban futó alkalmazások esetében használja a Microsoft. ApplicationInsights. ServiceFabric csomagot. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric.Native/) |  
 
 ## <a name="status-monitor"></a>Állapotfigyelő
 
@@ -89,8 +85,8 @@ Ezek a csomagok a [Állapotmonitor](../../azure-monitor/app/monitor-performance-
 
 | Csomag neve | Stabil verzió | Leírás | Letöltés |
 |-------------------------------|-----------------------|------------|----|
-| Microsoft. ApplicationInsights. AzureWebSites | 2.6.5 | Ez a bővítmény engedélyezi a Application Insights figyelését egy Azure App Service. SDK 2.6.1-es verzió. Útmutatás: vegyen fel "APPINSIGHTS_INSTRUMENTATIONKEY" Alkalmazásbeállítások a rendszerállapotkulcsot, és indítsa újra a webappot, hogy az hatással legyen.| [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AzureWebSites/) |
-| Microsoft. ApplicationInsights. injektor | 2.6.7 | Ez a csomag a kód nélkül Application Insights injekcióhoz szükséges fájlokat tartalmazza | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Injector/) |
+| Microsoft.ApplicationInsights.AzureWebSites | 2.6.5 | Ez a bővítmény engedélyezi a Application Insights figyelését egy Azure App Service. SDK 2.6.1-es verzió. Útmutatás: vegyen fel "APPINSIGHTS_INSTRUMENTATIONKEY" Alkalmazásbeállítások a rendszerállapotkulcsot, és indítsa újra a webappot, hogy az hatással legyen.| [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AzureWebSites/) |
+| Microsoft.ApplicationInsights.Injector | 2.6.7 | Ez a csomag a kód nélkül Application Insights injekcióhoz szükséges fájlokat tartalmazza | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Injector/) |
 
 ## <a name="next-steps"></a>Következő lépések
 

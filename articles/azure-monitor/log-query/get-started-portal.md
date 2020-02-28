@@ -1,18 +1,17 @@
 ---
 title: Ismerkedés a Azure Monitor Log Analyticsrel | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan lehet lekérdezéseket írni a Azure Portal Log Analytics használatával.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 07/19/2019
-ms.openlocfilehash: 1117ebbb8d2c3b133156c6b63a0ab13185f9f4a5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1cf1695db50e6aee2a5dae24ed5231fdda7c12de
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933052"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670236"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Ismerkedés a Log Analyticsával Azure Monitor
 
@@ -42,9 +41,9 @@ A Log Analytics használatához a böngészőnek hozzá kell férnie a következ
 
 | URI | IP | Portok |
 |:---|:---|:---|
-| portal.loganalytics.io | Dinamikus | 80 443 |
-| api.loganalytics.io | Dinamikus | 80 443 |
-| docs.loganalytics.io | Dinamikus | 80 443 |
+| portal.loganalytics.io | Dinamikus | 80,443 |
+| api.loganalytics.io | Dinamikus | 80,443 |
+| docs.loganalytics.io | Dinamikus | 80,443 |
 
 ## <a name="basic-queries"></a>Alapszintű lekérdezések
 A lekérdezésekkel kifejezéseket kereshet, azonosíthatja a trendeket, elemezheti a mintákat, és számos más elemzést is biztosíthat az adatai alapján. Kezdés egy alapszintű lekérdezéssel:
@@ -95,7 +94,7 @@ A Log Analytics automatikus hatóköre a következőket eredményezi:
 Ez a lekérdezés nagyon általános, és túl sok eredményt ad vissza hasznosnak. Az eredményeket a táblázat elemein keresztül szűrheti, vagy explicit módon szűrőt adhat hozzá a lekérdezéshez. Az eredmények a táblázat elemein keresztül történő szűrése a meglévő eredményhalmaz alapján történik, míg a lekérdezés szűrője egy új szűrt eredményhalmaz visszaadását eredményezi, így pontosabb eredményeket eredményezhet.
 
 ### <a name="add-a-filter-to-the-query"></a>Szűrő hozzáadása a lekérdezéshez
-Az egyes rekordok bal oldalán egy nyíl látható. Erre a nyílra kattintva megnyithatja egy adott rekord részleteit.
+Az egyes rekordok bal oldalán egy nyíl látható. Kattintson a nyílra kattintva nyissa meg a egy adott rekord részleteit.
 
 Vigye a kurzort a "+" és a "-" ikonokra mutató oszlop nevére a megjelenítendő érték fölé. Ha olyan szűrőt szeretne felvenni, amely csak azonos értékű rekordokat ad vissza, kattintson a "+" jelre. Kattintson a "-" gombra, ha ki szeretné zárni a rekordokat ezzel az értékkel, majd kattintson a **Futtatás** gombra a lekérdezés újbóli futtatásához.
 
@@ -106,7 +105,7 @@ Most tekintsük át a hiba súlyosságát _jelző_eseményeket. Ez egy _EventLev
 
 Kattintson az oszlop címe melletti szűrő ikonra, és az előugró ablakban válassza ki a szöveges _hibaüzenettel_ _kezdődő_ értékeket:
 
-![Szűrő](media/get-started-portal/filter.png)
+![Szűrés](media/get-started-portal/filter.png)
 
 
 ## <a name="sort-and-group-results"></a>Eredmények rendezése és csoportosítása
@@ -121,7 +120,7 @@ Az eredmények rendezésének másik módja csoportok szerint történik. Egy ad
 ## <a name="select-columns-to-display"></a>Megjelenítendő oszlopok kiválasztása
 Az eredmények táblázata gyakran sok oszlopot tartalmaz. Előfordulhat, hogy a visszaadott oszlopok némelyike alapértelmezés szerint nem jelenik meg, vagy a megjelenített oszlopokat is érdemes eltávolítani. A megjelenítendő oszlopok kiválasztásához kattintson az oszlopok gombra:
 
-![Oszlopválasztás](media/get-started-portal/select-columns.png)
+![Oszlopok kiválasztása](media/get-started-portal/select-columns.png)
 
 
 ## <a name="select-a-time-range"></a>Válasszon időtartományt
@@ -134,7 +133,7 @@ Egyéni időtartomány kiválasztásakor a kiválasztott értékek UTC szerint v
 Ha a lekérdezés explicit módon tartalmaz egy szűrőt a _TimeGenerated_, az időválasztó címe megjelenik a _lekérdezésben_. Az ütközések elkerülése érdekében a manuális kijelölés le lesz tiltva.
 
 
-## <a name="charts"></a>diagramok
+## <a name="charts"></a>Diagramok
 Egy tábla eredményeinek visszaadása mellett a lekérdezési eredmények vizuális formátumban is megjeleníthetők. Példaként használja az alábbi lekérdezést:
 
 ```Kusto

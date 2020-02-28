@@ -1,18 +1,17 @@
 ---
 title: Adatforrások a Azure Monitorban | Microsoft Docs
 description: Ismerteti az Azure-erőforrások és a rajtuk futó alkalmazások állapotának és teljesítményének figyeléséhez rendelkezésre álló információkat.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: d429a21f409afc9780b3cd90d16d46b4f4671912
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: b2ec9fd70d1eb64c5968de0312941bfbc98d3033
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467351"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670525"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>A Azure Monitor figyelési adatforrásai
 Azure Monitor egy [közös figyelési adatplatformon](data-platform.md) alapul, amely [naplókat](data-platform-logs.md) és [mérőszámokat](data-platform-metrics.md)tartalmaz. Az adatok ebbe a platformba való gyűjtése lehetővé teszi, hogy a több erőforrásból származó adatok együttesen legyenek elemezve az Azure Monitor-ban lévő eszközök közös eszközkészletének használatával. A figyelési adatokat más helyszínekre is elküldheti bizonyos forgatókönyvek támogatása céljából, és egyes erőforrások a naplókba vagy metrikába való összegyűjtésük előtt más helyszínekre is írhatnak.

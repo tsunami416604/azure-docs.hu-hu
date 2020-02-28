@@ -3,23 +3,22 @@ title: Azure-Tevékenységnaplók eseményeinek megtekintése Azure Monitor
 description: Megtekintheti az Azure-beli tevékenység naplóját Azure Monitor és beolvashatja a PowerShell, a CLI és a REST API.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 46d26aa5dccd32438b2028e21eaa94f7993944d1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749518"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668825"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése
 
 Az [Azure-tevékenység naplója](platform-logs-overview.md) betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. Ez a cikk a tevékenységek naplózási eseményeinek megtekintésére és beolvasására szolgáló különböző módszerekkel kapcsolatos információkat tartalmazza.
 
-## <a name="azure-portal"></a>Azure portál
+## <a name="azure-portal"></a>Azure Portal
 A Azure Portal **figyelő** menüjében tekintse meg a tevékenység naplóját az összes erőforráshoz. Egy adott erőforráshoz tartozó tevékenység naplójának megtekintése az erőforrás menüjének **tevékenység napló** lehetőségével.
 
 ![Műveletnapló megtekintése](./media/activity-logs-overview/view-activity-log.png)
@@ -112,7 +111,7 @@ Get-AzLog -MaxEvents 1000
 ```
 
 
-## <a name="cli"></a>CLI
+## <a name="cli"></a>parancssori felület
 Az az [monitor Activity-log](cli-samples.md#view-activity-log-for-a-subscription) paranccsal kérheti le a tevékenység naplóját a parancssori felületről. Az alábbiakban néhány gyakori példát talál.
 
 
@@ -180,22 +179,22 @@ Létre kell hoznia egy diagnosztikai beállítást, hogy az előfizetéséhez ta
 ### <a name="install-the-solution"></a>A megoldás telepítése
 A **Activity log Analytics** megoldás telepítéséhez használja a [figyelési megoldás telepítése](../insights/solutions.md#install-a-monitoring-solution) című szakaszt. Nincs szükség további konfigurációra.
 
-### <a name="use-the-solution"></a>A megoldás használata
+### <a name="use-the-solution"></a>A megoldás használatához
 A **műveletnapló** lap tetején található **naplók** elemre kattintva nyissa meg az előfizetéshez tartozó [Activity log Analytics figyelési megoldást](activity-log-collect.md) . Vagy a Azure Portal összes figyelési megoldásának elérése az előfizetési **figyelő** menüjében. Válassza a **továbbiak** lehetőséget a **betekintési** szakaszban, hogy megnyissa az **Áttekintés** lapot a megoldás csempével. Az **Azure-tevékenység naplói** csempén a munkaterületen található **AzureActivity** -rekordok száma látható.
 
-![Az Azure-tevékenység naplói csempéje](media/collect-activity-logs/azure-activity-logs-tile.png)
+![Azure Tevékenységnaplók csempéje](media/collect-activity-logs/azure-activity-logs-tile.png)
 
 
 Kattintson az **Azure-tevékenységek naplói** csempére az **Azure-tevékenység naplói** nézetének megnyitásához. A nézet a következő táblázatban szereplő vizualizációs részeket tartalmazza. Mindegyik rész legfeljebb 10 olyan elemet sorol fel, amelyek megfelelnek a megadott időtartományra vonatkozó feltételeknek. Futtathat egy olyan naplózási lekérdezést, amely az összes egyező rekordot visszaadja, ha az **összes megtekintése** elemre kattint a rész alján.
 
-![Azure Activity-naplók irányítópultja](media/collect-activity-logs/activity-log-dash.png)
+![Azure Tevékenységnaplók irányítópultja](media/collect-activity-logs/activity-log-dash.png)
 
 | Vizualizációs rész | Leírás |
 | --- | --- |
-| Azure-Tevékenységnaplók bejegyzései | Megjeleníti az Azure-beli tevékenység naplójának felső rekordjának a kiválasztott dátumtartományt tartalmazó oszlopát, és megjeleníti az első 10 tevékenység-hívó listáját. Kattintson a sávdiagramra a `AzureActivity`naplójának kereséséhez. Kattintson egy hívó elemre, és futtassa az adott elemhez tartozó összes műveletnapló-bejegyzést. |
-| Tevékenységek naplói állapot szerint | Megjeleníti az Azure-tevékenység naplójának állapotát a kiválasztott dátumtartomány esetében, valamint az első tíz állapotüzenetek listáját. Kattintson a diagramra a `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`naplózási lekérdezésének futtatásához. Kattintson egy állapot elemre az adott állapotjelző rekord összes tevékenységi naplójára vonatkozó naplóbeli keresés futtatásához. |
-| Tevékenységek naplói erőforrás szerint | Megjeleníti a tevékenységi naplókkal rendelkező erőforrások teljes számát, és felsorolja az egyes erőforrásokhoz tartozó rekordok számát tartalmazó első tíz erőforrást. Kattintson a teljes területen a `AzureActivity | summarize AggregatedValue = count() by Resource`naplójának kereséséhez, amely megjeleníti a megoldás számára elérhető összes Azure-erőforrást. Kattintson egy erőforrásra az adott erőforráshoz tartozó összes tevékenységi rekord visszaadására szolgáló naplózási lekérdezés futtatásához. |
-| Tevékenységek naplói erőforrás-szolgáltató szerint | Megjeleníti a tevékenységek naplóit előállító erőforrás-szolgáltatók teljes számát, és felsorolja a tíz legfontosabbat. Az összes Azure-erőforrás-szolgáltatót megjelenítő `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`hoz tartozó napló lekérdezésének futtatásához kattintson a teljes területen. Kattintson egy erőforrás-szolgáltatóra egy olyan log-lekérdezés futtatásához, amely a szolgáltató összes tevékenységi rekordját visszaadja. |
+| Az Azure tevékenységnapló-bejegyzései | Megjeleníti az Azure-beli tevékenység naplójának felső rekordjának a kiválasztott dátumtartományt tartalmazó oszlopát, és megjeleníti az első 10 tevékenység-hívó listáját. Kattintson a sávdiagramra a `AzureActivity`naplójának kereséséhez. Kattintson egy hívó elemre, és futtassa az adott elemhez tartozó összes műveletnapló-bejegyzést. |
+| Tevékenységnaplók állapot szerint | Megjeleníti az Azure-tevékenység naplójának állapotát a kiválasztott dátumtartomány esetében, valamint az első tíz állapotüzenetek listáját. Kattintson a diagramra a `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`naplózási lekérdezésének futtatásához. Kattintson egy állapot elemre az adott állapotjelző rekord összes tevékenységi naplójára vonatkozó naplóbeli keresés futtatásához. |
+| Tevékenységnaplók erőforrás szerint | Megjeleníti a tevékenységi naplókkal rendelkező erőforrások teljes számát, és felsorolja az egyes erőforrásokhoz tartozó rekordok számát tartalmazó első tíz erőforrást. Kattintson a teljes területen a `AzureActivity | summarize AggregatedValue = count() by Resource`naplójának kereséséhez, amely megjeleníti a megoldás számára elérhető összes Azure-erőforrást. Kattintson egy erőforrásra az adott erőforráshoz tartozó összes tevékenységi rekord visszaadására szolgáló naplózási lekérdezés futtatásához. |
+| Erőforrás-szolgáltató által tevékenységeket tartalmazó naplók | Megjeleníti a tevékenységek naplóit előállító erőforrás-szolgáltatók teljes számát, és felsorolja a tíz legfontosabbat. Az összes Azure-erőforrás-szolgáltatót megjelenítő `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`hoz tartozó napló lekérdezésének futtatásához kattintson a teljes területen. Kattintson egy erőforrás-szolgáltatóra egy olyan log-lekérdezés futtatásához, amely a szolgáltató összes tevékenységi rekordját visszaadja. |
 
 
 

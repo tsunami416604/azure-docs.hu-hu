@@ -1,18 +1,17 @@
 ---
 title: Active Directory replikáció állapotának figyelése Azure Monitorsal | Microsoft Docs
 description: A Active Directory Replication Status Solution Pack minden replikációs hiba esetén rendszeresen figyeli a Active Directory környezetet.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 31e6d0c8b374bd494ae8fda36f4f38aabb1ac96b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfc9572e8b21692a386c510ffd3409c571eff8f4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406092"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667176"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Active Directory replikáció állapotának figyelése Azure Monitor
 
@@ -53,7 +52,7 @@ Ha nem kívánja közvetlenül csatlakoztatni a tartományvezérlőket a Azure M
 ## <a name="ad-replication-status-data-collection-details"></a>AD Replication Status adatgyűjtési adatok
 Az alábbi táblázat az adatgyűjtés módszereit és a AD Replication Status adatok gyűjtésének egyéb részleteit mutatja be.
 
-| platform | Közvetlen ügynök | SCOM-ügynök | Azure Storage | SCOM szükséges? | A felügyeleti csoporton keresztül elküldett SCOM-ügynök | gyűjtés gyakorisága |
+| Platform | Közvetlen ügynök | SCOM-ügynök | Azure Storage | Az SCOM szükséges? | Az SCOM agent adatküldés felügyeleticsoport-n keresztül | Gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |minden öt nap |
 
@@ -134,7 +133,7 @@ A: nem, csak egyetlen tartományvezérlőt kell hozzáadnia. Ha több tartomány
 V: Igen. Megadhatja a beállításkulcs értékét az engedélyezéséhez. Lásd: a [nem tartományvezérlő engedélyezése](#enable-non-domain-controller).
 
 **K: Mi az adatgyűjtés folyamatának neve?**
-A: AdvisorAssessment. exe
+A: AdvisorAssessment.exe
 
 **K: mennyi időt vesz igénybe az adatok gyűjtése?**
 A: az adatgyűjtési idő a Active Directory környezet méretétől függ, de általában kevesebb, mint 15 percet vesz igénybe.

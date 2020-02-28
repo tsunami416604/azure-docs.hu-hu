@@ -1,18 +1,16 @@
 ---
 title: 'Gyors útmutató: Java Web App Analytics az Azure Application Insights'
 description: 'Alkalmazásteljesítmény-figyelés Java-webalkalmazásokhoz az Application Insights használatával. '
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: abc16f8e1fdc6b81634b926eeb287e5d03efdc40
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 484d4e8df8a8fdceed62a65858126a16d028121e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963682"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670083"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rövid útmutató: a Application Insights használatának első lépései Java webes projektekben
 
@@ -27,7 +25,7 @@ A Application Insights egy bővíthető analitikai szolgáltatás webes fejleszt
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Application Insights-kialakítási kulcs beszerzése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. A Azure Portal hozzon létre egy Application Insights erőforrást. Állítsa be a Java webalkalmazás alkalmazástípust.
 
 3. Keresse meg az új erőforrás kialakítási kulcsát. Ezt a kulcsot nemsokára a kódprojektbe kell illesztenie.
@@ -38,7 +36,7 @@ A Application Insights egy bővíthető analitikai szolgáltatás webes fejleszt
 
 *Válassza ki a projekt típusát.*
 
-# <a name="maventabmaven"></a>[Maven 3](#tab/maven)
+# <a name="maven"></a>[Maven 3](#tab/maven)
 
 Ha a projekt már be van állítva a Maven for Build használatára, egyesítse a következő kódot a *Pom. XML* fájlba.
 
@@ -56,7 +54,7 @@ Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat
     </dependencies>
 ```
 
-# <a name="gradletabgradle"></a>[Gradle](#tab/gradle)
+# <a name="gradle"></a>[Gradle](#tab/gradle)
 
 Ha a projekt már be van állítva a Gradle for Build használatára, egyesítse a következő kódot a *Build. Gradle* fájlba.
 
@@ -70,7 +68,7 @@ Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat
     }
 ```
 
-# <a name="other-typestabother"></a>[Egyéb típusok](#tab/other)
+# <a name="other-types"></a>[Egyéb típusok](#tab/other)
 
 Töltse le a [legújabb verziót](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest), és a korábbi verziókat felülírva másolja a szükséges fájlokat a projektbe.
 
@@ -297,12 +295,12 @@ Most, hogy telepítette az SDK-t, az API-val saját telemetriát küldhet.
 * [Nyomon követheti az egyéni eseményeket és mérőszámokat][api] , hogy megtudja, mit csinálnak a felhasználók az alkalmazással.
 * [Keressen eseményeket és naplókat][diagnostic] a problémák diagnosztizálásához.
 
-## <a name="availability-web-tests"></a>Elérhetőségi webtesztek
+## <a name="availability-web-tests"></a>Rendelkezésre állási webes tesztek
 Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy működik és jól válaszol-e.
 
 [További információ a rendelkezésre állási webes tesztek beállításáról.][availability]
 
-## <a name="questions-problems"></a>Kérdése van? Problémái vannak?
+## <a name="questions-problems"></a>Kérdései vannak? Problémákat tapasztal?
 [A Java hibaelhárítása](java-troubleshoot.md)
 
 ## <a name="next-steps"></a>Következő lépések

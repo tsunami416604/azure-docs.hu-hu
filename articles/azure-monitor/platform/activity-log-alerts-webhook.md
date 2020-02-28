@@ -1,18 +1,15 @@
 ---
 title: A műveletnapló-riasztásokban használt webhook-séma ismertetése
 description: Ismerje meg a webhook URL-címére küldött JSON sémáját, ha a műveletnapló riasztása aktiválva van.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 03/31/2017
-ms.openlocfilehash: eb43db7a67063622f6a6125178267573cd209471
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.subservice: alerts
+ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748799"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669046"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhookok az Azure-beli tevékenység naplójának értesítéseihez
 A műveleti csoport definíciójának részeként konfigurálhat webhook-végpontokat a műveletnapló riasztási értesítéseinek fogadására. A webhookok segítségével ezeket az értesítéseket más rendszerekre irányíthatja a feldolgozás utáni vagy egyéni műveletekhez. Ez a cikk bemutatja, hogyan néz ki a HTTP-POST webhookhoz tartozó hasznos adat.
@@ -260,7 +257,7 @@ A szolgáltatás állapotával kapcsolatos értesítési tevékenységekről ér
 | Elem neve | Leírás |
 | --- | --- |
 | status |Metrikus riasztásokhoz használatos. Mindig az "aktivált" értékre kell beállítani a tevékenység naplójának riasztásai esetében. |
-| összefüggésben |Az esemény kontextusa. |
+| context |Az esemény kontextusa. |
 | resourceProviderName |Az érintett erőforrás erőforrás-szolgáltatója. |
 | conditionType |Mindig "esemény". |
 | név |A riasztási szabály neve. |
@@ -272,19 +269,19 @@ A szolgáltatás állapotával kapcsolatos értesítési tevékenységekről ér
 | resourceGroupName |Az érintett erőforráshoz tartozó erőforráscsoport neve. |
 | properties |`<Key, Value>` pár (azaz `Dictionary<String, String>`) készlete, amely az esemény részleteit tartalmazza. |
 | esemény |Az eseménnyel kapcsolatos metaadatokat tartalmazó elem. |
-| engedélyezés |Az esemény szerepköralapú Access Control tulajdonságai. Ezek a tulajdonságok általában tartalmazzák a műveletet, a szerepkört és a hatókört. |
+| authorization |Az esemény szerepköralapú Access Control tulajdonságai. Ezek a tulajdonságok általában tartalmazzák a műveletet, a szerepkört és a hatókört. |
 | category |Az esemény kategóriája. A támogatott értékek a következők: adminisztráció, riasztás, biztonság, ServiceHealth és javaslatok. |
 | hívó |A művelet, UPN-jogcím vagy SPN-jogcím végrehajtását végző felhasználó e-mail-címe a rendelkezésre állás alapján. Bizonyos rendszerhívások esetében null értékű lehet. |
 | correlationId |Általában egy GUID formátumú karakterlánc. A correlationId események ugyanahhoz a nagyobb művelethez tartoznak, és általában egy correlationId osztoznak. |
 | eventDescription |Az esemény statikus szöveges leírása. |
 | eventDataId |Az esemény egyedi azonosítója. |
-| EventSource |Az eseményt létrehozó Azure-szolgáltatás vagy-infrastruktúra neve. |
+| eventSource |Az eseményt létrehozó Azure-szolgáltatás vagy-infrastruktúra neve. |
 | httpRequest |A kérelem általában magában foglalja a ügyfélkérelem, a clientIpAddress és a HTTP-metódust (például PUT). |
 | szint |A következő értékek egyike: kritikus, hiba, figyelmeztetés és tájékoztatás. |
 | operationId |Általában egy egyedi művelethez tartozó események között megosztva GUID. |
 | operationName |A művelet neve. |
 | properties |Az esemény tulajdonságai. |
-| status |sztring elemet. A művelet állapota. Az általános értékek a következők: elindítva, folyamatban, sikeres, sikertelen, aktív és megoldott. |
+| status |sztring elemet. A művelet állapotát. Az általános értékek a következők: elindítva, folyamatban, sikeres, sikertelen, aktív és megoldott. |
 | Részállapot |Általában tartalmazza a megfelelő REST-hívás HTTP-állapotkódot. Tartalmazhat továbbá más, alállapotot leíró karakterláncokat is. Az általános részállapot-értékek közé tartozik az OK (HTTP-állapotkód: 200), létrehozva (HTTP-állapotkód: 201), elfogadva (HTTP-állapotkód: 202), nincs tartalom (HTTP-állapotkód: 204), hibás kérés (http-állapotkód: 400), nem található (http-állapotkód: 404), ütközés (HTTP-állapotkód: 409 ), Belső kiszolgálóhiba (HTTP-állapotkód: 500), a szolgáltatás nem érhető el (HTTP-állapotkód: 503) és az átjáró időtúllépése (HTTP-állapotkód: 504). |
 
 Az egyéb műveletnapló-riasztásokkal kapcsolatos konkrét séma részleteiért lásd: [Az Azure-tevékenység naplójának áttekintése](../../azure-monitor/platform/platform-logs-overview.md).

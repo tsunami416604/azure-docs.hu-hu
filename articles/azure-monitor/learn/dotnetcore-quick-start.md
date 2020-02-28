@@ -1,19 +1,18 @@
 ---
 title: Gyors útmutató ASP.NET Core – Azure Monitor Application Insights
 description: Útmutatást nyújt egy ASP.NET Core webalkalmazás gyors beállításához Azure Monitor-alapú figyeléshez Application Insights
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: e05926d7a76f47cc3c95088fa2d8f1a6e385bbbc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa1651e88226080cca970cc756f2c0522b39f1be
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399020"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670627"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Az ASP.NET Core-webalkalmazás monitorozásának indítása
 
@@ -23,7 +22,7 @@ Ez a rövid útmutató végigvezeti a Application Insights SDK meglévő ASP.NET
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez:
+A gyorsútmutató elvégzéséhez:
 
 - [Telepítse a Visual Studio 2019](https://www.visualstudio.com/downloads/) -et a következő munkaterhelésekkel:
   - ASP.NET és webfejlesztés
@@ -37,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
@@ -50,13 +49,13 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
     Megjelenik egy konfigurációs mező. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblát.
 
-   | Beállítások        |  Value (Díj)           | Leírás  |
+   | Beállítások        |  Érték           | Leírás  |
    | ------------- |:-------------|:-----|
    | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
    | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve az alkalmazás-elemzési adatforrások üzemeltetéséhez. Létrehozhat egy új erőforráscsoportot, vagy használhat egy meglévőt is. |
    | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-2. Kattintson a **Create** (Létrehozás) gombra.
+2. Kattintson a **Létrehozás** gombra.
 
 
 

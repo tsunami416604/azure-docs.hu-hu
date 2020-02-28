@@ -1,18 +1,17 @@
 ---
 title: Az ügynök adatforrásainak konfigurálása a Azure Monitorban | Microsoft Docs
 description: Az adatforrások határozzák meg azokat a naplózási adatokat, amelyeket a Azure Monitor ügynökökből és más csatlakoztatott forrásokból gyűjt.  Ez a cikk a Azure Monitor adatforrások felhasználásának fogalmát ismerteti, ismerteti a konfigurálásának részleteit, és összefoglalja a különböző elérhető adatforrásokat.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: f7960adca1c3665dbf8737cb10a898c58b1542ec
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932835"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668774"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Ügynök-adatforrások a Azure Monitorban
 Az ügynököktől Azure Monitor gyűjtött adatokat a konfigurált adatforrások határozzák meg.  Az ügynököktől származó adatokat a rendszer egy rekordhalmazsal rendelkező [naplófájlként](data-platform-logs.md) tárolja.  Minden adatforrás egy adott típusú rekordokat hoz létre, amelyek mindegyike rendelkezik saját tulajdonságokkal.
@@ -23,7 +22,7 @@ Az ügynököktől Azure Monitor gyűjtött adatokat a konfigurált adatforráso
 A következő táblázat felsorolja a Azure Monitor jelenleg elérhető ügynök-adatforrásokat.  Mindegyiknek van egy külön cikkre mutató hivatkozása, amely részletesen ismerteti az adatforrás részleteit.   Emellett a metódussal és a gyűjtemények gyakoriságával kapcsolatos információkat is tartalmaz. 
 
 
-| Adatforrás | Platform | Log Analytics-ügynök | Operations Manager ügynök | Azure Storage | Operations Manager kötelező? | A felügyeleti csoporton keresztül elküldett Operations Manager ügynöki adatkezelés | A gyűjtés gyakorisága |
+| Adatforrás | Platform | Log Analytics-ügynök | Operations Manager-ügynök | Azure Storage tárterület | Operations Manager kötelező? | A felügyeleti csoporton keresztül elküldett Operations Manager ügynöki adatkezelés | A gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Egyéni naplók](data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | érkezéskor |
 | [Egyéni naplók](data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | érkezéskor |

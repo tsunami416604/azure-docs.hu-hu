@@ -1,23 +1,22 @@
 ---
 title: Erőforráscsoport-bepillantást Azure Monitor | Microsoft Docs
 description: Az erőforráscsoport szintjén megismerheti az elosztott alkalmazások és szolgáltatások állapotát és teljesítményét Azure Monitor
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: fba94a5e723bfbc2719b3b4cf5cd130eda382276
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 6d97e40bf2bf2298fb53609621db8ff2c6f1038f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553992"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663538"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Erőforráscsoportok figyelése Azure Monitorvel (előzetes verzió)
 
-A modern alkalmazások gyakran bonyolultak, és számos különálló részből állnak, amelyek egy szolgáltatás nyújtására szolgálnak. Az összetettség felismerése Azure Monitor az erőforráscsoportok figyelését teszi lehetővé. Így egyszerűen osztályozhatja és diagnosztizálhatja az egyes erőforrásaival kapcsolatos problémákat, miközben az &mdash;and az alkalmazás &mdash;as a teljes környezet állapotát és teljesítményét.
+A modern alkalmazások gyakran bonyolultak, és számos különálló részből állnak, amelyek egy szolgáltatás nyújtására szolgálnak. Az összetettség felismerése Azure Monitor az erőforráscsoportok figyelését teszi lehetővé. Így egyszerűen osztályozhatja és diagnosztizálhatja az egyes erőforrásaival kapcsolatos problémákat, miközben az&mdash;erőforráscsoport állapotának és teljesítményének, valamint az alkalmazás&mdash;egészének a kontextusát kínálja.
 
 ## <a name="access-insights-for-resource-groups"></a>Erőforrás-csoportok elérésének elérése
 

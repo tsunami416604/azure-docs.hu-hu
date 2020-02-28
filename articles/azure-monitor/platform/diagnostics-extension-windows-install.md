@@ -3,22 +3,21 @@ title: A Windows Azure Diagnostics bővítmény (WAD) telepítése és konfigur�
 description: Ismerje meg, hogyan gyűjthet Azure-diagnosztikai adatokat egy Azure Storage-fiókban, így megtekintheti azt a számos elérhető eszköz egyikével.
 services: azure-monitor
 author: bwren
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: 5b3cc4cbaa663b7932609e85c544378a7cca69ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 929ab4109eb8d0e90b6c561a2135c0b7dd4205bb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472686"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672259"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>A Windows Azure Diagnostics bővítmény (WAD) telepítése és konfigurálása
 Az Azure Diagnostics bővítmény olyan Azure Monitor ügynöke, amely a vendég operációs rendszerből és az Azure-beli virtuális gépek és egyéb számítási erőforrások munkaterhelésével kapcsolatos figyelési adatokat gyűjt. Ez a cikk részletesen ismerteti a Windows diagnosztikai bővítmény telepítését és konfigurálását, valamint az adatok tárolásának és az Azure Storage-fiókban tárolt információk leírásának ismertetését.
 
-A diagnosztikai bővítmény a [virtuálisgép-bővítményként](/virtual-machines/extensions/overview) van implementálva az Azure-ban, így ugyanazokat a telepítési lehetőségeket támogatja a Resource Manager-sablonok, a PowerShell és a parancssori felület használatával. A virtuálisgép-bővítmények telepítésével és karbantartásával kapcsolatos részletekért lásd: [virtuálisgép-bővítmények és-szolgáltatások a Windows](/virtual-machines/extensions/features-windows) rendszerhez.
+A diagnosztikai bővítmény a [virtuálisgép-bővítményként](../../virtual-machines/extensions/overview.md) van implementálva az Azure-ban, így ugyanazokat a telepítési lehetőségeket támogatja a Resource Manager-sablonok, a PowerShell és a parancssori felület használatával. A virtuálisgép-bővítmények telepítésével és karbantartásával kapcsolatos részletekért lásd: [virtuálisgép-bővítmények és-szolgáltatások a Windows](../../virtual-machines/extensions/features-windows.md) rendszerhez.
 
 ## <a name="install-with-azure-portal"></a>Telepítés Azure Portal
 A diagnosztikai bővítményt telepítheti és konfigurálhatja egy különálló virtuális gépen a Azure Portal, amely egy felületet biztosít, amely nem működik közvetlenül a konfigurációval. A diagnosztikai bővítmény engedélyezésekor a rendszer automatikusan alapértelmezett konfigurációt használ a leggyakoribb teljesítményszámlálók és események használatával. Ezt az alapértelmezett konfigurációt a konkrét követelmények szerint módosíthatja.

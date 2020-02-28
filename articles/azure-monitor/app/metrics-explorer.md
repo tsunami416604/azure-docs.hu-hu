@@ -1,18 +1,14 @@
 ---
 title: Mérőszámok feltárása az Azure Application Insightsban | Microsoft Docs
 description: Diagramok értelmezése a metrika-kezelőben és a metrikai Explorer-lapok testreszabása.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/22/2019
-ms.openlocfilehash: b0831ff500ba4cbe71dae6251fd960f6c96c0fe5
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820787"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670168"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>A metrikák feltárása Application Insights
 A [Application Insights][start] mérőszámai az alkalmazásból telemetria eljuttatott események értékeit és számát mérik. Segítenek észlelni a teljesítménnyel kapcsolatos problémákat, és figyeli az alkalmazás használatának folyamatát. A standard mérőszámok széles skáláját használhatja, és saját egyéni metrikákat és eseményeket is létrehozhat.

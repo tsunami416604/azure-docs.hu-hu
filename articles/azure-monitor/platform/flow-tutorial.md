@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor naplózási folyamatok automatizálása a Microsoft Flow
 description: Megtudhatja, hogyan használhatja a Microsoft Flow az ismételhető folyamatok gyors automatizálására az Azure Log Analytics-összekötő használatával.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/29/2017
-ms.openlocfilehash: a6097d38d3335be356ca75f5a9d0eadeed414b03
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 92f0d2916b0f28760f7d028ee3e6dc0be37c32d2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77166952"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672310"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Azure Monitor-naplózási folyamatok automatizálása a Microsoft Flow összekötővel
 A [Microsoft flow](https://ms.flow.microsoft.com) lehetővé teszi, hogy több száz műveletet használó automatizált munkafolyamatokat hozzon létre számos szolgáltatáshoz. Az egyik művelet kimenete bemenetként is használható, így a különböző szolgáltatások közötti integrációt hozhat létre.  A Microsoft Flow Azure Log Analytics-összekötője lehetővé teszi olyan munkafolyamatok összeállítását, amelyek egy Azure Monitor Log Analytics munkaterületéről származó lekérdezések által beolvasott adatokkal rendelkeznek.

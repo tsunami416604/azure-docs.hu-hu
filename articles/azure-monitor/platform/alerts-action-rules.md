@@ -1,18 +1,15 @@
 ---
 title: Azure Monitor riasztásokra vonatkozó műveleti szabályok
 description: Megtudhatja, hogyan konfigurálhatja és kezelheti a Azure Monitorban szereplő műveleti szabályokat.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
 ms.date: 04/25/2019
-ms.openlocfilehash: e9de7a1fe4cee16cd1d22ba764ab9eccdf3979fd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.subservice: alerts
+ms.openlocfilehash: 42f8d9cd30caa48376cda049f6404aa897a6866c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767687"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668468"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályok (előzetes verzió)
 
@@ -103,7 +100,7 @@ Ha a váltásban a **műveleti csoport** lehetőséget választja, akkor adjon h
 ### <a name="action-rule-details"></a>Műveleti szabály részletei
 
 Utolsó lépésként adja meg a következő adatokat a műveleti szabályhoz:
-* Név
+* Name (Név)
 * Az erőforráscsoport, amelyben mentve van
 * Leírás 
 
@@ -161,7 +158,7 @@ Ha a riasztásokat a műveleti szabályokkal szeretné legjobban használni, hoz
 
 ![Műveleti szabályok és naplók riasztásai (eredmények száma)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 ### <a name="while-im-configuring-an-action-rule-id-like-to-see-all-the-possible-overlapping-action-rules-so-that-i-avoid-duplicate-notifications-is-it-possible-to-do-that"></a>A műveleti szabály konfigurálása közben szeretném megtekinteni az összes lehetséges átfedésben lévő művelet szabályát, így elkerülhetők az ismétlődő értesítések. Ez lehetséges?
 

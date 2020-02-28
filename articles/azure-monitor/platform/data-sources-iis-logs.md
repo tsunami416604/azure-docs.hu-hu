@@ -1,18 +1,17 @@
 ---
 title: IIS-naplók a Azure Monitorban | Microsoft Docs
 description: A Internet Information Services (IIS) a Azure Monitor által összegyűjthető naplófájlokban tárolja a felhasználói tevékenységeket.  Ez a cikk bemutatja, hogyan konfigurálhatja az IIS-naplók gyűjteményét és a Azure Monitorban létrehozott rekordok részleteit.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: a865f43585ccbb31569e2ca0987aae62a89a9281
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932487"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670576"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>IIS-naplók összegyűjtése Azure Monitor
 A Internet Information Services (IIS) olyan naplófájlokban tárolja a felhasználói tevékenységeket, amelyeket Azure Monitor tárolhat, és [naplózó adatként](data-platform.md)tárolhatja őket.

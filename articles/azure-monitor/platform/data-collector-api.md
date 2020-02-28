@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor HTTP-adatgyűjtő API-val | Microsoft Docs
 description: A Azure Monitor HTTP-adatgyűjtő API-val hozzáadhat JSON-adatok egy Log Analytics munkaterülethez bármely olyan ügyfélről, amely meghívja a REST API. Ez a cikk az API használatát ismerteti, és példákat tartalmaz arra, hogyan tehet közzé adatokat különböző programozási nyelvek használatával.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/01/2019
-ms.openlocfilehash: 136644dbcfe9e2835f799b284d21263913bc67b4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f12e9e90b99a055945c34398ff5351334c344253
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932593"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666752"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Naplóbejegyzések küldése a Azure Monitornak a HTTP-adatgyűjtő API-val (nyilvános előzetes verzió)
 Ez a cikk azt mutatja be, hogyan lehet a HTTP-adatgyűjtő API használatával elküldeni a naplófájlokat a Azure Monitor REST API-ügyfélről.  Ismerteti, hogyan lehet a parancsfájl vagy alkalmazás által gyűjtött adatokat formázni, belefoglalni egy kérelembe, és hogy az Azure Monitor által jóváhagyott kérést.  Ilyenek például a PowerShell, C#a és a Python.
@@ -35,10 +34,10 @@ A Log Analytics munkaterületen lévő összes adat egy adott bejegyzéstípusú
 ## <a name="create-a-request"></a>Kérelem létrehozása
 A HTTP-adatgyűjtő API használatához létre kell hoznia egy POST-kérelmet, amely tartalmazza a JavaScript Object Notationba (JSON) küldendő adatküldési kérelmeket.  A következő három táblázat az egyes kérelmekhez szükséges attribútumokat sorolja fel. Az egyes attribútumokat a cikk későbbi részében részletesebben ismertetjük.
 
-### <a name="request-uri"></a>Kérelem URI-ja
+### <a name="request-uri"></a>Kérés URI-ja
 | Attribútum | Tulajdonság |
 |:--- |:--- |
-| Módszer |UTÁNI |
+| Módszer |POST |
 | URI |https://\<Vevőkód\>. ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | Tartalom típusa |application/json |
 
@@ -49,14 +48,14 @@ A HTTP-adatgyűjtő API használatához létre kell hoznia egy POST-kérelmet, a
 | Erőforrás |Az API-erőforrás neve:/API/logs. |
 | API-verzió |A kérelemmel használni kívánt API verziója. Jelenleg ez 2016-04-01. |
 
-### <a name="request-headers"></a>Kérések fejlécei
+### <a name="request-headers"></a>Kérelemfejlécek
 | Fejléc | Leírás |
 |:--- |:--- |
 | Engedélyezés |Az engedélyezési aláírás. A cikk későbbi részében olvashat arról, hogyan hozhat létre egy HMAC-SHA256 fejlécet. |
-| Napló típusa |Adja meg az elküldött adatok bejegyzéstípusát. Csak betűket, számokat és aláhúzást (_) tartalmazhat, és nem lehet hosszabb 100 karakternél. |
-| x-MS-Date |A kérelem feldolgozásának dátuma, RFC 1123 formátumban. |
-| x-MS-Erőforrásazonosító | Az Azure-erőforrás erőforrás-azonosítója, amelyhez az adatforrást társítani kell. Ezzel feltölti a [_ResourceId](log-standard-properties.md#_resourceid) tulajdonságot, és lehetővé teszi, hogy az adatok szerepeljenek az [erőforrás-kontextus](design-logs-deployment.md#access-mode) lekérdezésekben. Ha ez a mező nincs megadva, a rendszer nem fogja tartalmazni az erőforrás-környezeti lekérdezésekben szereplő adatforrásokat. |
-| idő által generált mező | Az adattétel időbélyegét tartalmazó mező neve az adatobjektumban. Ha megad egy mezőt, a rendszer a **TimeGenerated**használja a tartalmát. Ha ez a mező nincs megadva, a **TimeGenerated** alapértelmezett értéke az üzenet betöltésének időpontja. Az üzenet mező tartalmának az ISO 8601 formátum éééé-hh-NNTóó: PP: ssZ kell lennie. |
+| Log-Type |Adja meg az elküldött adatok bejegyzéstípusát. Csak betűket, számokat és aláhúzást (_) tartalmazhat, és nem lehet hosszabb 100 karakternél. |
+| x-ms-date |A kérelem feldolgozásának dátuma, RFC 1123 formátumban. |
+| x-ms-AzureResourceId | Az Azure-erőforrás erőforrás-azonosítója, amelyhez az adatforrást társítani kell. Ezzel feltölti a [_ResourceId](log-standard-properties.md#_resourceid) tulajdonságot, és lehetővé teszi, hogy az adatok szerepeljenek az [erőforrás-kontextus](design-logs-deployment.md#access-mode) lekérdezésekben. Ha ez a mező nincs megadva, a rendszer nem fogja tartalmazni az erőforrás-környezeti lekérdezésekben szereplő adatforrásokat. |
+| time-generated-field | Az adattétel időbélyegét tartalmazó mező neve az adatobjektumban. Ha megad egy mezőt, a rendszer a **TimeGenerated**használja a tartalmát. Ha ez a mező nincs megadva, a **TimeGenerated** alapértelmezett értéke az üzenet betöltésének időpontja. Az üzenet mező tartalmának az ISO 8601 formátum éééé-hh-NNTóó: PP: ssZ kell lennie. |
 
 ## <a name="authorization"></a>Engedélyezés
 A Azure Monitor HTTP-adatgyűjtő API-nak küldött összes kérésnek tartalmaznia kell egy engedélyezési fejlécet. A kérések hitelesítéséhez a kérést a munkaterülethez tartozó elsődleges vagy másodlagos kulccsal kell aláírnia. Ezután adja át az aláírást a kérelem részeként.   
@@ -129,7 +128,7 @@ A következő formátum használatával egyszerre több rekordot is létrehozhat
 ## <a name="record-type-and-properties"></a>Rekord típusa és tulajdonságai
 Ha az Azure Monitor HTTP-adatgyűjtő API-n keresztül küld el adatküldést, egyéni bejegyzéstípust határozhat meg. Jelenleg nem írhatók adatok olyan meglévő bejegyzéstípusokba, amelyeket más adattípusok és megoldások hoztak létre. Azure Monitor beolvassa a beérkező adatokat, majd olyan tulajdonságokat hoz létre, amelyek megfelelnek a megadott értékek adattípusának.
 
-Az adatgyűjtő API-nak minden kérelemnek tartalmaznia kell egy **log-Type** fejlécet a bejegyzéstípus nevével. A rendszer automatikusan hozzáfűzi a **_CL** utótagot a megadott névhez, hogy az egyéni naplóként megkülönböztetse azt más típusú naplókból. Ha például a **MyNewRecordType**nevet adja meg, Azure monitor egy **MyNewRecordType_CL**típusú rekordot hoz létre. Ezzel biztosítható, hogy a felhasználó által létrehozott nevek és a jelenlegi vagy jövőbeli Microsoft-megoldásokban leszállított típusok ne legyenek ütközések.
+Az adatgyűjtő API-nak minden kérelemnek tartalmaznia kell egy **log-Type** fejlécet a bejegyzéstípus nevével. A rendszer automatikusan hozzáfűzi a **_CL** utótagot a megadott névhez, hogy az egyéni naplóként megkülönböztetse azt más típusú naplókból. Ha például a **MyNewRecordType**nevet adja meg, akkor a Azure Monitor egy **MyNewRecordType_CL**típusú rekordot hoz létre. Ezzel biztosítható, hogy a felhasználó által létrehozott nevek és a jelenlegi vagy jövőbeli Microsoft-megoldásokban leszállított típusok ne legyenek ütközések.
 
 A tulajdonság adattípusának azonosításához Azure Monitor hozzáadja az utótagot a tulajdonság nevéhez. Ha egy tulajdonság null értéket tartalmaz, a tulajdonság nem szerepel a rekordban. Ez a tábla a tulajdonság adattípusát és a hozzá tartozó utótagot sorolja fel:
 
@@ -137,7 +136,7 @@ A tulajdonság adattípusának azonosításához Azure Monitor hozzáadja az ut�
 |:--- |:--- |
 | Sztring |_s |
 | Logikai |_b |
-| duplán |_d |
+| Dupla |_d |
 | Dátum és idő |_t |
 | GUID (karakterláncként tárolva) |_g |
 
@@ -146,7 +145,7 @@ Az egyes tulajdonságokhoz Azure Monitor által használt adattípus attól füg
 * Ha a bejegyzéstípus nem létezik, Azure Monitor létrehoz egy újat a következő JSON-típus használatával: az új rekordhoz tartozó egyes tulajdonságok adattípusának meghatározása.
 * Ha a bejegyzéstípus létezik, Azure Monitor megpróbál új rekordot létrehozni a meglévő tulajdonságok alapján. Ha az új rekordban lévő tulajdonság adattípusa nem egyezik, és nem konvertálható a meglévő típusra, vagy ha a rekord nem létező tulajdonságot tartalmaz, Azure Monitor létrehoz egy új tulajdonságot, amely tartalmazza a megfelelő utótagot.
 
-Ez a beküldési bejegyzés például három tulajdonsággal, **number_d**, **boolean_b**és **string_s**rendelkező rekordot hoz létre:
+Ez a beküldési bejegyzés például egy három tulajdonsággal rendelkező rekordot hoz létre, **number_d**, **boolean_b**és **string_s**:
 
 ![1\. minta rekord](media/data-collector-api/record-01.png)
 
@@ -154,18 +153,18 @@ Ha ezt követően elküldte ezt a következő bejegyzést, az összes karakterl�
 
 ![2\. minta rekord](media/data-collector-api/record-02.png)
 
-Ha azonban ezt követően elvégezte a következő beküldést, Azure Monitor létrehozza az új tulajdonságokat **boolean_d** és **string_d**. Ezek az értékek nem alakíthatók át:
+Ha azonban ezt követően elvégezte a következő beküldést, Azure Monitor az új tulajdonságokat **boolean_d** és a **string_d**hozza létre. Ezek az értékek nem alakíthatók át:
 
 ![3\. minta rekord](media/data-collector-api/record-03.png)
 
-Ha ezt követően elküldte a következő bejegyzést, a bejegyzéstípus létrehozása előtt Azure Monitor egy három tulajdonsággal, **sikeresek**, **boolean_s**és **string_s**rendelkező rekordot hoz létre. Ebben a bejegyzésben minden kezdeti érték karakterláncként van formázva:
+Ha ezt követően elküldte a következő bejegyzést, a bejegyzéstípus létrehozása előtt Azure Monitor egy olyan rekordot hoz létre, amely három tulajdonsággal rendelkezik, **number_s**, **boolean_s**és **string_s**. Ebben a bejegyzésben minden kezdeti érték karakterláncként van formázva:
 
 ![4\. minta rekord](media/data-collector-api/record-04.png)
 
 ## <a name="reserved-properties"></a>Foglalt tulajdonságok
 A következő tulajdonságok vannak fenntartva, és nem használhatók egyéni bejegyzéstípusban. Hibaüzenet jelenik meg, ha a hasznos adatok tartalmazzák a következő tulajdonságokat.
 
-- Bérlő
+- tenant
 
 ## <a name="data-limits"></a>Adatkorlátok
 Bizonyos korlátozások vonatkoznak a Azure Monitor adatgyűjtési API-ra közzétett adatterületekre.
@@ -181,18 +180,18 @@ A 200-es HTTP-állapotkód azt jelenti, hogy a kérelem feldolgozásra érkezett
 
 Ez a táblázat felsorolja a szolgáltatás által visszaadott állapotkódok teljes készletét:
 
-| Kód | Állapot | Hibakód | Leírás |
+| Kód | status | Hibakód | Leírás |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |A kérés elfogadása sikeresen megtörtént. |
-| 400 |Hibás kérelem |InactiveCustomer |A munkaterület le lett zárva. |
-| 400 |Hibás kérelem |InvalidApiVersion |A szolgáltatás nem ismerte fel a megadott API-verziót. |
-| 400 |Hibás kérelem |InvalidCustomerId |A megadott munkaterület-azonosító érvénytelen. |
-| 400 |Hibás kérelem |InvalidDataFormat |Érvénytelen JSON lett elküldve. A válasz törzse további információkat is tartalmazhat a hiba megoldásával kapcsolatban. |
-| 400 |Hibás kérelem |InvalidLogType |A megadott naplózási típus speciális karaktereket vagy számokat tartalmaz. |
-| 400 |Hibás kérelem |MissingApiVersion |Nincs megadva az API-verzió. |
-| 400 |Hibás kérelem |MissingContentType |A tartalomtípus nincs megadva. |
-| 400 |Hibás kérelem |MissingLogType |Nem adta meg a szükséges érték napló típusát. |
-| 400 |Hibás kérelem |UnsupportedContentType |A tartalomtípus nem az **Application/JSON**értékre lett beállítva. |
+| 400 |Hibás kérés |InactiveCustomer |A munkaterület le lett zárva. |
+| 400 |Hibás kérés |InvalidApiVersion |A szolgáltatás nem ismerte fel a megadott API-verziót. |
+| 400 |Hibás kérés |InvalidCustomerId |A megadott munkaterület-azonosító érvénytelen. |
+| 400 |Hibás kérés |InvalidDataFormat |Érvénytelen JSON lett elküldve. A válasz törzse további információkat is tartalmazhat a hiba megoldásával kapcsolatban. |
+| 400 |Hibás kérés |InvalidLogType |A megadott naplózási típus speciális karaktereket vagy számokat tartalmaz. |
+| 400 |Hibás kérés |MissingApiVersion |Nincs megadva az API-verzió. |
+| 400 |Hibás kérés |MissingContentType |A tartalomtípus nincs megadva. |
+| 400 |Hibás kérés |MissingLogType |Nem adta meg a szükséges érték napló típusát. |
+| 400 |Hibás kérés |UnsupportedContentType |A tartalomtípus nem az **Application/JSON**értékre lett beállítva. |
 | 403 |Forbidden |InvalidAuthorization |A szolgáltatás nem tudta hitelesíteni a kérelmet. Ellenőrizze, hogy érvényes-e a munkaterület azonosítója és a csatlakoztatási kulcs. |
 | 404 |Nem található | | Vagy a megadott URL-cím helytelen, vagy a kérelem túl nagy. |
 | 429 |Túl sok kérelem | | A szolgáltatás nagy mennyiségű adattal rendelkezik a fiókból. Próbálkozzon újra a kéréssel. |
@@ -200,7 +199,7 @@ Ez a táblázat felsorolja a szolgáltatás által visszaadott állapotkódok te
 | 503 |A szolgáltatás nem érhető el |ServiceUnavailable |A szolgáltatás jelenleg nem érhető el a kérelmek fogadásához. Próbálkozzon újra a kéréssel. |
 
 ## <a name="query-data"></a>Adatok lekérdezése
-A Azure Monitor HTTP-adatgyűjtő API által küldött adatok lekérdezéséhez keressen olyan **típusú** rekordokat, amelyek a megadott **LogType** -értékkel egyenlőek, a **_CL**-vel kiegészítve. Ha például a **MyCustomLog**használta, akkor az összes rekordot visszaadja `MyCustomLog_CL`.
+A Azure Monitor HTTP-adatgyűjtő API által küldött adatok lekérdezéséhez keressen olyan **típusú** rekordokat, amelyek a megadott **LogType** -értékkel egyenlőek, **_CL**hozzáfűzéssel. Ha például a **MyCustomLog**használta, akkor az összes rekordot visszaadja `MyCustomLog_CL`.
 
 ## <a name="sample-requests"></a>Példák a kérelmekre
 A következő részekben példákat talál arra, hogyan küldhet adatokat a Azure Monitor HTTP-adatgyűjtő API-nak különböző programozási nyelvek használatával.

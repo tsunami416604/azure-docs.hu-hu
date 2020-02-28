@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b0d9437b10bc54aac481eb630f12a2b99d2360a1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209783"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672463"
 ---
 # <a name="building-an-accessible-application"></a>Akadálymentes alkalmazás létrehozása
 
@@ -32,9 +32,11 @@ A Azure Maps web SDK a következő számos kisegítő lehetőséggel rendelkezik
 Az összes Microsoft-termékre vonatkozó teljes körű hozzáférhetőségi részletek [itt](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/)találhatók. Keressen rá a "Azure Maps web" kifejezésre, hogy megkeresse a Azure Maps web SDK-hoz tartozó dokumentumot. 
 
 ## <a name="navigating-the-map"></a>Navigálás a térképen
+
 A Térkép több különböző módon nagyítható, megpárolt, elforgatható és felhelyezhető. A következő részletek a Térkép különböző módjaira mutatnak.
 
 **A Térkép nagyítása**
+
 - Egy egér használatával kattintson duplán a térképre egy szint nagyításához.
 - Egér használatával a térkép nagyításához görgessen a görgőre.
 - Érintőképernyőn keresztül a térképre koppintva két ujjal és csípjük össze a nagyítást, illetve az ujjak kinagyítását, illetve a nagyítást egymás mellett.
@@ -45,23 +47,46 @@ A Térkép több különböző módon nagyítható, megpárolt, elforgatható é
 - Nyomja le és tartsa nyomva a `Shift` gombot, és nyomja le a bal oldali egérgombot a térképen, és húzza a diagramot a térkép nagyításához.
 
 **A Térkép pásztázása**
+
 - Egér használatával a térképen a bal egérgombot lenyomva tartva bármely irányt áthúzhat.
 - Érintse meg a térképet, és húzza a kívánt irányba.
 - A térképre koncentrálva a nyílbillentyűk használatával helyezheti át a térképet.
 
 **A Térkép elforgatása**
+
 - Egér használatával nyomja le a lefelé a jobb gombbal a térképen, és húzza balra vagy jobbra. 
 - Érintse meg a Térkép két ujjal való használatát, és forgassa el.
 - A Térkép fókuszban használja a SHIFT billentyűt, a bal vagy a jobb nyílbillentyűket.
 - A forgatás vezérlőelem használata egérrel, érintéssel vagy billentyűzettel, illetve kulcsok bevitele.
 
 **A Térkép feldobása**
+
 - Az egér használatával nyomja le a legördülő menüben a jobb gombbal a térképen, és húzza felfelé vagy lefelé. 
 - Érintse meg a térképet két ujjal, és húzza őket egymáshoz.
 - A térképre koncentrálva a SHIFT billentyűt, valamint a fel vagy a le nyílbillentyűt használja. 
 - A Pitch vezérlő használata egérrel, érintéssel vagy billentyűzettel, illetve kulcsok bevitele.
 
-**Térkép stílusának módosítása** Nem minden fejlesztő szeretné, hogy az összes lehetséges Térkép stílusa elérhető legyen az alkalmazásában. A fejlesztő programozott módon állíthatja be és módosíthatja a Térkép stílusát. Ha a fejlesztő a Térkép Style Picker vezérlőelemét jeleníti meg, akkor a felhasználó az egérrel, érintéssel vagy a TAB billentyűvel megváltoztathatja a Térkép stílusát, vagy megadhatja a kulcsot. A fejlesztő megadhatja, hogy mely térképi stílusokat szeretné elérhetővé tenni a Térkép stílusa választó vezérlőelemben. 
+## <a name="change-the-map-style"></a>Térkép stílusának módosítása
+
+Nem minden fejlesztő szeretné, hogy az összes lehetséges Térkép stílusa elérhető legyen az alkalmazásában. Ha a fejlesztő a Térkép Style Picker vezérlőelemét jeleníti meg, akkor a felhasználó az egérrel, érintéssel vagy a TAB billentyűvel megváltoztathatja a Térkép stílusát, vagy megadhatja a kulcsot. A fejlesztő megadhatja, hogy mely térképi stílusokat szeretné elérhetővé tenni a Térkép stílusa választó vezérlőelemben. Emellett a fejlesztő programozott módon állíthatja be és módosíthatja a Térkép stílusát.
+
+**Magas kontraszt használata**
+
+- A Térkép vezérlőelem betöltését követően a ellenőrzi, hogy engedélyezve van-e a kontrasztos megjelenítés, és hogy a böngésző támogatja-e.
+- A Térkép vezérlőelem nem figyeli az eszköz kontrasztos üzemmódját. Ha az eszköz mód megváltozik, a Térkép nem fog megjelenni. Így a felhasználónak újra kell töltenie a térképet az oldal frissítésével.
+- Ha a rendszer nagy kontrasztot észlel, a Térkép stílusa automatikusan magas kontrasztra vált, és az összes beépített vezérlő nagy kontrasztú stílust fog használni. Például a ZoomControl, a PitchControl, a CompassControl, a StyleControl és az egyéb beépített vezérlők nagy kontrasztú stílust fognak használni.
+- Kétféle kontrasztos, világos és sötét. Ha a leképezési vezérlők a kontrasztos megjelenítést is észlelik, akkor a Térkép viselkedése ennek megfelelően módosul. Ha a fény, akkor a grayscale_light Térkép stílusa betöltődik. Ha a típus nem észlelhető vagy sötét, akkor a rendszer betölti a high_contrast_dark stílust.
+- Ha egyéni vezérlőket hoz létre, érdemes tudni, hogy a beépített vezérlők nagy kontrasztú stílust használnak-e. A fejlesztők hozzáadhatnak egy CSS-osztályt a Térkép-tárolóhoz a div-ben az ellenõrzéshez. A hozzáadott CSS-osztályok `high-contrast-dark` és `high-contrast-light`. A JavaScript használatának vizsgálatához használja a következőt:
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-dark")
+```
+
+vagy használja a következőket:
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-light")
+```
 
 ## <a name="keyboard-shortcuts"></a>Billentyűparancsok
 

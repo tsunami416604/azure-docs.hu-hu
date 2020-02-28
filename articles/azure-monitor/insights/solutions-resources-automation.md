@@ -1,19 +1,18 @@
 ---
 title: Erőforrások Azure Automation a felügyeleti megoldásokban | Microsoft Docs
 description: A felügyeleti megoldások általában Azure Automation runbookok tartalmaznak a folyamatok automatizálásához, például a figyelési adatok gyűjtéséhez és feldolgozásához.  Ez a cikk azt ismerteti, hogyan lehet a runbookok és a hozzájuk kapcsolódó erőforrásokat felvenni egy megoldásba.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401821"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663062"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Automation erőforrások hozzáadása felügyeleti megoldáshoz (előzetes verzió)
 > [!NOTE]
@@ -107,7 +106,7 @@ Az Automation-feladatok tulajdonságait az alábbi táblázat ismerteti.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| runbook |Egyetlen Name entitás, amely az runbook nevét adja meg. |
+| Runbook |Egyetlen Name entitás, amely az runbook nevét adja meg. |
 | paraméterek |A runbook által igényelt paraméterek értékének entitása. |
 
 A feladattípus tartalmazza a runbook nevét és a runbook küldendő paraméterek értékét.  A feladattípusnak [attól]( solutions-solution-file.md#resources) a runbook kell tartoznia, amelyről indul, mert a runbook a feladatokhoz kell létrehozni.  Ha több runbookok is meg kell kezdenie, akkor megadhatja a sorrendet, ha a feladat attól függ, hogy milyen feladatokat kell futtatnia.
@@ -139,7 +138,7 @@ A tanúsítványok erőforrásainak tulajdonságait az alábbi táblázat ismert
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | Base64value tulajdonsága |A tanúsítvány alap 64-értéke. |
-| ujjlenyomat |A Tanúsítvány ujjlenyomata. |
+| thumbprint |A Tanúsítvány ujjlenyomata. |
 
 
 
@@ -165,7 +164,7 @@ A hitelesítőadat-erőforrások tulajdonságait az alábbi táblázat ismerteti
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| userName (Felhasználónév) |A hitelesítő adat felhasználóneve. |
+| userName |A hitelesítő adat felhasználóneve. |
 | jelszó |A hitelesítő adat jelszava. |
 
 
@@ -196,7 +195,7 @@ Az ütemezett erőforrások tulajdonságait az alábbi táblázat ismerteti.
 | leírás |Az ütemterv leírását nem kötelező megadni. |
 | startTime |Meghatározza az ütemterv kezdő időpontját DateTime objektumként. Karakterláncot adhat meg, ha egy érvényes DateTime értékre konvertálható. |
 | isEnabled |Meghatározza, hogy az ütemterv engedélyezve van-e. |
-| interval |Az ütemterv intervallumának típusa<br><br>napon<br>hour |
+| interval |Az ütemterv intervallumának típusa<br><br>nap<br>óra |
 | frequency |A gyakoriság, amelyet az ütemtervnek a napok vagy órák számának megfelelően kell megjelennie. |
 
 Az ütemezett kezdési időpontnak az aktuális időpontnál nagyobb értékkel kell rendelkeznie.  Ez az érték nem adható meg változóként, mert nem tudná tudni, hogy mikor lesz telepítve.
@@ -236,8 +235,8 @@ A feladatütemezés tulajdonságait az alábbi táblázat ismerteti.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Ütemterv neve |Egyetlen **Name** entitás az ütemterv nevével. |
-| runbook neve  |Egyetlen **Name** entitás a runbook nevével.  |
+| schedule name |Egyetlen **Name** entitás az ütemterv nevével. |
+| runbook name  |Egyetlen **Name** entitás a runbook nevével.  |
 
 
 
@@ -264,7 +263,7 @@ A változó erőforrások tulajdonságait az alábbi táblázat ismerteti.
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | leírás | A változó leírását nem kötelező megadni. |
-| IsEncrypted | Megadja, hogy a változó titkosítva legyen-e. |
+| isEncrypted | Megadja, hogy a változó titkosítva legyen-e. |
 | type | Ennek a tulajdonságnak jelenleg nincs hatása.  A változó adattípusa a kezdeti érték alapján lesz meghatározva. |
 | érték | A változó értéke. |
 
@@ -273,11 +272,11 @@ A változó erőforrások tulajdonságait az alábbi táblázat ismerteti.
 
 Ha a változóhoz a kezdeti értéket állítja be, akkor azt megfelelő adattípusként kell konfigurálni.  Az alábbi táblázat a különböző adattípusokat és azok szintaxisát tartalmazza.  Vegye figyelembe, hogy a JSON-értékeket mindig idézőjelek közé kell tenni az idézőjelek között lévő speciális karakterekkel.  Például egy karakterlánc értékét a karakterlánc körüli idézőjelek határozzák meg (az Escape-karakterrel (\\)), míg egy numerikus értéket egy idézőjelek között kell megadni.
 
-| Data type | Leírás | Példa | Feloldás |
+| Adattípus | Leírás | Példa | Feloldás |
 |:--|:--|:--|:--|
 | sztring   | Érték befoglalása idézőjelek közé.  | "\"Hello World\"" | "Helló világ" |
-| numerikus  | Numerikus érték szimpla idézőjelekkel.| "64" | 64 |
-| logikai  | **igaz** vagy **hamis** idézőjelek között.  Vegye figyelembe, hogy ennek az értéknek kisbetűsnek kell lennie. | "true" | igaz |
+| numeric  | Numerikus érték szimpla idézőjelekkel.| "64" | 64 |
+| logikai  | **igaz** vagy **hamis** idézőjelek között.  Vegye figyelembe, hogy ennek az értéknek kisbetűsnek kell lennie. | "true" | true |
 | dátum/idő | Szerializált dátumérték.<br>Az ConvertTo-JSON parancsmagot a PowerShellben használhatja egy adott dátumhoz tartozó érték létrehozásához.<br>Példa: Get-date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date (1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Modulok
@@ -316,7 +315,7 @@ Ha olyan felügyeleti megoldást frissít, amely egy ütemezett runbook tartalma
 
 
 
-## <a name="sample"></a>Minta
+## <a name="sample"></a>Sample
 A következő példa egy olyan megoldás mintáját tartalmazza, amely magában foglalja a következő erőforrásokat:
 
 - Runbook.  Ez egy nyilvános GitHub-tárházban tárolt runbook.

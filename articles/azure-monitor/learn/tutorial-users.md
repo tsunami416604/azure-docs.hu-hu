@@ -1,19 +1,18 @@
 ---
 title: Az ügyfelek megismerése az Azure Application Insightsban | Microsoft Docs
 description: Oktatóanyag, amely bemutatja, hogy az Azure Application Insights használatával hogyan tudhatja meg, miként használják az ügyfelek az alkalmazását.
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 08da1ad5d934116db8f110d7b75a8e0a60ffc84a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: cc6c7fc94e940732ba180c83344eabf29597d849
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894666"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670355"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Az alkalmazás ügyfelek általi használatának megismerése az Azure Application Insights használatával
 

@@ -1,18 +1,16 @@
 ---
 title: A Azure Monitor általános riasztási sémájának definíciói
 description: A Azure Monitor általános riasztási séma-definícióinak ismertetése
-ms.service: azure-monitor
-ms.subservice: alerts
-ms.topic: conceptual
 author: ofirmanor
-ms.author: robb
+ms.topic: conceptual
+ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: efa6a8807b3db14649a2b4ad38c575cf98aba113
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b0b398be919364b5a146e86ca1a1790674bb7d01
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425170"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668213"
 ---
 # <a name="common-alert-schema-definitions"></a>Gyakori riasztásiséma-definíciók
 

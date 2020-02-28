@@ -2,13 +2,13 @@
 title: Törlés Teljes mód esetén
 description: Azt mutatja, hogy az erőforrástípusok hogyan kezelik a teljes módú törlést Azure Resource Manager-sablonokban.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 80d2ee356e3bc15a178862c453bf7f1ab8d66c77
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/26/2020
+ms.openlocfilehash: 5f797974212636460306c6a17869d6b8380545ab
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207808"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664406"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Azure-erőforrások törlése a teljes módú üzembe helyezésekhez
 
@@ -141,7 +141,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft. Resources](#microsoftresources)
 > - [Microsoft. SaaS](#microsoftsaas)
-> - [Microsoft. Scheduler](#microsoftscheduler)
 > - [Microsoft. Search](#microsoftsearch)
 > - [Microsoft. Security](#microsoftsecurity)
 > - [Microsoft. SecurityGraph](#microsoftsecuritygraph)
@@ -297,6 +296,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | automationAccounts | Igen |
 > | automationAccounts/konfigurációk | Igen |
 > | automationAccounts/feladatok | Nem |
+> | automationAccounts / privateEndpointConnectionProxies | Nem |
+> | automationAccounts / privateEndpointConnections | Nem |
+> | automationAccounts / privateLinkResources | Nem |
 > | automationAccounts/runbookok | Igen |
 > | automationAccounts / softwareUpdateConfigurations | Nem |
 > | automationAccounts/webhookok | Nem |
@@ -716,6 +718,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | kibocsátásiegység-forgalmi jegyzékek/importImage | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/privateEndpointConnectionProxies | Nem |
 > | nyilvántartások/privateEndpointConnectionProxies/érvényesítés | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/privateEndpointConnections | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/privateLinkResources | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/queueBuild | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/regenerateCredential | Nem |
@@ -762,7 +765,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Részlegek | Nem |
 > | Dimenziók | Nem |
 > | enrollmentAccounts | Nem |
-> | export | Nem |
+> | Export | Nem |
 > | ExternalBillingAccounts | Nem |
 > | ExternalBillingAccounts/riasztások | Nem |
 > | ExternalBillingAccounts/méretek | Nem |
@@ -1057,6 +1060,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | partnerNamespaces/eventChannels | Nem |
 > | partnerRegistrations | Igen |
 > | partnerTopics | Igen |
+> | partnerTopics / eventSubscriptions | Nem |
 > | systemTopics | Igen |
 > | systemTopics / eventSubscriptions | Nem |
 > | témakörök | Igen |
@@ -1293,6 +1297,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | getEntities | Nem |
 > | managementGroups | Nem |
+> | managementGroups/beállítások | Nem |
 > | erőforrások | Nem |
 > | startTenantBackfill | Nem |
 > | tenantBackfillStatus | Nem |
@@ -1554,6 +1559,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | legacyPeerings | Nem |
 > | peerAsns | Nem |
 > | társviszonyok | Igen |
+> | peeringServiceCountries | Nem |
 > | peeringServiceProviders | Nem |
 > | peeringServices | Igen |
 
@@ -1679,13 +1685,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | alkalmazások | Igen |
 > | saasresources | Nem |
 
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Törlés Teljes mód esetén |
-> | ------------- | ----------- |
-> | feladatgyűjtemények | Igen |
-
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
 > [!div class="mx-tableFixed"]
@@ -1754,7 +1753,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | összesítések | Nem |
 > | alertRules | Nem |
 > | alertRuleTemplates | Nem |
-> | könyvjelzők | Nem |
+> | Könyvjelzők | Nem |
 > | esetekben | Nem |
 > | dataConnectors | Nem |
 > | dataConnectorsCheckRequirements | Nem |
@@ -2015,6 +2014,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | eszközök | Igen |
+> | registeredSubscriptions | Nem |
 > | szállítók | Nem |
 > | szállítók/SKU-i | Nem |
 > | szállítók/vnfs | Nem |

@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor log-lekérdezések | Microsoft Docs
 description: Az erőforrásokra mutató hivatkozások, amelyekkel megtudhatja, hogyan írhat napló lekérdezéseket Azure Monitorban.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 7c6530416f0eb6b822b6f5f3eb53f59aeae05d53
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: fc943ac3cf82d22a58d0ba3390ad8d9bbee6a4c9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894353"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669387"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Monitor log-lekérdezések
 Azure Monitor naplók az Azure Adatkezelő-ra épülnek, és Azure Monitor a napló lekérdezései ugyanazt a Kusto-lekérdezési nyelvet használják. A [Kusto lekérdezési nyelv dokumentációja](/azure/kusto/query) tartalmazza a nyelv összes részletét, és az elsődleges erőforrásnak kell lennie Azure monitor log-lekérdezések írásához. Ez a lap más forrásokra mutató hivatkozásokat tartalmaz, amelyekkel megtudhatja, hogyan írhat lekérdezéseket és a nyelv Azure Monitor megvalósításával kapcsolatos különbségeket.
@@ -28,7 +27,7 @@ Azure Monitor naplók az Azure Adatkezelő-ra épülnek, és Azure Monitor a nap
 - A [Azure monitor naplózási információinak elemzése](../../azure-monitor/log-query/log-query-overview.md) rövid áttekintést nyújt a naplók lekérdezéséről, és leírja, hogyan épülnek fel Azure monitor naplózási információk.
 - A [naplózási adatok megtekintése és elemzése Azure monitor ismerteti azokat](../../azure-monitor/log-query/portals.md) a portálokat, amelyeken a naplók létrehozása és futtatása folyamatban van.
 
-## <a name="reference"></a>Leírások
+## <a name="reference"></a>Referencia
 
 - A [lekérdezés nyelvi referenciája](/azure/kusto/query) a Kusto lekérdezési nyelvének teljes nyelvi referenciája.
 - [Azure monitor a naplózási lekérdezés nyelvi eltérései](data-explorer-difference.md) a Kusto lekérdezési nyelv verziói közötti különbségeket ismertetik.
@@ -42,7 +41,7 @@ Azure Monitor naplók az Azure Adatkezelő-ra épülnek, és Azure Monitor a nap
 
 
 
-## <a name="lessons"></a>Foglalkozások
+## <a name="lessons"></a>Leckék
 
 - A karakterláncok [használata Azure monitor napló lekérdezésekben](string-operations.md) leírja, hogyan használható a sztring-adatmennyiség.
 - A dátum-és [időértékek Azure monitor napló lekérdezésekben való használata](datetime-operations.md) a dátum-és időadatokkal való munkavégzést ismerteti. 

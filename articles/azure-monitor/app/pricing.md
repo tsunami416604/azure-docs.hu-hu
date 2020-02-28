@@ -1,19 +1,17 @@
 ---
 title: Az Azure Application Insights használatának és költségeinek kezelése | Microsoft Docs
 description: Telemetria-kötetek kezelése és a költségek figyelése Application Insightsban.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b0a800a95d00e482b2342911111f43cfadb5a9c6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f871dfa5bd3c1feb6a89fcff3fb9d95442e72986
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845635"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669777"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>A Application Insights használatának és költségeinek kezelése
 
@@ -157,9 +155,9 @@ A napi mennyiségi korlátot használhatja a gyűjtött adatok korlátozására.
 
 A napi mennyiségi korlát használata helyett [mintavételezéssel](../../azure-monitor/app/sampling.md) hangolja be az adatmennyiséget a kívánt szintre. Ezt követően a napi korlátot csak akkor használja, ha az alkalmazás váratlanul megkezdi a sokkal nagyobb mennyiségű telemetria küldését.
 
-### <a name="identify-what-daily-data-limit-to-define"></a>A definiálni kívánt napi adatkorlát meghatározása
+### <a name="identify-what-daily-data-limit-to-define"></a>Milyen napi korlátot meghatározásához azonosítása
 
-Tekintse át Application Insights használati és becsült költségét, és Ismerje meg az adatfeldolgozási trendet, valamint azt, hogy mi a napi mennyiségi korlát. Körültekintően kell fontolóra venni, mert a korlát elérésekor nem fogja tudni figyelni az erőforrásokat. 
+Tekintse át Application Insights használati és becsült költségét, és Ismerje meg az adatfeldolgozási trendet, valamint azt, hogy mi a napi mennyiségi korlát. Kell tekinteni, körültekintően, mivel nem lehet az erőforrások figyeléséhez, a korlát elérése után. 
 
 ### <a name="set-the-daily-cap"></a>A napi korlát beállítása
 
@@ -169,7 +167,7 @@ A napi korlát módosításához a Application Insights erőforrás **Konfigurá
 
 A [napi korlát Azure Resource Manageron keresztüli módosításához](../../azure-monitor/app/powershell.md)a módosítandó tulajdonság a `dailyQuota`.  Azure Resource Manager a `dailyQuotaResetTime` és a napi korlát `warningThreshold`is beállítható. 
 
-## <a name="sampling"></a>Mintavétel
+## <a name="sampling"></a>Mintavételezés
 A [mintavétel](../../azure-monitor/app/sampling.md) olyan módszer, amely csökkenti a telemetria az alkalmazásba való küldésének mértékét, miközben megőrzi a kapcsolódó események keresésének lehetőségét a diagnosztikai keresések során. Megőrzi a helyes események számát is.
 
 A mintavétel hatékony módszert jelent a költségek csökkentéséhez és a havi kvótán belüli tartózkodáshoz. A mintavételi algoritmus megőrzi a kapcsolódó telemetria, így például a keresés használatakor megkeresheti az adott kivételhez kapcsolódó kérelmet. Az algoritmus emellett megőrzi a helyes számadatokat, így a megfelelő értékeket látja a mérőszám-kezelőben a kérelmek díjszabása, a kivételek és az egyéb darabszámok tekintetében.
@@ -195,9 +193,9 @@ Ha a tényleges mintavételezési sebességet szeretné felderíteni, független
 
 Minden megőrzött rekordban `itemCount` az eredeti rekordok számát jelöli. A korábbi elvetett rekordok száma 1. 
 
-## <a name="change-the-data-retention-period"></a>Az adatmegőrzési időszak módosítása
+## <a name="change-the-data-retention-period"></a>Módosítsa az Adatmegőrzés időtartama
 
-Application Insights erőforrások alapértelmezett megőrzése 90 nap. Minden Application Insights-erőforráshoz más adatmegőrzési idő választható. A rendelkezésre álló adatmegőrzési időszakok teljes készlete 30, 60, 90, 120, 180, 270, 365, 550 vagy 730 nap. 
+Application Insights erőforrások alapértelmezett megőrzése 90 nap. Minden Application Insights erőforráshoz különböző megőrzési időszakok választhatók ki. A rendelkezésre álló adatmegőrzési időszakok teljes készlete 30, 60, 90, 120, 180, 270, 365, 550 vagy 730 nap. 
 
 Az adatmegőrzés módosításához a Application Insights erőforrásból lépjen a **használati és becsült költségek** lapra, és válassza ki az **adatmegőrzési** beállítást:
 
@@ -255,11 +253,11 @@ Mivel ez a csomag csak az Operations Management Suite-előfizetéssel rendelkez�
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>Példák a különböző csomópontok számának meghatározására
 
-| Alkalmazási helyzet                               | Csomópontok napi száma összesen |
+| Forgatókönyv                               | Csomópontok napi száma összesen |
 |:---------------------------------------|:----------------:|
 | 1 alkalmazás 3 Azure App Service példány és 1 virtuális kiszolgáló használatával | 4 |
 | 3 alkalmazás 2 virtuális gépen; az alkalmazások Application Insights erőforrásai ugyanahhoz az előfizetéshez tartoznak, és a csomóponti szinten | 2 | 
-| 4 olyan alkalmazás, amelynek alkalmazásaiban az alkalmazások erőforrásai ugyanabban az előfizetésben találhatók; minden, 2 példányt futtató alkalmazás 16 óra alatt, illetve 4 példányban 8 csúcsidőben | 13,33 | 
+| 4 olyan alkalmazás, amelynek alkalmazásaiban az alkalmazások erőforrásai ugyanabban az előfizetésben találhatók; minden, 2 példányt futtató alkalmazás 16 óra alatt, illetve 4 példányban 8 csúcsidőben | 13.33 | 
 | A Cloud Services 1 feldolgozói szerepkörrel és 1 webes szerepkörrel rendelkezik, amelyek mindegyike 2 példányt futtat | 4 | 
 | Egy 5 csomópontos Azure Service Fabric-fürt, amely 50-es szolgáltatást futtat; minden 3 példányt futtató szolgáltatás | 5|
 
@@ -269,7 +267,7 @@ Mivel ez a csomag csak az Operations Management Suite-előfizetéssel rendelkez�
   * Ha az alkalmazás az SDK-val állítja be a **roleInstance** egyéni értékre, alapértelmezés szerint ugyanazt az értéket használja a csomópontok számának meghatározásához. 
   * Ha egy új SDK-verziót használ az ügyfélgépekről vagy mobileszközökön futó alkalmazással, a csomópontok száma nagy (az ügyfélszámítógépek és a mobileszközök nagy száma miatt). 
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatizálás
 
 Írhat egy parancsfájlt az árképzési csomag beállításához az Azure Erőforrás-kezelés használatával. [További tudnivalókat itt talál](powershell.md#price).
 

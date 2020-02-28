@@ -1,18 +1,17 @@
 ---
 title: Azure-felügyelet
-description: Az Azure-alkalmazások és-erőforrások kezelésével kapcsolatos területek áttekintése, amelyek az Azure felügyeleti eszközein található tartalmakra mutató hivatkozásokat tartalmaznak.
-ms.service: azure-monitor
+description: A felügyeleti területeket, az Azure-alkalmazások és erőforrások az Azure felügyeleti eszközökhöz a tartalmakra mutató hivatkozásokat áttekintése.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2018
-ms.openlocfilehash: 337b340df10eb406fef3148b1d8bfde66b3b8ff6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 93180f088935531f83da785bb7a490f80909a6cd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979835"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669200"
 ---
 # <a name="azure-management---monitoring"></a>Az Azure felügyelete – Monitorozás
 
@@ -29,7 +28,7 @@ A következő ábra azt illusztrálja, hogy milyen felügyeleti területekre van
 
 A következő szakaszok röviden ismertetik az egyes felügyeleti területeket, és az ezek kezelésére hivatott Azure-szolgáltatások részletes ismertetésére mutató hivatkozásokat adnak meg.
 
-## <a name="monitor"></a>Figyelés
+## <a name="monitor"></a>Monitoring
 A monitorozás adatok gyűjtését és elemzését jelenti azzal a céllal, hogy meg lehessen állapítani az üzleti alkalmazás és az általa használt erőforrások teljesítményét, állapotát és rendelkezésre állását. Egy hatékony monitorozási stratégia pontos információkat nyújt az alkalmazás egyes összetevőinek működéséről, és segít növelni az üzemidőt a kritikus problémákra vonatkozó előzetes értesítésekkel, amelyeknek köszönhetően még azelőtt fel lehet számolni őket, hogy tényleges problémát okoznának. Az Azure környezetben a monitorozást elsősorban az [Azure Monitor](../azure-monitor/overview.md) biztosítja, amely közös tárakat kínál a monitorozási adatok tárolására, több adatforrást biztosít az alkalmazást támogató különböző szintekhez, és különböző szolgáltatásokkal biztosítja a begyűjtött adatok elemzését és a reagálást az eseményekre.
 
 ## <a name="configure"></a>Konfigurálás
@@ -38,13 +37,13 @@ A konfigurálás az alkalmazások és erőforrások kezdeti üzembe helyezését
 ## <a name="govern"></a>Irányítás
 Az irányítás azokat a mechanizmusok és folyamatokat biztosítja, amelyekre az Azure-beli alkalmazások és erőforrások szabályozásához van szükség.  Magában foglalja a kezdeményezések megtervezését és a stratégiai prioritások meghatározását.  Az Azure-ban az irányítás implementálásának feladatát nagyrészt két szolgáltatás végzi el.  Az [Azure Policy](../governance/policy/overview.md) lehetővé teszi olyan szabályzatdefiníciók létrehozását, hozzárendelését és kezelését, amelyek különböző szabályokat és műveleteket kényszerítenek ki az erőforrásokon, hogy azok megfeleljenek a vállalati szabványoknak és szolgáltatói szerződéseknek. A [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) segítségével nyomon követheti az Azure-erőforrások és más felhőalapú szolgáltatók (például az AWS és a Google) Felhőbeli használatát és kiadásait.
 
-## <a name="secure"></a>Biztonságos
+## <a name="secure"></a>Védelem
 Az alkalmazások, erőforrások és adatok biztonságának felügyeletébe beletartozik a fenyegetések értékelése, a biztonsági adatok gyűjtése és elemzése, valamint annak biztosítása, hogy az alkalmazások és erőforrások kialakítása és konfigurációja biztonságos legyen.  A biztonsági monitorozással és a fenyegetések elemzésével az [Azure Security Center](../security-center/security-center-intro.md) foglalkozik, amely egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz.  Az [Azure biztonsági megoldásait ismertető](../security/fundamentals/overview.md) témakör részletesen foglalkozik az Azure biztonsági kérdéseivel, és az Azure-erőforrások biztonságos konfigurálásához is útmutatást nyújt.
 
 
 ## <a name="protect"></a>Védelem
 A védelem annak garantálását jelenti, hogy az alkalmazások és adatok mindig rendelkezésre álljanak, olyan leállások esetén is, amelyeknek a bekövetkeztére Ön nincsen hatással.  Az Azure-ban erről a védelemről két szolgáltatás gondoskodik.  Az [Azure Backup](../backup/backup-introduction-to-azure-backup.md) helyreállítható biztonsági másolatokat készít az adatokról, és azokat a felhőben vagy helyszíni gépeken tárolja.    Az [Azure Site Recovery](../site-recovery/site-recovery-overview.md) az alkalmazások magas rendelkezésre állásáról gondoskodik, garantálva az üzletmenet folytonosságát és az azonnali vészhelyreállítást.
 
-## <a name="migrate"></a>Migrate (Áttelepítés) 
+## <a name="migrate"></a>Migrálás 
 A migrálás a helyszíni gépen futó számítási feladatok átvitelét jelenti az Azure-fehőbe.  Az [Azure Migrate](../migrate/migrate-overview.md) szolgáltatás segít felmérni, hogy a helyszíni virtuális gépek mennyire alkalmasak az Azure-felhőbe való migrálásra, és erről teljesítményalapú méretezési és költségbecsléseket is készít.  Az Azure Site Recovery segít a [helyszíni](../site-recovery/migrate-tutorial-on-premises-azure.md) virtuális gépek vagy az [Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md) virtuális gépeinek tényleges migrálásában.  Az [Azure Database Migration](../dms/dms-overview.md) több adatbázis-erőforrás migrálását teszi lehetővé Azure-adatplatformokra.
 

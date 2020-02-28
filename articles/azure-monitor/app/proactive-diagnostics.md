@@ -1,18 +1,14 @@
 ---
 title: Intelligens észlelés az Azure Application Insightsban | Microsoft Docs
 description: Application Insights végrehajtja az alkalmazás telemetria automatikus elemzését, és figyelmezteti a lehetséges problémákra.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 02/07/2019
-ms.openlocfilehash: ae9af5721e53277f6c939840721ca50ea67ca51e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: e232295f9da2a2ae8f3c6fafdd1dc33a42e92e69
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818815"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671800"
 ---
 # <a name="smart-detection-in-application-insights"></a>Intelligens észlelés a Application Insightsban
  Az intelligens észlelés automatikusan figyelmezteti a webalkalmazás lehetséges teljesítménybeli problémáit és meghibásodási rendellenességeit. Az alkalmazás által a [Application Insightsnak](../../azure-monitor/app/app-insights-overview.md)küldött telemetria proaktív elemzését végzi. Ha hirtelen megnőtt a meghibásodások aránya, vagy az ügyfél vagy a kiszolgáló teljesítménye rendellenes, akkor riasztást kap. Ehhez a szolgáltatáshoz nincs szükség konfigurációra. Akkor működik, ha az alkalmazása elég telemetria küld.

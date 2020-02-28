@@ -1,18 +1,17 @@
 ---
 title: A teljesítmény diagramon való Azure Monitor for VMs (előzetes verzió) | Microsoft Docs
 description: A teljesítmény a Azure Monitor for VMs szolgáltatása, amely automatikusan feltérképezi az alkalmazás-összetevőket Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Ez a cikk részletesen ismerteti, hogyan használhatja azt különböző helyzetekben.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 0d679675758b736455c66066f3df4cb9ea43fdea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 245d5c0fb0a54a6d129a193deaa9445bc8fefbfb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399281"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670695"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>A teljesítmény diagramon Azure Monitor for VMs (előzetes verzió)
 
@@ -119,7 +118,7 @@ Az egyik diagram jobb felső sarkában található rögzítés ikonra kattintva 
 >[!NOTE]
 >A méretezési csoport példányai nézetében egy adott példányhoz is elérheti a részletes teljesítmény nézetet. A **Beállítások** szakaszban keresse meg a **példányok** elemet, majd válassza az **áttekintés (előzetes verzió)** lehetőséget.
 
-## <a name="alerts"></a>Értesítések  
+## <a name="alerts"></a>Riasztások  
 
 A Azure Monitor for VMs részeként engedélyezett teljesítmény-mérőszámok nem tartalmaznak előre konfigurált riasztási szabályokat. Az Azure-beli virtuális gépen észlelt teljesítményproblémák (például a nagy CPU-kihasználtság, a kevés memória, a kevés lemezterület stb.) megfelelő [állapotú riasztások](vminsights-health.md#alerts) tartoznak.  Ezek az állapot-riasztások azonban csak a Azure Monitor for VMs számára engedélyezett összes virtuális gépre érvényesek. 
 

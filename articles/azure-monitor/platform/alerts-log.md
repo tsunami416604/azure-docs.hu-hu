@@ -2,18 +2,16 @@
 title: Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával | Microsoft Docs
 description: Használja a Azure Monitor az Azure-beli naplózási riasztási szabályok létrehozásához, megtekintéséhez és kezeléséhez.
 author: yanivlavi
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 525e8d2ffcd673f47cf30699de2572b35fc3b314
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 96b1bd86576f8cf34428eb60e2d3f476312311c1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290275"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667856"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
 
@@ -36,7 +34,7 @@ A következő részletes útmutató a log-riasztások Azure Portal felülettel v
 
 1. A [portálon](https://portal.azure.com/)kattintson a **figyelés** elemre, és a figyelés szakaszban válassza a **riasztások**lehetőséget.
 
-    ![Monitoring](media/alerts-log/AlertsPreviewMenu.png)
+    ![Figyelés](media/alerts-log/AlertsPreviewMenu.png)
 
 1. Az új riasztási **szabály** gomb kiválasztásával új riasztást hozhat létre az Azure-ban.
 

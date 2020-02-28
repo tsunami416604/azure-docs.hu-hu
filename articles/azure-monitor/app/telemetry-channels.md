@@ -1,19 +1,15 @@
 ---
 title: Telemetria csatornák Az Azure Application Insightsban | Microsoft Docs
 description: Telemetria-csatornák testreszabása az Azure Application Insights SDK-ban a .NET-hez és a .NET Core-hoz.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: cef35ae5cb2b66385332a3b1f9ebe177ea26a3e4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9c292246f947e4d3a364f79b31fe7a1deebd33d9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406362"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671120"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetria csatornák Application Insights
 
@@ -165,7 +161,7 @@ Windows rendszerek esetében az SDK automatikusan létrehoz egy ideiglenes helyi
 A Windows rendszertől eltérő rendszerek esetén az SDK nem hozza létre automatikusan a helyi tárterületet, így alapértelmezés szerint nem tárolja az adattárolást. Saját maga is létrehozhat egy tárolási könyvtárat, és beállíthatja a csatornát a használatára. Ebben az esetben Ön a felelős a címtár biztonságának biztosításáért.
 További információ az adatvédelem [és az adatvédelem terén](data-retention-privacy.md#does-the-sdk-create-temporary-local-storage).
 
-## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
+## <a name="open-source-sdk"></a>Open-source SDK
 A Application Insights összes SDK-hoz hasonlóan a csatornák is nyílt forráskódúak. Olvassa el és járuljon hozzá a kód vagy a jelentéssel kapcsolatos problémákhoz [a hivatalos GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet)-tárházban.
 
 ## <a name="next-steps"></a>Következő lépések

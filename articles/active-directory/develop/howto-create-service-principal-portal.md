@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 2283f4f3cf1d31f0d67e01e1a63ee20557ef5633
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: c5f65adfe401f2f6e99234d08b8e8dabeff7d5db
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591574"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656389"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: a portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz
 
@@ -85,7 +85,7 @@ A Daemon-alkalmazások kétféle hitelesítő adatot használhatnak az Azure AD-
 
 ### <a name="upload-a-certificate"></a>Tanúsítvány feltöltése
 
-Ha van ilyen, használhat meglévő tanúsítványt is.  Létrehozhat egy önaláírt tanúsítványt is tesztelési célokra. Nyissa meg a PowerShellt, és futtassa a [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) parancsot a következő paraméterekkel egy önaláírt tanúsítvány létrehozásához a számítógép felhasználói tanúsítványtárolójában: 
+Ha van ilyen, használhat meglévő tanúsítványt is.  Lehetőség van arra is, hogy önaláírt tanúsítványt *csak tesztelési célra*hozzon létre. Nyissa meg a PowerShellt, és futtassa a [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) parancsot a következő paraméterekkel egy önaláírt tanúsítvány létrehozásához a számítógép felhasználói tanúsítványtárolójában: 
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -93,8 +93,18 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 Exportálja a tanúsítványt egy fájlba a Windows Vezérlőpultján elérhető [felhasználói tanúsítvány kezelése](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC beépülő modul használatával.
 
+1. Válassza a **Start** menü **Futtatás** elemét, majd írja be a **certmgr. msc parancsot**.
+
+   Megjelenik az aktuális felhasználóhoz tartozó tanúsítványkezelő eszköz.
+
+1. A tanúsítványok megtekintéséhez a bal oldali ablaktábla **tanúsítványok-aktuális felhasználó** területén bontsa ki a **személyes** könyvtárat.
+1. Kattintson a jobb gombbal a létrehozott tanúsítványra, válassza a **minden feladat – > exportálás**lehetőséget.
+1. Kövesse a tanúsítvány exportálása varázslót.  Exportálja a titkos kulcsot, írja be a tanúsítványhoz tartozó jelszót, és exportálja egy fájlba.
+
 A tanúsítvány feltöltése:
 
+1. Válassza az **Azure Active Directory** elemet.
+1. Az Azure AD-ban **Alkalmazásregisztrációk** válassza ki az alkalmazást.
 1. Válassza ki a **tanúsítványok & Secrets**elemet.
 1. Válassza a **tanúsítvány feltöltése** lehetőséget, és válassza ki a tanúsítványt (egy meglévő tanúsítványt vagy az exportált önaláírt tanúsítványt).
 
@@ -146,15 +156,21 @@ Az Azure-előfizetésében a fióknak `Microsoft.Authorization/*/Write` hozzáf�
 
 Az előfizetési engedélyek ellenőrzését:
 
-1. Válassza ki a fiókját a jobb felső sarokban, és válassza a **... – > saját engedélyek**lehetőséget.
+1. Keresse meg és válassza ki az **előfizetéseket**, vagy válassza az **előfizetések** lehetőséget a **kezdőlapon** .
 
-   ![Válassza ki a fiókját és a felhasználói engedélyeit](./media/howto-create-service-principal-portal/select-my-permissions.png)
+   ![Keresés](./media/howto-create-service-principal-portal/select-subscription.png)
 
-1. A legördülő listában válassza ki azt az előfizetést, amelyben létre szeretné hozni az egyszerű szolgáltatást. Ezután **kattintson ide az előfizetés teljes hozzáférés részleteinek megtekintéséhez**.
+1. Válassza ki azt az előfizetést, amelyben létre kívánja hozni az egyszerű szolgáltatásnevet.
+
+   ![Előfizetés kiválasztása hozzárendeléshez](./media/howto-create-service-principal-portal/select-one-subscription.png)
+
+   Ha nem látja a keresett előfizetést, válassza a **globális előfizetések szűrőt**. Győződjön meg arról, hogy a portálon a kívánt előfizetés van kiválasztva.
+
+1. Válassza **a saját engedélyek**lehetőséget. Ezután **kattintson ide az előfizetés teljes hozzáférés részleteinek megtekintéséhez**.
 
    ![Válassza ki azt az előfizetést, amelyben létre kívánja hozni a szolgáltatásnevet a következőben:](./media/howto-create-service-principal-portal/view-details.png)
 
-1. Válassza ki a **szerepkör-hozzárendeléseket** a hozzárendelt szerepkörök megtekintéséhez, és állapítsa meg, hogy rendelkezik-e megfelelő engedélyekkel ahhoz, hogy szerepkört rendeljen egy ad-alkalmazáshoz. Ha nem, kérje meg az előfizetés rendszergazdáját, hogy vegye fel Önt a felhasználói hozzáférés rendszergazdai szerepkörbe. A következő ábrán a felhasználó hozzárendeli a tulajdonosi szerepkört, ami azt jelenti, hogy a felhasználó rendelkezik a megfelelő engedélyekkel.
+1. Válassza ki a **szerepkör-hozzárendelések** **nézet** elemet a hozzárendelt szerepkörök megtekintéséhez, és állapítsa meg, hogy rendelkezik-e megfelelő engedélyekkel ahhoz, hogy szerepkört rendeljen egy ad-alkalmazáshoz. Ha nem, kérje meg az előfizetés rendszergazdáját, hogy vegye fel Önt a felhasználói hozzáférés rendszergazdai szerepkörbe. A következő ábrán a felhasználó hozzárendeli a tulajdonosi szerepkört, ami azt jelenti, hogy a felhasználó rendelkezik a megfelelő engedélyekkel.
 
    ![Ez a példa azt mutatja be, hogy a felhasználó hozzá van rendelve a tulajdonosi szerepkörhöz](./media/howto-create-service-principal-portal/view-user-role.png)
 

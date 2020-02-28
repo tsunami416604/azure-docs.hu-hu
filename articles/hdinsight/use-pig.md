@@ -1,5 +1,5 @@
 ---
-title: Apache Pig használata
+title: Az Apache Pig használata
 titleSuffix: Azure HDInsight
 description: Ismerje meg, hogyan használható a Pig a Apache Hadoop on HDInsight.
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: 8c9e13a61f5fcb3b7eb170b2b1110195d725c3ce
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: ea960a92aee1c9447bb12d27cffdc42de9fd907a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493162"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672123"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Az Apache Pig használata a Apache Hadoop on HDInsight
 
@@ -92,9 +92,9 @@ További információ [a SSIS készült][ssispack]Azure Feature Packről.
 Most, hogy megtanulta, hogyan használhatja a Pigt a HDInsight-mel, az alábbi hivatkozásokat követve megismerheti az Azure HDInsight használatát.
 
 * [Adatok feltöltése a HDInsight](hdinsight-upload-data.md)
-* [Apache Hive használata a HDInsight](/hadoop/hdinsight-use-hive.md)
+* [Apache Hive használata a HDInsight](./hadoop/hdinsight-use-hive.md)
 * [Apache Sqoop használata a HDInsight](hdinsight-use-sqoop.md)
-* [MapReduce-feladatok használata a HDInsightban](/hadoop/hdinsight-use-mapreduce.md)
+* [MapReduce-feladatok használata a HDInsightban](./hadoop/hdinsight-use-mapreduce.md)
 
 [apachepig-home]: https://pig.apache.org/
 [putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html

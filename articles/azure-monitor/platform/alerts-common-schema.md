@@ -1,18 +1,15 @@
 ---
 title: Az Azure monitor-riasztások általános riasztási sémája
 description: Az általános riasztási séma megismerése, miért érdemes használni, és hogyan kell engedélyezni
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
+ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: ff5c0d96bd4bc87f36a69ca7e8014e118ac7b7bf
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552453"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668179"
 ---
 # <a name="common-alert-schema"></a>Gyakori riasztási séma
 
@@ -37,8 +34,8 @@ Az általános riasztási séma elsődlegesen a riasztási értesítésekben is 
 | Műveletek | Fejlesztések|
 |:---|:---|
 | SMS | Konzisztens SMS-sablon az összes riasztási típushoz. |
-| E-mail cím | Konzisztens és részletes e-mail sablon, amely lehetővé teszi, hogy könnyedén diagnosztizálja a problémákat egy pillantással. Beágyazott mély – hivatkozások a riasztási példányra a Portálon és az érintett erőforráson gondoskodjon arról, hogy gyorsan beugorjon a Szervizelési folyamatba. |
-| Webhook/logikai alkalmazás/Azure Function/Automation Runbook | Konzisztens JSON-struktúra az összes riasztási típushoz, amely lehetővé teszi, hogy könnyedén építsen be integrációkat a különböző riasztási típusok között. |
+| E-mail | Konzisztens és részletes e-mail sablon, amely lehetővé teszi, hogy könnyedén diagnosztizálja a problémákat egy pillantással. Beágyazott mély – hivatkozások a riasztási példányra a Portálon és az érintett erőforráson gondoskodjon arról, hogy gyorsan beugorjon a Szervizelési folyamatba. |
+| Webhook/Logic App/Azure Function/Automation Runbook | Konzisztens JSON-struktúra az összes riasztási típushoz, amely lehetővé teszi, hogy könnyedén építsen be integrációkat a különböző riasztási típusok között. |
 
 Az új séma többek között a Azure Portal és a Azure mobile app is lehetővé teszi, hogy az azonnali jövőben is gazdagabb legyen a riasztások felhasználásának élménye. 
 

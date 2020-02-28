@@ -1,18 +1,17 @@
 ---
 title: Illesztések Azure Monitor log lekérdezésekben | Microsoft Docs
 description: Ez a cikk az illesztések Azure Monitor napló lekérdezésekben való használatával kapcsolatos leckét tartalmaz.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: f2880044e48e59d0d5f005f9772cdd0f807f7f29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397840"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670202"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Illesztések Azure Monitor log lekérdezésekben
 
@@ -80,7 +79,7 @@ SecurityEvent
 ## <a name="join-kinds"></a>Összekapcsolási típus
 Adja meg a _Kind_ argumentummal való illesztés típusát. Mindegyik típus a következő táblázatban leírtak szerint eltérő egyezést hajt végre az adott táblák rekordjai között.
 
-| Összekapcsolás típusa | Leírás |
+| Csatlakozás típusa | Leírás |
 |:---|:---|
 | innerunique | Ez az alapértelmezett csatlakozási mód. Először a bal oldali tábla egyező oszlopának értékei találhatók, és az ismétlődő értékek törlődnek.  Ezután az egyedi értékek halmaza illeszkedik a jobb oldali táblához. |
 | belső | A rendszer csak a mindkét táblában lévő rekordokat tartalmazza az eredmények között. |
