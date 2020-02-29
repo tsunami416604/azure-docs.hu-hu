@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 02/27/2020
 ms.author: spelluru
-ms.openlocfilehash: 483b8251bf17eaa5fe7aa7cbd86299575535725d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dda2fd98c4c0d330059156a5ec00baa97ffaf627
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170045"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921062"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid üzenet kézbesítése és újrapróbálkozás
 
@@ -26,12 +26,33 @@ Event Grid alapértelmezett értéke az egyes események küldése az előfizet�
 
 A kötegelt kézbesítésnek két beállítása van:
 
-* Az **események másodpercenkénti** maximális száma a kötegekben Event Grid. A rendszer soha nem lépi túl ezt a számot, azonban kevesebb esemény jelenhet meg, ha a közzétételkor nem áll rendelkezésre más esemény. Event Grid nem késlelteti az eseményeket, ha kevesebb esemény áll rendelkezésre. 1 és 5 000 közöttinek kell lennie.
-* Az **előnyben részesített köteg mérete (kilobájtban** ) a Batch méretének felső határa kilobájtban. A maximális eseményekhez hasonlóan a köteg mérete is kisebb lehet, ha a közzétételkor több esemény nem érhető el. Lehetséges, hogy egy köteg nagyobb, mint az előnyben részesített köteg mérete, *Ha* egyetlen esemény nagyobb az előnyben részesített méretnél. Ha például az előnyben részesített méret 4 KB, a 10 KB-os eseményt pedig Event Grid küldi el a rendszer, akkor a 10 KB-os esemény továbbra is a saját kötegében fog megjelenni az eldobása helyett.
+* **Események másodpercenkénti** maximális száma – a rendszer a kötegben Event Grid által kézbesített események maximális számát adja meg. A rendszer soha nem lépi túl ezt a számot, azonban kevesebb esemény jelenhet meg, ha a közzétételkor nem áll rendelkezésre más esemény. Event Grid nem késlelteti az eseményeket, ha kevesebb esemény áll rendelkezésre. 1 és 5 000 közöttinek kell lennie.
+* Az **előnyben részesített köteg mérete (kilobájtban** ) – a Batch méretének felső határa kilobájtban. A maximális eseményekhez hasonlóan a köteg mérete is kisebb lehet, ha a közzétételkor több esemény nem érhető el. Lehetséges, hogy egy köteg nagyobb, mint az előnyben részesített köteg mérete, *Ha* egyetlen esemény nagyobb az előnyben részesített méretnél. Ha például az előnyben részesített méret 4 KB, a 10 KB-os eseményt pedig Event Grid küldi el a rendszer, akkor a 10 KB-os esemény továbbra is a saját kötegében fog megjelenni az eldobása helyett.
 
 A kötegelt kézbesítés a portálon, a CLI-n, a PowerShellen vagy az SDK-n keresztül, az esemény-előfizetések alapján konfigurálva van.
 
+### <a name="azure-portal"></a>Azure Portal: 
 ![Batch-kézbesítési beállítások](./media/delivery-and-retry/batch-settings.png)
+
+### <a name="azure-cli"></a>Azure CLI
+Esemény-előfizetés létrehozásakor használja a következő paramétereket: 
+
+- **Max-Events-per-batch** -a kötegben lévő események maximális száma. 1 és 5000 közötti számnak kell lennie.
+- **preferált-batch-size-in-kilobájtban** – előnyben részesített köteg mérete (kilobájtban). 1 és 1024 közötti számnak kell lennie.
+
+```azurecli
+storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+endpoint=https://$sitename.azurewebsites.net/api/updates
+
+az eventgrid event-subscription create \
+  --resource-id $storageid \
+  --name <event_subscription_name> \
+  --endpoint $endpoint \
+  --max-events-per-batch 1000 \
+  --preferred-batch-size-in-kilobytes 512
+```
+
+Az Azure CLI és a Event Grid használatával kapcsolatos további információkért lásd: [tárolási események továbbítása webes végponthoz az Azure CLI-vel](../storage/blobs/storage-blob-event-quickstart.md).
 
 ## <a name="retry-schedule-and-duration"></a>Újrapróbálkozási ütemterv és időtartam
 
@@ -97,7 +118,7 @@ Az összes többi, a fenti készletben nem szereplő kód (200-204) hibáknak mi
 | 400 hibás kérelem | Újrapróbálkozás 5 perc vagy több után (kézbesítetlen levelek azonnal, ha a kézbesítetlen levelek telepítője) |
 | 401 jogosulatlan | Újrapróbálkozás 5 perc vagy több idő után |
 | 403 Tiltott | Újrapróbálkozás 5 perc vagy több idő után |
-| 404 – Nem található | Újrapróbálkozás 5 perc vagy több idő után |
+| 404 nem található | Újrapróbálkozás 5 perc vagy több idő után |
 | 408 Kérés időtúllépése | Próbálkozzon újra 2 perc múlva |
 | 413 kérelem entitása túl nagy | Újrapróbálkozás 10 másodperc vagy több után (a kézbesítetlen levelek azonnal, ha a kézbesítetlen levelek telepítője) |
 | 503 A szolgáltatás nem érhető el | Újrapróbálkozás 30 másodperc vagy több után |

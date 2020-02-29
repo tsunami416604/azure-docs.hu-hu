@@ -5,27 +5,27 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 65cd5e637434c717ab9ba1b5598c467eea9b4a74
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: b15da2aa83231bfdc8732995888349b06ab56d15
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770934"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163777"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>MySQL-adatbázis migrálása Azure Database for MySQL a dump és a Restore használatával
 Ez a cikk két gyakori módszert ismertet a Azure Database for MySQL adatbázisainak biztonsági mentésére és visszaállítására
 - Memóriakép és visszaállítás a parancssorból (mysqldump használatával) 
 - Memóriakép és visszaállítás a PHPMyAdmin használatával 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 - [Azure Database for MySQL kiszolgáló létrehozása – Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - a [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) parancssori segédprogram telepítve van a gépen.
-- MySQL Workbench [MySQL Workbench Letöltés](https://dev.mysql.com/downloads/workbench/), varangy, Navicat vagy más, harmadik féltől származó MySQL-eszköz a dump és a Restore parancsok végrehajtásához.
+- MySQL Workbench [MySQL Workbench Letöltés](https://dev.mysql.com/downloads/workbench/) vagy más, harmadik féltől származó MySQL-eszköz a dump és a Restore parancsok végrehajtásához.
 
 ## <a name="use-common-tools"></a>Gyakori eszközök használata
-A MySQL Workbench, a mysqldump, a Varangy vagy a Navicat gyakori segédprogramokkal és eszközökkel távolról csatlakozhat, és visszaállíthatja azokat a Azure Database for MySQLba. Az ügyfélgépen lévő eszközök használatával internetkapcsolattal csatlakozhat a Azure Database for MySQLhoz. Használjon SSL-titkosítású titkosított kapcsolatot az ajánlott biztonsági eljárásokhoz: [az SSL-kapcsolat konfigurálása a Azure Database for MySQLban](concepts-ssl-connection-security.md). Az Azure Database for MySQLba való Migrálás során nem kell áthelyeznie a memóriakép fájljait a Felhőbeli helyre. 
+Használjon olyan gyakori segédprogramokat és eszközöket, mint például a MySQL Workbench vagy a mysqldump az adatAzure Database for MySQLba való távoli kapcsolódáshoz és az adathelyreállításhoz. Az ügyfélgépen lévő eszközök használatával internetkapcsolattal csatlakozhat a Azure Database for MySQLhoz. Használjon SSL-titkosítású titkosított kapcsolatot az ajánlott biztonsági eljárásokhoz: [az SSL-kapcsolat konfigurálása a Azure Database for MySQLban](concepts-ssl-connection-security.md). Az Azure Database for MySQLba való Migrálás során nem kell áthelyeznie a memóriakép fájljait a Felhőbeli helyre. 
 
 ## <a name="common-uses-for-dump-and-restore"></a>A dump és a Restore gyakori felhasználási módjai
 A MySQL-segédprogramok, például a mysqldump és a mysqlpump használatával számos gyakori forgatókönyvben elvégezheti az adatbázisok kiírását és betöltését egy Azure MySQL-adatbázisba. Más helyzetekben az [importálási és exportálási](concepts-migrate-import-export.md) módszert is használhatja helyette.
@@ -39,7 +39,7 @@ A MySQL-segédprogramok, például a mysqldump és a mysqlpump használatával s
    ```
 - A kompatibilitási problémák elkerülése érdekében az adatbázisok biztonsági mentésekor győződjön meg arról, hogy a forrás- és a célrendszerek ugyanazt a MySQL-verziót használják. Ha például a meglévő MySQL-kiszolgáló a 5,7-es verzió, akkor át kell térnie az 5,7-es verzió futtatására konfigurált Azure Database for MySQLra. A `mysql_upgrade` parancs nem működik Azure Database for MySQL-kiszolgálón, és nem támogatott. Ha frissítenie kell a MySQL-verziókat, először az alacsonyabb verziójú adatbázist a MySQL egy magasabb verziójára exportálhatja a saját környezetében. Ezután futtassa a `mysql_upgrade`t, mielőtt megkísérel áttelepíteni egy Azure Database for MySQL.
 
-## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos szempontok
+## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 A teljesítmény optimalizálása érdekében vegye figyelembe a következő szempontokat a nagyméretű adatbázisok kiírásakor:
 -   Adatbázisok kiírásakor használja a mysqldump `exclude-triggers` kapcsolóját. Kihagyhatja a memóriaképből származó eseményindítókat, hogy elkerülje az eseményindító parancsainak égetését az adatok visszaállítása során. 
 -   A `single-transaction` kapcsolóval állíthatja be a tranzakció-elkülönítési módot ismétlődő OLVASÁSra, és elküldheti a START TRANSACTION SQL-utasítást a kiszolgálónak az adatok kiírása előtt. Egy tranzakción belül számos tábla kiírásakor a rendszer néhány további tárterületet használ a visszaállítás során. A `single-transaction` és az `lock-tables` lehetőség kölcsönösen kizárják egymást, mert a ZÁROLÁSi táblázatok a függőben lévő tranzakciók implicit véglegesítését okozzák. A nagyméretű táblák kiírásához egyesítse a `single-transaction` beállítást a `quick` kapcsolóval. 
@@ -80,7 +80,7 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ```
 
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>Adatbázis létrehozása a cél Azure Database for MySQL-kiszolgálón
-Hozzon létre egy üres adatbázist azon a célként Azure Database for MySQL kiszolgálón, amelyen át szeretné telepíteni az adatátvitelt. Az adatbázis létrehozásához használjon például a MySQL Workbench, a Varangy vagy a Navicat eszközt. Az adatbázis neve megegyezik a memóriaképet tartalmazó adatbázis nevével, vagy létrehozhat egy másik nevű adatbázist is.
+Hozzon létre egy üres adatbázist azon a célként Azure Database for MySQL kiszolgálón, amelyen át szeretné telepíteni az adatátvitelt. Hozzon létre egy eszközt, például a MySQL Workbench alkalmazást az adatbázis létrehozásához. Az adatbázis neve megegyezik a memóriaképet tartalmazó adatbázis nevével, vagy létrehozhat egy másik nevű adatbázist is.
 
 A csatlakozáshoz keresse meg a kapcsolati adatokat a Azure Database for MySQL **áttekintésében** .
 

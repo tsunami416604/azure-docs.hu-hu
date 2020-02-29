@@ -1,23 +1,23 @@
 ---
-title: Modellek újratanítása Azure Machine Learning Designer használatával
+title: Modellek újratanítása Azure Machine Learning Designer használatával (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan lehet a modelleket Azure Machine Learning Designerben közzétett folyamatokkal áttanítani.
+description: Ismerje meg, hogyan lehet a modelleket a Azure Machine Learning Designerben (előzetes verzió) közzétett folyamatokkal áttanítani.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: peterlu
-author: peterclu
-ms.date: 12/15/2019
-ms.openlocfilehash: d1382da739fd8ca56d4cc53c2c302331bdfbf1c3
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.author: keli19
+author: likebupt
+ms.date: 02/24/2020
+ms.openlocfilehash: b69cd4c8459ffae363f02247b1f20488afe1cd9b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311869"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921596"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>Modellek újratanítása Azure Machine Learning designerrel
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellek újratanítása Azure Machine Learning designerrel (előzetes verzió)
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Ebben a útmutatóban megismerheti, hogyan végezheti el a gépi tanulási modell újratanítását a Azure Machine Learning Designer használatával. Megtudhatja, hogyan használhatja a közzétett folyamatokat a gépi tanulási munkafolyamatok újraképzéshez való automatizálásához.
 
@@ -69,11 +69,11 @@ A tervező az alapértelmezett Storage-fiókba menti az összes folyamat kimenet
 
 1. Válassza ki a **Train Model** modult.
 
-1. A beállítások ablaktáblán válassza a **kimenetek**lehetőséget.
+1. A beállítások ablaktáblán válassza a **kimenetek + naplók**lehetőséget.
 
-1. A modell letöltéséhez válassza a **Trained_model** lehetőséget.
+1. Kattintson a **kimenet megtekintése** ikonra, és kövesse az előugró ablakban megjelenő utasításokat a betanított modell megkereséséhez.
 
-![A betanított modell letöltését bemutató képernyőkép](./media/how-to-retrain-designer/download-model.png)
+![A betanított modell letöltését bemutató képernyőkép](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="create-a-pipeline-parameter"></a>Folyamat paraméterének létrehozása
 

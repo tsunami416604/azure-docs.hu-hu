@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3807f713065d16d4c6743c65f6a770d158ac7191
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ee6d437915f6c87ce9ef5f9c711d90793a96048c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058499"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920127"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Részletes SSH-hibaelhárítási lépések az Azure-beli Linux rendszerű virtuális gépekhez való csatlakozással kapcsolatban
 Az SSH-ügyfélnek számos oka lehet annak, hogy az SSH-szolgáltatás nem érhető el a virtuális gépen. Ha követte a további [általános SSH-hibaelhárítási lépéseket](troubleshoot-ssh-connection.md), akkor a kapcsolódási problémával kapcsolatos további hibaelhárításra van szükség. Ez a cikk végigvezeti a részletes hibaelhárítási lépéseken, amelyekkel meghatározhatja, hogy az SSH-kapcsolatok hol és Hogyan oldhatók meg.
@@ -33,7 +33,7 @@ Az alábbi ábrán az érintett összetevők láthatók.
 A következő lépések segítségével elkülönítheti a hiba forrását, és kiderítheti a megoldásokat és a megkerülő megoldásokat.
 
 1. Keresse meg a virtuális gép állapotát a portálon.
-   A [Azure Portal](https://portal.azure.com)válassza a **virtuális gépek virtuális gép** > *neve*elemet.
+   A [Azure Portal](https://portal.azure.com)válassza a **virtuális gépek > virtuálisgép** - *név*elemet.
 
    A virtuális gép állapotjelző paneljének **futnia**kell. Görgessen le a számítási, tárolási és hálózati erőforrások legutóbbi tevékenységének megjelenítéséhez.
 
@@ -73,10 +73,10 @@ Ha tanúsítványalapú hitelesítést használ, ellenőrizze, hogy rendelkezik-
 * Chmod 700 ~/.ssh
 * Chmod 644 ~/.ssh/\*. pub
 * Chmod 600 ~/.ssh/id_rsa (vagy bármely más, saját titkos kulccsal rendelkező fájl)
-* Chmod 644 ~/.ssh/known_hosts (tartalmazza azokat a gazdagépeket, amelyekhez SSH-n keresztül kapcsolódott)
+* Chmod 644 ~/.ssh/known_hosts (az SSH-n keresztül csatlakozott gazdagépeket tartalmazza)
 
-## <a name="source-2-organization-edge-device"></a>2\. Forrás: Szervezeti peremhálózati eszköz
-Ha a szervezet peremhálózati eszközét a hiba forrásaként szeretné felvenni, ellenőrizze, hogy az internethez közvetlenül csatlakozó számítógép képes-e SSH-kapcsolatot létesíteni az Azure-beli virtuális géppel. Ha helyek közötti VPN-en vagy Azure ExpressRoute-kapcsolaton keresztül éri el a virtuális gépet, ugorjon a [4. forrásra: Hálózati biztonsági csoportok](#nsg).
+## <a name="source-2-organization-edge-device"></a>2\. Forrás: szervezeti peremhálózati eszköz
+Ha a szervezet peremhálózati eszközét a hiba forrásaként szeretné felvenni, ellenőrizze, hogy az internethez közvetlenül csatlakozó számítógép képes-e SSH-kapcsolatot létesíteni az Azure-beli virtuális géppel. Ha helyek közötti VPN-en vagy Azure ExpressRoute-kapcsolaton keresztül éri el a virtuális gépet, ugorjon a [forrás 4: hálózati biztonsági csoportok](#nsg)elemre.
 
 ![A szervezet peremhálózati eszközét kiemelő diagram](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
@@ -91,8 +91,11 @@ Ha SSH-kapcsolatot hoz létre közvetlenül az internethez csatlakozó számít�
 A hálózati rendszergazdával együttműködve javítsa ki a szervezet peremhálózati eszközeinek beállításait, hogy engedélyezze az SSH-forgalmat az internettel.
 
 ## <a name="source-3-cloud-service-endpoint-and-acl"></a>3\. Forrás: Cloud Service-végpont és ACL
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 > [!NOTE]
-> Ez a forrás csak a klasszikus üzemi modell használatával létrehozott virtuális gépekre vonatkozik. A Resource Manager használatával létrehozott virtuális gépek esetén ugorjon a [4. forrásra: Hálózati biztonsági csoportok](#nsg).
+> Ez a forrás csak a klasszikus üzemi modell használatával létrehozott virtuális gépekre vonatkozik. A Resource Manager használatával létrehozott virtuális gépek esetén ugorjon a [forrás 4: hálózati biztonsági csoportok](#nsg)elemre.
 
 Ha el szeretné távolítani a Cloud Service-végpontot és az ACL-t a hiba forrásaként, ellenőrizze, hogy az azonos virtuális hálózatban lévő másik Azure-beli virtuális gép csatlakozhat-e az SSH használatával.
 
@@ -102,14 +105,14 @@ Ha nem rendelkezik másik virtuális géppel ugyanabban a virtuális hálózatba
 
 Ha az azonos virtuális hálózatban lévő virtuális géppel is létrehozhat SSH-kapcsolatokat, ellenőrizze a következő területeket:
 
-* **A cél virtuális gépen lévő SSH-forgalom végpont-konfigurációja.** A végpont magánhálózati TCP-portjának meg kell egyeznie azzal a TCP-porttal, amelyen a virtuális gépen futó SSH-szolgáltatás figyel. (Az alapértelmezett port a 22). Ellenőrizze az SSH TCP-port számát a Azure Portal a **virtuális gépek** > virtuálisgép-*név* > **beállításai** > **végpontok**kiválasztásával.
+* **A cél virtuális gépen lévő SSH-forgalom végpont-konfigurációja.** A végpont magánhálózati TCP-portjának meg kell egyeznie azzal a TCP-porttal, amelyen a virtuális gépen futó SSH-szolgáltatás figyel. (Az alapértelmezett port a 22). Ellenőrizze az SSH TCP-port számát a Azure Portalban a **virtuális gépek** kiválasztásával > virtuálisgép- *név* > **Beállítások** > **végpontok**lehetőségre.
 * **Az SSH-forgalom végpontjának hozzáférés-vezérlési listája a cél virtuális gépen.** Az ACL lehetővé teszi, hogy a forrás IP-címe alapján megadhatja az internetről engedélyezett vagy megtagadott bejövő forgalmat. A helytelenül konfigurált ACL-ek megakadályozhatják a bejövő SSH-forgalmat a végponthoz. Ellenőrizze az ACL-eket, hogy a proxy vagy más peremhálózati kiszolgáló nyilvános IP-címeiről érkező bejövő forgalom engedélyezett-e. További információ: [a hálózati hozzáférés-vezérlési listák (ACL-ek)](../../virtual-network/virtual-networks-acl.md).
 
 Ha el szeretné távolítani a végpontot a probléma forrásaként, távolítsa el az aktuális végpontot, hozzon létre egy másik végpontot, és adja meg az SSH-nevet (a nyilvános és a magánhálózati portszám esetében a 22-es TCP-port). További információ: [végpontok beállítása egy virtuális gépen az Azure-ban](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 <a id="nsg"></a>
 
-## <a name="source-4-network-security-groups"></a>4\. Forrás: Network security groups (Hálózati biztonsági csoportok)
+## <a name="source-4-network-security-groups"></a>4\. Forrás: hálózati biztonsági csoportok
 A hálózati biztonsági csoportok lehetővé teszik a bejövő és kimenő forgalom részletesebb szabályozását. Létrehozhat olyan szabályokat, amelyek az alhálózatokat és a Cloud Servicest egy Azure-beli virtuális hálózatban fogják kialakítani. Ellenőrizze a hálózati biztonsági csoport szabályait, és győződjön meg arról, hogy az internetre irányuló és onnan érkező SSH-forgalom engedélyezett.
 További információ: [Tudnivalók a hálózati biztonsági csoportokról](../../virtual-network/security-overview.md).
 

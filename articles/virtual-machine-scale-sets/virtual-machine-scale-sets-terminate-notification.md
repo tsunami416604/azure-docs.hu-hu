@@ -1,31 +1,41 @@
 ---
 title: Azure-beli virtuálisgép-méretezési csoport példányaihoz tartozó értesítés leállítása
 description: Megtudhatja, hogyan engedélyezheti az Azure-beli virtuálisgép-méretezési csoport példányainak megszüntetési értesítését
-author: shandilvarun
+author: avirishuv
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.author: vashan
-ms.openlocfilehash: a1b1e07fa0622ae25d8086ec65827816ec52a5ce
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.date: 02/26/2020
+ms.author: avverma
+ms.openlocfilehash: 6023e9bf7539b79446d0135ba731b61be166dd6e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271750"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919821"
 ---
-# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Értesítés megszakítása az Azure virtuálisgép-méretezési csoport példányaihoz (előzetes verzió)
-A méretezési csoport példányai beállíthatják a példányok leállítási értesítéseinek fogadását, és előre definiált késleltetési időkorlátot állíthatnak be a megszakítási művelethez. A lemondási értesítést az Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md)küldi el, amely értesítések küldését és késleltetését teszi lehetővé, például újraindítást és újbóli üzembe helyezést. Az előzetes verziójú megoldás egy újabb eseményt ad – leáll – a Scheduled Events listájához, a megszakítási eseményhez kapcsolódó késés pedig a méretezési csoport modelljének felhasználói által megadott késleltetési korláttól függ.
+# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure-beli virtuálisgép-méretezési csoport példányaihoz tartozó értesítés leállítása
+A méretezési csoport példányai beállíthatják a példányok leállítási értesítéseinek fogadását, és előre definiált késleltetési időkorlátot állíthatnak be a megszakítási művelethez. A lemondási értesítést az Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md)küldi el, amely értesítések küldését és késleltetését teszi lehetővé, például újraindítást és újbóli üzembe helyezést. A megoldás egy újabb eseményt ad – leáll – a Scheduled Events listájához, a megszakítási eseményhez kapcsolódó késés pedig a méretezési csoport modelljének felhasználói által meghatározott késési korláttól függ.
 
 A szolgáltatásba való regisztrálás után a méretezési csoport példányainak nem kell megvárniuk a megadott időtúllépés érvényességét a példány törlése előtt. A lemondási értesítés kézhezvétele után a példány bármikor törölhető, mielőtt lejár a leállítási időkorlát.
 
-> [!IMPORTANT]
-> A méretezési csoport példányaihoz tartozó értesítés megszakítása jelenleg nyilvános előzetes verzióban érhető el. Az alábbiakban ismertetett nyilvános előzetes funkciók használatához nincs szükség beavatkozásra.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="enable-terminate-notifications"></a>Értesítések megszakításának engedélyezése
 Több módon is engedélyezheti a leállítási értesítéseket a méretezési csoport példányain, az alábbi példákban részletezve.
+
+### <a name="azure-portal"></a>Azure Portal
+
+A következő lépések lehetővé teszik az új méretezési csoport létrehozásakor az értesítés megszüntetését. 
+
+1. Nyissa meg a **virtuálisgép-méretezési csoportokat**.
+1. Válassza a **+ Hozzáadás** lehetőséget egy új méretezési csoport létrehozásához.
+1. Nyissa meg a **felügyelet** lapot. 
+1. Keresse meg a **példány lezárása** szakaszt.
+1. A **példányok**leállításáról szóló értesítés esetén válassza **a be**lehetőséget.
+1. A **megszakítási késleltetés (perc)** beállításnál állítsa be a kívánt alapértelmezett időkorlátot.
+1. Ha elkészült az új méretezési csoport létrehozásával, válassza a **felülvizsgálat + létrehozás** gombot. 
+
+> [!NOTE]
+> Nem lehet beállítani a meglévő méretezési csoportokra vonatkozó értesítéseket Azure Portal
 
 ### <a name="rest-api"></a>REST API
 
@@ -59,22 +69,19 @@ Miután engedélyezte a *scheduledEventsProfile* a méretezési csoport modellj�
 >A méretezési csoport példányain lévő értesítések megszakítása csak a 2019-03-01-es vagy újabb API-verzióval engedélyezhető
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Új méretezési csoport létrehozásakor engedélyezheti a leállítási értesítéseket a méretezési csoporton a [New-AzVmss](/powershell/module/az.compute/new-azvmss) parancsmag használatával.
+Új méretezési csoport létrehozásakor engedélyezheti a leállítási értesítéseket a méretezési csoporton a [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) parancsmag használatával.
+
+Ez a minta parancsfájl végigvezeti a méretezési csoport és a kapcsolódó erőforrások létrehozásán a konfigurációs fájl használatával: [hozzon létre egy teljes virtuálisgép-méretezési készletet](./scripts/powershell-sample-create-complete-scale-set.md). Megadhatja a konfigurálás leállítására vonatkozó értesítést úgy, hogy hozzáadja a *TerminateScheduledEvents* és a *TerminateScheduledEventNotBeforeTimeoutInMinutes* paramétert a méretezési csoport létrehozásához a konfigurációs objektumhoz. A következő példában a szolgáltatás 10 perces késleltetési időkorlátot engedélyez.
 
 ```azurepowershell-interactive
-New-AzVmss `
-  -ResourceGroupName "myResourceGroup" `
-  -Location "EastUS" `
-  -VMScaleSetName "myScaleSet" `
-  -VirtualNetworkName "myVnet" `
-  -SubnetName "mySubnet" `
-  -PublicIpAddressName "myPublicIPAddress" `
-  -LoadBalancerName "myLoadBalancer" `
+New-AzVmssConfig `
+  -Location "VMSSLocation" `
+  -SkuCapacity 2 `
+  -SkuName "Standard_DS2" `
   -UpgradePolicyMode "Automatic" `
-  -TerminateScheduledEvents
+  -TerminateScheduledEvents $true `
+  -TerminateScheduledEventNotBeforeTimeoutInMinutes 10
 ```
-
-A fenti példában egy új méretezési csoport jön létre, amely egy 5 perces alapértelmezett időkorláttal rendelkező megszakítási értesítésekkel rendelkezik. Új méretezési csoport létrehozásakor a *TerminateScheduledEvents* paraméter nem igényel értéket. Az időtúllépési érték módosításához a *TerminateScheduledEventNotBeforeTimeoutInMinutes* paraméterrel adhatja meg a kívánt időkorlátot.
 
 Az [Update-AzVmss](/powershell/module/az.compute/update-azvmss) parancsmag használatával engedélyezheti a megszakítási értesítéseket egy meglévő méretezési csoporton.
 
@@ -89,6 +96,33 @@ A fenti példa lehetővé teszi az értesítések leállítását egy meglévő 
 
 Miután engedélyezte az ütemezett eseményeket a méretezési csoport modelljén, és beállítja az időtúllépést, frissítse az egyes példányokat a [legújabb modellre](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , hogy tükrözze a módosításokat.
 
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+A következő példa egy új méretezési csoport létrehozásakor felmondási értesítés engedélyezésére szolgál.
+
+```azurecli-interactive
+az group create --name <myResourceGroup> --location <VMSSLocation>
+az vmss create \
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --image UbuntuLTS \
+  --admin-username <azureuser> \
+  --generate-ssh-keys \
+  --terminate-notification-time 10
+```
+
+A fenti példában a fenti példa létrehoz egy erőforráscsoportot, majd egy új méretezési csoportot hoz létre, amelyben a megszakítási értesítések engedélyezve vannak egy 10 perces alapértelmezett időkorlát esetén.
+
+A következő példa a lemondási értesítések engedélyezését szemlélteti egy meglévő méretezési csoporton belül.
+
+```azurecli-interactive
+az vmss update \  
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --enable-terminate-notification true \
+  --terminate-notification-time 10
+```
+
 ## <a name="get-terminate-notifications"></a>Értesítések megszakítása
 
 A leállítási értesítések kézbesítése [Scheduled Eventson](../virtual-machines/windows/scheduled-events.md)keresztül történik, amely egy Azure-metadata Service. Az Azure metaadat-szolgáltatás a virtuális gépről elérhető REST-végpont használatával teszi elérhetővé Virtual Machines futtatásával kapcsolatos információkat. Az információk egy nem irányítható IP-címen keresztül érhetők el, hogy ne legyenek kitéve a virtuális gépen kívül.
@@ -100,8 +134,8 @@ Scheduled Events le van tiltva a méretezési csoport esetében, ha a méretezé
 ### <a name="endpoint-discovery"></a>Végpont felderítése
 A VNET-kompatibilis virtuális gépek esetében a Metadata Service statikus, nem irányítható IP-címről, 169.254.169.254 érhető el.
 
-Az előzetes verzióhoz tartozó Scheduled Events legújabb verziójának teljes végpontja:
-> 'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
+A Scheduled Events legújabb verziójának teljes végpontja a következő:
+> 'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
 ### <a name="query-response"></a>Lekérdezési válasz
 A válasz ütemezett események tömbjét tartalmazza. Az üres tömb azt jelenti, hogy jelenleg nincsenek ütemezett események.
@@ -122,7 +156,7 @@ Abban az esetben, ha ütemezett események vannak, a válasz események tömbjé
     ]
 }
 ```
-A DocumentIncarnation egy ETag, és egyszerűen megvizsgálhatja, hogy az események tartalma módosult-e az utolsó lekérdezés óta.
+A *DocumentIncarnation* egy ETAG, és egyszerűen megvizsgálhatja, hogy az események tartalma módosult-e az utolsó lekérdezés óta.
 
 A fenti mezőkkel kapcsolatos további információkért tekintse meg a Windows és [Linux](../virtual-machines/linux/scheduled-events.md#event-properties) [rendszerhez](../virtual-machines/windows/scheduled-events.md#event-properties) készült Scheduled Events dokumentációját.
 
@@ -147,18 +181,18 @@ A [PowerShell](../virtual-machines/windows/scheduled-events.md#powershell-sample
 ## <a name="tips-and-best-practices"></a>Tippek és ajánlott eljárások
 -   Értesítések megszakítása csak a "Delete" műveletekben – az összes törlési művelet (manuális törlés vagy automatikus méretezés által kezdeményezett skálázás) a megszakítási eseményeket eredményezi, ha a méretezési csoport *scheduledEventsProfile* engedélyezve van. Más műveletek, például az újraindítás, az áttelepítés, az ismételt üzembe helyezés és a Leállítás/felszabadítás nem eredményeznek megszakítási eseményeket. Az alacsony prioritású virtuális gépek esetében nem engedélyezhető az értesítések megszakítása.
 -   Nincs kötelező várakozás az időtúllépésre – a megszakítási műveletet bármikor elindíthatja az esemény kézhezvétele után, és az esemény *NotBefore* idő lejárta előtt.
--   Kötelező törlés időkorlátnál – az előzetes verzió nem nyújt lehetőséget az időtúllépési érték kiterjesztésére egy esemény létrehozása után. Az időtúllépés lejárta után a rendszer feldolgozza a függőben lévő megszakítási eseményt, és törli a virtuális gépet.
+-   Kötelező törlés időkorlátnál – nincs lehetőség az időtúllépési érték kiterjesztésére egy esemény létrehozása után. Az időtúllépés lejárta után a rendszer feldolgozza a függőben lévő megszakítási eseményt, és törli a virtuális gépet.
 -   Módosítható időtúllépési érték – a példány törlése előtt bármikor módosíthatja az időtúllépési értéket, ha módosítja a *notBeforeTimeout* tulajdonságot a méretezési csoport modelljében, és frissíti a virtuálisgép-példányokat a legújabb modellre.
 -   Az összes függőben lévő törlés jóváhagyása – ha van függőben lévő törlés a nem jóváhagyott VM_1on, és jóváhagyta egy másik megszakítási eseményt VM_2, akkor VM_2 nem törlődik, amíg a rendszer nem törli az VM_1 megszakítási eseményét, vagy az időtúllépése eltelt. Ha jóváhagyja VM_1 megszakítási eseményét, akkor a VM_1 és a VM_2 is törlődik.
 -   Minden egyidejű törlés jóváhagyása – a fenti példát kiterjesztve, ha VM_1 és VM_2 ugyanazzal a *NotBefore* rendelkezik, akkor mindkét megszakítási eseményt jóvá kell hagyni, vagy egyetlen virtuális gépet sem kell törölni az időkorlát lejárta előtt.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 ### <a name="failure-to-enable-scheduledeventsprofile"></a>Nem sikerült engedélyezni a scheduledEventsProfile
-Ha "BadRequest" hibaüzenet jelenik meg, amely azt jelzi, hogy a "VirtualMachineProfile" típusú objektumon nem található "scheduledEventsProfile" tag, ellenőrizze a méretezési csoport műveleteihez használt API-verziót. Ehhez az előzetes verzióhoz a számítási API **2019-03-01** -es vagy újabb verziója szükséges.
+Ha "BadRequest" hibaüzenet jelenik meg, amely azt jelzi, hogy a "VirtualMachineProfile" típusú objektumon nem található "scheduledEventsProfile" tag, ellenőrizze a méretezési csoport műveleteihez használt API-verziót. A számítási API **2019-03-01** -es vagy újabb verziójára van szükség. 
 
 ### <a name="failure-to-get-terminate-events"></a>Nem sikerült beolvasni az eseményeket
 Ha nem kap **megszakítási** eseményt a Scheduled Eventson keresztül, akkor ellenőrizze az események beolvasásához használt API-verziót. Az események megszakításához Metadata Service API **2019-01-01** -es vagy újabb verziójára van szükség.
->'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
+>'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
 ### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>Az esemény megszakítása helytelen NotBefore idővel  
 Miután engedélyezte a *scheduledEventsProfile* a méretezési csoport modelljén, és beállítja a *notBeforeTimeout*, frissítse az egyes példányokat a [legújabb modellre](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , hogy tükrözze a módosításokat.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: a53a27a92b393c38d1f49efbd50d91fa1a2e9657
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 712626345e10ab0e4290ac91b0f121ff6960303e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597694"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920569"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-lemezképek az Azure-ban
 
@@ -41,6 +41,9 @@ A Red Hat Enterprise Linux-(RHEL-) lemezképek az Azure-ban az utólagos elszám
 - A lemezképek nem jogosultak, ezért az előfizetés-kezelővel regisztrálnia kell a virtuális gépeket, és előfizethet a Red Hat közvetlen frissítéseinek letöltésére
 
 - A Linux-lemezképek esetében jelenleg nem lehet dinamikusan váltani a BYOS és a TB számlázási modelljei között. A számlázási modell átváltásához a virtuális gépet a megfelelő rendszerképből kell újból üzembe helyezni
+
+>[!NOTE]
+> A 2. generációs RHEL BYOS-lemezképek jelenleg nem érhetők el a Piactéri ajánlaton keresztül. Ha a 2. generációs RHEL BYOS-rendszerképre van szüksége, látogasson el a coud Access Irányítópultra a Red Hat előfizetés-kezelésben. További részletek a [Red Hat dokumentációjában](https://access.redhat.com/articles/4847681)olvashatók.
 
 ## <a name="requirements-and-conditions-to-access-the-red-hat-gold-images"></a>A Red Hat Gold images-képek elérésére vonatkozó követelmények és feltételek
 

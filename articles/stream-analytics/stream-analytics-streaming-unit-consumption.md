@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: dd7579c97e2166e2822ee5674bbcd5a8ad64d2c7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/27/2020
+ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201492"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921147"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>A streamelési egységek ismertetése és módosítása
 
@@ -32,7 +32,7 @@ A (z)% kihasználtsági metrika, amely 0% és 100% közötti tartományba esik, 
     ![Azure Portal Stream Analytics feladatok konfigurálása][img.stream.analytics.preview.portal.settings.scale]
     
 4. A feladatokhoz tartozó SUs beállításához használja a csúszkát. Figyelje meg, hogy az adott SU-beállításokra korlátozódik. 
-5. Megváltoztathatja a feladathoz hozzárendelt SUs számát még akkor is, ha fut. Ez nem lehetséges, ha a feladattípus [nem particionált kimenetet](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output) használ, vagy [több lépésből álló lekérdezéssel rendelkezik, és értékek alapján eltérő partíciót](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values)tartalmaz. A feladatoknak legalább 6 SUs-vel kell rendelkezniük ahhoz, hogy ezt a beállítást a feladatok futtatásakor módosítani lehessen. Lehet, hogy a feladatok futtatásakor a SU értékek közül választhat. 
+5. Megváltoztathatja a feladathoz hozzárendelt SUs számát még akkor is, ha fut. Ez nem lehetséges, ha a feladattípus [nem particionált kimenetet](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output) használ, vagy [több lépésből álló lekérdezéssel rendelkezik, és értékek alapján eltérő partíciót](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values)tartalmaz. Lehet, hogy a feladatok futtatásakor a SU értékek közül választhat. 
 
 ## <a name="monitor-job-performance"></a>Feladatok teljesítményének figyelése
 A Azure Portal használatával nyomon követheti a feladatok átviteli sebességét:

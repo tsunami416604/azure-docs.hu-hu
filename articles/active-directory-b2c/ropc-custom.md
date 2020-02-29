@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: df6f8ce22e8215a0727db7f69e0f6e5c3f5fc9e0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840264"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917390"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás-tulajdonosi jelszó hitelesítő adatainak konfigurálása Azure Active Directory B2C egyéni házirend használatával
 
@@ -24,17 +24,7 @@ ms.locfileid: "76840264"
 
 Azure Active Directory B2C (Azure AD B2C) esetében az erőforrás-tulajdonos jelszava hitelesítő adatai (ROPC) folyamata egy szabványos OAuth-hitelesítési folyamat. Ebben a folyamatban egy alkalmazás, más néven a függő entitás, érvényes hitelesítő adatokat cserél a tokenekhez. A hitelesítő adatok tartalmazzák a felhasználói azonosítót és a jelszót. A visszaadott tokenek azonosító tokenek, hozzáférési tokenek és frissítési tokenek.
 
-A ROPC folyamat a következő beállításokat támogatja:
-
-- **Natív ügyfél** -felhasználói interakció a hitelesítés során akkor történik meg, amikor a kód egy felhasználói oldali eszközön fut.
-- Az API-hívásban az alkalmazás által összegyűjtött **nyilvános ügyféloldali** felhasználói hitelesítő adatok lesznek elküldve. Az alkalmazás hitelesítő adatai nem lesznek elküldve.
-- **Új jogcímek hozzáadása** – az azonosító jogkivonat tartalma módosítható új jogcímek hozzáadásához.
-
-A következő folyamatok nem támogatottak:
-
-- **Kiszolgáló – kiszolgáló** – az Identity Protection rendszernek a kapcsolat részeként a hívótól (a natív ügyféltől) gyűjtött megbízható IP-címet kell tartalmaznia. Kiszolgálóoldali API-hívás esetén csak a kiszolgáló IP-címe van használatban. Ha túl sok bejelentkezés meghiúsul, az Identity Protection rendszer egy ismétlődő IP-címet is megvizsgálhat támadóként.
-- **Egyoldalas alkalmazás** – az előtér-alkalmazás, amely elsősorban JavaScript nyelven íródott. Az alkalmazást gyakran olyan keretrendszerrel kell megírni, mint például a AngularJS, az izzó. js vagy a Durand.
-- **Bizalmas ügyféloldali folyamat** – az alkalmazás ügyfél-azonosítója érvényesítve van, de az alkalmazás titkos kulcsa nem.
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -261,7 +251,7 @@ Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazá
 - Cserélje le a `your-tenant-name`t a Azure AD B2C bérlő nevére.
 - Cserélje le a `B2C_1A_ROPC_Auth`t az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevére.
 
-| Jelmagyarázat | Value (Díj) |
+| Paraméter | Érték |
 | --- | ----- |
 | felhasználónév | `user-account` |
 | jelszó | `password1` |
@@ -306,12 +296,12 @@ Az offline-hozzáférés sikeres válasza a következő példához hasonlóan n�
 - Cserélje le a `your-tenant-name`t a Azure AD B2C bérlő nevére.
 - Cserélje le a `B2C_1A_ROPC_Auth`t az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevére.
 
-| Jelmagyarázat | Value (Díj) |
+| Paraméter | Érték |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
-| erőforrás | `application-id` |
+| resource | `application-id` |
 | refresh_token | `refresh-token` |
 
 - Cserélje le a `application-id`t az alkalmazás-AZONOSÍTÓra a *ROPC_Auth_app* regisztrációban.

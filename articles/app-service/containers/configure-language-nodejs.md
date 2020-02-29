@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat egy előre elkészített Node. j
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 6cf60472307a378d2fd4258a9777152344a11ded
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 45d7d141bc2ab85ab33be455fc3da5570b0e7f51
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670271"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920025"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Linux Node. js-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -44,6 +44,32 @@ Ezzel a beállítással adható meg a Node. js-verzió, amelyet a rendszer futá
 > [!NOTE]
 > Állítsa be a Node. js-verziót a projekt `package.json`. Az üzembe helyezési motor egy külön tárolóban fut, amely tartalmazza az összes támogatott Node. js-verziót.
 
+## <a name="customize-build-automation"></a>A Build Automation testreszabása
+
+Ha a Build Automation használatával git vagy zip csomagok segítségével helyezi üzembe az alkalmazást, akkor a App Service az alábbi lépésekkel hozhat létre automatizálási lépéseket:
+
+1. A `PRE_BUILD_SCRIPT_PATH`által megadott egyéni parancsfájl futtatása.
+1. `npm install` futtatása jelző nélkül, amely magában foglalja a NPM `preinstall` és a `postinstall` parancsfájlokat, valamint telepíti a `devDependencies`is.
+1. `npm run build` futtatása, ha egy Build parancsfájl van megadva a *Package. JSON*fájlban.
+1. `npm run build:azure` futtatása, ha Build: Azure-szkript van megadva a *Package. JSON*fájlban.
+1. A `POST_BUILD_SCRIPT_PATH`által megadott egyéni parancsfájl futtatása.
+
+> [!NOTE]
+> A [NPM docs](https://docs.npmjs.com/misc/scripts), a `prebuild` és a `postbuild` nevű szkriptek a `build`előtt és után futnak, ha meg van adva. `preinstall` és `postinstall` a `install`előtt és után futtatva.
+
+a `PRE_BUILD_COMMAND` és az `POST_BUILD_COMMAND` alapértelmezés szerint üres környezeti változók. Az előkészítő parancsok futtatásához adja meg a `PRE_BUILD_COMMAND`. A létrehozás utáni parancsok futtatásához adja meg a `POST_BUILD_COMMAND`.
+
+A következő példa a két változót adja meg egy több parancshoz, vesszővel elválasztva.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+További környezeti változók a Build Automation testreszabásához: [Oryx-konfiguráció](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+
+További információ App Service a Node. js-alkalmazások Linux rendszeren való futtatásáról és létrehozásáról [: Oryx dokumentáció: a Node. js-alkalmazások észlelése és felépítése](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/nodejs.md).
+
 ## <a name="configure-nodejs-server"></a>Node. js-kiszolgáló konfigurálása
 
 A Node. js-tárolók a [PM2](https://pm2.keymetrics.io/), a Production Process Manager szolgáltatással jönnek. Beállíthatja, hogy az alkalmazás a PM2 vagy a NPM, vagy egy egyéni paranccsal induljon el.
@@ -62,7 +88,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ### <a name="run-npm-start"></a>NPM-indítás futtatása
 
-Ha `npm start`használatával szeretné elindítani az alkalmazást, győződjön meg arról, hogy a *Package. JSON* fájlban a `start` parancsfájl szerepel. Példa:
+Ha `npm start`használatával szeretné elindítani az alkalmazást, győződjön meg arról, hogy a *Package. JSON* fájlban a `start` parancsfájl szerepel. Például:
 
 ```json
 {
@@ -110,7 +136,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 A Node. js-alkalmazást távolról is lekérdezheti a [Visual Studio Code](https://code.visualstudio.com/) -ban, ha úgy konfigurálja, hogy a PM-sel [fusson](#run-with-pm2), kivéve ha *. config. js, *. YML vagy *. YAML*használatával futtatja.
 
-A legtöbb esetben nincs szükség további konfigurációra az alkalmazáshoz. Ha az alkalmazás egy *Process. JSON* fájllal (alapértelmezett vagy egyéni) fut, akkor a JSON-gyökérben `script` tulajdonsággal kell rendelkeznie. Példa:
+A legtöbb esetben nincs szükség további konfigurációra az alkalmazáshoz. Ha az alkalmazás egy *Process. JSON* fájllal (alapértelmezett vagy egyéni) fut, akkor a JSON-gyökérben `script` tulajdonsággal kell rendelkeznie. Például:
 
 ```json
 {
@@ -126,7 +152,7 @@ Az Azure Explorerben keresse meg a hibakereséshez használni kívánt alkalmaz�
 
 Miután végzett a hibakereséssel, állítsa le a hibakeresőt a **kapcsolat bontása**lehetőség kiválasztásával. Ha a rendszer kéri, kattintson az **Igen** gombra a távoli hibakeresés letiltásához. Ha később szeretné letiltani, kattintson a jobb gombbal az alkalmazásra az Azure Explorerben, és válassza a **távoli hibakeresés letiltása**lehetőséget.
 
-## <a name="access-environment-variables"></a>Hozzáférési környezeti változók
+## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
 App Service az [Alkalmazásbeállítások](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) az alkalmazás kódján kívül is megadhatók. Ezt követően a standard Node. js-minta használatával érheti el őket. Ha például egy `NODE_ENV`nevű alkalmazás-beállítást szeretne elérni, használja a következő kódot:
 
@@ -138,7 +164,7 @@ process.env.NODE_ENV
 
 Alapértelmezés szerint a kudu `npm install --production` fut, amikor felismeri a Node. js-alkalmazást. Ha az alkalmazáshoz a népszerű Automation-eszközök, például a morog, a Bower vagy a Nyelő szükséges, egy [egyéni telepítési parancsfájlt](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) kell megadnia a futtatásához.
 
-Ha engedélyezni szeretné, hogy a tárház futtassa ezeket az eszközöket, hozzá kell adnia őket a *Package. JSON* -ban található függőségekhez. Példa:
+Ha engedélyezni szeretné, hogy a tárház futtassa ezeket az eszközöket, hozzá kell adnia őket a *Package. JSON* -ban található függőségekhez. Például:
 
 ```json
 "dependencies": {
@@ -217,7 +243,7 @@ fi
 
 App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e, vagy sem, vizsgálja meg a `X-Forwarded-Proto` fejlécét.
 
-A népszerű webes keretrendszerek lehetővé teszik a szabványos alkalmazási mintában lévő `X-Forwarded-*` információk elérését. Az [Express](https://expressjs.com/)-ben [megbízhatósági proxykat](https://expressjs.com/guide/behind-proxies.html)használhat. Példa:
+A népszerű webes keretrendszerek lehetővé teszik a szabványos alkalmazási mintában lévő `X-Forwarded-*` információk elérését. Az [Express](https://expressjs.com/)-ben [megbízhatósági proxykat](https://expressjs.com/guide/behind-proxies.html)használhat. Például:
 
 ```javascript
 app.set('trust proxy', 1)
@@ -240,7 +266,7 @@ if (req.secure) {
 Ha egy működő Node. js-alkalmazás máshogy viselkedik App Service vagy hibákat tartalmaz, próbálkozzon a következőkkel:
 
 - [A log stream elérése](#access-diagnostic-logs).
-- Az alkalmazás helyi tesztelése éles módban. App Service a Node. js-alkalmazásokat éles módban futtatja, ezért a projektnek a várt módon kell működnie a helyi üzemi módban. Példa:
+- Az alkalmazás helyi tesztelése éles módban. App Service a Node. js-alkalmazásokat éles módban futtatja, ezért a projektnek a várt módon kell működnie a helyi üzemi módban. Például:
     - A *Package. JSON*fájltól függően különböző csomagok is telepíthetők üzemi módba (`dependencies` vagy `devDependencies`).
     - Bizonyos webes keretrendszerek eltérő üzemi módban telepíthetnek statikus fájlokat.
     - Bizonyos webes keretrendszerek éles módban történő futtatáskor egyéni indítási parancsfájlokat is használhatnak.

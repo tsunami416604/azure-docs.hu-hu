@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 47cea412489693cedb05bd8a94a914b1757b8058
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: b1f7aaeaf5d1537e0e5a427ad994f7e31e43fee3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152159"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921368"
 ---
 # <a name="multiclass-decision-forest-module"></a>Többosztályos döntési erdő modul
 
@@ -55,6 +55,7 @@ Azure Machine Learning a döntési erdő besorolása a döntési fák együttes�
 
     + **Egyetlen paraméter**: válassza ezt a lehetőséget, ha tudja, hogyan szeretné konfigurálni a modellt, és adjon meg argumentumként egy értéket.
 
+    + **Paraméter tartománya**: akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.   
 
 5. **Döntési fák száma**: Itt adhatja meg az Ensemble-ban létrehozható döntési fák maximális számát. További döntési fák létrehozásával lehetőség van jobb lefedettségre, de a képzés hosszabb ideig is növelheti.
 

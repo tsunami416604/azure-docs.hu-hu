@@ -1,20 +1,19 @@
 ---
 title: Mi a Apache Hadoop Technology stack? – Azure HDInsight
 description: Bevezetés a HDInsight, valamint a Apache Hadoop Technology stackbe és összetevőkbe.
-keywords: azure hadoop, hadoop azure, hadoop bevezetés, hadoop bemutatása, hadoop-technológiák, bevezetés a hadoop szolgáltatásba, a hadoop bemutatása, mi az a hadoop-fürt, mi a hadoop-fürt, mire való a hadoop
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
-ms.date: 08/15/2019
-ms.openlocfilehash: 193b8f59a805de4303bfc38d397a821cc068dcc0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
+ms.date: 02/27/2020
+ms.openlocfilehash: e98a11d9aee1c4f76453dc1716f92514b021444f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088204"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917832"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Mi Apache Hadoop az Azure HDInsight?
 
@@ -24,15 +23,15 @@ Az Azure HDInsight egy teljes körűen felügyelt, teljes spektrumú, nyílt for
 
 A HDInsight elérhető Hadoop Technology stack-összetevők megtekintéséhez tekintse meg a [HDInsight által elérhető összetevőket és verziókat](../hdinsight-component-versioning.md). További tudnivalók a HDInsightban használt Hadoopról [az Azure-szolgáltatások HDInsightra vonatkozó oldalán](https://azure.microsoft.com/services/hdinsight/) olvashatók.
 
-## <a id="whatis"></a>Mi az a MapReduce?
+## <a name="what-is-mapreduce"></a>Mi az a MapReduce?
 
 Apache Hadoop MapReduce olyan szoftver-keretrendszer, amely nagy mennyiségű adat feldolgozására szolgáló feladatokat ír. A bemeneti adatok felosztása független adattömbökbe történik. Minden adathalmaz feldolgozása párhuzamosan történik a fürt csomópontjai között. A MapReduce-feladatok két függvényből állnak:
 
-* **Mapper**: A bemeneti adatokat használja fel, elemzi (általában szűrési és rendezési műveletekkel), és rekordok (kulcs-érték párok) bocsát ki.
+* **Mapper**: a bemeneti adatokat használja, elemzi (általában szűrési és rendezési műveletekkel), és rekordok (kulcs-érték párok) bocsát ki.
 
-* **Szűkítő**: Felhasználja a Mapper által kibocsátott rekordok, és olyan összegző műveletet hajt végre, amely létrehoz egy kisebb, kombinált eredményt a leképezési adatokból.
+* **Szűkítő**: felhasználja a Mapper által kibocsátott rekordok, és olyan összegző műveletet hajt végre, amely létrehoz egy kisebb, kombinált eredményt a Mapper adataiból.
 
-A következő ábrán látható egy alapszintű Word Count MapReduce-feladat példája:   
+A következő ábrán látható egy alapszintű Word Count MapReduce-feladat példája:
 
  ![HDI.WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
@@ -51,12 +50,12 @@ A Hadoop stream a leképező és a redukáló adatátvitelt az STDIN és az STDO
 
     [key]/t[value]
 
-További információ: [Hadoop streaming](https://hadoop.apache.org/docs/r1.2.1/streaming.html).
+További információ: [Hadoop streaming](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html).
 
 Az Hadoop streaming HDInsight-vel való használatát bemutató példákért tekintse meg a következő dokumentumot:
 
 * [MapReduce C# -feladatok fejlesztése](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Hadoop-fürt létrehozása a HDInsight-ben](apache-hadoop-linux-create-cluster-get-started-portal.md)

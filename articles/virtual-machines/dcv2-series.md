@@ -2,17 +2,17 @@
 title: DC sorozat – Azure Virtual Machines
 description: A DC sorozatú virtuális gépek specifikációi.
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: c4e141b7854925f5d12afce19481a6e9c2f8dd1d
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 41b08a921b4cc71275c216e86e89e49b59fc950a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599222"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163743"
 ---
 # <a name="preview-dcv2-series"></a>Előzetes verzió: DCv2 sorozat
 
@@ -24,6 +24,10 @@ Példa használati esetekre: bizalmas többrésztvevős adatmegosztás, csaláso
 Premium Storage: támogatott *
 
 Premium Storage gyorsítótárazás: támogatott *
+
+Élő áttelepítés: nem támogatott
+
+Memória-megőrzési frissítések: nem támogatott
 
 \* A Standard_DC8_v2 kivételével
 

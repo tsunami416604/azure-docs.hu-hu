@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 02/27/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a6187fa9f274c6d00c1c9872a1b27268ac91295e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888889"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161486"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás AD FS és külső szolgáltatókkal a vendég felhasználói számára (előzetes verzió)
 |     |
@@ -64,6 +64,10 @@ Ha a metaadatok URL-címét a személyazonosság-szolgáltató beállításaiban
 
 ### <a name="limit-on-federation-relationships"></a>Összevonási kapcsolatok korlátozása
 Jelenleg legfeljebb 1 000 összevonási kapcsolat támogatott. Ez a korlát magában foglalja a [belső szövetségeket](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) és a közvetlen szövetségeket is.
+
+### <a name="limit-on-multiple-domains"></a>Korlátozás több tartományra
+Jelenleg nem támogatottak a közvetlen összevonás ugyanahhoz a bérlőhöz tartozó több tartománnyal.
+
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Beállíthat közvetlen összevonást olyan tartománnyal, amelyhez nem felügyelt (e-mailben ellenőrzött) bérlő létezik? 
 Igen. Ha a tartomány még nem lett ellenőrizve, és a bérlő nem ment át a [rendszergazdai átvételre](../users-groups-roles/domains-admin-takeover.md), beállíthatja, hogy a közvetlen összevonás legyen a tartománnyal. Nem felügyelt, vagy e-mailben ellenőrzött bérlők akkor jönnek létre, amikor egy felhasználó bevált egy B2B-meghívást, vagy önkiszolgáló regisztrációt hajt végre az Azure AD-ben olyan tartomány használatával, amely jelenleg nem létezik. Ezeket a tartományokat közvetlen összevonással is megadhatja. Ha a közvetlen összevonás DNS által ellenőrzött tartománnyal való beállítását kísérli meg a Azure Portal vagy a PowerShellen keresztül, akkor hibaüzenet jelenik meg.
@@ -90,16 +94,16 @@ Az alábbi táblázatokban a harmadik féltől származó identitás-szolgáltat
 
 Az SAML 2,0 válaszához szükséges attribútumok a identitásszolgáltató:
 
-|Attribútum  |Value (Díj)  |
+|Attribútum  |Érték  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
-|Közönség     |`urn:federation:MicrosoftOnline`         |
+|Célközönség     |`urn:federation:MicrosoftOnline`         |
 |Kiállító     |A partner identitásszolgáltató kiállítói URI-ja, például `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
 A identitásszolgáltató által kiadott SAML 2,0-tokenhez szükséges jogcímek:
 
-|Attribútum  |Value (Díj)  |
+|Attribútum  |Érték  |
 |---------|---------|
 |NameID formátuma     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -116,15 +120,15 @@ Az alábbi táblázatokban az adott attribútumokra és jogcímekre vonatkozó k
 
 Szükséges attribútumok a WS-fed üzenetben a identitásszolgáltató:
  
-|Attribútum  |Value (Díj)  |
+|Attribútum  |Érték  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
-|Közönség     |`urn:federation:MicrosoftOnline`         |
+|Célközönség     |`urn:federation:MicrosoftOnline`         |
 |Kiállító     |A partner identitásszolgáltató kiállítói URI-ja, például `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 A identitásszolgáltató által kiadott WS-fed jogkivonat számára szükséges jogcímek:
 
-|Attribútum  |Value (Díj)  |
+|Attribútum  |Érték  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -137,7 +141,7 @@ Ezután konfigurálnia kell az összevonást az Azure AD 1. lépésében konfigu
 
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Közvetlen összevonás konfigurálása az Azure AD-portálon
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** gombot. 
 2. Válassza a **szervezeti kapcsolatok**lehetőséget.
 3. Válassza az **identitás-szolgáltatók**lehetőséget, majd válassza az **Új SAML/ws-fed identitásszolgáltató**elemet.
 
@@ -185,7 +189,7 @@ Most tesztelje a közvetlen összevonási telepítőt egy új B2B vendég felhas
  
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Hogyan a közvetlen összevonási kapcsolat szerkesztését?
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** gombot. 
 2. Válassza a **szervezeti kapcsolatok**lehetőséget.
 3. **Identitás-szolgáltatók** kiválasztása
 4. Az **SAML/ws-fed identitás-szolgáltatók**területen válassza ki a szolgáltatót.
@@ -196,7 +200,7 @@ Most tesztelje a közvetlen összevonási telepítőt egy új B2B vendég felhas
 ## <a name="how-do-i-remove-direct-federation"></a>Hogyan a közvetlen összevonás eltávolítása?
 Törölheti a közvetlen összevonási telepítést. Ha így tesz, a meghívónak már beváltott felhasználók nem fognak tudni bejelentkezni. Ha azonban ismét hozzáférést ad az erőforrásokhoz, törölje őket a címtárból, és hívja fel őket. Az Azure AD-portálon lévő közvetlen összevonás eltávolítása az identitás-szolgáltatóval:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** gombot. 
 2. Válassza a **szervezeti kapcsolatok**lehetőséget.
 3. Válassza az **identitás-szolgáltatók**elemet.
 4. Válassza ki az identitás-szolgáltatót, majd válassza a **Törlés**lehetőséget. 

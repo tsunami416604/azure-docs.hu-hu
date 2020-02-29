@@ -2,17 +2,17 @@
 title: Lsv2 sorozat – Azure Virtual Machines
 description: A Lsv2 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
-author: jonbeck7
+author: sasha-melamed
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: b10433190ccc7703938bed2a75a5d816f073295e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 103e19d6e299956b5ee1ad45b577e25f9f2de1c4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587260"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164032"
 ---
 # <a name="lsv2-series"></a>Lsv2 sorozat
 
@@ -30,6 +30,10 @@ ACU: 150-175
 Premium Storage: támogatott
 
 Premium Storage gyorsítótárazás: nem támogatott
+
+Élő áttelepítés: nem támogatott
+
+Memória-megőrzési frissítések: nem támogatott
 
 | Méret | vCPU | Memória (GiB) | <sup>1</sup> . ideiglenes lemez (GIB) | NVMe-lemezek<sup>2</sup> | NVMe lemez átviteli sebessége<sup>3</sup> (olvasási IOPS/Mbps) | Gyorsítótár nélküli adatlemez maximális átviteli sebessége (IOPs/MBps)<sup>4</sup> | Adatlemezek maximális száma | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |---|---|---|---|---|---|---|---|---|

@@ -15,18 +15,20 @@ ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 24d8a0b88da44c53cb176244cd5fe7377514abda
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5bfdcfab37091a5f581ce147c0a6af5ccd8147a0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978121"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914789"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>SQL Server virtuális gép kiépítése Azure PowerShell használatával (klasszikus)
 
+[!INCLUDE [classic-vm-deprecation](../../../../includes/classic-vm-deprecation.md)]
+
 Ez a cikk a SQL Server virtuális gépek Azure-beli létrehozásával kapcsolatos lépéseit ismerteti a PowerShell-parancsmagok használatával.
 
-> [!IMPORTANT] 
+> [!NOTE] 
 > Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 
 A jelen témakör Resource Manager-verziójának használatával kapcsolatban lásd: [SQL Server virtuális gép kiépítése Azure PowerShell Resource Managerrel](../sql/virtual-machines-windows-ps-sql-create.md).
@@ -140,7 +142,7 @@ Végül hozza létre a virtuális gépet a PowerShell használatával:
 > [!NOTE]
 > További magyarázatért és konfigurációs lehetőségekhez tekintse meg a [Windows-alapú Virtual Machines létrehozásához és előkonfigurálásához használja a Azure PowerShell használata](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)a következőben: a **parancsbővítések összeállítása** című szakaszt.
 
-## <a name="example-powershell-script"></a>Példa a PowerShell parancsprogramra
+## <a name="example-powershell-script"></a>Példa PowerShell-parancsfájlra
 
 A következő parancsfájl egy olyan teljes parancsfájlt mutat be, amely egy **SQL Server 2016 RTM Enterprise rendszert hoz létre a Windows Server 2012 R2 rendszerű** virtuális gépen. Ha ezt a parancsfájlt használja, a jelen témakör előző lépései alapján testre kell szabnia a kezdeti változókat.
 

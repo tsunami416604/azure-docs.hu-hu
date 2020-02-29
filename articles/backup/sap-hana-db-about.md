@@ -3,18 +3,18 @@ title: Tudnivalók az Azure-beli virtuális gépeken SAP HANA adatbázis biztons
 description: Ez a cikk az Azure Virtual Machines szolgáltatásban futó SAP HANA adatbázisok biztonsági mentését ismerteti.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a1be572d6462ed8f8a86db0f5cbfeaaa37c219ab
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 188cef6bc9771f779e3e9c7f7f5fe246e929b68a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586563"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918512"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Tudnivalók az Azure-beli virtuális gépeken SAP HANA adatbázis biztonsági mentéséről
 
 SAP HANA adatbázisok olyan kritikus fontosságú munkaterhelések, amelyek alacsony helyreállítási időcélkitűzést (RPO) és gyors helyreállítási időszakot (RTO) igényelnek. [Az Azure-beli virtuális gépeken futó SAP HANA-adatbázisok biztonsági mentését](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)használatával végezheti el.
 
-Azure Backup az SAP által [tanúsított Backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) , hogy natív biztonsági mentési támogatást nyújtson a SAP HANA natív API-jai segítségével. Ez az ajánlat olyan Azure Backup, amely az **infrastruktúra-alapú** biztonsági mentések Azure Backupi Mantra szolgáltatásával összhangban van, így nincs szükség a biztonsági mentési infrastruktúra üzembe helyezésére és felügyeletére. Mostantól zökkenőmentesen végezheti el az Azure-beli virtuális gépeken futó SAP HANA-adatbázisok biztonsági mentését és visszaállítását (az[M sorozatú virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory) mostantól is támogatottak), és a Azure Backup által biztosított vállalati felügyeleti képességeket
+Azure Backup az SAP által [tanúsított Backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) , hogy natív biztonsági mentési támogatást nyújtson a SAP HANA natív API-jai segítségével. Ez az ajánlat olyan Azure Backup, amely az **infrastruktúra-alapú** biztonsági mentések Azure Backupi Mantra szolgáltatásával összhangban van, így nincs szükség a biztonsági mentési infrastruktúra üzembe helyezésére és felügyeletére. Mostantól zökkenőmentesen végezheti el az Azure-beli virtuális gépeken futó SAP HANA-adatbázisok biztonsági mentését és visszaállítását (az[M sorozatú virtuális gépek](../virtual-machines/m-series.md) mostantól is támogatottak), és a Azure Backup által biztosított vállalati felügyeleti képességeket
 
 ## <a name="added-value"></a>Hozzáadott érték
 

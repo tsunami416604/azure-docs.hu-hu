@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae5c4cdd76f164d13da349c355a30d8b6dc83058
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: deb337d989a3658e909cefa7a9ab028e37792562
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102088"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918376"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Kapcsolódás SQL Server Azure-beli virtuális géphez
 
@@ -41,7 +41,7 @@ A kapcsolódási lehetőségek a következők:
 
 | Beállítás | Leírás |
 |---|---|
-| **Public** | Kapcsolódás SQL Server az interneten keresztül |
+| **Nyilvános** | Kapcsolódás SQL Server az interneten keresztül |
 | **Titkos** | Kapcsolódás SQL Server ugyanahhoz a virtuális hálózathoz |
 | **Helyi** | Kapcsolódás SQL Server helyileg ugyanazon a virtuális gépen | 
 
@@ -59,7 +59,7 @@ Ha az internetről szeretne csatlakozni a SQL Server adatbázis-motorhoz, válas
 > [!IMPORTANT]
 > A SQL Server Developer és az expressz kiadások virtuálisgép-rendszerképei nem engedélyezik automatikusan a TCP/IP protokollt. Fejlesztői és expressz kiadások esetén a virtuális gép létrehozása után a [TCP/IP protokoll manuális engedélyezéséhez](#manualtcp) SQL Server konfigurációkezelőt kell használnia.
 
-Bármely internet-hozzáféréssel rendelkező ügyfél csatlakozhat a SQL Server példányhoz a virtuális gép nyilvános IP-címének vagy az IP-címhez rendelt bármely DNS-címkének a megadásával. Ha a SQL Server port 1433, nem kell megadnia azt a kapcsolódási karakterláncban. A következő kapcsolati karakterlánc egy SQL- `sqlvmlabel.eastus.cloudapp.azure.com` hitelesítést használó SQL virtuális géphez csatlakozik (a nyilvános IP-címet is használhatja).
+Bármely internet-hozzáféréssel rendelkező ügyfél csatlakozhat a SQL Server példányhoz a virtuális gép nyilvános IP-címének vagy az IP-címhez rendelt bármely DNS-címkének a megadásával. Ha a SQL Server port 1433, nem kell megadnia azt a kapcsolódási karakterláncban. A következő kapcsolati karakterlánc egy SQL-hitelesítéssel `sqlvmlabel.eastus.cloudapp.azure.com` DNS-címkével rendelkező SQL virtuális géphez csatlakozik (a nyilvános IP-címet is használhatja).
 
 ```
 Server=sqlvmlabel.eastus.cloudapp.azure.com;Integrated Security=false;User ID=<login_name>;Password=<your_password>
@@ -76,12 +76,12 @@ Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User 
 
 ## <a name="connect-to-sql-server-within-a-virtual-network"></a>Kapcsolódás SQL Server virtuális hálózaton belül
 
-Ha a portálon az **SQL** -kapcsolati típushoz **privát** lehetőséget választ, az Azure a legtöbb olyan beállítást konfigurálja, amely azonos a **nyilvános**értékkel. Az egyetlen különbség, hogy nincs olyan hálózati biztonsági csoportra vonatkozó szabály, amely engedélyezi a SQL Server porton kívüli forgalom használatát (alapértelmezés szerint 1433).
+Ha a portálon az **SQL-kapcsolati** típushoz **privát** lehetőséget választ, az Azure a legtöbb olyan beállítást konfigurálja, amely azonos a **nyilvános**értékkel. Az egyetlen különbség, hogy nincs olyan hálózati biztonsági csoportra vonatkozó szabály, amely engedélyezi a SQL Server porton kívüli forgalom használatát (alapértelmezés szerint 1433).
 
 > [!IMPORTANT]
 > A SQL Server Developer és az expressz kiadások virtuálisgép-rendszerképei nem engedélyezik automatikusan a TCP/IP protokollt. Fejlesztői és expressz kiadások esetén a virtuális gép létrehozása után a [TCP/IP protokoll manuális engedélyezéséhez](#manualtcp) SQL Server konfigurációkezelőt kell használnia.
 
-A magánhálózati kapcsolatot gyakran használják Virtual Networkokkal együtt, [](../../../virtual-network/virtual-networks-overview.md)ami számos forgatókönyvet tesz lehetővé. Ugyanazon a virtuális hálózaton is csatlakoztathatók a virtuális gépek, még akkor is, ha ezek a virtuális gépek különböző erőforráscsoportok alatt találhatók. A helyek közötti [VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)használatával olyan hibrid architektúrát is létrehozhat, amely a helyszíni hálózatokkal és számítógépekkel összekapcsolja a virtuális gépeket.
+A magánhálózati kapcsolatot gyakran használják [Virtual Networkokkal](../../../virtual-network/virtual-networks-overview.md)együtt, ami számos forgatókönyvet tesz lehetővé. Ugyanazon a virtuális hálózaton is csatlakoztathatók a virtuális gépek, még akkor is, ha ezek a virtuális gépek különböző erőforráscsoportok alatt találhatók. A helyek közötti [VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)használatával olyan hibrid architektúrát is létrehozhat, amely a helyszíni hálózatokkal és számítógépekkel összekapcsolja a virtuális gépeket.
 
 A virtuális hálózatok lehetővé teszik az Azure-beli virtuális gépek tartományhoz való csatlakoztatását is. Ez az egyetlen módszer a Windows-hitelesítés használatára a SQL Server. A többi csatlakoztatási forgatókönyvhöz felhasználónevek és jelszavak szükségesek az SQL-hitelesítéshez.
 
@@ -137,7 +137,7 @@ A következő táblázat az Azure-beli virtuális gépeken futó SQL Serverhoz v
 
 | Követelmény | Leírás |
 |---|---|
-| [SQL Server hitelesítési mód engedélyezése](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | SQL Server hitelesítés szükséges ahhoz, hogy távolról csatlakozhasson a virtuális géphez, hacsak nem konfigurálta a Active Directoryt egy Virtual Networkn. |
+| [SQL Server hitelesítési mód engedélyezése](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | SQL Server hitelesítés szükséges ahhoz, hogy távolról csatlakozhasson a virtuális géphez, hacsak nem konfigurálta a Active Directoryt egy Virtual Networkn. |
 | [SQL-bejelentkezés létrehozása](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | SQL-hitelesítés használata esetén olyan felhasználónévvel és jelszóval rendelkező SQL-bejelentkezésre van szükség, amely a céladatbázis engedélyeivel is rendelkezik. |
 | [TCP/IP protokoll engedélyezése](#manualtcp) | A SQL Servernak engedélyeznie kell a TCP protokollon keresztüli kapcsolatokat. |
 | [Tűzfalszabály engedélyezése a SQL Server porthoz](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | A virtuális gépen lévő tűzfalnak engedélyeznie kell a bejövő forgalmat a SQL Server porton (alapértelmezett 1433). |

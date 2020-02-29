@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat egy előre elkészített PHP-tá
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: a3de4769193d95a3ef483924c4d65c4fa1cc9f8d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e805487075499bd4e461a21fffb4c44156ce192b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671837"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913871"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Linux PHP-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -39,52 +39,26 @@ Futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com) a PHP-
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
 ```
 
-## <a name="run-composer"></a>Zeneszerző futtatása
+## <a name="customize-build-automation"></a>A Build Automation testreszabása
 
-Alapértelmezés szerint a kudu nem futtatja a [zeneszerzőt](https://getcomposer.org/). Ha a kudu telepítése során engedélyezni szeretné a zeneszerzői automatizálást, meg kell adnia egy [Egyéni üzembe helyezési parancsfájlt](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
+Ha a Build Automation használatával git vagy zip csomagok segítségével helyezi üzembe az alkalmazást, akkor a App Service az alábbi lépésekkel hozhat létre automatizálási lépéseket:
 
-A helyi terminál ablakában váltson át a könyvtárra a tárház gyökerére. A *zeneszerző. farmakovigilancia*letöltéséhez kövesse a [parancssori telepítési lépéseket](https://getcomposer.org/download/) .
+1. A `PRE_BUILD_SCRIPT_PATH`által megadott egyéni parancsfájl futtatása.
+1. Futtassa az `php composer.phar install` parancsot.
+1. A `POST_BUILD_SCRIPT_PATH`által megadott egyéni parancsfájl futtatása.
 
-Futtassa az alábbi parancsot:
+a `PRE_BUILD_COMMAND` és az `POST_BUILD_COMMAND` alapértelmezés szerint üres környezeti változók. Az előkészítő parancsok futtatásához adja meg a `PRE_BUILD_COMMAND`. A létrehozás utáni parancsok futtatásához adja meg a `POST_BUILD_COMMAND`.
 
-```bash
-npm install kuduscript -g
-kuduscript --php --scriptType bash --suppressPrompt
+A következő példa a két változót adja meg egy több parancshoz, vesszővel elválasztva.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-A tárház gyökerében most két új fájl található a *zeneszerzőn kívül. farmakovigilancia*: *. Deployment* és *Deploy.sh*. Ezek a fájlok a App Service Windows-és Linux-környezetei esetében egyaránt működnek.
+További környezeti változók a Build Automation testreszabásához: [Oryx-konfiguráció](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
 
-Nyissa meg a *Deploy.sh* , és keresse meg a `Deployment` szakaszt. Cserélje le az egész szakaszt a következő kódra:
-
-```bash
-##################################################################################################################################
-# Deployment
-# ----------
-
-echo PHP deployment
-
-# 1. KuduSync
-if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
-  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
-  exitWithMessageOnError "Kudu Sync failed"
-fi
-
-# 3. Initialize Composer Config
-initializeDeploymentConfig
-
-# 4. Use composer
-echo "$DEPLOYMENT_TARGET"
-if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
-  echo "Found composer.json"
-  pushd "$DEPLOYMENT_TARGET"
-  php composer.phar install $COMPOSER_ARGS
-  exitWithMessageOnError "Composer install failed"
-  popd
-fi
-##################################################################################################################################
-```
-
-Véglegesítse az összes módosítást, és telepítse újra a kódot. A zeneszerzőnek most már futnia kell az üzembe helyezés automatizálásának részeként.
+A PHP-alkalmazások Linux rendszeren való futtatásáról és App Serviceáról további információt a [Oryx dokumentációjában talál: a PHP-alkalmazások észlelése és építése](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md).
 
 ## <a name="customize-start-up"></a>Indítás testreszabása
 
@@ -94,7 +68,7 @@ Alapértelmezés szerint a beépített PHP-tároló futtatja az Apache-kiszolgá
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-## <a name="access-environment-variables"></a>Hozzáférési környezeti változók
+## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
 App Service az [Alkalmazásbeállítások](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) az alkalmazás kódján kívül is megadhatók. Ezt követően a szabványos [GETENV ()](https://secure.php.net/manual/function.getenv.php) minta használatával érheti el őket. Ha például egy `DB_HOST`nevű alkalmazás-beállítást szeretne elérni, használja a következő kódot:
 
@@ -142,7 +116,7 @@ Ha módosítania kell a PHP-telepítést, a következő lépésekkel módosítha
 
 PHP_INI_USER, PHP_INI_PERDIR és PHP_INI_ALL irányelvek testreszabásához (lásd a [php. ini direktívát](https://www.php.net/manual/ini.list.php)), adjon hozzá egy *. htaccess* -fájlt az alkalmazás gyökérkönyvtárához.
 
-A *. htaccess* fájlban adja hozzá az irányelveket a `php_value <directive-name> <value>` szintaxis használatával. Példa:
+A *. htaccess* fájlban adja hozzá az irányelveket a `php_value <directive-name> <value>` szintaxis használatával. Például:
 
 ```
 php_value upload_max_filesize 1000M
@@ -224,7 +198,7 @@ A módosítások érvénybe léptetéséhez indítsa újra az alkalmazást.
 Ha egy működő PHP-alkalmazás másképp viselkedik App Service vagy hibákat tartalmaz, próbálkozzon a következőkkel:
 
 - [A log stream elérése](#access-diagnostic-logs).
-- Az alkalmazás helyi tesztelése éles módban. App Service a Node. js-alkalmazásokat éles módban futtatja, ezért a projektnek a várt módon kell működnie a helyi üzemi módban. Példa:
+- Az alkalmazás helyi tesztelése éles módban. App Service a Node. js-alkalmazásokat éles módban futtatja, ezért a projektnek a várt módon kell működnie a helyi üzemi módban. Például:
     - A *Composer. JSON*fájltól függően különböző csomagok is telepíthetők éles üzemmódba (`require` vagy `require-dev`).
     - Bizonyos webes keretrendszerek eltérő üzemi módban telepíthetnek statikus fájlokat.
     - Bizonyos webes keretrendszerek éles módban történő futtatáskor egyéni indítási parancsfájlokat is használhatnak.

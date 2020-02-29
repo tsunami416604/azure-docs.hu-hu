@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 02/28/2020
 tags: connectors
-ms.openlocfilehash: 3370eea8909f30563babcf2a84f727ba51f67e29
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647645"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161874"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-fájlok figyelése, létrehozása és kezelése SSH és Azure Logic Apps használatával
 
@@ -31,7 +31,28 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
 
 ## <a name="limits"></a>Korlátok
 
-* Az SFTP-SSH-műveletek alapértelmezés szerint *1 GB vagy kisebb* fájlok olvasását vagy írását írják elő, de egyszerre csak *15 MB* -onként. A 15 MB-nál nagyobb fájlok kezeléséhez az SFTP-SSH műveletek támogatják az [üzenetek darabolását](../logic-apps/logic-apps-handle-large-messages.md), kivéve a fájl másolása műveletet, amely csak 15 MB-os fájlt képes kezelni. A **fájl tartalmának beolvasása** művelet implicit módon használja az üzenetek darabolását.
+* SFTP – az [adatdarabolást](../logic-apps/logic-apps-handle-large-messages.md) támogató SSH-műveletek legfeljebb 1 GB-tal kezelhetik a fájlokat, míg az olyan SFTP-SSH-műveletek, amelyek nem támogatják a darabolást, akár 50 MB-ot is kezelhetnek. Bár az alapértelmezett méret 15 MB, ez a méret dinamikusan változhat, 5 MB-tól kezdődően, és fokozatosan növekszik a 50 MB-os maximális értékre, az olyan tényezők alapján, mint a hálózati késés, a kiszolgáló válaszideje és így tovább.
+
+  > [!NOTE]
+  > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
+
+  Az adatrészlet mérete egy kapcsolatban van társítva, ami azt jelenti, hogy ugyanazt a kapcsolatokat használhatja a darabolást támogató műveletekhez, majd olyan műveletekhez, amelyek nem támogatják a darabolást. Ebben az esetben az adathalmaz mérete olyan műveletek esetében, amelyek nem támogatják az adatdarabolási tartományokat 5 MB-ról 50 MB-ra. Ez a táblázat azt mutatja, hogy mely SFTP-SSH-műveletek támogatják a darabolást:
+
+  | Műveletek | Adatdarabolás támogatása |
+  |--------|------------------|
+  | **Fájl másolása** | Nem |
+  | **Fájl létrehozása** | Igen |
+  | **Mappa létrehozása** | Nem alkalmazható |
+  | **Fájl törlése** | Nem alkalmazható |
+  | **Archív fájl kibontása a mappába** | Nem alkalmazható |
+  | **Fájl tartalmának beolvasása** | Igen |
+  | **Fájl tartalmának beolvasása elérési út alapján** | Igen |
+  | **Fájl metaadatainak beolvasása** | Nem alkalmazható |
+  | **Fájl metaadatainak beolvasása elérési út használatával** | Nem alkalmazható |
+  | **Mappában található fájlok listázása** | Nem alkalmazható |
+  | **Fájl átnevezése** | Nem alkalmazható |
+  | **Fájl frissítése** | Nem |
+  |||
 
 * SFTP – az SSH-eseményindítók nem támogatják a darabolást. Fájl tartalmának kérésekor az eseményindítók csak a 15 MB vagy annál kisebb fájlokat jelölik ki. A 15 MB-nál nagyobb fájlok lekéréséhez kövesse az alábbi mintát:
 
@@ -46,10 +67,6 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
 Íme az SFTP-SSH-összekötő és az SFTP-összekötő, ahol az SFTP-SSH összekötő az alábbi képességekkel rendelkezik:
 
 * A a [SSH.net könyvtárat](https://github.com/sshnet/SSH.NET)használja, amely a .NET-et támogató nyílt forráskódú Secure Shell-(SSH-) kódtár.
-
-* Az SFTP-SSH-műveletek alapértelmezés szerint *1 GB vagy kisebb* fájlok olvasását vagy írását írják elő, de egyszerre csak *15 MB* -onként.
-
-  A 15 MB-nál nagyobb fájlok kezeléséhez az SFTP-SSH műveletek az [üzenetek darabolását](../logic-apps/logic-apps-handle-large-messages.md)is használhatják. A fájl másolása művelet azonban csak 15 MB-nyi fájlt támogat, mivel ez a művelet nem támogatja az üzenetek darabolását. SFTP – az SSH-eseményindítók nem támogatják a darabolást. Nagyméretű fájlok feltöltéséhez olvasási és írási engedéllyel kell rendelkeznie a gyökérmappa számára az SFTP-kiszolgálón.
 
 * Megadja a **mappa létrehozása** műveletet, amely létrehoz egy MAPPÁT az SFTP-kiszolgálón megadott elérési úton.
 

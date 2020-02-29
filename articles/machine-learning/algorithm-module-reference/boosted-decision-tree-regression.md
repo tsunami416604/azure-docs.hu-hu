@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 5298655437e04736e56193c443b8a770ea929606
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 10821639fb26af935326bda0bff7895105da675c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152414"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919957"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>A döntési fa regressziós moduljának növelése
 
@@ -54,7 +54,9 @@ A színátmenet-növelési módszer a besorolási problémákhoz is használhat�
   
 2.  Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
-    -   **Egyetlen paraméter**: válassza ezt a lehetőséget, ha tudja, hogyan szeretné konfigurálni a modellt, és adjon meg egy adott értékeket argumentumként.  
+    -   **Egyetlen paraméter**: válassza ezt a lehetőséget, ha tudja, hogyan szeretné konfigurálni a modellt, és adjon meg egy adott értékeket argumentumként. 
+     
+    -   **Paraméter tartománya**: akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.    
    
   
 3. A **kihagyható levelek maximális száma faszerkezetben**: a bármely fában létrehozható terminál-csomópontok (levelek) maximális számát jelzi.  
@@ -75,7 +77,6 @@ A színátmenet-növelési módszer a besorolási problémákhoz is használhat�
 
     Alapértelmezés szerint a véletlenszerű mag értéke 0, ami azt jelenti, hogy a kezdeti mag értékét a rendszer órája szerzi be.
   
-8. **Ismeretlen kategorikus szintek engedélyezése**: Ha ezt a beállítást választja, a rendszer létrehoz egy csoportot az ismeretlen értékekhez a betanítási és az ellenőrzési készletekben. Ha kijelöli ezt a beállítást, a modell csak a betanítási adatokban található értékeket fogadja el. Előfordulhat, hogy a modell kevésbé pontos az ismert értékeknél, de az új (ismeretlen) értékek jobb előrejelzését is lehetővé teszi.
 
 9. Vegyen fel egy betanítási adatkészletet és egy betanítási modult:
 

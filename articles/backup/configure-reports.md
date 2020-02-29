@@ -3,12 +3,12 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup-jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cefe81e53e89b8d7903469e836f3c5d2665febea
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77582704"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161201"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -47,6 +47,9 @@ A Recovery Services-tároló figyelés szakaszában válassza a **diagnosztikai 
 
 A Azure Backup beépített Azure Policy is biztosít, amely automatizálja az adott hatókörben lévő összes tároló diagnosztikai beállításainak konfigurációját. A következő cikkből megtudhatja, hogyan használhatja ezt a házirendet: tár [diagnosztikai beállításainak konfigurálása nagy méretekben](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
+> [!NOTE]
+> A diagnosztika konfigurálása után 24 órát is igénybe vehet, amíg a kezdeti adattovábbítás befejeződik. Ha az adatok beindulnak a LA munkaterületre, előfordulhat, hogy a jelentésekben nem jelenik meg azonnal az adatok, mert a jelenlegi részleges nap adatai nem jelennek meg a jelentésekben (további részletek [itt](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports)). Ezért azt javasoljuk, hogy a-tárolók konfigurálása után 2 nappal az adatküldés Log Analytics.
+
 3. **Jelentések megtekintése a Azure Portalon:**
 
 Ha úgy konfigurálta a tárolókat, hogy az adatait a LA-nek küldje, tekintse meg a biztonsági mentési jelentéseket úgy, hogy a tár egyik paneljére navigál, és a **biztonsági mentési jelentések** menüpontra kattint. 
@@ -56,7 +59,8 @@ Ha úgy konfigurálta a tárolókat, hogy az adatait a LA-nek küldje, tekintse 
 A hivatkozásra kattintva megnyílik a biztonsági mentési jelentés munkafüzete.
 
 > [!NOTE]
-> Jelenleg a jelentés kezdeti terhelése akár 1 percet is igénybe vehet.
+> * Jelenleg a jelentés kezdeti terhelése akár 1 percet is igénybe vehet.
+> * A Recovery Services-tároló csupán a biztonsági mentési jelentések belépési pontja. Miután a biztonsági mentési jelentések munkafüzet megnyílik egy tároló paneljén, az összes tárolóban összesíteni fogja az adatokat (a megfelelő LA munkaterületek kiválasztásával).
 
 Alább látható a jelentés által tartalmazott különböző lapok leírása:
 

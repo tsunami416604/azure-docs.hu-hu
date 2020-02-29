@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 02/27/2020
 ms.author: sngun
-ms.openlocfilehash: 6af5f4c3ab028f8f0c6945eba86ec79dd6027680
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 5403725a57c68a45621d6cc509c57d864b2e0633
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587464"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164916"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Oktatóanyag: ASP.NET Core MVC-webalkalmazás fejlesztése a Azure Cosmos DB a .NET SDK használatával
 
@@ -171,6 +171,38 @@ Hasonló hogyan hozott létre, listaelemek nézetet is konfigurációelemek lét
 
 Miután elvégezte ezeket a lépéseket, a Visual Studióban zárjunk be minden *cshtml* -dokumentumot, ahogy később visszatér a nézetekhez.
 
+### <a name="initialize-services"></a>Szolgáltatások deklarálása és inicializálása
+
+Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos DBhoz való kapcsolódáshoz és használatához szükséges logikát. Ebben az oktatóanyagban beágyazjuk ezt a logikát egy `CosmosDBService` nevű osztályba, és egy `ICosmosDBService`nevű felületet. Ez a szolgáltatás a szifilisz műveleteit végzi. Emellett olyan olvasási hírcsatorna-műveleteket is végez, mint például a hiányos elemek listázása, az elemek létrehozása, szerkesztése és törlése.
+
+1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a > **új mappa** **hozzáadása** lehetőséget. Nevezze el a mappa- *szolgáltatásokat*.
+
+1. Kattintson a jobb gombbal a **szolgáltatások** mappára, válassza a > **osztály** **hozzáadása** elemet. Nevezze el az új osztály *CosmosDBService* , és válassza a **Hozzáadás**lehetőséget.
+
+1. Cserélje le a *CosmosDBService.cs* tartalmát a következő kódra:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
+
+1. Kattintson a jobb gombbal a **szolgáltatások** mappára, válassza a > **osztály** **hozzáadása** elemet. Nevezze el az új osztály *ICosmosDBService* , és válassza a **Hozzáadás**lehetőséget.
+
+1. Adja hozzá a következő kódot a *ICosmosDBService* osztályhoz:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
+
+1. Nyissa meg a *Startup.cs* fájlt a megoldásban, és cserélje le a `ConfigureServices` metódust az alábbiakra:
+
+    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="ConfigureServices":::
+
+    Az ebben a lépésben szereplő kód a konfiguráció alapján inicializálja az ügyfelet egy egyedi példányként, amelyet a rendszer a [függőségek befecskendezésével ASP.net Core](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection).
+
+1. Ugyanebben a fájlban adja hozzá a következő **InitializeCosmosClientInstanceAsync**metódust, amely beolvassa a konfigurációt, és inicializálja az ügyfelet.
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync":::
+
+1. Adja meg a konfigurációt a projekt *appSettings. JSON* fájljában, ahogy az a következő kódrészletben látható:
+
+   :::code language="json" source="~/samples-cosmosdb-dotnet-core-web-app/src/appsettings.json":::
+
 ### <a name="add-a-controller"></a>Vezérlő hozzáadása
 
 1. **Megoldáskezelő**kattintson a jobb gombbal a **vezérlők** mappára, majd válassza a > **vezérlő** **hozzáadása** elemet.
@@ -189,62 +221,15 @@ A **ValidateAntiForgeryToken** attribútum itt található, amely segít megvéd
 
 A metódus paraméterében a **kötési** attribútumot is használjuk a túlzott közzétételi támadásokkal szembeni védelem érdekében. További információ: [oktatóanyag: a szifilisz funkcióinak megvalósítása a Entity Framework ASP.net MVC-ben][Basic CRUD Operations in ASP.NET MVC].
 
-## <a name="connect-to-cosmosdb"></a>5. lépés: Kapcsolódás Azure Cosmos DBhoz
-
-Most, hogy a standard MVC-dolgok gondoskodnak a működéséről, tegyük fel, hogy hozzáadja a kódot a Azure Cosmos DBhoz való kapcsolódáshoz és a szifilisz-műveletek végrehajtásához.
-
-### <a name="perform-crud-operations"></a>SZIFILISZ-műveletek végrehajtása az adatokon
-
-Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos DBhoz való kapcsolódáshoz és használatához szükséges logikát. Ebben az oktatóanyagban beágyazjuk ezt a logikát egy `CosmosDBService` nevű osztályba, és egy `ICosmosDBService`nevű felületet. Ez a szolgáltatás a szifilisz műveleteit végzi. Emellett olyan olvasási hírcsatorna-műveleteket is végez, mint például a hiányos elemek listázása, az elemek létrehozása, szerkesztése és törlése.
-
-1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a > **új mappa** **hozzáadása** lehetőséget. Nevezze el a mappa- *szolgáltatásokat*.
-
-1. Kattintson a jobb gombbal a **szolgáltatások** mappára, válassza a > **osztály** **hozzáadása** elemet. Nevezze el az új osztály *CosmosDBService* , és válassza a **Hozzáadás**lehetőséget.
-
-1. Cserélje le a *CosmosDBService.cs* tartalmát a következő kódra:
-
-   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
-
-1. Ismételje meg az előző két lépést, de ezúttal használja a *ICosmosDBService*nevet, és használja a következő kódot:
-
-   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
-
-1. A **ConfigureServices** -kezelőben adja hozzá a következő sort:
-
-    ```csharp
-    services.AddSingleton<ICosmosDbService>(InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb")).GetAwaiter().GetResult());
-    ```
-
-    Az előző lépésben szereplő kód egy `CosmosClient` kap a konstruktor részeként. ASP.NET Core folyamat után a projekt *Startup.cs* -fájlját kell megadnia. Az ebben a lépésben szereplő kód a konfiguráció alapján inicializálja az ügyfelet egy egyedi példányként, amelyet a rendszer a [függőségek befecskendezésével ASP.net Core](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection).
-
-1. Ugyanebben a fájlban adja hozzá a következő **InitializeCosmosClientInstanceAsync**metódust, amely beolvassa a konfigurációt, és inicializálja az ügyfelet.
-
-    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync":::
-
-1. Adja meg a konfigurációt a projekt *appSettings. JSON* fájljában. Nyissa meg a fájlt, és adjon hozzá egy **CosmosDb**nevű szakaszt:
-
-   ```csharp
-     "CosmosDb": {
-        "Account": "<enter the URI from the Keys blade of the Azure Portal>",
-        "Key": "<enter the PRIMARY KEY, or the SECONDARY KEY, from the Keys blade of the Azure  Portal>",
-        "DatabaseName": "Tasks",
-        "ContainerName": "Items"
-      }
-   ```
-
-Ha futtatja az alkalmazást, ASP.NET Core folyamata létrehozza a **CosmosDbService** , és egyetlen példányt tart fenn önállóként. Amikor az **ItemController** feldolgozza az ügyféloldali kérelmeket, ezt az egyetlen példányt kapja, és használhatja a szifiliszi műveletekhez.
-
-Ha most létrehozza és futtatja ezt a projektet, most látnia kell valamit, ami így néz ki:
-
-![Az adatbázis-oktatóanyag által létrehozott Todo List webalkalmazás képernyőképe](./media/sql-api-dotnet-application/build-and-run-the-project-now.png)
-
-## <a name="run-the-application"></a>6. lépés: Az alkalmazás helyileg történő futtatása
+## <a name="run-the-application"></a>5. lépés: az alkalmazás helyi futtatása
 
 Az alkalmazás helyi számítógépen való teszteléséhez kövesse az alábbi lépéseket:
 
-1. Ha hibakeresési módban szeretné felépíteni az alkalmazást, válassza az F5 billentyűt a Visual Studióban. Ennek fel kell építenie az alkalmazást és el kell indítania egy böngészőt a korábban látott üres rácsoldallal:
+1. Az alkalmazás hibakeresési módban, a Visual studióban nyomja le az F5. Ennek fel kell építenie az alkalmazást és el kell indítania egy böngészőt a korábban látott üres rácsoldallal:
 
    ![Az oktatóanyag által létrehozott teendők listázása webalkalmazás képernyőképe](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
+   
+   Ha az alkalmazás Ehelyett megnyílik a kezdőlapon, fűzze hozzá `/Item` az URL-címhez.
 
 1. Válassza az **új létrehozása** hivatkozást, és adja hozzá az értékeket a **név** és a **Leírás** mezőkhöz. Hagyja üresen a **Befejezve** jelölőnégyzet jelölését. Ha kijelöli, az alkalmazás kiegészített állapotban adja hozzá az új elemet. Az elem már nem jelenik meg a kezdeti listán.
 
@@ -260,7 +245,7 @@ Az alkalmazás helyi számítógépen való teszteléséhez kövesse az alábbi 
 
 1. Miután tesztelte az alkalmazást, válassza a CTRL + F5 billentyűkombinációt az alkalmazás hibakeresésének leállításához. Készen áll a telepítésre!
 
-## <a name="deploy-the-application-to-azure"></a>7. lépés: az alkalmazás üzembe helyezése
+## <a name="deploy-the-application-to-azure"></a>6. lépés: az alkalmazás üzembe helyezése
 
 Most, hogy a teljes alkalmazás megfelelően működik az Azure Cosmos DB-adatbázissal, az Azure App Service-be fogjuk telepíteni ezt a webalkalmazást.  
 

@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: cf70124f2e310dd62fd32de0e17edb40c047a318
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 19c136c7f312d800b76aa60f2cab6e8da992591c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615681"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161567"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium csomag Azure Functions
 
@@ -109,29 +109,30 @@ Az alábbiakban láthatók az egyes operációs rendszerek jelenleg támogatott 
 |Ausztrália 2. középső régiója| ✔<sup>1</sup> | |
 |Kelet-Ausztrália| ✔ | ✔<sup>1</sup> |
 |Délkelet-Ausztrália | ✔ | ✔<sup>1</sup> |
-|Dél-Brazília| ✔<sup>2</sup> |  |
+|Dél-Brazília| ✔<sup>2</sup> | ✔<sup>1</sup> |
 |Közép-Kanada| ✔ | ✔<sup>1</sup> |
-|USA középső régiója| ✔ |  |
-|Kelet-Ázsia| ✔ |  |
+|USA középső régiója| ✔ | ✔<sup>1</sup> |
+|Kelet-Ázsia| ✔ | ✔<sup>1</sup> |
 |USA keleti régiója | ✔ | ✔<sup>1</sup> |
 |USA 2. keleti régiója| ✔ | ✔<sup>1</sup> |
-|Közép-Franciaország| ✔ |  |
+|Közép-Franciaország| ✔ | ✔<sup>1</sup> |
 |Középnyugat-Németország| ✔ | |
 |Kelet-Japán| ✔ | ✔<sup>1</sup> |
 |Nyugat-Japán| ✔ | ✔<sup>1</sup> |
 |Dél-Korea középső régiója| ✔ | ✔<sup>1</sup> |
-|USA északi középső régiója| ✔ |  |
+|USA északi középső régiója| ✔ | ✔<sup>1</sup> |
 |Észak-Európa| ✔ | ✔<sup>1</sup> |
+|Kelet-Norvégia| ✔<sup>1</sup> | ✔<sup>1</sup> |
 |USA déli középső régiója| ✔ | ✔<sup>1</sup> |
 |Dél-India | ✔ | |
 |Délkelet-Ázsia| ✔ | ✔<sup>1</sup> |
 |Az Egyesült Királyság déli régiója| ✔ | ✔<sup>1</sup> |
-|Az Egyesült Királyság nyugati régiója| ✔ |  |
+|Az Egyesült Királyság nyugati régiója| ✔ | ✔<sup>1</sup> |
 |Nyugat-Európa| ✔ | ✔<sup>1</sup> |
-|Nyugat-India| ✔ |  |
-|USA nyugati középső régiója| | ✔<sup>1</sup> |
+|Nyugat-India| ✔ | ✔<sup>1</sup> |
+|USA nyugati középső régiója| ✔<sup>1</sup> | ✔<sup>1</sup> |
 |USA nyugati régiója| ✔ | ✔<sup>1</sup> |
-|USA nyugati régiója, 2.| ✔ |  |
+|USA nyugati régiója, 2.| ✔ | ✔<sup>1</sup> |
 
 <sup>1</sup> A maximális méretezés legfeljebb 20 példányra korlátozódik.  
 <sup>2</sup> A maximális felskálázás 60 példányra korlátozódik.

@@ -1,17 +1,17 @@
 ---
 title: Adatforgalom leképezésének összevonása átalakítás
-description: Azure-beli adatfeldolgozó-leképezési adatfolyam-összeolvasztási transzformáció
+description: Azure Data Factory leképezési adatfolyamok összeolvasztásának átalakítása
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 435d2469be8eb572caa02e381d84ae4e9ac32f4b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 415a093fd8a8fbe27e1d240b061548e18f2ca6b6
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77674843"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164729"
 ---
 # <a name="azure-data-factory-flatten-transformation"></a>Azure Data Factory az átalakítás összeolvasztása
 
@@ -29,7 +29,7 @@ Először válassza ki azt a tömb oszlopot, amelyet el szeretne távolítani, m
 
 ## <a name="unroll-root"></a>Legördülő gyökér
 
-Alapértelmezés szerint az ADF leállítja a szerkezetet a fent kiválasztott unroll tömbben. Másik lehetőségként kiválaszthatja a hierarchia egy másik részét a kilépéshez.
+Alapértelmezés szerint az ADF leállítja a szerkezetet a fent kiválasztott unroll tömbben. Másik lehetőségként kiválaszthatja a hierarchia egy másik részét a kilépéshez. A "unroll root" egy opcionális beállítás.
 
 ## <a name="input-columns"></a>Bemeneti oszlopok
 

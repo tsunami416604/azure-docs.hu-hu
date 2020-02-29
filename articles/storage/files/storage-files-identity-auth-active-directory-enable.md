@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/23/2020
 ms.author: rogarana
-ms.openlocfilehash: 9bda3331bc27f387bd05ea0fcd29e7badf6d6a02
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 419f0506751ddc328539eafa52507b0dd0739c79
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651083"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921555"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Az Azure-fájlmegosztás SMB-en keresztüli Active Directory hitelesítésének engedélyezése
 
@@ -62,7 +62,7 @@ Az Azure-fájlmegosztás AD-hitelesítésének engedélyezése előtt győződj�
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-Azure Files AD-hitelesítés a [legtöbb nyilvános régióban](https://azure.microsoft.com/global-infrastructure/regions/)elérhető, a régiók azon részhalmaza, amely még nem érhető el a-ben:
+A Azure Files AD-hitelesítés (előzetes verzió) a [legtöbb nyilvános régióban](https://azure.microsoft.com/global-infrastructure/regions/) elérhető, kivéve a következőket:
 
 - USA nyugati régiója
 - USA nyugati régiója, 2.
@@ -130,7 +130,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId "<your-subscription-id-here>"
 
 #Register the target storage account with your active directory environment under the target OU
-join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationUnitName "<ou-name-here>"
+join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationalUnitName "<ou-name-here>"
 ```
 
 A következő leírás összefoglalja az `join-AzStorageAccountForAuth` parancsmag végrehajtásakor végrehajtott összes műveletet. Ezeket a lépéseket manuálisan is végrehajthatja, ha nem szeretné használni a parancsot:
