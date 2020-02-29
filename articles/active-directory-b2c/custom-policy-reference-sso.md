@@ -3,20 +3,20 @@ title: Egyszeri bejelentkezés munkamenet-kezelés egyéni szabályzatok haszná
 titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan kezelheti az egyszeri bejelentkezéses munkameneteket a Azure AD B2C egyéni házirendjeivel.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b905591266b90e5bba83e7c74b27e7f6b3cab610
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a64af5d2b19b05ec9a5eda97c43e278cdfb8b4ff
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912545"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189106"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés munkamenet-kezelés a Azure Active Directory B2C-ben
 
@@ -39,11 +39,11 @@ Az egyszeri bejelentkezéses felügyeleti osztályok a technikai profil `<UseTec
 
 ## <a name="input-claims"></a>Bemeneti jogcímek
 
-A `InputClaims` elem üres vagy hiányzik. 
+A `InputClaims` elem üres vagy hiányzik.
 
 ## <a name="persisted-claims"></a>Megőrzött jogcímek
 
-Azokat a jogcímeket, amelyeket vissza kell adni az alkalmazásnak, vagy a későbbi lépésekben az előfeltételeket kell használni, a munkamenetben kell tárolni, vagy a felhasználó profiljából kell kibővíteni a címtárban. A megőrzött jogcímek használata biztosítja, hogy a hitelesítési útvonalak ne legyenek sikertelenek a hiányzó jogcímek esetében. Ha jogcímeket szeretne felvenni a munkamenetbe, használja a technikai profil `<PersistedClaims>` elemét. Ha a szolgáltató a munkamenet újrafeltöltésére szolgál, a rendszer hozzáadja a megőrzött jogcímeket a jogcímek táskához. 
+Azokat a jogcímeket, amelyeket vissza kell adni az alkalmazásnak, vagy a későbbi lépésekben az előfeltételeket kell használni, a munkamenetben kell tárolni, vagy a felhasználó profiljából kell kibővíteni a címtárban. A megőrzött jogcímek használata biztosítja, hogy a hitelesítési útvonalak ne legyenek sikertelenek a hiányzó jogcímek esetében. Ha jogcímeket szeretne felvenni a munkamenetbe, használja a technikai profil `<PersistedClaims>` elemét. Ha a szolgáltató a munkamenet újrafeltöltésére szolgál, a rendszer hozzáadja a megőrzött jogcímeket a jogcímek táskához.
 
 ## <a name="output-claims"></a>Kimeneti jogcímek
 
@@ -53,7 +53,7 @@ A `<OutputClaims>` a jogcímek munkamenetből való beolvasására szolgál.
 
 ### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
-Ahogy a név diktálja, a szolgáltató nem tesz semmit. Ez a szolgáltató használható egy adott technikai profil SSO-viselkedésének letiltására. A következő `SM-Noop` technikai profilt tartalmazza az [egyéni házirend-indító csomag](custom-policy-get-started.md#custom-policy-starter-pack).  
+Ahogy a név diktálja, a szolgáltató nem tesz semmit. Ez a szolgáltató használható egy adott technikai profil SSO-viselkedésének letiltására. A következő `SM-Noop` technikai profilt tartalmazza az [egyéni házirend-indító csomag](custom-policy-get-started.md#custom-policy-starter-pack).
 
 ```XML
 <TechnicalProfile Id="SM-Noop">
@@ -64,7 +64,7 @@ Ahogy a név diktálja, a szolgáltató nem tesz semmit. Ez a szolgáltató hasz
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-Ezt a szolgáltatót a jogcímek egy munkamenetben való tárolására lehet használni. Ez a szolgáltató általában a helyi fiókok kezeléséhez használt technikai profilban hivatkozik. A következő `SM-AAD` technikai profilt tartalmazza az [egyéni házirend-indító csomag](custom-policy-get-started.md#custom-policy-starter-pack). 
+Ezt a szolgáltatót a jogcímek egy munkamenetben való tárolására lehet használni. Ez a szolgáltató általában a helyi fiókok kezeléséhez használt technikai profilban hivatkozik. A következő `SM-AAD` technikai profilt tartalmazza az [egyéni házirend-indító csomag](custom-policy-get-started.md#custom-policy-starter-pack).
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
@@ -84,7 +84,7 @@ Ezt a szolgáltatót a jogcímek egy munkamenetben való tárolására lehet has
 </TechnicalProfile>
 ```
 
-A következő `SM-MFA` technikai profilt tartalmazza az [egyéni házirend-indító csomag](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`. Ez a technikai profil a multi-Factor Authentication munkamenetet kezeli. 
+A következő `SM-MFA` technikai profilt tartalmazza az [egyéni házirend-indító csomag](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`. Ez a technikai profil a multi-Factor Authentication munkamenetet kezeli.
 
 ```XML
 <TechnicalProfile Id="SM-MFA">
@@ -117,8 +117,8 @@ Ez a szolgáltató a "személyazonossági szolgáltató választása" képernyő
 ```
 
 #### <a name="metadata"></a>Metaadatok
-        
-| Attribútum | Kötelező | Leírás|
+
+| Attribútum | Szükséges | Leírás|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | Nem | Jelenleg nincs használatban, figyelmen kívül hagyható. |
 
@@ -138,7 +138,7 @@ Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a 
 ```
 
 Ha a B2C SAML-munkamenet tárolására szolgáltatót használ, a `IncludeSessionIndex`nak és a `RegisterServiceProviders`nak `true`értékre kell állítania. Az SAML-munkamenet kijelentkezéséhez szükség van a `SessionIndex`ra, és `NameID` a befejezéshez.
- 
+
 Az [SAML-kiállító technikai profilja](connect-with-saml-service-providers.md) a következő `SM-Saml-idp` technikai profilt használja
 
 ```XML
@@ -148,8 +148,8 @@ Az [SAML-kiállító technikai profilja](connect-with-saml-service-providers.md)
 </TechnicalProfile>
 ```
 #### <a name="metadata"></a>Metaadatok
-        
-| Attribútum | Kötelező | Leírás|
+
+| Attribútum | Szükséges | Leírás|
 | --- | --- | --- |
 | IncludeSessionIndex | Nem | Azt jelzi, hogy a szolgáltatónak tárolnia kell a munkamenet-indexet. Lehetséges értékek: `true` (alapértelmezett) vagy `false`.|
 | RegisterServiceProviders | Nem | Azt jelzi, hogy a szolgáltatónak regisztrálnia kell az összes olyan SAML-szolgáltatót, amely kiállított egy állítást. Lehetséges értékek: `true` (alapértelmezett) vagy `false`.|

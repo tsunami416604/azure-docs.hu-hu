@@ -9,12 +9,13 @@ ms.author: mbaldwin
 ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: 6996a5965454dfd5997f0c0404e0c348c68b626f
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.subservice: general
+ms.openlocfilehash: 6377edf72651c9cddf570d0c6db9d5ceb40409f4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177467"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200719"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával
 
@@ -75,7 +76,7 @@ Hitelesítés a Visual Studio használatával:
 
 Ha problémákba ütközik a Visual Studióval, például a jogkivonat-szolgáltatói fájlt érintő hibákkal, gondosan tekintse át az előző lépéseket.
 
-Előfordulhat, hogy újra kell hitelesítenie a fejlesztői jogkivonatot. Ehhez válassza az **eszközök**&nbsp;>&nbsp;**beállításailehetőség** et, majd válassza az **Azure&nbsp;szolgáltatás&nbsp;hitelesítés lehetőséget**. Keresse meg az **újbóli hitelesítést** mutató hivatkozást a kiválasztott fiókban. Válassza ki a hitelesítést.
+Előfordulhat, hogy újra kell hitelesítenie a fejlesztői jogkivonatot. Ehhez válassza az **eszközök**&nbsp;>&nbsp;**Beállítások lehetőséget**, majd válassza az **Azure&nbsp;szolgáltatás&nbsp;hitelesítés**elemet. Keresse meg az **újbóli hitelesítést** mutató hivatkozást a kiválasztott fiókban. Válassza ki a hitelesítést.
 
 #### <a name="authenticating-with-azure-cli"></a>Hitelesítés az Azure CLI-vel
 
@@ -107,7 +108,7 @@ Az Azure AD-hitelesítés használatához ellenőrizze a következőket:
 
 Amikor egy szolgáltatás meghívja az Azure-szolgáltatásokat, az előző lépések működnek, mivel az Azure-szolgáltatások lehetővé teszik a hozzáférést a felhasználókhoz és az alkalmazásokhoz.
 
-Egyéni szolgáltatást meghívó szolgáltatás létrehozásakor használja az Azure AD-ügyfél hitelesítő adatait a helyi fejlesztési hitelesítéshez. Két lehetőség közül választhat:
+Egyéni szolgáltatást meghívó szolgáltatás létrehozásakor használja az Azure AD-ügyfél hitelesítő adatait a helyi fejlesztési hitelesítéshez. Két lehetőség érhető el:
 
 - Egyszerű szolgáltatás használata az Azure-ba való bejelentkezéshez:
 
@@ -229,7 +230,7 @@ A folyamat szabályozásához használjon a `AzureServiceTokenProvider` konstruk
 
 A következő lehetőségek támogatottak:
 
-| A kapcsolatok karakterláncának beállítása | Alkalmazási helyzet | Megjegyzések|
+| A kapcsolatok karakterláncának beállítása | Forgatókönyv | Megjegyzések|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | Helyi fejlesztés | `AzureServiceTokenProvider` a AzureCli-t használja a jogkivonat lekéréséhez. |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Helyi fejlesztés | `AzureServiceTokenProvider` a Visual studiót használja a token beszerzéséhez. |

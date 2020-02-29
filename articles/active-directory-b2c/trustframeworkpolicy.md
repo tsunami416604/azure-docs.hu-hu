@@ -2,20 +2,20 @@
 title: TrustFrameworkPolicy – Azure Active Directory B2C | Microsoft Docs
 description: A Azure Active Directory B2C egyéni házirendjének TrustFrameworkPolicy elemének megadásához.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/31/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b49c873112358db4fec2992ef3d2d61161e8b373
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: c964a7bde0b7db9357c73fc79d2df3170075fcc1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982415"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186386"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -42,8 +42,8 @@ A **TrustFrameworkPolicy** elem a következő attribútumokat tartalmazza:
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | Igen | A szabályzat végrehajtásához használandó séma verziója. Az értéknek `0.3.0.0`nak kell lennie |
 | TenantObjectId | Nem | A Azure Active Directory B2C (Azure AD B2C) bérlő egyedi objektumazonosító. |
-| tenantId | Igen | Annak a bérlőnek az egyedi azonosítója, amelyhez ez a szabályzat tartozik. |
-| policyId | Igen | A házirend egyedi azonosítója. Ezt az azonosítót *B2C_1A_* kell előállítani |
+| TenantId | Igen | Annak a bérlőnek az egyedi azonosítója, amelyhez ez a szabályzat tartozik. |
+| PolicyId | Igen | A házirend egyedi azonosítója. Ezt az azonosítót *B2C_1A_* kell előállítani |
 | PublicPolicyUri | Igen | A házirend URI-ja, amely a bérlői azonosító és a házirend-azonosító kombinációja. |
 | Deploymentmode beállítása | Nem | Lehetséges értékek: `Production`vagy `Development`. A `Production` az alapértelmezett formátum. Ezt a tulajdonságot használhatja a szabályzat hibakereséséhez. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
 | UserJourneyRecorderEndpoint | Nem | Az a végpont, amelyet a rendszer a **deploymentmode beállítása** `Development`értékre való beállításakor használ. Az értéknek `urn:journeyrecorder:applicationinsights`nak kell lennie. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
@@ -90,8 +90,8 @@ A **BasePolicy** elem a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | --------|
-| tenantId | 1:1 | A Azure AD B2C bérlő azonosítója. |
-| policyId | 1:1 | A szülő házirend azonosítója. |
+| TenantId | 1:1 | A Azure AD B2C bérlő azonosítója. |
+| PolicyId | 1:1 | A szülő házirend azonosítója. |
 
 
 Az alábbi példa azt szemlélteti, hogyan lehet alapszintű szabályzatot megadni. Ez a **B2C_1A_TrustFrameworkExtensions** házirend a **B2C_1A_TrustFrameworkBase** házirendből származik.

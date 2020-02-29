@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 37055d9b59d49091261109e3553f99bcc03d8e14
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 48c28831d1fbbfc4fe78ebe12e5a158a8259cf44
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164577"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190296"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Útmutató: alkalmazások közötti egyszeri bejelentkezés engedélyezése Androidon a ADAL használatával
 
@@ -60,7 +60,7 @@ Ha a kompatibilis közvetítő telepítve van az eszközön, például a Microso
 
 #### <a name="how-microsoft-ensures-the-application-is-valid"></a>Hogyan biztosítja a Microsoft az alkalmazás érvényességét
 
-Ahhoz, hogy az alkalmazás meghívja a közvetítőt, elengedhetetlen a közvetítő által támogatott bejelentkezések biztonsága szempontjából. az iOS és az Android nem kényszeríti ki az olyan egyedi azonosítókat, amelyek csak egy adott alkalmazás esetében érvényesek, így a rosszindulatú alkalmazások "hamisítják" a legitim alkalmazás azonosítóját, és megkapják a legitim alkalmazás számára jelentett jogkivonatokat. Annak biztosítása érdekében, hogy a Microsoft mindig a megfelelő alkalmazással kommunikáljon futásidőben, a fejlesztőnek meg kell adnia egy egyéni redirectURI, amikor regisztrálja alkalmazását a Microsofttal. **A fejlesztők számára az átirányítási URI-t az alábbi részletesen tárgyaljuk.** Ez az egyéni redirectURI tartalmazza az alkalmazás tanúsítványának ujjlenyomatát, és gondoskodik arról, hogy a Google Play Áruház egyedi legyen az alkalmazás számára. Amikor egy alkalmazás meghívja a közvetítőt, a közvetítő arra kéri az Android operációs rendszert, hogy a közvetítőnek nevezett tanúsítvány-ujjlenyomattal lássa el. A közvetítő ezt a tanúsítvány-ujjlenyomatot biztosít a Microsoftnak az Identity System hívása során. Ha az alkalmazás tanúsítványának ujjlenyomata nem egyezik meg a fejlesztő által a regisztráció során nekünk megadott tanúsítvány-ujjlenyomattal, a hozzáférés megtagadva az alkalmazás által kért erőforrás jogkivonatával. Ez az ellenőrzés biztosítja, hogy csak a fejlesztő által regisztrált alkalmazás fogadja a jogkivonatokat.
+Biztosítani kell, hogy a közvetítőt hívó alkalmazás identitása létfontosságú legyen a bróker által támogatott bejelentkezésekben biztosított biztonság szempontjából. az iOS és az Android nem kényszeríti ki az olyan egyedi azonosítókat, amelyek csak egy adott alkalmazás esetében érvényesek, így a rosszindulatú alkalmazások "hamisítják" a legitim alkalmazás azonosítóját, és megkapják a legitim alkalmazás számára jelentett jogkivonatokat. Annak biztosítása érdekében, hogy a Microsoft mindig a megfelelő alkalmazással kommunikáljon futásidőben, a fejlesztőnek meg kell adnia egy egyéni redirectURI, amikor regisztrálja alkalmazását a Microsofttal. **A fejlesztők számára az átirányítási URI-t az alábbi részletesen tárgyaljuk.** Ez az egyéni redirectURI tartalmazza az alkalmazás tanúsítványának ujjlenyomatát, és gondoskodik arról, hogy a Google Play Áruház egyedi legyen az alkalmazás számára. Amikor egy alkalmazás meghívja a közvetítőt, a közvetítő arra kéri az Android operációs rendszert, hogy a közvetítőnek nevezett tanúsítvány-ujjlenyomattal lássa el. A közvetítő ezt a tanúsítvány-ujjlenyomatot biztosít a Microsoftnak az Identity System hívása során. Ha az alkalmazás tanúsítványának ujjlenyomata nem egyezik meg a fejlesztő által a regisztráció során nekünk megadott tanúsítvány-ujjlenyomattal, a hozzáférés megtagadva az alkalmazás által kért erőforrás jogkivonatával. Ez az ellenőrzés biztosítja, hogy csak a fejlesztő által regisztrált alkalmazás fogadja a jogkivonatokat.
 
 A felügyelt egyszeri bejelentkezéshez a következő előnyökkel jár:
 
@@ -142,6 +142,6 @@ MANAGE_ACCOUNTS
 
 Most az Identity SDK automatikusan megosztja a hitelesítő adatokat az alkalmazásokban, és meghívja a közvetítőt, ha az eszközön van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók az [egyszeri bejelentkezéses SAML protokollról](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)

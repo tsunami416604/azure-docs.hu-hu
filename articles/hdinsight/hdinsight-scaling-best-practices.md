@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.openlocfilehash: 035f819cfaad82373f7cb55a7bb2d14fc53bb49b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/26/2020
+ms.openlocfilehash: a88682cd2217850e336afc2f9ef5af84c0d8cb82
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064631"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192643"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök méretezése
 
@@ -33,8 +33,8 @@ A Microsoft a következő segédprogramokat biztosítja a fürtök méretezésé
 |---|---|
 |[PowerShell az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<fürt neve >-TargetInstanceCount \<NewSize >|
 |[PowerShell-AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<fürt neve >-TargetInstanceCount \<NewSize >|
-|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --Resource-Group \<erőforráscsoport >--name \<-fürt neve >--Target-instances Count \<NewSize >|
-|[Azure CLI](hdinsight-administer-use-command-line.md)|Azure hdinsight-fürt átméretezése \<clusterName > \<megcélzott példányok száma > |
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --Resource-Group \<erőforráscsoport >--name \<-fürt neve >--workernode-Count \<NewSize >|
+|[Klasszikus Azure CLI](hdinsight-administer-use-command-line.md)|Azure hdinsight-fürt átméretezése \<clusterName > \<megcélzott példányok száma > |
 |[Azure Portalra](https://portal.azure.com)|Nyissa meg a HDInsight-fürt panelt, válassza ki a **fürt méretét** a bal oldali menüben, majd a fürt mérete panelen írja be a munkavégző csomópontok számát, majd kattintson a Mentés gombra.|  
 
 ![Azure Portal méretezési fürt beállítása](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
@@ -247,7 +247,7 @@ A skálázási művelet elvégzése után néhány percen belül automatikusan k
     balancer
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure HDInsight-fürtök automatikus méretezése](hdinsight-autoscale-clusters.md)
 * [Az Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md)

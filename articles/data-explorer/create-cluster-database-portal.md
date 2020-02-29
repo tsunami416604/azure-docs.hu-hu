@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Azure Adatkezelő-fürt és-adatbázis létrehozása'
+title: 'Gyors útmutató: Azure Adatkezelő-fürt létrehozása & DB-ben'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Azure Data Explorer-fürtöt és -adatbázist, és töltheti fel adatokkal.
 author: orspod
 ms.author: orspodek
@@ -7,17 +7,17 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: 895b26fc7f35303cbef6c9df543c87ca435c2290
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: e97a712664a5864062fef2bba36dda76175af715
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984353"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199852"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Rövid útmutató: Azure Data Explorer-fürt és -adatbázis létrehozása
 
 > [!div class="op_single_selector"]
-> * [Portál](create-cluster-database-portal.md)
+> * [Portal](create-cluster-database-portal.md)
 > * [Parancssori felület](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
@@ -25,13 +25,13 @@ ms.locfileid: "76984353"
 > * [ARM-sablon](create-cluster-database-resource-manager.md)
 
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. Ebben a rövid útmutatóban egy fürtöt és egy adatbázist hozunk létre.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. Ebben a rövid útmutatóban egy fürtöt és egy adatbázist hozunk létre.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-cluster"></a>Fürt létrehozása
 
@@ -51,10 +51,10 @@ Hozzon létre egy Azure Adatkezelő-fürtöt egy Azure-erőforráscsoport szám�
 
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Előfizetést | Az Ön előfizetése | Válassza ki a fürthöz használni kívánt Azure-előfizetést.|
+    | Előfizetés | Az Ön előfizetése | Válassza ki a fürthöz használni kívánt Azure-előfizetést.|
     | Erőforráscsoport | Az erőforráscsoport | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
     | Fürt neve | A fürt egyedi neve | Válasszon egy egyedi nevet a fürt azonosításához. A rendszer hozzáfűzi a *[régiónév].kusto.windows.net* tartománynevet a megadott fürtnévhez. A név csak kisbetűket és számokat tartalmazhat, 4 – 22 karakterből kell állnia.
-    | Region (Régió) | USA *nyugati* régiója vagy *USA 2. nyugati* régiója | Válassza az *USA nyugati* régiója vagy az *USA nyugati* régiója (ha rendelkezésre állási zónák használata) lehetőséget ehhez a rövid útmutatóhoz. Éles üzemben az igényeinek leginkább megfelelő régiót válassza.
+    | Régió | USA *nyugati* régiója vagy *USA 2. nyugati* régiója | Válassza az *USA nyugati* régiója vagy az *USA nyugati* régiója (ha rendelkezésre állási zónák használata) lehetőséget ehhez a rövid útmutatóhoz. Éles üzemben az igényeinek leginkább megfelelő régiót válassza.
     | Rendelkezésre állási zónák | *1*, *2*és/vagy *3* | Helyezze a fürt példányait a különböző rendelkezésre állási zónákba ugyanabban a régióban (opcionális). [Azure Availability Zones](/azure/availability-zones/az-overview) az azonos Azure-régióban található egyedi fizikai helyszínek. Egy Azure Adatkezelő-fürtöt és a részleges régió meghibásodásának adatait védik. A fürtcsomópontok alapértelmezés szerint ugyanabban az adatközpontban jönnek létre. Több rendelkezésre állási zóna kiválasztásával egyetlen meghibásodási pontot törölheti, és biztosíthatja a magas rendelkezésre állást. A rendelkezésre állási zónákra történő központi telepítés csak a fürt létrehozása során lehetséges, és később nem módosítható.
     | Számítási specifikációk | *D13_v2* | Ehhez az útmutatóhoz válassza a legalacsonyabb díjszabást. Éles üzemben az igényeinek leginkább megfelelő díjszabást válassza.
     | | | |
@@ -80,7 +80,7 @@ Most már készen áll a folyamat második lépésének, az adatbázis létrehoz
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
     | Adatbázis neve | *TestDatabase* | Az adatbázis nevének egyedinek kell lennie a fürtön belül.
-    | Megőrzési idő | *3650* | Az az időtartam (nap), ameddig garantált, hogy az adat a lekérdezés számára elérhető marad. Az időtartam az adatok betöltésének időpontjával kezdődik.
+    | Megőrzési időszak | *3650* | Az az időtartam (nap), ameddig garantált, hogy az adat a lekérdezés számára elérhető marad. Az időtartam az adatok betöltésének időpontjával kezdődik.
     | Gyorsítótárazási időszak | *31* | Az az időtartam (napban megadva), ameddig a gyakran lekérdezett adatmennyiséget SSD-tárolóban vagy RAM-ban szeretné tárolni, nem pedig hosszabb távú tárolás esetén.
     | | | |
 
@@ -120,7 +120,7 @@ Ha más rövid útmutatók és oktatóanyagok követését tervezi, tartsa meg a
 
 1. Válassza az **erőforráscsoport törlése** elemet a teljes erőforráscsoport törléséhez. Ha meglévő erőforráscsoportot használ, dönthet úgy, hogy csak a Adatkezelő-fürtöt törli.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Rövid útmutató: Adatok betöltése az Event Hubsból az Azure Data Explorerbe](ingest-data-event-hub.md)

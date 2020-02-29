@@ -2,20 +2,20 @@
 title: Felhasználói hozzáférés kezelése Azure Active Directory B2Cban | Microsoft Docs
 description: Megtudhatja, hogyan azonosíthatja a kiskorúakat, begyűjtheti a születési és az ország/régió adatait, és elvégezheti az alkalmazás használati feltételeinek elfogadását Azure AD B2C használatával.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fcdbf0d56b79662cccd90380489ede672e6a0a66
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: f04a3fea3801f917a3ae4aced04ef3824d1cfa82
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484111"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184519"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Felhasználói hozzáférés kezelése Azure Active Directory B2C
 
@@ -173,7 +173,7 @@ A következőkben egy példa látható egy verzióra vonatkozó használati felt
 </ClaimsTransformations>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A felhasználói információk törlésével és exportálásával kapcsolatos információkért lásd: [felhasználói adatkezelés](manage-user-data.md).
 - A használati feltételeket használó egyéni szabályzatok esetében tekintse meg [a B2C-IEF egyéni szabályzatot, és jelentkezzen be a "használati feltételek" üzenettel](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou).

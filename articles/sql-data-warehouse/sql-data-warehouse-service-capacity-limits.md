@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/04/2019
+ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 7847e76c8f0354e3a17c7df5f3ce9227dcf0e6ce
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: azure-synapse
+ms.openlocfilehash: a225c375d877ae44c2b21ea8e79e31f17db36878
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526416"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198184"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Az Azure szinapszis Analytics (korábbi nevén SQL DW) kapacitásának korlátai
 
@@ -30,18 +31,20 @@ Az Azure szinapszis különböző összetevői számára engedélyezett maximál
 | Adatbázis-kapcsolatok |Egyidejű nyitott munkamenetek maximális száma |1024<br/><br/>Az egyidejű nyitott munkamenetek száma a kiválasztott DWU függően változhat. A DWU600c és újabb verziók legfeljebb 1024 nyitott munkamenetet támogatnak. A DWU500c és az alatta az egyidejű nyitott munkamenetek maximális 512-os korlátját támogatja. Vegye figyelembe, hogy az egyidejűleg végrehajtható lekérdezések száma korlátozott. Ha túllépi a párhuzamossági korlátot, a kérelem egy belső várólistába kerül, ahol a rendszer feldolgozza azt. |
 | Adatbázis-kapcsolatok |Előkészített utasítások maximális memóriája |20 MB |
 | [Számítási feladatok kezelése](resource-classes-for-workload-management.md) |Egyidejű lekérdezések maximális száma |128<br/><br/>  Legfeljebb 128 egyidejű lekérdezés fog futni, és a fennmaradó lekérdezések várólistára kerülnek.<br/><br/>Az egyidejű lekérdezések száma csökkenhet, ha a felhasználók nagyobb erőforrás-osztályokhoz vannak rendelve, vagy ha az [adatraktár-egység](memory-concurrency-limits.md) beállítása csökken. Egyes lekérdezések, például a DMV-lekérdezések mindig futhatnak, és nem befolyásolják az egyidejű lekérdezési korlátot. Az egyidejű lekérdezés-végrehajtással kapcsolatos további részletekért tekintse meg a [párhuzamosságok maximális](memory-concurrency-limits.md) száma című cikket. |
-| [tempdb](sql-data-warehouse-tables-temporary.md) |Maximális GB |399 GB/DW100. Ezért a DWU1000 tempdb mérete 3,99 TB. |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |Maximális GB |399 GB/DW100c. Ezért a DWU1000c tempdb mérete 3,99 TB. |
+||||
 
 ## <a name="database-objects"></a>Adatbázis-objektumok
+
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
-| Adatbázis |Maximális méret | Gen1:240 TB tömörített lemezen. Ez a terület független a tempdb és a naplózási területtől, ezért ez a terület állandó táblákhoz van hozzárendelve.  A fürtözött oszlopcentrikus-tömörítés becsült értéke 5X.  Ez a tömörítés lehetővé teszi, hogy az adatbázis körülbelül 1 PB-re növelje, ha az összes tábla fürtözött oszlopcentrikus (az alapértelmezett tábla típusa). <br/><br/> Gen2:240TB a sortárindex létrehozását és a korlátlan tárolási oszlopcentrikus táblákhoz |
-| Tábla |Maximális méret | Oszlopcentrikus táblák esetében nincs uppper korlát. <br/><br/>Sorok tárolására szolgáló táblák esetében 60 TB tömörített lemezen |
-| Tábla |Táblák/adatbázis | 100 000 |
+| Adatbázis |Maximális méret | Gen1:240 TB tömörített lemezen. Ez a terület független a tempdb és a naplózási területtől, ezért ez a terület állandó táblákhoz van hozzárendelve.  A fürtözött oszlopcentrikus-tömörítés becsült értéke 5X.  Ez a tömörítés lehetővé teszi, hogy az adatbázis körülbelül 1 PB-re növelje, ha az összes tábla fürtözött oszlopcentrikus (az alapértelmezett tábla típusa). <br/><br/> Gen2: korlátlan tárterület a oszlopcentrikus-táblákhoz.  Az adatbázis sortárindex létrehozását része továbbra is korlátozott a lemezen lévő, 240 TB-os tömörítéssel. |
+| Tábla |Maximális méret |Korlátlan méret a oszlopcentrikus táblákhoz. <br>60 TB a lemezen tömörített sortárindex létrehozását-táblákhoz. |
+| Tábla |Táblák/adatbázis | 100,000 |
 | Tábla |Oszlopok száma táblában |1024 oszlop |
-| Tábla |Bájt/oszlop |Az oszlop [adattípusának](sql-data-warehouse-tables-data-types.md)függvénye. A határérték 8000 karakteres adattípusok esetén, 4000 nvarchar, vagy 2 GB a maximális adattípusokhoz. |
+| Tábla |Bájt/oszlop |Az oszlop [adattípusának](sql-data-warehouse-tables-data-types.md)függvénye. A karakteres adattípusok esetében a maximális korlát legfeljebb 2 GB-ot tárolhat a kikapcsolt lapon (egymást követő) tárolóban.  A nem Unicode karakterek, például a char vagy a varchar limit 8000 egy adatlapon, a Unicode-karakterek, például a nchar vagy a nvarchar korlátja 4000 egy adatlapon.  A teljesítmény növeléséhez használja az adatlapok tárolási méretét. |
 | Tábla |Bájt/sor, meghatározott méret |8060 bájt<br/><br/>A másodpercenkénti bájtok számát ugyanúgy számítjuk ki, mint az oldal tömörítéséhez SQL Server. A SQL Serverhoz hasonlóan a soros túlcsordulású tárolás is támogatott, ami lehetővé teszi a **változó hosszúságú oszlopok** leküldését a sorból. Ha a változó hosszúságú sorok kiküldése sorban történik, a fő rekordban csak 24 bájtos gyökér tárolódik. További információ: [8 kb-ot meghaladó, soros túlcsordulási adatok](https://msdn.microsoft.com/library/ms186981.aspx). |
-| Tábla |Partíciók száma táblában |15 000<br/><br/>A nagy teljesítmény érdekében javasoljuk, hogy minimalizálja a szükséges partíciók számát, miközben továbbra is támogatja az üzleti igényeit. Ahogy nő a partíciók száma, az adatdefiníciós nyelv (DDL) és az adatmanipulációs nyelv (DML) műveleteinek terhelése növekszik, és lassabb teljesítményt eredményez. |
+| Tábla |Partíciók száma táblában |15,000<br/><br/>A nagy teljesítmény érdekében javasoljuk, hogy minimalizálja a szükséges partíciók számát, miközben továbbra is támogatja az üzleti igényeit. Ahogy nő a partíciók száma, az adatdefiníciós nyelv (DDL) és az adatmanipulációs nyelv (DML) műveleteinek terhelése növekszik, és lassabb teljesítményt eredményez. |
 | Tábla |Karakter/partíciós határ értéke. |4000 |
 | Index |Nem fürtözött indexek száma táblábanként. |50<br/><br/>Csak a sortárindex létrehozását táblákra vonatkozik. |
 | Index |Fürtözött indexek száma táblábanként. |1<br><br/>A sortárindex létrehozását és a oszlopcentrikus táblákra is érvényes. |
@@ -52,13 +55,17 @@ Az Azure szinapszis különböző összetevői számára engedélyezett maximál
 | Statisztika |Az oszlopokon létrehozott statisztikák táblázat szerint lettek létrehozva. |30,000 |
 | Tárolt eljárások |Maximális beágyazási szintek. |8 |
 | Nézet |Oszlopok száma nézetben |1,024 |
+||||
 
 ## <a name="loads"></a>Betölti
+
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
 | Alapszintű terhelések |MB/sor |1<br/><br/>A kiinduló nem 1 MB-nál kisebb sorokat tölt be. Az LOB-adattípusok fürtözött Oszlopcentrikus Indextel (CCI) rendelkező táblákba való betöltése nem támogatott.<br/><br/> |
+||||
 
 ## <a name="queries"></a>Lekérdezések
+
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
 | Lekérdezés |Várólistán lévő lekérdezések a felhasználói táblákon. |1000 |
@@ -73,8 +80,10 @@ Az Azure szinapszis különböző összetevői számára engedélyezett maximál
 | SELECT |Bájt/rendezés oszlopok szerint |8060 bájt<br/><br/>Az ORDER BY záradék oszlopai legfeljebb 8060 bájtot tartalmazhatnak |
 | Azonosítók/utasítások |Hivatkozott azonosítók száma |65,535<br/><br/> A lekérdezés egyetlen kifejezésében tárolható azonosítók száma korlátozott. Ennek a számnak a túllépése SQL Server 8632-es hibát eredményez. További információkért lásd: [belső hiba: a rendszer elérte az Expression Services korlátját](https://support.microsoft.com/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
 | Karakterlánc-literálok | Karakterlánc-literálok száma egy utasításban | 20,000 <br/><br/>A lekérdezés egyetlen kifejezésében szereplő karakterlánc-konstansok száma korlátozott. Ennek a számnak a túllépése SQL Server 8632-es hibát eredményez.|
+||||
 
 ## <a name="metadata"></a>Metaadatok
+
 | Rendszernézet | Sorok maximális száma |
 |:--- |:--- |
 | sys.dm_pdw_component_health_alerts |10,000 |
@@ -86,6 +95,8 @@ Az Azure szinapszis különböző összetevői számára engedélyezett maximál
 | sys.dm_pdw_request_steps |A sys. dm_pdw_exec_requestsban tárolt legutóbbi 1000 SQL-kérelmekre vonatkozó lépések teljes száma. |
 | sys.dm_pdw_os_event_logs |10,000 |
 | sys.dm_pdw_sql_requests |A sys. dm_pdw_exec_requestsban tárolt legutóbbi 1000 SQL-kérelmek. |
+|||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
+
 Az Azure szinapszis használatával kapcsolatos javaslatokért tekintse meg a [Cheat lapot](cheat-sheet.md).

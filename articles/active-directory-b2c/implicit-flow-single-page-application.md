@@ -3,20 +3,20 @@ title: Egyoldalas bejelentkezés implicit folyamat használatával
 titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan adhat hozzá egyoldalas bejelentkezést a OAuth 2,0 implicit folyamattal Azure Active Directory B2C használatával.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: efef55ab42313854ab27d323824a76488d520ad1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3e77e597fbd33a1f1358ecaa2d2aea3fe075a70f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847380"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187729"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Egyoldalas bejelentkezés a OAuth 2,0 implicit flow használatával Azure Active Directory B2C
 
@@ -61,7 +61,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | response_mode | Nem | Meghatározza az eredményül kapott jogkivonat az alkalmazásba való visszaküldéséhez használandó módszert.  Az implicit folyamatok esetében használja a `fragment`. |
 | scope | Igen | A hatókörök szóközzel tagolt listája. Egyetlen hatóköri érték azt jelzi, hogy az Azure AD-t mind a kért engedélyek jelentik. A `openid` hatókör a felhasználónak való bejelentkezéshez és az azonosító tokenek formájában a felhasználó adatainak lekéréséhez szükséges engedélyt jelöli. A `offline_access` hatóköre nem kötelező a Web Apps esetében. Azt jelzi, hogy az alkalmazásnak frissítési jogkivonatra van szüksége az erőforrásokhoz való hosszú élettartamú hozzáféréshez. |
 | state | Nem | A kérelemben szereplő, a jogkivonat-válaszban is visszaadott érték. A használni kívánt tartalom karakterlánca lehet. A rendszer általában véletlenszerűen generált, egyedi értéket használ, hogy megakadályozza a helyek közötti kérelmek hamisítás elleni támadásait. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna, például a laphoz. |
-| egyszeri | Igen | A kérelemben szereplő, az eredményül kapott azonosító jogkivonatban található (az alkalmazás által generált) érték. Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy véletlenszerű, egyedi karakterlánc, amely a kérelem forrásának azonosítására szolgál. |
+| nonce | Igen | A kérelemben szereplő, az eredményül kapott azonosító jogkivonatban található (az alkalmazás által generált) érték. Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy véletlenszerű, egyedi karakterlánc, amely a kérelem forrásának azonosítására szolgál. |
 | gyors | Nem | A kötelező felhasználói beavatkozás típusa. Jelenleg az egyetlen érvényes érték `login`. Ez a paraméter arra kényszeríti a felhasználót, hogy adja meg a kéréshez tartozó hitelesítő adatait. Az egyszeri bejelentkezés nem lép érvénybe. |
 
 Ekkor a rendszer megkéri a felhasználót, hogy fejezze be a szabályzat munkafolyamatát. Előfordulhat, hogy a felhasználónak meg kell adnia felhasználónevét és jelszavát, be kell jelentkeznie egy közösségi identitással, regisztrálnia kell a címtárban, vagy bármely más lépéssel. A felhasználói műveletek attól függnek, hogy a felhasználói folyamat hogyan van definiálva.
@@ -129,7 +129,7 @@ Ha meg szeretné határozni, hogy melyik felhasználói folyamatot használták 
 Miután megszerezte a metaadat-dokumentumot az OpenID Connect metaadat-végpontból, használhatja az RSA-256 nyilvános kulcsokat (ebben a végpontban) az azonosító jogkivonat aláírásának ellenőrzéséhez. Előfordulhat, hogy a végponton több kulcs van felsorolva, amelyeket a `kid`azonosít. A `id_token` fejléce `kid` jogcímet is tartalmaz. Azt jelzi, hogy a kulcsok közül melyeket használták az azonosító token aláírására. További információért, beleértve a [jogkivonatok érvényesítésével](tokens-overview.md)kapcsolatos ismereteket, tekintse meg a [Azure ad B2C jogkivonat-referenciát](tokens-overview.md).
 <!--TODO: Improve the information on this-->
 
-Az azonosító jogkivonat aláírásának ellenőrzése után számos jogcím ellenőrzésre szorul. Példa:
+Az azonosító jogkivonat aláírásának ellenőrzése után számos jogcím ellenőrzésre szorul. Például:
 
 * Érvényesítse a `nonce` jogcímet a jogkivonat-Visszajátszási támadások megelőzése érdekében. A bejelentkezési kérelemben megadott értéknek kell lennie.
 * Érvényesítse a `aud` jogcímet, és győződjön meg arról, hogy az azonosító jogkivonat ki lett állítva az alkalmazáshoz. Az értéknek az alkalmazás alkalmazásspecifikus AZONOSÍTÓjának kell lennie.
@@ -174,7 +174,7 @@ politika| Szükséges| A futtatandó felhasználói folyamat. Adja meg a Azure A
 | scope |Szükséges |A hatókörök szóközzel tagolt listája.  A jogkivonatok beolvasásához adja meg a kívánt erőforráshoz szükséges összes hatókört. |
 | response_mode |Ajánlott |Meghatározza az eredményül kapott jogkivonat az alkalmazásba való visszaküldéséhez használt módszert. Az implicit folyamathoz használja a `fragment`. Két másik mód is megadható, `query` és `form_post`, de az implicit folyamat nem működik. |
 | state |Ajánlott |A jogkivonat-válaszban visszaadott kérelemben szereplő érték.  A használni kívánt tartalom karakterlánca lehet.  A rendszer általában véletlenszerűen generált, egyedi értéket használ, hogy megakadályozza a helyek közötti kérelmek hamisítás elleni támadásait.  Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna. Például a lap vagy a felhasználó megtekinthető. |
-| egyszeri |Szükséges |Az alkalmazás által generált kérelemben szereplő érték, amely az eredményül kapott azonosító jogkivonat jogcímként szerepel.  Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy véletlenszerű, egyedi karakterlánc, amely azonosítja a kérelem forrását. |
+| nonce |Szükséges |Az alkalmazás által generált kérelemben szereplő érték, amely az eredményül kapott azonosító jogkivonat jogcímként szerepel.  Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy véletlenszerű, egyedi karakterlánc, amely azonosítja a kérelem forrását. |
 | gyors |Szükséges |A rejtett iframe-ben lévő jogkivonatok frissítéséhez és lekéréséhez használja a `prompt=none` annak biztosítására, hogy az IFRAME ne legyen beragadva a bejelentkezési oldalon, és azonnal visszaadja. |
 | login_hint |Szükséges |A rejtett iframe-ben lévő tokenek frissítéséhez és lekéréséhez adja meg a felhasználó felhasználónevét, hogy megkülönböztesse az adott időpontban a felhasználó által esetlegesen használt munkameneteket. A felhasználónevet kinyerheti egy korábbi bejelentkezésből az `preferred_username` jogcím használatával (az `profile` hatókör szükséges az `preferred_username` jogcím megszerzéséhez). |
 | domain_hint |Szükséges |A következők egyike lehet: `consumers` vagy `organizations`.  A rejtett iframe-ben lévő tokenek frissítéséhez és lekéréséhez adja meg a `domain_hint` értéket a kérelemben.  Kinyeri a `tid` jogcímet egy korábbi bejelentkezés azonosító jogkivonatával annak meghatározásához, hogy melyik értéket kell használni (az `profile` hatókör szükséges az `tid` jogcím fogadásához). Ha a `tid` jogcím értéke `9188040d-6c67-4c5b-b112-36a304b66dad`, használja a `domain_hint=consumers`.  Ellenkező esetben használja a `domain_hint=organizations`. |
@@ -223,7 +223,7 @@ Az azonosító tokenek és a hozzáférési tokenek rövid idő után lejárnak.
 ## <a name="send-a-sign-out-request"></a>Kijelentkezési kérelem küldése
 Ha alá szeretné írni a felhasználót az alkalmazásból, a kijelentkezéshez irányítsa át a felhasználót az Azure AD-ba. Ha nem irányítja át a felhasználót, előfordulhat, hogy újra kell hitelesítenie az alkalmazást anélkül, hogy újra be kellene írnia a hitelesítő adatait, mert az Azure AD-vel érvényes egyszeri bejelentkezéses munkamenet van.
 
-Egyszerűen átirányíthatja a felhasználót a `end_session_endpoint`, amely ugyanabban az OpenID Connect metaadat-dokumentumban szerepel, amely az [azonosító jogkivonat ellenőrzése](#validate-the-id-token)című cikkben található. Példa:
+Egyszerűen átirányíthatja a felhasználót a `end_session_endpoint`, amely ugyanabban az OpenID Connect metaadat-dokumentumban szerepel, amely az [azonosító jogkivonat ellenőrzése](#validate-the-id-token)című cikkben található. Például:
 
 ```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -241,7 +241,7 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 > A felhasználó átirányítása a `end_session_endpoint` törli az egyes felhasználók egyszeri bejelentkezési állapotát Azure AD B2C használatával. Azonban nem írja alá a felhasználót a felhasználó közösségi identitás-szolgáltatói munkamenetében. Ha a felhasználó ugyanazt az identitás-szolgáltatót választja egy későbbi bejelentkezéskor, a rendszer újra hitelesíti a felhasználót a hitelesítő adatok megadása nélkül. Ha a felhasználó ki szeretne jelentkezni a Azure AD B2C alkalmazásból, nem feltétlenül jelenti azt, hogy teljesen ki szeretné jelentkezni a Facebook-fiókjából, például:. Helyi fiókok esetében azonban a felhasználó munkamenete megfelelően fog megjelenni.
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="code-sample-hellojs-with-azure-ad-b2c"></a>Mintakód: Hello. js Azure AD B2C
 

@@ -2,20 +2,20 @@
 title: A felhasználói folyamatok verziói a Azure Active Directory B2Cban | Microsoft Docs
 description: A Azure Active Directory B2Cban elérhető felhasználói folyamatok verzióinak megismerése.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d7e174245755659494dfe1243c39619ae37f0f33
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 40d21d3390396e0cb7e44d4e19598f9b0b691087
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840077"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185620"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>A felhasználói folyamatok verziói Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ Az új felhasználói folyamatok új verzióként lesznek hozzáadva. Mivel a fe
 | Regisztráció | Nem | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
 | Regisztráció és bejelentkezés | Igen | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre, vagy jelentkezzen be a fiókjába. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul>|
 
-## <a name="v11"></a>1\.1-es verzió
+## <a name="v11"></a>V1.1
 
 | Felhasználói folyamat | Ajánlott | Leírás |
 | --------- | ----------- | ----------- |

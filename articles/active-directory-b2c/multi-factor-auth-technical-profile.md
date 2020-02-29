@@ -3,20 +3,20 @@ title: Az Azure MFA technikai profiljai az egyéni házirendekben
 titleSuffix: Azure AD B2C
 description: Egyéni házirend-referenciák az Azure Multi-Factor Authentication (MFA) technikai profiljaihoz Azure AD B2Cban.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a8aaea6b2afb4d89e6e667edba0eeba2f4ddcca8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 05851dba9de06b5dfba2da4f455fbaf5e9376d08
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480215"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184281"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure MFA technikai profil definiálása egy Azure AD B2C egyéni szabályzatban
 
@@ -28,7 +28,7 @@ Az Azure MFA technikai profilja szintén hibaüzenetet adhat vissza. Az Azure MF
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="protocol"></a>Protocol (Protokoll)
+## <a name="protocol"></a>Protokoll
 
 A **protokoll** elem **Name** attribútumát `Proprietary`értékre kell állítani. A **kezelő** attribútumnak tartalmaznia kell az Azure ad B2C által használt protokollkezelő-szerelvény teljesen minősített nevét:
 
@@ -57,8 +57,8 @@ A **szabályzattípushoz** elem tartalmazza az Azure MFA számára küldendő jo
 | --------- | -------- | ----------- |
 | userPrincipalName | Igen | A telefonszámot birtokló felhasználó azonosítója. |
 | Telefonszám | Igen | Az SMS-kód küldésére szolgáló telefonszám. |
-| CompanyName | Nem |A vállalat neve az SMS-ben. Ha nincs megadva, a rendszer az alkalmazás nevét használja. |
-| locale | Nem | Az SMS területi beállítása. Ha nincs megadva, a rendszer a felhasználó böngésző területi beállítását használja. |
+| companyName | Nem |A vállalat neve az SMS-ben. Ha nincs megadva, a rendszer az alkalmazás nevét használja. |
+| területi beállítás | Nem | Az SMS területi beállítása. Ha nincs megadva, a rendszer a felhasználó böngésző területi beállítását használja. |
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak előállítására szolgálnak az Azure MFA szolgáltatásba való küldés előtt.
 
@@ -79,7 +79,7 @@ A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -ele
 
 ### <a name="return-an-error-message"></a>Hibaüzenet küldése
 
-A [metaadatok](#metadata)című cikkben leírtak szerint testreszabhatja a felhasználó számára megjelenített hibaüzenetet különböző hibák esetén. Az üzeneteket továbbra is honosíthatja a területi beállítás előállításával. Példa:
+A [metaadatok](#metadata)című cikkben leírtak szerint testreszabhatja a felhasználó számára megjelenített hibaüzenetet különböző hibák esetén. Az üzeneteket továbbra is honosíthatja a területi beállítás előállításával. Például:
 
 ```XML
 <Item Key="en.UserMessageIfInvalidFormat">Invalid phone number.</Item>
@@ -141,7 +141,7 @@ A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -ele
 
 ### <a name="return-an-error-message"></a>Hibaüzenet küldése
 
-A [metaadatok](#metadata)című cikkben leírtak szerint testreszabhatja a felhasználó számára megjelenített hibaüzenetet különböző hibák esetén. Az üzeneteket továbbra is honosíthatja a területi beállítás előállításával. Példa:
+A [metaadatok](#metadata)című cikkben leírtak szerint testreszabhatja a felhasználó számára megjelenített hibaüzenetet különböző hibák esetén. Az üzeneteket továbbra is honosíthatja a területi beállítás előállításával. Például:
 
 ```XML
 <Item Key="en.UserMessageIfWrongCodeEntered">Wrong code has been entered.</Item>

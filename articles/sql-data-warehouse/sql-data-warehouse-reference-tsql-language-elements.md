@@ -1,6 +1,6 @@
 ---
 title: A T-SQL nyelvi elemei
-description: A Azure SQL Data Warehouse által támogatott T-SQL-utasításokhoz tartozó dokumentációra mutató hivatkozások.
+description: Hivatkozások az SQL Analytics által támogatott T-SQL-utasítások dokumentációjában.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 02f463e12547ba64a05e04988d9c192bba4f6a27
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: edd77d711654a7f2793eb3c08b93e85fc0a89e8f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692522"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198422"
 ---
-# <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>A Azure SQL Data Warehouse által támogatott T-SQL nyelvi elemek
-A Azure SQL Data Warehouse által támogatott T-SQL nyelvi elemek dokumentációjának hivatkozásai.
+# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>Az SQL Analytics által támogatott T-SQL nyelvi elemek
+Az SQL Analytics által támogatott T-SQL nyelvi elemek dokumentációjának hivatkozásai.
 
 ## <a name="core-elements"></a>Alapvető elemek
 * [szintaxisi konvenciók](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
@@ -199,7 +199,7 @@ A Azure SQL Data Warehouse által támogatott T-SQL nyelvi elemek dokumentáció
 * [SQUARE](https://msdn.microsoft.com/library/ms173569.aspx)
 * [STATS_DATE](https://msdn.microsoft.com/library/ms190330.aspx)
 * [SZÓRÁS](https://msdn.microsoft.com/library/ms190474.aspx)
-* [STDEVP](https://msdn.microsoft.com/library/ms176080.aspx)
+* [SZÓRÁSP](https://msdn.microsoft.com/library/ms176080.aspx)
 * [STR](https://msdn.microsoft.com/library/ms189527.aspx)
 * [CUCC](https://msdn.microsoft.com/library/ms188043.aspx)
 * [SUBSTRING](https://msdn.microsoft.com/library/ms187748.aspx)
@@ -220,7 +220,7 @@ A Azure SQL Data Warehouse által támogatott T-SQL nyelvi elemek dokumentáció
 * [UNICODE](https://msdn.microsoft.com/library/ms180059.aspx)
 * [FELSŐ](https://msdn.microsoft.com/library/ms180055.aspx)
 * [FELHASZNÁLÓI](https://msdn.microsoft.com/library/ms186738.aspx)
-* [Felhasználónév](https://msdn.microsoft.com/library/ms188014.aspx)
+* [USER_NAME](https://msdn.microsoft.com/library/ms188014.aspx)
 * [VAR](https://msdn.microsoft.com/library/ms186290.aspx)
 * [VARP](https://msdn.microsoft.com/library/ms188735.aspx)
 * [ÉV](https://msdn.microsoft.com/library/ms186313.aspx)
@@ -278,5 +278,5 @@ A Azure SQL Data Warehouse által támogatott T-SQL nyelvi elemek dokumentáció
 * [XACT_ABORT BEÁLLÍTÁSA](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>További lépések
-További információ: a [Azure SQL Data Warehouseban található T-SQL-utasítások](sql-data-warehouse-reference-tsql-statements.md), valamint [a Azure SQL Data Warehouse rendszernézetei](sql-data-warehouse-reference-tsql-system-views.md).
+További információ: a [T-SQL-utasítások az SQL](sql-data-warehouse-reference-tsql-statements.md)Analyticsben és a [rendszernézetek az SQL Analytics](sql-data-warehouse-reference-tsql-system-views.md)szolgáltatásban.
 

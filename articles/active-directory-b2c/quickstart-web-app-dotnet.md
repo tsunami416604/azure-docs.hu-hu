@@ -3,20 +3,20 @@ title: 'Rövid útmutató: bejelentkezés beállítása ASP.NET-webalkalmazásho
 titleSuffix: Azure AD B2C
 description: Ebben a rövid útmutatóban egy olyan minta ASP.NET-webalkalmazást futtat, amely Azure Active Directory B2Ct használ a fiókok bejelentkezésének biztosításához.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7ee56e69befb220a742077326956efa996979105
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 197155650bf7b8d113f96dbcfd6d9e2b58924b7f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850173"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187202"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Gyors útmutató: bejelentkezés beállítása ASP.NET-alkalmazáshoz Azure Active Directory B2C használatával
 
@@ -94,7 +94,7 @@ Az Azure AD B2C felhasználói fiókkal sikeresen intézett hitelesített hívá
 
 Az Azure AD B2C-bérlőt ahhoz is használhatja, ha más Azure AD B2C gyors útmutatókat vagy oktatóanyagokat is ki szeretne próbálni. Ha már nincs szüksége rá, akkor [törölheti az Azure AD B2C-bérlőt](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy minta ASP.NET-alkalmazást használt a következőhöz:
 

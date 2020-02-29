@@ -3,20 +3,20 @@ title: 'Oktatóanyag: felhasználók hitelesítése natív ügyfélalkalmazás'
 titleSuffix: Azure AD B2C
 description: Útmutató a .NET desktop-alkalmazások felhasználói bejelentkezésének biztosításához a Azure Active Directory B2C használatával.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 10/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 4c271a750719f475a859f9a492009bfaf74da869
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 06d27c3a3daa4702653a2063d0ac70fd094e2d74
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850005"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186199"
 ---
 # <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Oktatóanyag: felhasználók hitelesítése natív asztali ügyfélprogramban Azure Active Directory B2C használatával
 
@@ -61,7 +61,7 @@ Ha frissíteni szeretné az alkalmazást a Azure AD B2C-Bérlővel való együtt
     private static readonly string ClientId = "{application-ID}";
     ```
 
-3. Frissítse a szabályzat nevének változóit az előfeltételek részeként létrehozott felhasználói folyamatok nevével. Példa:
+3. Frissítse a szabályzat nevének változóit az előfeltételek részeként létrehozott felhasználói folyamatok nevével. Például:
 
     ```csharp
     public static string PolicySignUpSignIn = "B2C_1_signupsignin1";
@@ -93,7 +93,7 @@ Ha az **API hívása** gombot választja, **hibaüzenet** jelenik meg. A hiba ok
 
 Folytassa a következő oktatóanyaggal, amely egy védett webes API-t regisztrál a saját bérlőben, és lehetővé teszi a **hívási API** működőképességét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

@@ -3,20 +3,20 @@ title: AppAuth használata iOS-alkalmazásokban
 titleSuffix: Azure AD B2C
 description: AppAuth-t használó iOS-alkalmazás létrehozása a Azure Active Directory B2C a felhasználói identitások kezeléséhez és a felhasználók hitelesítéséhez.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5433867b0676ffa644160251c9aacd81ba04dda7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c659280ebc8c91b53cbc3a176c84397edd942c23
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848355"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186828"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: bejelentkezés iOS-alkalmazás használatával
 
@@ -30,7 +30,7 @@ A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t
 Ha még nem ismeri a OAuth2 vagy az OpenID Connectet, akkor előfordulhat, hogy a minta konfigurációjának nagy része nem lenne értelme. Ebben az esetben javasoljuk, hogy olvassa el [a protokoll áttekintését, amelyet itt talál](protocols-overview.md).
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Az Azure AD B2C-címtár beszerzése
-Az Azure AD B2C használatához létre kell hoznia egy címtárat vagy bérlőt. A címtár minden felhasználó, alkalmazás, csoport és egyéb tároló. Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](tutorial-create-tenant.md), mielőtt továbblépne.
+Ahhoz, hogy használni tudja az Azure AD B2C-t, előbb létre kell hoznia egy címtárat vagy bérlőt. A címtár minden felhasználó, alkalmazás, csoport és egyéb tároló. Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](tutorial-create-tenant.md), mielőtt továbblépne.
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 

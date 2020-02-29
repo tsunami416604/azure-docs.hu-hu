@@ -3,20 +3,20 @@ title: Az erőforrás-tulajdonos jelszava hitelesítő adatainak beállítása e
 titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan konfigurálhatja az erőforrás-tulajdonosi jelszó hitelesítő adatait (ROPC) a Azure Active Directory B2C egyéni házirendjeinek használatával.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: df6f8ce22e8215a0727db7f69e0f6e5c3f5fc9e0
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 55b4750d2c601a4d3c66bcd8235a9718d6daaf9d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917390"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186997"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás-tulajdonosi jelszó hitelesítő adatainak konfigurálása Azure Active Directory B2C egyéni házirend használatával
 
@@ -251,11 +251,11 @@ Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazá
 - Cserélje le a `your-tenant-name`t a Azure AD B2C bérlő nevére.
 - Cserélje le a `B2C_1A_ROPC_Auth`t az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevére.
 
-| Paraméter | Érték |
+| Kulcs | Érték |
 | --- | ----- |
 | felhasználónév | `user-account` |
-| jelszó | `password1` |
-| grant_type | jelszó |
+| password | `password1` |
+| grant_type | password |
 | scope | OpenID `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | token id_token |
@@ -296,7 +296,7 @@ Az offline-hozzáférés sikeres válasza a következő példához hasonlóan n�
 - Cserélje le a `your-tenant-name`t a Azure AD B2C bérlő nevére.
 - Cserélje le a `B2C_1A_ROPC_Auth`t az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevére.
 
-| Paraméter | Érték |
+| Kulcs | Érték |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -329,7 +329,7 @@ A sikeres válasz a következő példához hasonlít:
 
 Azure AD B2C megfelel a OAuth 2,0 szabványoknak a nyilvános ügyfél erőforrás-tulajdonos jelszavának hitelesítő adataihoz, és kompatibilisnek kell lennie a legtöbb ügyféloldali SDK-val. A legfrissebb információkért tekintse meg a [OAuth 2,0-hez készült natív app SDK-t és az OpenID connectet a modern ajánlott eljárások megvalósításához](https://appauth.io/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a forgatókönyv teljes példáját a [Azure Active Directory B2C egyéni házirend alapszintű csomagban](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc).
 - További információ a Azure Active Directory B2C által használt jogkivonatokról a [jogkivonat-hivatkozásban](tokens-overview.md).

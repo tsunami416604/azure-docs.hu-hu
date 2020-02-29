@@ -1,5 +1,5 @@
 ---
-title: Felügyelt példány – időponthoz tartozó visszaállítás
+title: Felügyelt példány – időponthoz tartozó visszaállítás (PITR)
 description: SQL-adatbázis visszaállítása felügyelt példányban egy korábbi időpontra.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 9ed694ec524c4e3e033c3139735e8e079141ec4a
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 27f465e6864d0ff639e825c8a816d86648bd8853
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515122"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197521"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>SQL-adatbázis visszaállítása felügyelt példányban egy korábbi időpontra
 
@@ -24,22 +24,18 @@ Az időponthoz tartozó visszaállítás (PITR) használatával létrehozhat egy
 
 Az időponthoz való visszaállítás hasznos olyan helyreállítási helyzetekben, mint például a hibák által okozott incidensek, az adatok helytelen betöltése vagy a kritikus adatok törlése. Egyszerűen tesztelésre vagy naplózásra is használható. A biztonságimásolat-fájlok az adatbázis beállításaitól függően 7 – 35 napig tartanak.
 
-Az időponthoz történő visszaállítás a következőket teheti:
+Az időponthoz tartozó visszaállítás egy adatbázist állíthat vissza:
 
-- Adatbázis visszaállítása meglévő adatbázisból.
-- Adatbázis visszaállítása törölt adatbázisból.
-
-Felügyelt példány esetén az adott időponthoz tartozó visszaállítás a következő esetekben is elvégezhető:
-
-- Adatbázis visszaállítása ugyanarra a felügyelt példányra.
-- Adatbázis visszaállítása egy másik felügyelt példányra.
-
-> [!NOTE]
-> Egy teljes felügyelt példány időponthoz tartozó visszaállítása nem lehetséges. Ez a cikk a felügyelt példányokon üzemeltetett adatbázisok adott időpontban történő visszaállítását ismerteti.
+- egy meglévő adatbázisból.
+- egy törölt adatbázisból.
+- ugyanarra a felügyelt példányra, vagy egy másik felügyelt példányra. 
 
 ## <a name="limitations"></a>Korlátozások
 
-Ha egy felügyelt példányról egy másikra állítja vissza a visszaállítást, mindkét példánynak ugyanabban az előfizetésben és régióban kell lennie. A régiók közötti és az előfizetések közötti visszaállítás jelenleg nem támogatott.
+A felügyelt példányra történő visszaállítási időpontra a következő korlátozások vonatkoznak:
+
+- Ha egy felügyelt példányról egy másikra állítja vissza a visszaállítást, mindkét példánynak ugyanabban az előfizetésben és régióban kell lennie. A régiók közötti és az előfizetések közötti visszaállítás jelenleg nem támogatott.
+- Egy teljes felügyelt példány időponthoz tartozó visszaállítása nem lehetséges. Ez a cikk a felügyelt példányokon üzemeltetett adatbázisok adott időpontban történő visszaállítását ismerteti.
 
 > [!WARNING]
 > Vegye figyelembe a felügyelt példány tárolási méretét. A visszaállítani kívánt adatmérettől függően elfogyhat a példányok tárolója. Ha nincs elég hely a visszaállított adatmennyiséghez, használjon más megközelítést.
@@ -48,7 +44,7 @@ A következő táblázat a felügyelt példányok időponthoz kapcsolódó vissz
 
 |           |Meglévő adatbázis visszaállítása azonos felügyelt példányra| Meglévő adatbázis visszaállítása egy másik felügyelt példányra|Az eldobott adatbázis visszaállítása ugyanarra a felügyelt példányra|Az eldobott adatbázis visszaállítása egy másik felügyelt példányra|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| Igen|Nem |Nem|Nem|
+|**Azure Portalra**| Igen|Nem |Igen|Nem|
 |**Azure CLI**|Igen |Igen |Nem|Nem|
 |**PowerShell**| Igen|Igen |Igen|Igen|
 
@@ -56,9 +52,9 @@ A következő táblázat a felügyelt példányok időponthoz kapcsolódó vissz
 
 A Azure Portal, a PowerShell vagy az Azure CLI használatával állítson vissza egy meglévő adatbázist ugyanarra a példányra. Ha másik példányra szeretné visszaállítani az adatbázist, használja a PowerShellt vagy az Azure CLI-t, így megadhatja a cél felügyelt példány és az erőforráscsoport tulajdonságait. Ha nem határozza meg ezeket a paramétereket, a rendszer alapértelmezés szerint az adatbázist visszaállítja a meglévő példányra. A Azure Portal jelenleg nem támogatja a visszaállítást egy másik példányra.
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
 2. Lépjen a felügyelt példányra, és válassza ki a visszaállítani kívánt adatbázist.
 3. Válassza a **visszaállítás** lehetőséget az adatbázis lapon:
 
@@ -67,7 +63,7 @@ A Azure Portal, a PowerShell vagy az Azure CLI használatával állítson vissza
 4. A **visszaállítás** lapon válassza ki azt a dátumot és időpontot, amelyre vissza kívánja állítani az adatbázist.
 5. Az adatbázis visszaállításához kattintson a **Confirm (megerősítés** ) gombra. Ez a művelet elindítja a visszaállítási folyamatot, amely létrehoz egy új adatbázist, és feltölti azt az eredeti adatbázisból származó adatokkal a megadott időpontban. A helyreállítási folyamattal kapcsolatos további információkért lásd: [helyreállítás ideje](sql-database-recovery-using-backups.md#recovery-time).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Ha még nincs Azure PowerShell telepítve, tekintse meg [a Azure PowerShell modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps)ismertető témakört.
 
@@ -92,7 +88,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
                               -TargetInstanceDatabaseName $targetDatabase `
 ```
 
-Az adatbázis egy másik felügyelt példányra való visszaállításához adja meg a cél erőforráscsoport és a felügyelt példány nevét is:  
+Az adatbázis egy másik felügyelt példányra való visszaállításához adja meg a célként megadott erőforráscsoport és a célként felügyelt példány nevét is:  
 
 ```powershell-interactive
 $targetResourceGroupName = "<Resource group of target managed instance>"
@@ -110,7 +106,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 
 Részletekért lásd: [Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase).
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Ha még nem telepítette az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest)ismertető témakört.
 
@@ -136,9 +132,18 @@ Az elérhető paraméterek részletes ismertetését lásd a [CLI dokumentáció
 
 ## <a name="restore-a-deleted-database"></a>Törölt adatbázis visszaállítása
 
-A törölt adatbázisok visszaállítása a PowerShell vagy az Azure Portal használatával végezhető el. ezt a dokumentumot az [Azure Portalon](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#managed-instance-database-1)teheti meg. Az adatbázis visszaállítható ugyanarra a példányra vagy egy másik példányra.
+A törölt adatbázisok visszaállítása a PowerShell vagy a Azure Portal használatával végezhető el. Ha egy törölt adatbázist ugyanarra a példányra kíván visszaállítani, használja a Azure Portal vagy a PowerShellt. A törölt adatbázisok másik példányra való visszaállításához használja a PowerShellt. 
 
-A törölt adatbázisok PowerShell használatával történő visszaállításához adja meg a paraméterek értékét a következő parancsban. Ezután futtassa a parancsot:
+### <a name="portal"></a>Portál 
+
+
+Felügyelt adatbázis helyreállításához a Azure Portal segítségével nyissa meg a felügyelt példányok áttekintése lapot, és válassza a **törölt adatbázisok**lehetőséget. Válassza ki a visszaállítani kívánt törölt adatbázist, és írja be az új adatbázis nevét, amely a biztonsági másolatból visszaállított adatokkal lesz létrehozva.
+
+  ![Képernyőkép a törölt Azure SQL-példány-adatbázis visszaállításáról](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
+
+### <a name="powershell"></a>PowerShell
+
+Ha az adatbázist ugyanarra a példányra szeretné visszaállítani, frissítse a paramétereket, majd futtassa a következő PowerShell-parancsot: 
 
 ```powershell-interactive
 $subscriptionId = "<Subscription ID>"
@@ -148,30 +153,33 @@ Select-AzSubscription -SubscriptionId $subscriptionId
 $resourceGroupName = "<Resource group name>"
 $managedInstanceName = "<Managed instance name>"
 $deletedDatabaseName = "<Source database name>"
+$targetDatabaseName = "<target database name>"
 
-$deleted_db = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $resourceGroupName `
-            -InstanceName $managedInstanceName -DatabaseName $deletedDatabaseName 
+$deletedDatabase = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $resourceGroupName `
+-InstanceName $managedInstanceName -DatabaseName $deletedDatabaseName
 
-$pointInTime = "2018-06-27T08:51:39.3882806Z"
-$properties = New-Object System.Object
-$properties | Add-Member -type NoteProperty -name CreateMode -Value "PointInTimeRestore"
-$properties | Add-Member -type NoteProperty -name RestorePointInTime -Value $pointInTime
-$properties | Add-Member -type NoteProperty -name RestorableDroppedDatabaseId -Value $deleted_db.Id
+Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+   -InstanceName $deletedDatabase.ManagedInstanceName `
+   -ResourceGroupName $deletedDatabase.ResourceGroupName `
+   -DeletionDate $deletedDatabase.DeletionDate `
+   -PointInTime UTCDateTime `
+   -TargetInstanceDatabaseName $targetDatabaseName
 ```
 
-Ha vissza szeretné állítani a törölt adatbázist egy másik példányra, módosítsa az erőforráscsoport és a felügyelt példány nevét. Győződjön meg arról is, hogy a Location paraméter megegyezik az erőforráscsoport és a felügyelt példány helyével.
+Az adatbázis egy másik felügyelt példányra való visszaállításához adja meg a célként megadott erőforráscsoport és a célként felügyelt példány nevét is:
 
 ```powershell-interactive
-$resourceGroupName = "<Second resource group name>"
-$managedInstanceName = "<Second managed instance name>"
+$targetResourceGroupName = "<Resource group of target managed instance>"
+$targetInstanceName = "<Target managed instance name>"
 
-$location = "West Europe"
-
-$restoredDBName = "WorldWideImportersPITR"
-$resource_id = "subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/managedInstances/$managedInstanceName/databases/$restoredDBName"
-
-New-AzResource -Location $location -Properties $properties `
-        -ResourceId $resource_id -ApiVersion "2017-03-01-preview" -Force
+Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+   -InstanceName $deletedDatabase.ManagedInstanceName `
+   -ResourceGroupName $deletedDatabase.ResourceGroupName `
+   -DeletionDate $deletedDatabase.DeletionDate `
+   -PointInTime UTCDateTime `
+   -TargetInstanceDatabaseName $targetDatabaseName `
+   -TargetResourceGroupName $targetResourceGroupName `
+   -TargetInstanceName $targetInstanceName 
 ```
 
 ## <a name="overwrite-an-existing-database"></a>Meglévő adatbázis felülírása
@@ -197,13 +205,13 @@ A következő módszerek egyikével csatlakozhat az adatbázishoz a felügyelt p
 - [Pont – hely kapcsolat](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
 - [Nyilvános végpont](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 A Azure Portal válassza ki az adatbázist a felügyelt példányból, majd válassza a **Törlés**lehetőséget.
 
    ![Adatbázis törlése a Azure Portal használatával](media/sql-database-managed-instance-point-in-time-restore/delete-database-from-mi.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 A következő PowerShell-paranccsal elhúzhatja a felügyelt példányok egy meglévő adatbázisát:
 
@@ -215,7 +223,7 @@ $databaseName = "<Source database>"
 Remove-AzSqlInstanceDatabase -Name $databaseName -InstanceName $managedInstanceName -ResourceGroupName $resourceGroupName
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 A következő Azure CLI-paranccsal elhúzhatja a felügyelt példányokból származó meglévő adatbázist:
 
@@ -239,6 +247,6 @@ A következő módszerek egyikével csatlakozhat az adatbázishoz a felügyelt p
 - [Pont – hely kapcsolat](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
 - [Nyilvános végpont](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [automatizált biztonsági mentésekről](sql-database-automated-backups.md).

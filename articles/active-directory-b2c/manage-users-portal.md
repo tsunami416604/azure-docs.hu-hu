@@ -2,20 +2,20 @@
 title: Hozzon létre & törölheti Azure AD B2C fogyasztói felhasználói fiókjait a Azure Portal
 description: Ebből a témakörből megtudhatja, hogyan hozhat létre és törölhet felhasználói felhasználókat a Azure AD B2C könyvtárban a Azure Portal használatával.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/09/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d96db5cf062da1b2e8badd80a9a00620b724fd4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c8fad8b5bd2dccba36c0c6888712fa806f3cbfc8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840417"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187219"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>A Azure Portal használatával hozhat létre és törölhet felhasználói felhasználókat a Azure AD B2C
 
@@ -29,15 +29,15 @@ Felhasználók hozzáadásához vagy törléséhez a fióknak hozzá kell rendel
 
 A [Azure ad B2C felhasználói fiókjainak áttekintése](user-overview.md)című cikkben leírtak szerint három típusú felhasználói fiók hozható létre egy Azure ad B2C könyvtárban:
 
-* Munkahelyi
+* Munka
 * Vendég
-* Fogyasztó
+* Fogyasztói
 
 Ez a cikk a Azure Portal **felhasználói fiókjainak** használatáról szól. A munkahelyi és a vendég fiókok létrehozásával és törlésével kapcsolatos információkért lásd: [felhasználók hozzáadása vagy törlése Azure Active Directory használatával](../active-directory/fundamentals/add-users-azure-active-directory.md).
 
 ## <a name="create-a-consumer-user"></a>Fogyasztói felhasználó létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
 1. A **Kezelés** alatt válassza a **Felhasználókat**.
@@ -59,6 +59,6 @@ Ha nem jelölte be a **Bejelentkezés blokkolását**, a felhasználó bejelentk
 
 A felhasználók a törlést követő 30 napon belüli visszaállításával, illetve a felhasználók végleges törlésével kapcsolatos részletekért lásd: [a közelmúltban törölt felhasználó visszaállítása vagy eltávolítása a Azure Active Directory használatával](../active-directory/fundamentals/active-directory-users-restore.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az automatikus felhasználói felügyeleti forgatókönyvek esetében például a felhasználók áttelepítése egy másik identitás-szolgáltatótól a Azure AD B2C könyvtárba [: Azure ad B2C: felhasználói áttelepítés](user-migration.md).

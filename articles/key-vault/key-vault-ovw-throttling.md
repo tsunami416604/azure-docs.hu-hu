@@ -1,27 +1,28 @@
 ---
-title: Azure Key Vault szabályozási útmutató
-description: Key Vault szabályozás korlátozza az erőforrások túlzott mennyiségének megelőzésére irányuló egyidejű hívások számát.
+title: Az Azure Key Vault szabályozási útmutatója
+description: Key Vault-szabályozás korlátozza, hogy az erőforrások túlzott párhuzamos hívások száma.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 28e79dffb206e8a62410bf3b4e0e239879b51224
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 6c4923e86f8678458d6301503043413fb8a5629b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806677"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197368"
 ---
-# <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault szabályozási útmutató
+# <a name="azure-key-vault-throttling-guidance"></a>Az Azure Key Vault szabályozási útmutatója
 
-A szabályozás olyan folyamat, amely az erőforrások túlzott használatának megakadályozása érdekében korlátozza az Azure-szolgáltatás egyidejű hívásait. A Azure Key Vault (AKV) nagy mennyiségű kérelem kezelésére szolgál. Ha a kérések túlnyomó száma meghaladja a kérelmeket, az ügyfél kéréseinek szabályozása segít a AKV szolgáltatás optimális teljesítményének és megbízhatóságának fenntartásában.
+Szabályozás az kezdeményez, amely korlátozza az erőforrások túlzott elkerülése érdekében az Azure-szolgáltatás egyidejű beérkező hívásainak számát. Az Azure Key Vault (AKV) célja nagy mennyiségű kérelmet kezelni. Ha túlságosan sok kérelem történik, az ügyfél kérelmek szabályozása segítségével optimális teljesítményének és megbízhatóságának az AKV szolgáltatás karbantartása.
 
-A szabályozás korlátai a forgatókönyv alapján változnak. Ha például nagy mennyiségű írást végez, a szabályozás lehetősége magasabb, mint ha csak olvasást végez.
+A forgatókönyv szabályozási korlátok függ. Például akkor, ha nagy mennyiségű írást, a szabályozás lehetősége magasabb, mint ha csak végez olvasási.
 
-## <a name="how-does-key-vault-handle-its-limits"></a>Hogyan kezeli a Key Vault a korlátait?
+## <a name="how-does-key-vault-handle-its-limits"></a>Hogyan kezeli a Key Vault a teljesítménye korlátait?
 
 A szolgáltatás korlátai a Key Vault meggátolják az erőforrások felhasználását, és biztosítják az összes Key Vault ügyfelének minőségi szolgáltatását. Ha túllépi a szolgáltatás küszöbértékét, Key Vault korlátozza az ügyféltől érkező további kérelmeket egy adott időtartamra, a 429-as HTTP-állapotkódot (túl sok kérés) adja vissza, és a kérés meghiúsul. Sikertelen kérelmek, amelyek a 429-es számú korlátozást adnak vissza a Key Vault által követett szabályozási korlátok felé. 
 
@@ -40,7 +41,7 @@ Ha úgy látja, hogy a fentiek továbbra sem felelnek meg az igényeinek, tölts
 
 | Tár neve | Tár régiója | Objektumtípus (titok, kulcs vagy tanúsítvány) | Művelet (ek) * | Kulcs típusa | Kulcs hossza vagy görbéje | HSM-kulcs?| Stabil állapot RPS szükséges | Az RPS-csúcs szükséges |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Jelmagyarázat | Aláírás | EC | P-256 | Nem | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | Kulcs | Jel | EC | P-256 | Nem | 200 | 1000 |
 
 \* a lehetséges értékek teljes listáját lásd: [Azure Key Vault műveletek](/rest/api/keyvault/key-operations).
 
@@ -50,19 +51,19 @@ Ha további kapacitást hagy jóvá, vegye figyelembe a következőket a kapacit
   1. Az **engedélyezési listával**: a Key Vault szolgáltatás egy írási művelet eredményét fogja tükrözni (például SecretSet, CreateKey) a következő hívásokban (például:) 60 másodpercen belül. SecretGet, előjel).
 1. Az ügyfél kódjának vissza kell térnie a 429-re vonatkozó újrapróbálkozási szabályzatra. A Key Vault szolgáltatást hívó ügyfélalkalmazás nem tudja azonnal újrapróbálkozni Key Vault kérések esetén, amikor 429-as kódú választ kap.  Az itt közzétett Azure Key Vault-szabályozási útmutató az exponenciális leállítási alkalmazását javasolja a 429 http-válasz kódjának fogadásakor.
 
-Ha érvényes üzleti esettel rendelkezik a magasabb szintű szabályozási korlátokhoz, vegye fel velünk a kapcsolatot.
+Ha rendelkezik egy újabb szabályozási korlátairól üzleti esetet, lépjen kapcsolatba velünk a következő címen.
 
-## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Az alkalmazás szabályozása a szolgáltatási korlátokra reagálva
+## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Az alkalmazás szolgáltatásokra vonatkozó korlátozások válaszul szabályozásának megtervezéséhez
 
 A szolgáltatás szabályozásakor a következő **ajánlott eljárásokat** kell megvalósítani:
-- Csökkentse a műveletekre vonatkozó kérelmek számát.
+- Műveletek kérelmenkénti számának csökkentése.
 - Csökkentse a kérelmek gyakoriságát.
-- Kerülje az azonnali újrapróbálkozásokat. 
-    - Az összes kérelem a használati korlátokkal szemben esedékes.
+- Azonnali újrapróbálkozás elkerülése érdekében. 
+    - Összes kérelem lépheti túl a használati korlátok alapján.
 
-Az alkalmazás hibakezelés megvalósításakor a 429 HTTP-hibakód használatával észlelni kell az ügyféloldali szabályozás szükségességét. Ha a kérelem a HTTP 429 hibakód miatt ismét meghiúsul, akkor továbbra is Azure-szolgáltatási korláttal találkozik. Folytassa a javasolt ügyféloldali szabályozási módszer használatát, és próbálja meg újból végrehajtani a kérést.
+Az alkalmazás hibakezelési megvalósításának, a 429-es HTTP-hibakód használatával észleli a ügyféloldali szabályozás. A kérelem újra HTTP 429-es hibaüzenettel meghiúsul, ha csökkenti az Azure-szolgáltatás továbbra is merültek fel. Továbbra is használhatja az ajánlott ügyféloldali metódus szabályozás, amíg be nem fejeződik, a kérelem újbóli megkísérlése.
 
-Az exponenciális leállítási megvalósító kód alább látható. 
+Exponenciális visszatartással megvalósító kódot alább látható. 
 ```
 SecretClientOptions options = new SecretClientOptions()
     {
@@ -83,19 +84,19 @@ SecretClientOptions options = new SecretClientOptions()
 
 A kód használata egy ügyfélalkalmazás C# esetében egyszerű. 
 
-### <a name="recommended-client-side-throttling-method"></a>Ajánlott ügyféloldali szabályozási módszer
+### <a name="recommended-client-side-throttling-method"></a>Ajánlott az ügyféloldali szabályozási módszer
 
-A 429-as HTTP-hibakódon kezdje el az ügyfél szabályozását egy exponenciális leállítási megközelítés használatával:
+HTTP 429-es hibakód, a szabályozás, az ügyfél egy exponenciális visszatartással megközelítéssel kezdete:
 
-1. Várjon 1 másodpercet, próbálkozzon újra a kérelemmel
-2. Ha továbbra is 2 másodpercig tart a szabályozás, próbálkozzon újra a kéréssel
-3. Ha továbbra is leszabályozza a várakozási időt 4 másodpercig, próbálkozzon újra a kéréssel
-4. Ha továbbra is leszabályozza a 8 másodpercet, próbálkozzon újra a kéréssel
-5. Ha a szabályozás továbbra is 16 másodpercig tart, próbálkozzon újra a kérelemmel
+1. Várjon 1 másodperc, próbálkozzon újra a kérelmet
+2. Ha továbbra is szabályozott várjon 2 másodperc, ismételje meg a kérelmet
+3. Ha továbbra is szabályozott várakozási 4 másodperc, ismételje meg a kérelmet
+4. Ha továbbra is szabályozott várakozási 8 másodperc, ismételje meg a kérelmet
+5. Ha továbbra is szabályozott várakozási 16 másodperc, ismételje meg a kérelmet
 
-Ezen a ponton nem kell lekérdezni a HTTP 429-Response kódokat.
+Ezen a ponton meg kell nem lehet kezdeti HTTP 429-es válaszkódot.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 A Microsoft Cloud szabályozásának mélyebb tájolását lásd: [szabályozási minta](https://docs.microsoft.com/azure/architecture/patterns/throttling).
 

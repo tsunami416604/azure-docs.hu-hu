@@ -7,19 +7,19 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fd9bd846beba718cb305907d4d0c5a613d2ef816
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.custom: azure-synapse
+ms.openlocfilehash: 69a200d4fda940f072960da9224f84a22db51647
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029944"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193798"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure szinapszis Analytics – munkaterhelés felügyeleti portál monitorozás (előzetes verzió)
-Ez a cikk azt ismerteti, hogyan lehet figyelni a [munkaterhelés-csoport](sql-data-warehouse-workload-isolation.md#workload-groups) erőforrásainak kihasználtságát és lekérdezési tevékenységeit. Az Azure-Metrikaböngésző konfigurálásával kapcsolatos további információkért tekintse meg az [azure Metrikaböngésző első lépései](../azure-monitor/platform/metrics-getting-started.md) című cikket.  A rendszererőforrás-használat figyelésével kapcsolatos részletekért tekintse meg a Azure SQL Data Warehouse figyelési dokumentációjának [erőforrás-felhasználás](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization) szakaszát.
+Ez a cikk azt ismerteti, hogyan lehet figyelni a [munkaterhelés-csoport](sql-data-warehouse-workload-isolation.md#workload-groups) erőforrásainak kihasználtságát és lekérdezési tevékenységeit. Az Azure-Metrikaböngésző konfigurálásával kapcsolatos további információkért tekintse meg az [azure Metrikaböngésző első lépései](../azure-monitor/platform/metrics-getting-started.md) című cikket.  A rendszererőforrás-használat figyelésével kapcsolatos részletekért tekintse meg az Azure szinapszis Analytics figyelési dokumentációjának [erőforrás-felhasználás](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization) szakaszát.
 A munkaterhelés-kezelés figyeléséhez két különböző kategóriájú munkaterhelés-csoport metrikája van megadva: erőforrás-elosztási és lekérdezési tevékenység.  Ezek a metrikák a munkaterhelés csoport alapján bonthatók és szűrhetők.  A metrikák az alapján bonthatók és szűrhetők, ha a rendszer definiálva van (erőforrás-osztály munkaterhelési csoportok) vagy felhasználó által definiált (a [munkaterhelés-csoport létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxissal létrehozott felhasználó által létrehozva).
 
 ## <a name="workload-management-metric-definitions"></a>Munkaterhelés-kezelési metrika definíciói
@@ -75,7 +75,7 @@ Metrika 2: *munkaterhelési csoport lefoglalása az erőforrás-százalékok max
 Filter: [munkaterhelés-csoport] = `wgDataAnalyst`<br>
 ![Bottle-nyakú-WG](media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) a diagram azt mutatja, hogy az erőforrásokra vonatkozó 9%-os korláttal rendelkezik, a munkaterhelési csoport 90% + használatban van (a *munkaterhelési csoport lefoglalásának maximális erőforrás-százalékos mérőszáma alapján*).  A lekérdezések állandó sorba állítása a *munkaterhelés-csoport várólistán lévő lekérdezések metrikájában*látható.  Ebben az esetben a `CAP_PERCENTAGE_RESOURCE` 9%-nál magasabb értékre való növelése lehetővé teszi, hogy a több lekérdezés egyidejűleg legyen végrehajtva.  A `CAP_PERCENTAGE_RESOURCE` növelése feltételezi, hogy elegendő erőforrás áll rendelkezésre, és más munkaterhelés-csoportok nem elkülönítettek.  Győződjön meg róla, hogy a sapka megnőtt a *tényleges Cap-erőforrás százalékos metrikájának*ellenőrzésével.  Ha további átviteli sebességre van szükség, vegye fontolóra a `REQUEST_MIN_RESOURCE_GRANT_PERCENT` növelését 3-nál nagyobb értékre.  A `REQUEST_MIN_RESOURCE_GRANT_PERCENT` növelése lehetővé teheti a lekérdezések gyorsabb futtatását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Rövid útmutató: a munkaterhelés elkülönítésének konfigurálása T-SQL használatával](quickstart-configure-workload-isolation-tsql.md)<br>
 [MUNKATERHELÉS-csoport létrehozása (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)<br>
 [Számítási feladatok BESOROLÁSának létrehozása (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)<br>

@@ -3,20 +3,20 @@ title: Azure AD B2C figyelése Azure Monitor
 titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan naplózhatja Azure AD B2C eseményeit Azure Monitorekkel a delegált erőforrás-kezelés használatával.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 6f7f0252a6377397ccaccdc44c9c8561da7c9d29
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: acba378badb41324b2124b84833407da920a0e00
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121380"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190058"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C figyelése Azure Monitor
 
@@ -226,7 +226,7 @@ Azure AD B2C tevékenység naplóinak figyelési beállításainak konfigurálá
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. **Azure Active Directory** kiválasztása
-1. A **figyelés**területen válassza a **diagnosztikai beállítások**elemet.
+1. A **Monitorozás** területen kattintson a **Diagnosztikai beállítások** elemre.
 1. Ha vannak meglévő beállítások az erőforráson, látni fogja a már konfigurált beállítások listáját. Válassza a **diagnosztikai beállítás hozzáadása** lehetőséget egy új beállítás hozzáadásához, vagy a beállítás **szerkesztéséhez** egy meglévőt. Az egyes beállítások nem lehetnek többek között a célhelyek közül.
 
     ![Diagnosztikai beállítások ablaktábla Azure Portal](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
@@ -243,7 +243,7 @@ Azure AD B2C tevékenység naplóinak figyelési beállításainak konfigurálá
 1. Válassza a **AuditLogs** és a **SignInLogs**lehetőséget.
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Monitor diagnosztikai beállításainak hozzáadásával és konfigurálásával kapcsolatos további információkért lásd [: oktatóanyag: erőforrás-naplók összegyűjtése és elemzése az Azure-erőforrásokból](../azure-monitor/insights/monitor-azure-resource.md).
 

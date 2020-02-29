@@ -9,14 +9,14 @@ ms.workload: big-compute
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: lahugh
-ms.openlocfilehash: 14cbacf43e83dc768e9a85620df131533b746671
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 0134e7d92ddca9bd3b45abaf642f33de9d209b33
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463101"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192302"
 ---
-# <a name="securely-access-key-vault-with-batch"></a>Biztonságos hozzáférés Key Vault a Batch szolgáltatással
+# <a name="securely-access-key-vault-with-batch"></a>A Key Vault biztonságos elérése a Batch használatával
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be a Batch-csomópontokat a Azure Key Vault tárolt hitelesítő adatok biztonságos eléréséhez. Nincs értelme a rendszergazdai hitelesítő adatoknak a Key Vault-ben való elhelyezésében, majd a Key Vault parancsfájlokból való eléréséhez szükséges merevlemez-kódolási hitelesítő adatokkal. A megoldás egy olyan tanúsítvány használata, amely engedélyezi a Batch-csomópontok számára a Key Vault elérését. Néhány lépéssel a Batch biztonságos kulcstárolóját is megvalósíthatja.
 
@@ -40,7 +40,7 @@ cd C:\Program Files (x86)\Windows Kits\10\bin\x64
 Ezután a `makecert` eszköz használatával hozzon létre `batchcertificate.cer` és `batchcertificate.pvk`nevű önaláírt tanúsítványt. A használt köznapi név (CN) nem fontos ehhez az alkalmazáshoz, de hasznos lehet, ha azt szeretné, hogy a tanúsítvány mire szolgál.
 
 ```console
-makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
+makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
 A Batch használatához `.pfx` fájl szükséges. A [pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) eszközzel a `makecert` által létrehozott `.cer` és `.pvk` fájlokat egyetlen `.pfx` fájlba konvertálhatja.

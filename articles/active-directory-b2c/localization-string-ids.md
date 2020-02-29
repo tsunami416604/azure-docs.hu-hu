@@ -2,20 +2,20 @@
 title: Honosítási karakterlánc-azonosítók – Azure Active Directory B2C | Microsoft Docs
 description: Határozza meg az API. signuporsignin azonosítójú tartalom-definíció azonosítóit a Azure Active Directory B2C egyéni házirendjében.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd5e543a6d5dc2b59847a78bd925be68f8cdde25
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3af62a75228959478a80c2628307fff2b47c3c4a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982857"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187491"
 ---
 # <a name="localization-string-ids"></a>Honosítási sztringazonosítók
 
@@ -27,10 +27,10 @@ A **honosítási** elem lehetővé teszi, hogy a felhasználói útvonalakhoz ta
 
 A következő azonosítók a `api.signuporsignin`AZONOSÍTÓját tartalmazó tartalom-definícióhoz használatosak.
 
-| ID (Azonosító) | Alapértelmezett érték |
+| ID | Alapértelmezett érték |
 | -- | ------------- |
 | **local_intro_email** | Bejelentkezés meglévő fiókkal |
-| **logonIdentifier_email** | E-mail-cím |
+| **logonIdentifier_email** | E-mail cím |
 | **requiredField_email** | Adja meg az e-mail-címét |
 | **invalid_email** | Adjon meg egy érvényes e-mail-címet |
 | **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' ' *+/=? ^ _\`{\|} ~-] + @ [a-Za-z0-9-] + (?:\\. [ a-zA-Z0-9-] +)* $ |
@@ -47,8 +47,8 @@ A következő azonosítók a `api.signuporsignin`AZONOSÍTÓját tartalmazó tar
 | **cancel_message** | A felhasználó elfelejtette a jelszavát |
 | **button_signin** | Bejelentkezés |
 | **social_intro** | Jelentkezzen be a közösségi fiókjával |
-  **remember_me** |Bejelentkezés megtartása|
-| **unknown_error** | Hiba történt a bejelentkezés során. Később próbálja meg újra. |
+  **remember_me** |Bejelentkezve szeretnék maradni|
+| **unknown_error** | Hiba történt a bejelentkezés során. Próbálkozzon újra később. |
 
 A következő példa a felhasználói felület egyes elemeinek használatát mutatja be a regisztrációs vagy bejelentkezési oldalon:
 
@@ -81,7 +81,7 @@ Az alábbi példa a Facebook-identitás szolgáltatóját az Arab nyelvre honos�
 
 ### <a name="sign-up-or-sign-in-error-messages"></a>Regisztrációs vagy bejelentkezési hibaüzenetek
 
-| ID (Azonosító) | Alapértelmezett érték |
+| ID | Alapértelmezett érték |
 | -- | ------------- |
 | **UserMessageIfInvalidPassword** | Helytelen a jelszó. |
 | **UserMessageIfClaimsPrincipalDoesNotExist** | Úgy tűnik, hogy nem találja a fiókját. |
@@ -95,7 +95,7 @@ Az alábbi példa a Facebook-identitás szolgáltatóját az Arab nyelvre honos�
 
 Az alábbi azonosítók egy `api.localaccountsignup` vagy bármely olyan tartalom-definíció azonosítóját jelentik, amely a `api.selfasserted`, például a `api.selfasserted.profileupdate` és a `api.localaccountpasswordreset`-vel kezdődik.
 
-| ID (Azonosító) | Alapértelmezett érték |
+| ID | Alapértelmezett érték |
 | -- | ------------- |
 | **ver_sent** | Az ellenőrző kód a következőre lett küldve: |
 | **ver_but_default** | Alapértelmezett |
@@ -107,22 +107,22 @@ Az alábbi azonosítók egy `api.localaccountsignup` vagy bármely olyan tartalo
 | **év** | Év |
 | **verifying_blurb** | Várjon, amíg feldolgozzuk az adatokat. |
 | **button_cancel** | Mégse |
-| **ver_fail_no_retry** | Túl sok helytelen kísérlet történt. Később próbálja meg újra. |
-| **hónap** | Hónap |
+| **ver_fail_no_retry** | Túl sok helytelen kísérlet történt. Próbálkozzon újra később. |
+| **hónap** | Month |
 | **ver_success_msg** | Az E-mail cím ellenőrizve. Most már folytathatja. |
 | **months** | Január, február, március, április, május, június, július, augusztus, szeptember, október, november, december |
 | **ver_fail_server** | Nem sikerül ellenőrizni az e-mail-címét. Adjon meg egy érvényes e-mail-címet, és próbálkozzon újra. |
 | **error_requiredFieldMissing** | Hiányzik egy kötelező mező. Töltse ki az összes kötelező mezőt, és próbálkozzon újra. |
 | **initial_intro** | Adja meg a következő adatokat. |
 | **ver_but_resend** | Új kód küldése |
-| **button_continue** | Létrehozás |
+| **button_continue** | Hozzon létre |
 | **error_passwordEntryMismatch** | A jelszó-beviteli mezők nem egyeznek. Ugyanazt a jelszót adja meg mindkét mezőben, majd próbálkozzon újra. |
 | **ver_incorrect_format** | Helytelen formátumú. |
 | **ver_but_edit** | E-mail módosítása |
 | **ver_but_verify** | Kód ellenőrzése |
 | **alert_no** | Nem |
 | **ver_info_msg** | Az ellenőrző kód el lett küldve a Beérkezett üzenetek mappájába. Másolja az alábbi beviteli mezőbe. |
-| **nap** | Nap |
+| **nap** | Day |
 | **ver_fail_throttled** | Túl sok kérelem érkezett az e-mail-cím ellenőrzéséhez. Várjon egy kicsit, és próbálkozzon újra. |
 | **helplink_text** | mi ez? |
 | **ver_fail_retry** | A kód helytelen. Kérjük, próbálkozzon újból. |
@@ -134,7 +134,7 @@ Az alábbi azonosítók egy `api.localaccountsignup` vagy bármely olyan tartalo
 
 ### <a name="sign-up-and-self-asserted-pages-error-messages"></a>Bejelentkezési és saját maga által vezérelt lapok hibaüzenetei
 
-| ID (Azonosító) | Alapértelmezett érték |
+| ID | Alapértelmezett érték |
 | -- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | Már létezik a megadott AZONOSÍTÓJÚ felhasználó. Válasszon másikat. |
 | **UserMessageIfClaimNotVerified** | A jogcím nincs ellenőrizve: {0} |
@@ -157,10 +157,10 @@ Az alábbi példa a felhasználói felület egyes elemeinek használatát mutatj
 
 Az alábbiakban a `api.phonefactor`AZONOSÍTÓját tartalmazó tartalom-definíció azonosítói szerepelnek.
 
-| ID (Azonosító) | Alapértelmezett érték |
+| ID | Alapértelmezett érték |
 | -- | ------------- |
 | **button_verify** | hívj |
-| **country_code_label** | Országkód |
+| **country_code_label** | Országkód: |
 | **cancel_message** | A felhasználó megszakította a többtényezős hitelesítést |
 | **text_button_send_second_code** | új kód küldése |
 | **code_pattern** | \\d{6} |
@@ -207,7 +207,7 @@ Az alábbi példa a felhasználói felület egyes elemeinek használatát mutatj
 
 Az alábbi azonosítók egy [ellenőrző képernyő vezérlőelemhez](display-control-verification.md) tartoznak.
 
-| ID (Azonosító) | Alapértelmezett érték |
+| ID | Alapértelmezett érték |
 | -- | ------------- |
 |verification_control_but_change_claims |Módosítás |
 |verification_control_fail_send_code |Nem sikerült elküldeni a kódot, próbálkozzon újra később. |
@@ -219,7 +219,7 @@ Az alábbi azonosítók egy [ellenőrző képernyő vezérlőelemhez](display-co
 ## <a name="one-time-password-error-messages"></a>Egyszeri jelszó hibaüzenetei
 A következő azonosítók egy [egyszeri jelszó technikai profiljának](one-time-password-technical-profile.md) hibaüzenetei
 
-| ID (Azonosító) | Alapértelmezett érték |
+| ID | Alapértelmezett érték |
 | -- | ------------- |
 |UserMessageIfMaxRetryAttempted |A megadott jelszó egyszeri ellenőrzése túllépte a kísérletek maximális számát |
 |UserMessageIfSessionDoesNotExist |Egy jelszó-ellenőrzési munkamenet lejárt |

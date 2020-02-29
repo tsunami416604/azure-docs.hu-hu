@@ -3,20 +3,20 @@ title: Jogcímek REST API érvényesítésként
 titleSuffix: Azure AD B2C
 description: Útmutató a REST-szolgáltatásokkal kommunikáló Azure AD B2C felhasználói út létrehozásához.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 209cddcc8648f7d396f048057bb4367e2ae9f66c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7100498d99068941bcd7ca48b6cbcaa271fbb095
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846613"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189072"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Bemutató: REST API jogcím-cserék integrálása a Azure AD B2C felhasználói úton a felhasználói adatok érvényesítése során
 
@@ -132,7 +132,7 @@ A jogcím-Exchange hozzáadása az önérvényesített technikai profilhoz:
 2. A **Futtatás most** paranccsal tesztelheti az RP-fájl szerkesztésére szolgáló profilt.
 3. Tesztelje az ellenőrzést úgy, hogy megadja a meglévő nevek (például mcvinny) egyikét a **megadott név** mezőben. Ha minden megfelelően be van állítva, olyan üzenetet kap, amely értesíti a felhasználót arról, hogy a lejátszó címkéje már használatban van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A profil szerkesztése és a felhasználó regisztrációjának módosítása további információk összegyűjtéséhez a felhasználóktól](custom-policy-custom-attributes.md)
 

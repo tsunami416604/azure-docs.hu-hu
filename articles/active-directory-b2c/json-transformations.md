@@ -3,20 +3,20 @@ title: A JSON-jogcím átalakítására vonatkozó példák egyéni házirendekh
 titleSuffix: Azure AD B2C
 description: A JSON jogcím-átalakítási példákat tartalmaz a Azure Active Directory B2C IEF-sémája számára.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/10/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56c46b8f2804e37544c94ec2d6ced7e8879b1ffa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ad8fcf578ae1c89856a9d7929af0aec813cb4082
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367127"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187593"
 ---
 # <a name="json-claims-transformations"></a>JSON-jogcímek átalakítása
 
@@ -28,11 +28,11 @@ Ez a cikk példákat tartalmaz a Azure Active Directory B2C (Azure AD B2C) Ident
 
 JSON-karakterlánc létrehozásához használja a jogcímek vagy állandók értéket. Az elérési út sztringjét követő pont jelölése arra szolgál, hogy hová szúrja be az adatbevitelt egy JSON-karakterláncba. A pontok közötti felosztás után a rendszer minden egész számot értelmez a JSON-tömb és a nem egész számok indexének értelmezésére egy JSON-objektum indexe.
 
-| Tétel | TransformationClaimType | Adattípus | Megjegyzések |
+| Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | Bármely, a pont jelölését követő karakterlánc | sztring | Annak a JSON-nek a JsonPath, amelybe a rendszer beszúrja a jogcím értékét. |
-| InputParameter | Bármely, a pont jelölését követő karakterlánc | sztring | Annak a JSON-nek a JsonPath, amelybe a rendszer beszúrja az állandó sztringet. |
-| OutputClaim | OutputClaim | sztring | A generált JSON-karakterlánc. |
+| inputClaim | Bármely, a pont jelölését követő karakterlánc | Karakterlánc | Annak a JSON-nek a JsonPath, amelybe a rendszer beszúrja a jogcím értékét. |
+| InputParameter | Bármely, a pont jelölését követő karakterlánc | Karakterlánc | Annak a JSON-nek a JsonPath, amelybe a rendszer beszúrja az állandó sztringet. |
+| outputClaim | outputClaim | Karakterlánc | A generált JSON-karakterlánc. |
 
 Az alábbi példa egy JSON-karakterláncot hoz létre az "e-mail" és az "OTP" jogcím értéke alapján, valamint állandó sztringeket is.
 
@@ -94,11 +94,11 @@ A következő jogcím-átalakítás egy JSON-karakterlánc-jogcímet eredményez
 
 Egy megadott elem beolvasása JSON-adatokból.
 
-| Tétel | TransformationClaimType | Adattípus | Megjegyzések |
+| Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | sztring | A jogcím-átalakítás által az elemek beolvasásához használt ClaimTypes. |
-| InputParameter | claimToExtract | sztring | a kinyerni kívánt JSON-elem neve. |
-| OutputClaim | extractedClaim | sztring | A jogcímek átalakítását követően létrehozott ClaimType meghívása megtörtént, a _claimToExtract_ bemeneti paraméterben megadott elem értéke. |
+| inputClaim | inputJson | Karakterlánc | A jogcím-átalakítás által az elemek beolvasásához használt ClaimTypes. |
+| InputParameter | claimToExtract | Karakterlánc | a kinyerni kívánt JSON-elem neve. |
+| outputClaim | extractedClaim | Karakterlánc | A jogcímek átalakítását követően létrehozott ClaimType meghívása megtörtént, a _claimToExtract_ bemeneti paraméterben megadott elem értéke. |
 
 A következő példában a jogcím-átalakítás kibontotta a `emailAddress` elemet a JSON-adatokból: `{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
@@ -130,14 +130,14 @@ A következő példában a jogcím-átalakítás kibontotta a `emailAddress` ele
 
 A JSON-adatokból származó megadott elemek listájának beolvasása.
 
-| Tétel | TransformationClaimType | Adattípus | Megjegyzések |
+| Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | jsonSourceClaim | sztring | A jogcím-átalakítás által a jogcímek beszerzéséhez használt ClaimTypes. |
-| InputParameter | errorOnMissingClaims | logikai | Megadja, hogy a rendszer hibát jelez-e, ha a jogcímek egyike hiányzik. |
-| InputParameter | includeEmptyClaims | sztring | Adja meg, hogy üres jogcímeket kíván-e megadni. |
-| InputParameter | jsonSourceKeyName | sztring | Elem kulcsának neve |
-| InputParameter | jsonSourceValueName | sztring | Elem értékének neve |
-| OutputClaim | Gyűjtemény | karakterlánc, int, Boolean és DateTime |A kinyerni kívánt jogcímek listája. A jogcím nevének meg kell egyeznie a _jsonSourceClaim_ bemeneti jogcímben megadott értékkel. |
+| inputClaim | jsonSourceClaim | Karakterlánc | A jogcím-átalakítás által a jogcímek beszerzéséhez használt ClaimTypes. |
+| InputParameter | errorOnMissingClaims | Logikai érték | Megadja, hogy a rendszer hibát jelez-e, ha a jogcímek egyike hiányzik. |
+| InputParameter | includeEmptyClaims | Karakterlánc | Adja meg, hogy üres jogcímeket kíván-e megadni. |
+| InputParameter | jsonSourceKeyName | Karakterlánc | Elem kulcsának neve |
+| InputParameter | jsonSourceValueName | Karakterlánc | Elem értékének neve |
+| outputClaim | Collection | karakterlánc, int, Boolean és DateTime |A kinyerni kívánt jogcímek listája. A jogcím nevének meg kell egyeznie a _jsonSourceClaim_ bemeneti jogcímben megadott értékkel. |
 
 A következő példában a jogcím-átalakítás kibontja a következő jogcímeket: e-mail (karakterlánc), displayName (karakterlánc), membershipNum (int), aktív (logikai) és születési (datetime) a JSON-adatokból.
 
@@ -184,11 +184,11 @@ A következő példában a jogcím-átalakítás kibontja a következő jogcíme
 
 Lekéri egy megadott numerikus (hosszú) elemet egy JSON-adatból.
 
-| Tétel | TransformationClaimType | Adattípus | Megjegyzések |
+| Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | sztring | A jogcím-átalakítás által a jogcímek beszerzéséhez használt ClaimTypes. |
-| InputParameter | claimToExtract | sztring | A kinyerni kívánt JSON-elem neve. |
-| OutputClaim | extractedClaim | hosszú | A ClaimsTransformation után létrehozott ClaimType meghívása után az elem értéke a _claimToExtract_ bemeneti paraméterében van megadva. |
+| inputClaim | inputJson | Karakterlánc | A jogcím-átalakítás által a jogcímek beszerzéséhez használt ClaimTypes. |
+| InputParameter | claimToExtract | Karakterlánc | A kinyerni kívánt JSON-elem neve. |
+| outputClaim | extractedClaim | hosszú | A ClaimsTransformation után létrehozott ClaimType meghívása után az elem értéke a _claimToExtract_ bemeneti paraméterében van megadva. |
 
 A következő példában a jogcím-átalakítás kibontja a JSON-adatokból a `id` elemet.
 
@@ -227,10 +227,10 @@ A következő példában a jogcím-átalakítás kibontja a JSON-adatokból a `i
 
 Egy JSON-adattömb első elemének beolvasása.
 
-| Tétel | TransformationClaimType | Adattípus | Megjegyzések |
+| Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJsonClaim | sztring | A jogcím-átalakítás által az elemnek a JSON-tömbből való beolvasásához használt ClaimTypes. |
-| OutputClaim | extractedClaim | sztring | A ClaimsTransformation után létrehozott ClaimType a JSON-tömb első elemeként lett meghívva. |
+| inputClaim | inputJsonClaim | Karakterlánc | A jogcím-átalakítás által az elemnek a JSON-tömbből való beolvasásához használt ClaimTypes. |
+| outputClaim | extractedClaim | Karakterlánc | A ClaimsTransformation után létrehozott ClaimType a JSON-tömb első elemeként lett meghívva. |
 
 A következő példában a jogcím-átalakítás kibontja az első elemet (e-mail-címet) a JSON-tömb `["someone@example.com", "Someone", 6353399]`.
 
@@ -256,10 +256,10 @@ A következő példában a jogcím-átalakítás kibontja az első elemet (e-mai
 
 XML-adatértékek konvertálása JSON formátumba.
 
-| Tétel | TransformationClaimType | Adattípus | Megjegyzések |
+| Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | xml | sztring | A jogcím-átalakítás által az adatok XML-ből JSON-formátumba való átalakításához használt ClaimTypes. |
-| OutputClaim | json | sztring | A ClaimsTransformation után létrehozott ClaimType JSON formátumban kell meghívnia. |
+| inputClaim | xml | Karakterlánc | A jogcím-átalakítás által az adatok XML-ből JSON-formátumba való átalakításához használt ClaimTypes. |
+| outputClaim | JSON | Karakterlánc | A ClaimsTransformation után létrehozott ClaimType JSON formátumban kell meghívnia. |
 
 ```XML
 <ClaimsTransformation Id="ConvertXmlToJson" TransformationMethod="XmlStringToJsonString">

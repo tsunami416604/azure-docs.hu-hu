@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból elsajátíthatja, hogyan állíthatja be
 keywords: Jenkins, Azure, devops, virtuális gép, vel
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 380d547aaee68ad40ae12a4836826d2addae3a18
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: cae28b293a6217996b44c839dc8836ec940c3155
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606467"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192608"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Oktatóanyag: Az alkalmazás üzembe helyezése Linux rendszerű virtuális gépeken az Azure-ban a Jenkins és az Azure DevOps Services használatával
 
@@ -96,9 +96,9 @@ Először két Jenkins beépülő modult kell konfigurálnia: **NodeJS** és **V
 5. Válassza a **Trigger release in TFS/Team Services** (Kiadás aktiválása a TFS/Team Services-ben) lehetőséget. Adja meg az Azure DevOps Services-szervezet URI-ját, például a **https://{saját-szervezet-neve}.visualstudio.com** címet.
 6. Adja meg a **projekt** nevét.
 7. Adjon nevet a kiadási folyamatnak. (Ezt a kiadási folyamatot később fogja létrehozni az Azure DevOps Services-ben.)
-8. Válassza ki a hitelesítő adatokat az Azure DevOps Services vagy a Team Foundation Server környezethez való csatlakozáshoz:
+8. Válassza ki a hitelesítő adatokat az Azure DevOps-szolgáltatásokhoz vagy Azure DevOps Server-környezethez való kapcsolódáshoz:
    - Hagyja a **Username** (Felhasználónév) mezőt üresen, ha az Azure DevOps Services-t használja. 
-   - Ha a Team Foundation Server egy helyszíni verzióját használja, adja meg a felhasználónevet és jelszót.    
+   - Ha Azure DevOps Server helyszíni verzióját használja, adja meg a felhasználónevet és a jelszót.    
    ![A Jenkins felépítés utáni műveleteinek konfigurálása](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
 5. Mentse a Jenkins-projektet.
 
@@ -166,7 +166,7 @@ Kiadási folyamat létrehozása az Azure Pipelinesban:
 
 Ha a Jenkins beépülő modulok használata során bármilyen hibát tapasztal, jelentse be a problémát az adott összetevő [Jenkins JIRA](https://issues.jenkins-ci.org/) felületén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban automatizálta az alkalmazás Azure-ban történő üzembe helyezését a Jenkinst használva a buildhez, az Azure DevOps Services-t pedig a kiadáshoz. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

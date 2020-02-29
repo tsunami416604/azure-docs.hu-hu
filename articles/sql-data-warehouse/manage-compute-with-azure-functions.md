@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: számítások kezelése Azure Functions'
-description: Az Azure Functions használata az adattárház számításainak kezelésére.
+description: Az Azure functions használata az SQL-készlet számítási feladatainak kezeléséhez az Azure szinapszis Analyticsben.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -10,27 +10,27 @@ ms.subservice: consume
 ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: bc350ed092c063dcc7eca479f064114be9eb28f5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: a08c2c3c0167f0d82fe901e19b02db22b0ad56c5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693023"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193165"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Azure Functions használata a számítási erőforrások kezeléséhez Azure SQL Data Warehouse
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>A számítási erőforrások kezelése Azure Functions használatával az Azure szinapszis Analytics SQL-készletben
 
-Ez az oktatóanyag a Azure Functions használatával kezeli a számítási erőforrásokat a Azure SQL Data Warehouse adattárházához.
+Ez az oktatóanyag a Azure Functions használatával kezeli a számítási erőforrásokat egy SQL-készlethez az Azure szinapszis Analyticsben.
 
-Az Azure-függvényalkalmazás és az SQL Data Warehouse együttes használatához létre kell hoznia egy közreműködői hozzáféréssel rendelkező [egyszerű szolgáltatásfiókot](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) ugyanahhoz az előfizetéshez, amelyhez az adattárház-példány is tartozik. 
+Az Azure-függvényalkalmazás SQL-készlettel való használatához létre kell hoznia egy [egyszerű szolgáltatásnevet](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) az SQL Pool-példánnyal azonos előfizetéshez tartozó közreműködői hozzáféréssel. 
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Időzítő alapú skálázás üzembe helyezése Azure Resource Manager sablonnal
 
 A sablon üzembe helyezéséhez a következő információk szükségesek:
 
-- Az SQL DW-példányt tartalmazó erőforráscsoport neve
-- Az SQL DW-példányt tartalmazó logikai kiszolgáló neve
-- Az SQL DW-példány neve
+- Azon erőforráscsoport neve, amelyben az SQL-készlet példánya szerepel
+- Annak a logikai kiszolgálónak a neve, amelyen az SQL-készlet példánya található
+- Az SQL-készlet példányának neve
 - Az Azure Active Directory bérlőazonosítója (Directory-azonosító)
 - Előfizetés azonosítója 
 - Egyszerű szolgáltatás alkalmazásazonosítója
@@ -119,17 +119,17 @@ A sablon jelenleg csak két méretezési függvényt tartalmaz. Ezekkel a függv
 5. Állítsa a műveleti változót a kívánt viselkedésre a következőképpen:
 
    ```javascript
-   // Resume the data warehouse instance
+   // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"
    }
 
-   // Pause the data warehouse instance
+   // Pause the SQL pool instance
    var operation = {
        "operationType": "PauseDw"
    }
 
-   // Scale the data warehouse instance to DW600
+   // Scale the SQL pool instance to DW600
    var operation = {
        "operationType": "ScaleDw",
        "ServiceLevelObjective": "DW600"
@@ -177,7 +177,7 @@ Vertikális felskálázás 8:00-kor DW1000 értékre, és vertikális leskáláz
 
 További információk az [időzítő által aktivált](../azure-functions/functions-create-scheduled-function.md) Azure-függvényekről.
 
-Tekintse meg az SQL Data Warehouse [mintaadattárát](https://github.com/Microsoft/sql-data-warehouse-samples).
+Az SQL Pool [Samples repository](https://github.com/Microsoft/sql-data-warehouse-samples)kifizetése.
 
 
 

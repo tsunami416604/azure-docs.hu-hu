@@ -1,6 +1,6 @@
 ---
 title: Frissítés a legújabb generációra
-description: Frissítse Azure SQL Data Warehouset az Azure hardver-és tárolási architektúrájának legújabb generációja számára.
+description: Frissítse az Azure szinapszis Analytics SQL-készletét az Azure hardver-és tárolási architektúrájának legújabb generációjára.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -11,33 +11,33 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 02c426cd921f4af19f3b8c271e4b1c08eae2c3c2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 97cbae93b1ee2dd6ca4916f4efbb964141b33a3f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692455"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200788"
 ---
-# <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Teljesítményoptimalizálás az SQL Data Warehouse frissítésével
+# <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Teljesítmény optimalizálása az Azure szinapszis Analytics SQL-készletének frissítésével
 
-Frissítse Azure SQL Data Warehouset az Azure hardver-és tárolási architektúrájának legújabb generációja számára.
+Frissítse az SQL-készletet az Azure hardver-és tárolási architektúrájának legújabb generációján.
 
 ## <a name="why-upgrade"></a>Miért érdemes frissíteni?
 
-Mostantól zökkenőmentesen frissíthet a SQL Data Warehouse számítási teljesítményre optimalizált Gen2, amely a Azure Portal [támogatott régiókban](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)érhető el. Ha a régió nem támogatja az önfrissítést, frissíthet egy támogatott régióra, vagy megvárhatja, hogy az önfrissítés elérhető legyen a régiójában. A frissítés után kihasználhatja az Azure-beli hardverek és a továbbfejlesztett tárolási architektúra legújabb generációjának előnyeit, beleértve a gyorsabb teljesítményt, a magasabb skálázhatóságot és a korlátlan oszlopos tárolást. 
+Mostantól zökkenőmentesen frissíthet az SQL-készlet számítási optimalizált Gen2 szintjére a [támogatott régiók](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)Azure Portal. Ha a régió nem támogatja az önfrissítést, frissíthet egy támogatott régióra, vagy megvárhatja, hogy az önfrissítés elérhető legyen a régiójában. A frissítés után kihasználhatja az Azure-beli hardverek és a továbbfejlesztett tárolási architektúra legújabb generációjának előnyeit, beleértve a gyorsabb teljesítményt, a magasabb skálázhatóságot és a korlátlan oszlopos tárolást. 
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
-## <a name="applies-to"></a>A következőkre vonatkozik
+## <a name="applies-to"></a>A következőkre vonatkozik:
 
-Ez a frissítés a [támogatott régiókban](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)a számítási optimalizált Gen1-adattárházak esetében érvényes.
+Ez a frissítés a [támogatott régiókban](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)található, a számításra optimalizált Gen1-rétegek SQL-készletekre vonatkozik.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 1. Ellenőrizze, hogy a [régiója](gen2-migration-schedule.md#automated-schedule-and-region-availability-table) támogatott-e a GEN1 és a GEN2 áttelepítéséhez. Figyelje meg az automatikus áttelepítési dátumokat. Az automatikus folyamattal való ütközés elkerülése érdekében tervezze meg a manuális áttelepítést az automatizált folyamat kezdési dátuma előtt.
 2. Ha olyan régióban van, amely még nem támogatott, folytassa a régió hozzáadásával vagy frissítésével egy támogatott régióra történő [visszaállítással](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal) .
 3. Ha a régiója támogatott, [frissítsen a Azure Portal](#upgrade-in-a-supported-region-using-the-azure-portal)
-4. **Válassza ki** az adatraktár javasolt teljesítményszint az aktuális teljesítményszint alapján a számítási optimalizált Gen1-szinten az alábbi leképezés használatával:
+4. **Válassza ki az** SQL-készlet javasolt teljesítményét az aktuális teljesítményszint alapján a számítási optimalizált Gen1 szintjén az alábbi leképezés használatával:
 
    | Számításra optimalizált Gen1-szintek | Számításra optimalizált Gen2-szintek |
    | :-------------------------: | :-------------------------: |
@@ -46,7 +46,7 @@ Ez a frissítés a [támogatott régiókban](gen2-migration-schedule.md#automate
    |            DW300            |           DW300c            |
    |            DW400            |           DW400c            |
    |            DW500            |           DW500c            |
-   |            KOR DW600            |           DW500c            |
+   |            DW600            |           DW500c            |
    |           DW1000            |           DW1000c           |
    |           DW1200            |           DW1000c           |
    |           DW1500            |           DW1500c           |
@@ -59,7 +59,7 @@ Ez a frissítés a [támogatott régiókban](gen2-migration-schedule.md#automate
 
 ## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>Frissítés támogatott régióban a Azure Portal használatával
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -68,12 +68,12 @@ Ez a frissítés a [támogatott régiókban](gen2-migration-schedule.md#automate
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
-1. Ha a számításra optimalizált Gen1-adatraktár frissítése szünetel, [folytassa az adattárházat](pause-and-resume-compute-portal.md).
+1. Ha a számítási teljesítményre optimalizált Gen1-készlet frissítése szüneteltetve van, az [SQL-készlet folytatása](pause-and-resume-compute-portal.md).
 
    > [!NOTE]
-   > A Gen2 való Migrálás Azure SQL Data Warehousenak kell futnia.
+   > Az SQL-készletnek futnia kell a Gen2 való Migrálás érdekében.
 
 2. Készüljön fel néhány perces állásidőre. 
 
@@ -107,28 +107,28 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
    ALTER DATABASE mySampleDataWarehouse MODIFY (SERVICE_OBJECTIVE = 'DW300c') ; 
    ```
    > [!NOTE] 
-   > A SERVICE_OBJECTIVE = ' DW300 ' a következőre változik: SERVICE_OBJECTIVE = ' DW300**c**'
+   > SERVICE_OBJECTIVE = "DW300" a következőre módosul: SERVICE_OBJECTIVE = "DW300**c**"
 
 ## <a name="start-the-upgrade"></a>A frissítés elindítása
 
-1. Nyissa meg a számítási optimalizált Gen1-adattárházat a Azure Portal. Ha a számításra optimalizált Gen1-adatraktár frissítése szünetel, [folytassa az adattárházat](pause-and-resume-compute-portal.md). 
-2. Válassza a **frissítés a Gen2** kártyára lehetőséget a feladatok lapon: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+1. Nyissa meg a számítási optimalizált Gen1 SQL-készletet a Azure Portal. Ha a számítási teljesítményre optimalizált Gen1-készlet frissítése szüneteltetve van, az [SQL-készlet folytatása](pause-and-resume-compute-portal.md). 
+2. Válassza a **frissítés a Gen2** kártyára lehetőséget a feladatok lapon: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/upgrade-to-gen2-1.png)
     
     > [!NOTE]
     > Ha nem látja a frissítés a **Gen2** kártyát a feladatok lapon, az előfizetés típusa az aktuális régióban korlátozott.
     > [Küldjön be egy támogatási jegyet](sql-data-warehouse-get-started-create-support-ticket.md) az előfizetés engedélyezési listájának beszerzéséhez.
 
-3. A frissítés előtt győződjön meg róla, hogy a számítási feladatok futtatása és Adattisztítás befejeződött. A leállás néhány percen belül megtapasztalható, mielőtt az adattárház online állapotú számítási optimalizált Gen2-adattárházként üzemel. **Frissítés kiválasztása**:
+3. A frissítés előtt győződjön meg róla, hogy a számítási feladatok futtatása és Adattisztítás befejeződött. Néhány percen belül leállást tapasztalhat, mielőtt az SQL-készlet újra online állapotba kerül, mint a számítási optimalizált Gen2 szintű SQL-készlet. **Frissítés kiválasztása**:
 
-   ![Upgrade_2](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_2.png)
+   ![Upgrade_2](./media/sql-data-warehouse-upgrade-to-latest-generation/upgrade-to-gen2-2.png)
 
 4. A frissítést a Azure Portal állapotának ellenőrzésével **figyelheti** :
 
-   ![Upgrade3](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_3.png)
+   ![Upgrade3](./media/sql-data-warehouse-upgrade-to-latest-generation/upgrade-to-gen2-3.png)
 
    A frissítési folyamat első lépése a skálázási műveleten ("frissítés – offline") halad végig, ahol az összes munkamenet le lesz dobva, és a kapcsolatok elvesznek. 
 
-   A frissítési folyamat második lépése az adatáttelepítés ("verziófrissítés – online"). Az adatáttelepítés online szivárgási folyamat. Ez a folyamat lassan áthelyezi a régi tárolási architektúra oszlopos adatait az új tárolási architektúrára egy helyi SSD-gyorsítótár használatával. Ebben az időszakban az adattárház lekérdezés és betöltés céljából online állapotba kerül. Az adatai a lekérdezéshez lesznek elérhetők, függetlenül attól, hogy áttelepítette-e vagy sem. Az adatáttelepítés az adatmérettől, a teljesítmény szintjétől és a oszlopcentrikus-szegmensek számától függően eltérő arányban történik. 
+   A frissítési folyamat második lépése az adatáttelepítés ("verziófrissítés – online"). Az adatáttelepítés online szivárgási folyamat. Ez a folyamat lassan áthelyezi a régi tárolási architektúra oszlopos adatait az új tárolási architektúrára egy helyi SSD-gyorsítótár használatával. Ebben az időszakban az SQL-készlet lekérdezés és betöltés céljából online állapotba kerül. Az adatai a lekérdezéshez lesznek elérhetők, függetlenül attól, hogy áttelepítette-e vagy sem. Az adatáttelepítés az adatmérettől, a teljesítmény szintjétől és a oszlopcentrikus-szegmensek számától függően eltérő arányban történik. 
 
 5. **Választható javaslat:** A skálázási művelet befejezése után felgyorsíthatja az adatáttelepítés hátterének folyamatát. Az adatáthelyezést úgy kényszerítheti, ha az [Alter index rebuildet](sql-data-warehouse-tables-index.md) az összes olyan elsődleges oszlopcentrikus-táblán futtatja, amelyet egy nagyobb slo-és erőforrás-osztályon szeretne lekérdezni. Ez a művelet **Offline állapotú** a csepegtető háttérben futó folyamattal szemben, amely órákig elvégezhető a táblák számától és méretétől függően. Ha azonban elkészült, az adatáttelepítés sokkal gyorsabb lesz az új, magas színvonalú sorcsoportokba való tömörítéséhez rendelkező, továbbfejlesztett tárolási architektúra miatt.
  
@@ -184,9 +184,9 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Felhasználó által definiált visszaállítási pont létrehozása a Azure Portal használatával
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
-2. Navigáljon ahhoz a SQL Data Warehousehoz, amelyhez visszaállítási pontot kíván létrehozni.
+2. Navigáljon arra az SQL-készletre, amelyhez visszaállítási pontot kíván létrehozni.
 
 3. Az Áttekintés szakasz tetején válassza az **+ új visszaállítási pont**elemet.
 
@@ -198,19 +198,15 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Aktív vagy szüneteltetett adatbázis visszaállítása a Azure Portal használatával
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Navigáljon ahhoz a SQL Data Warehouse, amelyet vissza szeretne állítani.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+2. Navigáljon arra az SQL-készletre, amelyet vissza szeretne állítani.
 3. Az Áttekintés szakasz tetején válassza a **visszaállítás**lehetőséget.
 
     ![ Visszaállítás áttekintése](./media/sql-data-warehouse-restore-database-portal/restoring_0.png)
 
-4. Válassza ki az **Automatikus visszaállítási pontokat** vagy a **felhasználó által definiált visszaállítási pontokat**.
+4. Válassza ki az **Automatikus visszaállítási pontokat** vagy a **felhasználó által definiált visszaállítási pontokat**. Felhasználó által definiált visszaállítási pontok esetén **válasszon egy felhasználó által definiált visszaállítási pontot** , vagy **hozzon létre egy új, felhasználó által definiált visszaállítási pontot**. A-kiszolgáló esetében válassza az **új létrehozása** lehetőséget, és válasszon egy kiszolgálót a Gen2 által támogatott földrajzi régióban. 
 
     ![Automatikus visszaállítási pontok](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
-
-5. Felhasználó által definiált visszaállítási pontok esetén **válasszon egy visszaállítási pontot** , vagy **hozzon létre egy új, felhasználó által definiált visszaállítási pontot**. Válasszon egy kiszolgálót a Gen2 által támogatott földrajzi régióban. 
-
-    ![Felhasználó által definiált visszaállítási pontok](./media/sql-data-warehouse-restore-database-portal/restoring_2_udrp.png)
 
 ## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>Visszaállítás egy Azure földrajzi régióból a PowerShell használatával
 
@@ -249,8 +245,8 @@ $GeoRestoredDatabase.status
 A helyreállított adatbázis TDE válik, ha a forrásadatbázis TDE engedélyezve van.
 
 
-Ha problémákat tapasztal az adattárházban, hozzon létre egy [támogatási kérést](sql-data-warehouse-get-started-create-support-ticket.md) , és hivatkozzon a "Gen2 upgrade" kifejezésre a lehetséges okok miatt.
+Ha az SQL-készlettel kapcsolatos problémákat tapasztal, hozzon létre egy [támogatási kérést](sql-data-warehouse-get-started-create-support-ticket.md) , és hivatkozzon a "Gen2 upgrade" kifejezésre a lehetséges okok miatt.
 
 ## <a name="next-steps"></a>További lépések
 
-A frissített adattárház online állapotban van. A bővített architektúra előnyeinek kihasználásához tekintse meg az [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md)című témakört.
+A frissített SQL-készlet online állapotú. A bővített architektúra előnyeinek kihasználásához tekintse meg az [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md)című témakört.

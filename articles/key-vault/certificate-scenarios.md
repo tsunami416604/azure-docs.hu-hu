@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b6a44bc31e21a63b12a0d06c537cc026ed77e386
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 32a453678fe3702fcb4b77f0b04a8ed5c889ef59
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832851"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197623"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Ismerkedés a Key Vault-tanúsítványok használatába
 A következő forgatókönyvek felvázolják az Key Vault tanúsítványkezelő szolgáltatásának számos elsődleges használatát, beleértve az első tanúsítvány a kulcstartóban való létrehozásához szükséges további lépéseket.
@@ -63,7 +64,7 @@ Megjegyzés: Ez a folyamat az 3,1-es lépéssel egy egyszeri művelet.
 **4. lépés** – az alábbi leírások az előző ábrán látható zöld számú lépéseknek felelnek meg.  
   (1) – a fenti ábrán az alkalmazás olyan tanúsítványt hoz létre, amely belsőleg kezdődik a Key vaultban lévő kulcs létrehozásával.  
   (2) – Key Vault TLS/SSL-tanúsítványkérelem küldését küldi a HITELESÍTÉSSZOLGÁLTATÓNAK.  
-  (3) – az alkalmazás egy hurokban és várakozási folyamatban kérdezi le a Key Vault a tanúsítványok befejezéséhez. A tanúsítvány létrehozása akkor ér véget, amikor a kulcstartó megkapja a CA válaszát az X.509-tanúsítvánnyal.  
+  (3) – az alkalmazás egy hurokban és várakozási folyamatban kérdezi le a Key Vault a tanúsítványok befejezéséhez. A tanúsítvány létrehozása akkor fejeződik be, amikor Key Vault megkapja a HITELESÍTÉSSZOLGÁLTATÓ válaszát az x509-tanúsítvánnyal.  
   (4) – a HITELESÍTÉSSZOLGÁLTATÓ a Key Vault TLS/SSL-tanúsítványkérelem X509 TLS/SSL-tanúsítvánnyal való kérelmére válaszol.  
   (5) – az új tanúsítvány létrehozása a HITELESÍTÉSSZOLGÁLTATÓ X509-tanúsítványának egyesítésével fejeződik be.  
 
@@ -72,7 +73,7 @@ Megjegyzés: Ez a folyamat az 3,1-es lépéssel egy egyszeri művelet.
   -   Szükség esetén ismételje meg a műveletet  
   -   Házirend-korlátozások  
       -   X509 tulajdonságai  
-      -   Fő tulajdonságok  
+      -   Kulcs tulajdonságai  
       -   Szolgáltatói hivatkozás – > ex. MyDigiCertIssure  
       -   Megújítási információ – > ex. 90 nappal a lejárat előtt  
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Servicesben videókhoz késés |} A Microsoft Docs
-description: Ez a témakör áttekintést nyújt a videókhoz késés, és bemutatja, hogyan állíthatja be a közel valós idejű.
+title: LiveEvent alacsony késési beállításai a Azure Media Servicesban | Microsoft Docs
+description: Ez a témakör áttekintést nyújt az alacsony késésű LiveEvent, és bemutatja, hogyan állítható be a kis késleltetés.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,23 +13,23 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: 393b87aeed759950b946ccb45a008da9af4b7ebe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702784"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199648"
 ---
-# <a name="live-event-latency-in-media-services"></a>A Media Services élő esemény késés
+# <a name="live-event-low-latency-settings"></a>Élő esemény alacsony késési beállításai
 
-Ez a cikk bemutatja, hogyan lehet beállítani a közel valós idejű a egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents). Emellett ismerteti a tipikus eredményeket közel valós idejű beállításainak használatával által is látható. Az eredmények függ a CDN és a hálózati késést.
+Ez a cikk bemutatja, hogyan állíthatja be a kis késleltetést egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents)esetében. Azt is ismerteti, hogy milyen eredményeket láthat a különböző játékosok alacsony késési beállításainak használatakor. Az eredmények a CDN és a hálózati késés alapján változnak.
 
-Az új használandó **LowLatency** szolgáltatást, állítsa be a **StreamOptionsFlag** való **LowLatency** a a **videókhoz**. Létrehozásakor [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) HLS lejátszása, állítsa [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) 1-re. A stream működik-e, ha a [Azure Media Player](https://ampdemo.azureedge.net/) (AMP bemutató oldalon), és állítsa be a lejátszási beállítások használatához a "alacsony késés a heurisztika profil".
+Az új **LowLatency** funkció használatához állítsa be a **StreamOptionsFlag** a **LowLatency** értékre a **liveevent**. A HLS-lejátszás [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) létrehozásakor állítsa a [LiveOutput. HLS. fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) az 1 értékre. Ha a stream működik, használhatja a [Azure Media Player](https://ampdemo.azureedge.net/) (amp bemutató oldalt), és beállíthatja a lejátszási beállításokat az "alacsony késleltetésű heurisztikus profil" használatára.
 
 > [!NOTE]
-> Jelenleg az Azure Media Player LowLatency HeuristicProfile lejátszásának MPEG-DASH protokollal, CSF vagy CMAF formátumban lévő adatfolyamok célja (például `format=mdp-time-csf` vagy `format=mdp-time-cmaf`). 
+> A Azure Media Player LowLatency-HeuristicProfile jelenleg az MPEG-DASH protokollban lévő streamek lejátszására lett tervezve, amelyeknek CSF vagy CMAF formátumúnak kell lenniük (például `format=mdp-time-csf` vagy `format=mdp-time-cmaf`). 
 
-A következő .NET példa bemutatja, hogyan állíthatja be **LowLatency** a a **videókhoz**:
+A következő .NET-példa bemutatja, hogyan állíthatja be a **LowLatency** a **liveevent**:
 
 ```csharp
 LiveEvent liveEvent = new LiveEvent(
@@ -54,29 +54,29 @@ LiveEvent liveEvent = new LiveEvent(
 
 Tekintse meg a teljes példát: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
-## <a name="live-events-latency"></a>Élő események késés
+## <a name="live-events-latency"></a>Élő események késése
 
-Az alábbi táblázatok a Media Services szolgáltatásban a hozzájárulás hírcsatorna eléri a szolgáltatást, hogy amikor egy megjelenítőt látja a lejátszó a lejátszás ameddig késés (Ha engedélyezve van a LowLatency jelző) jellemző eredmény megjelenítése. Közel valós idejű optimális használatához meg kell finomhangolása lefelé 1 másodperc "Csoportot a képek" (Képcsoporttal) hossza a kódoló beállításai. Magasabb Képcsoporttal hossza használatakor, sávszélesség-használat minimalizálása érdekében, és csökkentheti a sávszélességű azonos sebessége alapján. Különösen hasznos a videókat, amelyekhez kevesebb mozgásban lévő adatoknak egyaránt.
+Az alábbi táblázatok a késések jellemző eredményeit jelenítik meg (ha a LowLatency jelző engedélyezve van) Media Servicesban, amely attól az időponttól mérve, amikor a hozzájárulási csatorna eléri a szolgáltatást, amikor egy megjelenítő látja a lejátszást a lejátszón. Ha optimálisan szeretné használni az alacsony késést, állítsa be a kódoló beállításait a "Pictures" (GOP) hossz 1 másodpercre. Ha nagyobb GOP-ot használ, minimalizálhatja a sávszélesség-használatot, és az azonos képarányú bitrátát csökkentheti. Ez különösen hasznos a kevesebb mozgást biztosító videóknál.
 
 ### <a name="pass-through"></a>Továbbítás 
 
-||2S Képcsoporttal kis késés, engedélyezve van|1s Képcsoporttal kis késés, engedélyezve van|
+||2s GOP – alacsony késés engedélyezve|1s GOP – alacsony késés engedélyezve|
 |---|---|---|
-|VONAL-és a|10 egység|8s|
-|A natív iOS-lejátszó HLS|14s|10 egység|
+|DASH in AMP|10s|8s|
+|HLS natív iOS-lejátszón|14s|10s|
 
 ### <a name="live-encoding"></a>Live Encoding
 
-||2S Képcsoporttal kis késés, engedélyezve van|1s Képcsoporttal kis késés, engedélyezve van|
+||2s GOP – alacsony késés engedélyezve|1s GOP – alacsony késés engedélyezve|
 |---|---|---|
-|VONAL-és a|14s|10 egység|
-|A natív iOS-lejátszó HLS|18s|13s|
+|DASH in AMP|14s|10s|
+|HLS natív iOS-lejátszón|18s|13s|
 
 > [!NOTE]
-> A végpontok közötti késés eltérőek lehetnek attól függően, helyi hálózati körülmények vagy egy CDN gyorsítótárazási réteg bevezetésével. A pontos konfigurációk kell tesztelni.
+> A végpontok közötti késés a helyi hálózati feltételektől vagy a CDN gyorsítótárazási rétegének bevezetésével függően változhat. Tesztelje a pontos konfigurációkat.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Élő adatfolyam – áttekintés](live-streaming-overview.md)
-- [Élő adatfolyam-továbbítási oktatóanyag](stream-live-tutorial-with-api.md)
+- [Élő közvetítés – áttekintés](live-streaming-overview.md)
+- [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)
 

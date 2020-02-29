@@ -3,20 +3,20 @@ title: Technikai profil definiálása egy JWT-kiállítóhoz egyéni szabályzat
 titleSuffix: Azure AD B2C
 description: Technikai profil definiálása egy JSON webes jogkivonat-(JWT-) kiállítóhoz a Azure Active Directory B2C egyéni házirendjében.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f0adbac14c2ae886bc002ae56ab0784b608d1e5d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fa6da347289a12867a2416dea16631ba4758832f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841982"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187474"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>JWT jogkivonat-kiállító technikai profiljának meghatározása egy Azure Active Directory B2C egyéni házirendben
 
@@ -24,7 +24,7 @@ ms.locfileid: "76841982"
 
 Azure Active Directory B2C (Azure AD B2C) számos különböző típusú biztonsági jogkivonatot bocsát ki, mivel az egyes hitelesítési folyamatokat dolgozza fel. A JWT jogkivonat-kiállító technikai profilja olyan JWT-jogkivonatot bocsát ki, amely vissza lesz visszaadva a függő entitás alkalmazásának. Ez a technikai profil általában a felhasználói út utolsó előkészítési lépése.
 
-## <a name="protocol"></a>Protocol (Protokoll)
+## <a name="protocol"></a>Protokoll
 
 A **protokoll** elem **Name** attribútumát `None`értékre kell állítani. Állítsa a **OutputTokenFormat** elemet `JWT`értékre.
 

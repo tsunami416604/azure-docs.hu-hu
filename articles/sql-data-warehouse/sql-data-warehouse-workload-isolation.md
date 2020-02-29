@@ -1,24 +1,24 @@
 ---
 title: Számítási feladatok elkülönítése
-description: Útmutató a munkaterhelések elkülönítésének beállításához Azure SQL Data Warehouseban található munkaterhelés-csoportokkal.
+description: Útmutató a számítási feladatok elkülönítésének beállításához az Azure szinapszis Analytics munkaterhelési csoportjaival.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/23/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 86390132be0440b197b680803e5b6032670a7d1c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: azure-synapse
+ms.openlocfilehash: 6b3047eb600c3d5808993c3646f718ca25824962
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721030"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192676"
 ---
-# <a name="sql-data-warehouse-workload-group-isolation-preview"></a>SQL Data Warehouse munkaterhelési csoport elkülönítése (előzetes verzió)
+# <a name="azure-synapse-analytics-workload-group-isolation-preview"></a>Az Azure szinapszis Analytics munkaterhelési csoport elkülönítése (előzetes verzió)
 
 Ez a cikk azt ismerteti, hogyan használhatók a munkaterhelés-csoportok a munkaterhelés elkülönítésének konfigurálásához, erőforrások tárolásához és futásidejű szabályok alkalmazásához a lekérdezés végrehajtásához.
 
@@ -85,7 +85,7 @@ A megosztott készlet erőforrásai az erőforrások elkülönítésére nincsen
 
 A megosztott készlet erőforrásaihoz való hozzáférés [fontossági](sql-data-warehouse-workload-importance.md) arányban van kiosztva.  Az azonos fontossági szintű kérelmek a megosztott készlet erőforrásait az első és az első kimenő érték alapján érik el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató: a munkaterhelés elkülönítésének konfigurálása](quickstart-configure-workload-isolation-tsql.md)
 - [MUNKATERHELÉS-CSOPORT LÉTREHOZÁSA](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)

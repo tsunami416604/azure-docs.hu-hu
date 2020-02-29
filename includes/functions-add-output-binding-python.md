@@ -4,38 +4,15 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/23/2019
 ms.author: glenga
-ms.openlocfilehash: 14c821e5b1d98a05c791ea102fc4bdd58fdc9525
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 8bdd8b9d900cc50fdeb34ff7d233ac4d7e17a45c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839124"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191037"
 ---
-A `name` beállítása után elkezdheti használni a kötést metódus attribútumként a függvény aláírásában. A következő példában a `msg` a [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest)egyik példánya.
+Frissítse a *HttpExample\\\_\_init\_\_.* a következő kódot, és adja hozzá a `msg` paramétert a Function definícióhoz, és `msg.set(name)` a `if name:` utasítás alatt.
 
-```python
-import logging
+:::code language="python" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/__init__.py":::
 
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        msg.set(name)
-        return func.HttpResponse(f"Hello {name}!")
-    else:
-        return func.HttpResponse(
-            "Please pass a name on the query string or in the request body",
-            status_code=400
-        )
-```
+A `msg` paraméter a [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest)egy példánya. A `set` metódus egy karakterlánc-üzenetet ír a várólistába, ebben az esetben az URL-lekérdezési karakterlánc függvénynek átadott nevet.

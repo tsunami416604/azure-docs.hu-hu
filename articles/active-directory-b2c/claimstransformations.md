@@ -2,20 +2,20 @@
 title: ClaimsTransformations – Azure Active Directory B2C | Microsoft Docs
 description: A ClaimsTransformations elem definíciója az Azure Active Directory B2C identitás-keretrendszer sémájában.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 66c94f08638895c85836fda37c3ae61f3857ee51
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e71d521dce40f6a8ec81286fcc95dc97bf10078c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836694"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189736"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -51,7 +51,7 @@ A **ClaimsTransformation** elem a következő elemeket tartalmazza:
   </InputClaims>
   <InputParameters>
     ...
-  </InputParameters>                
+  </InputParameters>
   <OutputClaims>
     ...
   </OutputClaims>
@@ -62,7 +62,7 @@ A **ClaimsTransformation** elem a következő elemeket tartalmazza:
 | Elem | Események | Leírás |
 | ------- | -------- | ----------- |
 | Szabályzattípushoz | 0:1 | Azoknak a **InputClaim** -elemeknek a listája, amelyek a jogcím-átalakításhoz bemenetként bevitt jogcímeket határozzák meg. Ezen elemek mindegyike egy, a szabályzat ClaimsSchema szakaszában már definiált ClaimType mutató hivatkozást tartalmaz. |
-| InputParameters | 0:1 | A jogcím-átalakításhoz bemenetként megadott **InputParameter** -elemek listája.  
+| InputParameters | 0:1 | A jogcím-átalakításhoz bemenetként megadott **InputParameter** -elemek listája.
 | OutputClaims | 0:1 | Azon **OutputClaim** elemek listája, amelyek a ClaimsTransformation meghívása után előállított jogcímeket határozzák meg. Ezen elemek mindegyike egy, a ClaimsSchema szakaszban már definiált ClaimType mutató hivatkozást tartalmaz. |
 
 ### <a name="inputclaims"></a>Szabályzattípushoz
@@ -71,9 +71,9 @@ A **szabályzattípushoz** elem a következő elemet tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| InputClaim | 1: n | Egy várt bemeneti jogcím típusa. |
+| inputClaim | 1: n | Egy várt bemeneti jogcím típusa. |
 
-#### <a name="inputclaim"></a>InputClaim
+#### <a name="inputclaim"></a>inputClaim
 
 A **InputClaim** elem a következő attribútumokat tartalmazza:
 
@@ -96,7 +96,7 @@ A **InputParameters** elem a következő elemet tartalmazza:
 | --------- | ----------- |----------- |
 | Azonosító | Igen | Egy azonosító, amely a jogcím-átalakítási módszer egyik paraméterére hivatkozik. Minden jogcím-átalakítási módszer saját értékekkel rendelkezik. A rendelkezésre álló értékek teljes listájáért tekintse meg a jogcím-átalakítási táblázatot. |
 | Adattípus | Igen | A paraméter adattípusa (például string, Boolean, int vagy DateTime) az egyéni házirend XML-sémájában az adattípus enumerálása alapján. Ez a típus a aritmetikai műveletek megfelelő végrehajtásához használatos. Minden jogcím-átalakítás saját értékekkel rendelkezik. A rendelkezésre álló értékek teljes listájáért tekintse meg a [jogcím-átalakítási referenciát](#claims-transformations-reference) . |
-| Value (Díj) | Igen | Egy olyan érték, amely szó szerint az átalakításhoz lett átadva. Egyes értékek tetszőlegesek, néhányat a jogcím-átalakítási módszer közül választhat ki. |
+| Érték | Igen | Egy olyan érték, amely szó szerint az átalakításhoz lett átadva. Egyes értékek tetszőlegesek, néhányat a jogcím-átalakítási módszer közül választhat ki. |
 
 ### <a name="outputclaims"></a>OutputClaims
 
@@ -104,9 +104,9 @@ A **OutputClaims** elem a következő elemet tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| OutputClaim | 0: n | A várt kimeneti jogcím típusa. |
+| outputClaim | 0: n | A várt kimeneti jogcím típusa. |
 
-#### <a name="outputclaim"></a>OutputClaim 
+#### <a name="outputclaim"></a>outputClaim
 
 A **OutputClaim** elem a következő attribútumokat tartalmazza:
 
@@ -114,7 +114,7 @@ A **OutputClaim** elem a következő attribútumokat tartalmazza:
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | Igen | A szabályzat ClaimsSchema szakaszában már definiált ClaimType mutató hivatkozás.
 | TransformationClaimType | Igen | Egy átalakítási jogcím típusára hivatkozó azonosító. Minden jogcím-átalakítás saját értékekkel rendelkezik. A rendelkezésre álló értékek teljes listájáért tekintse meg a [jogcím-átalakítási referenciát](#claims-transformations-reference) . |
- 
+
 Ha a bemeneti jogcím és a kimeneti jogcím azonos típusú (karakterlánc vagy logikai), akkor ugyanazt a bemeneti jogcímet használhatja, mint a kimeneti jogcím. Ebben az esetben a jogcím-átalakítás megváltoztatja a bemeneti jogcímet a kimeneti értékkel.
 
 ## <a name="example"></a>Példa

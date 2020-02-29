@@ -3,20 +3,20 @@ title: REST-szolgáltatás biztonságossá tétele Ügyféltanúsítványok hasz
 titleSuffix: Azure AD B2C
 description: Az ügyfél-tanúsítványok használatával biztonságossá teheti az egyéni REST API jogcímek cseréjét a Azure AD B2Cban
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b6f4c24bb5587ca67fd2de0d8aad2c6f5218a41b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 98606443707c183a15a4bacd26646c3eac6c8a69
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848511"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186913"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>A REST-szolgáltatás biztonságossá tétele Ügyféltanúsítványok használatával
 

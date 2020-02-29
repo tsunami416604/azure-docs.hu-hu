@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 15650de776b481d1635b58f2b8ecf2bf2921d12f
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 3c80a206af74eb370470c38a7af9c7f1fe840406
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242414"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198150"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Oktatóanyag: Linux rendszerű virtuális gép és egy Python-alkalmazás használata a titkok tárolására Azure Key Vault
 
@@ -25,7 +26,7 @@ Ebben az oktatóanyagban egy Azure-webalkalmazást állít be, amely az Azure-er
 > [!div class="checklist"]
 > * Kulcstartó létrehozása
 > * Titkos kulcs tárolása a kulcstartóban
-> * Linuxos virtuális gépek létrehozása
+> * Linuxos virtuális gép létrehozása
 > * [Felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) engedélyezése a virtuális géphez
 > * Adja meg a konzol alkalmazás szükséges engedélyeit a Key Vault adatainak olvasásához
 > * Titkos kód beolvasása a kulcstartóból
@@ -58,7 +59,7 @@ Ha az Azure CLI használatával szeretne bejelentkezni az Azure-ba, írja be a k
 az login
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -77,7 +78,7 @@ Ezután létre kell hoznia egy kulcstartót az előző lépésben létrehozott e
 
 * Key Vault neve: a névnek 3-24 karakterből álló karakterláncnak kell lennie, és csak 0-9, a-z, A-Z és kötőjeleket (-) tartalmazhat.
 * Az erőforráscsoport neve.
-* Hely: **West US**.
+* Hely: **USA nyugati régiója**.
 
 ```azurecli-interactive
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -95,7 +96,7 @@ Egy titkos kulcs hozzáadásával mutatjuk be ennek működését. Előfordulhat
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gépek létrehozása
+## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
 
 Hozzon létre egy virtuális gépet a `az vm create` parancs használatával.
 
@@ -217,7 +218,7 @@ az keyvault delete --name
                    [--subscription]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

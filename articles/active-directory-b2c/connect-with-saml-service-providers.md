@@ -3,21 +3,21 @@ title: Azure AD B2C konfigurálása SAML-identitásszolgáltató az alkalmazása
 title-suffix: Azure AD B2C
 description: A Azure AD B2C konfigurálása az SAML protokoll érvényesítéséhez az alkalmazásokban (szolgáltatók). A Azure AD B2C az SAML-alkalmazáshoz (identitásszolgáltató) fog működni.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: be7d798d96e61d1d753e130c5e4ad6a479f391fc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912240"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189650"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -63,7 +63,7 @@ Ha még nem rendelkezik SAML-szolgáltatóval és a hozzá tartozó metaadat-vé
 
 ## <a name="1-set-up-certificates"></a>1. tanúsítványok beállítása
 
-A szolgáltató és a Azure AD B2C közötti megbízhatósági kapcsolat létrehozásához meg kell adnia a X509-tanúsítványokat és azok titkos kulcsait.
+A szolgáltató és a Azure AD B2C közötti megbízhatósági kapcsolat létrehozásához meg kell adnia a webalkalmazás X509 tanúsítványait.
 
 * **Szolgáltatói tanúsítványok**
   * A webalkalmazásban tárolt titkos kulccsal rendelkező tanúsítvány. Ezt a tanúsítványt a szolgáltató használja a Azure AD B2Cba küldendő SAML-kérelem aláírásához. Azure AD B2C beolvassa a nyilvános kulcsot a szolgáltatói metaadatokból az aláírás ellenőrzéséhez.
@@ -373,7 +373,7 @@ A saját metaadat-végponton keresztül a következő, SAML-függő entitások (
 * A jogkivonat-titkosítási kulcs megadásához az Application/Service Principal objektumban.
 * Az identitás-szolgáltató által kezdeményezett bejelentkezések jelenleg nem támogatottak az előzetes verzióban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információt az [SAML-protokollról az Oasis webhelyén](https://www.oasis-open.org/)talál.
 

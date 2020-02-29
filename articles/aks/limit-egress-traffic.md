@@ -4,12 +4,12 @@ description: Ismerje meg, hogy mely portokra és címekre van szükség a kimen�
 services: container-service
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: a76f4eb8680d07193feb29450fdba7bb2a710a68
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d69921ce23e961879fea6be68838f86bfcc703d0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595008"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191299"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>A fürtcsomópontok kimenő forgalmának szabályozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -143,7 +143,7 @@ A következő teljes tartománynév/alkalmazás szabályok szükségesek azon AK
 | cloudflare.docker.com | HTTPS:443 | Ez a címe a linuxos alpesi és egyéb Azure dev Spaces-rendszerképek lekérésére szolgál |
 | gcr.io | HTTP: 443 | Ez a címe a Helm/Tiller-képek lekérésére szolgál |
 | storage.googleapis.com | HTTP: 443 | Ez a címe a Helm/Tiller-képek lekérésére szolgál |
-| azds –<guid>.<location>. azds.io | HTTPS:443 | Kommunikáció az Azure dev Spaces háttér-szolgáltatásaival a vezérlőhöz. A pontos FQDN a (z) "dataplaneFqdn" elemben található a következőben:% felhasználói név%\.azds\settings.JSON |
+| azds –\<GUID\>.\<hely\>. azds.io | HTTPS:443 | Kommunikáció az Azure dev Spaces háttér-szolgáltatásaival a vezérlőhöz. A pontos FQDN a (z) "dataplaneFqdn" elemben található a következőben:% felhasználói név%\.azds\settings.JSON |
 
 ## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>Szükséges címek és portok az AK-fürtökhöz Azure Policy (nyilvános előzetes verzióban) engedélyezve
 
@@ -156,7 +156,7 @@ A következő teljes tartománynevek/alkalmazási szabályok szükségesek azon 
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS:443 | Ez a címe Azure Policy helyes működéséhez használatos. (jelenleg előzetes verzióban érhető el az AK-ban) |
 | raw.githubusercontent.com | HTTPS:443 | Ez a címe a beépített szabályzatok GitHubról történő lekérésére szolgál a Azure Policy megfelelő működésének biztosítása érdekében. (jelenleg előzetes verzióban érhető el az AK-ban) |
-| *. GK.<location>. azmk8s.io | HTTPS:443 | Azure Policy-bővítmény, amely a főkiszolgálón futó forgalomirányító-naplózási végpontot tárgyalja a naplózási eredmények beszerzéséhez. |
+| *. GK.\<hely\>. azmk8s.io | HTTPS:443   | Azure Policy-bővítmény, amely a főkiszolgálón futó forgalomirányító-naplózási végpontot tárgyalja a naplózási eredmények beszerzéséhez. |
 | dc.services.visualstudio.com | HTTPS:443 | Azure Policy-bővítmény, amely telemetria adatokat küld az Applications-elemzések végpontjának. |
 
 ## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>A Windows Server-alapú csomópontok (nyilvános előzetes verzió) által igényelt engedélyezve
@@ -173,7 +173,7 @@ A Windows Server-alapú AK-fürtökhöz a következő FQDN-/alkalmazás-szabály
 | kms.core.windows.net | TCP: 1688 | A Windows rendszerhez kapcsolódó bináris fájlok telepítése |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogy milyen portokat és címeket kell engedélyezni a fürt kimenő forgalmának korlátozására. Azt is meghatározhatja, hogy a hüvelyek hogyan kommunikálhatnak és milyen korlátozásokkal rendelkeznek a fürtön belül. További információ: [biztonságos forgalom a hüvelyek között a hálózati házirendek használatával az AK-ban][network-policy].
 

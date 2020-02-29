@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112080"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190653"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Sokoldalú navigáció megvalósítása az Azure-ban Cognitive Search
 
@@ -34,11 +34,11 @@ Az alkalmazásfejlesztés során a lekérdezéseket alkotó kód megírása a mu
 ## <a name="sample-code-and-demo"></a>Mintakód és bemutató
 Ez a cikk a feladatok keresési portálját használja példaként. A példa ASP.NET MVC-alkalmazásként van implementálva.
 
--   Tekintse meg és tesztelje a munkahelyi bemutatót az [Azure Cognitive Search Job Portal bemutatójában](https://azjobsdemo.azurewebsites.net/).
+- Tekintse meg és tesztelje a munkahelyi bemutatót az [Azure Cognitive Search Job Portal bemutatójában](http://azjobsdemo.azurewebsites.net/).
 
--   Töltse le a kódot az [Azure-Samples repóból a githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
+- Töltse le a kódot az [Azure-Samples repóból a githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 Ha még nem ismeri a fejlesztést, a legjobb módszer a sokoldalú navigálásra, hogy a saját irányított keresés lehetőségeit jelenítse meg. Az előre meghatározott szűrők alapján részletezett keresési élményt nyújt, amely a keresési eredmények gyors, pont-és kattintásos műveletekkel való szűkítéséhez használható. 
 
 ### <a name="interaction-model"></a>Interakciós modell
@@ -67,10 +67,10 @@ Az Azure Cognitive Searchban a kérelem egy vagy több lekérdezési paramétere
 
 A nem releváns találatok kiszűrésének lehetősége a következő kifejezések egyikén vagy mindkettőn keresztül érhető el:
 
--   **search=**  
+-   **Keresés =**  
     A paraméter értéke képezi a keresési kifejezést. Lehet, hogy egyetlen szövegrész vagy egy összetett keresési kifejezés, amely több kifejezést és operátort is tartalmaz. A kiszolgálón a teljes szöveges kereséshez keresési kifejezés használható, kereshető mezők lekérdezése az indexben a megfelelő feltételekhez, az eredmények rangsorban való visszaadása. Ha a `search` NULL értékre állítja, a lekérdezés végrehajtása a teljes index felett van (azaz `search=*`). Ebben az esetben a lekérdezés más elemei, például egy `$filter` vagy pontozási profil, azok az elsődleges tényezők, amelyek hatással vannak a dokumentumok `($filter`ére) és milyen sorrendben (`scoringProfile` vagy `$orderby`).
 
--   **$filter=**  
+-   **$filter =**  
     A szűrők hatékony mechanizmust biztosítanak a keresési eredmények méretének korlátozására az adott dokumentum attribútumainak értékei alapján. Először a rendszer kiértékeli a `$filter`, majd az egyes értékekhez tartozó, a rendelkezésre álló értékeket és a hozzájuk tartozó számokat generáló aspektusokat.
 
 Az összetett keresési kifejezések csökkentik a lekérdezés teljesítményét. Ha lehetséges, használjon jól felépített szűrési kifejezéseket a pontosság növeléséhez és a lekérdezési teljesítmény javításához.
@@ -395,7 +395,7 @@ Amikor a keresési eredményekkel dolgozik, tekintse meg az URL-címet a lekérd
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>További információk
 Tekintse meg az [Azure Cognitive Search a Deep Dive](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)szolgáltatást. A 45:25-es verzióban egy bemutató mutatja be, hogyan valósíthatók meg a dimenziók.
 
 A részletes Navigálás tervezési alapelveivel kapcsolatos további információk a következő hivatkozásokat ajánljuk:

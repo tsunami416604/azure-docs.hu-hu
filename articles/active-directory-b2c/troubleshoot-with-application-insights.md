@@ -3,20 +3,20 @@ title: Egyéni házirendek – Application Insights
 titleSuffix: Azure AD B2C
 description: Application Insights beállítása az egyéni házirendek végrehajtásának nyomon követéséhez.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3aeef1614f22563e0fd348c5bc6ae7ff1e7b0b03
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 403dbe6106cb7a1d277ba672112d2bc45dbc2987
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848147"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186267"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C naplók gyűjtése Application Insights
 
@@ -31,7 +31,7 @@ Az itt leírt részletes tevékenység-naplókat **csak** az egyéni szabályzat
 
 Ha még nem rendelkezik ilyennel, hozzon létre egy Application Insights példányt az előfizetésében.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely tartalmazza az Azure-előfizetését (nem a Azure ad B2C könyvtárat).
 1. Válassza az **erőforrás létrehozása** lehetőséget a bal oldali navigációs menüben.
 1. Keresse meg és válassza ki **Application Insights**, majd válassza a **Létrehozás**lehetőséget.
@@ -61,7 +61,7 @@ Ha még nem rendelkezik ilyennel, hozzon létre egy Application Insights példá
     * `ClientEnabled="true"` elküldi a ApplicationInsights ügyféloldali parancsfájlját a nyomkövetési oldal nézet és az ügyféloldali hibák követéséhez. Ezeket a **browserTimings** táblában tekintheti meg a Application Insights-portálon. A `ClientEnabled= "true"`beállításával Application Insightsokat adhat hozzá az oldal parancsfájljaihoz, és megtekintheti az oldalak betöltésének és az AJAX-hívások, a számok, a böngészőbeli kivételek és az AJAX-hibák részleteit, valamint a felhasználók és a munkamenetek számát. Ez a mező nem **kötelező**, és alapértelmezés szerint `false`ra van beállítva.
     * `ServerEnabled="true"` elküldi a meglévő UserJourneyRecorder JSON-t egyéni eseményként Application Insights.
 
-    Példa:
+    Például:
 
     ```XML
     <TrustFrameworkPolicy
@@ -102,7 +102,7 @@ Előfordulhat, hogy a bejegyzések hosszúak. Exportálás CSV-be alaposabb kere
 
 A lekérdezéssel kapcsolatos további információkért lásd: [Azure monitorban található lekérdezések áttekintése](../azure-monitor/log-query/log-query-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Közösség kidolgozta a felhasználói útvonalak megjelenítőjét, hogy segítse az identitás-fejlesztőket. Beolvassa a Application Insights példányát, és jól strukturált áttekintést nyújt a felhasználói útvonalak eseményeiről. Szerezze be a forráskódot, és telepítse azt a saját megoldásában.
 

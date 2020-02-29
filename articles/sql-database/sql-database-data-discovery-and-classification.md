@@ -5,21 +5,22 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/22/2019
-ms.openlocfilehash: dda65c94671044f3c5a569a3f9753951de9eee3a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/05/2020
+tags: azure-synapse
+ms.openlocfilehash: e22205e81178ac0caff4b71462ece776238900f6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717685"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191945"
 ---
-# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Adatfelderítési & besorolása Azure SQL Database és SQL Data Warehouse
+# <a name="azure-sql-database-and-azure-synapse-analytics-data-discovery--classification"></a>Azure SQL Database és az Azure szinapszis Analytics adatfelderítési & besorolása
 
 Az adatfelderítési & besorolása olyan speciális képességeket **biztosít, amelyek**a Azure SQL Databasebe vannak építve, így a bizalmas adatoknak az adatbázisokban való felderítéséhez, **besorolásához**, **címkézéséhez** ** & .**
 
@@ -32,7 +33,7 @@ A legérzékenyebb adatok (üzleti, pénzügyi, egészségügyi, személyazonos�
 Az adatfelderítési & besorolása a [speciális adatbiztonsági](sql-database-advanced-data-security.md) (ADS) ajánlat része, amely a speciális SQL-alapú biztonsági funkciók egységes csomagja. az adatfelderítési & besorolása a központi SQL ADS portálon keresztül érhető el és kezelhető.
 
 > [!NOTE]
-> Ez a dokumentum Azure SQL Database és Azure SQL Data Warehousera vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. SQL Server (helyszíni) esetében lásd: [SQL-adatfelderítés és-besorolás](https://go.microsoft.com/fwlink/?linkid=866999).
+> Ez a dokumentum a Azure SQL Database és az Azure Szinapszishoz kapcsolódik. Az egyszerűség kedvéért SQL Database a rendszer akkor használja, ha a SQL Database és az Azure Szinapszisra hivatkozik. SQL Server (helyszíni) esetében lásd: [SQL-adatfelderítés és-besorolás](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a id="subheading-1"></a>Mi az adatfelderítési & besorolása
 
@@ -76,7 +77,7 @@ Miután meghatározta a bérlőre kiterjedő házirendet, folytathatja az egyén
 
 ## <a name="classify-your-sql-database"></a>A SQL Database besorolása
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
 2. A Azure SQL Database panel biztonsági fejléce alatt navigáljon a **speciális adatbiztonság** elemre. Kattintson ide a speciális adatbiztonság engedélyezéséhez, majd kattintson az **adatfelderítési & besorolási** kártyára.
 
@@ -138,7 +139,7 @@ További információ az [Azure-erőforrások RBAC](https://docs.microsoft.com/a
 
 ## <a id="subheading-5"></a>Besorolások kezelése
 
-# <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
+# <a name="t-sql"></a>[T-SQL](#tab/azure-t-sql)
 A T-SQL használatával oszlop besorolásokat adhat hozzá vagy távolíthat el, valamint beolvashatja az összes besorolást a teljes adatbázisra vonatkozóan.
 
 > [!NOTE]
@@ -148,7 +149,7 @@ A T-SQL használatával oszlop besorolásokat adhat hozzá vagy távolíthat el,
 - Távolítsa el a besorolást egy vagy több oszlopból: [eldobási érzékenység besorolása](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Az adatbázis összes besorolásának megtekintése: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-# <a name="rest-apistabazure-rest-api"></a>[REST API-k](#tab/azure-rest-api)
+# <a name="rest-apis"></a>[REST API-k](#tab/azure-rest-api)
 A REST API-k használatával programozott módon kezelheti a besorolásokat és a javaslatokat. A közzétett REST API-k a következő műveleteket támogatják:
 
 - [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) – egy adott oszlop érzékenységi címkéjének létrehozása vagy frissítése
@@ -159,7 +160,7 @@ A REST API-k használatával programozott módon kezelheti a besorolásokat és 
 - [Aktuális adatbázis listázása](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) – egy adott adatbázis aktuális érzékenységi címkéit kapja meg
 - [Adatbázis által ajánlott lista](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) – egy adott adatbázis javasolt érzékenységi címkéit kéri le
 
-# <a name="powershell-cmdlettabazure-powelshell"></a>[PowerShell-parancsmag](#tab/azure-powelshell)
+# <a name="powershell-cmdlet"></a>[PowerShell-parancsmag](#tab/azure-powelshell)
 A PowerShell használatával kezelheti Azure SQL Database és felügyelt példány besorolásait és javaslatait.
 
 ### <a name="powershell-cmdlet-for-azure-sql-database"></a>PowerShell-parancsmag a Azure SQL Databasehoz

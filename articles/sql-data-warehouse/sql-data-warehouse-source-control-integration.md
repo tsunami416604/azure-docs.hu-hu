@@ -1,6 +1,6 @@
 ---
 title: Verziókövetés integrálása
-description: Nagyvállalati szintű adatbázis-DevOps az Azure Repos (git és GitHub) használatával történő natív verziókövetés-integrációs SQL Data Warehousehoz.
+description: Nagyvállalati szintű adatbázis-DevOps az SQL-készlethez az Azure Repos (git és GitHub) használatával történő natív verziókövetés-integrációval.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fc1fdddc7a157828fcc4770c4e8237af9a45fdc3
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1a4939e8c349f36fe745becb811717983caa95c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720027"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198215"
 ---
-# <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Verziókövetés integrációja Azure SQL Data Warehouse
+# <a name="source-control-integration-for-sql-pool"></a>Verziókövetés integrálása az SQL-készletbe
 
-Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz-(SSDT-) adatbázis-projekt a verziókövetés használatával.  A verziókövetés integrációja az első lépés a folyamatos integrációs és üzembe helyezési folyamat kiépítéséhez SQL Data Warehousesal. 
+Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz-(SSDT-) adatbázis-projekt a verziókövetés használatával.  A verziókövetés integrációja az első lépés a folyamatos integrációs és üzembe helyezési folyamat létrehozásához az SQL Pool-erőforrással az Azure szinapszis Analyticsben. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -37,7 +37,7 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz
 
    ![Kapcsolatok kezelése](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Kapcsolatok kezelése")
 
-   ![Kapcsolódás](media/sql-data-warehouse-source-control-integration/3-connect.png "Csatlakozás")
+   ![Kapcsolódás](media/sql-data-warehouse-source-control-integration/3-connect.png "Kapcsolódás")
 
 3. Az Azure-tárház klónozása a projektből a helyi gépre
 
@@ -79,6 +79,6 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz
 
 4. (Nem**kötelező**) Séma összevetése és a cél adattárház változásainak frissítése a SSDT használatával annak biztosítása érdekében, hogy az Azure-tárházban és a helyi adattárban lévő objektumok definíciói az adattárházat tükrözzék
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Fejlesztés Azure SQL Data Warehouse](sql-data-warehouse-overview-develop.md)
+- [SQL-készlet fejlesztése](sql-data-warehouse-overview-develop.md)

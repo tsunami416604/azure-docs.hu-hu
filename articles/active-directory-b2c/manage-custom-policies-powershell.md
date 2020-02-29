@@ -2,20 +2,20 @@
 title: Egyéni házirendek kezelése a PowerShell-lel
 titleSuffix: Azure AD B2C
 description: Használja az Azure Active Directory (Azure AD) PowerShell-parancsmagot a Azure AD B2C egyéni szabályzatok programozott felügyeletéhez. Egyéni szabályzatok létrehozása, olvasása, frissítése és törlése a PowerShell-lel.
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e29bb245ed0fc79a6f72688dc6e4d044f2828c45
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: ebf0cfffa410d8dfe2f0e0b42a0fee0c16106fde
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463127"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187406"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Azure AD B2C egyéni házirendek kezelése a Azure PowerShell
 
@@ -193,7 +193,7 @@ Message: Validation failed: 1 validation error(s) found in policy "B2C_1A_SIGNUP
 
 További információ az egyéni házirendek hibaelhárításáról: [Azure ad B2C egyéni szabályzatok és az identitások felhasználói felületének](active-directory-b2c-guide-troubleshooting-custom.md)hibaelhárítása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogyan használható a PowerShell az egyéni házirendek folyamatos integrációs/folyamatos teljesítési (CI/CD) folyamat részeként történő telepítéséhez: [Egyéni szabályzatok telepítése Azure DevOps-folyamatból](deploy-custom-policies-devops.md).
 

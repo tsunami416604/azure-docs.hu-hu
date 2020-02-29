@@ -3,20 +3,20 @@ title: Logikai jogcím-átalakítási példák egyéni házirendekhez
 titleSuffix: Azure AD B2C
 description: Logikai jogcím-átalakítási példák a Azure Active Directory B2C Identity Experience Framework (IEF) sémájához.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 130fca4d5894316e7684270ff9d6361e9d9f9dd3
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 65f5b9bc09bb74ccbc63a457ba8e5681de8eefab
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620836"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189941"
 ---
 # <a name="boolean-claims-transformations"></a>Logikai jogcím-átalakítások
 
@@ -30,9 +30,9 @@ Két logikai Szabályzattípushoz és műveletet hajt végre, és beállítja a 
 
 | Elem  | TransformationClaimType  | Adattípus  | Megjegyzések |
 |-------| ------------------------ | ---------- | ----- |
-| inputClaim | inputClaim1 | logikai | A ClaimType első kiértékelése. |
-| inputClaim | inputClaim2  | logikai | A második ClaimType kiértékelése. |
-|outputClaim | outputClaim | logikai | A jogcím-átalakítás meghívása után előállított ClaimTypes (TRUE vagy FALSE). |
+| inputClaim | inputClaim1 | Logikai érték | A ClaimType első kiértékelése. |
+| inputClaim | inputClaim2  | Logikai érték | A második ClaimType kiértékelése. |
+|outputClaim | outputClaim | Logikai érték | A jogcím-átalakítás meghívása után előállított ClaimTypes (TRUE vagy FALSE). |
 
 A következő jogcím-átalakítás azt mutatja be, hogyan lehet és két logikai ClaimTypes: `isEmailNotExist`és `isSocialAccount`. A kimeneti jogcím `presentEmailSelfAsserted` `true`, ha a bemeneti jogcímek értéke `true`. Egy előkészítési lépésben feltételt használhat egy önjelölt lap beállítására, csak akkor, ha a közösségi fiók e-mail-címe üres.
 
@@ -63,8 +63,8 @@ Ellenőrzi, hogy a két jogcím logikai értékei egyenlőek-e, és kivételt je
 
 | Elem | TransformationClaimType  | Adattípus  | Megjegyzések |
 | ---- | ------------------------ | ---------- | ----- |
-| inputClaim | inputClaim | logikai | Az érvényesíteni kívánt ClaimType. |
-| InputParameter |valueToCompareTo | logikai | Az összehasonlítandó érték (igaz vagy hamis). |
+| inputClaim | inputClaim | Logikai érték | Az érvényesíteni kívánt ClaimType. |
+| InputParameter |valueToCompareTo | Logikai érték | Az összehasonlítandó érték (igaz vagy hamis). |
 
 Az **AssertBooleanClaimIsEqualToValue** jogcímek átalakítását mindig egy [önérvényesített technikai profil](self-asserted-technical-profile.md)által hívott [érvényesítési műszaki profilból](validation-technical-profile.md) hajtja végre a rendszer. A **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** önérvényesített technikai profil metaadatai a technikai profil által a felhasználónak megjelenített hibaüzenetet vezérlik.
 
@@ -116,13 +116,13 @@ Az önérvényesített technikai profil meghívja az érvényesítési **bejelen
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 
-Ellenőrzi, hogy a jogcímek logikai értéke `true` vagy `false`-e, és visszaadja-e a tömörítés eredményét. 
+Ellenőrzi, hogy a jogcímek logikai értéke `true` vagy `false`-e, és visszaadja-e a tömörítés eredményét.
 
 | Elem | TransformationClaimType  | Adattípus  | Megjegyzések |
 | ---- | ------------------------ | ---------- | ----- |
-| inputClaim | inputClaim | logikai | Az érvényesíteni kívánt ClaimType. |
-| InputParameter |valueToCompareTo | logikai | Az összehasonlítandó érték (igaz vagy hamis). |
-| outputClaim | compareResult | logikai | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
+| inputClaim | inputClaim | Logikai érték | Az érvényesíteni kívánt ClaimType. |
+| InputParameter |valueToCompareTo | Logikai érték | Az összehasonlítandó érték (igaz vagy hamis). |
+| outputClaim | compareResult | Logikai érték | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
 
 
 A következő jogcím-átalakítás azt mutatja be, hogyan ellenőrizhető egy `true` értékkel rendelkező logikai ClaimType értéke. Ha a `IsAgeOver21Years` ClaimType értéke `true`, akkor a jogcím-átalakítás visszaadja `true`, ellenkező esetben `false`.
@@ -148,7 +148,7 @@ A következő jogcím-átalakítás azt mutatja be, hogyan ellenőrizhető egy `
 - Bemeneti paraméterek:
     - **valueToCompareTo**: true
 - Kimeneti jogcímek:
-    - **compareResult**: hamis 
+    - **compareResult**: hamis
 
 
 
@@ -158,8 +158,8 @@ A nem végez műveletet a logikai inputClaim, és a művelet eredményével beá
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim | logikai | Az üzemeltetni kívánt jogcím. |
-| outputClaim | outputClaim | logikai | A ClaimsTransformation után létrehozott ClaimTypes (TRUE vagy FALSE). |
+| inputClaim | inputClaim | Logikai érték | Az üzemeltetni kívánt jogcím. |
+| outputClaim | outputClaim | Logikai érték | A ClaimsTransformation után létrehozott ClaimTypes (TRUE vagy FALSE). |
 
 A jogcím-átalakítás használatával logikai tagadást hajthat végre a jogcímen.
 
@@ -186,9 +186,9 @@ Kiszámítja a vagy a két logikai Szabályzattípushoz, és beállítja a outpu
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | logikai | A ClaimType első kiértékelése. |
-| inputClaim | inputClaim2 | logikai | A második ClaimType kiértékelése. |
-| outputClaim | outputClaim | logikai | A ClaimsTransformation meghívása után előállított ClaimTypes (TRUE vagy FALSE). |
+| inputClaim | inputClaim1 | Logikai érték | A ClaimType első kiértékelése. |
+| inputClaim | inputClaim2 | Logikai érték | A második ClaimType kiértékelése. |
+| outputClaim | outputClaim | Logikai érték | A ClaimsTransformation meghívása után előállított ClaimTypes (TRUE vagy FALSE). |
 
 A következő jogcím-átalakítás azt mutatja be, hogyan `Or` két logikai ClaimTypes. A előkészítési lépésben előfeltételt használhat egy önérvényesített lap beállításához, ha az egyik jogcím értéke `true`.
 

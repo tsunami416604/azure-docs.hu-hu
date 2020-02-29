@@ -6,15 +6,16 @@ author: amitbapat
 manager: devtiw
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: keys
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 00d2d38801929454110b41be88d133e3af232af7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: d7f9527aa5aa3353dc9087f4bcc5f3a5fb241637
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425748"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184553"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM-védelemmel ellátott kulcsok importálása a Key Vaultba
 
@@ -36,6 +37,6 @@ A HSM-védelemmel ellátott kulcsok Key Vaultre való átvitele a használt HSM 
 |nCipher|<ul><li>HSM nShield családja</li></ul>|[Örökölt BYOK metódus használata](hsm-protected-keys-legacy.md)|
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kövesse [Key Vault ajánlott eljárásokat](key-vault-best-practices.md) a kulcsok biztonságának, tartósságának és figyelésének biztosításához.

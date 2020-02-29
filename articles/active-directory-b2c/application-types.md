@@ -3,20 +3,20 @@ title: A Azure AD B2C által támogatott alkalmazások típusai
 titleSuffix: Azure AD B2C
 description: Ismerje meg a Azure Active Directory B2C használható alkalmazások típusait.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/24/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ec97f986c4472f793c2d38ded2a1c6873b1ee08d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e8328db12bde531c2e27936c09247611ff1a3583
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482785"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190143"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C használható alkalmazások típusai
 
@@ -140,6 +140,6 @@ Ha a Azure AD B2C alkalmazást a Azure Portalon kívül szerkeszti, akkor az egy
 
 Az alkalmazás törléséhez nyissa meg az [alkalmazás regisztrációs portálját](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) , és törölje az alkalmazást. Ahhoz, hogy láthatóvá lehessen tenni az alkalmazást, Önnek kell lennie az alkalmazás tulajdonosának (és nem csak a bérlő rendszergazdájának).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudjon meg többet a [Azure Active Directory B2C felhasználói folyamatai](user-flow-overview.md)által biztosított beépített szabályzatokról.

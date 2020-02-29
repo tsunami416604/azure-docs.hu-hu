@@ -3,12 +3,12 @@ title: Az erőforrás-zárolás megismerése
 description: Ismerje meg az Azure-tervrajzok zárolási lehetőségeit, amelyekkel biztosíthatja az erőforrások számára a tervrajzok kiosztását.
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1491af0ddfb0f6f5fbea322bd00dc9838c155983
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: b810e8d4ddd263f9e651704d1bf9b785ce0202db
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919872"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199699"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Az erőforrások zárolásának megismerése az Azure-tervekben
 
@@ -21,7 +21,7 @@ A zárolási módok azonban nem változtathatók meg a tervrajzokon kívül.
 
 A tervrajz-hozzárendelésekben az összetevők által létrehozott erőforrások négy állapottal rendelkeznek: **nincs zárolva**, **csak olvasható**, **nem szerkeszthető/** nem törölhető, vagy **nem törölhető**. Az egyes összetevők típusa **nem zárolt** állapotban lehet. Az alábbi táblázat egy erőforrás állapotának meghatározására használható:
 
-|Mód|Összetevő típusú erőforrástípus|Állapot|Leírás|
+|mód|Összetevő típusú erőforrástípus|State|Leírás|
 |-|-|-|-|
 |Ne legyen zárolás|*|Nincs zárolva|Az erőforrásokat nem a tervrajzok védik. Ezt az állapotot az **írásvédett** erőforráshoz hozzáadott erőforrások, vagy az erőforráscsoport-összetevő **nem törölhető** a terv-hozzárendelésen kívül is használják.|
 |Csak olvasási engedély|Erőforráscsoport|Nem lehet szerkeszteni/törölni|Az erőforráscsoport írásvédett, és az erőforráscsoport címkéi nem módosíthatók. A **nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoporthoz.|
@@ -84,6 +84,9 @@ A terv-hozzárendelés kérelem törzse a következőképpen néz ki:
 
 A kérelem törzsében és az előfizetéshez rendelt egyik fő különbség a `properties.scope` tulajdonság. Ezt a kötelező tulajdonságot arra az előfizetésre kell beállítani, amelyre a terv-hozzárendelés vonatkozik. Az előfizetésnek a felügyeleti csoport hierarchiájának közvetlen gyermekének kell lennie, ahol a terv-hozzárendelést tárolja.
 
+> [!NOTE]
+> A felügyeleti csoport hatóköréhez hozzárendelt terv továbbra is előfizetési szintű terv-hozzárendelésként működik. Az egyetlen különbség, hogy a terv-hozzárendelést a rendszer tárolja, hogy megakadályozza az előfizetés-tulajdonosok számára a hozzárendelés és a társított zárolások eltávolítását.
+
 ## <a name="removing-locking-states"></a>Zárolási állapotok eltávolítása
 
 Ha szükség lesz egy hozzárendelés által védett erőforrás módosítására vagy törlésére, kétféleképpen teheti meg.
@@ -101,7 +104,7 @@ Egy RBAC [megtagadási hozzárendelések](../../../role-based-access-control/den
 
 Az egyes üzemmódok [megtagadási hozzárendeléseinek tulajdonságai](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) a következők:
 
-|Mód |Engedélyek. műveletek |Engedélyek. Tapintatok |Principals[i].Type |ExcludePrincipals [i]. ID | DoNotApplyToChildScopes |
+|mód |Engedélyek. műveletek |Engedélyek. Tapintatok |Principals[i].Type |ExcludePrincipals [i]. ID | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
 |Csak olvasási engedély |**\*** |**\*/READ** |SystemDefined (mindenki) |tervezet-hozzárendelés és felhasználó által definiált **excludedPrincipals** |Erőforráscsoport – _igaz_; Erőforrás – _hamis_ |
 |Törlés mellőzése |**\*/delete** | |SystemDefined (mindenki) |tervezet-hozzárendelés és felhasználó által definiált **excludedPrincipals** |Erőforráscsoport – _igaz_; Erőforrás – _hamis_ |
@@ -173,7 +176,7 @@ Hasonlóan ahhoz, hogy kizárja a [rendszerbiztonsági tag](#exclude-a-principal
 
 Míg a **excludedPrincipals** explicitnek kell lennie, a **excludedActions** -bejegyzések a RBAC-műveletek helyettesítő karakteres egyeztetéséhez használhatják a `*`.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Kövesse az [új erőforrások védelemmel](../tutorials/protect-new-resources.md) foglalkozó oktatóanyagot.
 - Tudnivalók a [tervek életciklusáról](lifecycle.md).

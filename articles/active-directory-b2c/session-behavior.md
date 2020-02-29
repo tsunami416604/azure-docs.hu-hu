@@ -2,20 +2,20 @@
 title: Munkamenet-viselkedés konfigurálása – Azure Active Directory B2C | Microsoft Docs
 description: Munkamenet-viselkedés konfigurálása Azure Active Directory B2Cban.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6147dc64833f44f24afe14cd1da34432a3735519
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c1d39fdbca9484f47ce0c8537c82247b75b2e3db
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840230"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186811"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Munkamenet-viselkedés konfigurálása Azure Active Directory B2Cban
 
@@ -48,7 +48,7 @@ A következő használati esetek engedélyezettek a következő tulajdonságok h
 
 ## <a name="configure-the-properties"></a>A tulajdonságok konfigurálása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőt tartalmazza.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Válassza a **felhasználói folyamatok (szabályzatok)** lehetőséget.
@@ -58,4 +58,4 @@ A következő használati esetek engedélyezettek a következő tulajdonságok h
 
     ![A munkamenet viselkedési tulajdonságának beállításai a Azure Portalban](./media/session-behavior/session-behavior.png)
 
-8. Kattintson a **Mentés** gombra.
+8. Kattintson a **Save** (Mentés) gombra.

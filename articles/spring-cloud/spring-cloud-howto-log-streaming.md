@@ -1,25 +1,28 @@
 ---
-title: Azure Spring Cloud-alkalmazás naplók valós idejű továbbítása
+title: Azure Spring Cloud-alkalmazásnaplók streamelése valós időben
 description: Az alkalmazás naplófájljainak azonnali megtekintése a log streaming használatával
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
-ms.openlocfilehash: 27978d367ded7a31d73949cd675ae9e6f8cb887c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: fc208a3542528fb4554a365a02e13c2da3055cf2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263999"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192200"
 ---
-# <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud-alkalmazás naplók valós idejű továbbítása
+# <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud-alkalmazásnaplók streamelése valós időben
 Az Azure Spring Cloud lehetővé teszi a log streaming használatát az Azure CLI-ben, hogy valós idejű Application Console-naplókat kapjon a hibaelhárításhoz. [A naplók és a metrikák is elemezhetők a diagnosztikai beállítások](./diagnostic-services.md)használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Telepítse az [Azure CLI-bővítményt](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) a Spring Cloud számára, a minimális verzió 0.2.0.
 * Egy futó alkalmazást használó **Azure Spring Cloud** -példány, például a [Spring Cloud app](./spring-cloud-quickstart-launch-app-cli.md).
+
+> [!NOTE]
+>  Az ASC CLI-bővítmény frissítve lett a 0.2.0 verzióról a 0.2.1-re. Ez a változás befolyásolja a következő naplózási napló szintaxisát: `az spring-cloud app log tail`, amelyet a következő váltja fel: `az spring-cloud app logs`. A következő parancs egy későbbi kiadásban elavulttá válik: `az spring-cloud app log tail`. Ha már használta a 0.2.0 verziót, a 0.2.1-re frissíthet. Először távolítsa el a régi verziót a paranccsal: `az extension remove -n spring-cloud`.  Ezután telepítse a 0.2.1 a parancs használatával: `az extension add -n spring-cloud`.
 
 ## <a name="use-cli-to-tail-logs"></a>A CLI használata a farok naplóihoz
 
@@ -33,7 +36,7 @@ A következő példákban az erőforráscsoport és a szolgáltatás neve kimara
 ### <a name="tail-log-for-app-with-single-instance"></a>A farok naplója az alkalmazáshoz egyetlen példánnyal
 Ha egy Auth-Service nevű alkalmazásnak csak egy példánya van, megtekintheti az alkalmazás példányának naplóját a következő paranccsal:
 ```
-az spring-cloud app log tail -n auth-service
+az spring-cloud app logs -n auth-service
 ```
 Ez a naplókat fogja visszaadni:
 ```
@@ -66,7 +69,7 @@ auth-service-default-12-75cc4577fc-n25mh  Running   UP
 Ezután a `-i/--instance` kapcsolóval is elvégezheti az alkalmazás-példányok naplófájljainak továbbítását:
 
 ```
-az spring-cloud app log tail -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
+az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
 
 Az Azure Portalból is kérheti az alkalmazás-példányok részleteit.  Miután kiválasztotta az **alkalmazásokat** az Azure Spring Cloud Service bal oldali navigációs paneljén, válassza az alkalmazások **példányai**lehetőséget.
@@ -75,14 +78,14 @@ Az Azure Portalból is kérheti az alkalmazás-példányok részleteit.  Miután
 Alapértelmezés szerint a `az spring-cloud ap log tail` csak az App Console-ba továbbított meglévő naplókat nyomtatja ki, majd kilép. Ha új naplókat szeretne továbbítani, adja hozzá a-f (----követés):  
 
 ```
-az spring-cloud app log tail -n auth-service -f
+az spring-cloud app logs -n auth-service -f
 ``` 
 A támogatott naplózási beállítások megtekintéséhez:
 ``` 
-az spring-cloud app log tail -h 
+az spring-cloud app logs -h 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Naplók és mérőszámok elemzése diagnosztikai beállításokkal](./diagnostic-services.md)
 

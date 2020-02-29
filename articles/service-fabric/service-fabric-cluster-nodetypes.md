@@ -5,16 +5,18 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: e751b3dd9108d364c900bbd059dc89c1eb3770c4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 37d4c27d3033545c523cefc2f317073af531f095
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722339"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199716"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric Node-típusok és virtuálisgép-méretezési csoportok
 
-A [virtuálisgép-méretezési](/azure/virtual-machine-scale-sets) csoportok egy Azure számítási erőforrás. A méretezési csoportok segítségével virtuális gépek gyűjteményét telepítheti és kezelheti készletként. Az Azure Service Fabric-fürtben definiált egyes csomópont-típusok külön méretezést állítanak be. A Service Fabric Runtime a *Microsoft. Azure. ServiceFabric* virtuálisgép-bővítmény által a méretezési csoportba tartozó egyes virtuális gépekre van telepítve. Az egyes csomópont-típusok egymástól függetlenül méretezhetők, az egyes fürtcsomópontokon futó operációs rendszerbeli SKU-t módosíthatja, különböző portokat nyithat meg, és különböző kapacitási metrikákat használhat.
+A [virtuálisgép-méretezési](/azure/virtual-machine-scale-sets) csoportok egy Azure számítási erőforrás. A méretezési csoportok segítségével virtuális gépek gyűjteményét telepítheti és kezelheti készletként. Az Azure Service Fabric-fürtben definiált minden egyes csomópont pontosan egy méretezési csoportot állít be: több csomópont-típust nem lehet ugyanazzal a méretezési csoporttal támogatni, és az egyik csomópont típusának nem szabad (a legtöbb esetben) több méretezési csoporttal kell biztonsági mentést készítenie. Ez alól kivételt képez a csomópont-típus [vertikális skálázásának](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) ritka helyzete, ha átmenetileg két méretezési csoporttal rendelkezik ugyanazzal a `nodeTypeRef` értékkel, miközben a replikákat az eredetiről a frissített méretezési csoportba telepíti át.
+
+A Service Fabric Runtime a *Microsoft. Azure. ServiceFabric* virtuálisgép-bővítmény által a méretezési csoportba tartozó egyes virtuális gépekre van telepítve. Az egyes csomópont-típusok egymástól függetlenül méretezhetők, az egyes fürtcsomópontokon futó operációs rendszerbeli SKU-t módosíthatja, különböző portokat nyithat meg, és különböző kapacitási metrikákat használhat.
 
 Az alábbi ábra egy olyan fürtöt mutat be, amely két csomópontos típust tartalmaz: *előtér és* *háttér*neve. Mindegyik csomópont típusa öt csomóponttal rendelkezik.
 
@@ -30,7 +32,7 @@ Méretezési csoport skálázásakor létrejön egy új példány. Az új méret
 
 Ha központilag telepítette a fürtöt a Azure Portal vagy használta a minta Azure Resource Manager sablont, a rendszer az erőforráscsoport összes erőforrását listázza. Az egyes méretezési csoportokhoz vagy csomópont-típusokhoz tartozó terheléselosztó megtekinthető. A terheléselosztó neve a következő formátumot használja: **LB-&lt;Node Type name&gt;** . Ilyen például az LB-sfcluster4doc-0, ahogy az a következő ábrán látható:
 
-![Erőforrások][Resources]
+![További források][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Virtuálisgép-bővítmény Service Fabric
 
@@ -72,21 +74,21 @@ A tulajdonságok leírása a következő:
 
 | **Name (Név)** | **Megengedett értékek** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-| név | sztring | kiterjesztés egyedi neve |
-| típus | "ServiceFabricLinuxNode" vagy "ServiceFabricWindowsNode" | Meghatározza, hogy az operációs rendszer Service Fabric |
+| név | Karakterlánc | Kiterjesztés egyedi neve |
+| type | "ServiceFabricLinuxNode" vagy "ServiceFabricWindowsNode" | Meghatározza, hogy az operációs rendszer Service Fabric |
 | autoUpgradeMinorVersion | true vagy false | Az SF Runtime másodlagos verzióinak automatikus frissítésének engedélyezése |
 | publisher | Microsoft.Azure.ServiceFabric | Az Service Fabric-bővítmény közzétevőének neve |
-| clusterEndpont | sztring | URI: PORT – felügyeleti végpont |
-| nodeTypeRef | sztring | nodeType neve |
-| durabilityLevel | bronze, silver, gold, platinum | a nem módosítható Azure-infrastruktúra szüneteltetésének ideje |
+| clusterEndpont | Karakterlánc | URI: PORT – felügyeleti végpont |
+| nodeTypeRef | Karakterlánc | NodeType neve |
+| durabilityLevel | bronze, silver, gold, platinum | A nem módosítható Azure-infrastruktúra szüneteltetésének ideje |
 | enableParallelJobs | true vagy false | A számítási ParallelJobs engedélyezése, például a virtuális gép eltávolítása és a virtuális gép újraindítása ugyanabban a méretezési csoportba párhuzamosan |
-| nicPrefixOverride | sztring | Alhálózat-előtag, például "10.0.0.0/24" |
+| nicPrefixOverride | Karakterlánc | Alhálózat-előtag, például "10.0.0.0/24" |
 | commonNames | string[] | Telepített fürtözött tanúsítványok köznapi nevei |
-| x509StoreName | sztring | Azon áruház neve, ahol a telepített fürt tanúsítványa található |
+| x509StoreName | Karakterlánc | Azon áruház neve, ahol a telepített fürt tanúsítványa található |
 | typeHandlerVersion | 1.1 | A bővítmény verziója. 1,0 a bővítmény klasszikus verziója javasolt a 1,1-es verzióra való frissítésre |
-| dataPath | sztring | Az Service Fabric rendszerszolgáltatások és alkalmazásadatok állapotának mentéséhez használt meghajtó elérési útja.
+| dataPath | Karakterlánc | Az Service Fabric rendszerszolgáltatások és alkalmazásadatok állapotának mentéséhez használt meghajtó elérési útja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse meg a ["bárhonnan üzembe helyezhető" funkció áttekintését, valamint az Azure által felügyelt fürtökkel való összehasonlítást](service-fabric-deploy-anywhere.md).
 * További információ a [fürt biztonságáról](service-fabric-cluster-security.md).

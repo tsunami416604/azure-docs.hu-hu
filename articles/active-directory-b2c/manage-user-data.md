@@ -2,21 +2,21 @@
 title: Felhasználói adatkezelés Azure Active Directory B2Cban | Microsoft Docs
 description: Megtudhatja, hogyan törölhet vagy exportálhatunk felhasználói információkat Azure AD B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/06/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4f79fe2219ee16430c83feab727c034bd7ab4041
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e245b58449ab773914fc60be056082b82f05035a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482207"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184485"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Felhasználói adatkezelés Azure Active Directory B2C
 
@@ -57,6 +57,6 @@ Az exportálási folyamat következő példájában az alkalmazás által elvég
 3. Az alkalmazás lekéri a felhasználói naplózási tevékenységet. A Microsoft Graph API biztosítja az eseményre vonatkozó adatértékeket az alkalmazásnak.
 4. Az alkalmazás összesíti az adatokat, és elérhetővé teszi a felhasználó számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felhasználók alkalmazáshoz való hozzáférésének kezelésével kapcsolatos információkért lásd: [felhasználói hozzáférés kezelése](manage-user-access.md).

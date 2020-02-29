@@ -1,6 +1,6 @@
 ---
 title: Kapcsolat hibaelhárítása
-description: Azure SQL Data Warehouse-kapcsolat hibaelhárítása.
+description: Az SQL Analytics-kapcsolat hibaelhárítása.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d1139032176b3b44c58471b87cabd10ffeaa3d20
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 003366a6d88e018090475b6fb22d9042a97af823
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692424"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192251"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Kapcsolódási problémák elhárítása
 
-Ez a cikk a SQL Data Warehousehoz való csatlakozással kapcsolatos gyakori hibaelhárítási technikákat sorolja fel.
+Ez a cikk az SQL Analytics-adatbázishoz való csatlakozás általános hibaelhárítási módszereit sorolja fel.
 - [Szolgáltatás rendelkezésre állásának keresése](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [Szüneteltetett vagy skálázási művelet keresése](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [A tűzfalbeállítások ellenőrzése](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -32,33 +32,33 @@ Ez a cikk a SQL Data Warehousehoz való csatlakozással kapcsolatos gyakori hiba
 
 ## <a name="check-service-availability"></a>Szolgáltatás rendelkezésre állásának keresése
 
-Ellenőrizze, hogy elérhető-e a szolgáltatás. A Azure Portal lépjen a csatlakoztatni kívánt SQL Data Warehouse. A bal oldali tartalomjegyzék panelen kattintson a **problémák diagnosztizálása és megoldása**elemre.
+Ellenőrizze, hogy elérhető-e a szolgáltatás. A Azure Portal nyissa meg a csatlakoztatni kívánt SQL Analytics-adatbázist. A bal oldali tartalomjegyzék panelen kattintson a **problémák diagnosztizálása és megoldása**elemre.
 
 ![Erőforrás állapotának kiválasztása](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-A SQL Data Warehouse állapota itt jelenik meg. Ha a szolgáltatás nem **elérhetőként**jelenik meg, tekintse meg a további lépéseket.
+Az SQL Analytics állapota itt jelenik meg. Ha a szolgáltatás nem **elérhetőként**jelenik meg, tekintse meg a további lépéseket.
 
 ![Elérhető szolgáltatás](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Ha az erőforrás állapota azt mutatja, hogy az adattárház szüneteltetve van vagy méretezést végez, kövesse az útmutatást az adattárház folytatásához.
+Ha az erőforrás állapota azt mutatja, hogy az SQL Analytics-példány szüneteltetve van vagy méretezést végez, kövesse az útmutatást a példány folytatásához.
 
 a ![szolgáltatás szüneteltetve](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) további információkkal szolgál Resource Healthről.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Szüneteltetett vagy skálázási művelet keresése
 
-Ellenőrizze a portálon, hogy a SQL Data Warehouse szüneteltetve van-e, vagy a méretezést.
+A portálon ellenőrizze, hogy az SQL Analytics-példány szüneteltetve van-e vagy sem.
 
 ![Szolgáltatás szüneteltetve](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Ha úgy látja, hogy a szolgáltatás szüneteltetve van vagy méretezést végez, ellenőrizze, hogy nem a karbantartási ütemterv alatt van-e. A SQL Data Warehouse *áttekintését ismertető*portálon láthatja a választott karbantartási ütemtervet.
+Ha úgy látja, hogy a szolgáltatás szüneteltetve van vagy méretezést végez, ellenőrizze, hogy nem a karbantartási ütemterv alatt van-e. Az SQL Analytics *– Áttekintés*portálon láthatja a választott karbantartási ütemtervet.
 
 ![Az Áttekintés karbantartási ütemterve](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Ellenkező esetben kérdezze meg a rendszergazdát, hogy a karbantartás nem ütemezett esemény-e. A SQL Data Warehouse folytatásához kövesse az [itt](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)ismertetett lépéseket.
+Ellenkező esetben kérdezze meg a rendszergazdát, hogy a karbantartás nem ütemezett esemény-e. Az SQL Analytics-példány folytatásához kövesse az [itt](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)ismertetett lépéseket.
 
 ## <a name="check-your-firewall-settings"></a>A tűzfal beállításainak megtekintése
 
-Az SQL Data Warehouse az 1433-as portot használja a kommunikációhoz.   Ha vállalati hálózaton belülről próbál csatlakozni, előfordulhat, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot. A tűzfal-konfigurációkról további információt [itt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)találhat.
+Az SQL Analytics-adatbázis a 1433-as porton keresztül kommunikál.   Ha vállalati hálózaton belülről próbál csatlakozni, előfordulhat, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot. A tűzfal-konfigurációkról további információt [itt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)találhat.
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>A VNet/szolgáltatás végpontjának beállításai
 
@@ -68,7 +68,7 @@ Ha a 40914-es és a 40615-es hibákat kapja, tekintse meg [itt a hiba leírása 
 
 ### <a name="software"></a>Szoftver
 
-Győződjön meg arról, hogy a legújabb eszközöket használja a SQL Data Warehousehoz való kapcsolódáshoz:
+Győződjön meg arról, hogy a legújabb eszközöket használja az SQL Analytics-adatbázishoz való kapcsolódáshoz:
 
 * SSMS
 * Azure Data Studio
@@ -113,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Időnkénti kapcsolatok problémái
 
-Ellenőrizze, hogy nagy terhelés alatt áll-e a kiszolgáló, sok várólistára helyezett kéréssel. Lehetséges, hogy vertikálisan fel kell skáláznia az adattárházat, hogy további erőforrásokat tegyen elérhetővé.
+Ellenőrizze, hogy nagy terhelés alatt áll-e a kiszolgáló, sok várólistára helyezett kéréssel. Előfordulhat, hogy további erőforrásokhoz is szükség van az SQL Analytics-példány vertikális felskálázására.
 
 ## <a name="common-error-messages"></a>Gyakori hibaüzenetek
 

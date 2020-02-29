@@ -3,20 +3,20 @@ title: Hibakód-hivatkozás
 titleSuffix: Azure AD B2C
 description: A Azure Active Directory B2C szolgáltatás által visszaadott hibakódok listája.
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 01/10/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c48f7bdd51c9b8c173ee0ebed72ed8c7f4fb51fc
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 5b09b3c19ab1c5b23e56e25afc1d9631cd1caa68
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75735078"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188664"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Hibakódok: Azure Active Directory B2C
 
@@ -142,7 +142,7 @@ A Azure Active Directory B2C szolgáltatás a következő hibákat adhatja vissz
 | `AADB2C90284` | A (z) "{0}" azonosítójú alkalmazás nem kapott beleegyezett, és nem használható helyi fiókokhoz. |
 | `AADB2C90285` | A (z) "{0}" azonosítójú alkalmazás nem található. |
 | `AADB2C90288` | A (z) "{2}" bérlő "{1}" Kivonatjogcím hivatkozott "{0}" azonosítójú UserJourney nem létezik a (z) "{3}" házirendben vagy annak egyik alapházirendjében sem. |
-| `AADB2C90289` | Hiba történt az identitás-szolgáltatóhoz való csatlakozás során. Később próbálja meg újra. |
+| `AADB2C90289` | Hiba történt az identitás-szolgáltatóhoz való csatlakozás során. Próbálkozzon újra később. |
 | `AADB2C90296` | Az alkalmazás konfigurációja nem megfelelő. Forduljon a rendszergazdához, és keresse meg az elérni kívánt webhelyet. |
 | `AADB2C99005` | A kérelem érvénytelen hatókör-paramétert tartalmaz, amely tartalmazza a (z) "{0}" szabálytalan karaktert. |
 | `AADB2C99006` | A Azure AD B2C nem találja a bővítmények alkalmazást a (z){0}azonosítójú alkalmazásban. További információért látogasson el https://go.microsoft.com/fwlink/?linkid=851224. |

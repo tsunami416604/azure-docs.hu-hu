@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 02/28/2020
 ms.author: victorh
-ms.openlocfilehash: 91f34d06532b2d7f56d293df40939212a4f3d68c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ab9a500d9535b55702b8baff15f8cc47e6ac2c86
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167077"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196709"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Az Azure Firewall integrálása az Azure Standard Load Balancerrel
 
@@ -28,7 +28,7 @@ Nyilvános terheléselosztó esetén a terheléselosztó nyilvános előtérbeli
 
 ### <a name="asymmetric-routing"></a>Aszimmetrikus útválasztás
 
-Az aszimmetrikus útválasztás azt adja meg, hogy egy csomag hogyan fogadja a célhelyet, és a forráshoz való visszatéréskor egy másik elérési utat vesz fel. Ez a probléma akkor fordul elő, ha egy alhálózat alapértelmezett útvonala a tűzfal magánhálózati IP-címére kerül, és nyilvános Load balancert használ. Ebben az esetben a bejövő terheléselosztó forgalma a nyilvános IP-címén keresztül érkezik, a visszatérési útvonal azonban a tűzfal magánhálózati IP-címén halad át. Mivel a tűzfal állapot-nyilvántartó jellegű, a rendszer eldobja a visszaadott csomagot, mert a tűzfal nem ismeri az adott munkamenetet.
+Az aszimmetrikus útválasztás azt adja meg, hogy egy csomag hogyan fogadja a célhelyet, és a forráshoz való visszatéréskor egy másik elérési utat vesz fel. Ez a probléma akkor fordul elő, ha egy alhálózat alapértelmezett útvonala a tűzfal magánhálózati IP-címére kerül, és nyilvános Load balancert használ. Ebben az esetben a bejövő terheléselosztó forgalma a nyilvános IP-címén keresztül érkezik, a visszatérési útvonal azonban a tűzfal magánhálózati IP-címén halad át. Mivel a tűzfal állapot-nyilvántartó, eldobja a visszaadott csomagot, mert a tűzfal nem ismeri az ilyen munkamenetek egy részét.
 
 ### <a name="fix-the-routing-issue"></a>Az útválasztási probléma megoldása
 
@@ -39,9 +39,23 @@ A probléma elkerüléséhez hozzon létre egy további gazdagépi útvonalat a 
 
 ![Aszimmetrikus útválasztás](media/integrate-lb/Firewall-LB-asymmetric.png)
 
-Az alábbi útvonalak például a nyilvános IP-13.86.122.41 és a magánhálózati IP-10.3.1.4 tartozó tűzfalakra vonatkoznak.
+### <a name="route-table-example"></a>Útválasztási táblázat – példa
 
-![Útválasztási táblázat](media/integrate-lb/route-table.png)
+Az alábbi útvonalak például a nyilvános IP-20.185.97.136 és a magánhálózati IP-10.0.1.4 tartozó tűzfalakra vonatkoznak.
+
+> [!div class="mx-imgBorder"]
+> ![Útvonaltábla](media/integrate-lb/route-table.png)
+
+### <a name="nat-rule-example"></a>Példa NAT-szabályra
+
+A következő példában egy NAT-szabály az RDP-forgalmat a 20.185.97.136-re fordítja le a 20.42.98.220-on lévő Load balancerre:
+
+> [!div class="mx-imgBorder"]
+> ![NAT-szabály](media/integrate-lb/nat-rule-02.png)
+
+### <a name="health-probes"></a>Állapotminták
+
+Ne feledje, hogy a terheléselosztó-készletben lévő gazdagépeken futó webszolgáltatással kell rendelkeznie, ha TCP Health-teszteket használ a 80-as vagy a HTTP/HTTPS-alapú mintavételhez.
 
 ## <a name="internal-load-balancer"></a>Belső terheléselosztó
 
@@ -57,8 +71,10 @@ Az elosztott terhelésű forgatókönyvek biztonságának növelése érdekében
 
 Létrehozhat például egy NSG a háttérbeli alhálózaton, ahol a terheléselosztásos virtuális gépek találhatók. A tűzfal IP-címéről/portjáról származó bejövő forgalom engedélyezése.
 
+![Hálózati biztonsági csoport](media/integrate-lb/nsg-01.png)
+
 További információ a NSG: [biztonsági csoportok](../virtual-network/security-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [helyezhet üzembe és konfigurálhat egy Azure Firewall](tutorial-firewall-deploy-portal.md).

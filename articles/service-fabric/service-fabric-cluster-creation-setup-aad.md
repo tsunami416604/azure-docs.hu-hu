@@ -3,12 +3,12 @@ title: Azure Active Directory beállítása az ügyfél-hitelesítéshez
 description: Megtudhatja, hogyan állíthatja be Azure Active Directory (Azure AD) a Service Fabric-fürtökhöz tartozó ügyfelek hitelesítéséhez.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843820"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193380"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Azure Active Directory beállítása az ügyfél-hitelesítéshez
 
@@ -38,7 +38,7 @@ Az Azure AD Service Fabric-fürttel való konfigurálásának néhány lépésé
 
 A szkriptek segítségével két Azure AD-alkalmazást hozhat létre a fürthöz való hozzáférés vezérléséhez: egy webalkalmazást és egy natív alkalmazást. Miután létrehozta az alkalmazásokat a fürt képviseletére, a [Service Fabric által támogatott szerepkörökhöz](service-fabric-cluster-security-roles.md)hozza létre a felhasználókat: csak olvasható és rendszergazda.
 
-Futtassa a `SetupApplications.ps1`alkalmazást, és adja meg a bérlő AZONOSÍTÓját, a fürt nevét és a webalkalmazás válaszának URL-címét paraméterként.  Felhasználóneveket és jelszavakat is meg kell adnia a felhasználók számára. Példa:
+Futtassa a `SetupApplications.ps1`alkalmazást, és adja meg a bérlő AZONOSÍTÓját, a fürt nevét és a webalkalmazás válaszának URL-címét paraméterként.  Felhasználóneveket és jelszavakat is meg kell adnia a felhasználók számára. Például:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -104,7 +104,7 @@ Amikor Service Fabric Explorerban próbál bejelentkezni az Azure AD-be, a lap e
 A fürt (web) alkalmazás, amely Service Fabric Explorer az Azure AD-vel való hitelesítésre irányuló kísérleteket jelképezi, és a kérelem részeként az átirányítási visszaküldési URL-címet adja meg. Az URL-cím azonban nem szerepel az Azure AD **-alkalmazás válaszának URL-címe** listán.
 
 #### <a name="solution"></a>Megoldás
-Az Azure AD lapon válassza a **Alkalmazásregisztrációk**lehetőséget, válassza ki a fürtözött alkalmazást, majd válassza a **Válasz URL-címek**lehetőséget. A **Válasz URL-címek** ablaktáblán adja hozzá a listához a Service Fabric Explorer URL-címet, vagy cserélje le a lista egyik elemét. Mentse a változást.
+A fürthöz tartozó Azure AD-alkalmazás regisztrálása lapon válassza a **hitelesítés**lehetőséget, majd az URI-k **átirányítása** szakaszban adja meg a lista Service Fabric Explorer URL-címét. Mentse a változást.
 
 ![Webalkalmazás válaszának URL-címe][web-application-reply-url]
 
@@ -133,7 +133,7 @@ Igen. Azonban ne felejtse el felvenni a Service Fabric Explorer URL-címét a f�
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Miért van szükség a kiszolgálói tanúsítványra, amíg az Azure AD engedélyezve van?
 A FabricClient és a FabricGateway kölcsönös hitelesítést hajt végre. Az Azure AD-hitelesítés során az Azure AD-integráció ügyfél-identitást biztosít a kiszolgálónak, és a kiszolgáló tanúsítványát az ügyfél használja a kiszolgáló identitásának ellenőrzéséhez. További információ a Service Fabric tanúsítványokról: [X. 509 tanúsítványok és Service Fabric][x509-certificates-and-service-fabric].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Azure Active Directory alkalmazások beállítása és szerepkörök beállítása a felhasználók számára, [a fürt konfigurálása és üzembe helyezése](service-fabric-cluster-creation-via-arm.md).
 
 

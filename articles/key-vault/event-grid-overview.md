@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
+ms.subservice: general
+ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2424fbac3c95c1c60e6ef61cba53e481f4bb478a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 039b7e57c1f98368ab33f9f17e19a741dc9eb5f4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650741"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184910"
 ---
 # <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Key Vault figyelése Azure Event Grid (előzetes verzió)
 
@@ -41,7 +42,7 @@ Az Key Vault eseményeket kezelő alkalmazásoknak néhány ajánlott gyakorlato
 * Figyelmen kívül hagyhatja a nem értelmezhető mezőket.  Ez a gyakorlat segít megőrizni a jövőben esetlegesen hozzáadott új funkciókkal való ellenálló képességet.
 * Az események adott eseményre való korlátozásához használja a "tárgy" előtagot és utótagot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Key Vault áttekintése](key-vault-overview.md)
 - [Azure Event Grid áttekintése](../event-grid/overview.md)

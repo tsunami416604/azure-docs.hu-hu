@@ -1,6 +1,6 @@
 ---
 title: Felhasználó által definiált visszaállítási pontok
-description: Visszaállítási pont létrehozása Azure SQL Data Warehouse.
+description: Visszaállítási pont létrehozása az SQL-készlethez.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bf092b5b6c6eb88b565a940de56d614426e34d8e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 72e2535730dc6c814708ef3ff563136235930475
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759601"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198268"
 ---
 # <a name="user-defined-restore-points"></a>Felhasználó által definiált visszaállítási pontok
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egy új, felhasználó által definiált visszaállítási pontot a PowerShell és a Azure Portal használatával Azure SQL Data Warehouse.
+Ebből a cikkből megtudhatja, hogyan hozhat létre egy új, felhasználó által definiált visszaállítási pontot egy SQL-készlethez az Azure szinapszis Analyticsben a PowerShell és a Azure Portal használatával.
 
 ## <a name="create-user-defined-restore-points-through-powershell"></a>Felhasználó által definiált visszaállítási pontok létrehozása a PowerShell-lel
 
@@ -62,9 +62,9 @@ A felhasználó által definiált visszaállítási pontok a Azure Portal haszn�
 
 1. Jelentkezzen be [Azure Portal](https://portal.azure.com/) -fiókjába.
 
-2. Navigáljon ahhoz a SQL Data Warehousehoz, amelyhez visszaállítási pontot kíván létrehozni.
+2. Navigáljon arra az SQL-készletre, amelyhez visszaállítási pontot kíván létrehozni.
 
-3. Válassza az **Áttekintés** lehetőséget a bal oldali ablaktáblán, majd válassza az **+ új visszaállítási pont**lehetőséget. Ha az új visszaállítási pont gomb nincs engedélyezve, győződjön meg arról, hogy az adatraktár nincs szüneteltetve.
+3. Válassza az **Áttekintés** lehetőséget a bal oldali ablaktáblán, majd válassza az **+ új visszaállítási pont**lehetőséget. Ha az új visszaállítási pont gomb nincs engedélyezve, győződjön meg arról, hogy az SQL-készlet nincs szüneteltetve.
 
     ![Új visszaállítási pont](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
@@ -72,9 +72,9 @@ A felhasználó által definiált visszaállítási pontok a Azure Portal haszn�
 
     ![A visszaállítási pont neve](./media/sql-data-warehouse-restore-points/creating-restore-point-11.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Meglévő adattárház visszaállítása](sql-data-warehouse-restore-active-paused-dw.md)
-- [Törölt adattárház visszaállítása](sql-data-warehouse-restore-deleted-dw.md)
-- [Visszaállítás földrajzi biztonsági mentési adattárházból](sql-data-warehouse-restore-from-geo-backup.md)
+- [Meglévő SQL-készlet visszaállítása](sql-data-warehouse-restore-active-paused-dw.md)
+- [Törölt SQL-készlet visszaállítása](sql-data-warehouse-restore-deleted-dw.md)
+- [Visszaállítás egy földrajzi biztonsági mentési SQL-készletből](sql-data-warehouse-restore-from-geo-backup.md)
 
