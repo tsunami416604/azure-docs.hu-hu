@@ -1,28 +1,28 @@
 ---
 title: Számítási feladatok besorolása
-description: Útmutatás a besorolás használatához a Egyidejűség, a fontosság és a számítási erőforrások kezeléséhez Azure SQL Data Warehouseban található lekérdezésekhez.
+description: Útmutató a besorolás használatához az Azure szinapszis Analytics-lekérdezések egyidejűségi, fontossági és számítási erőforrásainak kezeléséhez.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/27/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: ab7c8ba64057b4f27e00a2928a65de8eadc78c4b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.custom: azure-synapse
+ms.openlocfilehash: f350885c2d25860c7dc83310534ca9d8c9d72555
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768830"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191762"
 ---
-# <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL Data Warehouse munkaterhelés besorolása
+# <a name="azure-synapse-analytics-workload-classification"></a>Azure szinapszis Analitika – számítási feladatok besorolása
 
-Ez a cikk ismerteti az erőforrás-osztály hozzárendelésének SQL Data Warehouse munkaterhelési besorolási folyamatát, valamint a beérkező kérelmek fontosságát.
+Ez a cikk ismerteti a munkaterhelés-csoportok hozzárendelésének folyamatát, valamint az Azure Szinapszisban az SQL Analytics szolgáltatással való beérkező kérések fontosságát.
 
-## <a name="classification"></a>Osztályozás
+## <a name="classification"></a>Besorolás
 
 > [!Video https://www.youtube.com/embed/QcCRBAhoXpM]
 
@@ -36,7 +36,7 @@ Nem minden utasítás van besorolva, mert nincs szükség erőforrásra, vagy fo
 
 ## <a name="classification-process"></a>Besorolási folyamat
 
-A SQL Data Warehouse besorolása ma érhető el, ha a felhasználókat olyan szerepkörhöz rendeli hozzá, amely a hozzá tartozó, [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)használatával hozzárendelt erőforrás-osztállyal rendelkezik. Az erőforrás-osztályba való bejelentkezésen túli kérések jellemzésének lehetősége korlátozott ezzel a képességgel. Most már elérhető a számítási [feladatok](/sql/t-sql/statements/create-workload-classifier-transact-sql) besorolása szintaxissal, amely a besoroláshoz használható.  Ezzel a szintaxissal SQL Data Warehouse a felhasználók fontosságot rendelhetnek, és mennyi rendszererőforrás rendelhető hozzá egy kérelemhez a `workload_group` paraméter használatával. 
+Az Azure Szinapszisban az SQL Analytics besorolása ma a felhasználók olyan szerepkörhöz való hozzárendelésével érhető el, amely a hozzá tartozó, [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)használatával hozzárendelt erőforrás-osztállyal rendelkezik. Az erőforrás-osztályba való bejelentkezésen túli kérések jellemzésének lehetősége korlátozott ezzel a képességgel. Most már elérhető a számítási [feladatok](/sql/t-sql/statements/create-workload-classifier-transact-sql) besorolása szintaxissal, amely a besoroláshoz használható.  Ezzel a szintaxissal az SQL Analytics-felhasználók fontosságot rendelhetnek, és hogy mennyi rendszererőforrás van hozzárendelve egy kérelemhez a `workload_group` paraméterrel. 
 
 > [!NOTE]
 > A besorolást a rendszer a kérelmek alapján értékeli ki. Egy munkamenetben több kérelem is besorolva különböző módon.
@@ -90,7 +90,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc','staticrc10','staticrc20','st
 sp_droprolemember ‘[Resource Class]’, membername
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az osztályozó létrehozásával kapcsolatos további információkért lásd a [munkaterhelés-osztályozó létrehozása (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)című témakört.  
 - Tekintse meg a számítási feladatok besorolásának létrehozásával kapcsolatos útmutatót a számítási [feladatok besorolása](quickstart-create-a-workload-classifier-tsql.md)című témakörben.

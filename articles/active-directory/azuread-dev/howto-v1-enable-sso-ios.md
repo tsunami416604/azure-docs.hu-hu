@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7ea65b64e5a812b717f065c1d8cc6208e0c0ba69
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 00ec2d328265e8d301b9f54b9a6a2013072f1ed4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164564"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190279"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Útmutató: alkalmazások közötti egyszeri bejelentkezés engedélyezése iOS-en a ADAL használatával
 
@@ -109,7 +109,7 @@ Ha a kompatibilis közvetítő telepítve van az eszközön, például a Microso
 
 #### <a name="how-we-ensure-the-application-is-valid"></a>Az alkalmazás érvényességének biztosítása
 
-A közvetítő által támogatott bejelentkezések által biztosított biztonság szempontjából elengedhetetlen, hogy az alkalmazás meghívja a közvetítőt. Sem az iOS, sem az Android nem kényszeríti ki az olyan egyedi azonosítókat, amelyek csak egy adott alkalmazás esetében érvényesek, így a rosszindulatú alkalmazások "hamisítják" a legitim alkalmazás azonosítóját, és megkapják a legitim alkalmazás számára jelentett jogkivonatokat. Annak biztosítása érdekében, hogy a rendszer mindig a megfelelő alkalmazással kommunikáljon futásidőben, megkéri a fejlesztőt, hogy adjon meg egy egyéni redirectURI, amikor az alkalmazást a Microsofttal regisztrálja. A fejlesztők számára az átirányítási URI-t az alábbi részletesen tárgyaljuk. Ez az egyéni redirectURI tartalmazza az alkalmazás csomag-AZONOSÍTÓját, és gondoskodik arról, hogy az Apple App Store-ban egyedi legyen az alkalmazás. Amikor egy alkalmazás meghívja a közvetítőt, a közvetítő arra kéri az iOS operációs rendszert, hogy a közvetítőnek nevezett köteg-AZONOSÍTÓval lássa el. A közvetítő ezt a köteg-azonosítót biztosítja a Microsoftnak a személyazonossági rendszer meghívása során. Ha az alkalmazás csomag-azonosítója nem egyezik meg a fejlesztő által a regisztráció során nekünk megadott köteg-AZONOSÍTÓval, a rendszer megtagadja a hozzáférést az alkalmazás által kért erőforrás jogkivonatához. Ez az ellenőrzés biztosítja, hogy csak a fejlesztő által regisztrált alkalmazás fogadja a jogkivonatokat.
+Biztosítani kell, hogy a közvetítőt meghívó alkalmazás identitása létfontosságú legyen a bróker által támogatott bejelentkezésekben nyújtott biztonság szempontjából. Sem az iOS, sem az Android nem kényszeríti ki az olyan egyedi azonosítókat, amelyek csak egy adott alkalmazás esetében érvényesek, így a rosszindulatú alkalmazások "hamisítják" a legitim alkalmazás azonosítóját, és megkapják a legitim alkalmazás számára jelentett jogkivonatokat. Annak biztosítása érdekében, hogy a rendszer mindig a megfelelő alkalmazással kommunikáljon futásidőben, megkéri a fejlesztőt, hogy adjon meg egy egyéni redirectURI, amikor az alkalmazást a Microsofttal regisztrálja. A fejlesztők számára az átirányítási URI-t az alábbi részletesen tárgyaljuk. Ez az egyéni redirectURI tartalmazza az alkalmazás csomag-AZONOSÍTÓját, és gondoskodik arról, hogy az Apple App Store-ban egyedi legyen az alkalmazás. Amikor egy alkalmazás meghívja a közvetítőt, a közvetítő arra kéri az iOS operációs rendszert, hogy a közvetítőnek nevezett köteg-AZONOSÍTÓval lássa el. A közvetítő ezt a köteg-azonosítót biztosítja a Microsoftnak a személyazonossági rendszer meghívása során. Ha az alkalmazás csomag-azonosítója nem egyezik meg a fejlesztő által a regisztráció során nekünk megadott köteg-AZONOSÍTÓval, a rendszer megtagadja a hozzáférést az alkalmazás által kért erőforrás jogkivonatához. Ez az ellenőrzés biztosítja, hogy csak a fejlesztő által regisztrált alkalmazás fogadja a jogkivonatokat.
 
 **A fejlesztő választhat, hogy az SDK meghívja-e a közvetítőt, vagy a nem közvetítő által támogatott folyamatot használja-e.** Ha azonban a fejlesztő úgy dönt, hogy nem használja a közvetítő által támogatott folyamatot, elveszítik a felhasználó által az eszközön már hozzáadott SSO hitelesítő adatok használatának előnyeit, és meggátolják, hogy alkalmazásaikat a Microsoft üzleti funkcióival együtt használják ügyfelek, például a feltételes hozzáférés, az Intune felügyeleti képességei és a tanúsítványalapú hitelesítés.
 
@@ -323,6 +323,6 @@ ADAL – canOpenURL: annak ellenőrzését, hogy a közvetítő telepítve van-e
 
 Most az Identity SDK automatikusan megosztja a hitelesítő adatokat az alkalmazásokban, és meghívja a közvetítőt, ha az eszközön van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók az [egyszeri bejelentkezéses SAML protokollról](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)

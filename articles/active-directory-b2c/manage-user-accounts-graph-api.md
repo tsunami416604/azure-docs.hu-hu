@@ -3,20 +3,20 @@ title: Felhasználók kezelése a Microsoft Graph API-val
 titleSuffix: Azure AD B2C
 description: Egy Azure AD B2C bérlő felhasználóinak kezelése a Microsoft Graph API meghívásával és az alkalmazás identitásának használatával a folyamat automatizálása érdekében.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b53405d199072211304e21b681de646c4e41243c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 8d65217a109a851275d3ba9205024f32bd182d4f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585628"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187316"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Azure AD B2C felhasználói fiókok kezelése Microsoft Graph
 
@@ -61,9 +61,9 @@ A Microsoft Graph API-ban mind a helyi, mind az összevont identitások a User `
 
 | Tulajdonság   | Típus |Leírás|
 |:---------------|:--------|:----------|
-|signInType|sztring| Megadja a felhasználói bejelentkezési típusokat a címtárban. Helyi fiók esetén: `emailAddress`, `emailAddress1`, `emailAddress2`, `emailAddress3`, `userName`vagy bármilyen más típusú. A közösségi fióknak `federated`értékre kell állítani.|
-|kibocsátó|sztring|Megadja az identitás kiállítóját. Helyi fiókok esetében (ahol a **signInType** nem `federated`), ez a tulajdonság a helyi B2C-bérlő alapértelmezett tartományneve, például `contoso.onmicrosoft.com`. A közösségi identitás (ahol a **signInType** `federated`) értéke a kibocsátó neve, például `facebook.com`|
-|issuerAssignedId|sztring|A kiállító által a felhasználóhoz rendelt egyedi azonosítót határozza meg. A **kibocsátó** és a **issuerAssignedId** kombinációjának egyedinek kell lennie a bérlőn belül. Helyi fiók esetén, ha a **signInType** értéke `emailAddress` vagy `userName`, akkor a felhasználó bejelentkezési nevét jelöli.<br>Ha a **signInType** értéke: <ul><li>`emailAddress` (vagy `emailAddress`, például `emailAddress1`) **issuerAssignedId** érvényes e-mail-címnek kell lennie.</li><li>`userName` (vagy bármely más érték), a **issuerAssignedId** egy [e-mail-cím érvényes helyi részének](https://tools.ietf.org/html/rfc3696#section-3) kell lennie</li><li>`federated`, a **issuerAssignedId** az összevont fiók egyedi azonosítóját jelöli.</li></ul>|
+|signInType|Karakterlánc| Megadja a felhasználói bejelentkezési típusokat a címtárban. Helyi fiók esetén: `emailAddress`, `emailAddress1`, `emailAddress2`, `emailAddress3`, `userName`vagy bármilyen más típusú. A közösségi fióknak `federated`értékre kell állítani.|
+|kibocsátó|Karakterlánc|Megadja az identitás kiállítóját. Helyi fiókok esetében (ahol a **signInType** nem `federated`), ez a tulajdonság a helyi B2C-bérlő alapértelmezett tartományneve, például `contoso.onmicrosoft.com`. A közösségi identitás (ahol a **signInType** `federated`) értéke a kibocsátó neve, például `facebook.com`|
+|issuerAssignedId|Karakterlánc|A kiállító által a felhasználóhoz rendelt egyedi azonosítót határozza meg. A **kibocsátó** és a **issuerAssignedId** kombinációjának egyedinek kell lennie a bérlőn belül. Helyi fiók esetén, ha a **signInType** értéke `emailAddress` vagy `userName`, akkor a felhasználó bejelentkezési nevét jelöli.<br>Ha a **signInType** értéke: <ul><li>`emailAddress` (vagy `emailAddress`, például `emailAddress1`) **issuerAssignedId** érvényes e-mail-címnek kell lennie.</li><li>`userName` (vagy bármely más érték), a **issuerAssignedId** egy [e-mail-cím érvényes helyi részének](https://tools.ietf.org/html/rfc3696#section-3) kell lennie</li><li>`federated`, a **issuerAssignedId** az összevont fiók egyedi azonosítóját jelöli.</li></ul>|
 
 Az összevont identitások esetében az azonosítótól függően a **issuerAssignedId** egy adott felhasználó egyedi értéke egy alkalmazás-vagy fejlesztési fiókban. Konfigurálja a Azure AD B2C szabályzatot ugyanazzal az alkalmazás-AZONOSÍTÓval, amelyet korábban a közösségi szolgáltató vagy egy másik alkalmazás rendelt hozzá ugyanazon a fejlesztési fiókon belül.
 
@@ -182,7 +182,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 
 [Az Microsoft Graph SDK-kat használó API-hívások a](https://docs.microsoft.com/graph/sdks/create-requests) Microsoft Graph információk olvasását és írását, a `$select` a visszaadott tulajdonságok szabályozását, az egyéni lekérdezési paraméterek megadását, valamint a `$filter` és `$orderBy` lekérdezési paraméterek használatát ismertetik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Azure AD B2C erőforrásokhoz támogatott Microsoft Graph API-műveletek teljes indexét itt tekintheti meg: [Azure ad B2C számára elérhető Microsoft Graph műveletek](microsoft-graph-operations.md).
 

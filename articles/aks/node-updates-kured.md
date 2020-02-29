@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan frissítheti a Linux-csomópontokat, és hogyan
 services: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.openlocfilehash: b0bb7a3309cf1b56a5779b54b34310aa01f3e719
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 74b12c1bc6e2a88582cc357c8091b5590e6bf3cb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594940"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191282"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Biztonsági és kernel-frissítések alkalmazása Linux-csomópontokra az Azure Kubernetes szolgáltatásban (ak)
 
@@ -51,13 +51,23 @@ A frissítési esemény során nem maradhat ugyanazon a Kubernetes-verzión. Meg
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>Kured üzembe helyezése AK-fürtben
 
-A `kured` Daemonset elemet üzembe helyezéséhez alkalmazza a következő minta YAML-jegyzéket a GitHub-projekt oldaláról. Ez a jegyzékfájl létrehoz egy szerepkör-és fürt-szerepkört, kötéseket és egy szolgáltatásfiókot, majd központilag telepíti a Daemonset elemet az 1,9-es vagy újabb AK-fürtöket támogató, `kured`-es verzióval.
+A `kured` Daemonset elemet telepítéséhez telepítse a következő hivatalos Kured Helm-diagramot. Ez létrehoz egy szerepkör-és fürt-szerepkört, kötéseket és egy szolgáltatásfiókot, majd a `kured`használatával telepíti a Daemonset elemet.
 
 ```console
-kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
+# Add the stable Helm repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
+# Update your local Helm chart repository cache
+helm repo update
+
+# Create a dedicated namespace where you would like to deploy kured into
+kubectl create namespace kured
+
+# Install kured in that namespace with Helm 3 (only on Linux nodes, kured is not working on Windows nodes)
+helm install kured stable/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Emellett további paramétereket is beállíthat `kured`hoz, például a Prometheus vagy a Slack integrációját. További információ a további konfigurációs paraméterekről: [kured telepítési docs][kured-install].
+Emellett további paramétereket is beállíthat `kured`hoz, például a Prometheus vagy a Slack integrációját. További információ a további konfigurációs paraméterekről: [Kured Helm diagram][kured-install].
 
 ## <a name="update-cluster-nodes"></a>Fürtcsomópontok frissítése
 
@@ -88,7 +98,7 @@ aks-nodepool1-28993262-0   Ready     agent     1h        v1.11.7   10.240.0.4   
 aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5    <none>        Ubuntu 16.04.6 LTS   4.15.0-1037-azure   docker://3.0.4
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk részletesen ismerteti, hogyan használhatók a `kured` a Linux-csomópontok automatikus újraindításához a biztonsági frissítési folyamat részeként. A Kubernetes legújabb verziójára való frissítéshez [frissítheti az AK-fürtöt][aks-upgrade].
 
@@ -96,7 +106,7 @@ A Windows Server-csomópontokat használó AK-fürtök esetében lásd: [csomóp
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured
-[kured-install]: https://github.com/weaveworks/kured#installation
+[kured-install]: https://hub.helm.sh/charts/stable/kured
 [kubectl-get-nodes]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- LINKS - internal -->

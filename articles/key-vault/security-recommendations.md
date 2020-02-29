@@ -5,16 +5,17 @@ services: key-vault
 author: barclayn
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 5aa3ebc602396bc2d7f83150c66535039b1389e6
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9fd41ae9b61a9c74fd5d99dd71199cfde06f5cb2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171344"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192370"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>A Azure Key Vault biztonsági javaslatai
 
@@ -38,19 +39,19 @@ A cikkben szereplő ajánlások némelyikét a Azure Security Center automatikus
 |-|----|--|
 | A közreműködői hozzáféréssel rendelkező felhasználók számának korlátozása | Ha a felhasználó közreműködői engedélyekkel rendelkezik egy kulcstartó felügyeleti síkon, akkor a felhasználó egy Key Vault hozzáférési szabályzat beállításával hozzáférést biztosíthat az adatsíkon. Szigorúan meg kell határoznia, hogy kinek van közreműködői szerepköre a kulcstartóhoz való hozzáféréshez. Győződjön meg arról, hogy csak azok férhetnek hozzá és kezelhetik a tárolókat, akiknek szükségük van a hozzáférésre jogosult személyek számára. [A Key vaulthoz való biztonságos hozzáférést](key-vault-secure-your-key-vault.md) is elolvashatja | - |
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>Figyelés
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
- A Key Vault diagnosztikai naplóit engedélyezni kell | Engedélyezheti a naplókat, és akár egy évig megtarthatja őket. Ez lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. | [Igen](../security-center/security-center-identity-access.md) |
+ A Key Vault diagnosztikai naplóit engedélyezni kell | Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. | [Igen](../security-center/security-center-identity-access.md) |
 | Annak korlátozása, hogy ki férhet hozzá az Azure Key Vault naplóihoz | [Key Vault naplók](key-vault-logging.md) a tárolón végrehajtott tevékenységekről, például a tárolók, kulcsok és titkos kódok létrehozásáról vagy törléséről, valamint a vizsgálat során felhasználható adatokról |  - |
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
 |Hálózati expozíció korlátozása | A hálózati hozzáférést a tár elérését igénylő megoldások által használt virtuális hálózatokra kell korlátozni. Tekintse át a [Azure Key Vault virtuális hálózati szolgáltatás végpontjának](key-vault-overview-vnet-service-endpoints.md) információit | - |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Érdeklődjön az alkalmazás szolgáltatójánál, hogy vannak-e további biztonsági követelmények. A biztonságos alkalmazások fejlesztésével kapcsolatos további információkért lásd a [biztonságos fejlesztési dokumentációt](../security/fundamentals/abstract-develop-secure-apps.md).

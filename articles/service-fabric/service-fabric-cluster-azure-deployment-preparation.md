@@ -3,12 +3,12 @@ title: Azure Service Fabric-fürt üzembe helyezésének megtervezése
 description: Ismerje meg, hogyan tervezheti meg és készítse elő az Azure-beli üzemi Service Fabric-fürtök üzembe helyezését.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 32d48f9ffa056d252bdf762304340f245d80fd26
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1762a6975448301957579b3437a8af5c89b3accd
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834450"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193476"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>A fürt üzembe helyezésének megtervezése és előkészítése
 
@@ -77,7 +77,6 @@ Az ideiglenes operációsrendszer-lemezek nem egy adott Service Fabric funkció,
         "virtualMachineProfile": {
             "storageProfile": {
                 "osDisk": {
-                        "vhdContainers": ["[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('vmStorageAccountName')), variables('storageApiVersion')).primaryEndpoints.blob, parameters('vmStorageAccountContainerName'))]"],
                         "caching": "ReadOnly",
                         "createOption": "FromImage",
                         "diffDiskSettings": {
@@ -103,13 +102,13 @@ Mivel számos szolgáltatás – különösen a tároló-szolgáltatások – re
 
 A fordított proxy a fürtben a HTTP-végpontokat (a HTTPS-t is beleértve) elérhetővé teszi. A fordított proxy nagy mértékben leegyszerűsíti az egyéb szolgáltatások meghívását egy adott URI-formátum megadásával.  A fordított proxy az egyes szolgáltatásokhoz szükséges feloldási, csatlakozási és újrapróbálkozási lépéseket is kezeli.
 
-## <a name="prepare-for-disaster-recovery"></a>Felkészülés a vészhelyreállításra
+## <a name="prepare-for-disaster-recovery"></a>Felkészülés vészhelyreállításra
 A magas rendelkezésre állás megvalósításának kritikus része annak biztosítása, hogy a szolgáltatások képesek legyenek túlélni az összes különböző típusú hibát. Ez különösen fontos a nem tervezett és a vezérlőn kívüli hibák esetén. [A vész-helyreállítási előkészületek](service-fabric-disaster-recovery.md) olyan gyakori meghibásodási módokat ismertetnek, amelyek a modellezés és a kezelés nem megfelelő kezelése esetén lehetnek katasztrófák. Emellett azt is ismerteti, hogy milyen kockázatcsökkentő és műveletek történnek, ha a katasztrófa amúgy is történt.
 
 ## <a name="production-readiness-checklist"></a>Termelési készenlét ellenőrzőlistája
 Készen áll az alkalmazás és a fürt a termelési forgalom elvégzésére? Mielőtt üzembe helyezné a fürtöt az éles környezetben, futtassa az [éles készültségi ellenőrzőlistát](service-fabric-production-readiness-checklist.md). Az alkalmazás és a fürt zökkenőmentesen működik az ellenőrzőlista elemeinek használatával. Erősen ajánlott az összes ilyen elemet kijelölni az éles környezetben való üzembe helyezés előtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Windows rendszerű Service Fabric-fürt létrehozása](service-fabric-best-practices-overview.md)
 * [Linux rendszerű Service Fabric-fürt létrehozása](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/01/2020
-ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 20c93d214195f8fe389f4982e1d8b10998c7057d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587294"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192387"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>A virtuális mag és a DTU beszerzési modelljei közül választhat
 
@@ -143,6 +143,20 @@ A képlet bemeneti értékei a [sys. dm_db_resource_stats](https://docs.microsof
 
 A készletek kiválóan alkalmasak az alacsony erőforrás-kihasználtságú és viszonylag ritka kihasználtsági tüskéket tartalmazó adatbázisok számára. További információ: Mikor érdemes [SQL Database rugalmas készletet figyelembe venni?](sql-database-elastic-pool.md)
 
+### <a name="hardware-generations-in-the-dtu-based-purchasing-model"></a>Hardveres generációk a DTU-alapú vásárlási modellben
+
+A DTU-alapú vásárlási modellben az ügyfelek nem választhatják ki az adatbázisaikban használt hardver-generációt. Habár egy adott adatbázis hosszú ideje (általában több hónapig) egy adott hardveres generáción marad, bizonyos események miatt előfordulhat, hogy az adatbázisok áthelyezhetők egy másik hardveres generációba.
+
+Egy adatbázis például áthelyezhető egy másik hardveres generációba, ha egy másik szolgáltatási célkitűzéshez van méretezve, vagy ha az adatközpont aktuális infrastruktúrája eléri a kapacitási korlátokat, vagy ha az aktuálisan használt hardver a leszerelés az életciklusa miatt megszűnt.
+
+Ha egy adatbázist más hardverre helyez át, a számítási feladatok teljesítménye változhat. A DTU-modell garantálja, hogy a [DTU teljesítményteszt](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) számítási feladatának átviteli sebessége és válaszideje lényegesen azonos marad, mivel az adatbázis egy másik hardveres generációra kerül át, feltéve, hogy a szolgáltatási cél (a DTU száma) ugyanaz marad. 
+
+Azonban a Azure SQL Database futó ügyfelek számítási feladatainak széles spektrumán az is előfordulhat, hogy a különböző hardverek ugyanazon szolgáltatási célkitűzéshez való használatának következményei is erősebbek. A különböző számítási feladatok előnyeit a különböző hardverkonfiguráció és funkciók teszik ki. Ezért a DTU-teljesítményteszttől eltérő számítási feladatoknál megtekintheti a teljesítménybeli különbségeket, ha az adatbázis az egyik hardveres generációról a másikra lép.
+
+Például a hálózati késésre érzékeny alkalmazások jobb teljesítményt láthatnak a Gen5 hardveren és a Gen4-ben, a gyorsított hálózatkezelés használata miatt a Gen5-ben, de az intenzív olvasási IO-t használó alkalmazások jobb teljesítményt tudnak látni a Gen4 hardver és a Gen5 miatt. nagyobb memória/mag arány a Gen4.
+
+Azok az ügyfelek, akik a hardver változásaira érzékeny munkaterhelésekkel rendelkeznek, vagy akik a hardveres létrehozást szeretnék szabályozni az adatbázisuk számára, a [virtuális mag](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) modell használatával választhatják ki az előnyben részesített hardveres generációkat az adatbázisok létrehozása és skálázása során. Az egyes virtuális mag-modellekben az egyes szolgáltatási célok erőforrás-korlátozásai dokumentálva vannak, mind az [önálló adatbázisok](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases) , mind a [rugalmas készletek](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools)esetében. A virtuális mag-modellben található hardveres generációkkal kapcsolatos további információkért lásd: [Hardware Generations](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
+
 ## <a name="frequently-asked-questions-faqs"></a>Gyakori kérdések (GYIK)
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>Szükség van-e az alkalmazás offline állapotba való átalakítására egy DTU-alapú szolgáltatási rétegről egy virtuális mag-alapú szolgáltatási rétegre?
@@ -153,7 +167,7 @@ Nem. Nem kell offline állapotba hoznia az alkalmazást. Az új szolgáltatási 
 
 Igen, a Azure Portal, a PowerShell, az Azure CLI, a T-SQL vagy a REST API használatával könnyedén átalakíthatja az adatbázist bármely támogatott teljesítménybeli célkitűzésre. Lásd: [önálló adatbázisok kezelése](sql-database-single-database-scale.md) és [rugalmas készletek kezelése](sql-database-elastic-pool.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A virtuális mag-alapú vásárlási modellel kapcsolatos további információkért lásd: [virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
 - A DTU-alapú vásárlási modellel kapcsolatos további információkért lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md).

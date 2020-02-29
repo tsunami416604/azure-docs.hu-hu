@@ -2,20 +2,20 @@
 title: ClaimsProviders – Azure Active Directory B2C | Microsoft Docs
 description: A Azure Active Directory B2C egyéni házirendjének ClaimsProvider elemének megadásához.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/29/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0bda94344a22f39daf104e7b95e33723187c4aa1
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: dfb34085181e0b759d1d77485ff21b5bc59e0de3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983010"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189769"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -52,7 +52,7 @@ A **ClaimsProvider** elem a következő alárendelt elemeket tartalmazza:
 | Elem | Események | Leírás |
 | ------- | ---------- | ----------- |
 | Domain | 0:1 | A jogcím-szolgáltató tartománynevét tartalmazó karakterlánc. Ha például a jogcímek szolgáltatója tartalmazza a Facebook technikai profilt, a tartománynév Facebook.com. Ezt a tartománynevet a rendszer a jogcím-szolgáltatóban definiált összes műszaki profilhoz használja, kivéve ha a technikai profil felülbírálja. A tartománynevet **domain_hint**is lehet hivatkozni. További információkért tekintse [meg a közvetlen bejelentkezés beállítása a Azure Active Directory B2C használatával](direct-signin.md)című témakör **átirányítása a közösségi szolgáltatónak** című szakaszát. |
-| displayName | 1:1 | A jogcím-szolgáltató nevét tartalmazó karakterlánc. |
+| DisplayName | 1:1 | A jogcím-szolgáltató nevét tartalmazó karakterlánc. |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | A jogcím-szolgáltató által támogatott technikai profilok készlete |
 
 A **ClaimsProvider** szervezi, hogy a technikai profilok hogyan kapcsolódnak a jogcím-szolgáltatóhoz. A következő példa a Azure Active Directory jogcím-szolgáltatót mutatja be a Azure Active Directory technikai profiljaival:

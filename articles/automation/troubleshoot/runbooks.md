@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 571be831d337c71a084780da18b480cdd1e42d20
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: b7d876c7f865b8368451ea1b6cc96ade89a59aa8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365205"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190959"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookok kapcsolatos hibák elhárítása
 
@@ -471,7 +471,7 @@ A runbook 3 órán belül **leállított** állapotban jelenik meg. Az is előfo
 The job was evicted and subsequently reached a Stopped state. The job cannot continue running
 ```
 
-Ez a viselkedés az Azure-beli munkaterületek "méltányos megosztás" általi, Azure Automation belüli folyamatainak figyelése miatt. Ha három óránál hosszabb ideig hajtja végre, a méltányos megosztás automatikusan leállítja a runbook. A valós idejű megosztás időkorlátja alá tartozó runbook állapota eltér a runbook típustól. A PowerShell és a Python runbookok **leállított** állapotra vannak állítva. A PowerShell-munkafolyamat runbookok beállítása **sikertelen**.
+Ez a viselkedés az Azure-beli munkafolyamatok tervezésekor, a Azure Automationon belüli folyamatok [valós megosztásának](../automation-runbook-execution.md#fair-share) figyelése miatt. Ha három óránál hosszabb ideig hajtja végre, a méltányos megosztás automatikusan leállítja a runbook. A valós megosztási időkorláttal meghaladó runbook állapota eltér a runbook típustól. A PowerShell és a Python runbookok **leállított** állapotra vannak állítva. A PowerShell-munkafolyamat runbookok beállítása **sikertelen**.
 
 ### <a name="cause"></a>Ok
 
@@ -481,7 +481,7 @@ A runbook egy Azure-beli homokozóban a méltányos megosztás által engedélye
 
 Egy javasolt megoldás, ha a runbook egy [hibrid runbook-feldolgozón](../automation-hrw-run-runbooks.md)futtatja.
 
-A hibrid feldolgozók nem korlátozódnak az Azure-beli munkaterületek számára [elérhető 3 órás](../automation-runbook-execution.md#fair-share) runbook-korlátra. A hibrid Runbook-feldolgozókon futó runbookok úgy kell kialakítani, hogy támogassa az újraindítási viselkedést, ha váratlan helyi infrastruktúra-problémák merülnek fel.
+A hibrid feldolgozók nem korlátozódnak az Azure-beli munkaterületek 3 órás, méltányos megosztásra vonatkozó runbook-korlátozására. A hibrid Runbook-feldolgozókon futó runbookok úgy kell kialakítani, hogy támogassa az újraindítási viselkedést, ha váratlan helyi infrastruktúra-problémák merülnek fel.
 
 Egy másik lehetőség, hogy optimalizálja a runbook a [gyermek runbookok](../automation-child-runbooks.md)létrehozásával. Ha a runbook több erőforráson ugyanazt a függvényt futtatja, például egy adatbázis-művelet több adatbázison, akkor áthelyezheti a függvényt egy alárendelt runbook. Ezek az alárendelt runbookok külön folyamatokban párhuzamosan hajthatók végre. Ez a viselkedés csökkenti a szülő runbook befejezésének teljes időtartamát.
 
@@ -648,7 +648,7 @@ Ugyanazon Automation-fiókban az az modulok és a AzureRM modulok használata ne
 * [Runbook indítása Azure Automation](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
 * [Runbook végrehajtás a Azure Automationban](https://docs.microsoft.com/azure/automation/automation-runbook-execution)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: ff612c43a058fce02bd801e15632c27979f22d17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435873"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196926"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-szabályzatok konfigurálása a HDInsightban az Enterprise Security Package csomaggal
 
@@ -52,14 +52,14 @@ Ebben a szakaszban két Ranger-szabályzatot hoz létre a hivesampletable elér�
 2. Válassza a **CLUSTERNAME_Hive**lehetőséget a **struktúra**alatt. Két előre konfigurált házirendnek kell megjelennie.
 3. Válassza az **új szabályzat hozzáadása**lehetőséget, majd adja meg a következő értékeket:
 
-    |Tulajdonság |Value (Díj) |
+    |Tulajdonság |Érték |
     |---|---|
     |Házirend neve|Read-hivesampletable-all|
     |Struktúra-adatbázis|alapértelmezett|
     |table|hivesampletable|
     |Struktúra oszlop|*|
     |Felhasználó kiválasztása|hiveuser1|
-    |Engedélyek|válassza az|
+    |Engedélyek|Válassza|
 
     ![HDInsight ESP Ranger kaptár-szabályzatok konfigurálása](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
@@ -70,14 +70,14 @@ Ebben a szakaszban két Ranger-szabályzatot hoz létre a hivesampletable elér�
 
 5. Ismételje meg az utolsó két lépést egy másik házirend létrehozásához, amely a következő tulajdonságokkal rendelkezik:
 
-    |Tulajdonság |Value (Díj) |
+    |Tulajdonság |Érték |
     |---|---|
     |Házirend neve|Read-hivesampletable-devicemake|
     |Struktúra-adatbázis|alapértelmezett|
     |table|hivesampletable|
     |Struktúra oszlop|ClientID, devicemake|
     |Felhasználó kiválasztása|hiveuser2|
-    |Engedélyek|válassza az|
+    |Engedélyek|Válassza|
 
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC-adatforrás létrehozása
 
@@ -148,11 +148,11 @@ A második szabályzat (read-hivesampletable-devicemake) teszteléséhez, amelye
 
     Ha elkészült, két, az importált adatoszlop jelenik meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A HDInsight-fürtök Enterprise Security Package-vel való konfigurálásával kapcsolatban lásd: [HDInsight-fürtök beállítása az ESP-vel](apache-domain-joined-configure.md).
 * Az ESP-vel rendelkező HDInsight-fürtök kezelésével kapcsolatban lásd: [HDInsight-fürtök kezelése az ESP-vel](apache-domain-joined-manage.md).
-* A HDInsight-fürtök SSH-val való futtatásához az ESP használatával: az [SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* A HDInsight-fürtök SSH-val való futtatásához az ESP használatával: az [SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight).
 * Ha a kaptárt a méhkas JDBC használatával Apache Hive szeretné csatlakoztatni, tekintse meg a következőt: [Csatlakozás az Azure HDInsight-hez a kaptár JDBC-illesztő](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)
 * Az Excel és a Hadoop összekapcsolása a kaptár ODBC használatával: [az Excel csatlakoztatása Apache Hadoop a Microsoft kaptár ODBC-meghajtóval](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)
 * Az Excel és a Hadoop összekapcsolása Power Query használatával: az [Excel csatlakoztatása Apache Hadoophoz a Power Query használatával](../hadoop/apache-hadoop-connect-excel-power-query.md)

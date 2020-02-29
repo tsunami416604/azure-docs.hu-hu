@@ -3,20 +3,20 @@ title: Egyéni e-mail-ellenőrzés
 titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan szabhatja testre az ügyfeleknek küldött ellenőrző e-maileket, amikor a Azure AD B2C-kompatibilis alkalmazások használatára jelentkeznek.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/05/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2bda00924015bf5abc616b7c346eacfeda53c2ed
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 32747e0e7bb1f979203fa886647712e0fd69faee
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77045939"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189531"
 ---
 # <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Egyéni e-mail-ellenőrzés Azure Active Directory B2C
 
@@ -421,7 +421,7 @@ Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie 
 </ClaimsTransformation>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A GitHubon megtalálhatja például az egyéni e-mail-ellenőrzési szabályzatot:
 

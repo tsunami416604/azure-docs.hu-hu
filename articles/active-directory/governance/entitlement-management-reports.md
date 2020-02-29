@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819badb85e532275b4d5d6ca84c3e6e7fe527fa0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c98a583e2aa8ac679842e16d1c0cc36811db90de
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422548"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190585"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Jelentések és naplók megtekintése az Azure AD-jogosultságok kezelésében
 
@@ -107,7 +107,8 @@ Ha a hozzáférés nem lett hozzárendelve, akkor az Azure AD egy naplózási re
 
 Ha a felhasználó hozzáférési csomagjának hozzárendelése lejár, a felhasználó megszakította vagy eltávolítja a rendszergazdát, akkor az Azure AD naplózási rekordot ír a `EntitlementManagement` kategóriába `Remove access package assignment`**tevékenységgel** .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
+- [Jelentések és naplók archiválása](entitlement-management-logs-and-reporting.md)
 - [Az Azure AD-jogosultságok kezelése – problémamegoldás](entitlement-management-troubleshoot.md)
 - [Gyakori forgatókönyvek](entitlement-management-scenarios.md)

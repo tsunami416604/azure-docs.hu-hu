@@ -3,20 +3,20 @@ title: REST-szolgáltatás biztonságossá tétele HTTP alapszintű hitelesíté
 titleSuffix: Azure AD B2C
 description: A HTTP alapszintű hitelesítés használatával biztonságossá teheti az egyéni REST API jogcímek cseréjét a Azure AD B2Cban.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 986ad1845fa2699bb3462dceb3865300a035cb71
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 505d92e33606dac327778cae179df44efbfdf853
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848537"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183856"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>A REST-szolgáltatások biztonságossá tétele HTTP alapszintű hitelesítés használatával
 
@@ -360,6 +360,6 @@ Miután a REST-alapú szolgáltatást az ügyfél-azonosító (username) és a t
 * Miután elvégezte az [Egyéni szabályzatok használatának első lépései útmutatót](custom-policy-get-started.md) , javasoljuk, hogy a saját egyéni házirend-fájljaival hozza létre a forgatókönyvet. Az Ön referenciája alapján megadta a [minta házirend-fájlokat](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic).
 * A Visual Studio-megoldás teljes kódját a [következő hivatkozásra töltheti le: minta](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ügyféltanúsítványok használata a REST API biztonságossá tételéhez](secure-rest-api-dotnet-certificate-auth.md)

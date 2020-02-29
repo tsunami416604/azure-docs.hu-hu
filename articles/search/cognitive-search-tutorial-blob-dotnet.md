@@ -8,18 +8,18 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.openlocfilehash: 85fb709dfcca45b6ca8141c6d3de1941044f5ee5
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0c37f1ce2f173f4bf527e7cca30f010101b01720
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78163200"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190687"
 ---
 # <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Oktatóanyag: a C# és a AI használata kereshető tartalmak létrehozásához az Azure-blobokból
 
 Ha strukturálatlan szöveget vagy rendszerképeket használ az Azure Blob Storage-ban, egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat kinyerheti az adatokat, és létrehozhat olyan új tartalmakat, amelyek hasznosak a teljes szöveges kereséshez és az adatbányászati forgatókönyvekhez. Ebben az C# oktatóanyagban az optikai karakterfelismerést (OCR) alkalmazza a képeken, és természetes nyelvi feldolgozást végez, hogy új mezőket hozzon létre, amelyeket a lekérdezések, a dimenziók és a szűrők használhatnak.
 
-Ebben az oktatóanyagban a C# és a [.net SDK](https://aka.ms/search-sdk) használatával hajtsa végre a következő feladatokat:
+Ez az oktatóanyag C# a és a [.net SDK](https://aka.ms/search-sdk) -t használja a következő feladatok elvégzéséhez:
 
 > [!div class="checklist"]
 > * Az alkalmazás fájljait és lemezképeit az Azure Blob Storage-ban indíthatja el.
@@ -929,11 +929,11 @@ Ismételje meg a műveletet további mezők esetén: tartalom, languageCode, kif
 
 ## <a name="reset-and-rerun"></a>Alaphelyzetbe állítás és ismételt futtatás
 
-A fejlesztés korai kísérleti szakaszaiban a tervezési iterációk gyakorlati megközelítése az, hogy törölje az objektumokat az Azure Cognitive Searchról, és lehetővé teszi a kód újraépítését. Az erőforrásnevek egyediek. Egy objektum törlése révén újból létrehozhatja azt ugyanazzal a névvel.
+A fejlesztés korai kísérleti szakaszaiban a tervezési iteráció legalkalmasabb megközelítése az objektumok törlése az Azure Cognitive Search és a kód újraépítésének engedélyezése. Az erőforrásnevek egyediek. Egy objektum törlése révén újból létrehozhatja azt ugyanazzal a névvel.
 
-Ez az oktatóanyag a meglévő indexelő és indexek ellenőrzését és törlését vette igénybe, ha már léteztek, hogy újra lehessen futtatni a kódot.
+Az oktatóanyaghoz tartozó mintakód ellenőrzi a meglévő objektumokat, és törli őket, hogy újra lehessen futtatni a kódot.
 
-A portál segítségével indexeket, indexelő és szakértelmével is törölhet.
+A portál segítségével indexeket, indexelő fájlokat, adatforrásokat és szakértelmével is törölhet.
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
@@ -945,11 +945,13 @@ Végül megismerte, hogyan tesztelheti az eredményeket, és hogyan állíthatja
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyag elvégzésének leggyorsabb módja az Azure Cognitive Search Service és az Azure Blob servicet tartalmazó erőforráscsoport törlése. Feltéve, hogy mindkét szolgáltatást ugyanabban a csoportban helyezte üzembe, törölje az erőforráscsoportot, amellyel véglegesen eltávolíthatja annak teljes tartalmát, a rövid útmutató során létrehozott összes szolgáltatást és tárolt tartalmat is beleértve. A portálon az erőforráscsoport neve az egyes szolgáltatások Áttekintés lapján szerepel.
+Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A már futó erőforrások pénzbe kerülnek. Az erőforrásokat egyenként is törölheti, vagy az erőforráscsoport törlésével törölheti a teljes erőforrás-készletet.
 
-## <a name="next-steps"></a>Következő lépések
+A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-Egyéni képességekkel testre szabhatja vagy kibővítheti a folyamatot. Egyéni képességek létrehozása és egy képességcsoporthoz adása révén saját kezűleg írt szöveg- vagy képelemzést használhat.
+## <a name="next-steps"></a>További lépések
+
+Most, hogy már ismeri a mesterséges intelligencia-bővítési folyamat összes objektumát, ismerkedjen meg közelebbről a készségkészlet-definíciókkal és az egyéni ismeretekkel.
 
 > [!div class="nextstepaction"]
-> [Példa: egyéni képesség létrehozása AI-bővítéshez](cognitive-search-create-custom-skill-example.md)
+> [Készségkészlet létrehozása](cognitive-search-defining-skillset.md)

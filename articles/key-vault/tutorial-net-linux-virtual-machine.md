@@ -5,18 +5,19 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 65c59ba299490ee2bbef849b6f7354abc05ad885
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8c5b3fcc1cb2ac481be0b435c48ce213c716edde
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003353"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198167"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Oktatóanyag: A titkos kódok tárolása Linux rendszerű virtuális gépen és .NET-alkalmazáson Azure Key Vault
+# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Oktatóanyag: Linux rendszerű virtuális gép és .NET-alkalmazás használata a titkok tárolására Azure Key Vault
 
 Azure Key Vault segít az alkalmazások, szolgáltatások és informatikai erőforrások eléréséhez szükséges titkok, például az API-kulcsok és az adatbázis-kapcsolati karakterláncok védelemmel való ellátásában.
 
@@ -61,9 +62,9 @@ az login
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot a `az group create` parancs használatával. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+Hozzon létre egy erőforráscsoportot az `az group create` parancs használatával. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az USA nyugati régiójában. Válassza ki az erőforráscsoport nevét, és cserélje le `YourResourceGroupName` a következő példában szereplőre:
+Hozzon létre egy erőforráscsoportot az USA nyugati régiójában. Válassza ki az erőforráscsoport nevét, és cserélje le a `YourResourceGroupName`t a következő példában:
 
 ```azurecli-interactive
 # To list locations: az account list-locations --output table
@@ -76,9 +77,9 @@ Ezt az erőforráscsoportot az oktatóanyag során használhatja.
 
 Ezután hozzon létre egy Key vaultot az erőforráscsoporthoz. Adja meg az alábbi információkat:
 
-* Key Vault neve: 3 – 24 karakterből álló karakterlánc, amely csak számokat, betűket és kötőjeleket tartalmazhat (0-9, a-z, A-Z és \- ).
+* Key Vault neve: 3 – 24 karakterből álló karakterlánc, amely csak számokat, betűket és kötőjeleket tartalmazhat (0-9, a-z, A-Z és \-).
 * Erőforráscsoport neve
-* Helyen **USA nyugati régiója**
+* Hely: **USA nyugati** régiója
 
 ```azurecli-interactive
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -96,11 +97,11 @@ Ebben az oktatóanyagban írja be a következő parancsokat a titkos kulcs létr
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gépek létrehozása
+## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
 
-Hozzon létre egy virtuális `az vm create` gépet a paranccsal.
+Hozzon létre egy virtuális gépet a `az vm create` paranccsal.
 
-A következő példa létrehoz egy **myVM** nevű virtuális gépet, és hozzáad egy **azureuser** nevű felhasználói fiókot. Az `--generate-ssh-keys` általunk használt paraméter az SSH-kulcs automatikus létrehozásához és az alapértelmezett kulcs helyére ( **~/.ssh**) való elhelyezésére szolgál. Ha konkrét kulcsokat szeretne használni, használja az `--ssh-key-value` paramétert.
+A következő példa létrehoz egy **myVM** nevű virtuális gépet, és hozzáad egy **azureuser** nevű felhasználói fiókot. Az `--generate-ssh-keys` paraméter, amely az SSH-kulcsok automatikus létrehozásához és az alapértelmezett kulcs helyére ( **~/.ssh**) való üzembe helyezéséhez használatos. Ha konkrét kulcsokat szeretne használni, használja az `--ssh-key-value` paramétert.
 
 ```azurecli-interactive
 az vm create \
@@ -126,7 +127,7 @@ A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány p
 }
 ```
 
-Jegyezze `publicIpAddress` fel a virtuális gép kimenetét. Ezt a lakcímet fogja használni a virtuális gép későbbi lépésekben való eléréséhez.
+Jegyezze fel a `publicIpAddress` a virtuális gép kimenetében. Ezt a lakcímet fogja használni a virtuális gép későbbi lépésekben való eléréséhez.
 
 ## <a name="assign-an-identity-to-the-vm"></a>Identitás kiosztása a virtuális géphez
 
@@ -145,11 +146,11 @@ A parancs kimenetének a következőket kell tennie:
 }
 ```
 
-Jegyezze fel a `systemAssignedIdentity`-t. Ezt a következő lépésben használhatja.
+Jegyezze fel a `systemAssignedIdentity`. Ezt a következő lépésben használhatja.
 
 ## <a name="give-the-vm-identity-permission-to-key-vault"></a>A virtuális gép személyazonosságának engedélyezése Key Vault
 
-Most Key Vault engedélyt adhat a létrehozott identitásnak. Futtassa a következő parancsot:
+Most Key Vault engedélyt adhat a létrehozott identitásnak. Futtassa az alábbi parancsot:
 
 ```azurecli
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
@@ -282,7 +283,7 @@ Most, hogy megismerte, hogyan végezheti el a műveleteket a Azure Key Vaultekke
 
 Ha már nincs szüksége rájuk, törölje az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális gép erőforráscsoportot, és válassza a **Törlés**lehetőséget.
 
-Törölje a Key vaultot a `az keyvault delete` paranccsal:
+Törölje a Key vaultot a `az keyvault delete` parancs használatával:
 
 ```azurecli-interactive
 az keyvault delete --name

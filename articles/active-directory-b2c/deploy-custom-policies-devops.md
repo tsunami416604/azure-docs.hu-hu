@@ -3,20 +3,20 @@ title: Egyéni szabályzatok üzembe helyezése az Azure-folyamatokkal
 titleSuffix: Azure AD B2C
 description: Ismerje meg, hogyan helyezhet üzembe Azure AD B2C egyéni házirendeket CI/CD-folyamatokban az Azure DevOps Services Azure-folyamatainak használatával.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8649537a2992ba11a2b664a9b36207e06c8b1274
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: b23b60ae49a4973fa04e6fa5f795f99536e32e7f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498554"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188749"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Egyéni szabályzatok üzembe helyezése az Azure-folyamatokkal
 
@@ -131,7 +131,7 @@ A tárház inicializálása és az egyéni házirend-fájlok feltöltése után 
 1. Válassza a **változók** fület.
 1. Adja hozzá a következő változókat a **folyamat változói** alatt, és állítsa be az értékeket a megadott módon:
 
-    | Name (Név) | Érték |
+    | Név | Érték |
     | ---- | ----- |
     | `clientId` | A korábban regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítója** . |
     | `clientSecret` | A korábban létrehozott **ügyfél-titok** értéke. <br /> Módosítsa a változó típusát **titkosra** (válassza a zárolás ikont). |
@@ -207,7 +207,7 @@ A kiadási folyamat tesztelése:
 
 Egy értesítési szalagcím jelenik meg, amely szerint a kiadás várólistára került. Az állapot megtekintéséhez válassza ki a hivatkozást az értesítési szalagcímben, vagy válassza ki a listából a **kiadások** lapon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információk:
 

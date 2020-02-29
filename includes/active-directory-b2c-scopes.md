@@ -1,18 +1,18 @@
 ---
-author: mmacy
+author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
-ms.author: marsma
-ms.openlocfilehash: 59cf0b81363c724d709d85105525bece13743f26
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: mimart
+ms.openlocfilehash: 9d394b07ff17ab24305b2580efc8bedfc5e7d384
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474868"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183379"
 ---
-#### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
+#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
 1. Válassza az **alkalmazások**lehetőséget.
 1. Válassza ki a *webapi1* alkalmazást a **Tulajdonságok** lap megnyitásához.
@@ -21,7 +21,7 @@ ms.locfileid: "73474868"
 1. A **hatókör**mezőbe írja be a `demo.write`, és a **Leírás**mezőbe írja be a `Write access to the web API`.
 1. Kattintson a **Mentés** gombra.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
 1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget.
 1. Válassza ki a *webapi1* alkalmazást az **áttekintő** oldal megnyitásához.

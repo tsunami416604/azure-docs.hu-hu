@@ -3,20 +3,20 @@ title: ContentDefinitions
 titleSuffix: Azure AD B2C
 description: A Azure Active Directory B2C egyéni házirendjének ContentDefinitions elemének megadásához.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/17/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd6a24c768056c949c05b9e2444bd49ef743c0ef
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b55199ec2684ab7b95ce4e4988b19814c27b2cc3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425629"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189582"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -61,7 +61,7 @@ A **LocalAccountSignUpWithLogonEmail** önérvényesített technikai profil meta
 
 A **ContentDefinition** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A tartalom definíciójának azonosítója. Az érték a **tartalom-definíciós azonosítók** szakaszban, a lap későbbi részében van megadva. |
 
@@ -137,15 +137,15 @@ A **metaadat** -elemek a következő elemeket tartalmazzák:
 
 A **metaadatok** elem **elem eleme a** következő attribútumokat tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Paraméter | Igen | A metaadat-kulcs.  |
+| Kulcs | Igen | A metaadat-kulcs.  |
 
 #### <a name="metadata-keys"></a>Metaadat-kulcsok
 
-A Content Definition a következő metaadat-elemeket támogatja: 
+A Content Definition a következő metaadat-elemeket támogatja:
 
-| Paraméter | Kötelező | Leírás |
+| Kulcs | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | DisplayName | Nem | Egy karakterlánc, amely tartalmazza a tartalom definíciójának nevét. |
 
@@ -159,7 +159,7 @@ A **LocalizedResourcesReferences** elem a következő elemeket tartalmazza:
 
 A **LocalizedResourcesReference** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Nyelv | Igen | Egy karakterlánc, amely az RFC 5646-címkék által támogatott nyelvet tartalmaz a nyelvek azonosításához. |
 | LocalizedResourcesReferenceId | Igen | A **LocalizedResources** elem azonosítója. |
@@ -188,7 +188,7 @@ Ha szeretné megtudni, hogyan adhat honosított támogatást a tartalmi definíc
 
 A **ContentDefinition** elem ID attribútuma határozza meg a tartalom-definícióhoz kapcsolódó oldal típusát. Az elem határozza meg azt a környezetet, amelyet az egyéni HTML5/CSS-sablon alkalmazni fog. A következő táblázat ismerteti az identitási élmény keretrendszere által felismert tartalmi definíciós azonosítókat, valamint az azokhoz kapcsolódó lapokat. Saját tartalmi definíciókat tetszőleges AZONOSÍTÓval hozhat létre.
 
-| ID (Azonosító) | Alapértelmezett sablon | Leírás |
+| ID | Alapértelmezett sablon | Leírás |
 | -- | ---------------- | ----------- |
 | **API. error** | [kivétel. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hiba lap** – hibaüzenetet jelenít meg, ha kivétel vagy hiba történt. |
 | **API. idpselections** | [idpSelector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identitás-szolgáltató kiválasztása lap** – felsorolja azokat az azonosítókat, amelyeket a felhasználók a bejelentkezés során választhatnak. A lehetőségek általában a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook és a Google +, vagy a helyi fiókok. |
@@ -201,7 +201,7 @@ A **ContentDefinition** elem ID attribútuma határozza meg a tartalom-definíci
 | **API. selfasserted. profileUpdate** | [updateprofile. cshtml](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil frissítése lap** – megjelenít egy űrlapot, amelyet a felhasználók a profiljuk frissítéséhez tudnak elérni. Ez az oldal hasonló a közösségi fiók regisztrálása oldalhoz, a jelszó-beviteli mezők kivételével. |
 | **API. signuporsignin** | [Unified. cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Egyesített regisztrációs vagy bejelentkezési oldal** – kezeli a felhasználói regisztrációt és a bejelentkezési folyamatot. A felhasználók a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook vagy a Google +, vagy a helyi fiókok használatával használhatják a felhasználókat. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felhasználói felület tartalmi definíciók használatával történő testreszabására példát a következő témakörben talál:
 

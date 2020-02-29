@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4d804499116631be6f922f67f8b8f6c7063a6d5c
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 137623e4c52d24061aec8ec11fca0fc02ca54c7f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030727"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190976"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Hibrid Runbook-feldolgozók hibáinak megoldása
 
@@ -54,7 +54,7 @@ A hibrid Runbook-feldolgozót futtató számítógépeknek meg kell felelniük a
 
 Győződjön meg arról, hogy a hibrid Runbook Worker szolgáltatás futtatására szolgáló számítógép megfelel a minimális hardverkövetelmények követelményeinek. Ha igen, figyelje a CPU-t és a memóriát a hibrid Runbook-munkavégző folyamatok és a Windows teljesítménye közötti korreláció megállapítása érdekében. A memória vagy a CPU nyomása az erőforrások frissítésének szükségességét jelezheti. Kiválaszthat egy másik számítási erőforrást is, amely támogatja a minimális követelményeket és a méretezést, ha a munkaterhelési igények azt jelzik, hogy növelésre van szükség.
 
-Keresse meg a **Microsoft-SMA** eseménynaplót a megfelelő eseményhez, a Leírás *Win32 folyamata pedig a következő kóddal kilépett: [4294967295]* . Ennek a hibának az az oka, hogy nem konfigurálta a hitelesítést a runbookok, vagy megadta a hibrid feldolgozói csoport futtató hitelesítő adatait. Tekintse át a [Runbook engedélyeket](../automation-hrw-run-runbooks.md#runbook-permissions) annak ellenőrzéséhez, hogy helyesen konfigurálta-e a runbookok-hitelesítést.
+Keresse meg a **Microsoft-SMA** eseménynaplót a megfelelő eseményhez, a Leírás *Win32 folyamata pedig a következő kóddal kilépett: [4294967295]* . Ennek a hibának az az oka, hogy nem konfigurálta a hitelesítést a runbookok, vagy megadta a hibrid Runbook Worker csoport futtató hitelesítő adatait. Tekintse át a runbook engedélyeit a [hibrid runbook-feldolgozón futó runbookok](../automation-hrw-run-runbooks.md) , és ellenőrizze, hogy helyesen konfigurálta-e a hitelesítést a runbookok.
 
 ### <a name="no-cert-found"></a>Forgatókönyv: a hibrid Runbook-feldolgozók tanúsítványtárolójában nem található tanúsítvány.
 
@@ -231,7 +231,7 @@ A probléma megoldásához távolítsa el a következő beállításkulcsot, és
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

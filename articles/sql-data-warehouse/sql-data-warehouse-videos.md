@@ -1,6 +1,6 @@
 ---
 title: Videók
-description: A Azure SQL Data Warehouse különböző videós listáira mutató hivatkozások.
+description: Az Azure szinapszis Analytics különböző videós listáira mutató hivatkozások.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5d01ff2eb74844997eb1640123e4af59abe2340b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bc6d0aed017dea46a781ca2b1d8d238e9d761e1b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692434"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192166"
 ---
-# <a name="azure-sql-data-warehouse---videos"></a>Azure SQL Data Warehouse – videók
+# <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure szinapszis Analytics – SQL Pool-videók
 
-Tekintse meg a legújabb Azure SQL Data Warehouse videókat, és ismerkedjen meg az új képességekkel és a teljesítménnyel kapcsolatos újdonságokkal. 
+Tekintse meg az Azure szinapszis legújabb SQL Pool-videóit, és ismerkedjen meg az új képességekkel és a teljesítménnyel kapcsolatos újdonságokkal. 
 
-Első lépésként válassza az alábbi áttekintő videót, és ismerkedjen meg az Azure SQL Data Warehouse új frissítéseivel. Azt is megismerheti, hogyan használhatók a modern adattárház-mintázatok olyan valós forgatókönyvek kezelésére, mint például a számítógépes bűnözés.
+Első lépésként válassza az alábbi áttekintő videót az Azure szinapszis SQL-készlet új frissítéseinek megismeréséhez. Azt is megismerheti, hogyan használhatók a modern adattárház-mintázatok olyan valós forgatókönyvek kezelésére, mint például a számítógépes bűnözés.
 </br>
 
 <a href="https://www.youtube.com/watch?v=7MDCWgxPnVY&list=PLXtHYVsvn_b_v4EKljH6dGo9qJ7JjItWL&index=2">

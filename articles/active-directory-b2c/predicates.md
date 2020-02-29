@@ -3,20 +3,20 @@ title: Predikátumok és PredicateValidations
 titleSuffix: Azure AD B2C
 description: A helytelenül formázott adatok nem adhatók hozzá a Azure AD B2C-bérlőhöz egyéni szabályzatok használatával Azure Active Directory B2Cban.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e38f422189ce001063276ddc7c7f82b2acb5929
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585764"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187236"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikátumok és PredicateValidations
 
@@ -42,7 +42,7 @@ A **predikátumok** elem a következő elemet tartalmazza:
 
 A **predikátum** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A predikátumhoz használt azonosító. Más elemek is használhatják ezt az azonosítót a szabályzatban. |
 | Módszer | Igen | Az érvényesítéshez használandó metódus típusa Lehetséges értékek: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**vagy **IsDateRange**. A **IsLengthRange** érték ellenőrzi, hogy a karakterlánc-jogcím értéke a megadott minimális és maximális paraméterek tartományán belül van-e. A **MatchesRegex** érték ellenőrzi, hogy egy karakterlánc-jogcím értéke megfelel-e egy reguláris kifejezésnek. A **IncludesCharacters** érték ellenőrzi, hogy egy karakterlánc-jogcím értéke tartalmazza-e a karakterkészletet. A **IsDateRange** érték ellenőrzi, hogy a Date jogcím értéke a megadott minimális és maximális paraméterek közé esik-e. |
@@ -141,7 +141,7 @@ A **PredicateValidations** elem a következő elemet tartalmazza:
 
 A **PredicateValidation** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A predikátum érvényesítéséhez használt azonosító. A **claimType** elem a szabályzatban használhatja ezt az azonosítót. |
 
@@ -159,7 +159,7 @@ A **PredicateGroups** elem a következő elemet tartalmazza:
 
 A **PredicateGroup** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A predikátum-csoporthoz használt azonosító.  |
 
@@ -172,7 +172,7 @@ A **PredicateGroup** elem a következő elemeket tartalmazza:
 
 A **PredicateReferences** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | MatchAtLeast | Nem | Megadja, hogy az értéknek meg kell egyeznie legalább annyi predikátum-definícióval, amelyet a bemenet elfogad. Ha nincs megadva, az értéknek meg kell egyeznie az összes predikátum-definícióval. |
 
@@ -184,7 +184,7 @@ A **PredicateReferences** elem a következő elemeket tartalmazza:
 
 A **PredicateReference** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A predikátum érvényesítéséhez használt azonosító.  |
 

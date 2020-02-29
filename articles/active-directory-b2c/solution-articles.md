@@ -2,19 +2,19 @@
 title: Megoldások és képzés a Azure Active Directory B2Choz | Microsoft Docs
 description: Ez a cikk olyan megoldási és képzési információkra mutató hivatkozásokat tartalmaz, amelyek segítségével megismerheti és használhatja a Azure Active Directory B2Ct a végpontok közötti üzleti megoldásokhoz.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 82f78ba50a6717c1d14e4921bb3c46a3525ad2cf
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 9e00c872bb2794cdd8eb2560392ce058ae41b257
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063496"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186726"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Megoldások és képzés a Azure Active Directory B2C
 
@@ -22,9 +22,9 @@ A Azure Active Directory B2C (Azure AD B2C) lehetővé teszi a szervezetek szám
 
 | Beosztás | Leírás |
 | ----- | ----------- |
-| [Ügyfél-identitás kezelése Azure AD B2C](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | A szolgáltatás ezen áttekintésében a Azure ad B2C csapattól származó[@jainparakh](https://twitter.com/jainparakh)Parakh a a szolgáltatás működésének áttekintését, valamint azt is bemutatja, hogyan lehet a B2C-t egy ASP.net Core alkalmazáshoz gyorsan összekapcsolni. |
+| [Ügyfél-identitás kezelése Azure AD B2C](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | A szolgáltatás ezen áttekintésében a Azure AD B2C csapattól származó Parakh Fagaras ([@jainparakh](https://twitter.com/jainparakh)) áttekintést nyújt a szolgáltatás működéséről, és azt is bemutatja, hogyan csatlakozhat gyorsan a B2C-hoz egy ASP.net Core alkalmazáshoz. |
 | [A Azure AD B2C használatának előnyei](https://aka.ms/b2coverview) | Megismerheti a Azure AD B2C előnyeit és gyakori forgatókönyveit, valamint azt, hogy az alkalmazás (ok) hogyan használhatja ezt a CIAM szolgáltatást. |
-| [Szakértelmet szerez a Azure AD B2Cban: Fejlesztőknek szóló tanfolyam](https://aka.ms/learnAADB2C) | Ez a teljes körű tanfolyam a fejlesztőknek biztosít olyan alkalmazásokat, amelyekkel a Azure AD B2C hitelesítési mechanizmusként fejlesztheti alkalmazásait. A Labs-mel rendelkező tíz részletes modul minden olyan Azure-előfizetés beállításával foglalkozik, amely meghatározza az ügyfeleket használó útvonalakat. |
+| [Szaktudást szerez Azure AD B2Cban: fejlesztőknek szóló tanfolyam](https://aka.ms/learnAADB2C) | Ez a teljes körű tanfolyam a fejlesztőknek biztosít olyan alkalmazásokat, amelyekkel a Azure AD B2C hitelesítési mechanizmusként fejlesztheti alkalmazásait. A Labs-mel rendelkező tíz részletes modul minden olyan Azure-előfizetés beállításával foglalkozik, amely meghatározza az ügyfeleket használó útvonalakat. |
 | [Partnereink, szállítók és ügyfelek hozzáférésének engedélyezése az Azure Active Directoryval való alkalmazásokhoz](https://aka.ms/aadexternalidentities) | Minden szervezet sikere, függetlenül attól, hogy mekkora, iparági vagy megfelelőségi és biztonsági testtartásra támaszkodik, a szervezeti képességtől függ, hogy együttműködik más szervezetekkel, és hogyan csatlakozhat az ügyfelekhez.<br><br>Az Azure AD, a Azure AD B2C és az Azure AD B2B együttműködés együttes használatával ez az útmutató részletesen ismerteti az üzleti értéket és a mechanika olyan alkalmazás vagy webes élmény kialakítását, amely összevont hitelesítési élményt biztosít az adott környezethez igazított alkalmazottak, üzleti partnerek és szállítók, valamint ügyfelek. |
 | [Alkalmazás-hitelesítés migrálása a Azure AD B2Cra hibrid környezetben](https://aka.ms/MigratetoAADB2C) | A mai modern szervezetekben a digitális átalakítás és a felhőre való áttérés fázisokban zajlik, így a legtöbb szervezetnek legalább átmenetileg működnie kell egy hibrid identitási környezetben.<br><br>Ez az útmutató az első alkalmazás Azure AD B2Cra való áthelyezéséhez szükséges áttelepítési terv létrehozásával foglalkozik, és a hibrid identitási környezetekben végzett műveletekre vonatkozó megfontolásokat ismerteti. |
 | [Általános adatvédelmi rendelet (GDPR) – megfontolások az ügyfelek felé irányuló alkalmazásokhoz](https://aka.ms/AADB2CandGDPR) | A GDPR minden olyan szervezetnek figyelembe kell vennie, amely a személyes adatait tároló és az EU polgárainak kiszolgálására irányuló projektekre összpontosít.<br><br>Ez a megoldási útmutató arra összpontosít, hogy a Azure AD B2C hogyan használható rugalmas összetevőként a teljes GDPR-megfelelőségi megközelítéshez, beleértve azt is, hogy a Azure AD B2C-összetevők hogyan támogatják az egyes kulcsfontosságú GDPR jogokat az egyéni felhasználók számára. |

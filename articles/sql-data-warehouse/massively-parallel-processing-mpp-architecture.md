@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d808210861d971b2915206e7be0fe9b955616c5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 6e4b5bc6d30f6caa2809b7aa1e72be70ae12dbc1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720316"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193034"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure szinapszis Analytics (korábban SQL DW) architektúrája 
 
@@ -25,7 +25,7 @@ Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti 
 - SQL Analytics: teljes T-SQL-alapú elemzés 
     - SQL-készlet (fizetés/DWU kiépítve) – általánosan elérhető
     - Igény szerinti SQL-szolgáltatás (fizetés/TB feldolgozott) – (előzetes verzió)
-- Spark: mélyen integrált Apache Spark (előzetes verzió) 
+- Spark: mélyen integrált Apache Spark (előzetes verzió)
 - Adatintegráció: hibrid Adatintegráció (előzetes verzió)
 - Studio: egyesített felhasználói élmény.  (Előzetes verzió)
 
@@ -53,7 +53,7 @@ A leválasztott tárolással és számítással az SQL Analytics használata ese
 Az SQL Analytics kihasználja az Azure Storage-t, hogy a felhasználói adatai biztonságban maradjanak.  Mivel az Azure Storage tárolja és kezeli az adatait, külön díjat számítunk fel a tárterület-felhasználásért. Az adat felosztása a rendszer teljesítményének **optimalizálása érdekében történik** . Kiválaszthatja, hogy melyik horizontális Felskálázási mintát kell használnia az adatterjesztéshez a tábla meghatározásakor. Ezek a horizontális skálázási minták támogatottak:
 
 * Kivonat
-* Ciklikus multiplexelés
+* Ciklikus időszeletelés
 * Replikálás
 
 ### <a name="control-node"></a>Vezérlő csomópont
@@ -105,7 +105,7 @@ Az alábbi ábrán egy olyan replikált tábla látható, amely az első eloszl�
 
 ![Replikált tábla](media/sql-data-warehouse-distributed-data/replicated-table.png "Replikált tábla") 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy már ismeri az Azure Szinapszisot, megtudhatja, hogyan [hozhat létre gyorsan SQL-készletet](./sql-data-warehouse-get-started-provision.md) , és hogyan [tölthető be a mintaadatok](./sql-data-warehouse-load-sample-databases.md). Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét](../azure-glossary-cloud-terminology.md), amikor az új fogalmakkal ismerkedik. Vagy tekintse meg a többi Azure szinapszis-erőforrást.  
 
 * [Ügyfelek sikertörténetei](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)

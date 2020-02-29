@@ -4,13 +4,13 @@ description: Megismerheti, hogyan hozhat létre egyéni Linux-rendszerképeken f
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
-zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 29b0719670529a486222ef5fad21dd803ea6f195
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482360"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190806"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszeren egyéni tároló használatával
 
@@ -18,7 +18,7 @@ Ebben az oktatóanyagban Python-kódot hoz létre és helyez üzembe Azure Funct
 
 Az alapértelmezett Azure App Service tárolót a [Linuxon üzemeltetett első függvény létrehozása](functions-create-first-azure-function-azure-cli-linux.md)című témakörben leírtak szerint is használhatja. A Azure Functions támogatott alaplemezképei a [Azure functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base)tárházban találhatók.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Function alkalmazást és egy Docker a Azure Functions Core Tools használatával.
@@ -70,7 +70,7 @@ Ezt az oktatóanyagot követheti Windows, Mac OS vagy Linux rendszerű számít�
 
 1. Egy terminálon vagy parancssorban hozzon létre egy mappát az oktatóanyaghoz egy megfelelő helyen, majd navigáljon a mappába.
 
-1. A [virtuális környezet létrehozása és aktiválása](functions-create-first-function-python.md#create-and-activate-a-virtual-environment) című témakör útmutatását követve hozzon létre egy virtuális környezetet az oktatóanyaghoz való használatra.
+1. A [virtuális környezet létrehozása és aktiválása](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv) című témakör útmutatását követve hozzon létre egy virtuális környezetet az oktatóanyaghoz való használatra.
 
 1. Futtassa a következő parancsot a választott nyelvhez egy Function app-projekt létrehozásához egy `LocalFunctionsProject`nevű mappában. Az `--docker` lehetőség létrehoz egy `Dockerfile` a projekthez, amely egy megfelelő egyéni tárolót határoz meg a Azure Functions és a kiválasztott futtatókörnyezet használatával való használatra.
 
@@ -949,7 +949,7 @@ A folyamatos költségek elkerülése érdekében törölje a `AzureFunctionsCon
 az group delete --name AzureFunctionsContainer-rg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [Figyelési függvények](functions-monitoring.md)
 + [Méretezési és üzemeltetési lehetőségek](functions-scale.md)

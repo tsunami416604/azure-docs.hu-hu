@@ -2,20 +2,20 @@
 title: REST API követelések cseréje – Azure Active Directory B2C
 description: REST API a jogcímeket a Active Directory B2C egyéni házirendjeihez adja hozzá.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1caf0b3f6396cc008e77bb96e686fe78f462850b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 351b41f45fb84384ec0193f8e3130347d0b19401
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849096"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189089"
 ---
 # <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>REST API jogcímek hozzáadása egyéni házirendekhez Azure Active Directory B2C
 
@@ -253,7 +253,7 @@ Ha minden helyesen van beállítva, a jogkivonat tartalmazza az új jogcímet `c
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az interakciót érvényesítő profilként is megtervezheti. További információ [: bemutató: REST API jogcím-cserék integrálása a Azure ad B2C felhasználói úton a felhasználói adatok érvényesítése során](custom-policy-rest-api-claims-validation.md).
 

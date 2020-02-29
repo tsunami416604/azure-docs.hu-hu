@@ -3,20 +3,20 @@ title: Saját attribútumok hozzáadása egyéni házirendekhez
 titleSuffix: Azure AD B2C
 description: A bővítmény tulajdonságainak és egyéni attribútumainak, valamint a felhasználói felületen való használatát bemutató bemutató.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c2361192a612cfd92003b1e3c36e85dbbd9090bb
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: c145b0efa2f1c06710e1d41f606f918a7439820a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482768"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189497"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: egyéni attribútumok használata egyéni profil-szerkesztési házirendben
 
@@ -257,7 +257,7 @@ Az alkalmazásnak visszaadott azonosító jogkivonat magában foglalja az új b�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 1. A következő **TechnicalProfiles**megváltoztatásával adja hozzá az új jogcímet a folyamatokhoz a közösségi fiókba való bejelentkezéshez. A közösségi és összevont fiókok ezt a két **TechnicalProfiles** használják a bejelentkezéshez. A felhasználó adatai a **alternativeSecurityId** , a felhasználói objektum lokátorának használatával írhatók és olvashatók.
 
@@ -295,7 +295,7 @@ Az alkalmazásnak visszaadott azonosító jogkivonat magában foglalja az új b�
    extension_<app-guid>_ActivationStatus via Graph API.
    ```
 
-## <a name="reference"></a>Referencia
+## <a name="reference"></a>Leírások
 
 A bővítmény tulajdonságaival kapcsolatos további információkért tekintse meg az [Egyéni adatok hozzáadása az erőforrásokhoz bővítmények használatával](https://docs.microsoft.com/graph/extensibility-overview)című cikket.
 
