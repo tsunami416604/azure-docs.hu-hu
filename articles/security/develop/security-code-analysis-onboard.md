@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 108d116500454605f33de201caffc11ae263f74c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6132aab98cc8145cb99cf153c64f20fbac00131c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851502"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197005"
 ---
 # <a name="onboarding-and-installing"></a>Előkészítés és telepítés
 
@@ -30,24 +30,29 @@ A Microsoft biztonsági kód elemzésének megkezdéséhez szükséges előfelt�
 
 ## <a name="onboarding-the-microsoft-security-code-analysis-extension"></a>A Microsoft biztonsági kód elemzési bővítményének bevezetése
 
-- Ha a következő támogatási ajánlatok valamelyikével rendelkezik, forduljon a technikai menedzserhez a meglévő órák megvásárlásához vagy lecserélésekor a bővítményhez való hozzáféréshez:
-  - Egységes támogatás – speciális szintű
-  - Egyesített támogatás teljesítményi szintje
-  - Premier szintű támogatás fejlesztők számára
-  - Premier szintű támogatás partnerek számára
-  - Nagyvállalati Premier szintű támogatás
-- Ha a következő támogatási szolgáltatások valamelyikével rendelkezik, vagy nem rendelkezik Microsoft támogatási csomaggal, akkor a jogosult támogatási ajánlatra kell frissítenie:
-  - Azure-támogatás partnereknek
-  - Azure Alapszintű támogatás
-  - Azure-Fejlesztői támogatás
-  - Azure-Standard szintű támogatás
-  - Közvetlen Azure Professional
-  - Egységesített támogatás – alapszintű
-- A jogosult támogatási ajánlat megvásárlásához lépjen a [támogatási szolgáltatások kezdőlapjára](https://www.microsoft.com/enterprise/services/support).
-- A támogatási szerződés beszerzése után lépjen kapcsolatba a technikai fiók kezelőjével, és segítsen a szükséges adatok gyűjtésében.
+### <a name="interested-in-purchasing-the-microsoft-security-code-analysis-extension"></a>Érdekli a Microsoft biztonsági kód elemzése bővítmény megvásárlása?
 
->[!NOTE]
->Ha nem rendelkezik támogatási szerződéssel, egy partner-vásárlási programon dolgozunk, ahol a harmadik féltől származó partnerekkel is megvásárolhatja a bővítményt anélkül, hogy az egységes támogatási csomagot kellene megvásárolnia. Küldjön [nekünk e-mailt](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Onboarding%20Request). Ha szeretné megtudni, hogy érdekli Önt ez a lehetőség. Tudomásul vesszük érdeklődését, és azonnal visszakerülünk Önnek, amint ez a lehetőség elérhetővé válik.
+Ha a következő támogatási ajánlatok valamelyikével rendelkezik, forduljon a technikai menedzserhez a meglévő órák megvásárlásához vagy lecserélésekor a bővítményhez való hozzáféréshez:
+
+- Egységes támogatás – speciális szintű
+- Egyesített támogatás teljesítményi szintje
+- Premier szintű támogatás fejlesztők számára
+- Premier szintű támogatás partnerek számára
+- Nagyvállalati Premier szintű támogatás
+
+Ha nem rendelkezik a fenti támogatási szerződések valamelyikével, megvásárolhatja a bővítményt az egyik partnertől.
+
+**Következő lépések:**
+
+Vegye fel a kapcsolatot egy partnerrel az alábbi listából, és kérje meg a Microsoft biztonsági kód elemzése bővítmény megvásárlását.
+
+>**Partnerek**
+
+- Zónák – kapcsolattartási adatok: cloudsupport@zones.com
+
+### <a name="become-a-partner"></a>Partnerré válni
+
+A Microsoft biztonsági kód elemzése csapat a partnereknek szóló szerződéssel rendelkező Premier szintű támogatás keres. A partnerek segítséget nyújtanak az Azure DevOps ügyfeleinek, hogy biztonságosabban fejlesszenek, ha a bővítményt a megvásárolni kívánt ügyfeleknek értékesítik, de nem rendelkeznek nagyvállalati támogatási szerződéssel a Microsofttal. Az érdekelt partnerek regisztrálhatnak [itt](http://www.microsoftpartnersupport.com/msrd/opin).
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>A Microsoft biztonsági kód elemzése bővítmény telepítése
 
@@ -85,7 +90,7 @@ A bővítmény telepítése után a biztonságos fejlesztési felépítési fela
 > - Egyes Azure DevOps-Build feladatok nem támogatottak, ha kiadási folyamaton keresztül futnak. Konkrétabban az Azure DevOps nem támogatja azokat a feladatokat, amelyek egy kiadási folyamaton belül teszik közzé az összetevőket.
 > - Az Azure DevOps Team buildben paraméterként megadható előre definiált változók listáját az [Azure DevOps Build változói](https://docs.microsoft.com/azure/devops/pipelines/build/variables?tabs=batch&view=vsts)című témakörben tekintheti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Build-feladatok konfigurálásával kapcsolatos további információkért tekintse meg a [konfigurációs útmutatót](security-code-analysis-customize.md) vagy a [YAML konfigurációs útmutatóját](yaml-configuration.md).
 

@@ -7,12 +7,12 @@ ms.date: 12/10/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: a34fdc2f6d6698f53dc2ff7fdc11d0a985b23415
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6ccd3cc61f9d8244874823be76496a4f4e1073c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473128"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199767"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a Pythonhoz
 
@@ -28,7 +28,7 @@ Használja a Pythonhoz készült Azure üzenetsor Storage ügyféloldali kódtá
 * Üzenetek törlése egy várólistából
 * Üzenetsor törlése
 
-[API-referenciák dokumentációja](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-queue/) | [minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)
+[API-referenciák dokumentációja](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-queue/) | [minták](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -109,7 +109,7 @@ A következő Python-osztályok használata az alábbi erőforrásokkal való in
 * [QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient): a `QueueClient` osztály segítségével kezelheti és kezelheti az egyes várólistákat és azok üzeneteit.
 * [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage): a `QueueMessage` osztály a [receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) várólistán való meghívásakor visszaadott egyedi objektumokat jelöli.
 
-## <a name="code-examples"></a>Kódpéldák
+## <a name="code-examples"></a>Példák a kódokra
 
 Az alábbi kódrészletek azt mutatják be, hogyan hajthatja végre a következő műveleteket az Azure üzenetsor-tároló a Pythonhoz:
 
@@ -301,7 +301,7 @@ Ha az alkalmazás szünetelteti az üzenetek fogadását, akkor a [Azure Portalb
 
 Nyomja le az **ENTER** billentyűt az üzenetek fogadásához és törléséhez. Ha a rendszer kéri, nyomja meg ismét az **ENTER** billentyűt a várólista törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre üzenetsor-t, és hogyan adhat hozzá üzeneteket a Python-kóddal. Ezután megtanulta az üzenetek betekintését, beolvasását és törlését. Végezetül megtanulta, hogyan törölhet egy üzenetsor-várólistát.
 

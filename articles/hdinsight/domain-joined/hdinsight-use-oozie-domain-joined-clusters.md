@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/09/2019
-ms.openlocfilehash: ecc4d5053ef6d9194f09b8a5aa6ba1528f9d94fa
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 9ef54707f7fac3dd1328e29f6d05f62c1dee2561
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920721"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194903"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Apache Oozie futtatása a HDInsight Hadoop-fürtökben Enterprise Security Package
 
@@ -345,7 +345,7 @@ A Oozie webes felhasználói felülete webes nézetet biztosít a fürt Oozie-fe
 
 2. A [Oozie webes felhasználói felületének](../hdinsight-use-oozie-linux-mac.md) lépéseit követve engedélyezze az SSH-bújtatást a peremhálózati csomóponton, és nyissa meg a webes felhasználói felületet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az [Apache Oozie és a Apache Hadoop használatával megadhatja és futtathatja a munkafolyamatokat a Linux-alapú Azure-HDInsight](../hdinsight-use-oozie-linux-mac.md).
-- [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+- [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight).

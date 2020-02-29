@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5c959dc7fa36fb41307d286b1e7d0b475d5b56c6
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5eaf4cf702e56df932a61ab277dff6b34d97854d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988464"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185029"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>A Key Vault-értesítések fogadása és reagálás Azure Event Grid (előzetes verzió)
 
@@ -184,13 +185,13 @@ Ellenőrizze, hogy a Event Grid-előfizetés megfelelően van-e konfigurálva. E
 
 Regisztrálja újra Event Grid és a Key Vault-szolgáltatót az Azure-előfizetési erőforrás-szolgáltatókban. Lásd: [Azure Resource Providers és types](../azure-resource-manager/management/resource-providers-and-types.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Gratulálunk! Ha helyesen követte ezeket a lépéseket, most már készen áll arra, hogy programozott módon válaszoljon a Key vaultban tárolt titkos kódok állapotának változásaira.
 
 Ha egy lekérdezésen alapuló rendszert használ a titkos kulcsok állapotának változására a kulcstartóban, most már elkezdheti használni ezt az értesítési funkciót. A runbook is lecserélheti a kód segítségével, hogy programozott módon megújítsa a titkokat, amikor hamarosan lejárnak.
 
-Részletek:
+További információ:
 
 
 - Áttekintés: [Key Vault figyelése Azure Event Grid (előzetes verzió)](event-grid-overview.md)

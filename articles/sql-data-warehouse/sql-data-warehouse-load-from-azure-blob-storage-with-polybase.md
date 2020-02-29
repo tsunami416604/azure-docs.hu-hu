@@ -1,5 +1,5 @@
 ---
-title: Contoso kiskereskedelmi adatforgalom betöltése
+title: A contoso kiskereskedelmi adatforgalmának betöltése egy SQL Analytics-adattárházba
 description: 'A contoso kiskereskedelmi adatokból a Azure SQL Analyticsba betölthet két táblázatot a következőben: Base és T-SQL-parancsok.'
 services: sql-data-warehouse
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: af505d7614b527d6dc7e1ce54136578d67824cf9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4da4ea54de5517864567583cc6853df40b4370a9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721166"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197300"
 ---
 # <a name="load-contoso-retail-data-to-a-sql-analytics-data-warehouse"></a>A contoso kiskereskedelmi adatforgalmának betöltése egy SQL Analytics-adattárházba
 
@@ -29,12 +29,15 @@ Ebben az oktatóanyagban a következőket fogja elsajátítani:
 3. Optimalizálások végrehajtása a betöltés befejeződése után.
 
 ## <a name="before-you-begin"></a>Előkészületek
+
 Az oktatóanyag futtatásához olyan Azure-fiókra van szükség, amely már rendelkezik SQL Analytics-adattárházral. Ha nincs kiépítve adattárház, tekintse [meg az adattárház létrehozása és a kiszolgálói szintű tűzfalszabály beállítása](create-data-warehouse-portal.md)című témakört.
 
-## <a name="1-configure-the-data-source"></a>1. az adatforrás konfigurálása
+## <a name="configure-the-data-source"></a>Az adatforrás konfigurálása
+
 A Base T-SQL külső objektumokat használ a külső adatok helyének és attribútumainak meghatározásához. A külső objektumok definícióit az SQL Analytics-adattárházban tárolja a rendszer. Az adattárolást külsőleg tárolja a rendszer.
 
-### <a name="11-create-a-credential"></a>1.1. Hitelesítő adat létrehozása
+## <a name="create-a-credential"></a>Hitelesítő adat létrehozása
+
 **Hagyja ki ezt a lépést** , ha betölti a contoso nyilvános információit. Nem szükséges biztonságos hozzáférést biztosítani a nyilvános adatbázishoz, mert már mindenki számára elérhető.
 
 **Ne ugorja át ezt a lépést** , ha az oktatóanyagot sablonként használja a saját adatai betöltéséhez. Az adatok hitelesítésen keresztüli eléréséhez használja az alábbi parancsfájlt egy adatbázis-hatókörű hitelesítő adat létrehozásához. Ezután használja az adatforrás helyének meghatározásakor.
@@ -72,7 +75,8 @@ WITH (
 );
 ```
 
-### <a name="12-create-the-external-data-source"></a>1.2. Külső adatforrás létrehozása
+## <a name="create-the-external-data-source"></a>Külső adatforrás létrehozása
+
 Ezzel a [create External adatforrás](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?view=sql-server-ver15) -paranccsal tárolhatók az adathalmazok és az adattípusok. 
 
 ```sql
@@ -87,9 +91,9 @@ WITH
 > [!IMPORTANT]
 > Ha úgy dönt, hogy az Azure Blob Storage-tárolókat nyilvánosként adja meg, ne feledje, hogy az adatok tulajdonosaként a kimenő adatforgalomért fizetendő díjat kell fizetnie, amikor az adatok elhagyják az adatközpontot. 
 > 
-> 
 
-## <a name="2-configure-data-format"></a>2. az adatformátum konfigurálása
+## <a name="configure-the-data-format"></a>Az adatformátum konfigurálása
+
 Az adatok tárolása szövegfájlokban történik az Azure Blob Storage-ban, és minden mező elválasztó karakterrel elválasztva. A SSMS-ben futtassa a következő CREATE EXTERNAL FILE FORMAT (külső fájlformátum létrehozása) parancsot a szövegfájlokban lévő adatformátum megadásához. A contoso-adatmennyiség tömörítve van, és a cső tagolva van.
 
 ```sql
@@ -104,10 +108,10 @@ WITH
 );
 ``` 
 
-## <a name="3-create-the-external-tables"></a>3. a külső táblák létrehozása
+## <a name="create-the-external-tables"></a>Külső táblák létrehozása
 Most, hogy megadta az adatforrás és a fájl formátumát, készen áll a külső táblák létrehozására. 
 
-### <a name="31-create-a-schema-for-the-data"></a>3.1. Hozzon létre egy sémát az adatkezeléshez.
+## <a name="create-a-schema-for-the-data"></a>Séma létrehozása az adatkezeléshez
 Ha létre szeretne hozni egy helyet a contoso-adatbázis tárolására, hozzon létre egy sémát.
 
 ```sql
@@ -115,7 +119,8 @@ CREATE SCHEMA [asb]
 GO
 ```
 
-### <a name="32-create-the-external-tables"></a>3.2. Hozza létre a külső táblákat.
+## <a name="create-the-external-tables"></a>Külső táblák létrehozása
+
 Futtassa a következő szkriptet a DimProduct és a FactOnlineSales külső táblák létrehozásához. Itt csak az oszlopnevek és az adattípusok vannak meghatározva, és az Azure Blob Storage-fájlok helyére és formátumára kell kötni őket. A definíció tárolása az SQL Analytics-adattárházban történik, és az adatmennyiség továbbra is a Azure Storage Blob.
 
 A **Location** paraméter a Azure Storage blob gyökérkönyvtárában található mappa. Minden táblázat egy másik mappában található.
@@ -202,10 +207,11 @@ WITH
 ;
 ```
 
-## <a name="4-load-the-data"></a>4. töltse be az adattárolót
+## <a name="load-the-data"></a>Az adatok betöltése
 A külső adatforrásokhoz többféleképpen férhet hozzá.  Az adatok közvetlenül a külső táblákból is lefoglalhatók, az adatok betölthetők az adatraktár új tábláiba, vagy külső adatok is hozzáadhatók a meglévő adattárház-táblákhoz.  
 
-### <a name="41-create-a-new-schema"></a>4.1. Új séma létrehozása
+###  <a name="create-a-new-schema"></a>Új séma létrehozása
+
 A CTAS egy új táblát hoz létre, amely tartalmaz egy adatkészletet.  Először hozzon létre egy sémát a contoso-adatkészlethez.
 
 ```sql
@@ -213,7 +219,8 @@ CREATE SCHEMA [cso]
 GO
 ```
 
-### <a name="42-load-the-data-into-new-tables"></a>4.2. Az adatgyűjtés új táblákba
+### <a name="load-the-data-into-new-tables"></a>Az adatgyűjtés új táblákba
+
 Az Azure Blob Storage-ból származó adatok az adatraktár táblájába való betöltéséhez használja a [CREATE TABLE as Select (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7) utasítást. Az [CTAS](sql-data-warehouse-develop-ctas.md) -be való betöltéssel a létrehozott, szigorúan beírt külső táblákat használja. Az adatok új táblákba való betöltéséhez használjon egy CTAS utasítást egy táblában. 
  
 A CTAS létrehoz egy új táblát, és feltölti azt egy SELECT utasítás eredményeivel. A CTAS határozza meg, hogy az új tábla ugyanazokat az oszlopokat és adattípusokat tartalmazza, mint a SELECT utasítás eredményei. Ha az összes oszlopot kiválasztja egy külső táblából, az új tábla a külső tábla oszlopainak és adattípusának replikája lesz.
@@ -228,7 +235,8 @@ CREATE TABLE [cso].[DimProduct]            WITH (DISTRIBUTION = HASH([ProductKey
 CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey]  ) ) AS SELECT * FROM [asb].[FactOnlineSales]        OPTION (LABEL = 'CTAS : Load [cso].[FactOnlineSales]        ');
 ```
 
-### <a name="43-track-the-load-progress"></a>4,3 a betöltési folyamat nyomon követése
+### <a name="track-the-load-progress"></a>A betöltési folyamat nyomon követése
+
 A terhelés előrehaladását a dinamikus felügyeleti nézetek (DMV) használatával követheti nyomon. 
 
 ```sql
@@ -264,7 +272,8 @@ ORDER BY
     gb_processed desc;
 ```
 
-## <a name="5-optimize-columnstore-compression"></a>5. oszlopcentrikus tömörítés optimalizálása
+## <a name="optimize-columnstore-compression"></a>Oszlopcentrikus tömörítés optimalizálása
+
 Alapértelmezés szerint az SQL Analytics-adattárház fürtözött oszlopcentrikus indexként tárolja a táblát. A betöltés befejeződése után előfordulhat, hogy egyes adatsorok nem lesznek tömörítve a oszlopcentrikus.  Ennek számos oka lehet. További információ: [oszlopcentrikus indexek kezelése](sql-data-warehouse-tables-index.md).
 
 A lekérdezés teljesítményének és a oszlopcentrikus a terhelés utáni tömörítésének optimalizálásához építse újra a táblázatot a oszlopcentrikus index kikényszerítéséhez az összes sor tömörítéséhez. 
@@ -279,7 +288,8 @@ ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 
 A oszlopcentrikus indexek karbantartásával kapcsolatos további információkért tekintse meg a [oszlopcentrikus-indexek kezelése](sql-data-warehouse-tables-index.md) című cikket.
 
-## <a name="6-optimize-statistics"></a>6. optimalizálási statisztika
+## <a name="optimize-statistics"></a>Statisztikák optimalizálása
+
 A legjobb, ha egy terhelés után azonnal létrehoz egy egyoszlopos statisztikát. Ha tudja, hogy bizonyos oszlopok nem a lekérdezési predikátumokban lesznek, kihagyhatja az oszlopok statisztikáinak létrehozását. Ha egyoszlopos statisztikát hoz létre minden oszlophoz, hosszú időt is igénybe vehet az összes statisztika újraépítéséhez. 
 
 Ha úgy dönt, hogy egyoszlopos statisztikát hoz létre minden táblázat minden oszlopához, használhatja a [statisztikai](sql-data-warehouse-tables-statistics.md) cikkben a tárolt eljárás kódja mintát `prc_sqldw_create_stats`.
@@ -329,7 +339,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 ```
 
 ## <a name="achievement-unlocked"></a>A megvalósítás feloldva!
-Sikeresen betöltötte a nyilvános adatkészletet egy SQL Analytics-adattárházba. Remek munka!
+Sikeresen betöltötte a nyilvános adatait az adattárházba. Remek munka!
 
 Most már megkezdheti a táblázatok lekérdezését, hogy megismerkedjen az adataival. Futtassa a következő lekérdezést a teljes értékesítés/márka megállapításához:
 
@@ -341,6 +351,6 @@ JOIN    [cso].[DimProduct]      AS p ON f.[ProductKey] = p.[ProductKey]
 GROUP BY p.[BrandName]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A teljes adathalmaz betöltéséhez futtassa a példát a [teljes contoso kiskereskedelmi adattárház betöltésére](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md) a Microsoft SQL Server Samples adattárból.
 További fejlesztési tippek: [tervezési döntések és kódolási technikák az adattárházak számára](sql-data-warehouse-overview-develop.md).

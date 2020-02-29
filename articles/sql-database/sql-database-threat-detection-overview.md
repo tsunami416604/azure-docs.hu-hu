@@ -10,22 +10,23 @@ ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
-ms.date: 03/31/2019
-ms.openlocfilehash: d09cc202c3f7e18358ec693d1cfe4bd2648811ba
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/05/2020
+tags: azure-synapse
+ms.openlocfilehash: 473c58fa5097c4f4e318543c59ad1cf3a3899594
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820701"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194087"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL Database – Advanced Threat Protection
 
-A [Azure SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) komplex veszélyforrások elleni védelme észleli azokat a rendellenes tevékenységeket, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához.
+A [Azure SQL Database](sql-database-technical-overview.md) és az [Azure szinapszis Analytics](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) komplex veszélyforrások elleni védelme olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához.
 
 A komplex veszélyforrások elleni védelem a [fejlett adatbiztonsági](sql-database-advanced-data-security.md) (ADS) ajánlat része, amely a speciális SQL-alapú biztonsági funkciók egységes csomagja. A komplex veszélyforrások elleni védelem a központi SQL ADS portálon keresztül érhető el és kezelhető.
 
 > [!NOTE]
-> Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
+> Ez a témakör az Azure SQL Serverre, valamint az Azure SQL Serveren létrehozott SQL Database és az Azure Szinapszisra is vonatkozik. Az egyszerűség kedvéért SQL Database a rendszer akkor használja, ha a SQL Database és az Azure Szinapszisra hivatkozik.
 
 ## <a name="what-is-advanced-threat-protection"></a>Mi az a komplex veszélyforrások elleni védelem?
 
@@ -68,7 +69,7 @@ A rendellenes adatbázis-tevékenységek észlelése után e-mailben értesíté
 
 A komplex veszélyforrások elleni védelem a riasztásokat az [Azure Security Center](https://azure.microsoft.com/services/security-center/)szolgáltatással integrálja. Az adatbázison belüli élő SQL Advanced Threat Protection csempék és az SQL-hirdetések pengéi a Azure Portal nyomon követik az aktív fenyegetések állapotát.
 
-Kattintson a komplex **veszélyforrások elleni védelem riasztása** lehetőségre a Azure Security Center riasztások oldal elindításához, és tekintse át az adatbázisban vagy az adatraktárban észlelt aktív SQL-fenyegetéseket.
+Kattintson a komplex **veszélyforrások elleni védelem riasztása** lehetőségre a Azure Security Center riasztások oldal elindításához, és tekintse át az adatbázisban észlelt aktív SQL-fenyegetések áttekintését.
 
    ![Komplex veszélyforrások elleni védelem riasztása](./media/sql-database-threat-detection/threat_detection_alert.png)
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 71df31562971af8bcdb38be76894c1d0abeccc3f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: cb68f1bc851a8573ddec01d1eee803135a11b067
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925578"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195358"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2t támogató Azure-szolgáltatások
 
 Az Azure-szolgáltatások az adatok betöltésére, az elemzések elvégzésére és a vizuális ábrázolások létrehozására használhatók. Ez a cikk felsorolja a támogatott Azure-szolgáltatásokat, felfedi a támogatási szintet, és olyan cikkekre mutató hivatkozásokat tartalmaz, amelyek segítenek ezeknek a szolgáltatásoknak a Azure Data Lake Storage Gen2 való használatához.
 
-## <a name="supportedazureservices"></a>Támogatott Azure-szolgáltatások
+## <a name="supported-azure-services"></a>Támogatott Azure-szolgáltatások
 
 Ez a táblázat felsorolja a Azure Data Lake Storage Gen2 használható Azure-szolgáltatásokat. A táblázatokban megjelenő elemek idővel változnak, ahogy a támogatás továbbra is bővül.
 

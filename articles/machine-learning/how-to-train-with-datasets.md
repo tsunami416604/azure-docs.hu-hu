@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: 2e48b47967e29a421a96bb09dd17b2cdcdbaff3c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: ece8ee77f57dc3252c70c3f8b49dcee72967dc9e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77580507"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198065"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Betanítás Azure Machine Learning-adatkészletekkel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -106,11 +106,28 @@ experiment_run.wait_for_completion(show_output=True)
 Ha szeretné, hogy az adatfájlok elérhetők legyenek a számítási célra a betanításhoz, használja a [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) az általa hivatkozott fájlok csatlakoztatásához vagy letöltéséhez.
 
 ### <a name="mount-vs-download"></a>Csatlakoztatás a letöltéshez
-Adatkészlet csatlakoztatásakor az adatkészlet által hivatkozott fájlokat csatolja egy könyvtárhoz (csatlakoztatási ponthoz), és elérhetővé teszi azt a számítási célra. A csatlakoztatás Linux-alapú számításokhoz, többek között Azure Machine Learning számításokhoz, virtuális gépekhez és HDInsight támogatott. Ha az adatok mérete meghaladja a számítási lemez méretét, vagy csak az adatkészlet egy részét tölti be a parancsfájlba, a csatlakoztatás javasolt. Mivel a lemez méretnél nagyobb méretű adatkészletek letöltése sikertelen lesz, és a csatlakoztatás csak a parancsfájl által a feldolgozáskor használt adat részét fogja betölteni. 
-
-Adatkészlet letöltésekor a rendszer az adatkészlet által hivatkozott összes fájlt letölti a számítási célra. A letöltés minden számítási típus esetében támogatott. Ha a parancsfájl az adatkészlet által hivatkozott összes fájlt feldolgozza, és a számítási lemez elfér a teljes adatkészletben, akkor a letöltés javasolt a tárolási szolgáltatásokból származó adatok átvitelének elkerülése érdekében.
 
 Az Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database és Azure Database for PostgreSQL által létrehozott adatkészletek esetében bármilyen formátumú fájlok csatlakoztatása vagy letöltése támogatott. 
+
+Adatkészlet csatlakoztatásakor az adatkészlet által hivatkozott fájlokat csatolja egy könyvtárhoz (csatlakoztatási ponthoz), és elérhetővé teszi azt a számítási célra. A csatlakoztatás Linux-alapú számításokhoz, többek között Azure Machine Learning számításokhoz, virtuális gépekhez és HDInsight támogatott. Adatkészlet letöltésekor a rendszer az adatkészlet által hivatkozott összes fájlt letölti a számítási célra. A letöltés minden számítási típus esetében támogatott. 
+
+Ha a szkript feldolgozza az adatkészlet által hivatkozott összes fájlt, és a számítási lemez elfér a teljes adatkészletben, a letöltés javasolt a tárolási szolgáltatásokból származó adatok átvitelének elkerülése érdekében. Ha az adatok mérete meghaladja a számítási lemez méretét, a letöltés nem lehetséges. Ebben a forgatókönyvben javasoljuk a csatlakoztatást, mivel csak a parancsfájl által használt adatfájlok töltődnek be a feldolgozás során.
+
+A következő kód csatlakoztatja `dataset` a TEMP könyvtárhoz a `mounted_path`
+
+```python
+import tempfile
+mounted_path = tempfile.mkdtemp()
+
+# mount dataset onto the mounted_path of a Linux-based compute
+mount_context = dataset.mount(mounted_path)
+
+mount_context.start()
+
+import os
+print(os.listdir(mounted_path))
+print (mounted_path)
+```
 
 ### <a name="create-a-filedataset"></a>FileDataset létrehozása
 
@@ -194,7 +211,7 @@ y_test = load_data(y_test, True).reshape(-1)
 
 Az [adatkészlet jegyzetfüzetei](https://aka.ms/dataset-tutorial) bemutatják és kibővítik az ebben a cikkben szereplő fogalmakat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Gépi tanulási modellek automatikus betanítása](how-to-auto-train-remote.md) a TabularDatasets
 

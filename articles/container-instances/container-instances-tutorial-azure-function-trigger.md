@@ -4,12 +4,12 @@ description: HTTP-alapú, kiszolgáló nélküli PowerShell-függvény létrehoz
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533376"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196535"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Oktatóanyag: egy HTTP-triggert használó Azure-függvény használata tároló csoport létrehozásához
 
@@ -30,7 +30,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Lásd: [az első PowerShell-függvény létrehozása az Azure-ban](../azure-functions/functions-create-first-function-powershell.md#prerequisites) a Visual Studio Code telepítéséhez és használatához szükséges előfeltételekhez az operációs rendszer Azure functions.
+Lásd: [az első függvény létrehozása az Azure-ban](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell#configure-your-environment) a Visual Studio Code telepítéséhez és használatához az operációs rendszer Azure Functionsjának előfeltételei.
 
 A cikkben ismertetett lépések az Azure CLI-t használják. A lépések végrehajtásához használhatja az Azure CLI Azure Cloud Shell vagy helyi telepítését. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
@@ -191,7 +191,7 @@ Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, az az 
 az group delete --name myfunctionapp
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy Azure-függvényt, amely HTTP-kérést végez, és elindítja egy tároló csoport üzembe helyezését. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

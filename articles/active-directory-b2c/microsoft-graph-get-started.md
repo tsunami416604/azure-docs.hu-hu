@@ -3,20 +3,20 @@ title: Erőforrások kezelése a Microsoft Graph
 titleSuffix: Azure AD B2C
 description: A szükséges Graph API engedélyeket biztosító alkalmazás regisztrálásával előkészítheti a Microsoft Graph Azure AD B2C-erőforrások felügyeletét.
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bcddcf051e73381af35ca40e22c443c7b9ae30a7
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 32117d4bfcf0c0af94eced095b94ab0c1b6f88af
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492941"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184347"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Azure AD B2C kezelése Microsoft Graph
 
@@ -72,7 +72,7 @@ Ha az alkalmazásnak vagy a parancsfájlnak törölnie kell a felhasználókat, 
 1. A **kijelölés** szövegmezőbe írja be a korábban regisztrált alkalmazás nevét, például *managementapp1*. Válassza ki az alkalmazást, amikor megjelenik a keresési eredmények között.
 1. Válassza a **Hozzáadás** lehetőséget. Az engedélyek teljes propagálása eltarthat néhány percig.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy regisztrálta a felügyeleti alkalmazást, és megadta a szükséges engedélyeket, az alkalmazásai és szolgáltatásai (például az Azure-folyamatok) használhatják a hitelesítő adatait és a Microsoft Graph API-val való interakcióra vonatkozó engedélyeket.
 

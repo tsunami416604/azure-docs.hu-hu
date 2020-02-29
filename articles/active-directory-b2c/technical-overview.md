@@ -2,20 +2,20 @@
 title: Technikai és funkciók áttekintése – Azure Active Directory B2C
 description: A Azure Active Directory B2C szolgáltatásainak és technológiáinak részletes bemutatása.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 09/19/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5801cc4fdfeb4bbdf7c22e2be2f686558611a7f6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1aed1b0a13482bc932024a9d2a131ec5f1d948ba
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840213"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186896"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>A Azure Active Directory B2C technikai és funkcióinak áttekintése
 
@@ -115,7 +115,7 @@ További információ a [Azure Active Directory B2C felhasználói folyamatainak
 
 Egyéni szabályzatok az Identity Experience Framework-(IEF-) összehangoló motor teljes teljesítményéhez való hozzáférés feloldására szolgálnak. Az egyéni szabályzatok segítségével szinte bármilyen hitelesítést, felhasználói regisztrációt vagy profil-szerkesztési folyamatot hozhat létre a IEF használatával.
 
-Az identitási élmény keretrendszer lehetővé teszi a felhasználói útvonalak összeállítását a lépések tetszőleges kombinációjával. Példa:
+Az identitási élmény keretrendszer lehetővé teszi a felhasználói útvonalak összeállítását a lépések tetszőleges kombinációjával. Például:
 
 * Összevonása más identitás-szolgáltatókkal
 * Az első és a harmadik féltől származó többtényezős hitelesítés (MFA) kihívásai
@@ -148,7 +148,7 @@ Az előző ábrán látható, hogy Azure AD B2C képes kommunikálni különböz
 1. Ha az alkalmazás egy felhasználója úgy dönt, hogy egy SAML protokollt használó külső Identitáskezelő használatával jelentkezik be, Azure AD B2C az SAML protokollt hívja meg az identitás-szolgáltatóval való kommunikációra.
 1. Miután a felhasználó befejezte a bejelentkezési műveletet a külső identitás-szolgáltatóval, Azure AD B2C ezt követően visszaadja a tokent a függő entitás alkalmazásnak az OpenID Connect használatával.
 
-## <a name="application-integration"></a>Alkalmazásintegrálás
+## <a name="application-integration"></a>Alkalmazásintegráció
 
 Ha egy felhasználó be szeretne jelentkezni az alkalmazásba, legyen szó webes, mobil-, asztali vagy egyoldalas alkalmazásról (SPA), akkor az alkalmazás egy felhasználói folyamathoz vagy egyéni házirend által megadott végponthoz kezdeményezi az engedélyezési kérelmet. A felhasználói folyamat vagy az egyéni házirend határozza meg és szabályozza a felhasználó élményét. Amikor elvégeznek egy felhasználói folyamatot, például a *regisztrálási vagy bejelentkezési* folyamatot, Azure ad B2C létrehoz egy jogkivonatot, majd visszairányítja a felhasználót az alkalmazáshoz.
 
@@ -262,7 +262,7 @@ Azure AD B2C segítségével felfedezheti, hogy mikor regisztrálhatnak vagy jel
 
 További információ a használati elemzésekről: a [felhasználói viselkedés nyomon követése Azure Active Directory B2C a Application Insights használatával](analytics-with-application-insights.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy alaposabban megtekintette a Azure Active Directory B2C funkcióit és technikai aspektusait, a szolgáltatással való ismerkedéshez hozzon létre egy B2C-bérlőt:
 

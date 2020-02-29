@@ -2,20 +2,20 @@
 title: 'Oktatóanyag: Node. js webes API-hoz való hozzáférés engedélyezése asztali alkalmazásból'
 description: Útmutató a Node. js-alapú webes API-k és a .NET Desktop-alkalmazásokból való meghívásához a Active Directory B2C használatával.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 10/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: a72c45f80d03cda7b176c421cc5498dd16c242ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 59670cda68f54e4c0b20b361f0688e6766acba61
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850040"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183378"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Oktatóanyag: Node.js webes API-khoz való hozzáférés engedélyezése egy asztali alkalmazásból az Azure Active Directory B2C használatával
 
@@ -51,7 +51,7 @@ A védett webes API-k natív ügyfélalkalmazások általi meghívásához meg k
 
 Az előfeltételként szolgáló oktatóanyagban regisztrált egy *nativeapp1*nevű natív ügyfélalkalmazás. A következő lépésekkel konfigurálhatja, hogy a natív alkalmazás regisztrálása az előző szakaszban *webapi1* elérhető API-hatókörökkel történjen. Ez lehetővé teszi, hogy az asztali alkalmazás olyan hozzáférési jogkivonatot szerezzen be Azure AD B2Ctól, amelyet a webes API használhat az erőforrásokhoz való hatókörön belüli hozzáférés ellenőrzéséhez és biztosításához. Az oktatóanyag későbbi részében az asztali alkalmazás és a webes API-kód is konfigurálható és futtatható.
 
-#### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
+#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
 1. Válassza az **alkalmazások**, majd a *nativeapp1*lehetőséget.
 1. Válassza az **API-hozzáférés**lehetőséget, majd kattintson a **Hozzáadás**gombra.
@@ -59,7 +59,7 @@ Az előfeltételként szolgáló oktatóanyagban regisztrált egy *nativeapp1*ne
 1. A **hatókörök kiválasztása** legördülő menüben válassza ki a korábban definiált hatóköröket. Például: *bemutató. Read* és *demo. Write*.
 1. Kattintson az **OK** gombra.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
 1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza ki azt a natív ügyfélalkalmazás-alkalmazást, amelynek hozzáféréssel kell rendelkeznie az API-hoz. Például: *nativeapp1*.
 1. A **kezelés**területen válassza az **API-engedélyek**lehetőséget.
@@ -124,7 +124,7 @@ A mintául szolgáló Node.js webes API a Passport.js kódtárat használja arra
     app.get("/",
     ```
 
-## <a name="run-the-samples"></a>A példák futtatása
+## <a name="run-the-samples"></a>A minták futtatása
 
 ### <a name="run-the-nodejs-web-api"></a>A Node. js webes API futtatása
 
@@ -151,7 +151,7 @@ Az asztali alkalmazás egy kérést küld a helyileg futó webes API-nak, és eg
 
 A Azure AD B2C által védett asztali alkalmazás a helyileg futó webes API-t hívja meg, amelyet Azure AD B2C is véd.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

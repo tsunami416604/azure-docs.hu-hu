@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 275fa173c5005c4d1609a858c8edb39b5c307c5e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2ec3276b9b02c29b80d46e5fd31298c909857182
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974614"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197164"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Az Axinom használata a Widevine-licencek kézbestéséhez az Azure Media Servicesbe 
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "74974614"
 ## <a name="overview"></a>Áttekintés
 Azure Media Services (AMS) a Google Widevine dinamikus védelmét vette fel (további részletekért lásd: [Mingfei blogja](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) ). Emellett a Azure Media Player (AMP) a Widevine-támogatással is bővült (további részletekért lásd az [amp-dokumentációt](https://amp.azure.net/libs/amp/latest/docs/) ). Ez a CENC által védett, több natív DRM-mel (PlayReady és Widevine) rendelkező, a modern böngészőkben található, az MSE és az EME platformmal ellátott streaming DASH-tartalmak jelentős megvalósítása.
 
-A Media Services .NET SDK 3.5.2-es verziójától kezdve a Media Services lehetővé teszi a Widevine-licenc sablonjának konfigurálását és a Widevine-licencek beszerzését. A Widevine-licencek továbbításának támogatásához a következő AMS-partnereket is használhatja: [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](https://ezdrm.com/) vagy [castLabs](https://castlabs.com/company/partners/azure/).
+A Media Services .NET SDK 3.5.2-es verziójától kezdve a Media Services lehetővé teszi a Widevine-licenc sablonjának konfigurálását és a Widevine-licencek beszerzését. A Widevine-licencek továbbításának támogatásához a következő AMS-partnereket is használhatja: [Axinom](https://www.axinom.com), [EZDRM](https://ezdrm.com/) vagy [castLabs](https://castlabs.com/company/partners/azure/).
 
 Ez a cikk a Axinom által felügyelt Widevine-licenckiszolgáló integrálását és tesztelését ismerteti. Pontosabban a következőket fedi le:  
 
@@ -44,7 +44,7 @@ A következő ábrán a teljes rendszeren és a tartalmi kulcs, a kulcs azonosí
 
 ![KÖTŐJEL és CENC](./media/media-services-axinom-integration/media-services-axinom1.png)
 
-## <a name="content-protection"></a>Tartalomvédelem
+## <a name="content-protection"></a>Content Protection
 A dinamikus védelem és a kulcsfontosságú kézbesítési szabályzat konfigurálásához tekintse meg a Mingfei blogja: [Widevine-csomagolás konfigurálása a Azure Media Services használatával](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services).
 
 A dinamikus CENC-védelmet a többplatformos DRM-mel konfigurálhatja a DASH streaminghez a következők mindegyikével:
@@ -176,7 +176,7 @@ Természetesen több módon is megszerezheti a Key ID-t. Előfordulhat például
         return key_id;
     }
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A Azure Media Services Content Protection és a Azure Media Player Widevine-támogatásának legújabb részeként a DASH + multi-Native-DRM (PlayReady + Widevine) streamingjét is megvalósíthatja az AMS-és Widevine-licencek PlayReady-licencelési szolgáltatásával Axinom-kiszolgáló a következő modern böngészőkhöz:
 
@@ -205,6 +205,6 @@ A következő paraméterek szükségesek a mini-megoldás kihasználó Axinom Wi
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Köszönetnyilvánítás
+### <a name="acknowledgments"></a>Nyugtázások
 Szeretnénk elismerni a következő személyeket, akik hozzájárultak a dokumentum létrehozásához: Ferenczi Jõgi of Axinom, Mingfei Yan, és barátságok.
 

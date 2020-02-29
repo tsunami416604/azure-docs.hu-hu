@@ -2,20 +2,20 @@
 title: Azure API Management API biztonságossá tétele Azure Active Directory B2C használatával
 description: Ismerje meg, hogyan használhatja a Azure Active Directory B2C által kiadott hozzáférési jogkivonatokat az Azure API Management API-végpontok biztonságossá tételéhez.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/31/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 942c565c885d59a14d64e7ec06beee0354e7c4ca
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 00938d831e70289b24acb599b81016aa6e564d78
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641622"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186930"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure API Management API biztonságossá tétele Azure AD B2C
 
@@ -37,17 +37,17 @@ Ha az Azure-API Managementban található API-t Azure AD B2C használatával vé
 
 Az alkalmazás AZONOSÍTÓjának beszerzéséhez használhatja az aktuális **alkalmazások** vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** felhasználói felületét. [További információ az új felületről](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
+#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
 1. A **kezelés**területen válassza az **alkalmazások**lehetőséget.
 1. Jegyezze fel a *webapp1* vagy egy korábban létrehozott másik alkalmazás **alkalmazás-azonosító** oszlopában található értéket.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
 1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza a **birtokolt alkalmazások** fület.
@@ -160,7 +160,7 @@ Ha a hozzáférési jogkivonat és a APIM-előfizetés kulcsa rögzített, most 
 
 1. Ezután adja hozzá a következő fejléceket:
 
-    | Jelmagyarázat | Érték |
+    | Kulcs | Érték |
     | --- | ----- |
     | `Authorization` | A korábban feljegyzett kódolt jogkivonat-érték, `Bearer ` (a "tulajdonos" utáni területtel együtt) |
     | `Ocp-Apim-Subscription-Key` | A korábban rögzített APIM-előfizetés kulcsa |

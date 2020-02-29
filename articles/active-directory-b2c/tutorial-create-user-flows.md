@@ -2,20 +2,20 @@
 title: Oktatóanyag – felhasználói folyamatok létrehozása – Azure Active Directory B2C
 description: Megtudhatja, hogyan hozhat létre felhasználói folyamatokat a Azure Portalban, hogy lehetővé tegye a regisztrációt, bejelentkezést és felhasználói profilok szerkesztését az alkalmazásaihoz Azure Active Directory B2Cban.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 06/07/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 21a3597a8c3675a060359b5e4feb9561e02f0149
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 51adbb74635f66ca86347b536dc2607566dcb725
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840145"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183567"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Oktatóanyag: felhasználói folyamatok létrehozása Azure Active Directory B2C
 
@@ -40,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A regisztrációs és bejelentkezési felhasználói folyamat egyetlen konfigurációval kezeli a regisztrálási és a bejelentkezési élményt. Az alkalmazás felhasználói a környezettől függően a megfelelő útvonalat vezetik le.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 
     ![B2C-bérlő, címtár és előfizetés panel, Azure Portal](./media/tutorial-create-user-flows/directory-subscription-pane.png)
@@ -115,7 +115,7 @@ Ha engedélyezni szeretné, hogy az alkalmazás felhasználói visszaállítsa a
 1. Kattintson a **felhasználói folyamat futtatása**elemre, ellenőrizze a korábban létrehozott fiók e-mail-címét, majd válassza a **Folytatás**lehetőséget.
 1. Most lehetősége van a felhasználó jelszavának módosítására. Módosítsa a jelszót, és válassza a **Folytatás**lehetőséget. A rendszer visszaküldi a jogkivonatot a `https://jwt.ms`nek, és megjelenik Önnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

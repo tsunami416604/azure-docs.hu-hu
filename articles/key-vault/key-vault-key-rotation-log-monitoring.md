@@ -6,19 +6,20 @@ author: msmbaldwin
 manager: rkarlin
 tags: ''
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a0aa20a8d1ddecfe401a4e099a4f298971779501
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f7fbc82c08d89d73d671a49fb31b9d3cca01c721
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720112"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195515"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Azure Key Vault beállítása a kulcsfontosságú rotációs és naplózási szolgáltatással
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 A Key Vault használata után elkezdheti a kulcsok és titkok tárolására. Az alkalmazásai többé nem kell megőrizniük a kulcsokat vagy a titkokat, de igény szerint kérhetik őket a tárból. A Key Vault lehetővé teszi a kulcsok és a titkos kódok frissítését anélkül, hogy az hatással lenne az alkalmazás viselkedésére, ami a kulcs-és titkos felügyeleti lehetőségek széles körét nyitja meg.
 

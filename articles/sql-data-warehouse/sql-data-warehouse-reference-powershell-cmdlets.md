@@ -1,6 +1,6 @@
 ---
-title: PowerShell-parancsmagok
-description: Keresse meg a Azure SQL Data Warehouse legfontosabb PowerShell-parancsmagokat, beleértve az adatbázisok szüneteltetését és folytatását.
+title: PowerShell & REST API-k
+description: Keresse meg az Azure szinapszis Analytics SQL-készlet legfontosabb PowerShell-parancsmagait, beleértve az adatbázisok szüneteltetését és folytatását.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,19 +11,21 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c5f85f102d72ac2e4a0315109748d48573f49407
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c0c8b1e9b7526bd45d037f053715613b53ec163f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721183"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198456"
 ---
-# <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>PowerShell-parancsmagok és REST API-k SQL Data Warehouse
-Számos SQL Data Warehouse felügyeleti feladat felügyelhető Azure PowerShell parancsmagok vagy REST API-k használatával.  Az alábbiakban néhány példát láthat arra, hogyan használhatja a PowerShell-parancsokat a SQL Data Warehouse gyakori feladatainak automatizálására.  Néhány jó REST-példákért tekintse meg a [méretezhetőség és a REST kezelése](sql-data-warehouse-manage-compute-rest-api.md)című cikket.
+# <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>PowerShell & REST API-k az Azure szinapszis Analytics SQL-készlethez
+
+Az Azure szinapszis Analytics SQL-készletének számos felügyeleti feladatát Azure PowerShell parancsmagok vagy REST API-k használatával lehet felügyelni.  Az alábbiakban néhány példát láthat arra, hogyan használhatja a PowerShell-parancsokat az SQL-készlet gyakori feladatainak automatizálására.  Néhány jó REST-példákért tekintse meg a [méretezhetőség és a REST kezelése](sql-data-warehouse-manage-compute-rest-api.md)című cikket.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-started-with-azure-powershell-cmdlets"></a>Ismerkedés a Azure PowerShell-parancsmagokkal
+
 1. Nyissa meg a Windows PowerShellt.
 2. A PowerShell parancssorába futtassa ezeket a parancsokat, hogy bejelentkezzen a Azure Resource Managerba, és válassza ki az előfizetését.
    
@@ -33,12 +35,13 @@ Számos SQL Data Warehouse felügyeleti feladat felügyelhető Azure PowerShell 
     Select-AzSubscription -SubscriptionName "MySubscription"
     ```
 
-## <a name="pause-sql-data-warehouse-example"></a>SQL Data Warehouse szüneteltetése – példa
+## <a name="pause-data-warehouse-example"></a>Az adatraktár szüneteltetése – példa
 Szüneteltesse a "Database02" nevű adatbázist egy "Kiszolgalo01" nevű kiszolgálón.  A kiszolgáló egy "ResourceGroup1" nevű Azure-erőforráscsoport.
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
+
 Egy változat, ez a példa a beolvasott objektumot [felfüggeszti a AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase).  Ennek eredményeképpen a rendszer szünetelteti az adatbázist. Az utolsó parancs az eredményeket jeleníti meg.
 
 ```Powershell
@@ -47,7 +50,8 @@ $resultDatabase = $database | Suspend-AzSqlDatabase
 $resultDatabase
 ```
 
-## <a name="start-sql-data-warehouse-example"></a>SQL Data Warehouse-példa indítása
+## <a name="start-data-warehouse-example"></a>Az adatraktár indítása – példa
+
 A "Database02" nevű, "Kiszolgalo01" nevű kiszolgálón futtatott adatbázis folytatásának folytatása A kiszolgálót egy "ResourceGroup1" nevű erőforráscsoport tárolja.
 
 ```Powershell
@@ -67,7 +71,7 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 > 
 
 ## <a name="other-supported-powershell-cmdlets"></a>Egyéb támogatott PowerShell-parancsmagok
-Ezeket a PowerShell-parancsmagokat a Azure SQL Data Warehouse támogatja.
+Ezek a PowerShell-parancsmagok az Azure szinapszis Analytics-adattárházban támogatottak.
 
 * [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase)
 * [Get-AzSqlDeletedDatabaseBackup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup)
@@ -80,10 +84,10 @@ Ezeket a PowerShell-parancsmagokat a Azure SQL Data Warehouse támogatja.
 * [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
 * [Felfüggesztés – AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További PowerShell-példákat a következő témakörben talál:
 
-* [SQL Data Warehouse létrehozása a PowerShell használatával](create-data-warehouse-powershell.md)
+* [Adattárház létrehozása a PowerShell használatával](create-data-warehouse-powershell.md)
 * [Adatbázis-visszaállítás](sql-data-warehouse-restore-database-powershell.md)
 
-A PowerShell-lel automatizálható egyéb feladatokért lásd: [Azure SQL Database parancsmagok](https://docs.microsoft.com/powershell/module/az.sql). Nem minden Azure SQL Database parancsmag támogatott a Azure SQL Data Warehouse.  A REST-sel automatizálható feladatok listáját a [Azure SQL Database műveleteit](https://msdn.microsoft.com/library/azure/dn505719.aspx)ismertető témakörben tekintheti meg.
+A PowerShell-lel automatizálható egyéb feladatokért lásd: [Azure SQL Database parancsmagok](https://docs.microsoft.com/powershell/module/az.sql). Nem minden Azure SQL Database parancsmag támogatott az Azure szinapszis Analytics-adattárházban.  A REST-sel automatizálható feladatok listáját a [Azure SQL Database műveleteit](/rest/api/sql/)ismertető témakörben tekintheti meg.

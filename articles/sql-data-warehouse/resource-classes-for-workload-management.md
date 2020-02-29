@@ -1,30 +1,30 @@
 ---
 title: Erőforrás-osztályok a számítási feladatok kezeléséhez
-description: Útmutató az erőforrás-osztályok használatához a párhuzamosságok és a számítási erőforrások kezeléséhez Azure SQL Data Warehouseban.
+description: Útmutató az Azure szinapszis Analytics szolgáltatásban található lekérdezések párhuzamosságának és számítási erőforrásainak kezeléséhez az erőforrás-osztályok használatával.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 12/04/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 30d3c67a815d05a256717fc4447ae3687adb8146
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.custom: azure-synapse
+ms.openlocfilehash: c94b2a755d85bdf425980574b63d8fd74a232b19
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548169"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195991"
 ---
-# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Számítási feladatok kezelése erőforrás-osztályokkal Azure SQL Data Warehouse
+# <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Számítási feladatok kezelése erőforrás-osztályokkal az Azure szinapszis Analyticsben
 
-Útmutató az erőforrás-osztályok használatához a Azure SQL Data Warehouse lévő lekérdezések memóriájának és egyidejűségének kezeléséhez.  
+Útmutató az Azure Szinapszisban az SQL Analytics-lekérdezések memóriájának és egyidejűségének kezeléséhez az erőforrás-osztályok használatával.  
 
 ## <a name="what-are-resource-classes"></a>Mik az erőforrás-osztályok?
 
-A lekérdezés kapacitását a felhasználó erőforrás-osztálya határozza meg.  Az erőforrás-osztályok előre meghatározott erőforrás-korlátokat tartalmaznak a Azure SQL Data Warehouse, amelyek a számítási erőforrásokat és a párhuzamosságot szabályozzák a lekérdezések végrehajtásához. Az erőforrás-osztályok segítséget nyújthatnak a lekérdezések erőforrásainak konfigurálásához azáltal, hogy korlátozásokat állítanak be a párhuzamosan futó lekérdezések és az egyes lekérdezésekhez hozzárendelt számítási erőforrások számára.  A memória és a Egyidejűség között kompromisszum van.
+A lekérdezés kapacitását a felhasználó erőforrás-osztálya határozza meg.  Az erőforrás-osztályok előre meghatározott erőforrás-korlátokat tartalmaznak az SQL Analyticsben, amelyek a számítási erőforrásokat és a párhuzamosságot használják a lekérdezések végrehajtásához. Az erőforrás-osztályok segítséget nyújthatnak a lekérdezések erőforrásainak konfigurálásához azáltal, hogy korlátozásokat állítanak be a párhuzamosan futó lekérdezések és az egyes lekérdezésekhez hozzárendelt számítási erőforrások számára.  A memória és a Egyidejűség között kompromisszum van.
 
 - A kisebb erőforrás-osztályok csökkentik a maximális memóriát a lekérdezésekben, de növelhetik a párhuzamosságot.
 - A nagyobb erőforrás-osztályok a lekérdezésen alapuló maximális memóriát növelhetik, de a párhuzamosságot is csökkenthetik.
@@ -46,7 +46,7 @@ A statikus erőforrás-osztályok ugyanazt a memóriát foglalják magukban, fü
 A statikus erőforrás-osztályok a következő előre definiált adatbázis-szerepkörökkel vannak implementálva:
 
 - staticrc10
-- staticrc20 erőforrásosztályhoz
+- staticrc20
 - staticrc30
 - staticrc40
 - staticrc50
@@ -67,14 +67,14 @@ A dinamikus erőforrás-osztályok a következő előre definiált adatbázis-sz
 
 Az egyes erőforrás-osztályok memóriájának kiosztása a következő. 
 
-| Szolgáltatásszint  | smallrc           | mediumrc               | largerc                | xlargerc               |
+| Szolgáltatási szint  | smallrc           | mediumrc               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
 | DW100c         | 25%               | 25%                    | 25%                    | 70%                    |
-| DW200c         | 12,5%             | 12,5%                  | 22                    | 70%                    |
-| DW300c         | 8%                | 10%                    | 22                    | 70%                    |
-| DW400c         | 6,25%             | 10%                    | 22                    | 70%                    |
-| DW500c lehetőséget         | 20%               | 10%                    | 22                    | 70%                    |
-| DW1000c<br> DW30000c | 3%       | 10%                    | 22                    | 70%                    |
+| DW200c         | 12,5%             | 12,5%                  | 22%                    | 70%                    |
+| DW300c         | 8                | 10                    | 22%                    | 70%                    |
+| DW400c         | 6,25%             | 10                    | 22%                    | 70%                    |
+| DW500c         | 20               | 10                    | 22%                    | 70%                    |
+| DW1000c<br> DW30000c | 3%       | 10                    | 22%                    | 70%                    |
 
 
 
@@ -82,7 +82,7 @@ Az egyes erőforrás-osztályok memóriájának kiosztása a következő.
 
 Alapértelmezés szerint minden felhasználó a dinamikus erőforrás osztály **smallrc**tagja.
 
-A szolgáltatás-rendszergazda erőforrás-osztálya a smallrc helyen van kijavítva, és nem módosítható.  A szolgáltatás-rendszergazda a kiépítési folyamat során létrehozott felhasználó.  A szolgáltatás rendszergazdája ebben a környezetben a "kiszolgálói rendszergazdai bejelentkezéshez" megadott bejelentkezési azonosítót adja meg új SQL Data Warehouse példány új kiszolgálóval való létrehozásakor.
+A szolgáltatás-rendszergazda erőforrás-osztálya a smallrc helyen van kijavítva, és nem módosítható.  A szolgáltatás-rendszergazda a kiépítési folyamat során létrehozott felhasználó.  A szolgáltatás rendszergazdája ebben a környezetben a "kiszolgálói rendszergazdai bejelentkezéshez" megadott bejelentkezési azonosítót adja meg, amikor új SQL Analytics-példányt hoz létre egy új kiszolgálóval.
 
 > [!NOTE]
 > A Active Directory rendszergazdaként definiált felhasználók vagy csoportok is szolgáltatás-rendszergazdák.
@@ -97,7 +97,7 @@ Az erőforrás-osztályok úgy vannak kialakítva, hogy javítsák az adatkezel�
 
 Ezeket a műveleteket az erőforrás-osztályok szabályozzák:
 
-- BESZÚRÁS – KIJELÖLÉS, FRISSÍTÉS, TÖRLÉS
+- INSERT-SELECT, UPDATE, DELETE
 - SELECT (felhasználói táblák lekérdezésekor)
 - ALTER INDEX – Újraépítés vagy átrendezés
 - A TÁBLA ÚJRAÉPÍTÉSÉNEK MÓDOSÍTÁSA
@@ -125,7 +125,7 @@ Az alábbi utasítások mentesülnek az erőforrás-osztályoktól, és mindig a
 - STATISZTIKÁK létrehozása, frissítése vagy eldobása
 - TRUNCATE TABLE
 - MÓDOSÍTÁS ENGEDÉLYEZÉSE
-- BEJELENTKEZÉS LÉTREHOZÁSA
+- CREATE LOGIN
 - FELHASZNÁLÓ létrehozása, módosítása vagy eldobása
 - ELJÁRÁS létrehozása, módosítása vagy eldobása
 - NÉZET létrehozása vagy eldobása
@@ -143,7 +143,7 @@ Removed as these two are not confirmed / supported under SQL DW
 
 ## <a name="concurrency-slots"></a>Egyidejűségi tárolóhelyek
 
-A egyidejűségi tárolóhelyek kényelmes megoldást jelentenek a lekérdezés-végrehajtáshoz elérhető erőforrások nyomon követésére. Ilyenek például a megvásárolt jegyek, amelyeket egy koncerten tartanak fenn, mert korlátozott az ülőhelyek száma. Az adatraktárban található egyidejűségi tárolóhelyek teljes számát a szolgáltatási szint határozza meg. Ahhoz, hogy egy lekérdezés el tudja indítani a végrehajtást, képesnek kell lennie elegendő egyidejű tárolóhely fenntartására. A lekérdezés befejezésekor a rendszer felszabadítja a párhuzamossági tárolóhelyeket.  
+A egyidejűségi tárolóhelyek kényelmes megoldást jelentenek a lekérdezés-végrehajtáshoz elérhető erőforrások nyomon követésére. Ilyenek például a megvásárolt jegyek, amelyeket egy koncerten tartanak fenn, mert korlátozott az ülőhelyek száma. Az adatraktárban található egyidejűségi tárolóhelyek teljes számát a szolgáltatási szint határozza meg. Ahhoz, hogy egy lekérdezés el tudja indítani a végrehajtást, képesnek kell lennie elegendő egyidejű tárolóhely fenntartására. Amikor egy lekérdezés befejeződik, felszabadítja a párhuzamossági tárolóhelyeket.  
 
 - A 10 egyidejű tárolóhelyet futtató lekérdezések 5 alkalommal több számítási erőforrást tudnak elérni, mint a 2 egyidejű bővítőhelyen futó lekérdezés.
 - Ha minden lekérdezés 10 egyidejű tárolóhelyet igényel, és 40 egyidejűségi tárolóhely van, akkor egyszerre csak 4 lekérdezés futhat.
@@ -183,7 +183,7 @@ A felhasználók több erőforrás osztály tagjai lehetnek. Ha egy felhasznál�
 - A dinamikus erőforrás-osztályok elsőbbséget élveznek a statikus erőforrások osztályaival szemben. Ha például egy felhasználó mind a mediumrc (dinamikus), mind a staticrc80 (statikus) tagja, a lekérdezések a mediumrc-vel futnak.
 - A nagyobb erőforrás-osztályok elsőbbséget élveznek a kisebb erőforrás-osztályokkal szemben. Ha például egy felhasználó tagja a mediumrc és a largerc, a lekérdezések a largerc-mel futnak. Hasonlóképpen, ha a felhasználó mind a staticrc20 erőforrásosztályhoz, mind a statirc80 tagja, akkor a lekérdezések staticrc80 erőforrás-lefoglalásokkal futnak.
 
-## <a name="recommendations"></a>Ajánlatok
+## <a name="recommendations"></a>Javaslatok
 
 >[!NOTE]
 >Érdemes lehet kihasználni a munkaterhelés-kezelési képességeket (a[munkaterhelés elkülönítését](sql-data-warehouse-workload-isolation.md), a [besorolást](sql-data-warehouse-workload-classification.md) és a [fontosságot](sql-data-warehouse-workload-importance.md)) a számítási feladatok és a kiszámítható teljesítmény szabályozása érdekében.  
@@ -592,7 +592,7 @@ SELECT  CASE
 GO
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az adatbázis-felhasználók és a biztonság kezelésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele SQL Data Warehouseban](./sql-data-warehouse-overview-manage-security.md). További információ arról, hogy a nagyobb erőforrás-osztályok Hogyan javíthatják a fürtözött oszlopcentrikus index minőségét: [a oszlopcentrikus tömörítésének memória-optimalizálása](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Az adatbázis-felhasználók és a biztonság kezelésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele az SQL Analyticsben](./sql-data-warehouse-overview-manage-security.md). További információ arról, hogy a nagyobb erőforrás-osztályok Hogyan javíthatják a fürtözött oszlopcentrikus index minőségét: [a oszlopcentrikus tömörítésének memória-optimalizálása](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 

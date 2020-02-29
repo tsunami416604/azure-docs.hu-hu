@@ -3,20 +3,20 @@ title: OAuth1 műszaki profil definiálása egyéni házirendben
 titleSuffix: Azure AD B2C
 description: OAuth 1,0 technikai profilt definiálhat egy egyéni szabályzatban Azure Active Directory B2Cban.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4f26f180e34ee9c7a0222b0d7f6be95c78de1b4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7f734844859d44e66bddbc2ddd999659e52f9668
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840383"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184077"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OAuth1 műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -24,7 +24,7 @@ ms.locfileid: "76840383"
 
 A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt a [OAuth 1,0 protokoll](https://tools.ietf.org/html/rfc5849) identitás-szolgáltatója számára. Ez a cikk a szabványos protokollt támogató jogcím-szolgáltatóval való interakcióra szolgáló technikai profil sajátosságait ismerteti. A OAuth1-alapú technikai profillal OAuth1-alapú összevonása (például Twitter) is használható. Az egyesítő lehetővé teszi, hogy a felhasználók bejelentkezzenek a meglévő közösségi vagy vállalati identitásokkal.
 
-## <a name="protocol"></a>Protocol (Protokoll)
+## <a name="protocol"></a>Protokoll
 
 A **protokoll** elem **Name** attribútumát `OAuth1`értékre kell állítani. A **Twitter-OAUTH1** technikai profilhoz tartozó protokoll például `OAuth1`.
 
@@ -92,7 +92,7 @@ Az Identitáskezelő átirányítási URL-címének konfigurálásakor adja meg 
 
 Ha a **b2clogin.com** tartományt használja a **login.microsoftonline.com** helyett, ügyeljen arra, hogy a login.microsoftonline.com helyett a b2clogin.com használja.
 
-Példák:
+Például:
 
 - [Twitter hozzáadása OAuth1-identitás-szolgáltatóként egyéni szabályzatok használatával](identity-provider-twitter-custom.md)
 

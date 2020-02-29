@@ -1,16 +1,16 @@
 ---
-title: A fejlesztői gép csatlakoztatása egy AKS-fürthöz
+title: A fejlesztői gép csatlakoztatása egy AKS-fürthöz (előzetes verzió)
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: Ismerje meg, hogyan csatlakoztatható a fejlesztői gép egy AK-fürthöz az Azure dev Spaces használatával
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: cba68702155475832930c791c3a7be014375ba04
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 13e6f16e66941be0ae463e8280827dc0b8183450
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770679"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196093"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>A fejlesztői gép csatlakoztatása egy AKS-fürthöz (előzetes verzió)
 
@@ -104,7 +104,7 @@ Emellett az Azure dev Spaces egy, a *dev Spaces* -hez csatlakozó ablakot hoz l�
 
 Az Azure dev Spaces egy állapotsor-elemmel is rendelkezik, amely a kapcsolatok állapotát mutatja.
 
-![status](../media/how-to-connect/connect-status.png)
+![Állapot](../media/how-to-connect/connect-status.png)
 
 Győződjön meg arról, hogy az állapotsoron a *dev Spaces: Connected to dev/Bikes on local port 3000*.
 

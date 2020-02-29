@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 51e5c654da95732409c3bbb7acae088d8935a59d
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 642cc42a9853fe0a93a40ca65652b6dc5fcd8d40
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000623"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195277"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Key Vault kezelése az Azure CLI használatával 
 
@@ -60,7 +61,7 @@ az account set -h
 A következő cikkekben megismerheti az Azure platformfüggetlen parancssori felületének Azure Resource Manager megismerését:
 
 * [Az Azure parancssori felület telepítése](/cli/azure/install-azure-cli)
-* [Ismerkedés az Azure CLI-vel](/cli/azure/get-started-with-azure-cli)
+* [Az Azure CLI használatának első lépései](/cli/azure/get-started-with-azure-cli)
 
 ## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>Megerősített tároló létrehozása az Azure-ban
 
@@ -117,7 +118,7 @@ az provider register -n Microsoft.KeyVault
 
 ### <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
-Kulcstartó létrehozásához használja az `az keyvault create` parancsot. Ez a parancsfájl három kötelező paraméterrel rendelkezik: egy erőforráscsoport-név, egy kulcstartó neve és a földrajzi hely.
+Kulcstartó létrehozásához használja a `az keyvault create` parancsot. Ez a parancsfájl három kötelező paraméterrel rendelkezik: egy erőforráscsoport-név, egy kulcstartó neve és a földrajzi hely.
 
 Ha a **ContosoKeyVault**nevű új tárolót szeretne létrehozni, akkor a **Kelet-Ázsia** helyen található erőforráscsoport- **ContosoResourceGroup**írja be a következőt: 
 
@@ -127,14 +128,14 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 A parancs kimenete a létrehozott kulcstartó tulajdonságait jeleníti meg. A két legfontosabb tulajdonság:
 
-* **név**: A példában a név ContosoKeyVault. Ezt a nevet fogja használni a többi Key Vault parancshoz.
-* **vaultUri**: A példában az URI https://contosokeyvault.vault.azure.net a. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
+* **név**: a példában a név ContosoKeyVault. Ezt a nevet fogja használni a többi Key Vault parancshoz.
+* **vaultUri**: a PÉLDÁBAN az URI https://contosokeyvault.vault.azure.net. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Azure-fiókja most már engedéllyel rendelkezik arra, hogy bármilyen műveletet végezzen ezen a kulcstartón. Még senki más nem rendelkezik jogosultsággal.
 
 ## <a name="adding-a-key-secret-or-certificate-to-the-key-vault"></a>Kulcs, titok vagy tanúsítvány hozzáadása a Key vaulthoz
 
-Ha azt szeretné, hogy a Azure Key Vault szoftveresen védett kulcsot hozzon létre, használja `az key create` az parancsot.
+Ha azt szeretné, hogy a Azure Key Vault szoftveresen védett kulcsot hozzon létre, használja a `az key create` parancsot.
 
 ```azurecli
 az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --protection software
@@ -154,7 +155,7 @@ Adjon hozzá egy titkos kulcsot a tárolóhoz, amely egy SQLPassword nevű jelsz
 az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
-Hivatkozzon erre a jelszóra az URI használatával. A **https://ContosoVault.vault.azure.net/secrets/SQLPassword** használatával mindig megkapja a jelenlegi verziót, és a https://[kulcstartó-name]. Vault. Azure. net/Secret/[Secret-name]/[Secret-Unique-id] értéket a megadott verzió beszerzéséhez. Például: **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** .
+Hivatkozzon erre a jelszóra az URI használatával. A **https://ContosoVault.vault.azure.net/secrets/SQLPassword** használatával mindig megkapja az aktuális verziót, és a https://[kulcstartó-name]. Vault. Azure. net/Secret/[Secret-name]/[Secret-Unique-id] értéket a megadott verzió beszerzéséhez. Például: **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** .
 
 Tanúsítvány importálása a tárolóba a. PEM vagy a. pfx használatával.
 
@@ -193,7 +194,7 @@ A kulcstartót használó alkalmazásoknak az Azure Active Directoryból szárma
 
 Az alkalmazásnak mindkét értékkel rendelkeznie kell ahhoz, hogy Azure Active Directory-jogkivonatot kapjon. A jogkivonatok lekérésére konfigurált alkalmazások az alkalmazástól függenek. A [Key Vault-mintaalkalmazás](https://www.microsoft.com/download/details.aspx?id=45343) esetében az alkalmazás tulajdonosa adja meg ezeket az értékeket az app.config fájlban.
 
-Az alkalmazások Azure Active Directory segítségével történő regisztrálásának részletes lépéseiért tekintse át az [alkalmazások integrálása a Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md)használatával című cikket, [és a portálon hozzon létre egy Azure Active Directory alkalmazást és szolgáltatást a rendszerbiztonsági tag, amely hozzáférhet az erőforrásokhoz](../active-directory/develop/howto-create-service-principal-portal.md), és [létrehoz egy Azure-szolgáltatást az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli).
+Az alkalmazások Azure Active Directorysal való regisztrálásának részletes lépéseiért tekintse át az [alkalmazások integrálása a Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md)használatával című cikket, és a [portálon hozzon létre egy Azure Active Directory alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](../active-directory/develop/howto-create-service-principal-portal.md), és [hozzon létre egy Azure-szolgáltatást az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli).
 
 Alkalmazás regisztrálása Azure Active Directoryban:
 
@@ -204,7 +205,7 @@ az ad sp create-for-rbac -n "MyApp" --password "hVFkk965BuUv" --skip-assignment
 
 ## <a name="authorizing-an-application-to-use-a-key-or-secret"></a>Kulcs vagy titkos kód használatának engedélyezése az alkalmazás számára
 
-Ha engedélyezni szeretné, hogy az alkalmazás hozzáférhessen a kulcshoz vagy a titkos kulcshoz a `az keyvault set-policy` tárolóban, használja az parancsot.
+Ha engedélyezni szeretné, hogy az alkalmazás hozzáférhessen a kulcshoz vagy a titkos kulcshoz a tárolóban, használja a `az keyvault set-policy` parancsot.
 
 Ha például a tár neve ContosoKeyVault, az alkalmazáshoz tartozik egy 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed-appID, és engedélyezni szeretné az alkalmazásnak, hogy visszafejtse és aláírja a kulcsokat a tárolóban, használja a következő parancsot:
 
@@ -222,19 +223,19 @@ az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 A Key Vault speciális házirendjeinek engedélyezéséhez használja az [az kulcstartó Update](/cli/azure/keyvault#az-keyvault-update) lehetőséget.
 
- Key Vault telepítésének engedélyezése: Lehetővé teszi a virtuális gépek számára a titkos kulcsként tárolt tanúsítványok lekérését a tárból.
+ Key Vault engedélyezése a központi telepítéshez: lehetővé teszi, hogy a virtuális gépek a tárolóban titkos kulcsként tárolt tanúsítványokat kérjenek le.
 
  ```azurecli
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
  ```
 
-Key Vault engedélyezése a lemezes titkosításhoz: Az Azure Disk Encryption tárolójának használatakor szükséges.
+Key Vault engedélyezése a lemezes titkosításhoz: kötelező, ha az Azure Disk Encryption-tárolót használja.
 
  ```azurecli
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-disk-encryption "true"
  ```  
 
-Key Vault engedélyezése a sablonok üzembe helyezéséhez: Lehetővé teszi, hogy a Resource Manager beolvassa a titkos kulcsokat a tárból.
+Key Vault engedélyezése a sablonok üzembe helyezéséhez: lehetővé teszi, hogy a Resource Manager beolvassa a titkos kulcsokat a tárból.
 
 ```azurecli 
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-template-deployment "true"
@@ -274,7 +275,7 @@ A BYOK-csomag létrehozásával kapcsolatos részletes utasításokért lásd: [
 
 ## <a name="deleting-the-key-vault-and-associated-keys-and-secrets"></a>A Key Vault és a hozzá tartozó kulcsok és titkos kódok törlése
 
-Ha már nincs szüksége a kulcstartóra és annak kulcsaira vagy titkaira, a Key vaultot a `az keyvault delete` paranccsal törölheti:
+Ha már nincs szüksége a kulcstartóra és annak kulcsaira vagy titkaira, a `az keyvault delete` paranccsal törölheti a kulcstartót:
 
 ```azurecli
 az keyvault delete --name "ContosoKeyVault"

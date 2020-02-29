@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 05/20/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 22e235b16f834198f5edc2f9365d2b13e1e9c49f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2685b9b519eaac453726f4923c46f1604cbd4681
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031737"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197827"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporthoz
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure Portalra](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [Videó – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-linkvnet-classic.md)
 >
 
@@ -30,18 +30,18 @@ Ez a cikk segít összekapcsolása virtuális hálózatok (Vnetek) az Azure Expr
 
 * Egyetlen virtuális hálózat legfeljebb négy ExpressRoute-Kapcsolatcsoportok lehet kapcsolódni. Ebben a cikkben a lépések segítségével hozzon létre egy új kapcsolat objektumot mindegyik ExpressRoute-kapcsolatcsoporthoz csatlakozik. Az ExpressRoute-Kapcsolatcsoportok ugyanahhoz az előfizetéshez tartozik, eltérő előfizetésekben vagy mindkét vegyesen is lehet.
 
-* Virtuális hálózatokat az ExpressRoute-kapcsolatcsoport a geopolitikai régión kívül, vagy nagyobb számú virtuális hálózatok csatlakozni az ExpressRoute-kapcsolatcsoportot, ha az ExpressRoute prémium bővítmény engedélyezve. Ellenőrizze a [– gyakori kérdések](expressroute-faqs.md) kapcsolatos további részletekért a premium bővítményt.
+* Virtuális hálózatokat az ExpressRoute-kapcsolatcsoport a geopolitikai régión kívül, vagy nagyobb számú virtuális hálózatok csatlakozni az ExpressRoute-kapcsolatcsoportot, ha az ExpressRoute prémium bővítmény engedélyezve. A prémium szintű bővítménysel kapcsolatos további információkért olvassa el a [Gyakori kérdések](expressroute-faqs.md) című részt.
 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Tekintse át a [Előfeltételek](expressroute-prerequisites.md), [útválasztási követelmények](expressroute-routing.md), és [munkafolyamatok](expressroute-workflows.md) konfigurálás megkezdése előtt.
+* A konfigurálás megkezdése előtt tekintse át az [előfeltételeket](expressroute-prerequisites.md), az [útválasztási követelményeket](expressroute-routing.md)és a [munkafolyamatokat](expressroute-workflows.md) .
 
 * Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. 
-  * Kövesse az utasításokat [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-arm.md) , és a kapcsolatcsoport a kapcsolatszolgáltató által engedélyezett. 
-  * Gondoskodjon arról, hogy az Azure privát társviszony-létesítést a kapcsolatcsoporthoz konfigurálva. Tekintse meg a [konfigurálja az útválasztást](expressroute-howto-routing-arm.md) cikk vonatkozó útválasztási utasításokat. 
+  * Az utasításokat követve [hozzon létre egy ExpressRoute áramkört](expressroute-howto-circuit-arm.md) , és engedélyezze az áramkört a kapcsolat szolgáltatója számára. 
+  * Gondoskodjon arról, hogy az Azure privát társviszony-létesítést a kapcsolatcsoporthoz konfigurálva. Az útválasztási utasításokért tekintse meg az [Útválasztás konfigurálása](expressroute-howto-routing-arm.md) című cikket. 
   * Győződjön meg arról, hogy az Azure privát társviszony-létesítés konfigurálva legyen, és a BGP társviszony-létesítés a hálózat és a Microsoft között működik, így engedélyezheti a végpontok közötti kapcsolat.
-  * Gondoskodjon arról, hogy egy virtuális hálózat és a egy virtuális hálózati átjáró létrehozása, és teljesen kiépítve. Kövesse az utasításokat [az ExpressRoute virtuális hálózati átjáró létrehozása](expressroute-howto-add-gateway-resource-manager.md). Az ExpressRoute virtuális hálózati átjáró a "ExpressRoute", nem gatewaytype VPN típust használja.
+  * Gondoskodjon arról, hogy egy virtuális hálózat és a egy virtuális hálózati átjáró létrehozása, és teljesen kiépítve. A [ExpressRoute virtuális hálózati átjárójának létrehozásához](expressroute-howto-add-gateway-resource-manager.md)kövesse az utasításokat. Az ExpressRoute virtuális hálózati átjáró a "ExpressRoute", nem gatewaytype VPN típust használja.
 
 ### <a name="working-with-azure-powershell"></a>Az Azure PowerShell használata
 
@@ -79,7 +79,7 @@ A kapcsolatcsoport tulajdonosát a rendelkezik módosítja, és bármikor enged�
 
 ### <a name="circuit-owner-operations"></a>Kapcsolatcsoport-tulajdonos műveletek
 
-**Az engedély létrehozása**
+**Engedélyezés létrehozása**
 
 A kapcsolatcsoport tulajdonosát egy engedélyezési hoz létre. Az eredmény egy kapcsolatcsoport felhasználó által a virtuális hálózati átjárók az ExpressRoute-kapcsolatcsoporthoz való csatlakozáshoz használható hitelesítési kulcs létrehozását. Egy engedélyezési csak egy kapcsolat érvényességét.
 
@@ -106,7 +106,7 @@ Ez a válasz tartalmazza a hitelesítési kulcsot és az állapotát:
 
 
 
-**Az engedélyek áttekintéséhez**
+**Engedélyek áttekintése**
 
 A kapcsolatcsoport tulajdonosát a következő parancsmag futtatásával egy adott kapcsolatcsoportban kiállított összes engedélyek tekintheti át:
 
@@ -147,7 +147,7 @@ Társ azonosítója a következő paranccsal ellenőrizhetők:
 Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 ```
 
-**Hogy a kapcsolati engedély beváltása**
+**A kapcsolódási engedély beváltása**
 
 A kapcsolatcsoport felhasználói beváltása egy kapcsolat a következő parancsmag futtatásával:
 
@@ -157,16 +157,16 @@ $gw = Get-AzVirtualNetworkGateway -Name "ExpressRouteGw" -ResourceGroupName "MyR
 $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName "RemoteResourceGroup" -Location "East US" -VirtualNetworkGateway1 $gw -PeerId $id -ConnectionType ExpressRoute -AuthorizationKey "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 ```
 
-**A kapcsolati engedély felszabadítása**
+**A kapcsolódási engedély felszabadítása**
 
 Egy engedélyezési fel lehet szabadítani, a kapcsolat törlésével a hivatkozásokat az ExpressRoute-kapcsolatcsoport a virtuális hálózathoz.
 
 ## <a name="modify-a-virtual-network-connection"></a>Módosítsa a virtuális hálózati kapcsolat
 A virtuális hálózati kapcsolat bizonyos tulajdonságait is frissítheti. 
 
-**Kapcsolat súlyát frissítése**
+**A kapcsolatok súlyozásának frissítése**
 
-Több ExpressRoute-kapcsolatcsoporttal a virtuális hálózathoz csatlakoztatható legyen. Egynél több ExpressRoute-kapcsolatcsoport a ugyanazon előtaggal jelenhet meg. Melyik kapcsolat előtaghoz irányuló forgalom küldésére módosíthatja *routingweight értékének* kapcsolat. A kapcsolat a legmagasabb küld forgalmat *routingweight értékének*.
+Több ExpressRoute-kapcsolatcsoporttal a virtuális hálózathoz csatlakoztatható legyen. Egynél több ExpressRoute-kapcsolatcsoport a ugyanazon előtaggal jelenhet meg. Annak kiválasztásához, hogy melyik kapcsolódási forgalmat küldje el az előtagja számára, módosíthatja a kapcsolatok *RoutingWeight* . A rendszer a forgalmat a legmagasabb *RoutingWeight*kapcsolatban küldi el.
 
 ```azurepowershell-interactive
 $connection = Get-AzVirtualNetworkGatewayConnection -Name "MyVirtualNetworkConnection" -ResourceGroupName "MyRG"
@@ -174,15 +174,12 @@ $connection.RoutingWeight = 100
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
 ```
 
-A számos *routingweight értékének* 0 a 32000 van. Az alapértelmezett érték a 0.
+A *RoutingWeight* tartománya 0 és 32000 között van. Az alapértelmezett érték a 0.
 
 ## <a name="configure-expressroute-fastpath"></a>ExpressRoute-FastPath konfigurálása 
 Engedélyezheti a [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) , ha a ExpressRoute-áramkör a [ExpressRoute Direct](expressroute-erdirect-about.md) szolgáltatásban van, és a virtuális hálózati átjárója Ultra Performance vagy ErGw3AZ. A FastPath javítja az adatelérési utak teljesítményét, például a csomagok másodpercenkénti számát, valamint a helyszíni hálózat és a virtuális hálózat közötti kapcsolatok másodpercenkénti számát. 
 
-> [!NOTE] 
-> Ha már rendelkezik virtuális hálózati kapcsolatban, de nincs engedélyezve a FastPath, törölnie kell a virtuális hálózati kapcsolatokat, és létre kell hoznia egy újat. 
-> 
->  
+**FastPath konfigurálása új kapcsolatban**
 
 ```azurepowershell-interactive 
 $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG" 
@@ -190,5 +187,13 @@ $gw = Get-AzVirtualNetworkGateway -Name "MyGateway" -ResourceGroupName "MyRG"
 $connection = New-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" -ExpressRouteGatewayBypass -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute -Location "MyLocation" 
 ``` 
 
-## <a name="next-steps"></a>Következő lépések
+**Meglévő kapcsolatok frissítése a FastPath engedélyezéséhez**
+
+```azurepowershell-interactive 
+$connection = Get-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" 
+$connection.ExpressRouteGatewayBypass = $True
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
+``` 
+
+## <a name="next-steps"></a>További lépések
 További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).

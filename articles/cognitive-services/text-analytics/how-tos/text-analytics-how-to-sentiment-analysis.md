@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 84ef01b5e7fc3f628b1cdf7a1f13175604ebcdd4
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 60f6443e041c2f3a76a9027bebd33dc29a07f445
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137961"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197470"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Útmutató: érzelmek észlelése a Text Analytics API használatával
 
@@ -42,7 +42,7 @@ A Text Analytics API a Hangulatelemzés-v2 és v3 két verzióját kínálja. A 
 > * Az Hangulatelemzés v3 kérelem formátuma és [adatkorlátja](../overview.md#data-limits) megegyezik az előző verzióval.
 > * A Hangulatelemzés v3 a következő régiókban érhető el: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`és `West US 2`.
 
-| Funkció                                   | Hangulatelemzés v2 | Hangulatelemzés v3 |
+| Szolgáltatás                                   | Hangulatelemzés v2 | Hangulatelemzés v3 |
 |-------------------------------------------|-----------------------|-----------------------|
 | Egyszeri és batch-kérelmek módszerei    | X                     | X                     |
 | A teljes dokumentum hangulati pontszámai  | X                     | X                     |
@@ -50,7 +50,7 @@ A Text Analytics API a Hangulatelemzés-v2 és v3 két verzióját kínálja. A 
 | Érzelmek címkézése                        |                       | X                     |
 | Modell verziószámozása                   |                       | X                     |
 
-#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 ### <a name="sentiment-scoring"></a>Érzelmek pontozása
 
@@ -76,10 +76,10 @@ A Hangulatelemzés v3 a pontszámokat és címkéket a mondatok és a dokumentum
 
 ### <a name="example-c-code"></a>Példa C# kódja
 
-Megtalálhatja a C# [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs)Hangulatelemzés ezen verzióját meghívó alkalmazást.
+Megtalálhatja a C# [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/TextAnalyticsSentiment.cs)Hangulatelemzés ezen verzióját meghívó alkalmazást.
 
 
-#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 ### <a name="sentiment-scoring"></a>Érzelmek pontozása
 
@@ -101,11 +101,11 @@ A dokumentum méretének 5 120 karakternél rövidebbnek kell lennie a dokumentu
 
 Hozzon létre egy POST-kérelmet. A [Poster](text-analytics-how-to-call-api.md) vagy az API- **tesztelési konzolt** a következő hivatkozásokra kattintva gyorsan strukturálhatja és küldheti el. 
 
-#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 [Hangulatelemzés v3 – dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
 
-#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 [Hangulatelemzés v2 – dokumentáció](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
@@ -116,11 +116,11 @@ Hozzon létre egy POST-kérelmet. A [Poster](text-analytics-how-to-call-api.md) 
 > [!NOTE]
 > Az Azure Portalon megtalálhatja Text Analytics erőforrásának kulcsát és végpontját. Ezek az erőforrás **gyors üzembe helyezés** lapján, az **Erőforrás-kezelés**területen találhatók. 
 
-#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
 
-#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
@@ -162,7 +162,7 @@ Az a hangulat-elemző a szöveget túlnyomórészt pozitívként vagy negatívk�
 
 A kimenetet visszaadása azonnali. Az eredményeket egy olyan alkalmazásba is továbbíthatja, amely fogadja a JSON-t, vagy mentse a kimenetet egy fájlba a helyi rendszeren. Ezután importálja a kimenetet egy olyan alkalmazásba, amelyet az adatrendezéshez, kereséshez és kezeléshez használhat.
 
-#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 ### <a name="sentiment-analysis-v3-example-response"></a>Példa Hangulatelemzés v3-es válaszra
 
@@ -238,7 +238,7 @@ Hangulatelemzés v3 válaszai az egyes elemzett mondatokra és dokumentumokra vo
 }
 ```
 
-#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 ### <a name="sentiment-analysis-v2-example-response"></a>Példa Hangulatelemzés v2 válaszra
 

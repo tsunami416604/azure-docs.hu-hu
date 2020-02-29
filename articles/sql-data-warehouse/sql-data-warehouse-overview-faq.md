@@ -10,22 +10,22 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1a4fbfa87756914f169bb20387702cac69d8736d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: f7cac849caf478850707eb0a71b2369dcfa49520
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759482"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197181"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 K. Mi az az Azure Synapse?
 
-A. Az Azure szinapszis egy korlátlan elemzési szolgáltatás, amely egyesíti az adattárházat és a Big adatelemzést. Lehetővé teszi, hogy a saját feltételei szerint, kiszolgáló nélküli, igény szerinti vagy kiépített erőforrásokkal lekérdezze az adatait. Az Azure Synapse egységes felületen egyesíti ezt a két területet az adatok betöltéséhez, előkészítéséhez és azonnali szolgáltatásához az üzleti intelligencia és gépi tanulási igények szerint. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
+A. Az Azure szinapszis egy korlátlan elemzési szolgáltatás, amely egyesíti az adattárházat és a Big adatelemzést. Lehetővé teszi, hogy a saját feltételei szerint, kiszolgáló nélküli, igény szerinti vagy kiépített erőforrásokkal lekérdezze az adatait. Az Azure szinapszis az azonnali BI-és gépi tanulási igényekhez kapcsolódóan egységes felhasználói élményt nyújt az adatgyűjtéshez, előkészítéséhez, kezeléséhez és kiszolgálásához. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
 
-K. Mi történt az Azure SQL Data Warehouse szolgáltatással?
+K. Mi történt a Azure SQL Data Warehouse?
 
 A. Az Azure szinapszis Azure SQL Data Warehouse (SQL DW) lett kifejlesztve. Ugyanezt az piacvezető adattárházat készítettük a teljesítmény és a képességek egész új szintjére. Továbbra is futtathatja meglévő adattárház-számítási feladatait az Azure szinapszis szolgáltatással, és automatikusan kihasználhatja az előzetes verzióban elérhető új képességeket. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
 
@@ -47,7 +47,7 @@ A. Tekintse meg a [Microsoft megfelelőségi](https://www.microsoft.com/trustcen
 
 K. Csatlakozhatok Power BIhoz?
 
-A. Igen. Habár Power BI támogatja az Azure szinapszis közvetlen lekérdezését, nem sok felhasználónak vagy valós idejű adatmennyiségnek a célja. A Power BI teljesítményének további optimalizálása érdekében érdemes lehet Power BIt használni a Azure Analysis Services vagy az Analysis Service IaaS.
+A. Igen! Habár Power BI támogatja az Azure szinapszis közvetlen lekérdezését, nem sok felhasználónak vagy valós idejű adatmennyiségnek a célja. A Power BI teljesítményének további optimalizálása érdekében érdemes lehet Power BIt használni a Azure Analysis Services vagy az Analysis Service IaaS.
 
 K. Mik az SQL Analytics kapacitásának korlátai?
 
@@ -88,7 +88,7 @@ K. Támogatja az SQL Analytics a REST API-kat?
 A. Igen. Az SQL Database használatával használható legtöbb REST-funkció az SQL Analytics szolgáltatásban is elérhető. A REST dokumentációs oldalain vagy az [MSDN](https://msdn.microsoft.com/library/azure/mt163685.aspx)-en találhat API-információkat.
 
 
-## <a name="loading"></a>Betöltés
+## <a name="loading"></a>Betöltése
 
 K. Milyen ügyfél-illesztőprogramokat támogat?
 
@@ -108,7 +108,7 @@ A: nem, a csak a Storage-összetevőkkel kommunikáló
 
 K: csatlakozhatok a HDI szolgáltatáshoz?
 
-A: a HDI a ADLS vagy a WASB is használhatja a HDFS rétegként. Ha a HDFS rétege van, akkor az adatait az SQL DW-be töltheti be. Azonban nem hozhatja pushdown számítást a HDI-példányra. 
+A: a HDI a ADLS vagy a WASB is használhatja a HDFS rétegként. Ha a HDFS réteggel rendelkezik, ezeket az adatait egy SQL Analytics-adattárházba is betöltheti. Azonban nem hozhatja pushdown számítást a HDI-példányra. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure szinapszis egészére vonatkozó további információkért tekintse meg az [Áttekintés](sql-data-warehouse-overview-faq.md) oldalt.

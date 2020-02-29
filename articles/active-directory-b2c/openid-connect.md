@@ -2,21 +2,21 @@
 title: Webes bejelentkezés OpenID Connecttel – Azure Active Directory B2C
 description: Hozzon létre webalkalmazásokat az OpenID Connect hitelesítési protokoll használatával Azure Active Directory B2Cban.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f601fc2e415e22bdbb9e0a4d4d2072a0a33ac22e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6640ab1660e6499a97a8c990a0001d5fbae4e997
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848823"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183992"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webes bejelentkezés OpenID-kapcsolattal Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | Bérlő | Igen | A Azure AD B2C bérlő neve |
 | politika | Igen | A futtatandó felhasználói folyamat. Adja meg a Azure AD B2C bérlőben létrehozott felhasználói folyamat nevét. Például: `b2c_1_sign_in`, `b2c_1_sign_up`vagy `b2c_1_edit_profile`. |
 | client_id | Igen | Az alkalmazáshoz hozzárendelt [Azure Portal](https://portal.azure.com/) alkalmazás azonosítója. |
-| egyszeri | Igen | A kérelemben szereplő, az eredményül kapott azonosító jogkivonatban található (az alkalmazás által generált) érték. Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy randomizált egyedi karakterlánc, amely a kérelem forrásának azonosítására szolgál. |
+| nonce | Igen | A kérelemben szereplő, az eredményül kapott azonosító jogkivonatban található (az alkalmazás által generált) érték. Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy randomizált egyedi karakterlánc, amely a kérelem forrásának azonosítására szolgál. |
 | response_type | Igen | Tartalmaznia kell egy azonosító jogkivonatot az OpenID Connecthez. Ha a webalkalmazásnak szüksége van a webes API-k meghívásához szükséges jogkivonatokra, `code+id_token`is használhat. |
 | scope | Igen | A hatókörök szóközzel tagolt listája. A `openid` hatókör a felhasználónak való bejelentkezéshez és az azonosító tokenek formájában a felhasználó adatainak lekéréséhez szükséges engedélyt jelöli. A `offline_access` hatóköre nem kötelező a webalkalmazásokhoz. Azt jelzi, hogy az alkalmazásnak *frissítési jogkivonatra* lesz szüksége az erőforrásokhoz való kiterjesztett hozzáféréshez. |
 | gyors | Nem | A kötelező felhasználói beavatkozás típusa. Ebben az esetben az egyetlen érvényes érték `login`, amely arra kényszeríti a felhasználót, hogy adja meg hitelesítő adatait a kérésen. |
@@ -74,7 +74,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 | Paraméter | Leírás |
 | --------- | ----------- |
 | id_token | Az alkalmazás által kért azonosító jogkivonat. Az azonosító token használatával ellenőrizheti a felhasználó identitását, és megkezdheti a munkamenetet a felhasználóval. |
-| Kód | Az alkalmazás által kért hitelesítési kód, ha a `response_type=code+id_token`t használta. Az alkalmazás az engedélyezési kóddal kérhet hozzáférési tokent a cél erőforráshoz. Az engedélyezési kódok általában körülbelül 10 perc elteltével lejárnak. |
+| code | Az alkalmazás által kért hitelesítési kód, ha a `response_type=code+id_token`t használta. Az alkalmazás az engedélyezési kóddal kérhet hozzáférési tokent a cél erőforráshoz. Az engedélyezési kódok általában körülbelül 10 perc elteltével lejárnak. |
 | state | Ha egy `state` paraméter szerepel a kérelemben, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, hogy a kérelemben és a válaszban szereplő `state` értékek azonosak-e. |
 
 Hibaüzenetek is küldhetők a `redirect_uri` paraméternek, hogy az alkalmazás megfelelően tudja kezelni őket:
@@ -150,7 +150,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | politika | Igen | Az engedélyezési kód beszerzéséhez használt felhasználói folyamat. Ebben a kérelemben nem használhat másik felhasználói folyamatot. Adja hozzá ezt a paramétert a lekérdezési karakterlánchoz, nem pedig a POST szövegtörzshöz. |
 | client_id | Igen | Az alkalmazáshoz hozzárendelt [Azure Portal](https://portal.azure.com/) alkalmazás azonosítója. |
 | client_secret | Igen, Web Apps | Az [Azure Portalban](https://portal.azure.com/)létrehozott alkalmazás titka. A folyamat az ügyfél titkos kulcsait használja a webalkalmazási forgatókönyvek esetében, ahol az ügyfél biztonságosan tárolhat egy ügyfél titkát. A natív alkalmazással (nyilvános ügyfél) kapcsolatos forgatókönyvek esetén az ügyfél titkos kulcsai nem tárolhatók biztonságosan, a folyamaton nem használhatók threfore. Ha ügyfél-titkos kulcsot használ, rendszeres időközönként módosítsa azt. |
-| Kód | Igen | A felhasználói folyamat elején beszerzett engedélyezési kód. |
+| code | Igen | A felhasználói folyamat elején beszerzett engedélyezési kód. |
 | grant_type | Igen | A támogatás típusa, amelyet az engedélyezési kód folyamatábrájának `authorization_code` kell lennie. |
 | redirect_uri | Igen | Annak az alkalmazásnak a `redirect_uri` paramétere, amelyen az engedélyezési kódot megkapta. |
 | scope | Nem | A hatókörök szóközzel tagolt listája. A `openid` hatókör azt jelzi, hogy a felhasználó bejelentkezhet, és id_token paraméterek formájában kéri le a felhasználó adatait. Használható a jogkivonatok az alkalmazás saját háttérbeli webes API-hoz való lekérésére, amelyet az ügyfél ugyanazzal az alkalmazás-AZONOSÍTÓval képvisel. A `offline_access` hatókör azt jelzi, hogy az alkalmazásnak frissítési jogkivonatra van szüksége az erőforrásokhoz való kiterjesztett hozzáféréshez. |

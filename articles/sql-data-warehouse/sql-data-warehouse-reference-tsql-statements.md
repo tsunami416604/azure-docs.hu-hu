@@ -1,6 +1,6 @@
 ---
 title: T-SQL-utasítások
-description: A Azure SQL Data Warehouse által támogatott T-SQL-utasításokhoz tartozó dokumentációra mutató hivatkozások.
+description: Hivatkozások az SQL Analytics által támogatott T-SQL-utasítások dokumentációjában.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 861675941693697a20da189edebe33d91918782c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: d37e1b727829505940b77c7a82293f90050a87c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685516"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198354"
 ---
-# <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse támogatott T-SQL-utasítások
-A Azure SQL Data Warehouse által támogatott T-SQL-utasításokhoz tartozó dokumentációra mutató hivatkozások.
+# <a name="t-sql-statements-supported-in-sql-analytics"></a>Az SQL Analytics által támogatott T-SQL-utasítások
+Hivatkozások az SQL Analytics által támogatott T-SQL-utasítások dokumentációjában.
 
 ## <a name="data-definition-language-ddl-statements"></a>Az adatdefiníciós nyelv (DDL) utasításai
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
@@ -120,4 +120,4 @@ A Azure SQL Data Warehouse által támogatott T-SQL-utasításokhoz tartozó dok
 * [FŐKULCS MEGNYITÁSA](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>További lépések
-További információ: a [T-SQL nyelvi elemei Azure SQL Data Warehouseban](sql-data-warehouse-reference-tsql-language-elements.md)és a [rendszernézetek a Azure SQL Data Warehouseban](sql-data-warehouse-reference-tsql-system-views.md).
+További információ: a [T-SQL nyelvi elemei az SQL Analyticsben](sql-data-warehouse-reference-tsql-language-elements.md)és a [rendszernézetek az SQL Analytics rendszerben](sql-data-warehouse-reference-tsql-system-views.md).

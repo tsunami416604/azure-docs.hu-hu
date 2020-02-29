@@ -6,16 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 74dac926ea67b9f6a31993a72dc6331aa48155b7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3cc5cb68f430ac8e5070b9c8c4a1aa0c28639311
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981571"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197776"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault biztonság
 
@@ -76,7 +77,7 @@ A tűzfalszabályok érvénybe léptetése után a felhasználók csak akkor tud
 
 További információ a Azure Key Vault hálózati címek áttekintése [virtuális hálózati szolgáltatási végpontokról Azure Key Vault](key-vault-overview-vnet-service-endpoints.md)
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>Figyelés
 
 Key Vault naplózás a tárolón végrehajtott tevékenységekre vonatkozó adatokat takarít meg. Naplók Key Vault:
 
@@ -94,7 +95,7 @@ A naplózási adatok a Key Vault műveletét követő 10 percen belül érhetők
 
 A Storage-fiókok biztonságos kezelésével kapcsolatos javaslatért tekintse meg az [Azure Storage biztonsági útmutatóját](../storage/blobs/security-recommendations.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Virtuális hálózati szolgáltatás végpontjai Azure Key Vault](key-vault-overview-vnet-service-endpoints.md)
 - [RBAC: beépített szerepkörök](../role-based-access-control/built-in-roles.md)

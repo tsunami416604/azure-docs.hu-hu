@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 6e1005e3d9c3769de3249f3244d65a656edc963e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ec6f9592a4c149be382fab66cca27d929644d988
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891745"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194509"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrálás Azure Resource authoring-kulcsba
 
@@ -35,7 +35,7 @@ Tegyük fel, hogy Ön a 2 LUIS-alkalmazás tulajdonosa, és különböző tagjai
 
 A Migrálás a következőket tartalmazza:
 
-* A LUIS, a tulajdonosok és a közreműködők összes felhasználója.
+* A LUIS, a tulajdonosok és a közreműködők minden felhasználója.
 * **Minden** alkalmazás.
 * Egy **egyirányú** áttelepítés.
 
@@ -70,19 +70,19 @@ A **Luis-alkalmazás készítése ingyenes**, amelyet a `F0`i szinten jelez. [To
 
 Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon](https://azure.microsoft.com/free/).
 
-### <a name="migration-steps"></a>Migrálási lépések
+### <a name="migration-steps"></a>A migrálás lépései
 
 Kövesse [az alábbi áttelepítési lépéseket](luis-migration-authoring-steps.md).
 
-### <a name="after-you-migrate"></a>Teendők migrálás után
+### <a name="after-you-migrate"></a>Az áttelepítés után
 
 Az áttelepítési folyamat után minden LUIS-alkalmazás hozzá van rendelve egyetlen LUIS authoring-erőforráshoz.
 
 A _Luis portálon_létrehozhat több szerzői erőforrást, és hozzárendelheti a **Manage-> Azure-erőforrások** oldaláról.
 
-Az adott erőforrás **Access Control (iam)** lapján hozzáadhat közreműködőket a szerzői erőforráshoz _Azure Portal_. További információért lásd: [közreműködői hozzáférés hozzáadása](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource) .
+Az adott erőforrás **Access Control (iam)** lapján hozzáadhat közreműködőket a szerzői erőforráshoz _Azure Portal_. További információ: [közreműködői hozzáférés hozzáadása](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource).
 
-|Portál|Rendeltetés|
+|Portál|Cél|
 |--|--|
 |[Azure](https://azure.microsoft.com/free/)|* Hozzon létre előrejelzési és létrehozási erőforrásokat.<br>* Közreműködők kiosztása.|
 |[LUIS](https://www.luis.ai)|* Migrálás az új szerzői erőforrásokra.<br>* A felügyeleti **> Azure-erőforrások** oldaláról kioszthatja vagy kioszthatja az alkalmazásokat az alkalmazások számára.|
@@ -104,13 +104,21 @@ Az alkalmazás tulajdonosának [hozzá kell adnia az e-maileket az Azure authori
 
 Az áttelepítési folyamat után az Ön tulajdonában lévő alkalmazások a LUIS portál **saját alkalmazások** lapján érhetők el.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting-the-migration-process-for-luis-authoring"></a>A LUIS-készítés áttelepítési folyamatának hibaelhárítása
 
-* A LUIS authoring Keys csak az áttelepítési folyamat befejezése után látható a LUIS-portálon. Ha létrehoz egy szerzői kulcsot, például a LUIS CLI-vel, a felhasználónak továbbra is végre kell hajtania az áttelepítési folyamatot.
+* A LUIS authoring Keys csak az áttelepítési folyamat befejezése után látható a LUIS-portálon. Ha létrehoz egy szerzői kulcsot, például a LUIS CLI-vel, a felhasználónak továbbra is végre kell hajtania az áttelepítési folyamatot a LUIS portálon.
 * Ha egy áttelepített felhasználó egy nem áttelepített felhasználót ad hozzá közreműködőként az Azure-erőforráshoz, a nem áttelepített felhasználónak nincs hozzáférése az alkalmazásokhoz, kivéve, ha áttelepíti őket.
-* Ha egy nem áttelepített felhasználó nem tulajdonosa bármely alkalmazásnak, de tagja a mások tulajdonában lévő más alkalmazásoknak, és a tulajdonosok az áttelepítési folyamaton estek át, a felhasználónak át kell térnie az alkalmazásokhoz való hozzáférésre.
+* Ha egy nem áttelepített felhasználó nem tulajdonosa egyetlen alkalmazásnak sem, de a mások tulajdonában lévő más alkalmazások munkatársai, és a tulajdonosok az áttelepítési folyamaton estek át, a felhasználónak át kell térnie az alkalmazásokhoz való hozzáférésre.
 * Ha egy nem áttelepített felhasználó hozzáadta egy másik áttelepített felhasználót az alkalmazásához, akkor hiba lép fel, mivel nem tud hozzáadni egy áttelepített felhasználót egy alkalmazáshoz. A nem áttelepített felhasználónak el kell végeznie az áttelepítési folyamatot, és létre kell hoznia egy Azure-erőforrást, és hozzá kell adnia az áttelepített felhasználót közreműködőként az erőforráshoz.
 
-## <a name="next-steps"></a>Következő lépések
+Az áttelepítési folyamat során hibaüzenetet kap, ha:
+* Az előfizetés nem engedélyezi, hogy Cognitive Services erőforrásokat hozzon létre
+* Az áttelepítés negatívan befolyásolja az alkalmazások futtatókörnyezetét. Az áttelepítés során minden közreműködő el lesz távolítva az alkalmazásokból, és a többi alkalmazásból is együttműködik. Ez a folyamat azt jelenti, hogy a hozzárendelt kulcsok is el lettek távolítva. Az áttelepítés le lesz tiltva, ha más alkalmazásokban vannak hozzárendelve kulcsok. A Migrálás előtt távolítsa el a biztonságosan hozzárendelt kulcsot. Ha tudja, hogy a hozzárendelt kulcs nem használatos a futtatókörnyezetben, akkor el kell távolítania az áttelepítéshez, hogy el tudja végezni a folyamatot.
+
+A következő URL-formátummal férhet hozzá az alkalmazás Azure-erőforrás-listájához:
+
+`https://www.luis.ai/applications/REPLACE-WITH-YOUR-APP-ID/versions/REPLACE-WITH-YOUR-VERSION-ID/manage/resources`
+
+## <a name="next-steps"></a>További lépések
 
 * [Az alkalmazás migrálása egy szerzői erőforrásba](luis-migration-authoring-steps.md)

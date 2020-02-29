@@ -3,20 +3,20 @@ title: Önérvényesített technikai profil definiálása egyéni házirendben
 titleSuffix: Azure AD B2C
 description: Önérvényesített műszaki profilt definiálhat egy egyéni szabályzatban Azure Active Directory B2Cban.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/17/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8f2a86f72f16a23b0133601cfe41b9e636d8866d
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e0a282be9b8a20c64cd3e74e7860a289baa5aec6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425595"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183805"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Önérvényesített technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -187,7 +187,7 @@ Az üzleti logikával meghívhat egy REST API technikai profilt, felülírhatja 
 
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Setting. operatingMode <sup>1</sup>| Nem | A bejelentkezési oldalon ez a tulajdonság szabályozza a Felhasználónév mező viselkedését, például a bemeneti ellenőrzés és a hibaüzenetek értékét. Várt értékek: `Username` vagy `Email`.  |
 | AllowGenerationOfClaimsWithNullValues| Nem| Egy NULL értékű jogcím létrehozását teszi lehetővé. Ha például a felhasználó nem jelöli be a jelölőnégyzetet.|
@@ -198,7 +198,7 @@ Az üzleti logikával meghívhat egy REST API technikai profilt, felülírhatja 
 | setting.showCancelButton | Nem | Megjeleníti a Mégse gombot. Lehetséges értékek: `true` (alapértelmezett) vagy `false` |
 | Setting. showContinueButton | Nem | Megjeleníti a folytatás gombot. Lehetséges értékek: `true` (alapértelmezett) vagy `false` |
 | Setting. showSignupLink <sup>2</sup>| Nem | Megjeleníti a regisztrációs gombot. Lehetséges értékek: `true` (alapértelmezett) vagy `false` |
-| Setting. forgotPasswordLinkLocation <sup>2</sup>| Nem| Az elfelejtett jelszó hivatkozását jeleníti meg. Lehetséges értékek: `AfterInput` (alapértelmezett) a hivatkozás megjelenik az oldal alján, vagy `None` eltávolítja az elfelejtett jelszó hivatkozást.| 
+| Setting. forgotPasswordLinkLocation <sup>2</sup>| Nem| Az elfelejtett jelszó hivatkozását jeleníti meg. Lehetséges értékek: `AfterInput` (alapértelmezett) a hivatkozás megjelenik az oldal alján, vagy `None` eltávolítja az elfelejtett jelszó hivatkozást.|
 | IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true`vagy `false` (alapértelmezett). Ha a technikai profilban egy jogcímet feloldót szeretne használni, állítsa be `true`ra. |
 
 Megjegyzések:

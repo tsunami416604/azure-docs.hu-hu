@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: félig strutured-alapú adattábla indexelése a JSON-blobokban'
+title: 'Oktatóanyag: részben strukturált adathalmazok indexelése JSON-blobokban'
 titleSuffix: Azure Cognitive Search
 description: Ismerje meg, hogyan indexelheti és keresheti meg a félig strukturált Azure JSON-blobokat az Azure Cognitive Search REST API-k és a Poster használatával.
 manager: nitinme
@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 0603ad1fbecf33e5880fd7f18d35af51795f8e39
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 02/28/2020
+ms.openlocfilehash: f025b3357943014a6d9c6e331c47f019fe94c5bf
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251991"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196943"
 ---
-# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>REST-oktatóanyag: részben strukturált adatok (JSON-Blobok) indexelése és keresése az Azure Cognitive Search
+# <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Oktatóanyag: JSON-Blobok indexelése az Azure Storage-ból REST használatával
 
 Az Azure Cognitive Search képes indexelni az Azure Blob Storage-ban található JSON-dokumentumokat és-tömböket olyan [Indexelő](search-indexer-overview.md) használatával, amely képes a részben strukturált információk beolvasására. A részben strukturált adatok címkéket és jelölőket tartalmaznak, amelyek a tartalmakat választják el az adatokon belül. Feldarabolja a strukturálatlan adatmennyiségek közötti különbséget, amelyeknek teljes mértékben indexelve kell lenniük, és az olyan, az adatmodellbe (például egy olyan kapcsolati adatbázis-sémához) tartozó, formálisan strukturált adat, amely egy mező alapján indexelhető.
 
-Ebben az oktatóanyagban az [Azure Cognitive Search REST API-kat](https://docs.microsoft.com/rest/api/searchservice/) és egy Rest-ügyfelet használ a következő feladatok elvégzéséhez:
+Ez az oktatóanyag a Poster és a [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) -k használatával hajtja végre a következő feladatokat:
 
 > [!div class="checklist"]
 > * Azure Cognitive Search-adatforrás konfigurálása Azure Blob-tárolóhoz
@@ -27,15 +27,18 @@ Ebben az oktatóanyagban az [Azure Cognitive Search REST API-kat](https://docs.m
 > * Indexelő konfigurálása és futtatása a tároló olvasásához és a kereshető tartalom kinyeréséhez az Azure Blob Storage-ból
 > * Keresés az újonnan létrehozott indexben
 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a rövid útmutatóban a következő szolgáltatásokat, eszközöket és adatfájlokat használja a rendszer. 
++ [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Postman asztali alkalmazás](https://www.getpostman.com/)
++ [Meglévő keresési szolgáltatás](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [létrehozása](search-create-service-portal.md) vagy keresése 
 
-[Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást. 
+> [!Note]
+> Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást. Az ingyenes keresési szolgáltatás három indexre, három indexelő elemre és három adatforrásra korlátozza a szolgáltatást. Az oktatóanyagban mindegyikből egyet hozhat majd létre. Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a szolgáltatásban az új erőforrások elfogadására szolgáló helyiséggel.
 
-[Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a mintaadatok tárolásához.
-
-[Poster Desktop-alkalmazás](https://www.getpostman.com/) , amely kéréseket küld az Azure Cognitive Searchnak.
+## <a name="download-files"></a>Fájlok letöltése
 
 A [Clinical-Trials-JSON. zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) tartalmazza az oktatóanyagban használt adatkészleteket. Töltse le és csomagolja ki a fájlt a saját mappájába. Az adatok a [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results)-ből származnak, és a JSON formátumba konvertálódnak erre az oktatóanyagra.
 
@@ -283,13 +286,27 @@ Nyugodtan kísérletezhet, és néhány további lekérdezést is kipróbálhat.
 
 A `$filter` paraméter csak olyan metaadatokkal működik, amelyek szűrhetőként lettek megjelölve az index létrehozásakor.
 
+## <a name="reset-and-rerun"></a>Alaphelyzetbe állítás és ismételt futtatás
+
+A fejlesztés korai kísérleti szakaszaiban a tervezési iteráció legalkalmasabb megközelítése az objektumok törlése az Azure Cognitive Search és a kód újraépítésének engedélyezése. Az erőforrásnevek egyediek. Egy objektum törlése révén újból létrehozhatja azt ugyanazzal a névvel.
+
+A portál használatával törölhet indexeket, indexelő fájlokat és adatforrásokat. Vagy használja a **delete (Törlés** ) lehetőséget, és adja meg az egyes objektumok URL-címét A következő parancs törli az indexelő.
+
+```http
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2019-05-06
+```
+
+Sikeres törlés esetén a rendszer a 204-es állapotkódot adja vissza.
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyag után a leggyorsabb megoldás az Azure Cognitive Search szolgáltatást tartalmazó erőforráscsoport törlésével. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Cognitive Search szolgáltatás áttekintés lapján található.
+Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A már futó erőforrások pénzbe kerülnek. Az erőforrásokat egyenként is törölheti, vagy az erőforráscsoport törlésével törölheti a teljes erőforrás-készletet.
 
-## <a name="next-steps"></a>Következő lépések
+A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-A JSON-Blobok indexeléséhez több módszer és több lehetőség is van. A következő lépésként tekintse át és tesztelje a különböző lehetőségeket, hogy megnézze, mi a legmegfelelőbb a forgatókönyvhöz.
+## <a name="next-steps"></a>További lépések
+
+Most, hogy már ismeri az Azure Blob-indexelés alapjait, ismerkedjen meg közelebbről az indexelő konfigurációjában.
 
 > [!div class="nextstepaction"]
-> [JSON-Blobok indexelése az Azure Cognitive Search blob indexelő használatával](search-howto-index-json-blobs.md)
+> [Azure Blob Storage-indexelő konfigurálása](search-howto-indexing-azure-blob-storage.md)

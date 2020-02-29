@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/25/2019
-ms.openlocfilehash: 874fd0ccdd2fdf0a2e75412ae2da82abb736ff3f
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.date: 02/28/2019
+ms.openlocfilehash: 4fad7d1e3359264c647ffc2d5f67dc547c87a13a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164576"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196654"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Naplók optimalizálása Azure Monitorban
 Azure Monitor naplók az [Azure adatkezelő (ADX)](/azure/data-explorer/) használatával tárolják a naplófájlokat, és lekérdezéseket futtatnak az adatok elemzéséhez. Létrehozza, kezeli és karbantartja a ADX-fürtöket, és optimalizálja azokat a log Analysis számítási feladatokhoz. Amikor lekérdezést futtat, az optimalizált, és a munkaterület-adatok tárolására szolgáló megfelelő ADX-fürtre irányítja. A Azure Monitor-naplók és az Azure Adatkezelő számos automatikus lekérdezés-optimalizálási mechanizmust használ. Míg az automatikus optimalizálások jelentős lökést nyújtanak, bizonyos esetekben jelentősen növelheti a lekérdezési teljesítményt. Ez a cikk ismerteti a teljesítménnyel kapcsolatos szempontokat és számos technikát a kijavításához.
@@ -258,6 +258,34 @@ by Computer
 ) on Computer
 ```
 
+Egy másik példa erre a hibára, ha az időtartomány-szűrést csak az [Unió](/azure/kusto/query/unionoperator?pivots=azuremonitor) több táblázata után végezze el. Az Unió végrehajtásakor minden allekérdezés hatókörnek kell lennie. A [let](/azure/kusto/query/letstatement) utasítás használatával biztosíthatja a hatókör egységességét.
+
+Például a következő lekérdezés a *szívverés* és a *perf* tábla összes adatát megvizsgálja, nem csak az utolsó 1 nap:
+
+```Kusto
+Heartbeat 
+| summarize arg_min(TimeGenerated,*) by Computer
+| union (
+    Perf 
+    | summarize arg_min(TimeGenerated,*) by Computer) 
+| where TimeGenerated > ago(1d)
+| summarize min(TimeGenerated) by Computer
+```
+
+Ezt a lekérdezést a következőképpen kell kijavítani:
+
+```Kusto
+let MinTime = ago(1d);
+Heartbeat 
+| where TimeGenerated > MinTime
+| summarize arg_min(TimeGenerated,*) by Computer
+| union (
+    Perf 
+    | where TimeGenerated > MinTime
+    | summarize arg_min(TimeGenerated,*) by Computer) 
+| summarize min(TimeGenerated) by Computer
+```
+
 A mérés mindig nagyobb, mint a megadott tényleges idő. Ha például a lekérdezés szűrője 7 nap, a rendszer 7,5 vagy 8,1 napot vizsgálhat. Ennek az az oka, hogy a rendszer a változó méretű adattömbökbe particionálja az adathalmazokat. Annak biztosítása érdekében, hogy a rendszer az összes releváns rekordot megvizsgálja, megvizsgálja a teljes partíciót, amely több óráig is eltarthat, és akár egy napnál is hosszabb időt is igénybe vehet.
 
 Több eset is létezik, ha a rendszer nem tud pontos mérési értéket biztosítani az időtartományhoz. Ez a legtöbb esetben fordul elő, amikor a lekérdezés egy napnál rövidebb ideig vagy több-munkaterület lekérdezésekben van.
@@ -319,6 +347,6 @@ A párhuzamosságot csökkentő lekérdezési viselkedések például a követke
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Kusto lekérdezési nyelvét ismertető dokumentáció](/azure/kusto/query/).

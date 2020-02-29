@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9f88af7027f6c907b5b55eb9aac545d98e2fbb7a
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b9ff80275cc89dde0db215856c2e134c4b273020
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880846"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199733"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Tanúsítvány-létrehozás monitorozása és kezelése
 A következőkre vonatkozik: Azure
@@ -85,14 +86,14 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Kérés
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"` beolvasása
 
 VAGY
 
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"` beolvasása
 
 > [!NOTE]
-> Ha a lekérdezésben *request_id* van megadva, úgy viselkedik, mint egy szűrő. Ha a lekérdezésben és a függőben lévő objektumban lévő *request_id* eltérnek, a rendszer a 404-es HTTP-állapotkódot adja vissza.
+> Ha *request_id* van megadva a lekérdezésben, úgy viselkedik, mint egy szűrő. Ha a lekérdezésben és a függőben lévő objektumban lévő *request_id* eltérnek, a rendszer a 404-es HTTP-állapotkódot adja vissza.
 
 ### <a name="response"></a>Válasz
 
@@ -120,11 +121,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"` beolvasása
 
 VAGY
 
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"` beolvasása
 
 ### <a name="response"></a>Válasz
 
@@ -152,11 +153,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"` beolvasása
 
 VAGY
 
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"` beolvasása
 
 ### <a name="response"></a>Válasz
 
@@ -191,11 +192,11 @@ Egy függő objektumot törölheti vagy felülírhat egy létrehozási/importál
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Kérés
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"` beolvasása
 
 VAGY
 
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"` beolvasása
 
 ### <a name="response"></a>Válasz
 
@@ -292,14 +293,14 @@ Csak törlésre lehet szükség. Egy kérelem vagy nem törölhető. Ha egy kér
 
 |Módszer|Kérés URI-ja|
 |------------|-----------------|
-|PATCH|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
+|JAVÍTÁS|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Kérés
-JAVÍTÁS`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+JAVÍTÁS `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 VAGY
 
-JAVÍTÁS`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+JAVÍTÁS `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ```json
 {
@@ -335,11 +336,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |DELETE|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Kérés
-TÖRLÉSE`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"` törlése
 
 VAGY
 
-TÖRLÉSE`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"` törlése
 
 ### <a name="response"></a>Válasz
 
@@ -413,9 +414,9 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-|Elem neve|Kötelező|Type|Version|Leírás|
+|Elem neve|Szükséges|Típus|Verzió|Leírás|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|Igen|array|\<Bevezetés a > verzióra|X509-tanúsítványlánc alap 64 sztring tömbként.|
+|x5c|Igen|tömb|\<a verzió bevezetését >|X509-tanúsítványlánc alap 64 sztring tömbként.|
 
 ### <a name="response"></a>Válasz
 

@@ -4,16 +4,17 @@ description: A Storage-fiókok kulcsai zökkenőmentes integrációt biztosítan
 ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
+ms.subservice: secrets
 author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 880a85676ff7a0364431b33b90093298b12bffed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 104f3423b07eaa3269ffccc054cd2f779bbdabf8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980461"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199818"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>A Storage-fiók kulcsainak kezelése a Key Vault és az Azure CLI használatával
 
@@ -41,11 +42,11 @@ Az Azure AD-bérlő minden regisztrált alkalmazást biztosít egy [egyszerű sz
 
 A Key Vault egy olyan Microsoft-alkalmazás, amely az összes Azure AD-bérlőben előre regisztrálva van. A Key Vault minden Azure-felhőben ugyanazzal az alkalmazás-AZONOSÍTÓval van regisztrálva.
 
-| Bérlők | Felhőbeli | Alkalmazásazonosító |
+| Bérlők | Felhő | Alkalmazásazonosító |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
-| Azure AD | Azure – nyilvános | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Egyéb  | Bármelyik | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Azure AD | Nyilvános Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Egyéb  | Bármely | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -91,7 +92,7 @@ az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountNa
 
 ## <a name="shared-access-signature-tokens"></a>Közös hozzáférésű aláírási jogkivonatok
 
-Azt is megteheti, Key Vault hogy közös hozzáférésű aláírási jogkivonatokat állítson elő. A közös hozzáférésű aláírások delegált hozzáférést biztosítanak a Storage-fiók erőforrásaihoz. A fiók kulcsainak megosztása nélkül megadhatja az ügyfeleknek a Storage-fiók erőforrásaihoz való hozzáférést. A közös hozzáférésű aláírás biztonságos módot biztosít a tárolási erőforrások megosztására a fiók kulcsainak veszélyeztetése nélkül.
+Azt is megteheti, Key Vault hogy közös hozzáférésű aláírási jogkivonatokat állítson elő. Közös hozzáférésű jogosultságkód a tárfiókban található erőforrások delegált hozzáférést biztosít. A fiók kulcsainak megosztása nélkül megadhatja az ügyfeleknek a Storage-fiók erőforrásaihoz való hozzáférést. A közös hozzáférésű aláírás biztonságos módot biztosít a tárolási erőforrások megosztására a fiók kulcsainak veszélyeztetése nélkül.
 
 Az ebben a szakaszban szereplő parancsok a következő műveleteket hajtják végre:
 
@@ -150,7 +151,7 @@ az keyvault secret show --vault-name <YourKeyVaultName> --id <SasDefinitionID>
 A parancs kimenete`value`ként jeleníti meg az SAS-definíciós karakterláncot.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [kulcsokról, a titkokról és a tanúsítványokról](https://docs.microsoft.com/rest/api/keyvault/).
 - Tekintse át a [Azure Key Vault csapat blogján](https://blogs.technet.microsoft.com/kv/)található cikkeket.

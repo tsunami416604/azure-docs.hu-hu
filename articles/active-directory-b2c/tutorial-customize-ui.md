@@ -3,20 +3,20 @@ title: 'Oktatóanyag: a felhasználói felület testreszabása'
 titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan szabhatja testre Azure Active Directory B2C alkalmazásai felhasználói felületét a Azure Portal használatával.
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1b0ad7049375cb20d2daa0e6f920b680d03530a5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840128"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186250"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Oktatóanyag: a felhasználói élmények felületének testreszabása Azure Active Directory B2C
 
@@ -39,11 +39,11 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Létrehoz egy Azure Storage-fiókot és-tárolót, majd elhelyezi az alapszintű HTML-és CSS-fájlokat a tárolóban.
 
-### <a name="create-a-storage-account"></a>Create a storage account
+### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Bár a fájlok többféleképpen is tárolhatók, ebben az oktatóanyagban az [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)-ban tárolhatja őket.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Győződjön meg arról, hogy az Azure-előfizetését tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki az előfizetést tartalmazó könyvtárat. Ez a könyvtár nem azonos az Azure B2C-bérlőt tartalmazó címtárral.
 3. A Azure Portal bal felső sarkában válassza a minden szolgáltatás lehetőséget, majd keresse meg és válassza ki a **Storage-fiókokat**.
 4. Válassza a **Hozzáadás** lehetőséget.
@@ -71,7 +71,7 @@ Bár a fájlok többféleképpen is tárolhatók, ebben az oktatóanyagban az [A
 
     ![A CORS konfigurációs lapja az Azure Blob Storage-ban Azure Portal](./media/tutorial-customize-ui/enable-cors.png)
 
-5. Kattintson a **Mentés** gombra.
+5. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="create-the-customization-files"></a>A testreszabási fájlok létrehozása
 
@@ -156,7 +156,7 @@ Ebben az oktatóanyagban a Storage-fiókban létrehozott fájlokat tárolja, hog
 
     ![Webböngészőt, amely az egyéni felhasználói felületi elemekkel való regisztrációt vagy bejelentkezési oldalt jeleníti meg](./media/tutorial-customize-ui/run-now.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

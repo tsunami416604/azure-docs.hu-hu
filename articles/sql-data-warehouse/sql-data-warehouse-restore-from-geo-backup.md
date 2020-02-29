@@ -1,6 +1,6 @@
 ---
 title: Adattárház visszaállítása geo-biztonsági mentésből
-description: Útmutató a Azure SQL Data Warehouse geo-visszaállításához.
+description: Útmutató egy SQL-készlet geo-visszaállításához.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 69ba3ed981a27dfff41ea9ea52e1da769a9366c4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 624c6665e70802907be8a41015b78d36cca7df1c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759618"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198368"
 ---
-# <a name="geo-restore-azure-sql-data-warehouse"></a>Geo-visszaállítás Azure SQL Data Warehouse
+# <a name="geo-restore-for-sql-pool"></a>Geo-visszaállítás az SQL-készlethez
 
-Ebből a cikkből megtudhatja, hogyan állíthatja vissza az adattárházat a Geo biztonsági mentésből Azure Portal és a PowerShell használatával.
+Ebből a cikkből megtudhatja, hogyan állíthatja vissza az SQL-készletet a Geo-biztonsági mentésből Azure Portal és a PowerShell használatával.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Ellenőrizze a DTU kapacitását.** Mindegyik SQL Data Warehouse egy SQL-kiszolgáló (például myserver.database.windows.net) üzemelteti, amely rendelkezik alapértelmezett DTU-kvótával. Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta megváltoztatásának kérése](sql-data-warehouse-get-started-create-support-ticket.md).
+**Ellenőrizze a DTU kapacitását.** Minden SQL-készletet egy SQL-kiszolgáló (például myserver.database.windows.net) üzemeltet, amely rendelkezik alapértelmezett DTU-kvótával. Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta megváltoztatásának kérése](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Visszaállítás egy Azure földrajzi régióból a PowerShell használatával
 
@@ -74,20 +74,27 @@ A helyreállított adatbázis TDE válik, ha a forrásadatbázis TDE engedélyez
 
 ## <a name="restore-from-an-azure-geographical-region-through-azure-portal"></a>Visszaállítás egy Azure földrajzi régióból Azure Portal
 
-Kövesse az alábbi lépéseket a Azure SQL Data Warehouse geo-biztonsági mentésből történő visszaállításához:
+Az SQL-készletek földrajzi biztonsági mentésből történő visszaállításához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be [Azure Portal](https://portal.azure.com/) -fiókjába.
-1. Kattintson **az + erőforrás létrehozása** lehetőségre, és keressen rá SQL Data Warehouse és kattintson a **Létrehozás**gombra.
+1. Kattintson **az + erőforrás létrehozása**elemre. 
 
-    ![Új DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
-1. Adja meg az **alapok** lapon kért információkat, majd kattintson a **Tovább gombra: további beállítások**.
+![Új DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-    ![Alapvető beállítások](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
-1. A **meglévő** Adatparaméter használata esetén válassza a **biztonsági mentés** lehetőséget, és válassza ki a megfelelő biztonsági mentést a görgetési beállítások közül. Kattintson a **felülvizsgálat + létrehozás**gombra.
+3. Kattintson az **adatbázisok** , majd a * * Azure szinapszis Analytics (korábbi NEVÉN SQL DW) * * elemre.
+
+![Új DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
+
+4. Adja meg az **alapok** lapon kért információkat, majd kattintson a **Tovább gombra: további beállítások**.
+
+![Alapvető beállítások](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+
+5. A **meglévő** Adatparaméter használata esetén válassza a **biztonsági mentés** lehetőséget, és válassza ki a megfelelő biztonsági mentést a görgetési beállítások közül. Kattintson a **felülvizsgálat + létrehozás**gombra.
  
-   ![backup](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
-2. Az adattárház visszaállítása után győződjön meg arról, hogy az **állapot online állapotban** van.
+![biztonsági mentés](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 
-## <a name="next-steps"></a>Következő lépések
-- [Meglévő adattárház visszaállítása](sql-data-warehouse-restore-active-paused-dw.md)
-- [Törölt adattárház visszaállítása](sql-data-warehouse-restore-deleted-dw.md)
+6. Az adattárház visszaállítása után győződjön meg arról, hogy az **állapot online állapotban** van.
+
+## <a name="next-steps"></a>További lépések
+- [Meglévő SQL-készlet visszaállítása](sql-data-warehouse-restore-active-paused-dw.md)
+- [Törölt SQL-készlet visszaállítása](sql-data-warehouse-restore-deleted-dw.md)

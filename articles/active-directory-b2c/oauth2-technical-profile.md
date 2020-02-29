@@ -3,20 +3,20 @@ title: OAuth2 műszaki profil definiálása egyéni házirendben
 titleSuffix: Azure AD B2C
 description: OAuth2-technikai profilt definiálhat egy egyéni szabályzatban Azure Active Directory B2Cban.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f9db8fd0865b7dba869795526cf6b68f4ad3ffb9
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 86ec7a5745a58546faf6f0ff15d6dc5f452baa88
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585781"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184043"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OAuth2 műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -77,7 +77,7 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | client_id | Igen | Az identitás-szolgáltató alkalmazás-azonosítója. |
 | IdTokenAudience | Nem | A id_token célközönsége. Ha meg van adva, Azure AD B2C ellenőrzi, hogy a jogkivonat az identitás-szolgáltató által visszaadott jogcímben van-e, és megegyezik-e a megadott értékkel. |
@@ -103,7 +103,7 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 
 A **CryptographicKeys** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | client_secret | Igen | Az Identity Provider alkalmazás ügyfél-titka. A titkosítási kulcs csak akkor szükséges, ha a **response_types** metaadatok értéke `code`. Ebben az esetben Azure AD B2C egy másik hívást kezdeményez a hozzáférési token engedélyezési kódjának cseréjéhez. Ha a metaadatok értéke `id_token`, akkor kihagyhatja a titkosítási kulcsot. |
 
@@ -113,7 +113,7 @@ Az Identitáskezelő átirányítási URL-címének konfigurálásakor adja meg 
 
 Ha a **b2clogin.com** tartományt használja a **login.microsoftonline.com** helyett, ügyeljen arra, hogy a login.microsoftonline.com helyett a b2clogin.com használja.
 
-Példák:
+Például:
 
 - [Google + hozzáadása OAuth2-identitás-szolgáltatóként egyéni szabályzatok használatával](identity-provider-google-custom.md)
 

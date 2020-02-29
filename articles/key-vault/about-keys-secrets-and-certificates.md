@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: affa182145645b9a91801a9c6b38e682e6bd77ec
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9bbbcc38116c5681e3b5c867690c296f60507ad1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720061"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196110"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Kulcsok, titkos kódok és tanúsítványok
 
@@ -363,14 +364,14 @@ A következő táblázat a x509-használati szabályzat hozzárendelését mutat
 
 |**X509-használat jelzői**|**Key Vault Key Ops**|**Alapértelmezett viselkedés**|
 |----------|--------|--------|
-|DataEncipherment|titkosítás, visszafejtés| N.A. |
-|DecipherOnly|visszafejteni| N.A.  |
+|DataEncipherment|titkosítás, visszafejtés| – |
+|DecipherOnly|visszafejteni| –  |
 |DigitalSignature|aláírás, ellenőrzés| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|EncipherOnly|encrypt| N.A. |
-|KeyCertSign|aláírás, ellenőrzés|N.A.|
+|EncipherOnly|encrypt| – |
+|KeyCertSign|aláírás, ellenőrzés|–|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N.A. |
-|crlsign|aláírás, ellenőrzés| N.A. |
+|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| – |
+|crlsign|aláírás, ellenőrzés| – |
 
 ### <a name="certificate-issuer"></a>Tanúsítvány kiállítója
 

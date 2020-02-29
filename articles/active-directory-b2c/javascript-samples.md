@@ -3,20 +3,20 @@ title: JavaScript-minták
 titleSuffix: Azure AD B2C
 description: Ismerje meg az Azure Active Directory B2C JavaScript használatával.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1381ddb16697b1e892794604bbfafda815bd6182
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: a26f6c5e69ca083335580a0368459e062de3941e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149073"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187661"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-minták az Azure Active Directory B2C használata
 
@@ -140,6 +140,6 @@ function addTermsOfUseLink() {
 
 A kódban cserélje le a `termsOfUseUrl` kifejezést a használati feltételekre mutató hivatkozással. A címtárhoz hozzon létre egy **termsOfUse** nevű új felhasználói attribútumot, majd adja hozzá a **termsOfUse** felhasználói attribútumként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogyan szabhatja testre az alkalmazásai felhasználói felületét az [alkalmazás felhasználói felületének testreszabásával az Azure Active Directory B2C egyéni házirendjének használatával](custom-policy-ui-customization.md).

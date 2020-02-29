@@ -1,25 +1,26 @@
 ---
 title: Folyamatos integráció és üzembe helyezés
-description: A nagyvállalati szintű adatbázis-DevOps az Azure-folyamatok használatával történő folyamatos integráció és üzembe helyezés beépített támogatásával SQL Data Warehouse.
+description: Nagyvállalati szintű adatbázis-DevOps az adattárház-kezelés beépített támogatásával az Azure-folyamatok használatával történő folyamatos integrációhoz és üzembe helyezéshez.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: integration
-ms.date: 08/28/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8178e5ff9ff4816ddd422d3c45cfc0e1e0b3d41
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: azure-synapse
+ms.openlocfilehash: cb28afc84c423c5c5321a8f948e82f82031888a0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712986"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195940"
 ---
-# <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>A Azure SQL Data Warehouse folyamatos integrációja és üzembe helyezése
+# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Az adattárházak folyamatos integrációja és üzembe helyezése
 
-Ez az egyszerű oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz-(SSDT-) adatbázis-projekt az Azure DevOps, és hogyan használhat Azure-folyamatokat a folyamatos integráció és üzembe helyezés beállításához. Ez az oktatóanyag a folyamatos integrációs és üzembe helyezési folyamat kiépítésének második lépése a SQL Data Warehouse. 
+Ez az egyszerű oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz-(SSDT-) adatbázis-projekt az Azure DevOps, és hogyan használhat Azure-folyamatokat a folyamatos integráció és üzembe helyezés beállításához. Ez az oktatóanyag a folyamatos integrációs és üzembe helyezési folyamat kiépítésének második lépése az adattárházak esetében. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -59,9 +60,9 @@ Ezen a ponton olyan egyszerű környezettel rendelkezik, ahol a forrás-felügye
 
    A folyamat futtatása és ellenőrzése. Helyben végezheti a módosításokat, és ellenőrizheti a verziókövetés módosításait, amelyeknek automatikus buildet és üzembe helyezést kell létrehozniuk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ismerkedjen meg [Azure SQL Data Warehouse architektúrával](massively-parallel-processing-mpp-architecture.md)
-- [SQL Data Warehouse gyors létrehozása](create-data-warehouse-portal.md)
+- Ismerkedés az [SQL Analytics MPP architektúrával](massively-parallel-processing-mpp-architecture.md)
+- [SQL-készlet gyors létrehozása](create-data-warehouse-portal.md)
 - [Mintaadatok betöltése](sql-data-warehouse-load-sample-databases.md)
 - [Videók](/azure/sql-data-warehouse/sql-data-warehouse-videos) megismerése

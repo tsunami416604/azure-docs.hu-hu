@@ -7,18 +7,18 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 03f298b49e6a1eba84e8adf5ca6039df0bfe1abd
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1eff8bbd7ce601a0145bb3c6c05bc09ee0024daf
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906416"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196756"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Gyors útmutató: Blobok kezelése a Python V12 SDK-val
 
 Ebből a rövid útmutatóból megtudhatja, hogyan kezelheti a blobokat a Python használatával. A Blobok olyan objektumok, amelyek nagy mennyiségű szöveges vagy bináris adatok tárolására képesek, beleértve a képeket, a dokumentumokat, a médiafolyamokat és az archiválási adatokhoz. Feltöltheti, letöltheti és listázhatja a blobokat, és létrehozhatja és törölheti a tárolókat.
 
-[API-referenciák dokumentációja](/python/api/azure-storage-blob) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-blob/) | [minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+[API-referenciák dokumentációja](/python/api/azure-storage-blob) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-blob/) | [minták](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -280,7 +280,7 @@ A tisztítási folyamat megkezdése előtt tekintse meg a két fájl *dokumentum
 
 A fájlok ellenőrzése után nyomja le az **ENTER** billentyűt a tesztoldal törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat a Python használatával.
 

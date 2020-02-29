@@ -1,30 +1,30 @@
 ---
 title: A számítási feladatok elemzése
-description: Módszerek a számítási feladatok rangsorolásának elemzéséhez Azure SQL Data Warehouseban.
+description: Módszerek az Azure szinapszis Analytics szolgáltatásbeli számítási feladatok rangsorolásának elemzéséhez.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 03/13/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 14e53c1ebe63fac0f7c8e29f66ee5aa0cb3b9526
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 9b1432c41e56c6e0bc3fd80f9c2dbb36374d9e2a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693112"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199995"
 ---
-# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>A számítási feladatok elemzése Azure SQL Data Warehouse
+# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Számítási feladatok elemzése az Azure szinapszis Analytics szolgáltatásban
 
-Technikák a számítási feladatok elemzéséhez Azure SQL Data Warehouseban.
+Eljárások az SQL Analytics számítási feladatainak az Azure szinapszis Analyticsben való elemzéséhez.
 
 ## <a name="resource-classes"></a>Erőforrásosztályok
 
-A SQL Data Warehouse erőforrás-osztályokat biztosít a lekérdezésekhez szükséges rendszererőforrások hozzárendeléséhez.  Az erőforrás-osztályokkal kapcsolatos további információkért lásd: [erőforrás-osztályok & munkaterhelés-kezelés](resource-classes-for-workload-management.md).  A lekérdezések megvárhatják, ha a lekérdezéshez hozzárendelt erőforrás-osztálynak több erőforrásra van szüksége, mint amennyi jelenleg elérhető.
+Az SQL Analytics erőforrás-osztályokat biztosít a rendszererőforrásoknak a lekérdezésekhez való hozzárendeléséhez.  Az erőforrás-osztályokkal kapcsolatos további információkért lásd: [erőforrás-osztályok & munkaterhelés-kezelés](resource-classes-for-workload-management.md).  A lekérdezések megvárhatják, ha a lekérdezéshez hozzárendelt erőforrás-osztálynak több erőforrásra van szüksége, mint amennyi jelenleg elérhető.
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Várólistán lévő lekérdezések észlelése és egyéb DMV
 
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SQL Data Warehouse a következő várakozási típusok közül:
+Az SQL Analytics a következő várakozási típusokkal rendelkezik:
 
 * **LocalQueriesConcurrencyResourceType**: az egyidejű tárolóhely-keretrendszeren kívüli lekérdezések. A DMV-lekérdezések és a rendszerfüggvények, például a `SELECT @@VERSION` a helyi lekérdezések példái.
 * **UserConcurrencyResourceType**: az egyidejű tárolóhely-keretrendszerben található lekérdezések. A végfelhasználói táblákra irányuló lekérdezések olyan példákat mutatnak be, amelyek ezt az erőforrástípust használják.
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatbázis-felhasználók és a biztonság kezelésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele SQL Data Warehouseban](sql-data-warehouse-overview-manage-security.md). Ha többet szeretne megtudni arról, hogy a nagyobb erőforrás-osztályok Hogyan javíthatják a fürtözött oszlopcentrikus index minőségét, tekintse meg az [indexek újraépítése a szegmens minőségének javítása érdekében című szakaszt](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Az adatbázis-felhasználók és a biztonság kezelésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele az SQL Analyticsben](sql-data-warehouse-overview-manage-security.md). Ha többet szeretne megtudni arról, hogy a nagyobb erőforrás-osztályok Hogyan javíthatják a fürtözött oszlopcentrikus index minőségét, tekintse meg az [indexek újraépítése a szegmens minőségének javítása érdekében című szakaszt](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

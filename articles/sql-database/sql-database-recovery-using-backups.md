@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 3b0b5b02fa8f369bdfa03726bd5649b70b7bbd48
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b98331a9cdb359aeefac5db1546f3a15b54010ba
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228037"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194469"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Azure SQL Database helyreállítása automatikus adatbázis-biztonsági mentéssel
 
@@ -126,7 +126,7 @@ A törölt Azure SQL Database-adatbázisok visszaállítását bemutató minta P
 
 #### <a name="managed-instance-database"></a>Felügyelt példány adatbázisa
 
-A törölt példányok adatbázisának visszaállítását bemutató minta PowerShell-parancsfájlért lásd: [törölt adatbázis visszaállítása felügyelt példányon a PowerShell használatával](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance). 
+A törölt példányok adatbázisának visszaállítását bemutató minta PowerShell-parancsfájlért lásd: [törölt adatbázis visszaállítása felügyelt példányon a PowerShell használatával](sql-database-managed-instance-point-in-time-restore.md#restore-a-deleted-database)
 
 > [!TIP]
 > A törölt adatbázisok programozott visszaállításával kapcsolatban lásd: a [helyreállítás programozott módon történő végrehajtása automatizált biztonsági mentéssel](sql-database-recovery-using-backups.md).
@@ -135,7 +135,7 @@ A törölt példányok adatbázisának visszaállítását bemutató minta Power
 
 Bármely Azure-régióban lévő kiszolgálón visszaállíthat egy SQL-adatbázist a legutóbbi földrajzilag replikált biztonsági mentésből. A Geo-visszaállítás a forrásként egy földrajzilag replikált biztonsági mentést használ. Akkor is kérheti a Geo-visszaállítást, ha az adatbázis vagy az adatközpont egy leállás miatt nem érhető el.
 
-A Geo-visszaállítás az alapértelmezett helyreállítási lehetőség, ha az adatbázis nem érhető el az üzemeltetési régióban lévő incidens miatt. Az adatbázist bármely más régióban lévő kiszolgálóra is visszaállíthatja. A biztonsági másolat készítése és az egy másik régióban lévő Azure-blobba való földrajzi replikálása között késés történik. Ennek eredményeképpen a visszaállított adatbázis akár egy óráig is elvégezhető az eredeti adatbázis mögött. Az alábbi ábrán egy másik régió utolsó elérhető biztonsági másolatából származó adatbázis-visszaállítás látható.
+A Geo-visszaállítás az alapértelmezett helyreállítási lehetőség, ha az adatbázis nem érhető el az üzemeltetési régióban lévő incidens miatt. Az adatbázist bármely másik régióban található kiszolgálón visszaállíthatja. A biztonsági másolat készítése és az egy másik régióban lévő Azure-blobba való földrajzi replikálása között késés történik. Ennek eredményeképpen a visszaállított adatbázis akár egy óráig is elvégezhető az eredeti adatbázis mögött. Az alábbi ábrán egy másik régió utolsó elérhető biztonsági másolatából származó adatbázis-visszaállítás látható.
 
 ![Geo-visszaállítási ábra](./media/sql-database-geo-restore/geo-restore-2.png)
 
@@ -200,7 +200,7 @@ A helyreállításhoz Azure PowerShell vagy a REST API is használhatja. A köve
 
 Önálló vagy készletezett adatbázis visszaállításához tekintse meg a [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase)című témakört.
 
-  | Parancsmag | Leírás |
+  | A parancsmag | Leírás |
   | --- | --- |
   | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) |Egy vagy több adatbázist kér le. |
   | [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Lekér egy törölt adatbázist, amelyet visszaállíthat. |
@@ -214,7 +214,7 @@ A helyreállításhoz Azure PowerShell vagy a REST API is használhatja. A köve
 
 A felügyelt példányok adatbázisának visszaállításával kapcsolatban lásd: [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
 
-  | Parancsmag | Leírás |
+  | A parancsmag | Leírás |
   | --- | --- |
   | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |Egy vagy több felügyelt példány beolvasása. |
   | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Lekéri egy példány-adatbázist. |
@@ -239,11 +239,11 @@ Egy vagy készletezett adatbázis az Azure CLI használatával történő vissza
 
 A felügyelt példányok adatbázisának az Azure CLI használatával történő visszaállításához lásd [az az SQL MidB Restore](/cli/azure/sql/midb#az-sql-midb-restore).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az automatikus biztonsági mentések védik az adatbázisokat a felhasználók és alkalmazások hibáiból, a véletlen adatbázis-törlésből és a hosszan tartó kimaradásokból. Ez a beépített képesség minden szolgáltatási réteghez és számítási mérethez elérhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Üzletmenet-folytonosság áttekintése](sql-database-business-continuity.md)
 - [Automatikus biztonsági mentések SQL Database](sql-database-automated-backups.md)

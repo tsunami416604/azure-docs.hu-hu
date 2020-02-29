@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: adatok indexelése C# az Azure SQL Database-adatbázisokból'
+title: 'Oktatóanyag: az Azure SQL Database-adatbázisokból származó adatok indexeléseC# '
 titleSuffix: Azure Cognitive Search
 description: Ebben az C# oktatóanyagban csatlakozhat az Azure SQL Database-hez, kinyerheti a kereshető adatok kinyerését, és betöltheti azt egy Azure Cognitive Search indexbe.
 manager: nitinme
@@ -7,21 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/26/2020
-ms.openlocfilehash: 978587b68e719b79db31ff25adaf2b38d2235095
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.date: 02/28/2020
+ms.openlocfilehash: 7660c89032ea3ef8371655b94b75c1f60603ee32
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650067"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193968"
 ---
-# <a name="tutorial-index-azure-sql-data-in-c-using-azure-cognitive-search-indexers"></a>Oktatóanyag: az Azure SQL-adatkészletek indexelése az C# Azure Cognitive Search indexelő használatával
+# <a name="tutorial-use-c-to-index-data-from-sql-databases-in-azure-cognitive-search"></a>Oktatóanyag: C# az SQL-adatbázisok adatainak indexelése az Azure-ban Cognitive Search
 
-A C#használatával konfigurálhat olyan [Indexelő](search-indexer-overview.md) , amely Kinyeri a kereshető adatokat az Azure SQL Database-ből, és elküldi azt egy keresési indexbe. Ez az oktatóanyag az [Azure Cognitive Search .net Ügyféloldali kódtárait](https://aka.ms/search-sdk) és egy .net Core Console-alkalmazást használ a következő feladatok elvégzéséhez:
+Konfiguráljon egy [Indexelő](search-indexer-overview.md) a kereshető adatok kinyeréséhez az Azure SQL Database-ből, majd küldje el az Azure Cognitive Searchban található keresési indexbe. 
+
+Ez az oktatóanyag C# a és a [.net SDK](https://aka.ms/search-sdk) -t használja a következő feladatok elvégzéséhez:
 
 > [!div class="checklist"]
 > * Azure SQL Databasehoz csatlakozó adatforrás létrehozása
-> * Indexelő konfigurálása
+> * Indexelő létrehozása
 > * Indexelő futtatása az adatgyűjtés indexbe való betöltéséhez
 > * Index lekérdezése ellenőrzési lépésként
 
@@ -36,39 +38,17 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 > [!Note]
 > Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást. Az ingyenes keresési szolgáltatás három indexre, három indexelő elemre és három adatforrásra korlátozza a szolgáltatást. Az oktatóanyagban mindegyikből egyet hozhat majd létre. Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a szolgáltatásban az új erőforrások elfogadására szolgáló helyiséggel.
 
-## <a name="download-source-code"></a>Forráskód letöltése
+## <a name="download-files"></a>Fájlok letöltése
 
 Az oktatóanyag forráskódja az [Azure-Samples/Search-DotNet-Getting-Started GitHub-](https://github.com/Azure-Samples/search-dotnet-getting-started) tárház [DotNetHowToIndexer](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToIndexers) mappájában található.
 
-## <a name="get-a-key-and-url"></a>Kulcs és URL-cím lekérése
+## <a name="1---create-services"></a>1 – szolgáltatások létrehozása
 
-Az API-hívásokhoz a szolgáltatás URL-címe és egy hozzáférési kulcs szükséges. A Search szolgáltatás mindkettővel jön létre, így ha az előfizetéshez hozzáadta az Azure Cognitive Searcht, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
+Ez az oktatóanyag az Azure Cognitive Searcht használja az indexeléshez és a lekérdezésekhez, és Azure SQL Database külső adatforrásként. Ha lehetséges, hozzon létre mindkét szolgáltatást ugyanabban a régióban és erőforráscsoporthoz a közelség és a kezelhetőség érdekében. A gyakorlatban Azure SQL Database bármely régióban lehet.
 
-1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
+### <a name="start-with-azure-sql-database"></a>Kezdés Azure SQL Database
 
-1. A **beállítások** > **kulcsok**területen kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
-
-   ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
-
-## <a name="set-up-connections"></a>Kapcsolatok beállítása
-
-1. Indítsa el a Visual studiót, és nyissa meg a **dotnethowtoindexers elemre. SLN**.
-
-1. A Megoldáskezelőban nyissa meg a **appSettings. JSON** fájlt, és cserélje le a helyőrző értékeket a keresési szolgáltatáshoz tartozó kapcsolódási adatokkal. Ha a teljes URL-cím "https://my-demo-service.search.windows.net", a "My-demo-Service" nevet adja meg.
-
-    ```json
-    {
-      "SearchServiceName": "Put your search service name here",
-      "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-      "AzureSqlConnectionString": "Put your Azure SQL database connection string here",
-    }
-    ```
-
-Az utolsó bejegyzéshez egy meglévő adatbázis szükséges. Ezt a következő lépésben kell létrehoznia.
-
-## <a name="prepare-sample-data"></a>Mintaadatok előkészítése
-
-Ebben a lépésben hozzon létre egy külső adatforrást Azure SQL Database, amelyet az indexelő képes feltérképezni. Az Azure Portal és a mintában megtalálható *hotels.sql* fájl segítségével hozhatja létre az adatkészletet az Azure SQL Database-ben. Az Azure Cognitive Search felhasználja az összeolvasztott sorhalmazokat, például egy nézetből vagy lekérdezésből generált egyet. A minta megoldásban található SQL-fájl egyetlen táblát hoz létre és tölt fel.
+Ebben a lépésben hozzon létre egy külső adatforrást Azure SQL Database, amelyet az indexelő képes feltérképezni. Az adatkészlet létrehozásához használja a Azure Portal és a *Hotels. SQL* fájlt a minta letöltésből Azure SQL Database. Az Azure Cognitive Search felhasználja az összeolvasztott sorhalmazokat, például egy nézetből vagy lekérdezésből generált egyet. A minta megoldásban található SQL-fájl egyetlen táblát hoz létre és tölt fel.
 
 Ha meglévő Azure SQL Database erőforrással rendelkezik, a 4. lépéstől kezdődően felveheti a Hotels táblát.
 
@@ -104,59 +84,45 @@ Ha meglévő Azure SQL Database erőforrással rendelkezik, a 4. lépéstől kez
     Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
     ```
 
-1. Az **appsettings.json** harmadik bejegyzéseként illessze be a kapcsolati sztringet az „AzureSqlConnectionString” részbe a Visual Studióban.
+A következő gyakorlatban szüksége lesz erre a hálózati karakterláncra a környezet beállításához.
+
+### <a name="azure-cognitive-search"></a>Azure Cognitive Search
+
+A következő összetevő az Azure Cognitive Search, amelyet [a portálon lehet létrehozni](search-create-service-portal.md). A bemutató elvégzéséhez használhatja az ingyenes szintet. 
+
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Rendszergazdai API-kulcs és URL-cím beszerzése az Azure Cognitive Search
+
+Az API-hívásokhoz a szolgáltatás URL-címe és egy hozzáférési kulcs szükséges. A Search szolgáltatás mindkettővel jön létre, így ha az előfizetéshez hozzáadta az Azure Cognitive Searcht, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
+
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
+
+1. A **beállítások** > **kulcsok**területen kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+
+   ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
+
+## <a name="2---set-up-your-environment"></a>2 – a környezet beállítása
+
+1. Indítsa el a Visual studiót, és nyissa meg a **dotnethowtoindexers elemre. SLN**.
+
+1. A Megoldáskezelőban nyissa meg a **appSettings. JSON** fájlt a kapcsolódási adatok biztosításához.
+
+1. `searchServiceName`esetén, ha a teljes URL-cím "https://my-demo-service.search.windows.net", a szolgáltatás neve "My-demo-Service".
+
+1. `AzureSqlConnectionString`esetén a karakterlánc formátuma a következőhöz hasonló: `"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
       "SearchServiceName": "<placeholder-Azure-Search-service-name>",
       "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
-      "AzureSqlConnectionString": "Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+      "AzureSqlConnectionString": "<placeholder-ADO.NET-connection-string",
     }
     ```
 
-1. Adja meg a jelszót a **appSettings. JSON** fájljának a kapcsolatok karakterláncában. Az adatbázis-és felhasználónevek a kapcsolati sztringben lesznek átmásolva, de a jelszót manuálisan kell megadni.
+1. A kapcsolatok karakterláncában ellenőrizze, hogy a kapcsolatok karakterlánca tartalmaz-e érvényes jelszót. Amíg az adatbázis és a felhasználónevek át lesznek másolva, a jelszót manuálisan kell megadnia.
 
-## <a name="build-the-solution"></a>A megoldás létrehozása
+## <a name="3---create-the-pipeline"></a>3 – a folyamat létrehozása
 
-A megoldás létrehozásához nyomja le az F5 billentyűt. A program hibakeresési módban lesz végrehajtva. Az egyes műveletek állapota a konzolablakban látható.
-
-   ![Konzolkimenet](./media/search-indexer-tutorial/console-output.png "Konzolkimenet")
-
-A kód helyileg fut a Visual Studióban, és csatlakozik a keresési szolgáltatáshoz az Azure-ban, amely összekapcsolja a Azure SQL Database és beolvassa az adatkészletet. Ezzel a sok művelettel több lehetséges meghibásodási pont is van. Ha hibaüzenetet kap, először ellenőrizze az alábbi feltételeket:
-
-+ Az Ön által megadott keresési szolgáltatás kapcsolati adatai ebben az oktatóanyagban a szolgáltatás nevére korlátozódnak. A teljes URL-cím megadásakor a műveletek az index létrehozásakor leállnak, kapcsolódási hibát jelezve.
-
-+ Az adatbázis kapcsolati adatai az **appsettings.json** fájlban. Ennek a portálról beszerzett ADO.NET kapcsolati sztringnek kell lennie, amelyet úgy módosítottunk, hogy tartalmazza az adatbázishoz tartozó felhasználónevet és jelszót. A felhasználói fióknak megfelelő engedéllyel kell rendelkeznie az adatok lekérdezéséhez. A helyi ügyfél IP-címének hozzáférést kell biztosítani.
-
-+ Erőforráskorlátok. Ne felejtse el, hogy az ingyenes szinten 3 index, indexelő és adatforrásra vonatkozó korlát szerepel. A felső korlátot elért szolgáltatások nem képesek új objektumok létrehozására.
-
-## <a name="check-results"></a>Eredmények keresése
-
-A Azure Portal használatával ellenőrizze az objektumok létrehozását, majd a **keresési ablak** használatával kérdezheti le az indexet.
-
-1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon nyissa meg az egyes listákat, és ellenőrizze, hogy létrejött-e az objektum. Az **indexek**, az **Indexelő**és **az adatforrások** "Hotels", "Azure-SQL-indexelő" és "Azure-SQL" lesz.
-
-   ![Indexelők és adatforrások csempéi](./media/search-indexer-tutorial/tiles-portal.png)
-
-1. Válassza ki a hotelek indexét. A szállodák lapon a **Search Explorer** az első lap. 
-
-1. Ha üres lekérdezést szeretne kiadni, kattintson a **Keresés** gombra. 
-
-   A rendszer az indexben lévő három bejegyzést JSON-dokumentumként adja vissza. A keresési ablak a dokumentumokat JSON-formátumban adja vissza, így a teljes struktúra megtekinthető.
-
-   ![Index lekérdezése](./media/search-indexer-tutorial/portal-search.png "Index lekérdezése")
-   
-1. A következő lépésben adja meg ezt a keresési sztringet: `search=river&$count=true`. 
-
-   Ez a lekérdezés teljes szöveges keresést indít a `river` kifejezésre, az eredmény pedig tartalmazza az egyező dokumentumok darabszámát. Az egyező dokumentumok darabszámának visszaadása hasznos lehet az olyan forgatókönyvek tesztelése esetében, amelyekben több ezer vagy több millió dokumentumot tartalmazó, nagy méretű indexszel rendelkezik. Ebben az esetben a lekérdezésnek csak egy dokumentum felel meg.
-
-1. Végül adjon meg egy olyan keresési sztringet, amely a JSON-kimeneteket a kívánt mezőkre korlátozza: `search=river&$count=true&$select=hotelId, baseRate, description`. 
-
-   A lekérdezési válasz csak a kiválasztott mezőket tartalmazza, így a kimenet tömörebb lesz.
-
-## <a name="explore-the-code"></a>A kód megismerése
-
-Most, hogy megértette a mintakód létrehozását, térjen vissza a megoldáshoz a kód áttekintéséhez. A kapcsolódó kód két fájlban található:
+Az indexelő adatforrást és indexet igényel. A kapcsolódó kód két fájlban található:
 
   + **Hotel.cs**, amely az indexet meghatározó sémát tartalmaz
   + **Program.cs**, amely a szolgáltatásban található struktúrák létrehozására és felügyeletére szolgáló függvényeket tartalmaz
@@ -230,17 +196,61 @@ Az indexelő objektum a platform-agnosztikus, ahol a konfiguráció, az ütemez�
   }
   ```
 
+## <a name="4---build-the-solution"></a>4 – a megoldás összeállítása
+
+A megoldás létrehozásához és futtatásához nyomja le az F5 billentyűt. A program hibakeresési módban lesz végrehajtva. Az egyes műveletek állapota a konzolablakban látható.
+
+   ![Konzolkimenet](./media/search-indexer-tutorial/console-output.png "Konzolkimenet")
+
+A kód helyileg fut a Visual Studióban, és csatlakozik a keresési szolgáltatáshoz az Azure-ban, amely összekapcsolja a Azure SQL Database és beolvassa az adatkészletet. Ezzel a sok művelettel több lehetséges meghibásodási pont is van. Ha hibaüzenetet kap, először ellenőrizze az alábbi feltételeket:
+
++ Az Ön által megadott keresési szolgáltatás kapcsolati adatai ebben az oktatóanyagban a szolgáltatás nevére korlátozódnak. A teljes URL-cím megadásakor a műveletek az index létrehozásakor leállnak, kapcsolódási hibát jelezve.
+
++ Az adatbázis kapcsolati adatai az **appsettings.json** fájlban. Ennek a portálról beszerzett ADO.NET kapcsolati sztringnek kell lennie, amelyet úgy módosítottunk, hogy tartalmazza az adatbázishoz tartozó felhasználónevet és jelszót. A felhasználói fióknak megfelelő engedéllyel kell rendelkeznie az adatok lekérdezéséhez. A helyi ügyfél IP-címének hozzáférést kell biztosítani.
+
++ Erőforráskorlátok. Ne felejtse el, hogy az ingyenes szinten 3 index, indexelő és adatforrásra vonatkozó korlát szerepel. A felső korlátot elért szolgáltatások nem képesek új objektumok létrehozására.
+
+## <a name="5---search"></a>5 – keresés
+
+A Azure Portal használatával ellenőrizze az objektumok létrehozását, majd a **keresési ablak** használatával kérdezheti le az indexet.
+
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon nyissa meg az egyes listákat, és ellenőrizze, hogy létrejött-e az objektum. Az **indexek**, az **Indexelő**és **az adatforrások** "Hotels", "Azure-SQL-indexelő" és "Azure-SQL" lesz.
+
+   ![Indexelők és adatforrások csempéi](./media/search-indexer-tutorial/tiles-portal.png)
+
+1. Válassza ki a hotelek indexét. A szállodák lapon a **Search Explorer** az első lap. 
+
+1. Ha üres lekérdezést szeretne kiadni, kattintson a **Keresés** gombra. 
+
+   A rendszer az indexben lévő három bejegyzést JSON-dokumentumként adja vissza. A keresési ablak a dokumentumokat JSON-formátumban adja vissza, így a teljes struktúra megtekinthető.
+
+   ![Index lekérdezése](./media/search-indexer-tutorial/portal-search.png "Index lekérdezése")
+   
+1. A következő lépésben adja meg ezt a keresési sztringet: `search=river&$count=true`. 
+
+   Ez a lekérdezés teljes szöveges keresést indít a `river` kifejezésre, az eredmény pedig tartalmazza az egyező dokumentumok darabszámát. Az egyező dokumentumok darabszámának visszaadása hasznos lehet az olyan forgatókönyvek tesztelése esetében, amelyekben több ezer vagy több millió dokumentumot tartalmazó, nagy méretű indexszel rendelkezik. Ebben az esetben a lekérdezésnek csak egy dokumentum felel meg.
+
+1. Végül adjon meg egy olyan keresési sztringet, amely a JSON-kimeneteket a kívánt mezőkre korlátozza: `search=river&$count=true&$select=hotelId, baseRate, description`. 
+
+   A lekérdezési válasz csak a kiválasztott mezőket tartalmazza, így a kimenet tömörebb lesz.
+
+## <a name="reset-and-rerun"></a>Alaphelyzetbe állítás és ismételt futtatás
+
+A fejlesztés korai kísérleti szakaszaiban a tervezési iteráció legalkalmasabb megközelítése az objektumok törlése az Azure Cognitive Search és a kód újraépítésének engedélyezése. Az erőforrásnevek egyediek. Egy objektum törlése révén újból létrehozhatja azt ugyanazzal a névvel.
+
+Az oktatóanyaghoz tartozó mintakód ellenőrzi a meglévő objektumokat, és törli őket, hogy újra lehessen futtatni a kódot.
+
+A portál segítségével indexeket, indexelő fájlokat és adatforrásokat is törölhet.
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A már futó erőforrások pénzbe kerülnek. Az erőforrásokat egyenként is törölheti, vagy az erőforráscsoport törlésével törölheti a teljes erőforrás-készletet.
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon.
+## <a name="next-steps"></a>További lépések
 
-## <a name="next-steps"></a>Következő lépések
-
-Az Azure Cognitive Searchban az indexelő több Azure-adatforráshoz is elérhető. A következő lépésként vizsgálja meg az indexelő az Azure Blob Storage-hoz című témakört.
+Most, hogy már ismeri a SQL Database indexelés alapjait, ismerkedjen meg közelebbről az indexelő konfigurációjában.
 
 > [!div class="nextstepaction"]
-> [Dokumentumok indexelése az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md)
+> [Azure SQL Database-indexelő konfigurálása](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

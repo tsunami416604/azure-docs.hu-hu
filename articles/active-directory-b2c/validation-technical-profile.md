@@ -3,20 +3,20 @@ title: Érvényesítési technikai profil definiálása egyéni házirendben
 titleSuffix: Azure AD B2C
 description: Érvényesítse a jogcímeket egy érvényesítési műszaki profillal a Azure Active Directory B2C egyéni házirendjében.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: facef1e1288f2a64872efbf37a9a31fa05244a7e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 65a2eab05e7c475431602d9c2d3fc44b59bbc8f7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950799"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185726"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Érvényesítési műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -76,7 +76,7 @@ Az **előfeltétel** elem a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Value (Díj) | 1: n | Az ellenőrzés által használt adatértékek. Ha az ellenőrzési típus `ClaimsExist`, akkor ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Ha az ellenőrzési típus `ClaimEquals`, akkor ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Míg egy másik érték elem tartalmazza az ellenőrizendő értéket.|
+| Érték | 1: n | Az ellenőrzés által használt adatértékek. Ha az ellenőrzési típus `ClaimsExist`, akkor ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Ha az ellenőrzési típus `ClaimEquals`, akkor ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Míg egy másik érték elem tartalmazza az ellenőrizendő értéket.|
 | Műveletek | 1:1 | Az a művelet, amelyet akkor kell elvégezni, ha az előkészítési lépésen belüli előfeltétel-ellenőrzési érték igaz. A **művelet** értéke `SkipThisValidationTechnicalProfile`értékre van állítva. Megadja, hogy a társított érvényesítési technikai profilt ne lehessen végrehajtani. |
 
 ### <a name="example"></a>Példa

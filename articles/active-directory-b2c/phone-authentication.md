@@ -3,20 +3,20 @@ title: Telefonos regisztráció és bejelentkezés egyéni szabályzatokkal (el�
 titleSuffix: Azure AD B2C
 description: Egyszeri jelszó (OTP) küldése szöveges üzenetekben az alkalmazás felhasználói telefonokra egyéni szabályzatokkal Azure Active Directory B2Cban.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 50e7d66fef67e2728c95790947393de8d58398c2
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: eadac0e973b361b1fdee63dcc9cfa848a0b2bacb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647528"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183958"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Telefonos regisztráció és bejelentkezés beállítása egyéni szabályzatokkal Azure AD B2Cban (előzetes verzió)
 
@@ -92,7 +92,7 @@ Például:
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtalálhatja a telefonos regisztrációt és az egyéni házirend-előfizetési csomagot (és más kezdő csomagokat is) a GitHubon:
 

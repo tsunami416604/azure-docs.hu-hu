@@ -1,17 +1,17 @@
 ---
-title: GitHub-műveletek & Azure Kubernetes Service-ben
+title: GitHub-műveletek & Azure Kubernetes Service (előzetes verzió)
 services: azure-dev-spaces
 ms.date: 02/04/2020
 ms.topic: conceptual
 description: Lekéréses kérelem módosításainak áttekintése és tesztelése közvetlenül az Azure Kubernetes Service-ben a GitHub-műveletek és az Azure dev Spaces használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, GitHub-műveletek, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 35050d0c9d1e6062866747dc8544d03574a8d8fe
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e2b6f47483d2c7b6c4970dac531bada1cecd279e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026098"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196552"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-műveletek & Azure Kubernetes Service (előzetes verzió)
 
@@ -50,7 +50,7 @@ Mentse a *lekéréséhez* értéket a kimenetből, mert azt egy későbbi lépé
 
 ## <a name="create-a-service-principal-for-authentication"></a>Egyszerű szolgáltatásnév létrehozása a hitelesítéshez
 
-Egyszerű szolgáltatásnév létrehozásához használja [az az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Példa:
+Egyszerű szolgáltatásnév létrehozásához használja [az az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Például:
 
 ```cmd
 az ad sp create-for-rbac --sdk-auth --skip-assignment
@@ -162,7 +162,7 @@ Ha egyesíti a módosításokat az elágazásban található *Master* ágban, eg
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken.
 

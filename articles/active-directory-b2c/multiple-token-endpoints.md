@@ -3,20 +3,20 @@ title: OWIN-alapú webes API-k migrálása a b2clogin.com-be
 titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan engedélyezheti a .NET-es webes API-k számára, hogy támogassa a több jogkivonat-kiállítók által kiállított jogkivonatokat, miközben az alkalmazásokat a b2clogin.com
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e6a92d12e7f2f24289aafa7e4a9acc9edccbd34c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5daf88e746ea803f345c79bd31d656f2615b6754
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840400"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184094"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWIN-alapú webes API migrálása b2clogin.com
 
@@ -143,7 +143,7 @@ Ezután (cserélje le a `{your-b2c-tenant}`t a B2C-bérlő nevére):
 
 Ha a végponti karakterláncok a webalkalmazás végrehajtása során jönnek létre, a rendszer a b2clogin.com-alapú végpontokat használja, amikor jogkivonatokat kér.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk bemutatja a Microsoft OWIN middleware (Katana) megvalósítására szolgáló webes API konfigurálásának módszerét, hogy több kiállítói végponttól fogadja el a jogkivonatokat. Észreveheti, hogy több más karakterlánc is szerepel a *web. config* fájlban mind a TaskService, mind a TaskWebApp projektek esetében, amelyeket módosítania kell, ha a saját bérlője alapján szeretné felépíteni és futtatni ezeket a projekteket. Szívesen módosítja a projekteket megfelelően, ha szeretné megtekinteni őket működés közben, a teljes körű megvalósítás azonban a jelen cikk hatókörén kívül esik.
 

@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 33dfc91381b23bf1ac33bef5274e1098df411f4a
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 0bca690fd585b288f15cbab21c1c951474390318
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609842"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196979"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Alkalmazások kezelése több környezethez
 
@@ -42,9 +42,9 @@ Elnevezett alkalmazás-példányok Service Fabricban való létrehozásakor lehe
 
   - A PowerShellben a [`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) parancsmag szórótábla-ként veszi át az alkalmazás paramétereit.
   - A sfctl használatával a [`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) parancs JSON-karakterláncként fogadja a paramétereket. A install.sh parancsfájl a sfctl-t használja.
-  - A Visual Studio az alkalmazás projekt parameters (paraméterek) mappájában található paramétereket tartalmazó fájlok készletét biztosítja. Ezeket a paramétereket a Visual studióból való közzétételkor, az Azure DevOps Services vagy a Team Foundation Server használatával lehet használni. A Visual Studióban a rendszer a Deploy-FabricApplication. ps1 parancsfájlba továbbítja a fájlok paramétereit.
+  - A Visual Studio az alkalmazás projekt parameters (paraméterek) mappájában található paramétereket tartalmazó fájlok készletét biztosítja. Ezeket a paramétereket a Visual studióból való közzétételkor, az Azure DevOps Services vagy a Azure DevOps Server használatával lehet használni. A Visual Studióban a rendszer a Deploy-FabricApplication. ps1 parancsfájlba továbbítja a fájlok paramétereit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő cikkek bemutatják, hogyan használhatja az itt ismertetett fogalmakat:
 
 - [Környezeti változók megadása a Service Fabric szolgáltatásaihoz](service-fabric-how-to-specify-environment-variables.md)

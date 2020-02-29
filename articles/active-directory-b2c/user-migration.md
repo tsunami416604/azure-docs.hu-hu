@@ -3,20 +3,20 @@ title: Felhasználói Migrálás módszerei
 titleSuffix: Azure AD B2C
 description: Áttelepítheti a felhasználói fiókokat egy másik identitás-szolgáltatótól a tömeges importálás vagy a zökkenőmentes áttelepítési módszerek használatával Azure AD B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 759379d99bbd422c43998997be1d52ecbf34966d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 90ef9402e0891915be4ed6bb89573eced546c59a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484288"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183142"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Felhasználók migrálása Azure AD B2Cre
 
@@ -99,7 +99,7 @@ Az áttelepítési folyamat megkezdése előtt végezze el a könyvtár törlés
 
 Ha az áttelepíteni kívánt fiókok gyengébb jelszóval rendelkeznek, mint az Azure AD B2C által kényszerített [erős jelszó](../active-directory/authentication/concept-sspr-policy.md) erőssége, letilthatja a jelszó erős követelményét. További információ: [jelszóházirend tulajdonsága](manage-user-accounts-graph-api.md#password-policy-property).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az [Azure-ad-B2C/felhasználó-áttelepítési](https://github.com/azure-ad-b2c/user-migration) adattár a githubon egy zökkenőmentes áttelepítési egyéni házirendet tartalmaz, és REST API a kód minta:
 

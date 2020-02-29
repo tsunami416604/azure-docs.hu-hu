@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 7c94ad096cf7d0d01bf2076f6748b49cf4ae1bb4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/28/2020
+ms.openlocfilehash: aa573e84fa9fff83bd6a894f516ce5f67b3afa79
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794230"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194342"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Az Azure Cognitive Search szinonimái
 
@@ -27,7 +27,7 @@ A rendszer nem támogatja a szinonimák létrehozására szolgáló portál hasz
 
 Ha az [ügyfél által felügyelt kulcsokat](search-security-manage-encryption-keys.md) használja a kiszolgálóoldali titkosításhoz, akkor ezt a védelmet a szinonima Térkép tartalmára is alkalmazhatja.
 
-## <a name="use-synonyms"></a>Szinonimák használata
+## <a name="use-synonyms"></a>A szinonimák használata
 
 Az Azure Cognitive Searchban a szinonimák támogatása a definiált és a szolgáltatásba feltöltött szinonima-térképek alapján történik. Ezek a térképek egy független erőforrásnak (például indexeknek vagy adatforrásoknak) minősülnek, és a keresési szolgáltatás bármely indexének bármely kereshető mezője használhatja.
 
@@ -45,7 +45,7 @@ A keresési alkalmazáshoz több szinonimás térképet is létrehozhat (példá
 
 #### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>Vegyen fel vagy frissítsen egy szinonima-leképezést a szolgáltatásban a POST vagy a PUT paranccsal.
 
-A szinonima térképek a szolgáltatásba POST vagy PUT használatával lesznek feltöltve. Minden szabályt az új vonal karakterének ("\n") kell elválasztani. Egy ingyenes szolgáltatásban és a 10 000-szabályokban az összes többi SKU esetében legfeljebb 5 000 szabályt adhat meg. Minden szabály legfeljebb 20 kiterjesztéssel rendelkezhet.
+A szinonima térképek a szolgáltatásba POST vagy PUT használatával lesznek feltöltve. Minden szabályt az új vonal karakterének ("\n") kell elválasztani. Az ingyenes szolgáltatásban legfeljebb 5 000 szabályt adhat meg, az összes többi SKU esetében pedig a 20 000 szabályokat. Minden szabály legfeljebb 20 kiterjesztéssel rendelkezhet.
 
 A szinonima Maps-nek Apache Solr formátumban kell lennie, amely alább látható. Ha egy meglévő szinonimát tartalmazó szótár eltérő formátumú, és közvetlenül szeretné használni, kérjük, tudassa velünk a [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
@@ -152,11 +152,11 @@ A szinonima funkció a keresési lekérdezésekre vonatkozik, és nem vonatkozik
 
 A szinonimák bővítései nem érvényesek a helyettesítő karakteres keresési kifejezésekre; az előtag, a fuzzy és a regex kifejezések nincsenek kibontva.
 
-Ha egyetlen lekérdezést kell végrehajtania, amely szinonimákat, valamint helyettesítő karaktereket, regexeket vagy fuzzy kereséseket alkalmaz, a lekérdezéseket a vagy a szintaxis használatával kombinálhatja. Ha például a szinonimákat az egyszerű lekérdezési szintaxishoz helyettesítő karakterekkel kombinálja, a kifejezés `<query> | <query>*` lesz.
+Ha egyetlen lekérdezést kell végrehajtania, amely szinonimákat, valamint helyettesítő karaktereket, regexeket vagy fuzzy kereséseket alkalmaz, a lekérdezéseket a vagy a szintaxis használatával kombinálhatja. Ha például a szinonimákat az egyszerű lekérdezési szintaxishoz helyettesítő karakterekkel kombinálja, a kifejezés `<query> | <query>*`lesz.
 
 Ha meglévő indexe van egy fejlesztési (nem éles) környezetben, kísérletezzen egy kisméretű szótárral, és nézze meg, hogy a szinonimák hozzáadása hogyan módosítja a keresési élményt, beleértve a pontozási profilok, a kiemelések és a javaslatok hatását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Szinonima-Térkép létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)

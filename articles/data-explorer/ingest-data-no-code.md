@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: figyelési adatfeldolgozás kód nélkül – Azure Adatkezelő'
+title: 'Oktatóanyag: figyelési adatfeldolgozás az Azure Adatkezelő kód nélkül'
 description: Ebből az oktatóanyagból megtudhatja, hogyan végezheti el a figyelési adatgyűjtést az Azure Adatkezelő egy sor kód nélkül és az adatlekérdezéssel.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 24e09f6578431e6b7f2a83be13bae59bf2e707de
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3a53a660da2257540f23bc6438fc5933e5229c76
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986206"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198048"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Oktatóanyag: figyelési adatfeldolgozás és-lekérdezés az Azure Adatkezelő 
 
@@ -43,7 +43,7 @@ Tekintse meg és Ismerje meg a Azure Monitor diagnosztikai metrikák és naplók
 
 Az Azure diagnosztikai metrikáit és naplóit, valamint a tevékenységek naplóit egy Azure-szolgáltatás bocsátja ki, és adatokat biztosít a szolgáltatás működéséről. 
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Diagnosztikai metrikák](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Diagnosztikai metrikák](#tab/diagnostic-metrics)
 #### <a name="example"></a>Példa
 
 A diagnosztikai metrikák összesítése 1 perces időtartammal történik. A következő példa egy Azure Adatkezelő metrika – Event sémát mutat be a lekérdezési időtartamon:
@@ -77,7 +77,7 @@ A diagnosztikai metrikák összesítése 1 perces időtartammal történik. A k�
 }
 ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnosztikai naplók](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Diagnosztikai naplók](#tab/diagnostic-logs)
 #### <a name="example"></a>Példa
 
 Az alábbi példa egy Azure Adatkezelő diagnosztikai betöltési [naplót mutat be](using-diagnostic-logs.md#diagnostic-logs-schema):
@@ -133,7 +133,7 @@ Az alábbi példa egy Azure Adatkezelő diagnosztikai betöltési [naplót mutat
     }
 }
 ```
-# <a name="activity-logstabactivity-logs"></a>[Tevékenységnaplók](#tab/activity-logs)
+# <a name="activity-logs"></a>[Tevékenységnaplók](#tab/activity-logs)
 #### <a name="example"></a>Példa
 
 Az Azure-Tevékenységnaplók olyan előfizetési szintű naplók, amelyek betekintést nyújtanak az előfizetése erőforrásaiban végrehajtott műveletekre. A következő példa egy tevékenység-naplózási eseményt mutat be a hozzáférés ellenőrzéséhez:
@@ -210,7 +210,7 @@ A Azure Monitor naplók szerkezete nem táblázatos. Az adatok kezelése és az 
 
 Az Azure Adatkezelő webes felhasználói felület használatával hozza létre a céltábla az Azure Adatkezelő-adatbázisban.
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Diagnosztikai metrikák](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Diagnosztikai metrikák](#tab/diagnostic-metrics)
 #### <a name="create-tables-for-the-diagnostic-metrics"></a>Táblázatok létrehozása a diagnosztikai metrikák számára
 
 1. A *TestDatabase* -adatbázisban hozzon létre egy *DiagnosticMetrics* nevű táblát a diagnosztikai metrikák rekordjainak tárolására. Használja a következő `.create table` Control parancsot:
@@ -235,7 +235,7 @@ Az Azure Adatkezelő webes felhasználói felület használatával hozza létre 
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnosztikai naplók](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Diagnosztikai naplók](#tab/diagnostic-logs)
 #### <a name="create-tables-for-the-diagnostic-logs"></a>Táblák létrehozása a diagnosztikai naplókhoz 
 
 1. A *TestDatabase* adatbázisban hozzon létre egy *DiagnosticLogs* nevű táblát a diagnosztikai naplók tárolására. Használja a következő `.create table` Control parancsot:
@@ -258,7 +258,7 @@ Az Azure Adatkezelő webes felhasználói felület használatával hozza létre 
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[Tevékenységnaplók](#tab/activity-logs)
+# <a name="activity-logs"></a>[Tevékenységnaplók](#tab/activity-logs)
 #### <a name="create-tables-for-the-activity-logs"></a>Táblák létrehozása a tevékenység naplóihoz 
 
 1. Hozzon létre egy *ActivityLogs* nevű táblázatot a *TestDatabase* adatbázisban a tevékenységi naplók rekordjainak fogadásához. A tábla létrehozásához futtassa a következő Azure Adatkezelő lekérdezést:
@@ -284,7 +284,7 @@ Az Azure Adatkezelő webes felhasználói felület használatával hozza létre 
 
  Mivel az adatformátum `json`, az adatleképezés szükséges. A `json` leképezése leképezi az egyes JSON-útvonalakat a tábla oszlopainak nevéhez.
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[Diagnosztikai metrikák/diagnosztikai naplók](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[Diagnosztikai metrikák/diagnosztikai naplók](#tab/diagnostic-metrics+diagnostic-logs) 
 #### <a name="map-diagnostic-metrics-and-logs-to-the-table"></a>A diagnosztikai metrikák és naplók leképezése a táblába
 
 A diagnosztikai metrika és a naplózási adatok táblára való leképezéséhez használja a következő lekérdezést:
@@ -293,7 +293,7 @@ A diagnosztikai metrika és a naplózási adatok táblára való leképezéséhe
 .create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-# <a name="activity-logstabactivity-logs"></a>[Tevékenységnaplók](#tab/activity-logs)
+# <a name="activity-logs"></a>[Tevékenységnaplók](#tab/activity-logs)
 #### <a name="map-activity-logs-to-the-table"></a>Tevékenység-naplók leképezése a táblára
 
 A tevékenység naplójának az adattáblához való leképezéséhez használja a következő lekérdezést:
@@ -305,7 +305,7 @@ A tevékenység naplójának az adattáblához való leképezéséhez használja
 
 ### <a name="create-the-update-policy-for-metric-and-log-data"></a>A metrika és a naplózási adatok frissítési szabályzatának létrehozása
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Diagnosztikai metrikák](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Diagnosztikai metrikák](#tab/diagnostic-metrics)
 #### <a name="create-data-update-policy-for-diagnostics-metrics"></a>Adatfrissítési szabályzat létrehozása diagnosztikai metrikák számára
 
 1. Hozzon létre egy olyan [függvényt](/azure/kusto/management/functions) , amely kibővíti a diagnosztikai metrikai rekordok gyűjteményét, hogy a gyűjtemény minden értéke külön sort kapjon. Használja a [`mv-expand`](/azure/kusto/query/mvexpandoperator) operátort:
@@ -333,7 +333,7 @@ A tevékenység naplójának az adattáblához való leképezéséhez használja
     .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnosztikai naplók](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Diagnosztikai naplók](#tab/diagnostic-logs)
 #### <a name="create-data-update-policy-for-diagnostics-logs"></a>Adatfrissítési szabályzat létrehozása diagnosztikai naplókhoz
 
 1. Hozzon létre egy olyan [függvényt](/azure/kusto/management/functions) , amely kibővíti a diagnosztikai naplók rekordjainak gyűjteményét, hogy a gyűjtemény minden értéke külön sort kapjon. Engedélyezheti a betöltési naplókat egy Azure Adatkezelő-fürtön, és a betöltési [naplók sémáját](/azure/data-explorer/using-diagnostic-logs#diagnostic-logs-schema)is használhatja. Létre fog hozni egy táblát a sikeres és sikertelen betöltéshez, míg egyes mezők üresek lesznek a sikeres betöltéshez (például ErrorCode). Használja a [`mv-expand`](/azure/kusto/query/mvexpandoperator) operátort:
@@ -366,7 +366,7 @@ A tevékenység naplójának az adattáblához való leképezéséhez használja
     .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[Tevékenységnaplók](#tab/activity-logs)
+# <a name="activity-logs"></a>[Tevékenységnaplók](#tab/activity-logs)
 #### <a name="create-data-update-policy-for-activity-logs"></a>Adatfrissítési szabályzat létrehozása a tevékenység naplóihoz
 
 1. Hozzon létre egy olyan [függvényt](/azure/kusto/management/functions) , amely kibővíti a műveletnapló rekordjainak gyűjteményét, hogy a gyűjtemény minden értéke külön sort kapjon. Használja a [`mv-expand`](/azure/kusto/query/mvexpandoperator) operátort:
@@ -425,7 +425,7 @@ Az Azure diagnosztikai beállításai lehetővé teszik a metrikák és naplók 
 
 Most csatlakoztatnia kell a diagnosztikai metrikákat és naplókat, valamint a tevékenység naplóit az Event hub-hoz.
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[Diagnosztikai metrikák/diagnosztikai naplók](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[Diagnosztikai metrikák/diagnosztikai naplók](#tab/diagnostic-metrics+diagnostic-logs) 
 ### <a name="connect-diagnostic-metrics-and-logs-to-your-event-hub"></a>Diagnosztikai metrikák és naplók összekötése az Event hub-ban
 
 Válasszon ki egy erőforrást, amelyből exportálni kívánja a metrikákat. Számos erőforrástípus támogatja a diagnosztikai adatexportálást, beleértve a Event Hubs névteret, Azure Key Vault, az Azure IoT Hub és az Azure Adatkezelő-fürtöket. Ebben az oktatóanyagban egy Azure Adatkezelő-fürtöt használunk erőforrásként, áttekintjük a lekérdezés teljesítményének mérőszámait és a betöltési eredmények naplóit.
@@ -452,7 +452,7 @@ Válasszon ki egy erőforrást, amelyből exportálni kívánja a metrikákat. S
 
 1. Kattintson a **Mentés** gombra.
 
-# <a name="activity-logstabactivity-logs"></a>[Tevékenységnaplók](#tab/activity-logs)
+# <a name="activity-logs"></a>[Tevékenységnaplók](#tab/activity-logs)
 ### <a name="connect-activity-logs-to-your-event-hub"></a>Tevékenységnaplók összekapcsolása az Event hub-ban
 
 1. A Azure Portal bal oldali menüjében válassza a **műveletnapló**elemet.
@@ -501,7 +501,7 @@ Most létre kell hoznia az adatkapcsolatokat a diagnosztikai metrikák és napl�
 
     ![Event hub-adatkapcsolat](media/ingest-data-no-code/event-hub-data-connection.png)
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[Diagnosztikai metrikák/diagnosztikai naplók](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[Diagnosztikai metrikák/diagnosztikai naplók](#tab/diagnostic-metrics+diagnostic-logs) 
 
 1. Használja az **adatkapcsolatok** ablakban az alábbi beállításokat:
 
@@ -528,7 +528,7 @@ Most létre kell hoznia az adatkapcsolatokat a diagnosztikai metrikák és napl�
 
 1. Kattintson a **Létrehozás** gombra.  
 
-# <a name="activity-logstabactivity-logs"></a>[Tevékenységnaplók](#tab/activity-logs)
+# <a name="activity-logs"></a>[Tevékenységnaplók](#tab/activity-logs)
 
 1. Használja az **adatkapcsolatok** ablakban az alábbi beállításokat:
 
@@ -560,7 +560,7 @@ Most létre kell hoznia az adatkapcsolatokat a diagnosztikai metrikák és napl�
 
 Most már rendelkezik egy adatforgalommal rendelkező folyamattal. A fürtön keresztüli betöltés alapértelmezés szerint 5 percet vesz igénybe, ezért a lekérdezés megkezdése előtt néhány percen belül engedélyezzük az adatfeldolgozást.
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Diagnosztikai metrikák](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Diagnosztikai metrikák](#tab/diagnostic-metrics)
 ### <a name="query-the-diagnostic-metrics-table"></a>A diagnosztikai metrikák táblázatának lekérdezése
 
 A következő lekérdezés elemzi a lekérdezési időtartam adatait az Azure Adatkezelő diagnosztikai metrikai rekordjaiból:
@@ -579,7 +579,7 @@ Lekérdezés eredményei:
 |   | 00:06.156 |
 | | |
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnosztikai naplók](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Diagnosztikai naplók](#tab/diagnostic-logs)
 ### <a name="query-the-diagnostic-logs-table"></a>A diagnosztikai naplók táblázatának lekérdezése
 
 Ez a folyamat egy Event hub használatával hoz létre betöltést. Tekintse át a betöltések eredményeit.
@@ -599,7 +599,7 @@ Lekérdezés eredményei:
 |   | 00:06.156 | TestDatabase | DiagnosticRawRecords | https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip
 | | |
 
-# <a name="activity-logstabactivity-logs"></a>[Tevékenységnaplók](#tab/activity-logs)
+# <a name="activity-logs"></a>[Tevékenységnaplók](#tab/activity-logs)
 ### <a name="query-the-activity-logs-table"></a>A tevékenységi naplók táblázatának lekérdezése
 
 Az alábbi lekérdezés az Azure Adatkezelő tevékenységi napló rekordjaiból származó adatokat elemzi:
@@ -615,13 +615,13 @@ Lekérdezés eredményei:
 
 |   |   |
 | --- | --- |
-|   |  átlag (Átl) |
+|   |  avg(DurationMs) |
 |   | 768,333 |
 | | |
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megtudhatja, hogyan írhat számos további lekérdezést az Azure Adatkezelőból kinyert adatokhoz az [azure adatkezelő írási lekérdezésével](write-queries.md).
 * [Azure Adatkezelő-betöltési műveletek figyelése diagnosztikai naplók használatával](using-diagnostic-logs.md)

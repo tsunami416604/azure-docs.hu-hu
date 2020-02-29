@@ -1,6 +1,6 @@
 ---
 title: Rendszernézetek
-description: A Azure SQL Data Warehouse által támogatott rendszernézeti dokumentációra mutató hivatkozások.
+description: Az SQL Analytics rendszerben támogatott rendszernézetek dokumentációjának hivatkozásai.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: query
 ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 36f0738dc478d7a1144527acb29118a7a99ef5ac
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.custom: azure-synapse
+ms.openlocfilehash: 694bb1d970f7f5c36b074e64ee41c3d34b55c482
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690769"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198303"
 ---
-# <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse támogatott rendszernézetek
-A Azure SQL Data Warehouse által támogatott T-SQL-utasításokhoz tartozó dokumentációra mutató hivatkozások.
+# <a name="system-views-supported-in-sql-analytics"></a>Az SQL Analytics rendszerben támogatott rendszernézetek
+Hivatkozások az SQL Analytics által támogatott T-SQL-utasítások dokumentációjában.
 
-## <a name="sql-data-warehouse-catalog-views"></a>SQL Data Warehouse katalógus nézetei
+## <a name="sql-analytics-catalog-views"></a>SQL Analytics katalógus nézetei
 * [sys. pdw_column_distribution_properties](https://msdn.microsoft.com/library/mt204022.aspx)
 * [sys. pdw_distributions](https://msdn.microsoft.com/library/mt203892.aspx)
 * [sys. pdw_index_mappings](https://msdn.microsoft.com/library/mt203912.aspx)
@@ -65,8 +65,8 @@ A Azure SQL Data Warehouse által támogatott T-SQL-utasításokhoz tartozó dok
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 * [sys. dm_workload_management_workload_groups_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql) (előzetes verzió)
 
-## <a name="sql-server-dmvs-applicable-to-sql-data-warehouse"></a>SQL Server DMV alkalmazható SQL Data Warehouse
-A következő DMV alkalmazhatók SQL Data Warehousere, de a **Master** adatbázishoz való csatlakozással kell végrehajtani.
+## <a name="sql-server-dmvs-applicable-to-sql-analytics"></a>Az SQL Analytics szolgáltatásra vonatkozó SQL Server DMV
+A következő DMV alkalmazhatók az SQL Analytics szolgáltatásra, de a **Master** adatbázishoz való csatlakozással kell végrehajtani.
 
 * [sys. database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys. dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
@@ -145,80 +145,80 @@ A következő DMV alkalmazhatók SQL Data Warehousere, de a **Master** adatbázi
 * [sys. types](https://msdn.microsoft.com/library/ms188021.aspx)
 * [sys. views](https://msdn.microsoft.com/library/ms190334.aspx)
 
-## <a name="sql-server-dmvs-available-in-sql-data-warehouse"></a>SQL Server DMV érhető el SQL Data Warehouse
-SQL Data Warehouse számos SQL Server dinamikus felügyeleti nézetet (DMV) tesz elérhetővé. Ezek a nézetek a SQL Data Warehouse-ben való lekérdezéskor a terjesztéseken futó SQL-adatbázisok állapotát jelentik.
+## <a name="sql-server-dmvs-available-in-sql-analytics"></a>Az SQL Analytics szolgáltatásban elérhető SQL Server DMV
+Az SQL Analytics számos SQL Server dinamikus felügyeleti nézetet (DMV) tesz elérhetővé. Ezek a nézetek az SQL Analytics szolgáltatásban való lekérdezéskor a terjesztéseken futó SQL-adatbázisok állapotát jelentik.
 
-A SQL Data Warehouse és az elemzési platform rendszerének párhuzamos adattárháza (PDW) ugyanazokat a rendszernézeteket használja. Minden DMV rendelkezik egy pdw_node_id nevű oszloppal, amely a számítási csomópont azonosítója. 
+Az SQL Analytics és a párhuzamos adattárház (PDW) ugyanazt a rendszernézetet használja. Minden DMV rendelkezik egy pdw_node_id nevű oszloppal, amely a számítási csomópont azonosítója. 
 
 > [!NOTE]
 > A nézetek használatához illessze be a "pdw_nodes_" nevet a névbe, ahogy az alábbi táblázatban látható:
 > 
 > 
 
-| A DMV neve SQL Data Warehouse | SQL Server Transact-SQL-cikk|
+| A DMV neve az SQL Analyticsben | SQL Server Transact-SQL-cikk|
 |:--- |:--- |
-| sys. dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
-| sys. dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys. dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 
-| sys. dm_pdw_nodes_db_file_space_usage |[sys. dm_db_file_space_usage](https://msdn.microsoft.com/library/ms174412.aspx) |
-| sys. dm_pdw_nodes_db_index_usage_stats |[sys. dm_db_index_usage_stats](https://msdn.microsoft.com/library/ms188755.aspx) |
-| sys. dm_pdw_nodes_db_partition_stats |[sys. dm_db_partition_stats](https://msdn.microsoft.com/library/ms187737.aspx) |
-| sys. dm_pdw_nodes_db_session_space_usage |[sys. dm_db_session_space_usage](https://msdn.microsoft.com/library/ms187938.aspx) |
-| sys. dm_pdw_nodes_db_task_space_usage |[sys. dm_db_task_space_usage](https://msdn.microsoft.com/library/ms190288.aspx) |
-| sys. dm_pdw_nodes_exec_background_job_queue |[sys. dm_exec_background_job_queue](https://msdn.microsoft.com/library/ms173512.aspx) |
-| sys. dm_pdw_nodes_exec_background_job_queue_stats |[sys. dm_exec_background_job_queue_stats](https://msdn.microsoft.com/library/ms176059.aspx) |
-| sys. dm_pdw_nodes_exec_cached_plans |[sys. dm_exec_cached_plans](https://msdn.microsoft.com/library/ms187404.aspx) |
-| sys. dm_pdw_nodes_exec_connections |[sys. dm_exec_connections](https://msdn.microsoft.com/library/ms181509.aspx) |
-| sys. dm_pdw_nodes_exec_procedure_stats |[sys. dm_exec_procedure_stats](https://msdn.microsoft.com/library/cc280701.aspx) |
-| sys. dm_pdw_nodes_exec_query_memory_grants |[sys. dm_exec_query_memory_grants](https://msdn.microsoft.com/library/ms365393.aspx) |
-| sys. dm_pdw_nodes_exec_query_optimizer_info |[sys. dm_exec_query_optimizer_info](https://msdn.microsoft.com/library/ms175002.aspx) |
-| sys. dm_pdw_nodes_exec_query_resource_semaphores |[sys. dm_exec_query_resource_semaphores](https://msdn.microsoft.com/library/ms366321.aspx) |
-| sys. dm_pdw_nodes_exec_query_stats |[sys. dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) |
-| sys. dm_pdw_nodes_exec_requests |[sys. dm_exec_requests](https://msdn.microsoft.com/library/ms177648.aspx) |
-| sys. dm_pdw_nodes_exec_sessions |[sys.dm_exec_sessions](https://msdn.microsoft.com/library/ms176013.aspx) |
-| sys. dm_pdw_nodes_io_pending_io_requests |[sys. dm_io_pending_io_requests](https://msdn.microsoft.com/library/ms188762.aspx) |
-| sys. dm_pdw_nodes_io_virtual_file_stats |[sys. dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) |
-| sys. dm_pdw_nodes_os_buffer_descriptors |[sys. dm_os_buffer_descriptors](https://msdn.microsoft.com/library/ms173442.aspx) |
-| sys. dm_pdw_nodes_os_child_instances |[sys. dm_os_child_instances](https://msdn.microsoft.com/library/ms165698.aspx) |
-| sys. dm_pdw_nodes_os_cluster_nodes |[sys. dm_os_cluster_nodes](https://msdn.microsoft.com/library/ms187341.aspx) |
-| sys. dm_pdw_nodes_os_dispatcher_pools |[sys. dm_os_dispatcher_pools](https://msdn.microsoft.com/library/bb630336.aspx) |
-| sys. dm_pdw_nodes_os_dispatchers |A Transact-SQL dokumentációja nem érhető el. |
-| sys. dm_pdw_nodes_os_hosts |[sys. dm_os_hosts](https://msdn.microsoft.com/library/ms187800.aspx) |
-| sys. dm_pdw_nodes_os_latch_stats |[sys. dm_os_latch_stats](https://msdn.microsoft.com/library/ms175066.aspx) |
-| sys. dm_pdw_nodes_os_memory_brokers |[sys. dm_os_memory_brokers](https://msdn.microsoft.com/library/bb522548.aspx) |
-| sys. dm_pdw_nodes_os_memory_cache_clock_hands |[sys. dm_os_memory_cache_clock_hands](https://msdn.microsoft.com/library/ms173786.aspx) |
-| sys. dm_pdw_nodes_os_memory_cache_counters |[sys. dm_os_memory_cache_counters](https://msdn.microsoft.com/library/ms188760.aspx) |
-| sys. dm_pdw_nodes_os_memory_cache_entries |[sys. dm_os_memory_cache_entries](https://msdn.microsoft.com/library/ms189488.aspx) |
-| sys. dm_pdw_nodes_os_memory_cache_hash_tables |[sys. dm_os_memory_cache_hash_tables](https://msdn.microsoft.com/library/ms182388.aspx) |
-| sys. dm_pdw_nodes_os_memory_clerks |[sys. dm_os_memory_clerks](https://msdn.microsoft.com/library/ms175019.aspx) |
-| sys. dm_pdw_nodes_os_memory_node_access_stats |A Transact-SQL dokumentációja nem érhető el. |
-| sys. dm_pdw_nodes_os_memory_nodes |[sys. dm_os_memory_nodes](https://msdn.microsoft.com/library/bb510622.aspx) |
-| sys. dm_pdw_nodes_os_memory_objects |[sys. dm_os_memory_objects](https://msdn.microsoft.com/library/ms179875.aspx) |
-| sys. dm_pdw_nodes_os_memory_pools |[sys. dm_os_memory_pools](https://msdn.microsoft.com/library/ms175022.aspx) |
-| sys. dm_pdw_nodes_os_nodes |[sys. dm_os_nodes](https://msdn.microsoft.com/library/bb510628.aspx) |
-| sys. dm_pdw_nodes_os_performance_counters |[sys. dm_os_performance_counters](https://msdn.microsoft.com/library/ms187743.aspx) |
-| sys. dm_pdw_nodes_os_process_memory |[sys. dm_os_process_memory](https://msdn.microsoft.com/library/bb510747.aspx) |
-| sys. dm_pdw_nodes_os_schedulers |[sys. dm_os_schedulers](https://msdn.microsoft.com/library/ms177526.aspx) |
-| sys. dm_pdw_nodes_os_spinlock_stats |A Transact-SQL dokumentációja nem érhető el. |
-| sys. dm_pdw_nodes_os_sys_info |[sys. dm_os_sys_info](https://msdn.microsoft.com/library/ms175048.aspx) |
-| sys. dm_pdw_nodes_os_sys_memory |[sys. dm_os_memory_nodes](https://msdn.microsoft.com/library/bb510622.aspx) |
-| sys. dm_pdw_nodes_os_tasks |[sys. dm_os_tasks](https://msdn.microsoft.com/library/ms174963.aspx) |
-| sys. dm_pdw_nodes_os_threads |[sys. dm_os_threads](https://msdn.microsoft.com/library/ms187818.aspx) |
-| sys. dm_pdw_nodes_os_virtual_address_dump |[sys. dm_os_virtual_address_dump](https://msdn.microsoft.com/library/ms186294.aspx) |
-| sys. dm_pdw_nodes_os_wait_stats |[sys. dm_os_wait_stats](https://msdn.microsoft.com/library/ms179984.aspx) |
-| sys. dm_pdw_nodes_os_waiting_tasks |[sys. dm_os_waiting_tasks](https://msdn.microsoft.com/library/ms188743.aspx) |
-| sys. dm_pdw_nodes_os_workers |[sys. dm_os_workers](https://msdn.microsoft.com/library/ms178626.aspx) |
-| sys. dm_pdw_nodes_tran_active_snapshot_database_transactions |[sys. dm_tran_active_snapshot_database_transactions](https://msdn.microsoft.com/library/ms180023.aspx) |
-| sys. dm_pdw_nodes_tran_active_transactions |[sys. dm_tran_active_transactions](https://msdn.microsoft.com/library/ms174302.aspx) |
-| sys. dm_pdw_nodes_tran_commit_table |[sys. dm_tran_commit_table](https://msdn.microsoft.com/library/cc645959.aspx) |
-| sys. dm_pdw_nodes_tran_current_snapshot |[sys. dm_tran_current_snapshot](https://msdn.microsoft.com/library/ms184390.aspx) |
-| sys. dm_pdw_nodes_tran_current_transaction |[sys. dm_tran_current_transaction](https://msdn.microsoft.com/library/ms186327.aspx) |
-| sys. dm_pdw_nodes_tran_database_transactions |[sys. dm_tran_database_transactions](https://msdn.microsoft.com/library/ms186957.aspx) |
-| sys. dm_pdw_nodes_tran_locks |[sys. dm_tran_locks](https://msdn.microsoft.com/library/ms190345.aspx) |
-| sys. dm_pdw_nodes_tran_session_transactions |[sys. dm_tran_session_transactions](https://msdn.microsoft.com/library/ms188739.aspx) |
-| sys. dm_pdw_nodes_tran_top_version_generators |[sys. dm_tran_top_version_generators](https://msdn.microsoft.com/library/ms188778.aspx) |
+| sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
+| sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys. dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 
+| sys.dm_pdw_nodes_db_file_space_usage |[sys. dm_db_file_space_usage](https://msdn.microsoft.com/library/ms174412.aspx) |
+| sys.dm_pdw_nodes_db_index_usage_stats |[sys. dm_db_index_usage_stats](https://msdn.microsoft.com/library/ms188755.aspx) |
+| sys.dm_pdw_nodes_db_partition_stats |[sys. dm_db_partition_stats](https://msdn.microsoft.com/library/ms187737.aspx) |
+| sys.dm_pdw_nodes_db_session_space_usage |[sys. dm_db_session_space_usage](https://msdn.microsoft.com/library/ms187938.aspx) |
+| sys.dm_pdw_nodes_db_task_space_usage |[sys. dm_db_task_space_usage](https://msdn.microsoft.com/library/ms190288.aspx) |
+| sys.dm_pdw_nodes_exec_background_job_queue |[sys. dm_exec_background_job_queue](https://msdn.microsoft.com/library/ms173512.aspx) |
+| sys.dm_pdw_nodes_exec_background_job_queue_stats |[sys. dm_exec_background_job_queue_stats](https://msdn.microsoft.com/library/ms176059.aspx) |
+| sys.dm_pdw_nodes_exec_cached_plans |[sys. dm_exec_cached_plans](https://msdn.microsoft.com/library/ms187404.aspx) |
+| sys.dm_pdw_nodes_exec_connections |[sys. dm_exec_connections](https://msdn.microsoft.com/library/ms181509.aspx) |
+| sys.dm_pdw_nodes_exec_procedure_stats |[sys. dm_exec_procedure_stats](https://msdn.microsoft.com/library/cc280701.aspx) |
+| sys.dm_pdw_nodes_exec_query_memory_grants |[sys. dm_exec_query_memory_grants](https://msdn.microsoft.com/library/ms365393.aspx) |
+| sys.dm_pdw_nodes_exec_query_optimizer_info |[sys. dm_exec_query_optimizer_info](https://msdn.microsoft.com/library/ms175002.aspx) |
+| sys.dm_pdw_nodes_exec_query_resource_semaphores |[sys. dm_exec_query_resource_semaphores](https://msdn.microsoft.com/library/ms366321.aspx) |
+| sys.dm_pdw_nodes_exec_query_stats |[sys. dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) |
+| sys.dm_pdw_nodes_exec_requests |[sys. dm_exec_requests](https://msdn.microsoft.com/library/ms177648.aspx) |
+| sys.dm_pdw_nodes_exec_sessions |[sys.dm_exec_sessions](https://msdn.microsoft.com/library/ms176013.aspx) |
+| sys.dm_pdw_nodes_io_pending_io_requests |[sys. dm_io_pending_io_requests](https://msdn.microsoft.com/library/ms188762.aspx) |
+| sys.dm_pdw_nodes_io_virtual_file_stats |[sys. dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) |
+| sys.dm_pdw_nodes_os_buffer_descriptors |[sys. dm_os_buffer_descriptors](https://msdn.microsoft.com/library/ms173442.aspx) |
+| sys.dm_pdw_nodes_os_child_instances |[sys. dm_os_child_instances](https://msdn.microsoft.com/library/ms165698.aspx) |
+| sys.dm_pdw_nodes_os_cluster_nodes |[sys. dm_os_cluster_nodes](https://msdn.microsoft.com/library/ms187341.aspx) |
+| sys.dm_pdw_nodes_os_dispatcher_pools |[sys. dm_os_dispatcher_pools](https://msdn.microsoft.com/library/bb630336.aspx) |
+| sys.dm_pdw_nodes_os_dispatchers |A Transact-SQL dokumentációja nem érhető el. |
+| sys.dm_pdw_nodes_os_hosts |[sys. dm_os_hosts](https://msdn.microsoft.com/library/ms187800.aspx) |
+| sys.dm_pdw_nodes_os_latch_stats |[sys. dm_os_latch_stats](https://msdn.microsoft.com/library/ms175066.aspx) |
+| sys.dm_pdw_nodes_os_memory_brokers |[sys. dm_os_memory_brokers](https://msdn.microsoft.com/library/bb522548.aspx) |
+| sys.dm_pdw_nodes_os_memory_cache_clock_hands |[sys. dm_os_memory_cache_clock_hands](https://msdn.microsoft.com/library/ms173786.aspx) |
+| sys.dm_pdw_nodes_os_memory_cache_counters |[sys. dm_os_memory_cache_counters](https://msdn.microsoft.com/library/ms188760.aspx) |
+| sys.dm_pdw_nodes_os_memory_cache_entries |[sys. dm_os_memory_cache_entries](https://msdn.microsoft.com/library/ms189488.aspx) |
+| sys.dm_pdw_nodes_os_memory_cache_hash_tables |[sys. dm_os_memory_cache_hash_tables](https://msdn.microsoft.com/library/ms182388.aspx) |
+| sys.dm_pdw_nodes_os_memory_clerks |[sys. dm_os_memory_clerks](https://msdn.microsoft.com/library/ms175019.aspx) |
+| sys.dm_pdw_nodes_os_memory_node_access_stats |A Transact-SQL dokumentációja nem érhető el. |
+| sys.dm_pdw_nodes_os_memory_nodes |[sys. dm_os_memory_nodes](https://msdn.microsoft.com/library/bb510622.aspx) |
+| sys.dm_pdw_nodes_os_memory_objects |[sys. dm_os_memory_objects](https://msdn.microsoft.com/library/ms179875.aspx) |
+| sys.dm_pdw_nodes_os_memory_pools |[sys. dm_os_memory_pools](https://msdn.microsoft.com/library/ms175022.aspx) |
+| sys.dm_pdw_nodes_os_nodes |[sys. dm_os_nodes](https://msdn.microsoft.com/library/bb510628.aspx) |
+| sys.dm_pdw_nodes_os_performance_counters |[sys. dm_os_performance_counters](https://msdn.microsoft.com/library/ms187743.aspx) |
+| sys.dm_pdw_nodes_os_process_memory |[sys. dm_os_process_memory](https://msdn.microsoft.com/library/bb510747.aspx) |
+| sys.dm_pdw_nodes_os_schedulers |[sys. dm_os_schedulers](https://msdn.microsoft.com/library/ms177526.aspx) |
+| sys.dm_pdw_nodes_os_spinlock_stats |A Transact-SQL dokumentációja nem érhető el. |
+| sys.dm_pdw_nodes_os_sys_info |[sys. dm_os_sys_info](https://msdn.microsoft.com/library/ms175048.aspx) |
+| sys.dm_pdw_nodes_os_sys_memory |[sys. dm_os_memory_nodes](https://msdn.microsoft.com/library/bb510622.aspx) |
+| sys.dm_pdw_nodes_os_tasks |[sys. dm_os_tasks](https://msdn.microsoft.com/library/ms174963.aspx) |
+| sys.dm_pdw_nodes_os_threads |[sys. dm_os_threads](https://msdn.microsoft.com/library/ms187818.aspx) |
+| sys.dm_pdw_nodes_os_virtual_address_dump |[sys. dm_os_virtual_address_dump](https://msdn.microsoft.com/library/ms186294.aspx) |
+| sys.dm_pdw_nodes_os_wait_stats |[sys. dm_os_wait_stats](https://msdn.microsoft.com/library/ms179984.aspx) |
+| sys.dm_pdw_nodes_os_waiting_tasks |[sys. dm_os_waiting_tasks](https://msdn.microsoft.com/library/ms188743.aspx) |
+| sys.dm_pdw_nodes_os_workers |[sys. dm_os_workers](https://msdn.microsoft.com/library/ms178626.aspx) |
+| sys.dm_pdw_nodes_tran_active_snapshot_database_transactions |[sys. dm_tran_active_snapshot_database_transactions](https://msdn.microsoft.com/library/ms180023.aspx) |
+| sys.dm_pdw_nodes_tran_active_transactions |[sys. dm_tran_active_transactions](https://msdn.microsoft.com/library/ms174302.aspx) |
+| sys.dm_pdw_nodes_tran_commit_table |[sys. dm_tran_commit_table](https://msdn.microsoft.com/library/cc645959.aspx) |
+| sys.dm_pdw_nodes_tran_current_snapshot |[sys. dm_tran_current_snapshot](https://msdn.microsoft.com/library/ms184390.aspx) |
+| sys.dm_pdw_nodes_tran_current_transaction |[sys. dm_tran_current_transaction](https://msdn.microsoft.com/library/ms186327.aspx) |
+| sys.dm_pdw_nodes_tran_database_transactions |[sys. dm_tran_database_transactions](https://msdn.microsoft.com/library/ms186957.aspx) |
+| sys.dm_pdw_nodes_tran_locks |[sys. dm_tran_locks](https://msdn.microsoft.com/library/ms190345.aspx) |
+| sys.dm_pdw_nodes_tran_session_transactions |[sys. dm_tran_session_transactions](https://msdn.microsoft.com/library/ms188739.aspx) |
+| sys.dm_pdw_nodes_tran_top_version_generators |[sys. dm_tran_top_version_generators](https://msdn.microsoft.com/library/ms188778.aspx) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-data-warehouse"></a>SQL Server 2016-alapú DMV érhető el SQL Data Warehouse
-A következő DMV alkalmazhatók SQL Data Warehousere, de a **Master** adatbázishoz való csatlakozással kell végrehajtani.
+## <a name="sql-server-2016-polybase-dmvs-available-in-sql-analytics"></a>SQL Server 2016-alapú DMV érhető el az SQL Analyticsben
+A következő DMV alkalmazhatók az SQL Analytics szolgáltatásra, de a **Master** adatbázishoz való csatlakozással kell végrehajtani.
 
 * [sys. dm_exec_compute_node_errors](https://msdn.microsoft.com/library/mt146380.aspx)
 * [sys. dm_exec_compute_node_status](https://msdn.microsoft.com/library/mt146382.aspx)
@@ -242,5 +242,5 @@ A következő DMV alkalmazhatók SQL Data Warehousere, de a **Master** adatbázi
 * [VIEW_TABLE_USAGE](https://msdn.microsoft.com/library/ms173869.aspx)
 * [KILÁTÁSSAL](https://msdn.microsoft.com/library/ms181381.aspx)
 
-## <a name="next-steps"></a>Következő lépések
-További információ: [t-SQL-utasítások a Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md)és a [t-SQL nyelvi elemeiben Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-language-elements.md).
+## <a name="next-steps"></a>További lépések
+További információ: [t-SQL-utasítások az SQL Analyticsben](sql-data-warehouse-reference-tsql-statements.md)és a [t-SQL nyelvi elemei az SQL Analyticsben](sql-data-warehouse-reference-tsql-language-elements.md).

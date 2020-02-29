@@ -1,26 +1,27 @@
 ---
 title: Multi-Factor HRE-hitelesítés használata
-description: Azure SQL Database és Azure SQL Data Warehouse támogatja a SQL Server Management Studio (SSMS) kapcsolatait Active Directory univerzális hitelesítés használatával.
+description: A Azure SQL Database és az Azure szinapszis támogatja a SQL Server Management Studio (SSMS) kapcsolatait Active Directory univerzális hitelesítés használatával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/08/2018
-ms.openlocfilehash: 7183193f3639ea809c6e7aa19af7844bd134111e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+tags: azure-synapse
+ms.openlocfilehash: e9a4aa5b54cf7ed48daf1899bb5801c609dfbf32
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820899"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194036"
 ---
-# <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-sql-data-warehouse-ssms-support-for-mfa"></a>A multi-Factor HRE hitelesítés használata a Azure SQL Database és a Azure SQL Data Warehouse használatával (az MFA támogatásának SSMS)
-Azure SQL Database és Azure SQL Data Warehouse támogatja a SQL Server Management Studio (SSMS) kapcsolatait *Active Directory univerzális hitelesítés*használatával. Ez a cikk a különböző hitelesítési lehetőségek közötti különbségeket ismerteti, valamint az univerzális hitelesítéssel kapcsolatos korlátozásokat is. 
+# <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-synapse-analytics-ssms-support-for-mfa"></a>Multi-Factor HRE hitelesítés használata a Azure SQL Database és az Azure szinapszis Analytics használatával (SSMS-támogatás az MFA-hoz)
+A Azure SQL Database és az Azure szinapszis támogatja a SQL Server Management Studio (SSMS) kapcsolatait *Active Directory univerzális hitelesítés*használatával. Ez a cikk a különböző hitelesítési lehetőségek közötti különbségeket ismerteti, valamint az univerzális hitelesítéssel kapcsolatos korlátozásokat is. 
 
 **Töltse le a legújabb SSMS** -t az ügyfélszámítógépen, töltse le a SSMS legújabb verzióját a [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)webhelyről. 
 
@@ -50,17 +51,17 @@ A konfigurációs lépésekért lásd: [Azure SQL Database multi-Factor Authenti
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD-tartománynév vagy bérlői azonosító paraméter   
 
-A [SSMS 17-es verziójától](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)kezdve a felhasználók, akik az aktuális Active Directoryba importálnak a vendég felhasználóként más Azure Active Directory-címtárból, megadhatják az Azure ad-tartománynevet vagy a bérlő azonosítóját a csatlakozáskor. A vendég felhasználók a más Azure-hirdetéseket, például a outlook.com, a hotmail.com, a live.com vagy más, például a gmail.com fiókokat meghívó felhasználókat is tartalmazhatnak. Ez az információ lehetővé teszi, hogy az **MFA-hitelesítéssel rendelkező Active Directory univerzálisan** azonosítsa a megfelelő hitelesítő szolgáltatót. Ez a beállítás a Microsoft-fiókok (MSA), például a outlook.com, a hotmail.com, a live.com és a nem MSA fiókok támogatásához is szükséges. Az univerzális hitelesítés használatával hitelesíteni kívánt felhasználóknak meg kell adniuk az Azure AD-tartománynevet vagy a bérlői azonosítót. Ez a paraméter az aktuális Azure AD-tartománynevet/bérlői azonosítót jelöli, amelyhez az Azure-kiszolgáló társítva van. Ha például az Azure Server társítva van az Azure AD-tartományhoz `contosotest.onmicrosoft.com` ahol a felhasználói `joe@contosodev.onmicrosoft.com` az Azure AD-tartományból importált felhasználóként fut `contosodev.onmicrosoft.com`, a felhasználó hitelesítéséhez szükséges tartománynév `contosotest.onmicrosoft.com`. Ha a felhasználó az Azure AD-hez társított natív felhasználó, és nem MSA-fiók, nincs szükség tartománynévre vagy bérlői AZONOSÍTÓra. A (17,2-es SSMS-es verziótól kezdődő) paraméter megadásához a **Kapcsolódás az adatbázishoz** párbeszédpanelen végezze el a párbeszédpanelt, válassza a **Active Directory-Universal az MFA-** hitelesítéssel lehetőséget, majd kattintson a **Beállítások**elemre, és töltse ki a **felhasználónevet** mezőben, majd kattintson a **kapcsolatok tulajdonságai** lapra. Ellenőrizze az **ad-tartomány nevét vagy a bérlő azonosítóját** , és adja meg a hitelesítő hatóságot, például a tartománynevet (**contosotest.onmicrosoft.com**) vagy a bérlő azonosítóját.  
+A [SSMS 17-es verziójától](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)kezdve a felhasználók, akik az aktuális Active Directoryba importálnak a vendég felhasználóként más Azure Active Directory-címtárból, megadhatják az Azure ad-tartománynevet vagy a bérlő azonosítóját a csatlakozáskor. A vendég felhasználók a más Azure-hirdetéseket, például a outlook.com, a hotmail.com, a live.com vagy más, például a gmail.com fiókokat meghívó felhasználókat is tartalmazhatnak. Ez az információ lehetővé teszi, hogy az **MFA-hitelesítéssel rendelkező Active Directory univerzálisan** azonosítsa a megfelelő hitelesítő szolgáltatót. Ez a beállítás a Microsoft-fiókok (MSA), például a outlook.com, a hotmail.com, a live.com és a nem MSA fiókok támogatásához is szükséges. Az univerzális hitelesítés használatával hitelesíteni kívánt felhasználóknak meg kell adniuk az Azure AD-tartománynevet vagy a bérlői azonosítót. Ez a paraméter az aktuális Azure AD-tartománynevet/bérlői azonosítót jelöli, amelyhez az Azure-kiszolgáló társítva van. Ha például az Azure Server társítva van az Azure AD-tartományhoz `contosotest.onmicrosoft.com` ahol a felhasználói `joe@contosodev.onmicrosoft.com` az Azure AD-tartományból importált felhasználóként fut `contosodev.onmicrosoft.com`, a felhasználó hitelesítéséhez szükséges tartománynév `contosotest.onmicrosoft.com`. Ha a felhasználó az Azure AD-hez társított natív felhasználó, és nem MSA-fiók, nincs szükség tartománynévre vagy bérlői AZONOSÍTÓra. A paraméter megadásához (az SSMS 17,2-es verziójától kezdődően) a **Kapcsolódás az adatbázishoz** párbeszédpanelen fejezze be a párbeszédpanelt, és válassza a **Active Directory-Universal az MFA-** hitelesítéssel lehetőséget, kattintson a **Beállítások**elemre, fejezze be a **Felhasználónév** mezőt, majd kattintson a **kapcsolat tulajdonságai** lapra. Ellenőrizze az **ad-tartomány nevét vagy a bérlő azonosítóját** , és adja meg a hitelesítő hatóságot, például a tartománynevet (**contosotest.onmicrosoft.com**) vagy a bérlő azonosítóját.  
    ![MFA-bérlő-SSMS](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)
 
 Ha a SSMS 18. x vagy újabb verzióját futtatja, akkor az AD-tartománynév vagy a bérlői azonosító már nem szükséges a vendég felhasználói számára, mert 18. x vagy újabb automatikusan felismeri.
 
-   ![MFA-bérlő – SSMS](./media/sql-database-ssms-mfa-auth/mfa-no-tenant-ssms.png)
+   ![mfa-tenant-ssms](./media/sql-database-ssms-mfa-auth/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD Business – üzleti támogatás   
-Az Azure ad B2B-forgatókönyvek vendég felhasználói számára támogatott Azure AD-felhasználók (lásd: [Mi az az Azure B2B Collaboration](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)) tud csatlakozni a SQL Databasehoz, és SQL Data Warehouse csak az aktuális Azure ad-ben létrehozott csoport tagjainak részeként, és manuálisan a Transact-SQL használatával van leképezve `CREATE USER` utasítás egy adott adatbázisban. Ha például `steve@gmail.com` meghívja az Azure AD-`contosotest` (az Azure ad-tartomány `contosotest.onmicrosoft.com`), egy Azure ad-csoportot, például `usergroup` kell létrehoznia az `steve@gmail.com` tagot tartalmazó Azure AD-ben. Ezután ezt a csoportot egy Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` utasítás végrehajtásával létre kell hozni egy adott adatbázishoz (azaz MyDatabase) az Azure AD SQL-rendszergazda vagy az Azure AD-DBO. Az adatbázis-felhasználó létrehozása után a felhasználó `steve@gmail.com` tud bejelentkezni a `MyDatabase`re a SSMS hitelesítési lehetőség `Active Directory – Universal with MFA support`használatával. Alapértelmezés szerint a csoporthoz csak a kapcsolódási engedély és minden további adathozzáférés szükséges, amelyet a szokásos módon kell megadni. Vegye figyelembe, hogy a felhasználó `steve@gmail.com` vendégként jelölje be a jelölőnégyzetet, és adja hozzá az Active Directory-tartomány nevét `contosotest.onmicrosoft.com` a SSMS- **kapcsolatok tulajdonságai** párbeszédpanelen. Az **Active Directory Domain Name vagy a bérlői azonosító** lehetőség csak az univerzális és MFA-kapcsolatok esetén támogatott, ellenkező esetben szürkén jelenik meg.
+Az Azure ad B2B-forgatókönyvek vendég felhasználói számára támogatott Azure AD-felhasználók (lásd: [Mi az az Azure B2B Collaboration](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)) képes csatlakozni a SQL Databaseokhoz és az Azure szinapszishoz csak az aktuális Azure ad-ben létrehozott csoport tagjainak részeként, és manuálisan van leképezve az adott adatbázisban található Transact-SQL `CREATE USER` utasítás használatával. Ha például `steve@gmail.com` meghívja az Azure AD-`contosotest` (az Azure ad-tartomány `contosotest.onmicrosoft.com`), egy Azure ad-csoportot, például `usergroup` kell létrehoznia az `steve@gmail.com` tagot tartalmazó Azure AD-ben. Ezután ezt a csoportot egy Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` utasítás végrehajtásával létre kell hozni egy adott adatbázishoz (azaz MyDatabase) az Azure AD SQL-rendszergazda vagy az Azure AD-DBO. Az adatbázis-felhasználó létrehozása után a felhasználó `steve@gmail.com` tud bejelentkezni a `MyDatabase`re a SSMS hitelesítési lehetőség `Active Directory – Universal with MFA support`használatával. Alapértelmezés szerint a csoporthoz csak a kapcsolódási engedély és minden további adathozzáférés szükséges, amelyet a szokásos módon kell megadni. Vegye figyelembe, hogy a felhasználó `steve@gmail.com` vendégként jelölje be a jelölőnégyzetet, és adja hozzá az Active Directory-tartomány nevét `contosotest.onmicrosoft.com` a SSMS- **kapcsolatok tulajdonságai** párbeszédpanelen. Az **Active Directory Domain Name vagy a bérlői azonosító** lehetőség csak az univerzális és MFA-kapcsolatok esetén támogatott, ellenkező esetben szürkén jelenik meg.
 
-## <a name="universal-authentication-limitations-for-sql-database-and-sql-data-warehouse"></a>Az SQL Database és SQL Data Warehouse univerzális hitelesítési korlátai
+## <a name="universal-authentication-limitations-for-sql-database-and-azure-synapse"></a>Univerzális hitelesítési korlátozások a SQL Database és az Azure szinapszis számára
 - A SSMS és a SqlPackage. exe az egyetlen olyan eszköz, amely jelenleg engedélyezve van az MFA számára Active Directory univerzális hitelesítéssel.
 - A SSMS 17,2-es verziója támogatja a többfelhasználós hozzáférést az MFA-val való univerzális hitelesítéssel. A 17,0-es és a 17,1-es verzióban a SSMS egy példányára való bejelentkezés korlátozott, egyetlen Azure Active Directory fiókra. Ha másik Azure AD-fiókkal szeretne bejelentkezni, a SSMS egy másik példányát kell használnia. (Ez a korlátozás Active Directory univerzális hitelesítésre korlátozódik, Active Directory jelszó-hitelesítéssel, Active Directory integrált hitelesítéssel vagy SQL Server hitelesítéssel is bejelentkezhet a különböző kiszolgálókra.
 - A SSMS támogatja a Object Explorer, a lekérdezés-szerkesztő és a lekérdezés-áruház vizualizációjának Active Directory univerzális hitelesítését.
@@ -75,7 +76,7 @@ Az Azure ad B2B-forgatókönyvek vendég felhasználói számára támogatott Az
 - A konfigurációs lépésekért lásd: [Azure SQL Database multi-Factor Authentication konfigurálása SQL Server Management studiohoz](sql-database-ssms-mfa-authentication-configure.md).
 - Mások hozzáférésének biztosítása az adatbázishoz: [SQL Database hitelesítés és engedélyezés: hozzáférés biztosítása](sql-database-manage-logins.md)  
 - Győződjön meg arról, hogy mások kapcsolódhatnak a tűzfalon keresztül: [Azure SQL Database kiszolgáló szintű tűzfalszabály konfigurálása a Azure Portal használatával](sql-database-configure-firewall-settings.md)  
-- [Azure Active Directory-hitelesítés konfigurálása és kezelése az SQL Database vagy az SQL Data Warehouse használatával](sql-database-aad-authentication-configure.md)  
+- [Azure Active Directory hitelesítés konfigurálása és kezelése SQL Database vagy Azure szinapszis segítségével](sql-database-aad-authentication-configure.md)  
 - [Microsoft SQL Server Data-Tier Application Framework (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
 - [SQLPackage. exe](https://docs.microsoft.com/sql/tools/sqlpackage)  
 - [BACPAC-fájl importálása új Azure SQL-adatbázisba](../sql-database/sql-database-import.md)  

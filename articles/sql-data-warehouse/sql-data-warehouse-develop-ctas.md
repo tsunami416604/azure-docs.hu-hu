@@ -1,6 +1,6 @@
 ---
 title: CREATE TABLE A SELECT (CTAS)
-description: Magyarázat és példák a CREATE TABLE AS SELECT (CTAS) utasításra Azure SQL Data Warehouse a megoldások fejlesztéséhez.
+description: A megoldások fejlesztéséhez használt SQL Analytics CREATE TABLE AS SELECT (CTAS) utasításának magyarázata és példái.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: development
 ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 4992bb00fa5397ef6a4e055e08b445d35f5ed77a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 09a543ac4b4f77f0c7b7efd2411b962fa9fa2769
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685865"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195906"
 ---
-# <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>CREATE TABLE a SELECT (CTAS) beállítással Azure SQL Data Warehouse
+# <a name="create-table-as-select-ctas-in-sql-analytics"></a>CREATE TABLE a SELECT (CTAS) használatával az SQL Analyticsben
 
-Ez a cikk ismerteti a CREATE TABLE AS SELECT (CTAS) T-SQL-utasítást a Azure SQL Data Warehouse a megoldások fejlesztéséhez. A cikk emellett példákat is tartalmaz.
+Ez a cikk bemutatja az SQL Analytics CREATE TABLE AS SELECT (CTAS) T-SQL-utasítását a megoldások fejlesztéséhez. A cikk emellett példákat is tartalmaz.
 
 ## <a name="create-table-as-select"></a>CREATE TABLE VÁLASSZA KI
 
@@ -38,7 +38,7 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-Válassza a... lehetőséget. A-ben nem teszi lehetővé, hogy a művelet részeként módosítsa a terjesztési módszert vagy az index típusát. `[dbo].[FactInternetSales_new]` létrehozásához használja a ROUND_ROBIN alapértelmezett terjesztési típusát, és a FÜRTÖZÖTT OSZLOPCENTRIKUS INDEXének alapértelmezett felépítését.
+Válassza a... lehetőséget. A-ben nem teszi lehetővé, hogy a művelet részeként módosítsa a terjesztési módszert vagy az index típusát. A `[dbo].[FactInternetSales_new]` a ROUND_ROBIN alapértelmezett terjesztési típusával, a FÜRTÖZÖTT OSZLOPCENTRIKUS INDEX alapértelmezett struktúrájának használatával hozható létre.
 
 A CTAS segítségével azonban megadhatja a tábla és a tábla szerkezetének eloszlását is. Az előző példa átalakítása CTAS:
 
@@ -123,7 +123,7 @@ DROP TABLE FactInternetSales_old;
 
 ## <a name="use-ctas-to-work-around-unsupported-features"></a>A CTAS használata a nem támogatott funkciók megkerülésére
 
-A CTAS használatával az alább felsorolt nem támogatott funkciók körét is megtalálhatja. Ez a módszer gyakran bizonyulhat hasznosnak, mivel nem csak a kódnak megfelelőnek kell lennie, de gyakran gyorsabban fog futni SQL Data Warehouse. Ez a teljesítmény teljesen párhuzamos kialakításának eredménye. A forgatókönyvek a következők:
+A CTAS használatával az alább felsorolt nem támogatott funkciók körét is megtalálhatja. Ez a módszer gyakran bizonyulhat hasznosnak, mivel nem csak a kódnak megfelelőnek kell lennie, de gyakran gyorsabban futnak az SQL Analytics szolgáltatásban. Ez a teljesítmény teljesen párhuzamos kialakításának eredménye. A forgatókönyvek a következők:
 
 * ANSI-ILLESZTÉSek a frissítésekhez
 * A törlésekhez tartozó ANSI-illesztések
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-A SQL Data Warehouse nem támogatja az ANSI illesztéseket egy `UPDATE` utasítás `FROM` záradékában, így módosítás nélkül nem használhatja az előző példát.
+Az SQL Analytics nem támogatja az ANSI illesztéseket egy `UPDATE` utasítás `FROM` záradékában, így módosítás nélkül nem használhatja az előző példát.
 
 Az előző példát lecserélve egy CTAS és egy implicit illesztés kombinációját is használhatja:
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>ANSI illesztés a DELETE utasításokhoz
 
-Előfordulhat, hogy az adattörlés legjobb módja az CTAS használata, különösen az olyan `DELETE` utasítások esetében, amelyek ANSI illesztési szintaxist használnak. Ennek az az oka, hogy SQL Data Warehouse nem támogatja az ANSI-illesztéseket egy `DELETE` utasítás `FROM` záradékában. Az adattörlés helyett válassza ki a megőrizni kívánt adatértékeket.
+Előfordulhat, hogy az adattörlés legjobb módja az CTAS használata, különösen az olyan `DELETE` utasítások esetében, amelyek ANSI illesztési szintaxist használnak. Ennek az az oka, hogy az SQL Analytics nem támogatja a `DELETE` utasítás `FROM` záradékában található ANSI-illesztéseket. Az adattörlés helyett válassza ki a megőrizni kívánt adatértékeket.
 
 A következő példa egy átalakított `DELETE` utasítást mutat be:
 
@@ -412,7 +412,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 Láthatja, hogy a típus konzisztenciája és a CTAS tulajdonság fenntartása egy mérnöki ajánlott eljárás. Segít megőrizni az integritást a számításokban, és biztosítja a partíciók váltásának lehetőségét is.
 
-A CTAS a SQL Data Warehouse egyik legfontosabb utasítása. Győződjön meg róla, hogy alaposan megértette. Tekintse meg a [CTAS dokumentációját](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
+A CTAS az SQL Analytics egyik legfontosabb utasítása. Győződjön meg róla, hogy alaposan megértette. Tekintse meg a [CTAS dokumentációját](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
 
 ## <a name="next-steps"></a>További lépések
 

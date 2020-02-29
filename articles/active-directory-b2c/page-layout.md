@@ -3,20 +3,20 @@ title: Oldalelrendezési verziók
 titleSuffix: Azure AD B2C
 description: Az egyéni házirendek felhasználói felületének testreszabása az oldalelrendezés korábbi verzióiban.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/26/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b24e8cc5f6bb6213bf021362c5654afd4d5266fb
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3d0cb06f84fdd96d099e05f55ba62c37cb1192c7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620614"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183975"
 ---
 # <a name="page-layout-versions"></a>Oldalelrendezési verziók
 
@@ -67,6 +67,6 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
 
 - Kezdeti kiadás
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alkalmazások felhasználói felületének egyéni házirendekben való testreszabásával kapcsolatos további információkért lásd [az alkalmazás felhasználói felületének egyéni házirenddel való testreszabását](custom-policy-ui-customization.md)ismertető témakört.

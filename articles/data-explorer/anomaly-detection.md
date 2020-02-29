@@ -1,5 +1,5 @@
 ---
-title: Idősorozat-anomáliák észlelése & előrejelzése – Azure Adatkezelő
+title: Idősorozat-rendellenességek észlelése & az előrejelzés az Azure-ban Adatkezelő
 description: Ismerje meg, hogyan elemezheti az idősorozat-információkat a anomáliák észleléséhez és az előrejelzéshez az Azure Adatkezelő használatával.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 4a7463d6149a921a4a29b43eaebb78a01543323a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a482fef93d43f92257608b65c9c0e2ade535bcca
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985825"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194157"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>Anomáliák észlelése és előrejelzése az Azure Adatkezelő
 
@@ -102,7 +102,7 @@ demo_make_series2
 * Eredeti metrika (piros színnel). A jövőbeli értékek hiányoznak, és alapértelmezés szerint 0 értékre vannak állítva.
 * Kikövetkezteti az alapösszetevőt (kék színnel) a következő heti értékek előrejelzéséhez.
 
-## <a name="scalability"></a>Skálázhatóság
+## <a name="scalability"></a>Méretezhetőség
 
 Az Azure Adatkezelő lekérdezési nyelv szintaxisa lehetővé teszi, hogy egyetlen hívás dolgozza fel több idősorozatot. Az egyedi optimalizált implementációja lehetővé teszi a gyors teljesítményt, ami kritikus fontosságú a anomáliák hatékony észleléséhez és előrejelzéséhez, ha a közel valós idejű forgatókönyvek több ezer számlálóját figyelik.
 
@@ -125,10 +125,10 @@ demo_make_series2
 
 ![Idősorozat-méretezhetőség](media/anomaly-detection/series-scalability.png)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ez a dokumentum részletesen ismerteti a natív Azure Adatkezelő functions for Time Series anomália észlelését és előrejelzését. Minden egyes eredeti idősorozat a rendellenességek és/vagy előrejelzések észlelésére szolgáló szezonális, trend és fennmaradó összetevőkből áll. Ezek a funkciók olyan közel valós idejű figyelési forgatókönyvekhez használhatók, mint például a hibák észlelése, a prediktív karbantartás, valamint az igények és a terhelések előrejelzése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az Azure Adatkezelő [gépi tanulási funkcióit](/azure/data-explorer/machine-learning-clustering) .

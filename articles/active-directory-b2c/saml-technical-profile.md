@@ -3,20 +3,20 @@ title: SAML-technikai profil definiálása egyéni házirendben
 titleSuffix: Azure AD B2C
 description: Hozzon létre egy SAML-technikai profilt egy egyéni szabályzatban Azure Active Directory B2Cban.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/13/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a3df4d3a955926381a664ab872e03ae987f0839
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 8c81d2bc499c3d9cae262ef62be2dac2d7280be7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77197972"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183839"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>SAML technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -121,7 +121,7 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | PartnerEntity | Igen | Az SAML-identitás szolgáltatójának metaadatait tartalmazó URL-cím. Másolja az Identity Provider metaadatait, és adja hozzá a CDATA elemhez `<![CDATA[Your IDP metadata]]>` |
 | WantsSignedRequests | Nem | Azt jelzi, hogy a technikai profil megköveteli-e az összes kimenő hitelesítési kérelem aláírását. Lehetséges értékek: `true` vagy `false`. Az alapértelmezett érték `true`. Ha az érték `true`re van állítva, a rendszer a **SamlMessageSigning** titkosítási kulcsot meg kell adni, és az összes kimenő hitelesítési kérelem alá van írva. Ha az érték `false`, akkor a **SigAlg** és az **aláírás** paraméterei (lekérdezési karakterlánc vagy post paraméter) kimaradnak a kérésből. Ez a metaadatok a metaadatok **AuthnRequestsSigned** attribútumát is szabályozza, amely a Azure ad B2C az identitás-szolgáltatóval megosztott technikai profil metaadataiban található. Azure AD B2C nem írja alá a kérést, ha a technikai profil metaadatainak **WantsSignedRequests** értéke `false`, és az identitás-szolgáltató metaadatainak **WantAuthnRequestsSigned** beállítása `false` vagy nincs megadva. |
@@ -141,13 +141,13 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 
 A **CryptographicKeys** elem a következő attribútumokat tartalmazza:
 
-| Attribútum |Kötelező | Leírás |
+| Attribútum |Szükséges | Leírás |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |Igen | Az SAML-üzenetek aláírásához használt X509-tanúsítvány (RSA-kulcs). Azure AD B2C ezzel a kulccsal aláírja a kéréseket, és elküldi azokat az identitás-szolgáltatónak. |
 | SamlAssertionDecryption |Igen | Az SAML-üzenetek visszafejtéséhez használt X509-tanúsítvány (RSA-kulcs). Ezt a tanúsítványt az azonosító szolgáltatónak kell megadnia. Azure AD B2C ezt a tanúsítványt használja a személyazonosság-szolgáltató által elküldett adatok visszafejtéséhez. |
 | MetadataSigning |Nem | Az SAML-metaadatok aláírásához használt X509-tanúsítvány (RSA-kulcs). Azure AD B2C ezt a kulcsot használja a metaadatok aláírásához.  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkekben példákat talál az SAML-identitás-szolgáltatók használatának Azure AD B2C:
 

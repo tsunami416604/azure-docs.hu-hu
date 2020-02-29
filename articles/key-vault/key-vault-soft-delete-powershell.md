@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f026957b5f9fceab8a0df1f339e7cb459ec1078d
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 26c309eeebd7226c6777ec41ae674587da796dd4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562136"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199665"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>A Key Vault helyreállítható törlés használata a PowerShell-lel
 
@@ -41,9 +42,9 @@ A Key Vault műveleteket a szerepköralapú hozzáférés-vezérlési (RBAC) eng
 
 | Művelet | Leírás | Felhasználói engedély |
 |:--|:--|:--|
-|Listázás|Felsorolja a törölt kulcstartókat.|Microsoft. kulcstartó/deletedVaults/olvasás|
-|Helyreállítás|Visszaállítja a törölt kulcstartót.|Microsoft. kulcstartó/tárolók/írás|
-|Véglegesen töröl|Véglegesen eltávolítja a törölt kulcstartót és annak teljes tartalmát.|Microsoft. kulcstartó/Locations/deletedVaults/Purge/művelet|
+|Lista|Felsorolja a törölt kulcstartókat.|Microsoft.KeyVault/deletedVaults/read|
+|Helyreállítás|Visszaállítja a törölt kulcstartót.|Microsoft.KeyVault/vaults/write|
+|Véglegesen töröl|Véglegesen eltávolítja a törölt kulcstartót és annak teljes tartalmát.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
 Az engedélyekkel és a hozzáférés-vezérléssel kapcsolatos további információkért lásd a [kulcstartó biztonságossá](key-vault-secure-your-key-vault.md)tételét ismertető témakört.
 
@@ -254,7 +255,7 @@ Ha egy meglévő tárolóhoz kívánja hozzáadni a kiürítési védelmet (amel
 Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 ```
 
-## <a name="other-resources"></a>Egyéb háttéranyagok
+## <a name="other-resources"></a>Egyéb erőforrások
 
 - A Key Vault-törlési funkció áttekintését lásd: Azure Key Vault- [Törlés – áttekintés](key-vault-ovw-soft-delete.md).
 - A Azure Key Vault használatának általános áttekintését a [Mi az Azure Key Vault?](key-vault-overview.md)című témakörben tekintheti meg.

@@ -1,6 +1,6 @@
 ---
 title: Transzparens adattitkosítás (T-SQL)
-description: Transzparens adattitkosítás (TDE) SQL Data Warehouse (T-SQL)
+description: Transzparens adattitkosítás (TDE) az Azure szinapszis Analyticsben (T-SQL)
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4e7f4f31cd8b899e3fcf79568ea62830313936b9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bd6f40b8389284c1932a2f16a70060cd56e412fb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822606"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195805"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Ismerkedés a transzparens adattitkosításrel (TDE)
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "73822606"
 A transzparens adattitkosítás (TDE) engedélyezéséhez rendszergazdának vagy a DBManager szerepkör tagjának kell lennie.
 
 ## <a name="enabling-encryption"></a>Titkosítás engedélyezése
-Az alábbi lépéseket követve engedélyezheti a TDE a SQL Data Warehouse számára:
+A TDE engedélyezéséhez kövesse az alábbi lépéseket:
 
 1. Kapcsolódjon a *Master* adatbázishoz az adatbázist futtató kiszolgálón egy olyan bejelentkezéssel, amely a főadatbázisban rendszergazda vagy a **DBManager** szerepkör tagja.
 2. A következő utasítás végrehajtásával titkosíthatja az adatbázist.
@@ -41,7 +41,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
 ## <a name="disabling-encryption"></a>Titkosítás letiltása
-A SQL Data Warehouse TDE letiltásához kövesse az alábbi lépéseket:
+A TDE letiltásához kövesse az alábbi lépéseket:
 
 1. Kapcsolódjon a *Master* adatbázishoz egy olyan bejelentkezéssel, amely a főadatbázisban rendszergazda vagy a **DBManager** szerepkör tagja.
 2. A következő utasítás végrehajtásával titkosíthatja az adatbázist.
@@ -51,12 +51,12 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
 > [!NOTE]
-> A TDE beállításainak módosítása előtt újra kell indítani egy szüneteltetett SQL Data Warehouse.
+> A TDE beállítások módosítása előtt a szüneteltetett SQL-készletet újra kell indítani.
 > 
 > 
 
 ## <a name="verifying-encryption"></a>Titkosítás ellenőrzése
-Egy SQL Data Warehouse titkosítási állapotának ellenőrzéséhez kövesse az alábbi lépéseket:
+A titkosítás állapotának ellenőrzéséhez kövesse az alábbi lépéseket:
 
 1. Kapcsolódjon a *Master* vagy a instance adatbázishoz egy olyan bejelentkezéssel, amely a főadatbázisban rendszergazda vagy a **DBManager** szerepkör tagja.
 2. A következő utasítás végrehajtásával titkosíthatja az adatbázist.

@@ -3,20 +3,20 @@ title: Az erőforrásokra és az adatvédelemre vonatkozó fenyegetések kezelé
 titleSuffix: Azure AD B2C
 description: Ismerje meg az észlelési és kockázatcsökkentő technikákat a szolgáltatásmegtagadási támadások és a Azure Active Directory B2C a jelszavak elleni támadásokhoz.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fbccfe170b72770a1b14994e506a117ce0e4371e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a438363b054361420222804dffac7973470e82e7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848199"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183601"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C erőforrásaira és adatforrásaira vonatkozó fenyegetések kezelése
 

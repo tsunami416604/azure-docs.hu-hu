@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 8c4c346dd004e435846aff5592a20cd747c45df7
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: b88557468c386bc07c2432e154a82fd1f4fcb438
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552627"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194299"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Oktatóanyag: Azure SQL Database önálló adatbázis hozzáadása feladatátvételi csoporthoz
 
@@ -29,20 +29,20 @@ A feladatátvételi csoportot konfigurálhatja egy Azure SQL Database önálló 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következőkkel: 
 
 - Azure-előfizetés. Ha még nem rendelkezik ilyennel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbi elemekkel:
 
 - Azure-előfizetés. Ha még nem rendelkezik ilyennel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbi elemekkel:
 
 - Azure-előfizetés. Ha még nem rendelkezik ilyennel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
@@ -57,7 +57,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik az al�
 ## <a name="2---create-the-failover-group"></a>2 – a feladatátvételi csoport létrehozása 
 Ebben a lépésben létre fog hozni egy [feladatátvételi csoportot](sql-database-auto-failover-group.md) egy meglévő Azure SQL Server-kiszolgáló és egy másik régióban lévő új Azure SQL Server között. Ezután adja hozzá a mintaadatbázis a feladatátvételi csoporthoz. 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Hozza létre a feladatátvételi csoportot, és adja hozzá az önálló adatbázisát a Azure Portal használatával. 
 
 1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
@@ -88,7 +88,7 @@ Hozza létre a feladatátvételi csoportot, és adja hozzá az önálló adatbá
     ![SQL-adatbázis hozzáadása a feladatátvételi csoporthoz](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
         
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Hozza létre a feladatátvételi csoportot, és adja hozzá egyetlen adatbázisát a PowerShell használatával. 
 
    > [!NOTE]
@@ -166,7 +166,7 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Egy vagy több SQL-adatbázis beolvasása. |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Egy vagy több Azure SQL-adatbázis egy feladatátvételi csoportba való hozzáadására szolgál. |
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 Hozza létre a feladatátvételi csoportot, és adja hozzá egyetlen adatbázisát az AZ CLI használatával. 
 
    > [!NOTE]
@@ -174,45 +174,16 @@ Hozza létre a feladatátvételi csoportot, és adja hozzá egyetlen adatbázis�
 
    ```azurecli-interactive
    #!/bin/bash
-   # Set variables
-   # subscriptionID=<SubscriptionID>
-   # resourceGroupName=myResourceGroup-$RANDOM
-   # location=SouthCentralUS
-   # adminLogin=azureuser
-   # password="PWD27!"+`openssl rand -base64 18`
-   # serverName=mysqlserver-$RANDOM
-   # databaseName=mySampleDatabase
-   drLocation=NorthEurope
-   drServerName=mysqlsecondary-$RANDOM
-   failoverGroupName=failovergrouptutorial-$RANDOM
+   # set variables
+   $failoverLocation = "West US"
+   $failoverServer = "failoverServer-$randomIdentifier"
+   $failoverGroup = "failoverGroup-$randomIdentifier"
 
-   # Create a secondary server in the failover region
    echo "Creating a secondary logical server in the DR region..."
-   az sql server create \
-      --name $drServerName \
-      --resource-group $resourceGroupName \
-      --location $drLocation  \
-      --admin-user $adminLogin\
-      --admin-password $password
-
-   # Configure a firewall rule for the server
-   echo "Configuring firewall..."
-   az sql server firewall-rule create \
-      --resource-group $resourceGroupName \
-      --server $drServerName \
-      -n AllowYourIp \
-      --start-ip-address $startip \
-      --end-ip-address $endip
+   az sql server create --name $failoverServer --resource-group $resourceGroup --location $failoverLocation --admin-user $login --admin-password $password
    
-   # Create a failover group between the servers and add the database
    echo "Creating a failover group between the two servers..."
-   az sql failover-group create \
-      --name $failoverGroupName  \
-      --partner-server $drServerName \
-      --resource-group $resourceGroupName \
-      --server $serverName \
-      --add-db $databaseName
-      --failover-policy Automatic
+   az sql failover-group create --name $failoverGroup --partner-server $failoverServer --resource-group $resourceGroup --server $server --add-db $database --failover-policy Automatic
    ```
 
 Az oktatóanyag ezen része a következő az CLI parancsmagokat használja:
@@ -228,7 +199,7 @@ Az oktatóanyag ezen része a következő az CLI parancsmagokat használja:
 ## <a name="3---test-failover"></a>3 – feladatátvételi teszt 
 Ebben a lépésben a feladatátvételi csoportot a másodlagos kiszolgálóra fogja felvenni, majd a Azure Portal használatával hajtja végre a feladatokat. 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Feladatátvételi teszt a Azure Portal használatával. 
 
 1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
@@ -250,7 +221,7 @@ Feladatátvételi teszt a Azure Portal használatával.
 1. Tekintse át, hogy melyik kiszolgáló legyen az elsődleges, és melyik kiszolgáló a másodlagos. Ha a feladatátvétel sikeres volt, a két kiszolgálónak felcserélt szerepkörrel kell rendelkeznie. 
 1. Válassza újra a **feladatátvételt** , hogy a kiszolgálókat visszaállítsa az eredeti szerepköreire. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Feladatátvételi teszt a PowerShell használatával. 
 
 
@@ -313,55 +284,31 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
 
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 Feladatátvételi teszt az az CLI használatával. 
 
 Ellenőrizze, hogy melyik kiszolgáló a másodlagos:
 
    
    ```azurecli-interactive
-   # Set variables
-   # resourceGroupName=myResourceGroup-$RANDOM
-   # serverName=mysqlserver-$RANDOM
-   
-   # Verify which server is secondary
    echo "Verifying which server is in the secondary role..."
-   az sql failover-group list \
-      --server $serverName \
-      --resource-group $resourceGroupName
+   az sql failover-group list --server $server --resource-group $resourceGroup
    ```
 
 Feladatátvétel a másodlagos kiszolgálóra: 
 
    ```azurecli-interactive
-   # Set variables
-   # resourceGroupName=myResourceGroup-$RANDOM
-   # drServerName=mysqlsecondary-$RANDOM
-   # failoverGroupName=failovergrouptutorial-$RANDOM
-
-   
    echo "Failing over group to the secondary server..."
-   az sql failover-group set-primary \
-      --name $failoverGroupName \
-      --resource-group $resourceGroupName \
-      --server $drServerName
-   echo "Successfully failed failover group over to" $drServerName
+   az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $failoverServer
+   echo "Successfully failed failover group over to" $failoverServer
    ```
 
 A feladatátvételi csoport visszaállítása az elsődleges kiszolgálóra:
 
    ```azurecli-interactive
-   # Set variables
-   # resourceGroupName=myResourceGroup-$RANDOM
-   # serverName=mysqlserver-$RANDOM
-   # failoverGroupName=failovergrouptutorial-$RANDOM
-   
    echo "Failing over group back to the primary server..."
-   az sql failover-group set-primary \
-      --name $failoverGroupName \
-      --resource-group $resourceGroupName \
-      --server $serverName
-   echo "Successfully failed failover group back to" $serverName
+   az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $server
+   echo "Successfully failed failover group back to" $server
    ```
 
 Az oktatóanyag ezen része a következő az CLI parancsmagokat használja:
@@ -376,17 +323,16 @@ Az oktatóanyag ezen része a következő az CLI parancsmagokat használja:
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 Törölje az erőforrásokat az erőforráscsoport törlésével. 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Törölje az erőforráscsoportot a Azure Portal használatával. 
 
 1. Navigáljon az erőforráscsoporthoz a [Azure Portal](https://portal.azure.com).
 1. Válassza az **erőforráscsoport törlése** lehetőséget a csoport összes erőforrásának, valamint maga az erőforráscsoport törléséhez. 
 1. Írja be az erőforráscsoport nevét, `myResourceGroup`, a szövegmezőbe, majd válassza a **Törlés** lehetőséget az erőforráscsoport törléséhez.  
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Törölje az erőforráscsoportot a PowerShell használatával. 
-
 
    ```powershell-interactive
    # Set variables
@@ -404,20 +350,15 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Erőforráscsoport eltávolítása | 
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Törölje az erőforráscsoportot az AZ CLI használatával. 
 
 
    ```azurecli-interactive
-   # Set variables
-   # resourceGroupName=myResourceGroup-$RANDOM
-   
-   # Clean up resources by removing the resource group
    echo "Cleaning up resources by removing the resource group..."
-   az group delete \
-     --name $resourceGroupName
-   echo "Successfully removed resource group" $resourceGroupName
+   az group delete --name $resourceGroup
+   echo "Successfully removed resource group" $resourceGroup
    ```
 
 Az oktatóanyag ezen része a következő az CLI parancsmagokat használja:
@@ -435,7 +376,7 @@ Az oktatóanyag ezen része a következő az CLI parancsmagokat használja:
 
 ## <a name="full-scripts"></a>Teljes parancsfájlok
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-ps.ps1 "Add single database to a failover group")]
 
@@ -454,7 +395,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Kapcsoló – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Database feladatátvételi csoport feladatátvételét hajtja végre. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Erőforráscsoport eltávolítása | 
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!code-azurecli-interactive[main](../../cli_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-cli.sh "Add single database to a failover group")]
 
@@ -472,14 +413,14 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az SQL feladatátvétel-csoport beállítása – elsődleges](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Állítsa be a feladatátvételi csoport elsődlegesét úgy, hogy az a jelenlegi elsődleges kiszolgáló összes adatbázisát elvégzi. | 
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Nincsenek elérhető parancsfájlok a Azure Portal számára. 
  
 ---
 
 További Azure SQL Database szkriptek itt találhatók: [Azure PowerShell](sql-database-powershell-samples.md) és [Azure CLI](sql-database-cli-samples.md). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy Azure SQL Database önálló adatbázist adott hozzá egy feladatátvételi csoporthoz, és tesztelte a feladatátvételt. Megismerte, hogyan végezheti el az alábbi műveleteket: 
 

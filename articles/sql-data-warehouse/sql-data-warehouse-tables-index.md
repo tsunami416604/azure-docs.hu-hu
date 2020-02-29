@@ -1,6 +1,6 @@
 ---
 title: Táblázatok indexelése
-description: Javaslatok és példák a táblázatok indexeléséhez Azure SQL Data Warehouseban.
+description: Javaslatok és példák az SQL Analytics-táblázatok indexeléséhez.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,27 +10,27 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 079891824bf71caf1ebfa575833de650a55ed5be
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 5167c897109f9e4f050ac6f7416ecabbbb28a4a9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685448"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196601"
 ---
-# <a name="indexing-tables-in-sql-data-warehouse"></a>Táblázatok indexelése SQL Data Warehouse
+# <a name="indexing-tables-in-sql-analytics"></a>Táblázatok indexelése az SQL Analyticsben
 
-Javaslatok és példák a táblázatok indexeléséhez Azure SQL Data Warehouseban.
+Javaslatok és példák az SQL Analytics-táblázatok indexeléséhez.
 
 ## <a name="index-types"></a>Indextípusok
 
-SQL Data Warehouse több indexelési lehetőséget is kínál, többek között a [fürtözött oszlopcentrikus indexeket](/sql/relational-databases/indexes/columnstore-indexes-overview), a [fürtözött indexeket és a nem fürtözött indexeket](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described) [, valamint a](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)nem indexelt lehetőséget is.  
+Az SQL Analytics számos indexelési lehetőséget kínál, többek között a [fürtözött oszlopcentrikus indexeket](/sql/relational-databases/indexes/columnstore-indexes-overview), a [fürtözött indexeket és a nem fürtözött indexeket](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described), valamint a nem indexelt lehetőséget [is.](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)  
 
-Indextel rendelkező tábla létrehozásához tekintse meg a [create Table (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) dokumentációját.
+Indextel rendelkező tábla létrehozásához tekintse meg a [create Table (SQL Analytics)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) dokumentációját.
 
 ## <a name="clustered-columnstore-indexes"></a>Fürtözött oszlopcentrikus indexek
 
-Alapértelmezés szerint a SQL Data Warehouse létrehoz egy fürtözött oszlopcentrikus-indexet, ha nincs megadva tárgymutató-beállítás a táblán. A fürtözött oszlopcentrikus táblák a legmagasabb szintű adattömörítést, valamint a legjobb összesített lekérdezési teljesítményt egyaránt tartalmazzák.  A fürtözött oszlopcentrikus táblák általában jobban teljesítik a fürtözött indexet vagy a kupac táblákat, és általában a legjobb választás a nagyméretű táblákhoz.  Ezen okok miatt a fürtözött oszlopcentrikus a legjobb kiindulópont, ha nem tudja, hogyan indexelheti a táblázatot.  
+Alapértelmezés szerint az SQL Analytics létrehoz egy fürtözött oszlopcentrikus indexet, ha nincs megadva tárgymutató-beállítás a táblán. A fürtözött oszlopcentrikus táblák a legmagasabb szintű adattömörítést, valamint a legjobb összesített lekérdezési teljesítményt egyaránt tartalmazzák.  A fürtözött oszlopcentrikus táblák általában jobban teljesítik a fürtözött indexet vagy a kupac táblákat, és általában a legjobb választás a nagyméretű táblákhoz.  Ezen okok miatt a fürtözött oszlopcentrikus a legjobb kiindulópont, ha nem tudja, hogyan indexelheti a táblázatot.  
 
 Fürtözött oszlopcentrikus-tábla létrehozásához egyszerűen írja be a FÜRTÖZÖTT OSZLOPCENTRIKUS INDEXet a WITH záradékban, vagy hagyja ki a WITH záradékot:
 
@@ -52,7 +52,7 @@ Vannak olyan helyzetek, amikor a fürtözött oszlopcentrikus esetleg nem jó me
 
 ## <a name="heap-tables"></a>Halom táblák
 
-Amikor ideiglenesen SQL Data Warehouse az adataikat, előfordulhat, hogy a halom tábla használatával a folyamat gyorsabban elvégezhető. Ennek az az oka, hogy a halomba való betöltés gyorsabb, mint a táblák indexelése, és bizonyos esetekben az ezt követő olvasás a gyorsítótárból hajtható végre.  Ha csak a további átalakítások futtatása előtt kívánja betölteni az adatgyűjtést, a tábla betöltése a halom táblába sokkal gyorsabb, mint a fürtözött oszlopcentrikus táblába való betöltés. Emellett az adatok [ideiglenes táblába](sql-data-warehouse-tables-temporary.md) való betöltése gyorsabban betöltődik, mint a tábla állandó tárterületre való betöltése.  
+Ha átmenetileg kiveszi az SQL Analytics szolgáltatásban tárolt adatmennyiséget, előfordulhat, hogy egy halom tábla használatával a folyamat gyorsabban elvégezhető. Ennek az az oka, hogy a halomba való betöltés gyorsabb, mint a táblák indexelése, és bizonyos esetekben az ezt követő olvasás a gyorsítótárból hajtható végre.  Ha csak a további átalakítások futtatása előtt kívánja betölteni az adatgyűjtést, a tábla betöltése a halom táblába sokkal gyorsabb, mint a fürtözött oszlopcentrikus táblába való betöltés. Emellett az adatok [ideiglenes táblába](sql-data-warehouse-tables-temporary.md) való betöltése gyorsabban betöltődik, mint a tábla állandó tárterületre való betöltése.  
 
 A kisméretű keresési tábláknál, amelyek kevesebb, mint 60 000 000 sor, gyakran halom táblákat is érdemes megérteni.  A fürt oszlopcentrikus táblái megkezdik az optimális tömörítést, ha több mint 60 000 000 sor van.
 
@@ -154,11 +154,11 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 A lekérdezés futtatása után megkezdheti az adatgyűjtés megkeresését és az eredmények elemzését. Ez a táblázat ismerteti, hogy mit kell keresni a sorcsoport-elemzésben.
 
-| Column | Az adathasználat használata |
+| Oszlop | Az adathasználat használata |
 | --- | --- |
 | [table_partition_count] |Ha a tábla particionálva van, akkor várhatóan nagyobb számú nyitott sorcsoport is látható. A terjesztés minden partíciója elméletileg rendelkezhet egy nyitott sorcsoport-csoporttal. Ezt a faktort elemezze. A particionált kis tábla optimalizálható úgy, hogy teljesen eltávolítja a particionálást, mivel ez javítaná a tömörítést. |
 | [row_count_total] |A tábla teljes sorainak száma. Ezzel az értékkel például kiszámíthatja a tömörített állapotú sorok százalékos arányát. |
-| [row_count_per_distribution_MAX] |Ha az összes sor egyenletesen van elosztva, ez az érték lesz az eloszlásban megcélzott sorok száma. Hasonlítsa össze ezt az értéket a compressed_rowgroup_count. |
+| [row_count_per_distribution_MAX] |Ha az összes sor egyenletesen van elosztva, ez az érték lesz az eloszlásban megcélzott sorok száma. Hasonlítsa össze ezt az értéket a compressed_rowgroup_countával. |
 | [COMPRESSED_rowgroup_rows] |A táblához tartozó oszlopcentrikus-formátumú sorok teljes száma. |
 | [COMPRESSED_rowgroup_rows_AVG] |Ha a sorok átlagos száma jelentősen kisebb, mint a sorcsoport sorainak maximális száma, akkor érdemes lehet CTAS használni, vagy módosítani az INDEX újraépítését az adatok újratömörítéséhez |
 | [COMPRESSED_rowgroup_count] |Oszlopcentrikus formátumú sorok száma Ha ez a szám nagyon magas a táblázathoz képest, az azt jelzi, hogy a oszlopcentrikus sűrűsége alacsony. |
@@ -190,7 +190,7 @@ Ezek a tényezők azt okozhatják, hogy a oszlopcentrikus indexe jelentősen kev
 
 ### <a name="memory-pressure-when-index-was-built"></a>Memória-nyomás az index létrehozásakor
 
-A tömörített sorcsoport sorainak száma közvetlenül kapcsolódik a sor szélességéhez és a sorcsoport feldolgozásához rendelkezésre álló memória mennyiségéhez.  Amikor a sorokat nagy memóriaterhelés mellett írja oszlopcentrikus táblákba, az oszlopcentrikus szegmens minősége gyengülhet.  Ezért az ajánlott eljárás az, hogy a munkamenetet adja meg, amely a lehető legtöbb memóriához fér hozzá a oszlopcentrikus index tábláihoz.  Mivel a memória és a Egyidejűség között kompromisszum van, a megfelelő memória kiosztására vonatkozó útmutatás a táblázat minden egyes sorában található adatoktól, a rendszer számára lefoglalt adatraktár-egységektől, valamint a munkamenethez adható, hogy milyen párhuzamossági résidőket kell megadnia. adatírás a táblába.
+A tömörített sorcsoport sorainak száma közvetlenül kapcsolódik a sor szélességéhez és a sorcsoport feldolgozásához rendelkezésre álló memória mennyiségéhez.  Amikor a sorokat nagy memóriaterhelés mellett írja oszlopcentrikus táblákba, az oszlopcentrikus szegmens minősége gyengülhet.  Ezért az ajánlott eljárás az, hogy a munkamenetet adja meg, amely a lehető legtöbb memóriához fér hozzá a oszlopcentrikus index tábláihoz.  Mivel a memória és a Egyidejűség között kompromisszum van, a megfelelő memória kiosztására vonatkozó útmutatás a táblázat minden egyes sorában található adatoktól, a rendszer számára lefoglalt SQL Analytics-egységtől, valamint a munkamenethez a szolgáltatás számára elérhető párhuzamos tárolóhelyek számától függ. az adatírás a táblába.
 
 ### <a name="high-volume-of-dml-operations"></a>Nagy mennyiségű DML-művelet
 
@@ -204,13 +204,13 @@ A kötegelt frissítési és beszúrási műveletek, amelyek túllépik az 102 4
 
 ### <a name="small-or-trickle-load-operations"></a>Kis-vagy csepegtető terhelési műveletek
 
-A SQL Data Warehousebe beáramló kis terhelések is más néven szivárgási terhelésként is ismertek. Általában a rendszer által betöltött, közel állandó adatfolyamot jelentenek. Mivel azonban ez az adatfolyam közel folyamatos, a sorok mennyisége nem különösebben nagy. Gyakrabban, mint nem az adat jelentősen a közvetlen betöltés oszlopcentrikus formátumhoz szükséges küszöbérték alatt van.
+Az SQL Analytics-adatbázisokba beáramló kis terhelések más néven szivárgási terhelésként is ismertek. Általában a rendszer által betöltött, közel állandó adatfolyamot jelentenek. Mivel azonban ez az adatfolyam közel folyamatos, a sorok mennyisége nem különösebben nagy. Gyakrabban, mint nem az adat jelentősen a közvetlen betöltés oszlopcentrikus formátumhoz szükséges küszöbérték alatt van.
 
 Ezekben az esetekben általában jobb az Azure Blob Storage-ban az adatgyűjtés, és a betöltés előtt is felhalmozható. Ezt a technikát gyakran nevezik *mikro-kötegnek*.
 
 ### <a name="too-many-partitions"></a>Túl sok partíció
 
-Egy másik megfontolandó dolog a fürtözött oszlopcentrikus-táblák particionálásának hatása.  A particionálás előtt a SQL Data Warehouse az adatait már 60 adatbázisra osztja.  A particionálás tovább osztja az adatait.  Ha particionálja az adatait, vegye figyelembe, hogy az **egyes** partíciók legalább 1 000 000 sort igényelnek egy fürtözött oszlopcentrikus-index kihasználása érdekében.  Ha 100 partícióra particionálja a táblázatot, a táblának legalább 6 000 000 000 sort kell használnia a fürtözött oszlopcentrikus-index (60-disztribúciók *100-partíciók* 1 000 000-sorok) kihasználása érdekében. Ha az 100-Partition tábla nem rendelkezik 6 000 000 000-sorral, csökkentse a partíciók számát, vagy használjon egy halom táblát.
+Egy másik megfontolandó dolog a fürtözött oszlopcentrikus-táblák particionálásának hatása.  A particionálás előtt az SQL Analytics már 60 adatbázisokra osztja az adatait.  A particionálás tovább osztja az adatait.  Ha particionálja az adatait, vegye figyelembe, hogy az **egyes** partíciók legalább 1 000 000 sort igényelnek egy fürtözött oszlopcentrikus-index kihasználása érdekében.  Ha 100 partícióra particionálja a táblázatot, a táblának legalább 6 000 000 000 sort kell használnia a fürtözött oszlopcentrikus-index (60-disztribúciók *100-partíciók* 1 000 000-sorok) kihasználása érdekében. Ha az 100-Partition tábla nem rendelkezik 6 000 000 000-sorral, csökkentse a partíciók számát, vagy használjon egy halom táblát.
 
 Miután betöltötte a táblákat néhány adattal, az alábbi lépéseket követve azonosíthatja és újraépítheti a táblákat az optimális oszlopcentrikus-indexekkel.
 
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-SQL Data Warehouse egy indexének újraépítése offline művelet.  Az indexek újraépítésével kapcsolatos további információkért tekintse meg az indexek átállítása az [Oszlopcentrikus indexek töredezettségmentesítéséről](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)című szakaszt, és [módosítsa az indexet](/sql/t-sql/statements/alter-index-transact-sql).
+Az SQL Analytics-indexek újraépítése offline művelet.  Az indexek újraépítésével kapcsolatos további információkért tekintse meg az indexek átállítása az [Oszlopcentrikus indexek töredezettségmentesítéséről](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)című szakaszt, és [módosítsa az indexet](/sql/t-sql/statements/alter-index-transact-sql).
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3\. lépés: a fürtözött oszlopcentrikus szegmens minőségének ellenőrzése javult
 
@@ -283,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-A partíciók CTAS használatával történő ismételt létrehozásával kapcsolatos további információkért lásd: [partíciók használata a SQL Data Warehouseban](sql-data-warehouse-tables-partition.md).
+A partíciók CTAS használatával történő ismételt létrehozásával kapcsolatos további információkért lásd: [partíciók használata az SQL Analyticsben](sql-data-warehouse-tables-partition.md).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
 title: Az elosztott táblák tervezési útmutatója
-description: Javaslatok a kivonatok elosztott és ciklikusan elosztott táblázatának tervezéséhez Azure SQL Data Warehouseban.
+description: Javaslatok kivonatok elosztott és ciklikusan elosztott táblázatának tervezéséhez az SQL Analyticsben.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 025c60485625a4ab4d2e29b1e81d8574f6187b93
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.custom: azure-synapse
+ms.openlocfilehash: 3a07dd6ccd5d0bf3440df21b2af4e67cbcf663c9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049115"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199444"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Útmutatás a Azure SQL Data Warehouse elosztott tábláinak megtervezéséhez
-Javaslatok a kivonatok elosztott és ciklikusan elosztott táblázatának tervezéséhez Azure SQL Data Warehouseban.
+# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>Útmutató elosztott táblák tervezéséhez az SQL Analytics szolgáltatásban
+Javaslatok kivonatok elosztott és ciklikusan elosztott táblázatának tervezéséhez az SQL Analyticsben.
 
-Ez a cikk feltételezi, hogy ismeri a SQL Data Warehouse adatelosztási és adatáthelyezési fogalmait.  További információ: [Azure SQL Data Warehouse-masszívan párhuzamos feldolgozás (MPP) architektúrája](massively-parallel-processing-mpp-architecture.md). 
+Ez a cikk azt feltételezi, hogy ismeri az adatterjesztéssel és az adatáthelyezéssel kapcsolatos fogalmakat az SQL Analytics szolgáltatásban.  További információ: az [SQL Analytics nagymértékben párhuzamos feldolgozási (MPP) architektúrája](massively-parallel-processing-mpp-architecture.md). 
 
 ## <a name="what-is-a-distributed-table"></a>Mi az elosztott tábla?
 Egy elosztott tábla egyetlen táblázatként jelenik meg, de a sorok ténylegesen 60-eloszlásban vannak tárolva. A sorok kivonattal vagy ciklikus multiplexelés algoritmussal vannak elosztva.  
@@ -34,7 +34,7 @@ A tábla kialakításának részeként a lehető legnagyobb mértékben megismer
 
 - Mekkora a táblázat?   
 - Milyen gyakran frissül a tábla?   
-- Van-e az adattárházban egy tény-és dimenziós táblázat?   
+- Van-e a tény-és dimenziós táblázatok egy SQL Analytics-adatbázisban?   
 
 
 ### <a name="hash-distributed"></a>Kivonat kiosztva
@@ -42,7 +42,7 @@ A kivonatok – az elosztott tábla a számítási csomópontok között egy det
 
 ![Elosztott tábla](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "Elosztott tábla")  
 
-Mivel az azonos értékek mindig azonos eloszlásba kerülnek, az adattárház beépített ismeretekkel rendelkezik a sorok helyeiről. SQL Data Warehouse ezt az információt használja az adatáthelyezés minimalizálásához a lekérdezések során, ami javítja a lekérdezési teljesítményt. 
+Mivel az azonos értékek mindig azonos eloszlásba kerülnek, az SQL Analytics beépített ismeretekkel rendelkezik a sorok helyeiről. Az SQL Analytics ezt a tudást használja az adatáthelyezés minimalizálásához a lekérdezések során, ami javítja a lekérdezési teljesítményt. 
 
 A kivonattal terjesztett táblázatok jól működnek a csillag sémában található nagyméretű táblákhoz. Nagyon nagy mennyiségű sorból állhatnak, és továbbra is nagy teljesítmény érhető el. Természetesen vannak olyan kialakítási megfontolások, amelyek segítenek az elosztott rendszer által biztosított teljesítmény megszerzésében. A megfelelő terjesztési oszlop kiválasztása az ebben a cikkben ismertetett szempontok egyike. 
 
@@ -65,7 +65,7 @@ A következő helyzetekben érdemes lehet a táblázat ciklikus multiplexelés h
 - Ha az illesztés kevésbé jelentős, mint a lekérdezés többi illesztése
 - Ha a tábla ideiglenes előkészítési tábla
 
-Az oktatóanyag [betölti a New York-i taxik-Azure SQL Data Warehousei az adatgyűjtési](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) példát, amely egy ciklikus multiplexelés-előkészítési táblába helyezi az betöltést.
+Az oktatóanyag [betöltésével a New York-i taxik-adatgyűjtési](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) szolgáltatás egy példát mutat be, amely az SQL Analytics egy ciklikus időszeleteléses előkészítési táblájába helyezi az
 
 
 ## <a name="choosing-a-distribution-column"></a>Terjesztési oszlop kiválasztása
@@ -109,7 +109,7 @@ A párhuzamos feldolgozás kiegyensúlyozásához válasszon egy terjesztési os
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Az adatáthelyezést lecsökkentő terjesztési oszlop kiválasztása
 
-A lekérdezési eredmények helyes lekérdezéséhez az adatok az egyik számítási csomópontról egy másikra helyezhetők át. Az adatáthelyezés általában akkor történik, amikor a lekérdezések összekapcsolással és összesítésekkel rendelkeznek az elosztott táblákon. Egy olyan terjesztési oszlop kiválasztása, amely segít az adatáthelyezés minimalizálásában, az egyik legfontosabb stratégia a SQL Data Warehouse teljesítményének optimalizálásához.
+A lekérdezési eredmények helyes lekérdezéséhez az adatok az egyik számítási csomópontról egy másikra helyezhetők át. Az adatáthelyezés általában akkor történik, amikor a lekérdezések összekapcsolással és összesítésekkel rendelkeznek az elosztott táblákon. Az adatáthelyezés minimálisra csökkentését segítő terjesztési oszlop kiválasztása az SQL Analytics-adatbázis teljesítményének optimalizálására szolgáló legfontosabb stratégiák egyike.
 
 Az adatáthelyezés minimalizálásához válasszon ki egy terjesztési oszlopot:
 
@@ -137,7 +137,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 A 10%-nál több adateltérést tartalmazó táblák azonosításához:
 
 1. Hozza létre a dbo. vTableSizes nézetet, amely a [táblázatok áttekintő](sql-data-warehouse-tables-overview.md#table-size-queries) cikkében látható.  
-2. Futtassa a következő lekérdezést:
+2. Futtassa az alábbi lekérdezést:
 
 ```sql
 select *
@@ -213,11 +213,11 @@ RENAME OBJECT [dbo].[FactInternetSales] TO [FactInternetSales_ProductKey];
 RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Elosztott tábla létrehozásához használja az alábbi utasítások egyikét:
 
-- [CREATE TABLE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE a SELECT (Azure SQL Data Warehouse](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [CREATE TABLE a SELECT (SQL Analytics) használatával](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

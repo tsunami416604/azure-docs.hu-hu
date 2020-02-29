@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
-ms.date: 11/08/2019
-ms.openlocfilehash: 9b6c21c31f3f4ec45307c245c373b9e1c1480cda
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/27/2020
+ms.openlocfilehash: b6b7e47acdbc5bd059e17e512731bd09c8580798
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75537122"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195379"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>A kísérlet futtatásának és metrikáinak megjelenítése TensorBoard és Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -182,6 +182,10 @@ tb.start()
 tb.stop()
 ```
 
+>[!Note]
+ Habár ez a példa a TensorFlow-t használta, a TensorBoard könnyen használható a PyTorch-vagy a Láncer-modellekhez. A TensorFlow-nek elérhetőnek kell lennie a TensorBoard-t futtató gépen, de nem szükséges a PyTorch vagy a láncolási számításokat végző gépen. 
+
+
 <a name="export"></a>
 
 ## <a name="option-2-export-history-as-log-to-view-in-tensorboard"></a>2\. lehetőség: előzmények exportálása naplóként a TensorBoard megtekintéséhez
@@ -289,7 +293,7 @@ Ha elkészült, győződjön meg arról, hogy a TensorBoard objektum [Leállít�
 tb.stop()
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban két kísérletet hozott létre, és megtanulta, hogyan indíthat el TensorBoard a futtatási előzményekkel a lehetséges hangolási és újraképzési területek azonosítása érdekében. 
 

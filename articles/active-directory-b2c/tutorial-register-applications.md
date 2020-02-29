@@ -3,20 +3,20 @@ title: 'Oktatóanyag: alkalmazás regisztrálása'
 titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan regisztrálhat egy webalkalmazást Azure Active Directory B2C a Azure Portal használatával.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/16/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dbb689182a45367061ae129304a98a8ee9962051
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a688f5e75f7513d0ea4308b751f87f75a2c9510a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840111"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183091"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Oktatóanyag: alkalmazás regisztrálása Azure Active Directory B2Cban
 
@@ -38,9 +38,9 @@ Ha még nem hozott létre saját [Azure ad B2C bérlőt](tutorial-create-tenant.
 
 Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja a jelenlegi **alkalmazásokat** , vagy az új, egyesített **Alkalmazásregisztrációk (előzetes verzió)** élményt. [További információ az új felületről](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
+#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
 1. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
@@ -57,9 +57,9 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
 
 1. Válassza a **Létrehozás** lehetőséget az alkalmazás regisztrációjának befejezéséhez.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
 1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.
@@ -90,13 +90,13 @@ Az alkalmazás regisztrációjának befejezése után engedélyezze az implicit 
 
 Ha az alkalmazás egy hozzáférési jogkivonat engedélyezési kódját cseréli, létre kell hoznia egy alkalmazás-titkot.
 
-#### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
+#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
 1. A **Azure ad B2C-alkalmazások** lapon válassza ki a létrehozott alkalmazást, például *webapp1*.
 1. Válassza a **kulcsok** lehetőséget, majd válassza a **kulcs generálása**elemet.
 1. Kattintson a **Save (Mentés** ) gombra a kulcs megtekintéséhez. Jegyezze fel az **Alkalmazáskulcs** értékét. Ezt az értéket használja az alkalmazás kódjában található alkalmazás-titokként.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
 1. A **Azure ad B2C-Alkalmazásregisztrációk (előzetes verzió)** lapon válassza ki a létrehozott alkalmazást, például *webapp1*.
 1. A **kezelés**területen válassza a **tanúsítványok & Secrets**elemet.
@@ -107,7 +107,7 @@ Ha az alkalmazás egy hozzáférési jogkivonat engedélyezési kódját cserél
 
 * * *
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

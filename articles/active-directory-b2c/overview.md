@@ -2,20 +2,20 @@
 title: Mi az az Azure Active Directory B2C?
 description: Ismerje meg, hogyan használhatók a Azure Active Directory B2C a külső identitások támogatásához az alkalmazásokban, beleértve a Facebook, a Google és más identitás-szolgáltatókkal való közösségi bejelentkezést is.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 09/19/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7159d695d502f2fba7a8b502eed7fdeffbe0ad03
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 61b6d5ea903d00519c58556bc99da7065741a6e3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850250"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184060"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Mi az az Azure Active Directory B2C?
 
@@ -121,7 +121,7 @@ If you'd like to jump right into the code to see how the WoodGrove Groceries app
 [Azure-Samples/active-directory-external-identities-woodgrove-demo][woodgrove-repo] (GitHub)
 -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már van egy ötlete arról, hogy milyen Azure AD B2C és milyen forgatókönyvek segíthetnek a működésében, mélyebben megismerheti a funkcióit és a technikai aspektusait.
 

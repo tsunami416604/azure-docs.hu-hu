@@ -1,6 +1,6 @@
 ---
 title: Tranzakciók optimalizálása
-description: Megtudhatja, hogyan optimalizálhatja a tranzakciós kód teljesítményét Azure SQL Data Warehouse, miközben minimalizálja a hosszú visszaállítások kockázatát.
+description: Megtudhatja, hogyan optimalizálhatja a tranzakciós kód teljesítményét az SQL Analyticsben, miközben minimalizálja a hosszú visszaállítások kockázatát.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,21 +10,21 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: b8b8be9467ade870e57355be91b0de329b0f6217
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 6f7005f1706e72ea1794f99c030a25fa533327b8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692855"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195838"
 ---
-# <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Tranzakciók optimalizálása Azure SQL Data Warehouseban
-Megtudhatja, hogyan optimalizálhatja a tranzakciós kód teljesítményét Azure SQL Data Warehouse, miközben minimalizálja a hosszú visszaállítások kockázatát.
+# <a name="optimizing-transactions-in-sql-analytics"></a>Tranzakciók optimalizálása az SQL Analyticsben
+Megtudhatja, hogyan optimalizálhatja a tranzakciós kód teljesítményét az SQL Analyticsben, miközben minimalizálja a hosszú visszaállítások kockázatát.
 
 ## <a name="transactions-and-logging"></a>Tranzakciók és naplózás
-A tranzakciók a kapcsolatok adatbázis-működtetői egyik fontos összetevője. A SQL Data Warehouse az adatmódosítás során tranzakciókat használ. Ezek a tranzakciók explicitek vagy implicitek lehetnek. Az egyszeri INSERT, UPDATE és DELETE utasítások mindegyike implicit tranzakcióra mutat. A Explicit tranzakciók a BEGIN TRAN, a COMMon TRAN vagy a VISSZAÁLLÍTÁSi TRAN szolgáltatást használják. A explicit tranzakciókat jellemzően akkor használják, ha több módosítási utasítást kell összekötni egyetlen atomi egységben. 
+A tranzakciók a kapcsolatok adatbázis-működtetői egyik fontos összetevője. Az SQL Analytics az adatmódosítás során tranzakciókat használ. Ezek a tranzakciók explicitek vagy implicitek lehetnek. Az egyszeri INSERT, UPDATE és DELETE utasítások mindegyike implicit tranzakcióra mutat. A Explicit tranzakciók a BEGIN TRAN, a COMMon TRAN vagy a VISSZAÁLLÍTÁSi TRAN szolgáltatást használják. A explicit tranzakciókat jellemzően akkor használják, ha több módosítási utasítást kell összekötni egyetlen atomi egységben. 
 
-Azure SQL Data Warehouse a tranzakciós naplók használatával véglegesíti az adatbázis módosításait. Minden elosztás saját tranzakciónaplóval rendelkezik. A tranzakciónapló-írások automatikusak. Nincs szükség konfigurációra. Bár ez a folyamat garantálja az írást, a rendszer terhelést vezet be. Ezt a hatást a tranzakciós hatékony kód írásával csökkentheti. A tranzakciós szempontból hatékony kód nagyjából két kategóriába esik.
+Az SQL Analytics tranzakciós naplók használatával véglegesíti az adatbázis módosításait. Minden elosztás saját tranzakciónaplóval rendelkezik. A tranzakciónapló-írások automatikusak. Nincs szükség konfigurációra. Bár ez a folyamat garantálja az írást, a rendszer terhelést vezet be. Ezt a hatást a tranzakciós hatékony kód írásával csökkentheti. A tranzakciós szempontból hatékony kód nagyjából két kategóriába esik.
 
 * Minimális naplózási szerkezetek használata, ha lehetséges
 * Az adatfeldolgozás hatókörrel rendelkező kötegek használatával a hosszú ideig futó tranzakciók elkerülése érdekében
@@ -68,17 +68,17 @@ CTAS és Beszúrás... Válassza a tömeges betöltési műveletek lehetőséget
 
 | Elsődleges index | Betöltési forgatókönyv | Naplózási mód |
 | --- | --- | --- |
-| Halommemória |Bármelyik |**Minimális** |
+| Halommemória |Bármely |**Minimális** |
 | Fürtözött index |Üres céltábla |**Minimális** |
 | Fürtözött index |A betöltött sorok nem fedik át a cél meglévő lapjait |**Minimális** |
-| Fürtözött index |A betöltött sorok átfedésben vannak a cél meglévő lapjaival |Korlátlan |
+| Fürtözött index |A betöltött sorok átfedésben vannak a cél meglévő lapjaival |teljes |
 | Fürtözött Oszlopcentrikus index |Batch-méret > = 102 400/partícióra igazított eloszlás |**Minimális** |
-| Fürtözött Oszlopcentrikus index |Köteg mérete < 102 400/partícióra igazított eloszlás |Korlátlan |
+| Fürtözött Oszlopcentrikus index |Köteg mérete < 102 400/partícióra igazított eloszlás |teljes |
 
 Érdemes megjegyezni, hogy a másodlagos vagy nem fürtözött indexek frissítésére vonatkozó írások mindig teljesen naplózott műveletnek számítanak.
 
 > [!IMPORTANT]
-> SQL Data Warehouse rendelkezik 60-disztribúcióval. Ezért feltételezve, hogy az összes sort egyenletesen osztják el, és egy partíción belül kikerülnek, a kötegnek legalább 6 144 000 sort kell tartalmaznia, hogy a rendszer minimálisan naplózza a fürtözött Oszlopcentrikus indexbe való íráskor. Ha a tábla particionálva van, és a sorok kiosztási partíció határain belül vannak beszúrva, akkor a partíciók határán 6 144 000 sor szükséges, feltéve, hogy az adateloszlás is megtörténik. Az egyes eloszlások mindegyik partíciójának egymástól függetlennek kell lennie, mint a Beszúrás minimálisan megengedett 102 400-as küszöbértéke.
+> Az SQL Analytics-adatbázisok 60-disztribúcióval rendelkeznek. Ezért feltételezve, hogy az összes sort egyenletesen osztják el, és egy partíción belül kikerülnek, a kötegnek legalább 6 144 000 sort kell tartalmaznia, hogy a rendszer minimálisan naplózza a fürtözött Oszlopcentrikus indexbe való íráskor. Ha a tábla particionálva van, és a sorok kiosztási partíció határain belül vannak beszúrva, akkor a partíciók határán 6 144 000 sor szükséges, feltéve, hogy az adateloszlás is megtörténik. Az egyes eloszlások mindegyik partíciójának egymástól függetlennek kell lennie, mint a Beszúrás minimálisan megengedett 102 400-as küszöbértéke.
 > 
 > 
 
@@ -177,7 +177,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> A nagyméretű táblák ismételt létrehozása hasznos lehet a SQL Data Warehouse munkaterhelés-kezelési funkciók használatával. További információ: erőforrás- [osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md).
+> A nagyméretű táblák újbóli létrehozása kihasználhatja az SQL Analytics számítási feladatok kezelési funkcióit. További információ: erőforrás- [osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md).
 > 
 > 
 
@@ -405,18 +405,18 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Útmutató szüneteltetése és skálázása
-Azure SQL Data Warehouse lehetővé teszi az adattárház [szüneteltetését, folytatását és méretezését](sql-data-warehouse-manage-compute-overview.md) igény szerint. A SQL Data Warehouse szüneteltetése vagy méretezése esetén fontos tisztában lennie azzal, hogy a repülés közbeni tranzakciók azonnal megszűnnek; a nyitott tranzakciók visszaállításának visszavonása. Ha a munkaterhelés a szüneteltetési vagy a skálázási művelet előtt hosszú ideig futó és hiányos adatmódosítást adott ki, akkor ennek a munkának vissza kell maradnia. Ezzel a művelettel a Azure SQL Data Warehouse-adatbázis szüneteltetéséhez vagy méretezéséhez szükséges idő is hatással lehet. 
+Az SQL Analytics segítségével igény szerint [szüneteltetheti, folytathatja és méretezheti](sql-data-warehouse-manage-compute-overview.md) az SQL-készletet. Ha szünetelteti vagy méretezi az SQL-készletet, fontos tisztában lennie azzal, hogy a repülés közbeni tranzakciók azonnal megszűnnek; a nyitott tranzakciók visszaállításának visszavonása. Ha a munkaterhelés a szüneteltetési vagy a skálázási művelet előtt hosszú ideig futó és hiányos adatmódosítást adott ki, akkor ennek a munkának vissza kell maradnia. Ezzel a művelettel az SQL-készlet szüneteltetéséhez vagy méretezéséhez szükséges idő is hatással lehet. 
 
 > [!IMPORTANT]
 > Mind a `UPDATE`, mind a `DELETE` teljesen naplózott művelet, így ezek a visszavonás/ismétlési műveletek jóval hosszabb időt vehetnek igénybe, mint az egyenértékű, minimálisan naplózott műveletek. 
 > 
 > 
 
-A legjobb megoldás, ha a SQL Data Warehouse szüneteltetése vagy skálázása előtt a repülési adatmódosítási tranzakciók befejeződik. Előfordulhat azonban, hogy ez a forgatókönyv nem mindig praktikus. A hosszú visszaállítás kockázatának enyhítéséhez vegye figyelembe az alábbi lehetőségek egyikét:
+A legjobb megoldás az, ha az SQL-készlet szüneteltetése vagy skálázása előtt befejezi a repülési adatmódosítási tranzakciók befejezését. Előfordulhat azonban, hogy ez a forgatókönyv nem mindig praktikus. A hosszú visszaállítás kockázatának enyhítéséhez vegye figyelembe az alábbi lehetőségek egyikét:
 
 * A hosszú ideig futó műveletek újraírása a [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) használatával
 * A művelet felosztása darabokra; a sorok egy részhalmazán működik
 
 ## <a name="next-steps"></a>További lépések
-Az elkülönítési szintekkel és a tranzakciós korlátokkal kapcsolatos további tudnivalókért tekintse meg [SQL Data Warehouse tranzakcióit](sql-data-warehouse-develop-transactions.md) .  Az egyéb ajánlott eljárások áttekintését itt tekintheti meg: [SQL Data Warehouse ajánlott eljárások](sql-data-warehouse-best-practices.md).
+Az elkülönítési szintekkel és a tranzakciós korlátokkal kapcsolatos további tudnivalókért tekintse meg az [SQL Analytics tranzakcióit](sql-data-warehouse-develop-transactions.md) .  Az egyéb ajánlott eljárások áttekintését itt tekintheti meg: [SQL Data Warehouse ajánlott eljárások](sql-data-warehouse-best-practices.md).
 

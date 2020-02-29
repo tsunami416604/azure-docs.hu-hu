@@ -1,26 +1,26 @@
 ---
 title: Számítási feladat fontosságának konfigurálása
-description: Megtudhatja, hogyan állíthatja be a kérelmek szintjének fontosságát.
+description: Ismerje meg, hogyan állíthatja be a kérelmek szintjének fontosságát az Azure szinapszis Analyticsben.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.subservice: workload-management
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 02/04/2020
 ms.author: rortloff
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 59ba4b936f6098b0d0b3f5e571f107af088206e0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 8b2a4333717938edf9f3039e29e8df88cece7cc1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692693"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196797"
 ---
-# <a name="configure-workload-importance-in-azure-sql-data-warehouse"></a>A számítási feladatok fontosságának konfigurálása Azure SQL Data Warehouse
+# <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Számítási feladatok fontosságának konfigurálása az Azure szinapszis Analyticsben
 
-A SQL Data Warehouse fontosságának beállítása lehetővé teszi a lekérdezések ütemezésének befolyásolását. A nagyobb jelentőségű lekérdezéseket a rendszer úgy ütemezi, hogy az alacsonyabb fontosságú lekérdezések előtt fusson. A lekérdezések fontosságának kiosztásához létre kell hoznia egy számítási feladatok besorolását.
+Az Azure Szinapszishoz készült SQL Analytics szolgáltatás fontosságának beállítása lehetővé teszi a lekérdezések ütemezésének befolyásolását. A nagyobb jelentőségű lekérdezéseket a rendszer úgy ütemezi, hogy az alacsonyabb fontosságú lekérdezések előtt fusson. A lekérdezések fontosságának kiosztásához létre kell hoznia egy számítási feladatok besorolását.
 
 ## <a name="create-a-workload-classifier-with-importance"></a>Számítási feladatok besorolása fontossággal
 
@@ -35,8 +35,8 @@ A számítási feladatok besorolásának létrehozásához nagyobb jelentőség�
 ```sql
 CREATE WORKLOAD CLASSIFIER ExecReportsClassifier  
     WITH (WORKLOAD_GROUP = 'xlargerc'
-                   ,MEMBERNAME        = 'name'  
-                   ,IMPORTANCE        =  above_normal);  
+         ,MEMBERNAME     = 'name'  
+         ,IMPORTANCE     =  above_normal);  
 
 ```
 
@@ -45,8 +45,8 @@ A számítási feladatok besorolásának létrehozása az olyan felhasználók s
 ```sql
 CREATE WORKLOAD CLASSIFIER AdhocClassifier  
     WITH (WORKLOAD_GROUP = 'xlargerc'
-                   ,MEMBERNAME        = 'name'  
-                   ,IMPORTANCE        =  below_normal);  
+         ,MEMBERNAME     = 'name'  
+         ,IMPORTANCE     =  below_normal);  
 ```
 
 ## <a name="next-steps"></a>További lépések

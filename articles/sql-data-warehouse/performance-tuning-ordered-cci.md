@@ -10,22 +10,22 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 3cc2f140eeed0a4667a01aa8c5ccbad7e4411521
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: abeb5c125a746842f522030878f93941450df974
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686002"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200549"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Teljesítmény-Finomhangolás a rendezett fürtözött oszlopcentrikus indextel  
 
-Amikor a felhasználók lekérdezik Azure SQL Data Warehouse egy oszlopcentrikus-tábláját, a-optimalizáló ellenőrzi az egyes szegmensekben tárolt minimális és maximális értékeket.  A lekérdezési predikátum határain kívüli szegmensek nem olvashatók be a lemezről a memóriába.  A lekérdezés gyorsabb teljesítményt érhet el, ha a beolvasandó szegmensek száma és a teljes mérete kicsi.   
+Amikor a felhasználók egy oszlopcentrikus-táblázatot kérdeznek le az SQL Analyticsben, a-optimalizáló ellenőrzi az egyes szegmensekben tárolt minimális és maximális értékeket.  A lekérdezési predikátum határain kívüli szegmensek nem olvashatók be a lemezről a memóriába.  A lekérdezés gyorsabb teljesítményt érhet el, ha a beolvasandó szegmensek száma és a teljes mérete kicsi.   
 
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Rendezett és nem rendezett, fürtözött oszlopcentrikus index 
-Alapértelmezés szerint minden olyan Azure-adattárház-tábla esetében, amely index-beállítás nélkül lett létrehozva, a belső összetevő (index Builder) nem rendezett, fürtözött oszlopcentrikus indexet (CCI) hoz létre.  Az egyes oszlopokban lévő összes adathalmaz egy külön CCI sorcsoport-szegmensbe van tömörítve.  Vannak metaadatok az egyes szegmensek érték-tartományán, így a lekérdezési predikátum határain kívüli szegmensek nem olvashatók be a lemezről a lekérdezés végrehajtása során.  A KKU a legmagasabb szintű adattömörítést kínálja, és csökkenti a szegmensek méretét az olvasáshoz, hogy a lekérdezések gyorsabban fussanak. Mivel azonban az index-szerkesztő nem rendezi az adatait, mielőtt tömöríti őket a szegmensekre, az átfedésben lévő értékekkel rendelkező szegmensek felmerülhetnek, ami miatt a lekérdezések több szegmenst olvasnak be a lemezről, és hosszabb ideig tartanak.  
+Alapértelmezés szerint minden olyan SQL Analytics-tábla esetében, amely index-beállítás nélkül lett létrehozva, egy belső összetevő (index Builder) létrehoz egy nem rendezett, fürtözött oszlopcentrikus indexet (CCI).  Az egyes oszlopokban lévő összes adathalmaz egy külön CCI sorcsoport-szegmensbe van tömörítve.  Vannak metaadatok az egyes szegmensek érték-tartományán, így a lekérdezési predikátum határain kívüli szegmensek nem olvashatók be a lemezről a lekérdezés végrehajtása során.  A KKU a legmagasabb szintű adattömörítést kínálja, és csökkenti a szegmensek méretét az olvasáshoz, hogy a lekérdezések gyorsabban fussanak. Mivel azonban az index-szerkesztő nem rendezi az adatait, mielőtt tömöríti őket a szegmensekre, az átfedésben lévő értékekkel rendelkező szegmensek felmerülhetnek, ami miatt a lekérdezések több szegmenst olvasnak be a lemezről, és hosszabb ideig tartanak.  
 
-Rendezett CCI létrehozásakor a Azure SQL Data Warehouse motor a rendelkezésre álló adatok alapján rendezi a memóriában lévő meglévő adatmennyiséget, mielőtt az index-készítő tömöríti őket az index szegmensbe.  A rendezett adatok esetében a szegmens átfedésben van, ami lehetővé teszi a lekérdezések hatékonyabb szegmensének megszüntetését, és így gyorsabb teljesítményt, mivel a lemezről beolvasott szegmensek száma kisebb.  Ha az összes adatmennyiséget egyszerre rendezheti a memóriában, akkor a szegmens átfedése elkerülhető lehet.  Az adatraktár tábláiban nagy mennyiségű adat miatt ez a forgatókönyv nem fordul elő gyakran.  
+Rendezett CCI létrehozásakor az SQL Analytics motor rendezi a memóriában lévő meglévő adatok mennyiségét, mielőtt az index-készítő tömöríti őket az index szegmensbe.  A rendezett adatok esetében a szegmens átfedésben van, ami lehetővé teszi a lekérdezések hatékonyabb szegmensének megszüntetését, és így gyorsabb teljesítményt, mivel a lemezről beolvasott szegmensek száma kisebb.  Ha az összes adatmennyiséget egyszerre rendezheti a memóriában, akkor a szegmens átfedése elkerülhető lehet.  Az SQL Analytics-táblázatok nagy mérete miatt ez a forgatókönyv nem fordul elő gyakran.  
 
 Egy oszlop szegmens tartományának vizsgálatához futtassa ezt a parancsot a tábla nevével és az oszlop nevével:
 
@@ -44,7 +44,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> Egy rendezett CCI-táblázatban a DML-ből vagy az betöltési műveletből eredő új adatok a kötegen belül vannak rendezve, a tábla összes adathalmaza esetében nincs globális rendezés.  A felhasználók újra felépíthetik a rendezett CCI-t, hogy a táblázatban szereplő összes adattal sorba lehessen rendezni.  Azure SQL Data Warehouse a oszlopcentrikus index újraépítése offline művelet.  Particionált tábla esetén az Újraépítés egyszerre egy partíciót hajt végre.  Az újraépített partícióban lévő adatkapcsolat "offline" állapotú, és nem érhető el, amíg a partíció újraépítése be nem fejeződik. 
+> Egy rendezett CCI-táblázatban a DML-ből vagy az betöltési műveletből eredő új adatok a kötegen belül vannak rendezve, a tábla összes adathalmaza esetében nincs globális rendezés.  A felhasználók újra felépíthetik a rendezett CCI-t, hogy a táblázatban szereplő összes adattal sorba lehessen rendezni.  Az SQL Analyticsben a oszlopcentrikus index újraépítése offline művelet.  Particionált tábla esetén az Újraépítés egyszerre egy partíciót hajt végre.  Az újraépített partícióban lévő adatkapcsolat "offline" állapotú, és nem érhető el, amíg a partíció újraépítése be nem fejeződik. 
 
 ## <a name="query-performance"></a>Lekérdezési teljesítmény
 
@@ -55,7 +55,7 @@ Az ezekkel a mintázatokkal rendelkező lekérdezések általában gyorsabban fu
 1. A predikátum oszlopai és a rendezett CCI-oszlopok azonosak.  
 1. A predikátum oszlopai a rendezett CCI-oszlopok oszlopának sorszámával azonos sorrendben használatosak.  
  
-Ebben a példában a T1 tábla egy fürtözött oszlopcentrikus indextel rendelkezik, amely a Col_C, a Col_B és a Col_A sorrendjében van rendezve.
+Ebben a példában a T1 tábla egy fürtözött oszlopcentrikus indextel rendelkezik, Col_C, Col_B és Col_A sorrendje szerint rendezve.
 
 ```sql
 
@@ -110,7 +110,7 @@ CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX O
 AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
-- A rendezési kulcs (ok) alapján előre rendezheti az adathalmazt, mielőtt betölti azokat Azure SQL Data Warehouse táblákba.
+- A rendezési kulcs (ok) alapján előre rendezheti az adathalmazokat, mielőtt betölti őket az SQL Analytics-táblákba.
 
 
 Itt látható egy példa arra, hogy egy rendezett CCI-táblázat eloszlása nulla szegmenst tartalmaz, amely a fenti ajánlásokat követve átfedésben van. A rendezett CCI-táblázat egy DWU1000c-adatbázisban jön létre a CTAS-on keresztül egy 20 GB-os halom-táblából, amely az 1. és a xlargerc-t használja.  A KKU nem duplikált BIGINT oszlopra van rendezve.  
@@ -120,12 +120,12 @@ Itt látható egy példa arra, hogy egy rendezett CCI-táblázat eloszlása null
 ## <a name="create-ordered-cci-on-large-tables"></a>Rendezett CCI létrehozása nagyméretű táblákon
 A rendezett CCI létrehozása offline művelet.  A partíciókat nem tartalmazó táblák esetében az adathozzáférés nem lesz elérhető a felhasználók számára, amíg a rendezett CCI-létrehozási folyamat be nem fejeződik.   A particionált táblák esetében, mivel a motor partíció alapján hozza létre a rendezett CCI-partíciót, a felhasználók továbbra is hozzáférhetnek az olyan partíciókban lévő adatbázisokhoz, ahol a rendezett CCI-létrehozás nincs folyamatban.   Ezzel a beállítással minimálisra csökkentheti az állásidőt a nagy táblákon a rendezett CCI-létrehozás során: 
 
-1.  Hozzon létre partíciókat a cél nagy táblán (Table_A néven).
-2.  Hozzon létre egy üres rendezett CCI-táblázatot (Table_B néven) ugyanazzal a tábla-és partíciós sémával az A táblázattal.
+1.  Hozzon létre partíciókat a célként megadott nagyméretű táblán (Table_A néven).
+2.  Hozzon létre egy üres rendezett CCI-táblázatot (Table_B) ugyanazzal a tábla-és partíciós sémával az A táblázattal.
 3.  Váltson át egy partíciót az A táblából a B táblázatba.
-4.  Futtassa az ALTER INDEX < Ordered_CCI_Index > < Table_B > Újraépítés partíció = < Partition_ID > a B táblán a bekapcsolt partíció újraépítéséhez.  
+4.  Futtassa az ALTER INDEX < Ordered_CCI_Index > a < Table_B > Újraépítés PARTITION = < Partition_ID > a B táblázatban a bekapcsolt partíció újraépítéséhez.  
 5.  Ismételje meg a 3. és a 4. lépést a Table_A minden partícióján.
-6.  Ha az összes partíciót Table_A-ről Table_B-re váltották át, a rendszer újraépíti, elvetette a Table_A, és átnevezi a Table_B a Table_A. 
+6.  Ha az összes partíciót Table_Aról Table_Bre váltották át, a rendszer újraépíti, elvetette Table_A, majd átnevezi Table_B Table_Are. 
 
 ## <a name="examples"></a>Példák
 
@@ -145,4 +145,4 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>További lépések
-További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
+További fejlesztési tippek: a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md).

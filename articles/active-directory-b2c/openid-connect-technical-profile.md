@@ -3,20 +3,20 @@ title: OpenID Connect műszaki profil definiálása egyéni házirendben
 titleSuffix: Azure AD B2C
 description: Definiáljon egy OpenID Connect műszaki profilt egy egyéni szabályzatban Azure Active Directory B2Cban.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/13/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fde27c468b6b5285e9e98f10a5fd04ee53c3c775
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 11d631f6977f760c8253fbaa0dc66af05def42a2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198003"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184009"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OpenID Connect műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -74,7 +74,7 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | client_id | Igen | Az identitás-szolgáltató alkalmazás-azonosítója. |
 | IdTokenAudience | Nem | A id_token célközönsége. Ha meg van adva, Azure AD B2C ellenőrzi, hogy a jogkivonat az identitás-szolgáltató által visszaadott jogcímben van-e, és megegyezik-e a megadott értékkel. |
@@ -94,7 +94,7 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 
 A **CryptographicKeys** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | client_secret | Igen | Az Identity Provider alkalmazás ügyfél-titka. A titkosítási kulcs csak akkor szükséges, ha a **response_types** metaadatok értéke `code`. Ebben az esetben Azure AD B2C egy másik hívást kezdeményez a hozzáférési token engedélyezési kódjának cseréjéhez. Ha a metaadatok értéke `id_token`, akkor kihagyhatja a titkosítási kulcsot.  |
 
@@ -102,7 +102,7 @@ A **CryptographicKeys** elem a következő attribútumot tartalmazza:
 
 Ha az Identitáskezelő átirányítási URI-JÁT konfigurálja, írja be a `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`értéket. Ügyeljen arra, hogy a `{your-tenant-name}` a bérlő nevére cserélje le. Az átirányítási URI-nak minden kisbetűsnek kell lennie.
 
-Példák:
+Például:
 
 - [Microsoft-fiók (MSA) hozzáadása identitás-szolgáltatóként egyéni szabályzatok használatával](identity-provider-microsoft-account-custom.md)
 - [Bejelentkezés Azure AD-fiókok használatával](identity-provider-azure-ad-single-tenant-custom.md)

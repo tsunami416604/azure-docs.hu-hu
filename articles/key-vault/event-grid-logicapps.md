@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c2a15393c5c8e685e9a565f1099eeee935c0d5da
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8d43a254ad79a13320fa2c5a19cf4bc8d6e2c968
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845841"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199750"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>A Key Vault-titkok állapotának változásairól szóló e-mailek fogadása Logic Apps használatával
 
@@ -83,7 +84,7 @@ Azure Event Grid előfizetés létrehozásához kövesse az alábbi lépéseket:
 
 A titkos kulcs létrehozásakor a rendszer egy e-mailt fog kapni a konfigurált címeken.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Áttekintés: [Key Vault figyelése Azure Event Grid (előzetes verzió)](event-grid-overview.md)
 - Útmutató: [Key Vault-értesítések átirányítása a Azure Automationba](event-grid-tutorial.md).

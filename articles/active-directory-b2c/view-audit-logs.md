@@ -3,21 +3,21 @@ title: Naplók elérése és áttekintése
 titleSuffix: Azure AD B2C
 description: Hogyan érheti el Azure AD B2C naplózási naplókat programozott módon és a Azure Portalban.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/20/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 62a969519ebefaab919505d9c8faae830f55f4c6
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505625"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185777"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C naplók elérése
 
@@ -37,9 +37,9 @@ A naplókban a **B2C** kategória a következő típusú tevékenységeket tarta
 |Engedélyezés |A B2C-erőforrásokhoz való hozzáférés engedélyezésével kapcsolatos tevékenységek (például egy rendszergazda, amely a B2C-szabályzatok listáját használja).         |
 |Címtár |Címtár-attribútumokkal kapcsolatos tevékenységek, amikor egy rendszergazda bejelentkezik a Azure Portal használatával. |
 |Alkalmazás | A B2C-alkalmazásokhoz tartozó létrehozási, olvasási, frissítési és törlési (szifilisz-) műveletek. |
-|Paraméter |A B2C-kulcstárolóban tárolt kulcsokra vonatkozó szifilisz-műveletek. |
-|Erőforrás |A B2C-erőforrásokra vonatkozó szifilisz-műveletek. Például házirendek és identitás-szolgáltatók.
-|Authentication |A felhasználói hitelesítő adatok és a jogkivonatok kiadásának ellenőrzése.|
+|Kulcs |A B2C-kulcstárolóban tárolt kulcsokra vonatkozó szifilisz-műveletek. |
+|Resource |A B2C-erőforrásokra vonatkozó szifilisz-műveletek. Például házirendek és identitás-szolgáltatók.
+|Hitelesítés |A felhasználói hitelesítő adatok és a jogkivonatok kiadásának ellenőrzése.|
 
 A felhasználói objektumhoz tartozó szifilisz-tevékenységek esetében tekintse meg az **alapvető könyvtár** kategóriát.
 
@@ -53,7 +53,7 @@ A tevékenység részletei panel a következő releváns információkat tartalm
 
 |Section|Mező|Leírás|
 |-------|-----|-----------|
-| Tevékenység | Name (Név) | Melyik tevékenység történt. Tegyük fel például, *hogy kiállít egy id_token az alkalmazáshoz*, amely a tényleges felhasználói bejelentkezést vonja le. |
+| Tevékenység | Név | Melyik tevékenység történt. Tegyük fel például, *hogy kiállít egy id_token az alkalmazáshoz*, amely a tényleges felhasználói bejelentkezést vonja le. |
 | Kezdeményező (színész) | ObjectId | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. Ez az azonosító nem látható a Azure Portalban, de a Microsoft Graph API-n keresztül érhető el. |
 | Kezdeményező (színész) | SPN | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. |
 | Cél (ok) | ObjectId | A bejelentkezett felhasználó **objektumazonosító** . |
@@ -106,7 +106,7 @@ Azure AD B2C naplózási események API-n keresztüli letöltéséhez szűrje a 
 https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z
 ```
 
-### <a name="powershell-script"></a>PowerShell-szkript
+### <a name="powershell-script"></a>PowerShell-parancsfájl
 
 Az alábbi PowerShell-szkript bemutatja, hogyan lehet lekérdezni az Azure AD Reporting API-t. Az API lekérdezése után kinyomtatja a naplózott eseményeket a standard kimenetre, majd a JSON-kimenetet fájlba írja.
 
@@ -221,6 +221,6 @@ Itt látható a cikkben korábban bemutatott példa tevékenység esemény JSON-
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Más felügyeleti feladatokat is automatizálhat, például [felügyelheti Azure ad B2C felhasználói fiókjait Microsoft Graph](manage-user-accounts-graph-api.md)használatával.

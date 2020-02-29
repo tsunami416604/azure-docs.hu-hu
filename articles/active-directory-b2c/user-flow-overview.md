@@ -2,20 +2,20 @@
 title: Felhasználói folyamatok Azure Active Directory B2Cban | Microsoft Docs
 description: További információ a Azure Active Directory B2C bővíthető házirend-keretrendszeréről és a különböző felhasználói folyamatok létrehozásáról.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fdc7d9fce3ebce4603369262f164ba72b1e39499
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: c11bc48742c398d2048a236c7d00af044971f845
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484315"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185608"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Felhasználói folyamatok Azure Active Directory B2C
 
@@ -83,6 +83,6 @@ Az e-mail-cím nem garantálható az ilyen esetekben. A bérlői rendszergazda l
 
 A Microsoft Graph API-n keresztül csak a **otherMails** és a **signInNames** tulajdonságok jelennek meg. Az erős hitelesítés részletei tulajdonságban szereplő e-mail-cím nem érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ajánlott felhasználói folyamatok létrehozásához kövesse az [oktatóanyag: felhasználói folyamat létrehozása](tutorial-create-user-flows.md)című témakör utasításait.

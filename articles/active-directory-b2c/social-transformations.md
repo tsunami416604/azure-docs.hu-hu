@@ -3,20 +3,20 @@ title: A közösségi fiók jogcímek átalakítására vonatkozó példák egy�
 titleSuffix: Azure AD B2C
 description: A közösségi fiók jogcímek átalakítására vonatkozó példák a Azure Active Directory B2C Identity Experience Framework (IEF) sémájához.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: acf358b530c61dcbac38faf92e2ba672a7d4abef
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: cb713651aca266ab2546ff26c3cd0175a4cbc289
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484383"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183754"
 ---
 # <a name="social-accounts-claims-transformations"></a>A közösségi fiókok jogcímei átalakítások
 
@@ -43,9 +43,9 @@ A felhasználó alternativeSecurityId tulajdonságának JSON-ábrázolását hoz
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | kulcs | sztring | A ClaimType, amely a közösségi identitás szolgáltatója által használt egyedi felhasználói azonosítót határozza meg. |
-| inputClaim | identityProvider | sztring | Az a ClaimType, amely megadja a közösségi fiók identitás-szolgáltatójának nevét, például facebook.com. |
-| outputClaim | alternativeSecurityId | sztring | A ClaimsTransformation meghívása után létrehozott ClaimType. A közösségi fiók felhasználójának identitásával kapcsolatos információkat tartalmaz. A **kiállító** a `identityProvider` jogcím értéke. A **issuerUserId** Base64 formátumban a `key` jogcím értéke. |
+| inputClaim | key | Karakterlánc | A ClaimType, amely a közösségi identitás szolgáltatója által használt egyedi felhasználói azonosítót határozza meg. |
+| inputClaim | identityProvider | Karakterlánc | Az a ClaimType, amely megadja a közösségi fiók identitás-szolgáltatójának nevét, például facebook.com. |
+| outputClaim | alternativeSecurityId | Karakterlánc | A ClaimsTransformation meghívása után létrehozott ClaimType. A közösségi fiók felhasználójának identitásával kapcsolatos információkat tartalmaz. A **kiállító** a `identityProvider` jogcím értéke. A **issuerUserId** Base64 formátumban a `key` jogcím értéke. |
 
 `alternativeSecurityId` ClaimType létrehozásához használja ezt a jogcím-átalakítást. Ezt használja az összes közösségi identitás-szolgáltató technikai profilja, például `Facebook-OAUTH`. A következő jogcím-átalakítás fogadja a felhasználó közösségi fiókjának AZONOSÍTÓját és az identitás-szolgáltató nevét. A technikai profil kimenete egy JSON-karakterlánc-formátum, amely az Azure AD-címtár szolgáltatásaiban használható.
 
@@ -75,7 +75,7 @@ A felhasználó alternativeSecurityId tulajdonságának JSON-ábrázolását hoz
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | item | sztring | A kimeneti jogcímhez hozzáadni kívánt ClaimType. |
+| inputClaim | item | Karakterlánc | A kimeneti jogcímhez hozzáadni kívánt ClaimType. |
 | inputClaim | gyűjtemény | alternativeSecurityIdCollection | A jogcím-átalakítás által használt ClaimTypes, ha elérhetők a házirendben. Ha meg van adni, a jogcím-átalakítás hozzáadja a `item` a gyűjtemény végén. |
 | outputClaim | gyűjtemény | alternativeSecurityIdCollection | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. Az új gyűjtemény, amely a bemeneti `collection` és `item`elemeit is tartalmazza. |
 
@@ -139,7 +139,7 @@ Eltávolít egy **AlternativeSecurityId** egy **alternativeSecurityIdCollection*
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | identityProvider | sztring | Az a ClaimType, amely tartalmazza a gyűjteményből eltávolítandó identitás-szolgáltató nevét. |
+| inputClaim | identityProvider | Karakterlánc | Az a ClaimType, amely tartalmazza a gyűjteményből eltávolítandó identitás-szolgáltató nevét. |
 | inputClaim | gyűjtemény | alternativeSecurityIdCollection | A jogcím-átalakítás által használt ClaimTypes. A jogcím-átalakítás eltávolítja a identityProvider a gyűjteményből. |
 | outputClaim | gyűjtemény | alternativeSecurityIdCollection | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. Az új gyűjteményt, miután a identityProvider eltávolította a gyűjteményből. |
 

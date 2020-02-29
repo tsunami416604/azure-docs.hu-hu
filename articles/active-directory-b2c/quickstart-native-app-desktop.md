@@ -3,21 +3,21 @@ title: 'Gyors útmutató: asztali alkalmazások bejelentkezésének beállítás
 titleSuffix: Azure AD B2C
 description: Ebben a rövid útmutatóban egy Azure Active Directory B2C-t használó minta WPF Desktop-alkalmazást futtathat a fiók bejelentkezésének biztosításához.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f36b705d590f34a79aefe14355f25f7639562d2a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ebed2f5e8664bd4336219f9387b8d27c8f3a1c59
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908972"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187304"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Gyors útmutató: Asztali alkalmazásba való bejelentkezés konfigurálása Azure Active Directory B2C-vel
 
@@ -87,7 +87,7 @@ Az Azure AD B2C felhasználói fiókkal sikeresen intézett hitelesített hívá
 
 Az Azure AD B2C-bérlőt ahhoz is használhatja, ha más Azure AD B2C gyors útmutatókat vagy oktatóanyagokat is ki szeretne próbálni. Ha már nincs szüksége rá, akkor [törölheti az Azure AD B2C-bérlőt](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy minta asztali alkalmazást használt a következőre:
 

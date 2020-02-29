@@ -3,20 +3,20 @@ title: Az egyéni szabályzatok technikai profiljainak áttekintése
 titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan használják a technikai profilokat a Azure Active Directory B2C egyéni házirendjében.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/11/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3b0e59912d740e30b0e29fb882542f1995ab6f54
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 48324d252e22ca898f923e1f0ad9b76df1c10861
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505657"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183652"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a Azure Active Directory B2C egyéni szabályzatok technikai profiljairól
 
@@ -40,7 +40,7 @@ A technikai profil a következő típusú forgatókönyveket teszi lehetővé:
 - [Önérvényesített](self-asserted-technical-profile.md) – interakció a felhasználóval. Gyűjtsön például a felhasználó hitelesítő adatait a bejelentkezéshez, a regisztrációs oldal megjelenítéséhez vagy a jelszó alaphelyzetbe állításához.
 - [Munkamenet-kezelés](custom-policy-reference-sso.md) – különböző típusú munkamenetek kezelése.
 - [Application Insights](../azure-monitor/app/usage-overview.md)
-- [Egyszeri jelszó](one-time-password-technical-profile.md) – támogatást nyújt az egyszeri jelszavak létrehozásának és ellenőrzésének kezeléséhez. 
+- [Egyszeri jelszó](one-time-password-technical-profile.md) – támogatást nyújt az egyszeri jelszavak létrehozásának és ellenőrzésének kezeléséhez.
 
 ## <a name="technical-profile-flow"></a>Technikai profil folyamata
 
@@ -48,7 +48,7 @@ A műszaki profilok minden típusa ugyanazzal a fogalommal rendelkezik. A bemene
 
 ![A műszaki profil folyamatát ábrázoló diagram](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
-1. **Egyszeri bejelentkezéses (SSO) munkamenet-kezelés** – a technikai profil munkamenet-állapotának visszaállítása az [egyszeri bejelentkezéses munkamenet-kezelés](custom-policy-reference-sso.md)használatával. 
+1. **Egyszeri bejelentkezéses (SSO) munkamenet-kezelés** – a technikai profil munkamenet-állapotának visszaállítása az [egyszeri bejelentkezéses munkamenet-kezelés](custom-policy-reference-sso.md)használatával.
 1. A bemeneti jogcímek **átalakítása** – a bemeneti [jogcímek átalakításához](claimstransformations.md) tartozó bemeneti jogcímeket a rendszer a jogcím-csomagból használja fel.  A bemeneti jogcímek átalakításának kimeneti jogcímei a következő bemeneti jogcímek átalakításának bemeneti jogcímei lehetnek.
 1. **Bemeneti jogcímek** – a jogcímeket a rendszer a jogcímek táskájában keresi, és a technikai profilhoz használja. Egy [önérvényesített technikai profil](self-asserted-technical-profile.md) például a bemeneti jogcímek használatával előre feltölti a felhasználó által biztosított kimeneti jogcímeket. A REST API műszaki profilok a bemeneti jogcímek használatával küldenek bemeneti paramétereket a REST API végpontnak. A Azure Active Directory a bemeneti jogcímet egyedi azonosítóként használja egy fiók olvasásához, frissítéséhez vagy törléséhez.
 1. **Technikai profil végrehajtása** – a technikai profil a jogcímeket a konfigurált fél számára cseréli. Például:
@@ -64,7 +64,7 @@ A műszaki profilok minden típusa ugyanazzal a fogalommal rendelkezik. A bemene
 
 ## <a name="technical-profile-inclusion"></a>Technikai profil belefoglalása
 
-A műszaki profilok tartalmazhatnak egy másik technikai profilt a beállítások módosításához vagy új funkciók hozzáadásához.  A `IncludeTechnicalProfile` elem arra az alapszintű műszaki profilra hivatkozik, amelyből a technikai profil származik. A szintek száma nincs korlátozva. 
+A műszaki profilok tartalmazhatnak egy másik technikai profilt a beállítások módosításához vagy új funkciók hozzáadásához.  A `IncludeTechnicalProfile` elem arra az alapszintű műszaki profilra hivatkozik, amelyből a technikai profil származik. A szintek száma nincs korlátozva.
 
 Például a **HRE-UserReadUsingAlternativeSecurityId-Error** technikai profil tartalmazza a **HRE-UserReadUsingAlternativeSecurityId**. Ez a technikai profil állítja be a `RaiseErrorIfClaimsPrincipalDoesNotExist` metaadat-elemét `true`re, és hibát jelez, ha nem létezik közösségi fiók a címtárban. **HRE-UserReadUsingAlternativeSecurityId – a hiba** felülbírálja ezt a viselkedést, és letiltja a hibaüzenetet.
 

@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 997651887c3c378e4791553d5ff05f585ad169ea
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8915970cd4c70228fad3b49921f4c81d6d90aa72
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000665"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195328"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
@@ -39,10 +40,10 @@ További információ a Key Vaultről: [Mi az Azure Key Vault?](key-vault-overvi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+Az oktatóanyag teljesítéséhez szüksége lesz:
 
 * Egy meglévő kulcstároló.  
-* Azure PowerShell a 1.0.0 minimális verziója. Az Azure PowerShell telepítésérről és az Azure-előfizetéssel való társításáról további információt [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat. Ha már telepítette Azure PowerShell és nem ismeri a verziót, a Azure PowerShell konzolon írja be `$PSVersionTable.PSVersion`a következőt:.  
+* Azure PowerShell a 1.0.0 minimális verziója. Az Azure PowerShell telepítéséről és az Azure-előfizetéssel való társításáról további információt a [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat. Ha már telepítette Azure PowerShell és nem ismeri a verziót, a Azure PowerShell konzolon adja meg a `$PSVersionTable.PSVersion`.  
 * A Key Vault naplóihoz elegendő tárhely az Azure-ban.
 
 ## <a id="connect"></a>Kapcsolódás a Key Vault-előfizetéshez
@@ -162,13 +163,13 @@ resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CO
 resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json
 ```
 
-Ahogy a kimenetből látható, a blobokat egy elnevezési konvenciót követi: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
+Ahogy az ebből a kimenetből látható, a Blobok a következő elnevezési konvenciókat követik: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
 
 A dátum- és időértékek az UTC hivatkozási időzónát használják.
 
 Mivel ugyanazt a Storage-fiókot használhatja több erőforráshoz tartozó naplók összegyűjtésére, a blob nevében lévő teljes erőforrás-azonosító hasznos lehet, ha csak a szükséges blobokat szeretné elérni vagy letölteni. Előtte azonban nézzük meg, hogyan tölthető le az összes blob.
 
-Hozzon létre egy mappát a Blobok letöltéséhez. Példa:
+Hozzon létre egy mappát a Blobok letöltéséhez. Például:
 
 ```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
@@ -186,9 +187,9 @@ Ezt a listát a **Get-AzStorageBlobContent** segítségével letölthet a Blobok
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-A második parancs futtatásakor a **/** a blob nevének elválasztó alapján hoz létre egy teljes mapparendszert a rendeltetési mappára. Ezt a struktúrát fogja használni a Blobok fájlként való letöltéséhez és tárolásához.
+A második parancs futtatásakor a blob nevek **/** elválasztója egy teljes mappastruktúrát hoz létre a célmappában. Ezt a struktúrát fogja használni a Blobok fájlként való letöltéséhez és tárolásához.
 
-A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa:
+A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Például:
 
 * Ha több kulcstárolóval rendelkezik, de csak a CONTOSOKEYVAULT3 nevűhöz szeretne naplókat letölteni:
 
@@ -202,7 +203,7 @@ A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
-* Ha a 2019 januári hónapban szeretné letölteni az összes naplót, használja `-Blob '*/year=2019/m=01/*'`a következőt:
+* Ha az összes naplót le szeretné tölteni a 2019 januári hónapra, használja a `-Blob '*/year=2019/m=01/*'`:
 
   ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
@@ -248,13 +249,13 @@ Ez egy, a következőhöz hasonló naplóbejegyzést ad vissza:
 
 A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
-| Mezőnév | Leírás |
+| Mező neve | Leírás |
 | --- | --- |
 | **idő** |Dátum és idő (UTC). |
 | **resourceId** |Az Azure Resource Manager-erőforrás azonosítója. Key Vault naplók esetében ez mindig a Key Vault erőforrás-azonosító. |
-| **OperationName** |A művelet neve, ahogy a következő táblázat is mutatja. |
+| **operationName** |A művelet neve, ahogy a következő táblázat is mutatja. |
 | **operationVersion** |REST API az ügyfél által kért verziót. |
-| **kategória** |Az eredmény típusa. Key Vault naplók esetében a **AuditEvent** az egyetlen elérhető érték. |
+| **Kategória** |Az eredmény típusa. Key Vault naplók esetében a **AuditEvent** az egyetlen elérhető érték. |
 | **resultType** |A REST API kérelem eredménye. |
 | **resultSignature** |A HTTP-állapot. |
 | **resultDescription** |Az eredmény további leírása, amennyiben elérhető. |
@@ -264,11 +265,11 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 | **identitás** |Az REST API kérelemben bemutatott jogkivonat identitása. Ez általában a "felhasználó", "a" szolgáltatásnév "vagy" felhasználó + appId "kombinációja, amely egy Azure PowerShell-parancsmagból származó kérelem esetében van. |
 | **Tulajdonságok** |A művelettől (**operationName**) függően változó információk. A legtöbb esetben ez a mező tartalmazza az ügyfél adatait (az ügyfél által átadott felhasználói ügynök sztringjét), a pontos REST API kérelem URI-JÁT és a HTTP-állapotkódot. Emellett, ha egy objektum egy kérelem eredményeképpen lett visszaadva (például a Key **create** vagy a **VaultGet**), a kulcs URI-ját ("id"), a tároló URI-JÁT vagy a titkos azonosítót is tartalmazza. |
 
-A **OperationName** *ObjectVerb* formátumban vannak. Példa:
+A **OperationName** *ObjectVerb* formátumban vannak. Például:
 
-* A `Vault<action>` Key Vault összes műveletének formátuma, `VaultGet` például és `VaultCreate`.
-* Az `Key<action>` összes kulcsfontosságú művelet formátuma, `KeySign` például és `KeyList`.
-* Minden titkos művelet `Secret<action>` formátuma, `SecretGet` például és `SecretListVersions`.
+* A Key Vault összes műveletének `Vault<action>` formátuma van, például `VaultGet` és `VaultCreate`.
+* Az összes kulcs műveletének `Key<action>` formátuma van, például `KeySign` és `KeyList`.
+* Minden titkos művelet `Secret<action>` formátummal rendelkezik, például `SecretGet` és `SecretListVersions`.
 
 A következő táblázat felsorolja a **operationName** és a hozzá tartozó REST API parancsokat:
 
@@ -280,19 +281,19 @@ A következő táblázat felsorolja a **operationName** és a hozzá tartozó RE
 | **VaultDelete** |[Kulcstároló törlése](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
 | **VaultPatch** |[Kulcstároló frissítése](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
 | **VaultList** |[Az erőforráscsoport összes kulcstárolójának listázása](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
-| **KeyCreate** |[Kulcs létrehozása](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
+| **Főlétrehozás** |[Kulcs létrehozása](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
 | **KeyGet** |[Kulcs adatainak lekérése](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
 | **Importálás** |[Kulcs importálása egy tárolóba](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
 | **Biztonsági mentés** |[Kulcs biztonsági mentése](https://msdn.microsoft.com/library/azure/dn878058.aspx) |
-| **KeyDelete** |[Kulcs törlése](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
+| **Főtörlés** |[Kulcs törlése](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
 | **Visszaállítás** |[Kulcs helyreállítása](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
 | **KeySign** |[Aláírás kulccsal](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
-| **KeyVerify** |[Ellenőrzés kulccsal](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
-| **KeyWrap** |[Kulcs becsomagolása](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
+| **Ellenőrzés ellenőrzése** |[Ellenőrzés kulccsal](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
+| **Kicsomagolás** |[Kulcs becsomagolása](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
 | **KeyUnwrap** |[Kulcs kicsomagolása](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
 | **Titkosítás** |[Titkosítás kulccsal](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
-| **KeyDecrypt** |[Visszafejtés kulccsal](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
-| **KeyUpdate** |[Kulcs frissítése](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
+| **Visszafejtés** |[Visszafejtés kulccsal](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
+| **Frissítés** |[Kulcs frissítése](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
 | **KeyList** |[Egy tároló kulcsainak listázása](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
 | **KeyListVersions** |[Kulcs verzióinak listázása](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
 | **SecretSet** |[Titkos kulcs létrehozása](https://msdn.microsoft.com/library/azure/dn903618.aspx) |

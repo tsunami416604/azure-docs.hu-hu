@@ -1,28 +1,28 @@
 ---
 title: A Visual Studio 2019 telepítése
-description: A Visual Studio és az SQL Server Development Tools (SSDT) telepítése az Azure SQL Data Warehouse-hoz
+description: A Visual Studio és a SQL Server fejlesztői eszközök (SSDT) telepítése az SQL Analyticshez
 services: sql-data-warehouse
-ms.custom: seo-lt-2019
+ms.custom: azure-synapse
 ms.workload: azure-vs
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 01/07/2020
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b2b7b2413a187c446aace4eb1e416dea1b4258d3
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b9ad0f4aedc5a095bfa70dec1b67e52cd4d152e0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750656"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195339"
 ---
-# <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>Első lépések a Visual Studio 2019 for SQL Data Warehouse
+# <a name="getting-started-with-visual-studio-2019"></a>Bevezetés a Visual Studio 2019 használatába
 A Visual Studio **2019** SQL Server Data Tools (SSDT) egyetlen eszköz, amely lehetővé teszi a következőket:
 
-- Alkalmazások összekötése, lekérdezése és fejlesztése SQL Data Warehouse 
+- Alkalmazások összekötése, lekérdezése és fejlesztése
 - Az Object Explorer használatával vizuálisan feltárhatja az adatmodellben lévő összes objektumot, beleértve a táblákat, a nézeteket, a tárolt eljárásokat és az egyéb műveleteket.
 - T-SQL adatdefiníciós nyelvi (DDL) parancsfájlok létrehozása az objektumokhoz
 - Az adattárház fejlesztése SSDT adatbázis-projektekkel rendelkező, állapot-alapú megközelítés használatával
@@ -34,31 +34,33 @@ A Visual Studio **16,3 vagy újabb**verziójának letöltéséhez és telepíté
 
 ## <a name="unsupported-features-in-ssdt"></a>A SSDT nem támogatott funkciói
 
-Előfordulhat, hogy a SQL Data Warehouse funkcióinak kiadásai nem tartalmazzák a SSDT támogatását. A következő szolgáltatások jelenleg nem támogatottak:
+Előfordulhat, hogy az SQL Analytics szolgáltatás kiadásai nem tartalmazzák a SSDT támogatását. A következő szolgáltatások jelenleg nem támogatottak:
 
 - [Anyagelszámolású nézetek](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) (folyamatban)
 - [Rendezett fürtözött Oszlopcentrikus indexek](https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest#examples--and-) (folyamatban)
 - [Másolási utasítás](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (folyamatban)
 - [Munkaterhelés-kezelés](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-management) – munkaterhelési csoportok és osztályozók (folyamatban)
-- [Sorszintű biztonság](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?view=sql-server-ver15)
+- [Sor szintű biztonság](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?view=sql-server-ver15)
   - Küldjön be egy támogatási jegyet, vagy szavazzon [ide](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security) a funkció támogatásának megszerzéséhez.
 - [Dinamikus adatmaszkolás](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json&view=sql-server-2017#defining-a-dynamic-data-mask)
   - Küldjön be egy támogatási jegyet, vagy szavazzon [ide](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) a funkció támogatásának megszerzéséhez. 
 - [Előrejelzési](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=sql-server-ver15&viewFallbackFrom=azure-sqldw-latest) függvény 
 - A [korlátozásokkal rendelkező táblák](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-table-constraints#table-constraints) nem támogatottak. Ezekben a táblázatos objektumokban állítsa a Build műveletet a "None" értékre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy a SSDT legújabb verzióját használja, készen áll a SQL Data Warehouse való [kapcsolódásra][connect] .
+Most, hogy már rendelkezik a SSDT legújabb verziójával, készen áll az SQL-készlethez való [kapcsolódásra][connect] .
 
 <!--Anchors-->
 
 <!--Image references-->
 
 <!--Articles-->
+
 [connect]: ./sql-data-warehouse-query-visual-studio.md
 
 <!--Other-->
+
 [A Visual Studio 2019 letöltése]: https://visualstudio.microsoft.com/downloads/
 [Installing Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
 [SSDT Download]: https://msdn.microsoft.com/library/mt204009.aspx

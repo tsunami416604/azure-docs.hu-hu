@@ -3,20 +3,20 @@ title: REST-technikai profil definiálása egyéni házirendben
 titleSuffix: Azure AD B2C
 description: Megadhat egy REST-es technikai profilt egy egyéni szabályzatban Azure Active Directory B2Cban.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 80298ca4df01a93730fc831fc495b3123ead5f97
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b83a6bacf1c6e392db9dfc65fd737ea28416a6b5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585679"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183822"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>REST-technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -121,7 +121,7 @@ A technikai profil a jogcímeket is visszaadja, amelyeket az identitás-szolgál
 
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | ServiceUrl | Igen | Az REST API végpont URL-címe |
 | AuthenticationType | Igen | A REST-alapú jogcím-szolgáltató által végrehajtott hitelesítés típusa. Lehetséges értékek: `None`, `Basic`, `Bearer`vagy `ClientCertificate`. A `None` érték azt jelzi, hogy a REST API nem anonim. A `Basic` érték azt jelzi, hogy a REST API a HTTP alapszintű hitelesítéssel védett. Csak ellenőrzött felhasználók férhetnek hozzá az API-hoz, beleértve a Azure AD B2C is. A `ClientCertificate` (ajánlott) érték azt jelzi, hogy a REST API ügyféltanúsítvány-alapú hitelesítés használatával korlátozza a hozzáférést. Csak a megfelelő tanúsítvánnyal rendelkező szolgáltatások férhetnek hozzá az API-hoz (például Azure AD B2C). Az `Bearer` érték azt jelzi, hogy a REST API az ügyfél OAuth2 tulajdonosi jogkivonatával korlátozza a hozzáférést. |
@@ -150,7 +150,7 @@ Ha a hitelesítés típusa `None`értékre van beállítva, a rendszer nem haszn
 
 Ha a hitelesítés típusa `Basic`értékre van beállítva, a **CryptographicKeys** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | Igen | A hitelesítéshez használt Felhasználónév. |
 | BasicAuthenticationPassword | Igen | A hitelesítéshez használt jelszó. |
@@ -175,7 +175,7 @@ Az alábbi példa egy egyszerű hitelesítéssel rendelkező technikai profilt m
 
 Ha a hitelesítés típusa `ClientCertificate`értékre van beállítva, a **CryptographicKeys** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | ClientCertificate | Igen | A hitelesítéshez használandó X509-tanúsítvány (RSA-kulcs). |
 
@@ -196,7 +196,7 @@ Ha a hitelesítés típusa `ClientCertificate`értékre van beállítva, a **Cry
 
 Ha a hitelesítés típusa `Bearer`értékre van beállítva, a **CryptographicKeys** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | BearerAuthenticationToken | Nem | A OAuth 2,0 tulajdonosi jogkivonata. |
 
@@ -219,7 +219,7 @@ Ha a hitelesítés típusa `Bearer`értékre van beállítva, a **CryptographicK
 
 Előfordulhat, hogy a REST API hibaüzenetet kell visszaadnia, például "a felhasználó nem található a CRM rendszerben". Hiba esetén a REST API a következő attribútumokkal rendelkező HTTP 409 hibaüzenetet (ütközési válasz állapotkódot) kell visszaadnia:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | version | Igen | 1.0.0 |
 | status | Igen | 409 |
@@ -258,7 +258,7 @@ public class ResponseContent
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket a REST-technikai profil használatának példáit illetően:
 

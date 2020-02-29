@@ -3,16 +3,17 @@ title: Azure Key Vault felügyelt Storage-fiók – PowerShell-verzió
 description: A felügyelt tár fiók funkciója zökkenőmentes integrációt biztosít Azure Key Vault és egy Azure Storage-fiók között.
 ms.topic: conceptual
 ms.service: key-vault
+ms.subservice: secrets
 author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 75561c643c2b8881e4b390be885b77f2fff4971d
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: cbd7bd034c5cbbdf5308ec660a96dc52a9a2b310
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673457"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200702"
 ---
 # <a name="fetch-shared-access-signature-tokens-in-code"></a>Közös hozzáférésű jogosultságkód lexikális elemeinek beolvasása kódból
 

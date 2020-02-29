@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: aef4061a8349e6602ac4394cb31bbe76b6cb63c0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 7288e5d8c01122bea7650274cdaf358c7fc24cd0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976292"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197317"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>A Key Vault Soft-delete használata a parancssori felülettel
 
@@ -26,7 +27,7 @@ Azure Key Vault Soft delete funkciója lehetővé teszi a törölt tárolók és
 
 - Azure CLI – ha nem rendelkezik ezzel a beállítással a környezetéhez, tekintse meg az [Key Vault kezelése az Azure CLI használatával](key-vault-manage-with-cli2.md)című témakört.
 
-A CLI-vel kapcsolatos Key Vault-specifikus információk: [Azure cli Key Vault](https://docs.microsoft.com/cli/azure/keyvault)-referenciák.
+A CLI-vel kapcsolatos Key Vault-specifikus információk: [Azure cli Key Vault-referenciák](https://docs.microsoft.com/cli/azure/keyvault).
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
@@ -34,7 +35,7 @@ A Key Vault műveleteket a szerepköralapú hozzáférés-vezérlési (RBAC) eng
 
 | Művelet | Leírás | Felhasználói engedély |
 |:--|:--|:--|
-|List|Felsorolja a törölt kulcstartókat.|Microsoft.KeyVault/deletedVaults/read|
+|Lista|Felsorolja a törölt kulcstartókat.|Microsoft.KeyVault/deletedVaults/read|
 |Helyreállítás|Visszaállítja a törölt kulcstartót.|Microsoft.KeyVault/vaults/write|
 |Véglegesen töröl|Véglegesen eltávolítja a törölt kulcstartót és annak teljes tartalmát.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
@@ -150,18 +151,18 @@ Ha véglegesen törölni kívánja (más néven öblítést), a rendszer egy hel
 az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-A **helyreállítás** és **Törlés** műveletekhez saját engedélyek tartoznak a Key Vault hozzáférési házirendjében. Ahhoz, hogy egy felhasználó vagy egy egyszerű szolgáltatásnév végrehajtson egy **helyreállítási** vagy kitakarítási műveletet, rendelkeznie kell a megfelelő engedélyekkel az adott kulcshoz vagy titokhoz. Alapértelmezés szerint a **kiürítés** nincs hozzáadva a kulcstartó hozzáférési házirendjéhez, ha az összes engedély megadására az "all" (összes) parancsikont használja. Kifejezetten meg kell adnia a kiürítési engedélyt. 
+A **helyreállítás** és **Törlés** műveletekhez saját engedélyek tartoznak a Key Vault hozzáférési házirendjében. Ahhoz, hogy egy felhasználó vagy egy egyszerű szolgáltatásnév végrehajtson egy **helyreállítási** vagy kitakarítási műveletet, rendelkeznie kell a megfelelő engedélyekkel az adott kulcshoz **vagy** titokhoz. Alapértelmezés szerint a **kiürítés** nincs hozzáadva a kulcstartó hozzáférési házirendjéhez, ha az összes engedély megadására az "all" (összes) parancsikont használja. Kifejezetten meg kell adnia a **kiürítési** engedélyt. 
 
 #### <a name="set-a-key-vault-access-policy"></a>Key Vault hozzáférési szabályzatának beállítása
 
-A következő parancs engedélyt user@contoso.com ad arra, hogy több műveletet használjon a kulcsokon a *ContosoVault* , beleértve a **kiürítést**:
+Az alábbi parancs user@contoso.com engedélyt biztosít a kulcsok *ContosoVault* való használatának több műveletéhez, beleértve a **kiürítést**is:
 
 ```azurecli
 az keyvault set-policy --name ContosoVault --key-permissions get create delete list update import backup restore recover purge
 ```
 
 >[!NOTE] 
-> Ha már van olyan kulcstartója, amelynél engedélyezve van a helyreállított törlés, akkor előfordulhat, hogy nem rendelkezik **helyreállítási** és **törlési** engedélyekkel.
+> Ha már van olyan kulcstartója, amelynél engedélyezve van a **helyreállított** törlés, akkor előfordulhat, hogy nem rendelkezik helyreállítási és **törlési** engedélyekkel.
 
 #### <a name="secrets"></a>Titkos kulcsok
 
@@ -206,7 +207,7 @@ Ugyanez érvényes a Key Vault esetében is. Ha véglegesen törölni szeretné 
 
 ### <a name="purging-a-key-vault"></a>Kulcstartó törlése
 
-Ha töröl egy kulcstartót, a teljes tartalma véglegesen törlődik, beleértve a kulcsokat, a titkokat és a tanúsítványokat is. A helyreállítható kulcstartó törléséhez használja az `az keyvault purge` parancsot. A parancs `az keyvault list-deleted`használatával megtalálhatja az előfizetés által törölt kulcstartók helyét.
+Ha töröl egy kulcstartót, a teljes tartalma véglegesen törlődik, beleértve a kulcsokat, a titkokat és a tanúsítványokat is. A helyreállítható kulcstartó törléséhez használja a `az keyvault purge` parancsot. Az előfizetése által törölt kulcstartók helye a `az keyvault list-deleted`parancs használatával található.
 
 ```azurecli
 az keyvault purge --location westus --name ContosoVault

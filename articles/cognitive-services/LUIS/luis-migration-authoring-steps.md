@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 9c92a3ad2fc6a372b58aa651228a7bbccdf8ba0a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: f5197ae79670e4543c58224a33838706edae6218
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552022"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194638"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Az Azure authoring-erőforrásba való Migrálás lépései
 
@@ -32,7 +32,10 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon](https://azure.microso
 
 ## <a name="access-the-migration-process"></a>Hozzáférés az áttelepítési folyamathoz
 
-Heti rendszerességgel megkéri, hogy telepítse át az alkalmazásokat. Ezt az ablakot Migrálás nélkül is megszakíthatja. Ha a következő ütemezett időszak előtt kíván áttelepítést végezni, megkezdheti az áttelepítési folyamatot a LUIS-portál felső eszköztárának **zárolás** ikonjából.
+Heti rendszerességgel megkéri, hogy telepítse át az alkalmazásokat. Ezt az ablakot Migrálás nélkül is megszakíthatja. Ha a következő ütemezett időszak előtt kíván áttelepítést végezni, megkezdheti az áttelepítési folyamatot az **Azure** ikonján a Luis portál felső sávján.
+
+> [!div class="mx-imgBorder"]
+> ![áttelepítési ikon](./media/migrate-authoring-key/migration-button.png)
 
 ## <a name="app-owner-begins-the-migration-process"></a>Az alkalmazás tulajdonosa megkezdi az áttelepítési folyamatot
 
@@ -43,7 +46,7 @@ Az áttelepítési folyamat akkor érhető el, ha Ön a LUIS-alkalmazások tulaj
 
     ![Első előugró ablak az áttelepítési folyamatban válassza az áttelepítés most lehetőséget.](./media/migrate-authoring-key/migrate-now.png)
 
-1. Ha bármelyik alkalmazás rendelkezik közreműködővel, a rendszer arra kéri, hogy **küldjön nekik egy e-mailt** , amely tájékoztatja őket az áttelepítésről. Ez egy választható lépés.
+1. Ha bármelyik alkalmazás rendelkezik közreműködővel, a rendszer arra kéri, hogy **küldjön nekik egy e-mailt** , amely tájékoztatja őket az áttelepítésről. Ez az egy választható lépés.
 
     Miután áttelepítette fiókját az Azure-ba, az alkalmazások már nem lesznek elérhetők a közreműködők számára.
 
@@ -113,7 +116,7 @@ Ismerje meg [, hogyan vehet fel közreműködőket](luis-how-to-collaborate.md).
 
 Ha `MissingSubscriptionRegistration` hibát kap a LUIS-portálon, és az áttelepítési folyamat során piros értesítési sáv jelenik meg, hozzon létre egy kognitív szolgáltatási erőforrást a [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) vagy az [Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)-ben. További információ a [hiba okairól](../../azure-resource-manager/templates/error-register-resource-provider.md#cause).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 
 * A szerzői és futtatókörnyezeti kulcsokkal kapcsolatos [fogalmak](luis-concept-keys.md) áttekintése

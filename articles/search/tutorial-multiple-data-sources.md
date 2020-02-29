@@ -7,21 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: aac5dc300009ec682ef1599ad654415f5c4ad190
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 02/28/2020
+ms.openlocfilehash: 6408689deec7de365ede86665a0eaeb0bd0de64b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495044"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196569"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Oktatóanyag: több adatforrásból származó adatok egyesítése egy Azure Cognitive Search indexben
+# <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>Oktatóanyag: az adatok indexelése több adatforrásbólC#
 
 Az Azure Cognitive Search több adatforrás adatait is importálhatja, elemezheti és indexelheti egyetlen kombinált keresési indexbe. Ez olyan helyzeteket támogat, amelyekben a strukturált adatok összesítése kevésbé strukturált vagy akár egyszerű szöveges adatokkal történik más forrásokból, például szöveg-, HTML-vagy JSON-dokumentumokból.
 
 Ez az oktatóanyag azt ismerteti, hogyan indexelheti a szállodai adatokat egy Azure Cosmos DB adatforrásból, és hogyan egyesítheti az Azure Blob Storage-dokumentumokból kirajzolt szállodai helyiségek adatait. Az eredmény egy összetett szállodai keresési index, amely komplex adattípusokat tartalmaz.
 
-Ez az oktatóanyag C#az Azure-hoz készült .net SDK-t, a Cognitive Search és a Azure Portal a következő feladatok elvégzésére használja:
+Ez az oktatóanyag C# a és a [.net SDK](https://aka.ms/search-sdk) -t használja a következő feladatok elvégzéséhez:
 
 > [!div class="checklist"]
 > * Mintaadatok feltöltése és adatforrások létrehozása
@@ -30,19 +30,19 @@ Ez az oktatóanyag C#az Azure-hoz készült .net SDK-t, a Cognitive Search és a
 > * Szállodai adatok indexelése Azure Cosmos DBból
 > * Szállodai helyiség adatainak egyesítése a blob Storage-ból
 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a rövid útmutatóban a következő szolgáltatásokat, eszközöket és adatfájlokat használja a rendszer. 
++ [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
++ [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Visual Studio 2019](https://visualstudio.microsoft.com/)
++ [Meglévő keresési szolgáltatás](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [létrehozása](search-create-service-portal.md) vagy keresése 
 
-- [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást.
+> [!Note]
+> Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást. Az ingyenes keresési szolgáltatás három indexre, három indexelő elemre és három adatforrásra korlátozza a szolgáltatást. Az oktatóanyagban mindegyikből egyet hozhat majd létre. Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a szolgáltatásban az új erőforrások elfogadására szolgáló helyiséggel.
 
-- [Hozzon létre egy Azure Cosmos db fiókot](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) a minta szállodai adattárolók tárolásához.
-
-- [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a minta helyiség-adattároláshoz.
-
-- [Telepítse a Visual Studio 2019](https://visualstudio.microsoft.com/) -et ide-ként való használatra.
-
-### <a name="install-the-project-from-github"></a>A projekt telepítése a GitHubról
+## <a name="download-files"></a>Fájlok letöltése
 
 1. Keresse meg a minta tárházat a GitHubon: [Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 1. Válassza a **klónozás vagy a letöltés** lehetőséget, és végezze el a tárház saját helyi példányát.
@@ -340,13 +340,23 @@ A Azure Portalban nyissa meg a keresési szolgáltatás **áttekintése** lapot,
 
 Kattintson a Hotel-Rooms-Sample index elemre a listában. Ekkor megjelenik az indexhez tartozó keresési Explorer felülete. Adjon meg egy lekérdezést egy olyan kifejezéshez, mint a "Luxury". Meg kell jelennie legalább egy dokumentumnak az eredményekben, és a dokumentumnak tartalmaznia kell a Room Objects-objektumok listáját a szobák tömbben.
 
+## <a name="reset-and-rerun"></a>Alaphelyzetbe állítás és ismételt futtatás
+
+A fejlesztés korai kísérleti szakaszaiban a tervezési iteráció legalkalmasabb megközelítése az objektumok törlése az Azure Cognitive Search és a kód újraépítésének engedélyezése. Az erőforrásnevek egyediek. Egy objektum törlése révén újból létrehozhatja azt ugyanazzal a névvel.
+
+Az oktatóanyaghoz tartozó mintakód ellenőrzi a meglévő objektumokat, és törli őket, hogy újra lehessen futtatni a kódot.
+
+A portál segítségével indexeket, indexelő fájlokat és adatforrásokat is törölhet.
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyag után a leggyorsabb megoldás az Azure Cognitive Search szolgáltatást tartalmazó erőforráscsoport törlésével. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Cognitive Search szolgáltatás áttekintés lapján található.
+Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A már futó erőforrások pénzbe kerülnek. Az erőforrásokat egyenként is törölheti, vagy az erőforráscsoport törlésével törölheti a teljes erőforrás-készletet.
 
-## <a name="next-steps"></a>Következő lépések
+A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-A JSON-Blobok indexeléséhez több módszer és több lehetőség is van. Ha a forrásadatok JSON-tartalmat tartalmaznak, áttekintheti ezeket a beállításokat, hogy megtudja, mi a legmegfelelőbb a forgatókönyvhöz.
+## <a name="next-steps"></a>További lépések
+
+Most, hogy már ismeri a különböző forrásokból származó adatok betöltésének koncepcióját, ismerkedjen meg közelebbről az indexelő konfigurálásával, amely a Cosmos DBtól kezdődik.
 
 > [!div class="nextstepaction"]
-> [JSON-Blobok indexelése az Azure Cognitive Search blob indexelő használatával](search-howto-index-json-blobs.md)
+> [Azure Cosmos DB indexelő konfigurálása](search-howto-index-cosmosdb.md)

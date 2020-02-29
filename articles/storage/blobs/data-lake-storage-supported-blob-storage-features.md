@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: debc674184e6846128b0b8cff857c75a805e365a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 215244204aa58cc2fdedc639d48e01b514759694
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925695"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196008"
 ---
-# <a name="blobstoragefeaturesavailableinazuredatalakestoragegen2"></a>A blob Storage funkciói a Azure Data Lake Storage Gen2ban érhetők el
+# <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>A blob Storage funkciói a Azure Data Lake Storage Gen2ban érhetők el
 
-A [diagnosztikai naplózást](../common/storage-analytics-logging.md), a [hozzáférési szinteket](storage-blob-storage-tiers.md)és a [blob Storage életciklus-kezelési házirendeket](storage-lifecycle-management-concepts.md) blob Storage funkciók mostantól hierarchikus névtérrel rendelkező fiókokkal működnek. Ezért a blob Storage-fiókokban is engedélyezheti a hierarchikus névtereket anélkül, hogy ezekhez a funkciókhoz hozzáférjenek.
+A [diagnosztikai naplózást](../common/storage-analytics-logging.md), a [hozzáférési szinteket](storage-blob-storage-tiers.md)és a [blob Storage életciklus-kezelési házirendeket](storage-lifecycle-management-concepts.md) blob Storage funkciók mostantól hierarchikus névtérrel rendelkező fiókokkal működnek. Ezért a blob Storage-fiókokban is engedélyezheti a hierarchikus névtereket anélkül, hogy ezekhez a funkciókhoz hozzáférjenek.
 
 Ez a táblázat a blob Storage azon funkcióit sorolja fel, amelyeket a Azure Data Lake Storage Gen2 használhat. A táblázatokban megjelenő elemek idővel változnak, ahogy a támogatás továbbra is bővül.
 
-## <a name="supportedblobstoragefeatures"></a>Támogatott blob Storage-funkciók
+## <a name="supported-blob-storage-features"></a>Támogatott blob Storage-funkciók
 
 > [!NOTE]
 > A támogatási szint csak arra vonatkozik, hogy a szolgáltatás hogyan támogatott a Data Lake Storage Gen2.
 
-|Blob Storage funkció |Támogatási szint |Kapcsolódó cikkek |
+|Blob Storage funkció |Támogatási szint |Kapcsolódó cikkek |
 |---------------|-------------------|---|
-|Gyakran használt adatok hozzáférési szintje |Általánosan elérhető|[Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív hozzáférési szintek](storage-blob-storage-tiers.md)|
-|Ritkán használt adatok hozzáférési szintje |Általánosan elérhető|[Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív hozzáférési szintek](storage-blob-storage-tiers.md)|
+|Gyakran használt adatok hozzáférési szintje|Általánosan elérhető|[Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív hozzáférési szintek](storage-blob-storage-tiers.md)|
+|Ritkán használt adatok hozzáférési szintje|Általánosan elérhető|[Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív hozzáférési szintek](storage-blob-storage-tiers.md)|
 |Események|Általánosan elérhető|[Reagálás Blob Storage-eseményekre](storage-blob-event-overview.md)|
 |Metrikák (klasszikus)|Általánosan elérhető|[Azure Storage Analytics-metrikák (klasszikus)](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Metrikák az Azure Monitorban|Általánosan elérhető|[Azure Storage-metrikák az Azure Monitorban](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|

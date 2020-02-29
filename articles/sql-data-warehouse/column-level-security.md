@@ -1,5 +1,5 @@
 ---
-title: Mi a SQL Data Warehousehoz tartozó oszlop szintű biztonság?
+title: Mi az az Azure Szinapszishoz tartozó oszlop szintű biztonság?
 description: Az oszlop szintű biztonság lehetővé teszi az ügyfelek számára, hogy az adatbázis-táblázat oszlopaihoz való hozzáférést a felhasználó végrehajtási környezete vagy csoporttagság alapján szabályozzák, leegyszerűsítve az alkalmazás biztonságának megtervezését és kódolását, és lehetővé teszik az oszlopokra vonatkozó korlátozások megvalósítását. hozzáférés.
 services: sql-data-warehouse
 author: julieMSFT
@@ -7,16 +7,17 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
-ms.date: 04/02/2019
+ms.date: 02/05/2020
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 344701989a753e17d8a026f6bb771a6030bdb71f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+tags: azure-synapse
+ms.openlocfilehash: aa9791f019436cc5c7effc9bce197d89131a6557
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513048"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199971"
 ---
 # <a name="column-level-security"></a>Oszlop szintű biztonság
 
@@ -24,7 +25,7 @@ Az oszlop szintű biztonság lehetővé teszi, hogy az ügyfelek a felhasználó
 
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-Mivel ez a videó az SQL Data Warehouse számára elérhetővé vált a [sor szintjének biztonsági](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) feladásával. 
+Mivel ez a videó közzé lett téve, az Azure szinapszis számára elérhetővé vált a [sor szintjének biztonsága](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) . 
 
 Az oszlop szintű biztonság leegyszerűsíti az alkalmazás biztonságának megtervezését és kódolását, ami lehetővé teszi az oszlopokhoz való hozzáférés korlátozását a bizalmas adatok védelme érdekében. Tegyük fel például, hogy egy adott felhasználó csak a saját részlegéhez tartozó táblázat bizonyos oszlopaihoz fér hozzá. A hozzáférés-korlátozási logika az adatbázis-szinten található, nem pedig egy másik alkalmazási szinten lévő adatoktól. Az adatbázis minden alkalommal alkalmazza a hozzáférési korlátozásokat, amikor az adathozzáférés bármely szintjéről megkísérelhető. Ez a korlátozás megbízhatóbb és robusztus biztonságot tesz lehetővé azáltal, hogy csökkenti az általános biztonsági rendszerek felületi területét. Emellett az oszlop szintű biztonság is szükségtelenné teszi a nézetek bevezetését, hogy kiszűrje a hozzáférési korlátozásokat a felhasználók számára.
 
@@ -80,7 +81,7 @@ Msg 230, Level 14, State 1, Line 12
 The SELECT permission was denied on the column 'SSN' of the object 'Membership', database 'CLS_TestDW', schema 'dbo'.
 ```
 
-## <a name="use-cases"></a>Használati példák
+## <a name="use-cases"></a>Használati esetek
 
 Néhány példa arra, hogyan használják az oszlop szintű biztonságot a mai napon:
 

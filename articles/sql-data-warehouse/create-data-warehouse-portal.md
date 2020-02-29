@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: adattárház létrehozása és lekérdezése – Azure Portal'
-description: Adattárház létrehozása és lekérdezése Azure SQL Data Warehouseekkel a Azure Portalban.
+title: Adattárház létrehozása és lekérdezése (Azure Portal)
+description: Azure szinapszis Analytics SQL-készlet létrehozása és lekérdezése az Azure Portal használatával
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,165 +10,158 @@ ms.subservice: development
 ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 841041cb9fa20b034dd4522a5231813b71558bd7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 7a3dbe5d74dc1e88d0615937b8c6e6d2a77b64a7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457809"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200202"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Gyors útmutató: Azure SQL Data Warehouse létrehozása és lekérdezése a Azure Portal
+# <a name="quickstart-create-and-query-an-azure-synapse-analytics-sql-pool-using-the-azure-portal"></a>Rövid útmutató: Azure szinapszis Analytics SQL-készlet létrehozása és lekérdezése az Azure Portal használatával
 
-Azure SQL Data Warehouse gyors létrehozása és lekérdezése a Azure Portal használatával.
+Az adatraktár gyors létrehozása és lekérdezése az SQL-készletnek az Azure szinapszis Analyticsben (korábbi nevén SQL DW) való kiépítés az Azure Portal használatával.
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+## <a name="prerequisites"></a>Előfeltételek
 
-> [!NOTE]
-> A SQL Data Warehouse létrehozása egy új számlázható szolgáltatás létrejöttét eredményezheti. További információ: [SQL Data Warehouse díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+1. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+   > [!NOTE]
+   > Ha SQL-készletet hoz létre az Azure Szinapszisban, egy új számlázható szolgáltatást eredményezhet. További információ: az [Azure szinapszis Analytics díjszabása](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
-Töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) legújabb verzióját.
+2. Töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) legújabb verzióját.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-data-warehouse"></a>Adattárház létrehozása
+## <a name="create-a-sql-pool"></a>SQL-készlet létrehozása
 
-Egy Azure SQL Data Warehouse [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/management/overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-logical-servers.md) jön létre. 
+Az adattárházak létrehozása az SQL-készlet használatával történik az Azure szinapszis Analyticsben. A rendszer létrehoz egy SQL-készletet a [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/management/overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-servers.md) jön létre.
 
-Kövesse az alábbi lépéseket egy olyan SQL Data Warehouse létrehozásához, amely tartalmazza a AdventureWorksDW. 
+Az alábbi lépéseket követve hozzon létre egy adattárházat, amely tartalmazza a **AdventureWorksDW** .
 
-1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
+1. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában.
 
-2. Az **Új** oldalon válassza az **Adatbázisok** elemet, majd az **Új**oldal**Kiemelt**területén válassza az**SQL Data Warehouse** lehetőséget.
+   ![erőforrás létrehozása Azure Portal](media/create-data-warehouse-portal/create-a-resource.png)
 
-    ![üres adattárház létrehozása](media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
+2. Az **új** oldalon válassza az **adatbázisok** lehetőséget, majd válassza ki az **Azure szinapszis Analytics (korábbi nevén SQL DW)** elemet a **Kiemelt** listában.
 
-3. Adja meg az alábbi adatokat a SQL Data Warehouse-űrlapon:
+   ![üres adattárház létrehozása](media/create-data-warehouse-portal/create-a-data-warehouse.png)
 
-    | Beállítás | Ajánlott érték | Leírás |
-    | :------ | :-------------- | :---------- |
-    | **Előfizetés** | Az Ön előfizetése | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
-    | **Erőforráscsoport** | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
-    | **Adatraktár neve** | mySampleDataWarehouse | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers) ismertető cikket. Megjegyzés: Az adattárház az adatbázisok egy típusa.|
-    ||||
+3. Az **alapismeretek**területen adja meg az előfizetését, az erőforráscsoportot, az SQL-készlet nevét és a kiszolgáló nevét:
 
-    ![adattárház létrehozása](media/create-data-warehouse-portal/select-sample.png)
+   | Beállítás | Ajánlott érték | Leírás |
+   | :------ | :-------------- | :---------- |
+   | **Előfizetés** | Az Ön előfizetése | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
+   | **Erőforráscsoport** | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
+   | **Adatraktár neve** | Bármely globálisan egyedi név (például *mySampleDataWarehouse*) | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers) ismertető cikket. Megjegyzés: Az adattárház az adatbázisok egy típusa. |
+   | **Kiszolgáló** | Bármely globálisan egyedi név | Válasszon ki egy meglévő kiszolgálót, vagy hozzon létre egy új kiszolgálónevet, és válassza az **új létrehozása**lehetőséget. Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
 
-4. Válasszon ki egy meglévő **kiszolgálót** , vagy kattintson az **új létrehozása** lehetőségre új kiszolgáló létrehozásához és konfigurálásához az új adatbázishoz. Adja meg az alábbi adatokat az **Új kiszolgálóűrlapon**: 
+   ![adatraktár alapszintű adatainak létrehozása](media/create-data-warehouse-portal/create-sql-pool-basics.png)
 
-    | Beállítás | Ajánlott érték | Leírás |
-    | :------ | :-------------- | :---------- |
-    | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
-    | **Kiszolgálói rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket.|
-    | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
-    | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
-    ||||
+4. A **teljesítmény szintje**területen válassza a **teljesítmény kiválasztása** lehetőséget, ha szeretné, hogy a konfigurációt egy csúszka használatával módosítsa.
 
-    ![adatbázis-kiszolgáló létrehozása](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
+   ![az adatraktár teljesítményi szintjének módosítása](media/create-data-warehouse-portal/create-sql-pool-performance-level.png)  
 
-5. Kattintson a **Kiválasztás** gombra.
+   A teljesítménnyel kapcsolatos további információkért lásd: [számítások kezelése Azure SQL Data Warehouseban](sql-data-warehouse-manage-compute-overview.md).
 
-6. Az adatraktár teljesítmény-konfigurációjának megadásához kattintson a **teljesítmény szint** elemre.
+5. Most, hogy végrehajtotta az Azure szinapszis Analytics űrlapjának alapismeretek lapját, válassza a **felülvizsgálat + létrehozás** lehetőséget **, majd hozza létre az** adattárházat az SQL-készletben. Az üzembe helyezés eltarthat néhány percig.
 
-7. Ebben az oktatóanyagban válassza a **Gen2**lehetőséget. Alapértelmezés szerint a csúszka a **DW1000c**értékre van állítva. Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban. 
+   ![Válassza a felülvizsgálat + létrehozás lehetőséget](media/create-data-warehouse-portal/create-sql-pool-review-create.png)
 
-    ![teljesítmény konfigurálása](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
+   ![létrehozás kiválasztása](media/create-data-warehouse-portal/create-sql-pool-create.png)
 
-8. Kattintson az **Alkalmaz** gombra.
+6. Az eszköztáron válassza az **értesítések** lehetőséget a telepítési folyamat figyeléséhez.
 
-9. Most, hogy végrehajtotta a SQL Data Warehouse űrlap alapismeretek lapját, kattintson a **felülvizsgálat + létrehozás** elemre az adatbázis kiépítéséhez. Az üzembe helyezés eltarthat néhány percig.
-
-    ![kattintson a létrehozás parancsra](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
-
-10. Az eszköztáron kattintson az **Értesítések** parancsra az üzembe helyezési folyamat megfigyeléséhez.
-    
-     ![értesítés](media/load-data-from-azure-blob-storage-using-polybase/notification.png)
+   ![értesítés](media/create-data-warehouse-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály létrehozása
 
-A SQL Data Warehouse szolgáltatás egy tűzfalat hoz létre a kiszolgáló szintjén. Ez a tűzfal megakadályozza, hogy a külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz. A csatlakozás engedélyezéséhez hozzáadhat tűzfalszabályokat, amelyek adott IP-címekkel engedélyezik a kapcsolódást. A következő lépéseket követve hozzon létre egy [kiszolgálószintű tűzfalszabályt](../sql-database/sql-database-firewall-configure.md) az ügyfél IP-címéhez.
+Az Azure szinapszis szolgáltatás egy tűzfalat hoz létre a kiszolgáló szintjén. Ez a tűzfal megakadályozza, hogy a külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz. A csatlakozás engedélyezéséhez hozzáadhat tűzfalszabályokat, amelyek adott IP-címekkel engedélyezik a kapcsolódást. A következő lépéseket követve hozzon létre egy [kiszolgálószintű tűzfalszabályt](../sql-database/sql-database-firewall-configure.md) az ügyfél IP-címéhez.
 
 > [!NOTE]
-> Az SQL Data Warehouse az 1433-as portot használja a kommunikációhoz. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot.
+> Az Azure szinapszis a 1433-as porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot.
 
-1. Az üzembe helyezés befejezése után válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben. Válassza az **adatbázisok**lehetőséget, válassza ki az **SQL-adattárházak** melletti csillagot, és adja hozzá az SQL-adattárházak kedvencekhez szolgáltatását.
-1. Válassza az **SQL-adattárházak** lehetőséget a bal oldali menüben, majd kattintson a **mySampleDataWarehouse** elemre az **SQL-adattárházak** lapon. Megnyílik az adatbázis áttekintő lapja, amely megjeleníti a teljes kiszolgálónevet (például **mynewserver-20180430.database.Windows.net**), és további konfigurálási lehetőségeket biztosít.
-1. Másolja ezt a teljes kiszolgálónevet a kiszolgálóhoz és az adatbázisaihoz való kapcsolódáshoz, és az egyéb gyors indításokat. A kiszolgáló beállításainak megnyitásához kattintson a kiszolgálónévre.
+1. Az üzembe helyezés befejezése után válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben. Válassza az **adatbázisok**lehetőséget, válassza ki az **Azure szinapszis Analytics** melletti csillagot az Azure szinapszis Analytics kedvencekhez való hozzáadásához.
 
-   ![kiszolgálónév keresése](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
+2. Válassza ki az **Azure szinapszis Analytics** elemet a bal oldali menüben, majd válassza a **MySampleDataWarehouse** lehetőséget az **Azure szinapszis Analytics** oldalán. Megnyílik az adatbázis áttekintő lapja, amely megjeleníti a teljes kiszolgálónevet (például **sqlpoolservername.database.Windows.net**), és további konfigurálási lehetőségeket biztosít.
 
-1. Kattintson a **Tűzfalbeállítások megjelenítése** elemre.
+3. Másolja ezt a teljes kiszolgálónevet a kiszolgálóhoz és az adatbázisaihoz való kapcsolódáshoz, és az egyéb gyors indításokat. A kiszolgáló beállításainak megnyitásához válassza ki a kiszolgáló nevét.
 
-   ![kiszolgáló beállításai](media/load-data-from-azure-blob-storage-using-polybase/server-settings.png)
+   ![kiszolgálónév keresése](media/create-data-warehouse-portal/find-server-name.png)
 
-1. Megnyílik az SQL-adatbáziskiszolgálóhoz tartozó **Tűzfalbeállítások** oldal.
+4. Válassza a **tűzfalbeállítások megjelenítése**lehetőséget.
 
-   ![kiszolgálói tűzfalszabály](media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png)
+   ![kiszolgáló beállításai](media/create-data-warehouse-portal/server-settings.png)
 
-1. Az aktuális IP-címét az eszköztár **Ügyfél IP-címének hozzáadása** elemére kattintva veheti fel egy új tűzfalszabályba. A tűzfalszabály az 1433-as portot egy egyedi IP-cím vagy egy IP-címtartomány számára nyithatja meg.
+5. Megnyílik az SQL-adatbáziskiszolgálóhoz tartozó **Tűzfalbeállítások** oldal.
 
-1. Kattintson a **Mentés** gombra. A rendszer létrehoz egy kiszolgálószintű tűzfalszabályt az aktuális IP-címhez, és megnyitja az 1433-as portot a logikai kiszolgálón.
+   ![kiszolgálói tűzfalszabály](media/create-data-warehouse-portal/server-firewall-rule.png)
 
-1. Kattintson az **OK** gombra, majd zárja be a **Tűzfalbeállítások** lapot.
+6. Az aktuális IP-cím új tűzfalszabály hozzáadásához válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron. A tűzfalszabály az 1433-as portot egy egyedi IP-cím vagy egy IP-címtartomány számára nyithatja meg.
+
+7. Válassza a **Mentés**lehetőséget. A rendszer létrehoz egy kiszolgálószintű tűzfalszabályt az aktuális IP-címhez, és megnyitja az 1433-as portot a logikai kiszolgálón.
+
+8. kattintson **az OK gombra** , majd a **tűzfalbeállítások** oldal bezárásához.
 
 Mostantól csatlakozhat az SQL-kiszolgálóhoz és annak adattárházaihoz erről az IP-címről. A csatlakozás az SQL Server Management Studio vagy más, választott eszköz használatával lehetséges. A csatlakozáskor használja a korábban létrehozott ServerAdmin-fiókot.
 
 > [!IMPORTANT]
-> Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. A tűzfal az összes Azure-szolgáltatásra vonatkozó letiltásához kattintson ezen az oldalon a **KI** gombra, majd a **Mentés** parancsra.
+> Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. Válassza **ki** ezt a lapot, majd a **Mentés** gombra kattintva tiltsa le a tűzfalat az összes Azure-szolgáltatáshoz.
 
 ## <a name="get-the-fully-qualified-server-name"></a>A teljes kiszolgálónév lekérése
 
 Kérje le az SQL-kiszolgáló teljes kiszolgálónevét az Azure Portalon. Később ezt a teljes nevet fogja majd használni a kiszolgálóhoz való kapcsolódás során.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Válassza az **SQL-adattárházak** lehetőséget a bal oldali menüben, majd kattintson az adattárházra az **SQL-adattárházak** lapon.
-3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljes név mynewserver-20180430.database.windows.net.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
-    ![kapcsolatadatok](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
+2. Válassza ki az **Azure szinapszis Analytics** elemet a bal oldali menüben, és válassza ki az adattárházat az **Azure szinapszis Analytics** oldalán.
+
+3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljes név sqlpoolservername.database.windows.net.
+
+    ![kapcsolatadatok](media/create-data-warehouse-portal/find-server-name-copy.png)
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Csatlakozás a kiszolgálóhoz kiszolgáló-rendszergazdaként
 
 Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) használatával építjük fel a kapcsolatot az Azure SQL-kiszolgálóval.
 
-1. Nyissa meg az SQL Server Management Studiót.
+1. Nyissa meg az SQL Server Management Studio alkalmazást.
 
 2. A **Connect to Server** (Kapcsolódás a kiszolgálóhoz) párbeszédpanelen adja meg a következő adatokat:
 
    | Beállítás | Ajánlott érték | Leírás |
    | :------ | :-------------- | :---------- |
    | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
-   | Kiszolgálónév | A teljes kiszolgálónév | Íme egy példa: **mynewserver-20180430.database.Windows.net**. |
+   | Kiszolgálónév | A teljes kiszolgálónév | Íme egy példa: **sqlpoolservername.database.Windows.net**. |
    | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
-   | Bejelentkezés | A kiszolgálói rendszergazdafiók | A kiszolgáló létrehozásakor megadott fiók. |
-   | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | A kiszolgáló létrehozásakor megadott jelszó. |
+   | Bejelentkezés | A kiszolgálói rendszergazdai fiók | A kiszolgáló létrehozásakor megadott fiók. |
+   | Jelszó | A kiszolgálói rendszergazdafiók jelszava | A kiszolgáló létrehozásakor megadott jelszó. |
    ||||
 
-    ![kapcsolódás a kiszolgálóhoz](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
+   ![kapcsolódás a kiszolgálóhoz](media/create-data-warehouse-portal/connect-to-server-ssms.png)
 
-3. Kattintson a **Csatlakozás** gombra. Megnyílik az Object Explorer ablak az SSMS-ben. 
+3. Válassza a **kapcsolat**lehetőséget. Megnyílik az Object Explorer ablak az SSMS-ben. 
 
 4. Az Object Explorerben bontsa ki a **Databases** (Adatbázisok) elemet. Ezután bontsa ki a **mySampleDatabase** csomópontot az új adatbázisban található objektumok megtekintéséhez.
 
-    ![adatbázis-objektumok](media/create-data-warehouse-portal/connected.png) 
+   ![adatbázis-objektumok](media/create-data-warehouse-portal/connected-ssms.png) 
 
 ## <a name="run-some-queries"></a>Néhány lekérdezés futtatása
 
 Az SQL Data Warehouse a T-SQL nyelvet használja lekérdezési nyelvként. A lekérdezésablakok megnyitásához és a T-SQL-lekérdezések futtatásához végezze el az alábbi lépéseket:
 
-1. Kattintson a jobb gombbal a **mySampleDataWarehouse** elemre, majd válassza az **Új lekérdezés** elemet. Megnyílik egy új lekérdezési ablak.
+1. Kattintson a jobb gombbal a **mySampleDataWarehouse** elemre, és válassza az **Új lekérdezés**elemet. Megnyílik egy új lekérdezési ablak.
+
 2. A lekérdezésablakban írja be a következő parancsot az adatbázisok listájának megjelenítéséhez.
 
     ```sql
     SELECT * FROM sys.databases
     ```
 
-3. Kattintson a **Végrehajtás** parancsra. A lekérdezés eredménye két adatbázist mutat: a **master** és a **mySampleDataWarehouse** adatbázist.
+3. Válassza a **végrehajtás**lehetőséget. A lekérdezés eredménye két adatbázist mutat: a **master** és a **mySampleDataWarehouse** adatbázist.
 
-    ![Adatbázisok lekérdezése](media/create-data-warehouse-portal/query-databases.png)
+   ![Adatbázisok lekérdezése](media/create-data-warehouse-portal/query-databases.png)
 
 4. Hogy lássunk néhány adatot is, a következő parancs használatával tekintsük meg, hány Adams vezetéknevű, három gyermeket nevelő ügyfél létezik. A lekérdezés hat ügyfelet listáz ki. 
 
@@ -177,30 +170,31 @@ Az SQL Data Warehouse a T-SQL nyelvet használja lekérdezési nyelvként. A lek
     WHERE LastName = 'Adams' AND NumberChildrenAtHome = 3;
     ```
 
-    ![A dbo.dimCustomer lekérdezés](media/create-data-warehouse-portal/query-customer.png)
+   ![A dbo.dimCustomer lekérdezés](media/create-data-warehouse-portal/query-customer.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az adatraktár-egységek és az adattárházban tárolt adatforgalomért kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
 
 - Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. A számítás felfüggesztésével csak az adattárolás díját számítjuk fel. Bármikor folytathatja a számítást, amikor készen áll az adatokkal való együttműködésre.
+
 - Ha szeretné megelőzni a jövőbeli kiadásokat, az adattárházat törölheti is.
 
 Kövesse az alábbi lépéseket a már nem szükséges erőforrások törléséhez.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az adattárházra.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az adattárházat.
 
-    ![Az erőforrások eltávolítása](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
+   ![Az erőforrások eltávolítása](media/create-data-warehouse-portal/clean-up-resources.png)
 
-2. A számítási erőforrások szüneteltetéshez kattintson a **Szüneteltetés** gombra. Ha az adatraktár szüneteltetve van, a **Folytatás** gomb jelenik meg. A számítás folytatásához kattintson a **Folytatás**gombra.
+2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az adatraktár szüneteltetve van, a **Folytatás** gomb jelenik meg. A számítás folytatásához válassza a **Folytatás**lehetőséget.
 
-3. Ha el szeretné távolítani az adattárházat, hogy a számítási és a tárolási erőforrásokért ne kelljen fizetnie, kattintson a **Törlés**gombra.
+3. Ha el szeretné távolítani az adattárházat, hogy ne számítson fel számítási vagy tárolási díjat, válassza a **Törlés**lehetőséget.
 
-4. A létrehozott SQL-kiszolgáló eltávolításához kattintson a **mynewserver-20180430.database.Windows.net** elemre az előző képen, majd kattintson a **Törlés**gombra. A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
+4. A létrehozott SQL-kiszolgáló eltávolításához válassza a **sqlpoolservername.database.Windows.net** lehetőséget az előző képen, majd válassza a **Törlés**lehetőséget. A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
 
-5. Az erőforráscsoport törléséhez kattintson a **myResourceGroup** elemre, majd az **Erőforráscsoport törlése** parancsra.
+5. Az erőforráscsoport eltávolításához válassza a **myResourceGroup**lehetőséget, majd válassza az **erőforráscsoport törlése**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Létrehozott egy adattárházat, létrehozott egy tűzfalszabályot, kapcsolódott az adattárházhoz, és futtat néhány lekérdezést. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
 

@@ -1,6 +1,6 @@
 ---
 title: IDENTITÁS használata helyettesítő kulcsok létrehozásához
-description: Javaslatok és példák az IDENTITY tulajdonság használatára a helyettesítő kulcsok létrehozásához a Azure SQL Data Warehouse tábláiban.
+description: Javaslatok és példák az IDENTITY tulajdonság használatára helyettesítő kulcsok létrehozásához az SQL Analytics tábláiban.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,25 +10,25 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 0ee15b975b5513077b26cceeb80ea3fb8c02456b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: c29b83b3473b8a4224587195587feacf834f2d72
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692471"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199427"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Helyettesítő kulcsok létrehozása a Azure SQL Data Warehouseban identitás használatával
+# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>Helyettesítő kulcsok létrehozása az SQL Analyticsben az identitás használatával
 
-Javaslatok és példák az IDENTITY tulajdonság használatára a helyettesítő kulcsok létrehozásához a Azure SQL Data Warehouse tábláiban.
+Javaslatok és példák az IDENTITY tulajdonság használatára helyettesítő kulcsok létrehozásához az SQL Analytics tábláiban.
 
 ## <a name="what-is-a-surrogate-key"></a>Mi az a helyettesítő kulcs?
 
-A tábla egy helyettesítő kulcsa az egyes sorok egyedi azonosítóját tartalmazó oszlop. A kulcs nem jön létre a tábla adatainak alapján. Adatmodellek, például helyettesítő kulcsok létrehozása a tábláiban az adatraktár-modellek tervezésekor. Az IDENTITY tulajdonság használatával egyszerűen és hatékonyan érheti el ezt a célt, anélkül, hogy ez befolyásolná a terhelési teljesítményt.  
+A tábla egy helyettesítő kulcsa az egyes sorok egyedi azonosítóját tartalmazó oszlop. A kulcs nem jön létre a tábla adatainak alapján. Az adatmodellek, például a helyettesítő kulcsok létrehozása a tábláikban az SQL Analytics-modellek tervezésekor. Az IDENTITY tulajdonság használatával egyszerűen és hatékonyan érheti el ezt a célt, anélkül, hogy ez befolyásolná a terhelési teljesítményt.  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Tábla létrehozása azonosító oszloppal
 
-Az IDENTITY tulajdonság úgy lett kialakítva, hogy az adatraktárban lévő összes eloszláson át tudja méretezni a terhelési teljesítmény befolyásolása nélkül. Ezért az identitás megvalósítása a célok megvalósítása felé irányul.
+Az IDENTITY tulajdonság úgy lett kialakítva, hogy a terhelési teljesítmény befolyásolása nélkül kibővítse az SQL Analytics-adatbázis összes eloszlását. Ezért az identitás megvalósítása a célok megvalósítása felé irányul.
 
 A tábla első létrehozásakor a következő utasításhoz hasonló szintaxissal definiálhat egy táblázatot, amely az IDENTITY tulajdonságot használja:
 
@@ -50,7 +50,7 @@ Ez a szakasz a megvalósítás árnyalatait emeli ki, hogy könnyebben megértse
 
 ### <a name="allocation-of-values"></a>Értékek kiosztása
 
-Az IDENTITY tulajdonság nem garantálja a helyettesítő értékek lefoglalásának sorrendjét, amely a SQL Server és Azure SQL Database viselkedését tükrözi. Azure SQL Data Warehouse azonban a garancia hiánya sokkal erősebb.
+Az IDENTITY tulajdonság nem garantálja a helyettesítő értékek lefoglalásának sorrendjét, amely a SQL Server és Azure SQL Database viselkedését tükrözi. Az SQL Analyticsben azonban a garancia hiánya nagyobb hangsúlyosabb.
 
 A következő példa egy illusztráció:
 
@@ -77,7 +77,7 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-Az előző példában két sor landolt az 1. eloszlásban. Az első sorban a `C1`oszlop 1 értékének helyettesítő értéke szerepel, a második sorban pedig az 61-es helyettesítő érték szerepel. Mindkét értéket az IDENTITY tulajdonság generálta. Azonban az értékek kiosztása nem folytonos. Ez a működésmód szándékos.
+Az előző példában két sor landolt az 1. eloszlásban. Az első sorban a `C1`oszlop 1 értékének helyettesítő értéke szerepel, a második sorban pedig az 61-es helyettesítő érték szerepel. Mindkét értéket az IDENTITY tulajdonság generálta. Azonban az értékek kiosztása nem folytonos. Ez a program tervezett működésének része.
 
 ### <a name="skewed-data"></a>Elferdített adatértékek
 
@@ -100,7 +100,7 @@ CREATE TABLE AS SELECT (CTAS) a SELECT... SQL Server viselkedését követi. A. 
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Értékek explicit beszúrása egy IDENTITY oszlopba
 
-SQL Data Warehouse támogatja `SET IDENTITY_INSERT <your table> ON|OFF` szintaxist. Ezt a szintaxist használva explicit módon szúrhat be értékeket az IDENTITY oszlopba.
+Az SQL Analytics támogatja a `SET IDENTITY_INSERT <your table> ON|OFF` szintaxist. Ezt a szintaxist használva explicit módon szúrhat be értékeket az IDENTITY oszlopba.
 
 Számos adatmodell, például az előre meghatározott negatív értékek használata a dimenziókban megadott sorokhoz. Ilyen például az-1 vagy az "ismeretlen tag" sor.
 
@@ -161,13 +161,13 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > Az adatok nem használhatók `CREATE TABLE AS SELECT` jelenleg, ha azonosító oszlopot tartalmazó táblába töltenek be adatbevitelt.
 >
 
-Az adatok betöltésével kapcsolatos további információkért lásd: [a kinyerési, betöltési és átalakítási (elt) tervezés a Azure SQL Data Warehouse és az](design-elt-data-loading.md) [ajánlott eljárások betöltéséhez](guidance-for-loading-data.md).
+További információ az adatok betöltéséről: [kinyerési, betöltési és átalakítási (elt) megoldás az SQL analyticshez és az](design-elt-data-loading.md) [ajánlott eljárások betöltése](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Rendszernézetek
 
-A [sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) katalógus nézettel azonosítható az Identity tulajdonságot tartalmazó oszlop.
+Az IDENTITY tulajdonsággal rendelkező oszlop azonosításához a [sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) Catalog nézetet használhatja.
 
-Az adatbázis-séma jobb megismerése érdekében ez a példa bemutatja, hogyan integrálhatja a sys. identity_column-t más Rendszerkatalógus-nézetekkel:
+Az adatbázis-séma jobb megismerése érdekében ez a példa bemutatja, hogyan integrálható a sys. identity_column "a Rendszerkatalógus más nézeteivel:
 
 ```sql
 SELECT  sm.name
@@ -195,7 +195,7 @@ Az IDENTITY tulajdonság nem használható:
 - Ha az oszlop is a terjesztési kulcs
 - Ha a tábla külső tábla
 
-A következő kapcsolódó függvények nem támogatottak SQL Data Warehouseban:
+A következő kapcsolódó függvények nem támogatottak az SQL Analyticsben:
 
 - [IDENTITÁS ()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)
@@ -204,7 +204,7 @@ A következő kapcsolódó függvények nem támogatottak SQL Data Warehouseban:
 - [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql)
 - [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql)
 
-## <a name="common-tasks"></a>Gyakori műveletek
+## <a name="common-tasks"></a>Gyakori feladatok
 
 Ez a szakasz egy olyan mintakód használatát ismerteti, amellyel általános feladatokat hajthat végre az identitás oszlopainak használatakor.
 

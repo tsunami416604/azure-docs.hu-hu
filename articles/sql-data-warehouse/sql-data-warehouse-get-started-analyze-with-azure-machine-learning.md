@@ -1,22 +1,23 @@
 ---
 title: Adatok elemzése Azure Machine Learning segítségével
-description: Az Azure Machine Learning segítségével létrehozhat egy prediktív gépi tanulási modellt, amely az Azure SQL Data Warehouse-ban tárolt adatokon alapul.
+description: A Azure Machine Learning használatával prediktív gépi tanulási modellt hozhat létre az Azure Szinapszisban tárolt adatszolgáltatások alapján.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: integration
-ms.date: 03/22/2019
+ms.date: 02/05/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 892d4642d700949d1d1169c69926021c751cef67
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+tag: azure-Synapse
+ms.openlocfilehash: f6765fdbb65f62bb790d1e8781512db572170b10
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721285"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195889"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Adatok elemzése Azure Machine Learning segítségével
 > [!div class="op_single_selector"]
@@ -28,7 +29,7 @@ ms.locfileid: "76721285"
 > 
 > 
 
-Ebben az oktatóanyagban az Azure Machine Learning segítségével hozunk létre egy prediktív gépi tanulási modellt, amely az Azure SQL Data Warehouse-ban tárolt adatokon alapul. Egy célzott marketingkampányt hozunk létre az Adventure Works kerékpáráruház számára, annak előre jelzése alapján, hogy egy vásárló valószínűleg megvesz-e egy kerékpárt vagy nem.
+Ez az oktatóanyag a Azure Machine Learning használatával hoz létre egy prediktív gépi tanulási modellt az Azure Szinapszisban tárolt adatszolgáltatások alapján. Egy célzott marketingkampányt hozunk létre az Adventure Works kerékpáráruház számára, annak előre jelzése alapján, hogy egy vásárló valószínűleg megvesz-e egy kerékpárt vagy nem.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
 > 
@@ -37,7 +38,7 @@ Ebben az oktatóanyagban az Azure Machine Learning segítségével hozunk létre
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Egy SQL Data Warehouse, előre feltöltve az AdventureWorksDW mintaadataival. Ennek létrehozásához olvassa el az [SQL Data Warehouse létrehozása](create-data-warehouse-portal.md) című cikket, és válassza a mintaadatok betöltését. Ha már rendelkezik egy adatraktárral, de nincsenek mintaadatai, [a mintaadatokat manuálisan is betöltheti](sql-data-warehouse-load-sample-databases.md).
+* Egy SQL-készlet előre betöltve a AdventureWorksDW-mintaadatok. Ennek kiépítéséhez lásd: [SQL-készlet létrehozása](create-data-warehouse-portal.md) és a mintaadatok betöltésének kiválasztása. Ha már rendelkezik egy adatraktárral, de nincsenek mintaadatai, [a mintaadatokat manuálisan is betöltheti](sql-data-warehouse-load-sample-databases.md).
 
 ## <a name="1-get-the-data"></a>1. az adatlekérdezés
 Az adatok az AdventureWorksDW adatbázis dbo.vTargetMail nézetében találhatók. Az adatok olvasása:
@@ -46,7 +47,7 @@ Az adatok az AdventureWorksDW adatbázis dbo.vTargetMail nézetében található
 2. Kattintson a képernyő bal alsó sarkában található **+ új** elemre, majd válassza az **üres kísérlet**lehetőséget.
 3. Adjon nevet a Célzott marketing kísérletnek.
 4. Húzza az **adatok importálása** modult a modulok panel **adatbemenet és kimenet** területén a vászonra.
-5. Adja meg az SQL Data Warehouse adatbázis adatait a Tulajdonságok panelen.
+5. Adja meg az SQL-készlet adatait a Tulajdonságok ablaktáblán.
 6. Adja meg az adatbázishoz a **lekérdezést** az Önt érdeklő adatok olvasásához.
 
 ```sql
@@ -128,7 +129,7 @@ Látni fogja, hogy a tesztelési adatkészletnél megjelent két új oszlop.
 * Pontozott valószínűség: annak valószínűsége, hogy az ügyfél kerékpárvásárló.
 * Pontozott címkék: a modell által elvégzett osztályozás – kerékpárvásárló (1) vagy sem (0). A címkézés valószínűségi küszöbértéke 50 százalékra van beállítva és módosítható.
 
-A Kerékpárvásárló (tényleges) és a Pontozott címkék (előrejelzés) oszlopok összehasonlításával láthatja, milyen jól teljesített a modell. Ezt a modellt használhatja arra, hogy előrejelzéseket készítsen az új ügyfelek számára, és webszolgáltatásként tegye közzé ezt a modellt, vagy visszaírja az eredményeket a SQL Data Warehouseba.
+A Kerékpárvásárló (tényleges) és a Pontozott címkék (előrejelzés) oszlopok összehasonlításával láthatja, milyen jól teljesített a modell. Ezt a modellt használhatja az új ügyfelek előrejelzéséhez, és közzéteheti a modellt webszolgáltatásként, vagy visszaállíthatja az eredményeket az Azure szinapszis szolgáltatásba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A prediktív gépi tanulási modellek létrehozásával kapcsolatos további tudnivalókért olvassa el [Az Azure Machine Learning bemutatása](https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/) részt.

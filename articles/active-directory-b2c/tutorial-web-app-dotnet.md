@@ -3,20 +3,20 @@ title: 'Oktatóanyag: hitelesítés engedélyezése webalkalmazásokban'
 titleSuffix: Azure AD B2C
 description: Arra vonatkozó útmutató, hogyan használhatja az Azure Active Directory B2C-t felhasználói bejelentkezés biztosításához egy ASP.NET-es webalkalmazás esetén.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 10/14/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 2f9a678ae8fea95f842f30234229c648e1966d40
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e4b56f18bf8a2ed1c22b00b8a57efdbf06eb7fa2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850082"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183319"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Oktatóanyag: hitelesítés engedélyezése webalkalmazásokban Azure Active Directory B2C használatával
 
@@ -44,9 +44,9 @@ Az előfeltételek részeként elvégzett oktatóanyagban egy webalkalmazást re
 
 Az alkalmazás frissítéséhez használhatja az aktuális **alkalmazások** vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** felhasználói élményt. [További információ az új felületről](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
+#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Válassza az **alkalmazások**lehetőséget, majd válassza ki a *webapp1* alkalmazást.
@@ -54,9 +54,9 @@ Az alkalmazás frissítéséhez használhatja az aktuális **alkalmazások** vag
 1. Kattintson a **Mentés** gombra.
 1. A Tulajdonságok lapon jegyezze fel az alkalmazás AZONOSÍTÓját a webalkalmazás konfigurálásakor egy későbbi lépésben való használatra.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
 1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, válassza a **tulajdonában lévő alkalmazások** fület, majd válassza ki a *webapp1* alkalmazást.
@@ -118,7 +118,7 @@ Az alkalmazás felhasználója mostantól az e-mail-címük használatával beje
 
 A **Feladatlista** funkció azonban addig nem fog működni, amíg el nem végzi a következő oktatóanyagot a sorozatban, [oktatóanyag: Azure AD B2C használata a ASP.net webes API-k elleni védelemhez](tutorial-web-api-dotnet.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

@@ -1,6 +1,6 @@
 ---
-title: Rendezés
-description: Azure SQL Data Warehouse támogatott rendezési típusok.
+title: Az adatraktár rendezési típusai
+description: Az Azure szinapszis Analytics SQL-készletben támogatott rendezési típusok.
 services: sql-data-warehouse
 author: antvgski
 manager: igorstan
@@ -9,21 +9,22 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 49a250a43c7b2654e1317981c853b0117fa0cf28
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 67627e4157c85853cf05dd6b24ced968a9654e62
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851791"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198439"
 ---
-# <a name="database-collation-support-for-azure-sql-data-warehouse"></a>Adatbázis-rendezési támogatás Azure SQL Data Warehouse
+# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Az Azure szinapszis Analytics SQL-készlet adatbázis-rendezési támogatása
 
-Új Azure SQL Data Warehouse-adatbázis létrehozásakor megváltoztathatja a Azure Portal alapértelmezett adatbázis-rendezését. Ezzel a képességgel még könnyebben hozhat létre új adatbázist az 3800 támogatott adatbázis-rendezések egyikével a SQL Data Warehousehoz.
+Az új Azure szinapszis SQL Pool-adatbázis létrehozásakor módosíthatja a Azure Portal alapértelmezett adatbázis-rendezését. Ezzel a képességgel még könnyebben hozhat létre egy új adatbázist a 3800 támogatott adatbázis-rendezések egyikével. 
+
 A rendezések lehetővé teszik a területi beállítás, a kódlap, a rendezési sorrend és a karakteres adattípusok megkülönböztetésére vonatkozó szabályok megadását. Ha kiválasztotta, a rendezési adatokat igénylő összes oszlop és kifejezés örökli a kiválasztott rendezést az adatbázis-beállítástól. Az alapértelmezett öröklés felülbírálható úgy, hogy egy karakter alapú adattípus esetében explicit módon megadhat egy másik rendezést.
 
 ## <a name="changing-collation"></a>Rendezés módosítása
-Az alapértelmezett rendezés módosításához egyszerűen frissítse a rendezési mezőt a létesítési élményben.
+Ha módosítani szeretné az alapértelmezett rendezést, frissítse a rendezés mezőt a létesítési élményben.
 
 Ha például meg szeretné változtatni az alapértelmezett rendezést a kis-és nagybetűk megkülönböztetésére, egyszerűen nevezze át a rendezést SQL_Latin1_General_CP1_CI_ASról SQL_Latin1_General_CP1_CS_ASra. 
 
@@ -100,9 +101,12 @@ Ha például meg szeretné változtatni az alapértelmezett rendezést a kis-és
 *   SQL_EBCDIC277_2_CP1_CS_AS
 
 ## <a name="checking-the-current-collation"></a>Az aktuális rendezés ellenőrzése
+
 Az adatbázis aktuális rendezésének ellenőrzését a következő T-SQL-kódrészlet futtatásával végezheti el:
+
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
-Ha a tulajdonság paraméterként a "rendezés" értéket adta át, a DatabasePropertyEx függvény a megadott adatbázis aktuális rendezését adja vissza. További információ a DatabasePropertyEx függvényről az MSDN webhelyen.
+
+Ha a tulajdonság paraméterként a "rendezés" értéket adta át, a DatabasePropertyEx függvény a megadott adatbázis aktuális rendezését adja vissza. További információ: [DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql).
 

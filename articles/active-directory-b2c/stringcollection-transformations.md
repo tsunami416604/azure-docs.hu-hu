@@ -3,20 +3,20 @@ title: StringCollection stb jogcím-átalakítási példák egyéni házirendekh
 titleSuffix: Azure AD B2C
 description: A StringCollection stb jogcím-átalakítási példákat tartalmaz a Azure Active Directory B2C Identity Experience Framework (IEF) sémájához.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e3ce7ff633f41ccfe6faa3cc1dba1020e74459aa
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 6aea537ebff4ae61e00861e6cafe742a7feb165e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656092"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186777"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection stb jogcímek átalakításai
 
@@ -26,11 +26,11 @@ Ez a cikk példákat tartalmaz a karakterlánc-gyűjtési jogcímek átalakítá
 
 ## <a name="additemtostringcollection"></a>AddItemToStringCollection
 
-Karakterlánc-jogcímet hoz létre egy új, egyedi értékekre StringCollection stb jogcímként. 
+Karakterlánc-jogcímet hoz létre egy új, egyedi értékekre StringCollection stb jogcímként.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | item | sztring | A kimeneti jogcímhez hozzáadni kívánt ClaimType. |
+| inputClaim | item | Karakterlánc | A kimeneti jogcímhez hozzáadni kívánt ClaimType. |
 | inputClaim | gyűjtemény | StringCollection stb | Választható Ha meg van adva, a jogcím-átalakítás átmásolja az elemeket ebből a gyűjteményből, és hozzáadja az elemet a kimeneti gyűjteményi jogcím végéhez. |
 | outputClaim | gyűjtemény | StringCollection stb | A jogcímek átalakítását követően létrehozott ClaimType a bemeneti jogcímben megadott értékkel lett meghívva. |
 
@@ -65,7 +65,7 @@ Egy karakterlánc-paramétert hoz létre egy új, egyedi értékek StringCollect
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | gyűjtemény | StringCollection stb | Választható Ha meg van adva, a jogcím-átalakítás átmásolja az elemeket ebből a gyűjteményből, és hozzáadja az elemet a kimeneti gyűjteményi jogcím végéhez. |
-| InputParameter | item | sztring | A kimeneti jogcímhez hozzáadandó érték. |
+| InputParameter | item | Karakterlánc | A kimeneti jogcímhez hozzáadandó érték. |
 | outputClaim | gyűjtemény | StringCollection stb | A jogcím-átalakítást követően létrehozott ClaimType a bemeneti paraméterben megadott értékkel lett meghívva. |
 
 Ezzel a jogcím-átalakítással adhat hozzá új vagy meglévő StringCollection stb karakterlánc-értéket. A következő példa egy állandó e-mail-címet (admin@contoso.com) hoz létre a **otherMails** jogcímhez.
@@ -100,7 +100,7 @@ A megadott karakterlánc-gyűjtemény első elemének beolvasása.
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | gyűjtemény | StringCollection stb | A jogcím-átalakítás által az elemek beolvasásához használt ClaimTypes. |
-| outputClaim | extractedItem | sztring | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. A gyűjtemény első eleme. |
+| outputClaim | extractedItem | Karakterlánc | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. A gyűjtemény első eleme. |
 
 A következő példa beolvassa a **otherMails** jogcímet, és az első tételt visszaküldi az **e-mail-** jogcímbe.
 
@@ -130,9 +130,9 @@ Annak ellenőrzése, hogy egy StringCollection stb jogcím típusa tartalmaz-e e
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim | StringCollection stb | A keresendő jogcím típusa. |
-|InputParameter|item|sztring|A keresendő érték.|
-|InputParameter|ignoreCase|sztring|Meghatározza, hogy az összehasonlítás figyelmen kívül hagyja-e az összehasonlított karakterláncok esetét.|
-| outputClaim | outputClaim | logikai | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. Logikai kijelző, ha a gyűjtemény tartalmaz egy ilyen karakterláncot. |
+|InputParameter|item|Karakterlánc|A keresendő érték.|
+|InputParameter|ignoreCase|Karakterlánc|Meghatározza, hogy az összehasonlítás figyelmen kívül hagyja-e az összehasonlított karakterláncok esetét.|
+| outputClaim | outputClaim | Logikai érték | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. Logikai kijelző, ha a gyűjtemény tartalmaz egy ilyen karakterláncot. |
 
 A következő példa ellenőrzi, hogy a `roles` StringCollection stb jogcím típusa tartalmazza-e a **rendszergazda**értéket.
 
@@ -147,7 +147,7 @@ A következő példa ellenőrzi, hogy a `roles` StringCollection stb jogcím tí
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 

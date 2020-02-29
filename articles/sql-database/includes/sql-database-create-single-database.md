@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: mathoma
 ms.reviewer: vanto
-ms.openlocfilehash: 3e2c8a424c9a3744bfb91d03632965c15613a424
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: d800d273cce995c618422a3a9d0934b2657e6ef5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252128"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194298"
 ---
 Ebben a lépésben egy Azure SQL Database önálló adatbázist fog létrehozni. 
 
@@ -20,7 +20,7 @@ Ebben a lépésben egy Azure SQL Database önálló adatbázist fog létrehozni.
 >
 > További információért lásd: [adatbázis-szintű tűzfalszabály létrehozása](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) vagy a számítógép kiszolgáló szintű tűzfalszabály által használt IP-cím meghatározása: [kiszolgálói szintű tűzfal létrehozása](../sql-database-server-level-firewall-rule.md).  
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal használatával.
 
@@ -56,7 +56,7 @@ Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal
 
      ![SQL Database részletei](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
-   - Válassza ki a **kiépített**lehetőséget.
+   - Válassza ki a **kiépített**lehetőséget.  Azt is megteheti, hogy kiszolgáló nélküli adatbázis létrehozásához kijelöli a **kiszolgáló nélküli kiszolgálót** .
 
      ![Kiépített Gen4](../media/sql-database-get-started-portal/create-database-provisioned.png)
 
@@ -81,7 +81,7 @@ Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal
 
 11. A **SQL Database** űrlapon válassza a **Létrehozás** lehetőséget az erőforráscsoport, a kiszolgáló és az adatbázis üzembe helyezéséhez és kiépítéséhez.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -156,70 +156,36 @@ A cikk ezen része a következő PowerShell-parancsmagokat használja:
 | [Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tűzfalszabály létrehozása logikai kiszolgálóhoz. | 
 | [Új – AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Létrehoz egy új Azure SQL Database önálló adatbázist. | 
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Hozza létre az erőforráscsoportot és az önálló adatbázist AZ AZ parancssori felület használatával.
 
    ```azurecli-interactive
    #!/bin/bash
-   # Set variables
-   subscriptionID=<SubscriptionID>
-   resourceGroupName=myResourceGroup-$RANDOM
-   location=SouthCentralUS
-   adminLogin=azureuser
-   password="PWD27!"+`openssl rand -base64 18`
-   serverName=mysqlserver-$RANDOM
-   databaseName=mySampleDatabase
-   drLocation=NorthEurope
-   drServerName=mysqlsecondary-$RANDOM
-   failoverGroupName=failovergrouptutorial-$RANDOM
+   # set variables
+   $subscription = "<subscriptionID>"
+   $randomIdentifier = $(Get-Random)
 
-   # The ip address range that you want to allow to access your DB. 
-   # Leaving at 0.0.0.0 will prevent outside-of-azure connections to your DB
-   startip=0.0.0.0
-   endip=0.0.0.0
+   $resourceGroup = "resource-$randomIdentifier"
+   $location = "East US"
+   
+   $login = "sampleLogin"
+   $password = "samplePassword123!"
+
+   $server = "server-$randomIdentifier"
+   $database = "database-$randomIdentifier"
   
-   # Connect to Azure
-   az login
+   az login # connect to Azure
+   az account set -s $subscription # set subscription context for the Azure account
 
-   # Set the subscription context for the Azure account
-   az account set -s $subscriptionID
-
-   # Create a resource group
    echo "Creating resource group..."
-   az group create \
-      --name $resourceGroupName \
-      --location $location \
-      --tags Owner[=SQLDB-Samples]
+   az group create --name $resourceGroup --location $location
 
-   # Create a logical server in the resource group
    echo "Creating primary logical server..."
-   az sql server create \
-      --name $serverName \
-      --resource-group $resourceGroupName \
-      --location $location  \
-      --admin-user $adminLogin \
-      --admin-password $password
+   az sql server create --name $server --resource-group $resourceGroup --location $location --admin-user $login --admin-password $password
 
-   # Configure a firewall rule for the server
-   echo "Configuring firewall..."
-   az sql server firewall-rule create \
-      --resource-group $resourceGroupName \
-      --server $serverName \
-      -n AllowYourIp \
-      --start-ip-address $startip \
-      --end-ip-address $endip
-
-   # Create a gen5 1vCore database in the server 
    echo "Creating a gen5 2 vCore database..."
-   az sql db create \
-      --resource-group $resourceGroupName \
-      --server $serverName \
-      --name $databaseName \
-      --sample-name AdventureWorksLT \
-      --edition GeneralPurpose \
-      --family Gen5 \
-      --capacity 2
+   az sql db create --resource-group $resourceGroup --server $server --name $database --sample-name AdventureWorksLT --edition GeneralPurpose --family Gen5 --capacity 2
    ```
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.

@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 9b156193035d87472c462bae37e405e0317d8402
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: e53fb46b7c13e1feb0cc24663fb0782b4de06f2b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650299"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198031"
 ---
 # <a name="vcore-model-overview"></a>Virtuálismag-alapú modell áttekintése
 
@@ -32,7 +32,7 @@ A virtuális mag modellben található szolgáltatási rétegek beállításai k
 ||**Általános célú**|**Üzleti szempontból kritikus**|**Nagy kapacitású**|
 |---|---|---|---|
 |A következőkre alkalmas|A legtöbb üzleti számítási feladat. A szolgáltatás költségvetés-orientált, kiegyensúlyozott és méretezhető számítási és tárolási lehetőségeket kínál. |Több elkülönített replika használatával a lehető legnagyobb rugalmasságot nyújtja az üzleti alkalmazások számára, és az adatbázis-replikák esetében a legmagasabb I/O-teljesítményt biztosítja.|A legtöbb üzleti számítási feladat nagy mértékben méretezhető tárolási és olvasási méretezési követelményekkel.  Nagyobb rugalmasságot biztosít a hibákhoz azáltal, hogy lehetővé teszi több elkülönített adatbázis-replika konfigurációját. |
-|Tárterület|Távoli tárterületet használ.<br/>**Önálló adatbázisok és rugalmas készletek kiépített számítási felszámítása**:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**Felügyelt példány**: 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**Önálló adatbázisok és rugalmas készletek kiépített számítási felszámítása**:<br/>5 GB – 4 TB<br/>**Felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
+|Storage|Távoli tárterületet használ.<br/>**Önálló adatbázisok és rugalmas készletek kiépített számítási felszámítása**:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**Felügyelt példány**: 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**Önálló adatbázisok és rugalmas készletek kiépített számítási felszámítása**:<br/>5 GB – 4 TB<br/>**Felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
 |IOPS és átviteli sebesség (hozzávetőleges)|**Önálló adatbázisok és rugalmas készletek**: az [önálló adatbázisok](../sql-database/sql-database-vcore-resource-limits-single-databases.md) és a [rugalmas készletek](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)erőforrás-korlátai.<br/>**Felügyelt példány**: Tekintse át az [Áttekintés Azure SQL Database felügyelt példány erőforrás-korlátai](../sql-database/sql-database-managed-instance-resource-limits.md#service-tier-characteristics)című témakört.|Tekintse meg az [önálló adatbázisok](../sql-database/sql-database-vcore-resource-limits-single-databases.md) és a [rugalmas készletek](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)erőforrás-korlátozásait.|A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS és az átviteli sebesség a munkaterheléstól függ.|
 |Rendelkezésre állás|1 replika, nincsenek olvasási méretezésű replikák|3 replika, 1 [olvasási léptékű replika](sql-database-read-scale-out.md),<br/>zóna – redundáns magas rendelkezésre állás (HA)|1 írható-olvasható replika, valamint 0-4 [-es olvasási léptékű replika](sql-database-read-scale-out.md)|
 |Biztonsági másolatok|[Olvasási hozzáférés – geo-redundáns tárolás (ra-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 nap (alapértelmezés szerint 7 nap)|[Ra-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 nap (alapértelmezés szerint 7 nap)|Pillanatkép-alapú biztonsági másolatok az Azure-beli távoli tárolóban. A visszaállítja ezeket a pillanatképeket a gyors helyreállításhoz. A biztonsági másolatok azonnaliek, és nem befolyásolják a számítási I/O-teljesítményt. A visszaállítások gyorsak, és nem az adatmennyiség (óra vagy nap helyett percekben).|
@@ -95,13 +95,14 @@ Az M-sorozat hardverének az előfizetéshez és a régióhoz való engedélyez�
 ### <a name="compute-and-memory-specifications"></a>Számítási és memória-specifikációk
 
 
-|Hardver létrehozása  |Számítás  |Memory (Memória)  |
+|Hardver létrehozása  |Compute  |Memory (Memória)  |
 |:---------|:---------|:---------|
 |Gen4     |-Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorok<br>-Akár 24 virtuális mag (1 virtuális mag = 1 fizikai mag)  |-7 GB/virtuális mag<br>– Akár 168 GB-nyi kiépítés|
-|Gen5     |**Kiépített számítás**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz és Intel SP-8160 (Skylake) processzorok<br>– Akár 80 virtuális mag (1 virtuális mag = 1 Hyper-thread)<br><br>**Kiszolgáló nélküli számítás**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz és Intel SP-8160 (Skylake) processzorok<br>– Akár 16 virtuális mag automatikus méretezés (1 virtuális mag = 1 Hyper-thread)|**Kiépített számítás**<br>-5,1 GB/virtuális mag<br>– Akár 408 GB-nyi kiépítés<br><br>**Kiszolgáló nélküli számítás**<br>– Akár 24 GB-os automatikus méretezés virtuális mag<br>-Legfeljebb 48 GB-ig terjedő automatikus méretezés|
+|Gen5     |**Kiépített számítás**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz és Intel SP-8160 (Skylake) * processzorok<br>– Akár 80 virtuális mag (1 virtuális mag = 1 Hyper-thread)<br><br>**Kiszolgáló nélküli számítás**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz és Intel SP-8160 (Skylake) * processzorok<br>– Akár 16 virtuális mag automatikus méretezés (1 virtuális mag = 1 Hyper-thread)|**Kiépített számítás**<br>-5,1 GB/virtuális mag<br>– Akár 408 GB-nyi kiépítés<br><br>**Kiszolgáló nélküli számítás**<br>– Akár 24 GB-os automatikus méretezés virtuális mag<br>-Legfeljebb 48 GB-ig terjedő automatikus méretezés|
 |Fsv2 sorozat     |-Intel Xeon Platinum 8168 (SkyLake) processzorok<br>– A 3,4 GHz-es és az összes Core Turbo órajel-sebesség, valamint a 3,7 GHz-es maximális, egyetlen Core Turbo órajel.<br>-Kiépítés 72 virtuális mag (1 virtuális mag = 1 Hyper-thread)|-1,9 GB/virtuális mag<br>– 136 GB kiépítése|
 |M sorozat     |-Intel Xeon E7-8890 v3 2,5 GHz-es processzorok<br>-Kiépítés 128 virtuális mag (1 virtuális mag = 1 Hyper-thread)|– 29 GB/virtuális mag<br>– 3,7 TB kiépítése|
 
+\* a [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamikus felügyeleti nézetében az Intel SP-8160 (Skylake) processzorokat használó Gen5-adatbázisok hardveres létrehozása Gen6 néven jelenik meg. Az összes Gen5-adatbázis erőforrás-korlátja azonos a processzor típusától (Broadwell vagy Skylake) függetlenül.
 
 Az erőforrás-korlátokkal kapcsolatos további információkért lásd: [az önálló adatbázisok erőforrás-korlátai (virtuális mag)](sql-database-vcore-resource-limits-single-databases.md)vagy a [rugalmas készletek erőforrás-korlátai (virtuális mag)](sql-database-vcore-resource-limits-elastic-pools.md).
 
@@ -215,7 +216,7 @@ A **részletek** lapon adja meg a következőket:
 A jóváhagyott támogatási kérelmek általában 5 munkanapon belül teljesülnek.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - SQL-adatbázis létrehozásához tekintse meg [az SQL-adatbázis létrehozása a Azure Portal használatával](sql-database-single-database-get-started.md)című témakört.
 - Az önálló adatbázisok számára elérhető számítási méretek és a tárolási méretek tekintetében lásd: [SQL Database virtuális mag-alapú erőforrás-korlátok az önálló adatbázisokhoz](sql-database-vcore-resource-limits-single-databases.md).

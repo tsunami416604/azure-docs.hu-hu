@@ -1,6 +1,6 @@
 ---
-title: Törölt adattárház visszaállítása
-description: Útmutató a törölt Azure SQL Data Warehouse visszaállításához.
+title: Törölt SQL-készlet visszaállítása
+description: Útmutató a törölt SQL-készlet visszaállításához.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e508eff3b322b49a6dc50d818c8bcccc3e924ff2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 34851203432b7e2daf44e840e45275de76bc3b3a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759652"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196626"
 ---
-# <a name="restore-a-deleted-azure-sql-data-warehouse"></a>Törölt Azure SQL Data Warehouse visszaállítása
+# <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Törölt SQL-készlet visszaállítása az Azure szinapszis Analytics használatával
 
-Ebből a cikkből megtudhatja, hogyan állíthatja vissza a törölt SQL Data Warehouset a Azure Portal és a PowerShell használatával:
+Ebből a cikkből megtudhatja, hogyan állíthatja vissza az SQL-t a Azure Portal vagy a PowerShell használatával.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Ellenőrizze a DTU kapacitását.** Mindegyik SQL Data Warehouse egy SQL-kiszolgáló (például myserver.database.windows.net) üzemelteti, amely rendelkezik alapértelmezett DTU-kvótával.  Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta megváltoztatásának kérése](sql-data-warehouse-get-started-create-support-ticket.md).
+**Ellenőrizze a DTU kapacitását.** Minden SQL-készletet egy SQL-kiszolgáló (például myserver.database.windows.net) üzemeltet, amely rendelkezik alapértelmezett DTU-kvótával.  Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta megváltoztatásának kérése](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Törölt adattárház visszaállítása a PowerShell-lel
 
-Törölt SQL Data Warehouse visszaállításához használja a [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) parancsmagot. Ha a megfelelő logikai kiszolgáló törölve lett, az adatraktár nem állítható vissza.
+Egy törölt SQL-készlet visszaállításához használja a [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) parancsmagot. Ha a megfelelő logikai kiszolgáló törölve lett, az adatraktár nem állítható vissza.
 
 1. Mielőtt elkezdené, győződjön meg arról, hogy a [Azure PowerShell telepítését](https://docs.microsoft.com/powershell/azure/overview)végzi.
 2. Nyissa meg a PowerShellt.
@@ -71,7 +71,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Törölt adatbázis visszaállítása a Azure Portal használatával
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. Navigáljon ahhoz az SQL Server-kiszolgálóhoz, amelyen a törölt adattárház található.
 3. Válassza a **törölt adatbázisok** ikont a tartalomjegyzékben.
 
@@ -85,6 +85,6 @@ $RestoredDatabase.status
 
     ![Adja meg az adatbázis nevét](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
-## <a name="next-steps"></a>Következő lépések
-- [Meglévő adattárház visszaállítása](sql-data-warehouse-restore-active-paused-dw.md)
-- [Visszaállítás földrajzi biztonsági mentési adattárházból](sql-data-warehouse-restore-from-geo-backup.md)
+## <a name="next-steps"></a>További lépések
+- [Meglévő SQL-készlet visszaállítása](sql-data-warehouse-restore-active-paused-dw.md)
+- [Visszaállítás egy földrajzi biztonsági mentési SQL-készletből](sql-data-warehouse-restore-from-geo-backup.md)

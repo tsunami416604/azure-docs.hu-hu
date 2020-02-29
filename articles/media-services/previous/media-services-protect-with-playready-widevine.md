@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c90dc7877bced8a4ceececc04b8e3d1ebdcbfe44
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 79c24eb078cc3de764ecc1c814e5b8772777eab6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968629"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199495"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady és/vagy Widevine Dynamic Common Encryption használata
 
@@ -35,7 +35,7 @@ A Media Services része egy szolgáltatás, amelynek segítségével PlayReady v
 
 A Widevine-licencek biztosításához a következő AMS-partnereket is használhatja: 
 
-* [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/) 
+* [Axinom](https://www.axinom.com) 
 * [EZDRM](https://ezdrm.com/) 
 * [castLabs](https://castlabs.com/company/partners/azure/) 
 
@@ -609,14 +609,14 @@ namespace DynamicEncryptionWithDRM
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [CENC használata többszörös DRM-mel és hozzáférés-vezérléssel](media-services-cenc-with-multidrm-access-control.md)
 * [Widevine-csomagolás konfigurálása a Media Services segítségével](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)

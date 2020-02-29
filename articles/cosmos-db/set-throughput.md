@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 236ae017832d5d613d0bf9fc948d16a7218d2269
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 31ad7a9d1108adc9071812454419252a813cb93e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621947"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194869"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Átviteli sebesség kiosztása tárolókra és adatbázisokra
 
@@ -20,7 +20,7 @@ Egy Azure Cosmos database tárolók több felügyeleti egység. Egy adatbázis s
 A Azure Cosmos DB segítségével két részletességgel kiépítheti az átviteli sebességet:
  
 - Azure Cosmos-tárolók
-- Azure Cosmos-adatbázisok
+- Az Azure Cosmos Database.
 
 ## <a name="set-throughput-on-a-container"></a>Átviteli sebesség beállítása egy tárolón  
 
@@ -63,7 +63,8 @@ Ha egy logikai partíció munkaterhelése több, mint az adott logikai partíci�
 A megosztott átviteli sebességű adatbázisban lévő tárolók megosztják az adott adatbázishoz lefoglalt átviteli sebességet (RU/s). Legfeljebb négy tárolót tartalmazhat, amelyek legalább 400 RU/s értékkel rendelkeznek az adatbázison. Az első négy után minden új tárolónál további 100 RU/s értékre lesz szükség. Ha például egy megosztott átviteli sebességű adatbázis nyolc tárolóval rendelkezik, az adatbázishoz tartozó minimum RU/s 800 RU/s lesz.
 
 > [!NOTE]
-> Egy megosztott átviteli sebességű adatbázisban legfeljebb 25 tároló lehet az adatbázisban. Ha egy megosztott átviteli sebességű adatbázisban már több mint 25 tároló található, nem fog tudni további tárolókat létrehozni, amíg a tárolók száma nem éri el a 25-et.
+> Február 2020-án egy olyan módosítást vezettünk be, amely lehetővé teszi, hogy legfeljebb 25 tárolót helyezzen el egy megosztott átviteli sebességű adatbázisban, ami jobb lehetővé teszi az átviteli sebesség megosztását a tárolók között. Az első 25 tároló után csak akkor adhat hozzá több tárolót az adatbázishoz, ha [dedikált átviteli sebességgel lett kiépítve](#set-throughput-on-a-database-and-a-container), amely elkülönül az adatbázis megosztott átviteli sebességével.<br>
+Ha a Azure Cosmos DB fiók már tartalmaz egy megosztott átviteli sebességű adatbázist > = 25 tárolóval, akkor a fiók és az azonos Azure-előfizetésben lévő összes többi fiók mentesül a változás alól. Ha visszajelzése vagy kérdése van, vegye [fel a kapcsolatot a terméktámogatási szolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) . 
 
 Ha a számítási feladatok egy adatbázisban lévő összes gyűjtemény törlését és újbóli létrehozását vonják maguk után, akkor azt javasoljuk, hogy a gyűjtemény létrehozása előtt dobja el az üres adatbázist, és hozzon létre egy új adatbázist. Az alábbi képen látható, hogyan tárolhat egy fizikai partíció egy vagy több olyan logikai partíciót, amely különböző tárolókban található egy adatbázison belül:
 
@@ -110,7 +111,7 @@ A tárolók vagy adatbázisok kiépített átviteli sebességét bármikor mére
 |Egy adott tároló logikai partíció egységenkénti maximális adatátviteli sebesség|10 ezer kérelemegység|10 ezer kérelemegység|
 |Maximális tárterület (adatok + index) egy adott tároló logikai partíciónként|20 GB|20 GB|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [logikai partíciókhoz](partition-data.md).
 * Útmutató az [átviteli sebesség Azure Cosmos-tárolón](how-to-provision-container-throughput.md)való kiépítéséhez.
