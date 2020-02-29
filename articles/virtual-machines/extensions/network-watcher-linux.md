@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: c04b27ab4a8ea53e09ca3a133d6aef6457fe1526
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 69d2bfe4576a9350e905fc10f3d7617619e6284a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073036"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915486"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Network Watcher Agent virtuálisgép-bővítmény Linux rendszerhez
 
@@ -88,6 +88,8 @@ Az Azure virtuálisgép-bővítményeket Azure Resource Manager sablonnal is üz
 
 ## <a name="azure-classic-cli-deployment"></a>Klasszikus Azure CLI üzembe helyezés
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 Az alábbi példa telepíti a Network Watcher Agent virtuálisgép-bővítményt a klasszikus üzemi modellel telepített meglévő virtuális gépre:
 
 ```azurecli
@@ -105,21 +107,9 @@ az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name Net
 
 ## <a name="troubleshooting-and-support"></a>Hibaelhárítás és támogatás
 
-### <a name="troubleshooting"></a>Hibaelhárítás
+### <a name="troubleshooting"></a>Hibakeresés
 
 A bővítmények állapotával kapcsolatos információkat a Azure Portal vagy az Azure CLI használatával kérheti le.
-
-Az alábbi példa a klasszikus üzembe helyezési modellel telepített virtuális gépek bővítményeinek telepítési állapotát mutatja be a klasszikus Azure CLI használatával:
-
-```azurecli
-azure config mode asm
-azure vm extension get myVM1
-```
-A bővítmény-végrehajtás kimenete a következő könyvtárban található fájlokra van naplózva:
-
-```
-/var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
-```
 
 Az alábbi példa a Resource Managerrel üzembe helyezett virtuális gépek NetworkWatcherAgentLinux-bővítményének telepítési állapotát mutatja be az Azure CLI használatával:
 

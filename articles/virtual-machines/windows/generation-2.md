@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: d88d5ecf8be3fadb36239b75d476a13abf39cbf7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: f9567238e4bb025fad41e7db33613a63d2fc25dd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659713"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911763"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2\. generációs virtuális gépek támogatása az Azure-ban
 
@@ -33,18 +33,18 @@ A 2. generációs virtuális gépek az új UEFI-alapú rendszerindítási archit
 Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja az Azure-ban (kivéve a Mv2-sorozatú virtuális gépeket). Az Azure immár 2. generációs támogatást nyújt a következő kiválasztott virtuálisgép-sorozatokhoz:
 
 * [B sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
-* [DC sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
-* [Dsv2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) és [Dsv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
-* [Esv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
-* [Fsv2 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
+* [DC sorozat](../dcv2-series.md)
+* [DSv2](../dv2-dsv2-series.md) és [Dsv3 sorozat](../dv3-dsv3-series.md)
+* [Esv3 sorozat](../ev3-esv3-series.md)
+* [Fsv2 sorozat](../fsv2-series.md)
 * [GS sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
-* [HB sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hb-series)
-* [HC sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hc-series)
-* Az [ls-sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) és a [Lsv2 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-storage#lsv2-series)
-* [Mv2 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
-* [NCv2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv2-series) és [NCv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv3-series)
-* [ND sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nd-series)
-* [NVv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
+* [HB sorozat](../hb-series.md)
+* [HC sorozat](../hc-series.md)
+* Az [ls-sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) és a [Lsv2 sorozat](../lsv2-series.md)
+* [Mv2 sorozat](../mv2-series.md)
+* [NCv2](../ncv2-series.md) és [NCv3 sorozat](../ncv3-series.md)
+* [ND sorozat](../nd-series.md)
+* [NVv3 sorozat](../nvv3-series.md)
 
 > [!NOTE]
 > A 2. generációs virtuálisgép-lemezképek használata a Mv2 sorozatú virtuális gépek esetében általánosan elérhető, mivel a Mv2 sorozat csak a 2. generációs virtuálisgép-rendszerképekkel működik együtt. Az 1. generációs virtuálisgép-lemezképek nem támogatottak a Mv2 sorozatú virtuális gépeken. 

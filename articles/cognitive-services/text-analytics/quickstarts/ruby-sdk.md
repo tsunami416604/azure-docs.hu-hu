@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/29/2020
+ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: f34d4e50042f0fd05a224ff096c2b472224248f8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0d4d32a413dd22c55f1b2f01dce3a3df81f5f729
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992400"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919668"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>Gyors útmutató: az Text Analytics ügyféloldali kódtár használata a Rubyhoz
 
@@ -23,10 +23,10 @@ Ismerkedjen meg az Text Analytics ügyféloldali kódtár használatába. Az al�
 
 A következő műveletek végrehajtásához használja a Text Analytics ügyféloldali függvénytárat:
 
-* Véleményelemzés
+* Hangulatelemzés
 * Nyelvfelismerés
 * Entitások felismerése
-* A kulcsfontosságú kifejezések kinyerése
+* Kulcskifejezések kinyerése
 
 > [!NOTE]
 > Ez a rövid útmutató csak az Text Analytics 2,1-es verziójára vonatkozik. Jelenleg a Rubyhoz készült v3 ügyféloldali kódtár nem érhető el.
@@ -39,12 +39,11 @@ A következő műveletek végrehajtásához használja a Text Analytics ügyfél
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 * A [Ruby](https://www.ruby-lang.org/) aktuális verziója
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="hozzon létre egy Text Analytics-erőforrást,"  target="_blank">hozzon létre egy Text Analytics erőforrás <span class="docon docon-navigate-external x-hidden-focus"></span> -</a> a Azure Portal a kulcs és a végpont beszerzéséhez. 
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Text Analytics APIhoz való összekapcsolásához. Ezt később is megteheti a rövid útmutatóban.
+    * Az ingyenes díjszabási csomaggal kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
 ## <a name="setting-up"></a>Beállítás
-
-### <a name="create-a-text-analytics-azure-resource"></a>Text Analytics Azure-erőforrás létrehozása 
-
-[!INCLUDE [text-analytics-resource-creation](../includes/quickstarts/resource-creation.md)]
 
 ### <a name="create-a-new-ruby-application"></a>Új Ruby-alkalmazás létrehozása
 
@@ -113,7 +112,7 @@ Az osztályon kívül használja az ügyfél `new()` függvényét a létrehozá
 
 <a name="SentimentAnalysis"></a>
 
-## <a name="sentiment-analysis"></a>Véleményelemzés
+## <a name="sentiment-analysis"></a>Hangulatelemzés
 
 Az ügyfél objektumban hozzon létre egy `AnalyzeSentiment()` nevű függvényt, amely a később létrehozandó bemeneti dokumentumok listáját fogadja. Hívja meg az ügyfél `sentiment()` függvényét, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a hangulat pontszámát. Ha a pontszám közelebb van a 0 értékhez, a negatív érzést jelez, míg az 1. számú pontszám pozitív hangulatot jelez.
 
@@ -226,7 +225,7 @@ Document ID: 2
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="key-phrase-extraction"></a>A kulcsfontosságú kifejezések kinyerése
+## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 
 Az ügyfél objektumban hozzon létre egy `ExtractKeyPhrases()` nevű függvényt, amely a később létrehozandó bemeneti dokumentumok listáját fogadja. Hívja meg az ügyfél `key_phrases()` függvényét, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a kinyert kulcs kifejezéseit.
 

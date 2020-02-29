@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 2570e3753dd93173166c6b563e9add69bed3f862
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: d2c5a094c45eeca779a33a39261bd3fc17d53d1a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922278"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913854"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
@@ -48,6 +48,28 @@ Futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com) a Pyth
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PYTHON|3.7"
 ```
 
+## <a name="customize-build-automation"></a>A Build Automation testreszabása
+
+Ha a Build Automation használatával git vagy zip csomagok segítségével helyezi üzembe az alkalmazást, akkor a App Service az alábbi lépésekkel hozhat létre automatizálási lépéseket:
+
+1. A `PRE_BUILD_SCRIPT_PATH`által megadott egyéni parancsfájl futtatása.
+1. Futtassa az `pip install -r requirements.txt` parancsot.
+1. Ha a *Manage.py* a tárház gyökerében található, futtassa a *Manage.py collectstatic*. Ha azonban `DISABLE_COLLECTSTATIC` `true`re van beállítva, ez a lépés kimarad.
+1. A `POST_BUILD_SCRIPT_PATH`által megadott egyéni parancsfájl futtatása.
+
+a `PRE_BUILD_COMMAND`, a `POST_BUILD_COMMAND`és a `DISABLE_COLLECTSTATIC` olyan környezeti változók, amelyek alapértelmezés szerint üresek. Az előkészítő parancsok futtatásához adja meg a `PRE_BUILD_COMMAND`. A létrehozás utáni parancsok futtatásához adja meg a `POST_BUILD_COMMAND`. A Django-alkalmazások létrehozásakor a collectstatic futtatásának letiltásához állítsa `DISABLE_COLLECTSTATIC=true`.
+
+A következő példa a két változót adja meg egy több parancshoz, vesszővel elválasztva.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+További környezeti változók a Build Automation testreszabásához: [Oryx-konfiguráció](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+
+A Python-alkalmazások Linux rendszeren való futtatásával és App Serviceával kapcsolatos további információkért lásd a [Oryx dokumentációját: a Python-alkalmazások észlelésének és felépítésének módját](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md).
+
 ## <a name="container-characteristics"></a>A tároló jellemzői
 
 A Linuxon App Service rendszerbe telepített Python-alkalmazások a [Python GitHub-tárházban](https://github.com/Azure-App-Service/python)meghatározott docker app Service-tárolón belül futnak. A rendszerkép-konfigurációk a verziószámozási könyvtárakban találhatók.
@@ -80,7 +102,7 @@ Django-alkalmazások esetén az App Service a(z) `wsgi.py` nevű fájlt keresi a
 gunicorn --bind=0.0.0.0 --timeout 600 <module>.wsgi
 ```
 
-Ha az indítási parancsot szeretné jobban szabályozni, használjon egy [ egyéni indítási parancsot](#customize-startup-command), és cserélje le a(z) `<module>` modult annak a modulnak a nevével, amely tartalmazza a *wsgi.py* fájlt.
+Ha az indítási parancsot szeretné jobban szabályozni, használjon egy [egyéni indítási parancsot](#customize-startup-command), és cserélje le a(z) `<module>` modult annak a modulnak a nevével, amely tartalmazza a *wsgi.py* fájlt.
 
 ### <a name="flask-app"></a>Flask-alkalmazás
 
@@ -159,7 +181,7 @@ A népszerű webes keretrendszerek lehetővé teszik a szabványos alkalmazási 
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 - **Saját alkalmazáskódjának telepítése után megjelenik az alapértelmezett alkalmazás.** Az alapértelmezett alkalmazás jelenik meg, mert vagy nem telepítette az alkalmazás kódját App Servicere, vagy App Service nem találta meg az alkalmazás kódját, és nem futtatta az alapértelmezett alkalmazást.
 - Indítsa újra az App Service-t, várjon 15-20 másodpercet, és ellenőrizze újra az alkalmazást.

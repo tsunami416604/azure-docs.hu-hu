@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 69959418c52eb7324efe19ca41481e426b822ab4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 717336e0ddfe99c96afda4861f4de1239ee949bf
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842357"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913208"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>App Service alkalmazás konfigurálása az Azure AD-bejelentkezés használatára
 
@@ -26,7 +26,10 @@ Az alkalmazás és a hitelesítés beállításakor kövesse az alábbi ajánlot
 
 ## <a name="express"> </a>Konfigurálás az expressz beállításokkal
 
-1. A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást.
+> [!NOTE]
+> Az **expressz** beállítás a kormányzati felhők esetében nem érhető el. 
+
+1. A [Azure Portalra]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást.
 2. A bal oldali navigációs sávon válassza a **hitelesítés/engedélyezés** > **bekapcsolva**lehetőséget.
 3. Válassza ki **Azure Active Directory** > **Express**elemet.
 
@@ -63,7 +66,7 @@ A App Service alkalmazás konfigurálásakor a következő információkra lesz 
 
 Hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be a [Azure Portal], keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Jegyezze fel az alkalmazás **URL-címét**. Ezzel konfigurálja a Azure Active Directory alkalmazás regisztrációját.
+1. Jelentkezzen be a [Azure Portalra], keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Jegyezze fel az alkalmazás **URL-címét**. Ezzel konfigurálja a Azure Active Directory alkalmazás regisztrációját.
 1. Válassza a **Azure Active Directory** > **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget.
 1. Az **alkalmazás regisztrálása** lapon adja meg az alkalmazás regisztrációjának **nevét** .
 1. Az **átirányítási URI**-ban válassza a **web** lehetőséget, és írja be `<app-url>/.auth/login/aad/callback`. Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
@@ -84,7 +87,7 @@ Hajtsa végre a következő lépéseket:
 
 ### <a name="secrets"> </a>Azure Active Directory engedélyezése a app Service alkalmazásban
 
-1. A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. 
+1. A [Azure Portalra]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. 
 1. A bal oldali ablaktábla **Beállítások**területén válassza a **hitelesítés/engedélyezés** > **bekapcsolva**lehetőséget.
 1. Választható Alapértelmezés szerint a App Service hitelesítés lehetővé teszi a nem hitelesített hozzáférést az alkalmazáshoz. A felhasználói hitelesítés érvénybe léptetéséhez állítsa be a **műveletet, ha a kérelem nem hitelesítve van** a **Azure Active Directoryba való bejelentkezéshez**.
 1. A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget.
@@ -105,7 +108,7 @@ Most már készen áll a Azure Active Directory használatára a App Service alk
 
 A natív ügyfelek regisztrálása lehetővé teszi a hitelesítés használatát egy ügyféloldali kódtár, például a **Active Directory-hitelesítési tár**használatával.
 
-1. A [Azure Portal]válassza a **Active Directory** > **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget.
+1. A [Azure Portalra]válassza a **Active Directory** > **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget.
 1. Az **alkalmazás regisztrálása** lapon adja meg az alkalmazás regisztrációjának **nevét** .
 1. Az **átirányítási URI**-ban válassza a **nyilvános ügyfél (mobil & asztal)** lehetőséget, és írja be az URL-címet `<app-url>/.auth/login/aad/callback`. Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 
@@ -125,4 +128,4 @@ Ezzel konfigurált egy natív ügyfélalkalmazás, amely hozzáfér a App Servic
 
 <!-- URLs. -->
 
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/

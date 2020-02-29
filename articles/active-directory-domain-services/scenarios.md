@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: ac67ef64ca4850c6e805b5314ace856114d889a7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132285"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917230"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Gyakori használati esetek és forgatókönyvek Azure Active Directory Domain Services
 
@@ -97,7 +97,7 @@ A következő üzembe helyezési szempontok vonatkoznak erre a példa használat
 
 Az Azure AD DS használatával felügyelt tartományi szolgáltatásokat biztosíthat az Azure-ban üzembe helyezett távoli asztali kiszolgálókhoz. További információ erről az üzembe helyezési forgatókönyvről: [Azure ad Domain Services integrálása az RDS][windows-rds]-környezettel.
 
-## <a name="domain-joined-hdinsight-clusters-preview"></a>Tartományhoz csatlakoztatott HDInsight-fürtök (előzetes verzió)
+## <a name="domain-joined-hdinsight-clusters"></a>Tartományhoz csatlakoztatott HDInsight-fürtök
 
 Beállíthat olyan Azure HDInsight-fürtöt, amely egy Azure AD DS felügyelt tartományhoz csatlakozik, és engedélyezve van az Apache Ranger. Az Apache Ranger segítségével hozhat létre és alkalmazhat kaptár-házirendeket, és lehetővé teheti a felhasználók, például az adatszakértők számára, hogy az ODBC-alapú eszközök, például az Excel vagy a tabló használatával csatlakozzanak a Kaptárhoz. Továbbra is dolgozunk további munkaterhelések, például a HBase, a Spark és a Storm hozzáadásával a tartományhoz csatlakoztatott HDInsight.
 

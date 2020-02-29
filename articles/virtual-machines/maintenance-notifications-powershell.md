@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: c23a06c502bd43b52cb35220b711084c7c8c1c7a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: b23c210d7c8a9f1d42e6e1b46e0f7f81bda857b2
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121836"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916082"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>Tervezett karbantartás kezelés a PowerShell használatával
 
 **Ez a cikk a Linux és Windows rendszerű virtuális gépekre is vonatkozik.**
 
-Az Azure PowerShell használatával megtekintheti, hogy mikor ütemezik a virtuális gépek [karbantartását](maintenance-notifications.md). A tervezett karbantartási információk a [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) parancsmagból érhetők el, ha a `-status` paramétert használja.
+A Azure PowerShell használatával megtekintheti a virtuális gépek [karbantartásának](maintenance-notifications.md)ütemezését. A tervezett karbantartási információk a [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) parancsmagból érhetők el, ha a `-status` paramétert használja.
   
 A karbantartási adatokat csak akkor adja vissza a rendszer, ha karbantartási terv van. Ha nincs ütemezve karbantartás, amely hatással van a virtuális gépre, a parancsmag nem ad vissza karbantartási információt. 
 
@@ -83,6 +83,8 @@ Restart-AzVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceG
 ```
 
 ## <a name="classic-deployments"></a>Klasszikus üzembe helyezések
+
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
 
 Ha továbbra is a klasszikus üzemi modellel telepített örökölt virtuális gépekkel rendelkezik, akkor a PowerShell használatával lekérdezheti a virtuális gépeket, és megkezdheti a karbantartást.
 

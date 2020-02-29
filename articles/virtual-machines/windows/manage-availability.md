@@ -15,18 +15,16 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f9914b84b63f271c7dd7d1b8f7dbc3b69511605
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: ae5d60f77319a6590807ae0b18a0c07c116e128b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561191"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914466"
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>A Windows rendszerű virtuális gépek rendelkezésre állásának kezelése az Azure-ban 
 
 Ismerje meg, hogyan állíthat be és kezelhet több virtuális gépet, hogy magas rendelkezésre állást biztosítson a Windows-alkalmazás számára az Azure-ban. [A Linux rendszerű virtuális gépek rendelkezésre állását is kezelheti](../linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-
-A rendelkezésre állási csoportok klasszikus üzemi modell használatával történő létrehozásáról és használatáról a következő témakörben talál útmutatást: [rendelkezésre állási csoport konfigurálása](classic/configure-availability-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-manage-availability](../../../includes/virtual-machines-common-manage-availability.md)]
 

@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
+ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: a7681ba815533296deae2b585e377a733074b6c9
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147913"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911814"
 ---
-# <a name="use-azure-portal-to-administer-your-data-box-disk"></a>A Data Box-lemezek felügyelete az Azure portal használatával
+# <a name="use-azure-portal-to-administer-your-data-box-disk"></a>A Data Box Disk felügyeletének Azure Portal használata
 
 A cikk oktatóanyagai a Microsoft Azure Data Box Disk előzetes verziójára vonatkoznak. A cikk a Data Box Disken végrehajtható komplex munkafolyamatokat és felügyeleti feladatokat ismerteti. 
 
@@ -51,7 +51,7 @@ A rendelések klónozásához kövesse az alábbi lépéseket.
 
     ![Rendelés klónozása 1](media/data-box-portal-ui-admin/clone-order1.png)
 
-2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a **Create** (Létrehozás) gombra.    
+2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a **Létrehozás** gombra.    
 
 A klón létrehozása néhány percet vesz igénybe, és a portálon megjelenik az új rendelés.
 
@@ -71,7 +71,7 @@ Csak a teljesített vagy visszavont rendeléseket törölheti. A rendelések tö
 
     ![Data Box Disk-rendelés törlése 1](media/data-box-portal-ui-admin/delete-order1.png)
 
-3. Ha a rendszer kéri, írja be a rendelés nevét a rendelés törlésének megerősítéséhez. Kattintson a **Törlés** gombra.
+3. Ha a rendszer kéri, írja be a rendelés nevét a rendelés törlésének megerősítéséhez. Kattintson a **Delete** (Törlés) gombra.
 
      ![Data Box Disk-rendelés törlése 2](media/data-box-portal-ui-admin/delete-order2.png)
 
@@ -105,7 +105,7 @@ A rendelés szerkesztéséhez kövesse az alábbi lépéseket.
 
 ## <a name="edit-notification-details"></a>Értesítési adatok szerkesztése
 
-Lehet, hogy módosítani szeretné, hogy mely felhasználók kapjanak értesítő e-maileket a rendelés állapotáról. Például előfordulhat, hogy valamelyik felhasználót értesíteni kell, ha a meghajtót kiszállítják vagy már átvették. Egy másik felhasználó szükség lehet az adatok másolása befejeződött, így azok ellenőrizheti a forrás törlése előtt az Azure storage-fiókban van az adatok tájékoztatni kell. Ilyen esetekben szerkesztheti az értesítési adatokat.
+Lehet, hogy módosítani szeretné, hogy mely felhasználók kapjanak értesítő e-maileket a rendelés állapotáról. Például előfordulhat, hogy valamelyik felhasználót értesíteni kell, ha a meghajtót kiszállítják vagy már átvették. Előfordulhat, hogy egy másik felhasználónak is tájékoztatnia kell, amikor az Adatmásolás befejeződött, így ellenőrizhetik, hogy az adatok az Azure Storage-fiókban találhatók-e, mielőtt törölné a forrásból. Ilyen esetekben szerkesztheti az értesítési adatokat.
 
 Az értesítési adatok szerkesztéséhez kövesse az alábbi lépéseket.
 
@@ -125,15 +125,15 @@ Az értesítési adatok szerkesztéséhez kövesse az alábbi lépéseket.
 |Feldolgozva     | A rendelés feldolgozása befejeződött. <br> A rendelése feldolgozása során a következő műveletek történnek meg:<li>A meghajtók titkosítása AES-128 BitLocker-titkosítással. </li> <li>A Data Box Disk-meghajtók zárolása az illetéktelen hozzáférés megakadályozására.</li><li>A meghajtókat zároló hozzáférési kulcs ennek a folyamatnak a részeként jön létre.</li>        |
 |Feladva     | A rendelés fel lett adva. A rendelést 1–2 napon belül kapja kézhez.        |
 |Kézbesítve     | A rendelés ki lett kézbesítve a rendelésben megadott címre.        |
-|Szállítás alatt     |A visszaküldött csomagot a futár átvette. <br> Miután a szállítmány érkezik az Azure-adatközpontban, adatokat automatikusan töltődnek fel az Azure-bA.         |
+|Szállítás alatt     |A visszaküldött csomagot a futár átvette. <br> A szállítás az Azure-adatközpontban való fogadása után automatikusan feltölti az Azure-ba.         |
 |Megérkezett     | A meghajtókat átvették az Azure-adatközpontban. Az adatok másolása hamarosan megkezdődik.        |
 |Adatok átmásolva     |Az adatok másolása folyamatban van.<br> Várjon, amíg az adatok másolása befejeződik.         |
 |Befejezve       |A rendelés sikeresen teljesítve lett.<br> Ellenőrizze, hogy az adatok elérhetők-e az Azure-ban, mielőtt törölné a helyszíni adatokat a kiszolgálókról.         |
-|Befejeződött, hibákkal| Az adatok másolása befejeződött, azonban hibák jelentkeztek. <br> Tekintse át a hibanaplókat, feltöltés a megadott elérési úton a **áttekintése**. További információért ugorjon [letöltési hiba-naplók feltöltése](data-box-disk-troubleshoot-upload.md#download-logs).   |
+|Befejeződött, hibákkal| Az adatok másolása befejeződött, azonban hibák jelentkeztek. <br> Tekintse át a feltöltési naplókat az **áttekintésben**megadott elérési út használatával. További információt a [feltöltési hibák naplóinak letöltése](data-box-disk-troubleshoot-upload.md#download-logs)című témakörben olvashat.   |
 |Megszakítva            |A rendelés vissza lett vonva. <br> Vagy visszavonta a rendelést, vagy hiba történt, és a szolgáltatás vonta vissza.     |
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [a Data Box Disk-hibák elhárításának](data-box-disk-troubleshoot.md) módját.

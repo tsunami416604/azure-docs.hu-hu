@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fac83a7a5137a50a26721da58395cc2e915f222d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: fae9b8a2101329383cc90c8f7f0ff225e3a9059c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086202"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913818"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Webszolgáltatás migrálása a Google Mapsből
 
@@ -24,21 +24,24 @@ A táblázat megjeleníti a Azure Maps Service API-kat, amelyek hasonló funkci�
 
 | Google Maps szolgáltatás API | Azure Maps Service API                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Irányban              | [Útvonal](https://docs.microsoft.com/rest/api/maps/route)                               |
-| Távolsági mátrix         | [Útvonal-mátrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview) |
-| Geokódolás               | [Search](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Helyek keresése           | [Search](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Automatikus kiegészítés      | [Search](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Statikus Térkép              | [Renderelési](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                 |
-| Időzóna               | [Időzóna](https://docs.microsoft.com/rest/api/maps/timezone)                        |
+| Irányban              | [Útvonal](https://docs.microsoft.com/rest/api/maps/route)                                     |
+| Távolsági mátrix         | [Útvonal-mátrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
+| Geokódolás               | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Helyek keresése           | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Automatikus kiegészítés      | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Elérési út            | Lásd: [útvonalak és utasítások kiszámítása](#calculate-routes-and-directions) szakasz.            |
+| Sebességkorlátozások            | Lásd: [koordináta szakasz fordított geocode](#reverse-geocode-a-coordinate) .                  |
+| Statikus Térkép              | [Renderelési](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
+| Időzóna               | [Időzóna](https://docs.microsoft.com/rest/api/maps/timezone)                              |
 
 A következő szolgáltatási API-k jelenleg nem érhetők el Azure Mapsban:
 
 - Jogosultságszint
 - Térinformatikai
-- Elhelyezheti a részleteket, és elhelyezheti a fényképeket. A telefonszámok és a webhely URL-címe a Azure Maps Search API-ban érhető el.
+- Helyek részletei és fényképek – a telefonszámok és a webhely URL-címe a Azure Maps Search API-ban érhető el.
 - Térkép URL-címei
-- Utakon. A sebességkorlátozás adatátviteli sebessége a Azure Maps útvonalon és fordított helymeghatározáshoz API-kon keresztül érhető el.
+- Legközelebbi utak – ez elérhető a web SDK-val, ahogy az [itt](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic
+)látható, de jelenleg nem érhető el szolgáltatásként.
 - Statikus utcai nézet
 
 Azure Maps számos további REST-webszolgáltatással rendelkezik, amelyek érdekesek lehetnek:
@@ -176,8 +179,8 @@ A táblázat a Google Maps API paramétereit jeleníti meg az összehasonlíthat
 
 A Azure Maps útválasztási szolgáltatás a következő API-kat biztosítja az útvonalak kiszámításához:
 
-- [**Útvonal kiszámítása**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): kiszámítja az útvonalat, és azonnal feldolgozza a kérést. Ez az API a GET és a POST kérelmeket is támogatja. Ha nagy számú Útpontot ad meg, vagy az útvonal számos beállítását használja, a POST kérelmeket használja. Ennek az az oka, hogy a POST használatával gondoskodik róla, hogy az URL-kérelem ne legyen túl hosszú, és problémákat okozzon.
-- [**Batch Route**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): hozzon létre egy legfeljebb 1 000 útválasztási kérelmet tartalmazó kérelmet, és egy adott időszakban dolgozza fel azokat. A rendszer minden adatfeldolgozást párhuzamosan dolgoz fel a kiszolgálón. A feldolgozás befejezésekor letöltheti az összes találati készletet.
+- [**Útvonal kiszámítása**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): kiszámítja az útvonalat, és azonnal feldolgozza a kérést. Ez az API a GET és a POST kérelmeket is támogatja. A POST kérések használata nagy számú útpont megadása esetén ajánlott, vagy ha sok útvonal-beállítást használ, hogy az URL-cím kérése ne legyen túl hosszú, és problémákat okozzon. A Azure Maps utáni útvonal iránya olyan lehetőséggel is rendelkezhet, amely több ezer [támogató pontot](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints) is igénybe vehet, és ezek használatával újra létrehozhatja a logikai útvonal elérési útját (a központhoz illesztés). 
+- [**Batch Route**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): hozzon létre egy legfeljebb 1 000 útválasztási kérelmet tartalmazó kérelmet, és egy adott időszakban dolgozza fel azokat. Az összes adat párhuzamosan lesz feldolgozva a kiszolgálón, és ha elkészült, a teljes eredményhalmaz letölthető.
 - [**Mobilitási szolgáltatások**](https://docs.microsoft.com/rest/api/maps/mobility): útvonalak és irányok kiszámítása a nyilvános átvitel használatával.
 
 A táblázat a Google Maps API paramétereit a Azure Maps hasonló API-paramétereivel hivatkozik.

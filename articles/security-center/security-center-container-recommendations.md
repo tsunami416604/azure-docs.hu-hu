@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: b1e1402f58b103570d6a98a5f9a01c8168abf749
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604266"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912360"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>A Azure Security Center-tárolóra vonatkozó javaslatok ismertetése
 
@@ -35,7 +35,7 @@ A Azure Security Center a következő képességeket biztosítja a tárolók biz
 
     ![tároló lap](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **Valós idejű tároló fenyegetésének észlelése**<br> Security Center valós idejű veszélyforrások észlelését teszi lehetővé az auditált összetevővel rendelkező Linux rendszerű gépeken tárolt tárolók esetében. A riasztások számos gyanús Docker-tevékenységet azonosítanak, például egy emelt szintű tároló létrehozását a gazdagépen, a Docker-tárolóban futó Secure Shell-(SSH-) kiszolgáló, illetve a kriptográfiai bányászok használatának jeleként. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét.
+- **Valós idejű tároló – veszélyforrások elleni védelem**<br> Security Center valós idejű veszélyforrások elleni védelmet biztosít a tárolók számára az auditált összetevővel rendelkező Linux rendszerű gépeken. A riasztások számos gyanús Docker-tevékenységet azonosítanak, például egy emelt szintű tároló létrehozását a gazdagépen, a Docker-tárolóban futó Secure Shell-(SSH-) kiszolgáló, illetve a kriptográfiai bányászok használatának jeleként. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét.
 
     ![tároló lap](./media/security-center-container-recommendations/docker-threat-detection.png)
 

@@ -14,14 +14,17 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: a9f99d418d572c14a7cdd7975483cf39f0707cba
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072991"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919923"
 ---
-# <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>A Trend Micro Deep Security szolgáltatásként való telepítése és konfigurálása windowsos virtuális gépen
+# <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>A Trend Micro Deep Security telepítése és konfigurálása Windows rendszerű virtuális gépen
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
 Ez a cikk bemutatja, hogyan telepítheti és konfigurálhatja a Trend Micro Deep Security szolgáltatást a Windows Servert futtató új vagy meglévő virtuális gépen (VM). A fokozott biztonság, mint a szolgáltatás kártevők elleni védelmet, tűzfalat, behatolás-megelőzési rendszereket és integritás-figyelést tartalmaz.
 
@@ -74,7 +77,7 @@ Ha a virtuálisgép-ügynök telepítve van, futtassa ezeket a parancsokat.
 
     Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Néhány percet vesz igénybe, amíg az ügynök elindul a telepítéskor. Ezt követően aktiválnia kell a mély biztonságot a virtuális gépen, hogy azt egy Deep Security Manager kezelje. További útmutatásért tekintse meg a következő cikkeket:
 
 * A trendről szóló cikk a megoldásról, [az azonnali Felhőbeli biztonságról Microsoft Azure](https://go.microsoft.com/fwlink/?LinkId=404101)

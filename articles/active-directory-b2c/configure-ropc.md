@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 03ff564848298d31c8bf92169d9e5f66d024d711
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 1d17f9af5700df5458cc4373dfc5cd8fb7774f91
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949184"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912399"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Az erőforrás-tulajdonos jelszava hitelesítő adatainak konfigurálása Azure AD B2C
 
@@ -24,16 +24,7 @@ Az erőforrás-tulajdonosi jelszó hitelesítő adatai (ROPC) a OAuth standard h
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure Active Directory B2C (Azure AD B2C) esetén a következő lehetőségek támogatottak:
-
-- **Natív ügyfél**: a hitelesítés során felhasználói interakció történik, ha a kód egy felhasználói oldali eszközön fut. Az eszköz lehet egy natív operációs rendszer, például Android és iOS rendszerű mobil alkalmazás.
-- **Nyilvános ügyféloldali folyamat**: a rendszer csak az alkalmazás által összegyűjtött felhasználói hitelesítő adatokat TOVÁBBÍTJA az API-hívásban. Az alkalmazás hitelesítő adatai nem lesznek elküldve.
-- **Új jogcímek hozzáadása**: az azonosító jogkivonat tartalma módosítható új jogcímek hozzáadásához.
-
-A következő folyamatok nem támogatottak:
-
-- **Kiszolgálók közötti**kapcsolat: az Identity Protection rendszernek megbízható IP-címet kell begyűjtenie a hívótól (a natív ügyféltől) a beavatkozás részeként. Kiszolgálóoldali API-hívás esetén csak a kiszolgáló IP-címe van használatban. Ha túllépi a sikertelen hitelesítések dinamikus küszöbértékét, az Identity Protection rendszer azonosíthatja az ismétlődő IP-címet támadóként.
-- **Bizalmas ügyféloldali folyamat**: az alkalmazás ügyfél-azonosítója érvényesítve van, de az alkalmazás titkos kulcsa nincs érvényesítve.
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Erőforrás-tulajdonos felhasználói folyamat létrehozása
 
@@ -65,7 +56,7 @@ Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazá
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Jelmagyarázat | Value (Díj) |
+| Paraméter | Érték |
 | --- | ----- |
 | felhasználónév | leadiocl@outlook.com |
 | jelszó | Passxword1 |
@@ -105,12 +96,12 @@ Az alábbi táblázatban szereplő információk alapján készítse el a kéré
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Jelmagyarázat | Value (Díj) |
+| Paraméter | Érték |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
-| erőforrás | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 A *Client_id* és az *erőforrás* az alkalmazás-azonosítóként korábban megjegyzett értékek. *Refresh_token* a korábban megemlített hitelesítési hívásban kapott jogkivonat.

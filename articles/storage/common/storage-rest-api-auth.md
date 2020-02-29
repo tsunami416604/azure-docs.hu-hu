@@ -10,12 +10,12 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b49b3187f9178012131d793a7762ae470b0ea540
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f5c6125b850062450516e7fc0b19c2e0d5d6f577
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965721"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916064"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>REST API műveletek meghívása megosztott kulcsos hitelesítéssel
 
@@ -175,7 +175,7 @@ Most, hogy létrehozta a kérést, meghívhatja a SendAsync metódust az Azure S
 }
 ```
 
-Ha a SendAsync meghívásakor egy hálózati Szippantó (például [Hegedűs](https://www.telerik.com/fiddler) ) fut, akkor a kérelem és a válasz információi láthatók. Lássuk. A Storage-fiók neve *contosorest*.
+Ha a SendAsync meghívásakor egy hálózati Szippantó (például [Hegedűs](https://www.telerik.com/fiddler) ) fut, akkor a kérelem és a válasz információi láthatók. Vessünk egy kinézetet. A Storage-fiók neve *contosorest*.
 
 **Kérelem**
 
@@ -302,7 +302,7 @@ StringToSign = VERB + "\n" +
 
 A mezők többsége ritkán használatos. BLOB Storage esetén a művelet, az MD5, a tartalom hossza, a kanonikus fejlécek és a kanonikus erőforrások megadása szükséges. A többi mezőt üresen hagyhatja (de a `\n` is elhelyezheti, hogy az tudja, hogy üresek).
 
-Mi a CanonicalizedHeaders és a CanonicalizedResource? Remek kérdés. Valójában mit jelent a kanonikus? A Microsoft Word még nem ismeri fel szót. Itt látható a [wikipedia a szabványosításról](https://en.wikipedia.org/wiki/Canonicalization): *a számítástechnika, a szabványosítás (esetenként a szabványosítás vagy a normalizálás) egy olyan folyamat, amely egynél több lehetséges ábrázolással rendelkezik a "standard", a "normál" vagy a kanonikus formában.* Normális – beszéd esetén ez azt jelenti, hogy az elemek listáját (például a fejléceket a kanonikus fejlécek esetén) kell megtenni, és szabványosítani kell őket egy szükséges formátumba. A Microsoft alapvetően úgy döntött, hogy formátumot használ, és meg kell egyeznie.
+Mi a CanonicalizedHeaders és a CanonicalizedResource? Jó kérdés. Valójában mit jelent a kanonikus? A Microsoft Word még nem ismeri fel szót. Itt látható a [wikipedia a szabványosításról](https://en.wikipedia.org/wiki/Canonicalization): *a számítástechnika, a szabványosítás (esetenként a szabványosítás vagy a normalizálás) egy olyan folyamat, amely egynél több lehetséges ábrázolással rendelkezik a "standard", a "normál" vagy a kanonikus formában.* Normális – beszéd esetén ez azt jelenti, hogy az elemek listáját (például a fejléceket a kanonikus fejlécek esetén) kell megtenni, és szabványosítani kell őket egy szükséges formátumba. A Microsoft alapvetően úgy döntött, hogy formátumot használ, és meg kell egyeznie.
 
 Kezdjük a két kanonikus mezővel, mert az engedélyezési fejléc létrehozásához szükségesek.
 
@@ -410,7 +410,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 
     // This is the actual header that will be added to the list of request headers.
     AuthenticationHeaderValue authHV = new AuthenticationHeaderValue("SharedKey",
-        storageAccountName + ":" + Convert.ToBase64String(SHA256.ComputeHash(SignatureBytes)));
+        storageAccountName + ":" + signature);
     return authHV;
 }
 ```
@@ -563,13 +563,13 @@ Content-Length: 1135
 </EnumerationResults>
 ```
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebből a cikkből megtudhatta, hogyan lehet kérelmet készíteni a blob Storage-REST API. A kérelem segítségével lekérheti a tárolók listáját vagy a Blobok listáját. Megtanulta, hogyan hozhatja létre az engedélyezési aláírást a REST API híváshoz, és hogyan használhatja azt a REST-kérelemben. Végezetül megtanulta, hogyan vizsgálhatja meg a választ.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A Blob szolgáltatás REST API-ja](/rest/api/storageservices/blob-service-rest-api)
-- [A File szolgáltatás REST API-ja](/rest/api/storageservices/file-service-rest-api)
-- [A Queue szolgáltatás REST API-ja](/rest/api/storageservices/queue-service-rest-api)
-- [A Table szolgáltatás REST API-ja](/rest/api/storageservices/table-service-rest-api)
+- [BLOB Service REST API](/rest/api/storageservices/blob-service-rest-api)
+- [Fájlszolgáltatások REST API](/rest/api/storageservices/file-service-rest-api)
+- [Üzenetsor-szolgáltatás REST API](/rest/api/storageservices/queue-service-rest-api)
+- [Table Service REST API](/rest/api/storageservices/table-service-rest-api)

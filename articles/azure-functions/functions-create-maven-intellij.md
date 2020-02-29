@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1d3dd0f4f1da4d3815d4d879dd13ed5882f39e8f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 46044d4c6dd65944291aff157229be0abc60d3d7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230729"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913242"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Az első Azure-függvény létrehozása Javával és IntelliJ
 
@@ -81,8 +81,6 @@ A Maven egy új mappában hozza létre a projektfájlt, amelynek a neve megegyez
 1. Fejezze be a _név_ és a _Beállítások_ mezőt, majd kattintson az **OK gombra** a konfiguráció mentéséhez.
 1. A telepítés után válassza a **hibakeresés < a távoli konfiguráció neve >** vagy a billentyűzeten a SHIFT + F9 billentyűkombinációval indítsa el a hibakeresést.
 
-   ![Hibakeresési függvények a IntelliJ](media/functions-create-first-java-intellij/debug-configuration-intellij.png)
-
 1. Ha elkészült, állítsa le a hibakeresőt és a futó folyamatot. Egyszerre csak egy Function Host lehet aktív és helyileg futni.
 
 ## <a name="deploy-the-function-to-azure"></a>A függvény üzembe helyezése az Azure-ban
@@ -109,7 +107,7 @@ A Maven egy új mappában hozza létre a projektfájlt, amelynek a neve megegyez
    [INFO] ------------------------------------------------------------------------
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha további információra van szüksége a Java-függvények létrehozásával kapcsolatban, tekintse át a [Java-függvények fejlesztői útmutatóját](functions-reference-java.md).
 - Vegyen fel további függvényeket különböző eseményindítókkal a projekthez az `azure-functions:add` Maven-cél használatával.

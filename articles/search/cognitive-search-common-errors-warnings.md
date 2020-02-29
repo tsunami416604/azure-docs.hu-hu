@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f17192e738bb82fb348c660488e6296aa550bd25
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838547"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913480"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Általános indexelő hibák és figyelmeztetések hibaelhárítása Az Azure Cognitive Search
 
@@ -37,7 +37,7 @@ Az API-verziótól kezdődően a `2019-05-06`az elemszintű indexelő hibái és
 | kulcs | A hibát vagy figyelmeztetést érintő dokumentum AZONOSÍTÓját. | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | név | Annak a műveletnek a neve, amelyben a hiba vagy a figyelmeztetés történt. Ezt a következő struktúra hozza létre: [category]. [Alkategória]. [resourceType]. ResourceName | DocumentExtraction. azureblob. myBlobContainerName alkoholtartalom-növelés. WebApiSkill. mySkillName vetítés. SearchIndex. OutputFieldMapping. myOutputFieldName vetítés. SearchIndex. MergeOrUpload. myIndexName Vetület. KnowledgeStore. table. myTableName |
 | message | A hiba vagy figyelmeztetés magas szintű leírása. | A képesség nem hajtható végre, mert a webes API-kérelem sikertelen volt. |
-| Részletek | További részletek, amelyek hasznosak lehetnek a probléma diagnosztizálásához, például a WebApi-válaszhoz, ha az egyéni képességet nem sikerült végrehajtani. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 forrás, függvény`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... fennmaradó verem nyomkövetése... |
+| details | További részletek, amelyek hasznosak lehetnek a probléma diagnosztizálásához, például a WebApi-válaszhoz, ha az egyéni képességet nem sikerült végrehajtani. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 forrás, függvény`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... fennmaradó verem nyomkövetése... |
 | documentationLink | A kapcsolódó dokumentációra mutató hivatkozás, amely részletes információkat tartalmaz a hibakereséshez és a probléma megoldásához. Ez a hivatkozás gyakran a lap alábbi részeinek egyikére mutat. | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
@@ -46,7 +46,7 @@ Az API-verziótól kezdődően a `2019-05-06`az elemszintű indexelő hibái és
 
 Az indexelő nem tudta olvasni a dokumentumot az adatforrásból. Ez az alábbiak miatt fordulhat elő:
 
-| Ok | Részletek/példa | Felbontás |
+| Ok | Részletek/példa | Megoldás: |
 | --- | --- | --- |
 | inkonzisztens mezők típusai különböző dokumentumokban | Az érték típusa nem egyezik az oszlop típusával. Nem sikerült tárolni a `'{47.6,-122.1}'` a szerzők oszlopban.  A várt típus: JArray. | Ügyeljen arra, hogy az egyes mezők típusa azonos legyen a különböző dokumentumok között. Ha például az első dokumentum `'startTime'` a dátum DateTime, és a második dokumentumban ez egy karakterlánc, akkor ez a hiba fog megjelenni. |
 | hibák az adatforrás mögöttes szolgáltatásában | (Cosmos DB) `{"Errors":["Request rate is large"]}` | Ellenőrizze, hogy a tárolási példány kifogástalan állapotú-e. Előfordulhat, hogy módosítania kell a skálázást/particionálást. |
@@ -57,7 +57,7 @@ Az indexelő nem tudta olvasni a dokumentumot az adatforrásból. Ez az alábbia
 ## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>Hiba: nem sikerült kinyerni a dokumentum tartalmát vagy metaadatait
 A blob-adatforrással rendelkező indexelő nem tudta kinyerni a tartalmat vagy a metaadatokat a dokumentumból (például egy PDF-fájlt). Ez az alábbiak miatt fordulhat elő:
 
-| Ok | Részletek/példa | Felbontás |
+| Ok | Részletek/példa | Megoldás: |
 | --- | --- | --- |
 | a blob mérete meghaladja a méretkorlátot | A dokumentum `'150441598'` bájt, ami meghaladja a jelenlegi szolgáltatási szinten a dokumentumok kinyeréséhez szükséges maximális méretet `'134217728'` bájtban. | [BLOB-indexelési hibák](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | a blob nem támogatott tartalomtípust tartalmaz | A dokumentum tartalma nem támogatott `'image/png'` | [BLOB-indexelési hibák](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -69,7 +69,7 @@ A blob-adatforrással rendelkező indexelő nem tudta kinyerni a tartalmat vagy 
 ## <a name="error-could-not-parse-document"></a>Hiba: a dokumentum nem elemezhető
 Az indexelő beolvassa a dokumentumot az adatforrásból, de hiba történt a dokumentum tartalmának a megadott mező-hozzárendelési sémába való konvertálása során. Ez az alábbiak miatt fordulhat elő:
 
-| Ok | Részletek/példa | Felbontás |
+| Ok | Részletek/példa | Megoldás: |
 | --- | --- | --- |
 | A dokumentum kulcsa hiányzik | A dokumentum kulcsa nem lehet hiányzik vagy üres. | Győződjön meg arról, hogy minden dokumentum rendelkezik érvényes dokumentum-kulcsokkal |
 | A dokumentum kulcsa érvénytelen | A dokumentum kulcsa nem lehet hosszabb 1024 karakternél | Módosítsa a dokumentum kulcsát az érvényesítési követelmények teljesítéséhez. |
@@ -81,9 +81,9 @@ Az indexelő beolvassa a dokumentumot az adatforrásból, de hiba történt a do
 ## <a name="error-could-not-execute-skill"></a>Hiba: nem sikerült végrehajtani a képességet
 Az indexelő nem tudott futtatni egy képességet a készségkészlet.
 
-| Ok | Részletek/példa | Felbontás |
+| Ok | Részletek/példa | Megoldás: |
 | --- | --- | --- |
-| Átmeneti kapcsolódási problémák | Átmeneti hiba történt. Később próbálja meg újra. | Esetenként váratlan kapcsolódási problémák léptek fel. Próbálja meg később futtatni a dokumentumot az indexelő használatával. |
+| Átmeneti kapcsolódási problémák | Átmeneti hiba történt. Próbálkozzon újra később. | Esetenként váratlan kapcsolódási problémák léptek fel. Próbálja meg később futtatni a dokumentumot az indexelő használatával. |
 | Lehetséges termék hibája | Váratlan hiba történt. | Ez ismeretlen osztályt jelez, és a termék meghibásodását is jelentheti. Kérjen segítséget a [támogatási jegyen](https://ms.portal.azure.com/#create/Microsoft.Support) . |
 | A rendszer hibát észlelt a végrehajtás során | (Egyesítési képességből) Egy vagy több eltolási érték érvénytelen, és nem elemezhető. Elemek beszúrása a szöveg végére | A probléma megoldásához használja a hibaüzenetben található információkat. Ilyen hiba esetén a megoldáshoz beavatkozás szükséges. |
 
@@ -140,7 +140,7 @@ A `timeout` paraméter számára beállítható maximális érték 230 másodper
 
 A dokumentum olvasása és feldolgozása megtörtént, de az indexelő nem tudja felvenni a keresési indexbe. Ez az alábbiak miatt fordulhat elő:
 
-| Ok | Részletek/példa | Felbontás |
+| Ok | Részletek/példa | Megoldás: |
 | --- | --- | --- |
 | Egy mező túl nagy kifejezést tartalmaz | A dokumentum egy kifejezése nagyobb az [32 KB-os korlátnál](search-limits-quotas-capacity.md#api-request-limits) | Ezt a korlátozást elkerülheti, ha úgy látja, hogy a mező nem szűrhető, sokoldalú vagy rendezhető.
 | A dokumentum túl nagy az indexeléshez | A dokumentum nagyobb, mint az [API-kérelmek maximális mérete](search-limits-quotas-capacity.md#api-request-limits) | [Nagyméretű adathalmazok indexelése](search-howto-large-index.md)
@@ -152,9 +152,9 @@ A dokumentum olvasása és feldolgozása megtörtént, de az indexelő nem tudja
 
 <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"/>
 
-## <a name="error-could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>Hiba: a dokumentum nem indexelhető, mert az indexelő által indexelt adatbázis érvénytelen.
+## <a name="error-could-not-index-document-because-some-of-the-documents-data-was-not-valid"></a>Hiba: a dokumentum nem indexelhető, mert a dokumentum egyes adatértékei nem érvényesek.
 
-A dokumentumot beolvasták és feldolgozták, de az index mezőinek és az indexelő által kinyert adat természetének eltérése miatt nem lehetett felvenni a keresési indexbe. Ez az alábbiak miatt fordulhat elő:
+A dokumentumot az indexelő elolvasta és feldolgozta, de az index mezőinek és az indexelő által feldolgozt adatnak a konfigurációjának eltérése miatt nem lehetett felvenni a keresési indexbe. Ez az alábbiak miatt fordulhat elő:
 
 | Ok | Részletek/példa
 | --- | ---
@@ -166,12 +166,11 @@ A dokumentumot beolvasták és feldolgozták, de az index mezőinek és az index
 
 Ebben az esetben tekintse át a [támogatott adattípusokat](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) és [adattípus-leképezést az indexelő](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) számára, és győződjön meg arról, hogy helyesen hozza létre az index-sémát, és beállította a megfelelő [Indexelő mező-hozzárendeléseket](search-indexer-field-mappings.md). A hibaüzenet olyan részleteket tartalmaz, amelyek segítségével nyomon követheti az eltérés forrását.
 
-<a name="could-not-process-document-within-indexer-max-run-time"/>
-
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Hiba: az integrált módosítás-követési szabályzat nem használható, mert a tábla összetett elsődleges kulccsal rendelkezik.
 
 Ez az SQL-táblákra vonatkozik, és általában akkor fordul elő, ha a kulcs vagy összetett kulcsként van definiálva, vagy ha a tábla egyedi fürtözött indexet definiált (például egy SQL-indexben, nem Azure Search index). A fő ok az, hogy a Key attribútum úgy módosul, hogy egy [egyedi fürtözött index](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)esetében az összetett elsődleges kulcs legyen. Ebben az esetben győződjön meg arról, hogy az SQL-táblához nem tartozik egyedi fürtözött index, vagy ha a Key mezőt egy olyan mezőhöz rendeli, amely garantáltan nem rendelkezik ismétlődő értékekkel.
 
+<a name="could-not-process-document-within-indexer-max-run-time"/>
 
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Hiba: a dokumentum nem dolgozható fel az indexelő maximális futási idején belül
 
@@ -183,7 +182,7 @@ Ez a hiba akkor fordul elő, ha az indexelő nem tudja befejezni egyetlen dokume
 
 Ez a hiba akkor fordul elő, amikor az indexelő az [adatait egy tudásbázisba](knowledge-store-projection-overview.md) kísérli meg, és hiba történt a kísérlet során.  Ez a hiba lehet konzisztens és javítható, vagy előfordulhat, hogy átmeneti hiba történt a kivetítési kimeneti fogadónál, amelyet várnia kell, és újra kell próbálkoznia a feloldáshoz.  Az alábbiakban az ismert meghibásodási állapotok és a lehetséges megoldások halmaza látható.
 
-| Ok | Részletek/példa | Felbontás |
+| Ok | Részletek/példa | Megoldás: |
 | --- | --- | --- |
 | Nem lehetett frissíteni a kivetítési blobot `'blobUri'` a tárolóban `'containerName'` |A megadott tároló nem létezik. | Az indexelő ellenőrzi, hogy a megadott tárolót korábban hozták-e létre, és szükség esetén létrehozza-e, de csak egyszer hajtja végre ezt az ellenőrzést az indexelő futtatásakor. Ez a hiba azt jelenti, hogy valami törölte a tárolót a lépés után.  A hiba elhárításához próbálja meg a következőt: ne csak a Storage-fiók adatait adja meg, várjon, amíg az indexelő befejeződik, majd futtassa újra az indexelő. |
 | Nem lehetett frissíteni a kivetítési blobot `'blobUri'` a tárolóban `'containerName'` |Az adatátvitel nem írható a szállítási kapcsolatban: a távoli gazdagép kényszerített módon lezárta a meglévő kapcsolatokat. | Ez várhatóan átmeneti hiba az Azure Storage-ban, ezért az indexelő újbóli futtatásával kell megoldani. Ha konzisztensen Tapasztalja ezt a hibát, küldjön egy [támogatási jegyet](https://ms.portal.azure.com/#create/Microsoft.Support) , hogy később is megvizsgálható legyen.  |
@@ -220,7 +219,7 @@ Ha hiányzó bemenet esetén szeretné megadni az alapértelmezett értéket, a 
 }
 ```
 
-| Ok | Részletek/példa | Felbontás |
+| Ok | Részletek/példa | Megoldás: |
 | --- | --- | --- |
 | A szakértelem bemenete nem megfelelő típusú. | "A szükséges szakértelem-bevitel nem a várt típusú `String`. Név: `text`, forrás: `/document/merged_content`. "  "A szükséges szakértelem-bevitel nem a várt formátumú. Név: `text`, forrás: `/document/merged_content`. "  "Nem lehet megismételni a nem tömb `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`."  "Nem lehet kijelölni `0` nem tömb `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`" | Bizonyos készségek várhatóan adott típusok bemeneteit számítják fel, például az [érzelmi képességek](cognitive-search-skill-sentiment.md) `text` karakterláncnak számítanak. Ha a bemenet nem sztring értéket ad meg, akkor a rendszer nem hajtja végre, és nem hoz létre kimenetet. Győződjön meg arról, hogy az adatkészletben a bemeneti értékek egységesek a típusban, vagy használjon [egyéni webes API-képességet](cognitive-search-custom-skill-web-api.md) a bemenet előfeldolgozásához. Ha a képességet egy tömbön keresztül ismétli meg, ellenőrizze a szakértelem kontextusát, és a megfelelő pozícióban `*`. A környezetnek és a bemeneti forrásnak általában a tömbök `*` kell végződnie. |
 | Hiányzik a szaktudás bemenete | "Hiányzik a szükséges képzettségi bevitel. Név: `text`, forrás: `/document/merged_content`"" hiányzó érték `/document/normalized_images/0/imageTags`. "  "Nem lehet kijelölni `0`t a (z) `0``/document/pages` hosszúságú tömbben." | Ha az összes dokumentum ezt a figyelmeztetést kapja, valószínűleg van egy elírás a bemeneti elérési utakon, és az elérési úton ellenőrizze, hogy az elérési útban van-e a tulajdonság neve, a további vagy a hiányzó `*`. Ellenőrizze, hogy az adatforrásból származó dokumentumok biztosítják-e a szükséges adatokat. |

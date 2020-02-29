@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: f3cb583a3594b14266249ef80f8c49633c1df1de
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: cd634c41a1d6e3d9846e8299dd281b52beb77130
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152193"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912789"
 ---
 # <a name="linear-regression-module"></a>Lineáris regressziós modul
 Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
@@ -51,17 +51,15 @@ Az évek statisztikusai egyre fejlettebb módszereket fejlesztenek a regresszió
 
 Ez a modul két módszert támogat a regressziós modellek beépítéséhez, különböző lehetőségekkel:
 
-+ [Regressziós modell létrehozása online átmenetes leereszkedés használatával](#bkmk_GradientDescent)
++ [Regressziós modell igazítása a szokásos legkisebb négyzetek használatával](#create-a-regression-model-using-ordinary-least-squares)
+
+    Kis adatkészletek esetében a legjobb, ha a legkevesebb négyzetet választja. Ehhez hasonló eredményeket kell megadni az Excelben.
+    
++ [Regressziós modell létrehozása online átmenetes leereszkedés használatával](#create-a-regression-model-using-online-gradient-descent)
 
     A színátmenetes desüllyedás jobb veszteségi funkció a összetettebb, vagy túl kevés betanítási adattal rendelkező modellek esetében a változók száma miatt.
 
-
-
-+ [Regressziós modell igazítása a szokásos legkisebb négyzetek használatával](#bkmk_OrdinaryLeastSquares)
-
-    Kis adatkészletek esetében a legjobb, ha a legkevesebb négyzetet választja. Ehhez hasonló eredményeket kell megadni az Excelben.
-
-## <a name="bkmk_OrdinaryLeastSquares"></a>Regressziós modell létrehozása a legkisebb négyzetek használatával
+### <a name="create-a-regression-model-using-ordinary-least-squares"></a>Regressziós modell létrehozása a legkisebb négyzetek használatával
 
 1. Adja hozzá a **lineáris regressziós modell** modult a folyamathoz a tervezőben.
 
@@ -86,7 +84,7 @@ Ez a modul két módszert támogat a regressziós modellek beépítéséhez, kü
 
 8. A folyamat futtatása.
 
-## <a name="results-for-ordinary-least-squares-model"></a>A legkevesebb négyzetes modell eredményei
+### <a name="results-for-ordinary-least-squares-model"></a>A legkevesebb négyzetes modell eredményei
 
 A betanítás befejezése után:
 
@@ -94,7 +92,7 @@ A betanítás befejezése után:
 + Az előrejelzések elvégzéséhez csatlakoztassuk a betanított modellt a [pontszám modell](./score-model.md) modulhoz, valamint egy új értékből álló adatkészletet. 
 
 
-## <a name="bkmk_GradientDescent"></a>Regressziós modell létrehozása online átmenetes leereszkedés használatával
+### <a name="create-a-regression-model-using-online-gradient-descent"></a>Regressziós modell létrehozása online átmenetes leereszkedés használatával
 
 1. Adja hozzá a **lineáris regressziós modell** modult a folyamathoz a tervezőben.
 
@@ -105,6 +103,8 @@ A betanítás befejezése után:
 3. Az **oktatói mód létrehozásához**jelezze, hogy a modellt előre definiált paraméterekkel kívánja-e betanítani, vagy ha a modellt a sweep paraméter használatával szeretné optimalizálni.
 
     + **Egyetlen paraméter**: ha tudja, hogyan szeretné konfigurálni a lineáris regressziós hálózatot, megadhatja az értékek adott készletét argumentumként.
+    
+    + **Paraméter tartománya**: akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.  
 
    
 4. A **tanulási arány**beállításnál határozza meg a sztochasztikus színátmenet-optimalizáló kezdeti tanulási arányát.
@@ -133,7 +133,7 @@ A betanítás befejezése után:
 
 13. A folyamat futtatása.
 
-## <a name="results-for-online-gradient-descent"></a>Az online átmenetes ereszkedés eredményei
+### <a name="results-for-online-gradient-descent"></a>Az online átmenetes ereszkedés eredményei
 
 A betanítás befejezése után:
 

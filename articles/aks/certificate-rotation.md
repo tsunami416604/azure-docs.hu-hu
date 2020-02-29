@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 02bfdbc840065558003b249e1e3ea52f46ec64d6
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 3c22f63b7085c7ab8d6b54e383528568dc9c12e7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596267"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917033"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Tanúsítványok elforgatása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -84,6 +84,9 @@ Ellenőrizze, hogy a tanúsítványok frissítve lettek-e egy `kubectl` parancs 
 kubectl get no
 ```
 
+> [!NOTE]
+> Ha olyan szolgáltatásokkal rendelkezik, amelyek az AK-on felül futnak, például az [Azure dev Spaces][dev-spaces]szolgáltatást, előfordulhat, hogy [frissítenie kell a szolgáltatásokhoz kapcsolódó tanúsítványokat][dev-spaces-rotate] is.
+
 ## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk azt mutatja be, hogyan lehet automatikusan elforgatni a fürt tanúsítványait, hitelesítésszolgáltatóit és SAs-adatait. A biztonsági [és az Azure Kubernetes szolgáltatásban (ak) elérhető ajánlott eljárások][aks-best-practices-security-upgrades] további információkat találnak az AK biztonsággal kapcsolatos ajánlott eljárásairól.
@@ -94,3 +97,5 @@ Ez a cikk azt mutatja be, hogyan lehet automatikusan elforgatni a fürt tanúsí
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [aks-best-practices-security-upgrades]: operator-best-practices-cluster-security.md
+[dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[dev-spaces-rotate]: ../dev-spaces/troubleshooting.md#error-using-dev-spaces-after-rotating-aks-certificates

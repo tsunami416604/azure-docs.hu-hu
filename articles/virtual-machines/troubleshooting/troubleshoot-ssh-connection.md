@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: f0a79fb0f90a633095343c162ccdc80ebc48f1d4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1194b2d90e5a12b1ecf3664a48055ca763f31a4f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747666"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919447"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Az olyan Azure Linux rendszerű virtuális gépek SSH-kapcsolatainak hibaelhárítása, amelyek sikertelenek, hibák vagy elutasítottak
 Ez a cikk segít megkeresni és kijavítani a Secure Shell-(SSH-) hibák, SSH-kapcsolódási hibák vagy SSH-problémák miatti problémákat, amikor megpróbál csatlakozni egy linuxos virtuális géphez (VM). A kapcsolódási problémák elhárításához és megoldásához használhatja a Linux Azure Portal, Azure CLI vagy VM-hozzáférési bővítményét.
 
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
 ## <a name="quick-troubleshooting-steps"></a>Gyors hibaelhárítási lépések
 Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális géppel.
@@ -46,13 +46,13 @@ Folytassa az olvasást részletesebb hibaelhárítási lépésekkel és magyará
 A hitelesítő adatokat vagy SSH-konfigurációt az alábbi módszerek egyikével állíthatja alaphelyzetbe:
 
 * [Azure Portal](#use-the-azure-portal) – nagyszerű, ha gyorsan alaphelyzetbe kell ÁLLÍTANIA az SSH-konfigurációt vagy az SSH-kulcsot, és nincs telepítve az Azure-eszközök.
-* [Azure VM soros konzol](https://aka.ms/serialconsolelinux) – a virtuális gép soros konzolja az SSH-konfigurációtól függetlenül fog működni, és egy interaktív konzolt biztosít a virtuális géphez. Valójában a "nem SSH" helyzetek kifejezetten a soros konzol megoldásához lettek tervezve. Részletek alább.
+* [Azure VM soros konzol](https://aka.ms/serialconsolelinux) – a virtuális gép soros konzolja az SSH-konfigurációtól függetlenül fog működni, és egy interaktív konzolt biztosít a virtuális géphez. Valójában a "nem SSH" helyzetek kifejezetten a soros konzol megoldásához lettek tervezve. További részletek alább.
 * [Azure CLI](#use-the-azure-cli) – ha már a parancssorban van, gyorsan visszaállíthatja az SSH-konfigurációt vagy a hitelesítő adatokat. Ha klasszikus virtuális géppel dolgozik, használhatja a [klasszikus Azure CLI](#use-the-azure-classic-cli)-t.
 * [Azure VMAccessForLinux bővítmény](#use-the-vmaccess-extension) – JSON-definíciós fájlok létrehozása és újbóli felhasználása az SSH-konfiguráció vagy a felhasználó hitelesítő adatainak alaphelyzetbe állításához.
 
 Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális géphez való csatlakozással. Ha továbbra sem tud kapcsolatot létesíteni, próbálkozzon a következő lépéssel.
 
-## <a name="use-the-azure-portal"></a>Az Azure-portál használata
+## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 A Azure Portal segítségével gyorsan alaphelyzetbe állíthatja az SSH-konfigurációt vagy a felhasználói hitelesítő adatokat anélkül, hogy az eszközöket telepítené a helyi számítógépen.
 
 A kezdéshez válassza ki a virtuális gépet a Azure Portalban. Görgessen le a **támogatás + hibaelhárítás** szakaszhoz, és válassza a **jelszó alaphelyzetbe állítása** lehetőséget az alábbi példában látható módon:
@@ -203,12 +203,12 @@ azure vm reset-access --resource-group myResourceGroup --name myVM \
 ## <a name="a-idrestart-vm-restart-a-vm"></a>virtuális gép újraindítása <a id="restart-vm" />
 Ha alaphelyzetbe állítja az SSH-konfigurációt és a felhasználói hitelesítő adatokat, vagy hibát észlelt, akkor próbálja meg újraindítani a virtuális gépet az alapul szolgáló számítási problémák megoldásához.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 Ha a Azure Portal használatával szeretne újraindítani egy virtuális gépet, válassza ki a virtuális gépet, majd válassza az **Újraindítás** lehetőséget az alábbi példában látható módon:
 
 ![Virtuális gép újraindítása a Azure Portal](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 Az alábbi példa az [az VM restart](/cli/azure/vm) paranccsal indítja újra a `myVM` nevű virtuális gépet az `myResourceGroup`nevű erőforráscsoport-csoportban. A saját értékeit a következőképpen használhatja:
 
 ```azurecli
@@ -216,6 +216,9 @@ az vm restart --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="azure-classic-cli"></a>Azure klasszikus parancssori felület
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 A következő példa újraindítja `myVM` nevű virtuális gépet a `myResourceGroup`nevű erőforráscsoporthoz. A saját értékeit a következőképpen használhatja:
 
 ```azurecli
@@ -230,12 +233,12 @@ Az Azure-on belül újratelepítheti a virtuális gépet egy másik csomópontra
 >
 >
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 Ha a Azure Portal használatával szeretné újratelepíteni a virtuális gépet, válassza ki a virtuális gépet, és görgessen le a **támogatás + hibaelhárítás** szakaszhoz. Válassza az újbóli **üzembe helyezés** lehetőséget az alábbi példában látható módon:
 
 ![Virtuális gép újbóli üzembe helyezése a Azure Portal](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 A következő példa az [az VM redeploy](/cli/azure/vm) paranccsal helyezi üzembe a `myVM` nevű virtuális gépet a `myResourceGroup`nevű erőforráscsoporthoz. A saját értékeit a következőképpen használhatja:
 
 ```azurecli
@@ -243,6 +246,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="azure-classic-cli"></a>Azure klasszikus parancssori felület
+
 A következő példa újratelepíti a `myVM` nevű virtuális gépet a `myResourceGroup`nevű erőforráscsoport-csoportba. A saját értékeit a következőképpen használhatja:
 
 ```azurecli
@@ -250,6 +254,9 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="vms-created-by-using-the-classic-deployment-model"></a>A klasszikus üzemi modell használatával létrehozott virtuális gépek
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 Próbálja ki ezeket a lépéseket a klasszikus üzemi modell használatával létrehozott virtuális gépek leggyakoribb SSH-kapcsolódási hibáinak megoldásához. Az egyes lépések után próbálkozzon újra a virtuális géppel.
 
 * A [Azure Portal](https://portal.azure.com)távoli elérésének visszaállítása. A Azure Portal válassza ki a virtuális gépet, majd válassza a **távoli alaphelyzetbe állítás...** lehetőséget.

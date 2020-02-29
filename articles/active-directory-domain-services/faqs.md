@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: a25337cad39674bc6016f67bdc46a804518d0b03
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3abd9835c1cf750b926f49442f3e34e96dc9c865
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509019"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917356"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Gyakori kérdések (GYIK)
 
@@ -41,13 +41,15 @@ Ez az oldal válaszol a Azure Active Directory Domain Servicesekkel kapcsolatos 
 Nem. Egyetlen Azure AD-címtárhoz Azure AD Domain Services egyetlen felügyelt tartományt hozhat létre.
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network"></a>Engedélyezhető a Azure AD Domain Services egy klasszikus virtuális hálózaton?
-A klasszikus virtuális hálózatok nem támogatottak új központi telepítések esetén. A klasszikus virtuális hálózatokban telepített meglévő felügyelt tartományok továbbra is támogatottak. [A klasszikus virtuális hálózati modellből Azure ad Domain Services is áttelepítheti a Resource Managerbe (előzetes verzió)](migrate-from-classic-vnet.md).
+A klasszikus virtuális hálózatok nem támogatottak új központi telepítések esetén. A klasszikus virtuális hálózatokban üzembe helyezett meglévő felügyelt tartományok továbbra is támogatottak, amíg az 2023-es március 1-én megszűnik. A meglévő telepítések esetében [áttelepítheti Azure ad Domain Services a klasszikus virtuális hálózati modellből a Resource Managerbe](migrate-from-classic-vnet.md).
+
+További információkért tekintse meg a [hivatalos elavult közleményt](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/).
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Engedélyezhető a Azure AD Domain Services egy Azure Resource Manager virtuális hálózaton?
 Igen. Azure AD Domain Services engedélyezhető Azure Resource Manager virtuális hálózaton. A klasszikus Azure-beli virtuális hálózatok már nem érhetők el felügyelt tartomány létrehozásakor.
 
 ### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Áttelepíthetem a meglévő felügyelt tartományt egy klasszikus virtuális hálózatról egy Resource Manager-alapú virtuális hálózatra?
-Igen, ez a funkció előzetes verzióban érhető el. További információ: [Azure ad Domain Services migrálása a klasszikus virtuális hálózati modellből a Resource Managerbe (előzetes verzió)](migrate-from-classic-vnet.md).
+Igen. További információ: [Azure ad Domain Services migrálása a klasszikus virtuális hálózati modellből a Resource Managerbe](migrate-from-classic-vnet.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Engedélyezhető a Azure AD Domain Services egy Azure CSP-előfizetésben?
 Igen. További információ: [Azure ad Domain Services engedélyezése az Azure CSP-előfizetésekben](csp.md).
@@ -139,7 +141,7 @@ Nem. A Azure AD Domain Services egy utólagos elszámolású Azure-szolgáltatá
 ### <a name="what-azure-regions-is-the-service-available-in"></a>Milyen Azure-régiók érhetők el a szolgáltatásban?
 Az Azure- [szolgáltatások régiónként](https://azure.microsoft.com/regions/#services/) lapon megtekintheti az Azure-régiók listáját, ahol a Azure ad Domain Services elérhető.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 A Azure AD Domain Services konfigurálásával és felügyeletével kapcsolatos gyakori problémák megoldásához tekintse meg a [hibaelhárítási útmutatót](troubleshoot.md) .
 

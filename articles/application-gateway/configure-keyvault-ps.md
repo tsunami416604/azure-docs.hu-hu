@@ -6,18 +6,18 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 02/27/2020
 ms.author: victorh
-ms.openlocfilehash: 746e9f08a75ece18199d5a72bb532873be787f50
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 2f7eafc6fc1533bd837fae60dd3b9673f6f97aa8
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592272"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913021"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Az SSL-lezárás konfigurálása Key Vault tanúsítványokkal a Azure PowerShell használatával
 
-A [Azure Key Vault](../key-vault/key-vault-overview.md) egy platform által felügyelt titkos tároló, amely a titkok, kulcsok és SSL-tanúsítványok védelmére használható. Az Azure Application Gateway támogatja a HTTPS-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványok Key Vault (nyilvános előzetes verzióban) való integrálását. Ez a támogatás a Application Gateway v2 SKU-ra korlátozódik.
+A [Azure Key Vault](../key-vault/key-vault-overview.md) egy platform által felügyelt titkos tároló, amely a titkok, kulcsok és SSL-tanúsítványok védelmére használható. Az Azure Application Gateway támogatja a HTTPS-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványok Key Vault-integrációját. Ez a támogatás a Application Gateway v2 SKU-ra korlátozódik.
 
 További információ: SSL- [lezárás Key Vault tanúsítványokkal](key-vault-certs.md).
 

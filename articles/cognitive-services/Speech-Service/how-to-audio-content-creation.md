@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: dapine
-ms.openlocfilehash: aed9c0a72af063c84c0744757772e11c689ac14c
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 4785356963e7df1d7b175ac21ceebc921f851ffb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561034"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913650"
 ---
 # <a name="improve-synthesis-with-audio-content-creation"></a>Hanganyag-létrehozással javíthatja a szintézist
 
@@ -43,7 +43,7 @@ Ez az ábra a testreszabott beszéd-szöveg kimenetek finomhangolásához és ex
 
 Kövesse az alábbi lépéseket egy beszédfelismerési erőforrás létrehozásához és a Speech studióhoz való kapcsolódáshoz.
 
-1. Kövesse ezeket az utasításokat [egy Azure-fiók regisztrálásához](get-started.md#try-the-speech-service-using-a-new-azure-account) és [egy beszédfelismerési erőforrás létrehozásához](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Győződjön meg arról, hogy a díjszabási szintje **S0**értékre van állítva. Ha az egyik neurális hangját használja, győződjön meg arról, hogy az erőforrást egy [támogatott régióban](regions.md#standard-and-neural-voices)hozza létre.
+1. Kövesse ezeket az utasításokat [egy Azure-fiók regisztrálásához](get-started.md#new-resource) és [egy beszédfelismerési erőforrás létrehozásához](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Győződjön meg arról, hogy a díjszabási szintje **S0**értékre van állítva. Ha az egyik neurális hangját használja, győződjön meg arról, hogy az erőforrást egy [támogatott régióban](regions.md#standard-and-neural-voices)hozza létre.
 2. Jelentkezzen be a [hangtartalom létrehozásához](https://aka.ms/audiocontentcreation).
 3. Válasszon ki egy meglévő projektet, vagy kattintson az **új létrehozása**lehetőségre.
 4. Az előfizetést bármikor módosíthatja a **Beállítások** lehetőséggel, amely a felső NAV-ban található.
@@ -108,7 +108,7 @@ Miután áttekintette a hangkimenetet, és elégedett a hangolással és a beál
 
 * [Hosszú hang API](https://aka.ms/long-audio-api)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Speech Studio](https://speech.microsoft.com)

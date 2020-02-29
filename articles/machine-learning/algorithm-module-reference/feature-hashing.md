@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/01/2019
-ms.openlocfilehash: 4340ee4ed1edda8590726151e07eec45c0751ed6
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 6ba53793e57be67e2954af870dfa4248fca465ec
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152261"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912205"
 ---
 # <a name="feature-hashing-module-reference"></a>Szolgáltatás-kivonatolási modul referenciája
 
@@ -111,7 +111,7 @@ A feldolgozás befejezése után a modul egy átalakított adatkészletet ad ere
 
 Az átalakított adatkészlet létrehozása után használhatja a betanítási modell modul bemenetként.
  
-### <a name="best-practices"></a>Ajánlott eljárások
+## <a name="best-practices"></a>Ajánlott eljárások
 
 Az alábbi ajánlott eljárások segítséget nyújtanak a funkció-kivonatolási modul leghatékonyabban történő kihasználása érdekében:
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
-ms.openlocfilehash: d208629ee29bb9102f16fcb1d541677bd4a4d5fa
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431565"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919532"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>A tárolók biztonságának figyelése
 
@@ -29,7 +29,7 @@ A Azure Security Center a tárolók biztonságának következő három aspektus�
 
 - **Az Azure Kubernetes Service-fürtök megerősítése** – a Security Center ajánlásokat nyújt, amikor megkeresi a biztonsági réseket az Azure Kubernetes Service-fürtök konfigurációjában. Az esetlegesen megjelenő javaslatok részleteiért tekintse meg a [Kubernetes szolgáltatási javaslatait](recommendations-reference.md#recs-containers).
 
-- **Futtatókörnyezet védelme** – ha Security Center Standard díjszabási szinten van, valós idejű veszélyforrásokat kap a tároló környezetek észleléséhez. Security Center riasztásokat hoz létre a gyanús tevékenységekhez a gazdagép és az AK-fürt szintjén. Az esetlegesen megjelenő biztonsági riasztások részleteiért tekintse meg az [Azure Kubernetes Service Clusters szolgáltatáshoz tartozó riasztásokat](alerts-reference.md#alerts-akscluster) , valamint a [tárolók –](alerts-reference.md#alerts-containerhost) a riasztások című táblázat gazdagép szintű fejezeteinek riasztásait.
+- **Futtatókörnyezet védelme** – ha Security Center Standard díjszabási szintje, valós idejű veszélyforrások elleni védelmet kap a tároló környezetek számára. Security Center riasztásokat hoz létre a gyanús tevékenységekhez a gazdagép és az AK-fürt szintjén. Az esetlegesen megjelenő biztonsági riasztások részleteiért tekintse meg az [Azure Kubernetes Service Clusters szolgáltatáshoz tartozó riasztásokat](alerts-reference.md#alerts-akscluster) , valamint a [tárolók –](alerts-reference.md#alerts-containerhost) a riasztások című táblázat gazdagép szintű fejezeteinek riasztásait.
 
 ## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>A ARM-alapú tároló-beállításjegyzékek vizsgálata a biztonsági rések esetében 
 

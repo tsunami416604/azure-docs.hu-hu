@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
-ms.openlocfilehash: db74415d3c6c5f6636a150d212bc2bc3d790fbec
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: be26a9d4c66412518079de303ac0764d979c3e7c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686386"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912052"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>A Azure Security Center Standard bevezetése a fokozott biztonság érdekében
 Frissítsen Security Center szabványra, hogy kihasználhassa a fokozott biztonság kezelése és a fenyegetések elleni védelem előnyeit a hibrid felhőalapú számítási feladatokhoz. Megpróbálkozhat a standard szintű ingyenes kipróbálással is. További információért tekintse meg a Security Center [díjszabási oldalát](https://azure.microsoft.com/pricing/details/security-center/) .
 
-Security Center Standard tartalma:
+A standard szintű Security Center a következőket tartalmazza:
 
-- **Hibrid biztonság** – az összes helyszíni és Felhőbeli számítási feladatra kiterjedő egységes biztonsági nézet. Alkalmazza a biztonsági házirendeket, és folyamatosan mérje fel a hibrid Felhőbeli számítási feladatok biztonságát a biztonsági normáknak való megfelelés biztosítása érdekében. Többféle forrásból, például tűzfalakból és más partneri megoldásból származó biztonsági adatokat gyűjthet, kereshet és elemezhet.
-- Komplex **veszélyforrások észlelése** – a speciális elemzések és a Microsoft intelligens biztonsági gráf segítségével megkezdheti a fejlődő cyber-támadások előnyeit. A beépített viselkedéselemzés és a gépi tanulás használatával azonosíthatja a támadásokat és a biztonsági rések nulladik napi kihasználását. Figyelheti a bejövő támadásokat és az incidens utáni tevékenységeket a hálózatokon, a gépeken és a felhőszolgáltatásokon. Interaktív eszközökkel és fenyegetésekkel kapcsolatos környezetalapú tudásbázissal egyszerűsítheti a vizsgálatot.
+- **Hibrid biztonság** – az összes helyszíni és Felhőbeli számítási feladatra kiterjedő egységes biztonsági nézet. Alkalmazza a biztonsági házirendeket, és folyamatosan mérje fel a hibrid Felhőbeli számítási feladatok biztonságát a biztonsági normáknak való megfelelés biztosítása érdekében. Különböző forrásokból, például tűzfalakból és egyéb partneri megoldásokból származó biztonsági adatokat gyűjthet, kereshet és elemez.
+- **Biztonsági riasztások** – speciális elemzések és a Microsoft intelligens biztonsági gráf használata a fejlődő cyber-támadásokkal szemben. A támadásokat és a napi használatot lehetővé téve a beépített viselkedés-elemzés és a gépi tanulás kihasználása. Figyelheti a hálózatokat, a gépeket és a Felhőbeli szolgáltatásokat a beérkező támadásokhoz és a szabálysértés utáni tevékenységekhez. Egyszerűsítse a nyomozást az interaktív eszközökkel és a kontextusbeli fenyegetések intelligenciával.
 - **Hozzáférés és alkalmazás-vezérlőelemek** – a kártevők és más nemkívánatos alkalmazások letiltása az adott számítási feladatokhoz igazított engedélyezési Javaslatok alkalmazásával és a gépi tanulással. Csökkentse a hálózati támadási felületet az Azure-beli virtuális gépeken futó felügyeleti portok igény szerinti, felügyelt hozzáférésével, drasztikusan csökkentve a találgatásos és más hálózati támadásokkal szembeni kitettséget.
 
 ## <a name="detecting-unprotected-resources"></a>Nem védett erőforrások észlelése
@@ -42,7 +42,7 @@ A teljes Azure-előfizetést a standard szintre is frissítheti, amelyet az elő
 ## <a name="upgrade-an-azure-subscription-or-workspace"></a>Azure-előfizetés vagy-munkaterület frissítése
 Előfizetés vagy munkaterület frissítése a standard szintre:
 1. A Security Center főmenüjében válassza az **Első lépések** elemet.
-  ![Első lépések](./media/security-center-onboarding/get-started.png)
+  ![Bevezetés](./media/security-center-onboarding/get-started.png)
 2. A **Frissítés** területen a Security Center felsorolja az előkészítésre jogosult előfizetéseket és munkaterületeket. 
    - A **Próbaverzió alkalmazása** elemre kattintva megtekintheti előfizetéseinek és munkaterületeinek listáját, valamint a próbaidőszakkal kapcsolatos jogosultsági állapotukat.
    -    Frissítheti azokat az előfizetéseket és munkaterületeket, amelyek nem jogosultak a próbaidőszakra.
@@ -63,7 +63,7 @@ A Security Center a nem Azure-számítógépek biztonsági állapotát is képes
 1. Visszatérés a **kezdéshez**.
 2. Válassza a **Bevezetés** lapot.
 
-   ![Nem Azure](./media/security-center-onboarding/non-azure.png)
+   ![Non-Azure](./media/security-center-onboarding/non-azure.png)
 
 3. Kattintson az **Új nem Azure-beli számítógépek hozzáadása** pont alatt található **Konfigurálás** elemre. Megjelenik a Log Analytics-munkaterületek listája. Ha van ilyen, a lista tartalmazza azt az alapértelmezett munkaterületet is, amelyet a Security Center hozott létre, amikor az automatikus kiépítés engedélyezve volt. Válassza ki ezt a munkaterületet, vagy egy másik használni kívánt munkaterületet.
 
@@ -105,7 +105,7 @@ A következő ábrán látható módon adhat hozzá számítógépet amunkafolya
 
    A **közvetlen ügynök** panel egy hivatkozást tartalmaz egy Windows-vagy Linux-ügynök letöltésére, valamint az ügynök konfigurálásához használandó munkaterület-azonosítóra és kulcsokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a cikkből megtudhatta, hogyan végezheti el az Azure-beli és nem Azure-erőforrások bevezetését az Security Center fokozott biztonságának kihasználása érdekében. A beérkező erőforrásokkal kapcsolatos további információkért lásd:
 
 - [Az adatgyűjtés engedélyezése](security-center-enable-data-collection.md)

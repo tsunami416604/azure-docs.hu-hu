@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: e47c7d7c4e982604814b227544a98bb301a20105
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5fb54e812e72b9393ffdf632085d0f32ab8b1988
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980108"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918359"
 ---
-# <a name="virtual-network-peering"></a>Virtuális hálózatok közötti társviszony létesítése
+# <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
 A virtuális hálózatok társításával zökkenőmentesen csatlakoztathatók az [Azure Virtual Network](virtual-networks-overview.md)-beli hálózatok. A virtuális hálózatok a kapcsolati céloknak megfelelően jelennek meg. A virtuális gépek közötti forgalom a Microsoft gerinc-infrastruktúrát használja. Az azonos hálózatban lévő virtuális gépek közötti forgalomhoz hasonlóan a forgalmat csak a Microsoft *magánhálózati* hálózata irányítja át.
 
@@ -39,7 +39,7 @@ A virtuális társhálózatok akár helyi, akár globális létesítésének el�
 
 A társított virtuális hálózatok közti hálózati adatforgalom nem nyilvános. A virtuális hálózatok közötti forgalom a Microsoft gerinchálózatán belül marad. A virtuális hálózatok közti forgalomhoz nincs szükség nyilvános internetre, átjárókra vagy titkosításra.
 
-## <a name="connectivity"></a>Kapcsolódás
+## <a name="connectivity"></a>Kapcsolatok
 
 A egyenrangú virtuális hálózatok esetében bármelyik virtuális hálózat erőforrásai közvetlenül kapcsolódhatnak a virtuális hálózatban lévő erőforrásokhoz.
 
@@ -101,16 +101,16 @@ A virtuális hálózati társítások létrehozásához szükséges engedélyekk
 
 A virtuális hálózatokat összekapcsoló kapcsolatot használó bejövő és kimenő forgalom névleges díja. További információ: [Virtual Network díjszabása](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Az átjáró-átvitel egy olyan társítási tulajdonság, amely lehetővé teszi, hogy a virtuális hálózatok a VPN/ExpressRoute átjárót használják egy társ virtuális hálózatban. Az átjárók közötti átvitel mind a létesítmények, mind a hálózat és a hálózat közötti kapcsolat esetében működik. Az átjáró felé irányuló (bejövő vagy kimenő) forgalom a virtuális hálózatban lévő virtuális hálózatok közötti hálózati társítási díjak. További információkért VPN Gateway tekintse meg a ExpressRoute-átjáró díjainak [díjszabását](https://azure.microsoft.com/pricing/details/vpn-gateway/) a VPN Gateway díjaival és a ExpressRoute-átjáró díjszabásával kapcsolatban.
+Az átjáró-átvitel egy olyan társítási tulajdonság, amely lehetővé teszi, hogy a virtuális hálózatok a VPN/ExpressRoute átjárót használják egy társ virtuális hálózatban. Az átjárók közötti átvitel mind a létesítmények, mind a hálózat és a hálózat közötti kapcsolat esetében működik. Az átjáróra (bejövő vagy kimenő forgalomra) irányuló forgalmat a virtuális hálózatban található, a küllős VNet (vagy nem átjáró VNet) tartozó virtuális hálózati társítási díjak jelentik. További információkért VPN Gateway tekintse meg a ExpressRoute-átjáró díjainak [díjszabását](https://azure.microsoft.com/pricing/details/vpn-gateway/) a VPN Gateway díjaival és a ExpressRoute-átjáró díjszabásával kapcsolatban.
 
 >[!NOTE]
-> A dokumentum egy korábbi verziója azt állapította meg, hogy a virtuális hálózati társítási díjak nem lesznek érvényesek az átjáró átvitelére. Mostantól a díjszabási oldalon a pontos díjszabást tükrözi.
+> A dokumentum egy korábbi verziója azt állapította meg, hogy a virtuális hálózati társítási díjak nem vonatkoznak a küllős VNet (vagy nem átjáró VNet) az átjáró-Átvitelsel. Mostantól a díjszabási oldalon a pontos díjszabást tükrözi.
 
 ## <a name="next-steps"></a>Következő lépések
 
 * Két virtuális hálózat közötti társítást hozhat létre. A hálózatok ugyanahhoz az előfizetéshez, különböző üzembe helyezési modellekhez tartozhatnak ugyanabban az előfizetésben, vagy eltérő előfizetésekben is. Végezzen el egy oktatóanyagot a következő forgatókönyvek egyikéhez:
 
-    |Azure üzembehelyezési modell             | Előfizetés  |
+    |Azure üzembehelyezési modell             | Előfizetést  |
     |---------                          |---------|
     |Mindkét Resource Manager              |[Ugyanaz](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[Különböző](create-peering-different-subscriptions.md)|

@@ -10,14 +10,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 80b13cb9a926837604e2a10fed75b976ba3393b6
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bf4c7e9fc623ad7dc74b6da943232d5c558d43a4
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934920"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920263"
 ---
-# <a name="custom-script-extension-for-windows"></a>Egyéni parancsfájl-bővítmény a Windowshoz
+# <a name="custom-script-extension-for-windows"></a>Egyéniszkript-bővítmény Windows rendszerre
 
 Az egyéni szkriptek bővítménye letölti és végrehajtja a parancsfájlokat az Azure Virtual Machines szolgáltatásban. Ez a bővítmény az üzembe helyezési konfiguráció, a Szoftvertelepítés vagy bármely egyéb konfigurációs vagy felügyeleti feladat után hasznos. A szkriptek az Azure Storage-ból vagy a GitHubról tölthetők le, illetve megadhatók az Azure Portalon a bővítmény futásidejében. Az egyéni szkriptek bővítménye Azure Resource Manager-sablonokkal integrálódik, és az Azure CLI, a PowerShell, a Azure Portal vagy az Azure virtuális gép REST API használatával futtatható.
 
@@ -42,7 +42,7 @@ Ha külsőleg le kell töltenie egy parancsfájlt, például a GitHubról vagy a
 
 Ha a parancsfájl egy helyi kiszolgálón található, akkor továbbra is szükség lehet további tűzfal-és hálózati biztonsági csoport portjainak megnyitására.
 
-### <a name="tips-and-tricks"></a>tippek és trükkök
+### <a name="tips-and-tricks"></a>Tippek és trükkök
 
 * Ennek a bővítménynek a legnagyobb meghibásodási aránya a parancsfájl szintaktikai hibái miatt történik, és a parancsfájl futtatása hiba nélkül fut, és a parancsfájlba további naplózást is végez, így könnyebben megtalálhatja a sikertelenség helyét.
 * Idempotens parancsfájlokat írhat. Ez biztosítja, hogy ha véletlenül újra futnak, a rendszer nem fog változásokat okozni.
@@ -63,7 +63,7 @@ Az egyéni szkriptek bővítményének konfigurációja meghatározza a parancsf
 
 A bizalmas adatokat egy védett konfigurációban tárolhatja, amely titkosítva van, és csak a virtuális gépen végez visszafejtést. A védett konfiguráció akkor hasznos, ha a végrehajtási parancs titkos kódokat, például jelszót tartalmaz.
 
-Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bővítmények által védett beállítások konfigurációjában. Az Azure virtuálisgép-bővítmény védett beállítási adatbeállításai titkosítottak, és csak a célként megadott virtuális gépen lettek visszafejtve.
+Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bővítmények által védett beállítások konfigurációjában. Az Azure VM-bővítmény védett beállítás adatok titkosítva, és csak az átjárót tartalmazó a cél virtuális gépen.
 
 ```json
 {
@@ -108,19 +108,19 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 > [!NOTE]
 > Ezt a sémát a VirtualMachine-erőforráson belül vagy önálló erőforrásként is használhatja. Az erőforrás nevének "virtualMachineName/extensionName" formátumúnak kell lennie, ha ez a bővítmény önálló erőforrásként van használatban az ARM-sablonban. 
 
-### <a name="property-values"></a>Tulajdonságértékek
+### <a name="property-values"></a>Tulajdonságok értékei
 
-| Name (Név) | Érték/példa | Adattípus |
+| Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
-| Publisher | Microsoft.Compute | sztring |
+| publisher | Microsoft.Compute | sztring |
 | type | CustomScriptExtension | sztring |
 | typeHandlerVersion | 1,10 | int |
 | fileUris (például) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | tömb |
-| időbélyeg (például) | 123456789 | 32 bites egész szám |
-| commandToExecute (például) | PowerShell – ExecutionPolicy nem korlátozott – fájl configure-Music-app. ps1 | sztring |
-| storageAccountName (például) | examplestorageacct | sztring |
-| storageAccountKey (például) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | sztring |
+| timestamp (például:) | 123456789 | 32 bites egész szám |
+| commandToExecute (például) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | sztring |
+| storageAccountName (például:) | examplestorageacct | sztring |
+| storageAccountKey (például) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | sztring |
 | managedIdentity (például) | {} vagy {"clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} vagy {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | JSON-objektum |
 
 >[!NOTE]
@@ -187,7 +187,7 @@ Ha a felhasználó által hozzárendelt identitást szeretné használni a cél 
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. Az előző szakaszban részletezett JSON-séma használható Azure Resource Manager sablonban az egyéni szkriptek bővítmény futtatásához az üzembe helyezés során. Az alábbi példák azt mutatják be, hogyan használható az egyéni szkriptek bővítménye:
+Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletezett JSON-séma használható Azure Resource Manager sablonban az egyéni szkriptek bővítmény futtatásához az üzembe helyezés során. Az alábbi példák azt mutatják be, hogyan használható az egyéni szkriptek bővítménye:
 
 * [Oktatóanyag: virtuálisgép-bővítmények üzembe helyezése Azure Resource Manager-sablonokkal](../../azure-resource-manager/templates/template-tutorial-deploy-vm-extensions.md)
 * [Kétszintű alkalmazás üzembe helyezése a Windowsban és az Azure SQL DB-ben](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
@@ -274,6 +274,8 @@ A méretezési csoport egyéni parancsfájl-bővítményének üzembe helyezés�
 
 ## <a name="classic-vms"></a>A klasszikus virtuális gépeket
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 Az egyéni szkriptek klasszikus virtuális gépeken való üzembe helyezéséhez használhatja a Azure Portal vagy a klasszikus Azure PowerShell parancsmagokat.
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -302,7 +304,7 @@ Set-AzureVMCustomScriptExtension -VM $vm -FileUri $fileUri -Run 'Create-File.ps1
 $vm | Update-AzureVM
 ```
 
-## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
+## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -328,7 +330,7 @@ ahol a `<n>` decimális egész szám, amely a bővítmény végrehajtásai köz�
 
 A `commandToExecute` parancs végrehajtásakor a bővítmény beállítja ezt a könyvtárat (például `...\Downloads\2`) az aktuális munkakönyvtárként. Ez a folyamat lehetővé teszi a relatív elérési utak használatát, hogy megkeresse a letöltött fájlokat a `fileURIs` tulajdonságon keresztül. Példákért tekintse meg az alábbi táblázatot.
 
-Mivel az abszolút letöltési útvonal az idő múlásával változhat, érdemes lehet a relatív parancsfájl-/fájlelérési útvonalakat a `commandToExecute` sztringben választani, ha lehetséges. Példa:
+Mivel az abszolút letöltési útvonal az idő múlásával változhat, érdemes lehet a relatív parancsfájl-/fájlelérési útvonalakat a `commandToExecute` sztringben választani, ha lehetséges. Például:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""

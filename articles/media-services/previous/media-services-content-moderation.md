@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: a8560df6120dd773e13dbfc7427d9a16e6f6c83b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895999"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914317"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Az Azure Media Content Moderator használata a lehetséges felnőtt és a zamatos tartalmak észleléséhez 
+
+> [!NOTE]
+> Az **Azure media Content moderator** adathordozó-processzora megszűnik. A lejárati dátumért tekintse meg az [örökölt összetevőkkel](legacy-components.md) foglalkozó témakört.
 
 ## <a name="overview"></a>Áttekintés
 Az **Azure media Content moderator** Media Processor (mp) lehetővé teszi, hogy a videókhoz gépi támogatással rendelkező moderálást használjon. Például előfordulhat, hogy szeretné észlelni az esetleges felnőtt vagy kényes tartalmakat a videókban, majd egy emberi moderátorcsapattal kívánja felülvizsgáltatni a megjelölt tartalmakat.
@@ -47,10 +50,10 @@ A kimeneti JSON a következő elemeket tartalmazza:
 | Elem | Leírás |
 | --- | --- |
 | version |A Content Moderator verziója. |
-| időskála |A videó másodpercenkénti száma. |
-| eltolás |Időeltolás az időbélyegek esetében. A video API-k 1,0-es verziójában ez az érték mindig 0 lesz. Ez az érték a jövőben változhat. |
+| timescale |A videó másodpercenkénti száma. |
+| offset |Időeltolás az időbélyegek esetében. A video API-k 1,0-es verziójában ez az érték mindig 0 lesz. Ez az érték a jövőben változhat. |
 | frameráta |Képkockák másodpercenkénti száma a videóban. |
-| szélesség |A kimeneti videó keretének szélessége képpontban megadva|
+| szélessége |A kimeneti videó keretének szélessége képpontban megadva|
 | magasság |A kimeneti videó keretének magassága képpontban megadva|
 | TotalDuration |A bemeneti videó időtartama "ketyeg". |
 | [töredékek](#fragments-json-elements) |A metaadatok a töredékek nevű különböző szegmensekben vannak kiosztva. Az egyes töredékek egy kezdő, időtartam, intervallum és esemény (ek) alapú, automatikusan észlelt shot. |

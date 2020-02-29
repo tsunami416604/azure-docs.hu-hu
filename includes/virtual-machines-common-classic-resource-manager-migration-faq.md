@@ -8,20 +8,28 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: c923dfed24253ce2e3551c13a457f19d155a1e40
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068453"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912570"
 ---
+## <a name="what-is-the-time-required-for-migration"></a>Mennyi idő szükséges az áttelepítéshez?
+
+Az áttelepítés megtervezése és végrehajtása nagy mértékben függ az architektúra összetettségétől, és eltarthat néhány hónapig.  
+
+## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>Mi a IaaS virtuális gépek (klasszikus) új ügyfelének definíciója?
+
+Azok az ügyfelek, akik nem rendelkeznek a IaaS virtuális gépekkel (klasszikus) az előfizetésekben a 2020 Febrauary (egy hónappal az elavult indítás előtt), új ügyfélnek számítanak. 
+
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Érinti ez a migrálási terv az Azure virtuális gépeken futó meglévő szolgáltatásaimat és alkalmazásaimat? 
 
-Nem. A virtuális gépek (klasszikus modell) általánosan rendelkezésre álló, teljes mértékben támogatott szolgáltatások. Továbbra is használhatja ezeket az erőforrásokat, és akár ki is terjesztheti működését a Microsoft Azure-ban.
+A IaaS virtuális gépek (klasszikus) 2023. március 1-ig nem. A IaaS virtuális gépek (klasszikus) teljes körűen támogatott szolgáltatások, általánosan elérhetők. Továbbra is használhatja ezeket az erőforrásokat, és akár ki is terjesztheti működését a Microsoft Azure-ban. 2023. március 1-től ezek a virtuális gépek teljes mértékben kimaradnak, és minden aktív vagy lefoglalt virtuális gép leáll & fel lesz foglalva. Más klasszikus erőforrások, például a Cloud Services (klasszikus), a Storage-fiókok (klasszikus) stb. nem lesznek hatással.   
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Mi történik a virtuális gépeimmel, ha nem tervezek migrálni a közeljövőben? 
 
-A meglévő klasszikus API-kat és erőforrásmodellt nem tervezzük kivezetni. Szeretnénk könnyebbé tenni a migrálást, figyelembe véve a Resource Manager-alapú üzemi modellben elérhető fejlett szolgáltatásokat. Határozottan javasoljuk, hogy tekintse át a Resource Manager alatt az IaaS részeként elérhető [fejlesztett szolgáltatásokat](../articles/azure-resource-manager/management/deployment-models.md).
+2023. március 1-től a IaaS virtuális gépek (klasszikus) teljes mértékben ki lesznek vonva, és minden aktív vagy lefoglalt virtuális gép leáll & fel lesz foglalva. Az üzleti hatás elkerülése érdekében az áttelepítés megtervezése még ma megkezdődött, és 2023. március 1. előtt elvégezhető. Nem elavult a meglévő klasszikus API-k, Cloud Services és az erőforrás-modell. Szeretnénk könnyebbé tenni a migrálást, figyelembe véve a Resource Manager-alapú üzemi modellben elérhető fejlett szolgáltatásokat. Javasoljuk, hogy az erőforrások áttelepítésének megtervezése Azure Resource Manager. 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>Milyen hatással lesz a migrálási terv a meglévő eszközállományomra? 
 
@@ -37,7 +45,7 @@ A migrálás bármikor megszakítható, amíg az erőforrások előkészített �
 
 ## <a name="can-i-roll-back-my-migration-if-the-commit-operation-fails"></a>Visszafordíthatom a migrálást, ha a véglegesítési művelet meghiúsul? 
 
-A migrálás nem szakítható meg, ha a véglegesítés művelet meghiúsul. Minden migrálási művelet, beleértve a véglegesítés műveletet is, idempotens. Ezért azt javasoljuk, hogy rövid idő elteltével próbálkozzon újra a művelettel. Ha továbbra is hibát észlel, hozzon létre egy támogatási jegyet, vagy hozzon létre egy fórumot a [Microsoft Q & a webhelyen](https://docs.microsoft.com/answers/index.html).
+A migrálás nem szakítható meg, ha a véglegesítés művelet meghiúsul. Minden migrálási művelet, beleértve a véglegesítés műveletet is, idempotens. Ezért azt javasoljuk, hogy rövid idő elteltével próbálkozzon újra a művelettel. Ha továbbra is hibát észlel, hozzon létre egy támogatási jegyet.
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Kell új ExpressRoute-kapcsolatcsoportot beszereznem, ha az IaaS-t a Resource Manager alatt kell használnom? 
 

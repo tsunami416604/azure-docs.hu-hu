@@ -1,0 +1,31 @@
+---
+author: mmacy
+ms.service: active-directory-b2c
+ms.subservice: B2C
+ms.topic: include
+ms.date: 02/27/2020
+ms.author: marsma
+ms.openlocfilehash: fc70fb163ae1f6198f66743a739a0d9720f764f1
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912400"
+---
+## <a name="ropc-flow-notes"></a>ROPC-folyamatok megjegyzései
+Azure Active Directory B2C (Azure AD B2C) esetén a következő lehetőségek támogatottak:
+
+- **Natív ügyfél**: a hitelesítés során felhasználói interakció történik, ha a kód egy felhasználói oldali eszközön fut. Az eszköz lehet egy natív operációs rendszer, például Android és iOS rendszerű mobil alkalmazás.
+- **Nyilvános ügyféloldali folyamat**: a rendszer csak az alkalmazás által összegyűjtött felhasználói hitelesítő adatokat TOVÁBBÍTJA az API-hívásban. Az alkalmazás hitelesítő adatai nem lesznek elküldve.
+- **Új jogcímek hozzáadása**: az azonosító jogkivonat tartalma módosítható új jogcímek hozzáadásához.
+
+A következő folyamatok nem támogatottak:
+
+- **Kiszolgálók közötti**kapcsolat: az Identity Protection rendszernek megbízható IP-címet kell begyűjtenie a hívótól (a natív ügyféltől) a beavatkozás részeként. Kiszolgálóoldali API-hívás esetén csak a kiszolgáló IP-címe van használatban. Ha túllépi a sikertelen hitelesítések dinamikus küszöbértékét, az Identity Protection rendszer azonosíthatja az ismétlődő IP-címet támadóként.
+- **Bizalmas ügyféloldali folyamat**: az alkalmazás ügyfél-azonosítója érvényesítve van, de az alkalmazás titkos kulcsa nincs érvényesítve.
+
+A ROPC folyamat használatakor vegye figyelembe a következőket:
+
+- A ROPC nem működik, ha megszakad a felhasználói beavatkozást igénylő hitelesítési folyamat. Ha például egy jelszó lejárt vagy meg kell változtatnia, többtényezős hitelesítésre van szükség, vagy ha a bejelentkezés során további adatokat kell gyűjteni (például felhasználói beleegyezik).
+- A ROPC csak a helyi fiókokat támogatja. A felhasználók nem jelentkezhetnek be olyan összevont identitás-szolgáltatókkal, mint például a Microsoft, a Google +, a Twitter, az AD-FS vagy a Facebook.
+- A munkamenet-kezelés, beleértve a bejelentkezett KMSI is, nem alkalmazható.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 482154a37334b056719a18355f87b467d4fe95c7
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 2aeb2ab4cfb4ed5e8652638aaced320cc7119d3e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604255"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919481"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Több-bérlős felügyelet a Security Center
 
@@ -50,7 +50,7 @@ A nézetek és a műveletek alapvetően azonosak. Néhány példa:
 - **Szervizeléssel kapcsolatos javaslatok**: a különböző bérlők számos erőforrására [vonatkozó javaslatok](security-center-recommendations.md) figyelése és szervizelése egyszerre. Ezután azonnal megoldhatja azokat a biztonsági réseket, amelyek a legnagyobb kockázatot jelentik az összes bérlő esetében.
 - **Riasztások kezelése**: [riasztások](security-center-alerts-overview.md) észlelése a különböző bérlők között. Tegyen lépéseket olyan erőforrásokra, amelyek nem felelnek meg a gyakorlatban használható [szervizelési lépéseknek](security-center-managing-and-responding-alerts.md).
 
-- A **speciális Cloud Defense-funkciók kezelése és egyebek**: kezelheti a veszélyforrások észlelésének és védelmének különböző funkcióit, például az igény szerinti [(JIT)](security-center-just-in-time.md)virtuálisgép-hozzáférést, az [adaptív hálózatok megerősítését](security-center-adaptive-network-hardening.md), az [adaptív alkalmazások felügyeletét](security-center-adaptive-application.md)és egyebeket.
+- A **speciális Cloud Defense-funkciók kezelése és egyebek**: a veszélyforrások elleni védelem különböző szolgáltatásainak kezelése, például az igény szerinti [(JIT)](security-center-just-in-time.md)virtuálisgép-hozzáférés, az [adaptív hálózatok megerősítése](security-center-adaptive-network-hardening.md), az [adaptív alkalmazások vezérlése](security-center-adaptive-application.md)stb.
  
 ## <a name="next-steps"></a>Következő lépések
 Ez a cikk bemutatja, hogyan működik a több-bérlős felügyelet a Security Centerban. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:

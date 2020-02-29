@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: eef9a99e4c94fa45e21abfc9d19fcef1230ffe76
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: afa9437a00c6f30688c7942feea94f7db7ed490a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75944676"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919345"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Rövid útmutató: a hosszú formátumú hang aszinkron szintézise a Pythonban (előzetes verzió)
 
@@ -30,7 +30,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * Python 2.7. x vagy 3. x.
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)vagy a kedvenc szövegszerkesztője.
-* Egy Azure-előfizetés és egy Speech Service-előfizetési kulcs. [Hozzon létre egy Azure-fiókot](../../get-started.md#try-the-speech-service-using-a-new-azure-account) , és [hozzon létre egy beszédfelismerési erőforrást](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) a kulcs lekéréséhez. A beszédfelismerési erőforrás létrehozásakor győződjön meg arról, hogy a díjszabási szintje **S0**, és a hely egy [támogatott régióra](../../regions.md#standard-and-neural-voices)van beállítva.
+* Egy Azure-előfizetés és egy Speech Service-előfizetési kulcs. [Hozzon létre egy Azure-fiókot](../../get-started.md#new-resource) , és [hozzon létre egy beszédfelismerési erőforrást](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) a kulcs lekéréséhez. A beszédfelismerési erőforrás létrehozásakor győződjön meg arról, hogy a díjszabási szintje **S0**, és a hely egy [támogatott régióra](../../regions.md#standard-and-neural-voices)van beállítva.
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 

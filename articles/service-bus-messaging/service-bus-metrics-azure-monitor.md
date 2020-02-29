@@ -9,35 +9,35 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 569eb31c6cbe8b95773d52f6e1325801fbabf86f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 329b930c950ea7c58bdac798fce51af152aa8ff3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773552"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920603"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor Azure Service Bus metrikák
 
-Service Bus mérőszámok az Azure-előfizetésében lévő erőforrások állapotát adják meg. A metrikai adatok gazdag készletével a Service Bus erőforrásainak általános állapotát, és nem csak a névtér szintjén, hanem az entitás szintjén is mérhető. Ezek a statisztikák fontosak lehetnek, mivel segítenek a Service Bus állapotának figyelésében. A metrikák az Azure-támogatáshoz való kapcsolódás nélkül is segíthetnek a hibák elhárításában.
+Service Bus mérőszámok az Azure-előfizetésében lévő erőforrások állapotát adják meg. A metrikai adatok gazdag készletével a Service Bus erőforrásainak általános állapotát, és nem csak a névtér szintjén, hanem az entitás szintjén is mérhető. Ezek a statisztikák fontosak lehetnek, mivel segítenek a Service Bus állapotának figyelésében. Metrikák is segít kiváltó problémák elhárítása anélkül, hogy forduljon az Azure ügyfélszolgálatához.
 
-A Azure Monitor egységes felhasználói felületet biztosít a különböző Azure-szolgáltatások figyelésére. További információkért lásd: [Microsoft Azure figyelése](../monitoring-and-diagnostics/monitoring-overview.md) és a [Azure monitor metrikáinak beolvasása](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) a githubon .net-minta használatával.
+Az Azure Monitor egységes felhasználói felületet biztosít a különböző Azure-szolgáltatások figyelésére. További információkért lásd: [Microsoft Azure figyelése](../monitoring-and-diagnostics/monitoring-overview.md) és a [Azure monitor metrikáinak beolvasása](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) a githubon .net-minta használatával.
 
 > [!IMPORTANT]
 > Ha egy entitáshoz 2 órán keresztül nem történt interakció, a metrikák a "0" értéket fogják megmutatni, amíg az entitás már nem tétlen.
 
-## <a name="access-metrics"></a>Hozzáférési metrikák
+## <a name="access-metrics"></a>Access-metrikák
 
-Azure Monitor több módszert biztosít a metrikák eléréséhez. A mérőszámokat a [Azure Portalon](https://portal.azure.com)keresztül érheti el, vagy használhatja a Azure monitor API-kat (REST és .net) és az elemzési megoldásokat, például a Azure monitor naplókat és Event Hubseket. További információ: [Azure monitor mérőszámai](../azure-monitor/platform/data-platform-metrics.md).
+Az Azure Monitor hozzáférés metrikák több módot is biztosít. A mérőszámokat a [Azure Portalon](https://portal.azure.com)keresztül érheti el, vagy használhatja a Azure monitor API-kat (REST és .net) és az elemzési megoldásokat, például a Azure monitor naplókat és Event Hubseket. További információ: [Azure monitor mérőszámai](../azure-monitor/platform/data-platform-metrics.md).
 
-A metrikák alapértelmezés szerint engedélyezve vannak, és a legutóbbi 30 nap adatait is elérheti. Ha hosszabb ideig kell megőriznie az adatokat, archiválhatja a metrikák adatait egy Azure Storage-fiókba. Ez az érték a Azure Monitor [diagnosztikai beállításaiban](../azure-monitor/platform/diagnostic-settings.md) van konfigurálva.
+Alapértelmezés szerint engedélyezve vannak a metrikákat, és elérheti az utolsó 30 nap adatait. Ha szeretne egy hosszabb ideig megőrizni az adatokat, úgy archiválhatók metrikák adatai egy Azure Storage-fiókhoz. Ez az érték a Azure Monitor [diagnosztikai beállításaiban](../azure-monitor/platform/diagnostic-settings.md) van konfigurálva.
 
-## <a name="access-metrics-in-the-portal"></a>Hozzáférési metrikák a portálon
+## <a name="access-metrics-in-the-portal"></a>Hozzáférés mérőszámok portálon
 
-A metrikák a [Azure Portalban](https://portal.azure.com)is megfigyelhetők. Az alábbi példa bemutatja, hogyan tekintheti meg a sikeres kérelmeket és a bejövő kérelmeket a fiók szintjén:
+A metrikák a [Azure Portalban](https://portal.azure.com)is megfigyelhetők. Az alábbi példa bemutatja, hogyan sikeres kérések és a fiók szintjén a bejövő kérelmek megtekintése:
 
 ![][1]
 
-A metrikákat közvetlenül a névtér használatával is elérheti. Ehhez válassza ki a névteret, majd kattintson a **metrikák**elemre. Az entitás hatókörére szűrt metrikák megjelenítéséhez válassza ki az entitást, majd kattintson a **metrikák**elemre.
+Metrikák a névtér keresztül közvetlenül is elérheti. Ehhez válassza ki a névteret, majd kattintson a **metrikák**elemre. Az entitás hatókörére szűrt metrikák megjelenítéséhez válassza ki az entitást, majd kattintson a **metrikák**elemre.
 
 ![][2]
 
@@ -47,26 +47,26 @@ A dimenziókat támogató metrikák esetében a kívánt dimenzió értékkel ke
 
 A Azure Monitor metrikáit és riasztásait riasztási alapon számítjuk fel. Ezeknek a díjaknak elérhetőnek kell lenniük a portálon a riasztás beállításakor és a Mentés előtt. 
 
-A metrikák adatait tartalmazó további megoldásokat közvetlenül ezek a megoldások számlázzák. Ha például az Azure Storage-ba számít, ha egy Azure Storage-fiókba archiválja a metrikákat. A Log Analytics számlázása akkor is történik, ha a metrikák adatait a speciális elemzéshez Log Analyticsre továbbítják.
+A metrikák adatait tartalmazó további megoldásokat közvetlenül ezek a megoldások számlázzák. Ha például számítjuk fel az Azure Storage által archiválja mérőszámok az Azure Storage-fiók. A Log Analytics számlázása akkor is történik, ha a metrikák adatait a speciális elemzéshez Log Analyticsre továbbítják.
 
-A következő mérőszámok áttekintést nyújtanak a szolgáltatás állapotáról. 
+Az alábbi mérőszámok segítségével a szolgáltatás állapotának áttekintése. 
 
 > [!NOTE]
-> Számos mérőszámot elavultunk, mert más néven vannak áthelyezve. Előfordulhat, hogy frissítenie kell a hivatkozásokat. Az "elavult" kulcsszóval jelölt mérőszámok nem lesznek támogatottak.
+> Más néven áthelyezett azt rendszer kivezetése több metrikát. Ehhez szükség lehet, hogy a hivatkozások frissítését. Metrikák, a "elavult" kulcsszó megjelölve a jövőben nem támogatja.
 
-Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részletessége határozza meg azt az időintervallumot, ameddig a metrikák értékei bemutatva lesznek. Az összes Service Bus-metrika támogatott időintervalluma 1 perc.
+Az összes értékeihez kapnak az Azure Monitor percenként. Az idő részletessége határozza meg az időintervallum, amelynek metrikák jelennek meg. Az összes Service Bus-metrika támogatott időintervalluma 1 perc.
 
-## <a name="request-metrics"></a>Kérelmek metrikái
+## <a name="request-metrics"></a>Kérelem-metrikák
 
-Megszámolja az adatok és a felügyeleti műveleti kérelmek számát.
+Számít az adatok és a felügyeleti műveletek kérések száma.
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| Bejövő kérelmek| A Service Bus szolgáltatásnak megadott időszakon keresztül küldött kérések száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
-|Sikeres kérések|A Service Bus szolgáltatásnak adott időszakon keresztül végrehajtott sikeres kérelmek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
-|Kiszolgálói hibák|A Service Bus szolgáltatás hibája miatt nem feldolgozott kérelmek száma egy adott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
-|Felhasználói hibák (lásd a következő szakaszt)|A megadott időszakban felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
-|Szabályozott kérelmek|A lekért kérelmek száma, mert túllépte a használatot.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+| Bejövő kérelmek| A Service Bus szolgáltatásnak megadott időszakon keresztül küldött kérések száma. <br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Sikeres kérések|A Service Bus szolgáltatásnak adott időszakon keresztül végrehajtott sikeres kérelmek száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Kiszolgálói hibák|A Service Bus szolgáltatás hibája miatt nem feldolgozott kérelmek száma egy adott időszakban.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Felhasználói hibák (lásd a következő szakaszt)|Egy meghatározott időtartamon belül a felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Szabályozott kérelmek|A lekért kérelmek száma, mert túllépte a használatot.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
 
 ### <a name="user-errors"></a>Felhasználói hibák
 
@@ -76,22 +76,29 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 2. Az üzenetek feldolgozásakor előforduló hibák, például a [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception).
 
 
-## <a name="message-metrics"></a>Üzenet metrikái
+## <a name="message-metrics"></a>Üzenet-metrikák
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|Bejövő üzenetek|A megadott időszakban Service Bus küldött események vagy üzenetek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
-|Kimenő üzenetek|A Service Bus a megadott időszakban fogadott események vagy üzenetek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
-| Üzenetek| Üzenetsor vagy témakör üzeneteinek száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Dimenzió: EntityName |
-| ActiveMessages| Üzenetsor vagy témakör aktív üzeneteinek száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Dimenzió: EntityName |
-| Kézbesítetlen üzenetek| Egy várólistában vagy témakörben lévő kézbesítetlen üzenetek száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/>Dimenzió: EntityName |
-| Ütemezett üzenetek| Az üzenetsor/témakör ütemezett üzeneteinek száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag  <br/> Dimenzió: EntityName |
+|Bejövő üzenetek|A megadott időszakban Service Bus küldött események vagy üzenetek száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+|Kimenő üzenetek|A Service Bus a megadott időszakban fogadott események vagy üzenetek száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+| Üzenetek| Üzenetsor vagy témakör üzeneteinek száma. <br/><br/> Egység: száma <br/> Összesítés típusa: átlag <br/> Dimenzió: EntityName |
+| ActiveMessages| Üzenetsor vagy témakör aktív üzeneteinek száma. <br/><br/> Egység: száma <br/> Összesítés típusa: átlag <br/> Dimenzió: EntityName |
+| Kézbesítetlen üzenetek| Egy várólistában vagy témakörben lévő kézbesítetlen üzenetek száma. <br/><br/> Egység: száma <br/> Összesítés típusa: átlag <br/>Dimenzió: EntityName |
+| Ütemezett üzenetek| Az üzenetsor/témakör ütemezett üzeneteinek száma. <br/><br/> Egység: száma <br/> Összesítés típusa: átlag  <br/> Dimenzió: EntityName |
 
-## <a name="connection-metrics"></a>Kapcsolatok metrikái
+> [!NOTE]
+> A következő metrikák értékei az időponthoz tartozó értékek. Előfordulhat, hogy az adott időpontot követően azonnal felhasznált bejövő üzenetek nem jelennek meg ezekben a metrikákban. 
+> - Üzenetek
+> - Aktív üzenetek 
+> - Kézbesítetlen üzenetek 
+> - Ütemezett üzenetek 
+
+## <a name="connection-metrics"></a>Kapcsolati metrika
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|Aktív kapcsolatai|A névtérben található aktív kapcsolatok száma, valamint az entitások.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|ActiveConnections|A névtér, valamint egy entitására aktív kapcsolatok száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
 
 ## <a name="resource-usage-metrics"></a>Erőforrás-használati metrikák
 
@@ -103,9 +110,9 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 |CPU-használat/névtér|A névtér százalékos CPU-használata.<br/><br/> Egység: százalék <br/> Összesítés típusa: maximum <br/> Dimenzió: EntityName|
 |Memória méretének használata névtérben|A névtér százalékos memória-használata.<br/><br/> Egység: százalék <br/> Összesítés típusa: maximum <br/> Dimenzió: EntityName|
 
-## <a name="metrics-dimensions"></a>Metrikák méretei
+## <a name="metrics-dimensions"></a>Metrikák dimenziók
 
-A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támogatja. Nem kötelező dimenziókat hozzáadni a metrikához. Ha nem ad hozzá dimenziókat, a metrikák a névtér szintjén vannak megadva. 
+A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támogatja. A metrikák dimenziók hozzáadása nem kötelező. Ha nem adja hozzá a dimenziók, a metrikák a névterek szintjén vannak megadva. 
 
 |Dimenzió neve|Leírás|
 | ------------------- | ----------------- |

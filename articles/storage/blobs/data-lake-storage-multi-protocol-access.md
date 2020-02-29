@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/01/2019
+ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f34c5d5069a158579864320d0fbf965de8936d9c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e3997fc215637175165402a926bffc6ac8d02771
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896113"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914858"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Több protokollos hozzáférés Azure Data Lake Storage
 
@@ -26,7 +26,11 @@ A Data Lake Storage többprotokollos hozzáférése révén az adataival az eszk
 A blob Storage olyan funkciói, mint a [diagnosztikai naplózás](../common/storage-analytics-logging.md), a [hozzáférési szintek](storage-blob-storage-tiers.md)és a [blob Storage életciklus-kezelési szabályzatai](storage-lifecycle-management-concepts.md) mostantól hierarchikus névtérrel rendelkező fiókokkal működnek. Ezért a blob Storage-fiókokban is engedélyezheti a hierarchikus névtereket anélkül, hogy ezekhez a fontos funkciókhoz kellene hozzáférni. 
 
 > [!NOTE]
-> A több protokollon keresztüli hozzáférés Data Lake Storage általánosan elérhető, és minden régióban elérhető. A több protokollos hozzáférés által engedélyezett Azure-szolgáltatások vagy blob Storage-funkciók előzetes verzióban maradnak. További információért tekintse meg a jelen cikk egyes szakaszaiban található táblázatokat. 
+> A több protokollon keresztüli hozzáférés Data Lake Storage általánosan elérhető, és minden régióban elérhető. A több protokollos hozzáférés által engedélyezett Azure-szolgáltatások vagy blob Storage-funkciók előzetes verzióban maradnak.  Ezek a cikkek összefoglalják a blob Storage-funkciók és az Azure-szolgáltatások integrációjának jelenlegi támogatását. 
+>
+> [Blob Storage elérhető szolgáltatások a Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)
+>
+>[Az Azure Data Lake Storage Gen2t támogató Azure-szolgáltatások](data-lake-storage-supported-azure-services.md)
 
 ## <a name="how-multi-protocol-access-on-data-lake-storage-works"></a>A multi-Protocol-hozzáférés a (z) adatközpont-tárolóban
 
@@ -36,62 +40,12 @@ A blob API-k és a Data Lake Storage Gen2 API-k ugyanazon az adattárban működ
 
 A blob API-t használó meglévő eszközök és alkalmazások automatikusan hozzáférhetnek ezekhez az előnyökhöz. A fejlesztőknek nem kell módosítaniuk azokat. Data Lake Storage Gen2 konzisztensen alkalmazza a címtár-és a fájl szintű ACL-eket, függetlenül attól, hogy az eszközök és az alkalmazások milyen protokollt használnak az adateléréshez. 
 
-## <a name="blob-storage-feature-support"></a>BLOB Storage szolgáltatás támogatása
+## <a name="see-also"></a>Lásd még
 
-A több protokollon keresztüli hozzáférés Data Lake Storage lehetővé teszi, hogy több blob Storage-szolgáltatást használjon a Data Lake Storage. Ez a táblázat felsorolja azokat a funkciókat, amelyeket az Data Lake Storage több protokollos hozzáférése engedélyez. 
-
-Az ebben a táblázatban megjelenő elemek a blob Storage-szolgáltatások támogatása során továbbra is változnak. 
-
-> [!NOTE]
-> Bár a több protokollos hozzáférés a Data Lake Storage általánosan elérhető, a szolgáltatások némelyikének támogatása előzetes verzióban marad. 
-
-|BLOB Storage szolgáltatás | Támogatási szint |
-|---|---|
-|[Lassú elérési szint](storage-blob-storage-tiers.md)|Általánosan elérhető|
-|BLOB REST API-k|Általánosan elérhető|
-|BLOB SDK-k |Általánosan elérhető|
-|[PowerShell (blob)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Általánosan elérhető|
-|[CLI (blob)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Általánosan elérhető|
-|[Értesítések Azure Event Grid keresztül](data-lake-storage-events.md)|Általánosan elérhető|
-|BLOB SDK-k fájlrendszer-szemantikai szolgáltatással ([.net](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-dotnet) &vert; [Python](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-python) &vert; [Java](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-java))|Előzetes verzió|
-|[PowerShell fájlrendszer-szemantikai beállításokkal](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-powershell)|Előzetes verzió|
-|[CLI fájlrendszer-szemantikai beállításokkal](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-cli)|Előzetes verzió|
-|[Diagnosztikai naplók](../common/storage-analytics-logging.md)| Előzetes verzió|
-|[Életciklus-kezelési szabályzatok](storage-lifecycle-management-concepts.md)| Előzetes verzió|
-|[Archivált adatok hozzáférési szintje](storage-blob-storage-tiers.md)| Előzetes verzió|
-|[blobfuse](storage-how-to-mount-container-linux.md)|Még nem támogatott|
-|[Megváltoztathatatlan tároló](storage-blob-immutable-storage.md)|Még nem támogatott|
-|[Pillanatképek](storage-blob-snapshots.md)|Még nem támogatott|
-|[Helyreállítható törlés](storage-blob-soft-delete.md)|Még nem támogatott|
-|[Statikus webhelyek](storage-blob-static-website.md)|Még nem támogatott|
-
-Ha többet szeretne megtudni az általános ismert problémákról és a Azure Data Lake Storage Gen2ekkel kapcsolatos korlátozásokról, tekintse meg az [ismert problémák](data-lake-storage-known-issues.md)című témakört.
-
-## <a name="azure-ecosystem-support"></a>Azure ökoszisztéma-támogatás
-
-A többprotokollos hozzáférés Data Lake Storage is lehetővé teszi, hogy további Azure-szolgáltatásokat csatlakoztasson a Data Lake Storage. Ez a táblázat felsorolja azokat a szolgáltatásokat, amelyeket a Data Lake Storage a multi-Protocol hozzáférése engedélyez. 
-
-Akárcsak a támogatott blob Storage-funkciók listája, az ebben a táblázatban megjelenő elemek idővel változnak, ahogy az Azure-szolgáltatások támogatása továbbra is bővül. 
-
-> [!NOTE]
-> Bár a több protokollos hozzáférés Data Lake Storage általánosan elérhető, a szolgáltatások némelyikének támogatása előzetes verzióban marad. 
-
-|Azure-szolgáltatás | Támogatási szint |
-|---|---|
-|[Azure Data Box](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|Általánosan elérhető|
-|[Azure Event Hubs rögzítés](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|Általánosan elérhető|
-|[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal)|Általánosan elérhető|
-|[IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|Általánosan elérhető|
-|[Logikai alkalmazások](https://azure.microsoft.com/services/logic-apps/)|Általánosan elérhető|
-|[Azure-Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|Előzetes verzió|
-
-Az Data Lake Storage Gen2 Azure ökoszisztéma-támogatásának teljes listájáért lásd: a [Azure Data Lake Storage integrálása az Azure-szolgáltatásokkal](data-lake-storage-integrate-with-azure-services.md).
-
-Ha többet szeretne megtudni az általános ismert problémákról és a Azure Data Lake Storage Gen2ekkel kapcsolatos korlátozásokról, tekintse meg az [ismert problémák](data-lake-storage-known-issues.md)című témakört.
-
-## <a name="next-steps"></a>Következő lépések
-
-[Ismert problémák](data-lake-storage-known-issues.md)
+- [Blob Storage elérhető szolgáltatások a Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)
+- [Az Azure Data Lake Storage Gen2t támogató Azure-szolgáltatások](data-lake-storage-supported-azure-services.md)
+- [A Azure Data Lake Storage Gen2t támogató nyílt forráskódú platformok](data-lake-storage-supported-open-source-platforms.md)
+- [Ismert problémák a Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md)
 
 
 

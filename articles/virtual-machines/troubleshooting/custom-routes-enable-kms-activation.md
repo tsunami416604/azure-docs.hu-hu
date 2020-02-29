@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 47ff8870df7c89ee2ab3e48e064e31aa581f65f0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748638"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920161"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>A Windows aktiválása sikertelen a kényszerített bújtatási forgatókönyvben
 
@@ -36,9 +36,9 @@ Az Azure Windows rendszerű virtuális gépeknek csatlakozniuk kell az Azure KMS
 
 A probléma megoldásához használja az Azure egyéni útvonalát az aktiválási forgalom Azure KMS-kiszolgálóra történő átirányításához.
 
-Az Azure globális felhőhöz tartozó KMS-kiszolgáló IP-címe 23.102.135.246. A DNS-neve kms.core.windows.net. Ha más Azure-platformokat, például az Azure Germany-t használja, akkor a megfelelő KMS-kiszolgáló IP-címét kell használnia. További információkért tekintse meg a következő táblázatot:
+Az Azure globális felhőhöz tartozó KMS-kiszolgáló IP-címe 23.102.135.246. Its DNS name is kms.core.windows.net. Ha más Azure-platformokat, például az Azure Germany-t használja, akkor a megfelelő KMS-kiszolgáló IP-címét kell használnia. További információkért tekintse meg a következő táblázatot:
 
-|Platform| KMS DNS|KMS IP-CÍM|
+|Platform| KMS DNS|KMS IP|
 |------|-------|-------|
 |Azure globális|kms.core.windows.net|23.102.135.246|
 |Azure Germany|kms.core.cloudapi.de|51.4.143.248|
@@ -85,6 +85,8 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
 
 ### <a name="for-classic-vms"></a>Klasszikus virtuális gépek esetén
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 1. Nyissa meg Azure PowerShell, majd [Jelentkezzen be az Azure-előfizetésbe](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Futtassa az alábbi parancsot:
 
@@ -109,7 +111,7 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
 
 4. Próbálja meg aktiválni a Windowst, és ellenőrizze, hogy megoldódott-e a probléma.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [KMS-ügyfél telepítési kulcsai](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
 )

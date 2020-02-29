@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 4991fe9fb06d0a49da3e0404f0362c85f15571af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d39ac40e8e29c7ff90e2accc3a519449571c1d58
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152295"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917407"
 ---
 # <a name="execute-r-script"></a>R-szkript végrehajtása
 
@@ -130,6 +130,8 @@ azureml_main <- function(dataframe1, dataframe2){
 Az **r-szkriptek végrehajtása** modulok több kimenetet is visszaadhatnak, de r-adatkeretként kell megadni őket. Az adatkereteket a rendszer automatikusan átalakítja a tervezőben lévő adatkészletekbe a más modulokkal való kompatibilitás érdekében.
 
 Az R standard üzeneteit és hibáit a rendszer visszaadja a modul naplójába.
+
+Ha az eredményeket az R-szkriptben kell kinyomtatnia, a kinyomtatott eredményeket a modul jobb oldali paneljének **kimenet + naplók** lapján található **70_driver_log** alatt találja.
 
 ## <a name="sample-scripts"></a>Mintaparancsfájlok
 
@@ -278,7 +280,7 @@ A használható előre telepített R-csomagok aktuális listája:
 | fürt      | 2.0.7 – 1    | 
 | codetools    | 0.2 – 16     | 
 | színtér   | 1.4 – 1      | 
-| Fordítóprogram     | 3.5.1      | 
+| fordítóprogram     | 3.5.1      | 
 | zsírkréta       | 1.3.4      | 
 | Curl         | 3.3        | 
 | az adattábla   | 1.12.2     | 

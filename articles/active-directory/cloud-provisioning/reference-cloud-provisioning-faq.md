@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2067bea25dae05c496c81929ae65d00565bf4f1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: fbc1baa86bb81c8975587e84427a72ccc044805e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020760"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916574"
 ---
-# <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect – gyakori kérdések
+# <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect GYIK
 
 További információ az Azure Active Directory (Azure AD) felhőalapú kiépítés összekapcsolásával kapcsolatos gyakori kérdésekről.
 
@@ -71,6 +71,14 @@ Nem, a Felhőbeli kiépítés nem támogatja az MS-DS-consistencyGUID visszaír�
 **K: kiépítem a felhasználókat a felhőalapú kiépítés használatával. Törölte a konfigurációt. Miért látom tovább a régi szinkronizált objektumokat az Azure AD-ben?** 
 
 A konfiguráció törlésekor a Felhőbeli kiépítés nem törli a szinkronizált objektumokat az Azure AD-ben. Annak biztosítása érdekében, hogy a régi objektumok ne legyenek, módosítsa a konfiguráció hatókörét egy üres csoportra vagy szervezeti egységre. Miután a kiépítés megtisztítja az objektumokat, tiltsa le és törölje a konfigurációt. 
+
+**K: mit jelent az, hogy az Exchange Hybrid nem támogatott?**
+
+Az Exchange hibrid telepítés lehetővé teszi, hogy az Exchange postafiókok a helyszínen és az Office 365-ben egy időben létezzenek. Azure AD Connect az attribútumok egy adott készletét szinkronizálja az Azure AD-ből a helyszíni címtárba.  A felhőalapú kiépítési ügynök jelenleg nem szinkronizálja ezeket az attribútumokat a helyszíni címtárba, így a Azure AD Connect helyett nem használható.
+
+**K: telepíthetem a Cloud kiépítési ügynököt a Windows Server Core-ra?**
+
+Nem, a Server Core-ügynök telepítése nem támogatott.
 
 ## <a name="next-steps"></a>Következő lépések 
 

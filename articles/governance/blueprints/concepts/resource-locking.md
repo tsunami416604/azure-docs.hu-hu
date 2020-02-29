@@ -1,14 +1,14 @@
 ---
 title: Az erőforrás-zárolás megismerése
 description: Ismerje meg az Azure-tervrajzok zárolási lehetőségeit, amelyekkel biztosíthatja az erőforrások számára a tervrajzok kiosztását.
-ms.date: 04/24/2019
+ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1491af0ddfb0f6f5fbea322bd00dc9838c155983
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057345"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919872"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Az erőforrások zárolásának megismerése az Azure-tervekben
 
@@ -33,6 +33,56 @@ A tervrajz-hozzárendelésekben az összetevők által létrehozott erőforráso
 Általában előfordulhat, hogy valaki megfelelő [szerepköralapú hozzáférés-vezérléssel](../../../role-based-access-control/overview.md) (RBAC) rendelkezik az előfizetésben, például a "tulajdonos" szerepkört, amely lehetővé teszi az erőforrások módosítását vagy törlését. Ez a hozzáférés nem vonatkozik arra az esetre, amikor a tervrajzok egy üzembe helyezett hozzárendelés részeként a zárolást alkalmazza. Ha a hozzárendelés **csak olvasási** vagy nem **törlési** beállítással lett beállítva, akkor még az előfizetés tulajdonosa is elvégezheti a letiltott műveletet a védett erőforráson.
 
 Ez a biztonsági mérték védi a definiált terv és az olyan környezet egységességét, amelyet véletlen vagy programozott törlés vagy módosítás alapján hoztak létre.
+
+### <a name="assign-at-management-group"></a>Hozzárendelés felügyeleti csoportban
+
+Egy további lehetőség, amely megakadályozza, hogy az előfizetések tulajdonosai a terv hozzárendelésének eltávolítását egy felügyeleti csoportba rendelje. Ebben az esetben csak a felügyeleti csoport **tulajdonosai** rendelkeznek a terv-hozzárendelés eltávolításához szükséges engedélyekkel.
+
+Ha a tervet egy előfizetés helyett egy felügyeleti csoporthoz szeretné rendelni, a REST API a következőképpen fog megjelenni:
+
+```http
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
+```
+
+`{assignmentMG}` által definiált felügyeleti csoportnak a felügyeleti csoport hierarchiájában kell lennie, vagy a terv definícióját tartalmazó felügyeleti csoportnak kell lennie.
+
+A terv-hozzárendelés kérelem törzse a következőképpen néz ki:
+
+```json
+{
+    "identity": {
+        "type": "SystemAssigned"
+    },
+    "location": "eastus",
+    "properties": {
+        "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
+        "blueprintId": "/providers/Microsoft.Management/managementGroups/{blueprintMG}/providers/Microsoft.Blueprint/blueprints/simpleBlueprint",
+        "scope": "/subscriptions/{targetSubscriptionId}",
+        "parameters": {
+            "storageAccountType": {
+                "value": "Standard_LRS"
+            },
+            "costCenter": {
+                "value": "Contoso/Online/Shopping/Production"
+            },
+            "owners": {
+                "value": [
+                    "johnDoe@contoso.com",
+                    "johnsteam@contoso.com"
+                ]
+            }
+        },
+        "resourceGroups": {
+            "storageRG": {
+                "name": "defaultRG",
+                "location": "eastus"
+            }
+        }
+    }
+}
+```
+
+A kérelem törzsében és az előfizetéshez rendelt egyik fő különbség a `properties.scope` tulajdonság. Ezt a kötelező tulajdonságot arra az előfizetésre kell beállítani, amelyre a terv-hozzárendelés vonatkozik. Az előfizetésnek a felügyeleti csoport hierarchiájának közvetlen gyermekének kell lennie, ahol a terv-hozzárendelést tárolja.
 
 ## <a name="removing-locking-states"></a>Zárolási állapotok eltávolítása
 
@@ -61,7 +111,7 @@ Az egyes üzemmódok [megtagadási hozzárendeléseinek tulajdonságai](../../..
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>Tag kizárása egy megtagadási hozzárendelésből
 
-Bizonyos tervezési vagy biztonsági helyzetekben szükség lehet egy rendszerbiztonsági tag kizárására a terv-hozzárendelés által létrehozott [megtagadási hozzárendelésből](../../../role-based-access-control/deny-assignments.md) . Ezt REST API úgy végezheti el, hogy a [hozzárendelés létrehozásakor](/rest/api/blueprints/assignments/createorupdate)legfeljebb öt értéket ad hozzá a **excludedPrincipals** tömbhöz a **zárolások** tulajdonságban. Ez egy példa egy kérelem törzsére, amely tartalmazza a **excludedPrincipals**:
+Bizonyos tervezési vagy biztonsági helyzetekben szükség lehet egy rendszerbiztonsági tag kizárására a terv-hozzárendelés által létrehozott [megtagadási hozzárendelésből](../../../role-based-access-control/deny-assignments.md) . Ez a lépés REST API történik, ha a [hozzárendelés létrehozásakor](/rest/api/blueprints/assignments/createorupdate)a **zárolások** tulajdonságban legfeljebb öt értéket ad hozzá a **excludedPrincipals** tömbhöz. A következő hozzárendelési definíció egy példa a **excludedPrincipals**tartalmazó kérelem törzsére:
 
 ```json
 {

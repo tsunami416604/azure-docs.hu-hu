@@ -12,14 +12,16 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: d43176e04337c2faf7be0bea682428056bc4ab46
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 20e64e5225987a8045e406a0e8fcae098c580c61
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059199"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913378"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>A klasszikus üzemi modellben a foglalási hibákra vonatkozó forgatókönyvekre vonatkozó hibaelhárítási lépések
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 A következő gyakori foglalási forgatókönyvek a kiosztási kérelmek rögzítését okozzák. A jelen cikk későbbi részében ismertetjük az egyes forgatókönyveket.
 
@@ -48,7 +50,7 @@ Upgrade_VMSizeNotSupported vagy GeneralError
 
 A virtuális gép átméretezésére, vagy egy virtuális gép vagy szerepkör-példány meglévő felhőalapú szolgáltatásba való hozzáadására vonatkozó kérést a meglévő felhőalapú szolgáltatást futtató eredeti fürtön kell megkísérelni. Egy új felhőalapú szolgáltatás létrehozása lehetővé teszi, hogy az Azure platform megkeresse az ingyenes erőforrásokkal rendelkező másik fürtöt, vagy támogatja a kért virtuálisgép-méretet.
 
-**Megkerülő megoldás**
+**Áthidaló megoldás**
 
 Ha a hiba Upgrade_VMSizeNotSupported *, próbálkozzon egy másik virtuálisgép-mérettel. Ha eltérő virtuálisgép-méretet használ, de ha más virtuális IP-cím (VIP) használatát szeretné használni, hozzon létre egy új felhőalapú szolgáltatást az új virtuális gép üzemeltetéséhez, és adja hozzá az új felhőalapú szolgáltatást arra a regionális virtuális hálózatra, ahol a meglévő virtuális gépek futnak. Ha a meglévő felhőalapú szolgáltatás nem használ regionális virtuális hálózatot, akkor is létrehozhat egy új virtuális hálózatot az új felhőalapú szolgáltatáshoz, majd a meglévő virtuális hálózatot összekapcsolhatjuk [az új virtuális hálózattal](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). További információ a [regionális virtuális hálózatokról](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
@@ -63,7 +65,7 @@ GeneralError*
 
 A részleges felszabadítás azt jelenti, hogy egy vagy több, de nem az összes virtuális gép leállt (felszabadítása) egy felhőalapú szolgáltatásban. Ha leállítja (felszabadítja) a virtuális gépet, a rendszer kibocsátja a kapcsolódó erőforrásokat. A leállított (felszabadítási) virtuális gép újraindítása ezért új foglalási kérelem. Egy részlegesen lefoglalt felhőalapú szolgáltatásban lévő virtuális gépek újraindítása egyenértékű a virtuális gépek meglévő felhőalapú szolgáltatásba való hozzáadásával. A foglalási kérelmet a meglévő felhőalapú szolgáltatást futtató eredeti fürtön kell megkísérelni. Egy másik felhőalapú szolgáltatás létrehozása lehetővé teszi az Azure platform számára, hogy megkeresse az ingyenes erőforrással rendelkező másik fürtöt, vagy támogatja a kért virtuálisgép-méretet.
 
-**Megkerülő megoldás**
+**Áthidaló megoldás**
 
 Ha egy másik virtuális IP-cím használatára van lehetőség, törölje a leállított (lefoglalt) virtuális gépeket (de tartsa meg a kapcsolódó lemezeket), és adja hozzá a virtuális gépeket egy másik felhőalapú szolgáltatáshoz. Regionális virtuális hálózat használata a Cloud Services összekapcsolásához:
 
@@ -79,7 +81,7 @@ GeneralError*
 
 A teljes felszabadítás azt jelenti, hogy az összes virtuális gép leállt (felszabadítása) egy felhőalapú szolgáltatásból. A virtuális gépek újraindítására vonatkozó foglalási kérelmeket a felhőalapú szolgáltatást futtató eredeti fürtön kell megkísérelni. Egy új felhőalapú szolgáltatás létrehozása lehetővé teszi, hogy az Azure platform megkeresse az ingyenes erőforrásokkal rendelkező másik fürtöt, vagy támogatja a kért virtuálisgép-méretet.
 
-**Megkerülő megoldás**
+**Áthidaló megoldás**
 
 Ha más virtuális IP-címet szeretne használni, törölje az eredeti leállított (felszabadított) virtuális gépeket (de tartsa meg a kapcsolódó lemezeket), és törölje a megfelelő felhőalapú szolgáltatást (a társított számítási erőforrások már fel lettek szabadítva a virtuális gépek leállításakor (felszabadítva). Hozzon létre egy új felhőalapú szolgáltatást a virtuális gépek újbóli hozzáadásához.
 
@@ -92,7 +94,7 @@ New_General * vagy New_VMSizeNotSupported *
 
 Egy felhőalapú szolgáltatás átmeneti üzembe helyezése és éles üzembe helyezése ugyanabban a fürtben történik. A második központi telepítés hozzáadásakor a rendszer a megfelelő foglalási kérelmet ugyanazon a fürtön kísérli meg, amely az első telepítést üzemelteti.
 
-**Megkerülő megoldás**
+**Áthidaló megoldás**
 
 Törölje az első üzembe helyezést és az eredeti felhőalapú szolgáltatást, majd telepítse újra a felhőalapú szolgáltatást. Ez a művelet egy olyan fürt első üzembe helyezését teszi lehetővé, amely elegendő szabad erőforrással rendelkezik ahhoz, hogy mindkét központi telepítéshez vagy olyan fürthöz illeszkedjen, amely támogatja a kért virtuálisgép-méreteket.
 
@@ -105,7 +107,7 @@ New_General * vagy New_VMSizeNotSupported *
 
 Az affinitási csoporthoz rendelt számítási erőforrások egy fürthöz vannak kötve. Az adott affinitási csoportban lévő új számítási erőforrás-kérelmeket ugyanabban a fürtben kísérli meg, amelyben a meglévő erőforrások futnak. Ez igaz, hogy az új erőforrások egy új felhőalapú szolgáltatáson vagy egy meglévő felhőalapú szolgáltatáson keresztül jönnek létre.
 
-**Megkerülő megoldás**
+**Áthidaló megoldás**
 
 Ha nincs szükség affinitási csoportra, ne használjon affinitási csoportot, vagy csoportosítsa a számítási erőforrásokat több affinitási csoportba.
 
@@ -116,9 +118,9 @@ New_General * vagy New_VMSizeNotSupported *
 
 **A fürt kitűzésének oka**
 
-A regionális virtuális hálózatok bevezetése előtt hozzá kell rendelnie egy affinitási csoporttal rendelkező virtuális hálózatot. Ennek eredményeképpen az affinitási csoportba helyezett számítási erőforrásokra ugyanazok a korlátozások vonatkoznak, mint a foglalási forgatókönyvben leírtak szerint: A fenti affinitási csoport (virtuális gép/szolgáltatás közelsége) című szakasza. A számítási erőforrások egy fürthöz vannak kötve.
+A regionális virtuális hálózatok bevezetése előtt hozzá kell rendelnie egy affinitási csoporttal rendelkező virtuális hálózatot. Ennek eredményeképpen az affinitási csoportba helyezett számítási erőforrásokra ugyanazok a korlátozások vonatkoznak, mint a fenti "kiosztási forgatókönyv: affinitási csoport (virtuális gép/szolgáltatás közelsége)" című szakaszban leírtak szerint. A számítási erőforrások egy fürthöz vannak kötve.
 
-**Megkerülő megoldás**
+**Áthidaló megoldás**
 
 Ha nincs szüksége affinitási csoportra, hozzon létre egy új regionális virtuális hálózatot a felvenni kívánt új erőforrásokhoz, majd [kapcsolja össze meglévő virtuális hálózatát az új virtuális hálózattal](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). További információ a [regionális virtuális hálózatokról](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 

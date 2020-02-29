@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 678bef1b18d60679be6c296a1fd7beef42f721b7
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203822"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911726"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Az Azure Data Box biztonsági és adatvédelmi szolgáltatásai
 
@@ -80,13 +80,13 @@ Az Azure Data Box a szolgáltatás alábbi főbb példányaiban gyűjt és jelen
 
   - Kapcsolattartó neve
   - Telefonszám
-  - Email
+  - E-mail
   - Utca, házszám
   - Város
   - Irányítószám
-  - State
+  - Állapot
   - Ország/tartomány/régió
-  - Szállítmányozó számlaszáma
+  - Szállítmányozó fiókszáma
   - Szállítmány nyomkövetési száma
 
     A Data Box a feladat befejezésekor vagy törlésekor törli a rendelés részleteit.
@@ -108,7 +108,7 @@ A Data Box szolgáltatásra a következő biztonsági irányelvek vonatkoznak:
 |[2. szintű FIPS 140-2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | Adatvédelem         |
 |A függelék, ATA-meghajtók esetében a [NIST SP 800 – 88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Adattisztítás         |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Data Box használatára vonatkozó előfeltételek](data-box-system-requirements.md) áttekintése.
 - A [Data Box korlátjainak](data-box-limits.md) értelmezése.

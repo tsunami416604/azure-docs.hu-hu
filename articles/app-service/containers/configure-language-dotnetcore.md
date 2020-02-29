@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat egy előre elkészített ASP.NET
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2019
-ms.openlocfilehash: cab99b9d20ce8a3190eb9aa59650dab32fca324d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 30cd6ad1b5516eb3bc7e858ae364a88ace1b93b3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768418"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917630"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Linux ASP.NET Core-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -38,6 +38,28 @@ Futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com) a .net
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|2.1"
 ```
+
+## <a name="customize-build-automation"></a>A Build Automation testreszabása
+
+Ha a Build Automation használatával git vagy zip csomagok segítségével helyezi üzembe az alkalmazást, akkor a App Service az alábbi lépésekkel hozhat létre automatizálási lépéseket:
+
+1. A `PRE_BUILD_SCRIPT_PATH`által megadott egyéni parancsfájl futtatása.
+1. `dotnet restore` futtatásával állítsa vissza a NuGet függőségeit.
+1. A `dotnet publish` futtatásával hozzon létre egy bináris fájlt éles környezetben.
+1. A `POST_BUILD_SCRIPT_PATH`által megadott egyéni parancsfájl futtatása.
+
+a `PRE_BUILD_COMMAND` és az `POST_BUILD_COMMAND` alapértelmezés szerint üres környezeti változók. Az előkészítő parancsok futtatásához adja meg a `PRE_BUILD_COMMAND`. A létrehozás utáni parancsok futtatásához adja meg a `POST_BUILD_COMMAND`.
+
+A következő példa a két változót adja meg egy több parancshoz, vesszővel elválasztva.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+További környezeti változók a Build Automation testreszabásához: [Oryx-konfiguráció](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+
+A ASP.NET Core alkalmazások Linux rendszeren való futtatásáról és App Serviceáról további információt a [Oryx dokumentációjában talál: a .net Core-alkalmazások észlelése és építése](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md).
 
 ## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
@@ -72,7 +94,7 @@ Ha például a App Service és a *appSettings. JSON*fájlban azonos nevű Alkalm
 
 ## <a name="get-detailed-exceptions-page"></a>Részletes kivételek oldalának beolvasása
 
-Ha a ASP.NET-alkalmazás kivételt hoz létre a Visual Studio debuggerben, a böngésző egy részletes kivétel lapot jelenít meg, de App Service a lapot általános **HTTP 500** -hiba váltja fel, vagy **hiba történt a kérelem feldolgozása során.** üzenet. A App Service részletes kivétel lapjának megjelenítéséhez adja hozzá a `ASPNETCORE_ENVIRONMENT` alkalmazás-beállítást az alkalmazáshoz a <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>következő parancsának futtatásával.
+Ha a ASP.NET-alkalmazás kivételt hoz létre a Visual Studio debuggerben, a böngésző egy részletes kivétel lapot jelenít meg, de App Service a lapot általános **HTTP 500** -hiba váltja fel, vagy **hiba történt a kérelem feldolgozása során.** üzenetet. A App Service részletes kivétel lapjának megjelenítéséhez adja hozzá a `ASPNETCORE_ENVIRONMENT` alkalmazás-beállítást az alkalmazáshoz a <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>következő parancsának futtatásával.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: bb6ad1f131d1299ce1e076fee70e6640e3bdf20a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485080"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913259"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfiguráció áttekintése
 
@@ -256,14 +256,14 @@ Az Azure Application Gateway átjáróval felügyelt cookie-kat használ a felha
 
 Ez a funkció akkor hasznos, ha egy felhasználói munkamenetet szeretne megőrizni ugyanazon a kiszolgálón, és amikor a munkamenet-állapotot helyileg menti a kiszolgálón egy felhasználói munkamenethez. Ha az alkalmazás nem tudja kezelni a cookie-alapú affinitást, nem használhatja ezt a funkciót. A használatához győződjön meg arról, hogy az ügyfelek támogatják a cookie-kat.
 
-A **2020. február 17**-én kezdődően a [Chromium](https://www.chromium.org/Home) [V80 Update](https://chromiumdash.appspot.com/schedule) olyan mandátumot tartalmaz, amelyben a SameSite attribútum nélküli http-cookie-kat SameSite = LAX-ként kell kezelni. CORS (eltérő eredetű erőforrás-megosztási) kérelmek esetén, ha a cookie-t harmadik féltől származó kontextusban kell elküldeni, a "SameSite = None;" értéket kell használnia. Biztonságos "attribútumok, és csak HTTPS protokollal lehet elküldeni. Ellenkező esetben a böngésző nem küldi el a cookie-kat a harmadik féltől származó környezetben. Ennek a frissítésnek a célja, hogy fokozza a biztonságot, és elkerülje a helyek közötti kérelmek hamisításának (CSRF) elleni támadásait. 
+A [Chromium böngésző](https://www.chromium.org/Home) [V80 frissítése](https://chromiumdash.appspot.com/schedule) olyan mandátumot hozott, amelyben a [SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7) attribútum nélküli http-cookie-kat SameSite = LAX-ként kell kezelni. CORS (eltérő eredetű erőforrás-megosztási) kérelmek esetén, ha a cookie-t harmadik féltől származó környezetben kell elküldeni, akkor a SameSite = none értéket kell használnia *. Biztonságos* attribútumok, és csak HTTPS protokollal küldhetők el. Ellenkező esetben a böngészőben a böngésző nem küldi el a cookie-kat a harmadik féltől származó környezetben. Ennek a frissítésnek a célja, hogy fokozza a biztonságot, és elkerülje a helyek közötti kérelmek hamisításának (CSRF) elleni támadásait. 
 
-Ennek a változásnak a támogatásához Application Gateway (az összes SKU-típus) egy másik, **ApplicationGatewayAffinityCORS** nevű cookie-t kell beadnia a meglévő **ApplicationGatewayAffinity** -cookie mellett, amely hasonló, de ez a cookie most még két attribútummal rendelkezik: **"SameSite = None". A biztonságos** Hozzáadás úgy történik, hogy a Sticky-munkamenetek még a származási kérelmek esetében is fennmaradnak.
+Ha támogatni szeretné ezt a változást, február 17 – 2020, Application Gateway (az összes SKU-típus) bekerül egy másik, *ApplicationGatewayAffinityCORS* nevű cookie-t a meglévő *ApplicationGatewayAffinity* -cookie mellett. A *ApplicationGatewayAffinityCORS* -cookie két további attribútummal bővült ( *"SameSite = none; Biztonságos "* ), így a Sticky-munkamenetek még a forráson kívüli kérelmek esetében is megmaradnak.
 
-Vegye figyelembe, hogy az alapértelmezett affinitási cookie neve **ApplicationGatewayAffinity** , és a felhasználók módosíthatják azt. Ha egyéni affinitási cookie-nevet használ, további cookie-t fog hozzáadni a CORS utótagként, például **CustomCookieNameCORS**.
+Vegye figyelembe, hogy az alapértelmezett affinitási cookie neve *ApplicationGatewayAffinity* , és módosítható. Ha egyéni affinitási cookie-nevet használ, további cookie-t adunk hozzá a CORS utótagként. Például: *CustomCookieNameCORS*.
 
 > [!NOTE]
-> Kötelező megadni, hogy ha a **SameSite = none** attribútum be van állítva, a cookie-nak tartalmaznia kell a **biztonságos** jelzőt is, és a **https**protokollon keresztül kell elküldeni. Így ha a CORS-kapcsolaton keresztül szükséges a munkamenet-affinitás, a munkaterhelést HTTPS-re kell áttelepítenie. Tekintse meg az SSL-alapú kiszervezést és a teljes körű SSL-dokumentációt Application Gateway itt – [Áttekintés](ssl-overview.md), [útmutató az SSL-kiszervezés konfigurálásához](create-ssl-portal.md), a [végpontok közötti SSL konfigurálásához](end-to-end-ssl-portal.md).
+> Ha a *SameSite = none* attribútum be van állítva, akkor kötelező, hogy a cookie a *biztonságos* jelzőt is tartalmazza, és HTTPS-kapcsolaton keresztül kell elküldeni.  Ha a CORS-kapcsolaton keresztül szükséges a munkamenet-affinitás, a számítási feladatokat HTTPS-re kell áttelepítenie. Tekintse meg az SSL-alapú kiszervezést és a teljes körű SSL-dokumentációt Application Gateway itt – [Áttekintés](ssl-overview.md), [útmutató az SSL-kiszervezés konfigurálásához](create-ssl-portal.md), a [végpontok közötti SSL konfigurálásához](end-to-end-ssl-portal.md).
 
 ### <a name="connection-draining"></a>Kapcsolatkiürítés
 

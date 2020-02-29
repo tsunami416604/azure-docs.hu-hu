@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3691790b2e47ef43c6742fa912aff8d7777900f8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 977504f41e93e37ae2c5ce9bdb1182a1cfe0a3fd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023701"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917498"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linuxos számítási csomópontok kiépítése a Batch-készletekben
 
@@ -45,10 +45,10 @@ A virtuálisgép-rendszerképek hivatkozásának konfigurálásakor meg kell adn
 
 | **Képhivatkozás tulajdonságai** | **Példa** |
 | --- | --- |
-| Gyártó/kiadó |Canonical |
+| Közzétevő |Canonical |
 | Ajánlat |UbuntuServer |
-| SKU (Cikkszám) |14.04.4-LTS |
-| Verzió |legutóbbi |
+| SKU |18.04-LTS |
+| Verzió |Legújabb |
 
 > [!TIP]
 > További információt ezekről a tulajdonságokról és a Piactéri rendszerképek listázásáról és az Azure-beli [linuxos virtuálisgép-rendszerképek kiválasztásáról a CLI vagy a PowerShell](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használatával című témakörben talál. Vegye figyelembe, hogy a Piactéri lemezképek jelenleg nem kompatibilisek a Batch szolgáltatással. További információ: [Node Agent SKU](#node-agent-sku).
@@ -58,9 +58,9 @@ A virtuálisgép-rendszerképek hivatkozásának konfigurálásakor meg kell adn
 ### <a name="node-agent-sku"></a>Csomópont-ügynök SKU
 A Batch-csomóponti ügynök egy olyan program, amely a készlet minden egyes csomópontján fut, és a parancs-és vezérlési felületet biztosítja a csomópont és a Batch szolgáltatás között. A csomópont-ügynök különböző implementációkat mutat be különböző operációs rendszerekhez. Alapvetően a virtuálisgép-konfiguráció létrehozásakor először meg kell adnia a virtuális gép rendszerképének hivatkozását, majd meg kell adnia a rendszerképre telepítendő csomópont-ügynököt. Az egyes csomópontok ügynökei általában több virtuálisgép-lemezképtel kompatibilisek. Íme néhány példa a Node Agent-SKU-ra:
 
-* Batch. Node. Ubuntu 14,04
+* Batch. Node. Ubuntu 18,04
 * Batch. Node. CentOS 7
-* Batch. Node. Windows amd64
+* batch.node.windows amd64
 
 > [!IMPORTANT]
 > Nem minden, a piactéren elérhető virtuálisgép-rendszerkép kompatibilis a jelenleg elérhető batch Node-ügynökökkel. A Batch SDK-k segítségével listázhatja az elérhető csomópont-ügynök SKU-kat, valamint azokat a virtuálisgép-lemezképeket, amelyekkel kompatibilisek. A jelen cikk későbbi részében található [virtuálisgép-rendszerképek listájáról](#list-of-virtual-machine-images) további információt és példákat talál az érvényes rendszerképek listájának lekéréséhez futásidőben.
@@ -70,7 +70,7 @@ A Batch-csomóponti ügynök egy olyan program, amely a készlet minden egyes cs
 ## <a name="create-a-linux-pool-batch-python"></a>Linux-készlet létrehozása: batch Python
 A következő kódrészlet azt mutatja be, hogyan használható a [Python Microsoft Azure batch ügyféloldali kódtára][py_batch_package] az Ubuntu Server számítási csomópontok készletének létrehozásához. A Batch Python modul dokumentációja az [Azure. batch csomagban][py_batch_docs] található a docs beolvasásához.
 
-Ez a kódrészlet explicit módon létrehoz egy [ImageReference][py_imagereference] , és meghatározza a hozzá tartozó tulajdonságokat (közzétevő, ajánlat, SKU, verzió). Az éles kódban azonban azt javasoljuk, hogy a [list_node_agent_skus][py_list_skus] metódus használatával határozza meg és válassza ki az elérhető rendszerkép-és csomópont-ügynök SKU-kombinációit futásidőben.
+Ez a kódrészlet explicit módon létrehoz egy [ImageReference][py_imagereference] , és meghatározza a hozzá tartozó tulajdonságokat (közzétevő, ajánlat, SKU, verzió). Az éles kódban azonban azt javasoljuk, hogy a [list_supported_images][py_list_supported_images] metódus használatával határozza meg és válassza ki az elérhető rendszerkép-és csomópont-ügynök SKU-kombinációit futásidőben.
 
 ```python
 # Import the required modules from the
@@ -86,7 +86,7 @@ batch_url = "<batch-account-url>"
 
 # Pool settings
 pool_id = "LinuxNodesSamplePoolPython"
-vm_size = "STANDARD_A1"
+vm_size = "STANDARD_D2_V3"
 node_count = 1
 
 # Initialize the Batch client
@@ -109,7 +109,7 @@ new_pool.start_task = start_task
 ir = batchmodels.ImageReference(
     publisher="Canonical",
     offer="UbuntuServer",
-    sku="14.04.2-LTS",
+    sku="18.04-LTS",
     version="latest")
 
 # Create the VirtualMachineConfiguration, specifying
@@ -117,7 +117,7 @@ ir = batchmodels.ImageReference(
 # be installed on the node.
 vmc = batchmodels.VirtualMachineConfiguration(
     image_reference=ir,
-    node_agent_sku_id="batch.node.ubuntu 14.04")
+    node_agent_sku_id="batch.node.ubuntu 18.04")
 
 # Assign the virtual machine configuration to the pool
 new_pool.virtual_machine_configuration = vmc
@@ -126,64 +126,65 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-Ahogy azt korábban említettük, javasoljuk, hogy explicit módon hozza létre a [ImageReference][py_imagereference] , és a [list_node_agent_skus][py_list_skus] metódus használatával dinamikusan válassza ki a jelenleg támogatott csomópont-ügynök/piactér képkombinációt. A következő Python-kódrészlet a módszer használatát mutatja be.
+Ahogy azt korábban említettük, javasoljuk, hogy explicit módon hozza létre a [ImageReference][py_imagereference] , és a [list_supported_images][py_list_supported_images] metódus használatával dinamikusan válassza ki a jelenleg támogatott csomópont-ügynök/piactér képkombinációt. A következő Python-kódrészlet a módszer használatát mutatja be.
 
 ```python
-# Get the list of node agents from the Batch service
-nodeagents = client.account.list_node_agent_skus()
+# Get the list of supported images from the Batch service
+images = client.account.list_supported_images()
 
-# Obtain the desired node agent
-ubuntu1404agent = next(
-    agent for agent in nodeagents if "ubuntu 14.04" in agent.id)
+# Obtain the desired image reference
+image = None
+for img in images:
+  if (img.image_reference.publisher.lower() == "canonical" and
+        img.image_reference.offer.lower() == "ubuntuserver" and
+        img.image_reference.sku.lower() == "18.04-lts"):
+    image = img
+    break
 
-# Pick the first image reference from the list of verified references
-ir = ubuntu1404agent.verified_image_references[0]
+if image is None:
+  raise RuntimeError('invalid image reference for desired configuration')
 
 # Create the VirtualMachineConfiguration, specifying the VM image
 # reference and the Batch node agent to be installed on the node.
 vmc = batchmodels.VirtualMachineConfiguration(
-    image_reference=ir,
-    node_agent_sku_id=ubuntu1404agent.id)
+    image_reference=image.image_reference,
+    node_agent_sku_id=image.node_agent_sku_id)
 ```
 
 ## <a name="create-a-linux-pool-batch-net"></a>Linux-készlet létrehozása: Batch .NET
 A következő kódrészlet azt mutatja be, hogyan használható a [Batch .net][nuget_batch_net] ügyféloldali kódtár az Ubuntu Server számítási csomópontok készletének létrehozásához. A [Batch .net-referenciák dokumentációját][api_net] a docs.microsoft.com találja.
 
-A következő kódrészlet a [PoolOperations][net_pool_ops]használja. [ListNodeAgentSkus][net_list_skus] módszer a jelenleg támogatott Piactéri rendszerkép és a csomóponti ügynök SKU-kombinációinak listájából való kiválasztásához. Ez a módszer azért szükséges, mert a támogatott kombinációk listája időről időre változhat. A rendszer leggyakrabban a támogatott kombinációkat adja hozzá.
+A következő kódrészlet a [PoolOperations][net_pool_ops]használja. [ListSupportedImages][net_list_supported_images] módszer a jelenleg támogatott Piactéri rendszerkép és a csomóponti ügynök SKU-kombinációinak listájából való kiválasztásához. Ez a módszer azért szükséges, mert a támogatott kombinációk listája időről időre változhat. A rendszer leggyakrabban a támogatott kombinációkat adja hozzá.
 
 ```csharp
 // Pool settings
 const string poolId = "LinuxNodesSamplePoolDotNet";
-const string vmSize = "STANDARD_A1";
+const string vmSize = "STANDARD_D2_V3";
 const int nodeCount = 1;
 
 // Obtain a collection of all available node agent SKUs.
 // This allows us to select from a list of supported
 // VM image/node agent combinations.
-List<NodeAgentSku> nodeAgentSkus =
-    batchClient.PoolOperations.ListNodeAgentSkus().ToList();
+List<ImageInformation> images =
+    batchClient.PoolOperations.ListSupportedImages().ToList();
 
-// Define a delegate specifying properties of the VM image
-// that we wish to use.
-Func<ImageReference, bool> isUbuntu1404 = imageRef =>
-    imageRef.Publisher == "Canonical" &&
-    imageRef.Offer == "UbuntuServer" &&
-    imageRef.Sku.Contains("14.04");
-
-// Obtain the first node agent SKU in the collection that matches
-// Ubuntu Server 14.04. Note that there are one or more image
-// references associated with this node agent SKU.
-NodeAgentSku ubuntuAgentSku = nodeAgentSkus.First(sku =>
-    sku.VerifiedImageReferences.Any(isUbuntu1404));
-
-// Select an ImageReference from those available for node agent.
-ImageReference imageReference =
-    ubuntuAgentSku.VerifiedImageReferences.First(isUbuntu1404);
+// Find the appropriate image information
+ImageInformation image = null;
+foreach (var img in images)
+{
+    if (img.ImageReference.Publisher == "Canonical" &&
+        img.ImageReference.Offer == "UbuntuServer" &&
+        img.ImageReference.Sku == "18.04-LTS")
+    {
+        image = img;
+        break;
+    }
+}
 
 // Create the VirtualMachineConfiguration for use when actually
 // creating the pool
 VirtualMachineConfiguration virtualMachineConfiguration =
-    new VirtualMachineConfiguration(imageReference, ubuntuAgentSku.Id);
+    new VirtualMachineConfiguration(image.ImageReference, image.NodeAgentSkuId);
 
 // Create the unbound pool object using the VirtualMachineConfiguration
 // created above
@@ -197,53 +198,18 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 await pool.CommitAsync();
 ```
 
-Bár az előző kódrészlet a [PoolOperations][net_pool_ops]használja. A [ListNodeAgentSkus][net_list_skus] metódust dinamikusan listázhatja és kiválaszthatja a támogatott rendszerkép és a csomópont-ügynök SKU-kombinációi közül (ajánlott), emellett explicit módon is konfigurálhat egy [ImageReference][net_imagereference] :
+Bár az előző kódrészlet a [PoolOperations][net_pool_ops]használja. A [ListSupportedImages][net_list_supported_images] metódust dinamikusan listázhatja és kiválaszthatja a támogatott rendszerkép és a csomópont-ügynök SKU-kombinációi közül (ajánlott), emellett explicit módon is konfigurálhat egy [ImageReference][net_imagereference] :
 
 ```csharp
 ImageReference imageReference = new ImageReference(
     publisher: "Canonical",
     offer: "UbuntuServer",
-    sku: "14.04.2-LTS",
+    sku: "18.04-LTS",
     version: "latest");
 ```
 
 ## <a name="list-of-virtual-machine-images"></a>Virtuálisgép-lemezképek listája
-A következő táblázat felsorolja azokat a Piactéri virtuálisgép-rendszerképeket, amelyek a cikk utolsó frissítésekor a rendelkezésre álló batch-csomóponti ügynökökkel kompatibilisek. Fontos megjegyezni, hogy ez a lista nem végleges, mert a képek és a csomópont-ügynökök bármikor hozzáadhatók vagy eltávolíthatók. Javasoljuk, hogy a Batch-alkalmazások és-szolgáltatások mindig a [list_node_agent_skus][py_list_skus] (Python) vagy a [ListNodeAgentSkus][net_list_skus] (Batch .net) szolgáltatást használják az aktuálisan elérhető SKU-i meghatározásához és kiválasztásához.
-
-> [!WARNING]
-> A következő lista bármikor megváltozhat. Mindig használja a Batch API-k **List csomópont-ügynök SKU** metódusait a Batch-feladatok futtatásakor a kompatibilis virtuális gép és a csomópont-ügynök SKU-jának listázásához.
->
->
-
-| **Közzétevő** | **Ajánlat** | **Rendszerkép SKU** | **Verzió** | **Csomóponti ügynök SKU-azonosítója** |
-| ------------- | --------- | ------------- | ----------- | --------------------- |
-| batch | renderelés – centos73 | renderelési | legutóbbi | Batch. Node. CentOS 7 |
-| batch | renderelés – windows2016 | renderelési | legutóbbi | Batch. Node. Windows amd64 |
-| Canonical | UbuntuServer | 16.04-LTS | legutóbbi | Batch. Node. Ubuntu 16,04 |
-| Canonical | UbuntuServer | 14.04.5-LTS | legutóbbi | Batch. Node. Ubuntu 14,04 |
-| Credativ | Debian | 9 | legutóbbi | Batch. Node. Debian 9 |
-| Credativ | Debian | 8 | legutóbbi | Batch. Node. Debian 8 |
-| Microsoft – ADS | Linux – adattudomány – virtuális gép | linuxdsvm | legutóbbi | Batch. Node. CentOS 7 |
-| Microsoft – ADS | Standard – adattudomány – virtuális gép | Standard – adattudomány – virtuális gép | legutóbbi | Batch. Node. Windows amd64 |
-| Microsoft-Azure-batch | CentOS – tároló | 7-4 | legutóbbi | Batch. Node. CentOS 7 |
-| Microsoft-Azure-batch | CentOS-Container-RDMA | 7-4 | legutóbbi | Batch. Node. CentOS 7 |
-| Microsoft-Azure-batch | Ubuntu – kiszolgáló – tároló | 16-04 – LTS | legutóbbi | Batch. Node. Ubuntu 16,04 |
-| Microsoft-Azure-batch | Ubuntu-Server-Container-RDMA | 16-04 – LTS | legutóbbi | Batch. Node. Ubuntu 16,04 |
-| MicrosoftWindowsServer | WindowsServer | 2016 – Datacenter | legutóbbi | Batch. Node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016 – Datacenter – smalldisk | legutóbbi | Batch. Node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016 – Datacenter – tárolók | legutóbbi | Batch. Node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | legutóbbi | Batch. Node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter-smalldisk | legutóbbi | Batch. Node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | legutóbbi | Batch. Node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012 – Datacenter – smalldisk | legutóbbi | Batch. Node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008 – R2 – SP1 | legutóbbi | Batch. Node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008 – R2 – SP1 – smalldisk | legutóbbi | Batch. Node. Windows amd64 |
-| OpenLogic | CentOS | 7,4 | legutóbbi | Batch. Node. CentOS 7 |
-| OpenLogic | CentOS – HPC | 7,4 | legutóbbi | Batch. Node. CentOS 7 |
-| OpenLogic | CentOS – HPC | 7.3 | legutóbbi | Batch. Node. CentOS 7 |
-| OpenLogic | CentOS – HPC | 7.1 | legutóbbi | Batch. Node. CentOS 7 |
-| Oracle | Oracle – Linux | 7,4 | legutóbbi | Batch. Node. CentOS 7 |
-| SUSE | SLES – HPC | 12 – SP2 | legutóbbi | Batch. Node. openSUSE 42,1 |
+A Batch szolgáltatás és a hozzájuk tartozó csomópont-ügynökök által támogatott Piactéri virtuálisgép-rendszerképek listájának beszerzéséhez használja a [list_supported_images][py_list_supported_images] (Python), a [ListSupportedImages][net_list_supported_images] (Batch .net) vagy a megfelelő API-t a választott nyelvi SDK-ban.
 
 ## <a name="connect-to-linux-nodes-using-ssh"></a>Kapcsolódás Linux-csomópontokhoz SSH használatával
 A fejlesztés során vagy a hibaelhárítás során előfordulhat, hogy be kell jelentkeznie a készletben lévő csomópontokra. A Windows számítási csomópontjaitól eltérően az RDP protokoll (RDP) nem használható Linux-csomópontokhoz való kapcsolódáshoz. Ehelyett a Batch szolgáltatás engedélyezi az SSH-hozzáférést az egyes csomópontokon a távoli kapcsolathoz.
@@ -320,9 +286,9 @@ tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 Jelszó helyett egy nyilvános SSH-kulcsot is megadhat, amikor felhasználót hoz létre egy csomóponton. A Python SDK-ban használja a **ssh_public_key** paramétert a [ComputeNodeUser][py_computenodeuser]. A .NET-ben használja a [ComputeNodeUser][net_computenodeuser]. [SshPublicKey][net_ssh_key] tulajdonság.
 
 ## <a name="pricing"></a>Díjszabás
-Azure Batch az Azure Cloud Servicesra és az Azure Virtual Machines technológiára épül. Maga a Batch szolgáltatás díjmentesen elérhető, ami azt jelenti, hogy csak a Batch-megoldások által felhasznált számítási erőforrásokért kell fizetnie. Ha **Cloud Services konfigurációt**választ, a [Cloud Services díjszabási][cloud_services_pricing] struktúra alapján kell fizetnie. A **virtuális gép konfigurációjának**kiválasztásakor a [Virtual Machines díjszabási][vm_pricing] struktúra alapján kell fizetnie. 
+Azure Batch az Azure Cloud Servicesra és az Azure Virtual Machines technológiára épül. Maga a Batch szolgáltatás díjmentesen érhető el, ami azt jelenti, hogy kizárólag a Batch-megoldások által felhasznált számítási erőforrások (és a hozzájuk kapcsolódó költségek) után kell fizetni. Ha **Cloud Services konfigurációt**választ, a [Cloud Services díjszabási][cloud_services_pricing] struktúra alapján kell fizetnie. A **virtuális gép konfigurációjának**kiválasztásakor a [Virtual Machines díjszabási][vm_pricing] struktúra alapján kell fizetnie.
 
-Ha [alkalmazáscsomag](batch-application-packages.md)használatával helyezi üzembe az alkalmazásokat a Batch-csomópontokon, akkor az alkalmazáscsomag által felhasznált Azure Storage-erőforrásokért is fizetnie kell. Általánosságban elmondható, hogy az Azure Storage-költségek minimálisak. 
+Ha [alkalmazáscsomag](batch-application-packages.md)használatával helyezi üzembe az alkalmazásokat a Batch-csomópontokon, akkor az alkalmazáscsomag által felhasznált Azure Storage-erőforrásokért is fizetnie kell.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -340,7 +306,7 @@ A GitHubon az [Azure-batch-Samples][github_samples] adattárában található [P
 [net_cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [net_computenodeuser]: /dotnet/api/microsoft.azure.batch.computenodeuser?view=azure-dotnet
 [net_imagereference]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.imagereference.aspx
-[net_list_skus]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listnodeagentskus.aspx
+[net_list_supported_images]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages
 [net_pool_ops]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.aspx
 [net_ssh_key]: /dotnet/api/microsoft.azure.batch.computenodeuser.sshpublickey?view=azure-dotnet#Microsoft_Azure_Batch_ComputeNodeUser_SshPublicKey
 [nuget_batch_net]: https://www.nuget.org/packages/Microsoft.Azure.Batch/
@@ -351,6 +317,6 @@ A GitHubon az [Azure-batch-Samples][github_samples] adattárában található [P
 [py_batch_package]: https://pypi.python.org/pypi/azure-batch
 [py_computenodeuser]: /python/api/azure-batch/azure.batch.models.computenodeuser
 [py_imagereference]: /python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference
-[py_list_skus]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python
+[py_list_supported_images]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/

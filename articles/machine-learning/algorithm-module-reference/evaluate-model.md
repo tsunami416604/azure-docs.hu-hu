@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 5951c6ec63478b4b266f22eaf8bf3162e0a45df0
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.date: 02/24/2020
+ms.openlocfilehash: a665ee97f923620bb484243d5cd4904a647969e4
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137550"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917432"
 ---
 # <a name="evaluate-model-module"></a>Modell modul kiértékelése
 
@@ -25,7 +25,8 @@ Ezzel a modullal mérhető a betanított modell pontossága. Olyan adatkészlete
  A **kiértékelési modell** által visszaadott mérőszámok az Ön által kiértékelt modell típusától függenek:  
   
 -   **Besorolási modellek**    
--   **Regressziós modellek**    
+-   **Regressziós modellek**  
+-   **Fürtözési modellek**  
 
 
 > [!TIP]
@@ -72,7 +73,7 @@ A bal oldali porthoz csatolt modellnek vagy adatoknak először a jelentésben k
 
 Az alábbi ábrán például az azonos adatokra épülő két fürtözött modell eredményeinek összehasonlítása, de különböző paraméterekkel.  
 
-![PÉNZMOSÁS&#95;Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
+![Comparing2Models](media/module/evaluate-2-models.png)  
 
 Mivel ez egy fürtözési modell, a kiértékelési eredmények eltérnek, mint ha két regressziós modellből származó pontszámokat hasonlítanak össze, vagy két besorolási modellel hasonlították össze. A teljes bemutató azonban ugyanaz. 
 
@@ -82,10 +83,11 @@ Ez a szakasz a **kiértékelési modellel**használható, adott típusú modelle
 
 + [besorolási modellek](#metrics-for-classification-models)
 + [regressziós modellek](#metrics-for-regression-models)
++ [fürtözési modellek](#metrics-for-clustering-models)
 
 ### <a name="metrics-for-classification-models"></a>Besorolási modellek metrikái
 
-A következő metrikákat kell jelenteni a besorolási modellek kiértékelése során. Ha összehasonlítja a modelleket, azokat a kiértékeléshez kiválasztott metrika rangsorolja.  
+A következő metrikákat kell jelenteni a besorolási modellek kiértékelése során.
   
 -   A **pontosság** a besorolási modell jóságát méri az igaz eredményeknek az összes esethez viszonyított arányában.  
   
@@ -105,7 +107,7 @@ A következő metrikákat kell jelenteni a besorolási modellek kiértékelése 
  
 A regressziós modellekhez visszaadott metrikák a hibák mennyiségének becslésére lettek kialakítva.  A modell akkor tekinthető megfelelőnek, ha a megfigyelt és az előre jelzett értékek közötti különbség kicsi. A maradékok mintázatának (az egy előre jelzett pont és a hozzá tartozó tényleges érték közötti különbség) megvizsgálása azonban sokat jelenthet a modell lehetséges torzításával kapcsolatban.  
   
- A regressziós modellek kiértékeléséhez a következő metrikákat kell jelenteni. A modellek összehasonlításakor a rendszer a kiértékeléshez kiválasztott mérőszám alapján rangsorolja azokat.  
+ A regressziós modellek kiértékeléséhez a következő metrikákat kell jelenteni.
   
 - Az **átlagos abszolút hiba (Mae)** méri, hogy az előrejelzések hogyan zárulnak le a tényleges eredményekhez képest. így jobb az alacsonyabb pontszám.  
   
@@ -118,6 +120,30 @@ A regressziós modellekhez visszaadott metrikák a hibák mennyiségének becsl�
 
   
 - A **meghatározási együttható**(más néven R<sup>2</sup>) a modell prediktív erejét mutatja 0 és 1 közötti értékként. Nulla érték azt jelenti, hogy a modell véletlenszerű (semmit sem jelent); 1 a tökéletes illeszkedést jelenti. Azonban körültekintően kell használni az R<sup>2</sup> értékek értelmezését, mivel az alacsony értékek teljesen normálisak lehetnek, és a magas értékek gyanúja is lehet.
+
+###  <a name="metrics-for-clustering-models"></a>A fürtözési modellek metrikái
+
+Mivel a fürtözési modellek nagy mértékben különböznek a besorolási és a regressziós modelltől, a [modell kiértékelése](evaluate-model.md) a különböző statisztikai adatokat is visszaadja a fürtözési modellekhez.  
+  
+ A fürtszolgáltatási modell által visszaadott statisztikák azt írják le, hogy hány adatpontot rendeltek hozzá az egyes fürtökhöz, a fürtök közötti elkülönítés mennyiségét, valamint azt, hogy az adatpontok milyen szorosan legyenek az egyes fürtökön belül.  
+  
+ A fürtözési modell statisztikái a teljes adatkészlet átlagát képezik, és a fürt statisztikáit tartalmazó további sorokkal.  
+  
+A következő metrikákat kell jelenteni a fürtszolgáltatási modellek kiértékeléséhez.
+    
+-   Az oszlopban lévő pontszámok, az **átlagos távolság a másik központtól**, a fürt minden egyes pontja esetében az összes többi fürt centroids.   
+
+-   Az oszlopban lévő pontszámok, amelyek a **fürt középpontjának átlagos távolsága**, a fürt összes pontjának a fürt középpontját való közelségét jelölik.  
+  
+-   A **pontok száma** oszlopban látható, hogy hány adatpontot rendeltek hozzá az egyes fürtökhöz, valamint a fürtben lévő adatpontok összesített számát.  
+  
+     Ha a fürtökhöz rendelt adatpontok száma kevesebb, mint az elérhető adatpontok teljes száma, az azt jelenti, hogy az adatpontokat nem lehet fürthöz rendelni.  
+  
+-   Az oszlopban lévő pontszámok, a **fürtcsomópontok maximális távolsága**, az egyes pontok közötti távolságok és az adott pont fürt középpontját összege.  
+  
+     Ha ez a szám magas, akkor azt jelentheti, hogy a fürt széles körben elszórtan van. Tekintse át ezt a statisztikát, valamint az **átlagos távolságot a fürt közepétől** a fürt eloszlásának meghatározásához.   
+
+-   Az eredmények minden szakaszának alján az **összesített értékelési** pontszám felsorolja az adott modellben létrehozott fürtök átlagos pontszámait.  
   
 
 ## <a name="next-steps"></a>Következő lépések

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/07/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 684e4a410ac8624066c897b4078ea4044a965357
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f331a537c80628a386525e29743807a70a163f0d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848914"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914321"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Az ADFS-t SAML-identitás-szolgáltatóként adja hozzá Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a bejelentkezést egy ADFS
 
 A tanúsítványt a Azure AD B2C bérlőben kell tárolnia.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
@@ -42,17 +42,17 @@ A tanúsítványt a Azure AD B2C bérlőben kell tárolnia.
 6. A **Beállítások**területen válassza a `Upload`lehetőséget.
 7. Adja meg a szabályzat kulcsának **nevét** . Például: `SamlCert`. A rendszer automatikusan hozzáadja a kulcs nevét a `B2C_1A_` előtaghoz.
 8. Tallózással keresse meg és válassza ki a tanúsítvány. pfx fájlját a titkos kulccsal.
-9. Kattintson a **Create** (Létrehozás) gombra.
+9. Kattintson a **Létrehozás** gombra.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
 Ha azt szeretné, hogy a felhasználók ADFS-fiókkal jelentkezzenek be, meg kell adnia a fiókot jogcím-szolgáltatóként, amely Azure AD B2C tud kommunikálni egy végponton keresztül. A végpont olyan jogcímeket biztosít, amelyeket a Azure AD B2C használ annak ellenőrzéséhez, hogy egy adott felhasználó hitelesítve van-e.
 
-Az ADFS-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja azt a **ClaimsProviders** elemhez a szabályzat bővítmény fájljában.
+Az ADFS-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja azt a **ClaimsProviders** elemhez a szabályzat bővítmény fájljában. További információ: [SAML technikai profil definiálása](saml-technical-profile.md).
 
 1. Nyissa meg a *TrustFrameworkExtensions. xml fájlt*.
-2. Keresse meg a **ClaimsProviders** elemet. Ha nem létezik, adja hozzá a gyökérelem elemhez.
-3. Vegyen fel egy új **ClaimsProvider** a következőképpen:
+1. Keresse meg a **ClaimsProviders** elemet. Ha nem létezik, adja hozzá a gyökérelem elemhez.
+1. Vegyen fel egy új **ClaimsProvider** a következőképpen:
 
     ```xml
     <ClaimsProvider>
@@ -87,14 +87,33 @@ Az ADFS-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja az
             <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId"/>
             <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId"/>
           </OutputClaimsTransformations>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop"/>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-idp"/>
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
     ```
 
-4. Cserélje le a `your-ADFS-domain`t az ADFS-tartomány nevére, és cserélje le a **identityProvider** kimeneti jogcím értékét a DNS-re (tetszőleges érték, amely a tartományt jelzi).
-5. Mentse a fájlt.
+1. Cserélje le a `your-ADFS-domain`t az ADFS-tartomány nevére, és cserélje le a **identityProvider** kimeneti jogcím értékét a DNS-re (tetszőleges érték, amely a tartományt jelzi).
+
+1. Keresse meg a `<ClaimsProviders>` szakaszt, és adja hozzá a következő XML-kódrészletet. Ha a házirend már tartalmazza a `SM-Saml-idp` technikai profilt, ugorjon a következő lépésre. További információ: [egyszeri bejelentkezéses munkamenet-kezelés](custom-policy-reference-sso.md).
+
+    ```XML
+    <ClaimsProvider>
+      <DisplayName>Session Management</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="SM-Saml-idp">
+          <DisplayName>Session Management Provider</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="IncludeSessionIndex">false</Item>
+            <Item Key="RegisterServiceProviders">false</Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
+
+1. Mentse a fájlt.
 
 ### <a name="upload-the-extension-file-for-verification"></a>A bővítmény fájljának feltöltése ellenőrzéshez
 
@@ -167,18 +186,18 @@ Nyisson meg egy böngészőt, és navigáljon az URL-címre. Győződjön meg ar
 4. Az adatforrás **kiválasztása** lapon válassza a **függő entitáshoz tartozó adatok importálása online vagy helyi hálózaton**lehetőséget, adja meg a Azure ad B2C metaadat URL-címét, majd kattintson a **tovább**gombra.
 5. A **megjelenítendő név megadása** lapon adja meg a **megjelenítendő nevet**a **Megjegyzések**területen, írja be a függő entitás megbízhatóságának leírását, majd kattintson a **tovább**gombra.
 6. A **Access Control házirend kiválasztása** lapon válasszon ki egy házirendet, majd kattintson a **tovább**gombra.
-7. A **készen áll a megbízhatósági kapcsolat hozzáadására** lapon tekintse át a beállításokat, majd kattintson a **tovább** gombra a függő entitás megbízhatósági adatainak mentéséhez.
+7. **A rendszer készen áll a megbízhatóság hozzáadására** oldalon tekintse át a beállításokat, majd a **Tovább** gombra kattintva mentse a függő entitás megbízhatóságának adatait.
 8. A **Befejezés** lapon kattintson a **Bezárás**gombra, ez a művelet automatikusan megjeleníti a **jogcím szabályainak szerkesztése** párbeszédpanelt.
 9. Válassza a **szabály hozzáadása**elemet.
 10. A **jogcím-szabály sablonjában**válassza az **LDAP-attribútumok küldése jogcímként**lehetőséget.
 11. Adja meg a **jogcím szabályának nevét**. Az **attribútum-tárolóban**válassza a **Active Directory kiválasztása**lehetőséget, adja hozzá a következő jogcímeket, majd kattintson a **Befejezés** és **az OK gombra**.
 
-    | LDAP-attribútum | Kimenő jogcím típusa |
+    | LDAP attribútum | Kimenő jogcím típusa |
     | -------------- | ------------------- |
-    | Felhasználó – egyszerű név | userPrincipalName |
+    | User-Principal-Name | userPrincipalName |
     | vezetéknév; | family_name |
-    | Megadott név | given_name |
-    | E-mail-cím | e-mail |
+    | Given-Name | given_name |
+    | E-Mail-Address | e-mail |
     | Megjelenítendő név | név |
 
     Vegye figyelembe, hogy ezek a nevek nem fognak megjelenni a kimenő jogcím típusa legördülő listában. Manuálisan kell beírnia azokat a alkalmazásban. (A legördülő lista valójában szerkeszthető).

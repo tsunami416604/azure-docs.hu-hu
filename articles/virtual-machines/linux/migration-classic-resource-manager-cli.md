@@ -14,14 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 43be6947b464a18cc29edc5a578fd8879b70bacf
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 5fbbaffea6b50e65e7e54992d1801945abb80b33
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153179"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914823"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>IaaS-erőforrások migrálása klasszikusról Azure Resource Managerra az Azure CLI használatával
+
+> [!IMPORTANT]
+> Napjainkban a IaaS virtuális gépek 90%-a [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)használ. 2020. február 28-án a klasszikus virtuális gépek elavultak, és 2023. március 1-jén teljesen megszűnnek. [További]( https://aka.ms/classicvmretirement) információ erről az elavult szolgáltatásról, valamint arról, [hogy Ön hogyan befolyásolja Önt](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me).
+
 Ezek a lépések bemutatják, hogyan használhatja az Azure parancssori felület (CLI) parancsait az infrastruktúra szolgáltatásként (IaaS) való áttelepítésére a klasszikus üzemi modellből a Azure Resource Manager telepítési modellbe. A cikkhez a [klasszikus Azure parancssori](../../cli-install-nodejs.md)felület szükséges. Mivel az Azure CLI csak Azure Resource Manager erőforrásokra alkalmazható, nem használható ehhez az áttelepítéshez.
 
 > [!NOTE]
