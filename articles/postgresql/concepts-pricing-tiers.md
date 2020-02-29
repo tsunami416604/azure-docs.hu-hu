@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 9ce88c687df4e329acd2949d0b26033dc10c94ea
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 635a66f0275d4df4f858bff61be80900dc58c6fb
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619476"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164474"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Árképzési szintek Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -67,7 +67,7 @@ Az I/O-használatot a Azure Portal vagy az Azure CLI-parancsok használatával f
 
 ### <a name="reaching-the-storage-limit"></a>A tárolási korlát elérése
 
-A 100 GB-nál kisebb kiépített tárterülettel rendelkező kiszolgálók csak olvashatónak lesznek jelölve, ha az elérhető tárterület kisebb, mint 512 MB vagy a kiépített tárhely méretének 5%-a. A 100 GB-nál nagyobb kiépített tárhellyel rendelkező kiszolgálók csak olvashatónak lesznek jelölve, ha az elérhető tárterület kisebb, mint 5 GB.
+A 10 GB-nál kevesebb kiosztott tárterülettel rendelkező kiszolgálók csak olvashatóként vannak megjelölve, ha az ingyenes tárterület 512 MB-nál kisebb a kiosztott tárterület-méretnél. A 100 GB-nál kisebb kiosztott tárolóval rendelkező kiszolgálók csak olvashatók, ha az ingyenes tárterület kevesebb, mint 5%-a kiépített tároló mérete. A 100 GB-nál nagyobb kiépített tárhellyel rendelkező kiszolgálók csak olvashatónak lesznek jelölve, ha az elérhető tárterület kisebb, mint 5 GB.
 
 Ha például 110 GB tárhellyel rendelkezik, és a tényleges kihasználtság meghaladja az 105 GB-ot, a kiszolgáló csak olvashatóként van megjelölve. Ha 5 GB tárterületet osztott ki, akkor a kiszolgáló csak olvashatóként van megjelölve, ha az ingyenes tárterület 512 MB-nál kevesebbet ér el.
 
@@ -79,7 +79,7 @@ Javasoljuk, hogy kapcsolja be a tárterület automatikus növekedését, vagy ho
 
 ### <a name="storage-auto-grow"></a>Tárterület automatikus növekedése
 
-A tárterület automatikus növekedése megakadályozza, hogy a kiszolgáló kifogyjon a tárolóból, és csak olvasható legyen. Ha engedélyezve van a tárterület automatikus növekedése, a tárterület automatikusan növekszik a munkaterhelés befolyásolása nélkül. A 100 GB-nál kevesebb kiosztott tárterülettel rendelkező kiszolgálók esetében a kiépített tárterület mérete 5 GB-kal nő, amint az ingyenes tárterület a kiépített tárterület nagyobb 1 GB-os vagy 10%-ában kisebb. A 100 GB-nál több kiosztott tárterülettel rendelkező kiszolgálók esetében a kiosztott tárterület mérete 5%-kal nő, ha a szabad tárterület mérete a kiosztott tárterület méretének 5%-a alá esik. A fent megadott maximális tárolási korlátok érvényesek.
+A tárterület automatikus növekedése megakadályozza, hogy a kiszolgáló kifogyjon a tárolóból, és csak olvasható legyen. Ha engedélyezve van a tárterület automatikus növekedése, a tárterület automatikusan növekszik a munkaterhelés befolyásolása nélkül. A 100 GB-nál kisebb kiosztott tárterülettel rendelkező kiszolgálók esetében a kiépített tárterület mérete 5 GB-kal nő, amint az ingyenes tárterület a kiépített tárterület nagyobb 1 GB-os vagy 10%-ában kisebb. A 100 GB-nál több kiosztott tárterülettel rendelkező kiszolgálók esetében a kiosztott tárterület mérete 5%-kal nő, ha a szabad tárterület a kiosztott tárterület mérete meghaladja a 10 GB-ot vagy az 5%-ot. A fent megadott maximális tárolási korlátok érvényesek.
 
 Ha például 1000 GB tárhelyet használ, és a tényleges kihasználtság meghaladja az 950 GB-ot, a kiszolgáló tárterületének mérete az 1050 GB-ra nő. Ha 10 GB tárterületet telepített, akkor a tárterület mérete 15 GB-ra nő, ha kevesebb, mint 1 GB tárterület ingyenes.
 

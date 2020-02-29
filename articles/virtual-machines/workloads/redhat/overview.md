@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: daba49e6861eb67fd07c6fcf618b2b2d6cdd8c89
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 424ef37885d685829a11d1864a72b043a562231c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133820"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920552"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Red Hat számítási feladatok az Azure-ban
 A Red Hat számítási feladatait az Azure különféle kínálatai támogatják. A Red Hat Enterprise Linux-(RHEL-) lemezképek a RHEL-munkaterhelések középpontjában állnak, mint a Red Hat Update Infrastructure (RHUI).
@@ -39,7 +39,7 @@ Az Azure Red Hat Gold-képeket is kínál. Ezek a rendszerképek hasznosak lehet
 > Megjegyzés a kettős számlázás esetében: a kettős számlázás akkor merül fel, amikor egy felhasználó kétszer fizet a RHEL-előfizetésekhez. Ez általában akkor fordul elő, amikor az ügyfél az előfizetés-kezelővel csatol egy jogosultságot egy RHEL TB virtuális géphez. Például egy olyan ügyfél, amely az előfizetés-kezelővel egy RHEL TB-rendszerképben lévő SAP-csomagokra vonatkozó jogosultságot csatol, a rendszer nem fogja megduplázni, mivel a TB díja és az SAP-előfizetése között kétszer kell fizetnie a RHEL. Ez nem fog történni a rendszerképek BYOS.
 
 ### <a name="generation-2-images"></a>2\. generációs rendszerképek
-A 2. generációs virtuális gépek újabb funkciókat biztosítanak az 1. generációs virtuális gépekhez képest. A részleteket a [2. generációs dokumentáció](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)ismerteti. A RHEL-lemezkép szempontjából a legfontosabb különbség az, hogy a 2. generációs virtuális gépek a BIOS belső vezérlőprogram-felülete helyett UEFI-t használnak, és a fő rendszerindító rekord (MBR) helyett egy GUID partíciós táblát (GPT) használnak a rendszerindítási időben. Ez többek között a 2TB-nál nagyobb operációsrendszer-lemezeket is lehetővé tesz. Emellett a [Mv2 sorozatú virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series) csak a 2. generációs lemezképeken futnak.
+A 2. generációs virtuális gépek újabb funkciókat biztosítanak az 1. generációs virtuális gépekhez képest. A részleteket a [2. generációs dokumentáció](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)ismerteti. A RHEL-lemezkép szempontjából a legfontosabb különbség az, hogy a 2. generációs virtuális gépek a BIOS belső vezérlőprogram-felülete helyett UEFI-t használnak, és a fő rendszerindító rekord (MBR) helyett egy GUID partíciós táblát (GPT) használnak a rendszerindítási időben. Ez többek között a 2TB-nál nagyobb operációsrendszer-lemezeket is lehetővé tesz. Emellett a [Mv2 sorozatú virtuális gépek](../../mv2-series.md) csak a 2. generációs lemezképeken futnak.
 
 A RHEL 2. generációs képei elérhetők a piactéren. Keresse meg a "Gen2" elemet a lemezkép SKU-ban, ha az Azure CLI-vel az összes lemezképet felsorolja, majd a virtuális gép üzembe helyezési folyamatának "speciális" lapján lépjen a 2. generációs virtuális gépek üzembe helyezéséhez.
 

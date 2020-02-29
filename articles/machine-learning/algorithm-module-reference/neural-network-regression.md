@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 97095e4802373a1dd3f7b795c2fe567b778d2d5e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: d1e93c18b13e7171274eda2a7e8d07eefbefb592
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153825"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920382"
 ---
 # <a name="neural-network-regression-module"></a>Neurális hálózat regressziós modulja
 
@@ -56,7 +56,9 @@ A neurális hálózatokat széles körben lehet testreszabni. Ez a szakasz azt i
   
 2. Adja meg, hogyan szeretné képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
-    -   **Egyetlen paraméter**: akkor válassza ezt a lehetőséget, ha már tudja, hogyan szeretné konfigurálni a modellt.  
+    -   **Egyetlen paraméter**: akkor válassza ezt a lehetőséget, ha már tudja, hogyan szeretné konfigurálni a modellt.
+
+    -   **Paraméter tartománya**: akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.   
 
 3.  A **rejtett réteg specifikációjában**válassza a **teljesen csatlakoztatott eset**elemet. Ez a lehetőség létrehoz egy modellt az alapértelmezett neurális hálózati architektúrával, amely egy neurális hálózat regressziós modelljéhez a következő attribútumokat használja:  
   
@@ -72,7 +74,6 @@ A neurális hálózatokat széles körben lehet testreszabni. Ez a szakasz azt i
 
 6.  A **tanulási ismétlések számának**megadásával meghatározhatja, hogy az algoritmus hány alkalommal dolgozza fel a betanítási eseteket.
 
-7.  A * * a kezdeti tanulási súlyok átmérője mezőbe írjon be egy értéket, amely meghatározza a csomópontok súlyait a tanulási folyamat elején.
 
 8.  **A lendülethez**adja meg a tanulás során alkalmazandó értéket az előző iterációk csomópontjainak súlyozása alapján.
 

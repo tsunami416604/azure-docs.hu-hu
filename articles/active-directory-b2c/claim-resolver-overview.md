@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4434c877f69391f5dc5926c6aed07049ba46b7b7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 97e51331657c62094996f79483148f2f441e6a44
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425646"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161601"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a jogcímek feloldóinak Azure Active Directory B2C egyéni házirendekben
 
@@ -75,6 +75,7 @@ A következő fejezetei az elérhető jogcímek feloldóit sorolja fel.
 | {OIDC:Prompt} | A `prompt` lekérdezési karakterlánc paraméter. | bejelentkezés |
 | {OIDC: erőforrás} |A `resource` lekérdezési karakterlánc paraméter. | N/A |
 | {OIDC: hatókör} |A `scope` lekérdezési karakterlánc paraméter. | OpenID |
+| {OIDC: RedirectUri} |A `redirect_uri` lekérdezési karakterlánc paraméter. | https://jwt.ms |
 
 ### <a name="context"></a>Környezet
 
@@ -85,7 +86,7 @@ A következő fejezetei az elérhető jogcímek feloldóit sorolja fel.
 | {Context:DateTimeInUtc} |A dátum és idő (UTC).  | 10/10/2018 12:00:00 PM |
 | {Context: Deploymentmode beállítása} |A házirend-telepítési mód.  | Production |
 | {Context:IPAddress} | A felhasználó IP-címe. | 11.111.111.11 |
-
+| {Context: KMSI} | Azt jelzi, hogy be van-e jelölve [a bejelentkezve marad](custom-policy-keep-me-signed-in.md) jelölőnégyzet. |  true |
 
 ### <a name="non-protocol-parameters"></a>Nem protokoll paraméterek
 

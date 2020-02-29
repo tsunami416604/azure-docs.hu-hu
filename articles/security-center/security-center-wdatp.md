@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 46b9fe5c6a038aa98cf8df64c40bf8ea1747efec
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e735495038f0e5c28af31aa79a45c71225502b3c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663612"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918155"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>A Microsoft Defender komplex veszélyforrások elleni védelem Azure Security Center
 
@@ -95,12 +95,14 @@ Ha olyan proxyval vagy tűzfallal rendelkezik, amely blokkolja a névtelen forga
 
 Jóindulatú Microsoft Defender ATP-teszt riasztás létrehozása:
 
+1. Hozzon létre egy "C:\test-MDATP-test" mappát.
+
 1. A Távoli asztal használatával elérheti a Windows Server 2012 R2 vagy a Windows Server 2016 rendszerű virtuális gépeket. Nyisson meg egy parancssori ablakot.
 
-2. A parancssorba másolja és futtassa a következő parancsot. A parancssori ablak automatikusan bezáródik.
+1. A parancssorba másolja és futtassa a következő parancsot. A parancssori ablak automatikusan bezáródik.
 
     ```
-    powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden (New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-WDATP-test\\invoice.exe'); Start-Process 'C:\\test-WDATP-test\\invoice.exe'
+    powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden (New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-MDATP-test\\invoice.exe'); Start-Process 'C:\\test-MDATP-test\\invoice.exe'
     ```
 
    ![Egy parancssori ablak a fenti paranccsal](media/security-center-wdatp/image4.jpeg)
@@ -111,7 +113,7 @@ Jóindulatú Microsoft Defender ATP-teszt riasztás létrehozása:
 
 5. A vizsgálat ablakban válassza ki a Microsoft Defender ATP-portálra mutató hivatkozást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Security Center által támogatott platformok és szolgáltatások](security-center-os-coverage.md)
 - [Biztonsági szabályzatok beállítása Azure Security Centerban](tutorial-security-policy.md): Ismerje meg, hogyan konfigurálhatja az Azure-előfizetések és-erőforráscsoportok biztonsági szabályzatait.

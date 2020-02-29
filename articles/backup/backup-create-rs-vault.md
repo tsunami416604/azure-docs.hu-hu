@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre Recovery Servic
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 682bf26c1485bd9e2ae288a6947e9ad573463069
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eb7dcb4038260b1edac57a2163a1c0eae29ee452
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705462"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920110"
 ---
 # <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -85,10 +85,10 @@ A szolgáltatás kiválasztásához válassza a **tartományok közötti vissza�
 Ehhez a folyamathoz díjszabási szempontok vonatkoznak, mivel azok tárolási szinten vannak.
 
 >[!NOTE]
->Előzetes teendők
+>Előkészületek:
 >
 >- A támogatott felügyelt típusok és régiók listáját a [támogatási mátrixban](backup-support-matrix.md#cross-region-restore) tekintheti meg.
->- A régiók közötti visszaállítás (CRR) szolgáltatás jelenleg csak a WCUS régióban érhető el.
+>- A régión belüli visszaállítás (CRR) szolgáltatás jelenleg csak a következő régiókban érhető el: az USA nyugati középső régiója, az USA nyugati régiója 2, Kelet-Ausztrália és Délkelet-Ausztrália. 
 >- A CRR bármely GRS-tárolóhoz engedélyezhető a tár szintjén (alapértelmezés szerint kikapcsolva).
 >- Használja az alábbi parancsot a szolgáltatás előfizetésének előkészítéséhez:<br>
 >  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`

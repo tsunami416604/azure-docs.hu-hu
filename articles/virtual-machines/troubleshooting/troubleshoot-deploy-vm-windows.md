@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 2baa82bda1f92fe81bb0db69b84e6865b2709e42
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: cdbaeb5a97beba342bc471e75d1b07be0d0141ae
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058039"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921411"
 ---
-# <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Windows rendszerű virtuális gépekkel kapcsolatos problémák elhárítása az Azure-ban
+# <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Windows rendszerű virtuális gépek Azure-beli üzembe helyezése során előforduló problémák elhárítása
 
 A virtuális gépek üzembe helyezésével kapcsolatos problémák elhárításához az Azure-ban tekintse át a leggyakoribb hibák és megoldások [legfontosabb problémáit](#top-issues) .
 
@@ -78,7 +78,7 @@ A havi kreditek aktiválásához tekintse meg ezt a [cikket](https://azure.micro
 
 ## <a name="how-to-add-enterprise-devtest-to-my-enterprise-agreement-ea-to-get-access-to-window-client-images"></a>Hogyan adhatok hozzá Enterprise Dev/Testt a Nagyvállalati Szerződés (EA) szolgáltatáshoz, hogy hozzáférjenek az ablakos ügyfelek rendszerképeihez?
 
-Csak azok a fióktulajdonosok hozhatnak létre előfizetéseket a „Nagyvállalati Szerződés – Fejlesztés és tesztelés” ajánlat alapján, akiknek ezt egy vállalati rendszergazda engedélyezte. A fiók tulajdonosa előfizetéseket hoz létre az Azure-fiók portálon keresztül, majd az aktív Visual Studio-előfizetőket közös rendszergazdaként kell hozzáadnia. A fejlesztéshez és teszteléshez szükséges erőforrások kezeléséhez és használatához. További információ: [Enterprise dev/test](https://azure.microsoft.com/offers/ms-azr-0148p/).
+Az előfizetések Enterprise Dev/Test ajánlat alapján történő létrehozásának lehetősége azon fiók tulajdonosai számára korlátozódik, akik engedélyt kaptak erre a vállalati rendszergazda. A fiók tulajdonosa előfizetéseket hoz létre az Azure-fiók portálon keresztül, majd az aktív Visual Studio-előfizetőket közös rendszergazdaként kell hozzáadnia. A fejlesztéshez és teszteléshez szükséges erőforrások kezeléséhez és használatához. Bővebb információ: [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/).
 
 ## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Hiányoznak az illesztőprogramok a Windows N sorozatú virtuális géphez
 
@@ -107,6 +107,8 @@ Ha egy virtuális gép fut, a rendszer egy fizikai kiszolgálóra telepíti. Az 
 
 - A klasszikus üzemi modellben üzembe helyezett virtuális gépeket el kell távolítani és újra kell telepíteni, hogy a virtuális gépeket egy másik méretű családban lévő méretre módosítsa.
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 - A Resource Manager-alapú üzemi modellben üzembe helyezett virtuális gépeket a rendelkezésre állási csoportba tartozó virtuális gépek méretének módosítása előtt le kell állítania a rendelkezésre állási csoport összes virtuális gépén.
 
 ## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>A felsorolt virtuálisgép-méret nem támogatott a rendelkezésre állási csoport telepítésekor.
@@ -118,7 +120,7 @@ Válassza ki a rendelkezésre állási csoport fürtjét támogató méretet. Az
 Igen. Meglévő klasszikus virtuális gépet hozzáadhat egy új vagy meglévő rendelkezésre állási csoporthoz. További információ: [meglévő virtuális gép hozzáadása egy rendelkezésre állási csoporthoz](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is.
 
 Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

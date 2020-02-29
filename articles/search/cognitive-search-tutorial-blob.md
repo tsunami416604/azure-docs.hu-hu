@@ -1,23 +1,25 @@
 ---
-title: 'Oktatóanyag: szöveg és struktúra kinyerése JSON-blobokból'
+title: 'Oktatóanyag: REST és AI over Azure-Blobok'
 titleSuffix: Azure Cognitive Search
-description: A Poster és az Azure Cognitive Search REST API-k használatával a JSON-blobokban található tartalommal kapcsolatos szöveg-kinyerési és természetes nyelvi feldolgozás példája.
+description: A blob Storage-ban a Poster és az Azure Cognitive Search REST API-k használatával bemutatunk egy példát a szöveg kinyerésére és a természetes nyelvi feldolgozásra.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: 9d18bea70670acba404b2198e6b06ea2e9200c30
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 7db2d89c112c5f874460f5e6955cdce90cc2f9ae
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77667023"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162999"
 ---
-# <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>Oktatóanyag: szöveg és struktúra kinyerése a JSON-blobokból az Azure-ban REST API-k használatával (Azure Cognitive Search)
+# <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Oktatóanyag: az Azure-Blobok kereshető tartalmának létrehozásához használja a REST és a AI használatát
 
-Ha strukturálatlan szöveget vagy rendszerképeket használ az Azure Blob Storage-ban, egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat kinyerheti az adatokat, és létrehozhat olyan új tartalmakat, amelyek hasznosak a teljes szöveges kereséshez és az adatbányászati forgatókönyvekhez. Bár a folyamatok feldolgozhatják a lemezképeket, ez az oktatóanyag a szövegre, a nyelvfelismerés és a természetes nyelvi feldolgozás alkalmazására koncentrál, hogy új mezőket hozzon létre, amelyeket a lekérdezések, a dimenziók és a szűrők használhatnak.
+Ha strukturálatlan szöveget vagy rendszerképeket használ az Azure Blob Storage-ban, egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat kinyerheti az adatokat, és létrehozhat olyan új tartalmakat, amelyek hasznosak a teljes szöveges kereséshez és az adatbányászati forgatókönyvekhez. Bár a folyamatok feldolgozhatják a lemezképeket, ez a REST-oktatóanyag a szövegre, a nyelvfelismerés és a természetes nyelvi feldolgozás alkalmazására koncentrál, és új mezőket hoz létre, amelyeket használhat a lekérdezésekben, a dimenziókban és a szűrőkben.
+
+Ebben az oktatóanyagban a Poster és a [Rest](https://docs.microsoft.com/rest/api/searchservice/) használatával végezze el a következő feladatokat:
 
 > [!div class="checklist"]
 > * Az Azure Blob Storage-ban teljes dokumentumokkal (strukturálatlan szöveggel), például PDF-, HTML-, DOCX-és PPTX-verziókkal kezdheti meg a használatot.
@@ -26,9 +28,16 @@ Ha strukturálatlan szöveget vagy rendszerképeket használ az Azure Blob Stora
 > * A folyamat végrehajtásával megkezdheti az átalakításokat és az elemzést, valamint az index létrehozását és betöltését.
 > * A teljes szöveges kereséssel és a részletes lekérdezési szintaxissal megismerheti az eredményeket.
 
-A bemutató elvégzéséhez több szolgáltatásra is szüksége lesz, valamint a [Poster Desktop alkalmazás](https://www.getpostman.com/) vagy egy másik webes tesztelési eszköz, amellyel REST API hívásokat hajthat végre. 
-
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt nyisson meg egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+
+## <a name="prerequisites"></a>Előfeltételek
+
++ [Azure Storage](https://azure.microsoft.com/services/storage/)
++ [Postman asztali alkalmazás](https://www.getpostman.com/)
++ [Meglévő keresési szolgáltatás](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [létrehozása](search-create-service-portal.md) vagy keresése 
+
+> [!Note]
+> Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást. Az ingyenes keresési szolgáltatás három indexre, három indexelő elemre és három adatforrásra korlátozza a szolgáltatást. Az oktatóanyagban mindegyikből egyet hozhat majd létre. Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a szolgáltatásban az új erőforrások elfogadására szolgáló helyiséggel.
 
 ## <a name="download-files"></a>Fájlok letöltése
 
@@ -104,9 +113,9 @@ Ahogy az Azure Blob Storage-hoz, szánjon egy kis időt a hozzáférési kulcs g
 
 2. A **beállítások** > **kulcsok**területen kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-    Kérje le a lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
+   Kérje le a lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
-![A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése](media/search-get-started-nodejs/service-name-and-keys.png)
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kérelem fejlécében. Egy érvényes kulcs a kérést küldő alkalmazás és az azt kezelő szolgáltatás közötti megbízhatósági kapcsolatot hoz létre a kérelmek alapján.
 
@@ -498,8 +507,6 @@ DELETE https://[YOUR-SERVICE-NAME]].search.windows.net/indexers/cog-search-demo-
 ```
 
 Sikeres törlés esetén a rendszer a 204-es állapotkódot adja vissza.
-
-Ahogy a kód egyre kiforrottabbá válik, jó ötlet lehet az újraépítési stratégia finomítása. A további tudnivalókért lásd az [indexek újraépítését](search-howto-reindex.md) ismertető cikket.
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 

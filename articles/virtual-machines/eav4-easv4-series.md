@@ -2,17 +2,17 @@
 title: Eav4 és Easv4 sorozat – Azure Virtual Machines
 description: A Eav4 és a Easv4 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
-author: jonbeck7
+author: migerdes
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 96cd7b4f4627e7c0335df9c745d8193a3dac7044
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e05a2b97a25ce4cab7d619f4b62d405765cb08db
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493773"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164389"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 és Easv4 sorozat
 
@@ -25,6 +25,10 @@ ACU: 230 – 260
 Premium Storage: nem támogatott
 
 Premium Storage gyorsítótárazás: nem támogatott
+
+Élő áttelepítés: támogatott
+
+Memória megőrzésének frissítései: támogatott
 
 A Eav4-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron alapulnak, amely növelheti a 3.35 GHz-es maximális gyakoriságot, és prémium SSD-t használhat. A Eav4-sorozat méretei ideálisak a nagy mennyiségű, nagyvállalati alkalmazások számára. Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. A prémium SSD használatához használja a Easv4-sorozat méretét. A Easv4-méretek díjszabása és számlázási mérőszámai megegyeznek a Eav3 sorozattal.
 
@@ -49,6 +53,10 @@ ACU: 230 – 260
 Premium Storage: támogatott
 
 Premium Storage gyorsítótárazás: támogatott
+
+Élő áttelepítés: támogatott
+
+Memória megőrzésének frissítései: támogatott
 
 A Easv4-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron alapulnak, amely növelheti a 3.35 GHz-es maximális gyakoriságot, és prémium SSD-t használhat. A Easv4-sorozat méretei ideálisak a nagy mennyiségű, nagyvállalati alkalmazások számára.
 

@@ -2,22 +2,22 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/14/2019
+ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: b553cd2bed68bc8df7241f4f843b32ec13b1a08a
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 8e3f08be70a2a6b932b849ff28dd762828abf229
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371862"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155455"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 [v3 hivatkozási dokumentáció](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-textanalytics/1.0.0b2/azure.ai.textanalytics.html) | [v3 könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 csomag (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 minta](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
-#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 [v2 hivatkozási dokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [v2 könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [v2 csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [v2 minta](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
@@ -27,8 +27,9 @@ ms.locfileid: "77371862"
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 * [Python 3. x](https://www.python.org/)
-
-[!INCLUDE [text-analytics-resource-creation](resource-creation.md)]
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="hozzon létre egy Text Analytics-erőforrást,"  target="_blank">hozzon létre egy Text Analytics erőforrás <span class="docon docon-navigate-external x-hidden-focus"></span> -</a> a Azure Portal a kulcs és a végpont beszerzéséhez. 
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Text Analytics APIhoz való összekapcsolásához. Ezt később is megteheti a rövid útmutatóban.
+    * Az ingyenes díjszabási csomaggal kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -36,13 +37,13 @@ ms.locfileid: "77371862"
 
 A Python telepítése után az ügyféloldali kódtár a következővel telepíthető:
 
-#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 ```console
 pip install azure-ai-textanalytics
 ```
 
-#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 ```console
 pip install --upgrade azure-cognitiveservices-language-textanalytics
@@ -64,7 +65,7 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 ## <a name="object-model"></a>Objektummodell
 
-#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 A Text Analytics ügyfél egy `TextAnalyticsClient`-objektum, amely az Azure-ban hitelesíti magát a kulcs használatával. Az ügyfél számos módszert biztosít a szöveg kötegként való elemzéséhez. 
 
@@ -72,7 +73,7 @@ Ha a kötegelt feldolgozás szövegét az API-nak `documents`-listaként küldik
 
 A válasz objektum az egyes dokumentumok elemzési információit tartalmazó lista. 
 
-#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 Az Text Analytics-ügyfél egy [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python) objektum, amely az Azure-ban hitelesíti magát a kulcs használatával. Az ügyfél számos módszert biztosít a szöveg elemzéséhez, egyetlen sztringként vagy kötegként. 
 
@@ -93,7 +94,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 Hozzon létre egy függvényt a `TextAnalyticsClient` objektum létrehozásához a `key` és a fent létrehozott `endpoint`. Ezután hozzon létre egy új ügyfelet. 
 
@@ -109,7 +110,7 @@ def authenticate_client():
 client = authenticate_client()
 ```
 
-#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 [!code-python[imports statements](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=imports)]
 
@@ -121,7 +122,7 @@ Hozzon létre egy függvényt a `TextAnalyticsClient` objektum létrehozásához
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
-#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 Hozzon létre egy `sentiment_analysis_example()` nevű új függvényt, amely argumentumként veszi át az ügyfelet, majd meghívja a `analyze_sentiment()` függvényt. A visszaadott válasz objektum a teljes bemeneti dokumentum hangulati címkéjét és pontszámát, valamint az egyes mondatok hangulati elemzését fogja tartalmazni.
 
@@ -171,7 +172,7 @@ Neutral=0.770
 Negative=0.020
 ```
 
-#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 Hitelesítse az ügyfél objektumát, és hívja meg a [hangulat ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt. Ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a hangulat pontszámát. Ha a pontszám közelebb van a 0 értékhez, a negatív érzést jelez, míg az 1. számú pontszám pozitív hangulatot jelez.
 
@@ -190,7 +191,7 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Nyelvfelismerés
 
-#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 Hozzon létre egy `language_detection_example()` nevű új függvényt, amely argumentumként veszi át az ügyfelet, majd meghívja a `detect_language()` függvényt. A visszaadott válasz objektum az észlelt nyelvet `primary_language` ha sikeres, és egy `error`, ha nem.
 
@@ -216,7 +217,7 @@ language_detection_example(client)
 Language:  French
 ```
 
-#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 A korábban létrehozott ügyfél használatával hívja meg [detect_language ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) , és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az első visszaadott nyelvet.
 
@@ -235,7 +236,7 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
 
-#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 > [!NOTE]
 > A (z) `3.0-preview`verzióban:
@@ -382,7 +383,7 @@ Linked Entities:
 
 ```
 
-#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 > [!NOTE]
 > Az 2,1-es verzióban az entitások összekapcsolása szerepel a megjelenő válaszban.
@@ -435,7 +436,7 @@ Document ID: 2
 ## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 
 
-#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 Hozzon létre egy `key_phrase_extraction_example()` nevű új függvényt, amely argumentumként veszi át az ügyfelet, majd meghívja a `extract_key_phrases()` függvényt. Ha a művelet sikeres, az eredmény tartalmazni fogja a `key_phrases` észlelt kulcsos kifejezéseket, és egy `error`, ha nem. Minden észlelt kulcs kifejezésének nyomtatása.
 
@@ -469,7 +470,7 @@ key_phrase_extraction_example(client)
          veterinarian
 ```
 
-#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 A korábban létrehozott ügyfél használatával hívja meg a [key_phrases ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az abban található fő kifejezéseket.
 

@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a1c19523508f434c114df884824d1595376bac21
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c02595ebdb2f011dcc94b517771a79a4b2df754d
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276937"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161720"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Oktatóanyag: lépésenkénti útmutató új Android-alkalmazás létrehozásához az Azure térbeli horgonyok használatával
 
@@ -26,7 +26,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 - Windows vagy macOS rendszerű számítógép, <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>.
 - A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">fejlesztők számára engedélyezett</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore alkalmas</a> Android-eszköz.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 Indítsa el az Android Studio. Az **üdvözli Android Studio** ablakban kattintson az **új Android Studio projekt indítása**lehetőségre. Ha már meg van nyitva egy projekt, válassza a **fájl**->**új projekt**lehetőséget.
 
@@ -123,13 +123,13 @@ Végül adja hozzá a következő `handleTap()` metódust, amely összekapcsolja
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>Helyi Azure térbeli horgony csatolása
 
-Módosítsa `Gradle Scripts\build.gradle (Module: app)` a következő bejegyzés belefoglalásával. Ez a kód biztosítja, hogy az alkalmazás az Azure térbeli horgonyok 1.3.0 verzióját célozza meg. Ez azt mondta, hogy az Azure térbeli horgonyok legújabb verziójára hivatkozva kell működni.
+Módosítsa `Gradle Scripts\build.gradle (Module: app)` a következő bejegyzés belefoglalásával. Ez a kód biztosítja, hogy az alkalmazás az Azure térbeli horgonyok 2.2.0-os verzióját célozza meg. Ez azt mondta, hogy az Azure térbeli horgonyok legújabb verziójára hivatkozva kell működni. A kibocsátási megjegyzések [itt találhatók.](https://github.com/Azure/azure-spatial-anchors-samples/releases)
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.3.0]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.3.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.2.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.2.0]"
     ...
 }
 ```

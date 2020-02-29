@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 4a45f516f751609b413948278e2f2cfca47c9da2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f80f586c783293f87e3b7de469eff07d2e4802d8
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703303"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160897"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy Python-konzol alkalmazásból az alkalmazás identitásával
 
@@ -76,37 +76,42 @@ A minta futtatásához a következőkre lesz szüksége:
 
 #### <a name="step-2-download-your-python-project"></a>2\. lépés: a Python-projekt letöltése
 
-[A Python Daemon-projekt letöltése](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
+> [!div renderon="docs"]
+> [A Python Daemon-projekt letöltése](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
-#### <a name="step-3-configure-your-python-project"></a>3\. lépés: a Python-projekt konfigurálása
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [A mintakód letöltése]()
 
-1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples**).
-1. Navigáljon az **1 – Call-MsGraph-WithSecret "** almappába.
-1. Szerkessze a **Parameters. JSON** fájlt, és cserélje le a `authority`, `client_id`és `secret` mezők értékeit a következő kódrészletre:
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Enter_the_Supported_Account_Info_Here
 
-    ```json
-    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
-    "client_id": "Enter_the_Application_Id_Here",
-    "secret": "Enter_the_Client_Secret_Here"
-    ```
-    > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
-    > > [Új ügyfél-titkos kód létrehozása]()
+
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-your-python-project"></a>3\. lépés: a Python-projekt konfigurálása
+> 
+> 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples**).
+> 1. Navigáljon az **1 – Call-MsGraph-WithSecret "** almappába.
+> 1. Szerkessze a **Parameters. JSON** fájlt, és cserélje le a `authority`, `client_id`és `secret` mezők értékeit a következő kódrészletre:
+>
+>    ```json
+>    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
+>    "client_id": "Enter_the_Application_Id_Here",
+>    "secret": "Enter_the_Client_Secret_Here"
+>    ```
+>    Az elemek magyarázata:
+>    - `Enter_the_Application_Id_Here` – ez a regisztrált alkalmazáshoz tartozó **Alkalmazás (ügyfél) azonosítója** érték.
+>    - `Enter_the_Tenant_Id_Here` – ezt az értéket cserélje le a **bérlői azonosítóra** vagy a **bérlő nevére** (például contoso.microsoft.com).
+>    - `Enter_the_Client_Secret_Here` – cserélje le ezt az értéket az 1. lépésben létrehozott ügyfél-titkos kulcsra.
+>
+> > [!TIP]
+> > Az **alkalmazás (ügyfél) azonosítójának**, a **bérlői azonosító**értékének megkereséséhez lépjen az alkalmazás **Áttekintés** lapjára a Azure Portal. Új kulcs létrehozásához nyissa meg a **tanúsítványok & titkok** lapot.
     
-    > [!div class="sxs-lookup" renderon="portal"]
-    > > [!NOTE]
-    > > Ez a rövid útmutató támogatja a Enter_the_Supported_Account_Info_Here.
-    
-    > [!div renderon="docs"]
-    >> Helyszín:
-    >> * `Enter_the_Application_Id_Here` – ez a regisztrált alkalmazáshoz tartozó **Alkalmazás (ügyfél) azonosítója** érték.
-    >> * `Enter_the_Tenant_Id_Here` – ezt az értéket cserélje le a **bérlői azonosítóra** vagy a **bérlő nevére** (például contoso.microsoft.com).
-    >> * `Enter_the_Client_Secret_Here` – cserélje le ezt az értéket az 1. lépésben létrehozott ügyfél-titkos kulcsra.
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-admin-consent"></a>3\. lépés: rendszergazdai engedély
 
-    > [!div renderon="docs"]
-    > > [!TIP]
-    > > Az **alkalmazás (ügyfél) azonosítójának**, a **bérlői azonosító**értékének megkereséséhez lépjen az alkalmazás **Áttekintés** lapjára a Azure Portal. Új kulcs létrehozásához nyissa meg a **tanúsítványok & titkok** lapot.
-    
-#### <a name="step-4-admin-consent"></a>4\. lépés: rendszergazdai engedély
+> [!div renderon="docs"]
+> #### <a name="step-4-admin-consent"></a>4\. lépés: rendszergazdai engedély
 
 Ha ezen a ponton próbálja futtatni az alkalmazást, *HTTP 403-Tiltott* hibaüzenetet kap: `Insufficient privileges to complete the operation`. Ez a hiba azért fordul elő, mert bármely *csak alkalmazásra vonatkozó engedélyhez* rendszergazdai hozzájárulás szükséges: a címtár globális rendszergazdájának hozzájárulást kell adnia az alkalmazáshoz. Válassza ki az alábbi lehetőségek egyikét a szerepkörtől függően:
 
@@ -129,11 +134,15 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 ```
 
 > [!div renderon="docs"]
->> Helyszín:
+>> Az elemek magyarázata:
 >> * `Enter_the_Tenant_Id_Here` – ezt az értéket cserélje le a **bérlői azonosítóra** vagy a **bérlő nevére** (például contoso.microsoft.com).
 >> * `Enter_the_Application_Id_Here` – ez a regisztrált alkalmazáshoz tartozó **Alkalmazás (ügyfél) azonosítója** érték.
 
-#### <a name="step-5-run-the-application"></a>5\. lépés: az alkalmazás futtatása
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-4-run-the-application"></a>4\. lépés: az alkalmazás futtatása
+
+> [!div renderon="docs"]
+> #### <a name="step-5-run-the-application"></a>5\. lépés: az alkalmazás futtatása
 
 A minta függőségeit egyszer kell telepítenie
 
@@ -180,7 +189,7 @@ app = msal.ConfidentialClientApplication(
     client_credential=config["secret"])
 ```
 
-> | Helyszín: ||
+> | Az elemek magyarázata: ||
 > |---------|---------|
 > | `config["secret"]` | Az Azure Portalon az alkalmazáshoz létrehozott ügyfél-titkos kulcs. |
 > | `config["client_id"]` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)** . Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
@@ -201,7 +210,7 @@ if not result:
     result = app.acquire_token_for_client(scopes=config["scope"])
 ```
 
-> |Helyszín:| |
+> |Az elemek magyarázata:| |
 > |---------|---------|
 > | `config["scope"]` | A kért hatóköröket tartalmazza. A bizalmas ügyfelek esetében ennek a `{Application ID URI}/.default`hoz hasonló formátumot kell használnia annak jelzésére, hogy a kért hatókörök az Azure Portalon beállított app Object (Microsoft Graph esetén az `{Application ID URI}` `https://graph.microsoft.com`) értékre vannak beállítva. Az egyéni webes API-k esetében `{Application ID URI}` az Azure Portal alkalmazás-regisztrációjában (előzetes verzió), az **API közzététele** részben van meghatározva. |
 

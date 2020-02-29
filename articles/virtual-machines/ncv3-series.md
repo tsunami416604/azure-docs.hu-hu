@@ -2,17 +2,17 @@
 title: NCv3 sorozat – Azure Virtual Machines
 description: A NCv3 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 363f8d2aae4e77453b8291637f2f6067d24bb80b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 1f93fd3c293f8f6108d7c5fbcd83f2f7a8b8f5d9
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661124"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162162"
 ---
 # <a name="ncv3-series"></a>NCv3 sorozat
 
@@ -21,6 +21,10 @@ Az NCv3 sorozatú virtuális gépeket [NVIDIA Tesla V100](https://www.nvidia.com
 Premium Storage: támogatott
 
 Premium Storage gyorsítótárazás: támogatott
+
+Élő áttelepítés: nem támogatott
+
+Memória-megőrzési frissítések: nem támogatott
 
 > [!IMPORTANT]
 > Ennél a virtuálisgép-sorozatnál az előfizetéshez tartozó vCPU (Core) kvóta kezdetben 0 értékre van állítva minden régióban. [VCPU-kvóta növelésének kérése](../azure-supportability/resource-manager-core-quotas-request.md) a sorozathoz egy [elérhető régióban](https://azure.microsoft.com/regions/services/).

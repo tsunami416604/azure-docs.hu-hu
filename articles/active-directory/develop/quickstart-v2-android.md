@@ -11,23 +11,22 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: bbaaf4b26beec56cd8608abc8a2f9cdd3a4cda3f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c4af08a204cbf88c56b699bcbcdd3a7700e0f5e0
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084525"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160961"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása Android-alkalmazásokból
 
-Ez a rövid útmutató egy kód mintát használ annak bemutatására, hogy az Android-alkalmazások hogyan jelentkezhetnek be személyes, munkahelyi vagy iskolai fiókjaikat a Microsoft Identity platform használatával, majd szerezzen be egy hozzáférési jogkivonatot, és hívja meg a Microsoft Graph API-t.
+Ez a rövid útmutató egy kód mintát használ annak bemutatására, hogy az Android-alkalmazások hogyan jelentkezhetnek be személyes, munkahelyi vagy iskolai fiókjaikat a Microsoft Identity platform használatával, majd szerezzen be egy hozzáférési jogkivonatot, és hívja meg a Microsoft Graph API-t. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
 
-Az alkalmazásokat a Azure Active Directory alkalmazásnak kell képviselnie, hogy a Microsoft Identity platform meg tudja osztani a jogkivonatokat az alkalmazásával.
+Az alkalmazásokat a Azure Active Directory alkalmazásnak kell képviselnie, hogy a Microsoft Identity platform jogkivonatokat biztosítson az alkalmazásnak.
 
 > [!div renderon="docs"]
 > Kényelmi szempontból a mintakód a `AndroidManifest.xml` fájlban előre konfigurált alapértelmezett `redirect_uri` tartalmaz, így nem kell először regisztrálnia a saját alkalmazás-objektumát. Egy `redirect_uri` részben az alkalmazás aláíró kulcsán alapul. A minta projekt előre konfigurálva van egy aláíró kulccsal, hogy a megadott `redirect_uri` működni fog. Ha többet szeretne megtudni az alkalmazáshoz való regisztrálásról és az alkalmazással való integrálásáról, tekintse meg a [bejelentkezési felhasználók és a Microsoft Graph meghívása androidos alkalmazásból](tutorial-v2-android.md) oktatóanyagot.
 
-![A minta alkalmazás képernyőképe](media/quickstart-v2-android/android-intro.svg)
 
 > [!NOTE]
 > **Előfeltételek**
@@ -44,73 +43,14 @@ Az alkalmazásokat a Azure Active Directory alkalmazásnak kell képviselnie, ho
 > > ![Már konfigurált](media/quickstart-v2-android/green-check.png) Az alkalmazás már konfigurálva van ezekkel az attribútumokkal
 >
 > ### <a name="step-2-download-the-project"></a>2\. lépés: A projekt letöltése 
-> * [A mintakód letöltése](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
+> [!div class="sxs-lookup" renderon="portal"]
+> Futtassa a projektet Android Studio használatával.
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [A mintakód letöltése]()
 >
-> ### <a name="step-3-configure-your-project"></a>3\. lépés: A projekt konfigurálása
-> 1. Csomagolja ki és nyissa meg a projektet az Android Studióban.
-> 2. Az **app** > **src** > a **Main** > **res** > **RAW**, nyissa meg **auth_config_multiple_account. JSON** fájlt, és cserélje le a következő kódra:
-> ```javascript 
-> {
->   "client_id" : "Enter_the_Application_Id_Here",
->   "authorization_user_agent" : "DEFAULT",
->   "redirect_uri" : "Enter_the_Redirect_Uri_Here",
->   "account_mode" : "MULTIPLE",
->   "broker_redirect_uri_registered": true,
->   "authorities" : [
->     {
->       "type": "AAD",
->       "audience": {
->         "type": "Enter_the_Audience_Info_Here",
->         "tenant_id": "Enter_the_Tenant_Info_Here"
->       }
->     }
->   ]
-> }
-> ```
-
 > [!div class="sxs-lookup" renderon="portal"]
-> 3. Az **app** > **src** > a **Main** > **res** > **RAW**, nyissa meg **auth_config_single_account. JSON** fájlt, és cserélje le a következő kódra:
-> ```javascript 
-> {
->   "client_id" : "Enter_the_Application_Id_Here",
->   "authorization_user_agent" : "DEFAULT",
->   "redirect_uri" : "Enter_the_Redirect_Uri_Here",
->   "account_mode" : "SINGLE",
->   "broker_redirect_uri_registered": true,
->   "authorities" : [
->     {
->       "type": "AAD",
->       "audience": {
->         "type": "Enter_the_Audience_Info_Here",
->         "tenant_id": "Enter_the_Tenant_Info_Here"
->       }
->     }
->   ]
-> }
-> ```
-
-> [!div class="sxs-lookup" renderon="portal"]
-> 4. Az **app** > **src** > **Main**oldalon nyissa meg a **AndroidManifest. xml fájlt**.
-> 5. A **manifest\application** csomópontban cserélje le az **Android: Name = "com. microsoft. Identity. Client. BrowserTabActivity"** csomópontot a következőre:    
-> ```xml
-> <!--Intent filter to catch Microsoft's callback after Sign In-->
-> <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
->     <intent-filter>
->         <action android:name="android.intent.action.VIEW" />
->         <category android:name="android.intent.category.DEFAULT" />
->         <category android:name="android.intent.category.BROWSABLE" />
->         <!--
->             Add in your scheme/host from registered redirect URI 
->             note that the leading "/" is required for android:path
->         -->
->         <data 
->             android:host="Enter_the_Package_Name"
->             android:path="/Enter_the_Signature_Hash"
->             android:scheme= "msauth" />
->     </intent-filter>
-> </activity>
-> ```
-> 6. Futtassa az alkalmazást!   
+> ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3\. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra
+> A projektet az alkalmazás tulajdonságainak értékével konfiguráltuk, és készen áll a futtatásra. 
 > A minta alkalmazás az **Egyfiókos mód** képernyőn indul el. Alapértelmezés szerint az alapértelmezett hatókör, a **User. Read**, amelyet a rendszer akkor használ, amikor a Microsoft Graph API-hívás során beolvassa a saját profil adatait. Alapértelmezés szerint a Microsoft Graph API-hívás URL-címe van megadva. Ha szeretné, mindkettőt módosíthatja.
 >
 > ![MSAL minta alkalmazás, amely egyetlen és több fiók használatát mutatja be](./media/quickstart-v2-android/quickstart-sample-app.png)
@@ -126,7 +66,7 @@ Az alkalmazásokat a Azure Active Directory alkalmazásnak kell képviselnie, ho
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Ez a rövid útmutató támogatja a Enter_the_Supported_Account_Info_Here.
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
 > ## <a name="step-1-get-the-sample-app"></a>1\. lépés: a minta alkalmazás beszerzése
@@ -151,6 +91,8 @@ Az alkalmazásokat a Azure Active Directory alkalmazásnak kell képviselnie, ho
 > Több fiókos módban is megismételheti ugyanezeket a lépéseket.  Emellett eltávolíthatja a bejelentkezett fiókot is, amely eltávolítja az adott fiók gyorsítótárazott jogkivonatait is.
 
 ## <a name="how-the-sample-works"></a>A minta működése
+![A minta alkalmazás képernyőképe](media/quickstart-v2-android/android-intro.svg)
+
 
 A kód töredékekre van rendezve, amelyek bemutatják, hogyan írhat egyetlen és több fiókot MSAL-alkalmazásba. A kód fájljai a következőképpen vannak rendszerezve:
 
@@ -171,7 +113,7 @@ Most megtekintjük ezeket a fájlokat részletesebben, és megvizsgáljuk a MSAL
 A MSAL ([com. microsoft. Identity. Client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) az a könyvtár, amellyel a felhasználók bejelentkezhetnek, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kérhetnek. Gradle 3.0 + telepíti a könyvtárat, amikor hozzáadja a következőt a **Gradle parancsfájlokhoz** > **Build. Gradle (modul: app)** a **függőségek**területen:
 
 ```gradle  
-implementation 'com.microsoft.identity.client:msal:1.0.0'
+implementation 'com.microsoft.identity.client:msal:1.+'
 ```
 
 Ezt a Build. gradle (modul: alkalmazás) projektben láthatja:
@@ -179,7 +121,7 @@ Ezt a Build. gradle (modul: alkalmazás) projektben láthatja:
 ```java
 dependencies {
     ...
-    implementation 'com.microsoft.identity.client:msal:1.0.+'
+    implementation 'com.microsoft.identity.client:msal:1.+'
     ...
 }
 ```

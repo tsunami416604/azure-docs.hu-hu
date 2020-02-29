@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2019
-ms.openlocfilehash: 19b0ce154fc19015f7faa17e339c9df259206365
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 874fd0ccdd2fdf0a2e75412ae2da82abb736ff3f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670814"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164576"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Naplók optimalizálása Azure Monitorban
 Azure Monitor naplók az [Azure adatkezelő (ADX)](/azure/data-explorer/) használatával tárolják a naplófájlokat, és lekérdezéseket futtatnak az adatok elemzéséhez. Létrehozza, kezeli és karbantartja a ADX-fürtöket, és optimalizálja azokat a log Analysis számítási feladatokhoz. Amikor lekérdezést futtat, az optimalizált, és a munkaterület-adatok tárolására szolgáló megfelelő ADX-fürtre irányítja. A Azure Monitor-naplók és az Azure Adatkezelő számos automatikus lekérdezés-optimalizálási mechanizmust használ. Míg az automatikus optimalizálások jelentős lökést nyújtanak, bizonyos esetekben jelentősen növelheti a lekérdezési teljesítményt. Ez a cikk ismerteti a teljesítménnyel kapcsolatos szempontokat és számos technikát a kijavításához.
@@ -258,8 +258,13 @@ by Computer
 ) on Computer
 ```
 
+A mérés mindig nagyobb, mint a megadott tényleges idő. Ha például a lekérdezés szűrője 7 nap, a rendszer 7,5 vagy 8,1 napot vizsgálhat. Ennek az az oka, hogy a rendszer a változó méretű adattömbökbe particionálja az adathalmazokat. Annak biztosítása érdekében, hogy a rendszer az összes releváns rekordot megvizsgálja, megvizsgálja a teljes partíciót, amely több óráig is eltarthat, és akár egy napnál is hosszabb időt is igénybe vehet.
+
+Több eset is létezik, ha a rendszer nem tud pontos mérési értéket biztosítani az időtartományhoz. Ez a legtöbb esetben fordul elő, amikor a lekérdezés egy napnál rövidebb ideig vagy több-munkaterület lekérdezésekben van.
+
+
 > [!IMPORTANT]
-> Ez a kijelző nem érhető el a régiók közötti lekérdezéseknél.
+> Ez a kijelző csak a közvetlen fürtben feldolgozott adatfeldolgozást jeleníti meg. A többrégiós lekérdezésekben csak az egyik régiót jelöli. Több munkaterület lekérdezése esetén előfordulhat, hogy nem tartalmazza az összes munkaterületet.
 
 ## <a name="age-of-processed-data"></a>Feldolgozott adatmennyiség kora
 Az Azure Adatkezelő számos tárolási szintet használ: memóriabeli, helyi SSD-lemezeket és sokkal lassabb Azure-blobokat. Minél újabb adatról van szó, annál nagyobb a valószínűsége, hogy egy nagyobb teljesítményű, kisebb késéssel rendelkező, a lekérdezés időtartamát és a PROCESSZORt is csökkenti. Az adatoktól eltérő esetben a rendszer gyorsítótárat is tartalmaz a metaadatokhoz. Minél régebbiek az adatok, annál kisebb a metaadatok a gyorsítótárban.
@@ -284,7 +289,7 @@ A régiók közötti lekérdezés végrehajtása megköveteli, hogy a rendszer s
 Ha nincs valós ok az összes ilyen régió vizsgálatára, állítsa be úgy a hatókört, hogy kevesebb régióra kiterjedjen. Ha az erőforrás hatóköre kisebb, de még sok régiót használ, előfordulhat, hogy helytelen a konfiguráció. A naplókat és a diagnosztikai beállításokat például különböző régiókban lévő különböző munkaterületekre küldik, vagy több diagnosztikai beállítási konfiguráció is van. 
 
 > [!IMPORTANT]
-> Ez a kijelző nem érhető el a régiók közötti lekérdezéseknél.
+> Ha egy lekérdezés több régióban fut, a processzor és az adatmérések nem lesznek pontosak, és csak az egyik régióban jelennek meg a mérések.
 
 ## <a name="number-of-workspaces"></a>Munkaterületek száma
 A munkaterületek logikai tárolók, amelyek a naplók adatai elkülönítésére és felügyeletére szolgálnak. A háttérrendszer a kiválasztott régióban található fizikai fürtökön a munkaterület elhelyezéseit optimalizálja.
@@ -300,7 +305,7 @@ A lekérdezések régiók közötti és több fürtre kiterjedő végrehajtása 
 > Egyes többmunkaterületos helyzetekben a processzor-és adatmérések nem pontosak, és a mérések csak néhány munkaterületnek felelnek meg.
 
 ## <a name="parallelism"></a>Párhuzamosság
-Azure Monitor naplók az Azure Adatkezelő nagyméretű fürtjét használják a lekérdezések futtatásához, és ezek a fürtök mérettől függően változnak. A rendszer a munkaterület elhelyezési logikája és kapacitása alapján automatikusan méretezi a fürtöket.
+Azure Monitor naplók az Azure Adatkezelő nagyméretű fürtjét használják a lekérdezések futtatásához, és ezek a fürtök mérettől függően változhatnak, akár több tucat számítási csomópontra is. A rendszer a munkaterület elhelyezési logikája és kapacitása alapján automatikusan méretezi a fürtöket.
 
 A lekérdezés hatékony végrehajtásához particionálni és terjeszteni kell a számítási csomópontokat a feldolgozáshoz szükséges adatok alapján. Vannak olyan helyzetek, amikor a rendszer nem tudja ezt hatékonyan végrehajtani. Ez hosszú időtartamot eredményezhet a lekérdezésben. 
 

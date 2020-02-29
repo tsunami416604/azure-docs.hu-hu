@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 899f453ef67fd094578e946c1cdd9ca4d427bf79
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122447"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919770"
 ---
 # <a name="azure-classic-cli-commands"></a>Klasszikus Azure CLI-parancsok 
 
-> [!IMPORTANT]
-> Ez a témakör az Azure klasszikus parancssori felületének telepítését ismerteti. A klasszikus parancssori felület elavult, és csak a klasszikus üzemi modellel használható.
-> Az összes többi központi telepítéshez használja az [Azure CLI](https://docs.microsoft.com/cli/azure/)-t.
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
+
+Ez a témakör az Azure klasszikus parancssori felületének telepítését ismerteti. A klasszikus parancssori felület elavult, és csak a klasszikus üzemi modellel használható. Az összes többi központi telepítéshez használja az [Azure CLI](https://docs.microsoft.com/cli/azure/)-t.
 
 Ez a cikk a klasszikus Azure parancssori felület (CLI) azon parancsainak szintaxisát és beállításait ismerteti, amelyeket általában Azure-erőforrások létrehozására és kezelésére használhat. Ez nem egy teljes hivatkozás, és a CLI-verziója némileg eltérő parancsokat vagy paramétereket is megjeleníthet. 
 

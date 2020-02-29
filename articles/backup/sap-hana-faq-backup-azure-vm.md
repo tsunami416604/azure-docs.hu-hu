@@ -1,14 +1,14 @@
 ---
-title: Gyakori kérdések – SAP HANA adatbázisok biztonsági mentése Azure-beli virtuális gépeken
+title: Gyakori kérdések – SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 description: Ebből a cikkből megismerheti a SAP HANA adatbázisok a Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: e5684024668103ccbe13be4af3d7a9336651df77
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: d9d10e38885ba814045d8476b83671153feb7b8c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287839"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919685"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Gyakori kérdések – SAP HANA adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -43,11 +43,11 @@ Az átnevezett adatbázist új adatbázisként kezeli a rendszer. Ezért a szolg
 
 ### <a name="what-are-the-prerequisites-to-back-up-sap-hana-databases-on-an-azure-vm"></a>Mik a SAP HANA-adatbázisok Azure-beli virtuális gépen való biztonsági mentésének előfeltételei?
 
-Tekintse át az [Előfeltételek](tutorial-backup-sap-hana-db.md#prerequisites) és az [engedélyek beállítása](tutorial-backup-sap-hana-db.md#setting-up-permissions) szakaszt.
+Tekintse át az [előfeltételeket](tutorial-backup-sap-hana-db.md#prerequisites) , valamint azt, hogy [az előzetes regisztrációs parancsfájl milyen szakaszt tartalmaz](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) .
 
 ### <a name="what-permissions-should-be-set-for-azure-to-be-able-to-back-up-sap-hana-databases"></a>Milyen engedélyeket kell beállítani az Azure-hoz a SAP HANA adatbázisok biztonsági mentéséhez?
 
-Az előzetes regisztrációs parancsfájl futtatásakor a szükséges engedélyek megadásával engedélyezheti az Azure számára a SAP HANA adatbázisok biztonsági mentését. Az engedélyekről [itt](tutorial-backup-sap-hana-db.md#setting-up-permissions)talál további információt.
+Az előzetes regisztrációs parancsfájl futtatásakor a szükséges engedélyek megadásával engedélyezheti az Azure számára a SAP HANA adatbázisok biztonsági mentését. [Itt](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)megtalálhatja az előzetes regisztrációs szkriptet.
 
 ### <a name="will-backups-work-after-migrating-sap-hana-from-10-to-20"></a>A biztonsági mentések a 1,0 és 2,0 közötti SAP HANA áttelepítése után fognak működni?
 

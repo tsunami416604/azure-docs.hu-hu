@@ -3,12 +3,12 @@ title: Az adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása
 description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 04f9bafba0ca490b33a0daf3c3725e57d81bcc7e
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 8872cfe87df9b8d0553d777f72fe7102d08dea4d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664598"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916863"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
@@ -16,9 +16,16 @@ Ez a cikk a SAP HANA adatbázisok Azure-beli virtuális gépeken történő bizt
 
 ## <a name="prerequisites-and-permissions"></a>Előfeltételek és engedélyek
 
-A biztonsági mentések konfigurálása előtt tekintse át az [Előfeltételek](tutorial-backup-sap-hana-db.md#prerequisites) és az [engedélyek beállítása](tutorial-backup-sap-hana-db.md#setting-up-permissions) szakaszt.
+A biztonsági mentések konfigurálása előtt tekintse át az [előfeltételeket](tutorial-backup-sap-hana-db.md#prerequisites) , valamint azt, hogy [Mit tartalmaz az előzetes regisztrációs parancsfájl](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) .
 
 ## <a name="common-user-errors"></a>Gyakori felhasználói hibák
+
+### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
+
+| **Hibaüzenet**      | <span style="font-weight:normal">Az Azure Backup nem rendelkezik a biztonsági másolatok végrehajtásához szükséges szerepköri jogosultságokkal</span>    |
+| ---------------------- | ------------------------------------------------------------ |
+| **Lehetséges okok**    | Lehetséges, hogy a szerepkör felül lett írva.                          |
+| **Javasolt művelet** | A probléma megoldásához futtassa a szkriptet a **felderítési adatbázis** panelen, vagy töltse le [itt](https://aka.ms/scriptforpermsonhana). Azt is megteheti, hogy hozzáadja a "SAP_INTERNAL_HANA_SUPPORT" szerepkört a munkaterhelés biztonsági mentési felhasználóhoz (AZUREWLBACKUPHANAUSER). |
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
@@ -86,7 +93,7 @@ Tegyük fel, hogy a "H21" SDC HANA-példányról biztonsági másolat készül. 
 
 ![Visszaállított SDC-adatbázis neve](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 
-Vegye figyelembe a következő szempontokat:
+Vegye figyelembe a következő pontokat:
 
 - Alapértelmezés szerint a visszaállított adatbázis neve a biztonsági mentési elem nevével lesz feltöltve. Ebben az esetben a H21 (SDC).
 - A cél kiválasztása, mivel a H11 nem módosítja automatikusan a visszaállított adatbázis nevét. **Ezt a H11 (SDC) kell szerkeszteni**. A SDC kapcsolatban a visszaállított adatbázis neve a célként megadott példány-azonosító kisbetűkkel és a "SDC" zárójelek között.

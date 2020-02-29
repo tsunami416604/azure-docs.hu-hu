@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: 10e1081c7a91c65c21ffcb3da66930fb7c6e73bb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: f8b4063d87fa9a89dccd42eddea644609bd6ff27
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603449"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921249"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center fenyegetésfelderítési jelentés
 Ez a dokumentum ismerteti, hogy az Azure Security Center fenyegetésfelderítési jelentés segítségével hogyan tudhat meg többet az olyan fenyegetésekről, amelyek biztonsági riasztást hoztak létre.
 
 ## <a name="what-is-a-threat-intelligence-report"></a>Mi a fenyegetésfelderítési jelentés?
-A Security Center fenyegetésészlelése úgy működik, hogy figyeli az Azure-erőforrások, a hálózat, és a partnermegoldások biztonsági információit. A fenyegetések azonosításához elemzi ezeket az információkat, és gyakran megvizsgálja a különböző forrásokból származó adatok közötti összefüggéseket. További információ: [How Azure Security Center észleli és reagál a fenyegetésekre](security-center-alerts-overview.md#detect-threats).
+Security Center veszélyforrások elleni védelem az Azure-erőforrások, a hálózat és a csatlakoztatott partneri megoldások biztonsági adatainak figyelésével működik. A fenyegetések azonosításához elemzi ezeket az információkat, és gyakran megvizsgálja a különböző forrásokból származó adatok közötti összefüggéseket. További információ: [How Azure Security Center észleli és reagál a fenyegetésekre](security-center-alerts-overview.md#detect-threats).
 
 Ha a Security Center azonosít egy fenyegetést, akkor az [biztonsági riasztást](security-center-managing-and-responding-alerts.md) vált ki, amely részletes információkat tartalmaz az adott eseménnyel kapcsolatban, beleértve az elhárítási javaslatokat is. Az incidensek megválaszolásával foglalkozó csapatok támogatásához, a fenyegetések kivizsgálásához és elhárításához Security Center tartalmaz egy fenyegetési intelligencia-jelentést, amely az észlelt fenyegetéssel kapcsolatos információkat tartalmaz, beleértve a következő információkat:
 

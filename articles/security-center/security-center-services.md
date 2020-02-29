@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8d905da733ea0573b91b289da43684ed8083c804
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 14c54028dacb545532b540ae8ff79fc3dc5356bc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616373"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921266"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>A Azure Security Centerban elérhető támogatott szolgáltatások
 
@@ -38,10 +38,10 @@ A következő szakaszban Security Center a [támogatott platformokhoz](security-
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure Virtual Machines**|**Azure-Virtual Machine Scale Sets**|**Nem Azure-beli gépek**|**Díjszabás**
-|[Microsoft Defender ATP-integráció](security-center-wdatp.md)|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|Standard|
-|[A virtuális gép viselkedési elemzési veszélyforrások észlelésével kapcsolatos riasztások](threat-protection.md)|✔|✔|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
-|[A fájlok nem észlelhető veszélyforrások észlelésével kapcsolatos riasztások](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
-|[Hálózati veszélyforrások észlelésével kapcsolatos riasztások](threat-protection.md#network-layer)|✔|✔|-|Standard|
+|[Microsoft Defender ATP-integráció](security-center-wdatp.md)|✔</br>(támogatott verziók esetén)|✔</br>(támogatott verziók esetén)|✔|Standard|
+|[Virtuális gép viselkedési elemzési (és biztonsági riasztások)](threat-protection.md)|✔|✔|✔|Javaslatok (ingyenes) </br></br> Biztonsági riasztások (standard)|
+|[Nem biztonságos biztonsági riasztások](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
+|[Hálózati biztonsági riasztások](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[VIRTUÁLIS gépek igény szerinti elérése](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Natív sebezhetőségi felmérés](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Fájl integritásának figyelése](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
@@ -50,7 +50,7 @@ A következő szakaszban Security Center a [támogatott platformokhoz](security-
 |[Adaptív hálózat megerősítése](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |Adaptív hálózati vezérlők|✔|✔|-|Standard|
 |[Szabályozási megfelelőségi irányítópult & jelentések](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
-|Javaslatok és veszélyforrások észlelése a Docker által üzemeltetett IaaS-tárolókban|-|-|-|Standard|
+|Javaslatok és veszélyforrások elleni védelem a Docker által üzemeltetett IaaS-tárolókban|-|-|-|Standard|
 |Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Ingyenes|
 |Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Ingyenes|
 |[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Ingyenes|
@@ -65,9 +65,9 @@ A következő szakaszban Security Center a [támogatott platformokhoz](security-
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure Virtual Machines**|**Azure-Virtual Machine Scale Sets**|**Nem Azure-beli gépek**|**Díjszabás**
 |[Microsoft Defender ATP-integráció](security-center-wdatp.md)|-|-|-|Standard|
-|[A virtuális gép viselkedési elemzési veszélyforrások észlelésével kapcsolatos riasztások](security-center-alerts-iaas.md)|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
-|[A fájlok nem észlelhető veszélyforrások észlelésével kapcsolatos riasztások](alerts-reference.md#alerts-windows)|-|-|-|Standard|
-|[Hálózati veszélyforrások észlelésével kapcsolatos riasztások](threat-protection.md#network-layer)|✔|✔|-|Standard|
+|[Virtuális gép viselkedési elemzési (és biztonsági riasztások)](security-center-alerts-iaas.md)|✔</br>(támogatott verziók esetén)|✔</br>(támogatott verziók esetén)|✔|Javaslatok (ingyenes) </br></br> Biztonsági riasztások (standard)|
+|[Nem biztonságos biztonsági riasztások](alerts-reference.md#alerts-windows)|-|-|-|Standard|
+|[Hálózati biztonsági riasztások](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[VIRTUÁLIS gépek igény szerinti elérése](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Natív sebezhetőségi felmérés](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Fájl integritásának figyelése](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
@@ -76,7 +76,7 @@ A következő szakaszban Security Center a [támogatott platformokhoz](security-
 |[Adaptív hálózat megerősítése](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |Adaptív hálózati vezérlők|✔|✔|-|Standard|
 |[Szabályozási megfelelőségi irányítópult & jelentések](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
-|Javaslatok és veszélyforrások észlelése a Docker által üzemeltetett IaaS-tárolókban|✔|✔|✔|Standard|
+|Javaslatok és veszélyforrások elleni védelem a Docker által üzemeltetett IaaS-tárolókban|✔|✔|✔|Standard|
 |Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Ingyenes|
 |Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Ingyenes|
 |[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Ingyenes|
@@ -116,7 +116,7 @@ További információ az egyes védelemekhez kapcsolódó javaslatok létrehozá
 
 A Azure Security Center a következő Pásti-erőforrásokat támogatja:
 
-|Szolgáltatás|Javaslatok (ingyenes)|Fenyegetések észlelésével kapcsolatos riasztások (standard)|Sebezhetőségi felmérés (standard)|
+|Szolgáltatás|Javaslatok (ingyenes)|Biztonsági riasztások (standard)|Sebezhetőségi felmérés (standard)|
 |----|:----:|:----:|:----:|
 |SQL Database-adatbázisok|✔|✔|✔|
 |Azure Container Registry|-|-|✔|
@@ -158,6 +158,5 @@ A Azure Security Center a következő Pásti-erőforrásokat támogatja:
 - Megtudhatja [, hogyan kezeli és védi a Security Center az információkat](security-center-data-security.md).
 - Megtudhatja, hogyan [tervezheti meg és értelmezheti a Azure Security Center elfogadásához szükséges tervezési szempontokat](security-center-planning-and-operations-guide.md).
 - Tekintse át a [Security centert támogató platformokat](security-center-os-coverage.md).
-- További információ a [Azure Security Center-beli virtuális gépek & kiszolgálói veszélyforrások észleléséről](security-center-alerts-iaas.md).
+- További információ a [Windows és Linux rendszerű gépek veszélyforrások elleni védelméről Azure Security Centerban](threat-protection.md#windows-machines).
 - [Gyakori kérdések a Azure Security Centerról](faq-general.md).
-- [Blogbejegyzések az Azure biztonsági és megfelelőségi](https://blogs.msdn.com/b/azuresecurity/)funkcióiról.

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 1f609c33ea474508eb107c0df9993c2ba3483660
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 36d6b0cac0321c989fecbc5751d71c744cd83292
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087027"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920943"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Oktatóanyag: modellek betanítása és üzembe helyezése a parancssori felületről
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -68,7 +68,7 @@ A projekt `examples/cli-train-deploy` könyvtára a következő fájlokat tartal
 A tárház a következő fájlokat tartalmazza, amelyek segítségével a betanított modellt webszolgáltatásként helyezheti üzembe:
 
 * `aciDeploymentConfig.yml`: __telepítési konfigurációs__ fájl. Ez a fájl határozza meg a modellhez szükséges üzemeltetési környezetet.
-* `inferenceConfig.yml`: következtetés configuration__ fájl. Ez a fájl határozza meg, hogy a szolgáltatás milyen Szoftverkörnyezet használatával szerzi be az adatmodellt.
+* `inferenceConfig.yml`: __következtetési konfigurációs__ fájl. Ez a fájl határozza meg, hogy a szolgáltatás milyen Szoftverkörnyezet használatával szerzi be az adatmodellt.
 * `score.py`: A beérkező adatok fogadására szolgáló Python-szkript, a modell használatával szerzi be, majd visszaadja a választ.
 * `scoring-env.yml`: a modell és a `score.py` parancsfájl futtatásához szükséges Conda függőségek.
 * `testdata.json`: az üzembe helyezett webszolgáltatás tesztelésére használható adatfájl.
@@ -97,7 +97,7 @@ Ha egy üzenet jelenik meg, amely szerint a bővítmény már telepítve van, a 
 az extension update -n azure-cli-ml
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport az Azure platformon található erőforrások alapszintű tárolója. A Azure Machine Learning használatakor az erőforráscsoport a Azure Machine Learning munkaterületet fogja tartalmazni. Emellett a munkaterület által használt egyéb Azure-szolgáltatásokat is tartalmazni fogja. Ha például egy felhőalapú számítási erőforrás használatával betanítja a modellt, akkor az erőforrást az erőforráscsoport hozza létre.
 

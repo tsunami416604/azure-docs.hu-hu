@@ -5,24 +5,24 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 8cf0b88ddc24bfc6bc293dd62416417f1eec3a06
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770951"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163726"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>A MySQL-adatbázis migrálása Importálás és exportálás használatával
 Ez a cikk két gyakori megközelítést ismertet az adatAzure Database for MySQL-kiszolgálóra való importálásához és exportálásához a MySQL Workbench használatával. 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 - Egy Azure Database for MySQL-kiszolgáló, [Azure Database for MySQL-kiszolgáló Azure Portal használatával történő létrehozása](quickstart-create-mysql-server-database-using-azure-portal.md)után.
-- MySQL Workbench [letöltve](https://dev.mysql.com/downloads/workbench/), vagy egy másik MySQL-eszköz az importáláshoz és exportáláshoz.
+- MySQL Workbench [MySQL Workbench Letöltés](https://dev.mysql.com/downloads/workbench/) vagy más, harmadik féltől származó MySQL-eszköz az importáláshoz/exportáláshoz.
 
 ## <a name="use-common-tools"></a>Gyakori eszközök használata
-Olyan általános eszközöket használhat, mint például a MySQL Workbench, a Varangy vagy a Navicat, amelyekkel távolról csatlakozhat, illetve importálhat és exportálhat az adatAzure Database for MySQLba. 
+Az olyan gyakori segédprogramok és eszközök, mint például a MySQL Workbench vagy a mysqldump, távolról csatlakozhatnak és importálhatók vagy exportálhatók az Azure Database for MySQLba. 
 
 Az ügyfélgépen lévő eszközök használatával internetkapcsolattal csatlakozhat Azure Database for MySQLhoz. Használjon SSL-titkosítású kapcsolatot az ajánlott biztonsági eljárásokhoz az SSL- [kapcsolat konfigurálása Azure Database for MySQLban](concepts-ssl-connection-security.md)című témakörben leírtak szerint.
 

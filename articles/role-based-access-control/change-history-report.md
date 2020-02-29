@@ -1,6 +1,6 @@
 ---
-title: Eseménynaplók megtekintése az Azure-erőforrások RBAC változásaihoz | Microsoft Docs
-description: A szerepköralapú hozzáférés-vezérlés (RBAC) által az elmúlt 90 napra vonatkozó Azure-erőforrások változásainak megtekintése.
+title: Az Azure RBAC változásaival kapcsolatos tevékenységek naplóinak megtekintése
+description: Tekintse meg az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Azure-erőforrásokkal kapcsolatos változásait az elmúlt 90 napban.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,45 +11,44 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/02/2019
+ms.date: 02/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 753c626fe44193b83cbd992f225fe01c2ff67f89
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e2024bd14241184338195ed635039bae774da816
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744801"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161776"
 ---
-# <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Az Azure-erőforrásokra vonatkozó RBAC-változásokkal kapcsolatos tevékenységek naplóinak megtekintése
+# <a name="view-activity-logs-for-azure-rbac-changes"></a>Az Azure RBAC változásaival kapcsolatos tevékenységek naplóinak megtekintése
 
-Előfordulhat, hogy az Azure-erőforrások szerepköralapú hozzáférés-vezérlési (RBAC) módosításaival kapcsolatos információkra van szüksége, például naplózási vagy hibaelhárítási célból. Ha valaki módosítja a szerepkör-hozzárendeléseket vagy a szerepkör-definíciókat az előfizetéseken belül, akkor a módosítások bekerülnek az [Azure-tevékenység naplójába](../azure-monitor/platform/platform-logs-overview.md). A tevékenységek naplóit megtekintve megtekintheti az elmúlt 90 nap összes RBAC változását.
+Előfordulhat, hogy az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) változásairól, például naplózási vagy hibaelhárítási célokra vonatkozó információkra van szüksége. Ha valaki módosítja a szerepkör-hozzárendeléseket vagy a szerepkör-definíciókat az előfizetéseken belül, a módosítások bekerülnek az [Azure-tevékenység naplójába](../azure-monitor/platform/platform-logs-overview.md). A tevékenység naplóit megtekintve megtekintheti az elmúlt 90 nap összes Azure-RBAC változását.
 
 ## <a name="operations-that-are-logged"></a>Naplózott műveletek
 
-Itt láthatók a RBAC kapcsolatos műveletek:
+Itt láthatók az Azure RBAC kapcsolatos műveletek, amelyek a tevékenység naplójában vannak naplózva:
 
 - Szerepkör-hozzárendelés létrehozása
 - Szerepkör-hozzárendelés törlése
 - Egyéni szerepkör-definíció létrehozása vagy frissítése
 - Egyéni szerepkör-definíció törlése
 
-## <a name="azure-portal"></a>Azure portál
+## <a name="azure-portal"></a>Azure Portal
 
-Első lépésként a legegyszerűbb módszer, ha megtekinti a tevékenységnaplókat az Azure Portalon. Az alábbi képernyőfelvételen egy olyan műveletnapló látható, amely a szerepkör-hozzárendelés és a szerepkör-definíciós műveletek megjelenítésére lett szűrve. Emellett egy hivatkozást is tartalmaz, amellyel a naplófájlok a CSV-fájlként tölthetők le.
+Első lépésként a legkönnyebben megtekintheti a tevékenység naplóit a Azure Portal. Az alábbi képernyőfelvételen egy példa látható a műveleti naplóban található szerepkör-hozzárendelési műveletekre. Emellett lehetőség van arra is, hogy a naplókat CSV-fájlként töltse le.
 
 ![A portált használó tevékenységek naplói – képernyőfelvétel](./media/change-history-report/activity-log-portal.png)
 
-A portálon a tevékenység naplója több szűrőt tartalmaz. A RBAC-hez kapcsolódó szűrők:
+A portálon a tevékenység naplója több szűrőt tartalmaz. Az Azure RBAC-hez kapcsolódó szűrők:
 
-|Szűrő  |Value (Díj)  |
-|---------|---------|
-|Esemény kategóriája     | <ul><li>Adminisztratív</li></ul>         |
-|Művelet     | <ul><li>Szerepkör-hozzárendelés létrehozása</li> <li>Szerepkör-hozzárendelés törlése</li> <li>Egyéni szerepkör-definíció létrehozása vagy frissítése</li> <li>Egyéni szerepkör-definíció törlése</li></ul>      |
+| Szűrés | Érték |
+| --------- | --------- |
+| Esemény kategóriája | <ul><li>Adminisztratív</li></ul> |
+| Művelet | <ul><li>Szerepkör-hozzárendelés létrehozása</li><li>Szerepkör-hozzárendelés törlése</li><li>Egyéni szerepkör-definíció létrehozása vagy frissítése</li><li>Egyéni szerepkör-definíció törlése</li></ul> |
 
-
-További információ a tevékenységi naplókról: [események megtekintése a tevékenység naplójában](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
+További információ a tevékenységi naplókról: [tevékenység-naplók megtekintése az erőforrásokon végzett műveletek figyeléséhez](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -77,14 +76,14 @@ Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Act
 
 ```Example
 Caller                  : alain@example.com
-EventTimestamp          : 4/20/2018 9:18:07 PM
+EventTimestamp          : 2/27/2020 9:18:07 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
                           statusCode     : Created
                           serviceRequestId: 11111111-1111-1111-1111-111111111111
 
 Caller                  : alain@example.com
-EventTimestamp          : 4/20/2018 9:18:05 PM
+EventTimestamp          : 2/27/2020 9:18:05 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
                           requestbody    : {"Id":"22222222-2222-2222-2222-222222222222","Properties":{"PrincipalId":"33333333-3333-3333-3333-333333333333","RoleDefinitionId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers
@@ -92,25 +91,25 @@ Properties              :
 
 ```
 
-## <a name="azure-cli"></a>Azure parancssori felület (CLI)
+## <a name="azure-cli"></a>Azure CLI
 
 Ha az Azure CLI-vel szeretné megtekinteni a tevékenység naplóit, használja az az [monitor Activity-log List](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) parancsot.
 
-Ez a parancs az erőforráscsoport tevékenység-naplóit listázza a kezdési időpont óta:
+Ez a parancs egy erőforráscsoport tevékenység-naplóit sorolja fel február 27-én, hét nap megvizsgálva:
 
 ```azurecli
-az monitor activity-log list --resource-group pharma-sales --start-time 2018-04-20T00:00:00Z
+az monitor activity-log list --resource-group pharma-sales --start-time 2020-02-27 --offset 7d
 ```
 
-Ez a parancs a kezdési időpont óta felsorolja az engedélyezési erőforrás-szolgáltató tevékenységi naplóit:
+Ez a parancs az engedélyezési erőforrás-szolgáltató tevékenység naplóit sorolja fel február 27-én, a hét napja előre látható:
 
 ```azurecli
-az monitor activity-log list --resource-provider "Microsoft.Authorization" --start-time 2018-04-20T00:00:00Z
+az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2020-02-27 --offset 7d
 ```
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
-[Azure monitor a naplók](../log-analytics/log-analytics-overview.md) egy másik eszköz, amellyel összegyűjtheti és elemezheti az összes Azure-erőforrás RBAC-módosításait. Azure Monitor naplók előnyei a következők:
+[Azure monitor a naplók](../log-analytics/log-analytics-overview.md) egy másik eszköz, amellyel összegyűjtheti és elemezheti az Azure RBAC módosításait az összes Azure-erőforráshoz. Azure Monitor naplók előnyei a következők:
 
 - Összetett lekérdezések és logika írása
 - Integrálás riasztásokkal, Power BIekkel és egyéb eszközökkel
@@ -123,27 +122,27 @@ Az első lépésekhez a következő alapvető lépések szükségesek:
 
 1. [Konfigurálja a Activity log Analytics megoldást](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution) a munkaterületre.
 
-1. [Tekintse meg a tevékenységek naplóit](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution). A Activity Log Analytics megoldás áttekintő oldalának gyors eléréséhez kattintson a **log Analytics** lehetőségre.
+1. [Tekintse meg a tevékenységek naplóit](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution). A Activity Log Analytics megoldás áttekintő oldalának gyors eléréséhez kattintson a **naplók** lehetőségre.
 
    ![Azure Monitor naplók lehetőség a portálon](./media/change-history-report/azure-log-analytics-option.png)
 
-1. A naplók lekérdezéséhez vagy a [speciális elemzési portálhoz](../azure-monitor/log-query/get-started-portal.md) is használhatja a [naplókat](../log-analytics/log-analytics-log-search.md) , és megtekintheti azokat. További információ erről a két lehetőségről: [a naplók keresése vagy a speciális elemzési portál](../azure-monitor/log-query/portals.md).
+1. Igény szerint a [Azure Monitor log Analytics](../azure-monitor/log-query/get-started-portal.md) is használhatja a naplók lekérdezéséhez és megtekintéséhez. További információ: Ismerkedés [a Azure monitor log lekérdezésekkel](../azure-monitor/log-query/get-started-queries.md).
 
 A következő egy lekérdezés, amely a célként megadott erőforrás-szolgáltató által szervezett új szerepkör-hozzárendeléseket adja vissza:
 
-```
+```Kusto
 AzureActivity
-| where TimeGenerated > ago(60d) and OperationNameValue startswith "Microsoft.Authorization/roleAssignments/write" and ActivityStatus == "Succeeded"
+| where TimeGenerated > ago(60d) and Authorization contains "Microsoft.Authorization/roleAssignments/write" and ActivityStatus == "Succeeded"
 | parse ResourceId with * "/providers/" TargetResourceAuthProvider "/" *
 | summarize count(), makeset(Caller) by TargetResourceAuthProvider
 ```
 
 Az alábbi lekérdezés a diagramon megjelenített szerepkör-hozzárendelési módosításokat adja vissza:
 
-```
+```Kusto
 AzureActivity
-| where TimeGenerated > ago(60d) and OperationNameValue startswith "Microsoft.Authorization/roleAssignments"
-| summarize count() by bin(TimeGenerated, 1d), OperationNameValue
+| where TimeGenerated > ago(60d) and Authorization contains "Microsoft.Authorization/roleAssignments"
+| summarize count() by bin(TimeGenerated, 1d), OperationName
 | render timechart
 ```
 

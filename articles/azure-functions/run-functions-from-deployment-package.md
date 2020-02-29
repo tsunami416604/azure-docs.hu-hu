@@ -3,12 +3,12 @@ title: Azure Functions futtatása csomagból
 description: A Azure Functions futtatókörnyezettel futtassa a függvényeket a Function app-projektfájlok fájljait tartalmazó központi telepítési csomagfájl csatlakoztatásával.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: f5d3465e0899f7e5eab213bdb6234313128b7ec8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a3e11a7c4f3fd91df2fd9dd7a44f3922c4922585
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230350"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921113"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions futtatása csomagfájl
 
@@ -58,14 +58,41 @@ A [zip-telepítés][Zip deployment for Azure Functions] a Azure app Service egyi
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+### <a name="use-key-vault-references"></a>Key Vault referenciák használata
+
+A további biztonság érdekében Key Vault hivatkozásokat is használhat a külső URL-címmel együtt. Ez megtartja az URL-címek titkosítását, és lehetővé teszi, hogy kihasználja Key Vault a titkos felügyelet és a forgás számára. Az Azure Blob Storage használata ajánlott, így egyszerűen elforgathatja a társított SAS-kulcsot. Az Azure Blob Storage inaktív állapotban van, így az alkalmazás adatai biztonságban maradnak, amikor nincs telepítve App Service.
+
+1. Hozzon létre egy Azure Key Vault.
+
+    ```azurecli
+    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus
+    ```
+
+1. Adja hozzá a külső URL-címet Key Vault-titokként.
+
+    ```azurecli
+    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
+    ```
+
+1. Hozza létre a `WEBSITE_RUN_FROM_PACKAGE` alkalmazás beállítását, és állítsa be az értéket Key Vault hivatkozásként a külső URL-címre.
+
+    ```azurecli
+    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
+    ```
+
+További információt a következő cikkekben talál.
+
+- [App Service Key Vault referenciái](../app-service/app-service-key-vault-references.md)
+- [Azure Storage-titkosítás a REST-adatokhoz](../storage/common/storage-service-encryption.md)
+
+## <a name="troubleshooting"></a>Hibakeresés
 
 - A csomagból való futtatás `wwwroot` írásvédett, így hibaüzenetet kap, amikor fájlokat ír a könyvtárba.
 - A tar és a gzip formátum nem támogatott.
 - Ez a funkció nem a helyi gyorsítótárral együtt működik.
 - A jobb hidegindító teljesítmény érdekében használja a helyi zip-beállítást (`WEBSITE_RUN_FROM_PACKAGE`= 1).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)

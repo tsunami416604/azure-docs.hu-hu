@@ -2,17 +2,17 @@
 title: Dav4 és Dasv4 sorozat – Azure Virtual Machines
 description: A Dav4 és a Dasv4 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
-author: jonbeck7
+author: migerdes
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: f371281e4072902f9946eb9fd107b68a1e4bf4f6
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 809843bddc4216df4dab44330172d36778248b1a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493877"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162179"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4 és Dasv4 sorozat
 
@@ -25,6 +25,10 @@ ACU: 230-260
 Premium Storage: nem támogatott
 
 Premium Storage gyorsítótárazás: nem támogatott
+
+Élő áttelepítés: támogatott
+
+Memória megőrzésének frissítései: támogatott
 
 A Dav4-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron alapulnak, amely növelheti a 3.35 GHz-es maximális gyakoriságot. A Dav4-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz. Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. A prémium SSD használatához használja a Dasv4-méreteket. A Dasv4-méretek díjszabása és számlázási mérőszámai megegyeznek a Dav4 sorozattal.
 
@@ -48,6 +52,10 @@ ACU: 230-260
 Premium Storage: támogatott
 
 Premium Storage gyorsítótárazás: támogatott
+
+Élő áttelepítés: támogatott
+
+Memória megőrzésének frissítései: támogatott
 
 A Dasv4-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron alapulnak, amely növelheti a 3.35 GHz-es maximális gyakoriságot, és prémium SSD-t használhat. A Dasv4-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
 

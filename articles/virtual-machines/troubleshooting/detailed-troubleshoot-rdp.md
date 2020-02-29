@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: ee2fb3757b0e3a7015a98f4e04084fd9c6a4850d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: ea448b87f9e6954abecead2934bfb7f4ed04a9c5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747540"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920144"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Az Azure-beli Windows rendszerű virtuális gépek távoli asztali kapcsolataival kapcsolatos problémáinak részletes hibaelhárítási lépései
 Ez a cikk részletes hibaelhárítási lépéseket tartalmaz a Windows-alapú Azure-beli virtuális gépek összetett Távoli asztal hibáinak diagnosztizálásához és javításához.
@@ -38,7 +38,7 @@ Az RDP-kapcsolatok a következő összetevőket érintik:
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
 
-A továbblépés előtt hasznos lehet a virtuális géphez való legutóbbi sikeres Távoli asztal-kapcsolódás óta megváltozott változások mentális áttekintése. Példa:
+A továbblépés előtt hasznos lehet a virtuális géphez való legutóbbi sikeres Távoli asztal-kapcsolódás óta megváltozott változások mentális áttekintése. Például:
 
 * Módosult a virtuális gép vagy a virtuális GÉPET tartalmazó felhőalapú szolgáltatás nyilvános IP-címe (más néven virtuális IP-cím: [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)). Az RDP-hiba oka az lehet, hogy a DNS-ügyfél gyorsítótára továbbra is a DNS-névhez regisztrált *régi IP-címmel* rendelkezik. Ürítse ki a DNS-ügyfél gyorsítótárát, és próbálkozzon újra a virtuális gép csatlakoztatásával. Vagy próbáljon meg közvetlenül kapcsolódni az új VIP-hez.
 * Harmadik féltől származó alkalmazást használ a Távoli asztal kapcsolatok kezeléséhez ahelyett, hogy a Azure Portal által létrehozott kapcsolatot használja. Ellenőrizze, hogy az alkalmazás konfigurációja tartalmazza-e a Távoli asztal adatforgalom megfelelő TCP-portját. A [Azure Portal](https://portal.azure.com)klasszikus virtuális géphez tartozó PORTOT a virtuális gép beállításai > végpontok elemre kattintva tekintheti meg.
@@ -92,6 +92,9 @@ Ha Távoli asztal kapcsolatot hozhat létre közvetlenül az internethez csatlak
 A hálózati rendszergazdával együttműködve javítsa ki a szervezet intranetes peremhálózati eszközének beállításait, hogy engedélyezze a HTTPS-alapú Távoli asztal kapcsolatokat az internethez.
 
 ## <a name="source-3-cloud-service-endpoint-and-acl"></a>3\. Forrás: Cloud Service-végpont és ACL
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 A klasszikus üzemi modellel létrehozott virtuális gépek esetében ellenőrizze, hogy egy másik Azure-beli virtuális gép, amely ugyanabban a felhőalapú szolgáltatásban vagy virtuális hálózaton található, Távoli asztal-e kapcsolatot az Azure-beli virtuális géppel.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
@@ -193,7 +196,7 @@ Győződjön meg arról, hogy az Azure-beli virtuális gép Távoli asztal végp
 ## <a name="additional-resources"></a>További források
 [Jelszó alaphelyzetbe állítása vagy a Távoli asztal szolgáltatás használata Windows rendszerű virtuális gépekhez](../windows/reset-rdp.md)
 
-[How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/overview)
+[Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)
 
 [A Secure Shell-(SSH-) kapcsolatok hibakeresése Linux-alapú Azure-beli virtuális gépeken](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

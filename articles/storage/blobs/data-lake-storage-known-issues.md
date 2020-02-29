@@ -1,27 +1,41 @@
 ---
-title: Ismert problémák a Azure Data Lake Storage Gen2kal | Microsoft Docs
-description: Ismerje meg a korlátozásokat és a Azure Data Lake Storage Gen2 ismert problémáit
+title: Ismert problémák az Azure Data Lake Storage Gen2 |} A Microsoft Docs
+description: Ismerje meg Azure Data Lake Storage Gen2 korlátozásait és ismert problémáit.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/03/2019
+ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 951d707c898ad0efa1f21480c12f0c733f5218ee
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 7d637c2fb3f4a4d5f8deac9cd99c0a44af6568e6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834940"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919611"
 ---
-# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
+# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 ismert problémái
 
-Ez a cikk azokat a funkciókat és eszközöket sorolja fel, amelyek még nem támogatottak, vagy csak részlegesen támogatottak olyan Storage-fiókokkal, amelyek hierarchikus névtérrel rendelkeznek (Azure Data Lake Storage Gen2).
+Ez a cikk a Azure Data Lake Storage Gen2 korlátozásait és ismert problémáit ismerteti.
 
-<a id="blob-apis-disabled" />
+## <a name="supported-blob-storage-features"></a>Támogatott blob Storage-funkciók
 
-## <a name="issues-and-limitations-with-using-blob-apis"></a>A blob API-k használatával kapcsolatos problémák és korlátozások
+A blob Storage-funkciók egyre több funkciója működik olyan fiókokkal, amelyek hierarchikus névtérrel rendelkeznek. A teljes listát lásd: [Blob Storage Azure Data Lake Storage Gen2 elérhető szolgáltatásai](data-lake-storage-supported-blob-storage-features.md).
+
+## <a name="supported-azure-service-integrations"></a>Támogatott Azure-szolgáltatások integrációi
+
+Data Lake Storage a Gen2 számos olyan Azure-szolgáltatást támogat, amelyet az adatok betöltésére, elemzések elvégzésére és vizuális ábrázolások létrehozására használhat. A támogatott Azure-szolgáltatások listáját a [Azure Data Lake Storage Gen2t támogató Azure-szolgáltatások](data-lake-storage-supported-azure-services.md)című témakörben tekintheti meg.
+
+Lásd: [Azure Data Lake Storage Gen2 támogató Azure-szolgáltatások](data-lake-storage-supported-azure-services.md).
+
+## <a name="supported-open-source-platforms"></a>Támogatja a nyílt forráskódú platformok
+
+Számos nyílt forráskódú platformra támogatja a Data Lake Storage Gen2. A teljes listát lásd: a [Azure Data Lake Storage Gen2t támogató nyílt forráskódú platformok](data-lake-storage-supported-open-source-platforms.md).
+
+Lásd: [a Azure Data Lake Storage Gen2t támogató nyílt forráskódú platformok](data-lake-storage-supported-open-source-platforms.md).
+
+## <a name="blob-storage-apis"></a>A BLOB storage API-k
 
 A blob API-k és a Data Lake Storage Gen2 API-k ugyanazon az adatközponton működhetnek.
 
@@ -48,38 +62,57 @@ A nem felügyelt virtuálisgép-lemezek nem támogatottak olyan fiókoknál, ame
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="filesystem-support-in-sdks"></a>Fájlrendszer-támogatás SDK-k esetén
+## <a name="file-system-support-in-sdks"></a>Fájlrendszer-támogatás SDK-k esetén
 
-- A [.net](data-lake-storage-directory-file-acl-dotnet.md), a [Java](data-lake-storage-directory-file-acl-java.md) és a [Python](data-lake-storage-directory-file-acl-python.md) támogatás nyilvános előzetes verzióban érhető el. Más SDK-k jelenleg nem támogatottak.
+- A [.net](data-lake-storage-directory-file-acl-dotnet.md), a [Java](data-lake-storage-directory-file-acl-java.md) és a [Python](data-lake-storage-directory-file-acl-python.md), valamint a [JavaScript](data-lake-storage-directory-file-acl-javascript.md) és a támogatás nyilvános előzetes verzióban érhető el. Más SDK-k jelenleg nem támogatottak.
 - Az ACL-műveletek beolvasása és beállítása jelenleg nem rekurzív.
 
-## <a name="filesystem-support-in-powershell-and-azure-cli"></a>Fájlrendszer-támogatás a PowerShellben és az Azure CLI-ben
+## <a name="file-system-support-in-powershell-and-azure-cli"></a>Fájlrendszer-támogatás a PowerShellben és az Azure CLI-ben
 
 - A [PowerShell](data-lake-storage-directory-file-acl-powershell.md) és az [Azure CLI](data-lake-storage-directory-file-acl-cli.md) támogatása nyilvános előzetes verzióban érhető el.
 - Az ACL-műveletek beolvasása és beállítása jelenleg nem rekurzív.
 
-## <a name="support-for-other-blob-storage-features"></a>Más Blob Storage-funkciók támogatása
+## <a name="lifecycle-management-policies"></a>Életciklus-kezelési szabályzatok
 
-A következő táblázat felsorolja az összes olyan funkciót és eszközt, amely még nem támogatott, vagy csak részben támogatott olyan Storage-fiókokkal, amelyek hierarchikus névtérrel rendelkeznek (Azure Data Lake Storage Gen2).
+* A blob-Pillanatképek törlése még nem támogatott.  
 
-| Szolgáltatás/eszköz    | További információ    |
-|--------|-----------|
-| **Fiók feladatátvétele** |Még nem támogatott|
-| **AzCopy** | Verzió-specifikus támogatás <br><br>Csak a AzCopy legújabb verzióját használja ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). A AzCopy korábbi verziói (például a AzCopy v 8.1) nem támogatottak.|
-| **Azure Blob Storage életciklus-kezelési szabályzatok** | Az életciklus-kezelési házirendek támogatottak (előzetes verzió).  Regisztráljon az életciklus-kezelési szabályzatok előzetes verziójára, és archiválja a hozzáférési szintet [itt](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).   <br><br>Minden hozzáférési szintet támogat. Az archív hozzáférési szint jelenleg előzetes verzióban érhető el. A blob-Pillanatképek törlése még nem támogatott.  Jelenleg vannak olyan hibák, amelyek hatással vannak az életciklus-kezelési házirendekre és az archív hozzáférési szintre.  |
-| **Azure Content Delivery Network (CDN)** | Még nem támogatott|
-| **Azure-keresés** |Támogatott (előzetes verzió)|
-| **Azure Storage Explorer** | Verzió-specifikus támogatás. <br><br>Csak `1.6.0` vagy újabb verziót használjon. <br> Jelenleg van olyan tárolási hiba, amely hatással van a `1.11.0` verzióra, ami bizonyos helyzetekben hitelesítési hibákhoz vezethet. A tárolási hiba elhárítása folyamatban van, de megkerülő megoldásként javasoljuk, hogy a `1.10.x` verzióját használja, amely [ingyenes letöltésként](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)érhető el. a tárolási hiba nem érinti a `1.10.x`.|
-| **BLOB Container ACL-ek** |Még nem támogatott|
-| **Blobfuse** |Még nem támogatott|
-| **Egyéni tartományok** |Még nem támogatott|
-| **Storage Explorer a Azure Portal** | Korlátozott támogatás. Az ACL-ek még nem támogatottak. |
-| **Diagnosztikai naplózás** |A diagnosztikai naplók támogatottak (előzetes verzió). <br><br>Azure Storage Explorer 1.10. x nem használható a diagnosztikai naplók megtekintéséhez. A naplók megtekintéséhez használja a AzCopy vagy SDK-kat.
-| **Megváltoztathatatlan tároló** |Még nem támogatott <br><br>A nem módosítható tárterület lehetővé teszi az adattárolást egy [féregben (egyszer írható, olvasható)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) állapottal.|
-| **Objektum szintű szintek** |A ritka elérésű és az archív rétegek támogatottak. Az archiválási szint előzetes verzióban érhető el. Az összes többi hozzáférési szintet még nem támogatja a rendszer. <br><br> Jelenleg vannak olyan hibák, amelyek hatással vannak az archív hozzáférési szintre.  Regisztráljon az archív [hozzáférési szint előzetes](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)verziójára.|
-| **Statikus webhelyek** |Még nem támogatott <br><br>Konkrétan a fájlok [statikus webhelyekre](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)való kiszolgálásának lehetősége.|
-| **Harmadik féltől származó alkalmazások** | Korlátozott támogatás <br><br>A REST API-kat használó harmadik féltől származó alkalmazások továbbra is működni fognak, ha Data Lake Storage Gen2 használatával használják őket. <br>A blob API-kat meghívó alkalmazások valószínűleg működni fognak.|
-|**Helyreállítható törlés** |Még nem támogatott|
-| **Verziószámozási funkciók** |Még nem támogatott <br><br>Ez magában foglalja a [Soft delete](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)és más verziószámozási funkciókat, például a [pillanatképeket](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob).|
+* Jelenleg vannak olyan hibák, amelyek hatással vannak az életciklus-kezelési házirendekre és az archív hozzáférési szintre. 
+
+## <a name="diagnostic-logs"></a>Diagnosztikai naplók
+
+Azure Storage Explorer 1.10. x nem használható a diagnosztikai naplók megtekintéséhez. A naplók megtekintéséhez használja a AzCopy vagy SDK-kat.
+
+## <a name="blobfuse"></a>Blobfuse
+
+A Blobfuse nem támogatott.
+
+
+
+<a id="known-issues-tools" />
+
+## <a name="azcopy"></a>AzCopy
+
+Csak a AzCopy legújabb verzióját használja ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). A AzCopy korábbi verziói (például a AzCopy v 8.1) nem támogatottak.
+
+<a id="storage-explorer" />
+
+## <a name="azure-storage-explorer"></a>Azure Storage Explorer
+
+Csak `1.6.0` vagy újabb verziót használjon. Jelenleg van olyan tárolási hiba, amely hatással van a `1.11.0` verzióra, ami bizonyos helyzetekben hitelesítési hibákhoz vezethet. A tárolási hiba elhárítása folyamatban van, de megkerülő megoldásként javasoljuk, hogy a `1.10.x` verzióját használja, amely [ingyenes letöltésként](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)érhető el. a tárolási hiba nem érinti a `1.10.x` t.
+
+<a id="explorer-in-portal" />
+
+## <a name="storage-explorer-in-the-azure-portal"></a>Storage Explorer az Azure Portalon
+
+Az ACL-ek még nem támogatottak.
+
+<a id="third-party-apps" />
+
+## <a name="thirdpartyapplications"></a>Harmadik féltől származó alkalmazások
+
+A REST API-kat használó harmadik féltől származó alkalmazások továbbra is működni fognak, ha a blob API-kat hívó Data Lake Storage Gen2 alkalmazásokkal valószínűleg működni fognak.
+
+
+
 
 

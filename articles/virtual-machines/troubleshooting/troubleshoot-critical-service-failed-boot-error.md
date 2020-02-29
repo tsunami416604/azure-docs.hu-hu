@@ -12,24 +12,22 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 590505d954d52ebec9f8a5c344d6e750f11ef677
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981371"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921453"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>A Windows egy Azure-beli virtuális gép indításakor a "kritikus szolgáltatás sikertelen" állapotot jeleníti meg a kék képernyőn
 Ez a cikk a "kritikus szolgáltatás nem sikerült" hibát mutatja be, amely akkor fordulhat elő, amikor Windows rendszerű virtuális gépet (VM) indít el Microsoft Azure. Hibaelhárítási lépéseket biztosít a problémák megoldásához. 
 
-> [!NOTE] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/management/deployment-models.md). Ez a cikk a Resource Manager-alapú üzemi modell használatát ismerteti, amelyet a klasszikus üzemi modell helyett új központi telepítések esetén ajánlott használni.
 
 ## <a name="symptom"></a>Hibajelenség 
 
 Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a rendszerindítási [diagnosztika](./boot-diagnostics.md)rendszerindítási funkcióit, a következő hibaüzenetek egyike jelenik meg egy kék képernyőn:
 
-- "A számítógép hibát észlelt, és újra kell indítania. Újra lehet indítani. Erről a problémáról és a lehetséges javításokról a https://windows.com/stopcode webhelyen talál további információt. Ha egy támogatási személyt hív meg, adja meg nekik ezt az információt: leállítási kód: a kritikus szolgáltatás nem sikerült. 
+- "A számítógép hibát észlelt, és újra kell indítania. Újra lehet indítani. Erről a problémáról és a lehetséges javításokról a https://windows.com/stopcodewebhelyen talál további információt. Ha egy támogatási személyt hív meg, adja meg nekik ezt az információt: leállítási kód: a kritikus szolgáltatás nem sikerült. 
 - "A számítógép hibát észlelt, és újra kell indítania. Most gyűjtünk néhány hibaüzenetet, majd újraindulunk. Ha további információra van szüksége, később is megkeresheti a következő hibaüzenetet: CRITICAL_SERVICE_FAILED "
 
 ## <a name="cause"></a>Ok
@@ -43,7 +41,7 @@ A leállítási hibák számos oka lehet. A leggyakoribb okok a következők:
 
 A probléma megoldásához [forduljon az ügyfélszolgálathoz, és küldjön el egy memóriaképfájl-fájlt](./troubleshoot-common-blue-screen-error.md#collect-memory-dump-file), amely segít a probléma gyorsabb diagnosztizálásában, vagy próbálja ki a következő önsegítő megoldást.
 
-### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Az operációsrendszer-lemez csatlakoztatása egy helyreállítási virtuális géphez
+### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez
 
 1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
 2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](./troubleshoot-recovery-disks-portal-windows.md). 

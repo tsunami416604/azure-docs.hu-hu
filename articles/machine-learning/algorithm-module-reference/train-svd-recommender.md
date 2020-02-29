@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 075216cf7d67aa4d5a04f34a7ae3444a078b4c62
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/22/2020
+ms.openlocfilehash: 1778ba543e070bbffbbc8579b280373d834492fd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313909"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920797"
 ---
 # <a name="train-svd-recommender"></a>SVD-ajánló betanítása
 
-Ez a cikk azt ismerteti, hogyan használható a SVD ajánló modul a Azure Machine Learning Designerben. Ezzel a modullal betaníthatja a javaslat modelljét az egyértékű dekompozíció (SVD) algoritmus alapján.  
+Ez a cikk azt ismerteti, hogyan használható a SVD ajánló modul a Azure Machine Learning Designerben (előzetes verzió). Ezzel a modullal betaníthatja a javaslat modelljét az egyértékű dekompozíció (SVD) algoritmus alapján.  
 
 A Train SVD ajánló modul beolvassa a felhasználói elemek minősítésének háromszorosát tartalmazó adatkészletet. Egy betanított SVD-ajánlót ad vissza. Ezután használhatja a betanított modellt a minősítések előrejelzéséhez vagy javaslatok létrehozásához a [score SVD ajánló](score-svd-recommender.md) modul használatával.  
 
@@ -48,16 +48,13 @@ A modul használata előtt a bemeneti adatoknak az ajánlási modell által vár
 + A második oszlop az elemek azonosítóit tartalmazza.
 + A harmadik oszlop tartalmazza a felhasználó-tétel párok minősítését. A minősítési értékeknek numerikus típusúnak kell lenniük.  
 
-Az **éttermi minősítési** adatkészlet Azure Machine learning Designerben (a **mentett adatkészletek** kiválasztása, majd a **minták**) a várt formátumot mutatja:
+A Azure Machine Learning Designer **Movie Ratings** adatkészlete (az **adatkészletek** kiválasztása, majd a **minták**) a várt formátumot mutatja:
 
-|userID|placeID|rating|
-|------------|-------------|------------|
-|U1077|135085|2|
-|U1077|135038|2|
+![Film minősítése](media/module/movie-ratings-dataset.png)
 
-Ebből a mintából láthatja, hogy egyetlen felhasználó minősítése két külön étterem. 
+Ebből a mintából láthatja, hogy egyetlen felhasználó értékelte a több filmet. 
 
-### <a name="train-the-model"></a>A modell tanítása
+### <a name="train-the-model"></a>A modell betanítása
 
 1.  Adja hozzá a Train SVD Ajánlói modult a folyamathoz a tervezőben, és kapcsolja össze a betanítási adataival.  
    

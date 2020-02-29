@@ -2,19 +2,19 @@
 title: Dv3 és Dsv3 sorozat – Azure Virtual Machines
 description: A Dv3 és a Dsv3 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: db50cadee4aeb618e85e977ca02f4fa6ff203d4b
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9ea5811fa20ea4866655de74d79ff3905ba03f16
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493760"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164406"
 ---
-# <a name="dv3-and-dsv3-series"></a>Dv3 és Dsv3 sorozat
+# <a name="dv3-and-dsv3-series"></a>Dv3 és DSv3 sorozat
 
 A Dv3 sorozat az Intel® Xeon® 8171M 2.1 GHz-es (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell), vagy az Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok Hyper-threaded konfigurációban való futtatásával nagyobb értékű kiosztást biztosít a legtöbb általános cél munkaterhelések. A memória ki lett bontva (~ 3,5 GiB/vCPU – 4 GiB/vCPU), míg a lemez-és hálózati korlátokat a rendszer alapszinten igazította ki, hogy az a feleznie-re legyen igazítva. A Dv3-sorozat már nem rendelkezik a D/Dv2 sorozat nagy memóriabeli virtuálisgép-méretével, ezeket a rendszer áthelyezte a memória-optimalizált [Ev3 és Esv3-sorozatba](ev3-esv3-series.md).
 
@@ -33,6 +33,10 @@ ACU: 160–190
 Premium Storage: nem támogatott
 
 Premium Storage gyorsítótárazás: nem támogatott
+
+Élő áttelepítés: támogatott
+
+Memória megőrzésének frissítései: támogatott
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális Temp Storage átviteli sebessége: IOPS/olvasási MBps/írási MBps | Hálózati adapterek maximális száma/sávszélesség |
 |---|---|---|---|---|---|---|
@@ -55,6 +59,10 @@ ACU: 160–190
 Premium Storage: támogatott
 
 Premium Storage gyorsítótárazás: támogatott
+
+Élő áttelepítés: támogatott
+
+Memória megőrzésének frissítései: támogatott
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps (gyorsítótár mérete GiB-ban) | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) |
 |---|---|---|---|---|---|---|---|

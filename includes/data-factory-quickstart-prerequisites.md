@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: f808158c959894e757adaa73a81e3bf57f475da0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4d77cb8128105a40143a40e48ebe450115f7cf1e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021238"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164167"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -21,7 +21,7 @@ ms.locfileid: "76021238"
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ### <a name="azure-roles"></a>Azure-szerepkörök
-Data Factory-példányok létrehozásához az Azure-ba történő bejelentkezéshez használt felhasználói fióknak a *közreműködő* vagy *tulajdonos* szerepkör tagjának, vagy az Azure-előfizetés *rendszergazdájának* kell lennie. Az előfizetésben található engedélyek megtekintéséhez lépjen a [Azure Portal](https://portal.azure.com), válassza ki a felhasználónevét a jobb felső sarokban, válassza a **további lehetőségek** (...) lehetőséget, majd válassza **a saját engedélyek**lehetőséget. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést.
+Data Factory-példányok létrehozásához az Azure-ba történő bejelentkezéshez használt felhasználói fióknak a *közreműködő* vagy *tulajdonos* szerepkör tagjának, vagy az Azure-előfizetés *rendszergazdájának* kell lennie. Az előfizetésben található engedélyek megtekintéséhez lépjen a [Azure Portal](https://portal.azure.com), válassza ki a felhasználónevét a jobb felső sarokban, válassza a " **...** " ikont, és válassza a **saját engedélyek**lehetőséget. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést.
 
 A Data Factory gyermekerőforrásai – beleértve az adatkészletek, társított szolgáltatások, folyamatok, eseményindítók és integrációs modulok – létrehozására és kezelésére az alábbi követelmények vonatkoznak:
 
@@ -36,7 +36,7 @@ További információkért tekintse meg a következő cikkeket:
 - [Szerepkörök és engedélyek az Azure Data Factoryhoz](../articles/data-factory/concepts-roles-permissions.md)
 
 ### <a name="azure-storage-account"></a>Azure Storage-fiók
-Ebben a rövid útmutatóban egy általános célú Azure Storage-fiókot (ebben az esetben blobtárolót) használunk *forrás-* és *céladattárként*. Ha még nem rendelkezik általános célú Azure Storage-fiókkal, a létrehozáshoz tekintse meg a [tárfiók létrehozását](../articles/storage/common/storage-account-create.md) ismertető cikket. 
+Ebben a rövid útmutatóban egy általános célú Azure Storage-fiókot (kifejezetten blob Storage-t) használunk *forrás* -és *célhelyként* . Ha nem rendelkezik általános célú Azure Storage-fiókkal, tekintse meg a hozzon létre [egy Storage-fiókot](../articles/storage/common/storage-account-create.md) . 
 
 #### <a name="get-the-storage-account-name"></a>A Storage-fiók nevének beolvasása
 Ehhez a rövid útmutatóhoz szüksége lesz az Azure Storage-fiók nevére. A következő eljárás a Storage-fiók nevének beszerzéséhez nyújt lépéseket: 
@@ -50,9 +50,9 @@ Bármelyik oldalon megkeresheti és kiválaszthatja a *Storage-fiókokat* is.
 #### <a name="create-a-blob-container"></a>Blobtároló létrehozása
 Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure Blob Storage-ban.
 
-1. A Storage-fiók lapon válassza az **áttekintés** > **Blobok**lehetőséget.
-2. A *\<fiók neve >*  - **Blobok** lap eszköztárán válassza a **tároló**elemet.
-3. Az **Új tároló** párbeszédablakban adja meg az **adftutorial** nevet, és kattintson az **OK** gombra. A *\<fiók neve >*  - **Blobok** oldal frissült, hogy tartalmazza a **adftutorial** a tárolók listájában.
+1. A Storage-fiók lapon válassza az **áttekintés** > **tárolók**lehetőséget.
+2. A *\<fiók neve >*  - **tárolók** lap eszköztárán válassza a **tároló**elemet.
+3. Az **Új tároló** párbeszédablakban adja meg az **adftutorial** nevet, és kattintson az **OK** gombra. A *\<fiók neve >*  - **tárolók** lap frissült, hogy tartalmazza a **adftutorial** a tárolók listájában.
 
    ![Tárolók listája](media/data-factory-quickstart-prerequisites/list-of-containers.png)
 
@@ -66,11 +66,11 @@ Jane, Doe
 
 Mentse a fájlt a **C:\ADFv2QuickStartPSH** mappába. (Ha a mappa még nem létezik, hozza létre.) Ezután térjen vissza a Azure Portal, és kövesse az alábbi lépéseket:
 
-1. A *\<fiók neve >*  - **Blobok** oldalon, ahol lemaradt, válassza a **adftutorial** lehetőséget a tárolók frissített listájából.
+1. A *\<fiók neve >*  - **tárolók** lapon válassza a **adftutorial** lehetőséget a tárolók frissített listájából.
 
    1. Ha bezárta az ablakot, vagy egy másik lapra ment, jelentkezzen be újra a [Azure Portalba](https://portal.azure.com) .
    1. A Azure Portal menüben válassza a **minden szolgáltatás**lehetőséget, majd válassza a **Storage** > **Storage-fiókok**lehetőséget. Bármelyik oldalon megkeresheti és kiválaszthatja a *Storage-fiókokat* is.
-   1. Válassza ki a Storage-fiókját, majd válassza a **blobok** > **adftutorial**elemet.
+   1. Válassza ki a Storage-fiókját, majd válassza a **tárolók** > **adftutorial**elemet.
 
 2. A **adftutorial** -tároló lapja eszköztárán válassza a **feltöltés**lehetőséget.
 3. A **blob feltöltése** lapon kattintson a **fájlok** mezőre, majd keresse meg és válassza ki az **EMP. txt** fájlt.

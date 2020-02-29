@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 02/06/2020
-ms.openlocfilehash: 5f9e15b83c36c6c19fbe93c5f1df365f6f763c81
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/28/2020
+ms.openlocfilehash: 701e279e349bdc3b92d5b5c2dc50e23199f9d766
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187685"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160811"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Saját üzemeltetésű IR konfigurálása proxyként egy Azure-SSIS IRhoz Azure Data Factory
 
@@ -165,7 +165,7 @@ A Azure-SSIS IR futó második előkészítési feladatot nem külön számlázj
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
-- Jelenleg csak a nyílt adatbázis-kapcsolattal (ODBC), az OLEDB-vel vagy a Flat file connectivity Managerrel és az ODBC-vel, az OLEDB-vel és a lapos fájlokkal vagy az OLEDB-vel rendelkező adatfolyam-feladatok támogatottak 
+- Jelenleg csak a nyílt adatbázis-kapcsolattal (ODBC), az OLEDB vagy a Flat file connectivity Managerrel és az ODBC, OLEDB vagy Flat file sources típusú adatáramlási feladatok támogatottak. 
 - Jelenleg csak az Azure Blob Storage-hoz társított, a *fiók kulcsával*, a *közös hozzáférésű aláírás (SAS) URI azonosítóval*vagy a *szolgáltatás egyszerű* hitelesítésével konfigurált szolgáltatások támogatottak.
 
 ## <a name="next-steps"></a>Következő lépések

@@ -2,17 +2,17 @@
 title: NCv2 sorozat – Azure Virtual Machines
 description: A NCv2 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 4ea199cdc75732ff3af730fa79530399e4372ebd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: f4a382e422fd56e754d8014bfb4f0f0af1a3ec77
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661036"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163981"
 ---
 # <a name="ncv2-series"></a>NCv2 sorozat
 
@@ -23,6 +23,10 @@ A NC24rs v2-konfiguráció alacsony késleltetésű, nagy átviteli sebességű 
 Premium Storage: támogatott
 
 Premium Storage gyorsítótárazás: támogatott
+
+Élő áttelepítés: nem támogatott
+
+Memória-megőrzési frissítések: nem támogatott
 
 > [!IMPORTANT]
 > Ennél a virtuálisgép-sorozatnál az előfizetéshez tartozó vCPU (Core) kvóta kezdetben 0 értékre van állítva minden régióban. [VCPU-kvóta növelésének kérése](../azure-supportability/resource-manager-core-quotas-request.md) a sorozathoz egy [elérhető régióban](https://azure.microsoft.com/regions/services/).

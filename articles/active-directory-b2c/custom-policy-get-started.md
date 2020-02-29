@@ -1,5 +1,6 @@
 ---
-title: Ismerkedés az egyéni szabályzatokkal – Azure Active Directory B2C
+title: Egyéni szabályzatok – első lépések
+titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan kezdheti el az egyéni házirendeket a Azure Active Directory B2Cban.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 02/28/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5a0e5846dd541e4997c271aee180b3790efa16e9
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 04978b561e3b0057318d08146f344411dec55ee4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114037"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161669"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Ismerkedés az egyéni szabályzatokkal Azure Active Directory B2C
 
@@ -27,7 +28,7 @@ Az [Egyéni házirendek](custom-policy-overview.md) olyan konfigurációs fájlo
 
 - Ha még nem rendelkezik ilyennel, [hozzon létre egy Azure ad B2C bérlőt](tutorial-create-tenant.md) , amely az Azure-előfizetéshez van csatolva.
 - [Regisztrálja az alkalmazást](tutorial-register-applications.md) a létrehozott bérlőn, hogy kommunikálni tudjon a Azure ad B2Cával.
-- A Facebook-alkalmazás konfigurálásához hajtsa végre a [regisztráció és bejelentkezés Facebook-fiókkal](identity-provider-facebook.md) való beállításának lépéseit.
+- A Facebook-alkalmazás konfigurálásához hajtsa végre a [regisztráció és bejelentkezés Facebook-fiókkal](identity-provider-facebook.md) való beállításának lépéseit. Bár az egyéni házirendek használatához nem szükséges Facebook-alkalmazás, a jelen útmutatóban a közösségi bejelentkezés engedélyezését mutatja be egy egyéni házirendben.
 
 ## <a name="add-signing-and-encryption-keys"></a>Aláírási és titkosítási kulcsok hozzáadása
 
@@ -75,7 +76,7 @@ Ezt a két alkalmazást csak egyszer kell regisztrálnia a Azure AD B2C-bérlőb
 
 Egy alkalmazásnak a Azure AD B2C-bérlőben való regisztrálásához használhatja a **Alkalmazásregisztrációk (örökölt)** vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** élményt. [További információ az új felületről](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
+#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
@@ -86,7 +87,7 @@ Egy alkalmazásnak a Azure AD B2C-bérlőben való regisztrálásához használh
 1. A **bejelentkezési URL-cím**mezőbe írja be a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`nevet, ahol a `your-tenant-name` a Azure ad B2C bérlői tartományneve. Az összes URL-nek most a [B2clogin.com](b2clogin.md)-t kell használnia.
 1. Kattintson a **Létrehozás** gombra. A létrehozást követően másolja ki az alkalmazás AZONOSÍTÓját, és mentse a későbbiekben való használatra.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
 1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.
 1. A **név**mezőbe írja be a következőt: `IdentityExperienceFramework`.
@@ -110,7 +111,7 @@ Következő lépésként tegye elérhetővé az API-t egy hatókör hozzáadás�
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>A ProxyIdentityExperienceFramework alkalmazás regisztrálása
 
-#### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
+#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
 1. **Alkalmazásregisztrációk (örökölt)** területen válassza az **új alkalmazás regisztrálása**lehetőséget.
 1. A **név**mezőbe írja be a következőt: `ProxyIdentityExperienceFramework`.
@@ -122,7 +123,7 @@ Következő lépésként tegye elérhetővé az API-t egy hatókör hozzáadás�
 1. Jelölje be a **hozzáférés IdentityExperienceFramework**melletti jelölőnégyzetet, kattintson a **kiválasztás**elemre, majd kattintson a **kész**gombra.
 1. Válassza az **engedélyek megadása**lehetőséget, majd erősítse meg az **Igen**lehetőséget.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
 1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.
 1. A **név**mezőbe írja be a következőt: `ProxyIdentityExperienceFramework`.
@@ -221,6 +222,8 @@ A fájlok feltöltésekor az Azure hozzáadja az előtagot `B2C_1A_` mindegyikhe
 1. Jelentkezzen be ugyanazzal a fiókkal, és ellenőrizze, hogy megfelelő-e a konfigurációja.
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Facebook hozzáadása identitás-szolgáltatóként
+
+Az [Előfeltételek](#prerequisites)értelmében a Facebook *nem* szükséges egyéni szabályzatok használatához, de itt azt mutatjuk be, hogyan engedélyezheti az összevont közösségi bejelentkezést egy egyéni házirendben.
 
 1. A `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** fájlban cserélje le `client_id` értékét a Facebook-alkalmazás azonosítójával:
 

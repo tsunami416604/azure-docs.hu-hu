@@ -1,5 +1,5 @@
 ---
-title: Linuxos virtuális gép optimalizálása az Azure-ban
+title: Linux rendszerű virtuális gép optimalizálása az Azure-ban
 description: Ismerkedjen meg az optimalizálási tippekkel, hogy megbizonyosodjon arról, hogy beállította-e a linuxos virtuális gépet az Azure-beli optimális teljesítmény érdekében
 keywords: Linux rendszerű virtuális gép, virtuális gép Linux, Ubuntu rendszerű virtuális gép
 services: virtual-machines-linux
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: a042e768ef6693d2ced6d679947a6fe321d259bf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: a80446317a289f27cdbbff3b2939cfe0db45748f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934724"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918053"
 ---
-# <a name="optimize-your-linux-vm-on-azure"></a>Linuxos virtuális gép optimalizálása az Azure-ban
+# <a name="optimize-your-linux-vm-on-azure"></a>Linux rendszerű virtuális gép optimalizálása az Azure-ban
 A linuxos virtuális gép (VM) létrehozása a parancssorból vagy a portálról egyszerű. Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a teljesítményét a Microsoft Azure platform teljesítményének optimalizálása érdekében. Ez a témakör egy Ubuntu Server-alapú virtuális gépet használ, de [a saját rendszerképeit sablonként](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használva is létrehozhatja.  
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -63,7 +63,7 @@ Két bejegyzés megkeresése és módosítása a **/etc/waagent.conf** fájlban.
 
 A megfelelően engedélyezett lemez és a csatlakoztatott lapozófájl engedélyezéséhez győződjön meg arról, hogy a paraméterek a következő beállításokkal rendelkeznek:
 
-* ResourceDisk. EnableSwap = Y
+* ResourceDisk.EnableSwap=Y
 * ResourceDisk. SwapSizeMB = {az igényeinek megfelelő méret MB-ban} 
 
 A módosítás elvégzése után újra kell indítania a waagent, vagy újra kell indítania a linuxos virtuális gépet, hogy azok tükrözzék ezeket a módosításokat.  Ismeri a módosításokat, és létrehozta a lapozófájlt, amikor a `free` parancs használatával megtekinti a szabad területet. Az alábbi példában a **waagent. conf** fájl módosításának eredményeképpen létrehozott 512-es swap-fájl látható:
@@ -129,11 +129,10 @@ Ha a számítási feladatok több IOps igényelnek, mint amennyit csak egyetlen 
 
 A hagyományos RAID-konfiguráció alternatívájaként azt is megteheti, hogy a logikai kötet-kezelőt (LVM) is telepíti úgy, hogy több fizikai lemezt is konfiguráljon egyetlen csíkozott logikai tárolási kötetre. Ebben a konfigurációban az olvasások és írások elosztása a mennyiségi csoportban található több lemezre történik (a RAID0-hez hasonlóan). A teljesítmény szempontjából valószínű, hogy a logikai kötetek csíkozását szeretné használni, így az olvasás és az írás az összes csatlakoztatott adatlemezt felhasználja.  A csíkozott logikai kötetek Azure-beli Linux rendszerű virtuális gépen való konfigurálásával kapcsolatos további részleteket az **[LVM konfigurálása az Azure-ban linuxos virtuális gépen](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** című témakörben találhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ne feledje, ahogy az összes optimalizálási vitafórumhoz hasonlóan az egyes módosítások előtt és után is végre kell hajtania a teszteket, hogy mérjék a változás hatását.  Az optimalizálás egy lépésről lépésre haladó folyamat, amely különböző eredményekkel rendelkezik a környezet különböző gépei között.  Előfordulhat, hogy az egyik konfiguráció működése nem működik mások számára.
 
 Néhány hasznos hivatkozás további erőforrásokra:
 
 * [Az Azure Linux-ügynök felhasználói útmutatója](../extensions/agent-linux.md)
-* [A MySQL teljesítményének optimalizálása az Azure Linux rendszerű virtuális gépeken](classic/optimize-mysql.md)
 * [Szoftveres RAID konfigurálása Linuxon](configure-raid.md)

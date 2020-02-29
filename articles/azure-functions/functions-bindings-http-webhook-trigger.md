@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: a2adf59a542f695b7845e1a871c0b297b0790fec
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 045f3ccdc8dc09bf657ab39ce15a0d0524c73fcb
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672157"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162962"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-trigger Azure Functions
 
@@ -749,7 +749,7 @@ A hitelesített felhasználó [http-fejléceken](../app-service/app-service-auth
 
 ## <a name="authorization-keys"></a>Engedélyezési kulcsok
 
-A függvények lehetővé teszik a kulcsok használatát, hogy a fejlesztés során megnehezíti a HTTP-függvény végpontjának elérését.  A szabványos HTTP-triggerek esetében előfordulhat, hogy ilyen API-kulcsra van szükség a kérelemben. 
+A függvények lehetővé teszik a kulcsok használatát, hogy a fejlesztés során megnehezíti a HTTP-függvény végpontjának elérését.  Ha a http-engedélyezési szint a HTTP-triggert használó függvényben `anonymous`értékre van állítva, a kérelmeknek tartalmaznia kell egy API-kulcsot a kérelemben. 
 
 > [!IMPORTANT]
 > Míg a kulcsok segíthetnek a HTTP-végpontok kiépítésében a fejlesztés során, nem céljuk a HTTP-triggerek védelme az éles környezetben. További információ: [http-végpont biztonságossá tétele éles](#secure-an-http-endpoint-in-production)környezetben.
@@ -757,14 +757,19 @@ A függvények lehetővé teszik a kulcsok használatát, hogy a fejlesztés sor
 > [!NOTE]
 > A functions 1. x futtatókörnyezetben a webhook-szolgáltatók több módon is használhatják a kérelmeket, attól függően, hogy mit támogat a szolgáltató. Ezt a [webhookok és kulcsok](#webhooks-and-keys)tartalmazzák. A 2. x vagy újabb verzióban található functions futtatókörnyezet nem tartalmazza a webhook-szolgáltatók beépített támogatását.
 
-A kulcsok két típusa létezik:
+#### <a name="authorization-scopes-function-level"></a>Engedélyezési hatókörök (Function-Level)
 
-* **Gazdagép kulcsai**: ezeket a kulcsokat a Function alkalmazásban található összes függvény megosztja. API-kulcsként való használata esetén ezek a függvények a Function alkalmazáson belüli bármelyik függvényhez hozzáférhetnek.
-* **Funkcióbillentyűk**: ezek a kulcsok csak azokra a függvényekre érvényesek, amelyekben definiálva vannak. API-kulcsként való használata esetén ezek csak a funkció elérését teszik lehetővé.
+A függvény szintű kulcsok két engedélyezési hatókörrel rendelkeznek:
+
+* **Function**: ezek a kulcsok csak azokra a függvényekre érvényesek, amelyekben definiálva vannak. API-kulcsként való használata esetén ezek csak a funkció elérését teszik lehetővé.
+
+* **Gazdagép**: a gazdagép hatókörével rendelkező kulcsok használhatók a Function alkalmazásban található összes funkció eléréséhez. API-kulcsként való használata esetén ezek a függvények a Function alkalmazáson belüli bármelyik függvényhez hozzáférhetnek. 
 
 A rendszer az egyes kulcsokat hivatkozásként nevezi el, és az alapértelmezett kulcs ("default") szerepel a függvény és a gazdagép szintjén. A függvények kulcsai elsőbbséget élveznek a gazdagép kulcsaival szemben. Ha két kulcs van definiálva ugyanazzal a névvel, a rendszer mindig a függvény kulcsát használja.
 
-Minden Function alkalmazásnak van egy speciális **főkulcsa**is. Ez a kulcs egy `_master`nevű gazdagép-kulcs, amely rendszergazdai hozzáférést biztosít a futásidejű API-khoz. Ezt a kulcsot nem lehet visszavonni. Ha `admin`engedélyezési szintjét állítja be, a kérelmeknek a főkulcsot kell használniuk; minden más kulcs engedélyezési hibát eredményez.
+#### <a name="master-key-admin-level"></a>Főkulcs (rendszergazda szintű) 
+
+Minden Function alkalmazáshoz tartozik egy `_master`nevű rendszergazdai szintű gazda-kulcs is. Amellett, hogy a gazdagép szintű hozzáférést biztosít az alkalmazás összes függvényéhez, a főkulcs rendszergazdai hozzáférést is biztosít a futásidejű REST API-khoz. Ezt a kulcsot nem lehet visszavonni. Ha `admin`engedélyezési szintjét állítja be, a kérelmeknek a főkulcsot kell használniuk; minden más kulcs engedélyezési hibát eredményez.
 
 > [!CAUTION]  
 > A főkulcs által biztosított Function app emelt szintű engedélyei miatt ne ossza meg ezt a kulcsot harmadik felekkel, vagy terjessze azt natív ügyfélalkalmazások számára. A rendszergazdai jogosultsági szint kiválasztásakor legyen körültekintő.

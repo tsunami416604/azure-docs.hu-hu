@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: a809cabd2ace1b18af6c93dc54348137e9ba5750
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a8bd12d98b76d5848753987c4f7bcb76d4e2266d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749900"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921572"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Az Azure Windows rendszerű virtuális gép hálózati adapterének alaphelyzetbe állítása 
 
@@ -45,7 +45,7 @@ Ez a cikk bemutatja, hogyan állíthatja alaphelyzetbe az Azure Windows rendszer
 8. A virtuális gép újraindul, hogy inicializálja az új hálózati adaptert a rendszerhez.
 9.  Próbálja meg az RDP-t a gépre. Ha a művelet sikeres, a magánhálózati IP-címet visszaállíthatja az eredetire, ha szeretné. Ellenkező esetben megtarthatja. 
 
-#### <a name="use-azure-powershell"></a>Az Azure PowerShell használata
+#### <a name="use-azure-powershell"></a>Azure PowerShell használatával
 
 1. Ellenőrizze, hogy telepítve van-e [a legújabb Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 2. Nyisson meg egy emelt szintű Azure PowerShell-munkamenetet (Futtatás rendszergazdaként). Futtassa az alábbi parancsot:
@@ -72,9 +72,11 @@ Ez a cikk bemutatja, hogyan állíthatja alaphelyzetbe az Azure Windows rendszer
 
 ### <a name="for-classic-vms"></a>Klasszikus virtuális gépek esetén
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 A hálózati adapter alaphelyzetbe állításához kövesse az alábbi lépéseket:
 
-#### <a name="use-azure-portal"></a>Az Azure-portál használata
+#### <a name="use-azure-portal"></a>Az Azure Portal használata
 
 1.  Nyissa meg az [Azure Portalt]( https://ms.portal.azure.com).
 2.  Válassza a **Virtual Machines (klasszikus)** lehetőséget.
@@ -86,7 +88,7 @@ A hálózati adapter alaphelyzetbe állításához kövesse az alábbi lépések
 8.  A virtuális gép újraindul, hogy inicializálja az új hálózati adaptert a rendszerhez.
 9.  Próbálja meg az RDP-t a gépre. Ha a művelet sikeres, dönthet úgy, hogy visszaállít egy magánhálózati IP-címet az eredetire.  
 
-#### <a name="use-azure-powershell"></a>Az Azure PowerShell használata
+#### <a name="use-azure-powershell"></a>Azure PowerShell használatával
 
 1. Ellenőrizze, hogy telepítve van-e [a legújabb Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
 2. Nyisson meg egy emelt szintű Azure PowerShell-munkamenetet (Futtatás rendszergazdaként). Futtassa az alábbi parancsot:
@@ -114,7 +116,7 @@ A hálózati adapter alaphelyzetbe állításához kövesse az alábbi lépések
 ## <a name="delete-the-unavailable-nics"></a>A nem elérhető hálózati adapterek törlése
 Miután a Távoli asztalt elvégezte a gépen, törölnie kell a régi hálózati adaptereket, hogy elkerülje a lehetséges problémát:
 
-1.  Indítsa el az Eszközkezelőt.
+1.  Nyissa meg Eszközkezelő.
 2.  Válassza ki a **megtekintés** > a **rejtett eszközök megjelenítése**lehetőséget.
 3.  Válassza a **hálózati adapterek**lehetőséget. 
 4.  Keresse meg a "Microsoft Hyper-V hálózati adapter" nevű adaptereket.

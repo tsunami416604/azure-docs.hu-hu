@@ -2,17 +2,17 @@
 title: M sorozat – Azure Virtual Machines
 description: Az M-sorozatú virtuális gépek specifikációi.
 services: virtual-machines
-author: jonbeck7
+author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: lahugh
-ms.openlocfilehash: 49b12341e5ca119ee20c7e509d9bbef64d4d5b37
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e8952218675493710cbdd1f92661e9a9c077f34c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493669"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164049"
 ---
 # <a name="m-series"></a>M sorozat
 
@@ -25,6 +25,10 @@ ACU: 160–180
 Premium Storage: támogatott
 
 Premium Storage gyorsítótárazás: támogatott
+
+Élő áttelepítés: nem támogatott
+
+Memória-megőrzési frissítések: nem támogatott
 
 Írásgyorsító: [támogatott](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 

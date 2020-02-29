@@ -15,15 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: da397c180b6ccaf91084a0ec22210c7bcc88a5dc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084804"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918314"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Videók összegzésének létrehozása a Azure Media Video Thumbnails használatával  
- 
+
+> [!NOTE]
+> A **Azure Media Video thumbnails** adathordozó-processzor ki lesz vonva. A lejárati dátumért tekintse meg az [örökölt összetevőkkel](legacy-components.md) foglalkozó témakört.
+
 ## <a name="overview"></a>Áttekintés
 
 A **Azure Media Video thumbnails** Media Processor (mp) lehetővé teszi egy olyan videó összegzésének létrehozását, amely olyan ügyfelek számára hasznos, akik csak egy hosszú videó összegzését szeretnék előkészíteni. Előfordulhat például, hogy az ügyfelek egy rövid "összefoglaló videót" szeretnének látni, amikor az egérmutatót egy miniatűr fölé viszi. A **Azure Media Video thumbnails** paramétereinek egy konfigurációs készleten keresztüli megcsípésével az MP hatékony shot észlelési és összefűzési technológiája segítségével algorithmically elő egy leíró alklip.  

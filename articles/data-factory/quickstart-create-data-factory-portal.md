@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 06/20/2018
+ms.date: 02/25/2020
 ms.author: jingwang
-ms.openlocfilehash: c6a7755b692ec796707e4a22ed7e15ae2b60dfe7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15e1c3de5392238e9e1dbfd324fe40087950a766
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440112"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164225"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Gyors útmutató: a Azure Data Factory felhasználói felületének használatával létrehozhatja az adatelőállítót
 
@@ -62,32 +62,34 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 
    Csak a Data Factory által támogatott helyek, valamint az Azure Data Factory-metaadatok tárolási helye jelennek meg a listában. A Data Factory által használt adattárak (például az Azure Storage és a Azure SQL Database) és a számítási erőforrások (például az Azure HDInsight) más régiókban is futhatnak.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** gombra. A létrehozás befejezése után válassza az **erőforrás keresése** lehetőséget, és lépjen a **Data Factory** lapra. 
 
-1. A létrehozás befejezése után megjelenik a **Data Factory** lap. Az Azure Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
+1. Az Azure Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
    
    ![Az adat-előállító kezdőlapja a „Létrehozás és monitorozás” csempével](./media/doc-common-process/data-factory-home-page.png)
 1. Az **Első lépések** lapon váltson a **Szerző** lapra a bal oldali ablaktáblán. 
 
-    ![„Első lépések” lap](./media/quickstart-create-data-factory-portal/get-started-page.png)
+    ![„Első lépések” lap](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-a-linked-service"></a>Társított szolgáltatás létrehozása
-A feladat részeként létrehoz egy társított szolgáltatást, hogy az adat-előállítóhoz kapcsolja az Azure Storage-fiókot. A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket a Data Factory szolgáltatás használ futtatáskor a hozzá való kapcsolódáshoz.
+Ebben az eljárásban létrehoz egy társított szolgáltatást, amely összekapcsolja az Azure Storage-fiókot az adatelőállítóval. A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket a Data Factory szolgáltatás használ futtatáskor a hozzá való kapcsolódáshoz.
 
 1. Válassza a **kapcsolatok**lehetőséget, majd az eszköztáron kattintson az **új** gombra (a**kapcsolatok** gomb a bal oldali oszlop alján található a **gyári erőforrások**alatt). 
 
 1. Az **Új társított szolgáltatás** lapon válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Folytatás** gombra. 
 
-   ![Az „Azure Blob Storage” csempe kiválasztása](./media/quickstart-create-data-factory-portal/select-azure-blob-linked-service.png)
 1. Az új társított szolgáltatás (Azure Blob Storage) lapon hajtsa végre a következő lépéseket: 
 
    a. A **Név** mezőbe írja be az **AzureStorageLinkedService** nevet.
 
-   b. A **Storage-fiók neve** mezőben válassza ki saját Azure Storage-fiókja nevét.
+   b. A **Storage-fiók neve**mezőben válassza ki az Azure Storage-fiók nevét.
 
    c. Kattintson a **Kapcsolat tesztelése** elemre annak ellenőrzéséhez, hogy a Data Factory szolgáltatás kapcsolódik-e a tárfiókhoz. 
 
-   d. A társított szolgáltatás mentéséhez kattintson a **Befejezés** gombra. 
+   d. A társított szolgáltatás mentéséhez válassza a **Létrehozás** lehetőséget. 
+
+      ![Új társított szolgáltatás](./media/quickstart-create-data-factory-portal/linked-service.png)
+
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 A feladat részeként két adatkészletet hoz létre, az **InputDataset** és az **OutputDataset** adatkészletet. Ezek az adatkészletek **AzureBlob** típusúak. Az előző szakaszban létrehozott Azure Storage-beli társított szolgáltatásra hivatkoznak. 
@@ -96,18 +98,17 @@ A bemeneti adatkészlet a bemeneti mappában lévő forrásadatokat jelenti. A b
 
 A kimeneti adatkészlet a célhelyre másolt adatokat jelenti. A kimeneti adatkészlet definíciójában adhatja meg annak a blobtárolónak (**adftutorial**), mappának (**output**) és fájlnak a nevét, amelybe az adatok át lesznek másolva. Egy folyamat minden egyes futtatásához egyedi azonosító tartozik. Ehhez az azonosítóhoz a **RunId** rendszerváltozó használatával férhet hozzá. A rendszer a folyamatfuttatási azonosító alapján dinamikusan kiértékeli a kimeneti fájl nevét.   
 
-A társított szolgáltatás beállításainál megadta a forrásadatokat tartalmazó Azure Storage-fiókot. A forrásadatkészlet beállításainál megadja a forrásadatok pontos helyét (blobtároló, mappa és fájl). A fogadó adatkészlet beállításainál megadja az adatok másolásának célhelyét (blobtároló, mappa és fájl). 
+A társított szolgáltatás beállításaiban a forrásadatokat tartalmazó Azure Storage-fiókot adta meg. A forrásadatkészlet beállításainál megadja a forrásadatok pontos helyét (blobtároló, mappa és fájl). A fogadó adatkészlet beállításainál megadja az adatok másolásának célhelyét (blobtároló, mappa és fájl). 
  
 1. Válassza a **+** (plusz) gombot, majd az **Adatkészlet** lehetőséget.
 
    ![Adatkészlet létrehozására szolgáló menü](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
 1. Az **új adatkészlet** lapon válassza az **Azure Blob Storage**lehetőséget, majd kattintson a **Folytatás**gombra. 
 
-   ![Az „Azure Blob Storage” kiválasztása](./media/quickstart-create-data-factory-portal/select-azure-blob-dataset.png)
 1. A **formátum kiválasztása** lapon válassza ki az adatai formátumának típusát, majd kattintson a **Folytatás**gombra. Ebben az esetben válassza a **bináris** elemet, ha a fájlokat a tartalom elemzése nélkül másolja.
 
-    ![Adatformátum típusa](./media/doc-common-process/select-binary.png)
-
+   ![Formátum kiválasztása](./media/quickstart-create-data-factory-portal/select-format.png)
+   
 1. A **készlet tulajdonságai** lapon hajtsa végre a következő lépéseket:
 
     a. A **név**mezőben adja meg a **InputDataset**. 
@@ -116,9 +117,9 @@ A társított szolgáltatás beállításainál megadta a forrásadatokat tartal
 
     c. **Fájl elérési útja**: kattintson a **Tallózás** gombra.
 
-    d. A **Fájl vagy mappa kiválasztása** ablakban keresse meg az **input** mappát az **adftutorial** tárolóban, válassza ki az **emp.txt** fájlt, és kattintson a **Befejezés** elemre.
+    d. A **fájl vagy mappa kiválasztása** ablakban keresse meg a **bemeneti** mappát az **adftutorial** tárolóban, válassza ki az **EMP. txt** fájlt, majd kattintson az **OK gombra**.
     
-    e. Válassza a **Folytatás** elemet.   
+    e. Kattintson az **OK** gombra.   
 
     ![InputDataset tulajdonságainak beállítása](./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png)
 1. A kimeneti adatkészlet létrehozásához ismételje meg ezeket a lépéseket:  
@@ -133,8 +134,9 @@ A társított szolgáltatás beállításainál megadta a forrásadatokat tartal
 
     e. A **fájl elérési útja**területen adja meg az **adftutorial/output**értéket. Ha a **kimeneti** mappa nem létezik, a másolási tevékenység futásidőben hozza létre.
 
-    f. Válassza a **Folytatás** elemet.   
+    f. Kattintson az **OK** gombra.   
 
+    ![OutputDataset tulajdonságainak beállítása](./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png)
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása 
 A feladat részeként létrehozza és megerősíti azt a másolási tevékenységgel rendelkező folyamatot, amely a bemeneti és a kimeneti adatkészletet használja. A másolási tevékenység adatokat másol a bemeneti adatkészlet beállításaiban megadott fájlból a kimeneti adatkészlet beállításaiban megadott fájlba. Ha a bemeneti adatkészlet csak egy mappát ad meg (de fájlnevet nem), a másolási tevékenység a forrásmappában található összes fájlt átmásolja a célhelyre. 
 
@@ -143,12 +145,14 @@ A feladat részeként létrehozza és megerősíti azt a másolási tevékenysé
 1. Az **Általános** lapon a **CopyPipeline** **Nevet** adja meg. 
 
 1. A **Tevékenységek** eszközkészletben bontsa ki az **Áthelyezés és átalakítás** elemet. Húzza a **adatok másolása** tevékenységet a **tevékenységek** eszközkészletből a folyamat tervező felületére. A **Tevékenységek** eszközkészletben kereshet is az egyes tevékenységek között. Adja meg a **CopyFromBlobToBlob** értéket a **Név** mezőben.
+   ![adatmásolási tevékenység létrehozása](./media/quickstart-create-data-factory-portal/copy-activity.png)
 
 1. Váltson a **Forrás** lapra a másolási tevékenység beállításainál, és válassza az **InputDataset** lehetőséget a **Forrásadatkészlet** mezőben.
 
 1. Váltson a **Fogadó** lapra a másolási tevékenység beállításainál, és válassza az **OutputDataset** lehetőséget a **Fogadó adatkészlet** mezőben.
 
 1. A folyamat beállításainak érvényesítéséhez a vászon fölött kattintson az **Érvényesítés** elemre a folyamat eszköztárán. Győződjön meg róla, hogy a folyamat érvényesítése sikerült. Az érvényesítés kimenetének bezárásához kattintson a **>>** (jobbra mutató nyíl) gombra. 
+   folyamat ![ellenőrzése](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
 
 ## <a name="debug-the-pipeline"></a>Hibakeresés a folyamaton
 Ebben a lépésben elvégzi a folyamat hibakeresését a Data Factoryban történő üzembe helyezés előtt. 
@@ -156,29 +160,31 @@ Ebben a lépésben elvégzi a folyamat hibakeresését a Data Factoryban törté
 1. A vászon fölött a folyamat eszköztárán kattintson a **Hibakeresés** lehetőségre egy tesztfuttatás indításához. 
     
 1. Győződjön meg arról, hogy látja a folyamatfuttatás állapotát a folyamat beállításainak **Kimenet** lapjának alsó részén. 
+ 
+    ![Folyamat futtatásának kimenete](./media/quickstart-create-data-factory-portal/pipeline-output.png)
 
 1. Győződjön meg róla, hogy a kimeneti fájl látható az **adftutorial** tároló **output** mappájában. Ha a kimeneti mappa nem létezik, a Data Factory szolgáltatás automatikusan létrehozza azt. 
 
 ## <a name="trigger-the-pipeline-manually"></a>A folyamat manuális aktiválása
 A feladat részeként entitásokat (társított szolgáltatásokat, adatkészleteket és folyamatokat) helyez üzembe az Azure Data Factoryban. Ezután manuálisan fogja aktiválni a folyamat futtatását. 
 
-1. A folyamat aktiválása előtt közzé kell tennie az entitásokat a Data Factory számára. Közzétételhez válassza fent **Az összes közzététele** lehetőségét. 
+1. A folyamat aktiválása előtt közzé kell tennie az entitásokat a Data Factory számára. A közzétételhez válassza az **összes közzététele** lehetőséget a felső oldalon. 
+    az összes](./media/quickstart-create-data-factory-portal/publish-all.png) ![közzététele
 
-   ![Közzététel gomb](./media/quickstart-create-data-factory-portal/publish-button.png)
-1. A folyamat manuális elindításához válassza az **trigger hozzáadása** lehetőséget a folyamat eszköztáron, majd válassza az **aktiválás most**lehetőséget. A **Folyamatfuttatás** lapon válassza a **Befejezés** elemet.
+1. A folyamat manuális elindításához válassza az **trigger hozzáadása** lehetőséget a folyamat eszköztáron, majd válassza az **aktiválás most**lehetőséget. A **folyamat futtatása** lapon válassza a **Befejezés**lehetőséget.
 
 ## <a name="monitor-the-pipeline"></a>A folyamat figyelése
 
-1. Váltson a bal oldali **Monitorozás** lapra. A lista frissítéséhez kattintson a **Frissítés** elemre.
+1. Váltson a bal oldali **Monitor** (Monitorozás) lapra. A lista frissítéséhez kattintson a **Frissítés** elemre.
 
    ![A folyamatok figyelésének lapja](./media/quickstart-create-data-factory-portal/monitor-trigger-now-pipeline.png)
-1. Kattintson a **Műveletek** alatt található **Tevékenységfuttatások megtekintése** hivatkozásra. Ezen a lapon látható a másolási tevékenység futtatási állapota. 
+1. Válassza ki a **CopyPipeline** hivatkozást, ekkor megjelenik a másolási tevékenység futtatása ezen a lapon. 
 
-1. A másolási művelet részleteinek megtekintéséhez kattintson a **Műveletek** oszlop **Részletek** hivatkozására (szemüveg ikon). A tulajdonságokkal kapcsolatos részletekért tekintse meg a [másolási tevékenység áttekintését](copy-activity-overview.md). 
+1. A másolási művelet részleteinek megtekintéséhez válassza a **részletek** (szemüvegek képe) hivatkozást. A tulajdonságokkal kapcsolatos részletekért tekintse meg a [másolási tevékenység áttekintését](copy-activity-overview.md). 
 
    ![A másolási művelet részletei](./media/quickstart-create-data-factory-portal/copy-operation-details.png)
 1. Győződjön meg arról, hogy megjelenik egy új fájl az **output** mappában. 
-1. A folyamat-futtatási nézetre visszaválthat a **folyamat** futtatása nézetre **a** **folyamat** futtatása hivatkozás kiválasztásával. 
+1. Váltson vissza a **folyamat** futtatása nézetre a **tevékenység futtatása** nézetből a **minden folyamat futtatása** hivatkozásra kattintva. 
 
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>A folyamat aktiválása ütemezés szerint
 Az oktatóanyagnak ez a feladata nem kötelező. A folyamat rendszeres időközönként (például óránként, naponta) történő futtatásához létrehozhat egy *ütemező eseményindítót*. A feladat részeként egy olyan eseményindítót fog létrehozni, amely a megadott záró dátumig és időpontig percenként fut. 
@@ -189,22 +195,22 @@ Az oktatóanyagnak ez a feladata nem kötelező. A folyamat rendszeres időköz�
 
 1. Az **Eseményindítók hozzáadása** lapon kattintson az **Eseményindító kiválasztása**, majd pedig az **Új** elemre. 
 
-1. Az **Új eseményindító** lapon a **Befejezés** alatt válassza a **Dátumon** lehetőséget, állítsa be a befejezés időpontját néhány perccel az aktuális időpont utánra, majd kattintson az **Alkalmaz** elemre. 
+1. Az **új trigger** lapon a **Befejezés**alatt válassza **a dátum**lehetőséget, adja meg az aktuális időpont után néhány perccel későbbi befejezési időt, majd kattintson az **OK gombra**. 
 
    Minden egyes folyamatfuttatásnak van bizonyos költségvonzata, ezért a befejezés időpontját csak néhány perccel a kezdés időpontja utánra állítsa be. Győződjön meg arról, hogy a két időponthoz tartozó dátum megegyezik. Azonban győződjön meg arról, hogy elegendő idő van a folyamat futtatására a közzétételi idő és a befejezési idő között. Az eseményindító csak a Data Factoryban való közzététel után lesz aktív, a felhasználói felületen történő mentéskor még nem. 
 
-1. Az **új trigger** lapon jelölje be az **aktivált** jelölőnégyzetet, majd kattintson a **Mentés**gombra. 
+1. Az **új trigger** lapon jelölje be az **aktiválva** jelölőnégyzetet, majd kattintson az **OK gombra**. 
 
    ![Új trigger-beállítás](./media/quickstart-create-data-factory-portal/trigger-settings-next.png)
-1. Tekintse át a figyelmeztető üzenetet, és kattintson a **Befejezés** gombra.
+1. Tekintse át a figyelmeztető üzenetet, és kattintson **az OK gombra**.
 
-1. Kattintson az **Összes közzététele** gombra a Data Factory módosításainak közzétételéhez. 
+1. Válassza az **összes közzététele** lehetőséget a Data Factory módosításainak közzétételéhez. 
 
-1. Váltson a bal oldali **Monitorozás** lapra. A lista frissítéséhez kattintson a **Frissítés** gombra. Láthatja, hogy a folyamat percenként fut a közzététel időpontja és a befejezés időpontja között. 
+1. Váltson a bal oldali **Monitor** (Monitorozás) lapra. A lista frissítéséhez kattintson a **Frissítés** gombra. Láthatja, hogy a folyamat percenként fut a közzététel időpontja és a befejezés időpontja között. 
 
-   Figyelje meg az **Aktiválva a következő alapján** oszlop értékeit. A manuális eseményindító-futtatás egy korábban elvégzett lépésből (**Aktiválás most**) származik. 
+   Figyelje meg az **aktivált by** oszlop értékeit. A manuális eseményindító-futtatás egy korábban elvégzett lépésből (**Aktiválás most**) származik. 
 
-1. Váltson az **Eseményindító-futtatások** nézetre. 
+1. Váltson a **trigger-futtatások** nézetre. 
 
 1. Győződjön meg arról, hogy a megadott befejezési dátumig és időpontig futtatott minden folyamatfuttatáshoz létrejött egy kimeneti fájl az **output** mappában. 
 

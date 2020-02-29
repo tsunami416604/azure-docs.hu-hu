@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 11f897852ce820e666d7403f42735b2ee3bdd73b
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 11889bd6df0bcc9564c17fdaacc333df1d418660
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084824"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918334"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>A videofájlok szöveges tartalmának digitális szöveggé alakításához használja a Azure Media Analytics.  
+
+> [!NOTE]
+> Az **Azure Media OCR** adathordozó-processzor ki lesz vonva. A lejárati dátumért tekintse meg az [örökölt összetevőkkel](legacy-components.md) foglalkozó témakört.
 
 ## <a name="overview"></a>Áttekintés
 Ha szöveges tartalmat kell kibontania a videofájlokből, és szerkeszthető, kereshető digitális szöveget kell létrehoznia, akkor Azure Media Analytics OCR-t (optikai karakterfelismerést) kell használnia. Ez az Azure-beli adathordozó-feldolgozó észleli a videofájlok szöveges tartalmát, és szöveges fájlokat hoz létre a használathoz. Az OCR lehetővé teszi, hogy automatizálja az értelmezhető metaadatok kinyerését az adathordozó Videójának jelének használatával.
@@ -45,7 +48,7 @@ Feladat konfigurációja (előre beállított). Amikor az **Azure Media OCR**has
 ### <a name="attribute-descriptions"></a>Attribútumok leírása
 | Attribútum neve | Leírás |
 | --- | --- |
-|AdvancedOutput| Ha a AdvancedOutput értéke TRUE (igaz), a JSON-kimenet minden egyes szó esetében tartalmaz pozíciós adatokat (a kifejezéseken és a régiókban is). Ha nem szeretné megtekinteni ezeket a részleteket, állítsa hamis értékre a jelzőt. Az alapértelmezett értéke FALSE (hamis). További információt [ebben a blogban](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/) talál.|
+|AdvancedOutput| Ha a AdvancedOutput értéke TRUE (igaz), a JSON-kimenet minden egyes szó esetében tartalmaz pozíciós adatokat (a kifejezéseken és a régiókban is). Ha nem szeretné megtekinteni ezeket a részleteket, állítsa hamis értékre a jelzőt. Az alapértelmezett értéke FALSE (hamis). További információkért tekintse meg [ezt a blogot](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
 | Nyelv |(nem kötelező) annak a szövegnek a nyelvét írja le, amelynek meg kell keresnie. A következők egyike: automatikus észlelés (alapértelmezett), Arab, ChineseSimplified, ChineseTraditional, Cseh dán, holland, angol, finn, francia, német, görög, magyar, olasz, Japán, Koreai, norvég, lengyel, portugál, román, Orosz, SerbianCyrillic, SerbianLatin, szlovák, spanyol, svéd, Török. |
 | TextOrientation |(nem kötelező) annak a szövegnek a tájolását írja le, amelynek meg kell keresnie.  A "bal" érték azt jelenti, hogy az összes betű tetejét a bal oldalon kell kimutatni.  Az alapértelmezett szöveg (például a könyvben található) a "fel" irányú.  A következők egyike: automatikus észlelés (alapértelmezett), fel, jobbra, le, balra. |
 | TimeInterval |(nem kötelező) a mintavételezési sebességet ismerteti.  Az alapértelmezett érték minden 1/2 másodperc.<br/>JSON-formátum – óó: PP: mm. ÉER (alapértelmezett 00:00:00.500)<br/>XML Format – W3C XSD-időtartam primitív (alapértelmezett PT 0.5) |
@@ -119,7 +122,7 @@ A kimenet a következő attribútumokat tartalmazza:
 | régió |az észlelt szavakat vagy kifejezéseket jelképező objektum |
 | language |a régión belül észlelt szöveg nyelve |
 | tájolás |a régión belül észlelt szöveg tájolása |
-| sorok |egy régión belül észlelt szövegsorok tömbje |
+| Sorok |egy régión belül észlelt szövegsorok tömbje |
 | szöveg |a tényleges szöveg |
 
 ### <a name="json-output-example"></a>Példa JSON-kimenetre

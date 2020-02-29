@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 0b321f3548910a2bc79e4473609de30eda8c8622
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/10/2020
+ms.openlocfilehash: a3eafc28dc6d0f44a1f1019cb3393259aa2a698a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314351"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920348"
 ---
 # <a name="score-svd-recommender"></a>SVD-ajánló pontozása
 
-Ez a cikk azt ismerteti, hogyan használható a score SVD ajánló modul a Azure Machine Learning Designerben. Ezzel a modullal előrejelzéseket hozhat létre egy betanított javaslati modell használatával az egyértékű dekompozíciós (SVD) algoritmus alapján.
+Ez a cikk azt ismerteti, hogyan használható a score SVD ajánló modul a Azure Machine Learning Designerben (előzetes verzió). Ezzel a modullal előrejelzéseket hozhat létre egy betanított javaslati modell használatával az egyértékű dekompozíciós (SVD) algoritmus alapján.
 
 A SVD ajánló két különböző típusú előrejelzést tud előállítani:
 
@@ -91,7 +91,7 @@ A felhasználókra vonatkozó elemek ajánlásához adja meg a felhasználók é
 
 5. A **felhasználó számára ajánlott elemek maximális száma**: Itt adhatja meg az egyes felhasználók számára visszaadni kívánt elemek számát. Alapértelmezés szerint a modul öt elemet javasol.
 
-6. **A javaslati készlet minimális mérete felhasználónként**: adjon meg egy értéket, amely azt jelzi, hogy hány előzetes javaslat szükséges. Alapértelmezés szerint ez a paraméter **2**értékre van állítva, ami azt jelenti, hogy legalább két másik felhasználó javasolta az elem megadását.
+6. **A javaslati készlet minimális mérete felhasználónként**: adjon meg egy értéket, amely azt jelzi, hogy hány előzetes javaslat szükséges. Alapértelmezés szerint ez a paraméter 2 értékre van állítva, ami azt jelenti, hogy legalább két másik felhasználó javasolta az elem megadását.
 
    Ezt a lehetőséget csak akkor használja, ha próbaverziós módban dolgozik. A beállítás nem érhető el, ha az **összes elemből** vagy **a nem értékelt elemek közül a lehetőséget választja (új elemeket javasol a felhasználóknak)** .
 

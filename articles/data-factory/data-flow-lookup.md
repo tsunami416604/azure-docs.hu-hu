@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/26/2020
-ms.openlocfilehash: aa71f7d2f3b277ca34e1e5fea76ada6adf93e573
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2216e1bf058eef486dbfefba24d52bdc6bdb232f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655063"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164678"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory leképezési adatfolyam keresési transzformációja
 
@@ -45,6 +45,9 @@ A keresési transzformáció a bal oldali külső illesztésként van megvalós�
 * Több sor egyeztetése: hagyja üresen, hogy egy sor egyezését adja vissza
 * Egyezés: válassza az első, az utolsó vagy a bármely egyezés lehetőséget
 * Rendezési feltételek: Ha az első vagy az utolsó lehetőséget választja, az ADF-nek meg kell rendelnie az adatait, hogy az első és az utolsó mögöttes logika legyen.
+
+> [!NOTE]
+> Csak az első vagy utolsó beállítást használja az egysoros választónál, ha meg kell határoznia, hogy melyik értéket kell visszaadnia a keresésből. Az "any" vagy a többsoros keresések használata gyorsabban elvégezhető.
 
 ### <a name="option-2"></a>2\. lehetőség
 

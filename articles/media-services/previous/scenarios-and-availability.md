@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 4766f22cd84b2aab00f6dcc4064dbeea8018f694
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564967"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920586"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Forgatókönyvek és a Media Services-szolgáltatások rendelkezésre állása az egyes adatközpontokban
 
@@ -177,10 +177,10 @@ A Media Services ügyfelei **standard** szintű streamvégpontot vagy **prémium
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Név|Állapot|Adatközpontok
+|Name (Név)|status|Adatközpontok
 |---|---|---|
 |Standard|FE|Összes|
-|Prémium|FE|Összes|
+|Premium|FE|Összes|
 
 ### <a name="live-encoding"></a>Live Encoding
 
@@ -194,7 +194,7 @@ Az AMS két igény szerinti kódolót nyújt: a **Media Encoder Standard** kódo
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Médiafeldolgozó neve|Állapot|Adatközpontok
+|Médiafeldolgozó neve|status|Adatközpontok
 |---|---|---|
 |Media Encoder Standard|FE|Összes|
 |Media Encoder Premium-munkafolyamat|FE|Kína kivételével|
@@ -203,9 +203,12 @@ Az AMS két igény szerinti kódolót nyújt: a **Media Encoder Standard** kódo
 
 A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egyszerűbbé teszi a szervezetek és vállalatok számára, hogy a gyakorlatban is használható elemzéseket készítsenek videófájljaikból. További információk: [Az Azure Media Services Elemző áttekintése](media-services-analytics-overview.md)
 
+> [!NOTE]
+> Egyes elemzési adathordozó-processzorok ki lesznek vonva. A nyugdíjazási dátumokért tekintse meg az [örökölt összetevőkkel](legacy-components.md) foglalkozó témakört.
+
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Médiafeldolgozó neve|Állapot|Adatközpontok
+|Médiafeldolgozó neve|status|Adatközpontok
 |---|---|---|
 |Azure Media Face Detector|Előzetes verzió|Összes|
 |Azure Media Indexer|FE|Összes|
@@ -220,9 +223,9 @@ A Microsoft Azure Media Services lehetővé teszi a médiatartalmak védelmét a
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Encryption|Állapot|Adatközpontok|
+|Titkosítás|status|Adatközpontok|
 |---|---|---| 
-|Storage|FE|Összes|
+|Tárterület|FE|Összes|
 |AES-128-kulcsok|FE|Összes|
 |FairPlay|FE|Összes|
 |PlayReady|FE|Összes|
@@ -246,7 +249,7 @@ További információt a [méretezésről](#scaling) szóló szakaszban talál.
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|RU típusának neve|Állapot|Adatközpontok
+|RU típusának neve|status|Adatközpontok
 |---|---|---|
 |S1|FE|Összes|
 |S2|FE|Mindenhol, kivéve Dél-Brazíliát és Nyugat-Indiát|
@@ -256,7 +259,7 @@ További információt a [méretezésről](#scaling) szóló szakaszban talál.
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a Media Services képzési terveket.
 

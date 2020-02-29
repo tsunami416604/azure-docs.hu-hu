@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
-ms.openlocfilehash: 49fea7d568e356169f8bbf0dfd1f4ce5c80a7223
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: cf7e075244a83190b83e629ef300a4903b114a6d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690292"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920076"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Oktatóanyag: tavaszi Felhőbeli erőforrások figyelése riasztások és műveleti csoportok használatával
 
@@ -86,7 +86,7 @@ A **riasztások**konfigurálásához térjen vissza a **riasztások** lapra, maj
 
 1. Kattintson a **Done** (Kész) gombra.
 
-A figyeléshez rendelkezésre álló feltételek részleteiért lásd: [felhasználói portál metrikái – beállítások](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options).
+A figyeléshez rendelkezésre álló feltételek részleteiért lásd: [felhasználói portál metrikái – beállítások](spring-cloud-concept-metrics.md#user-metrics-options).
 
  A **műveletek**területen kattintson a **műveleti csoport kiválasztása**elemre. A **műveletek** ablaktáblán válassza ki a korábban definiált **műveleti csoportot**.
 
@@ -109,7 +109,7 @@ A **metrikák** lapról is létrehozhat egy szabályt:
    ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Következő lépések
-* [Felhasználói portál metrikáinak beállításai](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
+* [Felhasználói portál metrikáinak beállításai](spring-cloud-concept-metrics.md#user-metrics-options)
 * [Műveleti csoportok létrehozása és kezelése a Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 * [SMS-riasztás viselkedése a műveleti csoportokban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
 * [Oktatóanyag: elosztott nyomkövetés használata az Azure Spring Cloud használatával](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)

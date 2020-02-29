@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: e8e4bed052ec5b70c441a3ae76f3409c307299e5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8a47131cb4f19cce1664eafa50c67ab1a1171e67
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981437"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919430"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Az Azure-beli virtuális gép indítása a Windows Update szolgáltatásban megakadt
 
 Ez a cikk segítséget nyújt a probléma megoldásában, ha a virtuális gép (VM) a Windows Update fázisban az indítás során megakad. 
 
-> [!NOTE] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/management/deployment-models.md). Ez a cikk a Resource Manager-alapú üzemi modell használatát ismerteti. Javasoljuk, hogy ezt a modellt a klasszikus üzemi modell használata helyett új központi telepítések esetén használja.
 
 ## <a name="symptom"></a>Hibajelenség
 

@@ -16,12 +16,12 @@ ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f7bc881cee362103fc611cbf8a094e07ad50699
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: f5d63577cbdbdf18cb17618bdb5c9e3b5de0e44a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77499047"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162266"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Az Azure AD-szerepkörök felügyeleti képességei Privileged Identity Management
 
@@ -62,7 +62,7 @@ Mindent megtettünk, hogy megismerjük a korábbi API-t használó ügyfeleket, 
 
 ## <a name="powershell-change"></a>PowerShell-változás
 
-Azon ügyfelek esetében, akik az Azure AD-szerepkörökhöz tartozó Privileged Identity Management PowerShell-modult használják, a PowerShell nem fog működni a frissítéssel. Az előző parancsmagok helyett a Privileged Identity Management-parancsmagokat kell használnia az Azure AD előzetes verzió PowerShell-modulján belül. Telepítse az Azure AD PowerShell-modult a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17). A parancsmagok a Graph APIra épülnek.
+Azon ügyfelek esetében, akik az Azure AD-szerepkörökhöz tartozó Privileged Identity Management PowerShell-modult használják, a PowerShell nem fog működni a frissítéssel. Az előző parancsmagok helyett a Privileged Identity Management-parancsmagokat kell használnia az Azure AD előzetes verzió PowerShell-modulján belül. Telepítse az Azure AD PowerShell-modult a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17). Most már [elolvashatja a PIM-műveletekhez tartozó dokumentációt és mintákat ebben a PowerShell-modulban](powershell-for-azure-ad-roles.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -2,17 +2,17 @@
 title: Ev3 és Esv3 sorozat – Azure Virtual Machines
 description: A Ev3 és a Esv3 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 41b3997a9271a113a8d89f47d3a79d93bc13f92c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: aad4610a44c59ed95cf1ad9777329097886c5bed
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493747"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164372"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 és Esv3 sorozat
 
@@ -31,6 +31,10 @@ ACU: 160–190
 Premium Storage: nem támogatott
 
 Premium Storage gyorsítótárazás: nem támogatott
+
+Élő áttelepítés: támogatott
+
+Memória megőrzésének frissítései: támogatott
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---|---|---|---|---|---|---|
@@ -59,6 +63,10 @@ ACU: 160–190
 Premium Storage: támogatott
 
 Premium Storage gyorsítótárazás: támogatott
+
+Élő áttelepítés: támogatott
+
+Memória megőrzésének frissítései: támogatott
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps (gyorsítótár mérete GiB-ban) | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) |
 |---|---|---|---|---|---|---|---|

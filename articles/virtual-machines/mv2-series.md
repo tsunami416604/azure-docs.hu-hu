@@ -2,17 +2,17 @@
 title: Mv2 sorozat – Azure Virtual Machines
 description: A Mv2 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
-author: jonbeck7
+author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 03e8baa5f0286652ee500a06382c0a45e6f0ec52
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 6fb0f93d3ac124b21bbc52ddc57bc720de6406e6
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655667"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163896"
 ---
 # <a name="mv2-series"></a>Mv2 sorozat
 
@@ -23,6 +23,10 @@ A Mv2 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading technol
 Premium Storage: támogatott
 
 Premium Storage gyorsítótárazás: támogatott
+
+Élő áttelepítés: nem támogatott
+
+Memória-megőrzési frissítések: nem támogatott
 
 Írásgyorsító: [támogatott](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 

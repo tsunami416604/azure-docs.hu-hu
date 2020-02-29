@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: b71048412f5715fd1b8ef3edf742716916672bd5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c1e14db9dafc8b03acbeb1c6b97e5ac0e27cb0fd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718751"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163048"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzletmenet-folytonosság és vész-helyreállítási (BCDR): Azure párosított régiók
 
@@ -24,9 +24,12 @@ Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabb
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
+> [!NOTE]
+> A hozzárendelt Azure regionális párok nem módosíthatók.
+
 1\. ábra – Azure regionális párok
 
-| földrajz | Párosított régiók |  |
+| Földrajz | Párosított régiók |  |
 |:--- |:--- |:--- |
 | Ázsia |Kelet-Ázsia |Délkelet-Ázsia |
 | Ausztrália |Kelet-Ausztrália |Délkelet-Ausztrália |
@@ -34,7 +37,7 @@ Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabb
 | Brazília |Dél-Brazília |USA déli középső régiója |
 | Kanada |Közép-Kanada |Kelet-Kanada |
 | Kína |Észak-Kína |Kelet-Kína|
-| Kína |Kína 2. északi régiója |Kína 2. keleti régiója|
+| Kína |Észak-Kína 2 |Kelet-Kína 2|
 | Európa |Észak-Európa (Írország) |Nyugat-Európa (Hollandia) |
 | Franciaország |Közép-Franciaország|Dél-Franciaország|
 | Németország |Közép-Németország |Északkelet-Németország |
@@ -47,12 +50,12 @@ Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabb
 | Észak-Amerika |USA északi középső régiója |USA déli középső régiója |
 | Észak-Amerika |USA nyugati régiója, 2. |USA nyugati középső régiója 
 | Dél-afrikai Köztársaság | Dél-Afrika északi régiója | Dél-Afrika nyugati régiója
-| Egyesült Királyság |Az Egyesült Királyság nyugati régiója |Egyesült Királyság déli régiója |
-| Egyesült Arab Emírségek | Egyesült Arab Emírségek északi régiója | Egyesült Arab Emírségek középső régiója
+| Egyesült Királyság |Az Egyesült Királyság nyugati régiója |Az Egyesült Királyság déli régiója |
+| Egyesült Arab Emírségek | Észak-Egyesült Arab | UAE középső régiója
 | Egyesült Államok védelmi Minisztériuma |US DoD – Kelet |US DoD – Középső régió |
-| Az USA kormányzata |USA-beli államigazgatás – Arizona |USA-beli államigazgatás – Texas |
-| Az USA kormányzata |US Gov Iowa |USA-beli államigazgatás – Virginia |
-| Az USA kormányzata |USA-beli államigazgatás – Virginia |USA-beli államigazgatás – Texas |
+| USA kormánya |USA-beli államigazgatás – Arizona |USA-beli államigazgatás – Texas |
+| USA kormánya |US Gov Iowa |USA-beli államigazgatás – Virginia |
+| USA kormánya |USA-beli államigazgatás – Virginia |USA-beli államigazgatás – Texas |
 
 1\. táblázat – az Azure regionális párok leképezése
 

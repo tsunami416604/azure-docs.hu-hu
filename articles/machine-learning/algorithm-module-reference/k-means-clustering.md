@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 6e2fa96584570e5837c4367c8be4701b7398fb0f
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/19/2020
+ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152210"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921164"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K – fürtözést jelenti
 
@@ -107,11 +107,11 @@ Amikor feldolgozza a betanítási adatmennyiséget, a K-means algoritmus a véle
   
     -   Ha úgy állítja be az **oktatói módot** , hogy **egyetlen paramétert**adjon meg, vegyen fel egy címkézett adatkészletet, és adja ki a modellt a [vonat-fürtszolgáltatási modell](train-clustering-model.md) modullal.  
   
-### <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Results (Eredmények)
 
 Miután befejezte a modell konfigurálását és betanítását, rendelkezik egy olyan modellel, amelynek használatával pontszámokat lehet előállítani. A modell tanítása több módon is elvégezhető, és az eredmények több módon is megtekinthetők és használhatók: 
 
-#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>A modell pillanatképének rögzítése a munkaterületen
+### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>A modell pillanatképének rögzítése a munkaterületen
 
 Ha a vonat- [fürtszolgáltatási modell](train-clustering-model.md) modult használta:
 
@@ -121,7 +121,7 @@ Ha a vonat- [fürtszolgáltatási modell](train-clustering-model.md) modult hasz
 
 A mentett modell a modell mentésekor a betanítási adategységeket jelöli. Ha később frissíti a folyamat során használt betanítási adattípust, nem frissíti a mentett modellt. 
 
-#### <a name="see-the-clustering-result-dataset"></a>Tekintse meg a fürtözési eredmény adatkészletét 
+### <a name="see-the-clustering-result-dataset"></a>Tekintse meg a fürtözési eredmény adatkészletét 
 
 Ha a vonat- [fürtszolgáltatási modell](train-clustering-model.md) modult használta:
 
@@ -142,3 +142,7 @@ Ezt a problémát több módon is elkerülheti:
 -   Hozzon létre több modellt, amely változó a metrikát vagy az iterációt.  
   
 A fürtözési modellek esetében általánosságban lehetséges, hogy bármely adott konfiguráció a fürtök helyileg optimalizált halmazát fogja eredményezni. Más szóval a modell által visszaadott fürtök halmaza csak az aktuális adatpontokat, és nem általánosítható más adatértékekhez. Ha más kezdeti konfigurációt használ, a K-Mean metódus egy másik, magasabb szintű konfigurációt is talál. 
+
+## <a name="next-steps"></a>Következő lépések
+
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

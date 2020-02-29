@@ -2,17 +2,17 @@
 title: NVv3 sorozat – Azure Virtual Machines
 description: A NVv3 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: a353abe8cdedb01138c8b633750b90bd9870e5d2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 42c11ed41ca4d84f1acf137bbb681a2dbe24dfe2
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666879"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161907"
 ---
 # <a name="nvv3-series"></a>NVv3 sorozat
 
@@ -21,6 +21,10 @@ A NVv3 sorozatú virtuális gépeket az [NVIDIA Tesla M60](https://images.nvidia
 A NVv3-példányok minden GPU-je tartalmaz egy RÁCSos licencet. Ez a licenc lehetővé teszi, hogy az NV-példányokat virtuális munkaállomásként használja egyetlen felhasználó számára, vagy 25 egyidejű felhasználó csatlakozhat a virtuális GÉPHEZ egy virtuális alkalmazási forgatókönyv esetén.
 
 Premium Storage gyorsítótárazás: támogatott
+
+Élő áttelepítés: nem támogatott
+
+Memória-megőrzési frissítések: nem támogatott
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma | Virtuális munkaállomások | Virtuális alkalmazások |
 |---|---|---|---|---|---|---|---|---|---|---|

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 768d01346b7697953d44742458c7e507ae7c115a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894597"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164899"
 ---
 # <a name="what-is-azure-virtual-network"></a>Mi az Azure Virtual Network?
 
@@ -38,7 +38,7 @@ A hálózat Azure-ban való létrehozásakor fontos szem előtt tartani a követ
 - Győződjön meg arról, hogy nem átfedésben lévő címterület. Győződjön meg arról, hogy a VNet címtartomány (CIDR-blokk) nem fedi át a szervezet más hálózati tartományait.
 - Az alhálózatok nem fedik le a VNet teljes címterületját. Tervezze meg előre, és foglaljon le némi címtartományt a jövő számára.
 - Azt javasoljuk, hogy kevesebb nagy virtuális hálózatok legyen, mint több kis virtuális hálózatok. Ez megakadályozza a felügyelet terhelését.
-- VNet biztonságossá tétele hálózati biztonsági csoportok (NSG-EK) használatával.
+- A VNet biztonságossá tételéhez rendeljen hozzá hálózati biztonsági csoportokat (NSG) az alá tartozó alhálózatokhoz.
 
 ## <a name="communicate-with-the-internet"></a>Kommunikáció az internettel
 

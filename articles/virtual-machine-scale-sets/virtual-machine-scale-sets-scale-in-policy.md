@@ -1,32 +1,32 @@
 ---
 title: Egyéni méretezési szabályzatok használata Azure-beli virtuálisgép-méretezési csoportokkal
 description: Ismerje meg, hogyan használhatja az egyéni méretezési szabályzatokat az Azure-beli virtuálisgép-méretezési csoportokkal, amelyek az automatikus skálázási konfiguráció használatával kezelik a példányszámot
-author: avverma
+services: virtual-machine-scale-sets
+author: avirishuv
+manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 02/26/2020
 ms.author: avverma
-ms.openlocfilehash: 8e51ebab36d75d1c9512446ee0370f7359a72551
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: ffcdaf76bdd08ee5505ddbeff6a6698e231b6171
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271769"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919838"
 ---
-# <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Előzetes verzió: egyéni méretezési szabályzatok használata Azure-beli virtuálisgép-méretezési csoportokkal
+# <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Egyéni méretezési szabályzatok használata Azure-beli virtuálisgép-méretezési csoportokkal
 
-A virtuálisgép-méretezési csoport üzembe helyezése mérőszámok tömbje alapján méretezhető vagy méretezhető, beleértve a platformot és a felhasználó által definiált egyéni metrikákat is. Míg a méretezési csoport modellje új Virtual Machines hoz létre, a méretezési funkció hatással van a futó virtuális gépekre, amelyek különböző konfigurációkkal és/vagy funkciókkal rendelkeznek a méretezési csoport számítási feladatainak kialakulásához. 
+A virtuálisgép-méretezési csoport üzembe helyezése mérőszámok tömbje alapján méretezhető vagy méretezhető, beleértve a platformot és a felhasználó által definiált egyéni metrikákat is. Míg a méretezési csoport modellje alapján a kibővítő új virtuális gépeket hoz létre, a méretezési funkció hatással van a futó virtuális gépekre, amelyek különböző konfigurációkkal és/vagy funkciókkal rendelkeznek a méretezési csoport számítási feladatainak változásakor. 
 
-A skálázási szabályzat funkció lehetővé teszi a felhasználóknak a virtuális gépek skálázási sorrendjének konfigurálását. Az előzetes verzió három méretezési konfigurációt vezet be: 
+A skálázási szabályzat funkció lehetővé teszi a felhasználók számára, hogy a virtuális gépek méretezési sorrendjét három méretezési konfigurációval konfigurálja: 
 
 1. Alapértelmezett
 2. NewestVM
 3. OldestVM
-
-***Ez az előzetes verziójú funkció szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.***
 
 ### <a name="default-scale-in-policy"></a>Alapértelmezett méretezési házirend
 
@@ -38,7 +38,7 @@ Alapértelmezés szerint a virtuálisgép-méretezési csoport alkalmazza ezt a 
 
 A felhasználóknak nem kell megadniuk a méretezési szabályzatot, ha csak az alapértelmezett sorrendet szeretnék követni.
 
-Vegye figyelembe, hogy a rendelkezésre állási zónák vagy a tartalék tartományok közötti egyensúly nem helyezi át a példányokat a rendelkezésre állási zónák vagy a tartalék tartományok Az egyensúly a virtuális gépek nem kiegyensúlyozatlan rendelkezésre állási zónákból vagy tartalék tartományokból való törlésével érhető el, amíg a virtuális gépek eloszlása kiegyensúlyozatlan lesz.
+Vegye figyelembe, hogy a rendelkezésre állási zónák vagy a tartalék tartományok közötti egyensúly nem helyezi át a példányokat a rendelkezésre állási zónák vagy a tartalék tartományok Az egyensúly a virtuális gépek nem kiegyensúlyozatlan rendelkezésre állási zónákból vagy tartalék tartományokból való törlésével érhető el, amíg a virtuális gépek eloszlása nem válik egyensúlyba.
 
 ### <a name="newestvm-scale-in-policy"></a>NewestVM skálázási szabályzat
 
@@ -53,6 +53,17 @@ Ez a szabályzat törli a legrégebben létrehozott virtuális gépet a méretez
 A méretezési szabályzatok a virtuálisgép-méretezési csoport modelljében vannak meghatározva. Ahogy az a fenti szakaszban is látható, a "NewestVM" és a "OldestVM" szabályzat használatakor szükség van egy méretezési házirend-definícióra. A virtuálisgép-méretezési csoport automatikusan az "alapértelmezett" méretezési házirendet fogja használni, ha a méretezési csoport modelljében nem található skálázási házirend-definíció. 
 
 A következő módokon lehet definiálni egy méretezési szabályzatot a virtuálisgép-méretezési csoport modelljében:
+
+### <a name="azure-portal"></a>Azure Portal
+ 
+Az alábbi lépések a méretezési szabályzatot határozzák meg új méretezési csoport létrehozásakor. 
+ 
+1. Nyissa meg a **virtuálisgép-méretezési csoportokat**.
+1. Válassza a **+ Hozzáadás** lehetőséget egy új méretezési csoport létrehozásához.
+1. Nyissa meg a **skálázás** lapot. 
+1. Keresse meg a **skálázási szabályzat** szakaszt.
+1. Válasszon ki egy méretezési házirendet a legördülő menüből.
+1. Ha elkészült az új méretezési csoport létrehozásával, válassza a **felülvizsgálat + létrehozás** gombot.
 
 ### <a name="using-api"></a>Az API használata
 
@@ -70,6 +81,33 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 } 
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Hozzon létre egy erőforráscsoportot, majd hozzon létre egy új méretezési csoportot a *OldestVM*beállítással.
+
+```azurepowershell-interactive
+New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "<VMSS location>"
+New-AzVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "<VMSS location>" `
+  -VMScaleSetName "myScaleSet" `
+  -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+Az alábbi példa egy méretezési szabályzatot hoz létre egy új méretezési csoport létrehozásakor. Először hozzon létre egy erőforráscsoportot, majd hozzon létre egy új méretezési csoportot *OldestVM*-ként. 
+
+```azurecli-interactive
+az group create --name <myResourceGroup> --location <VMSSLocation>
+az vmss create \
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --image UbuntuLTS \
+  --admin-username <azureuser> \
+  --generate-ssh-keys \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>Sablon használata
@@ -94,6 +132,15 @@ Ugyanez a folyamat érvényes a "NewestVM" használatakor a fenti méretezési h
 
 A skálázási szabályzat módosítása a skálázási szabályzat alkalmazásával megegyező eljárást követi. Ha például a fenti példában a "OldestVM" és a "NewestVM" szabályzatot szeretné módosítani, ezt a következő módon teheti meg:
 
+### <a name="azure-portal"></a>Azure Portal
+
+Módosíthatja egy meglévő méretezési csoport skálázási szabályzatát a Azure Portal használatával. 
+ 
+1. Egy meglévő virtuálisgép-méretezési csoportnál válassza a bal oldali menüben a **skálázás** elemet.
+1. Válassza a **méretezési házirend** fület.
+1. Válasszon ki egy méretezési házirendet a legördülő menüből.
+1. Ha elkészült, válassza a **Mentés**lehetőséget. 
+
 ### <a name="using-api"></a>Az API használata
 
 Hajtson végre egy PUT-t a virtuálisgép-méretezési csoporton a 2019-03-01-es API használatával:
@@ -110,6 +157,27 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 }
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Egy meglévő méretezési csoport skálázási házirendjének frissítése:
+
+```azurepowershell-interactive
+Update-AzVmss `
+ -ResourceGroupName "myResourceGroup" `
+ -VMScaleSetName "myScaleSet" `
+ -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+A következő példa egy meglévő méretezési csoport skálázási házirendjének frissítését szemlélteti: 
+
+```azurecli-interactive
+az vmss update \  
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>Sablon használata
@@ -169,7 +237,7 @@ A nem zónákra kiterjedő virtuálisgép-méretezési csoportok esetében a sza
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-1. Nem sikerült engedélyezni a scaleInPolicy-t, ha "BadRequest" hibaüzenetet kap, amely azt jelzi, hogy "a" tulajdonság "típusú objektum nem találta a" scaleInPolicy "tagot, majd ellenőrizze a virtuálisgép-méretezési csoporthoz használt API-verziót. Ehhez az előzetes verzióhoz az API 2019-03-01-es vagy újabb verziója szükséges.
+1. Nem sikerült engedélyezni a scaleInPolicy-t, ha "BadRequest" hibaüzenetet kap, amely azt jelzi, hogy "a" tulajdonság "típusú objektum nem találta a" scaleInPolicy "tagot, majd ellenőrizze a virtuálisgép-méretezési csoporthoz használt API-verziót. Ehhez a szolgáltatáshoz a 2019-03-01-es vagy újabb API-verzió szükséges.
 
 2. A virtuális gépeknek a méretezéshez való helytelen kiválasztása a fenti példákra vonatkozik. Ha a virtuálisgép-méretezési csoport egy zónákra épülő telepítés, a skálázási szabályzatot először a kiegyensúlyozatlan zónákra alkalmazza a rendszer, majd a méretezési csoporton keresztül, ha a zóna kiegyensúlyozott. Ha a skálázási sorrend nem konzisztens a fenti példákkal, a hibaelhárításhoz hozzon létre egy lekérdezést a virtuálisgép-méretezési csoport csapatával.
 

@@ -14,14 +14,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: fd31528325ddbe913333bc228fc3847242abcd24
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083755"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913004"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Mozgások észlelése Azure Media Analytics
+
+> [!NOTE]
+> A **Azure Media Motion Detector** adathordozó-processzor ki lesz vonva. A lejárati dátumért tekintse meg az [örökölt összetevőkkel](legacy-components.md) foglalkozó témakört.
  
 ## <a name="overview"></a>Áttekintés
 
@@ -108,7 +111,7 @@ A következő táblázat a kimeneti JSON-fájl elemeit ismerteti.
 | események |Az egyes események töredékei az adott időtartamon belül észlelt mozgást tartalmazzák. |
 | type |A jelenlegi verzióban ez mindig "2" az általános mozgáshoz. Ez a címke a videó API-k számára biztosít rugalmasságot a jövőbeli verziókban való mozgás kategorizálásához. |
 | regionId |A fentiekben leírtaknak megfelelően ez a verzió mindig 0 lesz. Ez a címke a videó API rugalmasságát kínálja a különböző régiókban a jövőbeli verziókban való mozgás megkereséséhez. |
-| régió |A videó azon részére utal, amelyben érdekli a mozgás. <br/><br/>-az "id" a régió területét jelenti – ebben a verzióban csak egy azonosító 0. <br/>a "type" kifejezés a mozgáshoz szükséges régió alakját jelöli. Jelenleg a "téglalap" és a "sokszög" támogatott.<br/> Ha a "téglalap" értéket adta meg, a régió mérete X, Y, width és height. Az X és Y koordináták a régió bal oldali XY koordinátáit jelölik a 0,0 és 1,0 közötti normalizált méretekben. A szélesség és a magasság a 0,0 és 1,0 közötti normalizált skálán lévő régió méretét jelöli. Az aktuális verzióban az X, Y, width és height mindig a 0, 0 és 1, 1. <br/>Ha a "sokszög" értéket adta meg, a régió méretei vannak a pontokban. <br/> |
+| régiók |A videó azon részére utal, amelyben érdekli a mozgás. <br/><br/>-az "id" a régió területét jelenti – ebben a verzióban csak egy azonosító 0. <br/>a "type" kifejezés a mozgáshoz szükséges régió alakját jelöli. Jelenleg a "téglalap" és a "sokszög" támogatott.<br/> Ha a "téglalap" értéket adta meg, a régió mérete X, Y, width és height. Az X és Y koordináták a régió bal oldali XY koordinátáit jelölik a 0,0 és 1,0 közötti normalizált méretekben. A szélesség és a magasság a 0,0 és 1,0 közötti normalizált skálán lévő régió méretét jelöli. Az aktuális verzióban az X, Y, width és height mindig a 0, 0 és 1, 1. <br/>Ha a "sokszög" értéket adta meg, a régió méretei vannak a pontokban. <br/> |
 | töredékek |A metaadatok a töredékek nevű különböző szegmensekben vannak kiosztva. Minden töredék tartalmaz kezdési időpontot, időtartamot, intervallumszámot és esemény(eke)t. Az események nélküli töredékek azt jelzik, hogy a kezdési idő és az időtartam során nem észlelhető mozgás. |
 | szögletes zárójelek [] |Az egyes zárójelek az esemény egy intervallumát jelölik. Az adott intervallumhoz tartozó üres zárójelek azt jelzik, hogy nem észlelhető mozgás. |
 | locations |Ez az új bejegyzés az események területen listázza azt a helyet, ahol a mozgás történt. Ez konkrétabb, mint az észlelési zónák. |

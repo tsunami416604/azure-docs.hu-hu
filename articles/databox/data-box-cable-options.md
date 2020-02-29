@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 661cec672aa02f62b479b7f5831adfdaff9e6b21
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: ffabd917eff1c545bba734ab1621b947ee8d9ae9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316557"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920637"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Az Azure Data Box kábelezési lehetőségei
 
@@ -39,7 +39,7 @@ Végezze el az alábbi lépéseket az eszköz bekábelezéséhez.
     - **IP-cím**: 192.168.100.5
     - **Alhálózat**: 255.255.255.0
 
-3. A következő helyen érheti el az eszköz helyi webes FELÜLETét: 192.168.100.10. Jelentkezzen be és oldja fel a Data Box zárolását az Azure Portalról beszerzett feloldási jelszóval.
+3. Nyissa meg az eszköz helyi webes felületét a 192.168.100.10 címen. Jelentkezzen be és oldja fel a Data Box zárolását az Azure Portalról beszerzett feloldási jelszóval.
 
 
 ## <a name="transfer-via-data-port-with-static-ips"></a>Átvitel DATA-porton keresztül statikus IP-címekkel
@@ -67,7 +67,7 @@ Végezze el az alábbi lépéseket az eszköz bekábelezéséhez.
 
      ![Kétportos beállítás](media/data-box-cable-options/cabling-2-port-setup.png)
 
-3. A következő helyen érheti el az eszköz helyi webes FELÜLETét: 192.168.100.10. Jelentkezzen be és oldja fel a Data Box zárolását az Azure Portalról beszerzett feloldási jelszóval.
+3. Nyissa meg az eszköz helyi webes felületét a 192.168.100.10 címen. Jelentkezzen be és oldja fel a Data Box zárolását az Azure Portalról beszerzett feloldási jelszóval.
 4. Rendeljen statikus IP-címeket a konfigurált adatportokhoz.
 
 ### <a name="option-2---initial-setup-via-separate-computer"></a>2\. lehetőség – Kezdeti beállítás különálló számítógépen keresztül
@@ -83,7 +83,7 @@ Végezze el az alábbi lépéseket az eszköz bekábelezéséhez.
 
      ![Kétportos beállítás kapcsolóval](media/data-box-cable-options/cabling-with-static-ip.png)
 
-3. A következő helyen érheti el az eszköz helyi webes FELÜLETét: 192.168.100.10. Jelentkezzen be és oldja fel a Data Box zárolását az Azure Portalról beszerzett feloldási jelszóval.
+3. Nyissa meg az eszköz helyi webes felületét a 192.168.100.10 címen. Jelentkezzen be és oldja fel a Data Box zárolását az Azure Portalról beszerzett feloldási jelszóval.
 4. Azonosítsa a DHCP-kiszolgáló által hozzárendelt IP-címeket.
 
 ## <a name="transfer-via-data-port-with-static-ips-using-a-switch"></a>Átvitel DATA-porton keresztül statikus IP-címekkel és kapcsolóval 
@@ -107,7 +107,7 @@ Végezze el az alábbi lépéseket az eszköz bekábelezéséhez.
 
      ![Kétportos beállítás kapcsolóval](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
-3. A következő helyen érheti el az eszköz helyi webes FELÜLETét: 192.168.100.10. Jelentkezzen be és oldja fel a Data Box zárolását az Azure Portalról beszerzett feloldási jelszóval.
+3. Nyissa meg az eszköz helyi webes felületét a 192.168.100.10 címen. Jelentkezzen be és oldja fel a Data Box zárolását az Azure Portalról beszerzett feloldási jelszóval.
 4. Rendeljen statikus IP-címeket a konfigurált adatportokhoz.
 
 
@@ -129,6 +129,6 @@ Végezze el az alábbi lépéseket az eszköz bekábelezéséhez.
 2. A DHCP-kiszolgálóval vagy a DNS-kiszolgálóval azonosítsa az IP-címet.
 3. Egy ugyanazon a hálózaton lévő egyik kiszolgálóról érje el az eszköz helyi webes felületét a DHCP-kiszolgáló által hozzárendelt IP-címmel. Jelentkezzen be és oldja fel a Data Box zárolását az Azure Portalról beszerzett feloldási jelszóval.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az eszköz kábelezése után lépjen az [adatok Azure Data Boxba való másolását](data-box-deploy-copy-data.md) leíró szakaszra.

@@ -3,12 +3,12 @@ title: Alkalmazás futtatása ZIP-csomagból
 description: Az alkalmazás ZIP-csomagjának üzembe helyezése az atomenergia-szolgáltatással. Javíthatja az alkalmazás működésének kiszámíthatóságát és megbízhatóságát a ZIP-telepítési folyamat során.
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 316ada7700a5cf45ee90f515336039702bab48c0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945837"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920722"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Az alkalmazás futtatása Azure App Service közvetlenül egy ZIP-csomagból
 
@@ -41,7 +41,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 ## <a name="run-the-package"></a>A csomag futtatása
 
-A App Service-csomag futtatásának legegyszerűbb módja az Azure CLI az [WebApp Deployment Source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) parancs. Példa:
+A App Service-csomag futtatásának legegyszerűbb módja az Azure CLI az [WebApp Deployment Source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) parancs. Például:
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src <filename>.zip
@@ -63,14 +63,41 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 Ha a blob Storage-hoz azonos nevű frissített csomagot tesz közzé, újra kell indítania az alkalmazást, hogy a frissített csomag betöltődik a App Serviceba.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+### <a name="use-key-vault-references"></a>Key Vault referenciák használata
+
+A további biztonság érdekében Key Vault hivatkozásokat is használhat a külső URL-címmel együtt. Ez megtartja az URL-címek titkosítását, és lehetővé teszi, hogy kihasználja Key Vault a titkos felügyelet és a forgás számára. Az Azure Blob Storage használata ajánlott, így egyszerűen elforgathatja a társított SAS-kulcsot. Az Azure Blob Storage inaktív állapotban van, így az alkalmazás adatai biztonságban maradnak, amikor nincs telepítve App Service.
+
+1. Hozzon létre egy Azure Key Vault.
+
+    ```azurecli
+    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus
+    ```
+
+1. Adja hozzá a külső URL-címet Key Vault-titokként.
+
+    ```azurecli
+    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
+    ```
+
+1. Hozza létre a `WEBSITE_RUN_FROM_PACKAGE` alkalmazás beállítását, és állítsa be az értéket Key Vault hivatkozásként a külső URL-címre.
+
+    ```azurecli
+    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
+    ```
+
+További információt a következő cikkekben talál.
+
+- [App Service Key Vault referenciái](app-service-key-vault-references.md)
+- [Azure Storage-titkosítás a REST-adatokhoz](../storage/common/storage-service-encryption.md)
+
+## <a name="troubleshooting"></a>Hibakeresés
 
 - A közvetlenül a csomagból való futtatás `wwwroot` írásvédett. Az alkalmazás hibaüzenetet küld, ha fájlokat próbál írni ebbe a könyvtárba.
 - A TAR és a GZIP formátum nem támogatott.
 - Ez a funkció nem kompatibilis a [helyi gyorsítótárral](overview-local-cache.md).
 - A jobb hidegindító teljesítmény érdekében használja a helyi zip-beállítást (`WEBSITE_RUN_FROM_PACKAGE`= 1).
 
-## <a name="more-resources"></a>További források
+## <a name="more-resources"></a>További segédanyagok
 
 - [Azure App Service folyamatos üzembe helyezése](deploy-continuous-deployment.md)
 - [Kód üzembe helyezése ZIP-vagy WAR-fájllal](deploy-zip.md)

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 60ce27ddc533b6c4066cea771f7a24570ff3c04c
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: c5fe0a577ead9d8c6408d4268d21465a7b762b6d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604893"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920620"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Gyors útmutató: TPM-eszköz regisztrálása IoT Hub Device Provisioning Service a Python kiépítési szolgáltatási SDK-val
 
@@ -31,7 +31,7 @@ Ebben a rövid útmutatóban programozott módon hozza létre az Azure IoT Hub D
 - Ellenőrző kulcs. Hajtsa végre a [szimulált eszköz létrehozása és kiépítése](quick-create-simulated-device.md) , illetve az SDK által megadott, az alábbiakban ismertetett hátirat kulcs használatát.
 
 > [!IMPORTANT]
-> Ez a cikk csak az elavult v1 Python SDK-ra vonatkozik. Az IOT hub Device kiépítési szolgáltatáshoz tartozó eszközök és szolgáltatások ügyfelei még nem érhetők el a v2-ben. A csapat jelenleg nem működik, hogy a v2-et a szolgáltatás paritására hozza.
+> Ez a cikk csak az elavult v1 Python SDK-ra vonatkozik. A IoT Hub Device Provisioning Service eszköz-és szolgáltatási ügyfelei még nem érhetők el a v2-ben. A csapat jelenleg nem működik, hogy a v2-et a szolgáltatás paritására hozza.
 
 <a id="prepareenvironment"></a>
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 438143d3253f1cab1afb958a90f427dcba59a98e
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 8ea85b560f35c79b3d5066d794f587345810b5d0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059239"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920858"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Az Azure-beli virtuális gép ügynökének telepítése kapcsolat nélküli módban 
 
@@ -35,13 +35,13 @@ Telepítse a virtuálisgép-ügynököt offline módban a következő esetekben:
 
 A virtuálisgép-ügynök offline módban történő telepítéséhez kövesse az alábbi lépéseket.
 
-### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>1\. lépés: A virtuális gép operációsrendszer-lemezének csatlakoztatása egy másik virtuális géphez adatlemezként
+### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>1\. lépés: a virtuális gép operációsrendszer-lemezének csatlakoztatása egy másik virtuális géphez adatlemezként
 
 1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről, hozzon létre egy lemezt a pillanatképből, majd csatolja a lemezt egy hibakeresési virtuális géphez. További információ: Windows rendszerű [virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez való csatolásával a Azure Portal használatával](troubleshoot-recovery-disks-portal-windows.md). A klasszikus virtuális gép esetében törölje a virtuális gépet, és tartsa meg az operációsrendszer-lemezt, majd csatolja az operációsrendszer-lemezt a virtuális gép hibakereséséhez.
 
-2.  Kapcsolódjon a hibakereső virtuális géphez. Nyissa meg a **Számítógép-kezelés** > **Lemezkezelés**programot. Ellenőrizze, hogy az operációsrendszer-lemez online állapotban van-e, és hogy a meghajtóbetűjelek hozzá vannak-e rendelve a lemezpartíciókhöz.
+2.  Kapcsolódjon a hibakereső virtuális géphez. Nyissa meg a **Számítógép-kezelés** > a **Lemezkezelés**programot. Ellenőrizze, hogy az operációsrendszer-lemez online állapotban van-e, és hogy a meghajtóbetűjelek hozzá vannak-e rendelve a lemezpartíciókhöz.
 
-### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>2\. lépés: Az operációsrendszer-lemez módosítása az Azure VM-ügynök telepítéséhez
+### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>2\. lépés: az operációsrendszer-lemez módosítása az Azure VM-ügynök telepítéséhez
 
 1.  Létesítsen távoli asztali kapcsolatokat a hibakereső virtuális géphez.
 
@@ -49,7 +49,7 @@ A virtuálisgép-ügynök offline módban történő telepítéséhez kövesse a
 
 3.  Indítsa el a **Beállításszerkesztőt** (Regedit. exe).
 
-4.  Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot. A menüben válassza a **fájl** > **Load struktúra**elemet:
+4.  Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot. A menüben válassza a **fájl** > **betöltési struktúra**:
 
     ![A struktúra betöltése](./media/install-vm-agent-offline/load-hive.png)
 
@@ -63,7 +63,7 @@ A virtuálisgép-ügynök offline módban történő telepítéséhez kövesse a
 
     2. Exportálja a következő jegyzékeket:
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE\BROKENSYSTEM\\ControlSet001\Services\WindowsAzureTelemetryService
+        - HKEY_LOCAL_MACHINE \BROKENSYSTEM\\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\RdAgent
 
 8.  Használja a hibakereső virtuális gép meglévő fájljait adattárként a virtuálisgép-ügynök telepítéséhez. Hajtsa végre a következő lépéseket:
@@ -90,13 +90,13 @@ A virtuálisgép-ügynök offline módban történő telepítéséhez kövesse a
 
         1.  A csatlakoztatott operációsrendszer-lemezen hozzon létre egy WindowsAzure nevű mappát a gyökér elérési útjában.
 
-        2.  Nyissa meg a C:\WindowsAzure a hibakereső virtuális gépen, keresse meg a C:\WindowsAzure\GuestAgent_X.X.XXXX.XXX. nevű mappát. Másolja a Vendégügynök mappát, amely a legújabb verziószámmal rendelkezik a C:\WindowsAzure-ből a csatlakoztatott operációsrendszer-lemez WindowsAzure mappájába. Ha nem biztos abban, hogy melyik mappát kell másolni, másolja az összes Vendégügynök mappát. Az alábbi képen egy példa látható a csatlakoztatott operációsrendszer-lemezre másolt Vendégügynök mappára.
+        2.  Nyissa meg a C:\WindowsAzure a hibakereső virtuális gépen, keresse meg a C:\WindowsAzure\ GuestAgent_X. X. XXXX. XXX nevű mappát. Másolja a Vendégügynök mappát, amely a legújabb verziószámmal rendelkezik a C:\WindowsAzure-ből a csatlakoztatott operációsrendszer-lemez WindowsAzure mappájába. Ha nem biztos abban, hogy melyik mappát kell másolni, másolja az összes Vendégügynök mappát. Az alábbi képen egy példa látható a csatlakoztatott operációsrendszer-lemezre másolt Vendégügynök mappára.
 
              ![Vendégügynök mappa másolása](./media/install-vm-agent-offline/copy-files.png)
 
-9.  Válassza a **BROKENSYSTEM**lehetőséget. A menüből válassza ki a **fájl** > **kitöltése struktúrát**.
+9.  Válassza a **BROKENSYSTEM**lehetőséget. A menüben válassza a **fájl** > a **struktúra eltávolítása**lehetőséget.
 
-10.  Válassza a **BROKENSOFTWARE**lehetőséget. A menüből válassza ki a **fájl** > **kitöltése struktúrát**.
+10.  Válassza a **BROKENSOFTWARE**lehetőséget. A menüben válassza a **fájl** > a **struktúra eltávolítása**lehetőséget.
 
 11.  Válassza le az operációsrendszer-lemezt, majd [módosítsa az érintett virtuális gép operációsrendszer-lemezét](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm). A klasszikus virtuális gép esetében hozzon létre egy új virtuális gépet a javított operációsrendszer-lemezzel.
 
@@ -105,6 +105,8 @@ A virtuálisgép-ügynök offline módban történő telepítéséhez kövesse a
 Ha a virtuális gépet a Resource Manager-alapú üzemi modell használatával hozta létre, akkor elkészült.
 
 ### <a name="use-the-provisionguestagent-property-for-classic-vms"></a>A klasszikus virtuális gépek ProvisionGuestAgent tulajdonságának használata
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 Ha a klasszikus modellt használva hozta létre a virtuális gépet, használja a Azure PowerShell modult a **ProvisionGuestAgent** tulajdonság frissítéséhez. A tulajdonság arról tájékoztatja az Azure-t, hogy a virtuális gépen telepítve van a virtuálisgép-ügynök.
 
@@ -123,7 +125,7 @@ Ezután futtassa a `Get-AzureVM` parancsot. Figyelje meg, hogy a **GuestAgentSta
    GuestAgentStatus:Microsoft.WindowsAzure.Commands.ServiceManagement.Model.PersistentVMModel.GuestAgentStatus
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Virtual Machine Agent áttekintése](../extensions/agent-windows.md)
 - [Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez](../extensions/features-windows.md)
