@@ -1,9 +1,12 @@
 - name: A Custom Vision Service dokumentációja
   href: index.yml
 - name: Áttekintés
+  expanded: true
   items:
     - name: Mi a Custom Vision?
       href: home.md
+    - name: Újdonságok
+      href: whats-new.md
 - name: Rövid útmutatók
   items:
     - name: A webes portál használata

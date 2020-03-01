@@ -6,17 +6,17 @@ metadata:
   description: Az Azure Form Recognizer egy Cognitive Services-szolgáltatás, amely gépi tanulási technológiával azonosítja és nyeri ki a kulcs-érték párokat és táblaadatokat az űrlapdokumentumokból. Ezután strukturált adatokat ad vissza, amelyek tartalmazzák az eredeti fájlban lévő kapcsolatokat. A nem felügyelt tanítás lehetővé teszi, hogy a modell manuális adatcímkézés és intenzív kódolás nélkül értelmezni tudja az elrendezést és a mezők adatait. Választhatja a felügyelt tanítást is, manuálisan címkézett adatok használatával. A címkézett adatokkal betanított modellek nagyobb teljesítményűek és összetettebb dokumentumokat is képesek feldolgozni.
   services: cognitive-services
   ms.service: cognitive-services
-  ms.subservice: form-recognizer
+  ms.subservice: forms-recognizer
   ms.topic: landing-page
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 1fe0aee8967a0072a7ae01abc5791e7a3fd0834d
-  ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+  ms.openlocfilehash: de869fd9beb66a4122c1204648d17cff480e4b7f
+  ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 01/13/2020
-  ms.locfileid: "75921487"
+  ms.lasthandoff: 03/01/2020
+  ms.locfileid: "78206486"
 landingContent:
 - title: Tudnivalók a Form Recognizerről
   linkLists:

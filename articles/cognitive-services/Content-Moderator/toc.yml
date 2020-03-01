@@ -1,11 +1,12 @@
 - name: A Tartalommoderátor dokumentációja
   href: index.yml
 - name: Áttekintés
+  expanded: true
   items:
     - name: Mi a Content Moderator?
       href: overview.md
       expanded: true
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: A Content Moderator kipróbálása az interneten
       href: quick-start.md

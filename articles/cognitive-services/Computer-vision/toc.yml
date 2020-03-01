@@ -5,6 +5,8 @@
   items:
     - name: Mi a Computer Vision?
       href: Home.md
+    - name: Újdonságok
+      href: whats-new.md
 - name: Rövid útmutatók
   items:
     - name: Az ügyfél-SDK használata
