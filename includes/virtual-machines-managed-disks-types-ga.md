@@ -5,21 +5,21 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/14/2019
+ms.date: 02/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a355307eef9f5ce1f833cfd7924f5efa234a0cd7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e145cf481dd165144b188e6205e4b78cc61359fd
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522999"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78202548"
 ---
-## <a name="premium-ssd"></a>Prémium SSD
+## <a name="premium-ssd"></a>prémium SSD
 
 Az Azure Premium SSD-k nagy teljesítményű és kis késleltetésű lemezes támogatást biztosítanak a virtuális gépek (VM) számára a bemeneti/kimeneti (i/o) igényű számítási feladatokhoz. A Premium Storage-lemezek sebességének és teljesítményének kihasználásához áttelepítheti a meglévő VM-lemezeket prémium SSD-re. A prémium SSD-k megfelelőek a kritikus fontosságú üzemi alkalmazások számára. A prémium SSD-k csak a Premium Storage-kompatibilis virtuálisgép-sorozatokkal használhatók.
 
-Ha többet szeretne megtudni az Azure-beli virtuálisgép-típusokról és-méretekről a Windowshoz, beleértve a Premium Storage-kompatibilis méreteket, tekintse meg a [Windowsos virtuális gépek méretét](../articles/virtual-machines/windows/sizes.md). Ha többet szeretne megtudni az Azure-beli VM-típusokról és-méretekről, például a Premium Storage-kompatibilis méretekről, tekintse meg a Linux rendszerű [virtuális gépek méretét](../articles/virtual-machines/linux/sizes.md)ismertető témakört.
+Ha többet szeretne megtudni az Azure-beli virtuálisgép-típusokról és-méretekről a Windowshoz, beleértve a Premium Storage-kompatibilis méreteket, tekintse meg a [Windowsos virtuális gépek méretét](../articles/virtual-machines/windows/sizes.md). Ha többet szeretne megtudni az Azure-beli VM-típusokról és-méretekről, például a Premium Storage-kompatibilis méretekről, tekintse meg a Linux rendszerű [virtuális gépek méretét](../articles/virtual-machines/linux/sizes.md)ismertető témakört. Ezek közül bármelyik cikkből megtudhatja, hogy az egyes virtuálisgép-méretekkel kapcsolatos cikkek alapján megállapíthatja, hogy a prémium szintű Storage kompatibilis-e.
 
 ### <a name="disk-size"></a>Lemezméret
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
@@ -36,7 +36,7 @@ A lemezek kitörésének támogatását a rendszer alapértelmezés szerint enge
 
 A prémium SSD-k esetében minden I/O-művelet a 256 KiB-as vagy annál nagyobb átviteli sebesség esetében egyetlen I/O-műveletnek számít. A 256 KiB-nál nagyobb teljesítményű i/O-műveletek a 256 KiB-os méretnél több I/O-műveletnek számítanak.
 
-## <a name="standard-ssd"></a>Standard SSD
+## <a name="standard-ssd"></a>standard SSD
 
 Az Azure standard SSD-k költséghatékony tárolási lehetőséget biztosítanak olyan számítási feladatokhoz, amelyeknek konzisztens teljesítményre van szükségük az alacsonyabb IOPS szinten. A standard SSD jó beléptetési szintű élményt nyújt azok számára, akik a felhőbe szeretnének költözni, különösen akkor, ha a helyszíni HDD-megoldásokon futó munkaterhelések ingadozásával kapcsolatos problémákat tapasztal. A standard merevlemezekhez képest a standard SSD-k jobb rendelkezésre állást, következetességet, megbízhatóságot és késést biztosítanak. A standard SSD-k a webkiszolgálók, az alacsony IOPS, a könnyű használatú vállalati alkalmazások és a fejlesztési/tesztelési feladatok számára alkalmasak. A standard merevlemezekhez hasonlóan a standard SSD-k is elérhetők az összes Azure-beli virtuális gépen.
 
@@ -49,7 +49,7 @@ A standard SSD-k úgy lettek kialakítva, hogy egyszámjegyű ezredmásodperces 
 
 A standard SSD-k esetében minden I/O-művelet a 256 KiB-nál kisebb vagy azzal egyenlő, egyetlen I/O-műveletnek számít. A 256 KiB-nál nagyobb teljesítményű i/O-műveletek a 256 KiB-os méretnél több I/O-műveletnek számítanak. Ezek a tranzakciók számlázási hatással vannak.
 
-## <a name="standard-hdd"></a>Standard HDD
+## <a name="standard-hdd"></a>standard HDD
 
 Az Azure standard HDD-k megbízható, alacsony díjszabású lemezes támogatást biztosítanak a késést okozó munkaterheléseket futtató virtuális gépek számára. A standard szintű Storage szolgáltatásban az adattárakat merevlemez-meghajtókon (HDD-k) tárolja a rendszer. A standard HDD lemezek késése, IOPS és átviteli sebessége az SSD-alapú lemezekhez képest szélesebb körben is változhat. Standard HDD lemezeken írási késések érhetők el a 10ms alatt, a legtöbb IO-művelet esetében pedig a 20ms alatt olvashatók a késések, azonban a tényleges teljesítmény az i/o-mérettől és a számítási feladatoktől függően változhat. A virtuális gépek használatakor szabványos HDD-lemezeket használhat a fejlesztési és tesztelési forgatókönyvekhez, valamint a kevésbé fontos munkaterhelésekhez. A standard szintű HDD-k minden Azure-régióban elérhetők, és minden Azure-beli virtuális géppel használhatók.
 
