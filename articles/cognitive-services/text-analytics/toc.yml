@@ -42,6 +42,8 @@
     - name: 'Szövegfordítás, hangulatelemzés és beszédszintézis a Flask segítségével'
       maintainContext: true
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
+    - name: Adatok kinyerése az Excelben a Power Automate használatával
+      href: tutorials/extract-excel-information.md
 - name: Útmutatók
   items:
     - name: Szövegelemzési API hívása

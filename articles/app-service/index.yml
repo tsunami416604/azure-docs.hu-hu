@@ -1,154 +1,150 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: App Service – dokumentáció
+### YamlMime:Landing
+title: Az App Service dokumentációja
+summary: Az Azure App Service segítségével egy tetszőleges programozási nyelven hozhat létre és üzemeltethet webalkalmazásokat, mobilháttereket és RESTful API-kat az infrastruktúra kezelése nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus üzembe helyezéseket a GitHub, az Azure DevOps vagy bármely egyéb Git-adattár használatával. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure App Service használatával.
 metadata:
-  title: Azure App Service – dokumentáció
-  meta.description: 'Host websites, web apps, RESTful APIs, and mobile back ends in Azure App Service. Find quickstarts, tutorials, and samples to help you succeed with App Service.'
+  title: Az Azure App Service dokumentációja
+  description: Webhelyek, webalkalmazások, RESTful API-k és mobil-háttéralkalmazások az Azure App Service-ben. Gyorsútmutatók, oktatóanyagok és minták keresése az App Service használatához.
   ms.topic: landing-page
-  ms.date: 01/23/2017
-abstract:
-  description: 'Az Azure App Service segítségével egy tetszőleges programozási nyelven hozhat létre és üzemeltethet webalkalmazásokat, mobilháttereket és RESTful API-kat az infrastruktúra kezelése nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus üzembe helyezéseket a GitHub, az Azure DevOps vagy bármely egyéb Git-adattár használatával. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure App Service használatával.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://docs.microsoft.com/azure/app-service/media/index/create-a-web-app-with-nodejs-and-azure-app-service.png'
-      width: 250
-    title: 'Alkalmazásokat hozhat létre a Node.js és az Azure App Service használatával. (2:41)'
-    href: 'https://azure.microsoft.com/resources/videos/create-a-web-app-with-nodejs-and-azure-app-service/'
-    width: 250
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan helyezheti üzembe első alkalmazását a felhőben az App Service segítségével:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_net.svg'
-            text: .NET
-            href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-dotnet'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_nodejs.svg'
-            text: Node.js
-            href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_php.svg'
-            text: PHP
-            href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-php'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_java.svg'
-            text: Java
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-java'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_python.svg'
-            text: Python (on Linux)
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-python'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_html5.svg'
-            text: HTML
-            href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_docker.svg'
-            text: Egyéni Windows-tároló (előzetes verzió)
-            href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container'
-      - type: paragraph
-        text: 'Megtudhatja, hogyan helyezheti üzembe a kódot:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/zip.svg
-            text: ZIP/WAR
-            href: deploy-zip.md
-          - image:
-              src: media/index/ftp.svg
-            text: FTP
-            href: deploy-ftp.md
-          - image:
-              src: media/index/git-icon.svg
-            text: Helyi Git
-            href: deploy-local-git.md
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/logo_vs-team-services.svg'
-            text: Azure DevOps
-            href: 'https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?toc=/vsts/deploy-azure/toc.json&bc=/vsts/deploy-azure/breadcrumb/toc.json'
-          - image:
-              src: media/index/github-octicons.svg
-            text: GitHub
-            href: deploy-continuous-deployment.md
-          - image:
-              src: media/index/bitbucket.svg
-            text: Bitbucket
-            href: deploy-continuous-deployment.md
-          - image:
-              src: media/index/dropbox.svg
-            text: DropBox-szinkronizálás
-            href: deploy-content-sync.md
-          - image:
-              src: media/index/onedrive.svg
-            text: OneDrive-szinkronizálás
-            href: deploy-content-sync.md
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan telepíthet, kezelhet és figyelhet biztonságos webalkalmazásokat az Azure-ban'
-      - type: list
-        style: ordered
-        items:
-          - html: Hozzon létre egy alkalmazást a <a href="/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase">.NET és az Azure SQL Database</a> vagy a <a href="/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app">Node.js és a MongoDB</a> használatával
-          - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Meglévő egyéni tartomány kapcsolása az alkalmazáshoz </a>
-          - html: <a href="/azure/app-service/configure-ssl-certificate">Egyéni DNS-név védelme SSL-kötéssel az Azure App Service-ben</a>
-          - html: <a href="/azure/app-service/app-service-web-tutorial-content-delivery-network">CDN hozzáadása az alkalmazáshoz</a>
-  - title: Fejlessze a készségeit a Microsoft Learnnel
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Webalkalmazás üzemeltetése az Azure App Service-szel
-            href: /learn/modules/host-a-web-app-with-azure-app-service/
-            image:
-              src: /learn/achievements/host-a-web-app-with-azure-app-service.svg
-              href: /learn/modules/host-a-web-app-with-azure-app-service/
-      - type: paragraph
-        text: <a href="/learn/browse/">További interaktív oktatóanyagok...</a>
-  - title: Ingyenes Pluralsight videós képzés
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Fejlesztés a .NET használatával
-            href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
-          - title: Fejlesztés a Node.js használatával
-            href: 'https://www.pluralsight.com/courses/developing-nodejs-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://www.pluralsight.com/courses/developing-nodejs-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
-  - title: Példák
-    items:
-      - type: paragraph
-        text: Szkriptek keresése a gyakori feladatok kezeléséhez.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a>
-          - html: <a href="/cli/azure/appservice">Azure CLI</a>
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Azure CLI</a></p>
-          - title: Nyelvek
-            html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/appservice">REST API-referencia</a></p>
+  ms.service: app-service
+  ms.date: 02/26/2020
+  ms.openlocfilehash: 0480bd65f8a7d22f8732cd0ffde7fd3835334d69
+  ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 02/29/2020
+  ms.locfileid: "78191180"
+landingContent:
+- title: Az App Service ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az App Service?
+      url: overview.md
+    - text: App Service Linux rendszeren
+      url: /azure/app-service/containers/
+    - text: App Service-környezetek
+      url: environment/intro.md
+    - text: Az üzemeltetési lehetőségek összehasonlítása
+      url: /azure/architecture/guide/technology-choices/compute-decision-tree
+  - linkListType: whats-new
+    links:
+    - text: Szolgáltatási hírek
+      url: https://azure.microsoft.com/updates/?product=app-service
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Első ASP.NET Core-alkalmazás
+      url: app-service-web-get-started-dotnet.md
+    - text: Első ASP.NET-alkalmazás
+      url: app-service-web-get-started-dotnet-framework.md
+    - text: Első Node.js-alkalmazás
+      url: app-service-web-get-started-nodejs.md
+    - text: Első PHP-alkalmazás
+      url: app-service-web-get-started-php.md
+- title: Gyakori feladatok
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Egyéni tartomány leképezése az Ön alkalmazására
+      url: app-service-web-tutorial-custom-domain.md
+    - text: Egyéni tartománynév védelme SSL-kötéssel
+      url: configure-ssl-bindings.md
+    - text: Alkalmazás futtatása előkészített környezetekben
+      url: deploy-staging-slots.md
+  - linkListType: how-to-guide
+    links:
+    - text: Diagnosztikai naplók engedélyezése
+      url: troubleshoot-diagnostic-logs.md
+    - text: Aktív tartomány migrálása az App Service-be
+      url: manage-custom-dns-migrate-domain.md
+- title: CRUD-alkalmazás adatbázissal
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: ASP.NET-alkalmazás és SQL Database
+      url: app-service-web-tutorial-dotnet-sqldatabase.md
+    - text: ASP.NET Core-alkalmazás SQL Database-zel
+      url: app-service-web-tutorial-dotnetcore-sqldb.md
+    - text: PHP- (Laravel-) alkalmazás Azure MySQL-lel
+      url: app-service-web-tutorial-php-mysql.md
+    - text: Node.js- (MEAN.js-) alkalmazás MongoDB-vel
+      url: app-service-web-tutorial-nodejs-mongodb-app.md
+- title: Kód vagy tartalom feltöltése
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Tartalom feltöltése FTP-vel
+      url: deploy-ftp.md
+    - text: Tartalom és zip-fájlok feltöltése
+      url: deploy-zip.md
+    - text: Git push parancs helyi gépről
+      url: deploy-local-git.md
+    - text: Tartalom szinkronizálása a OneDrive vagy a Dropbox szolgáltatással
+      url: deploy-content-sync.md
+    - text: CI/CD GitHub, BitBucket stb. használatával
+      url: deploy-continuous-deployment.md
+- title: Tárolóalapú Windows-alkalmazások futtatása
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Egyéni Windows-tároló futtatása
+      url: app-service-web-get-started-windows-container.md
+  - linkListType: tutorial
+    links:
+    - text: Windows-tárolóban lévő régebbi alkalmazások migrálása az Azure-ba
+      url: app-service-web-tutorial-windows-containers-custom-fonts.md
+  - linkListType: how-to-guide
+    links:
+    - text: Tároló csatlakoztatása a Storage-fájlokhoz
+      url: configure-connect-to-azure-storage.md
+- title: Felügyelet és integráció
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure App Service-csomagok felügyelete
+      url: overview-hosting-plans.md
+  - linkListType: tutorial
+    links:
+    - text: Erőforrások biztonságos elérése felügyelt identitásokkal
+      url: app-service-web-tutorial-connect-msi.md
+    - text: Felhasználók hitelesítése
+      url: app-service-web-tutorial-auth-aad.md
+    - text: CORS-támogatással rendelkező RESTful API üzemeltetése
+      url: app-service-web-tutorial-rest-api.md
+    - text: CDN hozzáadása az alkalmazáshoz
+      url: ../cdn/cdn-add-to-web-app.md
+  - linkListType: how-to-guide
+    links:
+    - text: Virtuális hálózati integráció
+      url: web-sites-integrate-with-vnet.md
+    - text: Hibrid kapcsolatok létrehozása a helyszíni rendszerhez
+      url: app-service-hybrid-connections.md
+    - text: Terheléselosztás a Traffic Managerrel
+      url: web-sites-traffic-manager-custom-domain-name.md
+    - text: Az alkalmazás biztonsági mentése Storage-blobokba
+      url: manage-backup.md
+- title: További erőforrások
+  linkLists:
+  - linkListType: video
+    links:
+    - text: App Service – videótár
+      url: https://azure.microsoft.com/resources/videos/index/?services=app-service
+    - text: Pluralsight videós képzés
+      url: https://www.pluralsight.com/search?q=azure%20app%20service
+  - linkListType: sample
+    links:
+    - text: Azure CLI-minták
+      url: samples-cli.md
+    - text: Azure PowerShell-minták
+      url: samples-powershell.md
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/appservice
+    - text: Azure PowerShell
+      url: /powershell/module/az.websites/#app_service
+    - text: REST API
+      url: /rest/api/appservice/
+    - text: Resource Manager
+      url: /azure/templates/microsoft.web/allversions

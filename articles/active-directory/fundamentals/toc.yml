@@ -43,6 +43,8 @@
       href: active-directory-data-storage-australia-newzealand.md
     - name: Újdonságok a Microsoft 365 Kormányzati verzióban
       href: whats-new-microsoft-365-government.md
+    - name: Az Azure AD összehasonlítása az ADDS-sel
+      href: active-directory-compare-azure-ad-to-ad.md
     - name: Azure AD-üzemeltetési referencia
       items:
         - name: Introduction (Bevezetés)
