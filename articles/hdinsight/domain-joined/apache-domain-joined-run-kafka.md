@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: a0ffa6e20b42ed8ac145b50c062f5c0a8998add0
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 58c5b3bdd6d50f2e512cccffe78bd4e70805d729
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061641"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204735"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Apache Kafka szabályzatok konfigurálása a HDInsight-ben Enterprise Security Package (előzetes verzió)
 
@@ -195,12 +195,12 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott Kafka-f�
 1. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést.
 1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások**területen.
 1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett. 
-1. Kattintson a **Törlés** gombra. Kattintson a **Yes** (Igen) gombra.
+1. Kattintson a **Delete** (Törlés) gombra. Kattintson a **Yes** (Igen) gombra.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 Ha a Kafka-producer-Consumer. jar nem működik tartományhoz csatlakozó fürtben, győződjön meg arról, hogy a Kafka-producer-Consumer. jar fájlt használja a "DomainJoined-producer-Consumer" projektben (nem pedig a nem tartományhoz tartozó gyártó-fogyasztói projekt alatt). csatlakoztatott forgatókönyvek).
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Saját kulcs használata Apache Kafka](../kafka/apache-kafka-byok.md)
+> [Ügyfél által felügyelt kulcs lemezének titkosítása](../disk-encryption.md)

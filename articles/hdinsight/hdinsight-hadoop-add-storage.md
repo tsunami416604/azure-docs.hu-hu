@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 6ad583fdb880e36e6ac9c2dfda56bb68378ea598
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 87eb04b7323186175195babf6a602fa12d25176f
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314001"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206707"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>További Storage-fiókok hozzáadása a HDInsight-hez
 
@@ -27,7 +27,7 @@ Megtudhatja, hogyan használhat parancsfájl-műveleteket további Azure Storage
 * A Storage-fiók neve és kulcsa. Lásd: a [Storage-fiók elérési kulcsainak kezelése](../storage/common/storage-account-keys-manage.md).
 * Ha a PowerShellt használja, szüksége lesz az az modulra.  Lásd: [Azure PowerShell áttekintése](https://docs.microsoft.com/powershell/azure/overview).
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
 A feldolgozás során a parancsfájl a következő műveleteket hajtja végre:
 
@@ -46,12 +46,12 @@ A feldolgozás során a parancsfájl a következő műveleteket hajtja végre:
 
 ## <a name="add-storage-account"></a>Tárfiók hozzáadása
 
-A következő szempontok alapján alkalmazza a módosításokat a [parancsfájl-művelet](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) használatával:
+A következő szempontok alapján alkalmazza a módosításokat a [parancsfájl-művelet](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster) használatával:
 
-|Tulajdonság | Value (Díj) |
+|Tulajdonság | Érték |
 |---|---|
 |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`|
-|Csomópont típusa (i)|Fej|
+|Csomópont típusa (i)|Head|
 |Paraméterek|`ACCOUNTNAME` `ACCOUNTKEY` `-p` (nem kötelező)|
 
 * `ACCOUNTNAME` a HDInsight-fürthöz hozzáadandó Storage-fiók neve.

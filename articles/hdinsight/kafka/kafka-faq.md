@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: c8d2ef0330a32d5cab88355cc749322ec3a5ea30
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530935"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206979"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Gyakori kérdések az Azure HDInsight Apache Kafka
 
@@ -30,7 +30,7 @@ A HDInsight Kafka-fürt a következő erőforrásokat tartalmazza:
 * Zookeeper-csomópontok
 * Közvetítő (Worker) csomópontok 
 * A Broker-csomópontokhoz csatolt Azure-Managed Disks
-* Átjáró-csomópontok
+* Az átjárócsomópontok
 
 Az összes ilyen erőforrást a [HDInsight díjszabási modellje](https://azure.microsoft.com/pricing/details/hdinsight/)alapján számítjuk fel, az átjáró-csomópontok kivételével. Az átjáró-csomópontok esetében nem számítunk fel díjat.
 
@@ -50,7 +50,7 @@ A [Enterprise Security Package (ESP)](../domain-joined/apache-domain-joined-arch
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Titkosítva vannak az adataim? Használhatom a saját kulcsokat?
 
-A felügyelt lemezeken található összes Kafka-üzenet titkosítva van az [Azure Storage Service encryption (SSE)](../../storage/common/storage-service-encryption.md)szolgáltatással. Az adatok átvitele (például az ügyfelektől a közvetítők felé továbbított adatok és a másik módszer) alapértelmezés szerint nincs titkosítva. Az ilyen adatforgalom titkosítása az [SSL beállításával](./apache-kafka-ssl-encryption-authentication.md)lehetséges. Emellett a HDInsight lehetővé teszi a saját kulcsaik kezelését a REST-adatok titkosításához. További információért lásd: [saját kulcs használata az Azure HDInsight Apache Kafka](apache-kafka-byok.md).
+A felügyelt lemezeken található összes Kafka-üzenet titkosítva van az [Azure Storage Service encryption (SSE)](../../storage/common/storage-service-encryption.md)szolgáltatással. Az adatok átvitele (például az ügyfelektől a közvetítők felé továbbított adatok és a másik módszer) alapértelmezés szerint nincs titkosítva. Az ilyen adatforgalom titkosítása az [SSL beállításával](./apache-kafka-ssl-encryption-authentication.md)lehetséges. Emellett a HDInsight lehetővé teszi a saját kulcsaik kezelését a REST-adatok titkosításához. További információ: [ügyfél által felügyelt kulcs lemezének titkosítása](../disk-encryption.md).
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>Hogyan csatlakozni az ügyfelekhez a fürthöz?
 

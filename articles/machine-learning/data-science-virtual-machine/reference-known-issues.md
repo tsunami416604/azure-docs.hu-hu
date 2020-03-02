@@ -9,16 +9,16 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: d022b1124146a1e506401e6cee257805e3a38fd3
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526547"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206520"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Ismert problémák és hibaelhárítás az Azure Data Science Virtual Machine
 
-Ez a cikk segít megkeresni és kijavítani az Azure-Data Science Virtual Machine használatakor észlelt hibákat és hibákat.
+Ez a cikk segít megkeresni és kijavítani az Azure-Data Science Virtual Machine használatakor esetlegesen előforduló hibákat és hibákat.
 
 ## <a name="python-package-installation-issues"></a>Python-csomag telepítési problémái
 
@@ -26,17 +26,22 @@ Ez a cikk segít megkeresni és kijavítani az Azure-Data Science Virtual Machin
 
 Csomagok telepítésekor a `sudo pip install` használata `pip install` helyett.
 
-## <a name="disk-encryption-issues"></a>Lemezes titkosítási problémák
+## <a name="disk-encryption-issues"></a>A Disk Encryptionnel kapcsolatos problémák
 
 ### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>A lemez titkosítása meghiúsul az Ubuntu DSVM
 
-A Azure Disk Encryption (ADE) jelenleg nem támogatott az Ubuntu-DSVM. Áthidaló megoldásként érdemes lehet [Az Azure Storage-titkosítást az ügyfél által felügyelt kulcsokkal](../../storage/common/storage-encryption-keys-portal.md)konfigurálni.
+A Azure Disk Encryption (ADE) jelenleg nem támogatott az Ubuntu-DSVM. Áthidaló megoldásként érdemes lehet konfigurálni [Az Azure Managed Disks kiszolgálóoldali titkosítását](../../virtual-machines/windows/disk-encryption.md).
 
 ## <a name="tool-appears-disabled"></a>Az eszköz le van tiltva
 
 ### <a name="hyper-v-does-not-work-on-the-windows-dsvm"></a>A Hyper-V nem működik a Windows DSVM
 
-Ez a várt viselkedés, ahogy a rendszerindítási teljesítmény esetében bizonyos szolgáltatások le vannak tiltva. Az ismételt engedélyezéshez nyissa meg a keresési sávot a Windows DSVM, írja be a "szolgáltatások" kifejezést, majd állítsa be az összes Hyper-V szolgáltatást a "Manual" értékre, és állítsa a "Hyper-V virtuális gép kezelése" értéket "automatikus" értékre.
+A Hyper-V kezdetben nem működik a Windowsban a várt viselkedés. A rendszerindítási teljesítményhez bizonyos szolgáltatások le lettek tiltva. A Hyper-V engedélyezése:
+
+1. A keresősáv megnyitása a Windows DSVM
+1. Írja be a "szolgáltatások" kifejezést
+1. Az összes Hyper-V szolgáltatás beállítása kézire
+1. A Hyper-V virtuális gépek felügyeletének beállítása az "automatikus" értékre
 
 A végső képernyőnek így kell kinéznie:
 

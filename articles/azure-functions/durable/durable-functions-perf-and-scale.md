@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ee35f26f9433f6ab342c7dce105638122b9d7717
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486260"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204514"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezés Durable Functions (Azure Functions)
 
@@ -220,7 +220,7 @@ A következő szakaszok ismertetik a kiterjesztett munkamenetek a Orchestrator �
 
 ### <a name="orchestrator-function-replay"></a>Orchestrator függvény újrajátszása
 
-Ahogy azt korábban említettük, az Orchestrator függvények az **Előzmények** tábla tartalmával lesznek újrajátszva. Alapértelmezés szerint a rendszer minden alkalommal újra lejátssza a Orchestrator-függvény kódját, amikor az üzenetek egy kötegét a rendszer elvégzi a vezérlési sorból. Ha a kiterjesztett munkamenetek engedélyezve vannak, a Orchestrator függvény példányai a memóriában maradnak, és az új üzenetek teljes előzmény-újrajátszás nélkül is feldolgozhatók.
+Ahogy azt korábban említettük, az Orchestrator függvények az **Előzmények** tábla tartalmával lesznek újrajátszva. Alapértelmezés szerint a rendszer minden alkalommal újra lejátssza a Orchestrator-függvény kódját, amikor az üzenetek egy kötegét a rendszer elvégzi a vezérlési sorból. Még ha a ventilátort is használja, és az összes feladatra vár (például a .NET-ben lévő `Task.WhenAll` vagy a JavaScript-`context.df.Task.all` használatával), akkor a feladat-visszajelzések kötegei által feldolgozható újrajátszás történik. Ha a kiterjesztett munkamenetek engedélyezve vannak, a Orchestrator függvény példányai a memóriában maradnak, és az új üzenetek teljes előzmény-újrajátszás nélkül is feldolgozhatók.
 
 A kiterjesztett munkamenetek teljesítményének növelése leggyakrabban a következő helyzetekben figyelhető meg:
 

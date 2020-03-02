@@ -3,14 +3,14 @@ title: Twitter-hitelesítés konfigurálása
 description: Megtudhatja, hogyan konfigurálhatja a Twitter-hitelesítést identitás-szolgáltatóként a App Service-alkalmazáshoz.
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 02/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: b5ec17c18cec8053f0732366c0cc5d0c5003e4de
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 794f671b36b5aeb9f19cf5d80e488500cedb1098
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670799"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207139"
 ---
 # <a name="configure-your-app-service-app-to-use-twitter-login"></a>A App Service alkalmazás konfigurálása a Twitter-bejelentkezés használatára
 
@@ -23,25 +23,24 @@ A cikkben ismertetett eljárás végrehajtásához olyan Twitter-fiókra van sz�
 ## <a name="register"> </a>Alkalmazás regisztrálása a Twitteren
 
 1. Jelentkezzen be a [Azure Portalra] , és lépjen az alkalmazáshoz. Másolja az **URL-címet**. Ezt fogja használni a Twitter-alkalmazás konfigurálásához.
-1. Lépjen a [Twitter-fejlesztők] webhelyére, és jelentkezzen be a Twitter-fiókja hitelesítő adataival, és válassza az **új alkalmazás létrehozása**lehetőséget.
-1. Adja meg az új alkalmazás **nevét** és **leírását** . Illessze be az alkalmazás **URL-címét** a **webhely** mezőbe. A **visszahívási URL-cím** mezőben adja meg app Service alkalmazásának URL-címét, és fűzze hozzá az elérési utat `/.auth/login/aad/callback`. Például: `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Ügyeljen arra, hogy a HTTPS-sémát használja.
-1. A lap alján olvassa el és fogadja el a feltételeket. Válassza **a Twitter-alkalmazás létrehozása**lehetőséget. Megjelenik az alkalmazás részletei.
-1. Válassza a **Beállítások** lapot, jelölje be az **alkalmazás használatának engedélyezése a Twitteren való bejelentkezéshez**lehetőséget, majd válassza a **beállítások módosítása**lehetőséget.
+1. Lépjen a [Twitter-fejlesztők] webhelyére, jelentkezzen be a Twitter-fiókja hitelesítő adataival, és válassza az **alkalmazás létrehozása**lehetőséget.
+1. Adja meg az alkalmazás **nevét** és **leírását** az új alkalmazáshoz. Illessze be az alkalmazás **URL-címét** a **webhely URL-** címe mezőbe. A **visszahívási URL-címek** szakaszban adja meg app Service alkalmazásának HTTPS URL-címét, és fűzze hozzá az elérési utat `/.auth/login/twitter/callback`. Például: `https://contoso.azurewebsites.net/.auth/login/twitter/callback`.
+1. A lap alján írja be a legalább 100 karaktert a **mondja el, hogyan használja ezt az alkalmazást**, majd válassza a **Létrehozás**lehetőséget. Az előugró ablakban kattintson az újbóli **Létrehozás** gombra. Megjelenik az alkalmazás részletei.
 1. Válassza a **kulcsok és hozzáférési tokenek** fület.
 
    Jegyezze fel ezeket az értékeket:
-   - Fogyasztói kulcs (API-kulcs)
-   - Fogyasztói titok (API Secret)
+   - API-kulcs
+   - API titkos kulcsa
 
    > [!NOTE]
-   > A fogyasztói titok egy fontos biztonsági hitelesítő adat. Ezt a titkos kódot Ne ossza meg senkivel, vagy ossza meg az alkalmazásával.
+   > Az API titkos kulcsa fontos biztonsági hitelesítő adat. Ezt a titkos kódot Ne ossza meg senkivel, vagy ossza meg az alkalmazásával.
 
 ## <a name="secrets"> </a>Twitter-információk hozzáadása az alkalmazáshoz
 
 1. Nyissa meg az alkalmazást a [Azure Portalra].
 1. Válassza a **beállítások** > a **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
 1. Válassza a **Twitter**lehetőséget.
-1. Illessze be a korábban beszerzett `API Key` és `API Secret` értékeket.
+1. Illessze be a korábban beszerzett `API key` és `API secret key` értékeket.
 1. Kattintson az **OK** gombra.
 
    ![Képernyőkép a Mobile App Twitter-beállításairól][1]
@@ -57,7 +56,7 @@ A cikkben ismertetett eljárás végrehajtásához olyan Twitter-fiókra van sz�
 
 Most már készen áll a Twitter használatára a hitelesítéshez az alkalmazásban.
 
-## <a name="related-content"></a>Következő lépések
+## <a name="related-content"> </a>További lépések
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 

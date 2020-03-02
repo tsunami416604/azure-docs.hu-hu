@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 9b8f1065660ea8331853f8804e709134fe682ba7
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 0e3246f9da202b54cc0d1285795c25cfafb678d8
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566114"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207030"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>HSM által védett kulcsok importálása a Key Vaultba (előzetes verzió)
 
@@ -90,6 +90,9 @@ A KEK-nek a következőket kell tennie:
 - ugyanabban a kulcstartóban lett létrehozva, amelyben importálni kívánja a célként megadott kulcsot
 - Létrehozva az engedélyezett Key Operations beállítással `import`
 
+> [!NOTE]
+> A KEK-nek az "import" értéknek kell lennie az egyetlen engedélyezett kulcs-műveletként. az "import" kölcsönösen kizárható minden más kulcsfontosságú művelettel.
+
 Az az [kulcstartó kulcs létrehozása](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) paranccsal hozzon létre egy KEK-t, amely a `import`re beállított kulcsfontosságú műveletekkel rendelkezik. Jegyezze fel a következő parancs által visszaadott kulcs-azonosítót (`kid`). (A [3. lépésben](#step-3-generate-and-prepare-your-key-for-transfer)a `kid` értéket fogja használni.)
 
 ```azurecli
@@ -115,7 +118,7 @@ Vigye át a BYOK-fájlt a csatlakoztatott számítógépre.
 > [!NOTE] 
 > Az RSA 1 024 bites kulcsok importálása nem támogatott. Jelenleg egy elliptikus görbe (EC) kulcs importálása nem támogatott.
 > 
-> **Ismert probléma**: az RSA 4k-beli cél kulcsának importálása a SafeNet Luna HSM sikertelen. A probléma megoldásakor a cikk frissülni fog.
+> **Ismert probléma**: a SafeNet Luna HSM származó RSA 4k-cél kulcsának importálása csak a belső vezérlőprogram 7.4.0 vagy újabb verzióban támogatott.
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>4\. lépés: a kulcs átvitele Azure Key Vaultre
 
@@ -127,7 +130,7 @@ az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey
 
 Ha a feltöltés sikeres, az Azure CLI megjeleníti az importált kulcs tulajdonságait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezt a HSM-védelemmel ellátott kulcsot már használhatja a kulcstartóban. További információkért tekintse meg [ezt az árat és a szolgáltatás összehasonlítását](https://azure.microsoft.com/pricing/details/key-vault/).
 

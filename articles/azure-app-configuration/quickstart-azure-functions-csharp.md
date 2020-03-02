@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 268e6c5a999244eb643990143d1102d129b7af68
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 71a330523f1d3393a365fec29fb66f5c9773b6cc
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310056"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207064"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Gyors útmutató: Azure Functions-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
@@ -30,9 +30,9 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 6. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |---|---|
-    | TestApp: beállítások: üzenet | Adatok az Azure-alkalmazás konfigurációjától |
+    | TestApp:Settings:Message | Adatok az Azure-alkalmazás konfigurációjától |
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
@@ -42,11 +42,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a következő NuGet-csomagokat a projekthez. Ha nem találja őket, jelölje be az **előzetes verzió belefoglalása** jelölőnégyzetet.
-
-    ```
-    Microsoft.Extensions.Configuration.AzureAppConfiguration 3.0.0-preview-010550001-251 or later
-    ```
+1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet-csomagot a projekthez. Ha nem találja, jelölje be az **előzetes verzió belefoglalása** jelölőnégyzetet.
 
 2. Nyissa meg a *Function1.cs*, és adja hozzá a .net Core konfiguráció és az alkalmazás konfigurációs szolgáltatójának névtereit.
 
@@ -54,6 +50,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
+
 3. Adjon hozzá egy `Configuration` nevű `static` tulajdonságot a `IConfiguration`egy egyedi példányának létrehozásához. Ezután vegyen fel egy `static` konstruktort az alkalmazás-konfigurációhoz való kapcsolódáshoz `AddAzureAppConfiguration()`meghívásával. Ez az alkalmazás indításakor automatikusan betöltődik a konfigurációba. Ugyanezt a konfigurációs példányt fogjuk használni az összes functions híváshoz később.
 
     ```csharp
@@ -66,6 +63,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
         Configuration = builder.Build();
     }
     ```
+
 4. Frissítse a `Run` metódust a konfiguráció értékeinek olvasásához.
 
     ```csharp
@@ -76,7 +74,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
         string keyName = "TestApp:Settings:Message";
         string message = Configuration[keyName];
-            
+
         return message != null
             ? (ActionResult)new OkObjectResult(message)
             : new BadRequestObjectResult($"Please create a key-value with the key '{keyName}' in App Configuration.");
@@ -90,14 +88,18 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
     ```CLI
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
+
     Ha a Windows PowerShellt használja, futtassa a következő parancsot:
 
     ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
     ```
+
     Ha macOS vagy Linux rendszert használ, futtassa a következő parancsot:
 
+    ```bash
         export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 2. Nyomja le az F5 billentyűt a függvény teszteléséhez. Ha a rendszer kéri, fogadja el a Visual Studiótól érkező kérést **Azure functions Core (CLI)** eszközök letöltéséhez és telepítéséhez. Előfordulhat, hogy egy tűzfal-kivételt is engedélyeznie kell, hogy az eszközök kezelni tudják a HTTP-kérelmeket.
 

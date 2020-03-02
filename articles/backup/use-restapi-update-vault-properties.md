@@ -1,15 +1,15 @@
 ---
-title: Recovery Services tároló konfigurációs tulajdonságainak frissítése a REST API használatával
+title: Recovery Services tároló konfigurációjának frissítése REST API
 description: Ebből a cikkből megtudhatja, hogyan frissítheti a tár konfigurációját a REST API használatával.
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 3739f95e3962def9ab669970c48b2d1c546fdc0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390542"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204497"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Az Azure Recovery Services-tároló konfigurációinak frissítése REST API használatával
 
@@ -43,7 +43,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 A "GET" művelet sikeres válasza alább látható:
 
-|Név  |Type (Típus)  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
@@ -83,12 +83,12 @@ A kérelem törzsének létrehozásához a következő általános definíciók 
 
 További részletekért tekintse meg [a REST API dokumentációját](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) .
 
-|Név  |Szükséges  |Type (Típus)  |Leírás  |
+|Name (Név)  |Kötelező  |Típus  |Leírás  |
 |---------|---------|---------|---------|
 |eTag     |         |   Sztring      |  Opcionális eTag       |
-|location     |  igaz       |Sztring         |   Erőforrás helye      |
+|location     |  true       |Sztring         |   Erőforrás helye      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  A tár tulajdonságai       |
-|címkét     |         | Objektum        |     Erőforráscímkék    |
+|tags     |         | Objektum        |     Erőforráscímkék    |
 
 #### <a name="example-request-body"></a>Példa kérelem törzsére
 
@@ -107,7 +107,7 @@ A következő példa a helyreállítható törlési állapot frissítésére szo
 
 A "PATCH" művelet sikeres válasza alább látható:
 
-|Név  |Type (Típus)  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 

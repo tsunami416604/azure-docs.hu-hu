@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: aahi
-ms.openlocfilehash: 785840ad0b678337f513a700d37f0ba94671964e
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: ffa493c5bed152eea58d29bbf56215af7ebce5b1
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77652169"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78208185"
 ---
 Az Bing Web Search ügyféloldali kódtár megkönnyíti a Bing Web Search integrálását a Python-alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja a kérésküldésnek, a JSON-válaszok fogadásának, valamint az eredmények szűrésének és elemzésének módját.
 
-Szeretné most rögtön megtekinteni a kódot? A [javascripthez készült Bing Search ügyféloldali kódtárak](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search) mintái a githubon érhetők el.
+Szeretné most rögtön megtekinteni a kódot? A [Pythonhoz készült Bing Search ügyféloldali kódtárak](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search) mintái a githubon érhetők el.
 
 
 ## <a name="prerequisites"></a>Előfeltételek

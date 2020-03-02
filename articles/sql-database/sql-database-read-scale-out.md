@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: f111b19eb07c218a9f3250ef3ffdb8a97cf07542
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1a1b9907cd931716949d92d948a7d541fd2d5057
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420727"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206945"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Csak olvasható replikák használata a csak olvasási lekérdezési feladatok terheléselosztásához
 
@@ -35,7 +35,7 @@ Az olvasási Felskálázási funkció alapértelmezés szerint engedélyezve van
 Ha biztosítani szeretné, hogy az alkalmazás az SQL-kapcsolati sztring `ApplicationIntent` beállításától függetlenül az elsődleges replikához kapcsolódjon, explicit módon le kell tiltania az olvasási felskálázást az adatbázis létrehozásakor vagy a konfigurációjának módosításakor. Ha például az adatbázist standard vagy általános célú szintről prémium, üzletileg kritikus vagy nagy kapacitású szintre frissíti, és biztosítani szeretné, hogy az összes kapcsolat továbbra is az elsődleges replikára lépjen, tiltsa le az olvasási felskálázást. A letiltásával kapcsolatos további információkért lásd: az [olvasási felskálázás engedélyezése és letiltása](#enable-and-disable-read-scale-out).
 
 > [!NOTE]
-> A lekérdezési adattár, a bővített események, az SQL Profiler és a naplózási funkciók nem támogatottak a csak olvasható replikák esetében.
+> A lekérdezési adattár, a bővített események és az SQL Profiler-funkciók nem támogatottak a csak olvasható replikák esetében.
 
 ## <a name="data-consistency"></a>Adatkonzisztencia
 
@@ -147,6 +147,6 @@ Ha olvasási felskálázást használ a csak olvasási feladatok terheléseloszt
 > [!NOTE]
 > A másodlagos adatbázis helyi replikái közötti ciklikus multiplexelés vagy más terheléselosztási útválasztás nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a SQL Database nagy kapacitású-ajánlatról: [nagy kapacitású szolgáltatási szintje](./sql-database-service-tier-hyperscale.md).

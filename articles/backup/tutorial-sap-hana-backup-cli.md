@@ -3,12 +3,12 @@ title: Oktatóanyag – SAP HANA adatbázis biztonsági mentése az Azure-ban a 
 description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági másolatot az Azure-beli virtuális gépeken futó SAP HANA adatbázisokról egy Azure Backup Recovery Services-tárolóra az Azure CLI használatával.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 6d35b6ebfc6f47f5775c24407b645b97112387c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cdc8a8fb09a086a2b9212c21d071f267991fa275
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472351"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206622"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen az Azure CLI használatával
 
@@ -68,7 +68,7 @@ westus2    saphanaVault     saphanaResourceGroup
 
 ## <a name="register-and-protect-the-sap-hana-instance"></a>Az SAP HANA-példány regisztrálása és megóvása
 
-Ahhoz, hogy az Azure-szolgáltatások felderítsék az SAP HANA-példányt (a SAP HANA telepített virtuális gépet), az SAP HANA gépen egy [regisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) kell futtatni. A parancsfájl futtatása előtt győződjön meg arról, hogy minden [előfeltétel](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites) teljesül. Ha többet szeretne megtudni a parancsfájlról, tekintse meg az [engedélyek beállítása](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#setting-up-permissions) szakaszt.
+Ahhoz, hogy az Azure-szolgáltatások felderítsék az SAP HANA-példányt (a SAP HANA telepített virtuális gépet), az SAP HANA gépen egy [regisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) kell futtatni. A parancsfájl futtatása előtt győződjön meg arról, hogy minden [előfeltétel](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites) teljesül. Ha többet szeretne megtudni a szkripttel kapcsolatban, tekintse meg a [Mi az előzetes regisztrációs parancsfájl](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) a következő témakört:.
 
 A szkript futtatása után a SAP HANA-példány regisztrálható a korábban létrehozott Recovery Services-tárolóban. A példány regisztrálásához használja az az [Backup Container Register](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) parancsmagot. A *VMResourceId* a SAP HANA telepítéséhez létrehozott virtuális gép erőforrás-azonosítója.
 

@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: 785f68b98d819a58ce43837dc3c9b5a855beeb0a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b0fe0cf0d477d1360d3789f74f30565e15cfd42e
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672514"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206919"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Gyors útmutató: Blobok létrehozása, letöltése és listázása az Azure CLI-vel
 
@@ -28,7 +28,7 @@ Az Azure CLI az Azure parancssori felülete, amely Azure-erőforrások kezelés�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="use-the-azure-cli-locally"></a>Az Azure CLI helyi használata
+## <a name="install-the-azure-cli-locally"></a>Az Azure CLI helyi telepítése
 
 Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.46 vagy újabb verzióját kell futtatnia. Futtassa az `az --version` parancsot a verzió meghatározásához. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
@@ -38,15 +38,17 @@ Ha helyileg futtatja az Azure CLI-t, be kell jelentkeznie és hitelesítenie kel
 az login
 ```
 
+Az Azure CLI-vel történő hitelesítéssel kapcsolatos további információkért lásd: [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli).
+
 ## <a name="authorize-access-to-blob-storage"></a>Hozzáférés engedélyezése a blob Storage-hoz
 
 Engedélyezheti a blob Storage-hoz való hozzáférést az Azure CLI-vel vagy az Azure AD hitelesítő adataival vagy a Storage-fiók elérési kulcsának használatával. Az Azure AD-beli hitelesítő adatok használata ajánlott. Ez a cikk bemutatja, hogyan engedélyezheti a blob Storage-műveleteket az Azure AD-vel.
 
-A blob Storage-hoz kapcsolódó adatműveletekhez használható Azure CLI-parancsok támogatják a `--auth-mode` paramétert, amely lehetővé teszi egy adott művelet engedélyezésének megadását. Az Azure AD hitelesítő adataival való engedélyezéshez állítsa a `--auth-mode` paramétert `login`re. További információ: [Azure CLI-parancsok futtatása Azure ad-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez](../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+A blob Storage-hoz kapcsolódó adatműveletekhez használható Azure CLI-parancsok támogatják a `--auth-mode` paramétert, amely lehetővé teszi egy adott művelet engedélyezésének megadását. Az Azure AD hitelesítő adataival való engedélyezéshez állítsa a `--auth-mode` paramétert `login`re. További információ: a [blob-vagy üzenetsor-adatokhoz való hozzáférés engedélyezése az Azure CLI-vel](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 Csak a blob Storage-adatműveletek támogatják a `--auth-mode` paramétert. A kezelési műveletek, például az erőforráscsoport vagy a Storage-fiók létrehozása, automatikusan az Azure AD hitelesítő adatait használják az engedélyezéshez.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy Azure-erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 

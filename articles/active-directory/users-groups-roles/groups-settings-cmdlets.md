@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a727cd57e470f248321011d505f8037808f64298
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 90669ebde9537fdf597fccd621caa54deaed68a6
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656874"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206452"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 
@@ -152,7 +152,7 @@ Itt láthatók a Group. Unified SettingsTemplate megadott beállítások. Ha má
 |  <ul><li>EnableGroupCreation<li>Típus: Boolean<li>Alapértelmezett: true |Az a jelző, amely azt jelzi, hogy az Office 365-csoport létrehozása engedélyezve van-e a címtárban a nem rendszergazda felhasználók számára. Ehhez a beállításhoz nem szükséges prémium szintű Azure Active Directory P1-licenc.|
 |  <ul><li>GroupCreationAllowedGroupId<li>Típus: Sztring<li>Alapértelmezett: "" |Annak a biztonsági csoportnak a GUID azonosítója, amelynek tagjai számára engedélyezett az Office 365-csoportok létrehozása, még akkor is, ha EnableGroupCreation = = false. |
 |  <ul><li>UsageGuidelinesUrl<li>Típus: Sztring<li>Alapértelmezett: "" |A csoport használati iránymutatásaira mutató hivatkozás. |
-|  <ul><li>ClassificationDescriptions<li>Típus: Sztring<li>Alapértelmezett: "" | A besorolási leírások vesszővel tagolt listája. A ClassificationDescriptions értéke csak ebben a formátumban érvényes:<br>$setting ["ClassificationDescriptions"] = "besorolás: Leírás, besorolás: Leírás"<br>ahol a besorolás megegyezik a ClassificationList található karakterláncokkal.<br>Ez a beállítás nem érvényes, ha a EnableMIPLabels = = True érték van beállítva.|
+|  <ul><li>ClassificationDescriptions<li>Típus: Sztring<li>Alapértelmezett: "" | A besorolási leírások vesszővel tagolt listája. A ClassificationDescriptions értéke csak ebben a formátumban érvényes:<br>$setting ["ClassificationDescriptions"] = "besorolás: Leírás, besorolás: Leírás"<br>ahol a besorolás megegyezik a ClassificationList található bejegyzéssel.<br>Ez a beállítás nem érvényes, ha a EnableMIPLabels = = True érték van beállítva.|
 |  <ul><li>DefaultClassification<li>Típus: Sztring<li>Alapértelmezett: "" | Az a besorolás, amelyet egy csoport alapértelmezett besorolásként kell használni, ha nincs megadva.<br>Ez a beállítás nem érvényes, ha a EnableMIPLabels = = True érték van beállítva.|
 |  <ul><li>PrefixSuffixNamingRequirement<li>Típus: Sztring<li>Alapértelmezett: "" | Legfeljebb 64 karakterből álló karakterlánc, amely meghatározza az Office 365-csoportokhoz konfigurált elnevezési konvenciót. További információ: az [Office 365-csoportok elnevezési szabályzatának érvényesítése](groups-naming-policy.md). |
 | <ul><li>CustomBlockedWordsList<li>Típus: Sztring<li>Alapértelmezett: "" | Vesszővel tagolt karakterláncok, amelyeket a felhasználók nem használhatnak a csoportok neveiben vagy az Aliasokban. További információ: az [Office 365-csoportok elnevezési szabályzatának érvényesítése](groups-naming-policy.md). |
@@ -161,7 +161,7 @@ Itt láthatók a Group. Unified SettingsTemplate megadott beállítások. Ha má
 |  <ul><li>AllowGuestsToAccessGroups<li>Típus: Boolean<li>Alapértelmezett: true | Logikai érték, amely azt jelzi, hogy a vendég felhasználó tud-e hozzáférni az Office 365-csoportok tartalmához.  Ehhez a beállításhoz nem szükséges prémium szintű Azure Active Directory P1-licenc.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Típus: Sztring<li>Alapértelmezett: "" | A vendég használati irányelvekre mutató hivatkozás URL-címe. |
 |  <ul><li>AllowToAddGuests<li>Típus: Boolean<li>Alapértelmezett: true | Logikai érték, amely azt jelzi, hogy engedélyezett-e a vendégek hozzáadása a címtárhoz. <br>Ez a beállítás felülbírálható, és csak olvasható lehet, ha a *EnableMIPLabels* értéke *true (igaz* ), és a rendszer a csoporthoz rendelt érzékenységi címkével társítja a vendég szabályzatot. |
-|  <ul><li>ClassificationList<li>Típus: Sztring<li>Alapértelmezett: "" |Az Office 365-csoportokra alkalmazható érvényes besorolási értékek vesszővel tagolt listája. <br>Ez a beállítás nem érvényes, ha a EnableMIPLabels = = True érték van beállítva.|
+|  <ul><li>ClassificationList<li>Típus: Sztring<li>Alapértelmezett: "" | Az Office 365-csoportokra alkalmazható érvényes besorolási értékek vesszővel tagolt listája. <br>Ez a beállítás nem érvényes, ha a EnableMIPLabels = = True érték van beállítva.|
 |  <ul><li>EnableMIPLabels<li>Típus: Boolean<li>Alapértelmezett: "false" |Ez a jelző jelzi, hogy az Microsoft 365 megfelelőségi központban közzétett érzékenységi címkék alkalmazhatók-e az Office 365-csoportokra. További információ: [az Office 365-csoportok érzékenységi címkéjének társítása](groups-assign-sensitivity-labels.md). |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Példa: a csoportokra vonatkozó vendég házirend konfigurálása a címtár szintjén

@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
-ms.openlocfilehash: 7ce2160fa94653a1155daaef166b7fdbb9386e7e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: cbbb38c645e56b2e7b8c70b437b1e5158b09a50b
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266712"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207098"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI-minták
 
 > [!div class="op_single_selector"]
-> [.Net-példák](hdinsight-sdk-dotnet-samples.md)
-> [](hdinsight-sdk-python-samples.md)Python
-> -példák[Java-példák](hdinsight-sdk-java-samples.md)
+> [.Net](hdinsight-sdk-dotnet-samples.md) -példák
+> [Python-példák](hdinsight-sdk-python-samples.md)
+> Java- [példák](hdinsight-sdk-java-samples.md)
 
 Ez a cikk a gyakori feladatokhoz nyújt példákat. Mindegyik példához frissítse a változókat a megfelelő értékekkel, majd hajtsa végre a parancsot.
 
@@ -27,7 +27,7 @@ Ez a cikk a gyakori feladatokhoz nyújt példákat. Mindegyik példához frissí
 
 * Azure CLI. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) lépések.
 
-* Nem kötelező: Bash. A cikkben szereplő példák a bash rendszerhéjt használják a Windows 10 rendszeren. A telepítési lépésekért lásd: [Windows-alrendszer Linux-telepítési útmutató Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) rendszerhez.  A példák bizonyos kis módosításokkal egy Windows-parancssorból fognak működni.
+* Nem kötelező: bash. A cikkben szereplő példák a bash rendszerhéjt használják a Windows 10 rendszeren. A telepítési lépésekért lásd: [Windows-alrendszer Linux-telepítési útmutató Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) rendszerhez.  A példák bizonyos kis módosításokkal egy Windows-parancssorból fognak működni.
 
 ## <a name="az-login"></a>az login
 
@@ -90,7 +90,7 @@ az hdinsight create \
     --cluster-users-group-dns $groupDNS
 ```
 
-### <a name="create-a-kafka-cluster-with-disk-encryptionkafkaapache-kafka-byokmd"></a>Kafka-fürt létrehozása [lemezes titkosítással](kafka/apache-kafka-byok.md)
+### <a name="create-a-kafka-cluster-with-disk-encryption"></a>Kafka-fürt létrehozása [lemezes titkosítással](./disk-encryption.md)
 
 ```azurecli
 export clusterName=CLUSTERNAME

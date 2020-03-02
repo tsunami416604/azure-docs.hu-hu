@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 77b092920bff75c806ec78a933d23df546bf636a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 45febcffed747f75b6c8b78c2e4b93a047f81b0a
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036353"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205874"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -28,11 +28,11 @@ Az Azure Disk Encryption általánosan elérhető az Azure Resource Manager sabl
 
 ## <a name="how-much-does-azure-disk-encryption-cost"></a>Az Azure Disk Encryption mennyibe?
 
-A virtuálisgép-lemezek Azure Disk Encryption-mel való titkosítása díjmentes, de a Azure Key Vault használatával járó díjak is rendelkezésre állnak. Az Azure Key Vault költségek további információkért lásd: a [Key Vault díjszabását ismertető](https://azure.microsoft.com/pricing/details/key-vault/) lapot.
+A virtuálisgép-lemezek Azure Disk Encryption-mel való titkosítása díjmentes, de a Azure Key Vault használatával járó díjak is rendelkezésre állnak. Azure Key Vault költségekkel kapcsolatos további információkért tekintse meg a [Key Vault díjszabását](https://azure.microsoft.com/pricing/details/key-vault/) ismertető oldalt.
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Hogyan lehet elindítani az Azure Disk Encryption használatával?
 
-Első lépések, olvassa el a [áttekintése az Azure Disk Encryption](disk-encryption-overview.md).
+Első lépésként olvassa el a [Azure Disk Encryption áttekintése című témakört](disk-encryption-overview.md).
 
 ## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Milyen virtuálisgép-méreteket és operációs rendszereket támogat a Azure Disk Encryption?
 
@@ -87,7 +87,7 @@ Igen. Az Azure AD-alkalmazás használatával lemeztitkosítás továbbra is tá
 
 ## <a name="what-version-of-azure-powershell-does-azure-disk-encryption-support"></a>Milyen az Azure PowerShell-verzió támogatja az Azure Disk Encryption?
 
-Az Azure PowerShell SDK legújabb verziójának segítségével konfigurálhatja az Azure Disk Encryption. Töltse le a legújabb verzióját [Azure PowerShell-lel](https://github.com/Azure/azure-powershell/releases). Az Azure Disk Encryption van *nem* Azure SDK 1.1.0-s verzió által támogatott.
+Az Azure PowerShell SDK legújabb verziójának segítségével konfigurálhatja az Azure Disk Encryption. Töltse le a [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)legújabb verzióját. A Azure Disk Encryption az Azure SDK 1.1.0-es verziójában *nem* támogatott.
 
 > [!NOTE]
 > A Linux Azure Disk Encryption Preview "Microsoft. OSTCExtension. AzureDiskEncryptionForLinux" kiterjesztése elavult. Ezt a bővítményt közzétettük az Azure Disk Encryption előzetes kiadásában. Ne használja a bővítmény előzetes verzióját a tesztelési vagy éles üzemi környezetben.
@@ -100,7 +100,7 @@ Az egyéni Linux-rendszerképek az Azure Disk Encryption, nem lehet alkalmazni. 
 
 ## <a name="can-i-apply-updates-to-a-linux-red-hat-vm-that-uses-the-yum-update"></a>Használhatom-e frissítéseket Linux Red Hat használó virtuális gép a yum használatával frissítést?
 
-Igen, egy Red Hat Linux rendszerű virtuális gépen is elvégezheti a yum-frissítést.  További információ: Linux- [csomagok kezelése tűzfal mögött](disk-encryption-troubleshooting.md#linux-package-management-behind-a-firewall).
+Igen, egy Red Hat Linux rendszerű virtuális gépen is elvégezheti a yum-frissítést.  További információ: [Azure Disk Encryption izolált hálózaton](disk-encryption-isolated-network.md).
 
 ## <a name="what-is-the-recommended-azure-disk-encryption-workflow-for-linux"></a>Mi a javasolt az Azure disk encryption munkafolyamat Linux?
 
@@ -110,7 +110,7 @@ A következő munkafolyamatot javasoljuk, hogy a legjobb eredmények Linux rends
 * Titkosítása (is igénybe vehet néhány Virtuálisgép-jellemző és bármely más csatolt lemez mérete attól függően órákig vagy akár napokig)
 * Testre szabhatja, és igény szerint adjon hozzá szoftvereket a lemezképet.
 
-Ha ezt a munkafolyamatot nem lehetséges, a függő entitások [a Storage Service Encryption](../../storage/common/storage-service-encryption.md) (SSE) a platform tárolási fiók réteg lehet a teljes lemeztitkosítás, dm-crypt használata helyett.
+Ha ez a munkafolyamat nem lehetséges, a platform Storage-fiók rétegében [Storage Service encryption](../../storage/common/storage-service-encryption.md) (SSE) támaszkodhat a teljes lemez titkosítására a dm-crypt használatával.
 
 ## <a name="what-is-the-disk-bek-volume-or-mntazure_bek_disk"></a>Mi az a lemez "Rendelkeznek BEk-kel kötet" vagy "/ mnt/azure_bek_disk"?
 
@@ -124,10 +124,10 @@ A "Bek Volume" egy helyi adatkötet, amely biztonságosan tárolja a titkosítot
 Azure Disk Encryption az AES-XTS-plain64 alapértelmezett titkosítását használja egy 256 bites kötet főkulcsával.
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Ha EncryptFormatAll használja, és adja meg a minden kötet esetében, azt az adatot töröl már titkosított adatok meghajtókon?
-Nem, adatokat a rendszer nem törli a már Azure Disk Encryption használatával titkosított meghajtók. Hogyan EncryptFormatAll nem újratitkosítása az operációs rendszer meghajtójának hasonlóan, nem fog újra már a titkosított adatok meghajtójának titkosításához. További információkért lásd: a [EncryptFormatAll feltételek](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).        
+Nem, adatokat a rendszer nem törli a már Azure Disk Encryption használatával titkosított meghajtók. Hogyan EncryptFormatAll nem újratitkosítása az operációs rendszer meghajtójának hasonlóan, nem fog újra már a titkosított adatok meghajtójának titkosításához. További információkért tekintse meg a [EncryptFormatAll feltételeit](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).        
 
 ## <a name="is-xfs-filesystem-supported"></a>Támogatott-e a XFS fájlrendszer?
-A XFS kötetek csak a EncryptFormatAll használhatók adatlemez-titkosításhoz. Ezzel újraformázza a kötetet, és törli az ott található összes adatmennyiséget. További információkért lásd: a [EncryptFormatAll feltételek](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).
+A XFS kötetek csak a EncryptFormatAll használhatók adatlemez-titkosításhoz. Ezzel újraformázza a kötetet, és törli az ott található összes adatmennyiséget. További információkért tekintse meg a [EncryptFormatAll feltételeit](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Készíthetek biztonsági másolatot és állíthatok vissza egy titkosított virtuális gépet? 
 
@@ -135,11 +135,11 @@ Azure Backup lehetővé teszi a titkosított virtuális gépek biztonsági ment�
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Hol tudhatok meg kérdéseket tehet fel, vagy visszajelzést?
 
-Kérdéseket tehet fel, vagy visszajelzést adhat a [az Azure Disk Encryption fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDiskEncryption).
+Kérdéseket tehet fel, és visszajelzést is küldhet a [Azure Disk Encryption fórumon](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDiskEncryption).
 
 ## <a name="next-steps"></a>Következő lépések
 Ebben a dokumentumban megtudhatta, további információt az Azure Disk Encryption kapcsolatos leggyakoribb kérdések. Ezzel a szolgáltatással kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Az Azure Disk Encryption áttekintése](disk-encryption-overview.md)
-- [Az Azure Security Centerben lemeztitkosítás alkalmazása](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [Azure-beli adat-titkosítás inaktív állapotban](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [Lemez titkosításának alkalmazása Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
+- [Az Azure-beli adattitkosítás inaktív állapotban](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

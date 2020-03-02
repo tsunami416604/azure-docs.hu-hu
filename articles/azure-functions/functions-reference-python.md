@@ -3,12 +3,12 @@ title: Python fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használatával
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 8ee13b59812e6a212fbafcf4ea6bfc171e735dc3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1b94cb51bcb4e2634cdb04c389efbab44bb024bb
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190704"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206333"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -101,7 +101,7 @@ A függvények helyi hivatkozásához a relatív importálási szintaxist a köv
 from . import example
 ```
 
-Ha a projektet egy Azure-beli Function alkalmazásba helyezi üzembe, a *FunctionApp* mappa teljes tartalmát bele kell foglalni a csomagba, de a mappát nem. Javasoljuk, hogy a teszteket a Project mappától eltérő mappában tartsa karban, ebben a példában `tests`. Így a tesztelési kód üzembe helyezése az alkalmazással megtartható. További információ: [Unit Testing (egység tesztelése](#unit-testing)).
+Amikor az Azure-beli Function alkalmazásba helyezi üzembe a projektet, a főprojekt teljes tartalmát ( *\_\_app\_\_* ) a csomagban kell szerepelnie, de nem maga a mappa. Javasoljuk, hogy a teszteket a Project mappától eltérő mappában tartsa karban, ebben a példában `tests`. Így a tesztelési kód üzembe helyezése az alkalmazással megtartható. További információ: [Unit Testing (egység tesztelése](#unit-testing)).
 
 ## <a name="triggers-and-inputs"></a>Eseményindítók és bemenetek
 
@@ -627,7 +627,7 @@ Győződjön meg arról, hogy a function. JSON fájlt is frissíti a beállítá
 
 Ezt a HTTP-metódust a böngészők használják az engedélyezett Origins lista egyeztetésére. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért lásd a következőket:
 

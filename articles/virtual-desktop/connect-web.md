@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: a29081f77587a96dc48930eab359610a42fc0be5
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c738c5b7f233ffa34296eed67eb0f5497f737fc
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605812"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206673"
 ---
 # <a name="connect-with-the-web-client"></a>Kapcsolódás a webügyféllel
 
@@ -41,3 +41,7 @@ Egy böngészőben nyissa meg a [Windows rendszerű virtuális asztali webes üg
 >Ha már bejelentkezett egy másik Azure Active Directory fiókkal, mint amelyet a Windowsos virtuális asztalhoz kíván használni, akkor ki kell jelentkeznie, vagy egy privát böngészőablakot kell használnia.
 
 A bejelentkezést követően meg kell jelennie az erőforrások listájának. Az erőforrásokat úgy is elindíthatja, ha a **minden erőforrás** lapon a normál alkalmazást szeretné.
+
+## <a name="next-steps"></a>Következő lépések
+
+Ha többet szeretne megtudni a webes ügyfél használatáról, tekintse meg [a webes ügyfélprogram használatának első lépéseit](https://go.microsoft.com/fwlink/?linkid=2120256).

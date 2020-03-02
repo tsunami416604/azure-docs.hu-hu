@@ -1,20 +1,19 @@
 ---
 title: Mi az Apache Hive és a HiveQL – Azure HDInsight
 description: A Apache Hive egy adattárház-rendszer Apache Hadoop számára. A kaptárban tárolt adatlekérdezéseket a Transact-SQL-hez hasonló HiveQL használatával kérdezheti le. Ebből a dokumentumból megtudhatja, hogyan használható a kaptár és a HiveQL az Azure HDInsight.
-keywords: hiveql, mi az a kaptár, a Hadoop hiveql, a kaptár használata, a struktúra megismerése, mi az a kaptár
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: e07939bd5f0264df637fda439d96be213a8d28d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 02/28/2020
+ms.openlocfilehash: 20fdafc3077d1017c17d1055596dab150dffec72
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499209"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206639"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi a Apache Hive és a HiveQL az Azure HDInsight?
 
@@ -24,13 +23,12 @@ A struktúra lehetővé teszi a nagy mértékben strukturált adatmennyiségek s
 
 A HDInsight többféle típusú fürtöt biztosít, amelyek meghatározott számítási feladatokhoz vannak hangolva. A következő típusú fürtök leggyakrabban a kaptár-lekérdezésekhez használatosak:
 
-* __Interaktív lekérdezés__: olyan Hadoop-fürt, amely [kis késleltetésű analitikai feldolgozási (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkciókat biztosít az interaktív lekérdezések válaszideje érdekében. További információ: az [interaktív lekérdezés elindítása a HDInsight](../interactive-query/apache-interactive-query-get-started.md) dokumentumban.
-
-* __Hadoop__: Hadoop-fürt, amely a kötegelt feldolgozási feladatokhoz van beállítva. További információ: [Start with apache Hadoop in HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) Document.
-
-* __Spark__: a Apache Spark beépített funkcionalitással rendelkezik a struktúra használatáról. További információ: [Start with apache Spark on HDInsight](../spark/apache-spark-jupyter-spark-sql.md) Document.
-
-* __HBase__: a HiveQL használható az Apache HBase tárolt adatlekérdezéshez. További információ: az [Apache HBase használata a HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) -dokumentumban.
+|Fürt típusa |Leírás|
+|---|---|
+|Interaktív lekérdezés|Hadoop-fürt, amely [kis késleltetésű analitikai feldolgozási (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkciókat biztosít az interaktív lekérdezések válaszideje érdekében. További információ: az [interaktív lekérdezés elindítása a HDInsight](../interactive-query/apache-interactive-query-get-started.md) dokumentumban.|
+|Hadoop|Hadoop-fürt, amely a kötegelt feldolgozási feladatokhoz van beállítva. További információ: [Start with apache Hadoop in HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) Document.|
+|Spark|A Apache Spark beépített funkcionalitással rendelkezik a struktúra használatáról. További információ: [Start with apache Spark on HDInsight](../spark/apache-spark-jupyter-spark-sql.md) Document.|
+|HBase|A HiveQL használható az Apache HBase tárolt adatlekérdezéshez. További információ: az [Apache HBase használata a HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) -dokumentumban.|
 
 ## <a name="how-to-use-hive"></a>A kaptár használata
 
@@ -74,7 +72,7 @@ A kaptár által támogatott fájlformátumokkal kapcsolatos további informáci
 
 A struktúra két típusú táblát hozhat létre:
 
-* __Belső__: a rendszer a struktúra adattárházában tárolja az adattárolási adatraktárat. Az adatraktár a fürt alapértelmezett tárolóján `/hive/warehouse/` helyen található.
+* __Belső__: a rendszer a struktúra adattárházában tárolja az adattárolási adatraktárat. Az adatraktár a fürt alapértelmezett tárolóján `/hive/warehouse/` található.
 
     Belső táblák használata, ha a következő feltételek valamelyike teljesül:
 
@@ -88,7 +86,7 @@ A struktúra két típusú táblát hozhat létre:
     * Az adatszerkezet a kaptáron kívül is használatos. Az adatfájlokat például egy másik folyamat frissíti (amely nem zárolja a fájlokat)
     * Az adatokat a mögöttes helyen kell tartani, még a tábla eldobása után is.
     * Egyéni helyre van szüksége, például egy nem alapértelmezett Storage-fiókra.
-    * A kaptártól eltérő program nem kezeli az adatformátumot, a helyet stb.
+    * A kaptártól eltérő program kezeli az adatformátumot, a helyet és így tovább.
 
 További információért lásd a [belső és külső táblák](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/) összeadását ismertető blogbejegyzést.
 
@@ -106,11 +104,11 @@ A struktúra a **felhasználó által definiált függvények (UDF)** használat
 
 * [Példa Apache Hive felhasználó által definiált függvényt a dátum-és időformátumok átalakításához a kaptár időbélyegére](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
-## <a id="data"></a>Példa az adatértékekre
+## <a name="example-data"></a>Példaadatok
 
-A kaptár on HDInsight előre be van töltve egy `hivesampletable` nevű belső táblával. A HDInsight olyan adatkészleteket is biztosít, amelyek a kaptár használatával használhatók. Ezeket az adatkészleteket a `/example/data` és a `/HdiSamples` könyvtár tárolja. Ezek a könyvtárak a fürt alapértelmezett tárolójában találhatók.
+A HDInsight struktúrája előre be van töltve egy `hivesampletable`nevű belső táblával. A HDInsight olyan adatkészleteket is biztosít, amelyek a kaptár használatával használhatók. Ezeket az adatkészleteket a `/example/data` és `/HdiSamples` könyvtárak tárolják. Ezek a könyvtárak a fürt alapértelmezett tárolójában találhatók.
 
-## <a id="job"></a>Példa a kaptár lekérdezésére
+## <a name="example-hive-query"></a>Példa a kaptár lekérdezésére
 
 A következő HiveQL utasítások a `/example/data/sample.log` fájlba kerülnek:
 
@@ -133,17 +131,14 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 Az előző példában a HiveQL utasítások a következő műveleteket hajtják végre:
 
-* `DROP TABLE`: Ha a tábla már létezik, törölje.
-
-* `CREATE EXTERNAL TABLE`: új **külső** táblát hoz létre a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen és az eredeti formátumban marad.
-
-* `ROW FORMAT`: azt jelzi, hogy az adat hogyan formázott. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.
-
-* `STORED AS TEXTFILE LOCATION`: azt jelzi, hogy a struktúra hol tárolja az adattárolást (a `example/data` könyvtárat), valamint azt, hogy az a szövegként van tárolva. Az adatfájlok egy fájlban lehetnek, vagy a címtárban található több fájl között is elterjedhetnek.
-
-* `SELECT`: kiválasztja az összes olyan sor számát, amelyben a **T4** oszlop tartalmazza a **[Error]** értéket. Ez az utasítás **3** értéket ad vissza, mert három sor tartalmazza ezt az értéket.
-
-* `INPUT__FILE__NAME LIKE '%.log'` – a struktúra megpróbálja alkalmazni a sémát a címtárban található összes fájlra. Ebben az esetben a könyvtár olyan fájlokat tartalmaz, amelyek nem egyeznek a sémával. Ha meg szeretné akadályozni, hogy az eredmények ne kerüljenek az adatokba, ez az utasítás azt ismerteti, hogy a kaptár csak a. log fájlban végződő fájlokból tér vissza.
+|Kimutatás |Leírás |
+|---|---|
+|TÁBLÁZAT ELDOBÁSA|Ha a tábla már létezik, törölje.|
+|KÜLSŐ TÁBLA LÉTREHOZÁSA|Létrehoz egy új **külső** táblát a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen és az eredeti formátumban marad.|
+|SOR FORMÁTUMA|Azt jelzi, hogyan történik az adat formázása. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.|
+|TEXTFILE HELYEN TÁROLVA|Azt jelzi, hogy a struktúra hol tárolja az adattárolást (a `example/data` könyvtárat), valamint azt, hogy az a szövegként van tárolva. Az adatfájlok egy fájlban lehetnek, vagy a címtárban található több fájl között is elterjedhetnek.|
+|SELECT|Kiválasztja az összes olyan sor számát, ahol a **T4** oszlop tartalmazza a **[hiba]** értéket. Ez az utasítás **3** értéket ad vissza, mert három sor tartalmazza ezt az értéket.|
+|INPUT__FILE__NAME például: "%. log"|A struktúra megpróbálja alkalmazni a sémát a címtárban található összes fájlra. Ebben az esetben a könyvtár olyan fájlokat tartalmaz, amelyek nem egyeznek a sémával. Ha meg szeretné akadályozni, hogy az eredmények ne kerüljenek az adatokba, ez az utasítás azt ismerteti, hogy a kaptár csak a. log fájlban végződő fájlokból tér vissza.|
 
 > [!NOTE]  
 > Külső táblákat kell használni, ha várható, hogy a mögöttes adatokat külső forrás frissíti. Például egy automatizált adatfeltöltési folyamat vagy MapReduce művelet.
@@ -169,18 +164,18 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 Ezek az utasítások a következő műveleteket hajtják végre:
 
-* `CREATE TABLE IF NOT EXISTS`: Ha a tábla nem létezik, hozza létre. Mivel a **külső** kulcsszó nincs használatban, az utasítás belső táblát hoz létre. A rendszer a struktúra adattárházában tárolja a táblázatot, és a struktúra teljes mértékben kezeli.
-
-* `STORED AS ORC`: az adatok az optimalizált sorok oszlopos (ORK) formátumban vannak tárolva. Az ork kiválóan optimalizált és hatékony formátum a kaptárak adatok tárolására.
-
-* `INSERT OVERWRITE ... SELECT`: kijelöli a **log4jLogs** tábla azon sorait, amelyek **[Error]** elemet tartalmaznak, majd beszúrja az adatait a **alkalmazásnaplókat** táblába.
+|Kimutatás |Leírás |
+|---|---|
+|CREATE TABLE, HA NEM LÉTEZIK|Ha a tábla nem létezik, hozza létre. Mivel a **külső** kulcsszó nincs használatban, az utasítás belső táblát hoz létre. A rendszer a struktúra adattárházában tárolja a táblázatot, és a struktúra teljes mértékben kezeli.|
+|ORK-KÉNT TÁROLVA|Az adatok az optimalizált sorok oszlopos (ORK) formátumban vannak tárolva. Az ork kiválóan optimalizált és hatékony formátum a kaptárak adatok tárolására.|
+|FELÜLÍRÁS BESZÚRÁSA... Válassza|Kijelöli a **[hiba]** elemet tartalmazó **log4jLogs** tábla sorait, majd beszúrja az adatait a **alkalmazásnaplókat** táblába.|
 
 > [!NOTE]  
 > A külső tábláktól eltérően a belső táblák eldobása is törli az alapul szolgáló adatokat.
 
 ## <a name="improve-hive-query-performance"></a>A kaptár-lekérdezés teljesítményének javítása
 
-### <a id="usetez"></a>Apache TEZ
+### <a name="apache-tez"></a>Apache TEZ
 
 Az [Apache TEZ](https://tez.apache.org) egy olyan keretrendszer, amely lehetővé teszi az adatigényes alkalmazások, például a kaptárok számára, hogy sokkal hatékonyabban futtassák a méretezést. A TEZ alapértelmezés szerint engedélyezve van.  A [TEZ-tervezési dokumentumok Apache Hive](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) a megvalósítási döntések részleteit és hangolási konfigurációkat tartalmaz.
 
@@ -212,7 +207,7 @@ További információt az [Azure Feature Pack](https://docs.microsoft.com/sql/in
 
 Az Apache Oozie egy munkafolyamat-és koordinációs rendszer, amely a Hadoop-feladatokat kezeli. A Oozie és a kaptár használatával kapcsolatos további információkért tekintse meg az [Apache Oozie használata munkafolyamat-dokumentum definiálásához és futtatásához](../hdinsight-use-oozie-linux-mac.md) című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogy mi a kaptár, és hogyan használható a Hadoop-ben a HDInsight-ben, az alábbi hivatkozásokat követve megismerheti az Azure HDInsight szolgáltatással való munkavégzés más módszereit.
 

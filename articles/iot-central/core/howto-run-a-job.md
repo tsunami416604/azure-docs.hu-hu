@@ -1,6 +1,6 @@
 ---
 title: Feladatok létrehozása és futtatása az Azure IoT Central alkalmazásban | Microsoft Docs
-description: Az Azure IoT Central-feladatok lehetővé teszik a csoportos eszközök felügyeleti funkcióinak használatát, például az eszköz tulajdonságainak frissítését, a beállítások beállítását vagy egy parancs végrehajtását.
+description: Az Azure IoT Central-feladatok lehetővé teszik a csoportos eszközök felügyeleti funkcióit, például a tulajdonságok frissítését vagy a parancsok végrehajtását.
 ms.service: iot-central
 services: iot-central
 author: sarahhubbard
@@ -8,66 +8,70 @@ ms.author: sahubbar
 ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 68d4dbff364f8d3fda72fc2377722031e9cccc3d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 2dd1eddc841cc484957c2124de3419799c4e59b7
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018890"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206804"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Feladatok létrehozása és futtatása az Azure IoT Central alkalmazásban
 
-A csatlakoztatott eszközök méretezéséhez a feladatok használatával Microsoft Azure IoT Central is használhatja. A feladatok lehetővé teszik az eszközök tulajdonságainak és parancsainak tömeges frissítését. Ez a cikk végigvezeti a feladatok saját alkalmazásban való használatának megkezdésének lépésein.
-
+A csatlakoztatott eszközök méretezéséhez a feladatok használatával Microsoft Azure IoT Central is használhatja. A feladatok lehetővé teszik a tömeges frissítését az eszköz tulajdonságaira és a parancsok futtatására. Ez a cikk bemutatja, hogyan kezdheti el a feladatok használatát a saját alkalmazásban.
 
 ## <a name="create-and-run-a-job"></a>Feladatok létrehozása és futtatása
 
-Ebből a szakaszból megtudhatja, hogyan hozhat létre és futtathat feladatokat. Bemutatja, hogyan növelheti a ventilátor sebességét több hűtött árusító gép esetén.
+Ebből a szakaszból megtudhatja, hogyan hozhat létre és futtathat feladatokat. Bemutatja, hogyan állíthatja be a fény küszöbértékét a logisztikai átjáró eszközeinek csoportjához.
 
-1. Navigáljon a feladatok elemre a navigációs ablaktáblán.
+1. Navigáljon a **feladatok** elemre a bal oldali ablaktáblán.
 
-2. Új feladatok létrehozásához válassza az **+ új** lehetőséget.
+2. Új feladatok létrehozásához válassza az **+ új** elemet:
 
-    ![Új feladatok létrehozása](./media/howto-run-a-job/createnewjob.png)
+    > [!div class="mx-imgBorder"]
+    > ![új feladatot hoz létre](./media/howto-run-a-job/createnewjob.png)
 
 3. Adja meg a létrehozandó feladatot azonosító nevet és leírást.
 
-4. Válassza ki azt az eszközt, amelyre alkalmazni szeretné a feladatot. Megtekintheti, hogy a rendszer hány eszközt alkalmaz a feladatok konfigurációjában az összefoglalás szakaszban. 
+4. Válassza ki azt a céleszköz-csoportot, amelyre alkalmazni szeretné a feladatot. Megtekintheti, hogy hány eszközre vonatkozik a feladatok konfigurációja az **Összefoglalás** szakaszban.
 
-5. Ezután válassza ki a definiálni kívánt feladattípus (tulajdonság vagy parancs) típusát. Állítsa be a feladatok konfigurációját úgy, hogy kiválasztja a tulajdonságot, és új értékeket állít be, vagy válasszon egy parancsot. Egyszerre több tulajdonság is felvehető.
+5. Ezután válassza a **tulajdonság** vagy a **parancs** lehetőséget a konfigurálandó feladattípusként. A **Tulajdonságok** konfigurációjának beállításához válasszon ki egy tulajdonságot, és állítsa be az új értékét. **Parancs**beállításához vagy a futtatandó parancs kiválasztásához. A tulajdonság-feladatok több tulajdonságot is beállíthat:
 
-    ![Feladatok konfigurálása](./media/howto-run-a-job/configurejob.png)
+    > [!div class="mx-imgBorder"]
+    > ![a feladatok konfigurálása](./media/howto-run-a-job/configurejob.png)
 
-6. A jobb oldalon válassza ki azokat az eszközöket, amelyeken futtatni szeretné a feladatot. A felső jelölőnégyzet bejelölésével az összes eszköz kiválasztásra kerül a teljes eszköz készletében. A **név**melletti jelölőnégyzet bejelölésével az aktuális oldalon lévő összes eszköz ki lesz választva.
+6. Az eszközök kiválasztása után válassza a **Futtatás** vagy a **Mentés**lehetőséget. A feladat most megjelenik a fő **feladatok** oldalon. Ezen az oldalon megtekintheti az aktuálisan futó feladatot és a korábban futtatott vagy mentett feladatok előzményeit. A mentett feladatok bármikor megnyithatók a Szerkesztés folytatásához vagy a futtatásához:
 
-7. Az eszközök kiválasztása után válassza a **Futtatás** vagy a **Mentés**lehetőséget. A feladat most megjelenik a fő **feladatok** oldalon. Ebben a nézetben láthatja a jelenleg futó feladatot és a korábban futtatott feladatok előzményeit. A futó feladatok mindig megjelennek a lista elejénél. A mentett feladatok bármikor megnyithatók a Szerkesztés vagy a Futtatás folytatásához.
-
-    ![Feladatok megtekintése](./media/howto-run-a-job/viewjob.png)
+    > [!div class="mx-imgBorder"]
+    > ![feladatok megtekintése](./media/howto-run-a-job/viewjob.png)
 
     > [!NOTE]
-    > A korábban futtatott feladatok előzményeit akár 30 napig is megtekintheti.
+    > A korábban futtatott feladatok esetében 30 nappal korábbi előzményeket tekinthet meg.
 
-7. A feladatok áttekintéséhez válassza ki a listából a megtekinteni kívánt feladatot. Ez az Áttekintés a feladatok részleteit, az eszközöket és az Eszközállapot-értékeket tartalmazza. Ebből az áttekintésből kiválaszthatja a **feladatok részleteinek letöltése** lehetőséget is, ha le szeretné tölteni a feladatok részleteit tartalmazó. csv fájlt, beleértve az eszközöket és az állapotukat is. Ez az információ hasznos lehet a hibaelhárításhoz.
+7. A feladatok áttekintéséhez válassza ki a listából a megtekinteni kívánt feladatot. Ez az Áttekintés a feladatok részleteit, az eszközöket és az Eszközállapot-értékeket tartalmazza. Ebből az áttekintésből kiválaszthatja a feladatok **részleteinek letöltése** lehetőséget is, ha le szeretné tölteni a feladatok részleteit tartalmazó CSV-fájlt, beleértve az eszközöket és az állapotukat is. Ezek az információk a hibaelhárításhoz hasznosak lehetnek:
 
-    ![Eszközállapot megtekintése](./media/howto-run-a-job/downloaddetails.png)
+    > [!div class="mx-imgBorder"]
+    > ![az eszköz állapotának megtekintése](./media/howto-run-a-job/downloaddetails.png)
 
 ### <a name="stop-a-running-job"></a>Futó feladatok leállítása
 
-Futó feladatok leállításához jelölje ki, majd válassza a **Leállítás**lehetőséget. A feladatok állapota úgy változik, hogy a rendszer leállítja a feladatot.
+Az egyik futó feladat leállításához nyissa meg, majd válassza a **Leállítás**lehetőséget. A feladatok állapota úgy változik, hogy a rendszer leállítja a feladatot. Az **Összefoglalás** szakaszban látható, hogy mely eszközök lettek végrehajtva, sikertelenek, vagy még függőben vannak:
 
-   ![Feladatok leállítása](./media/howto-run-a-job/stopjob.png)
+    > [!div class="mx-imgBorder"]
+    > ![Stop job](./media/howto-run-a-job/stopjob.png)
 
 ### <a name="run-a-stopped-job"></a>Leállított feladatok futtatása
 
-Ha egy jelenleg leállított feladatot szeretne futtatni, válassza a leállított feladatot. Válassza a **Futtatás** lehetőséget a panelen. A feladatok állapota úgy változik, hogy az tükrözze a feladatot.
+A jelenleg leállított feladatok futtatásához jelölje ki azt, majd válassza a **Futtatás**lehetőséget. A feladatok állapota úgy változik, hogy az tükrözze a feladatot. Az **Összefoglalás** szakasz frissítése a legújabb folyamattal folytatódik:
 
-   ![Folytatási feladatok](./media/howto-run-a-job/resumejob.png)
+    > [!div class="mx-imgBorder"]
+    > ![Resumed job](./media/howto-run-a-job/resumejob.png)
 
 ## <a name="copy-a-job"></a>Feladatok másolása
 
-Ha egy meglévő feladatot szeretne másolni, nyisson meg egy létrehozott feladatot, és válassza a **Másolás**lehetőséget. Ekkor megnyílik a feladatok konfigurációjának új másolata. Az új feladatot mentheti vagy futtathatja. 
+Az egyik meglévő feladat másolásához nyissa meg, majd válassza a **Másolás**lehetőséget. Megnyílik a feladatok konfigurációjának egy másolata, amelyet a rendszer a feladatok nevének végéhez fűzött a **másoláshoz** . Az új feladatot az alábbiak szerint mentheti vagy futtathatja:
 
-   ![Másolási feladatok](./media/howto-run-a-job/copyjob.png)
+    > [!div class="mx-imgBorder"]
+    > ![Copy job](./media/howto-run-a-job/copyjob.png)
 
 ## <a name="view-the-job-status"></a>A feladatok állapotának megtekintése
 
@@ -76,7 +80,7 @@ A feladatok létrehozása után az **állapot** oszlop a feladatokhoz tartozó l
 | Állapotüzenet       | Állapot jelentése                                          |
 | -------------------- | ------------------------------------------------------- |
 | Befejezve            | Ezt a feladatot minden eszközön végrehajtotta a rendszer.              |
-| Meghiúsult               | A feladatot nem sikerült végrehajtani, és nem hajtották végre teljesen az eszközökön.  |
+| Sikertelen               | A feladatot nem sikerült végrehajtani, és nem hajtották végre teljesen az eszközökön.  |
 | Függőben              | Ez a feladattípus még nem kezdte meg az eszközökön való végrehajtást.         |
 | Fut              | Ez a feladatok jelenleg az eszközökön vannak végrehajtva.             |
 | Leállítva              | Ezt a feladatot a felhasználó manuálisan leállította.           |
@@ -86,20 +90,20 @@ Az állapotjelző üzenetet a feladatokban található eszközök áttekintése 
 | Állapotüzenet       | Állapot jelentése                                                     |
 | -------------------- | ------------------------------------------------------------------ |
 | Sikeres            | Azon eszközök száma, amelyeken a feladatot sikeresen végrehajtották.       |
-| Meghiúsult               | Azon eszközök száma, amelyeken nem sikerült végrehajtani a feladatot.       |
+| Sikertelen               | Azon eszközök száma, amelyeken nem sikerült végrehajtani a feladatot.       |
 
 ### <a name="view-the-device-status"></a>Az eszköz állapotának megtekintése
 
-A feladatok és az összes érintett eszköz állapotának megtekintéséhez válassza ki a feladatot. Ha le szeretne tölteni egy. csv-fájlt, amely tartalmazza a feladatok részleteit, beleértve az eszközök listáját és az állapotukat is, válassza a **feladatok adatainak letöltése**lehetőséget. Az egyes eszközök neve mellett a következő állapotüzenetek egyike jelenik meg:
+A feladatok és az összes érintett eszköz állapotának megtekintéséhez válassza ki a feladatot. Ha le szeretne tölteni egy CSV-fájlt, amely tartalmazza a feladatok részleteit, beleértve az eszközök listáját és az állapotukat, válassza a **feladatok adatainak letöltése**lehetőséget. Az egyes eszközök neve mellett a következő állapotüzenetek egyike jelenik meg:
 
 | Állapotüzenet       | Állapot jelentése                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
 | Befejezve            | A feladatot végrehajtotta ezen az eszközön.                                     |
-| Meghiúsult               | A feladatot nem sikerült végrehajtani az eszközön. A hibaüzenet további információkat jelenít meg.  |
+| Sikertelen               | A feladatot nem sikerült végrehajtani az eszközön. A hibaüzenet további információkat jelenít meg.  |
 | Függőben              | A feladatot még nem hajtották végre ezen az eszközön.                                   |
 
 > [!NOTE]
-> Ha egy eszköz törölve lett, nem választhatja ki az eszközt, és törölve jelenik meg az eszköz azonosítójával.
+> Ha egy eszköz törölve lett, nem választhatja ki az eszközt. Az eszköz AZONOSÍTÓjának törlésével jelenik meg.
 
 ## <a name="next-steps"></a>Következő lépések
 

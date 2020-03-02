@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d11f5a9f2de8683365d663e85c275c3729ebf8a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901502"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206112"
 ---
-# <a name="search-groups--and-members-preview-in-azure-active-directory"></a>Csoportok és tagok keresése (előzetes verzió) Azure Active Directory
+# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Csoportok és tagok keresése (előzetes verzió) Azure Active Directory
 
 Ebből a cikkből megtudhatja, hogyan keresheti meg egy csoport tagjait és tulajdonosait, és hogyan használhatja a keresési szűrőket a csoportok fejlesztésének előzetes verziójának részeként a Azure Active Directory (Azure AD) portálon. A csoportok számos olyan fejlesztéssel rendelkeznek, amelyek segítségével gyorsan és egyszerűen kezelheti a csoportokat, beleértve a tagokat és a tulajdonosokat is. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -45,11 +45,11 @@ Ha problémák merülnek fel, a **minden csoport** lap tetején található szal
 
 ## <a name="group-search-and-sorting"></a>Csoportos keresés és rendezés
 
-A csoportok listájának keresését továbbfejlesztettük, így amikor beírhat egy keresési karakterláncot, a keresés automatikusan `startswith` végrehajt egy és alkarakterlánc-keresést a csoportok neveinek listáján. Az alkarakterlánc-keresés csak egész szavakon hajtható végre, és nem tartalmaz speciális karaktereket.
+A csoportok listájának keresését továbbfejlesztettük, így amikor megadhat egy keresési karakterláncot, a keresés automatikusan végrehajt egy `startswith` és alkarakterlánc-keresést a csoportok neveinek listáján. Az alkarakterlánc-keresés csak egész szavakon hajtható végre, és nem tartalmaz speciális karaktereket. A karakterlánc-keresés a kis-és nagybetűk megkülönböztetésére szolgál.
 
 ![új alkarakterlánc-keresések a minden csoport lapon](./media/groups-members-owners-search/groups-search-preview.png)
 
-Például a "Policy" kifejezésre való keresés most a "MDM Policy – West" és a "Policy Group" értéket fogja visszaadni. A "New_policy" nevű csoport nem lesz visszaadva.
+Például a "Policy" kifejezésre való keresés most a "MDM Policy – West" és a "Policy Group" értéket fogja visszaadni. A rendszer nem ad vissza egy "New_policy" nevű csoportot.
 
 - Ugyanezt a keresést is végrehajthatja a csoporttagság-listán.
 - Mostantól a név oszlop fejlécének jobb oldalán található nyilak alapján rendezheti a csoportok listáját a lista növekvő vagy csökkenő sorrendbe rendezéséhez.
@@ -78,7 +78,7 @@ Javítottuk a csoport **áttekintő** oldalát, hogy a csoportok tagjainak szám
 
 ![Nagyobb pontosság a csoporttagság száma szerint](./media/groups-members-owners-search/member-numbers.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezek a cikkek további információkat nyújtanak a csoportok Azure AD-beli használatáról.
 

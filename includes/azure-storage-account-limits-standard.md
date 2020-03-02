@@ -5,22 +5,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 12/13/2019
+ms.date: 02/27/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a0ecb4f5fe54e9895898156893c1e686c6cc24e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e02de4ee9c36f9c3f0c27bc02ee1c37ce3e4057c
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392301"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78208240"
 ---
-Az alábbi táblázat az Azure általános célú v1, v2 és blob Storage-fiókok alapértelmezett korlátait ismerteti. A *bejövő* forgalom korlátja a Storage-fiókba küldött kérelmekből származó összes értékre vonatkozik. A *kimenő* forgalom korlátja a Storage-fiókból kapott válaszok összes adatértékére vonatkozik.
+Az alábbi táblázat az Azure általános célú v1, v2 és blob Storage-fiókok alapértelmezett korlátait ismerteti. A *bejövő* forgalom korlátja a Storage-fiókba küldendő összes adattal vonatkozik. A *kimenő* forgalom korlátja a Storage-fiókból kapott összes adattal vonatkozik.
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | A Storage-fiókok régiónként/előfizetések száma, beleértve a standard és a prémium szintű fiókokat is | 250 |
-| Storage-fiók maximális kapacitása | 2 PiB az Egyesült ÁLLAMOKban és Európában, valamint 500 TiB az összes többi régióban (beleértve az Egyesült Királyságot)<sup>1</sup>|
+| Storage-fiók maximális kapacitása | 5 PiB <sup>1</sup>|
 | BLOB-tárolók, blobok, fájlmegosztás, táblák, várólisták, entitások vagy üzenetek maximális száma Storage-fiókban | Korlátlan |
 | Kérelmek maximális száma<sup>1</sup> – Storage-fiók | 20 000 kérelem másodpercenként |
 | Maximális belépés<sup>1</sup> /Storage-fiókra (USA, Európa régiói) | 25 GB/s |
@@ -31,7 +31,7 @@ Az alábbi táblázat az Azure általános célú v1, v2 és blob Storage-fióko
 | Virtuális hálózati szabályok maximális száma Storage-fiókban | 200 |
 | IP-címekre vonatkozó szabályok maximális száma Storage-fiókban | 200 |
 
-<sup>1</sup> Az Azure Storage standard fiókjai magasabb kapacitási korlátokat és magasabb korlátot támogatnak a bejövő forgalomra vonatkozóan. Ha szeretné megemelni a fiókokra vonatkozó korlátozásokat a bejövő forgalomhoz, forduljon az [Azure ügyfélszolgálatához](https://azure.microsoft.com/support/faq/). További információ: [nagyobb méretű, magasabb szintű Storage-fiókok bejelentése](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
+<sup>1</sup> Az Azure Storage standard fiókjai magasabb kapacitási korlátokat és magasabb korlátot támogatnak a bejövő forgalomra vonatkozóan. Ha szeretné megemelni a fiókokra vonatkozó korlátozásokat a bejövő forgalomhoz, forduljon az [Azure ügyfélszolgálatához](https://azure.microsoft.com/support/faq/).
 
 <sup>2</sup> ha a Storage-fiókhoz engedélyezve van a Geo-redundáns tárolás (ra-GRS) vagy a Geo-Zone-redundáns tárolás (ra-GZRS), akkor a másodlagos hely kimenő elérési céljai azonosak az elsődleges helyével. Az [Azure Storage replikációs](https://docs.microsoft.com/azure/storage/common/storage-redundancy) lehetőségei a következők:
 

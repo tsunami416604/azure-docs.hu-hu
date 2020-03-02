@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 70f37c70f685ee139db4b417c1c498f9eefb8205
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 27d65c7e6bbc0af20d01d91f1472433f3e7142a9
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184757"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206606"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL Database naplózási szolgáltatásával
 
@@ -75,11 +75,11 @@ A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal h
 2. Az SQL Database/Server (biztonság) fejléc alatt navigáljon a **naplózás** elemre.
 3. Ha a kiszolgáló naplózási szabályzatát szeretné beállítani, akkor az adatbázis naplózása lapon kiválaszthatja a **kiszolgáló beállításainak megtekintése** hivatkozást. Ezután megtekintheti vagy módosíthatja a kiszolgáló naplózási beállításait. A kiszolgáló naplózási házirendjei a kiszolgálón lévő összes meglévő és újonnan létrehozott adatbázisra érvényesek.
 
-    ![Navigációs ablak][2]
+    ![Navigációs ablaktábla][2]
 
 4. Ha azt szeretné, hogy az adatbázis szintjén engedélyezze a naplózást, kapcsolja be a **naplózást** **a**következőre:. Ha a kiszolgáló naplózása engedélyezve van, az adatbázis által konfigurált naplózás párhuzamosan, a kiszolgáló auditálásával fog létezni.
 
-    ![Navigációs ablak][3]
+    ![Navigációs ablaktábla][3]
 
 5. **Új** – mostantól több beállítással is konfigurálhatja, hogy a rendszer hol írja be a naplókat. Naplókat írhat egy Azure Storage-fiókba, Log Analytics munkaterületre Azure Monitor naplók általi felhasználáshoz, vagy az Event hub használatával történő felhasználásra. Ezen beállítások bármely kombinációját konfigurálhatja, és a rendszer a naplókat is megírja a naplókba.
   
@@ -116,22 +116,15 @@ A naplók Log Analytics munkaterületre való írásának konfigurálásához v�
 
 ### <a id="audit-event-hub-destination">Naplózás az Event hub célhelyére</a>
 
-< < < < < < < HEAD < < < < < < < HEAD = = = = = = =
->>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 > [!IMPORTANT]
 > Egy szüneteltetett SQL-készlet naplózásának engedélyezése nem lehetséges. Ennek engedélyezéséhez szüntesse meg az SQL-készlet szüneteltetését.
 
 > [!WARNING]
-> Ha olyan kiszolgálón engedélyezi a naplózást, amely egy SQL-készlettel rendelkezik, a **rendszer az SQL-készlet folytatását eredményezi, és újra szünetelteti** , ami a számlázási költségek miatt felmerülhet.
-< < < < < < < HEAD = = = = = = = a naplók írásának konfigurálásához az Event hubhoz, válassza az **Event hub (előzetes verzió)** lehetőséget, és nyissa meg az **Event hub részleteit**. Válassza ki az Event hub-t, ahol a naplók meg lesznek írva, majd kattintson **az OK**gombra. Ügyeljen arra, hogy az Event hub ugyanabban a régióban legyen, mint az adatbázis és a kiszolgáló.
+> A naplózás engedélyezése olyan kiszolgálón, amely SQL-készlettel rendelkezik, **az SQL-készlet folytatása folyamatban van, és újra szünetelteti** , ami felmerülhet a számlázási költségekkel.
 
-   ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
->>>>>>> <a name="bf6444e83361ab743aca04ae233c420e51ea1e03"></a>bf6444e83361ab743aca04ae233c420e51ea1e03
-=======
 Ha konfigurálni szeretné a naplók írását az Event hubhoz, válassza az **Event hub (előzetes verzió)** lehetőséget, és nyissa meg az **Event hub részleteit**. Válassza ki az Event hub-t, ahol a naplók meg lesznek írva, majd kattintson **az OK**gombra. Ügyeljen arra, hogy az Event hub ugyanabban a régióban legyen, mint az adatbázis és a kiszolgáló.
 
    ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
->>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 
 ## <a id="subheading-3"></a>Naplózási naplók és jelentések elemzése
 
@@ -173,7 +166,7 @@ Ha úgy döntött, hogy naplózza a naplókat egy Azure Storage-fiókba, a napl�
 
 - Használja a [Azure Portal](https://portal.azure.com).  Nyissa meg a megfelelő adatbázist. Az adatbázis **naplózási** lapjának felső részén kattintson a **naplók megtekintése**elemre.
 
-    ![Navigációs ablak][7]
+    ![Navigációs ablaktábla][7]
 
     Megnyílik a **naplózási rekordok** , amelyekről megtekintheti a naplókat.
 
@@ -181,14 +174,14 @@ Ha úgy döntött, hogy naplózza a naplókat egy Azure Storage-fiókba, a napl�
   - A naplózási **forrás**váltásával válthat a *kiszolgálói naplózási házirend* és az adatbázis- *naplózási házirend* által létrehozott naplózási rekordok között.
   - Csak az SQL-injektálással kapcsolatos naplózási rekordokat tekintheti meg, ha az **SQL-injektálások csak naplózási rekordok megjelenítése** jelölőnégyzetét ellenőrzi.
 
-       ![Navigációs ablak][8]
+       ![Navigációs ablaktábla][8]
 
 - Használja a System Function **sys. fn_get_audit_file** (T-SQL) függvényt a naplózott adat táblázatos formátumban való visszaküldéséhez. További információ a függvény használatáról: [sys. fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 - A **naplófájlok egyesítése** SQL Server Management Studio (a SSMS 17-től kezdődően):
     1. A SSMS menüben válassza a **fájl** ** > a** naplófájlok **egyesítése** > a naplófájlok egyesítése lehetőséget.
 
-        ![Navigációs ablak][9]
+        ![Navigációs ablaktábla][9]
     2. Megnyílik a naplófájlok **hozzáadása** párbeszédpanel. Válassza ki a **hozzáadási** lehetőségek egyikét, és válassza ki, hogy szeretné-e egyesíteni a naplófájlokat egy helyi lemezről, vagy importálni őket az Azure Storage-ból. Meg kell adnia az Azure Storage adatait és a fiók kulcsát.
 
     3. Miután az összes egyesíteni kívánt fájl hozzá lett adva, kattintson az **OK** gombra az egyesítési művelet befejezéséhez.
@@ -229,10 +222,10 @@ A földrajzilag replikált adatbázisok esetében, ha engedélyezi a naplózást
 
 1. Nyissa meg a **tároló adatait**. A **tárolási hozzáférési kulcs** mezőben válassza a **másodlagos**lehetőséget, majd kattintson **az OK**gombra. Ezután kattintson a **Mentés** gombra a naplózási konfiguráció lap tetején.
 
-    ![Navigációs ablak][5]
+    ![Navigációs ablaktábla][5]
 2. Nyissa meg a tárolási konfiguráció lapot, és újból létrehozza az elsődleges hozzáférési kulcsot.
 
-    ![Navigációs ablak][6]
+    ![Navigációs ablaktábla][6]
 3. Lépjen vissza a naplózási konfiguráció lapra, váltson másodlagosról elsődlegesre a Storage-hozzáférési kulcsra, majd kattintson **az OK**gombra. Ezután kattintson a **Mentés** gombra a naplózási konfiguráció lap tetején.
 4. Lépjen vissza a tárolási konfiguráció lapra, és generálja újra a másodlagos elérési kulcsot (felkészülés a következő kulcs frissítési ciklusára).
 

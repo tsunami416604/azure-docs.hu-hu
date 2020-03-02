@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: d500f7a1f28eff1f638a244022226b0aa0e715cb
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: fd8f01f0fc7180d271404ffee4496ff9cbac7222
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199597"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205925"
 ---
 # <a name="preview-dcv2-series"></a>Előzetes verzió: DCv2 sorozat
 
@@ -41,7 +41,9 @@ Memória-megőrzési frissítések: nem támogatott
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
 - A DCv2 sorozatú virtuális gépek [2. generációs virtuális gépek](./linux/generation-2.md#creating-a-generation-2-vm) , és csak `Gen2` lemezképeket támogatják.
-
+- Jelenleg csak Egyesült Királyság déli régiója érhető el.
+- A bizalmas számítási virtuális gépek előző generációja: [DC sorozat](sizes-previous-gen.md)
+- DCv2 virtuális gépek létrehozása az Azure Portal [virtuális gép létrehozása – portál](./linux/quick-create-portal.md)
 
 
 
@@ -54,6 +56,6 @@ Memória-megőrzési frissítések: nem támogatott
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

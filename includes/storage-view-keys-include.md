@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: e3b3d944508a4261b78def0b3bee13f7395a8bf0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 9333bb36971fc28a23a443e50d191abeef05b758
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748997"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78208193"
 ---
 A Storage-fiók hozzáférési kulcsainak vagy kapcsolati karakterláncának megtekintése és másolása a Azure Portalből:
 
 1. Lépjen az [Azure Portalra](https://portal.azure.com).
 2. Keresse meg a Storage-fiókját.
-3. A tárfiók áttekintésének **Beállítások** szakaszában válassza a **Hozzáférési kulcsok** elemet. Megjelennek a fiókhoz tartozó hozzáférési kulcsok, valamint az egyes kulcsokhoz tartozó kapcsolati sztringek.
+3. A **Beállítások** területen válassza a **Hozzáférési kulcsok** elemet. Megjelennek a fiókhoz tartozó hozzáférési kulcsok, valamint az egyes kulcsokhoz tartozó kapcsolati sztringek.
 4. Keresse meg a **Kulcs** értéket a **key1** területen, majd kattintson a **Másolás** gombra a fiókkulcs másolásához.
 5. Másik lehetőségként átmásolhatja a teljes kapcsolatok sztringjét. Keresse meg a **Kapcsolati sztring** értéket a **key1** területen, és kattintson a **Másolás** gombra a kapcsolati sztring másolásához.
 

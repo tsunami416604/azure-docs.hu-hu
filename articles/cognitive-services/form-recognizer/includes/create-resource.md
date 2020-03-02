@@ -5,14 +5,14 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
-ms.openlocfilehash: 0a4faad8bfe92a5389e0ee440aa3ccc404535955
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 33624ab800bd1155b52efbc05f317122a99bb479
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118102"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205821"
 ---
-Nyissa meg az Azure Portalt, és [hozzon létre egy új űrlap-felismerő erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer). A **Létrehozás** ablaktáblán adja meg a következő adatokat:
+Nyissa meg a Azure Portal és <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title="hozzon létre egy új űrlap-felismerő erőforrást" target="_blank">hozzon létre <span class="docon docon-navigate-external x-hidden-focus"></span> egy új űrlap-felismerő erőforrást</a>. A **Létrehozás** ablaktáblán adja meg a következő adatokat:
 
 |    |    |
 |--|--|

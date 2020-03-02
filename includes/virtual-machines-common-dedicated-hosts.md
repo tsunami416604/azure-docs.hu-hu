@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 870d6f8441bf395ba0c02dccf8f3d1c6434410c6
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77013647"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78208215"
 ---
 ## <a name="limitations"></a>Korlátozások
 
@@ -75,7 +75,7 @@ A **karbantartási ellenőrzés** lehetővé teszi az ügyfeleknek, hogy kihagyh
 > [!NOTE]
 >  A karbantartási vezérlő jelenleg nyilvános előzetes verzióban érhető el. További információ: **frissítések kezelése a karbantartási vezérléssel a [CLI](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) vagy a [PowerShell](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)használatával**.
 
-## <a name="capacity-considerations"></a>Kapacitással kapcsolatos megfontolások
+## <a name="capacity-considerations"></a>A kapacitás szempontok
 
 A dedikált gazdagép kiosztása után az Azure hozzárendeli azt a fizikai kiszolgálóhoz. Ez garantálja a kapacitás rendelkezésre állását, ha üzembe kell helyeznie a virtuális gépet. Az Azure a régió (vagy zóna) teljes kapacitását használja a gazdagép fizikai kiszolgálójának kiválasztásához. Ez azt is jelenti, hogy az ügyfelek várhatóan növekedni tudnak a dedikált gazdagépek lábnyomán anélkül, hogy a fürtön kívülről kellene kifogyni.
 
@@ -98,6 +98,8 @@ A gazdagép árát a VM-család, a típus (hardver mérete) és a régió alapj�
 A szoftver licencelése, a tárolás és a hálózat használata a gazdagéptől és a virtuális gépektől függetlenül történik. Ezek a Számlázatlan elemek nem változnak.
 
 További információ: [Azure dedikált gazdagép díjszabása](https://aka.ms/ADHPricing).
+
+A költségeket a [dedikált Azure-gazdagépek fenntartott példánya] (..) szerint is mentheti. /articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md).
  
 ## <a name="vm-families-and-hardware-generations"></a>VM-családok és hardveres generációk
 

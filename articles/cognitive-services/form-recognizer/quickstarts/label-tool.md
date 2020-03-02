@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 301b68d0dfaeef6d5cfdd4d7a5a504794ac877f4
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485352"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205822"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
@@ -35,12 +35,19 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 ## <a name="set-up-the-sample-labeling-tool"></a>A minta feliratozási eszköz beállítása
 
 A minta címkéző eszköz futtatásához a Docker-motort fogja használni. A Docker-tároló beállításához kövesse az alábbi lépéseket. A Docker és a Container alapjairól a [Docker áttekintésében](https://docs.docker.com/engine/docker-overview/)talál további információt.
-1. Először telepítse a Docker-t egy gazdagépre. A gazdaszámítógép lehet a helyi számítógép ([Windows](https://docs.docker.com/docker-for-windows/), [MacOS](https://docs.docker.com/docker-for-mac/)vagy [Linux](https://docs.docker.com/install/)). Vagy használhat egy Docker-üzemeltetési szolgáltatást az Azure-ban, mint például az [Azure Kubernetes szolgáltatás](https://docs.microsoft.com/azure/aks/index), [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index)vagy egy [Azure stack üzembe helyezett](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910)Kubernetes-fürt. A gazdagépnek meg kell felelnie a következő hardverkövetelmények követelményeinek:
+1. Először telepítse a Docker-t egy gazdagépre. Ez az útmutató bemutatja, hogyan használható a helyi számítógép gazdagépként. Ha Docker-üzemeltetési szolgáltatást szeretne használni az Azure-ban, tekintse meg a [minta címkézési eszköz üzembe helyezése](../deploy-label-tool.md) útmutató című témakört. 
+
+   A gazdagépnek meg kell felelnie a következő hardverkövetelmények követelményeinek:
 
     | Tároló | Minimális | Ajánlott|
     |:--|:--|:--|
     |Minta címkéző eszköz|2 mag, 4 GB memória|4 mag, 8 GB memória|
-    
+
+   Telepítse a Docker-t a gépre az operációs rendszerének megfelelő utasítások követésével: 
+   * [Windows](https://docs.docker.com/docker-for-windows/)
+   * [macOS](https://docs.docker.com/docker-for-mac/)
+   * [Linux](https://docs.docker.com/install/).
+
 1. Szerezze be a minta címkéző eszköz tárolóját a `docker pull` paranccsal.
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
@@ -116,17 +123,23 @@ Kattintson az OCR futtatása elemre a bal oldali ablaktábla **összes fájlján
 
 ### <a name="apply-labels-to-text"></a>Feliratok alkalmazása szövegre
 
-Ezután létre kell hoznia a címkéket, és alkalmaznia kell azokat a szöveges elemekre, amelyeket fel szeretne ismerni a modellből.
+Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat a szöveges elemekre, amelyeket fel szeretne ismerni a modellből.
 
-1. Először a címkék szerkesztő paneljén hozza létre azokat a címkéket (címkéket), amelyeket azonosítani szeretne.
+1. Először a címkék szerkesztő paneljén hozza létre az azonosítani kívánt címkéket.
+  1. Új címke létrehozásához kattintson a **+** elemre.
+  1. Adja meg a címke nevét.
+  1. Nyomja le az ENTER billentyűt a címke mentéséhez.
 1. A fő szerkesztőben kattintson és húzással jelöljön ki egy vagy több szót a Kiemelt szöveges elemek közül.
+1. Kattintson az alkalmazni kívánt címkére, vagy nyomja le a megfelelő billentyűt. A kulcsok az első 10 címkéhez gyorsbillentyűként vannak hozzárendelve. A címkéket átrendezheti a címke-szerkesztő ablaktábla fel és le nyíl ikonjának használatával.
+    > [!Tip]
+    > Az űrlapok címkézése során tartsa szem előtt az alábbi tippeket.
+    > * Csak egy címkét alkalmazhat az egyes kijelölt szöveges elemekre.
+    > * Az egyes címkék csak egyszer alkalmazhatók oldalanként. Ha egy érték többször is megjelenik ugyanazon az űrlapon, hozzon létre különböző címkéket az egyes példányokhoz. Például: "számla # 1", "számla # 2" és így tovább.
+    > * A címkék nem terjedhetnek át a lapokra.
+    > * Az űrlapon megjelenő címkézett értékek ne próbáljon két részre osztani egy értéket két különböző címkével. Például egy cím mezőt egyetlen címkével kell megcímkézni, még akkor is, ha több sort is felölel.
+    > * A címkézett mezőkben ne szerepeljenek kulcsok,&mdash;csak az értékeket.
+    > * A tábla adatokat automatikusan kell észlelni, és a végső kimeneti JSON-fájlban lesznek elérhetők. Ha azonban a modell nem ismeri fel az összes tábla adatait, manuálisan is címkézheti ezeket a mezőket. Címkézze fel a tábla minden celláját egy másik címkével. Ha az űrlapok különböző számú sort tartalmazó táblázatokkal rendelkeznek, ügyeljen arra, hogy legalább egy űrlapot címkével lássa el a lehető legnagyobb táblázattal.
 
-    > [!NOTE]
-    > Jelenleg nem választhat több oldalra kiterjedő szöveget.
-1. Kattintson az alkalmazni kívánt címkére, vagy nyomja le a megfelelő billentyűt. Csak egy címkét alkalmazhat az egyes kijelölt szöveges elemekre, és az egyes címkék csak egyszer alkalmazhatók oldalanként.
-
-    > [!TIP]
-    > A kulcsok az első tíz címkéhez gyorsbillentyűként vannak hozzárendelve. A címkéket átrendezheti a címke-szerkesztő ablaktábla fel és le nyíl ikonjának használatával.
 
 Kövesse a fenti lépéseket az űrlapok öt megjelöléséhez, majd folytassa a következő lépéssel.
 
