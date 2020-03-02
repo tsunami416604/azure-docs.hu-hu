@@ -29,6 +29,8 @@
       href: tutorial-r-doazureparallel.md
     - name: OCR Batch-feladattal és Functions-függvényekkel
       href: tutorial-batch-functions.md
+    - name: Python-szkriptek Data Factoryvel
+      href: tutorial-run-python-batch-azure-data-factory.md
 - name: Példák
   items:
     - name: Kódminták

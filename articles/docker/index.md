@@ -10,12 +10,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 4f4849139f0e5c5a8672b9364f7acc03cff6c948
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 429494b829d1307b4f89dbf746d24135a4322a97
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605574"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164457"
 ---
 <div class="content">
    <h1>Docker az Azure rendszeren</h1>   
@@ -31,9 +31,8 @@ A Docker egy népszerű tárolókezelő és képalkotó platform, amely lehetőv
 <h2>Részletes útmutatók</h2>
 <p>Ismerje meg, hogyan használható a Docker az alkalmazásában, valamint a CI/CD-folyamatának részeként:</p>
 <ol>
-  <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">Python és a PostgreSQL létrehozása Docker használatával</a></li>
-  <li><a href="/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine">CI/CD a Docker Swarm és az Azure DevOps Services használatával</a></li>
-  <li><a href="/azure/jenkins/tutorial-jenkins-github-docker-cicd">A Docker, a Jenkins és a Linux rendszerű virtuális gépek integrálása</a></li>
+  <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">Python- (Django-) webalkalmazás futtatása PostgreSQL-lel az Azure App Service-ben</a></li>
+  <li><a href="/azure/jenkins/tutorial-jenkins-github-docker-cicd">Fejlesztési infrastruktúra létrehozása egy Azure-beli Linux rendszerű virtuális gépen a Jenkins, a GitHub és a Docker használatával</a></li>
 </ol>
 <h2>További források</h2>
 <p>A Docker Azure rendszeren történő használatával kapcsolatos további referenciaanyagokért és eszközökért tekintse meg a következő referenciákat.</p>

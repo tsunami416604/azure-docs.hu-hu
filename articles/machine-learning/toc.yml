@@ -77,6 +77,8 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
     - name: Teljes körű MLOps-példák
       href: 'https://github.com/microsoft/MLOps'
+    - name: Tervezői mintaadatkészletek
+      href: designer-sample-datasets.md
 - name: Alapelvek
   items:
     - name: Munkaterület

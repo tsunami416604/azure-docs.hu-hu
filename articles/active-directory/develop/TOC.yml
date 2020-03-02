@@ -29,9 +29,9 @@
           href: quickstart-v2-javascript.md
     - name: Webalkalmazások
       items:
-        - name: ASP .NET
+        - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP.NET Core
+        - name: ASP.NET-mag
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -42,9 +42,9 @@
           href: quickstart-v2-python-webapp.md
     - name: Webes API-k
       items:
-        - name: ASP .NET
+        - name: ASP.NET
           href: quickstart-v2-dotnet-native-aspnet.md
-        - name: ASP.NET Core
+        - name: ASP.NET-mag
           href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
     - name: Mobil- és asztali alkalmazások
       items:
@@ -70,7 +70,7 @@
           href: tutorial-v2-javascript-spa.md
     - name: Webalkalmazások
       items:
-        - name: ASP .NET
+        - name: ASP.NET
           href: tutorial-v2-asp-webapp.md
     - name: Mobil- és asztali alkalmazások
       items:
@@ -242,13 +242,15 @@
           href: brokered-auth.md
         - name: Migrálás
           items:
+            - name: Áttekintés
+              href: msal-migration.md
             - name: Migrálás MSAL.NET-re
               href: msal-net-migration.md
             - name: Migrálás MSAL.js-re
               href: msal-compare-msal-js-and-adal-js.md
             - name: Migrálás MSAL.Androidra
               href: migrate-android-adal-msal.md
-            - name: Migrálás MSAL.iOS vagy MacOS rendszerre
+            - name: Migrálás MSAL.iOS vagy macOS rendszerre
               href: migrate-objc-adal-msal.md
             - name: Migrálás MSAL Pythonba
               href: migrate-python-adal-msal.md

@@ -276,7 +276,7 @@
       items:
         - name: 2023. március 1-től kezdődő kivezetések
           href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-        - name: Áttekintés
+        - name: Migrálás áttekintése
           href: migration-classic-resource-manager-overview.md
         - name: Az áttelepítés részletes bemutatása
           href: migration-classic-resource-manager-deep-dive.md

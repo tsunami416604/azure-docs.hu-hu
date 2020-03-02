@@ -121,6 +121,10 @@
           href: storage-sync-offline-data-transfer.md
         - name: Migrálás StorSimple-ből Azure File Syncre
           href: storage-sync-files-storsimple-migration.md
+        - name: StorSimple 8100 és 8600 migrálási útmutató
+          href: storage-files-migration-storsimple-8000.md
+        - name: StorSimple 1200 migrálási útmutató
+          href: storage-files-migration-storsimple-1200.md
     - name: Fejlesztés
       items:
         - name: Kapcsolati sztringek konfigurálása

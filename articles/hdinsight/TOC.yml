@@ -504,6 +504,8 @@
           href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
     - name: Oktatóanyagok
       items:
+        - name: Apache Kafka-fürt létrehozása – Azure CLI
+          href: ./kafka/tutorial-cli-rest-proxy.md
         - name: Az Apache Kafka Producer és a Consumer API használata
           href: ./kafka/apache-kafka-producer-consumer-api.md
         - name: Alkalmazás fejlesztése az Apache Kafka Streams API-val
@@ -548,8 +550,6 @@
               href: ./kafka/apache-kafka-mirroring.md
             - name: Apache Kafka-naplók elemzése
               href: ./kafka/apache-kafka-log-analytics-operations-management.md
-            - name: Saját kulcs használata
-              href: ./kafka/apache-kafka-byok.md
             - name: SSL-titkosítás és -hitelesítés
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
         - name: Hibaelhárítás

@@ -47,6 +47,8 @@
       items:
         - name: Funkciófrissítés
           href: azure-ad-roles-features.md
+        - name: PowerShell Azure AD-szerepkörökhöz
+          href: powershell-for-azure-ad-roles.md
         - name: Szerepkörök hozzárendelése
           href: pim-how-to-add-role-to-user.md
         - name: Kérések jóváhagyása

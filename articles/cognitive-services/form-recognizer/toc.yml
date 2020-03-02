@@ -1,6 +1,7 @@
 - name: A Form Recognizer dokumentációja
   href: index.yml
 - name: Áttekintés
+  expanded: true
   items:
     - name: Mi a Form Recognizer?
       href: overview.md
@@ -45,6 +46,8 @@
   items:
     - name: Betanítási adathalmaz létrehozása
       href: build-training-data-set.md
+    - name: A mintacímkézési eszköz üzembe helyezése
+      href: deploy-label-tool.md
     - name: Tárolók használata
       items:
         - name: Tárolók telepítése és futtatása

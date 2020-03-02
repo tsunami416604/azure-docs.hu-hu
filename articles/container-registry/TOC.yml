@@ -19,6 +19,8 @@
           href: container-registry-get-started-powershell.md
         - name: Események küldése az Event Gridbe – parancssori felület
           href: container-registry-event-grid-quickstart.md
+        - name: Java-rendszerképek buildelése és leküldéses továbbítása – parancssori felület
+          href: container-registry-java-quickstart.md
     - name: Oktatóanyagok
       expanded: false
       items:

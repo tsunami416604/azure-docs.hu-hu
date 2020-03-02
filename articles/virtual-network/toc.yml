@@ -103,7 +103,7 @@
   items:
     - name: Tervezés és konfigurálás
       items:
-        - name: Virtuális hálózatok
+        - name: Virtuális hálózatok tervezése
           href: virtual-network-vnet-plan-design-arm.md
         - name: A virtuális gépek és felhőszolgáltatások névfeloldása
           href: virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -209,41 +209,64 @@
               href: virtual-network-public-ip-address.md
             - name: Nyilvános IP-előtag kezelése
               href: manage-public-ip-address-prefix.md
-            - name: 'IP-címek hozzáadása hálózati adapterekhez, illetve IP-címek eltávolítása hálózati adapterekből'
+            - name: 'IP-cím hozzáadása hálózati adapterekhez, illetve IP-cím eltávolítása hálózati adapterekből'
               href: virtual-network-network-interface-addresses.md
     - name: Biztonság
       items:
-        - name: A DDoS Protection kezelése
-          href: manage-ddos-protection.md
-        - name: Hálózati biztonsági csoportok kezelése
-          href: manage-network-security-group.md
-        - name: Partnerek előkészítése a DDoS Protection Standard használatára
-          href: ddos-protection-partner-onboarding.md
-        - name: Hálózati forgalom szűrése hálózati biztonsági csoportokkal
+        - name: Hozzáférés korlátozása hálózati biztonsági csoportokkal
           items:
+            - name: Azure Portal
+              href: tutorial-restrict-network-access-to-resources.md
+            - name: Azure PowerShell
+              href: tutorial-restrict-network-access-to-resources-powershell.md
+            - name: Azure CLI
+              href: tutorial-restrict-network-access-to-resources-cli.md
+            - name: Hálózati biztonsági csoportok kezelése
+              href: manage-network-security-group.md
+        - name: Hálózati forgalom szűrése
+          items:
+            - name: Azure Portal
+              href: tutorial-filter-network-traffic.md
             - name: Azure PowerShell
               href: tutorial-filter-network-traffic-powershell.md
             - name: Azure CLI
               href: tutorial-filter-network-traffic-cli.md
-        - name: Forgalom irányítása NVA használatával
+        - name: Hálózatelkülönítés
           items:
+            - name: Privát végpontok használata
+              items:
+                - name: Azure Portal
+                  href: ../private-link/create-private-endpoint-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure PowerShell
+                  href: ../private-link/create-private-endpoint-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure CLI
+                  href: ../private-link/create-private-endpoint-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Szolgáltatásvégpontok használata
+              items:
+                - name: Azure Portal
+                  href: tutorial-restrict-network-access-to-resources.md
+                - name: Azure PowerShell
+                  href: tutorial-restrict-network-access-to-resources-powershell.md
+                - name: Azure CLI
+                  href: tutorial-restrict-network-access-to-resources-cli.md
+            - name: Végpontszabályzatok létrehozása
+              href: virtual-network-service-endpoint-policies-portal.md
+        - name: Hálózati forgalom továbbítása
+          items:
+            - name: Azure Portal
+              href: tutorial-create-route-table-portal.md
             - name: Azure PowerShell
               href: tutorial-create-route-table-powershell.md
             - name: Azure CLI
               href: tutorial-create-route-table-cli.md
             - name: Ansible
               href: /azure/ansible/ansible-create-configure-route-table
-              maintainContext: true
-        - name: Útválasztási táblázatok kezelése
-          href: manage-route-table.md
-        - name: Szolgáltatásvégpontok használata
-          items:
-            - name: Azure PowerShell
-              href: tutorial-restrict-network-access-to-resources-powershell.md
-            - name: Azure CLI
-              href: tutorial-restrict-network-access-to-resources-cli.md
-        - name: Szolgáltatásvégpont-szabályzatok létrehozása – Portal
-          href: virtual-network-service-endpoint-policies-portal.md
+            - name: Útválasztási táblázatok kezelése
+              href: manage-route-table.md
+        - name: A DDoS Protection kezelése
+          href: manage-ddos-protection.md
+        - name: Partnerek előkészítése a DDoS Protection Standard használatára
+          href: ddos-protection-partner-onboarding.md
         - name: Biztonsági forgatókönyvek
           items:
             - name: Hálózatok biztonságossá tétele virtuális készülékekkel
@@ -272,6 +295,12 @@
               href: virtual-networks-static-private-ip-arm-ps.md
             - name: Azure CLI
               href: virtual-networks-static-private-ip-arm-cli.md
+        - name: Virtuális gép létrehozása – Statikus magánhálózati IP-cím (klasszikus)
+          items:
+            - name: Azure Portal
+              href: virtual-networks-static-private-ip-classic-pportal.md
+            - name: Azure PowerShell
+              href: virtual-networks-static-private-ip-classic-ps.md
         - name: Virtuális gép létrehozása – Több IP-cím
           items:
             - name: Azure Portal

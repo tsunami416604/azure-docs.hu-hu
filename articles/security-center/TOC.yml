@@ -6,8 +6,16 @@
       href: security-center-intro.md
     - name: Támogatott platformok
       href: security-center-os-coverage.md
-    - name: Támogatott funkciók
-      href: security-center-services.md
+    - name: A Security Center funkciói
+      items:
+        - name: Virtuális gépek funkciólefedettsége
+          href: security-center-services.md
+        - name: Azure PaaS-erőforrások funkciólefedettsége
+          href: features-paas.md
+    - name: Biztonsági javaslatok
+      href: recommendations-reference.md
+    - name: Biztonsági riasztások és a szándékos törlési lánc
+      href: alerts-reference.md
 - name: Rövid útmutatók
   expanded: true
   items:
