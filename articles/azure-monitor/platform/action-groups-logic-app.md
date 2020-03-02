@@ -2,23 +2,23 @@
 title: Összetett műveletek elindítása Azure Monitor riasztásokkal
 description: Megtudhatja, hogyan hozhat létre logikai alkalmazás-műveletet Azure Monitor riasztások feldolgozásához.
 author: dkamstra
-services: azure-monitor
+ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: adc53ad1c75b3251c5672d9078062631b107cc87
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: HT
+ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669131"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206236"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Összetett műveletek elindítása Azure Monitor riasztásokkal
 
 Ebből a cikkből megtudhatja, hogyan állíthat be és indíthat el egy logikai alkalmazást a Microsoft Teams-beszélgetések létrehozásához, amikor riasztást küld.
 
 ## <a name="overview"></a>Áttekintés
+
 Amikor egy Azure Monitor riasztást indít el, meghívja a [műveleti csoportot](../../azure-monitor/platform/action-groups.md). A műveleti csoportok lehetővé teszik, hogy egy vagy több műveletet indítson el, hogy értesítse másokat a riasztásokról, és azt is javítsa.
 
 Az általános folyamat:
@@ -68,10 +68,10 @@ A folyamat hasonló, ha azt szeretné, hogy a logikai alkalmazás más művelete
                 "activityLog": {
                     "authorization": {
                     "action": "microsoft.insights/activityLogAlerts/write",
-                    "scope": "/subscriptions/�"
+                    "scope": "/subscriptions/…"
                     },
                     "channels": "Operation",
-                    "claims": "�",
+                    "claims": "…",
                     "caller": "logicappdemo@contoso.com",
                     "correlationId": "91ad2bac-1afa-4932-a2ce-2f8efd6765a3",
                     "description": "",
@@ -81,12 +81,12 @@ A folyamat hasonló, ha azt szeretné, hogy a logikai alkalmazás más művelete
                     "level": "Informational",
                     "operationName": "microsoft.insights/activityLogAlerts/write",
                     "operationId": "61f59fc8-1442-4c74-9f5f-937392a9723c",
-                    "resourceId": "/subscriptions/�",
+                    "resourceId": "/subscriptions/…",
                     "resourceGroupName": "LOGICAPP-DEMO",
                     "resourceProviderName": "microsoft.insights",
                     "status": "Succeeded",
                     "subStatus": "",
-                    "subscriptionId": "�",
+                    "subscriptionId": "…",
                     "submissionTimestamp": "2018-04-03T22:33:36.1068742+00:00",
                     "resourceType": "microsoft.insights/activityLogAlerts"
                 }
@@ -104,7 +104,7 @@ A folyamat hasonló, ha azt szeretné, hogy a logikai alkalmazás más művelete
 
     ![Művelet hozzáadása](media/action-groups-logic-app/add-action.png "Művelet hozzáadása")
 
-11. Keresse meg és válassza ki a Microsoft Teams-összekötőt. Válassza a **Microsoft Teams üzenet küldése** műveletet.
+11. Keresse meg és válassza ki a Microsoft Teams-összekötőt. Válassza ki a **Microsoft Teams-post üzenet** műveletet.
 
     ![Microsoft Teams-műveletek](media/action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams-műveletek")
 
@@ -150,7 +150,7 @@ Azure Service Health bejegyzések a műveletnapló részét képezik. A riasztá
                 "activityLog": {
                     "channels": "Admin",
                     "correlationId": "e416ed3c-8874-4ec8-bc6b-54e3c92a24d4",
-                    "description": "�",
+                    "description": "…",
                     "eventSource": "ServiceHealth",
                     "eventTimestamp": "2018-04-03T22:44:43.7467716+00:00",
                     "eventDataId": "9ce152f5-d435-ee31-2dce-104228486a6d",
@@ -158,23 +158,23 @@ Azure Service Health bejegyzések a műveletnapló részét képezik. A riasztá
                     "operationName": "Microsoft.ServiceHealth/incident/action",
                     "operationId": "e416ed3c-8874-4ec8-bc6b-54e3c92a24d4",
                     "properties": {
-                        "title": "�",
-                        "service": "�",
+                        "title": "...",
+                        "service": "...",
                         "region": "Global",
-                        "communication": "�",
+                        "communication": "...",
                         "incidentType": "Incident",
-                        "trackingId": "�",
+                        "trackingId": "...",
                         "impactStartTime": "2018-03-22T21:40:00.0000000Z",
                         "impactMitigationTime": "2018-03-22T21:41:00.0000000Z",
                         "impactedServices": "[{"ImpactedRegions"}]",
-                        "defaultLanguageTitle": "�",
-                        "defaultLanguageContent": "�",
+                        "defaultLanguageTitle": "...",
+                        "defaultLanguageContent": "...",
                         "stage": "Active",
                         "communicationId": "11000001466525",
                         "version": "0.1.1"
                     },
                     "status": "Active",
-                    "subscriptionId": "�",
+                    "subscriptionId": "...",
                     "submissionTimestamp": "2018-04-03T22:44:50.8013523+00:00"
                 }
             },
@@ -237,7 +237,7 @@ A metrikai riasztások létrehozásának folyamata hasonló a [műveletnapló-ri
         "status": "Activated",
         "context": {
         "timestamp": "2018-04-09T19:00:07.7461615Z",
-        "id": "�",
+        "id": "...",
         "name": "TEST-VM CPU Utilization",
         "description": "",
         "conditionType": "SingleResourceMultipleMetricCriteria",
@@ -259,12 +259,12 @@ A metrikai riasztások létrehozásának folyamata hasonló a [műveletnapló-ri
             }
             ]
         },
-        "subscriptionId": "�",
+        "subscriptionId": "...",
         "resourceGroupName": "TEST",
         "resourceName": "test-vm",
         "resourceType": "Microsoft.Compute/virtualMachines",
-        "resourceId": "�",
-        "portalLink": "�"
+        "resourceId": "...",
+        "portalLink": "..."
         },
         "properties": {}
     }
@@ -284,7 +284,7 @@ A metrikai riasztások létrehozásának folyamata hasonló a [műveletnapló-ri
 
       !["Metrikus riasztás igaz feltétel utáni művelet"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "Metrikus riasztás – igaz feltétel utáni művelet")
 
-  1. **Ha hamis** állapotban van, Definiáljon egy Microsoft Teams műveletet, amely közli, hogy a metrikai riasztás nem felel meg a logikai alkalmazás elvárásainak. A JSON-adattartalom belefoglalása. Figyelje meg, hogyan hivatkozhat a `triggerBody` dinamikus tartalomra a `json()` kifejezésben.
+  1. **Ha hamis** állapotban van, Definiáljon egy Microsoft Teams műveletet, amely közli, hogy a mérőszám riasztása nem felel meg a logikai alkalmazás elvárásainak. A JSON-adattartalom belefoglalása. Figyelje meg, hogyan hivatkozhat a `triggerBody` dinamikus tartalomra a `json()` kifejezésben.
 
       !["Metrika riasztás hamis feltétele utáni művelet"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "Metrika riasztás hamis feltétele utáni művelet")
 
