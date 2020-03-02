@@ -11,33 +11,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2020
+ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 14c54028dacb545532b540ae8ff79fc3dc5356bc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9d3fa1e0b62ea6f4762c3df6ac7da310d5703807
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921266"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208796"
 ---
-# <a name="supported-features-available-in-azure-security-center"></a>A Azure Security Centerban elérhető támogatott szolgáltatások
+# <a name="feature-coverage-for-machines"></a>Szolgáltatások lefedettsége gépekhez
 
-> [!NOTE]
->Néhány funkció csak a standard szinttel érhető el. Ha még nem regisztrált a Security Center Standard csomagra, ingyenes próbaidőszak érhető el. További információkért tekintse meg a [Security Center díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+Az alábbi táblázatok a virtuális gépek és a kiszolgálók számára elérhető Azure Security Center funkciókat mutatják be.
 
-A következő szakaszban Security Center a [támogatott platformokhoz](security-center-os-coverage.md)elérhető funkciók láthatók.
+## A virtuális gépek és a kiszolgálók által támogatott funkciók<a name="vm-server-features"></a>
 
-* [Virtuális gépek/kiszolgálók](#vm-server-features)
-* [Pásti-szolgáltatások](#paas-services)
-
-
-## Virtuális gép/kiszolgáló által támogatott funkciók<a name="vm-server-features"></a>
-
-### <a name="windows"></a>[Windows](#tab/features-windows)
+### <a name="windows-machines"></a>[Windows rendszerű gépek](#tab/features-windows)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-||**Azure Virtual Machines**|**Azure-Virtual Machine Scale Sets**|**Nem Azure-beli gépek**|**Díjszabás**
+|**Funkció**|**Azure Virtual Machines**|**Azure-Virtual Machine Scale Sets**|**Nem Azure-beli gépek**|**Díjszabás**
 |[Microsoft Defender ATP-integráció](security-center-wdatp.md)|✔</br>(támogatott verziók esetén)|✔</br>(támogatott verziók esetén)|✔|Standard|
 |[Virtuális gép viselkedési elemzési (és biztonsági riasztások)](threat-protection.md)|✔|✔|✔|Javaslatok (ingyenes) </br></br> Biztonsági riasztások (standard)|
 |[Nem biztonságos biztonsági riasztások](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
@@ -51,19 +44,19 @@ A következő szakaszban Security Center a [támogatott platformokhoz](security-
 |Adaptív hálózati vezérlők|✔|✔|-|Standard|
 |[Szabályozási megfelelőségi irányítópult & jelentések](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Javaslatok és veszélyforrások elleni védelem a Docker által üzemeltetett IaaS-tárolókban|-|-|-|Standard|
-|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Ingyenes|
-|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Ingyenes|
-|[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Ingyenes|
-|Lemez titkosításának felmérése|✔|✔|-|Ingyenes|
-|Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|Ingyenes|
-|[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|Ingyenes|
+|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Free|
+|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Free|
+|[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Free|
+|Lemez titkosításának felmérése|✔|✔|-|Free|
+|Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|Free|
+|[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|Free|
 
 
-### <a name="linux"></a>[Linux](#tab/features-linux)
+### <a name="linux-machines"></a>[Linux rendszerű gépek](#tab/features-linux)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-||**Azure Virtual Machines**|**Azure-Virtual Machine Scale Sets**|**Nem Azure-beli gépek**|**Díjszabás**
+|**Funkció**|**Azure Virtual Machines**|**Azure-Virtual Machine Scale Sets**|**Nem Azure-beli gépek**|**Díjszabás**
 |[Microsoft Defender ATP-integráció](security-center-wdatp.md)|-|-|-|Standard|
 |[Virtuális gép viselkedési elemzési (és biztonsági riasztások)](security-center-alerts-iaas.md)|✔</br>(támogatott verziók esetén)|✔</br>(támogatott verziók esetén)|✔|Javaslatok (ingyenes) </br></br> Biztonsági riasztások (standard)|
 |[Nem biztonságos biztonsági riasztások](alerts-reference.md#alerts-windows)|-|-|-|Standard|
@@ -77,14 +70,19 @@ A következő szakaszban Security Center a [támogatott platformokhoz](security-
 |Adaptív hálózati vezérlők|✔|✔|-|Standard|
 |[Szabályozási megfelelőségi irányítópult & jelentések](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Javaslatok és veszélyforrások elleni védelem a Docker által üzemeltetett IaaS-tárolókban|✔|✔|✔|Standard|
-|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Ingyenes|
-|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Ingyenes|
-|[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Ingyenes|
-|Lemez titkosításának felmérése|✔|✔|-|Ingyenes|
-|Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|Ingyenes|
-|[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|Ingyenes|
+|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Free|
+|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Free|
+|[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Free|
+|Lemez titkosításának felmérése|✔|✔|-|Free|
+|Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|Free|
+|[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|Free|
 
 --- 
+
+
+> [!TIP]
+>A standard díjszabási szinten elérhető funkciókkal való kísérletezéshez az ingyenes szint felhasználói 30 napos próbaidőszak alatt regisztrálhatnak. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/security-center/) olvasható.
+
 
 ## Támogatott Endpoint Protection-megoldások<a name="endpoint-supported"></a>
 
@@ -95,7 +93,7 @@ A következő táblázat a következőkhöz nyújt mátrixot:
 
 További információ az egyes védelemekhez kapcsolódó javaslatok létrehozásáról: [Endpoint Protection Értékelés és javaslatok](security-center-endpoint-protection.md).
 
-| Endpoint Protection (Végpontok védelme)| Platformok | Security Center telepítése | Security Center felderítése |
+| Endpoint Protection| Platformok | Security Center telepítése | Security Center felderítése |
 |------|------|-----|-----|
 | Windows Defender (Microsoft-kártevőirtó)| Windows Server 2016| Nincs, az operációs rendszerbe van beépítve| Igen |
 | System Center Endpoint Protection (Microsoft-kártevőirtó) | Windows Server 2012 R2, 2012, 2008 R2 (lásd az alábbi megjegyzést) | Bővítmény útján | Igen |
@@ -112,47 +110,7 @@ További információ az egyes védelemekhez kapcsolódó javaslatok létrehozá
 > - A Trend Micro Protection észlelése a mély biztonsági ügynökök esetében támogatott.  A OfficeScan-ügynökök nem támogatottak.
 
 
-## A Pásti Services által <a name="paas-services"></a> támogatott funkciók
-
-A Azure Security Center a következő Pásti-erőforrásokat támogatja:
-
-|Szolgáltatás|Javaslatok (ingyenes)|Biztonsági riasztások (standard)|Sebezhetőségi felmérés (standard)|
-|----|:----:|:----:|:----:|
-|SQL Database-adatbázisok|✔|✔|✔|
-|Azure Container Registry|-|-|✔|
-|Azure Kubernetes Service|✔|✔|-|
-|Azure Database for PostgreSQL *|✔|✔|-|
-|Azure Database for MySQL *|✔|✔|-|
-|Azure-CosmosDB *|-|✔|-|
-|Tárfiókok|✔|-|-|
-|Blob Storage|✔|✔|-|
-|App Service|✔|✔|-|
-|Függvényalkalmazás|✔|-|-|
-|Felhőszolgáltatások|✔|-|-|
-|Virtual Network|✔|-|-|
-|Alhálózat|✔|-|-|
-|Hálózati adapter|✔|-|-|
-|Network Security Groups (Hálózati biztonsági csoportok)|✔|-|-|
-|Előfizetést|✔ **|✔|-|
-|Batch-fiók|✔|-|-|
-|Service Fabric fiók|✔|-|-|
-|Automation-fiók|✔|-|-|
-|Load Balancer|✔|-|-|
-|Cognitive Search|✔|-|-|
-|Service Bus-névtér|✔|-|-|
-|Stream Analytics|✔|-|-|
-|Eseményközpont-névtér|✔|-|-|
-|Logikai alkalmazások|✔|-|-|
-|Gyorsítótár a Redis|✔|-|-|
-|Data Lake Analytics|✔|-|-|
-|Azure Data Lake Storage|✔|-|-|
-|Key Vault|✔|✔ *|-|
-
-\* ezek a funkciók jelenleg előzetes verzióban támogatottak.
-
-\*\* Azure Active Directory (Azure AD) javaslatok csak a standard előfizetések esetén érhetők el.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [, hogyan gyűjt Security Center adatokat és a log Analytics ügynököt](security-center-enable-data-collection.md).
 - Megtudhatja [, hogyan kezeli és védi a Security Center az információkat](security-center-data-security.md).

@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/22/2020
-ms.openlocfilehash: 4cac2fcd16f779a6b31e36ca175801eedaa31d5d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.date: 02/28/2020
+ms.openlocfilehash: 9d06b34b459bf1d48aa293a889af57fb6192015d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705819"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208865"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -119,7 +119,7 @@ Az ingyenes próbaverzióra mutató hivatkozást tartalmazó ajánlat listázás
 > [!NOTE]
 > Az alkalmazás által a próbaverziós hivatkozáson keresztül fogadott jogkivonatok csak a felhasználói adatok Azure AD-n keresztüli beszerzéséhez használhatók, hogy automatizálják a fiókok létrehozását az alkalmazásban. A Microsoft-fiókok (MSA-EK) nem támogatottak a jogkivonat használatával történő hitelesítéshez.
 
-##### <a name="contact-me"></a>Megkeresést kérek
+##### <a name="contact-me"></a>Kapcsolatfelvétel
 Az Ügyfélkapcsolat-kezelési (CRM) rendszer csatlakoztatásával Gyűjtse össze az ügyfelek kapcsolattartási adatait. A rendszer engedélyt kér az ügyféltől az információk megosztására. Az ügyfél adatait, valamint az ajánlat nevét, AZONOSÍTÓját és Piactéri forrását, ahol az ajánlat megtalálható, a rendszer elküldi a konfigurált CRM-rendszernek. A CRM konfigurálásával kapcsolatos további információkért lásd: az [érdeklődők felügyeletének összekötése](#connect-lead-management).
 
 ## <a name="example-marketplace-offer-listing"></a>Példa a piactér ajánlatának listázására
@@ -134,16 +134,7 @@ A test Drive nagyszerű lehetőséget nyújt arra, hogy ajánlatot nyújtson a p
 
 A test Drive engedélyezésével a rendszer arra kéri, hogy állítson be egy demonstrációs környezetet az ügyfeleknek az ajánlat meghatározott időn belül történő kipróbálásához. 
 
-### <a name="type-of-test-drive"></a>A tesztelési meghajtó típusa
-
-- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : egy központi telepítési sablon, amely tartalmazza a megoldását alkotó összes Azure-erőforrást. Az ehhez a forgatókönyvhöz illeszkedő termékek csak az Azure-erőforrásokat használják.
-- **[Dynamics 365 for Business Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : a Microsoft üzemelteti és karbantartja a test Drive szolgáltatást (beleértve az üzembe helyezést és a telepítést is) egy üzleti központi vállalati erőforrás-tervezési rendszerhez (pénzügy, műveletek, ellátási lánc, CRM stb.).  
-- **[Dynamics 365 az ügyfelek](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** bevonásához: a Microsoft üzemelteti és karbantartja a test Drive szolgáltatást (beleértve az üzembe helyezést és a telepítést is) az ügyfél-engagement rendszer (értékesítés, szolgáltatás, projekt szolgáltatás, mező szolgáltatás stb.) számára.  
-- **[Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : a Microsoft üzemelteti és karbantartja a test Drive szolgáltatást (beleértve a kiépítést és az üzembe helyezést) pénzügyi és üzemeltetési vállalati erőforrás-tervezési rendszerekhez (pénzügy, műveletek, gyártás, ellátási lánc stb.). 
-- **[Logikai alkalmazás](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : egy központi telepítési sablon, amely az összes összetett megoldás-architektúrát magában foglalja. Minden egyéni terméknek ilyen típusú tesztelési meghajtót kell használnia.
-- **[Power bi](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : beágyazott hivatkozás egy egyéni kialakítású irányítópultra. Azok a termékek, amelyek interaktív Power BI vizualizációt kívánnak bizonyítani, ezt a típusú tesztelési meghajtót kell használniuk. Itt a beágyazott Power BI URL-címére kell feltöltenie.
-
-#### <a name="additional-test-drive-resources"></a>További tesztelési meghajtó erőforrásai
+#### <a name="test-drive-resources"></a>A meghajtó erőforrásainak tesztelése
 - [A test Drive technikai ajánlott eljárásai](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [A test Drive marketing ajánlott eljárásai](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [A test Drive áttekintése egy pager](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
@@ -212,7 +203,7 @@ A kereskedelmi piactér-közzétevők számára két fajta módosítás érhető
 - **Bérlői azonosítók** (kötelező): minden egyéni módosítás legfeljebb 20 bérlői azonosítót célozhat meg. Ha egyéni módosítást ad hozzá, meg kell adnia legalább egy bérlői azonosítót. A bérlő azonosítója azonosítja az ügyfelet az Azure-ban. Megkérheti az ügyfelet erre az AZONOSÍTÓra, és megkeresheti a portal.azure.com > Azure Active Directory > a Tulajdonságok lehetőségre kattintva. A címtár-azonosító értéke a bérlő azonosítója (például 50c464d3-4930-494c-963c-1e951d15360e). A szervezet bérlői AZONOSÍTÓját is megkeresheti a saját tartománynév URL-címével, amely a [Microsoft Azure és az Office 365-bérlői azonosítóját használja?](https://www.whatismytenantid.com).
 - **Leírás** (nem kötelező): opcionálisan megadhatja a bérlői azonosító rövid leírását, amely segít azonosítani a módosítással megcélzott ügyfelet.
 
-#### <a name="terms-and-conditions"></a>Feltételek és kikötések
+#### <a name="terms-and-conditions"></a>használati feltételei
 
 Ha meg szeretné adni saját használati feltételeit, megadhatja őket a feltételek és kikötések mezőben. Ebben a mezőben legfeljebb 10 000 karakter hosszúságú szöveget adhat meg. Ha a feltételek és kikötések további leírást igényelnek, adjon meg egy URL-hivatkozást ebbe a mezőbe, ahol a feltételek és kikötések megtalálhatók. Aktív hivatkozásként jelenik meg az ügyfelek számára.
 
@@ -234,7 +225,7 @@ Adja meg a piactéren megjelenítendő adatokat, beleértve az ajánlat és a ma
 - **Név** (kötelező): az itt definiált név jelenik meg az ajánlatnak az Ön által választott piactéren (ko) lévő listáján. A név előre fel van töltve az előző **új ajánlat** bejegyzése alapján. A név lehet védjeggyel ellátott. Nem tartalmazhat hangulatjelek (kivéve, ha a védjegyek és a szerzői jogi szimbólumok), és legfeljebb 50 karakter hosszúnak kell lennie.
 - **Összefoglalás** (kötelező): adja meg az ajánlat rövid leírását, amelyet a Piactéri listák keresési eredményeiben kíván használni. Ebben a mezőben legfeljebb 100 karaktert lehet megadni.
 - **Leírás** (kötelező): adja meg a piactér-lista (ek) áttekintésében megjelenítendő ajánlat leírását. Érdemes figyelembe venni az érték kiosztását, a főbb előnyöket, a kategória-vagy iparági társításokat, az alkalmazáson belüli vásárlási lehetőségeket, a szükséges közzétételeket, valamint egy hivatkozást, amely további információkat tartalmaz.
-Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni. További tippekért tekintse meg a [nagyszerű alkalmazás leírását](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)ismertető cikket.
+Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni, beleértve a korrektúrát is. További tippekért tekintse meg a [nagyszerű alkalmazás leírását](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)ismertető cikket.
 - **Kulcsszavak keresése**: legfeljebb három olyan keresési kulcsszót adhat meg, amelyeket az ügyfelek a piactér (ek) ben használhatnak fel az ajánlat megtalálására.
 - **Útmutató az első lépésekhez** (kötelező): az alkalmazás konfigurálásának és használatának megkezdése a potenciális ügyfelek számára.  Ez a rövid útmutató a részletesebb online dokumentációra mutató hivatkozásokat is tartalmaz. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni.
 
@@ -290,7 +281,7 @@ A Rich Text Editor használatához kövesse az alábbi utasításokat:
 #### <a name="files-and-images"></a>Fájlok és lemezképek
 
 - **Dokumentumok** (kötelező): kapcsolódó marketing-dokumentumok hozzáadása az ajánlathoz PDF formátumban, legalább egy (1) és legfeljebb három (3) dokumentum biztosításával.
-- **Képek** (nem kötelező): több hely is van, ahol az ajánlat emblémájának képei megjelenhetnek a piactéren, a következő méretek megkövetelésével: 48 x 48 képpont _(kötelező),_ közepes: 90 x 90 képpont, nagyméretű: 216 x 216 képpont _(kötelező),_ Wide: 255 x 115 képpont és Hero: 815 x 290 képpont. Az összes rendszerképnek a-ben kell lennie. PNG-formátum.
+- **Képek** (nem kötelező): több hely is van, ahol az ajánlat emblémájának képei megjelenhetnek a piactéren, a következő méretek megkövetelésével: 48 x 48 képpont _(kötelező),_ közepes: 90 x 90 képpont _(kötelező)_ , nagyméretű: 216 x 216 képpont _(kötelező_ ), Wide: 255 x 115 képpont és Hero: 815 x 290 képpont. Az összes rendszerképnek a-ben kell lennie. PNG-formátum.
 - **Képernyőképek** (kötelező): az ajánlatot bemutató képernyőképeket adhat hozzá. Legfeljebb öt (5) képernyőkép adható hozzá, és 1280 x 720 képpont méretűnek kell lennie. Az összes rendszerképnek a-ben kell lennie. PNG-formátum.
 - **Videók** (nem kötelező): az ajánlatot bemutató videókra mutató hivatkozásokat adhat hozzá. A YouTube-és/vagy a Vimeo-videókra mutató hivatkozásokat is használhat, amelyek az Ön ajánlatával együtt jelennek meg az ügyfelek számára. Emellett meg kell adnia a videó miniatűr képét is, amely az 1280 x 720 képpont méretű, PNG formátumú. Ajánlat legfeljebb négy videót jeleníthet meg.
 
@@ -418,7 +409,7 @@ A közzététel előtt körültekintően tekintse át az árakat, mivel bizonyos
 
 Beállíthatja, hogy az egyes tervek mindenki számára láthatók legyenek, vagy csak egy adott célközönségnek. Az Azure AD-bérlői azonosítók használatával a korlátozott célközönséghez is hozzárendelhet tagságot.
 
-#### <a name="privacy"></a>Adatvédelem
+#### <a name="privacy"></a>Személyes adatok védelme
 
 - **Ez egy privát csomag** (opcionális jelölőnégyzet)
 
@@ -439,7 +430,7 @@ Míg a SaaS a bérlői azonosítókat használja a privát célközönség defin
 
 ![Példa a Piactéri csomagokra – megjegyzések](./media/marketplace-plan.svg)
 
-## <a name="test-drive"></a>Próbaüzem
+## <a name="test-drive"></a>Tesztelési meghajtó
 
 [!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
 
@@ -462,6 +453,6 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 - Adjon meg tesztelési útmutatást a minősítési csapatnak, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez hasznos kiegészítő megjegyzések mellett.
 - Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. Küldünk Önnek egy e-mailt, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Vissza kell térnie a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat közzétételéhez a nyilvános (vagy ha egy privát ajánlat, a privát közönség) számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

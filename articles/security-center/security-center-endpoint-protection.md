@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 899f4cba31afed812fa1643b925a38812308042e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552933"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208542"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection-Értékelés és javaslatok a Azure Security Center
 
-A Azure Security Center az Endpoint Protection-megoldások [támogatott](security-center-services.md#supported-endpoint-protection-solutions-) verzióinak egészségügyi értékelését biztosítja. Ez a cikk ismerteti azokat a forgatókönyveket, amelyek Security Center a következő két javaslat létrehozásához vezetnek:
+A Azure Security Center az Endpoint Protection-megoldások [támogatott](security-center-services.md#endpoint-supported) verzióinak egészségügyi értékelését biztosítja. Ez a cikk ismerteti azokat a forgatókönyveket, amelyek Security Center a következő két javaslat létrehozásához vezetnek:
 
 * **Endpoint Protection-megoldások telepítése a virtuális gépre**
 * **Az Endpoint Protection állapotával kapcsolatos problémák megoldása a gépeken**
@@ -94,7 +94,7 @@ Security Center javasolja az **Endpoint Protection-megoldások telepítését a 
 
 * **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-vagy
+Vagy
 
 * **HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
@@ -173,7 +173,7 @@ Security Center azt javasolja, hogy **"az Endpoint Protection-állapottal kapcso
 
 - a **"/opt/Sophos-AV/bin/savconfig Get LiveProtection"** érték engedélyezve
 
-## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
+## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 

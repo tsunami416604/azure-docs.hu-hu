@@ -1,36 +1,35 @@
 ---
-title: CI/CD-folyamat létrehozása a Node. js-hez Azure DevOps Projects
+title: CI/CD-folyamat létrehozása PWA GatsbyJS és Azure DevOps Projects
 description: DevOps Projects megkönnyíti az Azure megkezdését. A segítségével néhány gyors lépésben elindíthat egy alkalmazást a választott Azure-szolgáltatásban.
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
-author: mlearned
-manager: gwallace
+author: arob98
+manager: angrobe
 editor: ''
 ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 07/09/2018
-ms.author: mlearned
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.date: 02/24/2020
+ms.author: angrobe
+ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 35eebeaa393ff75ada11752aaf9f195efddfa12b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 508a61d6bbb00692855e09601aed67ab3be9cc8d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049807"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78209067"
 ---
 #  <a name="quickstart-create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-projects"></a>Rövid útmutató: CI/CD-folyamat létrehozása az Azure-folyamatokban Node. js-hez Azure DevOps Projects
-
-Ebben a rövid útmutatóban az egyszerűsített Azure DevOps Projectsi felülettel állíthatja be a Node. js-alkalmazás folyamatos integrációs (CI) és folyamatos továbbítási (CD) folyamatát az Azure-folyamatokban. A Azure DevOps Projects használatával beállíthatja az alkalmazás fejlesztéséhez, üzembe helyezéséhez és monitorozásához szükséges mindent. 
+Ebben a rövid útmutatóban létrehoz egy NodeJS Progressive-webalkalmazást (PWA) a [GatsbyJS](https://www.gatsbyjs.org/) és az egyszerűsített Azure DevOps-projekt létrehozási felületének használatával. Ha elkészült, folyamatos integrációs (CI) és folyamatos továbbítási (CD) folyamattal rendelkezik az Azure-folyamatok PWA. Azure DevOps Projects beállítja a fejlesztéshez, üzembe helyezéshez és figyeléshez szükséges tudnivalókat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
-- Egy [Azure DevOps](https://azure.microsoft.com/services/devops/) -fiók és-szervezet.
+- Egy [Azure DevOps](https://azure.microsoft.com/services/devops/) -szervezet.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -40,42 +39,121 @@ A DevOps Projects egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létre
 
    ![Azure-erőforrás létrehozása Azure Portal](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
-1. Keresse meg és válassza ki **DevOps projects**, majd válassza a **Létrehozás**lehetőséget.
+2. Keresse meg és válassza ki **DevOps projects**, majd válassza a **Létrehozás**lehetőséget.
+
+ ![DevOps-projekt létrehozása](_img/azure-devops-project-nodejs/create-devops-project.png) 
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Mintaalkalmazás és Azure-szolgáltatás kiválasztása
 
-1. Válassza ki a Node. js-minta alkalmazást.  
-    A Node.js-minták esetén több alkalmazási keretrendszer közül választhat.
+1. Válassza ki a Node. js-minta alkalmazást.   
 
-1. Az alapértelmezett minta keretrendszer Express. js. Hagyja meg az alapértelmezett beállítást, majd kattintson a **tovább**gombra.  
-    Az alapértelmezett üzembehelyezési cél a **Web App on Windows**.  Az alkalmazás-keretrendszer, amelyet korábban választott, az itt elérhető Azure-szolgáltatás telepítési célhelyét diktálja.  
+ ![Válassza ki a Node. js-mintát](_img/azure-devops-project-nodejs/select-nodejs-devops-project.png) 
 
-2. Hagyja meg az alapértelmezett szolgáltatást, majd válassza a **tovább**lehetőséget.
- 
-## <a name="configure-azure-devops-and-an-azure-subscription"></a>Az Azure DevOps és az Azure-előfizetés konfigurálása 
+2. Az alapértelmezett mintakeretrendszer az **Express.js**. Módosítsa a kijelölést **egyszerű Node. js-alkalmazásra** , majd kattintson a **tovább**gombra. 
 
-1. Hozzon létre egy új Azure DevOps-szervezetet, vagy válasszon egy meglévő szervezetet. 
-   
-   1. Adja meg a projekt nevét.
-      
-   1. Válassza ki az Azure-előfizetést és-helyet, adjon meg egy nevet az alkalmazásnak, majd válassza a **kész**lehetőséget.  
-      Néhány perc elteltével megjelenik a DevOps Projects irányítópult a Azure Portal. Egy minta alkalmazás az Azure DevOps-szervezet egy tárházában van beállítva, a rendszer létrehoz egy buildet, és az alkalmazást üzembe helyezi az Azure-ban. Ezt az irányítópultot a kódtárat a CI/CD-folyamat és az Azure-ban az alkalmazás rálátást biztosít.
-   
-1. A futó alkalmazás megtekintéséhez válassza a **Tallózás** lehetőséget.
-   
-   ![A CI/CD-folyamat irányítópult-nézete](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
+ ![Válassza ki az egyszerű Node. js-alkalmazást](_img/azure-devops-project-nodejs/simple-nodejs-project.png) 
 
-DevOps Projects automatikusan konfigurálta a CI-Build és a kiadási triggert.  Most már készen áll arra, hogy együttműködjön egy, a Node. js-alkalmazásban található csapattal a CI/CD folyamattal, amely automatikusan üzembe helyezi a legújabb munkát a webhelyen.
+3. Az ebben a lépésben elérhető központi telepítési célokat a 2. lépésben kiválasztott alkalmazás-keretrendszer határozza meg.  Ebben a példában a **Windows Web App** az alapértelmezett telepítési cél.  Hagyja **Web App for containers** a beállítást, és válassza a **tovább**lehetőséget.
 
-## <a name="commit-code-changes-and-execute-cicd"></a>Kódmódosítások véglegesítése és a CI/CD végrehajtása
+ ![Telepítési cél kiválasztása](_img/azure-devops-project-nodejs/select-web-server.png) 
 
-A DevOps Projects egy git-tárházat hoz létre az Azure Reposben vagy a GitHubban. Az alábbi lépéseket követve megtekintheti az adattárat, és programkód-módosításokat hajthat végre az alkalmazásban.
+## <a name="configure-a-project-name-and-an-azure-subscription"></a>Adja meg a projekt nevét és az Azure-előfizetést
 
-1. A DevOps Projects irányítópult bal oldalán válassza ki a fő ág hivatkozását.  
-Ez a hivatkozás megnyitja az újonnan létrehozott Git-adattár nézetét.
+1. A DevOps projekt-létrehozási munkafolyamat utolsó lépéseként rendeljen hozzá egy projekt nevét, válasszon ki egy Azure-előfizetést, majd válassza a **kész**lehetőséget.  
 
-1. A tárház klónozási URL-címének megtekintéséhez válassza a böngésző jobb felső sarkában található **klónozás** elemet.   
-    A Git-adattárat klónozhatja például a kedvenc IDE-környezetébe. A következő néhány lépésben a webböngésző segítségével közvetlenül a főágban hajthat végre és véglegesíthet kódmódosításokat.
+ ![Projekt nevének kijelölése és előfizetés kiválasztása](_img/azure-devops-project-nodejs/assign-project-name.png) 
+
+2. Megjelenik egy összefoglaló oldal a projekt létrehozásakor, és az alkalmazás üzembe helyezése az Azure-ban történik. Egy rövid időszak után létrejön egy projekt az [Azure DevOps-szervezetben](https://dev.azure.com/) , amely tartalmaz egy git-tárházat, egy Kanban-táblát, egy üzembe helyezési folyamatot, egy tesztelési tervet, valamint az alkalmazás által igényelt összetevőket.  
+
+## <a name="managing-your-project"></a>A projekt kezelése
+
+1. Keresse meg az **összes erőforrást** , és keresse meg a DevOps-projektet. Válassza ki a **DevOps-projektet**.
+
+![Azure DevOps-irányítópult az erőforrás-listában](_img/azure-devops-project-nodejs/azure-devops-project-in-resource-list.png)
+
+2. Olyan irányítópultra van irányítva, amely megtekinti a projekt kezdőlapját, a kódlap, a CI/CD folyamatot, valamint a futó alkalmazásra mutató hivatkozást. Válassza ki a **projekt kezdőlapját** az alkalmazás **Azure DevOps** való megtekintéséhez, majd egy másik böngésző lapon válassza ki az **alkalmazás-végpontot** az élő minta alkalmazás megtekintéséhez.  Ezt a mintát később a GatsbyJS által generált PWA használatára módosítjuk.
+
+![Azure DevOps-irányítópult](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
+
+3. Az Azure DevOps-projektből meghívhatja a csapattagokat, hogy működjenek együtt egy Kanban-testülettel a munka nyomon követésének megkezdéséhez.  További információ: [itt](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops?view=azure-devops).
+
+![Az Azure DevOps áttekintése](_img/azure-devops-project-nodejs/azure-devops-overview.png)
+
+## <a name="clone-the-repo-and-install-your-gatsby-pwa"></a>A tárház klónozása és a Gatsby-PWA telepítése
+
+A DevOps Projects egy git-tárházat hoz létre az Azure Reposben vagy a GitHubban. Ez a példa egy Azure-tárházat hozott létre.  A következő lépés a tárház klónozása és a módosítások elvégzése.
+
+1. Válassza ki a **DevOps-projektben** a **repókat** , majd kattintson a **klónozás**elemre.  A git-tárház klónozása az asztalra különböző mechanizmusokkal történik.  Válassza ki a fejlesztési élményhez illőt.  
+
+![Az adattár klónozása](_img/azure-devops-project-nodejs/clone-the-repo.png)
+
+2. Miután a tárház klónozása megtörtént az asztalról, hajtson végre néhány módosítást az alapszintű sablonban. Először telepítse a GatsbyJS CLI-t a terminálról.
+```powershell
+npm install -g gatsby
+```
+
+3. A terminálban navigáljon a tárház gyökeréhez. A következő három mappát kell tartalmaznia, amely így néz ki:
+```powershell
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        2/23/2020  10:42 PM                Application
+d-----        2/23/2020   3:05 PM                ArmTemplates
+d-----        2/23/2020   3:05 PM                Tests
+```
+
+4. Az alkalmazás mappájában nem szeretnénk az összes fájlt használni, mert egy Gatsby-indítóval fogunk lecserélni. A levágáshoz futtassa a következő parancsokat a sorozatokban.
+```powershell
+cp .\Application\Dockerfile .
+rmdir Application
+```
+
+5. Minta PWA létrehozásához használja a Gatsby CLI-t. Futtassa `gatsby new` a terminálról a PWA varázsló elindításához, és válassza ki a `gatsby-starter-blog` az alapszintű sablonhoz. Ehhez a példához hasonlónak kell lennie:
+```powershell
+c:\myproject> gatsby new
+√ What is your project called? ... my-gatsby-project
+? What starter would you like to use? » - Use arrow-keys. Return to submit.
+    gatsby-starter-default
+    gatsby-starter-hello-world
+>   gatsby-starter-blog
+    (Use a different starter)
+```
+
+6. Most már rendelkezik egy `my-gatsby-project`nevű mappával. Nevezze át `Application`re, és másolja a `Dockerfile`.
+```powershell
+mv my-gatsby-project Application
+mv Dockerfile Application
+```
+
+7. A kedvenc szerkesztőjében nyissa meg a Docker, és módosítsa az első sort `FROM node:8`ról `FROM node:12`re. Ez a változás biztosítja, hogy a tároló a 8. x verzió helyett a Node. js 12. x verziót használja. A GatsbyJS a Node. js modernebb verzióit igényli.
+
+8. Ezután nyissa meg a Package. JSON fájlt az alkalmazás mappájában, és szerkessze a [parancsfájlok mezőt](https://docs.npmjs.com/files/package.json#scripts) , hogy a fejlesztési és üzemi kiszolgálók az összes rendelkezésre álló hálózati adapteren (például 0.0.0.0) és a 80-as porton figyeljenek. Ezen beállítások nélkül a Container app Service nem tudja átirányítani a forgalmat a tárolón belül futó Node. js-alkalmazásba. A `scripts` mezőnek az alábbihoz hasonlónak kell lennie. Pontosabban módosítani szeretné a `develop`, `serve`és `start` célokat az alapértelmezett beállítások alapján.
+```json
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop  -H 0.0.0.0 -p 80",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run serve",
+    "serve": "npm run build && gatsby serve -H 0.0.0.0 -p 80",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  }
+```
+
+## <a name="edit-your-cicd-pipelines"></a>A CI/CD-folyamatok szerkesztése
+
+1. Mielőtt véglegesíti a kódot az előző szakaszban, hajtson végre néhány módosítást a build és a Release folyamaton. Szerkessze a "folyamat létrehozása" lehetőséget, és frissítse a csomópont-feladatot a Node. js 12. x verziójának használatára. Állítsa a **feladat verziója** mezőt 1. x értékre, a **Version (verzió** ) mezőre pedig 12. x.
+a Node. js ![frissítése 12. x](_img/azure-devops-project-nodejs/build-pipeline-update-node.png)
+
+2. Ebben a rövid útmutatóban nem hozunk létre egység-teszteket, és letiltjuk ezeket a lépéseket a Build-folyamatban. Tesztek írásakor újra engedélyezheti ezeket a lépéseket. Kattintson a jobb gombbal, és válassza ki a **teszt függőségeinek telepítése** és az **egységek futtatása tesztek** és a Letiltás műveletek elemet.
+
+![Build tesztek letiltása](_img/azure-devops-project-nodejs/disable-build-unittests.png)
+
+3. A kiadási folyamat szerkesztése.
+![a kiadási folyamat szerkesztése](_img/azure-devops-project-nodejs/edit-release-pipeline.png)
+
+4. A Build folyamathoz hasonlóan módosítsa a csomópont feladatát 12. x használatára, és tiltsa le a két teszt feladatot. A kiadásnak hasonlónak kell lennie a képernyőképhez.
+
+![Befejezett kiadási folyamat](_img/azure-devops-project-nodejs/release-pipeline-complete.png)
 
 1. A böngésző bal oldalán lépjen a **views/index. mopsz** fájlra.
 
@@ -85,77 +163,36 @@ Ez a hivatkozás megnyitja az újonnan létrehozott Git-adattár nézetét.
 1. Válassza **a**végrehajtás lehetőséget, majd mentse a módosításokat.
 
 1. A böngészőben nyissa meg a DevOps Projects irányítópultot.   
-Ekkor megjelenik egy Build folyamatban. Az imént létrehozott módosításokat a rendszer automatikusan felépíti és telepíti a CI/CD-folyamaton keresztül.
+Ekkor megjelenik egy Build folyamatban. Az elvégzett módosításokat a rendszer automatikusan felépíti és telepíti a CI/CD-folyamaton keresztül.
 
-## <a name="examine-the-azure-cicd-pipeline"></a>Az Azure CI-/CD-folyamat vizsgálata
+## <a name="commit-your-changes-and-examine-the-azure-cicd-pipeline"></a>Véglegesítse a módosításokat, és vizsgálja meg az Azure CI/CD folyamatát
 
-Az előző lépésben DevOps Projects automatikusan konfigurálta a teljes CI/CD-folyamatot. Vizsgálja meg és szükség szerinti szabja testre a folyamatot. Az alábbi lépéseket követve Ismerkedjen meg a létrehozási és a kiadási folyamatokkal.
+Az előző két lépésben hozzáadott egy Gatsby létrehozott PWA a git-tárházhoz, és szerkesztette a folyamatokat a kód összeállításához és üzembe helyezéséhez. Véglegesítheti a kódot, és megtekintheti az előrehaladást a build és a Release folyamaton keresztül.
 
-1. A DevOps Projects irányítópult tetején válassza a **folyamatok létrehozása**lehetőséget.  
-Ez a hivatkozás egy böngésző fület és az új projekthez tartozó Build folyamatot nyitja meg.
+1. A projekt git-tárházának gyökeréből egy terminálon futtassa a következő parancsokat a kód Azure DevOps-projektbe való leküldéséhez:
+```powershell
+git add .
+git commit -m "My first Gatsby PWA"
+git push
+```
 
-1. Mutasson az **állapot** mezőre, majd válassza a három pontot (...).  
-    Ez a művelet egy menüt nyit meg, ahol számos tevékenységet indíthat el, például egy új Build kiépítését, egy Build szüneteltetését és a build folyamat szerkesztését.
+2. A rendszer azonnal elindít egy összeállítást, amint `git push` befejeződik. Az **Azure DevOps irányítópultján**követheti a folyamat előrehaladását.
 
-1. Válassza a **Szerkesztés** elemet.
+![Azure DevOps-irányítópult az erőforrás-listában](_img/azure-devops-project-nodejs/azure-devops-project-in-resource-list.png)
 
-1. Ezen az ablaktáblán keresse meg a különböző feladatok a a buildelési folyamat.  
-A Build számos feladatot hajt végre, például a git-tárházból beolvassa a forrásokat, visszaállítja a függőségeket, és közzéteszi az üzembe helyezéshez használt kimeneteket.
-
-1. A létrehozási folyamat elején jelölje ki a buildelési folyamat neve.
-
-1. Módosítsa a felépítési folyamat nevét egy ennél több leíróra, válassza a **mentés & üzenetsor**lehetőséget, majd kattintson a **Mentés**gombra.
-
-1. A buildelési folyamat neve alatt válassza az **Előzményeket**.   
-Az **Előzmények** ablaktáblán megjelenik a Build legutóbbi változásainak naplózási nyomvonala.  Azure folyamatok nyomon követi, hogy az összeállítási folyamat végzett módosításokat, és lehetővé teszi, hogy verziójának összehasonlítása.
-
-1. Válassza az **Eseményindítókat**.   
- A DevOps Projects automatikusan létrejön egy CI eseményindító, és a tárházban minden véglegesítéshez elindul egy új létrehozást.  Lehetősége van belefoglalni az ágakat, vagy kizárni őket a CI-folyamatból.
-
-1. Válassza a **Megtartást**.   
-A forgatókönyvtől függően a szabályzatokat, hogy megtartja vagy eltávolítja a buildek bizonyos számú is megadhat.
-
-1. Válassza a **Létrehozás és kiadás**, majd a **kiadások**lehetőséget.  
- DevOps Projects létrehoz egy kiadási folyamatot az Azure-ba történő üzembe helyezések kezeléséhez.
-
-1. A bal oldalon válassza a kiadási folyamat melletti három pontot (...), majd válassza a **Szerkesztés**lehetőséget.  
-A kiadási folyamat meghatározza a kiadási folyamatot.
-
-12. Az **Összetevők** alatt válassza az **Elvetést**.  
-    Az előző lépésekben megvizsgált buildelési folyamat létrehozza az összetevőhöz használt kimenetet. 
-
-1. A **drop** ikon mellett válassza ki a **folyamatos üzembe helyezési triggert**.  
-A kibocsátási folyamat rendelkezik egy engedélyezett CD eseményindító, amely futtatja a központi telepítés minden alkalommal, amikor egy új buildösszetevő áll rendelkezésre. Szükség esetén letilthatja az eseményindítót, hogy a központi telepítések igénylik manuális végrehajtását. 
+3. Néhány perc elteltével a létrehozási és kiadási folyamatokat be kell fejezni, és a PWA üzembe kell helyezni egy tárolón. Kattintson az **alkalmazás-végpont** hivatkozásra a fenti irányítópulton, és egy Gatsby Starter-projektet kell megjelennie a blogokhoz.
 
 
-1. A bal oldalon válassza a **feladatok**lehetőséget.   
-A feladatok olyan tevékenységek, amely végrehajtja a központi telepítési folyamat. Ebben a példában egy feladatot hoztak létre a Azure App Serviceba való üzembe helyezéshez.
-
-
-1. A jobb oldalon válassza a **kiadások megtekintése**lehetőséget.  
-Ebben a nézetben a kiadások előzményei jelennek meg.
-
-1. Válassza ki az egyik kiadás melletti három pontot (...), majd kattintson a **Megnyitás**gombra.  
-Ismerje meg, például a kiadás összegzését, a társított munkaelemekhez és a tesztek a több menük találhatók meg.
-
-1. Válassza a **Véglegesítéseket**.   
-Ez a nézet megjeleníti az adott központi telepítési társított kód véglegesítéseket.
-
-1. Válassza a **Naplókat**.  
-A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban. Ezek az üzembe helyezések alatt és után is megtekinthetők.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az Azure App Service és a többi kapcsolódó erőforrást, ha többé már nincs szükség rájuk létrehozott törölheti. Használja a **delete** funkciót a DevOps projects irányítópulton.
+Törölheti Azure App Service és az egyéb kapcsolódó erőforrásokat, amelyeket akkor hozott létre, amikor már nincs szüksége az erőforrásokra. Használja a **delete** funkciót a DevOps projects irányítópulton.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A CI/CD-folyamat beállításakor a rendszer automatikusan létrehozta a létrehozási és kiadási folyamatokat. A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. A CI/CD folyamattal kapcsolatos további tudnivalókért tekintse meg a következőt:
+A CI/CD folyamat konfigurálásakor a rendszer automatikusan létrehozza a létrehozási és kiadási folyamatokat. Ezeket a build és kiadási folyamatokat a csapat igényeinek megfelelően módosíthatja. A CI/CD folyamattal kapcsolatos további tudnivalókért tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
 > [CD-folyamat testreszabása](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
-## <a name="videos"></a>Videók
-
-> [!VIDEO https://www.youtube.com/embed/3etwjubReJs]

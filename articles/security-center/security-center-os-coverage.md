@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 39e2deead1affd750d9a5e68985b02ebfe8e0efd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e13149ba802f0f8b9a565e0aabd86ae05167f18b
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921300"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208817"
 ---
 # <a name="supported-platforms"></a>Támogatott platformok 
 
@@ -36,16 +36,15 @@ Azure-előfizetésben aktivált Azure-környezet esetén a Azure Security Center
 > [!NOTE]
 > A biztonsági funkciók teljes készletének fogadásához rendelkeznie kell a [log Analytics ügynökkel](../azure-monitor/platform/agents-overview.md#log-analytics-agent), amelyet a Azure Security Center használ, a telepítés és [megfelelően konfigurálva, hogy az adatküldés Azure Security Center](security-center-enable-data-collection.md#manual-agent).
 
-
 A következő részekben azok a támogatott kiszolgálói operációs rendszerek találhatók, amelyeken a Azure Security Center által használt [log Analytics-ügynök](../azure-monitor/platform/agents-overview.md#log-analytics-agent)futtatható.
 
 ### Windows Server operációs rendszerek<a name="os-windows"></a>
 
 |Operációs rendszer|Támogatja Azure Security Center|A Microsoft Defender ATP-integráció támogatása|
 |:---|:-:|:-:|
-|Windows Server 2019|✔|X|
+|A Windows Server 2019|✔|X|
 |Windows Server 2016|✔|✔|
-|Windows Server 2012 R2|✔|✔|
+|Windows Server 2012 R2|✔|✔|
 |Windows Server 2008 R2|✔|✔|
 
 A fent felsorolt Windows operációs rendszerek támogatott szolgáltatásaival kapcsolatos további tudnivalókért lásd: [virtuális gépek/kiszolgálók által támogatott szolgáltatások](security-center-services.md#vm-server-features).
@@ -86,41 +85,9 @@ A virtuális gépeket egy ügyfél-előfizetésben is létrehozzák az Azure ál
 
 A Cloud Service-ben futó virtuális gépek is támogatottak. Csak az üzemi tárolóhelyeken futó Cloud Services-alapú webes és feldolgozói szerepköröket figyeli a rendszer. További információ a Cloud Services szolgáltatásról: [Az Azure Cloud Services áttekintése](../cloud-services/cloud-services-choose-me.md).
 
-## Pásti-szolgáltatások<a name="paas-services"></a>
-
-A Azure Security Center az alábbi Azure-beli, a következő Azure-erőforrásokat támogatja:
-
-* SQL
-* PostGreSQL
-* MySQL
-* CosmosDB
-* Tárfiók
-* App Service-ben
-* Függvény
-* Cloud Service
-* VNet
-* Alhálózat
-* Hálózati adapter
-* NSG
-* Batch-fiók
-* Service Fabric-fiók
-* Automation-fiók
-* Terheléselosztó
-* Keresés
-* Service Bus-névtér
-* Stream Analytics
-* Eseményközpont-névtér
-* Logikai alkalmazások
-* Redis
-* Data Lake Analytics
-* Data Lake Store
-* Key Vault
-
-Ha többet szeretne megtudni a Pásti-erőforrások fenti listája által támogatott funkciókról, tekintse meg a [Pásti szolgáltatások által támogatott funkciók](security-center-services.md#paas-services)című témakört.
-
 A Azure Stackban található Virtual Machines védelme is támogatott. A Security Center Azure Stack-nal való integrálásával kapcsolatos további információkért tekintse meg [a Azure stack virtuális gépek Security Centerba való](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)bevezetését ismertető témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [, hogyan gyűjt Security Center adatokat és a log Analytics ügynököt](security-center-enable-data-collection.md).
 - Megtudhatja [, hogyan kezeli és védi a Security Center az információkat](security-center-data-security.md).

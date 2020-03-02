@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: 6a999df6daf2fde5133143fe9b22a65d628ecfb2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b3e110766b2e131330f3108b7938e9e5e01e48a4
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663947"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208559"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor ügyfél által felügyelt kulcs konfigurálása 
 
@@ -184,7 +184,7 @@ Authorization: Bearer <token>
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principal-Id"
+    "principalId": "principal-id"
     },
   "properties": {
     "provisioningState": "Succeeded",
@@ -198,10 +198,10 @@ Authorization: Bearer <token>
   }
 ```
 
-a "principalId" a kezelt Identity szolgáltatás által a *fürterőforrás* számára generált GUID.
+a "résztvevő-azonosító" a kezelt Identity szolgáltatás által a *fürterőforrás* számára létrehozott GUID.
 
 > [!IMPORTANT]
-> Másolja és tartsa meg a "cluster-id" értéket, mivel a következő lépésekben szüksége lesz rá.
+> Másolja és tartsa meg a "résztvevő-azonosító" értéket, mivel a következő lépésekben szüksége lesz rá.
 
 
 ### <a name="grant-key-vault-permissions"></a>Key Vault engedélyek megadása
@@ -213,7 +213,7 @@ Frissítse a Key Vault egy új hozzáférési házirenddel, amely engedélyeket 
 Nyissa meg a Key Vault a Azure Portalban, és kattintson a "hozzáférési szabályzatok", majd a "hozzáférési házirend hozzáadása" lehetőségre egy új szabályzat létrehozásához a következő beállításokkal:
 
 - Kulcs engedélyei: válassza a beolvasás, a betakart kulcs és a kicsomagolási kulcs engedélyeket.
-- Rendszerbiztonsági tag kiválasztása: adja meg az előző lépésben a válaszban visszaadott fürt-azonosító értéket.
+- Rendszerbiztonsági tag kiválasztása: adja meg az előző lépésben a válaszban visszaadott résztvevő-azonosító értéket.
 
 ![Key Vault engedélyek megadása](media/customer-managed-keys/grant-key-vault-permissions.png)
 
@@ -528,10 +528,10 @@ A rendszer a *fürt* erőforrásához a létrehozáskor rendeli hozzá az identi
   "location": "region-name"
 }
 ```
-a "principalId" a felügyelt identitási szolgáltatás által létrehozott GUID.
+a "elvi-id" a felügyelt Identity szolgáltatás által létrehozott GUID.
 
 > [!IMPORTANT]
-> Másolja és tartsa meg a "cluster-id" értéket, mivel a következő lépésekben szüksége lesz rá.
+> Másolja és tartsa meg az "elv-azonosító" értéket, mivel a következő lépésekben szüksége lesz rá.
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Összetevő hozzárendelése *fürterőforrás* -erőforráshoz összetevők használatával [– Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) API
 
