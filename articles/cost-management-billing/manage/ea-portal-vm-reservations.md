@@ -3,16 +3,16 @@ title: Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példány
 description: Ez a cikk azt foglalja össze, hogyan takaríthat meg pénzt a vállalati regisztrációjában az Azure Reserved VM Instances szolgáltatás segítségével.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/14/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3eceef9dc0bc29f7e105ac0b110bd2550413fa61
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 53af5e69a90eb376c28ef364e7d9c5b29287790c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200710"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560577"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példányai
 
@@ -57,10 +57,12 @@ A fenntartott példányok vásárlásának részleteit az [Azure Portal](https:/
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>Hogyan változtathatom meg a fenntartott példányhoz társított előfizetést, vagy hogyan vihetem át a fenntartott példány előnyeit egy ugyanazon fiókhoz tartozó előfizetésre?
 
-Egy adott időpontban csak egy előfizetés kaphatja meg a fenntartott példány előnyeit. A fenntartott példányok előnyeit kapó előfizetést az alábbiak szerint módosíthatja:
+A fenntartott példányok előnyeit kapó előfizetést az alábbiak szerint módosíthatja:
 
 - Jelentkezzen be az [Azure Portalra](https://aka.ms/reservations).
-- Frissítse az alkalmazott előfizetés hatókörét az ugyanabban a fiókban lévő egy másik előfizetés társításával.
+- Frissítse az alkalmazott előfizetés hatókörét egy másik, ugyanabban a fiókban lévő előfizetés társításával.
+
+A foglalás hatókörének módosításáról szóló további információkért tekintse meg a [foglalás hatókörének módosítását](../reservations/manage-reserved-vm-instance.md#change-the-reservation-scope) ismertető részt.
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>A fenntartott példányok használatával kapcsolatos részletek megtekintése
 

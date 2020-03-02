@@ -405,6 +405,8 @@
           href: v2-admin-consent.md
         - name: Alkalmazás-jóváhagyási tapasztalatok
           href: application-consent-experience.md
+    - name: Feltételes hozzáférés
+      href: v2-conditional-access-dev-guide.md
     - name: Országos felhőkörnyezetek
       items:
         - name: Áttekintés

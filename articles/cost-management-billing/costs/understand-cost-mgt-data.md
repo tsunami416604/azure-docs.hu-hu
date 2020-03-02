@@ -4,17 +4,17 @@ description: Ez a cikk segít az Azure Cost Managementben található adatok, va
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 39f2aab72491ffdf2b583879181a247d3653647f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199891"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560609"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
@@ -135,9 +135,9 @@ Ha nem talál egy adott címkét a Cost Managementben, vegye figyelembe a követ
 - A Tags API és a Query vagy a UsageDetails API együttes használatával az összes költség lekérhető az aktuális címkék alapján.
 
 
-**Ingyenes próbalehetőség használatalapú fizetésre való frissítéshez**
+## <a name="free-trial-to-pay-as-you-go-upgrade"></a>Ingyenes próbalehetőség használatalapú fizetésre való frissítéshez
 
-Az ingyenes próbalehetőségre vonatkozó ajánlattal (044P) rendelkező, használatalapú fizetéses ajánlatra (003P) váltó ügyfelek megtekinthetik az ingyenes próbaidőszak alatti használatot. A váltás után azonban nem fogják látni az ingyenes próbaidőszak használati adatait. A váltás után csak a használatalapú fizetéses használati adatok és költségek jelennek meg a Cost Managementben.
+Ha többet szeretne tudni az ingyenes szintű szolgáltatások rendelkezésre állásáról, miután frissített az ingyenes próbaverzióról a használatalapú fizetéses verzióra, tekintse meg az [ingyenes Azure-fiókkal kapcsolatos gyakori kérdéseket](https://azure.microsoft.com/free/free-account-faq/).
 
 ## <a name="rated-usage-data-refresh-schedule"></a>Kiszámított használati adatok frissítési ütemterve
 
@@ -157,6 +157,17 @@ Használatalapú fizetéses előfizetések – Ha a számlázási hónap május 
 ### <a name="rerated-data"></a>Újraszámolt adatok
 
 Függetlenül attól, hogy a [Cost Management API-k](../index.yml), a Power BI vagy az Azure Portal használatával kéri le az adatokat, számítson arra, hogy a jelenlegi számlázási időszakhoz tartozó díjakat a rendszer újraszámolja, ezért azok módosulnak, amíg a rendszer le nem zárja a számlát.
+
+## <a name="cost-rounding"></a>Költségek kerekítése
+
+A Cost Managementben megjelenített költségek kerekítve vannak. A Query API által visszaadott költségek nincsenek kerekítve. Például:
+
+- Költségelemzés az Azure Portalon – A díjak kerekítése standard kerekítési szabályok szerint történik: a 0,5-nél nagyobb értékeket felfelé, az egyéb költségeket lefelé kerekíti a rendszer. Kerekítés csak értékek megjelenítésekor történik. Az adatfeldolgozás és -összesítés során nem történik kerekítés. A költségelemzés a következőképpen összesíti a költségeket:
+  - 1\. díj: 0,004 dollár
+  - 2\. díj: 0,004 dollár
+  - A díjak összesítésének megjelenítése: 0,004 + 0,004 = 0,008. A megjelenő díj 0,01 dollár.
+- Query API – A díj nyolc tizedesjegyig jelenik meg, és nem történik kerekítés.
+
 
 ## <a name="usage-data-update-frequency-varies"></a>A használati adatok frissítési gyakorisága eltér
 

@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: b926e651200a4ab23306b0ec2443cb64400b8f7b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 061f812e7567d96bba092ebc9625756c14c46940
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605247"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662467"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
 
@@ -474,7 +474,7 @@ Ha engedélyezni szeretné az Azure dev Spaces szolgáltatást egy AK-fürtön, 
 | cloudflare.docker.com | HTTPS:443 | A Linux Alpine és más Azure dev Spaces-lemezképek lekérése |
 | gcr.io | HTTP: 443 | A Helm/Tiller-lemezképek lekérése|
 | storage.googleapis.com | HTTP: 443 | A Helm/Tiller-lemezképek lekérése|
-| azds –<guid>.<location>.azds.io | HTTPS:443 | Kommunikáció az Azure dev Spaces háttér-szolgáltatásaival a vezérlőhöz. A pontos FQDN a (z) "dataplaneFqdn" elemben található a következőben:% felhasználói név%\.azds\settings.JSON|
+| azds –<guid>.<location>. azds.io | HTTPS:443 | Kommunikáció az Azure dev Spaces háttér-szolgáltatásaival a vezérlőhöz. A pontos FQDN a (z) "dataplaneFqdn" elemben található a következőben:% felhasználói név%\.azds\settings.JSON|
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Hiba: "nem található a fürt \<a fürt\> az előfizetésben \<subscriptionId\>"
 
@@ -484,3 +484,14 @@ A probléma megoldása:
 
 * Az aktuális környezet frissítéséhez használja a `az aks use-dev-spaces -g <resource group name> -n <cluster name>`. Ez a parancs azt is lehetővé teszi, hogy az Azure dev-helyek az AK-fürtön legyenek, ha még nincs engedélyezve. Azt is megteheti, hogy a `kubectl config use-context <cluster name>` segítségével frissíti az aktuális környezetet.
 * A `az account show` használatával jelenítse meg az aktuálisan megcélzott Azure-előfizetést, és ellenőrizze, hogy helyes-e. Megváltoztathatja `az account set`használatával megcélzott előfizetést.
+
+### <a name="error-using-dev-spaces-after-rotating-aks-certificates"></a>Hiba történt a fejlesztői szóközök használatával az AK-tanúsítványok elforgatása után
+
+Miután [elforgatta a tanúsítványokat az AK-fürtben](../aks/certificate-rotation.md), bizonyos műveletek, például a `azds space list` és a `azds up` sikertelenek lesznek. Emellett frissítenie kell a tanúsítványokat az Azure dev Spaces-vezérlőn a fürtön lévő tanúsítványok elforgatása után.
+
+A probléma megoldásához ellenőrizze, hogy a *kubeconfig* rendelkezik-e a frissített tanúsítványokkal `az aks get-credentials` majd futtassa a `azds controller refresh-credentials` parancsot. Például:
+
+```azurecli
+az aks get-credentials -g <resource group name> -n <cluster name>
+azds controller refresh-credentials -g <resource group name> -n <cluster name>
+```

@@ -3,16 +3,16 @@ title: Ismerkedés az Azure Enterprise portállal
 description: Ez a cikk azt ismerteti, hogyan használják az Azure Nagyvállalati Szerződéssel (Azure EA) rendelkező ügyfelek az Azure Enterprise portált.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: e1c6eac81968ef6ecbc12ec52415c2aa9680f3e1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: fa55eebe6d051addcb5249908fd52e7e6ce44f12
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200829"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598408"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Ismerkedés az Azure Enterprise portállal
 
@@ -559,7 +559,7 @@ Az Azure EA-regisztrációban tetszőleges számú részleget hozhat létre. A h
 
 A részleg és az előfizetés létrehozásának befejezése után a használati jelentésben láthatja az információkat. Ezek az információk segítséget nyújtanak a használat nyomon követésében és a költségek kezelésében, valamint a részlegszinten való költésben.
 
-A jelentéskészítő API-n keresztül is hozzáférhet a használati adatokhoz. Részletes információkért és mintakódért lásd a [Reporting API dokumentációját](https://ea.azure.com/helpdocs/reportingAPI).
+A jelentéskészítő API-n keresztül is hozzáférhet a használati adatokhoz. Részletes információkért és mintakódért lásd az [Azure Enterprise REST API-k](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis) dokumentációját.
 
 ### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>Megadhatom a költségkvótát, és kérhetek riasztásokat, ha közelítek a korlát felé?
 
@@ -571,7 +571,7 @@ A költségkvóta meghatározásához válasszon egy részleget, majd válassza 
 
 Ha használ _erőforráscsoportokat_ és _címkéket_, ezen információk nyomon követése a szolgáltatás szintjén történik, és az információk a részletes használati adatokat tartalmazó (.csv) fájlban érhetők el. Lásd a [Használati jelentés letöltése](https://ea.azure.com/report/downloadusage) szakaszt az Azure Enterprise portálon.
 
-Az API-n keresztül is hozzáférhet a használati adatokhoz. Részletes információért és mintakódért lásd a [Reporting API](https://ea.azure.com/helpdocs/reportingAPI) szakaszt az Azure Enterprise portál dokumentációjában.
+Az API-n keresztül is hozzáférhet a használati adatokhoz. Részletes információkért és mintakódért lásd az [Azure Enterprise REST API-k](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis) dokumentációját.
 
 > [!NOTE]
 > Csak olyan erőforrásokra alkalmazhat címkéket, amelyek támogatják az Azure Resource Manager-műveleteket. Ha egy virtuális gépet, virtuális hálózatot vagy tárolót a klasszikus üzemi modellel (például a klasszikus portált használva) hozott létre, akkor nem alkalmazhat címkét az adott erőforrásra. A címkézés támogatásához ismételten üzembe kell helyeznie ezeket az erőforrásokat a Resource Managerrel. Minden más erőforrás támogatja a címkézést.

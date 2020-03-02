@@ -6,15 +6,15 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 02/24/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce385de408d4b0a8cf1531f762a126a6b9b2c126
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 7955e9bc75b2a27ac42d381df1e686ec8a0ed04b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199075"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587785"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Az Azure külső szolgáltatásaival kapcsolatos díjak ismertetése
 A külső szolgáltatásokat külső szoftverszállítók teszik közzé az Azure Marketplace-en. A SendGrid például egy olyan külső szolgáltatás, amelyet megvásárolhat az Azure-ban, de nem a Microsoft adta ki. Emellett azonban bizonyos Microsoft-termékek értékesítése is az Azure Marketplace-en történik.
@@ -22,7 +22,7 @@ A külső szolgáltatásokat külső szoftverszállítók teszik közzé az Azur
 ## <a name="how-external-services-are-billed"></a>A külső szolgáltatások számlázása
 
 - Ha Microsoft-ügyfélszerződéssel (MCA) vagy Microsoft Partnerszerződéssel (MPA) rendelkezik, a külső szolgáltatások számlázása a többi Azure-szolgáltatással együtt történik. [Ellenőrizze a számlázási fiókja típusát](#check-billing-account-type), hogy megtudja, van-e hozzáférése MCA-hoz vagy MPA-hoz.
-- Ha nem rendelkezik MCA-val vagy MPA-val, a külső szolgáltatások számlázása a többi Azure-szolgáltatástól külön történik.
+- Ha nem rendelkezik MCA-val vagy MPA-val, a külső szolgáltatások számlázása a többi Azure-szolgáltatástól külön történik. Minden számlázási periódusban két számlát fog kapni: egy az Azure-szolgáltatásokra vonatkozik, a másik a Marketplace-vásárlásokra.
 - Minden egyes külső szolgáltatás eltérő számlázási modellel rendelkezik. Bizonyos szolgáltatások számlázása használatalapú fizetésessel történik, míg más szolgáltatásokért fix havi díjat kell fizetni.
 - A külső szolgáltatásokhoz nem használhatók fel az ingyenes havi kreditek. Ha [ingyenes krediteket](https://azure.microsoft.com/pricing/spending-limits/) tartalmazó Azure-előfizetést használ, a külső szolgáltatások díjaira nem alkalmazhatja azokat. Új külső szolgáltatás vagy erőforrás kiépítésekor megjelenik egy figyelmeztetés:
 
@@ -45,23 +45,62 @@ You can view a list of the external services that are on each subscription withi
 
     ![View external services billing history](./media/understand-azure-marketplace-charges/billing-overview-blade.png) -->
 
-## <a name="view-and-download-invoices-for-external-services"></a>Számlák megtekintése és letöltése külső szolgáltatásokhoz
-
-Ha Microsoft-ügyfélszerződéssel (MCA) vagy Microsoft Partnerszerződéssel (MPA) rendelkezik, a külső szolgáltatások számlázása a többi Azure-szolgáltatással együtt történik. [Ellenőrizze a számlázási fiókja típusát](#check-billing-account-type), hogy megtudja, van-e hozzáférése MCA-hoz vagy MPA-hoz. Ha van, akkor a külső szolgáltatások díjainak megtekintéséhez olvassa el a [számlák Azure Portalon történő megtekintését és letöltését](download-azure-invoice.md) ismertető cikket.
-
-Ha nem rendelkezik MCA-val vagy MPA-val, a külső szolgáltatások díjairól külön számlát kap. Az Azure Marketplace-számlák Azure Portalon történő megtekintéséhez és letöltéséhez kövesse az alábbi lépéseket:
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
-1. A bal oldali menüben válassza a **Számlák** elemet.
-1. Kattintson az **Azure Marketplace és foglalások** lapra.  ![Kép az Azure Marketplace és foglalások lapról](./media/understand-azure-marketplace-charges/invoice-tabs.png)
-1. Az előfizetéseket tartalmazó legördülő listából válassza ki az azon külső szolgáltatásokat tartalmazó előfizetést, amelyek számláit meg szeretné tekinteni.
-
 ## <a name="external-spending-for-ea-customers"></a>Külső költségek EA-ügyfelek esetén
 
 Az EA-ügyfelek megtekinthetik a külső szolgáltatások költségeit, és jelentéseket tölthetnek le az EA Portalról. Az első lépésekkel kapcsolatban tekintse meg [az EA-ügyfelek számára elérhető Azure Marketplace-t](https://ea.azure.com/helpdocs/azureMarketplace).
 
-## <a name="manage-payment-for-external-services"></a>A külső szolgáltatásokkal kapcsolatos kifizetések kezelése
+## <a name="view-and-download-invoices-for-external-services"></a>Számlák megtekintése és letöltése külső szolgáltatásokhoz
+
+Ha Microsoft-ügyfélszerződéssel (MCA) vagy Microsoft Partnerszerződéssel (MPA) rendelkezik, a külső szolgáltatások számlázása a többi Azure-szolgáltatással együtt, egyetlen számlán történik. [Ellenőrizze a számlázási fiókja típusát](#check-billing-account-type), hogy megtudja, van-e hozzáférése MCA-hoz vagy MPA-hoz. Ha van, akkor a külső szolgáltatások díjainak megtekintéséhez olvassa el a [számlák Azure Portalon történő megtekintését és letöltését](download-azure-invoice.md) ismertető cikket.
+
+Ha nem rendelkezik MCA-val vagy MPA-val, a külső szolgáltatások díjairól külön számlát kap. 
+
+Az Azure Marketplace díjai a helyi pénznemben jelennek meg.
+
+Az Azure Marketplace-számlák Azure Portalon történő megtekintéséhez és letöltéséhez kövesse az alábbi lépéseket:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
+1. A bal oldali menüben válassza a **Számlák** elemet.
+1. Az előfizetés legördülő szűrőjében válassza ki a Marketplace-szolgáltatásokhoz tartozó előfizetést.
+1. A számlák listájában tekintse át a **Típus** oszlopot. Ha a számla egy Marketplace-szolgáltatáshoz tartozik, a típusa **Azure Marketplace és foglalások** lesz. 
+
+    ![képernyőkép az Azure Marketplace típusról a számlák táblázatában](./media/understand-azure-marketplace-charges/marketplace-type-twd.png)
+
+1. Ha csak az Azure Marketplace-hez és a foglalásokhoz kapcsolódó számlákat kívánja látni, válassza ki a **Típus** szűrőt a típus szerinti szűréshez. Ezután válassza ki az **Azure Marketplace és foglalások** elemet a legördülő listában.
+
+    ![képernyőkép a kiválasztott Típus szűrőről, miközben az Azure Marketplace és foglalások elem van kiválasztva a legördülő listában](./media/understand-azure-marketplace-charges/type-filter.png)
+
+1. Válassza ki a letölteni kívánt számla jobb oldalán található letöltés ikont.
+
+    ![a kijelölt számla melletti letöltési ikont megjelenítő képernyőkép](./media/understand-azure-marketplace-charges/download-icon-marketplace.png)
+
+1. A **Számla** elem alatt válassza ki a kék **Letöltés** gombot.
+
+    ![a helyi panelen a számlához tartozó letöltési gombot megjelenítő képernyőkép](./media/understand-azure-marketplace-charges/invoice-download-marketplace.png)
+
+## <a name="pay-for-external-services-in-the-azure-portal"></a>Fizetés külső szolgáltatásokért az Azure Portalon
+
+Ha Microsoft-ügyfélszerződéssel (MCA) vagy Microsoft Partnerszerződéssel (MPA) rendelkezik, a külső szolgáltatások számlázása a többi Azure-szolgáltatással együtt történik. [Ellenőrizze a számlázási fiókja típusát](#check-billing-account-type), hogy megtudja, van-e hozzáférése MCA-hoz vagy MPA-hoz. Ha igen, kifizetheti a teljes számláját az Azure Portalon a [Microsoft Azure-számlák befizetése](pay-bill.md) lépéseinek végrehajtásával.
+
+Ha nem rendelkezik MCA vagy MPA szerződéssel, a Marketplace-számlákat a következő lépéseket követve egyenlítheti ki az Azure Portalon:
+
+1. Marketplace-számláinak megtekintéséhez kövesse az előző szakaszban ([Számlák megtekintése és letöltése külső szolgáltatásokhoz](#view-and-download-invoices-for-external-services)) leírt lépéseket.
+1. Válassza ki a kifizetni kívánt számlához tartozó kék **Fizetés most** hivatkozást.
+
+    ![a számlák táblázatában kiválasztott fizetés most hivatkozást ábrázoló képernyőkép](./media/understand-azure-marketplace-charges/pay-now-twd.png)
+
+    >[!NOTE]
+    > A **Fizetés most** hivatkozás csak akkor jelenik meg, ha a számla típusa **Azure Marketplace és foglalások**, és a számla esedékes vagy lejárt.
+
+1. Az új lapon kattintson a **Fizetési mód kiválasztása** hivatkozásra.
+
+    ![a fizetési mód kiválasztására szolgáló kiválasztott hivatkozást megjelenítő képernyőkép](./media/understand-azure-marketplace-charges/select-payment-method-pay-now-twd.png)
+
+1. A fizetési mód kiválasztása után kattintson a lap bal alsó sarkában található kék **Fizetés most** gombra.
+    ![a kiválasztott fizetés most gombot ábrázoló képernyőkép](./media/understand-azure-marketplace-charges/pay-now-button-twd.png)
+
+## <a name="change-default-payment-for-external-services"></a>Az alapértelmezett fizetési mód megváltoztatása külső szolgáltatásokhoz
 
 Külső szolgáltatás vásárlásakor kiválaszt egy Azure-előfizetést az erőforráshoz. A külső szolgáltatás fizetési módja azonos lesz a kiválasztott Azure-előfizetésével. A külső szolgáltatás fizetési módjának módosításához [módosítania kell annak az Azure-előfizetésnek a fizetési módját](../manage/change-credit-card.md), amely a külső szolgáltatáshoz kapcsolódik. Ha szeretné kideríteni, hogy a külső szolgáltatás melyik előfizetéshez kapcsolódik, kövesse az alábbi lépéseket:
 
@@ -73,25 +112,8 @@ Külső szolgáltatás vásárlásakor kiválaszt egy Azure-előfizetést az er�
     ![képernyőkép az erőforráshoz tartozó előfizetés nevéről](./media/understand-azure-marketplace-charges/sub-selected.png)
 1. Kattintson az előfizetés nevére, és [frissítse az aktív fizetési módot](../manage/change-credit-card.md).
 
-<!-- Update your payment methods for external service orders from the [Account Center](https://account.windowsazure.com/).
-
-> [!NOTE]
-> If you purchased your subscription with a Work or School account, [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to make changes to your payment method.
-
-1. Sign in to the [Account Center](https://account.windowsazure.com/) and [navigate to the **marketplace** tab](https://account.windowsazure.com/Store)
-
-    ![Select marketplace in the account center](./media/understand-azure-marketplace-charges/select-marketplace.png)
-2. Select the external service you want to manage
-
-    ![Select the external service you want to manage](./media/understand-azure-marketplace-charges/select-ext-service.png)
-3. Click **Change payment method** on the right side of the page. This link brings you to a different portal to manage your payment method.
-
-    ![Order summary](./media/understand-azure-marketplace-charges/change-payment.PNG)
-4. Click **Edit info** and follow instructions to update your payment information.
-
-    ![Select edit info](./media/understand-azure-marketplace-charges/edit-info.png) -->
-
 ## <a name="cancel-an-external-service-order"></a>Külső szolgáltatás lemondása
+
 Ha le szeretné mondani a külső szolgáltatást, törölje az erőforrást az [Azure Portalon](https://portal.azure.com).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).

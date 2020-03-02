@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.author: banders
-ms.openlocfilehash: 2689bdeb003cec0050141374165142a62f9ea337
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 77d663fa01e24acf63acd68d0b8d7cf4cc741055
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200401"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587090"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Foglalások vásárlása havi kifizetésekkel
 
@@ -48,7 +48,7 @@ A fizetési ütemezés vásárlás utáni megtekintéséhez válasszon ki egy fo
 
 A megtörtént kifizetéseket az API-k és a használati adatok használatával, valamint a költségelemzésben tekintheti meg. A havonta kifizetett foglalások esetében a gyakoriság értéke **ismétlődőként** jelenik meg a használati adatokban és a Reservation Charges API-ban. Az előre kifizetett foglalások esetében az érték **egyszeriként** jelenik meg.
 
-A költségelemzés az alapértelmezett nézetben jeleníti meg a havi vásárlásokat. A vásárlások megtekintéséhez alkalmazza a **vásárlás** szűrőt a **Költségtípus** esetében és az **ismétlődő** szűrőt a **Gyakoriság** esetében. Ha csak a foglalásokat szeretné megtekinteni, a **Foglalások** esetében alkalmazzon szűrőt.
+A költségelemzés az alapértelmezett nézetben jeleníti meg a havi vásárlásokat. A vásárlások megtekintéséhez alkalmazza a **vásárlás** szűrőt a **Költségtípus** elemre és az **ismétlődő** szűrőt a **Gyakoriság** elemre. Ha csak a foglalásokat szeretné megtekinteni, a **Foglalások** esetében alkalmazzon szűrőt.
 
 ![Példa a foglalásvásárlási költségekre a költségelemzésben](./media/monthly-payments-reservations/cost-analysis.png)
 
@@ -62,7 +62,7 @@ A többi foglaláshoz hasonlóan a havi számlázással vásárolt foglalások e
 
 Ha egy havi kifizetéses foglalást cserél le, akkor az új vásárlás teljes élettartamra vetített költségének nagyobbnak kell lennie, mint a lecserélni kívánt foglalás lemondott, fennmaradó kifizetései. Csere esetén nincsenek más korlátozások vagy díjak. Cserére akkor van lehetősége, ha egy előre kifizetett foglalás helyett vásárol egy havi számlázású, új foglalást. Az új foglalás élettartamra vetített értékének azonban nagyobbnak kell lennie, mint a lecserélni kívánt foglalás időarányos értéke.
 
-Ha egy havi kifizetéses foglalást mond le, a Microsoft jogosult lemondási díjat alkalmazni a lemondott jövőbeli kifizetésekért, amelyekért kötelezettséget vállalt. A fennmaradó kifizetések, amelyekért kötelezettséget vállalt, le lesznek vonva az 50 000 USD értékű visszatérítési korlátból.
+Ha egy havi kifizetéses foglalást mond le, a Microsoft jogosult 12% lemondási díjat alkalmazni a lemondott kifizetésekért, amelyekért kötelezettséget vállalt. A Microsoft azonban jelenleg nem vonja le ezt a díjat. A lemondott kifizetések, amelyekért kötelezettséget vállalt, le lesznek vonva az 50 000 USD értékű visszatérítési korlátból. Amennyiben a lemondási díjat levonták, a visszatérítési korlát nem módosul.
 
 A cserével és a visszatérítéssel kapcsolatos további információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](exchange-and-refund-azure-reservations.md).
 

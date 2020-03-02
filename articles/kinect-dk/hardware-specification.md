@@ -14,12 +14,12 @@ ms.custom:
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: dbe4cac64e324c1188ec5a01b4da3935a5d5b479
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: e0d42a3ce1dd9deb5e73500371c367134ca852e1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371292"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619966"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Az Azure Kinect DK hardverspecifikációi
 
@@ -71,7 +71,7 @@ Az Azure Kinect DK tartalmaz egy, a Microsoft által tervezett 1 megapixeles Tim
 | WFOV, nem kvantált   | 1024 x 1024  | 120° x 120° | 0, 5, 15           | 0,25–2,21 m      | 20,3 ms        |
 | Passzív infravörös      | 1024 x 1024  | N/A       | 0, 5, 15, 30       | N/A              | 1,6 ms         |
 
-\*15–95%-os visszaverődés 850 nm-en, 2,2 μW/cm<sup>2</sup>/nm, véletlen hiba, szórás ≤ 17 mm, jellemző rendszerszintű hiba < 11 mm + a távolság 0,1%-a, többutas interferencia nélkül. A megadott tartományon kívüli mélységérték a tárgy visszaverődési értékétől függ.
+\*15–95%-os visszaverődés 850 nm-en, 2,2 μW/cm<sup>2</sup>/nm, véletlen hiba, szórás ≤ 17 mm, jellemző rendszerszintű hiba < 11 mm + a távolság 0,1%-a, többutas interferencia nélkül. A mélység értéke a fent jelzett működési tartományon kívül is eshet. Ez az objektum visszaverődési értékétől függ.
 
 ## <a name="color-camera-supported-operating-modes"></a>A színes kamera támogatott üzemmódjai
 
@@ -113,7 +113,7 @@ Alább az RGB-kamera elfogadható kézi expozíciós értékeinek leképezése l
 
 ## <a name="depth-sensor-raw-timing"></a>Mélységérzékelő nyers időzítése
 
-Mélységi üzemmód | IR- <br>impulzusok | Impulzus- <br>szélesség  | Tétlen <br>időszakok| Üresjárati idő | Expozíciós <br> idő
+Mélységi üzemmód | IR <br>impulzusok | Impulzus- <br>szélesség  | Tétlen <br>időszakok| Üresjárati idő | Expozíciós <br> Time
 -|-|-|-|-|-
 NFOV, nem kvantált <br>  NFOV 2xx, kvantált <br> WFOV 2x2, kvantált | 9 | 125 us | 8 | 1450 us | 12,8 ms 
 WFOV, nem kvantált                                            | 9 | 125 us | 8 | 2390 us | 20,3 ms

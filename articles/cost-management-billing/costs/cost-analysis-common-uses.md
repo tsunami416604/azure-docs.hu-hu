@@ -4,16 +4,16 @@ description: Ez a cikk bemutatja, hogyan kérhetők le az eredmények a gyakori 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 2102e3af26c8f5c4ed85543bc19360a923d070f3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1d9a498185e76f9771ec98656b1cad914b0f3214
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199976"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562581"
 ---
 # <a name="common-cost-analysis-uses"></a>Gyakran használt költségelemzési megoldások
 
@@ -83,6 +83,9 @@ A használati adatokat tartalmazó, CSV formátumú jelentésfájl tartalmazza a
 ## <a name="view-monthly-ea-cost-breakdown"></a>Havi EA-költséglebontás megtekintése
 
 EA-regisztrációja a teljes szervezet költségeit magában foglalja. A költségek felhalmozódásának és időbeli számlázásának megértése segít a megfelelő érdekelt felek bevonásában a költségek felelősségteljes kezelésének biztosításához.
+
+Csak az aktív regisztrációhoz tartozó költségek láthatók. Ha egy (inaktív) regisztrációt egy új (aktív) regisztrációba vitt át, az előző regisztráció költségei nem jelennek meg a Cost Managementben.
+
 
 1. Az Azure Portalon lépjen a **Költségkezelés + Számlázás** > **Áttekintése** területre.
 1. Kattintson az aktuális hónaphoz tartozó **Lebontás** elemre, és tekintse meg a pénzügyi kerete részleteit.  

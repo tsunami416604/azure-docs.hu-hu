@@ -7,12 +7,12 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 4e4b039b6ad6fad8a414fc9703309fa76853ef09
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199670"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651372"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Partnerazonosítók csatolása az Azure-fiókhoz
 
@@ -29,6 +29,8 @@ A partnerazonosító csatolása előtt ügyfelének hozzáférést kell adnia Ö
 - **Címtárfiók**: Az ügyfél létrehozhat egy felhasználói fiókot az Ön számára a saját címtárában, és bármilyen RBAC-szerepkört hozzárendelhet.
 
 - **Egyszerű szolgáltatás**: Az ügyfél a címtárában hozzáadhat az Ön szervezetéből származó alkalmazást vagy szkriptet, és hozzárendelhet bármilyen RBAC-szerepkört. Az alkalmazás vagy szkript identitása szolgáltatásnévként ismert.
+
+- **Azure Lighthouse**: Ügyfele delegálhat egy előfizetést (vagy erőforráscsoportot), így a felhasználói képesek használni a bérlőjéből. További információkért lásd az [Azure által delegált erőforrás-kezelést](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
 
 ## <a name="link-to-a-partner-id"></a>Csatolás partnerazonosítóhoz
 
@@ -154,3 +156,7 @@ A következő lehetséges okok miatt nem jelenik meg az ügyfél a jelentésekbe
 **Működik-e a partnerazonosító csatolása funkció az Azure Stackkel?**
 
 Igen, partnerazonosítóját csatolhatja az Azure Stackhez.
+
+**Hogyan csatolhatom a partnerazonosítómat, ha a cégem [Azure Lighthouse-t](https://docs.microsoft.com/azure/lighthouse/overview) használ az ügyfelek erőforrásainak eléréséhez?**
+
+Ha [felügyelt szolgáltatási ajánlat az Azure Marketplace-en történő közzétételével](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers) kíván ügyfeleket felvenni az Azure által delegált erőforrás-kezelésbe, MPN-azonosítója automatikusan társítva lesz. Ha [Azure Resource Manager-sablonok üzembe helyezésével kíván ügyfeleket felvenni](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer), legalább egy olyan felhasználói fiókhoz kell társítania Microsoft Partner Network- (MPN-) azonosítóját, amely hozzáféréssel rendelkezik minden egyes felvett előfizetéshez. Ne felejtse, hogy ezt a szolgáltató bérlőjében kell megtennie. Az egyszerűség kedvéért azt javasoljuk, hogy hozzon létre egy olyan szolgáltatásnév-fiókot a bérlőjében, amely a fő MPN-azonosítójához van társítva, és adjon neki olvasói hozzáférést minden felvett ügyfélhez.

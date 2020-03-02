@@ -7,15 +7,17 @@ ms.service: cost-management-billing
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: banders
-ms.openlocfilehash: a5a158ce67d2d0c7dd947f7b35a96d12429c8ec9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9f9552c134fa7653e4100cae3c731e4c670d44e3
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200676"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560541"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k áttekintése
 A jelentéskészítési API-kkal a nagyvállalati Azure-ügyfelek programozott módon kérhetnek le használati és számlázási adatokat az előnyben részesített adatelemző eszközökbe. A nagyvállalati ügyfelek aláírtak egy [Nagyvállalati Szerződést (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) az Azure-ral, amelyben egyeztetett pénzügyi kötelezettségeket állapítanak meg annak érdekében, hogy az Azure-erőforrások egyéni díjszabására legyenek jogosultak.
+
+Az API-khoz szükséges minden dátum- és időparamétert az Egyezményes világidő (UTC) szerinti kombinált értékként kell megjeleníteni. Az API-k által visszaadott értékek UTC-formátumban jelennek meg.
 
 ## <a name="enabling-data-access-to-the-api"></a>Adathozzáférés biztosítása az API-knak
 * **Az API-kulcs létrehozása vagy lekérése** – Jelentkezzen be az Enterprise Portalra, és lépjen a Jelentések > Használati adatok letöltése > API-hozzáférési kulcs területre az API-kulcs létrehozásához vagy lekéréséhez.

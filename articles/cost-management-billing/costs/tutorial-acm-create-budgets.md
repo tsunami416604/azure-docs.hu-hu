@@ -4,17 +4,17 @@ description: Ez az oktatóanyag segít megtervezni és elszámolni a felhasznál
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/10/2020
+ms.date: 02/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 9900a2f7a41a6b35be75326b9412ec628328e39b
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 3b479f85475be6409a6fa6621357400e954d22c8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132102"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582388"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Azure-költségvetések létrehozása és kezelése
 
@@ -34,7 +34,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Költségvetés létrehozása az Azure Portalon
 > * Költségvetés létrehozása és szerkesztése a PowerShell-lel
-> * Költségvetés szerkesztése
+> * Költségvetés létrehozása Azure Resource Manager-sablonnal
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -160,6 +160,16 @@ $ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -N
 
 New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
 ```
+## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>Költségvetés létrehozása Azure Resource Manager-sablonnal
+
+Azure Resource Manager-sablonok használatával költségvetést hozhat létre. A sablon segít a költségvetés egy erőforráscsoporton belüli létrehozásában. A sablon csak a Nagyvállalati Szerződéssel rendelkező ügyfelek számára érhető el.
+
+Az alábbi képre kattintva jelentkezzen be az Azure Portalra, és nyissa meg a sablont:
+
+[![A Költségvetés létrehozása nevű sablon üzembe helyezése az Azure-ban](./media/tutorial-acm-create-budgets/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fcreate-budget%2fazuredeploy.json)
+
+A sablon paramétereit és a hozzájuk tartozó leírások listáját megtekintheti a [Költségvetés létrehozása](https://azure.microsoft.com/resources/templates/create-budget/) nevű sablonban.
+
 
 ## <a name="next-steps"></a>További lépések
 
@@ -168,7 +178,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Költségvetés létrehozása az Azure Portalon
 > * Költségvetés létrehozása és szerkesztése a PowerShell-lel
-> * Költségvetés szerkesztése
+> * Költségvetés létrehozása Azure Resource Manager-sablonnal
 
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhatja létre a Cost Management-adatok ismétlődő exportálását.
 
