@@ -1,16 +1,16 @@
 ---
-title: Hibakeresés
+title: Hibaelhárítás
 services: azure-dev-spaces
 ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 061f812e7567d96bba092ebc9625756c14c46940
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: HT
+ms.openlocfilehash: 2b5a6f14899ec41b1740563f4e8174f65aa679c7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662467"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197997"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
 
@@ -422,9 +422,8 @@ Ez a hiba jelenhet meg a szolgáltatás elérésére tett kísérlet során. Pé
 A probléma megoldása:
 
 1. Ha a tároló folyamatban létrehozott és üzembe helyezése folyamatban van, várjon 2-3 másodpercet, és próbálkozzon újra a szolgáltatás elérésével. 
-1. Ellenőrizze a port konfigurációját. A megadott portszámoknak meg kell **egyezniük** az összes alábbi eszközön:
-    * **Docker:** A `EXPOSE` utasítás adja meg.
-    * **[Helm-diagram](https://docs.helm.sh):** Egy szolgáltatás `externalPort` és `internalPort` értékeit adja meg (gyakran egy `values.yml` fájlban található),
+1. A port konfigurációjának ellenőrzését a következő eszközökön találja:
+    * **[Helm-diagram](https://docs.helm.sh):** A `service.port` és `deployment.containerPort` értékekben adja meg a Values. YAML `azds prep` paranccsal.
     * Az alkalmazás kódjában megnyitott portok, például a Node. js-ben: `var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>Nem található a következő típus vagy névtér neve: "MyLibrary".
