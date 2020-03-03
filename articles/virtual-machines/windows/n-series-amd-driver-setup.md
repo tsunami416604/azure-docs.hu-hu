@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: fdc6834f3fb5ee97f27a6397645b965863e90a6b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6dc8c54b9d138ab62e086cca59cd5b4801fa6130
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190545"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228337"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Az AMD GPU-illesztőprogramok telepítése a Windows rendszerű N sorozatú virtuális gépeken
 
@@ -31,13 +31,18 @@ Az alapszintű specifikációk, a tárolási kapacitások és a lemezek részlet
 
 | Operációs rendszer | Illesztőprogram |
 | -------- |------------- |
-| Windows 10 EVD – 1903-es Build <br/><br/>Windows 10 – Build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [19. q 4.1](https://download.microsoft.com/download/7/e/5/7e558ac0-3fff-413d-af62-800285a2fc53/Radeon-Pro-Software-for-Enterprise-19.Q4.1-Technical-Preview.exe) (. exe) |
+| Windows 10 EVD – 1903-es Build <br/><br/>Windows 10 – Build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. q 1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (. exe) |
+
 
 ## <a name="driver-installation"></a>Illesztőprogram telepítése
 
 1. Kapcsolódjon Távoli asztal az egyes NVv4-sorozatú virtuális gépekhez.
 
-1. Töltse le és csomagolja ki az illesztőprogram-telepítő fájljait. Navigáljon a mappához, és futtassa a Setup. exe fájlt a támogatott illesztőprogram telepítéséhez a Windows operációs rendszerhez.
+2. Ha Ön a NVv4 előzetes verziójának ügyfelét használja, állítsa le a virtuális gépet, és várjon, amíg a leállítva (fel nem szabadítva) állapotba kerül.
+
+3. Indítsa el a virtuális gépet, majd távolítsa el az előzetes verziójú illesztőprogramot a ". ..\AMDCleanUninstallUtility" mappában található "amdcleanuputility-x64. exe" parancs futtatásával. A pontos elérési út attól függően változhat, hogy hol találhatók a korábbi illesztőprogram-telepítési fájlok.  
+
+4. Töltse le és telepítse a legújabb illesztőprogramot.
 
 ## <a name="verify-driver-installation"></a>Illesztőprogram telepítésének ellenőrzése
 

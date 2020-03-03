@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 31ced19e164d50030386064a81edf3322b12855d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c67fff32770446cac3adef8af50c9e5733077bc7
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191129"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226280"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid Runbook-feldolgozón
 
@@ -166,7 +166,7 @@ A futtató fiók előkészítésének befejezése:
 
 1. Mentse az **export-RunAsCertificateToHybridWorker** runbook a számítógépre **. ps1** kiterjesztéssel.
 2. Importálja az Automation-fiókjába.
-3. Szerkessze a runbook, és módosítsa a változó értékét a saját jelszavára *$Password* . 
+3. Szerkessze a runbook, és módosítsa a *jelszó* változó értékét a saját jelszavával. 
 4. Tegye közzé a runbook.
 5. Futtassa a runbook, amely a futtató fiók használatával futtatja és hitelesíti a runbookok a hibrid Runbook-munkavégző csoportot. 
 6. Vizsgálja meg a folyamat adatfolyamát, és figyelje meg, hogy a tanúsítvány importálására tett kísérlet a helyi számítógép tárolójába történik, és több sorral is elvégezhető. Ez a viselkedés attól függ, hogy hány Automation-fiókot határoz meg az előfizetésében, valamint a hitelesítés sikerességének fokát.
@@ -311,7 +311,7 @@ Az aláírt runbook neve `<runbook name>.asc`.
 
 Most már feltöltheti az aláírt runbook Azure Automation, és végrehajthatja, mint egy normál runbook.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a runbook elindításának módszereiről, tekintse meg a [Runbook elindítása a Azure Automationban](automation-starting-a-runbook.md)című témakört.
 * Ha szeretné megtudni, hogyan használhatja a szöveges szerkesztőt a Azure Automation PowerShell-runbookok való együttműködésre, tekintse meg [a Runbook Azure Automation-ban való szerkesztését](automation-edit-textual-runbook.md)ismertető témakört.

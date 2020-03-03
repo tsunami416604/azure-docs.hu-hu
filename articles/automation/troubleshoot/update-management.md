@@ -4,16 +4,16 @@ description: Útmutató az Azure-beli Update Management megoldással kapcsolatos
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/31/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5ee1a20d4a3c46cab484b03b5fcc212a79d19047
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513269"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227466"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Hibák elhárítása Update Management
 
@@ -24,6 +24,36 @@ A hibrid feldolgozói ügynöknek van egy ügynök-hibakeresője, amely meghatá
 Ha problémák merülnek fel a megoldás virtuális gépen való beléptetése közben, tekintse meg a helyi gépen a **Operations Manager** log ( **alkalmazás és szolgáltatások naplója** ) lehetőséget az 4502-as azonosítójú eseményekkel és a **Microsoft. EnterpriseManagement. HealthService. AzureAutomation. HybridAgent**azonosítójú esemény részleteivel.
 
 A következő szakasz a konkrét hibaüzeneteket és az egyes lehetséges megoldásait ismerteti. Egyéb bevezetési problémák esetén lásd: a megoldás bevezetésének [hibaelhárítása](onboarding.md).
+
+## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Forgatókönyv: hiányzóként jelzett, felülírt frissítés Update Management
+
+### <a name="issue"></a>Probléma
+
+A régi frissítések az Azure-fiókban Update Managementban jelennek meg, még akkor is, ha azok felülírva lettek. Egy felülírt frissítés az egyik, amelyet nem kell telepíteni, mert egy későbbi frissítés is elérhető, amely kijavította ugyanazt a biztonsági rést. Update Management figyelmen kívül hagyja a felülírt frissítést, és nem alkalmazható a felülírt frissítés mellett. További információ a kapcsolódó problémákról: a [frissítés felülírva](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
+
+### <a name="cause"></a>Ok
+
+A felülírt frissítések nem lesznek megfelelően jelezve, hogy ne legyenek alkalmazhatók.
+
+### <a name="resolution"></a>Megoldás:
+
+Ha a felváltott frissítés 100%-ban nem alkalmazható, a frissítés jóváhagyási állapotát **visszautasítva**kell módosítani. Ehhez az összes frissítéshez:
+
+1. Az Automation-fiókban válassza a **Update Management** lehetőséget a gép állapotának megtekintéséhez. Lásd: [frissítési felmérések megtekintése](../manage-update-multi.md#view-an-update-assessment).
+
+2. Ellenőrizze a felülírt frissítést, és győződjön meg arról, hogy 100%-os nem alkalmazható. 
+
+3. A frissítés elutasításának megjelölése, ha kérdése van a frissítéssel kapcsolatban. 
+
+4. Válassza a számítógépek lehetőséget, és a megfelelőség oszlopban ellenőrizze, hogy a megfelelőségi ellenőrzés ki van-e kényszerítve. Lásd: [több gép frissítéseinek kezelése](../manage-update-multi.md).
+
+5. Ismételje meg a fenti lépéseket a többi felülírt frissítésnél.
+
+6. Futtassa a Lemezkarbantartó varázslót, hogy törölje a fájlokat a visszautasított frissítésekről. 
+
+7. A WSUS esetében manuálisan törölje az összes felülírt frissítést az infrastruktúra frissítéséhez.
+
+8. Ismételje meg az eljárást rendszeresen a megjelenítési probléma kijavításához, és csökkentse az Update Management által használt lemezterület méretét.
 
 ## <a name="nologs"></a>Forgatókönyv: a gépek nem jelennek meg a portálon Update Management
 
@@ -45,7 +75,7 @@ Előfordulhat, hogy újra kell regisztrálnia és újra kell telepítenie a hibr
 
 Lehet, hogy meghatározott egy kvótát a munkaterületen, amely el lett érve, és ez megakadályozza a további adattárolás megadását.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 * Futtassa a [Windows](update-agent-issues.md#troubleshoot-offline) vagy [Linux](update-agent-issues-linux.md#troubleshoot-offline)rendszerhez készült hibakeresőt az operációs rendszertől függően.
 
@@ -86,7 +116,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 Az Automation erőforrás-szolgáltató nincs regisztrálva az előfizetésben.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 Az Automation erőforrás-szolgáltató regisztrálásához kövesse az alábbi lépéseket a Azure Portalban:
 
@@ -113,7 +143,7 @@ Ez a hiba a következő okok miatt fordulhat elő:
 - Az Automation-fiókkal folytatott kommunikáció blokkolása folyamatban van.
 - Előfordulhat, hogy a bevezetésben lévő virtuális gép olyan klónozott gépről származik, amely nem volt telepítve a Microsoft monitoring Agent (MMA) Sysprep használatával létrehozott.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 1. Nyissa meg a [hálózat megtervezése](../automation-hybrid-runbook-worker.md#network-planning) című témakört, amelyből megtudhatja, mely címeket és portokat kell engedélyezni a Update Management működéséhez.
 2. Ha klónozott rendszerképet használ:
@@ -136,7 +166,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 Ez a hiba akkor fordul elő, amikor olyan frissítési központi telepítést hoz létre, amely egy másik bérlőn található Azure-beli virtuális gépekkel rendelkezik.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 A következő megkerülő megoldással kérheti le ezeket az elemeket. A [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) parancsmagot használhatja a `-ForUpdate` kapcsolóval az ütemterv létrehozásához. Ezután használja a [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
 ) parancsmagot, és adja át a többi bérlőn található gépeket a `-NonAzureComputer` paraméternek. Az alábbi példa bemutatja, hogyan teheti meg ezt:
@@ -161,7 +191,7 @@ Annak ellenére, hogy az **Újraindítás-vezérlési** lehetőséget állított
 
 Windows Update több beállításkulcs is módosítható, amelyek közül bármelyik módosíthatja az újraindítási viselkedést.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 Tekintse át az [Automatikus frissítések konfigurálása](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) szakaszban felsorolt beállításkulcsokat, és szerkessze az [újraindításhoz használt](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) beállításjegyzéket és beállításkulcsokat, és győződjön meg arról, hogy a gépek megfelelően vannak konfigurálva.
 
@@ -185,7 +215,7 @@ Ez a hiba a következő okok valamelyike miatt jelentkezhet:
 * Frissült az MMA, amely megváltoztatta a SourceComputerId.
 * A frissítési kísérlet szabályozása megtörtént, ha elér egy Automation-fiók 2 000 egyidejű feladatának korlátját. Az egyes központi telepítések feladatoknak minősülnek, és a frissítések központi telepítésének minden gépe feladatoknak számít. Az Automation-fiókban jelenleg futó egyéb automatizálási feladatok vagy frissítési üzembe helyezések az egyidejű feladatok korlátja felé mutatnak.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 Ha alkalmazható, használjon [dinamikus csoportokat](../automation-update-management-groups.md) a frissítés központi telepítéséhez. Ezenkívül:
 
@@ -208,7 +238,7 @@ Ha Update Managementban regisztrál egy Windows-gépet, a frissítések telepít
 
 Windows rendszeren a frissítések automatikusan települnek, amint elérhetők. Ez a viselkedés zavart okozhat, ha nem ütemezett frissítést a gépre való telepítéshez.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 A `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` beállításkulcs alapértelmezett értéke 4: **automatikus letöltés és telepítés**.
 
@@ -230,7 +260,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 A gép már bekerült a Update Management egy másik munkaterületére.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 1. Kövesse a következő szakaszban leírt lépéseket [a portálon a Update Management alatt](#nologs) , hogy a gép a megfelelő munkaterületre legyen bejelentve.
 2. Törölje a régi összetevőket a gépen a [hibrid runbook-csoport törlésével](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group), majd próbálkozzon újra.
@@ -261,7 +291,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 Előfordulhat, hogy A proxy, az átjáró vagy a tűzfal blokkolja a hálózati kommunikációt. 
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 Tekintse át a hálózatkezelést, és győződjön meg arról, hogy a megfelelő portok és címek engedélyezettek. A Update Management és a hibrid Runbook-feldolgozók által igényelt portok és címek listáját a [hálózati követelmények](../automation-hybrid-runbook-worker.md#network-planning) című témakörben tekintheti meg.
 
@@ -279,7 +309,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 A hibrid Runbook Worker nem tudott önaláírt tanúsítványt előállítani.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 Ellenőrizze, hogy a rendszerfiók rendelkezik-e olvasási hozzáféréssel a **C:\ProgramData\Microsoft\Crypto\RSA** mappához, és próbálkozzon újra.
 
@@ -289,7 +319,7 @@ Ellenőrizze, hogy a rendszerfiók rendelkezik-e olvasási hozzáféréssel a **
 
 A frissítések alapértelmezett karbantartási időszaka 120 perc. A karbantartási időszakot legfeljebb 6 órára növelheti, vagy 360 percet is igénybe vehet.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 Szerkessze a sikertelen ütemezett frissítések telepítését, és növelje a karbantartási időszakot.
 
@@ -307,7 +337,7 @@ További információ a karbantartási időszakokról: [Install Updates (frissí
 
 A frissítési ügynök (Windows Update ügynök a Windows rendszeren; a Linux-disztribúcióhoz tartozó csomagkezelő) nincs megfelelően konfigurálva. Update Management a gép frissítési ügynökére támaszkodik, hogy megadja a szükséges frissítéseket, a javítás állapotát és a telepített javítások eredményét. Ezen információk nélkül Update Management nem tud megfelelően jelentést készíteni a szükséges vagy telepített javításokról.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 Próbálja helyileg végrehajtani a frissítéseket a gépen. Ha ez nem sikerül, az általában azt jelzi, hogy konfigurációs hiba van a frissítési ügynökkel.
 
@@ -355,7 +385,7 @@ Lehetséges okok:
 * A gép nem érhető el.
 * A frissítések nem oldották meg a függőségeket.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 Ha a frissítés sikeres elindítása után hibák lépnek fel, ellenőrizze a Futtatás során az érintett gép [kimenetét](../manage-update-multi.md#view-results-of-an-update-deployment) . Előfordulhat, hogy olyan hibaüzeneteket talál a gépekről, amelyeken kutatást végezhet, és műveleteket hajthat végre. Update Management megköveteli, hogy a Package Manager Kifogástalan állapotba kerüljön a sikeres frissítések központi telepítéséhez.
 

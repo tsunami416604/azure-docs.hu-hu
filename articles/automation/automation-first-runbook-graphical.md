@@ -6,14 +6,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: b6b043f878ee93bc9713673fe66359e013b1dba6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 351ed146511409fb4c6cc49705c7051b89ea0212
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191214"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226482"
 ---
-# <a name="my-first-graphical-runbook"></a>Az első grafikus forgatókönyvem
+# <a name="my-first-graphical-runbook"></a>Az első grafikus runbook
 
 > [!div class="op_single_selector"]
 > * [Grafikus](automation-first-runbook-graphical.md)
@@ -246,7 +246,7 @@ Mostantól módosíthatja a runbook, hogy csak akkor próbálja meg elindítani 
 1. Mentse a forgatókönyvet, és nyissa meg a Teszt panelt.
 1. Indítsa el a runbook a virtuális gép leállításával, és a számítógépnek el kell indulnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a grafikus létrehozásról: [grafikus létrehozás Azure Automationban](automation-graphical-authoring-intro.md).
 * A PowerShell-forgatókönyvek használatának megismeréséhez tekintse meg a következőt: [Az első PowerShell-runbookom](automation-first-runbook-textual-powershell.md).

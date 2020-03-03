@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8391d92a2e2970378c11c043ca9f5d4f6dc44696
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 8acdaabc9f12f7e1bf85cfd8c727369462fe47e4
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939371"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227406"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Rövid útmutató: Azure Private DNS-zóna létrehozása a Azure Portal használatával
 
 Ez a rövid útmutató végigvezeti az első saját DNS-zóna és-rekord létrehozásának lépésein a Azure Portal használatával.
 
-A DNS-zóna egy adott tartomány DNS-rekordjainak üzemeltetésére szolgál. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. A saját DNS-zóna virtuális hálózaton történő közzétételéhez meg kell adnia azon virtuális hálózatok listáját, amelyek számára engedélyezett a zónán belüli rekordok feloldása.  Ezeket *csatolt* virtuális hálózatoknak nevezzük. Ha engedélyezve van az automatikus regisztráció, a Azure DNS a zóna rekordjait is frissíti, amikor létrejön egy virtuális gép, megváltoztatja az IP-címét, vagy törli azt.
+Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. A saját DNS-zóna virtuális hálózaton történő közzétételéhez meg kell adnia azon virtuális hálózatok listáját, amelyek számára engedélyezett a zónán belüli rekordok feloldása.  Ezeket *csatolt* virtuális hálózatoknak nevezzük. Ha engedélyezve van az automatikus regisztráció, a Azure DNS a zóna rekordjait is frissíti, amikor létrejön egy virtuális gép, megváltoztatja az IP-címét, vagy törli azt.
 
 Ezen rövid útmutató segítségével megtanulhatja a következőket:
 
@@ -48,7 +48,7 @@ Egy DNS-zóna tartalmazza a tartomány DNS-bejegyzéseit. A tartomány Azure DNS
 
 1. A **saját DNS zóna létrehozása** lapon írja be vagy válassza ki a következő értékeket:
 
-   - **Erőforráscsoport**: válassza az **új létrehozása**elemet, írja be a *MyAzureResourceGroup*, majd kattintson **az OK gombra**. Az erőforráscsoport nevének egyedinek kell lennie az Azure-előfizetésen belül. 
+   - **Erőforráscsoport**: válassza az **új létrehozása**elemet, írja be a *MyAzureResourceGroup*, majd kattintson **az OK gombra**. Az erőforráscsoport nevének egyedinek kell lennie az Azure-előfizetésen belül.
    -  **Név**: írja be a *Private.contoso.com* a példához.
 1. Az **erőforráscsoport helye**területen válassza az **USA nyugati középső**régiója lehetőséget.
 
@@ -58,13 +58,21 @@ Egy DNS-zóna tartalmazza a tartomány DNS-bejegyzéseit. A tartomány Azure DNS
 
 A zóna létrehozása eltarthat néhány percig.
 
-## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
+## <a name="virtual-network-and-parameters"></a>Virtuális hálózat és paraméterek
 
-1. A portál bal felső sarkában válassza az **erőforrás létrehozása**, majd a **hálózat**, majd a **virtuális hálózat**lehetőséget.
-2. A **név**mezőbe írja be a következőt: **myAzureVNet**.
-3. Az **erőforráscsoport**területen válassza a **MyAzureResourceGroup**lehetőséget.
-4. A hely mezőben válassza ki az **USA nyugati középső** **régióját**.
-5. Fogadja el a többi alapértelmezett értéket, és válassza a **Létrehozás**lehetőséget.
+Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekben az alábbi információkkal:
+
+| Paraméter                   | Érték                |
+|-----------------------------|----------------------|
+| **\<erőforrás-csoport neve >**  | MyAzureResourceGroup |
+| **\<virtuális hálózat neve >** | MyAzureVNet          |
+| **\<régió – név >**          | USA nyugati középső régiója      |
+| **\<IPv4-címterület >**   | 10.2.0.0 \ 16          |
+| **\<alhálózat neve >**          | MyAzureSubnet        |
+| **\<alhálózat-címtartomány >** | 10.2.0.0 \ 24          |
+
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="link-the-virtual-network"></a>A virtuális hálózat összekapcsolása
 
@@ -88,9 +96,8 @@ Most hozzon létre két virtuális gépet, amelyekkel tesztelheti saját DNS-zó
 1. Válassza ki az erőforráscsoport **MyAzureResourceGroup** .
 1. Írja be a **myVM01** -nevet a virtuális gép nevére.
 1. Válassza ki az **USA nyugati középső** **régióját**.
-1. Írja be a **azureadmin** nevet a rendszergazda felhasználónevének.
-2. Írja be a jelszó **Azure12345678** , és erősítse meg a jelszót.
-
+1. Adja meg a rendszergazda Felhasználónév nevét.
+2. Adja meg a jelszót, és erősítse meg a jelszót.
 5. A **nyilvános bejövő portok**esetében válassza a **kiválasztott portok engedélyezése**lehetőséget, majd válassza az **RDP (3389)** lehetőséget a **bejövő portok kiválasztásához**.
 10. Fogadja el az oldal többi alapértelmezett beállítását, majd kattintson a **Tovább gombra: lemezek >** .
 11. Fogadja el az alapértelmezett értékeket a **lemezek** lapon, majd kattintson a **Tovább gombra: hálózatkezelés >** .

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 03/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a64af5d2b19b05ec9a5eda97c43e278cdfb8b4ff
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: bdea51c6cb53222f31a07906785a94073a0293a1
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189106"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226794"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés munkamenet-kezelés a Azure Active Directory B2C-ben
 
@@ -118,26 +118,25 @@ Ez a szolgáltató a "személyazonossági szolgáltató választása" képernyő
 
 #### <a name="metadata"></a>Metaadatok
 
-| Attribútum | Szükséges | Leírás|
+| Attribútum | Kötelező | Leírás|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | Nem | Jelenleg nincs használatban, figyelmen kívül hagyható. |
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a függő entitás alkalmazása vagy egy összevont SAML-szolgáltató között. Ha az SSO-szolgáltatót használja az SAML-azonosító szolgáltatói munkamenetének tárolására, a `IncludeSessionIndex` és a `RegisterServiceProviders` `false`ra kell beállítani. Az [SAML technikai profil](saml-technical-profile.md)a következő `SM-Saml-idp` technikai profilt használja.
+Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a függő entitás alkalmazása vagy egy összevont SAML-szolgáltató között. Ha az SSO-szolgáltatót használja az SAML-identitás szolgáltatói munkamenetének tárolására, a `RegisterServiceProviders` `false`ra kell beállítani. Az [SAML technikai profil](saml-technical-profile.md)a következő `SM-Saml-idp` technikai profilt használja.
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
-    <Item Key="IncludeSessionIndex">false</Item>
     <Item Key="RegisterServiceProviders">false</Item>
   </Metadata>
 </TechnicalProfile>
 ```
 
-Ha a B2C SAML-munkamenet tárolására szolgáltatót használ, a `IncludeSessionIndex`nak és a `RegisterServiceProviders`nak `true`értékre kell állítania. Az SAML-munkamenet kijelentkezéséhez szükség van a `SessionIndex`ra, és `NameID` a befejezéshez.
+Ha a B2C SAML-munkamenet tárolására szolgáltatót használ, a `RegisterServiceProviders` `true`ra kell beállítania. Az SAML-munkamenet kijelentkezéséhez szükség van a `SessionIndex`ra, és `NameID` a befejezéshez.
 
 Az [SAML-kiállító technikai profilja](connect-with-saml-service-providers.md) a következő `SM-Saml-idp` technikai profilt használja
 
@@ -149,9 +148,9 @@ Az [SAML-kiállító technikai profilja](connect-with-saml-service-providers.md)
 ```
 #### <a name="metadata"></a>Metaadatok
 
-| Attribútum | Szükséges | Leírás|
+| Attribútum | Kötelező | Leírás|
 | --- | --- | --- |
-| IncludeSessionIndex | Nem | Azt jelzi, hogy a szolgáltatónak tárolnia kell a munkamenet-indexet. Lehetséges értékek: `true` (alapértelmezett) vagy `false`.|
+| IncludeSessionIndex | Nem | Jelenleg nincs használatban, figyelmen kívül hagyható.|
 | RegisterServiceProviders | Nem | Azt jelzi, hogy a szolgáltatónak regisztrálnia kell az összes olyan SAML-szolgáltatót, amely kiállított egy állítást. Lehetséges értékek: `true` (alapértelmezett) vagy `false`.|
 
 

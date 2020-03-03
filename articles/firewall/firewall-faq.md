@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/02/2020
 ms.author: victorh
-ms.openlocfilehash: 4792c0bce7d9119f5198490d62f49f000e1567d3
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: dc5a05c672df1b4f9db764b58db93279c4be7570
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621965"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227441"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -177,3 +177,25 @@ A felskálázáshoz Azure Firewall 5 – hét percet vesz igénybe. Forduljon az
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Alapértelmezés szerint a Azure Firewall engedélyezi a Active Directory hozzáférését?
 
 Nem. A Azure Firewall alapértelmezés szerint blokkolja Active Directory hozzáférését. A hozzáférés engedélyezéséhez konfigurálja a AzureActiveDirectory szolgáltatás címkéjét. További információ: [Azure Firewall szolgáltatás címkéi](service-tags.md).
+
+## <a name="can-i-exclude-a-fqdn-or-an-ip-address-from-azure-firewall-threat-intelligence-based-filtering"></a>Ki lehet zárni egy teljes tartománynevet vagy egy IP-címet Azure Firewall fenyegetések felderítésére alapuló szűrés alapján?
+
+Igen, használhatja a Azure PowerShellt a következő művelet végrehajtásához:
+
+```azurepowershell
+# Add a Threat Intelligence Whitelist to an Existing Azure Firewall
+
+## Create the Whitelist with both FQDN and IPAddresses
+
+$fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
+$fw.ThreatIntelWhitelist = New-AzFirewallThreatIntelWhitelist `
+   -FQDN @(“fqdn1”, “fqdn2”, …) -IpAddress @(“ip1”, “ip2”, …)
+
+## Or Update FQDNs and IpAddresses separately
+
+$fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
+$fw.ThreatIntelWhitelist.FQDNs = @(“fqdn1”, “fqdn2”, …)
+$fw.ThreatIntelWhitelist.IpAddress = @(“ip1”, “ip2”, …)
+
+Set-AzFirewall -AzureFirewall $fw
+```

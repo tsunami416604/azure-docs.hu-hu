@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 429c221609005136663d5e64a1b8650027cba411
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 231c5f1bc6fd76f4f9e89d2d53639e9abe6cde0e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588739"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228323"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Gyors útmutató: NAT-átjáró létrehozása a Azure Portal használatával
 
@@ -32,27 +32,24 @@ Ez a rövid útmutató bemutatja, hogyan használhatja az Azure Virtual Network 
 
 Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
-### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
+## <a name="virtual-network-and-parameters"></a>Virtuális hálózat és paraméterek
 
-Egy virtuális gép üzembe helyezése és a NAT-átjáró használata előtt létre kell hozni az erőforráscsoportot és a virtuális hálózatot.  
+Egy virtuális gép üzembe helyezése és a NAT-átjáró használata előtt létre kell hozni az erőforráscsoportot és a virtuális hálózatot.
 
-1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **virtuális hálózat**lehetőséget, vagy keressen rá a **virtuális hálózatra** a piactéren.
+Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekben az alábbi információkkal:
 
-2. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
+| Paraméter                   | Érték                |
+|-----------------------------|----------------------|
+| **\<erőforrás-csoport neve >**  | myResourceGroupNAT |
+| **\<virtuális hálózat neve >** | myVNet          |
+| **\<régió – név >**          | USA 2. keleti régiója      |
+| **\<IPv4-címterület >**   | 192.168.0.0 \ 16          |
+| **\<alhálózat neve >**          | mySubnet        |
+| **\<alhálózat-címtartomány >** | 192.168.0.0 \ 24          |
 
-    | Beállítás | Érték |
-    | ------- | ----- |
-    | Name (Név) | Adja meg a **myVNet** értéket. |
-    | Címtér | Adja meg a **192.168.0.0/16**értéket. |
-    | Előfizetést | Válassza ki előfizetését.|
-    | Erőforráscsoport | Válassza a Create New- **myResourceGroupNAT**(új létrehozása) lehetőséget. |
-    | Hely | Válassza az **USA 2. keleti régiója** lehetőséget.|
-    | Alhálózat – név | Adja meg a **mySubnet**. |
-    | Alhálózat – címtartomány | Adja meg a **192.168.0.0/24**értéket. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. Hagyja meg a többi alapértelmezett beállítást, és válassza a **Létrehozás**lehetőséget.
-
-### <a name="create-a-vm-to-use-the-nat-gateway"></a>Virtuális gép létrehozása a NAT-átjáró használatához
+## <a name="create-a-vm-to-use-the-nat-gateway"></a>Virtuális gép létrehozása a NAT-átjáró használatához
 
 Most létrehozunk egy virtuális gépet a NAT szolgáltatás használatához. Ez a virtuális gép egy nyilvános IP-címmel rendelkezik, amely egy példány szintű nyilvános IP-címet használ, hogy lehetővé tegye a virtuális gép elérését. A NAT szolgáltatás a flow irányának ismerete, és az alapértelmezett internetes célhelyet váltja fel az alhálózaton. A virtuális gép nyilvános IP-címe nem használható kimenő kapcsolatokhoz.
 

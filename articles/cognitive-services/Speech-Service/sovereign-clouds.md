@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 1/14/2020
 ms.author: cbasoglu
-ms.openlocfilehash: 00617fc09f471eaf3dc13a5aa691c4aab2e1e2ec
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b41967033b00144ca5bd52ce23cf8aabcea6749e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424915"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228085"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>A Speech Services szuverén Felhőkkel
 
@@ -56,7 +56,7 @@ Kínában, egy Azure-adatközpontban található, amely közvetlen hozzáférés
 - TTS a SpeechSDK-ben: *config. FromHost ("https[]()://chinaeast2.TTS.Speech.Azure.cn", "\<saját kulcsú\>");*
 - Hitelesítési jogkivonatok:[]()https://chinaeast2.API.Cognitive.Azure.cn/STS/v1.0/issueToken
 - Azure Portal: https://portal.azure.cn
-- Custom Speech-portál: https://chinaeast2.cris.azure.cn/Home/CustomSpeech
+- Custom Speech-portál: https://speech.azure.cn/CustomSpeech
 - Rendelkezésre álló SKU-i: S0
 - Támogatott funkciók:
   - Diktálás

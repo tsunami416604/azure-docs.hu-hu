@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 310bf168b701ba6c37f71bc968da8e9114458e6f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425307"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226334"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>SSL-tanúsítvány hozzáadása Azure App Service
 
@@ -349,7 +349,7 @@ A letöltött *appservicecertificate. pfx* fájl egy nyers PKCS12/pfx-profil-fá
 
 ### <a name="delete-certificate"></a>Tanúsítvány törlése 
 
-Egy App Service tanúsítvány törlése végleges és visszafordíthatatlan. A tanúsítvány App Serviceban lévő kötések érvénytelenné válnak. A véletlen törlés megelőzése érdekében az Azure zárolást helyez el a tanúsítványon. App Service tanúsítvány törléséhez először el kell távolítania a tanúsítvány törlési zárolását.
+Egy App Service tanúsítvány törlése végleges és visszafordíthatatlan. App Service-tanúsítvány erőforrás törlésének eredménye a visszavont tanúsítvány. A tanúsítvány App Serviceban lévő kötések érvénytelenné válnak. A véletlen törlés megelőzése érdekében az Azure zárolást helyez el a tanúsítványon. App Service tanúsítvány törléséhez először el kell távolítania a tanúsítvány törlési zárolását.
 
 Válassza ki a tanúsítványt a [app Service tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd a bal oldali navigációs sávon válassza a **zárolások** lehetőséget.
 

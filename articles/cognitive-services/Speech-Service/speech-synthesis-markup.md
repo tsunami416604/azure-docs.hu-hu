@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
-ms.openlocfilehash: c4a27db8bec6dbbd2f1b2be8acfdd034d45d37d5
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 499770b664757ec0f3a0bd3b26e0de36007741b6
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561920"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228076"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -57,9 +57,9 @@ Minden SSML-dokumentum SSML elemekkel (vagy címkékkel) jön létre. Ezek az el
 
 | Attribútum | Leírás | Kötelező / választható |
 |-----------|-------------|---------------------|
-| `version` | Megadja a dokumentum korrektúrájának értelmezéséhez használt SSML-specifikáció verzióját. Az aktuális verzió 1,0. | Szükséges |
-| `xml:lang` | Megadja a legfelső szintű dokumentum nyelvét. Az érték tartalmazhat kisbetűs, kétbetűs nyelvi kódot (például `en`), illetve a nyelvi kódot és a nagybetűs országot/régiót (például `en-US`). | Szükséges |
-| `xmlns` | Megadja a dokumentumhoz tartozó URI-t, amely meghatározza a SSML dokumentum Markup szókincsét (az elemek típusát és az attribútum nevét). Az aktuális URI https://www.w3.org/2001/10/synthesis. | Szükséges |
+| `version` | Megadja a dokumentum korrektúrájának értelmezéséhez használt SSML-specifikáció verzióját. Az aktuális verzió 1,0. | Kötelező |
+| `xml:lang` | Megadja a legfelső szintű dokumentum nyelvét. Az érték tartalmazhat kisbetűs, kétbetűs nyelvi kódot (például `en`), illetve a nyelvi kódot és a nagybetűs országot/régiót (például `en-US`). | Kötelező |
+| `xmlns` | Megadja a dokumentumhoz tartozó URI-t, amely meghatározza a SSML dokumentum Markup szókincsét (az elemek típusát és az attribútum nevét). Az aktuális URI https://www.w3.org/2001/10/synthesis. | Kötelező |
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>Hang kiválasztása szöveg és beszéd között
 
@@ -77,7 +77,7 @@ A `voice` elem megadása kötelező. A szövegről beszédre használt hang mega
 
 | Attribútum | Leírás | Kötelező / választható |
 |-----------|-------------|---------------------|
-| `name` | A szöveg-beszéd kimenethez használt hang azonosítása. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg. | Szükséges |
+| `name` | A szöveg-beszéd kimenethez használt hang azonosítása. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg. | Kötelező |
 
 **Példa**
 
@@ -100,7 +100,7 @@ A `speak` elemen belül több hang is megadható a szöveg-beszéd kimenethez. E
 
 | Attribútum | Leírás | Kötelező / választható |
 |-----------|-------------|---------------------|
-| `name` | A szöveg-beszéd kimenethez használt hang azonosítása. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg. | Szükséges |
+| `name` | A szöveg-beszéd kimenethez használt hang azonosítása. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg. | Kötelező |
 
 > [!IMPORTANT]
 > Több hang nem kompatibilis a szó határával. Több hang használata érdekében le kell tiltani a szó határát.
@@ -256,7 +256,7 @@ A `break` elem használatával szüneteltetheti a szavak közötti szüneteltet�
 
 | Attribútum | Leírás | Kötelező / választható |
 |-----------|-------------|---------------------|
-| `strength` | Meghatározza a Szüneteltetés relatív időtartamát az alábbi értékek egyikének használatával:<ul><li>Nincs</li><li>x – gyenge</li><li>gyenge</li><li>közepes (alapértelmezett)</li><li>erős</li><li>x – erős</li></ul> | Optional |
+| `strength` | Meghatározza a Szüneteltetés relatív időtartamát az alábbi értékek egyikének használatával:<ul><li>nincs</li><li>x – gyenge</li><li>gyenge</li><li>közepes (alapértelmezett)</li><li>erős</li><li>x – erős</li></ul> | Optional |
 | `time` | Megadja a szünet időtartamát másodpercben vagy ezredmásodpercben. Érvényes értékek például `2s` és `500` | Optional |
 
 | Erősségét | Leírás |
@@ -347,6 +347,103 @@ A fonetikus ábécék olyan telefonokból állnak, amelyek betűkből, számokb�
     </voice>
 </speak>
 ```
+
+## <a name="use-custom-lexicon-to-improve-pronunciation"></a>A kiejtés javítása egyéni lexikon használatával
+
+Néha a TTS nem tudja pontosan kiejteni a szót, például egy vállalat vagy egy idegen név. A fejlesztők a SSML `phoneme` és `sub` címkével határozhatják meg az entitások olvasását, vagy megadhatják több entitás olvasását úgy, hogy egy egyéni lexikon-fájlra hivatkoznak `lexicon` címke használatával.
+
+**Szintaxis**
+
+```XML
+<lexicon uri="string"/>
+```
+
+**Attribútumok**
+
+| Attribútum | Leírás | Kötelező / választható |
+|-----------|-------------|---------------------|
+| `uri` | A külső PLS-dokumentum címe. | Kötelező. |
+
+**Használat**
+
+1\. lépés: egyéni lexikon definiálása 
+
+Az entitások olvasását megadhatja egy. XML vagy. pls fájlban tárolt egyéni lexikon elemek listája alapján.
+
+**Példa**
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="ipa" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme> 
+    <alias>By the way</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme> 
+    <phoneme> bɛˈniːnji</phoneme>
+  </lexeme>
+</lexicon>
+```
+
+Minden `lexeme` elem egy lexikon elem. a `grapheme` `lexeme`OrthoGraph leíró szöveget tartalmaz. A kiolvasási űrlap `alias`ként is megadható. A telefon karakterláncát `phoneme` elemben lehet megadni.
+
+A `lexicon` elem legalább egy `lexeme` elemet tartalmaz. Minden `lexeme` elem legalább egy `grapheme` elemet tartalmaz, valamint egy vagy több `grapheme`, `alais`és `phoneme` elemet. A `grapheme` elem a <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">helyesírást <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>leíró szöveget tartalmaz. A `alias` elemek a betűszó vagy egy rövidített kifejezés kiejtésének jelzésére szolgálnak. A `phoneme` elem szöveget tartalmaz, amely leírja, hogy a `lexeme` hogyan lett kimondva.
+
+További információ az egyéni lexikon-fájlról: a [kiejtési lexikon specifikációjának (pls) 1,0-es verziója](https://www.w3.org/TR/pronunciation-lexicon/) a W3C webhelyén.
+
+2\. lépés: töltse fel az 1. lépésben létrehozott egyéni lexikont, amely bárhol tárolható, és javasoljuk, hogy Microsoft Azure, például az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)tárolja.
+
+3\. lépés: a SSML-beli egyéni lexikon-fájlra vonatkozó hivatkozás
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
+          xmlns:mstts="http://www.w3.org/2001/mstts" 
+          xml:lang="en-US">
+<lexicon uri="http://www.example.com/customlexicon.xml"/>
+BTW, we will be there probably 8:00 tomorrow morning.
+Could you help leave a message to Robert Benigni for me?
+</speak>
+```
+A "BTW" a következőképpen lesz beolvasva: "by the way". A "Benigni" a megadott "bɛ tɛsɨfɒn ni ː nji" IPA-vel lesz beolvasva.  
+
+**Korlátozás**
+- Fájlméret: az egyéni lexikon fájlméretének maximális korlátja 100 kb, ha ez meghaladja a méretet, a szintézisi kérelem sikertelen lesz.
+- Lexikon gyorsítótárának frissítése: az egyéni lexikont a rendszer az első betöltéskor kulcsként fogja gyorsítótárazni a TTS szolgáltatásban. Az azonos URI-val rendelkező lexikon 15 percen belül nem lesz újratöltve, ezért az egyéni lexikon-módosításnak 15 percnél hosszabb ideig kell megvárnia, hogy érvénybe lépjen.
+
+**SAPI-telefon készlete**
+
+A fenti példában a nemzetközi fonetikus társítás (IPA) telefonvonalat használjuk. Javasoljuk, hogy a fejlesztők az IPA-t használják, mivel az IPA a nemzetközi szabvány. 
+
+Figyelembe véve, hogy az IPA nem könnyű megjegyezni, a Microsoft definiálja a SAPI-telefont hét nyelvre (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`és `zh-TW`). További ABC-információk: [fonetikus ábécé-hivatkozás](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx).
+
+Az alábbi ábrán látható módon használhatja a SAPI-telefont egyéni lexikonokkal. Állítsa az ABC értéket a **SAPI**értékre.
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="sapi" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme> 
+    <alias> By the way </alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme>
+    <phoneme> b eh 1 - n iy - n y iy </phoneme>
+  </lexeme>
+</lexicon>
+```
+
+A részletes SAPI-ábécével kapcsolatos további információkért tekintse meg a [SAPI ábécé-referenciát](sapi-phoneset-usage.md).
 
 ## <a name="adjust-prosody"></a>Prosody módosítása
 
@@ -447,7 +544,7 @@ A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standar
 
 | Attribútum | Leírás | Kötelező / választható |
 |-----------|-------------|---------------------|
-| `interpret-as` | Megadja az elem szövegének tartalomtípusát. A típusok listáját az alábbi táblázat tartalmazza. | Szükséges |
+| `interpret-as` | Megadja az elem szövegének tartalomtípusát. A típusok listáját az alábbi táblázat tartalmazza. | Kötelező |
 | `format` | További információkat nyújt az elem szövegének pontos formázásáról olyan tartalomtípusok esetében, amelyek kétértelmű formátummal rendelkezhetnek. A SSML az azokat használó tartalomtípusok formátumait határozzák meg (lásd az alábbi táblázatot). | Optional |
 | `detail` | Megadja a megbeszélni kívánt részletességi szintet. Ez az attribútum például kérheti, hogy a Speech szintézis motor "központozás" jelölést küldjön. Nincsenek definiálva szabványos értékek a `detail`hoz. | Optional |
 
@@ -561,6 +658,6 @@ SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. Azonban 
 </speak>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Nyelvi támogatás: hangok, területi beállítások, nyelvek](language-support.md)

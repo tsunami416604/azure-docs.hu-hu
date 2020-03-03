@@ -4,15 +4,19 @@ description: Megtudhatja, hogyan segíti a Azure Monitor és a Log Analytics a A
 author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
-ms.date: 1/29/2019
-ms.openlocfilehash: c0df972d893e82d7b49d5b3ed2a2bbf7067548c2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.date: 2/28/2020
+ms.openlocfilehash: c4aee7c7e78c6799874194697fb3bc9c4aa33b38
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78201814"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227980"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Oktatóanyag: App Service-alkalmazás hibakeresése Azure Monitor
+
+> [!NOTE]
+> Az App Service-integráció Azure Monitor [előzetes](https://aka.ms/appsvcblog-azmon)verzióban érhető el.
+>
 
 A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) maximalizálja az alkalmazások és szolgáltatások rendelkezésre állását és teljesítményét azáltal, hogy átfogó megoldást kínál a Felhőbeli és a helyszíni környezetek telemetria gyűjtésére, elemzésére és működésére.
 
@@ -20,7 +24,7 @@ Ez az oktatóanyag bemutatja, hogyan lehet elhárítani egy alkalmazást a [Azur
 
 Ha elkészült, egy App Serviceon futó minta-alkalmazás fog futni, amely a [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview)integrált Linux rendszeren fut.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Webalkalmazás konfigurálása Azure Monitor
@@ -53,7 +57,7 @@ git remote add azure <url_from_previous_step>
 git push azure master
 ```
 
-## <a name="configure-azure-monitor"></a>Azure Monitor konfigurálása
+## <a name="configure-azure-monitor-preview"></a>Azure Monitor konfigurálása (előzetes verzió)
 
 ### <a name="create-a-log-analytics-workspace"></a>Log Analytics munkaterület létrehozása
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4531e5d483508ca99722182f97c6a7aa0e0b68f3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: ec53c4b2f80fb095f58bee9c15ac5daafb8d59ef
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191112"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226244"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbookok kezelése Azure Automation
 
@@ -67,7 +67,7 @@ A parancsfájlokat a következő eljárással importálhatja Azure Automationba.
 4. Kattintson a **Runbook fájl** elemre, és válassza ki az importálni kívánt fájlt.
 5. Ha a **név** mező engedélyezve van, lehetősége van módosítani a runbook nevét. A névnek betűvel kell kezdődnie, és csak betűket, számokat, aláhúzásokat és kötőjeleket tartalmazhat.
 6. A [runbook típusa](automation-runbook-types.md) automatikusan ki van választva, de a megfelelő korlátozások figyelembe vétele után módosíthatja a típust.
-7. Kattintson a **Létrehozás** gombra. Az új runbook megjelenik az Automation-fiók runbookok listájában.
+7. Kattintson a  **Create** (Létrehozás) gombra. Az új runbook megjelenik az Automation-fiók runbookok listájában.
 8. A Futtatás előtt közzé kell tennie [a runbook](#publish-a-runbook) .
 
 > [!NOTE]
@@ -92,7 +92,7 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 
 ## <a name="test-a-runbook"></a>Runbook tesztelése
 
-A runbook tesztelésekor a rendszer végrehajtja a [Piszkozat verzióját](#publish-a-runbook) , és az általa végrehajtott műveletek befejeződtek. A rendszer nem hoz létre munkaelőzményeket, de a [kimenet](automation-runbook-output-and-messages.md#output-stream) és a [Figyelmeztetés és a hiba](automation-runbook-output-and-messages.md#message-streams) streamek a test output (teszt kimenet) ablaktáblán jelennek meg. A [részletes adatfolyamba](automation-runbook-output-and-messages.md#message-streams) küldött üzenetek csak akkor jelennek meg a kimeneti ablaktáblán, ha a [$VerbosePreference változó](automation-runbook-output-and-messages.md#preference-variables) a **Folytatás**értékre van állítva.
+A runbook tesztelésekor a rendszer végrehajtja a [Piszkozat verzióját](#publish-a-runbook) , és az általa végrehajtott műveletek befejeződtek. A rendszer nem hoz létre munkaelőzményeket, de a [kimenet](automation-runbook-output-and-messages.md#output-stream) és a [Figyelmeztetés és a hiba](automation-runbook-output-and-messages.md#message-streams) streamek a test output (teszt kimenet) ablaktáblán jelennek meg. A [részletes adatfolyamba](automation-runbook-output-and-messages.md#message-streams) küldött üzenetek csak akkor jelennek meg a kimeneti ablaktáblán, ha a *VerbosePreference* változó] (Automation-runbook-output-and-messages. MD # preferencia-változók) a **Continue**értékre van állítva.
 
 Bár a Piszkozat verziója fut, a runbook továbbra is szabályosan hajtja végre, és minden műveletet végrehajt a környezetben lévő erőforrásokon. Emiatt csak a nem éles erőforrások runbookok kell tesztelni.
 
@@ -129,7 +129,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 -Name $runbookName -ResourceGroupName $RGName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretné megtudni, hogyan részesülhet a Runbook és a PowerShell modul-katalógusban, tekintse meg a [Azure Automation Runbook és modul-galériáit](automation-runbook-gallery.md).
 * Ha többet szeretne megtudni a PowerShell-és a PowerShell-munkafolyamat runbookok a szöveges szerkesztővel való szerkesztésével kapcsolatban, tekintse meg a [szöveges Runbookok szerkesztése Azure Automationban című részt](automation-edit-textual-runbook.md)

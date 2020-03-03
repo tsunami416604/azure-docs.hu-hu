@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 41e9ff79ad3f7abeda1b946295e8e0eb519c2554
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 46750383c1436a2d053d6db7fed858c7c0f8a9fe
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561756"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226300"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Oktatóanyag: Felhasználók hitelesítése és engedélyezése végpontok között az Azure App Service-ben
 
@@ -237,7 +237,7 @@ Az Azure Active Directoryt fogja használni identitásszolgáltatóként. Továb
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>Hitelesítés és engedélyezés engedélyezése az előtér-alkalmazás számára
 
-Kövesse újból a lépéseket az előtér-alkalmazás esetében is, de az utolsó lépést hagyja ki. Nincs szüksége az előtér-alkalmazás ügyfél-AZONOSÍTÓJÁRA.
+Kövesse ugyanezen lépéseket a háttérbeli alkalmazáshoz, de hagyja ki az utolsó lépést. Nincs szüksége az előtér-alkalmazás ügyfél-AZONOSÍTÓJÁRA.
 
 Igény szerint navigáljon a következőhöz: `http://<front-end-app-name>.azurewebsites.net`. Ez egy biztonságos bejelentkezési oldalra irányítja át. A bejelentkezést követően továbbra sem fog tudni hozzáférni a háttéralkalmazás adataihoz, mert előbb el kell végeznie az alábbi három teendőt:
 

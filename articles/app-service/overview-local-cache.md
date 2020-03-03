@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 87c95d8bbf199f232eca5475f4d8f0c64427a198
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 1945730acaddb0c1c7ee1b28eeb926635efad643
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680885"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227877"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service a helyi gyorsítótár áttekintése
 
 > [!NOTE]
-> A helyi gyorsítótár nem támogatott a Function apps vagy a Container App Service alkalmazásokban, például a [linuxon app Service](containers/app-service-linux-intro.md).
+> A helyi gyorsítótár nem támogatott a Function apps vagy a Container App Service alkalmazásokban, például [Windows-tárolókban](app-service-web-get-started-windows-container.md) vagy [Linuxon app Service](containers/app-service-linux-intro.md).
 
 
 Azure App Service tartalom tárolása az Azure Storage-ban történik, és tartós módon van felkészülve, mint a tartalom megosztása. Ez a kialakítás a különböző alkalmazásokkal való együttműködésre szolgál, és a következő tulajdonságokkal rendelkezik:  
@@ -48,7 +48,7 @@ A Azure App Service helyi gyorsítótár szolgáltatás a tartalom webes szerepk
 ## <a name="enable-local-cache-in-app-service"></a>Helyi gyorsítótár engedélyezése a App Serviceban
 A helyi gyorsítótárat a fenntartott Alkalmazásbeállítások együttes használatával konfigurálhatja. Az Alkalmazásbeállítások a következő módszerekkel konfigurálhatók:
 
-* [Azure Portal](#Configure-Local-Cache-Portal)
+* [Azure Portalra](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Helyi gyorsítótár konfigurálása a Azure Portal használatával
@@ -102,13 +102,13 @@ Ha az alkalmazásnak nagy teljesítményű, megbízható tartalom-tárolóra van
 ### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Honnan tudhatom meg, hogy a webhelyem a helyi gyorsítótár használatára váltott-e?
 Ha az átmeneti környezetekben a helyi gyorsítótár szolgáltatást használja, a swap művelet nem fejeződik be, amíg a helyi gyorsítótár be nem fejeződik. Ha ellenőrizni szeretné, hogy a hely a helyi gyorsítótáron fut-e, akkor ellenőrizze a munkavégző folyamat környezeti változóját `WEBSITE_LOCALCACHE_READY`. A [munkavégző folyamat környezeti változójának](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) lapján található utasítások segítségével több példányon is elérheti a munkavégző folyamat környezeti változóját.  
 
-### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Most közzétettem az új módosításokat, de az alkalmazásom úgy tűnik, hogy nem rendelkezik velük. Miért?
+### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Most közzétettem az új módosításokat, de az alkalmazásom úgy tűnik, hogy nem rendelkezik velük. Hogy miért?
 Ha az alkalmazás helyi gyorsítótárat használ, a legújabb módosítások beszerzéséhez újra kell indítania a helyet. Nem kívánja közzétenni a módosításokat egy éles helyen? Tekintse meg a tárolóhelyek beállításait az előző ajánlott eljárások szakaszban.
 
 ### <a name="where-are-my-logs"></a>Hol találhatók a naplók?
 A helyi gyorsítótárral a naplók és az adatmappák egy kicsit máshogy néznek ki. Az almappák szerkezete azonban változatlan marad, azzal a különbséggel, hogy az almappák az "egyedi virtuálisgép-azonosító" és az időbélyeg formátuma alatt vannak.
 
-### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Engedélyezve van a helyi gyorsítótár, de az alkalmazás továbbra is újraindul. Miért? Azt hittem, hogy a helyi gyorsítótár segített a gyakori alkalmazás-újraindítások során.
+### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Engedélyezve van a helyi gyorsítótár, de az alkalmazás továbbra is újraindul. Miért van ez? Azt hittem, hogy a helyi gyorsítótár segített a gyakori alkalmazás-újraindítások során.
 A helyi gyorsítótár segít megelőzni a tárolóval kapcsolatos alkalmazások újraindítását. Az alkalmazás azonban továbbra is elvégezhető a virtuális gép tervezett infrastruktúrájának frissítése során. Az alkalmazás általános újraindítása, ha a helyi gyorsítótár engedélyezve van, kevesebbnek kell lennie.
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>A helyi gyorsítótár kizár minden könyvtárat a gyorsabb helyi meghajtóra?

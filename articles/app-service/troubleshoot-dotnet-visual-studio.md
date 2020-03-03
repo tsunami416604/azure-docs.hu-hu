@@ -1,23 +1,23 @@
 ---
-title: Hibaelhárítás a Visual Studio segítségével
+title: Hibaelhárítás a Visual Studióval
 description: Megtudhatja, hogyan lehet elhárítani egy App Service alkalmazást a Visual Studio 2013-be beépített távoli hibakeresési, nyomkövetési és naplózási eszközök használatával.
 ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 5c0a236dc6ebf02c859d9db3f25f0e9016ac35ab
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3305cfb81980984574961b2a84a056f5d1879ead
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688372"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227896"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibakeresése Azure App Service a Visual Studióval
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag azt mutatja be, hogyan használható a Visual Studio Tools a [app Service](https://go.microsoft.com/fwlink/?LinkId=529714)alkalmazás hibakeresési [módban](https://docs.microsoft.com/visualstudio/debugger/) történő futtatásával, vagy az alkalmazás-naplók és a webkiszolgáló-naplók megtekintésével.
 
-A következőket fogja megtanulni:
+A következőket sajátíthatja el:
 
 * Az App Management funkciói a Visual Studióban érhetők el.
 * A Visual Studio távoli nézetének használata a gyors módosítások végrehajtásához egy távoli alkalmazásban.
@@ -87,14 +87,14 @@ A hiba okának megállapításához gyakran a legegyszerűbb módszer a részlet
     Olyan csomópontok jelennek meg, amelyek hozzáférést biztosítanak az alkalmazás tartalmi fájljaihoz és naplófájljaihoz.
 2. Bontsa ki a **fájlok** csomópontot, majd kattintson duplán a *web. config* fájlra.
 
-    ![A web. config megnyitása](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
+    ![Open Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
 
     A Visual Studio megnyitja a web. config fájlt a távoli alkalmazásból, és a címsorban a fájlnév mellett [távoli] is megjeleníti a fájl nevét.
 3. Adja hozzá a következő sort a `system.web` elemhez:
 
     `<customErrors mode="Off"></customErrors>`
 
-    ![Web. config szerkesztése](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
+    ![Edit Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
 4. Frissítse a böngészőt, amely a nem hasznos hibaüzenetet jeleníti meg, és most egy részletes hibaüzenetet kap, például a következő példát:
 
     ![Részletes hibaüzenet](./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png)
@@ -583,7 +583,7 @@ A sikertelen kérelmek nyomkövetési naplói a böngészőben közvetlenül FTP
 
 7. Nyissa meg a *LogFiles* mappát.
 
-    ![Naplófájlok mappa megnyitása](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilesfolder.png)
+    ![Open LogFiles folder](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilesfolder.png)
 
 8. Nyissa meg a W3SVC nevű mappát, valamint egy numerikus értéket.
 
@@ -620,7 +620,7 @@ A Azure App Service alkalmazások hibaelhárításával kapcsolatos további inf
 Ha segítségre van egy konkrét hibaelhárítási kérdésben, indítson el egy szálat az alábbi fórumok valamelyikében:
 
 * [Az Azure Forum a ASP.net webhelyen](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
-* [Az MSDN](https://social.msdn.microsoft.com/Forums/windowsazure/)-beli Azure-fórum.
+* [Az Azure-fórum a Microsoft Q & a](https://docs.microsoft.com/answers/topics/azure-webapps.html)-ben.
 * [StackOverflow.com](https://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Hibakeresés a Visual Studióban

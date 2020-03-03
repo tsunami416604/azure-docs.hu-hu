@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: a46bdb47ee92a422d10aad5b41487530d23d1ec9
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 45c7fd5fd3737c21a03700b2e560944921a2558d
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484689"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228170"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -203,7 +203,7 @@ Ha távoli, és nem rendelkezik száloptikás kapcsolattal, vagy más csatlakoz�
 ## <a name="c1partners"></a>Kapcsolódás további szolgáltatókon keresztül
 | **Hely** | **Exchange** | **Kapcsolódási szolgáltatók** |
 | --- | --- | --- |
-| **Amszterdam** | Equinix, Interxion, 3. szint kommunikáció | BICS, CloudXpress, Eurofiber, Fastweb S. p. A, Gulf Bridge International, Kalaam Telecom Bahrain B. S. C, MainOne, Nianet, POST Telecom Luxembourg, proximus, TDC erhverv, Telecom Italia szikrázó, Telekom Deutschland GmbH, Telia |
+| **Amszterdam** | Equinix, Interxion, 3. szint kommunikáció | BICS, CloudXpress, Eurofiber, Fastweb S. p. A, Gulf Bridge International, Kalaam Telecom Bahrain B. S. C, MainOne, Nianet, POST Telecom Luxembourg, proximus, RETN, TDC erhverv, Telecom Italia szikrázó, Telekom Deutschland GmbH, Telia |
 | **Atlanta** | Equinix| Crown-kastély
 | **Fokváros** | Teraco | MTN |
 | **Chicago** | Equinix| Crown Castle, Spectrum Enterprise, windstream |

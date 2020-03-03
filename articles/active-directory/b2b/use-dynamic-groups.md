@@ -1,49 +1,79 @@
 ---
-title: Dinamikus csoportok és B2B-együttműködés – Azure Active Directory |} A Microsoft Docs
-description: Bemutatja, hogyan használhatja az Azure AD dinamikus csoportok az Azure Active Directory B2B együttműködés
+title: Dinamikus csoportok és B2B együttműködés – Azure Active Directory | Microsoft Docs
+description: Bemutatja, hogyan használhatók az Azure AD dinamikus csoportok Azure Active Directory B2B együttműködéssel
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/14/2017
+ms.date: 02/28/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4e3f64cb6aefb35c3f85bafc2bb408f998626d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41e8b81bc3594c6a378757636f70058510a38cc7
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112819"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226877"
 ---
-# <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dinamikus csoportok és az Azure Active Directory B2B-együttműködés
+# <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dinamikus csoportok és Azure Active Directory B2B-együttműködés
 
 ## <a name="what-are-dynamic-groups"></a>Mik azok a dinamikus csoportok?
-Biztonságicsoport-tagság dinamikus konfigurálása az Azure Active Directory (Azure AD) érhető el a [az Azure Portalon](https://portal.azure.com). Rendszergazdák az Azure AD felhasználói attribútumok (például a userType, részleg vagy ország/régió) alapján létrehozott csoportok feltöltéséhez szabályokat állíthatnak be. Tagok automatikusan lehet hozzáadni vagy attribútumaik alapján biztonsági csoportból eltávolított. Ezeket a csoportokat is hozzáférést biztosít alkalmazások vagy a felhőbeli erőforrások (SharePoint-helyek, dokumentumok) és a licenceket hozzárendelheti a tagokat. További információ a dinamikus csoportok [az Azure Active Directory dedikált](../active-directory-accessmanagement-dedicated-groups.md).
+A Azure Active Directory (Azure AD) biztonsági csoporttagság dinamikus konfigurációja [a Azure Portalben](https://portal.azure.com)érhető el. A rendszergazdák a felhasználói attribútumok (például userType, részleg vagy ország/régió) alapján hozhatnak létre szabályokat az Azure AD-ben létrehozott csoportok feltöltéséhez. A tagok az attribútumok alapján automatikusan hozzáadhatók vagy eltávolíthatók egy biztonsági csoportból. Ezek a csoportok hozzáférést biztosíthatnak az alkalmazásokhoz és a Felhőbeli erőforrásokhoz (SharePoint-webhelyekhez, dokumentumokhoz), valamint licenceket rendelhet a tagokhoz. További információ a dinamikus csoportokról a [Azure Active Directory dedikált csoportjaiban](../active-directory-accessmanagement-dedicated-groups.md).
 
-A megfelelő [licencelése az Azure AD Premium P1 vagy P2](https://azure.microsoft.com/pricing/details/active-directory/) dinamikus csoportok létrehozása és használata szükséges. További információ: a cikk [dinamikus csoport tagságához Attribútumalapú szabályok létrehozása az Azure Active Directoryban](../users-groups-roles/groups-dynamic-membership.md).
+A megfelelő [prémium szintű Azure ad P1 vagy P2 licencelés](https://azure.microsoft.com/pricing/details/active-directory/) szükséges a dinamikus csoportok létrehozásához és használatához. További információt a [dinamikus csoporttagság Azure Active Directoryban való létrehozásához](../users-groups-roles/groups-dynamic-membership.md)című cikkben talál.
 
-## <a name="what-are-the-built-in-dynamic-groups"></a>Mik azok a beépített dinamikus csoportokat?
-A **minden felhasználó** dinamikus csoport lehetővé teszi, hogy a bérlői rendszergazdák hozhat létre egy egyetlen kattintással a bérlő összes felhasználóját tartalmazó csoporthoz. Alapértelmezés szerint a **minden felhasználó** csoport a címtárban, beleértve a tagok és a vendégek felhasználókat tartalmazza.
-Az új Azure Active Directory felügyeleti portálon, ha szeretné, engedélyezze a **minden felhasználó** csoporthoz a beállítások nézetben.
+## <a name="creating-an-all-users-dynamic-group"></a>"Minden felhasználó" dinamikus csoport létrehozása
+Létrehozhat egy olyan csoportot, amely a bérlőn belüli összes felhasználót egy tagsági szabály használatával hozza létre. Ha a későbbiekben a felhasználókat hozzáadják vagy eltávolítják a bérlőből, a rendszer automatikusan módosítja a csoport tagságát.
 
-![Látható Igen minden felhasználó csoport engedélyezése](media/use-dynamic-groups/enable-all-users-group.png)
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely a bérlő globális rendszergazdai vagy felhasználói rendszergazdai szerepköréhez van rendelve.
+1. Válassza az **Azure Active Directory** elemet.
+2. A **kezelés**területen válassza a **csoportok**lehetőséget, majd válassza az **új csoport**lehetőséget.
+1. Az **új csoport** lap **csoport típusa**területén válassza a **Biztonság**elemet. Adja meg a **csoport nevét** és a **csoport leírását** az új csoport számára. 
+2. A **tagság típusa**területen válassza a **dinamikus felhasználó**lehetőséget, majd válassza a **dinamikus lekérdezés hozzáadása**lehetőséget. 
+4. A **szabály szintaxisa** szövegmező felett válassza a **Szerkesztés**lehetőséget. A **szabály szintaxisának szerkesztése** lapon írja be a következő kifejezést a szövegmezőbe:
 
-## <a name="hardening-the-all-users-dynamic-group"></a>A felhasználók az összes dinamikus csoport megerősítése
-Alapértelmezés szerint a **minden felhasználó** csoport tartalmazza a B2B együttműködés (vendég) felhasználókat is. További gondoskodhat a **minden felhasználó** csoport eltávolítása a Vendég szabály segítségével. A következő ábra azt mutatja be a **minden felhasználó** csoport módosítás vendégek kizárása.
+   ```
+   user.objectId -ne null
+   ```
+1. Kattintson az **OK** gombra. A szabály a szabály szintaxisa mezőben jelenik meg:
 
-![Ahol felhasználótípus nem egyenlő Vendég mutat be a szabály](media/use-dynamic-groups/exclude-guest-users.png)
+   ![Szabály szintaxisa az összes felhasználó dinamikus csoportjához](media/use-dynamic-groups/all-user-rule-syntax.png)
 
-Akkor is hasznosak lehetnek, amely tartalmazza azokat a csak a vendégfelhasználók, hogy a szabályzatok (például az Azure AD feltételes hozzáférési szabályzatok) alkalmazása új dinamikus csoportot hozhat létre.
-Egy ilyen csoport néz:
+1.  Kattintson a **Mentés** gombra. Az új dinamikus csoport mostantól tartalmazza a B2B vendég felhasználókat és a tagokat is.
 
-![Ahol a felhasználó típusa egyenlő Vendég mutat be a szabály](media/use-dynamic-groups/only-guest-users.png)
 
-## <a name="next-steps"></a>További lépések
+1. Válassza a **Létrehozás** lehetőséget az **új csoport** lapon a csoport létrehozásához.
+
+## <a name="creating-a-group-of-members-only"></a>Csak tagok csoportjának létrehozása
+
+Ha azt szeretné, hogy a csoport kizárjon vendég felhasználókat, és csak a bérlő tagjait tartalmazza, hozzon létre egy dinamikus csoportot a fentiekben leírtak szerint, de a **szabály szintaxisa** mezőben adja meg a következő kifejezést:
+
+```
+(user.objectId -ne null) and (user.userType -eq "Member")
+```
+
+Az alábbi képen egy dinamikus csoport szabály-szintaxisa látható, amely csak tagokat tartalmaz, és kizárja a vendégeket.
+
+![Azt a szabályt mutatja, ahol a felhasználó típusa egyenlő tag](media/use-dynamic-groups/all-member-user-rule-syntax.png)
+
+## <a name="creating-a-group-of-guests-only"></a>Csak a vendégek csoportjának létrehozása
+
+Hasznos lehet olyan új dinamikus csoport létrehozása is, amely csak vendég felhasználókat tartalmaz, így házirendeket (például Azure AD feltételes hozzáférési szabályzatokat) alkalmazhat rájuk. Hozzon létre egy dinamikus csoportot a fentiekben leírtak szerint, de a **szabály szintaxisa** mezőben adja meg a következő kifejezést:
+
+```
+(user.objectId -ne null) and (user.userType -eq "Guest")
+```
+
+Az alábbi képen egy dinamikus csoport szabály-szintaxisa látható, amely csak vendégeket tartalmaz, és kizárja a tagok felhasználóit.
+
+![Azt a szabályt mutatja, ahol a felhasználói típus egyenlő vendég](media/use-dynamic-groups/all-guest-user-rule-syntax.png)
+
+## <a name="next-steps"></a>Következő lépések
 
 - [B2B-együttműködés felhasználói tulajdonságok](user-properties.md)
-- [B2B-együttműködés felhasználó hozzáadása szerepkörhöz](add-guest-to-role.md)
-- [Feltételes hozzáférés B2B-együttműködés felhasználók](conditional-access.md)
+- [B2B csoportmunka-felhasználó hozzáadása egy szerepkörhöz](add-guest-to-role.md)
+- [Feltételes hozzáférés VÁLLALATKÖZI együttműködéssel rendelkező felhasználók számára](conditional-access.md)
 

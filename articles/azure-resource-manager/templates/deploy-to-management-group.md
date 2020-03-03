@@ -2,19 +2,17 @@
 title: Erőforrások központi telepítése a felügyeleti csoportba
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni a felügyeleti csoport hatókörében egy Azure Resource Manager sablonban.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 0419f3daca6845c6809c9f66e870fdf884a7193f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 03/02/2020
+ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117037"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228113"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Erőforrások létrehozása a felügyeleti csoport szintjén
 
 Az Azure-erőforrásokat általában az Azure-előfizetésében lévő erőforráscsoporthoz helyezheti üzembe. A felügyeleti csoport szintjén azonban erőforrásokat is létrehozhat. A felügyeleti csoport szintjén üzemelő példányok használatával olyan műveleteket hajthat végre, amelyek az adott szinten ésszerűek, például [szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md) hozzárendelésével vagy [házirendek](../../governance/policy/overview.md)alkalmazásával.
-
-Jelenleg a sablonok felügyeleti csoport szintjén történő telepítéséhez a REST API kell használnia.
 
 ## <a name="supported-resources"></a>Támogatott erőforrások
 
@@ -45,7 +43,16 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 
 ## <a name="deployment-commands"></a>Üzembe helyezési parancsok
 
-A felügyeleti csoport központi telepítésére vonatkozó parancs eltér az erőforráscsoport-telepítésekhez tartozó parancstól.
+A felügyeleti csoportok központi telepítésére vonatkozó parancsok eltérnek az erőforráscsoport-telepítések parancsaitól.
+
+Azure PowerShell esetén használja a [New-AzManagementGroupDeployment](/powershell/module/az.resources/new-azmanagementgroupdeployment). 
+
+```azurepowershell-interactive
+New-AzManagementGroupDeployment `
+  -ManagementGroupId "myMG" `
+  -Location "West US" `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json
+```
 
 REST API esetén használja a [központi telepítéseket – hozzon létre egy felügyeleti csoport hatókörét](/rest/api/resources/deployments/createorupdateatmanagementgroupscope).
 
@@ -150,7 +157,7 @@ A következő példa egy meglévő szabályzat-definíciót rendel hozzá a fel�
 
 ## <a name="template-sample"></a>Sablon minta
 
-* Hozzon létre egy erőforráscsoportot, egy házirendet és egy házirend-hozzárendelést.  Lásd [itt](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
+* [Hozzon létre egy erőforráscsoportot, egy házirendet és egy házirend-hozzárendelést](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>Következő lépések
 

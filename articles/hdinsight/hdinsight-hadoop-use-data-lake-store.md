@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 02/05/2020
-ms.openlocfilehash: c67fb21783a926f813d165528520b9d088154412
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 03/01/2020
+ms.openlocfilehash: fddffee001266b96bc341738293bbdb42115a978
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162395"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228188"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel
 
@@ -31,7 +31,7 @@ Ebből a cikkből megtudhatja, hogyan működik a Data Lake Storage Gen1 HDInsig
 
 ## <a name="availability-for-hdinsight-clusters"></a>HDInsight-fürtök rendelkezésre állása
 
-Apache Hadoop támogatja az alapértelmezett fájlrendszer fogalmát. Az alapértelmezett fájlrendszer egy alapértelmezett sémát és szolgáltatót is jelent. A relatív elérési utak feloldásához is használható. A HDInsight-fürt létrehozási folyamata során megadhat egy BLOB-tárolót az Azure Storage-ban alapértelmezett fájlrendszerként, illetve a HDInsight 3,5-es és újabb verzióival, kiválaszthatja az Azure Storage vagy a Azure Data Lake Storage Gen1 alapértelmezett fájlrendszerként néhány kivétel.
+Apache Hadoop támogatja az alapértelmezett fájlrendszer fogalmát. Az alapértelmezett fájlrendszer egy alapértelmezett sémát és szolgáltatót is jelent. A relatív elérési utak feloldásához is használható. A HDInsight-fürt létrehozási folyamata során megadhat egy BLOB-tárolót az Azure Storage-ban alapértelmezett fájlrendszerként, illetve a HDInsight 3,5-es és újabb verzióival, kiválaszthatja az Azure Storage vagy a Azure Data Lake Storage Gen1 alapértelmezett fájlrendszerként néhány kivétel. Vegye figyelembe, hogy a fürtnek és a Storage-fióknak ugyanabban a régióban kell lennie.
 
 A HDInsight-fürtök két módon használhatják a Data Lake Storage Gen1:
 

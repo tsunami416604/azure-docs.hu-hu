@@ -17,12 +17,12 @@ ms.date: 04/06/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8bfe668dc2eb4e0e00de34231f4c232f5240a82d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 650e5fb5d0b2c5522a70944991e9e49037c3b4fa
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700753"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226957"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>A Microsoft Identity platform alkalmazás-típusai
 
@@ -99,7 +99,7 @@ Accept: application/json
 ...
 ```
 
-A webes API a hozzáférési jogkivonattal ellenőrzi az API-hívó identitását, és Kinyeri a hívó információit a hozzáférési jogkivonatban kódolt jogcímekről. A Microsoft Identity platform végpontjában használt különböző típusú jogkivonatok további részletei a [hozzáférési jogkivonat](access-tokens.md) referenciájában és [id_token dokumentációjában](id-tokens.md) olvashatók.
+A webes API a hozzáférési jogkivonattal ellenőrzi az API-hívó identitását, és Kinyeri a hívó információit a hozzáférési jogkivonatban kódolt jogcímekről. A Microsoft Identity platform végpontjában használt különböző típusú jogkivonatok további részletei a [hozzáférési jogkivonat](access-tokens.md) referenciájában és [id_token](id-tokens.md) referenciában találhatók.
 
 A webes API-k lehetővé teszik a felhasználók számára, hogy a jogosultságok, más néven [hatókörök](v2-permissions-and-consent.md)megadásával vagy letiltásával eldönthetik, hogy bizonyos funkciókat vagy adatokból választhatnak. Ahhoz, hogy egy hívó alkalmazás egy hatókörhöz engedélyt szerezzen, a felhasználónak a folyamat során hozzá kell járulnia a hatókörhöz. A Microsoft Identity platform végpontja kéri a felhasználótól az engedélyt, majd rögzíti az engedélyeket a webes API által fogadott összes hozzáférési jogkivonatban. A webes API ellenőrzi az egyes hívásokhoz kapott hozzáférési jogkivonatokat, és végrehajtja az engedélyezési ellenőrzéseket.
 

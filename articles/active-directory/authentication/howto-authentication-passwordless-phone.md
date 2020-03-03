@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a7bf9690b4f50c771afc4745bbc2e5377adbba
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 736a543a6f28697dd4f1ddf85317e97a87b86e78
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848476"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227073"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)
 
@@ -93,6 +93,10 @@ Azok a végfelhasználók, akik az MFA számára engedélyezve vannak a szerveze
 ### <a name="device-registration"></a>Eszközregisztráció
 
 Az új, erős hitelesítő adatok létrehozásának egyik előfeltétele, hogy az eszközön, ahol a Microsoft Authenticator alkalmazást telepítették, az Azure AD-bérlőn belül is regisztrálni kell egy adott felhasználóra. Az eszközök aktuális regisztrációs korlátozásai miatt az eszközök csak egyetlen bérlőben regisztrálhatók. Ez a korlát azt jelenti, hogy a Microsoft Authenticator alkalmazásban csak egy munkahelyi vagy iskolai fiók engedélyezhető a telefonos bejelentkezéshez.
+
+### <a name="intune-mobile-application-management"></a>Intune Mobile Application Management 
+
+A Mobile Application Management (MAM)-t igénylő szabályzat hatálya alá eső végfelhasználók nem tudják regisztrálni a jelszóval nem rendelkező hitelesítő adatokat a Microsoft Authenticator alkalmazásban. 
 
 > [!NOTE]
 > Az eszköz regisztrálása nem ugyanaz, mint az Eszközkezelő vagy a "MDM". A szolgáltatás csak az eszköz AZONOSÍTÓját és egy felhasználói azonosítót társít az Azure AD-címtárban.  

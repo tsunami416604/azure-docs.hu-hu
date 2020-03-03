@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 02/10/2020
-ms.openlocfilehash: 15a3801a7ea99d6d799bcd8adf340b03f36bc196
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 93fb9ec735de1abf89eb217d0f4096fcfc0afe94
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121619"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227097"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Rövid útmutató: Azure Cognitive Search index létrehozása Pythonban Jupyter-jegyzetfüzetek használatával
 
@@ -126,7 +126,7 @@ Az index neve "Hotels-Gyorsindítás", és az alább látható mező-definíció
     }
     ```
 
-2. Egy másik cellában alakítsa ki a kérelmet. Ez a PUT-kérelem a keresési szolgáltatás indexek gyűjteményét célozza meg, és az előző cellában megadott index séma alapján létrehoz egy indexet.
+2. Egy másik cellában alakítsa ki a kérelmet. Ez a POST kérelem célja a keresési szolgáltatás indexek gyűjteménye, és az előző cellában megadott index-séma alapján létrehoz egy indexet.
 
    ```python
    url = endpoint + "indexes" + api_version

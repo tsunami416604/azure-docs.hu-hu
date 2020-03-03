@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: a5b0eb0c8bd56a28889945480e95b6413dc9b4dd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b900a95df00ccdd0ad9b5bee3887364195c7d1c2
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660019"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226721"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Nagy teljesítményű számítási VM-méretek
 
@@ -46,6 +46,10 @@ Az Azure H-sorozatú virtuális gépek (VM-EK) úgy vannak kialakítva, hogy vez
   
 - **Virtual Network (virtuális hálózat** ) – az Azure [virtuális hálózat](https://azure.microsoft.com/documentation/services/virtual-network/) nem szükséges a nagy számítási igényű példányok használatához. Számos központi telepítés esetében azonban szükség van legalább egy felhőalapú Azure-beli virtuális hálózatra, vagy egy helyek közötti kapcsolatra, ha a helyszíni erőforrásokhoz kell hozzáférnie. Ha szükséges, hozzon létre egy új virtuális hálózatot a példányok telepítéséhez. Ha nagy számítási igényű virtuális gépeket ad hozzá egy affinitási csoportban lévő virtuális hálózathoz, az nem támogatott.
 - **Átméretezés** – a speciális hardverek miatt csak a számítási igényű példányokat lehet átméretezni ugyanazon a méretű családon belül (H-sorozat vagy nagy számítási igényű a-sorozat). Például csak egy h sorozatú virtuális gépet lehet átméretezni egy H-sorozatos méretről egy másikra. Emellett a nem számítási igényű méretről a nagy számítási igényű méretre való átméretezés nem támogatott.  
+
+> [!NOTE]
+> Az A8 – A11-es virtuális gépek a 3/2021-es kivonulásra vannak tervezve. További információ: [HPC áttelepítési útmutató](https://azure.microsoft.com/resources/hpc-migration-guide/).
+
 ## <a name="rdma-capable-instances"></a>RDMA-kompatibilis példányok
 
 A nagy számítási igényű példányok egy részhalmaza (A8, A9, H16r, H16mr, HB és HC) egy hálózati adaptert biztosít a távoli közvetlen memória-hozzáférési (RDMA) kapcsolathoz. Az r-vel jelölt kiválasztott N sorozatú méretek (például a NC24rs konfigurációk (NC24rs_v2 és NC24rs_v3) is RDMA-kompatibilisek. Ez az interfész a szabványos Azure hálózati adapteren kívül más virtuálisgép-méretek számára is elérhető.
@@ -78,7 +82,7 @@ Az A8-as és A9-es példányok bizonyos telepítései esetében a HpcVmDrivers-b
   } 
   ```
 
-  A következő parancs telepíti a legújabb 1,0 InfiniBandDriverWindows-bővítményt az összes RDMA-kompatibilis virtuális GÉPEN egy *myVMSS* nevű meglévő virtuálisgép-méretezési csoportba, amelyet a *myResourceGroup*nevű erőforráscsoport telepít:
+  A következő parancs telepíti a legújabb 1,0 InfiniBandDriverWindows-bővítményt az összes RDMA-kompatibilis virtuális gépen egy *myVMSS* nevű meglévő virtuálisgép-méretezési csoportba, amelyet a *myResourceGroup*nevű erőforráscsoport telepít:
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
@@ -99,7 +103,7 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló Windows
 
 - **Virtuálisgép-méretezési** csoportok – egy virtuálisgép-méretezési csoportban győződjön meg arról, hogy egyetlen elhelyezési csoportra korlátozza a központi telepítést. Például egy Resource Manager-sablonban állítsa a `singlePlacementGroup` tulajdonságot `true`re. 
 
-- **MPI a virtuális gépek között** – ha a virtuális gépek (VM-EK) közötti MPI-kommunikáció szükséges, győződjön meg arról, hogy a virtuális gépek ugyanabban a rendelkezésre állási csoportba vagy a virtuális gépre ugyanazok a méretezési csoportba tartoznak.
+- **MPI a virtuális gépek között** – ha a virtuális gépek (VM-EK) között MPI-kommunikációra van szükség, győződjön meg arról, hogy a virtuális gépek ugyanahhoz a rendelkezésre állási csoporthoz vagy a virtuális géphez hasonló méretezési csoporthoz tartoznak.
 
 - **Azure CycleCloud** – HPC-fürt létrehozása az [Azure CYCLECLOUD](/azure/cyclecloud/) -ben MPI-feladatok futtatásához Windows-csomópontokon.
 

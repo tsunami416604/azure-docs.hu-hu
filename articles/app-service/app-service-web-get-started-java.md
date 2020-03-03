@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 3cf759294a31fcf90c5a3f4a6cdc68e3c35882e0
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1929e78b1787e4e5d50908fd3cfc0292de8ea92b
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425366"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226361"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Windows rendszeren
 
@@ -119,9 +119,20 @@ Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>Következő lépések
+> [!div class="nextstepaction"]
+> [Kapcsolódás az Azure SQL Database-hez a Javával](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+
+> [!div class="nextstepaction"]
+> [Kapcsolódás a MySQL-hez készült Azure DB-hez a Javával](/azure/mysql/connect-java?toc=/azure/java/toc.json)
+
+> [!div class="nextstepaction"]
+> [Kapcsolódás a PostgreSQL-hez készült Azure-ADATBÁZIShoz Java használatával](/azure/postgresql/connect-java?toc=/azure/java/toc.json)
 
 > [!div class="nextstepaction"]
 > [Azure Java-fejlesztőknek – erőforrások](/java/azure/)
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány leképezése](app-service-web-tutorial-custom-domain.md)
+
+> [!div class="nextstepaction"]
+> [További információ az Azure-hoz készült Maven beépülő modulokról](https://github.com/microsoft/azure-maven-plugins)

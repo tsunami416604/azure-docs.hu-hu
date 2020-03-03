@@ -3,15 +3,15 @@ title: Microsoft Azure FXT Edge Filer-specifikációk | Microsoft Docs
 description: Az Azure FXT Edge Filer-hardver fizikai és környezeti előírásai
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 90d56ad0cec3d187d4c7307f8c004b14c3860390
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254708"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227475"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Az Azure FXT Edge Filer-specifikációi
 
@@ -19,7 +19,7 @@ Ez a cikk az Azure FXT Edge Filer-hardveres csomópontjaival kapcsolatos hardver
 
 ## <a name="hardware-specifications"></a>Hardverspecifikációk
 
-| Component (Összetevő) | FXT 6600 | FXT 6400 |
+| Összetevő | FXT 6600 | FXT 6400 |
 |----------|-----------|-----------|
 | Processzormagok |  16 | 16 |
 | DRAM  | 1536 GB | 768 GB |
@@ -64,10 +64,10 @@ Az Azure FXT Edge Filer úgy lett kialakítva, hogy a standard 19 "berendezés-r
 
 ### <a name="shipping-dimensions"></a>Szállítási méretek
 
-| Csomag dimenzió | Milliméter | Hüvelyk |
+| Csomag dimenzió | Milliméter | hüvelyk |
 |-------------------|-------------|--------|
 | Magasság            | 311,2       | 12,25 " |
-| Szélessége             | 642,8       | 25,31 " |
+| szélesség             | 642,8       | 25,31 " |
 | Hossz            | 1 051,1     | 41,38 " |
 
 ## <a name="power-and-thermal-specifications"></a>Energiaellátási és termikus specifikációk
@@ -78,8 +78,8 @@ Ez a szakasz az Azure FXT Edge Filer számára biztosít teljesítmény-és mér
 
 | FXT 6000 sorozatú modellekhez tartozó névtábla-minősítések |
 |----------------|
-| 100 – 240V ~    |
-| 10A-5A (X2)  |
+| 100 - 240V~    |
+| 10A - 5A (X2)  |
 | 50/60Hz         |
 
 <!-- matches the Dell regulatory label exactly -->
@@ -96,7 +96,7 @@ Ezek a diagramok energiafogyasztást és termikus kimeneti méréseket biztosít
 | Gyakoriság (Hz) | 60 | 60 | 60 | 50 | 50 |
 | Aktuális (A) | 5,02 | 4,16 |2,40 | 2,20 | 2,16 |
 | Látszólagos teljesítmény (VA) | 502 | 499 | 499 | 506 | 518|
-| Teljesítménytényező | 0,99 | 0,99 |0,98 | 0,98 | 0,98 |
+| Teljesítménytényező | 0.99 | 0.99 |0,98 | 0,98 | 0,98 |
 | Valós teljesítmény (W) | 497 |494 | 489 | 496 | 508 |
 | Termikus elszóródás (BTU/HR) |1696 | 1686 | 1669 | 1692 | 1733 |
 
@@ -104,9 +104,9 @@ Ezek a diagramok energiafogyasztást és termikus kimeneti méréseket biztosít
 |---------|---|---|---|---|---|
 | Feszültség (V) | 100 |120 | 208 | 230 | 240| 
 | Gyakoriság (Hz) | 60 | 60 | 60 | 50 | 50 |
-| Aktuális (A) | 5,98 | 5,01 | 2,81 | 2,55 | 2,48 |
+| Aktuális (A) | 5,98 | 5,01 | 2,81 | 2.55 | 2,48 |
 | Látszólagos teljesítmény (VA) | 598 | 601 | 584 | 587 | 595 |
-| Teljesítménytényező | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 |
+| Teljesítménytényező | 0.99 | 0.99 | 0,98 | 0,98 | 0,98 |
 | Valós teljesítmény (W) | 592 | 595 | 573 | 575 | 583 |
 | Termikus elszóródás (BTU/HR) | 2020 |2031 | 1954 | 1961 | 1990 |
 
@@ -116,7 +116,7 @@ Ezek a diagramok energiafogyasztást és termikus kimeneti méréseket biztosít
 | Gyakoriság (Hz) |60 | 60 | 60 | 50 | 50 |
 | Aktuális (A) | 4,63 | 3,86 | 2,24 | 2,04 | 1,94 |
 | Látszólagos teljesítmény (VA) | 463 | 463 | 466 | 469 | 466 |
-| Teljesítménytényező | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 | 
+| Teljesítménytényező | 0.99 | 0.99 | 0,98 | 0,98 | 0,98 | 
 | Valós teljesítmény (W) | 458 | 459 | 457 | 460 | 456 |
 | Termikus elszóródás (BTU/HR) | 1564 | 1565 | 1558 | 1569 | 1557 |
 
@@ -124,9 +124,9 @@ Ezek a diagramok energiafogyasztást és termikus kimeneti méréseket biztosít
 |---------|---|---|---|---|---|
 | Feszültség (V) | 100 | 120 | 208 | 230 | 240 |
 | Gyakoriság (Hz) | 60 | 60 | 60 | 50 | 50 |
-| Aktuális (A) | 5,15 | 4,28 | 2,48 | 2,28 | 2,13 |
+| Aktuális (A) | 5.15 | 4,28 | 2,48 | 2,28 | 2,13 |
 | Látszólagos teljesítmény (VA) | 515 | 514 | 516 | 524 | 511 |
-| Teljesítménytényező | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 |
+| Teljesítménytényező | 0.99 | 0.99 | 0,98 | 0,98 | 0,98 |
 | Valós teljesítmény (W) | 510 | 508 | 506 | 514 | 501 |
 | Termikus elszóródás (BTU/HR) | 1740 | 1735 | 1725 | 1753 | 1709 |
 
@@ -140,7 +140,7 @@ Ez a szakasz a hardver környezeti környezetének specifikációit ismerteti.
 |---------------------------|-----------------------------------|-----------------------------|
 | Környezeti hőmérséklet tartománya | 10 °C – 35 °C (50 – 86 °F)          | -40 °C-tól 65 °C-ig (-40-149 °F) |
 | Környezeti relatív páratartalom | 10%-80% nem kondenzációs          | 5%-95% nem kondenzációs     |
-| Maximális harmatpont         | 29 °C (84 °F)                       | 33 °C (91 °F)                 |
+| Maximális harmatpont         | 29 °C (84 °F)                       | 33°C (91°F)                 |
 | Magasság                  | akár 3048 méter (10 000 láb), az alábbi hőmérséklet-minősítéstől függően | akár 12 000 méter (39 370 méter) |
 
 > [!NOTE] 

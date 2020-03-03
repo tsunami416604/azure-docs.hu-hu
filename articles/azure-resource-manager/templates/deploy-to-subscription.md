@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése az előfizetésben
 description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Resource Manager sablonban. Azt is bemutatja, hogyan helyezhet üzembe erőforrásokat az Azure-előfizetési hatókörben.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 50db0b4d46ff4e367411829aa75fa017a168372f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 03/02/2020
+ms.openlocfilehash: 2e747b7faa6e9766a577b472cc3e283d6223109e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207655"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228118"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten
 
@@ -20,6 +20,7 @@ A sablonok előfizetési szinten való üzembe helyezéséhez használja az Azur
 
 A következő erőforrástípusok az előfizetés szintjén helyezhetők üzembe:
 
+* [költségvetése](/azure/templates/microsoft.consumption/budgets)
 * [központi telepítések](/azure/templates/microsoft.resources/deployments)
 * [peerAsns](/azure/templates/microsoft.peering/peerasns)
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
@@ -60,10 +61,10 @@ az deployment create \
 ```
 
 
-A PowerShell üzembe helyezési parancsához használja a [New-AzDeployment](/powershell/module/az.resources/new-azdeployment)parancsot. A következő példa egy sablont helyez üzembe egy erőforráscsoport létrehozásához:
+A PowerShell üzembe helyezési parancsához használja a [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) vagy a **New-AzSubscriptionDeployment**. A következő példa egy sablont helyez üzembe egy erőforráscsoport létrehozásához:
 
 ```azurepowershell-interactive
-New-AzDeployment `
+New-AzSubscriptionDeployment `
   -Name demoDeployment `
   -Location centralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json `
@@ -300,7 +301,7 @@ $definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName 
 $locations = @("westus", "westus2")
 $policyParams =@{listOfAllowedLocations = @{ value = $locations}}
 
-New-AzDeployment `
+New-AzSubscriptionDeployment `
   -Name policyassign `
   -Location centralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json `
@@ -366,7 +367,7 @@ az deployment create \
 A sablon PowerShell használatával történő üzembe helyezéséhez használja a következőt:
 
 ```azurepowershell
-New-AzDeployment `
+New-AzSubscriptionDeployment `
   -Name definePolicy `
   -Location centralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
@@ -374,8 +375,8 @@ New-AzDeployment `
 
 ## <a name="template-samples"></a>Sablonminták
 
-* Hozzon létre egy erőforráscsoportot, zárolja, és adjon hozzá engedélyeket. Lásd [itt](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
-* Hozzon létre egy erőforráscsoportot, egy házirendet és egy házirend-hozzárendelést.  Lásd [itt](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json).
+* [Hozzon létre egy erőforráscsoportot, zárolja, és adjon hozzá engedélyeket](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
+* [Hozzon létre egy erőforráscsoportot, egy házirendet és egy házirend-hozzárendelést](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>Következő lépések
 

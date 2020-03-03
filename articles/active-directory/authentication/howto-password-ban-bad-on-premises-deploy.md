@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f61ab87a3eb1bd4b81a8e67a182a4cb6a09aa069
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4a3eb121b68311084fd516c6abb7e00ad70eba8b
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888959"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226825"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD jelszóvédelem üzembe helyezése
 
@@ -32,7 +32,7 @@ A naplózási szakaszban számos szervezet találja a következőket:
 * A felhasználók gyakran nem biztonságos jelszavakat használnak.
 * Tájékoztatniuk kell a felhasználókat a biztonsági kényszerítés közelgő változásáról, a lehetséges hatásokról, valamint a biztonságosabb jelszavak kiválasztásáról.
 
-Az is lehetséges, hogy az erősebb jelszó-érvényesítés hatással van a meglévő Active Directory tartományvezérlő üzembe helyezési automatizálására. Javasoljuk, hogy a naplózási időszak kiértékelése során legalább egy DC-előléptetést és egy tartományvezérlő-lefokozást hajtson végre, hogy segítse az ilyen problémák előzetes felfedését.  További információ eléréséhez lásd:
+Az is lehetséges, hogy az erősebb jelszó-érvényesítés hatással van a meglévő Active Directory tartományvezérlő üzembe helyezési automatizálására. Javasoljuk, hogy a naplózási időszak kiértékelése során legalább egy DC-előléptetést és egy tartományvezérlő-lefokozást hajtson végre, hogy segítse az ilyen problémák előzetes felfedését.  További információkért lásd:
 
 * [Az Ntdsutil. exe nem tud beállítani egy gyenge címtárszolgáltatás-javító mód jelszavát](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [A tartományvezérlő replikájának előléptetése sikertelen a Címtárszolgáltatások helyreállító módjának jelszava miatt](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
@@ -106,6 +106,7 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
    * Minden ilyen szolgáltatás csak egyetlen erdőhöz biztosít jelszavas házirendeket. A gazdagépnek az erdőben lévő tartományhoz kell csatlakoznia. A gyökér és a gyermek tartományok egyaránt támogatottak. Az erdő minden tartományában és a jelszavas védelemben használt számítógépen legalább egy TARTOMÁNYVEZÉRLŐnek hálózati kapcsolatra van szüksége.
    * A proxy szolgáltatást a tartományvezérlőn is futtathatja tesztelés céljából. Azonban a tartományvezérlőhöz internetkapcsolat szükséges, ami biztonsági szempontból fontos lehet. Ezt a konfigurációt csak tesztelésre javasoljuk.
    * Legalább két proxykiszolgáló használatát javasoljuk a redundancia érdekében. Tekintse meg a [magas rendelkezésre állást](howto-password-ban-bad-on-premises-deploy.md#high-availability).
+   * A proxy szolgáltatás nem támogatott írásvédett tartományvezérlőn való futtatásához.
 
 1. Telepítse az Azure AD Password Protection proxy szolgáltatást a `AzureADPasswordProtectionProxySetup.exe` Software Installer használatával.
    * A szoftver telepítése nem igényel újraindítást. Előfordulhat, hogy a Szoftvertelepítés szabványos MSI-eljárások használatával automatizálható, például:
@@ -124,7 +125,7 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
 
    * A szolgáltatás futtatásának megadásához használja a következő PowerShell-parancsot:
 
-      `Get-Service AzureADPasswordProtectionProxy | fl` kérdésre adott válaszban foglalt lépéseket.
+      `Get-Service AzureADPasswordProtectionProxy | fl`.
 
      Az eredménynek a "Running" **állapotot** kell mutatnia.
 
@@ -133,7 +134,7 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
 
      `Register-AzureADPasswordProtectionProxy`
 
-     Ehhez a parancsmaghoz globális rendszergazdai hitelesítő adatok szükségesek az Azure-bérlőhöz. Helyi Active Directory tartományi rendszergazdai jogosultságokkal is rendelkeznie kell az erdő gyökértartományában. Ezt a parancsmagot a helyi rendszergazdai jogosultságokkal rendelkező fiókkal is futtatnia kell.
+     Ehhez a parancsmaghoz globális rendszergazdai hitelesítő adatok szükségesek az Azure-bérlőhöz. Helyi Active Directory tartományi rendszergazdai jogosultságokkal is rendelkeznie kell az erdő gyökértartományában. Ezt a parancsmagot helyi rendszergazdai jogosultságokkal rendelkező fiókkal is futtatni kell.
 
      Miután ez a parancs egyszer sikeres volt egy proxy szolgáltatáshoz, a további meghívások sikeresek lesznek, de szükségtelenek.
 
@@ -179,7 +180,7 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
    > Előfordulhat, hogy egy adott Azure-bérlő esetében a parancsmag első futtatásakor észrevehető késleltetési idő van. Ha nem jelent hibát, ne aggódjon ez a késés.
 
 1. Regisztrálja az erdőt.
-   * Az `Register-AzureADPasswordProtectionForest` PowerShell-parancsmag használatával inicializálnia kell a helyszíni Active Directory erdőt az Azure-nal való kommunikációhoz szükséges hitelesítő adatokkal.
+   * Az `Register-AzureADPasswordProtectionForest` PowerShell-parancsmag használatával inicializálja a helyszíni Active Directory erdőt az Azure-nal való kommunikációhoz szükséges hitelesítő adatokkal.
 
       A parancsmaghoz globális rendszergazdai hitelesítő adatok szükségesek az Azure-bérlőhöz.  Ezt a parancsmagot a helyi rendszergazdai jogosultságokkal rendelkező fiókkal is futtatnia kell. Helyszíni Active Directory vállalati rendszergazdai jogosultságokat is igényel. Ez a lépés erdőn keresztül egyszer fut.
 
@@ -266,7 +267,7 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
    A proxy szolgáltatás nem támogatja a HTTP-proxyhoz való csatlakozáshoz megadott hitelesítő adatok használatát.
 
 1. Nem kötelező: konfigurálja a proxybeállításokat a jelszavas védelemhez egy adott port figyeléséhez.
-   * A tartományvezérlők jelszavas védelméhez használt tartományvezérlői ügynök szoftvere a TCP-n keresztüli RPC protokollt használja a proxy szolgáltatással való kommunikációhoz. Alapértelmezés szerint a proxy szolgáltatás minden elérhető dinamikus RPC-végponton figyeli a szolgáltatást. A szolgáltatást azonban beállíthatja egy adott TCP-port figyelésére, ha ez szükséges a környezet hálózati topológiája vagy a tűzfal követelményei miatt.
+   * A tartományvezérlők jelszavas védelméhez használt tartományvezérlői ügynök szoftvere a TCP-n keresztüli RPC protokollt használja a proxy szolgáltatással való kommunikációhoz. Alapértelmezés szerint a proxy szolgáltatás minden elérhető dinamikus RPC-végponton figyeli a szolgáltatást. A szolgáltatás beállítható úgy, hogy egy adott TCP-portot figyelje, szükség esetén a hálózat topológiája vagy a környezete által támasztott tűzfalszabályok miatt.
       * <a id="static" /></a>a szolgáltatás statikus porton való futtatásának konfigurálásához használja a `Set-AzureADPasswordProtectionProxyConfiguration` parancsmagot.
 
          ```powershell
@@ -306,7 +307,7 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
 
    A DC Agent szolgáltatást olyan gépen is telepítheti, amely még nem tartományvezérlő. Ebben az esetben a szolgáltatás elindul és futni fog, de mindaddig inaktív marad, amíg a gépet tartományvezérlővé nem előléptetik.
 
-   A Szoftvertelepítés szabványos MSI-eljárások használatával automatizálható. Példa:
+   A Szoftvertelepítés szabványos MSI-eljárások használatával automatizálható. Például:
 
    `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 
@@ -343,6 +344,8 @@ Az Azure AD jelszavas védelem több erdőben való üzembe helyezéséhez nem s
 ## <a name="read-only-domain-controllers"></a>Írásvédett tartományvezérlők
 
 A jelszó módosításait/készleteit a rendszer nem dolgozza fel és nem őrzi meg írásvédett tartományvezérlőkön (írásvédett tartományvezérlők). Ezeket az írható tartományvezérlők továbbítják. Ezért nem kell telepítenie a DC-ügynök szoftverét az írásvédett tartományvezérlőn.
+
+A proxy szolgáltatás nem támogatott írásvédett tartományvezérlőn való futtatásához.
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 7f5f75385374b6949ee3ef5e5ef298b8d54cc36e
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 2af887f529d57052d8b729fa1a613e8eeb9003ea
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78163250"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228297"
 ---
 # <a name="virtual-network-service-tags"></a>Virtuális hálózati szolgáltatás címkéi
 <a name="network-service-tags"></a>
@@ -86,7 +86,7 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 | **MicrosoftContainerRegistry** | Microsoft-tároló lemezképek tároló-beállításjegyzéke. <br/><br/>*Megjegyzés:* Adja meg a következő IP-címet is (ez a függőség hamarosan el lesz távolítva): 204.79.197.219. | Kimenő | Igen | Igen |
 | **ServiceBus** | Azure Service Bus a prémium szintű szolgáltatási szintet használó forgalom. | Kimenő | Igen | Igen |
 | **ServiceFabric** | Azure Service Fabric.<br/><br/>*Megjegyzés:* Ez a címke a Service Fabric szolgáltatási végpontot jelöli a vezérlési sík régiónként. Ez lehetővé teszi, hogy az ügyfelek felügyeleti műveleteket hajtsanak végre a Service Fabric-fürtökhöz a VNET (például végpontot). https://westus.servicefabric.azure.com) | Mindkettő | Nem | Nem |
-| **Sql** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL és Azure SQL Data Warehouse.<br/><br/>*Megjegyzés:* Ez a címke a szolgáltatást jelöli, de a szolgáltatás adott példányai nem. Például a címke az Azure SQL Database szolgáltatást jelöli, de nem egy adott SQL-adatbázist vagy -kiszolgálót. | Kimenő | Igen | Igen |
+| **Sql** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL és Azure SQL Data Warehouse.<br/><br/>*Megjegyzés:* Ez a címke a szolgáltatást jelöli, de a szolgáltatás adott példányai nem. Például a címke az Azure SQL Database szolgáltatást jelöli, de nem egy adott SQL-adatbázist vagy -kiszolgálót. Ez a címke nem vonatkozik az SQL felügyelt példányára. | Kimenő | Igen | Igen |
 | **SqlManagement** | Felügyeleti forgalom az SQL-dedikált üzemelő példányokhoz. | Mindkettő | Nem | Igen |
 | **Storage** | Azure Storage. <br/><br/>*Megjegyzés:* Ez a címke a szolgáltatást jelöli, de a szolgáltatás adott példányai nem. Például a címke az Azure Storage szolgáltatást jelöli, de nem egy adott Azure Storage-fiókot. | Kimenő | Igen | Igen |
 | **VirtualNetwork** | A virtuális hálózati címtartomány (a virtuális hálózathoz meghatározott összes IP-címtartomány), az összes csatlakoztatott helyszíni [címterület, a virtuális hálózat](virtual-network-peering-overview.md) , a [virtuális hálózati átjáróhoz](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)csatlakoztatott virtuális hálózatok, a [gazdagép virtuális IP-címe](security-overview.md#azure-platform-considerations), valamint a [felhasználó által megadott útvonalakon](virtual-networks-udr-overview.md)használt előtagok címei. Ez a címke tartalmazhatja az alapértelmezett útvonalakat is. | Mindkettő | Nem | Nem |

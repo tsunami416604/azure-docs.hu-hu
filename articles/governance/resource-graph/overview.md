@@ -1,14 +1,14 @@
 ---
 title: Az Azure Resource Graph áttekintése
 description: Ismerje meg, hogy az Azure Resource Graph szolgáltatás hogyan teszi lehetővé az erőforrások összetett lekérdezését az előfizetések és a bérlők között.
-ms.date: 10/21/2019
+ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: 1e84de19d35f0c5f5d7975c8a94d5164100013e4
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 38ead7be09e038b19c390acd9f10e1c0ccf9d858
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936517"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227382"
 ---
 # <a name="what-is-azure-resource-graph"></a>Mi az az Azure Resource Graph?
 
@@ -31,7 +31,7 @@ Ez a dokumentáció mindegyik funkciót részletesen tárgyalja.
 
 Azure Resource Manager jelenleg a lekérdezéseket támogatja az alapszintű erőforrások mezőin, különösen az erőforrás neve, az azonosító, a típus, az erőforráscsoport, az előfizetés és a hely alapján. A Resource Manager emellett olyan létesítményeket is biztosít, amelyekkel az egyes erőforrás-szolgáltatók meghívhatók a részletes tulajdonságok egy erőforrással egyidejűleg.
 
-Az Azure Resource Graph segítségével az erőforrás-szolgáltatók egyenkénti hívása nélkül is hozzáférhet az általuk visszaadott tulajdonságokhoz. A támogatott erőforrástípusok listáját a [teljes módú központi telepítések táblázatának erőforrásait](../../azure-resource-manager/templates/complete-mode-deletion.md) **ismertető részében** tekintheti meg. További erőforrástípusok találhatók a kapcsolódó [Resource Graph-táblákban](./concepts/query-language.md#resource-graph-tables). A támogatott erőforrástípusok megjelenítésének másik módja az [Azure Resource Graph Explorer sémakezelő böngészője](./first-query-portal.md#schema-browser).
+Az Azure Resource Graph segítségével az erőforrás-szolgáltatók egyenkénti hívása nélkül is hozzáférhet az általuk visszaadott tulajdonságokhoz. A támogatott erőforrástípusok listáját a [tábla és az erőforrás típusára vonatkozó referenciában](./reference/supported-tables-resources.md)tekintheti meg. A támogatott erőforrástípusok megjelenítésének másik módja az [Azure Resource Graph Explorer sémakezelő böngészője](./first-query-portal.md#schema-browser).
 
 Az Azure Resource Graph segítségével a következőket teheti:
 
@@ -65,7 +65,7 @@ A Resource Graph használatához megfelelő jogosultságokkal kell rendelkeznie 
 Az Azure CLI és Azure PowerShell olyan előfizetéseket használ, amelyekhez a felhasználónak hozzáférése van. REST API közvetlen használatakor az előfizetési listát a felhasználó kapja meg. Ha a felhasználó hozzáfér a listában szereplő egyik előfizetéshez, a rendszer visszaadja a lekérdezés eredményét azon előfizetések esetében, amelyekhez a felhasználónak hozzáférése van. Ez a viselkedés ugyanaz, mint az erőforráscsoportok meghívásakor [– lista](/rest/api/resources/resourcegroups/list) \- beolvassa azokat az erőforráscsoportok, amelyekhez hozzáférése van, anélkül, hogy az eredmény részleges lenne.
 Ha nincsenek olyan előfizetések az előfizetések listájában, amelyhez a felhasználó megfelelő jogosultsággal rendelkezik, a válasz _403_ (tiltott).
 
-## <a name="throttling"></a>Throttling
+## <a name="throttling"></a>Szabályozás
 
 Ingyenes szolgáltatásként az erőforrás-gráfra irányuló lekérdezések szabályozva vannak, így biztosítva a legjobb élményt és a válaszadási időt az összes ügyfél számára. Ha a szervezet a nagyméretű és gyakori lekérdezésekhez Graph API erőforrást szeretné használni, használja a "visszajelzés" lehetőséget az erőforrás- [gráf portál oldalon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph).
 Adja meg az üzleti esetét, és válassza a "Microsoft e-mail küldése a visszajelzéshez" jelölőnégyzetet, hogy a csapat felvegye Önnel a kapcsolatot.

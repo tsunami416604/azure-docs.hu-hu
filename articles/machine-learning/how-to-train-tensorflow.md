@@ -1,5 +1,5 @@
 ---
-title: Neurális hálózat betanítása a TensorFlow
+title: TensorFlow-modell betanítása és üzembe helyezése
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan futtathat TensorFlow-betanítási szkripteket a méretezés Azure Machine Learning használatával.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: a1c3e1948d53a168ce9a3e99cd932fa04e2fafc4
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 2bbd81f3858aa78b9e0e2d610c0fdb0a67816c8e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114382"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228312"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>TensorFlow mély tanulási modellt készíthet Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -305,11 +305,11 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
-## <a name="deployment"></a>Környezet
+## <a name="deploy-a-tensorflow-model"></a>TensorFlow-modell üzembe helyezése
 
 A korábban regisztrált modell ugyanúgy helyezhető üzembe, mint bármely más regisztrált modell Azure Machine Learningban, függetlenül attól, hogy milyen kalkulátort használt a betanításhoz. Az üzembe helyezési útmutató egy szakaszt tartalmaz a modellek regisztrálásához, de közvetlenül kihagyhatja a központi telepítéshez szükséges [számítási cél létrehozását](how-to-deploy-and-where.md#choose-a-compute-target) , mivel már rendelkezik regisztrált modellel.
 
-### <a name="preview-no-code-model-deployment"></a>Előnézet Nem kód modell telepítése
+## <a name="preview-no-code-model-deployment"></a>Előnézet Nem kód modell telepítése
 
 A hagyományos üzembe helyezési útvonal helyett a kód nélküli üzembe helyezési funkciót (előzetes verzió) is használhatja a Tensorflow. Ha a fentiekben látható módon regisztrálja a modellt a `model_framework`, `model_framework_version`és `resource_configuration` paraméterekkel, egyszerűen használhatja az `deploy()` statikus függvényt a modell üzembe helyezéséhez.
 

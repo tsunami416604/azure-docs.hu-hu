@@ -14,18 +14,21 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: d8a13d9013b2ad526c8e332cf3ea74e04f253d98
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4b36f456f70eb79cff1f615c7c136b8fe4b1b3d4
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597711"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226714"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Általános célú virtuálisgép-méretek
 
 Az általános célú virtuálisgép-méretek kiegyensúlyozott processzor-memória arányt biztosítanak. Ideális teszteléshez és fejlesztéshez, kis-és közepes méretű adatbázisokhoz, valamint alacsony és közepes forgalmú webkiszolgálókhoz. Ez a cikk az általános célú számítástechnikai ajánlatokkal kapcsolatos információkat tartalmaz.
 
 - A [Av2 sorozatú](av2-series.md) virtuális gépek számos különböző hardvereszközön és processzoron is üzembe helyezhetők. Az A sorozatú virtuális gépeknél a CPU-teljesítmény és a memória-konfigurációk a legmegfelelőbbek a belépési szintű munkaterhelésekhez, például a fejlesztéshez A méretük a hardvernek megfelelően szabályozott, hogy egyenletes processzorteljesítményt nyújtsanak a futó példány számára, a futtató hardvertől függetlenül. Az adott méretet futtató fizikai hardver meghatározásához kérdezze le a virtuális hardvert a virtuális gépen belülről. Ilyenek például a fejlesztési és tesztelési kiszolgálók, az alacsony forgalmú webkiszolgálók, a kis-és közepes adatbázisok, a bizonyítási fogalmak és a kódok tárházai.
+
+  > [!NOTE]
+  > Az A8 – A11-es virtuális gépek a 3/2021-es kivonulásra vannak tervezve. További információ: [HPC áttelepítési útmutató](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 - [B sorozat – feltört](sizes-b-series-burstable.md) A virtuális gépek olyan számítási feladatokhoz ideálisak, amelyeknek nincs szükségük a CPU teljes teljesítményére, például a webkiszolgálók, a kisméretű adatbázisok és a fejlesztési és tesztelési környezetek számára. Ezek a számítási feladatok általában feltört teljesítménnyel kapcsolatos követelményekkel rendelkeznek. A B sorozat biztosítja, hogy ezek az ügyfelek a virtuálisgép-méretet olyan tudatos alapszintű teljesítmény mellett vásárolják meg, amely lehetővé teszi, hogy a virtuálisgép-példány krediteket hozzon létre, amikor a virtuális gép az alapteljesítménynél kevesebbet használ. Ha a virtuális gép felhalmozott Kredittel rendelkezik, a virtuális gép a CPU alapkonfigurációja felett akár 100%-ot is megadhat, ha az alkalmazás a nagyobb CPU-teljesítményt igényli.
 

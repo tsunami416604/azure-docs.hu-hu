@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 00e8cdbbd765d6baf83f64848030d08d6e712ca1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 600ca893e6d6b81fe24626a99cc1f6de80efb3e8
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661345"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228142"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -214,10 +214,12 @@ A futtatható-példákat lásd: [Application Insights JavaScript SDK-minták](ht
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>Frissítés a Application Insights korábbi verziójáról
 
 Az SDK v2 verziójában feltört változások:
-- A jobb API-aláírások engedélyezéséhez néhány API-hívás, például a trackPageView, a trackException frissítése megtörtént. A böngésző IE8-ban vagy alacsonyabb verzióban való futtatása nem támogatott.
+- A jobb API-aláírások engedélyezéséhez néhány API-hívás (például a trackPageView és a trackException) frissült. Az Internet Explorer 8 és a böngésző korábbi verziói nem támogatottak.
 - Az telemetria-borítékban az Adatséma frissítései miatt a mező neve és szerkezete módosul.
-- `context.operation` áthelyezve a `context.telemetryTrace`ra. Egyes mezők is módosultak (`operation.id` --> `telemetryTrace.traceID`)
-  - Ha manuálisan szeretné frissíteni az aktuális oldalmegtekintési azonosítót (például a SPA-alkalmazásokban), ezt a `appInsights.properties.context.telemetryTrace.traceID = Util.newId()` használatával végezheti el.
+- `context.operation` áthelyezve a `context.telemetryTrace`ra. Egyes mezők is módosultak (`operation.id` --> `telemetryTrace.traceID`).
+  - Az aktuális oldalmegtekintési azonosító (például a SPA-alkalmazások) manuális frissítéséhez használja a `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()`.
+    > [!NOTE]
+    > Ha a nyomkövetési azonosítót egyediként szeretné megtartani, ahol korábban már használta a `Util.newId()`t, használja a `Util.generateW3CId()`. Mindkét esetben végül a művelet azonosítója jelenik meg.
 
 Ha az aktuális Application bepillantást előállító SDK-t (1.0.20) használja, és szeretné megtekinteni, hogy az új SDK működik-e futásidőben, frissítse az URL-címet az aktuális SDK-betöltési forgatókönyvtől függően.
 

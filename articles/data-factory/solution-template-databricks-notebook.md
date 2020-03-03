@@ -1,5 +1,5 @@
 ---
-title: Az adatátalakítás a Databricks használatával
+title: Átalakítás Azure Databricks
 description: Megtudhatja, hogyan alakíthat át egy megoldást sablon használatával az adatátalakításhoz a Azure Data Factory Databricks-jegyzetfüzettel.
 services: data-factory
 ms.author: abnarain
@@ -11,22 +11,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/10/2018
-ms.openlocfilehash: d21bab2f358e8ae9460bff2305957ed901c70926
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 322f5306949b266958ded908e981ed530e8245c8
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927755"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227514"
 ---
-# <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Az adatátalakítás a Databricks használatával Azure Data Factory
+# <a name="transformation-with-azure-databricks"></a>Átalakítás Azure Databricks
 
-Ebben az oktatóanyagban egy végpontok közötti folyamatot hoz létre, amely tartalmazza a Data Factoryban található, a **Keresés**, a **Másolás**és a **Databricks notebook** -tevékenységeket.
+Ebben az oktatóanyagban egy végpontok közötti folyamatot hoz létre, amely az **érvényesítési**, a **másolási**és a **Jegyzetfüzet** -tevékenységeket tartalmazza Data Factoryban.
 
--   A **keresési** vagy GetMetaData tevékenységgel biztosítható, hogy a forrás adatkészlete készen álljon az alsóbb rétegbeli felhasználásra, mielőtt aktiválja a másolási és elemzési feladatot.
+-   Az **érvényesítési** tevékenység segítségével biztosítható, hogy a forrás-adatkészlet a másolási és elemzési feladatok elindítása előtt készen álljon az alsóbb rétegbeli felhasználásra.
 
--   A **másolási tevékenység** a forrás fájlt/adatkészletet a fogadó tárolóba másolja. A fogadó tároló a Databricks jegyzetfüzetben DBFS van csatlakoztatva, hogy az adatkészletet közvetlenül a Spark tudja használni.
+-   A **másolási** tevékenység a forrás fájlt/adatkészletet a fogadó tárolóba másolja. A fogadó tároló a Databricks jegyzetfüzetben DBFS van csatlakoztatva, hogy az adatkészletet közvetlenül a Spark tudja használni.
 
--   A **Databricks notebook tevékenység** elindítja a Databricks jegyzetfüzetet, amely átalakítja az adatkészletet, és hozzáadja azt egy feldolgozott mappához/SQL DW-hez.
+-   A **Databricks notebook** tevékenység elindítja a Databricks jegyzetfüzetet, amely átalakítja az adatkészletet, és hozzáadja azt egy feldolgozott mappához/SQL DW-hez.
 
 A sablon egyszerű megtartásához a sablon nem hoz létre ütemezett triggert. Szükség esetén hozzáadhatja azt.
 
@@ -34,17 +34,22 @@ A sablon egyszerű megtartásához a sablon nem hoz létre ütemezett triggert. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1.  Hozzon létre egy **blob Storage-fiókot** és egy `sinkdata` nevű tárolót **, amelyet**fogadóként kíván használni. Jegyezze fel a Storage- **fiók nevét**, a **tároló nevét**és a **hozzáférési kulcsot**, mivel azok a sablonban később rájuk vannak hivatkozva.
+1. Hozzon létre egy **blob Storage-fiókot** és egy `sinkdata` nevű tárolót **, amelyet**fogadóként kíván használni. Jegyezze fel a Storage- **fiók nevét**, a **tároló nevét**és a **hozzáférési kulcsot**, mivel azok a sablonban később rájuk vannak hivatkozva.
 
-2.  Győződjön meg arról, hogy rendelkezik **Azure Databricks munkaterülettel** , vagy hozzon létre egy újat.
+2. Győződjön meg arról, hogy rendelkezik **Azure Databricks munkaterülettel** , vagy hozzon létre egy újat.
 
-1.  **Importálja a jegyzetfüzetet ETL-hez**. Importálja az alábbi átalakító jegyzetfüzetet a Databricks-munkaterületre. (Nem kell ugyanazon a helyen lennie, mint az alábbi, de ne feledje, hogy a későbbiekben kiválasztott elérési utat kell megadnia.) Importálja a jegyzetfüzetet a következő URL-címről úgy, hogy beírja az URL-címet az URL mezőbe: `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`. Kattintson az **Importálás** gombra.
+3. **Importálja a jegyzetfüzetet az átalakításhoz**. 
+    1. A Azure Databricks a következő képernyőképeket az **átalakítási** jegyzetfüzet Databricks-munkaterületre történő importálásához. Nem kell ugyanazon a helyen lennie, mint az alábbi, de ne feledje, hogy a későbbiekben kiválasztott elérési utat kell megadnia.
+   
+       ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)    
+    
+    1. Válassza az "Importálás innen: **URL**" lehetőséget, és írja be a következő URL-címet a szövegmezőbe:
+    
+       * `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`
+        
+       ![3](media/solution-template-Databricks-notebook/Databricks-tutorial-image03.png)    
 
-    ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)
-
-    ![3](media/solution-template-Databricks-notebook/Databricks-tutorial-image03.png)  
-
-1.  Most frissítse az **átalakítási** jegyzetfüzetet a **Storage kapcsolati adataival** (név és hozzáférési kulcs). Lépjen az **5. parancsra** az importált jegyzetfüzetben, és cserélje le az alábbi kódrészletre a Kiemelt értékek cseréje után. Győződjön meg arról, hogy ez a fiók azonos a korábban létrehozott Storage-fiókkal, és tartalmazza a `sinkdata` tárolót.
+4. Most frissítse az **átalakítási** jegyzetfüzetet a Storage-kapcsolatok adataival. Nyissa meg az **5. parancsot** (az alábbi kódrészletben látható módon) az importált jegyzetfüzetben, és cserélje le `<storage name>`és `<access key>` a saját Storage-kapcsolódási adataival. Győződjön meg arról, hogy ez a fiók azonos a korábban létrehozott Storage-fiókkal, és tartalmazza a `sinkdata` tárolót.
 
     ```python
     # Supply storageName and accessKey values  
@@ -68,87 +73,95 @@ A sablon egyszerű megtartásához a sablon nem hoz létre ütemezett triggert. 
       print e \# Otherwise print the whole stack trace.  
     ```
 
-1.  **Databricks hozzáférési token** létrehozása Data Factory számára a Databricks eléréséhez. **Mentse a hozzáférési jogkivonatot** későbbi használatra a Databricks társított szolgáltatás létrehozásához, amely a következőhöz hasonló: "dapi32db32cbb4w6eee18b7d87e45exxxxxx".
+5.  **Databricks hozzáférési token** létrehozása Data Factory számára a Databricks eléréséhez. **Mentse a hozzáférési jogkivonatot** későbbi használatra a Databricks társított szolgáltatás létrehozásához, amely a következőhöz hasonló: "dapi32db32cbb4w6eee18b7d87e45exxxxxx".
 
     ![4](media/solution-template-Databricks-notebook/Databricks-tutorial-image04.png)
 
     ![5](media/solution-template-Databricks-notebook/Databricks-tutorial-image05.png)
 
-## <a name="create-linked-services-and-datasets"></a>Társított szolgáltatások és adatkészletek létrehozása
+## <a name="how-to-use-this-template"></a>A sablon használata
 
-1.  Hozzon létre új **társított szolgáltatásokat** Data Factory felhasználói felületen a *társított szolgáltatások + új kapcsolattal*
+1.  Nyissa meg az **átalakítást Azure Databricks** sablonnal. Hozzon létre új társított szolgáltatásokat a következő kapcsolatokhoz. 
+    
+    ![Kapcsolatok beállítása](media/solution-template-Databricks-notebook/connections-preview.png)
 
-    1.  **Forrás** – a forrásadatok eléréséhez. Használhatja a minta forrásfájljait tartalmazó nyilvános blob Storage-tárolót.
-
-        Válassza a **blob Storage**lehetőséget, majd az alábbi **sas URI** -t használva kapcsolódjon a forrás tárolóhoz (csak olvasási hozzáférés).
-
-        `https://storagewithdata.blob.core.windows.net/?sv=2017-11-09&ss=b&srt=sco&sp=rl&se=2019-12-31T21:40:53Z&st=2018-10-24T13:40:53Z&spr=https&sig=K8nRio7c4xMLnUV0wWVAmqr5H4P3JDwBaG9HCevI7kU%3D`
+    1.  **Forrás blob-kapcsolatok** – a forrásadatok eléréséhez. 
+        
+        Használhatja a minta forrásfájljait tartalmazó nyilvános blob Storage-tárolót. Az alábbi képernyőkép a konfiguráláshoz. Az alábbi **sas URL-cím** használata a forrás tárterülethez való kapcsolódáshoz (csak olvasási hozzáférés): 
+        * `https://storagewithdata.blob.core.windows.net/data?sv=2018-03-28&si=read%20and%20list&sr=c&sig=PuyyS6%2FKdB2JxcZN0kPlmHSBlD8uIKyzhBWmWzznkBw%3D`
 
         ![6](media/solution-template-Databricks-notebook/Databricks-tutorial-image06.png)
 
-    1.  Fogadó **– adatok** másolásához a alkalmazásba.
-
-        Válassza ki az 1. előfeltételben létrehozott tárolót a fogadó társított szolgáltatásban.
+    1.  **Cél blob-kapcsolatok** – adatok másolásához a alkalmazásba. 
+        
+        A fogadó társított szolgáltatásban válassza ki az 1. **Előfeltételben** létrehozott tárolót.
 
         ![7](media/solution-template-Databricks-notebook/Databricks-tutorial-image07.png)
 
-    1.  **Databricks** – a Databricks-fürthöz való csatlakozáshoz
+    1.  **Azure Databricks** – a Databricks-fürthöz való csatlakozáshoz.
 
-        Hozzon létre egy Databricks társított szolgáltatást a 2. c előfeltételben létrehozott hozzáférési kulccsal. Ha *interaktív fürttel*rendelkezik, ezt kiválaszthatja. (Ez a példa az *új feladatütemezés* lehetőséget használja.)
+        Hozzon létre egy Databricks társított szolgáltatást a 2. c **Előfeltételben** létrehozott hozzáférési kulccsal. Ha *interaktív fürttel*rendelkezik, ezt kiválaszthatja. (Ez a példa az *új feladatütemezés* lehetőséget használja.)
 
         ![8](media/solution-template-Databricks-notebook/Databricks-tutorial-image08.png)
 
-2.  **Adatkészletek** létrehozása
+1. Válassza a **sablon használata**lehetőséget, és egy, az alább látható módon létrehozott folyamat jelenik meg:
+    
+    ![Folyamat létrehozása](media/solution-template-Databricks-notebook/new-pipeline.png)   
 
-    1.  **"SourceAvailability_Dataset"** létrehozása a forrásadatok elérhetőségének vizsgálatához
+## <a name="pipeline-introduction-and-configuration"></a>A folyamat bevezetése és konfigurálása
 
-    ![9](media/solution-template-Databricks-notebook/Databricks-tutorial-image09.png)
+Az új folyamat létrehozásakor a legtöbb beállítás automatikusan konfigurálva van az alapértelmezett értékekkel. Tekintse át a konfigurációkat, és szükség esetén frissítse a beállításokat a saját beállításainak megfelelően. Részletekért tekintse meg az alábbi utasításokat és képernyőképeket a hivatkozáshoz.
 
-    1.  **Forrás adatkészlet –** a forrásadatok másolásához (bináris másolat használatával)
-
-    ![10](media/solution-template-Databricks-notebook/Databricks-tutorial-image10.png)
-
-    1.  Fogadó **adatkészlet** – a fogadó/célhely helyre történő másoláshoz
-
-        1.  Társított szolgáltatás – válassza a "sinkBlob_LS" elemet a következőben: 1. b
-
-        2.  Fájl elérési útja – "sinkdata/staged_sink"
-
-        ![11](media/solution-template-Databricks-notebook/Databricks-tutorial-image11.png)
-
-## <a name="create-activities"></a>Tevékenységek létrehozása
-
-1.  Hozzon létre egy "**rendelkezésre állási jelző**" keresési tevékenységet a forrás rendelkezésre állásának vizsgálatához (keresési vagy GetMetaData használható). Válassza a 2. a-ben létrehozott "sourceAvailability_Dataset" lehetőséget.
+1.  Egy érvényesítési tevékenység **rendelkezésre állási jelzője** jön létre a forrás rendelkezésre állásának ellenőrzéséhez. Az előző lépésben létrehozott *SourceAvailabilityDataset* adatkészletként van kiválasztva.
 
     ![12](media/solution-template-Databricks-notebook/Databricks-tutorial-image12.png)
 
-1.  Hozzon létre egy másolási tevékenységet a**fájl és a blob**között az adatkészlet forrásról fogadóba való másolásához. Ebben az esetben az érték bináris fájl. A másolási tevékenységben a forrás és a fogadó konfigurációjának alábbi képernyőképei szerepelnek.
+1.  A másolási tevékenység **fájl – blob** , amely az adatkészlet forrásról fogadóba való másolását hozza létre. A másolási tevékenységben a forrás és a fogadó konfigurációjának alábbi képernyőképei szerepelnek.
 
     ![13](media/solution-template-Databricks-notebook/Databricks-tutorial-image13.png)
 
     ![14](media/solution-template-Databricks-notebook/Databricks-tutorial-image14.png)
 
-1.  **Folyamat paramétereinek** megadása
+1.  Létrejön egy jegyzetfüzet-tevékenység **átalakítása** , és az előző lépésben létrehozott társított szolgáltatás van kiválasztva.
+    ![16](media/solution-template-Databricks-notebook/Databricks-tutorial-image16.png)
+
+     1. Válassza a **Beállítások** fület. A *Jegyzetfüzet elérési útja*esetén a sablon alapértelmezés szerint definiál egy útvonalat. Előfordulhat, hogy a 2. **Előfeltételben** feltöltött megfelelő notebook-elérési utat kell megkeresnie és kiválasztania. 
+
+         ![17](media/solution-template-Databricks-notebook/databricks-tutorial-image17.png)
+    
+     1. Tekintse meg a képernyőképen látható *Alap paramétereket* . Ezeket át kell adni a Databricks notebookjának Data Factory. 
+
+         ![Alapparaméterek](media/solution-template-Databricks-notebook/base-parameters.png)
+
+1.  A **folyamat paramétereinek** meghatározása az alábbi módon történik.
 
     ![15](media/solution-template-Databricks-notebook/Databricks-tutorial-image15.png)
 
-1.  Databricks- **tevékenység** létrehozása
+1. Az adatkészletek beállítása.
+    1.  A rendszer létrehozta a **SourceAvailabilityDataset** , hogy ellenőrizze, hogy rendelkezésre állnak-e a forrásadatok.
 
-    Válassza ki az előző lépésben létrehozott társított szolgáltatást.
+        ![9](media/solution-template-Databricks-notebook/Databricks-tutorial-image09.png)
 
-    ![16](media/solution-template-Databricks-notebook/Databricks-tutorial-image16.png)
+    1.  **SourceFilesDataset** – a forrásadatok másolásához.
 
-    Konfigurálja a **beállításokat**. Hozzon létre **alapszintű paramétereket** a képernyőképen látható módon, és hozzon létre paramétereket a Databricks-jegyzetfüzetnek a Data Factoryból való átadásához. Tallózással keresse meg és **válassza ki** a **2. előfeltételben**feltöltött **megfelelő notebook elérési utat** .
+        ![10](media/solution-template-Databricks-notebook/Databricks-tutorial-image10.png)
 
-    ![17](media/solution-template-Databricks-notebook/Databricks-tutorial-image17.png)
+    1.  **DestinationFilesDataset** – a fogadó/célhely helyre történő másoláshoz.
 
-1.  **Futtassa a**folyamatot. A Databricks-naplókra mutató hivatkozással részletesebb Spark-naplók találhatók.
+        1.  Társított szolgáltatás – *sinkBlob_LS* az előző lépésben létrehozva.
+
+        2.  Fájl elérési útja – *sinkdata/staged_sink*.
+
+            ![11](media/solution-template-Databricks-notebook/Databricks-tutorial-image11.png)
+
+
+1.  Válassza a **hibakeresés** lehetőséget a folyamat futtatásához. A Databricks-naplókra mutató hivatkozással részletesebb Spark-naplók találhatók.
 
     ![18](media/solution-template-Databricks-notebook/Databricks-tutorial-image18.png)
 
     Az adatfájlt a Storage Explorer használatával is ellenőrizheti. (Az Data Factory-folyamat futtatásával való korrelációhoz ez a példa hozzáfűzi a folyamat futtatási AZONOSÍTÓját az adatok gyárból a kimeneti mappába. Így nyomon követheti az egyes futtatásokon keresztül generált fájlokat.)
 
-![19](media/solution-template-Databricks-notebook/Databricks-tutorial-image19.png)
+    ![19](media/solution-template-Databricks-notebook/Databricks-tutorial-image19.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

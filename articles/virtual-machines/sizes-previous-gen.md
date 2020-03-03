@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 700847c041a5b9111414d6b43ff734d83b1ca49f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e0abae8ada603e4e6b98ab0dfe9d794186e00000
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913463"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226774"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>A virtuális gépek méreteinek korábbi generációi
 
@@ -101,7 +101,7 @@ Premium Storage gyorsítótárazás: nem támogatott
 
 Az alapszintű rétegméretek elsődlegesen a fejlesztési számítási feladatokhoz és olyan egyéb alkalmazásokhoz valók, amelyekhez nincs szükség terheléselosztásra, automatikus skálázásra vagy memóriaigényes virtuális gépekre.
 
-| Méret – Méret\név | vCPU | Memory (Memória)|Hálózati adapterek (max)| Ideiglenes lemez max. mérete | Legfeljebb adatlemezek (1023 GB)| Legfeljebb IOPS (300 lemezenként) |
+| Méret – Méret\név | vCPU | Memória|Hálózati adapterek (max)| Ideiglenes lemez max. mérete | Legfeljebb adatlemezek (1023 GB)| Legfeljebb IOPS (300 lemezenként) |
 |---|---|---|---|---|---|---|
 | A0\Basic_A0 | 1 | 768 MB  | 2 | 20 GB  | 1  | 1x300  |
 | A1\Basic_A1 | 1 | 1,75 GB | 2 | 40 GB  | 2  | 2x300  |
@@ -166,6 +166,9 @@ Az A8–A11- és a H-sorozat méretei más néven *nagy számítási igényű p�
 | Standard_A11 | 16 | 112 | 382 | 64 | 64x500 | 4 |
 
 <sup>1</sup> Az MPI-alkalmazások esetében a dedikált RDMA háttérrendszer-hálózatot a FDR InfiniBand hálózata teszi lehetővé, amely rendkívül alacsony késést és nagy sávszélességet biztosít.  
+
+> [!NOTE]
+> Az A8 – A11-es virtuális gépek a 3/2021-es kivonulásra vannak tervezve. További információ: [HPC áttelepítési útmutató](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 <br>
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4070b004ee791a433b5aeb9e3e0cdd9662fb0429
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6a51e57bd2411c19dfd5e7740f9e918d0bd09e27
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191146"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226478"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtás a Azure Automationban
 
@@ -39,7 +39,7 @@ A hibrid Runbook-feldolgozók használatával közvetlenül a runbookok futtatha
 
 Az alábbi táblázat néhány runbook végrehajtási feladatot sorol fel, amelyek az ajánlott végrehajtási környezettel rendelkeznek.
 
-|Tevékenység|Legjobb választás|Megjegyzések|
+|Feladat|Legjobb választás|Megjegyzések|
 |---|---|---|
 |Integráció az Azure-erőforrásokkal|Azure-beli homokozó|Az Azure-ban üzemeltetett hitelesítés egyszerűbb. Ha hibrid Runbook-feldolgozót használ egy Azure-beli virtuális gépen, [felügyelt identitásokat használhat az Azure-erőforrásokhoz](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources).|
 |Optimális teljesítmény az Azure-erőforrások kezeléséhez|Azure-beli homokozó|A parancsfájl ugyanabban a környezetben fut, amelynek kevesebb a késése.|
@@ -152,11 +152,11 @@ Start-AzAutomationRunbook `
 
 Ez a szakasz néhány módszert ismertet a runbookok kivételek vagy időszakos problémák kezelésére.
 
-#### <a name="erroractionpreference"></a>$ErrorActionPreference
+#### <a name="erroractionpreference"></a>ErrorActionPreference
 
-A [$ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) változó határozza meg, hogy a PowerShell hogyan válaszol a megszakítást nem okozó hibára. A hibák leállítása mindig megszűnik, és a *$ErrorActionPreference*nem érinti.
+A [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) változó határozza meg, hogy a PowerShell hogyan válaszol a megszakítást nem okozó hibára. A hibák megszakítása mindig leáll, és a *ErrorActionPreference*nem érinti.
 
-Ha a runbook *$ErrorActionPreference*használ, a normál megszakítást nem okozó hiba, például a **Get-ChildItem** parancsmag **PathNotFound** leállítja a runbook befejezését. Az alábbi példa a *$ErrorActionPreference*használatát mutatja be. A végső **írási-kimeneti** parancs soha nem hajtható végre, mert a szkript leáll.
+Ha a runbook a *ErrorActionPreference*-t használja, a szokásos módon megszakítást nem okozó hiba, például a **Get-ChildItem** parancsmag **PathNotFound** leállítja a runbook befejezését. A következő példa a *ErrorActionPreference*használatát mutatja be. A végső **írási-kimeneti** parancs soha nem hajtható végre, mert a szkript leáll.
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
@@ -222,7 +222,7 @@ Előfordulhat, hogy az Azure-beli homokozóban futó runbook indított PowerShel
 
 A következő táblázat a feladatokhoz lehetséges állapotokat ismerteti.
 
-| Állapot | Leírás |
+| status | Leírás |
 |:--- |:--- |
 | Befejezve |A feladat sikeresen befejeződött. |
 | Sikertelen |A grafikus vagy a PowerShell-munkafolyamat runbook nem sikerült lefordítani. Egy PowerShell-parancsfájl runbook elindítása sikertelen volt, vagy a feladatokhoz kivétel történt. Lásd: [Azure Automation runbook-típusok](automation-runbook-types.md).|
@@ -346,7 +346,7 @@ Egy másik lehetőség, hogy optimalizálja a runbook a gyermek runbookok haszn�
 
 A gyermek runbookok használata csökkenti a szülő runbook befejezésének teljes időtartamát. A runbook használhatja a **Get-AzAutomationJob** parancsmagot, hogy ellenőrizze a gyermek runbook tartozó feladatok állapotát, ha még a gyermek befejeződése után is végrehajtja a műveleteket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a Azure Automation runbook indításához használható módszerekről, tekintse meg a [runbook Azure Automation-ben](automation-starting-a-runbook.md)való elindításával foglalkozó témakört.
 * A PowerShell-lel kapcsolatos további információkért, beleértve a nyelvi referenciákat és a tanulási modulokat, tekintse át a [PowerShell-dokumentumokat](https://docs.microsoft.com/powershell/scripting/overview).

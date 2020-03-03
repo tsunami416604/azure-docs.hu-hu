@@ -7,14 +7,14 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: ARO, openshift, aquasec, twistlock, Red Hat
-ms.openlocfilehash: 4241296a991283f14fbb294fdc059ecde58d6d75
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 5d28a19126c9b7ae4ef7afe2a6b69bd4a13e0c83
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069661"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228241"
 ---
-# <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Emelt szintű tárolók futtatása Azure Red Hat OpenShift-fürtben
+# <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Kiemelt tárolók futtatása Azure Red Hat OpenShift-fürtön
 
 Nem futtathat tetszőleges jogosultságú tárolót az Azure Red Hat OpenShift-fürtökön.
 Az ARO-fürtökön két biztonsági figyelési és megfelelőségi megoldás futhat.
@@ -115,18 +115,23 @@ oc get route aqua-web -n aqua-security
 | -------------- | ------------- |
 | Orchestrator   | OpenShift     |
 | ServiceAccount | Aqua – fiók  |
-| Project        | Aqua – biztonság |
+| Projekt        | Aqua – biztonság |
 
 ## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Termékspecifikus lépések a Prisma-felhőhöz/Twistlock
 
 A módosítandó alapszintű utasítások a [Prisma Cloud Deployment dokumentációjában](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html) találhatók.
 
-Első lépésként hozzon létre egy új OpenShift-projektet
+Először telepítse a `twistcli` eszközt a "Prisma-felhő telepítése" és a "Prisma Cloud Software letöltése" című részben leírtak szerint.
+
+Új OpenShift-projekt létrehozása
 ```
 oc new-project twistlock
 ```
 
-A dokumentációt a "konzol telepítése" szakaszig követheti, és nem kell belsőt létrehoznia a Prisma Cloud Container Registry használatával.
+Hagyja ki a "Prisma Cloud images to an Private Registry" (nem kötelező) szakaszát. Az Azure Red Hat Openshift nem fog működni. Használja helyette az online beállításjegyzéket.
+
+Az alábbiakban ismertetett javítások alkalmazásával követheti a hivatalos dokumentációt.
+Kezdje a "konzol telepítése" szakasszal.
 
 ### <a name="install-console"></a>Konzol telepítése
 

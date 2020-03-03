@@ -6,19 +6,19 @@ ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
-ms.date: 01/21/2020
-ms.openlocfilehash: 1203e1ebe42d95ec57a3ea884591ba262dc95c1a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 02/27/2020
+ms.openlocfilehash: 708fc030d953dd1f32986c600305e513a156b12f
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587889"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227425"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Gyors útmutató: Azure Cosmos DB és tároló létrehozása Azure Resource Manager sablon használatával
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. A Azure Cosmos DB a kulcs/érték adatbázisok, dokumentum-adatbázisok és Graph-adatbázisok gyors létrehozásához és lekérdezéséhez használható. Ez a rövid útmutató egy Resource Manager-sablon üzembe helyezésének folyamatát, amely egy Azure Cosmos-adatbázis létrehozásához és az adatbázison belüli tárolóhoz szükséges. A tárolóban később tárolhatók az adattárolók.
 
-A [Resource Manager-sablon](../azure-resource-manager/templates/overview.md) egy JavaScript Object Notation (JSON) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját. A sablon deklaratív szintaxist használ, amely lehetővé teszi, hogy a telepítéshez szükséges programozási parancsok sorrendjének megírása nélkül adja meg az üzembe helyezni kívánt adatokat. Ha többet szeretne megtudni a Resource Manager-sablonok fejlesztéséről, tekintse meg a [Resource Manager dokumentációját](/azure/azure-resource-manager/) és a [sablon referenciáját](/azure/templates/microsoft.DocumentDB/allversions).
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -26,11 +26,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Azure-előfizetés vagy ingyenes Azure Cosmos DB próbaverziós fiók
 
-- [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+- [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
+- [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="create-an-azure-cosmos-account-database-container"></a>Azure Cosmos-fiók, adatbázis, tároló létrehozása
+
+### <a name="review-the-template"></a>A sablon áttekintése
 
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/)származik.
 
@@ -46,6 +48,8 @@ Három Azure-erőforrás van definiálva a sablonban:
 
 További Azure Cosmos DB-sablonok a gyorsindítási [sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb)katalógusában találhatók.
 
+### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+
 1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy Azure Cosmos-fiókot, egy adatbázist és egy tárolót.
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json"><img src="./media/quick-create-template/deploy-to-azure.png" alt="deploy to azure"/></a>
@@ -59,13 +63,13 @@ További Azure Cosmos DB-sablonok a gyorsindítási [sablonok](https://azure.mic
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
     * **Erőforráscsoport**: válassza az **új létrehozása**lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK**gombra.
     * **Hely**: válasszon ki egy helyet.  Például az **USA középső**régiója.
-    * **Fiók neve**: adja meg az Azure Cosmos-fiók nevét. Globálisan egyedinek kell lennie. 
-    * **Hely**: adjon meg egy helyet, ahol létre szeretné hozni az Azure Cosmos-fiókot. Az Azure Cosmos-fiók ugyanazon a helyen lehet, mint az erőforráscsoport. 
+    * **Fiók neve**: adja meg az Azure Cosmos-fiók nevét. Globálisan egyedinek kell lennie.
+    * **Hely**: adjon meg egy helyet, ahol létre szeretné hozni az Azure Cosmos-fiókot. Az Azure Cosmos-fiók ugyanazon a helyen lehet, mint az erőforráscsoport.
     * **Elsődleges régió**: az Azure Cosmos-fiók elsődleges replika régiója.
     * **Másodlagos régió**: az Azure Cosmos-fiók másodlagos replika régiója.
     * **Adatbázis neve**: az Azure Cosmos-adatbázis neve.
     * **Tároló neve**: az Azure Cosmos-tároló neve.
-    * **Átviteli sebesség**: a tároló átviteli sebessége, a minimális átviteli sebesség 400 ru/s. 
+    * **Átviteli sebesség**: a tároló átviteli sebessége, a minimális átviteli sebesség 400 ru/s.
     * **Elfogadom a fenti feltételeket és kikötéseket**: Válassza ki.
 
 3. Válassza a **Beszerzés** lehetőséget. Miután sikeresen telepítette az Azure Cosmos-fiókot, értesítést kap:
@@ -92,7 +96,7 @@ az cosmosdb show -g $resourcegroupName -n $cosmosAccountName
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your Azure Cosmos account exists"
-(Get-AzResource -ResourceType "Microsoft.DocumentDB/databaseAccounts" -ResourceGroupName $resourceGroupName).Name 
+(Get-AzResource -ResourceType "Microsoft.DocumentDB/databaseAccounts" -ResourceGroupName $resourceGroupName).Name
  Write-Host "Press [ENTER] to continue..."
 ```
 

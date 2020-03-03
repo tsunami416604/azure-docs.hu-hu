@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: danis
-ms.openlocfilehash: e3a09a0d8412af711bfb6c539dc9d2829b1f0898
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 0309d9a794a978c736ffc4689c46565ee8fb5b00
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964583"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226688"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init támogatás az Azure-beli virtuális gépekhez
 Ez a cikk ismerteti a [Cloud-init](https://cloudinit.readthedocs.io) számára elérhető támogatást a virtuális gép (VM) vagy virtuálisgép-méretezési csoportok konfigurálásához az Azure üzembe helyezési idején. Ezek a Cloud-init konfigurációk az első rendszerindítás során futnak az Azure-erőforrások kiépítése után.  
@@ -30,11 +30,11 @@ A virtuális gépek üzembe helyezése az a folyamat, amelyben az Azure leállí
 Az Azure két üzembe helyezési ügynököt támogat a [Cloud-init](https://cloudinit.readthedocs.io)és az [Azure Linux Agent (Wala)](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)számára.
 
 ## <a name="cloud-init-overview"></a>Cloud-init – áttekintés
-a [Cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux RENDSZERű virtuális gépek első indításakor való testre szabására. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Mivel a Cloud-init a kezdeti rendszerindítási folyamat során hívásra kerül, nincs szükség további lépésekre vagy ügynökökre a konfiguráció alkalmazásához.  A `#cloud-config`-fájlok és más adatbevitelek megfelelő formázásáról további információt a [Cloud-init dokumentációs webhelyén](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)talál.  `#cloud-config` a fájlok Base64 kódolású szövegfájlok.
+a [Cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux RENDSZERű virtuális gépek első indításakor való testre szabására. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. A cloud-init nevezzük az első rendszerindítás során, mert nincsenek további lépéseket vagy szükséges ügynökök a alkalmazni a konfigurációt.  A `#cloud-config`-fájlok és más adatbevitelek megfelelő formázásáról további információt a [Cloud-init dokumentációs webhelyén](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)talál.  `#cloud-config` a fájlok Base64 kódolású szövegfájlok.
 
 a Cloud-init a disztribúciók között is működik. Például nem kell az **apt-get install** vagy a **yum install** használatával telepítenie a csomagokat. Ehelyett megadhatja a telepítendő csomagok listáját. a Cloud-init automatikusan a natív csomagkezelő eszközt használja a kiválasztott disztribúcióhoz.
 
-Aktívan dolgozunk a támogatott linuxos disztribúciós partnereinkkel, hogy elérhetők legyenek a Cloud-init-lemezképek az Azure piactéren. Ezek a lemezképek a felhő-init üzembe helyezések és konfigurációk zökkenőmentesen működnek a virtuális gépekkel és a virtuálisgép-méretezési csoportokkal. Kezdetben a támogatott Linux-disztribúciós partnerekkel együttműködve biztosítjuk, hogy a Cloud-init functions az Azure-beli operációs rendszerrel, majd a csomagok frissülnek, és nyilvánosan elérhetővé válnak a disztribúciós csomag adattárakban. 
+Aktívan dolgozunk a támogatott Linux disztribúció partnereink ahhoz, hogy engedélyezve van a cloud-init lemezkép érhető el az Azure Marketplace-en. Ezek a lemezképek a felhő-init üzembe helyezések és konfigurációk zökkenőmentesen működnek a virtuális gépekkel és a virtuálisgép-méretezési csoportokkal. Kezdetben a támogatott Linux-disztribúciós partnerekkel és felsőbb réteggel együttműködve biztosítjuk, hogy a Cloud-init functions az Azure-beli operációs rendszerrel, a csomagok frissítése és nyilvánosan elérhetővé tétele a disztribúciós csomag adattárakban történik. 
 
 A Cloud-init két fázisban érhető el az Azure-beli támogatott Linux-disztribúciós operációs rendszerhez, a csomagok támogatásához, majd a rendszerkép támogatásához:
 * a Cloud-init csomag támogatása az Azure-ban olyan dokumentumokon, amelyeket a Cloud-init csomagok már támogatnak vagy előzetes verzióként, így ezeket a csomagokat az operációs rendszer egyéni rendszerképében is használhatja.
@@ -42,25 +42,25 @@ A Cloud-init két fázisban érhető el az Azure-beli támogatott Linux-disztrib
 
 
 ### <a name="canonical"></a>Canonical
-| Közzétevő/verzió| Ajánlat | SKU (Cikkszám) | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
+| Közzétevő/verzió| Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Canonical 18,04 |UbuntuServer |18.04-LTS |legutóbbi |igen | igen |
-|Canonical 16,04|UbuntuServer |16.04-LTS |legutóbbi |igen | igen |
-|Canonical 14,04|UbuntuServer |14.04.5-LTS |legutóbbi |igen | igen |
+|Canonical 18,04 |UbuntuServer |18.04-LTS |Legújabb |igen | igen |
+|Canonical 16,04|UbuntuServer |16.04-LTS |Legújabb |igen | igen |
+|Canonical 14,04|UbuntuServer |14.04.5-LTS |Legújabb |igen | igen |
 
 ### <a name="rhel"></a>RHEL
-| Közzétevő/verzió | Ajánlat | SKU (Cikkszám) | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
+| Közzétevő/verzió | Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |igen | igen – a csomag verziószámának támogatása: *18.2-1. el7_6.2*|
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Igen (vegye figyelembe, hogy ez egy előnézeti kép, és ha az összes RHEL 7,7-lemezkép támogatja a Cloud-init-et, akkor a rendszer a 2020-es Mid-t fogja törölni, és értesítést kap | igen – a csomag verziójának támogatása: *18,5 -3. el7*|
-|RedHat 7,7 |RHEL |7 – NYERS | –| nem a rendszerkép frissítései a február 2020| igen – a csomag verziójának támogatása: *18,5 -3. el7*|
-|RedHat 7,7 |RHEL |7 – LVM | –| nem a rendszerkép frissítései a február 2020| igen – a csomag verziójának támogatása: *18,5 -3. el7*|
-|RedHat 7,7 |RHEL |7,7 | –| nem a rendszerkép frissítései a február 2020 | igen – a csomag verziójának támogatása: *18,5 -3. el7*|
-|RedHat 7,7 |RHEL – BYOS | RHEL – lvm77 | –|nem a rendszerkép frissítései a február 2020  | igen – a csomag verziójának támogatása: *18,5 -3. el7*|
+|RedHat 7,7 |RHEL |7 – NYERS | n/a| nem a rendszerkép frissítései a február 2020| igen – a csomag verziójának támogatása: *18,5 -3. el7*|
+|RedHat 7,7 |RHEL |7-LVM | n/a| nem a rendszerkép frissítései a február 2020| igen – a csomag verziójának támogatása: *18,5 -3. el7*|
+|RedHat 7,7 |RHEL |7,7 | n/a| nem a rendszerkép frissítései a február 2020 | igen – a csomag verziójának támogatása: *18,5 -3. el7*|
+|RedHat 7,7 |RHEL – BYOS | RHEL – lvm77 | n/a|nem a rendszerkép frissítései a február 2020  | igen – a csomag verziójának támogatása: *18,5 -3. el7*|
 
 ### <a name="centos"></a>CentOS
 
-| Közzétevő/verzió | Ajánlat | SKU (Cikkszám) | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
+| Közzétevő/verzió | Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Igen (vegye figyelembe, hogy ez egy előnézeti kép, és ha az összes CentOS 7,7-lemezkép támogatja a Cloud-init-t, a rendszer a 2020-es Mid-t fogja törölni, és értesítést kap) | igen – a csomag verziójának támogatása: *18,5 -3. el7. CentOS*|
 
@@ -68,9 +68,9 @@ A Cloud-init két fázisban érhető el az Azure-beli támogatott Linux-disztrib
 
 ### <a name="oracle"></a>Oracle
 
-| Közzétevő/verzió | Ajánlat | SKU (Cikkszám) | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
+| Közzétevő/verzió | Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Oracle 7,7 |Oracle – Linux |77 – CI |7.7.01| előzetes rendszerkép (Megjegyzés: ez egy előzetes rendszerkép, és az összes Oracle 7,7-lemezkép támogatja a Cloud-2020 init-t | nem, az előzetes verzióban a csomag a következőket eredményezi: *18,5-3.0.1. el7*
+|Oracle 7,7 |Oracle-Linux |77 – CI |7.7.01| előzetes rendszerkép (Megjegyzés: ez egy előzetes rendszerkép, és az összes Oracle 7,7-lemezkép támogatja a Cloud-2020 init-t | nem, az előzetes verzióban a csomag a következőket eredményezi: *18,5-3.0.1. el7*
 
 ### <a name="debian--suse-sles"></a>Debian & SuSE SLES
 Jelenleg a támogatás előzetes verziójával dolgozunk, a frissítések várhatóan február és március 2020.
