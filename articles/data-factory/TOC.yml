@@ -625,7 +625,7 @@
           href: solution-template-migration-s3-azure.md
         - name: Fájlok áthelyezése
           href: solution-template-move-files.md
-        - name: Adatátalakítás a Databricksszel
+        - name: Átalakítás az Azure Databricks szolgáltatással
           href: solution-template-databricks-notebook.md
     - name: Hibaelhárítási útmutatók
       items:

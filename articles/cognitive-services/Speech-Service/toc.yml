@@ -193,6 +193,10 @@
           items:
             - name: Szövegfelolvasás REST API
               href: rest-text-to-speech.md
+        - name: Telefonkészlet használata
+          items:
+            - name: Speech API (SAPI) telefonkészlet-használata
+              href: sapi-phoneset-usage.md
     - name: További források
       items:
         - name: Szövegfelolvasás – GYIK
