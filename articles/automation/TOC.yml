@@ -84,7 +84,7 @@
             - name: Runbook indítása webhookból
               href: automation-webhooks.md
             - name: Runbook bemeneti paramétereinek konfigurálása
-              href: automation-runbook-input-parameters.md
+              href: runbook-input-parameters.md
             - name: Gyermek runbookok
               href: automation-child-runbooks.md
             - name: JSON-objektum továbbítása Azure Automation-runbookba

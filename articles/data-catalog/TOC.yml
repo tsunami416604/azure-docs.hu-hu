@@ -4,7 +4,7 @@
   items:
     - name: Mi a Data Catalog?
       href: overview.md
-- name: Első lépések
+- name: Rövid útmutatók
   items:
     - name: Azure Data Catalog létrehozása
       href: data-catalog-get-started.md

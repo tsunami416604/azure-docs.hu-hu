@@ -45,6 +45,12 @@
               href: nat-overview.md
             - name: Erőforrás
               href: nat-gateway-resource.md
+            - name: Metrikák és riasztások
+              href: nat-metrics.md
+            - name: Hibaelhárítás
+              href: troubleshoot-nat.md
+        - name: Útválasztás
+          href: virtual-networks-udr-overview.md
         - name: Háttérkapcsolat együttműködési lehetőségei
           items:
             - name: Előtag- és tesztbeállítások
@@ -75,20 +81,20 @@
           href: ipv6-public-ip-address-prefix.md
     - name: Biztonság
       items:
-        - name: DDoS Protection
-          href: ddos-protection-overview.md
-        - name: Kubernetes hálózati házirendek
-          href: kubernetes-network-policies.md
-        - name: Útválasztás
-          href: virtual-networks-udr-overview.md
-        - name: Biztonsági csoportok
+        - name: Network security groups (Hálózati biztonsági csoportok)
           href: security-overview.md
+        - name: Alkalmazásbiztonsági csoportok
+          href: application-security-groups.md
         - name: Szolgáltatáscímkék
           href: service-tags-overview.md
         - name: Szolgáltatásvégpontok
           href: virtual-network-service-endpoints-overview.md
         - name: Szolgáltatásvégpont-szabályzatok
           href: virtual-network-service-endpoint-policies-overview.md
+        - name: Kubernetes hálózati házirendek
+          href: kubernetes-network-policies.md
+        - name: DDoS Protection
+          href: ddos-protection-overview.md
         - name: Virtuális hálózat TAP-jai
           href: virtual-network-tap-overview.md
     - name: Alhálózatok
@@ -131,6 +137,18 @@
               href: tutorial-create-validate-nat-gateway-powershell.md
             - name: NAT-átjáró létrehozása és ellenőrzése – CLI
               href: tutorial-create-validate-nat-gateway-cli.md
+        - name: Hálózati forgalom továbbítása
+          items:
+            - name: Azure Portal
+              href: tutorial-create-route-table-portal.md
+            - name: Azure PowerShell
+              href: tutorial-create-route-table-powershell.md
+            - name: Azure CLI
+              href: tutorial-create-route-table-cli.md
+            - name: Ansible
+              href: /azure/ansible/ansible-create-configure-route-table
+            - name: Útválasztási táblázatok kezelése
+              href: manage-route-table.md
         - name: Hálózati adapterek kezelése
           href: virtual-network-network-interface.md
         - name: Virtuális hálózat kezelése
@@ -257,18 +275,6 @@
                   href: virtual-network-service-endpoint-policies-powershell.md
                 - name: Azure CLI
                   href: virtual-network-service-endpoint-policies-cli.md
-        - name: Hálózati forgalom továbbítása
-          items:
-            - name: Azure Portal
-              href: tutorial-create-route-table-portal.md
-            - name: Azure PowerShell
-              href: tutorial-create-route-table-powershell.md
-            - name: Azure CLI
-              href: tutorial-create-route-table-cli.md
-            - name: Ansible
-              href: /azure/ansible/ansible-create-configure-route-table
-            - name: Útválasztási táblázatok kezelése
-              href: manage-route-table.md
         - name: A DDoS Protection kezelése
           href: manage-ddos-protection.md
         - name: Partnerek előkészítése a DDoS Protection Standard használatára
