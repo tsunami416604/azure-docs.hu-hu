@@ -3,14 +3,14 @@ title: Windows fejlesztési környezet beállítása
 description: Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A beállítás befejezése után készen áll az alkalmazások létrehozására Windows rendszeren.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 02/05/2020
+ms.date: 03/02/2020
 ms.custom: sfrev
-ms.openlocfilehash: 6768f45e61880370295ce7725e553828e66f3d39
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f08c6b0675475b4e15ce6db3a9dbe0e2863b9ddb
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062115"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252770"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 
@@ -68,8 +68,8 @@ Ha csak az SDK-ra van szükség, telepítse a következő csomagot:
 
 Az aktuális verziók a következők:
 
-* Service Fabric SDK és eszközök 4.0.466
-* Service Fabric futtatókörnyezet 7.0.466
+* Service Fabric SDK és eszközök 4.0.470
+* Service Fabric futtatókörnyezet 7.0.470
 
 A támogatott verziók listáját lásd: [Service Fabric verziók](service-fabric-versions.md)
 

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat egy előre elkészített PHP-tá
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: e805487075499bd4e461a21fffb4c44156ce192b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ad121d605e521704597471b446fa79cb43dfccc7
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913871"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255836"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Linux PHP-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -204,15 +204,7 @@ Ha egy működő PHP-alkalmazás másképp viselkedik App Service vagy hibákat 
     - Bizonyos webes keretrendszerek éles módban történő futtatáskor egyéni indítási parancsfájlokat is használhatnak.
 - Az alkalmazást hibakeresési módban App Service futtathatja. A [Laravel](https://meanjs.org/)-ben például beállíthatja, hogy az alkalmazás a hibakeresési üzeneteket az éles környezetben állítsa be úgy, hogy [az `APP_DEBUG` alkalmazás beállítását `true`](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
 
-### <a name="robots933456"></a>robots933456
-
-Előfordulhat, hogy a következő üzenet jelenik meg a tároló naplóiban:
-
-```
-2019-04-08T14:07:56.641002476Z "-" - - [08/Apr/2019:14:07:56 +0000] "GET /robots933456.txt HTTP/1.1" 404 415 "-" "-"
-```
-
-Nyugodtan figyelmen kívül hagyhatja ezt az üzenetet. a `/robots933456.txt` egy olyan dummy URL-cím elérési útja, amelyet a App Service használ annak vizsgálatára, hogy a tároló képes-e kérések kiszolgálására. Egy 404-es válasz egyszerűen azt jelzi, hogy az elérési út nem létezik, de lehetővé teszi, hogy App Service tudja, hogy a tároló kifogástalan állapotú, és készen áll a kérelmekre való válaszadás
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

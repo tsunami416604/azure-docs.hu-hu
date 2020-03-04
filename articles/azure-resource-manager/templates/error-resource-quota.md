@@ -3,12 +3,12 @@ title: Kvóta hibái
 description: Ismerteti, Hogyan oldhatók fel az erőforrás-kvótával kapcsolatos hibák az erőforrások Azure Resource Manager használatával történő telepítésekor.
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: d36f7d12f432839760b68c85e1c5761e0caf8d85
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 9b5cce3258a29b6ac6a3db50f880e3242c4d5e8c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659355"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250156"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Erőforrás-kvóták hibáinak elhárítása
 
@@ -40,9 +40,9 @@ please delete some resources of this type before creating a new one.
 A kvóták erőforráscsoportonként, előfizetésenként, fiókonként és egyéb hatókörönként érvényesek. Lehetséges például, hogy az előfizetése úgy van konfigurálva, hogy korlátozza a régiónként elérhető magok számát. Ha olyan virtuális gépet próbál üzembe helyezni, amely a megengedettnél több magot tartalmaz, akkor hibaüzenetet kap a kvóta túllépéséről.
 A kvóta részletes ismertetését az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md)című témakörben tekintheti meg.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 Az Azure CLI esetén használja a `az vm list-usage` parancsot a virtuálisgép-kvóták kereséséhez.
 
@@ -52,7 +52,7 @@ az vm list-usage --location "South Central US"
 
 Amely a következőket adja vissza:
 
-```azurecli
+```output
 [
   {
     "currentValue": 0,

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 6b6d63d956f46587d89edf1b080f1bb9bd3ca67e
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 003924c42a1a7e428a3a11f21a4cfe782c12e859
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649090"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255794"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning adatkészletek létrehozása
 
@@ -57,7 +57,7 @@ További információ a közelgő API-változásokról: [ADATKÉSZLET API-válto
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 
-Adatkészlet létrehozásával az adatforrás helyére mutató hivatkozást, valamint a hozzá tartozó metaadatok másolatát is létrehozhatja. Mivel az adattárolók a meglévő helyükön maradnak, nincs szükség további tárolási költségekre. A Python SDK vagy munkaterület kezdőlapja (előzetes verzió) segítségével is létrehozhat `TabularDataset` és `FileDataset` adatkészleteket.
+Adatkészlet létrehozásával az adatforrás helyére mutató hivatkozást, valamint a hozzá tartozó metaadatok másolatát is létrehozhatja. Mivel az adattárolók a meglévő helyükön maradnak, nincs szükség további tárolási költségekre. A Python SDK-val vagy a https://ml.azure.comhasználatával is létrehozhat `TabularDataset` és `FileDataset` adatkészleteket.
 
 Ahhoz, hogy az adatok elérhetők legyenek Azure Machine Learning számára, az adatkészleteket az [Azure](how-to-access-data.md) -adattárolók vagy nyilvános webes URL-címek elérési útjaiból kell létrehozni.
 
@@ -73,8 +73,6 @@ Adatkészletek létrehozása Azure- [adattárból](how-to-access-data.md) a Pyth
 
 
 #### <a name="create-a-tabulardataset"></a>TabularDataset létrehozása
-
-TabularDatasets az SDK-n keresztül vagy a Azure Machine Learning Studio használatával hozhat létre. 
 
 A `TabularDatasetFactory` osztály [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) metódusával olvassa be a. csv vagy a. TSV formátumú fájlokat, és hozzon létre egy nem regisztrált TabularDataset. Ha több fájlt olvas be, az eredmények egy táblázatos ábrázolásba lesznek összesítve. 
 
@@ -96,10 +94,10 @@ datastore_paths = [(datastore, 'ather/2018/11.csv'),
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
-Alapértelmezés szerint a TabularDataset létrehozásakor a rendszer automatikusan kikövetkezteti az oszlop adattípusait. Ha a késleltetett típusok nem felelnek meg az elvárásainak, az alábbi kód használatával megadhatja az oszlopok típusait. Ha a tároló egy virtuális hálózat vagy tűzfal mögött található, akkor adja meg a paramétereket `validate=False` és `infer_column_types=False` a `from_delimited_files()` metódusban. Ezzel megkerüli a kezdeti ellenőrzési ellenőrzést, és gondoskodik arról, hogy az adatkészletet ezekből a biztonságos fájlokból hozza létre. [További információ a támogatott adattípusokról](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)is.
+Alapértelmezés szerint a TabularDataset létrehozásakor a rendszer automatikusan kikövetkezteti az oszlop adattípusait. Ha a késleltetett típusok nem felelnek meg az elvárásainak, az alábbi kód használatával megadhatja az oszlopok típusait. A `infer_column_type` paraméter csak tagolt fájlokból létrehozott adatkészletek esetében alkalmazható. [További információ a támogatott adattípusokról](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)is.
 
-> [!NOTE] 
->A `infer_column_type` paraméter csak tagolt fájlokból létrehozott adatkészletek esetében alkalmazható. 
+> [!IMPORTANT] 
+> Ha a tárterület virtuális hálózat vagy tűzfal mögött van, akkor csak az SDK-n keresztüli adatkészlet létrehozását támogatja a rendszer. Az adatkészlet létrehozásához ügyeljen arra, hogy a `from_delimited_files()` metódus `validate=False` és `infer_column_types=False` paramétereket tartalmazzon. Ezzel megkerüli a kezdeti ellenőrzési ellenőrzést, és gondoskodik arról, hogy az adatkészletet ezekből a biztonságos fájlokból hozza létre. 
 
 ```Python
 from azureml.data.dataset_factory import DataType
@@ -117,6 +115,32 @@ titanic_ds.take(3).to_pandas_dataframe()
 0|1|False (Hamis)|3|Braund, Mr. Owen Harris|male|22,0|1|0|A/5 21171|7,2500||S
 1|2|True (Igaz)|1|Cumings, Mrs. John Bradley (Florence Briggs th...|female|38,0|1|0|PC 17599|71,2833|C85|C
 2|3|True (Igaz)|3|Heikkinen, Miss. Laina 's|female|26,0|0|0|STON/O2. 3101282|7,9250||S
+
+
+Ha adatkészletet szeretne létrehozni egy memóriából származó pandák dataframe, írja az adatokat egy helyi fájlba, például egy CSV-fájlba, és hozza létre az adatkészletet a fájlból. A következő kód mutatja be ezt a munkafolyamatot.
+
+```python
+local_path = 'data/prepared.csv'
+dataframe.to_csv(local_path)
+upload the local file to a datastore on the cloud
+# azureml-core of version 1.0.72 or higher is required
+# azureml-dataprep[pandas] of version 1.1.34 or higher is required
+from azureml.core import Workspace, Dataset
+
+subscription_id = 'xxxxxxxxxxxxxxxxxxxxx'
+resource_group = 'xxxxxx'
+workspace_name = 'xxxxxxxxxxxxxxxx'
+
+workspace = Workspace(subscription_id, resource_group, workspace_name)
+
+# get the datastore to upload prepared data
+datastore = workspace.get_default_datastore()
+
+# upload the local file from src_dir to the target_path in datastore
+datastore.upload(src_dir='data', target_path='data')
+create a dataset referencing the cloud location
+dataset = Dataset.Tabular.from_delimited_files(datastore.path('data/prepared.csv'))
+```
 
 A `TabularDatasetFactory` osztály [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) metódusának használatával olvassa el a Azure SQL Database:
 

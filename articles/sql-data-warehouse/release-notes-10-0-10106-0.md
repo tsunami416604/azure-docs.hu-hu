@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 80382359bb1125b7e2eba3eed86409494c1e0726
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4811f24fb942689bddcc9d9d1bcb8c33d147c1af
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196195"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256018"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Az Azure szinapszis Analytics kibocsátási megjegyzései
 
@@ -157,12 +157,12 @@ Az azonosított verzió segítségével ellenőrizze, hogy az SQL-készleten mel
 |**Jelentős hibák**|CETAS a DW2000 adattárházában található kisméretű erőforrás-osztályokba – ez a javítás helyesen azonosítja a null hivatkozást a külső tábla létrehozása a Parquet-kód elérési útjára.<br/><br/>Az azonosító oszlop értéke elvész bizonyos CTAS műveletekben – előfordulhat, hogy egy azonosító oszlop értéke nem marad meg, ha CTASed egy másik táblára. [Blogban](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/)jelentett jelentés.<br/><br/>Belső hiba bizonyos esetekben, amikor egy munkamenet leáll, miközben egy lekérdezés még fut – ez a javítás elindítja a InvalidOperationException, ha a lekérdezés még fut.<br/><br/>(2018 novemberében üzembe helyezett) Az ügyfelek a ADLS (Gen1) használatával több kisebb fájl betöltésére tett kísérlet során az optimálisnál rosszabb teljesítményt tapasztalnak. – A HRE biztonsági jogkivonat ellenőrzése során a rendszerteljesítmény szűk keresztmetszetű volt. A biztonsági tokenek gyorsítótárazásának engedélyezésével a teljesítménnyel kapcsolatos problémák csökkenthetők. |
 | | |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [SQL-készlet létrehozása](./create-data-warehouse-portal.md)
 
 ## <a name="more-information"></a>További információ
 - [Blog – Azure szinapszis Analytics](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
-- [Az ügyféltanácsadói csapat blogjai](https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/)
+- [Az ügyféltanácsadói csapat blogjai](https://docs.microsoft.com/archive/blogs/sqlcat/)
 - [Ügyfelek sikertörténetei](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [Stack Overflow-fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan kérhet le Azure Container Instances tároló n
 ms.topic: article
 ms.date: 12/30/2019
 ms.custom: mvc
-ms.openlocfilehash: fe30ab875aa6cd7f465ffe69672a771e18134e1c
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 0991b9cb1f99606910dbdf2c87b111f67da6da7b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664733"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249998"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Tároló-naplók és-események beolvasása Azure Container Instances
 
@@ -21,8 +21,11 @@ Ha az alkalmazás kódjában lévő naplókat szeretné megtekinteni egy tárol�
 
 Az alábbiakban a példa feladathoz tartozó tároló kimenete látható, amely a [parancssort egy tároló példányban állítja be](container-instances-start-command.md#azure-cli-example), miután érvénytelen URL-címet adott meg a parancssori felülbírálás használatával:
 
-```console
-$ az container logs --resource-group myResourceGroup --name mycontainer
+```azurecli
+az container logs --resource-group myResourceGroup --name mycontainer
+```
+
+```output
 Traceback (most recent call last):
   File "wordcount.py", line 11, in <module>
     urllib.request.urlretrieve (sys.argv[1], "foo.txt")
@@ -49,8 +52,11 @@ Az az [Container Attach][az-container-attach] parancs diagnosztikai adatokat biz
 
 Például itt látható a feladat-alapú tárolóban a [parancssor beállítása egy tároló-példányban](container-instances-start-command.md#azure-cli-example), miután a nagy szövegfájl érvényes URL-címét adta meg a feldolgozáshoz:
 
-```console
-$ az container attach --resource-group myResourceGroup --name mycontainer
+```azurecli
+az container attach --resource-group myResourceGroup --name mycontainer
+```
+
+```output
 Container 'mycontainer' is in state 'Unknown'...
 Container 'mycontainer' is in state 'Waiting'...
 Container 'mycontainer' is in state 'Running'...

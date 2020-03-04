@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 9e1a7f7cd2643aae61e60d77ad74f4a08266a977
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b646ee9b727d5adf4ec1c8b5c769b3d8f5c0fc1c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863597"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252035"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Technikai specifikációk Azure Data Box Edge
 
@@ -23,17 +23,17 @@ A Microsoft Azure Data Box Edge eszköz hardveres összetevői megfelelnek a jel
 
 A Data Box Edge eszköz a következő specifikációkkal rendelkezik a számításhoz és a memóriához:
 
-| Specifikáció           | Value (Díj)                  |
+| Specifikáció           | Érték                  |
 |-------------------------|----------------------------|
 | CPU    | 2 X 10 mag CPU                     |
-| Memória              | 128 GB RAM                  |
+| Memory (Memória)              | 128 GB RAM                  |
 
 
 ## <a name="fpga-specifications"></a>FPGA-specifikációk
 
 A rendszer minden Data Box Edge eszközön tartalmaz egy programozható Gate tömböt (FPGA), amely lehetővé teszi Machine Learning (ML) forgatókönyvek használatát. 
 
-| Specifikáció           | Value (Díj)                  |
+| Specifikáció           | Érték                  |
 |-------------------------|----------------------------|
 | FPGA   | Intel Arria 10 <br> A rendelkezésre álló Deep neurális hálózati (DNN) modellek ugyanazok, mint a [Cloud FPGA-példányok által támogatottak](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
 
@@ -53,11 +53,19 @@ A Data Box Edge eszközön két 100-240 V tápegység (PSUs) áll a nagy teljes�
 
 The following table lists the typical power consumption data (actual values may vary from the published) for the Data Box Edge device.-->
 
+## <a name="network-interface-specifications"></a>Hálózati adapterek specifikációi
+
+Data Box Edge eszközön 6 hálózati adapter van, a PORT1-PORT6.
+
+| Specifikáció           | Leírás                 |
+|-------------------------|----------------------------|
+|  Hálózati illesztők    | 2 db 1 GbE sávszélességű illesztő – 1 a kezeléshez, a felhasználó által nem konfigurálható, a kezdeti beállításhoz való. A másik felület a felhasználó által konfigurálható, adatátvitelre használható, és alapértelmezés szerint a DHCP. <br>2 db 25 GbE sávszélességű illesztő – 10 GbE sávszélességű illesztőként is üzemelnek. Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet. <br> 2 db 25 GbE sávszélességű illesztő – Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet.                  |
+
 ## <a name="storage-specifications"></a>Tárolási specifikációk
 
 A Data Box Edge eszközökön 9 X 2,5 "NVMe SSD-k tartoznak, amelyek mindegyike 1,6 TB kapacitással rendelkezik. Ezek az SSD-k, 1 egy operációsrendszer-lemez, a másik 8 pedig adatlemez. Az eszköz teljes felhasználható kapacitása körülbelül 12,5 TB. Az alábbi táblázat az eszköz tárolókapacitásának részleteit tartalmazza.
 
-|     Specifikáció                          |     Value (Díj)             |
+|     Specifikáció                          |     Érték             |
 |--------------------------------------------|-----------------------|
 |    SSD-meghajtók száma     |    8                  |
 |    Egyetlen SSD-kapacitás                     |    1,6 TB             |
@@ -74,18 +82,18 @@ A következő táblázatok a méretek és a súlyozás különböző területekr
 
 A következő táblázat a ház dimenzióit mutatja milliméterben és hüvelykben.
 
-|     Ház     |     Milliméter     |     Hüvelyk     |
+|     Ház     |     Milliméter     |     hüvelyk     |
 |-------------------|---------------------|----------------|
 |    Magasság         |    44,45            |    1,75 "          |
-|    Szélesség          |    434,1           |    17,09 "          |
+|    szélesség          |    434,1           |    17,09 "          |
 |    Hossz          |    740,4           |    29,15 "          |
 
 A következő táblázat a szállítási csomag dimenzióit mutatja be milliméterben és hüvelykben.
 
-|     Csomag     |     Milliméter     |     Hüvelyk     |
+|     Csomag     |     Milliméter     |     hüvelyk     |
 |-------------------|---------------------|----------------|
 |    Magasság         |    311,2            |    12,25 "          |
-|    Szélesség          |    642,8          |    25,31 "          |
+|    szélesség          |    642,8          |    25,31 "          |
 |    Hossz          |   1 051,1          |    41,38 "          |
 
 ### <a name="enclosure-weight"></a>Ház súlya
@@ -106,7 +114,7 @@ Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációk
 |     Ház         |     Környezeti hőmérséklet tartománya     |     Környezeti relatív páratartalom     |     Maximális harmatpont     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
 |    Operatív        |    10 °C – 35 °C (50 °F-86 °F)         |    10%-80% nem kondenzációs.         |    29 °C (84 °F)            |
-|    Nem működő    |    -40 °C-tól 65 °C-ig (-40 °F-149 °F)     |    5%-95%-os nem kondenzációs.          |    33 °C (91 °F)            |
+|    Nem működő    |    -40 °C-tól 65 °C-ig (-40 °F-149 °F)     |    5%-95%-os nem kondenzációs.          |    33°C (91°F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Légáram, magasság, sokk, vibráció, orientáció, biztonság és EMC
 

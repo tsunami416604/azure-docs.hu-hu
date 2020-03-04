@@ -12,19 +12,15 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 503cfb1e299c4e96e4e87107ce25af273848ca8f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: eae26df61af203f9c3d09606ef96b5506f2e8701
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160627"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249117"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Gyors útmutató: Microsoft Identity platform-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
-
-Ebben a rövid útmutatóban engedélyezi, hogy egy ASP.NET-webalkalmazás a személyes fiókokat (hotmail.com, outlook.com, Others) és munkahelyi és iskolai fiókokat jelentkezzen be bármely Azure Active Directory (Azure AD) példányból.
-
-![Bemutatja, hogyan működik a rövid útmutatóban létrehozott minta alkalmazás](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
-
+Ebből a rövid útmutatóból megtudhatja, hogyan ASP.NET webalkalmazások személyes fiókjait (hotmail.com, outlook.com, másokat) és munkahelyi és iskolai fiókokat bármely Azure Active Directory (Azure AD-példányból).  (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
 > A rövid útmutató mintaalkalmazását kétféleképpen indíthatja el:
@@ -64,26 +60,33 @@ Ebben a rövid útmutatóban engedélyezi, hogy egy ASP.NET-webalkalmazás a sze
 
 #### <a name="step-2-download-your-project"></a>2\. lépés: A projekt letöltése
 
-[A Visual Studio 2019-megoldás letöltése](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+> [!div renderon="docs"]
+> [A Visual Studio 2019-megoldás letöltése](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>3\. lépés: A Visual Studio-projekt konfigurálása
+> [!div renderon="portal"]
+> Futtassa a projektet a Visual Studio 2019 használatával.
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [A mintakód letöltése]()
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3\. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra
+> A projektet az alkalmazás tulajdonságainak értékeivel konfiguráltuk. 
+
+> [!div renderon="docs"]
+> #### <a name="step-3-run-your-visual-studio-project"></a>3\. lépés: a Visual Studio-projekt futtatása
 
 1. Csomagolja ki a zip-fájlt egy helyi mappába a gyökérmappa közelében (például: **C:\Azure-Samples**)
 1. Nyissa meg a megoldást (AppModelv2-WebApp-OpenIDConnect-DotNet.sln) a Visual Studióban.
 1. Előfordulhat, hogy a Visual Studio verziójától függően jobb gombbal a projektre kell kattintania `AppModelv2-WebApp-OpenIDConnect-DotNet` és **vissza kell állítania a NuGet-csomagokat**
 1. Nyissa meg a Package Manager konzolját (View-> Egyéb Windows-> csomagkezelő konzol), és futtassa a következőt: `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
-1. Szerkessze a **Web.config** fájlt, és cserélje le a `ClientId` és `Tenant` paramétereket az alábbiakkal:
-
-    ```xml
-    <add key="ClientId" value="Enter_the_Application_Id_here" />
-    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
-    ```
-> [!div class="sxs-lookup" renderon="portal"]
-> > [!NOTE]
-> > Ez a rövid útmutató támogatja a Enter_the_Supported_Account_Info_Here. 
 
 > [!div renderon="docs"]
-> Az elemek magyarázata:
+> 5. Szerkessze a **Web.config** fájlt, és cserélje le a `ClientId` és `Tenant` paramétereket az alábbiakkal:
+>    ```xml
+>    <add key="ClientId" value="Enter_the_Application_Id_here" />
+>    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
+>    ```
+>    Az elemek magyarázata:
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
 > - `Enter_the_Tenant_Info_Here` – ez az alábbi lehetőségek egyike:
 >   - Ha az alkalmazás **csak a saját szervezetet**támogatja, cserélje le ezt az értéket a **bérlői azonosító** vagy a **bérlő nevére** (például contoso.onmicrosoft.com).
@@ -94,9 +97,16 @@ Ebben a rövid útmutatóban engedélyezi, hogy egy ASP.NET-webalkalmazás a sze
 > > - Az *alkalmazásazonosító*, a *címtár (bérlő) azonosítója* és a *támogatott fióktípusok* értékét az **Áttekintés** oldalon találja
 > > - Győződjön meg arról, hogy a **web. config** `redirectUri` értékének értéke megfelel az alkalmazás regisztrálásához az Azure ad-ben megadott **átirányítási URI** -nak (ha nem, navigáljon az alkalmazás regisztrálásához használt **hitelesítési** menüre, és frissítse az **átirányítási URI** -t a megfeleltetéshez)
 
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Enter_the_Supported_Account_Info_Here
+
 ## <a name="more-information"></a>További információ
 
 Ez a szakasz a felhasználók bejelentkeztetéséhez szükséges kód áttekintését tartalmazza. Ez az Áttekintés hasznos lehet a kód működésének, a fő argumentumok, valamint a meglévő ASP.NET-alkalmazáshoz való bejelentkezés hozzáadásának megismeréséhez.
+
+### <a name="how-the-sample-works"></a>A minta működése
+![Bemutatja, hogyan működik a rövid útmutatóban létrehozott minta alkalmazás](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 
 ### <a name="owin-middleware-nuget-packages"></a>OWIN közbenső NuGet-csomagok
 

@@ -12,19 +12,15 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c11f7daf68585d63d19fca282ef2f4a306303ac7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 72c363c34a3e7e01cb32917dd87237e4bbfc9490
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160729"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249149"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba
-
-Ebből a rövid útmutatóból megtudhatja, hogy egy ASP.NET Core webalkalmazás hogyan jelentkezhet be a személyes fiókokba (hotmail.com, outlook.com, Others) és munkahelyi és iskolai fiókokkal bármely Azure Active Directory (Azure AD) példányból.
-
-![Bemutatja, hogyan működik a rövid útmutatóban létrehozott minta alkalmazás](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.svg)
-
+Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core webalkalmazás a személyes fiókokban (hotmail.com, outlook.com, Others) és munkahelyi és iskolai fiókokat bármely Azure Active Directory (Azure AD) példányból. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
 > A rövid útmutató mintaalkalmazását kétféleképpen indíthatja el:
@@ -66,22 +62,32 @@ Ebből a rövid útmutatóból megtudhatja, hogy egy ASP.NET Core webalkalmazás
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>2\. lépés: a ASP.NET Core-projekt letöltése
 
-- [A Visual Studio 2019-megoldás letöltése](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
-
-#### <a name="step-3-configure-your-visual-studio-project"></a>3\. lépés: A Visual Studio-projekt konfigurálása
-
-1. Bontsa ki a zip-fájlt a gyökérmappa egyik helyi mappájába – például **C:\Azure-Samples**
-1. Ha a Visual Studio 2019-et használja, nyissa meg a megoldást a Visual Studióban (nem kötelező).
-1. Szerkessze a **appSettings. JSON** fájlt. `ClientId` megkeresése és a `ClientId` értékének frissítése a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosító** értékével. 
-
-    ```json
-    "ClientId": "Enter_the_Application_Id_here"
-    "TenantId": "Enter_the_Tenant_Info_Here"
-    ```
+> [!div renderon="docs"]
+> [A Visual Studio 2019-megoldás letöltése](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
+> Futtassa a projektet a Visual Studio 2019 használatával.
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [A mintakód letöltése]()
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3\. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra
+> A projektet az alkalmazás tulajdonságainak értékével konfiguráltuk, és készen áll a futtatásra. 
+> [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Ez a rövid útmutató támogatja a Enter_the_Supported_Account_Info_Here.
+> > Enter_the_Supported_Account_Info_Here
+> [!div renderon="docs"]
+> #### <a name="step-3-run-your-visual-studio-project"></a>3\. lépés: a Visual Studio-projekt futtatása
+> 1. Bontsa ki a zip-fájlt a gyökérmappa egyik helyi mappájába – például **C:\Azure-Samples**
+> 1. A megoldás megnyitása a Visual Studióban 
+> 1. Szerkessze a **appSettings. JSON** fájlt. `ClientId` megkeresése és a `ClientId` értékének frissítése a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosító** értékével. 
+>
+>    ```json
+>    "ClientId": "Enter_the_Application_Id_here"
+>    "TenantId": "Enter_the_Tenant_Info_Here"
+>    ```
+
+
 
 > [!div renderon="docs"]
 > Az elemek magyarázata:
@@ -97,6 +103,9 @@ Ebből a rövid útmutatóból megtudhatja, hogy egy ASP.NET Core webalkalmazás
 ## <a name="more-information"></a>További információ
 
 Ez a szakasz áttekintést nyújt a felhasználók bejelentkezéséhez szükséges kódokról. Ez az Áttekintés hasznos lehet a kód működésének, a fő argumentumok, valamint a meglévő ASP.NET Core alkalmazásba való bejelentkezés hozzáadásának megismeréséhez.
+
+### <a name="how-the-sample-works"></a>A minta működése
+![Bemutatja, hogyan működik a rövid útmutatóban létrehozott minta alkalmazás](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.svg)
 
 ### <a name="startup-class"></a>Indítási osztály
 

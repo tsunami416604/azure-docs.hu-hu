@@ -3,12 +3,12 @@ title: Környezeti változók beállítása a Container-példányban
 description: Megtudhatja, hogyan állíthatja be a környezeti változókat a Azure Container Instancesban futtatott tárolókban.
 ms.topic: article
 ms.date: 04/17/2019
-ms.openlocfilehash: d12d3204740f2971216636f9f5dd6403b17ecbff
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483187"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252199"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Környezeti változók beállítása a Container instances szolgáltatásban
 
@@ -58,8 +58,8 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 
 A tárolók kimenete azt mutatja be, hogyan módosította a második tároló parancsfájl-viselkedését környezeti változók beállításával.
 
-```console
-azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name mycontainer1
+**mycontainer1**
+```output
 [('the', 990),
  ('and', 702),
  ('of', 628),
@@ -70,8 +70,10 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
  ('my', 441),
  ('in', 399),
  ('HAMLET', 386)]
+```
 
-azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name mycontainer2
+**tarolo2**
+```output
 [('CLAUDIUS', 120),
  ('POLONIUS', 113),
  ('GERTRUDE', 82),
@@ -234,7 +236,7 @@ root@caas-ef3ee231482549629ac8a40c0d3807fd-3881559887-5374l:/# echo $SECRET
 my-secret-value
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A feladat-alapú forgatókönyvek, például a Batch több tárolóval rendelkező nagyméretű adathalmazok feldolgozásával az egyéni környezeti változók is kihasználhatják futásidőben. A Task-alapú tárolók futtatásával kapcsolatos további információkért lásd: [a tárolózott feladatok futtatása újraindítási szabályzatokkal](container-instances-restart-policy.md).
 

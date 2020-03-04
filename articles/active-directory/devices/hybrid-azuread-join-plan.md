@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c4a0e64e1f08bb3e80eaf67937da10906bfce0
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: bae957eba627be7fa3b968585a03d28aa5b0af56
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591608"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255001"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése
 
@@ -79,6 +79,8 @@ Első tervezési lépésként tekintse át a környezetet, és állapítsa meg, 
 - A hibrid Azure AD JOIN nem támogatott a tartományvezérlő (DC) szerepkört futtató Windows Serveren.
 
 - A hibrid Azure AD JOIN nem támogatott a Windows rendszerű, a hitelesítő adatok központi vagy felhasználói profiljának központi vagy kötelező profil használata esetén.
+
+- A Server Core operációs rendszer nem támogatja semmilyen típusú eszköz regisztrációját.
 
 ### <a name="os-imaging-considerations"></a>OPERÁCIÓSRENDSZER-lemezképek szempontjai
 - Ha a rendszer-előkészítő eszköz (Sysprep) szolgáltatásra támaszkodik, és ha a telepítés **előtt Windows 10 1809** rendszerképet használ, győződjön meg arról, hogy a rendszerkép nem olyan eszközről származik, amely már regisztrálva van az Azure ad-ben hibrid Azure ad-csatlakozásként.

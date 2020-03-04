@@ -6,12 +6,12 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 527002bee1bec4097cf62155efebae06880bad97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bae67b0177823ab4558085db67423edea062fa3c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472393"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250069"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Oktatóanyag: a Azure Key Vault integrálása a Resource Manager-sablonok üzembe helyezésével
 
@@ -42,7 +42,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 * Visual Studio Code a Resource Manager-eszközök bővítménnyel. További információ: [Azure Resource Manager sablonok létrehozása a Visual Studio Code használatával](use-vs-code-to-create-template.md).
 * A biztonság növeléséhez használjon generált jelszót a virtuális gép rendszergazdai fiókjához. Íme egy példa a jelszó létrehozására:
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
     Ellenőrizze, hogy a generált jelszó megfelel-e a virtuális gép jelszavával kapcsolatos követelményeknek. Az egyes Azure-szolgáltatások különböző jelszókövetelményeket szabnak meg. A virtuális gép jelszavával kapcsolatos követelményekért lásd: [Mik a jelszóra vonatkozó követelmények a virtuális gépek létrehozásakor?](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
@@ -110,11 +110,11 @@ Az Azure Gyorsindítás sablonjai a Resource Manager-sablonok tárháza. Teljese
 1. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt. A forgatókönyv ugyanaz, mint az [oktatóanyagban használt: Azure Resource Manager sablonok létrehozása függő erőforrásokkal](./template-tutorial-create-templates-with-dependent-resources.md).
    A sablon öt erőforrást határoz meg:
 
-   * `Microsoft.Storage/storageAccounts` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * `Microsoft.Storage/storageAccounts`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+   * `Microsoft.Network/publicIPAddresses`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+   * `Microsoft.Network/virtualNetworks`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+   * `Microsoft.Network/networkInterfaces`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+   * `Microsoft.Compute/virtualMachines`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
    A Testreszabás előtt hasznos lehet a sablon alapvető ismerete.
 
@@ -179,7 +179,7 @@ A sablon központi telepítésekor használja ugyanazt az erőforráscsoportot, 
 
 A virtuális gép sikeres üzembe helyezését követően tesztelje a bejelentkezési hitelesítő adatokat a Key vaultban tárolt jelszó használatával.
 
-1. Nyissa meg az [Azure portált](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 
 1. Válassza ki az **erőforráscsoportok** >  **\<*YourResourceGroupName*>**  > **simpleWinVM**.
 1. Kattintson a fent található **kapcsolat** lehetőségre.

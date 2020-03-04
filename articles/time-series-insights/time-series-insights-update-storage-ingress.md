@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 44c942e43cd4be1d04f56e828e3e17c58713a706
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559844"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246186"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Adattárolás és bejövő forgalom Azure Time Series Insights előzetes verzióban
 
@@ -159,10 +159,10 @@ Az alábbi forrásokból tájékozódhat a hub átviteli sebességének és part
 
 Time Series Insights előzetes *utólagos* elszámolású (TB) SKU-környezet létrehozásakor két Azure-erőforrást hoz létre:
 
-* Egy Azure Time Series Insights előnézeti környezet, amely konfigurálható a meleg tároláshoz.
+* Egy Azure Time Series Insights előnézeti környezet, amely a meleg adattároláshoz konfigurálható.
 * Egy Azure Storage általános célú v1 blob-fiók a hideg adattároláshoz.
 
-A meleg tárolóban tárolt adatai csak a [Time Series lekérdezés](./time-series-insights-update-tsq.md) és a [Azure Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md)használatával érhetők el. 
+A meleg tárolóban tárolt adatai csak a [Time Series lekérdezés](./time-series-insights-update-tsq.md) és a [Azure Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md)használatával érhetők el. A meleg áruház a Time Series Insights környezet létrehozásakor kiválasztott [megőrzési időszakon](./time-series-insights-update-plan.md#the-preview-environment) belül friss adatokkal fog szerepelni.
 
 Time Series Insights az előnézet a hűtőházi tároló adatait az Azure Blob Storage-ba menti a [Parquet fájlformátumban](#parquet-file-format-and-folder-structure). Time Series Insights az előnézet kizárólag a hűtőházi adattárolási adattárakat kezeli, de közvetlenül a standard parketta-fájlként is elérhető.
 
@@ -186,12 +186,7 @@ Az Azure Blob Storage részletes ismertetését olvassa el a [Storage Blobok bem
 
 Azure Time Series Insights előzetes verziójú TB-környezet létrehozásakor létrejön egy Azure Storage általános célú v1 blob-fiók, amely a hosszú távú hűtőházi tárolóként jön létre.  
 
-Azure Time Series Insights az előnézet az Azure Storage-fiókban az egyes események két példányát teszi közzé. A kezdeti másolat a betöltési idő szerint rendezett eseményeket tartalmaz. Az esemény sorrendjét **mindig megőrzi** a rendszer, hogy más szolgáltatások is hozzáférjenek az eseményekhez a problémák rendezése nélkül. 
-
-> [!NOTE]
-> A nyers parketta-fájlok feldolgozásához a Spark, a Hadoop és más ismerős eszközök is használhatók. 
-
-Time Series Insights előzetes verzió a Time Series Insights lekérdezés optimalizálása érdekében újraparticionálja a parketta-fájlokat. Az adatbázis újraparticionált példánya is mentve lesz. 
+Azure Time Series Insights előzetes verzióban az Azure Storage-fiókban az egyes események két példánya is megmarad. Az egyik másolat a betöltési idő alapján rendezi az eseményeket, így mindig lehetővé teszi az események elérését egy időben rendezett sorrendben. Az idő múlásával Time Series Insights előzetes verzióban az adatok újraparticionált másolata is létrejön, így optimalizálható a végrehajtás Time Series Insights a lekérdezés. 
 
 A nyilvános előzetes verzióban az Azure Storage-fiókban az adatai határozatlan ideig tárolódnak.
 
@@ -199,15 +194,11 @@ A nyilvános előzetes verzióban az Azure Storage-fiókban az adatai határozat
 
 A lekérdezés teljesítményének és az adatelérhetőségnek a biztosításához ne szerkessze vagy töröljön minden olyan blobot, amelyet Time Series Insights előnézet hoz létre.
 
-#### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>Adatok elérése és exportálása Time Series Insights előzetes verzióból
+#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>Hozzáférés az Time Series Insights előzetes verziójának hűtőházi tárolására 
 
-Előfordulhat, hogy a Time Series Insights Preview Explorerben a más szolgáltatásokkal együtt használt adatnézeteket szeretné elérni. Az adataival például létrehozhat egy jelentést Power BI vagy betaníthat egy gépi tanulási modellt Azure Machine Learning Studio használatával. Az adatait használhatja a Jupyter-jegyzetfüzetek átalakításához, megjelenítéséhez és modellezéséhez is.
+Az adatoknak a [Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md) és a [Time Series lekérdezésből](./time-series-insights-update-tsq.md)való elérése mellett előfordulhat, hogy közvetlenül a hűtőházi tárolóban tárolt parketta-fájlokból is el szeretné érni az adatait. Például elolvashatja, átalakíthatja és megtisztíthatja az Jupyter-jegyzetfüzetben tárolt adatait, majd felhasználhatja a Azure Machine Learning modellnek ugyanabban a Spark-munkafolyamatban való betanításához.
 
-Az adatai három általános módon érhetők el:
-
-* A Time Series Insights Preview Explorerben. Az adatok CSV-fájlként is exportálhatók az Intézőből. További információ: [Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md).
-* A Time Series Insights Preview API-ból Get Events lekérdezés használatával. Ha többet szeretne megtudni erről az API-ról, olvassa el a [Time Series-lekérdezés](./time-series-insights-update-tsq.md)című témakört.
-* Közvetlenül egy Azure Storage-fiókból. Olvasási hozzáféréssel kell rendelkeznie a Time Series Insights előnézeti adataihoz való hozzáféréshez használt fiókhoz. További információért olvassa el [a Storage-fiók erőforrásaihoz való hozzáférés kezelése](../storage/blobs/storage-manage-access-to-resources.md)című témakört.
+Az adatok közvetlenül az Azure Storage-fiókból való eléréséhez olvasási hozzáféréssel kell rendelkeznie a Time Series Insights előzetes verzió adatainak tárolásához használt fiókhoz. Ezután a `PT=Time` mappában található Parquet fájl létrehozási ideje alapján elolvashatja a kiválasztott adatmennyiséget a [Parquet File Format](#parquet-file-format-and-folder-structure) szakaszban.  A Storage-fiókhoz való olvasási hozzáférés engedélyezésével kapcsolatos további információkért lásd: [a Storage-fiók erőforrásaihoz való hozzáférés kezelése](../storage/blobs/storage-manage-access-to-resources.md).
 
 #### <a name="data-deletion"></a>Adattörlés
 
@@ -215,21 +206,21 @@ Ne törölje a Time Series Insights előnézeti fájljait. A kapcsolódó adatok
 
 ### <a name="parquet-file-format-and-folder-structure"></a>A parketta fájlformátuma és a mappa szerkezete
 
-A Parquet egy nyílt forráskódú, oszlopos fájlformátum, amely hatékony tároláshoz és teljesítményhez lett tervezve. Time Series Insights az előzetes verzió a parkettát használja az alábbi okok miatt. Idősorozat-azonosító alapján particionálja az adatmennyiséget a lekérdezési teljesítményhez a skálán.  
+A Parquet egy nyílt forráskódú, oszlopos fájlformátum, amely hatékony tárolást és teljesítményt nyújt. Time Series Insights az előzetes verzióban a parketta használatával engedélyezhető a Time Series ID-alapú lekérdezési teljesítmény a skálán.  
 
 A Parquet fájltípussal kapcsolatos további információkért olvassa el a [parketta dokumentációját](https://parquet.apache.org/documentation/latest/).
 
 Time Series Insights az alábbi módon tárolja az adatai másolatait:
 
-* Az első, a kezdeti másolat a betöltési idő alapján van particionálva, és nagyjából megérkezésük sorrendjében tárolja az adatot. Az adat a `PT=Time` mappában található:
+* Az első, a kezdeti másolat a betöltési idő alapján van particionálva, és nagyjából megérkezésük sorrendjében tárolja az adatot. Ez az adat a `PT=Time` mappában található:
 
   `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-* A második, újraparticionált másolatot az idősorozat-azonosítók csoportosításával particionálja, és a `PT=TsId` mappában találhatók:
+* A második, újraparticionált másolat az idősorozat-azonosítók szerint van csoportosítva, és a `PT=TsId` mappában található:
 
   `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-Mindkét esetben az időértékek a blob létrehozási idejére vonatkoznak. A `PT=Time` mappában lévő adatértékek megmaradnak. A `PT=TsId` mappában lévő adatok az idő függvényében lesznek optimalizálva, és nem maradnak statikusak.
+Mindkét esetben a Parquet fájl Time tulajdonsága a blob létrehozási idejére vonatkozik. A `PT=Time` mappában lévő, a fájlba való írás után a rendszer nem módosítja a fájlokat. A `PT=TsId` mappában lévő adatok az idő függvényében lesznek optimalizálva, és nem statikus.
 
 > [!NOTE]
 > * `<YYYY>` térképeket egy négyjegyű év ábrázolásához.
@@ -239,12 +230,12 @@ Mindkét esetben az időértékek a blob létrehozási idejére vonatkoznak. A `
 Time Series Insights előnézeti események a következő módon vannak leképezve a parketta-fájl tartalmára:
 
 * Minden esemény egyetlen sorra van leképezve.
-* Minden sor tartalmazza az **időbélyegző** oszlopot egy esemény időbélyegzővel. Az időbélyegző tulajdonság soha nem null értékű. Alapértelmezés szerint az **Event várólistán lévő időt** adja meg, ha az időbélyegző tulajdonság nincs megadva az esemény forrásában. Az időbélyegző mindig UTC szerint van.
-* Minden sor tartalmazza az idősorozat-azonosító oszlop (oka) t, amely a Time Series Insights környezet létrehozásakor van meghatározva. A tulajdonság neve tartalmazza a `_string` utótagot.
+* Minden sor tartalmazza az **időbélyegző** oszlopot egy esemény időbélyegzővel. Az időbélyegző tulajdonság soha nem null értékű. Alapértelmezés szerint az **Event várólistán lévő idő** , ha nincs megadva az időbélyeg tulajdonság az eseményforrás számára. A tárolt időbélyegző mindig UTC szerint van.
+* Minden sor tartalmazza a Time Series Insights-környezet létrehozásakor definiált idősoros azonosító (TSID) oszlop (oka) t. A TSID-tulajdonság neve tartalmazza az `_string` utótagot.
 * A telemetria-adatként elküldett összes többi tulajdonságot a tulajdonság típusától függően `_string` (string), `_bool` (Boolean), `_datetime` (datetime) vagy `_double` (Double) végződésű oszlopokra kell leképezni.
-* Ez a leképezési séma a fájl formátumának első verziójára vonatkozik, amelyre a **V = 1**hivatkozik. A szolgáltatás fejlődése során előfordulhat, hogy a név növekszik.
+* Ez a leképezési séma a **(z) V = 1** néven hivatkozott fájlformátum első verziójára vonatkozik, és az azonos nevű alapmappában tárolódik. A szolgáltatás fejlődése során ez a leképezési séma változhat, és a hivatkozási név megnő.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el [, hogyan formázhatja a JSON-t a bejövő és a lekérdezéshez](./time-series-insights-update-how-to-shape-events.md).
 

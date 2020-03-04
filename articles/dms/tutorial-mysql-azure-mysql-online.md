@@ -3,8 +3,8 @@ title: 'Oktatóanyag: a MySQL online migrálása a Azure Database for MySQLba'
 titleSuffix: Azure Database Migration Service
 description: Ismerje meg, hogyan végezheti el a helyszíni MySQL online áttelepítését, hogy Azure Database for MySQL a Azure Database Migration Service használatával.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 77887f440da73436a995e0916c529f9df76e7d6f
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e0a2c9f4dd229353ef3d4dc06f7bb965d15814d9
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746968"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255553"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: MySQL online migrálása az Azure Database for MySQL-be a DMS használatával
 
 A Azure Database Migration Service segítségével telepítheti át az adatbázisokat egy helyszíni MySQL-példányból, hogy [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) minimális állásidővel. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban áttelepíti az **alkalmazottak** minta-adatbázisát a MySQL 5,7 helyszíni példányáról, hogy Azure Database for MySQL a Azure Database Migration Service Online áttelepítési tevékenységével.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 >
 > * A mintaséma migrálása a mysqldump segédprogrammal.
-> * Hozzon létre egy Azure Database Migration Service-példányt.
+> * Azure Database Migration Service-példány létrehozása.
 > * Hozzon létre egy áttelepítési projektet Azure Database Migration Service használatával.
 > * A migrálás futtatása.
 > * A migrálás monitorozása.
@@ -93,7 +93,7 @@ Feltételezve, hogy rendelkezik a MySQL- **alkalmazottak** mintaadatbázis haszn
 mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
 ```
 
-Példa:
+Például:
 
 ```
 mysqldump -h 10.10.123.123 -u root -p --databases employees --no-data > d:\employees.sql
@@ -105,7 +105,7 @@ Ha sémát szeretne importálni az Azure Database for MySQL célba, futtassa a k
 mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
  ```
 
-Példa:
+Például:
 
 ```
 mysql.exe -h shausample.mysql.database.azure.com -u dms@shausample -p employees < d:\employees.sql

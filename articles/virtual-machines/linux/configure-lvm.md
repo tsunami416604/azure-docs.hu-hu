@@ -3,7 +3,7 @@ title: Az LVM konfigurálása Linux rendszerű virtuális gépen
 description: Ismerje meg, hogyan konfigurálhatja az LVMt Linux rendszeren az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: na
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: 4fdb3af0433cc32aa7cdbee3c8ca9bdb85031135
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 2c245d56b0fa0a09da04b83db11391a9291d3856
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045343"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251732"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Az LVM konfigurálása Linux rendszerű virtuális gépen az Azure-ban
 Ebből a dokumentumból megtudhatja, hogyan konfigurálhatja a Logical Volume Managert (LVM) az Azure-beli virtuális gépen. Az LVM az operációsrendszer-lemezen vagy az Azure-beli virtuális gépeken lévő adatlemezeken is használható, azonban a legtöbb Felhőbeli rendszerkép alapértelmezés szerint nem lesz beállítva az operációsrendszer-lemezen. Az alábbi lépések az LVM konfigurálására koncentrálnak az adatlemezek esetében.
@@ -65,7 +65,7 @@ Az egyik általában két vagy több üres adatlemezt szeretne kezdeni az LVM ha
     LVM_ACTIVATED_ON_DISCOVERED="enable" 
     ```
 
-## <a name="configure-lvm"></a>Az LVM konfigurálása
+## <a name="configure-lvm"></a>LVM konfigurálása
 Ebben az útmutatóban feltételezzük, hogy három adatlemezt csatoltunk, amelyeket `/dev/sdc`, `/dev/sdd` és `/dev/sde`re fogunk hivatkozni. Előfordulhat, hogy ezek az elérési utak nem egyeznek a virtuális gép lemezének elérési útjaival. A "`sudo fdisk -l`" vagy hasonló parancs futtatásával listázhatja az elérhető lemezeket.
 
 1. A fizikai kötetek előkészítése:
@@ -102,7 +102,7 @@ Ebben az útmutatóban feltételezzük, hogy három adatlemezt csatoltunk, amely
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>Az új fájlrendszer hozzáadása az/etc/fstab modulhoz
 > [!IMPORTANT]
-> Az `/etc/fstab` fájl nem megfelelő szerkesztése esetén előfordulhat, hogy a rendszer nem tud elindulni. Ha nem biztos a dolgában, a fájl megfelelő szerkesztésével kapcsolatos információkért olvassa el a disztribúció dokumentációját. Azt is javasoljuk, hogy a Szerkesztés előtt hozza létre a `/etc/fstab` fájl biztonsági másolatát.
+> A `/etc/fstab` fájl nem megfelelő szerkesztése nem indítható rendszert eredményezhet. Ha nem biztos, tekintse meg a terjesztés dokumentációját a fájl megfelelő szerkesztésével kapcsolatos információkért. Azt is javasoljuk, hogy a Szerkesztés előtt hozza létre a `/etc/fstab` fájl biztonsági másolatát.
 
 1. Hozza létre az új fájlrendszer kívánt csatlakoztatási pontját, például:
 

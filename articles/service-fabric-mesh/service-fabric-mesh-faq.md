@@ -4,12 +4,12 @@ description: Ismerkedjen meg az Azure Service Fabric Mesh szolgáltatással kapc
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 3fe6289ad7616dec97706c2f1779a74c508a0f76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461997"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252492"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Gyakori kérdések Service Fabric Mesh kérdésekről
 
@@ -44,10 +44,13 @@ Az alkalmazások élettartama jelenleg két napra korlátozódik. Ez az előzete
 
 Ha ezt látja, ellenőrizheti, hogy a rendszer leállította-e a `az mesh app show` parancs futtatásával az Azure CLI-ben. Ellenőrizze, hogy visszaadja-e `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
-Példa: 
+Például: 
 
-```cli
-~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
+```azurecli
+az mesh app show --resource-group myResourceGroup --name helloWorldApp
+```
+
+```output
 {
   "debugParams": null,
   "description": "Service Fabric Mesh HelloWorld Application!",
@@ -83,7 +86,7 @@ Ha a Windows 10 április 2018 Update (1803-es verzió) gépen dolgozik, a Window
 A következő Container operációsrendszer-lemezképeket használhatja a szolgáltatások telepítéséhez:
 - Windows – windowsservercore és nanoserver
     - Windows Server 1709
-    - Windows Server 1803
+    - A Windows Server 1803-as verzióban
     - Windows Server 1809
     - Windows Server 2019 LTSC
 - Linux
@@ -104,7 +107,7 @@ A tárolóból a Service Fabric DNS szolgáltatásba küldött kimenő DNS-leké
 
 - Használja a Windows Fall Creators Update (1709-es verzió) vagy újabb verzióját az alaptároló rendszerképének használatával.
 - Ha a szolgáltatás neve nem működik, próbálja meg a teljes nevet: szolgáltatásnév. ApplicationName.
-- A szolgáltatás Docker-fájljában adja hozzá `EXPOSE <port>`, ahol a port az a port, amelyen a szolgáltatást kiteszi. Példa:
+- A szolgáltatás Docker-fájljában adja hozzá `EXPOSE <port>`, ahol a port az a port, amelyen a szolgáltatást kiteszi. Például:
 
 ```Dockerfile
 EXPOSE 80
@@ -120,7 +123,7 @@ Az Azure Mesh jelenleg nem támogatja a DNS-feloldást az alkalmazások között
 
 A Service Fabric fejlesztői fürt Windows 10 rendszeren való futtatásával kapcsolatos egyéb ismert DNS-problémákkal kapcsolatban lásd: [Windows-tárolók](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) és [ismert DNS-problémák](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)hibakeresése.
 
-### <a name="networking"></a>Hálózatkezelés
+### <a name="networking"></a>Hálózat
 
 Előfordulhat, hogy a ServiceFabric hálózati NAT eltűnnek az alkalmazás helyi gépen való futtatásakor. Annak diagnosztizálásához, hogy ez történt-e, futtassa a következő parancsot egy parancssorból:
 

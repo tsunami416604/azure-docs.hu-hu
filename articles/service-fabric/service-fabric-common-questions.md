@@ -4,12 +4,12 @@ description: Gyakori kérdések a Service Fabricről, beleértve a képességeke
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 17c1d05e119df8207c0599283f1d04b869e8297b
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293521"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254885"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric – GYIK
 
@@ -22,7 +22,7 @@ Számos gyakran feltett kérdés arról, hogy mit tehet, és hogyan használhat�
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Hogyan vissza a Service Fabric-fürt tanúsítványát?
 
-Az alkalmazásra való frissítés visszagörgetéséhez az Service Fabric fürt kvóruma előtt a módosítás véglegesítése előtt állapot-meghibásodás észlelése szükséges. a véglegesített módosításokat csak előre lehet görgetni. A eszkalációs mérnök az ügyfél-támogatási szolgáltatásokon keresztül szükséges lehet a fürt helyreállításához, ha a nem figyelt feltörési tanúsítvány megváltozása be lett vezetve.  [Service Fabric alkalmazásának frissítése](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) az [alkalmazás frissítési paramétereit](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)alkalmazza, és nulla állásidő-frissítési ígéretet biztosít.  Az ajánlott alkalmazás-frissítési figyelt üzemmódot követve a frissítési tartományokon keresztüli automatikus előrehaladás az állapot-ellenőrzéseken alapul, az alapértelmezett szolgáltatás frissítése esetén pedig automatikusan visszagörgethető.
+Az alkalmazásra való frissítés visszagörgetéséhez az Service Fabric fürt kvóruma előtt a módosítás véglegesítése előtt állapot-meghibásodás észlelése szükséges. a véglegesített módosításokat csak előre lehet görgetni. A eszkalációs mérnök az ügyfél-támogatási szolgáltatásokon keresztül szükséges lehet a fürt helyreállításához, ha a nem figyelt feltörési tanúsítvány megváltozása be lett vezetve.  [Service Fabric alkalmazásának frissítése](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) az [alkalmazás frissítési paramétereit](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)alkalmazza, és nulla állásidő-frissítési ígéretet biztosít.  Az ajánlott alkalmazás-frissítési figyelt üzemmódot követve a frissítési tartományokon keresztüli automatikus előrehaladás az állapot-ellenőrzéseken alapul, az alapértelmezett szolgáltatás frissítése esetén pedig automatikusan visszagörgethető.
  
 Ha a fürt továbbra is kihasználja a klasszikus tanúsítvány ujjlenyomatát a Resource Manager-sablonban, javasoljuk, hogy a modern titkok kezelési funkcióinak kihasználásához [módosítsa a fürtet a tanúsítvány ujjlenyomatáról a köznapi névre](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn).
 
@@ -34,7 +34,7 @@ Az alapszintű Service Fabric fürtözési technológia a világ bármely pontj�
 
 Ha érdekli ezt a forgatókönyvet, javasoljuk, hogy vegye fel a kapcsolatot az [Service Fabric GitHub-problémák listáján](https://github.com/azure/service-fabric-issues) vagy a támogatási képviselőjén keresztül, hogy további útmutatást kapjon. Az Service Fabric csapat dolgozik a forgatókönyvhöz kapcsolódó további egyértelműség, útmutatás és javaslatok biztosításán. 
 
-Néhány mérlegelendő szempont ezzel kapcsolatban: 
+Néhány megfontolandó szempont: 
 
 1. Az Azure-beli Service Fabric fürterőforrás a mai régió, a virtuális gépek méretezési csoportjai pedig a fürtre épülnek. Ez azt jelenti, hogy regionális meghibásodás esetén előfordulhat, hogy a Azure Resource Manager vagy a Azure Portal segítségével szeretné kezelni a fürtöt. Ez akkor is előfordulhat, ha a fürt továbbra is fut, és közvetlenül kommunikálni tud vele. Ezen kívül az Azure jelenleg nem képes egyetlen, régión belül használható virtuális hálózat kialakítására. Ez azt jelenti, hogy az Azure-ban egy többrégiós fürtnek Nyilvános IP-címek kell lennie [a VM Scale sets vagy az](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) [Azure VPN Gateway-](../vpn-gateway/vpn-gateway-about-vpngateways.md)beli virtuális gépekhez. Ezek a hálózatkezelési döntések eltérő hatással vannak a költségekre, a teljesítményre és a bizonyos fokú alkalmazások kialakítására, ezért alapos elemzésre és tervezésre van szükség, mielőtt felépítjük ezt a környezetet.
 2. Ezeknek a gépeknek a karbantartása, kezelése és monitorozása bonyolult lehet, különösen ha a különböző _típusú_ környezetek, például a különböző felhőalapú szolgáltatók, illetve a helyszíni erőforrások és az Azure közötti átfedések. Gondoskodni kell arról, hogy a frissítés, a monitorozás, a felügyelet és a diagnosztika a fürt és az alkalmazások számára is érthető legyen, mielőtt az éles számítási feladatokat egy ilyen környezetben futtatná. Ha már rendelkezik az Azure-ban vagy a saját adatközpontokban található problémák megoldásával, akkor valószínű, hogy ugyanezek a megoldások alkalmazhatók a Service Fabric-fürt kiépítésekor vagy futtatásakor is. 
@@ -103,24 +103,24 @@ Nem. Az alacsony prioritású virtuális gépek nem támogatottak.
 
 | **Víruskereső által kizárt könyvtárak** |
 | --- |
-| Program Files\Microsoft Service Fabric |
-| FabricDataRoot (a fürt konfigurációjától) |
-| FabricLogRoot (a fürt konfigurációjától) |
+| Program Files\Microsoft a Service Fabric |
+| FabricDataRoot (a fürt konfiguráció) |
+| FabricLogRoot (a fürt konfiguráció) |
 
 | **Víruskereső által kizárt folyamatok** |
 | --- |
-| Fabric. exe |
-| Hálóbeli. exe |
-| FabricInstallerService. exe |
-| FabricSetup. exe |
-| FabricDeployer. exe |
-| ImageBuilder. exe |
-| FabricGateway. exe |
-| FabricDCA. exe |
-| FabricFAS. exe |
-| FabricUOS. exe |
-| FabricRM. exe |
-| FileStoreService. exe |
+| Fabric.exe |
+| FabricHost.exe |
+| FabricInstallerService.exe |
+| FabricSetup.exe |
+| FabricDeployer.exe |
+| ImageBuilder.exe |
+| FabricGateway.exe |
+| FabricDCA.exe |
+| FabricFAS.exe |
+| FabricUOS.exe |
+| FabricRM.exe |
+| FileStoreService.exe |
  
 ### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Hogyan hitelesíthető az alkalmazás a kulcstartóban a titkok beszerzéséhez?
 Az alábbi módszer azt jelenti, hogy az alkalmazás a kulcstartóhoz való hitelesítéshez hitelesítő adatokat kér:

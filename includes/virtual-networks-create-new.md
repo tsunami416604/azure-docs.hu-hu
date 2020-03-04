@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
-ms.openlocfilehash: 43ede7f3340f190f9eb37ca90fb74f2215db9062
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227402"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244989"
 ---
 ## <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
 
@@ -27,7 +27,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     |------------------|-----------------------------------------------------------------|
     | **Projekt részletei**  |                                                                 |
     | Előfizetést     | Azure-előfizetés kiválasztása                                  |
-    | Erőforráscsoport   | Válassza az **új létrehozása**elemet, írja be **\<erőforrás-csoport neve >** , majd kattintson az OK gombra. |
+    | Erőforráscsoport   | Válassza az **új létrehozása**elemet, írja be **\<erőforrás-csoport neve >** , majd kattintson az OK gombra, vagy válasszon ki egy meglévő **\<erőforrás-csoport neve >** paraméterek alapján. |
     | **Példány részletei** |                                                                 |
     | Name (Név)             | Adja meg **\<Virtual-Network-name >**                                    |
     | Régió           | **\<régió kiválasztása – név >** |
@@ -38,7 +38,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
 
     | Beállítás            | Érték                      |
     |--------------------|----------------------------|
-    | IPv4-címterület | Adja meg **\<IPv4-címtartomány >** |
+    | IPv4-címterület | Adja meg **\<IPv4-címterület >** |
 
 5. Az **alhálózat neve**alatt válassza ki az **alapértelmezett**szót.
 

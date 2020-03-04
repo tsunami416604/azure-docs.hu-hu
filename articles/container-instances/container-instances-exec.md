@@ -3,12 +3,12 @@ title: Parancsok végrehajtása a futó tároló példányában
 description: Megtudhatja, hogyan hajthat végre egy parancsot egy olyan tárolóban, amely jelenleg fut Azure Container Instances
 ms.topic: article
 ms.date: 03/30/2018
-ms.openlocfilehash: 10d0ea0c2dfa60aad64d0ae11532aff24a7ce773
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: de48e6ac246e2b0751561b4c60bb63d88b599bdf
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481579"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250019"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>Parancs végrehajtása egy futó Azure Container-példányban
 
@@ -30,8 +30,7 @@ az container exec --resource-group myResourceGroup --name mynginx --exec-command
 
 Az alábbi példában a bash rendszerhéj egy futó Linux-tárolóban indul el, amely a `ls` végrehajtásához használt terminált biztosítja:
 
-```console
-$ az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
+```output
 root@caas-83e6c883014b427f9b277a2bba3b7b5f-708716530-2qv47:/# ls
 bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
 boot  etc  lib   media  opt  root  sbin  sys  usr
@@ -42,8 +41,11 @@ Bye.
 
 Ebben a példában a parancssor egy futó Nanoserver-tárolóban indul el:
 
-```console
-$ az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
+```azurecli
+az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
+```
+
+```output
 Microsoft Windows [Version 10.0.14393]
 (c) 2016 Microsoft Corporation. All rights reserved.
 
@@ -82,7 +84,7 @@ az container exec --resource-group myResourceGroup --name mynginx --container-na
 
 Azure Container Instances jelenleg egyetlen folyamat indítását támogatja az [az Container exec][az-container-exec]paranccsal, és a parancs argumentumai nem adhatók át. Például nem lehet olyan parancsokat láncba kötni, mint a `sh -c "echo FOO && echo BAR"`vagy a `echo FOO`végrehajtása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a hibaelhárítási eszközökről és az általános telepítési problémákról: a [tárolók és az üzembe helyezési problémák elhárítása Azure Container Instancesban](container-instances-troubleshooting.md).
 

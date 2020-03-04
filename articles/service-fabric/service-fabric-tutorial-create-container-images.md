@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fa7f7a57e16b6ba70535d3f07ebd69abf0784171
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465437"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252789"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Oktatóanyag: Tárolórendszerképek létrehozása Linux Service Fabric-fürtön
 
-Ez az oktatóanyag egy olyan sorozat első része, amely azt mutatja be, hogyan használhatók tárolók a Linux Service Fabric-fürtökben. Ebben az oktatóanyagban egy többtárolós alkalmazást fog előkészíteni a Service Fabrichez. Az ezt követő oktatóanyagok ezeket a rendszerképeket fogják használni egy Service Fabric-alkalmazás részeként. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ez az oktatóanyag egy olyan sorozat első része, amely azt mutatja be, hogyan használhatók tárolók a Linux Service Fabric-fürtökben. Ebben az oktatóanyagban egy többtárolós alkalmazást fog előkészíteni a Service Fabrichez. Az ezt követő oktatóanyagok ezeket a rendszerképeket fogják használni egy Service Fabric-alkalmazás részeként. Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Alkalmazás forrásának klónozása a GitHubról
@@ -80,13 +80,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 Először futtassa az az **login** parancsot az Azure-fiókjába való bejelentkezéshez.
 
-```bash
+```azurecli
 az login
 ```
 
 Ezután az **az account** paranccsal válassza ki az előfizetését az Azure tárolóregisztrációs adatbázis létrehozásához. Be kell helyettesítenie a <subscription_id> kifejezést az Azure-előfizetés azonosítójával.
 
-```bash
+```azurecli
 az account set --subscription <subscription_id>
 ```
 
@@ -94,13 +94,13 @@ Az Azure Container Registry üzembe helyezéséhez először is szükség van eg
 
 Hozzon létre egy erőforráscsoportot az **az group create** paranccsal. Ebben a példában egy *myResourceGroup* nevű erőforráscsoportot hozunk létre a *westus* régióban.
 
-```bash
+```azurecli
 az group create --name <myResourceGroup> --location westus
 ```
 
 Hozzon létre egy Azure tárolóregisztrációs adatbázist az **az acr create** paranccsal. Cserélje le az \<acrName> kifejezést az előfizetésben létrehozni kívánt tárolóregisztrációs adatbázis nevére. Ennek a névnek alfanumerikusnak és egyedinek kell lennie.
 
-```bash
+```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
@@ -110,7 +110,7 @@ Az oktatóanyag hátralevő részében az „acrName” kifejezés helyettesíti
 
 Jelentkezzen be az ACR-példányba, mielőtt a képeket kikényszeríti. Használja az **az acr login** parancsot a művelet befejezéséhez. Adja meg a tárolóregisztrációs adatbázis egyedi nevét, amelyet a létrehozásakor adott meg.
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -136,13 +136,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 A bejelentkezési kiszolgáló nevének lekéréséhez futtassa a következő parancsot:
 
-```bash
+```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
 Ez a következő eredményeket tartalmazó táblát adja ki. A rendszer ezt használja az **azure-vote-front** rendszerkép címkézéséhez, mielőtt leküldené azt a tárolóregisztrációs adatbázisra a következő lépésben.
 
-```bash
+```output
 Result
 ------------------
 <acrName>.azurecr.io
@@ -158,7 +158,7 @@ Ha elkészült a címkézéssel, futtassa a „docker images” parancsot a műv
 
 Kimenet:
 
-```bash
+```output
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
 <acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
@@ -182,13 +182,13 @@ A docker push parancsok futtatása eltarthat néhány percig.
 
 Az Azure Container Registrybe leküldött rendszerképek listájának lekéréséhez használja az [az acr repository list](/cli/azure/acr/repository) parancsot. Frissítse a parancsot az ACR-példány nevével.
 
-```bash
+```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
 Kimenet:
 
-```bash
+```output
 Result
 ----------------
 azure-vote-front

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 870d6f8441bf395ba0c02dccf8f3d1c6434410c6
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78208215"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246214"
 ---
 ## <a name="limitations"></a>Korlátozások
 
@@ -99,7 +99,7 @@ A szoftver licencelése, a tárolás és a hálózat használata a gazdagéptől
 
 További információ: [Azure dedikált gazdagép díjszabása](https://aka.ms/ADHPricing).
 
-A költségeket a [dedikált Azure-gazdagépek fenntartott példánya] (..) szerint is mentheti. /articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md).
+A költségeket az [Azure dedikált gazdagépek fenntartott példányával](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)is elvégezheti.
  
 ## <a name="vm-families-and-hardware-generations"></a>VM-családok és hardveres generációk
 

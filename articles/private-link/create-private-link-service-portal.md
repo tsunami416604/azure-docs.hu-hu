@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: e316da12345c0bf1ea3682dadb1a7a65f250747b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f21b440ee0e2c53d9824300e85b683629c1575da
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191103"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252552"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Rövid útmutató: privát link szolgáltatás létrehozása a Azure Portal használatával
 
@@ -29,21 +29,22 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 Először hozzon létre egy virtuális hálózatot. Következő lépésként hozzon létre egy belső terheléselosztó szolgáltatást a privát kapcsolat szolgáltatással való használatra.
 
-### <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
+## <a name="virtual-network-and-parameters"></a>Virtuális hálózat és paraméterek
 
 Ebben a szakaszban egy új virtuális hálózatot hozhat létre. Emellett létrehozza azt az alhálózatot is, amely a privát kapcsolati szolgáltatáshoz hozzáférő terheléselosztó futtatására szolgál.
 
-1. A portál bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **virtuális hálózat**lehetőséget.
+Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekben az alábbi információkkal:
 
-1. A **virtuális hálózat létrehozása** panelen adja meg vagy válassza ki a következő értékeket:
+| Paraméter                   | Érték                |
+|-----------------------------|----------------------|
+| **\<erőforrás-csoport neve >**  | Myresourcegrouplb erőforráscsoportban |
+| **\<virtuális hálózat neve >** | myVNet          |
+| **\<régió – név >**          | USA 2. keleti régiója      |
+| **\<IPv4-címterület >**   | 10.3.0.0 \ 16          |
+| **\<alhálózat neve >**          | myBackendSubnet        |
+| **\<alhálózat-címtartomány >** | 10.3.0.0 \ 24          |
 
-   - **Név**: adja meg a **myVNet**.
-   - **ResourceGroup**: válassza az **új létrehozása**elemet, írja be a **Myresourcegrouplb erőforráscsoportban**, majd kattintson **az OK gombra**.
-   - **Alhálózat** > **neve**: adja meg a **myBackendSubnet**.
-
-1. Kattintson a **Létrehozás** gombra.
-
-   ![Virtuális hálózat létrehozása](../load-balancer/media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-a-standard-load-balancer"></a>Standard terheléselosztó létrehozása
 

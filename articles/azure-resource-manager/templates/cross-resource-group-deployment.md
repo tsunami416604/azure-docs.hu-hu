@@ -3,12 +3,12 @@ title: Erőforrások telepítése több előfizetés & erőforráscsoporthoz
 description: Bemutatja, hogyan célozhat meg több Azure-előfizetést és erőforráscsoportot az üzembe helyezés során.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 8f5fbd51456003059f6a32fc32b32194a936434a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 47573fedd7915d95d6ed98e3fd0aaf840331552b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154210"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250601"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure-erőforrások üzembe helyezése több előfizetéshez vagy erőforráscsoporthoz
 
@@ -119,7 +119,7 @@ Ha a `resourceGroup`t egy nem létező erőforráscsoport nevére állítja be, 
 
 Az előző sablon teszteléséhez és az eredmények megtekintéséhez használja a PowerShell vagy az Azure CLI-t.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Ha két tárolási fiókot kíván üzembe helyezni két erőforráscsoporthoz ugyanabban az **előfizetésben**, használja a következőt:
 
@@ -162,7 +162,7 @@ New-AzResourceGroupDeployment `
   -secondSubscriptionID $secondSub
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Ha két tárolási fiókot kíván üzembe helyezni két erőforráscsoporthoz ugyanabban az **előfizetésben**, használja a következőt:
 
@@ -209,17 +209,17 @@ A [resourceGroup ()](template-functions-resource.md#resourcegroup) és az [előf
 
 Az alábbi táblázat azt mutatja, hogy a függvények feloldhatók-e a szülő vagy a beágyazott erőforráscsoport és előfizetés esetében.
 
-| Sablon típusa | Hatókör | Felbontás |
+| Sablon típusa | Hatókör | Megoldás: |
 | ------------- | ----- | ---------- |
 | beágyazott        | külső (alapértelmezett) | Szülő erőforráscsoport |
 | beágyazott        | belső | Alerőforrás-csoport |
-| csatolt        | –   | Alerőforrás-csoport |
+| csatolt        | N/A   | Alerőforrás-csoport |
 
 A következő [példában a sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) látható:
 
 * beágyazott sablon alapértelmezett (külső) hatókörrel
 * beágyazott sablon belső hatókörrel
-* Csatolt sablon
+* csatolt sablon
 
 ```json
 {
@@ -317,7 +317,7 @@ A következő [példában a sablon](https://github.com/Azure/azure-docs-json-sam
 
 Az előző sablon teszteléséhez és az eredmények megtekintéséhez használja a PowerShell vagy az Azure CLI-t.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name parentGroup -Location southcentralus
@@ -340,7 +340,7 @@ Az előző példa kimenete a következő:
  linkedRG         String                     Linked resource group is linkedgroup
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create --name parentGroup --location southcentralus
@@ -355,7 +355,7 @@ az group deployment create \
 
 Az előző példa kimenete a következő:
 
-```azurecli
+```output
 "outputs": {
   "defaultScopeRG": {
     "type": "String",

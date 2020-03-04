@@ -17,12 +17,12 @@ ms.date: 10/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72ae1301be4a3a3c086961aae72fb9eeb12aeda2
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960232"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248774"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: fiókok és engedélyek
 
@@ -55,11 +55,10 @@ A Azure AD Connect futtatásához használt három fiókon kívül a Azure AD Co
 > [!NOTE]
 > A ESAE felügyeleti erdőben Azure AD Connect használt rendszergazdai fiókok felügyelete (más néven "vörös erdő") támogatott.
 > A dedikált felügyeleti erdők lehetővé teszik a szervezetek számára a rendszergazdai fiókok, munkaállomások és csoportok üzemeltetését olyan környezetben, amely erősebb biztonsági szabályozással rendelkezik, mint az éles környezet.
-> A dedikált adminisztratív erdőkkel kapcsolatos további tudnivalókért tekintse meg a [ESAE felügyeleti erdő kialakítási megközelítését](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)
->>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+> Ha többet szeretne megtudni a dedikált adminisztratív erdőkről, tekintse meg a [ESAE felügyeleti erdő kialakítási megközelítését](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach).
 
 > [!NOTE]
-> A kezdeti beállítás után a globális rendszergazdai szerepkör nem szükséges, és az egyetlen szükséges fiók lesz a **címtár-szinkronizálási fiókok** szerepkör fiókja. Ez nem jelenti azt, hogy csak a globális rendszergazdai szerepkörrel rendelkező fiókot szeretné eltávolítani a necssarily. Jobb megoldás, ha a szerepkört egy kevésbé hatékony szerepkörre módosítja, mivel a fiók teljes eltávolításával problémák léphetnek fel, ha újra futtatni kell a varázslót. A szerepkör jogosultságának csökkentésével bármikor újra megemelheti a jogosultságokkal, ha újra kell használnia a Azure AD Connect varázslót. 
+> A kezdeti beállítás után a globális rendszergazdai szerepkör nem szükséges, és az egyetlen szükséges fiók lesz a **címtár-szinkronizálási fiókok** szerepkör fiókja. Ez nem feltétlenül jelenti azt, hogy csak a globális rendszergazdai szerepkörrel rendelkező fiókot kívánja eltávolítani. Jobb megoldás, ha a szerepkört egy kevésbé hatékony szerepkörre módosítja, mivel a fiók teljes eltávolításával problémák léphetnek fel, ha újra futtatni kell a varázslót. A szerepkör jogosultságának csökkentésével bármikor újra megemelheti a jogosultságokat, ha újra kell használnia a Azure AD Connect varázslót. 
 
 ## <a name="installing-azure-ad-connect"></a>Azure AD Connect telepítése
 A Azure AD Connect telepítővarázsló két különböző elérési utat biztosít:
@@ -220,7 +219,7 @@ Ehhez a szolgáltatáshoz Windows Server 2008 R2 vagy újabb rendszer szüksége
 Ha távoli SQL Servert használ, azt javasoljuk, hogy egy **csoportosan felügyelt szolgáltatásfiókot**használjon. A Active Directory csoportosan felügyelt szolgáltatásfiók előkészítésével kapcsolatos további információkért lásd: [csoportosan felügyelt szolgáltatásfiókok áttekintése](https://technet.microsoft.com/library/hh831782.aspx).
 
 Ha ezt a beállítást szeretné használni, a [szükséges összetevők telepítése](how-to-connect-install-custom.md#install-required-components) lapon jelölje be a **meglévő szolgáltatásfiók használata**jelölőnégyzetet, és válassza a **felügyelt szolgáltatásfiók**lehetőséget.  
-![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
+![VSA-](./media/reference-connect-accounts-permissions/serviceaccount.png)  
 [Önálló felügyelt szolgáltatásfiók](https://technet.microsoft.com/library/dd548356.aspx)használata is támogatott. Ezek azonban csak a helyi gépen használhatók, és nem használhatók fel az alapértelmezett Virtual Service-fiókra.
 
 Ehhez a szolgáltatáshoz a Windows Server 2012-es vagy újabb verziója szükséges. Ha régebbi operációs rendszert kell használnia, és a távoli SQL-t kell használnia, [felhasználói fiókot](#user-account)kell használnia.

@@ -3,8 +3,8 @@ title: 'Oktatóanyag: RDS SQL Server online migrálása SQL Database'
 titleSuffix: Azure Database Migration Service
 description: Ismerje meg, hogyan végezhet el egy online áttelepítést az RDS SQL Serverról Azure SQL Database önálló adatbázisra vagy felügyelt példányra az Azure Database Migration Service használatával.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 52a6ee282e12f0ece5f16c1fa67c38f07f9d86e7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: db561761acbd5ff991f88cfd18cec8d4625336f2
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751293"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255524"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Oktatóanyag: RDS SQL Server migrálása Azure SQL Database vagy Azure SQL Database felügyelt példányra online a DMS használatával
 A Azure Database Migration Service segítségével áttelepítheti az adatbázisokat egy RDS SQL Server-példányról a [Azure SQL Databasere](https://docs.microsoft.com/azure/sql-database/) vagy egy [Azure SQL Database felügyelt példányra](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) , minimális állásidővel. Ebben az oktatóanyagban a **Adventureworks2012** -adatbázist a Azure Database Migration Service SQL Server 2012 (vagy újabb) egy RDS SQL Server példányára állítja át, hogy Azure SQL Database vagy Azure SQL Database felügyelt példányra telepítse.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Hozzon létre egy Azure SQL Database vagy egy Azure SQL Database felügyelt példány példányát. 
 > * A mintaséma migrálása a Data Migration Assistant szolgáltatás használatával.

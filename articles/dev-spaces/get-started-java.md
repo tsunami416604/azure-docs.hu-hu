@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: Ez az oktatóanyag bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code az Azure Kubernetes Service-ben egy Java-alkalmazás hibakereséséhez és gyors megismétléséhez
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 2c086c952528d5521ace44d56eaf11c14ac1cabb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: d4e335826090d4ca4819c7466c7231cceb0d5bce
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602843"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252444"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Kubernetes fejlesztői terület létrehozása: a Visual Studio Code és a Java az Azure dev Spaces szolgáltatással
 
@@ -32,7 +32,7 @@ Az Azure Dev Spaces használatához minimális helyi gépbeállítás szüksége
 ### <a name="sign-in-to-azure-cli"></a>Bejelentkezés az Azure CLI-be
 Jelentkezzen be az Azure-ba. Írja be a következő parancsot egy terminálablakba:
 
-```cmd
+```azurecli
 az login
 ```
 
@@ -42,14 +42,14 @@ az login
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>Ha több Azure-előfizetéssel is rendelkezik...
 Az előfizetéseit a következő futtatásával tekintheti meg: 
 
-```cmd
+```azurecli
 az account list --output table
 ```
 
 Keresse meg azt az előfizetést, amely a *IsDefault*esetében *igaz* .
 Ha nem ezt az előfizetést szeretné használni, módosíthatja az alapértelmezett előfizetést:
 
-```cmd
+```azurecli
 az account set --subscription <subscription ID>
 ```
 
@@ -57,13 +57,13 @@ az account set --subscription <subscription ID>
 
 A parancssorban hozza létre az erőforráscsoportot egy olyan régióban, [amely támogatja az Azure dev Spaces platformot][supported-regions].
 
-```cmd
+```azurecli
 az group create --name MyResourceGroup --location <region>
 ```
 
 Hozzon létre egy Kubernetes-fürtöt az alábbi paranccsal:
 
-```cmd
+```azurecli
 az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
@@ -73,7 +73,7 @@ A fürt létrehozása néhány percet vesz igénybe.
 
 Írja be az alábbi Azure CLI-parancsot, és használja az AKS-fürtöt tartalmazó erőforráscsoportot, valamint az AKS-fürt nevét. A parancs konfigurálni fogja a fürtöt az Azure Dev Spaces támogatására.
 
-   ```cmd
+   ```azurecli
    az aks use-dev-spaces -g MyResourceGroup -n MyAKS
    ```
 

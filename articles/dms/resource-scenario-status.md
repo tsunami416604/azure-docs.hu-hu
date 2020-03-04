@@ -3,8 +3,8 @@ title: Adatbázis migrációs forgatókönyvének állapota
 titleSuffix: Azure Database Migration Service
 description: A Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapotának megismerése.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 03fb6a1aff62df878417da55a7da7b42186b3462
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9652b78674d6a6b905eb049564d1b17cdc7c17b7
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437679"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254928"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>A Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapota
 
@@ -45,7 +45,7 @@ Az alábbi táblázatok azt mutatják be, hogy mely áttelepítési forgatókön
 
 Az alábbi táblázat az offline áttelepítések Azure Database Migration Service támogatását mutatja be.
 
-| Cél  | Forrás | Támogatás | Állapot |
+| Cél  | Forrás | Támogatás | status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL-adatbázis** | SQL Server | ✔ | FE |
 |   | RDS SQL |  |  |
@@ -65,7 +65,7 @@ Az alábbi táblázat az offline áttelepítések Azure Database Migration Servi
 
 Az alábbi táblázat az online áttelepítések Azure Database Migration Service támogatását mutatja be.
 
-| Cél  | Forrás | Támogatás | Állapot |
+| Cél  | Forrás | Támogatás | status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL-adatbázis** | SQL Server | ✔ | FE |
 |   | RDS SQL | ✔ | FE |

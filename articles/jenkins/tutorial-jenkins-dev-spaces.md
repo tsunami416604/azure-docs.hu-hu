@@ -3,12 +3,12 @@ title: A Jenkins Azure dev Spaces beépülő moduljának használata az Azure Ku
 description: Ismerje meg, hogyan használható az Azure dev Spaces beépülő modul a folyamatos integrációs folyamatokban.
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 10dfbdb7d89d6f3870ec3b9dbd87d4d315360815
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 7b23893eb331f55ff41992a2ca660e79f44a609a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619978"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250904"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Oktatóanyag: a Jenkins Azure dev Spaces beépülő moduljának használata az Azure Kubernetes Service használatával 
 
@@ -53,26 +53,26 @@ Ebben a szakaszban az Azure-erőforrásokat hozza létre:
 
 1. Hozzon létre egy erőforráscsoportot.
 
-    ```bash
+    ```azurecli
     az group create --name MyResourceGroup --location westus2
     ```
 
 2. Hozzon létre egy AK-fürtöt. Hozza létre az AK-fürtöt egy olyan [régióban, amely támogatja a fejlesztői helyeket](../dev-spaces/about.md#supported-regions-and-configurations).
 
-    ```bash
+    ```azurecli
     az aks create --resource-group MyResourceGroup --name MyAKS --location westus2 --kubernetes-version 1.11.9 --enable-addons http_application_routing --generate-ssh-keys --node-count 1 --node-vm-size Standard_D1_v2
     ```
 
 3. Állítsa be az AK-t a fejlesztői szóközök használatára.
 
-    ```bash
+    ```azurecli
     az aks use-dev-spaces --resource-group MyResourceGroup --name MyAKS
     ```
     Ez a lépés telepíti a `azds` CLI-bővítményt.
 
 4. Hozzon létre egy tároló-beállításjegyzéket.
 
-    ```bash
+    ```azurecli
     az acr create -n MyACR -g MyResourceGroup --sku Basic --admin-enabled true
     ```
 
@@ -225,7 +225,7 @@ A minta folyamat Helm és kubectl használatával helyezi üzembe a fejlesztői 
 
 3. Az ACR hitelesítő adatainak megjelenítéséhez futtassa a következő parancsot:
 
-    ```bash
+    ```azurecli
     az acr credential show -n <yourRegistryName>
     ```
 
@@ -251,7 +251,7 @@ A minta folyamat Helm és kubectl használatával helyezi üzembe a fejlesztői 
 
 5. Hozzon létre egy AK-beli hitelesítő adatokat. Adjon hozzá egy *Kubernetes-konfigurációs (kubeconfig)* hitelesítőadat-típust a Jenkins-ben (használja a "közvetlen bevitel" lehetőséget). Az AK-fürthöz tartozó hozzáférési hitelesítő adatok lekéréséhez futtassa a következő parancsot:
 
-    ```cmd
+    ```azurecli
     az aks get-credentials -g MyResourceGroup -n <yourAKSName> -f -
     ```
 
@@ -403,7 +403,7 @@ stage('smoketest') {
 
 Ha elkészült a minta alkalmazás használatával, törölje az Azure-erőforrásokat az erőforráscsoport törlésével:
 
-```bash
+```azurecli
 az group delete -y --no-wait -n MyResourceGroup
 ```
 

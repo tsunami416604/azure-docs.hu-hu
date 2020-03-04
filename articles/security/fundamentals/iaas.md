@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: 6a775da59680004dadf0cec872057adfd5a16f49
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0a4daf61d6b791a01f5bfb18e6cfca8118b2f421
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749857"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255944"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 Ez a cikk a virtuális gépek és operációs rendszerek ajánlott biztonsági eljárásait ismerteti.
@@ -67,8 +67,8 @@ Ha a virtuális gép olyan kritikus fontosságú alkalmazásokat futtat, amelyek
 
 A rendelkezésre állási csoport olyan logikai csoportosítás, amelyet az Azure-ban használhat, így biztosíthatja, hogy a benne található virtuálisgép-erőforrások elkülönítve legyenek egymástól, amikor egy Azure-adatközpontban üzembe vannak helyezve. Az Azure biztosítja, hogy a rendelkezésre állási csoportba helyezett virtuális gépek több fizikai kiszolgálón, számítási állványokon, tárolási egységeken és hálózati kapcsolókon fussanak. Ha hardveres vagy Azure-beli szoftveres hiba lép fel, a rendszer csak a virtuális gépek egy részhalmazát érinti, és a teljes alkalmazás továbbra is elérhető lesz az ügyfelek számára. A rendelkezésre állási csoportok nélkülözhetetlen képességgel rendelkeznek, ha megbízható felhőalapú megoldásokat szeretne létrehozni.
 
-## <a name="protect-against-malware"></a>Védekezés a kártevők ellen
-A kártevők elleni védelmet a vírusok, kémprogramok és más kártevő szoftverek azonosításához és eltávolításához kell telepíteni. Telepítheti a [Microsoft antimalware](antimalware.md) -t vagy egy Microsoft-partner Endpoint Protection-megoldását ([Trend Micro](https://help.deepsecurity.trendmicro.com/Welcome.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)és [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
+## <a name="protect-against-malware"></a>Védelem a kártevők ellen
+A kártevők elleni védelmet a vírusok, kémprogramok és más kártevő szoftverek azonosításához és eltávolításához kell telepíteni. Telepítheti a [Microsoft antimalware](antimalware.md) -t vagy egy Microsoft-partner Endpoint Protection-megoldását ([Trend Micro](https://help.deepsecurity.trendmicro.com/Welcome.html), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)és [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
 
 A Microsoft antimalware olyan funkciókat tartalmaz, mint a valós idejű védelem, az ütemezett vizsgálat, a kártevők szervizelése, az aláírások frissítése, a motor frissítései, a minták jelentéskészítés és a kizárási események gyűjteménye. Az éles környezettől függetlenül üzemeltetett környezetekben a virtuális gépek és a Cloud Services elleni védelem érdekében antimalware-bővítményt használhat.
 
@@ -81,7 +81,7 @@ Az üzembe helyezéshez és a beépített észlelésekhez (riasztások és incid
 **Részletek**: [az Endpoint Protection hibáinak kezelése a Security Center](../../security-center/security-center-partner-integration.md)
 
 ## <a name="manage-your-vm-updates"></a>A virtuális gépek frissítéseinek kezelése
-Az Azure-beli virtuális gépeket, például az összes helyszíni virtuális gépet, a felhasználók felügyelik. Ezekre az Azure nem küldi le a Windows-frissítéseket. A virtuális gép frissítéseit kell kezelnie.
+Az Azure-beli virtuális gépeket, például az összes helyszíni virtuális gépet, a felhasználók felügyelik. Az Azure nem küldi le a Windows-frissítéseket. A virtuális gép frissítéseit kell kezelnie.
 
 **Ajánlott eljárás**: a virtuális gépek naprakészen tartása.   
 **Részletek**: a Azure Automation [Update Management](../../automation/automation-update-management.md) megoldásával kezelheti az Azure-ban, a helyszíni környezetekben vagy más felhőalapú szolgáltatókban üzembe helyezett Windows-és Linux-számítógépek operációs rendszerének frissítéseit. Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
@@ -152,10 +152,10 @@ A [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) segíts
 A Azure Disk Encryption használatának ajánlott eljárásai a következők:
 
 **Ajánlott eljárás**: a virtuális gépek titkosításának engedélyezése.   
-**Részletek**: a Azure Disk Encryption létrehozza és írja a kulcstárolóba a titkosítási kulcsokat. A Key vaultban lévő titkosítási kulcsok kezeléséhez Azure AD-hitelesítés szükséges. Hozzon létre egy Azure AD-alkalmazást erre a célra. Hitelesítési célból az ügyfél titkos hitelesítése vagy az [ügyféltanúsítvány-alapú Azure ad-hitelesítés](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)is használható.
+**Részletek**: a Azure Disk Encryption létrehozza és írja a kulcstárolóba a titkosítási kulcsokat. Az Azure AD-hitelesítés kezelése a titkosítási kulcsok a key vaultban lévő igényel. Hozzon létre egy Azure AD-alkalmazást erre a célra. Hitelesítési célból az ügyfél titkos hitelesítése vagy az [ügyféltanúsítvány-alapú Azure ad-hitelesítés](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)is használható.
 
 **Ajánlott eljárás**: kulcs titkosítási kulcs (KEK) használata a titkosítási kulcsok további biztonsági rétegéhez. Adjon hozzá egy KEK-t a kulcstartóhoz.   
-**Részletek**: az [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) parancsmag használatával hozzon létre egy kulcs-titkosítási kulcsot a kulcstartóban. Egy KEK-t is importálhat a helyszíni hardveres biztonsági modulról (HSM) a kulcskezelő szolgáltatáshoz. További információ: [Key Vault dokumentáció](../../key-vault/key-vault-hsm-protected-keys.md). Ha a kulcs titkosítási kulcsa meg van adva, Azure Disk Encryption ezt a kulcsot használja a titkosítási titok becsomagolásához a Key Vaultba való írás előtt. A kulcs letéti másolatának a helyszíni kulcskezelő HSM-ben való megőrzése további védelmet nyújt a kulcsok véletlen törlésével szemben.
+**Részletek**: az [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) parancsmag használatával hozzon létre egy kulcs-titkosítási kulcsot a kulcstartóban. Egy KEK-t is importálhat a helyszíni hardveres biztonsági modulról (HSM) a kulcskezelő szolgáltatáshoz. További információ: [Key Vault dokumentáció](../../key-vault/key-vault-hsm-protected-keys.md). Amikor egy kulcsalapú titkosítás kulcsa van megadva, az Azure Disk Encryption a kulcs segítségével burkolhatja a titkosítási titkos kulcsait a Key Vault írása előtt. A kulcs letéti másolatának a helyszíni kulcskezelő HSM-ben való megőrzése további védelmet nyújt a kulcsok véletlen törlésével szemben.
 
 **Ajánlott eljárás**: készítsen [pillanatképet](../../virtual-machines/windows/snapshot-copy-managed-disk.md) és/vagy biztonsági mentést a lemezek titkosítása előtt. A biztonsági másolatok helyreállítási lehetőséget biztosítanak, ha nem várt hiba történik a titkosítás során.   
 **Részletek**: a felügyelt lemezekkel rendelkező virtuális gépek biztonsági mentést igényelnek a titkosítás megkezdése előtt. A biztonsági mentést követően a **set-AzVMDiskEncryptionExtension** parancsmag használatával titkosíthatja a felügyelt lemezeket a *-skipVmBackup* paraméter megadásával. További információ a titkosított virtuális gépek biztonsági mentéséről és visszaállításáról: [Azure Backup](../../backup/backup-azure-vms-encryption.md) .

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 79517ffd68c501203ea9c02f3a3276973d4a8a56
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bc08cd5183bcaac6cb77ccb0938b07893f082862
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982150"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250210"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Telemetria szerializálása protokoll-pufferek használatával
 
@@ -174,7 +174,7 @@ Ha egy **proto** -fájllal rendelkezik, a következő lépés az üzenetek olvas
 
 1. [A Protopuf Compiler letöltése a GitHubról](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
 
-1. Futtassa a fordítót, adja meg a forrás könyvtárat, a célhely könyvtárat és a **proto** -fájl nevét. Példa:
+1. Futtassa a fordítót, adja meg a forrás könyvtárat, a célhely könyvtárat és a **proto** -fájl nevét. Például:
 
     ```cmd
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
@@ -206,7 +206,7 @@ Nyissa meg a **WebService\appsettings.ini** fájlt, és módosítsa a beállít�
 
 Alapértelmezés szerint az új eszköz-modell JSON-és JS-fájljai nem másolódnak át az épített megoldásba. Explicit módon fel kell vennie őket.
 
-Adjon hozzá egy bejegyzést a **services\services.csproj** -fájlhoz minden olyan fájlhoz, amelyet fel szeretne venni. Példa:
+Adjon hozzá egy bejegyzést a **services\services.csproj** -fájlhoz minden olyan fájlhoz, amelyet fel szeretne venni. Például:
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">
@@ -231,7 +231,7 @@ A következő parancsfájl feltételezi, hogy az IoT hub neve **Device-szimulác
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Monitor telemetry sent to your hub
 az iot hub monitor-events --hub-name device-simulation-test

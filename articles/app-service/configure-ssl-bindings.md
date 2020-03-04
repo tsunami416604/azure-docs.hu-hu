@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 60a4646b77f083590a6eb8a8648d6dea932f0bdd
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 263b4e76d334aab82f6bbac9aa268a50f4dd3784
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849751"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255175"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Egyéni DNS-név biztonságossá tétele SSL-kötéssel Azure App Service
 
@@ -24,7 +24,7 @@ Az [Egyéni tartományok](app-service-web-tutorial-custom-domain.md) tanúsítv�
 - [Adjon hozzá egy privát tanúsítványt app Servicehoz](configure-ssl-certificate.md) , amely megfelel az [SSL-kötések követelményeinek](configure-ssl-certificate.md#private-certificate-requirements).
 -  Hozzon létre egy SSL-kötést a megfelelő egyéni tartományhoz. Ez a második lépés a cikk hatálya alá esik.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Az alkalmazás tarifacsomagjának bővítése.
@@ -131,7 +131,7 @@ Az alkalmazás lapjának bal oldali navigációs sávján válassza az **SSL-be�
 
 ![HTTPS kényszerítése](./media/configure-ssl-bindings/enforce-https.png)
 
-Ha a művelet befejeződött, nyissa meg az alkalmazásra mutató HTTP URL-címek valamelyikét. Példa:
+Ha a művelet befejeződött, nyissa meg az alkalmazásra mutató HTTP URL-címek valamelyikét. Például:
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
@@ -147,9 +147,15 @@ Az alkalmazás lapjának bal oldali navigációs sávján válassza az **SSL-be�
 
 A művelet befejezése után az alkalmazás elutasítja a korábbi TLS-verziójú kapcsolatokat.
 
+## <a name="handle-ssl-termination"></a>SSL-megszakítás kezelése
+
+App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e, vagy sem, vizsgálja meg a `X-Forwarded-Proto` fejlécét.
+
+A nyelvspecifikus konfigurációs útmutatók, például a [Linux Node. js konfigurációs](containers/configure-language-nodejs.md#detect-https-session) útmutatója bemutatja, hogyan ÉSZLELHETŐ egy https-munkamenet az alkalmazás kódjában.
+
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
@@ -157,7 +163,7 @@ A művelet befejezése után az alkalmazás elutasítja a korábbi TLS-verziój�
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>További források
+## <a name="more-resources"></a>További segédanyagok
 
 * [SSL-tanúsítvány használata az alkalmazás kódjában](configure-ssl-certificate-in-code.md)
 * [Gyakori kérdések: App Service tanúsítványok](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

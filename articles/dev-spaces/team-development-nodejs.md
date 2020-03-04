@@ -5,12 +5,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure dev Spaces és a Visual Studio Code szolgáltatást a csapat fejlesztéséhez egy Node. js-alkalmazásban az Azure Kubernetes szolgáltatásban
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: e2124d6c3f903f6a9faa6c41a2015b7198faf42d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: abcf4934af056d508ac136f80758597294d40b1a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438120"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251937"
 ---
 # <a name="team-development-using-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Csoportmunka-fejlesztés a Node. js és a Visual Studio Code használatával az Azure dev Spaces segítségével
 
@@ -162,6 +162,9 @@ Ha egy fürt egy Azure Dev Spaces-példányát teljesen, az összes Dev Spaces-t
 Az alábbi példa listázza az aktív előfizetése Azure Dev Spaces-vezérlőit, majd törli a myaks-rg erőforráscsoportban lévő myaks AKS-fürthöz társított Azure Dev Spaces-vezérlőt.
 
 ```cmd
-    azds controller list
-    az aks remove-dev-spaces --name myaks --resource-group myaks-rg
+azds controller list
+```
+
+```azurecli
+az aks remove-dev-spaces --name myaks --resource-group myaks-rg
 ```

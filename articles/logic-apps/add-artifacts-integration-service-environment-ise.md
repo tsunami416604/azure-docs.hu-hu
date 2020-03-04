@@ -1,27 +1,29 @@
 ---
-title: Összetevők felvétele integrációs szolgáltatási környezetekbe
+title: Erőforrások hozzáadása az integrációs szolgáltatási környezetekhez
 description: Logikai alkalmazások, integrációs fiókok, egyéni összekötők és felügyelt összekötők hozzáadása az integrációs szolgáltatási környezethez (ISE)
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: e2505d8ee8b8539f158c0a549bedfcd69a954e24
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/28/2020
+ms.openlocfilehash: d6e5eb8875e6b7d930a002708079dab0e357297f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191663"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250929"
 ---
-# <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Összetevők hozzáadása az integrációs szolgáltatási környezethez (ISE) Azure Logic Apps
+# <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Erőforrások hozzáadása az integrációs szolgáltatási környezethez (ISE) Azure Logic Apps
 
-Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)létrehozása után olyan összetevőket adhat hozzá, mint például a Logic apps, az integrációs fiókok és az összekötők, hogy hozzáférhessenek az Azure-beli virtuális hálózatban található erőforrásokhoz. Az ISE létrehozása után elérhető felügyelt ISE-összekötők például nem jelennek meg automatikusan a Logic app Designerben. Az ISE-összekötők használata előtt ezeket az [összekötőket manuálisan kell hozzáadnia és telepítenie az ISE](#add-ise-connectors-environment) -ben, hogy azok megjelenjenek a Logic app Designerben.
+Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)létrehozása után olyan erőforrásokat adhat hozzá, mint például a Logic apps, az integrációs fiókok és az összekötők, hogy hozzáférhessenek az Azure-beli virtuális hálózatban található erőforrásokhoz. Az ISE létrehozása után elérhető felügyelt ISE-összekötők például nem jelennek meg automatikusan a Logic app Designerben. Az ISE-összekötők használata előtt ezeket az [összekötőket manuálisan kell hozzáadnia és telepítenie az ISE](#add-ise-connectors-environment) -ben, hogy azok megjelenjenek a Logic app Designerben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
 * A logikai alkalmazások futtatásához létrehozott ISE. Ha nem rendelkezik ISE-vel, [először hozzon létre egy ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)-t.
+
+* Az ISE-ben központilag telepített erőforrások létrehozásához, hozzáadásához vagy frissítéséhez hozzá kell rendelnie a tulajdonosi vagy közreműködői szerepkört az ISE-hez, vagy ha rendelkezik az ISE-hez társított Azure-előfizetéssel vagy Azure-erőforráscsoport-hozzáféréssel. Azok számára, akik nem rendelkeznek tulajdonossal, közreműködővel vagy örökölt engedélyekkel, hozzá lehet rendelni a integrációs szolgáltatási környezet közreműködő szerepkört vagy integrációs szolgáltatási környezet fejlesztői szerepkört. További információ a szerepköralapú hozzáférés-vezérlésről (RBAC): [Mi az Azure-erőforrások szerepköralapú hozzáférés-vezérlése (RBAC)](../role-based-access-control/overview.md)?
 
 <a name="create-logic-apps-environment"></a>
 
@@ -82,7 +84,7 @@ ISE-t használó integrációs fiók létrehozásához kövesse az alábbi lép�
 
 1. [Kapcsolja össze a logikai alkalmazást az integrációs fiókjával a szokásos módon](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
-1. Folytassa az összetevők hozzáadásával az integrációs fiókjához, például a [kereskedelmi partnerekhez](../logic-apps/logic-apps-enterprise-integration-partners.md) és a [szerződésekhez](../logic-apps/logic-apps-enterprise-integration-agreements.md).
+1. Folytassa az erőforrások hozzáadásával az integrációs fiókjához, például a [kereskedelmi partnerekhez](../logic-apps/logic-apps-enterprise-integration-partners.md) és a [szerződésekhez](../logic-apps/logic-apps-enterprise-integration-agreements.md).
 
 1. Az ISE integrációs fiókjainak kezeléséhez lásd: [az integrációs szolgáltatási környezet kezelése](../logic-apps/ise-manage-integration-service-environment.md).
 

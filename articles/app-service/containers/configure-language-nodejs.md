@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat egy előre elkészített Node. j
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 45d7d141bc2ab85ab33be455fc3da5570b0e7f51
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: fdc5129fc395f99cb4c244414ea952b2776dc4dc
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920025"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255853"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Linux Node. js-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -271,6 +271,8 @@ Ha egy működő Node. js-alkalmazás máshogy viselkedik App Service vagy hibá
     - Bizonyos webes keretrendszerek eltérő üzemi módban telepíthetnek statikus fájlokat.
     - Bizonyos webes keretrendszerek éles módban történő futtatáskor egyéni indítási parancsfájlokat is használhatnak.
 - Az alkalmazást App Service fejlesztési módban futtathatja. A [Mean. js](https://meanjs.org/)fájlban például beállíthatja, hogy az alkalmazás a Futtatás közben fejlesztési módba legyen állítva [a `NODE_ENV` alkalmazás beállításával](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
+
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

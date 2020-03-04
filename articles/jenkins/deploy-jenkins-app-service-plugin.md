@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan használhatja az Azure App Service Jenkins beé
 keywords: jenkins, azure, devops, app service
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: de1bf0ea06210c86ff1da21dcac667754f11d7f4
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcaf45003e865cc5aac3f6bd4580479a27d38b50
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158514"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251459"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Üzembe helyezés az Azure App Service-ben a Jenkins beépülő modullal 
 
@@ -67,7 +67,7 @@ Ha a Web Appsben szeretné üzembe helyezni a projektjeit, feltöltheti a build�
 Mielőtt beállítaná a feladatot a Jenkinsben, szüksége van egy Azure App Service-csomagra és egy webalkalmazásra a Java-alkalmazás futtatásához.
 
 
-1. AzAzure CLI-paranccsal`az appservice plan create` hozzon létre egy Azure App Service-csomagot [INGYENES](/cli/azure/appservice/plan#az-appservice-plan-create) tarifacsomaggal. Az App Service-csomag határozza meg az alkalmazások üzemeltetéséhez használt fizikai erőforrásokat. Az App Service-csomaghoz rendelt összes alkalmazás ugyanezeket az erőforrásokat használja. A megosztott erőforrásokkal csökkenthetők a költségek, ha több alkalmazást is üzemeltet.
+1. Hozzon létre egy Azure App Service csomagot az **ingyenes** díjszabási csomaggal az `az appservice plan create` [Azure CLI parancs](/cli/azure/appservice/plan#az-appservice-plan-create)használatával. Az App Service-csomag határozza meg az alkalmazások üzemeltetéséhez használt fizikai erőforrásokat. Az App Service-csomaghoz rendelt összes alkalmazás ugyanezeket az erőforrásokat használja. A megosztott erőforrásokkal csökkenthetők a költségek, ha több alkalmazást is üzemeltet.
 2. Hozzon létre egy webalkalmazást. Ehhez használhatja az [Azure Portalt](/azure/app-service/configure-common) vagy az alábbi `az` Azure CLI-parancsot:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
@@ -207,10 +207,13 @@ A **Docker-beállításjegyzék URL-címeként** adja meg az URL-címet a követ
 ### <a name="for-azure-app-service-on-linux"></a>Azure App Service on Linux esetén
 
 1. A webalkalmazás ellenőrzéséhez futtassa az alábbi parancsot az Azure CLI-ben:
-    ```CLI
+    
+    ```azurecli
     az acr repository list -n <myRegistry> -o json
     ```
+    
     Az alábbi üzenet jelenik meg:
+    
     ```CLI
     ["calculator"]
     ```

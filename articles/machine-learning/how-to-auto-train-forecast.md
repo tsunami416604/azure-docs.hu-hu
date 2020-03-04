@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f5bd6b741f85f35fe03c941ed09728354d6b3d2d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 859f8a9c2bf644461c8945255de9f925b4e943f4
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905704"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251849"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -113,7 +113,7 @@ Az előrejelzési feladatokhoz az automatizált gépi tanulás az idősorozat-ad
 
 A [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) objektum az automatizált gépi tanulási feladatokhoz szükséges beállításokat és adatmennyiséget határozza meg. A regressziós problémákhoz hasonlóan szabványos betanítási paramétereket is definiálhat, például a feladattípust, az ismétlések számát, a betanítási adatok számát és az eltérő érvényességi értéket. Az előrejelzési feladatokhoz további paramétereket kell megadni, amelyek hatással vannak a kísérletre. Az alábbi táblázat az egyes paramétereket és azok használatát ismerteti.
 
-| Param | Leírás | Szükséges |
+| Param | Leírás | Kötelező |
 |-------|-------|-------|
 |`time_column_name`|A dátum-és idősorozatok létrehozásához használt bemeneti adatok datetime oszlopának megadására szolgál.|✓|
 |`grain_column_names`|Az egyes adatsorozat-csoportokat meghatározó nevek a bemeneti adatokban. Ha a gabona nincs meghatározva, a rendszer az adathalmazt egy idősorozatra feltételezi.||
@@ -178,13 +178,14 @@ Tekintse meg az [előrejelzési minta jegyzetfüzeteket](https://github.com/Azur
 ### <a name="configure-a-dnn-enable-forecasting-experiment"></a>DNN-előrejelzési kísérlet engedélyezése
 
 > [!NOTE]
-> Az automatikus Machine Learning DNN támogatása előzetes verzióban érhető el.
+> Az automatikus Machine Learning DNN támogatása előzetes verzióban érhető el, és helyi futtatások esetén nem támogatott.
 
 Az előrejelzési DNN kihasználása érdekében `enable_dnn` a AutoMLConfig paramétert True értékre kell állítani a. 
 
-A DNN használatához javasoljuk, hogy használjon olyan pénzmosás-számítási fürtöt, amely GPU SKU-ket és legalább két csomópontot használ számítási célként. További információkért lásd a pénzmosás- [számítás dokumentációját](how-to-set-up-training-targets.md#amlcompute). A GPU-ket tartalmazó virtuálisgép-méretekkel kapcsolatos további információkért lásd a GPU-ra [optimalizált virtuális gépek méretét](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) .
+Javasoljuk, hogy használjon olyan pénzmosás-számítási fürtöt, amely GPU SKU-ket és legalább két csomópontot használ számítási célként. Ahhoz, hogy elegendő idő legyen a DNN képzés befejezésére, javasoljuk, hogy állítsa be a kísérlet időtúllépését legalább néhány órára.
+A GPU-k által használt és a virtuális gépek méretével kapcsolatos további információkért lásd a [pénzmosás-alapú számítási dokumentációt](how-to-set-up-training-targets.md#amlcompute) és a GPU-ra [optimalizált virtuálisgép-méretek dokumentációját](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
 
-Ahhoz, hogy elegendő idő legyen a DNN képzés befejezésére, javasoljuk, hogy a kísérlet időtúllépését legalább néhány óráig állítsa be.
+Tekintse meg az [üzemi előrejelzést tartalmazó jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) , amely egy részletes kód, például a DNN kihasználása.
 
 ### <a name="view-feature-engineering-summary"></a>Szolgáltatások mérnöki összefoglalásának megtekintése
 

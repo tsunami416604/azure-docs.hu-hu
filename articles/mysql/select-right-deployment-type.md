@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 8cff61d547e75b186869b3ab4d57c5eb12e6e2f5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 50bcd42189b1bcc945d726277975892f07f1baa1
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935463"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255534"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Válassza ki a megfelelő MySQL-kiszolgáló lehetőséget az Azure-ban
 
@@ -31,9 +31,9 @@ A döntés meghozatalakor vegye figyelembe a következő két lehetőséget:
 
 A fenti lehetőségek közötti fő különbségek a következő táblázatban láthatók:
 
-|            | A MySQL-hez készült Azure Database | MySQL Azure-beli virtuális gépeken    |
+|            | Azure Database for MySQL | MySQL Azure-beli virtuális gépeken    |
 |:-------------------|:-----------------------------|:--------------------|
-| Szolgáltatásiszint-szerződés (SLA)                | A 99,99%-os rendelkezésre állást biztosító SLA-t kínál| Akár 99,95%-os rendelkezésre állást biztosít két vagy több példányban ugyanabban a rendelkezésre állási csoporton belül.<br/><br/>99,9%-os rendelkezésre állás egyetlen példányos virtuális géppel Premium Storage használatával.<br/><br/>99,99% a több rendelkezésre állási csoport több példányával rendelkező Availability Zones használatával.<br/><br/>Lásd a [Virtual Machines SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)-t. |
+| Szolgáltatói szerződés (SLA)                | A 99,99%-os rendelkezésre állást biztosító SLA-t kínál| Akár 99,95%-os rendelkezésre állást biztosít két vagy több példányban ugyanabban a rendelkezésre állási csoporton belül.<br/><br/>99,9%-os rendelkezésre állás egyetlen példányos virtuális géppel Premium Storage használatával.<br/><br/>99,99% a több rendelkezésre állási csoport több példányával rendelkező Availability Zones használatával.<br/><br/>Lásd a [Virtual Machines SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)-t. |
 | Operációs rendszer javítása        | Automatikus  | Ügyfelek által felügyelt |
 | MySQL-javítás     | Automatikus  | Ügyfelek által felügyelt |
 | Magas rendelkezésre állás | A magas rendelkezésre állású (HA) modell olyan beépített feladatátvételi mechanizmusokon alapul, amelyekben csomópont szintű megszakítás történik. Ilyen esetekben a szolgáltatás automatikusan létrehoz egy új példányt, és csatolja a tárolót ehhez a példányhoz. | Az ügyfelek a magas rendelkezésre állás kialakítását, tesztelését és karbantartását is elismerik. A képességek lehetnek fürtözés, replikálás stb.|
@@ -41,7 +41,7 @@ A fenti lehetőségek közötti fő különbségek a következő táblázatban l
 | Hibrid forgatókönyvek | A [felhőbe irányuló replikálás](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)segítségével egy külső MySQL-kiszolgáló adatait szinkronizálhatja a Azure Database for MySQL szolgáltatásba. A külső kiszolgáló lehet helyszíni, virtuális gépek vagy más felhőalapú szolgáltatók által üzemeltetett adatbázis-szolgáltatás.<br/><br/> Az [olvasási replika](https://docs.microsoft.com/azure/mysql/concepts-read-replicas) funkcióval egy Azure Database for MySQL főkiszolgálóról legfeljebb öt írásvédett másodpéldány-kiszolgálóra lehet replikálni az adatait. A replikák vagy ugyanabban az Azure-régióban vagy régiókban találhatók. Az írásvédett replikák aszinkron módon frissülnek a BinLog replikációs technológiával.| Ügyfelek által felügyelt
 | Biztonsági mentés és helyreállítás | A automatikusan létrehozza a [kiszolgáló biztonsági másolatait](https://docs.microsoft.com/azure/mysql/concepts-backup#backups) , és tárolja azokat a helyileg redundáns vagy földrajzilag redundáns, felhasználó által konfigurált tárolóban. A szolgáltatás teljes, differenciális és tranzakciónapló-alapú biztonsági mentéseket tart | Ügyfelek által felügyelt |
 | Adatbázis-műveletek figyelése | A lehetővé teszi az ügyfeleknek, hogy [riasztásokat állítsanak be](https://docs.microsoft.com/azure/mysql/concepts-monitoring) az adatbázis-műveletre, és a küszöbértékek elérésekor járjanak. | Ügyfelek által felügyelt |
-| Komplex veszélyforrások elleni védelem | [Fejlett veszélyforrások elleni védelmet](https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal)nyújt. Ez a védelem olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. | Az ügyfeleknek saját maguknak kell elkészíteniük ezt a védelmet.
+| Fejlett fenyegetésvédelem | [Fejlett veszélyforrások elleni védelmet](https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal)nyújt. Ez a védelem olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. | Az ügyfeleknek saját maguknak kell elkészíteniük ezt a védelmet.
 | Vészhelyreállítás | Az automatizált biztonsági mentéseket a felhasználó által konfigurált [helyileg redundáns vagy földrajzilag redundáns tárolóban](https://docs.microsoft.com/azure/mysql/howto-restore-server-portal)tárolja. A biztonsági mentések egy adott időpontban is visszaállíthatják a kiszolgálót. A megőrzési időtartam 7 és 35 nap között van. A visszaállítás a Azure Portal használatával valósul meg. | Az ügyfelek teljes körűen kezelik. A felelősség magában foglalja az ütemezési, tesztelési, archiválási, tárolási és adatmegőrzési feladatokat. Egy másik lehetőség egy Azure Recovery Services-tároló használata az Azure-beli virtuális gépek és adatbázisok biztonsági mentésére a virtuális gépeken. Ez a beállítás előzetes verzióban érhető el. |
 | Teljesítménnyel kapcsolatos javaslatok | [Teljesítményre vonatkozó javaslatokat](https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110) biztosít az ügyfeleknek a rendszer által létrehozott használati naplófájlok alapján. A javaslatok segítenek optimalizálni a munkaterheléseket. | Ügyfelek által felügyelt |
 
@@ -49,7 +49,7 @@ A fenti lehetőségek közötti fő különbségek a következő táblázatban l
 
 A MySQL-adatbázisok üzemeltetéséhez több tényező is befolyásolhatja a IaaS-t vagy a kiválasztását.
 
-### <a name="cost"></a>Költség
+### <a name="cost"></a>Költségek
 
 A korlátozott finanszírozás gyakran az elsődleges szempont, amely meghatározza az adatbázisok üzemeltetésének legjobb megoldását. Ez akkor is igaz, ha kevés pénzzel vagy csapattal rendelkezik egy olyan vállalatnál, amely szűk költségvetési megkötések keretében működik. Ez a szakasz a számlázási és licencelési alapismereteket ismerteti az Azure-ban, mivel azok az Azure-beli virtuális gépeken a Azure Database for MySQL és a MySQL
 
@@ -66,7 +66,7 @@ A díjszabással kapcsolatos további információkért tekintse meg a következ
 * [Virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * [Azure-díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 
-### <a name="administration"></a>Felügyelet
+### <a name="administration"></a>Adminisztráció
 
 Sok vállalat esetében a felhőalapú szolgáltatásba való áttérésre vonatkozó döntés annyit jelent, mint az adminisztráció bonyolultságának kiszervezése. A IaaS és a Pásti, a Microsoft:
 
@@ -80,9 +80,9 @@ A következő lista az egyes lehetőségek felügyeleti szempontjait ismerteti:
 
 * A Azure Database for MySQL használatával továbbra is felügyelheti az adatbázist. Azonban már nincs szükség az adatbázismotor, az operációs rendszer vagy a hardver felügyeletére. Példák a továbbra is felügyelhető elemekre:
 
-  - Adatbázis-kezelés
+  - Adatbázisok
   - Bejelentkezés
-  - Index-finomhangolás
+  - Index finombeállítása
   - Lekérdezés finomhangolása
   - Naplózás
   - Biztonság
@@ -102,4 +102,4 @@ A következő lista az egyes lehetőségek felügyeleti szempontjait ismerteti:
 ## <a name="next-steps"></a>Következő lépések
 
 * Lásd: [Azure Database for MySQL díjszabása](https://azure.microsoft.com/pricing/details/MySQL/).
-* Első lépésként [létrehozhatja az első kiszolgálóját](https://review.docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal).
+* Első lépésként [létrehozhatja az első kiszolgálóját](https://docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal).

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b24a08ee0367cc3dbb1c845854a0fbc91e0f1d2c
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 4638b5bfc3ff31d0d2149e7ee227c46d3360a306
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227088"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254993"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>REST-technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -127,7 +127,7 @@ A technikai profil a jogcímeket is visszaadja, amelyeket az identitás-szolgál
 | AuthenticationType | Igen | A REST-alapú jogcím-szolgáltató által végrehajtott hitelesítés típusa. Lehetséges értékek: `None`, `Basic`, `Bearer`vagy `ClientCertificate`. A `None` érték azt jelzi, hogy a REST API nem anonim. A `Basic` érték azt jelzi, hogy a REST API a HTTP alapszintű hitelesítéssel védett. Csak ellenőrzött felhasználók férhetnek hozzá az API-hoz, beleértve a Azure AD B2C is. A `ClientCertificate` (ajánlott) érték azt jelzi, hogy a REST API ügyféltanúsítvány-alapú hitelesítés használatával korlátozza a hozzáférést. Csak a megfelelő tanúsítvánnyal rendelkező szolgáltatások férhetnek hozzá az API-hoz (például Azure AD B2C). Az `Bearer` érték azt jelzi, hogy a REST API az ügyfél OAuth2 tulajdonosi jogkivonatával korlátozza a hozzáférést. |
 | AllowInsecureAuthInProduction| Nem| Azt jelzi, hogy a `AuthenticationType` beállítható-e `none` éles környezetben (`DeploymentMode` a [TrustFrameworkPolicy](trustframeworkpolicy.md) értéke `Production`, vagy nincs megadva). Lehetséges értékek: true vagy FALSE (alapértelmezett). |
 | SendClaimsIn | Nem | Megadja, hogy a rendszer hogyan küldje el a bemeneti jogcímeket a REST-jogcím-szolgáltatónak. Lehetséges értékek: `Body` (alapértelmezett), `Form`, `Header`vagy `QueryString`. A `Body` érték a kérelem törzsében a JSON formátumban elküldett bemeneti jogcím. Az `Form` érték az a bemeneti jogcím, amelyet a rendszer a kérés törzsében küld el egy "&", a kulcs értékének formátuma. A `Header` érték a kérelem fejlécében elküldhető bemeneti jogcím. A `QueryString` érték a kérelem lekérdezési karakterláncában elküldhető bemeneti jogcím. Az egyesek által meghívott HTTP-műveletek a következők:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`QueryString`: GET</li></ul> |
-| ClaimsFormat | Nem | Megadja a kimeneti jogcímek formátumát. Lehetséges értékek: `Body` (alapértelmezett), `Form`, `Header`vagy `QueryString`. A `Body` érték a kérelem törzsében a JSON formátumban elküldhető kimeneti jogcím. A `Form` érték a kérés törzsében az "&" és a kulcs értékének megadásával elválasztott kimeneti jogcím. A `Header` érték a kérelem fejlécében elküldhető kimeneti jogcím. A `QueryString` érték a kérelem lekérdezési karakterláncában elküldhető kimeneti jogcím. |
+| ClaimsFormat | Nem | Jelenleg nincs használatban, figyelmen kívül hagyható. |
 | ClaimUsedForRequestPayload| Nem | Egy olyan karakterlánc-jogcím neve, amely a REST API küldendő adattartalmat tartalmazza. |
 | DebugMode | Nem | A technikai profilt hibakeresési módban futtatja. Lehetséges értékek: `true`vagy `false` (alapértelmezett). Hibakeresési módban a REST API további információkat adhat vissza. Lásd a [visszatérési hibaüzenet](#returning-error-message) szakaszt. |
 | IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true`vagy `false` (alapértelmezett). Ha a technikai profilban egy jogcímet feloldót szeretne használni, állítsa be `true`ra. |
@@ -222,7 +222,7 @@ Előfordulhat, hogy a REST API hibaüzenetet kell visszaadnia, például "a felh
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| verzió | Igen | 1.0.0 |
+| version | Igen | 1.0.0 |
 | status | Igen | 409 |
 | code | Nem | A REST-végpont szolgáltatójának hibakódja, amely akkor jelenik meg, ha `DebugMode` engedélyezve van. |
 | Kérelemazonosító | Nem | A REST végpont-szolgáltatótól származó kérelem azonosítója, amely akkor jelenik meg, ha `DebugMode` engedélyezve van. |

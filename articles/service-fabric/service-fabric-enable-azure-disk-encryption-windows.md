@@ -3,12 +3,12 @@ title: Windows-fürtök lemezes titkosításának engedélyezése
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a lemezek titkosítása az Azure Service Fabric-fürtcsomópontok számára a Azure Resource Manager Azure Key Vault használatával.
 ms.topic: article
 ms.date: 03/22/2019
-ms.openlocfilehash: 24405c3c34bfd7b88932101c42a8d0fc96c90fa1
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b08cdb63aa6f334c5a6f7c230b1624d232206c3b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614451"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251819"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>Lemez titkosításának engedélyezése az Azure Service Fabric-fürtcsomópontok számára a Windows rendszerben 
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ A virtuálisgép-méretezési csoport lemez-titkosítási előnézete önregiszt
 | ------------- |-------------| ------------|
 | Get-AzVmssDiskEncryptionStatus   | 1.0.0 vagy újabb | Az.Compute |
 | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 vagy újabb | Az.Compute |
-| AzVmssDiskEncryption letiltása   | 1.0.0 vagy újabb | Az.Compute |
+| Disable-AzVmssDiskEncryption   | 1.0.0 vagy újabb | Az.Compute |
 | Get-AzVmssDiskEncryption   | 1.0.0 vagy újabb | Az.Compute |
 | Get-AzVmssVMDiskEncryption   | 1.0.0 vagy újabb | Az.Compute |
 | Set-AzVmssDiskEncryptionExtension   | 1.0.0 vagy újabb | Az.Compute |
@@ -200,7 +200,7 @@ Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssNam
 
 ```
 
-```CLI
+```azurecli
 
 az vmss encryption disable -g <resourceGroupName> -n <VMSS name>
 

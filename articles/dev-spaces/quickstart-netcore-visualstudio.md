@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárol
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: de830d07010037793eaf7471fc1147a42081b09c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 5deebf7a51917a2b199ad525ab087fd5b0268c18
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770594"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245030"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes-on: Visual Studio & .NET Core – Azure dev Spaces
 
@@ -44,7 +44,7 @@ A [támogatott régiókban][supported-regions]létre kell hoznia egy AK-fürtöt
     ![AK létrehozása a Azure Portalban](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
 1. Kattintson az *Áttekintés + létrehozás* elemre.
-1. Kattintson a *Create* (Létrehozás) gombra.
+1. Kattintson a  *Create* (Létrehozás) gombra.
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az Azure dev-helyek engedélyezése az AK-fürtön
 
@@ -60,7 +60,7 @@ Navigáljon az AK-fürthöz a Azure Portalban, és kattintson a *dev Spaces*elem
 1. Nevezze el a projekt *webfelületét* , és kattintson a *Létrehozás*gombra.
 1. Ha a rendszer kéri, válassza a *webalkalmazás (Model-View-Controller)* elemet a sablonhoz.
 1. Válassza a *.net Core* és a *ASP.net Core 2,1* elemet a felső részen.
-1. Kattintson a *Create* (Létrehozás) gombra.
+1. Kattintson a  *Create* (Létrehozás) gombra.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>A projekt összekötése a fejlesztői területtel
 
@@ -124,7 +124,7 @@ Távolítsa el a töréspontot úgy, hogy a kurzort a 20. sorba helyezi `Control
 
 Navigáljon az erőforráscsoporthoz a Azure Portalon, majd kattintson az *erőforráscsoport törlése*elemre. Azt is megteheti, hogy az az [AK delete](/cli/azure/aks#az-aks-delete) parancsot használja:
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 

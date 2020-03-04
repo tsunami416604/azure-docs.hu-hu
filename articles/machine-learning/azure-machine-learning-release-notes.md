@@ -10,18 +10,56 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11b8ade765a2b1c1ee25421073983b96c34e5d15
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 6f244fc057638bc94a94c150d9333435c0197a74
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462173"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249746"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
 Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -referenciát tartalmazó oldalt.
 
 Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az ismert problémák listáját](resource-known-issues.md) .
+
+## <a name="2020-03-02"></a>2020-03-02
+
+### <a name="azure-machine-learning-sdk-for-python-v112rc0"></a>Azure Machine Learning SDK for Python v 1.1.2 RC0
+
++ **Hibajavítások és javítások**
+  + **azureml-automl-Core**
+    + Engedélyezve van a Batch Mode következtetés (több sor többszöri elkészítése) a automl ONNX-modellekhez
+    + Javult az adathalmazok gyakoriságának észlelése, az adat hiánya vagy a szabálytalan adatpontokat tartalmazó információk
+    + Hozzáadta az olyan adatpontok eltávolításának lehetőségét, amelyek nem felelnek meg a domináns frequrncy.
+  + **azureml-automl-futtatókörnyezet**
+    + Kijavítottuk a hibát, amely akkor fordul elő, ha a betanítási készletben nem szereplő gabona szerepel a tesztelési készletben.
+    + Az előrejelzési szolgáltatásra vonatkozó pontozás során eltávolította a y_query követelményt
+  + **azureml – megterhelés – Mir**
+    + Funkciók beolvasása a MirWebservice osztályban a hozzáférési jogkivonat lekéréséhez
+  + **azureml – mag**
+    + A AzureML webszolgáltatások üzembe helyezése mostantól alapértelmezés szerint `INFO` a naplózáshoz. Ezt a `AZUREML_LOG_LEVEL` környezeti változó beállításával szabályozhatja a telepített szolgáltatásban.
+    + A munkaterületen regisztrált összes adatkészlet visszaküldéséhez javítsa a `Dataset.get_all` megismétlését.
+    + Javítsa a hibaüzenetet, ha a rendszer érvénytelen típust ad át az adatkészlet-létrehozási API-k `path` argumentumának.
+    + A Python SDK a felderítési szolgáltatás használatával "API" végpontot használ a "folyamatok" helyett.
+    + Csere az új útvonalakra az összes SDK-hívásban
+    + A ModelManagementService irányuló hívások átirányításának módosítása egy új egyesített struktúrára
+      + A munkaterület frissítési metódusa nyilvánosan elérhető.
+      + Image_build_compute paraméter hozzáadva a munkaterület-frissítési metódusban, amely lehetővé teszi a felhasználó számára a rendszerkép-létrehozási számítások frissítését.
+    +  Elavult üzeneteket adott hozzá a régi profilkészítési munkafolyamathoz. Rögzített profilkészítési CPU-és memória-korlátok
+  + **azureml – értelmezés**
+    + azureml frissítése – értelmezés az értelmezéshez – Community 0,6. *
+  + **azureml – mlflow**
+    + Adja hozzá a szuverén felhők támogatását a azureml. mlflow
+  + **azureml – folyamat – lépések**
+    + Áthelyezte a `AutoMLStep` a `azureml-pipeline-steps package`ba. A `AutoMLStep` elavult a `azureml-train-automl-runtime`on belül.
+  + **azureml-Train-automl-Client**
+    + Kijavított egy hibát, amelyben bizonyos csomagok a távoli futtatások helytelen verzióiban telepíthetők.
+  + **azureml-Train-automl-Runtime**
+    + Kijavítottuk a gyakoriság észlelésével kapcsolatos problémát a távoli futtatásokban.
+    + Áthelyezte a `AutoMLStep` a `azureml-pipeline-steps package`ba. A `AutoMLStep` elavult a `azureml-train-automl-runtime`on belül.
+  + **azureml-Train-Core**
+    + Áthelyezte a `AutoMLStep` a `azureml-pipeline-steps package`ba. A `AutoMLStep` elavult a `azureml-train-automl-runtime`on belül.
 
 ## <a name="2020-02-18"></a>2020-02-18
 

@@ -5,14 +5,14 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708308"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252065"
 ---
-# <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések az Azure Container Registryről
+# <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
 
 Ez a cikk a Azure Container Registryával kapcsolatos gyakori kérdésekre és ismert problémákra mutat.
 
@@ -114,13 +114,13 @@ Az ACR támogatja a Docker beállításjegyzék HTTP API v2-es verzióját. Az A
 
 Ha a bash:
 
-```bash
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
 PowerShell esetén:
 
-```powershell
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
@@ -151,13 +151,13 @@ docker push myregistry.azurecr.io/1gb:latest
 
 Látnia kell, hogy a tárhely kihasználtsága nőtt a Azure Portalban, vagy lekérdezheti a használatot a CLI használatával.
 
-```bash
+```azurecli
 az acr show-usage -n myregistry
 ```
 
 Törölje a rendszerképet az Azure CLI vagy a Portal használatával, és néhány perc alatt vizsgálja meg a frissített használatot.
 
-```bash
+```azurecli
 az acr repository delete -n myregistry --image 1gb
 ```
 
@@ -188,7 +188,7 @@ Engedélyezze a TLS 1,2-et a legutóbbi Docker-ügyfél (18.03.0 vagy újabb ver
 > [!IMPORTANT]
 > 2020. január 13-án Azure Container Registry a TLS 1,2 használatához a kiszolgálók és alkalmazások összes biztonságos kapcsolata szükséges. A TLS 1,0 és 1,1 támogatása megszűnik.
 
-### <a name="does-azure-container-registry-support-content-trust"></a>Támogatja az Azure Container Registry a tartalommegbízhatóságot?
+### <a name="does-azure-container-registry-support-content-trust"></a>Támogatja a Azure Container Registry a tartalom megbízhatóságát?
 
 Igen, a Azure Container Registryban megbízható rendszerképeket használhat, mivel a [Docker közjegyző](https://docs.docker.com/notary/getting_started/) integrálva van, és engedélyezhető. Részletekért lásd: [a tartalom megbízhatósága Azure Container Registryban](container-registry-content-trust.md).
 
@@ -216,12 +216,12 @@ Az ACR olyan [Egyéni szerepköröket](container-registry-roles.md) támogat, am
   Ezután hozzárendelheti a `AcrPull` vagy `AcrPush` szerepkört egy felhasználóhoz (a következő példában a `AcrPull`):
 
   ```azurecli
-    az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
-    ```
+  az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
+  ```
 
   Vagy rendelje hozzá a szerepkört egy, az alkalmazás azonosítója alapján azonosított szolgáltatási alapelvhez:
 
-  ```
+  ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
   ```
 
@@ -239,9 +239,9 @@ A megbízott ezután képes hitelesíteni és elérni a rendszerképeket a beál
   az acr repository list -n myRegistry
   ```
 
- Rendszerkép lekérése:
-    
-  ```azurecli
+* Rendszerkép lekérése:
+
+  ```console
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -275,9 +275,10 @@ A gyakori környezet-és beállításjegyzék-problémák megoldásához tekints
  - Ha a `docker pull` folyamatosan leáll, akkor probléma lehet a Docker-démonsal. A probléma általában a Docker-démon újraindításával csökkenthető. 
  - Ha továbbra is ezt a problémát látja a Docker-démon újraindítása után, akkor előfordulhat, hogy a probléma a gép hálózati kapcsolatával kapcsolatos problémába ütközik. Annak ellenőrzéséhez, hogy a gép általános hálózata kifogástalan állapotú-e, futtassa a következő parancsot a végponti kapcsolat teszteléséhez. A kapcsolat-ellenőrzési parancsot tartalmazó minimális `az acr`-verzió 2.2.9. Ha régebbi verziót használ, frissítse az Azure CLI-t.
  
-   ```azurecli
-    az acr check-health -n myRegistry
-    ```
+  ```azurecli
+  az acr check-health -n myRegistry
+  ```
+
  - Mindig legyen újrapróbálkozási mechanizmus az összes Docker-ügyfél-művelethez.
 
 ### <a name="docker-pull-is-slow"></a>A Docker-lekérés lassú
@@ -308,7 +309,7 @@ unauthorized: authentication required
 ```
 
 A hiba elhárítása:
-1. Adja hozzá a `--signature-verification=false` elemet a Docker-démon konfigurációs fájljához `/etc/sysconfig/docker`. Példa:
+1. Adja hozzá a `--signature-verification=false` elemet a Docker-démon konfigurációs fájljához `/etc/sysconfig/docker`. Például:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
@@ -492,7 +493,7 @@ Jelenleg nem támogatjuk a GitLab a forrás-eseményindítók esetében.
 | Git szolgáltatás | Forrás kontextus | Manuális létrehozás | Automatikus létrehozás a commit trigger használatával |
 |---|---|---|---|
 | GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | Igen | Igen |
-| Azure-beli adattárak | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Igen | Igen |
+| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Igen | Igen |
 | GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Igen | Nem |
 | BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Igen | Nem |
 

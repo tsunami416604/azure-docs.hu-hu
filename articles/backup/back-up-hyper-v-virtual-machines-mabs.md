@@ -3,12 +3,12 @@ title: Hyper-V rendszerű virtuális gépek biztonsági mentése a MABS-mel
 description: Ez a cikk a virtuális gépek Microsoft Azure Backup Server (MABS) használatával történő biztonsági mentésének és helyreállításának eljárásait tartalmazza.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: e23a3a5ad57e07f95958d8a21e091d663a5c1185
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586512"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255067"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Hyper-V rendszerű virtuális gépek biztonsági mentése Azure Backup Server
 
@@ -171,7 +171,7 @@ Miután elvégezte az előző szakaszban leírt lépéseket, és az MABS Summary
 
 1. Nyissa meg SQL Server Management Studiot, és kapcsolódjon a MABS-adatbázist futtató példányhoz.
 
-2. Futtassa a következő lekérdezést: `select * from tbl_SCH_ScheduleDefinition where JobDefinitionID='9B30D213-B836-4B9E-97C2-DB03C3EB39D7'`. Ez a lekérdezés a **ScheduleID**adja vissza. Jegyezze fel ezt az azonosítót, mert a következő lépésben használni fogja.
+2. Futtassa a következő lekérdezést: `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0`. Ez a lekérdezés a **ScheduleID**adja vissza. Jegyezze fel ezt az azonosítót, mert a következő lépésben használni fogja.
 
 3. A SQL Server Management Studio bontsa ki **SQL Server Agent**, majd a **feladatok**csomópontot. Kattintson a jobb gombbal a megjegyzett **ScheduleID** , és válassza **a feladatok indítása a következő lépésben**lehetőséget.
 

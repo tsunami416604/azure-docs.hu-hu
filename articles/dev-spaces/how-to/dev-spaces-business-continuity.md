@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Ismerje meg, hogyan használható az Azure dev Spaces és az Azure Kubernetes Services az üzletmenet folytonosságának biztosításához és a vész-helyreállítás előkészítéséhez
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 8a223e9610d2b243cd78bf8b674262d6438421a9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8561486bcf8524d309ba46fcbb4b4d3e180d7c72
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438522"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252391"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Üzletmenet-folytonosság és vész-helyreállítás az Azure dev Spaces szolgáltatásban
 
@@ -41,7 +41,7 @@ Ismételje meg a folyamatot az egyes fürtökön.
 
 A dev Spaces is engedélyezhető a parancssorban:
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
@@ -57,7 +57,7 @@ Miután megfelelően konfigurált egy biztonsági mentési fürtöt, amely a csa
 
 Válasszon másik fürtöt a következő CLI-paranccsal:
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g <new resource group name> -n <new cluster name>
 ```
 

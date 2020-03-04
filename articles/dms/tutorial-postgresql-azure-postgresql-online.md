@@ -3,8 +3,8 @@ title: 'Oktatóanyag: a PostgreSQL migrálása Azure Database for PostgreSQL onl
 titleSuffix: Azure Database Migration Service
 description: Ismerje meg, hogyan végezheti el a helyszíni PostgreSQL-ről történő online áttelepítést, hogy a parancssori felületen keresztül Azure Database for PostgreSQL a Azure Database Migration Service használatával.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/17/2020
-ms.openlocfilehash: c9cea6041c7f4d91295072121c62ba028e5ad937
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: fc2852aaa77dec9537aa8fc42f7f08ca441a129a
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470938"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255645"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Oktatóanyag: a PostgreSQL migrálása az Azure DB for PostgreSQL online-ba a DMS használatával az Azure CLI-n keresztül
 

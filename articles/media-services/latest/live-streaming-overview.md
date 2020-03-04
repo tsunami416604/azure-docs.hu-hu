@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: 93005b181075ac671af6c8d73a3f2a06ed9eb0d8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b366262ce7849658eb84444d873956c25ab38804
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977743"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244657"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő közvetítés a Azure Media Services v3-val
 
@@ -41,7 +41,7 @@ A Media Services segítségével kihasználhatja a [dinamikus csomagolás](dynam
 
 ## <a name="dynamic-encryption"></a>Dinamikus titkosítás
 
-A dinamikus titkosítás lehetővé teszi, hogy az élő vagy igény szerinti tartalmakat az AES-128 vagy a három jelentős digitális jogkezelési (DRM) rendszerű rendszeren keresztül dinamikusan titkosítsa: Microsoft PlayReady, Google Widevine és Apple FairPlay. A Media Services egy szolgáltatást is biztosít az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licencek továbbítására a hitelesítő ügyfelek számára. További információ: [dinamikus titkosítás](content-protection-overview.md).
+A dinamikus titkosítás lehetővé teszi, hogy az élő vagy igény szerinti tartalmakat az AES-128 vagy a három jelentős digitális jogkezelési (DRM) rendszerű rendszeren keresztül dinamikusan titkosítsa: Microsoft PlayReady, Google Widevine és Apple FairPlay. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek. További információ: [dinamikus titkosítás](content-protection-overview.md).
 
 > [!NOTE]
 > A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
@@ -52,7 +52,7 @@ A dinamikus szűréssel szabályozható a játékosok számára eljuttatott zene
 
 ## <a name="live-event-types"></a>Élő események típusai
 
-Az [élő események](https://docs.microsoft.com/rest/api/media/liveevents) az élő videóadatok betöltését és feldolgozását végzik. Az élő esemény a következő két típus egyike lehet: átmenő és élő kódolás. A Media Services v3 élő közvetítésével kapcsolatos részletekért lásd: [élő események és élő kimenetek](live-events-outputs-concept.md).
+Az [élő események](https://docs.microsoft.com/rest/api/media/liveevents) az élő videóadatok betöltését és feldolgozását végzik. Egy élő esemény lehet egy *átmenő* (egy helyszíni élő kódoló több bitrátás streamet küld) vagy *élő kódolást* (a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld). A Media Services v3 élő közvetítésével kapcsolatos részletekért lásd: [élő események és élő kimenetek](live-events-outputs-concept.md).
 
 ### <a name="pass-through"></a>Továbbítás
 

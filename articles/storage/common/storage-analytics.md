@@ -8,16 +8,16 @@ ms.date: 03/03/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: efca3dad6d8bfadbc334067b0189d2bea5aef445
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 86b399879807e480176ee9a3ca3feaba1ec5dd85
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750521"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250885"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
-A Storage szolgáltatás analitikai funkciói naplózást végeznek, valamint elérhetővé teszik a tárfiókok mérőszámadatait. Ezekkel az adatokkal kérések követhetők nyomon, elemezhetők a használati trendek és diagnosztizálni lehet a tárfiókokkal kapcsolatos problémákat.
+Azure Storage Analytics naplózást végez, és metrikai adatokat biztosít egy Storage-fiókhoz. Ezeket az adatokat felhasználhatja a kérelmek nyomon követéséhez, a használati trendek elemzéséhez és a Storage-fiókkal kapcsolatos problémák diagnosztizálásához.
 
 Storage Analytics használatához külön kell engedélyeznie a figyelni kívánt szolgáltatásokhoz. Engedélyezheti a [Azure Portal](https://portal.azure.com). További információ: [Storage-fiók figyelése a Azure Portalban](storage-monitor-storage-account.md). Storage Analytics programozott módon is engedélyezheti a REST API vagy az ügyféloldali kódtár használatával. A [blob szolgáltatás tulajdonságainak](/rest/api/storageservices/set-blob-service-properties)beállítása, a [várólista-szolgáltatás tulajdonságainak](/rest/api/storageservices/set-queue-service-properties)beállítása, a [Table szolgáltatás tulajdonságainak beállítása](/rest/api/storageservices/set-table-service-properties)és a [Fájlszolgáltatások tulajdonságainak beállítása](/rest/api/storageservices/Get-File-Service-Properties) művelettel engedélyezheti a Storage Analytics az egyes szolgáltatásokhoz.
 
@@ -42,7 +42,7 @@ Ha az adatmegőrzési szabályzatot konfigurálta, akkor nem kell fizetnie a tö
 
 ### <a name="understanding-billable-requests"></a>Számlázandó kérelmek ismertetése
 
-A fiók tárolási szolgáltatására tett minden kérelem számlázható vagy nem számlázható. Storage Analytics naplózza a szolgáltatáshoz intézett egyes kéréseket, beleértve a kérés kezelésének módját jelző állapotüzenetek egyikét is. Hasonlóképpen, Storage Analytics a szolgáltatáshoz és az API-műveletekhez tartozó metrikákat is tárolja, beleértve az egyes állapotüzenetek százalékos arányát és számát is. Ezek a funkciók együttesen segíthetnek a számlázható kérelmek elemzésében, az alkalmazások tökéletesítésében és a szolgáltatásokkal kapcsolatos kérések diagnosztizálásában. További információ a számlázással kapcsolatban: az [Azure Storage számlázási szolgáltatásának ismertetése – sávszélesség, tranzakciók és kapacitás](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
+A fiók tárolási szolgáltatására tett minden kérelem számlázható vagy nem számlázható. Storage Analytics naplózza a szolgáltatáshoz intézett egyes kéréseket, beleértve a kérés kezelésének módját jelző állapotüzenetek egyikét is. Hasonlóképpen, Storage Analytics a szolgáltatáshoz és az API-műveletekhez tartozó metrikákat is tárolja, beleértve az egyes állapotüzenetek százalékos arányát és számát is. Ezek a funkciók együttesen segíthetnek a számlázható kérelmek elemzésében, az alkalmazások tökéletesítésében és a szolgáltatásokkal kapcsolatos kérések diagnosztizálásában. További információ a számlázással kapcsolatban: az [Azure Storage számlázási szolgáltatásának ismertetése – sávszélesség, tranzakciók és kapacitás](https://docs.microsoft.com/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
 
 Storage Analytics adatok megtekintésekor használhatja a [Storage Analytics naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) témakör táblázatait, amelyekkel meghatározhatja, hogy mely kérések legyenek számlázva. Ezután összehasonlíthatja a naplókat és a metrikákat az állapotüzenetek adataival, hogy megtudja, van-e terhelve egy adott kérelemért. Az előző témakör tábláival is megvizsgálhatja a tárolási szolgáltatás vagy az egyes API-műveletek rendelkezésre állását.
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: fb473ec55ec6a5e93ba4ad22bf500414d54e4a5d
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 165e87b47deca2b7f175ec07b5c615ac25db0dd2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367202"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251748"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Tárolási beállítások a Windows rendszerű virtuális asztali FSLogix-profilok tárolói számára
 
@@ -26,6 +26,7 @@ A következő táblázatok összehasonlítják a Storage Solutions Azure Storage
 
 |Szolgáltatások|Azure Files|Azure NetApp Files|Közvetlen tárolóhelyek|
 |--------|-----------|------------------|---------------------|
+|Használati eset|Általános célú|Ultra teljesítmény vagy Migrálás a helyszíni NetApp-ből|Platformfüggetlen|
 |Platform szolgáltatás|Igen, Azure-natív megoldás|Igen, Azure-natív megoldás|Nem, önállóan felügyelt|
 |Régiónkénti rendelkezésre állás|Minden régió|[Régiók kiválasztása](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Minden régió|
 |Redundancia|Helyileg redundáns/Zone-redundáns/geo-redundáns|Helyileg redundáns|Helyileg redundáns/Zone-redundáns/geo-redundáns|
@@ -41,7 +42,7 @@ A következő táblázatok összehasonlítják a Storage Solutions Azure Storage
 |Access|Felhő, helyszíni és hibrid (Azure file Sync)|Felhő, helyszíni (ExpressRoute-n keresztül)|Felhő, helyszíni|
 |Biztonsági mentés|Azure Backup pillanatkép-integráció|Pillanatképek Azure NetApp Files|Azure Backup pillanatkép-integráció|
 |Biztonság és megfelelőség|[Az összes Azure által támogatott tanúsítvány](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO befejezve|[Az összes Azure által támogatott tanúsítvány](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
-|Azure Active Directory-integráció|Azure Active Directory és Azure Active Directory Domain Services|[Azure Active Directory Domain Services és natív Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Natív Active Directory vagy Azure Active Directory Domain Services csak támogatás|
+|Azure Active Directory-integráció|[Natív Active Directory és Azure Active Directory Domain Services](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)|[Azure Active Directory Domain Services és natív Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Natív Active Directory vagy Azure Active Directory Domain Services csak támogatás|
 
 Ha kiválasztotta a tárolási módszert, tekintse meg a [Windows rendszerű virtuális asztali díjszabást](https://azure.microsoft.com/pricing/details/virtual-desktop/) a díjszabási tervekkel kapcsolatos információkért.
 

@@ -3,12 +3,12 @@ title: Az Azure Red Hat OpenShift-fürt figyelésének leállítása | Microsoft
 description: Ez a cikk azt ismerteti, hogyan állíthatja le a Azure Monitor for containers szolgáltatással az Azure Red Hat OpenShift-fürt figyelését.
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 97ca333f724dc4914dabda2912c4512a40520253
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: eff5203aeedd3c7ad283b55ba12f0e45a556460d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977769"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250733"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>Az Azure Red Hat OpenShift-fürt figyelésének leállítása a Azure Monitor tárolókkal
 
@@ -16,13 +16,13 @@ Miután engedélyezte az Azure Red Hat OpenShift-fürt figyelését, leállítha
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
-A megadott két Azure Resource Manager sablon, amely támogatja a megoldás erőforrásainak következetes és ismétlődő eltávolítását az erőforráscsoporthoz. Az egyik egy JSON-sablon, amely meghatározza, hogy a rendszer hogyan állítsa le a figyelést, a másik pedig olyan paramétereket tartalmaz, amelyeket úgy konfigurál, hogy megadja a fürt üzembe helyezett OpenShift-erőforrás-AZONOSÍTÓját és az Azure-régiót.
+Megadott van két Azure Resource Manager-sablon eltávolítása az erőforráscsoportban a megoldásokkal kapcsolatos forrásanyagok konzisztens és ismétlődő támogatásához. Az egyik egy JSON-sablon, amely meghatározza, hogy a rendszer hogyan állítsa le a figyelést, a másik pedig olyan paramétereket tartalmaz, amelyeket úgy konfigurál, hogy megadja a fürt üzembe helyezett OpenShift-erőforrás-AZONOSÍTÓját és az Azure-régiót.
 
-Ha nem ismeri az erőforrások sablon használatával történő központi telepítésének fogalmát, tekintse meg a következőt:
+Ha még nem ismeri a sablon segítségével üzembe helyezni erőforrásokat fogalma, lásd:
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
 
-Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
 ### <a name="create-template"></a>Sablon létrehozása
 
@@ -67,7 +67,7 @@ Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és haszn�
 
 2. Mentse ezt a fájlt **OptOutTemplate. JSON** néven egy helyi mappába.
 
-3. Illessze be a következő JSON-szintaxist a fájlba:
+3. A következő JSON-szintaxist illessze be a fájlba:
 
     ```json
     {
@@ -92,7 +92,7 @@ Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és haszn�
 
 6. Készen áll a sablon üzembe helyezésére.
 
-### <a name="remove-the-solution-using-azure-cli"></a>A megoldás eltávolítása az Azure CLI használatával
+### <a name="remove-the-solution-using-azure-cli"></a>Távolítsa el a megoldás az Azure CLI használatával
 
 Futtassa a következő parancsot az Azure CLI-vel Linuxon a megoldás eltávolításához és a fürt konfigurációjának tisztításához.
 
@@ -102,13 +102,13 @@ az account set --subscription "Subscription Name"
 az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
-A konfiguráció módosítása több percet is igénybe vehet. Ha elkészült, az alábbihoz hasonló üzenet jelenik meg, amely tartalmazza a kapott eredményt:
+A konfiguráció módosításának befejezése néhány percet is igénybe vehet. Ha elkészült, egy üzenet, amely tartalmazza az eredmény az alábbihoz hasonló adja vissza:
 
-```azurecli
+```output
 ProvisioningState       : Succeeded
 ```
 
-### <a name="remove-the-solution-using-powershell"></a>A megoldás eltávolítása a PowerShell használatával
+### <a name="remove-the-solution-using-powershell"></a>Távolítsa el a megoldás a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -120,12 +120,12 @@ Select-AzSubscription -SubscriptionName <yourSubscriptionName>
 New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupName> -TemplateFile .\OptOutTemplate.json -TemplateParameterFile .\OptOutParam.json
 ```
 
-A konfiguráció módosítása több percet is igénybe vehet. Ha elkészült, az alábbihoz hasonló üzenet jelenik meg, amely tartalmazza a kapott eredményt:
+A konfiguráció módosításának befejezése néhány percet is igénybe vehet. Ha elkészült, egy üzenet, amely tartalmazza az eredmény az alábbihoz hasonló adja vissza:
 
-```powershell
+```output
 ProvisioningState       : Succeeded
 ```
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha a munkaterület csak a fürt figyelésének támogatásához lett létrehozva, és már nincs rá szükség, manuálisan kell törölnie. Ha nem ismeri a munkaterület törlésének módját, tekintse meg [Az Azure log Analytics munkaterület törlése](../../log-analytics/log-analytics-manage-del-workspace.md)című témakört.
+Ha a munkaterület létrejött, csak a fürt figyelésére is alkalmas, és már nincs rá szükség, akkor törölje kézzel. Ha nem ismeri a munkaterület törlésének módját, tekintse meg [Az Azure log Analytics munkaterület törlése](../../log-analytics/log-analytics-manage-del-workspace.md)című témakört.

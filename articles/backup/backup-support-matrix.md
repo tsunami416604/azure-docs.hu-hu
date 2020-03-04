@@ -3,12 +3,12 @@ title: Az Azure Backup támogatási mátrixa
 description: Összefoglalja a Azure Backup szolgáltatás támogatási beállításait és korlátozásait.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: dd4ec646c786ee686567aa137845e583a4cf47e3
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 788da5708178cfa533d4382a4a417cef73f46a5e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206656"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254906"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -32,7 +32,7 @@ A következő táblázat a Recovery Services-tárolók szolgáltatásait ismerte
 --- | ---
 **Tárolók az előfizetésben** | Akár 500 Recovery Services-tároló egyetlen előfizetésben.
 **Tárolóban lévő gépek** | Akár 1 000 Azure-beli virtuális gép egyetlen tárolóban.<br/><br/> Akár 50 MABS-kiszolgáló is regisztrálható egyetlen tárolóban.
-**Adatforrások a tárolóban** | Maximális 54 400 GB. Az Azure-beli virtuális gépek biztonsági mentései nem megengedettek.
+**Adatforrások** | Egy egyedi [adatforrás](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#how-is-the-data-source-size-determined) maximális mérete 54 400 GB. Ez a korlát nem vonatkozik az Azure-beli virtuális gépek biztonsági mentésére. A tárolóba visszaállítható teljes adatmennyiségre nem vonatkoznak korlátok.
 **Biztonsági mentések a tárba** | **Azure-beli virtuális gépek:** Naponta egyszer.<br/><br/>**DPM/MABS által védett gépek:** Naponta kétszer.<br/><br/> **A közvetlenül a Mars-ügynök használatával biztonsági mentést készít a gépekről:** Naponta háromszor.
 **Tárolók közötti biztonsági másolatok** | A biztonsági mentés egy régión belül található.<br/><br/> Minden olyan Azure-régióban szüksége van egy tárolóra, amely tartalmazza a biztonsági mentésre használni kívánt virtuális gépeket. Nem lehet biztonsági másolatot készíteni egy másik régióra.
 **Tárolók áthelyezése** | A tárolókat [áthelyezheti](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) előfizetések között, illetve az azonos előfizetésben található erőforráscsoportok között is. A tárolók különböző régiók közötti áthelyezése azonban nem támogatott.
@@ -155,8 +155,6 @@ Azure Backup hozzáadta a régiók közötti visszaállítási szolgáltatást a
 | MARS-ügynök/helyszíni | Nem                                                           | N/A               |
 | SQL/SAP HANA          | Nem                                                           | N/A               |
 | AFS                    | Nem                                                           | N/A               |
-
-
 
 ## <a name="next-steps"></a>Következő lépések
 

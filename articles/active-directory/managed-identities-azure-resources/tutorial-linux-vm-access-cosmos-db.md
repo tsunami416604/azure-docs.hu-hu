@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eb77802a4d6c29bb16912f1d74d950b6461b598
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f15a269656f205b0acb6a49740dd4c625c0bdd41
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183345"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248278"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Oktatóanyag: Hozzáférés az Azure Cosmos DB-hez egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással 
 
@@ -55,7 +55,7 @@ Ha még nincs fiókja, hozzon létre egy Cosmos DB-fiókot. Ezt a lépést kihag
 3. Adja meg a Cosmos DB-fiók **azonosítóját**, amelyet később használni fog.  
 4. Az **API** értéke legyen „SQL”. Az ebben az oktatóanyagban ismertetett megközelítést más API-típusokkal is használhatja, de az itt szereplő lépések az SQL API-ra vonatkoznak.
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.  Válasszon ki egy olyan **helyet**, ahol a Cosmos DB elérhető.
-6. Kattintson a **Létrehozás** gombra.
+6. Kattintson a  **Create** (Létrehozás) gombra.
 
 ## <a name="create-a-collection-in-the-cosmos-db-account"></a>Gyűjtemény létrehozása Cosmos DB-fiókban
 
@@ -67,14 +67,14 @@ Adjon hozzá egy adatgyűjteményt a Cosmos DB-fiókhoz, amelyet a későbbi lé
 
 ## <a name="retrieve-the-principalid-of-the-linux-vms-system-assigned-managed-identity"></a>A Linux VM-beli, rendszer által hozzárendelt felügyelt identitás `principalID` paraméterének lekérése
 
-Ahhoz, hogy az ezt követő szakaszban a Resource Managerből is hozzáférhessen a Cosmos DB-fiók hozzáférési kulcsaihoz, le kell kérdeznie a Linux VM-beli, rendszer által hozzárendelt felügyelt identitás `principalID` paraméterét.  Ne felejtse el a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (az az erőforráscsoport, amelyben a virtuális gép megtalálható) és `<VM NAME>` paraméterek értékeit a saját értékeire lecserélni.
+Ahhoz, hogy az ezt követő szakaszban a Resource Managerből is hozzáférhessen a Cosmos DB-fiók hozzáférési kulcsaihoz, le kell kérdeznie a Linux VM-beli, rendszer által hozzárendelt felügyelt identitás `principalID` paraméterét.  Ne felejtse el lecserélni a `<SUBSCRIPTION ID>`t, `<RESOURCE GROUP>` (az erőforráscsoport, amelyben a virtuális gép található), és `<VM NAME>` a paraméterek értékeit a saját értékeivel.
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01
 ```
 A válasz tartalmazza a rendszer által hozzárendelt felügyelt identitás részleteit (jegyezze fel a PrincipalID azonosító értékét, mivel a következő szakaszban használni fogja):
 
-```bash  
+```output  
 {
     "id": "/subscriptions/<SUBSCRIPTION ID>/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe>",
   "identity": {
@@ -96,7 +96,7 @@ az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --sco
 
 A válasz tartalmazza a létrehozott szerepkör-hozzárendelés részleteit:
 
-```
+```output
 {
   "id": "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMOS DB ACCOUNT>/providers/Microsoft.Authorization/roleAssignments/5b44e628-394e-4e7b-bbc3-d6cd4f28f15b",
   "name": "5b44e628-394e-4e7b-bbc3-d6cd4f28f15b",
@@ -159,13 +159,13 @@ A CURL-válasz visszaadja a kulcsok listáját:  Ha például írásvédett kulc
 
 Most, hogy rendelkezik a Cosmos DB-fiók hozzáférési kulcsával, átadhatja azt egy Cosmos DB SDK-nak, és hívásokat indíthat a fiók elérése érdekében.  Átadhatja például a hozzáférési kulcsot az Azure CLI-nek.  A(z) `<COSMOS DB CONNECTION URL>` elemet az Azure Portalon, a Cosmos DB-fiók panelének **Áttekintés** lapjáról szerezheti be.  Cserélje le a(z) `<ACCESS KEY>` elemet az így beszerzett értékre:
 
-```bash
+```azurecli
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>
 ```
 
 Ez a CLI-parancs a gyűjtemény részleteit adja vissza:
 
-```bash
+```output
 {
   "collection": {
     "_conflicts": "conflicts/",

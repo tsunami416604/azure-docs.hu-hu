@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure Data
 keywords: ansible, azure, devops, bash, forgatókönyv, mysql, adatbázis
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: f068b3022c94466a20b524240dc293392b1f42ff
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 9cd574417733518b993bb242c2c168aba338e34a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603126"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247873"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Oktatóanyag: adatbázisok konfigurálása Azure Database for MySQL Ansible használatával
 
@@ -24,7 +24,7 @@ A [Azure Database for MySQL](/azure/mysql/overview) egy, a MySQL Community Editi
 > * MySql-kiszolgáló létrehozása
 > * MySql-adatbázis létrehozása
 > * Tűzfalszabály konfigurálása úgy, hogy egy külső alkalmazás csatlakozhasson a kiszolgálóhoz
-> * Kapcsolódás a MySql-kiszolgálóhoz az Azure Cloud shellből
+> * Kapcsolódjon a MySql-kiszolgálóhoz a Azure Cloud Shell
 > * A rendelkezésre álló MySQL-kiszolgálók lekérdezése
 > * A csatlakoztatott kiszolgálókon lévő összes adatbázis listázása
 
@@ -33,7 +33,7 @@ A [Azure Database for MySQL](/azure/mysql/overview) egy, a MySQL Community Editi
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az ebben a szakaszban található forgatókönyv-kód egy Azure-erőforráscsoportot hoz létre. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.  
 
@@ -155,11 +155,15 @@ ansible-playbook mysql_firewall.yml
 
 ## <a name="connect-to-the-server"></a>Csatlakozás a kiszolgálóhoz
 
-Ebben a szakaszban az Azure Cloud Shell használatával kapcsolódhat a korábban létrehozott kiszolgálóhoz.
+Ebben a szakaszban a Azure Cloud Shell használatával kapcsolódhat a korábban létrehozott kiszolgálóhoz.
 
-1. Válassza ki a **TRY IT (kipróbálás** ) gombot a következő kódban:
+1. Az alábbi lehetőség kiválasztásával nyissa meg a shell.azure.com.
 
-    ```azurecli-interactive
+   [![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
+
+1. Írja be a következő kódot:
+
+    ```sql
     mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     ```
 
@@ -171,7 +175,7 @@ Ebben a szakaszban az Azure Cloud Shell használatával kapcsolódhat a korábba
     
     Ha minden megfelelően működik, a következő eredményekhez hasonló kimenet jelenik meg:
     
-    ```
+    ```output
     demo@Azure:~$ mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     Enter password:
     Welcome to the MySQL monitor.  Commands end with ; or \g.

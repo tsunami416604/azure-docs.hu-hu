@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 554590a065214c17de0acdea3207876f113b3caf
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614026"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252749"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Oktatóanyag: Tárolók csomagolása és üzembe helyezése Service Fabric-alkalmazásként a Yeoman használatával
 
-Ez az oktatóanyag egy sorozat második része. Az oktatóanyag azt ismerteti, hogyan lehet létrehozni Service Fabric-alkalmazásdefiníciót egy sablonkészítő eszközzel (Yeoman). Az alkalmazással ezután tárolókat helyezhet üzembe a Service Fabric rendszerében. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ez az oktatóanyag egy sorozat második része. Az oktatóanyag azt ismerteti, hogyan lehet létrehozni Service Fabric-alkalmazásdefiníciót egy sablonkészítő eszközzel (Yeoman). Az alkalmazással ezután tárolókat helyezhet üzembe a Service Fabric rendszerében. Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * A Yeoman telepítése
@@ -114,7 +114,7 @@ Ahhoz, hogy a Service Fabric le tudja kérni a tárolórendszerképeket az Azure
 
 Jelentkezzen be az ACR-példányba. Használja az **az acr login** parancsot a művelet befejezéséhez. Adja meg a tárolóregisztrációs adatbázis egyedi nevét, amelyet a létrehozásakor adott meg.
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -122,7 +122,7 @@ A parancs a **Bejelentkezés sikeres** üzenetet adja vissza, ha befejeződött.
 
 Ezután futtassa a következő parancsot a tárolóregisztrációs adatbázis jelszavának lekéréséhez. A Service Fabric ezt a jelszót használja ahhoz, hogy hitelesíteni tudjon az ACR-rel, és le tudja kérni a tárolórendszerképeket.
 
-```bash
+```azurecli
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
@@ -199,7 +199,7 @@ Ahhoz, hogy a Service Fabric ezt a DNS-nevet a háttérszolgáltatáshoz rendelj
 
 A kezelőfelületi szolgáltatás beolvas egy környezeti változót, hogy megtudja a Redis-példány DNS-nevét. Ez a környezeti változó már meg van határozva a Docker-rendszerkép létrehozásához használt Docker-fájlban, így külön műveletet nem kell elvégezni.
 
-```Dockerfile
+```dockerfile
 ENV REDIS redisbackend.testapp
 ```
 

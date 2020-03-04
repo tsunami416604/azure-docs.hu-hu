@@ -4,12 +4,12 @@ description: Kérelmek hitelesítése és a Azure Monitor REST API használata a
 ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.openlocfilehash: bdf867d6ae21eda4f9e9f4283542e422cf4d2d94
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 42a7034c586f4e01066e989dcb2b9fae4eebfa85
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659033"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250830"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure monitoring REST API útmutató
 
@@ -116,7 +116,7 @@ Invoke-RestMethod -Uri $request `
 
 Az eredményül kapott JSON-válasz a következő példához hasonló lenne: (vegye figyelembe, hogy a második metrika dimenziókkal rendelkezik)
 
-```JSON
+```json
 {
     "value": [
         {
@@ -254,7 +254,7 @@ Invoke-RestMethod -Uri $request `
 
 Az eredményül kapott JSON-válasz törzse a következő példához hasonló lenne:
 
-```JSON
+```json
 {
   "timespan": "2018-03-01T00:00:00Z/2018-03-02T00:00:00Z",
   "value": [
@@ -327,7 +327,7 @@ Invoke-RestMethod -Uri $request `
 
 Az eredményül kapott JSON-válasz törzse a következő példához hasonló lenne:
 
-```JSON
+```json
 {
   "cost": 0,
   "timespan": "2018-03-01T02:00:00Z/2018-03-01T02:05:00Z",
@@ -411,7 +411,7 @@ Invoke-RestMethod -Uri $request `
 
 Az eredményül kapott JSON-válasz törzse a következő példához hasonló lenne:
 
-```JSON
+```json
 {
   "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricdefinitions",
   "value": [
@@ -479,7 +479,7 @@ Invoke-RestMethod -Uri $request `
 
 Az eredményül kapott JSON-válasz törzse a következő példához hasonló lenne:
 
-```JSON
+```json
 {
   "value": [
     {
@@ -527,7 +527,7 @@ Invoke-RestMethod -Uri $request `
 
 Az eredményül kapott JSON-válasz törzse a következő példához hasonló lenne:
 
-```JSON
+```json
 {
   "value": [
     {
@@ -587,7 +587,7 @@ Egy további módszer a [ARMClient](https://github.com/projectkudu/armclient) ha
 
 Ha például egy adott logikai alkalmazás metrika-definícióit szeretné lekérni, adja ki a következő parancsot:
 
-```
+```console
 armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricDefinitions?api-version=2016-03-01
 ```
 
@@ -633,7 +633,7 @@ Get-AzLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
 
 Az eredménynek az alábbi példához hasonlónak kell lennie:
 
-```
+```output
 Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets
 Name           : ContosoTweets
 Type           : Microsoft.Logic/workflows
@@ -655,13 +655,13 @@ Version        : 08586982649483762729
 
 Ha az Azure CLI használatával szeretné lekérni az Azure Storage-fiók erőforrás-AZONOSÍTÓját, hajtsa végre a `az storage account show` parancsot az alábbi példában látható módon:
 
-```
+```azurecli
 az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
 ```
 
 Az eredménynek az alábbi példához hasonlónak kell lennie:
 
-```JSON
+```json
 {
   "accessTier": null,
   "creationTime": "2017-08-18T19:58:41.840552+00:00",

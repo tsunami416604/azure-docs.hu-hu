@@ -6,17 +6,17 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 15a396a86103f41f49d3b49878ec51c1e71add40
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 4f94ef66610b56d8843d59e5ca72a48143b742e8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772479"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251396"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Figyelés Azure Database for MariaDB
 A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. A Azure Database for MariaDB különböző mérőszámokat biztosít, amelyek betekintést nyújtanak a kiszolgáló működésére.
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30 napos előzményt biztosít. A mérőszámokra vonatkozó riasztásokat is beállíthat. Az egyéb feladatok közé tartozik az automatizált műveletek beállítása, a speciális elemzések végrehajtása és az archiválási előzmények. További információt az [Azure mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)című témakörben talál.
 
 Részletes útmutatást a [riasztások beállítása](howto-alert-metric.md)című témakörben talál.
@@ -24,7 +24,7 @@ Részletes útmutatást a [riasztások beállítása](howto-alert-metric.md)cím
 ### <a name="list-of-metrics"></a>Metrikák listája
 Ezek a metrikák a Azure Database for MariaDB számára érhetők el:
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Leírás|
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Leírás|
 |---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|A használatban lévő CPU százalékos aránya.|
 |memory_percent|Memória százaléka|Százalék|A használatban lévő memória százalékos aránya.|
@@ -35,8 +35,8 @@ Ezek a metrikák a Azure Database for MariaDB számára érhetők el:
 |serverlog_storage_usage|Kiszolgáló naplójának tárolója|Bájt|A kiszolgáló által használt log-tároló mennyisége.|
 |serverlog_storage_limit|Kiszolgáló naplójának tárolási korlátja|Bájt|A kiszolgáló maximális kiszolgálói naplózási tárterülete.|
 |storage_limit|Tárolási korlát|Bájt|A kiszolgáló maximális tárterülete.|
-|active_connections|Aktív kapcsolatok|Mennyiség|A kiszolgálóval létesített aktív kapcsolatok száma.|
-|connections_failed|Sikertelen kapcsolatok|Mennyiség|A kiszolgálóhoz való sikertelen kapcsolódások száma.|
+|active_connections|Aktív kapcsolatok|Darabszám|A kiszolgálóval létesített aktív kapcsolatok száma.|
+|connections_failed|Sikertelen kapcsolatok|Darabszám|A kiszolgálóhoz való sikertelen kapcsolódások száma.|
 |network_bytes_egress|Kimenő hálózat|Bájt|A hálózat aktív kapcsolatokon keresztül.|
 |network_bytes_ingress|Bejövő hálózat|Bájt|A hálózat aktív kapcsolatokon keresztül.|
 
@@ -48,7 +48,7 @@ Engedélyezheti a lassú lekérdezések naplózását a kiszolgálón. Ezek a na
 
 A [lekérdezési tár](concepts-query-store.md) nyomon követi a lekérdezési teljesítményt az idő múlásával, beleértve a lekérdezési futtatókörnyezet statisztikáit és a várakozási eseményeket. A szolgáltatás megtartja a lekérdezés futásidejű teljesítményére vonatkozó információkat a **MySQL** -sémában. Az adatgyűjtést és-tárolást különböző konfigurációs gombokon keresztül szabályozhatja.
 
-## <a name="query-performance-insight"></a>Információ a lekérdezések teljesítményéről
+## <a name="query-performance-insight"></a>Lekérdezési terheléselemző
 
 A [lekérdezési terheléselemző](concepts-query-performance-insight.md) a lekérdezési tárolóval együtt a Azure Portal elérhető vizualizációk biztosítására is használható. Ezek a diagramok lehetővé teszik a teljesítményre gyakorolt legfontosabb lekérdezések azonosítását. A Lekérdezési terheléselemző a Azure Database for MariaDB-kiszolgáló portál lapjának **intelligens teljesítmény** szakaszában érhető el.
 
@@ -56,13 +56,28 @@ A [lekérdezési terheléselemző](concepts-query-performance-insight.md) a lek�
 
 A [teljesítményre vonatkozó javaslatok](concepts-performance-recommendations.md) funkció a munkaterhelés teljesítményének növelésére szolgáló lehetőségeket azonosítja. A teljesítménnyel kapcsolatos javaslatok olyan új indexek létrehozásához nyújtanak javaslatokat, amelyek képesek a számítási feladatok teljesítményének javítására. Az indexelési javaslatok előállításához a funkció figyelembe veszi a különböző adatbázis-jellemzőket, beleértve annak sémáját és a lekérdezési tároló által jelentett munkaterhelést. A teljesítményre vonatkozó javaslat bevezetését követően az ügyfeleknek tesztelni kell a teljesítményt a változások hatásának kiértékeléséhez.
 
-## <a name="service-health"></a>Szolgáltatások állapota
-Az [Azure szolgáltatás állapota](../service-health/overview.md) az előfizetésben lévő összes szolgáltatás állapotára vonatkozó értesítéseket tartalmazza. Service Health riasztásokat állíthat be, amelyek az előnyben részesített kommunikációs csatornákon keresztül értesítik Önt, ha vannak olyan problémák vagy változások, amelyek befolyásolhatják az Ön által használt Azure-szolgáltatásokat és-régiókat.
+## <a name="planned-maintenance-notification"></a>Tervezett karbantartási értesítés
 
-A Azure Database for MariaDB ütemezett karbantartási eseményei a **tervezett karbantartási** esemény típusával tekinthetők meg. A **szolgáltatás-állapottal kapcsolatos riasztások**létrehozásával kapcsolatban tekintse meg a [műveletnapló riasztások létrehozása a szolgáltatás értesítéseiről](../service-health/alerts-activity-log-service-notifications.md) című cikket.
+A **tervezett karbantartási értesítések** lehetővé teszik, hogy riasztásokat kapjon a Azure Database for MariaDB közelgő tervezett karbantartásáról. Ezek az értesítések a [Service Health](../service-health/overview.md) tervezett karbantartásával vannak integrálva, és lehetővé teszik az előfizetések összes ütemezett karbantartásának megtekintését egy helyen. Emellett segít az értesítések méretezésében a megfelelő célközönségek számára a különböző erőforráscsoportok esetében, mivel előfordulhat, hogy a különböző kapcsolattartók különböző erőforrásokért felelősek. A közelgő karbantartási 72 órával az esemény előtt értesítést fog kapni.
+
+> [!Note]
+> Minden eseményről minden kísérletet megteszünk a **tervezett karbantartási értesítés** 72 óra megadására. A kritikus vagy biztonsági javítások esetében azonban előfordulhat, hogy az értesítések közelebb kerülnek az eseményhez, vagy kimaradnak.
+
+### <a name="to-receive-planned-maintenance-notification"></a>Tervezett karbantartási értesítés fogadása
+
+1. A [portálon](https://portal.azure.com)válassza a **Service Health**lehetőséget.
+2. A **riasztások** szakaszban válassza az **állapot riasztások**lehetőséget.
+3. Válassza a **+ szolgáltatás állapotára vonatkozó riasztás hozzáadása** lehetőséget, és töltse ki a mezőket.
+4. Töltse ki a kötelező mezőket. 
+5. Válassza ki az **esemény típusát**, válassza a **tervezett karbantartás** lehetőséget, vagy **válassza az összes lehetőséget** .
+6. A **műveleti csoportok** azt határozzák meg, hogyan szeretné fogadni a riasztást (e-mail küldése, logikai alkalmazás elindítása stb.)  
+7. Győződjön meg arról, hogy az engedélyezés szabály a létrehozáskor Igen értékre van állítva.
+8. Válassza a riasztási **szabály létrehozása** lehetőséget a riasztás befejezéséhez
+
+A **szolgáltatás állapotára vonatkozó riasztások**létrehozásával kapcsolatos részletes útmutatásért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../service-health/alerts-activity-log-service-notifications.md).
 
 > [!IMPORTANT]
-> A tervezett karbantartási értesítések előzetes verzióban érhetők el az USA keleti régiójában és csak Egyesült Királyság déli régiója.
+> A tervezett karbantartási értesítések jelenleg előzetes verzióban érhetők el
 
 ## <a name="next-steps"></a>Következő lépések
 

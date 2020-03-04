@@ -4,15 +4,15 @@ description: Azure Analysis Services-kiszolgálók replikálása felskálázáss
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310186"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247992"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázása
 
@@ -30,7 +30,7 @@ A lekérdezési készletekben lévő lekérdezések replikáinak számától fü
 
 Horizontális felskálázás esetén akár öt percet is igénybe vehet, amíg az új lekérdezési replikák Növekményesen fel lesznek véve a lekérdezési készletbe. Ha az összes új lekérdezési replikát felhasználják, az új ügyfélkapcsolatok terheléselosztása a lekérdezési készlet erőforrásai között történik. A meglévő ügyfélkapcsolatok nem változnak attól az erőforrástól, amelyhez jelenleg csatlakoznak. A (z) skálázásakor a lekérdezési készlet erőforrásaiból eltávolított meglévő ügyfélkapcsolatok le lesznek szakítva. Az ügyfelek újra csatlakozhatnak egy hátralévő lekérdezési készlet erőforráshoz.
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
 A skálázás első beállításakor a *rendszer automatikusan* szinkronizálja az elsődleges kiszolgálón a modell adatbázisait új replikákkal egy új lekérdezési készletben. Az automatikus szinkronizálás csak egyszer fordul elő. Az automatikus szinkronizálás során az elsődleges kiszolgáló adatfájljait (a blob Storage-ban tárolt adatok titkosítása) egy második helyre másolják, amely a blob Storage-ban is titkosítva van. A lekérdezési készletben lévő replikák Ezután *hidratálva* lesznek a második készletből származó adatokkal. 
 
@@ -59,7 +59,7 @@ Alapértelmezés szerint a lekérdezési replikák teljes mértékben kiszáradn
 
 #### <a name="setting-replicasyncmode"></a>ReplicaSyncMode beállítása
 
-A SSMS használatával állítsa be a ReplicaSyncMode a speciális tulajdonságok között. Lehetséges értékek: 
+A SSMS használatával állítsa be a ReplicaSyncMode a speciális tulajdonságok között. A lehetséges értékek a következők: 
 
 - `1` (alapértelmezett): teljes replika adatbázis-rehidratálás fázisokban (növekményes). 
 - `2`: párhuzamosan optimalizált szinkronizálás. 
@@ -74,19 +74,23 @@ A feldolgozási és a lekérdezési műveletek maximális teljesítményéhez v�
 
 ## <a name="monitor-qpu-usage"></a>QPU-használat figyelése
 
-Annak megállapításához, hogy szükség van-e a kiszolgáló méretezésére, figyelje a kiszolgálót Azure Portal a metrikák használatával. Ha a QPU rendszeresen lefoglalja, az azt jelenti, hogy a modellekhez tartozó lekérdezések száma meghaladja a csomag QPU-korlátját. A lekérdezési készlet feladatok várólistájának hossza metrika akkor is megnő, ha a lekérdezési szál várólistáján lévő lekérdezések száma meghaladja az elérhető QPU. 
+Annak megállapításához, hogy szükség van-e a kiszolgáló méretezésére, [figyelje a kiszolgálót](analysis-services-monitor.md) Azure Portal a metrikák használatával. Ha a QPU rendszeresen lefoglalja, az azt jelenti, hogy a modellekhez tartozó lekérdezések száma meghaladja a csomag QPU-korlátját. A lekérdezési készlet feladatok várólistájának hossza metrika akkor is megnő, ha a lekérdezési szál várólistáján lévő lekérdezések száma meghaladja az elérhető QPU. 
 
 Egy másik jó mérőszámot kell figyelni a ServerResourceType átlagos QPU. Ez a metrika az elsődleges kiszolgáló átlagos QPU hasonlítja össze a lekérdezési készlettel. 
 
 ![Kibővíthető mérőszámok lekérdezése](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
-### <a name="to-configure-qpu-by-serverresourcetype"></a>A QPU konfigurálása a ServerResourceType szerint
+**A QPU konfigurálása a ServerResourceType szerint**
+
 1. A mérőszámok sorában kattintson a **metrika hozzáadása**lehetőségre. 
 2. Az **erőforrás**területen válassza ki a kiszolgálót, majd a **metrikai névtérben**válassza ki **Analysis Services standard mérőszámok**elemet, majd a **metrika**területen válassza a **QPU**lehetőséget, majd az **Összesítés**területen válassza az **AVG**elemet. 
 3. Kattintson a **felosztás alkalmazása**lehetőségre. 
 4. Az **értékek**területen válassza a **ServerResourceType**lehetőséget.  
 
-További tudnivalókért lásd: [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md).
+### <a name="detailed-diagnostic-logging"></a>Részletes diagnosztikai naplózás
+
+Használjon Azure Monitor naplókat a kibővíthető kiszolgáló erőforrásainak részletesebb diagnosztizálásához. A naplók segítségével Log Analytics lekérdezésekkel kibonthatja a QPU és a memóriát a kiszolgáló és a replika alapján. További információ: példák a lekérdezésekre [Analysis Services diagnosztikai naplózásban](analysis-services-logging.md#example-queries).
+
 
 ## <a name="configure-scale-out"></a>Horizontális felskálázás konfigurálása
 
@@ -133,7 +137,7 @@ Visszatérési állapotkódok:
 |0     | Replikáló        |
 |1     |  Rehidratálása       |
 |2     |   Befejezve       |
-|3     |   Meghiúsult      |
+|3     |   Sikertelen      |
 |4     |    Véglegesítése     |
 |||
 
@@ -152,7 +156,7 @@ A feldolgozó kiszolgáló a lekérdezési készletből való elkülönítéséh
 
 További információ: [egyszerű szolgáltatásnév használata az az. AnalysisServices modullal](analysis-services-service-principal.md#azmodule).
 
-## <a name="connections"></a>Connections (Kapcsolatok)
+## <a name="connections"></a>Kapcsolatok
 
 A kiszolgáló áttekintő oldalán két kiszolgálónév található. Ha még nem konfigurálta a kibővített kiszolgálót a kiszolgálókon, mindkét kiszolgálónév ugyanúgy működik. A kibővített kiszolgáló beállítása után a kapcsolódási típustól függően meg kell adnia a megfelelő kiszolgálónevet. 
 

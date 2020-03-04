@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e9e2fe92939088420f973c5ca112b5f59d07f212
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906590"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252682"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 
@@ -50,9 +50,9 @@ A következő eszközök bármelyikével feltöltheti a tartalmakat a **$web** t
 
 A felhasználók a webhely nyilvános URL-címének használatával tekinthetik meg a tartalmak böngészőből való megtekintését. Az URL-címet a Azure Portal, az Azure CLI vagy a PowerShell használatával keresheti meg. Ezt a táblázatot útmutatóként használhatja.
 
-|Eszköz| Segédletek |
+|Eszköz| Útmutatás |
 |----|----|
-|**Azure Portal** | [A webhely URL-címének megkeresése a Azure Portal használatával](storage-blob-static-website-how-to.md#portal-find-url) |
+|**Azure Portalra** | [A webhely URL-címének megkeresése a Azure Portal használatával](storage-blob-static-website-how-to.md#portal-find-url) |
 |**Azure CLI** | [A webhely URL-címének megkeresése az Azure CLI használatával](storage-blob-static-website-how-to.md#cli-find-url) |
 |**Azure PowerShell modul** | [A webhely URL-címének megkeresése a PowerShell használatával](storage-blob-static-website-how-to.md#powershell-find-url) |
 
@@ -92,11 +92,17 @@ Ha a Storage-fiók úgy van konfigurálva, hogy [biztonságos átvitelt igényel
 > [!TIP]
 > Érdemes lehet tartományt üzemeltetni az Azure-ban. További információ: [tartomány üzemeltetése Azure DNSban](../../dns/dns-delegate-domain-azure-dns.md).
 
+## <a name="adding-http-headers"></a>HTTP-fejlécek hozzáadása
+
+A statikus webhely funkciójának részeként nincs lehetőség fejlécek konfigurálására. Az Azure CDN segítségével azonban fejléceket adhat hozzá, és hozzáfűzheti (vagy felülírhatja) a fejlécek értékeit. Lásd: [a Standard Rules Engine referenciája Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference).
+
+Ha fejléceket kíván használni a gyorsítótárazás vezérléséhez, tekintse meg [a vezérlés Azure CDN gyorsítótárazási viselkedés a gyorsítótárazási szabályokkal](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)című témakört.
+
 ## <a name="pricing"></a>Díjszabás
 
 A statikus webhelyek üzemeltetése díjmentesen engedélyezhető. Csak a hely által használt BLOB Storage-hoz és az üzemeltetési költségekhez kell fizetnie. Az Azure Blob Storage áraival kapcsolatos további információkért tekintse meg az [azure blob Storage díjszabási oldalát](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 
 A metrikák a statikus webhelyek oldalain is engedélyezhetők. A metrikák engedélyezése után a **$web** tárolóban található fájlokra vonatkozó forgalmi statisztikát a metrikák irányítópultján kell jelenteni.
 

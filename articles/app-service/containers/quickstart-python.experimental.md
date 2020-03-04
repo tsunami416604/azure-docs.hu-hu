@@ -10,12 +10,12 @@ ms.author: msangapu
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 9a45353d3223844d828ffc4a8ac248a0ff68f781
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 68dc36ce96737fe8395280c3a833e359084d2fee
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030049"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246855"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -52,7 +52,7 @@ Az Azure CLI számos kényelmes parancsot biztosít, amelyeket egy helyi termin�
 
 Az Azure-parancsok Azure CLI-ben való futtatásához először be kell jelentkeznie az `az login` parancs használatával. Ez a parancs egy böngészőt nyit meg a hitelesítő adatok összegyűjtéséhez.
 
-```terminal
+```azurecli
 az login
 ```
 
@@ -63,7 +63,7 @@ A [`az webapp up`](/cli/azure/webapp#az-webapp-up) parancs létrehozza a webalka
 A mintakódt tartalmazó *Python-docs-Hello-World* mappában futtassa a következő `az webapp up` parancsot. Cserélje le a `<app-name>`t egy globálisan egyedi alkalmazás nevére (*érvényes karakterek: `a-z`, `0-9`és `-`* ). Emellett cserélje le a `<location-name>`t egy olyan Azure-régióra, mint például a **CentralUS**, a **eastasia**, a **westeurope**, a **koreasouth**, a **brazilsouth**, a **centralindia**stb. (A [`az account locations-list`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) parancs futtatásával lekérheti az Azure-fiók számára engedélyezett régiók listáját.)
 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -110,7 +110,7 @@ A Python-mintakód egy beépített rendszerképpel futtatja App Service Linux-t�
 
 A terminál ablakban használja az alábbi parancsokat (az operációs rendszernek megfelelően) a szükséges függőségek telepítéséhez és a beépített fejlesztői kiszolgáló elindításához. 
 
-# <a name="bashtabbash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 python3 -m venv venv
@@ -120,7 +120,7 @@ FLASK_APP=application.py
 flask run
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 py -3 -m venv env
@@ -130,7 +130,7 @@ Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
-# <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
 ```cmd
 py -3 -m venv env
@@ -161,7 +161,7 @@ Mentse a módosításokat, és zárja be a szerkesztőt.
 
 Telepítse újra az alkalmazást az alábbi `az webapp up` parancs használatával, ugyanazzal a paranccsal, amelyet az alkalmazás első alkalommal történő üzembe helyezéséhez használt, a `<app-name>` és a `<location-name>` helyett a korábban használt nevekkel. 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -178,13 +178,13 @@ Elérheti az alkalmazáson belül létrehozott konzol naplóit, valamint azt a t
 
 Először kapcsolja be a tároló naplózását úgy, hogy futtatja a következő parancsot egy terminálon, és lecseréli `<app-name>` az alkalmazás nevére, és `<resource-group-name>` a használt `az webapp up` parancs kimenetében látható erőforráscsoport nevével (például "appsvc_rg_Linux_centralus"):
 
-```terminal
+```azurecli
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
 
 Miután bekapcsolta a tároló-naplózást, futtassa a következő parancsot a log stream megjelenítéséhez:
 
-```terminal
+```azurecli
 az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
@@ -221,7 +221,7 @@ Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsopo
 
 Ha nem szeretné, hogy a jövőben is szükség lenne ezekre az erőforrásokra, törölje az erőforráscsoportot a következő parancs futtatásával, és cserélje le a `<resource-group-name>`t az `az webapp up` parancs kimenetében látható erőforráscsoporthoz, például: "appsvc_rg_Linux_centralus". A parancs végrehajtása egy percet is igénybe vehet.
 
-```terminal
+```azurecli
 az group delete -n <resource-group-name>
 ```
 

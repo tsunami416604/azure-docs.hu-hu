@@ -1,18 +1,16 @@
 ---
 title: Alkalmazás klónozása a PowerShell használatával
 description: Megtudhatja, hogyan klónozott App Service alkalmazást egy új alkalmazásba a PowerShell használatával. Számos klónozási forgatókönyvet érintenek, beleértve a Traffic Manager integrációt is.
-author: ahmedelnably
 ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.topic: article
 ms.date: 01/14/2016
-ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 332f7a562fc8c1d7b2bbebb0e596a068797c2ce3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e7ad45ea4cb1049ed7eeb454162e23e81ed35019
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967210"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255188"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Alkalmazások klónozásának Azure App Service a PowerShell használatával
 
@@ -124,7 +122,7 @@ Az alkalmazások klónozásának ismert korlátozásai:
 * A kimenő IP-címek akkor változnak, ha egy másik méretezési egység klónozása
 * Linux-alkalmazásokhoz nem érhető el
 
-### <a name="references"></a>Tudástár
+### <a name="references"></a>Referencia
 * [App Service klónozás](app-service-web-app-cloning.md)
 * [Alkalmazás biztonsági mentése Azure App Service](manage-backup.md)
 * [Az Azure Traffic Manager előzetes verziójának Azure Resource Manager támogatása](../traffic-manager/traffic-manager-powershell-arm.md)

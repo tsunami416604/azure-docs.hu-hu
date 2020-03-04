@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bb1913d77616869c889c464a41e8166b3a88b03c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 8c76333d5a2be8a2c589dbe54389b023fef34854
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028876"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252525"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Magánhálózati kapcsolat létrehozása egy Storage-fiókhoz az Azure Private Endpoint használatával
 Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára a magánjellegű kapcsolati erőforrásokkal való kommunikációt.
@@ -29,24 +29,22 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálózatot, amely a privát kapcsolati erőforrás eléréséhez használt virtuális GÉPET (ebben a példában a Storage-fiókot) tárolja.
 
-### <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
+## <a name="virtual-network-and-parameters"></a>Virtuális hálózat és paraméterek
 
 Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálózatot a privát kapcsolati erőforrás elérésére használt virtuális gép üzemeltetéséhez.
 
-1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **virtuális hálózat**lehetőséget.
-1. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
+Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekben az alábbi információkkal:
 
-    | Beállítás | Value (Díj) |
-    | ------- | ----- |
-    | Név | Adja meg a *MyVirtualNetwork*. |
-    | Címtér | Adja meg a *10.1.0.0/16*értéket. |
-    | Előfizetés | Válassza ki előfizetését.|
-    | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
-    | Földrajzi egység | Válassza a **WestCentralUS**lehetőséget.|
-    | Alhálózat – név | Adja meg a *mySubnet*. |
-    | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24*értéket. |
-    |||
-1. Hagyja a többi értéket alapértelmezettként, és válassza a **Létrehozás**lehetőséget.
+| Paraméter                   | Érték                |
+|-----------------------------|----------------------|
+| **\<erőforrás-csoport neve >**  | myResourceGroup |
+| **\<virtuális hálózat neve >** | myVirtualNetwork          |
+| **\<régió – név >**          | USA nyugati középső régiója      |
+| **\<IPv4-címterület >**   | 10.1.0.0 \ 16          |
+| **\<alhálózat neve >**          | mySubnet        |
+| **\<alhálózat-címtartomány >** | 10.1.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 
 ### <a name="create-virtual-machine"></a>Virtuális gép létrehozása
@@ -55,16 +53,16 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálóza
 
 1. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Value (Díj) |
+    | Beállítás | Érték |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetést | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Virtuális gép neve | Adja meg a *myVm*. |
-    | Region (Régió) | Válassza a **WestCentralUS**lehetőséget. |
+    | Régió | Válassza a **WestCentralUS**lehetőséget. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
-    | Lemezkép | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
+    | Image (Kép) | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
     | Méret | Hagyja meg az alapértelmezett **standard DS1 v2**értéket. |
     | **RENDSZERGAZDAI FIÓK** |  |
     | Felhasználónév | Adja meg a választott felhasználónevet. |
@@ -82,7 +80,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálóza
 
 1. A **virtuálisgép-hálózat létrehozása**területen válassza ki ezt az információt:
 
-    | Beállítás | Value (Díj) |
+    | Beállítás | Érték |
     | ------- | ----- |
     | Virtuális hálózat | Hagyja meg az alapértelmezett **MyVirtualNetwork**.  |
     | Címtér | Hagyja meg az alapértelmezett **10.1.0.0/24**értéket.|
@@ -103,14 +101,14 @@ Ebben a szakaszban létrehoz egy privát Storage-fiókot egy privát végpont ha
 
 1. A **Storage-fiók létrehozása – alapok**lapon adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Value (Díj) |
+    | Beállítás | Érték |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetést | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Storage account name (Tárfiók neve)  | Adja meg a *mystorageaccount*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
-    | Region (Régió) | Válassza a **WestCentralUS**lehetőséget. |
+    | Régió | Válassza a **WestCentralUS**lehetőséget. |
     | Teljesítmény| Hagyja meg az alapértelmezett **standard**értéket. |
     | Fióktípus | Hagyja meg az alapértelmezett **tárolót (általános célú v2)** . |
     | Replikáció | Válassza a **READ-Access geo-redundáns tárolás (ra-GRS)** lehetőséget. |
@@ -121,13 +119,13 @@ Ebben a szakaszban létrehoz egy privát Storage-fiókot egy privát végpont ha
 5. A **Storage-fiók létrehozása – hálózatkezelés**területen válassza a **magánhálózati végpont hozzáadása**elemet. 
 6. A **privát végpont létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Value (Díj) |
+    | Beállítás | Érték |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetést | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
-    |Földrajzi egység|Válassza a **WestCentralUS**lehetőséget.|
-    |Név|Adja meg a *myPrivateEndpoint*.  |
+    |Hely|Válassza a **WestCentralUS**lehetőséget.|
+    |Name (Név)|Adja meg a *myPrivateEndpoint*.  |
     |Tároló alerőforrása|Hagyja meg az alapértelmezett **blobot**. |
     | **HÁLÓZATI** |  |
     | Virtuális hálózat  | Válassza ki a *MyVirtualNetwork* az erőforráscsoport *myResourceGroup*. |

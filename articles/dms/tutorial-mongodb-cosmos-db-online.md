@@ -3,8 +3,8 @@ title: 'Oktatóanyag: a MongoDB migrálása a Azure Cosmos DB API-ra a MongoDB-b
 titleSuffix: Azure Database Migration Service
 description: Ismerje meg, hogyan telepíthet át a helyszíni MongoDB-ről Azure Cosmos DB API-ra a MongoDB online-ra Azure Database Migration Service használatával.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,21 +12,21 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 896ae35e1039548ea56967ff73d6a1781aa3c8a6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 66375d83dca4edef17919e3b493d5e45be37cc40
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751384"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255622"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Oktatóanyag: a MongoDB migrálása Azure Cosmos DB API-ra a MongoDB online-hoz a DMS használatával
 
 A Azure Database Migration Service segítségével az adatbázisok online (minimális állásidő) áttelepítését végezheti el egy helyszíni vagy Felhőbeli MongoDB, hogy Azure Cosmos DB API-ját a MongoDB.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 >
-> * Hozzon létre egy Azure Database Migration Service-példányt.
+> * Azure Database Migration Service-példány létrehozása.
 > * Hozzon létre egy áttelepítési projektet Azure Database Migration Service használatával.
 > * A migrálás futtatása.
 > * A migrálás monitorozása.
@@ -235,7 +235,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
     ![Tevékenység állapotának visszajátszása](media/tutorial-mongodb-to-cosmosdb-online/dms-verify-data.png)
 
-## <a name="complete-the-migration"></a>A migrálás befejezése
+## <a name="complete-the-migration"></a>Az áttelepítés befejezése
 
 * Miután a forrás összes dokumentuma elérhető a COSMOS DB-tárolóban, válassza a **Befejezés** lehetőséget az áttelepítési tevékenység helyi menüjéből az áttelepítés befejezéséhez.
 

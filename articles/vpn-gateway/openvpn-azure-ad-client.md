@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/28/2020
 ms.author: alzam
-ms.openlocfilehash: 4b9678f72dd69db24b105d4b1d708928e29a09ba
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: fc48b0ae9cf4162b4b9abba14c6e909ca091fd23
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134518"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251618"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>VPN-ügyfél konfigurálása a P2S OpenVPN protokoll kapcsolataihoz: Azure AD-hitelesítés
 
@@ -168,9 +168,26 @@ Megváltoztathatja a letöltött profil XML-fájlját, és hozzáadhatja a **\<d
 </azvpnprofile>
 ```
 
+### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>Hogyan egyéni DNS-kiszolgálókat hozzáadni a VPN-ügyfélhez?
+
+Megváltoztathatja a letöltött profil XML-fájlját, és hozzáadhatja a **\<dnsservers >\<dns > \</dnsserver >\</dnsservers >** címkét
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnsservers>
+        <dnsserver>x.x.x.x</dnsserver>
+        <dnsserver>y.y.y.y</dnsserver>
+    </dnsservers>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Hogyan egyéni útvonalakat hozzáadni a VPN-ügyfélhez?
 
-Módosíthatja a letöltött profil XML-fájlját, és hozzáadhatja a **\<útvonalat >\<includeroutes >\<cél >\<maszk > \</route >\</includeroutes >\</destination >\</mask >** Címkék
+Módosíthatja a letöltött profil XML-fájlját, és hozzáadhatja a **\<includeroutes >\<route >\<cél >\<maszk > \</destination >\</mask >\</route >\</includeroutes >** Címkék
 
 ```
 <azvpnprofile>
@@ -181,6 +198,24 @@ Módosíthatja a letöltött profil XML-fájlját, és hozzáadhatja a **\<útvo
             <destination>x.x.x.x</destination><mask>24</mask>
         </route>
     </includeroutes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>Hogyan blokk (kizárás) útvonalakat a VPN-ügyféltől?
+
+Módosíthatja a letöltött profil XML-fájlját, és hozzáadhatja a **\<excluderoutes >\<route >\<cél >\<maszk > \</destination >\</mask >\</route >\</excluderoutes >** Címkék
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <excluderoutes>
+        <route>
+            <destination>x.x.x.x</destination><mask>24</mask>
+        </route>
+    </excluderoutes>
     
 </clientconfig>
 </azvpnprofile>

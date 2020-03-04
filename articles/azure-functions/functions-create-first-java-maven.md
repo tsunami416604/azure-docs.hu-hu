@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f226736050319d57cd0bc123fdb2211e0faeae11
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 262afc2aa51aea260d5bd810b12e09de60b0c371
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208846"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249597"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Gyors útmutató: függvények létrehozása és közzététele az Azure-ban a Java és a Maven használatával
 
@@ -23,10 +23,10 @@ Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Java-függvényeket 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Java-t használó függvények fejlesztéséhez a következőkre van szükség:
+Ha függvényeket szeretne fejleszteni a Java használatával, akkor a számítógépre a következőket kell telepíteni:
 
-- [Java Developer Kit](https://aka.ms/azure-jdks), 8-as verzió
-- [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió
+- A [Java Developer Kit](https://aka.ms/azure-jdks) 8-as verziója
+- Az [Apache Maven](https://maven.apache.org) 3.0-s vagy újabb verziója
 - [Azure CLI]
 - [Azure functions Core Tools](./functions-run-local.md#v2) 2.6.666 vagy újabb verzió
 
@@ -98,7 +98,7 @@ mvn azure-functions:run
 
 A következőhöz hasonló kimenet jelenik meg Azure Functions Core Tools a projekt helyi futtatásakor:
 
-```Output
+```output
 ...
 
 Now listening on: http://0.0.0.0:7071
@@ -116,7 +116,7 @@ Aktiválja a függvényt a parancssorból a cURL használatával egy új termin�
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
-```Output
+```output
 Hello AzureFunctions!
 ```
 Helyileg történő futtatás esetén a [funkcióbillentyű](functions-bindings-http-webhook-trigger.md#authorization-keys) nem szükséges. A `Ctrl+C` billentyűparanccsal állítsa le a függvénykódot a terminálablakban.
@@ -137,7 +137,7 @@ az login
 
 A következő Maven-paranccsal telepítheti a projektet egy új Function alkalmazásba. 
 
-```azurecli
+```console
 mvn azure-functions:deploy
 ```
 
@@ -175,13 +175,13 @@ Mostantól a másolt URL-cím használatával is elérheti a függvényt.
 
 Az Azure-ban futó Function app `cURL`használatával történő ellenőrzéséhez cserélje le az alábbi minta URL-címét a portálról másolt URL-címre.
 
-```azurecli
+```console
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
 Ez POST-kérést küld a függvény végpontjának `AzureFunctions` a kérelem törzsében. A következő válasz jelenik meg.
 
-```Output
+```output
 Hello AzureFunctions!
 ```
 

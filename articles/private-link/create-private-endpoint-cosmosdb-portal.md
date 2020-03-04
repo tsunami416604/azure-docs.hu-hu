@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 23e04bf651c199364f23bf36f327de94c709d643
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: b7a50a2dabc9503ca5dbdd3388e29cfc69963885
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028578"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252605"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Privát csatlakozás Azure Cosmos-fiókhoz az Azure Private link használatával
 
@@ -25,26 +25,22 @@ Jelentkezzen be a [Azure Portalba.](https://portal.azure.com)
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-### <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
+## <a name="virtual-network-and-parameters"></a>Virtuális hálózat és paraméterek
 
 Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálózatot, amely a privát kapcsolati erőforráshoz (ebben a példában egy Azure Cosmos-fiók) való hozzáféréshez használt virtuális GÉPET üzemelteti.
 
-1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **virtuális hálózat**lehetőséget.
+Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekben az alábbi információkkal:
 
-1. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
+| Paraméter                   | Érték                |
+|-----------------------------|----------------------|
+| **\<erőforrás-csoport neve >**  | myResourceGroup|
+| **\<virtuális hálózat neve >** | myVirtualNetwork         |
+| **\<régió – név >**          | USA nyugati középső régiója     |
+| **\<IPv4-címterület >**   | 10.1.0.0 \ 16          |
+| **\<alhálózat neve >**          | mySubnet        |
+| **\<alhálózat-címtartomány >** | 10.1.0.0 \ 24          |
 
-    | Beállítás | Value (Díj) |
-    | ------- | ----- |
-    | Név | Adja meg a *MyVirtualNetwork*. |
-    | Címtér | Adja meg a *10.1.0.0/16*értéket. |
-    | Előfizetés | Válassza ki előfizetését.|
-    | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
-    | Földrajzi egység | Válassza a **WestCentralUS**lehetőséget.|
-    | Alhálózat – név | Adja meg a *mySubnet*. |
-    | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24*értéket. |
-    |||
-
-1. Hagyja a többi értéket alapértelmezettként, és válassza a **Létrehozás**lehetőséget.
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-the-virtual-machine"></a>A virtuális gép létrehozása
 
@@ -52,16 +48,16 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálóza
 
 1. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Value (Díj) |
+    | Beállítás | Érték |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetést | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Virtuális gép neve | Adja meg a *myVm*. |
-    | Region (Régió) | Válassza a **WestCentralUS**lehetőséget. |
+    | Régió | Válassza a **WestCentralUS**lehetőséget. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
-    | Lemezkép | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
+    | Image (Kép) | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
     | Méret | Hagyja meg az alapértelmezett **standard DS1 v2**értéket. |
     | **RENDSZERGAZDAI FIÓK** |  |
     | Felhasználónév | Adjon meg egy tetszőleges felhasználónevet. |
@@ -79,7 +75,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálóza
 
 1. A **virtuálisgép-hálózat létrehozása**területen válassza ki ezt az információt:
 
-    | Beállítás | Value (Díj) |
+    | Beállítás | Érték |
     | ------- | ----- |
     | Virtuális hálózat | Hagyja meg az alapértelmezett **MyVirtualNetwork**.  |
     | Címtér | Hagyja meg az alapértelmezett **10.1.0.0/24**értéket.|

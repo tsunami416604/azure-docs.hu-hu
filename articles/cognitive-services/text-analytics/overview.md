@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 11/07/2019
 ms.author: aahi
-ms.openlocfilehash: 0f16c687f9816e99e05c2495a05596bd988ca9d2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 66bc1e5441210b8d9153812c826643159fe53d50
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827323"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251330"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Mi a Text Analytics API?
 
-A Text Analytics API egy felhőalapú szolgáltatás, amely fejlett természetes nyelvi feldolgozást tesz lehetővé nyers szövegként, és négy fő funkciót tartalmaz: az érzelmek elemzését, a kulcsfontosságú kifejezés kinyerését, a nyelvfelismerés és az entitások felismerését.
+A Text Analytics API egy felhőalapú szolgáltatás, amely fejlett természetes nyelvi feldolgozást tesz lehetővé nyers szövegként, és négy fő funkciót tartalmaz: az érzelmek elemzését, a kulcsfontosságú kifejezés kinyerését, a nyelvfelismerés és az elnevezett entitások felismerését.
 
 Az API az [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)része, amely a felhőben a gépi tanulási és AI-algoritmusok gyűjteménye a fejlesztési projektekhez.
 
@@ -27,7 +27,7 @@ Az API az [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-
 
 A szöveg elemzése különböző dolgokat jelenthet, de a Cognitive Servicesban a Text Analytics API négyféle elemzési típust biztosít az alább leírtak szerint. Ezeket a szolgáltatásokat a [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)vagy az [ügyféloldali kódtár](quickstarts/text-analytics-sdk.md)használatával is használhatja.
 
-## <a name="sentiment-analysis"></a>Véleményelemzés
+## <a name="sentiment-analysis"></a>Hangulatelemzés
 Az [érzelmek elemzésével](how-tos/text-analytics-how-to-sentiment-analysis.md) megtudhatja, hogy az ügyfelek mit gondolnak a márka vagy a téma alapján, ha a nyers szöveget a pozitív vagy negatív hangulatú nyomokra elemzi. Az API minden dokumentumhoz visszaad egy 0 és 1 közötti hangulati pontszámot, ahol az 1 a legpozitívabb pontszám.<br /> Az elemzési modellek előzetes betanítása a Microsoft széles körű szövegtörzs-technológiái és természetes nyelvi technológiái segítségével történik. [Bizonyos nyelvek](text-analytics-supported-languages.md) esetében az API képes a megadott szöveg elemzéséből kiszámított pontszámot közvetlenül visszaadni a hívó alkalmazásnak.
 
 ## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
@@ -51,7 +51,7 @@ A munkafolyamat egyszerű: benyújtjuk az adatokat elemzésre és a kódban keze
 
 2. [Állítson össze egy kérést](how-tos/text-analytics-how-to-call-api.md#json-schema), amely az adatokat nyers, strukturálatlan szövegként tartalmazza, JSON formátumban.
 
-3. Küldje el a kérést a feliratkozáskor megállapított végpontra, és jelölje meg a használni kívánt erőforrást: hangulatelemzés, kulcsszókinyerés, nyelvfelismerés vagy entitásazonosítás.
+3. Tegye közzé a kérelmet a regisztráció során létrejött végponton, fűzze hozzá a kívánt erőforrást: érzelmek elemzése, kulcsfontosságú kifejezés kinyerése, nyelvfelismerés vagy elnevezett entitások felismerése.
 
 4. A válasz streamelhető vagy helyileg is tárolható. A kéréstől függően az eredmény lehet egy véleménypontszám, kinyert kulcskifejezések gyűjteménye vagy egy nyelvkód.
 
@@ -106,7 +106,7 @@ A kérelmeket külön kell mérni az egyes Text Analytics szolgáltatásokhoz. E
 
 A Text Analytics API Unicode-kódolást használ a szövegek megjelenítéséhez és a karakterszámok számításához. A kérések elküldhetők UTF-8- és UTF-16-kódolással is, amelyek között nincs számottevő különbség a karakterek számában. A rendszer a Unicode-kódpontokat használja a karakterszám heurisztikus számításához. A két mennyiség a Text Analytics adatkorlátai szempontjából egyenértékű. Ha a karakterek számának beolvasásához [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) használ, ugyanazt a módszert használja az adatméret mérésére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Hozzon létre egy Azure-erőforrást](../cognitive-services-apis-create-account.md) az Text Analytics számára az alkalmazások kulcsának és végpontjának beszerzéséhez.
 

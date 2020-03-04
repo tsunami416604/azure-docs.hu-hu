@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3df906936cc4e47ee1f43adb0fcbaa0e8c04b0f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 10d3f18fb11dc54f560d867e2b5ff87251e2c836
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656313"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249106"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -67,35 +67,7 @@ A szervezetek dönthetnek úgy, hogy az eszköz identitását használják a fel
 
 A szervezeteknek meg kell követelniük, hogy a kiválasztott felhőalapú alkalmazásokhoz való hozzáférési kísérletet egy jóváhagyott ügyfélalkalmazás alapján kell végrehajtani. Ezek a jóváhagyott ügyfélalkalmazások a mobileszköz-kezelési (MDM) megoldástól függetlenül támogatják az [Intune app Protection-szabályzatokat](/intune/app-protection-policy) .
 
-Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
-
-- Microsoft Azure Information Protection
-- Microsoft-foglalások
-- Microsoft-Cortana
-- Microsoft Dynamics 365
-- Microsoft Edge
-- Microsoft Excel
-- Microsoft Flow
-- Microsoft Intune Managed Browser
-- A Microsoft számlázás
-- Microsoft Kaizala
-- A Microsoft indítója
-- Microsoft OneDrive
-- Microsoft OneNote
-- Microsoft Outlook
-- A Microsoft Planner
-- Microsoft PowerApps
-- Microsoft Power BI
-- Microsoft PowerPoint
-- Microsoft SharePoint
-- Microsoft Skype vállalati verzió
-- Microsoft StaffHub
-- Microsoft Stream
-- Microsoft Teams
-- Microsoft To-Do
-- Microsoft Visio
-- Microsoft Word
-- Microsoft-Yammer
+A támogatott alkalmazások a cikkben, [Microsoft Intune védett alkalmazásokban](/intune/apps/apps-supported-intune-apps)találhatók.
 
 **Megjegyzések**
 
@@ -108,12 +80,7 @@ Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 
 A feltételes hozzáférési házirendben megkövetelheti, hogy az [Intune app Protection szabályzata](/intune/app-protection-policy) elérhető legyen az ügyfélalkalmazás számára, mielőtt a kiválasztott felhőalapú alkalmazások hozzáférhessenek a hozzáféréshez. 
 
-Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
-
-- Microsoft-Cortana
-- Microsoft OneDrive
-- Microsoft Outlook
-- A Microsoft Planner
+A támogatott alkalmazások a cikkben, [Microsoft Intune védett alkalmazásokban](/intune/apps/apps-supported-intune-apps)találhatók.
 
 **Megjegyzések**
 

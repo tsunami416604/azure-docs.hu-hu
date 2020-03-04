@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d593e5f27dbcd676e2b42975251778a6c48a7d79
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 594f0ed55b5ce5c31e87fd2011f3bc1522a12380
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511875"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249050"
 ---
 # <a name="what-is-a-device-identity"></a>Mi az az eszközidentitás?
 
@@ -37,16 +37,16 @@ Az eszközök identitásának kezelése az [eszköz alapú feltételes hozzáfé
 Az eszköz Azure AD-ben való beszerzéséhez több lehetőség közül választhat:
 
 - **Azure AD-regisztráció**
-   - Az Azure AD-ban regisztrált eszközök jellemzően személyes tulajdonú vagy mobil eszközök, és bejelentkeznek személyes Microsoft-fiók vagy egy másik helyi fiókkal.
+   - Az Azure AD-ban regisztrált eszközök általában személyes tulajdonú vagy mobileszközök, és személyes Microsoft-fiók vagy egy másik helyi fiókkal jelentkeznek be.
       - Windows 10
       - iOS
       - Android
-      - macOS
+      - MacOS
 - **Azure AD-hez csatlakoztatott**
-   - Az Azure AD-hez csatlakoztatott eszközök egy szervezet tulajdonában állnak, és bejelentkeznek az adott szervezethez tartozó Azure AD-fiókkal. Csak a felhőben vannak.
+   - Az Azure AD-hez csatlakoztatott eszközök egy szervezet tulajdonában állnak, és az adott szervezethez tartozó Azure AD-fiókkal jelentkeznek be. Csak a felhőben vannak.
       - Windows 10 
 - **csatlakozik a Hibrid Azure AD-hez**
-   - A hibrid Azure AD-hez csatlakoztatott eszközök egy szervezet tulajdonában vannak, és bejelentkeznek az adott szervezethez tartozó Azure AD-fiókkal. A felhőben és a helyszínen vannak.
+   - A hibrid Azure AD-hez csatlakoztatott eszközök egy szervezet tulajdonában állnak, és az adott szervezethez tartozó Azure AD-fiókkal jelentkeznek be. A felhőben és a helyszínen vannak.
       - Windows 7, 8,1 vagy 10
       - Windows Server 2008 vagy újabb
 
@@ -80,7 +80,7 @@ Az Azure AD-hez csatlakoztatott vagy hibrid Azure AD-hez csatlakoztatott eszköz
 
 Az eszközök Azure AD-be való beszerzése önkiszolgáló módon vagy a rendszergazdák által felügyelt kiépítési folyamattal végezhető el.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az eszközök Identitáskezelés az Azure AD-ben a következőket teheti:
 

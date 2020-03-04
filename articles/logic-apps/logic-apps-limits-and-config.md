@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 02/20/2020
-ms.openlocfilehash: 7157d9c0b96dbb31a158f599efd5489e8059f6ba
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.date: 02/28/2020
+ms.openlocfilehash: 4912b07c60ecc8a2db65d3b8ffb339cf83909396
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78163437"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250855"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>A Azure Logic Apps korlátai és konfigurációs adatai
 
@@ -195,7 +195,7 @@ A webes API-k által létrehozott egyéni összekötők korlátai.
 | Name (Név) | Korlát |
 |------|-------|
 | Felügyelt identitások/logikai alkalmazások | Vagy a rendszer által hozzárendelt identitás vagy 1 felhasználó által hozzárendelt identitás |
-| A felügyelt identitással rendelkező logikai alkalmazások száma régiónként | 100 |
+| A felügyelt identitással rendelkező logikai alkalmazások száma régiónként | 250 |
 |||
 
 <a name="integration-account-limits"></a>

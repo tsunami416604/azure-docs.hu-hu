@@ -8,12 +8,12 @@ ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, nyílt Service Broker, nyílt Service Broker az Azure-hoz
-ms.openlocfilehash: 3d0ab0b27d77e45d779227d30c5a8e4f824ba62a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: ddaa3b9aa198bc142e1bcbcab6b7b1e028eff2aa
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277707"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247919"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Meglévő MongoDB-alkalmazás integrálása Azure Cosmos DB API-val a MongoDB és a nyílt Service Broker for Azure (OSBA) használatával
 
@@ -191,7 +191,7 @@ Az [Azure dev Spaces](../dev-spaces/azure-dev-spaces.md) használatával üzembe
 
 Az Azure dev-helyek engedélyezése az AK-fürtben:
 
-```cmd
+```azurecli
 az aks enable-addons --addons http_application_routing -g MyResourceGroup -n MyAKS
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
 ```
@@ -206,7 +206,7 @@ Ez a parancs számos összetevőt generál, például egy *diagramot/* mappát, 
 
 Hozzon létre egy fájlt a *Docker* nevű projekt gyökerében a következő tartalommal:
 
-```Dockerfile
+```dockerfile
 FROM openjdk:8-jdk-alpine
 EXPOSE 8080
 WORKDIR /app
@@ -265,7 +265,7 @@ press Ctrl+C to detach
 ...
 ```
 
-Navigáljon a naplókban megjelenő URL-címhez. Az előző példában a *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/ t* kellene használnia. 
+Navigáljon a naplókban megjelenő URL-címhez. Az előző példában a *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/t* kellene használnia. 
 
 Ellenőrizze, hogy megjelenik-e az alkalmazás a módosítások mellett.
 

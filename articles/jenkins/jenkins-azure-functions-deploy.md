@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan helyezhet üzembe Azure Functions a Jenkins Azu
 keywords: Jenkins, Azure, devops, Java, Azure functions
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: edf8c763a46a6f519175842a6525b2c1b314fb66
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 731bac13a596bbeaf970b3f6ce976a582d1f11ae
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470666"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250908"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Üzembe helyezés Azure Functions a Jenkins Azure Functions beépülő modullal
 
@@ -31,19 +31,19 @@ A következő lépések bemutatják, hogyan hozhat létre Java-függvényeket az
 
 1. Hozzon létre egy erőforráscsoportot, és cserélje le a **&lt;resource_group >** helyőrzőt az erőforráscsoport nevére.
 
-    ```cli
+    ```azurecli
     az group create --name <resource_group> --location eastus
     ```
 
 1. Hozzon létre egy Azure Storage-fiókot, és cserélje le a helyőrzőket a megfelelő értékekre.
  
-    ```cli
+    ```azurecli
     az storage account create --name <storage_account> --location eastus --resource-group <resource_group> --sku Standard_LRS    
     ```
 
 1. Hozza létre a test Function alkalmazást, és cserélje le a helyőrzőket a megfelelő értékekre.
 
-    ```cli
+    ```azurecli
     az functionapp create --resource-group <resource_group> --consumption-plan-location eastus --name <function_app> --storage-account <storage_account>
     ```
 
@@ -148,7 +148,7 @@ Most már ideje futtatni a Jenkins-feladatot.
 
 Ha nem folytatja az alkalmazás használatát, törölje a létrehozott erőforrásokat a következő lépéssel:
 
-```cli
+```azurecli
 az group delete -y --no-wait -n <resource_group>
 ```
 

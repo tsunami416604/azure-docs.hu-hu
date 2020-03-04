@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
-ms.openlocfilehash: 9fc77b876474c89014998ce789f91f098fb3735c
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 9077d5c471911c9967c327c457d683b06856b920
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161049"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249067"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy JavaScript SPA-ban
 
@@ -26,8 +26,9 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be a JavaScript eg
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Node.js](https://nodejs.org/en/download/).
+* [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download) (projektfájlok szerkesztése)
+
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>A gyors üzembe helyezési alkalmazás regisztrálása és letöltése
@@ -71,38 +72,39 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be a JavaScript eg
 
 #### <a name="step-2-download-the-project"></a>2\. lépés: A projekt letöltése
 
-Válassza ki a fejlesztési környezetének megfelelő lehetőséget:
+> [!div renderon="docs"]
+> Ha a projektet a Node. js használatával webkiszolgálóval szeretné futtatni, [töltse le az alapprojekt fájljait](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 
-* Ha a projektet a Node. js használatával webkiszolgálóval szeretné futtatni, [töltse le az alapprojekt fájljait](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip). A fájlok megnyitásához használjon egy szerkesztőt, például a [Visual Studio Code](https://code.visualstudio.com/)-ot.
+> [!div renderon="portal"]
+> A projekt futtatása webkiszolgálóval a Node. js használatával
 
-#### <a name="step-3-configure-your-javascript-app"></a>3\. lépés: a JavaScript-alkalmazás konfigurálása
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [A mintakód letöltése]()
 
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-your-javascript-app"></a>3\. lépés: a JavaScript-alkalmazás konfigurálása
+>
 > A *JavaScriptSPA* mappában szerkessze a *authConfig. js*fájlt, és állítsa be a `clientID` és `authority` értékeket a `msalConfig`alatt.
+> ```javascript
+>
+>  // Config object to be passed to Msal on creation
+>  const msalConfig = {
+>    auth: {
+>      clientId: "Enter_the_Application_Id_Here",
+>      authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
+>      redirectUri: "Enter_the_Redirect_Uri_Here",
+>    },
+>    cache: {
+>      cacheLocation: "sessionStorage", // This configures where your cache will be stored
+>      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
+>      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
+>    }
+>  };  
+> ```
 
-> [!div class="sxs-lookup" renderon="portal"]
-> A *JavaScriptSPA* mappában szerkessze a *authConfig. js*fájlt, és cserélje le a `msalConfig`t a következő kódra:
-
-```javascript
-
-  // Config object to be passed to Msal on creation
-  const msalConfig = {
-    auth: {
-      clientId: "Enter_the_Application_Id_Here",
-      authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
-      redirectUri: "Enter_the_Redirect_Uri_Here",
-    },
-    cache: {
-      cacheLocation: "sessionStorage", // This configures where your cache will be stored
-      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
-      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
-    }
-  };  
-
-```
 > [!div renderon="portal"]
 > > [!NOTE]
-> > Ez a rövid útmutató támogatja a Enter_the_Supported_Account_Info_Here.
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
 >
@@ -117,19 +119,22 @@ Válassza ki a fejlesztési környezetének megfelelő lehetőséget:
 > > [!TIP]
 > > Az **alkalmazás (ügyfél) azonosítója**, a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
 >
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3\. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra
+> A projektet az alkalmazás tulajdonságainak értékeivel konfiguráltuk. 
 
-#### <a name="step-4-run-the-project"></a>4\. lépés: a projekt futtatása
+> [!div renderon="docs"]
+> #### <a name="step-4-run-the-project"></a>4\. lépés: a projekt futtatása
 
-Ha a [Node. js](https://nodejs.org/en/download/)-t használja:
+Futtassa a projektet egy webkiszolgálóval a [Node. js](https://nodejs.org/en/download/)használatával:
 
 1. A kiszolgáló elindításához futtassa a következő parancsot a projekt könyvtárából:
-
-   ```batch
-   npm install
-   npm start
-   ```
-
+    ```batch
+    npm install
+    npm start
+    ```
 1. Nyisson meg egy webböngészőt, és lépjen a `http://localhost:3000/`.
+
 1. A bejelentkezés elindításához válassza a **Bejelentkezés** lehetőséget, majd hívja meg Microsoft Graph API-t.
 
 Ha a böngésző betölti az alkalmazást, válassza a **Bejelentkezés**lehetőséget. Amikor először jelentkezik be, a rendszer arra kéri, hogy adja meg a beleegyezik, hogy engedélyezze az alkalmazásnak a profil elérését és a bejelentkezést. Miután sikeresen bejelentkezett, a felhasználói profil adatai megjelennek az oldalon.

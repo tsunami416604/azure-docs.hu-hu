@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 959d959cd269884b3b75c4c23bfd0054ae64ced7
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b3278615b90fe2ef539456c3f00eb877918aa9c2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033636"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248357"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Application Proxy üzemelő példány megtervezése
 
@@ -30,7 +30,7 @@ Az alkalmazásproxy használata ajánlott a távoli felhasználók számára a b
 
 Ez a cikk az Azure-AD Application Proxy tervezéséhez, működtetéséhez és kezeléséhez szükséges erőforrásokat tartalmazza. 
 
-## <a name="plan-your-implementation"></a>A megvalósítás tervezése
+## <a name="plan-your-implementation"></a>A megvalósítás megtervezése
 
 A következő szakasz áttekintést nyújt a legfontosabb tervezési elemekről, amelyek a hatékony üzembe helyezést teszik lehetővé. 
 
@@ -38,7 +38,7 @@ A következő szakasz áttekintést nyújt a legfontosabb tervezési elemekről,
 
 A megvalósítás megkezdése előtt meg kell felelnie a következő előfeltételeknek. Ebben az [oktatóanyagban](application-proxy-add-on-premises-application.md)további információkat talál a környezet beállításával kapcsolatban, beleértve az előfeltételeket is.
 
-* **Összekötők**: Az összekötők olyan könnyű ügynökök, amelyeket üzembe helyezhet:
+* **Összekötők**: az összekötők olyan könnyű ügynökök, amelyeket üzembe helyezhet:
    * Helyszíni fizikai hardver
    * Bármely hypervisor-megoldáson belül üzemeltetett virtuális gép
    * Az Azure-ban üzemeltetett virtuális gép, amely lehetővé teszi a kimenő kapcsolódást az alkalmazásproxy szolgáltatáshoz.
@@ -50,7 +50,7 @@ A megvalósítás megkezdése előtt meg kell felelnie a következő előfeltét
      * Ha lehetséges, telepítsen összekötőket [ugyanabban a hálózatban](application-proxy-network-topology.md) és szegmensben, mint a háttérbeli webalkalmazás-kiszolgálókat. Az alkalmazások felderítésének befejezése után érdemes az összekötőket üzembe helyezni.
      * Javasoljuk, hogy minden összekötő-csoportnak legalább két összekötője legyen, hogy magas rendelkezésre állást és méretezést biztosítson. Ha a három összekötő optimális, akkor előfordulhat, hogy egy gépet bármikor kell kiszolgálni. Tekintse át az [összekötő kapacitása táblában](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning) , hogy eldöntse, milyen típusú gépet telepítsen az összekötők. Minél nagyobb a gép, annál több puffert és teljesítményű összekötőt használ a rendszer.
 
-* **Hálózati hozzáférési beállítások**: Az Azure AD Application Proxy [-összekötők a https-kapcsolaton keresztül csatlakoznak az Azure-hoz (443-as TCP-port) és a http-t (80](application-proxy-add-on-premises-application.md) 
+* **Hálózati hozzáférési beállítások**: az Azure ad Application proxy-összekötők [csatlakoznak az Azure-hoz a HTTPS-en keresztül (443-as TCP-port) és HTTP-n (TCP-80 port](application-proxy-add-on-premises-application.md) 
 
    * Az összekötő TLS-forgalmának leállítása nem támogatott, és megakadályozza, hogy az összekötők biztonságos csatornát hozzanak létre a megfelelő Azure app proxy-végpontokkal.
 
@@ -62,15 +62,15 @@ A megvalósítás megkezdése előtt meg kell felelnie a következő előfeltét
 
 Az Azure AD Application Proxy konfigurálásához és megvalósításához a következő alapvető követelmények teljesülése szükséges.
 
-*  Az **Azure**bevezetése: Az alkalmazásproxy üzembe helyezése előtt a felhasználói identitásokat a helyszíni címtárból kell szinkronizálni, vagy közvetlenül az Azure AD-bérlőn belül kell létrehozni. Identitásszinkronizálás lehetővé teszi az Azure AD számára, hogy előzetesen hitelesítse a felhasználókat, mielőtt hozzáférést adna nekik az App proxy közzétett alkalmazásaihoz, és hogy a szükséges felhasználói azonosító információkkal rendelkezzen az egyszeri bejelentkezés (SSO) végrehajtásához.
+*  **Azure**-előkészítés: az alkalmazásproxy üzembe helyezése előtt a felhasználói identitásokat egy helyszíni címtárból kell szinkronizálni, vagy közvetlenül az Azure ad-bérlőn belül kell létrehozni. Identitásszinkronizálás lehetővé teszi az Azure AD számára, hogy előzetesen hitelesítse a felhasználókat, mielőtt hozzáférést adna nekik az App proxy közzétett alkalmazásaihoz, és hogy a szükséges felhasználói azonosító információkkal rendelkezzen az egyszeri bejelentkezés (SSO) végrehajtásához.
 
-* **Feltételes hozzáférési követelmények**: Nem ajánlott az alkalmazásproxy használata az intranetes hozzáféréshez, mert ez a művelet a felhasználókat érintő késést okoz. Azt javasoljuk, hogy az alkalmazásproxy használatát előhitelesítéssel és feltételes hozzáférési szabályzatokkal használja az internetről történő távoli hozzáféréshez.  Az intranetes használatra való feltételes hozzáférés biztosításának megközelítése az alkalmazások modernizálása, hogy azok közvetlenül hitelesíthetők a HRE. További információkért tekintse meg az [alkalmazások HRE való áttelepítésének erőforrásait](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) . 
+* **Feltételes hozzáférési követelmények**: az alkalmazásproxy használata nem ajánlott az intranetes hozzáféréshez, mert ez a művelet a felhasználókat érintő késést okoz. Azt javasoljuk, hogy az alkalmazásproxy használatát előhitelesítéssel és feltételes hozzáférési szabályzatokkal használja az internetről történő távoli hozzáféréshez.  Az intranetes használatra való feltételes hozzáférés biztosításának megközelítése az alkalmazások modernizálása, hogy azok közvetlenül hitelesíthetők a HRE. További információkért tekintse meg az [alkalmazások HRE való áttelepítésének erőforrásait](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) . 
 
-* **Szolgáltatási korlátok**: Az egyes bérlők erőforrásainak túlfogyasztása elleni védelem érdekében az alkalmazások és a bérlők szabályozási korlátokkal rendelkeznek. A korlátozások megtekintéséhez tekintse meg az [Azure ad szolgáltatás korlátozásait és korlátozásait](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Ezek a sávszélesség-szabályozási korlátok a tipikus használati köteten felüli teljesítményteszten alapulnak, és bőséges puffert biztosítanak az üzemelő példányok többsége számára.
+* **Szolgáltatási korlátok**: az egyes bérlők erőforrásainak túlhasználása elleni védelem érdekében az alkalmazások és a bérlők által meghatározott sávszélesség-szabályozási korlátok vannak beállítva. A korlátozások megtekintéséhez tekintse meg az [Azure ad szolgáltatás korlátozásait és korlátozásait](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Ezek a sávszélesség-szabályozási korlátok a tipikus használati köteten felüli teljesítményteszten alapulnak, és bőséges puffert biztosítanak az üzemelő példányok többsége számára.
 
-* **Nyilvános tanúsítvány**: Ha egyéni tartományneveket használ, be kell szereznie egy nem a Microsofttól származó megbízható hitelesítésszolgáltató által kiadott nyilvános tanúsítványt. A szervezeti követelményektől függően a tanúsítvány beszerzése hosszabb időt vehet igénybe, és a lehető leghamarabb javasoljuk a folyamat megkezdését. Az Azure Application proxy támogatja a standard, a [helyettesítő karaktereket](application-proxy-wildcard.md)vagy a San-alapú tanúsítványokat.
+* **Nyilvános tanúsítvány**: Ha egyéni tartományneveket használ, be kell szereznie egy SSL-tanúsítványt. A szervezeti követelményektől függően a tanúsítvány beszerzése hosszabb időt vehet igénybe, és a lehető leghamarabb javasoljuk a folyamat megkezdését. Az Azure Application proxy támogatja a standard, a [helyettesítő karaktereket](application-proxy-wildcard.md)vagy a San-alapú tanúsítványokat. További részletek: [Egyéni tartományok konfigurálása az Azure ad Application proxy](application-proxy-configure-custom-domain.md).
 
-* **Tartományi követelmények**: Az egyszeri bejelentkezés a közzétett alkalmazásokra a Kerberos által korlátozott delegálással (KCD) megköveteli, hogy az összekötőt futtató kiszolgáló és az alkalmazást futtató kiszolgáló tartományhoz legyen csatlakoztatva, és ugyanahhoz a tartományhoz vagy megbízható tartományhoz tartozik.
+* **Tartományi követelmények**: egyszeri bejelentkezés a közzétett alkalmazásokba a Kerberos által korlátozott delegálással (KCD) megköveteli, hogy az összekötőt futtató kiszolgáló és az alkalmazást futtató kiszolgáló tartományhoz legyen csatlakoztatva, és ugyanahhoz a tartományhoz vagy megbízható tartományhoz tartozik.
 A témakörrel kapcsolatos részletes információkért lásd: [KCD az egyszeri bejelentkezéshez](application-proxy-configure-single-sign-on-with-kcd.md) az Application proxyval. Az összekötő szolgáltatás a helyi rendszer kontextusában fut, és nem konfigurálható egyéni identitás használatára.
 
 * **DNS-rekordok URL-címekhez**
@@ -85,7 +85,7 @@ A témakörrel kapcsolatos részletes információkért lásd: [KCD az egyszeri 
 
    * Az **alkalmazások közzétételéhez és felügyeletéhez** az *alkalmazás-rendszergazdai* szerepkör szükséges. Az alkalmazás-rendszergazdák kezelhetik a címtárban lévő összes alkalmazást, beleértve a regisztrációkat, az SSO-beállításokat, a felhasználók és csoportok hozzárendelését, a licencelést, az alkalmazásproxy beállításait és a jóváhagyást. Nem biztosít lehetőséget a feltételes hozzáférés kezelésére. A *Cloud Application Administrator* szerepkör rendelkezik az alkalmazás-rendszergazda összes képességével, azzal a kivétellel, hogy az alkalmazásproxy-beállítások kezelése nem engedélyezett.
 
-* **Licencelés**: Az alkalmazásproxy egy prémium szintű Azure AD-előfizetésen keresztül érhető el. A licencelési lehetőségek és szolgáltatások teljes listájáért tekintse meg a [Azure Active Directory díjszabási oldalát](https://azure.microsoft.com/pricing/details/active-directory/) .  
+* **Licencelés**: az alkalmazásproxy egy prémium szintű Azure ad-előfizetésen keresztül érhető el. A licencelési lehetőségek és szolgáltatások teljes listájáért tekintse meg a [Azure Active Directory díjszabási oldalát](https://azure.microsoft.com/pricing/details/active-directory/) .  
 
 ### <a name="application-discovery"></a>Alkalmazás felderítése
 
@@ -93,14 +93,14 @@ A következő információk összegyűjtésével lefordíthatja az Application p
 
 | Információ típusa| Gyűjtött információk |
 |---|---|
-| Service Type| Példa: SharePoint, SAP, CRM, Custom Web Application, API |
-| Alkalmazás platform | Példa: Windows IIS, Apache Linuxon, tomcat, NGINX |
+| Service Type| Például: SharePoint, SAP, CRM, Custom Web Application, API |
+| Alkalmazás platform | Például: Windows IIS, Apache Linuxon, tomcat, NGINX |
 | Tartományi tagság| A webkiszolgáló teljesen minősített tartományneve (FQDN) |
 | Alkalmazás helye | Hol található a webkiszolgáló vagy a Farm az infrastruktúrában |
 | Belső hozzáférés | Az alkalmazás belső eléréséhez használt pontos URL-cím. <br> Ha egy farmon van, milyen típusú terheléselosztás van használatban? <br> Azt határozza meg, hogy az alkalmazás nem magától a forrásból hívja-e a tartalmat.<br> Annak megállapítása, hogy az alkalmazás működik-e WebSockets-en keresztül. |
 | Külső hozzáférés | A szállítói megoldás, amelyet az alkalmazás már külsőleg is kihelyezett. <br> A külső hozzáféréshez használni kívánt URL-cím. Ha a SharePoint, az alternatív hozzáférés-hozzárendelések konfigurálása [ebben az útmutatóban](https://docs.microsoft.com/SharePoint/administration/configure-alternate-access-mappings)történik. Ha nem, akkor meg kell határoznia a külső URL-címeket. |
 | Nyilvános tanúsítvány | Ha egyéni tartományt használ, egy megfelelő tulajdonos nevű tanúsítványt kell beszereznie. Ha a tanúsítvány létezik, jegyezze fel a sorozatszámot és a helyet, ahonnan beszerezhetők. |
-| Hitelesítési típus| Az alkalmazás által támogatott hitelesítés típusa, például az alapszintű, a Windows integrációs hitelesítés, az űrlapalapú, a fejléc-alapú és a jogcímek. <br>Ha az alkalmazás egy adott tartományi fiókban való futtatásra van konfigurálva, jegyezze fel a szolgáltatásfiók teljes tartománynevét (FQDN).<br> Ha SAML-alapú, az azonosító és a válasz URL-címe. <br> Ha a fejléc-alapú, a szállítói megoldás és a hitelesítési típus kezelésére vonatkozó konkrét követelmény. |
+| Hitelesítés típusa| Az alkalmazás által támogatott hitelesítés típusa, például az alapszintű, a Windows integrációs hitelesítés, az űrlapalapú, a fejléc-alapú és a jogcímek. <br>Ha az alkalmazás egy adott tartományi fiókban való futtatásra van konfigurálva, jegyezze fel a szolgáltatásfiók teljes tartománynevét (FQDN).<br> Ha SAML-alapú, az azonosító és a válasz URL-címe. <br> Ha a fejléc-alapú, a szállítói megoldás és a hitelesítési típus kezelésére vonatkozó konkrét követelmény. |
 | Összekötő csoportjának neve | Az összekötők azon csoportjának logikai neve, amely a csatorna és az SSO e háttérbeli alkalmazás számára történő biztosítására lesz kijelölve. |
 | Felhasználók/csoportok hozzáférése | Azok a felhasználók vagy felhasználói csoportok, amelyek külső hozzáférést kapnak az alkalmazáshoz. |
 | További követelmények | Jegyezze fel az alkalmazás közzétételéhez szükséges további távelérési vagy biztonsági követelményeket. |
@@ -153,9 +153,9 @@ A következő kialakítási elemeknek a próbaüzem megvalósításának sikeres
 
 * A kísérleti alkalmazás ikonjának a kísérleti csoportra való láthatóságának korlátozása az Azure MyApps portál indítási ikonjának megjelenítésével. Ha készen áll az éles környezetben való használatra, az alkalmazást megcélozhatja a megfelelő célközönségre, vagy ugyanabban az üzem előtti bérlőben, vagy az alkalmazást is közzéteheti az üzemi bérlőben.
 
-**Egyszeri bejelentkezés beállításai**: Egyes SSO-beállítások olyan függőségekkel rendelkeznek, amelyek lehetővé teszik a beállítását, így elkerülhető, hogy a függőségek kezelése időben történjen. Ez magában foglalja a tartományhoz csatlakozó gazdagépek számára a Kerberos által korlátozott delegálás (KCD) használatával végzett egyszeri bejelentkezést, valamint az egyéb időigényes tevékenységek ellátását. Például egy PING Access-példány beállítása, ha fejléc-alapú egyszeri bejelentkezésre van szükség.
+**Egyszeri bejelentkezés beállításai**: egyes SSO-beállítások olyan függőségekkel rendelkeznek, amelyek a beállítás idejére hosszabb időt vehetnek igénybe, így elkerülhető, hogy a függőségek kezelése az idő előtt megtörténjen. Ez magában foglalja a tartományhoz csatlakozó gazdagépek számára a Kerberos által korlátozott delegálás (KCD) használatával végzett egyszeri bejelentkezést, valamint az egyéb időigényes tevékenységek ellátását. Például egy PING Access-példány beállítása, ha fejléc-alapú egyszeri bejelentkezésre van szükség.
 
-**SSL az összekötő gazdagép és a célalkalmazás között**: A biztonság a legfontosabb, ezért a TLS-t az összekötő gazdagép és a cél alkalmazások között mindig használni kell. Különösen, ha a webalkalmazás az űrlapalapú hitelesítéshez (FBA) van konfigurálva, mivel a felhasználói hitelesítő adatokat a rendszer hatékonyan továbbítja a tiszta szövegbe.
+**SSL az összekötő gazdagép és a célalkalmazás között**: a biztonság a legfontosabb, ezért a TLS-t az összekötő gazdagépe és a cél alkalmazások között mindig használni kell. Különösen, ha a webalkalmazás az űrlapalapú hitelesítéshez (FBA) van konfigurálva, mivel a felhasználói hitelesítő adatokat a rendszer hatékonyan továbbítja a tiszta szövegbe.
 
 **Fokozatosan hajtsa végre az egyes lépéseket, és tesztelje**azokat. Az alkalmazás közzététele után alapvető funkcionális tesztelést végezhet, így biztosítva, hogy minden felhasználói és üzleti követelmény teljesül az alábbi utasítások követésével:
 
@@ -164,7 +164,7 @@ A következő kialakítási elemeknek a próbaüzem megvalósításának sikeres
 3. Ezután adja hozzá az SSO-metódust az alkalmazáshoz, majd tesztelje újból a hozzáférést a hozzáférés ellenőrzéséhez.
 4. Szükség szerint alkalmazza a feltételes hozzáférést és az MFA-szabályzatokat. A hozzáférés tesztelése és érvényesítése.
 
-**Hibaelhárítási eszközök**: A hibaelhárítás során mindig ellenőrizze, hogy a közzétett alkalmazáshoz való hozzáférést az összekötő-gazdagép böngészője ellenőrzi-e, és győződjön meg róla, hogy az alkalmazás a várt módon működik-e. Minél egyszerűbb a beállítás, annál könnyebb meghatározni a kiváltó okot, ezért érdemes lehet olyan minimális konfigurációval reprodukálni a problémákat, mint például egyetlen összekötő használata, és nincs SSO. Bizonyos esetekben a webes hibakeresési eszközök, például a Telerik Hegedűs a proxyn keresztül elért alkalmazások hozzáférési vagy tartalmi problémáinak elhárításához nem feltétlenül szükségesek. A Hegedűs proxyként is működhet a mobil platformok, például az iOS és az Android, illetve gyakorlatilag bármit, ami proxyn keresztüli irányításra konfigurálható. További információért tekintse meg a [hibaelhárítási útmutatót](application-proxy-troubleshoot.md) .
+**Hibaelhárítási eszközök**: Ha hibaelhárítást végez, mindig Kezdje a közzétett alkalmazáshoz való hozzáférés ellenőrzésével az összekötő-gazdagép böngészőjében, és ellenőrizze, hogy az alkalmazás a várt módon működik-e. Minél egyszerűbb a beállítás, annál könnyebb meghatározni a kiváltó okot, ezért érdemes lehet olyan minimális konfigurációval reprodukálni a problémákat, mint például egyetlen összekötő használata, és nincs SSO. Bizonyos esetekben a webes hibakeresési eszközök, például a Telerik Hegedűs a proxyn keresztül elért alkalmazások hozzáférési vagy tartalmi problémáinak elhárításához nem feltétlenül szükségesek. A Hegedűs proxyként is működhet a mobil platformok, például az iOS és az Android, illetve gyakorlatilag bármit, ami proxyn keresztüli irányításra konfigurálható. További információért tekintse meg a [hibaelhárítási útmutatót](application-proxy-troubleshoot.md) .
 
 ## <a name="implement-your-solution"></a>A megoldás implementálása
 
@@ -180,25 +180,25 @@ Az alkalmazásokat a [PowerShell](https://docs.microsoft.com/powershell/module/a
 
 Az alábbi ajánlott eljárások követik az alkalmazások közzétételekor:
 
-* **Összekötő csoportok használata**: Rendeljen hozzá egy olyan összekötő csoportot, amely minden egyes alkalmazás közzétételére lett kijelölve. Javasoljuk, hogy minden összekötő-csoportnak legalább két összekötője legyen, hogy magas rendelkezésre állást és méretezést biztosítson. Ha a három összekötő optimális, akkor előfordulhat, hogy egy gépet bármikor kell kiszolgálni. További információ: [alkalmazások közzététele különálló hálózatokon és helyszíneken összekötő-csoportok használatával](application-proxy-connector-groups.md) , hogy megtudja, hogyan használhatók összekötő csoportok az összekötők hálózat vagy hely szerinti szegmentálásához.
+* **Összekötő csoportok használata**: rendeljen hozzá egy összekötő csoportot, amely az egyes alkalmazások közzétételére lett kijelölve. Javasoljuk, hogy minden összekötő-csoportnak legalább két összekötője legyen, hogy magas rendelkezésre állást és méretezést biztosítson. Ha a három összekötő optimális, akkor előfordulhat, hogy egy gépet bármikor kell kiszolgálni. További információ: [alkalmazások közzététele különálló hálózatokon és helyszíneken összekötő-csoportok használatával](application-proxy-connector-groups.md) , hogy megtudja, hogyan használhatók összekötő csoportok az összekötők hálózat vagy hely szerinti szegmentálásához.
 
 * **Háttérbeli alkalmazás időkorlátjának beállítása**: Ez a beállítás olyan esetekben hasznos, amikor az alkalmazásnak több mint 75 másodpercre lehet szüksége az ügyfél-tranzakció feldolgozásához. Például amikor egy ügyfél egy olyan webalkalmazásnak küld lekérdezést, amely előtérként működik egy adatbázison. Az előtér elküldi a lekérdezést a háttérbeli adatbázis-kiszolgálónak, és megvárja a választ, de a válasz megérkezése után a beszélgetés ügyféloldali oldala időtúllépést okoz. A hosszú Időtúllépés beállítása 180 másodpercet biztosít a hosszabb tranzakciók befejezéséhez.
 
 * **A megfelelő cookie-típusok használata**
 
-   * **Csak HTTP cookie**: További biztonságot nyújt, ha az alkalmazásproxy tartalmazza a HTTPOnly jelzőt a Set-Cookie HTTP-válasz fejlécekben. Ezzel a beállítással csökkenthetők a biztonsági rések, például a helyek közötti parancsfájlok (XSS). Hagyja ezt a nem értékre olyan ügyfelek/felhasználói ügynökök számára, akiknek hozzáférésre van szükségük a munkamenet cookie-hoz. Az RDP/MTSC-ügyfél például az App proxyn keresztül közzétett Távoli asztali átjáróhoz csatlakozik.
+   * **Csak HTTP-cookie**: további biztonságot nyújt, ha az alkalmazásproxy tartalmazza a HTTPOnly jelzőt a Set-Cookie http-válasz fejlécekben. Ezzel a beállítással csökkenthetők a biztonsági rések, például a helyek közötti parancsfájlok (XSS). Hagyja ezt a nem értékre olyan ügyfelek/felhasználói ügynökök számára, akiknek hozzáférésre van szükségük a munkamenet cookie-hoz. Az RDP/MTSC-ügyfél például az App proxyn keresztül közzétett Távoli asztali átjáróhoz csatlakozik.
 
-   * **Biztonságos cookie**: Ha a cookie-t a biztonságos attribútummal beállították, a felhasználói ügynök (ügyféloldali alkalmazás) csak a cookie-t fogja tartalmazni a HTTP-kérelmekben, ha a kérést TLS-védelemmel ellátott csatornán keresztül továbbítják. Ez segít enyhíteni annak kockázatát, hogy a cookie-t tiszta szöveges csatornákon keresztül feltörték, ezért engedélyezni kell.
+   * **Biztonságos cookie**: Ha egy cookie a Secure attribútummal van beállítva, a felhasználói ügynök (ügyféloldali alkalmazás) csak a cookie-t fogja tartalmazni a http-kérelmekben, ha a kérést TLS-védelemmel ellátott csatornán keresztül továbbítják. Ez segít enyhíteni annak kockázatát, hogy a cookie-t tiszta szöveges csatornákon keresztül feltörték, ezért engedélyezni kell.
 
-   * **Állandó cookie**: Lehetővé teszi, hogy az alkalmazásproxy-munkamenet cookie a böngésző bezárása után is fennmaradjon mindaddig, amíg az érvényesség le nem jár, vagy törölve lesz. Olyan helyzetekben használható, amikor egy gazdag alkalmazás, például az Office hozzáfér egy közzétett webalkalmazásban található dokumentumhoz anélkül, hogy a felhasználót újra kellene kérni a hitelesítésre. Legyen körültekintő, ha azonban az állandó cookie-k végső soron a jogosulatlan hozzáférés veszélye miatt nem használják a szolgáltatást más kompenzáló vezérlőkkel együtt. Ez a beállítás csak olyan régebbi alkalmazásokhoz használható, amelyek nem oszthatnak meg sütiket a folyamatok között. A beállítás használata helyett érdemes frissíteni az alkalmazást, hogy kezelni tudja a különböző folyamatok közötti megosztási cookie-kat.
+   * **Állandó cookie**: lehetővé teszi, hogy az alkalmazásproxy munkamenet-cookie a böngésző bezárása után is fennmaradjon mindaddig, amíg lejár vagy nem törli. Olyan helyzetekben használható, amikor egy gazdag alkalmazás, például az Office hozzáfér egy közzétett webalkalmazásban található dokumentumhoz anélkül, hogy a felhasználót újra kellene kérni a hitelesítésre. Legyen körültekintő, ha azonban az állandó cookie-k végső soron a jogosulatlan hozzáférés veszélye miatt nem használják a szolgáltatást más kompenzáló vezérlőkkel együtt. Ez a beállítás csak olyan régebbi alkalmazásokhoz használható, amelyek nem oszthatnak meg sütiket a folyamatok között. A beállítás használata helyett érdemes frissíteni az alkalmazást, hogy kezelni tudja a különböző folyamatok közötti megosztási cookie-kat.
 
-* **URL-címek lefordítása a fejlécekben**: Ez olyan helyzetekben engedélyezhető, amikor a belső DNS nem konfigurálható úgy, hogy az megfeleljen a szervezet nyilvános névterének (a. k. a megosztott DNS). Ha az alkalmazás az ügyfél kérésére az eredeti állomásfejléc-fejlécet igényli, az értéket állítsa Igen értékre. A másik lehetőség az, hogy az összekötő a belső URL-cím teljes tartománynevét használja a tényleges forgalom útválasztásához, a külső URL-ben pedig a gazdagép fejlécének teljes tartománynevét. A legtöbb esetben ez az alternatíva lehetővé teszi, hogy az alkalmazás a szokásos módon működjön, ha távolról éri el a szolgáltatást, de a felhasználók elveszítik a & kívüli URL-címeken belüli egyezés előnyeit.
+* **URL-címek lefordítása a fejlécekben**: engedélyezheti ezt olyan helyzetekben, amikor a belső DNS nem konfigurálható úgy, hogy az megfeleljen a szervezet nyilvános névterének (a. k. a megosztott DNS). Ha az alkalmazás az ügyfél kérésére az eredeti állomásfejléc-fejlécet igényli, az értéket állítsa Igen értékre. A másik lehetőség az, hogy az összekötő a belső URL-cím teljes tartománynevét használja a tényleges forgalom útválasztásához, a külső URL-ben pedig a gazdagép fejlécének teljes tartománynevét. A legtöbb esetben ez az alternatíva lehetővé teszi, hogy az alkalmazás a szokásos módon működjön, ha távolról éri el a szolgáltatást, de a felhasználók elveszítik a & kívüli URL-címeken belüli egyezés előnyeit.
 
-* **URL-címek fordítása az alkalmazás törzsében**: Kapcsolja be az alkalmazás törzsének fordítását egy alkalmazáshoz, ha azt szeretné, hogy az alkalmazás hivatkozásait vissza lehessen fordítani az ügyfélnek küldött válaszokban. Ha engedélyezve van, ez a függvény az összes olyan belső hivatkozás lefordításakor, amely az App proxy által megtalált HTML-és CSS-válaszokba kerül, a rendszer a legjobb erőfeszítést nyújt. Akkor hasznos, ha olyan alkalmazásokat tesz közzé, amelyek rögzített abszolút vagy NetBIOS gazdagépbejegyzés-hivatkozásokat tartalmaznak a tartalomban, vagy olyan alkalmazásokkal, amelyek más helyszíni alkalmazásokra hivatkoznak.
+* **URL-címek fordítása az alkalmazás törzsében**: kapcsolja be az alkalmazás törzsének fordítását egy alkalmazáshoz, ha azt szeretné, hogy az alkalmazás hivatkozásait vissza lehessen fordítani az ügyfélre. Ha engedélyezve van, ez a függvény az összes olyan belső hivatkozás lefordításakor, amely az App proxy által megtalált HTML-és CSS-válaszokba kerül, a rendszer a legjobb erőfeszítést nyújt. Akkor hasznos, ha olyan alkalmazásokat tesz közzé, amelyek rögzített abszolút vagy NetBIOS gazdagépbejegyzés-hivatkozásokat tartalmaznak a tartalomban, vagy olyan alkalmazásokkal, amelyek más helyszíni alkalmazásokra hivatkoznak.
 
 Olyan esetekben, amikor egy közzétett alkalmazás más közzétett alkalmazásokra hivatkozik, engedélyezze az egyes alkalmazásokhoz való hivatkozás fordítását, hogy az alkalmazáson belüli szinten szabályozható legyen a felhasználói élmény.
 
-Tegyük fel például, hogy három, az Application proxyn keresztül közzétett alkalmazással rendelkezik, amelyek mindegyike hivatkozik egymásra: Előnyök, költségek és utazás, valamint egy negyedik alkalmazás, visszajelzés, amely nem az alkalmazásproxy használatával van közzétéve.
+Tegyük fel például, hogy három, az Application proxyn keresztül közzétett alkalmazással rendelkezik, amelyek mindegyike kapcsolódik egymáshoz: előnyök, költségek és utazás, valamint egy negyedik alkalmazás, visszajelzés, amely nem az alkalmazásproxy használatával van közzétéve.
 
 ![1\. kép](media/App-proxy-deployment-plan/link-translation.png)
 
@@ -227,15 +227,15 @@ A általában névtelenül elérhető helyszíni alkalmazásokhoz, amelyek nem i
 
 Ha ezt a beállítást választja, a nem engedélyezi a felhasználók számára a helyszíni alkalmazás elérését az engedélyek nélküli Azure AD alkalmazás proxyn keresztül, ezért körültekintően járjon el.
 
-Az alkalmazás közzététele után elérhetőnek kell lennie a külső URL-cím beírásával egy böngészőben vagy a ikonja [https://myapps.microsoft.com](https://myapps.microsoft.com/)alapján.
+Az alkalmazás közzététele után elérhetőnek kell lennie a külső URL-cím beírásával egy böngészőben vagy a ikonja [https://myapps.microsoft.com](https://myapps.microsoft.com/).
 
 ### <a name="enable-pre-authentication"></a>Előzetes hitelesítés engedélyezése
 
 Ellenőrizze, hogy az alkalmazás elérhető-e az alkalmazás-proxyn keresztül a külső URL-cím használatával. 
 
-1. Navigáljon a **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** , és válassza ki a kezelni kívánt alkalmazást.
+1. Navigáljon **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** lehetőségre, és válassza ki a kezelni kívánt alkalmazást.
 
-2. Válassza ki **alkalmazásproxy**.
+2. **Alkalmazásproxy**kiválasztása
 
 3. Az **előhitelesítés** mezőben válassza a legördülő listát a **Azure Active Directory**kiválasztásához, majd válassza a **Mentés**lehetőséget.
 
@@ -263,15 +263,15 @@ Az alkalmazás biztonsága olyan biztonsági képességek speciális készletét
 
 Az Azure AD Application Proxy támogatásához a következő lehetőségek használhatók:
 
-* Felhasználó-és hely-alapú feltételes hozzáférés: Megtarthatja a bizalmas adatok védelmét azáltal, hogy a földrajzi hely vagy az IP-cím alapján korlátozza a felhasználók hozzáférését a [hely-alapú feltételes hozzáférési házirendekkel](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
+* Felhasználói és hely-alapú feltételes hozzáférés: a bizalmas adatok védelme a földrajzi hely vagy az IP-cím alapján, a [hely-alapú feltételes hozzáférési szabályzatokon](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations)alapuló felhasználói hozzáférés korlátozása.
 
-* Eszköz alapú feltételes hozzáférés: Győződjön meg arról, hogy csak a regisztrált, jóváhagyott és megfelelő eszközök férhetnek hozzá a vállalati adatbázisokhoz az [eszközökön alapuló feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)használatával.
+* Eszköz alapú feltételes hozzáférés: gondoskodjon arról, hogy csak a regisztrált, jóváhagyott és megfelelő eszközök férhessenek hozzá a vállalati adatbázisokhoz az [eszköz alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)használatával.
 
-* Alkalmazás-alapú feltételes hozzáférés: A munkának nem kell leállítania, ha a felhasználó nem a vállalati hálózaton van. [Biztonságos hozzáférés a vállalati felhőhöz és a helyszíni alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) , valamint a vezérlés fenntartása feltételes hozzáféréssel.
+* Alkalmazás-alapú feltételes hozzáférés: a munkának nem kell leállnia, ha a felhasználó nem a vállalati hálózaton van. [Biztonságos hozzáférés a vállalati felhőhöz és a helyszíni alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) , valamint a vezérlés fenntartása feltételes hozzáféréssel.
 
-* Kockázatalapú feltételes hozzáférés: A rosszindulatú hackerek adatai védelme olyan [kockázatalapú feltételes hozzáférési szabályzattal](https://www.microsoft.com/cloud-platform/conditional-access) , amely minden alkalmazásra és felhasználóra alkalmazható, akár a helyszínen, akár a felhőben.
+* Kockázatalapú feltételes hozzáférés: a rosszindulatú hackerek adatainak védelme olyan [kockázatalapú feltételes hozzáférési szabályzattal](https://www.microsoft.com/cloud-platform/conditional-access) , amely az összes alkalmazásra és az összes felhasználóra alkalmazható, akár a helyszínen, akár a felhőben.
 
-* Azure AD-hozzáférési panel: Az alkalmazásproxy szolgáltatás üzembe helyezésével és az alkalmazások biztonságos közzétételével a felhasználók egy egyszerű központtal felfedezhetik és érhetik el az összes alkalmazást. Növelje a hatékonyságot önkiszolgáló képességekkel, például az új alkalmazásokhoz és csoportokhoz való hozzáférés kérését, illetve mások nevében az erőforrásokhoz való hozzáférés kezelését a [hozzáférési panelen](https://aka.ms/AccessPanelDPDownload).
+* Azure AD hozzáférési panel: az alkalmazásproxy szolgáltatás üzembe helyezésével és az alkalmazások biztonságos közzétételével a felhasználók egy egyszerű központtal felfedezhetik és érhetik el az összes alkalmazást. Növelje a hatékonyságot önkiszolgáló képességekkel, például az új alkalmazásokhoz és csoportokhoz való hozzáférés kérését, illetve mások nevében az erőforrásokhoz való hozzáférés kezelését a [hozzáférési panelen](https://aka.ms/AccessPanelDPDownload).
 
 ## <a name="manage-your-implementation"></a>A megvalósítás kezelése
 
@@ -281,14 +281,14 @@ A Microsoft javasolja a lehető legkevesebb jogosultság megadását az Azure AD
 
 | Üzleti szerepkör| Üzleti feladatok| Azure AD-szerepkörök |
 |---|---|---|
-| Ügyfélszolgálati rendszergazda | Általában korlátozott a végfelhasználók által jelentett problémák és korlátozott feladatok végrehajtása, például a felhasználók jelszavának módosítása, a frissítési tokenek érvénytelenítése és a szolgáltatás állapotának figyelése. | Ügyfélszolgálati adminisztrátor |
+| Ügyfélszolgálati rendszergazda | Általában korlátozott a végfelhasználók által jelentett problémák és korlátozott feladatok végrehajtása, például a felhasználók jelszavának módosítása, a frissítési tokenek érvénytelenítése és a szolgáltatás állapotának figyelése. | Segélyszolgálat rendszergazdája |
 | Identity admin| Az alkalmazás-proxyval kapcsolatos problémák hibakereséséhez olvassa el az Azure AD-beli bejelentkezési jelentéseket és a naplókat.| Biztonsági olvasó |
 | Alkalmazás tulajdonosa| A vállalati alkalmazások, az alkalmazás-regisztrációk és az alkalmazásproxy-beállítások összes aspektusának létrehozása és kezelése.| Alkalmazás-rendszergazda |
 | Infrastruktúra-rendszergazda | Tanúsítvány-átváltási tulajdonos | Alkalmazás-rendszergazda |
 
 A biztonságos információkhoz vagy erőforrásokhoz hozzáférő személyek számának minimalizálása segít csökkenteni annak esélyét, hogy egy rosszindulatú személy jogosulatlan hozzáférést kapjon, vagy ha egy jogosult felhasználó véletlenül kihathat egy bizalmas erőforrásra. 
  
-A felhasználóknak azonban továbbra is napi szintű jogosultságokkal rendelkező műveleteket kell elvégezniük, így az igény szerinti (JIT) alapú [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) szabályzatok betartatása az Azure-erőforrásokhoz és az Azure ad-hez szükséges magas szintű hozzáférés biztosításához ajánlott módszer a rendszergazdai hozzáférés és a naplózás hatékony kezelése felé.
+Ugyanakkor a felhasználóknak továbbra is napi szintű jogosultságokkal rendelkező műveleteket kell elvégezniük, így az igény szerinti (JIT) alapú [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) házirendek betartatása az Azure-erőforrásokhoz és az Azure ad-hez szükséges, magas rendelkezésre állású hozzáférés biztosításához ajánlott megközelítésünk a rendszergazdai hozzáférés és a naplózás hatékony kezelése érdekében.
 
 ### <a name="reporting-and-monitoring"></a>Jelentéskészítés és figyelés
 

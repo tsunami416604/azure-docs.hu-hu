@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 34446f98bc593c8b78cfb4a9ceae2c5e6dc6aef3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5527b96ddf6ccebb60ca8130e48f6aae87a3f715
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191163"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246552"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Gyermek runbookok Azure Automation
 
@@ -111,16 +111,16 @@ Start-AzAutomationRunbook `
 
 A következő táblázat összefoglalja a két módszer közötti különbséget a runbook másik runbook való meghívásához.
 
-|  | Beágyazott | A parancsmag |
+|  | Beágyazott | Parancsmag |
 |:--- |:--- |:--- |
 | Feladat |Gyermek runbookok a a szülővel azonos feladatban futnak. |A gyermek runbook egy külön feladat jön létre. |
-| Végrehajtás |Szülőrunbook megvárja, amíg a gyermekrunbook befejeződjön a folytatás előtt. |A szülő runbook közvetlenül a gyermek runbook elindítása után folytatódik, *vagy* a szülő runbook megvárja, amíg befejeződik a gyermek feladata. |
+| Futtatási |Szülőrunbook megvárja, amíg a gyermekrunbook befejeződjön a folytatás előtt. |A szülő runbook közvetlenül a gyermek runbook elindítása után folytatódik, *vagy* a szülő runbook megvárja, amíg befejeződik a gyermek feladata. |
 | Kimenet |Szülőrunbook közvetlenül lekérheti a kimeneti gyermekrunbook. |A szülő runbook le kell kérnie a gyermek runbook-feladatokból származó kimenetet *, vagy* a szülő runbook közvetlenül a gyermek runbook származó kimenetet kaphat. |
 | Paraméterek |A gyermekrunbook paramétereinek értékeit külön kell meghatározni, és bármilyen adattípus használható. |A gyermek runbook paramétereinek értékeit egyetlen szórótábla kell egyesíteni. Ez a szórótábla csak olyan egyszerű, tömb és objektum típusú adattípusokat tartalmazhat, amelyek JSON-szerializálást használnak. |
 | Automation-fiók |A szülő runbook csak azonos Automation-fiókban használhatja a gyermek runbook. |A szülő runbookok bármely Automation-fiókból, ugyanabból az Azure-előfizetésből, illetve egy másik előfizetésből származó gyermek runbook is használhat, amelyhez kapcsolódik. |
 | Közzététel |Gyermek runbook közzé kell tenni, mielőtt a szülőrunbook közzététele. |A gyermek runbook a szülő runbook elindítása előtt bármikor közzé lesz téve. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Runbook indítása Azure Automation](start-runbooks.md)
 * [Runbook kimenete és üzenetei Azure Automation](automation-runbook-output-and-messages.md)

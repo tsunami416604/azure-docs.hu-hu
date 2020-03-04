@@ -7,12 +7,12 @@ ms.date: 08/23/2019
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: c02caf7c70dfe88bd3312742fce08137bc360a2e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 585eb1f11a285722e34c6dd084f4c6cb26a06249
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671407"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247620"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
 
@@ -34,7 +34,7 @@ Ezeket a lépéseket Mac, Windows vagy Linux rendszert futtató gépen is követ
 
 A Cloud Shellben hozzon létre egy quickstart könyvtárat, és lépjen a könyvtárba.
 
-```azurecli-interactive
+```console
 mkdir quickstart
 
 cd $HOME/quickstart
@@ -42,13 +42,13 @@ cd $HOME/quickstart
 
 Ezután futtassa a következő parancsot a mintaalkalmazás-adattár a quickstart könyvtárba való klónozásához.
 
-```azurecli-interactive
+```console
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
 
 Futtatás közben a parancs a következő példához hasonló információkat jelenít meg:
 
-```bash
+```output
 Cloning into 'nodejs-docs-hello-world'...
 remote: Counting objects: 40, done.
 remote: Total 40 (delta 0), reused 0 (delta 0), pack-reused 40
@@ -66,7 +66,7 @@ Checking connectivity... done.
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A Cloud Shellben az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal hozzon létre egy webalkalmazást a `myAppServicePlan` App Service-csomagban.
+A Cloud Shellben az `myAppServicePlan`[`az webapp create` paranccsal hozzon létre egy webalkalmazást a ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) App Service-csomagban.
 
 A következő példában cserélje ki az `<app_name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`).
 
@@ -102,7 +102,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 Tallózással keresse meg az újonnan létrehozott webalkalmazást. Cserélje le a `<app_name>`t egy egyedi alkalmazás nevére.
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 
@@ -112,7 +112,7 @@ Az új webalkalmazásnak így kell kinéznie: ![a webalkalmazás üres lapja](me
 
 A Cloud Shell navigáljon az alkalmazás gyökérkönyvtárához, hozzon létre egy új ZIP-fájlt a mintául szolgáló projekthez.
 
-```azurecli-interactive
+```console
 cd nodejs-docs-hello-world  
 
 zip -r myUpdatedAppFiles.zip *.*
@@ -130,7 +130,7 @@ Ez a parancs üzembe helyezi a ZIP-fájlban szereplő fájlokat és könyvtárak
 
 Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző használatával.
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 

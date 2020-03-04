@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: c8449ef27ca73cd6e0c2908ce4cbebea2c513dbc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: db09a31154b680097b6b46e8f9e2cce2ad09d108
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450088"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255024"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -123,7 +123,7 @@ BMR/rendszerállapot |A biztonsági mentés alatt álló gép BMR-ének vagy ren
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Vonatkozik méretkorlátozás a Recovery Services-tárolóval biztonsági másolatokba mentett adatok mennyiségére?
 
-Azon adatok mennyisége, amelyekről Recovery Services-tárolóval biztonsági másolat készíthető, nem korlátozott.
+Recovery Services-tároló használatával nem korlátozható a biztonsági mentéshez használható teljes adatmennyiség. Az egyes adatforrások (az Azure-beli virtuális gépeken kívül) legfeljebb 54 400 GB méretűek lehetnek. A korlátokkal kapcsolatos további információkért tekintse [meg a tároló korlátai szakaszt a támogatási mátrixban](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support).
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Miért kisebb a Recovery Services-tárolóba átvitt adatok mérete a biztonsági mentéshez kiválasztott adatok méreténél?
 
@@ -155,7 +155,7 @@ Igen, a szabályokat testre lehet szabni. Dönthet például úgy, hogy konfigur
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>Használhatok különböző időpontokat a biztonsági mentések ütemezéséhez és az adatmegőrzési szabályokhoz?
 
-Nem. Adatmegőrzési szabályokat csak a biztonsági mentési pontokon lehet alkalmazni. Ezen a képen például a 12:00-kor és 18:00-kor készített biztonsági mentések adatmegőrzési szabálya látható.
+Nem. Megtartási házirendeket csak biztonsági mentési pontokon lehet alkalmazni. Ezen a képen például a 12:00-kor és 18:00-kor készített biztonsági mentések adatmegőrzési szabálya látható.
 
 ![Biztonsági mentés és megtartás ütemezése](./media/backup-azure-backup-faq/Schedule.png)
 
@@ -216,7 +216,7 @@ Az Azure Backup-ügynök használatakor a titkosítási kulcsnak legalább 16 ka
 
 Az adatok biztonsági másolatának titkosításához használt kulcs csak Önnek van meg. A Microsoft nem tárol másolatot az Azure-ban, és nem rendelkezik hozzáféréssel a kulcshoz. Ha elveszíti a kulcsot, a Microsoft nem tudja helyreállítani az adatok biztonsági másolatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További gyakori kérdéseket is áttekinthet:
 

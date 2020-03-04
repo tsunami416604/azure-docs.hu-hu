@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f99859fb695281324148683fac24c9e7b8463ef5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9648c714ddbac93bcc76d84e7f6d8f2fcfaed992
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977898"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248222"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Oktatóanyag: Hozzáférés az Azure Cosmos DB-hez egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással
 
@@ -41,7 +41,7 @@ Ez az oktatóanyag bemutatja, hogyan férhet hozzá a Cosmos DB-hez egy Windows 
 - A [Azure PowerShell](/powershell/azure/install-az-ps) legújabb verziójának telepítése
 
 
-## <a name="enable"></a>Engedélyezés
+## <a name="enable"></a>Bekapcsolás
 
 [!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
 
@@ -59,9 +59,9 @@ Ha még nincs fiókja, hozzon létre egy Cosmos DB-fiókot. Ezt a lépést kihag
 3. Adja meg a Cosmos DB-fiók **azonosítóját**, amelyet később használni fog.  
 4. Az **API** értéke legyen „SQL”. Az ebben az oktatóanyagban ismertetett megközelítést más API-típusokkal is használhatja, de az itt szereplő lépések az SQL API-ra vonatkoznak.
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.  Válasszon ki egy olyan **helyet**, ahol a Cosmos DB elérhető.
-6. Kattintson a **Create** (Létrehozás) gombra.
+6. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="create-a-collection"></a>Katalógus létrehozása 
+### <a name="create-a-collection"></a>Gyűjtemény létrehozása 
 
 Adjon hozzá egy adatgyűjteményt a Cosmos DB-fiókhoz, amelyet a későbbi lépések során lekérdezhet.
 
@@ -113,7 +113,7 @@ Telepítenie kell az [Azure CLI](https://docs.microsoft.com/cli/azure/install-az
    $ArmToken = $content.access_token
    ```
 
-### <a name="get-access-keys"></a>Hozzáférési kulcsok beolvasása 
+### <a name="get-access-keys"></a>Hozzáférési kulcsok lekérése 
 
 Ez a szakasz azt mutatja be, hogyan lehet hozzáférési kulcsokat lekérni a Azure Resource Managerról Cosmos DB-hívások létrehozásához. Most PowerShell használatával hívjuk meg a Resource Managert az előző szakaszban lekért hozzáférési jogkivonattal a Cosmos DB-fiók hozzáférési kulcsának lekéréséhez. Amint megkaptuk a hozzáférési kulcsot, a Cosmos DB lekérdezhetővé válik. A `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` és `<COSMOS DB ACCOUNT NAME>` paraméterek értékét mindenképp helyettesítse be a saját értékeivel. Az `<ACCESS TOKEN>` paraméter értékét cserélje le a korábban lekért hozzáférési jogkivonattal.  Ha olvasási/írási kulcsokat szeretne lekérni, akkor `listKeys` típusú kulcsműveleteket használjon.  Ha írásvédett kulcsokat kíván lekérni, akkor pedig `readonlykeys` típusúakat:
 
@@ -128,13 +128,13 @@ A válasz a kulcsok listáját tartalmazza.  Ha például írásvédett kulcsoka
 ```
 Most, hogy rendelkezik a Cosmos DB-fiók hozzáférési kulcsával, átadhatja azt egy Cosmos DB SDK-nak, és hívásokat indíthat a fiók elérése érdekében.  Átadhatja például a hozzáférési kulcsot az Azure CLI-nek.  A(z) `<COSMOS DB CONNECTION URL>` elemet az Azure Portalon, a Cosmos DB-fiók panelének **Áttekintés** lapjáról szerezheti be.  Cserélje le a(z) `<ACCESS KEY>` elemet az így beszerzett értékre:
 
-```bash
+```azurecli
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>
 ```
 
 Ez a CLI-parancs a gyűjtemény részleteit adja vissza:
 
-```bash
+```output
 {
   "collection": {
     "_conflicts": "conflicts/",

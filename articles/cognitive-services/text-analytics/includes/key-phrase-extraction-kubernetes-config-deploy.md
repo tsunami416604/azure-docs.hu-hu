@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 35e7b85d31e9696f04dce610b6f2cf942543dc68
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1a96b5e4d03ce72bac29126028ca61e11e8c7324
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383464"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262531"
 ---
 ### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>Az Kulcsszókeresés tároló üzembe helyezése egy AK-fürtön
 
@@ -32,7 +32,7 @@ ms.locfileid: "74383464"
 
     A parancs futtatása után a következőhöz hasonló üzenetet küld:
 
-    ```console
+    ```output
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
@@ -44,7 +44,7 @@ ms.locfileid: "74383464"
 
 1. Nyissa meg a választható szövegszerkesztőt. Ez a példa a Visual Studio Code-ot használja.
 
-    ```azurecli
+    ```console
     code .
     ```
 
@@ -103,7 +103,7 @@ ms.locfileid: "74383464"
 
     Miután a parancs sikeresen alkalmazta a központi telepítési konfigurációt, a következő kimenethez hasonló üzenet jelenik meg:
 
-    ```console
+    ```output
     deployment.apps "keyphrase" created
     service "keyphrase" created
     ```
@@ -115,7 +115,7 @@ ms.locfileid: "74383464"
 
     A pod futási állapotának kimenete:
 
-    ```console
+    ```output
     NAME                         READY     STATUS    RESTARTS   AGE
     keyphrase-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
@@ -128,7 +128,7 @@ ms.locfileid: "74383464"
 
     A *keyphrase* szolgáltatás futó állapotának kimenete a pod-ban:
 
-    ```console
+    ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
     kubernetes   ClusterIP      10.0.0.1      <none>           443/TCP          2m
     keyphrase    LoadBalancer   10.0.100.64   168.61.156.180   5000:31234/TCP   2m

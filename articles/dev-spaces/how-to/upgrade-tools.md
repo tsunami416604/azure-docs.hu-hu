@@ -3,14 +3,14 @@ title: Az Azure dev Spaces-eszközök frissítése
 services: azure-dev-spaces
 ms.date: 07/03/2018
 ms.topic: conceptual
-description: Ismerje meg, hogyan frissítheti az Azure dev Spaces parancssori eszközeit, a Visual Studo-kódokat és a Visual Studio-bővítményt
+description: Ismerje meg, hogyan frissítheti az Azure dev Spaces parancssori eszközöket, a Visual Studio Code-bővítményt és a Visual Studio-bővítményt
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
-ms.openlocfilehash: 07d55689ac94a865527f4b595765d67b28ddb97a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 748ed4699591a21a5a09da924e093011b0813b46
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438418"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252362"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Az Azure dev Spaces-eszközök frissítése
 
@@ -27,7 +27,7 @@ Nem kell eltávolítania a korábbi verziót, csak keresse meg a megfelelő let�
 
 Futtassa az alábbi parancsot:
 
-```cmd
+```azurecli
 az aks use-dev-spaces -n <your-aks-cluster> -g <your-aks-cluster-resource-group> --update
 ```
 

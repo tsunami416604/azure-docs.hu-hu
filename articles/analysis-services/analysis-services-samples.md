@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 743061c1e32d9ca86e90733dbfd66575d2085dbc
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b5b95349b8a84cc8294dbcf9ab80eff8c7b86b9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572305"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247839"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services minták
 
@@ -26,6 +26,9 @@ A GitHubon a [Analysis Services](https://github.com/Microsoft/Analysis-Services)
 
 A GitHubon futó [Analysis Services Adventure működik](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services) a leggyakrabban használt táblázatos modell-projekt. Letöltheti a VS projektet vagy egy kész minta táblázatos modell-adatbázist.
 
+## <a name="sample-database-on-azure"></a>Mintaadatbázis az Azure-ban
+
+Az Azure szinapszis Analytics (SQL Data Warehouse) egy minta AdventureWorksDW-adatbázist biztosít, amely egy kiépített erőforrásban is szerepelhet. További információ: gyors útmutató [: Azure szinapszis Analytics SQL-készlet létrehozása és lekérdezése](/azure/sql-data-warehouse/create-data-warehouse-portal).
 
 ## <a name="sample-databases-on-github"></a>Minta-adatbázisok a GitHubon
 

@@ -7,20 +7,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: sngun
-ms.openlocfilehash: 670797eb833b0a145a18e20c6bba711ca11609bc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 184fc65dae57292243be9abdca71a129512b3d0b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483283"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252049"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure Cosmos DB adatai figyelése az Azure diagnosztikai beállításainak használatával
 
-Az Azure diagnosztikai beállításai az erőforrás-naplók összegyűjtésére szolgálnak. Az Azure-erőforrás-naplókat egy erőforrás bocsátja ki, és az adott erőforrás működésével kapcsolatos gazdag és gyakori információkat biztosít. Ezeket a naplókat a rendszer kérelem szerint rögzíti, és a továbbiakban "adatsíkok naplóiként" is emlegetik. Néhány példa az adatsík-műveletekre: delete, INSERT és readFeed. A naplók tartalma az erőforrástípus alapján változik.
+Az Azure diagnosztikai beállításai az erőforrás-naplók összegyűjtésére szolgálnak. Az Azure-erőforrás-naplókat egy erőforrás bocsátja ki, és az adott erőforrás működésével kapcsolatos gazdag és gyakori információkat biztosít. Ezeket a naplókat a rendszer kérelem szerint rögzíti, és a továbbiakban "adatsíkok naplóiként" is emlegetik. Néhány példa az adatsík-műveletekre: delete, INSERT és readFeed. Ezek a naplók a tartalom erőforrás típusa szerint változó.
 
 A platform metrikáit és a tevékenységek naplóit automatikusan gyűjti a rendszer, míg az erőforrás-naplók összegyűjtéséhez és a Azure Monitoron kívüli továbbításához létre kell hoznia egy diagnosztikai beállítást. Az Azure Cosmos-fiókok diagnosztikai beállításainak bekapcsolásához hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. Navigáljon az Azure Cosmos-fiókjához. Nyissa meg a **diagnosztikai beállítások** ablaktáblát, majd kattintson a **diagnosztikai beállítás hozzáadása** lehetőségre.
 
@@ -99,7 +99,7 @@ A diagnosztikai beállítások a Azure Portal, a CLI vagy a PowerShell használa
    | summarize count = count()  by OperationName, requestResourceType_s, bin(TimeGenerated, 1h) 
    ```
 
-1. Mi a partíció által biztosított maximális átviteli sebesség?
+1. Mi a partíció által felhasznált maximális átviteli sebesség?
 
    ```Kusto
    AzureDiagnostics

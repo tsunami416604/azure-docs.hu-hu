@@ -9,12 +9,12 @@ manager: ''
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: c5418f8c5e759ad0e5c388e0925fa724fe148797
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 672b663a9cab72d465ea00e0a5ade364eadbf64e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368527"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251535"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Felügyelt identitás hitelesítése Azure Active Directory használatával Event Hubs erőforrások eléréséhez
 Az Azure Event Hubs támogatja a Azure Active Directory (Azure AD) hitelesítést az [Azure-erőforrások felügyelt identitásával](../active-directory/managed-identities-azure-resources/overview.md). Az Azure-erőforrások felügyelt identitásai engedélyezhetik Event Hubs erőforrásokhoz való hozzáférést az Azure Virtual Machines (VM), a Function apps, a Virtual Machine Scale Sets és más szolgáltatások által futtatott alkalmazások Azure AD-beli hitelesítő adataival. Ha felügyelt identitásokat használ az Azure-erőforrásokhoz az Azure AD-hitelesítéssel együtt, elkerülheti a hitelesítő adatok tárolását a felhőben futó alkalmazásaival.
@@ -79,10 +79,13 @@ A szerepkör hozzárendelése után a webalkalmazás hozzáférhet a megadott ha
 4. Rendelje hozzá ezt az identitást a **Event Hubs adat-tulajdonosi** szerepkörhöz a névtér szintjén vagy az Event hub szintjén. 
 5. Futtassa a webalkalmazást, adja meg a névtér nevét és az Event hub nevét, egy üzenetet, és válassza a **Küldés**lehetőséget. Az esemény fogadásához válassza a **fogadás**lehetőséget. 
 
-#### <a name="azuremessagingeventhubs-latesttablatest"></a>[Azure. Messaging. EventHubs (legújabb)](#tab/latest)
+#### <a name="azuremessagingeventhubs-latest"></a>[Azure. Messaging. EventHubs (legújabb)](#tab/latest)
 Most már elindíthatja a webalkalmazást, és irányíthatja a böngészőt az aspx-minta lapra. Megtalálhatja a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)-tárházban található Event Hubs-erőforrásokból adatokat küldő és fogadó minta webalkalmazást.
 
-Telepítse a legújabb csomagot a [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)-ből, és kezdje el az események küldését Event Hubs a **EventHubProducerClient** használatával, és fogadja az eseményeket a **EventHubConsumerClient**segítségével.  
+Telepítse a legújabb csomagot a [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)-ből, és kezdje el az események küldését Event Hubs a **EventHubProducerClient** használatával, és fogadja az eseményeket a **EventHubConsumerClient**segítségével. 
+
+> [!NOTE]
+> Egy olyan Java-minta esetében, amely felügyelt identitást használ az események esemény-központba való közzétételéhez, lásd: [események közzététele az Azure Identity Sample on githubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs).
 
 ```csharp
 protected async void btnSend_Click(object sender, EventArgs e)
@@ -127,7 +130,7 @@ protected async void btnReceive_Click(object sender, EventArgs e)
 }
 ```
 
-#### <a name="microsoftazureeventhubs-legacytabold"></a>[Microsoft. Azure. EventHubs (örökölt)](#tab/old)
+#### <a name="microsoftazureeventhubs-legacy"></a>[Microsoft. Azure. EventHubs (örökölt)](#tab/old)
 Most már elindíthatja a webalkalmazást, és irányíthatja a böngészőt az aspx-minta lapra. Megtalálhatja a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp)-tárházban található Event Hubs-erőforrásokból adatokat küldő és fogadó minta webalkalmazást.
 
 Telepítse a legújabb csomagot a [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)-ből, és kezdje el küldeni és fogadni az Event huboktól származó adatokat az EventHubClient a következő kódban látható módon: 
@@ -141,11 +144,12 @@ var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHub
 Apache Kafka alkalmazások használatával üzeneteket küldhet és fogadhat az Azure Event Hubsból a felügyelt Identity OAuth használatával. Tekintse meg a következő mintát a GitHubon: [Event Hubs for Kafka – üzenetek küldése és fogadása felügyelt Identity OAuth használatával](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity).
 
 ## <a name="samples"></a>Példák
+- **Azure. Messaging. EventHubs** -minták
+    - [.NET](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+    - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
 - [Microsoft. Azure. EventHubs-minták](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
     Ezek a minták a régi **Microsoft. Azure. EventHubs** könyvtárat használják, de egyszerűen frissítheti a legújabb **Azure. Messaging. EventHubs** könyvtár használatával. Ha át szeretné helyezni a mintát a régi könyvtárból az új verzióra, tekintse meg a [Microsoft. Azure. EventHubs-ről az Azure. Messaging. EventHubs-re való Migrálás útmutatóját](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md).
-- [Azure. Messaging. EventHubs-minták](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
-
     Ez a minta frissítve lett a legújabb **Azure. Messaging. EventHubs** könyvtár használatára.
 - [Event Hubs for Kafka – üzenetek küldése és fogadása a felügyelt identitás OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 03/03/2020
 ms.author: erhopf
-ms.openlocfilehash: 26fe995f45a97a5863bfc20fd1564df89124ed88
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 873898ce321100edbaa800d2436d0413c06ce175
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168310"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255672"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
@@ -54,6 +54,7 @@ Ezeket a paramétereket a lekérdezési karakterláncban a REST-kérés szerepel
 | `language` | A felismert használja a beszélt nyelv azonosítja. Lásd: [támogatott nyelvek](language-support.md#speech-to-text). | Kötelező |
 | `format` | Megadja a eredményformátum. Az elfogadott értékek `simple` és `detailed`. Az egyszerű eredmények közé tartozik a `RecognitionStatus`, a `DisplayText`, a `Offset`és a `Duration`. Részletes válaszok megbízhatósági értékeket és a négy különböző reprezentációinak több eredmények belefoglalása. Az alapértelmezett beállítás a `simple`. | Optional |
 | `profanity` | Adja meg a felismerési eredményeket cenzúrázása kezelése. Az elfogadott értékek `masked`, amelyek felváltják a csillagokkal való káromkodást, `removed`, ami eltávolítja az eredményből az összes káromkodást, vagy `raw`, amely magában foglalja a káromkodást az eredményben. Az alapértelmezett beállítás a `masked`. | Optional |
+| `cid` | Ha egyéni modelleket hoz létre a [Custom Speech-portálon](how-to-custom-speech.md) , egyéni modelleket használhat a **telepítési** oldalon található **végpont-azonosítón** keresztül. Használja a **VÉGPONT azonosítóját** a `cid` lekérdezési karakterlánc paraméterének argumentumként. | Optional |
 
 ## <a name="request-headers"></a>Kérelemfejlécek
 
@@ -72,10 +73,10 @@ Ez a táblázat felsorolja a szükséges és választható fejlécek a hang-szö
 
 A hang a HTTP `POST` kérelem törzsében lesz elküldve. A jelen táblázatban lévő formátumok valamelyikében kell lennie:
 
-| Formátum | Kodek | Átviteli sebesség | Mintavételi frekvencia |
-|--------|-------|---------|-------------|
-| WAV | A PCM | 16-bit | 16 kHz, mono |
-| OGG | OPUS | 16-bit | 16 kHz, mono |
+| Formátum | Kodek | Átviteli sebesség | Mintavételi frekvencia  |
+|--------|-------|---------|--------------|
+| WAV    | A PCM   | 16-bit  | 16 kHz, mono |
+| OGG    | OPUS  | 16-bit  | 16 kHz, mono |
 
 >[!NOTE]
 >A fenti formátumok a Speech Service REST API és WebSocket szolgáltatásán keresztül támogatottak. A [SPEECH SDK](speech-sdk.md) jelenleg a WAV formátumot támogatja a PCM-kodekkel és [más formátumokkal](how-to-use-codec-compressed-audio-input-streams.md).
@@ -100,50 +101,43 @@ A HTTP-állapotkód: minden válasz azt jelzi, hogy a sikeres vagy gyakori hibá
 
 | HTTP-állapotkód | Leírás | Lehetséges ok |
 |------------------|-------------|-----------------|
-| 100 | Folytatás | A kezdeti kérés elfogadva. Folytassa a többi adatot küld. (Használja a darabolásos átviteli.) |
-| 200 | OK | A kérelem sikeres volt. a választörzs mérete a JSON-objektum. |
-| 400 | Hibás kérés | A nyelvi kód nincs megadva, nem támogatott nyelv, érvénytelen hangfájl stb. |
-| 401 | Nem engedélyezett | Az előfizetői vagy engedélyezési jogkivonat érvénytelen a megadott régióban, vagy érvénytelen végpont. |
-| 403 | Forbidden | Hiányzik az előfizetési kulcs vagy engedélyezési jogkivonat. |
+| `100` | Folytatás | A kezdeti kérés elfogadva. Folytassa a többi adatot küld. (Darabolásos átvitelsel használatos) |
+| `200` | OK | A kérelem sikeres volt. a választörzs mérete a JSON-objektum. |
+| `400` | Hibás kérés | A nyelvi kód nincs megadva, nem támogatott nyelv, érvénytelen hangfájl stb. |
+| `401` | Nem engedélyezett | Az előfizetői vagy engedélyezési jogkivonat érvénytelen a megadott régióban, vagy érvénytelen végpont. |
+| `403` | Forbidden | Hiányzik az előfizetési kulcs vagy engedélyezési jogkivonat. |
 
 ## <a name="chunked-transfer"></a>Darabolásos átvitel
 
 A darabolásos átvitel (`Transfer-Encoding: chunked`) segítségével csökkentheti az elismerés késését. Lehetővé teszi, hogy a beszédfelismerési szolgáltatás megkezdje a hangfájl feldolgozását a továbbítás során. A REST API-t nem biztosít részleges vagy köztes eredményeket.
 
-A mintakód bemutatja, hogyan hang tömbökben küldése. Csak az első adatrészletben kell tartalmaznia a hangfájl fejléc. `request` egy HTTPWebRequest objektum, amely a megfelelő REST-végponthoz van csatlakoztatva. `audioFile` a lemezen lévő hangfájl elérési útja.
+A mintakód bemutatja, hogyan hang tömbökben küldése. Csak az első adatrészletben kell tartalmaznia a hangfájl fejléc. a `request` egy `HttpWebRequest` objektum, amely a megfelelő REST-végponthoz van csatlakoztatva. `audioFile` a lemezen lévő hangfájl elérési útja.
 
 ```csharp
+var request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
+request.SendChunked = true;
+request.Accept = @"application/json;text/xml";
+request.Method = "POST";
+request.ProtocolVersion = HttpVersion.Version11;
+request.Host = host;
+request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
+request.Headers["Ocp-Apim-Subscription-Key"] = "YOUR_SUBSCRIPTION_KEY";
+request.AllowWriteStreamBuffering = false;
 
-    HttpWebRequest request = null;
-    request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
-    request.SendChunked = true;
-    request.Accept = @"application/json;text/xml";
-    request.Method = "POST";
-    request.ProtocolVersion = HttpVersion.Version11;
-    request.Host = host;
-    request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
-    request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
-    request.AllowWriteStreamBuffering = false;
-
-using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
+using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 {
-    /*
-    * Open a request stream and write 1024 byte chunks in the stream one at a time.
-    */
+    // Open a request stream and write 1024 byte chunks in the stream one at a time.
     byte[] buffer = null;
     int bytesRead = 0;
-    using (Stream requestStream = request.GetRequestStream())
+    using (var requestStream = request.GetRequestStream())
     {
-        /*
-        * Read 1024 raw bytes from the input audio file.
-        */
+        // Read 1024 raw bytes from the input audio file.
         buffer = new Byte[checked((uint)Math.Min(1024, (int)fs.Length))];
         while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) != 0)
         {
             requestStream.Write(buffer, 0, bytesRead);
         }
 
-        // Flush
         requestStream.Flush();
     }
 }

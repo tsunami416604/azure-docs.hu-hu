@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a5e4f9853a68b7b4d8b97cc76032cfa88708c097
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842682"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255461"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>SAP HANA rendelkezésre állás egy Azure-régión belül
 Ez a cikk számos rendelkezésre állási forgatókönyvet ismertet egy Azure-régión belül. Az Azure számos régióval rendelkezik, és a világ minden pontján elterjedt. Az Azure-régiók listájáért lásd: [Azure-régiók](https://azure.microsoft.com/regions/). Az Azure-régión belüli virtuális gépeken való SAP HANA üzembe helyezéséhez a Microsoft egy HANA-példánnyal rendelkező egyetlen virtuális gép üzembe helyezését kínálja. A rendelkezésre állás érdekében két, HANA-példánnyal rendelkező virtuális gépet telepíthet egy olyan Azure-beli rendelkezésre állási [csoporton](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) belül, amely HANA rendszerreplikációt használ a rendelkezésre álláshoz. 
@@ -54,7 +54,7 @@ Az állapot-ellenőrzési funkció figyeli az Azure-kiszolgálón üzemeltetett 
 Az Azure által biztosított gazdagép-és virtuálisgép-figyeléssel az Azure-beli virtuális gépek automatikusan újraindulnak egy kifogástalan Azure-gazdagépen. 
 
 >[!IMPORTANT]
->Az Azure-szolgáltatások gyógyulása nem indítja újra a Linux rendszerű virtuális gépeket, ahol a vendég operációs rendszer kernel pánik állapotban van. A gyakran használt Linux-kiadások alapértelmezett beállításai nem indítják el automatikusan a virtuális gépeket vagy a kiszolgálót, ahol a Linux-kernel pánik állapotban van. Ehelyett az alapértelmezett beállítás szerint az operációs rendszernek a kernel pánik állapotban kell lennie ahhoz, hogy egy kernel-hibakeresőt csatoljon az elemzéshez. Az Azure tiszteletben tartja ezt a viselkedést azáltal, hogy nem indítja automatikusan újra a virtuális gépet egy ilyen állapotban lévő vendég operációs rendszerrel. Feltételezi, hogy az ilyen események rendkívül ritkák. Az alapértelmezett viselkedést felülírhatja a virtuális gép újraindításának engedélyezéséhez. Az alapértelmezett viselkedés módosításához engedélyezze a "kernel. Panic" paramétert a/etc/sysctl.conf. A paraméterhez megadott idő másodpercben. Gyakori ajánlott értékek: várjon 20-30 másodpercig, mielőtt aktiválja az újraindítást ezen a paraméteren. Lásd még <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>.
+>Az Azure-szolgáltatások gyógyulása nem indítja újra a Linux rendszerű virtuális gépeket, ahol a vendég operációs rendszer kernel pánik állapotban van. A gyakran használt Linux-kiadások alapértelmezett beállításai nem indítják el automatikusan a virtuális gépeket vagy a kiszolgálót, ahol a Linux-kernel pánik állapotban van. Ehelyett az alapértelmezett beállítás szerint az operációs rendszernek a kernel pánik állapotban kell lennie ahhoz, hogy egy kernel-hibakeresőt csatoljon az elemzéshez. Az Azure tiszteletben tartja ezt a viselkedést azáltal, hogy nem indítja automatikusan újra a virtuális gépet egy ilyen állapotban lévő vendég operációs rendszerrel. Feltételezi, hogy az ilyen események rendkívül ritkák. Az alapértelmezett viselkedést felülírhatja a virtuális gép újraindításának engedélyezéséhez. Az alapértelmezett viselkedés módosításához engedélyezze a "kernel. Panic" paramétert a/etc/sysctl.conf. A paraméterhez megadott idő másodpercben. Gyakori ajánlott értékek: várjon 20-30 másodpercig, mielőtt aktiválja az újraindítást ezen a paraméteren. Lásd még: <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>.
 
 Az ebben a forgatókönyvben használt második funkció az a tény, hogy az újraindított virtuális gépen futó HANA szolgáltatás automatikusan elindul a virtuális gép újraindítása után. A [Hana szolgáltatás automatikus újraindítását](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html) a különböző HANA-szolgáltatások watchdog szolgáltatásain keresztül állíthatja be.
 
@@ -108,7 +108,7 @@ Ebben az esetben a második virtuális gépen a HANA-példányba replikált adat
 
 ### <a name="sap-hana-system-replication-with-automatic-failover"></a>Rendszer-replikálás SAP HANA automatikus feladatátvételsel
 
-Egy Azure-régióban a standard és a leggyakoribb rendelkezésre állási konfigurációban két SLES Linux rendszerű Azure-beli virtuális gépen van definiálva feladatátvevő fürt. A SLES Linux-fürt a [pacemaker](http://www.linux-ha.org/wiki/Pacemaker) keretrendszeren alapul, a [STONITH](http://www.linux-ha.org/wiki/STONITH) -eszközzel együtt. 
+Egy Azure-régióban a standard és a leggyakoribb rendelkezésre állási konfigurációban két SLES Linux rendszerű Azure-beli virtuális gépen van definiálva feladatátvevő fürt. A SLES Linux-fürt a [pacemaker](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) keretrendszeren alapul, a [STONITH](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) -eszközzel együtt. 
 
 SAP HANA szempontból a használt replikációs mód szinkronizálva van, és az automatikus feladatátvétel konfigurálva van. A második virtuális gépen a SAP HANA példány gyors készenléti csomópontként működik. A készenléti csomópont az elsődleges SAP HANA példány változási rekordjainak szinkron streamjét kapja. Mivel az alkalmazás a HANA elsődleges csomóponton hajtja végre a tranzakciókat, az elsődleges HANA-csomópont megvárja, hogy erősítse meg a véglegesítést az alkalmazásnak, amíg a másodlagos SAP HANA csomópont megerősíti, hogy megkapta a véglegesítési rekordot. SAP HANA két szinkron replikációs módot kínál. További részletekért és a két szinkron replikációs mód közötti különbségek leírásához tekintse meg az SAP-cikkben [SAP HANA rendszer replikálásának replikációs módjait](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html).
 

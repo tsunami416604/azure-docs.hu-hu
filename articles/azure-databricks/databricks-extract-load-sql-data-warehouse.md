@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: a505145eeba47eda9950c5a4c8221e4c9ae4b3a4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9cab78e85b8644f29bfcd067b104b1b5c10c2266
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024075"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249836"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával
 
@@ -65,7 +65,7 @@ Az oktatóanyag megkezdése előtt végezze el ezeket a feladatokat:
 
    * A cikk beléptetési [értékek beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a titkos értékeket egy szövegfájlba. Ezekre hamarosan szüksége lesz.
 
-* Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+* Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Gyűjtse össze a szükséges információkat
 
@@ -227,7 +227,7 @@ A cellában nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtat�
     ```
    Az alábbi kódrészlethez hasonló kimenet jelenik meg:
 
-   ```bash
+   ```output
    +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
    |               artist|     auth|firstName|gender|itemInSession|  lastName|   length|  level|            location|method|    page| registration|sessionId|                song|status|           ts|userId|
    +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
@@ -253,7 +253,7 @@ A nyers mintaadatok **small_radio_json. JSON** fájl rögzíti a hallgatóságot
 
    A kimenet az alábbi kódrészletben látható módon jelenik meg:
 
-   ```bash
+   ```output
    +---------+----------+------+--------------------+-----+
    |firstname|  lastname|gender|            location|level|
    +---------+----------+------+--------------------+-----+
@@ -289,7 +289,7 @@ A nyers mintaadatok **small_radio_json. JSON** fájl rögzíti a hallgatóságot
 
    A kimenet az alábbi kódrészletben látható módon jelenik meg.
 
-   ```bash
+   ```output
    +---------+----------+------+--------------------+-----------------+
    |firstname|  lastname|gender|            location|subscription_type|
    +---------+----------+------+--------------------+-----------------+

@@ -4,25 +4,19 @@ description: Megtudhatja, hogyan telepíthet át egy StorSimple 1200 sorozatú v
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 2/14/2020
+ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 815fda861748f1011eab22ef75fa7e933ca64c55
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 184101db34edbf5391b37c43770e8393316fe2fc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209479"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252659"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 Migrálás Azure File Syncre
 
-A StorSimple 1200 sorozat egy virtuális berendezés, amely egy helyszíni adatközpontban fut.
-A StorSimple-szériagyártás bejelentette, hogy a 31 2022-es, a virtuális készülékhez csatlakoztatott felhőalapú szolgáltatás nem fog működni.
-
-Minden olyan StorSimple-eszközről, amelyről elegendő idő áll rendelkezésére, a tartalékra kell telepíteni.
-Azure File Sync a természetes követő technológia, amely több funkcióval és rugalmasabb, mint a StorSimple-ajánlatok.
-
-Ez a cikk a Azure File Syncba való sikeres áttelepítéshez szükséges háttérbeli ismereteket és áttelepítési lépéseket ismerteti.
+A StorSimple 1200 sorozat egy virtuális berendezés, amely egy helyszíni adatközpontban fut. Az adatok áttelepíthetők a készülékről egy Azure File Sync környezetbe. Ez a cikk a Azure File Syncba való sikeres áttelepítéshez szükséges háttérbeli ismereteket és áttelepítési lépéseket ismerteti.
 
 ## <a name="azure-file-sync"></a>Azure File Sync
 

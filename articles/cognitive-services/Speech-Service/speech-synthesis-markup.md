@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
-ms.openlocfilehash: 499770b664757ec0f3a0bd3b26e0de36007741b6
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: b39b8712f3e8b869d7dbe496dd30f0599aa4150d
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228076"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254789"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -195,6 +195,7 @@ Alapértelmezés szerint a Text-to-speech szolgáltatás a standard és a neurá
 
 A jelen neurális hangok esetében jelenleg a beszélő stílusának módosításait támogatja a rendszer:
 * `en-US-JessaNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 
 A módosításokat a rendszer a mondat szintjén alkalmazza, a stílus pedig hangon változik. Ha a stílus nem támogatott, a szolgáltatás az alapértelmezett semleges beszéd stílusát fogja visszaadni.
@@ -220,6 +221,7 @@ Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismer�
 | | `type="chat"` | Beszéljen egy hétköznapi, nyugodt hangnemben |
 | | `type="newscast"` | Egy formális hangjelzést ad a hírekhez hasonló módon |
 | | `type="customerservice"` | Beszéljen barátságos és türelmes módon az ügyfélszolgálatnál |
+| `pt-BR-FranciscaNeural` | `type="cheerful"` | Pozitív és boldog érzelemet ad ki |
 | `zh-CN-XiaoxiaoNeural` | `type="newscast"` | Egy formális hangjelzést ad a hírekhez hasonló módon |
 | | `type="sentiment"` | Egy megható üzenetet vagy egy történetet közvetít |
 
@@ -256,7 +258,7 @@ A `break` elem használatával szüneteltetheti a szavak közötti szüneteltet�
 
 | Attribútum | Leírás | Kötelező / választható |
 |-----------|-------------|---------------------|
-| `strength` | Meghatározza a Szüneteltetés relatív időtartamát az alábbi értékek egyikének használatával:<ul><li>nincs</li><li>x – gyenge</li><li>gyenge</li><li>közepes (alapértelmezett)</li><li>erős</li><li>x – erős</li></ul> | Optional |
+| `strength` | Meghatározza a Szüneteltetés relatív időtartamát az alábbi értékek egyikének használatával:<ul><li>Nincs</li><li>x – gyenge</li><li>gyenge</li><li>közepes (alapértelmezett)</li><li>erős</li><li>x – erős</li></ul> | Optional |
 | `time` | Megadja a szünet időtartamát másodpercben vagy ezredmásodpercben. Érvényes értékek például `2s` és `500` | Optional |
 
 | Erősségét | Leírás |

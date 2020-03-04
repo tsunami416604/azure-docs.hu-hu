@@ -3,12 +3,12 @@ title: Adatmegőrzés és tárolás az Azure Application Insightsban | Microsoft
 description: Adatmegőrzési és adatvédelmi szabályzati nyilatkozat
 ms.topic: conceptual
 ms.date: 09/29/2019
-ms.openlocfilehash: 0b266eb0674f6de7dfb20311bba95bc7f4697f61
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669658"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254872"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés,-megőrzés és-tárolás Application Insights
 
@@ -170,6 +170,12 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 A rendszer alapértelmezés szerint `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` használja az adatmegőrzéshez. A mappához való hozzáféréshez szükséges engedélyek az aktuális felhasználóra és rendszergazdákra korlátozódnak. (Lásd a [megvalósítást](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) itt.)
 
 A mappa előtagjának `appInsights-node` felülbírálható a [küldő. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)fájlban található `Sender.TEMPDIR_PREFIX` statikus változó futásidejű értékének módosításával.
+
+### <a name="javascript-browser"></a>JavaScript (böngésző)
+
+A [HTML5-munkamenet tárterülete](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) az adatmegőrzésre szolgál. Két különálló puffer van használatban: `AI_buffer` és `AI_sent_buffer`. A kötegelt telemetria, amelyet a rendszer az elküldéses várakozásra vár, `AI_buffer`tárolja. Az imént elküldött telemetria a rendszer `AI_sent_buffer`ba helyezi, amíg a betöltési kiszolgáló válaszol a sikeres fogadásra. A telemetria sikeres fogadásakor a rendszer eltávolítja az összes pufferből. Átmeneti hibák esetén (például ha egy felhasználó elveszti a hálózati kapcsolatot), a telemetria mindaddig `AI_buffer` marad, amíg a rendszer nem fogadja el, vagy a betöltési kiszolgáló válaszol, hogy a telemetria érvénytelen (hibás séma vagy túl régi, például).
+
+A telemetria-pufferek letiltható a [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) `false`értékre állításával. Ha a munkamenet-tároló ki van kapcsolva, a rendszer a helyi tömböt használja állandó tárolóként. Mivel a JavaScript SDK egy ügyfél-eszközön fut, a felhasználó a böngésző fejlesztői eszközein keresztül férhet hozzá ehhez a tárolási helyhez.
 
 ### <a name="opencensus-python"></a>OpenCensus Python
 

@@ -3,12 +3,12 @@ title: Azure-Application Insights automatizálása a PowerShell használatával 
 description: Erőforrások, riasztások és rendelkezésre állási tesztek létrehozása és kezelése a PowerShellben egy Azure Resource Manager sablon használatával.
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 06fedb3d345cfe6790f7a19b88fbfdb36470638f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669794"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250781"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-erőforrások kezelése a PowerShell használatával
 
@@ -128,7 +128,7 @@ Hozzon létre egy új. JSON fájlt – hívjuk meg `template1.json` ebben a pél
             },
             "dailyQuotaResetTime": {
                 "type": "int",
-                "defaultValue": 24,
+                "defaultValue": 0,
                 "metadata": {
                     "description": "Enter daily quota reset hour in UTC (0 to 23). Values outside the range will get a random reset hour."
                 }
@@ -320,16 +320,30 @@ A napi Cap-tulajdonságok beszerzéséhez használja a [set-AzApplicationInsight
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
 
-A napi sapka tulajdonságainak beállításához használja ugyanazt a parancsmagot. Ha például a korlátot 300 GB/nap értékre szeretné beállítani, 
+A napi sapka tulajdonságainak beállításához használja ugyanazt a parancsmagot. Ha például a korlátot 300 GB/nap értékre szeretné beállítani,
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> -DailyCapGB 300
 ```
 
+A [ARMClient](https://github.com/projectkudu/ARMClient) -t is használhatja a napi Cap-paraméterek beolvasásához és beállításához.  Az aktuális értékek beszerzéséhez használja a következőt:
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+## <a name="set-the-daily-cap-reset-time"></a>A napi korlát alaphelyzetbe állítási idejének beállítása
+
+A napi korlát alaphelyzetbe állítási idejének megadásához használhatja a [ARMClient](https://github.com/projectkudu/ARMClient). Íme egy példa a `ARMClient`használatával, ha a visszaállítási időt egy új órára szeretné beállítani (ebben a példában a 12:00 UTC):
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'ResetTime':12}}"
+```
+
 <a id="price"></a>
 ## <a name="set-the-pricing-plan"></a>Árképzési terv beállítása 
 
-A jelenlegi díjszabási csomag beszerzéséhez használja a [set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) parancsmagot: 
+A jelenlegi díjszabási csomag beszerzéséhez használja a [set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) parancsmagot:
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -350,14 +364,31 @@ Az árképzési tervet egy meglévő Application Insights erőforráson is beál
                -appName myApp
 ```
 
+A `priceCode` a következőképpen van definiálva:
+
 |priceCode|csomag|
 |---|---|
 |1|GB-onként (korábbi csomag néven)|
 |2|/Csomópont (korábban a vállalati csomag neve)|
 
+Végül a [ARMClient](https://github.com/projectkudu/ARMClient) használatával beolvashatja és beállíthatja az árképzési terveket és a napi Cap-paramétereket.  Az aktuális értékek beszerzéséhez használja a következőt:
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+Ezen paraméterek mindegyikét a következővel állíthatja be:
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+"{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'Cap':200,'ResetTime':12,'StopSendNotificationWhenHitCap':true,'WarningThreshold':90,'StopSendNotificationWhenHitThreshold':true}}"
+```
+
+Ez a napi korlátot 200 GB/nap értékűre állítja be, konfigurálja a napi korlát visszaállítási idejét 12:00 UTC értékre, és mindkét esetben küldje el az e-maileket, ha eléri a korlátot, és a figyelmeztetési szint teljesül, és állítsa be a figyelmeztetési küszöbértéket a Cap 90%-ában.  
+
 ## <a name="add-a-metric-alert"></a>Metrikai riasztás hozzáadása
 
-A metrikus riasztások létrehozásának automatizálásához forduljon a [metrikus riasztások sablonjának cikkéhez](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)
+A metrikai riasztások létrehozásának automatizálásához olvassa el a [metrika riasztások sablonnal kapcsolatos cikket.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)
 
 
 ## <a name="add-an-availability-test"></a>Rendelkezésre állási teszt hozzáadása

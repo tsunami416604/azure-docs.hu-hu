@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
-ms.openlocfilehash: d28db9907094a651835078f4459a985b9d15e589
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657384"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250682"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Cosmos DB Azure Monitor megismerése (előzetes verzió)
 
@@ -33,34 +33,6 @@ Ez a funkció nem igényli, hogy bármit engedélyezzen vagy konfiguráljan, eze
 
 >[!NOTE]
 >A szolgáltatáshoz való hozzáférés díjmentes, és a [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/) lapon leírtak szerint csak az Ön által konfigurált vagy engedélyezett Azure monitor alapvető funkciókért kell fizetnie.
-
-## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Azure Cosmos DBhoz tartozó műveleti szint metrikáinak megtekintése
-
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
-
-1. Válassza a **figyelő** lehetőséget a bal oldali navigációs sávon, és válassza a **metrikák**lehetőséget.
-
-   ![Metrikák ablaktábla Azure Monitor](./media/cosmosdb-insights-overview/monitor-metrics-blade.png)
-
-1. A **metrikák** ablaktáblán > **válasszon ki egy erőforrást** > Válassza ki a szükséges **előfizetést**és **erőforráscsoportot**. Az **erőforrástípus**mezőben válassza a **Azure Cosmos db fiókok**lehetőséget, válasszon ki egy meglévő Azure Cosmos-fiókot, majd válassza az **alkalmaz**lehetőséget.
-
-   ![Cosmos DB fiók kiválasztása a metrikák megtekintéséhez](./media/cosmosdb-insights-overview/select-cosmosdb-account.png)
-
-1. Következő lépésként kiválaszthat egy mérőszámot az elérhető metrikák listájából. Kiválaszthatja a kérelmekhez tartozó mérőszámokat, a tárolást, a késést, a rendelkezésre állást, a Cassandra és másokat. A listán szereplő összes mérőszám részletes megismeréséhez tekintse meg a [metrikák kategória szerint](../../cosmos-db/monitor-cosmos-db-reference.md) című cikket. Ebben a példában a **kérelmek egységeit** és az **átlagot** adja meg az összesítési értékként.
-
-   Ezen részletek mellett kiválaszthatja a metrikák **időtartományát** és **időrészletességét** is. A maximális értéknél megtekintheti az elmúlt 30 nap mérőszámait.  A szűrő alkalmazása után egy diagram jelenik meg a szűrő alapján. A kiválasztott időszakra vonatkozóan percenként felhasználható kérelmek átlagos számát láthatja.  
-
-   ![Metrika kiválasztása a Azure Portal](./media/cosmosdb-insights-overview/metric-types.png)
-
-### <a name="add-filters-to-metrics"></a>Szűrők hozzáadása metrikához
-
-Az adott **CollectionName**, **databasename**, **OperationType**, **régió**és **statuscode**által megjelenített mérőszámokat és diagramokat is szűrheti. A metrikák szűréséhez válassza a **szűrő hozzáadása** lehetőséget, és válassza ki a szükséges tulajdonságot (például **OperationType** ), és válasszon egy értéket (például **lekérdezés**). A gráf ezután megjeleníti a kiválasztott időszakban a lekérdezési művelethez felhasznált kérelmek egységeit. A tárolt eljáráson keresztül végrehajtott műveletek nincsenek naplózva, így azok nem érhetők el az OperationType metrika alatt.
-
-![Szűrő hozzáadása a metrika részletességének kiválasztásához](./media/cosmosdb-insights-overview/add-metrics-filter.png)
-
-A metrikákat a **felosztás alkalmazása** lehetőség használatával csoportosíthatja. Például csoportosíthatja a kérelmek egységeit, és megtekintheti az összes művelet gráfját, amint az alábbi képen is látható:
-
-![Alkalmazás-felosztási szűrő hozzáadása](./media/cosmosdb-insights-overview/apply-metrics-splitting.png)
 
 ## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>A Azure Cosmos DB kihasználtságának és teljesítményének metrikáinak megtekintése
 

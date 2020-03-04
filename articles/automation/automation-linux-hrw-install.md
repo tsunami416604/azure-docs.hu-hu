@@ -3,14 +3,14 @@ title: Az Azure Automation hibrid runbook-feldolgozója Linuxra
 description: Ez a cikk a Azure Automation hibrid Runbook-feldolgozók telepítésével kapcsolatos információkat tartalmaz, így a runbookok Linux-alapú számítógépeken futtatható a helyi adatközpontban vagy a felhőalapú környezetben.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/28/2018
+ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 838c7450de1364588fb287c9d9804666a325cdf3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2579748d9c68512e51fe46ec70084c30d06953bc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421924"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246288"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -27,7 +27,7 @@ A hibrid Runbook Worker szolgáltatás a következő disztribúciókat támogatj
 * Oracle Linux 5, 6 és 7 (x86/x64)
 * Red Hat Enterprise Linux Server 5, 6 és 7 (x86/x64)
 * Debian GNU/Linux 6, 7 és 8 (x86/x64)
-* Ubuntu 12,04 LTS, 14,04 LTS és 16,04 LTS (x86/x64)
+* Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS és 18,04 (x86/x64)
 * 11 és 12 SUSE Linux Enterprise Server (x86/x64)
 
 ## <a name="installing-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker telepítése
@@ -48,7 +48,7 @@ A Linux hibrid Runbook-feldolgozók minimális követelményei a következők:
 |Openssl| OpenSSL-kódtárak | 1,0 (a TLS 1,1 és a TLS 1,2 támogatott|
 |Curl | cURL webes ügyfél | 7.15.5|
 |Python – ctypes | A Python 2. x megadása kötelező |
-|PAM | Cserélhető hitelesítési modulok|
+|PAM | Csatlakoztatható hitelesítési modulok|
 | **Választható csomag** | **Leírás** | **Minimális verzió**|
 | PowerShell Core | A PowerShell-runbookok futtatásához a PowerShellt telepíteni kell, lásd: [a PowerShell Core telepítése Linuxon](/powershell/scripting/install/installing-powershell-core-on-linux) , hogy megtudja, hogyan telepítheti.  | 6.0.0 |
 

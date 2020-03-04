@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: yelevin
-ms.openlocfilehash: b00f9c9e7de9568a29d2b7a7f4ef84c022ef5679
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 43eba727b1dc724aae6eea3ec77de1363c5db73f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588161"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252512"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Adatok összekötése az Office 365-naplókból
 
@@ -33,9 +33,9 @@ Egyetlen kattintással továbbíthatja az [Office 365](https://docs.microsoft.co
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A bérlőn globális rendszergazdai vagy biztonsági rendszergazdai jogosultsággal kell rendelkeznie.
-- Ha a bérlő nem rendelkezik Office 365 E3 vagy Office 365 E5 licenccel, engedélyeznie kell az egyesített naplózást a bérlőn a következő folyamatok egyikének használatával:
+- A bérlőnek engedélyezve kell lennie az egyesített naplózásnak. Az Office 365 E3 vagy E5 licenccel rendelkező bérlők alapértelmezés szerint engedélyezve vannak az egyesített naplózással. <br>Ha a bérlő nem rendelkezik ezekkel a licencekkel, engedélyeznie kell az egyesített naplózást a bérlőn a következő módszerek egyikének használatával:
     - [Használja a set-AdminAuditLogConfig parancsmagot](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) , és engedélyezze a "UnifiedAuditLogIngestionEnabled" paramétert.
-    - [Vagy használja a biztonsági és megfelelőségi központ felhasználói felületét](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
+    - [A biztonsági és megfelelőségi központ felhasználói felületének használata](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
 
 ## <a name="connect-to-office-365"></a>Csatlakozás az Office 365-höz
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 3cb57fae2b1c67ece321a294e56612f49358405a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c4b2dea05b459d6e9ae4eb086fa127d88a84a768
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612718"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249206"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Gyakori hibák és hibaelhárítási lépések a Azure Active Directory Domain Services
 
@@ -138,7 +138,7 @@ Ha az Azure AD-bérlő egy vagy több felhasználója nem tud bejelentkezni az A
       * Telepítette vagy frissítette a ( [Azure ad Connect) legújabb javasolt kiadását](https://www.microsoft.com/download/details.aspx?id=47594).
       * Úgy konfigurálta a Azure AD Connectt, hogy [teljes szinkronizálást végezzen][hybrid-phs].
       * A címtár méretétől függően eltarthat egy ideig, amíg a felhasználói fiókok és a hitelesítőadat-kivonatok elérhetők lesznek az Azure AD DSban. Győződjön meg arról, hogy elég hosszú ideig vár a felügyelt tartományon való hitelesítés megkísérlése előtt.
-      * Ha a probléma az előző lépések ellenőrzése után is fennáll, próbálja meg újraindítani a *Microsoft Azure ad Sync szolgáltatást*. A [felügyeleti virtuális][management-vm]gépről nyisson meg egy parancssort, és futtassa a következő parancsokat:
+      * Ha a probléma az előző lépések ellenőrzése után is fennáll, próbálja meg újraindítani a *Microsoft Azure ad Sync szolgáltatást*. A Azure AD Connect-kiszolgálóról nyisson meg egy parancssort, és futtassa a következő parancsokat:
     
         ```console
         net stop 'Microsoft Azure AD Sync'

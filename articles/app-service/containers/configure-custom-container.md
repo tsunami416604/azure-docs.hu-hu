@@ -3,12 +3,12 @@ title: Egyéni Linux-tároló konfigurálása
 description: Megtudhatja, hogyan konfigurálhat egyéni Linux-tárolókat a Azure App Serviceban. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: d9d6311e69ba4e3893da81a16b06c8baed78cdcd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 6baa1fbd4932aa83a54081ff166dcae7f258fff9
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671866"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255873"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Egyéni Linux-tároló konfigurálása Azure App Servicehoz
 
@@ -18,7 +18,7 @@ Ez az útmutató a Linux-alkalmazások App Service-ben történő tárolókra bo
 
 ## <a name="configure-port-number"></a>Portszám konfigurálása
 
-Az egyéni rendszerképben található webkiszolgáló a 80-től eltérő portot is használhat. Tájékoztassa az Azure-t arról, hogy az egyéni tároló milyen portot használ a `WEBSITES_PORT` alkalmazás-beállítás használatával. A [jelen oktatóanyagban lévő Python-mintához](https://github.com/Azure-Samples/docker-django-webapp-linux) tartozó GitHub-oldalon az látható, hogy a `WEBSITES_PORT` értékét _8000_-re kell állítani. A Cloud Shell [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs futtatásával állíthatja be. Példa:
+Az egyéni rendszerképben található webkiszolgáló a 80-től eltérő portot is használhat. Tájékoztassa az Azure-t arról, hogy az egyéni tároló milyen portot használ a `WEBSITES_PORT` alkalmazás-beállítás használatával. A [jelen oktatóanyagban lévő Python-mintához](https://github.com/Azure-Samples/docker-django-webapp-linux) tartozó GitHub-oldalon az látható, hogy a `WEBSITES_PORT` értékét _8000_-re kell állítani. A Cloud Shell [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs futtatásával állíthatja be. Például:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -26,7 +26,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
 
-Az egyéni tároló olyan környezeti változókat használhat, amelyeket külsőleg kell megadni. A Cloud Shell [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs futtatásával adhatja át azokat. Példa:
+Az egyéni tároló olyan környezeti változókat használhat, amelyeket külsőleg kell megadni. A Cloud Shell [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs futtatásával adhatja át azokat. Például:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WORDPRESS_DB_HOST="myownserver.mysql.database.azure.com"
@@ -40,7 +40,7 @@ Az alkalmazás fájlrendszerében a */Home* Directory használatával megtarthat
 
 Ha az állandó tárterület le van tiltva, akkor a `/home` könyvtárba való írások nem maradnak meg az alkalmazás újraindítása vagy több példány között. Az egyetlen kivétel a Docker és a tároló naplóinak tárolására szolgáló `/home/LogFiles` könyvtár. Ha az állandó tárterület engedélyezve van, a `/home` könyvtárba való összes írás megmarad, és a kibővített alkalmazás összes példánya elérhetővé válik.
 
-Alapértelmezés szerint az állandó tárterület *engedélyezve* van, és a beállítás nem érhető el az alkalmazás beállításaiban. A letiltásához állítsa be a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` alkalmazás beállítását [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs futtatásával a Cloud shell. Példa:
+Alapértelmezés szerint az állandó tárterület *engedélyezve* van, és a beállítás nem érhető el az alkalmazás beállításaiban. A letiltásához állítsa be a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` alkalmazás beállítását [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs futtatásával a Cloud shell. Például:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
@@ -112,7 +112,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 A *Docker-compose. YML* fájlban rendelje hozzá a `${WEBAPP_STORAGE_HOME}`hoz a `volumes` lehetőséget. 
 
-A `WEBAPP_STORAGE_HOME` egy környezeti változó az App Service szolgáltatásban, amely az alkalmazás állandó tárolójára mutat. Példa:
+A `WEBAPP_STORAGE_HOME` egy környezeti változó az App Service szolgáltatásban, amely az alkalmazás állandó tárolójára mutat. Például:
 
 ```yaml
 wordpress:
@@ -159,6 +159,8 @@ Az alábbi listában a támogatott és nem támogatott Docker-összeállítási 
 ## <a name="configure-vnet-integration"></a>VNet-integráció konfigurálása
 
 Ha egyéni tárolót használ a VNet-integrációval, további tároló-konfigurációra lehet szükség. Lásd: [az alkalmazás integrálása Azure-Virtual Networkokkal](../web-sites-integrate-with-vnet.md).
+
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

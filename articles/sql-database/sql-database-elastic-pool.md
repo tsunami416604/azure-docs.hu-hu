@@ -11,16 +11,16 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 0cda55d42f0d89d61919b751335ec95ef8143274
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3c476393153f6bc1d18d5c163bcd69484583eb15
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901179"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252703"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>A rugalmas készletek segítségével több Azure SQL Database-adatbázist kezelhet és méretezheti
 
-Az SQL Database rugalmas készletei egyszerű, költséghatékony megoldást kínálnak egyszerre több olyan adatbázis kezelésére és méretezésére, amelyek felhasználási igénye nagy mértékben és kiszámíthatatlanul változik. A rugalmas készlethez tartozó adatbázisok egyetlen Azure SQL Database-kiszolgálón találhatók, és meghatározott számú erőforrással rendelkeznek előre megállapított áron. Az Azure SQL Database rugalmas készleteivel az SaaS-fejlesztők az előre meghatározott költségvetésen belül maradva optimalizálhatják az adatbáziscsoportok ár-teljesítmény arányát, és rugalmas teljesítményt biztosíthatnak az egyes adatbázisokhoz.
+Az SQL Database rugalmas készletei egyszerű, költséghatékony megoldást kínálnak egyszerre több olyan adatbázis kezelésére és méretezésére, amelyek felhasználási igénye nagy mértékben és kiszámíthatatlanul változik. A rugalmas készletben lévő adatbázisok egyetlen Azure SQL Database-kiszolgálón találhatók, és meghatározott áron oszthatják meg az erőforrásokat. Az Azure SQL Database rugalmas készleteivel az SaaS-fejlesztők az előre meghatározott költségvetésen belül maradva optimalizálhatják az adatbáziscsoportok ár-teljesítmény arányát, és rugalmas teljesítményt biztosíthatnak az egyes adatbázisokhoz.
 
 ## <a name="what-are-sql-elastic-pools"></a>Mik a rugalmas SQL-készletek
 
@@ -206,7 +206,7 @@ További mérőszámokat is kiválaszthat az adatbázis-táblázat egymás melle
 
 További információ: [SQL Database riasztások létrehozása Azure Portalokban](sql-database-insights-alerts-portal.md).
 
-## <a name="customer-case-studies"></a>Ügyfél-esettanulmányok
+## <a name="customer-case-studies"></a>Ügyféleset-tanulmányok
 
 - [SnelStart](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-snelstart/)
 
@@ -222,6 +222,7 @@ További információ: [SQL Database riasztások létrehozása Azure Portalokban
 
 ## <a name="next-steps"></a>Következő lépések
 
+- A díjszabással kapcsolatos információkért lásd a [rugalmas készlet díjszabását](https://azure.microsoft.com/pricing/details/sql-database/elastic).
 - Rugalmas készletek méretezése: [rugalmas készletek skálázása](sql-database-elastic-pool-scale.md) és [rugalmas készlet méretezése – mintakód](scripts/sql-database-monitor-and-scale-pool-powershell.md)
 - A videókkal kapcsolatban lásd: [a Microsoft Virtual Academy videós kurzusa Azure SQL Database rugalmas képességek](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.

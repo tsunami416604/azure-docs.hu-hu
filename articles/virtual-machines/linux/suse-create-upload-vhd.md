@@ -3,7 +3,7 @@ title: SUSE Linux rendszerű virtuális merevlemez létrehozása és feltöltés
 description: Megtudhatja, hogyan hozhat létre és tölthet fel egy SUSE Linux operációs rendszert tartalmazó Azure-beli virtuális merevlemezt (VHD-t).
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: mimckitt
-ms.openlocfilehash: 5ff28e25bf3da33fcf85a77f850b3b8f5ac8bb6b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d64fc55159ddc3ce88397879958a63bf30808ad9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745829"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251570"
 ---
-# <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>SLES- vagy openSUSE-alapú virtuális gép előkészítése Azure-beli használatra
+# <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>SLES-vagy openSUSE-beli virtuális gép előkészítése az Azure-hoz
 
 
 Ez a cikk azt feltételezi, hogy már telepített egy SUSE vagy openSUSE Linux operációs rendszert egy virtuális merevlemezre. Több eszköz létezik a. vhd fájlok létrehozásához, például egy virtualizációs megoldáshoz, például a Hyper-V-hez. Útmutatásért lásd: [a Hyper-V szerepkör telepítése és a virtuális gép konfigurálása](https://technet.microsoft.com/library/hh846766.aspx).
@@ -80,7 +80,7 @@ A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BY
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 11. Javasoljuk, hogy szerkessze a "/etc/sysconfig/network/DHCP" fájlt, és módosítsa a `DHCLIENT_SET_HOSTNAME` paramétert a következőre:
     
-     DHCLIENT_SET_HOSTNAME = "nem"
+     DHCLIENT_SET_HOSTNAME="no"
 12. A "/etc/sudoers" elemnél írja ki vagy távolítsa el a következő sorokat, ha vannak ilyenek:
     
     ```
@@ -133,14 +133,14 @@ A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BY
         # sudo zypper install WALinuxAgent
 6. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. Ehhez nyissa meg a "/boot/grub/menu.lst" kifejezést egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel a következő paramétereket tartalmazza:
    
-     Console = ttyS0 earlyprintk = ttyS0 rootdelay = 300
+     console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
    Ezzel biztosítható, hogy az összes konzol üzenetei az első soros porton legyenek elküldve, amely a hibakeresési problémákkal segíti az Azure-támogatást. Továbbá távolítsa el a következő paramétereket a kernel rendszerindítási sorából, ha vannak ilyenek:
    
-     libata. atapi_enabled = 0 tartalék = 0x1f0, 0x8
+     libata.atapi_enabled=0 reserve=0x1f0,0x8
 7. Javasoljuk, hogy szerkessze a "/etc/sysconfig/network/DHCP" fájlt, és módosítsa a `DHCLIENT_SET_HOSTNAME` paramétert a következőre:
    
-     DHCLIENT_SET_HOSTNAME = "nem"
+     DHCLIENT_SET_HOSTNAME="no"
 8. **Fontos:** A "/etc/sudoers" elemnél írja ki vagy távolítsa el a következő sorokat, ha vannak ilyenek:
      
      ```

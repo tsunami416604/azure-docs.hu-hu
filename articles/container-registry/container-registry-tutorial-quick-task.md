@@ -4,12 +4,12 @@ description: Ebben az oktatóanyagban megtudhatja, hogyan állíthat össze Dock
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b8a45cf3a72ed8f38f6f28a2f0225d0913f906da
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 51891d7b17fad7e438cc31652b6a0769d024e8e0
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456051"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252101"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Oktatóanyag: tároló lemezképek létrehozása és üzembe helyezése a felhőben Azure Container Registry feladatokkal
 
@@ -52,13 +52,13 @@ Miután leágaztatta az adattárat, klónozza a leágaztatást, és lépjen a he
 
 Klónozza az adattárat a `git` paranccsal, helyettesítse be a **\<your-github-username\>** helyőrzőt a GitHub-felhasználónévvel:
 
-```azurecli-interactive
+```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
 ```
 
 Lépjen a forráskódot tartalmazó könyvtárba:
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
@@ -72,7 +72,9 @@ Miután lekérte a forráskódot a gépre, az alábbi lépéseket követve hozzo
 
 A mintaparancsok könnyebb végrehajtása érdekében a sorozat oktatóanyagai rendszerhéj-környezeti változókat használnak. Futtassa a következő parancsot az `ACR_NAME` változó beállításához. A **\<registry-name\>** helyőrzőt cserélje az új tárolóregisztrációs adatbázis egyedi nevével. A beállításjegyzék nevének egyedinek kell lennie az Azure-on belül, csak kisbetűket tartalmazhat, és 5-50 alfanumerikus karaktert tartalmazhat. Az oktatóanyagban létrehozott egyéb erőforrások is ezen néven alapulnak, így csak ezt az első változót kell módosítania.
 
-```azurecli-interactive
+[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>
 ```
 
@@ -260,7 +262,7 @@ acr-tasks-myregistry.eastus.azurecontainer.io
 
 Jegyezze fel a tároló teljes tartománynevét, amelyet a következő szakaszban fog használni.
 
-### <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+### <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
 A tároló indítási folyamatának megtekintéséhez használja az az [Container Attach][az-container-attach] parancsot:
 

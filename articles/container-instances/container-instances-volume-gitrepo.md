@@ -3,12 +3,12 @@ title: Gitrepo típusú-kötet csatlakoztatása a tároló csoportjához
 description: Megtudhatja, hogyan csatlakoztathat egy Gitrepo típusú-kötetet a git-tárház klónozásához a Container instances szolgáltatásba
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 708fca185227292e7cdf33952bde6f42b3d4951f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533212"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252090"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Gitrepo típusú-kötet csatlakoztatása Azure Container Instances
 
@@ -23,7 +23,7 @@ A *gitrepo típusú* kötet csatlakoztat egy könyvtárat, és a tároló indít
 
 *Gitrepo típusú* -kötet csatlakoztatásakor a kötet konfigurálásához három tulajdonságot állíthat be:
 
-| Tulajdonság | Szükséges | Leírás |
+| Tulajdonság | Kötelező | Leírás |
 | -------- | -------- | ----------- |
 | `repository` | Igen | A klónozott git-tárház teljes URL-címe, beleértve a `http://` vagy `https://`is.|
 | `directory` | Nem | A könyvtárat, amelybe a tárházat klónozottnak kell lennie. Az elérési út nem tartalmazhatja a "`..`" karaktert.  Ha a "`.`" lehetőséget választja, a tárház klónozása a kötet könyvtárába történik. Ellenkező esetben a git-tárház klónozása a megadott név alkönyvtárába történik a kötet könyvtárában. |
@@ -48,8 +48,11 @@ az container create \
 
 A Gitrepo típusú kötet csatlakoztatásának ellenőrzéséhez indítson el egy rendszerhéjt a tárolóban az [az Container exec][az-container-exec] paranccsal, és sorolja fel a könyvtárat:
 
-```console
-$ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```azurecli
+az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```
+
+```output
 /usr/src/app # ls -l /mnt/aci-helloworld/
 total 16
 -rw-r--r--    1 root     root           144 Apr 16 16:35 Dockerfile
@@ -82,13 +85,13 @@ Ha egy privát git-tárházhoz szeretne Gitrepo típusú-kötetet csatlakoztatni
 
 Például a privát GitHub-tárház Azure CLI `--gitrepo-url` paramétere a következőhöz hasonlóan fog megjelenni (ahol a "gituser" a GitHub-Felhasználónév, a "abcdef1234fdsa4321abcdef" pedig a felhasználó személyes hozzáférési jogkivonata):
 
-```azurecli
+```console
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
 Egy Azure Repos git-tárház esetében adja meg a felhasználónevet (a következő példában a "azurereposuser" kifejezést használhatja) egy érvényes PAT-sel együtt:
 
-```azurecli
+```console
 --gitrepo-url https://azurereposuser:abcdef1234fdsa4321abcdef@dev.azure.com/your-org/_git/some-private-repository
 ```
 

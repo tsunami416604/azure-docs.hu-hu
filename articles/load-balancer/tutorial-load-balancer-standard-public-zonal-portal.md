@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 07d4b206c5651bb708ed8b56437a8769dff46557
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225171"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251896"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Oktatóanyag: Rendelkezésre állási zónán belüli virtuális gépek terheléselosztása standard Load Balancerrel az Azure Portal használatával
 
@@ -52,29 +52,35 @@ A Standard Load Balancer csak a szabványos nyilvános IP-címeket támogatja. H
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Előfizetés               | Válassza ki előfizetését.    |    
+    | Előfizetést               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a *MyResourceGroupZLB* szöveget a szövegmezőbe.|
-    | Név                   | *myLoadBalancer*                                   |
+    | Name (Név)                   | *myLoadBalancer*                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **nyilvános**lehetőséget.                                        |
     | SKU           | Válassza a **standard**lehetőséget.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím neve              | Írja be a *myPublicIP* szöveget a szövegmezőbe.   |
-    |Rendelkezésre állási zóna| Válassza az **1** lehetőséget.    |
+    |Rendelkezésreállási zóna| Válassza az **1** lehetőséget.    |
 3. A **felülvizsgálat + létrehozás** lapon kattintson a **Létrehozás**gombra.   
 
-   ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
+## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
 Ebben a szakaszban egy új virtuális hálózatot hozhat létre. Két, ugyanebben zónában (azaz az 1. zónában) lévő virtuális gépet is létrehoz hata régió számára, hogy hozzáadja a terheléselosztója háttérkészletéhez. Ezután a virtuális gépeken telepítheti az IIS-t a zónaredundáns terheléselosztó teszteléséhez. Ha az egyik virtuális gép meghiúsul, az azonos zónában lévő virtuális gép állapot-ellenőrzése is meghiúsul. A forgalmat továbbra is a zónában található más virtuális gépek szolgáltatják.
 
-### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-1. A képernyő bal felső sarkában kattintson az **Erőforrás létrehozása** > **Hálózat** > **virtuális hálózat** elemre.  Adja meg a következő értékeket a virtuális hálózat számára:
-    - A virtuális hálózat neve **myVNet**.
-    - A létező erőforráscsoport neve: **myResourceGroupZLB**
-    - Az alhálózat neve: **myBackendSubnet**
-2. A virtuális hálózat létrehozásához válassza a **Létrehozás** elemet.
+## <a name="virtual-network-and-parameters"></a>Virtuális hálózat és paraméterek
 
-    ![Virtuális hálózat létrehozása](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-network.png)
+Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekben az alábbi információkkal:
+
+| Paraméter                   | Érték                |
+|-----------------------------|----------------------|
+| **\<erőforrás-csoport neve >**  | myResourceGroupZLB (meglévő erőforráscsoport kiválasztása) |
+| **\<virtuális hálózat neve >** | myVNet          |
+| **\<régió – név >**          | Nyugat-Európa      |
+| **\<IPv4-címterület >**   | 10.0.0.0 \ 16          |
+| **\<alhálózat neve >**          | myBackendSubnet        |
+| **\<alhálózat-címtartomány >** | 10.0.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
@@ -220,7 +226,7 @@ A terheléselosztási szabály megadja, hogy a rendszer hogyan ossza el a forgal
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Válassza ki az erőforrásokat tartalmazó erőforráscsoport. Ezután válassza a **Törlés** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md).
 - [Virtuális gépek terheléselosztása rendelkezésre állási zónák között](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

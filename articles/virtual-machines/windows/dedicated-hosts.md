@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: 81749b8fb8b9e3f1a10b65b758b532773bdebdac
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 39d1c0ddb4961800e889346ec110ca629ae73546
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833868"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251555"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedikált Azure-gazdagépek
 
@@ -29,3 +29,5 @@ Az Azure dedikált gazdagép olyan szolgáltatás, amely fizikai kiszolgálókat
 - A dedikált gazdagépeket [Azure PowerShell](dedicated-hosts-powershell.md), a [portál](dedicated-hosts-portal.md)és az [Azure CLI](../linux/dedicated-hosts-cli.md)használatával helyezheti üzembe.
 
 - [Itt](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)található egy minta sablon, amely mindkét zónát és tartalék tartományt használja a maximális rugalmasság érdekében egy régióban.
+
+- A költségeket az [Azure dedikált gazdagépek fenntartott példányával](../prepay-dedicated-hosts-reserved-instances.md)is elvégezheti.

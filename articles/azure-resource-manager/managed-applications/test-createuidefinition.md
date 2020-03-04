@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: fe6fbb2c27dcc18cca114e6d10cd382d376a27e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75651305"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250176"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>A portál felületének tesztelése Azure Managed Applications
 
@@ -36,7 +36,7 @@ Miután létrehozta a felügyelt alkalmazáshoz tartozó [createUiDefinition. JS
 
    ![Űrlap megjelenítése](./media/test-createuidefinition/show-ui-form.png)
 
-### <a name="troubleshooting"></a>Hibaelhárítás
+### <a name="troubleshooting"></a>Hibakeresés
 
 Ha az űrlap nem jelenik meg az **előnézet**kiválasztása után, lehet, hogy szintaktikai hiba történt. Keresse meg a piros kijelzőt a jobb oldali görgetősávon, és navigáljon hozzá.
 
@@ -44,7 +44,7 @@ Ha az űrlap nem jelenik meg az **előnézet**kiválasztása után, lehet, hogy 
 
 Ha az űrlap nem jelenik meg, és helyette egy felhő ikonja jelenik meg a Tear droptel, az űrlap hibával rendelkezik, például hiányzó tulajdonság. Nyissa meg a webes Fejlesztői eszközök a böngészőben. A **konzolon** megjelennek a csatolóval kapcsolatos fontos üzenetek.
 
-![Hiba mutatása](./media/test-createuidefinition/show-error.png)
+![Hiba megjelenítése](./media/test-createuidefinition/show-error.png)
 
 ## <a name="use-test-script"></a>Tesztelési parancsfájl használata
 
@@ -68,7 +68,7 @@ PowerShell esetén használja az alábbi parancsot:
 
 Azure CLI esetén használja az alábbi parancsot:
 
-```azurecli
+```bash
 ./sideload-createuidef.sh \
   -l southcentralus \
   -a .\100-Marketplace-Sample
@@ -84,7 +84,7 @@ PowerShell esetén használja az alábbi parancsot:
 
 Azure CLI esetén használja az alábbi parancsot:
 
-```azurecli
+```bash
 ./sideload-createuidef.sh
 ```
 

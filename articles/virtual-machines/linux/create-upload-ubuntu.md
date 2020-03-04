@@ -3,21 +3,21 @@ title: Ubuntu Linux VHD létrehozása és feltöltése az Azure-ban
 description: Megtudhatja, hogyan hozhat létre és tölthet fel egy Ubuntu Linux operációs rendszert tartalmazó Azure-beli virtuális merevlemezt (VHD-t).
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 0079a30c81904d2ba66a014d5ac86467cca94f40
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 1b343fef13127f2b74da92e6b2c5b51767e6e325
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291566"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251683"
 ---
-# <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Ubuntus virtuális gép előkészítése Azure-beli használatra
+# <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Ubuntu virtuális gép előkészítése az Azure-hoz
 
 
 Az Ubuntu mostantól közzéteszi a hivatalos Azure VHD-ket [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/)letöltéséhez. Ha saját, speciális Ubuntu-lemezképet kell létrehoznia az Azure-hoz, és nem az alábbi manuális eljárást szeretné használni, érdemes elindítani ezeket az ismert munkavhd-ket, és szükség szerint testre szabnia azokat. A legújabb rendszerkép-verziók mindig a következő helyeken találhatók:
@@ -137,7 +137,7 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
 
 1. Kattintson a **művelet – > leállítás** a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
 
-## <a name="references"></a>Tudástár
+## <a name="references"></a>Referencia
 [Ubuntu hardveres engedélyezés (HWE) kernel](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
 
 ## <a name="next-steps"></a>Következő lépések

@@ -4,12 +4,12 @@ description: Útmutató az Azure Kubernetes Service-be (AKS) való üzembe helye
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, kék zöld üzembehelyezés, folyamatos kézbesítés, cd
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: ae9c496cd820bf1263cac50fb676990ed65ed0ba
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158553"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251473"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Üzembe helyezés az Azure Kubernetes Service-be (AKS) a Jenkins és a kék/zöld üzembehelyezési minta használatával
 
@@ -84,19 +84,19 @@ Egy felügyelt Kubernetes-fürt létrehozásához az [Azure CLI 2.0-val](https:/
 
 1. Jelentkezzen be Azure-fiókjába. A következő parancs beírása után megkapja az utasításokat, amelyek elmagyarázzák a bejelentkezés további lépéseit. 
     
-    ```bash
+    ```azurecli
     az login
     ```
 
 1. Amikor lefuttatja az `az login` parancsot az előző lépésnél, megjelenik egy lista az összes Azure-előfizetéséről (az előfizetési azonosítókkal együtt). Ebben a lépésben beállítja az alapértelmezett Azure-előfizetést. A &lt;your-subscription-id> (Azure-előfizetés azonosítója) érték helyére írja be a kívánt Azure-előfizetés azonosítóját. 
 
-    ```bash
+    ```azurecli
     az account set -s <your-subscription-id>
     ```
 
 1. Hozzon létre egy erőforráscsoportot. A &lt;your-resource-group-name> (erőforráscsoport neve) érték helyére írja be az új erőforráscsoport nevét, a &lt;your-location> (hely) érték helyére pedig a helyét. Az `az account list-locations` parancs megjeleníti az összes Azure-helyet. Az AKS előzetes verziója során nem érhető el minden hely. Ha olyan helyet ad meg, amely jelenleg nem érhető el, a hibaüzenetben megjelennek az elérhető helyek.
 
-    ```bash
+    ```azurecli
     az group create -n <your-resource-group-name> -l <your-location>
     ```
 
@@ -129,7 +129,7 @@ Egy kék/zöld üzembe helyezést beállíthat az AKS-ben manuálisan vagy a kor
 #### <a name="set-up-a-kubernetes-cluster-manually"></a>Kubernetes-fürt beállítása manuálisan 
 1. Töltse le a Kubernetes konfigurációt a profilmappájába.
 
-    ```bash
+    ```azurecli
     az aks get-credentials -g <your-resource-group-name> -n <your-kubernetes-cluster-name> --admin
     ```
 
@@ -157,13 +157,13 @@ Egy kék/zöld üzembe helyezést beállíthat az AKS-ben manuálisan vagy a kor
     
     Az alábbi paranccsal frissítse a DNS-nevet a kapcsolódó IP-címnél:
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name aks-todoapp --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
     ```
 
     Ismételje meg a `todoapp-test-blue` és a `todoapp-test-green` meghívását:
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name todoapp-blue --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
 
     az network public-ip update --dns-name todoapp-green --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
@@ -175,13 +175,13 @@ Egy kék/zöld üzembe helyezést beállíthat az AKS-ben manuálisan vagy a kor
 
 1. Egy Container Registry-példány létrehozásához futtassa az `az acr create` parancsot. A következő szakaszban használhatja a `login server` beállítást a Docker regisztrációs adatbázis URL-címeként.
 
-    ```bash
+    ```azurecli
     az acr create -n <your-registry-name> -g <your-resource-group-name>
     ```
 
 1. Futtassa az `az acr credential` parancsot a Container Registry hitelesítő adatainak megjelenítéséhez. Jegyezze meg a Docker regisztrációs adatbázishoz tartozó felhasználónevét és jelszavát, mert a következő szakaszban szükség lesz rájuk.
 
-    ```bash
+    ```azurecli
     az acr credential show -n <your-registry-name>
     ```
 
@@ -276,11 +276,11 @@ Az állásidő nélküli üzembe helyezésről további információkat ebben a 
 
 Ha már nincs szüksége az ezen oktatóanyagban létrehozott erőforrásokra, törölheti őket.
 
-```bash
+```azurecli
 az group delete -y --no-wait -n <your-resource-group-name>
 ```
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Ha a Jenkins beépülő modulok használata során bármilyen hibát tapasztal, jelentse be a problémát az adott összetevő [Jenkins JIRA](https://issues.jenkins-ci.org/) felületén.
 

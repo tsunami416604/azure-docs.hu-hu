@@ -3,7 +3,7 @@ title: Az Azure Linux-ügynök frissítése a GitHubról
 description: Ismerje meg, hogyan frissítheti az Azure Linux-ügynököt Linux rendszerű virtuális gépén az Azure-ban
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: 86ddda8537a4b61c5432072077c183ded2556624
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e4489f7c810799ca8e89565fe698f398f942b089
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973148"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251706"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Az Azure Linux-ügynök frissítése egy virtuális gépen
 
@@ -90,7 +90,7 @@ initctl restart walinuxagent
 systemctl restart walinuxagent.service
 ```
 
-## <a name="red-hat--centos"></a>Red Hat/CentOS
+## <a name="red-hat--centos"></a>Red Hat / CentOS
 
 ### <a name="rhelcentos-6"></a>RHEL/CentOS 6
 

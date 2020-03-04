@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: f4e255309d32026b7f2bb4de67fce7ec37c753f6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8dead08017f15a7429655b4bf17b6e8c8e481114
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529575"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251012"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Az Azure IoT bővítmény telepítése és használata az Azure CLI-hez
 
@@ -26,7 +26,7 @@ Az Azure CLI-hez készült Azure IoT-bővítmény parancssori eszköz a IoT Plug
 - Az eszköz tulajdonságainak használata.
 - Hívja meg az eszköz parancsait.
 
-Ez a cikk a következőkhöz nyújt útmutatást:
+Ez a cikk bemutatja, hogyan végezheti el a következőket:
 
 - Az Azure IoT bővítmény telepítése és konfigurálása az Azure CLI-hez.
 - Használja a bővítményt az eszközök használatához és teszteléséhez.
@@ -40,7 +40,7 @@ Kövesse a [telepítési utasításokat](https://docs.microsoft.com/cli/azure/in
 
 ### <a name="step-2---install-iot-extension"></a>2\. lépés – a IoT-bővítmény telepítése
 
-[Az IoT-bővítmény fontos (readme) fájlja](https://github.com/Azure/azure-iot-cli-extension) több módszert is ismertet a bővítmény telepítésére. A legegyszerűbb módszer az `az extension add --name azure-cli-iot-ext` futtatása. A telepítés után az `az extension list` paranccsal ellenőrizheti az aktuálisan telepített bővítményeket, az `az extension show --name azure-cli-iot-ext` paranccsal pedig megtekintheti az IoT-bővítmény adatait. A bővítményt az `az extension remove --name azure-cli-iot-ext` paranccsal távolíthatja el.
+[Az IoT-bővítmény fontos (readme) fájlja](https://github.com/Azure/azure-iot-cli-extension) több módszert is ismertet a bővítmény telepítésére. A legegyszerűbb módszer az `az extension add --name azure-iot` futtatása. A telepítés után az `az extension list` paranccsal ellenőrizheti az aktuálisan telepített bővítményeket, az `az extension show --name azure-iot` paranccsal pedig megtekintheti az IoT-bővítmény adatait. A bővítményt az `az extension remove --name azure-iot` paranccsal távolíthatja el.
 
 ## <a name="use-azure-iot-extension-for-the-azure-cli"></a>Az Azure IoT bővítmény használata az Azure CLI-hez
 

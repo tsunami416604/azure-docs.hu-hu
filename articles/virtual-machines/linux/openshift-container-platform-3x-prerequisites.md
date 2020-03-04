@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 069561c4bed55bf6021b594d693e076ef8d313bd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 76e7a9aa9c0f17501885c8bd06c6997fdc8d2104
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035476"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255697"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>A OpenShift Container platform 3,11 Azure-beli üzembe helyezésének gyakori előfeltételei
 
@@ -57,7 +57,7 @@ Jelentkezzen be az Azure-előfizetésbe az az [login](/cli/azure/reference-index
 ```azurecli 
 az login
 ```
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A Key Vault üzemeltetéséhez dedikált erőforráscsoportot kell használnia. Ez a csoport a OpenShift-fürt erőforrásainak üzembe helyezéséhez használt erőforráscsoporthoz eltér.
 
@@ -102,9 +102,9 @@ A OpenShift felhasználónévvel és jelszóval vagy egyszerű szolgáltatásné
 
 Hozzon létre egy egyszerű szolgáltatást az [az ad SP Create-for-RBAC](/cli/azure/ad/sp) , és adja meg a OpenShift által igényelt hitelesítő adatokat.
 
-A következő példa létrehoz egy szolgáltatásnevet, és hozzárendeli az IT közreműködői engedélyeket egy openshiftrg nevű erőforráscsoporthoz.
+A következő példa létrehoz egy szolgáltatásnevet, és hozzárendeli az IT közreműködői engedélyeket egy *openshiftrg*nevű erőforráscsoporthoz.
 
-Először hozza létre az openshiftrg nevű erőforráscsoportot:
+Először hozza létre az *openshiftrg*nevű erőforráscsoportot:
 
 ```azurecli
 az group create -l eastus -n openshiftrg

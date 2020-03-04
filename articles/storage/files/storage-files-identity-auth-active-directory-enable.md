@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan engedélyezheti az Azure-fájlmegosztás SMB-n 
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/23/2020
+ms.date: 03/03/2020
 ms.author: rogarana
-ms.openlocfilehash: 419f0506751ddc328539eafa52507b0dd0739c79
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 223906343c2391d03d8526026d3daad3174791ed
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921555"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256064"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Az Azure-fájlmegosztás SMB-en keresztüli Active Directory hitelesítésének engedélyezése
 
@@ -62,13 +62,13 @@ Az Azure-fájlmegosztás AD-hitelesítésének engedélyezése előtt győződj�
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-A Azure Files AD-hitelesítés (előzetes verzió) a [legtöbb nyilvános régióban](https://azure.microsoft.com/global-infrastructure/regions/) elérhető, kivéve a következőket:
+Azure Files AD-hitelesítés (előzetes verzió) a [legtöbb nyilvános régióban](https://azure.microsoft.com/global-infrastructure/regions/)elérhető.
 
+Azure Files AD-hitelesítés nem érhető el a ben:
 - USA nyugati régiója
 - USA nyugati régiója, 2.
 - USA keleti régiója
 - USA 2. keleti régiója
-- USA déli középső régiója
 - Nyugat-Európa
 - Észak-Európa
 

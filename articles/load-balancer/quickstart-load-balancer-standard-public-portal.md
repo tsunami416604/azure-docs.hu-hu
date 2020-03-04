@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: eab8298362bfb3ad790d13fcbf47e0fe624ed3fd
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 2477d91ac885d4ef39df7b9246f7272d66c3f7ee
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470190"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251859"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Gyors útmutató: Load Balancer létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával
 
@@ -110,21 +110,20 @@ A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossz
 
 Ebben a szakaszban létrehoz egy virtuális hálózatot, három virtuális gépet hoz létre a Load Balancer háttér-készletéhez, majd az IIS-t telepíti a virtuális gépekre a Load Balancer teszteléséhez.
 
-### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **virtuális hálózat**lehetőséget.
+## <a name="virtual-network-and-parameters"></a>Virtuális hálózat és paraméterek
 
-1. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
+Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekben az alábbi információkkal:
 
-    | Beállítás | Érték |
-    | ------- | ----- |
-    | Name (Név) | Adja meg a *myVNet* értéket. |
-    | Címtér | Adja meg a *10.1.0.0/16*értéket. |
-    | Előfizetést | Válassza ki előfizetését.|
-    | Erőforráscsoport | Válasszon ki egy meglévő erőforrás- *myresourcegroupslb erőforráscsoportban*. |
-    | Hely | Válassza a **Nyugat-Európa** régiót.|
-    | Alhálózat – név | Adja meg a *myBackendSubnet* értéket. |
-    | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24*értéket. |
-1. Hagyja meg a többi alapértelmezett beállítást, és válassza a **Létrehozás**lehetőséget.
+| Paraméter                   | Érték                |
+|-----------------------------|----------------------|
+| **\<erőforrás-csoport neve >**  | Myresourcegroupslb erőforráscsoportban |
+| **\<virtuális hálózat neve >** | myVNet          |
+| **\<régió – név >**          | Nyugat-Európa      |
+| **\<IPv4-címterület >**   | 10.1.0.0 \ 16          |
+| **\<alhálózat neve >**          | myBackendSubnet        |
+| **\<alhálózat-címtartomány >** | 10.1.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 A nyilvános IP-címek és a Load Balancer SKU-nak egyezniük kell. Standard Load Balancer esetén a háttér-készletben használjon szabványos IP-címmel rendelkező virtuális gépeket. Ebben a szakaszban három virtuális gépet hoz létre (*myVM1*, *myVM2* és *myVM3*) egy szabványos nyilvános IP-címmel három különböző zónában (*1. zóna*, *2. zóna*és *3. zóna*), amelyek később a korábban létrehozott Load Balancer háttér-készletéhez lesznek hozzáadva. Ha az alapszintű lehetőséget választotta, használja az alapszintű IP-címmel rendelkező virtuális gépeket.

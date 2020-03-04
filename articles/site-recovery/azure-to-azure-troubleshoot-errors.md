@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: rochakm
-ms.openlocfilehash: 3f97975f09d846cd3277bb8a53a4ad922f1b5b69
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 32d826f3c27cea3d0993c47e8562360315b7bd2e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902550"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256046"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Az Azure-ról az Azure-ba irányuló virtuális gépek replikációs hibáinak elhárítása
 
@@ -32,7 +32,7 @@ Ha nincs olyan méret, amely támogatja a forrás virtuális gép konfiguráció
 - Az előfizetés-azonosító nincs engedélyezve, vagy nem rendelkezik elegendő kvótával a virtuálisgép-méretek létrehozásához a célként megadott régióban.
 - Nem található megfelelő célként megadott virtuálisgép-méret a forrás virtuális gép hálózati adapterének (NIC) számával (2), az előfizetés-AZONOSÍTÓhoz a célként megadott régióban.
 
-### <a name="fix-the-problem"></a>A probléma javítása
+### <a name="fix-the-problem"></a>A probléma megoldása
 
 Lépjen kapcsolatba az [Azure számlázási támogatási szolgálatával](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) , és engedélyezze, hogy előfizetése virtuális gépeket hozzon létre a célhelyen a szükséges méretekben. Ezután próbálja megismételni a sikertelen műveletet.
 
@@ -50,15 +50,15 @@ Ha a "replikáció engedélyezése" művelet meghiúsul, a következő üzenet j
 
 Az engedélyezéshez és a hitelesítéshez szükséges megbízható főtanúsítványok nem jelennek meg a virtuális gépen.
 
-### <a name="fix-the-problem"></a>A probléma javítása
+### <a name="fix-the-problem"></a>A probléma megoldása
 
 #### <a name="windows"></a>Windows
 
 A Windows operációs rendszert futtató virtuális gépek esetében telepítse a legújabb Windows-frissítéseket a virtuális gépre, hogy az összes megbízható főtanúsítvány megtalálható legyen a gépen. A szervezeten belüli, a Windows Update-Management vagy a Certificate Update-Management folyamatot követve szerezheti be a legfelső szintű tanúsítványokat és a frissített tanúsítvány-visszavonási listát a virtuális gépeken.
 
-Ha leválasztott környezetet használ, a tanúsítványok lekéréséhez kövesse a szervezet szabványos Windows-frissítési folyamatát. Ha a szükséges tanúsítványok nem találhatók a virtuális gépen, akkor a Site Recovery szolgáltatás felé irányuló hívások biztonsági okokból sikertelenek lesznek.
+Ha Ön leválasztott környezetben, hajtsa végre a szabványos Windows frissítési folyamatot a szervezet tanúsítványok beolvasása. Ha a szükséges tanúsítványok nem megtalálható a virtuális Gépen, a Site Recovery szolgáltatás felé irányuló biztonsági okokból nem sikerült.
 
-A probléma megoldásának ellenőrzéséhez nyissa meg a login.microsoftonline.com a virtuális gépen lévő böngészőből.
+Győződjön meg arról, hogy a probléma megoldódott, lépjen a virtuális gépen egy böngészőből login.microsoftonline.com.
 
 További információ: [megbízható gyökerek és nem engedélyezett tanúsítványok konfigurálása](https://technet.microsoft.com/library/dn265983.aspx).
 
@@ -68,7 +68,7 @@ Kövesse a Linux operációs rendszer verziójának forgalmazója által biztos�
 
 Mivel a SUSE Linux szimbolikus hivatkozásokat (vagy *symlinkeket*) használ a tanúsítványok listájának karbantartásához, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be root felhasználóként.
+1. Jelentkezzen be gyökérszintű felhasználóként.
 
 1. A következő parancs futtatásával módosítsa a könyvtárat:
 
@@ -80,7 +80,7 @@ Mivel a SUSE Linux szimbolikus hivatkozásokat (vagy *symlinkeket*) használ a t
 
 1. Ha a Symantec legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa nem található, futtassa a következő parancsot a fájl letöltéséhez. Keressen hibákat, és kövesse az ajánlott műveleteket a hálózati hibákhoz.
 
-    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. PEM**
+    **# wget https://docs.broadcom.com/docs-and-downloads/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem-O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. PEM**
 
 1. Győződjön meg arról, hogy a Baltimore legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa megtalálható-e:
 
@@ -88,7 +88,7 @@ Mivel a SUSE Linux szimbolikus hivatkozásokat (vagy *symlinkeket*) használ a t
 
 1. Ha a Baltimore legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa nem található, futtassa ezt a parancsot a tanúsítvány letöltéséhez:
 
-    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root. PEM**
+    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem-O Baltimore_CyberTrust_Root. PEM**
 
 1. Győződjön meg arról, hogy az DigiCert_Global_Root_CA-tanúsítvány megtalálható:
 
@@ -106,7 +106,7 @@ Mivel a SUSE Linux szimbolikus hivatkozásokat (vagy *symlinkeket*) használ a t
 
 1. Futtassa ezeket a parancsokat annak megállapításához, hogy a tulajdonos-kivonatok létre lettek-e hozva a tanúsítványokhoz:
 
-    - Parancs:
+    - Parancs
 
         **# ls-l | GREP Baltimore**
 
@@ -116,7 +116,7 @@ Mivel a SUSE Linux szimbolikus hivatkozásokat (vagy *symlinkeket*) használ a t
 
         `-rw-r--r-- 1 root root 1303 Jun  5  2014 Baltimore_CyberTrust_Root.pem`
 
-    - Parancs:
+    - Parancs
 
         **# ls-l | GREP VeriSign_Class_3_Public_Primary_Certification_Authority_G5**
 
@@ -126,7 +126,7 @@ Mivel a SUSE Linux szimbolikus hivatkozásokat (vagy *symlinkeket*) használ a t
 
         `lrwxrwxrwx 1 root root   62 Jan  8 09:48 facacbc6.0 -> VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem`
 
-    - Parancs:
+    - Parancs
 
         **# ls-l | GREP DigiCert_Global_Root**
 
@@ -150,7 +150,7 @@ Mivel a SUSE Linux szimbolikus hivatkozásokat (vagy *symlinkeket*) használ a t
 
 1. Győződjön meg arról, hogy a fájlok jelen vannak:
 
-    - Parancs:
+    - Parancs
 
         **# ls-l 653b494a. 0 b204d74a. 0 3513523f. 0**
 
@@ -162,9 +162,9 @@ Mivel a SUSE Linux szimbolikus hivatkozásokat (vagy *symlinkeket*) használ a t
 
         `-rw-r--r-- 1 root root 1774 Jan  8 09:52 b204d74a.0`
 
-## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Kimenő kapcsolat Site Recovery URL-címekhez vagy IP-tartományokhoz (hibakód: 151037 vagy 151072)
+## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>A Site Recovery URL-címek vagy IP-címtartományokat (hibakód: 151037 vagy 151072) kimenő kapcsolatok
 
-Site Recovery replikálás működéséhez a virtuális gépnek kimenő kapcsolatra van szüksége adott URL-címekre vagy IP-tartományokra. Ha a virtuális gép tűzfal mögött van, vagy hálózati biztonsági csoport (NSG) szabályok használatával vezérli a kimenő kapcsolatot, akkor előfordulhat, hogy ezek egyike a probléma.
+Site Recovery replikálás működéséhez a virtuális gépnek kimenő kapcsolatra van szüksége adott URL-címekre vagy IP-tartományokra. Ha a virtuális gép tűzfal mögött található, vagy használja a hálózati biztonsági csoport (NSG) szabályai kimenő kapcsolat szabályozásához, előfordulhat, hogy között ezek a problémák egyike.
 
 ### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>1. probléma: nem sikerült regisztrálni az Azure-beli virtuális gépet Site Recovery (hibakód: 151195)
 
@@ -174,7 +174,7 @@ A DNS-feloldási hiba miatt nem lehet kapcsolódni Site Recovery végpontokhoz.
 
 Ez a probléma leggyakrabban az ismételt védelem során fordul elő, ha a virtuális gép feladatátvétele megtörtént, de a DNS-kiszolgáló nem érhető el a vész-helyreállítási (DR) régióból.
 
-#### <a name="fix-the-problem"></a>A probléma javítása
+#### <a name="fix-the-problem"></a>A probléma megoldása
 
 Ha egyéni DNS-t használ, győződjön meg arról, hogy a DNS-kiszolgáló elérhető a vész-helyreállítási régióból. Ha szeretné megtudni, hogy van-e egyéni DNS, a virtuális gépen lépjen a vész- *helyreállítási hálózat* > **DNS-kiszolgálók**elemre.
 
@@ -188,7 +188,7 @@ Próbálja meg elérni a DNS-kiszolgálót a virtuális gépről. Ha a kiszolgá
 
 Nem lehet kapcsolódni az Office 365-hitelesítéshez és az Identity IP4-végpontokhoz.
 
-#### <a name="fix-the-problem"></a>A probléma javítása
+#### <a name="fix-the-problem"></a>A probléma megoldása
 
 A Site Recovery az Office 365 IP-tartományokhoz való hozzáférést igényel a hitelesítéshez.
 Ha az Azure NSG-szabályokat vagy a tűzfal-proxyt használja a kimenő hálózati kapcsolat vezérlésére a virtuális gépen, ügyeljen arra, hogy engedélyezze a kommunikációt az Office 365 IP-tartományával. Hozzon létre egy NSG-szabályt egy [Azure Active Directory (Azure ad) szolgáltatás címkéje](../virtual-network/security-overview.md#service-tags)alapján, amely lehetővé teszi az Azure ad-hez tartozó összes IP-cím elérését. Ha a jövőben új címeket adnak hozzá az Azure AD-hoz, új NSG-szabályokat kell létrehoznia.
@@ -202,7 +202,7 @@ Ha az Azure NSG-szabályokat vagy a tűzfal-proxyt használja a kimenő hálóza
 
 Nem lehet létrehozni a kapcsolódást Site Recovery szolgáltatási végpontok számára.
 
-#### <a name="fix-the-problem"></a>A probléma javítása
+#### <a name="fix-the-problem"></a>A probléma megoldása
 
 A Site Recovery a régiótól függően [site Recovery IP-címtartományok](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)elérését igényli. Győződjön meg arról, hogy a szükséges IP-címtartományok elérhetők a virtuális gépről.
 
@@ -212,7 +212,7 @@ A Site Recovery a régiótól függően [site Recovery IP-címtartományok](http
 
 Az egyéni proxybeállítások érvénytelenek, és a Site Recovery mobilitási szolgáltatás ügynöke nem tudta automatikusan felderíteni a proxybeállításokat az Internet Explorerben.
 
-#### <a name="fix-the-problem"></a>A probléma javítása
+#### <a name="fix-the-problem"></a>A probléma megoldása
 
 A mobilitási szolgáltatás ügynöke észleli az Internet Explorer proxybeállításait a Windowsban, illetve a Linux/etc/Environment.
 
@@ -239,7 +239,7 @@ A [szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectiv
 
 ## <a name="disk-not-found-in-the-machine-error-code-150039"></a>A lemez nem található a gépen (hibakód: 150039)
 
-A virtuális géphez csatolt új lemezt inicializálni kell. Ha a lemez nem található, a következő üzenet jelenik meg:
+Egy új lemezt a virtuális Géphez csatolt inicializálni kell. Ha a lemez nem található, a következő üzenet jelenik meg:
 
 > "Az Azure adatlemez- *DiskName* *DiskURI* és a logikai egységek száma *LUN* *LUNValue* nem volt leképezve egy, a virtuális gépen található, azonos LUN értékkel rendelkező lemezre.
 
@@ -248,7 +248,7 @@ A virtuális géphez csatolt új lemezt inicializálni kell. Ha a lemez nem tal�
 - Új adatlemez lett csatolva a virtuális géphez, de nem lett inicializálva.
 - A virtuális gépen belüli adatlemez nem jelenti megfelelően a logikai egység számát (LUN), amelyen a lemez a virtuális géphez lett csatolva.
 
-### <a name="fix-the-problem"></a>A probléma javítása
+### <a name="fix-the-problem"></a>A probléma megoldása
 
 Győződjön meg arról, hogy az adatlemezek inicializálva vannak, majd próbálja megismételni a műveletet.
 
@@ -256,7 +256,7 @@ Győződjön meg arról, hogy az adatlemezek inicializálva vannak, majd próbá
 
 - **Linux**: [új adatlemez inicializálása Linuxon](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 
-Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz.
+Ha a probléma tartósan fennáll, forduljon az ügyfélszolgálathoz.
 
 ## <a name="one-or-more-disks-are-available-for-protection-error-code-153039"></a>Egy vagy több lemez védelem alatt áll (hibakód: 153039)
 
@@ -265,7 +265,7 @@ Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz.
 - A védelem után egy vagy több lemezt nemrégiben adtak hozzá a virtuális géphez.
 - Egy vagy több lemez inicializálása a virtuális gép védelme után történt.
 
-### <a name="fix-the-problem"></a>A probléma javítása
+### <a name="fix-the-problem"></a>A probléma megoldása
 
 A virtuális gép replikálási állapotának újbóli megadásához választhatja a lemezek védelme vagy a figyelmeztetés mellőzése lehetőséget.
 
@@ -295,7 +295,7 @@ Figyelmen kívül hagyhatja ezt a figyelmeztetést, ha soha nem szeretné több�
 > - Ha a Recovery Services-tároló segítségével engedélyezi a replikálást, a virtuális gép nem jelenik meg.
 > - Ha a virtuális gép > **beállítások** > vész- **helyreállítás**használatával próbálja meg védelemmel ellátni a **virtuális gépet** , a művelet sikertelen lesz, és a "replikáció nem engedélyezhető a virtuális gépen lévő elavult erőforrás-hivatkozások miatt" üzenettel.
 
-### <a name="fix-the-problem"></a>A probléma javítása
+### <a name="fix-the-problem"></a>A probléma megoldása
 
 > [!NOTE]
 > Site Recovery nem törli a forrásként szolgáló virtuális gépet, vagy semmilyen módon nem befolyásolja ezeket a lépéseket.
@@ -320,7 +320,7 @@ Ha az Azure-beli virtuális gép replikálását a Site Recovery használatával
 - A Site Recovery-tárolót a virtuális gép replikációjának explicit letiltása nélkül törölte.
 - Törölte a Site Recovery tárolót tartalmazó erőforráscsoportot anélkül, hogy explicit módon le kellene tiltani a replikálást a virtuális gépen.
 
-### <a name="fix-the-problem"></a>A probléma javítása
+### <a name="fix-the-problem"></a>A probléma megoldása
 
 > [!NOTE]
 > Site Recovery nem törli a forrásként szolgáló virtuális gépet, vagy semmilyen módon nem befolyásolja ezeket a lépéseket.
@@ -353,7 +353,7 @@ Előfordulhat, hogy nem látja azt a virtuális gépet, amelyet engedélyezni sz
 - Törölte a Site Recovery tárolót tartalmazó erőforráscsoportot anélkül, hogy explicit módon le kellene tiltani a replikálást a virtuális gépen.
 - Letiltotta a replikálást, de a forrás virtuális gépnek erőforrás-zárolása volt.
 
-### <a name="fix-the-problem"></a>A probléma javítása
+### <a name="fix-the-problem"></a>A probléma megoldása
 
 > [!NOTE]
 > Az ebben a szakaszban említett szkript használata előtt győződjön meg arról, hogy a "AzureRM. Resources" modult frissíti.  Site Recovery nem törli a forrásként szolgáló virtuális gépet, vagy semmilyen módon nem befolyásolja ezeket a lépéseket.
@@ -386,7 +386,7 @@ A virtuális gép replikálásának engedélyezéséhez a létesítési állapot
 1. Bontsa ki az **erőforrások** listát, és válassza ki a virtuális gépet.
 1. A jobb oldalon tekintse meg a **provisioningState** mezőt a példány nézetben.
 
-### <a name="fix-the-problem"></a>A probléma javítása
+### <a name="fix-the-problem"></a>A probléma megoldása
 
 - Ha a provisioningState **sikertelen**, a hibakereséshez forduljon az ügyfélszolgálathoz.
 - Ha a provisioningState **frissítése**folyamatban van, előfordulhat, hogy egy másik bővítményt is üzembe kell helyezni. Győződjön meg arról, hogy vannak-e folyamatban lévő műveletek a virtuális gépen, várjon, amíg befejeződik, majd próbálja megismételni a sikertelen Site Recovery "replikáció engedélyezése" feladatot.
@@ -422,7 +422,7 @@ Ha ez a hiba történik, a következő üzenet jelenik meg:
 - A COM+ rendszeralkalmazás-szolgáltatás le van tiltva.
 - A Kötet árnyékmásolata szolgáltatás le van tiltva.
 
-### <a name="fix-the-problem"></a>A probléma javítása
+### <a name="fix-the-problem"></a>A probléma megoldása
 
 Állítsa be a COM+ rendszeralkalmazást és a Kötet árnyékmásolata szolgáltatást automatikus vagy manuális indítási módra.
 
@@ -441,7 +441,7 @@ Ha ez a hiba történik, a következő üzenet jelenik meg:
 
 A lemez kisebb, mint a támogatott 1024 MB-os méret.
 
-### <a name="fix-the-problem"></a>A probléma javítása
+### <a name="fix-the-problem"></a>A probléma megoldása
 
 Győződjön meg arról, hogy a lemez mérete a támogatott tartományon belül van, majd próbálja megismételni a műveletet.
 
@@ -462,11 +462,11 @@ A következő példák olyan GRUB-fájlokból származó sorok, amelyekben a sz�
   > kernel/boot/vmlinuz-3.0.101-63-default **root =/dev/sda2** **resume =/dev/sda1** Splash = Silent crashkernel = 256M-: 128M showopts VGA = 0x314
 
 
-### <a name="fix-the-problem"></a>A probléma javítása
+### <a name="fix-the-problem"></a>A probléma megoldása
 
 Cserélje le az egyes eszközök nevét a megfelelő UUID-ra:
 
-1. Keresse meg az eszköz UUID-azonosítóját a blkid- ***eszköz nevének***végrehajtásával. Példa:
+1. Keresse meg az eszköz UUID-azonosítóját a blkid- ***eszköz nevének***végrehajtásával. Például:
 
     ```
     blkid /dev/sda1
@@ -501,7 +501,7 @@ A GRUB konfigurációs fájljai (/boot/grub/menu.lst,/boot/grub/grub.cfg,/boot/G
 
 Az egyes példákban a félkövér kifejezés azt mutatja, hogy a GRUB-nak két LVM-eszközt kell észlelni a "root" és a "swap" névvel a "rootvg" kötetből.
 
-### <a name="fix-the-problem"></a>A probléma javítása
+### <a name="fix-the-problem"></a>A probléma megoldása
 
 Ha az LVM-eszköz nem létezik, hozza létre, vagy távolítsa el a megfelelő paramétereket a GRUB konfigurációs fájljaiból. Ezután próbálkozzon újra a védelem engedélyezéséhez.
 
@@ -520,7 +520,7 @@ A Site Recovery mobilitási szolgáltatásnak számos összetevője van, amelyek
 
 Ez a probléma akkor fordulhat elő, ha a virtuális gépet korábban védelemmel látta el, és a replikálás le lett tiltva. a replika lemeze nem lett megtisztítva.
 
-### <a name="fix-the-problem"></a>A probléma javítása
+### <a name="fix-the-problem"></a>A probléma megoldása
 
 Törölje a hibaüzenetben azonosított replika lemezt, majd próbálja megismételni a sikertelen védelmi feladatot.
 

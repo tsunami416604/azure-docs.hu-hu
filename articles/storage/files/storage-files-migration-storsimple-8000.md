@@ -4,25 +4,19 @@ description: Megtudhatja, hogyan telepíthet át egy StorSimple 8100-es vagy 860
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 2/20/2020
+ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: ec3f59c02f73f51ccb4fac21d6ba4cc746a1134e
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 78100a5dd38b211f6b0241d5a0bac10cf86b09f6
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209440"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250947"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 Migrálás Azure File Syncre
 
-A StorSimple 8000 sorozat két különböző fizikai berendezéssel rendelkezik. Az egyetlen különbség a kettő között a helyi gyorsítótár mérete (lemezterület) mennyisége. Ez a készülék egy helyszíni adatközpontban fut, és gyorsítótárként működik az Azure-ban tárolt adatszolgáltatásokban.
-Ha a StorSimple-szériagyártás bejelentette, hogy a 31 2022-es, a készülékhez csatlakozott felhő-szolgáltatás nem működik, a szolgáltatás nem fog működni.
-
-Minden olyan StorSimple-eszközről, amelyről elegendő idő áll rendelkezésére, a tartalékra kell telepíteni.
-Azure File Sync a természetes követő technológia, amely több funkcióval és rugalmasabb, mint a StorSimple-ajánlatok.
-
-Ez a cikk a szükséges háttérbeli ismereteket és áttelepítési lépéseket ismerteti, hogy a Migrálás Azure File Sync sikeres legyen.
+A StorSimple 8000 sorozat két különálló SKU-t jelöl, és ezek közül bármelyik SKU adatait áttelepítheti egy Azure File Sync környezetbe. Ez a cikk ismerteti mindkét készülék áttelepítését Azure File Syncre, és biztosítja a szükséges háttérbeli ismereteket és áttelepítési lépéseket, hogy a Migrálás Azure File Sync sikeres legyen.
 
 ## <a name="azure-file-sync"></a>Azure File Sync
 

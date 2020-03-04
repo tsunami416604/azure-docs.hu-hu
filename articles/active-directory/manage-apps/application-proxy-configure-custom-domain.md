@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 80f8d66795971c6a5c84be7088387e63d7acd7a7
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185540"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248690"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Egyéni tartományok konfigurálása az Azure AD Application Proxy
 
@@ -130,9 +130,9 @@ A tanúsítvány-aláírási módszerek nem korlátozzák a korlátozást. Az el
 
 Helyettesítő tanúsítványokat használhat, ha a helyettesítő karakter megfelel a külső URL-címnek. Helyettesítő tanúsítványokat kell használnia [helyettesítő alkalmazásokhoz](application-proxy-wildcard.md). Ha azt szeretné, hogy a tanúsítvány az altartományokhoz is hozzáférhessen, akkor az altartomány helyettesítő karaktereit a tulajdonos alternatív neveiként kell hozzáadnia ugyanabban a tanúsítványban. A *\*. Adventure-Works.com* tanúsítványa például nem fog működni *\*. apps.Adventure-Works.com* , hacsak nem adja hozzá a *\*. apps.Adventure-Works.com* nevet a tulajdonos alternatív neveként. 
 
-A saját nyilvános kulcsokra épülő infrastruktúrája (PKI) által kiadott tanúsítványokat használhatja, ha a tanúsítványlánc telepítve van az ügyféleszközök számára. Az Intune ezeket a tanúsítványokat a felügyelt eszközökön is üzembe helyezheti. A nem felügyelt eszközökön manuálisan kell telepítenie ezeket a tanúsítványokat.
+A saját nyilvános kulcsokra épülő infrastruktúrája (PKI) által kiadott tanúsítványokat használhatja, ha a tanúsítványlánc telepítve van az ügyféleszközök számára. Az Intune ezeket a tanúsítványokat a felügyelt eszközökön is üzembe helyezheti. A nem felügyelt eszközökön manuálisan kell telepítenie ezeket a tanúsítványokat. 
 
-Nem jó ötlet a privát legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ használata. A privát legfelső szintű HITELESÍTÉSSZOLGÁLTATÓT is le kell küldeni az ügyfélszámítógépekre, ami számos kihívást jelent. 
+Nem ajánlott privát legfelső szintű HITELESÍTÉSSZOLGÁLTATÓT használni, mivel a privát legfelső szintű HITELESÍTÉSSZOLGÁLTATÓT is le kell küldeni az ügyfélszámítógépekre, ami számos kihívást jelenthet.
 
 ### <a name="certificate-management"></a>Tanúsítványkezelés
 

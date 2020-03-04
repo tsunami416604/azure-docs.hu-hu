@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése az Azure CLI-vel és sablonnal
 description: Erőforrások üzembe helyezése az Azure-ban a Azure Resource Manager és az Azure CLI használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 242b9f2a4bc39f8aa083d9c89d3dd7ed850b3489
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 64f60a6e15a0c51e5ee506340c064804f7588693
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154295"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250664"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével
 
@@ -63,7 +63,7 @@ az group deployment create \
 
 Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, megjelenik egy üzenet, amely tartalmazza a következő eredményt:
 
-```azurecli
+```output
 "provisioningState": "Succeeded",
 ```
 
@@ -150,7 +150,7 @@ az group deployment create \
 
 ## <a name="handle-extended-json-format"></a>Kiterjesztett JSON-formátum kezelése
 
-Többsoros karakterláncokkal vagy megjegyzésekkel rendelkező sablon üzembe helyezéséhez a `--handle-extended-json-format` kapcsolót kell használnia.  Példa:
+Többsoros karakterláncokkal vagy megjegyzésekkel rendelkező sablon üzembe helyezéséhez a `--handle-extended-json-format` kapcsolót kell használnia.  Például:
 
 ```json
 {
@@ -183,7 +183,7 @@ az group deployment validate \
 
 Ha a rendszer nem észlel hibát, a parancs adatokat ad vissza a tesztelési telepítésről. Fontos megjegyezni, hogy a **hiba** értéke null.
 
-```azurecli
+```output
 {
   "error": null,
   "properties": {
@@ -192,7 +192,7 @@ Ha a rendszer nem észlel hibát, a parancs adatokat ad vissza a tesztelési tel
 
 Ha a rendszer hibát észlel, a parancs hibaüzenetet ad vissza. Ha például helytelen értéket ad meg a Storage-fiók SKU-jának, a a következő hibaüzenetet adja vissza:
 
-```azurecli
+```output
 {
   "error": {
     "code": "InvalidTemplate",
@@ -208,7 +208,7 @@ Ha a rendszer hibát észlel, a parancs hibaüzenetet ad vissza. Ha például he
 
 Ha a sablon szintaktikai hibát tartalmaz, a parancs egy hibaüzenetet ad vissza, amely azt jelzi, hogy nem tudta elemezni a sablont. Az üzenet a sorszámot és az elemzési hiba pozícióját jelzi.
 
-```azurecli
+```output
 {
   "error": {
     "code": "InvalidTemplate",

@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Lekéréses kérelem módosításainak áttekintése és tesztelése közvetlenül az Azure Kubernetes Service-ben a GitHub-műveletek és az Azure dev Spaces használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, GitHub-műveletek, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: e2b6f47483d2c7b6c4970dac531bada1cecd279e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196552"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252374"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-műveletek & Azure Kubernetes Service (előzetes verzió)
 
@@ -39,7 +39,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 
 Azure Container Registry létrehozása (ACR):
 
-```cmd
+```azurecli
 az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 ```
 
@@ -52,7 +52,7 @@ Mentse a *lekéréséhez* értéket a kimenetből, mert azt egy későbbi lépé
 
 Egyszerű szolgáltatásnév létrehozásához használja [az az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Például:
 
-```cmd
+```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
 ```
 
@@ -60,19 +60,19 @@ Mentse a JSON-kimenetet, mert egy későbbi lépésben használatos.
 
 Az az [AK show][az-aks-show] paranccsal jelenítheti meg az AK-fürt *azonosítóját* :
 
-```cmd
+```azurecli
 az aks show -g MyResourceGroup -n MyAKS  --query id
 ```
 
 Az ACR *azonosítójának* megjelenítéséhez használja az [az ACR show következőt][az-acr-show] :
 
-```cmd
+```azurecli
 az acr show --name <acrName> --query id
 ```
 
 Használja az [az role hozzárendelés Create][az-role-assignment-create] lehetőséget, hogy *közreműködői* hozzáférést biztosítson az AK-fürthöz, és *AcrPush* a hozzáférést az ACR-hez.
 
-```cmd
+```azurecli
 az role assignment create --assignee <ClientId> --scope <AKSId> --role Contributor
 az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 ```
@@ -158,11 +158,11 @@ Ha egyesíti a módosításokat az elágazásban található *Master* ágban, eg
 
 ## <a name="clean-up-your-azure-resources"></a>Azure-erőforrások karbantartása
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken.
 

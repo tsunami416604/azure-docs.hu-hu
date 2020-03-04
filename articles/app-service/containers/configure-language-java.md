@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1b9db20da58f50c91da88c2f9f890623b741f10a
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 455ebcb28ea6cc8b43431f96a4bc3929a759c2d0
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443873"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255897"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Linuxos Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -136,7 +136,7 @@ A App Service tervében egyetlen üzembe helyezési ponttal rendelkező fejleszt
 
 Az alkalmazás-halom beállításainak hangolásához tekintse át a App Service terv részleteit, és vegye figyelembe, hogy a memória optimális elosztása érdekében több alkalmazásra és üzembe helyezési pontra van szükség.
 
-Ha JAR-alkalmazást helyez üzembe, akkor az *app. jar* névvel kell rendelkeznie ahhoz, hogy a beépített lemezkép helyesen tudja azonosítani az alkalmazást. (A Maven beépülő modul automatikusan átnevezi ezt.) Ha nem kívánja átnevezni a JAR-t az *app. jar*névre, feltölthet egy rendszerhéj-parancsfájlt a PARANCCSAL a jar futtatásához. Ezután illessze be a parancsfájl teljes elérési útját az [indítási fájl](app-service-linux-faq.md#built-in-images) szövegmezőbe a portál konfiguráció szakaszában. Az indítási parancsfájl nem azon a címtáron fut, amelybe el van helyezve. Ezért mindig abszolút elérési utakat használjon az indítási parancsfájlban található fájlokra (például: `java -jar /home/myapp/myapp.jar`).
+Ha JAR-alkalmazást helyez üzembe, akkor az *app. jar* névvel kell rendelkeznie ahhoz, hogy a beépített lemezkép helyesen tudja azonosítani az alkalmazást. (A Maven beépülő modul automatikusan átnevezi ezt.) Ha nem kívánja átnevezni a JAR-t az *app. jar*névre, feltölthet egy rendszerhéj-parancsfájlt a PARANCCSAL a jar futtatásához. Ezután illessze be a parancsfájl teljes elérési útját a portál konfigurációs szakaszának [Indítási fájl](app-service-linux-faq.md#built-in-images) szövegmezőjébe. Az indítási szkript nem abban a könyvtárban fut, amelyben el van helyezve. Ezért mindig abszolút elérési utakat használjon az indítási szkriptben található fájlokra való hivatkozáskor (például: `java -jar /home/myapp/myapp.jar`).
 
 ### <a name="turn-on-web-sockets"></a>Webes szoftvercsatornák bekapcsolása
 
@@ -561,7 +561,7 @@ A Tomcat és a Redis használatához konfigurálnia kell az alkalmazást egy [Pe
 
 8. Frissítse az alkalmazás *Pom. XML* fájljának `azure-webapp-maven-plugin` konfigurációját, hogy a Redis-fiók adataira hivatkozzon. Ez a fájl a korábban beállított környezeti változókat használja, hogy a fiókadatok a forrásfájlok adatain kívül maradjanak.
 
-    Ha szükséges, módosítsa `1.7.0` a [Maven beépülő modul](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)aktuális verziójára Azure app Service.
+    Szükség esetén frissítse a `1.7.0`Maven Plugin for Azure App Service[ ](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)-ás verzióját a jelenlegire.
 
     ```xml
     <plugin>
@@ -641,6 +641,8 @@ A főbb biztonsági rések javításait és javításait a rendszer azonnal fels
 ### <a name="deprecation-and-retirement"></a>Elavulás és nyugdíjazás
 
 Ha egy támogatott Java-futtatókörnyezet megszűnik, az érintett futtatókörnyezetet használó Azure-fejlesztők elavult értesítést kapnak a futtatókörnyezet kivonása előtt legalább hat hónappal.
+
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

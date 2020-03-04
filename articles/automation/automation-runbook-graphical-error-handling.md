@@ -5,14 +5,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 153df77c030180402b1e30bc456d681c232c390b
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 4f975af233973ce5fac75ca46e334af5d91e8edc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226518"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246274"
 ---
-# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Hibakezelés Azure Automation grafikus runbookok
+# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Hibakezelés az Azure Automation grafikus runbookokban
 
 A Azure Automation grafikus runbook figyelembe venni kívánt alapvető tervezési elv annak a problémának az azonosítása, amelyet a runbook a végrehajtás során felmerülhet. Az ilyen helyzetek közé tartoznak a sikeres műveletek, a várt hibaállapotok és a váratlan hibafeltételek.
 
@@ -66,6 +66,6 @@ Hiba történt a folyamatok ezen tevékenységekből egyetlen **hiba-felügyelet
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ha többet szeretne megtudni a hivatkozások és a hivatkozások típusairól a grafikus runbookok, tekintse meg [az Azure Automation grafikus szerzői műveletek](automation-graphical-authoring-intro.md#links-and-workflow)című témakört.
+* További információk a hivatkozásokról és a grafikus runbookokban szereplő hivatkozástípusokról: [Grafikus létrehozás az Azure Automationben](automation-graphical-authoring-intro.md#links-and-workflow).
 
 * A runbook végrehajtásával, a runbook-feladatok figyelésével és egyéb technikai részletekkel kapcsolatos további tudnivalókért tekintse meg [a runbook végrehajtásáról szóló részt Azure Automation](automation-runbook-execution.md).

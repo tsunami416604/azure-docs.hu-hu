@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: c39df1e6af292d3774c6cba62663454bd2d8ad28
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: addb044d82429a4471e7ecd302351dd7b7eada84
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383452"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262138"
 ---
 ### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>Az Nyelvfelismerés tároló üzembe helyezése egy AK-fürtön
 
@@ -32,7 +32,7 @@ ms.locfileid: "74383452"
 
     A parancs futtatása után a következőhöz hasonló üzenetet küld:
 
-    ```console
+    ```output
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
@@ -44,7 +44,7 @@ ms.locfileid: "74383452"
 
 1. Nyissa meg a választható szövegszerkesztőt. Ez a példa a Visual Studio Code-ot használja.
 
-    ```azurecli
+    ```console
     code .
     ```
 
@@ -103,7 +103,7 @@ ms.locfileid: "74383452"
 
     Miután a parancs sikeresen alkalmazta a központi telepítési konfigurációt, a következő kimenethez hasonló üzenet jelenik meg:
 
-    ```console
+    ```output
     deployment.apps "language" created
     service "language" created
     ```
@@ -115,7 +115,7 @@ ms.locfileid: "74383452"
 
     A pod futási állapotának kimenete:
 
-    ```console
+    ```output
     NAME                         READY     STATUS    RESTARTS   AGE
     language-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
@@ -128,7 +128,7 @@ ms.locfileid: "74383452"
 
     A pod *nyelvi* szolgáltatás futási állapotának kimenete:
 
-    ```console
+    ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
     kubernetes   ClusterIP      10.0.0.1      <none>           443/TCP          2m
     language     LoadBalancer   10.0.100.64   168.61.156.180   5000:31234/TCP   2m

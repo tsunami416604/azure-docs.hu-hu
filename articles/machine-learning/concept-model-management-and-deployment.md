@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11a6a668b1028ba1640ef076606d4aeb4c3aae6e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 82866d452289a29dcdcacc12db8048acb7a351ba
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589368"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250866"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: a modell kezelése, üzembe helyezése és figyelése Azure Machine Learning
 
@@ -71,6 +71,11 @@ A regisztrált modelleket a név és a verziószám azonosítja. Ha egy modellt 
 Aktív központi telepítésben használt regisztrált modell nem törölhető.
 További információkért lásd a [modellek üzembe helyezése](how-to-deploy-and-where.md#registermodel)című szakaszt a modell regisztrálása szakaszban.
 
+### <a name="profile-models"></a>Profil modelljei
+
+A Azure Machine Learning segítségével megismerheti a szolgáltatás CPU-és memória-követelményeit, amelyeket a rendszer a modell telepítésekor hoz létre. A profilkészítés a modellt futtató szolgáltatást teszteli, és olyan információkat ad vissza, mint például a CPU-használat, a memóriahasználat és a válasz késése. Emellett egy CPU-és memória-javaslatot is biztosít az erőforrás-használat alapján.
+További információért lásd a [modellek üzembe helyezése](how-to-deploy-and-where.md#profilemodel)című szakaszt.
+
 ### <a name="package-and-debug-models"></a>Csomagok és hibakeresési modellek
 
 A modell éles környezetben történő üzembe helyezése előtt egy Docker-rendszerképbe van csomagolva. A legtöbb esetben a rendszerkép létrehozása a háttérben automatikusan megtörténik a telepítés során. Manuálisan is megadhatja a rendszerképet.
@@ -78,10 +83,6 @@ A modell éles környezetben történő üzembe helyezése előtt egy Docker-ren
 Ha a telepítés során problémákba ütközne, a hibaelhárításhoz és a hibakereséshez telepítheti a helyi fejlesztési környezetét.
 
 További információ: [modellek üzembe helyezése](how-to-deploy-and-where.md#registermodel) és [hibaelhárítása](how-to-troubleshoot-deployment.md).
-
-### <a name="validate-and-profile-models"></a>Ellenőrzés és profil modelljei
-
-A Azure Machine Learning használhatja a profilkészítést a modell üzembe helyezéséhez használt ideális CPU-és memória-beállítások meghatározásához. A modell ellenőrzése a folyamat részeként történik a profilkészítési folyamathoz megadott adatmennyiség használatával.
 
 ### <a name="convert-and-optimize-models"></a>Modellek konvertálása és optimalizálása
 

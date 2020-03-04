@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: d3353451057037e5f3fd94347a007a9d3b2c0e15
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 388f1cf0231d0a7eae7b059656186b067f537d2e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78193084"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250964"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -159,12 +159,6 @@ A Azure Machine Learningon kívül betanított modellek használatáról a köve
 
 <a name="target"></a>
 
-## <a name="choose-a-compute-target"></a>Számítási cél kiválasztása
-
-A webszolgáltatás központi telepítésének üzemeltetéséhez a következő számítási célokat vagy számítási erőforrásokat használhatja:
-
-[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
-
 ## <a name="single-versus-multi-model-endpoints"></a>Egy-és többmodelles végpontok
 Az Azure ML egyetlen végpont mögött egyetlen vagy több modell üzembe helyezését támogatja.
 
@@ -172,9 +166,9 @@ A többmodelles végpontok egy megosztott tárolót használnak több modell üz
 
 Egy E2E példa, amely bemutatja, hogyan használható több modell egyetlen tárolós végpont mögött, lásd [a következő példát](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model) :
 
-## <a name="prepare-deployment-artifacts"></a>Üzembe helyezési összetevők előkészítése
+## <a name="prepare-to-deploy"></a>Az üzembe helyezés előkészítése
 
-A modell üzembe helyezéséhez a következőkre lesz szüksége:
+A modell szolgáltatásként való üzembe helyezéséhez a következő összetevőkre van szükség:
 
 * **Bejegyzési parancsfájl & forráskód függőségei**. Ez a szkript fogadja a kéréseket, a modell használatával szerzi be a kérelmeket, és visszaadja az eredményeket.
 
@@ -187,11 +181,9 @@ A modell üzembe helyezéséhez a következőkre lesz szüksége:
     >
     >   A forgatókönyvnek megfelelő alternatív megoldás a Batch- [Előrejelzés](how-to-use-parallel-run-step.md), amely hozzáférést biztosít az adattárakhoz a pontozás során.
 
-* **Következtetési környezet**. A modell futtatásához szükséges, telepített csomag függőségeivel ellátott alaprendszerkép.
+* **Következtetési konfiguráció**. A következtetési konfiguráció a modell szolgáltatásként való futtatásához szükséges környezeti konfigurációt, bejegyzést és egyéb összetevőket határozza meg.
 
-* Az üzembe helyezett modellt üzemeltető számítási cél **üzembe helyezési konfigurációja** . Ez a konfiguráció a modell futtatásához szükséges memória-és CPU-követelményeket ismerteti.
-
-Ezek az elemek egy *következtetési konfigurációba* és egy *központi telepítési konfigurációba*vannak ágyazva. A következtetési konfiguráció a bejegyzési parancsfájlra és más függőségekre hivatkozik. Ezeket a konfigurációkat programozott módon definiálhatja, ha az SDK használatával végzi el az üzembe helyezést. A parancssori felület használatakor a JSON-fájlokban definiálhatja őket.
+Ha rendelkezik a szükséges összetevőkkel, megtekintheti azt a szolgáltatást, amely a modell üzembe helyezésének eredményeképpen jön létre a CPU-és memória-követelmények megismerése érdekében.
 
 ### <a id="script"></a>1. adja meg a bejegyzési parancsfájlt és a függőségeket
 
@@ -267,33 +259,7 @@ Ezek a típusok jelenleg támogatottak:
 * `pyspark`
 * Standard Python-objektum
 
-A séma generálásához vegye fel a `inference-schema` csomagot a Conda-környezet fájljába. A csomaggal kapcsolatos további információkért lásd: [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema).
-
-##### <a name="example-dependencies-file"></a>Példa a függőségek fájlra
-
-Az alábbi YAML egy Conda-függőségi fájlra mutat példát. Vegye figyelembe, hogy a azureml alapértelmezett értékeit kell megadnia, amelyekben a következő értékek szerepelnek: > = 1.0.45 pip-függőségként, mert tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat.
-
-```YAML
-name: project_environment
-dependencies:
-  - python=3.6.2
-  - scikit-learn=0.20.0
-  - pip:
-      # You must list azureml-defaults as a pip dependency
-    - azureml-defaults>=1.0.45
-    - inference-schema[numpy-support]
-```
-
-> [!IMPORTANT]
-> Ha a függőség a Conda és a PIP (a PyPi) szolgáltatáson keresztül érhető el, a Microsoft a Conda-verzió használatát javasolja, mivel a Conda-csomagok jellemzően olyan előre elkészített bináris fájlokkal rendelkeznek, amelyek megbízhatóbb telepítést tesznek elérhetővé.
->
-> További információ: a [Conda és a pip ismertetése](https://www.anaconda.com/understanding-conda-and-pip/).
->
-> Ha szeretné megnézni, hogy a függőség elérhető-e a Conda-on keresztül, használja a `conda search <package-name>` parancsot, vagy használja a csomag indexeit [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) és [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo).
-
-Ha automatikus séma-generálást szeretne használni, a bejegyzési parancsfájlnak importálnia kell a `inference-schema` csomagokat.
-
-Adja meg a bemeneti és kimeneti minta formátumait a `input_sample` és `output_sample` változóknál, amelyek a webszolgáltatáshoz tartozó kérések és válaszok formátumait jelölik. Ezeket a mintákat a bemeneti és kimeneti függvényekben a `run()` függvényben használhatja. A következő scikit példa a séma generálását használja.
+A séma generálásához vegye fel a `inference-schema` csomagot a függőségek fájljába. A csomaggal kapcsolatos további információkért lásd: [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema). Adja meg a bemeneti és kimeneti minta formátumait a `input_sample` és `output_sample` változóknál, amelyek a webszolgáltatáshoz tartozó kérések és válaszok formátumait jelölik. Ezeket a mintákat a bemeneti és kimeneti függvényekben a `run()` függvényben használhatja. A következő scikit példa a séma generálását használja.
 
 ##### <a name="example-entry-script"></a>Példa a bejegyzés parancsfájlra
 
@@ -485,24 +451,52 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-### <a name="2-define-your-inference-environment"></a>2. a következtetési környezet meghatározása
+### <a name="2-define-your-inference-configuration"></a>2. a következtetési konfiguráció megadása
 
-A következtetési konfiguráció azt ismerteti, hogyan konfigurálható a modell az előrejelzések készítéséhez. Ez a konfiguráció nem része a belépési parancsfájlnak. Ez a bejegyzési parancsfájlra hivatkozik, és a telepítéshez szükséges összes erőforrás megkeresésére szolgál. Ezt később, a modell telepítésekor használják.
+A következtetések konfigurálásával megtudhatja, hogyan állíthatja be a modellt tartalmazó webes szolgáltatást. Nem része a beléptetési parancsfájlnak. Ez a bejegyzési parancsfájlra hivatkozik, és a telepítéshez szükséges összes erőforrás megkeresésére szolgál. Ezt később, a modell telepítésekor használják.
 
-A következtetések konfigurálásával Azure Machine Learning környezetek határozzák meg az üzemelő példányhoz szükséges szoftver-függőségeket. A környezetek lehetővé teszik a képzéshez és a telepítéshez szükséges szoftver-függőségek létrehozását, kezelését és újrafelhasználását. Az alábbi példa bemutatja egy környezet betöltését a munkaterületről, majd azt a következtetési konfigurációval használva:
+A következtetések konfigurálásával Azure Machine Learning környezetek határozzák meg az üzemelő példányhoz szükséges szoftver-függőségeket. A környezetek lehetővé teszik a képzéshez és a telepítéshez szükséges szoftver-függőségek létrehozását, kezelését és újrafelhasználását. Létrehozhat egy környezetet egyéni függőségi fájlokból, vagy használhatja a kurátori Azure Machine Learning környezetek egyikét. Az alábbi YAML egy Conda-függőségi fájlra mutat példát. Vegye figyelembe, hogy a azureml alapértelmezett értékeit kell megadnia, amelyekben a következő értékek szerepelnek: > = 1.0.45 pip-függőségként, mert tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Ha automatikus séma-generálást szeretne használni, a belépési parancsfájlnak importálnia kell a `inference-schema` csomagokat is.
+
+```YAML
+name: project_environment
+dependencies:
+  - python=3.6.2
+  - scikit-learn=0.20.0
+  - pip:
+      # You must list azureml-defaults as a pip dependency
+    - azureml-defaults>=1.0.45
+    - inference-schema[numpy-support]
+```
+
+> [!IMPORTANT]
+> Ha a függőség a Conda és a PIP (a PyPi) szolgáltatáson keresztül érhető el, a Microsoft a Conda-verzió használatát javasolja, mivel a Conda-csomagok jellemzően olyan előre elkészített bináris fájlokkal rendelkeznek, amelyek megbízhatóbb telepítést tesznek elérhetővé.
+>
+> További információ: a [Conda és a pip ismertetése](https://www.anaconda.com/understanding-conda-and-pip/).
+>
+> Ha szeretné megnézni, hogy a függőség elérhető-e a Conda-on keresztül, használja a `conda search <package-name>` parancsot, vagy használja a csomag indexeit [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) és [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo).
+
+A függőségek fájl használatával létrehozhat egy környezeti objektumot, és mentheti a munkaterületre későbbi használatra:
+
+```python
+from azureml.core.environment import Environment
+
+
+myenv = Environment.from_conda_specification(name = 'myenv',
+                                             file_path = 'path-to-conda-specification-file'
+myenv.register(workspace=ws)
+```
+
+Az alábbi példa bemutatja egy környezet betöltését a munkaterületről, majd azt a következtetési konfigurációval használva:
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.model import InferenceConfig
 
-myenv = Environment.get(workspace=ws, name="myenv", version="1")
-inference_config = InferenceConfig(entry_script="x/y/score.py",
+
+myenv = Environment.get(workspace=ws, name='myenv', version='1')
+inference_config = InferenceConfig(entry_script='path-to-score.py',
                                    environment=myenv)
 ```
-
-További információ a környezetekről: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md).
-
-A függőségeket közvetlenül is meghatározhatja környezet használata nélkül is. Az alábbi példa bemutatja, hogyan hozhat létre olyan következtetési konfigurációt, amely egy Conda-fájlból tölt be szoftver-függőségeket:
 
 További információ a környezetekről: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md).
 
@@ -510,7 +504,7 @@ További információ a konfigurációval kapcsolatban: [InferenceConfig](https:
 
 További információ a következtetési konfigurációval rendelkező egyéni Docker-rendszerképek használatáról: [modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md).
 
-### <a name="cli-example-of-inferenceconfig"></a>CLI-példa InferenceConfig
+#### <a name="cli-example-of-inferenceconfig"></a>CLI-példa InferenceConfig
 
 [!INCLUDE [inference config](../../includes/machine-learning-service-inference-config.md)]
 
@@ -528,7 +522,93 @@ Ebben a példában a konfiguráció a következő beállításokat adja meg:
 
 További információ a következtetési konfigurációval rendelkező egyéni Docker-rendszerképek használatáról: [modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md).
 
-### <a name="3-define-your-deployment-configuration"></a>3. a telepítési konfiguráció megadása
+### <a id="profilemodel"></a>3. a modell profiljának meghatározása az erőforrás-használat meghatározásához
+
+Miután regisztrálta a modelljét, és előkészítette az üzembe helyezéséhez szükséges egyéb összetevőket, megadhatja, hogy a telepített szolgáltatásnak milyen PROCESSZORral és memóriával kell rendelkeznie. A profilkészítés a modellt futtató szolgáltatást teszteli, és olyan információkat ad vissza, mint például a CPU-használat, a memóriahasználat és a válasz késése. Emellett javaslatot tesz a processzor és a memória számára az erőforrás-használat alapján.
+
+A modell profiljának megkezdéséhez a következőkre lesz szüksége:
+* Egy regisztrált modell.
+* A beléptetési parancsfájl és a környezeti környezet definíciója alapján megjelenő következtetési konfiguráció.
+* Egyoszlopos táblázatos adatkészlet, amelyben minden sor tartalmaz egy minta típusú kérelmeket jelölő karakterláncot.
+
+> [!IMPORTANT]
+> Ezen a ponton csak olyan szolgáltatások profilkészítését támogatjuk, amelyek a kérési adatok karakterláncnak számítanak, például: karakterlánc szerializált JSON, szöveg, karakterlánc szerializált rendszerkép stb. Az adatkészlet (string) egyes sorainak tartalmát a rendszer a HTTP-kérelem törzsébe helyezi el, és elküldi a modellnek a pontozást tartalmazó szolgáltatásnak.
+
+Az alábbi példa bemutatja, hogyan hozhat létre egy bemeneti adatkészletet olyan szolgáltatás profiljához, amely a beérkező kérések adatait szerializált JSON-ként várja. Ebben az esetben létrehoztunk egy adatkészleten alapuló 100-példányt az azonos kérelem adattartalmából. A valós forgatókönyvekben azt javasoljuk, hogy használjon nagyobb adatkészleteket, amelyek különböző bemeneteket tartalmaznak, különösen akkor, ha a modell Erőforrás-kihasználtsága/viselkedése a bemenettől függ.
+
+```python
+import json
+from azureml.core import Datastore
+from azureml.core.dataset import Dataset
+from azureml.data import dataset_type_definitions
+
+input_json = {'data': [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                       [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+# create a string that can be utf-8 encoded and
+# put in the body of the request
+serialized_input_json = json.dumps(input_json)
+dataset_content = []
+for i in range(100):
+    dataset_content.append(serialized_input_json)
+dataset_content = '\n'.join(dataset_content)
+file_name = 'sample_request_data.txt'
+f = open(file_name, 'w')
+f.write(dataset_content)
+f.close()
+
+# upload the txt file created above to the Datastore and create a dataset from it
+data_store = Datastore.get_default(ws)
+data_store.upload_files(['./' + file_name], target_path='sample_request_data')
+datastore_path = [(data_store, 'sample_request_data' +'/' + file_name)]
+sample_request_data = Dataset.Tabular.from_delimited_files(
+    datastore_path, separator='\n',
+    infer_column_types=True,
+    header=dataset_type_definitions.PromoteHeadersBehavior.NO_HEADERS)
+sample_request_data = sample_request_data.register(workspace=ws,
+                                                   name='sample_request_data',
+                                                   create_new_version=True)
+```
+
+Ha már rendelkezik a mintavételi adatokat tartalmazó adatkészlettel, hozzon létre egy következtetési konfigurációt. A következtetési konfiguráció a score.py és a környezeti definíción alapul. Az alábbi példa bemutatja, hogyan hozhatja létre a következtetési konfigurációt, és hogyan futtathatja a profilkészítést:
+
+```python
+from azureml.core.model import InferenceConfig, Model
+from azureml.core.dataset import Dataset
+
+
+model = Model(ws, id=model_id)
+inference_config = InferenceConfig(entry_script='path-to-score.py',
+                                   environment=myenv)
+input_dataset = Dataset.get_by_name(workspace=ws, name='sample_request_data')
+profile = Model.profile(ws,
+            'unique_name',
+            [model],
+            inference_config,
+            input_dataset=input_dataset)
+
+profile.wait_for_completion(True)
+
+# see the result
+details = profile.get_details()
+```
+
+A következő parancs bemutatja, hogyan lehet profilt felvenni a parancssori felület használatával:
+
+```azurecli-interactive
+az ml model profile -g <resource-group-name> -w <workspace-name> --inference-config-file <path-to-inf-config.json> -m <model-id> --idi <input-dataset-id> -n <unique-name>
+```
+
+## <a name="deploy-to-target"></a>Üzembe helyezés célhelyre
+
+Az üzemelő példány a konfiguráció központi telepítési konfigurációjának használatával helyezi üzembe a modelleket. A telepítési folyamat a számítási céltól függetlenül hasonló. Az AK-ra való üzembe helyezés némileg eltérő, mert meg kell adnia egy hivatkozást az AK-fürthöz.
+
+### <a name="choose-a-compute-target"></a>Számítási cél kiválasztása
+
+A webszolgáltatás központi telepítésének üzemeltetéséhez a következő számítási célokat vagy számítási erőforrásokat használhatja:
+
+[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+### <a name="define-your-deployment-configuration"></a>A telepítési konfiguráció megadása
 
 A modell üzembe helyezése előtt meg kell határoznia a telepítési konfigurációt. *A központi telepítési konfiguráció a webszolgáltatást futtató számítási célra vonatkozik.* Ha például helyileg helyez üzembe egy modellt, meg kell adnia azt a portot, ahol a szolgáltatás fogadja a kérelmeket. A telepítési konfiguráció nem része a belépési parancsfájlnak. A rendszer a modell és a beléptetési parancsfájlt futtató számítási cél jellemzőinek meghatározására szolgál.
 
@@ -536,7 +616,7 @@ Előfordulhat, hogy a számítási erőforrást is létre kell hoznia, ha péld�
 
 Az alábbi táblázat az egyes számítási célkitűzések központi telepítési konfigurációjának létrehozásához nyújt példát:
 
-| Számítási célt | Üzembe helyezési konfiguráció – példa |
+| Számítási cél | Üzembe helyezési konfiguráció – példa |
 | ----- | ----- |
 | Helyi: | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
@@ -547,10 +627,6 @@ A helyi, Azure Container Instances és az AK-alapú webszolgáltatások osztály
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
-
-## <a name="deploy-to-target"></a>Üzembe helyezés célhelyre
-
-Az üzemelő példány a konfiguráció központi telepítési konfigurációjának használatával helyezi üzembe a modelleket. A telepítési folyamat a számítási céltól függetlenül hasonló. Az AK-ra való üzembe helyezés némileg eltérő, mert meg kell adnia egy hivatkozást az AK-fürthöz.
 
 ### <a name="securing-deployments-with-ssl"></a>Központi telepítések biztonságossá tétele SSL használatával
 
@@ -1071,12 +1147,12 @@ A regisztrált modellek törléséhez használja a `model.delete()`.
 
 További információ: a [webszolgáltatások dokumentációja. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) és [Model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)
 * [Biztonságos Azure Machine Learning webszolgáltatások SSL használatával](how-to-secure-web-service.md)
-* [Webszolgáltatásként üzembe helyezett Azure Machine Learning-modell felhasználása](how-to-consume-web-service.md)
+* [Azure Machine Learning-modell felhasználása webszolgáltatásként](how-to-consume-web-service.md)
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)
 

@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: e645be5ddd51a4fe7e7610e7f639407d5638f746
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 3c21e2fcdde9bffac91af56d49dfa0bf336e8c0c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920930"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246235"
 ---
 # <a name="secure-assets-in-azure-automation"></a>Eszközök védelme Azure Automation
 
@@ -30,9 +30,9 @@ Minden biztonságos eszköz titkosítva van, és a Azure Automation tárolja az 
 
 ## <a name="customer-managed-keys-with-key-vault-preview"></a>Ügyfél által felügyelt kulcsok Key Vaultsal (előzetes verzió)
 
-Az Automation-fiók szintjén a saját kulcsaival kezelheti a Azure Automation biztonságos eszközeinek titkosítását. Amikor az Automation-fiók szintjén megad egy ügyfél által felügyelt kulcsot, a kulcs az Automation-fiókhoz tartozó fiók titkosítási kulcsának védelmére és vezérlésére szolgál, amely viszont az összes biztonságos eszköz titkosítására és visszafejtésére szolgál. Az ügyfél által felügyelt kulcsok nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. A biztonságos eszközök védelméhez használt titkosítási kulcsokat is naplózhatja. 
+Az Automation-fiókhoz tartozó biztonságos eszközök titkosítását a saját kulcsaival kezelheti. Amikor az Automation-fiók szintjén megad egy ügyfél által felügyelt kulcsot, a kulcs az Automation-fiókhoz tartozó fiók titkosítási kulcsának megvédésére és hozzáférés-vezérlésére szolgál. Ez a funkció az összes biztonságos eszköz titkosítására és visszafejtésére szolgál. Az ügyfél által felügyelt kulcsok nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. A biztonságos eszközök védelméhez használt titkosítási kulcsokat is naplózhatja.
 
-Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vaultt kell használnia. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához.  További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md)
+Az ügyfél által felügyelt kulcsok tárolásához használja a Azure Key Vault. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához.  További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md)
 
 ## <a name="enable-customer-managed-keys-for-an-automation-account"></a>Ügyfél által felügyelt kulcsok engedélyezése Automation-fiókhoz
 
@@ -40,32 +40,34 @@ Ha az Automation-fiókhoz az ügyfél által felügyelt kulcsokkal engedélyezi 
 
 Az új Automation-fiók mindig a Microsoft által felügyelt kulcsokkal van titkosítva. A fiók létrehozásakor nem lehet engedélyezni az ügyfél által felügyelt kulcsokat. Az ügyfél által felügyelt kulcsok Azure Key Vault tárolódnak, és a kulcstárolót olyan hozzáférési házirendekkel kell kiépíteni, amelyek kulcsfontosságú engedélyeket biztosítanak az Automation-fiókhoz társított felügyelt identitásnak. A felügyelt identitás csak a Storage-fiók létrehozása után érhető el.
 
-Ha módosítja a Azure Automation biztonságos adattitkosításhoz használt kulcsot az ügyfél által felügyelt kulcsok engedélyezésével vagy letiltásával, a kulcs verziójának frissítésével vagy más kulcs megadásával, akkor a fiók titkosítási kulcsának titkosítása, de a biztonságos eszközök a Azure Automation-fiókban nem szükséges újra titkosítani.
+Ha módosítja a Azure Automation biztonságos adattitkosításhoz használt kulcsot, az ügyfél által felügyelt kulcsok engedélyezésével vagy letiltásával, a kulcs verziójának frissítésével vagy egy másik kulcs megadásával, a fiók titkosítási kulcsának titkosítása megváltozik, a biztonságos eszközök pedig a Azure Automation-fiókját nem szükséges újra titkosítani.
 
 Az alábbi három szakasz ismerteti az Automation-fiókokhoz tartozó ügyfél által felügyelt kulcsok engedélyezésének mechanikaát. 
 
 > [!NOTE] 
-> Az ügyfél által felügyelt kulcsok engedélyezéséhez jelenleg Azure Automation REST API hívásokat kell tennie az 2020-01-13-es API-verzióval – előzetes verzió
+> Az ügyfél által felügyelt kulcsok engedélyezéséhez Azure Automation REST API hívásokat kell tennie az 2020-01-13-es API-verzióval – előzetes verzió
 
 ### <a name="pre-requisites-for-using-customer-managed-keys-in-azure-automation"></a>Az ügyfél által felügyelt kulcsok Azure Automation való használatának előfeltételei
 
-Az ügyfél által felügyelt kulcsok Automation-fiókhoz való engedélyezése előtt meg kell győződnie arról, hogy teljesülnek az alábbi előfeltételek
+Az ügyfél által felügyelt kulcsok Automation-fiókhoz való engedélyezése előtt győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 
  - Az ügyfél-összefoglalt kulcsot egy Azure Key Vault tárolja. 
- - Engedélyeznie kell a **Soft delete** és a No **Purge** tulajdonságot a Key vaulton. Ezek a funkciók a kulcsok helyreállításának engedélyezéséhez szükségesek a véletlen törlés esetén.
+ - Engedélyezze mind a helyreállítható **törlést** , sem a kulcstárolóban lévő tulajdonságok **eltávolítását** . Ezek a funkciók a kulcsok helyreállításának engedélyezéséhez szükségesek a véletlen törlés esetén.
  - Azure Automation titkosításhoz csak RSA-kulcsok támogatottak. A kulcsokkal kapcsolatos további információkért tekintse meg [a Azure Key Vault kulcsok, titkos kódok és tanúsítványok](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)című témakört.
 - Az Automation-fiók és a kulcstartó különböző előfizetésekben lehet, de ugyanabban a Azure Active Directory bérlőben kell lennie.
 
 ### <a name="assign-an-identity-to-the-automation-account"></a>Identitás kiosztása az Automation-fiókhoz
 
-Ha az ügyfél által felügyelt kulcsokat Automation-fiókkal szeretné használni, az Automation-fióknak hitelesítenie kell az ügyfél által felügyelt kulcsokat tároló kulcstartón. A Azure Automation rendszerhez rendelt felügyelt identitásokat használ a fiók hitelesítéséhez Key Vault használatával. A felügyelt identitásokkal kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitása?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+Ha az ügyfél által felügyelt kulcsokat Automation-fiókkal szeretné használni, az Automation-fióknak hitelesítenie kell az ügyfél által felügyelt kulcsokat tároló kulcstartón. A Azure Automation rendszerhez rendelt felügyelt identitásokat használ a fiók hitelesítéséhez Azure Key Vault használatával. A felügyelt identitásokkal kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitása?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-Egy rendszerhez rendelt felügyelt identitás konfigurálása az Automation-fiókhoz az alábbi REST API hívásával
+A következő REST API hívásával konfigurálja a rendszerhez rendelt felügyelt identitást az Automation-fiókhoz:
 
 ```http
 PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
 ```
-A kérés törzse
+
+Kérés törzse:
+
 ```json
 { 
  "identity": 
@@ -73,9 +75,9 @@ A kérés törzse
   "type": "SystemAssigned" 
   } 
 }
-```    
+```
 
-A válaszban visszaadja az Automation-fiók rendszerhez rendelt identitását
+Az Automation-fiók rendszerhez rendelt identitását a következőhöz hasonló válasz adja vissza:
 
 ```json
 {
@@ -93,14 +95,15 @@ A válaszban visszaadja az Automation-fiók rendszerhez rendelt identitását
 
 ### <a name="configure-the-key-vault-access-policy"></a>A Key Vault hozzáférési házirend konfigurálása
 
-Ha egy felügyelt identitás hozzá van rendelve az Automation-fiókhoz, akkor az ügyfél által felügyelt kulcsok tárolására Key Vault hozzáférést konfigurálhat. Azure Automation az ügyfél által felügyelt kulcsokra vonatkozó **Get**, **Recover**, **wrapKey**és **UnwrapKey** szükséges.
+Ha egy felügyelt identitás hozzá van rendelve az Automation-fiókhoz, az ügyfél által felügyelt kulcsokat tároló kulcstartó elérését konfigurálja. Azure Automation az ügyfél által felügyelt kulcsokra vonatkozó **Get**, **Recover**, **wrapKey**és **UnwrapKey** szükséges.
 
-Ilyen hozzáférési szabályzat a következő REST API hívással állítható be.
+Az ilyen hozzáférési szabályzatok a következő REST API hívásával állíthatók be:
 
 ```http
 PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-group/providers/Microsoft.KeyVault/vaults/sample-vault/accessPolicies/add?api-version=2018-02-14
 ```
-A kérés törzse
+
+Kérés törzse:
 
 ```json
 {
@@ -125,17 +128,18 @@ A kérés törzse
 }
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > A **tenantId** és a **objectId** mezőket az **Identity. tenantId** és **Identity. principalId** értékekkel kell megadni az Automation-fiók felügyelt identitásának válasza alapján.
 
 ### <a name="change-the-configuration-of-automation-account-to-use-customer-managed-key"></a>Az Automation-fiók konfigurációjának módosítása az ügyfél által felügyelt kulcs használatára
 
-Végül az alábbi REST API hívást használva átválthatja az Automation-fiókot a Mikroszkóp által felügyelt kulcsokból az ügyfél által felügyelt kulcsokra.
+Végezetül átválthatja az Automation-fiókját a Mikroszkóp által felügyelt kulcsokból az ügyfél által felügyelt kulcsokra az alábbi REST API hívás használatával:
 
 ```http
 PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
 ```
-A kérés törzse
+
+Kérés törzse:
 
 ```json
  {
@@ -151,6 +155,7 @@ A kérés törzse
     }
   }
 ```
+
 Mintaválasz
 
 ```json
@@ -177,9 +182,9 @@ Mintaválasz
 
 ### <a name="rotate-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok elforgatása
 
-A megfelelőségi szabályzatok alapján Azure Key Vault elforgathatja az ügyfél által felügyelt kulcsot. A kulcs elforgatásakor frissítenie kell az Automation-fiókot az új kulcs URI-azonosítójának használatára. 
+A megfelelőségi szabályzatok alapján Azure Key Vault elforgathatja az ügyfél által felügyelt kulcsot. A kulcs elforgatásakor frissítenie kell az Automation-fiókot az új kulcs URI-azonosítójának használatára.
 
-A kulcs elforgatása nem aktiválja a biztonságos eszközök újratitkosítását az Automation-fiókban. Nincs szükség további műveletre a felhasználótól.
+A kulcs elforgatása nem aktiválja a biztonságos eszközök újratitkosítását az Automation-fiókban. Nincs szükség további műveletre.
 
 ### <a name="revoke-access-to-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok hozzáférésének visszavonása
 
@@ -187,7 +192,10 @@ Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához h
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md) 
+- [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md)
+
 - [Az Azure Automation tanúsítvány adategységei](shared-resources/certificates.md)
+
 - [Az Azure Automation hitelesítési adategységei](shared-resources/credentials.md)
+
 - [Az Azure Automation változó adategységei](shared-resources/variables.md)
