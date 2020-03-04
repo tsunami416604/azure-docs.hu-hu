@@ -1,16 +1,16 @@
 ---
-title: Hibaelhárítás
+title: Hibakeresés
 services: azure-dev-spaces
 ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 2b5a6f14899ec41b1740563f4e8174f65aa679c7
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 0cf8eb7b07622a989bc78637b1601ba68b9b5f6f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197997"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251121"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
 
@@ -44,7 +44,7 @@ Vezérlő törléséhez használja az Azure dev Spaces CLI-t. A vezérlőt nem l
 
 Ha nem telepítette az Azure dev Spaces CLI-t, először telepítse azt a következő parancs használatával, majd törölje a vezérlőt:
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
@@ -80,8 +80,8 @@ A probléma megoldásához [frissítse a szennyező konfigurációt](../aks/oper
 
 Az Azure dev Spaces parancssori felületének frissítése megváltoztatta a telepítési útvonalat. Ha a 2.0.63-nél korábbi Azure CLI-verziót használja, akkor ez a hiba látható. Az Azure CLI verziójának megjelenítéséhez használja a `az --version`.
 
-```bash
-$ az --version
+```azurecli
+az --version
 azure-cli                         2.0.60 *
 ...
 ```
@@ -223,7 +223,7 @@ A Visual Studióban:
 
 A szolgáltatás *nem indítható el* , ha a szolgáltatás újrafuttatására tett kísérletet követően eltávolította a szolgáltatást, majd újból létrehozta az ehhez a fürthöz társított Azure dev Spaces-vezérlőt. Ebben az esetben a részletes kimenet a következő szöveget tartalmazza:
 
-```cmd
+```output
 Installing Helm chart...
 Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
 Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
@@ -329,7 +329,7 @@ A probléma megoldása:
 1. Keresse meg a (z)% ProgramFiles%/Microsoft SDKs\Azure\Azure dev Spaces CLI-t a `azds.exe`. Ha nincs, adott helyen hozzáadása a PATH környezeti változóhoz.
 2. Ha `azds.exe` nincs telepítve, futtassa a következő parancsot:
 
-    ```cmd
+    ```azurecli
     az aks use-dev-spaces -n <cluster-name> -g <resource-group>
     ```
 
@@ -337,13 +337,13 @@ A probléma megoldása:
 
 Az Azure fejlesztői tárhelyek kezeléséhez *tulajdonosi* vagy *közreműködői* hozzáférésre van szüksége az Azure-előfizetésben. Ha a fejlesztői helyeket szeretné kezelni, és nem rendelkezik *tulajdonosi* vagy *közreműködői* hozzáféréssel a társított Azure-előfizetéshez, akkor egy engedélyezési hiba jelenhet meg. Például:
 
-```console
+```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
 ```
 
 A probléma megoldásához az Azure-előfizetéshez *tulajdonosi* vagy *közreműködői* hozzáféréssel rendelkező fiók használatával manuálisan regisztrálja az `Microsoft.DevSpaces` névteret:
 
-```console
+```azurecli
 az provider register --namespace Microsoft.DevSpaces
 ```
 
@@ -359,7 +359,7 @@ Ez a probléma a fürt *összes névterében* hatással lehet a hüvelyekre, bel
 
 A probléma megoldásához [frissítse a dev Spaces CLI-t a legújabb verzióra](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) , majd törölje a *Azds InitializerConfiguration* az Azure dev Spaces-vezérlőből:
 
-```bash
+```azurecli
 az aks get-credentials --resource-group <resource group name> --name <cluster name>
 kubectl delete InitializerConfiguration azds
 ```
@@ -456,9 +456,12 @@ Lehet, hogy van egy meglévő AK-fürt és-névtér, amelyen fut a hüvely, ahol
 
 Ha engedélyezni szeretné az Azure dev Spaces-t egy meglévő névtérben egy AK-fürtben, futtassa `use-dev-spaces` és a `kubectl` használatával indítsa újra az összes hüvelyt a névtérben.
 
-```console
+```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space my-namespace --yes
+```
+
+```console
 kubectl -n my-namespace delete pod --all
 ```
 
