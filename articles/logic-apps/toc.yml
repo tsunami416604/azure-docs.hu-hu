@@ -109,7 +109,7 @@
           href: connect-virtual-network-vnet-isolated-environment.md
         - name: Több integrációs szolgáltatási környezet hozzáférésének beállítása
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
-        - name: Összetevők felvétele integrációs szolgáltatási környezetekbe
+        - name: Erőforrás hozzáadása integrációs szolgáltatási környezetekhez
           href: add-artifacts-integration-service-environment-ise.md
         - name: Ügyfél által felügyelt titkosítási kulcsok beállítása integrációs szolgáltatási környezetekben
           href: customer-managed-keys-integration-service-environment.md
@@ -221,8 +221,6 @@
           href: ../connectors/connectors-create-api-ftp.md
         - name: GitHub
           href: ../connectors/connectors-create-api-github.md
-        - name: Google Drive
-          href: ../connectors/connectors-create-api-googledrive.md
         - name: HTTP
           href: ../connectors/connectors-native-http.md
         - name: HTTP + Swagger

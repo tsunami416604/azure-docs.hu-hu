@@ -103,12 +103,14 @@
           href: live-event-cloud-dvr.md
         - name: Élő átírás
           href: live-transcription.md
-        - name: Szolgáltatások összehasonlítása
+        - name: Élőesemény-típusok összehasonlítása
           href: live-event-types-comparison.md
         - name: Állapotok és számlázás
           href: live-event-states-billing.md
         - name: Késés
           href: live-event-latency.md
+        - name: Váljon helyszíni kódoló partnerré
+          href: become-on-premises-encoder-partner.md
         - name: Élő események hibakódjai
           href: live-event-error-codes.md
     - name: Csomagolás és kézbesítés

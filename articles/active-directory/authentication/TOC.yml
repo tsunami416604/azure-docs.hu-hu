@@ -13,6 +13,8 @@
       href: tutorial-enable-azure-mfa.md
     - name: Jelszóvisszaíró engedélyezése a helyszíni rendszerhez
       href: tutorial-enable-sspr-writeback.md
+    - name: Tiltott jelszavak egyéni listáinak konfigurálása
+      href: tutorial-configure-custom-password-protection.md
     - name: Az Azure Identity Protection integrálása
       href: tutorial-risk-based-sspr-mfa.md
 - name: Alapelvek
@@ -108,8 +110,6 @@
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
     - name: Azure AD jelszóvédelem
       items:
-        - name: A tiltott jelszavak listájának konfigurálása
-          href: howto-password-ban-bad-configure.md
         - name: Helyszíni integráció
           items:
             - name: Azure AD jelszóvédelem üzembe helyezése
