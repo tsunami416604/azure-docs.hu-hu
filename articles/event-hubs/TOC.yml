@@ -203,9 +203,9 @@
         - name: Ügyfélkódtár
           items:
             - name: Migrálás Microsoft.Azure.Event Hubsból Azure.Messaging.EventHubsba
-              href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md'
+              href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md'
             - name: Azure.Messaging.EventHubs (legújabb)
-              href: /dotnet/api/azure.messaging.eventhubs?view=azure-dotnet-preview
+              href: /dotnet/api/azure.messaging.eventhubs
             - name: Microsoft.Azure.EventHubs (örökölt)
               href: /dotnet/api/microsoft.azure.eventhubs
             - name: Microsoft.ServiceBus.Messaging (örökölt)
@@ -231,9 +231,9 @@
         - name: Ügyfélkódtár
           items:
             - name: azure-eventhub 5-ös verzió
-              href: /python/api/azure-eventhub/?view=azure-python-preview
+              href: /python/api/overview/azure/eventhub/client
             - name: azure-eventhub 1-es verzió
-              href: /python/api/azure-eventhub/?view=azure-python
+              href: /python/api/azure-eventhub/?view=azure-python-previous
         - name: Felügyeleti könyvtár
           href: /python/api/overview/azure/event-hub?view=azure-python
     - name: JavaScript
@@ -243,9 +243,9 @@
         - name: Ügyfélkódtár
           items:
             - name: azure/eventhubs 5-ös verzió
-              href: /javascript/api/@azure/event-hubs/?view=azure-node-preview
-            - name: azure/eventhubs 2-es verzió
               href: /javascript/api/@azure/event-hubs/?view=azure-node-latest
+            - name: azure/eventhubs 2-es verzió
+              href: /javascript/api/@azure/event-hubs/?view=azure-node-legacy
         - name: Felügyeleti könyvtár
           href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
     - name: REST

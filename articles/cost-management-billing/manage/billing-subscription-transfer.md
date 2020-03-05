@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3eb76535a8047840a577f5b044001d85c20b13f0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188391"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245391"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
 
@@ -45,7 +45,7 @@ A Nagyvállalati Szerződéssel (EA) rendelkező ügyfelek esetében a vállalat
 
     > [!IMPORTANT]
     >
-    > Ha úgy dönt, hogy átadja az előfizetést az új fiók Azure AD-bérlőjére, azzal véglegesen eltávolítja az előfizetés erőforrásainak kezeléséhez szükséges összes [szerepköralapú hozzáférés-vezérlési (RBAC)](../../role-based-access-control/overview.md) hozzárendelést. Csak az új fiók átadási kérelmet elfogadó felhasználójának lesz hozzáférése az előfizetés erőforrásainak kezeléséhez. További információért lásd az [előfizetés egy másik Azure AD-bérlőn lévő felhasználónak történő átadását](../../cognitive-services/acoustics/known-issues.md) ismertető cikket. Másik lehetőségként törölheti az Előfizetés Azure AD-bérlője jelölőnégyzet jelölését, így anélkül adhatja át a számlázási tulajdonjogot az új fiók bérlőjének, hogy áthelyezné az előfizetést. Ha ezt a módszert választja, megtarthatja az Azure-erőforrások kezeléséhez szükséges meglévő RBAC-engedélyeket.
+    > Ha úgy dönt, hogy átadja az előfizetést az új fiók Azure AD-bérlőjére, azzal véglegesen eltávolítja az előfizetés erőforrásainak kezeléséhez szükséges összes [szerepköralapú hozzáférés-vezérlési (RBAC)](../../role-based-access-control/overview.md) hozzárendelést. Csak az új fiók átadási kérelmet elfogadó felhasználójának lesz hozzáférése az előfizetés erőforrásainak kezeléséhez. További információért lásd az [előfizetés egy másik Azure AD-bérlőn lévő felhasználónak történő átadását](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories) ismertető cikket. Másik lehetőségként törölheti az Előfizetés Azure AD-bérlője jelölőnégyzet jelölését, így anélkül adhatja át a számlázási tulajdonjogot az új fiók bérlőjének, hogy áthelyezné az előfizetést. Ha ezt a módszert választja, megtarthatja az Azure-erőforrások kezeléséhez szükséges meglévő RBAC-engedélyeket.
 
     ![Átadási kérelem küldése lap](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 

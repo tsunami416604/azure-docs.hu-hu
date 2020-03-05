@@ -356,6 +356,34 @@
           href: move-across-regions-publicip-portal.md
         - name: Nyilvános IP-k – PowerShell
           href: move-across-regions-publicip-powershell.md
+    - name: Hibaelhárítás
+      items:
+        - name: Virtuális hálózatok közötti társviszony-létesítési problémák hibaelhárítása
+          href: virtual-network-troubleshoot-peering-issues.md
+        - name: VNet- vagy VPN-kapcsolatok konfigurálása és ellenőrzése
+          href: virtual-network-configure-vnet-connections.md
+        - name: Network security groups (Hálózati biztonsági csoportok)
+          href: diagnose-network-traffic-filter-problem.md
+        - name: Útvonalak
+          href: diagnose-network-routing-problem.md
+        - name: Az átviteli sebesség tesztelése
+          href: virtual-network-bandwidth-testing.md
+        - name: Virtuális gép hálózati késleltetésének tesztelése
+          href: virtual-network-test-latency.md
+        - name: Nem lehet törölni a virtuális hálózatokat
+          href: virtual-network-troubleshoot-cannot-delete-vnet.md
+        - name: Virtuális gépek közötti kapcsolódási problémák
+          href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
+        - name: PTR konfigurálása SMTP szalagcím-ellenőrzésre
+          href: create-ptr-for-smtp-service.md
+        - name: Hibaelhárítási ellenőrzőlista virtuális berendezésekhez
+          href: virtual-network-troubleshoot-nva.md
+        - name: Kimenő SMTP-kapcsolat hibaelhárítása
+          href: troubleshoot-outbound-smtp-connectivity.md
+        - name: Információ a 168.63.129.16 IP-címről
+          href: what-is-ip-address-168-63-129-16.md
+        - name: Azure-beli virtuális gép csatlakozási problémáinak elhárítása
+          href: troubleshoot-vm-connectivity.md
     - name: Klasszikus üzembe helyezés
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
 - name: Referencia

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 5e7d01c5383898fb14f57188cd1bee7ea64e8263
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 5e1117bdefc4916fedc5c316632641d77c2f09d3
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200965"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206027"
 ---
 # <a name="understand-and-work-with-scopes"></a>A hatókörök ismertetése és használata
 
@@ -65,7 +65,7 @@ A Cost Management-közreműködő az ajánlott, minimális jogosultsághoz tarto
 
 - **Művelet a költségvetés túllépése esetén** – A Cost Management-közreműködőknek hozzáférésre van szükségük a műveletcsoportok létrehozásához és/vagy kezeléséhez is a túllépésre való automatikus reagálás érdekében. Vegye fontolóra a [Monitorozási közreműködő](../../role-based-access-control/built-in-roles.md#monitoring-contributor) megadását egy olyan erőforráscsoportnak, amely magában foglalja a költségvetési küszöbértékek túllépésekor alkalmazandó műveletcsoportot. A konkrét műveletek automatizálása további szerepköröket igényel a felhasznált konkrét szolgáltatásokhoz, például: Automation és Azure Functions.
 - **Költségadatok exportálásának ütemezése** – A Cost Management-közreműködőknek hozzáférésre van szükségük a tárfiókok kezeléséhez is, hogy beütemezhessék az adatok tárfiókba másolását célzó exportálást. Vegye fontolóra a [Tárfiók-közreműködő](../../role-based-access-control/built-in-roles.md#storage-account-contributor) megadását egy olyan erőforráscsoportnak, amely magában foglalja azt a tárfiókot, ahová a költségadatokat exportálják.
-- **A költségmegtakarítási javaslatok megtekintése** – Alapértelmezés szerint a Cost Management-olvasók és a Cost Management-közreműködők számára is elérhető a költségjavaslatok *megtekintése*. Azonban a költségjavaslatokkal kapcsolatos műveletekhez való hozzáféréshez az egyes erőforrásokhoz kell hozzáféréssel rendelkezni. Vegye fontolóra egy [szolgáltatásspecifikus szerepkör](../../role-based-access-control/built-in-roles.md#built-in-role-descriptions) megadását, ha költségalapú javaslattal kapcsolatos műveletet szeretne elvégezni.
+- **A költségmegtakarítási javaslatok megtekintése** – Alapértelmezés szerint a Cost Management-olvasók és a Cost Management-közreműködők számára is elérhető a költségjavaslatok *megtekintése*. Azonban a költségjavaslatokkal kapcsolatos műveletekhez való hozzáféréshez az egyes erőforrásokhoz kell hozzáféréssel rendelkezni. Vegye fontolóra egy [szolgáltatásspecifikus szerepkör](../../role-based-access-control/built-in-roles.md#descriptions-and-ids) megadását, ha költségalapú javaslattal kapcsolatos műveletet szeretne elvégezni.
 
 ## <a name="enterprise-agreement-scopes"></a>A Nagyvállalati Szerződés hatókörei
 
