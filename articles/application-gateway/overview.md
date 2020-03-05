@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/23/2019
+ms.date: 03/03/2020
 ms.author: victorh
-ms.openlocfilehash: 1e80fa23519104c3c62f6a0bf5d65cbbe0848ae2
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: f3621feb688b3b257cd4f685a9be306d75700f4a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443822"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273611"
 ---
 # <a name="what-is-azure-application-gateway"></a>Mi az Azure Application Gateway?
 
@@ -40,15 +40,15 @@ Az Application Gateway támogatja az SSL/TLS-lezárást az átjárón, amely ut�
 
 ## <a name="autoscaling"></a>Automatikus skálázás
 
-Az Standard_v2 vagy WAF_v2 SKU alatt Application Gateway vagy WAF üzemelő példányok támogatják az automatikus skálázást, és a forgalmi terhelési minták módosításán alapuló vertikális fel-vagy leskálázást végeznek. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. További információ a Application Gateway Standard_v2 és WAF_v2 funkcióival kapcsolatban: [autoskálázás v2 SKU](application-gateway-autoscaling-zone-redundant.md).
+A Application Gateway Standard_v2 támogatja az automatikus skálázást, és a forgalmi terhelési minták módosításán alapuló vertikális fel-vagy leskálázást végez. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. További információ a Application Gateway Standard_v2 funkcióival kapcsolatban: [autoskálázás v2 SKU](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="zone-redundancy"></a>Zóna redundancia
 
-Az Standard_v2 vagy WAF_v2 SKU alatt Application Gateway vagy WAF-alapú telepítések több Availability Zonesra is kiterjedhetnek, így jobb hibatűrést biztosítanak, és nem kell külön Application Gateway-átjárókat kiépíteni minden zónában.
+Egy Application Gateway Standard_v2 több Availability Zonesra terjedhet ki, így jobb hibatűrést biztosít, és nem kell külön Application Gateway-átjárókat kiépíteni minden zónában.
 
 ## <a name="static-vip"></a>Statikus VIP
 
-Az Application Gateway VIP Standard_v2 vagy WAF_v2 SKU-ban kizárólag a statikus VIP-típust támogatja. Ez biztosítja, hogy az Application gatewayhez társított virtuális IP-cím még a Application Gateway élettartama alatt sem változik.
+Az Application Gateway Standard_v2 SKU kizárólag a statikus VIP-típust támogatja. Ez biztosítja, hogy az Application gatewayhez társított virtuális IP-cím még a Application Gateway élettartama alatt sem változik.
 
 ## <a name="web-application-firewall"></a>Web application firewall (Webalkalmazási tűzfal)
 
@@ -75,7 +75,7 @@ További információ: [URL-alapú útválasztás Application Gatewaysal](https:
 
 ## <a name="multiple-site-hosting"></a>Több hely üzemeltetése
 
-A többhelyes üzemeltetéssel egynél több webhelyet konfigurálhat ugyanazon az Application Gateway-példányon. Ez a funkció lehetővé teszi az üzemelő példányok hatékonyabb topológiájának konfigurálását azáltal, hogy 100 webhelyeket ad hozzá egy Application Gateway vagy 40 a WAF (az optimális teljesítmény érdekében). Mindegyik webhelyet a saját készletéhez lehet irányítani. Az Application Gateway például a `contoso.com` és a `fabrikam.com` forgalmát is kiszolgálhatja a ContosoServerPool és a FabrikamServerPool kiszolgálókészletekből.
+A többhelyes üzemeltetéssel egynél több webhelyet konfigurálhat ugyanazon az Application Gateway-példányon. Ez a funkció lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 webhelyet ad hozzá egy Application Gatewayhoz (az optimális teljesítmény érdekében). Mindegyik webhelyet a saját készletéhez lehet irányítani. Az Application Gateway például a `contoso.com` és a `fabrikam.com` forgalmát is kiszolgálhatja a ContosoServerPool és a FabrikamServerPool kiszolgálókészletekből.
 
 A `http://contoso.com` iránti kérelmek a ContosoServerPoolba, míg a `http://fabrikam.com` felé irányuló kérelmek a FabrikamServerPoolba vannak továbbítva.
 
@@ -135,9 +135,9 @@ További információt a HTTP- [fejlécek újraírása](rewrite-http-headers.md)
 
 ## <a name="sizing"></a>Méretezés
 
-Application Gateway Standard_v2 és WAF_v2 SKU konfigurálható automatikus skálázáshoz vagy rögzített méretű központi telepítésekhez. Ezek a SKU-ket nem biztosítanak különböző méretű példányok. A v2 teljesítményével és díjszabásával kapcsolatos további információkért lásd: automatikus [skálázás v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
+Application Gateway Standard_v2 konfigurálható automatikus skálázáshoz vagy rögzített méretű központi telepítésekhez. Ez az SKU nem biztosít különböző méretű példányokat. A v2 teljesítményével és díjszabásával kapcsolatos további információkért lásd: automatikus [skálázás v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
 
-A Application Gateway standard és WAF SKU jelenleg három méretben érhető el: **kicsi**, **közepes**és **nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
+A standard szintű Application Gateway három méretben érhető el: **kicsi**, **közepes**és **nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
 
 Az Application Gateway korlátainak teljes listáját lásd: [Az Application Gateway szolgáltatási korlátozásai](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 

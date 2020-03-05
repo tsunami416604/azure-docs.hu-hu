@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre függvényt a parancssorból, maj
 ms.date: 01/28/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c8648a0bdfaeeb8a89ea24b0f49610e5bf5c0491
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2a02e1481d975f877508bde02948bc65561b9f13
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190852"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272741"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: olyan függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
 
@@ -364,7 +364,7 @@ Futtassa [`curl`](https://curl.haxx.se/) a **MEGhívási URL-címmel**, és ille
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha folytatja a következő lépéssel, [vegyen fel egy Azure Storage-üzenetsor kimeneti kötését](functions-add-output-binding-storage-queue-python.md), tartsa meg az összes erőforrását, mivel a már elkészült dolgokra épít.
+Ha folytatja a következő lépéssel, [vegyen fel egy Azure Storage-üzenetsor kimeneti kötését](functions-add-output-binding-storage-queue-cli.md), tartsa meg az összes erőforrását, mivel a már elkészült dolgokra épít.
 
 Ellenkező esetben a következő paranccsal törölheti az erőforráscsoportot és az összes benne lévő erőforrást, hogy elkerülje a további költségek felmerülését.
 
@@ -372,7 +372,7 @@ Ellenkező esetben a következő paranccsal törölheti az erőforráscsoportot 
 az group delete --name AzureFunctionsQuickstart-rg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás Azure Storage-várólistához](functions-add-output-binding-storage-queue-cli.md)

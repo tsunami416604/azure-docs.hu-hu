@@ -1,19 +1,19 @@
 ---
 title: Mi az az interaktív lekérdezés az Azure HDInsight?
 description: Bevezetés az interaktív lekérdezésbe, más néven Apache Hive LLAP, az Azure HDInsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 09/17/2019
-ms.openlocfilehash: f03797a8c7df1609a32f934bc090c7adc899aa9a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.custom: hdinsightactive
+ms.date: 03/03/2020
+ms.openlocfilehash: e133e08e333cb478269a93cce963566e195d6949
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198922"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271955"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Mi az az interaktív lekérdezés az Azure HDInsight-ben?
 
@@ -36,35 +36,19 @@ További információ a HDInsight-fürtök létrehozásáról: [Apache Hadoop-f�
 
 A kaptár-lekérdezések végrehajtásához a következő lehetőségek állnak rendelkezésre:
 
-* A Microsoft Power BI használata
-
-    Lásd: az [interaktív lekérdezési Apache Hive az Azure-beli Power BIekkel való HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) lásd: [Big Data megjelenítése az Azure HDInsight Power bi](../hadoop/apache-hadoop-connect-hive-power-bi.md).
-
-* A Visual Studio használata
-
-    Lásd: [Kapcsolódás az Azure HDInsight és Apache Hive lekérdezések futtatása a Visual studióhoz készült Data Lake Tools használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).
-
-* A Visual Studio Code használata
-
-    Lásd: [a Visual Studio Code használata Apache Hive, LLAP vagy pySpark](../hdinsight-for-vscode.md).
-* Apache Hive futtatása az Apache Ambari kaptár nézet használatával.
-  
-    Lásd: [Apache Hive nézet használata az Azure HDInsight Apache Hadoopával](../hadoop/apache-hadoop-use-hive-ambari-view.md).
-
-* Apache Hive futtatása a Beeline használatával.
-  
-    Lásd: a [Apache Hive használata a HDInsight-ben való Apache Hadoop a Beeline paranccsal](../hadoop/apache-hadoop-use-hive-beeline.md).
-  
-    A Beeline a fő csomópontból vagy egy üres peremhálózati csomópontból is használható. Azt javasoljuk, hogy a Beeline üres peremhálózati csomópontról legyen használatban. A HDInsight-fürtök üres peremhálózati csomóponttal való létrehozásával kapcsolatos információkért lásd: [üres peremhálózati csomópontok használata a HDInsight-ben](../hdinsight-apps-use-edge-node.md).
-* Apache Hive futtatása a kaptár ODBC használatával.
-  
-    Lásd: [az Excel Összekapcsolásának Apache Hadoop a Microsoft kaptár ODBC-illesztővel](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
+|Módszer |Leírás |
+|---|---|
+|Microsoft Power BI|Tekintse meg az [interaktív lekérdezési Apache Hive az Azure-HDInsight Power BIával](./apache-hadoop-connect-hive-power-bi-directquery.md), valamint az [azure-HDInsight Power BIával kapcsolatos Big Data megjelenítését](../hadoop/apache-hadoop-connect-hive-power-bi.md)ismertető témakört.|
+|Visual Studio|Lásd: [Kapcsolódás az Azure HDInsight és Apache Hive lekérdezések futtatása a Visual studióhoz készült Data Lake Tools használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).|
+|Visual Studio Code|Lásd: [a Visual Studio Code használata Apache Hive, LLAP vagy pySpark](../hdinsight-for-vscode.md).|
+|Apache Ambari-struktúra nézet|Lásd: [Apache Hive nézet használata az Azure HDInsight Apache Hadoopával](../hadoop/apache-hadoop-use-hive-ambari-view.md). A kaptár nézet nem érhető el a HDInsight 4,0 esetében.|
+|Apache Beeline|Lásd: a [Apache Hive használata a HDInsight-ben való Apache Hadoop a Beeline paranccsal](../hadoop/apache-hadoop-use-hive-beeline.md). A Beeline a fő csomópontból vagy egy üres peremhálózati csomópontból is használható. Azt javasoljuk, hogy a Beeline üres peremhálózati csomópontról legyen használatban. A HDInsight-fürtök üres peremhálózati csomóponttal való létrehozásával kapcsolatos információkért lásd: [üres peremhálózati csomópontok használata a HDInsight-ben](../hdinsight-apps-use-edge-node.md).|
+|Struktúra ODBC|Lásd: [az Excel Összekapcsolásának Apache Hadoop a Microsoft kaptár ODBC-illesztővel](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).|
 
 A Java Database Connectivity (JDBC) kapcsolati karakterláncának megkeresése:
 
-1. Jelentkezzen be az Apache Ambari a következő URL-cím használatával: `https://<cluster name>.AzureHDInsight.net`.
-2. A bal oldali menüben válassza a **struktúra**elemet.
-3. Az URL-cím másolásához válassza a vágólap ikont:
+1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`, ahol a `CLUSTERNAME` a fürt neve.
+1. Az URL-cím másolásához válassza a vágólap ikont:
 
    ![HDInsight Hadoop interaktív lekérdezési LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
 

@@ -5,12 +5,12 @@ author: zr-msft
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
-ms.openlocfilehash: 8d727256afbe152a4f7022d0fd2454c4677b023c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 2eddedea7d626a92e21442c81aa49e00491958a1
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595603"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273017"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrálás az Azure által kezelt szolgáltatásokkal az Open Service Broker for Azure (OSBA) használatával
 
@@ -29,39 +29,43 @@ A [Kubernetes szolgáltatáskatalógussal][kubernetes-service-catalog] együtt a
 
 ## <a name="install-service-catalog"></a>Szolgáltatáskatalógus telepítése
 
-Első lépésként egy Helm-diagram használatával telepítse a szolgáltatáskatalógust a Kubernetes-fürtbe. Frissítse a Tiller-példányát (Helm-kiszolgáló) a fürtben az alábbi módon:
+Első lépésként egy Helm-diagram használatával telepítse a szolgáltatáskatalógust a Kubernetes-fürtbe.
 
-```azurecli-interactive
+Nyissa meg a [https://shell.azure.com](https://shell.azure.com) a Cloud Shell megnyitásához a böngészőben.
+
+Frissítse a Tiller-példányát (Helm-kiszolgáló) a fürtben az alábbi módon:
+
+```console
 helm init --upgrade
 ```
 
 Ezután adja hozzá a szolgáltatáskatalógust a Helm-adattárhoz:
 
-```azurecli-interactive
+```console
 helm repo add svc-cat https://svc-catalog-charts.storage.googleapis.com
 ```
 
 Végül telepítse a szolgáltatáskatalógust a Helm-diagrammal. Ha a fürtjén engedélyezve van az RBAC, futtassa ezt a parancsot.
 
-```azurecli-interactive
+```console
 helm install svc-cat/catalog --name catalog --namespace catalog --set apiserver.storage.etcd.persistence.enabled=true --set apiserver.healthcheck.enabled=false --set controllerManager.healthcheck.enabled=false --set apiserver.verbosity=2 --set controllerManager.verbosity=2
 ```
 
 Ha a fürtjén nincs engedélyezve az RBAC, futtassa ezt a parancsot.
 
-```azurecli-interactive
+```console
 helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false --set apiserver.storage.etcd.persistence.enabled=true --set apiserver.healthcheck.enabled=false --set controllerManager.healthcheck.enabled=false --set apiserver.verbosity=2 --set controllerManager.verbosity=2
 ```
 
 Miután futtatta a Helm-diagramot, ellenőrizze, hogy a `servicecatalog` megjelenik az alábbi parancs kimenetében:
 
-```azurecli-interactive
+```console
 kubectl get apiservice
 ```
 
 Például az alábbi kimenethez hasonlónak kell megjelennie (itt csonkolva látható):
 
-```
+```output
 NAME                                 AGE
 v1.                                  10m
 v1.authentication.k8s.io             10m
@@ -76,7 +80,7 @@ A következő lépés az [Open Service Broker for Azure][open-service-broker-azu
 
 Első lépésként adja hozzá a nyílt Service Broker az Azure Helm-tárházhoz:
 
-```azurecli-interactive
+```console
 helm repo add azure https://kubernetescharts.blob.core.windows.net/azure
 ```
 
@@ -88,7 +92,7 @@ az ad sp create-for-rbac
 
 A kimenet az alábbihoz hasonló lesz. Jegyezze fel az `appId`, a `password`, és a `tenant` értékét, mert a következő lépésben használni fogja őket.
 
-```JSON
+```json
 {
   "appId": "7248f250-0000-0000-0000-dbdeb8400d85",
   "displayName": "azure-cli-2017-10-15-02-20-15",
@@ -100,7 +104,7 @@ A kimenet az alábbihoz hasonló lesz. Jegyezze fel az `appId`, a `password`, é
 
 Állítsa be az alábbi környezeti változókat az előbbi értékekkel:
 
-```azurecli-interactive
+```console
 AZURE_CLIENT_ID=<appId>
 AZURE_CLIENT_SECRET=<password>
 AZURE_TENANT_ID=<tenant>
@@ -114,7 +118,7 @@ az account show --query id --output tsv
 
 Majd állítsa be az alábbi környezeti változót az előbbi értékkel:
 
-```azurecli-interactive
+```console
 AZURE_SUBSCRIPTION_ID=[your Azure subscription ID from above]
 ```
 
@@ -132,20 +136,20 @@ Ha az OSBA üzembe helyezése befejeződött, telepítse a [szolgáltatáskatal�
 
 Hajtsa végre az alábbi parancsokat a szolgáltatáskatalógus parancssori felületi binárisának telepítéséhez:
 
-```azurecli-interactive
+```console
 curl -sLO https://servicecatalogcli.blob.core.windows.net/cli/latest/$(uname -s)/$(uname -m)/svcat
 chmod +x ./svcat
 ```
 
 Ezután listázza ki a telepített szolgáltatásközvetítőket:
 
-```azurecli-interactive
+```console
 ./svcat get brokers
 ```
 
 A következőhöz hasonló kimenetnek kell megjelennie:
 
-```
+```output
   NAME                               URL                                STATUS
 +------+--------------------------------------------------------------+--------+
   osba   http://osba-open-service-broker-azure.osba.svc.cluster.local   Ready
@@ -153,13 +157,13 @@ A következőhöz hasonló kimenetnek kell megjelennie:
 
 Ezt követően listázza ki az elérhető szolgáltatásosztályokat. A megjelenített szolgáltatásosztályok azok az elérhető, az Azure által kezelt szolgáltatások, amelyek kioszthatóak az Open Service Broker for Azure-on keresztül.
 
-```azurecli-interactive
+```console
 ./svcat get classes
 ```
 
 Végül listázza ki az elérhető szolgáltatáscsomagokat. A szolgáltatáscsomagok az Azure által kezelt szolgáltatások szolgáltatási szintjei. Például az Azure Database for MySQL esetében a csomagok a `basic50` alapszintű, 50 adatbázis-tranzakciós egységtől (DTU) a `standard800` standard szintű, 800 adatbázis-tranzakciós egységig terjednek.
 
-```azurecli-interactive
+```console
 ./svcat get plans
 ```
 
@@ -167,20 +171,20 @@ Végül listázza ki az elérhető szolgáltatáscsomagokat. A szolgáltatáscso
 
 Ebben a lépésben a Helm használatával telepítünk egy frissített Helm-diagramot a WordPress számára. A diagram egy külső Azure Database for MySQL-példányt helyez üzembe, amelyet a WordPress használhat. Ez eltarthat pár percig.
 
-```azurecli-interactive
+```console
 helm install azure/wordpress --name wordpress --namespace wordpress --set resources.requests.cpu=0 --set replicaCount=1
 ```
 
 Ha meg szeretne győződni arról, hogy a telepítés a megfelelő erőforrásokat osztotta ki, listázza ki a telepített szolgáltatáspéldányokat és kötéseket:
 
-```azurecli-interactive
+```console
 ./svcat get instances -n wordpress
 ./svcat get bindings -n wordpress
 ```
 
 Listázza ki a telepített titkos kulcsokat:
 
-```azurecli-interactive
+```console
 kubectl get secrets -n wordpress -o yaml
 ```
 

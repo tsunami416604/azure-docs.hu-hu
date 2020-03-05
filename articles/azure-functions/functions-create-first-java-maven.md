@@ -1,20 +1,22 @@
 ---
-title: Függvények közzététele az Azure-ban a Java és a Maven használatával
-description: Hozzon létre és tegyen közzé egy HTTP által aktivált függvényt az Azure-ban a Java és a Maven használatával.
-author: rloutlaw
+title: Függvények közzététele az Azure-ban a Java és a Maven/Gradle használatával
+description: HTTP által aktivált függvény létrehozása és közzététele az Azure-ban Java, Maven vagy Gradle használatával.
+author: KarlErickson
+ms.author: karler
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 262afc2aa51aea260d5bd810b12e09de60b0c371
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+zone_pivot_groups: java-build-tools-set
+ms.openlocfilehash: dbdcf2552b453fa72bfec616a02bd45afc45fb0f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249597"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272730"
 ---
-# <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Gyors útmutató: függvények létrehozása és közzététele az Azure-ban a Java és a Maven használatával
+# <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>Gyors útmutató: függvények létrehozása és közzététele az Azure-ban a Java és a Maven/Gradle használatával
 
-Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Java-függvényeket Azure Functions a Maven parancssori eszközzel. Ha elkészült, a függvény kódja egy [kiszolgáló nélküli üzemeltetési](functions-scale.md#consumption-plan) csomagban fut az Azure-ban, és egy HTTP-kérelem indítja el.
+Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Java-függvényeket, hogy Azure Functions a Maven/Gradle parancssori eszközzel. Ha elkészült, a függvény kódja egy [kiszolgáló nélküli üzemeltetési](functions-scale.md#consumption-plan) csomagban fut az Azure-ban, és egy HTTP-kérelem indítja el.
 
 <!--
 > [!NOTE] 
@@ -26,9 +28,15 @@ Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Java-függvényeket 
 Ha függvényeket szeretne fejleszteni a Java használatával, akkor a számítógépre a következőket kell telepíteni:
 
 - A [Java Developer Kit](https://aka.ms/azure-jdks) 8-as verziója
-- Az [Apache Maven](https://maven.apache.org) 3.0-s vagy újabb verziója
 - [Azure CLI]
 - [Azure functions Core Tools](./functions-run-local.md#v2) 2.6.666 vagy újabb verzió
+::: zone pivot="java-build-tools-maven" 
+- Az [Apache Maven](https://maven.apache.org) 3.0-s vagy újabb verziója
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+- [Gradle](https://gradle.org/), 4,10-es vagy újabb verzió
+::: zone-end 
 
 Aktív Azure-előfizetésre is szüksége van. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,34 +44,20 @@ Aktív Azure-előfizetésre is szüksége van. [!INCLUDE [quickstarts-free-trial
 > [!IMPORTANT]
 > A rövid útmutató befejezéséhez a JAVA_HOME környezeti változót a JDK telepítési helyére kell beállítani.
 
-## <a name="generate-a-new-functions-project"></a>Új Functions-projekt létrehozása
+## <a name="prepare-a-functions-project"></a>Functions-projekt előkészítése
 
+::: zone pivot="java-build-tools-maven" 
 Egy üres mappában futtassa a következő parancsot a Functions-projekt [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)-ból való létrehozásához.
 
-### <a name="linuxmacos"></a>Linux/macOS
-
 ```bash
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
 > [!NOTE]
+> Ha a PowerShellt használja, ne felejtse el hozzáadni a "" Around paramétereket.
+
+> [!NOTE]
 > Ha a parancs futtatásával kapcsolatos problémákat tapasztal, tekintse meg, hogy milyen `maven-archetype-plugin`-verziót használ. Mivel a parancsot egy `.pom` fájl nélküli üres könyvtárban futtatja, előfordulhat, hogy a korábbi verzió beépülő modulját szeretné használni a `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin`ról, ha a Mavent egy régebbi verzióról frissítette. Ha igen, próbálja meg törölni a `maven-archetype-plugin` könyvtárat, és futtassa újra a parancsot.
-
-### <a name="windows"></a>Windows
-
-```powershell
-mvn archetype:generate `
-    "-DarchetypeGroupId=com.microsoft.azure" `
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
-
-```cmd
-mvn archetype:generate ^
-    "-DarchetypeGroupId=com.microsoft.azure" ^
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
 
 A Maven megkéri, hogy a projektnek a telepítéskor való létrehozásának befejezéséhez szükséges értékeket is megkeresse. Ha a rendszer kéri, adja meg a következő értékeket:
 
@@ -79,7 +73,35 @@ A Maven megkéri, hogy a projektnek a telepítéskor való létrehozásának bef
 
 A megerősítéshez írja be `Y` vagy nyomja le az ENTER billentyűt.
 
-A Maven létrehoz egy új, _artifactId_nevű mappában található projektfájlt, amely ebben a példában `fabrikam-functions`. 
+A Maven létrehoz egy új, _artifactId_nevű mappában található projektfájlt, amely ebben a példában `fabrikam-functions`. A következő parancs futtatásával módosítsa a könyvtárat a létrehozott projekt mappájába.
+```bash
+cd fabrikam-function
+```
+
+::: zone-end 
+::: zone pivot="java-build-tools-gradle"
+A minta projekt klónozásához használja az alábbi parancsot:
+
+```bash
+git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
+cd azure-functions-samples-java/
+```
+
+Nyissa meg a `build.gradle`t, és módosítsa a következő szakaszban található `appName`t egy egyedi névre, hogy elkerülje a tartománynevek ütközését az Azure-ba való üzembe helyezéskor. 
+
+```gradle
+azurefunctions {
+    resourceGroup = 'java-functions-group'
+    appName = 'azure-functions-sample-demo'
+    pricingTier = 'Consumption'
+    region = 'westus'
+    runtime {
+      os = 'windows'
+    }
+    localDebug = "transport=dt_socket,server=y,suspend=n,address=5005"
+}
+```
+::: zone-end
 
 Nyissa meg az új function. Java fájlt egy szövegszerkesztőben a *src/Main/Java* elérési útról, és tekintse át a generált kódot. Ez a kód egy [http által aktivált](functions-bindings-http-webhook.md) függvény, amely megismétli a kérelem törzsét. 
 
@@ -88,15 +110,23 @@ Nyissa meg az új function. Java fájlt egy szövegszerkesztőben a *src/Main/Ja
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
-Futtassa a következő parancsot, amely módosítja a könyvtárat az újonnan létrehozott projekt mappájába, majd létrehozza és futtatja a Function projektet:
+A következő parancs futtatásával hozza létre a Function projektet:
 
-```console
-cd fabrikam-function
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn clean package 
 mvn azure-functions:run
 ```
+::: zone-end 
 
-A következőhöz hasonló kimenet jelenik meg Azure Functions Core Tools a projekt helyi futtatásakor:
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle jar --info
+gradle azureFunctionsRun
+```
+::: zone-end 
+
+A következőhöz hasonló kimenetet fog látni Azure Functions Core Tools a projekt helyi futtatásakor:
 
 ```output
 ...
@@ -112,7 +142,7 @@ Http Functions:
 
 Aktiválja a függvényt a parancssorból a cURL használatával egy új terminál ablakban:
 
-```CMD
+```bash
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
@@ -135,13 +165,22 @@ az login
 > [!TIP]
 > Ha a fiókja több előfizetéshez is hozzáfér, az [az Account set](/cli/azure/account#az-account-set) paranccsal állíthatja be az alapértelmezett előfizetést ehhez a munkamenethez. 
 
-A következő Maven-paranccsal telepítheti a projektet egy új Function alkalmazásba. 
+A következő parancs használatával telepítheti a projektet egy új Function alkalmazásba. 
 
-```console
+
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn azure-functions:deploy
 ```
+::: zone-end 
 
-Ez a `azure-functions:deploy` Maven-cél a következő erőforrásokat hozza létre az Azure-ban:
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle azureFunctionsDeploy
+```
+::: zone-end
+
+Ezzel a következő erőforrásokat fogja létrehozni az Azure-ban:
 
 + Erőforráscsoport. Elnevezve a megadott _resourceGroup_ .
 + Storage-fiók. A függvények igénylik. A név véletlenszerűen jön létre a Storage-fióknév követelményei alapján.
