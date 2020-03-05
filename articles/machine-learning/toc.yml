@@ -208,6 +208,9 @@
         - name: Címkézett adathalmazok létrehozása
           displayName: 'data, labels, torchvision'
           href: how-to-use-labeled-dataset.md
+        - name: Adatbetöltés az Azure Data Factoryvel
+          displayName: 'data, ingestion, adf'
+          href: how-to-data-ingest-adf.md
         - name: DevOps használata adatfeldolgozáshoz
           displayName: 'data, ingestion, devops'
           href: how-to-cicd-data-ingestion.md

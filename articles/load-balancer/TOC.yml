@@ -6,15 +6,15 @@
       href: load-balancer-overview.md
 - name: Első lépések
   items:
-    - name: Portál
+    - name: Load Balancer létrehozása – portál
       href: quickstart-load-balancer-standard-public-portal.md
-    - name: Azure CLI
+    - name: Load Balancer létrehozása – Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Azure PowerShell
+    - name: Load Balancer létrehozása – PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Azure Resource Manager-sablon
+    - name: Load Balancer létrehozása – sablon
       href: quickstart-load-balancer-standard-public-template.md
-      displayName: ARM
+  expanded: true
 - name: Oktatóanyagok
   items:
     - name: Virtuális gépek internetes forgalmának terheléselosztása

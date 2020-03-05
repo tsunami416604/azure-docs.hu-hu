@@ -26,6 +26,8 @@
           href: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: Azure Databricks-foglalás vásárlása
           href: prepay-databricks-reserved-capacity.md
+        - name: Azure Cache for Redis-foglalás vásárlása
+          href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/billing/TOC.json
         - name: App Service-foglalás vásárlása
           href: prepay-app-service-isolated-stamp.md
         - name: Azure-szoftvercsomagokra vonatkozó foglalások vásárlása

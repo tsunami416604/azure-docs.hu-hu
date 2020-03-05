@@ -1,45 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Az Azure Front Door Service dokumentációja
+summary: Az Azure Front Door skálázható, biztonságos belépési pont a globális webes alkalmazások gyors biztosításához.
 metadata:
   title: Az Azure Front Door Service dokumentációja
-  meta.description: 'Azure Front Door Service provides a scalable and secure entry point for fast delivery of your global web applications. Learn how to use Front Door with our quickstarts, tutorials, and samples.'
+  description: Az Azure Front Door Service skálázható, biztonságos belépési pont a globális webalkalmazások gyors biztosításához. Ismerje meg rövid útmutatóink, oktatóanyagaink és példáink segítségével a Front Door használatának módját.
   services: frontdoor
-  author: dlepow
   ms.service: frontdoor
   ms.topic: landing-page
-  ms.date: 9/14/2018
-  ms.author: danlep
-abstract:
-  description: 'Az Azure Front Door Service skálázható, biztonságos belépési pont a globális webalkalmazások gyors biztosításához. Ismerje meg rövid útmutatóink, oktatóanyagaink és példáink segítségével a Front Door használatának módját.'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: Bejárati ajtó létrehozása magas rendelkezésre állású globális webalkalmazásokhoz.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure Portal
-            href: quickstart-create-front-door.md
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan konfigurálhatja az Azure Front Door Service-t az igényeinek megfelelően.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="front-door-custom-domain.md">Egyéni tartomány hozzáadása a bejárati ajtóhoz</a>
-          - html: <a href="front-door-custom-domain-https.md">A HTTPS engedélyezése egyéni tartományhoz</a>
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: '<p><a href="/cli/azure/ext/front-door">Azure CLI</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2020942">Azure PowerShell</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/frontdoor">REST API</a></p>
+  author: vhorne
+  ms.author: victorh
+  ms.date: 03/03/2020
+  ms.openlocfilehash: 7fdf859bc3d8f970fe16bd031d4fd60919c49a92
+  ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/04/2020
+  ms.locfileid: "78273271"
+landingContent:
+- title: Tudnivalók az Azure Front Doorról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Front Door?
+      url: front-door-overview.md
+- title: Bejárati ajtó létrehozása
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Bejárati ajtó létrehozása
+      url: quickstart-create-front-door.md
+- title: Egyéni tartomány hozzáadása
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Egyéni tartomány hozzáadása a bejárati ajtóhoz
+      url: front-door-custom-domain.md
+  - linkListType: how-to-guide
+    links:
+    - text: Gyökértartomány vagy Apex-tartomány előkészítése a Front Dooron
+      url: front-door-how-to-onboard-apex-domain.md
+- title: További információk a geoszűrésről
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Mit jelent a tartományokon végzett geoszűrés?
+      url: front-door-geo-filtering.md
+  - linkListType: tutorial
+    links:
+    - text: Geoszűrési WAF-szabályzat konfigurálása
+      url: front-door-tutorial-geo-filtering.md
+- title: HTTPS konfigurálása
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: HTTPS konfigurálása egyéni Front Door-tartományon
+      url: front-door-custom-domain-https.md
+- title: Az Azure Front Door hibaelhárítása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Gyakori útválasztási problémák
+      url: front-door-troubleshoot-routing.md
+    - text: Engedélyezett hitelesítésszolgáltatók
+      url: front-door-troubleshoot-allowed-ca.md
+- title: Tudnivalók az Azure-beli terheléselosztásról
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure-beli terheléselosztás
+      url: front-door-lb-with-azure-app-delivery-suite.md

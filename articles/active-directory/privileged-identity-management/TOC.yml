@@ -83,7 +83,7 @@
           href: pim-resource-roles-configure-role-settings.md
         - name: Riasztások konfigurálása
           href: pim-resource-roles-configure-alerts.md
-        - name: Tevékenység- és naplózási előzmények megtekintése
+        - name: Naplózási előzmények megtekintése
           href: azure-pim-resource-rbac.md
         - name: Egyéni szerepkörök használata
           href: pim-resource-roles-custom-role-policy.md
