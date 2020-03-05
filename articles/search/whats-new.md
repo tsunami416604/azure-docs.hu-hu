@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 01/30/2020
-ms.openlocfilehash: 74f69f789ecb0d529e52054eeb1ac7ccb51bd6c2
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/03/2020
+ms.openlocfilehash: 27dae07328af125c25512ab9f1eb81d0f4eda99b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588825"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271328"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -39,7 +39,7 @@ A Azure Search most átnevezve lett az **Azure Cognitive Searchra** , hogy tükr
 
 + A keresési szolgáltatásokhoz való privát hozzáférés két, jelenleg előzetes verzióban elérhető mechanizmuson keresztül érhető el:
 
-  + A szolgáltatás létrehozásához a felügyeleti REST API `api-version=2019-10-01-Preview` használatával korlátozhatja a hozzáférést adott IP-címekhez. Az előzetes verziójú API új **IpRule** és **NetworkRuleSet** tulajdonságokkal rendelkezik a [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate)-ban. Ez az előzetes verziójú funkció a kiválasztott régiókban érhető el. További információ: [a felügyeleti REST API használata](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+  + A szolgáltatás létrehozásához a felügyeleti REST API `api-version=2019-10-01-Preview` használatával korlátozhatja a hozzáférést adott IP-címekhez. Az előzetes verziójú API új **IpRule** és **NetworkRuleSet** tulajdonságokkal rendelkezik a [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service)-ban. Ez az előzetes verziójú funkció a kiválasztott régiókban érhető el. További információ: [a felügyeleti REST API használata](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
 
   + Jelenleg korlátozott hozzáférésű előzetes verzióban érhető el, ha olyan Azure Search szolgáltatást is kiépít, amely támogatja az Azure Private-végpontot az azonos virtuális hálózatban lévő ügyfelekkel létesített kapcsolatokhoz. További információ: [privát végpont létrehozása biztonságos kapcsolatban](service-create-private-endpoint.md).
 

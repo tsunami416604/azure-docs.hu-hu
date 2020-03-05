@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: 2e4e812ec13c089508fea890df2af1f8372bbe37
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: ce9be980ecdee74f783342f79c0f4b424b88e523
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190415"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267770"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Rövid útmutató: titkos kód beállítása és lekérése Azure Key Vault Resource Manager-sablon használatával
 
@@ -72,7 +72,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy kulcstartót és egy titkos kulcsot.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-key-vault-create%2Fazuredeploy.json"><img src="./media/quick-create-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+    [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-key-vault-create%2Fazuredeploy.json)
 
 2. Válassza ki vagy adja meg a következő értékeket.
 
@@ -153,7 +153,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy kulcstartót és egy titkos kulcsot hozott létre egy Azure Resource Manager sablonnal, és ellenőrizte az üzemelő példányt. Ha többet szeretne megtudni a Key Vault és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
 
