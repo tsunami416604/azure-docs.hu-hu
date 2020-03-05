@@ -7,12 +7,12 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 6a530c96c99a9f22f1943a5b874656bcabd9594b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c2bf401713dc7ae3b060181f1df56d0915f68aed
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906468"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269501"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Rövid útmutató: Blobok kezelése a JavaScript v10 SDK-val a Node. js-ben
 
@@ -107,7 +107,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 ```
 
-A *dotenv* modul tölti be a környezeti változókat, amikor az alkalmazást hibakeresési céllal helyileg futtatja. Az értékek egy *.env* fájlban vannak meghatározva. A modul innen tölti be őket az aktuális végrehajtási környezetbe. Éles környezetben a kiszolgáló konfigurációja biztosítja ezeket az értékeket, ezért ez a kód csak akkor fut, amikor a szkript *nem* „éles” környezetben fut.
+A *dotenv* modul betölti a környezeti változókat, ha az alkalmazás helyileg fut hibakeresés céljából. Az értékek egy *.env* nevű fájlban vannak meghatározva. A modul innen tölti be őket az aktuális végrehajtási környezetbe. Éles környezetben a kiszolgáló konfigurációja biztosítja ezeket az értékeket, ezért ez a kód csak akkor fut, amikor a szkript *nem* „éles” környezetben fut.
 
 A következő néhány blokkot a fájlrendszerhez való jobb illeszkedés érdekében importáljuk.
 
@@ -153,9 +153,9 @@ async function execute() {
 execute().then(() => console.log("Done")).catch((e) => console.log(e));
 ```
 
-A teljes alábbi kód az execute függvényen belül fut, amelybe a `// commands...` megjegyzés kerül.
+Az alábbi összes kód az execute függvényen belül fut, ahová a `// commands...` megjegyzés kerül.
 
-Első lépésként a releváns változókat deklaráljuk a nevek és mintatartalmak hozzárendeléséhez, valamint a Blob Storage-be feltölteni kívánt helyi fájl kijelöléséhez.
+Első lépésként a releváns változók úgy vannak deklarálva, hogy neveket és mintatartalmakat rendeljenek hozzá, valamint, hogy a Blobtárolóba feltölteni kívánt helyi fájlra mutassanak.
 
 ```javascript
 const containerName = "demo";
@@ -409,4 +409,4 @@ Ez a rövid útmutató azt mutatja be, hogyan kezelhetők a blobok és tárolók
 
 > [!div class="nextstepaction"]
 > [Azure Storage v10 SDK a JavaScript-tárházhoz](https://github.com/Azure/azure-storage-js)
-> [Azure Storage – JavaScript API-referenciája](/javascript/api/overview/azure/storage?view=azure-node-legacy)
+> [Azure Storage – JavaScript API-referenciája](/javascript/api/overview/azure/storage-overview)
