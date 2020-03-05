@@ -8,25 +8,25 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 8c15ebacd0fd959fe789d7f3a9b33b16ee29a1b2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933626"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270681"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Egy LUIS-alkalmazás elavult, előre összeépített entitásai
 A következő előre összeállított entitások elavultak, és nem adható hozzá új LUIS-alkalmazások.
 
-* **Dátum**és idő: A **datetime** -t használó meglévő Luis-alkalmazásokat át kell telepíteni a **datetimeV2**-be, bár a DateTime entitás továbbra is a meglévő, az azt használó alkalmazásokban működik.
-* **Földrajzi**hely: A földrajzot használó meglévő Luis-alkalmazások a 2018. decemberig támogatottak.
-* **Enciklopédia**: Az **Encyclopedia** -t használó meglévő Luis-alkalmazások a 2018. decemberig támogatottak.
+* **Datetime**: a **datetime** -t használó meglévő Luis-alkalmazásokat át kell telepíteni a **datetimeV2**-be, bár a DateTime entitás továbbra is működni fog az azt használó meglévő alkalmazásokban.
+* **Földrajzi**hely: a **földrajzot** használó meglévő LUIS-alkalmazások a 2018. decemberig támogatottak.
+* **Enciklopédia**: az **Encyclopedia** -t használó meglévő LUIS-alkalmazások a 2018. decemberig támogatottak.
 
 ## <a name="geography-culture"></a>Földrajzi hely kulturális környezet
-**Földrajzi hely** csak érhető el a `en-us` területi beállítás.
+A **földrajzi** hely csak a `en-us` területi beállításban érhető el.
 
 #### <a name="3-geography-subtypes"></a>3 földrajzi altípus
 
@@ -40,10 +40,10 @@ Előre összeállított entitások   |   Példa kimondott szöveg   |   JSON
 `builtin.geography.pointOfInterest`   |   `sahara desert`|`{ "type": "builtin.geography.pointOfInterest", "entity": "sahara desert" }`|
 
 ## <a name="encyclopedia-culture"></a>Enciklopédiájában kulturális környezet
-**Enciklopédiájában** csak érhető el a `en-US` területi beállítás.
+Az **Encyclopedia** csak a `en-US` területi beállításban érhető el.
 
 #### <a name="encyclopedia-subtypes"></a>Enciklopédiájában altípus
-Az Encyclopedia beépített entitása több mint 100 altípust tartalmaz a következő táblázatban: Emellett az entitások gyakran több típusra is leképezhetők. Ha például a lekérdezés Ronald reagan elnök eredményez: 
+Enciklopédiájában beépített entitás több mint 100 alárendelt típusokat tartalmaz a következő táblázatban: emellett enciklopédiájában entitások gyakran leképezése több típust. Ha például a lekérdezés Ronald reagan elnök eredményez:
 
 ```json
 {
@@ -161,7 +161,7 @@ Előre összeállított entitások   |   Előre összeállított entitások (alt
 `builtin.encyclopedia.finance.stock_exchange`| `builtin.encyclopedia.finance.stock_exchange`| `tokyo stock exchange`|
 `builtin.encyclopedia.film.festival`| `builtin.encyclopedia.film.festival`| `berlin international film festival`|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ a [dimenzió](luis-reference-prebuilt-dimension.md), [e-mail](luis-reference-prebuilt-email.md) entitásokat, és [szám](luis-reference-prebuilt-number.md). 
+Ismerje meg a [dimenziót](luis-reference-prebuilt-dimension.md), az [e-mail](luis-reference-prebuilt-email.md) -entitásokat és a [számokat](luis-reference-prebuilt-number.md).
 

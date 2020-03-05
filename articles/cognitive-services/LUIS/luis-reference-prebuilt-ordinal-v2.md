@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 02bc6657126cb1cf241c2ca4668e62bd49608d4b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5e852313db75e598da647ea0f985e2ee18af16de
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491255"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270484"
 ---
 # <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>A 2. sorszámú, előre elkészített entitás a LUIS-alkalmazáshoz
 A sorszám v2 sorszáma kibontja a [sorszámot](luis-reference-prebuilt-ordinal.md) , hogy relatív hivatkozásokat adjon meg, például `next`, `last`és `previous`. Ezeket a rendszer nem a sorszámmal elkészített, előre összeépített entitás használatával bontja ki.
@@ -27,7 +27,7 @@ A lekérdezés a következő entitás-objektumokat adja vissza:
 
 `what is the second to last choice in the list`
 
-#### <a name="v3-responsetabv3"></a>[V3 válasz](#tab/V3)
+#### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
 A következő JSON a `verbose` paraméterrel van beállítva `false`:
 
@@ -42,7 +42,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `false`:
 }
 ```
 
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 részletes válasz](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
 
 A következő JSON a `verbose` paraméterrel van beállítva `true`:
 
@@ -71,7 +71,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `true`:
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2 válasz](#tab/V2)
+#### <a name="v2-response"></a>[V2 válasz](#tab/V2)
 
 Az alábbi példa a **beépített. ordinalV2** entitás feloldását mutatja be.
 
@@ -89,10 +89,10 @@ Az alábbi példa a **beépített. ordinalV2** entitás feloldását mutatja be.
     }
 ]
 ```
-* * * 
+* * *
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
-A [százalék](luis-reference-prebuilt-percentage.md), a [telefonszám](luis-reference-prebuilt-phonenumber.md)és a [hőmérséklet](luis-reference-prebuilt-temperature.md) entitások ismertetése. 
+A [százalék](luis-reference-prebuilt-percentage.md), a [telefonszám](luis-reference-prebuilt-phonenumber.md)és a [hőmérséklet](luis-reference-prebuilt-temperature.md) entitások ismertetése.

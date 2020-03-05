@@ -1,37 +1,54 @@
 ---
-title: Üzletmenet-folytonosság & vész-helyreállítás – Azure párosított régiók
-description: Ismerje meg az Azure regionális párosítását, és győződjön meg arról, hogy az alkalmazások rugalmasak az adatközpont meghibásodása során.
-author: rayne-wiselman
-manager: carmon
+title: Az üzletmenet folytonosságának biztosítása & a vész-helyreállítási Azure párosított régiók használatával
+description: Az alkalmazások rugalmasságának biztosítása az Azure regionális párosításával
+author: jpconnock
+manager: angrobe
 ms.service: multiple
-ms.topic: article
-ms.date: 07/01/2019
-ms.author: raynew
-ms.openlocfilehash: c1e14db9dafc8b03acbeb1c6b97e5ac0e27cb0fd
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.topic: conceptual
+ms.date: 03/03/2020
+ms.author: jeconnoc
+ms.openlocfilehash: 0e47bde280e9483f3c265e0d3147eadcbb128612
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78163048"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270981"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzletmenet-folytonosság és vész-helyreállítási (BCDR): Azure párosított régiók
 
 ## <a name="what-are-paired-regions"></a>Mik azok a párosított régiók?
 
-Az Azure világszerte több földrajzi régión működik. Az Azure földrajz a világ egy meghatározott területe, amely legalább egy Azure-régiót tartalmaz. Az Azure-régió egy földrajzon belüli terület, amely egy vagy több adatközpontot tartalmaz.
+Az Azure-régiók olyan adatközpontokból állnak, amelyek egy késleltetéssel meghatározott kerületben találhatók, és egy dedikált, kis késésű hálózaton keresztül kapcsolódnak egymáshoz.  Ez biztosítja, hogy az Azure-régión belüli Azure-szolgáltatások a lehető legjobb teljesítményt és biztonságot nyújtsanak.  
 
-Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabban a földrajzi helyen található, és regionális párokat alkot. A kivétel Dél-Brazília, amely a földrajzon kívüli régióhoz van párosítva. A régió pár részeként az Azure szerializálja a platform frissítéseit (tervezett karbantartás), így egyszerre csak egy párosított régió frissül. Ha egy leállás több régiót érint, akkor az egyes párokban legalább egy régiót előnyben részesíti a helyreállítás.
+Az Azure földrajza a világ egy olyan területét határozza meg, amely legalább egy Azure-régiót tartalmaz. A földrajzi területek olyan diszkrét piacot határoznak meg, amely általában két vagy több régiót tartalmaz, amelyek megőrizik az adattárolási és megfelelőségi határokat.  Az Azure globális infrastruktúrájának további információit [itt](https://azure.microsoft.com/global-infrastructure/regions/) találja
+
+A regionális párok két régióból állnak, ugyanazon a földrajzon belül. Az Azure szerializálja a platform frissítéseit (tervezett karbantartás) a regionális párok között, így biztosítva, hogy egyszerre csak egy régió legyen az egyes párok frissítései. Ha egy kimaradás több régióra is hatással van, az egyes párokban legalább egy régiót rangsorolni kell a helyreállításhoz.
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-> [!NOTE]
-> A hozzárendelt Azure regionális párok nem módosíthatók.
+Bizonyos Azure-szolgáltatások a párosított régiók további előnyeit biztosítják az üzletmenet folytonosságának biztosításához és az adatvesztés elleni védelemhez.  Az Azure számos [tárolási megoldást](/storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) kínál, amelyek kihasználják a párosított régiókat az adatelérhetőség biztosításához. Az [Azure geo-redundáns tároló](/storage/common/storage-redundancy.md#geo-redundant-storage) (GRS) például automatikusan replikálja az adatforrásokat egy másodlagos régióba, így biztosítva, hogy az adatvédelem még abban az esetben is megmaradjon, ha az elsődleges régió nem helyreállítható. 
 
-1\. ábra – Azure regionális párok
+Vegye figyelembe, hogy az összes Azure-szolgáltatás nem replikálja automatikusan az adatait, és az összes Azure-szolgáltatás nem áll automatikusan vissza egy sikertelen régióból a párja felé.  Ilyen esetekben a helyreállítást és a replikálást az ügyfélnek kell konfigurálnia.
 
-| Földrajz | Párosított régiók |  |
+## <a name="can-i-select-my-regional-pairs"></a>Kijelölhetem a regionális párokat?
+
+Nem. Bizonyos Azure-szolgáltatások regionális párokra támaszkodnak, mint például az Azure [redundáns tárterülete](./storage/common/storage-redundancy.md). Ezek a szolgáltatások nem teszik lehetővé, hogy új regionális párosításokat hozzon létre.  Hasonlóképpen, mivel az Azure a regionális párok tervezett karbantartási és helyreállítási rangsorolását vezérli, nem határozhatja meg a saját regionális párokat, hogy kihasználhassa ezeket a szolgáltatásokat. Ugyanakkor saját vész-helyreállítási megoldást is létrehozhat, ha a szolgáltatásokat tetszőleges számú régióban hozza létre, és az Azure-szolgáltatásokat kihasználva párosítja őket. 
+
+Például az Azure-szolgáltatások, például a [AzCopy](./storage/common/storage-use-azcopy-v10.md) használatával ütemezhetik az adatbiztonsági másolatokat egy másik régióban lévő Storage-fiókba.  A [Azure DNS és az Azure Traffic Manager](./networking/disaster-recovery-dns-traffic-manager.md)segítségével az ügyfelek rugalmas architektúrát tervezhetnek az alkalmazásokhoz, amelyek megőrzik az elsődleges régió elvesztését.
+
+## <a name="am-i-limited-to-using-services-within-my-regional-pairs"></a>Csak a regionális párokon belüli szolgáltatások használatára van szükségem?
+
+Nem. Míg egy adott Azure-szolgáltatás a regionális párokra támaszkodhat, más szolgáltatásokat is üzemeltetheti bármely régióban, amely megfelel az Ön üzleti igényeinek.  Az Azure GRS Storage-megoldás az USA keleti régiójában található, a Kelet-Kanadában lévő partnerekkel is párosíthatja az adataikat a közép-Kanadában.  
+
+## <a name="must-i-use-azure-regional-pairs"></a>Az Azure regionális párokat kell használniuk?
+
+Nem. Az Azure-szolgáltatásokkal az Azure-szolgáltatások rugalmas szolgáltatást állíthatnak be anélkül, hogy az Azure regionális párokra kellene támaszkodnia.  Azt javasoljuk azonban, hogy az üzletmenet-folytonossági vész-helyreállítást (BCDR) a regionális párokban konfigurálja, hogy kihasználhassa az [elkülönítést](./security/fundamentals/isolation-choices.md) és javítsa a [rendelkezésre állást](./availability-zones/az-overview.md). Több aktív régiót támogató alkalmazások esetén ajánlott mindkét régiót a régiós párokban használni, ahol lehetséges. Ez biztosítja az alkalmazások optimális rendelkezésre állását és a lehető legkevesebb helyreállítási időt vészhelyzet esetén. Amikor csak lehetséges, tervezze meg az alkalmazását a [rugalmasság](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview) és a könnyű [helyreállítás](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)érdekében.
+
+## <a name="azure-regional-pairs"></a>Azure regionális párok
+
+| Földrajz | A regionális pár | B regionális pár  |
 |:--- |:--- |:--- |
-| Ázsia |Kelet-Ázsia |Délkelet-Ázsia |
+| Ázsia – csendes-óceáni térség |Kelet-Ázsia (Hongkong) | Délkelet-Ázsia (Szingapúr) |
 | Ausztrália |Kelet-Ausztrália |Délkelet-Ausztrália |
 | Ausztrália |Ausztrália középső régiója |Ausztrália 2. középső régiója |
 | Brazília |Dél-Brazília |USA déli középső régiója |
@@ -48,8 +65,10 @@ Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabb
 | Észak-Amerika |USA keleti régiója |USA nyugati régiója |
 | Észak-Amerika |USA 2. keleti régiója |USA középső régiója |
 | Észak-Amerika |USA északi középső régiója |USA déli középső régiója |
-| Észak-Amerika |USA nyugati régiója, 2. |USA nyugati középső régiója 
-| Dél-afrikai Köztársaság | Dél-Afrika északi régiója | Dél-Afrika nyugati régiója
+| Észak-Amerika |USA nyugati régiója, 2. |USA nyugati középső régiója |
+| Norvégia | Kelet-Norvégia | Norvégia nyugati régiója |
+| Dél-afrikai Köztársaság | Dél-Afrika északi régiója |Dél-Afrika nyugati régiója |
+| Svájc | Észak-Svájc |Nyugat-Svájc |
 | Egyesült Királyság |Az Egyesült Királyság nyugati régiója |Az Egyesült Királyság déli régiója |
 | Egyesült Arab Emírségek | Észak-Egyesült Arab | UAE középső régiója
 | Egyesült Államok védelmi Minisztériuma |US DoD – Kelet |US DoD – Középső régió |
@@ -57,19 +76,13 @@ Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabb
 | USA kormánya |US Gov Iowa |USA-beli államigazgatás – Virginia |
 | USA kormánya |USA-beli államigazgatás – Virginia |USA-beli államigazgatás – Texas |
 
-1\. táblázat – az Azure regionális párok leképezése
+> [!Important]
+> - Nyugat-India csak egy irányban párosítható. Nyugat-India másodlagos régiója Dél-India, Dél-India másodlagos régiója azonban Közép-India.
+> - A Dél-Brazília egyedi, mert a földrajzon kívüli régióval párosítva van. A Dél-Brazília déli középső régiója, az USA déli régiója. Dél-Közép-USA másodlagos régiója nem Dél-Brazília.
 
-- Nyugat-India csak egy irányban párosítható. Nyugat-India másodlagos régiója Dél-India, Dél-India másodlagos régiója azonban Közép-India.
-- A Dél-Brazília egyedi, mert a saját földrajzán kívüli régióval párosítva van. A Dél-Brazília déli középső régiója, az USA déli régiója. Dél-Közép-USA másodlagos régiója nem Dél-Brazília.
-- US Gov Iowa másodlagos régiója US Gov Virginia.
-- US Gov Virginia másodlagos régiója US Gov Texas.
-- US Gov Texas "másodlagos régió US Gov Arizona.
-
-
-Javasoljuk, hogy az üzletmenet-folytonossági vész-helyreállítást (BCDR) a regionális párokban konfigurálja az Azure elkülönítési és rendelkezésre állási házirendjeinek kihasználása érdekében. A több aktív régiót támogató alkalmazások esetén ajánlott mindkét régiót a régiós párokban használni, ahol lehetséges. Ez biztosítja az alkalmazások optimális rendelkezésre állását és a lehető legkevesebb helyreállítási időt vészhelyzet esetén. 
 
 ## <a name="an-example-of-paired-regions"></a>A párosított régiók példája
-Az alábbi 2. ábra egy feltételezett alkalmazást mutat be, amely a regionális párokat használja a vész-helyreállításhoz. A zöld számok kiemelik a három Azure-szolgáltatás (Azure-beli számítási, tárolási és adatbázis) régiók közötti tevékenységeit, valamint azt, hogy ezek hogyan vannak konfigurálva a régiók közötti replikálásra. A párosított régiókban való üzembe helyezés egyedi előnyeit a narancssárga számok kiemelik.
+Az alábbi ábra egy feltételezett alkalmazást mutat be, amely a regionális párt használja a vész-helyreállításhoz. A zöld számok kiemelik a három Azure-szolgáltatás (Azure-beli számítási, tárolási és adatbázis) régiók közötti tevékenységeit, valamint azt, hogy ezek hogyan vannak konfigurálva a régiók közötti replikálásra. A párosított régiókban való üzembe helyezés egyedi előnyeit a narancssárga számok kiemelik.
 
 ![A párosított régió előnyeinek áttekintése](./media/best-practices-availability-paired-regions/PairedRegionsOverview2.png)
 
@@ -78,28 +91,22 @@ Az alábbi 2. ábra egy feltételezett alkalmazást mutat be, amely a regionáli
 ## <a name="cross-region-activities"></a>Régiók közötti tevékenységek
 A 2. ábrán említettek szerint.
 
-![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure-beli számítás (IaaS)** – további számítási erőforrásokat kell kiépíteni, hogy az erőforrások egy másik régióban is elérhetők legyenek a katasztrófák során. További információ: az [Azure rugalmasságával kapcsolatos technikai útmutató](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md).
+1. **Azure-beli számítási (IaaS)** – további számítási erőforrásokat kell kiépíteni, hogy az erőforrások egy másik régióban is elérhetők legyenek a katasztrófák során. További információ: az [Azure rugalmasságával kapcsolatos technikai útmutató](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md). 
 
-![Storage](./media/best-practices-availability-paired-regions/2Green.png) az **Azure Storage** -ban – ha felügyelt lemezeket használ, ismerkedjen meg a [régiók közötti biztonsági mentésekkel](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) a Azure Backup, és [replikálja a virtuális gépeket](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) az egyik régióból a másikba Azure site Recovery használatával. Ha Storage-fiókokat használ, a Geo-redundáns tárolás (GRS) alapértelmezés szerint be van állítva egy Azure Storage-fiók létrehozásakor. A GRS az adatai automatikusan replikálódnak az elsődleges régión belül, és háromszor a párosított régióban. További információ: [Azure Storage redundancia-beállítások](storage/common/storage-redundancy.md).
+2. **Azure Storage** – ha felügyelt lemezeket használ, ismerkedjen meg a [régiók közötti biztonsági mentésekkel](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) Azure Backupával, és [replikálja a virtuális gépeket](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) az egyik régióból a másikba Azure site Recovery használatával. Ha Storage-fiókokat használ, a Geo-redundáns tárolás (GRS) alapértelmezés szerint be van állítva egy Azure Storage-fiók létrehozásakor. A GRS az adatai automatikusan replikálódnak az elsődleges régión belül, és háromszor a párosított régióban. További információ: [Azure Storage redundancia-beállítások](storage/common/storage-redundancy.md).
 
-![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database** – Azure SQL Database geo-replikálással a tranzakciók aszinkron replikációját a világ bármely régiójába beállíthatja. javasoljuk azonban, hogy ezeket az erőforrásokat egy párosított régióban telepítse a legtöbb vész-helyreállítási forgatókönyv esetében. További információ: [geo-replikáció a Azure SQL Databaseban](sql-database/sql-database-geo-replication-overview.md).
+3. **Azure SQL Database** – a Azure SQL Database geo-replikációval a tranzakciók aszinkron replikációját konfigurálhatja a világ bármely régiójába. javasoljuk azonban, hogy ezeket az erőforrásokat egy párosított régióban telepítse a legtöbb vész-helyreállítási forgatókönyv esetében. További információ: [geo-replikáció a Azure SQL Databaseban](sql-database/sql-database-geo-replication-overview.md).
 
-![Resource Manager](./media/best-practices-availability-paired-regions/4Green.png) **Azure Resource Manager** – az erőforrás-kezelő eleve az összetevők logikai elkülönítését biztosítja a régiók között. Ez azt jelenti, hogy az egyik régióban a logikai hibák valószínűleg kevésbé befolyásolják a másikat.
+4. **Azure Resource Manager** – az erőforrás-kezelő eleve az összetevők logikai elkülönítését biztosítja a régiók között. Ez azt jelenti, hogy az egyik régióban a logikai hibák valószínűleg kevésbé befolyásolják a másikat.
 
 ## <a name="benefits-of-paired-regions"></a>A párosított régiók előnyei
-A 2. ábrán említettek szerint.  
 
-![elkülönítés](./media/best-practices-availability-paired-regions/5Orange.png)
-**fizikai elkülönítéssel** – ha lehetséges, az Azure a regionális párokban legalább 300 mérföldes elkülönítést tesz lehetővé az adatközpontok között, bár ez nem gyakorlatias vagy lehetséges az összes földrajzi helyen. A fizikai adatközpontok elkülönítése csökkenti a természeti katasztrófák, a zavargások, az áramkimaradások vagy a fizikai hálózatok kimaradásának valószínűségét egyszerre mindkét régióban. Az elkülönítést a földrajz (földrajzi méret, energia/hálózati infrastruktúra rendelkezésre állása, rendeletek stb.) korlátai határozzák meg.  
+5. **Fizikai elkülönítés** – ha lehetséges, az Azure legalább 300 mérföld távolságot részesíti előnyben a regionális párokban található adatközpontok között, bár ez nem praktikus vagy lehetséges az összes földrajzi helyen. A fizikai adatközpontok elkülönítése csökkenti a természeti katasztrófák, a zavargások, az áramkimaradások vagy a fizikai hálózatok kimaradásának valószínűségét egyszerre mindkét régióban. Az elkülönítést a földrajz (földrajzi méret, energia/hálózati infrastruktúra rendelkezésre állása, rendeletek stb.) korlátai határozzák meg.  
 
-![replikáció](./media/best-practices-availability-paired-regions/6Orange.png)
-**platform által biztosított replikáció** – egyes szolgáltatások, például a Geo-redundáns tárolás biztosítanak automatikus replikálást a párosított régió számára.
+6. **Platform által biztosított replikáció** – egyes szolgáltatások, például a Geo-redundáns tárolás biztosítanak automatikus replikálást a párosított régióba.
 
-![Recovery](./media/best-practices-availability-paired-regions/7Orange.png)
-**régió helyreállítási sorrendje** – széles kimaradás esetén az egyik régió helyreállítása minden pár közül rangsorolva van. A párosított régiókban üzembe helyezett alkalmazások garantálják, hogy a prioritással rendelkező régiók egyike legyen helyreállítva. Ha egy alkalmazás központi telepítése nem párosított régiók között történik, előfordulhat, hogy a helyreállítás késleltethető – a legrosszabb esetben a kiválasztott régiók az utolsó két helyre állíthatók vissza.
+7. **Régió helyreállítási sorrendje** – széles kimaradás esetén az egyik régió helyreállítása minden pár közül rangsorolva van. A párosított régiókban üzembe helyezett alkalmazások garantálják, hogy a prioritással rendelkező régiók egyike legyen helyreállítva. Ha egy alkalmazás központi telepítése nem párosított régiók között történik, előfordulhat, hogy a helyreállítás késleltethető – a legrosszabb esetben a kiválasztott régiók az utolsó két helyre állíthatók vissza.
 
-![frissítések](./media/best-practices-availability-paired-regions/8Orange.png)
-**szekvenciális frissítések** – a tervezett Azure-rendszerfrissítéseket egymás után (egyidőben nem), az állásidő, a hibák és a logikai hibák hatásának csökkentése érdekében a rossz frissítés ritka eseménye okozhatja.
+8. **Szekvenciális frissítések** – a tervezett Azure-rendszerfrissítéseket a rendszer a párosított régiókba (nem pedig egyidőben), az állásidő minimalizálására, a hibák hatására és a logikai hibákra a rossz frissítés ritka eseménye esetén.
 
-![az adat-](./media/best-practices-availability-paired-regions/9Orange.png)
-az **adattárolásban** – egy régió ugyanabban a földrajzi helyen található, mint a párja (a Dél-Brazília kivételével), hogy kielégítse az adó-és bűnüldözési jogszabályokat az adattárolási követelmények teljesítése érdekében.
+9. **Adattárolás** – a régió ugyanabban a földrajzi helyen található, mint a párja (a Dél-Brazília kivételével), hogy megfeleljen az adó-és bűnüldözési joghatósági céloknak az adattárolásra vonatkozó követelményeinek.

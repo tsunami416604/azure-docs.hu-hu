@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 9f88a69e8d24cfa8654ac2bea3344c9adf81c16a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670406"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269196"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Oktatóanyag: erőforrás-naplók összegyűjtése és elemzése Azure-erőforrásból
 
@@ -46,7 +46,7 @@ A Azure Monitor Log Analytics munkaterülete különböző forrásokból gyűjti
    - **Előfizetés**: válassza ki a munkaterület tárolására szolgáló előfizetést. Ennek nem kell ugyanaz az előfizetése, mint a figyelt erőforrásnak.
    - **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot, vagy kattintson az **új létrehozása** lehetőségre egy új létrehozásához. Ennek nem kell ugyanaz az erőforráscsoport, mint a figyelt erőforrásnak.
    - **Hely**: válasszon ki egy Azure-régiót, vagy hozzon létre újat. Ennek a helynek nem kell megegyeznie, mint a figyelt erőforrás.
-   - **Díjszabási**csomag: válassza az *ingyenes* lehetőséget, amely a 7 napos adatmennyiséget fogja megőrizni. Ezt az árképzési szintet később is megváltoztathatja. A különböző díjszabási csomagokkal kapcsolatos további információért kattintson a **log Analytics díjszabási** hivatkozásra.
+   - **Díjszabási**csomag: *válassza az utólagos* elszámolású lehetőséget a díjszabási szinten. Ezt az árképzési szintet később is megváltoztathatja. A különböző díjszabási csomagokkal kapcsolatos további információért kattintson a **log Analytics díjszabási** hivatkozásra.
 
     ![Új munkaterület](media/tutorial-resource-logs/new-workspace.png)
 

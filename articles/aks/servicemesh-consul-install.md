@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 06ca2327b2859ffb0f5b314d7b92082d5a83dc48
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 1601ab6d81b888fd2247e95f22c58e1fc91df698
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594257"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273741"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>A konzul telepítése és használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -51,7 +51,7 @@ Először töltse le a Consul Helm diagramjának `v0.10.0` verzióját. A diagra
 
 ::: zone pivot="client-operating-system-macos"
 
-[!INCLUDE [MacOS - download](includes/servicemesh/consul/download-bash.md)]
+[!INCLUDE [macOS - download](includes/servicemesh/consul/download-bash.md)]
 
 ::: zone-end
 
@@ -109,7 +109,7 @@ kubectl get pod --namespace consul --output wide
 
 A következő példa kimenetében láthatók a szolgáltatások és a hüvelyek (a Linux-csomópontokon ütemezettek), amelyeknek mostantól futniuk kell:
 
-```console
+```output
 NAME                                 TYPE           CLUSTER-IP    EXTERNAL-IP             PORT(S)                                                                   AGE     SELECTOR
 consul                               ExternalName   <none>        consul.service.consul   <none>                                                                    38s     <none>
 consul-consul-connect-injector-svc   ClusterIP      10.0.98.102   <none>                  443/TCP                                                                   3m26s   app=consul,component=connect-injector,release=consul
@@ -134,7 +134,7 @@ Az összes hüvelynek `Running`állapotot kell mutatnia. Ha a hüvelye nem rende
 
 A konzul felhasználói felülete telepítve lett a fenti beállításokban, és felhasználói felületen alapuló konfigurációt biztosít a konzul számára. A konzul felhasználói felülete nem nyilvánosan elérhető külső IP-címen keresztül. A konzul felhasználói felületének eléréséhez használja a [kubectl Port-Forward][kubectl-port-forward] parancsot. Ez a parancs biztonságos kapcsolatot hoz létre az ügyfélszámítógép és a megfelelő Pod-kapcsolat között az AK-fürtben.
 
-```azurecli
+```console
 kubectl port-forward -n consul svc/consul-consul-ui 8080:80
 ```
 
@@ -151,7 +151,7 @@ Most megnyithat egy böngészőt, és rámutathat `http://localhost:8080/ui`re a
 
 Ha el szeretné távolítani a konzult az AK-fürtből, használja a következő parancsokat. A `helm delete` parancsok eltávolítja a `consul` diagramot, és a `kubectl delete namespace` parancs eltávolítja a `consul` névteret.
 
-```azurecli
+```console
 helm delete --purge consul
 kubectl delete namespace consul
 ```

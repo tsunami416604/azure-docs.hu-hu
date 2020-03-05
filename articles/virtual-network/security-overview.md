@@ -1,31 +1,31 @@
 ---
-title: Azure biztonsági csoportok – áttekintés
+title: Azure hálózati biztonsági csoportok – áttekintés
 titlesuffix: Azure Virtual Network
-description: Ismerje meg a hálózati és alkalmazásbiztonsági csoportokat A biztonsági csoportok az Azure-erőforrások közötti hálózati forgalom szűrésében segítenek.
+description: További tudnivalók a hálózati biztonsági csoportokról. A hálózati biztonsági csoportok segítséget nyújtanak az Azure-erőforrások közötti hálózati forgalom szűrésében.
 services: virtual-network
 documentationcenter: na
-author: malopMSFT
+author: KumudD
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/22/2020
-ms.author: malop
+ms.date: 02/27/2020
+ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: c465d86c3a284a45063b9da183e4866fde7e28e9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3837b2af31ddab3c35abf877a74f980bd34e933d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544514"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267467"
 ---
-# <a name="security-groups"></a>Biztonsági csoportok
+# <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 <a name="network-security-groups"></a>
 
-Az Azure-beli [virtuális hálózatokban](virtual-networks-overview.md) az Azure-erőforrások bejövő és kimenő hálózati forgalmát hálózati biztonsági csoportokkal szűrheti. A hálózati biztonsági csoportok olyan [biztonsági szabályokat](#security-rules) tartalmaznak, amelyek engedélyezik vagy letiltják a különböző típusú Azure-erőforrások bejövő vagy kimenő hálózati forgalmát. A virtuális hálózatokban üzembe helyezhető és hálózati biztonsági csoportokkal használható Azure-erőforrásokkal kapcsolatos információkért tekintse meg az [Azure-szolgáltatások virtuális hálózati integrációját](virtual-network-for-azure-services.md) ismertető cikket. Az egyes szabályokhoz meghatározhatja a forrást és a célt, valamint a használni kívánt portot és protokollt.
+Hálózati biztonsági csoporttal szűrheti az Azure-beli virtuális hálózatban lévő és az Azure-erőforrások felé irányuló hálózati forgalmat. A hálózati biztonsági csoportok olyan biztonsági szabályokat tartalmaznak, amelyek engedélyezik vagy letiltják a különböző típusú Azure-erőforrások bejövő vagy kimenő hálózati forgalmát. A virtuális hálózatokban üzembe helyezhető és hálózati biztonsági csoportokkal használható Azure-erőforrásokkal kapcsolatos információkért tekintse meg az [Azure-szolgáltatások virtuális hálózati integrációját](virtual-network-for-azure-services.md) ismertető cikket. Az egyes szabályokhoz meghatározhatja a forrást és a célt, valamint a használni kívánt portot és protokollt.
 
-A cikk a hálózati biztonsági csoportokkal kapcsolatos fogalmakat ismerteti, hogy segítséget nyújtson a hatékony használatban. Ha korábban még nem hozott létre hálózati biztonsági csoportot, ebben a rövid [oktatóanyagban](tutorial-filter-network-traffic.md) némi gyakorlatra tehet szert. Ha már ismeri a hálózati biztonsági csoportok működését, és kezelni szeretné őket, tekintse meg a [hálózati biztonsági csoportok kezelését](manage-network-security-group.md) bemutató témakört. Ha kommunikációs problémákat tapasztal, és hibaelhárítást végezne a hálózati biztonsági csoportokon, tekintse meg [a virtuális gépek hálózatiforgalom-szűrési problémáinak diagnosztizálását](diagnose-network-traffic-filter-problem.md) ismertető rövid útmutatót. A [hálózati biztonsági csoportok folyamatnaplóinak](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) engedélyezésével [elemezheti azon erőforrások bejövő és kimenő hálózati forgalmát](../network-watcher/traffic-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), amelyekhez hálózati biztonsági csoport van társítva.
+A cikk a hálózati biztonsági csoportokkal kapcsolatos fogalmakat ismerteti, hogy segítséget nyújtson a hatékony használatban. Ha korábban még nem hozott létre hálózati biztonsági csoportot, ebben a rövid [oktatóanyagban](tutorial-filter-network-traffic.md) némi gyakorlatra tehet szert. Ha már ismeri a hálózati biztonsági csoportok működését, és kezelni szeretné őket, tekintse meg a [hálózati biztonsági csoportok kezelését](manage-network-security-group.md) bemutató témakört. Ha kommunikációs problémákat tapasztal, és hibaelhárítást végezne a hálózati biztonsági csoportokon, tekintse meg [a virtuális gépek hálózatiforgalom-szűrési problémáinak diagnosztizálását](diagnose-network-traffic-filter-problem.md) ismertető rövid útmutatót. Engedélyezheti a [hálózati biztonsági csoport folyamatának naplóit](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a hálózati adatforgalom és a hozzájuk tartozó hálózati biztonsági csoport erőforrásainak elemzéséhez.
 
 ## <a name="security-rules"></a>Biztonsági szabályok
 
@@ -33,10 +33,10 @@ A hálózati biztonsági csoportok nulla vagy tetszőleges számú szabályt tar
 
 |Tulajdonság  |Magyarázat  |
 |---------|---------|
-|Név|Egy egyedi név a hálózati biztonsági csoporton belül.|
+|Name (Név)|Egy egyedi név a hálózati biztonsági csoporton belül.|
 |Prioritás | Egy 100 és 4096 közötti szám. A szabályok feldolgozása prioritási sorrendben történik. Az alacsonyabb sorszámúak feldolgozása a magasabb sorszámúak előtt történik, mivel az alacsonyabb sorszámok magasabb prioritást jelölnek. Ha az adatforgalom megfelel valamelyik szabálynak, a feldolgozás leáll. Ennek eredményeképp az olyan alacsonyabb prioritású (magasabb számú) szabályokat, amelyek attribútumai megegyeznek a magasabb prioritású szabályokéival, a rendszer nem dolgozza fel.|
 |Forrás vagy cél| Bármelyik vagy egy egyéni IP-cím, Classless Inter-Domain Routing- (CIDR-) blokk (például 10.0.0.0/24), [szolgáltatáscímke](service-tags-overview.md) vagy [alkalmazásbiztonsági csoport](#application-security-groups). Ha egy Azure-erőforrás címét adja meg, az erőforráshoz rendelt magánhálózati IP-címet adja meg. A hálózati biztonsági csoportok feldolgozása azután történik, hogy az Azure a bejövő forgalomhoz a nyilvános IP-címeket magánhálózati IP-címekre fordítja le, de még mielőtt, hogy a magánhálózati IP-címeket nyilvános IP-címekre fordítaná le a kimenő forgalomhoz. További tudnivalók az Azure-beli [IP-címekről](virtual-network-ip-addresses-overview-arm.md). Tartományok, szolgáltatáscímkék vagy alkalmazásbiztonsági csoportok megadásával kevesebb biztonsági szabályt kell majd létrehoznia. A több egyéni IP-cím vagy -tartomány megadásának lehetősége (szolgáltatáscímkékből és alkalmazásbiztonsági csoportokból nem adható meg több) az egyes szabályokban [kibővített biztonsági szabályok](#augmented-security-rules) néven érhető el. Kibővített biztonsági szabályok kizárólag a Resource Manager-alapú üzemi modellben létrehozott hálózati biztonsági csoportokban hozhatóak létre. A klasszikus üzemi modellben létrehozott hálózati biztonsági csoportokban nem adhat meg több IP-címet vagy -címtartományt. További információ az [Azure üzemi modellekről](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
-|Protocol (Protokoll)     | TCP, UDP, ICMP vagy any.|
+|Protokoll     | TCP, UDP, ICMP vagy any.|
 |Irány| Megadja, hogy a szabály a bejövő vagy a kimenő adatforgalomra vonatkozik.|
 |Porttartomány     |Megadhat egy egyéni portot vagy egy porttartományt is. Megadhatja például a 80-as portot vagy a 10000–10005 tartományt. Tartományok megadásával kevesebb biztonsági szabályt kell majd létrehoznia. Kibővített biztonsági szabályok kizárólag a Resource Manager-alapú üzemi modellben létrehozott hálózati biztonsági csoportokban hozhatóak létre. A klasszikus üzemi modellben létrehozott hálózati biztonsági csoportokban egyazon szabályban nem adhat meg több portot vagy porttartományt.   |
 |Műveletek     | Engedélyezés vagy letiltás        |
@@ -46,57 +46,47 @@ Előfordulhat, hogy a meglévő kapcsolatok nem szakadnak meg az adatfolyamot en
 
 Az egy hálózati biztonsági csoporton belül létrehozható biztonsági szabályok száma korlátozott. További részletek: [Az Azure korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-## <a name="augmented-security-rules"></a>Kibővített biztonsági szabályok
-
-A kibővített biztonsági szabályok megkönnyítik a virtuális hálózatok biztonsági definícióinak megadását, így nagyobb és összetettebb hálózati biztonsági szabályok alakíthatók ki kevesebb szabállyal. Több portot, több konkrét IP-címet és -tartományt foglalhat egyetlen, könnyen érthető biztonsági szabályba. Kibővített szabályokat a szabályok forrás, cél és port mezőiben is használhat. A biztonsági szabály definíciójának egyszerűbb karbantartása érdekében kombinálhatja a kibővített biztonsági szabályokat [szolgáltatáscímkékkel](service-tags-overview.md) vagy [alkalmazásbiztonsági csoportokkal](#application-security-groups). A szabályokban megadható címek, tartományok és portok száma korlátozott. További részletek: [Az Azure korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
-
-## <a name="service-tags"></a>Szolgáltatáscímkék
-
-A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. Ez segít a hálózati biztonsági szabályok gyakori frissítéseinek összetettségének minimalizálásában.
-
-További információ: Azure- [szolgáltatás címkéi](service-tags-overview.md). 
-
-## <a name="default-security-rules"></a>Alapértelmezett biztonsági szabályok
+### <a name="default-security-rules"></a>Alapértelmezett biztonsági szabályok
 
 Az Azure a következő alapértelmezett szabályokat hozza létre a létrehozott hálózati biztonsági csoportokban:
 
-### <a name="inbound"></a>Bejövő
+#### <a name="inbound"></a>Bejövő
 
-#### <a name="allowvnetinbound"></a>AllowVNetInBound
+##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protocol (Protokoll)|Hozzáférés|
+|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Access|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Bármelyik|Engedélyezés|
 
-#### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
+##### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protocol (Protokoll)|Hozzáférés|
+|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Access|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Bármelyik|Engedélyezés|
 
-#### <a name="denyallinbound"></a>DenyAllInbound
+##### <a name="denyallinbound"></a>DenyAllInbound
 
-|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protocol (Protokoll)|Hozzáférés|
+|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Access|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Bármelyik|Megtagadás|
 
-### <a name="outbound"></a>Kimenő
+#### <a name="outbound"></a>Kimenő
 
-#### <a name="allowvnetoutbound"></a>AllowVnetOutBound
+##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protocol (Protokoll) | Hozzáférés |
+|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Bármelyik | Engedélyezés |
 
-#### <a name="allowinternetoutbound"></a>AllowInternetOutBound
+##### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protocol (Protokoll) | Hozzáférés |
+|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Bármelyik | Engedélyezés |
 
-#### <a name="denyalloutbound"></a>DenyAllOutBound
+##### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protocol (Protokoll) | Hozzáférés |
+|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Bármelyik | Megtagadás |
 
@@ -104,49 +94,19 @@ A **Forrás** és a **Cél** oszlopban a *VirtualNetwork*, *AzureLoadBalancer* �
  
 Az alapértelmezett szabályok nem távolíthatók el, azonban magasabb prioritású szabályok létrehozásával felülírhatók.
 
-## <a name="application-security-groups"></a>Alkalmazásbiztonsági csoportok
+### <a name="augmented-security-rules"></a>Kibővített biztonsági szabályok
 
-Az alkalmazásbiztonsági csoportokkal az alkalmazás struktúrájának természetes bővítményeként konfigurálhatja a hálózati biztonságot, így csoportosíthatja a virtuális gépeket, és ezen csoportok alapján meghatározhatja a hálózati biztonsági szabályokat. A biztonsági szabályokat újrahasznosíthatja nagy léptékben is a konkrét IP-címek manuális karbantartása nélkül. A platform képes kezelni a konkrét IP-címek és a szabálykészletek jelentette összetettséget, így Ön az üzleti logikára összpontosíthat. Az alkalmazásbiztonsági csoportok könnyebb megértése érdekében tekintsük a következő példát:
+A kibővített biztonsági szabályok megkönnyítik a virtuális hálózatok biztonsági definícióinak megadását, így nagyobb és összetettebb hálózati biztonsági szabályok alakíthatók ki kevesebb szabállyal. Több portot, több konkrét IP-címet és -tartományt foglalhat egyetlen, könnyen érthető biztonsági szabályba. Kibővített szabályokat a szabályok forrás, cél és port mezőiben is használhat. A biztonsági szabály definíciójának egyszerűbb karbantartása érdekében kombinálhatja a kibővített biztonsági szabályokat [szolgáltatáscímkékkel](service-tags-overview.md) vagy [alkalmazásbiztonsági csoportokkal](#application-security-groups). A szabályokban megadható címek, tartományok és portok száma korlátozott. További részletek: [Az Azure korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-![Alkalmazásbiztonsági csoportok](./media/security-groups/application-security-groups.png)
+#### <a name="service-tags"></a>Szolgáltatáscímkék
 
-Az előző képen az *NIC1* és az *NIC2* az *AsgWeb* alkalmazásbiztonsági csoport tagjai. Az *NIC3* az *AsgLogic* alkalmazásbiztonsági csoport tagja. Az *NIC4* az *AsgDb* alkalmazásbiztonsági csoport tagja. Bár ebben a példában mindegyik hálózati adapter egyetlen alkalmazásbiztonsági csoport tagja, egy hálózati adapter akár több alkalmazásbiztonsági csoportnak is tagja lehet, az [Azure korlátainak](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) megfelelően. Egyik hálózati adapterhez sincs hálózati biztonsági csoport társítva. Az *NSG1* mindkét alhálózathoz társítva van, és a következő szabályokat tartalmazza:
+A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. Ez segít a hálózati biztonsági szabályok gyakori frissítéseinek összetettségének minimalizálásában.
 
-### <a name="allow-http-inbound-internet"></a>Allow-HTTP-Inbound-Internet
+További információ: Azure- [szolgáltatás címkéi](service-tags-overview.md). A hálózati hozzáférés korlátozásához a Storage szolgáltatás címkével kapcsolatos példát a [hálózati hozzáférés korlátozása a Pásti-erőforrásokhoz](tutorial-restrict-network-access-to-resources.md)című témakörben talál.
 
-Ez a szabály az internetről a webkiszolgálókra irányuló forgalom engedélyezéséhez szükséges. Mivel az internetről bejövő forgalmat az alapértelmezett [DenyAllInbound](#denyallinbound) biztonsági szabály tiltja, az *AsgLogic* és az *AsgDb* alkalmazásbiztonsági csoportok esetében nincs szükség további szabályokra.
+#### <a name="application-security-groups"></a>Alkalmazásbiztonsági csoportok
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protocol (Protokoll) | Hozzáférés |
-|---|---|---|---|---|---|---|
-| 100 | Internet | * | AsgWeb | 80 | TCP | Engedélyezés |
-
-### <a name="deny-database-all"></a>Deny-Database-All
-
-Mivel az alapértelmezett [AllowVNetInBound](#allowvnetinbound) biztonsági szabály az azonos virtuális hálózaton lévő erőforrások között minden kommunikációt engedélyez, ez a szabály az összes erőforrástól érkező forgalom tiltásához szükséges.
-
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protocol (Protokoll) | Hozzáférés |
-|---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | Bármelyik | Megtagadás |
-
-### <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
-
-Ez a szabály engedélyezi az *AsgLogic* alkalmazásbiztonsági csoportról az *AsgDb* alkalmazásbiztonsági csoportra irányuló forgalmat. A szabály prioritása magasabb a *Deny-Database-All* szabály prioritásánál. Ennek eredményeként ez a szabály a *Deny-Database-All* szabály előtt lesz kiértékelve, ezért az *AsgLogic* alkalmazásbiztonsági csoporttól érkező forgalom engedélyezve lesz, az összes többi forgalom pedig le lesz tiltva.
-
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protocol (Protokoll) | Hozzáférés |
-|---|---|---|---|---|---|---|
-| 110 | AsgLogic | * | AsgDb | 1433 | TCP | Engedélyezés |
-
-Az alkalmazásbiztonsági csoportokat forrásként vagy célként megadó szabályok csak az adott alkalmazásbiztonsági csoport tagságába tartozó hálózati adapterekre lesznek alkalmazva. Ha a hálózati adapter nem tagja az alkalmazásbiztonsági csoportnak, a szabály nem lesz az adapterre alkalmazva, még akkor sem, ha a hálózati biztonsági csoport az alhálózathoz van rendelve.
-
-Az alkalmazásbiztonsági csoportok a következő korlátozásokkal rendelkeznek:
-
--   Előfizetésenként korlátozott számú alkalmazásbiztonsági csoporttal rendelkezhet az egyes előfizetésekben, valamint egyéb korlátozások is vonatkoznak az alkalmazásbiztonsági csoportokra. További részletek: [Az Azure korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
-- A biztonsági szabályokban forrásként és célként egy biztonsági csoportot adhat meg. Nem adhat meg több alkalmazásbiztonsági csoportot a forrásban vagy a célban.
-- Az egyes alkalmazásbiztonsági csoportokhoz rendelt összes hálózati adapternek ugyanazon a virtuális hálózaton kell lennie, amelyen az alkalmazásbiztonsági csoporthoz rendelt első hálózati adapter található. Például ha az *AsgWeb* nevű alkalmazásbiztonsági csoporthoz rendelt első hálózati adapter a *VNet1* virtuális hálózaton található, akkor az *ASGWeb* csoporthoz rendelt összes többi hálózati adapternek is a *VNet1* hálózaton kell lennie. Nem adhat különböző virtuális hálózatokról származó hálózati adaptereket ugyanahhoz az alkalmazásbiztonsági csoporthoz.
-- Ha egy biztonsági szabály forrásaként és céljaként határoz meg alkalmazásbiztonsági csoportokat, mindkét alkalmazásbiztonsági csoport hálózati adaptereinek ugyanazon a virtuális hálózaton kell lenniük. Ha például az *AsgLogic* a *VNet1* hálózatról tartalmaz hálózati adaptereket, az *AsgDb* pedig a *VNet2* hálózatról, nem rendelheti hozzá az *AsgLogic* csoportot forrásként az *AsgDb* csoportot pedig célként egy adott szabályban. A forrás és a cél alkalmazásbiztonsági csoporthoz tartozó összes hálózati adapternek ugyanazon a virtuális hálózaton kell lennie.
-
-> [!TIP]
-> A szükséges biztonsági szabályok számának csökkentése, valamint a szabályok módosíthatósága érdekében tervezze meg a szükséges alkalmazásbiztonsági csoportokat, és ha lehetséges, szolgáltatáscímkék vagy alkalmazásbiztonsági csoportok használatával hozza létre a szabályokat, ne egyedi IP-címek vagy IP-címtartományok alapján.
+Az alkalmazásbiztonsági csoportokkal az alkalmazás struktúrájának természetes bővítményeként konfigurálhatja a hálózati biztonságot, így csoportosíthatja a virtuális gépeket, és ezen csoportok alapján meghatározhatja a hálózati biztonsági szabályokat. A biztonsági szabályokat újrahasznosíthatja nagy léptékben is a konkrét IP-címek manuális karbantartása nélkül. További információ: [alkalmazás biztonsági csoportjai](application-security-groups.md).
 
 ## <a name="how-traffic-is-evaluated"></a>A forgalom kiértékelése
 

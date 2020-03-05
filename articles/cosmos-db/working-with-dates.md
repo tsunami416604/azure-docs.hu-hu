@@ -1,36 +1,38 @@
 ---
-title: Dátumok használata Azure Cosmos DB
+title: Az Azure Cosmos DB dátumok használata
 description: Útmutató dátumból/időből-objektumok tárolásához, indexeléséhez és lekérdezéséhez Azure Cosmos DB
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 09/25/2019
-ms.openlocfilehash: 162b1a4ad089e75f4ad953a339b9b4c15e245a70
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 03/03/2020
+ms.openlocfilehash: 92fa35fbe8e5eef4dbdc8b6c47a9055affd449a5
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869681"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273187"
 ---
-# <a name="working-with-dates-in-azure-cosmos-db"></a>Dátumok használata Azure Cosmos DB
-A Azure Cosmos DB a séma rugalmasságát és a gazdag indexelést egy natív [JSON](https://www.json.org) -adatmodellen keresztül biztosítja. Az összes Azure Cosmos DB erőforrás, beleértve az adatbázisokat, a tárolókat, a dokumentumokat és a tárolt eljárásokat JSON-dokumentumként modellezik és tárolja. A hordozható, JSON-(és Azure Cosmos DB-) követelmények csak az alaptípusok kis készletét támogatják: karakterlánc, szám, logikai, tömb, objektum és null. A JSON azonban rugalmas, és lehetővé teszi a fejlesztők és keretrendszerek számára, hogy összetettebb típusokat képviselnek ezen primitívek használatával, és objektumokként vagy tömbökként is megkomponálják őket. 
+# <a name="working-with-dates-in-azure-cosmos-db"></a>Az Azure Cosmos DB dátumok használata
 
-Az alaptípusokon kívül számos alkalmazásnak szüksége van a DateTime típusra a dátumok és időbélyegek megjelenítéséhez. Ez a cikk azt ismerteti, hogyan tárolhatók a fejlesztők a Azure Cosmos DB a .NET SDK használatával a dátumok tárolásához, lekéréséhez és lekérdezéséhez.
+A Azure Cosmos DB a séma rugalmasságát és a gazdag indexelést egy natív [JSON](https://www.json.org) -adatmodellen keresztül biztosítja. Az összes Azure Cosmos DB-erőforrásokat, például adatbázisok, tárolók, dokumentumok és tárolt eljárások modellezése és tárolása JSON-dokumentumok formájában. A hordozható visszatérhetnek követelmény, JSON-t (és az Azure Cosmos DB) támogatja a alapvető típusok csak egy kis készletét: karakterlánc, szám, logikai érték, tömböt, objektum és Null. JSON azonban rendkívül rugalmas, és lehetővé teszi a fejlesztők és a keretrendszereket, amelyek ezeket a primitívek használatával, és objektumokat vagy tömbök összeállítása azokat összetettebb típusokra.
 
-## <a name="storing-datetimes"></a>Dátum és idő tárolása
+Az alaptípusokon kívül számos alkalmazásnak szüksége van a DateTime típusra a dátumok és időbélyegek megjelenítéséhez. Ez a cikk bemutatja, hogyan fejlesztők is tárolása, lekérése és lekérdezése az Azure Cosmos DB .NET SDK használatával dátumok.
+
+## <a name="storing-datetimes"></a>Időpontok tárolására
 
 Azure Cosmos DB támogatja a JSON-típusokat, például a-string, a number, a Boolean, a null, a Array, az Object. Nem támogatja közvetlenül a DateTime típust. A Azure Cosmos DB jelenleg nem támogatja a dátumok honosítását. Ezért a DateTimes karakterláncként kell tárolnia. A DateTime karakterláncok ajánlott formátuma Azure Cosmos DBban `YYYY-MM-DDThh:mm:ss.sssZ`, amely az ISO 8601 UTC szabványt követi. Azt javasoljuk, hogy a Azure Cosmos DB összes dátumát UTC-ként tárolja. A dátum sztringek erre a formátumra való konvertálása lehetővé teszi a rendezési dátumok lexicographically. Ha a nem UTC formátumú dátumok vannak tárolva, a logikát az ügyféloldali helyen kell kezelni. Ha a helyi DateTime értéket UTC-re szeretné átalakítani, az eltolásnak ismertnek kell lennie, és a JSON-tulajdonságként kell tárolnia, és az ügyfél az eltolást a számítási UTC DateTime értékre használhatja.
 
-A legtöbb alkalmazás a következő okok miatt használhatja a DateTime alapértelmezett karakterlánc-ábrázolását:
+A legtöbb alkalmazás a következő okok miatt alapértelmezett karakteres használható dátum és idő:
 
-* A karakterláncok összehasonlíthatók, a DateTime értékek relatív sorrendje pedig megmarad, ha karakterlánccá alakítják át őket. 
-* Ehhez a megközelítéshez nem szükséges egyéni kód vagy attribútum a JSON-átalakításhoz.
-* A JSON-ban tárolt dátumok emberi olvashatók.
-* Ez a megközelítés kihasználhatja Azure Cosmos DB indexét a gyors lekérdezési teljesítmény érdekében.
+* Karakterláncok összehasonlíthatók, és a dátum/idő értékek relatív sorrendjének esetén is megőrződik karakterláncok való átalakításából származnak.
+* Ez a megközelítés a JSON-átalakítás bármilyen egyéni kód vagy attribútumok nem igényel.
+* A JSON-fájlban tárolt dátumok emberi olvasható.
+* Ez a megközelítés kihasználhatják az Azure Cosmos DB index a gyors lekérdezési teljesítményre.
 
 Az alábbi kódrészlet például egy `Order` objektumot tárol, amely két DateTime tulajdonságot tartalmaz – `ShipDate` és `OrderDate` a .NET SDK-t használó dokumentumként:
 
+```csharp
     public class Order
     {
         [JsonProperty(PropertyName="id")]
@@ -40,50 +42,53 @@ Az alábbi kódrészlet például egy `Order` objektumot tárol, amely két Date
         public double Total { get; set; }
     }
 
-    await client.CreateDocumentAsync("/dbs/orderdb/colls/orders", 
-        new Order 
-        { 
+    await container.CreateItemAsync(
+        new Order
+        {
             Id = "09152014101",
             OrderDate = DateTime.UtcNow.AddDays(-30),
             ShipDate = DateTime.UtcNow.AddDays(-14), 
             Total = 113.39
         });
+```
 
-Ezt a dokumentumot a Azure Cosmos DB a következőképpen tárolja:
+Ez a dokumentum következő tárolja az Azure Cosmos DB:
 
+```json
     {
         "id": "09152014101",
         "OrderDate": "2014-09-15T23:14:25.7251173Z",
         "ShipDate": "2014-09-30T23:14:25.7251173Z",
         "Total": 113.39
     }
-    
+```  
 
-Azt is megteheti, hogy a dátum/idő karakterláncot UNIX-időbélyegként tárolja, azaz az eltelt másodpercek számát jelölő számként, amely a 1970. január 1. A Azure Cosmos DB belső timestamp (`_ts`) tulajdonsága ezt a megközelítést követi. A [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) osztály használatával számként szerializálhatja a dátum és idő értéket. 
+Másik lehetőségként tárolhatja időpontok Unix időbélyegeket, mint azt jelenti, egy számot jelölő 1970. január 1. óta eltelt másodpercek számát. A Azure Cosmos DB belső timestamp (`_ts`) tulajdonsága ezt a megközelítést követi. A [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) osztály használatával számként szerializálhatja a dátum és idő értéket.
 
-## <a name="indexing-datetimes-for-range-queries"></a>Dátum-és időértékek indexelése a tartomány lekérdezéséhez
-A tartományos lekérdezések gyakoriak a DateTime értékekkel. Ha például a tegnap óta létrehozott összes rendelést meg kell keresnie, vagy az utolsó öt percben szállított összes rendelést szeretné megkeresni, akkor tartomány-lekérdezéseket kell végrehajtania. A lekérdezések hatékony végrehajtásához konfigurálnia kell a gyűjteményt a karakterláncokon a tartomány indexeléséhez.
+## <a name="querying-datetimes-in-linq"></a>A LINQ időpontok lekérdezése
 
-    DocumentCollection collection = new DocumentCollection { Id = "orders" };
-    collection.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
-    await client.CreateDocumentCollectionAsync("/dbs/orderdb", collection);
+Az SQL .NET SDK-val automatikusan támogatja a LINQ-n keresztül az Azure Cosmos DB-ben tárolt adatok lekérdezésére. Az alábbi kódrészlet például egy LINQ-lekérdezést mutat be, amely az elmúlt három napban szállított rendeléseket szűri:
 
-További információ az indexelési házirendek konfigurálásáról [Azure Cosmos db indexelési házirendekben](index-policy.md).
+```csharp
+    IQueryable<Order> orders = container.GetItemLinqQueryable<Order>(allowSynchronousQueryExecution: true).Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
+```
 
-## <a name="querying-datetimes-in-linq"></a>Dátum és idő lekérdezése a LINQ-ben
-Az SQL .NET SDK automatikusan támogatja a Azure Cosmos DB a LINQ használatával tárolt adatlekérdezéseket. Az alábbi kódrészlet például egy LINQ-lekérdezést mutat be, amely az elmúlt három napban szállított rendeléseket szűri.
+Lefordítva a következő SQL-utasításra, és a Azure Cosmos DBon hajtja végre:
 
-    IQueryable<Order> orders = client.CreateDocumentQuery<Order>("/dbs/orderdb/colls/orders")
-        .Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
-          
-    // Translated to the following SQL statement and executed on Azure Cosmos DB
+```sql
     SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
+```
 
-Azure Cosmos DB SQL-lekérdezési nyelvét és a LINQ-szolgáltatót az [Cosmos db lekérdezése](how-to-sql-query.md)című témakörben olvashatja.
+A Azure Cosmos DB SQL-lekérdezési nyelvét és a LINQ-szolgáltatót a [LINQ-Cosmos db lekérdezése](sql-query-linq-to-sql.md)című témakörben olvashatja.
 
-Ebben a cikkben bemutatjuk, hogyan tárolhatók, indexelések és lekérdezési időpontok a Azure Cosmos DBban.
+## <a name="indexing-datetimes-for-range-queries"></a>Tartomány lekérdezéseket időpontok indexelése
 
-## <a name="next-steps"></a>Következő lépések
+A lekérdezések gyakran DateTime értékekkel vannak meghatározva. A lekérdezések hatékony végrehajtásához a lekérdezés szűrője bármely tulajdonságában definiálni kell egy indexet.
+
+További információ az indexelési házirendek konfigurálásáról [Azure Cosmos db indexelési házirendekben](index-policy.md). 
+
+## <a name="next-steps"></a>További lépések
+
 * A [kód mintáinak letöltése és futtatása a githubon](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
-* További információ az [SQL-lekérdezésekről](how-to-sql-query.md)
+* További információ az [SQL-lekérdezésekről](sql-query-getting-started.md)
 * További információ az [Azure Cosmos db indexelési házirendekről](index-policy.md)

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327f53fb39e58f7b70040eb41b6cd80aca18e510
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: ca6ef244a887e75a0d8b9bb663d5325a33cd1e89
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522033"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269355"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a Windows 10-es eszközökre Azure Active Directory (előzetes verzió)
 
@@ -29,13 +29,13 @@ Ez a dokumentum a FIDO2 biztonsági kulcson alapuló jelszavas hitelesítésnek 
 
 ## <a name="requirements"></a>Követelmények
 
-| Eszköztípus | Azure AD-hez csatlakoztatott | Hibrid Azure AD-csatlakozás |
+| Eszköz típusa | Azure AD-hez csatlakoztatott | Hibrid Azure AD-csatlakozás |
 | --- | --- | --- |
 | [Azure-Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
 | [A kombinált biztonsági információk regisztrációjának előzetes verziója](concept-registration-mfa-sspr-combined.md) | X | X |
 | Kompatibilis [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | A WebAuthN a Windows 10 1809-es vagy újabb verzióját igényli | X | X |
-| Az [Azure ad-hez csatlakoztatott eszközökhöz](../devices/concept-azure-ad-join.md) a Windows 10 1809-es vagy újabb verziója szükséges | X |   |
+| Az [Azure ad-hez csatlakoztatott eszközökhöz](../devices/concept-azure-ad-join.md) a Windows 10 1903-es vagy újabb verziója szükséges | X |   |
 | A [hibrid Azure ad-hez csatlakoztatott eszközökhöz](../devices/concept-azure-ad-join-hybrid.md) Windows 10 bennfentes Build 18945 vagy újabb verzió szükséges |   | X |
 | Teljes mértékben kijavítottuk a Windows Server 2016/2019 rendszerű tartományvezérlőket. |   | X |
 | [Azure ad Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) 1.4.32.0 vagy újabb verzió |   | X |
@@ -54,6 +54,7 @@ A következő forgatókönyvek nem támogatottak:
 - Jelentkezzen be egy kiszolgálóra egy biztonsági kulccsal.
 - Ha nem használta a biztonsági kulcsot arra, hogy online állapotba jelentkezzen be az eszközre, nem használhatja azt a kapcsolat nélküli bejelentkezéshez vagy a zárolás feloldásához.
 - Windows 10 rendszerű eszköz beléptetése vagy feloldása több Azure AD-fiókot tartalmazó biztonsági kulccsal. Ez a forgatókönyv a biztonsági kulcshoz hozzáadott utolsó fiókot használja. A WebAuthN lehetővé teszi a felhasználók számára a használni kívánt fiók kiválasztását.
+- Windows 10 1809-es verziót futtató eszköz zárolásának feloldása. A legjobb megoldás, ha a Windows 10 1903-es vagy újabb verzióját használja.
 
 ## <a name="prepare-devices-for-preview"></a>Eszközök előkészítése az előzetes verzióra
 

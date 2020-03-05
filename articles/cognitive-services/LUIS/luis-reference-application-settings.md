@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: bae4f09b539e26ca8c0d4ce97999776dc0911601
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d1ead09f6248a6ad14646371aa70b42b57cf8e3f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961792"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270806"
 ---
 # <a name="application-settings"></a>Alkalmazásbeállítások
 
@@ -27,14 +27,14 @@ Ezeket az Alkalmazásbeállítások az [exportált](https://westus.dev.cognitive
 |NormalizePunctuation|True (Igaz)|Eltávolítja a központozást.|
 |NormalizeDiacritics|True (Igaz)|Eltávolítja a mellékjeleket.|
 
-## <a name="diacritics-normalization"></a>Mellékjelek normalizálása 
+## <a name="diacritics-normalization"></a>Mellékjelek normalizálása
 
 A `settings` paraméterben kapcsolja be a mellékjeleket a LUIS JSON-alkalmazás fájljába.
 
 ```JSON
 "settings": [
     {"name": "NormalizeDiacritics", "value": "true"}
-] 
+]
 ```
 
 Az alábbi hosszúságú kimondott szöveg bemutatják, hogyan befolyásolják a Mellékjelek a hosszúságú kimondott szöveg:
@@ -61,7 +61,7 @@ Az alábbi hosszúságú kimondott szöveg bemutatják, hogyan befolyásolják a
 |`ó`|`o`|
 |`ô`|`o`|
 |`õ`|`o`|
-|`ú`|`u`| 
+|`ú`|`u`|
 |||
 
 #### <a name="dutch-nl-nl-diacritics"></a>Holland `nl-nl` mellékjelek
@@ -77,7 +77,7 @@ Az alábbi hosszúságú kimondott szöveg bemutatják, hogyan befolyásolják a
 |`í`|`i`|
 |`ó`|`o`|
 |`ö`|`o`|
-|`ú`|`u`| 
+|`ú`|`u`|
 |`ü`|`u`|
 |||
 
@@ -91,24 +91,24 @@ Ide tartozik a francia és a kanadai alkultúra is.
 |`à`|`a`|
 |`è`|`e`|
 |`ù`|`u`|
-|`â`|`a`| 
-|`ê`|`e`| 
-|`î`|`i`| 
-|`ô`|`o`| 
-|`û`|`u`| 
-|`ç`|`c`| 
-|`ë`|`e`| 
-|`ï`|`i`| 
-|`ü`|`u`| 
-|`ÿ`|`y`| 
+|`â`|`a`|
+|`ê`|`e`|
+|`î`|`i`|
+|`ô`|`o`|
+|`û`|`u`|
+|`ç`|`c`|
+|`ë`|`e`|
+|`ï`|`i`|
+|`ü`|`u`|
+|`ÿ`|`y`|
 
 #### <a name="german-de-de-diacritics"></a>Német `de-de` mellékjelek
 
 |Hamis értékre beállított mellékjelek|Igaz értékre beállított mellékjelek|
 |--|--|
 |`ä`|`a`|
-|`ö`|`o`| 
-|`ü`|`u`| 
+|`ö`|`o`|
+|`ü`|`u`|
 
 #### <a name="italian-it-it-diacritics"></a>Olasz `it-it` mellékjelek
 
@@ -117,11 +117,11 @@ Ide tartozik a francia és a kanadai alkultúra is.
 |`à`|`a`|
 |`è`|`e`|
 |`é`|`e`|
-|`ì`|`i`| 
-|`í`|`i`| 
-|`î`|`i`| 
-|`ò`|`o`| 
-|`ó`|`o`| 
+|`ì`|`i`|
+|`í`|`i`|
+|`î`|`i`|
+|`ò`|`o`|
+|`ó`|`o`|
 |`ù`|`u`|
 |`ú`|`u`|
 
@@ -133,8 +133,8 @@ Ide tartozik a spanyol és a kanadai mexikói is.
 |-|-|
 |`á`|`a`|
 |`é`|`e`|
-|`í`|`i`| 
-|`ó`|`o`| 
+|`í`|`i`|
+|`ó`|`o`|
 |`ú`|`u`|
 |`ü`|`u`|
 |`ñ`|`u`|
@@ -147,7 +147,7 @@ A `settings` paraméterben bekapcsolhatja az írásjelek kikapcsolásának norma
 ```JSON
 "settings": [
     {"name": "NormalizePunctuation", "value": "true"}
-] 
+]
 ```
 
 A következő hosszúságú kimondott szöveg szemléltetik, hogy a központozás milyen hatással van a hosszúságú kimondott szöveg:
@@ -163,8 +163,8 @@ A következő írásjelek törlődnek a `NormalizePunctuation` értéke TRUE (ig
 
 |Absztrakt|
 |--|
-|`-`| 
-|`.`| 
+|`-`|
+|`.`|
 |`'`|
 |`"`|
 |`\`|

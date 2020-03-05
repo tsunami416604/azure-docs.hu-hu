@@ -7,18 +7,17 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: ccafe6f317ff50684922fd4409beb42214c18858
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0295ed7d44d64fcc1aeb68e1beaa37987b177edb
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161856"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273845"
 ---
-# <a name="nvv4-series-preview"></a>NVv4 sorozat (előzetes verzió)
+# <a name="nvv4-series"></a>NVv4 sorozat 
 
 A NVv4 sorozatú virtuális gépeket az [AMD Radeon ösztön MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPU-k és az AMD EPYC 7V12 (Róma) CPU-k működtetik. A NVv4 sorozatú Azure a részleges GPU-val rendelkező virtuális gépek bevezetését ismerteti. Válassza ki a megfelelő méretű virtuális gépet GPU-gyorsított grafikus alkalmazások és virtuális asztalok számára a GPU-k 1/8-étől kezdődően 2 GiB frame-pufferrel egy teljes GPU-val, 16 GiB frame-pufferrel. A NVv4 Virtual Machines jelenleg csak a Windows vendég operációs rendszert támogatja.
 
-Az előzetes verzió használatakor [regisztráljon, és máris hozzáférhet ezekhez a gépekhez](https://aka.ms/nvv4signup).
 <br>
 
 Premium Storage: támogatott
@@ -42,11 +41,7 @@ Memória-megőrzési frissítések: nem támogatott
 
 ## <a name="supported-operating-systems-and-drivers"></a>Támogatott operációs rendszerek és illesztőprogramok
 
-Az Azure N sorozatú virtuális gépek GPU képességeinek kihasználásához Windows, NVIDIA vagy AMD GPU-illesztőprogramokat kell telepíteni.
-
-Az [NVIDIA GPU illesztőprogram-bővítmény](./extensions/hpccompute-gpu-windows.md) a megfelelő NVIDIA CUDA-vagy Grid-illesztőprogramokat telepíti egy Windows N sorozatú virtuális gépen. A bővítmény telepítése vagy kezelése a Azure Portal vagy eszközök, például Azure PowerShell vagy Azure Resource Manager sablonok használatával. Tekintse meg az [NVIDIA GPU illesztőprogram-bővítmény dokumentációját](./extensions/hpccompute-gpu-windows.md) a támogatott operációs rendszerekhez és üzembe helyezési lépésekhez. A virtuálisgép-bővítményekkel kapcsolatos általános információkért lásd: [Azure-beli virtuális gépek bővítményei és szolgáltatásai](/.extensions/overview.md).
-
-Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a következőt: [N-sorozat GPU-illesztőprogram beállítása a Windows](./windows/n-series-driver-setup.md) rendszerhez támogatott operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések.
+A Windows rendszerű Azure NVv4-sorozatú virtuális gépek GPU-képességeinek kihasználásához telepíteni kell az AMD GPU-illesztőprogramokat.
 
 Az AMD GPU-illesztőprogramok manuális telepítéséhez lásd: [N-sorozatú AMD GPU illesztőprogram-telepítő a Windows](./windows/n-series-amd-driver-setup.md) rendszerhez támogatott operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések.
 

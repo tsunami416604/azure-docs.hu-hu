@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/03/2020
 ms.author: helohr
-ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 9e42ff0ec5b44dca743d2ec1470c2eef655b9436
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368849"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273103"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>A diagnosztikai eszköz üzembe helyezése
 
@@ -128,10 +128,9 @@ Mielőtt folytatná a diagnosztika eszköz telepítését, javasoljuk, hogy elle
 Győződjön meg arról, hogy az alkalmazás regisztrációja API-engedélyekkel rendelkezik:
 
 1. Nyisson meg egy böngészőt, és kapcsolódjon a [Azure Portalhoz](https://portal.azure.com/) a rendszergazdai fiókjával.
-2. Lépjen a **Alkalmazásregisztrációkra** , és keresse meg a Azure ad alkalmazás regisztrációját.
-
-      ![Az API-engedélyek lap.](media/api-permissions-page.png)
-
+2. Lépjen **Azure Active Directory**.
+3. Nyissa meg **Alkalmazásregisztrációk** és válassza a **minden alkalmazás**lehetőséget.
+4. Keresse meg az Azure AD-alkalmazás regisztrációját ugyanazzal az alkalmazással, amelyet a [Azure Active Directory alkalmazás regisztrációjának](deploy-diagnostics.md#create-an-azure-active-directory-app-registration)5. lépésében megadott.
 
 ### <a name="review-your-log-analytics-workspace"></a>Tekintse át Log Analytics munkaterületét
 

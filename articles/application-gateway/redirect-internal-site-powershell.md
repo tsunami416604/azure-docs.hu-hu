@@ -6,18 +6,18 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 03/03/2020
 ms.author: victorh
-ms.openlocfilehash: 4e0c7707066028996e360a342db9f8dc0fd87599
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 92fed35c828398c048d704e1ec9b537904939967
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075114"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272930"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Belső átirányítással rendelkező Application Gateway létrehozása Azure PowerShell használatával
 
-Az Azure PowerShell használatával konfigurálhatja a [webes forgalom átirányítását](multiple-site-overview.md) az [Application Gateway](overview.md)létrehozásakor. Ebben az oktatóanyagban egy háttér-készletet határoz meg egy virtuálisgép-méretezési csoport használatával. Ezután a figyelőket és szabályokat a saját tartományán alapulva konfigurálhatja, hogy a webes forgalom a megfelelő készlethez jusson. Ez az oktatóanyag feltételezi, hogy több tartománya van, és példákat használ a *www.contoso.com* és a *www\.contoso.org*.
+Az Azure PowerShell használatával konfigurálhatja a [webes forgalom átirányítását](multiple-site-overview.md) az [Application Gateway](overview.md)létrehozásakor. Ebben az oktatóanyagban egy háttér-készletet határoz meg egy virtuálisgép-méretezési csoport használatával. Ezután a figyelőket és szabályokat a saját tartományán alapulva konfigurálhatja, hogy a webes forgalom a megfelelő készlethez jusson. Ez az oktatóanyag feltételezi, hogy több tartománya van, és példákat használ a *www\.contoso.com* és a *www\.contoso.org*.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz a Azure PowerShell modul 1.0.0-es vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával.  
 
@@ -107,7 +107,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-first-listener-and-rule"></a>Az első figyelő és szabály létrehozása
 
-A figyelő ahhoz szükséges, hogy az alkalmazásátjáró megfelelően irányíthassa a forgalmat a háttérkészlethez. Ebben az oktatóanyagban két figyelőt hoz létre a két tartományhoz. Ebben a példában a figyelők a *www.contoso.com* és a *www\.contoso.org*tartományai számára jönnek létre.
+A figyelő ahhoz szükséges, hogy az alkalmazásátjáró megfelelően irányíthassa a forgalmat a háttérkészlethez. Ebben az oktatóanyagban két figyelőt hoz létre a két tartományhoz. Ebben a példában a rendszer a *www\.contoso.com* és a *www\.contoso.org*tartományához hoz létre figyelőket.
 
 Hozza létre az első, *contosoComListener* nevű figyelőt a [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) használatával a előtér-konfigurációval és a korábban létrehozott frontend-porttal. A szabály ahhoz szükséges, hogy a figyelő tudja, melyik háttérkészletet használja a bejövő forgalomhoz. Hozzon létre egy *contosoComRule* nevű alapszintű szabályt a [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)használatával.
 
@@ -222,7 +222,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 
-Ebben a példában egy virtuálisgép-méretezési csoport jön létre, amely támogatja a létrehozott háttér-készletet. A létrehozott méretezési csoport neve *myvmss* , és két virtuálisgép-példányt tartalmaz, amelyeken az IIS-t telepíti. Az IP-beállítások konfigurálásakor hozzárendeli a méretezési csoportot a háttérkészlethez.
+Ebben a példában egy virtuálisgép-méretezési csoport jön létre, amely támogatja a létrehozott háttér-készletet. A létrehozott méretezési csoport neve *myvmss* , és két virtuálisgép-példányt tartalmaz, amelyeken az IIS-t telepíti. Az IP-beállítások konfigurálásakor hozzárendel egy méretezési csoportot a háttérkészlethez.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -247,7 +247,7 @@ Set-AzVmssStorageProfile $vmssConfig `
   -ImageReferencePublisher MicrosoftWindowsServer `
   -ImageReferenceOffer WindowsServer `
   -ImageReferenceSku 2016-Datacenter `
-  -ImageReferenceVersion latest
+  -ImageReferenceVersion latest `
   -OsDiskCreateOption FromImage
 Set-AzVmssOsProfile $vmssConfig `
   -AdminUsername azureuser `
@@ -296,9 +296,9 @@ Adja meg a tartománya nevét a böngésző címsorában. Például:, [https://w
 
 ![Contoso webhely tesztelése az alkalmazásátjáróban](./media/redirect-internal-site-powershell/application-gateway-iistest.png)
 
-Módosítsa a címeket a másik tartományra, például https://www.contoso.orgra, és látnia kell, hogy a forgalom átirányítva lett a figyelőnek `www.contoso.com`re.
+Módosítsa a címeket a másik tartományra, például https://www.contoso.orgra, és látnia kell, hogy a forgalmat a rendszer visszairányítja a www\.contoso.com-figyelőhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

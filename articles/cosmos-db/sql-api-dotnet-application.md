@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: sngun
-ms.openlocfilehash: 5403725a57c68a45621d6cc509c57d864b2e0633
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 1f2051addfa1266b754d230c3804834c63f89002
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164916"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274075"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Oktatóanyag: ASP.NET Core MVC-webalkalmazás fejlesztése a Azure Cosmos DB a .NET SDK használatával
 
@@ -197,7 +197,7 @@ Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos 
 
 1. Ugyanebben a fájlban adja hozzá a következő **InitializeCosmosClientInstanceAsync**metódust, amely beolvassa a konfigurációt, és inicializálja az ügyfelet.
 
-   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync":::
+   [!code-csharp[](~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs?name=InitializeCosmosClientInstanceAsync)]
 
 1. Adja meg a konfigurációt a projekt *appSettings. JSON* fájljában, ahogy az a következő kódrészletben látható:
 

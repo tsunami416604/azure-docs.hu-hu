@@ -1,14 +1,14 @@
 ---
 title: Korlátozások és határok – QnA Maker
 description: A QnA Maker részei a Tudásbázis és a szolgáltatás metaadat-korlátokkal rendelkeznek. Fontos, hogy a Tudásbázis tesztelése és közzététele érdekében ezeket korlátokon belül.
-ms.topic: article
+ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: ba53513f21cfc2a4f16fe17decdf0df41570201c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 6375a6c6efc0c7016d9947e04e9479385aa80af5
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650367"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273335"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>A QnA Maker Tudásbázis korlátok és határok
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 26d7c2d8919573c4c971edd7cb0e01b06fef3012
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 51c01869e6152d8e9357644457df11f4fcf5ec5f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901490"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273700"
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és-felhasználók kezelése
 
@@ -25,7 +25,7 @@ A szerepkör engedélyei a következők:
 *  **Folyamat** – a felhasználók csatlakozhatnak az adatbázishoz, és elvégezhetik a folyamatokat, és elemezhetik a modell adatbázis-adataikat.
 *  **Olvasási** – a felhasználók egy ügyfélalkalmazás segítségével csatlakozhatnak a modell adatbázis-adatbázisaihoz, és elemezhetik azokat.
 
-Táblázatos modell projekt létrehozásakor szerepköröket hozhat létre, és felhasználókat vagy csoportokat adhat hozzá ezekhez a szerepkörökhöz a Visual Studióban Analysis Services projektek használatával. A kiszolgálókon való üzembe helyezéskor SQL Server Management Studio (SSMS), [Analysis Services PowerShell-parancsmagok](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)vagy [táblázatos modell parancsnyelv](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) használatával adhat hozzá vagy távolíthat el szerepköröket és felhasználói tagokat.
+Táblázatos modell projekt létrehozásakor szerepköröket hozhat létre, és felhasználókat vagy csoportokat adhat hozzá ezekhez a szerepkörökhöz a Visual Studióban Analysis Services projektek használatával. A kiszolgálókon való üzembe helyezéskor SQL Server Management Studio (SSMS), [Analysis Services PowerShell-parancsmagok](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)vagy [táblázatos modell parancsnyelv](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) használatával adhat hozzá vagy távolíthat el szerepköröket és felhasználói tagokat.
 
 A **biztonsági csoportoknak** e- [mail-kompatibilisnek](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) kell lenniük a `MailEnabled` tulajdonsággal, amely `True`re van beállítva. Ha e-mail-cím alapján ad meg egy csoportot, használja a `obj:groupid@tenantid`.
 
@@ -85,7 +85,7 @@ Szerepkörök és felhasználók egy központilag telepített modell-adatbázish
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Szerepkörök és felhasználók hozzáadása TMSL-parancsfájl használatával
 
-A TMSL parancsfájlt a SSMS XMLA ablakában vagy a PowerShell használatával futtathatja. Használja a [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) parancsot és a [roles](https://docs.microsoft.com/bi-reference/tmsl/roles-object-tmsl) objektumot.
+A TMSL parancsfájlt a SSMS XMLA ablakában vagy a PowerShell használatával futtathatja. Használja a [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) parancsot és a [roles](https://docs.microsoft.com/analysis-services/tmsl/roles-object-tmsl) objektumot.
 
 **Példa TMSL-parancsfájlra**
 
@@ -137,11 +137,11 @@ A sorok szűrői csak olvasási és olvasási és feldolgozási engedélyekkel r
   
 A sorok szűrői a megadott sorokra és a kapcsolódó sorokra vonatkoznak. Ha egy táblának több kapcsolata van, a szűrők az aktív kapcsolat biztonságát alkalmazzák. A sorok szűrői a kapcsolódó táblákhoz definiált más sorokkal vannak összemetszve, például:  
   
-|Table|DAX-kifejezés|  
+|Tábla|DAX-kifejezés|  
 |-----------|--------------------|  
-|Region (Régió)|= Régió [ország] = "USA"|  
+|Régió|=Region[Country]="USA"|  
 |ProductCategory|= ProductCategory [név] = "kerékpárok"|  
-|Tranzakciók|= Tranzakciók [év] = 2016|  
+|Tranzakciók|=Transactions[Year]=2016|  
   
  A háló hatására a tagok lekérhetik az adatsorokat, ahol az ügyfél az USA-ban található, a termék kategóriája kerékpárok, az év pedig 2016. A felhasználók nem tudják lekérdezni az Egyesült Államokon kívüli tranzakciókat, a nem kerékpárokat vagy a 2016-es tranzakciókat, kivéve, ha azok egy másik szerepkör tagja, amely ezeket az engedélyeket megadja.
   
@@ -151,5 +151,5 @@ A sorok szűrői a megadott sorokra és a kapcsolódó sorokra vonatkoznak. Ha e
 
   [Kiszolgáló-rendszergazdák kezelése](analysis-services-server-admins.md)   
   [Azure Analysis Services kezelése a PowerShell-lel](analysis-services-powershell.md)  
-  [Táblázatos modell programozási nyelv (TMSL) – dokumentáció](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)
+  [Táblázatos modell programozási nyelv (TMSL) – dokumentáció](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)
 

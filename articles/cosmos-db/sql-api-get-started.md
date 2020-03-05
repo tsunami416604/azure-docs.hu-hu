@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: ba8b097dc852ba97d4223ba09f78d1f2cdb568e0
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 2681b2199f321f695bc621ed5580319a5e907b34
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587447"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274025"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Oktatóanyag: .NET-konzolos alkalmazás létrehozása Azure Cosmos DB SQL API-fiókban tárolt adatkezeléshez
 
@@ -146,7 +146,7 @@ Remek! Most, hogy befejeztük a beállítást, lássunk neki a kód megírásán
 
 1. Adja hozzá a következő kódot a **GetStartedDemoAsync** aszinkron feladat a **Main** metódusból való futtatásához. A **Main** metódus észleli a kivételeket, és a konzolba írja azokat.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="Main":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=Main)]
 
 1. Az alkalmazás futtatásához nyomja le az F5 billentyűt.
 
@@ -160,7 +160,7 @@ Az adatbázis a tárolók között particionált elemek logikai tárolója. A [C
 
 1. Másolja és illessze be a `CreateDatabaseAsync` metódust a `GetStartedDemoAsync` metódus alá.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="CreateDatabaseAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateDatabaseAsync&highlight=7)]
 
     `CreateDatabaseAsync` egy új adatbázist hoz létre, amelynek azonosítója `FamilyDatabase`, ha még nem létezik, a `databaseId` mezőben megadott AZONOSÍTÓval rendelkezik.
 
@@ -281,7 +281,7 @@ A tárolók a `CosmosDatabase` osztály [**CreateContainerIfNotExistsAsync**](/d
 
 1. Másolja és illessze be a `CreateContainerAsync` metódust a `CreateDatabaseAsync` metódus alá. `CreateContainerAsync` egy új tárolót hoz létre az AZONOSÍTÓval `FamilyContainer` ha még nem létezik, akkor a `LastName` tulajdonság által particionált `containerId` mezőben megadott azonosító használatával.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="CreateContainerAsync&highlight":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateContainerAsync&highlight=9)]
 
 1. Másolja és illessze be az alábbi kódot, ahová létrehozta a CosmosClient az imént hozzáadott **CreateContainer** metódus meghívásához.
 
@@ -313,12 +313,12 @@ Először hozzon létre egy `Family` osztályt, amely a minta Azure Cosmos DB be
 
 1. Másolja és illessze be a `Family`, `Parent`, `Child`, `Pet`és `Address` osztályt a `Family.cs`ba.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
 
 
 1. A *program.cs*-ben adja hozzá a `AddItemsToContainerAsync` metódust a `CreateContainerAsync` metódus után.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="AddItemsToContainerAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
 
 
     A kód ellenőrzi, hogy az azonos AZONOSÍTÓJÚ elemek már nem léteznek-e. Két elemet szúrunk be, egyet az *Andersen családhoz* és a *Wakefield családhoz*.
@@ -348,7 +348,7 @@ Azure Cosmos DB támogatja az egyes tárolókban tárolt JSON-dokumentumokon vé
 
 1. Másolja és illessze be a `QueryItemsAsync` metódust a `AddItemsToContainerAsync` metódus után.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="QueryItemsAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=QueryItemsAsync&highlight=10-11,17-18)]
 
 1. Vegyen fel egy hívást a ``QueryItemsAsync``ra a ``GetStartedDemoAsync`` metódusban.
 
@@ -376,7 +376,7 @@ Most frissíteni fogjuk a Azure Cosmos DB egy elemét. Módosítani fogjuk a `Fa
 
 1. Másolja és illessze be a `ReplaceFamilyItemAsync` metódust a `QueryItemsAsync` metódus után.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="ReplaceFamilyItemAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=ReplaceFamilyItemAsync&highlight=15)]
 
 1. Vegyen fel egy hívást a `ReplaceFamilyItemAsync`ra a `GetStartedDemoAsync` metódusban.
 
@@ -405,7 +405,7 @@ Most töröljük a Azure Cosmos DB lévő elemeket.
 
 1. Másolja és illessze be a `DeleteFamilyItemAsync` metódust a `ReplaceFamilyItemAsync` metódus után.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="DeleteFamilyItemAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteFamilyItemAsync&highlight=10)]
 
 1. Vegyen fel egy hívást a `DeleteFamilyItemAsync`ra a `GetStartedDemoAsync` metódusban.
 
@@ -435,11 +435,11 @@ Most töröljük az adatbázist. A létrehozott adatbázis törlésével az adat
 
 1. Másolja és illessze be a `DeleteDatabaseAndCleanupAsync` metódust a `DeleteFamilyItemAsync` metódus után.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="DeleteDatabaseAndCleanupAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteDatabaseAndCleanupAsync)]
 
 1. Vegyen fel egy hívást a ``DeleteDatabaseAndCleanupAsync``ra a ``GetStartedDemoAsync`` metódusban.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="GetStartedDemoAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=GetStartedDemoAsync&highlight=14)]
 
 1. Az alkalmazás futtatásához nyomja le az F5 billentyűt.
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43a620d32fcfa7970dbdb5bee9740cc8f8b33e50
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a275e5ab394b54960a2340848152741762b28f8c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155129"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269381"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Mikor kell Azure Multi-Factor Authentication szolgáltatót használni
 
@@ -41,7 +41,7 @@ Az MFA szolgáltató létrehozását követően már nem módosíthatja a haszn�
 
 Ha elegendő licencet vásárolt az MFA-ra engedélyezett összes felhasználó lefedéséhez, akkor az MFA-szolgáltatót teljes egészében törölheti.
 
-Ha az MFA szolgáltató nincs Azure AD-bérlőhöz kapcsolva, vagy új MFA szolgáltatót kapcsol egy másik Azure AD-bérlőhöz, a felhasználói és konfigurációs beállításokat a rendszer nem viszi át. Emellett a meglévő Azure MFA-kiszolgálókat újra kell aktiválni az MFA-szolgáltatón keresztül generált aktiválási hitelesítő adatok használatával. Ha újra aktiválja az MFA-kiszolgálókat az MFA-szolgáltatóhoz való kapcsolódáshoz, nem befolyásolja a telefonhívást és a szöveges üzenetek hitelesítését, de a Mobile apps-értesítések nem működnek az összes felhasználónál, amíg újra nem aktiválja a mobil alkalmazást.
+Ha az MFA szolgáltató nincs Azure AD-bérlőhöz kapcsolva, vagy új MFA szolgáltatót kapcsol egy másik Azure AD-bérlőhöz, a felhasználói és konfigurációs beállításokat a rendszer nem viszi át. Emellett a meglévő Azure MFA-kiszolgálókat újra kell aktiválni az MFA-szolgáltatón keresztül generált aktiválási hitelesítő adatok használatával.
 
 ### <a name="removing-an-authentication-provider"></a>Hitelesítési szolgáltató eltávolítása
 

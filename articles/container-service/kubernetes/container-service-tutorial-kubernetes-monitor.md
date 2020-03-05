@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 35f7c2fb968ea5285af5f2d597c67b3b22065906
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 84c2438a8c25b1b64f46e12923212812beac687d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278225"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273321"
 ---
 # <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>ELAVULT Kubernetes-fürt figyelése Log Analytics
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag, amely egy hétrészes sorozat hetedik része, a következő 
 > * Log Analytics-ügynökök beállítása a Kubernetes-csomópontokon
 > * Hozzáférés a monitorozási információkhoz a Log Analytics-portálon vagy az Azure Portalon
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az előző oktatóanyagokban egy alkalmazást csomagoltunk tárolórendszerképekbe, a rendszerképeket feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt.
 
@@ -56,7 +56,7 @@ A következő Kubernetes-jegyzékfájl a tárolómonitorozási ügynökök konfi
 
 Mentse az alábbi szöveget egy `oms-daemonset.yaml` nevű fájlba.
 
-```YAML
+```yaml
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
@@ -123,19 +123,19 @@ spec:
 
 A DaemonSet létrehozásához használja a következő parancsot:
 
-```azurecli-interactive
+```console
 kubectl create -f oms-daemonset.yaml
 ```
 
 A DaemonSet létrejöttének ellenőrzéséhez futtassa a következőt:
 
-```azurecli-interactive
+```console
 kubectl get daemonset
 ```
 
 A kimenet a következőkhöz hasonló:
 
-```azurecli-interactive
+```output
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR   AGE
 omsagent   3         3         3         0            3           <none>          5m
 ```

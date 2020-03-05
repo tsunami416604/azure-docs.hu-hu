@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: b99827ff9fd01c7179a25fafd05bfc8e4ef8ae63
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 279130fa310b107bd1a016c717c48af3d905251b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921096"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270159"
 ---
 # <a name="streaming-ingestion-preview"></a>Folyamatos átvitel (előzetes verzió)
 
@@ -37,7 +37,7 @@ Az adatfolyamok betöltése helyett a klasszikus (tömeges) betöltést használ
  
     ![folyamatos átvitel](media/ingest-data-streaming/streaming-ingestion-on.png)
  
-1. A [webes felhasználói felületen](https://dataexplorer.azure.com/)adja meg az adatfolyam-betöltési [szabályzatot](/azure/kusto/concepts/streamingingestionpolicy) olyan táblázat (ok) ra vagy adatbázis (ok) ra, amely a folyamatos átviteli adatot fogja fogadni. 
+1. A [webes felhasználói felületen](https://dataexplorer.azure.com/)adja meg az adatfolyam-betöltési [szabályzatot](/azure/kusto/management/streamingingestionpolicy) olyan táblázat (ok) ra vagy adatbázis (ok) ra, amely a folyamatos átviteli adatot fogja fogadni. 
 
     > [!NOTE]
     > * Ha a házirend az adatbázis szintjén van meghatározva, a rendszer az adatbázisban lévő összes táblát engedélyezi a folyamatos átvitelhez.
@@ -63,7 +63,7 @@ Két támogatott adatfolyam-betöltési típus létezik:
 > [!WARNING]
 > A streaming betöltésének letiltása néhány órát is igénybe vehet.
 
-1. A streaming betöltési [szabályzatának](/azure/kusto/concepts/streamingingestionpolicy) eldobása az összes kapcsolódó táblából és adatbázisból. A streaming betöltési házirendjének eltávolítása elindítja a betöltési adatátvitelt a kezdeti tárterületről az oszlopos tárolóban lévő állandó tárolóba (egységekben vagy szegmensekben). Az adatáthelyezés a kezdeti tárolóban tárolt adatmennyiségtől és a fürt által használt processzor és memória mennyiségétől függően néhány másodperctől akár néhány óráig is eltarthat.
+1. A streaming betöltési [szabályzatának](/azure/kusto/management/streamingingestionpolicy) eldobása az összes kapcsolódó táblából és adatbázisból. A streaming betöltési házirendjének eltávolítása elindítja a betöltési adatátvitelt a kezdeti tárterületről az oszlopos tárolóban lévő állandó tárolóba (egységekben vagy szegmensekben). Az adatáthelyezés a kezdeti tárolóban tárolt adatmennyiségtől és a fürt által használt processzor és memória mennyiségétől függően néhány másodperctől akár néhány óráig is eltarthat.
 1. A Azure Portal nyissa meg az Azure Adatkezelő-fürtöt. A **Beállítások**területen válassza a **konfigurációk**lehetőséget. 
 1. A **konfigurációk** ablaktáblán válassza ki a **ki** lehetőséget a **streaming**betöltésének letiltásához.
 1. Kattintson a **Mentés** gombra.

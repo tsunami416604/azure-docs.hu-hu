@@ -1,5 +1,6 @@
 ---
-title: Microsoft Threat Modeling Tool kiadás 9/12/2018 – Azure
+title: Microsoft Threat Modeling Tool kiadás 9/12/2018
+titleSuffix: Azure
 description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
 author: jegeib
 ms.author: jegeib
@@ -7,12 +8,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
-ms.openlocfilehash: ad489d6de222380e85a962c7b50c63a5c2122c72
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: a921310f14f0d48922165a46d750366e170ee374
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75548802"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269912"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA kiadás 7.1.50911.2-9/12/2018
 
@@ -38,11 +39,11 @@ A "Mentés a OneDrive", a "Megnyitás a OneDrive" és a "hivatkozás megosztása
 
 ### <a name="in-tmt-preview-the-tool-crashes-when-using-the-standard-template"></a>A TMT előzetes verziójában az eszköz összeomlik a standard sablon használatakor
 
-- Ha egy általános rajzsablon (például "általános adatfolyam") bekerül a rajzolási felületre, és fenyegetéseket hoz létre, akkor az eszköz összeomlhat. A probléma kijavítva.
+- Ha egy általános rajzsablon (például "általános adatfolyam") bekerül a rajzolási felületre, és fenyegetéseket hoz létre, akkor az eszköz összeomlhat. Ez a probléma megoldódott.
 
 ### <a name="in-tmt-preview-when-i-save-a-report-or-copy-the-threats-the-risk-levels-are-incorrect"></a>A TMT előzetes verziójában a jelentések mentésekor vagy a fenyegetések másolásakor a kockázati szintek helytelenek.
 
-- Ha a felhasználó módosítja az adott fenyegetések kockázati szintjét, majd menti a jelentést, vagy átmásolja a kockázatokat, a kockázati szint visszatérhet a "magas" értékre. A probléma kijavítva.
+- Ha a felhasználó módosítja az adott fenyegetések kockázati szintjét, majd menti a jelentést, vagy átmásolja a kockázatokat, a kockázati szint visszatérhet a "magas" értékre. Ez a probléma megoldódott.
 
 ## <a name="known-issues-and-faq"></a>Ismert problémák és gyakori kérdések
 

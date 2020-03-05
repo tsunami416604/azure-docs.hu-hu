@@ -1,20 +1,19 @@
 ---
 title: Apache Hive-alapú adatmegjelenítés Power BI-Azure HDInsight
 description: Ismerje meg, hogyan jelenítheti meg az Azure HDInsight által feldolgozott kaptár-információkat a Microsoft Power BI használatával.
-keywords: hdinsight, Hadoop, struktúra, interaktív lekérdezés, interaktív struktúra, LLAP, ODBC
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 9b99e24d00441f0caab4b55a46e5ccc8be9cdd64
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.custom: hdinsightactive
+ms.date: 03/02/2020
+ms.openlocfilehash: 5bc36c0a52515e1801886a0c3959e29c14da3fe5
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529539"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267802"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Apache Hive-adatmegjelenítés a Microsoft Power BI az ODBC használatával az Azure HDInsight
 
@@ -33,9 +32,9 @@ Az adatok az új [interaktív lekérdezési](../interactive-query/apache-interac
 
 A cikk végrehajtása előtt a következő elemeket kell megadnia:
 
-* **HDInsight-fürt**. A fürt lehet egy struktúra vagy egy újonnan kiadott interaktív lekérdezési fürttel rendelkező HDInsight-fürt. Fürtök létrehozásával kapcsolatban lásd: [fürt létrehozása](apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+* HDInsight-fürt. A fürt lehet egy struktúra vagy egy újonnan kiadott interaktív lekérdezési fürttel rendelkező HDInsight-fürt. Fürtök létrehozásával kapcsolatban lásd: [fürt létrehozása](apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 
-* **[Microsoft Power bi Desktop](https://powerbi.microsoft.com/desktop/)** . A másolást a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=45331)töltheti le.
+* [Microsoft Power bi Desktop](https://powerbi.microsoft.com/desktop/). A másolást a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=45331)töltheti le.
 
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC-adatforrás létrehozása
 
@@ -47,7 +46,7 @@ A **hivesampletable** -struktúra tábla minden HDInsight-fürtöt tartalmaz.
 
 1. Power BI Desktop elindítása.
 
-1. A felső menüben navigáljon a **kezdőlap**  > **adatok beolvasása**  > **továbbiak...** .
+1. A felső menüben navigáljon a **kezdőlap** > **adatok beolvasása** > **továbbiak...** .
 
     ![Az HDInsight Excel Power BI megnyitása](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 

@@ -2,18 +2,19 @@
 title: Azure Marketplace és AppSource Consulting Services
 description: Ez a cikk az Azure Marketplace-en elérhető új tanácsadási ajánlatok támogathatósági feltételeit és közzétételi követelményeit ismerteti.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: yijenj
+author: qianw211
+manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 10/29/2018
-ms.author: pabutler
-ms.openlocfilehash: cd90ae2b751a97c18dc8b6be4b8eb565a17df7a2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
-ms.translationtype: MT
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: 50e5be309d56f58a79fa19b5270a0b6d2fd3db92
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191134"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268247"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Az Azure Marketplace és a AppSource tanácsadói szolgáltatásai
 Az Azure Marketplace-en és a AppSource-ben elérhető tanácsadói szolgáltatások lehetővé teszi a Microsoft partnerei számára, hogy összekapcsolják az ügyfeleket a szolgáltatásokkal az Azure és az üzleti célok támogatásához és bővítéséhez 
@@ -33,7 +34,7 @@ A piactér kirakatai a célközönségek és a Microsoft Cloud Products szolgál
 |A termék tapasztalatai      |Azure felügyeleti portál|Dynamics 365, Office 365, Office ügyfélalkalmazások| 
 |Egyéb      |Helyszíni közzététel Azure Stack, Azure-beli tanácsadási szolgáltatások, Azure-beli felügyelt szolgáltatások révén|A Dynamics és a Power BI tanácsadói szolgáltatásai|
 
-A Microsoft Dynamics 365-es és Power BI-alapú tanácsadói szolgáltatásai jogosultak a Microsoft AppSource való listázásra. További információ: [Microsoft AppSource Consulting Services listázási irányelvei](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+A Microsoft Dynamics 365, a Power apps és a Power BI alapján elérhető tanácsadói szolgáltatások jogosultak a Microsoft AppSource való listázásra. További információ: [Microsoft AppSource Consulting Services listázási irányelvei](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409).
 
 A Microsoft Azureon alapuló tanácsadói szolgáltatások és felügyelt szolgáltatások az Azure Marketplace-en is szerepelhetnek. További információkért lásd: [Az Azure Consulting Service közzétételére](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) és [a felügyelt szolgáltatások Azure Marketplace-re való közzétételére](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)vonatkozó cikkek.
 
@@ -61,24 +62,30 @@ A partnereknek **Silver vagy Gold kompetenciára** van szükségük a szolgálta
 
 |Elsődleges termék |Jogosultsági követelmény |
 |---------|---------|
-| Dynamics 365 for Customer Engagement    |   Silver vagy Gold [Cloud Customer ügyfélkapcsolat-kezelési](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency) kompetencia.    | 
-|Dynamics 365 for Finance and Operations, Enterprise Edition  |  A Silver vagy Gold [Vállalati erőforrás-tervezési](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) kompetencia, valamint a $25K minimális bevétele a Felhőbeli műveletekben a 12 hónapon belül.       |
-|Dynamics 365 for Finance and Operations, Business Edition  |  A szolgáltatás legalább egy ügyfél számára a DPOR [(CSP)](https://partner.microsoft.com/cloud-solution-provider) vagy a [digitális partner (Recording)](https://partner.microsoft.com/membership/digital-partner-of-record)      |
-|Power BI Power BI egyéni vizualizációk | Ismerje meg a [megoldás partneri feltételeit](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf).|
-|PowerApps | Közzétett [partneri bemutató](https://appsource.microsoft.com/partners) megoldás
+| Dynamics 365-értékesítés <br> Dynamics 365 marketing <br> Dynamics 365 Customer szolgáltatás <br> Dynamics 365 mező szolgáltatás <br> Dynamics 365 emberi erőforrások |   Az ügyfél-bevonási lehetőséghez tartozó, a [Cloud Business Applications kompetenciában](https://partner.microsoft.com/membership/cloud-business-applications-competency) található Gold vagy Silver minősítéssel kell rendelkeznie.    | 
+| Dynamics 365 – Pénzügy <br> Dynamics 365 ellátási lánc kezelése <br> Dynamics 365 kereskedelmi <br> Dynamics 365 emberi erőforrások <br> Dynamics 365 Project szolgáltatás automatizálása |  Az Unified Operations beállításhoz tartozó [Cloud Business Applications kompetenciában](https://partner.microsoft.com/membership/cloud-business-applications-competency) az arany vagy ezüst minősítéssel kell rendelkeznie.       |
+| Dynamics 365 Customer Insights | Legalább 1 sikeres, a [Dynamics 365](https://dynamics.microsoft.com/ai/customer-insights/) -es és 5-ös szegmenst tartalmazó Customer Insights éles megvalósítását kell végrehajtania. |
+| Dynamics 365 Business Central | A [Vállalati erőforrás-tervezési kompetenciában](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) arany vagy ezüst minősítéssel kell rendelkeznie, és a felhőalapú megoldás szolgáltatójának kell lennie legalább 3 üzleti központi ügyfél számára. <br> <br> VAGY <br> <br> Közzé kell tenni az [üzleti központi alkalmazást a AppSource-ben](https://appsource.microsoft.com/) |
+| Power BI | Szerepelnie kell a [Power bi partner bemutatóján](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
+|Power Apps | A [PowerApps-partnerségi programban](https://aka.ms/PowerAppsPartner)speciális előnyökre van szükség. |
+
+További források és támogatás:
+
+1. [Microsoft Cloud-engedélyezési Desk](https://aka.ms/CEDnominate) <br> A Cloud Enable Desk interaktív felhasználói felülete a partneri jelöléssel segíti a Cloud program specialista számára az MPN-juttatások kialakítását, és útmutatásként szolgál a kompetenciák megvalósításához.  
+2. Hogyan kérhető le a Power BI Showcase-ben? <br> Első lépésként küldje el a következőt: [partnerré válási](https://powerbi.microsoft.com/become-a-partner/)kérelem beszerzése.
 
 <b>További információ: [kompetenciák a Microsoft partner Networkon keresztül](https://partner.microsoft.com/membership/competencies).</b>
- 
 
-**Az SI-partnerek tanácsadási ajánlatokat küldhetnek a következő 18 országra/régióra vonatkozóan**
+**Az SI-partnerek tanácsadási ajánlatokat küldhetnek a következő 21 országra/régióra vonatkozóan**
 
-|Jogosult országok/régiók |   |   |   |
+|   |   |   |   |
 |---------|----------|----------|----------|
-|Ausztrália |Franciaország  |     Mexikó          |Spanyolország       |
-|Belgium   |Németország |     Hollandia     |Svédország       |
-|Kanada    |India   |     Új-Zéland     |Egyesült Királyság  |
-|Dánia   |Olaszország   |     Norvégia          |Egyesült Államok |
-|Finnország   |Japán   |     Lengyelország          
+| Ausztrália | Belgium | Kanada | Dánia |
+| Finnország  | Franciaország | Németország  | India   |
+| Olaszország    | Japán  |  Mexikó  |  Hollandia  |
+|  Új-Zéland  |  Norvégia  |  Lengyelország  | Dél-afrikai Köztársaság |
+|  Spanyolország  | Svédország  | Svájc  |  Egyesült Államok  |
+| Egyesült Királyság  |
 
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Regisztráció a tanácsadási szolgáltatásokhoz az Azure Marketplace-en és a AppSource-ben

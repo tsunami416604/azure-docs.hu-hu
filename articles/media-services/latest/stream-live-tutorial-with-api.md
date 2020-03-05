@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 47d526ea410bc449c91ae4fb10913850c447f1b3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cb6095f1579334b9fe35a02a3006de32ff551989
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582650"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268179"
 ---
 # <a name="tutorial-stream-live-with-media-services"></a>Oktatóanyag: élő közvetítés Media Services
 
@@ -47,7 +47,7 @@ Az oktatóanyag elvégzésének feltételei a következők:
 - [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).<br/>Ügyeljen arra, hogy jegyezze fel az erőforráscsoport neveként használt értékeket, és Media Services a fiók nevét.
 - Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](access-api-cli-how-to.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
 - Egy olyan kamera vagy eszköz (például laptop), amely az események közvetítésére szolgál.
-- Egy helyszíni élő kódoló, amely a kamera jeleit streammé alakítja, amelyek aztán továbbítódnak a Media Services élő streamszolgáltatásra. A streamnek **RTMP** vagy **Smooth Streaming** formátumúnak kell lennie.
+- Helyszíni élő kódoló, amely a kamerából származó jeleket átalakítja a Media Services élő közvetítési szolgáltatásnak küldött adatfolyamokra: [ajánlott helyszíni élő kódolók](recommended-on-premises-live-encoders.md). A streamnek **RTMP** vagy **Smooth Streaming** formátumúnak kell lennie.
 
 > [!TIP]
 > Mielőtt folytatná, mindenképp tekintse át [a Media Services 3-as verziójával megvalósított élő streamelést](live-streaming-overview.md) bemutató cikket. 
@@ -188,7 +188,7 @@ az group delete --name amsResourceGroup
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Videofájlok streamelése](stream-files-tutorial-with-api.md)
  

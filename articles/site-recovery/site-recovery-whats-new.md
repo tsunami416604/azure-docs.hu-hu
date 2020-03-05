@@ -2,13 +2,13 @@
 title: A Azure Site Recovery újdonságai
 description: A Azure Site Recovery szolgáltatás új szolgáltatásainak és legújabb frissítéseinek összefoglalása.
 ms.topic: conceptual
-ms.date: 01/31/2020
-ms.openlocfilehash: cae653c9e51e2a497d6fa3781415a1f836053593
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 03/03/2020
+ms.openlocfilehash: abb1592bcacf025e9a052d7a9222f6fb3d2b72d6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064529"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267491"
 ---
 # <a name="whats-new-in-site-recovery"></a>A Site Recovery újdonságai
 
@@ -20,15 +20,29 @@ Az [Azure](https://azure.microsoft.com/updates/?product=site-recovery) Updates c
 
 Site Recovery-összetevők esetében az N-4 verziót támogatjuk, ahol N a legújabb kiadású verzió. Ezeket az alábbi táblázat foglalja össze.
 
-**Frissítés** |  **Egyesített beállítás** | **Konfigurációs kiszolgáló petesejtjei** | **Mobilitási szolgáltatás ügynöke** | **Site Recovery szolgáltató** | **Recovery Services ügynök**
+**Update** |  **Egyesített beállítás** | **Konfigurációs kiszolgáló petesejtjei** | **Mobilitási szolgáltatás ügynöke** | **Site Recovery szolgáltató** | **Recovery Services ügynök**
 --- | --- | --- | --- | --- | ---
+[45-es összesítés](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [43-es összesítés](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [42-es összesítés](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 [41-es összesítés](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 [40-es összesítés](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
-[39-es összesítés](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 
 [További](service-updates-how-to.md) információ a frissítések telepítéséről és támogatásáról.
+
+> [!NOTE]
+> A 44-es kumulatív frissítés nem jelenik meg a táblázatban, mert nem tartalmazta a Site Recovery szolgáltatók és ügynökök frissítéseit.
+
+## <a name="updates-march-2020"></a>Frissítések (2020. március)
+
+### <a name="update-rollup-45"></a>45-es kumulatív frissítés
+
+A 45-es [kumulatív frissítés](https://support.microsoft.com/help/4550047/update-rollup-45-for-azure-site-recovery) a következő frissítéseket tartalmazza:
+
+**Update** | **Részletek**
+--- | ---
+**Szolgáltatók és ügynökök** | A Site Recovery ügynökök és szolgáltatók frissítései a kumulatív módon részletezve.
+**Hibajavítások/javítások** | Számos javítás és javítás a kumulatív összesítésben.
 
 ## <a name="updates-january-2020"></a>Frissítések (január 2020)
 
@@ -36,7 +50,7 @@ Site Recovery-összetevők esetében az N-4 verziót támogatjuk, ahol N a legú
 
 A 44-es [kumulatív frissítés](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Nem voltak frissítések a Site Recovery szolgáltatók és ügynökök számára.
 **Hibajavítások/javítások** | Számos javítás és javítás a kumulatív összesítésben.
@@ -50,7 +64,7 @@ Az Azure Virtual Machines mostantól támogatja a virtuális gépek számára a 
 
 A 43-es [kumulatív frissítés](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítései (a kumulatív részletezéssel)
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezett módon)
@@ -62,7 +76,7 @@ A 43-es [kumulatív frissítés](https://support.microsoft.com/help/4537047/upda
 
 A 42-es [kumulatív frissítés](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítései (a kumulatív részletezéssel)
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezett módon)
@@ -109,7 +123,7 @@ Ha az Azure-beli virtuális gépeket másodlagos régióba vagy helyszíni VMwar
 
 A 41-es [kumulatív frissítés](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítései (a kumulatív részletezéssel)
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezett módon)
@@ -140,7 +154,7 @@ A VMware – Azure vész-helyreállítás új funkciói a táblázatban vannak �
 
 A 40-es [kumulatív frissítés](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítései (a kumulatív részletezéssel)
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezett módon)
@@ -180,7 +194,7 @@ Tárfiók | A Site Recovery mostantól támogatja a Hyper-V-ről az Azure-ba ir�
 
 A 39-es [kumulatív frissítés](https://support.microsoft.com/help/4517283/update-rollup-39-for-azure-site-recovery) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítései (a kumulatív részletezéssel)
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezett módon)
@@ -201,7 +215,7 @@ Az Azure-beli virtuális gép vész-helyreállításának új funkciói a tábl�
 
 A 38-es [kumulatív frissítés](https://support.microsoft.com/help/4513507/) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítései (a kumulatív részletezéssel)
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezett módon)
@@ -222,7 +236,7 @@ A lemezeket mostantól akár 8 TB-ra is replikálhatja, ha felügyelt lemezekkel
 
 A 37-es [kumulatív frissítés](https://support.microsoft.com/help/4508614/) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítései (a kumulatív részletezéssel)
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezett módon)
@@ -244,7 +258,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 A 36-es [kumulatív frissítés](https://support.microsoft.com/help/4503156) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítése (a kumulatív részletezés szerint)
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezett módon)
@@ -277,7 +291,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 A 35-es [kumulatív frissítés](https://support.microsoft.com/en-us/help/4494485/update-rollup-35-for-azure-site-recovery) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítése (a kumulatív részletezés szerint)
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezett módon)
@@ -298,7 +312,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 A 34-es [kumulatív frissítés](https://support.microsoft.com/help/4490016/update-rollup-34-for-azure-site-recovery) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítése (a kumulatív részletezés szerint).
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezve).
@@ -308,7 +322,7 @@ A 34-es [kumulatív frissítés](https://support.microsoft.com/help/4490016/upda
 
 A 33-es [kumulatív frissítés](https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítése (a kumulatív részletezés szerint).
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezve).
@@ -348,7 +362,7 @@ A gyorsított hálózatkezelés lehetővé teszi az egyszintű I/O-virtualizál�
 
 A 32-es [kumulatív frissítés](https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítése (a kumulatív részletezés szerint).
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezve).
@@ -375,7 +389,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 A [31. kumulatív frissítés](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítése (a kumulatív részletezés szerint).
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezve).
@@ -430,7 +444,7 @@ Az Azure-beli virtuális gépek vész-helyreállítási költségei a virtuális
 
 A [30. kumulatív frissítés](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítése (a kumulatív részletezés szerint).
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezve).
@@ -450,7 +464,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 A [29. kumulatív frissítés](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítése (a kumulatív részletezés szerint).
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezve).
@@ -462,7 +476,7 @@ A [29. kumulatív frissítés](https://support.microsoft.com/help/4466466/update
 
 A [28. kumulatív frissítés](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítése (a kumulatív részletezés szerint).
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezve).
@@ -491,7 +505,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 A [27. kumulatív frissítés](https://support.microsoft.com/help/4055712/update-rollup-27-for-azure-site-recovery) a következő frissítéseket tartalmazza.
 
-**Frissítés** | **Részletek**
+**Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítése (a kumulatív részletezés szerint).
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezve).

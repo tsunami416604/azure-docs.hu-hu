@@ -1,45 +1,45 @@
 ---
 title: Földrajz v2 előre elkészített entitás – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk a Language Understanding (LUIS) geographyV2 előre felépített entitási információit tartalmazza.
+description: Ez a cikk tartalmaz geographyV2 előre összeállított entitások információ a Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 7a269f93820a6029370490448f02038f5aa3eb3e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b2b2b0781abce59628660b669f43110bf91b15e6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464904"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273490"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 előre összeépített entitása egy LUIS-alkalmazáshoz
-Az előre elkészített geographyV2 entitás észleli a helyeket. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia például a GeographyV2-t tartalmazó hosszúságú kimondott szöveg az Application szándékokhoz. Az GeographyV2 entitás angol [kulturális](luis-reference-prebuilt-entities.md)környezetekben támogatott.
+Az előre összeállított geographyV2 entitás helyek észleli. Az entitás már be van tanítva, mert nem kell az alkalmazás leképezések GeographyV2 tartalmazó példa beszédmódok hozzáadása. Az GeographyV2 entitás angol [kulturális](luis-reference-prebuilt-entities.md)környezetekben támogatott.
 
-## <a name="subtypes"></a>Altípusok
-A földrajzi helyszínek altípusokkal rendelkeznek:
+## <a name="subtypes"></a>Altípus
+A földrajzi helyeket altípus rendelkezik:
 
 |Altípus|Cél|
 |--|--|
-|`poi`|érdekes pont|
-|`city`|város neve|
+|`poi`|hasznos helyekre vezető útvonalak|
+|`city`|Város neve|
 |`countryRegion`|ország vagy régió neve|
-|`continent`|a kontinens neve|
+|`continent`|kontinens neve|
 |`state`|állam vagy megye neve|
 
 
-## <a name="resolution-for-geographyv2-entity"></a>GeographyV2-entitás feloldása
+## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 entitás feloldása
 
 A lekérdezés a következő entitás-objektumokat adja vissza:
 
 `Carol is visiting the sphinx in gizah egypt in africa before heading to texas.`
 
-#### <a name="v3-responsetabv3"></a>[V3 válasz](#tab/V3)
+#### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
 A következő JSON a `verbose` paraméterrel van beállítva `false`:
 
@@ -72,7 +72,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `false`:
 
 Az előző JSON-ban `poi` az **érdekes pont**rövidítése.
 
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 részletes válasz](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
 
 A következő JSON a `verbose` paraméterrel van beállítva `true`:
 
@@ -161,7 +161,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `true`:
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2 válasz](#tab/V2)
+#### <a name="v2-response"></a>[V2 válasz](#tab/V2)
 
 Az alábbi példa a **beépített. geographyV2** entitás feloldását mutatja be.
 
@@ -205,10 +205,10 @@ Az alábbi példa a **beépített. geographyV2** entitás feloldását mutatja b
     }
 ]
 ```
-* * * 
+* * *
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
-További információ az [e-mailek](luis-reference-prebuilt-email.md), a [számok](luis-reference-prebuilt-number.md)és a [sorszámok](luis-reference-prebuilt-ordinal.md) entitásokról. 
+További információ az [e-mailek](luis-reference-prebuilt-email.md), a [számok](luis-reference-prebuilt-number.md)és a [sorszámok](luis-reference-prebuilt-ordinal.md) entitásokról.

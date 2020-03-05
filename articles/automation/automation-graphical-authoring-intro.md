@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 15f63544a98c6d7bb7171081d9c3e084890e15ec
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: a50dbe4d1e100032282891ccd15a94330f7fead4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255995"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272974"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafikus szerzői műveletek Azure Automation
 
@@ -380,7 +380,7 @@ Az alábbi példa a **Get Twitter-kapcsolatok** nevű tevékenység kimenetét h
 
 ## <a name="authenticating-to-azure-resources"></a>Hitelesítés az Azure-erőforrásokkal
 
-Az Azure-erőforrásokat kezelő Azure Automation runbookok az Azure-ba történő hitelesítést igénylik. A [futtató fiók](automation-create-runas-account.md)(más néven egyszerű szolgáltatásnév) az az alapértelmezett mechanizmus, amelyet az Automation runbook az előfizetéshez tartozó Azure Resource Manager erőforrások elérésére használ. Ezt a funkciót grafikus runbook is hozzáadhatja úgy, hogy hozzáadja a **azurerunasconnection elemet** kapcsolódási eszközt, amely a PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) parancsmagot használja a vászonhoz. A [AzAccount](/powershell/module/az.profile/connect-azaccount) parancsmagot is hozzáadhatja. Ezt a forgatókönyvet a következő példa szemlélteti.
+Az Azure-erőforrásokat kezelő Azure Automation runbookok az Azure-ba történő hitelesítést igénylik. A [futtató fiók](automation-create-runas-account.md)(más néven egyszerű szolgáltatásnév) az az alapértelmezett mechanizmus, amelyet az Automation runbook az előfizetéshez tartozó Azure Resource Manager erőforrások elérésére használ. Ezt a funkciót grafikus runbook is hozzáadhatja úgy, hogy hozzáadja a **azurerunasconnection elemet** kapcsolódási eszközt, amely a PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) parancsmagot használja a vászonhoz. A [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmagot is hozzáadhatja. Ezt a forgatókönyvet a következő példa szemlélteti.
 
 ![Futtató hitelesítési tevékenységek](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 

@@ -6,22 +6,22 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: e4d3a7fbdb938071b754a16179bcd021985383cc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277490"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273214"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Elosztott nyomkövetés használata az Azure Spring Cloud használatával
 
-Az Azure Spring Cloud elosztott nyomkövetési eszközeivel könnyedén hibakeresést végezhet, és figyelheti az összetett problémákat. Az Azure Spring Cloud integrálja az Azure [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) az Azure [Application Insightsával](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Ez az integráció hatékony elosztott nyomkövetési képességet biztosít a Azure Portal.
+Az Azure Spring Cloud elosztott nyomkövetési eszközeivel könnyedén hibakeresést végezhet, és figyelheti az összetett problémákat. Az Azure Spring Cloud egyesíti a [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) az Azure [Application Insightsával](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Ez az integráció hatékony elosztott nyomkövetési képességet biztosít a Azure Portal.
 
 Ebben a cikkben az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az elosztott nyomkövetés engedélyezése a Azure Portalban.
-> * Azure Spring Cloud-Sleuth hozzáadása az alkalmazáshoz.
+> * A Spring Cloud Sleuth hozzáadása az alkalmazáshoz.
 > * Tekintse meg a szolgáltatói alkalmazások függőségi térképeit.
 > * Keresési nyomkövetési adatkeresés különböző szűrőkkel.
 
@@ -39,7 +39,7 @@ Az oktatóanyag elvégzéséhez olyan Azure Spring Cloud Service-szolgáltatásr
 
    A módosítás után a Zipkin küldő küldhet a weben.
 
-1. Ugorja át ezt a lépést, ha követte az [Azure Spring Cloud-alkalmazás előkészítését ismertető útmutatót](spring-cloud-tutorial-prepare-app-deployment.md). Ellenkező esetben lépjen a helyi fejlesztési környezetbe, és szerkessze a Pom. xml fájlt, hogy tartalmazza a következő Azure Spring Cloud Sleuth függőséget:
+1. Ugorja át ezt a lépést, ha követte az [Azure Spring Cloud-alkalmazás előkészítését ismertető útmutatót](spring-cloud-tutorial-prepare-app-deployment.md). Ellenkező esetben lépjen a helyi fejlesztési környezetbe, és szerkessze a Pom. xml fájlt, hogy tartalmazza a következő Spring Cloud Sleuth függőséget:
 
     ```xml
     <dependencyManagement>

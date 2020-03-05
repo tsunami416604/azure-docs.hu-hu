@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7e10fd982c19e45be8c5da4ffc7f7248276352c1
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2c2d50da4328ff07c3d2fda4a8721839aa3aa6e7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275493"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274052"
 ---
 # <a name="deprecated-run-applications-in-kubernetes"></a>ELAVULT Alkalmazások futtatása a Kubernetes-ben
 
@@ -32,7 +32,7 @@ Az ezt követő oktatóanyagokban horizontálisan felskálázzuk és frissítjü
 
 Ez az oktatóanyag feltételezi, hogy ismeri a Kubernetes alapvető fogalmait. A Kubernetesszel kapcsolatos részletes információkat a [Kubernetes dokumentációjában](https://kubernetes.io/docs/home/) találja.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe, a rendszerképet feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt. 
 
@@ -70,13 +70,13 @@ Mentse és zárja be a fájlt.
 
 Az alkalmazást a [kubectl create](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) paranccsal futtathatja. A parancs elemzi jegyzékfájlt, és létrehozza a meghatározott Kubernetes-objektumokat.
 
-```azurecli-interactive
+```console
 kubectl create -f azure-vote-all-in-one-redis.yml
 ```
 
 Kimenet:
 
-```bash
+```output
 deployment "azure-vote-back" created
 service "azure-vote-back" created
 deployment "azure-vote-front" created
@@ -89,13 +89,13 @@ A rendszer létrehoz egy [Kubernetes-szolgáltatást](https://kubernetes.io/docs
 
 A folyamat állapotának monitorozásához használja [kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) parancsot a `--watch` argumentummal.
 
-```azurecli-interactive
+```console
 kubectl get service azure-vote-front --watch
 ```
 
-Kezdetben az `azure-vote-front` szolgáltatás **EXTERNAL-IP** értéke `pending` állapotú. Miután az EXTERNAL-IP cím `pending` állapotról `IP address` állapotúra változik, a `CTRL-C` billentyűparanccsal állítsa le a kubectl figyelési folyamatát.
+Kezdetben az **szolgáltatás**EXTERNAL-IP`azure-vote-front` értéke `pending` állapotú. Miután az EXTERNAL-IP cím `pending` állapotról `IP address` állapotúra változik, a `CTRL-C` billentyűparanccsal állítsa le a kubectl figyelési folyamatát.
 
-```bash
+```output
 NAME               CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   10.0.42.158   <pending>     80:31873/TCP   1m
 azure-vote-front   10.0.42.158   52.179.23.131 80:31873/TCP   2m

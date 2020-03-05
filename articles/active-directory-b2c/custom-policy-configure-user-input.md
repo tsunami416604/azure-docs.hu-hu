@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 737f373fb71494492f633d3297463cbef797f3d6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2d279a2a368e606e036b24172eb94b667b3255db
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189548"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267946"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Jogcímek hozzáadása és felhasználói bevitel testreszabása Egyéni házirendek használatával Azure Active Directory B2C
 
@@ -264,7 +264,7 @@ A jogcím definiálásához a következő elemek használhatók:
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki az Azure ad-bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Alkalmazásregisztrációk**.
-4. Válassza az **Identity Experience Framework (előzetes verzió)** lehetőséget.
+4. Válassza az **identitási élmény keretrendszert**.
 5. Válassza az **egyéni házirend feltöltése**lehetőséget, majd töltse fel a módosított két házirendet.
 2. Válassza ki a feltöltött regisztrációs vagy bejelentkezési szabályzatot, majd kattintson a **Futtatás most** gombra.
 3. Regisztrálnia kell egy e-mail-cím használatával.
@@ -305,6 +305,6 @@ Az ellenőrzött e-mailek alapértelmezés szerint engedélyezve vannak a TrustF
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan használhatja az egyéni [attribútumokat egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md).

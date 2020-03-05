@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e1323467db875968f45557c6a7c0afdfee5e4221
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: dd9b82cbb2984386059988496c550123a8e67a3f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589934"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273084"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Azure SQL Database Azure biztonsági alapterve
 
@@ -122,12 +122,9 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: hálózati alapú behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
 
-**Útmutató**: a Azure SQL Database számára engedélyezett a komplex veszélyforrások elleni védelem (ATP).  A felhasználók riasztást kapnak a gyanús adatbázis-tevékenységekről, a potenciális sebezhetőségekről és az SQL-injektálási támadásokról, valamint a rendellenes adatbázis-hozzáférési és lekérdezési mintákról. A komplex veszélyforrások elleni védelem a riasztásokat is integrálja Azure Security Centerokkal.
+**Útmutató**: a Azure SQL Database a komplex veszélyforrások elleni védelem (ATP) engedélyezése.  A felhasználók riasztást kapnak a gyanús adatbázis-tevékenységekről, a potenciális sebezhetőségekről és az SQL-injektálási támadásokról, valamint a rendellenes adatbázis-hozzáférési és lekérdezési mintákról. A komplex veszélyforrások elleni védelem a riasztásokat is integrálja Azure Security Centerokkal.
 
-
-A Azure SQL Database komplex veszélyforrások elleni védelmének megismerése és használata:
-
-https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
+A Azure SQL Database összetett veszélyforrások elleni védelmének megismerése és használata: https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
 **Azure Security Center figyelés**: igen
 
@@ -164,11 +161,14 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
 
-**Útmutató**: hálózati biztonsági konfigurációk definiálása és implementálása a Azure SQL Database Server-példányokhoz Azure Policy használatával. A "Microsoft. SQL" névtér használatával egyéni házirend-definíciókat határozhat meg, vagy használhatja a Azure SQL Database Server Network Protection számára tervezett beépített szabályzat-definíciókat is. Példa a Azure SQL Database-kiszolgáló megfelelő beépített hálózati biztonsági házirendjére: "SQL Server virtuális hálózati szolgáltatás végpontját kell használnia"
+**Útmutató**: hálózati biztonsági konfigurációk definiálása és implementálása a Azure SQL Database Server-példányokhoz Azure Policy használatával. A "Microsoft. SQL" névtér használatával egyéni házirend-definíciókat határozhat meg, vagy használhatja a Azure SQL Database Server Network Protection számára tervezett beépített szabályzat-definíciókat is. A Azure SQL Database-kiszolgáló megfelelő beépített hálózati biztonsági házirendjének példája a következő: "SQL Server virtuális hálózati szolgáltatás-végpontot használjon".
+ 
 
 Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését a főbb környezeti összetevők, például az Azure Resource Management-sablonok, a szerepköralapú hozzáférés-vezérlés (RBAC) és a házirendek alapján, egyetlen terv definíciójában. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
 
+
 Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Azure Blueprint létrehozása: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -457,13 +457,27 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 **Útmutató**: Azure Active Directory biztonsági jelentések használata naplók és riasztások generálásához, ha a környezetben gyanús vagy nem biztonságos tevékenység történik.
 
+
+
 A Azure SQL Database komplex veszélyforrások elleni védelemmel észleli az adatbázisok eléréséhez vagy kiaknázásához szükséges szokatlan és potenciálisan ártalmas kísérleteket jelző rendellenes tevékenységeket.
 
-A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
 
-A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Centerban: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-Az összetett veszélyforrások elleni védelem és a lehetséges riasztások áttekintése: https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts
+A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása:
+
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
+
+
+
+A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Centerban:
+
+https://docs.microsoft.com/azure/security-center/security-center-identity-access
+
+
+
+Az összetett veszélyforrások elleni védelem és a lehetséges riasztások áttekintése:
+
+https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts
 
 
 **Azure Security Center figyelés**: igen
@@ -473,6 +487,7 @@ Az összetett veszélyforrások elleni védelem és a lehetséges riasztások á
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: az Azure-erőforrások kezelése csak jóváhagyott helyekről
 
 **Útmutató**: a feltételes hozzáférés elnevezett helyeivel lehetővé teheti a portál és az Azure erőforrás-kezelési hozzáférését az IP-címtartományok vagy országok/régiók adott logikai csoportjaiból.
+
 
 Elnevezett helyszínek konfigurálása az Azure-ban: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
@@ -714,7 +729,7 @@ Riasztások létrehozása az Azure Activity log-eseményekhez:
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -774,7 +789,7 @@ Sebezhetőségi felmérési jelentés exportálása Azure Security Centerban:
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#implementing-vulnerability-assessment
 
-**Azure Security Center figyelés**: igen
+**Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: ügyfél
 
@@ -796,11 +811,15 @@ A Azure Security Center biztonsági pontszámának megismerése: https://docs.mi
 
 **Útmutató**: az Azure Resource Graph használatával lekérdezheti és felderítheti az összes erőforrást (beleértve az Azure SQL Server-példányokat) az előfizetés (ok) n belül.  Győződjön meg arról, hogy megfelelő (olvasási) engedélyekkel rendelkezik a bérlőben, és képes felsorolni az összes Azure-előfizetést, valamint az előfizetésében lévő erőforrásokat.
 
+
 Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keresztül lehetséges, erősen ajánlott a Azure Resource Manager erőforrások létrehozása és használata.
+
 
 Lekérdezések létrehozása az Azure Graph használatával: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
+
 Azure-előfizetések megtekintése: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+
 
 Az Azure RBAC ismertetése: https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -812,7 +831,11 @@ Az Azure RBAC ismertetése: https://docs.microsoft.com/azure/role-based-access-c
 
 **Útmutató**: címkéket alkalmazhat az Azure-erőforrásokra, így a metaadatok logikailag rendszerezve lesznek a besorolásban.
 
-Címkék létrehozása és használata: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+
+
+Címkék létrehozása és használata:
+
+https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -822,11 +845,23 @@ Címkék létrehozása és használata: https://docs.microsoft.com/azure/azure-r
 
 **Útmutató**: a címkézés, a felügyeleti csoportok és az elkülönített előfizetések használata, ha szükséges, az eszközök rendszerezéséhez és nyomon követéséhez. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
-További Azure-előfizetések létrehozása: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Management Groups létrehozása: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Címkék létrehozása és használata: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+További Azure-előfizetések létrehozása:
+
+https://docs.microsoft.com/azure/billing/billing-create-subscription
+
+
+
+Management Groups létrehozása:
+
+https://docs.microsoft.com/azure/governance/management-groups/create
+
+
+
+Címkék létrehozása és használata:
+
+https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -894,6 +929,7 @@ Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/gov
 
 Adott erőforrástípus megtagadása a következővel: Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
+
 **Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: ügyfél
@@ -911,9 +947,7 @@ Adott erőforrástípus megtagadása a következővel: Azure Policy: https://doc
 **Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja a felhasználók a Azure Resource Manager interakcióját a "Microsoft Azure felügyelet" alkalmazás "hozzáférés tiltása" beállításával.
 
 
-A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1152,7 +1186,7 @@ A biztonsági másolatok és az üzletmenet-folytonosság megismerése az Azure 
 
 https://docs.microsoft.com/azure/sql-database/sql-database-business-continuity
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: megosztott
 
@@ -1204,7 +1238,7 @@ A Soft delete engedélyezése a Key Vaultban:
 
 https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -1292,7 +1326,7 @@ A Munkafolyamat-automatizálás és a Logic Apps konfigurálása:
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure Security Center figyelés**: igen
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
 **Felelősség**: ügyfél
 
@@ -1314,3 +1348,7 @@ A Microsoft által felügyelt felhő-infrastruktúrával,-szolgáltatásokkal é
 
 **Felelősség**: megosztott
 
+## <a name="next-steps"></a>Következő lépések
+
+- Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 02/24/2020
-ms.openlocfilehash: f27042679280581dc3a03113d75c5fb787bbf711
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c221ab793fb71169b62d81341d93fb95a018cc91
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616002"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273932"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Azure SQL Database-adatbázis tranzakciós szempontból konzisztens másolatának másolása
 
@@ -146,7 +146,7 @@ Az [SQL Database-adatbázis másolása másik kiszolgálóra](#copy-a-sql-databa
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>A másolási művelet állapotának figyelése
 
-Figyelje a másolási folyamatot a [sys. Databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [sys. dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database.md)és [sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database.md) nézetek lekérdezésével. A másolás folyamatban van, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **másolásra**van beállítva.
+Figyelje a másolási folyamatot a [sys. Databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [sys. dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)és [sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézetek lekérdezésével. A másolás folyamatban van, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **másolásra**van beállítva.
 
 * Ha a másolás meghiúsul, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **gyanúsnak**van beállítva. Hajtsa végre a DROP utasítást az új adatbázison, majd próbálkozzon újra később.
 * Ha a másolás sikeres, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **online**értékre van állítva. A másolás befejeződött, és az új adatbázis egy normál adatbázis, amely a forrás-adatbázistól függetlenül módosítható.

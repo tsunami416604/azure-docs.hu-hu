@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 3aba570bd7f80eab205fe52a731a1be933067012
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493201"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273562"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions Azure Service Bus trigger
 
@@ -369,9 +369,6 @@ A Service Bus trigger számos [metaadat-tulajdonságot](./functions-bindings-exp
 |`To`|`string`|A küldési címre.|
 |`Label`|`string`|Az alkalmazásra vonatkozó címke.|
 |`CorrelationId`|`string`|A korrelációs azonosítót.|
-
-> [!NOTE]
-> Jelenleg a munkamenet-kompatibilis várólistákkal és előfizetésekkel használható Service Bus-trigger előzetes verzióban érhető el. Ezt az [adott tételt](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458) a további frissítésekkel kapcsolatban nyomon követheti. 
 
 Tekintse meg a jelen cikk korábbi részében említett tulajdonságokat használó [példákat](#example) .
 

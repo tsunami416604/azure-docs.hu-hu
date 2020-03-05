@@ -1,33 +1,33 @@
 ---
 title: Keyphrase előre elkészített entitás – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk a Language Understanding (LUIS) keyphrase előre felépített entitási információit tartalmazza.
+description: Ez a cikk tartalmaz keyphrase előre összeállított entitások információ a Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 51d1bd515651824545d486207ad4a74476aa7092
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 53be1b13f1e2744e143a4be0777e3a8e3135460e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491282"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270526"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>keyPhrase előre összeépített entitása egy LUIS-alkalmazáshoz
-A keyPhrase entitás számos kulcsfontosságú kifejezés kibontását írja le. Nem kell hozzáadnia például a keyPhrase tartalmazó hosszúságú kimondott szöveg az alkalmazáshoz. A keyPhrase entitás [számos kultúrában](luis-language-support.md#languages-supported) támogatott a [text Analytics](../text-analytics/overview.md) funkcióinak részeként. 
+A keyPhrase entitás számos kulcsfontosságú kifejezés kibontását írja le. Nem kell hozzáadnia például a keyPhrase tartalmazó hosszúságú kimondott szöveg az alkalmazáshoz. A keyPhrase entitás [számos kultúrában](luis-language-support.md#languages-supported) támogatott a [text Analytics](../text-analytics/overview.md) funkcióinak részeként.
 
-## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Az előre elkészített keyPhrase entitás feloldása
+## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Előre összeállított keyPhrase entitás feloldása
 
 A lekérdezés a következő entitás-objektumokat adja vissza:
 
 `where is the educational requirements form for the development and engineering group`
 
-#### <a name="v3-responsetabv3"></a>[V3 válasz](#tab/V3)
+#### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
 A következő JSON a `verbose` paraméterrel van beállítva `false`:
 
@@ -39,7 +39,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 részletes válasz](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
 A következő JSON a `verbose` paraméterrel van beállítva `true`:
 
 ```json
@@ -76,7 +76,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `true`:
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2 válasz](#tab/V2)
+#### <a name="v2-response"></a>[V2 válasz](#tab/V2)
 
 Az alábbi példa a **beépített. keyPhrase** entitás feloldását mutatja be.
 
@@ -96,9 +96,9 @@ Az alábbi példa a **beépített. keyPhrase** entitás feloldását mutatja be.
     }
 ]
 ```
-* * * 
+* * *
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 

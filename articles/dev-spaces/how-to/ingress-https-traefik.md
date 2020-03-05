@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Ismerje meg, hogyan konfigurálhatja az Azure dev Spaces-t egyéni traefik bemenő vezérlő használatára, és hogyan konfigurálhatja a HTTPS-t az adott bejövő vezérlő használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: 9e0c726d97fc87a25d559ecc3478d3f85df4eeb8
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 6cac50ea9caeea42b0a7522dbeb5039a8461dd2c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623159"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273154"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Egyéni bejövő traefik-vezérlő használata és HTTPS konfigurálása
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja az Azure dev Spaces-t egy
 * [Azure Kubernetes Service (ak) fürt, amelyen engedélyezve van az Azure dev Spaces][qs-cli].
 * a [kubectl][kubectl] telepítve van.
 * A [Helm 3 telepítve van][helm-installed].
-* [Egy egyéni tartomány][custom-domain] egy [DNS-zónával][dns-zone] , amely ugyanabban az erőforráscsoporthoz van, mint az AK-fürt.
+* Egy [DNS-zónával][dns-zone]rendelkező [egyéni tartomány][custom-domain] . Ez a cikk azt feltételezi, hogy az egyéni tartomány és a DNS-zóna ugyanabban az erőforráscsoporthoz van, mint az AK-fürt, de az egyéni tartományt és a DNS-zónát egy másik erőforráscsoporthoz is lehet használni.
 
 ## <a name="configure-a-custom-traefik-ingress-controller"></a>Egyéni bejövő traefik-vezérlő konfigurálása
 

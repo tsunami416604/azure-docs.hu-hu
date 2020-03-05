@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/27/2020
-ms.openlocfilehash: f2c18a1e858fcebf8d2c82210f2290cf4a14d061
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/03/2020
+ms.openlocfilehash: 8a4205002a98a5b9670839b0de7b53d81e0221a6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846016"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271933"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerés, átalakítás és betöltés (ETL) skálán
 
@@ -25,7 +25,7 @@ A HDInsight az ETL-folyamatban való használatát a következő folyamat össze
 
 A következő szakaszok az ETL fázisok és a hozzájuk társított összetevők megismerését ismertetik.
 
-## <a name="orchestration"></a>Adat-előkészítés
+## <a name="orchestration"></a>Vezénylés
 
 Az összehangolás az ETL-folyamat minden fázisában megível. A HDInsight-ben található ETL-feladatok gyakran több különböző, egymással együtt működő terméket is tartalmaznak.  A kaptár használatával törölheti az egyes adatrészeket, míg a Pig egy másik részt is megtisztít.  Előfordulhat, hogy a Azure Data Factory használatával tölti be az adatait a Azure Data Lake Store Azure SQL Databaseba.
 
@@ -67,7 +67,7 @@ Az Azure Storage-ban általában a PowerShell, az Azure Storage SDK vagy a AZCop
 
 ### <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 
-A Azure Data Lake Storage (ADLS) egy felügyelt, nagy kapacitású adattár, amely kompatibilis a HDFS-mel.  A ADLS a HDFS hasonló tervezési paradigmát használja, és korlátlan skálázhatóságot biztosít a teljes kapacitás és az egyes fájlok mérete tekintetében. A ADLS nagyon jó, ha nagyméretű fájlokkal dolgozik, mivel a nagyméretű fájlok több csomóponton is tárolhatók.  Az ADLS-ben végzett particionálás a színfalak mögött történik.  Kiemelkedő átviteli sebességet biztosít a több ezer párhuzamos végrehajtóval rendelkező elemzési feladatok futtatásához, amelyekben a több száz terabájt adat olvasása és írása hatékonyan történik.
+A Azure Data Lake Storage (ADLS) egy felügyelt, nagy kapacitású adattár, amely kompatibilis a HDFS-mel.  A ADLS a HDFS hasonló tervezési paradigmát használja, és korlátlan skálázhatóságot biztosít a teljes kapacitás és az egyes fájlok mérete tekintetében. A ADLS nagyon jó, ha nagyméretű fájlokkal dolgozik, mivel a nagyméretű fájlok több csomóponton is tárolhatók.  Az ADLS-ben végzett particionálás a színfalak mögött történik.  Nagy átviteli sebességű, több ezer párhuzamos végrehajtóval rendelkező elemzési feladatok futtatásához, amelyek hatékonyan olvassák és leírják a több száz terabájtos adat mennyiségét.
 
 Az adatfeldolgozás általában a ADLS Azure Data Factory, ADLS SDK-k, AdlCopy Service, Apache DistCp vagy Apache Sqoop használatával történik.  Ezeknek a szolgáltatásoknak a használata nagy mértékben függ attól, hogy az adatok hol vannak.  Ha az adathalmaz jelenleg egy meglévő Hadoop-fürtben található, akkor az Apache DistCp, a AdlCopy Service vagy a Azure Data Factory is használható.  Ha az Azure Blob Storageban van, használhat Azure Data Lake Storage .NET SDK-t, Azure PowerShellt vagy Azure Data Factoryt.
 

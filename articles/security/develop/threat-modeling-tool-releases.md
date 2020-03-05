@@ -1,5 +1,6 @@
 ---
-title: Threat Modeling Tool kiadások – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool kibocsátási megjegyzések
+titleSuffix: Azure
 description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: 6a5216f17645dc86a9e7a1872c7e66947c8bd36b
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: a1a3687edaed012f255af915886917c3ac188896
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77624070"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269627"
 ---
 # <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool kiadások
 

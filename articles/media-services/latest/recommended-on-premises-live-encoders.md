@@ -9,14 +9,14 @@ ms.author: johndeu
 ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 43d2a56757948f6005420d2b44f9bea963613d17
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 60f9209129c75e329b283045d19b4b5140b40ec2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252178"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268190"
 ---
-# <a name="recommended-live-streaming-encoders"></a>Ajánlott kódolók élő streameléshez
+# <a name="recommended-on-premises-live-streaming-encoders"></a>Ajánlott helyszíni élő adatfolyam-kódolók
 
 Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) (csatorna) az élő közvetítésre szánt tartalom feldolgozásához szükséges folyamatot jelöli. Az élő esemény két módon fogadja az élő bemeneti adatfolyamokat.
 

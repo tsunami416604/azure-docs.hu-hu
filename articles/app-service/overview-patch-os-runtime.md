@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan frissíti Azure App Service az operációs rend
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 02fa89305c19ee4ec5e151ad36f7f5fa3e130f63
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846240"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273640"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Operációs rendszer és futtatókörnyezet javítása Azure App Service
 
@@ -51,7 +51,7 @@ A futtatókörnyezet frissítései és az elavulás itt jelent meg:
 
 ### <a name="new-patch-updates"></a>Új javítási frissítések
 
-A .NET, a PHP, a Java SDK vagy a Tomcat/Jetty verzióhoz tartozó javítások frissítései automatikusan érvénybe lépnek, ha felülírja a meglévő telepítést az új verzióval. A Node. js-javítások frissítései a meglévő verziókkal együtt települnek (a következő szakaszban a fő-és alverzióhoz hasonlóan). Az új Python-javítási verziók manuálisan is telepíthetők a [hely bővítményein](https://www.siteextensions.net/packages?q=Tags%3A%22python%22)keresztül, a beépített Python-telepítésekkel párhuzamosan.
+A .NET, a PHP, a Java SDK vagy a Tomcat/Jetty verzióhoz tartozó javítások frissítései automatikusan érvénybe lépnek, ha felülírja a meglévő telepítést az új verzióval. A Node. js-javítások frissítései a meglévő verziókkal együtt települnek (a következő szakaszban a fő-és alverzióhoz hasonlóan). Az új Python-javítási verziók manuálisan is telepíthetők a [site Extensions](https://azure.microsoft.com/blog/azure-web-sites-extensions/)használatával, a beépített Python-telepítésekkel párhuzamosan.
 
 ### <a name="new-major-and-minor-versions"></a>Új fő-és alverziók
 
@@ -90,7 +90,7 @@ Az alábbi táblázat bemutatja, hogyan használhatók a Windows és az alkalmaz
 >
 >
 
-## <a name="more-resources"></a>További források
+## <a name="more-resources"></a>További segédanyagok
 
 [Adatvédelmi központ: biztonság](https://www.microsoft.com/en-us/trustcenter/security)  
 [64 bites ASP.NET Core Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

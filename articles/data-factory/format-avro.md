@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 6d867ccd8704d4aba4627e7b81638394b7e1e8d3
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1717969aeb24a153f986c70ef60db1aac5c840fb
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423779"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267790"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Avro formátuma Azure Data Factory
 
@@ -83,7 +83,11 @@ A másolási tevékenység\*a fogadó ***\**** szakaszban a következő tulajdon
 
 ## <a name="data-type-support"></a>Adattípusok támogatása
 
-Az Avro [összetett adattípusok](https://avro.apache.org/docs/current/spec.html#schema_complex) nem támogatottak (rekordok, enumerálások, tömbök, térképek, szakszervezetek és rögzített).
+### <a name="copy-activity"></a>Másolási tevékenység
+A Avro [összetett adattípusok](https://avro.apache.org/docs/current/spec.html#schema_complex) nem támogatottak (rekordok, enumerálások, tömbök, térképek, szakszervezetek és rögzített) a másolási tevékenységben.
+
+### <a name="data-flows"></a>Adatfolyamok
+Az adatfolyamatok Avro-fájljainak használatakor az összetett adattípusok olvashatók és írhatók, de ügyeljen rá, hogy először törölje a fizikai sémát az adatkészletből. Az adatfolyamatokban beállíthatja a logikai kivetítést, és kiszármaztathatja az összetett struktúrákat tartalmazó oszlopokat, majd automatikusan leképezheti ezeket a mezőket egy Avro-fájlra.
 
 ## <a name="next-steps"></a>Következő lépések
 

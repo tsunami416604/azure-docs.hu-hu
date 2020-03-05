@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 03/03/2020
 ms.author: jgao
-ms.openlocfilehash: e881cde36bc56c175004e8d6adb9b7b85e9b5454
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3129d4c664ec487f2def6cc0d2668b7493f4c988
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616315"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272648"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
@@ -222,10 +222,16 @@ Az üzembe helyezési parancsfájl kimeneteit a AZ_SCRIPTS_OUTPUT_PATH helyre ke
 
 a [jQ](https://stedolan.github.io/jq/) az előző mintában van használatban. A tároló lemezképeit tartalmazza. Lásd: a [fejlesztési környezet konfigurálása](#configure-development-environment).
 
-## <a name="handle-non-terminating-errors"></a>Nem megszakítást okozó hibák kezelése
+## <a name="develop-deployment-scripts"></a>Üzembe helyezési parancsfájlok fejlesztése
+
+### <a name="handle-non-terminating-errors"></a>Nem megszakítást okozó hibák kezelése
 
 Az üzembe helyezési parancsfájl [ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
 ) változójának használatával szabályozhatja, hogyan válaszol a PowerShell a nem megszakítást okozó hibákra. Az üzembe helyezési parancsfájl motorja nem állítja be és nem módosítja az értéket.  A $ErrorActionPreferencehoz beállított érték ellenére a telepítési parancsfájl az erőforrás-kiépítési állapotot úgy állítja be, hogy a hiba esetén *meghiúsuljon* , ha a parancsfájl hibát észlel.
+
+### <a name="pass-secured-strings-to-deployment-script"></a>Biztonságos karakterláncok továbbítása a telepítési parancsfájlba
+
+A környezeti változók beállítása a Container instances szolgáltatásban lehetővé teszi a tároló által futtatott alkalmazás vagy parancsfájl dinamikus konfigurációját. Az üzembe helyezési parancsfájl ugyanúgy kezeli a nem védett és a biztonságos környezeti változókat, mint az Azure Container instance. További információ: [környezeti változók beállítása a Container instances](../../container-instances/container-instances-environment-variables.md#secure-values)szolgáltatásban.
 
 ## <a name="debug-deployment-scripts"></a>Üzembe helyezési parancsfájlok hibakeresése
 

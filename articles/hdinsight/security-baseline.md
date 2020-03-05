@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7d6b4f8a7965a7cbcab2616650b40ed93087072b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: 1ace4ce5b9b0fd59a69e908c1f31d1ad4853889b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589973"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271852"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure biztonsági alapkonfiguráció a HDInsight-hez
 
@@ -65,7 +65,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: a kritikus webalkalmazások megóvása
 
-**Útmutató**: nem érhető el; a teljesítményteszt az Azure apps szolgáltatáshoz vagy webalkalmazásokat üzemeltető számítási erőforrásokhoz készült.
+**Útmutató**: nem alkalmazható; a teljesítményteszt az Azure apps szolgáltatáshoz vagy webalkalmazásokat üzemeltető számítási erőforrásokhoz készült.
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -125,7 +125,7 @@ HDInsight-felügyeleti IP-címek: https://docs.microsoft.com/azure/hdinsight/hdi
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: webalkalmazások forgalmának kezelése
 
-**Útmutató**: nem érhető el; a teljesítményteszt az Azure apps szolgáltatáshoz vagy webalkalmazásokat üzemeltető számítási erőforrásokhoz készült.
+**Útmutató**: nem alkalmazható; a teljesítményteszt az Azure apps szolgáltatáshoz vagy webalkalmazásokat üzemeltető számítási erőforrásokhoz készült.
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -331,7 +331,7 @@ Riasztás a log Analytics-naplófájlok adatkezeléséről:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -491,7 +491,7 @@ A felhasználók identitás-és hozzáférési tevékenységének figyelése Azu
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -713,7 +713,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: megosztott
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: bizalmas adatok titkosítása a nyugalmi állapotban
 
@@ -779,7 +779,7 @@ Ha Rapid7, Qualys vagy bármely más sebezhetőség-kezelési platformra vonatko
 
 A Rapid7-ügynök manuális telepítése:
 
-https://insightvm.help.rapid7.com/v1.0/docs/agent-installation-on-linux
+https://insightvm.help.rapid7.com/docs/azure-security-center
 
 
 A Qualys-ügynök manuális telepítése:
@@ -926,11 +926,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - Nem engedélyezett erőforrástípusok
 - Engedélyezett erőforrástípusok
 
-Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetése (ke) n belüli erőforrásait.  Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
+Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetése (ke) n belüli erőforrásait. Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
 
 Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Lekérdezések létrehozása az Azure Graph használatával: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -972,7 +973,9 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 - Nem engedélyezett erőforrástípusok
 - Engedélyezett erőforrástípusok
 
+
 Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Adott erőforrástípus megtagadása a következővel: Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
@@ -993,9 +996,7 @@ Adott erőforrástípus megtagadása a következővel: Azure Policy: https://doc
 **Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja a felhasználók a Azure Resource Manager interakcióját a "Microsoft Azure felügyelet" alkalmazás "hozzáférés tiltása" beállításával.
 
 
-A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1003,7 +1004,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: korlátozza a felhasználók számára a parancsfájlok végrehajtásának lehetőségét a számítási erőforrásokon belül
 
-**Útmutató**: nem érhető el; Ez nem alkalmazható az Azure-HDInsight, mert a fürt felhasználóinak (nem rendszergazdáknak) nem kell hozzáférést adni az egyes csomópontokhoz a feladatok futtatásához. A fürt rendszergazdája rendszergazdai hozzáféréssel rendelkezik az összes fürtcsomóponton.
+**Útmutató**: nem alkalmazható; Ez nem alkalmazható az Azure-HDInsight, mert a fürt felhasználóinak (nem rendszergazdáknak) nem kell hozzáférést adni az egyes csomópontokhoz a feladatok futtatásához. A fürt rendszergazdája rendszergazdai hozzáféréssel rendelkezik az összes fürtcsomóponton.
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1011,7 +1012,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizikailag vagy logikailag elkülöníthető a nagy kockázatú alkalmazások
 
-**Útmutató**: nem érhető el; a teljesítményteszt az Azure apps szolgáltatáshoz vagy webalkalmazásokat üzemeltető számítási erőforrásokhoz készült.
+**Útmutató**: nem alkalmazható; a teljesítményteszt az Azure apps szolgáltatáshoz vagy webalkalmazásokat üzemeltető számítási erőforrásokhoz készült.
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1095,7 +1096,7 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
 
-**Útmutató**: nem érhető el; Az Azure HDInsight nem alkalmazható Egyéni rendszerképek.
+**Útmutató**: nem alkalmazható; Az Azure HDInsight nem alkalmazható Egyéni rendszerképek.
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1343,7 +1344,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Útmutató**: a Security Center súlyosságot rendel a riasztásokhoz, így könnyebben rangsorolhatja az egyes riasztásokban való részvétel sorrendjét, hogy az erőforrások biztonsága esetén azonnal elérhető legyen. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint azt a megbízhatósági szintet, amely a riasztáshoz vezető tevékenység mögött rosszindulatú szándékú volt.
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -1421,3 +1422,7 @@ A Microsoft által felügyelt felhő-infrastruktúrával,-szolgáltatásokkal é
 
 **Felelősség**: megosztott
 
+## <a name="next-steps"></a>Következő lépések
+
+- Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

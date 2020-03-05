@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 6dc8c54b9d138ab62e086cca59cd5b4801fa6130
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 164f07f6545c1c225814958bba5722536b11a9b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228337"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269436"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Az AMD GPU-illesztőprogramok telepítése a Windows rendszerű N sorozatú virtuális gépeken
 
@@ -43,6 +43,8 @@ Az alapszintű specifikációk, a tárolási kapacitások és a lemezek részlet
 3. Indítsa el a virtuális gépet, majd távolítsa el az előzetes verziójú illesztőprogramot a ". ..\AMDCleanUninstallUtility" mappában található "amdcleanuputility-x64. exe" parancs futtatásával. A pontos elérési út attól függően változhat, hogy hol találhatók a korábbi illesztőprogram-telepítési fájlok.  
 
 4. Töltse le és telepítse a legújabb illesztőprogramot.
+
+5. Indítsa újra a virtuális Gépet.
 
 ## <a name="verify-driver-installation"></a>Illesztőprogram telepítésének ellenőrzése
 

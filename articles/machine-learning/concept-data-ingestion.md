@@ -10,19 +10,19 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 3370fc72b45720e2aae5731623843a1bc498911c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
-ms.translationtype: MT
+ms.openlocfilehash: 35c133a4d9d95dc6e942d5b8c3e8d21debb9493b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77652073"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268542"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Adatfeldolgozás a Azure Machine Learningban
 
 Ebből a cikkből megtudhatja, milyen előnyökkel és hátrányokkal jár együtt a Azure Machine Learning a következő adatfeldolgozási lehetőségek közül. 
 
 1. [Azure Data Factory](#use-azure-data-factory) folyamatok
-2. [Python SDK Azure Machine Learning](#use-the-python-sdk)
+2. [Azure Machine Learning Python SDK](#use-the-python-sdk)
 
 Az adatfeldolgozás az a folyamat, amelyben a strukturálatlan adatok kinyerése egy vagy több forrásból történik, majd a gépi tanulási modellek előkészítése. Az is időigényes, különösen ha kézzel történik, és ha nagy mennyiségű adattal rendelkezik több forrásból. A tevékenység automatizálása felszabadítja az erőforrásokat, és gondoskodik arról, hogy a modellek a legfrissebb és a vonatkozó adatait használják.
 
@@ -55,7 +55,7 @@ Ezek a lépések és a következő ábra a Azure Data Factory adatfeldolgozási 
 
 ## <a name="use-the-python-sdk"></a>A Python SDK használata 
 
-A [PYTHON SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py)-val beépítheti az adatfeldolgozási feladatokat egy [Azure Machine learning folyamat](how-to-create-your-first-pipeline.md) lépésbe.
+A [PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml)-val beépítheti az adatfeldolgozási feladatokat egy [Azure Machine learning folyamat](how-to-create-your-first-pipeline.md) lépésbe.
 
 Az alábbi táblázat összefoglalja az SDK-t és az adatfeldolgozási feladatokhoz szükséges ML folyamatokat.
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/27/2020
+ms.date: 03/03/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 64aa6dcd9d21d2102c5d61dbc050fc9aa07aa534
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0219b3e35ed82795e9c799754cabdeb5d17096d6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78163862"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267409"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -56,27 +56,19 @@ A dokumentáció ezen szakasza a SAP HANA különböző szempontjait ismerteti. 
 
 Az Azure-beli HANA-ról további információt a következő cikkekben és alcikkeiben talál:
 
-- [Gyors útmutató: egypéldányos SAP HANA manuális telepítése Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
-- [SAP S/4HANA vagy BW/4HANA üzembe helyezése az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)
 - [SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 - [SAP HANA magas rendelkezésre állás az Azure Virtual Machines szolgáltatásban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
-- [SAP HANA rendelkezésre állás egy Azure-régión belül](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)
-- [SAP HANA rendelkezésre állás Azure-régiók között](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions)
 - [SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
 - [Biztonsági mentési útmutató Azure-beli virtuális gépek SAP HANAához](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
-- [SAP HANA Azure Backup a fájl szintjén](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
-- [SAP HANA biztonsági mentés tárolási Pillanatképek alapján](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
+
 
  
 
 ## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>Azure-beli virtuális gépeken üzembe helyezett SAP NetWeaver
 Ez a szakasz az SAP NetWeaver és az Azure-beli Business One tervezési és üzembe helyezési dokumentációját sorolja fel. A dokumentáció az Azure-beli SAP-munkaterheléssel rendelkező, nem HANA-adatbázisok alapjaira és használatára koncentrál. A magas rendelkezésre állást biztosító dokumentumok és cikkek a HANA magas rendelkezésre állásának alapja is az Azure-ban, például:
 
+- Az [Azure tervezési útmutatója](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide). 
 - [SAP Business One az Azure Virtual Machines szolgáltatásban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/business-one-azure)
-- [SAP ide EHP7 SP3 telepítése SAP ERP 6,0-hez az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-ides-erp6-erp7-sp3-sql)
-- [Az SAP NetWeaver futtatása Microsoft Azure SUSE Linux rendszerű virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart)
-- [Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
-- [Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
 - [Többplatformos SAP NetWeaver-alkalmazások telepítésének biztosítása Site Recovery használatával](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap)
 - [Az Azure SAP LaMa összekötője](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/lama-installation)
 
@@ -117,6 +109,8 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 
 ## <a name="change-log"></a>Változásnapló
+- 03/03/2020: az [SAP NW magas rendelkezésre állásának megváltozása Azure-beli virtuális gépeken a SLES-ben a ANF for SAP-alkalmazások](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) a hatékonyabb ANF mennyiségi elrendezésre való váltáshoz
+- 03/01/2020: átdolgozott [biztonsági mentési útmutató az Azure Virtual Machines SAP HANAához](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide) Azure Backup szolgáltatás belefoglalásához. Csökkenthető és tömörített tartalom a [SAP HANA Azure Backup a fájl szintjén](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level) , és törölte a biztonsági mentéssel foglalkozó harmadik dokumentumot a lemez pillanatképének használatával. A tartalom az Azure-beli SAP HANA biztonsági mentési útmutatójában lesz kezelve Virtual Machines 
 - 02/27/2020: a magas rendelkezésre állás megváltozása az SAP NW-ben Azure-beli [virtuális gépeken a SLES for](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)SAP-alkalmazások esetében, magas rendelkezésre állás az Azure-beli virtuális gépeken a SLES-ben a [ANF for SAP Applications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) és [magas rendelkezésre állású SAP NetWeaver Azure-beli virtuális gépeken a SLES multi-SID útmutatójában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid) a "sikertelen"
 - 02/26/2020: változás a [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) az Azure-beli HANA-beli fájlrendszer-választás tisztázásához
 - 02/26/2020: változás a [magas rendelkezésre állású architektúrában és az SAP-forgatókönyvekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios) , hogy tartalmazza az Azure-beli virtuális gépeken elérhető SAP NetWeaver-ra mutató HIVATKOZÁST a RHEL multi-SID útmutatóban

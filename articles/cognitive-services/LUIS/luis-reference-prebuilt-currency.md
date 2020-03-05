@@ -1,32 +1,32 @@
 ---
 title: Pénznem előre elkészített entitás – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk Language Understanding (LUIS) pénznemben előre felépített entitásokra vonatkozó információkat tartalmaz.
+description: Ez a cikk tartalmazza a pénznem előre összeállított entitások információ a Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5b49dcc7e999757e119c399bdf01bed7cb312e02
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 56d264fa976967ae4772f50b4aa6f58b30355d6f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465051"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270777"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>LUIS-alkalmazás pénznemének előre felépített entitása
-Az előre felépített pénznem entitások számos címletben és országban/régióban észlelik a pénznemet, függetlenül a LUIS-alkalmazás kulturális környezettől. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia például a pénznemet tartalmazó hosszúságú kimondott szöveg az Application-leképezésekhez. A pénznem entitások [számos kultúrában](luis-reference-prebuilt-entities.md)támogatottak. 
+Az előre felépített pénznem entitások számos címletben és országban/régióban észlelik a pénznemet, függetlenül a LUIS-alkalmazás kulturális környezettől. Az entitás már be van tanítva, mert nem kell az alkalmazás-leképezések a pénznem tartalmazó példa beszédmódok hozzáadása. A pénznem entitások [számos kultúrában](luis-reference-prebuilt-entities.md)támogatottak.
 
-## <a name="types-of-currency"></a>A pénznem típusai
+## <a name="types-of-currency"></a>Pénznem típusa
 A pénznem kezelése a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26) adattárból történik.
 
 ## <a name="resolution-for-currency-entity"></a>Pénznem entitás feloldása
 
-#### <a name="v3-responsetabv3"></a>[V3 válasz](#tab/V3)
+#### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
 A következő JSON a `verbose` paraméterrel van beállítva `false`:
 
@@ -40,7 +40,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 részletes válasz](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
 A következő JSON a `verbose` paraméterrel van beállítva `true`:
 
 ```json
@@ -66,7 +66,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `true`:
 }
 ```
 
-#### <a name="v2-responsetabv2"></a>[V2 válasz](#tab/V2)
+#### <a name="v2-response"></a>[V2 válasz](#tab/V2)
 
 A következő példa a **beépített. pénznem** entitás feloldását mutatja be.
 
@@ -84,10 +84,10 @@ A következő példa a **beépített. pénznem** entitás feloldását mutatja b
     }
 ]
 ```
-* * * 
+* * *
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
-Ismerje meg a [datetimeV2](luis-reference-prebuilt-datetimev2.md), a [dimenziót](luis-reference-prebuilt-dimension.md)és az [e-mail](luis-reference-prebuilt-email.md) entitásokat. 
+Ismerje meg a [datetimeV2](luis-reference-prebuilt-datetimev2.md), a [dimenziót](luis-reference-prebuilt-dimension.md)és az [e-mail](luis-reference-prebuilt-email.md) entitásokat.

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 3e831e58b47d53e2924956cab13568c69bc1432e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d889cd3325784f564d03e5d75dde1ec760c66804
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153740"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268537"
 ---
 # <a name="split-data-module"></a>Adategység felosztása
 
@@ -84,34 +84,74 @@ Ez a modul különösen akkor hasznos, ha a képzési és tesztelési csoportokb
 
     Az Ön által megadott reguláris kifejezés alapján az adatkészlet két sorra van osztva: sorokba, amelyek megfelelnek a kifejezésnek és az összes többi sornak. 
 
+Az alábbi példák bemutatják, hogyan oszthat meg egy adatkészletet a **reguláris kifejezés** lehetőség használatával. 
+
+### <a name="single-whole-word"></a>Egyetlen egész szó 
+
+Ez a példa az első adatkészletbe helyezi az összes olyan sort, amely tartalmazza az oszlop `Text``Gryphon` szövegét, és más sorokat helyez el a **felosztott adat**második kimenetére:
+
+```text
+    \"Text" Gryphon  
+```
+
+### <a name="substring"></a>substring
+
+Ez a példa a megadott karakterláncot az adatkészlet második oszlopában található bármely pozícióban keresi, amelyet az 1. index értéke jelöl. A egyezés megkülönbözteti a kis-és nagybetűket.
+
+```text
+(\1) ^[a-f]
+```
+
+Az első eredmény adatkészlet minden olyan sort tartalmaz, amelyben az index oszlop a következő karakterek egyikével kezdődik: `a`, `b`, `c`, `d`, `e`, `f`. Minden más sor a második kimenetre lesz irányítva.
+
 ## <a name="relative-expression-split"></a>Relatív kifejezés felosztása.
 
 1. Adja hozzá az [Adatfelosztási](./split-data.md) modult a folyamathoz, és kapcsolja bemenetként a felosztani kívánt adatkészlethez.
   
 2. A **felosztási mód**beállításnál válassza a **relatív kifejezés felosztása**elemet.
   
-3. A **relációs kifejezés** szövegmezőbe írjon be egy olyan kifejezést, amely egy összehasonlítási műveletet hajt végre egyetlen oszlopon:
+3. A **relációs kifejezés** szövegmezőbe írja be azt a kifejezést, amely egy összehasonlítási műveletet hajt végre egyetlen oszlopon:
 
-
- - Numerikus oszlop:
-    - Az oszlop numerikus adattípusok számát tartalmazza, beleértve a dátum/idő adattípusokat is.
-
-    - A kifejezés legfeljebb egy oszlop nevét hivatkozhat.
-
-    - A és a művelethez használja az jel karaktert (&), és használja a (z) vagy művelethez tartozó pipe karaktert (|).
-
-    - A következő operátorok támogatottak: `<`, `>`, `<=`, `>=`, `==`, `!=`
-
-    - `(` és `)`használatával nem csoportosíthatjuk a műveleteket.
-
- - Karakterlánc-oszlop: 
-    - A következő operátorok támogatottak: `==`, `!=`
-
-
+   A **numerikus oszlophoz**:
+   - Az oszlop a numerikus adattípusok számát tartalmazza, beleértve a dátum-és időtípusokat is.
+   - A kifejezés legfeljebb egy oszlop nevét hivatkozhat.
+   - A és a művelethez használja a & jel karaktert `&`. Használja a vagy a művelethez `|` pipe karaktert.
+   - A következő operátorok támogatottak: `<`, `>`, `<=`, `>=`, `==`, `!=`.
+   - `(` és `)`használatával nem csoportosíthatjuk a műveleteket.
+   
+   A **String oszlop**esetében:
+   - A következő operátorok támogatottak: `==`, `!=`.
 
 4. A folyamat futtatása.
 
     A kifejezés két sorból osztja el az adatkészletet: a feltételnek megfelelő értékeket tartalmazó sorok és az összes többi sor.
+
+Az alábbi példák bemutatják, hogyan oszthat meg egy adatkészletet a **relatív kifejezés** lehetőséggel az **adatfelosztási** modulban:  
+
+### <a name="using-calendar-year"></a>Naptári év használata
+
+Gyakori forgatókönyv, hogy az adatkészletet évek szerint osztják el. A következő kifejezés kiválasztja azokat a sorokat, amelyekben az oszlopban szereplő értékek `Year` nagyobbak, mint `2010`.
+
+```text
+\"Year" > 2010
+```
+
+A Date kifejezésnek meg kell felelnie az adatoszlopban szereplő összes dátum résznek, és az adatoszlopban lévő dátumok formátumának konzisztensnek kell lennie. 
+
+Például egy Date (dátum) oszlopban a következő formátumban `mmddyyyy`a kifejezésnek a következőképpen kell megjelennie:
+
+```text
+\"Date" > 1/1/2010
+```
+
+### <a name="using-column-indices"></a>Column indexek használata
+
+A következő kifejezés azt mutatja be, hogyan használható az oszlop indexe az adatkészlet első oszlopában lévő összes olyan sor kiválasztására, amelyek értéke nem lehet kisebb, mint 30, de nem egyenlő 20 értékkel.
+
+```text
+(\0)<=30 & !=20
+```
+
 
 ## <a name="next-steps"></a>Következő lépések
 

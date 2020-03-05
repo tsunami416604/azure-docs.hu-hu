@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ddd4f45e88c0bcc63fb62cc816fae4dbad255841
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 602f5a794f90e52ac80ea71ea2ed3656a7e0e5e7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157584"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269460"
 ---
 # <a name="introduction-to-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
@@ -141,7 +141,7 @@ Az Azure Storage-erőforrások bármely olyan nyelvvel hozzáférhetők, amelyek
 - [Azure Storage-REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [Azure Storage ügyféloldali kódtára a .NET-hez](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [Azure Storage ügyféloldali kódtár Java/Android rendszerhez](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [Azure Storage ügyféloldali kódtár a Node. js-hez](https://docs.microsoft.com/javascript/api/overview/azure/storage)
+- [Azure Storage ügyféloldali kódtár a Node. js-hez](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
 - [Az Azure Storage ügyféloldali kódtára a Pythonhoz](https://github.com/Azure/azure-storage-python)
 - [Az Azure Storage ügyféloldali kódtára a PHP-hez](https://github.com/Azure/azure-storage-php)
 - [Azure Storage ügyféloldali kódtár a Rubyhoz](https://github.com/Azure/azure-storage-ruby)

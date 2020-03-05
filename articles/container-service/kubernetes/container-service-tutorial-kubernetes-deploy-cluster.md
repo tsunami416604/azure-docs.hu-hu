@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5cb21bff2834751843061910184499f37bde834e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: b8821f3bb3d48786697cbc4137baf530856774fd
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275439"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274006"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>ELAVULT Kubernetes-fürt üzembe helyezése Azure Container Service
 
@@ -30,17 +30,17 @@ A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Az Az
 
 Az ezt követő oktatóanyagokban üzembe helyezzük az Azure Vote alkalmazást a fürtön, skálázzuk, frissítjük, majd a Log Analyticst a Kubernetes-fürt monitorozására konfiguráljuk.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az előző oktatóanyagokban létrehoztunk egy tárolórendszerképet, és feltöltöttük egy Azure Container Registry-példányra. Ha ezeket a lépéseket még nem hajtotta végre, és szeretné követni az oktatóanyagot, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása](./container-service-tutorial-kubernetes-prepare-app.md) részhez.
 
 ## <a name="create-kubernetes-cluster"></a>Kubernetes-fürt létrehozása
 
-Hozzon létre egy Kubernetes-fürtöt az Azure Container Service-ben az [az acs create](/cli/azure/acs#az-acs-create) paranccsal. 
+Kubernetes-fürt létrehozása az Azure Container Service szolgáltatásban az [az acs create](/cli/azure/acs#az-acs-create) parancs használatával. 
 
 A következő példában létrehozunk egy `myK8sCluster` nevű fürtöt egy `myResourceGroup` nevű erőforráscsoportban. Az erőforráscsoportot [az előző oktatóanyagban](./container-service-tutorial-kubernetes-prepare-acr.md) hoztuk létre.
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
 ```
 
@@ -52,11 +52,11 @@ Néhány perc múlva befejeződik az üzembe helyezés, és a rendszer visszaadj
 
 Ahhoz, hogy csatlakozni tudjon a Kubernetes-fürthöz az ügyfélszámítógépről, használja a Kubernetes [kubectl](https://kubernetes.io/docs/user-guide/kubectl/) nevű parancssori ügyfelét. 
 
-Ha az Azure CloudShellt használja, a kubectl már telepítve van. Ha helyileg szeretné telepíteni, használja az [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) parancsot.
+Ha az Azure Cloud Shellt használja, a kubectl már telepítve van. Ha helyileg szeretné telepíteni, használja az [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) parancsot.
 
 Linux vagy macOS használata esetén előfordulhat, hogy sudo használatával kell futtatnia. Windows használata esetén győződjön meg róla, hogy a felület rendszergazdaként lett futtatva.
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs kubernetes install-cli 
 ```
 
@@ -66,19 +66,19 @@ Windows rendszeren az alapértelmezett telepítés telepítési hely a *c:\progr
 
 A kubectl a Kubernetes-fürthöz való csatlakozásra konfigurálásához futtassa az [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) parancsot.
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs kubernetes get-credentials --resource-group myResourceGroup --name myK8SCluster
 ```
 
 A fürthöz való csatlakozás ellenőrzéséhez futtassa a [kubectl get nodes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) parancsot.
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 Kimenet:
 
-```bash
+```output
 NAME                    STATUS                     AGE       VERSION
 k8s-agent-98dc3136-0    Ready                      5m        v1.6.2
 k8s-agent-98dc3136-1    Ready                      5m        v1.6.2

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/28/2019
-ms.openlocfilehash: 4fad7d1e3359264c647ffc2d5f67dc547c87a13a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e5c3da94cf2440b30dc59fe20bc51a34095f7d5f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196654"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269063"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Naplók optimalizálása Azure Monitorban
 Azure Monitor naplók az [Azure adatkezelő (ADX)](/azure/data-explorer/) használatával tárolják a naplófájlokat, és lekérdezéseket futtatnak az adatok elemzéséhez. Létrehozza, kezeli és karbantartja a ADX-fürtöket, és optimalizálja azokat a log Analysis számítási feladatokhoz. Amikor lekérdezést futtat, az optimalizált, és a munkaterület-adatok tárolására szolgáló megfelelő ADX-fürtre irányítja. A Azure Monitor-naplók és az Azure Adatkezelő számos automatikus lekérdezés-optimalizálási mechanizmust használ. Míg az automatikus optimalizálások jelentős lökést nyújtanak, bizonyos esetekben jelentősen növelheti a lekérdezési teljesítményt. Ez a cikk ismerteti a teljesítménnyel kapcsolatos szempontokat és számos technikát a kijavításához.
@@ -63,7 +63,7 @@ A lekérdezési parancsok és függvények némelyike nehéz a CPU-használatban
 
 Ezek a függvények a feldolgozott sorok számának arányában használják a PROCESSZORt. A leghatékonyabb optimalizálás a lekérdezés korai szakaszában való hozzáadás, amely a CPU-igényes funkció végrehajtása előtt a lehető legtöbb rekordot képes kiszűrni.
 
-Például a következő lekérdezések pontosan ugyanazt az eredményt eredményezik, de a második a leghatékonyabb, mint a [Where]() feltétel, mielőtt az elemzés során kizárja a sok rekordot:
+Például a következő lekérdezések pontosan ugyanazt az eredményt eredményezik, de a második a leghatékonyabb, mint a [Where](/azure/kusto/query/whereoperator) feltétel, mielőtt az elemzés során kizárja a sok rekordot:
 
 ```Kusto
 //less efficient
@@ -347,6 +347,6 @@ A párhuzamosságot csökkentő lekérdezési viselkedések például a követke
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Kusto lekérdezési nyelvét ismertető dokumentáció](/azure/kusto/query/).

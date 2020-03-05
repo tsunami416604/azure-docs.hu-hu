@@ -1,5 +1,5 @@
 ---
-title: (ELAVULT) Az ACR használata Azure DC/OS-fürt
+title: ELAVULT Az ACR használata Azure DC/OS-fürttel
 description: Azure Container Registry használata DC/OS-fürttel az Azure Container Service szolgáltatásban
 services: container-service
 author: julienstroheker
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 8319f2f5405271679d0c11d4ac68492cdec8fc14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1dccc42301cf73fb215d99636dfee9eef9bc59e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148937"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274164"
 ---
-# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(ELAVULT) ACR használata DC/OS-fürttel az alkalmazás központi telepítése
+# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>ELAVULT Az ACR használata DC/OS-fürttel az alkalmazás üzembe helyezéséhez
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -30,7 +30,7 @@ Ebben a cikkben az Azure Container Registry a DC/OS-fürtökkel való használat
 
 Az oktatóanyagban ismertetett lépések végrehajtásához szüksége lesz egy ACS DC/OS-fürtre. Amennyiben szükséges, [ezzel a mintaszkripttel](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) létrehozhat egyet.
 
-Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne, tekintse meg [az Azure CLI telepítését ismertető]( /cli/azure/install-azure-cli) szakaszt. 
+Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -46,7 +46,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry$RANDOM
 
 A beállítás létrehozása után az Azure parancssori felület az alábbihoz hasonló adatokat jelenít meg. Jegyezzük fel a `name` és a `loginServer` értékét, ezeket a későbbi lépések során használni fogjuk.
 
-```azurecli
+```output
 {
   "adminUserEnabled": false,
   "creationDate": "2017-06-06T03:40:56.511597+00:00",
@@ -93,7 +93,7 @@ FQDN=$(az acs list --resource-group myResourceGroup --query "[0].masterProfile.f
 
 Hozzon létre SSH-kapcsolatot a DC/OS-alapú fürt főkiszolgálójával (vagy az első főkiszolgálójával). Amennyiben a fürt eredeti létrehozása alkalmával nem alapértelmezett értéket használt, frissítse a felhasználónevet.
 
-```azurecli-interactive
+```console
 ssh azureuser@$FQDN
 ```
 
@@ -107,13 +107,13 @@ docker -H tcp://localhost:2375 login --username=myContainerRegistry23489 --passw
 
 Hozzon létre egy tömörített fájlt, amely tartalmazza a tárolóregisztrációs adatbázis hitelesítési adatainak értékeit.
 
-```azurecli-interactive
+```console
 tar czf docker.tar.gz .docker
 ```
 
 Másolja ezt a fájlt a fürt megosztott tárolójába. Ezzel a lépéssel a fájl a DC/OS fürt összes csomópontján elérhetővé válik.
 
-```azurecli-interactive
+```console
 cp docker.tar.gz /mnt/share/dcosshare
 ```
 
@@ -123,25 +123,25 @@ Most egy fejlesztési gépen, vagy bármely olyan rendszeren, amelyen a Docker t
 
 Hozzon létre egy tárolót az Ubuntu-rendszerképből.
 
-```azurecli-interactive
+```console
 docker run ubuntu --name base-image
 ```
 
-Most rögzítése a tárolót egy új rendszerképbe. A rendszerkép nevének tartalmaznia kell a tárolóregisztrációs adatbázis `loginServer` nevét `loginServer/imageName` formátumban.
+Most rögzítése a tárolót egy új rendszerképbe. A rendszerkép nevének tartalmaznia kell a tároló beállításjegyzékének `loginServer` nevét `loginServer/imageName`formátumával.
 
-```azurecli-interactive
+```console
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
 ```
 
 Jelentkezzen be az Azure Container Registrybe. A név helyére írja a loginServer-nevet, a --username helyére a tárolóregisztrációs adatbázis nevét, a --password helyére pedig a megadott jelszavak egyikét.
 
-```azurecli-interactive
+```console
 docker login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry2675.azurecr.io
 ```
 
 Végezetül töltse fel a rendszerképet az ACR-beállításjegyzékbe. Ebben a példában a dcos-demo nevű rendszerképet töltjük fel.
 
-```azurecli-interactive
+```console
 docker push mycontainerregistry30678.azurecr.io/dcos-demo
 ```
 
@@ -189,11 +189,11 @@ Az ACR-beállításjegyzékben tárolt rendszerkép használatához hozzon létr
 
 Helyezze üzembe az alkalmazást a DC/OS parancssori felületével.
 
-```azurecli-interactive
+```console
 dcos marathon app add acrDemo.json
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a DC/OS-t az Azure Container Registry használatára konfiguráltuk, beleértve az alábbi feladatokat:
 

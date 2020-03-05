@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: e0a2c9f4dd229353ef3d4dc06f7bb965d15814d9
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 50787a5bbfdc9baddfa4307247e8b505be6e3003
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255553"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273238"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: MySQL online migrálása az Azure Database for MySQL-be a DMS használatával
 
@@ -224,6 +224,8 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
     Ha a céladatbázis ugyanazt az adatbázisnevet tartalmazza, mint a forrás-adatbázis, akkor a Azure Database Migration Service alapértelmezés szerint kiválasztja a céladatbázis-adatbázist.
 
     ![Leképezés céladatbázisokra](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
+   > [!NOTE] 
+   > Bár ebben a lépésben több adatbázist is kiválaszthat, a Azure Database Migration Service minden példánya legfeljebb négy adatbázist támogat egyidejű áttelepítéshez. Az előfizetésben régiónként legfeljebb két Azure Database Migration Service példány adható meg. Ha például az áttelepíteni kívánt 40-es adatbázissal rendelkezik, akkor egyszerre csak nyolcat lehet áttelepíteni, és csak akkor, ha a Azure Database Migration Service két példányát hozta létre.
 
 3. Válassza a **Mentés** lehetőséget. **A migrálás összegzése** képernyő **Tevékenység neve** szövegbeviteli mezőjében adja meg a migrálási tevékenység nevét, majd tekintse át az összegzést, és ellenőrizze, hogy a forrás és a cél adatai megegyeznek-e a korábban megadottakkal.
 

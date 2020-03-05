@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b0aa78a519567a8e1ffd76e26f1d9ea3ca701fca
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2ea8a5428c1fabdfda4f2298c0559792537df481
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274178"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273989"
 ---
 # <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>ELAVULT Kubernetes hüvelyek és Kubernetes infrastruktúra méretezése
 
@@ -32,7 +32,7 @@ Ebben az oktatóanyagban, amely egy hétrészes sorozat ötödik része, horizon
 
 Az ezt követő oktatóanyagokban frissítjük az Azure Vote alkalmazást, és a Log Analyticst a Kubernetes-fürt monitorozására konfiguráljuk.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe, a rendszerképet feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt. Az alkalmazást ezután a Kubernetes-fürtön futtattuk. 
 
@@ -42,13 +42,15 @@ Ha ezeket a lépéseket még nem hajtotta végre, de szeretne velünk tartani, l
 
 Eddig már telepítettük az Azure Vote előtérrendszerét és a Redis-példányokat, mindegyiket egyetlen replikával. Ennek az ellenőrzéséhez futtassa a [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) parancsot.
 
-```azurecli-interactive
+Nyissa meg a [https://shell.azure.com](https://shell.azure.com) a Cloud Shell megnyitásához a böngészőben.
+
+```console
 kubectl get pods
 ```
 
 Kimenet:
 
-```bash
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
@@ -56,19 +58,19 @@ azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 
 Manuálisan módosítsa az `azure-vote-front` üzemelő példány podjainak számát a [kubectl scale](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale) paranccsal. Példánkban 5-re növeljük a számot.
 
-```azurecli-interactive
+```console
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
 Futtassa a [kubectl get pods](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) parancsot annak ellenőrzéséhez, hogy a Kubernetes létrehozza-e a podokat. Hozzávetőleg egy perc elteltével az újabb podok is futnak:
 
-```azurecli-interactive
+```console
 kubectl get pods
 ```
 
 Kimenet:
 
-```bash
+```output
 NAME                                READY     STATUS    RESTARTS   AGE
 azure-vote-back-2606967446-nmpcf    1/1       Running   0          15m
 azure-vote-front-3309479140-2hfh0   1/1       Running   0          3m
@@ -84,7 +86,7 @@ A Kubernetes támogatja a [podok horizontális felskálázását](https://kubern
 
 Az automatikus méretező használatához definiálni kell a podok processzorigényét és korlátait. Az `azure-vote-front` üzemi környezetben az előtértároló processzorigénye 0,25, a felső korlát pedig 0,5. A beállítások a következőhöz hasonlóak:
 
-```YAML
+```yaml
 resources:
   requests:
      cpu: 250m
@@ -95,19 +97,19 @@ resources:
 Az alábbi példában a [kubectl autoscale](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#autoscale) paranccsal automatikusan skálázzuk a podok számát az `azure-vote-front` üzemi környezetben. Amennyiben a processzorhasználat itt meghaladja az 50%-ot, az automatikus méretező legfeljebb 10-ig növeli a podok számát.
 
 
-```azurecli-interactive
+```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
 Az automatikus méretező állapotának megtekintéséhez futtassa az alábbi parancsot:
 
-```azurecli-interactive
+```console
 kubectl get hpa
 ```
 
 Kimenet:
 
-```bash
+```output
 NAME               REFERENCE                     TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
 azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        3          2m
 ```
@@ -126,7 +128,7 @@ az acs scale --resource-group=myResourceGroup --name=myK8SCluster --new-agent-co
 
 A parancs kimenete az ügynökcsomópontok számát az `agentPoolProfiles:count` értékében adja meg:
 
-```azurecli
+```output
 {
   "agentPoolProfiles": [
     {

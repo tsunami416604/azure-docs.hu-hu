@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 02/24/2020
-ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: cca22c499efde74bb1469222d2f8a6e576452aa2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587583"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273220"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -59,6 +59,9 @@ Alapértelmezés szerint a hibakeresés bekapcsolása az alapértelmezett Azure 
 
 ![Forrás része](media/data-flow/sourcepart3.png "Forrás része")
 
+> [!NOTE]
+> Egy jó útmutató a forráshoz tartozó partíciók számának kiválasztásához a Azure Integration Runtime számára beállított magok száma alapján, és az érték szorzása öt értékkel. Így például, ha a ADLS-mappákban több fájlt alakít át, és egy 32 Magos Azure IR fog használni, a célként megadott partíciók száma 32 x 5 = 160 partíció.
+
 ### <a name="source-batch-size-input-and-isolation-level"></a>Forrás köteg mérete, bemenete és elkülönítési szintje
 
 A forrás-átalakítás **forrás beállításai** területen a következő beállítások befolyásolhatják a teljesítményt:
@@ -100,7 +103,7 @@ Ha el szeretné kerülni a sorok közötti beszúrást a DW-be, jelölje be az *
 
 Minden átalakításnál beállíthatja azt a particionálási sémát, amelyet az adatelőállítót használni kíván az optimalizálás lapon. Célszerű először a fájl alapú mosogatókat tesztelni az alapértelmezett particionálás és optimalizálás megtartása mellett.
 
-* Kisebb fájlok esetén előfordulhat, hogy az *önálló partíciók* kiválasztásával időnként jobb és gyorsabb is működhet, mint a kis méretű fájlok particionálását kérő Spark.
+* Kisebb fájlok esetében előfordulhat, hogy a kevesebb partíció kiválasztásával időnként jobb és gyorsabb lehet a kis méretű fájlok particionálása, mint a Spark megkérdezése.
 * Ha nem rendelkezik elegendő információval a forrásadatok közül, válassza a *ciklikus multiplexelés* particionálás lehetőséget, és állítsa be a partíciók számát.
 * Ha az adatai olyan oszlopokkal rendelkeznek, amelyek megfelelő kivonatoló kulcsok lehetnek, válassza a *kivonatoló particionálás*lehetőséget.
 

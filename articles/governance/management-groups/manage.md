@@ -3,12 +3,12 @@ title: A felügyeleti csoportok használata – Azure-szabályozás
 description: Útmutató a felügyeleti csoport hierarchiájának megtekintéséhez, karbantartásához, frissítéséhez és törléséhez.
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 59f1b48e0a668d506a87ae1ef14de6df76b26ad7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 94df67888c0ed0ea532844a92a362a181621d3d3
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751232"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267936"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Erőforrások kezelése felügyeleti csoportokkal
 
@@ -17,6 +17,12 @@ Ha a vállalatnak sok előfizetése van, jól jöhet egy módszer, hogy hatékon
 A felügyeleti csoportok nagy léptékű, nagyvállalati szintű felügyeletet tesznek lehetővé, függetlenül az előfizetése típusától.  További információ a felügyeleti csoportokról: [erőforrások rendszerezése az Azure felügyeleti csoportjaival](overview.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+>[!IMPORTANT]
+>Azure Resource Manager a felhasználói jogkivonatok és a felügyeleti csoport gyorsítótára 30 percig tart, mielőtt azok frissítésre kényszerülnek.  Ha bármilyen műveletet végez, például egy felügyeleti csoport vagy előfizetés áthelyezését, akár 30 percet is igénybe vehet.  
+>Ahhoz, hogy a frissítések hamarabb megjelenjenek, frissítenie kell a jogkivonatot a böngésző frissítésével, a bejelentkezéssel és a kijelentkezéssel, vagy új jogkivonat igénylésével.  
+
+
 
 ## <a name="change-the-name-of-a-management-group"></a>Felügyeleti csoport nevének módosítása
 

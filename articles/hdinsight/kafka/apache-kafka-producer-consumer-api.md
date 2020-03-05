@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 102523316aaa59803fb9a6957457fc7bd4f6ce4f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5a7d4d1917f65cd3d836db83600937a3e3d89de6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186816"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271879"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata
 
@@ -218,5 +218,5 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 
 Ebből a dokumentumból megtanulta, hogyan használhatja a Apache Kafka producer és fogyasztói API-t a Kafka on HDInsight. Az alábbiak további információt biztosítanak a Kafka használatával kapcsolatban:
 
-> [!div class="nextstepaction"]
-> [Apache Kafka naplók elemzése](apache-kafka-log-analytics-operations-management.md)
+* [A Kafka REST proxy használata](rest-proxy.md)
+* [Apache Kafka naplók elemzése](apache-kafka-log-analytics-operations-management.md)

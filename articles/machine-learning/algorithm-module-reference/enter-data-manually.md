@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 27c359a594cec66708647d5a648c7e8414c0d92c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 949cdb4c53531a548380a6f0116fb45f91d7ba66
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917475"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268773"
 ---
 # <a name="enter-data-manually-module"></a>Manuálisan adja meg az adatmodult
 
@@ -89,11 +89,9 @@ Ez a modul a következő helyzetekben lehet hasznos:
         |0,00016|0,004|0,999961|0,00784|1|  
         |0|0,004|0,999955|0,008615|1|  
   
-4.  Az új sor elindításához nyomja le az ENTER billentyűt az egyes sorok után.  
-  
-     **Ügyeljen rá, hogy az utolsó sor után nyomja le az ENTER billentyűt.** 
+4.  Az új sor elindításához nyomja le az ENTER billentyűt az egyes sorok után.      
      
-     Ha többször is megnyomja az ENTER billentyűt több üres záró sor hozzáadásához, a rendszer eltávolítja az utolsó üres sort, de a többi üres sort hiányzó értékként kezeli a rendszer.  
+     Ha többször is megnyomja az ENTER billentyűt több üres záró sor hozzáadásához, az üres sorok el lesznek távolítva.  
   
      Ha hiányzó értékekkel rendelkező sorokat hoz létre, akkor a későbbiekben bármikor szűrheti őket.  
   

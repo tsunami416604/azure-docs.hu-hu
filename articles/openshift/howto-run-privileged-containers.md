@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: ARO, openshift, aquasec, twistlock, Red Hat
-ms.openlocfilehash: 5d28a19126c9b7ae4ef7afe2a6b69bd4a13e0c83
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228241"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271377"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Kiemelt tárolók futtatása Azure Red Hat OpenShift-fürtön
 
@@ -115,7 +115,7 @@ oc get route aqua-web -n aqua-security
 | -------------- | ------------- |
 | Orchestrator   | OpenShift     |
 | ServiceAccount | Aqua – fiók  |
-| Projekt        | Aqua – biztonság |
+| Project        | Aqua – biztonság |
 
 ## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Termékspecifikus lépések a Prisma-felhőhöz/Twistlock
 
@@ -137,6 +137,8 @@ Kezdje a "konzol telepítése" szakasszal.
 
 A 2. lépésben a `oc create -f twistlock_console.yaml` során hibaüzenet jelenik meg a névtér létrehozásakor.
 Nyugodtan figyelmen kívül hagyhatja, hogy a névtér korábban a `oc new-project` parancs használatával lett létrehozva.
+
+`azure-disk` használata a tárolási típushoz.
 
 ### <a name="create-an-external-route-to-console"></a>Külső útvonal létrehozása a konzolon
 

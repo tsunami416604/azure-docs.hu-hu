@@ -3,12 +3,12 @@ title: Azure-Application Insights ASP.NET Core alkalmazásokhoz | Microsoft Docs
 description: ASP.NET Core webalkalmazások figyelése a rendelkezésre állás, a teljesítmény és a használat érdekében.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 7aa8ae7fd2742e51ab1ccfed26524241f4c11256
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 5028d95ef784b0d309880d0d05371cd42f627d7d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666258"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269211"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights ASP.NET Core alkalmazásokhoz
 
@@ -158,6 +158,14 @@ Az előző lépések elegendő segítséget nyújtanak a kiszolgálóoldali tele
     ```cshtml
         @Html.Raw(JavaScriptSnippet.FullScript)
         </head>
+    ```
+    
+Másik lehetőségként használhatja a `FullScript` az `ScriptBody` az SDK v 2.14-as verziótól kezdődően érhető el. Akkor használja, ha a `<script>` címkét a tartalom biztonsági házirendjének beállításához kell vezérelni:
+
+    ```cshtml
+        <script> // apply custom changes to this script tag.
+            @Html.Raw(JavaScriptSnippet.ScriptBody)
+        </script>
     ```
 
 A korábban hivatkozott `.cshtml` fájlnevek egy alapértelmezett MVC-alkalmazás sablonból származnak. Végül, ha megfelelően szeretné engedélyezni az ügyféloldali figyelést az alkalmazáshoz, a JavaScript-kódrészletnek szerepelnie kell a figyelni kívánt alkalmazás minden oldalának `<head>` szakaszában. Ezt a célt az alkalmazás-sablonhoz a JavaScript-kódrészlet `_Layout.cshtml`való hozzáadásával hajthatja végre. 

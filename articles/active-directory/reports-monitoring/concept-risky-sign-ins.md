@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f19744e6c860ae315b681f5eb090cba23b153af
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b77486064139895799ac5a48327377154f75da6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008340"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273843"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Kockázatos bejelentkezésekre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -52,15 +52,15 @@ Ha meg szeretné tudni, hogyan rendelhet hozzá rendszergazdai szerepköröket e
 
 Az Azure AD összes kiadása kockázatos bejelentkezési jelentéseket nyújt. A jelentések részletességi szintje azonban különbözik a kiadások között: 
 
-- A **ingyenes Azure Active Directory és az alapszintű kiadásokban**a kockázatos bejelentkezések listája jelenik meg. 
+- A **ingyenes Azure Active Directory kiadásban**megjelenik a kockázatos bejelentkezések listája. 
 
 - Emellett a **prémium szintű Azure Active Directory 1** kiadás lehetővé teszi, hogy megvizsgáljon néhány, az egyes jelentésekhez észlelt mögöttes kockázati észlelést. 
 
 - A **prémium szintű Azure Active Directory 2** kiadás az összes mögöttes kockázati észleléssel kapcsolatos legrészletesebb információkat tartalmazza, és lehetővé teszi olyan biztonsági szabályzatok konfigurálását, amelyek automatikusan reagálnak a konfigurált kockázati szintekre.
 
-## <a name="risky-sign-ins-report-for-azure-ad-free-and-basic-edition"></a>Kockázatos bejelentkezések jelentés az Azure AD ingyenes és alapszintű kiadásához
+## <a name="risky-sign-ins-report-for-azure-ad-free-edition"></a>Kockázatos bejelentkezések jelentés az Azure AD ingyenes kiadásához
 
-Az Azure AD ingyenes és alapszintű kiadásai a felhasználók számára észlelt kockázatos bejelentkezések listáját tartalmazzák. Minden rekord a következő attribútumokat tartalmazza:
+Az Azure AD ingyenes kiadása lehetővé teszi a felhasználók számára észlelt kockázatos bejelentkezések listáját. Minden rekord a következő attribútumokat tartalmazza:
 
 - **User (felhasználó** ) – a bejelentkezési művelet során használt felhasználó neve.
 - **IP** – a Azure Active Directoryhoz való kapcsolódáshoz használt eszköz IP-címe.

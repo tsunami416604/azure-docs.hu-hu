@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 4c29658473aaa50168175c76234dfca34fcdad83
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4a695957c287e69ff6b40e5a01254a729eaae441
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594132"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273006"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Intelligens Útválasztás és Kanári-kiadások használata az Azure Kubernetes Service (Istio) szolgáltatásban (ak)
 
@@ -68,25 +68,25 @@ cd aks-voting-app/scenarios/intelligent-routing-with-istio
 
 Először hozzon létre egy névteret az AK-fürtben a `voting` nevű AK-beli szavazási alkalmazáshoz a következőképpen:
 
-```azurecli
+```console
 kubectl create namespace voting
 ```
 
 A névtér címkéje `istio-injection=enabled`. Ez a címke arra utasítja a Istio-t, hogy a névtérben lévő összes hüvelybe automatikusan adja a Istio-proxykat az oldalkocsiként.
 
-```azurecli
+```console
 kubectl label namespace voting istio-injection=enabled
 ```
 
 Most hozzuk létre az AK-szavazási alkalmazás összetevőit. Hozza létre ezeket az összetevőket az előző lépésben létrehozott `voting` névtérben.
 
-```azurecli
+```console
 kubectl apply -f kubernetes/step-1-create-voting-app.yaml --namespace voting
 ```
 
 A következő példa kimenete a létrehozandó erőforrásokat mutatja:
 
-```console
+```output
 deployment.apps/voting-storage-1-0 created
 service/voting-storage created
 deployment.apps/voting-analytics-1-0 created
@@ -100,13 +100,13 @@ service/voting-app created
 
 A létrehozott hüvelyek megjelenítéséhez használja a [kubectl Get hüvely][kubectl-get] parancsot az alábbi módon:
 
-```azurecli
+```console
 kubectl get pods -n voting --show-labels
 ```
 
 A következő példa kimenetében a `voting-app` Pod és a `voting-analytics` és a `voting-storage` hüvely egyetlen példánya látható. A hüvelyek mindegyike két tárolóval rendelkezik. Ezen tárolók egyike az összetevő, a másik a `istio-proxy`:
 
-```console
+```output
 NAME                                    READY     STATUS    RESTARTS   AGE   LABELS
 voting-analytics-1-0-57c7fccb44-ng7dl   2/2       Running   0          39s   app=voting-analytics,pod-template-hash=57c7fccb44,version=1.0
 voting-app-1-0-956756fd-d5w7z           2/2       Running   0          39s   app=voting-app,pod-template-hash=956756fd,version=1.0
@@ -144,26 +144,26 @@ Addig nem tud csatlakozni a szavazati alkalmazáshoz, amíg létre nem hozza a I
 
 Az átjáró és a virtuális szolgáltatás YAML üzembe helyezéséhez használja a `kubectl apply` parancsot. Ne felejtse el megadni azt a névteret, amelyre ezek az erőforrások telepítve vannak.
 
-```azurecli
+```console
 kubectl apply -f istio/step-1-create-voting-app-gateway.yaml --namespace voting
 ```
 
 A következő példa kimenete a létrehozandó új átjárót és virtuális szolgáltatást mutatja:
 
-```console
+```output
 virtualservice.networking.istio.io/voting-app created
 gateway.networking.istio.io/voting-app-gateway created
 ```
 
 Szerezze be a Istio beáramló átjáró IP-címét a következő parancs használatával:
 
-```azurecli
+```output
 kubectl get service istio-ingressgateway --namespace istio-system -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 
 A következő példa kimenete a bejövő átjáró IP-címét jeleníti meg:
 
-```
+```output
 20.188.211.19
 ```
 
@@ -183,13 +183,13 @@ A következő ábra azt mutatja be, hogy mi fog futni a szakasz végén, a `voti
 
 Telepítse a `voting-analytics` összetevő `1.1` verzióját. Hozza létre ezt az összetevőt a `voting` névtérben:
 
-```azurecli
+```console
 kubectl apply -f kubernetes/step-2-update-voting-analytics-to-1.1.yaml --namespace voting
 ```
 
 A következő példa kimenete a létrehozandó erőforrásokat mutatja:
 
-```console
+```output
 deployment.apps/voting-analytics-1-1 created
 ```
 
@@ -223,7 +223,7 @@ A `voting-analytics` összetevő két verziója közötti váltást az alábbi m
 
 A következő példa kimenete a visszaadott webhely megfelelő részét mutatja, mivel a hely a verziók között vált:
 
-```console
+```output
   <div id="results"> Cats: 2 | Dogs: 4 </div>
   <div id="results"> Cats: 2 | Dogs: 4 </div>
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
@@ -244,13 +244,13 @@ A `kubectl apply` parancs használatával cserélje le a virtuális szolgáltat�
 * A szabályzat `peers.mtls.mode` úgy van beállítva, hogy `STRICT`, hogy a kölcsönös TLS a `voting` névtérben lévő szolgáltatások között legyen érvényesítve.
 * A `trafficPolicy.tls.mode` is beállítjuk, hogy az összes célként megadott szabályban `ISTIO_MUTUAL`. A Istio erős identitásokkal biztosítja a szolgáltatásokat, és biztosítja a kommunikációt a szolgáltatások között a kölcsönös TLS-vel és az Istio transzparens módon felügyelt Ügyféltanúsítványok használatával.
 
-```azurecli
+```console
 kubectl apply -f istio/step-2-update-and-add-routing-for-all-components.yaml --namespace voting
 ```
 
 A következő példa kimenete az új szabályzatot, a célhely szabályait és a virtuális szolgáltatások frissítésének/létrehozásának eredményét mutatja be:
 
-```console
+```output
 virtualservice.networking.istio.io/voting-app configured
 policy.authentication.istio.io/default created
 destinationrule.networking.istio.io/voting-app created
@@ -286,7 +286,7 @@ Az alábbi módon jelenítheti meg, hogy most már csak a `voting-analytics` ös
 
 A következő példa kimenete a visszaadott webhely megfelelő részét mutatja:
 
-```console
+```output
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
@@ -322,7 +322,7 @@ Ezek a parancsok a megadott szolgáltatásokhoz való hozzáférésről, a névt
 
 A következő példa kimenete azt mutatja, hogy a fenti lekérdezésekben a kölcsönös TLS kényszerítve van. A kimenet a házirend és a cél szabályait is megjeleníti, amelyek kikényszerítik a kölcsönös TLS-t:
 
-```console
+```output
 # mTLS configuration between istio ingress pods and the voting-app service
 HOST:PORT                                    STATUS     SERVER     CLIENT     AUTHN POLICY       DESTINATION RULE
 voting-app.voting.svc.cluster.local:8080     OK         mTLS       mTLS       default/voting     voting-app/voting
@@ -364,13 +364,13 @@ Az alábbi ábrán látható, hogy mit fog futni a szakasz végén.
 
 Először frissítse a Istio-cél szabályait és a virtuális szolgáltatásokat az új összetevők kiszolgálásához. Ezek a frissítések biztosítják, hogy a forgalom ne legyen helytelen az új összetevőkre irányítva, és a felhasználók nem kapnak váratlan hozzáférést:
 
-```azurecli
+```console
 kubectl apply -f istio/step-3-add-routing-for-2.0-components.yaml --namespace voting
 ```
 
 A következő példa kimenetében a célként megadott szabályok és virtuális szolgáltatások láthatók:
 
-```console
+```output
 destinationrule.networking.istio.io/voting-app configured
 virtualservice.networking.istio.io/voting-app configured
 destinationrule.networking.istio.io/voting-analytics configured
@@ -381,13 +381,13 @@ virtualservice.networking.istio.io/voting-storage configured
 
 Ezután adja hozzá a Kubernetes objektumokat az új verzióhoz `2.0` összetevőket. Emellett frissíti a `voting-storage` szolgáltatást, hogy tartalmazza a MySQL-hez készült `3306` portot:
 
-```azurecli
+```console
 kubectl apply -f kubernetes/step-3-update-voting-app-with-new-storage.yaml --namespace voting
 ```
 
 A következő példa kimenete a Kubernetes objektumok sikeres frissítését vagy létrehozását mutatja be:
 
-```console
+```output
 service/voting-storage configured
 secret/voting-storage-secret created
 deployment.apps/voting-storage-2-0 created
@@ -398,7 +398,7 @@ deployment.apps/voting-app-2-0 created
 
 Várjon, amíg az összes verzió `2.0` hüvely fut. A [kubectl Get hüvely][kubectl-get] paranccsal a `-w` Watch kapcsolóval tekintheti meg a `voting` névtér összes hüvelyének változásait:
 
-```azurecli
+```console
 kubectl get pods --namespace voting -w
 ```
 
@@ -428,13 +428,13 @@ Mostantól sikeresen bevezette az AK szavazó alkalmazás új verzióját.
 
 Az ebben a forgatókönyvben használt AK-szavazati alkalmazást eltávolíthatja az AK-fürtből a `voting` névtér törlésével a következőképpen:
 
-```azurecli
+```console
 kubectl delete namespace voting
 ```
 
 A következő példa kimenete azt mutatja, hogy az AK szavazó alkalmazás összes összetevője el lett távolítva az AK-fürtből.
 
-```console
+```output
 namespace "voting" deleted
 ```
 

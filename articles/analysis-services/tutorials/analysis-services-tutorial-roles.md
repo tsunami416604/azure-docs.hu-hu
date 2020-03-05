@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 3abcfe61f365c3c96dfb6b8eb2ca6cc9e5d3797e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572377"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273678"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Oktatóanyag: Kiszolgáló-rendszergazdai és felhasználói szerepkörök konfigurálása
 
@@ -82,7 +82,7 @@ Ebben a feladatban Azure AD-jából fog felhasználói vagy csoportfiókot hozz�
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>Felhasználó hozzáadása a modelladatbázis-rendszergazdai szerepkörhöz
 
-Ebben a feladatban felhasználói vagy csoportfiókot fog hozzáadni a modellben már meglévő Internet Sales Administrator szerepkörhöz. Ez a szerepkör teljes (rendszergazdai) hozzáféréssel rendelkezik az adventureworks minta-modelladatbázishoz. A feladat a [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) TMSL-parancsot használja az Ön számára létrehozott szkriptben.
+Ebben a feladatban felhasználói vagy csoportfiókot fog hozzáadni a modellben már meglévő Internet Sales Administrator szerepkörhöz. Ez a szerepkör teljes (rendszergazdai) hozzáféréssel rendelkezik az adventureworks minta-modelladatbázishoz. A feladat a [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) TMSL-parancsot használja az Ön számára létrehozott szkriptben.
 
 1. Az **Object Explorerben** bontsa ki az **Adatbázisok** > **adventureworks** > **Szerepkörök** elemet. 
 2. Kattintson a jobb gombbal az **Internet Sales Administrator** elemre, majd kattintson a **Szerepkör szkriptelése:**  > **Létrehozás vagy áthelyezés ide:**  > **Új lekérdezésszerkesztő ablak**.
@@ -98,7 +98,7 @@ Ebben a feladatban felhasználói vagy csoportfiókot fog hozzáadni a modellben
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>Új modelladatbázis-szerepkör hozzáadása és felhasználó vagy csoport felvétele
 
-Ebben a feladatban a [Create](https://docs.microsoft.com/bi-reference/tmsl/create-command-tmsl) parancsot fogja használni egy TMSL-szkriptben egy új Internet Sales Global szerepkör létrehozására, *olvasási* engedélyt ad a szerepkörnek, és hozzáad egy felhasználói vagy csoportfiókot az Azure AD-ból.
+Ebben a feladatban a [Create](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl) parancsot fogja használni egy TMSL-szkriptben egy új Internet Sales Global szerepkör létrehozására, *olvasási* engedélyt ad a szerepkörnek, és hozzáad egy felhasználói vagy csoportfiókot az Azure AD-ból.
 
 1. Az **Object Explorerben** kattintson a jobb gombbal az **adventureworks** adatbázisra, majd kattintson az **Új lekérdezés** > **XMLA** elemre. 
 2. Másolja ki és illessze be az alábbi TMSL-szkriptet a lekérdezésszerkesztőbe:
@@ -139,7 +139,7 @@ Ebben a feladatban a [Create](https://docs.microsoft.com/bi-reference/tmsl/creat
 Ha többé nincs rájuk szüksége, törölje a felhasználói és csoportfiókokat és szerepköröket. A felhasználói fiókok eltávolításához használja a **Szerepkör tulajdonságai** > **Tagság** lehetőséget. Kattintson a jobb gombbal egy szerepkörre, majd kattintson a **Törlés** lehetőségre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtanult csatlakozni Azure AS-kiszolgálójához, megismerkedett az adventureworks minta-modelladatbázissal és annak tulajdonságaival az SSMS-ben. Elsajátította az SSMS és a TMSL-szkriptek használatát felhasználók vagy csoportok meglévő vagy új szerepkörökhöz adására. Most, hogy konfigurálta a kiszolgáló és a minta-modelladatbázis felhasználói engedélyeit, Önnel együtt mások is csatlakozhatnak ahhoz olyan ügyfélalkalmazások használatával, mint a Power BI. További tudnivalók a következő oktatóanyagban. 
 
 > [!div class="nextstepaction"]

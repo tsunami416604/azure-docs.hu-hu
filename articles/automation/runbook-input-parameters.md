@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ddb08f774bbb8aa3bc4b10bcd0dd213c8583465e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 274ee0fe98281e733994f2d5df38886409cbc913
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249796"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273650"
 ---
 # <a name="runbook-input-parameters"></a>Runbook bemeneti paraméterei
 
@@ -148,19 +148,19 @@ A beviteli mező alatti címkében láthatja, hogy milyen tulajdonságokat áll�
 * **Azure Resource Manager parancsmagok:** A [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0
 )használatával elindíthat egy olyan Automation-runbook, amely egy erőforráscsoporthoz lett létrehozva.
 
-```powershell
-  $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
+   ```powershell
+     $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
   
-  Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
-```
+     Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
+   ```
 
 * **Klasszikus Azure üzembehelyezési modell-parancsmagok:** A [Start-AzureAutomationRunbook](/powershell/module/servicemanagement/azure/start-azureautomationrunbook)használatával elindíthat egy alapértelmezett erőforráscsoporthoz létrehozott Automation-runbook.
   
-```powershell
-  $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
+   ```powershell
+     $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
   
-  Start-AzureAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" -Parameters $params
-```
+     Start-AzureAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" -Parameters $params
+   ```
 
 > [!NOTE]
 > Amikor PowerShell-parancsmagokkal indítja el a runbook, a rendszer egy alapértelmezett paramétert ( *MicrosoftApplicationManagementStartedBy*) hoz létre a **PowerShell**értékkel. Ezt a paramétert a feladatok részletei ablaktábláján tekintheti meg.  
@@ -169,7 +169,7 @@ A beviteli mező alatti címkében láthatja, hogy milyen tulajdonságokat áll�
 
 * **Azure Resource Manager metódus:** A runbook a programozási nyelv SDK használatával indítható el. Az alábbiakban egy C# kódrészletet talál az Automation-fiókban lévő runbook elindításához. A [GitHub-tárházban](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)található összes kód megtekinthető.  
 
-  ```csharp
+   ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
       {
         var response = AutomationClient.Jobs.Create(resourceGroupName, automationAccount, new JobCreateParameters
@@ -185,11 +185,11 @@ A beviteli mező alatti címkében láthatja, hogy milyen tulajdonságokat áll�
          });
       return response.Job;
       }
-  ```
+   ```
 
 * **Klasszikus Azure üzembe helyezési modell módszere:** A runbook a programozási nyelv SDK használatával indítható el. Az alábbiakban egy C# kódrészletet talál az Automation-fiókban lévő runbook elindításához. A [GitHub-tárházban](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)található összes kód megtekinthető.
 
-  ```csharp
+   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
     {
       var response = AutomationClient.Jobs.Create(automationAccount, new JobCreateParameters
@@ -205,20 +205,20 @@ A beviteli mező alatti címkében láthatja, hogy milyen tulajdonságokat áll�
        });
       return response.Job;
     }
-  ```
+   ```
 
-  A metódus elindításához hozzon létre egy szótárt, amely a runbook-paramétereket *VMName* és *resourceGroupName* , valamint azok értékeit tárolja. Ezután indítsa el a runbook. Alább látható C# a fentiekben megadott metódus meghívásához használt kódrészlet.
+   A metódus elindításához hozzon létre egy szótárt, amely a runbook-paramétereket *VMName* és *resourceGroupName* , valamint azok értékeit tárolja. Ezután indítsa el a runbook. Alább látható C# a fentiekben megadott metódus meghívásához használt kódrészlet.
 
-  ```csharp
-  IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
+   ```csharp
+   IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
   
-  // Add parameters to the dictionary.
+   // Add parameters to the dictionary.
   RunbookParameters.Add("VMName", "WSVMClassic");
-  RunbookParameters.Add("resourceGroupName", "WSSC1");
+   RunbookParameters.Add("resourceGroupName", "WSSC1");
   
-  //Call the StartRunbook method with parameters
-  StartRunbook("Get-AzureVMGraphical", RunbookParameters);
-  ```
+   //Call the StartRunbook method with parameters
+   StartRunbook("Get-AzureVMGraphical", RunbookParameters);
+   ```
 
 #### <a name="start-a-runbook-using-the-rest-api-and-assign-parameters"></a>Runbook elindítása a REST API és a paraméterek hozzárendelésével
 
@@ -238,7 +238,7 @@ Ha paramétereket szeretne átadni a runbook-feladatoknak, használja a kérelem
 
 Ha a korábban a *VMName* és a *resourceGroupName* paraméterrel létrehozott **Get-AzureVMTextual** runbook szeretné elindítani, használja a következő JSON-formátumot a kérelem törzséhez.
 
-   ```json
+```json
     {
       "properties":{
         "runbook":{
@@ -248,7 +248,7 @@ Ha a korábban a *VMName* és a *resourceGroupName* paraméterrel létrehozott *
          "resourceGroupName":"ContosoSales"}
         }
     }
-   ```
+```
 
 A rendszer a 201 HTTP-állapotkódot adja vissza, ha a feladatot sikeresen létrehozták. További információ a válasz fejlécekről és a válasz törzséről: [runbook-feladatok létrehozása a REST API használatával](/rest/api/automation/job/create).
 
@@ -330,7 +330,7 @@ Most meghívhatja a runbook a helyi gépről Azure PowerShell használatával.
     >[!NOTE]
     >PowerShell-runbookok esetében a **Add-AzAccount** és a **Add-AzureRMAccount** aliasok a **csatlakozási-AzAccount**. Vegye figyelembe, hogy ezek az aliasok nem érhetők el grafikus runbookok. A grafikus runbook saját maga is használhatják A **AzAccount** .
 
-2. Szerezze be a mentett JSON-fájl tartalmát, és alakítsa át karakterlánccá. `JsonPath` az az elérési út, ahová a JSON-fájlt mentette.
+1. Szerezze be a mentett JSON-fájl tartalmát, és alakítsa át karakterlánccá. `JsonPath` az az elérési út, ahová a JSON-fájlt mentette.
 
    ```powershell
    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
@@ -354,7 +354,7 @@ Most meghívhatja a runbook a helyi gépről Azure PowerShell használatával.
    ```
 
    Figyelje meg, hogy a *Paraméterek* értékét a JSON-fájlból származó értékeket tartalmazó PowerShell-objektumra állítja be.
-1. A runbook indítása
+1. Indítsa el a runbook.
 
    ```powershell
    $job = Start-AzAutomationRunbook @RBParams

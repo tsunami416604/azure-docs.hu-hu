@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f8ae85ffc16bd953f04f1c3d7790231939c1f2cf
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: e71b2807595aebeb1f0c8682fde119f4e267e55d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588907"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273309"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Adatcsatorna-processzor módosítása Azure Cosmos DB 
 
@@ -41,13 +41,14 @@ Ha szeretné jobban megismerni, hogy a változási hírcsatorna processzorának 
 
 A belépési pont mindig a figyelt tároló, `Container` `GetChangeFeedProcessorBuilder`meghívott példányból:
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="DefineProcessor":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
 Ahol az első paraméter egy különálló név, amely leírja a processzor célját, a második pedig a módosításokat kezelő delegált implementáció. 
 
 Egy delegált példa:
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="Delegate":::
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
 Végül megadhatja a processzor-példány nevét a `WithInstanceName` és azt a tárolót, amely a bérlet állapotát `WithLeaseContainer`sal tartja karban.
 

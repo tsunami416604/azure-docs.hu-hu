@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan használhatja az Azure CLI-t az Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: fef22b1b2d81f76e95a15c0e3a746440b95df8ca
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d17ae12beecf9d83ef6d688af799787c5ccf322b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596606"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273770"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure Active Directory integrálása az Azure Kubernetes szolgáltatással az Azure CLI használatával
 
@@ -27,9 +27,11 @@ A következő korlátozások érvényesek:
 
 Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
+Nyissa meg a [https://shell.azure.com](https://shell.azure.com) a Cloud Shell megnyitásához a böngészőben.
+
 A konzisztencia és a jelen cikkben szereplő parancsok futtatásának elősegítése érdekében hozzon létre egy változót a kívánt AK-fürt nevéhez. A következő példa a *myakscluster*nevet használja:
 
-```azurecli-interactive
+```console
 aksname="myakscluster"
 ```
 
@@ -209,8 +211,10 @@ kubectl get pods --all-namespaces
 Bejelentkezési kérést kap az Azure AD hitelesítő adataival történő hitelesítéshez egy webböngészővel. A sikeres hitelesítés után a `kubectl` parancs megjeleníti a hüvelyeket az AK-fürtben, ahogy az az alábbi példában látható:
 
 ```console
-$ kubectl get pods --all-namespaces
+kubectl get pods --all-namespaces
+```
 
+```output
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BYMK7UXVD to authenticate.
 
 NAMESPACE     NAME                                    READY   STATUS    RESTARTS   AGE
@@ -229,7 +233,7 @@ A `kubectl`hoz kapott hitelesítési jogkivonat gyorsítótárazva van. A rendsz
 
 Ha a következő példában szereplő kimenetben sikeresen bejelentkezett egy webböngészővel, akkor a következő lehetséges problémákkal kapcsolatos hibaüzenet jelenik meg:
 
-```console
+```output
 error: You must be logged in to the server (Unauthorized)
 ```
 

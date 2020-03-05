@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/30/2019
+ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a9559f85e31a38c50034d6aacc8f65e4d68aec2
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f25f13c60a60e1a397e4c63443ee786a9acdf6d1
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014440"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273795"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>A Azure Active Directory jelentési API elérésének előfeltételei
 
@@ -189,19 +189,16 @@ Ezekre az értékekre szüksége lesz a jelentéskészítési API-hoz való hív
 
 ## <a name="troubleshoot-errors-in-the-reporting-api"></a>Hibák elhárítása a jelentéskészítési API-ban
 
-Ez a szakasz azokat a gyakori hibaüzeneteket sorolja fel, amelyekkel az MS Graph API használatával és a megoldásuk lépéseivel férhet hozzá a tevékenységek jelentéseihez.
+Ez a szakasz azokat a gyakori hibaüzeneteket sorolja fel, amelyekkel a Microsoft Graph API-val és a megoldásuk lépéseivel férhet hozzá a tevékenységek jelentéseihez.
 
-### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>500 HTTP belső kiszolgálóhiba a Microsoft Graph v2-végpont elérésekor
 
-Jelenleg nem támogatjuk a Microsoft Graph v2-végpontot – ügyeljen arra, hogy a Microsoft Graph v1-végpont használatával hozzáférhessen a tevékenység naplóihoz.
-
-### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>Hiba: nem sikerült beolvasni a felhasználói szerepköröket az AD Graph-ból
+### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>Hiba: nem sikerült beolvasni a felhasználói szerepköröket a Microsoft Graph
 
  Jelentkezzen be a fiókjába a Graph Explorer felhasználói felületén található bejelentkezési gombok használatával, hogy elkerülje a hiba beolvasását a Graph Explorer használatával. 
 
 ![Graph Explorer](./media/troubleshoot-graph-api/graph-explorer.png)
 
-### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>Hiba: nem sikerült a prémium szintű licenc-ellenőrzések végrehajtása az AD Graph-ból 
+### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>Hiba: nem sikerült a prémium szintű licencek ellenőrzését Microsoft Graph 
 
 Ha ezt a hibaüzenetet akkor futtatja, amikor a Graph Explorer használatával próbál hozzáférni a bejelentkezésekhez, válassza a bal oldali navigációs menüben a fiók **módosítása** lehetőséget, majd válassza a **feladatok. READWRITE** és a **könyvtár. olvasás. összes**lehetőséget. 
 
@@ -218,7 +215,7 @@ A bejelentkezési jelentések eléréséhez Azure Active Directory Premium 1 (P1
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>Hiba: az alkalmazásból hiányzik a "HRE olvasása" engedély. 
 
-### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>Hiba: az alkalmazás hiányzó MSGraph API-je "a naplózási napló összes adatfájljának olvasása" engedély
+### <a name="error-application-missing-microsoft-api-read-all-audit-log-data-permission"></a>Hiba: az alkalmazásból hiányzik a Microsoft API "az összes naplózási napló adatszolgáltatásának olvasása" engedély
 
 Az előfeltételekben ismertetett lépéseket követve [férhet hozzá a Azure Active Directory jelentési API](howto-configure-prerequisites-for-reporting-api.md) -hoz annak biztosításához, hogy az alkalmazás a megfelelő engedélyekkel fusson. 
 

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 3cb53656adb1dbeb5e5597d02edfe5be4dbec6a8
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
-ms.translationtype: MT
+ms.openlocfilehash: 3b45bcff300cc3e749d387ea83df2f96e51d3c66
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170487"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274248"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Azure Active Directory (nyilvános előzetes verzió) alkalmazásokhoz tartozó jogcímek konfigurálása
 
@@ -30,51 +30,53 @@ A Azure Active Directory az alkalmazásokon belüli használatra a felhasználó
 > Az előzetes verzió funkcióinak megjegyzései többek között a következők:
 >
 >- A helyszínen szinkronizált sAMAccountName-és biztonsági azonosítók (SID-ek) használatának támogatása lehetővé teszi a meglévő alkalmazások áthelyezését AD FS és más identitás-szolgáltatókból. Az Azure AD-ben felügyelt csoportok nem tartalmazzák a jogcímek kibocsátásához szükséges attribútumokat.
->- Nagyobb szervezeteknél a felhasználók azon csoportjai száma, amelyeknek a felhasználó tagja, túllépheti azt a korlátot, amelyet a Azure Active Directory felvesz a tokenbe. 150 csoport egy SAML-tokenhez és egy JWT 200. Ez előre nem látható eredményekhez vezethet. Ha ez egy lehetséges probléma, javasoljuk a tesztelést, és ha szükséges, várjon, amíg az alkalmazáshoz tartozó csoportokra korlátozni szeretné a jogcímeket.  
+>- Nagyobb szervezeteknél a felhasználók azon csoportjai száma, amelyeknek a felhasználó tagja, túllépheti azt a korlátot, amelyet a Azure Active Directory felvesz a tokenbe. 150 csoport egy SAML-tokenhez és egy JWT 200. Ez előre nem látható eredményekhez vezethet. Ha a felhasználók nagy számú csoporttagság közül választhatnak, javasoljuk, hogy a jogcímek által kibocsátott csoportokat az alkalmazás megfelelő csoportjaira korlátozza.  
 >- Az új alkalmazások fejlesztéséhez, illetve azokban az esetekben, amikor az alkalmazás konfigurálható, és ahol nincs szükség beágyazott csoport támogatására, javasoljuk, hogy az alkalmazáson belüli engedélyezés a csoportok helyett az alkalmazás szerepkörein alapuljon.  Ez korlátozza a tokenbe bekerülő információk mennyiségét, biztonságosabb, és elkülöníti a felhasználói hozzárendelést az alkalmazás konfigurációjától.
 
 ## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>A AD FS és más identitás-szolgáltatótól áttelepítésre kerülő alkalmazások jogcímeinek csoportosítása
 
-Számos olyan alkalmazás, amely a AD FS való hitelesítésre van konfigurálva, a csoporttagság-információkra támaszkodik a Windows AD Group-attribútumok formájában.   Ezek az attribútumok a csoport sAMAccountName, amelyek a tartománynevek vagy a Windows-csoport biztonsági azonosítója (GroupSID) alapján lehetnek minősítettek.  Ha az alkalmazás összevonása AD FS, a AD FS a TokenGroups függvény használatával kéri le a felhasználó csoporttagságait.
+A AD FS való hitelesítésre konfigurált számos alkalmazás a Windows AD Group-attribútumok formájában használja a csoporttagság-információkat.   Ezek az attribútumok a csoport sAMAccountName, amelyek a tartománynevek vagy a Windows-csoport biztonsági azonosítója (GroupSID) alapján lehetnek minősítettek.  Ha az alkalmazás összevonása AD FS, a AD FS a TokenGroups függvény használatával kéri le a felhasználó csoporttagságait.
 
-Ahhoz, hogy az alkalmazás megkapja az AD FStól kapott jogkivonatot, a csoport-és szerepkör-jogcímek nem a csoport Azure Active Directory objectID, hanem a tartomány minősített sAMAccountName is tartalmazhatnak.
+Egy alkalmazás, amely a AD FS igényeknek megfelelő formátumban lett áthelyezve. A csoport-és szerepkör-jogcímek a tartomány minősített sAMAccountName vagy a GroupSID szinkronizált, Active Directory nem a csoport Azure Active Directory objectID származó adatokból is kiAzure Active Directory állíthatók.
 
 A csoportos jogcímek által támogatott formátumok a következők:
 
-- **Azure Active Directory csoport ObjectId** (Minden csoport számára elérhető)
-- **sAMAccountName** (Elérhető a Active Directoryról szinkronizált csoportok számára)
-- **NetbiosDomain\sAMAccountName** (Elérhető a Active Directoryról szinkronizált csoportok számára)
-- **DNSDomainName\sAMAccountName** (Elérhető a Active Directoryról szinkronizált csoportok számára)
-- Helyszíni **csoport biztonsági azonosítója** (Elérhető a Active Directoryról szinkronizált csoportok számára)
+- **Azure Active Directory csoport ObjectId** (az összes csoport számára elérhető)
+- **sAMAccountName** (Active Directory) szinkronizált csoportok számára elérhető
+- **NetbiosDomain\sAMAccountName** (Active Directory) szinkronizált csoportok számára elérhető
+- **DNSDomainName\sAMAccountName** (Active Directory) szinkronizált csoportok számára elérhető
+- Helyszíni **csoport biztonsági azonosítója** (a Active Directoryról szinkronizált csoportok számára elérhető)
 
 > [!NOTE]
 > a sAMAccountName és a helyszíni SID attribútumok csak a Active Directory szinkronizált csoport objektumain érhetők el.   Azure Active Directory vagy Office 365 létrehozott csoportokban nem érhetők el.   A Azure Active Directoryban konfigurált alkalmazások szinkronizált helyszíni csoportok attribútumai csak szinkronizált csoportok számára válnak elérhetővé.
 
 ## <a name="options-for-applications-to-consume-group-information"></a>Beállítások a csoport adatainak felhasználásához
 
-A csoportok adatainak beszerzésének egyik módja a Graph groups végpont meghívása, hogy a csoporttagság beolvasható legyen a hitelesített felhasználó számára. Ez a hívás biztosítja, hogy a felhasználó összes csoportja elérhető legyen, még akkor is, ha nagy számú csoport vesz részt, és az alkalmazásnak minden olyan csoportot fel kell sorolnia, amely a felhasználó tagja.  A csoport enumerálása ezután független a tokenek méretének korlátaitól.
+Az alkalmazások meghívhatják az MS Graph groups végpontot a csoport adatainak beszerzéséhez a hitelesített felhasználó számára. Ez a hívás biztosítja, hogy a felhasználó összes csoportja elérhető legyen, még akkor is, ha nagy számú csoport vesz részt.  A csoport enumerálása ezután független a tokenek méretének korlátaitól.
 
-Ha azonban egy meglévő alkalmazás már a kapott jogcímek jogcímei alapján a csoport adatait is felhasználja, Azure Active Directory számos különböző jogcím-beállítással konfigurálható az alkalmazás igényeinek megfelelően.  vegye figyelembe a következő lehetőségeket:
+Ha azonban egy meglévő alkalmazás jogcímek alapján kívánja felhasználni a csoport adatait, Azure Active Directory több különböző jogcím-formátummal is konfigurálható.  vegye figyelembe a következő lehetőségeket:
 
-- Ha csoporttagság használata az alkalmazáson belüli hitelesítéshez, érdemes a csoport ObjectID használni, amely nem módosítható és egyedi Azure Active Directory és minden csoport számára elérhető.
-- Ha a helyszíni csoport sAMAccountName használja az engedélyezéshez, használjon tartományneveket a tartomány minősített neveivel.  a felmerülő helyzetekben a nevek ütköznek. a saját sAMAccountName egyedi lehet egy Active Directory tartományon belül, de ha egynél több Active Directory tartomány van szinkronizálva egy Azure Active Directory Bérlővel, több csoport is rendelkezhet ugyanazzal a névvel.
+- Ha csoporttagság használata az alkalmazáson belüli hitelesítéshez, a csoport ObjectID használata ajánlott. A ObjectID csoport nem módosítható, és a Azure Active Directoryban egyedi, és minden csoport számára elérhető.
+- Ha a helyszíni csoport sAMAccountName használja az engedélyezéshez, használjon tartományneveket a tartomány minősített neveivel.  kevesebb esélye van a nevek összeütközésére. a sAMAccountName egyedi lehet egy Active Directory tartományon belül, de ha több Active Directory tartomány van szinkronizálva egy Azure Active Directory-Bérlővel, több csoport is rendelkezhet ugyanazzal a névvel.
 - Vegye fontolóra az [alkalmazási szerepkörök](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) használatát, hogy a csoporttagság és az alkalmazás közötti átirányítási réteget biztosítson.   Az alkalmazás ezután belső engedélyezési döntéseket tesz a tokenben lévő szerepkör-kagylók alapján.
-- Ha az alkalmazás úgy van konfigurálva, hogy lekérje a Active Directory szinkronizált csoport-attribútumokat, és a csoport nem tartalmazza azokat az attribútumokat, amelyeket a jogcímek nem tartalmaznak.
-- A jogkivonatokban lévő jogcímek beágyazott csoportokat tartalmaznak.   Ha a felhasználó a GroupB tagja, és a GroupB a Groupa tagja, akkor a felhasználóhoz tartozó jogcímek a Groupe és a GroupB is tartalmazzák. A beágyazott csoportok és a nagyszámú csoporttagság nagy mennyiségű csoporttal rendelkező felhasználók számára a tokenek méretének növelése érdekében a tokenben felsorolt csoportok száma növelhető.   Azure Active Directory korlátozza azoknak a csoportoknak a számát, amelyeket a rendszer 150 tokenben bocsát ki az SAML-kijelentésekhez, és 200 a JWT, hogy megakadályozza a tokenek túl nagy mennyiségű megszerzését.  Ha a felhasználó nagyobb számú csoport tagja a korlátnál, a csoportok kikerülnek a diagram végpontra mutató hivatkozással a csoport adatainak beszerzéséhez.
+- Ha az alkalmazás úgy van konfigurálva, hogy az Active Directoryról szinkronizált csoport-attribútumokat kapjon, és a csoport nem tartalmazza ezeket az attribútumokat, akkor nem fog szerepelni a jogcímek között.
+- A jogkivonatok csoportba foglalása beágyazott csoportokat tartalmaz, kivéve ha az alkalmazáshoz hozzárendelt csoportokra vonatkozó jogcímek korlátozására van szükség.  Ha a felhasználó a GroupB tagja, és a GroupB a Groupa tagja, akkor a felhasználóhoz tartozó jogcímek a Groupe és a GroupB is tartalmazzák. Ha egy szervezet felhasználóinak nagy számú csoporttagság van, a tokenben felsorolt csoportok száma növelheti a token méretét.  Azure Active Directory korlátozza azoknak a csoportoknak a számát, amelyeket a rendszer 150 tokenben bocsát ki az SAML-kijelentésekhez, és 200 a JWT.  Ha a felhasználó nagyobb számú csoport tagja, akkor a csoportok kimaradnak, és a diagram végpontra mutató hivatkozás is szerepel a csoport adatainak beszerzéséhez.
 
-> A Active Directoryról szinkronizált csoport attribútumainak használatának előfeltételei:   A csoportokat Azure AD Connect használatával kell szinkronizálni Active Directory.
+## <a name="prerequisites-for-using-group-attributes-synchronized-from-active-directory"></a>A Active Directoryről szinkronizált csoportok attribútumainak használatának előfeltételei
+
+Ha a ObjectId formátumot használja, a csoporttagság-jogcímek bármely csoporthoz jogkivonatokban is kiállíthatók. Ha a csoport ObjectId eltérő formátumban szeretné használni a jogcímeket, a csoportokat szinkronizálni kell Active Directory a Azure AD Connect használatával.
 
 A Azure Active Directory konfigurálásának két lépése van Active Directory csoportoknak.
 
-1. **Csoportok nevének szinkronizálása Active Directory** Mielőtt Azure Active Directory a csoport-vagy szerepkör-jogcímek csoportjai számára a csoportok nevét vagy a helyszíni csoport biztonsági azonosítóját, a szükséges attribútumokat szinkronizálni kell a Active Directory.  Azure AD Connect 1.2.70 vagy újabb verziót kell futtatnia.   A 1.2.70 verzió előtt Azure AD Connect szinkronizálja a csoport objektumait Active Directoryból, de alapértelmezés szerint nem tartalmazza a szükséges csoportnév-attribútumokat.  Frissítsen az aktuális verzióra.
+1. **Csoportok nevének szinkronizálása Active Directory** Mielőtt Azure Active Directory a csoport-vagy szerepkör-jogcímek csoportjai számára a csoportok nevét vagy a helyszíni csoport biztonsági azonosítóját, a szükséges attribútumokat szinkronizálni kell a Active Directory.  Azure AD Connect 1.2.70 vagy újabb verziót kell futtatnia.   A Azure AD Connect korábbi verziói a 1.2.70 szinkronizálják a csoport objektumait Active Directory, de nem tartalmazzák a szükséges csoportnév-attribútumokat.  Frissítsen az aktuális verzióra.
 
-2. **Az alkalmazás regisztrációjának konfigurálása a Azure Active Directoryban a jogkivonatokban lévő csoportos jogcímek belefoglalásához** A csoportos jogcímek a portál vállalati alkalmazások szakaszában konfigurálhatók a katalógus vagy a nem katalógus SAML SSO-alkalmazáshoz, vagy az alkalmazás-jegyzékfájl használatával az alkalmazás-regisztráció szakaszban.  Ha a csoport jogcímeit az alkalmazás jegyzékfájljában szeretné konfigurálni, tekintse meg az alábbi "Azure Active Directory alkalmazás-regisztráció konfigurálása a csoport attribútumaihoz" című szakaszt.
+2. **Az alkalmazás regisztrációjának konfigurálása a Azure Active Directoryban a jogkivonatokban lévő csoportos jogcímek belefoglalásához** A csoportos jogcímeket a portál Enterprise Applications (vállalati alkalmazások) szakaszában, vagy az alkalmazás-regisztrációk szakaszban lehet használni.  Ha a csoport jogcímeit az alkalmazás jegyzékfájljában szeretné konfigurálni, tekintse meg az alábbi "Azure Active Directory alkalmazás-regisztráció konfigurálása a csoport attribútumaihoz" című szakaszt.
 
-## <a name="configure-group-claims-for-saml-applications-using-sso-configuration"></a>SAML-alkalmazásokhoz tartozó jogcímek konfigurálása SSO-konfiguráció használatával
+## <a name="add-group-claims-to-tokens-for-saml-applications-using-sso-configuration"></a>Jogcímek hozzáadása az SAML-alkalmazások tokenekhez SSO-konfiguráció használatával
 
-Ha egy katalógus vagy nem katalógus SAML-alkalmazáshoz állít be jogcímeket, nyissa meg a vállalati alkalmazásokat, kattintson az alkalmazásra a listában, majd válassza az egyszeri bejelentkezés konfigurálása lehetőséget.
+Egy katalógus vagy nem katalógus SAML-alkalmazás csoportos jogcímeinek konfigurálásához nyissa meg a **vállalati alkalmazásokat**, kattintson a listában szereplő alkalmazásra, válassza az **egyszeri bejelentkezés konfigurálása**lehetőséget, majd válassza a **felhasználói attribútumok & jogcímek**lehetőséget.
 
-Jelölje be a "jogkivonat által visszaadott csoportok" elem melletti Szerkesztés ikont.
+Kattintson a **Csoport hozzáadása** elemre.  
 
 ![jogcímek felhasználói felülete](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
@@ -82,26 +84,36 @@ A választógombok használatával kiválaszthatja, hogy mely csoportok szerepel
 
 ![jogcímek felhasználói felülete](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
 
-| Választás | Leírás |
+| Kiválasztás | Leírás |
 |----------|-------------|
-| **Minden csoport** | Biztonsági csoportokat és terjesztési listát bocsát ki.   Azt is eredményezi, hogy a felhasználó hozzá van rendelve egy "wids" jogcímhez, és minden olyan alkalmazási szerepkört, amelyet a felhasználó hozzárendelt a szerepkör-jogcímben való kibocsátáshoz. |
+| **Minden csoport** | Biztonsági csoportokat és terjesztési listát és szerepköröket bocsát ki.  |
 | **Biztonsági csoportok** | Biztonsági csoportokat bocsát ki, a felhasználó tagja a groups jogcímnek |
-| **Terjesztési listák** | Kibocsátja a terjesztési listát, amely a felhasználó tagja |
-| **Címtárbeli szerepkörök** | Ha a felhasználó olyan címtárbeli szerepköröket kap, amelyeket a rendszer "wids" jogcímként bocsát ki (a csoportok jogcím nem lesz kibocsátva) |
+| **Címtárbeli szerepkörök** | Ha a felhasználóhoz címtárbeli szerepkörök vannak hozzárendelve, a rendszer "wids" jogcímként bocsátja ki őket (a csoportok jogcíme nem lesz kibocsátva) |
+| **Az alkalmazáshoz hozzárendelt csoportok** | Csak azokat a csoportokat bocsátja ki, amelyek kifejezetten az alkalmazáshoz vannak rendelve, és a felhasználó tagja |
 
 Például az összes olyan biztonsági csoport kibocsátásához, amely tagja a felhasználónak, válassza a biztonsági csoportok lehetőséget.
 
 ![jogcímek felhasználói felülete](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
 
-Ha az Azure AD objectIDs helyett Active Directory szinkronizált Active Directory attribútumokkal szeretne csoportokat kibocsátani, válassza ki a kívánt formátumot a legördülő listából.  Ez helyettesíti a jogcímek objektum-AZONOSÍTÓját a csoportok nevét tartalmazó karakterlánc-értékekkel.   A jogcímek között csak a Active Directory szinkronizált csoportok lesznek felszámítva.
+Ha az Azure AD objectIDs helyett Active Directory szinkronizált Active Directory attribútumokkal szeretne csoportokat kibocsátani, válassza ki a kívánt formátumot a legördülő listából. A jogcímek között csak a Active Directory szinkronizált csoportok lesznek felszámítva.
 
 ![jogcímek felhasználói felülete](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
+
+Ha csak az alkalmazáshoz hozzárendelt csoportokat kívánja kibocsátani, válassza **az alkalmazáshoz hozzárendelt csoportok** elemet.
+
+![jogcímek felhasználói felülete](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
+
+Az alkalmazáshoz rendelt csoportok szerepelni fognak a jogkivonatban.  Más csoportok, amelyeknek a felhasználó tagja, el lesz hagyva.  Ha ezt a lehetőséget választja, a beágyazott csoportok nem szerepelnek, és a felhasználónak az alkalmazáshoz rendelt csoport közvetlen tagjának kell lennie.
+
+Az alkalmazáshoz rendelt csoportok módosításához válassza ki az alkalmazást a **vállalati alkalmazások** listából, majd kattintson a **felhasználók és csoportok** elemre az alkalmazás bal oldali navigációs menüjében.
+
+A [felhasználók és csoportok](../../active-directory/manage-apps/methods-for-assigning-users-and-groups.md#assign-groups) alkalmazásokhoz való hozzárendelésével kapcsolatos további információkért tekintse meg a dokumentum metódusait.
 
 ### <a name="advanced-options"></a>Speciális beállítások
 
 A csoportos jogcímek kibocsátása a speciális beállítások területen található beállításokkal módosítható
 
-Szabja testre a csoportjogcím nevét:  Ha be van jelölve, egy másik jogcím-típus adható meg a csoportok jogcímeihez.   A névtér mezőben adja meg a jogcím típusát a név mezőben, valamint a jogcím opcionális névterét.
+A csoportjogcím nevének testreszabása: Ha be van jelölve, egy másik jogcím-típus adható meg a csoport jogcímeihez.   A névtér mezőben adja meg a jogcím típusát a név mezőben, valamint a jogcím opcionális névterét.
 
 ![jogcímek felhasználói felülete](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
@@ -112,6 +124,12 @@ Egyes alkalmazásokban a csoporttagság információit kell megjeleníteni a "sz
 > [!NOTE]
 > Ha a csoportok adatai szerepkörként való kibocsátásának lehetősége van használatban, csak a csoportok jelennek meg a szerepkör-jogcímben.  A felhasználó által hozzárendelt összes alkalmazás-szerepkör nem jelenik meg a szerepkör-jogcímben.
 
+### <a name="edit-the-group-claims-configuration"></a>A csoport jogcímek konfigurációjának szerkesztése
+
+Miután hozzáadta a csoportjogcím-konfigurációt a felhasználói attribútumok & jogcím-konfigurációhoz, a rendszer szürkévé teszi a csoportos jogcímek hozzáadásának lehetőségét.  A csoportjogcím konfigurációjának módosításához kattintson a csoport jogcímere a **további jogcímek** listájában.
+
+![jogcímek felhasználói felülete](media/how-to-connect-fed-group-claims/group-claims-ui-7.png)
+
 ## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>Az Azure AD-alkalmazás regisztrációjának konfigurálása a csoport attribútumaihoz
 
 A csoportos jogcímeket az [alkalmazás jegyzékfájljának](../../active-directory/develop/reference-app-manifest.md) [opcionális jogcímek](../../active-directory/develop/active-directory-optional-claims.md) szakaszában is lehet konfigurálni.
@@ -120,14 +138,16 @@ A csoportos jogcímeket az [alkalmazás jegyzékfájljának](../../active-direct
 
 2. Csoporttagság-jogcímek engedélyezése a groupMembershipClaim módosításával
 
-   Az érvényes értékek a következők:
+Érvényes értékek a következők:
 
-   - Összes
-   - "SecurityGroup"
-   - "DistributionList"
-   - "DirectoryRole"
+| Kiválasztás | Leírás |
+|----------|-------------|
+| **Összes** | Biztonsági csoportokat, terjesztési listát és szerepköröket bocsát ki |
+| **"SecurityGroup"** | Biztonsági csoportokat bocsát ki, a felhasználó tagja a groups jogcímnek |
+| **"DirectoryRole** | Ha a felhasználóhoz címtárbeli szerepkörök vannak hozzárendelve, a rendszer "wids" jogcímként bocsátja ki őket (a csoportok jogcíme nem lesz kibocsátva) |
+| **"Alkalmazáscsoport** | Csak azokat a csoportokat bocsátja ki, amelyek kifejezetten az alkalmazáshoz vannak rendelve, és a felhasználó tagja |
 
-   Példa:
+   Például:
 
    ```json
    "groupMembershipClaims": "SecurityGroup"
@@ -137,7 +157,7 @@ A csoportos jogcímeket az [alkalmazás jegyzékfájljának](../../active-direct
 
 3. Adja meg a csoport neve konfigurációjának választható jogcímeit.
 
-   Ha azt szeretné, hogy a tokenben lévő csoportok tartalmazzák a helyszíni AD-csoport attribútumait a választható jogcímek szakaszban, adja meg, hogy melyik jogkivonat-típust kívánja alkalmazni, a kért választható jogcím nevét és a kívánt további tulajdonságokat.  Több jogkivonat-típus is szerepelhet:
+   Ha azt szeretné, hogy a tokenben lévő csoportok tartalmazzák a helyszíni AD-csoport attribútumait, akkor a választható jogcímek szakaszban adja meg, hogy melyik jogkivonat-típust kell alkalmazni.  Több jogkivonat-típus is szerepelhet:
 
    - a OIDC azonosító token idToken
    - a OAuth/OIDC hozzáférési token accessToken
@@ -157,19 +177,19 @@ A csoportos jogcímeket az [alkalmazás jegyzékfájljának](../../active-direct
    }
    ```
 
-   | Választható jogcímek sémája | Value |
+   | Választható jogcímek sémája | Érték |
    |----------|-------------|
    | **név:** | "Groups" értéknek kell lennie |
    | **forrás** | Nincs használatban. Kihagyás vagy a Null érték meghatározása |
    | **alapvető** | Nincs használatban. Kihagyás vagy a hamis meghatározása |
-   | **additionalProperties:** | További tulajdonságok listája.  Az érvényes beállítások a következők: "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
+   | **additionalProperties:** | További tulajdonságok listája.  Az érvényes beállítások: "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
 
-   A additionalProperties csak a "sam_account_name", a "dns_domain_and_sam_account_name", a "netbios_domain_and_sam_account_name" egyike szükséges.  Ha egynél több van jelen, az első használatban van, és minden más figyelmen kívül lesz hagyva.
+   A additionalProperties-ben a "sam_account_name", a "dns_domain_and_sam_account_name", a "netbios_domain_and_sam_account_name" értéknek csak az egyike szükséges.  Ha egynél több van jelen, az első használatban van, és minden más figyelmen kívül lesz hagyva.
 
-   Egyes alkalmazások a szerepkör-jogcímben szereplő felhasználóra vonatkozó csoportos adatokat igényelnek.  Ha módosítani szeretné a jogcím típusát egy csoport jogcímen egy szerepkör-jogcímre, adja hozzá a "emit_as_roles" elemet a további tulajdonságokhoz.  A csoport értékeit a rendszer a szerepkör-jogcímben fogja kiállítani.
+   Egyes alkalmazások a szerepkör-jogcímben szereplő felhasználóra vonatkozó csoportos adatokat igényelnek.  Ha módosítani szeretné a jogcím típusát egy csoport jogcímen egy szerepkör-jogcímre, adja hozzá a "emit_as_roles" értéket a további tulajdonságokhoz.  A csoport értékeit a rendszer a szerepkör-jogcímben fogja kiállítani.
 
    > [!NOTE]
-   > Ha a "emit_as_roles" minden olyan alkalmazási szerepkört használ, amelyhez a felhasználó hozzá van rendelve, nem jelenik meg a szerepkör-jogcímben.
+   > Ha a "emit_as_roles" minden olyan alkalmazási szerepkört használ, amelyet a felhasználóhoz rendeltek, nem jelennek meg a szerepkör-jogcímben
 
 ### <a name="examples"></a>Példák
 
@@ -200,6 +220,8 @@ Az SAML-és OIDC-azonosító jogkivonatokban a netbiosDomain\samAccountName form
  }
  ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Mi az a hibrid identitás?](whatis-hybrid-identity.md)
+[Felhasználók és csoportok alkalmazásokhoz rendelésének módszerei](../../active-directory/manage-apps/methods-for-assigning-users-and-groups.md#assign-groups)
+
+[Szerepkör-jogcímek konfigurálása](../../active-directory/develop/active-directory-enterprise-app-role-management.md)

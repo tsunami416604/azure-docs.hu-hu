@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 29b0719670529a486222ef5fad21dd803ea6f195
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.openlocfilehash: c7c9e66e302c2c4181e6249555a7eaaafcc0a960
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190806"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272703"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszeren egyéni tároló használatával
 
@@ -18,7 +18,7 @@ Ebben az oktatóanyagban Python-kódot hoz létre és helyez üzembe Azure Funct
 
 Az alapértelmezett Azure App Service tárolót a [Linuxon üzemeltetett első függvény létrehozása](functions-create-first-azure-function-azure-cli-linux.md)című témakörben leírtak szerint is használhatja. A Azure Functions támogatott alaplemezképei a [Azure functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base)tárházban találhatók.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Function alkalmazást és egy Docker a Azure Functions Core Tools használatával.
@@ -949,7 +949,7 @@ A folyamatos költségek elkerülése érdekében törölje a `AzureFunctionsCon
 az group delete --name AzureFunctionsContainer-rg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Figyelési függvények](functions-monitoring.md)
 + [Méretezési és üzemeltetési lehetőségek](functions-scale.md)

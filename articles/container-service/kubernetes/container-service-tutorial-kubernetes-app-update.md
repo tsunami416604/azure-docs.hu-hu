@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b4b893f185ba7e205ffebd7d939b8a2aa20a3e13
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: e65ca30e4f15b6f69f39160c67813047c40ce8ee
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275561"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274129"
 ---
 # <a name="deprecated-update-an-application-in-kubernetes"></a>ELAVULT Alkalmazás frissítése a Kubernetes-ben
 
@@ -33,7 +33,7 @@ Ebben az oktatóanyagban, amely egy hétrészes sorozat hatodik része, az Azure
 
 Az ezt követő oktatóanyagokban a Log Analytics szolgáltatást fogjuk konfigurálni a Kubernetes-fürt monitorozására.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe, a rendszerképet feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt. Az alkalmazást ezután a Kubernetes-fürtön futtattuk. 
 
@@ -53,7 +53,7 @@ vi azure-vote/azure-vote/config_file.cfg
 
 Módosítsa a `VOTE1VALUE` és a `VOTE2VALUE` értékét, majd mentse a fájlt.
 
-```bash
+```plaintext
 # UI Configurations
 TITLE = 'Azure Voting App'
 VOTE1VALUE = 'Blue'
@@ -109,7 +109,7 @@ kubectl get pod
 
 Kimenet:
 
-```bash
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-217588096-5w632    1/1       Running   0          10m
 azure-vote-front-233282510-b5pkz   1/1       Running   0          10m
@@ -120,25 +120,25 @@ azure-vote-front-233282510-pqbfk   1/1       Running   0          10m
 Amennyiben az azure-vote-front rendszerkép nem fut egyszerre több podon, méretezze át az `azure-vote-front` üzemi környezetet.
 
 
-```azurecli-interactive
+```bash
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
 Az alkalmazás frissítéséhez használja a [kubectl set](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set) parancsot. Az `<acrLoginServer>` helyére a tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának nevét vagy gazdanevét írja.
 
-```azurecli-interactive
+```bash
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
 ```
 
 Az üzemelő példány monitorozásához használja a [kubectl get pod](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) parancsot. A frissített alkalmazás üzembe helyezése során a rendszer a podokat megszünteti, majd az új tárolórendszerképpel újból létrehozza.
 
-```azurecli-interactive
+```bash
 kubectl get pod
 ```
 
 Kimenet:
 
-```bash
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-2978095810-gq9g0   1/1       Running   0          5m
 azure-vote-front-1297194256-tpjlg   1/1       Running   0         1m
@@ -150,7 +150,7 @@ azure-vote-front-1297194256-zktw9   1/1       Terminating   0         1m
 
 Kérje le az `azure-vote-front` szolgáltatás külső IP-címét.
 
-```azurecli-interactive
+```bash
 kubectl get service azure-vote-front
 ```
 

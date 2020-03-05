@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4094ace5772b99c646a31d6a4722bbb080fbfff7
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 779b7d071b1161c53bdba08738539c4c682882d2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589882"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273548"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure biztonsági alapkonfiguráció a Batch szolgáltatáshoz
 
@@ -59,7 +59,7 @@ A Azure Security Center által biztosított hálózati biztonság ismertetése:
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -271,7 +271,7 @@ Távoli kapcsolódás a Azure Batch Pool-csomópontokhoz:
 
 https://docs.microsoft.com/azure/batch/batch-api-basics#error-handling
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -323,7 +323,7 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 **Útmutató**: a Windows Defender használata az egyes batch-csomópontokon a Windows operációs rendszerek esetében, illetve a Linux használata esetén saját kártevő szoftvereket is biztosíthat.
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -466,7 +466,7 @@ A felhasználók identitás-és hozzáférési tevékenységének figyelése Azu
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -511,7 +511,7 @@ Az Azure Identity hozzáférési felülvizsgálatok használata:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -524,7 +524,7 @@ Azure-beli tevékenység-naplók integrálása a Azure Monitorba:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -551,7 +551,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Felelősség**: ügyfél
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: a Microsoft számára elérhetővé teszi a megfelelő ügyféladatokat a támogatási forgatókönyvek során
+### <a name="313-divprovide-microsoft-with-access-to-relevant-customer-data-during-support-scenariosbrdiv"></a>3,13: <div>A Microsoft számára biztosítson hozzáférést a kapcsolódó ügyféladatok számára a támogatási forgatókönyvek során<br></div>
 
 **Útmutató**: nem érhető el; Azure Batch Ügyfélszéf még nem támogatott. Ügyfélszéf támogatott szolgáltatások listája: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
@@ -614,9 +614,9 @@ Azure Storage-fiókok biztonságossá tétele:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Azure Security Center figyelés**: igen
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: megosztott
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
 
@@ -654,7 +654,7 @@ Azure Storage-fiókok biztonságossá tétele:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Azure Security Center figyelés**: igen
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
 **Felelősség**: megosztott
 
@@ -690,7 +690,7 @@ Az ügyfelek adatvédelem az Azure-ban:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure Security Center figyelés**: igen
+**Azure Security Center figyelés**: jelenleg nem érhető el
 
 **Felelősség**: megosztott
 
@@ -704,7 +704,7 @@ Az Azure Storage-fiókok titkosítási kulcsainak kezelése:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -728,7 +728,7 @@ További naplózás/naplózás engedélyezése egy Azure Storage-fiókhoz:
 
 https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -751,7 +751,7 @@ Ha Rapid7, Qualys vagy bármely más sebezhetőség-kezelési platformra vonatko
 
 **Útmutató**: a Microsoft az alapszintű Azure batch Pool-csomópontok rendszerképeinek karbantartásához és frissítéséhez. Győződjön meg arról, hogy Azure Batch a készlet csomópontjainak operációs rendszere továbbra is a fürt élettartama alatt marad, ami szükségessé teheti az automatikus frissítések engedélyezését, a csomópontok figyelését vagy rendszeres újraindítást.
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: megosztott
 
@@ -788,7 +788,7 @@ Ha Rapid7, Qualys vagy bármely más sebezhetőség-kezelési platformra vonatko
 **Útmutató**: az Azure Resource Graph használatával lekérdezheti és felderítheti az előfizetése (i) n belüli összes erőforrást (például a számítási, tárolási, hálózati stb.). Győződjön meg arról, hogy megfelelő (olvasási) engedélyekkel rendelkezik a bérlőben, és képes felsorolni az összes Azure-előfizetést, valamint az előfizetésében lévő erőforrásokat.
 
 
-Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keresztül lehetséges, erősen ajánlott a Azure Resource Manager erőforrások létrehozása és használata.
+Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keresztül lehetséges, erősen ajánlott Azure Resource Manager (ARM) erőforrások létrehozása és használata.
 
 
 Lekérdezések létrehozása az Azure Graph használatával:
@@ -863,9 +863,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - Nem engedélyezett erőforrástípusok
 - Engedélyezett erőforrástípusok
 
+
 Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetése (ke) n belüli erőforrásait. Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
 
+
 Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Lekérdezések létrehozása az Azure Graph használatával: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -901,16 +904,15 @@ Lekérdezések létrehozása az Azure Graph használatával: https://docs.micros
 
 **Útmutató**: az Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával:
 
+
 - Nem engedélyezett erőforrástípusok
 - Engedélyezett erőforrástípusok
 
-Azure Policy konfigurálása és kezelése:
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Adott erőforrástípus megtagadása a következővel: Azure Policy:
 
-https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Adott erőforrástípus megtagadása a következővel: Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -924,14 +926,12 @@ https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-
 
 **Felelősség**: ügyfél
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager-via-scripts"></a>6,11: korlátozza a felhasználók azon képességét, hogy parancsfájlok használatával Azure Resource Manager kommunikálni
+### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6,11: <div>A felhasználók Azure Resource Manager interakciójának korlátozása parancsfájlok használatával</div>
 
 **Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja a felhasználók a Azure Resource Manager interakcióját a "Microsoft Azure felügyelet" alkalmazás "hozzáférés tiltása" beállításával.
 
 
-A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -949,9 +949,7 @@ Ez nem alkalmazható Azure Batchre, mert a Azure Batch-készletek felhasználói
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizikailag vagy logikailag elkülöníthető a nagy kockázatú alkalmazások
 
-**Útmutató**: nem érhető el,
-
-A teljesítményteszt a Azure App Service-vagy IaaS-példányokon futó webalkalmazásokhoz készült.
+**Útmutató**: nem alkalmazható, a teljesítményteszt a Azure app Service-vagy IaaS-példányokon futó webalkalmazásokhoz készült.
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -966,10 +964,14 @@ A teljesítményteszt a Azure App Service-vagy IaaS-példányokon futó webalkal
 **Útmutató**: Azure Policy aliasok használata a "Microsoft. batch" névtérben egyéni szabályzatok létrehozásához a Azure batch-fiókok és-készletek konfigurációjának naplózásához vagy érvényesítéséhez.
 
 
-Az elérhető Azure Policy aliasok megtekintése: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Az elérhető Azure Policy aliasok megtekintése:
+
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése:
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -991,7 +993,9 @@ Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/gov
 - Microsoft.Storage
 - Microsoft.Network
 
+
 Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Azure Policy effektusok ismertetése: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
@@ -1009,11 +1013,17 @@ Azure Policy effektusok ismertetése: https://docs.microsoft.com/azure/governanc
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: az Azure-erőforrások biztonságos tárolása
 
-**Útmutató**: Ha egyéni Azure-szabályzat-definíciókat használ a Azure batch fiókokhoz, készletekhez vagy kapcsolódó erőforrásokhoz, az Azure DevOps/Repos használatával biztonságosan tárolhatja és kezelheti a kódot.
+**Útmutató**: Ha egyéni Azure-szabályzat-definíciókat használ a Azure batch fiókokhoz, készletekhez vagy kapcsolódó erőforrásokhoz, az Azure Repos használatával biztonságosan tárolhatja és kezelheti a kódot.
 
-Kód tárolása az Azure DevOps-ben: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Az Azure Repos dokumentációja: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Kód tárolása az Azure DevOps:
+
+https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+
+
+Az Azure Repos dokumentációja:
+
+https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1024,9 +1034,14 @@ Az Azure Repos dokumentációja: https://docs.microsoft.com/azure/devops/repos/i
 **Útmutató**: Ha egyéni rendszerképeket használ a Azure batch készletekhez, használja a szerepköralapú hozzáférés-vezérlést (RBAC) annak biztosítására, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.
 
 
-A RBAC megismerése az Azure-ban: https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+A RBAC megismerése az Azure-ban:
 
-A RBAC konfigurálása az Azure-ban: https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
+https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+
+
+A RBAC konfigurálása az Azure-ban:
+
+https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1058,8 +1073,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Útmutató**: Azure Policy aliasok használata a "Microsoft. batch" névtérben egyéni szabályzatok létrehozásához a Azure batch példányának naplózásához vagy érvényesítéséhez. A kifejezetten a Azure Batchhoz létrehozott beépített szabályzatokat vagy a Azure Batch által használt erőforrásokat is használhatja, például:
 
-- Az alhálózatokat hálózati biztonsági csoporttal kell társítani
-- A Storage-fiókoknak virtuális hálózati szolgáltatási végpontot kell használniuk
+- Az alhálózatokat hálózati biztonsági csoporttal kell társítani – a Storage-fiókoknak virtuális hálózati szolgáltatási végpontot kell használniuk
 - A Batch-fiókokban lévő diagnosztikai naplókat engedélyezni kell
 
 Az elérhető Azure Policy aliasok megtekintése: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
@@ -1098,7 +1112,7 @@ Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása:
 
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -1187,7 +1201,7 @@ Key Vault-kulcsok biztonsági mentése az Azure-ban:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -1205,7 +1219,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvau
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: ügyfél
 
@@ -1218,7 +1232,7 @@ A Soft delete engedélyezése a Azure Key Vaultban:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Azure Security Center figyelés**: igen
 
 **Felelősség**: ügyfél
 
@@ -1324,3 +1338,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Felelősség**: megosztott
 
+## <a name="next-steps"></a>Következő lépések
+
+- Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

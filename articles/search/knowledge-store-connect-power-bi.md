@@ -6,14 +6,14 @@ author: HeidiSteen
 ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/26/2019
-ms.openlocfilehash: dec792dfd3a2640fa08ebccd9077c081ba9737bb
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 4fd71a7f322cb2672eb485f17e4de2619a7c2d2c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563292"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270035"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Tudástár összekötése Power BI
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan csatlakozhat a Knowledge Store-hoz, és ho
 
 + Kövesse a [Tudásbázis létrehozása a Azure Portalban](knowledge-store-create-portal.md) című témakör lépéseit, vagy [hozzon létre egy Azure Cognitive Search Knowledge Store](knowledge-store-create-rest.md) -t a REST használatával, és hozza létre az ebben az útmutatóban használt, a minta tudásbázist. Szüksége lesz a Knowledge Store létrehozásához használt Azure Storage-fiók nevére, valamint a Azure Portal elérési kulcsára.
 
-+ [A Power BI Desktop telepítése](https://powerbi.microsoft.com/downloads/)
++ [Power BI Desktop telepítése](https://powerbi.microsoft.com/downloads/)
 
 ## <a name="sample-power-bi-template---azure-portal-only"></a>Példa Power BI sablonra – csak Azure Portal
 
@@ -55,7 +55,7 @@ Kattintson a **Beolvasás Power bi sablon** lehetőségre a **kognitív képess�
    
    + A REST-útmutatóban a *hotelReviewsDocument*, a *hotelReviewsPages*, a *hotelReviewsKeyPhrases*és a *hotelReviewsSentiment*tábla neve szerepel.
 
-1. Kattintson a **Betöltés** lehetőségre.
+1. Kattintson a **Betöltés**elemre.
 
 1. A felső menüszalagon kattintson a **lekérdezések szerkesztése** elemre a **Power Query-szerkesztő**megnyitásához.
 
@@ -108,7 +108,7 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások díjfizetéssel járhatnak. Az erőforrásokat törölheti egyesével, vagy egyszerre, az erőforráscsoport törlésével.
+Ha saját előfizetésében dolgozik, a projekt végén érdemes megállapítani, hogy továbbra is szüksége van-e a létrehozott erőforrásokra. A már futó erőforrások pénzbe kerülnek. Az erőforrásokat egyenként is törölheti, vagy az erőforráscsoport törlésével törölheti a teljes erőforrás-készletet.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 

@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2281f9d493edf955881772ec174c82b527f1b6fa
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6457f062a40e60a491220fcf977585e8b07445b2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029874"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273721"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Aszinkron frissítés a REST API-val
 
 A REST-hívásokat támogató programozási nyelvek használatával aszinkron adatfrissítési műveleteket hajthat végre Azure Analysis Services táblázatos modelleken. Ez magában foglalja a írásvédett replikák szinkronizálását a lekérdezés kibővítő számára. 
 
-Az adatfrissítési műveletek több tényezőt is igénybe vehetnek, többek között az adatmennyiségtől, a partíciók használatának szintjétől stb. Ezeknek a műveleteknek a meghívása hagyományos módon történt olyan meglévő módszerekkel, mint például a [Tom](https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (táblázatos objektummodell), a [PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) -parancsmagok vagy a [TMSL](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (táblázatos modell programozási nyelv). Ezek a módszerek azonban gyakran megbízhatatlan, hosszan futó HTTP-kapcsolatokat igényelhetnek.
+Az adatfrissítési műveletek több tényezőt is igénybe vehetnek, többek között az adatmennyiségtől, a partíciók használatának szintjétől stb. Ezeknek a műveleteknek a meghívása hagyományos módon történt olyan meglévő módszerekkel, mint például a [Tom](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (táblázatos objektummodell), a [PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) -parancsmagok vagy a [TMSL](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (táblázatos modell programozási nyelv). Ezek a módszerek azonban gyakran megbízhatatlan, hosszan futó HTTP-kapcsolatokat igényelhetnek.
 
 A Azure Analysis Services REST API lehetővé teszi, hogy az adatfrissítési műveletek aszinkron módon legyenek végrehajtva. A REST API használatával nem szükséges az ügyfélalkalmazások hosszú ideig futó HTTP-kapcsolatainak használata. Más beépített funkciók is léteznek a megbízhatósághoz, például automatikus újrapróbálkozások és kötegelt véglegesítés.
 
-## <a name="base-url"></a>Kiindulási URL-cím
+## <a name="base-url"></a>Alap URL-cím
 
 Az alap URL-cím a következő formátumot követi:
 
@@ -56,7 +56,7 @@ Használhatja például a frissítések gyűjtemény utáni műveletét a friss�
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Minden hívást az engedélyezési fejlécben érvényes Azure Active Directory (OAuth 2) jogkivonattal kell hitelesíteni, és meg kell felelnie az alábbi követelményeknek:
 
@@ -97,11 +97,11 @@ A törzs a következőhöz hasonló lehet:
 
 Paraméterek megadása nem kötelező. A rendszer az alapértelmezett értéket alkalmazza.
 
-| Név             | Type (Típus)  | Leírás  |Alapértelmezett  |
+| Name (Név)             | Típus  | Leírás  |Alapértelmezett  |
 |------------------|-------|--------------|---------|
-| `Type`           | Felsorolás  | A végrehajtandó feldolgozás típusa. A típusok összhangban vannak a TMSL [frissítési parancs](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) típusával: Full, clearValues, számítsuk, dataOnly, Automatic és defragment. A Hozzáadás típusa nem támogatott.      |   automatikus      |
+| `Type`           | Felsorolás  | A végrehajtandó feldolgozás típusa. A típusok összhangban vannak a TMSL [frissítési parancs](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) típusával: Full, clearValues, számítsuk, dataOnly, Automatic és defragment. A Hozzáadás típusa nem támogatott.      |   automatikus      |
 | `CommitMode`     | Felsorolás  | Meghatározza, hogy az objektumok kötegekben lesznek-e véglegesítve, vagy csak akkor, ha a művelet befejeződött. A módok a következők: alapértelmezett, tranzakciós, partialBatch.  |  tranzakciós       |
-| `MaxParallelism` | Int   | Ez az érték határozza meg, hogy legfeljebb hány szálon futtathatók a feldolgozási parancsok párhuzamosan. Ez az érték a MaxParallelism tulajdonsággal van összhangban, amely a TMSL [Sequence parancsban](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) vagy más módszerek használatával állítható be.       | 10        |
+| `MaxParallelism` | Int   | Ez az érték határozza meg, hogy legfeljebb hány szálon futtathatók a feldolgozási parancsok párhuzamosan. Ez az érték a MaxParallelism tulajdonsággal van összhangban, amely a TMSL [Sequence parancsban](https://docs.microsoft.com/analysis-services/tmsl/sequence-command-tmsl) vagy más módszerek használatával állítható be.       | 10        |
 | `RetryCount`     | Int   | Azt jelzi, hogy a művelet hány alkalommal próbálkozzon újra a hiba után.      |     0    |
 | `Objects`        | Tömb | A feldolgozandó objektumok tömbje. Minden objektum tartalmazza a "Table" kifejezést a teljes tábla vagy a "tábla" és a "partíció" feldolgozásakor a partíció feldolgozása során. Ha nincs megadva objektum, a teljes modell frissül. |   A teljes modell feldolgozása      |
 
@@ -112,7 +112,7 @@ A CommitMode egyenlő a partialBatch. Ez akkor használatos, ha olyan nagyméret
 
 ### <a name="status-values"></a>Állapotüzenetek
 
-|Állapotérték  |Leírás  |
+|Állapot értéke  |Leírás  |
 |---------|---------|
 |`notStarted`    |   A művelet még nincs elindítva.      |
 |`inProgress`     |   A művelet folyamatban van.      |
@@ -147,7 +147,7 @@ A frissítési művelet állapotának megtekintéséhez használja a GET művele
 }
 ```
 
-## <a name="get-refreshes"></a>/Refreshes beolvasása
+## <a name="get-refreshes"></a>GET /refreshes
 
 A modell korábbi frissítési műveleteinek listájának lekéréséhez használja a GET műveletet a/refreshes gyűjteményben. Íme egy példa a válasz törzsére. 
 
@@ -175,7 +175,7 @@ A modell korábbi frissítési műveleteinek listájának lekéréséhez haszná
 
 A folyamatban lévő frissítési művelet megszakításához használja a frissítési AZONOSÍTÓban a DELETE műveletet.
 
-## <a name="post-sync"></a>/Sync közzététele
+## <a name="post-sync"></a>POST /sync
 
 A frissítési műveletek végrehajtásakor szükség lehet az új adatok szinkronizálására a lekérdezési felskálázáshoz szükséges replikákkal. Egy modell szinkronizálási műveletének végrehajtásához használja a POST műveletet a/Sync függvényben. A válaszban található Location fejléc tartalmazza a szinkronizálási művelet AZONOSÍTÓját.
 
@@ -213,7 +213,7 @@ Itt talál egy C# kódot a kezdéshez, [RestApiSample a githubon](https://github
 
 A mintakód a [szolgáltatás egyszerű](#service-principal) hitelesítését használja.
 
-### <a name="service-principal"></a>Szolgáltatásnév
+### <a name="service-principal"></a>Egyszerű szolgáltatásnév
 
 Az egyszerű szolgáltatásnév beállításával és a szükséges engedélyek az Azure-ban való hozzárendelésével kapcsolatos további információkért lásd: [egyszerű szolgáltatásnév létrehozása – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) és [egy egyszerű szolgáltatásnév hozzáadása a kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md) . A lépések elvégzése után végezze el a következő további lépéseket:
 
@@ -222,7 +222,7 @@ Az egyszerű szolgáltatásnév beállításával és a szükséges engedélyek 
 3.  Futtassa a mintát.
 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [Minták](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   

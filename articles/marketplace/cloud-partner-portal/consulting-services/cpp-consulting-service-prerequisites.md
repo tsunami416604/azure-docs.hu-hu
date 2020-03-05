@@ -2,34 +2,32 @@
 title: Az Azure és a Dynamics 365 Consulting Service-ajánlat előfeltételei | Azure piactér
 description: Azure-vagy Dynamics 365 Consulting Service-ajánlat előfeltételei a Cloud Partner Portal.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 371e7be0795ec93bfdb7b43deb38613cec6a664b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: 88a317fde3d8e3490741b87d6015556fde593ecd
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818116"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268276"
 ---
 # <a name="consulting-service-prerequisites"></a>Tanácsadási szolgáltatás előfeltételei
 
 Tekintse át az ajánlat típusának leírását és követelményeit az [Azure Marketplace és a AppSource tanácsadási szolgáltatásaiban](../../consulting-services.md).  A következő konkrét tanácsadási szolgáltatások típusai további követelményekkel rendelkeznek:
 
-|     Csomag típusa   |    Követelmény   |
-|     ----------   |    -----------   |
-| Microsoft Azure | A partnereknek Silver vagy Gold minősítéssel kell rendelkezniük a [Cloud platform kompetenciához](https://partner.microsoft.com/membership/cloud-platform-competency). |
-| Dynamics 365 for Customer Engagement | A partnereknek Silver vagy Gold minősítéssel kell rendelkezniük a [Cloud Customer ügyfélkapcsolat-kezelési kompetenciához](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency). |
-| Dynamics 365 pénzügyi & műveletekhez | A partnereknek Silver vagy Gold minősítéssel kell rendelkezniük a [Vállalati erőforrás-tervezési kompetenciához](https://partner.microsoft.com/membership/enterprise-resource-planning-competency). A partnereknek a Felhőbeli műveletekben is legalább $25 000-as bevételsel kell rendelkezniük az előző 12 hónapban. |
-| Dynamics 365 Business Central | A partnereknek egy felhőalapú megoldás-szolgáltató (CSP) vagy egy rekord (DPOR) digitális partnere kell lennie legalább egy ügyfél számára. <br/> A CSP létrehozásával kapcsolatos információkért lásd: az [első lépések a CSP](https://partner.microsoft.com/cloud-solution-provider/get-started)-ben. <br/> A DPOR vonatkozó követelményekért tekintse meg a [DPOR áttekintése](https://partner.microsoft.com/membership/digital-partner-of-record#Membership_Digital_Partner_of_Record_Navigated_Rich_Text_Node1)című témakört. |
-|  Power BI  | Az Power BI partner Showcase-ben. További információ: a [megoldás partneri feltételei](https://powerbi.microsoft.com/become-a-partner). |
-|  PowerApps       | A partnereknek a [partneri megoldások bemutatásakor](https://powerapps.microsoft.com/partner-showcase)közzé kell tenniük a megoldást. |
-|  |  |
+| Csomag típusa | Követelmény |
+|---------|---------|
+| Dynamics 365-értékesítés <br> Dynamics 365 marketing <br> Dynamics 365 Customer szolgáltatás <br> Dynamics 365 mező szolgáltatás <br> Dynamics 365 emberi erőforrások |   Az ügyfél-bevonási lehetőséghez tartozó, a [Cloud Business Applications kompetenciában](https://partner.microsoft.com/membership/cloud-business-applications-competency) található Gold vagy Silver minősítéssel kell rendelkeznie.    | 
+| Dynamics 365 – Pénzügy <br> Dynamics 365 ellátási lánc kezelése <br> Dynamics 365 kereskedelmi <br> Dynamics 365 emberi erőforrások <br> Dynamics 365 Project szolgáltatás automatizálása |  Az Unified Operations beállításhoz tartozó [Cloud Business Applications kompetenciában](https://partner.microsoft.com/membership/cloud-business-applications-competency) az arany vagy ezüst minősítéssel kell rendelkeznie.       |
+| Dynamics 365 Customer Insights | Legalább 1 sikeres, a [Dynamics 365](https://dynamics.microsoft.com/ai/customer-insights/) -es és 5-ös szegmenst tartalmazó Customer Insights éles megvalósítását kell végrehajtania. |
+| Dynamics 365 Business Central | A [Vállalati erőforrás-tervezési kompetenciában](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) arany vagy ezüst minősítéssel kell rendelkeznie, és a felhőalapú megoldás szolgáltatójának kell lennie legalább 3 üzleti központi ügyfél számára. <br> <br> VAGY <br> <br> Közzé kell tenni az [üzleti központi alkalmazást a AppSource-ben](https://appsource.microsoft.com/) |
+| Power BI | Szerepelnie kell a [Power bi partner bemutatóján](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
+|Power Apps | A [PowerApps-partnerségi programban](https://aka.ms/PowerAppsPartner)speciális előnyökre van szükség. |
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az előző követelmények teljesítése után már készen áll [egy tanácsadói szolgáltatási ajánlat létrehozására](./cpp-consulting-service-create-offer.md).

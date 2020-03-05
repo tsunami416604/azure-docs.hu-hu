@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba579d6da8c759a4653b729f1a471efdedc2baa7
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: ffe3d359dffea3278337de00bea42e0b959e10f6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505767"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269516"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>A Azure Active Directory jelszóval nem rendelkező hitelesítési beállításai
 
@@ -90,7 +90,7 @@ Ha Ön szállító, és szeretné lekérni az eszközt a támogatott eszközök 
 - A végfelhasználók a fiók-portálon regisztrálhatják és kezelhetik ezeket a jelszó nélküli hitelesítési módszereket
 - A végfelhasználók ezekkel a jelszó nélküli hitelesítési módszerekkel jelentkezhetnek be
    - Microsoft Authenticator alkalmazás: olyan helyzetekben működik, ahol az Azure AD-hitelesítés használatban van, beleértve az összes böngészőt, a Windows 10-es (OOBE) beállítása során, valamint az integrált Mobile apps bármely operációs rendszeren.
-   - Biztonsági kulcsok: a Windows 10 és a web zárolási képernyőjének használata a Microsoft Edge-hez hasonló támogatott böngészőkben.
+   - Biztonsági kulcsok: a Windows 10 és a web zárolási képernyőjén használható böngészők, például a Microsoft Edge (örökölt és új Edge).
 
 ## <a name="next-steps"></a>Következő lépések
 
