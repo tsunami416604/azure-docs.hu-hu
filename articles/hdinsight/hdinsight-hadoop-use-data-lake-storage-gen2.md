@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/20/2020
 ms.openlocfilehash: d711cc7e58fb055eda62cfc364a5552a7d10f7bd
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623152"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389014"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel
 
@@ -39,9 +39,9 @@ Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást, ha 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. A bal felső sarokban kattintson az **erőforrás létrehozása**elemre.
 1. A keresőmezőbe írja be a **felhasználó által hozzárendelt** értéket, és kattintson a **felhasználóhoz rendelt felügyelt identitás**elemre.
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 1. Adja meg a felügyelt identitás nevét, válassza ki a megfelelő előfizetést, erőforráscsoportot és helyet.
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 
 További információ arról, hogyan működnek a felügyelt identitások az Azure HDInsight-ben: [felügyelt identitások az Azure HDInsight](hdinsight-managed-identities.md).
 
@@ -54,7 +54,7 @@ Hozzon létre egy Azure Data Lake Storage Gen2 Storage-fiókot.
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. A bal felső sarokban kattintson az **erőforrás létrehozása**elemre.
 1. A keresőmezőbe írja be a **Storage** kifejezést, majd kattintson a **Storage-fiók**elemre.
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 1. A **Storage-fiók létrehozása** képernyőn:
     1. Válassza ki a megfelelő előfizetést és erőforráscsoportot.
     1. Adja meg a Data Lake Storage Gen2-fiók nevét. A Storage-fiókok elnevezési konvenciókkal kapcsolatos további információkért lásd: [Az Azure-erőforrások elnevezési konvenciói](/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).

@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894309"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395144"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Működése OutOfMemoryError-kivételek az Azure HDInsight Apache Spark
 
@@ -54,9 +54,9 @@ java.lang.OutOfMemoryError
 
 ### <a name="cause"></a>Ok
 
-Ennek a kivételnek a legvalószínűbb oka az, hogy nem áll rendelkezésre elég halom memória a Java virtuális gépekhez (JVMs). Ezek a JVMs végrehajtók vagy illesztőprogramokként lesznek elindítva a Apache Spark alkalmazás részeként.
+A kivétel legvalószínűbb oka az, hogy a nem elegendő halommemória a Java virtuális gépekhez (JVMs) van lefoglalva. Ezek a JVMs végrehajtók vagy illesztőprogramokként lesznek elindítva a Apache Spark alkalmazás részeként.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 1. Határozza meg a Spark-alkalmazás által kezelendő adatok maximális méretét. Becsülje meg a méretet a bemeneti adatok, a bemeneti adatok átalakításával előállított köztes adatok és a köztes adatok további átalakításával létrehozott kimeneti adatok maximális mérete alapján. Ha a kezdeti becslés nem elegendő, növelje a méretet kis mértékben, és ismételje meg a memória hibáit.
 
@@ -114,7 +114,7 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 A Spark-előzmények kiszolgálójának memóriáját a Spark-konfiguráció `SPARK_DAEMON_MEMORY` tulajdonságának szerkesztésével és az összes szolgáltatás újraindításával növelheti.
 
@@ -200,7 +200,7 @@ Ha a Livy-kiszolgáló váratlanul leáll, a Spark-fürtökkel létesített öss
 
 Ha nagy számú feladatot küldenek el a Livy-on keresztül, a Livy-kiszolgáló magas rendelkezésre állásának részeként a rendszer a ZK (HDInsight-fürtökön) tárolja ezeket a munkamenet-állapotokat, és helyreállítja ezeket a munkameneteket a Livy szolgáltatás újraindításakor. A váratlan megszakítás utáni újraindításkor a Livy egy szálat hoz létre egy munkamenetben, és ez egy bizonyos számú, a-helyreállított munkamenetet generál, ami túl sok szálat hoz létre.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 Törölje az összes bejegyzést az alábbi lépésekkel.
 

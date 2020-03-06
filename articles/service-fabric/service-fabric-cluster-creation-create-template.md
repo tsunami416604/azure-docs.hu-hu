@@ -4,11 +4,11 @@ description: Megtudhatja, hogyan hozhat létre Resource Manager-sablont egy Serv
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: a00f2bc505acd89d9fb9488565b6235bf7d146ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463252"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396636"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Service Fabric fürterőforrás-kezelő sablon létrehozása
 

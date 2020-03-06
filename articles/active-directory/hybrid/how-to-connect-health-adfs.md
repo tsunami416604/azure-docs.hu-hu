@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897279"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375921"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Az AD FS monitorozása az Azure AD Connect Health használatával
 Az alábbi dokumentáció az AD FS infrastruktúra Azure AD Connect Health használatával végzett figyelésére vonatkozik. A Azure AD Connect (Sync) Azure AD Connect Health használatával történő figyelésével kapcsolatos információkért lásd: a [Azure ad Connect Health szinkronizálásának használata](how-to-connect-health-sync.md). Továbbá a Azure AD Connect Health Active Directory tartományi szolgáltatások figyelésével kapcsolatos további információkért lásd: a [Azure ad Connect Health használata AD DS használatával](how-to-connect-health-adds.md).
@@ -51,8 +51,8 @@ További metrikák kiválasztásához adjon meg egy időtartományt, vagy a csop
 
 |Csoportosítási szempont | Mit jelöl az adott csoportosítás, és miért hasznos? |
 | --- | --- |
-| Mind | Az összes AD FS-kiszolgáló által feldolgozott kérelmek teljes számát jeleníti meg.|
-| Jelentkezés | Az összes kérelmet a célzott függő entitások alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megtudni, melyik alkalmazás hány százalékát fogadja a teljes forgalomnak. |
+| Összes | Az összes AD FS-kiszolgáló által feldolgozott kérelmek teljes számát jeleníti meg.|
+| Alkalmazás | Az összes kérelmet a célzott függő entitások alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megtudni, melyik alkalmazás hány százalékát fogadja a teljes forgalomnak. |
 |  Kiszolgáló |Az összes kérelmet az azokat feldolgozó kiszolgálók alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megtudni a teljes forgalom terheléseloszlását.
 | Munkahelyi csatlakoztatás |Az összes kérelmet az alapján csoportosítja, hogy azok a munkahelyhez csatlakoztatott (ismert) eszközökről érkeznek-e. Ez a csoportosítás akkor hasznos, ha szeretné megtudni, hogy erőforrásaihoz hozzáférnek-e az identitás-infrastruktúra számára ismeretlen eszközökről származó kérelmek. |
 |  Hitelesítési módszer | Az összes kérelmet a hitelesítés során alkalmazott hitelesítési módszer alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megtudni a hitelesítéshez leggyakrabban használt hitelesítési módszereket. A lehetséges hitelesítési módszerek az alábbiak <ol> <li>Integrált Windows-hitelesítés (Windows)</li> <li>Űrlapalapú hitelesítés (Űrlapok)</li> <li>Egyszeri bejelentkezés (SSO)</li> <li>X509 tanúsítványalapú hitelesítés (Tanúsítvány)</li> <br>Ha az összevonási kiszolgálók a kérelmet SSO cookie-val kapják meg, a rendszer az adott kérelmet egyszeri bejelentkezésesnek (SSO) veszi. Ilyen esetekben, ha a cookie érvényes, a rendszer nem kér hitelesítő adatokat a felhasználótól, és zökkenőmentes hozzáférést biztosít az alkalmazáshoz. Ez a viselkedés gyakori, ha több, az összevonási kiszolgálók által védett jogcímfelhasználó alkalmazással rendelkezik. |
@@ -66,14 +66,14 @@ További metrikák kiválasztásához adjon meg egy időtartományt, vagy a csop
 | Hibatípus | A hibák számát jeleníti meg előre meghatározott hibatípusok szerint. Ez a csoportosítás akkor hasznos, ha szeretné megismerni a gyakori hibatípusokat. <ul><li>Incorrect Username or Password (Helytelen felhasználónév vagy jelszó): A nem megfelelő felhasználónév vagy jelszó okozta hibák.</li> <li>„Extranet Lockout” (Extranet kizárás): A hiba oka, hogy a kérelem az extranetről kizárt felhasználótól érkezett </li><li> „Expired Password” (Lejárt jelszó): A hiba oka, hogy a felhasználó lejárt jelszóval jelentkezett be.</li><li>„Disabled Account” (Letiltott fiók): A hiba oka, hogy a felhasználó letiltott fiókkal jelentkezett be.</li><li>„Device Authentication” (Eszközhitelesítés): A hiba oka, hogy a felhasználó eszközhitelesítéssel való hitelesítése sikertelen volt.</li><li>„User Certificate Authentication” (Felhasználói tanúsítványos hitelesítés): A hiba oka, hogy a felhasználó hitelesítése érvénytelen tanúsítvány miatt sikertelen volt.</li><li>„MFA” (Többtényezős hitelesítés): A hiba oka, hogy a felhasználó többtényezős hitelesítéssel való hitelesítése sikertelen volt.</li><li>„Other Credential” (Egyéb hitelesítő adat): „Issuance Authorization” (Kiadásengedélyezés): Hitelesítési problémák okozta hibák.</li><li>„Issuance Delegation” (Kiadásdelegálás): Kiadásdelegálási problémák okozta hibák.</li><li>„Token Acceptance” (Jogkivonatok elfogadása): A hiba oka, hogy az AD FS elutasított egy külső identitásszolgáltatótól származó jogkivonatot.</li><li>„Protocol” (Protokoll): Protokollproblémák okozta hibák.</li><li>„Unknown” (Ismeretlen): Minden más. Bármely egyéb olyan hiba, amely nem illik a meghatározott kategóriákba.</li> |
 | Kiszolgáló | A hibákat a kiszolgálók alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megismerni a hibák eloszlását a kiszolgálók között. Az egyenetlen eloszlás esetleg jelezheti azt, hogy valamelyik kiszolgáló meghibásodott. |
 | Hálózati hely | A hibákat a kérelmek hálózati helye (intranet vagy extranet) alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megismerni a sikertelen kérelemtípusokat. |
-|  Jelentkezés | A hibákat a célzott alkalmazás (jogcímfelhasználó alkalmazás) alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megtudni, hogy melyik célzott alkalmazás kapja a legtöbb hibát. |
+|  Alkalmazás | A hibákat a célzott alkalmazás (jogcímfelhasználó alkalmazás) alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megtudni, hogy melyik célzott alkalmazás kapja a legtöbb hibát. |
 
 **Metrika : Felhasználók száma** – A hitelesítést aktívan az AD FS segítségével végző egyedi felhasználók száma
 
 |Csoportosítási szempont | Mit jelöl az adott csoportosítás, és miért hasznos? |
 | --- | --- |
-|Mind |Ez a mérőszám az összevonási szolgáltatást egy adott időszeletben használó felhasználók átlagos darabszámát adja meg. A felhasználók nincsenek csoportosítva. <br>Az átlag a választott időszelet függvénye. |
-| Jelentkezés |Az átlagos felhasználószámot a célzott alkalmazás (jogcímfelhasználó alkalmazás) alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megtudni, melyik alkalmazást hány felhasználó használja. |
+|Összes |Ez a mérőszám az összevonási szolgáltatást egy adott időszeletben használó felhasználók átlagos darabszámát adja meg. A felhasználók nincsenek csoportosítva. <br>Az átlag a választott időszelet függvénye. |
+| Alkalmazás |Az átlagos felhasználószámot a célzott alkalmazás (jogcímfelhasználó alkalmazás) alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megtudni, melyik alkalmazást hány felhasználó használja. |
 
 ## <a name="performance-monitoring-for-ad-fs"></a>Teljesítményfigyelés az AD FS szolgáltatáshoz
 Az Azure AD Connect Health-teljesítményfigyelés a metrikákkal kapcsolatos figyelési információkat biztosít. A Figyelés mező kijelölésével megnyílik egy új panel, amely részletes információkat tartalmaz a metrikákra vonatkozóan.

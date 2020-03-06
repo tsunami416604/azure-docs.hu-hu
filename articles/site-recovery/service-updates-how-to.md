@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910477"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363042"
 ---
 # <a name="service-updates-in-site-recovery"></a>Szolgáltatási frissítések a Site Recovery
 
@@ -52,7 +52,7 @@ Az e-mail-értesítések küldése a következőképpen történik.
 --- | ---
 60 nappal az összetevő lejárata előtt | Hetente egyszer
 Következő 53 nap | Hetente egyszer
-Az elmúlt 7 nap | Naponta egyszer
+Elmúlt 7 nap | Naponta egyszer
 Lejárat után | Hetente egyszer
 
 
@@ -139,6 +139,6 @@ A táblázatban szereplő példa azt mutatja be, hogy ez hogyan működik.
 2. Telepítse a legújabb szolgáltatót a másodlagos helyreállítási helyet kezelő VMM-kiszolgálóra. Ha a VMM egy fürtben van telepítve, telepítse a szolgáltatót a fürt összes csomópontjára.
 3. A helyreállítási hely frissítése után telepítse a szolgáltatót az elsődleges helyet kezelő VMM-kiszolgálóra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kövesse az [Azure Updates](https://azure.microsoft.com/updates/?product=site-recovery) oldalt az új frissítések és kiadások nyomon követéséhez.

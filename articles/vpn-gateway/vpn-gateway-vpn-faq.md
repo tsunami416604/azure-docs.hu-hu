@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: yushwang
 ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016748"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357812"
 ---
-# <a name="vpn-gateway-faq"></a>VPN Gateway – gyakori kérdések
+# <a name="vpn-gateway-faq"></a>VPN Gateway – Gyakori kérdések
 
 ## <a name="connecting"></a>Csatlakozás virtuális hálózatokhoz
 
@@ -34,7 +34,7 @@ A Windows PowerShell és az Azure REST API-k használatával kapcsolódhat több
 
 Nem. 
 
-### <a name="what-are-my-cross-premises-connection-options"></a>Mik a lehetőségeim létesítmények közötti kapcsolat esetén?
+### <a name="what-are-my-cross-premises-connection-options"></a>Milyen lehetőségeim vannak a létesítmények közötti kapcsolódásra?
 
 A következő létesítmények közötti kapcsolattípusok támogatottak:
 
@@ -73,7 +73,7 @@ Az útvonalalapú átjárók útvonalalapú VPN-kapcsolatokat valósítanak meg.
 Nem. Az Azure vnet-átjáró típusa nem módosítható házirend-alapúról Route-alapú vagy más módon. Ilyenkor törölni kell, majd újra létrehozni az átjárót, amely folyamat mintegy 60 percet vesz igénybe. Az átjáró IP-címe és az előmegosztott kulcs (PSK) nem marad meg.
 1. Törölje a törölni kívánt átjáróval társított kapcsolatokat.
 1. Törölje az átjárót:
-   - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+   - [Azure Portalra](vpn-gateway-delete-vnet-gateway-portal.md)
    - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
    - [Azure PowerShell – klasszikus](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 1. [Hozzon létre egy új, a kívánt típusú átjárót, és fejezze be a VPN-beállítást](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).

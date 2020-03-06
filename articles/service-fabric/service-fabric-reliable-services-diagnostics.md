@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462913"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388409"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>A Stateful Reliable Services diagnosztikai funkciói
 Az Azure Service Fabric állapot-nyilvántartó Reliable Services StatefulServiceBase osztály a szolgáltatás hibakereséséhez használható [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) -eseményeket bocsát ki, betekintést nyújt a futtatókörnyezet működéséhez, és segít a hibaelhárításban.

@@ -1,16 +1,16 @@
 ---
-title: Service Fabric-alkalmazás frissítése
+title: Service Fabric alkalmazás frissítése
 description: Ez a cikk bevezetést nyújt egy Service Fabric alkalmazás frissítéséhez, többek között a frissítési módok kiválasztásához és az állapot-ellenőrzések végrehajtásához.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426773"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366825"
 ---
-# <a name="service-fabric-application-upgrade"></a>Service Fabric-alkalmazás frissítése
+# <a name="service-fabric-application-upgrade"></a>Service Fabric alkalmazás frissítése
 Az Azure Service Fabric-alkalmazás szolgáltatások gyűjteménye. A frissítés során Service Fabric összehasonlítja az új [alkalmazás-jegyzékfájlt](service-fabric-application-and-service-manifests.md) az előző verzióval, és meghatározza, hogy az alkalmazás mely szolgáltatásai igényelnek frissítéseket. Service Fabric összehasonlítja a szolgáltatási jegyzékfájlok verziószámait az előző verzió verziószámával. Ha egy szolgáltatás nem módosult, akkor a szolgáltatás nem frissül.
 
 ## <a name="rolling-upgrades-overview"></a>A működés közbeni frissítés áttekintése

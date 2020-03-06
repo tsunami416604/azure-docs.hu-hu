@@ -17,11 +17,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4e9468c0a0f6844c7522ff43761cf58f4beea27e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897354"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376057"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Az Azure AD Connect Health-ügynök telepítése
 
@@ -373,7 +373,7 @@ Ha a ügynök több mint két órán keresztül képtelen adatokat küldeni az A
 A szerepkör-paraméter a következő értékeket veheti:
 
 * ADFS
-* Szinkronizálás
+* Sync
 * ADDS
 
 > [!NOTE]

@@ -4,11 +4,11 @@ description: A Azure Policy beépített házirend-kezdeményezéseit sorolja fel
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: f98a5d611e807875390102d67efd1b0f0f262628
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172981"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387256"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy beépített kezdeményezési definíciók
 
@@ -20,6 +20,6 @@ Az egyes beépített hivatkozások neve a [Azure Policy GitHub](https://github.c
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Tekintse meg a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárház beépített moduljait.
+- A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).

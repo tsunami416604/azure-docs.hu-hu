@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386765"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385383"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Az SSL konfigurálása Azure-beli alkalmazásokhoz
 
-Az SSL-alapú titkosítás a leggyakrabban használt módszer az interneten keresztül küldött adatok biztonságossá tételéhez. Ebben az általános feladatban azt fejtjük ki, hogy miként lehet HTTPS-végpontokat meghatározni webes szerepkörökhöz, és hogyan tölthetők fel SSL-tanúsítványok az alkalmazások biztonságossá tételéhez.
+A Secure Socket Layer (SSL) titkosítás a leggyakrabban használt módszer az interneten keresztül továbbított adatmennyiség biztosításához. Ez a gyakori feladat azt ismerteti, hogyan lehet HTTPS-végpontot megadni egy webes szerepkörhöz, és hogyan tölthetők fel SSL-tanúsítványok az alkalmazások biztonságossá tételéhez.
 
 > [!NOTE]
 > A feladat eljárásai az Azure Cloud Servicesra vonatkoznak; App Services esetén [Ez](../app-service/configure-ssl-bindings.md)a következő:.

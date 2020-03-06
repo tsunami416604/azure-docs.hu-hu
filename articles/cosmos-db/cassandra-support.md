@@ -9,11 +9,11 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: ee8dec821e8cbb4657323c167a463b94b7935ab1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623420"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397354"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 

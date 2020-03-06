@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 902f3628235cc8a4524ddc4dd8a5327592fe47e7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793221"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379670"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Az Azure Cognitive Search lekérdezési típusai és összetétele
 
@@ -33,9 +33,9 @@ Az alábbi példa egy, a [Rest APIban](https://docs.microsoft.com/rest/api/searc
 }
 ```
 
-+ **`queryType`** beállítja az elemzőt, amely az [alapértelmezett egyszerű lekérdezés-elemző](search-query-simple-examples.md) (optimális a teljes szöveges kereséshez), vagy a speciális lekérdezési felépítéshez használt [teljes Lucene lekérdezés-elemző](search-query-lucene-examples.md) , például reguláris kifejezések, közelségi keresés, fuzzy és helyettesítő karakteres keresés, hogy csak néhányat említsünk.
++ **`queryType`** beállítja az elemzőt, amely az [alapértelmezett egyszerű lekérdezés-elemző](search-query-simple-examples.md) (optimális a teljes szöveges kereséshez), vagy a speciális lekérdezési felépítéshez használt [teljes Lucene lekérdezés-elemző](search-query-lucene-examples.md) , például a reguláris kifejezések, a közelségi keresés, a fuzzy és a helyettesítő karakteres keresés, hogy csak néhányat említsünk.
 
-+ a **`search`** az egyeztetési feltételeket, általában a szöveget, de gyakran logikai operátorok kísérik. Az önálló különálló kifejezések *kifejezéses* lekérdezések. Az idézőjelek közé zárt, több részből álló lekérdezések *kulcsfontosságú kifejezéssel* rendelkező lekérdezések. A keresés nem definiálható, ahogy a **`search=*`ban**, de valószínűbb kifejezéseket, kifejezéseket és operátorokat, amelyek a példában láthatóhoz hasonlóak.
++ a **`search`** az egyeztetési feltételeket, általában a szöveget, de gyakran logikai operátorok kísérik. Az önálló különálló kifejezések *kifejezéses* lekérdezések. Az idézőjelek közé zárt, több részből álló lekérdezések *kulcsfontosságú kifejezéssel* rendelkező lekérdezések. A keresés nem definiálható, ahogy a **`search=*`ban** , de valószínűbb kifejezéseket, kifejezéseket és operátorokat, amelyek a példában láthatóhoz hasonlóak.
 
 + **`searchFields`** korlátozza a lekérdezés végrehajtását adott mezőkre. Az index sémában *kereshetőként* megadott bármely mező erre a paraméterre van jelölt.
 
@@ -157,7 +157,7 @@ Ha azt szeretné, hogy az Azure Cognitive Search a keresési pontszámtól elté
 ### <a name="hit-highlighting"></a>Találatok kiemelése
 Az Azure Cognitive Searchban az **`highlight`** , a **`highlightPreTag`** és a **`highlightPostTag`** paraméterek használatával egyszerűen kiemelheti a keresési lekérdezésnek megfelelő keresési eredmények pontos részét. Megadhatja, hogy mely *kereshető* mezőknél legyen kiemelve a párosított szöveg, valamint az Azure Cognitive Search által visszaadott egyező szöveg kezdetéhez és végéhez hozzáfűzni kívánt karakterlánc-címkék pontos megadását.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [A teljes szöveges keresés működése az Azure Cognitive Searchban (lekérdezési elemzési architektúra)](search-lucene-query-architecture.md)
 + [Keresési ablak](search-explorer.md)

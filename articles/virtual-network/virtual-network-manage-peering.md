@@ -16,24 +16,24 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
 ms.openlocfilehash: 4103930e0d089f5f7c17586f22616431c8aa11d9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978357"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374931"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Virtuális hálózati társak létrehozása, módosítása vagy törlése
 
 Megtudhatja, hogyan hozhat létre, módosíthat vagy törölhet virtuális hálózati társításokat. A virtuális hálózati társítás lehetővé teszi a virtuális hálózatok összekapcsolását ugyanabban a régióban és az egyes régiókban (más néven globális VNet-társítás) az Azure-beli gerinces hálózaton keresztül. A társítást követően a virtuális hálózatok továbbra is külön erőforrásként vannak kezelve. Ha még nem ismeri a virtuális hálózatok társítását, akkor további információt a [virtuális hálózat](virtual-network-peering-overview.md) összevonásának áttekintése című témakörben vagy egy [oktatóanyag](tutorial-connect-virtual-networks-portal.md)elvégzésével tudhat meg.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a következő feladatokat:
 
 - Ha még nem rendelkezik Azure-fiókkal, regisztráljon az [ingyenes próbaverziós fiókra](https://azure.microsoft.com/free).
-- Ha a portált használja, nyissa meg https://portal.azure.com t, és jelentkezzen be egy olyan fiókkal, amely rendelkezik a társításokkal való munkavégzéshez [szükséges engedélyekkel](#permissions) .
+- Ha a portált használja, nyissa meg https://portal.azure.comt, és jelentkezzen be egy olyan fiókkal, amely rendelkezik a társításokkal való munkavégzéshez [szükséges engedélyekkel](#permissions) .
 - Ha a cikkben szereplő feladatok végrehajtásához PowerShell-parancsokat használ, futtassa a [Azure Cloud Shell](https://shell.azure.com/powershell)parancsait, vagy a PowerShellt a számítógépről futtatva. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ehhez az oktatóanyaghoz a Azure PowerShell modul 1.0.0-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor a `Connect-AzAccount`t is futtatnia kell egy olyan fiókkal, amely rendelkezik a [megfelelő engedélyekkel](#permissions) a társítással való együttműködéshez, az Azure-beli kapcsolatok létrehozásához.
 - Ha az Azure parancssori felület (CLI) parancsait használja a jelen cikkben található feladatok elvégzéséhez, futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy a CLI-t a számítógépről futtatva. Ehhez az oktatóanyaghoz az Azure CLI 2.0.31 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI-t, akkor a `az login`t is futtatnia kell egy olyan fiókkal, amely rendelkezik a [megfelelő engedélyekkel](#permissions) az Azure-hoz való kapcsolódáshoz.
 
@@ -114,7 +114,7 @@ Ha azt szeretné, hogy a virtuális hálózatok időnként kommunikáljanak, de 
 - Globális társítások létrehozásakor a kihelyezett virtuális hálózatok bármely Azure-beli nyilvános Felhőbeli régióban, illetve a kínai Felhőbeli régiókban vagy kormányzati Felhőbeli régiókban létezhetnek. A felhők között nem lehet egyenrangú. Az Azure-beli nyilvános felhőben lévő VNet például nem lehet egy Azure China Cloud-beli VNet.
 - Az egyes virtuális hálózatok erőforrásai nem kommunikálhatnak a globálisan társított virtuális hálózat alapszintű, belső terheléselosztóinak előtérbeli IP-címével. Az alapszintű terheléselosztó csak ugyanabban a régióban támogatott. A standard terheléselosztó mindkettőhöz támogatott, a virtuális hálózatok közötti és a globális virtuális hálózatok közötti társviszonyhoz is. Az alapszintű Load balancert használó olyan szolgáltatások, amelyek nem fognak működni a globális VNet-társítással, itt vannak dokumentálva [.](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 - Távoli átjárókat használhat, vagy engedélyezheti az átjárók átvitelét a globálisan működő virtuális hálózatokban és a helyileg létrehozott virtuális hálózatokban.
-- A virtuális hálózatok lehetnek azonos vagy eltérő előfizetésekben. Ha különböző előfizetésekben lévő egyenrangú virtuális hálózatokkal rendelkezik, mindkét előfizetés ugyanahhoz vagy különböző Azure Active Directory bérlőhöz is társítható. Ha még nem rendelkezik AD-Bérlővel, [létrehozhat egyet](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). A portálon nem érhető el a virtuális hálózatok közötti, a különböző Azure Active Directory bérlőhöz társított előfizetések közötti társítás támogatása. Használhatja a CLI-t, a PowerShellt vagy a sablonokat.
+- A virtuális hálózatok lehetnek azonos vagy eltérő előfizetésekben. Különböző előfizetésekben található virtuális hálózatok társviszonyba állítása akkor, ha mindkét előfizetés társíthatók az azonos vagy eltérő Azure Active Directory-bérlő. Ha még nem rendelkezik AD-Bérlővel, [létrehozhat egyet](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). A portálon nem érhető el a virtuális hálózatok közötti, a különböző Azure Active Directory bérlőhöz társított előfizetések közötti társítás támogatása. Használhatja a CLI-t, a PowerShellt vagy a sablonokat.
 - A társ virtuális hálózatoknak nem átfedésben lévő IP-címekkel kell rendelkezniük.
 - Ha a virtuális hálózat egy másik virtuális hálózattal van társítva, nem adhat hozzá címtartományt a virtuális hálózat címterület-tartományához, vagy törölheti a címtartományt. Címtartományok hozzáadásához vagy eltávolításához törölje a társítást, vegye fel vagy távolítsa el a címtartományt, majd hozza létre újra a társítást. Ha címtartományt szeretne hozzáadni a virtuális hálózatokból, vagy eltávolítja a címtartományt, tekintse meg a [virtuális hálózatok kezelése](manage-virtual-network.md)című témakört.
 - A Resource Manageren keresztül központilag telepített két virtuális hálózatot, illetve a Resource Manageren keresztül üzembe helyezett virtuális hálózatokat a klasszikus üzemi modellen keresztül telepített virtuális hálózattal használhatja. A klasszikus üzembe helyezési modellel létrehozott két virtuális hálózat nem használható. Ha még nem ismeri az Azure üzembe helyezési modelljeit, olvassa el az [Azure Deployment models ismertetése](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című cikket. A [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) használatával összeköthető két, a klasszikus üzembehelyezési modellel létrehozott virtuális hálózat.
@@ -142,19 +142,19 @@ A virtuális hálózati társítással való együttműködéshez használt fió
 
 Ha a fiókja nincs hozzárendelve az egyik korábbi szerepkörhöz, hozzá kell rendelnie egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a következő táblázat szükséges műveleteihez van rendelve:
 
-| Műveletek                                                          | Név |
+| Műveletek                                                          | Name (Név) |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Az A virtuális hálózatról a B virtuális hálózatra való társítás létrehozásához szükséges. A virtuális hálózatnak virtuális hálózatnak (Resource Manager) kell lennie.          |
 | Microsoft. Network/virtualNetworks/peer/Action                   | A (z) B virtuális hálózatról (Resource Manager) az A virtuális hálózatra való társítás létrehozásához szükséges                                                       |
 | Microsoft. ClassicNetwork/virtualNetworks/társ/művelet                   | A virtuális hálózat B (klasszikus) és a virtuális hálózat közötti társítás létrehozásához szükséges.                                                                |
 | Microsoft. Network/virtualNetworks/virtualNetworkPeerings/READ   | Virtuális hálózati társak beolvasása   |
-| Microsoft. Network/virtualNetworks/virtualNetworkPeerings/delete | Virtuális hálózati társak törlése |
+| Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete | Virtuális hálózati társak törlése |
 
 ## <a name="next-steps"></a>Következő lépések
 
 - A virtuális hálózatok közötti társviszony az azonos vagy eltérő előfizetésekben lévő, azonos vagy eltérő üzembehelyezési modelleken keresztül létrehozott virtuális hálózatok között jön létre. Végezzen el egy oktatóanyagot a következő forgatókönyvek egyikéhez:
 
-  |Azure üzembehelyezési modell             | Előfizetés  |
+  |Azure üzembehelyezési modell             | Előfizetést  |
   |---------                          |---------|
   |Mindkét Resource Manager              |[Ugyanaz](tutorial-connect-virtual-networks-portal.md)|
   |                                   |[Különböző](create-peering-different-subscriptions.md)|

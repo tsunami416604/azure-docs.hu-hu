@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/14/2019
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230570"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355899"
 ---
 # <a name="manage-your-function-app"></a>A Function alkalmazás kezelése 
 
@@ -25,9 +25,9 @@ Ez a cikk bemutatja, hogyan konfigurálhatja és kezelheti a függvények alkalm
 > [!TIP]  
 > Az [Azure CLI]használatával számos konfigurációs beállítás is kezelhető. 
 
-## <a name="get-started-in-the-azure-portal"></a>Első lépések az Azure Portalon
+## <a name="get-started-in-the-azure-portal"></a>Ismerkedés a Azure Portal
 
-A kezdéshez nyissa meg a [Azure Portal] , és jelentkezzen be az Azure-fiókjába. A portál tetején a keresősávba írja be a függvényalkalmazás nevét, majd válassza ki a listáról. A Function alkalmazás kiválasztása után a következő oldal jelenik meg:
+A kezdéshez nyissa meg a [Azure Portalra] , és jelentkezzen be az Azure-fiókjába. A portál tetején a keresősávba írja be a függvényalkalmazás nevét, majd válassza ki a listáról. A Function alkalmazás kiválasztása után a következő oldal jelenik meg:
 
 ![A Function app áttekintése a Azure Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
@@ -79,7 +79,7 @@ A Function apps a Azure App Service platformon fut, és karbantartja őket. Így
 A cikk további részében a következő, a függvények számára hasznos App Service Azure Portal-funkciókra összpontosít:
 
 + [App Service szerkesztő](#editor)
-+ [Console](#console)
++ [Konzol](#console)
 + [Speciális eszközök (kudu)](#kudu)
 + [Üzembe helyezési beállítások](#deployment)
 + [CORS](#cors)
@@ -149,4 +149,4 @@ Ha a függvények HTTP-triggert használnak, megkövetelheti, hogy először hit
 + [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)
 
 [Azure CLI]: /cli/azure/
-[Azure Portal]: https://portal.azure.com
+[Azure Portalra]: https://portal.azure.com

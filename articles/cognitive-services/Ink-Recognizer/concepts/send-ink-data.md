@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274475"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393101"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Tintaadatok küldése az Ink Recognizer API-nak 
 
 A digitális szabadkézi műveletek olyan technológiák, amelyek lehetővé teszik a bemenetek, például a kézírás és a rajzok digitális ábrázolását. Ez általában olyan digitalizáló használatával érhető el, amely rögzíti a bemeneti eszközök, például a toll mozgását. Mivel az eszközök folyamatosan bővítik a digitális szabadkézi műveletek használati körét, a mesterséges intelligencia és a gépi tanulás bármilyen környezetben lehetővé teszi az írott alakok és szövegek felismerését. A tinta-felismerő API lehetővé teszi a szabadkézi ecsetvonások küldését, és részletes információkat kaphat róluk. 
 
-## <a name="the-ink-recognizer-api-vs-ocr-services"></a>A Ink-felismerő API és a OCR-szolgáltatások
+## <a name="the-ink-recognizer-api-vs-ocr-services"></a>A Ink-felismerő API és az OCR-szolgáltatások
 
 A tinta-felismerő API nem használ optikai karakterfelismerést (OCR). Az OCR-szolgáltatások feldolgozzák a képek képpont-adatait, hogy kézírás-és szöveges felismerést nyújtsanak. Ezt időnként offline felismerésnek is nevezik. Ehelyett a tinta-felismerő API-nak a bemeneti eszközként rögzített digitális tollvonási adatokat kell használnia. A digitális tinta adatainak feldolgozása így az OCR-szolgáltatásokhoz képest pontosabb felismerési eredményeket eredményezhet. 
 
@@ -84,7 +84,7 @@ Az elismerési eredmények előzetesen információt adnak a szabadkézi ecsetvo
 
 A [Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) olyan eszközöket és technológiákat biztosít, amelyekkel számos különböző eszközön engedélyezhető a digitális és a többkirályos élmény. A tinta-felismerő API-val kombinálhatja a Windows tinta platformot a digitális tollvonásokat megjelenítő és értelmező alkalmazások létrehozásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Ink-felismerő API?](../overview.md)
 * [Kézírás-felismerő REST API referenciája](https://go.microsoft.com/fwlink/?linkid=2089907)

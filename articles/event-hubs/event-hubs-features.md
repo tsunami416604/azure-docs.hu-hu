@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 568a21cee5b50a8914c603976f5951d0235dbff7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157176"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358278"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkciók és az Azure Event Hubs terminológiája
 

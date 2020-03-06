@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: 0cdff3ac6eb2faed0c0b6b8796fdb3b6b0411018
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202085"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356451"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-trigger Azure Functions
 
@@ -40,7 +40,7 @@ A Blobok feldolgozásának másik módja a létrehozott vagy módosított blobok
 
 ## <a name="example"></a>Példa
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely a `samples-workitems` tárolóban lévő blob hozzáadásakor vagy frissítésekor naplót ír.
 
@@ -56,7 +56,7 @@ A blob trigger elérési útján `{name}` sztring `samples-workitems/{name}` egy
 
 További információ a `BlobTrigger` attribútumról: [attribútumok és jegyzetek](#attributes-and-annotations).
 
-# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 Az alábbi példa egy blob trigger kötést mutat be egy *function. JSON* fájlban és a kötést használó kódban. A függvény naplót ír a `samples-workitems` [tárolóban](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)lévő blob hozzáadásakor vagy frissítésekor.
 
@@ -103,7 +103,7 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A következő példa egy blob trigger kötést mutat be egy *function. JSON* fájlban és [JavaScript-kódban](functions-reference-node.md) , amely a kötést használja. A függvény naplót ír a `samples-workitems` tárolóban lévő blob hozzáadásakor vagy frissítésekor.
 
@@ -137,7 +137,7 @@ module.exports = function(context) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Az alábbi példa egy blob trigger kötést mutat be egy *function. JSON* fájlban és a kötést használó [Python-kódban](functions-reference-python.md) . A függvény naplót ír a `samples-workitems` [tárolóban](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)lévő blob hozzáadásakor vagy frissítésekor.
 
@@ -174,7 +174,7 @@ def main(myblob: func.InputStream):
     logging.info('Python Blob trigger function processed %s', myblob.name)
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Ez a függvény naplót ír a `myblob` tárolóban lévő blob hozzáadásakor vagy frissítésekor.
 
@@ -196,7 +196,7 @@ public void run(
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a következő attribútumokat a blob-trigger konfigurálásához:
 
@@ -252,19 +252,19 @@ A használandó Storage-fiók a következő sorrendben van meghatározva:
 * Az osztályra alkalmazott `StorageAccount` attribútum.
 * A Function alkalmazás alapértelmezett Storage-fiókja ("AzureWebJobsStorage").
 
-# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 Az C# attribútumokat a parancsfájl nem támogatja.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 A Python nem támogatja az attribútumokat.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 A `@BlobTrigger` attribútummal hozzáférést biztosíthat a függvényt kiváltó blobhoz. A részletekért tekintse meg az [trigger példáját](#example) .
 
@@ -286,23 +286,23 @@ Az alábbi táblázat a *function. JSON* fájlban és a `BlobTrigger` attribútu
 
 ## <a name="usage"></a>Használat
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A Blobok adatai a `context.bindings.<NAME>` használatával érhetők el, ahol a `<NAME>` megegyezik a *function. JSON*fájlban megadott értékkel.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 A blob-adatelérést a [InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)típussal megadott paraméterrel érheti el. A részletekért tekintse meg az [trigger példáját](#example) .
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 A `@BlobTrigger` attribútummal hozzáférést biztosíthat a függvényt kiváltó blobhoz. A részletekért tekintse meg az [trigger példáját](#example) .
 
@@ -352,15 +352,15 @@ Ha a blob neve *{20140101}-soundfile. mp3*, a függvény kódjában található 
 
 ## <a name="metadata"></a>Metaadatok
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 module.exports = function (context, myBlob) {
@@ -369,11 +369,11 @@ module.exports = function (context, myBlob) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 A metaadatok nem érhetők el a Pythonban.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 A metaadatok nem érhetők el a javában.
 

@@ -17,17 +17,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbaf7d4e5a0dee82edf9b6b6bd65b91309e1344d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007680"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375383"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Gyakori kérdések Azure Active Directory jelentésekről
 
 Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza. További információk: [Jelentéskészítés az Azure Active Directoryban](overview-reports.md). 
 
-## <a name="getting-started"></a>Első lépések 
+## <a name="getting-started"></a>Bevezetés 
 
 **K: jelenleg a `https://graph.windows.net/<tenant-name>/reports/` Endpoint API-kat használva lekérik az Azure AD audit és az integrált alkalmazás-használati jelentéseket a jelentéskészítő rendszerbe programozott módon. Mire érdemes váltani?**
 

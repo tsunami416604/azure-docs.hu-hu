@@ -9,11 +9,11 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749231"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393213"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>A blob Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
 
@@ -25,16 +25,16 @@ Az Azure Storage méretezhetőségi és teljesítménybeli célokat biztosít a 
 
 Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan a blob Storage-alkalmazás fejlesztése során követendő ellenőrzőlistán.
 
-| Kész | Kategória | Kialakítási szempont |
+| Tenni | Kategória | Kialakítási szempont |
 | --- | --- | --- |
 | &nbsp; |Méretezhetőségi célok |[Megtervezheti, hogy az alkalmazás ne legyen több, mint a Storage-fiókok maximális száma?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Méretezhetőségi célok |[Elkerüli a kapacitást és a tranzakciós korlátokat?](#capacity-and-transaction-targets) |
 | &nbsp; |Méretezhetőségi célok |[Egyszerre több ügyfél fér hozzá egyetlen blobhoz?](#multiple-clients-accessing-a-single-blob-concurrently) |
 | &nbsp; |Méretezhetőségi célok |[Az alkalmazása a méretezhetőségi célokon belül marad egyetlen blob esetében?](#bandwidth-and-operations-per-blob) |
 | &nbsp; |Particionálás |[Az elnevezési konvenció úgy lett kialakítva, hogy jobb terheléselosztást lehessen kialakítani?](#partitioning) |
-| &nbsp; |Hálózatkezelés |[A szükséges teljesítmény elérése érdekében az ügyféloldali eszközök megfelelően nagy sávszélességgel és kis késéssel rendelkeznek?](#throughput) |
-| &nbsp; |Hálózatkezelés |[Az ügyféloldali eszközök magas színvonalú hálózati kapcsolattal rendelkeznek?](#link-quality) |
-| &nbsp; |Hálózatkezelés |[Az ügyfélalkalmazás ugyanabban a régióban található, mint a Storage-fiók?](#location) |
+| &nbsp; |Hálózat |[A szükséges teljesítmény elérése érdekében az ügyféloldali eszközök megfelelően nagy sávszélességgel és kis késéssel rendelkeznek?](#throughput) |
+| &nbsp; |Hálózat |[Az ügyféloldali eszközök magas színvonalú hálózati kapcsolattal rendelkeznek?](#link-quality) |
+| &nbsp; |Hálózat |[Az ügyfélalkalmazás ugyanabban a régióban található, mint a Storage-fiók?](#location) |
 | &nbsp; |Közvetlen ügyfél-hozzáférés |[Közös hozzáférésű aláírásokat (SAS) és több eredetű erőforrás-megosztást (CORS) használ az Azure Storage-hoz való közvetlen hozzáférés engedélyezéséhez?](#sas-and-cors) |
 | &nbsp; |Gyorsítótárazás |[Az alkalmazás gyorsítótárazza a gyakran használt és ritkán módosított adatait?](#reading-data) |
 | &nbsp; |Gyorsítótárazás |[Az alkalmazás batch-frissítése az ügyfélen végzett gyorsítótárazással történik, majd feltölti őket nagyobb készletekbe?](#uploading-data-in-batches) |
@@ -52,7 +52,7 @@ Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan a blob S
 | &nbsp; |Metaadatok használata |[Tárolja a Blobok gyakran használt metaadatait a metaadatokban?](#use-metadata) |
 | &nbsp; |Gyors feltöltés |[Amikor egy blob gyors feltöltését kísérli meg, párhuzamosan kell feltölteni a blokkokat?](#upload-one-large-blob-quickly) |
 | &nbsp; |Gyors feltöltés |[Sok blob gyors feltöltésének megkísérlésekor a blobokat párhuzamosan kell feltölteni?](#upload-many-blobs-quickly) |
-| &nbsp; |Blobtípus |[Az oldal blobokat használja, vagy ha szükséges, a Blobok blokkolása?](#choose-the-correct-type-of-blob) |
+| &nbsp; |BLOB típusa |[Az oldal blobokat használja, vagy ha szükséges, a Blobok blokkolása?](#choose-the-correct-type-of-blob) |
 
 ## <a name="scalability-targets"></a>Méretezhetőségi célok
 
@@ -115,7 +115,7 @@ Az ilyen műveletek gyakoriságának csökkentéséhez kövesse az ajánlott elj
   
 - Az Azure Storage-ban használt particionálási sémával kapcsolatos további információkért lásd [: Azure Storage: magas rendelkezésre állású felhőalapú tárolási szolgáltatás erős konzisztencia](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)használatával.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 Az alkalmazás fizikai hálózati korlátai jelentős hatással lehetnek a teljesítményre. A következő szakaszok ismertetik néhány korlátozást a felhasználók számára.  
 
@@ -123,7 +123,7 @@ Az alkalmazás fizikai hálózati korlátai jelentős hatással lehetnek a telje
 
 A sávszélesség és a hálózati kapcsolat minősége fontos szerepet játszik az alkalmazás teljesítményében, az alábbi szakaszokban leírtak szerint.
 
-#### <a name="throughput"></a>Adatforgalom
+#### <a name="throughput"></a>Átviteli sebesség
 
 A sávszélesség miatt a probléma gyakran az ügyfél képességei. A nagyobb méretű Azure-példányok nagyobb kapacitású hálózati adapterekkel rendelkeznek, ezért érdemes nagyobb méretű virtuális gépeket használni, ha egy gépről nagyobb hálózati korlátokra van szüksége. Ha egy helyszíni alkalmazásból fér hozzá az Azure Storage-hoz, ugyanez a szabály vonatkozik rá: Ismerje meg az ügyféleszközök hálózati képességeit és a hálózati kapcsolatot az Azure Storage-beli helyhez, vagy javítsa a szükséges vagy tervezze meg az alkalmazás a képességein belül dolgozhat.
 
@@ -131,7 +131,7 @@ A sávszélesség miatt a probléma gyakran az ügyfél képességei. A nagyobb 
 
 Ahogy bármilyen hálózati használat esetében, ne feledje, hogy a hibákat eredményező hálózati feltételek és a csomagok elvesztése lassú működést eredményez.  A WireShark vagy a NetMon használata segíthet a probléma diagnosztizálásában.  
 
-### <a name="location"></a>Földrajzi egység
+### <a name="location"></a>Hely
 
 Minden elosztott környezetben, a-ügyfél közel a kiszolgálóhoz, a legjobb teljesítményt nyújtja. Ha az Azure Storage-t a legalacsonyabb késéssel szeretné elérni, az ügyfél számára a legjobb hely ugyanazon az Azure-régión belül van. Ha például van egy Azure-webalkalmazása, amely az Azure Storage szolgáltatást használja, akkor mindkettőt egyetlen régióban, például az USA nyugati régiójában vagy Délkelet-Ázsiában is megtalálhatja. Az erőforrások közös elhelyezése csökkenti a késést és a költségeket, mivel az egyetlen régión belüli sávszélesség-használat ingyenes.  
 

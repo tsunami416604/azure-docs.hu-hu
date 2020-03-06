@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861914"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379216"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>A Virtual Network Gateway SKU-i (örökölt SKU) használata
 
@@ -36,7 +36,7 @@ Az örökölt átjáró díjszabását a [ExpressRoute díjszabása lapon](https
 
 Az átjárót átméretezheti egy olyan átjáró SKU-ra, amely ugyanazon SKU-családon belül található. Ha például standard SKU-t használ, átméretezheti a HighPerformance SKU-ra. A VPN-átjárót azonban nem lehet átméretezni a régi SKU-és az új SKU-család között. Például nem mehet át standard SKU-ról egy VpnGw2 SKU-ra vagy egy alapszintű SKU-VpnGw1.
 
-### <a name="resource-manager"></a>Erőforrás-kezelő
+### <a name="resource-manager"></a>Resource Manager
 
 Ha át szeretné méretezni a Resource Manager-alapú üzemi modell átjáróját a PowerShell használatával, használja a következő parancsot:
 

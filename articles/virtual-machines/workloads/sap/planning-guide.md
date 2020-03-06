@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/13/2020
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48e06ed31de35ad29a0fda271feaaf50b5efaf8a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
-ms.translationtype: MT
+ms.openlocfilehash: 693faf3a4e9d42321fee1258b8dd5d24582e4686
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616818"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363635"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -1052,7 +1052,7 @@ New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk 
 
 ##### <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI használatával a [cikkben][storage-azure-cli-copy-blobs]látható módon másolhat egy virtuális merevlemezt. Új felügyelt lemez létrehozásához használja az *az Disk Create* lehetőséget az alábbi példában látható módon.
+A virtuális merevlemezek másolásához használhatja az Azure CLI-t. Új felügyelt lemez létrehozásához használja az *az Disk Create* lehetőséget az alábbi példában látható módon.
 
 ```
 az disk create --source "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --name <disk name> --resource-group <resource group name> --location <location>
@@ -1152,8 +1152,6 @@ az storage blob show --name <target blob name> --container <target container nam
 ```
 
 * Csatlakoztassa az új VHD-t egy virtuális géphez a fent leírtak szerint.
-
-Példa erre a [cikkre][storage-azure-cli-copy-blobs].
 
 ### <a name="disk-handling"></a>Lemezek feldolgozása
 

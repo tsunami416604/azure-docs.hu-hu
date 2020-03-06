@@ -4,12 +4,12 @@ description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 1b82d43a58a25dc1c475180a4780106220e1ceeb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 8e29061becd9eb82dd04f3ed0db787542b29cbc7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597320"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363858"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
@@ -125,7 +125,7 @@ Ha a **következő** címtárban az alapértelmezetttől eltérő engedélyek je
    * Olvasási engedélyek
 2. Törölje az összes olyan tanúsítványt, ahol a **kiadás** a klasszikus üzemi modell vagy a **Windows Azure-beli CRP-tanúsítvány generátora**:
 
-   * [Nyisson meg tanúsítványokat egy helyi számítógép-konzolon](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx).
+   * [Nyisson meg tanúsítványokat egy helyi számítógép-konzolon](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in).
    * A **személyes** > **tanúsítványok**területen törölje az összes olyan tanúsítványt, amely **számára a kiadás** a klasszikus üzemi modell vagy a **Windows Azure CRP-tanúsítvány generátora**.
 3. Virtuális gép biztonsági mentési feladatainak elindítása.
 

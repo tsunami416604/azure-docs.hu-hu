@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 92228c691c323bc0b9621dfc7413d86c5c2669e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482633"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385195"
 ---
 # <a name="generate-maps"></a>Térképek létrehozása
 
@@ -26,7 +26,7 @@ A FarmBeats-érzékelő elhelyezési térképe segíti a talaj nedvességtartalm
 
 Ez a Térkép az év során több dátummal ellátott lombkorona szegmentálásával származtatható. A lombkorona része még a puszta talaj és az épületek is. A helyen nem szükséges érzékelők eltávolíthatók. Ez a Térkép útmutatásként szolgál, és a pozíciót és a számokat a saját tudása alapján kis mértékben módosíthatja. Az érzékelők hozzáadása nem visszafejlődés a hő eredményeit, de a hő pontossága is csökkenhet, ha az érzékelő száma csökken.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A következő előfeltételeknek kell megfelelnie az érzékelő elhelyezési térképének létrehozása előtt:
 
@@ -163,7 +163,7 @@ Kövesse az alábbi lépéseket.
 
 A talaj nedvességtartalma a talaj részecskék közötti térközben tárolt víz. A talaj nedvesség-hő segít megérteni a talaj nedvességtartalmának adatait bármilyen mélységben, a farmon belül nagy felbontásban. Pontos és felhasználható nedvesség-hő létrehozásához az érzékelők egységes üzembe helyezésére van szükség. Az érzékelőknek ugyanabból a szolgáltatóból kell származnia. A különböző szolgáltatók eltérő módon határozzák meg a talaj nedvességtartalmának mértékét, a kalibrálási különbségekkel együtt. A hő az adott mélységben üzembe helyezett érzékelők használatával jön létre.
 
-### <a name="before-you-begin"></a>Előzetes teendők
+### <a name="before-you-begin"></a>Előkészületek
 
 A következő előfeltételeknek kell megfelelnie, mielőtt megkísérli a talaj nedvességtartalmának hő:
 

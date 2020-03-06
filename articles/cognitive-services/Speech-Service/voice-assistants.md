@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
 ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812909"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394821"
 ---
 # <a name="about-voice-assistants"></a>A hangsegédek ismertetése
 
@@ -31,7 +31,7 @@ Az alkalmazások a beszédfelismerési szoftverfejlesztői készlettel (SDK) csa
 
 A hangsegéd létrehozásának első lépése, hogy eldöntse, mit kell tennie. A beszédfelismerési szolgáltatás több, egymást kiegészítő megoldást biztosít a Segéd interakcióinak kialakításához. Legyen szó akár a rugalmasságról és a sokoldalúságról, amit a bot Framework [közvetlen vonalas beszédének](direct-line-speech.md) csatornája biztosít, vagy az egyszerű forgatókönyvekhez [(előzetes verzió)](custom-commands.md) egyszerűen, a megfelelő eszközök kiválasztásával kezdheti meg az első lépéseket.
 
-| Ehhez a feladathoz... | Ezt követően tekintse meg... | Például... |
+| Ha azt szeretné… | Ezt követően tekintse meg... | Például... |
 |-------------------|------------------|----------------|
 |Nyílt végű beszélgetés robusztus szakértelem-integrációval és teljes körű üzembe helyezési ellenőrzéssel | A bot Framework [közvetlen vonalas beszédének](direct-line-speech.md) csatornája | <ul><li>"Be kell menni a Seattle-be"</li><li>"Milyen típusú pizzát rendelhetek?"</li></ul>
 |Parancs-és vezérlési vagy feladat-orientált beszélgetés egyszerűsített létrehozással és üzemeltetéssel | [Egyéni parancsok (előzetes verzió)](custom-commands.md) | <ul><li>"Az általános megvilágítás bekapcsolása"</li><li>"5 fokos meleg"</ul>
@@ -46,7 +46,7 @@ Az [egyéni parancsok (előzetes verzió)](custom-commands.md) egy egyszerűsít
 
 Akár [közvetlen vonalas beszédet](direct-line-speech.md) , akár [egyéni parancsokat (előzetes verzió)](custom-commands.md) választ a Segéd-interakciók létrehozásához, a testreszabási funkciók széles választékával testre szabhatja a Segédet a márka, a termék és a személyiség számára.
 
-| Kategória | Jellemzők |
+| Kategória | Szolgáltatások |
 |----------|----------|
 |[Egyéni kulcsszó](speech-devices-sdk-create-kws.md) | A felhasználók olyan egyéni kulcsszóval indíthatnak el beszélgetéseket, mint például a "Hey contoso". Az alkalmazás a Speech SDK-ban egy egyéni kulcsszavas motorral rendelkezik, amely konfigurálható egy egyéni kulcsszóval, [amelyet itt is](speech-devices-sdk-create-kws.md)létrehozhat. A hangsegédek kiszolgálóoldali ellenőrzés használatával növelhetik a kulcsszó aktiválásának pontosságát (az eszköz helyett).
 |[Beszéd szövege](speech-to-text.md) | A hangsegédek valós idejű hanganyagot alakítanak át felismert szöveggé a beszédfelismerési szolgáltatásból származó [beszéd – szöveg](speech-to-text.md) használatával. Ez a szöveg a Segéd implementációjában és az ügyfélalkalmazásban is elérhető.
@@ -56,7 +56,7 @@ Akár [közvetlen vonalas beszédet](direct-line-speech.md) , akár [egyéni par
 
 Olyan gyors útmutatókat is kínálunk, amelyek kevesebb, mint 10 perc alatt futtatják a kódot. Ez a táblázat a hangsegéd-gyors üzembe helyezések listáját tartalmazza, nyelv szerint rendezve.
 
-| Gyors útmutató | Platform | API-leírások |
+| Első lépések | Platform | API-referencia |
 |------------|----------|---------------|
 | C#, UWP | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
 | Java | Windows, macOS, Linux | [Tallózás](https://aka.ms/csspeech/javaref) |
@@ -80,7 +80,7 @@ A beszédfelismerési szolgáltatással létrehozott hangsegédek teljes körű 
 > [!NOTE]
 > A testreszabási lehetőségek nyelv/területi beállítás szerint változnak (lásd a [támogatott nyelveket](supported-languages.md)).
 
-## <a name="reference-docs"></a>Segédanyagok
+## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
 * [Beszéd SDK](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)

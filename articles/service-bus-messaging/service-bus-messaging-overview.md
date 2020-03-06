@@ -12,11 +12,11 @@ ms.date: 11/04/2019
 ms.custom: mvc
 ms.author: aschhab
 ms.openlocfilehash: 49a54491c36ef29209d1a53094cc5baf57057557
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759380"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396288"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 
@@ -39,11 +39,11 @@ A névtér az összes üzenetküldési összetevő tárolója. Több várólista
 
 Az üzenetek az *üzenetsorokba* érkeznek be, és onnan küldi ki őket a rendszer. A várólisták üzeneteket tárolnak, amíg a fogadó alkalmazás elérhetővé válik a fogadáshoz és a feldolgozáshoz.
 
-![Queue](./media/service-bus-messaging-overview/about-service-bus-queue.png)
+![Várólista](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
 A várólistákban lévő üzenetek megrendelése és időbélyege az érkezéskor. Az üzenet elfogadása után azt a rendszer egy redundáns tárolóban helyezi biztonságba. Az üzenetek *lekéréses* módban lesznek kézbesítve, csak az üzenetek kézbesítését kérik.
 
-## <a name="topics"></a>Üzenettémák
+## <a name="topics"></a>Témakörök
 
 Az üzenetek küldéséhez és fogadásához *témaköröket* is használhat. Amíg egy üzenetsort gyakran használnak közvetlen kommunikációra, addig a témakörök hasznosak a közzétételi/előfizetési forgatókönyvekben.
 
@@ -110,11 +110,11 @@ Ha az Azure-régiók vagy-adatközpontok leállást tapasztalnak, a Geo-vész-he
 
 A Service Bus támogatja a szabványos [AMQP 1.0](service-bus-amqp-overview.md) és [HTTP/REST](/rest/api/servicebus/) protokollokat.
 
-## <a name="client-libraries"></a>Klienskódtárak
+## <a name="client-libraries"></a>Ügyfélkódtárak
 
 A Service Bus támogatja a [.net](https://github.com/Azure/azure-service-bus-dotnet/tree/master), a [Java](https://github.com/Azure/azure-service-bus-java/tree/master)és a [JMS](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client)-hez készült ügyféloldali kódtárakat.
 
-## <a name="integration"></a>Integration (Integráció)
+## <a name="integration"></a>Integráció
 
 A Service Bus teljes mértékben integrálható a következő Azure-szolgáltatásokkal:
 

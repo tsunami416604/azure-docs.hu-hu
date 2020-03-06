@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.openlocfilehash: f28e76e9dcaf1331fd26a2321cd4deca1027e693
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151377"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393565"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Tanúsítványok előállítása és exportálása pont – hely kapcsolatokhoz a PowerShell használatával
 
@@ -25,13 +25,13 @@ Ha nem fér hozzá a Windows 10 vagy a Windows Server 2016 rendszerű számító
 
 [!INCLUDE [generate and export certificates](../../includes/vpn-gateway-generate-export-certificates-include.md)]
 
-## <a name="install"></a>Az exportált ügyféltanúsítvány telepítése
+## <a name="install"></a>Exportált ügyféltanúsítvány telepítése
 
 A P2S-kapcsolaton keresztül a VNet csatlakozó összes ügyfélnek helyileg telepítenie kell egy ügyféltanúsítványt.
 
 Az ügyféltanúsítvány telepítéséhez tekintse meg [az Ügyféltanúsítványok telepítése pont – hely kapcsolatokhoz](point-to-site-how-to-vpn-client-install-azure-cert.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a pont – hely konfigurációval.
 

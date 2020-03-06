@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410223"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357903"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions kötései (Azure Functions)
 
@@ -36,7 +36,7 @@ Ha Orchestrator-függvényeket ír a parancsfájlkezelési nyelveken (például 
 
 Belsőleg ez az aktiválási kötés a Function app alapértelmezett Storage-fiókjában lévő várólisták sorát kérdezi le. Ezek a várólisták a bővítmény belső implementációjának részletei, ezért nincsenek explicit módon konfigurálva a kötési tulajdonságok között.
 
-### <a name="trigger-behavior"></a>Eseményindító működése
+### <a name="trigger-behavior"></a>Trigger viselkedése
 
 Íme néhány Megjegyzés az előkészítési triggerről:
 
@@ -143,7 +143,7 @@ Ha a VS Code-ot vagy a Azure Portal fejlesztésre használja, a tevékenység-tr
 
 Belsőleg ez az aktiválási kötés a Function app alapértelmezett Storage-fiókjában lévő várólistát kérdezi le. Ez a várólista a bővítmény belső implementációjának részletes adatai, ezért nincs explicit módon konfigurálva a kötési tulajdonságok között.
 
-### <a name="trigger-behavior"></a>Eseményindító működése
+### <a name="trigger-behavior"></a>Trigger viselkedése
 
 Íme néhány Megjegyzés a tevékenység-triggerről:
 
@@ -372,7 +372,7 @@ Ha a Visual Studio-eszközöket használja a Azure Functionshoz, az entitás-tri
 
 Belsőleg ez az aktiválási kötés a Function app alapértelmezett Storage-fiókjában lévő várólisták sorát kérdezi le. Ezek a várólisták a bővítmény belső implementációjának részletei, ezért nincsenek explicit módon konfigurálva a kötési tulajdonságok között.
 
-### <a name="trigger-behavior"></a>Eseményindító működése
+### <a name="trigger-behavior"></a>Trigger viselkedése
 
 Íme néhány Megjegyzés az entitás-triggerről:
 
@@ -637,7 +637,7 @@ module.exports = async function (context) {
 > A tartós entitások a `durable-functions` NPM csomag **1.3.0** kezdődően érhetők el a JavaScriptben.
 
 <a name="host-json"></a>
-## <a name="hostjson-settings"></a>gazdagép. JSON-beállítások
+## <a name="hostjson-settings"></a>Host.JSON-beállítások
 
 [!INCLUDE [durabletask](../../../includes/functions-host-json-durabletask.md)]
 

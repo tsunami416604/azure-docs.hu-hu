@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/12/2020
 ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561782"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361340"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával
 
@@ -222,7 +222,7 @@ A jelszó a fürt összes csomópontján módosul.
    | Mező | Érték |
    | --- | --- |
    | Parancsfájl típusa | Válassza a **-Custom** elemet a legördülő listából.|
-   | Név |"SSH-jelszó módosítása" |
+   | Name (Név) |"SSH-jelszó módosítása" |
    | Bash-parancsfájl URI-ja |A changepassword.sh-fájl URI-ja |
    | Csomópont típusa (i): (Head, Worker, Nimbus, témavezető vagy Zookeeper) |✓ Minden felsorolt csomópont-típushoz |
    | Paraméterek |Adja meg az SSH-felhasználónevet, majd az új jelszót. A Felhasználónév és a jelszó között egy szóköznek kell lennie. |
@@ -258,7 +258,7 @@ A fürt [kezdőlapjának](#homePage) **fürt mérete** csempéje megjeleníti a 
 - [Apache Hive használata a HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
 - [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanult néhány alapvető felügyeleti funkciót. További információt a következő cikkekben talál:
 

@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
 ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985934"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358213"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnosztikai naplózás engedélyezése a Azure App Serviceban lévő alkalmazásokhoz
 ## <a name="overview"></a>Áttekintés
@@ -23,7 +23,7 @@ Ez a cikk a [Azure Portal](https://portal.azure.com) és az Azure CLI-t használ
 >
 >
 
-|Type (Típus)|Platform|Földrajzi egység|Leírás|
+|Típus|Platform|Hely|Leírás|
 |-|-|-|-|
 | Alkalmazásnaplózás | Windows, Linux | App Service fájlrendszer és/vagy Azure Storage-Blobok | Az alkalmazás kódjában létrehozott üzenetek naplózása. Az üzeneteket a választott webes keretrendszer hozza létre, vagy az alkalmazás kódjából közvetlenül a nyelv szabványos naplózási mintájának használatával. Minden üzenethez a következő kategóriák egyike van rendelve: **kritikus**, **hiba**, **Figyelmeztetés**, **információ**, **hibakeresés**és **nyomkövetés**. Kiválaszthatja, hogy milyen részletességgel szeretné a naplózást beállítani a súlyossági szint beállításával az alkalmazások naplózásának engedélyezésekor.|
 | Webkiszolgáló naplózása| Windows | App Service fájlrendszer vagy Azure Storage-Blobok| Nyers HTTP-kérelmekre vonatkozó, a [W3C bővített naplófájl formátuma](/windows/desktop/Http/w3c-logging). Minden naplóbejegyzés olyan adatforrást tartalmaz, mint például a HTTP-metódus, az erőforrás URI-ja, az ügyfél IP-címe, az ügyfél portja, a felhasználói ügynök, a válasz kódja stb. |
@@ -59,7 +59,7 @@ Válassza ki a **szintet**, vagy a naplózni kívánt részletességi szintet. A
 
 | Szint | Belefoglalt kategóriák |
 |-|-|
-|**Letiltva** | None |
+|**Letiltva** | Nincs |
 |**Hiba** | Hiba, kritikus |
 |**Figyelmeztetés** | Figyelmeztetés, hiba, kritikus|
 |**Információk** | Információ, figyelmeztetés, hiba, kritikus|
@@ -105,9 +105,9 @@ Mindkét típusú naplót a App Service fájlrendszer tárolja. Akár 50 hibát 
 
 ## <a name="add-log-messages-in-code"></a>Naplóüzenetek hozzáadása a kódban
 
-Az alkalmazás kódjában a szokásos naplózási létesítményeket használja a naplóüzenetek küldésére az alkalmazás naplófájljaiba. Példa:
+Az alkalmazás kódjában a szokásos naplózási létesítményeket használja a naplóüzenetek küldésére az alkalmazás naplófájljaiba. Például:
 
-- A ASP.NET-alkalmazások a [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) osztály használatával naplózzák az adatokat az Application Diagnostics-naplóba. Példa:
+- A ASP.NET-alkalmazások a [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) osztály használatával naplózzák az adatokat az Application Diagnostics-naplóba. Például:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -135,12 +135,12 @@ A [Cloud Shell](../cloud-shell/overview.md)élő naplók továbbításához hasz
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Adott események, például hibák szűréséhez használja a **--Filter** paramétert. Példa:
+Adott események, például hibák szűréséhez használja a **--Filter** paramétert. Például:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-Adott típusú naplók (például HTTP) szűréséhez használja a **--path** paramétert. Példa:
+Adott típusú naplók (például HTTP) szűréséhez használja a **--path** paramétert. Például:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -163,7 +163,7 @@ A Linux/Container alkalmazások esetében a ZIP-fájl konzol kimeneti naplókat 
 
 Windows-alkalmazások esetén a ZIP-fájl tartalmazza a *D:\Home\LogFiles* könyvtárának tartalmát a app Service fájlrendszerben. A következő szerkezettel rendelkezik:
 
-| Napló típusa | Könyvtár | Leírás |
+| Napló típusa | Címtár | Leírás |
 |-|-|-|
 | **Alkalmazás-naplók** |*/LogFiles/Application/* | Egy vagy több szövegfájlt tartalmaz. A naplóüzenetek formátuma a használt naplózási szolgáltatótól függ. |
 | **Sikertelen kérelmek nyomkövetése** | */LogFiles/W3SVC#########/* | XML-fájlokat és XSL-fájlt tartalmaz. A formázott XML-fájlok megtekinthetők a böngészőben. |

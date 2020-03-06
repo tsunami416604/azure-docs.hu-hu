@@ -13,11 +13,11 @@ ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e1735c2d2ed107f7ec65d68a6826267ee83a93f8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918712"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387604"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Adatok áthelyezése az ODBC-adattárakból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -64,15 +64,15 @@ A következő szakaszokban részletesen ismertetjük az ODBC-adattárra jellemz�
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 Az alábbi táblázat az ODBC-hez társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesOdbc** |Igen |
 | connectionString |A kapcsolati karakterlánc és egy opcionálisan titkosított hitelesítő adat nem hozzáférési hitelesítő része. Tekintse meg a példákat a következő részekben. <br/><br/>Megadhatja a kapcsolati karakterláncot, mint például a `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, vagy használhatja a rendszeradatforrás nevét (adatforrás neve) az átjárót tartalmazó gépen az `"DSN=<name of the DSN>;"` használatával (a társított szolgáltatásban még mindig meg kell adnia a hitelesítő adatok részleteit). |Igen |
 | hitelesítő adat |Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. Példa: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Nem |
 | authenticationType |Az ODBC-adattárhoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen és alapszintű. |Igen |
-| userName (Felhasználónév) |Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. |Nem |
+| userName |Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell az ODBC-adattárhoz való kapcsolódáshoz. |Igen |
+| gatewayName |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell az ODBC-adattárhoz való kapcsolódáshoz. |Igen |
 
 ### <a name="using-basic-authentication"></a>Alapszintű hitelesítés használata
 
@@ -136,7 +136,7 @@ Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok telje
 
 A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **RelationalTable** típusú (ODBC-adatkészletet tartalmazó) adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | tableName |Az ODBC-adattárban található tábla neve. |Igen |
 
@@ -147,9 +147,9 @@ A tevékenység **typeProperties** szakaszában elérhető tulajdonságok az egy
 
 A másolási tevékenységben ha a forrás **RelationalSource** típusú (amely ODBC-t is tartalmaz), a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Igen |
+| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from MyTable. |Igen |
 
 
 ## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON-példa: adatok másolása az ODBC-adattárból az Azure-Blobba
@@ -362,7 +362,7 @@ A kapcsolódási problémák elhárításához használja **adatkezelés átjár
     ![Keresés az átjárón](./media/data-factory-odbc-connector/search-gateway.png)
 2. Váltson a **diagnosztika** lapra.
 
-    ![Átjáródiagnosztika](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
+    ![Átjáró-diagnosztika](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
 3. Válassza ki az adattár **típusát** (társított szolgáltatás).
 4. Adja meg a **hitelesítést** , és adja meg a **hitelesítő adatokat** (vagy) adja meg az adattárhoz való kapcsolódáshoz használt **kapcsolati karakterláncot** .
 5. Kattintson a **Kapcsolódás tesztelése** elemre az adattárhoz való kapcsolódás teszteléséhez.

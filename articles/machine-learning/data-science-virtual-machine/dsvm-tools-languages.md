@@ -11,13 +11,13 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: e7b32579712e89c0d5595303ee7e03d8b2462607
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615423"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390641"
 ---
-# <a name="languages-supported-on-the-data-science-virtual-machine"></a>A Data Science Virtual Machine támogatott nyelvek 
+# <a name="languages-supported-on-the-data-science-virtual-machine"></a>A Data Science virtuális gépen támogatott nyelvek 
 
 A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és fejlesztői eszközt tartalmaz a mesterséges intelligencia (AI) alkalmazások kiépítéséhez. Íme néhány a jelentősek közül.
 
@@ -27,8 +27,8 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 | ------------- | ------------- |
 | Támogatott nyelvi verziók | Python 2,7 és 3,7 |
 | Támogatott DSVM-kiadások      | Windows Server 2016     |
-| Hogyan lehet konfigurálni / telepíteni a DSVM-hez?  | Két globális `conda` környezet jön létre: <br /> * A `root` környezet `/anaconda/` a Python 3,7. <br/> * A `python2` környezet `/anaconda/envs/python2` a Python 2,7.       |
-| Mintákra mutató hivatkozások      | A Pythonhoz készült minta Jupyter-jegyzetfüzetek is elérhetők.     |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Két globális `conda` környezet jön létre: <br /> * A `root` környezet `/anaconda/` a Python 3,7. <br/> * A `python2` környezet `/anaconda/envs/python2` a Python 2,7.       |
+| A minták mutató hivatkozások      | A Pythonhoz készült minta Jupyter-jegyzetfüzetek is elérhetők.     |
 | A DSVM kapcsolódó eszközök      | PySpark, R, Julia.      |
 
 > [!NOTE]
@@ -71,8 +71,8 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 | ------------- | ------------- |
 | Támogatott nyelvi verziók | Python 2,7 és 3,5 |
 | Támogatott DSVM-kiadások      | Linux   |
-| Hogyan lehet konfigurálni / telepíteni a DSVM-hez?  | Két globális `conda` környezet jön létre: <br /> * `root` környezet `/anaconda/` a Python 2,7. <br/> * `py35` környezet `/anaconda/envs/py35`a Python 3,5.       |
-| Mintákra mutató hivatkozások      | A Pythonhoz készült minta Jupyter-jegyzetfüzetek is elérhetők.     |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Két globális `conda` környezet jön létre: <br /> * `root` környezet `/anaconda/` a Python 2,7. <br/> * `py35` környezet `/anaconda/envs/py35`a Python 3,5.       |
+| A minták mutató hivatkozások      | A Pythonhoz készült minta Jupyter-jegyzetfüzetek is elérhetők.     |
 | A DSVM kapcsolódó eszközök      | PySpark, R, Julia      |
 ### <a name="how-to-use-and-run-it"></a>Használat és Futtatás    
 
@@ -100,7 +100,7 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
 * Python-csomagok telepítése:
 
-  A DSVM lévő alapértelmezett Python-környezetek az összes felhasználó által olvasható globális környezetek. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, aktiváljon a root vagy a py35 környezetben a `source activate` parancs használatával rendszergazdaként vagy sudo-engedélyekkel rendelkező felhasználóként. Ezután használhat egy csomagkezelő eszközt, például `conda` vagy `pip` a csomagok telepítéséhez vagy frissítéséhez.
+  A dsvm-hez a Python alapértelmezett környezet összes felhasználó által olvasható globális környezetben. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, aktiváljon a root vagy a py35 környezetben a `source activate` parancs használatával rendszergazdaként vagy sudo-engedélyekkel rendelkező felhasználóként. Ezután használhat egy csomagkezelő eszközt, például `conda` vagy `pip` a csomagok telepítéséhez vagy frissítéséhez.
 
 
 ## <a name="r"></a>R
@@ -109,9 +109,9 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 | ------------- | ------------- |
 | Támogatott nyelvi verziók | Microsoft R Open 3. x (100%-kompatibilis a CRAN-R-vel)<br /> Microsoft R Server 9. x Developer Edition (skálázható, nagyvállalati használatra kész R platform)|
 | Támogatott DSVM-kiadások      | Linux, Windows     |
-| Hogyan lehet konfigurálni / telepíteni a DSVM-hez?  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
-| Mintákra mutató hivatkozások      | Az R-hez készült minta Jupyter-jegyzetfüzeteket tartalmazza.     |
-| A DSVM kapcsolódó eszközök      | Sparker, Python, Julia      |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
+| A minták mutató hivatkozások      | Az R-hez készült minta Jupyter-jegyzetfüzeteket tartalmazza.     |
+| A DSVM kapcsolódó eszközök      | SparkR, Python, Julia      |
 ### <a name="how-to-use-and-run-it"></a>Használat és Futtatás    
 
 **Windows**:
@@ -122,7 +122,7 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
 * Használat az IDE-ben:
 
-  A Visual Studio Community Edition vagy a RStudio alkalmazásban telepített RTools for Visual Studio (RTVS) használata. Ezek a Start menüben vagy asztali ikonként érhetők el. 
+  Használat RTools a Visual Studio (RTVS) a Visual Studio Community edition vagy az RStudio telepítése. Ezek a Start menüben vagy asztali ikonként érhetők el. 
 
 * Használat a Jupyter
 
@@ -155,10 +155,10 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
 |    |           |
 | ------------- | ------------- |
-| Támogatott nyelvi verziók | 0,6 |
+| Támogatott nyelvi verziók | a 0.6-os |
 | Támogatott DSVM-kiadások      | Linux, Windows     |
-| Hogyan lehet konfigurálni / telepíteni a DSVM-hez?  | Windows: telepítve `C:\JuliaPro-VERSION`<br /> Linux: telepítve `/opt/JuliaPro-VERSION`    |
-| Mintákra mutató hivatkozások      | A Julia-hez készült minta Jupyter-jegyzetfüzetek beletartoznak.     |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Windows: telepítve `C:\JuliaPro-VERSION`<br /> Linux: telepítve `/opt/JuliaPro-VERSION`    |
+| A minták mutató hivatkozások      | A Julia-hez készült minta Jupyter-jegyzetfüzetek beletartoznak.     |
 | A DSVM kapcsolódó eszközök      | Python, R      |
 ### <a name="how-to-use-and-run-it"></a>Használat és Futtatás    
 

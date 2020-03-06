@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 44d5edd7b5808b6c212a832dd95de7a9cb4b7c08
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978584"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396334"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Biztonság és adatvédelem az Azure Cognitive Search
 
@@ -41,7 +41,7 @@ A titkosítás a teljes indexelési folyamat során kiterjed: a kapcsolatokból,
 
 | Biztonsági réteg | Leírás |
 |----------------|-------------|
-| Titkosítás az átvitel során <br>(HTTPS/SSL/TLS) | Az Azure Cognitive Search a 443-es HTTPS-portot figyeli. A platformon az Azure-szolgáltatásokkal létesített kapcsolatok titkosítva vannak. <br/><br/>Az összes ügyfél és szolgáltatás közötti Azure Cognitive Search-interakció SSL/TLS 1,2-kompatibilis.  Ügyeljen arra, hogy az TLS 1.2-es verzióját használja az SSL-kapcsolatokhoz a szolgáltatáshoz.|
+| Titkosítás átvitel közben <br>(HTTPS/SSL/TLS) | Az Azure Cognitive Search a 443-es HTTPS-portot figyeli. A platformon az Azure-szolgáltatásokkal létesített kapcsolatok titkosítva vannak. <br/><br/>Az összes ügyfél és szolgáltatás közötti Azure Cognitive Search-interakció SSL/TLS 1,2-kompatibilis.  Ügyeljen arra, hogy az TLS 1.2-es verzióját használja az SSL-kapcsolatokhoz a szolgáltatáshoz.|
 | Titkosítás inaktív állapotban <br>Microsoft által felügyelt kulcsok | A titkosítás teljes mértékben az indexelési folyamatba kerül, és nem befolyásolja az indexelési idő – befejezés vagy az index méretének mérését. Automatikusan megtörténik az összes indexelésnél, beleértve az olyan index növekményes frissítését is, amely nem teljesen titkosított (január 2018. előtt jött létre).<br><br>Belsőleg a titkosítás az [Azure Storage Service Encryptionon](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)alapul, és 256 bites AES- [titkosítást](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)használ.<br><br> A titkosítás az Azure Cognitive Search-ban, a Microsoft által belsőleg felügyelt tanúsítványokkal és titkosítási kulcsokkal, valamint univerzálisan alkalmazható. A titkosítás be-és kikapcsolható, kezelheti vagy helyettesítheti a saját kulcsait, vagy megtekintheti a portál titkosítási beállításait vagy programozott módon.<br><br>A inaktív adatok titkosítása 2018. január 24-én jelent meg, és minden szolgáltatási szinten érvényes, beleértve az ingyenes szintet is minden régióban. A teljes titkosításhoz az adott dátum előtt létrehozott indexeket el kell dobni, és újból létre kell hozni a titkosítás megkezdése érdekében. Ellenkező esetben csak a január 24 után hozzáadott új adatforgalom titkosítva van.|
 | Titkosítás inaktív állapotban <br>Felhasználó által kezelt kulcsok | Az ügyfél által felügyelt kulcsokkal történő titkosítás mostantól általánosan elérhető a január 2019-on vagy azt követően létrehozott keresési szolgáltatásokhoz. Ingyenes (megosztott) szolgáltatásokban nem támogatott.<br><br>Az Azure Cognitive Search indexek és a szinonimák leképezései mostantól titkosítva lehetnek a Azure Key Vaultban az ügyfél kulcsok felügyelt kulcsaival. További információ: [titkosítási kulcsok kezelése az Azure Cognitive Searchban](search-security-manage-encryption-keys.md).<br><br>Ez a funkció nem helyettesíti az alapértelmezett titkosítást a nyugalmi állapotban, hanem az alkalmazáson kívül is alkalmazza.<br><br>A funkció engedélyezése növeli az index méretét és csökkenti a lekérdezési teljesítményt. Az eddigi megfigyelések alapján a lekérdezési időpontokban 30%-60%-os növekedés várható, bár a tényleges teljesítmény az index definíciója és a lekérdezések típusaitól függően változhat. A teljesítményre gyakorolt hatás miatt javasoljuk, hogy ezt a funkciót csak olyan indexeken engedélyezze, amelyekhez valóban szükség van.
 
@@ -91,7 +91,7 @@ Alapértelmezés szerint az indexhez való felhasználói hozzáférést a leké
 
 Ha a tartalom részletes, felhasználónkénti vezérlését igényli, biztonsági szűrőket készíthet a lekérdezésekhez, és visszaküldheti az adott biztonsági identitáshoz társított dokumentumokat. Az előre definiált szerepkörök és szerepkör-hozzárendelések helyett az identitás-alapú hozzáférés-vezérlés olyan *szűrőként* van megvalósítva, amely identitások alapján metszi a dokumentumok és tartalmak keresési eredményeit. Az alábbi táblázat két módszert ismertet a jogosulatlan tartalom keresési eredményeinek kivágására.
 
-| Módszer | Leírás |
+| A módszer | Leírás |
 |----------|-------------|
 |[Biztonsági körülvágás identitás-szűrők alapján](search-security-trimming-for-azure-search.md)  | Dokumentálja a felhasználói identitás hozzáférés-vezérlésének megvalósításához szükséges alapszintű munkafolyamatot. Ismerteti a biztonsági azonosítók indexbe való hozzáadását, majd a tiltott tartalom eredményének kivágására szolgáló mező szűrését ismerteti. |
 |[Biztonsági kivágás Azure Active Directory identitások alapján](search-security-trimming-for-azure-search-with-aad.md)  | Ez a cikk az előző cikkben található, amely a Azure Active Directory (HRE) identitások beolvasásának lépéseit ismerteti az Azure Cloud platform egyik [ingyenes szolgáltatásával](https://azure.microsoft.com/free/) . |
@@ -118,7 +118,7 @@ A Microsoft adatközpontok piacvezető fizikai biztonságot biztosítanak, és a
 > [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [A .NET használatának első lépései (bemutatjuk, hogy egy rendszergazdai kulcs használatával hozzon létre egy indexet)](search-create-index-dotnet.md)
 + [Ismerkedés a REST szolgáltatással (a bemutatja, hogyan hozhat létre indexet egy rendszergazdai kulccsal)](search-create-index-rest-api.md)

@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 10/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: f2e31723dc2761007994f652d9d6c28ab3f7d47d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671391"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388203"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>ASP.NET Framework webalkalmazás létrehozása az Azure-ban
 
@@ -83,7 +83,7 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
    | Beállítás | Ajánlott érték | Leírás |
    |-|-|-|
    |App Service-csomag| myAppServicePlan | Az App Service-csomag neve. |
-   | Földrajzi egység | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
+   | Hely | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
    | Méret | Ingyenes | A [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) meghatározza az üzemeltetési funkciókat. |
 
    ![App Service-csomag létrehozása](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)

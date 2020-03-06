@@ -13,11 +13,11 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: eab332f102b9e39981e2d8ed6e84f73fada87a1a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981668"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358570"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storageba vagy onnan az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -49,7 +49,7 @@ Az adatok a következő adattárakból másolhatók az **Azure Blob Storageba**:
 >
 > A másolási tevékenység nem törli a forrás adatait, miután az adatok sikeresen át lettek másolva a célhelyre. Ha a sikeres másolás után törölni szeretné a forrásadatokat, hozzon létre egy [egyéni tevékenységet](data-factory-use-custom-activities.md) az adattörléshez és a folyamatban lévő tevékenység használatához. Példaként tekintse meg a [blob vagy mappa törlésére szolgáló mintát a githubon](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity).
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely az Azure-Blob Storage különböző eszközök/API-k használatával helyezi át az adatátvitelt.
 
 A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Ebből a cikkből [](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage) megtudhatja, hogyan hozhat létre folyamatokat egy Azure Blob Storage helyről egy másik Azure Blob Storage helyre történő adatmásoláshoz. Az adatok Azure-Blob Storageból Azure SQL Databaseba másolásához szükséges folyamat létrehozásával kapcsolatos oktatóanyagért lásd [: oktatóanyag: folyamat létrehozása a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md).
@@ -81,13 +81,13 @@ A adat-előállító a következő CLS-kompatibilis .NET-alapú típusú érték
 
 A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről, formátumáról stb. A **AzureBlob** adatkészlet típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| folderPath |A tároló és a mappa elérési útja a blob Storage-ban. Példa: myblobcontainer\myblobfolder\ |Igen |
+| folderPath |A tároló és a blob Storage-mappa elérési útja. Példa: myblobcontainer\myblobfolder\ |Igen |
 | fileName |A blob neve. a fájlnév nem kötelező és megkülönbözteti a kis-és nagybetűket.<br/><br/>Ha fájlnevet ad meg, a tevékenység (beleértve a másolást is) az adott blobon működik.<br/><br/>Ha nincs megadva a fájlnév, a másolás a folderPath található összes blobot tartalmazza a bemeneti adatkészlethez.<br/><br/>Ha a **fájlnév** nincs megadva egy kimeneti adatkészlethez, és a **preserveHierarchy** nincs megadva a tevékenység-fogadóban, a generált fájl neve a következő formátumú lesz: `Data.<Guid>.txt` (például:: adat. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt |Nem |
 | partitionedBy |a partitionedBy egy nem kötelező tulajdonság. Ezzel a beállítással megadhatja a dinamikus folderPath és a fájlnevet az idősorozat-adatsorokhoz. A folderPath például minden egyes órányi adatértékhez paraméterként lehet megadni. A részleteket és példákat a [partitionedBy tulajdonság használata című szakaszban](#using-partitionedby-property) találja. |Nem |
-| formátum | A következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a Format értékre a következő értékek egyikére. További információkért lásd: [Szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), JSON- [Formátum](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ork-formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és a [parketta formátuma](data-factory-supported-file-and-compression-formats.md#parquet-format) című rész. <br><br> Ha **fájlokat szeretne másolni** a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt mind a bemeneti, mind a kimeneti adatkészlet-definíciókban. |Nem |
-| tömörítés | Adja meg az adattömörítés típusát és szintjét. A támogatott típusok a következők: **gzip**, **deflate**, **BZip2**és **ZipDeflate**. A támogatott szintek a következők: **optimális** és **leggyorsabb**. További információ: [fájl-és Tömörítési formátumok Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
+| format | A következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a Format értékre a következő értékek egyikére. További információkért lásd: [Szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), JSON- [Formátum](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ork-formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és a [parketta formátuma](data-factory-supported-file-and-compression-formats.md#parquet-format) című rész. <br><br> Ha **fájlokat szeretne másolni** a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt mind a bemeneti, mind a kimeneti adatkészlet-definíciókban. |Nem |
+| compression | Adja meg a típus és az adatok tömörítési szintje. A támogatott típusok a következők: **gzip**, **deflate**, **BZip2**és **ZipDeflate**. A támogatott szintek a következők: **optimális** és **leggyorsabb**. További információ: [fájl-és Tömörítési formátumok Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
 
 ### <a name="using-partitionedby-property"></a>A partitionedBy tulajdonság használata
 Ahogy azt az előző szakaszban is említettük, megadhat egy dinamikus folderPath és fájlnevet az idősorozat-adatokhoz a **partitionedBy** tulajdonsággal, [Data Factory függvénnyel és a rendszerváltozókkal](data-factory-functions-variables.md).
@@ -127,15 +127,15 @@ A tevékenységek definiálásához elérhető & Tulajdonságok teljes listájá
 
 A **BlobSource** a következő tulajdonságokat támogatja a **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| rekurzív |Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az alárendelt mappákból, vagy csak a megadott mappából. |True (alapértelmezett érték), hamis |Nem |
+| recursive |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákban vagy csak a megadott mappába. |True (alapértelmezett érték), hamis |Nem |
 
 A **BlobSink** a következő tulajdonságokat támogatja **typeProperties** szakasz:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| copyBehavior |Meghatározza a másolási viselkedést a forrás BlobSource vagy fájlrendszerének használatakor. |<b>PreserveHierarchy</b>: megőrzi a fájl hierarchiáját a célmappában. A forrásfájl a forrás mappájához relatív elérési útja megegyezik a célfájl relatív elérési útjával.<br/><br/><b>FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén található. A célfájl automatikusan generált névvel rendelkezik. <br/><br/><b>MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl/blob neve, az egyesített fájl neve a megadott név lesz. Ellenkező esetben az automatikusan generált fájlnév lenne. |Nem |
+| copyBehavior |Meghatározza a másolási viselkedést a forrás BlobSource vagy fájlrendszerének használatakor. |<b>PreserveHierarchy</b>: megőrzi a fájl hierarchiáját a célmappában. A forrásmappa forrás-fájl elérési útja megegyezik a célmappában a célfájl elérési útja.<br/><br/><b>FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén található. A cél fájlok automatikusan létrehozott nevet adni. <br/><br/><b>MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha a fájl/Blob neve van megadva, az egyesített fájl neve lesz a megadott név; Ellenkező esetben lenne automatikusan létrehozott fájl nevét. |Nem |
 
 A **BlobSource** ezt a két tulajdonságot is támogatja a visszamenőleges kompatibilitás érdekében.
 
@@ -158,17 +158,17 @@ Az alábbi táblázat útmutatást nyújt az új adatkészlet tulajdonságainak 
 
 A tulajdonságok részletes ismertetését lásd: [Szövegformátum megadása](data-factory-supported-file-and-compression-formats.md#text-format) szakasz.
 
-### <a name="recursive-and-copybehavior-examples"></a>rekurzív és copyBehavior példák
-Ez a szakasz a rekurzív és copyBehavior értékek különböző kombinációinak másolási műveletének eredményét írja le.
+### <a name="recursive-and-copybehavior-examples"></a>a rekurzív és copyBehavior példák
+Ez a szakasz ismerteti az eredményül kapott viselkedéstől a másolási művelet rekurzív és copyBehavior értékek különböző kombinációihoz.
 
-| rekurzív | copyBehavior | Eredményül kapott viselkedés |
+| recursive | copyBehavior | Eredményül kapott viselkedés |
 | --- | --- | --- |
-| igaz |preserveHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 ugyanazzal a struktúrával jön létre, mint a forrás<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| igaz |flattenHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan generált neve a file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan generált neve a Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan generált neve a fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan generált neve a File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan generált neve a File5 |
-| igaz |mergeFiles |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1 + Fájl2 + fájl3 + File4 + file 5 tartalom egyetlen fájlba van egyesítve automatikusan létrehozott fájlnévvel |
-| false |preserveHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A célmappa Mappa1 a következő szerkezettel jön létre<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/><br/><br/>A fájl3, a File4 és a File5 Subfolder1 nem vesznek fel. |
-| false |flattenHierarchy |A Mappa1 a következő szerkezettel rendelkezik:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A célmappa Mappa1 a következő szerkezettel jön létre<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan generált neve a file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan generált neve a Fájl2<br/><br/><br/>A fájl3, a File4 és a File5 Subfolder1 nem vesznek fel. |
-| false |mergeFiles |A Mappa1 a következő szerkezettel rendelkezik:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A célmappa Mappa1 a következő szerkezettel jön létre<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1 + Fájl2 tartalma egyetlen fájlba van egyesítve, amely automatikusan generált fájlnevet tartalmaz. a file1 automatikusan generált neve<br/><br/>A fájl3, a File4 és a File5 Subfolder1 nem vesznek fel. |
+| true |preserveHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 ugyanazzal a struktúrával jön létre, mint a forrás<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
+| true |flattenHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan generált neve a file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan generált neve a Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan generált neve a fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan generált neve a File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan generált neve a File5 |
+| true |mergeFiles |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1 + Fájl2 + fájl3 + File4 + file 5 tartalom egyetlen fájlba van egyesítve automatikusan létrehozott fájlnévvel |
+| false |preserveHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 a következő szerkezettel jön létre<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/><br/><br/>Fájl3, File4 és File5 Subfolder1 a rendszer nem követi. |
+| false |flattenHierarchy |A Mappa1 a következő szerkezettel rendelkezik:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 a következő szerkezettel jön létre<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan generált neve a file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan generált neve a Fájl2<br/><br/><br/>Fájl3, File4 és File5 Subfolder1 a rendszer nem követi. |
+| false |mergeFiles |A Mappa1 a következő szerkezettel rendelkezik:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 a következő szerkezettel jön létre<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;file1 + Fájl2 tartalma egyetlen fájlba van egyesítve, amely automatikusan generált fájlnevet tartalmaz. Automatikusan létrehozott nevet a file1 kiszolgálón<br/><br/>Fájl3, File4 és File5 Subfolder1 a rendszer nem követi. |
 
 ## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>Forgatókönyv: másolási varázsló használata az adatok Blob Storageba való másolásához
 Nézzük meg, hogyan másolhat gyorsan egy Azure Blob Storage-ba vagy az adatokba. Ebben az útmutatóban a forrás és a cél adattárolók a következő típusúak: Azure Blob Storage. Az ebben a forgatókönyvben szereplő folyamat egy mappából egy másik mappába másolja az adott blob-tárolóban lévő adatok adatait. Ez a bemutató szándékosan egyszerűvé teszi a beállítások vagy tulajdonságok megjelenítését a forrásként vagy fogadóként való Blob Storage használatakor.
@@ -184,7 +184,7 @@ Nézzük meg, hogyan másolhat gyorsan egy Azure Blob Storage-ba vagy az adatokb
     ```
 
 ### <a name="create-the-data-factory"></a>Az adatelőállító létrehozása
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Kattintson az **erőforrás létrehozása** elemre a bal felső sarokban, kattintson az **intelligencia és Analitika**elemre, majd a **Data Factory**elemre.
 3. Az **új adatgyár** panelen:  
     1. Adja meg a ADFBlobConnectorDF **nevet**. Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja: `*Data factory name “ADFBlobConnectorDF” is not available`, módosítsa az adatgyár nevét (például yournameADFBlobConnectorDF), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.
@@ -192,7 +192,7 @@ Nézzük meg, hogyan másolhat gyorsan egy Azure Blob Storage-ba vagy az adatokb
     3. Az erőforráscsoport területen válassza a **meglévő használata** lehetőséget egy meglévő erőforráscsoport kiválasztásához (vagy) válassza az **új létrehozása** lehetőséget az erőforráscsoport nevének megadásához.
     4. Válassza ki a Data Factory **helyét**.
     5. A panel alján jelölje be a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzetet.
-    6. Kattintson a **Create** (Létrehozás) gombra.
+    6. Kattintson a  **Create** (Létrehozás) gombra.
 3. A létrehozás befejezését követően megjelenik a **Data Factory** panel a következő képen látható módon: ![a (z) adatok gyári kezdőlapja](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>Másolás varázsló
@@ -265,7 +265,7 @@ Nézzük meg, hogyan másolhat gyorsan egy Azure Blob Storage-ba vagy az adatokb
     ![másolási eszköz – teljesítmény beállítások](media/data-factory-azure-blob-connector/copy-performance-settings.png)
 14. Az **Összefoglalás** lapon tekintse át az összes beállítást (a feladat tulajdonságait, a forrás és a cél beállításait és a másolási beállításokat), majd kattintson a **tovább**gombra.
     ![másolási eszköz – összefoglalás lap](media/data-factory-azure-blob-connector/copy-tool-summary-page.png)
-15. Tekintse át a **Summary** (Összegzés) oldalon szereplő információkat, majd kattintson a **Finish** (Befejezés) gombra. A varázsló létrehoz két társított szolgáltatást, két adathalmazt (bemeneti és kimeneti), valamint egy folyamatot a data factoryban (ahonnét elindította a Másolás varázslót).
+15. Tekintse át a **Summary**  (Összegzés) oldalon szereplő információkat, majd kattintson a **Finish** (Befejezés) gombra. A varázsló létrehoz két társított szolgáltatást, két adathalmazt (bemeneti és kimeneti), valamint egy folyamatot a data factoryban (ahonnét elindította a Másolás varázslót).
     ![másolási eszköz – üzembe helyezési oldal](media/data-factory-azure-blob-connector/copy-tool-deployment-page.png)
 
 ### <a name="monitor-the-pipeline-copy-task"></a>A folyamat figyelése (másolási feladat)
@@ -334,7 +334,7 @@ Két társított szolgáltatásnak kell megjelennie. Egyet a forráshoz és a m�
 
 Az Azure Storage társított szolgáltatásával kapcsolatos további információkért lásd a [társított szolgáltatás tulajdonságai](#linked-service-properties) című szakaszt.
 
-#### <a name="datasets"></a>Adathalmazok
+#### <a name="datasets"></a>Adatkészletek
 Két adatkészlet létezik: egy bemeneti adatkészletet és egy kimeneti adatkészletet. Az adatkészlet típusa mindkettő esetén a **AzureBlob** értékre van állítva.
 
 A bemeneti adatkészlet a **adfblobconnector** blob-tárolójának **bemeneti** mappájára mutat. A **külső** tulajdonság értéke TRUE ( **igaz** ) értékre van állítva ennél az adatkészletnél, mert a folyamat nem állítja be az adatokat a másolási tevékenységgel, amely bemenetként veszi át ezt az adatkészletet.

@@ -9,11 +9,11 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: f2f6be1022a7100a23f49534f2c18fc951d56284
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368718"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389084"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek
 
@@ -140,7 +140,7 @@ Ebben a szakaszban a következő forgatókönyveket mutatjuk be a Azure Portal �
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>GPv2- vagy Blob Storage-fiók alapértelmezett hozzáférési szintjének módosítása
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. A Azure Portal keresse meg és válassza ki az **összes erőforrás**elemet.
@@ -155,7 +155,7 @@ Ebben a szakaszban a következő forgatókönyveket mutatjuk be a Azure Portal �
 
 ![Storage-fiók szintjeinek módosítása](media/storage-tiers/account-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Az alábbi PowerShell-parancsfájl használatával módosíthatja a fiók szintjét. Az `$rgName` változót inicializálni kell az erőforráscsoport nevével. A `$accountName` változót inicializálni kell a Storage-fiók nevével. 
 ```powershell
 #Initialize the following with your resource group and storage account names
@@ -168,7 +168,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 ---
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>BLOB szintjeinek módosítása GPv2-vagy blob Storage-fiókban
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. A Azure Portal keresse meg és válassza ki az **összes erőforrás**elemet.
@@ -185,7 +185,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ![Storage-fiók szintjeinek módosítása](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 A blob-rétegek módosításához a következő PowerShell-parancsfájl használható. Az `$rgName` változót inicializálni kell az erőforráscsoport nevével. A `$accountName` változót inicializálni kell a Storage-fiók nevével. A `$containerName` változót inicializálni kell a tároló nevével. A `$blobName` változót inicializálni kell a blob nevével. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
