@@ -16,11 +16,11 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900853"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378293"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Licencek kiosztása a felhasználóknak csoporttagság szerint Azure Active Directory
 
@@ -61,7 +61,7 @@ Ha licenceket rendel egy csoporthoz, az Azure AD feldolgozza a csoport összes m
 
 1. Válassza **Azure Active Directory** > **csoportok**lehetőséget. Válassza ki azt a csoportot, amelyhez a licencek hozzá lettek rendelve.
 
-1. A csoport lapon válassza a **licencek**lehetőséget. Ezzel gyorsan megerősítheti, hogy a licencek teljes körűen vannak-e hozzárendelve a felhasználókhoz, és hogy vannak-e hibák, amelyekre szüksége van. A következő információk érhetők el:
+1. A csoport lapon válassza a **licencek**lehetőséget. Ezzel gyorsan megerősítheti, hogy a licencek teljes körűen vannak-e hozzárendelve a felhasználókhoz, és hogy vannak-e hibák, amelyekre szüksége van. A következő információ áll rendelkezésre:
 
    - A csoporthoz jelenleg hozzárendelt szolgáltatási licencek. Válasszon egy bejegyzést az engedélyezett szolgáltatások megjelenítéséhez, illetve a módosítások elvégzéséhez.
 

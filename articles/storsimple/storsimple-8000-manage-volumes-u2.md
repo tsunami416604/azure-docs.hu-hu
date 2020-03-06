@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278846"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381860"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>A kötetek kezelése a StorSimple Eszközkezelő szolgáltatásával (3. frissítés vagy újabb)
 
@@ -112,7 +112,7 @@ A StorSimple 8000 Series-eszköz üzembe helyezése során [létrehozott egy kö
       
        Ha a 8100-as eszközön kioszt egy 8,5 TB-os (vagyis a legnagyobb megengedett méretű) gyors helyi kötetet, azzal elfoglalja az összes rendelkezésre álló helyi területet az eszközön. Innentől kezdve nem hozhat létre további rétegzett köteteket, mivel nincs helyi terület az eszközön, amely üzemeltethetné a rétegzett kötet munkakészletét. A meglévő rétegzett kötetek is hatással vannak a rendelkezésre álló területre. Ha például egy 8100-as eszközhöz már tartozik körülbelül 106 TB rétegzett kötet, akkor csak 4 TB érhető el a gyors helyi kötetekhez.
 
-    6. Kattintson a nyílra a **Csatlakoztatott gazdagépek** mezőben. A **csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR-t, vagy adjon hozzá egy új ACR-t. Ha új ACR-t választ, akkor adjon meg egy **nevet** az ACR számára, adja meg a Windows-gazdagép **iSCSI minősített nevét** (IQN). Ha nem rendelkezik a IQN, ugorjon a Windows Server-gazdagép IQN beszerzése című részhez. Kattintson a **Create** (Létrehozás) gombra. Létrejön egy kötet a megadott beállításokkal.
+    6. Kattintson a nyílra a **Csatlakoztatott gazdagépek** mezőben. A **csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR-t, vagy adjon hozzá egy új ACR-t. Ha új ACR-t választ, akkor adjon meg egy **nevet** az ACR számára, adja meg a Windows-gazdagép **iSCSI minősített nevét** (IQN). Ha nem rendelkezik a IQN, ugorjon a Windows Server-gazdagép IQN beszerzése című részhez. Kattintson a  **Create** (Létrehozás) gombra. Létrejön egy kötet a megadott beállításokkal.
 
         ![Kattintson a Létrehozás gombra](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
@@ -157,7 +157,7 @@ Módosítsa a kötetet, ha ki kell bontania, vagy módosítania kell a kötetet 
 
        ![A kötet offline állapotba helyezésének következményeinek áttekintése](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-5. Kattintson a **Mentés** gombra a módosítások mentéséhez. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. A Azure Portal megjeleníti a kötet frissítési üzenetét. Ekkor megjelenik egy sikeres üzenet, ha a kötet sikeresen frissítve lett.
+5. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. A Azure Portal megjeleníti a kötet frissítési üzenetét. Ekkor megjelenik egy sikeres üzenet, ha a kötet sikeresen frissítve lett.
 
     ![A kötet offline állapotba helyezésének következményeinek áttekintése](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
@@ -317,7 +317,7 @@ A kötet figyelésének engedélyezéséhez vagy letiltásához hajtsa végre az
 
 4. Kattintson a **Mentés** gombra, és amikor a rendszer megerősítést kér, kattintson az **Igen**gombra. A Azure Portal megjelenít egy értesítést a kötet frissítéséről, majd egy sikeres üzenetről, miután a kötet frissítése sikeresen megtörtént.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók a [StorSimple-kötetek klónozásáról](storsimple-8000-clone-volume-u2.md).
 * Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).
