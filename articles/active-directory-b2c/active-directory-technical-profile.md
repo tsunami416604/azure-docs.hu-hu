@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 06c9e79a68540cb10557b0951b743bf841963057
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2c36a2c47605e7e672996a4a33734c9281dad042
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190262"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78397831"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -28,8 +28,8 @@ A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt a Azure Active D
 
 A **protokoll** elem **Name** attribútumát `Proprietary`értékre kell állítani. A **kezelő** attribútumnak tartalmaznia kell a protokollkezelő szerelvény `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`teljes nevét.
 
-Az Azure AD minden technikai profilja tartalmazza a **HRE-közös** technikai profilt. A következő műszaki profilok nem határozzák meg a protokollt, mert a protokoll a **HRE-közös** technikai profilban van konfigurálva:
-
+A következő [Egyéni szabályzat](custom-policy-get-started.md#custom-policy-starter-pack) -előindítási csomag Azure ad technikai profiljai tartalmazzák a **HRE-közös** technikai profilt. Az Azure AD technikai profiljai nem határozzák meg a protokollt, mert a protokoll a **HRE-közös** technikai profilban van konfigurálva:
+ 
 - **HRE-UserReadUsingAlternativeSecurityId** és **HRE-UserReadUsingAlternativeSecurityId – nem sikerült** – keressen egy közösségi fiókot a címtárban.
 - **HRE-UserWriteUsingAlternativeSecurityId** – új közösségi fiók létrehozása.
 - **HRE-UserReadUsingEmailAddress** – helyi fiók megkeresése a címtárban.
@@ -121,7 +121,7 @@ A jogcím neve az Azure AD attribútum neve, kivéve, ha meg van adva a **Partne
 
 ## <a name="azure-ad-technical-provider-operations"></a>Azure AD technikai szolgáltatói műveletek
 
-### <a name="read"></a>Olvassa el
+### <a name="read"></a>Olvasás
 
 Az **olvasási** művelet egyetlen felhasználói fiók adatait olvassa be. A felhasználói adatok olvasásához bemeneti jogcímként meg kell adnia egy kulcsot, például **objectId**, **userPrincipalName**, **signInNames** (bármilyen típusú, Felhasználónév és e-mail-alapú fiók) vagy **alternativeSecurityId**.
 
@@ -253,7 +253,7 @@ A következő technikai profil töröl egy közösségi felhasználói fiókot a
 ```
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Művelet | Igen | A végrehajtandó művelet. Lehetséges értékek: `Read`, `Write`, `DeleteClaims`vagy `DeleteClaimsPrincipal`. |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Nem | Hiba, ha a felhasználói objektum nem létezik a címtárban. Lehetséges értékek: `true` vagy `false`. |

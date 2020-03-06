@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 09002a8c0999dc137ca3386ca7392a566d323e8a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b8ddeda2c435a52efd14f06acb3c1a8bb94bc45e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196059"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381854"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a .NET-hez
 
@@ -114,7 +114,7 @@ Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására van 
 
 Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
-![BLOB Storage-architektúra ábrája](./media/storage-blob-introduction/blob1.png)
+![BLOB Storage-architektúra ábrája](./media/storage-blobs-introduction/blob1.png)
 
 Használja az alábbi .NET-osztályokat a következő erőforrásokkal való interakcióhoz:
 
@@ -303,7 +303,7 @@ A tisztítási folyamat megkezdése előtt tekintse *meg a két fájl adatmappá
 
 A fájlok ellenőrzése után nyomja le az **ENTER** billentyűt a tesztoldal törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megismerkedett a blobok a .NET használatával való fel- és letöltésével, valamint kilistázásával.
 

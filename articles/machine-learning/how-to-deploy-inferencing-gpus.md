@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 10/25/2019
-ms.openlocfilehash: 39fc57a6da20549447f782399e9571f7a0ffeea7
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/05/2020
+ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122525"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398339"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Mély tanulási modell üzembe helyezése a GPU-val való következtetéshez
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,7 +47,7 @@ A következtetés vagy a modell pontozása az a fázis, amelyben az üzembe hely
 
 * Általános ismeretek a [modellek üzembe helyezésének módjáról és helyéről](how-to-deploy-and-where.md).
 
-## <a name="connect-to-your-workspace"></a>Csatlakozás a munkaterülethez
+## <a name="connect-to-your-workspace"></a>Kapcsolódás a munkaterülethez
 
 Egy meglévő munkaterülethez való kapcsolódáshoz használja a következő kódot:
 
@@ -190,7 +190,7 @@ inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 További információ a környezetekről: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md).
 További információkért tekintse meg a [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)dokumentációját.
 
-## <a name="deploy-the-model"></a>A modell rendszerbe állítása
+## <a name="deploy-the-model"></a>A modell üzembe helyezése
 
 Telepítse a modellt az AK-fürtre, és várja meg, amíg létrehozza a szolgáltatást.
 
@@ -275,7 +275,7 @@ print("prediction:", resp.text)
 
 Az ügyfélalkalmazások létrehozásával kapcsolatos további információkért lásd: [ügyfél létrehozása a telepített webszolgáltatás](how-to-consume-web-service.md)használatára.
 
-## <a name="clean-up-the-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-the-resources"></a>Az erőforrások tisztítása
 
 Ha az AK-fürtöt kifejezetten ehhez a példához hozta létre, törölje az erőforrásokat, miután elkészült.
 

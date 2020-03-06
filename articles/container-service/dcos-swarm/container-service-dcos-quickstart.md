@@ -7,22 +7,22 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9efedd5b619a2a3bd592019fea3ca48b7244ca10
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 6274e24bae2e2a6eade0122fe244652eb29cacf9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278499"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399229"
 ---
 # <a name="deprecated-deploy-a-dcos-cluster"></a>ELAVULT DC/OS-fürt üzembe helyezése
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-A DC/OS elosztott platformot nyújt a modern és tárolóalapú alkalmazások futtatásához. Az Azure Container Service használatával egyszerűen és gyorsan építhető ki üzemkész DC/OS fürt. Ez a rövid útmutató a DC/OS fürt üzembe helyezéséhez és az alapvető számítási feladatok futtatásához szükséges alaplépéseket részletezi.
+A DC/OS elosztott platformot nyújt a modern és tárolóalapú alkalmazások futtatásához. Az Azure Container Service használatával egyszerűen és gyorsan építhető ki üzemkész DC/OS fürt. Ez a rövid útmutató részletesen ismerteti a DC/OS-fürt üzembe helyezéséhez és az alapvető számítási feladatok futtatásához szükséges alapszintű lépéseket.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne, tekintse meg [az Azure CLI telepítését ismertető]( /cli/azure/install-azure-cli) szakaszt. 
+Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba 
 
@@ -32,7 +32,7 @@ Jelentkezzen be az Azure-előfizetésbe az [az login](/cli/azure/reference-index
 az login
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
@@ -128,19 +128,19 @@ Az ACS DC/OS fürtök alapértelmezett ütemezési mechanizmusa a Marathon. A Ma
 
 Futtassa a következő parancsot az alkalmazás DC/OS fürttel való futásának ütemezéséhez.
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 Az alkalmazás üzembe helyezési állapotának megtekintéséhez futtassa a következő parancsot.
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 Amikor a **WAITING** (Várakozás) oszlop értéke *True* (Igaz) értékről *False* (Hamis) értékre vált, az alkalmazás üzembe helyezése befejeződött.
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/1    ---       ---      False      DOCKER   None
 ```
@@ -165,7 +165,7 @@ az group delete --name myResourceGroup --no-wait
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban DC/OS fürtöt helyezett üzembe, és egyszerű Docker-tárolót futtatott a fürtön. Az Azure Container Service-ről további információt az ACS oktatóanyagokban talál.
+Ebben a rövid útmutatóban üzembe helyezett egy DC/OS fürtöt, és futtatott egy egyszerű Docker-tárolót a fürtön. Az Azure Container Service-ről további információt az ACS oktatóanyagokban talál.
 
 > [!div class="nextstepaction"]
 > [ACS DC/OS fürt kezelése](container-service-dcos-manage-tutorial.md)

@@ -14,12 +14,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5400ede4f3afd9f94d7380c6dfd55d8aa45d08ca
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3a911db36fd03ebcb5e0fc53d4d7f36d68648249
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834246"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399087"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Útmutató: alkalmazás-Szerepkörök hozzáadása az alkalmazáshoz és fogadása a jogkivonatban
 
@@ -35,7 +35,7 @@ Ezek az alkalmazási szerepkörök az alkalmazás regisztrációs jegyzékfájlj
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Alkalmazás szerepköreinek deklarálása Azure Portal használatával
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán.
 1. A **Kedvencek** vagy az **összes könyvtár** listában válassza ki azt a Active Directory bérlőt, ahová regisztrálni kívánja az alkalmazást.
 1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
@@ -44,10 +44,10 @@ Ezek az alkalmazási szerepkörök az alkalmazás regisztrációs jegyzékfájlj
 1. Szerkessze az alkalmazás-jegyzékfájlt úgy, hogy megkeresi a `appRoles`-beállítást, és hozzáadja az összes alkalmazás-szerepkört.
 
      > [!NOTE]
-     > A jegyzékfájlban szereplő összes alkalmazás-szerepkör definíciójának eltérő érvényes GUID-azonosítóval kell rendelkeznie az `id` tulajdonság jegyzékfájljának kontextusában.    
-     > 
+     > A jegyzékfájlban szereplő összes alkalmazás-szerepkör definíciójának eltérő érvényes GUID-azonosítóval kell rendelkeznie az `id` tulajdonság jegyzékfájljának kontextusában.
+     >
      > Az egyes alkalmazás-szerepkörök definíciójának `value` tulajdonságának pontosan egyeznie kell az alkalmazás kódjában használt karakterláncokkal. A `value` tulajdonság nem tartalmazhat szóközöket. Ha igen, hibaüzenetet kap a jegyzékfájl mentésekor.
-     
+
 1. Mentse a jegyzékfájlt.
 
 ### <a name="examples"></a>Példák
@@ -122,7 +122,7 @@ Miután hozzáadta az alkalmazás-szerepköröket az alkalmazáshoz, hozzárende
 
 ## <a name="more-information"></a>További információ
 
-- [Engedélyezés egy webalkalmazásban az Azure AD-alkalmazás szerepköreinek &amp; szerepkör-jogcímek (minta) használatával](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims)
+- [Engedélyezés hozzáadása az alkalmazás szerepköreinek & a szerepkörök jogcímeinek használata egy ASP.NET Core webalkalmazáshoz](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Biztonsági csoportok és alkalmazás-szerepkörök használata az alkalmazásokban (videó)](https://www.youtube.com/watch?v=V8VUPixLSiM)
 - [Azure Active Directory, a Group jogcímek és az alkalmazás szerepköreivel](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory alkalmazás jegyzékfájlja](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)

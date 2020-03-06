@@ -17,16 +17,16 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f25f13c60a60e1a397e4c63443ee786a9acdf6d1
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273795"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399306"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>A Azure Active Directory jelentési API elérésének előfeltételei
 
-Az [Azure Active Directory (Azure AD) Reporting API-k](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) REST-alapú API-kon keresztül biztosítják az adatok szoftveres elérését. Ezeket az API-kat programozási nyelvekből és eszközökből hívhatja.
+Az [Azure Active Directory (Azure AD) Reporting API-k](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api) REST-alapú API-kon keresztül biztosítják az adatok szoftveres elérését. Ezeket az API-kat programozási nyelvekből és eszközökből hívhatja.
 
 A jelentéskészítési API a [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) használatával engedélyezi a hozzáférést a webes API-khoz.
 
@@ -191,7 +191,6 @@ Ezekre az értékekre szüksége lesz a jelentéskészítési API-hoz való hív
 
 Ez a szakasz azokat a gyakori hibaüzeneteket sorolja fel, amelyekkel a Microsoft Graph API-val és a megoldásuk lépéseivel férhet hozzá a tevékenységek jelentéseihez.
 
-
 ### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>Hiba: nem sikerült beolvasni a felhasználói szerepköröket a Microsoft Graph
 
  Jelentkezzen be a fiókjába a Graph Explorer felhasználói felületén található bejelentkezési gombok használatával, hogy elkerülje a hiba beolvasását a Graph Explorer használatával. 
@@ -204,7 +203,6 @@ Ha ezt a hibaüzenetet akkor futtatja, amikor a Graph Explorer használatával p
 
 ![Engedélyek módosítása felhasználói felület](./media/troubleshoot-graph-api/modify-permissions.png)
 
-
 ### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>Hiba: a bérlő nem B2C, vagy a bérlő nem rendelkezik prémium szintű licenccel
 
 A bejelentkezési jelentések eléréséhez Azure Active Directory Premium 1 (P1) licenc szükséges. Ha ez a hibaüzenet jelenik meg a bejelentkezések elérésekor, győződjön meg arról, hogy a bérlője Azure AD P1 licenccel rendelkezik.
@@ -215,7 +213,7 @@ A bejelentkezési jelentések eléréséhez Azure Active Directory Premium 1 (P1
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>Hiba: az alkalmazásból hiányzik a "HRE olvasása" engedély. 
 
-### <a name="error-application-missing-microsoft-api-read-all-audit-log-data-permission"></a>Hiba: az alkalmazásból hiányzik a Microsoft API "az összes naplózási napló adatszolgáltatásának olvasása" engedély
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>Hiba: az alkalmazás hiányzik Microsoft Graph API "a naplózási napló összes adatszolgáltatásának olvasása" engedély
 
 Az előfeltételekben ismertetett lépéseket követve [férhet hozzá a Azure Active Directory jelentési API](howto-configure-prerequisites-for-reporting-api.md) -hoz annak biztosításához, hogy az alkalmazás a megfelelő engedélyekkel fusson. 
 

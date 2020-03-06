@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 10/25/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1645d2848c6d4b852a81042c4db8a0f6e90fd8fd
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945801"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399684"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Az Azure Kubernetes Service és a Azure Container Instances üzemelő példány hibaelhárítása Azure Machine Learning
 
@@ -26,7 +26,7 @@ Azure Machine Learning-modell telepítésekor a rendszer számos feladatot hajt 
 
 Az ajánlott és a legmodernebb módszer a modell üzembe helyezéséhez a [Model. Deploy () API-](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) t használja egy [környezeti](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) objektum használatával bemeneti paraméterként. Ebben az esetben a szolgáltatás létrehoz egy alap Docker-rendszerképet az üzembe helyezési fázisban, és egy hívásban csatlakoztatja a szükséges modelleket. Az alapszintű üzembe helyezési feladatok a következők:
 
-1. Regisztrálja a modellt a munkaterület-modell beállításjegyzékében.
+1. A munkaterület-modell beállításjegyzék regisztrálja a modellt.
 
 2. Következtetési konfiguráció meghatározása:
     1. Hozzon létre egy [környezeti](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) objektumot a környezeti YAML fájlban megadott függőségek alapján, vagy használja a beszerzett környezetek egyikét.
@@ -38,7 +38,7 @@ További információ a folyamatról a [modellkezelés](concept-model-management
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+* Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 * A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 * Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
 * A [Azure Machine learning CLI-bővítménye](reference-azure-machine-learning-cli.md).
@@ -46,9 +46,9 @@ További információ a folyamatról a [modellkezelés](concept-model-management
 
     A Docker-telepítés ellenőrzéséhez használja a parancsot `docker run hello-world` egy terminálról vagy parancssorból. A Docker telepítésével vagy a Docker-hibák elhárításával kapcsolatos információkért tekintse meg a [Docker dokumentációját](https://docs.docker.com/).
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-Ha bármilyen problémába ütközik, az első lépés az, hogy az üzembe helyezési feladatot (előző Leírás) a probléma elkülönítése érdekében egyedi lépésekbe bontsa.
+Ha bármilyen problémát tapasztal,-e az első teendő a szolgáltatástelepítési feladat felosztania (előző ismertetett) az egyes lépéseket a probléma.
 
 Feltételezve, hogy az új/ajánlott telepítési módszert használja a [Model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API-val egy [környezeti](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) objektummal bemeneti paraméterként, a kód három fő lépésből bontható:
 
@@ -93,7 +93,7 @@ Feltételezve, hogy az új/ajánlott telepítési módszert használja a [Model.
     aci_service.wait_for_deployment(show_output=True)
     ```
 
-Miután megszakította az üzembe helyezés folyamatát az egyes feladatokra, megvizsgáljuk a leggyakoribb hibákat.
+Miután rendelkezik, az üzembe helyezési folyamat az egyes tevékenységek lebontva, hogy megtekinthessük leggyakoribb hibák.
 
 ## <a name="debug-locally"></a>Helyi hibakeresés
 
@@ -171,7 +171,7 @@ A szolgáltatás törléséhez használja a [delete ()](https://docs.microsoft.c
 
 ### <a id="dockerlog"></a>A Docker-napló ellenőrzése
 
-A Service objektumból kinyomtathatja a Docker-motor részletes naplófájljait. Megtekintheti az ACI-, AK-és helyi központi telepítések naplóját. Az alábbi példa bemutatja, hogyan lehet kinyomtatni a naplókat.
+Kinyomtathatja a részletes Docker engine naplóüzenetek a szolgáltatás-objektumból. Megtekintheti az ACI-, AK-és helyi központi telepítések naplóját. Az alábbi példa bemutatja, hogyan lehet kinyomtatni a naplókat.
 
 ```python
 # if you already have the service object handy
@@ -181,15 +181,15 @@ print(service.get_logs())
 print(ws.webservices['mysvc'].get_logs())
 ```
 
-## <a name="service-launch-fails"></a>A szolgáltatás indítása sikertelen
+## <a name="service-launch-fails"></a>Szolgáltatás indítása sikertelen lesz.
 
 A rendszerkép sikeres felépítése után a rendszer megkísérli a tároló indítását a telepítési konfiguráció alapján. A tároló indítási folyamatának részeként a rendszer meghívja a pontozási parancsfájl `init()` függvényét. Ha a `init()` függvény nem észlelt kivételeket tartalmaz, előfordulhat, hogy a **CrashLoopBackOff** hiba jelenik meg a hibaüzenetben.
 
 A naplók ellenőrzéséhez használja a [Docker-napló vizsgálata](#dockerlog) szakaszban található információkat.
 
-## <a name="function-fails-get_model_path"></a>A függvény sikertelen: get_model_path ()
+## <a name="function-fails-get_model_path"></a>Függvény futása: get_model_path()
 
-Gyakran előfordul, hogy a pontozási parancsfájl `init()` függvényében a [Model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) függvényt a rendszer megkeresi egy modellel vagy egy, a tárolóban található, a modell fájljainak mappáját. Ha a modell fájlja vagy mappája nem található, a függvény sikertelen lesz. A hiba hibakeresésének legegyszerűbb módja a következő Python-kód futtatása a Container shellben:
+Gyakran előfordul, hogy a pontozási parancsfájl `init()` függvényében a [Model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) függvényt a rendszer megkeresi egy modellel vagy egy, a tárolóban található, a modell fájljainak mappáját. Ha a modell fájlja vagy mappája nem található, a függvény sikertelen lesz. A legegyszerűbben úgy, hogy ez a hiba hibakeresési, hogy futtassa az alábbi a tároló shellben a Python-kód:
 
 ```python
 from azureml.core.model import Model
@@ -198,13 +198,13 @@ logging.basicConfig(level=logging.DEBUG)
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
-Ez a példa kiírja a helyi elérési utat (a `/var/azureml-app`hoz képest) abban a tárolóban, ahol a pontozási parancsfájl a modell fájljának vagy mappájának megkeresésére vár. Ezt követően ellenőrizheti, hogy a fájl vagy mappa valóban a várt-e.
+Ez a példa kiírja a helyi elérési utat (a `/var/azureml-app`hoz képest) abban a tárolóban, ahol a pontozási parancsfájl a modell fájljának vagy mappájának megkeresésére vár. Ezután már ellenőrizhető, ha a fájl vagy mappa valóban ahol azt kellene lennie.
 
 Ha a naplózási szint HIBAKERESÉSét állítja be, akkor további információk is naplózhatók, ami hasznos lehet a hiba azonosításához.
 
-## <a name="function-fails-runinput_data"></a>A függvény sikertelen: Futtatás (input_data)
+## <a name="function-fails-runinput_data"></a>Függvény futása: run(input_data)
 
-Ha a szolgáltatás sikeresen telepítve van, de összeomlik a pontozási végpontra történő adatküldés során, akkor a `run(input_data)` függvényben hozzáadhat egy Error befogási utasítást, hogy a részletes hibaüzenetet adja vissza helyette. Példa:
+Ha a szolgáltatás sikeresen telepítve van, de összeomlik a pontozási végpontra történő adatküldés során, akkor a `run(input_data)` függvényben hozzáadhat egy Error befogási utasítást, hogy a részletes hibaüzenetet adja vissza helyette. Például:
 
 ```python
 def run(input_data):
@@ -220,6 +220,10 @@ def run(input_data):
 ```
 
 **Megjegyzés**: a `run(input_data)` hívással kapcsolatos hibaüzeneteket csak hibakeresési célra lehet elvégezni. Biztonsági okokból az éles környezetben nem adhat vissza hibaüzeneteket.
+
+## <a name="http-status-code-502"></a>HTTP-állapotkód 502
+
+Az 502-es állapotkód azt jelzi, hogy a szolgáltatás kivételt okozott vagy összeomlott a score.py fájl `run()` metódusában. A cikkben található információk segítségével a fájl hibakeresését folytathatja.
 
 ## <a name="http-status-code-503"></a>HTTP-állapotkód 503
 
@@ -261,6 +265,12 @@ Két olyan dolog van, amely segíthet megelőzni a 503-es állapotkódot:
     > Ha az új minimális replikánál nagyobb kérelmeket kap, akkor a 503s újra megjelenhet. Ha például a szolgáltatás felé irányuló forgalom növekszik, akkor előfordulhat, hogy növelnie kell a minimális replikákat.
 
 A `autoscale_target_utilization`, `autoscale_max_replicas`és `autoscale_min_replicas` beállításával kapcsolatos további információkért tekintse meg a [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) -modul referenciáját.
+
+## <a name="http-status-code-504"></a>HTTP-állapotkód 504
+
+A 504 állapotkód azt jelzi, hogy a kérelem túllépte az időkorlátot. Az alapértelmezett időkorlát 1 perc.
+
+A felesleges hívások eltávolításához módosítsa a score.py, vagy próbálja meg felgyorsítani a szolgáltatást. Ha ezek a műveletek nem orvosolják a problémát, a jelen cikkben található információk segítségével a score.py-fájl hibakeresését végezheti el. Előfordulhat, hogy a kód lefagyott állapotban vagy végtelen hurokban van.
 
 ## <a name="advanced-debugging"></a>Speciális hibakeresés
 

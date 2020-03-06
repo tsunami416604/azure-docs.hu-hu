@@ -14,12 +14,12 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7b42676fa387914bc4825e2850b3d2f032827a79
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 26030c12d98d796ceb1f66f198aede6e40eebd94
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962118"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399018"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity platform-alkalmazás hitelesítési tanúsítványának hitelesítő adatai
 
@@ -55,7 +55,7 @@ Az aláírás a tanúsítvány alkalmazásával lett kiszámítva a [JSON web to
 
 ## <a name="example-of-a-decoded-jwt-assertion"></a>Dekódolású JWT-érvényesítési példa
 
-```
+```JSON
 {
   "alg": "RS256",
   "typ": "JWT",
@@ -67,12 +67,11 @@ Az aláírás a tanúsítvány alkalmazásával lett kiszámítva a [JSON web to
   "exp": 1484593341,
   "iss": "97e0a5b7-d745-40b6-94fe-5f77d35c6e05",
   "jti": "22b3bb26-e046-42df-9c96-65dbd72c1c81",
-  "nbf": 1484592741,  
+  "nbf": 1484592741,
   "sub": "97e0a5b7-d745-40b6-94fe-5f77d35c6e05"
 }
 .
 "Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
-
 ```
 
 ## <a name="example-of-an-encoded-jwt-assertion"></a>Példa kódolt JWT-kijelentésre
@@ -94,10 +93,10 @@ A tanúsítvány hitelesítő adatait a Microsoft Identity platformon találhat�
 ### <a name="uploading-the-certificate-file"></a>A tanúsítványfájl feltöltése
 
 Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
-1. Válassza ki a **tanúsítványok & Secrets**elemet. 
+1. Válassza ki a **tanúsítványok & Secrets**elemet.
 2. Kattintson a **tanúsítvány feltöltése** elemre, és válassza ki a feltölteni kívánt tanúsítványt.
-3. Kattintson a **Hozzáadás** parancsra.
-  A tanúsítvány feltöltése után a rendszer megjeleníti az ujjlenyomatot, a kezdési dátumot és a lejárati értékeket. 
+3. Kattintson az **Hozzáadás** parancsra.
+  A tanúsítvány feltöltése után a rendszer megjeleníti az ujjlenyomatot, a kezdési dátumot és a lejárati értékeket.
 
 ### <a name="updating-the-application-manifest"></a>Az alkalmazás jegyzékfájljának frissítése
 
@@ -112,7 +111,7 @@ Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
 1. Válassza ki a **jegyzékfájlt** az alkalmazás jegyzékfájljának megnyitásához.
 2. Cserélje le a " *hitelesítő adatok* " tulajdonságot az új tanúsítvány adataira a következő séma használatával.
 
-   ```
+   ```JSON
    "keyCredentials": [
        {
            "customKeyIdentifier": "$base64Thumbprint",
@@ -123,13 +122,13 @@ Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
        }
    ]
    ```
-3. Mentse a módosításokat az alkalmazás-jegyzékfájlba, majd töltse fel a jegyzékfájlt a Microsoft Identity platformba. 
+3. Mentse a módosításokat az alkalmazás-jegyzékfájlba, majd töltse fel a jegyzékfájlt a Microsoft Identity platformba.
 
    A `keyCredentials` tulajdonság többértékű, így több tanúsítványt is feltölthet a gazdagabb kulcsok kezeléséhez.
-   
+
 ## <a name="code-sample"></a>Kódminta
 
 > [!NOTE]
-> A X5T fejlécét úgy kell kiszámítani, hogy a tanúsítvány kivonatával konvertálja egy Base 64 sztringre. A következőként C# végrehajtandó kód: `System.Convert.ToBase64String(cert.GetCertHash());`
+> A X5T fejlécét úgy kell kiszámítani, hogy a tanúsítvány kivonatával konvertálja egy Base 64 sztringre. A alkalmazásban C# végrehajtandó kód `System.Convert.ToBase64String(cert.GetCertHash());`.
 
-A [Microsoft Identity platformhoz tartozó Daemon-alkalmazásokban a tanúsítványokat tartalmazó](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) kód minta azt mutatja be, hogyan használja az alkalmazás a saját hitelesítő adatait a hitelesítéshez. Azt is bemutatja, hogyan [hozhat létre önaláírt tanúsítványt](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) a `New-SelfSignedCertificate` PowerShell-paranccsal. Emellett kihasználhatja a tanúsítványok létrehozását és az [alkalmazás-létrehozási parancsfájlok](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) használatát is, így kiszámíthatja az ujjlenyomatot, és így tovább.
+A [.net Core Daemon Console alkalmazás a Microsoft Identity platformmal való használata](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) azt mutatja be, hogyan használja az alkalmazás a saját hitelesítő adatait a hitelesítéshez. Azt is bemutatja, hogyan [hozhat létre önaláírt tanúsítványt](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) a `New-SelfSignedCertificate` PowerShell-paranccsal. Emellett kihasználhatja a tanúsítványok létrehozását és az [alkalmazás-létrehozási parancsfájlok](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) használatát is, így kiszámíthatja az ujjlenyomatot, és így tovább.

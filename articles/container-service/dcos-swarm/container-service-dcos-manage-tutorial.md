@@ -7,18 +7,18 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1c9b3bfdbe7aff203efa6b36f0e40cb65aba1175
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 4212277dbdf29705152832f3830692b43b8d1297
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278337"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402809"
 ---
 # <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>ELAVULT Azure Container Service oktatóanyag – DC/OS kezelése
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-A DC/OS elosztott platformot nyújt a modern és tárolóalapú alkalmazások futtatásához. Az Azure Container Service használatával egyszerűen és gyorsan építhető ki üzemkész DC/OS fürt. Ez a rövid útmutató a DC/OS fürt üzembe helyezéséhez és az alapvető számítási feladatok futtatásához szükséges alaplépéseket részletezi.
+A DC/OS elosztott platformot nyújt a modern és tárolóalapú alkalmazások futtatásához. Az Azure Container Service használatával egyszerűen és gyorsan építhető ki üzemkész DC/OS fürt. Ez a rövid útmutató részletesen ismerteti a DC/OS-fürt üzembe helyezéséhez és az alapvető számítási feladatok futtatásához szükséges alapszintű lépéseket.
 
 > [!div class="checklist"]
 > * ACS DC/OS fürt létrehozása
@@ -30,7 +30,7 @@ A DC/OS elosztott platformot nyújt a modern és tárolóalapú alkalmazások fu
 > * Alapszintű DC/OS-kezelés
 > * A DC/OS fürt törlése
 
-Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne, tekintse meg [az Azure CLI telepítését ismertető]( /cli/azure/install-azure-cli) szakaszt. 
+Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-dcos-cluster"></a>DC/OS-fürt létrehozása
 
@@ -66,7 +66,7 @@ ip=$(az network public-ip list --resource-group myResourceGroup --query "[?conta
 
 Az SSH-alagút létrehozásához futtassa a következő parancsot, és kövesse a képernyőn látható utasításokat. Ha a 80-as port már használatban van, a parancs meghiúsul. Frissítse a bújtatott portot egy nem használtra, például a következőre: `85:localhost:80`. 
 
-```azurecli
+```console
 sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
 ```
 
@@ -80,7 +80,7 @@ az acs dcos install-cli
 
 A parancssori felületet fürttel való használata előtt konfigurálnia kell azt az SSH-alagút használatához. Ehhez futtassa az alábbi parancsot, szükség esetén a port módosításával.
 
-```azurecli
+```console
 dcos config set core.dcos_url http://localhost
 ```
 
@@ -116,19 +116,19 @@ Az ACS DC/OS fürtök alapértelmezett ütemezési mechanizmusa a Marathon. A Ma
 
 Futtassa a következő parancsot az alkalmazás DC/OS fürttel való futásának ütemezéséhez.
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 Az alkalmazás üzembe helyezési állapotának megtekintéséhez futtassa a következő parancsot.
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 Amikor a **TASKS** (Feladatok) oszlop értéke *0/1* értékről *1/1* értékre vált, az alkalmazás üzembe helyezése befejeződött.
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     0/1    ---       ---      False      DOCKER   None
 ```
@@ -165,19 +165,19 @@ Az előző példában egy egypéldányos alkalmazást hoztunk létre. Ahhoz, hog
 
 Frissítse az alkalmazást a `dcos marathon app update` parancs használatával.
 
-```azurecli
+```console
 dcos marathon app update demo-app-private < marathon-app.json
 ```
 
 Az alkalmazás üzembe helyezési állapotának megtekintéséhez futtassa a következő parancsot.
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 Amikor a **TASKS** (Feladatok) oszlop értéke *1/3* értékről *3/1* értékre vált, az alkalmazás üzembe helyezése befejeződött.
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/3    ---       ---      False      DOCKER   None
 ```
@@ -222,13 +222,13 @@ Hozzon létre egy fájlt **nginx-public.json** néven, és másolja bele a köve
 
 Futtassa a következő parancsot az alkalmazás DC/OS fürttel való futásának ütemezéséhez.
 
-```azurecli 
+```console
 dcos marathon app add nginx-public.json
 ```
 
 Szerezze be a DC/OS nyilvános fürtügynökök nyilvános IP-címét.
 
-```azurecli 
+```azurecli
 az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-agent')].[ipAddress]" -o tsv
 ```
 
@@ -256,7 +256,7 @@ az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-c
 
 Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az-group-delete) paranccsal eltávolítható az erőforráscsoport, a DC/OS fürt és az összes kapcsolódó erőforrás.
 
-```azurecli 
+```azurecli
 az group delete --name myResourceGroup --no-wait
 ```
 

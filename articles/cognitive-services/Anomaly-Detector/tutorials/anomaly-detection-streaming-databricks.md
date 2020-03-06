@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 93ee5df4327aa396573665cd0c2cbd8222015cce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e0df0773daf8f9be21ac70d8390013adfd93483a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448898"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402668"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: az adatátviteli rendellenességek észlelése Azure Databricks használatával
 
@@ -40,12 +40,10 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Anomáliák észlelésének futtatása tweeteken
 
 > [!Note]
-> Ez az oktatóanyag bemutatja, hogyan lehet megvalósítani a rendellenesség-Kiderítő API ajánlott [megoldási architektúráját](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) .
+> * Ez az oktatóanyag bemutatja, hogyan lehet megvalósítani a rendellenesség-Kiderítő API ajánlott [megoldási architektúráját](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) .
+> * Ez az oktatóanyag nem hajtható végre ingyenes próbaverzióval az anomália-érzékelő API-hoz, vagy Azure Databricks. 
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
-
-> [!Note]
-> Ez az oktatóanyag nem végezhető el az anomáliák Kiderítő API-hoz tartozó ingyenes próbaverziós kulccsal. Ha egy ingyenes fiókot használna az Azure Databricks-fürt létrehozásához, a fürt létrehozása előtt nyissa meg a saját profilját, és módosítsa az előfizetését **használatalapú fizetésre**. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket.
+Ha még nem rendelkezik [Azure-előfizetéssel](https://azure.microsoft.com/free/) , hozzon létre egyet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,7 +51,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 - A Event Hubs névtér eléréséhez használt [kapcsolati karakterlánc](../../../event-hubs/event-hubs-get-connection-string.md) . A kapcsolódási karakterláncnak hasonló formátumúnak kell lennie a következőhöz:
 
-    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>` kérdésre adott válaszban foglalt lépéseket. 
+    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`. 
 
 - A Event Hubs megosztott hozzáférési szabályzatának neve és házirend-kulcsa.
 
@@ -153,7 +151,7 @@ A könyvtár lapon válassza ki azt a fürtöt, ahol a könyvtárat használni s
 
 Ebben az oktatóanyagban az [Azure Cognitive Services anomália-érzékelő API](../overview.md) -k használatával futtathatja a anomáliák észlelését egy közel valós idejű tweetek streamen. Az API-k használata előtt létre kell hoznia egy rendellenesség-Kiderítő erőforrást az Azure-ban, és be kell szereznie egy hozzáférési kulcsot az anomália detektor API-k használatához
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 2. Válassza a **+ Erőforrás létrehozása** lehetőséget.
 
@@ -163,13 +161,13 @@ Ebben az oktatóanyagban az [Azure Cognitive Services anomália-érzékelő API]
 
 4. A **Létrehozás** párbeszédpanelen adja meg az alábbi értékeket:
 
-    |Value (Díj) |Leírás  |
+    |Érték |Leírás  |
     |---------|---------|
-    |Név     | Az anomália-detektor erőforrásának neve.        |
-    |Előfizetés     | Az az Azure-előfizetés, amelyhez az erőforrás társítva lesz.        |
-    |Földrajzi egység     | Egy Azure-beli hely.        |
-    |Díjcsomag     | A szolgáltatás díjszabási szintje. További információ az anomália-detektor díjszabásáról: [díjszabási oldal](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
-    |Erőforráscsoport     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne kijelölni.        |
+    |Name (Név)     | Az anomália-detektor erőforrásának neve.        |
+    |Előfizetést     | Az az Azure-előfizetés, amelyhez az erőforrás társítva lesz.        |
+    |Hely     | Egy Azure-beli hely.        |
+    |Tarifacsomag     | A szolgáltatás díjszabási szintje. További információ az anomália-detektor díjszabásáról: [díjszabási oldal](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
+    |Erőforráscsoport     | Adja meg, hogy hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt.        |
 
 
      Kattintson a **Létrehozás** gombra.
@@ -544,7 +542,7 @@ display(msgStream)
 A kimenet most az alábbi képhez hasonlít. Vegye figyelembe, hogy a táblázatban szereplő dátum ettől eltérő lehet az oktatóanyagban szereplő dátumtól, mert az adatok valós időben jelennek meg.
 ![Adatok betöltése az Event hub-ból](../media/tutorials/load-data-from-eventhub.png "Adatok betöltése az Event hub-ból")
 
-Mostantól közel valós időben áramlott Azure Databricks be az Azure Event Hubsból származó adatok az Event Hubs-összekötővel Apache Sparkhoz. A Spark Event Hubs-összekötőinek használatáról az [összekötő dokumentációjában](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs) talál további információt.
+Streamelt adatokat az Azure Event Hubsból az Azure Databricksbe az Apache Spark az Event Hubs összekötője segítségével közel valós időben. A Spark Event Hubs-összekötőinek használatáról az [összekötő dokumentációjában](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs) talál további információt.
 
 
 

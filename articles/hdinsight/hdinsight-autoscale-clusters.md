@@ -7,21 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/21/2020
-ms.openlocfilehash: 6eb8f86d7bfa1c140c6422753840ded8a37ce3c4
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.date: 03/05/2020
+ms.openlocfilehash: 68bc30d08d95fe8e3d20a8ecb7af6c9710951921
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616090"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399714"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus méretezése
 
 > [!Important]
-> Az Azure HDInsight autoscale funkciójának kiadása a Spark-és Hadoop-fürtökre vonatkozó 2019, november 7-én általánosan elérhető, és a szolgáltatás előzetes verziójában nem érhető el. Ha a Spark-fürtöt a 2019 november 7. előtt hozta létre, és szeretné használni az autoscale funkciót a fürtön, az ajánlott elérési út egy új fürt létrehozása, és az autoskálázás engedélyezése az új fürtön. 
+> Az Azure HDInsight autoscale funkciójának kiadása a Spark-és Hadoop-fürtökre vonatkozó 2019, november 7-én általánosan elérhető, és a szolgáltatás előzetes verziójában nem érhető el. Ha a Spark-fürtöt a 2019 november 7. előtt hozta létre, és szeretné használni az autoscale funkciót a fürtön, az ajánlott elérési út egy új fürt létrehozása, és az autoskálázás engedélyezése az új fürtön.
 >
->Az interaktív lekérdezés (LLAP) és a HBase-fürtök autoskálázása még előzetes verzióban érhető el. Az autoskálázás csak a Spark, a Hadoop, az interaktív lekérdezés és a HBase-fürtökön érhető el. 
-
+> Az interaktív lekérdezés (LLAP) és a HBase-fürtök autoskálázása még előzetes verzióban érhető el. Az autoskálázás csak a Spark, a Hadoop, az interaktív lekérdezés és a HBase-fürtökön érhető el.
 
 Az Azure HDInsight fürt automatikus méretezési funkciója automatikusan felfelé és lefelé méretezi a munkavégző csomópontok számát a fürtben. A fürtben lévő más típusú csomópontok jelenleg nem méretezhetők.  Új HDInsight-fürt létrehozása során beállítható a munkavégző csomópontok minimális és maximális száma. Az automatikus skálázás ezután figyeli az elemzési terhelés erőforrás-követelményeit, és a feldolgozói csomópontok számát felfelé vagy lefelé méretezi. Ehhez a szolgáltatáshoz nem számítunk fel további díjat.
 
@@ -59,23 +58,18 @@ Az autoscale folyamatosan figyeli a fürtöt, és a következő metrikákat gyű
 
 A fenti mérőszámok 60 másodpercenként vannak ellenőrizve. Az autoskálázás a mérőszámok alapján vertikális felskálázást és leskálázást tesz lehetővé.
 
-### <a name="load-based-cluster-scale-up"></a>Load-alapú fürt felskálázása
+### <a name="load-based-scale-conditions"></a>Terhelésen alapuló méretezési feltételek
 
-Ha a következő feltételek észlelhetők, az autoskálázás egy Felskálázási kérelmet fog kiadni:
+Ha a következő feltételek észlelhetők, az autoskálázás egy méretezési kérelmet fog kiadni:
 
-* A függőben lévő CPU összesen több mint 3 percnél nagyobb az összes szabad PROCESSZORnál.
-* A függőben lévő memória összesen több mint 3 percnél nagyobb a teljes szabad memóriánál.
+|Vertikális felskálázás|Vertikális leskálázás|
+|---|---|
+|A függőben lévő CPU összesen több mint 3 percnél nagyobb az összes szabad PROCESSZORnál.|A függőben lévő PROCESSZORok száma több mint 10 percnél kevesebb, mint az összes szabad CPU.|
+|A függőben lévő memória összesen több mint 3 percnél nagyobb a teljes szabad memóriánál.|A függőben lévő memória mennyisége kevesebb, mint 10 percnél nagyobb a teljes szabad memória.|
 
-A HDInsight szolgáltatás kiszámítja, hogy hány új feldolgozó csomópontra van szükség ahhoz, hogy megfeleljen a jelenlegi CPU-és memória-követelményeknek, majd kiadja a szükséges számú csomópont hozzáadására szolgáló Felskálázási kérést.
+A vertikális felskálázás érdekében a HDInsight szolgáltatás kiszámítja, hogy hány új feldolgozó csomópontra van szükség ahhoz, hogy megfeleljen a jelenlegi CPU-és memória-követelményeknek, majd kiadja a szükséges számú csomópontok hozzáadására szolgáló Felskálázási kérést.
 
-### <a name="load-based-cluster-scale-down"></a>Terheléselosztási fürt leskálázása
-
-Ha a következő feltételek észlelhetők, az autoscale leskálázási kérést ad ki:
-
-* A függőben lévő PROCESSZORok száma több mint 10 percnél kevesebb, mint az összes szabad CPU.
-* A függőben lévő memória mennyisége kevesebb, mint 10 percnél nagyobb a teljes szabad memória.
-
-A csomópontok száma és a jelenlegi CPU-és memória-követelmények alapján az autoskálázás egy adott számú csomópont eltávolítására irányuló kérést bocsát ki. A szolgáltatás azt is észleli, hogy mely csomópontok vannak kiválasztva az eltávolításra a jelenlegi feladatok végrehajtása alapján. A leskálázási művelet először leszereli a csomópontokat, majd eltávolítja őket a fürtből.
+A leskálázáshoz a csomópontok száma és a jelenlegi CPU-és memória-követelmények alapján, az autoskálázás a bizonyos számú csomópont eltávolítására irányuló kérést bocsát ki. A szolgáltatás azt is észleli, hogy mely csomópontok vannak kiválasztva az eltávolításra a jelenlegi feladatok végrehajtása alapján. A leskálázási művelet először leszereli a csomópontokat, majd eltávolítja őket a fürtből.
 
 ## <a name="get-started"></a>Első lépések
 

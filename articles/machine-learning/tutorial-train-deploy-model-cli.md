@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 761011cba71c3907994616904cc854003abda7ee
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 70fa17e3e6f91bf393865cc979a8e47e4bf8687b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245136"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393333"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Oktatóanyag: modellek betanítása és üzembe helyezése a parancssori felületről
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -375,7 +375,7 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 ```
 
 > [!NOTE]
-> A "sikertelen LocalWebservice létezésének ellenőrzésével" kapcsolatos figyelmeztetés jelenhet meg. Ezt nyugodtan figyelmen kívül hagyhatja, mert nem telepít helyi webszolgáltatást.
+> A "nem sikerült megtekinteni a LocalWebservice létezését" vagy a "nem sikerült létrehozni a Docker-ügyfelet" figyelmeztetés jelenhet meg. Ezt nyugodtan figyelmen kívül hagyhatja, mert nem telepít helyi webszolgáltatást.
 
 Ez a parancs egy `myservice`nevű új szolgáltatást helyez üzembe a korábban regisztrált modell 1. verziójának használatával.
 

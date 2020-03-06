@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: abc2e2371368f01c96eb0b4d2f0a777952ebacf4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fdb35edc35e07ed4ee718281942565a8f1d061d4
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448917"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402689"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>Gyors útmutató: anomália-Kiderítő ügyféloldali kódtára a .NET-hez
 
@@ -56,7 +56,7 @@ dotnet build
 
 A Build kimenete nem tartalmazhat figyelmeztetést vagy hibát. 
 
-```console
+```output
 ...
 Build succeeded.
  0 Warning(s)
@@ -88,7 +88,7 @@ Az idősorozat-információk küldése egy [kérelem](https://docs.microsoft.com
 
 Az anomália-detektor válasza egy [EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse) vagy [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse) objektum, a használt módszertől függően. 
 
-## <a name="code-examples"></a>Kódpéldák
+## <a name="code-examples"></a>Példák a kódokra
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a következőhöz: az anomália-detektor .NET-hez készült ügyféloldali kódtára:
 

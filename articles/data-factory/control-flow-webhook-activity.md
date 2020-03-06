@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 70c67a99274eaedc5592c7b90b1ef80a3a17acf8
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 8c52bb21276071581a83fb3ee6a3a4a31ba0bb4a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77109998"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78400000"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-tevékenység Azure Data Factory
 Webhook-tevékenységgel vezérelheti a folyamatok végrehajtását az egyéni kóddal. A webhook tevékenység használatával az ügyfelek meghívhatnak egy végpontot, és átadhatják a visszahívási URL-címet. A folyamat futása megvárja a visszahívás meghívását, mielőtt továbblép a következő tevékenységre.
@@ -116,6 +116,10 @@ Itt adhatja meg azt az erőforrás-URI-t, amelynek a hozzáférési jogkivonatá
 A Azure Data Factory egy további "callBackUri" tulajdonságot fog átadni a törzsben az URL-végpontnak, és a megadott időtúllépési érték előtt meghívja ezt az URI-t. Ha a rendszer nem hívja meg az URI-t, a tevékenység sikertelen lesz a következő állapottal: "időtúllépés".
 
 Maga a webhook tevékenység meghiúsul, ha az egyéni végpontra irányuló hívás sikertelen. Bármilyen hibaüzenetet hozzáadhat a visszahívás törzséhez, és egy későbbi tevékenységben is felhasználhatja őket.
+
+Ha a végpont nem válaszol 1 percen belül, a REST API minden hívásakor az ügyfél időtúllépést eredményez. Ez a szabványos http ajánlott eljárás. A probléma megoldásához implementálnia kell a 202 mintát ebben az esetben, ha a végpont 202 (elfogadva) értéket ad vissza, és az ügyfél le fogja kérdezni.
+
+A kérelemben szereplő 1 perces időkorlát nem tartalmaz semmit a tevékenység időkorlátja miatt. Ezt fogja használni a rendszer a callbackUri való várakozáshoz.
 
 A visszahívási URI-nak visszaadott törzsnek érvényes JSON-nek kell lennie. A Content-type fejlécet `application/json`re kell állítania.
 

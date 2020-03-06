@@ -3,12 +3,12 @@ title: Áruházi Helm-diagramok
 description: Megtudhatja, hogyan tárolhatja a Kubernetes-alkalmazásokhoz tartozó Helm-diagramokat a Azure Container Registry-Tárházak használatával
 ms.topic: article
 ms.date: 01/28/2020
-ms.openlocfilehash: 26588bb4dc3cf50656103b50d5d0559908a1ccb7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 7969efe37558fffb26b983131c56ae11f3ef9368
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524631"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398960"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>A Helm-diagramok leküldése és lekérése egy Azure Container registrybe
 
@@ -118,7 +118,7 @@ helm chart push mycontainerregistry.azurecr.io/helm/wordpress:latest
 
 Sikeres leküldést követően a kimenet a következőhöz hasonló:
 
-```console
+```output
 The push refers to repository [mycontainerregistry.azurecr.io/helm/wordpress]
 ref:     mycontainerregistry.azurecr.io/helm/wordpress:latest
 digest:  5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
@@ -141,7 +141,7 @@ az acr repository show \
 
 A kimenet a következőhöz hasonló:
 
-```console
+```output
 {
   "changeableAttributes": {
     "deleteEnabled": true,
@@ -168,7 +168,7 @@ az acr repository show-manifests \
 
 Az ebben a példában szereplő kimenet a `application/vnd.cncf.helm.config.v1+json``configMediaType`ét jeleníti meg:
 
-```console
+```output
 [
   {
     [...]
@@ -216,7 +216,7 @@ helm inspect chart wordpress
 
 Ha nincs megadva verziószám, a rendszer a *legújabb* verziót használja. A Helm a diagram részletes információit adja vissza, ahogy az a következő tömörített kimenetben látható:
 
-```
+```output
 apiVersion: v1
 appVersion: 5.3.2
 dependencies:
@@ -256,7 +256,7 @@ helm install wordpress --generate-name
 
 A telepítés folytatásához kövesse a parancs kimenetében található utasításokat a WorPress URL-címeinek és hitelesítő adatainak megtekintéséhez. Az `kubectl get pods` parancs futtatásával is megtekintheti a Helm-diagramon üzembe helyezett Kubernetes-erőforrásokat:
 
-```console
+```output
 NAME                                    READY   STATUS    RESTARTS   AGE
 wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
 wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s
@@ -311,7 +311,7 @@ helm fetch stable/wordpress
 
 Írja be a `ls` a letöltött diagram listázásához, és jegyezze fel a fájlnévben szereplő WordPress-verziót. A `helm fetch stable/wordpress` parancs nem adott meg egy adott verziót, így a *legújabb* verzió lett beolvasva. A következő példa kimenetében a WordPress-diagram a *8.1.0*verziója:
 
-```
+```output
 wordpress-8.1.0.tgz
 ```
 
@@ -323,7 +323,7 @@ az acr helm push --name mycontainerregistry wordpress-8.1.0.tgz
 
 Néhány pillanat elteltével az Azure CLI jelentést készít a diagram mentéséről, ahogy az a következő példában látható:
 
-```
+```output
 {
   "saved": true
 }
@@ -345,7 +345,7 @@ helm search mycontainerregistry
 
 Az előző lépésben leküldett WordPress-diagram a következő példában látható módon jelenik meg:
 
-```
+```output
 NAME                CHART VERSION   APP VERSION DESCRIPTION
 helmdocs/wordpress  8.1.0           5.3.2       Web publishing platform for building blogs and websites.
 ```
@@ -366,7 +366,7 @@ helm inspect mycontainerregistry/wordpress
 
 Ha nincs megadva verziószám, a rendszer a *legújabb* verziót használja. A Helm a diagram részletes információit adja vissza, ahogy az a következő tömörített példában látható:
 
-```
+```output
 apiVersion: v1
 appVersion: 5.3.2
 description: Web publishing platform for building blogs and websites.
@@ -416,7 +416,7 @@ A telepítési folyamat során a következő lépések végezhetők el:
 
 A telepítés folytatásához kövesse a parancs kimenetében található utasításokat a WorPress URL-címeinek és hitelesítő adatainak megtekintéséhez. Az `kubectl get pods` parancs futtatásával is megtekintheti a Helm-diagramon üzembe helyezett Kubernetes-erőforrásokat:
 
-```
+```output
 NAME                                    READY   STATUS    RESTARTS   AGE
 wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
 wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s

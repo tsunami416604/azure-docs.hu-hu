@@ -160,6 +160,8 @@
       items:
         - name: Az Azure Portalról
           items:
+            - name: Áttekintés
+              href: azure-file-share-backup-overview.md
             - name: Backup
               href: backup-afs.md
             - name: Visszaállítás

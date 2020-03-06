@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/09/2019
+ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0ba7846b60ca6649b4342d5096e92dfd8c96601
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 733743f4680f3197a1754d87b4672641b2321907
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756314"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399329"
 ---
 # <a name="start-using-privileged-identity-management"></a>A Privileged Identity Management használatának első lépései
 
@@ -62,7 +62,7 @@ A Privileged Identity Management a címtárban való használatának megkezdés�
 
     ![Fiók kiválasztása ablak az identitás ellenőrzéséhez](./media/pim-getting-started/pick-account.png)
 
-1. Ha további információra van szükség az ellenőrzéshez, végigvezeti a folyamaton. További információkért lásd: [Segítség kérése kétlépéses ellenőrzéssel](https://go.microsoft.com/fwlink/p/?LinkId=708614).
+1. Ha további információra van szükség az ellenőrzéshez, végigvezeti a folyamaton. További információkért lásd: [Segítség kérése kétlépéses ellenőrzéssel](../user-help/multi-factor-authentication-end-user-troubleshoot.md).
 
     ![További információ szükséges ablak ha a szervezetnek további információra van szüksége](./media/pim-getting-started/more-information-required.png)
 
@@ -115,7 +115,7 @@ A Privileged Identity Management beállítása után elindíthatja az Identitás
 
 Annak érdekében, hogy megkönnyítse a Privileged Identity Management megnyitását, vegyen fel egy Privileged Identity Management csempét a Azure Portal irányítópultra.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 1. Kattintson a **minden szolgáltatás** elemre, és keresse meg a **Azure ad Privileged Identity Management** szolgáltatást.
 

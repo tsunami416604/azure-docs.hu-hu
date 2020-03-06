@@ -8,81 +8,97 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 02/18/2020
-ms.openlocfilehash: 392c86d8ea24e59d388926d4df581305ea2b531d
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/05/2020
+ms.openlocfilehash: df712f48c5aff722a4f1a850788378fb78ea7335
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599300"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379583"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Azure Cognitive Search-szolgáltatás áthelyezése másik Azure-régióba
 
-Az Azure kognitív szolgáltatási fiók egyik régióból a másikba való áthelyezéséhez létre kell hoznia egy exportálási sablont az előfizetés (ok) áthelyezéséhez. Az előfizetés áthelyezése után át kell helyeznie az adatait, és újra létre kell hoznia a szolgáltatást.
+Jelenleg a keresési szolgáltatás másik régióba való áthelyezése nem támogatott, mert nincs olyan automatizálás vagy eszköz, amely segítséget nyújt a feladat végpontok közötti működéséhez.
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+A portálon a **sablon exportálása** parancs a szolgáltatás alapszintű definícióját (név, hely, réteg, replika és partíciók száma) állítja elő, de nem ismeri fel a szolgáltatás tartalmát, és nem hajtja végre a kulcsokat, szerepköröket vagy naplókat.
+
+Ha az egyik régióból a másikba helyezi a keresést, a következő módszert javasoljuk:
+
+1. A meglévő szolgáltatás leltározása a szolgáltatásban található objektumok teljes listájára. Ha engedélyezte a naplózást, akkor szükség lehet a jövőbeli összehasonlításhoz szükséges jelentések létrehozására és archiválására.
+
+1. Hozzon létre egy szolgáltatást az új régióban, és tegye közzé újból a forráskódból a meglévő indexeket, indexelő fájlokat, adatforrásokat, szakértelmével és szinonimákat. A szolgáltatás nevének egyedinek kell lennie, így a meglévő név nem használható fel újra.
+
+1. Engedélyezze a naplózást, és ha használja őket, hozza létre újra a biztonsági szerepköröket.
+
+1. Az ügyfélalkalmazások és a tesztelési csomagok frissítése az új szolgáltatásnév és API-kulcsok használatára és az összes alkalmazás tesztelésére.
+
+1. Törölje a régi szolgáltatást, ha az új szolgáltatás teljesen működőképes.
+
+<!-- To move your Azure Cognitive Service account from one region to another, you will create an export template to move your subscription(s). After moving your subscription, you will need to move your data and recreate your service.
+
+In this article, you'll learn how to:
 
 > [!div class="checklist"]
-> * Sablon exportálása.
-> * Módosítsa a sablont: adja hozzá a cél régiót, a keresési és a tárolási fiókok nevét.
-> * Telepítse a sablont az új keresési és Storage-fiókok létrehozásához.
-> * A szolgáltatás állapotának ellenőrzése az új régióban
-> * Erőforrások törlése a forrás régióban.
+> * Export a template.
+> * Modify the template: adding the target region, search and storage account names.
+> * Deploy the template to create the new search and storage accounts.
+> * Verify your service status in the new region
+> * Clean up resources in the source region.
 
-## <a name="prerequisites"></a>Előfeltételek
+## Prerequisites
 
-- Győződjön meg arról, hogy a fiók által használt szolgáltatások és szolgáltatások támogatottak a célként megadott régióban.
+- Ensure that the services and features that your account uses are supported in the target region.
 
-- Az előzetes verziójú funkciók esetében győződjön meg arról, hogy az előfizetése engedélyezett a célként megadott régióban. További információ az előzetes verziójú funkciókról: a [Knowledge Stores](https://docs.microsoft.com/azure/search/knowledge-store-concept-intro), a [növekményes](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual)bővítés és a [magánhálózati végpont](https://docs.microsoft.com/azure/search/service-create-private-endpoint).
+- For preview features, ensure that your subscription is whitelisted for the target region. For more information about preview features, see [knowledge stores](https://docs.microsoft.com/azure/search/knowledge-store-concept-intro), [incremental enrichment](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual), and [private endpoint](https://docs.microsoft.com/azure/search/service-create-private-endpoint).
 
-## <a name="assessment-and-planning"></a>Értékelés és tervezés
+## Assessment and planning
 
-Ha áthelyezi a keresési szolgáltatást az új régióba, [át kell helyeznie az adatait az új Storage szolgáltatásba](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#configure-the-new-storage-account) , majd újra létre kell hoznia az indexeket, a szakértelmével és a tudásbázist. Az aktuális beállításokat jegyezze fel, és másolja a JSON-fájlokat, hogy a szolgáltatás újraépítése egyszerűbb és gyorsabb legyen.
+When you move your search service to the new region, you will need to [move your data to the new storage service](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#configure-the-new-storage-account) and then rebuild your indexes, skillsets and knowledge stores. You should record current settings and copy json files to make the rebuilding of your service easier and faster.
 
-## <a name="moving-your-search-services-resources"></a>A keresési szolgáltatás erőforrásainak áthelyezése
+## Moving your search service's resources
 
-A kezdéshez exportálni kell, majd módosítania kell egy Resource Manager-sablont.
+To start you will export and then modify a Resource Manager template.
 
-### <a name="export-a-template"></a>Sablon exportálása
+### Export a template
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
-2. Nyissa meg az erőforráscsoport lapját.
+2. Go to your Resource Group page.
 
 > [!div class="mx-imgBorder"]
-> ![erőforráscsoport-oldal például](./media/search-move-resource/export-template-sample.png)
+> ![Resource Group page example](./media/search-move-resource/export-template-sample.png)
 
-3. Válassza az **Összes erőforrás** elemet.
+3. Select **All resources**.
 
-3. A bal oldali navigációs menüben válassza a **sablon exportálása**lehetőséget.
+3. In the left hand navigation menu select **Export template**.
 
-4. A **sablon exportálása** lapon kattintson a **Letöltés** elemre.
+4. Choose **Download** in the **Export template** page.
 
-5. Keresse meg a portálról letöltött. zip fájlt, és bontsa ki a fájlt egy tetszőleges mappába.
+5. Locate the .zip file that you downloaded from the portal, and unzip that file to a folder of your choice.
 
-A zip-fájl tartalmazza a sablont és a parancsfájlokat tartalmazó. JSON fájlokat a sablon telepítéséhez.
+The zip file contains the .json files that comprise the template and scripts to deploy the template.
 
-### <a name="modify-the-template"></a>A sablon módosítása
+### Modify the template
 
-A sablont a Search és a Storage-fiók nevének és régiói módosításával fogja módosítani. A névnek követnie kell az egyes szolgáltatások és régiók elnevezési konvenciók szabályait. 
+You will modify the template by changing the search and storage account names and regions. The names must follow the rules for each service and region naming conventions. 
 
-A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, az **USA középső** = **CentralUS**.
+To obtain region location codes, see [Azure Locations](https://azure.microsoft.com/global-infrastructure/locations/).  The code for a region is the region name with no spaces, **Central US** = **centralus**.
 
-1. Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget.
+1. In the Azure portal, select **Create a resource**.
 
-2. A **Keresés a Marketplace-en** mezőbe írja be a **template deployment** kifejezést, majd nyomja le az **ENTER** billentyűt.
+2. In **Search the Marketplace**, type **template deployment**, and then press **ENTER**.
 
-3. Válassza a **Template deployment** lehetőséget.
+3. Select **Template deployment**.
 
-4. Kattintson a **Létrehozás** gombra.
+4. Select **Create**.
 
-5. Válassza a **Saját sablon készítése a szerkesztőben** lehetőséget.
+5. Select **Build your own template in the editor**.
 
-6. Válassza a **fájl betöltése**lehetőséget, majd kövesse az utasításokat a letöltött és kibontott **template. JSON** fájl betöltéséhez az előző szakaszban.
+6. Select **Load file**, and then follow the instructions to load the **template.json** file that you downloaded and unzipped in the previous section.
 
-7. A **sablon. JSON** fájlban adja meg a cél keresési és a tárolási fiókok nevet a keresési és a tárolási fiókok nevének alapértelmezett értékének megadásával. 
+7. In the **template.json** file, name the target search and storage accounts by setting the default value of the search and storage account names. 
 
-8. Szerkessze a **Location (hely** ) tulajdonságot a **template. JSON** fájlban a keresési és a tárolási szolgáltatások céljának megfelelően. Ez a példa a célként megadott régiót állítja be `centralus`.
+8. Edit the **location** property in the **template.json** file to the target region for both your search and storage services. This example sets the target region to `centralus`.
 
 ```json
 },
@@ -113,35 +129,34 @@ A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](h
             },
 ```
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+### Deploy the template
 
-1. Mentse a **template. JSON** fájlt.
+1. Save the **template.json** file.
 
-2. Adja meg vagy válassza ki a tulajdonságértékek értékét:
+2. Enter or select the property values:
 
-- **Előfizetés**: válasszon ki egy Azure-előfizetést.
+- **Subscription**: Select an Azure subscription.
 
-- **Erőforráscsoport**: Válassza az **Új létrehozása** lehetőséget, majd adjon nevet az erőforráscsoportnak.
+- **Resource group**: Select **Create new** and give the resource group a name.
 
-- **Hely**: válasszon ki egy Azure-helyet.
+- **Location**: Select an Azure location.
 
-3. Jelölje **be az Elfogadom a fenti feltételeket és kikötéseket** jelölőnégyzetet, majd kattintson a **Vásárlás kiválasztása** gombra.
+3. Click the **I agree to the terms and conditions stated above** checkbox, and then click the **Select Purchase** button.
 
-## <a name="verifying-your-services-status-in-new-region"></a>A szolgáltatások állapotának ellenőrzése az új régióban
+## Verifying your services' status in new region
 
-Az áthelyezés ellenőrzéséhez nyissa meg az új erőforráscsoportot, és a szolgáltatások megjelennek az új régióban.
+To verify the move, open the new resource group and your services will be listed with the new region.
 
-Ha át szeretné helyezni az adatait a forrás régiójából a célként megadott régióba, tekintse meg ezt a cikk útmutatásait az [adatok az új Storage-fiókba való áthelyezéséhez](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#move-data-to-the-new-storage-account).
+To move your data from your source region to the target region, please see this article's guidelines for [moving your data to the new storage account](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#move-data-to-the-new-storage-account).
 
-## <a name="clean-up-resources-in-your-original-region"></a>Erőforrások törlése az eredeti régióban
+## Clean up resources in your original region
 
-Ha véglegesíteni szeretné a módosításokat, és befejezi a szolgáltatásfiók áthelyezését, törölje a forrás-szolgáltatási fiókot.
+To commit the changes and complete the move of your service account, delete the source service account.
 
-## <a name="next-steps"></a>Következő lépések
+## Next steps
 
-[Index létrehozása](https://docs.microsoft.com/azure/search/search-get-started-portal)
+[Create an index](https://docs.microsoft.com/azure/search/search-get-started-portal)
 
-[Készségkészlet létrehozása](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob)
+[Create a skillset](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob)
 
-[Knowledge Store létrehozása](https://docs.microsoft.com/azure/search/knowledge-store-create-portal)
-
+[Create a knowledge store](https://docs.microsoft.com/azure/search/knowledge-store-create-portal) -->

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 6ff12122d541a9dbb160a424e0d11cf03fdcb9fe
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 51fa6d4859eb4b7f059b499ba73d84d9fc65e6f6
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970227"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398989"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Oktatóanyag: az Azure szolgáltatás emblémáinak felismerése kamerás képeken
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 - IOS-vagy Android-emulátor a Visual studióhoz
 - Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (opcionális)
 
-## <a name="get-the-source-code"></a>A forráskód lekérése
+## <a name="get-the-source-code"></a>Forráskód beszerzése
 
 Ha a megadott webalkalmazást szeretné használni, akkor a GitHubon a [mesterséges intelligencia vizualizáció](https://github.com/Microsoft/AIVisualProvision) kiosztási tárházában lévő forráskódot klónozással vagy letöltéssel töltheti le. Nyissa meg a *Source/VisualProvision. SLN* fájlt a Visual Studióban. Később a projekt egyes fájljait is szerkesztheti, így futtathatja az alkalmazást.
 
@@ -107,7 +107,7 @@ Az alkalmazáshoz egy Azure egyszerű szolgáltatás fiókra van szükség a szo
 
 Az itt látható módon létrehozhat egy egyszerű szolgáltatásnevet Azure Cloud Shell vagy az Azure CLI használatával. A kezdéshez jelentkezzen be, és válassza ki a használni kívánt előfizetést.
 
-```console
+```azurecli
 az login
 az account list
 az account set --subscription "<subscription name or subscription id>"
@@ -115,7 +115,7 @@ az account set --subscription "<subscription name or subscription id>"
 
 Ezután hozza létre az egyszerű szolgáltatásnevet. (Ez a folyamat hosszabb időt is igénybe vehet.)
 
-```console
+```azurecli
 az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongPassword>
 ```
 

@@ -10,12 +10,12 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: eac7674ae4a88621a803c70bd55a88e65b2cb7e9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: caf2437b4a4853bc29f094d082a4ea15d2f7a3c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838688"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388483"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Klasszikus Studio-webszolgáltatás újratanítása és üzembe helyezése
 
@@ -46,25 +46,12 @@ Pontozási végpontokat adhat hozzá a [GitHub-tárházban](https://github.com/h
 
 1. Machine Learning Studio (klasszikus), a bal oldali navigációs oszlopban kattintson a webszolgáltatások elemre.
 1. A webszolgáltatás irányítópultjának alján kattintson a **végpontok kezelése előnézet**elemre.
-1. Kattintson az **Add** (Hozzáadás) parancsra.
-1. Adja meg az új végpont nevét és leírását. Válassza ki a naplózási szintet, valamint azt, hogy a mintaadatok engedélyezve vannak-e. További információ a naplózásról: [Machine learning webszolgáltatások naplózásának engedélyezése](web-services-logging.md).
+1. Kattintson az **Hozzáadás** parancsra.
+1. Írjon be egy nevet és leírást az új végpont. Válassza ki a naplózási szint, és hogy engedélyezve van-e a mintaadatok. További információ a naplózásról: [Machine learning webszolgáltatások naplózásának engedélyezése](web-services-logging.md).
 
 ## <a name="update-the-added-endpoints-trained-model"></a>A hozzáadott végpont betanított modellének frissítése
 
 ### <a name="retrieve-patch-url"></a>JAVÍTÁS URL-címének beolvasása
-
-### <a name="option-1-programmatically"></a>1\. lehetőség: programozott módon
-
-A megfelelő PATCH URL-cím programozott módon történő beszerzéséhez kövesse az alábbi lépéseket:
-
-1. Futtassa a [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) -mintakód.
-1. A AddEndpoint kimenetében keresse meg a *HelpLocation* értéket, és másolja az URL-címet.
-
-   ![HelpLocation a addEndpoint-minta kimenetében.](./media/retrain-classic/addEndpoint-output.png)
-1. Illessze be az URL-címet egy böngészőben, és navigáljon egy olyan oldalra, amely a webszolgáltatáshoz kapcsolódó súgótémaköröket tartalmaz.
-1. Kattintson az **erőforrás frissítése** hivatkozásra a javítás Súgó oldal megnyitásához.
-
-### <a name="option-2-use-the-azure-machine-learning-web-services-portal"></a>2\. lehetőség: a Azure Machine Learning Web Services portál használata
 
 Kövesse az alábbi lépéseket a javítás URL-címének beszerzéséhez a webes portál használatával:
 
@@ -101,8 +88,8 @@ Az alábbi mintakód bemutatja, hogyan használhatja a *BaseLocation*, a *Relati
                     Location = new AzureBlobDataReference()
                     {
                         BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
-                        RelativeLocation = "your endpoint relative location", //from the output, for example: “experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner”
-                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: “?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl”
+                        RelativeLocation = "your endpoint relative location", //from the output, for example: "experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner"
+                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: "?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl"
                     }
                 }
             }
@@ -131,7 +118,7 @@ A hívás *apiKey* és *endpointUrl* a végpont-irányítópultból szerezhető 
 
 Az *erőforrásokban* lévő *Name* paraméter értékének meg kell egyeznie a prediktív kísérletben a mentett betanított modell erőforrásának nevével. Az erőforrás nevének lekérése:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. A bal oldali menüben kattintson a **Machine learning**elemre.
 1. A név területen kattintson a munkaterületre, majd a **webszolgáltatások**elemre.
 1. A név területen kattintson a **népszámlálási modell [prediktív exp.]** elemre.
@@ -143,7 +130,7 @@ Ha az SAS-jogkivonat lejár a végpont frissítése előtt, akkor a lekérést a
 
 A kód sikeres futtatása után az új végpontnak körülbelül 30 másodpercen belül el kell indulnia az átdolgozott modell használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a webszolgáltatások kezeléséről vagy több kísérlet futtatásának nyomon követéséről, tekintse meg a következő cikkeket:
 

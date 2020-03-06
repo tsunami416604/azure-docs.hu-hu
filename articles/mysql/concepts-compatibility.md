@@ -6,24 +6,24 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: bb8477165afcaafe6d03ccb3fe7764124aa166c6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7cbd2dfab7d0d9ee0df730eb15fa2c4b4952c85b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928669"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399189"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>A Azure Database for MySQL-kompatibilis MySQL-illesztőprogramok és-felügyeleti eszközök
 Ez a cikk a Azure Database for MySQL kompatibilis illesztőprogramokat és felügyeleti eszközöket ismerteti.
 
-## <a name="mysql-drivers"></a>MySQL-illesztőprogramok
+## <a name="mysql-drivers"></a>MySQL Drivers
 Azure Database for MySQL a MySQL-adatbázis világ legnépszerűbb közösségi kiadását használja. Ezért kompatibilis a programozási nyelvek és illesztőprogramok széles választékával. A cél az, hogy támogassa a legújabb MySQL-illesztőprogramokat, és a nyílt forráskódú Közösségből származó szerzőkkel folytatott erőfeszítésekkel folyamatosan javítsa a MySQL-illesztőprogramok funkcióit és használhatóságát. A tesztelt és a Azure Database for MySQL 5,6-es és 5,7-es verzióval kompatibilis illesztőprogramok listáját az alábbi táblázat tartalmazza:
 
 | **Programozási nyelv** | **Illesztőprogram** | **Hivatkozások** | **Kompatibilis verziók** | **Nem kompatibilis verziók** | **Megjegyzések** |
 | :----------------------- | :--------- | :-------- | :---------------------- | :------------------------ | :-------- |
 | PHP | mysqli, pdo_mysql, mysqlnd | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5.3 | Az SSL-MySQLi rendelkező PHP 7,0-kapcsolathoz adja hozzá a MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERTt a kapcsolati karakterláncban. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> OEM set: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` lehetőség hamis értékre.|
 | .NET | Aszinkron MySQL-összekötő a .NET-hez | https://github.com/mysql-net/MySqlConnector <br> [Telepítőcsomag a Nuget](https://www.nuget.org/packages/MySqlConnector/) | 0,27 és utána | 0.26.5 és előtte | |
-| .NET | MySQL-összekötő/háló | https://github.com/mysql/mysql-connector-net | 8,0, 7,0, 6,10 |  | A kódolási hibák miatt a kapcsolatok sikertelenek lehetnek bizonyos nem UTF8 Windows rendszereken. |
+| .NET | MySQL-összekötő/háló | https://github.com/mysql/mysql-connector-net | 6.6.3, 7,0, 8,0 |  | A kódolási hibák miatt a kapcsolatok sikertelenek lehetnek bizonyos nem UTF8 Windows rendszereken. |
 | Node.js | mysqljs | https://github.com/mysqljs/mysql/ <br> Telepítőcsomag a NPM-ből:<br> `npm install mysql` futtatása a NPM | 2.15 | 2.14.1 és előtte | |
 | Node.js | csomópont – mysql2 | https://github.com/sidorares/node-mysql2 | 1.3.4 + | | |
 | Indítás | Go MySQL-illesztőprogram | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 és előtte | Használja az 1,3-es verzióhoz tartozó `allowNativePasswords=true`t a kapcsolatok karakterláncában. Az 1,4-es verzió egy javítást tartalmaz, és `allowNativePasswords=true` már nem szükséges. |
@@ -31,8 +31,8 @@ Azure Database for MySQL a MySQL-adatbázis világ legnépszerűbb közösségi 
 | Python | PyMySQL | https://pypi.org/project/PyMySQL/ | 0.7.11, 0.8.0, 0.8.1, 0.9.3 + | 0.9.0-0.9.2 (regresszió a web2py-ben) | |
 | Java | MariaDB-összekötő/J | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 és előtte | | 
 | Java | MySQL-összekötő/J | https://github.com/mysql/mysql-connector-j | 5.1.21 +, használja a 8.0.17 és a MySQL 8,0 | 5.1.20 és alacsonyabb | |
-| C# | MySQL-összekötő/C (libmysqlclient) | https://dev.mysql.com/doc/refman/5.7/en/c-api-implementations.html | 6.0.2 + | | |
-| C# | MySQL-összekötő/ODBC (MyODBC) | https://github.com/mysql/mysql-connector-odbc | 3.51.29 + | | |
+| C | MySQL-összekötő/C (libmysqlclient) | https://dev.mysql.com/doc/refman/5.7/en/c-api-implementations.html | 6.0.2 + | | |
+| C | MySQL-összekötő/ODBC (MyODBC) | https://github.com/mysql/mysql-connector-odbc | 3.51.29 + | | |
 | C++ | MySQL-összekötő/C++ | https://github.com/mysql/mysql-connector-cpp | 1.1.9 + | 1.1.3-es és alacsonyabb | | 
 | C++ | MySQL + +| https://tangentsoft.net/mysql++ | 3.2.3 + | | |
 | Ruby | mysql2 | https://github.com/brianmario/mysql2 | 0.4.10 + | | |
@@ -40,7 +40,7 @@ Azure Database for MySQL a MySQL-adatbázis világ legnépszerűbb közösségi 
 | Swift | MySQL – Swift | https://github.com/novi/mysql-swift | 0.7.2 + | | |
 | Swift | gőz/MySQL | https://github.com/vapor/mysql-kit | 2.0.1 + | | |
 
-## <a name="management-tools"></a>Felügyeleti eszközök
+## <a name="management-tools"></a>Kezelőeszközök
 A kompatibilitási előny az adatbázis-felügyeleti eszközökre is kiterjed. A meglévő eszközeinek továbbra is működniük kell Azure Database for MySQLsal, feltéve, hogy az adatbázis-manipuláció a felhasználói engedélyek határain belül működik. A következő táblázatban található három általános adatbázis-felügyeleti eszköz, amelyet teszteltek, és amelyek kompatibilisek a Azure Database for MySQL 5,6-as és 5,7-es verzióval:
 
 |                                     | **MySQL Workbench 6. x és fel** | **Navicat 12** | **PHPMyAdmin 4. x és fel** |

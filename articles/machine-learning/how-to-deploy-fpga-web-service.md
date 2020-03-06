@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
-ms.date: 10/25/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd77c77abc8fe60eb18febde6fcc5bdffe6d7871
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b036dd9c440e01bf32b35ee01c1d39d4ce6e129b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538097"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402710"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Mik a Field-programozható Gate-tömbök (FPGA) és az üzembe helyezés módja
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ez a cikk bevezetést nyújt a Field-programozható Gate-tömbök (FPGA) számára, és bemutatja, hogyan helyezheti üzembe a modelleket Azure Machine Learning használatával egy Azure-FPGA. 
 
-Az FPGA-k programozható logikai blokkok tömbjét és újrakonfigurálható összekötők hierarchiáját tartalmazzák. Az összekapcsolások lehetővé teszik, hogy ezeket a blokkokat különböző módokon konfigurálja a gyártás után. A többi zsetonnal összehasonlítva a FPGA a programozhatóság és a teljesítmény kombinációját biztosítja.
+A FPGA programozható logikai blokkok tömbjét és az újrakonfigurálható összekapcsolások hierarchiáját tartalmazza. Az összekapcsolások lehetővé teszik, hogy ezeket a blokkokat különböző módokon konfigurálja a gyártás után. A többi zsetonnal összehasonlítva a FPGA a programozhatóság és a teljesítmény kombinációját biztosítja.
 
 ## <a name="fpgas-vs-cpu-gpu-and-asic"></a>FPGA vs. CPU, GPU és ASIC
 
@@ -33,46 +33,46 @@ A következő diagram és táblázat bemutatja, hogyan hasonlítható össze a F
 
 |Processzor||Leírás|
 |---|:-------:|------|
-|Alkalmazásspecifikus integrált áramkörök|ASICs|Az egyéni áramkörök – például a Google TensorFlow Processor Units (TPU) – biztosítják a lehető legnagyobb hatékonyságot. Az igények változása miatt nem konfigurálhatók újra.|
-|Mező – programozható Gate-tömbök|FPGA-k|A FPGA, például az Azure-on elérhetők, az ASICs-hoz hasonló teljesítményt biztosítanak. Az új logika megvalósításához az idő múlásával rugalmasan és újrakonfigurálható is.|
-|Grafikus feldolgozási egységek|GPU-k|Az AI-számítások népszerű választéka. A GPU-k párhuzamos feldolgozási képességeket biztosítanak, így gyorsabban, mint a CPU-k.|
-|Központi feldolgozó egységek|CPU-k|Általános célú processzorok, amelyek teljesítménye nem ideális a grafikához és a videók feldolgozásához.|
+|Alkalmazás-specifikus integrált Kapcsolatcsoportok|Az ASICs|Egyéni kapcsolatok, például a Google TensorFlow processzor egységek (TPU), adja meg a lehető legnagyobb hatékonysággal. Az igények változása miatt nem konfigurálhatók újra.|
+|A mező-programmable gate arrays|FPGA-k|A FPGA, például az Azure-on elérhetők, az ASICs-hoz hasonló teljesítményt biztosítanak. Az új logika megvalósításához az idő múlásával rugalmasan és újrakonfigurálható is.|
+|Grafikai feldolgozóegységek|GPU-k|Az AI-számítások népszerű választéka. A GPU-k párhuzamos feldolgozási képességeket biztosítanak, így gyorsabban, mint a CPU-k.|
+|Központi egység|CPU-k|Általános célú processzorok, amelyek teljesítménye nem ideális a grafikához és a videók feldolgozásához.|
 
 Az Azure-beli FPGA az Intel FPGA-eszközein alapulnak, amelyeket az adatszakértők és a fejlesztők a valós idejű AI-számítások felgyorsítására használnak. Ez a FPGA-kompatibilis architektúra teljesítményt, rugalmasságot és méretezést kínál, és elérhető az Azure-ban.
 
 A FPGA lehetővé teszi a valós idejű következtetések (vagy modellek pontozási) kérések alacsony késésének elérését. Aszinkron kérelmek (kötegelt feldolgozás) nem szükségesek. A kötegelt feldolgozás késést okozhat, mert több adatfeldolgozást kell feldolgozni. A neurális feldolgozó egységek implementációja nem igényli a kötegelt feldolgozást; Ezért a késés a processzor-és a GPU-processzorokhoz képest sokszor alacsonyabb lehet.
 
-### <a name="reconfigurable-power"></a>Újrakonfigurálható áramellátás
-A FPGA újrakonfigurálhatja különböző típusú gépi tanulási modellekhez. Ez a rugalmasság megkönnyíti az alkalmazások felgyorsítását a leggyakrabban használt numerikus pontosság és memória modell alapján. Mivel a FPGA újrakonfigurálható, a rendszer naprakészen tarthatja a gyorsan változó AI-algoritmusok követelményeit.
+### <a name="reconfigurable-power"></a>Újrakonfigurálható power
+A FPGA újrakonfigurálhatja különböző típusú gépi tanulási modellekhez. Ezt a rugalmasságot megkönnyíti az alkalmazások, a legtöbb optimális numerikus pontosság és a használt memória modell alapján gyorsabb. Mivel a FPGA újrakonfigurálható, a rendszer naprakészen tarthatja a gyorsan változó AI-algoritmusok követelményeit.
 
-## <a name="whats-supported-on-azure"></a>Az Azure által támogatott Újdonságok
-Microsoft Azure a világ legnagyobb Felhőbeli befektetése a FPGA-ben. A FPGA-kompatibilis hardveres architektúra használatával a betanított neurális hálózatok gyorsan és alacsonyabb késéssel futnak. Az Azure-ban integrálással előre képzett mély neurális hálózatokat (DNN) a FPGA között a szolgáltatás skálázása érdekében. A DNN előre betanítható, a tanuláshoz szükséges mély Képtulajdonság, illetve a frissített súlyok használatával.
+## <a name="whats-supported-on-azure"></a>Az Azure-ban támogatott műveletek
+Microsoft Azure a világ legnagyobb Felhőbeli befektetése a FPGA-ben. Ez az architektúra FPGA-kompatibilis hardveres, betanított Neurális hálózatokkal futtassa gyorsan és kisebb késést biztosítanak. Az Azure-ban integrálással előre képzett mély neurális hálózatokat (DNN) a FPGA között a szolgáltatás skálázása érdekében. A dnn-eket is lehet előre betanított, mint egy részletes featurizer tanulási, vagy a frissített súlyok finomította átvitele.
 
 Az Azure-FPGA a következőket támogatja:
 
-+ Képbesorolási és-felismerési forgatókönyvek
-+ TensorFlow üzembe helyezése
-+ Intel FPGA hardver 
++ Kép besorolási és felismerés forgatókönyvek
++ TensorFlow-telepítés
++ Az Intel FPGA hardver 
 
 Ezek a DNN modellek jelenleg elérhetők:
   - ResNet 50
   - ResNet 152
   - DenseNet-121
-  - VGG – 16
-  - SSD – VGG
+  - VGG-16
+  - SSD-VGG
 
 A FPGA az alábbi Azure-régiókban érhetők el:
   - USA keleti régiója
   - Délkelet-Ázsia
   - Nyugat-Európa
-  - USA 2. nyugati régiója
+  - USA nyugati régiója, 2.
 
 > [!IMPORTANT]
 > A késés és az átviteli sebesség optimalizálása érdekében a FPGA-modellnek adatokat küldő ügyfélnek a fenti régiók egyikében kell lennie (a modellt a következőre telepítette:).
 
 Az **Azure-beli virtuális gépek PBS-családja** Intel Arria 10 FPGA tartalmaz. Az Azure-kvóta kiosztásának ellenőrzésekor "standard PBS Family vCPU"-ként jelenik meg. A PB6 virtuális gépnek hat vCPU és egy FPGA van, és az Azure ML automatikusan kiépíti a modellnek egy FPGA való üzembe helyezésének részeként. Csak az Azure ML-vel használható, és nem futtathat tetszőleges bitstreams. Például nem fogja tudni megkezdeni a FPGA a bitstreams, hogy titkosítást, kódolást stb.
 
-### <a name="scenarios-and-applications"></a>Forgatókönyvek és alkalmazások
+### <a name="scenarios-and-applications"></a>Forgatókönyvek és alkalmazási
 
 Az Azure FPGA integrálva van Azure Machine Learningokkal. A Microsoft FPGA használ a DNN kiértékeléséhez, a Bing keresési rangsorolásához és a szoftveres hálózatkezelési (SDN) gyorsításhoz a késés csökkentése érdekében, valamint a processzorok más feladatokhoz való felszabadítását.
 
@@ -126,12 +126,12 @@ A modelleket webszolgáltatásként is üzembe helyezheti a FPGA Azure Machine L
 
 Ebből a dokumentumból megtudhatja, hogyan hozhat létre egy TensorFlow gráfot a bemeneti rendszerkép előfeldolgozásához, hogy a Képtulajdonság a ResNet 50-et használja egy FPGA, majd a szolgáltatásokat a ImageNet-adatkészletben szereplő osztályozó használatával futtassa.
 
-Kövesse az alábbi utasításokat:
+Kövesse az utasításokat:
 
 * A TensorFlow modell megadása
 * A modell átalakítása
-* A modell rendszerbe állítása
-* Az üzembe helyezett modell felhasználása
+* A modell üzembe helyezése
+* A telepített modell feldolgozása
 * Telepített szolgáltatások törlése
 
 A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) segítségével hozzon létre egy szolgáltatás-definíciót. A szolgáltatás definíciója egy olyan fájl, amely a diagramok (bemenet, Képtulajdonság és osztályozó) folyamatát írja le a TensorFlow alapján. A telepítési parancs automatikusan tömöríti a definíciót és a diagramokat egy ZIP-fájlba, és feltölti a ZIP-fájlt az Azure Blob Storage-ba. A DNN már telepítve van, hogy a FPGA fusson.
@@ -150,7 +150,7 @@ ws = Workspace.from_config()
 print(ws.name, ws.resource_group, ws.location, ws.subscription_id, sep='\n')
 ```
 
-### <a name="preprocess-image"></a>Rendszerkép előfeldolgozása
+### <a name="preprocess-image"></a>Kép előfeldolgozása
 
 A webszolgáltatás bemenete egy JPEG-rendszerkép.  Az első lépés a JPEG-rendszerkép dekódolása és előfeldolgozása.  A JPEG-képek karakterláncként vannak kezelve, és az eredmény a ResNet 50 modell bemenetét eredményező tízes.
 
@@ -166,7 +166,7 @@ print(image_tensors.shape)
 
 ### <a name="load-featurizer"></a>Képtulajdonság betöltése
 
-Inicializálja a modellt, és töltsön le egy TensorFlow ellenőrzőpontot a ResNet50 kvantálási verziójáról, amelyet Képtulajdonság kíván használni.  Az alábbi kódrészletben a "QuantizedResnet50" kifejezés helyett más mély neurális hálózatokat is importálhat:
+A modell inicializálása, és töltse le a featurizer használandó ResNet50 kvantált verziójának TensorFlow ellenőrzőpont.  Az alábbi kódrészletben a "QuantizedResnet50" kifejezés helyett más mély neurális hálózatokat is importálhat:
 
 - QuantizedResnet152
 - QuantizedVgg16
@@ -184,7 +184,7 @@ print(feature_tensor.shape)
 
 ### <a name="add-classifier"></a>Osztályozó hozzáadása
 
-Ez az osztályozó a ImageNet adatkészleten lett betanítva.  Példák az átadásra és a testreszabott súlyok betanítására a [minta jegyzetfüzetek](https://aka.ms/aml-notebooks)készletében.
+Az osztályozó által igénybe vett rendelkezik betanítva épít adathalmazon.  Példák az átadásra és a testreszabott súlyok betanítására a [minta jegyzetfüzetek](https://aka.ms/aml-notebooks)készletében.
 
 ```python
 classifier_output = model_graph.get_default_classifier(feature_tensor)
@@ -320,12 +320,12 @@ for i in Image.list(workspace=ws):
 
 ### <a name="deploy-to-the-cloud"></a>Üzembe helyezés a felhőben
 
-Ha a modellt nagy léptékű üzemi webszolgáltatásként szeretné üzembe helyezni, használja az Azure Kubernetes szolgáltatást (ak). Létrehozhat egy újat a Azure Machine Learning SDK, CLI vagy [Azure Machine learning Studio](https://ml.azure.com)használatával.
+Az Azure Kubernetes Service (AKS) használatával a modellt webszolgáltatásként, amely nagy méretű éles üzembe helyezéséhez. Létrehozhat egy újat a Azure Machine Learning SDK, CLI vagy [Azure Machine learning Studio](https://ml.azure.com)használatával.
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
 
-# Specify the Standard_PB6s Azure VM and location. Values for location may be "eastus", "southeastasia", "westeurope", or "westus2”. If no value is specified, the default is "eastus".
+# Specify the Standard_PB6s Azure VM and location. Values for location may be "eastus", "southeastasia", "westeurope", or "westus2". If no value is specified, the default is "eastus".
 prov_config = AksCompute.provisioning_configuration(vm_size = "Standard_PB6s",
                                                     agent_count = 1,
                                                     location = "eastus")

@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c841195cacd8c8d7698f69435572587bf04c3d67
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 56f240a5191dd483f89889f3ffe13b1819ca1e53
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008361"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399316"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Ismerkedés a Azure Active Directory Reporting API-val
 
@@ -50,13 +50,10 @@ Részletes útmutatást a [Azure Active Directory jelentési API elérésének e
 A naplók Microsoft Graph API-végpontja `https://graph.microsoft.com/beta/auditLogs/directoryAudits`, és a bejelentkezések Microsoft Graph API-végpontja `https://graph.microsoft.com/beta/auditLogs/signIns`. További információkért tekintse meg a [naplózási API-referenciát](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) és a [bejelentkezési API-referenciát](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
 
 Emellett az [Identity Protection kockázati észlelések API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) -val programozási hozzáférést nyerhet a biztonsági észlelésekhez Microsoft Graph használatával. További információ: Ismerkedés [a Azure Active Directory Identity Protection és Microsoft Graphával](../identity-protection/graph-get-started.md). 
-
-> [!NOTE]
->  A **https:\/\/graph.windows.net\/\<bérlő neve\>\/-jelentések\/** végpont elavult. A fentiekben ismertetett új API-végpontok használatával programozott módon férhet hozzá a tevékenység-és biztonsági jelentésekhez.
   
-## <a name="apis-with-graph-explorer"></a>API-k a Graph Explorerrel
+## <a name="apis-with-microsoft-graph-explorer"></a>API-k Microsoft Graph Explorerrel
 
-A [MSGraph Explorer](https://developer.microsoft.com/graph/graph-explorer) segítségével ellenőrizheti a bejelentkezési és a naplózási API-adatait. Ügyeljen arra, hogy jelentkezzen be a fiókjába a Graph Explorer felhasználói felületének mindkét bejelentkezési gombján, és állítsa be a **AuditLog. Read. All** és a **Directory. Read. All** engedélyeket a bérlőhöz az ábrán látható módon.   
+A bejelentkezési és a naplózási API-adatai a [Microsoft Graph Explorerrel](https://developer.microsoft.com/graph/graph-explorer) ellenőrizhetők. Ügyeljen arra, hogy jelentkezzen be a fiókjába a Graph Explorer felhasználói felületének mindkét bejelentkezési gombján, és állítsa be a **AuditLog. Read. All** és a **Directory. Read. All** engedélyeket a bérlőhöz az ábrán látható módon.   
 
 ![Graph Explorer](./media/concept-reporting-api/graph-explorer.png)
 

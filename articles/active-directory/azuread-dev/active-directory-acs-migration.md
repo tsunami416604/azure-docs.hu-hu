@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 7b009a6e2f540dc076340a6803679a541e60adc7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 63ace9af31dd284c61fae188744b24361f33c170
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165344"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377910"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: áttelepítés az Azure Access Control Service
 
@@ -68,13 +68,13 @@ Az ebben a szakaszban ismertetett lépéseket követve megállapíthatja, hogy m
 ### <a name="download-and-install-acs-powershell"></a>Az ACS PowerShell letöltése és telepítése
 
 1. Lépjen a PowerShell-galériara, és töltse le az [ACS. Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2)szolgáltatást.
-1. A modul telepítése a futtatásával
+2. A modul telepítése a futtatásával
 
     ```powershell
     Install-Module -Name Acs.Namespaces
     ```
 
-1. Az összes lehetséges parancs listájának lekérése futtatásával
+3. Az összes lehetséges parancs listájának lekérése futtatásával
 
     ```powershell
     Get-Command -Module Acs.Namespaces
@@ -94,8 +94,8 @@ Az ebben a szakaszban ismertetett lépéseket követve megállapíthatja, hogy m
   
     Előfordulhat, hogy a parancsok végrehajtása előtt `Set-ExecutionPolicy -ExecutionPolicy Bypass` kell futtatnia a parancsokat, és az előfizetések rendszergazdájának kell lennie a parancsok végrehajtásához.
 
-1. Sorolja fel az elérhető Azure-előfizetéseket a **Get-AcsSubscription** parancsmag használatával.
-1. Sorolja fel az ACS-névtereket a **Get-AcsNamespace** parancsmag használatával.
+2. Sorolja fel az elérhető Azure-előfizetéseket a **Get-AcsSubscription** parancsmag használatával.
+3. Sorolja fel az ACS-névtereket a **Get-AcsNamespace** parancsmag használatával.
 
 ### <a name="check-which-applications-will-be-impacted"></a>Annak meghatározása, hogy mely alkalmazásokat érinti a rendszer
 
@@ -103,8 +103,8 @@ Az ebben a szakaszban ismertetett lépéseket követve megállapíthatja, hogy m
 
     Ha például az egyik névtér contoso-test, lépjen a `https://contoso-test.accesscontrol.windows.net`
 
-1. A **megbízhatósági kapcsolatok**területen válassza a **függő entitások alkalmazások** lehetőséget, hogy megtekintse azon alkalmazások LISTÁJÁT, amelyeket az ACS-nyugdíjazás érint.
-1. Ismételje meg a 1-2. lépést minden más ACS-névtérnél.
+2. A **megbízhatósági kapcsolatok**területen válassza a **függő entitások alkalmazások** lehetőséget, hogy megtekintse azon alkalmazások LISTÁJÁT, amelyeket az ACS-nyugdíjazás érint.
+3. Ismételje meg a 1-2. lépést minden más ACS-névtérnél.
 
 ## <a name="retirement-schedule"></a>Nyugdíjazási ütemterv
 
@@ -202,7 +202,7 @@ A következő táblázat összehasonlítja az Azure AD-ban elérhető szolgálta
 | WS-Trust | Támogatott | Nem támogatott |
 | **Jogkivonat-formátumok** | | |
 | JWT | Bétaverzióban támogatott | Támogatott |
-| SAML 1,1 | Támogatott | Előzetes verzió |
+| SAML 1,1 | Támogatott | Előzetes |
 | SAML 2.0 | Támogatott | Támogatott |
 | SWT | Támogatott | Nem támogatott |
 | **Testreszabások** | | |
@@ -210,7 +210,7 @@ A következő táblázat összehasonlítja az Azure AD-ban elérhető szolgálta
 | Egyéni jogkivonat-aláíró tanúsítványok feltöltése | Támogatott | Támogatott |
 | Jogcímek testreszabása jogkivonatokban |– Az identitás-szolgáltatók bemeneti jogcímeinek továbbítása<br />– Hozzáférési jogkivonat beszerzése jogcím-szolgáltatótól<br />– Kimeneti jogcímek kibocsátása bemeneti jogcímek értékei alapján<br />– Állandó értékekkel rendelkező kimeneti jogcímek kibocsátása |– Az összevont identitás-szolgáltatóktól származó jogcímek nem adhatók át<br />– Nem kérhető le jogcímként az Identitáskezelő hozzáférési jogkivonata<br />– A bemeneti jogcímek értékei alapján nem lehet kiállítani a kimeneti jogcímeket<br />– Állandó értékekkel rendelkező kimeneti jogcímeket adhat ki<br />– Az Azure AD-vel szinkronizált felhasználók tulajdonságai alapján kiállíthatja a kimeneti jogcímeket |
 | **Automatizálás** | | |
-| Konfigurációs és felügyeleti feladatok automatizálása | Access Control felügyeleti szolgáltatáson keresztül támogatott | Microsoft Graph és az Azure AD-n keresztül támogatott Graph API |
+| Konfigurációs és felügyeleti feladatok automatizálása | Access Control felügyeleti szolgáltatáson keresztül támogatott | A Microsoft Graph API használatával támogatott |
 
 Ha úgy dönt, hogy az Azure AD az alkalmazások és szolgáltatások legjobb áttelepítési útvonala, akkor az alkalmazás Azure AD-vel való integrálásának két módját kell figyelembe vennie.
 
@@ -261,7 +261,7 @@ A következő táblázat összehasonlítja a webalkalmazásokhoz kapcsolódó Ac
 | Egyéni jogkivonat-aláíró tanúsítványok feltöltése | Támogatott | Egyéni aláírási kulcsok, nem tanúsítványok, egyéni házirendeken keresztül támogatott |
 | Jogcímek testreszabása jogkivonatokban |– Az identitás-szolgáltatók bemeneti jogcímeinek továbbítása<br />– Hozzáférési jogkivonat beszerzése jogcím-szolgáltatótól<br />– Kimeneti jogcímek kibocsátása bemeneti jogcímek értékei alapján<br />– Állandó értékekkel rendelkező kimeneti jogcímek kibocsátása |– Továbbíthatja az identitás-szolgáltatók jogcímeit; egyes jogcímekhez szükséges egyéni szabályzatok<br />– Nem kérhető le jogcímként az Identitáskezelő hozzáférési jogkivonata<br />-Kiállíthatja a kimeneti jogcímeket a bemeneti jogcímek értékei alapján az egyéni házirendek használatával<br />-Az állandó értékekkel rendelkező kimeneti jogcímeket egyéni házirendeken keresztül is kiállíthatja |
 | **Automatizálás** | | |
-| Konfigurációs és felügyeleti feladatok automatizálása | Access Control felügyeleti szolgáltatáson keresztül támogatott |– Az Azure AD-Graph API használatával engedélyezett felhasználók létrehozása<br />– A B2C-bérlők, alkalmazások vagy házirendek programozott módon nem hozhatók létre |
+| Konfigurációs és felügyeleti feladatok automatizálása | Access Control felügyeleti szolgáltatáson keresztül támogatott |– A Microsoft Graph API használatával engedélyezett felhasználók létrehozása<br />– A B2C-bérlők, alkalmazások vagy házirendek programozott módon nem hozhatók létre |
 
 Ha úgy dönt, hogy Azure AD B2C az alkalmazások és szolgáltatások legjobb áttelepítési útvonala, kezdje a következő erőforrásokkal:
 
@@ -325,7 +325,7 @@ Az Azure AD-t a kiszolgálók közötti hitelesítéshez is használhatja az OAu
 | Ügyfél-hitelesítési módszerek |– Egyszerű jelszó<br />-Aláírt SWT<br />-SAML-jogkivonat összevont identitás-szolgáltatótól |– Egyszerű jelszó<br />-Aláírt JWT |
 | Jogkivonat-formátumok |– JWT<br />– SAML 1,1<br />- SAML 2.0<br />– SWT<br /> | Csak JWT |
 | Jogkivonat-átalakítás |– Egyéni jogcímek hozzáadása<br />– Egyszerű, ha-akkor jogcím kiállítási logikája | Egyéni jogcímek hozzáadása | 
-| Konfigurációs és felügyeleti feladatok automatizálása | Access Control felügyeleti szolgáltatáson keresztül támogatott | Microsoft Graph és az Azure AD-n keresztül támogatott Graph API |
+| Konfigurációs és felügyeleti feladatok automatizálása | Access Control felügyeleti szolgáltatáson keresztül támogatott | A Microsoft Graph API használatával támogatott |
 
 A kiszolgálók közötti forgatókönyvek megvalósításával kapcsolatos útmutatásért tekintse meg a következő forrásokat:
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 5c8b3ed329c03bd08b2a0b3e26ada7a4e36ceb49
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1968bc03bfddb9d6f6c8fe743a2a1a99722c074d
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716888"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399169"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>A Text Analytics nyelvfelismerés tároló üzembe helyezése az Azure Kubernetes Service-ben
 
@@ -80,8 +80,11 @@ Ha a tárolót az Azure Kubernetes szolgáltatásban szeretné üzembe helyezni,
 
     Mentse az eredményeket a **lekéréséhez** tulajdonság beszerzéséhez. Ez a tárolt tároló címe lesz, amelyet később a `language.yml` fájlban használt.
 
-    ```console
-    > az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
+    ```azurecli-interactive
+    az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
+    ```
+
+    ```output
     {
         "adminUserEnabled": false,
         "creationDate": "2019-01-02T23:49:53.783549+00:00",
@@ -126,7 +129,7 @@ Ha a tárolót az Azure Kubernetes szolgáltatásban szeretné üzembe helyezni,
 
     A tároló-beállításjegyzék verziójának nyomon követéséhez adja hozzá a címkét a verzió formátumával, például `v1`.
 
-1. Küldje le a rendszerképet a tároló-beállításjegyzékbe. A művelet eltarthat néhány percig.
+1. Küldje le a rendszerképet a tároló-beállításjegyzékbe. Ez eltarthat néhány percig.
 
     ```console
     docker push pattyregistry.azurecr.io/language-frontend:v1
@@ -136,8 +139,7 @@ Ha a tárolót az Azure Kubernetes szolgáltatásban szeretné üzembe helyezni,
 
     A folyamat elvégzése után az eredmények a következőhöz hasonlóak:
 
-    ```console
-    > docker push pattyregistry.azurecr.io/language-frontend:v1
+    ```output
     The push refers to repository [pattyregistry.azurecr.io/language-frontend]
     82ff52ee6c73: Pushed
     07599c047227: Pushed
@@ -150,7 +152,7 @@ Ha a tárolót az Azure Kubernetes szolgáltatásban szeretné üzembe helyezni,
 
 ## <a name="get-language-detection-docker-image"></a>Nyelvfelismerés Docker-rendszerkép lekérése
 
-1. A Docker-rendszerkép legújabb verziójának lekérése a helyi gépre. A művelet eltarthat néhány percig. Ha a tároló újabb verziója van, módosítsa `1.1.006770001-amd64-preview` értékét az újabb verzióra.
+1. A Docker-rendszerkép legújabb verziójának lekérése a helyi gépre. Ez eltarthat néhány percig. Ha a tároló újabb verziója van, módosítsa `1.1.006770001-amd64-preview` értékét az újabb verzióra.
 
     ```console
     docker pull mcr.microsoft.com/azure-cognitive-services/language:1.1.006770001-amd64-preview
@@ -162,7 +164,7 @@ Ha a tárolót az Azure Kubernetes szolgáltatásban szeretné üzembe helyezni,
     docker tag mcr.microsoft.com/azure-cognitive-services/language pattiyregistry.azurecr.io/language:1.1.006770001-amd64-preview
     ```
 
-1. Küldje le a rendszerképet a tároló-beállításjegyzékbe. A művelet eltarthat néhány percig.
+1. Küldje le a rendszerképet a tároló-beállításjegyzékbe. Ez eltarthat néhány percig.
 
     ```console
     docker push pattyregistry.azurecr.io/language:1.1.006770001-amd64-preview
@@ -180,8 +182,7 @@ A következő lépések szükségesek ahhoz, hogy a tároló-beállításjegyzé
 
     Mentse az eredmények `appId` értékét a 3. lépésben szereplő, `<appId>`. lépésben szereplő megbízott paraméterhez. Mentse a következő szakasz Client-Secret paraméterének `password` `<client-secret>`.
 
-    ```console
-    > az ad sp create-for-rbac --skip-assignment
+    ```output
     {
       "appId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "displayName": "azure-cli-2018-12-31-18-39-32",
@@ -199,8 +200,7 @@ A következő lépések szükségesek ahhoz, hogy a tároló-beállításjegyzé
 
     Mentse a hatókör-paraméter értékének kimenetét `<acrId>`a következő lépésben. A következőképpen néz ki:
 
-    ```console
-    > az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
+    ```output
     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cogserv-container-rg/providers/Microsoft.ContainerRegistry/registries/pattyregistry
     ```
 
@@ -222,8 +222,7 @@ A következő lépések szükségesek ahhoz, hogy a tároló-beállításjegyzé
 
     Ez a lépés néhány percet is igénybe vehet. Az eredmény a következőket eredményezi:
 
-    ```console
-    > az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
+    ```output
     {
       "aadProfile": null,
       "addonProfiles": null,
@@ -300,8 +299,7 @@ Ez a szakasz a **kubectl** CLI használatával kommunikál az Azure Kubernetes s
 
     A válasz a következőre hasonlít:
 
-    ```console
-    > kubectl get nodes
+    ```output
     NAME                       STATUS    ROLES     AGE       VERSION
     aks-nodepool1-13756812-0   Ready     agent     6m        v1.9.11
     aks-nodepool1-13756812-1   Ready     agent     6m        v1.9.11
@@ -337,8 +335,7 @@ Ez a szakasz a **kubectl** CLI használatával kommunikál az Azure Kubernetes s
 
     A válasz:
 
-    ```console
-    > kubectl apply -f language.yml
+    ```output
     service "language-frontend" created
     deployment.apps "language-frontend" created
     service "language" created
@@ -353,8 +350,7 @@ A két tároló esetében ellenőrizze, hogy fut-e a `language-frontend` és `la
 kubectl get all
 ```
 
-```console
-> kubectl get all
+```output
 NAME                                     READY     STATUS    RESTARTS   AGE
 pod/language-586849d8dc-7zvz5            1/1       Running   0          13h
 pod/language-frontend-68b9969969-bz9bg   1/1       Running   1          13h

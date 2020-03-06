@@ -10,19 +10,19 @@ ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: b641ae62ba6e0cdacaeb46b1ffee2f02c7544763
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277140"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397325"
 ---
-# <a name="tutorial-transform-data-with-azure-data-box-edge"></a>Oktatóanyag: Az adatátalakítás Azure Data Box Edge
+# <a name="tutorial-transform-data-with-azure-data-box-edge"></a>Oktatóanyag: az adatátalakítás Azure Data Box Edge
 
 Ez az oktatóanyag azt ismerteti, hogyan lehet számítási szerepkört konfigurálni a Azure Data Box Edge eszközön. A számítási szerepkör konfigurálása után Data Box Edge az adatokat az Azure-ba való küldés előtt átalakíthatja.
 
 Ez az eljárás körülbelül 10 – 15 percet is igénybe vehet.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Számítás konfigurálása
@@ -50,7 +50,7 @@ A Data Box Edge számítási feladatainak konfigurálásához létre kell hoznia
 3. Az **Edge-számítás konfigurálása panelen adja** meg a következőket:
 
    
-    |Mező  |Value  |
+    |Mező  |Érték  |
     |---------|---------|
     |IoT Hub     | Válasszon az **új** vagy a **meglévő**listából. <br> Alapértelmezés szerint a rendszer egy standard szintű (S1) szintet használ IoT-erőforrás létrehozásához. Az ingyenes szintű IoT erőforrás használatához hozzon létre egyet, majd válassza ki a meglévő erőforrást. <br> A IoT Hub erőforrás minden esetben ugyanazt az előfizetést és erőforráscsoportot használja, amelyet a Data Box Edge erőforrás használ.     |
     |Name (Név)     |Adja meg a IoT Hub erőforrás nevét.         |
@@ -112,7 +112,7 @@ Ebben a szakaszban egy egyéni modult ad hozzá a IoT Edge eszközhöz, amelyet 
     |Mező  |Érték  |
     |---------|---------|
     |Name (Név)     | A modul egyedi neve. Ez a modul egy Docker-tároló, amelyet a Data Box Edgehoz társított IoT Edge eszközre telepíthet.        |
-    |Lemezkép URI-ja     | A modulhoz tartozó tároló rendszerképéhez tartozó képuri.        |
+    |Rendszerkép URI-ja     | A modulhoz tartozó tároló rendszerképéhez tartozó képuri.        |
     |Szükséges hitelesítő adatok     | Ha be van jelölve, a rendszer a felhasználónevet és a jelszót használja a modulok megfelelő URL-címmel való lekéréséhez.        |
     |Bemeneti megosztás     | Válasszon egy bemeneti megosztást. Ebben az esetben a peremhálózat helyi megosztása a bemeneti megosztás. Az itt használt modul áthelyezi a fájlokat a peremhálózati helyi megosztásból egy peremhálózati megosztásba, ahol azokat a rendszer feltölti a felhőbe.        |
     |Kimeneti megosztás     | Válasszon kimeneti megosztást. Ebben az esetben az Edge-megosztás a kimeneti megosztás.        |
@@ -155,7 +155,7 @@ Annak ellenőrzéséhez, hogy a modul fut-e, tegye a következőket:
 Végrehajtotta az érvényesítési folyamatot.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
-ms.openlocfilehash: 9077d5c471911c9967c327c457d683b06856b920
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 40f5935c7d653ce90aa56bc5ee2bb15711bb9dd8
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249067"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399253"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy JavaScript SPA-ban
 
@@ -82,9 +82,11 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be a JavaScript eg
 > [A mintakód letöltése]()
 
 > [!div renderon="docs"]
+
 > #### <a name="step-3-configure-your-javascript-app"></a>3\. lépés: a JavaScript-alkalmazás konfigurálása
 >
-> A *JavaScriptSPA* mappában szerkessze a *authConfig. js*fájlt, és állítsa be a `clientID` és `authority` értékeket a `msalConfig`alatt.
+> A *JavaScriptSPA* mappában szerkessze a *authConfig. js*fájlt, és állítsa be a `clientID`, `authority` és `redirectUri` értékeket a `msalConfig`alatt.
+>
 > ```javascript
 >
 >  // Config object to be passed to Msal on creation
@@ -97,10 +99,10 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be a JavaScript eg
 >    cache: {
 >      cacheLocation: "sessionStorage", // This configures where your cache will be stored
 >      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
->      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
 >    }
 >  };  
-> ```
+>
+>```
 
 > [!div renderon="portal"]
 > > [!NOTE]
@@ -124,6 +126,27 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be a JavaScript eg
 > A projektet az alkalmazás tulajdonságainak értékeivel konfiguráltuk. 
 
 > [!div renderon="docs"]
+> 
+> Ezután továbbra is ugyanabban a mappában szerkessze a *graphConfig. js* fájlt, hogy beállítsa a `graphMeEndpoint` és a `graphMeEndpoint` a `apiConfig` objektumhoz.
+> ```javascript
+>   // Add here the endpoints for MS Graph API services you would like to use.
+>   const graphConfig = {
+>     graphMeEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me",
+>     graphMailEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me/messages"
+>   };
+>
+>   // Add here scopes for access token to be used at MS Graph API endpoints.
+>   const tokenRequest = {
+>       scopes: ["Mail.Read"]
+>   };
+> ```
+>
+
+> [!div renderon="docs"]
+>
+> Az elemek magyarázata:
+> - *\<Enter_the_Graph_Endpoint_Here >* a végpont, amelyet az API-hívások fognak végezni. A fő vagy a globális Microsoft Graph API szolgáltatáshoz egyszerűen írja be a `https://graph.microsoft.com`. További információ: [belföldi Felhőbeli üzembe helyezés](https://docs.microsoft.com/graph/deployments)
+>
 > #### <a name="step-4-run-the-project"></a>4\. lépés: a projekt futtatása
 
 Futtassa a projektet egy webkiszolgálóval a [Node. js](https://nodejs.org/en/download/)használatával:
@@ -155,7 +178,6 @@ A MSAL-könyvtár bejelentkezik a felhasználók számára, és a Microsoft Iden
 > [!TIP]
 > Az előző verziót lecserélheti a legújabb, a [MSAL. js kiadásban](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)megjelent verzióra.
 
-
 Ha a Node. js telepítve van, a legújabb verziót a Node. js csomagkezelő (NPM) használatával töltheti le:
 
 ```batch
@@ -177,7 +199,6 @@ A gyors üzembe helyezési kód azt is bemutatja, hogyan inicializálható a MSA
     cache: {
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
-      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
     }
   };  
 
@@ -228,7 +249,7 @@ A MSAL három módszert használ a tokenek beszerzésére: `acquireTokenRedirect
 A `acquireTokenSilent` metódus felhasználói beavatkozás nélkül kezeli a tokenek beszerzését és megújítását. A `loginRedirect` vagy `loginPopup` metódus első végrehajtása után a rendszer a következő metódust használja a védett erőforrások eléréséhez használt jogkivonatok beszerzéséhez: `acquireTokenSilent`. A jogkivonatok kérése vagy megújítása csendesen történik.
 
 ```javascript
-// Add scopes for the access token to be used at Microsoft Graph API endpoints.
+
 const tokenRequest = {
     scopes: ["Mail.Read"]
 };

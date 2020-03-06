@@ -7,21 +7,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 8e2f8fd7f99c359949b02959cc442f2f3d3ebfff
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d61ca8fe7c6f5e7cc400714d7c31a0a7e50b8a88
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912154"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402790"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub-and-device-provisioning-service"></a>A TLS 1,0 és a 1,1 elavult a IoT Hub és az eszközök kiépítési szolgáltatásában
 
-A legjobb titkosítás biztosítása érdekében a IoT Hub és az eszközök kiépítési szolgáltatása (DPS) a Transport Layer Security (TLS) 1,2-as verzióra kerül, mint a IoT eszközök és szolgáltatások számára választott titkosítási mechanizmus. Így a TLS 1,0 és a TLS 1,1 korábbi támogatása, valamint a nem ajánlott örökölt titkosítási rendszerek a **2020. július 1-jén**elavulttá válik.
-
-
-## <a name="impact"></a>Hatás
-Az ügyfelek konkrét körülményei és konfigurációi alapján a TLS 1,0 és 1,1, valamint a nem ajánlott örökölt titkosítási rendszerek elavult változást okozhatnak a IoT-eszközök és-szolgáltatások IoT Hub vagy DPS-vel való kommunikációjában. Bizonyos esetekben az ezekkel a módosításokkal nem kompatibilis eszközök és szolgáltatások nem tudnak majd csatlakozni a IoT Hubhoz vagy a DPS-hez a fent említett lejárati dátum után.
-
+A legjobb titkosítás biztosítása érdekében a IoT Hub és az eszközök kiépítési szolgáltatása (DPS) a Transport Layer Security (TLS) 1,2-as verzióra kerül, mint a IoT eszközök és szolgáltatások számára választott titkosítási mechanizmus. 
 
 ## <a name="supported-ciphers"></a>Támogatott titkosítási algoritmusok
 
