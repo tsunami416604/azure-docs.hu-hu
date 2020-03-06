@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
 ms.openlocfilehash: 6d87d3373711d12df3f2cced26ef35ae951ad41e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116191"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355757"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 
@@ -390,7 +390,7 @@ Vegye figyelembe a következő korlátozások vonatkoznak:
 
 Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és az aktív geo-replikáció programozott módon is felügyelhető Azure PowerShell és a REST API használatával. A következő táblázatok ismertetik az elérhető parancsok készletét. Az aktív geo-replikálás Azure Resource Manager API-kat tartalmaz a felügyelethez, beleértve a [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) és [Azure PowerShell parancsmagokat](https://docs.microsoft.com/powershell/azure/overview). Ezek az API-k az erőforráscsoportok használatát igénylik, és támogatják a szerepköralapú biztonságot (RBAC). A hozzáférési szerepkörök megvalósításával kapcsolatos további információkért lásd: [Azure szerepköralapú Access Control](../role-based-access-control/overview.md).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Az SQL Database feladatátvételének kezelése önálló adatbázisokkal és rugalmas készletekkel
 
@@ -413,7 +413,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 | [Kapcsoló – AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Feladatátvételi csoport feladatátvételét indítja el a másodlagos példányra|
 | [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Feladatátvételi csoport eltávolítása|
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Az SQL Database feladatátvételének kezelése önálló adatbázisokkal és rugalmas készletekkel
 

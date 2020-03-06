@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.openlocfilehash: db1d530c9cab77ae612c83a0d4f52478fb9ee270
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024032"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395224"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Ajánlott eljárások az Azure Adatkezelő-beli adatlekérdezés és-megjelenítés Power BI használatához
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. A [Power bi](https://docs.microsoft.com/power-bi/) egy üzleti elemzési megoldás, amellyel megjelenítheti az adatait, és megoszthatja az eredményeket a szervezeten belül. Az Azure Adatkezelő három lehetőséget biztosít a Power BIban lévő adatkapcsolatokhoz. Használja a [beépített összekötőt](power-bi-connector.md), [importáljon egy lekérdezést az Azure Adatkezelőból a Power BIba](power-bi-imported-query.md), vagy használjon [SQL-lekérdezést](power-bi-sql-query.md). Ez a cikk tippekkel szolgál az Azure Adatkezelő-adatPower BIekkel való lekérdezéséhez és megjelenítéséhez. 
+Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. A [Power bi](https://docs.microsoft.com/power-bi/) egy üzleti elemzési megoldás, amellyel megjelenítheti az adatait, és megoszthatja az eredményeket a szervezeten belül. Az Azure Adatkezelő három lehetőséget biztosít a Power BIban lévő adatkapcsolatokhoz. Használja a [beépített összekötőt](power-bi-connector.md), [importáljon egy lekérdezést az Azure Adatkezelőból a Power BIba](power-bi-imported-query.md), vagy használjon [SQL-lekérdezést](power-bi-sql-query.md). Ez a cikk tippekkel szolgál az Azure Adatkezelő-adatPower BIekkel való lekérdezéséhez és megjelenítéséhez. 
 
 ## <a name="best-practices-for-using-power-bi"></a>Ajánlott eljárások Power BI használatához 
 
@@ -74,7 +74,7 @@ in
 
 A Kusto lekérdezések alapértelmezés szerint legfeljebb 500 000 sort vagy 64 MB-ot adnak vissza a [lekérdezési korlátok](/azure/kusto/concepts/querylimits)című cikkben leírtak szerint. Ezeket az alapértelmezett értékeket felülbírálhatja **speciális beállításokkal** az **Azure adatkezelő (Kusto)** -kapcsolatok ablakban:
 
-![Speciális beállítások](media/power-bi-best-practices/advanced-options.png)
+![speciális beállítások](media/power-bi-best-practices/advanced-options.png)
 
 Ezekkel a beállításokkal a lekérdezés az alapértelmezett lekérdezési korlátok megváltoztatására vonatkozó [utasításokat állítja be](/azure/kusto/query/setstatement) :
 

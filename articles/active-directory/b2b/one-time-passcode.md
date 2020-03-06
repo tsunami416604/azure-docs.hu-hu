@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272326"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376471"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-mail egyszeri jelszó-hitelesítés (előzetes verzió)
 
@@ -107,7 +107,7 @@ Ha az AzureADPreview modul anélkül megjelenik anélkül, hogy újabb verzióra
    Install-Module AzureADPreview 
   ```
 
-Előfordulhat, hogy kap egy kérdést, hogy a modult nem megbízható tárházból telepíti. Ez akkor fordul elő, ha korábban még nem állította be megbízható tárháznak a PSGallery tárházat. Nyomja meg **Y**-t a modul telepítéséhez.
+Előfordulhat, hogy kap egy kérdést, hogy a modult nem megbízható tárházból telepíti. Ez akkor fordul elő, ha korábban még nem állította be megbízható tárháznak a PSGallery tárházat. Nyomja meg az **Y-t** a modul telepítéséhez.
 
 #### <a name="check-for-existing-policies-and-opt-in"></a>Meglévő szabályzatok keresése és az engedélyezése
 

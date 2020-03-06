@@ -14,11 +14,11 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073788"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383363"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-bővítmény
 
@@ -112,11 +112,11 @@ A következő JSON a DSC-bővítmény beállítások részének sémáját mutat
 | settings.configuration.url | sztring | Meghatározza azt az URL-címet, amelyből le szeretné tölteni a DSC-konfiguráció zip-fájlját. Ha a megadott URL-címnek SAS-tokenre van szüksége a hozzáféréshez, a Protectedsettingsfromkeyvault. configurationUrlSasToken tulajdonságot az SAS-jogkivonat értékére kell állítania. Ezt a tulajdonságot kötelező megadni, ha a Settings. Configuration. script és/vagy Settings. Configuration. Function definiálva van.
 | settings.configuration.script | sztring | A DSC-konfiguráció definícióját tartalmazó parancsfájl fájlnevét adja meg. A szkriptnek a Configuration. URL tulajdonság által megadott URL-címről letöltött zip-fájl gyökérkönyvtárában kell lennie. Ezt a tulajdonságot kötelező megadni, ha a Settings. Configuration. URL és/vagy Settings. Configuration. script definiálva van.
 | settings.configuration.function | sztring | Megadja a DSC-konfiguráció nevét. A nevű konfigurációnak szerepelnie kell a Configuration. script által meghatározott parancsfájlban. Ezt a tulajdonságot kötelező megadni, ha a Settings. Configuration. URL és/vagy Settings. Configuration. Function definiálva van.
-| settings.configurationArguments | Collection | Meghatározza a DSC-konfigurációnak átadandó paramétereket. Ez a tulajdonság nem lesz titkosítva.
+| settings.configurationArguments | Gyűjtemény | Meghatározza a DSC-konfigurációnak átadandó paramétereket. Ez a tulajdonság nem lesz titkosítva.
 | settings.configurationData.url | sztring | Meghatározza azt az URL-címet, amelyből le szeretné tölteni a DSC-konfiguráció bemenetként használandó konfigurációs adatait (. pds1). Ha a megadott URL-címnek SAS-tokenre van szüksége a hozzáféréshez, a Protectedsettingsfromkeyvault. configurationDataUrlSasToken tulajdonságot az SAS-jogkivonat értékére kell állítania.
 | settings.privacy.dataEnabled | sztring | Engedélyezheti vagy letilthatja a telemetria-gyűjteményt. A tulajdonság egyetlen lehetséges értéke az "Enable", a "Disable", a "vagy a $null. Ha a tulajdonságot üresen hagyja, vagy NULL értékűre, akkor a telemetria engedélyezi
 | settings.advancedOptions.forcePullAndApply | Bool | Ezzel a beállítással növelhető a bővítmények használatának a kiterjesztése a Azure Automation DSC-vel rendelkező csomópontok regisztrálásához.  Ha az érték `$true`, a bővítmény a sikeres vagy sikertelen visszatérés előtt megvárja a konfiguráció első futtatását a szolgáltatásból.  Ha az érték $falsere van állítva, akkor a bővítmény által visszaadott állapot csak azt jelzi, hogy a csomópont regisztrálva lett-e a Azure Automation állapot-konfigurációban, és a csomópont-konfiguráció nem lesz futtatva a regisztráció során.
-| settings.advancedOptions.downloadMappings | Collection | Alternatív helyszínek meghatározása a függőségek, például a WMF és a .NET letöltéséhez
+| settings.advancedOptions.downloadMappings | Gyűjtemény | Alternatív helyszínek meghatározása a függőségek, például a WMF és a .NET letöltéséhez
 
 ### <a name="protected-settings-property-values"></a>Védett beállítások tulajdonságértékek
 
@@ -172,4 +172,4 @@ C:\WindowsAzure\Logs\Plugins\{Extension_Name}\{Extension_Version}
 
 ### <a name="support"></a>Támogatás
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

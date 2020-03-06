@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938850"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392608"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS-zónák és-rekordok áttekintése
 
@@ -60,7 +60,7 @@ A CAA-rekordok lehetővé teszik, hogy a tartományi tulajdonosok megadják, hog
     * **iodef**: adjon meg egy e-mail-címet vagy állomásnevet, amely számára a hitelesítésszolgáltatók értesítéseket kaphatnak a jogosulatlan tanúsítványokkal kapcsolatos kérelmekről
 * **Value (érték**): a kijelölt címke értéke
 
-### <a name="cname-records"></a>CNAME rekordok
+### <a name="cname-records"></a>CNAME records
 
 CNAME-rekordhalmazok nem létezhetnek egyidejűleg más, velük egyező nevű rekordhalmazokkal. Nem hozhat létre például egy "www" relatív névvel rendelkező CNAME-rekordot, valamint egy olyan rekordot, amelynek relatív neve "www".
 
@@ -76,7 +76,7 @@ Ez a rekordtípus a zónához rendelt Azure DNS névkiszolgálók nevét tartalm
 
 Ez csak a zóna csúcsán beállított NS-rekordra vonatkozik. A zónában lévő egyéb NS-rekordhalmazok (a gyermekobjektumok delegálásához) a korlátozás nélkül hozhatók létre, módosíthatók és törölhetők.
 
-### <a name="soa-records"></a>SOA-rekordok
+### <a name="soa-records"></a>SOA records
 
 A rendszer automatikusan létrehoz egy SOA-rekordhalmazt minden zóna csúcsán (név = "\@"), és automatikusan törlődik a zóna törlésekor.  A SOA-rekordok nem hozhatók létre és nem törölhetők külön.
 
@@ -97,7 +97,7 @@ Az [SRV-rekordokat](https://en.wikipedia.org/wiki/SRV_record) a különböző sz
 
 ### <a name="txt-records"></a>TXT-rekordok
 
-A TXT-rekordok a tartománynevek tetszőleges szöveges karakterlánccá való leképezésére szolgálnak. Ezeket több alkalmazásban használják, különösen az e-mail-konfigurációval, például a [küldő házirend-keretrendszerével (SPF)](https://en.wikipedia.org/wiki/Sender_Policy_Framework) és a [DomainKeys azonosított levelekkel (DKIM)](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail).
+TXT records are used to map domain names to arbitrary text strings. Ezeket több alkalmazásban használják, különösen az e-mail-konfigurációval, például a [küldő házirend-keretrendszerével (SPF)](https://en.wikipedia.org/wiki/Sender_Policy_Framework) és a [DomainKeys azonosított levelekkel (DKIM)](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail).
 
 A DNS-szabványok lehetővé teszik, hogy egyetlen TXT-rekord több karakterláncot tartalmazzon, amelyek mindegyike legfeljebb 254 karakter hosszú lehet. Ha több karakterláncot használ, azokat az ügyfelek összefűzik, és egyetlen sztringként kezelik őket.
 
@@ -109,7 +109,7 @@ A DNS-rekordok több karakterlánca nem tévesztendő össze a TXT-rekordhalmazb
 
 ### <a name="tags"></a>Címkék
 
-A címkék a név-érték párok listája, amelyeket a Azure Resource Manager használ az erőforrások címkézéséhez.  A Azure Resource Manager címkéket használ az Azure-számla szűrt nézeteinek engedélyezéséhez, és lehetővé teszi, hogy beállítson egy olyan szabályzatot, amelynél szükség van a címkékre. Címkékkel kapcsolatos további információ: [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md).
+A címkék a név-érték párok listája, amelyeket a Azure Resource Manager használ az erőforrások címkézéséhez.  A Azure Resource Manager címkéket használ az Azure-számla szűrt nézeteinek engedélyezéséhez, és lehetővé teszi, hogy beállítson egy olyan szabályzatot, amelynél szükség van a címkékre. A címkékkel kapcsolatos további információért tekintse meg [Az Azure-erőforrások rendszerezése címkék használatával](../azure-resource-manager/management/tag-resources.md) című cikket.
 
 Azure DNS támogatja Azure Resource Manager címkék használatát a DNS-zónák erőforrásain.  A nem támogatja a címkéket a DNS-rekordhalmazokon, bár a DNS-rekordhalmazok egy másik "metaadatok" is támogatottak.
 
@@ -129,13 +129,13 @@ A Azure DNS REST API szintjén a Etagek HTTP-fejlécek használatával vannak me
 
 | Fejléc | Viselkedés |
 | --- | --- |
-| None |Mindig sikeres (nincs ETAG-ellenőrzés) |
+| Nincs |Mindig sikeres (nincs ETAG-ellenőrzés) |
 | If-Match \<ETAG > |A PUT csak akkor sikeres, ha az erőforrás létezik, és a ETAG megfelel |
 | If-Match * |A PUT csak akkor sikeres, ha az erőforrás létezik |
 | If-None-Match * |A csak akkor sikeres, ha az erőforrás nem létezik |
 
 
-## <a name="limits"></a>Korlátozások
+## <a name="limits"></a>Korlátok
 
 Azure DNS használatakor a következő alapértelmezett korlátok érvényesek:
 

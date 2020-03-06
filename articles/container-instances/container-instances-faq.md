@@ -5,17 +5,17 @@ author: dkkapur
 ms.topic: article
 ms.date: 01/07/2020
 ms.openlocfilehash: 4a3fb4c1818d86f7fe2913790fd9e573c630cbfd
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888022"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365010"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Gyakori kérdések a Azure Container Instances
 
 Ez a cikk a Azure Container Instancesával kapcsolatos gyakori kérdéseket tárgyalja.
 
-## <a name="deployment"></a>Üzembe helyezés
+## <a name="deployment"></a>Környezet
 
 ### <a name="how-large-can-my-container-image-be"></a>Mekkora méretű lehet a tároló képe?
 
@@ -69,7 +69,7 @@ Igen (néha). Tekintse meg a [kvótákat és a korlátozásokat](container-insta
 
 ### <a name="can-i-deploy-with-more-than-4-cores-and-16-gb-of-ram"></a>Telepíthetek több mint 4 maggal és 16 GB RAM-mal?
 
-Jelenleg nem. Jelenleg ezek a tároló csoportok maximális száma. Konkrét követelményekkel vagy kérésekkel forduljon az Azure ügyfélszolgálatához. 
+még nem. Jelenleg ezek a tároló csoportok maximális száma. Konkrét követelményekkel vagy kérésekkel forduljon az Azure ügyfélszolgálatához. 
 
 ### <a name="when-will-aci-be-in-a-specific-region"></a>Mikor lesz az ACI egy adott régióban?
 

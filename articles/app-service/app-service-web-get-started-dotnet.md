@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 285e4cc1f38dd2adb5934e49d87b43e09d74ce11
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672113"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382599"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>ASP.NET Core-webalkalmazás létrehozása az Azure-ban
 
@@ -86,7 +86,7 @@ Hozzon létre egy ASP.NET Core webalkalmazást a következő lépések végrehaj
    | Beállítás | Ajánlott érték | Leírás |
    |-|-|-|
    |App Service-csomag| myAppServicePlan | Az App Service-csomag neve. |
-   | Földrajzi egység | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
+   | Hely | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
    | Méret | Ingyenes | A [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) meghatározza az üzemeltetési funkciókat. |
 
    ![App Service-csomag létrehozása](./media/app-service-web-get-started-dotnet/app-service-plan-vs2019.png)

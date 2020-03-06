@@ -1,6 +1,6 @@
 ---
-title: A StorSimple 8000 sorozat hardverösszetevők és állapot |} A Microsoft Docs
-description: Ismerje meg, hogyan figyelheti a hardverösszetevők, a StorSimple eszközt a StorSimple-Eszközkezelő szolgáltatással.
+title: StorSimple 8000 sorozatú hardver összetevői és állapota | Microsoft Docs
+description: Megtudhatja, hogyan figyelheti a StorSimple-eszköz hardveres összetevőit a StorSimple Eszközkezelő szolgáltatásán keresztül.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,137 +15,137 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
 ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632872"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380895"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>A StorSimple-Eszközkezelő szolgáltatás figyelő hardverösszetevők és állapot használata
+# <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>A StorSimple Eszközkezelő szolgáltatás használata a hardver összetevőinek és állapotának figyeléséhez
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk a helyszíni StorSimple 8000 sorozatú eszköz különböző fizikai és logikai összetevőit ismerteti. Emellett ismerteti, hogyan az eszköz összetevő állapotát figyelemmel követhető a **állapot és hardverállapot** a StorSimple-Eszközkezelő szolgáltatás paneljén.
+Ez a cikk a helyszíni StorSimple 8000 Series-eszköz különböző fizikai és logikai összetevőit ismerteti. Azt is ismerteti, hogyan lehet figyelni az eszköz összetevő állapotát a StorSimple Eszközkezelő szolgáltatás **állapot és hardver** állapota paneljének használatával.
 
-A **állapot és hardverállapot** panelen a StorSimple eszköz összetevők hardverek állapotát jeleníti meg.
+Az **állapot és a hardver** állapota panelen látható az összes StorSimple-eszköz összetevőinek hardveres állapota.
 
-A 8100-as összetevők listáját nincsenek leíró három szakaszra osztható:
+Az 8100-es összetevők listájában három szakasz található:
 
-* **Megosztott összetevők** – ezek nem részei a vezérlők, például meghajtók, a ház, a teljesítmény- és hűtési modul (PCM) összetevők és a PCM hőmérséklet feszültségérzékelő. sor, és aktuális érzékelők. sor.
-* **0. vezérlő összetevői** – az összetevőket, amelyek megtalálhatók a vezérlő 0, például a vezérlő, SAS-bővítő és összekötő, adatkezelő hőmérséklet-érzékelő és a különböző hálózati adapterek.
-* **1. vezérlő összetevői** – a vezérlő 1, 0. vezérlő részletes hasonló alkotó összetevők.
+* **Megosztott összetevők** – ezek nem részei a vezérlőknek, például a lemezmeghajtók, a bekerítések, a Power és a hűtési modul (PCM) összetevői, a PCM hőmérséklete, a vonal feszültsége és az aktuális érzékelők.
+* **0. vezérlő összetevők** – a 0. vezérlőn található összetevők, például a vezérlő, az SAS Expander és az összekötő, a vezérlő hőmérséklet-érzékelők és a különböző hálózati adapterek.
+* **1. vezérlő összetevők** – az 1. vezérlőt alkotó összetevők, hasonlóan a 0. vezérlőhöz.
 
-A 8600-as eszközön további összetevők, amelyek megfelelnek a kiterjesztett Bunch-lemezek (EBOD) ház rendelkezik. Az összetevők listájában alatt vannak öt szakaszokat. Ezek nincsenek három szakaszra osztható, amely tartalmazza az elsődleges lemezház összetevői és a 8100-as leírtaktól megegyeznek. Nincsenek két további szakaszokban a EBOD ház, amelyek ismertetik:
+Az 8600-es eszközökhöz további összetevők tartoznak, amelyek megfelelnek a kiterjesztett EBOD-bekerítésnek. Az összetevők listájában öt rész található. Ezek közül három szakasz tartalmazza az elsődleges ház összetevőit, és megegyeznek az 8100-es verzióban ismertetett összetevőkkel. A EBOD-ház két további szakasza van, amelyek a következőket írják le:
 
-* **EBOD 0. vezérlő összetevői** – az összetevőket, amelyek megtalálhatók a EBOD ház 0, például az EBOD-vezérlő SAS bővítő és az összekötő, és a tartományvezérlő hőmérséklet-érzékelő.
-* **Az EBOD-vezérlő 1 összetevők** – az összetevőket, amelyek jelentenek az EBOD ház 1, ezek részletes hasonló az EBOD ház 0.
-* **EBOD ház megosztott összetevők** – az összetevők jelentenek az EBOD ház és PCM, amelyek nem részei az EBOD-vezérlő.
+* **EBOD Controller 0 Components** – a EBOD-ház 0 részén található összetevők, például a EBOD vezérlő, SAS Expander és Connector, valamint vezérlő hőmérséklet-érzékelők.
+* **EBOD Controller 1 Components** – az 1. EBOD-ház részét képező összetevők, hasonlóan a EBOD-ház 0.
+* **Megosztott összetevők EBOD** – a EBOD-bekerítésben és a PCM-ben lévő összetevők, amelyek nem részei a EBOD vezérlőnek.
 
 > [!NOTE]
-> **A hardver állapotát a StorSimple Cloud Appliance (8010/8020) nem érhető el.**
+> **A hardver állapota StorSimple Cloud Appliance (8010/8020) nem érhető el.**
 
 
 ## <a name="monitor-the-hardware-status"></a>A hardver állapotának figyelése
-Hajtsa végre az alábbi lépéseket egy eszköz összetevő hardver állapotának megtekintése:
+A következő lépések végrehajtásával tekintheti meg egy eszköz összetevőjének hardveres állapotát:
 
-1. Navigáljon a **eszközök**, jelöljön ki egy adott StorSimple eszközt. Lépjen a **figyelő > hardverállapot**.
+1. Navigáljon az **eszközök**pontra, és válasszon ki egy adott StorSimple-eszközt. Válassza a **figyelés > hardver állapota**lehetőséget.
 
     ![](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
 
-2. Keresse meg a **hardverösszetevők** szakaszt, és az elérhető összetevők közül választhat. Egyszerűen kattintson az összetevő-címkére, bontsa ki a listát, és megtekintheti az eszköz különféle összetevőinek állapotát. Tekintse meg a [részletes összetevő listája az elsődleges ház](#component-list-for-primary-enclosure-of-storsimple-device) és a [részletes összetevő listája a EBOD ház](#component-list-for-ebod-enclosure-of-storsimple-device).
+2. Keresse meg a **hardver-összetevők** szakaszt, és válasszon a rendelkezésre álló összetevők közül. Egyszerűen kattintson az összetevő címkéjére a lista kibontásához és a különböző eszköz-összetevők állapotának megtekintéséhez. Tekintse meg az [elsődleges ház részletes összetevőinek listáját](#component-list-for-primary-enclosure-of-storsimple-device) , valamint a [EBOD-ház részletes összetevő-listáját](#component-list-for-ebod-enclosure-of-storsimple-device).
 
     ![](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
 
-3. Használja a következő kódolási színsémát értelmezni az összetevő-állapot:
+3. Az összetevő állapotának értelmezéséhez használja a következő színkódolási sémát:
    
-   * **Ellenőrzés zöld** – azt jelzi, hogy a megfelelő állapotú összetevő **OK** állapotát.
-   * **Sárga** – azt jelzi, hogy egy csökkentett teljesítményű összetevő **figyelmeztetés** állapota.
-   * **Piros felkiáltójel** – Denotes a meghibásodott összetevőhöz, amely rendelkezik egy **hiba** állapotát.
-   * **A fekete szöveg fehér** – azt jelzi, hogy egy összetevő, amely nem található.
+   * **Zöld pipa** – az **OK** állapotú, kifogástalan állapotú összetevőket jelöli.
+   * **Sárga** – **Figyelmeztetési** állapotú, csökkentett teljesítményű összetevőt jelöl.
+   * **Vörös felkiáltójel** – egy sikertelen, **meghibásodási** állapotú összetevőt jelöl.
+   * **Fehér fekete szöveggel** – olyan összetevőt jelöl, amely nincs jelen.
    
-   Az alábbi képernyőfelvételen a összetevőkkel rendelkező eszköz **OK**, **figyelmeztetés**, és **hiba** állapota.
+   Az alábbi képernyőfelvételen egy olyan eszköz látható, amely **az OK**, a **Figyelmeztetés**és a **hiba** állapotú összetevőket tartalmazza.
        
    ![](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
 
-   Kibontás a **közös összetevők listájában**, láthatjuk, hogy a NVRAM és a fürt csökkent.
+   A **megosztott összetevők listájának**kibontásakor láthatjuk, hogy az NVRAM és a fürt is csökken.
 
    ![](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
 
-   Kibontás a **vezérlő 1 összetevők** listában, láthatjuk, hogy a fürtcsomópont nem sikerült.  
+   Az **1. vezérlő összetevői** listájának kibontásakor láthatjuk, hogy a fürt csomópontja meghiúsult.  
 
    ![](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
 
-4. Ha egy összetevő, amely nem része egy **kifogástalan** állapotban van, forduljon a Microsoft Support. Ha a riasztás engedélyezve van az eszközön, kapni fog riasztást kapjon. Ha a sikertelen hardverkomponensek cseréje van szüksége, tekintse meg [StorSimple összetevő hardvercseréhez](storsimple-hardware-component-replacement.md).
+4. Ha olyan összetevővel találkozik, amely nem **kifogástalan** állapotban van, forduljon a Microsoft ügyfélszolgálatahoz. Ha a riasztások engedélyezve vannak az eszközön, e-mailben értesítést fog kapni. Ha egy sikertelen hardveres összetevőt kell lecserélnie, tekintse meg a [StorSimple hardveres összetevők pótlása](storsimple-hardware-component-replacement.md)című témakört.
 
-## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>A StorSimple-eszköz elsődleges ház összetevő lista
-Az alábbi táblázat ismerteti a fizikai és logikai összetevők, a helyszíni StorSimple eszköz (8100-as és 8600-as is elérhető) elsődleges ház található.
+## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>StorSimple-eszköz elsődleges bekerítéséhez tartozó összetevők listája
+Az alábbi táblázat az elsődleges házban található fizikai és logikai összetevőket ismerteti (a helyszíni StorSimple-eszköz 8100-es és 8600-es verziójában egyaránt).
 
-| Összetevő | Modul | Típus | Location egység | Telepen cserélhető egység (FRU)? | Leírás |
+| Összetevő | Modul | Típus | Hely | Mezőre cserélhető egység (cserélhető)? | Leírás |
 | --- | --- | --- | --- | --- | --- |
-| Meghajtó a [0, 11] bővítőhelyen |Lemezmeghajtók |Fizikai |Megosztott |Igen |Az SSD vagy HDD meghajtókat a elsődleges ház az egysoros jelennek meg. |
-| Környezeti hőmérséklet-érzékelő |Rendszerház |Fizikai |Megosztott |Nem |A váz a hőmérsékletet méri. |
-| Közepes adatsík hőmérséklet-érzékelő |Rendszerház |Fizikai |Megosztott |Nem |A hőmérsékletet, a közepes sík méri. |
-| Hallható riasztás |Rendszerház |Fizikai |Megosztott |Nem |Azt jelzi, hogy a hallható riasztás alrendszer a váz belül működik. |
-| Rendszerház |Rendszerház |Fizikai |Megosztott |Igen |Jelzi, hogy a vázat. |
-| Házbeállítások |Rendszerház |Fizikai |Megosztott |Nem |A váz előlapja hivatkozik. |
-| Sor feszültség-érzékelő |A PCM |Fizikai |Megosztott |Nem |Számos sor feszültség-érzékelő állapotuk jelenik meg, amely azt jelzi, hogy a mért feszültség tűréshatáron belül van. |
-| Sor aktuális érzékelők |A PCM |Fizikai |Megosztott |Nem |Számos sor aktuális érzékelők állapotuk jelenik meg, amely azt jelzi, hogy a mért jelenlegi tűréshatáron belül van. |
-| Hőmérséklet-érzékelő a PCM-ben |A PCM |Fizikai |Megosztott |Nem |Számos például bemeneti hőmérséklet-érzékelő- és elérési pont érzékelők rendelkezik saját jelző állapot. jelenik meg, hogy tolerancia belül van-e a mért hőmérséklet. |
-| [0-1] tápegység |A PCM |Fizikai |Megosztott |Igen |Egy sor minden a tápegységek, az a két PCMs, az eszköz hátoldalán található jelennek meg. |
-| Hűtés a [0-1] |A PCM |Fizikai |Megosztott |Igen |Egy sor minden a két PCMs szereplő négy hűtőventilátorok jelennek meg. |
-| Akkumulátor [0-1] |A PCM |Fizikai |Megosztott |Igen |Egy sor minden a a biztonsági mentési akkumulátor a PCM a rendszer illeszkedik modulok jelennek meg. |
-| Metis |– |Logikai |Megosztott |– |Az elemek állapotát jeleníti meg: e azok díjszabási kell, és hamarosan eléri teljes életciklusa. |
-| Fürt |– |Logikai |Megosztott |– |A fürtökön létrehozott két integrált vezérlő moduljai közötti állapotát jeleníti meg. |
-| Fürtcsomópont |– |Logikai |Megosztott |– |Azt jelzi, hogy a fürt részeként a vezérlő állapota. |
-| Fürtök kvóruma számára |– |Logikai | |– |Jelzi, hogy a legtöbb lemezen tagság a HDD-tárolókészlet. |
-| HDD-adatterület |– |Logikai |Megosztott |– |A merevlemez-meghajtó (HDD) tárolókészletben levő adatok használt lemezterület. |
-| Felügyeleti HDD-terület |– |Logikai |Megosztott |– |A felügyeleti feladatokhoz HDD a tárolókészletben lefoglalt terület. |
-| HDD-kvórumterület |– |Logikai |Megosztott |– |A HDD-tárolókészlet fürtök kvóruma számára lefoglalt terület. |
-| HDD-bővítőhely |– |Logikai |Megosztott |– |A HDD vezérlő cseréje a tárolókészletben lefoglalt terület. |
-| SSD data space |– |Logikai |Megosztott |– |A felhasznált lemezterület a tárolókészletben szemben – tartós állapotú meghajtót (SSD) adatok. |
-| SSD NVRAM-terület |– |Logikai |Megosztott |– |A tárolókészlet SSD NVRAM logikai kijelölt tárolóhely. |
-| HDD-tárolókészlet |– |Logikai |Megosztott |– |Az eszközről HDD-k létrehozása logikai a tárolókészlet állapotát jeleníti meg. |
-| SSD-tárolókészlet |– |Logikai |Megosztott |– |Az eszközről SSD-k létrehozása logikai a tárolókészlet állapotát jeleníti meg. |
-| Vezérlő [0-1] [állapot] |I/O |Fizikai |tartományvezérlő |Igen |A vezérlő állapotát jeleníti meg, és hogy a váz belül aktív vagy készenléti üzemmódban van. |
-| Hőmérséklet-érzékelő a tartományvezérlő |I/O |Fizikai |tartományvezérlő |Nem |Például i/o-modul, CPU hőmérséklet, DIMM és PCIe érzékelők számos hőmérséklet-érzékelő állapotuk jelenik meg, amely azt jelzi-e a hőmérséklet észlelt tűréshatáron belül van. |
-| SAS-bővítő |I/O |Fizikai |tartományvezérlő |Nem |A soros csatlakoztatott SCSI (SAS) bővítő, az integrált tárolási csatlakozni a vezérlő használt állapotát jelzi. |
-| SAS-csatlakozó [0-1] |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy minden egyes SAS-csatlakozó, integrált tárolási csatlakozni a SAS-bővítő használt állapotát. |
-| SBB közepes adatsík összekötöje |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy a közepes adatsík-összekötőt, amely minden vezérlő kapcsolódhat a közepes síknak állapotát. |
-| Processzormag |I/O |Fizikai |tartományvezérlő |Nem |A Processzormagok belül minden vezérlő állapotát jelzi. |
-| Házelektronikai tápegység |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy az a ház által használt energiaellátási rendszer állapotát. |
-| Házelektronikai diagnosztika |I/O |Fizikai |tartományvezérlő |Nem |A diagnosztika alrendszerek a vezérlő által biztosított állapotát jelzi. |
-| Alaplapi felügyeleti vezérlőnek (BMC) |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy az alaplapi felügyeleti vezérlőnek (BMC), amely egy speciális szolgáltatás processzor, amely figyeli a hardvereszköz érzékelők keresztül, és a rendszergazda független kapcsolaton keresztül kommunikál a állapotát. |
-| Ethernet |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy a hálózati adapterek, amelyek a felügyeleti és a vezérlőn megadott adatok portok állapotát. |
-| NVRAM |I/O |Fizikai |tartományvezérlő |Nem |NVRAM, egy biztonsági másolatot készít a telep fenntartani áramkimaradás esetén az alkalmazás kritikus fontosságú információkat ellátó nem felejtő közvetlen elérésű memória állapotát jelzi. |
+| Meghajtó a tárolóhelyen [0-11] |Lemezmeghajtók |Fizikai |Megosztott |Igen |Az egyes SSD-k vagy az elsődleges házban található HDD meghajtók esetében egy sor jelenik meg. |
+| Környezeti hőmérséklet érzékelője |Ház |Fizikai |Megosztott |Nem |Az alvázon belüli hőmérsékletet méri. |
+| Középsõ hőmérséklet-érzékelő |Ház |Fizikai |Megosztott |Nem |A középső sík hőmérsékletét méri. |
+| Hallható riasztás |Ház |Fizikai |Megosztott |Nem |Azt jelzi, hogy az alvázon belül hallható riasztási alrendszer működik-e. |
+| Ház |Ház |Fizikai |Megosztott |Igen |Egy váz jelenlétét jelzi. |
+| Bekerítés beállításai |Ház |Fizikai |Megosztott |Nem |Az alváz elülső paneljére hivatkozik. |
+| Vonali feszültség érzékelők |A PCM |Fizikai |Megosztott |Nem |Számos vonalbeli feszültség érzékelők állapota megjelenik, ami azt jelzi, hogy a mért feszültség a tűréshatáron belül van-e. |
+| Aktuális érzékelők |A PCM |Fizikai |Megosztott |Nem |Számos aktuális érzékelők állapota látható, ami azt jelzi, hogy a mért áramerősség a tűréshatáron belül van-e. |
+| Hőmérséklet-érzékelők PCM-ben |A PCM |Fizikai |Megosztott |Nem |Számos hőmérséklet-érzékelő, például a bemeneti és a hozzáférési pont érzékelők állapota megjelenik, ami azt jelzi, hogy a mért hőmérséklet a tűréshatáron belül van-e. |
+| Tápegység [0-1] |A PCM |Fizikai |Megosztott |Igen |Az eszköz hátoldalán található két PCMs egy sor jelenik meg az egyes energiaellátási kellékeknél. |
+| Hűtés [0-1] |A PCM |Fizikai |Megosztott |Igen |A két PCMs található négy hűtési ventilátorhoz egy sor jelenik meg. |
+| Akkumulátor [0-1] |A PCM |Fizikai |Megosztott |Igen |Egy sor jelenik meg a PCM-ben ülő biztonsági mentési akkumulátor-modulok mindegyikéhez. |
+| METiS |N/A |Logikai |Megosztott |N/A |Az akkumulátorok állapotát jeleníti meg: szükség van-e a töltésre, és az élettartama közeledik. |
+| Fürt |N/A |Logikai |Megosztott |N/A |Megjeleníti a két integrált vezérlő modul között létrehozott fürt állapotát. |
+| fürtcsomópont |N/A |Logikai |Megosztott |N/A |A vezérlő állapotát jelzi a fürt részeként. |
+| Fürt kvóruma |N/A |Logikai | |N/A |Azt jelzi, hogy a lemezes tagság a HDD-tárolóban van-e. |
+| HDD-adatterület |N/A |Logikai |Megosztott |N/A |A merevlemez-meghajtón (HDD) tárolt adattárolóban használt tárterület. |
+| HDD-felügyeleti terület |N/A |Logikai |Megosztott |N/A |A HDD-tárolóban a felügyeleti feladatokhoz lefoglalt terület. |
+| HDD kvórum területe |N/A |Logikai |Megosztott |N/A |A fürt Kvórumának a HDD-tárolóban lefoglalt területe. |
+| HDD-helyettesítési terület |N/A |Logikai |Megosztott |N/A |A HDD-tárolóban a vezérlő cseréjéhez lefoglalt terület. |
+| SSD-adatterület |N/A |Logikai |Megosztott |N/A |A SSD-tárolóban tárolt adattárolási terület. |
+| SSD NVRAM-terület |N/A |Logikai |Megosztott |N/A |Az SSD-tárolóban az NVRAM-logika számára dedikált tárolóhely. |
+| HDD-tároló készlete |N/A |Logikai |Megosztott |N/A |Megjeleníti a logikai tároló azon állapotát, amely az eszköz HDD-ről lett létrehozva. |
+| SSD Storage-készlet |N/A |Logikai |Megosztott |N/A |Megjeleníti az SSD-eszközökről létrehozott logikai tárolási készlet állapotát. |
+| Vezérlő [0-1] [State] |I/O |Fizikai |Tartományvezérlő |Igen |Megjeleníti a vezérlő állapotát, valamint azt, hogy aktív vagy készenléti üzemmódban van-e az alvázon belül. |
+| Hőmérséklet-érzékelők a vezérlőben |I/O |Fizikai |Tartományvezérlő |Nem |Számos hőmérséklet-érzékelő, például az I/O modul, a CPU hőmérséklete, a DIMM és a PCIe érzékelők állapota megjelenik, ami azt jelzi, hogy a hőmérséklet észlelve van-e a tűréshatáron belül. |
+| SAS-Expander |I/O |Fizikai |Tartományvezérlő |Nem |A soros csatlakozású SCSI (SAS) Expander állapotát jelzi, amely az integrált tárolónak a vezérlőhöz való összekapcsolására szolgál. |
+| SAS-összekötő [0-1] |I/O |Fizikai |Tartományvezérlő |Nem |Az egyes SAS-összekötők állapotát jelzi, amely az integrált tárolónak az SAS expanderhez való összekapcsolására szolgál. |
+| SBB Közép-sík összekötő |I/O |Fizikai |Tartományvezérlő |Nem |Az egyes vezérlőknek a középső síkon való összekapcsolására szolgáló Közép-sík összekötő állapotát jelzi. |
+| Processzor magja |I/O |Fizikai |Tartományvezérlő |Nem |Meghatározza a processzor magok állapotát az egyes vezérlőkön belül. |
+| Az elektronikai energia bekerítése |I/O |Fizikai |Tartományvezérlő |Nem |A ház által használt energiaellátási rendszer állapotát jelzi. |
+| Az elektronikai diagnosztika bekerítése |I/O |Fizikai |Tartományvezérlő |Nem |A vezérlő által biztosított diagnosztikai alrendszerek állapotát jelzi. |
+| Alaplapi felügyeleti vezérlő (BMC) |I/O |Fizikai |Tartományvezérlő |Nem |A alaplapi felügyeleti vezérlő (BMC) állapotát jelzi, amely egy speciális szolgáltatási processzor, amely érzékelőkön keresztül figyeli a hardvereszközöket, és független kapcsolatban kommunikál a rendszergazdával. |
+| Ethernet |I/O |Fizikai |Tartományvezérlő |Nem |Az egyes hálózati adapterek, azaz a vezérlőn megadott felügyeleti és adatportok állapotát jelzi. |
+| NVRAM |I/O |Fizikai |Tartományvezérlő |Nem |Az NVRAM állapotot jelzi, amely egy nem felejtő, véletlenszerű hozzáférésű memória, amely az alkalmazás szempontjából kritikus fontosságú információk megtartására szolgál az áramszünet esetén. |
 
-## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>A StorSimple-eszköz EBOD ház összetevő lista
-Az alábbi táblázat ismerteti a fizikai és logikai összetevők, a helyszíni StorSimple eszköz (csak jelen 8600-as modell) EBOD ház található.
+## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>A StorSimple-eszköz EBOD bekerítéséhez tartozó összetevők listája
+Az alábbi táblázat az EBOD-házban található fizikai és logikai összetevőket ismerteti (csak a 8600 modellben jelennek meg) a helyszíni StorSimple-eszközön.
 
-| Összetevő | Modul | Típus | Location egység | FRU? | Leírás |
+| Összetevő | Modul | Típus | Hely | FRU? | Leírás |
 | --- | --- | --- | --- | --- | --- |
-| Meghajtó a [0, 11] bővítőhelyen |Lemezmeghajtók |Fizikai |Megosztott |Igen |Egy sor minden a HDD meghajtókon található a EBOD ház jelennek meg. |
-| Környezeti hőmérséklet-érzékelő |Rendszerház |Fizikai |Megosztott |Nem |A váz a hőmérsékletet méri. |
-| Közepes adatsík hőmérséklet-érzékelő |Rendszerház |Fizikai |Megosztott |Nem |A hőmérsékletet, a közepes sík méri. |
-| Hallható riasztás |Rendszerház |Fizikai |Megosztott |Nem |Azt jelzi, hogy a hallható riasztás alrendszer a váz belül működik. |
-| Rendszerház |Rendszerház |Fizikai |Megosztott |Igen |Jelzi, hogy a vázat. |
-| Házbeállítások |Rendszerház |Fizikai |Megosztott |Nem |Az OPS vagy a váz előlapja vonatkozik. |
-| Sor feszültség-érzékelő |A PCM |Fizikai |Megosztott |Nem |Számos sor feszültség-érzékelő állapotuk jelenik meg, amely azt jelzi, hogy a mért feszültség tűréshatáron belül van. |
-| Sor aktuális érzékelők |A PCM |Fizikai |Megosztott |Nem |Számos sor aktuális érzékelők állapotuk jelenik meg, amely azt jelzi, hogy a mért jelenlegi tűréshatáron belül van. |
-| Hőmérséklet-érzékelő a PCM-ben |A PCM |Fizikai |Megosztott |Nem |Számos például bemeneti hőmérséklet-érzékelő- és elérési pont érzékelők rendelkezik az állapotuk jelenik meg, amely azt jelzi, hogy a mért hőmérséklet tűréshatáron belül vannak. |
-| [0-1] tápegység |A PCM |Fizikai |Megosztott |Igen |Egy sor minden a tápegységek, az a két PCMs, az eszköz hátoldalán található jelennek meg. |
-| Hűtés a [0-1] |A PCM |Fizikai |Megosztott |Igen |Egy sor minden a két PCMs szereplő négy hűtőventilátorok jelennek meg. |
-| Helyi tároló [HDD] |– |Logikai |Megosztott |– |Az eszközről HDD-k létrehozása logikai a tárolókészlet állapotát jeleníti meg. |
-| Vezérlő [0-1] [állapot] |I/O |Fizikai |tartományvezérlő |Igen |Az EBOD-modul a tartományvezérlők állapotát jeleníti meg. |
-| Az EBOD hőmérséklet-érzékelő |I/O |Fizikai |tartományvezérlő |Nem |Minden egyes vezérlőről számos hőmérséklet-érzékelő állapotuk jelenik meg, amely azt jelzi, hogy a hőmérséklet észlelt tűréshatáron belül van. |
-| SAS-bővítő |I/O |Fizikai |tartományvezérlő |Nem |A SAS-bővítő, az integrált tárolási csatlakozni a vezérlő használt állapotát jelzi. |
-| SAS-csatlakozó [0, 2] |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy minden egyes SAS-csatlakozó, integrált tárolási csatlakozni a SAS-bővítő használt állapotát. |
-| SBB közepes adatsík összekötöje |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy a közepes adatsík-összekötőt, amely minden vezérlő kapcsolódhat a közepes síknak állapotát. |
-| Házelektronikai tápegység |I/O |Fizikai |tartományvezérlő |Nem |Azt jelzi, hogy az a ház által használt energiaellátási rendszer állapotát. |
-| Házelektronikai diagnosztika |I/O |Fizikai |tartományvezérlő |Nem |A diagnosztika alrendszerek a vezérlő által biztosított állapotát jelzi. |
-| Az eszközvezérlő kapcsolat |I/O |Fizikai |tartományvezérlő |Nem |Az EBOD i/o-modulja, és az eszközvezérlő közötti kapcsolat állapotát jelzi. |
+| Meghajtó a tárolóhelyen [0-11] |Lemezmeghajtók |Fizikai |Megosztott |Igen |Az EBOD-ház elején található HDD-meghajtókon egy sor jelenik meg. |
+| Környezeti hőmérséklet érzékelője |Ház |Fizikai |Megosztott |Nem |Az alvázon belüli hőmérsékletet méri. |
+| Középsõ hőmérséklet-érzékelő |Ház |Fizikai |Megosztott |Nem |A középső sík hőmérsékletét méri. |
+| Hallható riasztás |Ház |Fizikai |Megosztott |Nem |Azt jelzi, hogy az alvázon belül hallható riasztási alrendszer működik-e. |
+| Ház |Ház |Fizikai |Megosztott |Igen |Egy váz jelenlétét jelzi. |
+| Bekerítés beállításai |Ház |Fizikai |Megosztott |Nem |A váz OPS-vagy előlapját jelöli. |
+| Vonali feszültség érzékelők |A PCM |Fizikai |Megosztott |Nem |Számos vonalbeli feszültség érzékelők állapota megjelenik, ami azt jelzi, hogy a mért feszültség a tűréshatáron belül van-e. |
+| Aktuális érzékelők |A PCM |Fizikai |Megosztott |Nem |Számos aktuális érzékelők állapota látható, ami azt jelzi, hogy a mért áramerősség a tűréshatáron belül van-e. |
+| Hőmérséklet-érzékelők PCM-ben |A PCM |Fizikai |Megosztott |Nem |Számos hőmérséklet-érzékelő, például a bemeneti és a hozzáférési pont érzékelők állapota megjelenik, ami azt jelzi, hogy a mért hőmérséklet a tűréshatáron belül van-e. |
+| Tápegység [0-1] |A PCM |Fizikai |Megosztott |Igen |Az eszköz hátoldalán található két PCMs egy sor jelenik meg az egyes energiaellátási kellékeknél. |
+| Hűtés [0-1] |A PCM |Fizikai |Megosztott |Igen |A két PCMs található négy hűtési ventilátorhoz egy sor jelenik meg. |
+| Helyi tárterület [HDD] |N/A |Logikai |Megosztott |N/A |Megjeleníti a logikai tároló azon állapotát, amely az eszköz HDD-ről lett létrehozva. |
+| Vezérlő [0-1] [State] |I/O |Fizikai |Tartományvezérlő |Igen |Megjeleníti a vezérlők állapotát a EBOD modulban. |
+| Hőmérséklet-érzékelők a EBOD-ben |I/O |Fizikai |Tartományvezérlő |Nem |Az egyes vezérlők számos hőmérséklet-érzékelője állapota megjelenik, ami azt jelzi, hogy a hőmérséklet észlelve van-e a tűréshatáron belül. |
+| SAS-Expander |I/O |Fizikai |Tartományvezérlő |Nem |Megadja az SAS Expander állapotát, amely az integrált tároló vezérlőhöz való összekapcsolására szolgál. |
+| SAS-összekötő [0-2] |I/O |Fizikai |Tartományvezérlő |Nem |Az egyes SAS-összekötők állapotát jelzi, amely az integrált tárolónak az SAS expanderhez való összekapcsolására szolgál. |
+| SBB Közép-sík összekötő |I/O |Fizikai |Tartományvezérlő |Nem |Az egyes vezérlőknek a középső síkon való összekapcsolására szolgáló Közép-sík összekötő állapotát jelzi. |
+| Az elektronikai energia bekerítése |I/O |Fizikai |Tartományvezérlő |Nem |A ház által használt energiaellátási rendszer állapotát jelzi. |
+| Az elektronikai diagnosztika bekerítése |I/O |Fizikai |Tartományvezérlő |Nem |A vezérlő által biztosított diagnosztikai alrendszerek állapotát jelzi. |
+| Kapcsolódás az eszköz-vezérlőhöz |I/O |Fizikai |Tartományvezérlő |Nem |Az EBOD I/O-modul és az eszköz vezérlője közötti kapcsolat állapotát jelzi. |
 
-## <a name="next-steps"></a>További lépések
-* Az eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás használatához lépjen a [a StorSimple-eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manager-service-administration.md).
-* Ha egy eszköz összetevő csökkentett teljesítményű vagy sikertelen állapotú hibaelhárítása van szüksége, tekintse meg [ellenőrzési mutatók StorSimple](storsimple-monitoring-indicators.md).
-* Sikertelen hardverkomponensek cseréje, lásd: [StorSimple összetevő hardvercseréhez](storsimple-hardware-component-replacement.md).
-* Ha továbbra is eszköz problémákba [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+## <a name="next-steps"></a>Következő lépések
+* Ha a StorSimple Eszközkezelő szolgáltatást szeretné használni az eszköz felügyeletéhez, folytassa [a StorSimple-eszköz felügyeletéhez használja a StorSimple Eszközkezelő szolgáltatását](storsimple-8000-manager-service-administration.md).
+* Ha egy csökkentett teljesítményű vagy sikertelen állapotú eszköz-összetevőt kell elhárítani, tekintse meg a [StorSimple figyelési mutatóit](storsimple-monitoring-indicators.md).
+* A meghibásodott hardver-összetevők lecserélését lásd: [StorSimple hardveres összetevők cseréje](storsimple-hardware-component-replacement.md).
+* Ha továbbra is problémákat tapasztal, [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md).
 

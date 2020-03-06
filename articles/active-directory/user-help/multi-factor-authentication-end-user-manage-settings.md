@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: curtand
 ms.openlocfilehash: 5949f04ecc28a88e340a9c2de530031793f193a0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191384"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377522"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>A kétfaktoros ellenőrzési módszer és beállítások módosítása
 
@@ -130,7 +130,7 @@ A szervezeti beállításoktól függően előfordulhat, hogy egy jelölőnégyz
 
 A [ **további biztonsági ellenőrzés** lapon](#to-get-to-the-additional-security-verification-page)válassza a **többtényezős hitelesítés visszaállítása korábban megbízható eszközökön**lehetőséget. Amikor legközelebb bejelentkezik bármelyik eszközre, a rendszer a kétfaktoros ellenőrzés elvégzésére kéri.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kétfaktoros ellenőrzési beállítások hozzáadása vagy frissítése után kezelheti az alkalmazás jelszavait, bejelentkezhet, vagy segítséget kérhet a kétfaktoros ellenőrzésekkel kapcsolatos gyakori problémákkal kapcsolatban.
 

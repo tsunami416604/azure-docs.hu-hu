@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
 ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847485"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362930"
 ---
-# <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>A VMware virtuális gépek feladat-visszavétel az Azure-ba való vész-helyreállítás után
+# <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>VMware virtuális gépek feladat-visszavétele az Azure-ba történő vészhelyreállítás után
 
 Miután elvégezte a feladatátvételt az Azure-ba a vész-helyreállítási folyamat részeként, visszatérhet a helyszíni helyhez. Két különböző feladat-visszavételi típus lehetséges a Azure Site Recovery: 
 
@@ -48,7 +48,7 @@ Ha a helyszíni virtuális gép nem létezik a virtuális gép újbóli megóvá
 > [!NOTE]
 > Egy fizikai gép, amikor a feladatátvételt az Azure-ba küldi, csak VMware virtuális gép lehet. Ez ugyanazt a munkafolyamatot követi, mint a másik helyre történő helyreállítás. Győződjön meg arról, hogy legalább egy fő célkiszolgáló és a szükséges ESX/ESXi-gazdagépek felderítésére van szükség, amelyekre vissza kell állítania.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Kövesse a feladat-visszavételi [művelet](vmware-azure-failback.md)végrehajtásához szükséges lépéseket.
+Kövesse a feladat- [visszavételi művelet](vmware-azure-failback.md)végrehajtásához szükséges lépéseket.
 

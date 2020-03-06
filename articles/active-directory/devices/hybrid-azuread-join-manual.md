@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed28b4bb8ec61455168f50058c8cdcaf9f50717d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882852"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377044"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök manuális konfigurálása
 
@@ -25,7 +25,7 @@ Az Azure Active Directory (Azure AD) eszközkezelés révén biztosíthatja, hog
 > [!TIP]
 > Ha a Azure AD Connect használata lehetőséggel rendelkezik, tekintse meg a kapcsolódó oktatóanyagokat a [felügyelt](hybrid-azuread-join-managed-domains.md) vagy [összevont](hybrid-azuread-join-federated-domains.md) tartományokhoz. A Azure AD Connect használatával jelentősen egyszerűsítheti a hibrid Azure AD-csatlakozás konfigurációját.
 
-Ha helyszíni Active Directory-környezettel rendelkezik, és csatlakoztatni szeretné a tartományokhoz csatlakoztatott eszközeit az Azure AD-hoz, ezt hibrid Azure AD-csatlakoztatott eszközök konfigurálásával teheti meg. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ha helyszíni Active Directory-környezettel rendelkezik, és csatlakoztatni szeretné a tartományokhoz csatlakoztatott eszközeit az Azure AD-hoz, ezt hibrid Azure AD-csatlakoztatott eszközök konfigurálásával teheti meg. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Hibrid Azure AD-csatlakozás manuális konfigurálása
@@ -560,7 +560,7 @@ Ha problémákat tapasztal a hibrid Azure AD-csatlakozásnak a tartományhoz csa
 * [Jelenlegi Windows-eszközök hibrid Azure AD-csatlakozásának hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
 * [Korábbi verziójú Windows-eszközök hibrid Azure AD-csatlakozásának hibaelhárítása](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Active Directory eszközkezelésének alapjai](overview.md)
 

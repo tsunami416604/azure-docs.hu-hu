@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
 ms.openlocfilehash: fe8ea4dfb4de45a1e09648ac51fe8d74f93a6b9e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979620"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356654"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Útválasztási táblázat létrehozása, módosítása vagy törlése
 
 Az Azure automatikusan irányítja a forgalmat az Azure-alhálózatok, a virtuális hálózatok és a helyszíni hálózatok között. Ha módosítani szeretné az Azure alapértelmezett útválasztását, hozzon létre egy útválasztási táblázatot. Ha még nem ismeri a virtuális hálózatok útválasztását, többet is megtudhat az [útválasztási áttekintésben](virtual-networks-udr-overview.md) vagy egy [oktatóanyag](tutorial-create-route-table-portal.md)elvégzésével.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -123,7 +123,7 @@ Ha egy útválasztási tábla bármely alhálózathoz van társítva, nem törö
 
 1. A portál felső részén található keresőmezőbe írja be a következőt: *Route Tables* in the Search Box. Ha az **útválasztási táblák** megjelennek a keresési eredmények között, válassza ki.
 1. Válassza a **...** lehetőséget a törölni kívánt útválasztási táblázat jobb oldalán.
-1. Válassza a **Törlés**, majd az **Igen** lehetőséget.
+1. Válassza a **Törlés**lehetőséget, majd válassza az **Igen**lehetőséget.
 
 ### <a name="delete-a-route-table---commands"></a>Útválasztási táblázat törlése – parancsok
 
@@ -236,17 +236,17 @@ Megadhatja a következő ugrás típusát egy virtuális gép és egy másik Azu
 
 A táblák és útvonalak útválasztási feladatainak elvégzéséhez a fiókját hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkörhöz, amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Műveletek                                                          |   Név                                                  |
+| Műveletek                                                          |   Name (Név)                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft. Network/routeTables/READ                              |   Útválasztási táblázat beolvasása                                    |
 | Microsoft. Network/routeTables/Write                             |   Útválasztási táblázat létrehozása vagy frissítése                        |
-| Microsoft. Network/routeTables/delete                            |   Útválasztási táblázat törlése                                  |
+| Microsoft.Network/routeTables/delete                            |   Útválasztási táblázat törlése                                  |
 | Microsoft. Network/routeTables/csatlakozás/művelet                       |   Útválasztási táblázat társítása alhálózattal                   |
 | Microsoft. Network/routeTables/Routes/READ                       |   Útvonal beolvasása                                          |
 | Microsoft. Network/routeTables/Routes/Write                      |   Útvonal létrehozása vagy frissítése                              |
-| Microsoft. Network/routeTables/Routes/delete                     |   Útvonal törlése                                        |
-| Microsoft. Network/networkInterfaces/effectiveRouteTable/Action  |   A hálózati adapter érvényes útválasztási táblázatának beolvasása |
-| Microsoft. Network/networkWatchers/nextHop/Action                |   Egy virtuális gép következő ugrásának beolvasása                           |
+| Microsoft.Network/routeTables/routes/delete                     |   Útvonal törlése                                        |
+| Microsoft.Network/networkInterfaces/effectiveRouteTable/action  |   A hálózati adapter érvényes útválasztási táblázatának beolvasása |
+| Microsoft.Network/networkWatchers/nextHop/action                |   Egy virtuális gép következő ugrásának beolvasása                           |
 
 ## <a name="next-steps"></a>Következő lépések
 

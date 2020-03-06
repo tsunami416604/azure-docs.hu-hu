@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547506"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372133"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Felkészülés az Avere vFXT létrehozására
 
@@ -34,7 +34,7 @@ Az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező felhasználó
 
 Vannak olyan megkerülő megoldások, amelyek lehetővé teszik, hogy a nem tulajdonos hozzon létre egy avere-vFXT az Azure-fürthöz. Ezek a forgatókönyvek az erőforrások korlátozását és további szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörök hozzárendelését foglalják magukban. Az előfizetés tulajdonosának minden esetben [el kell fogadnia a avere vFXT](#accept-software-terms) .
 
-| Alkalmazási helyzet | Korlátozások | A avere vFXT-fürt létrehozásához szükséges hozzáférési szerepkörök |
+| Forgatókönyv | Korlátozások | A avere vFXT-fürt létrehozásához szükséges hozzáférési szerepkörök |
 |----------|--------|-------|
 | Az erőforráscsoport rendszergazdája létrehozza a vFXT | A virtuális hálózatot, a tartományvezérlőt és a fürtcsomópontok létrehozását az erőforráscsoport keretében kell létrehozni. | A [felhasználói hozzáférés rendszergazdai](../role-based-access-control/built-in-roles.md#user-access-administrator) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkörei mind a célként megadott erőforráscsoport hatóköre. |
 | Meglévő, külső virtuális hálózat használata | A tartományvezérlő és a fürtcsomópontok a vFXT erőforráscsoport keretében jönnek létre, de egy meglévő virtuális hálózatot használnak egy másik erőforráscsoporthoz. | (1) a [felhasználói hozzáférés rendszergazdai](../role-based-access-control/built-in-roles.md#user-access-administrator) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkörei a vFXT erőforráscsoporthoz tartoznak; és (2) a [virtuális gép közreműködői](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), a [felhasználói hozzáférés rendszergazdája](../role-based-access-control/built-in-roles.md#user-access-administrator)és a [avere közreműködői](../role-based-access-control/built-in-roles.md#avere-contributor) szerepkörök a virtuális hálózat erőforráscsoporthoz vannak korlátozva. |
@@ -51,7 +51,7 @@ Győződjön meg arról, hogy elegendő kvóta van a következő Azure-összetev
 
 |Azure-összetevő|Kvóta|
 |----------|-----------|
-|Virtuális gépek|3 vagy több E32s_v3 (az egyik fürtcsomópont) |
+|Virtual machines (Virtuális gépek)|3 vagy több E32s_v3 (az egyik fürtcsomópont) |
 |Prémium szintű SSD-tár|200 GB operációsrendszer-tárhely és 1–4 TB gyorsítótártér csomópontonként |
 |Tárfiók (nem kötelező) |v2|
 |Adatháttér-tároló (nem kötelező) |Egy új LRS blob-tároló |

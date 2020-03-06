@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670542"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394386"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-és Linux-teljesítményű adatforrások a Azure Monitor
 A Windows és Linux rendszerű teljesítményszámlálók betekintést nyújtanak a hardver-összetevők, operációs rendszerek és alkalmazások teljesítményére.  A Azure Monitor a teljesítményadatok a hosszú távú elemzéshez és jelentéskészítéshez való közel valós idejű (vizsgálja) elemzéshez is összegyűjthetők.

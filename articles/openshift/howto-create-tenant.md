@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270453"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381450"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Azure AD-bérlő létrehozása az Azure Red Hat OpenShift
 
@@ -28,7 +28,7 @@ Bérlő létrehozása:
 3. Adja meg a **szervezet nevét**.
 4. Adja meg a **kezdeti tartománynevet**. Ehhez hozzá kell fűzni a *onmicrosoft.com* . Itt újra felhasználhatja a *szervezet nevének* értékét.
 5. Válassza ki azt az országot vagy régiót, ahol létre kívánja hozni a bérlőt.
-6. Kattintson a **Create** (Létrehozás) gombra.
+6. Kattintson a  **Create** (Létrehozás) gombra.
 7. Miután létrehozta az Azure AD-bérlőt, válassza a **kattintson ide az új címtár-hivatkozás kezeléséhez** . Az új bérlő nevét a Azure Portal jobb felső sarkában kell megjeleníteni:  
 
     ![Képernyőkép a bérlő nevét bemutató portálról a jobb felső sarokban][tenantcallout]  
@@ -37,7 +37,7 @@ Bérlő létrehozása:
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 
-## <a name="resources"></a>Segédanyagok és eszközök
+## <a name="resources"></a>További források
 
 Az [Azure ad-Bérlővel](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)kapcsolatos további információkért tekintse meg [Azure Active Directory dokumentációját](https://docs.microsoft.com/azure/active-directory/) .
 

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766089"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375964"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect Sync: a Azure Active Directory szinkronizált attribútumok
 Ez a témakör a Azure AD Connect Sync által szinkronizált attribútumokat sorolja fel.  
@@ -52,7 +52,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | userPrincipalName |X |Az UPN a felhasználó bejelentkezési azonosítója. A legtöbb esetben ugyanaz, mint a [mail] érték. |
 
 ## <a name="exchange-online"></a>Exchange Online
-| Attribútum neve | Felhasználó | Kapcsolatfelvétel | Csoport | Megjegyzés |
+| Attribútum neve | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | asszisztens |X |X | | |
@@ -60,10 +60,10 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | authOrig |X |X |X | |
 | c |X |X | | |
 | CN |X | |X | |
-| Co |X |X | | |
-| vállalati |X |X | | |
+| CO |X |X | | |
+| Vállalati |X |X | | |
 | Országhívószám |X |X | | |
-| részleg |X |X | | |
+| Szervezeti egység |X |X | | |
 | leírás | | |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
@@ -86,15 +86,15 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | érték facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
 | homePhone |X |X | | |
-| információ |X |X |X |Ezt az attribútumot jelenleg nem használják a csoportok. |
-| Monogramja |X |X | | |
+| info |X |X |X |Ezt az attribútumot jelenleg nem használják a csoportok. |
+| Monogram |X |X | | |
 | l |X |X | | |
 | legacyExchangeDN |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
-| Manager |X |X | | |
-| tagja | | |X | |
-| mobileszköz |X |X | | |
+| kezelő |X |X | | |
+| tag | | |X | |
+| mobil |X |X | | |
 | msDS-HABSeniorityIndex |X |X |X | |
 | msDS-PhoneticDisplayName |X |X |X | |
 | msExchArchiveGUID |X | | | |
@@ -150,7 +150,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | otherFacsimileTelephone |X |X | | |
 | otherHomePhone |X |X | | |
 | otherTelephone |X |X | | |
-| személyhívó |X |X | | |
+| Stránkování |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
 | Irányítószám |X |X | | |
 | proxyAddresses |X |X |X | |
@@ -158,7 +158,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | pwdLastSet |X | | |mechanikai tulajdonság. Annak ismerete, hogy mikor kell érvényteleníteni a már kiállított jogkivonatokat. A jelszó-szinkronizálás és az összevonás is használja. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
-| SN |X |X | | |
+| sorozatszám |X |X | | |
 | sourceAnchor |X |X |X |mechanikai tulajdonság. Megváltoztathatatlan azonosító a HOZZÁADÁSok és az Azure AD közötti kapcsolat fenntartásához. |
 | St |X |X | | |
 | streetAddress |X |X | | |
@@ -175,16 +175,16 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | wWWHomePage |X |X | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| Attribútum neve | Felhasználó | Kapcsolatfelvétel | Csoport | Megjegyzés |
+| Attribútum neve | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | authOrig |X |X |X | |
 | c |X |X | | |
 | CN |X | |X | |
-| Co |X |X | | |
-| vállalati |X |X | | |
+| CO |X |X | | |
+| Vállalati |X |X | | |
 | Országhívószám |X |X | | |
-| részleg |X |X | | |
+| Szervezeti egység |X |X | | |
 | leírás |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
@@ -208,17 +208,17 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | givenName |X |X | | |
 | hideDLMembership | | |X | |
 | HomePhone |X |X | | |
-| információ |X |X |X | |
-| monogramja |X |X | | |
-| Érték ipphone |X |X | | |
+| info |X |X |X | |
+| Monogramja |X |X | | |
+| ipPhone |X |X | | |
 | l |X |X | | |
-| levelezési |X |X |X | |
+| mail |X |X |X | |
 | mailnickname |X |X |X | |
 | managedBy | | |X | |
-| Manager |X |X | | |
-| tagja | | |X | |
+| kezelő |X |X | | |
+| tag | | |X | |
 | middleName |X |X | | |
-| mobileszköz |X |X | | |
+| mobil |X |X | | |
 | msExchTeamMailboxExpiration |X | | | |
 | msExchTeamMailboxOwners |X | | | |
 | msExchTeamMailboxSharePointLinkedBy |X | | | |
@@ -231,7 +231,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | otherMobile |X |X | | |
 | otherPager |X |X | | |
 | otherTelephone |X |X | | |
-| személyhívó |X |X | | |
+| Stránkování |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
 | Irányítószám |X |X | | |
 | postOfficeBox |X |X | |Ezt az attribútumot jelenleg nem használják a SharePoint Online. |
@@ -240,7 +240,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | pwdLastSet |X | | |mechanikai tulajdonság. Annak ismerete, hogy mikor kell érvényteleníteni a már kiállított jogkivonatokat. A jelszó-kivonatolási szinkronizálás, az átmenő hitelesítés és az összevonás egyaránt használja. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
-| SN |X |X | | |
+| sorozatszám |X |X | | |
 | sourceAnchor |X |X |X |mechanikai tulajdonság. Megváltoztathatatlan azonosító a HOZZÁADÁSok és az Azure AD közötti kapcsolat fenntartásához. |
 | St |X |X | | |
 | streetAddress |X |X | | |
@@ -257,35 +257,35 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | wWWHomePage |X |X | | |
 
 ## <a name="teams-and-skype-for-business-online"></a>Csapatok és Skype vállalati online verzió
-| Attribútum neve | Felhasználó | Kapcsolatfelvétel | Csoport | Megjegyzés |
+| Attribútum neve | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | c |X |X | | |
 | CN |X | |X | |
-| Co |X |X | | |
-| vállalati |X |X | | |
-| részleg |X |X | | |
+| CO |X |X | | |
+| Vállalati |X |X | | |
+| Szervezeti egység |X |X | | |
 | leírás |X |X |X | |
 | displayName |X |X |X | |
 | érték facsimiletelephonenumber |X |X |X | |
 | givenName |X |X | | |
 | HomePhone |X |X | | |
-| Érték ipphone |X |X | | |
+| ipPhone |X |X | | |
 | l |X |X | | |
-| levelezési |X |X |X | |
+| mail |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
-| Manager |X |X | | |
-| tagja | | |X | |
-| mobileszköz |X |X | | |
+| kezelő |X |X | | |
+| tag | | |X | |
+| mobil |X |X | | |
 | msExchHideFromAddressLists |X |X |X | |
-| msRTCSIP – ApplicationOptions |X | | | |
-| msRTCSIP – DeploymentLocator |X |X | | |
-| msRTCSIP-line |X |X | | |
-| msRTCSIP – OptionFlags |X |X | | |
-| msRTCSIP – OwnerUrn |X | | | |
-| msRTCSIP – PrimaryUserAddress |X |X | | |
-| msRTCSIP – UserEnabled |X |X | | |
+| msRTCSIP-ApplicationOptions |X | | | |
+| msRTCSIP-DeploymentLocator |X |X | | |
+| msRTCSIP-Line |X |X | | |
+| msRTCSIP-OptionFlags |X |X | | |
+| msRTCSIP-OwnerUrn |X | | | |
+| msRTCSIP-PrimaryUserAddress |X |X | | |
+| msRTCSIP-UserEnabled |X |X | | |
 | objectSID |X | |X |mechanikai tulajdonság. Az Azure AD és az AD közötti szinkronizálás fenntartásához használt AD felhasználói azonosító. |
 | otherTelephone |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
@@ -293,7 +293,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |mechanikai tulajdonság. Annak ismerete, hogy mikor kell érvényteleníteni a már kiállított jogkivonatokat. A jelszó-kivonatolási szinkronizálás, az átmenő hitelesítés és az összevonás egyaránt használja. |
-| SN |X |X | | |
+| sorozatszám |X |X | | |
 | sourceAnchor |X |X |X |mechanikai tulajdonság. Megváltoztathatatlan azonosító a HOZZÁADÁSok és az Azure AD közötti kapcsolat fenntartásához. |
 | St |X |X | | |
 | streetAddress |X |X | | |
@@ -305,13 +305,13 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| Attribútum neve | Felhasználó | Kapcsolatfelvétel | Csoport | Megjegyzés |
+| Attribútum neve | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | CN |X | |X |Köznapi név vagy alias. Leggyakrabban a [mail] érték előtagja. |
 | displayName |X |X |X |Az a név, amely a nevet jelöli, gyakran a felhasználóbarát név (vezetéknév). |
-| levelezési |X |X |X |teljes e-mail-cím. |
-| tagja | | |X | |
+| mail |X |X |X |teljes e-mail-cím. |
+| tag | | |X | |
 | objectSID |X | |X |mechanikai tulajdonság. Az Azure AD és az AD közötti szinkronizálás fenntartásához használt AD felhasználói azonosító. |
 | proxyAddresses |X |X |X |mechanikai tulajdonság. Az Azure AD által használt. A felhasználó összes másodlagos e-mail-címét tartalmazza. |
 | pwdLastSet |X | | |mechanikai tulajdonság. Annak ismerete, hogy mikor kell érvényteleníteni a már kiállított jogkivonatokat. |
@@ -320,16 +320,16 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | userPrincipalName |X | | |Ez az egyszerű felhasználónév a felhasználó bejelentkezési azonosítója. A legtöbb esetben ugyanaz, mint a [mail] érték. |
 
 ## <a name="intune"></a>Intune
-| Attribútum neve | Felhasználó | Kapcsolatfelvétel | Csoport | Megjegyzés |
+| Attribútum neve | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | c |X |X | | |
 | CN |X | |X | |
 | leírás |X |X |X | |
 | displayName |X |X |X | |
-| levelezési |X |X |X | |
+| mail |X |X |X | |
 | mailnickname |X |X |X | |
-| tagja | | |X | |
+| tag | | |X | |
 | objectSID |X | |X |mechanikai tulajdonság. Az Azure AD és az AD közötti szinkronizálás fenntartásához használt AD felhasználói azonosító. |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |mechanikai tulajdonság. Annak ismerete, hogy mikor kell érvényteleníteni a már kiállított jogkivonatokat. A jelszó-kivonatolási szinkronizálás, az átmenő hitelesítés és az összevonás egyaránt használja. |
@@ -338,13 +338,13 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | userPrincipalName |X | | |Az UPN a felhasználó bejelentkezési azonosítója. A legtöbb esetben ugyanaz, mint a [mail] érték. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| Attribútum neve | Felhasználó | Kapcsolatfelvétel | Csoport | Megjegyzés |
+| Attribútum neve | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | c |X |X | | |
 | CN |X | |X | |
-| Co |X |X | | |
-| vállalati |X |X | | |
+| CO |X |X | | |
+| Vállalati |X |X | | |
 | Országhívószám |X |X | | |
 | leírás |X |X |X | |
 | displayName |X |X |X | |
@@ -352,15 +352,15 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | givenName |X |X | | |
 | l |X |X | | |
 | managedBy | | |X | |
-| Manager |X |X | | |
-| tagja | | |X | |
-| mobileszköz |X |X | | |
+| kezelő |X |X | | |
+| tag | | |X | |
+| mobil |X |X | | |
 | objectSID |X | |X |mechanikai tulajdonság. Az Azure AD és az AD közötti szinkronizálás fenntartásához használt AD felhasználói azonosító. |
 | physicalDeliveryOfficeName |X |X | | |
 | Irányítószám |X |X | | |
 | preferredLanguage |X | | | |
 | pwdLastSet |X | | |mechanikai tulajdonság. Annak ismerete, hogy mikor kell érvényteleníteni a már kiállított jogkivonatokat. A jelszó-kivonatolási szinkronizálás, az átmenő hitelesítés és az összevonás egyaránt használja. |
-| SN |X |X | | |
+| sorozatszám |X |X | | |
 | sourceAnchor |X |X |X |mechanikai tulajdonság. Megváltoztathatatlan azonosító a HOZZÁADÁSok és az Azure AD közötti kapcsolat fenntartásához. |
 | St |X |X | | |
 | streetAddress |X |X | | |
@@ -377,21 +377,21 @@ Ez a csoport az általános számítási feladatokhoz vagy alkalmazásokhoz szü
 
 Ez a csoport olyan attribútumok összessége, amelyek akkor használhatók, ha az Azure AD-címtárat nem használják az Office 365, a Dynamics vagy az Intune támogatásához. Az alapattribútumok kis készlete van.
 
-| Attribútum neve | Felhasználó | Kapcsolatfelvétel | Csoport | Megjegyzés |
+| Attribútum neve | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | CN |X | |X | |
 | displayName |X |X |X | |
 | Alkalmazottkód |X |  |  | |
 | givenName |X |X | | |
-| levelezési |X | |X | |
+| mail |X | |X | |
 | managedBy | | |X | |
 | mailNickName |X |X |X | |
-| tagja | | |X | |
+| tag | | |X | |
 | objectSID |X | | |mechanikai tulajdonság. Az Azure AD és az AD közötti szinkronizálás fenntartásához használt AD felhasználói azonosító. |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |mechanikai tulajdonság. Annak ismerete, hogy mikor kell érvényteleníteni a már kiállított jogkivonatokat. A jelszó-kivonatolási szinkronizálás, az átmenő hitelesítés és az összevonás egyaránt használja. |
-| SN |X |X | | |
+| sorozatszám |X |X | | |
 | sourceAnchor |X |X |X |mechanikai tulajdonság. Megváltoztathatatlan azonosító a HOZZÁADÁSok és az Azure AD közötti kapcsolat fenntartásához. |
 | usageLocation |X | | |mechanikai tulajdonság. A felhasználó országa/régiója. Licenc-hozzárendeléshez használatos. |
 | userPrincipalName |X | | |Az UPN a felhasználó bejelentkezési azonosítója. A legtöbb esetben ugyanaz, mint a [mail] érték. |
@@ -404,7 +404,7 @@ Egy Windows 10 tartományhoz csatlakoztatott számítógép (eszköz) szinkroniz
 | accountEnabled |X | |
 | deviceTrustType |X |A tartományhoz csatlakoztatott számítógépek hardcoded értéke. |
 | displayName |X | |
-| MS-DS-CreatorSID |X |Más néven registeredOwnerReference. |
+| ms-DS-CreatorSID |X |Más néven registeredOwnerReference. |
 | objectGUID |X |Más néven deviceID. |
 | objectSID |X |Más néven onPremisesSecurityIdentifier. |
 | operatingSystem |X |Más néven deviceOSType. |
@@ -422,17 +422,17 @@ A **felhasználóhoz** tartozó attribútumok a többi kiválasztott alkalmazás
 ## <a name="exchange-hybrid-writeback"></a>Hibrid Exchange-visszaírási
 Ezek az attribútumok visszakerülnek az Azure AD-ből a helyszíni Active Directoryba, ha engedélyezi az **Exchange Hybrid**engedélyezését. Az Exchange-verziótól függően kevesebb attribútum is szinkronizálható.
 
-| Attribútum neve (helyszíni AD) | Attribútum neve (felhasználói felület összekapcsolása) | Felhasználó | Kapcsolatfelvétel | Csoport | Megjegyzés |
+| Attribútum neve (helyszíni AD) | Attribútum neve (felhasználói felület összekapcsolása) | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |---|
-| msDS-ExternalDirectoryObjectID| MS-DS-External-Directory-Object-ID |X | | |Az Azure AD cloudAnchor származtatva. Ez az attribútum az Exchange 2016 és a Windows Server 2016 AD újdonsága. |
-| msExchArchiveStatus| MS-árfolyam-ArchiveStatus |X | | |Online Archive: lehetővé teszi, hogy az ügyfelek archiválják az e-maileket. |
-| msExchBlockedSendersHash| MS-árfolyam-BlockedSendersHash |X | | |Szűrés: a helyszíni szűrést és az online biztonságos és letiltott küldő adatait írja vissza az ügyfelektől. |
-| msExchSafeRecipientsHash| MS-árfolyam-SafeRecipientsHash  |X | | |Szűrés: a helyszíni szűrést és az online biztonságos és letiltott küldő adatait írja vissza az ügyfelektől. |
-| msExchSafeSendersHash| MS-árfolyam-SafeSendersHash  |X | | |Szűrés: a helyszíni szűrést és az online biztonságos és letiltott küldő adatait írja vissza az ügyfelektől. |
-| msExchUCVoiceMailSettings| MS-árfolyam-UCVoiceMailSettings |X | | |Egyesített üzenetküldés engedélyezése (UM) – online hangposta: a Microsoft Lync Server integrációja azt jelzi, hogy a Lync-kiszolgáló a helyszínen, hogy a felhasználónak van hangposta a online szolgáltatások. |
+| msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |Az Azure AD cloudAnchor származtatva. Ez az attribútum az Exchange 2016 és a Windows Server 2016 AD újdonsága. |
+| msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Online Archive: lehetővé teszi, hogy az ügyfelek archiválják az e-maileket. |
+| msExchBlockedSendersHash| ms-Exch-BlockedSendersHash |X | | |Szűrés: a helyszíni szűrést és az online biztonságos és letiltott küldő adatait írja vissza az ügyfelektől. |
+| msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |X | | |Szűrés: a helyszíni szűrést és az online biztonságos és letiltott küldő adatait írja vissza az ügyfelektől. |
+| msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |Szűrés: a helyszíni szűrést és az online biztonságos és letiltott küldő adatait írja vissza az ügyfelektől. |
+| msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |Egyesített üzenetküldés engedélyezése (UM) – online hangposta: a Microsoft Lync Server integrációja azt jelzi, hogy a Lync-kiszolgáló a helyszínen, hogy a felhasználónak van hangposta a online szolgáltatások. |
 | msExchUserHoldPolicies| MS-árfolyam-UserHoldPolicies |X | | |Peres eljárás: lehetővé teszi a Cloud Services számára, hogy meghatározza, mely felhasználók tartoznak a peres eljárás hatálya alá. |
 | proxyAddresses| proxyAddresses |X |X |X |Csak az Exchange Online x500-címe van beszúrva. |
-| publicDelegates| MS-árfolyam-nyilvános delegált  |X | | |Lehetővé teszi, hogy az Exchange Online-postaláda SendOnBehalfTo jogokat biztosítson a helyszíni Exchange-postaládával rendelkező felhasználók számára. Ehhez Azure AD Connect build 1.1.552.0 vagy későbbi verzió szükséges. |
+| publicDelegates| ms-Exch-Public-Delegates  |X | | |Lehetővé teszi, hogy az Exchange Online-postaláda SendOnBehalfTo jogokat biztosítson a helyszíni Exchange-postaládával rendelkező felhasználók számára. Ehhez Azure AD Connect build 1.1.552.0 vagy későbbi verzió szükséges. |
 
 ## <a name="exchange-mail-public-folder"></a>Exchange-levelezés nyilvános mappája
 Ezek az attribútumok szinkronizálva vannak a helyszíni Active Directory az Azure AD-be, amikor engedélyezi az **Exchange-levelezés nyilvános mappájának**engedélyezését.
@@ -440,7 +440,7 @@ Ezek az attribútumok szinkronizálva vannak a helyszíni Active Directory az Az
 | Attribútum neve | PublicFolder | Megjegyzés |
 | --- | :---:| --- |
 | displayName | X |  |
-| levelezési | X |  |
+| mail | X |  |
 | msExchRecipientTypeDetails | X |  |
 | objectGUID | X |  |
 | proxyAddresses | X |  |

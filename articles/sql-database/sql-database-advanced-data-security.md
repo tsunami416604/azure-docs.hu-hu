@@ -1,5 +1,5 @@
 ---
-title: Magas szintű adatbiztonság
+title: Advanced Data Security
 description: Ismerje meg a bizalmas adatok felderítésének és besorolásának funkcióit, az adatbázis-sebezhetőségek kezelését, valamint az Azure SQL Database fenyegetését jelző rendellenes tevékenységek észlelését.
 services: sql-database
 ms.service: sql-database
@@ -12,23 +12,23 @@ manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
 ms.openlocfilehash: 1f0e6694e596dc60264dfe0789a2f80090e0da3d
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293844"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360348"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Speciális adatbiztonság a Azure SQL Database
 
-A speciális adatbiztonság a speciális SQL-alapú biztonsági képességek egységes csomagja. Lehetőséget nyújt a bizalmas adatok felderítésére és titkossá minősítésére, az adatbázis biztonsági réseinek feltárására és kezelésére, továbbá az adatbázisra nézve fenyegetést jelentő rendellenes tevékenységek észlelésére. Segítségével egyetlen helyen engedélyezhetők és kezelhetők ezek a képességek.
+A speciális adatbiztonság a speciális SQL-alapú biztonsági képességek egységes csomagja. A szolgáltatás magában foglalja a bizalmas adatok felderítésére és besorolására, a felszínre és a lehetséges adatbázis-sebezhetőségek enyhítésére szolgáló funkciókat, valamint a rendellenes tevékenységek észlelését, amelyek fenyegetést jelenthetnek az adatbázisra. Segítségével egyetlen helyen engedélyezhetők és kezelhetők ezek a képességek.
 
 ## <a name="overview"></a>Áttekintés
 
 A speciális adatbiztonság (ADS) fejlett SQL biztonsági képességeket biztosít, beleértve az adatfelderítési & besorolást, a sebezhetőségi felmérést és az összetett veszélyforrások elleni védelmet.
 
 - Az [adatfelderítési & besorolása](sql-database-data-discovery-and-classification.md) Azure SQL Database számára beépített képességeket biztosít az adatbázisok bizalmas adatainak észleléséhez, besorolásához, címkézéséhez &. Használatával áttekinthető az adatbázis besorolási állapota, valamint követhető a bizalmas adatokhoz való hozzáférés az adatbázison belül és azon kívül.
-- A [sebezhetőségi felmérés](sql-vulnerability-assessment.md) egy könnyen konfigurálható szolgáltatás, amely képes felderíteni és követni az adatbázisok lehetséges biztonsági réseit, és segít orvosolni azokat. Áttekinthetővé teszi az adatbázisok biztonsági állapotát, és végrehajtható lépéseket kínál a biztonsági problémák megoldására, valamint az adatbázisok védelmének fejlesztésére.
-- Az [Advanced Threat Protection](sql-database-threat-detection-overview.md) észleli az adatbázisai hozzáférésére és az adatbázisai biztonságának megsértésére tett szokatlan és potenciálisan kártevő szándékú kísérleteket. A szolgáltatás folyamatosan figyeli az adatbázisokat, és azonnal értesíti a felhasználót a gyanús tevékenységekről, a lehetséges biztonsági résekről, az SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról. Az Advanced Threat Protection által adott riasztások tartalmazzák a gyanús tevékenység részleteit, és javaslatot tesznek a fenyegetés kivizsgálására és mérséklésére tett műveletekre.
+- A [sebezhetőségi felmérés](sql-vulnerability-assessment.md) egy könnyen konfigurálható szolgáltatás, amely felderítheti, nyomon követheti és javíthatja a lehetséges adatbázis-réseket. Áttekinthetővé teszi az adatbázisok biztonsági állapotát, és végrehajtható lépéseket kínál a biztonsági problémák megoldására, valamint az adatbázisok védelmének fejlesztésére.
+- A komplex [veszélyforrások elleni védelem](sql-database-threat-detection-overview.md) olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázis eléréséhez vagy kiaknázásához. A szolgáltatás folyamatosan figyeli az adatbázisokat, és azonnal értesíti a felhasználót a gyanús tevékenységekről, a lehetséges biztonsági résekről, az SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról. A komplex veszélyforrások elleni védelemre vonatkozó riasztások a gyanús tevékenységek részleteit tartalmazzák, és a fenyegetés kivizsgálásával és enyhítésével kapcsolatos teendőket javasolnak.
 
 Engedélyezze az SQL-HIRDETÉSEKET egyszer az összes ilyen funkció engedélyezéséhez. Egyetlen kattintással engedélyezheti a HIRDETÉSEKET a SQL Database-kiszolgálón vagy a felügyelt példányon található összes adatbázishoz. A hirdetési beállítások engedélyezéséhez vagy kezeléséhez az SQL [Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) szerepkörhöz, az SQL Database-rendszergazdai szerepkörhöz vagy az SQL Server rendszergazdai szerepkörhöz kell tartoznia. 
 

@@ -14,11 +14,11 @@ ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 6a134d2bdfe7f370503b80703933ff646970d976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981100"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359455"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Videó és hang kódolása Media Services
 
@@ -33,15 +33,15 @@ Az alábbi ábrán a dinamikus csomagolással rendelkező igény szerinti kódol
 
 ![Igény szerinti kódolásra szolgáló munkafolyamat dinamikus csomagolással](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-Ez a témakör útmutatást nyújt a tartalmak Media Services v3-vel való kódolásához.
+Ez a témakör nyújt útmutatást tartalmait a Media Services v3 kódolással.
 
 ## <a name="transforms-and-jobs"></a>Átalakítások és feladatok
 
 Media Services v3 kódoláshoz létre kell hoznia egy [átalakítót](https://docs.microsoft.com/rest/api/media/transforms) és egy [feladatot](https://docs.microsoft.com/rest/api/media/jobs). Az átalakítás egy receptet határoz meg a kódolási beállításokhoz és kimenetekhez; a feladattípus a recept egy példánya. További információt az [átalakításokkal és feladatokkal](transforms-jobs-concept.md) kapcsolatos cikkben olvashat.
 
-Ha Media Services kódolást használ, az előállítók használatával tájékoztathatja a kódolót a bemeneti médiafájlok feldolgozásáról. Megadhatja például a videó felbontását és/vagy a kívánt Hangcsatornák számát a kódolt tartalomban.
+A Media Services encoding, amikor a szolgáltatás használatával ossza meg a kódoló a bemeneti fájlok feldolgozásának módja. Például megadhatja a videó felbontást és/vagy a kívánt hang csatornák száma kódolt tartalmában.
 
-Az iparági ajánlott eljárások alapján gyorsan megkezdheti a javasolt beépített készletek egyikét, vagy dönthet úgy, hogy létrehoz egy egyéni beállításkészletet az adott forgatókönyv vagy eszköz követelményeinek megfelelően. További információ: [kódolás egyéni átalakítóval](customize-encoder-presets-how-to.md).
+Ismerkedhet meg gyorsan az ágazatban kialakult bevált gyakorlaton alapuló ajánlott a beépített beállítások egyikét, vagy dönthet úgy, amelyekre az adott forgatókönyv vagy eszközkövetelmények beállított egyéni. További információ: [kódolás egyéni átalakítóval](customize-encoder-presets-how-to.md).
 
 Az MP4-fájl (ok) előállításakor a Media Encoder Standardtól kezdődően a (z) 2019-as és újabb, a kimeneti eszközhöz hozzáadott új. MPI-fájl jön létre. Ez az MPI-fájl a [dinamikus csomagolás](dynamic-packaging-overview.md) és a folyamatos átviteli forgatókönyvek teljesítményének növelésére szolgál.
 
@@ -83,7 +83,7 @@ Példák:
 * [Videó kivágása a .NET-tel](subclip-video-dotnet-howto.md)
 * [Videó kivágása a REST-tel](subclip-video-rest-howto.md)
 
-## <a name="built-in-presets"></a>Beépített beállításkészletek
+## <a name="built-in-presets"></a>Beépített készletek
 
 Media Services a következő beépített kódolási beállításkészleteket támogatja:  
 
@@ -91,14 +91,14 @@ Media Services a következő beépített kódolási beállításkészleteket tá
 
 A [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) egy beépített beállításkészlet beállítására szolgál, amely a bemeneti videót a szabványos kódolóval kódolja.
 
-A következő beállításkészletek jelenleg támogatottak:
+A következő készletek jelenleg támogatja:
 
 - **EncoderNamedPreset. AACGoodQualityAudio**: egyetlen MP4-fájlt hoz létre, amely kizárólag 192 kbps-nál kódolt sztereó hanganyagot tartalmaz.
 - **EncoderNamedPreset. AdaptiveStreaming** (ajánlott): további információért lásd a [bitráta-létrák automatikus generálását](autogen-bitrate-ladder.md)ismertető témakört.
 - **EncoderNamedPreset. ContentAwareEncodingExperimental**: egy kísérleti beállításkészletet tesz elérhetővé a Content-Aware kódoláshoz. A szolgáltatás bármilyen bemeneti tartalmat megpróbál automatikusan meghatározni a rétegek optimális számának meghatározására, valamint a megfelelő bitrátát és feloldási beállításokat az adaptív adatfolyam-továbbítással. Az alapul szolgáló algoritmusok az idő múlásával továbbra is fejlődnek lesznek. A kimenet video-és hangalapú MP4-fájlokat fog tartalmazni. További információ: [kísérleti beállításkészlet a Content-Aware kódoláshoz](content-aware-encoding.md).
-- **EncoderNamedPreset. H264MultipleBitrate1080p**: nyolc GOP-igazítású MP4-fájlt állít elő, amely 6000 kbps-ról 400 kbps-ra, valamint sztereó AAC hangra mutat. A felbontás 1080p-kor kezdődik, és a 360p.
-- **EncoderNamedPreset. H264MultipleBitrate720p**: hat GOP-igazítású MP4-fájlt állít elő, amely 3400 kbps-ról 400 kbps-ra, valamint sztereó AAC hangra mutat. A megoldás 720p-kor kezdődik, és a 360p-re mutat.
-- **EncoderNamedPreset. H264MultipleBitrateSD**: öt GOP-igazítású MP4-fájlt állít elő, amely 1600 kbps-ról 400 kbps-ra, valamint sztereó AAC hangra mutat. A megoldás a 480p-on kezdődik, és a 360p-re mutat.
+- **EncoderNamedPreset. H264MultipleBitrate1080p**: nyolc GOP-igazítású MP4-fájlt állít elő, amely 6000 kbps-ról 400 kbps-ra, valamint sztereó AAC hangra mutat. Megoldás 1080p-nél kezdődik, és lefelé 360 p felbontású kerül.
+- **EncoderNamedPreset. H264MultipleBitrate720p**: hat GOP-igazítású MP4-fájlt állít elő, amely 3400 kbps-ról 400 kbps-ra, valamint sztereó AAC hangra mutat. Feloldási 720 p elindul, és lefelé 360 p felbontású kerül.
+- **EncoderNamedPreset. H264MultipleBitrateSD**: öt GOP-igazítású MP4-fájlt állít elő, amely 1600 kbps-ról 400 kbps-ra, valamint sztereó AAC hangra mutat. Megoldás 480p-nél kezdődik, és lefelé 360 p felbontású kerül.
 - **EncoderNamedPreset. H264SingleBitrate1080p**: MP4-fájlt hoz létre, ahol a videó a H. 264 kodekkel van kódolva, 6750 kbps sebességgel, a kép magassága pedig 1080 képpont, és a sztereó hang AAC-LC kodekkel van kódolva, 64 kbps sebességgel.
 - **EncoderNamedPreset. H264SingleBitrate720p**: MP4-fájlt hoz létre, ahol a videó a H. 264 kodekkel van kódolva, 4500 kbps sebességgel, a kép magassága pedig 720 képpont, és a sztereó hang AAC-LC kodekkel van kódolva, 64 kbps sebességgel.
 - **EncoderNamedPreset. H264SingleBitrateSD**: MP4-fájlt hoz létre, ahol a videó a H. 264 kodekkel van kódolva, 2200 kbps sebességgel, a kép magassága pedig 480 képpont, és a sztereó hang AAC-LC kodekkel van kódolva, 64 kbps sebességgel.
@@ -109,9 +109,9 @@ Az előzetes beállítások használatáról a [fájlok feltöltése, kódolása
 
 ### <a name="standardencoderpreset"></a>StandardEncoderPreset
 
-A [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) a bemeneti videó standard kódolóval való kódolásakor használandó beállításokat ismerteti. Ezt az beállításkészletet az átalakítási előkészletek testreszabásakor használhatja.
+A [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) a bemeneti videó standard kódolóval való kódolásakor használandó beállításokat ismerteti. Ezzel a készlet, átalakító készletek testreszabásához.
 
-#### <a name="considerations"></a>Megfontolandó szempontok
+#### <a name="considerations"></a>Megfontolások
 
 Egyéni beállításkészletek létrehozásakor a következő szempontokat kell figyelembe venni:
 
@@ -120,7 +120,7 @@ Egyéni beállításkészletek létrehozásakor a következő szempontokat kell 
 
 ### <a name="customizing-presets"></a>Előzetes beállítások testreszabása
 
-Media Services teljes mértékben támogatja az előre beállított összes érték testreszabását az adott kódolási igények és követelmények kielégítése érdekében. A kódoló-beállításkészletek testreszabását bemutató példákért tekintse meg az alábbi listát:
+A Media Services teljes körűen támogatja az adott kódolási igények és követelmények készletek található értékek némelyike testreszabása. A kódoló-beállításkészletek testreszabását bemutató példákért tekintse meg az alábbi listát:
 
 #### <a name="examples"></a>Példák
 
@@ -132,7 +132,7 @@ Media Services teljes mértékben támogatja az előre beállított összes ért
 
 A Media Services v3-as verzióban az előzetes beállítások az API-ban erősen beírt entitások. Ezekhez az objektumokhoz a "séma" definíciója [nyílt API-specifikációban (vagy hencegés)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)található. A [REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) -ban (vagy más Media Services v3 SDK-dokumentációban) is megtekintheti az előre definiált definíciókat (például **StandardEncoderPreset**).
 
-## <a name="scaling-encoding-in-v3"></a>A kódolás skálázása v3-ben
+## <a name="scaling-encoding-in-v3"></a>V3 a kódolás méretezése
 
 A médiafájlok feldolgozásának méretezéséhez lásd: [Méretezés a CLI-vel](media-reserved-units-cli-how-to.md).
 

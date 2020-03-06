@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: A Scheduler |} A Microsoft Docs'
-description: Ez a témakör ismerteti az Azure AD Connect szinkronizálási beépített ütemezési funkció.
+title: 'Azure AD Connect Sync: Scheduler | Microsoft Docs'
+description: Ez a témakör a Azure AD Connect Sync beépített Scheduler szolgáltatását ismerteti.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,48 +17,48 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65139294"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378107"
 ---
-# <a name="azure-ad-connect-sync-scheduler"></a>Az Azure AD Connect szinkronizálása: Scheduler
-Ez a témakör ismerteti a beépített scheduler az Azure AD Connect-szinkronizálással (szinkronizálási motor).
+# <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect Sync: Scheduler
+Ez a témakör a Azure AD Connect Sync (Sync Engine) beépített feladatütemezőjét ismerteti.
 
-Ez a funkció a build 1.1.105.0 (kiadás dátuma: 2016. február) jelent meg.
+Ez a szolgáltatás a build 1.1.105.0 (2016. február) jelent meg.
 
 ## <a name="overview"></a>Áttekintés
-Az Azure AD Connect szinkronizálása a helyszíni címtárban, az ütemező bekövetkező változások szinkronizálása. Nincsenek két scheduler folyamatot, a egyet a jelszó-szinkronizálás és a egy másik eszközobjektum-attribútum szinkronizálása és karbantartási feladatokhoz. Ez a témakör ismerteti az utóbbi.
+Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekövetkező változásokat a Scheduler használatával. Két ütemező folyamat létezik, egyet a jelszó-szinkronizáláshoz, egy másikat az objektum/attribútum szinkronizálásához és a karbantartási feladatokhoz. Ez a témakör az utóbbit ismerteti.
 
-A korábbi kiadásokban az objektumok és attribútumok az ütemező volt a szinkronizálási motoron külső. Windows Feladatütemező vagy egy különálló Windows-szolgáltatás ezt használja a szinkronizálási folyamat indításához. Az ütemező az 1.1-es verziók beépített, a szinkronizálás a motor- és néhány testreszabási teszik lehetővé. Az új alapértelmezett szinkronizálási gyakoriság értéke 30 perc.
+A korábbi kiadásokban az objektumok és attribútumok ütemező kívül volt a Szinkronizáló motoron. A szinkronizálási folyamat elindításához a Windows Feladatütemezőt vagy egy külön Windows-szolgáltatást használt. Az ütemező a 1,1-es verzió beépített változatával rendelkezik, és lehetővé teszi bizonyos testreszabást. Az új alapértelmezett szinkronizálási gyakoriság 30 perc.
 
-Az ütemező felelős két feladatot:
+Az ütemező feladata két feladat:
 
-* **Szinkronizálási ciklust**. Az importálási folyamat szinkronizálása, és exportálni a módosításokat.
-* **Karbantartási feladatok**. Újítsa meg a kulcsok és tanúsítványok a jelszó alaphelyzetbe állítása és az Eszközregisztrációs szolgáltatás (DRS). Törölje a régi bejegyzések a műveleti naplóban.
+* **Szinkronizálási ciklus**. A módosítások importálására, szinkronizálására és exportálására szolgáló folyamat.
+* **Karbantartási feladatok**. Új kulcsok és tanúsítványok megújítása a jelszó-visszaállításhoz és az eszköz regisztrációs szolgáltatásához (DRS). A régi bejegyzések kiürítése az operatív naplóban.
 
-Az ütemező magát mindig fut, de csak az egyik vagy ezek a feladatok egyike futtatását is konfigurálható. Például ha rendelkezik a saját szinkronizálási ciklus folyamat van szüksége, akkor tiltsa le ezt a feladatot az ütemező az, de továbbra is futtassa a karbantartási feladatot.
+Maga az ütemező mindig fut, de úgy is konfigurálható, hogy csak egy vagy több feladatot futtasson. Ha például saját szinkronizálási ciklusra van szüksége, letilthatja ezt a feladatot az ütemező alkalmazásban, de továbbra is futtathatja a karbantartási feladatot.
 
-## <a name="scheduler-configuration"></a>Feladatütemező konfigurációjához
-A jelenlegi konfigurációs beállítások megtekintéséhez, keresse fel a PowerShell és a Futtatás `Get-ADSyncScheduler`. Jelzi, hogy a képen hasonló:
+## <a name="scheduler-configuration"></a>Ütemező konfigurálása
+Az aktuális konfigurációs beállítások megjelenítéséhez nyissa meg a PowerShellt, és futtassa `Get-ADSyncScheduler`. A következőhöz hasonló képet mutat:
 
 ![GetSyncScheduler](./media/how-to-connect-sync-feature-scheduler/getsynccyclesettings2016.png)
 
-Ha látja **a szinkronizálási parancsot vagy a parancsmag nem érhető el** amikor futtatja a parancsmagot, majd a PowerShell-modul nincs betöltve. Ez a probléma akkor fordulhat elő, ha az Azure AD Connect egy tartományvezérlőn vagy PowerShell korlátozás magasabb szintű, mint az alapértelmezett beállításokat a kiszolgálón. Ha ezt a hibát látja, majd futtassa `Import-Module ADSync` , hogy a parancsmag elérhető.
+Ha a parancsmag futtatásakor **a szinkronizálási parancs vagy a parancsmag nem érhető el** , akkor a PowerShell-modul nincs betöltve. Ez a probléma akkor fordulhat elő, ha a Azure AD Connect tartományvezérlőn vagy az alapértelmezett beállításoknál magasabb PowerShell-korlátozási szinttel rendelkező kiszolgálón futtatja. Ha ezt a hibát látja, futtassa `Import-Module ADSync` parancsot a parancsmag elérhetővé tételéhez.
 
-* **AllowedSyncCycleInterval**. A legrövidebb közötti időintervallum szinkronizálási ciklust az Azure AD által engedélyezett. Ez a beállítás gyakrabban nem szinkronizálja, és továbbra is támogatott lesz.
-* **CurrentlyEffectiveSyncCycleInterval**. Jelenleg a érvénybe az ütemezés. Stejnou hodnotu jako CustomizedSyncInterval rendelkezik (ha beállítása) Ha nem AllowedSyncInterval üzemezésnél gyakoribb. Ha egy build 1.1.281 előtt használja, és CustomizedSyncCycleInterval módosítja, a módosítás után a következő szinkronizálási ciklusban lép érvénybe. A build 1.1.281 a változás azonnal érvénybe lép.
-* **CustomizedSyncCycleInterval**. Ha azt szeretné, hogy az ütemező a futtatását, hogy bármely más, mint az alapértelmezett gyakoriság 30 percet, majd ezt a beállítást konfigurálja. A fenti képen az ütemező a futni óránként van beállítva. Ha alacsonyabb, mint AllowedSyncInterval állítsa ezzel a beállítással értékre, majd az utóbbi használatos.
-* **NextSyncCyclePolicyType**. A különbözeti vagy kezdeti. Meghatározza, hogy a következő futtatáskor kell csak a folyamat új módosításokkal, vagy ha a következő futtatáskor kell tennie egy teljes importálása és szinkronizálása. Az utóbbi akkor is újrafeldolgozása új vagy módosított szabályokat.
-* **NextSyncCycleStartTimeInUTC**. Amikor legközelebb az ütemező indítja el a következő szinkronizálási ciklus.
-* **PurgeRunHistoryInterval**. Az idő a műveletnaplók kell tárolni. Ezek a naplók a synchronization service Managert a tekinthető meg. Az alapértelmezett érték 7 napig ezek a naplók tárolása céljából.
-* **SyncCycleEnabled**. Azt jelzi, hogy az Ütemező fut-e az importálás, szinkronizálási és exportálási folyamatok a művelet részeként.
-* **MaintenanceEnabled**. Látható, hogy engedélyezve van-e a karbantartási folyamat. Ez frissíti a tanúsítványok vagy kulcsok és a műveleti napló kiürítése.
-* **StagingModeEnabled**. Bemutatja, ha [átmeneti módban](how-to-connect-sync-staging-server.md) engedélyezve van. Ha ez a beállítás engedélyezve van, majd nem jelenít meg a kivitel futását, de továbbra is futtassa az importálás és a szinkronizálás.
-* **SchedulerSuspended**. Állítsuk Connect a frissítés során ideiglenesen letiltása az ütemező futását.
+* **AllowedSyncCycleInterval**. Az Azure AD által engedélyezett szinkronizálási ciklusok közötti legrövidebb időtartam. Ennél a beállításnál gyakrabban nem lehet szinkronizálni, és továbbra is támogatott.
+* **CurrentlyEffectiveSyncCycleInterval**. Az ütemterv jelenleg érvényben van. Ez az érték megegyezik a CustomizedSyncInterval (ha be van állítva), ha az nem gyakoribb, mint a AllowedSyncInterval. Ha a 1.1.281 előtt hoz létre egy buildet, és megváltoztatja a CustomizedSyncCycleInterval, ez a változás a következő szinkronizálási ciklus után lép érvénybe. A build 1.1.281 a módosítás azonnal érvénybe lép.
+* **CustomizedSyncCycleInterval**. Ha azt szeretné, hogy az ütemező az alapértelmezett 30 percnél más gyakorisággal fusson, ezt a beállítást kell beállítania. A fenti képen az ütemező úgy van beállítva, hogy minden órában fusson. Ha ezt a beállítást a AllowedSyncInterval alacsonyabb értékre állítja, akkor a rendszer az utóbbit használja.
+* **NextSyncCyclePolicyType**. Akár Delta, akár kezdeti. Meghatározza, hogy a következő Futtatás csak a különbözeti változásokat dolgozza fel, vagy ha a következő futtatásnak teljes importálást és szinkronizálást kell végeznie. Az utóbbi az új vagy módosított szabályokat is újra feldolgozza.
+* **NextSyncCycleStartTimeInUTC**. Amikor a Feladatütemező legközelebb elindítja a következő szinkronizálási ciklust.
+* **PurgeRunHistoryInterval**. Meg kell őrizni az idő műveleti naplóit. Ezeket a naplókat a szinkronizációs szolgáltatás kezelőjében lehet megtekinteni. Alapértelmezés szerint a naplókat 7 napig kell megőrizni.
+* **SyncCycleEnabled**. Azt jelzi, hogy az ütemező futtatja-e az importálási, szinkronizálási és exportálási folyamatokat a művelet részeként.
+* **MaintenanceEnabled**. Azt mutatja, hogy engedélyezve van-e a karbantartási folyamat. Frissíti a tanúsítványokat és a kulcsokat, és kiüríti az operatív naplót.
+* **StagingModeEnabled**. Azt mutatja, hogy engedélyezve van-e az [átmeneti üzemmód](how-to-connect-sync-staging-server.md) . Ha ez a beállítás engedélyezve van, a rendszer letiltja az exportálást, de továbbra is futtatja az importálást és a szinkronizálást.
+* **SchedulerSuspended**. A frissítés során állítsa be a csatlakozást, hogy ideiglenesen blokkolja az ütemező futtatását.
 
-Módosíthatja az egyes beállításokat a `Set-ADSyncScheduler`. Módosítható a következő paraméterekkel:
+Ezeket a beállításokat `Set-ADSyncScheduler`segítségével módosíthatja. A következő paraméterek módosíthatók:
 
 * CustomizedSyncCycleInterval
 * NextSyncCyclePolicyType
@@ -66,67 +66,67 @@ Módosíthatja az egyes beállításokat a `Set-ADSyncScheduler`. Módosítható
 * SyncCycleEnabled
 * MaintenanceEnabled
 
-Az Azure AD Connect régebbi buildjei **isStagingModeEnabled** a Set-ADSyncScheduler elérhető volt. Ez **nem támogatott** , ezzel a tulajdonsággal. A tulajdonság **SchedulerSuspended** Connect csak módosíthatók. Ez **nem támogatott** közvetlenül be a PowerShell használatával.
+Azure AD Connect korábbi verzióiban a **isStagingModeEnabled** a set-ADSyncScheduler-ben volt elérhető. A tulajdonság beállítása nem **támogatott** . A **SchedulerSuspended** tulajdonságot csak a kapcsolattal kell módosítani. Nem **támogatott** a PowerShell közvetlen beállításával.
 
-A Feladatütemező beállítása az Azure ad-ben tárolt. Ha rendelkezik egy átmeneti kiszolgálón, az elsődleges kiszolgáló bármilyen módosítás befolyásolja az átmeneti kiszolgálót (kivéve a IsStagingModeEnabled) is.
+Az ütemező konfigurációját az Azure AD tárolja. Ha átmeneti kiszolgálóval rendelkezik, az elsődleges kiszolgáló változásai az átmeneti kiszolgálót is érintik (kivéve a IsStagingModeEnabled-t).
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
 Szintaxis: `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
-d - nap, HH - Óra, pp - perc, mm – másodperc
+d-nap, óó-óra, mm-perc, SS-másodperc
 
 Például: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
-Módosítja az ütemező 3 óránként futtatásához.
+Az ütemező úgy módosul, hogy 3 óránként fusson.
 
 Például: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0`  
-Megváltoztatása napi rendszerességgel ütemezik arra az ütemezőnek.
+A módosítások az ütemező napi futtatását módosítják.
 
-### <a name="disable-the-scheduler"></a>Az ütemező letiltása  
-Ha konfigurációs módosításokat kell, majd szeretné tiltani az ütemező. Például, amikor Ön [a szűrés konfigurálása](how-to-connect-sync-configure-filtering.md) vagy [hajtsa végre a módosításokat a szinkronizálási szabályokon](how-to-connect-sync-change-the-configuration.md).
+### <a name="disable-the-scheduler"></a>Ütemező letiltása  
+Ha módosítania kell a konfigurációt, akkor le kívánja tiltani a Feladatütemezőt. Ha például [Beállítja a szűrést](how-to-connect-sync-configure-filtering.md) , vagy [módosítja a szinkronizálási szabályokat](how-to-connect-sync-change-the-configuration.md).
 
-Az ütemező letiltásához futtassa `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+Az ütemező letiltásához futtassa a `Set-ADSyncScheduler -SyncCycleEnabled $false`.
 
-![Az ütemező letiltása](./media/how-to-connect-sync-feature-scheduler/schedulerdisable.png)
+![Ütemező letiltása](./media/how-to-connect-sync-feature-scheduler/schedulerdisable.png)
 
-Amikor végzett a módosításokat, ne felejtse el engedélyezni az ütemező szintén a `Set-ADSyncScheduler -SyncCycleEnabled $true`.
+A módosítások elvégzése után ne felejtse el ismét engedélyezni az ütemező `Set-ADSyncScheduler -SyncCycleEnabled $true`.
 
-## <a name="start-the-scheduler"></a>A Feladatütemező indítása
-Az ütemező 30 percenként futtatása alapértelmezés szerint ki van. Bizonyos esetekben érdemes lehet ütemezett ciklusok között egy szinkronizálási ciklus futtatására, vagy egy más típusú futtatnia kell.
+## <a name="start-the-scheduler"></a>Az ütemező elindítása
+Az ütemező alapértelmezés szerint 30 percenként fut. Bizonyos esetekben előfordulhat, hogy szinkronizálási ciklust szeretne futtatni az ütemezett ciklusok között, vagy egy másik típust kell futtatnia.
 
-### <a name="delta-sync-cycle"></a>A különbözeti szinkronizálási ciklus
-A különbözeti szinkronizálási ciklus a következő lépésekből áll:
+### <a name="delta-sync-cycle"></a>Különbözeti szinkronizálási ciklus
+A különbözeti szinkronizálási ciklus a következő lépéseket tartalmazza:
 
 
-- Különbözeti importálás az összes összekötő
-- Különbözeti szinkronizálás az összes összekötő
-- Exportálás az összes összekötő
+- Különbözeti Importálás az összes összekötőn
+- Különbözeti szinkronizálás az összes összekötőn
+- Exportálás az összes összekötőn
 
 ### <a name="full-sync-cycle"></a>Teljes szinkronizálási ciklus
-Egy teljes szinkronizálási ciklust a következő lépésekből áll:
+A teljes szinkronizálási ciklus a következő lépéseket tartalmazza:
 
-- Teljes importálás az összes összekötő
-- Teljes szinkronizálás az összes összekötő
-- Exportálás az összes összekötő
+- Teljes importálás minden összekötőn
+- Teljes szinkronizálás minden összekötőn
+- Exportálás az összes összekötőn
 
-Annak oka az lehet, hogy rendelkezik-e az sürgős megváltoztatására, amely szinkronizálva kell lenniük, azonnal, ezért egy ciklus manuálisan futtatnia kell. 
+Előfordulhat, hogy sürgős változásra van szükség, amelyet azonnal szinkronizálni kell, ezért a ciklust manuálisan kell futtatni. 
 
-Ha manuálisan futtatnia kell egy szinkronizálási ciklust, majd a PowerShell futási `Start-ADSyncSyncCycle -PolicyType Delta`.
+Ha manuálisan kell futtatnia egy szinkronizálási ciklust, akkor a PowerShell futtatási `Start-ADSyncSyncCycle -PolicyType Delta`.
 
-Ehhez futtassa a következő teljes szinkronizálási ciklusának kezdeményezésére, `Start-ADSyncSyncCycle -PolicyType Initial` PowerShell parancssorból.   
+Teljes szinkronizálási ciklus kezdeményezéséhez futtassa a `Start-ADSyncSyncCycle -PolicyType Initial`t egy PowerShell-parancssorból.   
 
-Egy teljes szinkronizálási ciklust futó nagyon időigényes lehet, olvassa el a következő szakaszban olvasható a folyamat optimalizálása.
+A teljes szinkronizálási ciklus futtatása nagyon időigényes lehet, olvassa el a következő szakaszt, és olvassa el, hogyan optimalizálhatja ezt a folyamatot.
 
-### <a name="sync-steps-required-for-different-configuration-changes"></a>Szinkronizálási teendők szükséges konfigurációs módosítások
-Különböző konfigurációs módosítások különböző szinkronizálási lépéseket annak érdekében, hogy a megfelelő módosítások az összes objektum szükséges.
+### <a name="sync-steps-required-for-different-configuration-changes"></a>A különböző konfigurációs változásokhoz szükséges szinkronizálási lépések
+A különböző konfigurációs változások különböző szinkronizálási lépéseket igényelnek annak biztosításához, hogy a módosítások megfelelően legyenek alkalmazva az összes objektumra.
 
-- További objektumok vagy attribútumok importálandó forráskönyvtárat (szinkronizálási szabályok hozzáadása vagy módosítása) szerint hozzáadva
-    - Teljes importálást van szükség az összekötő a forráskönyvtár keresése
-- A szinkronizálási szabályokon végrehajtott módosítások
-    - A teljes szinkronizálás van szükség az összekötő a módosított szinkronizálási szabályok
-- Módosított [szűrés](how-to-connect-sync-configure-filtering.md) így objektumok különböző számú tartalmaznia kell
-    - Teljes importálást van szükség az összekötő minden AD-összekötő használata, a szinkronizálási motor már importált attribútumokon alapuló attribútum szerinti szűrés
+- További objektumok vagy attribútumok hozzáadása a forrás-címtárból (a szinkronizálási szabályok hozzáadásával/módosításával)
+    - A forrás-könyvtárhoz tartozó összekötőn teljes importálás szükséges
+- Módosítások történtek a szinkronizálási szabályokban
+    - A módosított szinkronizálási szabályokhoz az összekötőn teljes szinkronizálás szükséges
+- Módosult a [szűrés](how-to-connect-sync-configure-filtering.md) , hogy a rendszer különböző számú objektumot tartalmazzon.
+    - Minden egyes AD-összekötő esetében teljes importálásra van szükség az összekötőn, kivéve, ha attribútum-alapú szűrést használ a szinkronizálási motorba már importált attribútumok alapján.
 
-### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>Futtassa a változások és a teljes szinkronizálás lépéseket megfelelő vegyesen szinkronizálási ciklust testreszabása
-Ne futtasson egy teljes szinkronizálási ciklust a jelölheti meg az alábbi parancsmagokkal egy teljes lépés futtatásához egyedi összekötők.
+### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>A szinkronizálási ciklusok testreszabása a Delta és a teljes szinkronizálás lépéseinek megfelelő kombinációját futtatja
+A teljes szinkronizálási ciklus futtatásának elkerülése érdekében a következő parancsmagok segítségével megadhatja az egyes összekötőket, hogy teljes lépést futtasson.
 
 `Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullImportRequired $true`
 
@@ -134,13 +134,13 @@ Ne futtasson egy teljes szinkronizálási ciklust a jelölheti meg az alábbi pa
 
 `Get-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid>` 
 
-Példa:  Ha módosította a szinkronizálási szabályok összekötő "AD-erdőhöz A" nem importálható, hogy új attribútumokat igénylő futtatná a következő parancsmagok futtatásához a különbözeti szinkronizálási ciklus melyik is tette a teljes szinkronizálás lépésnél az összekötőhöz.
+Példa: Ha módosította az "AD erdő" összekötőhöz tartozó szinkronizálási szabályokat, amelyek nem igényelnek új attribútumokat, akkor a következő parancsmagok futtatásával kell futtatnia a különbözeti szinkronizálási ciklust, amely az összekötő teljes szinkronizálási lépését is elvégezte.
 
 `Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
 
 `Start-ADSyncSyncCycle -PolicyType Delta`
 
-Példa:  A módosítások a szinkronizálási szabályokon "AD-erdőhöz A"-összekötőhöz, hogy most már van szükségük a importálható, új attribútum futtatná a következő parancsmagok futtatásához egy különbözeti szinkronizálási ciklus, amely egy teljes importálást, a teljes szinkronizálás lépés annak is tette.
+Példa: Ha módosította az "AD-erdő" összekötőhöz tartozó szinkronizálási szabályokat, hogy most új attribútumot kelljen importálnia, akkor a következő parancsmagok futtatásával futtasson egy különbözeti szinkronizálási ciklust, amely a teljes importálást is elvégezte az összekötő teljes szinkronizálási lépésével.
 
 `Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullImportRequired $true`
 
@@ -149,62 +149,62 @@ Példa:  A módosítások a szinkronizálási szabályokon "AD-erdőhöz A"-öss
 `Start-ADSyncSyncCycle -PolicyType Delta`
 
 
-## <a name="stop-the-scheduler"></a>A Feladatütemező leállítása
-Ha az ütemező jelenleg fut egy szinkronizálási ciklust, szüksége lehet állítsa le. Például ha elindítja a telepítési varázslót, és ez a hibaüzenet:
+## <a name="stop-the-scheduler"></a>Ütemező leállítása
+Ha az ütemező jelenleg szinkronizálási ciklust futtat, lehet, hogy le kell állítania. Ha például elindítja a telepítővarázslót, és a következő hibaüzenet jelenik meg:
 
 ![SyncCycleRunningError](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
 
-Ha egy szinkronizálási ciklus fut, nem konfigurációmódosításokat. Sikerült megvárni, amíg az ütemező a folyamat befejeződött, de is leállíthatja, így a módosítások azonnal elvégezhetők. Az aktuális ciklus leállítása nem káros, függőben lévő módosítások feldolgozása a következő futtatáskor.
+Ha egy szinkronizálási ciklus fut, nem végezheti el a konfigurációs módosításokat. Megvárhatja, amíg az ütemező befejezte a folyamatot, de leállíthatja azt is, hogy azonnal el tudja végezni a módosításokat. Az aktuális ciklus leállítása nem ártalmas, és a függőben lévő módosítások a következő futtatással lesznek feldolgozva.
 
-1. Indítsa el a Feladatütemező leállítása a PowerShell-parancsmaggal az aktuális ciklus kommunikációnkat `Stop-ADSyncSyncCycle`.
-2. Ha 1.1.281 előtt egy buildet használ, majd leállítása az ütemező nem állítja le a jelenlegi feladat az aktuális összekötő. Az összekötő leállítani a kényszerítéséhez a következő műveleteket: ![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
-   * Indítsa el **szinkronizálási szolgáltatás** a start menüből. Lépjen a **összekötők**, jelölje ki az összekötő állapotát az **futó**, és válassza ki **leállítása** a műveletekből.
+1. Először is mondja el, hogy az ütemező leállítja az aktuális ciklust a PowerShell-parancsmaggal `Stop-ADSyncSyncCycle`.
+2. Ha 1.1.281 előtti buildet használ, akkor az ütemező leállítása nem állítja le az aktuális összekötőt az aktuális feladatból. Az összekötő leállításának kényszerítéséhez végezze el a következő műveleteket: ![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+   * Indítsa el a **szinkronizálási szolgáltatást** a Start menüből. Nyissa meg az **Összekötők**elemet, jelölje ki az összekötőt a-t **futtató**állapottal, majd válassza a **Leállítás** lehetőséget a műveletek közül.
 
-Az ütemező még mindig aktív, és ismét elindul a Tovább lehetőséget.
+Az ütemező továbbra is aktív, és a következő lehetőségnél újra elindul.
 
 ## <a name="custom-scheduler"></a>Egyéni ütemező
-A parancsmagok részletes ismertetését lásd: Ez a szakasz csak érhetők el a build [1.1.130.0](reference-connect-version-history.md#111300) és újabb verziók.
+Az ebben a szakaszban leírt parancsmagok csak a Build [1.1.130.0](reference-connect-version-history.md#111300) és újabb verziókban érhetők el.
 
-Ha a beépített ütemezési nem felel meg a követelményeknek, majd ütemezhet a PowerShell-lel összekötőket.
+Ha a beépített ütemező nem felel meg a követelményeknek, akkor a PowerShell használatával ütemezheti az összekötőket.
 
 ### <a name="invoke-adsyncrunprofile"></a>Invoke-ADSyncRunProfile
-Ezzel a módszerrel összekötőhöz megkezdése egy profil:
+Az összekötő profilját így is elindíthatja:
 
 ```
 Invoke-ADSyncRunProfile -ConnectorName "name of connector" -RunProfileName "name of profile"
 ```
 
-A nevek [összekötők neveinek](how-to-connect-sync-service-manager-ui-connectors.md) és [futtassa a profilnév](how-to-connect-sync-service-manager-ui-connectors.md#configure-run-profiles) tekintheti meg a [Synchronization Service Manager felhasználói felületén](how-to-connect-sync-service-manager-ui.md).
+Az [összekötő-nevekhez](how-to-connect-sync-service-manager-ui-connectors.md) és a [profilok futtatásához](how-to-connect-sync-service-manager-ui-connectors.md#configure-run-profiles) használandó nevek a [synchronization Service Manager felhasználói felületen](how-to-connect-sync-service-manager-ui.md)találhatók.
 
 ![Futtatási profil meghívása](./media/how-to-connect-sync-feature-scheduler/invokerunprofile.png)  
 
-A `Invoke-ADSyncRunProfile` parancsmag szinkron, azt jelenti, azt nem ad vissza vezérlő mindaddig, amíg az összekötő sikeresen vagy hibával befejeződött a műveletet.
+Az `Invoke-ADSyncRunProfile` parancsmag szinkronban van, azaz nem ad vissza vezérlőt, amíg az összekötő nem végezte el a műveletet, vagy ha a művelet sikertelen volt, vagy hiba történt.
 
-Az összekötők ütemezésekor az ajánlás az, hogy ütemezni a következő sorrendben:
+Az összekötők ütemezhetik, hogy a következő sorrendben ütemezze őket:
 
-1. (Teljes vagy különbözeti) A helyszíni címtárakat, például az Active Directory importálása
-2. (Teljes vagy különbözeti) Importálás az Azure ad-ben
-3. (Teljes vagy különbözeti) A helyszíni címtárakat, például az Active Directory-szinkronizálás
-4. (Teljes vagy különbözeti) Szinkronizálás az Azure ad-ből
-5. Az Azure AD-exportálás
-6. A helyszíni címtárakat, például az Active Directory exportálása
+1. (Teljes/Delta) Importálás helyszíni címtárakból, például Active Directory
+2. (Teljes/Delta) Importálás az Azure AD-ből
+3. (Teljes/Delta) Szinkronizálás helyszíni címtárakból, például Active Directory
+4. (Teljes/Delta) Szinkronizálás az Azure AD-ből
+5. Exportálás az Azure AD-be
+6. Exportálás helyi címtárakba, például Active Directory
 
-Ebben a sorrendben, az összekötők a beépített ütemezési működésével.
+Ez a sorrend azt ismerteti, hogy a beépített ütemező hogyan futtatja az összekötőket.
 
 ### <a name="get-adsyncconnectorrunstatus"></a>Get-ADSyncConnectorRunStatus
-A szinkronizálási motor foglalt vagy inaktív megtekintéséhez is figyelheti. A parancsmag üres értéket ad vissza, ha a szinkronizálási motor üresjáratban, és nem fut egy összekötőt. Ha egy összekötő fut, az összekötő nevét adja vissza.
+A szinkronizálási motor figyelésével ellenőrizheti, hogy foglalt vagy üresjáratban van-e. Ez a parancsmag üres eredményt ad vissza, ha a Szinkronizáló motor üresjáratban van, és nem fut összekötő. Ha egy összekötő fut, akkor az összekötő nevét adja vissza.
 
 ```
 Get-ADSyncConnectorRunStatus
 ```
 
 ![Összekötő futtatási állapota](./media/how-to-connect-sync-feature-scheduler/getconnectorrunstatus.png)  
-A fenti képen az első sor olyan állapotban, amelyben a szinkronizálási motor üresjárati származik. A második sor az Azure AD Connectoron futtatásakor.
+A fenti képen az első sor olyan állapotból származik, amelyben a Szinkronizáló motor inaktív. A második sor az Azure AD-összekötő futtatásakor.
 
 ## <a name="scheduler-and-installation-wizard"></a>Ütemező és telepítővarázsló
-Ha elindítja a telepítővarázslót, az ütemező ideiglenesen fel van függesztve. Ez a viselkedés azért, hogy a rendszer feltételezi, hogy a konfigurációs módosítások, és ezek a beállítások nem alkalmazható, ha a szinkronizálási motor aktívan fut-e. Ebből kifolyólag nem hagyja a telepítővarázsló nyitva leállítja a szinkronizálási motor a szinkronizálási műveletek végrehajtása óta.
+A telepítővarázsló indításakor az ütemező átmenetileg fel lesz függesztve. Ennek a viselkedésnek az az oka, hogy a konfiguráció módosításait feltételezi, és ezek a beállítások nem alkalmazhatók, ha a Szinkronizáló motor aktívan fut. Ezért ne hagyja meg a telepítővarázsló megnyitását, mert leállítja a szinkronizációs motort a szinkronizálási műveletek végrehajtásával.
 
-## <a name="next-steps"></a>További lépések
-Tudjon meg többet a [Azure AD Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációja.
+## <a name="next-steps"></a>Következő lépések
+További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

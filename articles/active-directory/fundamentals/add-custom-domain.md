@@ -14,11 +14,11 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073533"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376859"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Az Azure Active Directory portál használatával egyéni tartománynév hozzáadása
 
@@ -26,13 +26,13 @@ Minden új Azure AD-bérlőhöz tartozik egy kezdeti tartománynév, *\<tartomá
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Egyéni tartománynév hozzáadása előtt hozza létre a tartománynevet egy tartományregisztráló használatával. Egy akkreditált tartományregisztráló, lásd: [ICANN-Accredited regisztráló szervezetek](https://www.icann.org/registrar-reports/accredited-list.html).
+Egyéni tartománynév hozzáadása előtt hozza létre a tartománynevet egy tartományregisztráló használatával. Egy akkreditált tartományregisztráló esetében tekintse meg a következőt: [ICANN-akkreditált regisztrátorok](https://www.icann.org/registrar-reports/accredited-list.html).
 
 ## <a name="create-your-directory-in-azure-ad"></a>A címtár létrehozása az Azure ad-ben
 
 A tartománynév kap, miután az első Azure AD-címtár is létrehozhat. Jelentkezzen be a címtár Azure Portalba egy olyan fiókkal, amely az előfizetés **tulajdonosi** szerepkörét használja.
 
-Az új könyvtár létrehozása a lépéseket követve [hozzon létre egy új bérlőt a szervezetén belül](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization).
+Az új címtár létrehozásához kövesse az [új bérlő létrehozása a szervezet számára](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization)című témakör lépéseit.
 
 >[!IMPORTANT]
 >A személy, aki a bérlőt hoz létre a program automatikusan az adott bérlő globális rendszergazdája. A globális rendszergazdai a bérlőhöz további rendszergazdákat is hozzáadhat.
@@ -100,15 +100,15 @@ Ha az Azure AD nem képes egyéni tartománynév ellenőrzésére, próbálkozzo
 
 - **Várjon legalább egy órát, és próbálkozzon újra**. A DNS-rekordokat propagálni kell, mielőtt az Azure AD ellenőrizni tudja a tartományt. A folyamat egy óráig vagy tovább is tarthat.
 
-- **Győződjön meg arról, hogy a DNS-rekord helyességéről.** Térjen vissza a tartománynév-regisztráló webhelyhez. Győződjön meg arról, hogy a bejegyzés létezik, és hogy az megfelel az Azure AD által biztosított DNS-bejegyzési információknak.
+- **Győződjön meg arról, hogy a DNS-rekord helyes.** Térjen vissza a tartománynév-regisztráló webhelyhez. Győződjön meg arról, hogy a bejegyzés létezik, és hogy az megfelel az Azure AD által biztosított DNS-bejegyzési információknak.
 
   Ha nem tudja frissíteni a rekordot a regisztrátor webhelyén, ossza meg a bejegyzést olyan személlyel, aki jogosult a bejegyzés hozzáadására, és ellenőrizze, hogy helyes-e.
 
-- **Ellenőrizze, hogy a tartománynév már nem használt egy másik címtárban.** A tartománynév csak egy címtárban ellenőrizhető. Ha a tartománynevet egy másik címtárban ellenőrzi, az nem ellenőrizhető az új könyvtárban is. Duplikáció a probléma elhárításához törölnie kell az a tartomány nevét a régi könyvtárból. További információ a tartománynevek törléséről: [egyéni tartománynevek kezelése](../users-groups-roles/domains-manage.md).
+- **Győződjön meg arról, hogy a tartománynév még nincs használatban egy másik címtárban.** A tartománynév csak egy címtárban ellenőrizhető. Ha a tartománynevet egy másik címtárban ellenőrzi, az nem ellenőrizhető az új könyvtárban is. Duplikáció a probléma elhárításához törölnie kell az a tartomány nevét a régi könyvtárból. További információ a tartománynevek törléséről: [Egyéni tartománynevek kezelése](../users-groups-roles/domains-manage.md).
 
-- **Ellenőrizze, hogy nem kell minden olyan nem felügyelt Power BI-bérlők.** Ha a felhasználók önkiszolgáló regisztráció a Power bi-ban aktiválták és létrehozott egy nem felügyelt bérlőt a szervezetén belül, meg kell átveszi belső vagy külső rendszergazdaként PowerShell használatával. További információkért tekintse meg a [nem felügyelt címtár az Azure Active Directoryban rendszergazdaként történő átvételét](../users-groups-roles/domains-admin-takeover.md) ismertető cikket.
+- **Győződjön meg arról, hogy nem rendelkezik nem felügyelt Power BI Bérlővel.** Ha a felhasználók önkiszolgáló regisztráció a Power bi-ban aktiválták és létrehozott egy nem felügyelt bérlőt a szervezetén belül, meg kell átveszi belső vagy külső rendszergazdaként PowerShell használatával. További információkért tekintse meg a [nem felügyelt címtár az Azure Active Directoryban rendszergazdaként történő átvételét](../users-groups-roles/domains-admin-takeover.md) ismertető cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Egy másik globális rendszergazda hozzáadása a címtárhoz. További információ: [szerepkörök és rendszergazdák társítása](active-directory-users-assign-role-azure-portal.md).
 
@@ -116,4 +116,4 @@ Ha az Azure AD nem képes egyéni tartománynév ellenőrzésére, próbálkozzo
 
 - Kezelheti a tartomány nevét adatait az Azure ad-ben. További információ: [Egyéni tartománynevek kezelése](../users-groups-roles/domains-manage.md).
 
-- Ha rendelkezik a helyszíni verzióját, amelyet szeretne használhatja az Azure Active Directory mellett, a Windows Server [a helyszíni címtárak integrálása az Azure Active Directory](../connect/active-directory-aadconnect.md).
+- Ha a Windows Server azon helyszíni verzióit használja, amelyeket a Azure Active Directory mellett szeretne használni, tekintse [meg a helyszíni címtárak integrálása Azure Active Directory](../connect/active-directory-aadconnect.md)használatával című témakört.

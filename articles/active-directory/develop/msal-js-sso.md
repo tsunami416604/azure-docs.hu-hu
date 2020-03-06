@@ -14,11 +14,11 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695874"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377227"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Egyszeri bejelentkezés az MSAL.js-sel
 
@@ -87,7 +87,7 @@ A választható jogcímek konfigurálásának lépései [itt](active-directory-o
 
 **A login hint használata**
 
-Ha nincs konfigurálva a SID-jogcím, vagy meg kell kerülnie a fiók kiválasztására vonatkozó kérést az interaktív hitelesítési hívásokban, ezt úgy teheti meg, hogy megadja a kérés paramétereinek `login_hint`ét, és opcionálisan `extraQueryParameters` `domain_hint` a MSAL. js interaktív módszereiben (`loginPopup`, `loginRedirect`, `acquireTokenPopup` és `acquireTokenRedirect`). Példa:
+Ha nincs konfigurálva a SID-jogcím, vagy meg kell kerülnie a fiók kiválasztására vonatkozó kérést az interaktív hitelesítési hívásokban, ezt úgy teheti meg, hogy megadja a kérés paramétereinek `login_hint`ét, és opcionálisan `extraQueryParameters` `domain_hint` a MSAL. js interaktív módszereiben (`loginPopup`, `loginRedirect`, `acquireTokenPopup` és `acquireTokenRedirect`). Például:
 
 ```javascript
 var request = {
@@ -169,6 +169,6 @@ const myMSALObj = new UserAgentApplication(config);
 
 Ha ez a beállítás be van állítva, a MSAL. js képes lesz olvasni a hitelesített felhasználó gyorsítótárazott állapotát a ADAL. js fájlban, és ezzel az SSO-t a MSAL. js fájlban is megadhatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [egyszeri bejelentkezési munkamenet és a jogkivonat élettartamának](active-directory-configurable-token-lifetimes.md) értékeiről az Azure ad-ben.

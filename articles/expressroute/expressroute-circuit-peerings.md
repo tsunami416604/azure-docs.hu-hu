@@ -1,6 +1,6 @@
 ---
 title: 'Azure ExpressRoute: áramkörök és peering'
-description: Ez az oldal áttekintést nyújt a ExpressRoute-áramkörökről és az útválasztási tartományokról és a társításokról.
+description: Ez az oldal ExpressRoute-Kapcsolatcsoportok és útválasztási tartományok/társviszony-létesítés áttekintést nyújt.
 services: expressroute
 author: mialdrid
 ms.service: expressroute
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mialdrid
 ms.openlocfilehash: c68ffd019937f902567c3deda8d879448dc082da
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647135"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355964"
 ---
-# <a name="expressroute-circuits-and-peering"></a>ExpressRoute-áramkörök és-társítás
+# <a name="expressroute-circuits-and-peering"></a>Az ExpressRoute-Kapcsolatcsoportok és a társviszony-létesítés
 
-A ExpressRoute áramkörök kapcsolati szolgáltatón keresztül kapcsolódnak a Microsofthoz a helyszíni infrastruktúrához. Ez a cikk segít megérteni a ExpressRoute-áramköröket és az útválasztási tartományok/társítások megismerését. Az alábbi ábra a WAN és a Microsoft közötti kapcsolat logikai ábrázolását mutatja be.
+Az ExpressRoute-Kapcsolatcsoportok a helyszíni infrastruktúra csatlakoztatni a Microsoft egy kapcsolatszolgáltatón keresztül. Ez a cikk segítségével megismerheti az ExpressRoute-Kapcsolatcsoportok és útválasztási tartományok/társviszony-létesítés. A következő ábrán látható a WAN és a Microsoft közötti kapcsolat logikai megfelelője.
 
 ![](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
@@ -26,53 +26,53 @@ A ExpressRoute áramkörök kapcsolati szolgáltatón keresztül kapcsolódnak a
 
 ## <a name="circuits"></a>ExpressRoute-áramkörök
 
-A ExpressRoute áramkör a helyszíni infrastruktúra és a Microsoft Cloud Services közötti logikai kapcsolatot jelenti a kapcsolat szolgáltatóján keresztül. Több ExpressRoute-áramkört is rendelhet. Minden áramkör lehet azonos vagy különböző régiókban, és a különböző kapcsolati szolgáltatókon keresztül csatlakozhat a telephelyéhez.
+ExpressRoute-kapcsolatcsoport a helyszíni infrastruktúra és a egy kapcsolatszolgáltatón keresztül a Microsoft-felhőszolgáltatások közötti logikai kapcsolatot jelöli. Több ExpressRoute-Kapcsolatcsoportok rendezheti. Minden kapcsolatnak az azonos vagy eltérő régiókban is lehetnek, és a helyszíni eredetű különböző kapcsolatszolgáltatók keresztül lehet csatlakoztatni.
 
-A ExpressRoute-áramkörök nem képezhetők le fizikai entitásokra. Az áramkört egyedileg azonosítják egy standard GUID azonosítóval, amelyet szolgáltatási kulcsként (s-Key) hívnak. A szolgáltatás kulcsa az egyetlen, a Microsoft, a kapcsolat szolgáltatója és Ön között cserélt információ. Az s-Key nem titkos biztonsági célokra. Egy ExpressRoute-áramkör és az s-kulcs között 1:1 leképezés található.
+Az ExpressRoute-Kapcsolatcsoportok nem feleltethető meg a fizikai entitások. Kapcsolatcsoport egyedileg azonosít egy GUID nevű szolgáltatás kulcsként (s-kulcs), standard. A kulcs az egyetlen adat, Microsoft, a kapcsolatszolgáltató és Ön között. Nincs titkos kulcs biztonsági okokból az s-kulcsot. Van egy 1:1 megfeleltetését között egy ExpressRoute-kapcsolatcsoportot, és az s-kulcsot.
 
-Az új ExpressRoute-áramkörök két független társat tartalmazhatnak: a privát és a Microsoft-partneri kapcsolatot. Míg a meglévő ExpressRoute-áramkörök három alhálózatot tartalmazhatnak: az Azure nyilvános, az Azure Private és a Microsoft. Az egyes társítások független BGP-munkamenetek, amelyek mindegyike redundánsan van konfigurálva a magas rendelkezésre állás érdekében. A ExpressRoute áramkör és az útválasztási tartományok között 1: N (1 < = N < = 3) leképezés található. Az ExpressRoute-áramkör lehet egy, kettő vagy mindhárom, ExpressRoute áramkörön engedélyezett kapcsolat.
+Új ExpressRoute-kapcsolatcsoportot is tartalmazhat két független társviszonyok: magánhálózati társviszony-létesítés és Microsoft társviszony-létesítés. Mivel a meglévő ExpressRoute-Kapcsolatcsoportok tartalmazhat mindhárom társviszony-létesítést: Azure-beli nyilvános, az Azure privát és a Microsoft. Minden társviszony két független BGP-munkamenetek, azok redundantly magas rendelkezésre állásúként konfigurálva. Van egy 1: n (1 < = N < = 3) az ExpressRoute-Kapcsolatcsoportok közötti megfeleltetés és útválasztási tartományok. ExpressRoute-kapcsolatcsoport is rendelkezik egy, kettő vagy engedélyezve van az ExpressRoute-kapcsolatcsoportonként minden három társviszony.
 
-Minden áramkör rögzített sávszélességgel rendelkezik (50 Mbps, 100 Mbps, 200 Mbps, 500 Mbps, 1 GB/s, 10 GB/s), és egy kapcsolati szolgáltatóhoz és egy egyenrangú helyhez van rendelve. A kiválasztott sávszélesség az összes áramköri kapcsolat között meg van osztva
+Minden egyes kapcsolatcsoport rögzített sávszélességű (50 MB/s, 100 MB/s, 200 MB/s, 500 MB/s, 1 GB/s, 10 GB/s), és le van képezve egy kapcsolatszolgáltatón és a egy társviszony-létesítési helyszínen. A sávszélesség választja közösen használja minden kapcsolatcsoport társviszony
 
 ### <a name="quotas"></a>Kvóták, korlátozások és korlátozások
 
-Az alapértelmezett kvóták és korlátozások minden ExpressRoute-áramkör esetében érvényesek. Tekintse meg az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és megkötéseit](../azure-resource-manager/management/azure-subscription-service-limits.md) ismertető oldalt a kvótákkal kapcsolatos naprakész információkhoz.
+Alapértelmezett kvótái és korlátozásai érvényesek minden egyes ExpressRoute-kapcsolatcsoporthoz. Tekintse meg az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és megkötéseit](../azure-resource-manager/management/azure-subscription-service-limits.md) ismertető oldalt a kvótákkal kapcsolatos naprakész információkhoz.
 
 ## <a name="routingdomains"></a>ExpressRoute-társítás
 
-Egy ExpressRoute-áramkörhöz több útválasztási tartomány/társ tartozik: az Azure Public, az Azure Private és a Microsoft. Minden társítás azonos módon van konfigurálva egy útválasztón (aktív-aktív vagy terheléselosztási konfigurációban) a magas rendelkezésre állás érdekében. Az Azure-szolgáltatások az IP-címzési sémákat képviselő Azure-beli *nyilvános* és *Azure Private* -ként vannak kategorizálva.
+ExpressRoute-kapcsolatcsoport több útválasztási tartományok/társviszonyok társítva van: az Azure nyilvános, az Azure privát és a Microsoft. Minden társviszony-létesítés konfigurálva van azonos módon egy útválasztókat pár (aktív – aktív vagy a betöltés megosztása a konfiguráció) a magas rendelkezésre állás érdekében. Az Azure-szolgáltatások az IP-címzési sémákat képviselő Azure-beli *nyilvános* és *Azure Private* -ként vannak kategorizálva.
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
 ### <a name="privatepeering"></a>Azure-beli privát peering
 
-A virtuális hálózatokon belül üzembe helyezett Azure számítási szolgáltatások, nevezetesen a virtuális gépek (IaaS-EK) és a Cloud Services (Pásti) a privát társ-létrehozási tartományon keresztül csatlakoztathatók. A privát társ-létrehozási tartomány az alapvető hálózat megbízható kiterjesztésének tekintendő Microsoft Azureba. Az alapvető hálózat és az Azure-beli virtuális hálózatok (virtuális hálózatok-EK) között kétirányú kapcsolat is beállítható. Ez a társítás lehetővé teszi a virtuális gépekhez és a felhőalapú szolgáltatásokhoz való közvetlen kapcsolódást a magánhálózati IP-címeken.  
+Azure számítási szolgáltatások, azaz a virtuális gépek (IaaS), és a egy virtuális hálózaton belül üzembe helyezett cloud services (PaaS), a privát társviszony-létesítési tartományon keresztül csatlakozhat. A privát társviszony-létesítési tartomány egy megbízható kiterjesztése, a Microsoft Azure-bA az alaphálózat minősül. Beállíthatja a kétirányú kapcsolatokat a központi hálózat és az Azure virtuális hálózatok (Vnetek) között. A társviszony lehetővé teszi, hogy csatlakozhat a virtuális gépek és felhőszolgáltatások közvetlenül a saját magánhálózati IP-címek.  
 
-Több virtuális hálózatot is összekapcsolhat a privát társ-létrehozási tartományhoz. A korlátozásokkal és korlátozásokkal kapcsolatos információkért tekintse át a [GYIK oldalt](expressroute-faqs.md) . Az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és megkötéseit](../azure-resource-manager/management/azure-subscription-service-limits.md) ismertető oldalt megtekintheti a korlátozásokkal kapcsolatos naprakész információkhoz.  Az útválasztási konfigurációval kapcsolatos részletes információkért tekintse meg az [Útválasztás](expressroute-routing.md) lapot.
+A privát társviszony-létesítési tartomány egynél több virtuális hálózat kapcsolódhat. A korlátozásokkal és korlátozásokkal kapcsolatos információkért tekintse át a [GYIK oldalt](expressroute-faqs.md) . Az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és megkötéseit](../azure-resource-manager/management/azure-subscription-service-limits.md) ismertető oldalt megtekintheti a korlátozásokkal kapcsolatos naprakész információkhoz.  Az útválasztási konfigurációval kapcsolatos részletes információkért tekintse meg az [Útválasztás](expressroute-routing.md) lapot.
 
 ### <a name="microsoftpeering"></a>Microsoft-partnerek
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-A Microsoft online szolgáltatásokhoz (Office 365 és az Azure Pásti Services) való kapcsolódás a Microsoft-partneri kapcsolaton keresztül történik. A WAN és a Microsoft Cloud Services közötti kétirányú kapcsolatot a Microsoft társközi útválasztási tartományán keresztül engedélyezzük. Csak olyan nyilvános IP-címeken keresztül csatlakozhat a Microsoft Cloud Services szolgáltatáshoz, amelyek tulajdonosa Ön vagy a kapcsolat szolgáltatója, és be kell tartania az összes definiált szabályt. További információkért tekintse meg a [ExpressRoute előfeltételek](expressroute-prerequisites.md) oldalát.
+A Microsoft online szolgáltatásokhoz (Office 365 és az Azure Pásti Services) való kapcsolódás a Microsoft-partneri kapcsolaton keresztül történik. Engedélyezzük a kétirányú kapcsolatokat a WAN és a Microsoft cloud services révén a Microsoft társviszony-létesítési útválasztási tartomány között. Csak keresztül, vagy a kapcsolatszolgáltató tulajdonában lévő nyilvános IP-címek és a Microsoft felhőszolgáltatásai csatlakoznia kell, és az összes meghatározott szabálynak meg kell felelnie. További információkért tekintse meg a [ExpressRoute előfeltételek](expressroute-prerequisites.md) oldalát.
 
 A támogatott szolgáltatásokkal, a költségekkel és a konfigurációs adatokkal kapcsolatos további információkért tekintse meg a [GYIK oldalt](expressroute-faqs.md) . A Microsoft társközi támogatását kínáló kapcsolati szolgáltatók listáját a [ExpressRoute helye](expressroute-locations.md) oldalon tekintheti meg.
 
 ## <a name="peeringcompare"></a>Egyenrangú összehasonlítás
 
-A következő táblázat összehasonlítja a három társat:
+Az alábbi táblázat összehasonlítja a mindhárom társviszony-létesítést:
 
 [!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
-Egy vagy több útválasztási tartományt engedélyezhet a ExpressRoute-áramkör részeként. Megadhatja, hogy az összes útválasztási tartomány ugyanarra a VPN-re kerüljön, ha egyetlen útválasztási tartományba kívánja összevonni őket. Ezeket a diagramhoz hasonlóan különböző útválasztási tartományokra is felhelyezheti. Az ajánlott konfiguráció az, hogy a privát társak közvetlenül az alaphálózathoz csatlakoznak, a nyilvános és a Microsoft-kapcsolatok pedig a DMZ-hez csatlakoznak.
+Egy vagy több útválasztási tartománynak lehet, hogy engedélyezi az ExpressRoute-kapcsolatcsoport részeként. Ha szeretné az útválasztási tartományok az azonos VPN elhelyezése, ha azt szeretné, úgy, hogy egyetlen útválasztási tartomány rendelkezik. Helyezheti őket a különböző útválasztási tartományok, a diagram hasonló. Az ajánlott konfigurációs, hogy a privát társviszony-létesítés közvetlenül kapcsolódik az alapvető hálózatra, és a nyilvános és Microsoft társviszony-létesítési csatolások csatlakozik a DMZ-t.
 
-Minden egyes társításhoz külön BGP-munkamenet szükséges (egy pár az egyes társítási típusokhoz). A BGP-munkamenet párok egy magasan elérhető hivatkozást biztosítanak. Ha 2. rétegbeli kapcsolati szolgáltatón keresztül csatlakozik, Ön felelős az útválasztás konfigurálásához és kezeléséhez. További információ: a ExpressRoute beállításához szükséges [munkafolyamatok](expressroute-workflows.md) áttekintése.
+Minden társviszony-létesítés külön BGP-munkamenetek (mindegyik társviszony-létesítési típus egy pár) van szükség. A BGP-munkamenet párok adja meg a magas rendelkezésre állású hivatkozást. Réteg 2 kapcsolatszolgáltatók keresztül kapcsolódik, ha Ön felelős útválasztási konfigurálásának és kezelésének. További információ: a ExpressRoute beállításához szükséges [munkafolyamatok](expressroute-workflows.md) áttekintése.
 
 ## <a name="health"></a>ExpressRoute állapota
 
 A ExpressRoute-áramköröket a rendelkezésre állás, a virtuális hálózatok és a sávszélesség-használat között a [Network Performance monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) használatával lehet figyelni.
 
-A NPM az Azure-beli privát és a Microsoft-partnerek állapotát figyeli. További információért tekintse meg a [hozzászólását](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) .
+Npm-et az Azure privát társviszony-létesítés és a Microsoft társviszony-létesítés állapotát figyeli. További információért tekintse meg a [hozzászólását](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) .
 
 ## <a name="next-steps"></a>Következő lépések
 

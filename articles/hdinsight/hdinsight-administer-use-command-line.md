@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/26/2020
 ms.openlocfilehash: 2c6495454e5ba2449d4b3c74a096681f74610813
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199461"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386306"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure HDInsight-fürtök kezelése az Azure CLI-vel
 
@@ -88,7 +88,7 @@ Az [az hdinsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azu
 az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --workernode-count WORKERNODE_COUNT
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a különböző HDInsight-fürtök felügyeleti feladatait. További információt a következő cikkekben talál:
 

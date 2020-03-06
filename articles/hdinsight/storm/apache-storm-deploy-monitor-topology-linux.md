@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75494969"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386348"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Apache Storm-topológiák üzembe helyezése és kezelése az Azure HDInsight
 
@@ -205,7 +205,7 @@ A Storm-topológia összefoglalás lapja ehhez a weboldalhoz hasonlóan néz ki:
 
 A **topológiai műveletek** szakaszban a következő gombokra kattintva végezheti el a műveletet:
 
-| Gomb | Leírás |
+| Gombra | Leírás |
 | --- | --- |
 | Aktiválás | Folytatja a deaktivált topológia feldolgozását. |
 | Inaktiválás | Szünetelteti a futó topológiát. |
@@ -255,7 +255,7 @@ A fürt fő csomópontjának teljes tartományneve (FQDN) több módon is megker
 | Ambari web | A Ambari-fürt weblapján (`https://CLUSTERNAME.azurehdinsight.net`) válassza ki a **szolgáltatások** elemet a lap tetején, majd válassza a **Storm**lehetőséget. Az **Összefoglalás** lapon válassza a **Storm UI-kiszolgáló**lehetőséget. A Storm felhasználói felületet futtató csomópont teljes tartományneve és REST API a lap tetején jelenik meg. |
 | Ambari REST API | A (z) `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` parancs használatával lekérheti a Storm felhasználói felületének és REST API futó csomópont információit. Cserélje le a *CLUSTERNAME* két példányát a fürt nevére. Amikor a rendszer kéri, adja meg a felhasználói (rendszergazdai) fiókhoz tartozó jelszót. A válaszban a JSON-kimenet "host_name" bejegyzése tartalmazza a csomópont teljes tartománynevét. |
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 A REST APIra irányuló kérelmeknek *alapszintű hitelesítést*kell használniuk, ezért a HDInsight-fürthöz tartozó rendszergazdai nevet és jelszót kell használnia.
 

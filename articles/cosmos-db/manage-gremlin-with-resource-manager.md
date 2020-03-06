@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
 ms.openlocfilehash: e4c18d93f07cb2143dcc5bf9c93b9ac7298d2f7b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587634"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388028"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Gremlin API-erőforrások kezelése Azure Resource Manager-sablonok használatával
 

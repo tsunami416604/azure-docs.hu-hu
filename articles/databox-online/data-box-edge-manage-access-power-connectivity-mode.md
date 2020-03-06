@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: 7ce4b9dda853e63e427757317abc2f7c878ba3a4
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253173"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384709"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>A Azure Data Box Edge hozzáférésének, teljesítményének és kapcsolati módjának kezelése
 
@@ -48,12 +48,12 @@ A munkafolyamat alaphelyzetbe állítása nem igényli, hogy a felhasználó fel
 
 1. A Azure Portal lépjen az **áttekintés > rendszergazdai jelszó visszaállítása**elemre.
 
-    ![Másik jelszó kérése](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Jelszó alaphelyzetbe állítása](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
-2. Adja meg az új jelszót, majd erősítse meg. A megadott jelszónak 8 és 16 karakter közöttinek kell lennie. A jelszónak legalább hármat tartalmaznia kell a következő karakterek közül: nagybetűk, kisbetűk, számok és speciális karakterek. Válassza az alaphelyzetbe **állítás**lehetőséget.
+2. Adja meg az új jelszót, majd erősítse meg. A megadott jelszónak 8 és 16 karakter közöttinek kell lennie. A jelszónak legalább hármat tartalmaznia kell a következő karakterek közül: nagybetűk, kisbetűk, számok és speciális karakterek. Válassza az **Alaphelyzetbe állítás**lehetőséget.
 
-    ![Másik jelszó kérése](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![Jelszó alaphelyzetbe állítása](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Erőforrás-hozzáférés kezelése
 
@@ -66,7 +66,7 @@ A Data Box Edge eszköz aktiválási kulcsának létrehozásakor vagy a hiteles�
 -  Megosztás létrehozása társított Storage-fiókkal.
 -  Hozzon létre egy felhasználót, aki hozzáfér az eszközön található megosztásokhoz.
 
-Ahhoz, hogy a `User` rendszer `Read all directory objects`képes legyen hozzáférni Active Directory bérlőhöz. Nem lehet vendég felhasználó, mert nem rendelkezik engedéllyel a `Read all directory objects`szolgáltatáshoz. Ha vendég, akkor az olyan műveletek, mint például az aktiválási kulcs létrehozása, a Data Box Edge eszközön létrehozott megosztás létrehozása, a felhasználó létrehozása, a peremhálózati számítási szerepkör konfigurálása, az eszköz jelszavának visszaállítása sikertelen lesz.
+Active Directory bérlőhöz `User` hozzáféréssel kell rendelkeznie, ahogy `Read all directory objects`. Nem lehet vendég felhasználó, mert nem rendelkezik a `Read all directory objects`hez szükséges engedélyekkel. Ha vendég, akkor az olyan műveletek, mint például az aktiválási kulcs létrehozása, a Data Box Edge eszközön létrehozott megosztás létrehozása, a felhasználó létrehozása, a peremhálózati számítási szerepkör konfigurálása, az eszköz jelszavának visszaállítása sikertelen lesz.
 
 A felhasználók Azure Active Directory Graph API való hozzáférésének biztosításával kapcsolatos további információkért lásd: [az alapértelmezett hozzáférés a rendszergazdák, a felhasználók és a vendég felhasználók](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)számára.
 
@@ -80,7 +80,7 @@ Nem kell hozzáférési engedélyeket megadnia az előfizetési szintre ahhoz, h
 
 Mielőtt megpróbál létrehozni egy erőforrást, győződjön meg arról, hogy az erőforrás-szolgáltató regisztrálva van az előfizetésben. Ha az erőforrás-szolgáltató nincs regisztrálva, meg kell győződnie arról, hogy az új erőforrást létrehozó felhasználónak elegendő jogosultsága van ahhoz, hogy regisztrálja a szükséges erőforrás-szolgáltatót az előfizetési szinten. Ha még nem tette meg, akkor a következő hibaüzenet jelenik meg:
 
-*Az előfizetés \<-előfizetés neve > nem rendelkezik engedéllyel az erőforrás-szolgáltató (k) regisztrálásához: Microsoft.DataBoxEdge.*
+*Az előfizetés \<előfizetés neve > nem rendelkezik engedéllyel az erőforrás-szolgáltató (k) regisztrálásához: Microsoft. DataBoxEdge.*
 
 
 A jelenlegi előfizetésben regisztrált erőforrás-szolgáltatók listájának lekéréséhez futtassa a következő parancsot:
@@ -89,7 +89,7 @@ A jelenlegi előfizetésben regisztrált erőforrás-szolgáltatók listájának
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Data Box Edge eszköz `Microsoft.DataBoxEdge` esetében regisztrálni kell. A regisztráláshoz `Microsoft.DataBoxEdge`az előfizetés rendszergazdájának a következő parancsot kell futtatnia:
+Data Box Edge eszköz esetében regisztrálni kell a `Microsoft.DataBoxEdge`. `Microsoft.DataBoxEdge`regisztrálásához az előfizetés rendszergazdájának a következő parancsot kell futtatnia:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
@@ -103,7 +103,7 @@ Az alapértelmezett teljes kapcsolaton kívül az eszköz részben csatlakoztato
 
 - **Teljes mértékben csatlakoztatva** – ez a normál alapértelmezett mód, amelyben az eszköz működik. Ebben a módban a Felhőbeli feltöltés és az adatok letöltése is engedélyezve van. Az eszköz kezeléséhez használhatja a Azure Portal vagy a helyi webes felhasználói felületet.
 
-- **Részben** leválasztva – ebben a módban az eszköz nem tölthető fel, és nem tölthető le, azonban a Azure Portal használatával felügyelhető.
+- **Részben leválasztva** – ebben a módban az eszköz nem tölthető fel, és nem tölthető le, azonban a Azure Portal használatával felügyelhető.
 
     Ezt a módot általában a mért műhold-hálózaton használják, és a cél a hálózati sávszélesség-fogyasztás csökkentése. Az eszköz-figyelési műveletek esetében a minimális hálózati fogyasztás továbbra is előfordulhat.
 
@@ -114,7 +114,7 @@ Az alapértelmezett teljes kapcsolaton kívül az eszköz részben csatlakoztato
 Az eszköz üzemmódjának módosításához kövesse az alábbi lépéseket:
 
 1. Az eszköz helyi webes FELÜLETén nyissa meg a **konfigurációs > a felhő beállításait**.
-2. A legördülő listából válassza ki azt a módot, amelyre az eszközt használni szeretné. Kiválaszthatja a **teljes kapcsolat**, a **részlegesen csatlakoztatott**és a **teljesen**leválasztott lehetőséget is. Az eszköz részlegesen leválasztott módban való futtatásához engedélyezze **Azure Portal felügyeletet**.
+2. A legördülő listából válassza ki azt a módot, amelyre az eszközt használni szeretné. Kiválaszthatja a **teljes kapcsolat**, a **részlegesen csatlakoztatott**és a **teljesen leválasztott**lehetőséget is. Az eszköz részlegesen leválasztott módban való futtatásához engedélyezze **Azure Portal felügyeletet**.
 
     ![Kapcsolati mód](media/data-box-edge-manage-access-power-connectivity-mode/connectivity-mode.png)
  
@@ -134,4 +134,4 @@ Leállíthatja vagy újraindíthatja a fizikai eszközt a helyi webes felhaszná
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja [](data-box-edge-manage-shares.md), hogyan kezelheti a megosztásokat.
+- Megtudhatja, hogyan [kezelheti a megosztásokat](data-box-edge-manage-shares.md).

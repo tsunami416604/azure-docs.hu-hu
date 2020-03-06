@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 84098901d58e2087c7ece77049e445bb5c76f2a9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923784"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358491"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból az Open hub használatával Azure Data Factory
 
@@ -42,13 +42,13 @@ Az SAP Business Warehouse nyitott hub-összekötője a következőt támogatja:
 - Adatok másolása egyszerű hitelesítés használatával.
 - Kapcsolódás az alkalmazáskiszolgáló eléréséhez.
 
-## <a name="sap-bw-open-hub-integration"></a>SAP BW nyitott hub-integráció 
+## <a name="sap-bw-open-hub-integration"></a>SAP BW Open Hub Integration 
 
 [SAP BW Open hub szolgáltatás](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) hatékony módszer az adatok SAP BWból való kinyerésére. Az alábbi ábra az SAP-rendszer egyik jellemző folyamatát mutatja be. ebben az esetben az SAP ECC-> PSA-> DSO-> Cube adatforgalmai.
 
 SAP BW nyitott központ célhelye (OHD) határozza meg azt a célt, amelyhez az SAP-adattovábbítási szolgáltatás továbbítva van. Az SAP Adatátvitel Process (DTP) által támogatott összes objektum használható nyílt hub-adatforrásként, például DSO, InfoCube, DataSource stb. Nyissa meg a hub rendeltetési típusát – a továbbított adattárolók tárolására szolgáló táblák (helyi vagy távoli) és egyszerű fájlok. Ez az SAP BW Open hub-összekötő támogatja az adatok másolását a BW-ben lévő OHD helyi táblából. Ha más típusokat használ, a más összekötők használatával közvetlenül kapcsolódhat az adatbázishoz vagy a fájlrendszerhez.
 
-![SAP BW nyitott központ](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
+![SAP BW Open Hub](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
 
 ## <a name="delta-extraction-flow"></a>Különbözeti kinyerési folyamat
 
@@ -104,16 +104,16 @@ A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, 
 
 Az SAP Business Warehouse nyitott hub társított szolgáltatása a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **SapOpenHub** | Igen |
 | kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP BW-példány található. | Igen |
 | systemNumber | A SAP BWrendszer rendszerszáma.<br/>Engedélyezett érték: két számjegyből álló decimális szám karakterláncként megadva. | Igen |
-| ügyfél-azonosító | A-ügyfél ügyfél-azonosítója az SAP W rendszeren.<br/>Engedélyezett érték: a háromjegyű decimális szám karakterláncként van megadva. | Igen |
+| clientId | A-ügyfél ügyfél-azonosítója az SAP W rendszeren.<br/>Engedélyezett érték: a háromjegyű decimális szám karakterláncként van megadva. | Igen |
 | language | Az SAP-rendszer által használt nyelv. | Nem (az alapértelmezett érték az **en**)|
-| userName (Felhasználónév) | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve. | Igen |
+| userName | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve. | Igen |
 | jelszó | A felhasználó jelszava. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
+| connectVia | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
 **Példa**
 
@@ -146,7 +146,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Ha adatokat szeretne másolni a és a rendszerből SAP BW nyitott hubhoz, állítsa az adatkészlet Type (típus) tulajdonságát **SapOpenHubTable**értékre. A következő tulajdonságok támogatottak.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot **SapOpenHubTable**értékre kell beállítani.  | Igen |
 | openHubDestinationName | Annak az Open hub-célhelynek a neve, amelyből az adatok másolása megtörténjen. | Igen |
@@ -180,7 +180,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 SAP BW Open hub adatainak másolásához a következő tulajdonságok támogatottak a másolási tevékenység **forrása** szakaszban:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának **Type** tulajdonságát **SapOpenHubSource**értékre kell állítani. | Igen |
 | excludeLastRequest | Azt határozza meg, hogy ki kell-e zárni a legutóbbi kérelem rekordjait. | Nem (az alapértelmezett érték **igaz**) |
@@ -228,16 +228,16 @@ Az adatok betöltésének felgyorsításához beállíthatja, hogy [`parallelCop
 
 SAP BW Open hub adatainak másolása során a rendszer a következő leképezéseket használja SAP BW adattípusokból Azure Data Factory köztes adattípusokra. A másolási tevékenység a forrás sémájának és adattípusának a fogadóba való leképezésével kapcsolatos tudnivalókat lásd: [séma-és adattípus-leképezések](copy-activity-schema-and-type-mapping.md) .
 
-| SAP ABAP-típus | Az adatgyár átmeneti adattípusa |
+| SAP ABAP-típus | Data factory közbenső adattípus |
 |:--- |:--- |
-| C (karakterlánc) | Sztring |
-| I (egész szám) | Int32 |
-| F (float) | Double |
-| D (dátum) | Sztring |
-| T (idő) | Sztring |
-| P (BCD-csomag, pénznem, decimális, mennyiség) | Decimális |
+| C (String) | Sztring |
+| I (integer) | Int32 |
+| F (float) | Dupla |
+| D (Date) | Sztring |
+| T (Time) | Sztring |
+| P (BCD Packed, Currency, Decimal, Qty) | tizedes tört |
 | N (Numc) | Sztring |
-| X (bináris és nyers) | Sztring |
+| X (Binary and Raw) | Sztring |
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 

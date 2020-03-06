@@ -5,11 +5,11 @@ author: diberry
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716287"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361132"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Adatok kinyerése a teljes szövegből szándékok és entitások alapján
 A LUIS teszi lehetővé a felhasználó a természetes nyelvű utterances lekérni adatait. Az adatokat oly módon, hogy használat szerint a program, alkalmazás vagy csevegőrobot műveletet ki kell olvasni. A következő szakaszban megtudhatja, milyen adatokat küld vissza, a szándékok és entitások példákkal a JSON.
@@ -19,11 +19,11 @@ A kinyerni kívánt legnehezebb adatok a géppel megtanult adatok, mert nem pont
 ## <a name="data-location-and-key-usage"></a>Adatok helye és a kulcsot használat
 A LUIS a közzétett [végpont](luis-glossary.md#endpoint)adatait biztosítja. A **https-kérés** (post vagy Get) tartalmazza a kiválasztást, valamint néhány opcionális konfigurációt, például átmeneti vagy éles környezeteket.
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 előrejelzési végpont kérése](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[V2 előrejelzési végpont kérése](#tab/V2)
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 előrejelzési végpont kérése](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[V3 előrejelzési végpont kérése](#tab/V3)
 
 `https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
 
@@ -38,7 +38,7 @@ A **https-válasz** tartalmazza az összes olyan szándékot és entitási infor
 ## <a name="data-from-intents"></a>Leképezések adatait
 Az elsődleges érték a legfontosabb pontozási **leképezés neve**. A végpont válasz a következő:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 ```JSON
 {
@@ -51,7 +51,7 @@ Az elsődleges érték a legfontosabb pontozási **leképezés neve**. A végpon
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
 ```JSON
 {
@@ -80,7 +80,7 @@ További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.m
 Ha a Csevegőrobot vagy a LUIS-Calling alkalmazás egynél több leképezési pontszámon alapuló döntést tesz, adja vissza az összes cél pontszámát.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 Állítsa be a querystring paramétert, `verbose=true`. A végpont válasz a következő:
 
@@ -105,7 +105,7 @@ Ha a Csevegőrobot vagy a LUIS-Calling alkalmazás egynél több leképezési po
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
 Állítsa be a querystring paramétert, `show-all-intents=true`. A végpont válasz a következő:
 
@@ -142,7 +142,7 @@ A leképezések vannak rendezve legmagasabbtól a legalacsonyabb pontszámot.
 
 Ha előre elkészített tartományokat ad hozzá, a leképezés neve a tartományt jelöli, például `Utilties` vagy `Communication`, valamint a szándékot:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 ```JSON
 {
@@ -168,7 +168,7 @@ Ha előre elkészített tartományokat ad hozzá, a leképezés neve a tartomán
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
 ```JSON
 {
@@ -196,7 +196,7 @@ További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.m
 
 * * *
 
-|Tartomány|Objektum|Adattípus|Adatok helye|Érték|
+|Domain|Objektum|Adattípus|Adatok helye|Érték|
 |--|--|--|--|--|
 |Közművek|Szándék|Sztring|[0]. szándék .intent|"<b>Segédprogramok</b>. ShowNext"|
 |Kommunikáció|Szándék|Sztring|[1]. szándék .intent|<b>Kommunikáció</b>. StartOver"|
@@ -210,7 +210,7 @@ Egy egyetlen slovo nebo frázi v az utterance (kifejezés) meg tudja több entit
 
 A rendszer az összes entitást visszaadja a végpont válaszának **entitások** tömbében:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 ```JSON
 "entities": [
@@ -233,7 +233,7 @@ A rendszer az összes entitást visszaadja a végpont válaszának **entitások*
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
 ```JSON
 "entities": {
@@ -266,7 +266,7 @@ Az előre [elkészített](luis-concept-entity-types.md) entitásokat a rendszer 
 
 `Dec 5th send to +1 360-555-1212`
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 ```JSON
 "entities": [
@@ -347,7 +347,7 @@ Az előre [elkészített](luis-concept-entity-types.md) entitásokat a rendszer 
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
 A querystring paraméter nélkül `verbose=true`:
 
@@ -556,7 +556,7 @@ Bizonyos alkalmazásokhoz kell tudni új és újonnan felbukkanó nevek, példá
 Szerepkörök az entitások környezetfüggő különbségek.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 Az entitás neve `Location`, és két szerepkör, `Origin` és `Destination`.
 
@@ -589,7 +589,7 @@ Az entitás neve `Location`, és két szerepkör, `Origin` és `Destination`.
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
 A v3-as verzióban a **szerepkör neve** az objektum elsődleges neve.
 
@@ -709,7 +709,7 @@ Minden más országban a válasz a következő:
 A kulcs kifejezés kinyerő entitása a [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)által megadott, a teljes szövegben szereplő kulcsfontosságú kifejezéseket adja vissza.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 ```JSON
 {
@@ -744,7 +744,7 @@ A kulcs kifejezés kinyerő entitása a [text Analytics](https://docs.microsoft.
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
 További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
@@ -822,7 +822,7 @@ A LUIS felderítését az utterance (kifejezés) az összes entitásokat ad viss
 
 A LUIS-végpont ugyanazokat az adategységeket képes felderíteni, mint a különböző entitásokban.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 ```JSON
 {
@@ -948,7 +948,7 @@ A LUIS-végpont ugyanazokat az adategységeket képes felderíteni, mint a kül�
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
 `verbose=true` nélkül querystring paraméterként.
 
@@ -1135,7 +1135,7 @@ Ha egy szót vagy kifejezést megegyezik a listában több entitást, a végpont
 
 A lekérdezési `when is the best time to go to red rock?`, és az alkalmazás több listában is `red`, a LUIS felismeri az összes entitást, és az entitások tömbjét adja vissza a JSON-végpont válaszának részeként:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 ```JSON
 {
@@ -1173,7 +1173,7 @@ A lekérdezési `when is the best time to go to red rock?`, és az alkalmazás t
 
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
 A lekérdezési karakterláncban `verbose=true` nélkül:
 

@@ -12,11 +12,11 @@ ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 5952f17c83b778e8713488b5c53c9f210c84a146
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200471"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390507"
 ---
 # <a name="quickstart-scale-compute-in-in-azure-synapse-analytics-sql-pool-using-azure-powershell"></a>Gyors útmutató: a számítások méretezése az Azure szinapszis Analytics SQL-készletben Azure PowerShell használatával
 
@@ -119,7 +119,7 @@ Az állapot önmagában való megjelenítéséhez használja a következő paran
 $database | Select-Object DatabaseName,Status
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ezzel megtanulta, hogyan méretezheti a számítási lehetőséget az SQL-készlethez. Ha többet szeretne megtudni az SQL-készletről, folytassa a betöltési oktatóanyaggal.
 
 > [!div class="nextstepaction"]

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f83385e1c0a360689569424dbba0c4548751916c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: c62af3ddf8b2c2dc8082dc4f4870ecfcdc175ab8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661959"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380746"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások – útmutató
 
@@ -243,7 +243,7 @@ A riasztások táblázat alatti táblázat a riasztások szándékának kategori
 |Riasztás|Leírás|Szándék (további[információ](#intentions))|
 |----|----|:----:|
 |**ELŐNÉZET – szerepkör kötése a fürthöz – a rendszer a rendszergazda szerepkört észlelte**|A Kubernetes naplózási elemzési naplója egy új kötést észlelt a fürt – rendszergazda szerepkörhöz, amely rendszergazdai jogosultságokat eredményezett. A rendszergazdai jogosultságok szükségtelen biztosításához a fürt jogosultság-eszkalációs problémái merülhetnek fel.|Perzisztencia|
-|**ELŐNÉZET – elérhető Kubernetes-irányítópult észlelve**|A Kubernetes-naplózási napló elemzése a Kubernetes-irányítópult terheléselosztó-szolgáltatás általi expozícióját észlelte. A közzétett irányítópultok lehetővé teszik a nem hitelesített hozzáférést a fürt felügyeletéhez, és biztonsági fenyegetést jelenthetnek.|Perzisztencia|
+|**ELŐNÉZET – elérhető Kubernetes-irányítópult észlelve**|A Kubernetes-naplózási napló elemzése a Kubernetes-irányítópult terheléselosztó-szolgáltatás általi expozícióját észlelte. A közzétett irányítópultok lehetővé teszik a nem hitelesített hozzáférést a fürt felügyeletéhez, és biztonsági fenyegetést jelenthetnek.|Kezdeti hozzáférés|
 |**ELŐZETES verzió – új, magas jogosultsági szintű szerepkör észlelhető**|A Kubernetes napló elemzése egy új, magas jogosultságokkal rendelkező szerepkört észlelt. A magas jogosultságokkal rendelkező szerepkörhöz tartozó kötések a fürtben a felhasználó/csoport számára emelt szintű jogosultságokat biztosítanak. Az emelt szintű jogosultságok szükségtelen biztosításához a fürt jogosultság-eszkalációs problémái merülhetnek fel.|Perzisztencia|
 |**ELŐZETES verzió – a rendszer a Kube új tárolóját észlelte.**|A Kubernetes napló elemzése egy új tárolót észlelt a Kube-System névtérben, amely nem tartozik a névtérben általában futó tárolók közé. A Kube-rendszer névterei nem tartalmazhatnak felhasználói erőforrásokat. A támadók a kártékony összetevők elrejtésére használhatják ezt a névteret.|Perzisztencia|
 |**ELŐNÉZET – digitális valutaváltó tároló észlelve**|A Kubernetes napló elemzése olyan tárolót észlelt, amely egy digitális valutaváltó eszközhöz társított képpel rendelkezik.|Futtatási|
@@ -263,7 +263,7 @@ A riasztások táblázat alatti táblázat a riasztások szándékának kategori
 |**Az SSH-kiszolgáló egy tárolón belül fut**|A gépi naplók azt jelzik, hogy egy SSH-kiszolgáló egy Docker-tárolón belül fut. Habár ez a viselkedés szándékos lehet, gyakran azt jelzi, hogy egy tároló hibásan van konfigurálva vagy megszegve.|Futtatási|
 |**A tárolót bányász képképpel észlelték**|A gépi naplók a digitális valuta kitermeléséhez kapcsolódó rendszerképet futtató Docker-tárolók végrehajtását jelzik. Ez a viselkedés valószínűleg azt jelzi, hogy az erőforrások visszaéltek.|Futtatási|
 |**Gyanús kérelem Kubernetes API-hoz**|A gépi naplók azt jelzik, hogy gyanús kérés történt a Kubernetes API-nak. A kérelem egy Kubernetes-csomópontból lett elküldve, valószínűleg a csomóponton futó egyik tárolóból. Bár ez a viselkedés szándékos lehet, jelezheti, hogy a csomópont sérült tárolót futtat.|Futtatási|
-|**Gyanús kérelem a Kubernetes-irányítópultra**|A gépi naplók azt jelzik, hogy gyanús kérés történt a Kubernetes irányítópultján. A kérelem egy Kubernetes-csomópontból lett elküldve, valószínűleg a csomóponton futó egyik tárolóból. Bár ez a viselkedés szándékos lehet, jelezheti, hogy a csomópont sérült tárolót futtat.|-|
+|**Gyanús kérelem a Kubernetes-irányítópultra**|A gépi naplók azt jelzik, hogy gyanús kérés történt a Kubernetes irányítópultján. A kérelem egy Kubernetes-csomópontból lett elküldve, valószínűleg a csomóponton futó egyik tárolóból. Bár ez a viselkedés szándékos lehet, jelezheti, hogy a csomópont sérült tárolót futtat.|Oldalirányú mozgás|
 ||||
 
 
@@ -395,7 +395,7 @@ A támadás szándékának megismerése segíthet az esemény könnyebb kivizsg�
 
 A cyberattack a felderítésből az adatok kiszűrése való előrehaladását ismertető lépések sorozata gyakran "Kill Chain". 
 
-A Security Center támogatott kill Chain-leképezések a következő táblázatban leírt, [Mitre ATT &AMP; CK™ keretrendszeren](https://attack.mitre.org/matrices/enterprise) alapulnak.
+A Security Center támogatott kill Chain-leképezések a következő táblázatban leírt, [Mitre ATT &AMP; CK&trade; keretrendszeren](https://attack.mitre.org/matrices/enterprise) alapulnak.
 
 |Szándék|Leírás|
 |------|-------|

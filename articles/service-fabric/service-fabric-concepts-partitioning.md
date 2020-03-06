@@ -4,11 +4,11 @@ description: Útmutató Service Fabric állapot-nyilvántartó szolgáltatások 
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434058"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390186"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>A Partition Service Fabric megbízható szolgáltatások
 Ez a cikk bevezetést nyújt az Azure Service Fabric megbízható szolgáltatások particionálásának alapvető fogalmait illetően. A cikkben használt forráskód a [githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)is elérhető.
@@ -32,7 +32,7 @@ Az útmutató hátralévő része az állapot-nyilvántartó szolgáltatásokra 
 ### <a name="partition-service-fabric-stateful-services"></a>Service Fabric állapot-nyilvántartó szolgáltatások particionálása
 A Service Fabric megkönnyíti a méretezhető állapot-nyilvántartó szolgáltatások fejlesztését azáltal, hogy az állapot (az adatfeldolgozás) első osztályú módját kínálja. Elméletileg úgy gondolja, hogy egy állapot-nyilvántartó szolgáltatás partíciója olyan méretezési egység, amely nagyon megbízható a fürt csomópontjain elosztott és kiegyensúlyozott [replikák](service-fabric-availability-services.md) révén.
 
-Service Fabric állapot-nyilvántartó szolgáltatások környezetében történő particionálás azt jelenti, hogy egy adott szolgáltatási partíció felelős a szolgáltatás teljes állapotának egy részéért. (Ahogy korábban említettük, a partíció [replikák](service-fabric-availability-services.md)halmaza). Service Fabric nagyszerű dolog, hogy a partíciókat különböző csomópontokon helyezi el. Ez lehetővé teszi a csomópontok erőforrás-korlátjának növekedését. Mivel az adatmennyiség növekedésre szorul, a partíciók növekednek, és Service Fabric a partíciókat a csomópontok között. Ez biztosítja a hardveres erőforrások folyamatos hatékony használatát.
+Service Fabric állapot-nyilvántartó szolgáltatások környezetében történő particionálás azt jelenti, hogy egy adott szolgáltatási partíció felelős a szolgáltatás teljes állapotának egy részéért. (Ahogy korábban említettük, a partíció [replikák](service-fabric-availability-services.md)halmaza). Service Fabric nagyszerű dolog, hogy a partíciókat különböző csomópontokon helyezi el. Ez lehetővé teszi a csomópontok erőforrás-korlátjának növekedését. Az adatok igények nő, partíciók nő, és a Service Fabric partíciók-csomópontokon keresztüli újra egyensúlyba hozza. Ez biztosítja a hardveres erőforrások folyamatos hatékony használatát.
 
 Ha példát szeretne adni, tegyük fel, hogy egy 5 csomópontos fürtöt és egy olyan szolgáltatást indít el, amely úgy van beállítva, hogy 10 partíciót és három replikát céloz meg. Ebben az esetben a Service Fabric kiegyenlíti és elosztja a replikákat a fürtön belül – és két elsődleges [replikával](service-fabric-availability-services.md) fog végződnie.
 Ha most ki kell bővíteni a fürtöt 10 csomópontra, Service Fabric az elsődleges [replikákat](service-fabric-availability-services.md) az összes 10 csomóponton át kellene egyenlíteni. Hasonlóképpen, ha visszaméretezi az 5 csomópontot, Service Fabric az összes replikát újra kiegyenlíti az 5 csomópontok között.  
@@ -352,7 +352,7 @@ A minta teljes forráskódja elérhető a [githubon](https://github.com/Azure-Sa
 ## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services-és Actor-elágazási alfolyamatok
 A Service Fabric nem támogatja a megbízható szolgáltatásokat és a későbbiekben megbízható Actors elágazási alfolyamatokat. A nem támogatott alfolyamatok nem regisztrálhatók, és a visszavonási jogkivonatok csak a regisztrált folyamatoknak [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) , ezért nem használhatók. az olyan problémák, mint például a frissítési hibák, ha az alfolyamatok nem zárulnak le, miután a fölérendelt folyamat megkapta a lemondási tokent. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Service Fabric fogalmakkal kapcsolatos információkért tekintse meg a következőket:
 
 * [Service Fabric szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)

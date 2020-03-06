@@ -7,29 +7,29 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: a0058bf309e0ff4fbe687731d676e907d1c3fd82
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383111"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394216"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Kérelmek egységei Azure Cosmos DB
 
-A Azure Cosmos DB a kiépített átviteli sebességért és az óránként felhasznált tárhelyért kell fizetnie. Az átviteli sebességet úgy kell kiépíteni, hogy mindig elegendő rendszererőforrás legyen elérhető az Azure Cosmos-adatbázishoz. Elegendő erőforrásra van szüksége ahhoz, hogy elérje vagy túllépje a [Azure Cosmos db SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)-kat.
+Az Azure Cosmos DB használatakor csak a kiosztott átviteli sebességért és a felhasznált tárolásért kell fizetnie, óránkénti alapon. Az átviteli sebességet úgy kell kiosztani, hogy mindig elegendő rendszererőforrás álljon rendelkezésre az Azure Cosmos-adatbázishoz. Elegendő erőforrásra van szüksége ahhoz, hogy elérje vagy túllépje a [Azure Cosmos db SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)-kat.
 
 Azure Cosmos DB számos olyan API-t támogat, mint például az SQL, a MongoDB, a Cassandra, a Gremlin és a table. Mindegyik API saját adatbázis-műveletekkel rendelkezik. Ezek a műveletek az egyszerű pont olvasási és írási műveleteiből származnak összetett lekérdezésekre. Minden adatbázis-művelet a művelet bonyolultsága alapján használja a rendszererőforrásokat. 
 
-Az összes adatbázis-művelet díját a Azure Cosmos DB normalizálja, és a *kérelmek egységei* (vagy RUs, röviden) szerint vannak kifejezve. Azt is megteheti, hogy a másodpercenkénti RUs pénzneme az átviteli sebesség. Az RUs/mp érték alapú pénznem. A rendszer elvégzi a Azure Cosmos DB által támogatott adatbázis-műveletek végrehajtásához szükséges rendszererőforrásokat, például a PROCESSZORt, a IOPS és a memóriát. 
+Az összes adatbázis-művelet díját a Azure Cosmos DB normalizálja, és a *kérelmek egységei* (vagy RUs, röviden) szerint vannak kifejezve. A másodpercenkénti kérelemegység az átviteli sebesség pénznemeként is felfogható. A másodpercenkénti kérelemegység díjalapú pénznem. Absztrahálja azon rendszer-erőforrásokat, például a CPU-t, az IOPS-ot és a memóriát, amelyekre az Azure Cosmos DB által támogatott adatbázis-műveletek elvégzéséhez szükség van. 
 
-1 KB-os elemek beolvasásának díja 1 kérési egység (vagy 1 RU). 1 GB-nyi adat tárolásához legalább 10 RU/s szükséges. Az összes többi adatbázis-művelet hasonlóképpen hozzá van rendelve az RUs használatával. Függetlenül attól, hogy melyik API-t használja az Azure Cosmos-tárolóval való kommunikációra, a költségeket mindig az RUs méri. Azt jelzi, hogy az adatbázis-művelet írási, olvasási vagy lekérdezési jellegű-e, a költségeket mindig az RUs méri.
+Egy 1 KB-os elem beolvasásának költsége 1 kérelemegység (1 RU). 1 GB-nyi adat tárolásához legalább 10 RU/s szükséges. Ugyanígy az összes többi adatbázis-művelethez is rendelve van egy költség kérelemegységben megadva. A rendszer mindig kérelemegységben számítja a költségeket attól függetlenül, hogy melyik API segítségével kommunikál az Azure Cosmos-tárolóval. A költségek számítása mindig kérelemegységben történik függetlenül attól, hogy az adatbázis-művelet írás, olvasás vagy lekérdezés-e.
 
-Az alábbi képen az RUs magas szintű ötlete látható:
+A következő képen a kérelemegységek áttekintése látható:
 
 ![Adatbázis-műveletek felhasználásának kérelmezési egységei](./media/request-units/request-units.png)
 
-A kapacitás kezeléséhez és megtervezéséhez Azure Cosmos DB biztosítja, hogy egy adott adatbázis-művelethez tartozó RUs száma determinisztikus. Megvizsgálhatja a válasz fejlécét, hogy nyomon kövesse a bármely adatbázis-művelet által felhasznált RUs számát. Ha megérti [azokat a tényezőket, amelyek hatással vannak az ru-díjakra](request-units.md#request-unit-considerations) és az alkalmazás átviteli sebességére vonatkozó követelményekre, akkor az alkalmazás költségei hatékonyan futtathatók.
+A kapacitás kezelése és tervezése érdekében az Azure Cosmos DB biztosítja, hogy egy adott adatbázis-művelethez a kérelemegységek száma egy adott adatkészletre determinisztikus legyen. Megvizsgálhatja a válasz fejlécét bármely adatbázis-művelet által felhasznált kérelemegységek számának nyomon követéséhez. Ha megérti [azokat a tényezőket, amelyek hatással vannak az ru-díjakra](request-units.md#request-unit-considerations) és az alkalmazás átviteli sebességére vonatkozó követelményekre, akkor az alkalmazás költségei hatékonyan futtathatók.
 
-Az alkalmazáshoz tartozó RUs számát a másodpercenként 100 RUs-onként kell kiépíteni. Az alkalmazás kiépített átviteli sebességének méretezéséhez bármikor növelheti vagy csökkentheti az RUs számát. A 100 RUs-es növekmények vagy csökkentések méretezhetők. A módosításokat programozott módon vagy a Azure Portal használatával végezheti el. A számlázás óránként történik.
+Az alkalmazáshoz a kérelemegységeket másodpercalapon oszthatja ki, másodpercenként 100 kérelemegységnyi lépésekben. Ha méretezni szeretné az alkalmazáshoz kiosztott átviteli sebességet, bármikor növelheti vagy csökkentheti a kérelemegységek számát. A skálázást 100 kérelemegység értékű lépésekben végezheti. A módosításokat elvégezheti programozással vagy az Azure Portalon is. A díjak felszámítása óraalapú.
 
 Az átviteli sebességet két különböző részletességgel is kiépítheti: 
 

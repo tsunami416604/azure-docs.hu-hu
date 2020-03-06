@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084615"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367095"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>A fizikai kiszolgáló vész-helyreállítási konfigurációs kiszolgálójának kezelése
 
@@ -33,9 +33,9 @@ A táblázat összefoglalja a helyszíni konfigurációs kiszolgáló számító
 | Lemez szabad területe (adatmegőrzési lemez) | 600 GB|
 | Operációs rendszer  | Windows Server 2012 R2 <br> Windows Server 2016 |
 | Operációs rendszer területi beállítása | Angol (Egyesült Államok)|
-| VMware vSphere PowerCLI verziója | Nem szükséges|
+| VMware vSphere PowerCLI verziója | Nem kötelező|
 | Windows Server-szerepkörök | Ne engedélyezze ezeket a szerepköröket: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V |
-| Csoportházirendek| Ne engedélyezze ezeket a csoportházirendeket: <br> – A parancssorhoz való hozzáférés letiltása <br> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása <br> – A fájlmellékletek megbízhatósági logikája <br> – A parancsfájlok végrehajtásának bekapcsolása <br> [Részletek](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+| Csoportházirendek| Ne engedélyezze ezeket a csoportházirendeket: <br> – A parancssorhoz való hozzáférés letiltása <br> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása <br> – A fájlmellékletek megbízhatósági logikája <br> – A parancsfájlok végrehajtásának bekapcsolása <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 | IIS | – Nincs előre meglévő alapértelmezett webhely <br> – [Névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) engedélyezése <br> – [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -beállítás engedélyezése  <br> – Nincs már meglévő webhely/alkalmazás a 443-es porton<br>|
 | Hálózati adapter típusa | VMXNET3 (VMware virtuális gépként való üzembe helyezéskor) |
 | IP-cím típusa | Statikus |
@@ -175,7 +175,7 @@ A konfigurációs kiszolgáló számítógép proxybeállításait a következő
 2. Indítsa el a cspsconfigtool. exe fájlt az asztalán található parancsikon használatával.
 3. Kattintson a tároló **regisztrációja** fülre.
 4. Töltsön le egy új regisztrációs fájlt a portálról, és adja meg az eszközt bemenetként.
-      ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+      ![regisztrálása – Configuration-Server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Adja meg a proxykiszolgáló adatait, és kattintson a **regisztrálás** gombra.  
 6. Nyisson meg egy rendszergazdai PowerShell-parancssori ablakot.
 7. Futtassa a következő parancsot

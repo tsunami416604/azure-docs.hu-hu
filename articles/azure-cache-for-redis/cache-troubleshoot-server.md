@@ -7,19 +7,19 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433357"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372174"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Az Azure cache hibaelhárítása a Redis-kiszolgálókkal kapcsolatos problémák esetén
 
 Ez a szakasz azokat a hibaelhárítási problémákat ismerteti, amelyek az Azure cache Redis vagy az azt üzemeltető virtuális gép (ek) feltétele miatt fordulnak elő.
 
-- [Memória-nyomás a Redis-kiszolgálón](#memory-pressure-on-redis-server)
+- [A Redis-kiszolgáló memóriaterhelése](#memory-pressure-on-redis-server)
 - [Magas CPU-használat vagy-kiszolgáló terhelése](#high-cpu-usage-or-server-load)
-- [Hosszan futó parancsok](#long-running-commands)
+- [Hosszú ideig futó parancsok](#long-running-commands)
 - [Kiszolgálóoldali sávszélesség-korlátozás](#server-side-bandwidth-limitation)
 
 > [!NOTE]
@@ -73,7 +73,7 @@ Az olyan helyzetek enyhítése, amikor a hálózati sávszélesség-használat a
 - [Riasztásokat hozhat létre](cache-how-to-monitor.md#alerts) olyan mérőszámokon, mint például a gyorsítótár olvasási vagy gyorsítótár-írási lehetősége, hogy korán értesüljön a lehetséges hatásokról.
 - Nagyobb méretű gyorsítótár-méretre [Méretezés](cache-how-to-scale.md) nagyobb hálózati sávszélesség-kapacitással.
 
-## <a name="additional-information"></a>További információk
+## <a name="additional-information"></a>További információ
 
 - [Az Azure Cache for Redis ügyféloldali hibáinak elhárítása](cache-troubleshoot-client.md)
 - [Milyen Azure cache-t használ a Redis-ajánlat és-méret használatához?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
