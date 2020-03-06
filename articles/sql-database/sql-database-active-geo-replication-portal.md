@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
 ms.openlocfilehash: 601c537a51e29ae1f107127e1b83c07448eee9ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348876"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396878"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Az aktív geo-replikáció konfigurálása Azure SQL Databasehoz a Azure Portal és a feladatátvétel kezdeményezése
 
@@ -48,7 +48,7 @@ A másodlagos létrehozása és összevetése után az adatok megkezdik az első
 1. A [Azure Portal](https://portal.azure.com)keresse meg a Geo-replikációhoz beállítani kívánt adatbázist.
 2. Az SQL Database lapon válassza a **geo-replikálás**lehetőséget, majd válassza ki a régiót a másodlagos adatbázis létrehozásához. Bármelyik régiót kiválaszthatja, amely nem az elsődleges adatbázist üzemeltető régió, hanem a [párosított régiót](../best-practices-availability-paired-regions.md)is ajánljuk.
 
-    ![Georeplikációk konfigurálása](./media/sql-database-geo-replication-portal/configure-geo-replication.png)
+    ![Aktív georeplikáció konfigurálása](./media/sql-database-geo-replication-portal/configure-geo-replication.png)
 3. Válassza ki vagy konfigurálja a másodlagos adatbázis kiszolgálóját és díjszabási szintjét.
 
     ![Másodlagos konfigurálása](./media/sql-database-geo-replication-portal/create-secondary.png)

@@ -16,18 +16,18 @@ ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
 ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69016713"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392951"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Speciális Media Encoder Premium Workflow oktatóanyagok
 ## <a name="overview"></a>Áttekintés
-Ez a dokumentum olyan forgatókönyveket tartalmaz, amelyek bemutatják, hogyan lehet testreszabni a munkafolyamatokat a **munkafolyamat**-tervezővel [Itt](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)megtalálhatja az aktuális munkafolyamat-fájlokat.  
+Ez a dokumentum olyan forgatókönyveket tartalmaz, amelyek bemutatják, hogyan lehet testreszabni a munkafolyamatokat a **Munkafolyamat-tervezővel** [Itt](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)megtalálhatja az aktuális munkafolyamat-fájlokat.  
 
-## <a name="toc"></a>TARTALOMJEGYZÉK
-A következő témákat tárgyalja:
+## <a name="toc"></a>Tartalomjegyzék
+A szakasz az alábbi témaköröket tartalmazza:
 
 * [MXF kódolása egyetlen bitráta MP4-be](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)
   * [Új munkafolyamat indítása](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_start_new)
@@ -238,7 +238,7 @@ A médiafájl bemenetének tömörítetlen videó kimeneti PIN-kódjának össze
 
 Most módosítsa az új AVC-kódoló konfigurációját a kimeneti 960x540 2,5 Mbps-on. (Használja a "kimeneti szélesség", "output height" és "bitráta (kbps)" tulajdonságot ehhez a értékhez.)
 
-Mivel az eredményül kapott eszközt a Azure Media Services dinamikus csomagolással együtt szeretnénk használni, a folyamatos átviteli végpontnak képesnek kell lennie az ilyen MP4-fájlokból származó HLS/darabolt MP4/DASH töredékek generálására, amelyek pontosan igazodnak egymáshoz, így a különböző bitráták közötti váltást igénylő ügyfelek egyetlen zökkenőmentes folyamatos videó-és hangélményt kapnak. Ennek elvégzéséhez biztosítania kell, hogy mindkét AVC-kódoló tulajdonságaiban a GOP ("képek csoportja") mérete 2 másodpercre van beállítva, amelyet a következők végezhetnek el:
+Mivel az eredményül kapott eszközt a Azure Media Services dinamikus csomagolással együtt szeretnénk használni, az adatfolyam-végpontnak képesnek kell lennie az ilyen MP4-fájlokból származó HLS/darabolt MP4/DASH töredékek létrehozására, amelyek pontosan illeszkednek egymáshoz úgy, hogy a különböző bitráták közötti váltást lehetővé tévő ügyfelek egyetlen zökkenőmentes folyamatos videó-és hangélményt kapjanak. Ennek elvégzéséhez biztosítania kell, hogy mindkét AVC-kódoló tulajdonságaiban a GOP ("képek csoportja") mérete 2 másodpercre van beállítva, amelyet a következők végezhetnek el:
 
 * a GOP méret mód beállítása rögzített GOP-méretre és
 * a kulcs keretének intervalluma két másodpercre.
@@ -294,7 +294,7 @@ Hozzon létre egy harmadik kimeneti összetevőt a kimenő adatfolyam a muxer-b�
 *Audio muxer fájl kimenetének létrehozása*
 
 ### <a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>A hozzáadása. ISM SMIL-fájl
-Ahhoz, hogy a dinamikus csomagolás egyszerre működjön együtt az MP4-fájlokkal (és a csak hangalapú MP4-sel), a Media Services-adategységben is szükség van egy manifest-fájlra (más néven SMIL-fájlra is): Szinkronizált multimédiás integrációs nyelv). Ez a fájl azt jelzi, hogy Azure Media Services, milyen MP4-fájlok érhetők el a dinamikus csomagoláshoz, és hogy ezek közül melyeket érdemes figyelembe venni a hangadatfolyamok számára. Egyetlen hangstreamtel rendelkező MP4's egy tipikus jegyzékfájlja a következőképpen néz ki:
+Ahhoz, hogy a dinamikus csomagolás egyszerre működjön együtt az MP4-fájlokkal (és a csak hangalapú MP4-sel), a Media Services-adategységben is szükség van egy manifest-fájlra (más néven "SMIL"-fájlra is): szinkronizált multimédia-integrációs nyelv). Ez a fájl azt jelzi, hogy Azure Media Services, milyen MP4-fájlok érhetők el a dinamikus csomagoláshoz, és hogy ezek közül melyeket érdemes figyelembe venni a hangadatfolyamok számára. Egyetlen hangstreamtel rendelkező MP4's egy tipikus jegyzékfájlja a következőképpen néz ki:
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -410,7 +410,7 @@ Végezze el ugyanezt a fájl kimenetét a második videóban:
 Ha most módosítjuk a videó-vagy hangfájlok sebességét, a rendszer újrakonfigurálja a megfelelő kódolót, és az összes automatikus átviteli sebesség-alapú fájl neve konvenciót tiszteletben tartja.
 
 ## <a id="thumbnails_to__multibitrate_MP4"></a>Miniatűrök hozzáadása több sávszélességű MP4-kimenethez
-Egy olyan munkafolyamattól kezdve, amely egy [MXF-bemenetből származó](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging), több SÁVSZÉLESSÉGű MP4-kimenetet generál, most a bélyegképek hozzáadását fogjuk megtekinteni a kimenethez.
+Egy olyan munkafolyamattól kezdve, amely egy [MXF-bemenetből származó, több sávszélességű MP4-kimenetet](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)generál, most a bélyegképek hozzáadását fogjuk megtekinteni a kimenethez.
 
 ### <a id="thumbnails_to__multibitrate_MP4_overview"></a>A munkafolyamatok áttekintése a miniatűrök hozzáadásához
 ![A több sávszélességű MP4-munkafolyamat kezdési](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-start-from.png)
@@ -422,7 +422,7 @@ A miniatűr generációnk szíve a JPG kódoló összetevő lesz, amely képes a
 
 ![JPG-kódoló](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-jpg-encoder.png)
 
-*JPG Encoder*
+*JPG-kódoló*
 
 A tömörített videó streamet azonban nem lehet közvetlenül a JPG-kódolóba bevitt adathordozó-fájlból összekapcsolni. Ehelyett egyéni kereteket kell átadnia. Ezt a video frame Gate összetevőn keresztül teheti meg.
 
@@ -505,7 +505,7 @@ Most, hogy befejezte a munkafolyamatot, hajtson végre egy újabb tesztet a megt
 *Befejezett munkafolyamatok a többszörös MP4 kimenethez a miniatűrökkel*
 
 ## <a id="time_based_trim"></a>A többszörös sávszélességű MP4 kimenet időalapú kivágása
-Egy olyan munkafolyamattól kezdve, amely egy [MXF-bemenetből származó többszörös sávszélességű MP4](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)-kimenetet hoz létre, most a forrásként szolgáló videót a Time-Stamps alapján metszi.
+Egy olyan munkafolyamattól kezdve, amely egy [MXF-bemenetből származó többszörös sávszélességű MP4-kimenetet](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)hoz létre, most a forrásként szolgáló videót a Time-Stamps alapján metszi.
 
 ### <a id="time_based_trim_start"></a>A munkafolyamat áttekintése a vágás hozzáadásának megkezdéséhez
 ![A munkafolyamat elindítása a vágás hozzáadásához](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-starting-workflow-to-add-trimming.png)
@@ -626,7 +626,7 @@ A naplónk ablaka a következőket jeleníti meg:
 *A csomópont elérési útjaihoz való hozzáférés naplózási kimenete*
 
 ## <a id="frame_based_trim"></a>Többsebességű MP4-kimenet frame-alapú körülvágása
-Egy olyan munkafolyamattól kezdve, amely egy több [sávszélességű MP4-kimenetet hoz létre egy MXF](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)-bemenetből, most a forrásként szolgáló videót a frame Counts alapján metszi.
+Egy olyan munkafolyamattól kezdve, amely egy több [sávszélességű MP4-kimenetet hoz létre egy MXF-bemenetből](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging), most a forrásként szolgáló videót a frame Counts alapján metszi.
 
 ### <a id="frame_based_trim_start"></a>A terv áttekintésével megkezdheti a vágás hozzáadását a következőhöz
 ![A kivágás hozzáadásának megkezdéséhez szükséges munkafolyamat](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-workflow-start-adding-trimming-to.png)
@@ -693,8 +693,8 @@ Ahhoz, hogy újra lehessen írni a munkafolyamat indításakor létrehozott clip
 
 Először is meg kell határozni, hogy melyik pontról kell kivágni a videót. Ahhoz, hogy ez a munkafolyamat kevésbé technikai felhasználói számára legyen elérhető, tegye közzé két tulajdonságot a gráf gyökerében. Ehhez kattintson a jobb gombbal a tervező felületre, és válassza a "tulajdonság hozzáadása" lehetőséget:
 
-* Első tulajdonság: "ClippingTimeStart" típus: IDŐKÓDJA
-* Második tulajdonság: "ClippingTimeEnd" típus: IDŐKÓDJA
+* Első tulajdonság: "ClippingTimeStart", típus: "IDŐKÓD"
+* Második tulajdonság: "ClippingTimeEnd", típus: "IDŐKÓD"
 
 ![Tulajdonságok hozzáadása párbeszédpanel a kivágás kezdő időpontjához](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
 
@@ -761,7 +761,7 @@ Ez a normál karakterlánc-manipulációs műveleteken keresztül történt. Az 
 
 *Az eredményül kapott klipek listájának naplózása*
 
-Futtasson egy tesztet, hogy megtekintse a videó-és hangadatfolyamok kivágásának módját. Mivel egynél több tesztet hajt végre különböző értékekkel a kivágási pontokhoz, megfigyelheti, hogy ezeket a rendszer nem veszi figyelembe. Ennek az az oka, hogy a tervező az Azure-futtatókörnyezettől eltérően nem bírálja felül a cliplist XML-t minden futtatáskor. Ez azt jelenti, hogy a be-és kimenő pontok első beállításakor az XML átalakítható, az összes többi alkalommal, a Guard záradék (IF (`clipListXML.indexOf("<trim>") == -1`)) megakadályozza, hogy a munkafolyamat egy másik Trim elemet adjon hozzá, ha már van ilyen.
+Futtasson egy tesztet, hogy megtekintse a videó-és hangadatfolyamok kivágásának módját. Mivel egynél több tesztet hajt végre különböző értékekkel a kivágási pontokhoz, megfigyelheti, hogy ezeket a rendszer nem veszi figyelembe. Ennek az az oka, hogy a tervező az Azure-futtatókörnyezettől eltérően nem bírálja felül a cliplist XML-t minden futtatáskor. Ez azt jelenti, hogy a be-és kilépési pontok első beállításakor az XML átalakítható, a többi alkalommal, a Guard záradék (IF (`clipListXML.indexOf("<trim>") == -1`)) megakadályozza, hogy a munkafolyamat egy másik Trim elemet adjon hozzá, ha már van ilyen.
 
 Ahhoz, hogy a munkafolyamatot helyileg tesztelni lehessen, a legjobb megoldás, ha egy Trim elem már szerepel. Ha igen, a folytatáshoz távolítsa el az XML-fájl új értékekkel való módosításával. Ahelyett, hogy egyszerű karakterlánc-manipulációkat használ, ez valószínűleg biztonságosabb, ha a valós XML-objektummodell elemzését végzi.
 

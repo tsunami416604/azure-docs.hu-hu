@@ -162,6 +162,8 @@
               href: storage-blobs-latency.md
             - name: Fenntartott kapacitás az Azure Storage-ban
               href: storage-blob-reserved-capacity.md
+            - name: Költségtervezés és a költségek kezelése
+              href: ../common/storage-plan-manage-costs.md
         - name: Egyidejűség
           href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Blobadatok keresése és értelmezése
@@ -419,12 +421,6 @@
                   href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-storage
             - name: Xamarin
               href: storage-xamarin-blob-storage.md
-        - name: Blobok kezelése
-          items:
-            - name: Azure CLI
-              href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Azure klasszikus parancssori felület
-              href: ../common/storage-azure-cli-nodejs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Áthelyezés régiók között
           href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Hibaelhárítás
@@ -636,8 +632,24 @@
           href: ../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Alapelvek
       items:
-        - name: Tárfiókok
+        - name: Big Data feldolgozása
+          href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Azure Blob File System-illesztőprogram Hadoophoz
+          href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Az Azure Blob File System URI-ja
+          href: ../blobs/data-lake-storage-introduction-abfs-uri.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Információk a hierarchikus névterekről
+          href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: A tárfiókok bemutatása
           href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Ajánlott eljárások
+          href: data-lake-storage-best-practices.md
+        - name: Adatredundancia
+          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Adatátviteli megoldások
+          href: ../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Egyidejűség
+          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Biztonság
           items:
             - name: Adatműveletek engedélyezése
@@ -652,23 +664,6 @@
               href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Az Azure Private Endpoints használata
               href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Adatredundancia
-          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Adatok migrálása
-          items:
-            - name: Adatátviteli megoldások összehasonlítása
-              href: ../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              items:
-                - name: 'Nagy méretű adathalmaz, kis hálózati sávszélesség'
-                  href: ../common/storage-solution-large-dataset-low-network.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Nagy méretű adathalmaz, közepes vagy nagy hálózati sávszélesség'
-                  href: ../common/storage-solution-large-dataset-moderate-high-network.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Kis méretű adatkészlet, kis vagy közepes hálózati sávszélesség'
-                  href: ../common/storage-solution-small-dataset-low-moderate-network.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Időszakos adatátvitel
-                  href: ../common/storage-solution-periodic-data-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Egyidejűség
-          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Kompatibilitás
           items:
             - name: Többprotokollos hozzáférés
@@ -679,14 +674,6 @@
               href: data-lake-storage-supported-azure-services.md
             - name: Támogatott nyílt forráskódú platformok
               href: data-lake-storage-supported-open-source-platforms.md
-        - name: Big Data feldolgozása
-          href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Azure Blob File System-illesztőprogram Hadoophoz
-          href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Az Azure Blob File System URI-ja
-          href: ../blobs/data-lake-storage-introduction-abfs-uri.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Információk a hierarchikus névterekről
-          href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Figyelés és hibaelhárítás
           items:
             - name: 'Figyelés, diagnosztika és hibaelhárítás'
@@ -697,13 +684,19 @@
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Storage Analytics-naplók
               href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Ajánlott eljárások
-          href: data-lake-storage-best-practices.md
     - name: Útmutató
       items:
-        - name: Tárfiók létrehozása a Data Lake-hez
-          href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Adatok védelme
+        - name: Létrehozás
+          items:
+            - name: Általános célú v2-tárfiók létrehozása
+              href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Migrate (Áttelepítés)
+          items:
+            - name: Frissítés a Data Lake Storage Gen1-ből
+              href: ../blobs/data-lake-storage-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Helyszíni HDFS-tároló migrálása
+              href: ../blobs/data-lake-storage-migrate-on-premises-HDFS-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Biztonságos
           items:
             - name: Adatokhoz való hozzáférés engedélyezése
               items:
@@ -767,19 +760,7 @@
                   href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Transport Layer Security engedélyezése
                   href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Vészhelyreállítás
-          items:
-            - name: Az Utolsó szinkronizálás időpontja tulajdonság ellenőrzése
-              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Fiók feladatátvételének indítása
-              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: A Storage Emulator használata
-          items:
-            - name: A nyílt forráskódú Azurite emulátor használata
-              href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Az Azure Storage Emulator használata
-              href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 'Könyvtárak, fájlok és ACL-ek kezelése'
+        - name: Kezelés
           items:
             - name: .NET
               href: data-lake-storage-directory-file-acl-dotnet.md
@@ -795,19 +776,9 @@
               href: data-lake-storage-directory-file-acl-cli.md
             - name: Storage Explorer
               href: data-lake-storage-explorer.md
-        - name: Teljesítmény optimalizálása
-          items:
-            - name: Áttekintés
-              href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: A HDInsight-alapú Spark optimalizálása
-              href: ../blobs/data-lake-storage-performance-tuning-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: A HDInsight-alapú Hive optimalizálása
-              href: ../blobs/data-lake-storage-performance-tuning-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: A HDInsight-alapú MapReduce optimalizálása
-              href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: A HDInsight-alapú Storm optimalizálása
-              href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Adatátvitel
+            - name: A Hadoop fájlrendszer parancssori felülete
+              href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Átvitel
           items:
             - name: AzCopy
               items:
@@ -821,14 +792,28 @@
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Adatok átvitele az adatátviteli kódtárral
               href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Adatok áttelepítése
+        - name: Optimalizálás
           items:
-            - name: Frissítés a Data Lake Storage Gen1-ből
-              href: ../blobs/data-lake-storage-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Helyszíni HDFS-tároló migrálása
-              href: ../blobs/data-lake-storage-migrate-on-premises-HDFS-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Használat a Hadoop fájlrendszer parancssori felületével
-          href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Teljesítmény optimalizálása
+              href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: A HDInsight-alapú Spark optimalizálása
+              href: ../blobs/data-lake-storage-performance-tuning-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: A HDInsight-alapú Hive optimalizálása
+              href: ../blobs/data-lake-storage-performance-tuning-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: A HDInsight-alapú MapReduce optimalizálása
+              href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: A HDInsight-alapú Storm optimalizálása
+              href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Helyreállítás
+          items:
+            - name: Az Utolsó szinkronizálás időpontja tulajdonság ellenőrzése
+              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Emuláció
+          items:
+            - name: A nyílt forráskódú Azurite emulátor használata
+              href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Az Azure Storage Emulator használata
+              href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Referencia
       items:
         - name: .NET

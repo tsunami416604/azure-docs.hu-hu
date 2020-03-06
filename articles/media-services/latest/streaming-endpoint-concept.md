@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562360"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395078"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-végpontok (forrás) Azure Media Services
 
@@ -59,11 +59,11 @@ SLA-információ: [díjszabás és SLA](https://azure.microsoft.com/pricing/deta
 
 ## <a name="comparing-streaming-types"></a>Adatfolyam-típusok összehasonlítása
 
-Szolgáltatás|Standard|Prémium
+Funkció|Standard|Premium
 ---|---|---
 Átviteli sebesség |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
 Tartalomkézbesítési hálózat (CDN)|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.
-A számlázás arányosan történik| Naponta|Naponta
+A számlázás arányosan történik| Napi|Napi
 Dinamikus titkosítás|Igen|Igen
 Dinamikus csomagolás|Igen|Igen
 Méretezés|Automatikus méretezés a célként megadott átviteli sebességgel.|További SUs
@@ -150,7 +150,7 @@ Egyetlen Streaming végpont is képes az élő és igény szerinti videók tová
 
     Vegyünk egy olyan forgatókönyvet, amelyben az ügyfelek elsősorban élő tartalmakat nézik, de csak alkalmanként figyelik az igény szerinti tartalmakat, és ugyanabból a streaming-végpontból lesznek kézbesítve. Az igény szerinti tartalom alacsony használata olyan gyorsítótár-területet foglal magában, amely jobb lesz az élő tartalomhoz. Ebben a forgatókönyvben azt javasoljuk, hogy az élő tartalmat egy streaming végpontból és egy másik adatfolyam-végpontból származó hosszú farok tartalma alapján szolgálja ki. Ez növeli az élő esemény tartalmának teljesítményét.
     
-## <a name="scaling-streaming-with-cdn"></a>Streaming skálázás a CDN-vel
+## <a name="scaling-streaming-with-cdn"></a>Streamelés méretezése CDN-nel
 
 Lásd az alábbi cikkeket:
 
@@ -161,6 +161,6 @@ Lásd az alábbi cikkeket:
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [ebben a tárházban található](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) minta bemutatja, hogyan indíthatja el az alapértelmezett adatfolyam-végpontot a .net-tel.

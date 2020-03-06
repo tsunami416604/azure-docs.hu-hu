@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/02/2017
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f365a8325fc027d8770287208f91d164166fcbc
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 611937a709152823ddc1b88b1a0befe4161217cd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024330"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376086"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Hibrid identitás – szükséges portok és protokollok
 A következő dokumentum technikai útmutató a hibrid identitási megoldások megvalósításához szükséges portokról és protokollokról. Használja az alábbi ábrát, és tekintse meg a megfelelő táblát.
@@ -31,7 +31,7 @@ A következő dokumentum technikai útmutató a hibrid identitási megoldások m
 ## <a name="table-1---azure-ad-connect-and-on-premises-ad"></a>1\. táblázat – Azure AD Connect és helyszíni AD
 Ez a táblázat azokat a portokat és protokollokat ismerteti, amelyek a Azure AD Connect-kiszolgáló és a helyszíni AD közötti kommunikációhoz szükségesek.
 
-| Protocol (Protokoll) | Portok | Leírás |
+| Protokoll | Portok | Leírás |
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |DNS-keresések a cél erdőben. |
 | Kerberos |88 (TCP/UDP) |Kerberos-hitelesítés az AD-erdőben. |
@@ -46,17 +46,17 @@ Ez a táblázat azokat a portokat és protokollokat ismerteti, amelyek a Azure A
 ## <a name="table-2---azure-ad-connect-and-azure-ad"></a>2\. táblázat – Azure AD Connect és az Azure AD
 Ez a táblázat azokat a portokat és protokollokat ismerteti, amelyek a Azure AD Connect-kiszolgáló és az Azure AD közötti kommunikációhoz szükségesek.
 
-| Protocol (Protokoll) | Portok | Leírás |
+| Protokoll | Portok | Leírás |
 | --- | --- | --- |
 | HTTP |80 (TCP) |A visszavont tanúsítványok listáinak (tanúsítvány-visszavonási listák) letöltésére szolgál az SSL-tanúsítványok ellenőrzéséhez. |
 | HTTPS |443 (TCP) |Az Azure AD-vel való szinkronizálásra szolgál. |
 
-A tűzfalon megnyitni kívánt URL-címek és IP-címek listájáért lásd: [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
+A tűzfalon megnyitni kívánt URL-címek és IP-címek listájáért lásd: [Office 365 URL-címek és IP-](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) címtartományok, valamint [Hibaelhárítás Azure ad Connect kapcsolat](tshoot-connect-connectivity.md#troubleshoot-connectivity-issues-in-the-installation-wizard).
 
 ## <a name="table-3---azure-ad-connect-and-ad-fs-federation-serverswap"></a>3\. táblázat – Azure AD Connect és AD FS összevonási kiszolgálók/WAP
 Ez a táblázat azokat a portokat és protokollokat ismerteti, amelyek szükségesek a Azure AD Connect-kiszolgáló és a AD FS összevonási/WAP-kiszolgálók közötti kommunikációhoz.  
 
-| Protocol (Protokoll) | Portok | Leírás |
+| Protokoll | Portok | Leírás |
 | --- | --- | --- |
 | HTTP |80 (TCP) |A visszavont tanúsítványok listáinak (tanúsítvány-visszavonási listák) letöltésére szolgál az SSL-tanúsítványok ellenőrzéséhez. |
 | HTTPS |443 (TCP) |Az Azure AD-vel való szinkronizálásra szolgál. |
@@ -65,14 +65,14 @@ Ez a táblázat azokat a portokat és protokollokat ismerteti, amelyek szükség
 ## <a name="table-4---wap-and-federation-servers"></a>4\. táblázat – WAP-és összevonási kiszolgálók
 Ez a táblázat az összevonási kiszolgálók és a WAP-kiszolgálók közötti kommunikációhoz szükséges portokat és protokollokat ismerteti.
 
-| Protocol (Protokoll) | Portok | Leírás |
+| Protokoll | Portok | Leírás |
 | --- | --- | --- |
 | HTTPS |443 (TCP) |Hitelesítéshez használatos. |
 
 ## <a name="table-5---wap-and-users"></a>5\. táblázat – WAP és felhasználók
 Ez a táblázat a felhasználók és a WAP-kiszolgálók közötti kommunikációhoz szükséges portokat és protokollokat ismerteti.
 
-| Protocol (Protokoll) | Portok | Leírás |
+| Protokoll | Portok | Leírás |
 | --- | --- | --- |
 | HTTPS |443 (TCP) |Az eszköz hitelesítéséhez használatos. |
 | TCP |49443 (TCP) |Tanúsítványalapú hitelesítéshez használatos. |
@@ -81,7 +81,7 @@ Ez a táblázat a felhasználók és a WAP-kiszolgálók közötti kommunikáci�
 Az alábbi táblázatok a Azure AD Connect és az Azure AD közötti kommunikációhoz szükséges portokat és protokollokat ismertetik.
 
 ### <a name="table-6a---pass-through-authentication-with-sso"></a>6a tábla – átmenő hitelesítés egyszeri bejelentkezéssel
-|Protocol (Protokoll)|Portszám|Leírás
+|Protokoll|Portszám|Leírás
 | --- | --- | ---
 |HTTP|80|Engedélyezze a kimenő HTTP-forgalmat a biztonsági érvényesítéshez, például az SSL-hez. Az összekötő automatikus frissítési képességének megfelelő működéséhez is szükséges.
 |HTTPS|443| Engedélyezze a kimenő HTTPS-forgalmat olyan műveletekhez, mint például a szolgáltatás engedélyezése és letiltása, összekötők regisztrálása, összekötő frissítéseinek letöltése és az összes felhasználói bejelentkezési kérelem feldolgozása.
@@ -90,7 +90,7 @@ Emellett a Azure AD Connectnak képesnek kell lennie közvetlen IP-kapcsolat lé
 
 ### <a name="table-6b---password-hash-sync-with-sso"></a>Table 6b – jelszó-kivonat szinkronizálása SSO-val
 
-|Protocol (Protokoll)|Portszám|Leírás
+|Protokoll|Portszám|Leírás
 | --- | --- | ---
 |HTTPS|443| Egyszeri bejelentkezéses regisztráció engedélyezése (csak az SSO regisztrációs folyamathoz szükséges).
 
@@ -102,7 +102,7 @@ Az alábbi táblázatok a Azure AD Connect Health-ügynökök és az Azure AD k�
 ### <a name="table-7a---ports-and-protocols-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>7a. táblázat – Azure AD Connect Health-ügynökhöz tartozó portok és protokollok (AD FS/Sync) és az Azure AD
 Ez a táblázat a Azure AD Connect Health-ügynökök és az Azure AD közötti kommunikációhoz szükséges következő kimenő portokat és protokollokat ismerteti.  
 
-| Protocol (Protokoll) | Portok | Leírás |
+| Protokoll | Portok | Leírás |
 | --- | --- | --- |
 | HTTPS |443 (TCP) |Kimenő |
 | Azure Service Bus |5671 (TCP) |Kimenő |

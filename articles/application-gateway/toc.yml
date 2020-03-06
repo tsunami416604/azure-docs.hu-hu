@@ -39,6 +39,8 @@
   items:
     - name: Alapvető beállítások
       items:
+        - name: Az Application Gateway funkciói
+          href: features.md
         - name: Hogyan működik az Application Gateway?
           href: how-application-gateway-works.md
         - name: Az Application Gateway összetevői

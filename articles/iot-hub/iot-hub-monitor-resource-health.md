@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: kgremban
 ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929692"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359558"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Az Azure-IoT Hub állapotának monitorozása és a problémák gyors diagnosztizálása
 
@@ -540,7 +540,7 @@ Az Azure IoT Hub regionális szinten jelzi az állapotot. Ha a regionális leál
 
 Az IoT-hubok állapotának vizsgálatához kövesse az alábbi lépéseket:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. Navigáljon **Service Health** > **Erőforrás-állapot**elemre.
 

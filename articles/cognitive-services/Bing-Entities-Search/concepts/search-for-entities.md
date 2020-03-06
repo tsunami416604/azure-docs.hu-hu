@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 1805f6f7a61f7e0b0a6e4d5bd6931c0a7d1f1b6f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883707"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388502"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Entitások keresése a Bing Entity API-val
 
@@ -174,7 +174,7 @@ Az entitásinformáció (név, leírás és kép) megjelenítésekor a `webSearc
 
 ## <a name="find-places"></a>Helyek keresése
 
-A `places` mező egy [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) objektum, amely a [hely](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) objektumainak listáját tartalmazza (további információt az [entitások típusaiban](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) talál). A lista egy vagy több, a kérésre választ adó helyi entitást tartalmaz.
+A `places` mező egy [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) objektum, amely tartalmazza a [hely](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) objektumainak listáját (további információt az [entitások típusainál](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) talál). A lista egy vagy több, a kérésre választ adó helyi entitást tartalmaz.
 
 A helyek lehetnek éttermek, szállodák vagy különböző helyi vállalkozások. Az [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) mező tartalmazza a helyi entitás típusát azonosító mutatókat. Ilyen mutató lehet például a Place (hely), LocaLBusiness (helyi vállalkozás), Restaurant (étterem). Az egymást követő mutatók leszűkítik az entitás típusát. A lehetséges típusok listájáért lásd az [entitások különböző típusait](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) ismertető szakaszt.
 
@@ -189,7 +189,7 @@ A helyek lehetnek éttermek, szállodák vagy különböző helyi vállalkozáso
 > [!NOTE]
 > Az entitásválaszok több piacot is támogatnak, de a „helyek” típusú válaszok csak az Egyesült Államokban található vállalkozásokat támogatják. 
 
-A helyfüggő entitáslekérdezésekben, amely például *a közeli éttermekre* vonatkozhat, a pontos találatokhoz ismerni kell a felhasználó tartózkodási helyét. A kérelemnek mindig használnia kell az X-Search-Location és az X-MSEdge-ClientIP fejléceket a felhasználó helyzetének meghatározásához. Ha a Bing úgy véli, hogy a lekérdezéshez érdemes lehet ismerni a felhasználó tartózkodási helyét, beállítja a [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) `askUserForLocation` mezőjét **igaz** értékre. 
+A helyfüggő entitáslekérdezésekben, amely például *a közeli éttermekre* vonatkozhat, a pontos találatokhoz ismerni kell a felhasználó tartózkodási helyét. A kérelemnek mindig használnia kell az X-Search-Location és az X-MSEdge-ClientIP fejléceket a felhasználó helyzetének meghatározásához. Ha a Bing úgy véli, hogy a lekérdezéshez érdemes lehet ismerni a felhasználó tartózkodási helyét, beállítja a `askUserForLocation`QueryContext[](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) mezőjét **igaz** értékre. 
 
 ```json
 {
@@ -331,6 +331,6 @@ Amennyiben nem biztos benne, hogy egy művelet vagy szándék felfogható-e kere
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Próbáljon [](../quickstarts/csharp.md) ki egy rövid útmutatót, amellyel megkezdheti az entitások keresését a Bing Entity Search API.
+* [Próbáljon ki egy rövid](../quickstarts/csharp.md) útmutatót, amellyel megkezdheti az entitások keresését a Bing Entity Search API.

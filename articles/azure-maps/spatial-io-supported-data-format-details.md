@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cbeb1ccaed6ec2c62aaa731e88fcefbe84d1df02
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: fff801731c3c3a94b4039a8c65ad8ccaab7cc725
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370881"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402741"
 ---
 # <a name="supported-data-format-details"></a>Támogatott adatformátum részletei
 
@@ -391,39 +391,39 @@ Az első sor a jól ismert szöveges formátumú karakterláncok esetében lesz 
 
 A fejlécsor vizsgálatakor a rendszer az oszlop nevében található bármely típusú információt kinyeri és felhasználja a celláknak az adott oszlopban való elküldéséhez. Az alábbi példa egy olyan oszlopnevet mutat be, amely egy Type értékkel rendelkezik: "ColumnName (typeName)". A következő kis-és nagybetűket megkülönböztető típusú nevek támogatottak:
 
-**Számok**
+#### <a name="numbers"></a>Számok
 
-    - EDM. Int64
-    - int
-    - hosszú
-    - EDM. Double
-    - lebegőpontos
-    - double
-    - szám
+- EDM. Int64
+- int
+- hosszú
+- EDM. Double
+- lebegőpontos
+- double
+- szám
 
-**Értékei**
+#### <a name="booleans"></a>Értékei
 
-    - EDM. Boolean
-    - bool
-    - logikai
+- EDM. Boolean
+- bool
+- logikai
 
-**Dátumokra**
+#### <a name="dates"></a>Dátum
 
-    - EDM. datetime
-    - dátum
-    - dátum/idő
+- EDM. datetime
+- dátum
+- dátum/idő
 
-**Régiócsoport**
+#### <a name="geography"></a>Földrajz
 
-    - EDM. földrajz
-    - Földrajz
+- EDM. földrajz
+- Földrajz
 
-**Karakterláncok**
+#### <a name="strings"></a>Sztringek
 
-    - EDM. String
-    - varchar
-    - szöveg
-    - Case sztring
+- EDM. String
+- varchar
+- szöveg
+- Case sztring
 
 Ha a fejlécből nem lehet kinyerni a típus adatait, és a dinamikus gépelési beállítás be van kapcsolva az olvasáskor, akkor minden egyes cella külön lesz elemezve annak meghatározásához, hogy melyik adattípust érdemes a legjobban átadni.
 

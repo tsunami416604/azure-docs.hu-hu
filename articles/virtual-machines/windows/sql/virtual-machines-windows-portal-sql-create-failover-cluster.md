@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
 ms.openlocfilehash: 20c231e4f3052797eac79a3c97a3d8148690b8c5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965432"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388734"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása Azure-beli virtuális gépeken
 
@@ -63,7 +63,7 @@ A licencelési SQL Serverával kapcsolatos teljes információkért tekintse meg
 
 Ezt a teljes megoldást létrehozhatja az Azure-ban egy sablonból. Egy sablon például elérhető a GitHub [Azure gyorsindító-sablonokban](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad). Ez a példa nincs megtervezve vagy tesztelve az adott számítási feladatokhoz. A sablon futtatásával létrehozhat egy SQL Server a tartományhoz csatlakoztatott Közvetlen tárolóhelyek-tárolóval. Kiértékelheti a sablont, és módosíthatja azt a célra.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A Kezdés előtt néhány dologra van szükség.
 
@@ -174,7 +174,7 @@ Ezeknek az előfeltételeknek a megkezdése után elkezdheti felépíteni a fela
 
    Az egyes virtuális gépeken nyissa meg ezeket a portokat a Windows tűzfalon:
 
-   | Rendeltetés | TCP-port | Megjegyzések
+   | Cél | TCP-port | Megjegyzések
    | ------ | ------ | ------
    | SQL Server | 1433 | Normál port a SQL Server alapértelmezett példányaihoz. Ha a katalógusból rendszerképet használt, a rendszer automatikusan megnyitja a portot.
    | Állapotadat-mintavétel | 59999 | Bármilyen nyitott TCP-port. Egy későbbi lépésben konfigurálja a terheléselosztó [állapotának](#probe) mintavételét és a fürtöt, hogy ezt a portot használja.  
@@ -292,7 +292,7 @@ A Felhőbeli tanúsító az Azure Storage-blobokban tárolt fürtözött kvórum
 
 1. Konfigurálja a feladatátvevő fürtöt tanúsító kvórumot. Lásd: [a kvórum tanúsító beállítása a felhasználói felületen](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
 
-### <a name="add-storage"></a>Tárhely hozzáadása
+### <a name="add-storage"></a>Tároló hozzáadása
 
 A Közvetlen tárolóhelyek lemezének üresnek kell lennie. Nem tartalmazhatnak partíciókat vagy egyéb adatforrásokat. A lemezek tisztításához kövesse az [útmutató lépéseit](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct?redirectedfrom=MSDN#step-31-clean-drives).
 
@@ -397,7 +397,7 @@ A terheléselosztó létrehozása:
 
 1. A háttér-készlet létrehozásához kattintson **az OK gombra** .
 
-### <a name="configure-a-load-balancer-health-probe"></a>Terheléselosztó állapotmintájának konfigurálása
+### <a name="configure-a-load-balancer-health-probe"></a>Terheléselosztó állapot-mintavételének konfigurálása
 
 1. A terheléselosztó panelen válassza az **állapot**-mintavétel lehetőséget.
 
@@ -471,7 +471,7 @@ A fürt mintavételének beállítása után a PowerShellben láthatja a fürt �
 
 ## <a name="step-7-test-fci-failover"></a>7\. lépés: a feladatátvétel tesztelése
 
-Feladatátvételi teszt – a fürt működésének ellenőrzéséhez. Tegye a következőket:
+Feladatátvételi teszt – a fürt működésének ellenőrzéséhez. Hajtsa végre a következő lépéseket:
 
 1. Az RDP használatával csatlakozzon az egyik SQL Server a csomóponthoz.
 
@@ -499,7 +499,7 @@ Az Azure Virtual Machines szolgáltatásban az MSDTC nem támogatott a Windows S
 - A fürtözött MSDTC-erőforrás nem konfigurálható megosztott tároló használatára. Windows Server 2016 rendszeren, ha MSDTC-erőforrást hoz létre, az nem fog tudni használni megosztott tárterületet, még akkor sem, ha rendelkezésre áll tárterület. Ezt a problémát a Windows Server 2019-es verzióban javítottuk.
 - Az alapszintű Load Balancer nem kezeli az RPC-portokat.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [Közvetlen tárolóhelyek beállítása a Távoli asztallal (Azure)](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
 

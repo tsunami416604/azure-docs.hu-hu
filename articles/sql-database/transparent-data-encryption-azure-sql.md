@@ -13,11 +13,11 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/06/2020
 ms.openlocfilehash: 5bbb537ef6545852423bf5315b7636671c598fdc
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194852"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360051"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-azure-synapse"></a>Transzparens adattitkosítás a SQL Database és az Azure szinapszis számára
 
@@ -98,7 +98,7 @@ A PowerShellen keresztüli transzparens adattitkosítás konfigurálásához Azu
 
 A következő parancsmagokat használja a Azure SQL Database és az Azure Szinapszishoz:
 
-| A parancsmag | Leírás |
+| Parancsmag | Leírás |
 | --- | --- |
 | [Set-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) |Egy adatbázis transzparens adattitkosításának engedélyezése vagy letiltása|
 | [Get-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |Egy adatbázis transzparens adattitkosítási állapotának lekérése |
@@ -147,7 +147,7 @@ A következő parancsokat használja a Azure SQL Database és az Azure szinapszi
 |[transzparens adattitkosítás konfiguráció beolvasása](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/get)|Az adatbázis transzparens adattitkosítási konfigurációjának lekérése|
 |[A transzparens adattitkosítás konfigurációs eredményeinek listázása](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|Egy adatbázis titkosítási eredményének beolvasása|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az transzparens adattitkosítás általános ismertetését lásd: [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 - Ha többet szeretne megtudni a Azure SQL Database, az Azure SQL felügyelt példányának és az Azure szinapszisnak Bring Your Own Key támogatásával a transzparens adattitkosításról, tekintse meg [az átlátható adattitkosítás bring your own Key-támogatással](transparent-data-encryption-byok-azure-sql.md)című témakört

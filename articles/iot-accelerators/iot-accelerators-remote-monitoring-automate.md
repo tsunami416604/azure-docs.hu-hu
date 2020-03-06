@@ -10,11 +10,11 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888876"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392234"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A monitorozási megoldáshoz csatlakoztatott eszközök problémáinak észlelése
 
@@ -24,7 +24,7 @@ A szabályok és riasztások bemutatásához az oktatóanyag szimulált hűtőes
 
 Továbbá az is a feladata, hogy létrehozzon egy kritikus figyelmeztetést a hűtőkhöz, amely akkor lép életbe, ha az utolsó öt perc során az eszközben az átlagos páratartalom meghaladja a 80%-ot, a hőmérséklet pedig magasabb, mint 75 Fahrenheit-fok.
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Ebben az oktatóanyagban az alábbiakat végezte el:
 
 >[!div class="checklist"]
 > * A megoldás szabályainak megtekintése
@@ -132,7 +132,7 @@ Egyszerre csak egy szabály törölhető.
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan használhatja a távoli monitorozási megoldásgyorsító található **Szabályok** lapját a megoldásban riasztásokat aktiváló szabályok létrehozásához és kezeléséhez. A következő oktatóanyagból megtudhatja, hogyan használhatja a megoldásgyorsítót a csatlakoztatott eszközök kezelésére és konfigurálására.
 

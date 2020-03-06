@@ -1,8 +1,8 @@
-- name: Az Azure Resource Manager-sablon dokumentációja
+- name: ARM-sablon dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mik azok az Azure Resource Manager-sablonok?
+    - name: Mik azok az ARM-sablonok?
       href: overview.md
 - name: Rövid útmutatók
   items:

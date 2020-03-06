@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 470778e5c441bb05ffc7c5e1c5ef97a6c30d3359
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155641"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395820"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Hozzárendelési hibák elhárítása a Cloud Services telepítése során az Azure szolgáltatásban
 ## <a name="summary"></a>Összegzés
@@ -28,7 +28,7 @@ Ha példányokat helyez üzembe egy felhőalapú szolgáltatásban, vagy új web
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ### <a name="background--how-allocation-works"></a>Háttér – a foglalás működése
-Az Azure-adatközpontokban lévő kiszolgálók fürtökre vannak particionálva. Egy új felhőalapú szolgáltatás foglalási kérelme több fürtön is próbálkozik. Ha az első példány üzembe helyezése egy felhőalapú szolgáltatásban (átmeneti vagy éles üzemben) történik, a felhőalapú szolgáltatás egy fürthöz lesz rögzítve. A felhőalapú szolgáltatás további telepítései ugyanazon a fürtön történnek. Ebben a cikkben a következőképpen fogunk hivatkozni: "fürtbe rögzítve". Az alábbi ábra egy normál kiosztást mutat be, amely több fürtön próbálkozik. A 2. diagram azt szemlélteti, hogy a 2. fürthöz rögzített foglalások esetében a rendszer a meglévő felhőalapú szolgáltatás CS_1 tárolja.
+Az Azure-adatközpontokban lévő kiszolgálók fürtökre vannak particionálva. Egy új felhőalapú szolgáltatás foglalási kérelme több fürtön is próbálkozik. Ha az első példány üzembe helyezése egy felhőalapú szolgáltatásban (átmeneti vagy éles üzemben) történik, a felhőalapú szolgáltatás egy fürthöz lesz rögzítve. A felhőalapú szolgáltatás további telepítései ugyanazon a fürtön történnek. Ebben a cikkben a következőképpen fogunk hivatkozni: "fürtbe rögzítve". Az alábbi ábra egy normál kiosztást mutat be, amely több fürtön próbálkozik. A 2. diagram azt szemlélteti, hogy a 2. fürthöz rögzített foglalások esetében hol található a meglévő Cloud Service CS_1.
 
 ![Foglalási diagram](./media/cloud-services-allocation-failure/Allocation1.png)
 

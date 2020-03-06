@@ -494,6 +494,13 @@
           href: speech-devices-sdk.md
         - name: Beszédeszközök SDK letöltése
           href: get-speech-devices-sdk.md
+        - name: Kibocsátási megjegyzések
+          href: devices-sdk-release-notes.md
+        - name: A Roobo v1 részletei
+          href: speech-devices-sdk-roobo-v1.md
+        - name: A Roobo v2 részletei
+          href: speech-devices-sdk-roobo-v2.md
+        - name: A mikrofon specifikációi
     - name: Hardver
       items:
         - name: Mikrofonsorra vonatkozó javaslatok

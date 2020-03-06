@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
 ms.openlocfilehash: d9375d09219d2655bd9947c0953557f4a1bf8f3c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199614"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381149"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>A Linux diagnosztikai bővítmény használata a metrikák és naplók figyelésére
 
@@ -155,7 +155,7 @@ A konfigurációs adatok ezen készlete olyan bizalmas információkat tartalmaz
 }
 ```
 
-Név | Érték
+Name (Név) | Érték
 ---- | -----
 storageAccountName | Annak a Storage-fióknak a neve, amelybe az adatkiterjesztést írta.
 storageAccountEndPoint | választható A felhőt azonosító végpont, amelyben a Storage-fiók létezik. Ha ez a beállítás nem érhető el, a LAD alapértelmezett értéke az Azure nyilvános felhő, `https://core.windows.net`. Ha Azure Germany-, Azure Government-vagy Azure China-beli Storage-fiókot szeretne használni, ennek megfelelően állítsa be ezt az értéket.
@@ -339,7 +339,7 @@ Elem | Érték
 ------- | -----
 Fogadóként | választható Egy vesszővel elválasztott lista azoknak a nyelőknek a neveiről, amelyekhez a LAD összesített metrikai eredményeket küld. Minden összesített metrika közzé lesz téve az egyes felsorolt fogadók számára. Lásd: [sinksConfig](#sinksconfig). Példa: `"EHsink1, myjsonsink"`.
 type | A metrika tényleges szolgáltatóját azonosítja.
-Osztály | A "Counter" kifejezéssel együtt a szolgáltató névterében lévő adott mérőszámot azonosítja.
+osztály | A "Counter" kifejezéssel együtt a szolgáltató névterében lévő adott mérőszámot azonosítja.
 számláló | A "class" kifejezéssel együtt a szolgáltató névterében lévő adott mérőszámot azonosítja.
 counterSpecifier | Az Azure-metrikák névterében lévő adott mérőszámot azonosítja.
 condition | választható Kiválasztja az objektum egy adott példányát, amelyre a metrika vonatkozik, vagy kiválasztja az összesítést az adott objektum összes példánya között. További információ: `builtin` metrikai definíciók.
@@ -413,7 +413,7 @@ Ez a választható szakasz vezérli a [tetszőleges típusú](https://github.com
 Elem | Érték
 ------- | -----
 névtér | választható Az a-t tartalmazó-névtér, amelyen belül a lekérdezés végrehajtása történik. Ha nincs megadva, az alapértelmezett érték a [System Center platformfüggetlen szolgáltatók](https://github.com/Microsoft/SCXcore)által megvalósított "root/SCX".
-query | A végrehajtandó a kipróbálható adatlekérdezés.
+lekérdezés | A végrehajtandó a kipróbálható adatlekérdezés.
 table | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (lásd a [védett beállításokat](#protected-settings)).
 frequency | választható A lekérdezés végrehajtása közötti másodpercek száma. Az alapértelmezett érték 300 (5 perc); a minimális érték 15 másodperc.
 Fogadóként | választható A további mosdók neveinek vesszővel tagolt listája, amelybe a nyers minta metrikájának eredményeit közzé kell tenni. A nyers minták összesítését a bővítmény vagy az Azure-metrika számítja ki.
@@ -448,7 +448,7 @@ A beépített metrikai szolgáltató a felhasználók széles köréhez legérde
 
 * Processzor
 * Memory (Memória)
-* Network (Hálózat)
+* Hálózat
 * Fájlrendszer
 * Lemez
 
@@ -731,7 +731,7 @@ A Microsoft Azure Storage Explorer-munkamenet ezen pillanatképe a generált Azu
 
 A EventHubs-végponton közzétett üzenetek felhasználásának megismeréséhez tekintse meg a vonatkozó [EventHubs dokumentációját](../../event-hubs/event-hubs-what-is-event-hubs.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Metrikai riasztások létrehozása [Azure monitorban](../../monitoring-and-diagnostics/insights-alerts-portal.md) a begyűjtött mérőszámokhoz.
 * [Figyelési diagramok](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) létrehozása a mérőszámokhoz.

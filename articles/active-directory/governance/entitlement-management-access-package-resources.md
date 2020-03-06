@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174659"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376722"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag erőforrás-szerepköreinek módosítása az Azure AD-jogosultságok kezelésében
 
@@ -93,7 +93,7 @@ További információt a csoportok és az [Office 365-csoportok és a Microsoft 
     |  |  |
     | --- | --- |
     | Biztonság | Erőforrásokhoz való hozzáférés biztosítására szolgál. |
-    | Terjesztés | Az értesítések egy csoportba való küldésére szolgál. |
+    | Disztribúció | Az értesítések egy csoportba való küldésére szolgál. |
     | O365 | Az Office 365-csoport, amely nem engedélyezve van a csapatok számára. A felhasználók közötti, a vállalaton belüli és kívüli együttműködéshez használatos. |
     | Team | A csapatok számára engedélyezett Office 365-csoport. A felhasználók közötti, a vállalaton belüli és kívüli együttműködéshez használatos. |
 
@@ -103,7 +103,7 @@ További információt a csoportok és az [Office 365-csoportok és a Microsoft 
 
     ![Hozzáférési csomag – erőforrás-szerepkör hozzáadása csoporthoz vagy csapathoz](./media/entitlement-management-access-package-resources/group-role.png)
 
-1. Kattintson a **Hozzáadás** parancsra.
+1. Kattintson az **Hozzáadás** parancsra.
 
     A hozzáférési csomaghoz meglévő hozzárendelésekkel rendelkező felhasználók automatikusan ennek a csoportnak vagy csapatnak a tagjai lesznek, amikor hozzáadják őket.
 
@@ -134,7 +134,7 @@ Az alkalmazások kiválasztásakor a következő szempontokat érdemes figyelemb
 
     ![Hozzáférési csomag – erőforrás-szerepkör hozzáadása egy alkalmazáshoz](./media/entitlement-management-access-package-resources/application-role.png)
 
-1. Kattintson a **Hozzáadás** parancsra.
+1. Kattintson az **Hozzáadás** parancsra.
 
     A hozzáférési csomaghoz meglévő hozzárendelésekkel rendelkező felhasználók automatikusan hozzáférhetnek ehhez az alkalmazáshoz, amikor az hozzá van adva.
 
@@ -154,7 +154,7 @@ Az Azure AD automatikusan hozzá tud rendelni felhasználókat a SharePoint Onli
 
     ![Hozzáférési csomag – erőforrás-szerepkör hozzáadása egy SharePoint Online-webhelyhez](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
 
-1. Kattintson a **Hozzáadás** parancsra.
+1. Kattintson az **Hozzáadás** parancsra.
 
     A hozzáférési csomaghoz meglévő hozzárendelésekkel rendelkező felhasználók automatikusan hozzáférhetnek ehhez a SharePoint Online-webhelyhez, amikor az hozzá van adva.
 
@@ -178,7 +178,7 @@ Az Azure AD automatikusan hozzá tud rendelni felhasználókat a SharePoint Onli
 
 A jogosultságok kezelése során az Azure AD naponta többször dolgozza fel a hozzáférési csomagok hozzárendeléseinek és erőforrásainak tömeges módosításait. Így ha hozzárendelést végez, vagy megváltoztatja a hozzáférési csomag erőforrás-szerepköreit, akár 24 órát is igénybe vehet az Azure AD-ben, valamint azt, hogy mennyi időt vesz igénybe a módosítások más Microsoft Online szolgáltatásokba vagy csatlakoztatott SaaS-alkalmazásba való propagálása. s. Ha a változás csupán néhány objektumot érint, a változás valószínűleg csak néhány percet vesz igénybe az Azure AD-ben, amely után a többi Azure AD-összetevő ezt követően észleli az SaaS-alkalmazások módosítását és frissítését. Ha a változás több ezer objektumot érint, akkor a módosítás hosszabb ideig tart. Ha például egy 2 alkalmazásból és egy 100 felhasználói hozzárendelésből álló hozzáférési csomaggal rendelkezik, és úgy dönt, hogy egy SharePoint-webhely szerepkört ad hozzá a hozzáférési csomaghoz, akkor előfordulhat, hogy az összes felhasználó a SharePoint-webhely szerepkörbe való belefoglalása után késésben van. Nyomon követheti az előrehaladást az Azure AD-naplóban, az Azure AD-kiépítési naplóban és a SharePoint-webhely naplófájljaiban.
 
-Ha eltávolít egy csapat tagjait, azok törlődnek az Office 365-csoportból is. Előfordulhat, hogy a csapat csevegési funkciójának eltávolítása késleltetve van. További [információ: csoporttagság](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
+Az eltávolított csapattagok az Office 365-csoportból is törlődnek. Előfordulhat, hogy a csapat csevegési funkciójából való eltávolítás késleltetve történik meg. További [információ: csoporttagság](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
 
 ## <a name="next-steps"></a>Következő lépések
 

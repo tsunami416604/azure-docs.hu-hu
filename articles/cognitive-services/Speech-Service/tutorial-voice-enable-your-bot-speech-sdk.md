@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: dapine
 ms.openlocfilehash: 9112c7070708f3b97d79c1978a9b7204721c3194
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616634"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394814"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Oktatóanyag: hang – a robot engedélyezése a Speech SDK használatával
 
@@ -61,7 +61,7 @@ Az oktatóanyag elvégzéséhez a következőket kell elvégeznie:
 - Egy [GitHub](https://github.com/) -fiók
 - [Git for Windows](https://git-scm.com/download/win)
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az oktatóanyagban létrehozandó ügyfélalkalmazás néhány Azure-szolgáltatást használ. Ha csökkenteni szeretné a robottól érkező válaszok időkorlátját, győződjön meg arról, hogy ezek a szolgáltatások ugyanabban az Azure-régióban találhatók. Ebben a szakaszban egy erőforráscsoportot hoz létre az **USA nyugati** régiójában. Ezt az erőforráscsoportot fogja használni a rendszer az egyes erőforrások létrehozásához a bot-Framework, a Direct line Speech Channel és a Speech Service számára.
 
@@ -71,7 +71,7 @@ Az oktatóanyagban létrehozandó ügyfélalkalmazás néhány Azure-szolgáltat
    * Adja meg az **erőforráscsoport**nevét. Javasoljuk, hogy **SpeechEchoBotTutorial-ResourceGroup**.
    * A régió legördülő menüben válassza az **USA nyugati** **régiója** lehetőséget.
 1. Kattintson az **Áttekintés és létrehozás** elemre. Ekkor meg kell jelennie egy olyan szalagcímnek, amely beolvasta az **érvényesítést**.
-1. Kattintson a **Létrehozás** gombra. Az erőforráscsoport létrehozása eltarthat néhány percig.
+1. Kattintson a  **Create** (Létrehozás) gombra. Az erőforráscsoport létrehozása eltarthat néhány percig.
 1. Az oktatóanyag későbbi részében létrehozott erőforrásokhoz hasonlóan érdemes ezt az erőforráscsoportot az irányítópultra rögzíteni az egyszerű hozzáférés érdekében. Ha rögzíteni szeretné ezt az erőforráscsoportot, kattintson az irányítópult jobb felső sarkában található rögzítés ikonra.
 
 ### <a name="choosing-an-azure-region"></a>Azure-régió kiválasztása
@@ -121,7 +121,7 @@ A következő lépés egy App Service terv létrehozása. Az App Service-csomago
    * A régió területen válassza az **USA nyugati** **régiója**lehetőséget.
    * Az **árképzési szint**esetében ellenőrizze, hogy a **standard S1** van-e kiválasztva. Ennek az alapértelmezett értéknek kell lennie. Ha nem, ügyeljen arra, hogy az operációs rendszert a fent ismertetett módon állítsa be a **Windows** **rendszerre** .
 5. Kattintson az **Áttekintés és létrehozás** elemre. Ekkor meg kell jelennie egy olyan szalagcímnek, amely beolvasta az **érvényesítést**.
-6. Kattintson a **Létrehozás** gombra. Az erőforráscsoport létrehozása eltarthat néhány percig.
+6. Kattintson a  **Create** (Létrehozás) gombra. Az erőforráscsoport létrehozása eltarthat néhány percig.
 
 Ezen a ponton győződjön meg arról, hogy az erőforráscsoport (**SpeechEchoBotTutorial-ResourceGroup**) két erőforrással rendelkezik:
 

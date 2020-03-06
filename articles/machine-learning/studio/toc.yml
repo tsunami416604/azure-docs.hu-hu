@@ -8,19 +8,19 @@
       href: what-is-ml-studio.md
     - name: Machine Learning-termékeink összehasonlítása
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
-- name: Oktatóanyagok
+- name: Rövid útmutatók
   items:
     - name: Az első kísérlet létrehozása
       displayName: quickstart
       href: create-experiment.md
-    - name: Prediktív megoldás létrehozása
-      items:
-        - name: 1 – Kísérlet létrehozása
-          href: tutorial-part1-credit-risk.md
-        - name: 2 – Betanítás és kiértékelés
-          href: tutorial-part2-credit-risk-train.md
-        - name: 3 – Webszolgáltatás üzembe helyezése
-          href: tutorial-part3-credit-risk-deploy.md
+- name: Oktatóanyagok
+  items:
+    - name: '1 : Prediktív kísérlet létrehozása'
+      href: tutorial-part1-credit-risk.md
+    - name: '2: A megoldás betanítása és kiértékelése'
+      href: tutorial-part2-credit-risk-train.md
+    - name: '3: Webszolgáltatás üzembe helyezése'
+      href: tutorial-part3-credit-risk-deploy.md
 - name: Példák
   items:
     - name: Elérhető adathalmazok

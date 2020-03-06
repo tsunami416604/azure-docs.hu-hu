@@ -10,11 +10,11 @@ services: iot-dps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 6ff732888e416fcd51216070b3b30ed37b79e92c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434582"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393960"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Oktatóanyag: eszköz üzembe helyezése az Azure IoT Hub Device Provisioning Service használatával
 
@@ -170,7 +170,7 @@ Végső lépésként egy olyan regisztrációs alkalmazást kell megírni, amely
 
 1. Mentse a módosításokat, és a „Build” menü „Megoldás létrehozása” parancsát választva hozza létre újból a **prov\_dev\_client\_sample** mintát. 
 
-1. A **Provision\_Samples** mappában kattintson a jobb gombbal a **prov\_dev\_client\_sample** projektre, és válassza a **Beállítás kezdőprojektként** lehetőséget. MÉG NE futtassa a mintaalkalmazást!
+1. A **Provision\_Samples\_ mappában kattintson a jobb gombbal a \_prov**dev**client\_sample** projektre, és válassza a **Beállítás kezdőprojektként** lehetőséget. MÉG NE futtassa a mintaalkalmazást!
 
 > [!IMPORTANT]
 > Még ne futtassa/indítsa el az eszközt! Először fejezze be a folyamatot, és regisztrálja az eszközt a Device Provisioning Service szolgáltatással. A Következő lépések szakasz a következő cikkre irányítja.

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899894"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359483"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Kapcsolódás Media Services V3 API-hoz – .NET
 
@@ -240,7 +240,7 @@ namespace ConsoleApp1
 - [Szűrők létrehozása Media Services-.NET-tel](filters-dynamic-manifest-dotnet-howto.md)
 - [Speciális video igény szerinti példák a Azure Functions v2-re Media Services v3](https://aka.ms/ams3functions)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [.NET-referencia](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * További példákat a [.net SDK-minták](https://github.com/Azure-Samples/media-services-v3-dotnet) tárházában talál.

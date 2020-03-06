@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277178"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384874"
 ---
 # <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 
@@ -57,7 +57,7 @@ A [támogatási csomagtól](https://azure.microsoft.com/support/plans/)függően
 
    1. A **kapcsolattartási beállítások**területen adja meg a kívánt kapcsolattartási módszert (telefon vagy e-mail) és a nyelvet. A válaszidő automatikusan ki van választva az előfizetési terv alapján.
    2. A kapcsolattartási adatok területen adja meg a nevét, az e-mail-címet, a nem kötelező kapcsolattartót, az országot/régiót. Jelölje be a **kapcsolattartási változások mentése a későbbi támogatási kérelmekhez** jelölőnégyzetet.
-   3. Kattintson a **Create** (Létrehozás) gombra.
+   3. Kattintson a  **Create** (Létrehozás) gombra.
    
        ![Kapcsolatfelvétel az MS ügyfélszolgálatával az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 

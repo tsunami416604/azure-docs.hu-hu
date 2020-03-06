@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Az Azure Resource Manager-sablon dokumentációja
-summary: A Resource Manager-sablon egy JavaScript Object Notation- (JSON-) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját.
+title: ARM-sablon dokumentációja
+summary: Az Azure Resource Manager-sablonok JavaScript Object Notation- (JSON-) fájlok, amelyek meghatározzák a projekt infrastruktúráját és konfigurációját.
 metadata:
-  title: Az Azure Resource Manager dokumentációja
+  title: ARM-sablon dokumentációja
   description: Tudnivalók az Azure Resource Manager-sablonok fejlesztéséről és azok használatáról az Azure-erőforrások üzembe helyezéséhez
   services: azure-resource-manager
   ms.service: azure-resource-manager
@@ -11,15 +11,15 @@ metadata:
   ms.collection: na
   author: mumian
   ms.author: jgao
-  ms.date: 12/19/2019
-  ms.openlocfilehash: 43cd4dadc33ddc498106084ee26ef0819c14b973
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.date: 03/04/2020
+  ms.openlocfilehash: 0ea805d87db78d0a7fadad0a07e01e9387d568a5
+  ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75469930"
+  ms.lasthandoff: 03/05/2020
+  ms.locfileid: "78299244"
 landingContent:
-- title: Tudnivalók az Azure Resource Manager-sablonokról
+- title: Az ARM-sablonok ismertetése
   linkLists:
   - linkListType: overview
     links:

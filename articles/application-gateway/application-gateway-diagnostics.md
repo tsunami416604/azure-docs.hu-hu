@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 1ddbc8e909c5ba0b720e893e87c0f495d256a886
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966924"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384805"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway háttérbeli állapot-és diagnosztikai naplói
 
@@ -62,7 +62,7 @@ Get-AzApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupNa
 az network application-gateway show-backend-health --resource-group AdatumAppGatewayRG --name AdatumAppGateway
 ```
 
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
 
 A következő kódrészlet a válasz példáját mutatja:
 
@@ -158,22 +158,22 @@ Az Azure alapértelmezés szerint a tevékenység naplóját hozza létre. A nap
 
 A hozzáférési napló csak akkor jön létre, ha minden Application Gateway példányon engedélyezte az előző lépésekben részletezett módon. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. A Application Gateway minden hozzáférése JSON formátumban van naplózva, ahogyan az a V1-hez készült következő példában látható:
 
-|Value (Díj)  |Leírás  |
+|Érték  |Leírás  |
 |---------|---------|
 |instanceId     | Application Gateway a kérelmet kézbesítő példány.        |
-|Ügyfélip     | A kérelemből származó IP-cím.        |
-|ClientPort     | A kérelemből származó port.       |
-|HttpMethod     | A kérelem által használt HTTP-metódus.       |
-|RequestUri     | A fogadott kérelem URI-ja.        |
+|clientIP     | A kérelemből származó IP-cím.        |
+|clientPort     | A kérelemből származó port.       |
+|httpMethod     | A kérelem által használt HTTP-metódus.       |
+|requestUri     | A fogadott kérelem URI-ja.        |
 |RequestQuery     | **Kiszolgáló – átirányítva**: a kérést küldő háttér-készlet példánya.</br>**X-AzureApplicationGateway-log-ID**: a kérelemhez használt korrelációs azonosító. Felhasználható a háttér-kiszolgálók forgalmával kapcsolatos problémák elhárítására. </br>**Server-status**: a háttérből Application Gateway fogadott http-válasz kódja.       |
 |UserAgent     | Felhasználói ügynök a HTTP-kérelem fejlécében.        |
-|HttpStatus     | A HTTP-állapotkódot a rendszer visszaküldi az ügyfélnek a Application Gatewayból.       |
-|HttpVersion     | A kérelem HTTP-verziója.        |
-|– Fogadott bájtok     | A fogadott csomagok mérete bájtban megadva.        |
+|httpStatus     | A HTTP-állapotkódot a rendszer visszaküldi az ügyfélnek a Application Gatewayból.       |
+|httpVersion     | A kérelem HTTP-verziója.        |
+|receivedBytes     | A fogadott csomagok mérete bájtban megadva.        |
 |– Küldött bájtok| Az elküldött csomagok mérete bájtban kifejezve.|
 |Eltelt idő| A kérelem feldolgozására és a hozzá tartozó válasz elküldésekor szükséges időtartam (ezredmásodpercben). Ez a számítás azt az időintervallumot számítja ki, amikor a Application Gateway egy HTTP-kérelem első bájtját kapja meg a válasz küldési műveletének befejezési idejére. Fontos megjegyezni, hogy az idő mező általában magában foglalja azt az időpontot, ameddig a kérelem és a válasz csomagjai a hálózaton keresztül utaznak. |
 |sslEnabled| Azt jelzi, hogy a háttér-készletekkel való kommunikáció SSL protokollt használ-e. Az érvényes értékek be-és kikapcsolva.|
-|gazdagép| Az az állomásnév, amellyel a rendszer elküldte a kérést a háttér-kiszolgálónak. Ha a háttérbeli állomásnév felülbírálva van, akkor ez a név fog megjelenni.|
+|host| Az az állomásnév, amellyel a rendszer elküldte a kérést a háttér-kiszolgálónak. Ha a háttérbeli állomásnév felülbírálva van, akkor ez a név fog megjelenni.|
 |originalHost| Az az állomásnév, amellyel a kérést a Application Gateway fogadta az ügyféltől.|
 ```json
 {
@@ -202,17 +202,17 @@ A hozzáférési napló csak akkor jön létre, ha minden Application Gateway p�
 ```
 Application Gateway és WAF v2 esetén a naplók valamivel több információt mutatnak be:
 
-|Value (Díj)  |Leírás  |
+|Érték  |Leírás  |
 |---------|---------|
 |instanceId     | Application Gateway a kérelmet kézbesítő példány.        |
-|Ügyfélip     | A kérelemből származó IP-cím.        |
-|ClientPort     | A kérelemből származó port.       |
-|HttpMethod     | A kérelem által használt HTTP-metódus.       |
-|RequestUri     | A fogadott kérelem URI-ja.        |
+|clientIP     | A kérelemből származó IP-cím.        |
+|clientPort     | A kérelemből származó port.       |
+|httpMethod     | A kérelem által használt HTTP-metódus.       |
+|requestUri     | A fogadott kérelem URI-ja.        |
 |UserAgent     | Felhasználói ügynök a HTTP-kérelem fejlécében.        |
-|HttpStatus     | A HTTP-állapotkódot a rendszer visszaküldi az ügyfélnek a Application Gatewayból.       |
-|HttpVersion     | A kérelem HTTP-verziója.        |
-|– Fogadott bájtok     | A fogadott csomagok mérete bájtban megadva.        |
+|httpStatus     | A HTTP-állapotkódot a rendszer visszaküldi az ügyfélnek a Application Gatewayból.       |
+|httpVersion     | A kérelem HTTP-verziója.        |
+|receivedBytes     | A fogadott csomagok mérete bájtban megadva.        |
 |– Küldött bájtok| Az elküldött csomagok mérete bájtban kifejezve.|
 |Eltelt idő| Az az időtartam ( **másodpercben**), ameddig a rendszer feldolgozza a kérést, és elküldi a válaszát. Ez a számítás azt az időintervallumot számítja ki, amikor a Application Gateway egy HTTP-kérelem első bájtját kapja meg a válasz küldési műveletének befejezési idejére. Fontos megjegyezni, hogy az idő mező általában magában foglalja azt az időpontot, ameddig a kérelem és a válasz csomagjai a hálózaton keresztül utaznak. |
 |sslEnabled| Azt jelzi, hogy a háttér-készletekkel való kommunikáció SSL protokollt használ-e. Az érvényes értékek be-és kikapcsolva.|
@@ -221,7 +221,7 @@ Application Gateway és WAF v2 esetén a naplók valamivel több információt m
 |serverRouted| Az a háttér-kiszolgáló, amelyhez az Application Gateway átirányítja a kérést.|
 |serverStatus| A háttér-kiszolgáló HTTP-állapotkódot.|
 |serverResponseLatency| A háttér-kiszolgáló válaszának késése.|
-|gazdagép| A kérelemben szereplő állomásfejléc.|
+|host| A kérelemben szereplő állomásfejléc.|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -256,15 +256,15 @@ Application Gateway és WAF v2 esetén a naplók valamivel több információt m
 A rendszer csak akkor hozza létre a teljesítményadatokat, ha minden Application Gateway példányon engedélyezte azt az előző lépésekben részletezett módon. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. A Teljesítménynapló adatai 1 percenként jönnek létre. Csak a v1 SKU esetében érhető el. A v2 SKU esetében használja a teljesítményadatok [mérőszámait](application-gateway-metrics.md) . A rendszer naplózza a következő adatnaplókat:
 
 
-|Value (Díj)  |Leírás  |
+|Érték  |Leírás  |
 |---------|---------|
 |instanceId     |  Application Gateway példány, amelynél a teljesítményadatokat generálja a rendszer. A többpéldányos Application Gateway esetében a példányok száma egy sor.        |
-|HealthyHostCount     | A háttér-készletben található kifogástalan állapotú gazdagépek száma.        |
+|healthyHostCount     | A háttér-készletben található kifogástalan állapotú gazdagépek száma.        |
 |unHealthyHostCount     | A nem kifogástalan állapotú gazdagépek száma a háttérbeli készletben.        |
 |requestCount     | A kézbesített kérelmek száma.        |
 |késleltetés | A példány és a háttérben futó kérelmek átlagos késése (ezredmásodpercben), amely a kérelmeket szolgálja ki. |
 |failedRequestCount| Sikertelen kérelmek száma.|
-|korlátozások| Átlagos átviteli sebesség az utolsó napló óta, bájt/másodpercben mérve.|
+|Átviteli sebesség| Átlagos átviteli sebesség az utolsó napló óta, bájt/másodpercben mérve.|
 
 ```json
 {
@@ -293,25 +293,25 @@ A rendszer csak akkor hozza létre a teljesítményadatokat, ha minden Applicati
 A rendszer csak akkor hozza létre a tűzfal-naplót, ha engedélyezte az összes Application Gateway számára az előző lépésekben részletezett módon. Ehhez a naplóhoz az is szükséges, hogy a webalkalmazási tűzfal konfigurálva legyen egy Application gatewayen. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. A rendszer naplózza a következő adatnaplókat:
 
 
-|Value (Díj)  |Leírás  |
+|Érték  |Leírás  |
 |---------|---------|
 |instanceId     | Application Gateway a példány, amelyről a rendszer a tűzfalat hozza létre. A többpéldányos Application Gateway esetében a példányok száma egy sor.         |
-|Ügyfélip     |   A kérelemből származó IP-cím.      |
-|ClientPort     |  A kérelemből származó port.       |
-|RequestUri     | A fogadott kérelem URL-címe.       |
-|Szerepkörkészlet     | Szabálykészlet típusa A rendelkezésre álló érték a OWASP.        |
+|clientIp     |   A kérelemből származó IP-cím.      |
+|clientPort     |  A kérelemből származó port.       |
+|requestUri     | A fogadott kérelem URL-címe.       |
+|ruleSetType     | Szabálykészlet típusa A rendelkezésre álló érték a OWASP.        |
 |ruleSetVersion     | A szabálykészlet verziója használatban van. Az elérhető értékek a következők: 2.2.9 és 3,0.     |
 |ruleId     | Az eseményindító eseményének szabály-azonosítója.        |
 |message     | Felhasználóbarát üzenet az eseményindító eseményhez. További részletek a Részletek szakaszban olvashatók.        |
 |action     |  A kérésen végrehajtott művelet. Az elérhető értékek egyeztetése és blokkolása megtörténik.      |
-|webhely     | A hely, amelyhez a napló létrejött. Jelenleg csak a globális érték van felsorolva, mivel a szabályok globálisak.|
-|Részletek     | Az eseményindító esemény részletei.        |
-|részletek. üzenet     | A szabály leírása.        |
-|részletek. adat     | A szabálynak megfelelő kérelemben található konkrét adatértékek.         |
-|részletek. fájl     | A szabályt tartalmazó konfigurációs fájl.        |
+|hely     | A hely, amelyhez a napló létrejött. Jelenleg csak a globális érték van felsorolva, mivel a szabályok globálisak.|
+|details     | Az eseményindító esemény részletei.        |
+|details.message     | A szabály leírása.        |
+|details.data     | A szabálynak megfelelő kérelemben található konkrét adatértékek.         |
+|details.file     | A szabályt tartalmazó konfigurációs fájl.        |
 |részletek. sor     | Az eseményt kiváltó konfigurációs fájlban lévő sorszám.       |
 |hostname   | A Application Gateway állomásneve vagy IP-címe.    |
-|Tranzakcióazonosító  | Egy adott tranzakció egyedi azonosítója, amely lehetővé teszi több szabály megsértésének csoportosítását ugyanazon kérelemen belül.   |
+|transactionId  | Egy adott tranzakció egyedi azonosítója, amely lehetővé teszi több szabály megsértésének csoportosítását ugyanazon kérelemen belül.   |
 
 ```json
 {

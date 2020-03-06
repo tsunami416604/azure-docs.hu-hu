@@ -4,17 +4,17 @@ description: A végponti erőforrások leírása a szolgáltatás jegyzékfájlj
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: cc4eedf5e5fee0bbfa0a763e9b9ec0dd25409afa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464185"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382841"
 ---
-# <a name="specify-resources-in-a-service-manifest"></a>Erőforrások meghatározása szolgáltatásjegyzékben
+# <a name="specify-resources-in-a-service-manifest"></a>Erőforrások meghatározása a szolgáltatás jegyzékfájljában
 ## <a name="overview"></a>Áttekintés
 A szolgáltatás jegyzékfájlja lehetővé teszi, hogy a szolgáltatás a lefordított kód módosítása nélkül deklarálja/módosítsa a szolgáltatás által használt erőforrásokat. Az Azure Service Fabric támogatja a végponti erőforrások konfigurációját a szolgáltatáshoz. A szolgáltatás jegyzékfájljában megadott erőforrásokhoz való hozzáférést az alkalmazás jegyzékfájljának SecurityGroup keresztül lehet szabályozni. Az erőforrások deklarációja lehetővé teszi, hogy ezeket az erőforrásokat a központi telepítési időpontra módosítsák, ami azt jelenti, hogy a szolgáltatásnak nincs szüksége új konfigurációs mechanizmus bevezetésére. A ServiceManifest. xml fájl sémájának definíciója a *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*Service Fabric SDK-val és-eszközökkel együtt települ.
 
-## <a name="endpoints"></a>Endpoints (Végpontok)
+## <a name="endpoints"></a>Végpontok
 Ha egy végponti erőforrás van definiálva a szolgáltatás jegyzékfájljában, akkor Service Fabric a fenntartott alkalmazás-porttartomány portjait rendeli hozzá, ha nincs explicit módon megadva port. Tekintse meg például az ezen bekezdés után megadott manifest-kódrészletben megadott végpont *ServiceEndpoint1* . Emellett a szolgáltatások egy adott portot is igényelhetnek egy adott erőforrásban. A különböző fürtcsomópontokon futó szolgáltatási replikák különböző portszámokhoz rendelhetők, míg az ugyanazon a csomóponton futó szolgáltatás replikái megoszthatják a portot. A szolgáltatási replikák ezt követően igény szerint használhatják ezeket a portokat a replikáláshoz és az ügyfelek kéréseinek figyeléséhez.
 
 > [!WARNING] 
@@ -187,7 +187,7 @@ Adja meg az alábbi paramétereket:
   </Parameters>
 ```
 
-Az alkalmazás telepítése során ezeket az értékeket ApplicationParameters-ként adhatja át.  Példa:
+Az alkalmazás telepítése során ezeket az értékeket ApplicationParameters-ként adhatja át.  Például:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
@@ -195,7 +195,7 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 Megjegyzés: Ha a ApplicationParameters megadott értékek üresek, térjen vissza a ServiceManifest megadott alapértelmezett értékre a megfelelő Végpontneve.
 
-Példa:
+Például:
 
 Ha a megadott ServiceManifest
 

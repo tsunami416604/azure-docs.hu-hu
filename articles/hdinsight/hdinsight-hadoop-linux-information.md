@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934554"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386308"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -84,7 +84,7 @@ Ez a parancs egy JSON-dokumentumot ad vissza, amely leírja a szolgáltatást, m
 
 További információ: [Apache Hadoop Services által használt portok a HDInsight](hdinsight-hadoop-port-settings-for-services.md) -dokumentumban.
 
-## <a name="file-locations"></a>Fájlhelyek
+## <a name="file-locations"></a>Fájlok helye
 
 A Hadoop kapcsolatos fájlok megtalálhatók a fürtcsomópontokon a következő helyen: `/usr/hdp`. Ez a könyvtár a következő alkönyvtárakat tartalmazza:
 
@@ -195,7 +195,7 @@ Ha az __Azure Storage__-t használja, tekintse meg a következő hivatkozásokat
     * [Python](https://github.com/Azure/azure-sdk-for-python)
     * [Ruby](https://github.com/Azure/azure-sdk-for-ruby)
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
-    * [Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
+    * [Tárolási REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
 __Azure Data Lake Storage__használata esetén tekintse meg az alábbi hivatkozásokat az adatai eléréséhez:
 
@@ -274,7 +274,7 @@ Ha egy összetevő más verzióját szeretné használni, töltse fel a szüksé
 > [!IMPORTANT]
 > A HDInsight-fürthöz biztosított összetevők teljes mértékben támogatottak, és Microsoft ügyfélszolgálata segít elkülöníteni és elhárítani ezeket az összetevőket érintő problémákat.
 >
-> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. Ez a probléma megoldásához vezethet, vagy megkérdezheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat szeretne-e felvenni. Többek között számos közösségi webhely használható, például a [következőhöz: HDInsight MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight) [https://stackoverflow.com](https://stackoverflow.com). Emellett az Apache-projektek [https://apache.org on ](https://apache.org)is rendelkeznek projekt-webhelyekkel, például: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
+> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. Ez a probléma megoldásához vezethet, vagy megkérdezheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat szeretne-e felvenni. Többek között számos közösségi webhely használható, például a [következőhöz: HDInsight MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight) [https://stackoverflow.com](https://stackoverflow.com). Emellett az Apache-projektek [https://apache.orgon ](https://apache.org)is rendelkeznek projekt-webhelyekkel, például: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 
 ## <a name="next-steps"></a>Következő lépések
 

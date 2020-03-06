@@ -12,11 +12,11 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 11c0a168e4b2e8eac03eaebd37b208446082d1b4
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197198"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381097"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>A oszlopcentrikus sorcsoport-minőségének maximalizálása
 
@@ -139,6 +139,6 @@ A DWU mérete és a felhasználói erőforrás osztály együttesen határozzák
 - A DWU növeléséhez lásd: [Hogyan méretezési teljesítmény?](quickstart-scale-compute-portal.md)
 - Ha módosítani szeretné egy lekérdezés erőforrás osztályát, tekintse meg a [felhasználói erőforrás osztályának módosítása](resource-classes-for-workload-management.md#change-a-users-resource-class)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az SQL Analytics teljesítményének növelésével kapcsolatos további lehetőségekért tekintse meg a [teljesítmény áttekintését](sql-data-warehouse-overview-manage-user-queries.md).

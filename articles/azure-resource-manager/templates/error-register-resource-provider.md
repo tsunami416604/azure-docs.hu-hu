@@ -4,21 +4,21 @@ description: Ismerteti, Hogyan oldhatók fel az Azure erőforrás-szolgáltató 
 ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.openlocfilehash: a9182be53cc91240a62ab201efc53d674f7cf427
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484518"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390054"
 ---
-# <a name="resolve-errors-for-resource-provider-registration"></a>Az erőforrás-szolgáltató regisztrálásával kapcsolatos hibák elhárítása
+# <a name="resolve-errors-for-resource-provider-registration"></a>Javítsa ki a hibákat az erőforrás-szolgáltatói regisztrációt
 
-Ez a cikk az előfizetésében korábban még nem használt erőforrás-szolgáltató használata során felmerülő hibákat ismerteti.
+Ez a cikk ismerteti a hibák jelentkezhetnek, ha korábban még nem használta az előfizetés erőforrás-szolgáltató használatával.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Hibajelenség
 
-Az erőforrás telepítésekor a következő hibakód és üzenet jelenhet meg:
+Erőforrások üzembe helyezésekor, a következő hibakóddal és üzenet jelenhet meg:
 
 ```
 Code: NoRegisteredProviderFound
@@ -26,14 +26,14 @@ Message: No registered resource provider found for location {location}
 and API version {api-version} for type {resource-type}.
 ```
 
-Vagy a következőhöz hasonló üzenet jelenhet meg:
+Vagy egy hasonló üzenet jelenhet meg:
 
 ```
 Code: MissingSubscriptionRegistration
 Message: The subscription is not registered to use namespace {resource-provider-namespace}
 ```
 
-A hibaüzenetnek meg kell adnia a támogatott helyszínekre és API-verzióra vonatkozó javaslatokat. A sablon a javasolt értékek egyikére módosítható. A legtöbb szolgáltatót automatikusan regisztrálja a Azure Portal vagy a használt parancssori felület, de nem az összes. Ha korábban még nem használta egy adott erőforrás-szolgáltatót, akkor előfordulhat, hogy regisztrálnia kell a szolgáltatót.
+A következő hibaüzenet jelenik a támogatott helyek és az API-verziók javaslatok adjon meg. A sablon a javasolt értékeket módosíthatja. A legtöbb szolgáltatók a következők: automatikusan, az Azure portal vagy a parancssori felület használata regisztrált, de nem minden. Ha még nem használta az egy adott erőforrás-szolgáltató előtt, szükség lehet, hogy a szolgáltató regisztrálásához.
 
 Vagy ha letiltja a virtuális gépek automatikus leállítását, a következőhöz hasonló hibaüzenet jelenhet meg:
 
@@ -47,11 +47,11 @@ Message: The client '<identifier>' with object id '<identifier>' does not have a
 Ezeket a hibákat a következő okok egyike miatt kapja meg:
 
 * A szükséges erőforrás-szolgáltató nincs regisztrálva az előfizetéséhez
-* Az erőforrás típusa nem támogatja az API-verziót
-* Az erőforrás típusa nem támogatja a helyet
+* Az erőforrástípus esetében nem támogatott API-verzió
+* Az erőforrástípus esetében nem támogatott helye
 * A virtuális gépek automatikus leállításához regisztrálni kell a Microsoft. segédösszetevője erőforrás-szolgáltatót.
 
-## <a name="solution-1---powershell"></a>1\. megoldás – PowerShell
+## <a name="solution-1---powershell"></a>Megoldás 1 – PowerShell
 
 A PowerShell esetében a **Get-AzResourceProvider** használatával tekintheti meg a regisztrációs állapotát.
 
@@ -65,19 +65,19 @@ A szolgáltató regisztrálásához használja a **Register-AzResourceProvider**
 Register-AzResourceProvider -ProviderNamespace Microsoft.Cdn
 ```
 
-Egy adott típusú erőforrás támogatott helyeinek beszerzéséhez használja a következőt:
+A támogatott helyek egy adott típusú erőforrás használja:
 
 ```powershell
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
-Egy adott típusú erőforrás támogatott API-verzióinak beszerzéséhez használja a következőt:
+A támogatott API-verziók egy adott típusú erőforrás használja:
 
 ```powershell
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 ```
 
-## <a name="solution-2---azure-cli"></a>2\. megoldás – Azure CLI
+## <a name="solution-2---azure-cli"></a>2 – Azure CLI megoldás
 
 Ha szeretné megtekinteni, hogy a szolgáltató regisztrálva van-e, használja a `az provider list` parancsot.
 
@@ -91,32 +91,32 @@ Erőforrás-szolgáltató regisztrálásához használja a `az provider register
 az provider register --namespace Microsoft.Cdn
 ```
 
-Az erőforrástípus támogatott helyeinek és API-verzióinak megtekintéséhez használja a következőt:
+A támogatott helyek és a egy erőforrástípus API-verzióit használja:
 
 ```azurecli-interactive
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
 ```
 
-## <a name="solution-3---azure-portal"></a>3\. megoldás – Azure Portal
+## <a name="solution-3---azure-portal"></a>3 – Azure portal megoldás
 
-Megtekintheti a regisztrációs állapotot, és regisztrálhatja az erőforrás-szolgáltatói névteret a portálon keresztül.
+Tekintse meg a regisztrációs állapotát, és regisztrálja a portálon keresztül egy erőforrás-szolgáltató névtere.
 
 1. A portálon válassza a **minden szolgáltatás**lehetőséget.
 
-   ![Minden szolgáltatás kiválasztása](./media/error-register-resource-provider/select-all-services.png)
+   ![Válassza ki az összes szolgáltatás](./media/error-register-resource-provider/select-all-services.png)
 
 1. Válassza az **Előfizetések** lehetőséget.
 
-   ![előfizetések kiválasztása](./media/error-register-resource-provider/select-subscriptions.png)
+   ![Keresés az előfizetések között](./media/error-register-resource-provider/select-subscriptions.png)
 
-1. Az előfizetések listájából válassza ki az erőforrás-szolgáltató regisztrálásához használni kívánt előfizetést.
+1. Előfizetések listájából válassza ki a kívánt előfizetést, az erőforrás-szolgáltató regisztrálásához.
 
-   ![Előfizetés kiválasztása az erőforrás-szolgáltató regisztrálásához](./media/error-register-resource-provider/select-subscription-to-register.png)
+   ![Válassza ki az előfizetést az erőforrás-szolgáltató regisztrálása](./media/error-register-resource-provider/select-subscription-to-register.png)
 
 1. Az előfizetéséhez válassza az **erőforrás-szolgáltatók**lehetőséget.
 
-   ![Erőforrás-szolgáltatók kiválasztása](./media/error-register-resource-provider/select-resource-provider.png)
+   ![Válassza ki az erőforrás-szolgáltatók](./media/error-register-resource-provider/select-resource-provider.png)
 
 1. Tekintse meg az erőforrás-szolgáltatók listáját, és szükség esetén válassza a **regisztrálás** hivatkozást a telepíteni kívánt típus erőforrás-szolgáltatójának regisztrálásához.
 
-   ![Erőforrás-szolgáltatók listázása](./media/error-register-resource-provider/list-resource-providers.png)
+   ![Erőforrás-szolgáltatók listája](./media/error-register-resource-provider/list-resource-providers.png)

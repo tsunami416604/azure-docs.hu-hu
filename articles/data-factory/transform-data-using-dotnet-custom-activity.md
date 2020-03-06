@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439539"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388374"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 
@@ -99,7 +99,7 @@ Ebben a példában a HelloWorld. exe a resourceLinkedService használt Azure Sto
 
 A következő táblázat ismerteti a tevékenységre jellemző tulajdonságok nevét és leírását.
 
-| Tulajdonság              | Leírás                              | Szükséges |
+| Tulajdonság              | Leírás                              | Kötelező |
 | :-------------------- | :--------------------------------------- | :------- |
 | név                  | A folyamatban szereplő tevékenység neve     | Igen      |
 | leírás           | A tevékenység működését leíró szöveg  | Nem       |
@@ -109,7 +109,7 @@ A következő táblázat ismerteti a tevékenységre jellemző tulajdonságok ne
 | resourceLinkedService | Azure Storage-beli társított szolgáltatás az egyéni alkalmazást tároló Storage-fiókhoz | nem&#42;       |
 | folderPath            | Az egyéni alkalmazás mappájának és az összes függőségének elérési útja<br/><br/>Ha az almappákban tárolt függőségek vannak – vagyis a *folderPath* alatt lévő hierarchikus mappák struktúrájában – a rendszer jelenleg összefoglalja a mappa struktúráját, amikor a fájlok Azure Batchba másolódnak. Ez azt is megtörténik, hogy minden fájl egyetlen mappába van másolva, és nincs almappa. A viselkedés megkerüléséhez vegye fontolóra a fájlok tömörítését, a tömörített fájl másolását, majd a kívánt helyen lévő egyéni kóddal való kicsomagolását. | nem&#42;       |
 | referenceObjects      | Meglévő társított szolgáltatások és adatkészletek tömbje. A hivatkozott társított szolgáltatásokat és adatkészleteket a rendszer JSON formátumban adja át az egyéni alkalmazásnak, így az egyéni kód hivatkozhat a Data Factory erőforrásaira | Nem       |
-| Extendedproperties példányt paraméterként    | Felhasználó által definiált tulajdonságok, amelyek JSON formátumban adhatók át az egyéni alkalmazásnak, így az egyéni kód további tulajdonságokat is hivatkozhat | Nem       |
+| extendedProperties    | Felhasználó által definiált tulajdonságok, amelyek JSON formátumban adhatók át az egyéni alkalmazásnak, így az egyéni kód további tulajdonságokat is hivatkozhat | Nem       |
 | retentionTimeInDays | Az egyéni tevékenységhez elküldött fájlok megőrzési ideje. Az alapértelmezett érték 30 nap. | Nem |
 
 &#42;A tulajdonságokat `resourceLinkedService` és `folderPath` mindkettőt meg kell adni, vagy mindkettőt el kell hagyni.
@@ -309,7 +309,7 @@ Egyéni értékeket is elküldhet az egyéni tevékenység kódjából Azure Dat
 
 ## <a name="retrieve-securestring-outputs"></a>SecureString-kimenetek lekérése
 
-A *SecureString*típusként kijelölt bizalmas tulajdonságértékek a jelen cikk néhány példájában láthatók a Data Factory felhasználói felület figyelés lapján.  A folyamat tényleges végrehajtása során azonban a *SecureString* tulajdonság a `activity.json` fájlban JSON-ként van szerializálva egyszerű szövegként. Példa:
+A *SecureString*típusként kijelölt bizalmas tulajdonságértékek a jelen cikk néhány példájában láthatók a Data Factory felhasználói felület figyelés lapján.  A folyamat tényleges végrehajtása során azonban a *SecureString* tulajdonság a `activity.json` fájlban JSON-ként van szerializálva egyszerű szövegként. Például:
 
 ```json
 "extendedProperties": {
@@ -341,7 +341,7 @@ Az alábbi táblázat a Data Factory v2 egyéni tevékenység és az Data Factor
 |Egyéni logika meghatározása      |Végrehajtható fájl biztosításával      |.NET DLL implementálása      |
 |Az egyéni logika végrehajtási környezete      |Windows vagy Linux      |Windows (.NET-keretrendszer 4.5.2)      |
 |Parancsfájlok végrehajtása      |Támogatja a parancsfájlok közvetlen végrehajtását (például "cmd/c echo Hello World") a Windows rendszerű virtuális gépen      |Implementáció szükséges a .NET DLL-ben      |
-|Adatkészlet szükséges      |Választható      |A tevékenységek láncolásához és az információk továbbításához szükséges      |
+|Adatkészlet szükséges      |Optional      |A tevékenységek láncolásához és az információk továbbításához szükséges      |
 |Információk átadása a tevékenységtől az egyéni logikáig      |ReferenceObjects (LinkedServices és adatkészletek) és Extendedproperties példányt paraméterként (egyéni tulajdonságok)      |Extendedproperties példányt paraméterként (egyéni tulajdonságok), bemeneti és kimeneti adatkészletek      |
 |Információk beolvasása az egyéni logikában      |Elemzi a tevékenység. JSON, linkedServices. JSON és adatkészletek. JSON fájlt, amely ugyanabban a mappában található a végrehajtható fájlban.      |.NET SDK-n keresztül (.NET frame 4.5.2)      |
 |Naplózás      |Írás közvetlenül az STDOUT-ba      |A naplózó implementálása a .NET DLL-ben      |

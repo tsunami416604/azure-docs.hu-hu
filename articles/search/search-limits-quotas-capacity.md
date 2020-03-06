@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846287"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390363"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Szolgáltatási korlátozások az Azure Cognitive Search
 
@@ -46,7 +46,7 @@ A tárolás, a munkaterhelések és az indexek és egyéb objektumok mennyiség�
 
 ## <a name="index-limits"></a>Index korlátai
 
-| Erőforrás | Ingyenes | Alapszintű&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
+| Erőforrás | Ingyenes | Alapszintű&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | 2\. |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Indexek maximális száma |3 |5 vagy 15 |50 |200 |200 |1000 partíciónként vagy 3000 szolgáltatásonként |10 |10 |
 | Egyszerű mezők maximális száma index szerint |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
@@ -76,7 +76,7 @@ Annak megállapításához, hogy a szolgáltatás rendelkezik-e dokumentum-korl�
 
 Ha a portálon a dokumentum korlátja látható, akkor a szolgáltatás a 2017-es késői időpontig jött létre, vagy egy adatközpontban lett létrehozva az Azure Cognitive Search szolgáltatásainak üzemeltetéséhez szükséges alacsonyabb kapacitású fürtök használatával:
 
-+ Ausztrália keleti régiója
++ Kelet-Ausztrália
 + Kelet-Ázsia
 + Közép-India
 + Nyugat-Japán
@@ -84,7 +84,7 @@ Ha a portálon a dokumentum korlátja látható, akkor a szolgáltatás a 2017-e
 
 A dokumentumok korlátja alá eső szolgáltatások esetében a következő maximális korlátok érvényesek:
 
-|  Ingyenes | Basic | S1 | S2 | S3 | S3&nbsp;HD |
+|  Ingyenes | Alapszintű | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
 |  10,000 |1&nbsp;millió |15 millió partíciónként vagy 180 millió szolgáltatásonként |60 millió partíciónként vagy 720 millió szolgáltatásonként |120 millió partíciónként vagy 1,4 milliárd szolgáltatásonként |1 millió indexenként vagy 200 millió partíciónként |
 
@@ -107,17 +107,17 @@ A dokumentum méretének megőrzéséhez ne felejtse el kizárni a kérelemből 
 A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és stabilitást biztosít, de a nagyobb adatkészletek esetében a maximálisan megengedettnél több indexelési időt is igénybe vehet. Ha egy indexelési feladatok nem hajthatók végre a maximálisan engedélyezett időtartamon belül, futtassa az ütemezett futtatást. Az ütemező nyomon követi az indexelési állapotot. Ha egy ütemezett indexelési feladatot valamilyen oknál fogva megszakítanak, az indexelő kiválaszthatja, hogy a következő ütemezett futtatásnál melyik utolsó marad.
 
 
-| Erőforrás | Ingyenes&nbsp;<sup>1</sup> | Alapszintű&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
+| Erőforrás | Ingyenes&nbsp;<sup>1</sup> | Alapszintű&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |2\. |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |– |10 |10 |
-| Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |– |10 |10 |
-| Maximális szakértelmével <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |– |10 |10 |
-| Az indexelési terhelés maximális száma hívás közben |10 000 dokumentum |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |– |Korlátlan |Korlátlan |
+| Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |N/A |10 |10 |
+| Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |N/A |10 |10 |
+| Maximális szakértelmével <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |N/A |10 |10 |
+| Az indexelési terhelés maximális száma hívás közben |10 000 dokumentum |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |N/A |Korlátlan |Korlátlan |
 | Minimális ütemterv | 5 perc |5 perc |5 perc |5 perc |5 perc |5 perc |5 perc | 5 perc |
-| Maximális futási idő <sup>5</sup> | 1-3 perc |24 óra |24 óra |24 óra |24 óra |–  |24 óra |24 óra |
-| A kognitív keresési szakértelmével vagy a blob-indexelés maximális futási ideje képanalízissel <sup>5</sup> | 3-10 perc |2 óra |2 óra |2 óra |2 óra |–  |2 óra |2 óra |
-| BLOB indexelő: blob maximális mérete (MB) |16 |16 |128 |256 |256 |–  |256 |256 |
-| BLOB indexelő: blobból kinyert tartalom maximális száma |32 000 |64 000 |4&nbsp;millió |8&nbsp;millió |16&nbsp;millió |– |4&nbsp;millió |4&nbsp;millió |
+| Maximális futási idő <sup>5</sup> | 1-3 perc |24 óra |24 óra |24 óra |24 óra |N/A  |24 óra |24 óra |
+| A kognitív keresési szakértelmével vagy a blob-indexelés maximális futási ideje képanalízissel <sup>5</sup> | 3-10 perc |2 óra |2 óra |2 óra |2 óra |N/A  |2 óra |2 óra |
+| BLOB indexelő: blob maximális mérete (MB) |16 |16 |128 |256 |256 |N/A  |256 |256 |
+| BLOB indexelő: blobból kinyert tartalom maximális száma |32,000 |64,000 |4&nbsp;millió |8&nbsp;millió |16&nbsp;millió |N/A |4&nbsp;millió |4&nbsp;millió |
 
 <sup>1</sup> az ingyenes szolgáltatások esetében az indexelő maximális végrehajtási ideje 3 perc a blob-forrásokhoz és 1 perc az összes többi adatforráshoz. A Cognitive Servicesba beérkező AI-indexelés esetén az ingyenes szolgáltatások napi 20 ingyenes tranzakcióra korlátozódnak, ahol a tranzakciót olyan dokumentumként határozzák meg, amely sikeresen áthalad a dúsítási folyamaton.
 
@@ -136,10 +136,10 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 
 Az engedélyezett szinonimák maximális száma az árképzési szinten változhat. Minden egyes szabály legfeljebb 20 kiterjesztéssel rendelkezhet, ahol a terjeszkedés egy egyenértékű kifejezés. Például a "Cat", a "Kitty", a "macskaféle" és az "Felis" (a macskák nemhez tartozó) társítása 3 kiterjesztésnek számít.
 
-| Erőforrás | Ingyenes | Basic | S1 | S2 | S3 | S3 – HD |L1 | L2 |
+| Erőforrás | Ingyenes | Alapszintű | S1 | S2 | S3 | S3 – HD |L1 | 2\. |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Szinonimák maximális térképe |3 |3|5 |10 |20 |20 | 10 | 10 |
-| Szabályok maximális száma leképezés szerint |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
+| Szabályok maximális száma leképezés szerint |5000 |20 000|20 000 |20 000 |20 000 |20 000 | 20 000 | 20 000  |
 
 ## <a name="queries-per-second-qps"></a>Lekérdezések másodpercenként (QPS)
 

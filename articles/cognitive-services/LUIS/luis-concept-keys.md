@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: 9d213c8fa03ad2ca5e5fd7e620e52aa502749be2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969341"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390119"
 ---
 # <a name="authoring-and-runtime-keys"></a>Tartalomkészítési és futtatókörnyezeti kulcsok
 
@@ -44,7 +44,7 @@ A LUIS használatának első megkezdése után létrejön egy **kezdő kulcs** .
 
 A LUIS három típusú Azure-erőforrást tesz lehetővé: 
  
-|Jelmagyarázat|Rendeltetés|Kognitív szolgáltatás `kind`|Kognitív szolgáltatás `type`|
+|Paraméter|Cél|Kognitív szolgáltatás `kind`|Kognitív szolgáltatás `type`|
 |--|--|--|--|
 |[Szerzői kulcs](#programmatic-key)|A szerzői műveletek, a képzés, a közzététel és a tesztelés segítségével hozzáférhetnek az alkalmazáshoz, és kezelhetik azokat. Hozzon létre egy LUIS authoring-kulcsot, ha a LUIS-alkalmazásokat programozott módon szeretné létrehozni.<br><br>A `LUIS.Authoring` kulcs célja, hogy lehetővé tegye a következőket:<br>* programozott módon felügyelheti Language Understanding alkalmazásokat és modelleket, beleértve a képzést és a közzétételt<br> * a szerzői erőforrásra vonatkozó engedélyek vezérlése [a közreműködő szerepkörhöz](#contributions-from-other-authors)rendelt személyek hozzárendelésével.|`LUIS.Authoring`|`Cognitive Services`|
 |[Előrejelzési kulcs](#prediction-endpoint-runtime-key)| Lekérdezés-előrejelzési végponti kérelmek. Hozzon létre egy LUIS-előrejelzési kulcsot, mielőtt az ügyfélalkalmazás a kezdő erőforrás által biztosított 1 000-kérelmeknél újabb előrejelzéseket kér. |`LUIS`|`Cognitive Services`|
@@ -71,15 +71,15 @@ A futtatókörnyezet eléréséhez használt végpont olyan altartományt haszn�
 
 A futásidejű kulcsot a [Luis-portálon](https://www.luis.ai) vagy a megfelelő API-kon keresztül [rendelheti hozzá](luis-how-to-azure-subscription.md) . 
 
-## <a name="key-limits"></a>Kulcs korlátai
+## <a name="key-limits"></a>Kulcs korlátok
 
 Régiónként legfeljebb 10 szerzői kulcsot hozhat létre egy előfizetéshez. 
 
 Lásd a [legfontosabb korlátokat](luis-boundaries.md#key-limits) és az [Azure-régiókat](luis-reference-regions.md). 
 
-A közzétételi régiók eltérnek a szerzői régióktól. Győződjön meg arról, hogy létrehoz egy alkalmazást a szerzői régióban, amely ahhoz a közzétételi régióhoz tartozik, amelyet az ügyfélalkalmazás el szeretne helyezni.
+Közzétételi régiója nem ugyanaz a létrehozási régiók. Győződjön meg arról, hogy létrehoz egy alkalmazást a szerzői régióban, amely ahhoz a közzétételi régióhoz tartozik, amelyet az ügyfélalkalmazás el szeretne helyezni.
 
-## <a name="key-limit-errors"></a>Kulcs korlátozásával kapcsolatos hibák
+## <a name="key-limit-errors"></a>Korlát hibák
 Ha túllépi a tranzakció-másodpercenkénti (TPS-) kvótát, HTTP 429-es hibaüzenetet kap. Ha túllépi a havi tranzakciós (TPS) kvótát, HTTP 403-es hibaüzenetet kap. 
 
 ## <a name="contributions-from-other-authors"></a>Más szerzők hozzájárulásai
@@ -115,17 +115,17 @@ Az alkalmazáshoz való hozzáférést a [Luis](luis-reference-regions.md#luis-w
 
 A tulajdonos és az összes közreműködő hozzáfér az alkalmazás létrehozásához. 
 
-|A szerzői hozzáférés magában foglalja a|Megjegyzések|
+|Authoring hozzáférés tartalmaz|Megjegyzések|
 |--|--|
-|Végponti kulcsok hozzáadása vagy eltávolítása||
+|Adja hozzá, vagy távolítsa el a végpont kulcsok||
 |Verzió exportálása||
-|Végponti naplók exportálása||
+|Végpont naplók exportálása||
 |Verzió importálása||
-|Alkalmazás nyilvánosvé tétele|Ha egy alkalmazás nyilvános, a szerzői vagy végponti kulccsal bárki lekérdezheti az alkalmazást.|
+|Az alkalmazás nyilvános tétele|Ha egy alkalmazás nyilvános, bárki egy létrehozási vagy a végpont kulcs lekérdezheti az alkalmazás.|
 |Modell módosítása|
 |Közzététel|
 |Az [aktív tanulási](luis-how-to-review-endpoint-utterances.md) végpont hosszúságú kimondott szöveg áttekintése|
-|Tanítás|
+|Betanítás|
 
 <a name="prediction-endpoint-runtime-key"></a>
 
@@ -137,17 +137,17 @@ Az előrejelzési végpont lekérdezéséhez a **kezelés** szakasz **alkalmazá
 |:--|:--|
 |Elérhető a tulajdonos és a közreműködők számára|Elérhető a tulajdonos, a közreműködők és bárki másnak, aki ismeri az alkalmazás AZONOSÍTÓját|
 
-Megadhatja, hogy ki látja el a LUIS Runtime-kulcsot úgy, hogy a kiszolgálót kiszolgáló-kiszolgáló környezetben hívja meg. Ha a LUIS-t egy robotból használja, a robot és a LUIS közötti kapcsolat már biztonságos. Ha közvetlenül hívja meg a LUIS-végpontot, hozzon létre egy kiszolgálóoldali API-t (például egy Azure- [függvényt](https://azure.microsoft.com/services/functions/)) vezérelt hozzáféréssel (például [HRE](https://azure.microsoft.com/services/active-directory/)). A kiszolgálóoldali API meghívása és hitelesítése, valamint az engedélyezés ellenőrzése után adja át a hívást a LUIS-nek. Habár ez a stratégia nem gátolja meg az emberen belüli támadásokat, az eltorzítja a felhasználók kulcs-és végpont-URL-címét, lehetővé teszi a hozzáférés nyomon követését, és lehetővé teszi a végponti válaszok naplózásának hozzáadását (például [Application Insights](https://azure.microsoft.com/services/application-insights/)).
+Megadhatja, hogy ki látja el a LUIS Runtime-kulcsot úgy, hogy a kiszolgálót kiszolgáló-kiszolgáló környezetben hívja meg. Ha egy robot a LUIS használ, a robot és a LUIS közötti kapcsolat már biztonságos. Ha közvetlenül hívja meg a LUIS-végpontot, hozzon létre egy kiszolgálóoldali API-t (például egy Azure- [függvényt](https://azure.microsoft.com/services/functions/)) vezérelt hozzáféréssel (például [HRE](https://azure.microsoft.com/services/active-directory/)). A kiszolgálóoldali API meghívása és hitelesítése, valamint az engedélyezés ellenőrzése után adja át a hívást a LUIS-nek. Habár ez a stratégia nem gátolja meg az emberen belüli támadásokat, az eltorzítja a felhasználók kulcs-és végpont-URL-címét, lehetővé teszi a hozzáférés nyomon követését, és lehetővé teszi a végponti válaszok naplózásának hozzáadását (például [Application Insights](https://azure.microsoft.com/services/application-insights/)).
 
 #### <a name="runtime-security-for-private-apps"></a>Futásidejű biztonság privát alkalmazásokhoz
 
 A privát alkalmazások futtatókörnyezete csak a következőkhöz érhető el:
 
-|Kulcs és felhasználó|Magyarázat|
+|Kulcs és a felhasználó|Magyarázat|
 |--|--|
-|Tulajdonos szerzői kulcsa| Akár 1000 végpontot elér|
-|Közreműködő/közreműködő szerzői kulcsok| Akár 1000 végpontot elér|
-|Egy szerző vagy közreműködő vagy közreműködő által a LUIShoz rendelt kulcs|Kulcshasználat szintje alapján|
+|A tulajdonos szerzői kulcs| Legfeljebb 1000 végpont találatok|
+|Közreműködő/közreműködő szerzői kulcsok| Legfeljebb 1000 végpont találatok|
+|Egy szerző vagy közreműködő vagy közreműködő által a LUIShoz rendelt kulcs|Kulcshasználat réteg alapján|
 
 #### <a name="runtime-security-for-public-apps"></a>Futtatókörnyezeti biztonság nyilvános alkalmazásokhoz
 
@@ -155,15 +155,15 @@ Az alkalmazás nyilvánosként való konfigurálása után _bármely_ érvényes
 
 Olyan felhasználó, aki nem tulajdonos vagy közreműködő, csak akkor férhet hozzá egy nyilvános alkalmazás futtatókörnyezetéhez, ha az alkalmazás azonosítója van megadva. A LUIS nem rendelkezik nyilvános _piaccal_ vagy más módszerrel a nyilvános alkalmazások kereséséhez.  
 
-A nyilvános alkalmazások minden régióban közzé vannak téve, hogy a régió-alapú LUIS-erőforrás kulcsával rendelkező felhasználók hozzáférhessenek az alkalmazáshoz, amely bármelyik régióban hozzá van rendelve az erőforrás-kulcshoz.
+A nyilvános alkalmazás közzé van téve az összes régióban, hogy egy felhasználó egy LUIS-erőforrás régió-alapú kulccsal hozzáférhet az alkalmazás bármelyik régióban az erőforrás-kulcs társítva.
 
-## <a name="transfer-of-ownership"></a>Tulajdonjog átruházása
+## <a name="transfer-of-ownership"></a>A tulajdonjog átruházása
 
 LUIS nem rendelkezik az erőforrások tulajdonjogának átadására szolgáló koncepcióval. 
 
-## <a name="securing-the-endpoint"></a>A végpont biztonságossá tétele 
+## <a name="securing-the-endpoint"></a>A végpont védelme 
 
-Megadhatja, hogy ki láthatja a LUIS előrejelzési futtatókörnyezet végpontjának kulcsát úgy, hogy a kiszolgálót kiszolgáló-kiszolgáló környezetben hívja meg. Ha a LUIS-t egy robotból használja, a robot és a LUIS közötti kapcsolat már biztonságos. Ha közvetlenül hívja meg a LUIS-végpontot, hozzon létre egy kiszolgálóoldali API-t (például egy Azure- [függvényt](https://azure.microsoft.com/services/functions/)) vezérelt hozzáféréssel (például [HRE](https://azure.microsoft.com/services/active-directory/)). A kiszolgálóoldali API meghívásakor, valamint a hitelesítés és az engedélyezés ellenőrzése után adja át a hívást a LUIS-nek. Habár ez a stratégia nem gátolja meg az emberen belüli támadásokat, az eltorzítja a végpontot a felhasználóktól, lehetővé teszi a hozzáférés nyomon követését, és lehetővé teszi a végponti válaszok naplózásának (például [Application Insights](https://azure.microsoft.com/services/application-insights/)) hozzáadását.  
+Megadhatja, hogy ki láthatja a LUIS előrejelzési futtatókörnyezet végpontjának kulcsát úgy, hogy a kiszolgálót kiszolgáló-kiszolgáló környezetben hívja meg. Ha egy robot a LUIS használ, a robot és a LUIS közötti kapcsolat már biztonságos. Ha közvetlenül hívja meg a LUIS-végpontot, hozzon létre egy kiszolgálóoldali API-t (például egy Azure- [függvényt](https://azure.microsoft.com/services/functions/)) vezérelt hozzáféréssel (például [HRE](https://azure.microsoft.com/services/active-directory/)). Ha a kiszolgálói oldalon az API és a hitelesítési és engedélyezési ellenőrzése, továbbítja a LUIS-be. Habár ez a stratégia nem gátolja meg az emberen belüli támadásokat, az eltorzítja a végpontot a felhasználóktól, lehetővé teszi a hozzáférés nyomon követését, és lehetővé teszi a végponti válaszok naplózásának (például [Application Insights](https://azure.microsoft.com/services/application-insights/)) hozzáadását.  
 
 ## <a name="next-steps"></a>Következő lépések
 

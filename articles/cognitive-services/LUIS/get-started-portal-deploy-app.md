@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772491"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393771"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Gyors útmutató: alkalmazás üzembe helyezése a LUIS portálon
 
@@ -37,7 +37,7 @@ Az előrejelzési végpont erőforrását a Azure Portal hozza létre. Ez az er�
 
 1. Konfigurálja az előfizetést a következő beállításokkal:
 
-   |Beállítás|Value (Díj)|Rendeltetés|
+   |Beállítás|Érték|Cél|
    |--|--|--|
    |Név|`my-luis-resource`|Az Azure-Erőforrás neve. Erre a névre akkor van szükség, amikor az erőforrást az alkalmazáshoz rendeli a LUIS portálon.|
    |Előfizetés|Az Ön előfizetése|Válassza ki a fiókjához társított előfizetések egyikét.|
@@ -69,7 +69,7 @@ Minden alkalommal, amikor új-erőforrást hoz létre a LUIS számára, hozzá k
 
 1. Válassza ki a bérlőt, az előfizetést és az erőforrás nevét. Válassza az **erőforrás kiosztása**elemet.
 
-   ![Erőforrás kiosztása az alkalmazáshoz](./media/get-started-portal-deploy-app/assign-resource.png)
+   ![Rendelje hozzá egy erőforrást az alkalmazáshoz](./media/get-started-portal-deploy-app/assign-resource.png)
 
 1. Hajtsa végre ugyanezen lépéseket a szerzői kulcs alkalmazáshoz való hozzáadásához.
 
@@ -144,7 +144,7 @@ Ha ugyanezt az információt szeretné megtekinteni a teszt ablaktáblán, közz
 
 Ha elkészült a rövid útmutatóval, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Jelölje be az alkalmazás jelölőnégyzetét a listából, majd válassza a **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Közös szándékok és entitások azonosítása](luis-tutorial-prebuilt-intents-entities.md)

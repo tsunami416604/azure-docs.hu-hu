@@ -4,11 +4,11 @@ description: Az alkalmazások teljesítményének figyelése az Azure app Servic
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 03d332af182f8f40ede634fbd563f7b064751f32
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655798"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367691"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service teljesítményének figyelése
 
@@ -134,7 +134,7 @@ Ha valamilyen oknál fogva le szeretné tiltani az ügyféloldali figyelést:
 * **Beállítások** kiválasztása > **Alkalmazásbeállítások**
    * Az Alkalmazásbeállítások területen adjon hozzá egy új **alkalmazás-beállítási nevet** és **értéket**:
 
-     Név: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     név: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Érték: `false`
 

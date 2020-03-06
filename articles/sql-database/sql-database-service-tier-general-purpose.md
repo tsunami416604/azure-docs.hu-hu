@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
 ms.openlocfilehash: 7c57755ae63f8af5a2a4faa4764bc6a9597e8c2d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819231"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380049"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Általános célú szolgáltatási réteg – Azure SQL Database
 
@@ -26,7 +26,7 @@ ms.locfileid: "73819231"
 A Azure SQL Database a felhőalapú környezethez igazított SQL Server adatbázismotor-architektúrán alapul, hogy az infrastruktúra meghibásodása esetén is biztosítson 99,99%-os rendelkezésre állást. A Azure SQL Databaseben három szolgáltatási szintet használunk, amelyek mindegyike különböző építészeti modellekkel rendelkezik. A szolgáltatási szintek a következők:
 
 - Általános célú
-- Üzletileg kritikus
+- Üzleti szempontból kritikus
 - Rugalmas skálázás
 
 Az általános célú szolgáltatási réteg építészeti modellje a számítás és a tárolás elkülönítésén alapul. Ez az építészeti modell az Azure Blob Storage magas rendelkezésre állására és megbízhatóságára támaszkodik, amely az adatbázis-fájlokat átlátható módon replikálja, és a mögöttes infrastruktúra meghibásodása esetén nem garantálja az adatvesztést.
@@ -46,7 +46,7 @@ Az adatbázismotor vagy az operációs rendszer frissítésekor az alapul szolg�
 
 Általános célú szolgáltatási szinten a Azure SQL Database alapértelmezett szolgáltatási szintje, amelyet az általános munkaterhelések többsége számára terveztek. Ha a legtöbb esetben egy teljes körűen felügyelt adatbázismotor 99,99%-os SLA-val, valamint 5 és 10 MS közötti tárolási késéssel rendelkezik, amelyek az esetek többségében megfelelnek az Azure SQL-IaaS, általános célú a szint az Ön számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az erőforrás jellemzői (magok, IO, memória) a [felügyelt példányban](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)általános célú/standard szint, a [virtuális mag](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) -modellben vagy a [DTU-modellben](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)található önálló adatbázis, illetve a [virtuális mag-modell](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose---provisioned-compute---gen4) és a [DTU-modell](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)rugalmas készlete.
 - Ismerkedjen meg [üzletileg kritikus](sql-database-service-tier-business-critical.md) -és [nagy kapacitású](sql-database-service-tier-hyperscale.md) -szintekkel.

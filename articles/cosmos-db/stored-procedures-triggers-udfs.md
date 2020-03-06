@@ -8,11 +8,11 @@ ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: 706f52a6cda2bbcb0e5ca1cfe9372600fa6709d0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441244"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388579"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények
 
@@ -41,7 +41,7 @@ A tárolt eljárások, eseményindítók és felhasználó által definiált fü
 
 ## <a name="transactions"></a>Tranzakciók
 
-Egy tipikus adatbázisban lévő tranzakció meghatározható egy logikai egységként végrehajtott műveletek sorozatából. Minden tranzakció **savas Property garanciát**biztosít. A sav egy jól ismert betűszó, amely a következőt jelenti **: tomicity,** **C**onsistency, **I**solation és **D**urability. 
+Egy tipikus adatbázisban lévő tranzakció munka egyetlen logikai egységként végrehajtott műveletek sorozataként lehet definiálni. Minden tranzakció **savas Property garanciát**biztosít. A sav egy jól ismert betűszó, amely a következőt jelenti **: tomicity,** **C**onsistency, **I**solation és **D**urability. 
 
 * Az atomenergia garantálja, hogy a tranzakción belül végrehajtott összes művelet egyetlen egységként lesz kezelve, és ezek mindegyike véglegesítve van, vagy egyik sem. 
 
@@ -57,7 +57,7 @@ Azure Cosmos DB a JavaScript futtatókörnyezet az adatbázismotor belsejében v
 
 Ha egy tárolt eljárás egy Azure Cosmos-tárolóhoz van társítva, akkor a tárolt eljárást a logikai partíciós kulcs tranzakciós hatókörében hajtja végre a rendszer. Minden tárolt eljárás végrehajtásához tartalmaznia kell egy logikai partíció kulcsának értékét, amely megfelel a tranzakció hatókörének. További információ: [Azure Cosmos db particionálási](partition-data.md) cikk.
 
-### <a name="commit-and-rollback"></a>Véglegesítés és visszaállítás
+### <a name="commit-and-rollback"></a>Érvényesítés és visszaállítás
 
 A tranzakciók natív módon vannak integrálva a Azure Cosmos DB JavaScript programozási modellbe. JavaScript-függvényen belül az összes művelet automatikusan egyetlen tranzakció alá lesz csomagolva. Ha egy tárolt eljárás JavaScript-logikája kivétel nélkül fejeződik be, a tranzakción belüli összes művelet véglegesítve lesz az adatbázisban. Az olyan utasítások, mint például a `BEGIN TRANSACTION` és a `COMMIT TRANSACTION` (a rokon adatbázisok esetében is ismertek) implicitek a Azure Cosmos DBban. Ha a szkript alól kivételek vannak, a Azure Cosmos DB JavaScript futtatókörnyezet visszaállítja a teljes tranzakciót. Ilyen esetben a kivételek ténylegesen egyenértékűek a Azure Cosmos DB `ROLLBACK TRANSACTION`ával.
 
@@ -65,11 +65,11 @@ A tranzakciók natív módon vannak integrálva a Azure Cosmos DB JavaScript pro
 
 A tárolt eljárásokat és eseményindítókat mindig az Azure Cosmos-tároló elsődleges replikáján hajtja végre a rendszer. Ez a funkció biztosítja, hogy a tárolt eljárásokból beolvasott adatok [erős konzisztenciát](consistency-levels-tradeoffs.md)biztosítanak. A felhasználó által definiált függvényeket használó lekérdezések az elsődleges vagy bármely másodlagos replikán hajthatók végre. A tárolt eljárások és eseményindítók a tranzakciós írások támogatásához szükségesek. a csak olvasási logikát az [Azure Cosmos db SQL API SDK](sql-api-dotnet-samples.md)-k használatával lehet legjobban megvalósítani az alkalmazás-és a lekérdezésekben, az adatbázis átviteli sebességének csökkentése érdekében. 
 
-## <a name="bounded-execution"></a>Kötött végrehajtás
+## <a name="bounded-execution"></a>Korlátozott végrehajtása
 
 Az összes Azure Cosmos DB műveletnek a megadott időtúllépési időtartamon belül kell lennie. Ez a korlátozás a JavaScript-függvények – tárolt eljárások, eseményindítók és felhasználó által definiált függvények esetében érvényes. Ha egy művelet nem fejeződik be az adott időkorláton belül, a tranzakció vissza lesz állítva.
 
-Gondoskodhat arról, hogy a JavaScript-függvények az adott időkorláton belül legyenek végrehajtva, vagy egy folytatáson alapuló modellt hajtsanak végre a Batch/folytatás végrehajtásához. A tárolt eljárások és eseményindítók az időbeli korlátok kezelésére szolgáló működésének egyszerűbbé tétele érdekében az Azure Cosmos tárolóban található összes funkció (például az elemek létrehozása, olvasása, frissítése és törlése) egy logikai értéket ad vissza, amely azt jelzi, hogy a művelet a következő lesz-e: teljes. Ha ez az érték hamis, akkor azt jelzi, hogy az eljárásnak le kell csomagolnia a végrehajtást, mert a parancsfájl a beállított értéknél több időt vagy kiépített átviteli sebességet használ. A rendszer az első nem elfogadható tárolási művelet előtt várólistára helyezi a műveleteket, ha a tárolt eljárás időben befejeződik, és nem tartalmaz további kérelmeket. Így a műveleteket a JavaScript visszahívási konvenciójának használatával, a parancsfájl vezérlési folyamatának kezeléséhez egy időben kell várólistába venni. Mivel a parancsfájlokat kiszolgálóoldali környezetben hajtják végre, szigorúan szabályozva vannak. A végrehajtási határokat ismételten sértő parancsfájlok inaktívként jelölhetők meg, és nem hajthatók végre, és újra létre kell őket hozni a végrehajtási határok tiszteletben tartásához.
+Gondoskodhat arról, hogy a JavaScript-függvények az adott időkorláton belül legyenek végrehajtva, vagy egy folytatáson alapuló modellt hajtsanak végre a Batch/folytatás végrehajtásához. A tárolt eljárások és eseményindítók az időbeli korlátok kezelésére szolgáló működésének egyszerűbbé tétele érdekében az Azure Cosmos tárolóban található összes funkció (például az elemek létrehozása, olvasása, frissítése és törlése) egy logikai értéket ad vissza, amely azt jelzi, hogy a művelet a következő lesz-e: teljes. Ha ez az érték hamis, akkor azt jelzi, hogy az eljárásnak le kell csomagolnia a végrehajtást, mert a parancsfájl a beállított értéknél több időt vagy kiépített átviteli sebességet használ. Az első elfogadhatatlan store művelet műveletek aszinkron előtt garantáltan elvégezni, ha a tárolt eljárás ideje alatt befejeződik, és nem várólistára további kérések eredményéről. Így a műveleteket a JavaScript visszahívási konvenciójának használatával, a parancsfájl vezérlési folyamatának kezeléséhez egy időben kell várólistába venni. Mivel a parancsfájlokat kiszolgálóoldali környezetben hajtják végre, szigorúan szabályozva vannak. A végrehajtási határokat ismételten sértő parancsfájlok inaktívként jelölhetők meg, és nem hajthatók végre, és újra létre kell őket hozni a végrehajtási határok tiszteletben tartásához.
 
 A JavaScript-függvények [kiosztott átviteli kapacitásra](request-units.md)is vonatkoznak. A JavaScript-függvények egy rövid időn belül nagy mennyiségű kérést használhatnak, és a kiosztott átviteli kapacitásra vonatkozó korlát elérésekor a díjszabás korlátozott lehet. Fontos megjegyezni, hogy a szkriptek az adatbázis-műveletek végrehajtásával töltött átviteli sebesség mellett további átviteli sebességet is felhasználnak, bár ezek az adatbázis-műveletek valamivel kevésbé költségesek, mint az ügyféltől származó azonos műveletek végrehajtása.
 

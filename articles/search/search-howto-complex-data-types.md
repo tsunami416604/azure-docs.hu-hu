@@ -10,11 +10,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 2edd62825de08becf22f2f953a63a7f89f55e0a6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190997"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396089"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Összetett adattípusok modellezése az Azure-ban Cognitive Search
 
@@ -151,7 +151,7 @@ Egy összetett gyűjtemény mező szűréséhez használhat **lambda kifejezést
 
 A legfelső szintű egyszerű mezőkhöz hasonlóan a komplex mezők egyszerű almezői csak akkor szerepelhetnek a szűrőben, ha az index definíciójában a **szűrhető** attribútum értéke `true`. További információ: [create index API Reference](/rest/api/searchservice/create-index).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki a [Hotels adatkészletet](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md) az **adatimportálás** varázslóban. Az adatok eléréséhez a readme szolgáltatásban megadott Cosmos DB kapcsolati információkra lesz szüksége.
 

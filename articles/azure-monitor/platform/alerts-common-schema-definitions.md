@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
 ms.openlocfilehash: b0b398be919364b5a146e86ca1a1790674bb7d01
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668213"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395765"
 ---
 # <a name="common-alert-schema-definitions"></a>Gyakori riasztásiséma-definíciók
 
@@ -83,7 +83,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 | originAlertId | A riasztási példány azonosítója, amelyet a figyelési szolgáltatás generál. |
 | firedDateTime | A riasztási példánynak az egyezményes világidő (UTC) szerinti elindításának dátuma és időpontja. |
 | resolvedDateTime | Az a dátum és idő, amikor a riasztási példány figyelési feltétele az UTC szerint **megoldva** értékre van állítva. Jelenleg csak metrikus riasztásokra alkalmazható.|
-| leírás | A riasztási szabályban meghatározott leírás. |
+| Leírás | A riasztási szabályban meghatározott leírás. |
 |essentialsVersion| Az Essentials szakasz verziószáma.|
 |alertContextVersion | A `alertContext` szakasz verziószáma. |
 
@@ -479,7 +479,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [közös riasztási sémáról](https://aka.ms/commonAlertSchemaDocs).
 - Megtudhatja, [hogyan hozhat létre egy logikai alkalmazást, amely az általános riasztási sémát használja az összes riasztás kezeléséhez](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations). 

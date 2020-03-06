@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 9bbbcc38116c5681e3b5c867690c296f60507ad1
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196110"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355730"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Kulcsok, titkos kódok és tanúsítványok
 
@@ -364,14 +364,14 @@ A következő táblázat a x509-használati szabályzat hozzárendelését mutat
 
 |**X509-használat jelzői**|**Key Vault Key Ops**|**Alapértelmezett viselkedés**|
 |----------|--------|--------|
-|DataEncipherment|titkosítás, visszafejtés| – |
-|DecipherOnly|visszafejteni| –  |
+|DataEncipherment|titkosítás, visszafejtés| N/A |
+|DecipherOnly|visszafejteni| N/A  |
 |DigitalSignature|aláírás, ellenőrzés| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|EncipherOnly|encrypt| – |
-|KeyCertSign|aláírás, ellenőrzés|–|
+|EncipherOnly|encrypt| N/A |
+|KeyCertSign|aláírás, ellenőrzés|N/A|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| – |
-|crlsign|aláírás, ellenőrzés| – |
+|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N/A |
+|crlsign|aláírás, ellenőrzés| N/A |
 
 ### <a name="certificate-issuer"></a>Tanúsítvány kiállítója
 

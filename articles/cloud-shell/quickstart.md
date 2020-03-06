@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
 ms.openlocfilehash: 574841b3a89385a3b8bf048d5ed36f40fac99a83
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757395"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394532"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>A bash gyors üzembe helyezése Azure Cloud Shell
 
@@ -58,7 +58,7 @@ Hozzon létre egy új erőforráscsoportot a "MyRG" nevű WestUS.
 az group create --location westus --name MyRG
 ```
 
-### <a name="create-a-linux-vm"></a>Linux rendszerű virtuális gépek létrehozása
+### <a name="create-a-linux-vm"></a>Linux rendszerű virtuális gép létrehozása
 Hozzon létre egy Ubuntu virtuális gépet az új erőforráscsoporthoz. Az Azure CLI létrehozza az SSH-kulcsokat, és beállítja velük a virtuális gépet. <br>
 
 ```azurecli-interactive
@@ -66,9 +66,9 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ```
 
 > [!NOTE]
-> A `--generate-ssh-keys` használata arra utasítja az Azure CLI-t, hogy nyilvános és titkos kulcsokat hozzon létre és állítson be a virtuális gépen, és `$Home` könyvtárat. Alapértelmezés szerint a kulcsok a `/home/<user>/.ssh/id_rsa` és a `/home/<user>/.ssh/id_rsa.pub` Cloud Shell kerülnek. A `.ssh` mappát a csatolt fájlmegosztás 5 GB-os rendszerképe őrzi meg, amely a `$Home` megőrzésére szolgál.
+> A `--generate-ssh-keys` használata arra utasítja az Azure CLI-t, hogy nyilvános és titkos kulcsokat hozzon létre és állítson be a virtuális gépen, és `$Home` könyvtárat. Alapértelmezés szerint a kulcsok a `/home/<user>/.ssh/id_rsa` és a `/home/<user>/.ssh/id_rsa.pub`Cloud Shell kerülnek. A `.ssh` mappát a csatolt fájlmegosztás 5 GB-os rendszerképe őrzi meg, amely a `$Home`megőrzésére szolgál.
 
-A virtuális gépen lévő felhasználóneve a Cloud Shell ($ User@Azure:) által használt Felhasználónév.
+A virtuális gépen lévő felhasználóneve a Cloud Shell ($User@Azure:) által használt Felhasználónév.
 
 ### <a name="ssh-into-your-linux-vm"></a>SSH-t a linuxos virtuális gépre
 1. Keresse meg a virtuális gép nevét a Azure Portal keresési sávjában.

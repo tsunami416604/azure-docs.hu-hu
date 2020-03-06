@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 00dbef7b4453ffcb54020340bde51f55827759a0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190517"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360576"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Megosztott képgyűjtemény csatolása vagy leválasztása Azure Lab Services
 A tanárok/laborok rendszergazdái egy sablon virtuálisgép-rendszerképét menthetik az Azure [megosztott rendszerkép](../../virtual-machines/windows/shared-image-galleries.md) -katalógusában, amelyet mások is felhasználhatnak. Első lépésként a tesztkörnyezet rendszergazdája csatol egy meglévő megosztott képtárat a labor-fiókhoz. Miután csatolta a megosztott képtárat, a labor fiókban létrehozott laborok menthetik a lemezképeket a megosztott képkatalógusba. Más oktatók is kiválaszthatják ezt a rendszerképet a megosztott képkatalógusból, hogy sablont hozzanak létre az osztályaik számára. 
@@ -88,7 +88,7 @@ Csak egy megosztott képtárat lehet csatlakoztatni egy laborhoz. Ha egy másik 
 
 ![A megosztott képgyűjtemény leválasztása a labor-fiókból](../media/how-to-use-shared-image-gallery/detach.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha szeretne többet megtudni arról, hogyan mentheti a tesztkörnyezet rendszerképét a megosztott képkatalógusba, vagy hogyan hozhat létre virtuális gépet a megosztott rendszerkép-katalógusban, olvassa el a következő témakört: [a megosztott képgyűjtemény használata](how-to-use-shared-image-gallery.md).
 
 A megosztott képtárakkal kapcsolatos további információkért lásd: [megosztott rendszerkép](../../virtual-machines/windows/shared-image-galleries.md)-katalógus.

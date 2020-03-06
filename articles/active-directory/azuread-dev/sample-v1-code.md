@@ -17,12 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 74da5b84fafd7f7c60d07fc90b05c051c1fa2a3e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 9b4479436077dbad8cf2fb4dc40954194c138981
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164395"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377690"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kód mintái (v 1.0 végpont)
 
@@ -54,7 +54,7 @@ Ez a minta bemutatja, hogyan írhat egy egyoldalas alkalmazást az Azure AD-vel.
 
 Az alábbi példák bemutatják a felhasználók aláírására szolgáló webalkalmazásokat. Ezen alkalmazások némelyike a bejelentkezett felhasználó nevében is meghívja a Microsoft Graph vagy a saját webes API-ját.
 
- Platform | Csak a felhasználókhoz tartozó jelek | Hívások Microsoft Graph vagy HRE gráf| Egy másik ASP.NET vagy ASP.NET Core 2,0 webes API meghívása
+ Platform | Csak a felhasználókhoz tartozó jelek | Hívások Microsoft Graph | Egy másik ASP.NET vagy ASP.NET Core 2,0 webes API meghívása
  -------- | ------------------- | --------------------- | -------------------------
 ![Ez a képen a ASP.NET embléma látható](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2.0 | [DotNet-WebApp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [WebApp-webapi-több-bérlős-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(HRE gráf) | [DotNet-WebApp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
 ![Ez a képen a ASP.NET embléma látható](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [WebApp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [DotNet-WebApp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [DotNet-WebApp-több-bérlős openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (HRE gráf) |
@@ -125,10 +125,6 @@ A Microsoft Graph API különböző használati mintáit bemutató minták és o
 
 ## <a name="see-also"></a>Lásd még
 
-[Azure Active Directory fejlesztői útmutató](v1-overview.md)
-
-[Azure Active Directory hitelesítési kódtárak](active-directory-authentication-libraries.md)
-
-[Az Azure AD Graph API fogalma és referenciája](https://msdn.microsoft.com/library/azure/hh974476.aspx)
-
-[Azure AD Graph API segítő könyvtár](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
+- [Azure Active Directory fejlesztői útmutató](v1-overview.md)
+- [Azure Active Directory hitelesítési kódtárak](active-directory-authentication-libraries.md)
+- [A Microsoft Graph API fogalma és referenciája](https://docs.microsoft.com/graph/use-the-api)

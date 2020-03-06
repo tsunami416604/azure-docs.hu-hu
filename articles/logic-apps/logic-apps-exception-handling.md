@@ -9,11 +9,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906697"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359004"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és kivételek kezelése Azure Logic Appsban
 
@@ -27,7 +27,7 @@ A legalapvetőbb kivételek és hibakezelés érdekében az *újrapróbálkozás
 
 Az újrapróbálkozási szabályzatok típusai:
 
-| Type (Típus) | Leírás |
+| Típus | Leírás |
 |------|-------------|
 | **Alapértelmezett** | Ez a szabályzat legfeljebb négy újrapróbálkozást küld el *exponenciálisan növekvő* intervallumokban, amelyek mérete 7,5 másodperc, de 5 – 45 másodpercre van korlátozva. |
 | **Exponenciális időköz**  | Ez a szabályzat egy exponenciálisan növekvő tartományból érkező véletlenszerű intervallumot vár a következő kérelem elküldése előtt. |
@@ -69,7 +69,7 @@ Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az újraprób
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás |
+| Érték | Típus | Leírás |
 |-------|------|-------------|
 | <*Újrapróbálkozás – házirend típusa*> | Sztring | A használni kívánt újrapróbálkozási házirend típusa: `default`, `none`, `fixed`vagy `exponential` |
 | *újrapróbálkozási idő* <> | Sztring | Az újrapróbálkozási időköz, amelyben az értéknek [ISO 8601 formátumot](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kell használnia. Az alapértelmezett minimális időköz `PT5S`, és a maximális intervallum `PT1D`. Az exponenciális időközi szabályzat használatakor különböző minimális és maximális értékeket adhat meg. |
@@ -78,7 +78,7 @@ Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az újraprób
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás |
+| Érték | Típus | Leírás |
 |-------|------|-------------|
 | <*minimális intervallum*> | Sztring | Az exponenciális időközi házirend esetében a véletlenszerűen kiválasztott időköz ( [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ) legkisebb intervalluma |
 | <*maximális időköz*> | Sztring | Az exponenciális időközi házirend esetében a véletlenszerűen kiválasztott időköz ( [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ) legnagyobb intervalluma |
@@ -112,7 +112,7 @@ Bár a művelet vagy trigger explicit módon nincs definiálva, az alapértelmez
 }
 ```
 
-### <a name="none"></a>None
+### <a name="none"></a>Nincsenek
 
 Annak megadásához, hogy a művelet vagy az aktiválás Ne próbálkozzon újra a sikertelen kérelmekkel, állítsa a <*újrapróbálkozási házirend típusú*>t `none`re.
 
@@ -366,7 +366,7 @@ Az előző minták nagyszerű módon kezelik a hibákat és a kivételeket egy f
 
 A futtatási állapotok kiértékeléséhez nyomon követheti a naplókat és a metrikákat, vagy közzéteheti azokat bármely figyelési eszközön. Az egyik lehetséges lehetőség az, hogy az összes eseményt Event Hubs-ba [Azure stream Analyticsba](https://azure.microsoft.com/services/stream-analytics/)továbbítsa. Stream Analytics élő lekérdezéseket írhat a diagnosztikai naplókból származó rendellenességek, átlagok vagy hibák alapján. A Stream Analytics használatával adatokat küldhet más adatforrásoknak, például várólistákat, témaköröket, SQL-, Azure Cosmos DB-vagy Power BI.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Megtudhatja, hogy az ügyfél hogyan épít a hibakezelés során Azure Logic Apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [További Logic Apps példák és forgatókönyvek](../logic-apps/logic-apps-examples-and-scenarios.md)

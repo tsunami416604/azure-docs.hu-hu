@@ -10,11 +10,11 @@ ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
 ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754421"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363010"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Hibák elhárítása VMware virtuális gépen vagy fizikai gépen az Azure-ba történő feladatátvétel során
 
@@ -165,11 +165,11 @@ A probléma megoldásához:
    - Ellenőrizze, hogy a fő célkiszolgáló tud-e kommunikálni a konfigurációs kiszolgálóval:
   
      - Módosítsa a proxybeállításokat az Internet Explorerben, hogy a fő célkiszolgáló IP-címét kihagyja a proxyn keresztül.   
-     vagy
+     Vagy
      - Tiltsa le a proxyt a fő célkiszolgálón. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Windows rendszerű virtuális gép RDP-kapcsolatának](../virtual-machines/windows/troubleshoot-rdp-connection.md) hibáinak megoldása
 - Linux rendszerű [virtuális géppel létesített SSH-kapcsolatok](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md) hibáinak megoldása
 

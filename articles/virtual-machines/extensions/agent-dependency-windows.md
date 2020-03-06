@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: 27d43af2d5860d287d8b5914379747ae528db34b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980154"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383329"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>A Windows-függőség virtuálisgép-bővítményének Azure Monitor
 
-A Azure Monitor for VMs Map szolgáltatás a Microsoft függőségi ügynöktől kapja meg az adatait. Az Azure-beli virtuális gép függőségi ügynökének a Windows rendszerhez készült virtuálisgép-bővítményét a Microsoft közzétette és támogatja. A bővítmény telepíti a függőségi ügynököt az Azure Virtual Machines szolgáltatásban. Ez a dokumentum részletesen ismerteti a Windows rendszerhez készült Azure-beli virtuális gép függőségi ügynökének támogatott platformokat, konfigurációkat és telepítési lehetőségeit.
+Virtuális gépek térkép funkció az Azure Monitor az adatok lekérése a Microsoft Dependency agent. Az Azure-beli virtuális gép függőségi ügynökének a Windows rendszerhez készült virtuálisgép-bővítményét a Microsoft közzétette és támogatja. A bővítmény telepíti a függőségi ügynököt az Azure Virtual Machines szolgáltatásban. Ez a dokumentum részletesen ismerteti a Windows rendszerhez készült Azure-beli virtuális gép függőségi ügynökének támogatott platformokat, konfigurációkat és telepítési lehetőségeit.
 
 ## <a name="operating-system"></a>Operációs rendszer
 
@@ -69,14 +69,14 @@ A következő JSON az Azure-beli virtuális gép függőségi ügynökének sém
 }
 ```
 
-### <a name="property-values"></a>Tulajdonságértékek
+### <a name="property-values"></a>Tulajdonságok értékei
 
-| Név | Érték/példa |
+| Name (Név) | Érték/példa |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
-| közzétevő | Microsoft. Azure. monitoring. DependencyAgent |
+| publisher | Microsoft.Azure.Monitoring.DependencyAgent |
 | type | DependencyAgentWindows |
-| typeHandlerVersion | 9,5 |
+| typeHandlerVersion | 9.5 |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
@@ -140,7 +140,7 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
     -Location WestUS 
 ```
 
-## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
+## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 

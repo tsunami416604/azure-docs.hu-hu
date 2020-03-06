@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
 ms.openlocfilehash: b779873488f1fff754d4105249b28f545738c11b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645701"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382971"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Az Eclipse Service Fabric beépülő moduljának Java alkalmazásfejlesztése
 Az Eclipse a Java-fejlesztők által leggyakrabban használt integrált fejlesztőkörnyezetek (IDE-k) közé tartozik. Ebben a cikkben azt ismertetjük, hogyan állíthatja be az Eclipse fejlesztői környezetet az Azure Service Fabrickel való használathoz. Megtudhatja, hogyan telepítheti a Service Fabric beépülő modult, hogyan hozhat létre Service Fabric-alkalmazást, és hogyan helyezhet üzembe Service Fabric-alkalmazásokat helyi vagy távoli Service Fabric-fürtön az Eclipse-ben. 
@@ -36,7 +36,7 @@ Telepítse az Eclipse Neon vagy újabb verzióját az [Eclipse webhelyéről](ht
 
 A Service Fabric beépülő modul telepítéséhez az Eclipse-ben lépjen a **Help** > **Install New Software** (Súgó > Új szoftver telepítése) területre.
 1. A **Work with (munka** ) mezőben adja meg a https:\//dl.microsoft.com/Eclipse értéket.
-2. Kattintson a **Hozzáadás** parancsra.
+2. Kattintson az **Hozzáadás** parancsra.
 
    ![Az Eclipse Service Fabric beépülő modulja][sf-eclipse-plugin-install]
 3. Válassza ki a Service Fabric beépülő modult, majd kattintson a **Next** (Tovább) gombra.
@@ -133,7 +133,7 @@ Az alkalmazás felhőben való közzétételéhez kövesse az alábbi lépéseke
    - A `ConnectionIPOrURL` mezőben a fürt IP-címe vagy URL-címe található. Vegye figyelembe, hogy az érték nem tartalmazza az URL-sémát (`https://`).
    - Alapértelmezés szerint a `ConnectionPort` mezőnek `19080`nak kell lennie, ha explicit módon nem módosította ezt a portot a fürthöz.
    - A `ClientKey` mezőben egy PEM-formázott. PEM vagy. Key fájlra kell mutatnia a helyi gépen, amely tartalmazza az ügyfél vagy a fürt tanúsítványának titkos kulcsát.
-   - A `ClientCert` mezőben egy PEM-formázott. PEM vagy. CRT fájlra kell mutatnia a helyi gépen, amely tartalmazza az ügyfél vagy a fürt tanúsítványának adatait. tanúsítvány. 
+   - A `ClientCert` mezőben egy PEM-formázott. PEM vagy. CRT fájlra kell mutatnia a helyi gépen, amely tartalmazza az ügyfél vagy a fürt tanúsítványának adatait. Tanúsítvány. 
 
      ```bash
      {

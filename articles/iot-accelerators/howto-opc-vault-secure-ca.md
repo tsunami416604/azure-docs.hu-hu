@@ -9,11 +9,11 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 88f8188779c5fb6b3cd07c67e9f35a6b8f9ad97d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200084"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381133"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>Az OPC Vault tanúsítványkezelő szolgáltatás biztonságos futtatása
 
@@ -32,15 +32,15 @@ Az OPC-tár szolgáltatás lehetővé teszi, hogy a különböző szerepkörök 
 
 Az OPC-tár webszolgáltatás a következő szerepköröket határozza meg:
 
-- **Olvasó**: Alapértelmezés szerint a bérlő bármely hitelesített felhasználója rendelkezik olvasási hozzáféréssel. 
+- **Olvasó**: alapértelmezés szerint a bérlő bármely hitelesített felhasználója rendelkezik olvasási hozzáféréssel. 
   - Olvasási hozzáférés az alkalmazásokhoz és tanúsítványkérelmek. Listázhatja és lekérdezheti az alkalmazásokat és a tanúsítványokra vonatkozó kérelmeket. Az eszköz felderítési információi és a nyilvános tanúsítványok olvasási hozzáféréssel is elérhetők.
-- **Író**: Az író szerepkör hozzá van rendelve egy felhasználóhoz az írási engedélyek bizonyos feladatokhoz való hozzáadásához. 
+- **Író**: az író szerepkör hozzá van rendelve egy felhasználóhoz az írási engedélyek bizonyos feladatokhoz való hozzáadásához. 
   - Olvasási/írási hozzáférés az alkalmazásokhoz és a tanúsítványokhoz. Regisztrálhatja, frissítheti és törölheti az alkalmazásokat. Létrehozhat tanúsítvány-kérelmeket, és megszerezheti a jóváhagyott titkos kulcsokat és tanúsítványokat. A titkos kulcsokat is törölhet.
-- **Jóváhagyó**: A jóváhagyó szerepkört egy felhasználó rendeli hozzá a tanúsítványkérelmek jóváhagyásához vagy elutasításához. A szerepkör nem tartalmaz más szerepkört.
+- **Jóváhagyó**: a jóváhagyó szerepkört egy felhasználó rendeli hozzá a tanúsítványkérelmek jóváhagyásához vagy elutasításához. A szerepkör nem tartalmaz más szerepkört.
   - Az OPC-tár Service API-hoz való hozzáférés jóváhagyói szerepkörén kívül a felhasználónak is rendelkeznie kell a kulcs aláírási engedéllyel a Azure Key Vault, hogy képes legyen aláírni a tanúsítványokat.
   - Az író és a jóváhagyó szerepkört különböző felhasználókhoz kell rendelni.
   - A jóváhagyó fő szerepe a tanúsítványkérelmek létrehozásának és elutasításának jóváhagyása.
-- **Rendszergazda**: A rendszergazdai szerepkör egy felhasználóhoz van rendelve a Tanúsítványsablonok kezeléséhez. A szerepkör nem támogatja a jóváhagyó szerepkört, de magában foglalja az író szerepkört is.
+- **Rendszergazda**: a rendszergazda szerepkör hozzá van rendelve egy felhasználóhoz a Tanúsítványsablonok kezeléséhez. A szerepkör nem támogatja a jóváhagyó szerepkört, de magában foglalja az író szerepkört is.
   - A rendszergazda felügyelheti a tanúsítvány-csoportokat, módosíthatja a konfigurációt, és visszavonhatja az alkalmazás tanúsítványait egy új visszavont tanúsítványok listájának (CRL) kiállításával.
   - Ideális esetben az író, a jóváhagyó és a rendszergazdai szerepkörök különböző felhasználókhoz vannak rendelve. A további biztonság érdekében a jóváhagyó vagy a rendszergazdai szerepkörrel rendelkező felhasználónak kulcs-aláírási engedéllyel kell rendelkeznie a Key Vaultban, a tanúsítványok kiállításához vagy egy kiállító HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány megújításához.
   - A Service-felügyeleti szerepkörön kívül a szerepkör magában foglalja a következőt:
@@ -110,19 +110,19 @@ Az összes üzemi gazdagép (beleértve az állandó virtuális gépeket is), az
 #### <a name="inventory-of-the-default-azure-opc-vault-microservice-production-deployment"></a>Az Azure OPC-tároló alapértelmezett üzemi telepítésének leltára 
 
 Az Azure-ban:
-- **App Service terv**: App Service-csomag a Service hosts szolgáltatáshoz. Alapértelmezett S1.
-- **App Service** a Service-hez: Az OPC Vault Service-gazdagép.
-- **App Service** a minta alkalmazáshoz: Az OPC-tár minta alkalmazás-gazdagépe.
-- **Key Vault standard**: A webszolgáltatások titkainak és Azure Cosmos DB kulcsainak tárolásához.
-- **Key Vault Premium**: A kiállító HITELESÍTÉSSZOLGÁLTATÓI kulcsok, az aláírási szolgáltatás, valamint az alkalmazás titkos kulcsainak tároló-konfigurációja és tárolása.
-- **Azure Cosmos db**: Az alkalmazás-és tanúsítványkérelmek adatbázisa. 
+- **App Service terv**: app Service-csomag a Service hosts szolgáltatáshoz. Alapértelmezett S1.
+- **App Service** a Service-hez: az OPC Vault Service Host.
+- **App Service** a minta alkalmazáshoz: az OPC-tár minta Application Host.
+- **Key Vault standard**: a webszolgáltatásokhoz tartozó titkok és Azure Cosmos db kulcsok tárolása.
+- **Key Vault Premium**: a kiállító hitelesítésszolgáltatói kulcsok, az aláírási szolgáltatás, valamint a tár konfigurációja és az alkalmazás titkos kulcsai tárolásának üzemeltetése.
+- **Azure Cosmos db**: az alkalmazás-és tanúsítványkérelmek adatbázisa. 
 - **Application Insights**: (nem kötelező) figyelési megoldás webszolgáltatásokhoz és alkalmazásokhoz.
-- **Azure ad-alkalmazás regisztrálása**: A minta alkalmazás, a szolgáltatás és a peremhálózati modul regisztrálása.
+- **Azure ad-alkalmazás regisztrálása**: a minta alkalmazás, a szolgáltatás és a peremhálózati modul regisztrálása.
 
 A Cloud Services esetében dokumentálni kell a szolgáltatás üzembe helyezéséhez használt összes állomásnevet, erőforráscsoportot, erőforrás-nevet, előfizetési azonosítót és bérlői azonosítót. 
 
 Azure IoT Edge vagy helyi IoT Edge-kiszolgálón:
-- **OPC-tár IoT Edge modulja**: A gyári hálózati OPC UA globális felderítési kiszolgáló támogatásához. 
+- **OPC-tároló IoT Edge modul**: a Factory Network OPC ua globális felderítési kiszolgáló támogatásához. 
 
 A IoT Edge eszközök esetében dokumentálni kell a gazdagépeket és az IP-címeket. 
 
@@ -174,8 +174,8 @@ Az OPC-tár szolgáltatás egy online HITELESÍTÉSSZOLGÁLTATÓ, amely a végfe
   - A 20 évnél nagyobb vagy azzal megegyező élettartamú RSA legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI kulcsok esetében 4096 bit vagy nagyobb értéknek kell lennie.
   - Az RSA kiállító CA kulcsainak legalább 2048 bitenek kell lenniük. Ha a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány lejárati dátuma 2030, akkor a CA-kulcsnak 4096 bit vagy nagyobbnak kell lennie.
 - Tanúsítvány élettartama
-  - Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok: A legfelső szintű hitelesítésszolgáltatók esetében a tanúsítvány maximális érvényességi időtartama nem haladhatja meg a 25 évet.
-  - Alárendelt HITELESÍTÉSSZOLGÁLTATÓ vagy online kiállító HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok: A tanúsítvány maximális érvényességi időtartama az online hitelesítésszolgáltatók számára, és csak az előfizetői tanúsítványok kiadása nem haladhatja meg a 6 évet. Ezen hitelesítésszolgáltatók esetében a kapcsolódó privát aláírási kulcs nem használható 3 évnél hosszabb ideig az új tanúsítványok kiállításához.<br>
+  - Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok: a legfelső szintű hitelesítésszolgáltatók maximális tanúsítványának érvényességi időtartama nem haladhatja meg a 25 évet.
+  - Alárendelt HITELESÍTÉSSZOLGÁLTATÓ vagy online kiállító HITELESÍTÉSSZOLGÁLTATÓI tanúsítványai: a tanúsítvány maximális érvényességi időtartama az online hitelesítésszolgáltatók számára, és csak az előfizetői tanúsítványok kiadása nem haladhatja meg a 6 évet. Ezen hitelesítésszolgáltatók esetében a kapcsolódó privát aláírási kulcs nem használható 3 évnél hosszabb ideig az új tanúsítványok kiállításához.<br>
     > [!IMPORTANT]
     > A kiállítói tanúsítvány, ahogy az alapértelmezett OPC-tárolóban a külső legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ nélkül lett létrehozva, a rendszer úgy kezeli, mint egy online alhálózatot, a megfelelő követelményekkel és élettartamokkal. A rendszer az alapértelmezett élettartamot 5 évre állítja be, amelynek a kulcsa a 2048-nál nagyobb vagy azzal egyenlő.
   - Minden aszimmetrikus kulcsnak legfeljebb 5 éves élettartammal kell rendelkeznie, és ajánlott 1 éves élettartama.<br>
@@ -190,8 +190,8 @@ Az OPC-tár szolgáltatás egy online HITELESÍTÉSSZOLGÁLTATÓ, amely a végfe
 
 ### <a name="ca-keys-and-certificates-must-meet-minimum-requirements"></a>A HITELESÍTÉSSZOLGÁLTATÓI kulcsoknak és tanúsítványoknak meg kell felelniük a minimális követelményeknek
 
-- **Titkos kulcsok**: Az RSA-kulcsoknak legalább 2048 bitenek kell lenniük. Ha a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány lejárati dátuma 2030, akkor a CA-kulcsnak 4096 bit vagy nagyobbnak kell lennie.
-- **Élettartam**: A tanúsítvány maximális érvényességi időtartama az online hitelesítésszolgáltatók számára, és csak az előfizetői tanúsítványok kiadása nem haladhatja meg a 6 évet. Ezen hitelesítésszolgáltatók esetében a kapcsolódó privát aláírási kulcs nem használható 3 évnél hosszabb ideig az új tanúsítványok kiállításához.
+- **Titkos kulcsok**: az RSA-kulcsoknak legalább 2048 bitesnek kell lenniük. Ha a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány lejárati dátuma 2030, akkor a CA-kulcsnak 4096 bit vagy nagyobbnak kell lennie.
+- **Élettartam**: a tanúsítvány maximális érvényességi időtartama a online hitelesítésszolgáltatók számára, és csak az előfizetői tanúsítványok kiadása nem haladhatja meg a 6 évet. Ezen hitelesítésszolgáltatók esetében a kapcsolódó privát aláírási kulcs nem használható 3 évnél hosszabb ideig az új tanúsítványok kiállításához.
 
 ### <a name="ca-keys-are-protected-using-hardware-security-modules"></a>A HITELESÍTÉSSZOLGÁLTATÓI kulcsokat hardveres biztonsági modulok védik
 
@@ -208,7 +208,7 @@ Dokumentálja és karbantartsa a hitelesítésszolgáltatók tanúsítványait, 
 - A tanúsítványkérelem feldolgozásának és ellenőrzésének módja (ha van ilyen) a tanúsítvány-megújítási és-újragenerálási kérelmek feldolgozásának módját is beleértve. 
 - A kiállított tanúsítványok az előfizetők számára való terjesztése. 
 
-Az OPC-tár Service SOP-t az [OPC-tároló architektúrájában](overview-opc-vault-architecture.md) és [az OPC-tár tanúsítvány-szolgáltatásának kezelésében](howto-opc-vault-manage.md)ismertetjük. A gyakorlat a "OPC Unified Architecture Specification 12. rész: Felderítési és globális szolgáltatások. "
+Az OPC-tár Service SOP-t az [OPC-tároló architektúrájában](overview-opc-vault-architecture.md) és [az OPC-tár tanúsítvány-szolgáltatásának kezelésében](howto-opc-vault-manage.md)ismertetjük. Az eljárások a "OPC Unified Architecture Specification 12. rész: felderítés és globális szolgáltatások" című részben olvashatók.
 
 
 ### <a name="document-and-maintain-standard-operational-pki-practices-for-certificate-revocation"></a>A tanúsítványok visszavonására szolgáló szabványos PKI-eljárások dokumentálása és karbantartása
@@ -237,7 +237,7 @@ A HITELESÍTÉSSZOLGÁLTATÓI kulcs generálási ünnepségét olyan dokumentál
   - A tároláshoz szükséges anyagok előkészítése.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az OPC-tároló biztonságos kezelését, a következőket teheti:
 

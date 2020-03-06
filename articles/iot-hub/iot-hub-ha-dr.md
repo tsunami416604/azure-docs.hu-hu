@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: philmea
 ms.openlocfilehash: 173be8207df2f0128dfc9ae3c36aa3c3dc392bee
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748567"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392563"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Magas rendelkezésre állás és vész-helyreállítás IoT Hub
 
@@ -45,7 +45,7 @@ Az ilyen helyzetben lévő ügyfelek számára elérhető helyreállítási lehe
 
 Mindkét feladatátvételi beállítás a következő helyreállítási pontok célkitűzéseit (RPO) kínálja:
 
-| Data type | Helyreállítási pontok célkitűzései (RPO) |
+| Adattípus | Helyreállítási pontok célkitűzései (RPO) |
 | --- | --- |
 | Identitás-nyilvántartó |0-5 perc adatvesztés |
 | Eszköz Twin-adatkészletei |0-5 perc adatvesztés |
@@ -125,11 +125,11 @@ Ennek a lépésnek a leegyszerűsítése érdekében idempotens műveleteket kel
 
 | HA/DR beállítás | RTO | RPO | Manuális beavatkozásra van szüksége? | Implementáció bonyolultsága | További költséghatékonyság|
 | --- | --- | --- | --- | --- | --- |
-| Microsoft által kezdeményezett feladatátvétel |2-26 óra|Tekintse át a fenti RPO-táblázatot|Nem|None|None|
-| Manuális feladatátvétel |10 perc – 2 óra|Tekintse át a fenti RPO-táblázatot|Igen|Nagyon alacsony. Ezt a műveletet csak a portálról kell elindítania.|None|
+| Microsoft által kezdeményezett feladatátvétel |2-26 óra|Tekintse át a fenti RPO-táblázatot|Nem|Nincs|Nincs|
+| Manuális feladatátvétel |10 perc – 2 óra|Tekintse át a fenti RPO-táblázatot|Igen|Nagyon alacsony. Ezt a műveletet csak a portálról kell elindítania.|Nincs|
 | Régión átívelő HA |< 1 perc|Az egyéni HA-megoldás replikációs gyakoriságának függvénye|Nem|Magas|> 1 IoT hub díja|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az Azure IoT Hub?](about-iot-hub.md)
 * [Ismerkedés a IoT Hubokkal (gyors útmutató)](quickstart-send-telemetry-dotnet.md)

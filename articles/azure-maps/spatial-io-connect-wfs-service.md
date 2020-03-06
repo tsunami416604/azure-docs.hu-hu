@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0f50fe51f9c1cdef3c3f07c91640f5b9b9616229
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 18ac583837c7cb8b2dabbfa6f7d7210c8afe3fcb
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370959"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402751"
 ---
 # <a name="connect-to-a-wfs-service"></a>Kapcsolódás WFS szolgáltatáshoz
 
@@ -91,7 +91,7 @@ A következő kód a WFS-ügyfelet használja a WFS szolgáltatások megismerés
 
 <br/>
 
-<iframe height='700' scrolling='no' title= 'WFS Service Explorer' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Lásd a Pen <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS Service explorert</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' style='width: 100%;' scrolling='no' title= 'WFS Service Explorer' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Lásd a Pen <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS Service explorert</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 A proxy szolgáltatással olyan tartományokban tárolt erőforrásokat is betöltheti, amelyek nincsenek engedélyezve a CORs. Először meg kell határoznia egy változót a proxy szolgáltatás URL-címének tárolásához és a WFS-ügyfél `proxyService` beállításának beállításához. Ha egy proxy szolgáltatást szeretne megjeleníteni a felhasználó számára, adjon hozzá egy felhasználói adatbevitelt a felhasználói FELÜLEThez. Töltse be a szolgáltatás URL-címét a bevitelre való kattintáskor. A következő kódrészletek azt mutatják be, hogyan használható a proxy szolgáltatás.

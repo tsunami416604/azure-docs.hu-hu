@@ -48,6 +48,8 @@
   href: code-samples.md
 - name: Alapelvek
   items:
+    - name: Ajánlott eljárások az Azure AD B2C használatához
+      href: best-practices.md
     - name: Alkalmazástípusok
       href: application-types.md
     - name: Hitelesítési protokollok

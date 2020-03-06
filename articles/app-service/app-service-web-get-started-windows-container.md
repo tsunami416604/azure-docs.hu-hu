@@ -5,11 +5,11 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7901498772b8e746fb2c87a5237f06ab279e3b64
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922299"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374026"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Egyéni Windows-tároló futtatása az Azure-ban (előzetes verzió)
 
@@ -29,7 +29,7 @@ Az oktatóanyag elvégzéséhez:
     - Telepítse a legújabb frissítéseket a Visual Studióban a **súgó** > **frissítések keresése**lehetőség kiválasztásával.
     - Vegye fel a számítási feladatokat a Visual Studióban az eszközök > **eszközök és szolgáltatások lekérése** **eszköz** kiválasztásával.
 
-## <a name="create-an-aspnet-web-app"></a>ASP.NET alapú webes alkalmazás létrehozása
+## <a name="create-an-aspnet-web-app"></a>ASP.NET-webapp létrehozása
 
 Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtásával:
 
@@ -79,7 +79,7 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
 ## <a name="create-a-windows-container-app"></a>Tárolóalkalmazás létrehozása Windowshoz
 
-1. Jelentkezzen be az [Azure portálra]( https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal]( https://portal.azure.com).
 
 1. Válassza az Azure Portal bal felső sarkában az **Erőforrás létrehozása** lehetőséget.
 
@@ -103,7 +103,7 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
 Értesítés jelenik meg, ha az Azure befejezte a művelet végrehajtását.
 
-![Üzembe helyezés sikeres](media/app-service-web-get-started-windows-container/portal-create-finished.png)
+![Az üzembe helyezés sikerült](media/app-service-web-get-started-windows-container/portal-create-finished.png)
 
 1. Kattintson az **Erőforrás megnyitása** elemre.
 

@@ -17,13 +17,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/08/2019
 ms.openlocfilehash: 6ddadcafd4f068f6516039017a3d491095c78e30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378262"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388448"
 ---
-# <a name="registration-management"></a>Regisztrációkezelés
+# <a name="registration-management"></a>Regisztráció kezelése
 
 Ez a témakör azt ismerteti, hogyan regisztrálhat eszközöket értesítési központokkal a leküldéses értesítések fogadásához. A témakör a regisztrációkat magas szinten mutatja be, majd az eszközök regisztrálásának két fő mintáját mutatja be: regisztrálja az eszközről közvetlenül az értesítési központba, és regisztrálja az alkalmazási háttérrendszer használatával.
 
@@ -263,7 +263,7 @@ catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 
 A háttérbeli regisztrációk kezeléséhez további kódokat kell írni. Az eszközön lévő alkalmazásnak meg kell adnia a frissített PNS-leírót a háttérnek minden alkalommal, amikor az alkalmazás elindul (címkékkel és sablonokkal együtt), és a háttérrendszer frissítenie kell ezt a leírót az értesítési központban. A következő kép szemlélteti ezt a kialakítást.
 
-![Regisztrációkezelés](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
+![Regisztráció kezelése](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
 A háttérbeli regisztrációk kezelésének előnyei közé tartozik a címkék módosításának lehetősége, még akkor is, ha az eszközön található megfelelő alkalmazás inaktív, valamint az ügyfélalkalmazás hitelesítéséhez, mielőtt hozzáad egy címkét a regisztrációhoz.
 
@@ -317,7 +317,7 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Példa kód egy értesítési központból egy regisztrációs AZONOSÍTÓval rendelkező eszközről való regisztráláshoz
 
-Az alkalmazás-háttérrendszer segítségével alapszintű szifilisz-műveleteket hajthat végre a regisztráció során. Példa:
+Az alkalmazás-háttérrendszer segítségével alapszintű szifilisz-műveleteket hajthat végre a regisztráció során. Például:
 
 ```csharp
 var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");

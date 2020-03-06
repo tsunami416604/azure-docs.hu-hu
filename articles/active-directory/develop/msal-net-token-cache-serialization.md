@@ -14,11 +14,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1bd348ad27d892d0421b13c16ce81bc4f5dfb021
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695126"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377489"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Jogkivonat-gyorsítótár szerializálása a MSAL.NET-ben
 A [jogkivonat beszerzése](msal-acquire-cache-tokens.md)után a Microsoft Authentication Library (MSAL) gyorsítótárazza azt.  Az alkalmazás kódjának meg kell próbálnia kapni a tokent a gyorsítótárból, mielőtt másik módszerrel beszerezze a jogkivonatot.  Ez a cikk a jogkivonat-gyorsítótár alapértelmezett és egyéni szerializálását ismerteti a MSAL.NET-ben.
@@ -278,7 +278,7 @@ Példák a Web Apps és a webes API-k jogkivonat-gyorsítótárának használat�
 ## <a name="next-steps"></a>Következő lépések
 A következő minták a jogkivonat-gyorsítótár szerializálását szemléltetik.
 
-| Minta | Platform | Leírás|
+| Sample | Platform | Leírás|
 | ------ | -------- | ----------- |
 |[Active-Directory-DotNet-Desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Asztali (WPF) | A Microsoft Graph API-t hívó Windowsos asztali .NET (WPF) alkalmazás. ![Topológia](media/msal-net-token-cache-serialization/topology.png)|
 |[Active-Directory-DotNet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Asztal (konzol) | A Visual Studio-megoldások készlete az Azure AD v 1.0-alkalmazások (ADAL.NET használatával) Azure AD v 2.0-alkalmazásokba való áttelepítését mutatja be (MSAL.NET használatával), különösen a [jogkivonat-gyorsítótár áttelepítését](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md) .|

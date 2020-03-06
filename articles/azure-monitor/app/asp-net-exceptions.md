@@ -4,11 +4,11 @@ description: A ASP.NET-alkalmazásokból származó kivételek rögzítése a k�
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.openlocfilehash: 24b7acfa6610c2040daf0f7d8d25f25391140303
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666156"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375049"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>A webalkalmazások kivételeinek diagnosztizálása a Application Insights
 Az élő webalkalmazásban lévő kivételeket [Application Insights](../../azure-monitor/app/app-insights-overview.md). A sikertelen kérelmeket a kivételekkel és más eseményekkel is összekapcsolhatja az ügyfélen és a kiszolgálón is, így gyorsan diagnosztizálhatja az okokat.

@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: f61fdedcd3c910ef5d09685fea00473a83b321f1
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: cf82dddf281e8e6f1348884702e32330dee4781b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834280"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372954"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management-, Change Tracking-és leltározási megoldások
 
@@ -35,17 +35,17 @@ Válassza ki az Log Analytics munkaterületet és Automation-fiókot, majd katti
 
 A Change Tracking és az Inventory megoldással [változáskövetési](automation-vm-change-tracking.md) és [leltárkészítési](automation-vm-inventory.md) képességeket biztosíthat a virtuális gépek számára. Ebben a lépésben engedélyezzük a megoldást egy virtuális gépen.
 
-Ha a Change tracking és az Inventory megoldás előkészítése befejeződött az értesítés szerint, a **KONFIGURÁCIÓKEZELÉS** területen kattintson az **Update Management** lehetőségre.
+Ha a Change Tracking és a Inventory megoldás bevezetési értesítése befejeződik, válassza az **Update Management (** **frissítés kezelése) lehetőséget.**
 
-Az Update Management megoldás segítségével kezelheti az Azure-beli Windows rendszerű virtuális gépek frissítéseit és javításait. Felmérheti az elérhető frissítések állapotát, ütemezheti a szükséges frissítések telepítését, és áttekintheti a telepítési eredményeket, hogy ellenőrizze, sikeres volt-e a frissítések telepítése a virtuális gépen. Ez a művelet engedélyezte a virtuális gép megoldását.
+Az Update Management megoldás lehetővé teszi az Azure-és hibrid virtuális gépek frissítéseinek és javításának kezelését. Értékelheti az elérhető frissítések állapotát, beütemezheti a szükséges frissítések telepítését, és áttekintheti a telepítési eredményeket, hogy ellenőrizze, sikeres volt-e a frissítések alkalmazása.
 
-Válassza **az Update** Management **(frissítés kezelése) lehetőséget**. A kiválasztott Log Analytics munkaterület megegyezik az előző lépésben használt munkaterülettel. Az Update Management megoldás előkészítéséhez kattintson az **Engedélyezés** lehetőségre. A megoldás engedélyezése akár 15 percet is igénybe vehet.
+A megoldás engedélyezése lapon a kiválasztott Log Analytics munkaterület megegyezik az előző lépésben használt munkaterülettel. Kattintson az **Engedélyezés** gombra a Update Management megoldás bevezetéséhez. A megoldás engedélyezése akár 15 percet is igénybe vehet.
 
 ![Előkészítési frissítési megoldás](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
 ## <a name="scope-configuration"></a>Hatókör-konfiguráció
 
-Mindegyik megoldás egy hatókör-konfigurációt használ a munkaterületen a megoldást futtató számítógépek célzásához. A hatókör-konfiguráció egy vagy több mentett keresés csoportja, amely a megoldás hatókörének meghatározott számítógépekre való korlátozására szolgál. A hatókör-konfigurációk eléréséhez az Automation-fiókban a **kapcsolódó erőforrások**területen válassza a **munkaterület**lehetőséget. Ezután a munkaterület- **ADATforrások**területen válassza a **hatókör-konfigurációk**elemet.
+Mindegyik megoldás egy hatókör-konfigurációt használ a munkaterületen a megoldást futtató számítógépek célzásához. A hatókör-konfiguráció egy vagy több mentett keresés csoportja, amely a megoldás hatókörének meghatározott számítógépekre való korlátozására szolgál. A hatókör-konfigurációk eléréséhez az Automation-fiókban a **kapcsolódó erőforrások**területen válassza a **munkaterület**lehetőséget. Ezután a munkaterület- **adatforrások**területen válassza a **hatókör-konfigurációk**elemet.
 
 Ha a kiválasztott munkaterület még nem rendelkezik Update Management vagy Change Tracking megoldással, a következő hatókör-konfigurációk jönnek létre:
 
@@ -61,9 +61,9 @@ Ha hozzáad egy számítógépet a Update Managementhoz vagy a Change Trackingho
 
 Navigáljon a Log Analytics munkaterületre, és válassza a **mentett keresések** **általános**lehetőséget. A megoldások által használt két mentett keresés a következő táblázatban látható:
 
-|Név     |Kategória  |Alias  |
+|Name (Név)     |Kategória  |Alias  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     |  Változáskövetési       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Frissítések        | Updates__MicrosoftDefaultComputerGroup         |
 
 Válassza a mentett keresés lehetőséget a csoport feltöltéséhez használt lekérdezés megtekintéséhez. Az alábbi ábrán a lekérdezés és annak eredményei láthatók:
@@ -133,7 +133,7 @@ A megoldások eltávolítása után az alábbi lépések végrehajtásával lev�
 
 Ha a Update Management megoldást használta, érdemes lehet eltávolítani a következő elemeket, amelyekre már nincs szükség a megoldás eltávolítása után.
 
-* Frissítési ütemtervek – minden olyan névvel rendelkezik, amely megfelel a létrehozott frissítési központi telepítésnek.
+* Frissítési ütemtervek – minden olyan névvel rendelkezik, amely megfelel a létrehozott frissítési példányoknak.
 
 * A megoldáshoz létrehozott hibrid feldolgozói csoportok – mindegyik neve hasonló lesz a machine1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8).
 
