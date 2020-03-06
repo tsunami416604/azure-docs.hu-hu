@@ -14,21 +14,20 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: e6ac3c74a0a8346ad8a6820c676224bfcba0e8b4
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: c85b63b4a56e74b0fef9a122ec995b4106496cbe
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264441"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330446"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata a Node. js-sel és az Azure-SB csomaggal
-> [!div class="op_multi_selector" title1="Programozási nyelv" title2="Node. js-csomagjának felvétele"]
-> - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
-> - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
-
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Node. js-alkalmazásokat az üzenetek egy Service Bus témakörbe való küldéséhez, és hogyan fogadhat üzeneteket egy Service Bus-előfizetésből az [Azure-SB](https://www.npmjs.com/package/azure-sb) csomag használatával. A mintákat JavaScript nyelven írták, és a Node. js [Azure-modult](https://www.npmjs.com/package/azure) használják, amely belsőleg használja a `azure-sb` csomagot.
 
-Az [Azure-SB](https://www.npmjs.com/package/azure-sb) csomag [Service Bus Rest futásidejű API-kat](/rest/api/servicebus/service-bus-runtime-rest)használ. A gyorsabb [AMQP 1,0 protokollt](service-bus-amqp-overview.md)használó új [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) -csomag használatával gyorsabb élményt érhet el. Az új csomaggal kapcsolatos további információkért lásd: [Service Bus témakörök és előfizetések használata Node. js-vel és @azure/service-bus csomaggal](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package), egyéb esetben az [Azure](https://www.npmjs.com/package/azure) -csomag használatának módjával kapcsolatban.
+> [!IMPORTANT]
+> Az [Azure-SB](https://www.npmjs.com/package/azure-sb) csomag [Service Bus Rest futásidejű API-kat](/rest/api/servicebus/service-bus-runtime-rest)használ. A gyorsabb [AMQP 1,0 protokollt](service-bus-amqp-overview.md)használó új [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) -csomag használatával gyorsabb élményt érhet el. 
+> 
+> Az új csomaggal kapcsolatos további információkért lásd: [Service Bus témakörök és előfizetések használata Node. js-vel és @azure/service-bus csomaggal](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package), egyéb esetben az [Azure](https://www.npmjs.com/package/azure) -csomag használatának módjával kapcsolatban.
 
 Az itt tárgyalt forgatókönyvek a következők:
 

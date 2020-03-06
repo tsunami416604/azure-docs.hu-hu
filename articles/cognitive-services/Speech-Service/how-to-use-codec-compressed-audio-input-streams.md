@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 36e4506ea290d6109e1d1ae874b7e0f7c11bf50d
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 2b530da06b02091ce66ff7c116f3e17ddcc22497
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805824"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331110"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>A codec tömörített hangbemenetének használata a Speech SDK-val
 
 A Speech SDK **tömörített hangbemeneti stream** API-val a PullStream vagy a PushStream segítségével továbbíthatja a tömörített hangokat a beszédfelismerési szolgáltatásba.
 
 > [!IMPORTANT]
-> A streaming tömörített bemeneti hang jelenleg a C++, C#a és a Java Linux rendszeren (Ubuntu 16,04, Ubuntu 18,04, Debian 9) támogatott. A [Java az](how-to-use-codec-compressed-audio-input-streams-android.md) iOS platformon is támogatja az Android és [Objective-C](how-to-use-codec-compressed-audio-input-streams-ios.md) nyelveken.
-> A Speech SDK 1.7.0 vagy újabb verziója szükséges.
+> A streaming tömörített bemeneti hang jelenleg a C++, C#a és a Java Linux rendszeren (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8) támogatott. A [Java az](how-to-use-codec-compressed-audio-input-streams-android.md) iOS platformon is támogatja az Android és [Objective-C](how-to-use-codec-compressed-audio-input-streams-ios.md) nyelveken.
+> A Speech SDK 1.7.0 vagy újabb verziója szükséges (1.10.0 vagy újabb verzió a RHEL 8, CentOS 8 esetében).
 
 A WAV/PCM esetében tekintse meg a fővonal beszédének dokumentációját.  A WAV/PCM-en kívül a következő codec tömörített bemeneti formátumok támogatottak:
 
@@ -40,6 +40,15 @@ A tömörített hang kezelésére a [GStreamer](https://gstreamer.freedesktop.or
 ```sh
 sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 ```
+
+RHEL/CentOS 8 rendszeren:
+
+```sh
+sudo yum install gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-plugins-ugly-free
+```
+
+> [!NOTE]
+> A RHEL/CentOS 8 rendszeren kövesse az [OpenSSL Linux rendszerhez való konfigurálásának](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)utasításait.
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Kód tömörített hangbemenetet használó programkód
 

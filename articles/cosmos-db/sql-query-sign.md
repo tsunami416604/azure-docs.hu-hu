@@ -4,15 +4,15 @@ description: Ismerkedjen meg az SQL System függvény bejelentkezési Azure Cosm
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 11a9d0ad0c68e1ef9728c0180f136d075776abb6
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 84335acbee1e4166e5346f5c5cac6ef8dae11e99
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349480"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302066"
 ---
 # <a name="sign-azure-cosmos-db"></a>ALÁÍRÁS (Azure Cosmos DB)
  A pozitív (+ 1), a nulla (0) vagy a megadott numerikus kifejezés mínuszjel (-1) adja vissza.  
@@ -34,7 +34,7 @@ SIGN(<numeric_expr>)
   
 ## <a name="examples"></a>Példák
   
-  A következő példa a `SIGN` értéket adja vissza, a-2 és 2 közötti számot.  
+  A következő példa a-2 és 2 közötti számok `SIGN` értékét adja vissza.  
   
 ```sql
 SELECT SIGN(-2) AS s1, SIGN(-1) AS s2, SIGN(0) AS s3, SIGN(1) AS s4, SIGN(2) AS s5  
@@ -46,7 +46,11 @@ SELECT SIGN(-2) AS s1, SIGN(-1) AS s2, SIGN(0) AS s3, SIGN(1) AS s4, SIGN(2) AS 
 [{s1: -1, s2: -1, s3: 0, s4: 1, s5: 1}]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

@@ -1,18 +1,18 @@
 ---
-title: IS_ARRAY Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function IS_ARRAY Azure Cosmos DB.
+title: Azure Cosmos DB lekérdezési nyelv IS_ARRAY
+description: Ismerkedjen meg a Azure Cosmos DB SQL System Function IS_ARRAYával.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 11ff29dcae7bf5c2e532eee658ee39d39b964e35
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: f5867850db6eb3d6552bc129cca3708ef7747072
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350978"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303885"
 ---
 # <a name="is_array-azure-cosmos-db"></a>IS_ARRAY (Azure Cosmos DB)
  Egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa egy tömböt ad vissza.  
@@ -34,7 +34,7 @@ IS_ARRAY(<expr>)
   
 ## <a name="examples"></a>Példák
   
-  A következő példa a JSON logikai, szám, karakterlánc, null, objektum, tömb és nem definiált típusok objektumait ellenőrzi a `IS_ARRAY` függvény használatával.  
+  A következő példa a JSON logikai, szám, karakterlánc, null, objektum, tömb és nem definiált típusok objektumait ellenőrzi a `IS_ARRAY` függvénnyel.  
   
 ```sql
 SELECT   
@@ -53,7 +53,11 @@ SELECT
 [{"isArray1":false,"isArray2":false,"isArray3":false,"isArray4":false,"isArray5":false,"isArray6":true,"isArray7":false}]
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Type Check functions Azure Cosmos DB](sql-query-type-checking-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

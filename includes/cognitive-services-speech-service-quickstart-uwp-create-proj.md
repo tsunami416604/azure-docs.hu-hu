@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: d3e2fa082184ce8de7685d03803360045b89c911
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6804834dab81b0774dd29b1ede836492d0dfea4b
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119773"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383966"
 ---
 Ha Univerzális Windows-platform (UWP) fejlesztéshez szeretne létrehozni Visual Studio-projektet, be kell állítania a Visual Studio fejlesztői beállításait, létre kell hoznia a projektet, ki kell választania a cél architektúrát, be kell állítania a hangrögzítést, és telepítenie kell a Speech SDK-t.
 
@@ -104,4 +104,4 @@ Végül telepítse a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget),
 
 1. A **módosítások előnézete** párbeszédpanelen kattintson **az OK gombra**.
 
-1. A **licenc elfogadása** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom**lehetőséget. A csomag telepítése megkezdődik, és amikor a telepítés befejeződött, a **kimenet** ablaktáblán a következő szöveghez hasonló üzenet jelenik meg: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.9.0' to helloworld`.
+1. A **licenc elfogadása** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom**lehetőséget. A csomag telepítése megkezdődik, és amikor a telepítés befejeződött, a **kimenet** ablaktáblán a következő szöveghez hasonló üzenet jelenik meg: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.10.0' to helloworld`.

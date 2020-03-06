@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1aff2815144f776b351e92d8945b267d1451f9f6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: df2acedd7f472b96d55d9ecc294d47e7173c5f90
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77915707"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329016"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőségi befecskendezés használata a .NET-Azure Functions
 
@@ -132,11 +132,57 @@ Ha saját naplózási szolgáltatóra van szüksége, regisztráljon egy egyéni
 > - Ne vegyen fel `AddApplicationInsightsTelemetry()` a szolgáltatások gyűjteménybe, mert regisztrálja azokat a szolgáltatásokat, amelyek ütköznek a környezet által nyújtott szolgáltatásokkal.
 > - Ha beépített Application Insights funkciót használ, ne regisztráljon saját `TelemetryConfiguration` vagy `TelemetryClient`. Ha a saját `TelemetryClient`-példányát kell konfigurálnia, hozzon létre egyet a befecskendezett `TelemetryConfiguration`, ahogyan az [Azure functions figyelése](./functions-monitoring.md#version-2x-and-later-2)című részen látható.
 
+### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> és ILoggerFactory
+
+A gazdagép beadja `ILogger<T>` és `ILoggerFactory` szolgáltatásokat a konstruktoroknak.  Alapértelmezés szerint azonban ezeket az új naplózási szűrőket a rendszer kiszűri a függvények naplóiból.  A további szűrők és kategóriák kiválasztásához módosítania kell a `host.json` fájlt.  Az alábbi minta azt mutatja be, hogyan adhat hozzá egy `ILogger<HttpTrigger>` a gazdagép által elérhető naplókhoz.
+
+```csharp
+namespace MyNamespace
+{
+    public class HttpTrigger
+    {
+        private readonly ILogger<HttpTrigger> _log;
+
+        public HttpTrigger(ILogger<HttpTrigger> log)
+        {
+            _log = log;
+        }
+
+        [FunctionName("HttpTrigger")]
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
+        {
+            _log.LogInformation("C# HTTP trigger function processed a request.");
+
+            // ...
+    }
+}
+```
+
+És egy `host.json` fájl, amely hozzáadja a napló szűrőjét.
+
+```json
+{
+    "version": "2.0",
+    "logging": {
+        "applicationInsights": {
+            "samplingExcludedTypes": "Request",
+            "samplingSettings": {
+                "isEnabled": true
+            }
+        },
+        "logLevel": {
+            "MyNamespace.HttpTrigger": "Information"
+        }
+    }
+}
+```
+
 ## <a name="function-app-provided-services"></a>A függvény által biztosított szolgáltatások
 
 A Function Host számos szolgáltatást regisztrál. A következő szolgáltatások az alkalmazástól való függőségként is biztonságosak:
 
-|Service Type|Élettartama|Leírás|
+|Szolgáltatás típusa|Élettartama|Leírás|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Futásidejű konfiguráció|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|A gazdagép-példány AZONOSÍTÓjának biztosításáért felelős|

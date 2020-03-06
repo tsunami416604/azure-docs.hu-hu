@@ -4,12 +4,12 @@ description: A QnA Maker szolgáltatással kapcsolatos leggyakrabban felmerülő
 ms.topic: troubleshooting
 ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 37aae8e67ccc84a6e22be8ce8a304fc4884ead52
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 4596c16a5d7c9053bf0e27af476c66fe8fa9ed35
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273397"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296099"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker hibaelhárítása
 
@@ -224,7 +224,7 @@ Ha több nyelven elérhető tartalmait, mindenképpen hozzon létre egy külön 
 <details>
 <summary><b>Hogyan hozhatok létre egy új robotot a QnA Maker használatával?</b></summary>
 
-**Válasz**: kövesse az [ebben](./Tutorials/create-qna-bot.md) a dokumentációban található utasításokat a robot Azure bot Service való létrehozásához.
+**Válasz**: kövesse az [ebben](./Quickstarts/create-publish-knowledge-base.md) a dokumentációban található utasításokat a robot Azure bot Service való létrehozásához.
 
 </details>
 
@@ -255,7 +255,7 @@ A Tudásbázis végponti kulcsának címkéje `QnAAuthkey` az ABS szolgáltatás
 
 **Válasz**: kövesse az alábbi lépéseket a QnA Maker szolgáltatás webes csevegéses vezérlőként való beágyazásához a webhelyén:
 
-1. A GYIK-robot létrehozásához kövesse az [itt](./Tutorials/create-qna-bot.md)található utasításokat.
+1. A GYIK-robot létrehozásához kövesse az [itt](./Quickstarts/create-publish-knowledge-base.md)található utasításokat.
 2. Az [itt](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat) leírt lépéseket követve engedélyezze a webes csevegést
 
 </details>

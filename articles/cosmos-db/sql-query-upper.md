@@ -4,18 +4,18 @@ description: Ismerkedjen meg az SQL System Function felső Azure Cosmos DBával.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9809a138a5e28eb069d545d39cfda815c915bd78
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 5129b4fffafb6918f655263cac2f5564635acf36
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75728888"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303970"
 ---
 # <a name="upper-azure-cosmos-db"></a>FELSŐ (Azure Cosmos DB)
- Egy karakterlánc-kifejezést ad vissza a kisbetűs karakterek nagybetűssé alakítását követően.  
+ Egy karakterlánc-kifejezés után kisbetűt adatok nagybetűssé alakításával adja vissza.  
 
 A felső rendszerfüggvény nem használja az indexet. Ha gyakori kis-és nagybetűket nem megkülönböztető összehasonlításokat tervez, a felső rendszerfunkció nagy mennyiségű RU-t használhat fel. Ha ez az eset áll fenn, ahelyett, hogy a felső rendszerfüggvényt használja az összehasonlítások minden egyes időpontjában az adatnormalizálás során, a borítást a Beszúrás után normalizálhatja. Ezután egy olyan lekérdezés, mint például a SELECT * FROM c, ahol az UPPER (c. Name) = ' BOB ' egyszerűen KIVÁLASZTJA * a c-ből, ahol a c.name = ' BOB ' lesz.
 
@@ -32,7 +32,7 @@ UPPER(<str_expr>)
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy karakterlánc-kifejezést ad vissza.  
+  Egy karakterlánc-kifejezés adja vissza.  
   
 ## <a name="examples"></a>Példák
   
@@ -42,11 +42,15 @@ UPPER(<str_expr>)
 SELECT UPPER("Abc") AS upper  
 ```  
   
- Itt látható az eredményhalmaz.  
+ Íme az eredményhalmaz.  
   
 ```json
 [{"upper": "ABC"}]  
 ```
+
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>Következő lépések
 

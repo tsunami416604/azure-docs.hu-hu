@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 3e7742e7035f3c4f4827a2edae1ad5a705aa221f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 67507dc571b3fab93e61e70c1e8282ee5c0a4630
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693417"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301386"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>A Microsoft® Smooth Streaming ügyféloldali Porting Kit licencelése 
 ## <a name="overview"></a>Áttekintés
-A Microsoft Smooth Streaming ügyféloldali Porting Kit (**SSPK** ) egy Smooth streaming ügyfél-implementáció, amely a beágyazott eszközök, a kábelek és a mobileszközök, a tartalomszolgáltatók, a kézibeszélő-gyártók, valamint a mobileszköz-szolgáltatók támogatására van optimalizálva. független szoftvergyártók (ISV-ket) és a megoldások szolgáltatói számára, hogy Smooth Streaming formátumban hozzanak létre az adaptív tartalmakat. A SSPK olyan Smooth Streaming-ügyfél eszköz-és platform-független implementációja, amelyet a licenccel bármely eszközre és platformra lehet átadni. 
+A Microsoft Smooth Streaming ügyfél-telepítési csomag (**SSPK** ) egy olyan Smooth streaming ügyfél-implementáció, amely a beágyazott eszközök gyártóinak, a kábeleknek és a mobil operátoroknak, a tartalomszolgáltatóknak, a kézibeszélő-gyártóknak, a független szoftvergyártóknak, valamint a megoldás-szolgáltatóknak az adaptív tartalmak Smooth streaming formátumban való továbbítására optimalizált termékeket és szolgáltatásokat hoz létre. A SSPK olyan Smooth Streaming-ügyfél eszköz-és platform-független implementációja, amelyet a licenccel bármely eszközre és platformra lehet átadni. 
 
 Az alábbiakban látható egy magas szintű architektúra és IIS-Smooth Streaming a bevezetési készlet a Microsoft által biztosított Smooth Streaming ügyfél-implementáció, amely tartalmazza az Smooth Streaming-tartalmak lejátszásához szükséges összes alapvető logikát. Ezt a tartalmat egy adott eszközhöz vagy platformhoz tartozó partnerek a megfelelő felületek bevezetésével egy adott eszközhöz vagy platformhoz csatolják. 
 
@@ -81,7 +81,7 @@ Az ideiglenes és a végső SSPK-licencek technikai kérdéseket küldhetnek [sm
 
 * Ügyes Business Solutions, Inc
 * Speciális digitális szórásos biztonsági társítás
-* AirTies Kablosuz Iletism Sanayive dis Ticaret A.S.
+* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
 * Albis Technologies Ltd.
 * Alticast Corporation
 * Amazon Digital Services, Inc.
@@ -105,7 +105,6 @@ Az ideiglenes és a végső SSPK-licencek technikai kérdéseket küldhetnek [sm
 * SoftAtHome
 * Sony Corporation
 * Tatung Technology Inc.
-* TCL Technology Electronics (Huizhou) Co., Ltd.
 * Top Victory Investments, Ltd.
 * Vestel Elektronik Sanayi ve Ticaret A.S.
 * VisualOn, Inc.
@@ -113,7 +112,7 @@ Az ideiglenes és a végső SSPK-licencek technikai kérdéseket küldhetnek [sm
 
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>A Microsoft Smooth Streaming ügyfél végleges termékre vonatkozó licencszerződései
 * Speciális digitális szórásos biztonsági társítás
-* AirTies Kablosuz Iletism Sanayive dis Ticaret A.S.
+* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
 * Albis Technologies Ltd.
 * Amazon Digital Services, Inc.
 * AmTRAN Technology Co., Ltd.
@@ -152,7 +151,6 @@ Az ideiglenes és a végső SSPK-licencek technikai kérdéseket küldhetnek [sm
 * SmarDTV S.A.
 * SoftAtHome
 * Sony Corporation
-* TCL tengerentúli marketing (Makaó kereskedelmi offshore) Limited
 * Technicolor kézbesítési technológiák, SAS
 * Tongfang Global Ltd.
 * Top Victory Investments, Ltd.

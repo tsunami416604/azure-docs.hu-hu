@@ -9,11 +9,11 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: 7d637c2fb3f4a4d5f8deac9cd99c0a44af6568e6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919611"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359748"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 ismert problémái
 
@@ -29,7 +29,7 @@ Data Lake Storage a Gen2 számos olyan Azure-szolgáltatást támogat, amelyet a
 
 Lásd: [Azure Data Lake Storage Gen2 támogató Azure-szolgáltatások](data-lake-storage-supported-azure-services.md).
 
-## <a name="supported-open-source-platforms"></a>Támogatja a nyílt forráskódú platformok
+## <a name="supported-open-source-platforms"></a>Támogatott nyílt forráskódú platformok
 
 Számos nyílt forráskódú platformra támogatja a Data Lake Storage Gen2. A teljes listát lásd: a [Azure Data Lake Storage Gen2t támogató nyílt forráskódú platformok](data-lake-storage-supported-open-source-platforms.md).
 

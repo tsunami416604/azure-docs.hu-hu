@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 2089f4191ddd57fa8dc19862bd195756c166f2d4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5d65ac83fc8a41008971108c5b370c1d0416113b
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805858"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331519"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>Útmutató: a kodekkel tömörített hangbemenet használata az iOS-es Speech SDK-val
 
 A Speech SDK **tömörített hangbemeneti stream** API lehetővé teszi a tömörített hang továbbítását a beszédfelismerési szolgáltatásba egy lekéréses vagy leküldéses adatfolyam használatával.
 
 > [!IMPORTANT]
-> Az iOS rendszerű tömörített hang folyamatos átviteléhez a Speech SDK 1.7.0 vagy újabb verziója szükséges. A [ C++, C#a és a Java Linux rendszeren is támogatott (Ubuntu 16,04, Ubuntu 18,04, Debian 9)](how-to-use-codec-compressed-audio-input-streams.md) és [Java Androidon.](how-to-use-codec-compressed-audio-input-streams-android.md)
+> Az iOS rendszerű tömörített hang folyamatos átviteléhez a Speech SDK 1.7.0 vagy újabb verziója szükséges. A [ C++, C#a és a Java Linux rendszeren is támogatott (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)](how-to-use-codec-compressed-audio-input-streams.md) és [Java Androidon.](how-to-use-codec-compressed-audio-input-streams-android.md)
 
 A WAV/PCM esetében tekintse meg a fővonal beszédének dokumentációját. A WAV/PCM-en kívül a következő codec tömörített bemeneti formátumok támogatottak:
 

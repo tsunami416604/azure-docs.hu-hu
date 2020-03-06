@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI-vel az IoT Hub fájlfeltöltés konfigurálása |} A Microsoft Docs
-description: Konfigurálása fájlt tölt fel az Azure IoT hubba a platformfüggetlen Azure parancssori felületével.
+title: A fájlfeltöltés konfigurálása IoT Hub az Azure CLI használatával | Microsoft Docs
+description: Fájlok feltöltésének konfigurálása az Azure IoT Hub a platformfüggetlen Azure CLI használatával.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,34 +8,34 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: fe6ce23b9e87235521739b7808712a9d541dabf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df3c8d2abf59de6c9f685ad8d93e6689738df8e6
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734915"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302525"
 ---
-# <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Az IoT Hub Azure CLI-vel a fájlfeltöltések konfigurálása
+# <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>IoT Hub fájlfeltöltés konfigurálása az Azure CLI-vel
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-A [fájlfeltöltés az eszközökről](iot-hub-devguide-file-upload.md), először társítania kell egy Azure Storage-fiókot az IoT hubbal. Használjon egy meglévő tárfiókot, vagy hozzon létre egy újat.
+Ha [fájlokat szeretne feltölteni egy eszközről](iot-hub-devguide-file-upload.md), először társítson egy Azure Storage-fiókot az IoT hubhoz. Használhat meglévő Storage-fiókot, vagy létrehozhat egy újat.
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Aktív Azure-fiók. Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.
+* Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
 
 * [Azure parancssori felület (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-* Az Azure IoT hubra. Ha nem rendelkezik egy IoT hubot, használhatja a [ `az iot hub create` parancs](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) hozhat létre egyet vagy [hozzon létre egy IoT hubot, a portál használatával](iot-hub-create-through-portal.md).
+* Egy Azure IoT hub. Ha nem rendelkezik IoT-hubhoz, a [`az iot hub create` paranccsal](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) létrehozhat egyet, vagy [létrehozhat egy IoT hubot a portál használatával](iot-hub-create-through-portal.md).
 
-* Egy Azure Storage-fiók. Ha nem rendelkezik Azure Storage-fiókot, akkor használhatja a [Azure CLI - storage-fiókok kezelése](../storage/common/storage-azure-cli.md#manage-storage-accounts) hozzon létre egyet, vagy a portál használata [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md).
+* Egy Azure Storage-fiók. Ha nem rendelkezik Azure Storage-fiókkal, akkor az Azure CLI használatával létrehozhat egyet. További információ: [Tárfiók létrehozása](../storage/common/storage-create-storage-account.md).
 
-## <a name="sign-in-and-set-your-azure-account"></a>Jelentkezzen be, és állítsa be az Azure-fiókkal
+## <a name="sign-in-and-set-your-azure-account"></a>Jelentkezzen be, és állítsa be Azure-fiókját
 
 Jelentkezzen be Azure-fiókjába, és válassza ki előfizetését.
 
-1. A parancssorban futtassa a [login paranccsal](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest):
+1. A parancssorban futtassa a [login parancsot](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest):
 
     ```azurecli
     az login
@@ -43,67 +43,67 @@ Jelentkezzen be Azure-fiókjába, és válassza ki előfizetését.
 
     Kövesse az utasításokat a kóddal történő hitelesítéshez, és jelentkezzen be az Azure-fiókjába webböngészőből.
 
-2. Ha több Azure-előfizetéssel rendelkezik, az Azure-ba történő bejelentkezéssel hozzáfér a hitelesítő adatokhoz tartozó összes Azure-fiókhoz. Használja a következő [paranccsal listát készíthet az Azure-fiókok](https://docs.microsoft.com/cli/azure/account) elérhető kell használni:
+2. Ha több Azure-előfizetéssel rendelkezik, az Azure-ba történő bejelentkezéssel hozzáfér a hitelesítő adatokhoz tartozó összes Azure-fiókhoz. Használja az alábbi parancsot a használni kívánt [Azure-fiókok listázásához](https://docs.microsoft.com/cli/azure/account) :
 
     ```azurecli
     az account list
     ```
 
-    A következő paranccsal, amely az IoT hub létrehozása a parancsok futtatásához használni kívánt előfizetés kiválasztásához. Használhatja az előző parancs kimenetéből származó előfizetésnevet vagy -azonosítót:
+    A következő parancs használatával válassza ki azt az előfizetést, amelyet az IoT hub létrehozásához használni kíván a parancsok futtatásához. Használhatja az előző parancs kimenetéből származó előfizetésnevet vagy -azonosítót:
 
     ```azurecli
     az account set --subscription {your subscription name or id}
     ```
 
-## <a name="retrieve-your-storage-account-details"></a>A storage-fiók adatainak beolvasása
+## <a name="retrieve-your-storage-account-details"></a>A Storage-fiók adatainak beolvasása
 
-A következő lépések azt feltételezik, hogy a tárfiók tárfiókkulcsait létrehozott a **Resource Manager** -alapú üzemi modellben, és nem a **klasszikus** üzemi modellt.
+A következő lépések azt feltételezik, hogy a Storage-fiókot a **Resource Manager** -alapú üzemi modellel hozta létre, nem a **klasszikus** üzemi modellt.
 
-Fájlfeltöltés az eszközökről származó konfigurálásához szükség van a kapcsolati karakterláncot egy Azure storage-fiókot. A storage-fiókot az IoT hub az azonos előfizetésben kell lennie. A storage-fiókban található blob-tárolóra nevét is szükséges. A következő parancsot használja a storage-fiók kulcsok lekéréséhez:
+A fájlfeltöltés az eszközökről való konfigurálásához szükség van egy Azure Storage-fiókhoz tartozó kapcsolódási karakterláncra. A Storage-fióknak ugyanahhoz az előfizetéshez kell tartoznia, mint az IoT hub-nak. Szüksége lesz egy blob-tároló nevére is a Storage-fiókban. A Storage-fiók kulcsainak lekéréséhez használja a következő parancsot:
 
 ```azurecli
 az storage account show-connection-string --name {your storage account name} \
   --resource-group {your storage account resource group}
 ```
 
-Jegyezze fel a **connectionString** értéket. A következő lépésekben van szükség.
+Jegyezze fel a **ConnectionString** értéket. A következő lépésekben kell megadnia.
 
-Meglévő blob tároló használata a fájlfeltöltési, vagy hozzon létre egy újat:
+Használhat meglévő BLOB-tárolót a fájl feltöltéséhez, vagy létrehozhat egy újat:
 
-* A meglévő, a tárfiókban található blob-tárolók listájában, használja a következő parancsot:
+* A Storage-fiókban található meglévő blob-tárolók listázásához használja a következő parancsot:
 
     ```azurecli
     az storage container list --connection-string "{your storage account connection string}"
     ```
 
-* Hozzon létre egy blobtárolót a tárfiókban található, használja a következő parancsot:
+* BLOB-tároló létrehozásához a Storage-fiókban használja a következő parancsot:
 
     ```azurecli
     az storage container create --name {container name} \
       --connection-string "{your storage account connection string}"
     ```
 
-## <a name="file-upload"></a>Fájl feltöltése
+## <a name="file-upload"></a>Fájlfeltöltés
 
-Mostantól konfigurálhatja az IoT hub lehetővé [fájlok feltöltése az IoT hub](iot-hub-devguide-file-upload.md) használatával a tárfiók részleteit.
+Mostantól konfigurálhatja az IoT hubot, hogy lehetővé tegye a [fájlok feltöltését az IoT hubhoz](iot-hub-devguide-file-upload.md) a Storage-fiók adataival.
 
-A konfigurációs van szükség a következő értékeket:
+A konfigurációhoz a következő értékek szükségesek:
 
-* **A tároló**: Az aktuális Azure-előfizetés társítása az IoT hub az Azure storage-fiókban lévő blobtárolóba. A szükséges tárolási fiók adatait az előző szakaszban lekért. Az IoT Hub automatikusan létrehozza az SAS URI-k eszközöket használja, ha azok a fájlok feltöltése a blob-tárolóba írási engedéllyel rendelkező.
+* **Storage Container**: egy Azure Storage-fiókban lévő blob-tároló az aktuális Azure-előfizetésben az IoT hub-hoz való hozzárendeléshez. Az előző szakaszban lekérte a szükséges Storage-fiók adatait. A IoT Hub automatikusan létrehoz egy írási engedéllyel rendelkező SAS URI-t a blob-tárolóhoz a fájlok feltöltésekor használandó eszközökhöz.
 
-* **A feltöltött fájlokkra vonatkozó értesítések fogadása**: Értesítések engedélyezése vagy letiltása fájl feltöltése.
+* **Értesítések fogadása a feltöltött fájlokról**: a fájlfeltöltés értesítéseinek engedélyezése vagy letiltása.
 
-* **SAS-ÉLETTARTAM**: Ez a beállítás akkor a time-to-live, az eszközt az IoT Hub által visszaadott SAS URI-azonosítókat. Alapértelmezés szerint egy óra beállítva.
+* **Sas TTL**: Ez a beállítás a IoT hub által az eszközre visszaadott sas URI-k élettartama. Alapértelmezés szerint egy órára van beállítva.
 
-* **Értesítési beállítások alapértelmezett TTL fájl**: Értesítés a time-to-live-fájl feltöltése, mielőtt lejár. Alapértelmezés szerint egy nap beállítva.
+* **Fájl-értesítési beállítások alapértelmezett élettartama**: a fájl feltöltésével kapcsolatos értesítési idő a lejárta előtt. Alapértelmezés szerint egy napra van állítva.
 
-* **A fájl értesítési kézbesítések maximális száma**: Az IoT Hub próbál fájlt hányszor értesítési töltse fel. Alapértelmezés szerint a 10-re állítva.
+* **Fájl értesítéseinek maximális kézbesítési száma**: az a szám, ahányszor a IoT hub megpróbált kézbesíteni egy fájlfeltöltés-értesítést. Alapértelmezés szerint 10 értékre kell állítani.
 
-A következő Azure CLI-parancsok használatával adja meg a fájl feltöltése beállításait az IoT hubnak:
+Az alábbi Azure CLI-parancsokkal konfigurálhatja a IoT hub fájlfeltöltés-beállításait:
 
 <!--Robinsh this is out of date, add cloud powershell -->
 
-Bash-felületen használja:
+Egy bash-rendszerhéjban használja a következőket:
 
 ```azurecli
 az iot hub update --name {your iot hub name} \
@@ -125,24 +125,24 @@ az iot hub update --name {your iot hub name} \
   --set properties.messagingEndpoints.fileNotifications.ttlAsIso8601=PT1H0M0S
 ```
 
-A fájlok feltöltése konfigurálása az IoT hub a következő paranccsal tekintheti meg:
+Az IoT hub fájlfeltöltés-konfigurációját a következő parancs használatával tekintheti meg:
 
 ```azurecli
 az iot hub show --name {your iot hub name}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az IoT Hub a fájl feltöltése képességeivel kapcsolatos további információkért lásd: [fájlfeltöltés az eszközökről](iot-hub-devguide-file-upload.md).
+További információ a IoT Hub fájl feltöltési képességeiről: [fájlok feltöltése eszközről](iot-hub-devguide-file-upload.md).
 
-Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:
+Az alábbi hivatkozásokat követve további információkat tudhat meg az Azure IoT Hub kezeléséről:
 
 * [IoT-eszközök tömeges felügyelete](iot-hub-bulk-identity-mgmt.md)
-* [Az IoT Hub-metrikák](iot-hub-metrics.md)
+* [IoT Hub metrikák](iot-hub-metrics.md)
 * [Műveletek figyelése](iot-hub-operations-monitoring.md)
 
-Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
+A IoT Hub képességeinek további megismeréséhez lásd:
 
-* [Az IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
-* [Edge-eszközök mesterséges Intelligencia telepítése az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
-* [Az IoT-megoldás az alapoktól biztonságos mentése](../iot-fundamentals/iot-security-ground-up.md)
+* [IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
+* [AI üzembe helyezése az Edge-eszközökön Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [A IoT-megoldás biztonságossá tétele az alapoktól](../iot-fundamentals/iot-security-ground-up.md)

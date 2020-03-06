@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/02/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 185556e3045cb1a879bc256f4f2932549de71cd8
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: d56cd3b3d286d69a51d8cc14eb8020343cf7295a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274941"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302984"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity-problems"></a>Az Azure Virtual Network NAT kapcsolódási problémáinak elhárítása
 
@@ -44,7 +44,7 @@ Egyetlen [NAT Gateway-erőforrás](nat-gateway-resource.md) 64 000 akár 1 000 0
 #### <a name="steps"></a>Lépések:
 
 1. Vizsgálja meg, hogy az alkalmazás hogyan hozza létre a kimenő kapcsolatokat (például a kód felülvizsgálatát vagy a csomagok rögzítését). 
-2. Állapítsa meg, hogy a tevékenység várható viselkedés-e, vagy hogy az alkalmazás nem működik-e.  Az eredmények alátámasztására a Azure Monitor mérőszámait használhatja.
+2. Állapítsa meg, hogy a tevékenység várható viselkedés-e, vagy hogy az alkalmazás nem működik-e.  Az eredmények alátámasztására a Azure Monitor [mérőszámait](nat-metrics.md) használhatja.
 3. Értékelje ki, hogy a megfelelő mintákat követi-e.
 4. Annak kiértékelése, hogy a SNAT-portok kimerülését csökkenteni kell-e a NAT-átjáró erőforrásához rendelt további IP-címekkel.
 
@@ -83,3 +83,4 @@ A következő táblázat kiindulási pontot használhat, amellyel a tesztek elin
 
 - Tudnivalók a [Virtual Network NAT](nat-overview.md) -ról
 - Tudnivalók a [NAT-átjáró erőforrásáról](nat-gateway-resource.md)
+- Tudnivalók a [NAT-átjáró erőforrásaira vonatkozó mérőszámokról és riasztásokról](nat-metrics.md).

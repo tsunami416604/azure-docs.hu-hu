@@ -1,5 +1,5 @@
 ---
-title: Objektumok
+title: eszközök
 titleSuffix: Azure Media Services
 description: Ismerje meg, hogy milyen eszközöket és hogyan használják a Azure Media Services.
 services: media-services
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 68bb1fea88ab7ba30e0ba07839f2d962840b7818
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ce32343faefbcf2484ec0b1b39f752654a2d8514
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921181"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303613"
 ---
 # <a name="assets-in-azure-media-services"></a>Eszközök a Azure Media Services
 
@@ -32,7 +32,7 @@ Az **archív** tárolási szint csak olyan nagy méretű forrásfájlok esetébe
 
 ## <a name="naming"></a>Elnevezés 
 
-### <a name="assets"></a>Objektumok
+### <a name="assets"></a>eszközök
 
 Az eszköz nevének egyedinek kell lennie. A (z) Media Services v3-erőforrások neve (például eszközök, feladatok, átalakítások) Azure Resource Manager elnevezési megkötések hatálya alá tartozik. További információ: [elnevezési konvenciók](media-services-apis-overview.md#naming-conventions).
 
@@ -75,6 +75,6 @@ Az inaktív eszközök védelmére, titkosítani kell az eszközök által a sto
 
 [Eszközök kezelése a Media Servicesban](manage-asset-concept.md)
 
-## <a name="also-see"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [Media Services v2 és v3 közötti különbségek](migrate-from-v2-to-v3.md)

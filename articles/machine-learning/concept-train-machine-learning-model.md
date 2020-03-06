@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: f46dd2b30ca84a7e6a1b0fc34ef0fa5bafffaef5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 03/05/2020
+ms.openlocfilehash: 68b7dfbf61f5d353f394bfbc034e00fddd262cd1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721115"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344044"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Az Azure Machine Learning-modellek betanításához
 
@@ -28,6 +28,8 @@ A Azure Machine Learning számos lehetőséget kínál a modellek betanításár
     | [Automatizált gépi tanulás](#automated-machine-learning) | Az automatizált gépi tanulás lehetővé teszi a **modellek széles körű adatelemzési és programozási ismeretek nélküli tanítását**. Az adatelemzési és-programozási hátterű felhasználók számára lehetővé teszi az idő és az erőforrások megtakarítását az algoritmus kiválasztásának és a hiperparaméter hangolásának automatizálásával. Az automatizált gépi tanulás használatakor nem kell aggódnia a futtatási konfiguráció definiálásával kapcsolatban. |
     | [Becslések](#estimators) | A kalkulátor osztályok megkönnyítik a **modellek betanítását a népszerű gépi tanulási keretrendszerek alapján**. A **Scikit-Learn**, a **PyTorch**, a **TensorFlow**és a **chainer**esetében a kalkulátor osztályok vannak. Létezik egy általános kalkulátor is, amely olyan keretrendszerek esetében használható, amelyek még nem rendelkeznek dedikált kalkulátor-osztállyal. A becslések használatakor nem kell aggódnia a futtatási konfiguráció definiálásával kapcsolatban. |
     | [Gépi tanulási folyamat](#machine-learning-pipeline) | A folyamatok nem egy másik betanítási módszer, hanem a **munkafolyamatok moduláris, újrafelhasználható lépésekkel való definiálásának módja**, amely magában foglalhatja a munkafolyamatok részét képező képzést is. A gépi tanulási folyamatokat az automatizált gépi tanulás, a becslések és a modellek betanítására szolgáló konfiguráció futtatásával támogatja. Mivel a folyamatok nem kifejezetten a képzésre összpontosítottak, a folyamat használatának okai a többi tanítási módszernél változatosabbek. Általában a következőket lehet használni:<br>* Olyan **felügyelet nélküli folyamatokat szeretne ütemezni** , mint például a hosszan futó betanítási feladatok vagy az adatok előkészítése.<br>* **Több olyan lépést** is használhat, amely heterogén számítási erőforrásokon és tárolási helyeken is össze van hangolva.<br>* Használja a folyamatot **újrafelhasználható sablonként** adott forgatókönyvekhez, például az újraképzéshez vagy a kötegelt pontozáshoz.<br>a munkafolyamathoz tartozó **adatforrások, bemenetek és kimenetek * ának nyomon követése** .<br>* A munkafolyamatot **különböző csapatok valósítják meg, amelyek egymástól függetlenül működnek**. A lépések ezután összekapcsolhatók egy folyamattal a munkafolyamat megvalósításához. |
+
++ [Python Azure Machine learning SDK](#r-sdk): az SDK a reticulate-csomagot használja a Azure Machine learning Python SDK-hoz való kötéshez. Ez lehetővé teszi a Python SDK-ban megvalósított alapvető objektumok és módszerek elérését bármely R-környezetből.
 
 + **Tervező**: a Azure Machine learning Designer (előzetes verzió) egyszerű belépési pontot biztosít a gépi tanuláshoz a fogalmak vagy a kis kódolási élményt biztosító felhasználók számára. Lehetővé teszi a modellek betanítását egy fogd és vidd webes KEZELŐFELÜLET használatával. A Python-kódokat használhatja a terv részeként, vagy betaníthatja a modelleket anélkül, hogy kódot kellene írnia.
 
@@ -61,7 +63,7 @@ Adja meg az iterációkat, a hiperparaméter beállításait, a featurization é
 > [!TIP]
 > A Python SDK mellett a [Azure Machine learning Studióban](https://ml.azure.com)is használhatja az automatikus ml-t.
 
-* [Mi az az automatizált gépi tanulás?](concept-automated-ml.md)
+* [Mi az automatizált gépi tanulás?](concept-automated-ml.md)
 * [Oktatóanyag: az első besorolási modell létrehozása automatizált gépi tanulással](tutorial-first-experiment-automated-ml.md)
 * [Oktatóanyag: automatikus gépi tanulás használata a taxi viteldíjak előrejelzéséhez](tutorial-auto-train-models.md)
 * [Példák: Jupyter Notebook a gépi tanulásra vonatkozó példák](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
@@ -88,6 +90,15 @@ A gépi tanulási folyamatok használhatják a korábban említett tanítási m�
 * [Példák: példák a gépi tanulási folyamatokra Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [Példák: folyamat automatikus gépi tanulással](https://aka.ms/pl-automl)
 * [Példák: folyamat becslések-mel](https://aka.ms/pl-estimator)
+
+## <a name="r-sdk"></a>R SDK
+
+Az R SDK lehetővé teszi az R nyelv használatát a Azure Machine Learning. Az SDK a reticulate csomagot használja a Azure Machine Learning Python SDK-hoz való kötéshez. Ez lehetővé teszi a Python SDK-ban megvalósított alapvető objektumok és módszerek elérését bármely R-környezetből.
+
+További információkért tekintse át a következő cikkeket:
+
+* [Oktatóanyag: logisztikai regressziós modell létrehozása](tutorial-1st-r-experiment.md)
+* [Az R-hez készült Azure Machine Learning SDK-referenciák](https://azure.github.io/azureml-sdk-for-r/index.html)
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning Designer
 

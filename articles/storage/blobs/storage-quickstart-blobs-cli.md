@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: b0fe0cf0d477d1360d3789f74f30565e15cfd42e
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 58532c6eb6e01a993bce7d6e22a7b5274a465963
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206919"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298184"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Gyors útmutató: Blobok létrehozása, letöltése és listázása az Azure CLI-vel
 
@@ -153,7 +153,7 @@ azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az erőforráscsoport egyik erőforrására sem, beleértve az ebben a rövid útmutatóban létrehozott Storage-fiókot, törölje az erőforráscsoportot az az [Group delete](/cli/azure/group) paranccsal. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
+Ha törölni szeretné a rövid útmutató részeként létrehozott erőforrásokat, beleértve a Storage-fiókot, törölje az erőforráscsoportot az az [Group delete](/cli/azure/group) paranccsal. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
 ```azurecli
 az group delete \

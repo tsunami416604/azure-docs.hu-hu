@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e0ef46d23ba267bbfc1ff539eb659fafe2b44f8e
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: d5b2ef57af112169fb39e0da7a60b095698ff504
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085681"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299830"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>A webes API-k 1.0-s verziójának elfogadására szolgáló hatókörök
 
@@ -25,7 +25,7 @@ A OAuth2 engedélyek olyan jogosultsági hatókörök, amelyek egy Azure Active 
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>A v 1.0 alkalmazás adott OAuth2 engedélyeihez való hozzáférést kérő hatókörök
 
-Ha jogkivonatokat szeretne beszerezni egy v 1.0 alkalmazás adott hatóköréhez (például az Azure AD Graph, amely https://graph.windows.net), hozzon létre hatóköröket egy kívánt erőforrás-azonosítónak a kívánt OAuth2 engedéllyel való összefűzésével az adott erőforráshoz.
+Ha jogkivonatokat szeretne beszerezni egy v 1.0 alkalmazás adott hatóköréhez (például a Microsoft Graph API-t, amely https://graph.microsoft.com), hozzon létre hatóköröket úgy, hogy összefűzve egy kívánt erőforrás-azonosítót egy kívánt OAuth2 engedéllyel az adott erőforráshoz.
 
 Ha például a felhasználó nevében egy v 1.0 webes API-t szeretne elérni, ahol az alkalmazás-azonosító URI-ja `ResourceId`:
 
@@ -37,15 +37,15 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-Ha az Azure ad Graph API (https:\//graph.windows.net/) használatával szeretne beolvasni és írni az MSAL.NET Azure AD-t, létre kell hoznia a hatókörök listáját az alábbi példákban látható módon:
+Ha a MSAL.NET Azure AD-t a Microsoft Graph API-val (https:\//graph.microsoft.com/) szeretné olvasni és írni, létre kell hoznia a hatókörök listáját az alábbi példákban látható módon:
 
 ```csharp
-string ResourceId = "https://graph.windows.net/";
+string ResourceId = "https://graph.microsoft.com/";
 var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 
 ```javascript
-var ResourceId = "https://graph.windows.net/";
+var ResourceId = "https://graph.microsoft.com/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 

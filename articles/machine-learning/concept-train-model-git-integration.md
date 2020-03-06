@@ -9,20 +9,35 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: b83eb1556ed3f4a41409faf70f6ba9d8cd28322d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
-ms.translationtype: MT
+ms.openlocfilehash: 10e4ba16e00a37d532a2eceb69fedb8f5b62be8b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732178"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301658"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integráció a Azure Machine Learning
 
-A [git](https://git-scm.com/) egy népszerű verziókövetés-rendszer, amely lehetővé teszi a projektek megosztását és együttműködését. Amikor beküld egy betanítási feladatot a Azure Machine Learningre, ha a betanítási fájlokat egy helyi git-tárházban tárolja, a program a betanítási folyamat részeként nyomon követi az adattárral kapcsolatos információkat.
+A [git](https://git-scm.com/) egy népszerű verziókövető rendszer, amely lehetővé teszi a projektek megosztását és együttműködését. 
+
+A Azure Machine Learning teljes mértékben támogatja a nyomon követéshez használható git-Tárházak használatát – a Tárházak közvetlenül a megosztott munkaterület fájlrendszerére, a git használata a helyi munkaállomáson, vagy a git használata CI/CD-folyamatból.
+
+Ha Azure Machine Learningre küld el egy feladatot, ha a forrásfájlok egy helyi git-tárházban tárolódnak, akkor a rendszer a betanítási folyamat részeként nyomon követi a tárházra vonatkozó információkat.
 
 Mivel Azure Machine Learning nyomon követi a helyi git-tárház adatait, nem kötődik egyetlen konkrét központi adattárhoz sem. A tárházat a GitHub, a GitLab, a bitbucket, az Azure DevOps vagy más git-kompatibilis szolgáltatásból lehet klónozott.
 
-## <a name="how-does-git-integration-work"></a>Hogyan működik a git-integráció?
+## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Git-adattárak klónozása a munkaterület fájlrendszerében
+Azure Machine Learning megosztott fájlrendszert biztosít a munkaterület összes felhasználója számára.
+Ha a git-tárházat ebbe a fájlmegosztásba szeretné klónozott, javasoljuk, hogy hozzon létre egy számítási példányt & nyisson meg egy terminált.
+Miután megnyitotta a terminált, egy teljes git-ügyfélhez férhet hozzá, és a git parancssori felületén keresztül klónozott és dolgozhat a git használatával.
+
+Azt javasoljuk, hogy a tárházat a felhasználók könyvtárába klónozással, hogy mások ne hozzanak ütközéseket közvetlenül a munkaágra.
+
+A (GitHub, Azure Repos, BitBucket stb.) használatával bármilyen git-tárház klónozását végezheti el.
+
+A git parancssori felület használatáról itt [talál](https://guides.github.com/introduction/git-handbook/)további tájékoztatást.
+
+## <a name="track-code-that-comes-from-git-repositories"></a>A git-adattárakból származó kód nyomon követése
 
 Amikor beküld egy képzést a Python SDK-ból vagy Machine Learning CLI-ből, a modell betanításához szükséges fájlok fel lesznek töltve a munkaterületre. Ha a `git` parancs elérhető a fejlesztői környezetben, a feltöltési folyamat segítségével ellenőrizze, hogy a fájlokat git-tárházban tárolja-e a rendszer. Ha igen, akkor a git-tárházból származó információk is fel vannak töltve a betanítási Futtatás részeként. Ezeket az adatokat a következő tulajdonságok tárolják a betanítási futtatáshoz:
 
@@ -53,7 +68,7 @@ Ha a képzési fájlok nem egy git-tárházban találhatók a fejlesztői körny
 
 A git-adatokat egy tanítási Futtatás tulajdonságai tárolják. Ezeket az információkat a Azure Portal, a Python SDK és a CLI használatával tekintheti meg. 
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 1. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet.
 1. Válassza a __kísérletek__lehetőséget, majd válassza ki az egyik kísérletet.
@@ -89,7 +104,7 @@ A betanítási Futtatás elküldése után a rendszer egy [futtatási](https://d
 run.properties['azureml.git.commit']
 ```
 
-### <a name="cli"></a>CLI
+### <a name="cli"></a>parancssori felület
 
 A `az ml run` CLI-parancs használatával lekérheti a tulajdonságokat egy futtatásból. A következő parancs például visszaadja a `train-on-amlcompute`nevű kísérlet utolsó futtatásának tulajdonságait:
 

@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0bd53b72c334b35daea0864acf61cc432c272ae
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442122"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298819"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Kísérleti felhőalapú jogosultságkiosztás meglévő, szinkronizált AD-erdő esetén 
 
@@ -31,7 +31,7 @@ Az oktatóanyag kipróbálása előtt vegye figyelembe a következő elemeket:
 3. Győződjön meg arról, hogy a kísérleti hatókörben lévő objektumok rendelkeznek ms-DS-consistencyGUID feltöltve, így a Felhőbeli kiépítés megnehezíti az objektumokat. 
 
    > [!NOTE]
-   > Azure AD Connect a szinkronizálás nem tölti fel az *MS-DS-consistencyGUID* alapértelmezés szerint a csoport objektumaihoz. Kövesse a [blogbejegyzésben](https://blogs.technet.microsoft.com/markrenoden/2017/10/13/choosing-a-sourceanchor-for-groups-in-multi-forest-sync-with-aad-connect/) ismertetett lépéseket az *MS-DS-consistencyGUID* csoport objektumainak feltöltéséhez.
+   > Azure AD Connect a szinkronizálás nem tölti fel az *MS-DS-consistencyGUID* alapértelmezés szerint a csoport objektumaihoz.
 
 4. Ez egy speciális forgatókönyv. Ügyeljen arra, hogy pontosan kövesse az ebben az oktatóanyagban ismertetett lépéseket.
 
@@ -119,7 +119,7 @@ Ugyanezeket a lépéseket kell követni minden objektumtípus esetében (felhasz
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Az Azure AD Connect létesítési ügynök telepítése
 1. Jelentkezzen be a-kiszolgálóra, amelyet a vállalati rendszergazdai engedélyekkel fog használni.  Ha az [alapszintű ad-és Azure-környezetbeli](tutorial-basic-ad-azure.md) oktatóanyagot használja, az CP1 lenne.
-2. Töltse le az Azure AD Connect Cloud kiépítési ügynököt [itt](https://go.microsoft.com/fwlink/?linkid=2109037).
+2. Töltse le a Azure AD Connect Cloud kiépítési ügynököt az [itt](how-to-install.md#install-the-agent)ismertetett lépések segítségével.
 3. Az Azure AD Connect Cloud kiépítés (AADConnectProvisioningAgent. Installer) futtatása
 3. A splash képernyőn **fogadja el** a licencelési feltételeket, majd kattintson a **telepítés**gombra.</br>
 ![Üdvözlőképernyő](media/how-to-install/install1.png)</br>

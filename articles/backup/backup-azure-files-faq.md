@@ -3,12 +3,12 @@ title: 'GYIK: Azure Files biztonsági mentése'
 description: Ebből a cikkből megismerheti az Azure-fájlmegosztás Azure Backup szolgáltatással való védelemmel kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 053fe38b07fff5d289c72024ef185fbf5d647f70
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c69d4642aefbd599d3783dcdfa059a0cd9d129d9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293997"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302542"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 
@@ -83,7 +83,7 @@ Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban é
 - NWW (Norvégia nyugati régiója)
 - SZN (Észak-Svájc)
 
-Ha a fenti listában nem szereplő régióban kell használnia ezt a megoldást, írjon a következő e-mail-címre: [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com).
+Ha a fenti listában nem szereplő régióban kell használnia ezt a megoldást, írjon a következő e-mail-címre: [AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com).
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>Hány Azure-fájlmegosztást védhetek meg egy tárban?
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: dc844392d64178cb9000db15af39f923521efc19
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1f40f16ddbe5231dd754ad97b54e414c6ce9b9e7
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838383"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328829"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Az Azure-hoz csatlakoztatott Video Indexer-fiók létrehozása
 
@@ -124,8 +124,8 @@ Ha nem sikerült csatlakozni az Azure-hoz, a probléma megoldásához manuálisa
 4. A Media Services API-val való hitelesítéshez Video Indexer létre kell hozni egy AD-alkalmazást. Az alábbi lépések végigvezetik az Azure ad- [hitelesítés használatának első lépései a Azure Portal használatával](../previous/media-services-portal-get-started-with-aad.md)című témakörben ismertetett Azure ad-hitelesítési folyamaton:
 
     1. Az új Media Services fiókban válassza az **API-hozzáférés**lehetőséget.
-    2. Válassza ki az [egyszerű szolgáltatás hitelesítési módszerét](../previous/media-services-portal-get-started-with-aad.md#service-principal-authentication).
-    3. Szerezze be az ügyfél-azonosítót és az ügyfél titkát az ügyfél- [azonosító és az ügyfél titkos kulcsának beolvasása](../previous/media-services-portal-get-started-with-aad.md#get-the-client-id-and-client-secret) szakaszban leírtak szerint.
+    2. Válassza ki az [egyszerű szolgáltatás hitelesítési módszerét](../previous/media-services-portal-get-started-with-aad.md).
+    3. Az ügyfél-azonosító és az ügyfél titkos kulcsának beolvasása
 
         Miután kiválasztotta a **beállítások**->a **kulcsok**elemet, adja hozzá a **leírást**, nyomja meg a **Mentés**gombot, és a kulcs értéke betöltődik.
 
@@ -150,7 +150,7 @@ A párbeszédpanelen adja meg a következő adatokat:
 |Alkalmazásazonosító|Az Azure AD-alkalmazás azonosítója (a megadott Media Services fiókra vonatkozó engedélyekkel), amelyeket az előző szakaszban hozott létre.|
 |Alkalmazás kulcsa|Az előző szakaszban létrehozott Azure AD-alkalmazás kulcsa. |
 
-## <a name="considerations"></a>Megfontolandó szempontok
+## <a name="considerations"></a>Megfontolások
 
 A következő Azure Media Services kapcsolódó megfontolások érvényesek:
 
@@ -165,13 +165,13 @@ A következő Azure Media Services kapcsolódó megfontolások érvényesek:
 
 * Ha új Media Services-fiókhoz csatlakozik, Video Indexer automatikusan elindítja az alapértelmezett **folyamatos átviteli végpontot** :
 
-    ![Media Services streaming végpont](./media/create-account/ams-streaming-endpoint.png)
+    ![A Media Services-streamvégpont](./media/create-account/ams-streaming-endpoint.png)
 
     A streaming-végpontok jelentős indítási idővel rendelkeznek. Ezért több percet is igénybe vehet, amikor a fiókját az Azure-ba csatlakoztatta, amíg a videók nem továbbíthatók és nem nézték a Video Indexer webalkalmazásban.
 
 * Ha meglévő Media Services-fiókhoz csatlakozik, Video Indexer nem módosítja az alapértelmezett adatfolyam-végpont konfigurációját. Ha nincs futó adatfolyam- **végpont**, akkor nem fog tudni videókat megtekinteni ebből a Media Services fiókból vagy video Indexerból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Programozott módon használhatja a próbaverziós fiókját és/vagy az Azure-hoz kapcsolódó Video Indexer-fiókokat a következő témakörben található utasítások végrehajtásával: API-k [használata](video-indexer-use-apis.md).
 

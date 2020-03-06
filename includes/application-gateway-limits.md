@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 6/5/2019
+ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 6ab6c4c2051ccd2fbb22c383b9ca0af53ceb13d3
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: MT
+ms.openlocfilehash: 48f4c7497583e872c89e4d8cd92dab52ab4f9239
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77054915"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305012"
 ---
 | Erőforrás | Alapértelmezett/maximális korlát | Megjegyzés |
 | --- | --- | --- |
@@ -18,7 +18,7 @@ ms.locfileid: "77054915"
 | Előtér-portok |100<sup>1</sup> | |
 | Háttérbeli címkészlet |100<sup>1</sup> | |
 | Háttér-kiszolgálók/készlet |1,200 | |
-| HTTP-figyelők |100<sup>1</sup> | |
+| HTTP-figyelők |200<sup>1</sup> |Legfeljebb 100 aktív figyelő, amely útválasztási forgalom. Aktív figyelők = a figyelők teljes száma – a figyelők nem aktívak.<br>Ha egy útválasztási szabályban az alapértelmezett konfiguráció a forgalom irányítására van beállítva (például egy figyelővel, egy háttér-készlettel és a HTTP-beállításokkal), akkor az is figyelőnek számít.|
 | HTTP-terheléselosztási szabályok |100<sup>1</sup> | |
 | Háttérbeli HTTP-beállítások |100<sup>1</sup> | |
 | Átjárónkénti példányok száma |V1 SKU – 32<br>V2 SKU – 125 | |
@@ -36,7 +36,7 @@ ms.locfileid: "77054915"
 | URL-cím maximális hossza|32KB| |
 | A fejléc maximális mérete HTTP/2 esetén |4KB| |
 | Maximális fájlfeltöltés mérete, standard |2 GB | |
-| Maximális fájlfeltöltés mérete WAF |v1 közepes WAF-átjárók, 100 MB<br>v1 nagyméretű WAF-átjárók, 500 MB<br>v2 WAF, 750 MB| |
+| Maximális fájlfeltöltés mérete WAF |V1 közepes WAF-átjárók, 100 MB<br>V1 nagyméretű WAF-átjárók, 500 MB<br>V2 WAF, 750 MB| |
 | WAF-törzs mérete, fájlok nélkül|128 KB||
 | Egyéni WAF-szabályok maximális száma|100||
 | WAF-kizárások maximális száma|100||

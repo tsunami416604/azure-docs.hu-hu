@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: ae7812670da836efa326b9224547e4d1b64374c2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 9213ef03f383dec7109652246411fac154b4a7f9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873284"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302508"
 ---
 # <a name="log-azure-cosmos-db"></a>NAPLÓ (Azure Cosmos DB)
  A megadott numerikus kifejezés természetes alapú logaritmusát adja vissza.  
@@ -26,32 +26,32 @@ LOG (<numeric_expr> [, <base>])
 ## <a name="arguments"></a>Argumentumok
   
 *numeric_expr*  
-   Egy numerikus kifejezés.  
+   A numerikus kifejezés.  
   
 *alap*  
-   Nem kötelező numerikus argumentum, amely a logaritmus alapját állítja be.  
+   Olyan nem kötelező numerikus argumentum, amely beállítja a logaritmus alapjának a.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy numerikus kifejezést ad vissza.  
+  A numerikus kifejezést ad vissza.  
   
 ## <a name="remarks"></a>Megjegyzések
   
-  Alapértelmezés szerint a LOG () függvény a természetes alapú logaritmust adja vissza. A logaritmus alapjait másik értékre módosíthatja a választható alap paraméter használatával.  
+  Alapértelmezés szerint LOG() a természetes alapú logaritmusát adja vissza. A logaritmus alapja a választható alap paraméter használatával módosíthatja egy másik értéket.  
   
   A természetes logaritmus az **e**-Base logaritmusa, ahol az **e** egy, körülbelül 2,718281828-as irracionális konstans.  
   
-  Egy szám exponenciális értékének természetes alapú logaritmusa maga a szám: LOG (EXP (n)) = n. Egy szám természetes alapú logaritmusának exponenciális értéke maga a szám: EXP (LOG (n)) = n.  
+  Az exponenciális egy szám természetes algoritmusát az a szám maga: LOG (EXP (n)) = n. Az exponenciális egy szám természetes alapú logaritmus alapja az a szám, és maga: EXP (napló (n)) = n.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa deklarál egy változót, és visszaadja a megadott változó (10) logaritmus értékét.  
+  Az alábbi példa egy változó deklarálja, és a megadott változó (10) alapú logaritmus értékét adja vissza.  
   
 ```sql
 SELECT LOG(10) AS log  
 ```  
   
- Itt látható az eredményhalmaz.  
+ Íme az eredményhalmaz.  
   
 ```json
 [{log: 2.3025850929940459}]  
@@ -63,11 +63,15 @@ SELECT LOG(10) AS log
 SELECT EXP(LOG(10)) AS expLog  
 ```  
   
- Itt látható az eredményhalmaz.  
+ Íme az eredményhalmaz.  
   
 ```json
 [{expLog: 10.000000000000002}]  
 ```  
+
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>Következő lépések
 

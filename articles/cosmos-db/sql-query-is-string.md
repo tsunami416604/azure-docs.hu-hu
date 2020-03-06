@@ -1,18 +1,18 @@
 ---
-title: IS_STRING Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function IS_STRING Azure Cosmos DB.
+title: Azure Cosmos DB lekérdezési nyelv IS_STRING
+description: Ismerkedjen meg a Azure Cosmos DB SQL System Function IS_STRINGával.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e105394765ccd8a495a0b44b0c29e0c4c0b9f59a
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a717f343b0f46522a3ce2bb56c32e3f15998d777
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349783"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303766"
 ---
 # <a name="is_string-azure-cosmos-db"></a>IS_STRING (Azure Cosmos DB)
  Egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa egy karakterláncot ad vissza.  
@@ -34,7 +34,7 @@ IS_STRING(<expr>)
   
 ## <a name="examples"></a>Példák
   
-  A következő példa a JSON logikai, szám, karakterlánc, null, objektum, tömb és nem definiált típusok objektumait ellenőrzi a `IS_STRING` függvény használatával.  
+  A következő példa a JSON logikai, szám, karakterlánc, null, objektum, tömb és nem definiált típusok objektumait ellenőrzi a `IS_STRING` függvénnyel.  
   
 ```sql
 SELECT   
@@ -53,7 +53,11 @@ SELECT
 [{"isStr1":false,"isStr2":false,"isStr3":true,"isStr4":false,"isStr5":false,"isStr6":false,"isStr7":false}] 
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Type Check functions Azure Cosmos DB](sql-query-type-checking-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

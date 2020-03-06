@@ -9,11 +9,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273835"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365609"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple virtuális tömb üzembe helyezése – a Azure Portal előkészítése
 
@@ -30,7 +30,7 @@ A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogo
 
 A cikkben közzétett információk a StorSimple virtuális tömbök üzembe helyezésére vonatkoznak a Azure Portal és Microsoft Azure Government felhőben.
 
-### <a name="get-started"></a>Az első lépések
+### <a name="get-started"></a>Első lépések
 Az üzembe helyezési munkafolyamat a portál előkészítését, virtuális tömb kiépítését a virtualizált környezetben, valamint a telepítés befejezését foglalja magában. Ha a StorSimple Virtual Array üzemelő példányát fájlkiszolgáló vagy iSCSI-kiszolgálóként szeretné elindítani, tekintse át a következő táblázatos erőforrásokat.
 
 #### <a name="deployment-articles"></a>Üzembe helyezési cikkek
@@ -127,7 +127,7 @@ Hajtsa végre a következő lépéseket az [Azure Portalon](https://portal.azure
 
 #### <a name="to-get-the-virtual-array-image"></a>A virtuális tömb rendszerképének beolvasása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). 
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/). 
 2. A Azure Portal kattintson a **tallózás > StorSimple-eszközkezelők**elemre.
 3. Válasszon ki egy meglévő StorSimple Eszközkezelő szolgáltatást. A **StorSimple Eszközkezelő** panelen kattintson az **gyorskonfigurálás**elemre. 
 4. Kattintson a Microsoft letöltőközpontból letölteni kívánt rendszerképhez tartozó hivatkozásra. A rendszerképfájlok mérete körülbelül 4,8 GB.
@@ -149,7 +149,7 @@ Meglévő Microsoft Azure Storage-fiók hozzáadásához hajtsa végre a követk
 
 1. Navigáljon a Eszközkezelő szolgáltatáshoz, válassza ki, majd kattintson rá duplán. Ekkor megnyílik az **Áttekintés** panel.
 2. A **konfigurációs** szakaszban válassza ki a **Storage-fiók hitelesítő adatait** .
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson az **Hozzáadás** parancsra.
 4. A **Storage-fiók hozzáadása** panelen tegye a következőket:
    
    1. Az **előfizetés**mezőben válassza az **aktuális**lehetőséget.
@@ -158,7 +158,7 @@ Meglévő Microsoft Azure Storage-fiók hozzáadásához hajtsa végre a követk
    
    3. Az **Engedélyezés** gombra kattintva biztonságos csatornát hozhat létre a StorSimple-eszköz és a felhő közötti hálózati kommunikációhoz. Csak akkor válassza a **Letiltás** lehetőséget, ha privát felhőben működik.
    
-   4. Kattintson a **Hozzáadás** parancsra. A rendszer értesítést küld arról, hogy a Storage-fiók létrehozása sikeres volt.<br></br>
+   4. Kattintson az **Hozzáadás** parancsra. A rendszer értesítést küld arról, hogy a Storage-fiók létrehozása sikeres volt.<br></br>
    
       ![Meglévő Storage-fiók hitelesítő adatainak hozzáadása](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 

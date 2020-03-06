@@ -4,18 +4,18 @@ description: Ismerje meg, hogy a Azure Cosmos DB CONCAt SQL System függvénye h
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: adb8564d4addaaa3f4a383b32941549aed3d53bd
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c8a0941376ed74d7f8cb819d78df43eb9f0b7bd1
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871550"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302610"
 ---
 # <a name="concat-azure-cosmos-db"></a>CONCAt (Azure Cosmos DB)
- Egy olyan karakterláncot ad vissza, amely két vagy több karakterlánc-érték összefűzését eredményezi.  
+ Legalább két karakterlánc-értékek összetűzésének eredménye karakterláncként adja vissza.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -30,22 +30,25 @@ CONCAT(<str_expr1>, <str_expr2> [, <str_exprN>])
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy karakterlánc-kifejezést ad vissza.  
+  Egy karakterlánc-kifejezés adja vissza.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa a megadott értékek összefűzött karakterláncát adja vissza.  
+  Az alábbi példa a megadott értékek összefűzött karakterláncot adja vissza.  
   
 ```sql
 SELECT CONCAT("abc", "def") AS concat  
 ```  
   
- Itt látható az eredményhalmaz.  
+ Íme az eredményhalmaz.  
   
 ```json
 [{"concat": "abcdef"}]  
 ```  
   
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>Következő lépések
 

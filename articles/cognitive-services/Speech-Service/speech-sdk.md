@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: dapine
-ms.openlocfilehash: 04546883e6742086fa05fc450920b1026702bd08
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 984d2dfe07faa22756b4be167aa86a69806b1a84
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212517"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331093"
 ---
 # <a name="about-the-speech-sdk"></a>A Speech SDK ismertetése
 
@@ -31,7 +31,7 @@ A képességek és a támogatott platformok általános áttekintése a dokument
 
 ## <a name="get-the-sdk"></a>Az SDK beszerzése
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 > [!WARNING]
 > A Speech SDK támogatja a Windows 10-es vagy újabb verziókat. A korábbi Windows-verziók **nem támogatottak**.
@@ -42,12 +42,12 @@ Az Windows a következő nyelveket támogatja:
 
 * Java: Is hivatkozhat és a Speech SDK Maven-csomag, amely támogatja a csak a Windows x64 legújabb verzióját használja. A Maven-projektben adja hozzá a `https://csspeechstorage.blob.core.windows.net/maven/`t további tárházként és hivatkozási `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0`ként függőségként.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 > [!NOTE]
-> Jelenleg csak az Ubuntu 16,04, az Ubuntu 18,04 és a Debian 9 támogatott a következő cél architektúrán:
-> - x86, x64 és ARM64 C++ fejlesztéshez
-> - x64 és ARM64 Javához
+> Jelenleg csak az Ubuntu 16,04, Ubuntu 18,04, Debian 9, Red Hat Enterprise Linux (RHEL) 8 és a CentOS 8 támogatott a következő megcélzott architektúrák esetén:
+> - x86 (Debian/Ubuntu), x64, ARM32 (Debian/Ubuntu) és ARM64 (Debian/Ubuntu) fejlesztési célokra C++
+> - x64, ARM32 (Debian/Ubuntu) és ARM64 (Debian/Ubuntu) Java-hoz
 > - x64 a .NET Core-hoz és a Pythonhoz
 
 A következő rendszerhéj-parancsok futtatásával győződjön meg arról, hogy a szükséges kódtárak telepítve vannak:
@@ -65,6 +65,16 @@ Debian 9 rendszeren:
 sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
+
+RHEL/CentOS 8 rendszeren:
+
+```sh
+sudo yum update
+sudo yum install alsa-lib openssl
+```
+
+> [!NOTE]
+> A RHEL/CentOS 8 rendszeren kövesse az [OpenSSL Linux rendszerhez való konfigurálásának](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)utasításait.
 
 * C#: Hivatkozhat és legújabb verzióját használja, a beszéd SDK NuGet-csomagot. Az SDK-ra hivatkozik, adja hozzá a következő csomag hivatkozását a projekthez:
 
@@ -86,7 +96,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
   Alkalmazás létrehozása, másolja, vagy a szükséges bináris fájlokat (és könyvtárak) helyezze át a fejlesztési környezetet. Tartalmazza azokat a létrehozási folyamat által megkövetelt módon.
 
-# <a name="androidtabandroid"></a>[Android](#tab/android)
+# <a name="android"></a>[Android](#tab/android)
 
 Az Androidhoz készült Java SDK a szükséges kódtárakat és a szükséges [Android-engedélyeket](https://developer.android.com/studio/projects/android-library)tartalmazza. Egy Maven-tárházban üzemel, `https://csspeechstorage.blob.core.windows.net/maven/` csomag `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`.
 

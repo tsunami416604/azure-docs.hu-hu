@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 838d65da90ec0daef69375e5a75bcb497a0c3512
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: ada96d0d4b167e30cb6e271aa02d0d399a9ae7d3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900404"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303086"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Azure-alapú megoldás kiválasztása adatátvitelhez
 
@@ -42,7 +42,7 @@ A következő vizualizáció bemutatja az irányelveket, amelyekkel kiválasztha
 
 ![Az Azure adatátviteli eszközei](media/storage-choose-data-transfer-solution/azure-data-transfer-options-3.png)
 
-**Az offline adatátviteli eszközök felső határértékei – Data Box Disk, Data Box és Data Box Heavy bővíthetők, ha több rendelést helyeznek el az eszköz típusától.*
+**az offline átvitelű eszközök felső korlátait – a Data Box Disk, a Data Box és a Data Box Heavy kiterjeszthető egy eszköz típusának több rendelésének elhelyezésével.*
 
 ## <a name="selecting-a-data-transfer-solution"></a>Adatátviteli megoldás kiválasztása
 
@@ -50,31 +50,30 @@ Válaszoljon a következő kérdésekre az adatátviteli megoldás kiválasztás
 
 - A rendelkezésre álló hálózati sávszélesség korlátozott vagy nem létezik, és nagy adatkészleteket szeretne átvinni?
   
-    Ha igen, tekintse meg a következőt: [1. forgatókönyv: Nagyméretű adatkészletek átvitele vagy alacsony hálózati sávszélesség](storage-solution-large-dataset-low-network.md)nélkül.
+    Ha igen, lásd: [1. forgatókönyv: nagyméretű adatkészletek átvitele nem vagy alacsony hálózati sávszélességgel](storage-solution-large-dataset-low-network.md).
 - Nagy adatkészleteket szeretne átvinni a hálózaton keresztül, és közepes és magas hálózati sávszélességgel rendelkezik?
 
-    Ha igen, tekintse meg a következőt: [2. forgatókönyv: Nagyméretű adatkészletek átvitele közepes és nagy hálózati](storage-solution-large-dataset-moderate-high-network.md)sávszélességgel.
+    Ha igen, lásd: [2. forgatókönyv: nagyméretű adatkészletek átvitele közepes és magas hálózati sávszélességgel](storage-solution-large-dataset-moderate-high-network.md).
 - Időnként csak néhány fájlt szeretne átvinni a hálózaton keresztül?
 
-    Ha igen, tekintse [meg a 3. forgatókönyv: Kis adatkészletek átvitele korlátozott hálózati sávszélességgel](storage-solution-small-dataset-low-moderate-network.md).
+    Ha igen, tekintse [meg a 3. forgatókönyv: kisméretű adathalmazok átvitele korlátozott hálózati sávszélességgel](storage-solution-small-dataset-low-moderate-network.md).
 - Rendszeres időközönként keresi az időponthoz való adatátvitelt?
 
-    Ha igen, használja a 4. forgatókönyvben ismertetett [parancsfájl-/programozási beállításokat: Rendszeres adatforgalom](storage-solution-periodic-data-transfer.md).
+    Ha igen, használja a 4. forgatókönyvben ismertetett parancsfájl-/programozási beállításokat [: rendszeres adatátvitelek](storage-solution-periodic-data-transfer.md).
 - Folyamatos adatátvitelt keres?
 
-    Ha igen, használja a 4. [forgatókönyvben szereplő beállításokat: Rendszeres adatforgalom](storage-solution-periodic-data-transfer.md).
- 
+    Ha igen, használja a [4. forgatókönyv: rendszeres adatátvitelek](storage-solution-periodic-data-transfer.md)lehetőségeit.
 
 ## <a name="data-transfer-feature-in-azure-portal"></a>Adatátviteli szolgáltatás a Azure Portal
 
-Az Azure Storage-fiókját Azure Portalban is megtekintheti, és kiválaszthatja az adatátviteli funkciót. Adja meg a hálózati sávszélességet a környezetében, az átvinni kívánt adatok méretét és az adatátvitel gyakoriságát. A megadott adatoknak megfelelő optimális adatátviteli megoldások jelennek meg. 
+Az Azure Storage-fiókját Azure Portalban is megtekintheti, és kiválaszthatja az **adatátviteli** funkciót. Adja meg a hálózati sávszélességet a környezetében, az átvinni kívánt adatok méretét és az adatátvitel gyakoriságát. A megadott adatoknak megfelelő optimális adatátviteli megoldások jelennek meg. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ismerkedjen meg Azure Storage Explorerával](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
 - [Olvassa el a AzCopy áttekintését](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).
 - [Azure PowerShell használata az Azure Storage-ban](https://docs.microsoft.com/azure/storage/common/storage-powershell-guide-full)
-- [Az Azure CLI használata az Azure Storage-ban](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
+- [Gyors útmutató: Blobok létrehozása, letöltése és listázása az Azure CLI-vel](../blobs/storage-quickstart-blobs-cli.md)
 - További információ:
 
     - [Az offline átvitelek Azure Data Box, Azure Data Box Disk és Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/).

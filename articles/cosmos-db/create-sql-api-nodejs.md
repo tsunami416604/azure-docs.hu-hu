@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: dech
-ms.openlocfilehash: 2e1f0313b6e611eac6968c17cececd382a6d45fe
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 117d4a5c1c4ac00e6d6a561f7dc4254a15a24f9c
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664073"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330685"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: az Azure Cosmos DB SQL API-fiókból való kapcsolódáshoz és az adatok lekérdezéséhez használja a Node. js-t
 
@@ -33,9 +33,17 @@ Ebben a rövid útmutatóban egy Azure Cosmos DB SQL API-fiókot hoz létre és 
 - [Node. js 6.0.0 +](https://nodejs.org/).
 - [Git](https://www.git-scm.com/downloads).
 
-## <a name="create-a-database"></a>Adatbázis létrehozása
+## <a name="create-an-azure-cosmos-account"></a>Azure Cosmos-fiók létrehozása
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+Ehhez a rövid útmutatóhoz az [ingyenes kipróbálás Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) lehetőséget használhatja Azure Cosmos-fiók létrehozásához.
+
+1. Navigáljon az [ingyenes kipróbálás Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) oldalra.
+
+1. Válassza ki az **SQL** API-fiókot, és válassza a **Létrehozás**lehetőséget. Jelentkezzen be Microsoft-fiók, például az Outlook használatával.
+
+1. A bejelentkezés sikeres befejezését követően az Azure Cosmos-fióknak készen kell állnia. Válassza a **Megnyitás lehetőséget a Azure Portal** az újonnan létrehozott fiók megnyitásához.
+
+Az "ingyenes Azure Cosmos DB ingyen" lehetőséghez nincs szükség Azure-előfizetésre, és az Azure Cosmos-fiókot egy 30 napos időszakra is felkínálja. Ha hosszabb ideig szeretné használni az Azure Cosmos-fiókot, ehelyett [hozzon létre egy fiókot](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) az Azure-előfizetésén belül.
 
 ## <a name="add-a-container"></a>Tároló hozzáadása
 
@@ -145,7 +153,7 @@ Az alábbi kódrészletek mind az _app.js_ fájlból származnak.
   ```
 
 > [!NOTE]
-> A "frissítés" és a "Törlés" metódusban az elemet a `conatiner.item()`meghívásával kell kiválasztani az adatbázisból. Az átadott két paraméter az elemek és az elemek partíciós kulcsának azonosítója. Ebben az esetben a egyenlőség kulcs a "Category" (kategória) mező értéke.
+> A "frissítés" és a "Törlés" metódusban az elemet a `container.item()`meghívásával kell kiválasztani az adatbázisból. Az átadott két paraméter az elemek és az elemek partíciós kulcsának azonosítója. Ebben az esetben a egyenlőség kulcs a "Category" (kategória) mező értéke.
 
 ## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
 
@@ -176,10 +184,6 @@ Most visszatérhet az új adattal Adatkezelő, módosíthat és dolgozhat.
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

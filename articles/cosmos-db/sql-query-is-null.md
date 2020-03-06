@@ -1,18 +1,18 @@
 ---
-title: IS_NULL Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function IS_NULL Azure Cosmos DB.
+title: Azure Cosmos DB lekérdezési nyelv IS_NULL
+description: Ismerkedjen meg a Azure Cosmos DB SQL System Function IS_NULLával.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 20486b8f8c0436d264135bb09952345548222216
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4dbf21c3052ddd5ebdd62925e65a854c47f59017
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349859"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303834"
 ---
 # <a name="is_null-azure-cosmos-db"></a>IS_NULL (Azure Cosmos DB)
  Adja vissza egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa null.  
@@ -34,7 +34,7 @@ IS_NULL(<expr>)
   
 ## <a name="examples"></a>Példák
   
-  A következő példa a JSON logikai, szám, karakterlánc, null, objektum, tömb és nem definiált típusok objektumait ellenőrzi a `IS_NULL` függvény használatával.  
+  A következő példa a JSON logikai, szám, karakterlánc, null, objektum, tömb és nem definiált típusok objektumait ellenőrzi a `IS_NULL` függvénnyel.  
   
 ```sql
 SELECT   
@@ -53,7 +53,11 @@ SELECT
 [{"isNull1":false,"isNull2":false,"isNull3":false,"isNull4":true,"isNull5":false,"isNull6":false,"isNull7":false}]
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Type Check functions Azure Cosmos DB](sql-query-type-checking-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

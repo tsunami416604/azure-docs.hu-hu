@@ -4,15 +4,15 @@ description: Ismerkedjen meg az SQL System Function StringToBoolean Azure Cosmos
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8719857dca16585a045f8174dbac8df455f38f38
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ce11db91eff51e669f0917fbf34b1d560d0e9f07
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349271"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296541"
 ---
 # <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean (Azure Cosmos DB)
  Egy logikai értékre fordított kifejezést ad vissza. Ha a kifejezés nem fordítható le, a nem definiált értéket adja vissza.  
@@ -34,7 +34,7 @@ StringToBoolean(<str_expr>)
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa azt szemlélteti, hogyan viselkedik a `StringToBoolean` a különböző típusok között. 
+  Az alábbi példa bemutatja, hogyan viselkedik a `StringToBoolean` különböző típusokban. 
  
  Az alábbi példák érvényes bemenettel rendelkeznek.
 
@@ -86,7 +86,11 @@ SELECT
 [{}]
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

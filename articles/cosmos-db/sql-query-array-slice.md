@@ -4,18 +4,18 @@ description: Ismerje meg, hogyan adja vissza a tömbbeli szeletek SQL System fü
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 3c65886eabfa87f729e18fb854aca6662d1d6fac
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: a98cb17d22f41776ff788d12ced6aa988ad0b10e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871788"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303324"
 ---
 # <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE (Azure Cosmos DB)
- Egy tömb kifejezésének egy részét adja vissza.
+ Egy tömböt megadó kifejezést részét adja vissza.
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -29,7 +29,7 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
    Bármely tömb kifejezés.  
   
 *num_expr*  
-   Nulla-alapú numerikus index a tömb megkezdéséhez. A rendszer negatív értékeket is felhasználhat a tömb utolsó eleméhez viszonyított kezdő index megadására, azaz a-1 a tömb utolsó elemére hivatkozik.  
+   A tömb kezdőpontját nulláról induló numerikus indexszel. Adjon meg a kezdő indexet az utolsó elem a tömbben – azaz a 1 hivatkozások viszonyítva az utolsó elem a tömbben negatív értékeket is használható.  
 
 *num_expr* Nem kötelező numerikus kifejezés, amely az eredményül kapott tömbben lévő elemek maximális számát állítja be.    
 
@@ -53,7 +53,7 @@ SELECT
   
 ```  
   
- Itt látható az eredményhalmaz.  
+ Íme az eredményhalmaz.  
   
 ```json
 [{  
@@ -66,6 +66,10 @@ SELECT
            "s7": [] 
 }]  
 ```  
+
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>Következő lépések
 

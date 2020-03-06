@@ -4,18 +4,18 @@ description: Ismerje meg, hogy a tömb hosszúságú SQL System függvénye hogy
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9a8bf33befdd842a2979151fef3d54679ee03de1
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3596ce4bc702d5e54225d8c90db2f9563feab670
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871771"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303987"
 ---
 # <a name="array_length-azure-cosmos-db"></a>ARRAY_LENGTH (Azure Cosmos DB)
- A megadott Array kifejezés elemeinek számát adja vissza.  
+ A megadott tömb kifejezés elemek számát adja vissza.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -30,7 +30,7 @@ ARRAY_LENGTH(<arr_expr>)
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy numerikus kifejezést ad vissza.  
+  A numerikus kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
@@ -40,12 +40,15 @@ ARRAY_LENGTH(<arr_expr>)
 SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"]) AS len  
 ```  
   
- Itt látható az eredményhalmaz.  
+ Íme az eredményhalmaz.  
   
 ```json
 [{"len": 3}]  
 ```  
   
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>Következő lépések
 

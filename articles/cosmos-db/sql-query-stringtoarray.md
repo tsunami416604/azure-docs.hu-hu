@@ -4,15 +4,15 @@ description: Ismerkedjen meg az SQL System Function StringToArray Azure Cosmos D
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2d1f90da50950ac6ff4f87ffe96ebad9f3d811cc
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349275"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302916"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
  Egy tömbre fordított kifejezést ad vissza. Ha a kifejezés nem fordítható le, a nem definiált értéket adja vissza.  
@@ -37,7 +37,7 @@ StringToArray(<str_expr>)
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa azt szemlélteti, hogyan viselkedik a `StringToArray` a különböző típusok között. 
+  Az alábbi példa bemutatja, hogyan viselkedik a `StringToArray` különböző típusokban. 
   
  Az alábbi példák érvényes bemenettel rendelkeznek.
 
@@ -59,7 +59,7 @@ SELECT
 Az alábbi példa érvénytelen bemenetet mutat be. 
    
  A tömbben lévő szimpla idézőjelek nem érvényesek a JSON-ban.
-Annak ellenére, hogy egy lekérdezésen belül érvényesek, nem fogják értelmezni az érvényes tömböket. A tömb karakterláncán belüli karakterláncokat el kell menekülnie a következőnek: "[\\" \\ "]", vagy a környező idézőjelnek egyetlen "[" "]" értékűnek kell lennie.
+Annak ellenére, hogy egy lekérdezésen belül érvényesek, nem fogják értelmezni az érvényes tömböket. A tömb karakterláncán belüli karakterláncokat el kell kerülni "[\\"\\"]" vagy a környező idézőjelnek egyetlen "[" "]" karakternek kell lennie.
 
 ```sql
 SELECT
@@ -91,7 +91,11 @@ SELECT
 [{}]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

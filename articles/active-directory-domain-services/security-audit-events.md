@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 89fa2297c50b6f28045f6f934092de3fd5d6c879
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b2138818a9092999dd54b14664f7146f087c4fed
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613060"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328646"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services biztonsági naplózásának engedélyezése
 
@@ -193,7 +193,7 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>2\. minta lekérdezés
 
-Az összes fiókzárolási esemény (*4740*) megtekintése a 2020. február 3. között, 9 órakor és 2019. február 10. között a dátum és idő szerint növekvő sorrendbe rendezve:
+Az összes fiókzárolási esemény (*4740*) megtekintése a 2020. február 3. között, 9 órakor és 2020. február 10. között a dátum és idő szerint növekvő sorrendbe rendezve:
 
 ```Kusto
 AADDomainServicesAccountManagement

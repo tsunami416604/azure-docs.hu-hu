@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7495c6b114e232a9aad0075e173abebcb3c92cd0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 4ce56b64502904308f45c74a5471447d93419452
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273595"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303052"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Változó eszközök Azure Automation
 
@@ -35,9 +35,6 @@ Változó létrehozásakor megadhatja a titkosítását és tárolását Azure A
 Azure Automation az egyes titkosított változókat biztonságosan tárolja. Az érték nem kérhető le a [Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) parancsmaggal, amely a Azure PowerShell modul részét képezi. Egy titkosított érték lekérésének egyetlen módja a **Get-AutomationVariable** tevékenység használata RUNBOOK vagy DSC-konfigurációban.
 
 >[!NOTE]
->Ha el szeretné távolítani egy változó titkosítását, törölnie kell a változót, és újból létre kell hoznia a titkosítást.
-
->[!NOTE]
 >A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](../automation-update-azure-modules.md).
 
 ## <a name="variable-types"></a>Változók típusai
@@ -45,7 +42,7 @@ Azure Automation az egyes titkosított változókat biztonságosan tárolja. Az 
 Ha a Azure Portal változót hoz létre, meg kell adnia egy adattípust a legördülő listából, hogy a portál megjelenítse a megfelelő vezérlőt a változó értékének megadásához. A következő változó típusok érhetők el Azure Automationban:
 
 * Sztring
-* Egész szám
+* Egész
 * DateTime
 * Logikai
 * Null
@@ -96,6 +93,9 @@ Az alábbi táblázatban szereplő függvények a változók Python2-runbook val
 1. Az Automation-fiókban kattintson az **eszközök** csempére, majd az **eszközök** panelen válassza a **változók**lehetőséget.
 2. A **változók** csempén válassza a **változó hozzáadása**elemet.
 3. Fejezze be a beállításokat az **új változó** panelen, majd kattintson a **Létrehozás** gombra az új változó mentéséhez.
+
+>[!NOTE]
+>Ha el szeretné távolítani egy változó titkosítását, törölnie kell a változót, és újból létre kell hoznia a titkosítást.
 
 ### <a name="create-a-new-variable-with-windows-powershell"></a>Új változó létrehozása a Windows PowerShell használatával
 

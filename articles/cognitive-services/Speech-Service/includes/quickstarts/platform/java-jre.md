@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f6b994bce1d38872cffb1e6e389136742be6d48
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4970f115ee3eee78d7268e3e955e20048b74df0d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468226"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384094"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a 64 bites Java 8 JRE [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t.
 
@@ -29,7 +29,7 @@ Ez az útmutató bemutatja, hogyan telepítheti a 64 bites Java 8 JRE [SPEECH SD
 - A Java Speech SDK csomag elérhető a következő operációs rendszerekhez:
   - Windows: 64 – csak bit
   - Mac: macOS X 10,13 vagy újabb verzió
-  - Linux: 64-bit csak Ubuntu 16,04, Ubuntu 18,04 vagy Debian 9 rendszeren
+  - Linux: 64-bit csak Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,6 +51,16 @@ Ez az útmutató bemutatja, hogyan telepítheti a 64 bites Java 8 JRE [SPEECH SD
         sudo apt-get update
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
+
+  - A RHEL/CentOS 8 rendszeren futtassa a következő parancsokat a szükséges csomagok telepítéséhez:
+
+        ```sh
+        sudo yum update
+        sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl
+        ```
+
+> [!NOTE]
+> A RHEL/CentOS 8 rendszeren kövesse az [OpenSSL Linux rendszerhez való konfigurálásának](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)utasításait.
 
 - Windows rendszeren a platformhoz a [Visual Studio C++ 2019-hez készült Microsoft vizualizációs terjeszthető](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) csomag szükséges. Vegye figyelembe, hogy az első telepítéskor szükség lehet a Windows újraindítására az útmutató folytatása előtt.
 

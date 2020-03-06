@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: b57ee458b857db5692f34e51f388ca8374a3c03b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: edea7a7b4dcb5ed18adcbab973f9f351543c6422
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524393"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330872"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az Azure SQL Database-kapcsolat biztonságossá tétele az App Service-ből felügyelt identitás segítségével
 
@@ -240,6 +240,9 @@ GO
 *\<Identity-name >* a felügyelt identitás neve az Azure ad-ben. Mivel a rendszer hozzá van rendelve, mindig ugyanaz, mint a App Service alkalmazás neve. Az Azure AD-csoportok engedélyeinek megadásához használja helyette a csoport megjelenítendő nevét (például *myAzureSQLDBAccessGroup*).
 
 Az `EXIT` parancs begépelésével térjen vissza a Cloud Shell-parancssorba.
+
+> [!NOTE]
+> A felügyelt identitások háttér-szolgáltatásai szintén [fenntartanak egy jogkivonat-gyorsítótárat](overview-managed-identity.md#obtain-tokens-for-azure-resources) , amely csak akkor frissíti a jogkivonatot a cél erőforráshoz, ha lejár. Ha hibásan konfigurálja a SQL Database engedélyeket, és megpróbálja módosítani az engedélyeket az alkalmazással kapott token beszerzése *után* , akkor valójában nem kap új jogkivonatot a frissített engedélyekkel, amíg a gyorsítótárazott jogkivonat le nem jár.
 
 ### <a name="modify-connection-string"></a>Kapcsolati sztring módosítása
 

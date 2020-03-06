@@ -1,7 +1,7 @@
 ---
-title: Biztonságos webszolgáltatások SSL használatával
+title: Biztonságos webszolgáltatások a TLS használatával
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan engedélyezheti a HTTPS-t a Azure Machine Learning használatával központilag telepített webszolgáltatás biztonságossá tétele érdekében.
+description: Megtudhatja, hogyan engedélyezheti a HTTPS-t a Azure Machine Learning használatával központilag telepített webszolgáltatás biztonságossá tétele érdekében. A Azure Machine Learning a TLS 1,2-es verzióját használja a webszolgáltatásként üzembe helyezett modellek biztonságossá tételéhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 08/12/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 34c6071a127d0fc0c967991582f629c6ae713783
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1f4b699476902fa24fa285754f13b1c61ddca8f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905221"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355528"
 ---
-# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Webszolgáltatások biztonságossá tétele az SSL használatával Azure Machine Learning
+# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Webszolgáltatás biztonságossá tétele a TLS használatával Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ez a cikk bemutatja, hogyan védheti meg az Azure Machine Learning használatával üzembe helyezett webszolgáltatásokat.
@@ -39,13 +39,13 @@ A TLS és az SSL egyaránt *digitális tanúsítványokra*támaszkodik, amelyek 
 
 Ez a webszolgáltatás biztonságossá tételének általános folyamata:
 
-1. Tartománynév beszerzése.
+1. Kérje le egy tartomány nevét.
 
 2. Digitális tanúsítvány beszerzése.
 
 3. A webszolgáltatás üzembe helyezése vagy frissítése engedélyezve az SSL használatával.
 
-4. Frissítse a DNS-t, hogy a webszolgáltatásra mutasson.
+4. Frissítse a DNS, a web Service mutasson.
 
 > [!IMPORTANT]
 > Ha az Azure Kubernetes szolgáltatásba (ak) végzi az üzembe helyezést, megvásárolhatja saját tanúsítványát, vagy a Microsoft által biztosított tanúsítványt is használhatja. Ha tanúsítványt használ a Microsofttól, nem kell beszereznie a tartománynevet vagy az SSL-tanúsítványt. További információ: az [SSL és a telepítés engedélyezése](#enable) című rész, jelen cikk.
@@ -69,7 +69,7 @@ Ha tanúsítványt kér, meg kell adnia a webszolgáltatáshoz használni kívá
 > Ha a hitelesítésszolgáltató nem tudja megadni a tanúsítványt és a kulcsot PEM-kódolású fájlként, használhat egy olyan segédprogramot, mint például az [OpenSSL](https://www.openssl.org/) a formátum megváltoztatásához.
 
 > [!WARNING]
-> *Önaláírt* tanúsítványokat csak fejlesztéshez használhat. Ne használja őket éles környezetekben. Az önaláírt tanúsítványok problémákat okozhatnak az ügyfélalkalmazások számára. További információkért tekintse meg az ügyfélalkalmazás által használt hálózati kódtárak dokumentációját.
+> *Önaláírt* tanúsítványokat csak fejlesztéshez használhat. Ne használja őket éles környezetekben. Önaláírt tanúsítványok problémákat okozhat az ügyfél az alkalmazásokat. További információkért tekintse meg az ügyfélalkalmazás által használt hálózati kódtárak dokumentációját.
 
 ## <a id="enable"></a>Az SSL engedélyezése és üzembe helyezése
 
@@ -147,7 +147,7 @@ További információ: [AciWebservice. deploy_configuration ()](https://docs.mic
 
 ## <a name="update-your-dns"></a>A DNS frissítése
 
-Ezt követően frissítenie kell a DNS-t, hogy az a webszolgáltatásra mutasson.
+Ezt követően frissítenie kell a DNS, a web Service mutasson.
 
 + **Container Instances esetén:**
 
@@ -258,6 +258,6 @@ aks_target.update(update_config)
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-A webinárium témái:
+Az alábbiak végrehajtásának módját ismerheti meg:
 + [Webszolgáltatásként üzembe helyezett gépi tanulási modell felhasználása](how-to-consume-web-service.md)
 + [Kísérletek és következtetések biztonságos futtatása Azure-beli virtuális hálózaton belül](how-to-enable-virtual-network.md)

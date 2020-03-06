@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 9cab78e85b8644f29bfcd067b104b1b5c10c2266
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8c7c9c2e3a1195422db30ba913b1cea3a1a360e4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249836"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301692"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával
 
@@ -59,7 +59,7 @@ Az oktatóanyag megkezdése előtt végezze el ezeket a feladatokat:
 
    A cikk lépéseinek elvégzése során néhány konkrét dolgot is el kell végeznie.
 
-   * Az [alkalmazás szerepkörhöz való hozzárendelésével](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) kapcsolatos lépések végrehajtásakor ügyeljen arra, hogy hozzárendelje a **Storage blob adatközreműködői** szerepkört az egyszerű szolgáltatásnév számára a Data Lake Storage Gen2 fiók hatókörében. Ha a szerepkört a szülő erőforráscsoporthoz vagy előfizetéshez rendeli hozzá, akkor az engedélyekkel kapcsolatos hibák addig jelentkeznek, amíg a szerepkör-hozzárendelések el nem terjednek a Storage-fiókba.
+   * Az [alkalmazás szerepkörhöz való hozzárendelésével](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) kapcsolatos lépések végrehajtásakor ügyeljen arra, hogy hozzárendelje a **Storage blob adatközreműködői** szerepkört az egyszerű szolgáltatásnév számára a Data Lake Storage Gen2 fiók hatókörében. Ha a szerepkört a szülő erőforráscsoporthoz vagy előfizetéshez rendeli hozzá, akkor az engedélyekkel kapcsolatos hibák addig jelentkeznek, amíg a szerepkör-hozzárendelések el nem terjednek a Storage-fiókba.
 
       Ha egy hozzáférés-vezérlési listát (ACL) szeretne használni az egyszerű szolgáltatás egy adott fájlhoz vagy könyvtárhoz való hozzárendeléséhez, akkor [a Azure Data Lake Storage Gen2 a hozzáférés-vezérlést](../storage/blobs/data-lake-storage-access-control.md).
 

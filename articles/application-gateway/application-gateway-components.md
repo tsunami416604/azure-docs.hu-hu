@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 54606b4fbbf7ae459298b3842f957de5256ba0df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 799ed0e877bb3bddb3f179cdb3d6df6fca57e4d5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971145"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301352"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-összetevők
 
@@ -32,7 +32,7 @@ A v1 SKU beállítható úgy, hogy támogassa a statikus vagy dinamikus belső I
 
 Az Application gatewayhez társított DNS-név nem változik az átjáró életciklusa során. Ennek eredményeképpen CNAME aliast kell használnia, és az Application Gateway DNS-címeként kell mutatnia.
 
-## <a name="listeners"></a>Figyelők
+## <a name="listeners"></a>Hallgatók
 
 A figyelő egy logikai entitás, amely ellenőrzi a bejövő kapcsolatok kéréseit. A figyelő fogad egy kérelmet, ha a kérelemhez társított protokoll, port, állomásnév és IP-cím megegyezik a figyelő konfigurációjával társított elemekkel.
 
@@ -53,7 +53,7 @@ A Application Gateway négy protokollt támogat: HTTP, HTTPS, HTTP/2 és WebSock
 >A HTTP/2 protokoll támogatása csak az Application Gateway-figyelőkhöz csatlakozó ügyfelek számára érhető el. A háttér-kiszolgálói készletekkel folytatott kommunikáció mindig HTTP/1.1-en keresztül történik. Alapértelmezés szerint a HTTP/2 támogatás le van tiltva. Dönthet úgy is, hogy engedélyezi.
 
 - A figyelő konfigurációjában adjon meg a HTTP és a HTTPS protokoll közötti értéket.
-- A [WebSockets és a http/2 protokollok](overview.md#websocket-and-http2-traffic) támogatása natív módon történik, és a [WebSocket-támogatás](application-gateway-websocket.md) alapértelmezés szerint engedélyezve van. Kizárólag WebSocket-támogatásra vonatkozó felhasználói beállítás nem létezik. Websocketek használata HTTP-és HTTPS-figyelővel.
+- A [WebSockets és a http/2 protokollok](features.md#websocket-and-http2-traffic) támogatása natív módon történik, és a [WebSocket-támogatás](application-gateway-websocket.md) alapértelmezés szerint engedélyezve van. Kizárólag WebSocket-támogatásra vonatkozó felhasználói beállítás nem létezik. Websocketek használata HTTP-és HTTPS-figyelővel.
 
 HTTPS-figyelő használata az SSL-lezáráshoz. Egy HTTPS-figyelő kiszervezi a titkosítási és a visszafejtési munkát az Application Gateway felé, így a webkiszolgálók nem terhelik a terhelést.
 
@@ -115,21 +115,21 @@ A HTTP-beállításokban használt port és protokoll határozza meg, hogy az Ap
 
 Ez az összetevő a következőket is használja:
 
-- Állapítsa meg, hogy a felhasználói munkamenetet ugyanazon a kiszolgálón kell-e tárolni a [cookie-alapú munkamenet-affinitás](overview.md#session-affinity)használatával.
+- Állapítsa meg, hogy a felhasználói munkamenetet ugyanazon a kiszolgálón kell-e tárolni a [cookie-alapú munkamenet-affinitás](features.md#session-affinity)használatával.
 
-- A háttérbeli készlet tagjainak biztonságos eltávolítása a [kapcsolatok kiürítésével](overview.md#connection-draining).
+- A háttérbeli készlet tagjainak biztonságos eltávolítása a [kapcsolatok kiürítésével](features.md#connection-draining).
 
 - Rendeljen egyéni mintavételt a háttér állapotának figyeléséhez, állítsa be a kérés időkorlátját, felülbírálja az állomásnév és elérési út értékét a kérelemben, és egy kattintással könnyedén megadhatja a App Service háttér beállításait.
 
-## <a name="backend-pools"></a>Háttérkészletek
+## <a name="backend-pools"></a>Háttér-készletek
 
 A háttér-készlet átirányítja a kérést a háttér-kiszolgálókra. A háttér-készletek a következőket tartalmazhatják:
 
 - Hálózati adapterek (NIC-k)
-- Virtual Machine Scale Sets
+- Virtuálisgép-méretezési csoportok
 - Nyilvános IP-címek
 - Belső IP-címek
-- FQDN
+- TELJES TARTOMÁNYNÉV
 - Több-bérlős háttérrendszer (például App Service)
 
 Application Gateway háttérbeli készlet tagjai nem kapcsolódnak rendelkezésre állási csoportokhoz. Az Application Gateway képes kommunikálni a virtuális hálózatán kívüli példányokkal. Ennek eredményeképpen a háttér-készletek tagjai többek között fürtök, adatközpontok vagy az Azure-on kívül is lehetnek, feltéve, hogy IP-kapcsolat van.

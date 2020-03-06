@@ -13,18 +13,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 9db359d8331859e3eebf345d91fe5dc6e66c0d4c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c2e24e9dea2c8463294c85f04c9e4d7d2da17261
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774574"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330651"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Gyors útmutató: Service Bus Queues használata Node. js-sel és az Azure/Service-Bus csomaggal
-> [!div class="op_multi_selector" title1="Programozási nyelv" title2="Node. js-csomagjának felvétele"]
-> - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-queues.md)
-> - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
-
 Ebből az oktatóanyagból megtudhatja, hogyan írhat NodeJS programot az üzenetek küldésére és fogadására egy Service Bus-várólistáról az új [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) csomag használatával. Ez a csomag a gyorsabb [AMQP 1,0 protokollt](service-bus-amqp-overview.md) használja, míg a régebbi [Azure-sb-](https://www.npmjs.com/package/azure-sb) csomag [Service Bus Rest futásidejű API-kat](/rest/api/servicebus/service-bus-runtime-rest)használ. A mintákat JavaScript nyelven írták.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -136,7 +132,7 @@ A [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bu
 
 ## <a name="next-steps"></a>Következő lépések
 További tudnivalókat az alábbi forrásokban talál.
-- [Üzenetsorok, témakörök és előfizetések](service-bus-queues-topics-subscriptions.md)
+- [Queues, topics, and subscriptions](service-bus-queues-topics-subscriptions.md) (Üzenetsorok, témakörök és előfizetések)
 - Egyéb NodeJS-minták kifizetése a [githubon Service Bus](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
 - [Node.js fejlesztői központ](https://azure.microsoft.com/develop/nodejs/)
 

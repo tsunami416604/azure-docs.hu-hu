@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 218d0dca43d126c1318c273603a4980697c465af
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 9c398c755db78583b93cbba5bdef6c3cf01eb9e5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751968"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383992"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a Pythonhoz készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t.
 
@@ -26,7 +26,7 @@ Ez az útmutató bemutatja, hogyan telepítheti a Pythonhoz készült [SPEECH SD
 - A Python Speech SDK csomag elérhető a következő operációs rendszerekhez:
   - Windows: x64 és x86
   - Mac: macOS X 10,12 vagy újabb verzió
-  - Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9 x64 rendszeren
+  - Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8 x64 rendszeren
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,12 +46,22 @@ Ez az útmutató bemutatja, hogyan telepítheti a Pythonhoz készült [SPEECH SD
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
 
+  - A RHEL/CentOS 8 rendszeren futtassa a következő parancsokat a szükséges csomagok telepítéséhez:
+
+        ```sh
+        sudo yum update
+        sudo yum install alsa-lib openssl python3
+        ```
+
+> [!NOTE]
+> A RHEL/CentOS 8 rendszeren kövesse az [OpenSSL Linux rendszerhez való konfigurálásának](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)utasításait.
+
 - Windows rendszeren a platformhoz a [Visual Studio C++ 2019-hez készült Microsoft vizualizációs terjeszthető](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) csomag szükséges. Vegye figyelembe, hogy az első telepítéskor szükség lehet a Windows újraindítására az útmutató folytatása előtt.
-- Végül pedig [Python 3,5, 3,6 vagy 3,7](https://www.python.org/downloads/)szükséges. A telepítés ellenőrzéséhez nyisson meg egy parancssort, és írja be a `python --version` parancsot, és vizsgálja meg az eredményt. Ha megfelelően van telepítve, a "Python 3.5.1" vagy hasonló választ kap.
+- Végül pedig [a Python 3,5 és a 3,8](https://www.python.org/downloads/)között kell lennie. A telepítés ellenőrzéséhez nyisson meg egy parancssort, és írja be a `python --version` parancsot, és vizsgálja meg az eredményt. Ha megfelelően van telepítve, a "Python 3.5.1" vagy hasonló választ kap.
 
 ## <a name="install-the-speech-sdk-using-visual-studio-code"></a>A Speech SDK telepítése a Visual Studio Code használatával
 
-1. Töltse le és telepítse a [Python](https://www.python.org/downloads/) legújabb támogatott verzióját a platformhoz, 3,5-es vagy újabb verzióhoz.
+1. Töltse le és telepítse a [Python](https://www.python.org/downloads/) legújabb támogatott verzióját a platformhoz, 3,5 – 3,8.
    - A Windows-felhasználók a telepítési folyamat során a "Python hozzáadása az elérési úthoz" lehetőséget kell választani.
 1. Töltse le és telepítse a [Visual Studio Code](https://code.visualstudio.com/Download)-ot.
 1. Nyissa meg a Visual Studio Code-ot, és telepítse a Python-bővítményt. A menüben válassza a **fájl** > **Beállítások** > **bővítmények** lehetőséget. Keressen rá a **Python** kifejezésre, majd kattintson a **telepítés**gombra.
@@ -78,7 +88,7 @@ Ha macOS rendszeren fut, előfordulhat, hogy a következő parancsot kell futtat
 python3 -m pip install --upgrade pip
 ```
 
-Miután sikeresen felhasználta `pip` a `azure-cognitiveservices-speech`telepítésére, a Speech SDK használatával importálja a névteret a Python-projektbe. Példa:
+Miután sikeresen felhasználta `pip` a `azure-cognitiveservices-speech`telepítésére, a Speech SDK használatával importálja a névteret a Python-projektbe. Például:
 
 ```py
 import azure.cognitiveservices.speech as speechsdk

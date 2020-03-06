@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 89fa06dda418f328b3bc07aada49aa347e35220a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1e18223736964b0327a4c8f6ddb73ddb4f58889a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73182226"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304978"
 ---
 ## <a name="rootcert"></a>Önaláírt főtanúsítvány létrehozása
 
@@ -28,6 +28,7 @@ ms.locfileid: "73182226"
    -HashAlgorithm sha256 -KeyLength 2048 `
    -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
    ```
+ 3. Ha közvetlenül a főtanúsítvány létrehozása után szeretné létrehozni az ügyféltanúsítványt, hagyja nyitva a PowerShell-konzolt.
 
 ## <a name="clientcert"></a>Ügyféltanúsítvány létrehozása
 
@@ -37,7 +38,7 @@ Az alábbi lépések végigvezetik az ügyféltanúsítvány önaláírt főtan�
 
 A példák a New-SelfSignedCertificate parancsmagot használják olyan ügyféltanúsítvány előállítására, amely egy évig lejár. További paraméter-információk, például az ügyféltanúsítvány eltérő lejárati értékének beállítása: [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
-### <a name="example-1"></a>1\. példa
+### <a name="example-1---powershell-console-session-still-open"></a>1\. példa – a PowerShell-konzol munkamenete még nyitva van
 
 Akkor használja ezt a példát, ha nem zárta be a PowerShell-konzolt az önaláírt főtanúsítvány létrehozása után. Ez a példa az előző szakaszból folytatódik, és a deklarált "$cert" változót használja. Ha bezárta a PowerShell-konzolt az önaláírt főtanúsítvány létrehozása után, vagy további ügyféltanúsítványt hoz létre egy új PowerShell-konzol munkamenetben, használja a [2. példában](#ex2)szereplő lépéseket.
 
@@ -51,7 +52,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
 ```
 
-### <a name="ex2"></a>2. példa
+### <a name="ex2"></a>2. példa – új PowerShell-konzol munkamenete
 
 Ha további ügyféltanúsítványt hoz létre, vagy nem ugyanazt a PowerShell-munkamenetet használja, mint amelyet az önaláírt főtanúsítvány létrehozásához használt, kövesse az alábbi lépéseket:
 

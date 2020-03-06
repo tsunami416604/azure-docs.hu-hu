@@ -8,19 +8,16 @@ ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b75740e9bff714ad68c93bea7e387e60da2f1c59
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 1370f65405963ebf825e986e6801607a0d96156e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212503"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298088"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Egyszerű szolgáltatásnév hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz 
 
  A felügyelet nélküli PowerShell-feladatok automatizálásához egy egyszerű szolgáltatásnak **rendszergazdai** jogosultságokkal kell rendelkeznie a felügyelt Analysis Services kiszolgálón. Ez a cikk azt ismerteti, hogyan adhat hozzá egy egyszerű szolgáltatást egy Azure-beli kiszolgáló-rendszergazdák szerepkörhöz. Ezt a SQL Server Management Studio vagy egy Resource Manager-sablon használatával teheti meg.
- 
-> [!NOTE]
-> Azure PowerShell-parancsmagokat használó kiszolgálói műveletek esetén az egyszerű szolgáltatásnak az [Azure szerepköralapú Access Control (RBAC)-beli](../role-based-access-control/overview.md)erőforrás **tulajdonosi** szerepköréhez is tartoznia kell. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 A feladat elvégzése előtt rendelkeznie kell egy Azure Active Directoryban regisztrált egyszerű szolgáltatással.
@@ -96,6 +93,24 @@ A következő Resource Manager-sablon központilag telepít egy Analysis Service
     ]
 }
 ```
+
+## <a name="using-managed-identities"></a>Felügyelt identitások használata
+
+Felügyelt identitást is hozzáadhat a Analysis Services rendszergazdák listájához. Előfordulhat például, hogy egy [logikai alkalmazás egy rendszerhez rendelt felügyelt identitással](../logic-apps/create-managed-service-identity.md)rendelkezik, és biztosítani szeretné a Analysis Services-kiszolgáló felügyeletének lehetőségét.
+
+A Azure Portal és API-k legtöbb részében a felügyelt identitások az egyszerű szolgáltatásnév alapján azonosíthatók. A Analysis Services azonban azt igényli, hogy az ügyfél-AZONOSÍTÓjuk alapján azonosíthatók legyenek. Egy egyszerű szolgáltatás ügyfél-AZONOSÍTÓjának beszerzéséhez használhatja az Azure CLI-t:
+
+```bash
+az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o tsv
+```
+
+Másik lehetőségként használhatja a PowerShellt:
+
+```powershell
+(Get-AzureADServicePrincipal -ObjectId <ManagedIdentityServicePrincipalObjectId>).AppId
+```
+
+Ezt az ügyfél-azonosítót azután használhatja a bérlői AZONOSÍTÓval együtt, hogy hozzáadja a felügyelt identitást a Analysis Services rendszergazdák listájához a fent leírtak szerint.
 
 ## <a name="related-information"></a>Kapcsolódó információk
 

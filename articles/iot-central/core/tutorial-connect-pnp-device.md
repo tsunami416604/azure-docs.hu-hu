@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 84db3996b49a95d1ef6a9f1e80299605cc31d669
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: e22a9ae2888187dc877876ee5d4d4ec4ecb7c6e5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602593"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329442"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Oktatóanyag: eszköz-képesség modell használata IoT Plug and Play (előzetes verzió) eszköz létrehozásához és a IoT Central alkalmazáshoz csatlakoztatásához
 
@@ -169,10 +169,10 @@ Az eszköz SDK használatával hozza létre a generált eszköz kódját. Az Ön
     cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
     ```
 
-1. A létrehozás sikeres befejezése után ugyanazon a parancssorban futtassa az alkalmazást. Cserélje le a `<scopeid>` és a `<primarykey>` értéket a korábban feljegyzett értékekre:
+1. A létrehozás sikeres befejezése után ugyanazon a parancssorban futtassa az alkalmazást. Cserélje le a `<scopeid>` és a `<devicekey>` értéket a korábban feljegyzett értékekre:
 
     ```cmd
-    .\Release\devkit_device.exe mxchip-001 <scopeid> <primarykey>
+    .\Release\devkit_device.exe mxchip-001 <scopeid> <devicekey>
     ```
 
 1. Az eszköz megkezdi az adatok küldését a IoT Hubba. Időnként megjelenik az előző parancs első futtatásakor `Error registering device for DPS` hiba. Ha ezt a hibát látja, próbálja megismételni a parancsot.

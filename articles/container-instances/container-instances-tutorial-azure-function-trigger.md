@@ -4,12 +4,12 @@ description: HTTP-alapú, kiszolgáló nélküli PowerShell-függvény létrehoz
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 9dbb22a2449e4c41bff802ab827da4489fc7ffeb
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196535"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331025"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Oktatóanyag: egy HTTP-triggert használó Azure-függvény használata tároló csoport létrehozásához
 
@@ -42,7 +42,7 @@ Ez a cikk azt feltételezi, hogy közzéteszi a projektet a *myfunctionapp*név 
 
 ## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>Azure által felügyelt identitás engedélyezése a Function alkalmazásban
 
-Mostantól engedélyezheti a rendszerhez rendelt [felügyelt identitást](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#adding-a-system-assigned-identity) a Function alkalmazásban. Az alkalmazást futtató PowerShell-állomás automatikusan képes hitelesíteni ezt az identitást, és lehetővé teszi a függvények számára, hogy olyan Azure-szolgáltatásokon hajtson végre műveleteket, amelyekhez az identitás hozzáférést kapott. Ebben az oktatóanyagban megadhatja a felügyelt identitás engedélyeit ahhoz, hogy erőforrásokat hozzon létre a Function alkalmazás erőforráscsoporthoz. 
+Mostantól engedélyezheti a rendszerhez rendelt [felügyelt identitást](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity) a Function alkalmazásban. Az alkalmazást futtató PowerShell-állomás automatikusan képes hitelesíteni ezt az identitást, és lehetővé teszi a függvények számára, hogy olyan Azure-szolgáltatásokon hajtson végre műveleteket, amelyekhez az identitás hozzáférést kapott. Ebben az oktatóanyagban megadhatja a felügyelt identitás engedélyeit ahhoz, hogy erőforrásokat hozzon létre a Function alkalmazás erőforráscsoporthoz. 
 
 Először használja az az [Group show][az-group-show] parancsot a Function app erőforráscsoport azonosítójának lekéréséhez és egy környezeti változóban való tárolásához. Ez a példa feltételezi, hogy egy bash-rendszerhéjban futtatja a parancsot.
 
@@ -191,7 +191,7 @@ Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, az az 
 az group delete --name myfunctionapp
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy Azure-függvényt, amely HTTP-kérést végez, és elindítja egy tároló csoport üzembe helyezését. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

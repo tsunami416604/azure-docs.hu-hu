@@ -5,20 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/25/2020
+ms.date: 03/03/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 872ba86c9e43b1f6642331908eb829605f6c19bd
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: d2cf1a2e2ab9cf2d6e35aa12b5b0f8ddc04ad0e7
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619686"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301944"
 ---
 A következő lépésekkel hozhat létre egy virtuális hálózathoz a Resource Manager üzemi modell és az Azure Portalon. További információ a virtuális hálózatokról: [Virtual Network Overview (áttekintés](../articles/virtual-network/virtual-networks-overview.md)).
 
 >[!NOTE]
->A vnet egy helyszíni helyhez csatlakozzon egyeztetnie a helyi rendszergazda, hogy különítsen el egy IP-címtartományt, amely, kifejezetten ehhez a virtuális hálózathoz használhat. Ha a VPN-kapcsolat mindkét oldalán ismétlődő címtartomány, forgalom nem várt módon irányítja át. Ráadásul ha ezt a VNetet egy másik VNethez szeretné csatlakoztatni, a címtér nem lehet átfedésben másik VNettel. Ennek megfelelően tervezze meg a hálózati konfigurációt.
+>Ha egy virtuális hálózatot a létesítmények közötti architektúrák részeként használ, mindenképpen koordinálja a helyszíni hálózati rendszergazdájával, hogy kifaragjon egy olyan IP-címtartományt, amelyet kifejezetten ehhez a virtuális hálózathoz használhat. Ha a VPN-kapcsolat mindkét oldalán ismétlődő címtartomány, forgalom nem várt módon irányítja át. Emellett, ha a virtuális hálózatot egy másik virtuális hálózathoz szeretné kapcsolni, a Címterület nem fedi át a másik virtuális hálózatot. Ennek megfelelően tervezze meg a hálózati konfigurációt.
 >
 >
 
@@ -29,21 +29,31 @@ A következő lépésekkel hozhat létre egy virtuális hálózathoz a Resource 
 1. A **piactér** eredményei közül válassza a **Virtual Network** lehetőséget.
 
    ![Virtuális hálózat kiválasztása](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace-results.png "Virtuális hálózati erőforrás keresése lap")
-1. A **Virtual Network** lapon kattintson a **Létrehozás**gombra.
+1. A **Virtual Network** lapon válassza a **Létrehozás**lehetőséget.
 
-   ![virtuális hálózat lap](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet-click-create.png "Kattintson a Létrehozás gombra")
-1. Ha a Létrehozás gombra kattint, megnyílik a **virtuális hálózat létrehozása** lap.
+   ![virtuális hálózat lap](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet-click-create.png "Válassza létrehozása")
+1. A **Létrehozás**gombra kattintva megnyílik a **virtuális hálózat létrehozása** lap.
+1. Az **alapok** lapon adja meg a **Project details** és a **instance details** VNet beállításait.
 
-   ![Virtuális hálózat létrehozása lap](./media/vpn-gateway-basic-vnet-rm-portal-include/create-virtual-network-page.png "Virtuális hálózat létrehozása lap")
-1. A **Virtuális hálózat létrehozása** lapon konfigurálja a VNet beállításait. A mezők kitöltésekor a vörös felkiáltójelből zöld pipa válik, amikor a rendszer érvényesíti a, adja meg a mezőben karakterek. Egyes értékek autofilled, amit a saját értékeire:
+   ![Alapbeállítások lap](./media/vpn-gateway-basic-vnet-rm-portal-include/basics.png "Alapbeállítások lap") A mezők kitöltése után zöld pipa jelenik meg, ha a mezőben megadott karaktereket érvényesíti a rendszer. Egyes értékek autofilled, amit a saját értékeire:
 
-   - **Név:** adja meg a virtuális hálózat nevét.
-   - **Címtér**: adja meg a címteret. Ha több címteret szeretne felvenni, adja meg itt az első címterét. A virtuális hálózat létrehozása után később is felvehet a további címtereket. Ha a konfigurációhoz IPv6-címtartomány szükséges, jelölje be a jelölőnégyzetet az információk megadásához.
    - **Előfizetés:** ellenőrizze, hogy a megfelelő előfizetés jelenik-e meg a listában. Az előfizetéseket a legördülő menüben módosíthatja.
-   - **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat az új erőforráscsoport nevének megadásával. Ha egy új csoportot hoz létre, adjon nevet az erőforráscsoport, a tervezett konfigurációs értékeknek megfelelően. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../articles/azure-resource-manager/management/overview.md#resource-groups).
-   - **Hely**: válassza ki a Vnet helyét. A hely határozza meg, ahol a virtuális hálózaton üzembe helyezett erőforrások megtalálhatók lesznek.
-   - **Alhálózat**: adja hozzá az alhálózat **nevét** és az alhálózati **címtartományt**. Később is hozzáadhat további alhálózatokat, virtuális hálózat létrehozása után.
-   - **DDos-védelem**: válassza az **alapszintű**lehetőséget, hacsak nem szeretné használni a standard szolgáltatást.
-   - **Szolgáltatási végpontok**: ezt a beállítást **letiltottként**hagyhatja, kivéve, ha a konfiguráció megadja ezt a beállítást.
-   - **Tűzfal**: ezt a beállítást **letiltottként**hagyhatja, kivéve, ha a konfiguráció megadja ezt a beállítást.
-1. A virtuális hálózat központi telepítésének megkezdéséhez kattintson a **Létrehozás** gombra.
+   - **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot, vagy kattintson az **új létrehozása** lehetőségre egy új létrehozásához. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../articles/azure-resource-manager/management/overview.md#resource-groups).
+   - **Név:** adja meg a virtuális hálózat nevét.
+   - **Régió**: válassza ki a VNet helyét. A hely határozza meg, ahol a virtuális hálózaton üzembe helyezett erőforrások megtalálhatók lesznek.
+
+1. Az **IP-címek** lapon adja meg az értékeket. Az alábbi példákban látható értékek szemléltetési célokat szolgálnak. Módosítsa ezeket az értékeket a szükséges beállításoknak megfelelően.
+
+   ![IP-címek lap](./media/vpn-gateway-basic-vnet-rm-portal-include/addresses.png "IP-címek lap")  
+   - **IPv4-címterület**: alapértelmezés szerint a Címterület automatikusan létrejön. A Címterület elemre kattintva beállíthatja, hogy tükrözze a saját értékeit. További címterület hozzáadására is lehetőség van.
+   - **IPv6**: Ha a konfigurációhoz IPv6-címtartomány szükséges, jelölje be az **IPv6-címterület hozzáadása** mezőt az információk megadásához.
+   - **Alhálózat**: Ha az alapértelmezett címtartományt használja, a rendszer automatikusan létrehoz egy alapértelmezett alhálózatot. Ha megváltoztatja a Címterület méretét, hozzá kell adnia egy alhálózatot. Válassza az **+ alhálózat hozzáadása** lehetőséget az **alhálózat hozzáadása** ablak megnyitásához. Adja meg a következő beállításokat, majd válassza a **Hozzáadás** lehetőséget az értékek hozzáadásához:
+      - **Alhálózat neve**: ebben a példában a "FrontEnd" alhálózatot nevezték el.
+      - **Alhálózati címtartomány**: az alhálózat címtartomány.
+
+1. A **Biztonság** lapon most hagyja meg az alapértelmezett értékeket:
+
+   - **DDos Protection**: alapszintű
+   - **Tűzfal**: letiltva
+1. A virtuális hálózat beállításainak ellenőrzéséhez válassza a **felülvizsgálat + létrehozás** elemet.
+1. A beállítások érvényesítése után válassza a **Létrehozás**lehetőséget.

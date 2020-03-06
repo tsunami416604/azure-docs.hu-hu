@@ -4,18 +4,18 @@ description: Ismerje meg, hogy a tömb concat SQL System függvénye Azure Cosmo
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 10370e16c95f4fc747dd3a66a56794da38562972
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 8f2b37181e5d743809bb1f60be4056cb4442a8d2
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871822"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295878"
 ---
 # <a name="array_concat-azure-cosmos-db"></a>ARRAY_CONCAT (Azure Cosmos DB)
- Egy olyan tömböt ad vissza, amely két vagy több tömb értékének összefűzését eredményezi.  
+ Egy tömb, amely az eredménye, összefűzi a két vagy több tömb értéket adja vissza.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -34,18 +34,21 @@ ARRAY_CONCAT (<arr_expr1>, <arr_expr2> [, <arr_exprN>])
   
 ## <a name="examples"></a>Példák
   
-  A következő példa két tömb összefűzését mutatja be.  
+  Az alábbi példa hogyan fűzze össze két tömb.  
   
 ```sql
 SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat 
 ```  
   
- Itt látható az eredményhalmaz.  
+ Íme az eredményhalmaz.  
   
 ```json
 [{"arrayConcat": ["apples", "strawberries", "bananas"]}]  
 ```  
   
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>Következő lépések
 

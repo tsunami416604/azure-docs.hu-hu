@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
-ms.openlocfilehash: 87aa9f8201b924c1719f3ac805f79fb82631ecfd
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 81c77b2f6ae0c4f8497716c168a937657ceb57dd
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563205"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383856"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Linux Speech Devices SDK-t egy beszédfelismerésre alkalmas termék létrehozásához vagy [beszélgetéses átírási](../conversation-transcription-service.md) eszközként való használatához. Jelenleg csak az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatott.
 
-Az alkalmazás a Speech SDK csomaggal, valamint az Eclipse Java IDE (v4) a 64 bites Linux rendszeren (Ubuntu 16,04, Ubuntu 18,04, Debian 9) készült. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
+Az alkalmazás a Speech SDK csomaggal, valamint az Eclipse Java IDE (v4) a 64 bites Linux rendszeren (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8) készült. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
 Ehhez az útmutatóhoz egy Speech Service-erőforrással rendelkező [Azure Cognitive Services](../get-started.md) -fiókra van szükség. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
@@ -24,7 +24,7 @@ A [minta alkalmazás](https://aka.ms/sdsdk-download-JRE) forráskódját a Speec
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-* Operációs rendszer: 64 bites Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)
+* Operációs rendszer: 64-bites Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)
 * [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * Csak [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) vagy [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) esetén.
@@ -48,6 +48,16 @@ Az Eclipse elindítása előtt győződjön meg róla, hogy ezek a függőségek
   sudo apt-get update
   sudo apt-get install libssl1.0.2 libasound2
   ```
+
+RHEL/CentOS 8 rendszeren:
+
+  ```sh
+  sudo yum update
+  sudo yum install alsa-lib openssl
+  ```
+
+> [!NOTE]
+> A RHEL/CentOS 8 rendszeren kövesse az [OpenSSL Linux rendszerhez való konfigurálásának](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)utasításait.
 
 A beszélgetés átírása jelenleg csak az "en-US" és a "zh-CN" esetében érhető el az "CentralUS" és a "eastasia" régióban. A beszélgetés átírásának használatához az egyik régióban kell lennie egy beszédfelismerési kulcsnak.
 
@@ -89,7 +99,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.9.0</version>
+             <version>1.10.0</version>
         </dependency>
     </dependencies>
    ```

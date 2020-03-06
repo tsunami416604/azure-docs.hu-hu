@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 00fc836f098f3c03afc9adebe2450f00750eb5ff
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4882206692c334d6ab6af28feb5d2cba5277eea1
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954109"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303936"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
 
@@ -73,7 +73,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
     - [Hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
     - [Terheléselosztók](https://docs.microsoft.com/azure/load-balancer)
     -  [Nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md)
-    - Bármely más hálózati összetevőnél tekintse meg a [hálózatkezelési dokumentációt](https://docs.microsoft.com/azure/#pivot=products&panel=network).
+    - Bármely más hálózati összetevőnél tekintse meg a [hálózatkezelési dokumentációt](https://docs.microsoft.com/azure/?pivot=products&panel=network).
 
 
 
@@ -115,7 +115,7 @@ A következő lépések bemutatják, hogyan hajthatja végre az áthelyezést a 
 4. A feladatok befejezése után győződjön meg arról, hogy a virtuális gép a várt módon jelenik meg a cél Azure-régióban.
 
 
-## <a name="discard"></a>Elveti 
+## <a name="discard"></a>Elvetés 
 
 Ha bejelölte az áthelyezett virtuális gépet, és módosítania kell a feladatátvételi pontot, vagy vissza szeretne térni egy korábbi pontra, a **replikált elemek**területen kattintson a jobb gombbal a virtuális gép > a **helyreállítási pont módosítása**lehetőségre. Ez a lépés lehetővé teszi egy másik helyreállítási pont megadását és feladatátvételét. 
 

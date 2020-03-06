@@ -12,18 +12,18 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
-ms.openlocfilehash: 3c18440e87cf50e370b21b5f0ca33b42e0069fc1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 8714b7a96197cb4a59b29bada31b5559961bf8e3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161426"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300213"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>A Microsoft identitásplatformjának fejlődése
 
 A Microsoft identitásplatformja az Azure Active Directory (Azure AD) fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat hozzanak létre, amelyek bejelentkeznek a felhasználók számára, hogy a fejlesztők által létrehozott API-kat, például Microsoft Graph vagy API-kat hívjanak. Egy hitelesítési szolgáltatásból, nyílt forráskódú könyvtárakból, alkalmazás-regisztrációból és-konfigurációból áll (a fejlesztői portálon és az alkalmazás-API-n keresztül), a teljes fejlesztői dokumentációban, a gyors példákban, a kódokon, az oktatóanyagokon, a útmutatókon és a egyéb fejlesztői tartalmak. A Microsoft identitásplatformja támogatja a nyílt szabványokat, többek között OAuth 2.0-t és az OpenID Connectet.
 
-Eddig a legtöbb fejlesztő dolgozott együtt az Azure AD v 1.0 platformmal a munkahelyi és iskolai fiókok (az Azure AD által kiépített) hitelesítéséhez az Azure AD v 1.0 végpontról származó tokenek igénylésével, az Azure ad Authentication Library (ADAL) használatával, Azure Portal az alkalmazások regisztrálása és konfigurációja, valamint az Azure AD Graph API a programozott alkalmazások konfigurálásához.
+Eddig a legtöbb fejlesztő dolgozott együtt az Azure AD v 1.0 platformmal a munkahelyi és iskolai fiókok (az Azure AD által kiépített) hitelesítéséhez az Azure AD v 1.0 végpontról származó tokenek igénylésével, az Azure ad Authentication Library (ADAL) használatával, Azure Portal alkalmazások regisztrálása és konfigurációja, valamint a programozott alkalmazások konfigurációjának Microsoft Graph API-ját.
 
 Az egységes Microsoft Identity platform (v 2.0) használatával egyszer írhat kódot, és hitelesítheti bármely Microsoft-identitását az alkalmazásban. Számos platform esetében a teljes körűen támogatott nyílt forráskódú Microsoft Authentication Library (MSAL) használata ajánlott az Identity platform-végpontokon. A MSAL használata egyszerű, és lehetővé teszi a felhasználók számára a kiváló egyszeri bejelentkezést (SSO), így nagy megbízhatóságot és teljesítményt érhet el, és a Microsoft biztonságos fejlesztési életciklus (SDL) használatával fejleszthető. Az API-k meghívásakor beállíthatja, hogy az alkalmazás kihasználja a növekményes hozzájárulás előnyeit, ami lehetővé teszi, hogy késleltetse a további invazív hatókörökhöz való hozzájárulás iránti kérést, amíg az alkalmazás használata nem indokolja a futtatást.  A MSAL Emellett támogatja a Azure Active Directory B2Ct, így ügyfelei az előnyben részesített közösségi, vállalati vagy helyi fiók identitásait használják az alkalmazások és API-k egyszeri bejelentkezéses eléréséhez.
 
@@ -49,7 +49,7 @@ A Microsoft Identity platformmal integrált összes alkalmazás kezeléséhez a 
 
 A Azure AD B2C (a közösségi vagy helyi identitások hitelesítése esetén) való integrációhoz regisztrálnia kell az alkalmazást egy Azure AD B2C-bérlőben. Ez a felhasználói élmény a Azure Portal része is.
 
-A **Microsoft Graph alkalmazás API-** je jelenleg előzetes verzióban érhető el. Ezzel az API-val programozott módon konfigurálhatja a Microsoft Identity platformmal integrált alkalmazásokat a Microsoft-identitások hitelesítéséhez. Azonban amíg ez az API nem éri el az általános elérhetőséget, az Azure AD Graph 1,6 API-t és az alkalmazás jegyzékfájlját kell használnia.
+Az [Application API](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0) használatával programozott módon konfigurálhatja a Microsoft Identity platformmal integrált alkalmazásokat a Microsoft-identitások hitelesítéséhez.
 
 ### <a name="msal-libraries"></a>MSAL-kódtárak
 

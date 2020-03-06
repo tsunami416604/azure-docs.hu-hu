@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bf14bda9bd1acc62820bf07f83ac074a8d1b691c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: d4462fc407093b23510bddfae4d9f55d68f8c0fa
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349188"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303698"
 ---
 # <a name="substring-azure-cosmos-db"></a>Alsztring (Azure Cosmos DB)
  Már a megadott karakter számolt helyzetét megadja egy karakterlánc-kifejezés részét adja vissza, és továbbra is fennáll, a megadott időtartam, illetve a karakterlánc végén.  
@@ -32,7 +32,7 @@ SUBSTRING(<str_expr>, <num_expr1>, <num_expr2>)
    Egy numerikus kifejezés, amely a kezdő karaktert jelöli. A 0 érték a *str_expr*első karaktere.
   
 *num_expr2*  
-   Egy numerikus kifejezés, amely azt jelzi, hogy a visszaadott *str_expr* legfeljebb hány karakterből állhat. A 0 vagy kevesebb érték üres karakterláncot eredményez.
+   Egy numerikus kifejezés, amely a visszaadott *str_expr* karaktereinek maximális számát jelöli. A 0 vagy kevesebb érték üres karakterláncot eredményez.
 
 ## <a name="return-types"></a>Visszatérési típusok
   
@@ -50,9 +50,13 @@ SELECT SUBSTRING("abc", 1, 1) AS substring
   
 ```json
 [{"substring": "b"}]  
-```  
+```
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy) , ha a kezdő pozíció `0`.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

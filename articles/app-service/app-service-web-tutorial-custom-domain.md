@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 37bb1193056894ea824f4aa1723fb327f54bccae
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672078"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373641"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: meglévő egyéni DNS-név leképezése Azure App Service
 
@@ -20,7 +20,7 @@ Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító w
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Altartomány hozzárendelése (például `www.contoso.com`) CNAME rekorddal
@@ -83,7 +83,7 @@ Ha az App Service-csomag nem az **F1** szinten van, zárja be a **Vertikális fe
 
 Válassza ki bármelyik nem ingyenes szintet (**D1**, **B1**, **B2**, **B3**, vagy a **Production** kategória bármelyik szintje). További beállításokhoz kattintson a **További lehetőségek megjelenítése** lehetőségre.
 
-Kattintson az **Apply** (Alkalmaz) gombra.
+Kattintson az **Alkalmaz** gombra.
 
 ![A tarifacsomag ellenőrzése](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -190,7 +190,7 @@ Ha egy A rekordot egy alkalmazásra kíván leképezni, az App Service-nek **ké
 
 Az `contoso.com` tartomány példájában a következő táblának megfelelően hozza létre az A és a TXT típusú rekordot (a `@` általában a gyökértartományt jelöli).
 
-| Rekordtípus | Gazdagép | Value (Díj) |
+| Rekordtípus | Gazdagép | Érték |
 | - | - | - |
 | A | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
@@ -198,7 +198,7 @@ Az `contoso.com` tartomány példájában a következő táblának megfelelően 
 > [!NOTE]
 > Egy altartomány (például `www.contoso.com`) egy, az ajánlott [CNAME-rekord](#map-a-cname-record)helyett egy rekord használatával való hozzáadásához a rekordnak és a txt-rekordnak a következő táblázathoz hasonlóan kell kinéznie:
 >
-> | Rekordtípus | Gazdagép | Value (Díj) |
+> | Rekordtípus | Gazdagép | Érték |
 > | - | - | - |
 > | A | `www` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
 > | TXT | `www` | `<app_name>.azurewebsites.net` |
@@ -327,7 +327,7 @@ A művelet befejezése után az alkalmazásnak vissza kell adni a jobb oldalt a 
 
 Szkriptekkel automatizálhatja az egyéni tartományok felügyeletét az [Azure CLI](/cli/azure/install-azure-cli) vagy az [Azure PowerShell](/powershell/azure/overview) használatával. 
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI) 
+### <a name="azure-cli"></a>Azure CLI 
 
 A következő parancs konfigurált egyéni DNS-nevet ad hozzá egy App Service-alkalmazáshoz. 
 

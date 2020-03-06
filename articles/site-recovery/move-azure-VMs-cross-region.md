@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 92388c54804d85d2825a25abd0c234081670e8d4
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: dc37cb6fa05a2be56de7bf5536d7274190257d85
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092185"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303919"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Azure-beli virtuális gépek áthelyezése másik Azure-régióba
 
@@ -70,7 +70,7 @@ Előfordulhat, hogy az Azure-infrastruktúra szolgáltatásként (IaaS) virtuál
    - [Terheléselosztók](https://docs.microsoft.com/azure/load-balancer)
    - [Nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md)
     
-   A többi hálózati összetevővel kapcsolatban lásd az [Azure hálózati dokumentációját](https://docs.microsoft.com/azure/#pivot=products&panel=network). 
+   A többi hálózati összetevővel kapcsolatban lásd az [Azure hálózati dokumentációját](https://docs.microsoft.com/azure/?pivot=products&panel=network). 
 
 4. A konfiguráció teszteléséhez az áthelyezés végrehajtása előtt manuálisan [hozzon létre egy nem éles hálózatot](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) a céltartományban. A telepítés tesztelése során a telepítő minimális beavatkozást okoz az éles környezetben, és javasoljuk.
     

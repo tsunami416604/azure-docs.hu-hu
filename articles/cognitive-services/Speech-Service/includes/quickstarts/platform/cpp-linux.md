@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 6bb647273467a07786413ff4ea30cda836b7cb1b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f211e4b90dcc8bffa2fbba6fa4783caf846f50c
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469506"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383965"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a Linux rendszerhez készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t
 
@@ -23,7 +23,7 @@ Ez az útmutató bemutatja, hogyan telepítheti a Linux rendszerhez készült [S
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 
-Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)
+Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 * A támogatott linuxos platformokhoz telepíteni kell bizonyos könyvtárakat (`libssl` a Secure Sockets Layer támogatáshoz, és `libasound2` a hangtámogatáshoz). A könyvtárak megfelelő verzióinak telepítéséhez szükséges parancsokért tekintse meg az alábbi disztribúciót.
 
-   * Ubuntu rendszeren:
+   * On Ubuntu:
 
      ```sh
      sudo apt-get update
@@ -47,9 +47,20 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
      sudo apt-get install build-essential libssl1.0.2 libasound2 wget
      ```
 
+   * RHEL/CentOS 8 rendszeren:
+
+     ```sh
+     sudo yum update
+     sudo yum groupinstall "Development tools"
+     sudo yum install alsa-lib openssl wget
+     ```
+
+> [!NOTE]
+> A RHEL/CentOS 8 rendszeren kövesse az [OpenSSL Linux rendszerhez való konfigurálásának](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)utasításait.
+
 ## <a name="install-speech-sdk"></a>A Speech SDK telepítése
 
-A Linuxhoz készült Speech SDK 64 és 32 bites alkalmazások létrehozásához is használható. A szükséges kódtárak és fejlécek a https://aka.ms/csspeech/linuxbinary -ból tölthetők le tar-fájlként.
+A Linuxhoz készült Speech SDK 64 és 32 bites alkalmazások létrehozásához is használható. A szükséges kódtárak és fejlécek a https://aka.ms/csspeech/linuxbinary-ból tölthetők le tar-fájlként.
 
 Az SDK letöltése és telepítése a következőképpen történik:
 
@@ -78,7 +89,7 @@ Az SDK letöltése és telepítése a következőképpen történik:
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   A könyvtárlistának tartalmaznia kell a harmadik felekkel kapcsolatos közleményt, a licencfájlokat, valamint a fejlécfájlokat (`.h`) tartalmazó `include` könyvtárat, és a kódtárakat tartalmazó `lib` könyvtárat.
+   A könyvtárlistának tartalmaznia kell a harmadik felekkel kapcsolatos közleményt, a licencfájlokat, valamint a fejlécfájlokat (`include`) tartalmazó `.h` könyvtárat, és a kódtárakat tartalmazó `lib` könyvtárat.
 
    [!INCLUDE [Linux Binary Archive Content](~/includes/cognitive-services-speech-service-linuxbinary-content.md)]
 

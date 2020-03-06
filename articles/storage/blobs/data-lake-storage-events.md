@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: 03a07e70c967f92fe5dcc7c951aeea299b050405
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 85fad873b6c176d2278ea48709d2892ab515a025
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71326991"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303307"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Oktatóanyag: a Databricks-különbözeti tábla frissítéséhez a adattó rögzítési mintájának megvalósítása
 
@@ -34,7 +34,7 @@ Ezt a megoldást fordított sorrendben fogjuk felépíteni, kezdve a Azure Datab
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-* Hozzon létre egy hierarchikus névteret (Azure Data Lake Storage Gen2) tartalmazó Storage-fiókot. Ez az oktatóanyag egy `contosoorders` nevű Storage-fiókot használ. Győződjön meg arról, hogy a felhasználói fiókja rendelkezik a [Storage blob adatközreműködői szerepkörhöz](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) hozzárendelve.
+* Hozzon létre egy hierarchikus névteret (Azure Data Lake Storage Gen2) tartalmazó Storage-fiókot. Ez az oktatóanyag egy `contosoorders`nevű Storage-fiókot használ. Győződjön meg arról, hogy a felhasználói fiókja rendelkezik a [Storage blob adatközreműködői szerepkörhöz](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) hozzárendelve.
 
   Lásd: [Azure Data Lake Storage Gen2 fiók létrehozása](data-lake-storage-quickstart-create-account.md).
 
@@ -42,12 +42,12 @@ Ezt a megoldást fordított sorrendben fogjuk felépíteni, kezdve a Azure Datab
 
   A cikk lépéseinek elvégzése során néhány konkrét dolgot is el kell végeznie.
 
-  : heavy_check_mark: az [alkalmazás szerepkörhöz való hozzárendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szükséges lépések végrehajtásakor ügyeljen arra, hogy hozzárendelje a **Storage blob adatközreműködői** szerepkört az egyszerű szolgáltatáshoz.
+  : heavy_check_mark: Ha az [alkalmazás társítása szerepkörhöz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) című szakasz lépéseit hajtja végre, akkor ügyeljen arra, hogy a szolgáltatáshoz hozzárendelje a **tárolási blob adatközreműködői** szerepkört.
 
   > [!IMPORTANT]
   > Ügyeljen arra, hogy a szerepkört a Data Lake Storage Gen2 Storage-fiók hatókörében rendelje hozzá. Hozzárendelhet egy szerepkört a szülő erőforráscsoporthoz vagy az előfizetéshez, de az engedélyekkel kapcsolatos hibákat addig kapja, amíg a szerepkör-hozzárendelések el nem terjednek a Storage-fiókba.
 
-  : heavy_check_mark: a cikk [beolvasási értékek beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a jelszó értékeit egy szövegfájlba. Ezekre az értékekre később szüksége lesz.
+  : heavy_check_mark: a cikk [beolvasási értékek beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a jelszó értékét egy szövegfájlba. Ezekre az értékekre később szüksége lesz.
 
 ## <a name="create-a-sales-order"></a>Értékesítési rendelés létrehozása
 
@@ -275,7 +275,7 @@ Hozzon létre egy Azure-függvényt, amely futtatja a feladatot.
 
    Adja hozzá a következő beállításokat:
 
-   |Beállítás neve | Value (Díj) |
+   |Beállítás neve | Érték |
    |----|----|
    |**DBX_INSTANCE**| A databricks-munkaterület régiója. Például:`westus2.azuredatabricks.net`|
    |**DBX_PAT**| A korábban létrehozott személyes hozzáférési jogkivonat. |
@@ -354,7 +354,7 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
 
 ## <a name="test-the-event-grid-subscription"></a>A Event Grid előfizetés tesztelése
 
-1. Hozzon létre egy `customer-order.csv` nevű fájlt, illessze be a következő adatokat a fájlba, majd mentse a helyi számítógépre.
+1. Hozzon létre egy `customer-order.csv`nevű fájlt, illessze be a következő adatokat a fájlba, majd mentse a helyi számítógépre.
 
    ```
    InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
@@ -385,7 +385,7 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
 
    ![A legfrissebb rekord megjelenik a táblában](./media/data-lake-storage-events/final_query.png "A legfrissebb rekord megjelenik a táblában")
 
-6. A rekord frissítéséhez hozzon létre egy `customer-order-update.csv` nevű fájlt, illessze be a következő adatokat a fájlba, majd mentse a helyi számítógépre.
+6. A rekord frissítéséhez hozzon létre egy `customer-order-update.csv`nevű fájlt, illessze be a következő adatokat a fájlba, majd mentse a helyi számítógépre.
 
    ```
    InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country

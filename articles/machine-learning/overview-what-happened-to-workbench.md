@@ -9,14 +9,13 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
-ms.date: 11/05/2019
-ms.custom: seodec18
-ms.openlocfilehash: 21c6972b73f15a3f128b4a26222e478a5e2a245a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 03/05/2020
+ms.openlocfilehash: 5a8d31157023cf75076bfef7df09e65a066ceaa5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533922"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328616"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 
@@ -29,7 +28,7 @@ A Azure Machine Learning korábbi verziójában létrehozott összetevők többs
 Ebből a cikkből megtudhatja, hogy mi változott, és hogyan befolyásolja a már meglévő munkáját a Azure Machine Learning Workbench és az API-kkal.
 
 >[!Warning]
->Ez a cikk nem Azure Machine Learning Studio felhasználók számára készült. Olyan Azure Machine Learning ügyfelek számára készült, akik telepítették a Workbench (előzetes verzió) alkalmazást, és/vagy kísérletezési és modell-felügyeleti előzetes fiókkal rendelkeznek.
+>Ez a cikk az Azure Machine Learning Studio-felhasználó nem tartozik. Olyan Azure Machine Learning ügyfelek számára készült, akik telepítették a Workbench (előzetes verzió) alkalmazást, és/vagy kísérletezési és modell-felügyeleti előzetes fiókkal rendelkeznek.
 
 
 ## <a name="what-changed"></a>Mi változott?
@@ -48,7 +47,7 @@ Bár új továbbfejlesztett CLI-és SDK-ügyfelek találhatók a jelenlegi kiad�
 
 ## <a name="support-timeline"></a>Támogatási idővonal
 
-Január 9 2019-én a Machine Learning Workbench, Azure Machine Learning-kísérletezés és modellkezelés fiókok, valamint a hozzájuk tartozó SDK-és CLI-támogatás megszűnt.
+Január 9 2019-én a Machine Learning Workbench, Azure Machine Learning-kísérletezés és modellkezelés-fiókok, valamint a hozzájuk kapcsolódó SDK-és CLI-támogatással zárult.
 
 Az <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>, a [CLI](reference-azure-machine-learning-cli.md)és a [portál](how-to-manage-workspace.md)használatával minden legújabb funkció elérhető.
 
@@ -62,13 +61,13 @@ A portál munkaterület-irányítópultja csak a Microsoft Edge, a Chrome és a 
 
 [![online portál](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
 
-Az új parancssori felület és az SDK használatával megkezdheti a modellek betanítását és a futtatási előzmények nyomon követését. Megtudhatja, hogyan használható az [oktatóanyag: modellek betanítása Azure Machine learning](tutorial-train-models-with-aml.md)használatával.
+Indítsa el a modellek betanítása és nyomon követése a futtatási előzményeket az új parancssori felület és SDK-val. Megtudhatja, hogyan használható az [oktatóanyag: modellek betanítása Azure Machine learning](tutorial-train-models-with-aml.md)használatával.
 
 ## <a name="will-projects-persist"></a>Megmaradnak a projektek?
 
 Nem fog elveszni sem kód, sem munka. A régebbi verzióban, a projektek helyi könyvtárral rendelkező felhőbeli entitások. A legújabb verzióban helyi konfigurációs fájllal csatolja a helyi címtárakat a Azure Machine Learning munkaterülethez. Tekintse meg a [legújabb architektúra diagramját](concept-azure-machine-learning-architecture.md).
 
-A projekt tartalmának nagy része már a helyi gépen van. Ezért csak létre kell hoznia egy konfigurációs fájlt a könyvtárban, és hivatkoznia kell a kódban a munkaterülethez való kapcsolódásra. Ha továbbra is szeretné használni a fájlokat és parancsfájlokat tartalmazó helyi könyvtárat, adja meg a könyvtár nevét a ["Experiment. submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python-parancsban, vagy használja a `az ml project attach` CLI-parancsot.  Példa:
+A projekt tartalmának nagy része már a helyi gépen van. Ezért csak létre kell hoznia egy konfigurációs fájlt a könyvtárban, és hivatkoznia kell a kódban a munkaterülethez való kapcsolódásra. Ha továbbra is szeretné használni a fájlokat és parancsfájlokat tartalmazó helyi könyvtárat, adja meg a könyvtár nevét a ["Experiment. submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python-parancsban, vagy használja a `az ml project attach` CLI-parancsot.  Például:
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)
@@ -78,17 +77,17 @@ run = exp.submit(source_directory=script_folder,
 
 ## <a name="what-about-my-registered-models-and-images"></a>Mi a helyzet a regisztrált modellekkel és képekkel?
 
-A régi modell beállításjegyzékében regisztrált modelleket át kell telepíteni az új munkaterületre, ha továbbra is használni szeretné őket. A modellek áttelepítéséhez töltse le a modelleket, majd regisztrálja újra az új munkaterületen.
+Ha azt szeretné, hogy továbbra is használhatja őket a régi modellben beállításjegyzék regisztrált modellek kell áttelepíteni az új munkaterülethez. A modellek áttelepítéséhez töltse le a modelleket, majd regisztrálja újra az új munkaterületen.
 
 A régi rendszerkép beállításjegyzékében létrehozott rendszerképeket nem lehet közvetlenül áttelepíteni az új munkaterületre. A legtöbb esetben a modell lemezkép létrehozása nélkül is üzembe helyezhető. Ha szükséges, létrehozhat egy rendszerképet a modellhez az új munkaterületen. További információkért lásd: [gépi tanulási modellek kezelése, regisztrálása, üzembe helyezése és figyelése](concept-model-management-and-deployment.md).
 
 ## <a name="what-about-deployed-web-services"></a>Mi a helyzet az üzembe helyezett webszolgáltatásokkal?
 
-A régi CLI támogatásának befejezése után már nem telepíthet újra modelleket, és nem felügyelheti a modellkezelés-fiókkal eredetileg telepített webszolgáltatásokat. Ezek a webszolgáltatások azonban továbbra is működni fognak, amíg a Azure Container Service (ACS) továbbra is támogatott.
+A régi CLI támogatásának befejezése után már nem telepíthet újra modelleket, és nem felügyelheti a modellkezelés-fiókkal eredetileg telepített webszolgáltatásokat. Azonban ezeket a szolgáltatásokat továbbra is működni fog a mindaddig, amíg az Azure Container Service (ACS) továbbra is támogatott.
 
-A legújabb verzióban a modellek webszolgáltatásként lesznek telepítve Azure Container Instances (ACI) vagy Azure Kubernetes Service (ak) fürtökhöz. A FPGA és a Azure IoT Edge is üzembe helyezhető.
+A legújabb verzióra, a modellek webszolgáltatásként az Azure Container Instances (ACI) vagy az Azure Kubernetes Service (AKS)-fürtöket üzembe helyezve. A FPGA és a Azure IoT Edge is üzembe helyezhető.
 
-További információt a következő cikkekben talál:
+További tudnivalók az alábbi cikkeket:
 + [A modellek üzembe helyezésének helye és módja](how-to-deploy-and-where.md)
 + [Oktatóanyag: modellek üzembe helyezése Azure Machine Learning](tutorial-deploy-models-with-aml.md)
 

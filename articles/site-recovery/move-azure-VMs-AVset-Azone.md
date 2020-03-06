@@ -7,15 +7,15 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: c9513ca38c665a53bc14f284e87a1cc01035d135
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5728ce7125695b191de4f91d5bd9003384f428a7
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693183"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298308"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure-beli virtuális gépek áthelyezése Availability Zonesba
-Availability Zones az Azure-ban segíti az alkalmazások és az adatok adatközpont-meghibásodások elleni védelmében. Minden rendelkezésre állási zónában egy vagy több független áramellátással, hűtéssel és hálózattal rendelkező adatközpont található. A rugalmasság biztosításához legalább három különálló zónának kell lennie az összes engedélyezett régióban. A régión belüli Availability Zones fizikai elkülönítése segít az adatközpont-hibák elleni védelemben az alkalmazások és az adatok védelme terén. A Availability Zones az Azure a virtuális gépek (VM-EK) rendelkezésre állására vonatkozó, 99,99%-os szolgáltatói szerződést (SLA) biztosít. A Availability Zones a kiválasztott régiókban támogatottak, ahogy azt az [Azure-ban Availability Zones?](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)című rész ismerteti.
+Availability Zones az Azure-ban segíti az alkalmazások és az adatok adatközpont-meghibásodások elleni védelmében. Minden rendelkezésre állási zóna egy vagy több, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott adatközpontból tevődik össze. A rugalmasság biztosításához legalább három különálló zónának kell lennie az összes engedélyezett régióban. A régión belüli Availability Zones fizikai elkülönítése segít az adatközpont-hibák elleni védelemben az alkalmazások és az adatok védelme terén. A Availability Zones az Azure a virtuális gépek (VM-EK) rendelkezésre állására vonatkozó, 99,99%-os szolgáltatói szerződést (SLA) biztosít. A Availability Zones a kiválasztott régiókban támogatottak, ahogy azt az [Azure-ban Availability Zones?](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)című rész ismerteti.
 
 Olyan helyzetekben, ahol a virtuális gépek *egyetlen példányban* vannak üzembe helyezve egy adott régióban, és szeretné javítani a rendelkezésre állást azáltal, hogy ezeket a virtuális gépeket egy rendelkezésre állási zónába helyezi, ezt Azure site Recovery használatával teheti meg. Ez a művelet a következő kategóriákba rendezhető:
 
@@ -70,7 +70,7 @@ Olyan helyzetekben, ahol a virtuális gépek *egyetlen példányban* vannak üze
     - [Terheléselosztók](https://docs.microsoft.com/azure/load-balancer)
     - [Nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md)
     
-   Bármely más hálózati összetevő esetében tekintse meg a hálózatkezelés [dokumentációját](https://docs.microsoft.com/azure/#pivot=products&panel=network).
+   Bármely más hálózati összetevő esetében tekintse meg a hálózatkezelés [dokumentációját](https://docs.microsoft.com/azure/?pivot=products&panel=network).
 
     > [!IMPORTANT]
     > Győződjön meg arról, hogy a célhelyen egy redundáns terheléselosztó van használatban. További információk: [standard Load Balancer és Availability Zones](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).
@@ -143,7 +143,7 @@ Nyissa meg a virtuális gépet. Válassza a **replikáció letiltása**lehetős�
 > [!IMPORTANT]
 > Az előző lépésben elkerülheti, hogy az áthelyezés után Site Recovery replikáció után ne kelljen fizetni. A forrás replikálási beállításai automatikusan törlődnek. Vegye figyelembe, hogy a replikáció részeként telepített Site Recovery bővítmény nem törlődik, és manuálisan el kell távolítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megnövelte az Azure-beli virtuális gépek rendelkezésre állását a rendelkezésre állási csoport vagy a rendelkezésre állási zónába való áttéréssel. Most már beállíthatja az áthelyezett virtuális gép vész-helyreállítását.
 

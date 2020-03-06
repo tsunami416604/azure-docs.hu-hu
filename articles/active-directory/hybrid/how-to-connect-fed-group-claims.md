@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 3b45bcff300cc3e749d387ea83df2f96e51d3c66
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 78b36e1f5ababf2551bd69682807a8ed308ae24d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274248"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298445"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Azure Active Directory (nyilvános előzetes verzió) alkalmazásokhoz tartozó jogcímek konfigurálása
 
@@ -138,7 +138,7 @@ A csoportos jogcímeket az [alkalmazás jegyzékfájljának](../../active-direct
 
 2. Csoporttagság-jogcímek engedélyezése a groupMembershipClaim módosításával
 
-Érvényes értékek a következők:
+Az érvényes értékek az alábbiak:
 
 | Kiválasztás | Leírás |
 |----------|-------------|

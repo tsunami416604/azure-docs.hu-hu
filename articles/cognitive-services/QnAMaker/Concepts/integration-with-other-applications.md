@@ -3,12 +3,12 @@ title: Integrálás más alkalmazásokkal – QnA Maker
 description: A QnA Maker az ügyfélalkalmazások, például a csevegési robotok, valamint más természetes nyelvi feldolgozási szolgáltatások, például a Language Understanding (LUIS) integrálására is használható.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: f75ee92f2ecd14f5c3e017aeee2340cff0c92561
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843389"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300519"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>Tudásbázis kialakítása ügyfélalkalmazások számára
 
@@ -20,7 +20,7 @@ A QnA Maker a társalgási ügyfélalkalmazások, például a [Microsoft bot Fra
 
 ## <a name="create-a-bot-without-writing-any-code"></a>Robot létrehozása kód írása nélkül
 
-Miután közzétette a tudásbázist, hozzon létre egy robotot a **közzétételi** lapról a **robot létrehozása** gomb kiválasztásával. A [robot oktatóanyag](../tutorials/create-qna-bot.md) segítségével megtudhatja, mi történik a gomb kiválasztása után.
+Miután közzétette a tudásbázist, hozzon létre egy robotot a **közzétételi** lapról a **robot létrehozása** gomb kiválasztásával. A [robot oktatóanyag](../Quickstarts/create-publish-knowledge-base.md) segítségével megtudhatja, mi történik a gomb kiválasztása után.
 
 ## <a name="providing-multi-turn-conversations"></a>Több fordulatos beszélgetések biztosítása
 

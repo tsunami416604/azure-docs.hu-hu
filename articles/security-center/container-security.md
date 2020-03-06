@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 45ce8a808efc5b882c90f99875fdde661e292774
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: fac9cba28f90f3642de660ed7d070b165c06bb2e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205976"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303256"
 ---
 # <a name="container-security-in-security-center"></a>Tárolók biztonsága Security Center
 
@@ -37,6 +37,8 @@ A szolgáltatások használatáról a [tárolók biztonságának figyelését](m
 Az ARM-alapú Azure Container Registry figyeléséhez győződjön meg arról, hogy a Security Center standard szintű csomagjában van (lásd: [díjszabás](/azure/security-center/security-center-pricing)). Ezután engedélyezze a választható tároló-beállításjegyzékek köteget. Új rendszerképek leküldésekor Security Center megvizsgálja a képet a piacvezető sebezhetőség-ellenőrzési szállítótól, a Qualys.
 
 Ha problémák merülnek fel, a Qualys vagy a Security Center – értesítést kap a Security Center irányítópulton. Security Center a biztonsági rések esetében gyakorlati ajánlásokat és súlyossági besorolást biztosít, valamint útmutatást nyújt a probléma megoldásához. A Security Center a tárolókkal kapcsolatos javaslatairól a [javaslatok hivatkozási listájában](recommendations-reference.md#recs-containers)talál további információt.
+
+Security Center szűrők és a vizsgálati eredmények osztályozása. Ha egy rendszerkép kifogástalan állapotú, Security Center megjelöli. A Security Center csak olyan rendszerképekhez hoz létre biztonsági javaslatokat, amelyeknek feloldhatók a problémák. Ha csak akkor értesíti, ha problémák merülnek fel, Security Center csökkenti a nemkívánatos tájékoztatási riasztások lehetséges lehetőségét.
 
 ## <a name="environment-hardening"></a>Környezet megerősítése
 
@@ -61,22 +63,24 @@ Az AK biztonsági ellenőrzéseket és láthatóságot biztosít a fürtök bizt
 
 A szolgáltatással kapcsolatos releváns Security Center javaslatok részleteiért tekintse meg az ajánlásokat ismertető táblázat [tároló szakaszát](recommendations-reference.md#recs-containers) .
 
-## <a name="run-time-protection---real-time-threat-protection"></a>Futásidejű védelem – valós idejű veszélyforrások elleni védelem
+## <a name="run-time-protection---real-time-threat-detection"></a>Futásidejű védelem – valós idejű fenyegetések észlelése
 
-A Security Center valós idejű veszélyforrások elleni védelmet biztosít a tároló környezetek számára, és riasztásokat hoz létre a gyanús tevékenységekhez. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét.
+Security Center valós idejű veszélyforrások észlelését teszi lehetővé a tároló környezetek számára, és riasztásokat hoz létre a gyanús tevékenységekhez. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét.
 
-A fenyegetéseket a gazdagép és az AK-fürt szintjén észleljük. Részletekért lásd: [veszélyforrások elleni védelem az Azure-tárolók esetében](threat-protection.md#azure-containers).
+A fenyegetéseket a gazdagép és az AK-fürt szintjén észleljük. A részletekért lásd: [Az Azure-tárolók veszélyforrások észlelése](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-).
 
 
 ## <a name="container-security-faq"></a>Container Security – gyakori kérdések
 
 ### <a name="what-types-of-images-can-azure-security-center-scan"></a>Milyen típusú képeket tud Azure Security Center a vizsgálat?
-Security Center a rendszerhéj-hozzáférést biztosító Linux operációs rendszerű lemezképeket vizsgálja. 
+Security Center megvizsgálja a rendszerhéj-hozzáférést biztosító Linux operációs rendszert használó lemezképeket. 
 
-A Qualys képolvasó nem támogatja a Super minimalista rendszerképeket, például a [Docker](https://hub.docker.com/_/scratch/) -rendszerképeket vagy a "eltérítetlen" lemezképeket, amelyek csak az alkalmazást és a futásidejű függőségeit tartalmazzák (csomagkezelő, rendszerhéj vagy operációs rendszer nélkül).
+A Qualys képolvasó nem támogatja a Super minimalista rendszerképeket, például a [Docker](https://hub.docker.com/_/scratch/) -rendszerképeket vagy a "eltérítetlen" lemezképeket, amelyek csak az alkalmazást és a futásidejű függőségeit tartalmazzák csomagkezelő, rendszerhéj vagy operációs rendszer nélkül.
 
-### <a name="how-does-we-scan-azure-security-center-scan-an-image"></a>Hogyan vizsgáljuk meg Azure Security Center a képek vizsgálatát?
-A rendszer kinyeri a rendszerképet a beállításjegyzékből. Ezután egy elkülönített homokozóban fut a Qualys szkennerrel, amely kibontja az ismert sebezhetőségek listáját.
+### <a name="how-does-azure-security-center-scan-an-image"></a>Hogyan vizsgálja Azure Security Center a rendszerképet?
+A rendszerkép a beállításjegyzékből lett kihúzva. Ezután egy elkülönített homokozóban fut a Qualys-olvasóval, amely kibontja az ismert sebezhetőségek listáját.
+
+Security Center szűrők és a vizsgálati eredmények osztályozása. Ha egy rendszerkép kifogástalan állapotú, Security Center megjelöli. A Security Center csak olyan rendszerképekhez hoz létre biztonsági javaslatokat, amelyeknek feloldhatók a problémák. Ha csak akkor értesíti, ha problémák merülnek fel, Security Center csökkenti a nemkívánatos tájékoztatási riasztások lehetséges lehetőségét.
 
 ### <a name="how-often-does-azure-security-center-scan-my-images"></a>Milyen gyakran Azure Security Center beolvasni a képeiket?
 A képvizsgálatok minden leküldésen aktiválva lesznek.

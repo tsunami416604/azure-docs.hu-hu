@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center IoT útmutató az Azure Sentinel (előzetes verzió) konfigurálásához | Microsoft Docs
-description: Ez az útmutató azt ismerteti, hogyan konfigurálható az Azure Sentinel a Azure Security Center IoT-megoldás adatainak fogadására.
+description: Ez a cikk azt ismerteti, hogyan konfigurálható az Azure Sentinel a IoT-megoldás adatainak fogadására a Azure Security Center.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
-ms.openlocfilehash: f6e7eddd6ddbcec61c3d8d173891cbc9abaaf08f
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 082b33332051fee9da2aebe63b0c41edb300afaf
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463179"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303545"
 ---
 > [!IMPORTANT]
 > Az Azure Sentinel IoT-adatösszekötő Azure Security Center jelenleg nyilvános előzetes verzióban érhető el.
@@ -48,10 +48,10 @@ Azure Security Center riasztások összekapcsolását a IoT, és közvetlenül a
 ## <a name="connect-to-azure-security-center-for-iot"></a>Kapcsolódás Azure Security Center IoT
 
 1. Az Azure Sentinelben válassza az **adatösszekötők** lehetőséget, majd kattintson a **Azure Security Center IoT** csempére.
-1. A jobb alsó ablaktáblán kattintson az **összekötő lap megnyitása**lehetőségre. 
+1. A jobb oldali ablaktábla alján kattintson az **összekötő lap megnyitása**lehetőségre. 
 1. Kattintson a **Kapcsolódás**lehetőségre minden olyan IoT hub-előfizetés mellett, amelynek a riasztásait és az eszközök riasztásait az Azure Sentinel szolgáltatásba kívánja továbbítani. 
-    - Ha a IoT Azure Security Center nincs engedélyezve ezen a központban, egy figyelmeztető üzenet jelenik meg. A szolgáltatás elindításához kattintson az **enable (Engedélyezés** ) hivatkozásra. 
-1. Eldöntheti, hogy szeretné-e, hogy a riasztások Azure Security Center IoT az incidensek automatikus előállítását az Azure Sentinelben. Az **incidensek létrehozása**területen válassza az **Engedélyezés** lehetőséget az alapértelmezett analitikus szabály engedélyezéséhez, hogy automatikusan hozzon létre incidenseket a csatlakoztatott biztonsági szolgáltatásban létrehozott riasztásokból. Ez a szabály az **Analytics** > **aktív** szabályok területén módosítható vagy szerkeszthető.
+    - Ha a IoT Azure Security Center nincs engedélyezve ezen a központban, egy figyelmeztető üzenet jelenik meg. Kattintson az **Engedélyezés** hivatkozásra a szolgáltatás elindításához és engedélyezéséhez. 
+1. Eldöntheti, hogy szeretné-e, hogy a riasztások Azure Security Center IoT az incidensek automatikus előállítását az Azure Sentinelben. Az **incidensek létrehozása**területen válassza az **Engedélyezés** lehetőséget, ha engedélyezni szeretné, hogy a szabály automatikusan hozzon létre incidenseket a generált riasztásokból.  Ez a szabály az **Analytics** > **aktív** szabályok területén módosítható vagy szerkeszthető.
 
 > [!NOTE]
 >A kapcsolatok módosítása után akár 10 másodpercig is eltarthat a központ listájának frissítése. 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 0e19271b5c69610dd9f44c3121e195b80732279c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669539"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359259"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Mi az Virtual Network NAT (nyilvános előzetes verzió)?
 
@@ -192,13 +192,13 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Ossza meg velünk [
 
 ## <a name="limitations"></a>Korlátozások
 
-- A NAT kompatibilis a standard SKU nyilvános IP-címmel, a nyilvános IP-előtaggal és a terheléselosztó erőforrásaival.   Az alapszintű erőforrások (például az alapszintű Load Balancer) és a belőlük származtatott termékek nem kompatibilisek a NAT-val.  Az alapszintű erőforrásokat a NAT-mel nem konfigurált alhálózatra kell helyezni.
-- Az IPv4-címek családja támogatott.  A NAT nem támogatja az IPv6-cím családját.
-- A NSG folyamat naplózása nem támogatott a NAT használata esetén.
-- A NAT nem tud több virtuális hálózatot kifogni.
+* A NAT kompatibilis a standard SKU nyilvános IP-címmel, a nyilvános IP-előtaggal és a terheléselosztó erőforrásaival.   Az alapszintű erőforrások (például az alapszintű Load Balancer) és a belőlük származtatott termékek nem kompatibilisek a NAT-val.  Az alapszintű erőforrásokat a NAT-mel nem konfigurált alhálózatra kell helyezni.
+* Az IPv4-címek családja támogatott.  A NAT nem támogatja az IPv6-cím családját.  A NAT nem helyezhető üzembe IPv6-előtaggal rendelkező alhálózaton.
+* A NSG folyamat naplózása nem támogatott a NAT használata esetén.
+* A NAT nem tud több virtuális hálózatot kifogni.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [NAT-átjáró erőforrásáról](./nat-gateway-resource.md).
-- [Ossza meg velünk a következőt a UserVoice-ben](https://aka.ms/natuservoice).
-- [Visszajelzés küldése a nyilvános előzetes](https://aka.ms/natfeedback)verzióról.
+* További információ a [NAT-átjáró erőforrásáról](./nat-gateway-resource.md).
+* [Ossza meg velünk a következőt Virtual Network NAT UserVoice-ben való létrehozásához](https://aka.ms/natuservoice).
+* [Visszajelzés küldése a nyilvános előzetes](https://aka.ms/natfeedback)verzióról.

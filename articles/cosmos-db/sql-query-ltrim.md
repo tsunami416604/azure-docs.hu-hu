@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 652204416c201ccca024aff0239fc10dcc3eb105
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 08c069de70684a8562e86963ddb2e84ee889e7cc
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870989"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302253"
 ---
 # <a name="ltrim-azure-cosmos-db"></a>LTRIM (Azure Cosmos DB)
- Egy karakterlánc-kifejezést ad vissza, miután eltávolítja a kezdő üres értékeket.  
+ Egy karakterlánc-kifejezés adja vissza, miután eltávolítja a vezető üres.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -30,7 +30,7 @@ LTRIM(<str_expr>)
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy karakterlánc-kifejezést ad vissza.  
+  Egy karakterlánc-kifejezés adja vissza.  
   
 ## <a name="examples"></a>Példák
   
@@ -40,11 +40,15 @@ LTRIM(<str_expr>)
 SELECT LTRIM("  abc") AS l1, LTRIM("abc") AS l2, LTRIM("abc   ") AS l3 
 ```  
   
- Itt látható az eredményhalmaz.  
+ Íme az eredményhalmaz.  
   
 ```json
 [{"l1": "abc", "l2": "abc", "l3": "abc   "}]  
 ```  
+
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>Következő lépések
 

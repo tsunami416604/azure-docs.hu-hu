@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/26/2019
+ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 1cc0132cc17217c858060e107dfcfc090a3ef8a7
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 3a9568e1a0307cd1713c511ef42c065424306548
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610998"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302882"
 ---
 # <a name="streaming-locators"></a>Streamelési lokátor
 
@@ -32,7 +32,7 @@ Az **adatfolyam-kereső** létrehozásának folyamatát közzétételnek nevezz�
 
 Megadhatja a kezdő és a záró időpontot is a folyamatos átviteli lokátorban, így a felhasználó csak a következő időpontok közötti tartalmat fogja lejátszani (például 5/1/2019 – 5/5/2019).  
 
-## <a name="considerations"></a>Megfontolandó szempontok
+## <a name="considerations"></a>Megfontolások
 
 * A **streaming-lokátorok** nem frissíthető. 
 * A DateTime típusú **adatfolyam-kereső** tulajdonságai mindig UTC formátumban jelennek meg.
@@ -93,17 +93,18 @@ A következő műveletek végrehajtásával lekérheti a streaming-keresőket a 
 |Nyelv|API|
 |---|---|
 |REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
-|CLI|[az AMS Asset List-streaming-Locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
+|parancssori felület|[az AMS Asset List-streaming-Locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
 |.NET|[ListStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="also-see"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Adategységek](assets-concept.md)
 * [Streamelési szabályzatok](streaming-policy-concept.md)
 * [Tartalomkulcs-szabályzatok](content-key-policy-concept.md)
+* [Oktatóanyag: videók feltöltése, kódolása és továbbítása a .NET-tel](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Oktatóanyag: videók feltöltése, kódolása és továbbítása a .NET-tel](stream-files-tutorial-with-api.md)
+[Folyamatos átviteli lokátor létrehozása és URL-címek összeállítása](create-streaming-locator-build-url.md)

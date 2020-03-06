@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 35efbb8d4d97ab52abb20487d15a80985946c499
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 80dba57d4fe05630eb5ae4f8fc96bd0aa214c6d4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732603"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302270"
 ---
 # <a name="lower-azure-cosmos-db"></a>ALSÓ (Azure Cosmos DB)
- Egy karakterlánc-kifejezést ad vissza, miután a nagybetűs karaktereket a kisbetűs értékre konvertálta.  
+ Egy karakterlánc-kifejezés nagybetűt adatok átalakítása kisbetűvé után adja vissza.  
 
 Az alsó rendszerfüggvény nem használja az indexet. Ha gyakori kis-és nagybetűket nem megkülönböztető összehasonlításokat tervez, az alacsonyabb rendszerfunkció nagy mennyiségű RU-t is felhasználhat. Ha ez az eset áll fenn, ahelyett, hogy az alacsonyabb rendszerfüggvényt használja az összehasonlítások minden egyes időpontjában, a borítást a beszúráskor normalizálhatja. Ezután egy olyan lekérdezés, mint például a SELECT * FROM c, ahol az alacsonyabb (c. Name) = ' Bob ' egyszerűen kiválaszthatja a * c betűt, ahol a c.name = ' Bob '.
 
@@ -32,7 +32,7 @@ LOWER(<str_expr>)
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy karakterlánc-kifejezést ad vissza.  
+  Egy karakterlánc-kifejezés adja vissza.  
   
 ## <a name="examples"></a>Példák
   
@@ -42,12 +42,16 @@ LOWER(<str_expr>)
 SELECT LOWER("Abc") AS lower
 ```  
   
- Itt látható az eredményhalmaz.  
+ Íme az eredményhalmaz.  
   
 ```json
 [{"lower": "abc"}]  
   
 ```  
+
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>Következő lépések
 

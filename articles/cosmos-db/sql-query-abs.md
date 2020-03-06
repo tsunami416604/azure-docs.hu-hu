@@ -4,18 +4,18 @@ description: Ismerje meg, hogy az Azure Cosmos DB abszolút (ABS) SQL System fü
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 70648dcf28d760c3a81c0cb426cd9b2d3ce96fff
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 6d173827f2695cc20fa208d390731acf0edb3848
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871856"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301097"
 ---
 # <a name="abs-azure-cosmos-db"></a>ABS (Azure Cosmos DB)
- A megadott numerikus kifejezés abszolút (pozitív) értékét adja vissza.  
+ A megadott numerikus kifejezés (pozitív) abszolút értékét adja vissza.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,11 +26,11 @@ ABS (<numeric_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *numeric_expr*  
-   Egy numerikus kifejezés.  
+   A numerikus kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy numerikus kifejezést ad vissza.  
+  A numerikus kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
@@ -40,12 +40,15 @@ ABS (<numeric_expr>)
 SELECT ABS(-1) AS abs1, ABS(0) AS abs2, ABS(1) AS abs3 
 ```  
   
- Itt látható az eredményhalmaz.  
+ Íme az eredményhalmaz.  
   
 ```json
 [{abs1: 1, abs2: 0, abs3: 1}]  
-```  
-  
+```
+
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Következő lépések
 

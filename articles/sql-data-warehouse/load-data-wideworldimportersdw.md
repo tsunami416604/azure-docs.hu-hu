@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 8e58c315ddc171ba19e0bce1cea4f694691f946e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: d8242731466df9b80a6a6c3f0e340d6deb76e7d4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78193596"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304038"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Oktatóanyag: az Azure szinapszis Analytics SQL-készletbe való betöltés
 
@@ -1090,7 +1090,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 5. Az erőforráscsoport törléséhez kattintson a **SampleRG** elemre, majd az **Erőforráscsoport törlése** parancsra.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 Ennek az oktatóanyagnak a segítségével megtanulta, hogyan hozhat létre egy adattárházat, illetve egy felhasználót az adatok betöltéséhez. Külső táblákat hozott létre, hogy definiálhassa az Azure Storage-blobban tárolt adatok struktúráját, majd a PolyBase CREATE TABLE AS SELECT utasításával adatokat töltött be az adattárházába. 
 
 A következőket hajtotta végre:

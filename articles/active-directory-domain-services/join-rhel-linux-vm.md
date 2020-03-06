@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: 1be9134ee217cb91461e89c9908b889a14ec0c3a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: d12dd0c79f2e9c1d2b0cc17956a0bb8d8fa35865
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613795"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299142"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Red Hat Enterprise Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 
@@ -34,7 +34,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
     * Ha szükséges, az első oktatóanyag [egy Azure Active Directory Domain Services példányt hoz létre és konfigurál][create-azure-ad-ds-instance].
-* Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
+* Egy olyan felhasználói fiók, amely az Azure AD DS felügyelt tartomány részét képezi.
 
 ## <a name="create-and-connect-to-a-rhel-linux-vm"></a>RHEL Linux rendszerű virtuális gép létrehozása és kapcsolódás
 
@@ -108,15 +108,15 @@ Most, hogy a szükséges csomagok telepítve vannak a virtuális gépen, csatlak
     * Győződjön meg arról, hogy a virtuális gép üzembe helyezése ugyanarra a virtuális gépre történik, ahol az Azure AD DS felügyelt tartomány elérhető.
     * Győződjön meg arról, hogy a virtuális hálózat DNS-kiszolgálójának beállításai frissítve lettek, hogy az Azure AD DS felügyelt tartományának tartományvezérlőjére mutasson.
 
-1. Most inicializálja a Kerberost a `kinit` parancs használatával. Olyan felhasználót válasszon, amely a *HRE DC-rendszergazdák* csoportjához tartozik. Ha szükséges, [vegyen fel egy felhasználói fiókot egy csoportba az Azure ad-ben](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+1. Most inicializálja a Kerberost a `kinit` parancs használatával. Olyan felhasználót kell megadnia, amely az Azure AD DS felügyelt tartomány részét képezi. Ha szükséges, [vegyen fel egy felhasználói fiókot egy csoportba az Azure ad-ben](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Ismét az Azure AD DS felügyelt tartománynevet minden nagybetűvel meg kell adni. A következő példában az `contosoadmin@aaddscontoso.com` nevű fiók a Kerberos inicializálására szolgál. Adja meg saját felhasználói fiókját, amely a *HRE DC-rendszergazdák* csoport tagja:
+    Ismét az Azure AD DS felügyelt tartománynevet minden nagybetűvel meg kell adni. A következő példában az `contosoadmin@aaddscontoso.com` nevű fiók a Kerberos inicializálására szolgál. Adja meg saját felhasználói fiókját, amely az Azure AD DS felügyelt tartomány része:
 
     ```console
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. Végül csatlakoztassa a gépet az Azure AD DS felügyelt tartományhoz a `realm join` parancs használatával. Ugyanazt a felhasználói fiókot használja, mint amely az előző `kinit` parancsban megadott *HRE DC-rendszergazdák* csoport tagja, például `contosoadmin@AADDSCONTOSO.COM`:
+1. Végül csatlakoztassa a gépet az Azure AD DS felügyelt tartományhoz a `realm join` parancs használatával. Ugyanazt a felhasználói fiókot használja, mint amely az előző `kinit` parancsban megadott Azure AD DS felügyelt tartomány része, például `contosoadmin@AADDSCONTOSO.COM`:
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'
@@ -142,7 +142,7 @@ Successfully enrolled machine in realm
     * Győződjön meg arról, hogy a virtuális gép üzembe helyezése ugyanarra a virtuális gépre történik, ahol az Azure AD DS felügyelt tartomány elérhető.
     * Győződjön meg arról, hogy a virtuális hálózat DNS-kiszolgálójának beállításai frissítve lettek, hogy az Azure AD DS felügyelt tartományának tartományvezérlőjére mutasson.
 
-1. Először csatlakoztassa a tartományt a `adcli join` parancs használatával, ezzel a paranccsal a gép hitelesítéséhez a keytab kiterjesztésű is létrejön. Olyan felhasználói fiókot használjon, amely a *HRE DC-rendszergazdák* csoport tagja.
+1. Először csatlakoztassa a tartományt a `adcli join` parancs használatával, ezzel a paranccsal a gép hitelesítéséhez a keytab kiterjesztésű is létrejön. Olyan felhasználói fiókot használjon, amely az Azure AD DS felügyelt tartomány részét képezi.
 
     ```console
     sudo adcli join aaddscontoso.com -U contosoadmin

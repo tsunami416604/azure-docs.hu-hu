@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
-ms.openlocfilehash: 5ce96796cbfdcefbaf5568ff199cba6a87f65e05
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359872"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329119"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Azure Service Management-tanúsítvány feltöltése
 A felügyeleti tanúsítványok lehetővé teszik az Azure által biztosított klasszikus üzembehelyezési modell hitelesítését. Számos program és eszköz (például a Visual Studio vagy az Azure SDK) ezeket a tanúsítványokat használja a különböző Azure-szolgáltatások konfigurációjának és üzembe helyezésének automatizálására. 
@@ -35,7 +35,7 @@ Az ügyfél-kód automatizálási célból történő hitelesítéséhez [Azure 
 Miután létrehozott egy felügyeleti tanúsítványt (. cer fájl csak a nyilvános kulccsal), feltöltheti a portálra. Ha a tanúsítvány elérhető a portálon, a megfelelő tanúsítvánnyal (titkos kulccsal) rendelkező bárki csatlakozhat a felügyeleti API-n keresztül, és hozzáférhet a társított előfizetés erőforrásaihoz.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Az alsó Azure-szolgáltatás listában kattintson az **összes szolgáltatás** lehetőségre  , majd válassza az előfizetések lehetőséget az _általános_ szolgáltatás csoportban.
+2. Az alsó Azure-szolgáltatás listában kattintson az **összes szolgáltatás** lehetőségre, majd válassza az **előfizetések** lehetőséget az _általános_ szolgáltatás csoportban.
 
     ![Előfizetés menü](./media/azure-api-management-certs/subscriptions_menu.png)
 
@@ -51,5 +51,5 @@ Miután létrehozott egy felügyeleti tanúsítványt (. cer fájl csak a nyilv�
 
     ![Beállítások](./media/azure-api-management-certs/certificate_details.png)
 
-## <a name="next-steps"></a>További lépések
-Most, hogy rendelkezik egy előfizetéshez társított felügyeleti tanúsítvánnyal, (miután telepítette a megfelelő tanúsítványt helyileg) programozott módon csatlakozhat a [klasszikus üzemi modellhez REST API](/azure/#pivot=sdkstools) és automatizálhatja a különböző Azure-erőforrásokat Ehhez az előfizetéshez is társítva van.
+## <a name="next-steps"></a>Következő lépések
+Most, hogy rendelkezik egy előfizetéshez társított felügyeleti tanúsítvánnyal, (miután telepítette a megfelelő tanúsítványt helyileg) programozott módon kapcsolódhat a [klasszikus üzemi modellhez REST API](/azure/?pivot=sdkstools) és automatizálhatja az adott előfizetéshez kapcsolódó különböző Azure-erőforrásokat.

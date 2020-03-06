@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: f28c33f20556825d84edda34752ac64714327526
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8fc85781f139b45e9e37f6e0f7cc36974041352d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697336"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300009"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Útmutató: alkalmazások használati feltételeinek és adatvédelmi nyilatkozatának konfigurálása
 
@@ -53,12 +53,12 @@ Ha a szolgáltatási feltételek és az adatvédelmi nyilatkozat elkészült, a 
 
 * [A Azure Portal](#azure-portal)
 * [Az alkalmazás-objektum JSON használata](#app-object-json)
-* [A MSGraph Beta REST API használata](#msgraph-beta-rest-api)
+* [A Microsoft Graph API használata](#msgraph-rest-api)
 
 ### <a name="azure-portal"></a>A Azure Portal használata
 Kövesse az alábbi lépéseket a Azure Portal.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. Navigáljon az **alkalmazás regisztrációi** részéhez, és válassza ki az alkalmazást.
 3. Nyissa meg a **márkaépítés** ablaktáblát.
 4. Adja meg a szolgáltatási URL-cím és az **adatvédelmi nyilatkozat URL-** mezőinek **feltételeit** .
@@ -77,12 +77,12 @@ Ha közvetlenül az alkalmazás-objektum JSON-fájlját szeretné módosítani, 
     }
 ```
 
-### <a name="msgraph-beta-rest-api"></a>A MSGraph Beta REST API használata
+### <a name="msgraph-rest-api"></a>A Microsoft Graph API használata
 
-Az összes alkalmazás programozott frissítéséhez a MSGraph Beta REST API segítségével frissítheti az összes alkalmazást, hogy tartalmazza a használati feltételekre és az adatvédelmi nyilatkozatra mutató hivatkozásokat is.
+Az összes alkalmazás programozott frissítéséhez a Microsoft Graph API-val frissítheti az összes alkalmazást, hogy tartalmazza a szolgáltatási feltételekre és az adatvédelmi nyilatkozatra mutató hivatkozásokat.
 
 ```
-PATCH https://graph.microsoft.com/beta/applications/{application id}
+PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 { 
     "appId": "{your application id}", 
     "info": { 
@@ -97,4 +97,4 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 
 > [!NOTE]
 > * Ügyeljen arra, hogy ne írja felül a következő mezőkhöz hozzárendelt előre megadott értékeket: `supportUrl`, `marketingUrl`és `logoUrl`
-> * A MSGraph Beta REST API csak akkor működik, ha Azure AD-fiókkal jelentkezik be. A személyes Microsoft-fiókok nem támogatottak.
+> * A Microsoft Graph API csak akkor működik, ha Azure AD-fiókkal jelentkezik be. A személyes Microsoft-fiókok nem támogatottak.

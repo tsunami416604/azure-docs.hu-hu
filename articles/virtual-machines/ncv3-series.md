@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: cdd2a1b25eec4f649b062721200349d932fb7599
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 9ae3604a9ea82e6e50ba4d639d36572f7b052e4c
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273905"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302797"
 ---
 # <a name="ncv3-series"></a>NCv3 sorozat
 
@@ -38,7 +38,9 @@ Memória-megőrzési frissítések: nem támogatott
 
 1 GPU = egy V100 kártya.
 
-\* RDMA-kompatibilis [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+*RDMA-kompatibilis
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="supported-operating-systems-and-drivers"></a>Támogatott operációs rendszerek és illesztőprogramok
 

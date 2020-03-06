@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 4bad140ea1c6b1c59c8f752bc5336bbd49952e16
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b6aac5a963d0f58a3b21b9fb0958793169a3d444
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349517"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302117"
 ---
 # <a name="round-azure-cosmos-db"></a>KEREK (Azure Cosmos DB)
  Egy numerikus értéket, kerekítve a legközelebbi egész értéket ad vissza.  
@@ -57,7 +57,11 @@ SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, 
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

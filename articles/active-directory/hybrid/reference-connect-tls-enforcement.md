@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: A TLS 1.2 kényszerítése az Azure Active Directory Connect |} A Microsoft Docs'
-description: Ez a cikk felsorolja az Azure AD Connect és az Azure AD Sync összes kiadása
+title: 'Azure AD Connect: TLS 1,2 kényszerítés Azure Active Directory Connect esetén | Microsoft Docs'
+description: Ez a cikk a Azure AD Connect és Azure AD-szinkronizáló összes kiadását felsorolja
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,34 +15,42 @@ ms.date: 10/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff4e170f8f5d8e30004b94bbcfdb0ca3e8c3e04d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9ff5c75785622b43e66b808009c4674d4b2f2b50
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386261"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300848"
 ---
-# <a name="tls-12-enforcement-for-azure-ad-connect"></a>Az Azure AD Connect a TLS 1.2 kényszerítése
+# <a name="tls-12-enforcement-for-azure-ad-connect"></a>TLS 1,2 kényszerítés a Azure AD Connect
 
-Transport Layer Security (TLS) protokoll verziója 1.2-es titkosítási protokoll, amely biztonságos kommunikációt biztosít.  A TLS protokoll célja biztosítja az adatok biztonságát és integritását.  TLS keresztülment folyamatban meghatározott 1.2-es verziója számos iterációk [RFC 5246](https://tools.ietf.org/html/rfc5246).  Az Azure Active Directory Connect verziója 1.2.65.0 és újabb most teljes mértékben támogatja a csak a TLS 1.2 használatával az Azure-ral való kommunikációhoz.  Ez a dokumentum információkat tartalmaz az Azure AD Connect-kiszolgáló használatára csak a TLS 1.2 kényszerítése.
+A Transport Layer Security (TLS) protokoll 1,2-es verziója egy olyan titkosítási protokoll, amely biztonságos kommunikáció biztosítására szolgál.  A TLS protokoll elsősorban az adatvédelem és az adatintegritás biztosítását célozza.  A TLS több, a 1,2-es verzióval ellátott iteráción esett át az [RFC 5246](https://tools.ietf.org/html/rfc5246)-ben.  Azure Active Directory Connect verzió 1.2.65.0, és később már teljes mértékben támogatja az Azure-hoz való kommunikációhoz csak a TLS 1,2-et.  Ebből a dokumentumból megtudhatja, hogyan kényszerítheti a Azure AD Connect-kiszolgálót csak a TLS 1,2 használatára.
 
 ## <a name="update-the-registry"></a>A beállításjegyzék frissítése
-Annak érdekében, hogy csak a TLS 1.2 a beállításjegyzék, a Windows Server használata az Azure AD Connect kiszolgálón frissíteni kell.  Állítsa be a következő beállításkulcsokat az Azure AD Connect-kiszolgálón.
+Ahhoz, hogy a Azure AD Connect-kiszolgálót csak a TLS 1,2 használatára kényszerítse, frissíteni kell a Windows Server beállításjegyzékét.  Állítsa be a következő beállításkulcsokat a Azure AD Connect kiszolgálón.
 
 >[!IMPORTANT]
->A beállításjegyzék frissítése után újra kell indítani a Windows server, a módosítások érvénybe lépéséhez.
+>A beállításjegyzék frissítése után újra kell indítani a Windows Servert, hogy a módosítások érvénybe lépnek.
 
 
-### <a name="enable-tls-12"></a>Engedélyezze a TLS 1.2-es
-- [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000001 "SchUseStrongCrypto"=dword:0000001
-- [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000001 "SchUseStrongCrypto"=dword:00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "Enabled"=dword:00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "Enabled"=dword:00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000
+### <a name="enable-tls-12"></a>TLS 1,2 engedélyezése
+- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions" = DWORD: 00000001
+  - "Alatt" = DWORD: 0000001
+- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\\. NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions" = DWORD: 00000001
+  - "SchUseStrongCrypto"=dword:00000001
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ kiszolgáló]
+  - "Engedélyezve" = DWORD: 00000001
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ kiszolgáló]
+  - "DisabledByDefault" = DWORD: 00000000 
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ ügyfél]
+  - "Engedélyezve" = DWORD: 00000001
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ ügyfél]
+  - "DisabledByDefault" = DWORD: 00000000
 
-### <a name="powershell-script-to-enable-tls-12"></a>A TLS 1.2-es PowerShell-parancsfájl
-A következő PowerShell-parancsfájl használatával engedélyezze a TLS 1.2 az Azure AD Connect-kiszolgálón.
+### <a name="powershell-script-to-enable-tls-12"></a>PowerShell-parancsfájl a TLS 1,2 engedélyezéséhez
+A következő PowerShell-parancsfájl használatával engedélyezheti a TLS 1,2-et a Azure AD Connect-kiszolgálón.
 
 ```powershell
     New-Item 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319' -Force | Out-Null
@@ -71,16 +79,24 @@ A következő PowerShell-parancsfájl használatával engedélyezze a TLS 1.2 az
     Write-Host 'TLS 1.2 has been enabled.'
 ```
 
-### <a name="disable-tls-12"></a>Tiltsa le a TLS 1.2
-- [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000000 "SchUseStrongCrypto"=dword:0000000
-- [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000000 "SchUseStrongCrypto"=dword:00000000
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "Enabled"=dword:00000000
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "Enabled"=dword:00000000
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000001 
+### <a name="disable-tls-12"></a>TLS 1,2 letiltása
+- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions" = DWORD: 00000000
+  - "Alatt" = DWORD: 0000000
+- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\\. NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions" = DWORD: 00000000
+  - "Alatt" = DWORD: 00000000
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ kiszolgáló]
+  - "Engedélyezve" = DWORD: 00000000
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ kiszolgáló]
+  - "DisabledByDefault" = DWORD: 00000001
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ ügyfél]
+  - "Engedélyezve" = DWORD: 00000000
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ ügyfél]
+  - "DisabledByDefault" = DWORD: 00000001 
 
-### <a name="powershell-script-to-disable-tls-12"></a>PowerShell parancsfájl a TLS 1.2
-A következő PowerShell-parancsfájl segítségével az Azure AD Connect-kiszolgálón tiltsa le a TLS 1.2. \
+### <a name="powershell-script-to-disable-tls-12"></a>PowerShell-parancsfájl a TLS 1,2 letiltásához
+A következő PowerShell-parancsfájl használatával tilthatja le a TLS 1,2-et a Azure AD Connect-kiszolgálón. \
 
 ```powershell
     New-Item 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319' -Force | Out-Null
@@ -109,5 +125,5 @@ A következő PowerShell-parancsfájl segítségével az Azure AD Connect-kiszol
     Write-Host 'TLS 1.2 has been disabled.'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

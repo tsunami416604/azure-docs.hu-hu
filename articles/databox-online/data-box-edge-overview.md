@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 654ca34ae4c0e393920965083567e3d9c71148d0
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
-ms.translationtype: MT
+ms.openlocfilehash: 98ea00eb4d45ad045e1da3c4c5680f44e6705432
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863631"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300978"
 ---
 # <a name="what-is-azure-stack-edge"></a>Mi az Azure Stack Edge? 
 
@@ -23,7 +23,7 @@ Az Azure Stack Edge a hálózati adatátviteli képességekkel rendelkező AI-ko
 
 Az Azure Stack Edge egy szolgáltatásként nyújtott hardveres megoldás. A Microsoft a felhőben felügyelt eszközön egy beépített, programozható Gate array (FPGA) tömböt biztosít, amely lehetővé teszi a gyorsított mesterséges intelligenciát, és rendelkezik a hálózati tárolók átjárójának összes képességével. 
 
-## <a name="use-cases"></a>Használati példák
+## <a name="use-cases"></a>Használati esetek
 
 Az alábbi forgatókönyvek olyan helyzetekben használhatók, ahol a Azure Stack Edge gyors Machine Learning (ML), amely a peremhálózat szélén és az adatok előfeldolgozása előtt, az Azure-ba való küldés előtt is felhasználható.
 
@@ -39,16 +39,16 @@ Az alábbi forgatókönyvek olyan helyzetekben használhatók, ahol a Azure Stac
 - **Adatok átvitele a hálózaton keresztül az Azure** -ba – a Azure stack Edge használatával egyszerűen és gyorsan vihet át adatátvitelt az Azure-ba a további számítási és elemzési vagy archiválási célokra. 
 
 
-## <a name="key-capabilities"></a>Főbb képességek
+## <a name="key-capabilities"></a>Főbb funkciók
 
 Azure Stack Edge a következő képességekkel rendelkezik:
 
-|Szolgáltatás |Leírás  |
+|Képesség |Leírás  |
 |---------|---------|
 |Gyorsított AI-következtetés| A beépített FPGA engedélyezte.|
 |Számítás       |Lehetővé teszi az adatok elemzését, feldolgozását és szűrését.|
-|Kiemelkedő teljesítmény | Nagy teljesítményű számítási és adatforgalom.|
-|Adathozzáférés     | Az adatok közvetlen elérése az Azure Storage-blobokból és az Azure Filesból felhőalapú API-k használatával az adatok további feldolgozásához a felhőben. Az eszköz helyi gyorsítótára a legutóbb használt fájlok gyors elérésére szolgál.|
+|Nagy teljesítmény | Nagy teljesítményű számítási és adatforgalom.|
+|Az adatok elérése     | Az adatok közvetlen elérése az Azure Storage-blobokból és az Azure Filesból felhőalapú API-k használatával az adatok további feldolgozásához a felhőben. Az eszköz helyi gyorsítótára a legutóbb használt fájlok gyors elérésére szolgál.|
 |Felhő által felügyelt     |Az eszköz és a szolgáltatás kezelése a Azure Portal keresztül történik.  |
 |Offline feltöltés     | A kapcsolat nélküli mód támogatja az offline feltöltési forgatókönyveket.|
 |Támogatott protokollok     | A standard SMB és NFS protokollok támogatása az adatbetöltéshez. <br> A támogatott verziókról a [Azure stack Edge rendszerkövetelményei](data-box-edge-system-requirements.md)című témakörben olvashat bővebben.|
@@ -80,7 +80,7 @@ Az Azure Stack Edge-megoldás Azure Stack Edge-erőforrásból, Azure Stack Edge
 
 Azure Stack Edge fizikai eszköz, az Azure-erőforrás és a célként megadott Storage-fiók, amelybe az adatok átvitele nem feltétlenül azonos régióban kell, hogy legyen.
 
-- **Erőforrás rendelkezésre állása** – az összes olyan régió listájához, ahol az Azure stack Edge-erőforrás elérhető, lépjen az [Azure-termékek régiónként elérhető területére](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Stack Edge a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
+- **Erőforrás rendelkezésre állása** – az összes olyan régióban, ahol az Azure stack peremhálózati erőforrás elérhető, tekintse meg a régiók [által elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)listáját. Azure Stack Edge a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
     
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azokat a régiókat, amelyekben a Storage-fiókok tárolásához Azure Stack peremhálózati adatnak közel kell lennie ahhoz, hogy az eszköz az optimális teljesítmény érdekében legyen. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható. 
 

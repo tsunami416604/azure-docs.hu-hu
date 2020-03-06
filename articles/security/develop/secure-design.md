@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 316ed596cfa49987e229004c388267286ff50927
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 889897cfd4dc8714ae3aea556f0924c9dbcd7825
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000962"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299414"
 ---
 # <a name="design-secure-applications-on-azure"></a>Biztonságos alkalmazások tervezése az Azure-ban
 Ebben a cikkben a Felhőbeli alkalmazások tervezésekor megfontolandó biztonsági tevékenységeket és vezérlőket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) követelményei és tervezési szakaszaiban figyelembe venni kívánt biztonsági kérdések és fogalmak betanítása, valamint az erőforrások képzése. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások kialakításához használhat.
@@ -38,7 +38,7 @@ A betanítási fázisban a következő erőforrásokkal megismerkedhet a fejlesz
 
   - Az [első lépések útmutatója az Azure-fejlesztőknek](../../guides/developer/azure-developer-guide.md) alapvető információkat nyújt azokról a fejlesztőknek, akik az Azure platform fejlesztési igényeiknek való használatának megkezdéséhez keresnek.
 
-  - Az [SDK-k és eszközök](https://docs.microsoft.com/azure/index#pivot=sdkstools) az Azure-ban elérhető eszközöket írják le.
+  - Az [SDK-k és eszközök](https://docs.microsoft.com/azure/index?pivot=sdkstools) az Azure-ban elérhető eszközöket írják le.
 
   - Az [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) fejlesztési együttműködési eszközöket biztosít. Az eszközök közé tartozik a nagy teljesítményű folyamatok, az ingyenes git-adattárak, a konfigurálható Kanban-táblák, valamint a kiterjedt automatizált és felhőalapú terheléses tesztelés.
     A [DevOps Resource Center](https://docs.microsoft.com/azure/devops/learn/) a tanulási DevOps gyakorlatok, a git-verziókövetés, az agilis módszerek, a Microsoft DevOps és a saját DevOps-előrehaladás értékelésének módjával ötvözi a forrásokat.
@@ -66,7 +66,7 @@ Tegye fel a következő biztonsági kérdéseket:
 
   - Az alkalmazásom bizalmas adatokat tartalmaz?
 
-  - Az alkalmazás olyan adatokat gyűjt vagy tárol, amelyeknek meg kell felelniük az iparági szabványoknak és a megfelelőségi programoknak, mint például a [szövetségi pénzügyi intézmény-típusvizsgálati Tanács (FFIEC)](../blueprints/ffiec-analytics-overview.md) vagy a [Payment Card Industry adatbiztonsági szabványai (PCI DSS) ](../blueprints/pcidss-analytics-overview.md)?
+  - Az alkalmazás olyan adatokat gyűjt vagy tárol, amelyeknek meg kell felelniük az iparági szabványoknak és a megfelelőségi programoknak, mint például a [szövetségi pénzügyi intézmény-típusvizsgálati Tanács (FFIEC)](../blueprints/ffiec-analytics-overview.md) vagy a [Payment Card Industry adatbiztonsági szabványai (PCI DSS)](../blueprints/pcidss-analytics-overview.md)?
 
   - Az alkalmazásom bizalmas személyes vagy vásárlói adatokat gyűjt vagy tartalmaz, amelyek akár saját, akár egyéb információkkal is használhatók egy személy azonosítására, kapcsolatfelvételére vagy megkeresésére?
 
@@ -126,10 +126,10 @@ A fejlesztéshez használjon egy biztonságos kódolási könyvtárat és egy be
 Ügyeljen arra, hogy a keretrendszer legújabb verzióját és a keretrendszerben elérhető összes biztonsági funkciót használja. A Microsoft széles körű [fejlesztői eszközöket](https://azure.microsoft.com/product-categories/developer-tools/) kínál minden fejlesztőnek, bármilyen platformon vagy nyelven dolgozhat a felhőalapú alkalmazások biztosításához. Különböző [SDK](https://azure.microsoft.com/downloads/)-k közül választhatja ki a kívánt nyelvet.
 Kihasználhatja a fejlett hibakeresési képességekkel és beépített Azure-támogatással rendelkező teljes funkcionalitású integrált fejlesztői környezeteket és szerkesztőket.
 
-A Microsoft számos különböző [nyelvet, keretrendszert és eszközt](https://docs.microsoft.com/azure/index#pivot=sdkstools&panel=sdkstools-all) kínál az Azure-beli alkalmazások fejlesztéséhez. Ilyen például az [Azure .net-és .net Core-fejlesztőknek](https://docs.microsoft.com/dotnet/azure/). Az általunk kínált nyelvekhez és keretrendszerekhez rövid útmutatók, oktatóanyagok és API-referenciák találhatók, amelyek segítenek a gyors kezdésben.
+A Microsoft számos különböző [nyelvet, keretrendszert és eszközt](https://docs.microsoft.com/azure/index?pivot=sdkstools&panel=sdkstools-all) kínál az Azure-beli alkalmazások fejlesztéséhez. Ilyen például az [Azure .net-és .net Core-fejlesztőknek](https://docs.microsoft.com/dotnet/azure/). Az általunk kínált nyelvekhez és keretrendszerekhez rövid útmutatók, oktatóanyagok és API-referenciák találhatók, amelyek segítenek a gyors kezdésben.
 
 Az Azure számos szolgáltatást kínál, amelyekkel webhelyeket és webalkalmazásokat futtathat. Ezek a szolgáltatások lehetővé teszik a fejlesztést kedvenc nyelvén, legyen az .NET, .NET Core, Java, Ruby, Node. js, PHP vagy Python.
-[Azure App Service Web Apps](../../app-service/overview.md) (Web Apps) ezen szolgáltatások egyike.
+[Azure App Service Web Apps](../../app-service/overview.md) (Web Apps) egyike ezeknek a szolgáltatásoknak.
 
 Web Apps a Microsoft Azure erejét hozzáadja az alkalmazáshoz. Ez magában foglalja a biztonságot, a terheléselosztást, az automatikus skálázást és az automatizált felügyeletet. Emellett kihasználhatja Web Apps DevOps funkcióit, például a csomagkezelő, az átmeneti környezetek, az egyéni tartományok, az SSL/TLS-tanúsítványok és az Azure DevOps, a GitHub, a Docker hub és más források folyamatos üzembe helyezését.
 
@@ -149,18 +149,18 @@ A veszélyforrások modellezése a potenciális biztonsági fenyegetések azonos
 
 A veszélyforrások modellezési folyamatának elősegítése érdekében az [SDL-Threat Modeling Toolt](threat-modeling-tool.md) a nem biztonsági szakértők szem előtt tartásával alakítottuk ki. Ez az eszköz megkönnyíti a veszélyforrások modellezését minden fejlesztő számára azáltal, hogy egyértelmű útmutatást biztosít a veszélyforrások létrehozásához és elemzéséhez.
 
-Az alkalmazások megtervezése és enumerálása, a hamisítás, a hamisítás, a Megtagadás, az információ-közzététel, a szolgáltatásmegtagadás és a jogosultságok megemelése – az összes megbízhatósági határ tekintetében hatékony módszert jelent a tervezési hibák észlelésére. [](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) korán. A következő táblázat felsorolja a Stride-fenyegetéseket, és példákat tartalmaz az Azure által biztosított szolgáltatások használatára. Ezek a enyhítések nem fognak működni minden helyzetben.
+Az alkalmazások tervezésének modellezése és a [Stride](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) -fenyegetések számbavétele – a hamisítás, a hamisítás, a Megtagadás, az információk közzététele, a szolgáltatásmegtagadás és a jogosultsági szint megemelése – az összes megbízhatósági határ tekintetében hatékony módszert jelent a tervezési hibák kifogására a korai fázisban. A következő táblázat felsorolja a Stride-fenyegetéseket, és példákat tartalmaz az Azure által biztosított szolgáltatások használatára. Ezek a enyhítések nem fognak működni minden helyzetben.
 
-| Threat | Biztonsági tulajdonság | Az Azure platform lehetséges enyhítése |
+| Fenyegetés | Biztonsági tulajdonság | Az Azure platform lehetséges enyhítése |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Hamisítási               | Authentication        | [HTTPS-kapcsolatok megkövetelése](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
-| Módosítás              | Integritás             | Ellenőrizze az SSL/TLS-tanúsítványokat. Az SSL/TLS protokollt használó alkalmazásoknak teljes mértékben ellenőriznie kell azon entitások X. 509 tanúsítványait, amelyekhez csatlakoznak. [A x509-tanúsítványok kezeléséhez](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)használjon Azure Key Vault tanúsítványokat. |
+| Hamisítási               | Hitelesítés        | [HTTPS-kapcsolatok megkövetelése](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
+| Illetéktelen módosításának              | Integritás             | Ellenőrizze az SSL/TLS-tanúsítványokat. Az SSL/TLS protokollt használó alkalmazásoknak teljes mértékben ellenőriznie kell azon entitások X. 509 tanúsítványait, amelyekhez csatlakoznak. [A x509-tanúsítványok kezeléséhez](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)használjon Azure Key Vault tanúsítványokat. |
 | Letagadhatóság            | Nem megtagadási       | Az Azure [monitorozásának és diagnosztizálásának](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)engedélyezése.|
-| Információfelfedés | Titoktartási       | Bizalmas adatok titkosítása [a nyugalmi](../fundamentals/encryption-atrest.md) [állapotban és az átvitel során](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
-| Szolgáltatásmegtagadás      | Rendelkezésre állás          | Teljesítmény-mérőszámok figyelése a szolgáltatási feltételek esetleges megtagadásához. A kapcsolatok szűrőinek implementálása. Az [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps)az alkalmazás-tervezési ajánlott eljárásokkal együtt védelmet nyújt a DDoS-támadásokkal szemben.|
-| Jogok kiterjesztése | Authorization         | Azure Active Directory <span class="underline"></span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)használata.|
+| Információk közzététele | Titoktartási       | Bizalmas adatok titkosítása [a nyugalmi](../fundamentals/encryption-atrest.md) [állapotban és az átvitel során](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
+| Szolgáltatás megtagadása      | Rendelkezésre állás          | Teljesítmény-mérőszámok figyelése a szolgáltatási feltételek esetleges megtagadásához. A kapcsolatok szűrőinek implementálása. Az [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps)az alkalmazás-tervezési ajánlott eljárásokkal együtt védelmet nyújt a DDoS-támadásokkal szemben.|
+| Jogosultsági szint emelése | Engedélyezés         | Azure Active Directory <span class="underline"></span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)használata.|
 
-### <a name="reduce-your-attack-surface"></a>A támadási felület csökkentése
+### <a name="reduce-your-attack-surface"></a>Csökkentse a támadási felületet
 
 A támadási felület az a teljes összeg, ahol lehetséges sebezhetőségek merülhetnek fel. Ebben a dokumentumban az alkalmazás támadási felületére koncentrálunk.
 A hangsúly az alkalmazások támadás elleni védelmén van. Egy egyszerű és gyors módszer a támadási felület minimalizálására, ha eltávolítja a nem használt erőforrásokat és kódokat az alkalmazásból. Minél kisebb az alkalmazás, annál kisebb a támadási felülete. Például távolítsa el a következőt:
@@ -233,7 +233,7 @@ Igény *szerinti (JIT* ) hozzáférés megvalósítása a jogosultságok expozí
 
 ### <a name="require-re-authentication-for-important-transactions"></a>Ismételt hitelesítés megkövetelése fontos tranzakciókhoz
 
-[Helyek közötti kérelmek hamisítása](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (más néven *XSRF* vagy *CSRF*) támadás a webes alkalmazásokban, amelyekben egy rosszindulatú webalkalmazás befolyásolja az ügyfél-böngésző és a böngészőt meghatalmazó webalkalmazás közötti interakciót. A helyek közötti kérelmek hamisításával kapcsolatos támadások lehetségesek, mert a böngészők bizonyos típusú hitelesítési jogkivonatokat automatikusan küldenek egy webhelyre irányuló minden kéréssel.
+A [helyek közötti kérések hamisítása](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (más néven *XSRF* vagy *CSRF*) olyan webalkalmazások elleni támadás, amelyekben egy rosszindulatú webalkalmazás befolyásolja az ügyféloldali böngésző és a böngészőt meghatalmazó webalkalmazás közötti interakciót. A helyek közötti kérelmek hamisításával kapcsolatos támadások lehetségesek, mert a böngészők bizonyos típusú hitelesítési jogkivonatokat automatikusan küldenek egy webhelyre irányuló minden kéréssel.
 Ezt a kiaknázási formát is nevezzük *egykattintásos támadásnak* vagy *munkamenet-lovaglásnak* , mivel a támadás kihasználja a felhasználó korábban hitelesített munkamenetét.
 
 Az ilyen típusú támadásokkal szembeni védekezés legjobb módja, ha megkéri a felhasználót, hogy csak a felhasználó tudja biztosítani az összes fontos tranzakciót, például a vásárlást, a fiók inaktiválását vagy a jelszó módosítását. Megkérheti a felhasználót, hogy írja be újra a jelszavát, hajtsa végre a CAPTCHA-t, vagy küldjön be egy titkos jogkivonatot, amely csak a felhasználó számára lenne lehetséges. A leggyakoribb megközelítés a titkos jogkivonat.
@@ -316,7 +316,7 @@ Győződjön meg arról, hogy nem naplózza a felhasználó által a webhelyre k
 
 Győződjön meg arról, hogy az alkalmazás figyeli a felhasználói felügyeleti eseményeket, például a sikeres és sikertelen felhasználói bejelentkezéseket, a jelszó alaphelyzetbe állítását, a jelszó módosításait, a fiók zárolását és a felhasználói regisztrációt. Az események naplózása segít észlelni és reagálni az esetlegesen gyanús viselkedésre. Lehetővé teszi az operatív adatok összegyűjtését is, például az alkalmazáshoz való hozzáférést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekben olyan biztonsági vezérlőket és tevékenységeket ajánlunk, amelyek segíthetnek a biztonságos alkalmazások fejlesztésében és üzembe helyezésében.
 
 - [Biztonságos alkalmazások fejlesztése](secure-develop.md)

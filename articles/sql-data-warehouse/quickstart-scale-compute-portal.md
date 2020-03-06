@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: számítási kapacitás méretezése – Azure Portal '
-description: A számítási kapacitás méretezése az SQL-készletben a Azure Portalban. Felskálázással a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők.
+description: A számítási kapacitás méretezése az SQL-készletben a Azure Portalban. Horizontális felskálázással a számítások teljesítménye növelhető, szűkítéssel a költségek csökkenthetők.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg

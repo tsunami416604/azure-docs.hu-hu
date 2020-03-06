@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 115667c93bbb832926a7939cf250a02b6fef8baa
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 47fe20888aa546e414b268b30c2e03580750a040
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873488"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303477"
 ---
 # <a name="array_contains-azure-cosmos-db"></a>ARRAY_CONTAINS (Azure Cosmos DB)
-Egy olyan logikai érték beolvasása, amely azt jelzi, hogy a tömb tartalmazza-e a megadott értéket. Egy objektum részleges vagy teljes egyezését a parancsban található logikai kifejezés használatával tekintheti meg. 
+Jelzi, hogy a tömb tartalmazza-e a megadott érték logikai érték beolvasása. Egy objektum részleges vagy teljes egyezését a parancsban található logikai kifejezés használatával tekintheti meg. 
 
 ## <a name="syntax"></a>Szintaxis
   
@@ -36,7 +36,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Logikai értéket ad vissza.  
+  Egy logikai értéket ad vissza.  
   
 ## <a name="examples"></a>Példák
   
@@ -48,13 +48,13 @@ SELECT
            ARRAY_CONTAINS(["apples", "strawberries", "bananas"], "mangoes") AS b2  
 ```  
   
- Itt látható az eredményhalmaz.  
+ Íme az eredményhalmaz.  
   
 ```json
 [{"b1": true, "b2": false}]  
 ```  
 
-A következő példa azt mutatja be, hogyan lehet egy tömbben lévő JSON részleges egyezését megkeresni ARRAY_CONTAINS használatával.  
+Az alábbi példa egy részleges egyezéssel a JSON használatával ARRAY_CONTAINS tömbben ellenőrzése.  
   
 ```sql
 SELECT  
@@ -63,16 +63,19 @@ SELECT
     ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "mangoes"}, true) AS b3 
 ```  
   
- Itt látható az eredményhalmaz.  
+ Íme az eredményhalmaz.  
   
 ```json
 [{
   "b1": true,
   "b2": false,
   "b3": false
-}] 
-```  
-  
+}]
+```
+
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: dbbe501b27bf7ae4d4cb4bc00501aeb1fb06819e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 5e4c6fb91b93b1035c68350a5f77a3c16db7323f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161222"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300112"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integráció a Azure Active Directory
 
@@ -38,13 +38,13 @@ Az alkalmazás az Azure AD-vel való integrálásának számos módja van. Haszn
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Felhasználók tallózása, felhasználók üzembe helyezésének kezelése és az alkalmazáshoz való hozzáférés szabályozása
 
-**Tallózással keresse meg a címtárban lévő felhasználókat.**  A Graph API segítségével a felhasználók megkereshetik és böngészhetik a szervezet más személyeit, amikor mások meghívását vagy hozzáférést biztosítanak, és nem igénylik e-mail-címek beírását. A felhasználók megkereshetik az ismerős címjegyzék stílusának felületét, beleértve a szervezeti hierarchia részletes adatainak megtekintését is. További információ a [Graph APIról](active-directory-graph-api.md).
+**Tallózással keresse meg a címtárban lévő felhasználókat.**  A Microsoft Graph API segítségével a felhasználók megkereshetik és böngészhetik más személyeket a szervezeten belül, amikor meghívja másokat vagy hozzáférést biztosítanak, ahelyett, hogy e-mail-címeket kellene beírniuk. A felhasználók megkereshetik az ismerős címjegyzék stílusának felületét, beleértve a szervezeti hierarchia részletes adatainak megtekintését is. További információ a [Microsoft Graph API](https://docs.microsoft.com/graph/overview)-ról.
 
-**Active Directory csoportok és terjesztési listák újbóli használata az ügyfél már felügyelet alatt áll.**  Az Azure AD azokat a csoportokat tartalmazza, amelyeket az ügyfél már használ az e-mailek terjesztéséhez és a hozzáférések kezeléséhez. A Graph API használatával újra felhasználhatja ezeket a csoportokat ahelyett, hogy az ügyfélnek külön csoportokat kellene létrehoznia és kezelnie az alkalmazásban. A csoport adatai a bejelentkezési jogkivonatokban is elküldhetők az alkalmazásnak. További információ a [Graph APIról](active-directory-graph-api.md).
+**Active Directory csoportok és terjesztési listák újbóli használata az ügyfél már felügyelet alatt áll.**  Az Azure AD azokat a csoportokat tartalmazza, amelyeket az ügyfél már használ az e-mailek terjesztéséhez és a hozzáférések kezeléséhez. A Microsoft Graph API használatával használja újra ezeket a csoportokat ahelyett, hogy az ügyfélnek külön csoportokat kellene létrehoznia és kezelnie az alkalmazásban. A csoport adatai a bejelentkezési jogkivonatokban is elküldhetők az alkalmazásnak. További információ a [Microsoft Graph API](https://docs.microsoft.com/graph/overview)-ról.
 
-**Az Azure AD használatával szabályozhatja, hogy ki férhet hozzá az alkalmazáshoz.**  Az Azure AD-rendszergazdák és az alkalmazások tulajdonosai az adott felhasználókhoz és csoportokhoz is hozzárendelhet hozzáférést az alkalmazásokhoz. A Graph API segítségével elolvashatja ezt a listát, és felhasználhatja az erőforrások kiépítés, valamint az alkalmazáson belüli hozzáférés szabályozására.
+**Az Azure AD használatával szabályozhatja, hogy ki férhet hozzá az alkalmazáshoz.**  Az Azure AD-rendszergazdák és az alkalmazások tulajdonosai az adott felhasználókhoz és csoportokhoz is hozzárendelhet hozzáférést az alkalmazásokhoz. A Microsoft Graph API használatával elolvashatja ezt a listát, és használhatja az erőforrások kiépítés, valamint az alkalmazáson belüli hozzáférés kiépítés szabályozására.
 
-**Az Azure AD használata szerepkörökön alapuló Access Control.**  A rendszergazdák és az alkalmazások tulajdonosai felhasználókat és csoportokat rendelhetnek hozzá az alkalmazás Azure AD-ben való regisztrálásakor meghatározott szerepkörökhöz. A szerepkör-információkat a rendszer a bejelentkezési jogkivonatokban elküldi az alkalmazásnak, és a Graph API használatával is olvasható. További információ az [Azure ad engedélyezésének használatáról](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
+**Az Azure AD használata szerepkörökön alapuló Access Control.**  A rendszergazdák és az alkalmazások tulajdonosai felhasználókat és csoportokat rendelhetnek hozzá az alkalmazás Azure AD-ben való regisztrálásakor meghatározott szerepkörökhöz. A szerepkör-információkat a rendszer a bejelentkezési jogkivonatokban elküldi az alkalmazásnak, és a Microsoft Graph API használatával is olvasható. További információ az [Azure ad engedélyezésének használatáról](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Hozzáférés a felhasználói profilhoz, a naptárhoz, az e-mailekhez, a névjegyekhez és a fájlokhoz
 

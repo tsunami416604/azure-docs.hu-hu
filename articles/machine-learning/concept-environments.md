@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.author: trbye
 author: trevorbye
 ms.date: 01/06/2020
-ms.openlocfilehash: 8906299cc9e2c000dab2ac9d2a345d9aaf238260
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 036efa27fb8d22c32f2f6bce1efe9dea300a3972
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045858"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302770"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Mik azok a Azure Machine Learning környezetek?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning környezetek megadja a Python-csomagokat, a környezeti változókat és a szoftver beállításait a képzés és a pontozási szkriptek köré. A futtatási időpontokat (Python, Spark vagy Docker) is megadják. Ezek a Machine Learning munkaterületen lévő felügyelt és verzióval rendelkező entitások, amelyek lehetővé teszik a reprodukálható, auditálható és hordozható gépi tanulási munkafolyamatok különböző számítási célokból való kezelését.
+Azure Machine Learning környezetek megadja a Python-csomagokat, a környezeti változókat és a szoftver beállításait a képzés és a pontozási szkriptek köré. A futtatási időpontokat (Python, Spark vagy Docker) is megadják. A környezetek a Machine Learning munkaterületen belül felügyelt és verzióval rendelkező entitások, amelyek lehetővé teszik a reprodukálható, auditálható és hordozható gépi tanulási munkafolyamatok különböző számítási célokból való átirányítását.
 
 A helyi számítási `Environment` objektum a következőre használható:
 * Fejlessze a betanítási szkriptet.
@@ -57,6 +57,45 @@ Adott kódok esetében tekintse meg az [újrahasznosítási környezetek](how-to
 * Docker-rendszerképeket automatikusan építhet ki a környezetből.
 
 A kód minták esetében tekintse meg az újrahasznosítási környezetek (környezetek kezelése) című szakaszt a [betanításhoz és az üzembe helyezéshez](how-to-use-environments.md#manage-environments).
+
+## <a name="environment-building-caching-and-reuse"></a>Környezetek kiépítése, gyorsítótárazása és újrafelhasználása
+
+A Azure Machine Learning szolgáltatás környezeti definíciókat épít be a Docker-rendszerképekbe és a Conda környezetbe. Emellett gyorsítótárazza a környezeteket, hogy újra felhasználhatók legyenek a következő képzések futtatásakor és a szolgáltatás végpontjának telepítése során.
+
+### <a name="building-environments-as-docker-images"></a>Környezetek kiépítése Docker-rendszerképekként
+
+Amikor először küld el egy futtatást egy környezettel, a Azure Machine Learning szolgáltatás egy ACR- [felépítési feladatot](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview) hív meg a munkaterülethez társított Azure Container Registry (ACR) használatával. Ezután a rendszer gyorsítótárazza a beépített Docker-rendszerképet a munkaterület ACR-ben. A Futtatás végrehajtásának megkezdése után a rendszer lekéri a rendszerképet a számítási cél alapján.
+
+A rendszerkép létrehozása két lépésből áll:
+
+ 1. Alaprendszerkép letöltése és a Docker-lépések végrehajtása
+ 2. Conda-környezet létrehozása a környezeti definícióban megadott Conda-függőségek alapján.
+
+A második lépés kimarad, ha [felhasználó által felügyelt függőségeket](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py)ad meg. Ebben az esetben Ön felelős a Python-csomagok telepítéséhez, az alaprendszerképbe való belefoglalásával, vagy az első lépésben az egyéni Docker-lépések megadásával. Emellett a Python végrehajtható fájl megfelelő helyének megadására is a felelős.
+
+### <a name="image-caching-and-reuse"></a>Képek gyorsítótárazása és újrafelhasználása
+
+Ha ugyanezt a környezeti definíciót használja egy másik futtatáshoz, a Azure Machine Learning szolgáltatás újrahasználja a gyorsítótárazott rendszerképet a munkaterület ACR-ből. 
+
+A gyorsítótárazott képek részleteinek megtekintéséhez használja a [Environment. get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#get-image-details-workspace-) metódust.
+
+Annak megállapításához, hogy fel kell-e használni a gyorsítótárazott képet, vagy újat kell létrehoznia, a szolgáltatás kiszámítja a környezeti definícióból származó [kivonatot](https://en.wikipedia.org/wiki/Hash_table) , és összehasonlítja a meglévő környezetek kivonatával. A kivonat a következőn alapul:
+ 
+ * Kiinduló rendszerkép tulajdonságának értéke
+ * Egyéni Docker-lépések tulajdonságának értéke
+ * Python-csomagok listája a Conda-definícióban
+ * A Spark-definícióban található csomagok listája 
+
+A kivonat nem függ a környezet nevétől vagy verziójától. A környezeti definíció módosításait, például a Python-csomagok hozzáadását vagy eltávolítását, illetve a csomag verziószámának módosítását eredményezi, hogy a kivonatoló érték módosul, és elindítja a rendszerkép újraépítését. Ha azonban egyszerűen átnevezi a környezetet, vagy létrehoz egy új környezetet egy meglévő pontos tulajdonságaival és csomagjaival, akkor a kivonatoló érték ugyanaz marad, és a rendszer a gyorsítótárazott képet használja.
+
+Tekintse meg a következő ábrát, amely három környezeti definíciót mutat be. Közülük kettő eltérő névvel és verzióval rendelkezik, de az alap rendszerképek és a Python-csomagok is megegyeznek. Ugyanazzal a kivonattal rendelkeznek, ezért ugyanaz a gyorsítótárazott rendszerképnek felel meg. A harmadik környezet különböző Python-csomagokat és-verziókat tartalmaz, ezért egy másik gyorsítótárazott rendszerképnek felel meg.
+
+![A környezeti gyorsítótárazás diagramja Docker-rendszerképekként](./media/concept-environments/environment-caching.png)
+
+Ha olyan környezetet hoz létre, amely nem rögzített csomag-függőséggel rendelkezik, például a ```numpy```, a környezet a környezet létrehozásakor a csomag verzióját fogja használni. Emellett a megfelelő definícióval rendelkező jövőbeli környezetek továbbra is a régi verziót használják. A csomag frissítéséhez meg kell adnia egy verziószámot a rendszerkép újraépítésének kényszerítéséhez, például ```numpy==1.18.1```. Vegye figyelembe, hogy az új függőségek, köztük a beágyazottak is települnek, ami megszakíthatja a korábban működő forgatókönyvet
+
+> [!WARNING]
+>  A [környezet. a Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace-) metódus újraépíti a gyorsítótárazott rendszerképet, amely a nem rögzített csomagok frissítésének lehetséges mellékhatása, valamint az adott gyorsítótárazott rendszerképnek megfelelő összes környezeti definíció esetén a reprodukálhatóság megszakítása.
 
 ## <a name="next-steps"></a>Következő lépések
 

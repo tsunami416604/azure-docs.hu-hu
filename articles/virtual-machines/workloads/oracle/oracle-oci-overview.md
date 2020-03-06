@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: aacba12b32e9da75c2a4b9a20c0faa235cf6836a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e1249913300be532cc6514f1478bbc6f4183c001
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459299"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300553"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle Application Solutions Microsoft Azure és Oracle Cloud Infrastructure integrációja (előzetes verzió)
 
@@ -28,7 +28,7 @@ A Microsoft és az Oracle partneri kapcsolatban állt a kis késleltetésű, nag
 Ezzel a Felhőbeli kapcsolattal particionálhat többrétegű alkalmazást az adatbázis rétegének az Oracle Cloud Infrastructure (OCI) szolgáltatásban való futtatásához, valamint az alkalmazáshoz és a Microsoft Azure egyéb szintjeihez is. Az élmény hasonló a teljes megoldási verem egyetlen felhőben való futtatásához. 
 
 > [!IMPORTANT]
-> Ez a Felhőbeli funkció jelenleg előzetes verzióban érhető el, és a [korlátozások érvényesek](#preview-limitations). Az Azure és a OCI közötti alacsony késésű kapcsolat létrehozásához először engedélyeznie kell az Azure-előfizetést ehhez a funkcióhoz. Az előzetes verzióban regisztrálnia kell ezt a rövid [kérdőívet](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu). Az előfizetés regisztrációja után egy e-mailt fog kapni. Nem használhatja a funkciót, amíg meg nem kap egy megerősítő e-mailt. A Microsoft képviselőjének is felveheti a kapcsolatot az előzetes verzióra. Az előzetes verzióhoz való hozzáférés a rendelkezésre állástól függ, és a Microsoft saját belátása szerint korlátozva van. A felmérés befejezése nem garantálja a hozzáférést. Ez az előzetes verzió szolgáltatói szerződés nélkül van megadva, és nem használható éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részletekért tekintse meg a Microsoft Azure előzetes [verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) . A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Ez a Felhőbeli funkció jelenleg előzetes verzióban érhető el, és a [korlátozások érvényesek](#region-availability). Az Azure és a OCI közötti alacsony késésű kapcsolat létrehozásához először engedélyeznie kell az Azure-előfizetést ehhez a funkcióhoz. Az előzetes verzióban regisztrálnia kell ezt a rövid [kérdőívet](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu). Az előfizetés regisztrációja után egy e-mailt fog kapni. Nem használhatja a funkciót, amíg meg nem kap egy megerősítő e-mailt. A Microsoft képviselőjének is felveheti a kapcsolatot az előzetes verzióra. Az előzetes verzióhoz való hozzáférés a rendelkezésre állástól függ, és a Microsoft saját belátása szerint korlátozva van. A felmérés befejezése nem garantálja a hozzáférést. Ez az előzetes verzió szolgáltatói szerződés nélkül van megadva, és nem használható éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részletekért tekintse meg a Microsoft Azure előzetes [verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) . A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
 Ha az Oracle-megoldások teljes egészében Azure-infrastruktúrán való üzembe helyezését érdekli, tekintse meg az [Oracle virtuálisgép-rendszerképek és azok üzembe helyezése Microsoft Azure](oracle-vm-solutions.md).
 
@@ -44,15 +44,19 @@ A több felhőalapú konfigurációban futtatható alkalmazások a következők:
 * Oracle kereskedelmi alkalmazások
 * Oracle Hyperion pénzügyi felügyelet
 
-A következő ábra a csatlakoztatott megoldás magas szintű áttekintését mutatja be. Az egyszerűség kedvéért a diagram csak az alkalmazási szintet és az adatszinteket jeleníti meg. Az alkalmazás-architektúrától függően a megoldás további csomagokat is tartalmazhat, például egy webes réteget az Azure-ban. További információt a következő részekben talál.
+A következő ábra a csatlakoztatott megoldás magas szintű áttekintését mutatja be. Az egyszerűség kedvéért a diagram csak az alkalmazási szintet és az adatszinteket jeleníti meg. Az alkalmazás-architektúrától függően a megoldás további csomagokat is tartalmazhat, például egy webes réteget az Azure-ban. További információkért tekintse meg a következő szakaszok.
 
 ![Az Azure OCI-megoldás áttekintése](media/oracle-oci-overview/crosscloud.png)
 
-## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
+## <a name="region-availability"></a>Régió elérhetősége 
 
-* Az előzetes verzióban az Azure East US (eastus), a Egyesült Királyság déli régiója (uksouth) és a Canada Central (canadacentral) régiói, valamint a OCI Ashburn (USA keleti régiója), London (Egyesült Királyság déli régiója) és Toronto (Kanada délkeleti régió) régióira korlátozódik. Egyesült Királyság déli régiója esetén használja az 1. rendelkezésre állási tartományt (AD 1) a OCI-ben a kapcsolat közötti kapcsolat létrehozásakor az alacsonyabb késés érdekében.
+A Felhőbeli kapcsolat a következő régiókra korlátozódik:
+* Azure USA keleti régiója (eastus) & OCI Ashburn (USA keleti régiója)
+* Azure Egyesült Királyság déli régiója (uksouth) & OCI London (Egyesült Királyság déli régiója)
+* Azure Canada Central (canadacentral) & OCI Toronto (Délkelet-Kanada)
+* Azure West Europe (westeurope) & OCI Amsterdam (Hollandia északnyugati régiója)
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 A nagyvállalati ügyfelek gyakran úgy döntenek, hogy különböző üzleti és üzemeltetési okokból több felhőben is diverzifikálják és üzembe helyezik a számítási feladatokat. Az ügyfelek változatossá teszik a felhőalapú hálózatokat az interneten, az IPSec VPN-en vagy a felhőalapú szolgáltató közvetlen csatlakozási megoldásának használatával a helyszíni hálózaton keresztül. A felhőalapú hálózatok összekapcsolásával jelentős mértékű befektetésekre lehet szükség az idő, a pénz, a tervezés, a beszerzés, a telepítés, a tesztelés és a műveletek terén. 
 
@@ -66,7 +70,7 @@ A hálózati biztonság a vállalati alkalmazások egyik kulcsfontosságú össz
 
 Emellett [biztonsági listát](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) is BEÁLLÍTHAT a OCI virtuális felhőalapú hálózati és biztonsági szabályaihoz (az Azure [hálózati biztonsági csoportjaihoz](../../../virtual-network/security-overview.md)csatolva). Ezekkel a szabályokkal szabályozhatja a virtuális hálózatokban lévő gépek közötti forgalmat. A hálózati biztonsági szabályok a gép szintjén, az alhálózat szintjén és a virtuális hálózat szintjén is hozzáadhatók.
  
-## <a name="identity"></a>Identitáskezelés
+## <a name="identity"></a>Identitás
 
 Az identitás a Microsoft és az Oracle közötti partnerség egyik legfontosabb pillére. Jelentős munka történt az [Oracle Identity Cloud Service](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) (IDCS) [Azure Active Directory](../../../active-directory/index.yml) (Azure ad) szolgáltatással való integrálásához. Az Azure AD a Microsoft felhőalapú identitás-és hozzáférés-kezelési szolgáltatása. Segítségével a felhasználók bejelentkezhetnek, és különböző erőforrásokhoz férhetnek hozzá. Az Azure AD lehetővé teszi a felhasználók és az engedélyeik kezelését is.
 

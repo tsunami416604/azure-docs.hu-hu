@@ -3,12 +3,12 @@ title: Felügyelt szolgáltatások ajánlatának közzététele az Azure Marketp
 description: Megtudhatja, hogyan tehet közzé egy felügyelt szolgáltatási ajánlatot, amely az ügyfeleket az Azure-beli delegált erőforrás-kezeléshez irányítja.
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 841cb52791709be5649d66b72f5c18ef35b740ef
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 6ae93759073be6b05d118ccf46f6b6367fff5fc6
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155247"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328942"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-en
 
@@ -141,7 +141,7 @@ A **támogatás** szakaszban adja meg egy mérnöki kapcsolattartó nevét, e-ma
 
 Miután hozzáadta ezt az információt, válassza a **Mentés lehetőséget.**
 
-## <a name="publish-your-offer"></a>Az ajánlat közzététele
+## <a name="publish-your-offer"></a>Ajánlat közzététele
 
 Miután elvégezte az összes szakaszt, a következő lépés az ajánlat közzététele az Azure Marketplace-en. Válassza a **Közzététel** gombot, hogy elindítsa az ajánlatát élőben. A folyamattal kapcsolatos további információkért lásd: [Azure Marketplace-és AppSource-ajánlatok közzététele](../../marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer.md).
 
@@ -155,9 +155,6 @@ Miután az ügyfél hozzáadja az ajánlatot, [egy vagy több konkrét előfizet
 > A delegálást olyan nem vendég fiókkal kell végrehajtani az ügyfél bérlője számára, amely az előfizetéshez tartozó [tulajdonos beépített szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) rendelkezik (vagy amely tartalmazza az előkészítés alatt álló erőforráscsoportokat). Ha szeretné megtekinteni az összes olyan felhasználót, aki delegálhatja az előfizetést, az ügyfél bérlője kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** elemet, és [megtekintheti a tulajdonosi szerepkörrel rendelkező felhasználókat](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 Miután az ügyfél delegált egy előfizetést (vagy egy vagy több erőforráscsoportot egy előfizetésen belül), a **Microsoft. ManagedServices** erőforrás-szolgáltató regisztrálva lesz az adott előfizetéshez, és a bérlő felhasználói hozzáférhetnek a delegált erőforrásokhoz az ajánlatban foglalt jogosultságok alapján.
-
-> [!NOTE]
-> Jelenleg az előfizetések (vagy az előfizetésen belüli erőforráscsoportok) nem delegálható, ha az előfizetés Azure Databricks használ. Hasonlóképpen, ha egy előfizetést (vagy egy előfizetéshez tartozó erőforráscsoportot) már delegáltak, jelenleg nem lehet Databricks-munkaterületeket létrehozni az előfizetésben.
 
 ## <a name="next-steps"></a>Következő lépések
 

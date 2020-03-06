@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 234c8be8c696ca7381b8860680d072e84820d424
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1904ed9707859f0d00bca3b6e3aef90d1346cea5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431979"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331502"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>Media Services fiók létrehozása a Azure Portal használatával
 
@@ -46,18 +46,14 @@ Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További info
 A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásának módját.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Kattintson a **+New** > **Web + Mobile** > **Media Services** elemre.
-   
-    ![Media Services, létrehozás](./media/media-services-create-account/media-services-new1.png)
+2. Kattintson **az + erőforrás létrehozása** > **média** > **Media Services**elemre.
 3. A **CREATE MEDIA SERVICES ACCOUNT** (Media Services-fiók létrehozása) részben adja meg a kívánt értékeket.
-   
-    ![Media Services, létrehozás](./media/media-services-create-account/media-services-new3.png)
-   
+
    1. Az **Account Name** (Fiók neve) mezőben adja meg az új AMS-fiók nevét. A Media Services-fiók neve csak számokat és kisbetűket tartalmazhat, nem tartalmazhat szóközöket, és 3–24 karakterből állhat.
    2. A Subscription (Előfizetés) résznél válasszon az elérhető Azure-előfizetések közül.
    3. A **Resource Group** (Erőforráscsoport) résznél válasszon egy új vagy meglévő erőforrást.  Az erőforráscsoport közös életciklussal, engedélyekkel és házirendekkel rendelkező erőforrások gyűjteménye. További információkat [itt](../../azure-resource-manager/management/overview.md#resource-groups) talál.
    4. A **Location** (Hely) részben válassza ki azt a földrajzi régiót, amelyben tárolni fogja a Media Services-fiókhoz tartozó médiafájlokat és metaadat-bejegyzéseket. A rendszer e régió alapján fogja feldolgozni, illetve streamelni a médiafájlokat. A legördülő listában csak a Media Services szolgáltatásban elérhető régiók jelennek meg. 
-   5. A **Storage Account** (Tárfiók) résznél válasszon egy tárfiókot, amely Blob Storage tárolót fog biztosítani a Media Services-fiókhoz tartozó médiatartalmak számára. Választhat, hogy egy meglévő, a Media Services-fiókkal azonos földrajzi régióban található tárfiókot használ, vagy létrehoz egy másik tárfiókot. A újonnan létrehozott tárfiók is ugyanahhoz a régióhoz fog tartozni. A tárfiók nevére ugyanazok a szabályok vonatkoznak, mint a Media Services-fiókok nevére.
+   5. A **Storage Account** (Tárfiók) résznél válasszon egy tárfiókot, amely Blob Storage tárolót fog biztosítani a Media Services-fiókhoz tartozó médiatartalmak számára. Választhat, hogy egy meglévő, a Media Services-fiókkal azonos földrajzi régióban található tárfiókot használ, vagy létrehoz egy másik tárfiókot. Az újonnan létrehozott tárfiókok ugyanabban a régióban jönnek létre. A tárfiókok elnevezési szabályai ugyanazok, mint a Media Services-fiókok esetében.
       
        További információkat a tárhelyről [itt](../../storage/common/storage-introduction.md) talál.
    6. A fióklétrehozás előrehaladásának megtekintéséhez kattintson a **Rögzítés az irányítópulton** elemre.
@@ -71,7 +67,6 @@ A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásá
 ## <a name="to-manage-your-ams-account"></a>Az AMS-fiók kezelése
 
 Az AMS-fiók kezeléséhez (például az AMS API-hoz való programozott kapcsolódáshoz, videók feltöltéséhez, objektumok kódolásához, tartalomvédelem konfigurálásához, a feladatok előrehaladásának figyeléséhez) válassza a portál bal oldalán lévő **Beállítások** elemet. A **Beállítások** területen keresse meg az egyik elérhető panelt (például: **API-hozzáférés**, **Objektumok**, **Feladatok**, **Tartalomvédelem**).
-
 
 ## <a name="next-steps"></a>Következő lépések
 

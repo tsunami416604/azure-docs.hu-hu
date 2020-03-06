@@ -4,12 +4,12 @@ description: Ismerje meg az ismert korlátozásokat a Windows Server Node-készl
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 157f890c65efd0de9fa7d8d7aa5cb43b4a902dfa
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 65c62324a27e8377a1cc9833595b15cf08c6c820
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615641"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298172"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>A Windows Server Node-készletek és az alkalmazások számítási feladatainak jelenlegi korlátai az Azure Kubernetes szolgáltatásban (ak)
 
@@ -69,7 +69,7 @@ Az előzetes verzióban a Windows-csomópontok nem támogatják az egyszerű szo
 
 ## <a name="how-many-node-pools-can-i-create"></a>Hány Node-készletet hozhatok létre?
 
-Az AK-fürt legfeljebb nyolc (8) csomópont-készletet tartalmazhat. Ezekhez a csomópont-készletekhez legfeljebb 400 csomópont tartozhat. [Csomópont-készletre vonatkozó korlátozások][nodepool-limitations].
+Az AK-fürt legfeljebb 10 csomópont-készletet tartalmazhat. Ezekhez a csomópont-készletekhez legfeljebb 1000 csomópont tartozhat. [Csomópont-készletre vonatkozó korlátozások][nodepool-limitations].
 
 ## <a name="what-can-i-name-my-windows-node-pools"></a>Mire használhatom a Windows-csomópontok készleteit?
 

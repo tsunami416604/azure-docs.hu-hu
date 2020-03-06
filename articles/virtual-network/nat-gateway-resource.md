@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 26de7a6d05bde8d80e22bd8801ae9b5dc8faeb36
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d920bde856521f1e662536c1187881e143612039
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669556"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359095"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Virtuális hálózatok tervezése NAT Gateway-erőforrásokkal (nyilvános előzetes verzió)
 
@@ -335,7 +335,7 @@ A SNAT-portok 5 másodperc elteltével újra felhasználhatók ugyanarra a cél 
 ## <a name="limitations"></a>Korlátozások
 
 - A NAT kompatibilis a standard SKU nyilvános IP-címmel, a nyilvános IP-előtaggal és a terheléselosztó erőforrásaival.   Az alapszintű erőforrások (például az alapszintű Load Balancer) és a belőlük származtatott termékek nem kompatibilisek a NAT-val.  Az alapszintű erőforrásokat a NAT-mel nem konfigurált alhálózatra kell helyezni.
-- Az IPv4-címek családja támogatott.  A NAT nem támogatja az IPv6-cím családját.
+- Az IPv4-címek családja támogatott.  A NAT nem támogatja az IPv6-cím családját.  A NAT nem helyezhető üzembe IPv6-előtaggal rendelkező alhálózaton.
 - A NSG folyamat naplózása nem támogatott a NAT használata esetén.
 - A NAT nem tud több virtuális hálózatot kifogni.
 
@@ -349,21 +349,25 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Ossza meg velünk [
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [Virtual Network NAT](nat-overview.md)-ról.
-- Oktatóanyag a NAT-átjáró ellenőrzéséhez
-  * [Azure CLI](tutorial-create-validate-nat-gateway-cli.md),
-  * [PowerShell](tutorial-create-validate-nat-gateway-cli.md),
-  * [Portal](tutorial-create-validate-nat-gateway-cli.md)
-- Gyors útmutató NAT Gateway-erőforrás üzembe helyezéséhez
-  * [Azure CLI](./quickstart-create-nat-gateway-cli.md),
-  * [PowerShell](./quickstart-create-nat-gateway-powershell.md),
-  * [Portálon](./quickstart-create-nat-gateway-portal.md).
-- További információ a [rendelkezésre állási zónákról](../availability-zones/az-overview.md).
-- További tudnivalók a [standard Load balancerről](../load-balancer/load-balancer-standard-overview.md).
-- További információ a [rendelkezésre állási zónákról és a standard Load balancerről](../load-balancer/load-balancer-standard-availability-zones.md).
-- További információ a NAT Gateway Resource API-ról
-  * [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
-  * [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
-  * [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
-- [Ossza meg velünk a következőt a UserVoice-ben](https://aka.ms/natuservoice).
-- [Visszajelzés küldése a nyilvános előzetes](https://aka.ms/natfeedback)verzióról.
+* További tudnivalók a [Virtual Network NAT](nat-overview.md)-ról.
+* Tudnivalók a [NAT-átjáró erőforrásaira vonatkozó mérőszámokról és riasztásokról](nat-metrics.md).
+* További információ a [NAT-átjárók erőforrásainak hibaelhárításáról](troubleshoot-nat.md).
+* [Ossza meg velünk a következőt Virtual Network NAT UserVoice-ben való létrehozásához](https://aka.ms/natuservoice).
+* [Visszajelzés küldése a nyilvános előzetes](https://aka.ms/natfeedback)verzióról.
+* Oktatóanyag a NAT-átjáró ellenőrzéséhez
+  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md),
+  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md),
+  - [Portal](tutorial-create-validate-nat-gateway-cli.md)
+* Gyors útmutató NAT Gateway-erőforrás üzembe helyezéséhez
+  - [Azure CLI](./quickstart-create-nat-gateway-cli.md),
+  - [PowerShell](./quickstart-create-nat-gateway-powershell.md),
+  - [Portálon](./quickstart-create-nat-gateway-portal.md).
+* Tudnivalók a NAT Gateway Resource API-ról
+  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
+  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
+* További információ a [rendelkezésre állási zónákról](../availability-zones/az-overview.md).
+* Ismerje meg a [standard Load balancert](../load-balancer/load-balancer-standard-overview.md).
+* További információ a [rendelkezésre állási zónákról és a standard Load balancerről](../load-balancer/load-balancer-standard-availability-zones.md).
+
+

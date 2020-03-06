@@ -4,15 +4,15 @@ description: Ismerkedjen meg az SQL System Function RTRIM Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 511c085b465b8b70ae71c298054bcb535773837e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b740d14315f6d9ba2f1788c56d6b1fcd8945c83e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349504"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302083"
 ---
 # <a name="rtrim-azure-cosmos-db"></a>RTRIM (Azure Cosmos DB)
  Egy karakterlánc-kifejezés adja vissza, miután eltávolítja a záró szóközöket.  
@@ -34,7 +34,7 @@ RTRIM(<str_expr>)
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa azt szemlélteti, hogyan használható a `RTRIM` a lekérdezésekben.  
+  Az alábbi példa bemutatja, hogyan használható a `RTRIM` egy lekérdezésen belül.  
   
 ```sql
 SELECT RTRIM("  abc") AS r1, RTRIM("abc") AS r2, RTRIM("abc   ") AS r3  
@@ -46,7 +46,11 @@ SELECT RTRIM("  abc") AS r1, RTRIM("abc") AS r2, RTRIM("abc   ") AS r3
 [{"r1": "   abc", "r2": "abc", "r3": "abc"}]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 4a0672000e630c9e06df84d9c2da5cb8b988c05a
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: e44878b6d65725f08aeca4eb07088315ae2bb78a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349600"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302219"
 ---
 # <a name="rand-azure-cosmos-db"></a>RAND (Azure Cosmos DB)
  Egy véletlenszerűen generált numerikus értéket ad vissza [0, 1).
@@ -29,7 +29,7 @@ RAND ()
 
 ## <a name="remarks"></a>Megjegyzések
 
-  a `RAND` egy determinált függvény. A `RAND` ismétlődő hívásai nem adják vissza ugyanazt az eredményt.
+  `RAND` egy determinált függvény. A `RAND` ismétlődő hívásai nem adják vissza ugyanazt az eredményt.
 
 ## <a name="examples"></a>Példák
   
@@ -45,7 +45,11 @@ SELECT RAND() AS rand
 [{"rand": 0.87860053195618093}]  
 ``` 
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

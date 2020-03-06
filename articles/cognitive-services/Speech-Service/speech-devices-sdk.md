@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 854e7beb2afd8ae838455f77ff448f13d8b3fbea
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 43d08b466076672587e7f6545193e326283c0031
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188980"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330787"
 ---
 # <a name="about-the-speech-devices-sdk"></a>A Beszédeszközök SDK ismertetése
 
@@ -47,7 +47,7 @@ Az alkalmazás a Speech SDK csomaggal, valamint az Eclipse Java IDE (v4) a 64 bi
 ### <a name="linux"></a>Linux
 
 A Linux rendszerben a minta alkalmazás platformfüggetlen Java-alkalmazásként van megadva. Töltse le a [JRE Speech Devices SDK](https://aka.ms/sdsdk-download-JRE)legújabb verzióját.
-Az alkalmazás a Speech SDK csomaggal, valamint az Eclipse Java IDE (v4) a 64 bites Linux rendszeren (Ubuntu 16,04, Ubuntu 18,04, Debian 9) készült. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
+Az alkalmazás a Speech SDK csomaggal, valamint az Eclipse Java IDE (v4) a 64 bites Linux rendszeren (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8) készült. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
 További bináris fájlok érhetők el a közelgő eszközök, a [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2)és a [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)támogatásához.
 

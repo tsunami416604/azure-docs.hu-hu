@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/03/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6bffa114b325e8b98f439e7ff2ce21480407a643
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 51713db8532eb33f102de9320dea9eaeb98c4019
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274913"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359085"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure Virtual Network NAT-metrikák
 
@@ -57,6 +57,10 @@ A Resource Health nem támogatott.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Tudnivalók a [Virtual Network NAT](nat-overview.md) -ról
-- Tudnivalók a [NAT-átjáró erőforrásáról](nat-gateway-resource.md)
-- Tudnivalók a [Azure monitor](../azure-monitor/overview.md)
+* Tudnivalók a [Virtual Network NAT](nat-overview.md) -ról
+* Tudnivalók a [NAT-átjáró erőforrásáról](nat-gateway-resource.md)
+* Tudnivalók a [Azure monitor](../azure-monitor/overview.md)
+* További információ a [NAT-átjárók erőforrásainak hibaelhárításáról](troubleshoot-nat.md).
+* [Ossza meg velünk a következőt Virtual Network NAT UserVoice-ben való létrehozásához](https://aka.ms/natuservoice).
+
+

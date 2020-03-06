@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: a44bdf654842d964a02f6aebe60e3632aabcd64d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 6156d689a29ee348f9b1974d1520eb7d186a8d8d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151684"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331349"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Route-alapú VPN-átjáró létrehozása a Azure Portal használatával
 
@@ -23,7 +23,7 @@ A cikkben szereplő lépések egy VNet, egy alhálózatot, egy átjáró-alhál�
 
 ## <a name="vnet"></a>Virtuális hálózat létrehozása
 
-[!INCLUDE [create-gateway](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
+[!INCLUDE [Basic Point-to-Site VNet](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
 ## <a name="gwvalues"></a>Az átjáró konfigurálása és létrehozása
 
@@ -31,7 +31,7 @@ Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fo
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
-[!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
+[!INCLUDE [Create a gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 >[!NOTE]
 >Az alapszintű átjáró SKU nem támogatja a IKEv2 vagy a RADIUS-hitelesítést. Ha azt tervezi, hogy a Mac-ügyfelek csatlakoznak a virtuális hálózathoz, ne használja az alapszintű SKU-t.
@@ -48,7 +48,7 @@ Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fo
 
    ![VPN-átjáró megtekintése](./media/create-routebased-vpn-gateway-portal/view-gateway.png "VPN-átjáró megtekintése")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután az átjáró elkészült, létrehozhat egy kapcsolatot a virtuális hálózat és egy másik VNet között. Vagy hozzon létre kapcsolatot a virtuális hálózat és a helyszíni hely között.
 

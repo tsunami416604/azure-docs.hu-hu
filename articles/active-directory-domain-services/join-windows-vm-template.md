@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: e3dffca1d5e98de60941aab4400469810c9cfc30
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c9b25fe7bc47e05972aebb194e9d94c1ea6dd247
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613758"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298734"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Windows Server rendszerű virtuális gép csatlakoztatása egy Azure Active Directory Domain Services felügyelt tartományhoz Resource Manager-sablon használatával
 
@@ -34,7 +34,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
     * Ha szükséges, az első oktatóanyag [egy Azure Active Directory Domain Services példányt hoz létre és konfigurál][create-azure-ad-ds-instance].
-* Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
+* Egy olyan felhasználói fiók, amely az Azure AD DS felügyelt tartomány részét képezi.
 
 ## <a name="azure-resource-manager-template-overview"></a>Azure Resource Manager sablonok áttekintése
 
@@ -86,7 +86,7 @@ Ha Windows Server rendszerű virtuális gépet szeretne létrehozni, csatlakozta
 
     | Beállítás                   | Érték |
     |---------------------------|-------|
-    | Előfizetést              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services. |
+    | -előfizetés              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services. |
     | Erőforráscsoport            | Válassza ki a virtuális géphez tartozó erőforráscsoportot. |
     | Hely                  | Válassza ki a virtuális gép helyét. |
     | Meglévő VNET neve        | Annak a meglévő virtuális hálózatnak a neve, amelyhez a virtuális gépet (például *myVnet*) szeretné kapcsolni. |
@@ -94,7 +94,7 @@ Ha Windows Server rendszerű virtuális gépet szeretne létrehozni, csatlakozta
     | DNS-címke előtagja          | Adja meg a virtuális gép számára használandó DNS-nevet (például *myvm*). |
     | Virtuális gép mérete                   | Meg kell adni a virtuális gép méretét, például *Standard_DS2_v2*. |
     | Csatlakozás tartományhoz            | Az Azure AD DS felügyelt tartomány DNS-neve, például *aaddscontoso.com*. |
-    | Tartomány felhasználóneve           | Az Azure AD DS felügyelt tartomány felhasználói fiókja, amelyet a virtuális gép a felügyelt tartományhoz való csatlakoztatásához kell használni, például `contosoadmin@aaddscontoso.com`. Ennek a fióknak az *Azure ad DC-rendszergazdák* csoport tagjának kell lennie. |
+    | Tartomány felhasználóneve           | Az Azure AD DS felügyelt tartomány felhasználói fiókja, amelyet a virtuális gép a felügyelt tartományhoz való csatlakoztatásához kell használni, például `contosoadmin@aaddscontoso.com`. Ennek a fióknak az Azure AD DS felügyelt tartomány részeként kell lennie. |
     | Tartományi jelszó           | Az előző beállításban megadott felhasználói fiók jelszava. |
     | Választható szervezeti egység elérési útja          | Az az egyéni szervezeti egység, amelyben hozzá szeretné adni a virtuális gépet. Ha nem ad meg értéket ehhez a paraméterhez, a rendszer hozzáadja a virtuális gépet az alapértelmezett *HRE DC számítógépek* szervezeti egységhez. |
     | Virtuális gép rendszergazdai felhasználóneve         | A virtuális gépen létrehozandó helyi rendszergazdai fiókot kell megadnia. |
@@ -104,7 +104,7 @@ Ha Windows Server rendszerű virtuális gépet szeretne létrehozni, csatlakozta
 
 > [!WARNING]
 > **A jelszavakat körültekintően kezelheti.**
-> A sablon-paraméter fájlja egy olyan felhasználói fiók jelszavát kéri le, amely az *Azure ad DC-rendszergazdák* csoport tagja. Ne adja meg manuálisan az értékeket ebbe a fájlba, és hagyja azt elérhetővé a fájlmegosztás vagy más megosztott helyen.
+> A sablon-paraméter fájlja egy olyan felhasználói fiók jelszavát kéri, amely az Azure AD DS felügyelt tartomány részét képezi. Ne adja meg manuálisan az értékeket ebbe a fájlba, és hagyja azt elérhetővé a fájlmegosztás vagy más megosztott helyen.
 
 A telepítés sikeres befejezéséhez néhány percet is igénybe vehet. Ha elkészült, a Windows rendszerű virtuális gép létrejön, és csatlakozik az Azure AD DS felügyelt tartományhoz. A virtuális gép felügyelhető vagy bejelentkezhet tartományi fiókok használatával.
 
@@ -119,11 +119,11 @@ Ha meglévő Windows Server rendszerű virtuális gépet szeretne csatlakoztatni
 
     | Beállítás                   | Érték |
     |---------------------------|-------|
-    | Előfizetést              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services. |
+    | -előfizetés              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services. |
     | Erőforráscsoport            | Válassza ki az erőforráscsoportot a meglévő virtuális géppel. |
     | Hely                  | Válassza ki a meglévő virtuális gép helyét. |
     | VIRTUÁLIS gépek listája                   | Adja meg az Azure AD DS felügyelt tartományhoz (például *myVM1, myVM2*) való csatlakozáshoz használandó meglévő virtuális gép (ek) vesszővel tagolt listáját. |
-    | Tartományhoz való csatlakozás felhasználóneve     | Az Azure AD DS felügyelt tartomány felhasználói fiókja, amelyet a virtuális gép a felügyelt tartományhoz való csatlakoztatásához kell használni, például `contosoadmin@aaddscontoso.com`. Ennek a fióknak az *Azure ad DC-rendszergazdák* csoport tagjának kell lennie. |
+    | Tartományhoz való csatlakozás felhasználóneve     | Az Azure AD DS felügyelt tartomány felhasználói fiókja, amelyet a virtuális gép a felügyelt tartományhoz való csatlakoztatásához kell használni, például `contosoadmin@aaddscontoso.com`. Ennek a fióknak az Azure AD DS felügyelt tartomány részeként kell lennie. |
     | Tartományhoz való csatlakozás felhasználói jelszava | Az előző beállításban megadott felhasználói fiók jelszava. |
     | Választható szervezeti egység elérési útja          | Az az egyéni szervezeti egység, amelyben hozzá szeretné adni a virtuális gépet. Ha nem ad meg értéket ehhez a paraméterhez, a rendszer hozzáadja a virtuális gépet az alapértelmezett *HRE DC számítógépek* szervezeti egységhez. |
 
@@ -131,7 +131,7 @@ Ha meglévő Windows Server rendszerű virtuális gépet szeretne csatlakoztatni
 
 > [!WARNING]
 > **A jelszavakat körültekintően kezelheti.**
-> A sablon-paraméter fájlja egy olyan felhasználói fiók jelszavát kéri le, amely az *Azure ad DC-rendszergazdák* csoport tagja. Ne adja meg manuálisan az értékeket ebbe a fájlba, és hagyja azt elérhetővé a fájlmegosztás vagy más megosztott helyen.
+> A sablon-paraméter fájlja egy olyan felhasználói fiók jelszavát kéri, amely az Azure AD DS felügyelt tartomány részét képezi. Ne adja meg manuálisan az értékeket ebbe a fájlba, és hagyja azt elérhetővé a fájlmegosztás vagy más megosztott helyen.
 
 Néhány percet vesz igénybe, hogy a központi telepítés sikeresen befejeződjön. Ha elkészült, a megadott Windows rendszerű virtuális gépek csatlakoznak az Azure AD DS felügyelt tartományhoz, és felügyelhetők vagy bejelentkezhetnek a tartományi fiókok használatával.
 

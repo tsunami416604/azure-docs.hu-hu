@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: ff8772f7c3c3213c010b0bdbd0d0aa8897404bac
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 350c2bf3c4d0fc0a16f1b393e7c8d8a372679797
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119980"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331144"
 ---
 # <a name="configure-openssl-for-linux"></a>Linuxos OpenSSL konfigurálása
 
@@ -42,13 +42,13 @@ Győződjön meg arról, hogy a OPENSSLDIR alatt van-e `certs` alkönyvtár. A f
 - A OPENSSLDIR `/opt/ssl`. `certs` alkönyvtár számos `.crt`-vagy `.pem`-fájllal rendelkezik.
 Állítsa be a környezeti változót úgy, hogy `/opt/ssl/certs` a Speech SDK-t használó program futtatása előtt `SSL_CERT_DIR`. Például:
 ```bash
-SSL_CERT_DIR=/opt/ssl/certs ./helloworld
+export SSL_CERT_DIR=/opt/ssl/certs
 ```
 
-- A OPENSSLDIR `/etc/pki/tls`. Van egy tanúsítványfájl-fájl, például `ca-bundle.pem` vagy `ca-bundle.crt`.
-Állítsa be a környezeti változót úgy, hogy `/etc/pki/tls/ca-bundle.pem` a Speech SDK-t használó program futtatása előtt `SSL_CERT_FILE`. Például:
+- A OPENSSLDIR `/etc/pki/tls` (például RHEL/CentOS-alapú rendszereken). Van `certs` alkönyvtár egy tanúsítványfájl-fájllal, például `ca-bundle.crt`.
+A Speech SDK-t használó program futtatása előtt állítsa be `SSL_CERT_FILE` környezeti változót úgy, hogy erre a fájlra mutasson. Például:
 ```bash
-SSL_CERT_FILE=/etc/pki/tls/ca-bundle.pem ./helloworld
+export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
 
 ## <a name="next-steps"></a>Következő lépések

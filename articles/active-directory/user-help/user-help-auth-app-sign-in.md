@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b5f2b42728fd6f3d61695b4f88cc416015dd97cb
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: ac61c01c5e45b6e8e001a68781f93c3962cb581f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108264"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78297843"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Jelentkezzen be a fiókjába a Microsoft Authenticator alkalmazás használatával
 
@@ -49,13 +49,19 @@ A telefonos bejelentkezés csak az Android 6,0-es vagy újabb verzióját futtat
 
 ### <a name="turn-on-phone-sign-in"></a>Telefonos bejelentkezés bekapcsolása
 
-- Nyissa meg a Microsoft Authenticator alkalmazást, lépjen a munkahelyi vagy iskolai fiókjába, és kapcsolja be a telefonos bejelentkezést:
+Nyissa meg a Microsoft Authenticator alkalmazást, lépjen a munkahelyi vagy iskolai fiókjába, és kapcsolja be a telefonos bejelentkezést.
 
-    - **Ha ezt az ikont látja, ![ikont, amely a](media/user-help-auth-app-sign-in/icon.png)beállítását mutatja be.** Ha ez az ikon a munkahelyi vagy iskolai fiók neve mellett jelenik meg, az azt jelenti, hogy már beállította a telefonos bejelentkezést a fiókhoz. Előfordulhat, hogy a rendszer leküldéses értesítések hozzáadását kéri a fiókjához, így értesítést kaphat az alkalmazáson kívüli hitelesítési kérelmekről.
+Android-eszközön:
 
-    - **Ha az alkalmazást kétfaktoros ellenőrzésre használta.** Ha már használta az alkalmazást és a kétfaktoros ellenőrzést, akkor válassza a fiók neve melletti legördülő nyilat, majd válassza a **telefonos bejelentkezés engedélyezése**lehetőséget.
+- **Ha ezt az ikont látja, ![ikont, amely a](media/user-help-auth-app-sign-in/icon.png)beállítását mutatja be.** Ha ez az ikon a munkahelyi vagy iskolai fiók neve mellett jelenik meg, az azt jelenti, hogy már beállította a telefonos bejelentkezést a fiókhoz. Előfordulhat, hogy a rendszer leküldéses értesítések hozzáadását kéri a fiókjához, így értesítést kaphat az alkalmazáson kívüli hitelesítési kérelmekről.
+- **Ha már használja az alkalmazást a kétfaktoros ellenőrzéshez.** Ha már használta az alkalmazást és a kétfaktoros ellenőrzést, akkor válassza a fiók neve melletti nyilat, majd válassza a **telefonos bejelentkezés engedélyezése**lehetőséget.
+- **Ha nem találja a munkahelyi vagy iskolai fiókját.** Ha nem találja a munkahelyi vagy iskolai fiókját az alkalmazás **fiókok** képernyőjén, az azt jelenti, hogy még nem adta hozzá az alkalmazáshoz. Adja hozzá munkahelyi vagy iskolai fiókját a [munkahelyi vagy iskolai fiók hozzáadása](user-help-auth-app-add-work-school-account.md) című cikkben leírt lépések végrehajtásával.
 
-    - **Ha nem találja a munkahelyi vagy iskolai fiókját.** Ha nem találja a munkahelyi vagy iskolai fiókját az alkalmazás **fiókok** képernyőjén, az azt jelenti, hogy még nem adta hozzá az alkalmazáshoz. Adja hozzá munkahelyi vagy iskolai fiókját a [munkahelyi vagy iskolai fiók hozzáadása](user-help-auth-app-add-work-school-account.md) című cikkben leírt lépések végrehajtásával.
+IOS-eszközön:
+
+- **Ha a fiók csempére koppint**, megnyílik a fiók teljes képernyős nézete. Ha úgy látja, hogy a **telefonos bejelentkezés engedélyezve** van, az azt jelenti, hogy teljes körűen be kell jelentkeznie a jelszó nélkül. Ha a **telefonos bejelentkezés engedélyezése**lehetőséget látja, koppintson rá a telefonos bejelentkezés bekapcsolásához.
+- **Ha már használta az alkalmazást a kétfaktoros ellenőrzéshez**, koppintson a fiók csempére, amely ezután a fiók teljes képernyős nézetére bővül. Ezután koppintson a **telefonos bejelentkezés engedélyezése** lehetőségre a telefonos bejelentkezés bekapcsolásához.
+- **Ha nem találja a munkahelyi vagy iskolai fiókját** az alkalmazás **fiókok** képernyőjén, az azt jelenti, hogy még nem adta hozzá az alkalmazáshoz. Adja hozzá munkahelyi vagy iskolai fiókját a munkahelyi vagy iskolai fiók hozzáadása című cikkben leírt lépések végrehajtásával.
 
 A telefonos bejelentkezés bekapcsolását követően egyszerűen bejelentkezhet a Microsoft Authenticator alkalmazás használatával.
 
@@ -82,13 +88,19 @@ Bekapcsolhatja a telefonos bejelentkezést a személyes Microsoft-fiók, példá
 
 ### <a name="turn-on-phone-sign-in"></a>Telefonos bejelentkezés bekapcsolása 
 
-- Nyissa meg a Microsoft Authenticator alkalmazást, nyissa meg a személyes Microsoft-fiók, és kapcsolja be a telefonos bejelentkezést:
+Nyissa meg a Microsoft Authenticator alkalmazást, lépjen a munkahelyi vagy iskolai fiókjába, és kapcsolja be a telefonos bejelentkezést.
 
-    - **Ha ezt az ikont látja, ![ikont, amely a](media/user-help-auth-app-sign-in/icon.png)beállítását mutatja be.** Ha ez az ikon a fiók neve mellett jelenik meg, az azt jelenti, hogy már beállította a telefonos bejelentkezést a fiókhoz. Előfordulhat, hogy a rendszer leküldéses értesítések hozzáadását kéri a fiókjához, így értesítést kaphat az alkalmazáson kívüli hitelesítési kérelmekről.
+Android-eszközön:
 
-    - **Ha az alkalmazást kétfaktoros ellenőrzésre használta.** Ha már használta az alkalmazást és a kétfaktoros ellenőrzést, akkor válassza a fiók neve melletti legördülő nyilat, majd válassza a **telefonos bejelentkezés engedélyezése**lehetőséget.
+- **Ha ezt az ikont látja, ![ikont, amely a](media/user-help-auth-app-sign-in/icon.png)beállítását mutatja be.** Ha ez az ikon a személyes Microsoft-fiók neve mellett jelenik meg, az azt jelenti, hogy már beállította a telefonos bejelentkezést a fiókhoz. Előfordulhat, hogy a rendszer leküldéses értesítések hozzáadását kéri a fiókjához, így értesítést kaphat az alkalmazáson kívüli hitelesítési kérelmekről.
+- **Ha az alkalmazást kétfaktoros ellenőrzésre használta.** Ha már használta az alkalmazást és a kétfaktoros ellenőrzést, akkor válassza a fiók neve melletti nyilat, majd válassza a **telefonos bejelentkezés engedélyezése**lehetőséget.
+- **Ha nem találja a munkahelyi vagy iskolai fiókját.** Ha nem találja a fiókját az alkalmazás **fiókok** képernyőjén, az azt jelenti, hogy még nem adta hozzá az alkalmazáshoz. Adja hozzá a fiókját a [személyes Microsoft-fiókok hozzáadása](user-help-auth-app-add-personal-ms-account.md) cikk lépéseit követve.
 
-    - **Ha nem találja a fiókját.** Ha nem találja a fiókját az alkalmazás **fiókok** képernyőjén, az azt jelenti, hogy még nem adta hozzá az alkalmazáshoz. Adja hozzá személyes Microsoft-fiók a [személyes Microsoft-fiók hozzáadása](user-help-auth-app-add-personal-ms-account.md#add-your-personal-microsoft-account) című cikk lépéseit követve.
+IOS-eszközön:
+
+- **Ha a fiók csempére koppint**, megnyílik a fiók teljes képernyős nézete. Ha úgy látja, hogy a **telefonos bejelentkezés engedélyezve** van, az azt jelenti, hogy teljes körűen be kell jelentkeznie a jelszó nélkül. Ha a **telefonos bejelentkezés engedélyezése**lehetőséget látja, koppintson rá a telefonos bejelentkezés bekapcsolásához.
+- **Ha már használja az alkalmazást a kétfaktoros ellenőrzéshez**, koppintson a fiók csempére, amely ezután a fiók teljes képernyős nézetére bővül. Ezután koppintson a **telefonos bejelentkezés engedélyezése** lehetőségre a telefonos bejelentkezés bekapcsolásához.
+- **Ha nem találja a fiókját** az alkalmazás **fiókok** képernyőjén, az azt jelenti, hogy még nem adta hozzá az alkalmazáshoz. Adja hozzá személyes Microsoft-fiók a [személyes Microsoft-fiókok hozzáadása](user-help-auth-app-add-personal-ms-account.md) című cikk lépéseit követve.
 
 ### <a name="sign-in-to-your-account-using-phone-sign-in"></a>Bejelentkezés a fiókba a telefonos bejelentkezés használatával
 
@@ -100,7 +112,7 @@ Bekapcsolhatja a telefonos bejelentkezést a személyes Microsoft-fiók, példá
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>Bejelentkezés a fiók kétfaktoros ellenőrzésének használatával
 
-A standard kétfaktoros ellenőrzési módszernek meg kell adnia a felhasználónevét és jelszavát ahhoz az eszközhöz, amelyhez be van jelentkezve, majd válassza ki, hogy a Microsoft Authenticator alkalmazás küldjön-e értesítést, vagy ha szeretné, hogy a társított ellenőrző kódot a Microsoft Authenticator alkalmazás **fiókok** képernyőjéről másolja. A fiók a Microsoft Authenticator alkalmazásba való felvételének folyamata során bekapcsolja a fiók kétfaktoros ellenőrzését.
+A standard kétfaktoros ellenőrzési módszernek meg kell adnia a felhasználónevét és jelszavát ahhoz az eszközhöz, amelyhez be van jelentkezve, majd válassza ki, hogy a Microsoft Authenticator alkalmazás fogadja-e Microsoft Authenticator alkalmazást. Android-eszközön ezek az ellenőrző kódok a fiókok képernyőjén találhatók. IOS-eszközökön ezek az ellenőrző kódok a **fiókok** képernyőjén vagy egy fiók teljes képernyős nézetében találhatók a fiók típusától függően. A fiók a Microsoft Authenticator alkalmazásba való felvételének folyamata során bekapcsolja a fiók kétfaktoros ellenőrzését.
 
 >[!Note]
 >Ha nem látja munkahelyi vagy iskolai fiókját vagy személyes fiókját a Microsoft Authenticator alkalmazás **fiókok** képernyőjén, az azt jelenti, hogy nem adta hozzá a fiókot a Microsoft Authenticator alkalmazáshoz. A fiók hozzáadásához tekintse meg [a munkahelyi vagy iskolai fiók hozzáadása](user-help-auth-app-add-work-school-account.md) vagy [a személyes fiókok](user-help-auth-app-add-personal-ms-account.md)hozzáadása című témakört.

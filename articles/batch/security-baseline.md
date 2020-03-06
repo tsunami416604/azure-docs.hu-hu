@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 779b7d071b1161c53bdba08738539c4c682882d2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: af0466299d1f972fe9334beb5f31c886c1928a1c
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273548"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328999"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure biztonsági alapkonfiguráció a Batch szolgáltatáshoz
 
@@ -628,7 +628,7 @@ Győződjön meg arról, hogy HTTPS szükséges a Azure Batch adatait tartalmaz�
 
 Az Azure Storage-fiók titkosításának megismerése az átvitel során:
 
-https://docs.microsoft.com/azure/storage/common/storage-security-guide#encryption-in-transit
+https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
 **Azure Security Center figyelés**: igen
 

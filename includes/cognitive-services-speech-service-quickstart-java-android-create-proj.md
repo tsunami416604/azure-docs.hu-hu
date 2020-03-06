@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: travisw
-ms.openlocfilehash: a7ce6bc2b6fa272c8dd3c4bf95bc06a37d1fe28f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 270a8316ee7c23ebb54c7d0633fb9159ef33acbd
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119745"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383815"
 ---
 1. Indítsa el Android Studio, majd válassza az **új Android Studio projekt indítása** lehetőséget az **üdvözlő** ablakban.
 
@@ -27,7 +27,7 @@ Az Android Studio előkészíti az új Android-projektet. Ezután konfigurálja 
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK aktuális verziója 1.9.0.
+A Cognitive Services Speech SDK aktuális verziója 1.10.0.
 
 Az Androidhoz készült Speech SDK a szükséges kódtárakat és a szükséges [Android-engedélyeket](https://developer.android.com/studio/projects/android-library)tartalmazza.
 A szolgáltatás egy Maven-tárházban üzemel, https:\//csspeechstorage.blob.core.windows.net/maven/.
@@ -42,7 +42,7 @@ Készítse elő a projektet a Speech SDK használatára. Nyissa meg a **projekt 
 
    ![A könyvtár függőségének képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. A megjelenő ablakban adja meg az Androidhoz készült Speech SDK nevét és verzióját ( *com. microsoft. cognitiveservices. Speech: Client-SDK: 1.9.0*). Ezután kattintson az **OK** gombra.
+1. A megjelenő ablakban adja meg az Androidhoz készült Speech SDK nevét és verzióját ( *com. microsoft. cognitiveservices. Speech: Client-SDK: 1.10.0*). Ezután kattintson az **OK** gombra.
    A beszédfelismerési SDK-t most a következő módon kell hozzáadni a függőségek listájához:
 
    ![Képernyőkép a Speech SDK-ról a függőségek listájában](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

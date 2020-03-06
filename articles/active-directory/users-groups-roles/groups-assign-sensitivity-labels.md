@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b242a76e1daec7d401d797e8c9887821117246
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 667fb39aabfec14cff01221b82a45ba8ad1d68d4
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656942"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329732"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Érzékenységi címkék társítása az Office 365-csoportokhoz Azure Active Directory (előzetes verzió)
 
-Azure Active Directory (Azure AD) támogatja az [Microsoft 365 megfelelőségi központ](https://sip.protection.office.com/homepage) által az Office 365-csoportok számára közzétett érzékenységi címkék alkalmazását. Az érzékenységi címkék olyan szolgáltatásokra vonatkoznak, mint az Outlook, a Microsoft Teams és a SharePoint. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. Az Office 365-alkalmazások támogatásával kapcsolatos további információkért lásd: [office 365-támogatás az érzékenységi címkékhez](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
+Azure Active Directory (Azure AD) támogatja az [Microsoft 365 megfelelőségi központ](https://sip.protection.office.com/homepage) által az Office 365-csoportok számára közzétett érzékenységi címkék alkalmazását. Az érzékenységi címkék olyan szolgáltatásokra vonatkoznak, mint az Outlook, a Microsoft Teams és a SharePoint. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. Az Office 365-alkalmazások támogatásával kapcsolatos további információkért lásd: [office 365-támogatás az érzékenységi címkékhez](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
 
 > [!IMPORTANT]
 > A szolgáltatás konfigurálásához legalább egy aktív prémium szintű Azure Active Directory P1-licenccel kell rendelkeznie az Azure AD-szervezetben.

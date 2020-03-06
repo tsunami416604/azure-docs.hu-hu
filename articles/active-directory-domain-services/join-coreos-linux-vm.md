@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a0691bd2a556219b3e3d989a3bbc465fa56b4bf
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b97b542d11e405bab00519c68d2365dada6b6c7f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613804"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298870"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>CoreOS virtuális gép csatlakoztatása Azure AD Domain Services felügyelt tartományhoz
 
@@ -34,7 +34,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
     * Ha szükséges, az első oktatóanyag [egy Azure Active Directory Domain Services példányt hoz létre és konfigurál][create-azure-ad-ds-instance].
-* Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
+* Egy olyan felhasználói fiók, amely az Azure AD DS felügyelt tartomány részét képezi.
 
 ## <a name="create-and-connect-to-a-coreos-linux-vm"></a>CoreOS Linux rendszerű virtuális gép létrehozása és kapcsolódás
 
@@ -134,9 +134,9 @@ A SSSD konfigurációs fájljának frissítése után most csatlakoztassa a virt
     * Győződjön meg arról, hogy a virtuális gép üzembe helyezése ugyanarra a virtuális gépre történik, ahol az Azure AD DS felügyelt tartomány elérhető.
     * Győződjön meg arról, hogy a virtuális hálózat DNS-kiszolgálójának beállításai frissítve lettek, hogy az Azure AD DS felügyelt tartományának tartományvezérlőjére mutasson.
 
-1. Most csatlakoztassa a virtuális gépet az Azure AD DS felügyelt tartományhoz a `adcli join` paranccsal. Olyan felhasználót válasszon, amely a *HRE DC-rendszergazdák* csoportjához tartozik. Ha szükséges, [vegyen fel egy felhasználói fiókot egy csoportba az Azure ad-ben](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+1. Most csatlakoztassa a virtuális gépet az Azure AD DS felügyelt tartományhoz a `adcli join` paranccsal. Olyan felhasználót kell megadnia, amely az Azure AD DS felügyelt tartomány részét képezi. Ha szükséges, [vegyen fel egy felhasználói fiókot egy csoportba az Azure ad-ben](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Ismét az Azure AD DS felügyelt tartománynevet minden nagybetűvel meg kell adni. A következő példában az `contosoadmin@aaddscontoso.com` nevű fiók a Kerberos inicializálására szolgál. Adja meg saját felhasználói fiókját, amely az *HRE DC-rendszergazdák* csoport tagja.
+    Ismét az Azure AD DS felügyelt tartománynevet minden nagybetűvel meg kell adni. A következő példában az `contosoadmin@aaddscontoso.com` nevű fiók a Kerberos inicializálására szolgál. Adja meg saját felhasználói fiókját, amely az Azure AD DS felügyelt tartomány részét képezi.
 
     ```console
     sudo adcli join -D AADDSCONTOSO.COM -U contosoadmin@AADDSCONTOSO.COM -K /etc/krb5.keytab -H coreos.aaddscontoso.com -N coreos

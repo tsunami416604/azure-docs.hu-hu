@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 9/23/2019
 ms.author: pabutler
-ms.openlocfilehash: c84f5538d2f553a713b52aa795a10acddac9aff8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c745a37805862b77e7893788d9d089c8447ae465
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819891"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302865"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
 
@@ -87,7 +87,7 @@ Az erőforrást csak a **mainTemplate. JSON** vagy a **azuredeploy. JSON** fájl
 
 ## <a name="use-the-resource-manager-apis"></a>A Resource Manager API-k használata
 
-Bizonyos esetekben előfordulhat, hogy közvetlenül a Resource Manager REST API-kon keresztül szeretne hívásokat kezdeményezni az Azure-szolgáltatások üzembe helyezéséhez. Az Azure a hívások engedélyezéséhez [több SDK](https://docs.microsoft.com/azure/#pivot=sdkstools) -t is támogat. Az SDK-k egyikét használhatja, vagy a REST API-kat közvetlenül is meghívhatja az erőforrások üzembe helyezéséhez.
+Bizonyos esetekben előfordulhat, hogy közvetlenül a Resource Manager REST API-kon keresztül szeretne hívásokat kezdeményezni az Azure-szolgáltatások üzembe helyezéséhez. Az Azure a hívások engedélyezéséhez [több SDK](https://docs.microsoft.com/azure/?pivot=sdkstools) -t is támogat. Az SDK-k egyikét használhatja, vagy a REST API-kat közvetlenül is meghívhatja az erőforrások üzembe helyezéséhez.
 
 Ha Resource Manager-sablont használ, a megoldást a korábban ismertetett utasítások követésével címkézheti. Ha nem használ Resource Manager-sablont, és közvetlen API-hívásokat végez, továbbra is címkézheti az üzembe helyezést az Azure-erőforrások használatának hozzárendeléséhez.
 
@@ -296,7 +296,7 @@ A technikai előfizetések, a üzembe helyezési és az alkalmazás-fejlesztési
     * Töltse ki/tekintse át a kapcsolattartási adatokat.
     * A konzultáció részleteit előre ki lehet tölteni, vagy a legördülő listából választhat.
     * Adja meg a címet és a probléma leírását (a lehető legrészletesebben adja meg a problémát).
-1. Kattintson a Küldés gombra
+1. Kattintson a Submit (Küldés) gombra
 
 Részletes útmutatást találhat a képernyőképek [https://aka.ms/TechConsultInstructionson ](https://aka.ms/TechConsultInstructions)való megtekintéséhez.
 

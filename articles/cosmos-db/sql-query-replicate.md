@@ -4,15 +4,15 @@ description: Ismerkedjen meg az SQL System függvény REPLIKÁLÁSával Azure Co
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5e0b7f29c503daa8a95dcc46238e60728c0cec50
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 19fcde522c5cb0355e53a5616145f27fada7dad9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349567"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302185"
 ---
 # <a name="replicate-azure-cosmos-db"></a>REPLIKÁLÁS (Azure Cosmos DB)
  Egy karakterláncértéket a megadott számú alkalommal ismétlődik.
@@ -29,7 +29,7 @@ REPLICATE(<str_expr>, <num_expr>)
    Egy karakterlánc-kifejezés.
   
 *num_expr*  
-   A numerikus kifejezés. Ha a *num_expr* negatív vagy nem véges, az eredmény nincs meghatározva.
+   A numerikus kifejezés. Ha *num_expr* negatív vagy nem véges, az eredmény nincs meghatározva.
   
 ## <a name="return-types"></a>Visszatérési típusok
   
@@ -40,7 +40,7 @@ REPLICATE(<str_expr>, <num_expr>)
 
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa azt szemlélteti, hogyan használható a `REPLICATE` a lekérdezésekben.
+  Az alábbi példa azt szemlélteti, hogyan használható a `REPLICATE` egy lekérdezésben.
   
 ```sql
 SELECT REPLICATE("a", 3) AS replicate
@@ -52,7 +52,11 @@ SELECT REPLICATE("a", 3) AS replicate
 [{"replicate": "aaa"}]
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

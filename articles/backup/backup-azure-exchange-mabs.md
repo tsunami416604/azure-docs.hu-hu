@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan készíthet biztonsági mentést egy Exchange-k
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: dbd37bbb7418560a0426ed47d7869bf9d949d2e2
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 9e623b1bdce93c340ccd0e61f9f5145e7154beff
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617573"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295844"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Exchange-kiszolgáló biztonsági mentése az Azure-ba Azure Backup Server
 
@@ -23,7 +23,7 @@ A folytatás előtt győződjön meg arról, hogy a Azure Backup Server [telepí
 
 Ha a MABS védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, kövesse az alábbi lépéseket:
 
-1. Győződjön meg arról, hogy a tűzfalak megfelelően vannak konfigurálva. Lásd: [tűzfal-kivételek konfigurálása az ügynökhöz](h https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
+1. Győződjön meg arról, hogy a tűzfalak megfelelően vannak konfigurálva. Lásd: [tűzfal-kivételek konfigurálása az ügynökhöz](https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
 2. Telepítse az ügynököt az Exchange-kiszolgálóra, ehhez kattintson a **felügyeleti > ügynökök elemre > install** in MABS felügyeleti konzol. A részletes lépésekért lásd [a MABS védelmi ügynök telepítése](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) című témakört.
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Védelmi csoport létrehozása az Exchange-kiszolgálóhoz

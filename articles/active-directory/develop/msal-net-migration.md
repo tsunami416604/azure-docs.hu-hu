@@ -13,21 +13,21 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 4ffcd82931b4df92aa2885eb043deae90a70526f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 737b25fd4c83c459f033bd7b07f6362909e38056
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695347"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299883"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Alkalmazások migrálása a MSAL.NET-be
 
 A .NET-hez készült Microsoft Authentication Library (MSAL.NET) és az Azure AD Authentication Library for .NET (ADAL.NET) is az Azure AD-entitások hitelesítésére és az Azure AD-jogkivonatok igénylésére szolgál. Eddig a legtöbb fejlesztő dolgozott együtt az Azure ad for Developers platformmal (v 1.0) az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítéséhez az Azure AD Authentication Library (ADAL) használatával. A MSAL használata:
 
 - a Microsoft Identity platform végpontjának használatával a Microsoft-identitások (Azure AD-identitások és Microsoft-fiókok, valamint közösségi és helyi Azure AD B2C fiókok) szélesebb körét hitelesítheti.
-- a felhasználók a legjobb egyszeri bejelentkezési élményt kapják meg.
+- A felhasználók a legjobb egyszeri bejelentkezési élményt kapják meg.
 - az alkalmazás lehetővé teszi a növekményes hozzáférés engedélyezését, és egyszerűbben támogatja a feltételes hozzáférést.
-- élvezheti az innováció előnyeit.
+- Élvezheti az innováció előnyeit.
 
 A **MSAL.net mostantól a Microsoft Identity platformmal való használatra javasolt hitelesítési függvénytár**. A ADAL.NET-on nem lesznek új funkciók implementálva. Az erőfeszítések a MSAL javítására összpontosítanak.
 
@@ -133,7 +133,7 @@ Alkalmazás típusa | Engedély | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Webalkalmazás, webes API, démon | Ügyfél hitelesítő adatai | [Ügyfél-hitelesítő adatok a ADAL.NET-ben](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Ügyfél-hitelesítő adatok a MSAL.net-ben](msal-authentication-flows.md#client-credentials)
 Webes API | A következő nevében | [A szolgáltatás és a szolgáltatás közötti hívások a felhasználó nevében a ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [A MSAL.NET nevében](msal-authentication-flows.md#on-behalf-of)
-Web App | Hitelesítési kód | [Jogkivonatok beszerzése engedélyezési kódokkal a Web Apps és a ADAL.NET között](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Jogkivonatok beszerzése engedélyezési kódokkal a Web Apps MSAL.NET](msal-authentication-flows.md#authorization-code)
+Webes alkalmazás | Hitelesítési kód | [Jogkivonatok beszerzése engedélyezési kódokkal a Web Apps és a ADAL.NET között](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Jogkivonatok beszerzése engedélyezési kódokkal a Web Apps MSAL.NET](msal-authentication-flows.md#authorization-code)
 
 ### <a name="cache-persistence"></a>Gyorsítótár-megőrzés
 
@@ -143,9 +143,9 @@ A MSAL.NET lezárt osztályba helyezi a tokent, és megszünteti a kibővítés�
 
 ## <a name="signification-of-the-common-authority"></a>A közös hatóság jelentése
 
-Ha a 1.0-s verzióban a https://login.microsoftonline.com/common -szolgáltatót használja, a felhasználók bármelyik HRE-fiókkal bejelentkezhetnek (bármely szervezet esetében). Lásd: [ADAL.net](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)
+Ha a 1.0-s verzióban a https://login.microsoftonline.com/common-szolgáltatót használja, a felhasználók bármelyik HRE-fiókkal bejelentkezhetnek (bármely szervezet esetében). Lásd: [ADAL.net](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)
 
-Ha a https://login.microsoftonline.com/common -szolgáltatót használja a 2.0-s verzióban, lehetővé teszi a felhasználók számára, hogy bármilyen HRE-szervezettel vagy személyes Microsoft-fiókkal (MSA) jelentkezzenek be. Ha a MSAL.NET-ben korlátozni szeretné a bejelentkezést bármely HRE-fiókra (ugyanúgy, mint a ADAL.NET esetében), akkor a https://login.microsoftonline.com/organizations t kell használnia. Részletekért tekintse meg a `authority` paramétert a [nyilvános ügyfélalkalmazás alkalmazásban](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication).
+Ha a https://login.microsoftonline.com/common-szolgáltatót használja a 2.0-s verzióban, lehetővé teszi a felhasználók számára, hogy bármilyen HRE-szervezettel vagy személyes Microsoft-fiókkal (MSA) jelentkezzenek be. Ha a MSAL.NET-ben korlátozni szeretné a bejelentkezést bármely HRE-fiókra (ugyanúgy, mint a ADAL.NET esetében), akkor a https://login.microsoftonline.com/organizationst kell használnia. Részletekért tekintse meg a `authority` paramétert a [nyilvános ügyfélalkalmazás alkalmazásban](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication).
 
 ## <a name="v10-and-v20-tokens"></a>1\.0-s és v 2.0-tokenek
 
@@ -165,7 +165,7 @@ A OAuth2 engedélyek olyan jogosultsági hatókörök, amelyeket egy v 1.0 web A
 
 ### <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>A v 1.0 alkalmazás adott OAuth2 engedélyeihez való hozzáférést kérő hatókörök
 
-Ha jogkivonatokat szeretne beszerezni egy v 1.0 alkalmazás adott hatóköréhez (például a HRE gráfhoz, amely https://graph.windows.net) , akkor létre kell hoznia egy `scopes` a kívánt erőforrás-azonosítónak a kívánt OAuth2-engedéllyel való összefűzésével az adott erőforráshoz.
+Ha olyan alkalmazáshoz szeretne jogkivonatokat beszerezni, amely a v 1.0 jogkivonatokat fogadja el (például a Microsoft Graph API-t, amely https://graph.microsoft.com), akkor létre kell hoznia `scopes` a kívánt erőforrás-azonosítónak a kívánt OAuth2 engedéllyel való összefűzésével az adott erőforráshoz.
 
 Ha például a felhasználó nevében egy 1.0-s verziójú webes API-t szeretne elérni, amely `ResourceId`az alkalmazás-azonosító URI-ja, a következőt kell használnia:
 
@@ -173,16 +173,16 @@ Ha például a felhasználó nevében egy 1.0-s verziójú webes API-t szeretne 
 var scopes = new [] {  ResourceId+"/user_impersonation"};
 ```
 
-Ha a HRE Graph https://graph.windows.net/) API-val szeretné olvasni és írni a MSAL.NET-Azure Active Directory, akkor a hatókörök listáját az alábbi kódrészlethez hasonlóan kell létrehoznia:
+Ha a Microsoft Graph API-val (https://graph.microsoft.com/)) szeretné olvasni és írni a MSAL.NET Azure Active Directory, akkor a hatókörök listáját kell létrehoznia, például a következő kódrészletben:
 
 ```csharp
-ResourceId = "https://graph.windows.net/";
+ResourceId = "https://graph.microsoft.com/";
 var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Figyelmeztetés: Ha egy v 1.0 webes API-nak megfelelő hatókörben egy vagy két perjel van
 
-Ha a Azure Resource Manager API-nak megfelelő hatókört szeretné írni (https://management.core.windows.net/) , akkor a következő hatókört kell megadnia (jegyezze fel a két perjelet) 
+Ha a Azure Resource Manager API-nak megfelelő hatókört szeretné írni (https://management.core.windows.net/), akkor a következő hatókört kell megadnia (jegyezze fel a két perjelet) 
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -196,7 +196,7 @@ Ennek az az oka, hogy a Resource Manager API perjelet vár a célközönségi jo
 Az Azure AD által használt logika a következő:
 - A ADAL (v 1.0) végponthoz egy v 1.0 hozzáférési jogkivonat (az egyetlen lehetséges), az AUD = erőforrás
 - A MSAL (v 2.0-végpont) esetében Kérjen hozzáférési jogkivonatot egy v 2.0-tokent elfogadó erőforráshoz, AUD = erőforrás. AppId
-- A MSAL (v 2.0 Endpoint) esetében, ha egy olyan erőforrás hozzáférési jogkivonatát kérdezi le, amely egy v 1.0 hozzáférési jogkivonatot fogad el (ez a fenti eset), az Azure AD a kért hatókörből elemezi a kívánt célközönséget, így az utolsó perjel előtt mindent megtesz, és használja erőforrás-azonosítóként. Ezért ha a https:\//database.windows.net "https://database.windows.net/ " célközönséget vár, a https:\/ /database.windows.net//.default hatókörét kell kérnie. Lásd még: #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): az erőforrás URL-címének záró perjele ki van hagyva, ami az SQL-hitelesítési hibát okozta #747
+- A MSAL (v 2.0 Endpoint) esetében, ha egy olyan erőforrás hozzáférési jogkivonatát kérdezi le, amely egy v 1.0 hozzáférési jogkivonatot fogad el (ez a fenti eset), az Azure AD a kért hatókörből elemezi a kívánt célközönséget, így az utolsó perjel előtt mindent megtesz, és használja erőforrás-azonosítóként. Ezért ha a https:\//database.windows.net "https://database.windows.net/" célközönséget vár, a https:\//database.windows.net//.default hatókörét kell kérnie. Lásd még: #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): az erőforrás URL-címének záró perjele ki van hagyva, ami az SQL-hitelesítési hibát okozta #747
 
 
 ### <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Hatókörök egy v 1.0 alkalmazás összes engedélyéhez való hozzáférés kérelmezéséhez

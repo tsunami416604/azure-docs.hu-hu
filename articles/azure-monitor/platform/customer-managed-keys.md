@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: b3e110766b2e131330f3108b7938e9e5e01e48a4
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: d14b4a3f4c3fdddac64596760fdbbfefce49036a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208559"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364394"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor ügyfél által felügyelt kulcs konfigurálása 
 
@@ -283,6 +283,11 @@ A "KeyVaultProperties" a Key Vault kulcs azonosítójának részleteit tartalmaz
 
 Application Insights CMK konfigurálásához kövesse a jelen lépés függelékének tartalmát.
 
+A művelet végrehajtásához a munkaterület és a *fürterőforrás* "Write" engedélyekkel kell rendelkeznie, amelyek a következő műveleteket tartalmazzák:
+
+- A munkaterületen: Microsoft. OperationalInsights/munkaterületek/írás
+- A *fürterőforrás* : Microsoft. OperationalInsights/fürtök/írás
+
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
 Authorization: Bearer <token>
@@ -290,18 +295,17 @@ Content-type: application/json
 
 {
   "properties": {
-    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
+    "WriteAccessResourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     }
 }
 ```
-A *clusterDefinitionId* az előző lépés válaszában megadott *clusterId* érték.
 
 **Válasz**
 
 ```json
 {
   "properties": {
-    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
+    "WriteAccessResourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     },
   "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name/linkedservices/cluster",
   "name": "workspace-name/cluster",
@@ -478,7 +482,6 @@ Log Analytics és Application Insights ugyanazt az adattárolási platformot és
 Application Insights CMK konfigurációja megegyezik az ebben a cikkben ismertetett folyamattal, beleértve a korlátozásokat és a hibaelhárítást, kivéve a következő lépéseket:
 
 - *Fürterőforrás* létrehozása
-
 - Összetevő hozzárendelése *fürterőforrás* -erőforráshoz
 
 A Application Insights CMK konfigurálásakor ezeket a lépéseket a fent felsorolt lépések helyett kell használni.
@@ -534,6 +537,11 @@ a "elvi-id" a felügyelt Identity szolgáltatás által létrehozott GUID.
 > Másolja és tartsa meg az "elv-azonosító" értéket, mivel a következő lépésekben szüksége lesz rá.
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Összetevő hozzárendelése *fürterőforrás* -erőforráshoz összetevők használatával [– Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) API
+
+A művelet végrehajtásához "írási" engedélyekkel kell rendelkeznie az összetevő és a *fürterőforrás* számára, amely a következő műveleteket tartalmazza:
+
+- Az összetevőben: Microsoft. bepillantások/összetevő/írás
+- A *fürterőforrás* : Microsoft. OperationalInsights/fürtök/írás
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01

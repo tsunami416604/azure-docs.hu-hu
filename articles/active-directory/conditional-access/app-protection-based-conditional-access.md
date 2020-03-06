@@ -5,366 +5,139 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 03/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: spunukol
+ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c853ef3a5a40381aba4e1c13eaf9ad7d8653170
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 8d8cdb32e04f9ba1274291430ac230107f3150c6
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186619"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298377"
 ---
-# <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Alkalmazás-védelmi szabályzat megkövetelése a Cloud app Accesshez feltételes hozzáféréssel (előzetes verzió)
+# <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Útmutató: az alkalmazás védelmi szabályzatának és a felhőalapú alkalmazások hozzáférésének megkövetelése feltételes hozzáféréssel
 
-Az alkalmazottak mobileszközöket használnak a személyes és munkahelyi feladatokhoz. Az adatvesztés elkerülése érdekében az alkalmazottak is hatékonyak lehetnek. A Azure Active Directory (Azure AD) feltételes hozzáférés használatával a felhőalapú alkalmazásokhoz való hozzáférés korlátozásával védetté teheti a vállalati adatait. Először használja az ügyfélalkalmazások alkalmazást egy alkalmazás-védelmi szabályzattal.
+A felhasználók a személyes és munkahelyi feladatokhoz egyaránt rendszeresen használják a mobileszközök használatát. A munkavégzés hatékonysága érdekében a szervezetek emellett azt is meg szeretnék akadályozni, hogy a potenciálisan nem biztonságos alkalmazások adatvesztést okoznak. A feltételes hozzáféréssel a szervezetek a jóváhagyott (modern hitelesítésre képes) ügyfélalkalmazások hozzáférését a rájuk alkalmazott Intune app Protection-szabályzatokkal korlátozhatják.
 
-Ez a cikk azt ismerteti, hogyan konfigurálhat olyan feltételes hozzáférési szabályzatokat, amelyek az alkalmazáshoz való hozzáférés megkövetelése előtt megkövetelhetik az alkalmazások védelmi házirendjét.
+Ez a cikk két forgatókönyvet mutat be a feltételes hozzáférési házirendek konfigurálásához olyan erőforrásokhoz, mint az Office 365, az Exchange Online és a SharePoint Online.
 
-## <a name="overview"></a>Áttekintés
+- [1. forgatókönyv: az Office 365-alkalmazásokban jóváhagyott alkalmazások szükségesek az alkalmazás-védelmi házirendekkel](#scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies)
+- [2. forgatókönyv: az Exchange Online és a SharePoint Online esetében jóváhagyott ügyfélalkalmazás és alkalmazás-védelmi szabályzat szükséges](#scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy)
 
-Az [Azure ad feltételes hozzáférésével](overview.md)részletesen beállíthatja, hogy a jogosult felhasználók hogyan férhessenek hozzá az erőforrásokhoz. Például korlátozhatja a felhőalapú alkalmazásokhoz való hozzáférést a megbízható eszközökre.
+A feltételes hozzáférésben ezek az ügyfélalkalmazások ismertek, hogy védelmet kapnak az alkalmazás védelmi házirendjével. Az alkalmazás-védelmi szabályzatokkal kapcsolatos további információkért tekintse meg az [app Protection-házirendek áttekintése](/intune/apps/app-protection-policy) című cikket.
 
-Az [Intune app Protection-szabályzatok](https://docs.microsoft.com/intune/app-protection-policy) segítségével biztosíthatja a vállalat adatainak védelmét. Az Intune app Protection-szabályzatok nem igényelnek mobileszköz-kezelési (MDM) megoldást. A vállalati adatait az eszközök regisztrálása nélkül is biztosíthatja az Eszközkezelő megoldásban.
+A jogosult ügyfélalkalmazások listáját a következő témakörben tekintheti meg: az [alkalmazás védelmére vonatkozó követelmény](concept-conditional-access-grant.md).
 
-Azure Active Directory feltételes hozzáférés korlátozza a felhőalapú alkalmazásokhoz való hozzáférést olyan ügyfélalkalmazások számára, amelyeket az Intune jelentett az Azure AD-nek az alkalmazás védelmi házirendjének fogadása során. Például korlátozhatja az Exchange Online-hoz való hozzáférést az Intune app Protection-szabályzattal rendelkező Outlook alkalmazáshoz.
+## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>1\. forgatókönyv: az Office 365-alkalmazásokban jóváhagyott alkalmazások szükségesek az alkalmazás-védelmi házirendekkel
 
-A feltételes hozzáférési terminológiában ezek az ügyfélalkalmazások az *alkalmazás-védelmi szabályzattal*védett házirendek.  
+Ebben a forgatókönyvben a contoso úgy döntött, hogy az Office 365-erőforrásokhoz való összes mobil hozzáféréshez jóváhagyott ügyfélalkalmazások, például az Outlook Mobile, a OneDrive és a Microsoft Teams által védett alkalmazások férhetnek hozzá a hozzáférés megkezdése előtt. Az összes felhasználó már be van jelentkezni az Azure AD hitelesítő adataival, és rendelkezik a hozzájuk rendelt licenccel prémium szintű Azure AD P1 vagy P2 és Microsoft Intune.
 
-![Feltételes hozzáférés](./media/app-protection-based-conditional-access/05.png)
+A szervezeteknek a következő lépéseket kell végrehajtaniuk ahhoz, hogy a jóváhagyott ügyfélalkalmazás használatát kötelezővé lehessen tenni a mobileszközökön.
 
-A szabályzattal védett ügyfélalkalmazások listáját lásd: az [alkalmazás védelmére vonatkozó követelmény](concept-conditional-access-grant.md).
+**1. lépés: Azure AD feltételes hozzáférési szabályzat konfigurálása az Office 365-hez**
 
-Az alkalmazás-védelem alapú feltételes hozzáférési szabályzatokat más házirendekkel kombinálhatja, például az [eszközökön alapuló feltételes hozzáférési szabályzatok](require-managed-devices.md)segítségével. Így rugalmasságot biztosíthat a személyes és a vállalati eszközök adatainak védelme terén is.
-
-> [!NOTE]
-> A feltételes hozzáférést biztosító alkalmazás-védelmi szabályzatok nem alkalmazhatók a B2B-felhasználókra, mert a meghívó szervezetnek nincs láthatósága a B2B-felhasználó otthoni szervezetében.
-
-## <a name="benefits-of-app-protection-based-conditional-access-requirement"></a>Az App Protection-alapú feltételes hozzáférési követelmények előnyei
-
-Az Intune által az iOS-hez és az Androidhoz egy felügyelt eszközön jelentett megfelelőséghez hasonlóan az Intune mostantól jelentéseket küld az Azure AD-nek, ha alkalmazza az alkalmazás védelmi szabályzatát. A feltételes hozzáférés ezt a házirendet hozzáférés-ellenőrzési ként használhatja. Ez az új feltételes hozzáférési szabályzat, az alkalmazás-védelmi szabályzat, növeli a biztonságot. Védelmet biztosít a rendszergazdai hibák ellen, például:
-
-- Azok a felhasználók, akik nem rendelkeznek Intune-licenccel.
-- Azok a felhasználók, akik nem tudnak Intune app Protection-szabályzatot fogadni.
-- Az Intune app Protection-szabályzatok nem a szabályzatok fogadására konfigurált alkalmazásai.
-
-## <a name="before-you-begin"></a>Előkészületek
-
-Ez a cikk azt feltételezi, hogy már ismeri a következőket:
-
-- Az [alkalmazás védelmi házirendjének követelménye](concept-conditional-access-grant.md).
-- A [jóváhagyott ügyfélalkalmazás-követelmény](concept-conditional-access-grant.md).
-- A [Azure Active Directoryban a feltételes hozzáférés](overview.md)alapvető fogalmai.
-- [Feltételes hozzáférési szabályzat konfigurálása](app-based-mfa.md).
-
-## <a name="prerequisites"></a>Előfeltételek
-
-Az alkalmazás védelme alapú feltételes hozzáférési szabályzat létrehozásához a következőket kell tennie:
-
-- Enterprise Mobility + Security vagy Azure Active Directory Premium előfizetéssel és Intune-nal rendelkezik.
-- Győződjön meg arról, hogy a felhasználók Enterprise Mobility + Security vagy az Azure AD + Intune licenccel rendelkeznek.
-- Győződjön meg arról, hogy az ügyfélalkalmazás konfigurálva van az Intune-ban az alkalmazás védelmi házirendjének fogadásához.
-- Győződjön meg arról, hogy a felhasználók az Intune-ban vannak konfigurálva az Intune app Protection-szabályzatok fogadásához.
-
-## <a name="app-protection-based-policy-for-exchange-online"></a>App Protection-alapú házirend az Exchange Online-hoz
-
-Ez a forgatókönyv egy app Protection-alapú feltételes hozzáférési szabályzatot tartalmaz az Exchange Online-hoz való hozzáféréshez.
-
-### <a name="scenario-playbook"></a>Forgatókönyv forgatókönyve
-
-Ez a forgatókönyv feltételezi, hogy a felhasználó:
-
-- Az e-mailt az iOS-vagy Android-alapú natív posta alkalmazásával konfigurálhatja az Exchange-hez való kapcsolódáshoz.
-- Egy e-mailt kap, amely azt jelzi, hogy a hozzáférés csak az Outlook alkalmazás használatával érhető el.
-- Letölti az alkalmazást a hivatkozással.
-- Megnyitja az Outlook alkalmazást, és bejelentkezik az Azure AD hitelesítő adataival.
-- A folytatáshoz a rendszer a **Microsoft Authenticator alkalmazás** vagy a **Intune céges portál** telepítésére kéri.
-- Telepíti az alkalmazást, és visszaadja az Outlook alkalmazásnak a folytatáshoz.
-- A rendszer egy eszköz regisztrálását kéri.
-- Az Intune app Protection-szabályzatot kaphat.
-- Elérheti az e-maileket.
-
-Minden Intune alkalmazás-védelmi szabályzatnak az alkalmazáson kell lennie a vállalati adateléréshez. Előfordulhat, hogy a házirendek arra kérik a felhasználót, hogy indítsa újra az alkalmazást, vagy használjon egy további PIN-kódot. Ebben az esetben, ha a szabályzatok az alkalmazáshoz és a platformhoz vannak konfigurálva.
-
-### <a name="configuration"></a>Konfiguráció
-
-**1. lépés: Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online-hoz**
-
-Az ebben a lépésben megadott feltételes hozzáférési szabályzat esetében konfigurálja a következő összetevőket:
-
-![Feltételes hozzáférés](./media/app-protection-based-conditional-access/01.png)
-
-1. Adja meg a feltételes hozzáférési szabályzat nevét.
-1. A **hozzárendelések**alatt a **felhasználók és csoportok**területen válasszon ki legalább egy felhasználót vagy csoportot az egyes feltételes hozzáférési házirendekhez.
-1. A **Cloud apps**szolgáltatásban válassza az **Office 365 Exchange Online**lehetőséget.
-
-   ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/07.png)
-
-1. A **feltételek**területen konfigurálja az **eszközök platformját** és az **ügyfélalkalmazások (előzetes verzió)** :
-   1. Az **eszközök platformon**válassza az **Android** és az **iOS**lehetőséget.
-
-      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/03.png)
-
-   1. Az **ügyfélalkalmazások (előzetes verzió)** lapon válassza a **Mobile apps és az asztali ügyfelek** és a **modern hitelesítési ügyfelek**lehetőséget.
-
-      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/91.png)
-
-1. A **hozzáférés-vezérlés**területen válassza az **alkalmazás-védelmi házirend megkövetelése (előzetes verzió)** lehetőséget.
-
-   ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/05.png)
+1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés**lehetőséget.
+1. Válassza az **új szabályzat**lehetőséget.
+1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
+1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
+   1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
+   1. Válassza a **Done** (Kész) lehetőséget.
+1. A **Cloud apps vagy actions** ** > területen válassza az** **Office 365 (előzetes verzió)** lehetőséget.
+1. A **feltételek**területen válassza az **eszközök platformok**elemet.
+   1. Állítsa **az** **Igen**értékre.
+   1. **Android** és **iOS**is.
+1. A **feltételek**területen válassza az **ügyfélalkalmazások (előzetes verzió)** lehetőséget.
+   1. Állítsa **az** **Igen**értékre.
+   1. Válassza a **Mobile apps és az asztali ügyfelek** és a **modern hitelesítési ügyfelek**lehetőséget.
+1. A **hozzáférés-vezérlés** > **megadása**területen válassza ki a következő beállításokat:
+   - **Jóváhagyott ügyfélalkalmazás megkövetelése**
+   - **Alkalmazás-védelmi házirend megkövetelése (előzetes verzió)**
+   - **Az összes kijelölt vezérlő megkövetelése**
+1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
+1. Válassza a **Létrehozás** lehetőséget a szabályzat létrehozásához és engedélyezéséhez.
 
 **2. lépés: Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online-hoz az ActiveSync (EAS) segítségével**
 
 Az ebben a lépésben megadott feltételes hozzáférési szabályzat esetében konfigurálja a következő összetevőket:
 
-![Feltételes hozzáférés](./media/app-protection-based-conditional-access/06.png)
-
-1. Adja meg a feltételes hozzáférési szabályzat nevét.
-1. A **hozzárendelések**alatt a **felhasználók és csoportok**területen válasszon ki legalább egy felhasználót vagy csoportot az egyes feltételes hozzáférési házirendekhez.
-1. A **Cloud apps**szolgáltatásban válassza az **Office 365 Exchange Online**lehetőséget.
-
-   ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/07.png)
-
-1. A **feltételek**területen konfigurálja az **ügyfélalkalmazások (előzetes verzió)** szolgáltatást. 
-
-   1. Az **ügyfélalkalmazások (előzetes verzió)** lapon válassza a **Mobile apps és az asztali ügyfelek** és az **Exchange ActiveSync-ügyfelek**lehetőséget.
-
-      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/92.png)
-
-   1. A **hozzáférés-vezérlés**területen válassza az **alkalmazás-védelmi házirend megkövetelése (előzetes verzió)** lehetőséget.
-
-      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/05.png)
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés**lehetőséget.
+1. Válassza az **új szabályzat**lehetőséget.
+1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
+1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
+   1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
+   1. Válassza a **Done** (Kész) lehetőséget.
+1. A **felhőalapú alkalmazások vagy műveletek** > a **következők**: válassza az **Office 365 Exchange Online**lehetőséget.
+1. **Feltételek**:
+   1. **Ügyfélalkalmazások (előzetes verzió)** :
+      1. Állítsa **az** **Igen**értékre.
+      1. Válassza a **Mobile apps és az asztali ügyfelek** és az **Exchange ActiveSync-ügyfelek**lehetőséget.
+1. A **hozzáférés-vezérlés** > a **támogatás**területen válassza a **hozzáférés biztosítása**, **jóváhagyott ügyfélalkalmazás megkövetelése**, majd a **kiválasztás**lehetőséget.
+1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
+1. Válassza a **Létrehozás** lehetőséget a szabályzat létrehozásához és engedélyezéséhez.
 
 **3. lépés: az Intune app Protection-szabályzat konfigurálása iOS-és Android-ügyfélalkalmazások számára**
 
-![Feltételes hozzáférés](./media/app-protection-based-conditional-access/09.png)
-
-További információ: [alkalmazások és adatok védelme Microsoft Intuneokkal](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
-
-## <a name="app-protection-based-or-compliant-device-policy-for-exchange-online"></a>App Protection-alapú vagy megfelelő eszköz házirend az Exchange Online-hoz
-
-Ez a forgatókönyv egy, az Exchange Online-hoz való hozzáférésre vonatkozó, alkalmazás-védelmi vagy megfelelőségi eszközre vonatkozó feltételes hozzáférési szabályzatot tartalmaz.
-
-### <a name="scenario-playbook"></a>Forgatókönyv forgatókönyve
-
-Ez a forgatókönyv feltételezi, hogy:
- 
-- Egy felhasználó már regisztrálva van, vállalati eszközökkel vagy anélkül.
-- Azokat a felhasználókat, akik nem regisztráltak és az Azure AD-ben regisztrálva vannak, egy alkalmazás által védett alkalmazással kell regisztrálniuk az erőforrásokat az erőforrásokhoz való hozzáféréshez.
-- Az alkalmazás által védett alkalmazást használó regisztrált felhasználóknak nem kell újra regisztrálniuk az eszközt.
-- Ha nincs regisztrálva, a felhasználó egy Intune app Protection-szabályzatot is fogadhat.
-- A felhasználó hozzáférhet az Outlookhoz és az Intune app Protection-szabályzathoz, ha nincs regisztrálva.
-- A felhasználó az Outlookban elérheti az e-maileket, ha az eszköz regisztrálva van.
-
-### <a name="configuration"></a>Konfiguráció
-
-**1. lépés: Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online-hoz**
-
-Az ebben a lépésben megadott feltételes hozzáférési szabályzat esetében konfigurálja a következő összetevőket:
-
-![Feltételes hozzáférés](./media/app-protection-based-conditional-access/62.png)
-
-1. Adja meg a feltételes hozzáférési szabályzat nevét.
-1. A **hozzárendelések**alatt a **felhasználók és csoportok**területen válasszon ki legalább egy felhasználót vagy csoportot az egyes feltételes hozzáférési házirendekhez.
-1. A **Cloud apps**szolgáltatásban válassza az **Office 365 Exchange Online**lehetőséget. 
-
-   ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/07.png)
-
-1. A **feltételek**területen konfigurálja az **eszközök platformját** és az **ügyfélalkalmazások (előzetes verzió)** szolgáltatást. 
- 
-   1. Az **eszközök platformon**válassza az **Android** és az **iOS**lehetőséget.
-
-      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/03.png)
-
-   1. Az **ügyfélalkalmazások (előzetes verzió)** lapon válassza a **Mobile apps és az asztali ügyfelek** és a **modern hitelesítési ügyfelek**lehetőséget.
-
-      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/91.png)
-
-5. A **hozzáférés-vezérlés**területen válassza ki a következő beállításokat:
-   - **Eszköz megfelelőként való megjelölésének megkövetelése**
-   - **Alkalmazás-védelmi házirend megkövetelése (előzetes verzió)**
-   - **A kiválasztott vezérlők egyikének megkövetelése**   
- 
-      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/11.png)
-
-**2. lépés: Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online-hoz az ActiveSync segítségével**
-
-Az ebben a lépésben megadott feltételes hozzáférési szabályzat esetében konfigurálja a következő összetevőket:
-
-![Feltételes hozzáférés](./media/app-protection-based-conditional-access/06.png)
-
-1. Adja meg a feltételes hozzáférési szabályzat nevét.
-1. A **hozzárendelések**alatt a **felhasználók és csoportok**területen válasszon ki legalább egy felhasználót vagy csoportot az egyes feltételes hozzáférési házirendekhez.
-1. A **Cloud apps**szolgáltatásban válassza az **Office 365 Exchange Online**lehetőséget. 
-
-   ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/07.png)
-
-1. A **feltételek**területen konfigurálja az **ügyfélalkalmazások (előzetes verzió)** szolgáltatást. 
-
-   Az **ügyfélalkalmazások (előzetes verzió)** lapon válassza a **Mobile apps és az asztali ügyfelek** és az **Exchange ActiveSync-ügyfelek**lehetőséget.
-
-   ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/92.png)
-
-1. A **hozzáférés-vezérlés**területen válassza ki a következő beállításokat:
-   - **Eszköz megfelelőként való megjelölésének megkövetelése**
-   - **Alkalmazás-védelmi házirend megkövetelése (előzetes verzió)**
-   - **A kiválasztott vezérlők egyikének megkövetelése**
-
-      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/11.png)
-
-**3. lépés: az Intune app Protection-szabályzat konfigurálása iOS-és Android-ügyfélalkalmazások számára**
-
-![Feltételes hozzáférés](./media/app-protection-based-conditional-access/09.png)
-
-További információ: [alkalmazások és adatok védelme Microsoft Intuneokkal](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
-
-## <a name="app-protection-based-and-compliant-device-policy-for-exchange-online"></a>App Protection-alapú és megfelelő eszköz házirend az Exchange Online-hoz
-
-Ez a forgatókönyv egy, az Exchange Online-hoz való hozzáférésre vonatkozó, alkalmazásra épülő és megfelelő eszköz feltételes hozzáférési szabályzatot tartalmaz.
-
-### <a name="scenario-playbook"></a>Forgatókönyv forgatókönyve
-
-Ez a forgatókönyv feltételezi, hogy a felhasználó:
- 
-- Az e-mailt az iOS-vagy Android-alapú natív posta alkalmazásával konfigurálhatja az Exchange-hez való kapcsolódáshoz.
-- Egy e-mailt kap, amely azt jelzi, hogy a hozzáféréshez az eszköz regisztrálása szükséges.
-- Letölti Intune Céges portál, és bejelentkezik a portálra.
-- Ellenőrzi az e-maileket, és kéri az Outlook alkalmazás használatát.
-- Letölti az Outlook alkalmazást.
-- Megnyitja az Outlook alkalmazást, és megadja a regisztráció során használt hitelesítő adatokat.
-- Az Intune app Protection-szabályzatot kaphat.
-- Hozzáférhet az e-mailekhez az Outlook és az Intune app Protection-szabályzat segítségével.
-
-Minden Intune app Protection-szabályzat aktiválva van, mielőtt hozzáférést kap a vállalati adatszolgáltatáshoz. Előfordulhat, hogy a házirendek arra kérik a felhasználót, hogy indítsa újra az alkalmazást, vagy használjon egy további PIN-kódot. Ebben az esetben, ha a szabályzatok az alkalmazáshoz és a platformhoz vannak konfigurálva.
-
-### <a name="configuration"></a>Konfiguráció
-
-**1. lépés: Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online-hoz**
-
-Az ebben a lépésben megadott feltételes hozzáférési szabályzat esetében konfigurálja a következő összetevőket:
-
-![Feltételes hozzáférés](./media/app-protection-based-conditional-access/01.png)
-
-1. Adja meg a feltételes hozzáférési szabályzat nevét.
-1. A **hozzárendelések**alatt a **felhasználók és csoportok**területen válasszon ki legalább egy felhasználót vagy csoportot az egyes feltételes hozzáférési házirendekhez.
-1. A **Cloud apps**szolgáltatásban válassza az **Office 365 Exchange Online**lehetőséget. 
-
-   ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/07.png)
-
-1. A **feltételek**területen konfigurálja az **eszközök platformját** és az **ügyfélalkalmazások (előzetes verzió)** szolgáltatást. 
-   1. Az **eszközök platformon**válassza az **Android** és az **iOS**lehetőséget.
-
-      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/03.png)
-
-   1. Az **ügyfélalkalmazások (előzetes verzió)** lapon válassza a **Mobile apps és az asztali ügyfelek** és a **modern hitelesítési ügyfelek**lehetőséget.
-
-      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/91.png)
-
-1. A **hozzáférés-vezérlés**területen válassza ki a következő beállításokat:
-   - **Eszköz megfelelőként való megjelölésének megkövetelése**
-   - **Alkalmazás-védelmi házirend megkövetelése (előzetes verzió)**
-   - **Az összes kijelölt vezérlő megkövetelése**   
- 
-      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/13.png)
-
-**2. lépés: Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online-hoz az ActiveSync segítségével**
-
-Az ebben a lépésben megadott feltételes hozzáférési szabályzat esetében konfigurálja a következő összetevőket:
-
-![Feltételes hozzáférés](./media/app-protection-based-conditional-access/06.png)
-
-1. Adja meg a feltételes hozzáférési szabályzat nevét.
-1. A **hozzárendelések**alatt a **felhasználók és csoportok**területen válasszon ki legalább egy felhasználót vagy csoportot az egyes feltételes hozzáférési házirendekhez.
-1. A **Cloud apps**szolgáltatásban válassza az **Office 365 Exchange Online**lehetőséget. 
-
-   ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/07.png)
-
-1. A **feltételek**területen konfigurálja az **ügyfélalkalmazások (előzetes verzió)** szolgáltatást. 
-
-   Az **ügyfélalkalmazások (előzetes verzió)** lapon válassza a **Mobile apps és az asztali ügyfelek** és az **Exchange ActiveSync-ügyfelek**lehetőséget.
-
-   ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/92.png)
-
-1. A **hozzáférés-vezérlés**területen válassza ki a következő beállításokat:
-   - **Eszköz megfelelőként való megjelölésének megkövetelése**
-   - **Alkalmazás-védelmi házirend megkövetelése (előzetes verzió)**
-   - **Az összes kijelölt vezérlő megkövetelése**   
- 
-      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/13.png)
-
-**3. lépés: az Intune app Protection-szabályzat konfigurálása iOS-és Android-ügyfélalkalmazások számára**
-
-![Feltételes hozzáférés](./media/app-protection-based-conditional-access/09.png)
-
-További információ: [alkalmazások és adatok védelme Microsoft Intuneokkal](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
-
-## <a name="app-protection-based-or-app-based-policy-for-exchange-online-and-sharepoint-online"></a>App Protection-alapú vagy alkalmazáson alapuló házirend az Exchange Online-hoz és a SharePoint Online-hoz
-
-Ez a forgatókönyv egy, az Exchange Online-hoz és a SharePoint Online-hoz való hozzáférést biztosító alkalmazás-védelmi vagy jóváhagyott alkalmazási szabályzatból áll.
-
-### <a name="scenario-playbook"></a>Forgatókönyv forgatókönyve
-
-Ez a forgatókönyv feltételezi, hogy a felhasználó:
-
-- Az alkalmazás-védelmi házirend követelményét vagy a jóváhagyott alkalmazások követelményeit támogató alkalmazások listáján konfigurálja az ügyfélalkalmazások listáját.  
-- Az alkalmazás-védelmi házirend követelményének megfelelő ügyfélalkalmazások használatát, és az Intune app Protection-szabályzatot is képes fogadni.
-- Olyan ügyfélalkalmazások használatát használja, amelyek megfelelnek az Intune app Protection-szabályzatot támogató, jóváhagyott alkalmazásokra vonatkozó házirendnek.
-- Megnyitja az alkalmazást az e-mailek vagy dokumentumok eléréséhez.
-- Megnyitja az Outlook alkalmazást, és bejelentkezik az Azure AD hitelesítő adataival.
-- A rendszer arra kéri, hogy telepítse a Microsoft Authenticator iOS-használatra, vagy Intune Céges portál Android-használatra, ha még nincsenek telepítve.
-- Telepíti az alkalmazást, és a folytatáshoz visszatérhet az Outlook alkalmazáshoz.
-- A rendszer egy eszköz regisztrálását kéri.
-- Az Intune app Protection-szabályzatot kaphat.
-- Hozzáférhet az e-mailekhez az Outlook és az Intune app Protection-szabályzat segítségével.
-- Az alkalmazás nem az alkalmazás-védelmi szabályzat követelményeit, hanem a jóváhagyott alkalmazásra vonatkozó követelményben felsorolt alkalmazások számára is elérhetővé teheti a helyeket és a dokumentumokat.
-
-Az Intune app Protection-szabályzatok szükségesek ahhoz, hogy hozzáférjenek a vállalati adatszolgáltatáshoz. Előfordulhat, hogy a házirendek arra kérik a felhasználót, hogy indítsa újra az alkalmazást, vagy használjon egy további PIN-kódot. Ebben az esetben, ha a szabályzatok az alkalmazáshoz és a platformhoz vannak konfigurálva.
-
-**Megjegyzések**
-
-- Ezt a forgatókönyvet akkor használhatja, ha az App Protection-alapú és az alkalmazás-alapú feltételes hozzáférési szabályzatokat is támogatni kívánja.
-- Ebben *vagy* a szabályzatban az alkalmazásokra vonatkozó adatvédelmi szabályzattal kapcsolatos követelmények kiértékelése először a jóváhagyott ügyfélalkalmazás-követelmények előtt történik.
-
-### <a name="configuration"></a>Konfiguráció
-
-**1. lépés: Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online-hoz és a SharePoint Online-hoz**
-
-Az ebben a lépésben megadott feltételes hozzáférési szabályzat esetében konfigurálja a következő összetevőket:
-
-![Feltételes hozzáférés](./media/app-protection-based-conditional-access/62.png)
-
-1. Adja meg a feltételes hozzáférési szabályzat nevét.
-1. A **hozzárendelések**alatt a **felhasználók és csoportok**területen válasszon ki legalább egy felhasználót vagy csoportot az egyes feltételes hozzáférési házirendekhez.
-1. A **Cloud apps**szolgáltatásban válassza az **Office 365 Exchange Online** és az **Office 365 SharePoint Online**lehetőséget. 
-
-   ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/02.png)
-
-1. A **feltételek**területen konfigurálja az **eszközök platformját** és az **ügyfélalkalmazások (előzetes verzió)** szolgáltatást. 
-   1. Az **eszközök platformon**válassza az **Android** és az **iOS**lehetőséget.
-
-      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/03.png)
-
-   1. Az **ügyfélalkalmazások (előzetes verzió)** lapon válassza a **Mobile apps és az asztali ügyfelek** és a **modern hitelesítési ügyfelek**lehetőséget.
-
-      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/91.png)
-
-1. A **hozzáférés-vezérlés**területen válassza ki a következő beállításokat:
+Tekintse át az alkalmazás-védelmi szabályzatok létrehozását [és hozzárendelését](/intune/apps/app-protection-policies)ismertető cikket, amely az Android és az iOS rendszerhez készült alkalmazás-védelmi szabályzatok létrehozásának lépéseit ismerteti. 
+
+## <a name="scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy"></a>2\. forgatókönyv: az Exchange Online és a SharePoint Online esetében jóváhagyott ügyfélalkalmazás és alkalmazás-védelmi szabályzat szükséges
+
+Ebben az esetben a contoso úgy döntött, hogy a felhasználók csak akkor férhetnek hozzá a mobileszközök e-mail-és SharePoint-adataihoz, ha olyan jóváhagyott ügyfélalkalmazás-alkalmazást használnak, mint az alkalmazás-védelmi szabályzat által védett Outlook Mobile. Az összes felhasználó már be van jelentkezni az Azure AD hitelesítő adataival, és rendelkezik a hozzájuk rendelt licenccel prémium szintű Azure AD P1 vagy P2 és Microsoft Intune.
+
+A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy egy jóváhagyott ügyfélalkalmazás használatát meg lehessen követelni a mobileszközök és az Exchange ActiveSync-ügyfelek számára.
+
+**1. lépés: az Android-és iOS-alapú modern hitelesítési ügyfelekre vonatkozó szabályzat, amely a jóváhagyott ügyfélalkalmazás és az alkalmazás-védelmi szabályzat használatát igényli az Exchange Online-hoz és a SharePoint Online-hoz való hozzáféréshez.**
+
+1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés**lehetőséget.
+1. Válassza az **új szabályzat**lehetőséget.
+1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
+1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
+   1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
+   1. Válassza a **Done** (Kész) lehetőséget.
+1. A **felhőalapú alkalmazások vagy műveletek** > a **következők**: válassza az **Office 365 Exchange Online** és az **Office 365 SharePoint Online**lehetőséget.
+1. A **feltételek**területen válassza az **eszközök platformok**elemet.
+   1. Állítsa **az** **Igen**értékre.
+   1. **Android** és **iOS**is.
+1. A **feltételek**területen válassza az **ügyfélalkalmazások (előzetes verzió)** lehetőséget.
+   1. Állítsa **az** **Igen**értékre.
+   1. Válassza a **Mobile apps és az asztali ügyfelek** és a **modern hitelesítési ügyfelek**lehetőséget.
+1. A **hozzáférés-vezérlés** > **megadása**területen válassza ki a következő beállításokat:
    - **Jóváhagyott ügyfélalkalmazás megkövetelése**
    - **Alkalmazás-védelmi házirend megkövetelése (előzetes verzió)**
-   - **A kiválasztott vezérlők egyikének megkövetelése**
- 
-      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/12.png)
+   - **Az összes kijelölt vezérlő megkövetelése**
+1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
+1. Válassza a **Létrehozás** lehetőséget a szabályzat létrehozásához és engedélyezéséhez.
 
-**2. lépés: az Intune app Protection-szabályzat konfigurálása iOS-és Android-ügyfélalkalmazások számára**
+**2. lépés: a jóváhagyott ügyfélalkalmazás használatát igénylő Exchange ActiveSync-ügyfelek házirendje.**
 
-![Feltételes hozzáférés](./media/app-protection-based-conditional-access/09.png)
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés**lehetőséget.
+1. Válassza az **új szabályzat**lehetőséget.
+1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
+1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
+   1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
+   1. Válassza a **Done** (Kész) lehetőséget.
+1. A **felhőalapú alkalmazások vagy műveletek** > a **következők**: válassza az **Office 365 Exchange Online**lehetőséget.
+1. **Feltételek**:
+   1. **Ügyfélalkalmazások (előzetes verzió)** :
+      1. Állítsa **az** **Igen**értékre.
+      1. Válassza a **Mobile apps és az asztali ügyfelek** és az **Exchange ActiveSync-ügyfelek**lehetőséget.
+1. A **hozzáférés-vezérlés** > a **támogatás**területen válassza a **hozzáférés biztosítása**, **jóváhagyott ügyfélalkalmazás megkövetelése**, majd a **kiválasztás**lehetőséget.
+1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
+1. Válassza a **Létrehozás** lehetőséget a szabályzat létrehozásához és engedélyezéséhez.
 
-További információ: [alkalmazások és adatok védelme Microsoft Intuneokkal](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
+**3. lépés: az Intune app Protection-szabályzat konfigurálása iOS-és Android-ügyfélalkalmazások számára.**
+
+Tekintse át az alkalmazás-védelmi szabályzatok létrehozását [és hozzárendelését](/intune/apps/app-protection-policies)ismertető cikket, amely az Android és az iOS rendszerhez készült alkalmazás-védelmi szabályzatok létrehozásának lépéseit ismerteti. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha tudni szeretné, hogyan konfigurálhat egy feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című témakört.
-- Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md).
+[Mi a feltételes hozzáférés?](overview.md)
+
+[Feltételes hozzáférési összetevők](concept-conditional-access-policies.md)
+
+[Általános feltételes hozzáférési szabályzatok](concept-conditional-access-policy-common.md)
+

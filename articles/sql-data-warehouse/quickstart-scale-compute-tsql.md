@@ -1,6 +1,6 @@
 ---
 title: Számítások méretezése az Azure szinapszis Analyticsben – T-SQL
-description: A számítások méretezése az Azure szinapszis Analyticsben T-SQL és SQL Server Management Studio (SSMS) használatával. Felskálázással a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők.
+description: A számítások méretezése az Azure szinapszis Analyticsben T-SQL és SQL Server Management Studio (SSMS) használatával. Horizontális felskálázással a számítások teljesítménye növelhető, szűkítéssel a költségek csökkenthetők.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg

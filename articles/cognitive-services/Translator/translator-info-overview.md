@@ -11,18 +11,18 @@ ms.topic: overview
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 8f27e8e8693fc5d1d3e432b78f2877d71274f146
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f6b55163440b25bf69c76e9b1217c439b0884d5d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978475"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331042"
 ---
 # <a name="what-is-the-translator-text-api"></a>Mi a Translator Text API?
 
 A Translator Text API könnyedén integrálható az alkalmazásaiba, webhelyeire, eszközeibe és megoldásaiba. Lehetővé teszi többnyelvű felhasználói felületek hozzáadását [több mint 60 nyelven](languages.md), és bármely hardverplatformon és bármely operációs rendszerrel használható szöveg-szöveg vektorú nyelvi fordítások végrehajtásához.
 
-A Translator Text API a felhőalapú gépi tanulási és mesterséges intelligenciára épülő algoritmusokat biztosító, a fejlesztési projektekben készen használható Azure [Cognitive Services API](https://docs.microsoft.com/azure/#pivot=products&panel=ai)-gyűjtemény részét képezi.
+A Translator Text API a felhőalapú gépi tanulási és mesterséges intelligenciára épülő algoritmusokat biztosító, a fejlesztési projektekben készen használható Azure [Cognitive Services API](https://docs.microsoft.com/azure/?pivot=products&panel=ai)-gyűjtemény részét képezi.
 
 ## <a name="about-microsoft-translator"></a>A Microsoft Translator ismertetése
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: dapine
-ms.openlocfilehash: 4785356963e7df1d7b175ac21ceebc921f851ffb
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ab0d2b8d95b4cb5996dd93fa0bb24085c9de26d5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913650"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331536"
 ---
 # <a name="improve-synthesis-with-audio-content-creation"></a>Hanganyag-létrehozással javíthatja a szintézist
 
@@ -43,7 +43,7 @@ Ez az ábra a testreszabott beszéd-szöveg kimenetek finomhangolásához és ex
 
 Kövesse az alábbi lépéseket egy beszédfelismerési erőforrás létrehozásához és a Speech studióhoz való kapcsolódáshoz.
 
-1. Kövesse ezeket az utasításokat [egy Azure-fiók regisztrálásához](get-started.md#new-resource) és [egy beszédfelismerési erőforrás létrehozásához](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Győződjön meg arról, hogy a díjszabási szintje **S0**értékre van állítva. Ha az egyik neurális hangját használja, győződjön meg arról, hogy az erőforrást egy [támogatott régióban](regions.md#standard-and-neural-voices)hozza létre.
+1. Kövesse ezeket az utasításokat [egy Azure-fiók regisztrálásához](get-started.md#new-resource) és [egy beszédfelismerési erőforrás létrehozásához](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-the-resource). Győződjön meg arról, hogy a díjszabási szintje **S0**értékre van állítva. Ha az egyik neurális hangját használja, győződjön meg arról, hogy az erőforrást egy [támogatott régióban](regions.md#standard-and-neural-voices)hozza létre.
 2. Jelentkezzen be a [hangtartalom létrehozásához](https://aka.ms/audiocontentcreation).
 3. Válasszon ki egy meglévő projektet, vagy kattintson az **új létrehozása**lehetőségre.
 4. Az előfizetést bármikor módosíthatja a **Beállítások** lehetőséggel, amely a felső NAV-ban található.

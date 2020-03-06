@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 10/21/2019
+ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: ecaf9e007d93b3a99a7609ebf36307f3a6dad15c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2b689588bcbca640dd55b25c52c462ad1a363da5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199954"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296337"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Biztonsági mentés és visszaállítás az Azure szinapszis SQL-készletben
 
@@ -58,7 +58,7 @@ A következő felsorolás a visszaállítási pontok megőrzési időszakait ism
 2. A pillanatképek nem lesznek elvégezve, amikor egy SQL-készlet szüneteltetve van.
 3. A visszaállítási pontok korát a visszaállítási ponttól számított abszolút naptári napok határozzák meg, beleértve az SQL-készlet szüneteltetését.
 4. Egy SQL-készlet bármikor garantálható, hogy legfeljebb 42 felhasználó által definiált visszaállítási pontot és 42 Automatikus visszaállítási pontot tud tárolni, amennyiben ezek a visszaállítási pontok nem értek el a 7 napos adatmegőrzési időszakot.
-5. Ha pillanatképet készít, az SQL-készletet a rendszer 7 napnál hosszabb ideig szünetelteti, majd folytatja, a visszaállítási pont mindaddig fennmarad, amíg 42 teljes visszaállítási pont (beleértve a felhasználó által definiált és az automatikus frissítést is)
+5. Ha pillanatképet készít, az SQL-készletet a rendszer 7 napnál hosszabb ideig szünetelteti, majd folytatja, a visszaállítási pont mindaddig megmarad, amíg 42 teljes visszaállítási pont (beleértve a felhasználó által definiált és az automatikus szolgáltatást is)
 
 ### <a name="snapshot-retention-when-a-sql-pool-is-dropped"></a>Pillanatkép-megőrzés egy SQL-készlet eldobásakor
 
@@ -105,6 +105,6 @@ Az SQL-készletet bármely olyan régióra [visszaállíthatja](https://docs.mic
 > [!NOTE]
 > A Geo-redundáns visszaállítás végrehajtásához nem kell kijelölnie ezt a funkciót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a katasztrófák tervezéséről: az [üzletmenet folytonosságának áttekintése](../sql-database/sql-database-business-continuity.md)

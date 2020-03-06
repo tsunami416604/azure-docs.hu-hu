@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 382c588ca005f95f4ae38e7506c0e3e8d842bd2c
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909040"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298649"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>A felhő-kiépítés Azure AD Connectának előfeltételei
 Ez a cikk útmutatást nyújt a Azure Active Directory (Azure AD) és a felhőalapú kiépítés a személyazonossági megoldáshoz való kiválasztásához és használatához.
@@ -26,7 +26,7 @@ Ez a cikk útmutatást nyújt a Azure Active Directory (Azure AD) és a felhőal
 ## <a name="cloud-provisioning-agent-requirements"></a>A felhőalapú kiépítési ügynökre vonatkozó követelmények
 Azure AD Connect felhőalapú kiépítés használatához a következőkre lesz szüksége:
     
-- Globális rendszergazdai fiók az Azure AD-bérlőhöz.
+- Globális rendszergazdai fiók az Azure AD-bérlőhöz, amely nem vendég felhasználó.
 - Helyszíni kiszolgáló a kiépítési ügynökhöz Windows 2012 R2 vagy újabb rendszerrel.
 - Helyszíni tűzfal-konfigurációk.
 
@@ -39,6 +39,10 @@ A dokumentum további részében részletes útmutatót talál az előfeltétele
 
 1. Hozzon létre egy csak felhőalapú globális rendszergazdai fiókot az Azure AD-bérlőn. Így kezelheti a bérlő konfigurációját, ha a helyszíni szolgáltatások meghibásodnak vagy elérhetetlenné válnak. Ismerje meg, hogyan [adhat hozzá csak felhőalapú globális rendszergazdai fiókot](../active-directory-users-create-azure-portal.md). Ennek a lépésnek a befejezése kritikus fontosságú annak biztosítása érdekében, hogy ne legyen kizárva a bérlőből.
 1. Adjon hozzá egy vagy több [Egyéni tartománynevet](../active-directory-domains-add-azure-portal.md) az Azure ad-bérlőhöz. A felhasználók a következő tartománynevek egyikével jelentkezhetnek be.
+
+### <a name="in-your-directory-in-active-directory"></a>A címtárában Active Directory
+
+A [IdFix eszköz](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) futtatásával készítse elő a címtár-attribútumok szinkronizálását.
 
 ### <a name="in-your-on-premises-environment"></a>Helyszíni környezetben
 

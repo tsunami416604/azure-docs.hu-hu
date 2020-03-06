@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 990b4afa6bdb63e626be0272553aea408afb864f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: c0c6a8637223727a9b0c88245d939605f6a8530e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368673"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302000"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Áttelepítés helyszíni HDFS áruházból az Azure Storage-ba Azure Data Box
 
@@ -186,7 +186,7 @@ Már rendelkezik az Azure Storage-fiókjában tárolt adataival. Mostantól hozz
 
 Egyszerű szolgáltatásnév létrehozásához tekintse meg az [Azure ad-alkalmazás és az erőforrások elérését elérő szolgáltatás használata a portál használatával](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)című témakört.
 
-* Ha végrehajtja az [alkalmazás szerepkörhöz rendelése](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszának lépéseit, akkor ügyeljen arra, hogy hozzárendelje a **tárolási blob adatközreműködői** szerepkört az egyszerű szolgáltatáshoz.
+* Ha végrehajtja az [alkalmazás szerepkörhöz rendelése](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) szakaszának lépéseit, akkor ügyeljen arra, hogy hozzárendelje a **tárolási blob adatközreműködői** szerepkört az egyszerű szolgáltatáshoz.
 
 * A cikk beléptetési [értékének beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszának lépéseinek végrehajtásakor mentse az alkalmazás azonosítóját és az ügyfél titkos kulcsának értékét egy szövegfájlba. Ezekre hamarosan szüksége lesz.
 

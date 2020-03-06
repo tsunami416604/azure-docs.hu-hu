@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8faf223a4871f6f109f9d133716989b1bcfdee08
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 04dfa6a028cf7c44bf99c665b396d51d8a0f3cef
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871176"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303188"
 ---
 # <a name="floor-azure-cosmos-db"></a>EMELET (Azure Cosmos DB)
- A legnagyobb olyan egész számot adja vissza, amely kisebb vagy egyenlő, mint a megadott numerikus kifejezés.  
+ Visszaadja a legnagyobb egész szám kisebb vagy egyenlő a megadott numerikus kifejezés.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,11 +26,11 @@ FLOOR (<numeric_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *numeric_expr*  
-   Egy numerikus kifejezés.  
+   A numerikus kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy numerikus kifejezést ad vissza.  
+  A numerikus kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
@@ -40,11 +40,15 @@ FLOOR (<numeric_expr>)
 SELECT FLOOR(123.45) AS fl1, FLOOR(-123.45) AS fl2, FLOOR(0.0) AS fl3  
 ```  
   
- Itt látható az eredményhalmaz.  
+ Íme az eredményhalmaz.  
   
 ```json
 [{fl1: 123, fl2: -124, fl3: 0}]  
-```  
+```
+
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Következő lépések
 

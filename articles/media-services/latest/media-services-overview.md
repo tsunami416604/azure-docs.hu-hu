@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 02/03/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: df1602fe82b4a625dd5f01de2bd7236816fbb0ac
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 873db6315841b585aa0ba6bcb843bfe05567836f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164661"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299261"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3 – áttekintés
 
@@ -51,8 +51,8 @@ Media Services a felhőben különböző adathordozó-munkafolyamatokat hozhat l
 * Rögzített video- vagy hangtartalmak elemzése. A vásárlói elégedettség növelése érdekében például a vállalatok szöveggé alakíthatják a beszédet, és keresési indexeket és irányítópultokat hozhatnak létre. Ezután kinyerhetik a gyakori panaszokkal kapcsolatos adatokat, a panaszok forrását és más kapcsolódó adatokat.
 * Előfizetéses videoszolgáltatás létrehozása, és DRM-védelemmel ellátott tartalmak streamelése, ha egy ügyfélnek (például egy filmstúdiónak) korlátoznia kell a szerzői joggal védett munkákhoz való hozzáférést és azok használatát.
 * Offline tartalmak biztosítása repülőn, vonaton és autóban való lejátszáshoz. Előfordulhat, hogy egy ügyfélnek le kell töltenie a tartalmat a telefonjára vagy táblagépére a lejátszáshoz, amikor várhatóan nem fognak hálózathoz csatlakozni.
-* Oktatási e-learning platformot hozhat létre a Azure Media Services és az [Azure Cognitive Services API-k](https://docs.microsoft.com/azure/#pivot=products&panel=ai) a beszéd-szöveges feliratozáshoz, a több nyelvre való fordításhoz és így tovább.
-* A Azure Media Services és az [Azure Cognitive Services API-k](https://docs.microsoft.com/azure/#pivot=products&panel=ai) együttes használatával feliratokat és feliratokat adhat hozzá a videókhoz, hogy a szélesebb közönség számára is elérhető legyen (például a fogyatékkal élők vagy más nyelveken elolvasni kívánt személyek).
+* Oktatási e-learning platformot hozhat létre a Azure Media Services és az [Azure Cognitive Services API-k](https://docs.microsoft.com/azure/?pivot=products&panel=ai) a beszéd-szöveges feliratozáshoz, a több nyelvre való fordításhoz és így tovább.
+* A Azure Media Services és az [Azure Cognitive Services API-k](https://docs.microsoft.com/azure/?pivot=products&panel=ai) együttes használatával feliratokat és feliratokat adhat hozzá a videókhoz, hogy a szélesebb közönség számára is elérhető legyen (például a fogyatékkal élők vagy más nyelveken elolvasni kívánt személyek).
 * Lehetővé teszi, hogy a Azure CDN nagyobb skálázást érjenek el a pillanatnyi magas terhelések jobb kezelése érdekében (például egy termék indítási eseményének megkezdése).
 
 ## <a name="how-can-i-get-started-with-v3"></a>Hogyan kezdhetem meg a v3 használatát? 

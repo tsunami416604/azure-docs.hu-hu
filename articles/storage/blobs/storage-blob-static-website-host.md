@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 69acb9152d1dc30d986276939e29e8c183095b18
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539603"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330395"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -93,9 +93,7 @@ Ezután hozzon létre egy "Hello World" weboldal a Visual Studio Code használat
 
 A Visual Studio Code most a fájlok feltöltése a webes végpontra, és a sikeres állapotsor megjelenítése. Indítsa el a webhelyet, megtekintheti azokat az Azure-ban.
 
-![Statikus webhely-üzembehelyezési megtekintése az Azure-ban](media/storage-blob-static-website-host/view-static-website-endpoint.png)
-
-Az oktatóanyag teljesítése sikeres és a egy statikus webhely telepítése az Azure-bA.
+Sikeresen elvégezte az oktatóanyagot, és üzembe helyezett egy statikus webhelyet az Azure-ban.
 
 ## <a name="next-steps"></a>Következő lépések
 

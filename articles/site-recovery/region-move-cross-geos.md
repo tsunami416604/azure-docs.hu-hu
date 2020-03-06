@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: a48edda31f19ef4ce1ba23664eef1f51ba9cf8d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: acaf16e7469b3ea4e5e391db91e37dc76be3b261
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970495"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298530"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure-beli virtuális gépek áthelyezése Azure Government és a nyilvános régiók között 
 
@@ -20,7 +20,7 @@ Előfordulhat, hogy át szeretné helyezni a IaaS virtuális gépeket a Azure Go
 
 Amellett, hogy a [Azure site Recovery](site-recovery-overview.md) szolgáltatás használatával felügyelje és koordinálja a helyszíni gépek és az Azure virtuális gépek vész-helyreállítását az üzletmenet folytonossága és a vész-helyreállítás (BCDR) érdekében, a site Recovery használatával is kezelheti az Azure-beli virtuális gépek másodlagos régióba való áthelyezését.       
 
-Ez az oktatóanyag bemutatja, hogyan helyezheti át az Azure-beli virtuális gépeket a Azure Government és a nyilvános régiók között Azure Site Recovery használatával. Ugyanezt kiterjesztheti olyan virtuális gépek áthelyezésére, amelyek nem ugyanazon a földrajzi fürtön belül vannak. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan helyezheti át az Azure-beli virtuális gépeket a Azure Government és a nyilvános régiók között Azure Site Recovery használatával. Ugyanezt kiterjesztheti olyan virtuális gépek áthelyezésére, amelyek nem ugyanazon a földrajzi fürtön belül vannak. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Előfeltételek ellenőrzése
@@ -63,7 +63,7 @@ Győződjön meg arról, hogy az Azure-fiókja rendelkezik a virtuális gépek A
 - A hálózatnak ugyanabban a régióban kell lennie, mint a Recovery Services-tárolónak
 
 
-### <a name="set-up-an-azure-storage-account"></a>Azure-tárfiók létrehozása
+### <a name="set-up-an-azure-storage-account"></a>Azure-tárfiók beállítása
 
 Hozzon létre egy [Azure Storage-fiókot](../storage/common/storage-account-create.md).
 
@@ -100,7 +100,7 @@ A mobilitási szolgáltatást minden replikálni kívánt kiszolgálón telepít
     - [Terheléselosztók](https://docs.microsoft.com/azure/load-balancer)
     - [Nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md)
     
-    Bármely más hálózati összetevő esetében tekintse meg a hálózatkezelés [dokumentációját.](https://docs.microsoft.com/azure/#pivot=products&panel=network) 
+    Bármely más hálózati összetevő esetében tekintse meg a hálózatkezelés [dokumentációját](https://docs.microsoft.com/azure/?pivot=products&panel=network).
 
 4. Ha tesztelni szeretné a konfigurációt, manuálisan [hozzon létre nem éles hálózatot](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) a célként megadott régióban. Ez minimális beavatkozást eredményez az éles környezetben, és ajánlott.
 
@@ -187,7 +187,7 @@ A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval. A
 1. Kattintson az **Alkalmazás replikálása** > **Forrás** elemre.
 2. A **Forrás** mezőben válassza ki a konfigurációs kiszolgálót.
 3. A **gép típusa**területen válassza a **fizikai gépek**lehetőséget.
-4. Válassza ki a Process Server (a konfigurációs kiszolgáló) elemet. Ezután kattintson az **OK** gombra.
+4. Válassza ki a Process Server (a konfigurációs kiszolgáló) elemet. Végül kattintson az **OK** gombra.
 5. A **cél**mezőben válassza ki azt az előfizetést és erőforráscsoportot, amelyben létre szeretné hozni az Azure-beli virtuális gépeket a feladatátvételt követően. Válassza ki az Azure-ban használni kívánt üzembe helyezési modellt (klasszikus vagy erőforrás-kezelés).
 6. Válassza ki az adatok replikálásához használni kívánt Azure-tárfiókot. 
 7. Válassza ki azt az Azure-hálózatot, valamint alhálózatot, amelyhez a feladatátvételt követően felálló Azure virtuális gépek csatlakozni fognak.

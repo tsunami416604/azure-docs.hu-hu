@@ -1,6 +1,6 @@
 ---
-title: Identitás identitásszinkronizálás és ismétlődő attribútumok rugalmassága |} A Microsoft Docs
-description: Új viselkedését, hogy hogyan kezeli az egyszerű felhasználónév vagy ProxyAddress ütközések objektumokat használ az Azure AD Connect címtár-szinkronizálás során.
+title: identitásszinkronizálás és duplikált attribútum rugalmassága | Microsoft Docs
+description: Az egyszerű felhasználónévvel vagy ProxyAddress kapcsolatos ütközések kezelésének új viselkedése a címtár-szinkronizálás során Azure AD Connect használatával.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,85 +16,88 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5585f0cd04dca4145f0322db9d625e35372b24b5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348813"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298343"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitásszinkronizálás és ismétlődő attribútumok rugalmassága
-Ismétlődő attribútumok rugalmassága lehetővé teszi az Azure Active Directoryban, amely kiküszöböli a fennakadások nélkül használható által okozott az **UserPrincipalName** és **ProxyAddress** ütközik a Microsoft egyik futtatásakor szinkronizálás eszközökkel.
+A duplikált attribútum-rugalmasság a Azure Active Directory egyik funkciója, amely megszünteti a **userPrincipalName** és az SMTP- **ProxyAddress** ütközések okozta súrlódást a Microsoft szinkronizálási eszközeinek valamelyikének futtatásakor.
 
-Ez a két attribútum általában egyedinek kell lennie minden szükséges **felhasználói**, **csoport**, vagy **forduljon** objektumok egy adott Azure Active Directory-bérlőben.
+A két attribútumnak általában egyedinek kell lennie az adott Azure Active Directory bérlő összes **felhasználó**-, **csoport**-vagy **kapcsolattartó** -objektumában.
 
 > [!NOTE]
-> Csak a felhasználók UPN-EK rendelkezhet.
+> Csak a felhasználók rendelkezhetnek UPN-vel.
 > 
 > 
 
-Ez a funkció lehetővé teszi, hogy új viselkedés szerepel a szinkronizálási folyamat a felhőben tárolt részéhez, ezért a független, és bármely Microsoft szinkronizálási termékhez, többek között az Azure AD Connect, a DirSync és a MIM + összekötő kapcsolódó ügyfél. Az általános kifejezés "a Szinkronizáló ügyfél", amelyek ezeket a termékeket bármelyike szolgál ebben a dokumentumban.
+A szolgáltatás által biztosított új viselkedés a szinkronizálási folyamat Felhőbeli részében van, így az ügyfél-és a Microsoft szinkronizációs termékhez kapcsolódóan, beleértve a Azure AD Connect, az rSync és a webalkalmazás-összekötőt is. Ebben a dokumentumban a "Sync Client" általános kifejezést használjuk, hogy az ilyen termékek bármelyikét képviseljék.
 
-## <a name="current-behavior"></a>Jelenlegi működése
-Ha üzembe helyezése egy új objektumot, amely megsérti az egyedi-e megkötés UPN vagy ProxyAddress értékkel tett kísérlet, Azure Active Directory letiltja a adott objektum létrehozását. Hasonlóképpen ha frissül egy objektum nem egyedi UPN vagy ProxyAddress, a frissítés sikertelen lesz. A regisztrációs kísérlet vagy a frissítés a rendszer megpróbálja újból végrehajtani a Szinkronizáló ügyfél minden kiviteli ciklust követően, és a hiba továbbra is fennáll, addig, amíg az ütközés fel lett oldva. Hiba történt a jelentés e-mailt akkor jön létre minden kísérlet után, és a Szinkronizáló ügyfél által naplózott hiba.
+## <a name="current-behavior"></a>Jelenlegi viselkedés
+Ha egy olyan UPN-vagy ProxyAddress-értékkel rendelkező új objektum kiépítésére tett kísérlet, amely nem sérti ezt az egyediségi korlátozást, Azure Active Directory blokkolja az objektum létrehozását. Hasonlóképpen, ha egy objektumot nem egyedi egyszerű felhasználónévvel vagy ProxyAddress frissít, a frissítés sikertelen lesz. A szinkronizációs ügyfél a kiépítési kísérletet vagy a frissítést újra megpróbálja végrehajtani az egyes exportálási ciklusok esetén, és az ütközés feloldása után továbbra is meghiúsul. A rendszer hibajelentési e-mailt generál minden egyes kísérlet után, és a szinkronizálási ügyfél naplózza a hibát.
 
-## <a name="behavior-with-duplicate-attribute-resiliency"></a>Viselkedés az ismétlődő attribútumok rugalmassága
-Helyett a teljes, üzembe helyezése és a egy duplikált attribútummal rendelkező objektum frissítése sikertelen, az Azure Active Directory "karanténba" az ismétlődő attribútuma, amely sértene az egyediségre vonatkozó feltételnek. Ha ez az attribútum nem szükséges a kiépítést, UserPrincipalName, például a szolgáltatás egy helyőrző értéket rendeli hozzá. A formátum a következő ideiglenes értékek  
-"***\<OriginalPrefix > +\<4DigitNumber >\@\<InitialTenantDomain >. onmicrosoft.com***".  
-Ha az attribútum nem szükséges, például egy **ProxyAddress**, Azure Active Directory egyszerűen karanténba helyezheti a ütközés attribútumot, és folytatja az objektum létrehozása vagy frissítése.
+## <a name="behavior-with-duplicate-attribute-resiliency"></a>Ismétlődő attribútum-rugalmasságot biztosító viselkedés
+A duplikált attribútummal rendelkező objektumok kiépítése és frissítése helyett a "karanténba helyezi" a duplikált attribútumot Azure Active Directory, amely nem sérti az egyediségi megkötést. Ha ez az attribútum szükséges a kiépítéshez, például a UserPrincipalName, a szolgáltatás helyőrző értéket rendel hozzá. Az ideiglenes értékek formátuma  
+_**\<OriginalPrefix > +\<4DigitNumber >\@\<InitialTenantDomain >. onmicrosoft. com**_ .
 
-Esetén karanténba az attribútum, az azonos hiba a jelentés e-mailben a régi viselkedés használt megkapja az ütközést vonatkozó adatokat. Azonban ezt az információt csak egyszer jelenik meg a hibajelentés, ha a karanténba helyezett történik, nem továbbra is be kell jelentkeznie a jövőbeli e-mailek. Ezenkívül az objektum az exportálás sikeres volt, mert a Szinkronizáló ügyfél nem naplózza a hibát, és nem próbálja meg újra a Létrehozás / frissítés ezt követő szinkronizálási ciklust követően.
+Az attribútum rugalmassági folyamata csak UPN-és SMTP- **ProxyAddress** -értékeket kezel.
 
-Ez a viselkedés támogatásához új attribútum a felhasználó, csoport és az elérhetőségi objektumosztályok bővült:  
+Ha az attribútum nem szükséges, például egy **ProxyAddress**, Azure Active Directory egyszerűen karanténba helyezi az ütközési attribútumot, és folytatja az objektum létrehozását vagy frissítését.
+
+Az attribútum karanténba helyezése után a rendszer a régi viselkedésben használt, a hibajelentésben szereplő e-mail-címre küldi el az ütközésre vonatkozó információkat. Ez az információ azonban csak egyszer jelenik meg a hibajelentésben, amikor a Karanténba kerül, nem folytatja a jövőbeli e-mailek beléptetését. Továbbá, mivel az objektum exportálása sikeres volt, a szinkronizálási ügyfél nem naplóz egy hibát, és nem próbálja meg újból végrehajtani a létrehozás/frissítés műveletet a következő szinkronizálási ciklusok után.
+
+Ennek a viselkedésnek a támogatásához új attribútum lett hozzáadva a felhasználó, a csoport és a kapcsolattartási objektum osztályaihoz:  
 **DirSyncProvisioningErrors**
 
-Ez az egy többértékű attribútum, amely az ütköző attribútumokat, amelyek sértene az egyediségre vonatkozó feltételnek, hozzá kell adni általában tárolására szolgál. A háttérben futó időzítő feladat engedélyezve van az Azure Active Directoryban, és tekintse meg az ismétlődő attribútum ütközéseket, amelyek meg lett oldva, és automatikusan eltávolítja a szóban forgó attribútumokat a karanténból óránként fut le.
+Ez egy többértékű attribútum, amely az ütköző attribútumok tárolására szolgál, amelyek megsértik az egyediségi megkötést, és általában hozzá kell adni őket. A háttérben futó időzítő feladat engedélyezve van Azure Active Directoryban, amely óránként fut, hogy megkeresse a duplikált attribútumokat, amelyeket megoldottak, és automatikusan eltávolítja a kérdéses attribútumokat a karanténba.
 
-### <a name="enabling-duplicate-attribute-resiliency"></a>Ismétlődő attribútumok rugalmassága engedélyezése
-Ismétlődő attribútumok rugalmassága az alapértelmezett viselkedést lesz az összes Azure Active Directory-bérlők között. Az összes bérlőre vonatkozóan, amely az először 2016. augusztus 22-én vagy később szinkronizálás engedélyezve alapértelmezés szerint elérhető lesz. Bérlők számára, hogy a dátum előtt szinkronizálás engedélyezve lesz a szolgáltatás engedélyezve van, és kötegekben. 2016 szeptemberétől a bevezetés megkezdődik, és minden bérlő műszaki értesítési kapcsolattartó, az adott dátum, amikor a szolgáltatás engedélyezve van az e-mailben értesítést küld.
+### <a name="enabling-duplicate-attribute-resiliency"></a>Ismétlődő attribútum rugalmasságának engedélyezése
+A duplikált attribútum rugalmassága az összes Azure Active Directory-bérlő új alapértelmezett viselkedése lesz. Alapértelmezés szerint minden olyan bérlőnél, amely az első alkalommal engedélyezte a szinkronizálást, a 2016-as és újabb verziókban. A szinkronizálást engedélyező bérlők a kötegekben engedélyezve lesznek a szolgáltatással. Ez a bevezetés a 2016 szeptemberében kezdődik, és e-mailben értesítést küldünk minden bérlő technikai értesítési feladatához a szolgáltatás engedélyezésének adott napjával.
 
 > [!NOTE]
-> Ha ismétlődő attribútumok rugalmassága be van kapcsolva, nem lehet letiltani.
+> Ha a duplikált attribútum rugalmassága be van kapcsolva, nem tiltható le.
 
-Ellenőrizze, hogy ha a szolgáltatás engedélyezve van-e a bérlő számára, megteheti az Azure Active Directory PowerShell-modul legújabb verziója letöltésével és futtatásával:
+Annak ellenőrzéséhez, hogy a szolgáltatás engedélyezve van-e a bérlő számára, töltse le a Azure Active Directory PowerShell-modul legújabb verzióját, és futtassa a következőt:
 
 `Get-MsolDirSyncFeatures -Feature DuplicateUPNResiliency`
 
 `Get-MsolDirSyncFeatures -Feature DuplicateProxyAddressResiliency`
 
 > [!NOTE]
-> Set-MsolDirSyncFeature parancsmag segítségével proaktív módon engedélyezze a ismétlődő attribútumok rugalmassága szolgáltatást, mielőtt van kapcsolva a bérlő már nem. Az, hogy a szolgáltatás tesztelése, szüksége lesz egy új Azure Active Directory-bérlő létrehozása.
+> Már nem használhatja a set-MsolDirSyncFeature parancsmagot úgy, hogy proaktívan engedélyezze a duplikált attribútum rugalmassági funkcióját, mielőtt bekapcsolta a bérlőhöz. A szolgáltatás teszteléséhez létre kell hoznia egy új Azure Active Directory bérlőt.
 
-## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>A DirSyncProvisioningErrors objektumok azonosítása
-Jelenleg két módszer van a hibák miatt duplikált tulajdonság ütközik, Azure Active Directory PowerShell-lel rendelkező objektumok azonosítására és a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com). Tervezzük bővíteni a kiegészítő portál alapján a jelentéskészítés a jövőben.
+## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>Objektumok azonosítása a DirSyncProvisioningErrors
+A rendszer jelenleg két módszerrel azonosítja azokat az objektumokat, amelyek az ismétlődő tulajdonságok ütközése miatt a hibákkal rendelkeznek, Azure Active Directory a PowerShellt és a [Microsoft 365 felügyeleti központot](https://admin.microsoft.com). A jövőben további portálon alapuló jelentéskészítésre is kiterjeszthetők.
 
 ### <a name="azure-active-directory-powershell"></a>Azure Active Directory PowerShell
-A PowerShell-parancsmagok ebben a témakörben a következő érték igaz:
+Ebben a témakörben a PowerShell-parancsmagok esetében a következők teljesülnek:
 
-* A következő parancsmagjainak mindegyike kis-és nagybetűket.
-* A **– ErrorCategory PropertyConflict** mindig kell foglalni. Jelenleg nincs más típusú **ErrorCategory**, de ez a jövőben is kiterjeszthető.
+* A következő parancsmagok mindegyike megkülönbözteti a kis-és nagybetűket.
+* A **– ErrorCategory PropertyConflict** mindig szerepelnie kell. Jelenleg nincsenek más típusú **ErrorCategory**, de ez a későbbiekben bővíthető.
 
-Először első lépések: futtatása **Connect-MsolService** és a egy Bérlői rendszergazda hitelesítő adatok megadása.
+Első lépésként futtassa a **MsolService** , és adja meg a bérlői rendszergazda hitelesítő adatait.
 
-A következő parancsmagokat és a kezelők ezután használja a hibák megtekintéséhez a különböző módon:
+Ezután használja a következő parancsmagokat és operátorokat a hibák különböző módokon történő megtekintéséhez:
 
 1. [Az összes megjelenítése](#see-all)
-2. [Tulajdonság típus szerint](#by-property-type)
-3. [Ütköző érték szerint](#by-conflicting-value)
-4. [Egy karakterlánc-Search használatával](#using-a-string-search)
+2. [Tulajdonság típusa szerint](#by-property-type)
+3. [Ütköző értékkel](#by-conflicting-value)
+4. [Karakterlánc-keresés használata](#using-a-string-search)
 5. Rendezve
-6. [Az összes vagy egy korlátozott mennyiség](#in-a-limited-quantity-or-all)
+6. [Korlátozott mennyiségű vagy az összes](#in-a-limited-quantity-or-all)
 
-#### <a name="see-all"></a>Az összes megtekintése
-A csatlakozás után attribútum kiépítés általános listájának megtekintéséhez a bérlőben lévő hibák futtassa:
+#### <a name="see-all"></a>Az összes megjelenítése
+Csatlakozás után az attribútum-kiépítési hibák általános listáját tekintheti meg a bérlő futtatásában:
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict`
 
-Egy eredménye a következőhöz hasonló:  
+Ez a következőhöz hasonló eredményt hoz létre:  
  ![Get-MsolDirSyncProvisioningError](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1.png "Get-MsolDirSyncProvisioningError")  
 
-#### <a name="by-property-type"></a>Tulajdonság típus szerint
-Hibába ütközik, a tulajdonság típusa szerint, adja hozzá a **- PropertyName** jelzőt a a **UserPrincipalName** vagy **ProxyAddresses** argumentum:
+#### <a name="by-property-type"></a>Tulajdonság típusa szerint
+Ha meg szeretné tekinteni a hibákat a tulajdonság típusa szerint, adja hozzá a **-PropertyName** jelzőt a **userPrincipalName** vagy a **ProxyAddresses** argumentummal:
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName UserPrincipalName`
 
@@ -102,77 +105,77 @@ Vagy
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName ProxyAddresses`
 
-#### <a name="by-conflicting-value"></a>Ütköző érték szerint
-Adjon hozzá egy adott tulajdonságra vonatkozó hibaüzenetek jelennek meg a **- tulajdonságérték** jelző ( **- PropertyName** kell használni, valamint ez a jelző hozzáadásakor):
+#### <a name="by-conflicting-value"></a>Ütköző értékkel
+Egy adott tulajdonsággal kapcsolatos hibák megtekintéséhez adja hozzá a **-tulajdonságérték** jelzőt ( **-PropertyName** kell használni a jelző hozzáadásakor is):
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyValue User@domain.com -PropertyName UserPrincipalName`
 
-#### <a name="using-a-string-search"></a>Egy karakterlánc-search használatával
-A széles körű karakterlánc keresés használata ehhez a **– keresési karakterlánc** jelzőt. Ez használható egymástól függetlenül az összes fenti jelzők, kivéve a **- ErrorCategory PropertyConflict**, amely mindig szükség:
+#### <a name="using-a-string-search"></a>Karakterlánc-keresés használata
+A széles sztringek kereséséhez használja a **-KeresendoString** jelzőt. Ez a fenti jelzők függetlenül is használható, a **-ErrorCategory PropertyConflict**kivételével, ami mindig szükséges:
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
-#### <a name="in-a-limited-quantity-or-all"></a>Az összes vagy egy korlátozott mennyiség
-1. **MaxResults \<Int >** korlátozza az értékeket egy adott számú lekérdezés segítségével.
-2. **Az összes** annak érdekében, hogy minden eredmény abban az esetben, a hibák nagy számú létezik blobnevet is használható.
+#### <a name="in-a-limited-quantity-or-all"></a>Korlátozott mennyiségű vagy az összes
+1. A **MaxResults \<Int >** a lekérdezés adott számú értékre való korlátozására használható.
+2. Az **összes eredmény** beolvasása a következő esetekben lehetséges, hogy nagy számú hiba létezik.
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
-## <a name="microsoft-365-admin-center"></a>Microsoft 365 admin center
-Címtár-szinkronizálási hibák a Microsoft 365 felügyeleti központban tekintheti meg. A jelentés a Microsoft 365 felügyeleti központ csak megjeleníti **felhasználói** objektumok, amelyek ezeket a hibákat. Nem jelenik meg a kapcsolatos információ közötti ütközések **csoportok** és **névjegyek**.
+## <a name="microsoft-365-admin-center"></a>Microsoft 365 felügyeleti központ
+A címtár-szinkronizálási hibákat a Microsoft 365 felügyeleti központban tekintheti meg. A Microsoft 365 felügyeleti központban található jelentés csak azokat a **felhasználói** objektumokat jeleníti meg, amelyek rendelkeznek ezekkel a hibákkal. Nem jeleníti meg a **csoportok** és a **névjegyek**közötti ütközésekkel kapcsolatos információkat.
 
-![Aktív felhasználók](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "aktív felhasználók")
+![Aktív felhasználók](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Aktív felhasználók")
 
-Címtár-szinkronizálási hibák megtekintése a Microsoft 365 felügyeleti központban, lásd: [azonosíthatja a címtár-szinkronizálási hibák az Office 365-ben](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
+A címtár-szinkronizálási hibák a Microsoft 365 felügyeleti központban való megtekintésével kapcsolatos útmutatásért lásd: [címtár-szinkronizálási hibák azonosítása az Office 365-ben](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
-### <a name="identity-synchronization-error-report"></a>Szinkronizálási hibajelentés identitás
-Ha ütközés duplikált attribútummal rendelkező objektum történik az új viselkedéssel értesítést tartalmazza a standard szintű szinkronizálási hibajelentés identitás küldött e-mail sablonjaként szolgál műszaki értesítési forduljon a bérlő számára. Van azonban fontos változás az ezt a viselkedést. Múltbeli időpont ismétlődő attribútum ütközés információ lenne szerepelnek minden ezt követő hibajelentés az ütközést megszüntetéséig. Az új viselkedéssel egy adott ütközés hibaértesítésre csak jelennek meg egyszer – az ütköző attribútum karanténba időpontjában.
+### <a name="identity-synchronization-error-report"></a>identitásszinkronizálás hibajelentés
+Ha egy duplikált attribútummal rendelkező objektumot kezel ezzel az új viselkedéssel, akkor a rendszer értesítést küld a normál identitás-szinkronizálási hibajelentés e-mail-címéről, amelyet a bérlőnek szóló technikai értesítési kapcsolattartó kap. Ez a viselkedés azonban fontos változást mutat be. A múltban a duplikált attribútumokra vonatkozó Adatütközések az ütközés feloldása előtt minden további hibajelentésben szerepelni fognak. Ezzel az új viselkedéssel az adott ütközésre vonatkozó hibaüzenet csak egyszer jelenik meg, amikor az ütköző attribútum Karanténba kerül.
 
-Íme egy példa az e-mail-értesítés néz ki egy ProxyAddress ütközés:  
-    ![Aktív felhasználók](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "aktív felhasználók")  
+Íme egy példa arra, hogy az e-mail-értesítés hogyan néz ki a ProxyAddress ütközés esetén:  
+    ![Aktív felhasználók](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Aktív felhasználók")  
 
 ## <a name="resolving-conflicts"></a>Ütközések feloldása
-Hibaelhárítási stratégia és a megoldási taktika a hibák kell nem eltérnek a duplikált attribútummal kapcsolatos hibák történtek kezelt módja. Az egyetlen különbség, hogy az időzítő feladat halmokat a bérlő automatikusan adja hozzá a szóban forgó attribútumot a megfelelő objektumot az ütközést megszűnése után a szolgáltatás oldalán keresztül.
+A hibákkal kapcsolatos hibaelhárítási stratégiák és a megoldási taktikák nem térhetnek el az ismétlődő attribútumokra vonatkozó hibák múltbeli kezelésének módjától. Az egyetlen különbség, hogy az időzítő feladat a szolgáltatás oldalán lévő bérlőn keresztül fut, hogy az ütközés feloldása után automatikusan hozzáadja a szóban forgó attribútumot a megfelelő objektumhoz.
 
-A következő cikk ismerteti a különböző hibaelhárítási és megoldási stratégiák: [Ismétlődő vagy érvénytelen attribútumok megelőzése az Office 365-ben a címtár-szinkronizálás](https://support.microsoft.com/kb/2647098).
+A következő cikk a különböző hibaelhárítási és megoldási stratégiákat ismerteti: [ismétlődő vagy érvénytelen attribútumok megakadályozzák a címtár-szinkronizálást az Office 365-ben](https://support.microsoft.com/kb/2647098).
 
 ## <a name="known-issues"></a>Ismert problémák
-Ezek a problémák egyike hatására az adatok elvesztése vagy szolgáltatás teljesítménycsökkenést. Több esztétikai, mások okozhat standard "*előtti rugalmasság*" ismétlődő attribútummal kapcsolatos hibák, az ütközés attribútumot, és a egy másik karanténba helyett hibajelzést okoz bizonyos hibák extra manuális javítás felfelé megkövetelése.
+Ezen ismert problémák egyike sem okozza az adatvesztést vagy a szolgáltatások romlását. Ezek közül több esztétikai, mások pedig a standard "*Pre-rugalmasság*" ismétlődő attribútum hibáit okozzák az ütközési attribútum karanténba helyezése helyett, és egy másik, bizonyos hibák miatt további manuális javítást igényelnek.
 
-**Core viselkedés:**
+**Alapvető viselkedés:**
 
-1. Attribútum konfigurációk objektumokat továbbra is ellentétben a duplikált attribútumokkal karanténba zárásának visszavonása exportálási hibák lépnek fel.  
-   Példa:
+1. Az adott attribútum-konfigurációval rendelkező objektumok továbbra is megkapják az exportálási hibákat a karanténba helyezett attribútum (ok) helyett.  
+   Például:
    
-    a. Új felhasználó létrehozása egy egyszerű Felhasználóneve az AD-ben **Joe\@contoso.com** és ProxyAddress **smtp:Joe\@contoso.com**
+    a. Új felhasználó jön létre az AD-ben a **joe\@contoso.com** és a PROXYADDRESS SMTP UPN-vel **: Joe\@contoso.com**
    
-    b. Ez az objektum tulajdonságainak ütközik egy meglévő csoportot, ahol ProxyAddress az **SMTP:Joe\@contoso.com**.
+    b. Az objektum tulajdonságai ütköznek egy meglévő csoporttal, ahol a ProxyAddress **SMTP: Joe\@contoso.com**.
    
-    c. Exportáláskor egy **ProxyAddress ütközés** hiba lépett fel a karanténba helyezett ütközés attribútumok nem. A művelet után minden ezt követő szinkronizálási ciklus rendszer, mielőtt a rugalmasság szolgáltatás engedélyezve lett volna.
-2. Két csoport azonos SMTP-jön létre a helyszíni, ha egy nem tud üzembe helyezni az első kísérlet alkalmával a szabvány duplicitní **ProxyAddress** hiba. Az ismétlődő értéket a következő szinkronizálási ciklus után azonban megfelelően karanténba.
+    c. Exportáláskor a rendszer **ProxyAddress ütközési hibát okoz** a karanténba helyezett ütközési attribútumok helyett. A rendszer újrapróbálkozik a művelettel minden további szinkronizálási cikluson, mivel a rugalmassági funkció engedélyezése előtt lenne.
+2. Ha két csoport jön létre a helyszínen ugyanazzal az SMTP-címekkel, az egyik nem tudja kiépíteni az első kísérletet a standard ismétlődő **ProxyAddress** hibával. Az ismétlődő érték azonban megfelelően Karanténba kerül a következő szinkronizálási ciklusra.
 
 **Office portál jelentés**:
 
-1. A részletes hibaüzenetet UPN ütközés készlet két objektum megegyezik. Ez azt jelzi, hogy azok is volt az UPN módosult / karanténba zárva, amikor tulajdonképpen csak egy ezek közül minden módosított adat.
-2. A részletes hibaüzenetet az UPN ütközés egy felhasználóhoz, aki módosítva vagy karanténba egyszerű volt-e a megfelelő displayName jeleníti meg. Példa:
+1. Az UPN-ütközőben lévő két objektum részletes hibaüzenete ugyanaz. Ez azt jelzi, hogy mindkét esetben az UPN-t módosították/karanténba helyezte, ha valójában csak az egyikük módosította az adatmennyiséget.
+2. Az egyszerű felhasználónévi ütközés részletes hibaüzenete egy olyan felhasználó helytelen displayName-üzenetét jeleníti meg, aki az UPN-t módosította/karanténba helyezte. Például:
    
-    a. **A felhasználó** először a szinkronizálások **UPN = felhasználó\@contoso.com**.
+    a. **A felhasználó** elsőként szinkronizál az **UPN = User\@contoso.com**.
    
-    b. **"B" felhasználó** próbált be a következő szinkronizálható **UPN = felhasználó\@contoso.com**.
+    b. A **B felhasználó** szinkronizálása az **UPN = User\@contoso.com**használatával történt.
    
-    c. **A "B" felhasználó** UPN módosul, amelyikben **User1234\@contoso.onmicrosoft.com** és **felhasználói\@contoso.com** adnak hozzá **DirSyncProvisioningErrors** .
+    c. **B felhasználó** Az egyszerű felhasználónév a **User1234\@contoso.onmicrosoft.com** , a contoso.com pedig a **DirSyncProvisioningErrors** **\@** .
    
-    d. A hibaüzenetben **"b" felhasználónak** kell jelzi, hogy **az a felhasználó** már **felhasználói\@contoso.com** bemutatja egy egyszerű, de mivel **B felhasználó** saját displayName.
+    d. A "B" **felhasználó** hibaüzenete azt jelzi **, hogy a felhasználó már** rendelkezik UPN-ként a **felhasználó\@contoso.com** , de a **b felhasználó** saját displaynameét jeleníti meg.
 
-**Szinkronizálási hibajelentés identitás**:
+**Identitásszinkronizálás hibajelentés**:
 
-A hivatkozás a *a probléma megoldásához szükséges lépéseket* helytelen:  
-    ![Aktív felhasználók](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "aktív felhasználók")  
+A *probléma megoldásához szükséges lépések* hivatkozása helytelen:  
+    ![Aktív felhasználók](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Aktív felhasználók")  
 
-Kell mutatnia [ https://aka.ms/duplicateattributeresiliency ](https://aka.ms/duplicateattributeresiliency).
+[https://aka.ms/duplicateattributeresiliencyra ](https://aka.ms/duplicateattributeresiliency)kell mutatnia.
 
 ## <a name="see-also"></a>Lásd még
 * [Az Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
-* [Azonosítsa a címtár-szinkronizálási hibák az Office 365-ben](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
+* [Címtár-szinkronizálási hibák azonosítása az Office 365-ben](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
 

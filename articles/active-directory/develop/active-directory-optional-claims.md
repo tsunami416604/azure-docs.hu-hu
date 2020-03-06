@@ -12,12 +12,12 @@ ms.date: 12/08/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 23433c816fc7b002c3426a0aac7c0aade8cdb338
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 9ea3388cb65b18c093ffff3ec8b8c9f2764ef189
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585849"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300068"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Útmutató: opcionális jogcímek megadása az Azure AD-alkalmazáshoz
 
@@ -37,7 +37,7 @@ Míg a választható jogcímek a v 1.0 és a v 2.0 formátumú jogkivonatokban, 
 
 | Fiók típusa | 1\.0-s verziós tokenek | v 2.0-tokenek  |
 |--------------|---------------|----------------|
-| Személyes Microsoft-fiók  | N/A  | Támogatott |
+| Személyes Microsoft-fiók  | N.A.  | Támogatott |
 | Azure AD-fiók      | Támogatott | Támogatott |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v 1.0 és v 2.0 választható jogcímek készlete
@@ -87,7 +87,7 @@ Ezeket a jogcímeket mindig tartalmazza a v 1.0 Azure AD-jogkivonatok, de a nem 
 | `in_corp`     | Vállalati hálózaton belül        | Azt jelzi, hogy az ügyfél bejelentkezik-e a vállalati hálózatról. Ha nem, a rendszer nem tartalmazza a jogcímet.   |  Az MFA [megbízható IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) -címeinek beállításai alapján.    |
 | `nickname`    | Becenév                        | A felhasználó további neve. A becenév elkülönül az utónévtől vagy az utónévtől. | 
 | `family_name` | Vezetéknév                       | A felhasználó vezetéknevét, vezetéknevét vagy családjának nevét adja meg a felhasználói objektumban definiált módon. <br>"family_name":"Miller" | Támogatott a MSA és az Azure AD-ben   |
-| `given_name`  | Utónév                      | A felhasználó első vagy "megadott" nevét adja meg a felhasználói objektumra vonatkozóan.<br>"given_name": "Frank"                   | Támogatott a MSA és az Azure AD-ben  |
+| `given_name`  | Keresztnév                      | A felhasználó első vagy "megadott" nevét adja meg a felhasználói objektumra vonatkozóan.<br>"given_name": "Frank"                   | Támogatott a MSA és az Azure AD-ben  |
 | `upn`         | Felhasználó egyszerű neve | A username_hint paraméterrel használható felhasználó termékazonosító.  Nem tartós azonosító a felhasználó számára, és nem használható a legfontosabb adathoz. | A jogcím konfigurálásához tekintse meg az alábbi [további tulajdonságokat](#additional-properties-of-optional-claims) . |
 
 ### <a name="additional-properties-of-optional-claims"></a>A választható jogcímek további tulajdonságai
@@ -122,7 +122,7 @@ Ez a OptionalClaims objektum azt eredményezi, hogy az azonosító token visszak
 ## <a name="configuring-optional-claims"></a>Választható jogcímek konfigurálása
 
 > [!IMPORTANT]
-> A hozzáférési jogkivonatok **mindig** az erőforrás jegyzékfájljának használatával jönnek létre, nem az ügyfél.  Tehát a kérelemben `...scope=https://graph.microsoft.com/user.read...` az erőforrás gráf.  Így a hozzáférési jogkivonat a Graph manifest használatával jön létre, nem az ügyfél jegyzékfájlja.  Az alkalmazás jegyzékfájljának módosítása soha nem eredményezi a gráfok eltérő megjelenésének jogkivonatait.  Annak ellenőrzéséhez, hogy a `accessToken` változásai érvényesek-e, igényeljen egy jogkivonatot az alkalmazáshoz, nem pedig egy másik alkalmazást.  
+> A hozzáférési jogkivonatok **mindig** az erőforrás jegyzékfájljának használatával jönnek létre, nem az ügyfél.  Tehát a kérelemben `...scope=https://graph.microsoft.com/user.read...` az erőforrás a Microsoft Graph API.  Így a hozzáférési jogkivonat a Microsoft Graph API-jegyzékfájl használatával jön létre, nem az ügyfél jegyzékfájlja.  Az alkalmazás jegyzékfájljának módosítása soha nem okoz jogkivonatot a Microsoft Graph API-nak a különböző megjelenéséhez.  Annak ellenőrzéséhez, hogy a `accessToken` változásai érvényesek-e, igényeljen egy jogkivonatot az alkalmazáshoz, nem pedig egy másik alkalmazást.  
 
 Az alkalmazásra vonatkozó opcionális jogcímeket a felhasználói felület vagy az alkalmazás jegyzékfájlja segítségével konfigurálhatja.
 
@@ -349,7 +349,7 @@ Ebben a szakaszban áttekintheti a forgatókönyvet, amelyből megtudhatja, hogy
 Több lehetőség is rendelkezésre áll az alkalmazás identitás-konfigurációjának tulajdonságainak frissítésére az opcionális jogcímek engedélyezéséhez és konfigurálásához:
 -    Használhatja a **jogkivonat-konfiguráció (előzetes verzió)** felhasználói felületét (lásd az alábbi példát)
 -    Használhatja a **jegyzékfájlt** (lásd az alábbi példát). Olvassa el az [Azure ad Application manifest-dokumentum megismerése című dokumentumot](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest) a jegyzékfájl bevezetésének első lépéseit ismertető dokumentumban.
--   Olyan alkalmazást is írhat, amely a [Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) használatával frissíti az alkalmazást. A Graph API hivatkozási útmutató [OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0) típusa segítséget nyújt a választható jogcímek konfigurálásához.
+-   Olyan alkalmazást is írhat, amely a [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2F1.0&view=graph-rest-1.0) -t használja az alkalmazás frissítéséhez. A Microsoft Graph API-referenciák útmutatójának [OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0) -típusa segíthet a választható jogcímek konfigurálásában.
 
 **Példa:** Az alábbi példában a **jogkivonat-konfiguráció (előzetes verzió)** felhasználói felület és a **jegyzékfájl** használatával adhat hozzá opcionális jogcímeket az alkalmazáshoz szánt hozzáféréshez, azonosítóhoz és SAML-jogkivonatokhoz. Különböző választható jogcímek lesznek hozzáadva az egyes tokenekhez, amelyeket az alkalmazás fogadni tud:
 -    Az azonosító tokenek mostantól a teljes űrlapon (`<upn>_<homedomain>#EXT#@<resourcedomain>`) is tartalmazzák az összevont felhasználók egyszerű felhasználónevét.

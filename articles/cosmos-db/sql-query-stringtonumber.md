@@ -4,15 +4,15 @@ description: Ismerkedjen meg az SQL System Function StringToNumber Azure Cosmos 
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8b9596738d9b02fa26f9c363287323b905654a1f
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 5ca8d0c4a6d244823dda6f0f79a3cf5c743a12a9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349221"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296422"
 ---
 # <a name="stringtonumber-azure-cosmos-db"></a>StringToNumber (Azure Cosmos DB)
  Egy számra fordított kifejezést ad vissza. Ha a kifejezés nem fordítható le, a nem definiált értéket adja vissza.  
@@ -34,7 +34,7 @@ StringToNumber(<str_expr>)
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa azt szemlélteti, hogyan viselkedik a `StringToNumber` a különböző típusok között. 
+  Az alábbi példa bemutatja, hogyan viselkedik a `StringToNumber` különböző típusokban. 
 
 A szóköz csak a szám előtt vagy után engedélyezett.
 
@@ -83,7 +83,11 @@ SELECT
 {{}}
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

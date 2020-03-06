@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: 607020f1d540e83a4d049b96b9ab9a4ebcd385f0
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157253"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302712"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>MapReduce-feladatok futtatása a HDInsight Apache Hadoop a REST használatával
 
@@ -26,7 +26,7 @@ Megtudhatja, hogyan futtathat MapReduce-feladatokat a HDInsight-fürtön lévő 
 
 * Egy Apache Hadoop-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-Vagy:
+Vagy
   * Windows PowerShell vagy,
   * [Curl](https://curl.haxx.se/) a [jQ](https://stedolan.github.io/jq/)
 
@@ -171,7 +171,7 @@ Vagy:
 
 1. Ha a feladatainak állapota `SUCCEEDED`re módosult, lekérheti a feladatoknak az Azure Blob Storage-ból való lekérdezését. A lekérdezésben átadott `statusdir` paraméter tartalmazza a kimeneti fájl helyét. Ebben a példában a hely `/example/curl`. Ez a címe tárolja a feladatok kimenetét a fürtök alapértelmezett tárolójában a következő helyen: `/example/curl`.
 
-Ezeket a fájlokat az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)használatával listázhatja és letöltheti. A Blobok Azure CLI-vel történő használatáról további információt az Azure [CLI és az Azure Storage](../../storage/common/storage-azure-cli.md#create-and-manage-blobs) -dokumentum használata című témakörben talál.
+Ezeket a fájlokat az [Azure CLI](/cli/azure/install-azure-cli)használatával listázhatja és letöltheti. Az Azure CLI Azure Blob Storage-hoz való használatáról további információt a rövid útmutató [: Blobok létrehozása, letöltése és listázása az Azure CLI](../../storage/blobs/storage-quickstart-blobs-cli.md)használatával című témakörben talál.
 
 ## <a name="next-steps"></a>Következő lépések
 

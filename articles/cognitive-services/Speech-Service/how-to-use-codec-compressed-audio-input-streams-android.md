@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 01135229167dde3784137ab1b06dfc931766a2e0
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 1539ca9aa18892f617f278e67c8b6141f5f6d880
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805841"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331127"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Útmutató: a kodekkel tömörített hangbemenet használata az Androidon futó Speech SDK-val
 
 A Speech SDK **tömörített hangbemeneti stream** API-val a PullStream vagy a PushStream segítségével továbbíthatja a tömörített hangokat a beszédfelismerési szolgáltatásba.
 
 > [!IMPORTANT]
-> A streaming tömörített bemeneti hang jelenleg a [ C++, C#a és a Java Linux rendszeren (Ubuntu 16,04, Ubuntu 18,04, Debian 9)](how-to-use-codec-compressed-audio-input-streams.md)támogatott. A Java az iOS platformon is támogatja az Android és [Objective-C](how-to-use-codec-compressed-audio-input-streams-ios.md) nyelveken.
+> A streaming tömörített bemeneti hang jelenleg a [ C++, C#a és a Java Linux rendszeren (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)](how-to-use-codec-compressed-audio-input-streams.md)támogatott. A Java az iOS platformon is támogatja az Android és [Objective-C](how-to-use-codec-compressed-audio-input-streams-ios.md) nyelveken.
 > A Speech SDK 1.7.0 vagy újabb verziója szükséges.
 
 A WAV/PCM esetében tekintse meg a fővonal beszédének dokumentációját. A WAV/PCM-en kívül a következő codec tömörített bemeneti formátumok támogatottak:
@@ -37,7 +37,7 @@ A WAV/PCM esetében tekintse meg a fővonal beszédének dokumentációját. A W
 
 A kodekkel tömörített hang a [GStreamer](https://gstreamer.freedesktop.org)használatával valósítható meg. Licencelési okokból a GStreamer bináris fájljai nincsenek lefordítva az SDK-val. Az Androidhoz készült előre elkészített bináris fájlokat kell használnia. Az előre elkészített kódtárak letöltéséhez lásd: [telepítés Android-fejlesztéshez](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
-A `libgstreamer_android.so` használata kötelező. Győződjön meg arról, hogy a GStreamer beépülő modulja `libgstreamer_android.so`van csatolva.
+`libgstreamer_android.so` megadása kötelező. Győződjön meg arról, hogy a GStreamer beépülő modulja `libgstreamer_android.so`van csatolva.
 
 ```make
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 audioresample audioparsers ogg opusparse opus wavparse alaw mulaw flac

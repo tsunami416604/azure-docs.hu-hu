@@ -3,12 +3,12 @@ title: Megfelelőség a Azure Policy használatával
 description: Beépített szabályzatok kiosztása Azure Policyban az Azure Container-nyilvántartások megfelelőségének naplózásához
 ms.topic: article
 ms.date: 02/26/2020
-ms.openlocfilehash: 331fcfaf72b1ad2022aa3edeefefa597e5bcfe17
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 012cd013de1c60fddcfb28e4bca96d761ada41ab
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925669"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330736"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Az Azure Container-nyilvántartások megfelelőségének naplózása Azure Policy használatával
 
@@ -68,14 +68,14 @@ Name                                                                            
 [Preview]: Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
-Ezután futtassa az az [Policy State List](/cli/azure/policy/state#az-policy-assignment-list) parancsot az adott házirend-azonosítóhoz tartozó összes erőforrás JSON-formátumú megfelelőségi állapotának visszaküldéséhez:
+Ezután futtassa az az [Policy State List](/cli/azure/policy/state#az-policy-state-list) parancsot az adott házirend-azonosítóhoz tartozó összes erőforrás JSON-formátumú megfelelőségi állapotának visszaküldéséhez:
 
 ```azurecli
 az policy state list \
   --resource <policyID>
 ```
 
-Vagy futtassa az [az Policy State List](/cli/azure/policy/state#az-policy-assignment-list) parancsot egy adott beállításjegyzék-erőforrás JSON-formátumú megfelelőségi állapotának visszaküldéséhez, például *myregistry*:
+Vagy futtassa az [az Policy State List](/cli/azure/policy/state#az-policy-state-list) parancsot egy adott beállításjegyzék-erőforrás JSON-formátumú megfelelőségi állapotának visszaküldéséhez, például *myregistry*:
 
 ```azurecli
 az policy state list \

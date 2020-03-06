@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 2f9e02af0652108fe10e4b73e7bb43c48451ca77
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 1287eb5de1391f40c4409d5d10522d8979ae4207
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77123175"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384078"
 ---
 Ha Visual Studio-projektet szeretne létrehozni C++ az asztali fejlesztéshez, be kell állítania a Visual Studio fejlesztési lehetőségeit, létre kell hoznia a projektet, ki kell választania a cél architektúrát, és telepítenie kell a Speech SDK-t.
 
@@ -77,4 +77,4 @@ Végül telepítse a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget),
 
 1. A **módosítások előnézete** párbeszédpanelen kattintson **az OK gombra**.
 
-1. A **licenc elfogadása** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom**lehetőséget. A csomag telepítése megkezdődik, és amikor a telepítés befejeződött, a **kimenet** ablaktáblán a következő szöveghez hasonló üzenet jelenik meg: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.9.0' to helloworld`.
+1. A **licenc elfogadása** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom**lehetőséget. A csomag telepítése megkezdődik, és amikor a telepítés befejeződött, a **kimenet** ablaktáblán a következő szöveghez hasonló üzenet jelenik meg: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.10.0' to helloworld`.

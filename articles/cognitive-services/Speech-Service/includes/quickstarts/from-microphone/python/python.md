@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 086a77a9d7096870b8d381d301bfc0f31ab390f9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 333ed8fa886e351e8a67035ed830f5ad8f24bafd
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468657"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384055"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +56,7 @@ Vagy letöltheti ezt a rövid útmutatót [Jupyter](https://jupyter.org) jegyzet
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>A Speech SDK és a Visual Studio Code telepítése és használata
 
-1. Töltse le és telepítse a [Python](https://www.python.org/downloads/), 3,5 vagy újabb 64 bites verzióját a számítógépre.
+1. Töltse le és telepítse a [Python](https://www.python.org/downloads/), 3,5 és 3,8 64-bites verzióját a számítógépre.
 1. Töltse le és telepítse a [Visual Studio Code](https://code.visualstudio.com/Download)-ot.
 1. Nyissa meg a Visual Studio Code-ot, és telepítse a Python-bővítményt. A menüben válassza a **fájl** > **Beállítások** > **bővítmények** lehetőséget. Keressen rá a **Python**kifejezésre.
 

@@ -7,16 +7,25 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 78100a5dd38b211f6b0241d5a0bac10cf86b09f6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: d04b38fac2b42d2d510902c7ba54ddebb8e3f410
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250947"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330310"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 Migrálás Azure File Syncre
 
-A StorSimple 8000 sorozat két különálló SKU-t jelöl, és ezek közül bármelyik SKU adatait áttelepítheti egy Azure File Sync környezetbe. Ez a cikk ismerteti mindkét készülék áttelepítését Azure File Syncre, és biztosítja a szükséges háttérbeli ismereteket és áttelepítési lépéseket, hogy a Migrálás Azure File Sync sikeres legyen.
+Az StorSimple 8000 sorozatot a 8100 vagy a 8600 fizikai, a helyszíni készülék és a Cloud Service-összetevők jelölik. Az adatok bármelyik készülékről egy Azure File Sync környezetbe telepíthetők át. Ez a cikk a Azure File Syncba való sikeres áttelepítéshez szükséges háttérbeli ismereteket és áttelepítési lépéseket ismerteti.
+
+## <a name="storsimple"></a>StorSimple
+
+A StorSimple egy megszűnt Microsoft-termék. A termék és a felhőalapú szolgáltatás kiterjesztett támogatása 31 2022 decemberében lejár. Fontos, hogy azonnal megkezdje a StorSimple áttelepítésének megtervezését.
+
+A Azure File Sync az alapértelmezett és a stratégiai hosszú távú Azure-szolgáltatás, amelyet a StorSimple berendezések áttelepíthetnek.
+
+> [!IMPORTANT]
+> A Microsoft elkötelezte magát, hogy segítse az ügyfeleket az áttelepítés során. E-mail-AzureFilesMigration@microsoft. com a testreszabott áttelepítési tervhez, valamint az áttelepítés során nyújtandó támogatáshoz.
 
 ## <a name="azure-file-sync"></a>Azure File Sync
 

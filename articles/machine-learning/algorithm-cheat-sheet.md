@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
-ms.date: 11/04/2019
-ms.openlocfilehash: 82d4131170002a3d9ffd78933c9dc566c3b1d921
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 03/05/2020
+ms.openlocfilehash: 85fbb1c1d26f71903adab2eb96b0c1dd3bf74c33
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767634"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328615"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>A Azure Machine Learning Designer Machine Learning algoritmushoz tartozó Cheat Sheet
 
@@ -48,7 +48,7 @@ A gépi tanulásnak három fő kategóriája van: a *felügyelt tanulás*, a nem
 
 A felügyelt tanulásban az egyes adatpontok címkéje vagy kategóriája vagy értéke van társítva. Egy kategorikus címke például egy "Cat" vagy "Dog" típusú képet rendel hozzá. Az érték címkére példa egy használt autóhoz tartozó eladási díj. A felügyelt tanulás célja, hogy több, hasonló címkével ellátott példát tanulmányozzon, majd a jövőbeli adatpontokra vonatkozó előrejelzéseket lehessen készíteni. Például azonosíthatja az új fényképeket a megfelelő állattal, vagy pontos eladási árakat rendelhet más használt autókhoz. Ez egy népszerű és hasznos típusú gépi tanulás.
 
-### <a name="unsupervised-learning"></a>Felügyelet nélküli tanulás
+### <a name="unsupervised-learning"></a>Nem felügyelt tanulás
 
 A nem felügyelt tanulásban az adatpontokhoz nem tartoznak címkék. Ehelyett egy nem felügyelt tanulási algoritmus célja az, hogy valamilyen módon szervezze az adatmennyiséget, vagy leírja a szerkezetét. A nem felügyelt tanulási csoportokba tartozó adatcsoportok, mint K-azt jelenti, hogy nem, vagy különböző módokon keresi az összetett adatnézeteket, így egyszerűbbnek tűnik.
 

@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 02/04/2020
+ms.date: 03/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9a567a8f62f8f12de725f6d9420576680a3005fe
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b0b9cffe0b69545a6d0219941b48ac9eb0f399b3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194580"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300587"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Adatok betöltése Azure Data Lake Storageból SQL-elemzéshez
 Ez az útmutató azt ismerteti, hogyan tölthetők be a Azure Data Lake Storageból származó adatok az alapszintű külső táblák használatával. Bár a Data Lake Storage tárolt adatain is futtathatók az ad hoc lekérdezések, javasoljuk, hogy a legjobb teljesítmény érdekében importálja az adatforrást. 
@@ -46,6 +46,8 @@ Kihagyhatja ezt a szakaszt, és folytathatja a "külső adatforrás létrehozás
 A Data Lake Storage-fiók eléréséhez létre kell hoznia egy adatbázis-főkulcsot a hitelesítő adatok titkos kódjának titkosításához. Ezután létrehoz egy adatbázis-hatókörű hitelesítő adatot a titkos kulcs tárolásához. Az egyszerű szolgáltatásnév (Azure Directory alkalmazás-felhasználó) használatával végzett hitelesítés során az adatbázis-hatókörrel rendelkező hitelesítő adatok a HRE-ben beállított egyszerű szolgáltatás hitelesítő adatait tárolják. Az adatbázis-hatókörön belüli hitelesítő adatokat is használhatja a Gen2 tartozó Storage-fiók kulcsának tárolására.
 
 Ha az egyszerű szolgáltatásokkal szeretne csatlakozni Data Lake Storagehoz, **először** létre kell hoznia egy Azure Active Directory alkalmazást, létre kell hoznia egy hozzáférési kulcsot, és biztosítania kell az alkalmazás számára a Data Lake Storage-fiók elérését. Útmutatásért lásd: [hitelesítés a Azure Data Lake Storage Active Directory használatával](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+
+Jelentkezzen be az SQL-készletbe egy olyan felhasználóval, aki rendelkezik ellenőrzési szintű engedélyekkel, és hajtsa végre a következő SQL-utasításokat az adatbázisán:
 
 ```sql
 -- A: Create a Database Master Key.
@@ -214,7 +216,7 @@ Az alábbi példa jó kiindulási pont a statisztikák létrehozásához. Egyosz
 ## <a name="achievement-unlocked"></a>A megvalósítás feloldva!
 Sikeresen betöltötte az adatait az adattárházba. Remek munka!
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 Ebben az oktatóanyagban külső táblákat hozott létre a Data Lake Storage Gen1ban tárolt adatok struktúrájának definiálásához, majd a Base CREATE TABLE AS SELECT utasítás használatával tölti be az adatok adattárházba való betöltését. 
 
 A következőket hajtotta végre:

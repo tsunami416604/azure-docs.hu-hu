@@ -4,12 +4,12 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 11/03/2019
 ms.author: orspodek
-ms.openlocfilehash: f8b3e541dfd55bbd613af2791329a08402cf8670
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3cd9d017429b629acad39f5b902e842886c3c818
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581982"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305016"
 ---
 ## <a name="configure-the-data-source"></a>Az adatforrás konfigurálása
 
@@ -29,7 +29,7 @@ Az egyszerű szolgáltatásnév a [Azure Portalben](#azure-portal) vagy az [Azur
 
 1. Az egyszerű szolgáltatás létrehozásához kövesse az [Azure Portal dokumentációjának](/azure/active-directory/develop/howto-create-service-principal-portal)utasításait.
 
-    1. Az [alkalmazás társítása szerepkörhöz](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszban rendeljen hozzá egy **olvasó** szerepkör-típust az Azure adatkezelő-fürthöz.
+    1. Az [alkalmazás társítása szerepkörhöz](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) szakaszban rendeljen hozzá egy **olvasó** szerepkör-típust az Azure adatkezelő-fürthöz.
 
     1. A [beolvasási értékek beolvasása](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszban másolja a következő három tulajdonság értékét: **könyvtár-azonosító** (bérlői azonosító), **alkalmazás-azonosító**és **jelszó**.
 
@@ -81,7 +81,7 @@ Most, hogy rendelkezik egy egyszerű szolgáltatással, adja hozzá a *megjelen�
 
 1. Az **Áttekintés** szakaszban válassza ki a StormEvents tartalmazó adatbázist.
 
-    ![adatbázis kiválasztása](media/data-explorer-configure-data-source/select-database.png)
+    ![Adatbázis kiválasztása](media/data-explorer-configure-data-source/select-database.png)
 
 1. Válassza az **engedélyek** lehetőséget, majd **adja hozzá**a elemet.
 

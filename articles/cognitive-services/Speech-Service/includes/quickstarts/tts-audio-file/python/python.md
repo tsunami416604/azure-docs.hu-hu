@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 4af31b281f4b2e7cdd7ed217753df55ce8009fa9
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: df2c3fc2ab6f6c742f56273119923a7e02cf8e43
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445552"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383893"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](~/articles/cognitive-services/Speech-Service/get-started.md).
-* [Python 3,5 vagy újabb verzió](https://www.python.org/downloads/).
+* [Python 3,5 – 3,8](https://www.python.org/downloads/).
 * A Python Speech SDK csomag elérhető a következő operációs rendszerekhez:
     * Windows: x64 és x86.
     * Mac: macOS X 10,12 vagy újabb verzió.
-    * Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9 x64 rendszeren.
+    * Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8 x64 rendszeren.
 * Linux rendszeren futtassa a következő parancsokat a szükséges csomagok telepítéséhez:
 
   * On Ubuntu:
@@ -40,6 +40,16 @@ ms.locfileid: "77445552"
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.2 libasound2
     ```
+
+  * RHEL/CentOS 8 rendszeren:
+
+    ```sh
+    sudo yum update
+    sudo yum install alsa-lib openssl python3
+    ```
+
+> [!NOTE]
+> A RHEL/CentOS 8 rendszeren kövesse az [OpenSSL Linux rendszerhez való konfigurálásának](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)utasításait.
 
 * Windows rendszeren a platformhoz a [Visual Studio C++ 2019-hez készült Microsoft vizualizációs terjeszthető](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) csomag szükséges.
 
@@ -110,7 +120,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>A Speech SDK és a Visual Studio Code telepítése és használata
 
-1. Töltse le és telepítse a [Python](https://www.python.org/downloads/), 3,5 vagy újabb 64 bites verzióját a számítógépre.
+1. Töltse le és telepítse a [Python](https://www.python.org/downloads/), 3,5 és 3,8 64-bites verzióját a számítógépre.
 1. Töltse le és telepítse a [Visual Studio Code](https://code.visualstudio.com/Download)-ot.
 1. Nyissa meg a Visual Studio Code-ot, és telepítse a Python-bővítményt. A menüben válassza a **fájl** > **Beállítások** > **bővítmények** lehetőséget. Keressen rá a **Python**kifejezésre.
 
@@ -141,7 +151,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 Ha az utasítások követésével kapcsolatos problémái vannak, tekintse meg a kiterjedt [Visual Studio Code Python oktatóanyagot](https://code.visualstudio.com/docs/python/python-tutorial).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]
 

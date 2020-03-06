@@ -6,13 +6,13 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
-ms.date: 05/28/2019
-ms.openlocfilehash: 35b5a85ea6fba87e785b581a7a20d0c28f312820
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 03/04/2020
+ms.openlocfilehash: e312cc0dc6c58bb33a737e1fc28dd6eb3578b764
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484145"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330266"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 
@@ -20,25 +20,35 @@ A statikus tartalom (HTML-, CSS-, JavaScript-és képfájlok) közvetlenül az A
 
 Ez a cikk bemutatja, hogyan engedélyezheti a statikus webhelyek üzemeltetését az Azure Portal, az Azure CLI vagy a PowerShell használatával.
 
-<a id="portal" />
+## <a name="enable-static-website-hosting"></a>Statikus webhely üzemeltetésének engedélyezése
 
-## <a name="portal"></a>[Portal](#tab/azure-portal)
+A statikus webhely üzemeltetése olyan szolgáltatás, amelyet engedélyeznie kell a Storage-fiókban.
 
-Részletes oktatóanyagért lásd [: oktatóanyag: statikus webhely üzemeltetése blob Storageon](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host).
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-A statikus webhely üzemeltetésének engedélyezése után megtekintheti a webhely oldalait egy böngészőben a webhely nyilvános URL-címének használatával.
+1. A kezdéshez jelentkezzen be a [Azure Portalba](https://portal.azure.com/) .
 
-<a id="portal-find-url" />
+2. Keresse meg a tárfiók, és megjeleníti a fiók áttekintése.
 
-### <a name="find-the-website-url-by-using-the-azure-portal"></a>A webhely URL-címének megkeresése a Azure Portal használatával
+3. Válassza a **statikus webhely** lehetőséget a statikus webhelyek konfigurációs oldalának megjelenítéséhez.
 
-A Storage-fiók fiók áttekintése oldalán megjelenő ablaktáblán válassza a **statikus webhely**lehetőséget. A webhely URL-címe az **elsődleges végpont** mezőben jelenik meg.
+4. Válassza az engedélyezve lehetőséget a statikus webhely-üzemeltetési **funkció** engedélyezéséhez a Storage-fiókhoz.
 
-![Azure Storage – statikus webhelyek mérőszámai metrika](./media/storage-blob-static-website/storage-blob-static-website-url.png)
+5. Az **index dokumentum neve** mezőben adja meg az alapértelmezett index lapot (például: *index. html*). 
+
+   Az alapértelmezett index lap jelenik meg, amikor a felhasználók a statikus webhely gyökeréhez.  
+
+6. A **hiba-dokumentum elérési útja** mezőben írjon be egy alapértelmezett hibaüzenetet (például: *404. html*). 
+
+   Amikor egy felhasználó megpróbál egy oldal, amely nem szerepel a statikus webhely keresse meg az alapértelmezett hibalap jelenik meg.
+
+7. Kattintson a **Save** (Mentés) gombra. Az Azure Portalon mostantól megjeleníti a statikus webhely végpontot. 
+
+    ![Statikus webhely üzemeltetése egy storage-fiók engedélyezése](media/storage-blob-static-website-host/enable-static-website-hosting.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 <a id="cli" />
-
-## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 A statikus webhely üzemeltetését az [Azure parancssori felületének (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)használatával engedélyezheti.
 
@@ -64,45 +74,9 @@ A statikus webhely üzemeltetését az [Azure parancssori felületének (CLI)](h
 
    * Cserélje le az `<index-document-name>` helyőrzőt az index dokumentum nevére. Ez a dokumentum általában "index. html".
 
-4. Objektumok feltöltése a *$web* tárolóba egy forrás könyvtárából.
-
-   > [!NOTE]
-   > Ha Azure Cloud Shell használ, ügyeljen arra, hogy `\` Escape-karaktert adjon hozzá, ha a `$web` tárolóra hivatkozik (például: `\$web`). Ha az Azure CLI helyi telepítését használja, akkor nem kell használni az Escape-karaktert.
-
-   Ez a példa feltételezi, hogy Azure Cloud Shell-munkamenetből futtat parancsokat.
-
-   ```azurecli-interactive
-   az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name> --content-type 'text/html; charset=utf-8'
-   ```
-
-   * Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
-
-   * Cserélje le a `<source-path>` helyőrzőt a feltölteni kívánt fájlok helyének elérési útjára.
-
-   > [!NOTE]
-   > Ha az Azure CLI-t használja, az elérési utat a helyi számítógép bármely helyére használhatja (például: `C:\myFolder`.
-   >
-   > Azure Cloud Shell használata esetén olyan fájlmegosztást kell hivatkoznia, amely látható a Cloud Shell számára. Ez a hely lehet a megosztott felhőalapú fájlmegosztás vagy egy meglévő fájlmegosztás, amelyet a Cloud Shell lehet csatlakoztatni. Ennek megismeréséhez tekintse meg [a fájlok megőrzése Azure Cloud Shellban](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)című témakört.
-
-<a id="cli-find-url" />
-
-### <a name="find-the-website-url-by-using-the-azure-cli"></a>A webhely URL-címének megkeresése az Azure CLI használatával
-
-A tartalmak egy böngészőben a webhely nyilvános URL-címével tekinthetők meg.
-
-Keresse meg az URL-címet a következő parancs használatával:
-
-```azurecli-interactive
-az storage account show -n <storage-account-name> -g <resource-group-name> --query "primaryEndpoints.web" --output tsv
-```
-
-* Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
-
-* Cserélje le a `<resource-group-name>` helyőrző értékét az erőforráscsoport nevére.
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 <a id="powershell" />
-
-## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 A Azure PowerShell modul használatával engedélyezheti a statikus webhely üzemeltetését.
 
@@ -152,28 +126,101 @@ A Azure PowerShell modul használatával engedélyezheti a statikus webhely üze
 
    * Cserélje le az `<index-document-name>` helyőrzőt az index dokumentum nevére. Ez a dokumentum általában "index. html".
 
-7. Objektumok feltöltése a *$web* tárolóba egy forrás könyvtárából.
+---
 
-    ```powershell
-    # upload a file
-    set-AzStorageblobcontent -File "<path-to-file>" `
-    -Properties @{ ContentType = "text/html; charset=utf-8";} `
-    -Container `$web `
-    -Blob "<blob-name>" `
-    -Context $ctx
-     ```
+## <a name="upload-files"></a>Fájlok feltöltése 
 
-   * Cserélje le a `<path-to-file>` helyőrző értékét a feltölteni kívánt fájl teljes elérési útjára (például: `C:\temp\index.html`).
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-   * Cserélje le a `<blob-name>` helyőrző értékét arra a névre, amelyet az eredményül kapott blobhoz kíván adni (például: `index.html`).
+Ezek az utasítások bemutatják, hogyan tölthet fel fájlokat a Azure Portalban megjelenő Storage Explorer verziójának használatával. Azonban használhatja a Azure Portalon kívül futó [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) verzióját is. Használhatja a [AzCopy](../common/storage-use-azcopy-v10.md), a PowerShellt, a CLI-t vagy bármely olyan egyéni alkalmazást, amely képes fájlokat feltölteni a fiókja **$web** tárolóba. A fájloknak a Visual Studio Code használatával történő feltöltését bemutató lépésenkénti oktatóanyagért lásd [: oktatóanyag: statikus webhely üzemeltetése blob Storageon](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host).
+
+1. Válassza a **Storage Explorer (előzetes verzió)** lehetőséget.
+
+2. Bontsa ki a **blob-tárolók** csomópontot, majd válassza ki a **$web** tárolót.
+
+3. A fájlok feltöltéséhez kattintson a **feltöltés** gombra.
+
+   ![Fájlok feltöltése](media/storage-blob-static-website/storage-blob-static-website-upload.png)
+
+4. Ha a böngészőben szeretné megjeleníteni a fájl tartalmát, győződjön meg arról, hogy a fájl tartalomtípusa `text/html`értékre van beállítva. 
+
+   ![Tartalomtípusok keresése](media/storage-blob-static-website/storage-blob-static-website-content-type.png)
+
+   >[!NOTE]
+   > A Storage Explorer automatikusan beállítja ezt a tulajdonságot az általánosan ismert bővítmények, például a `.html``text/html` számára. Bizonyos esetekben azonban ezt saját magának kell beállítania. Ha nem állítja be ezt a tulajdonságot a `text/html`re, a böngésző kéri a felhasználókat, hogy a tartalom megjelenítése helyett letöltsék a fájlt. A tulajdonság beállításához kattintson a jobb gombbal a fájlra, majd kattintson a **Tulajdonságok**parancsra.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Objektumok feltöltése a *$web* tárolóba egy forrás könyvtárából.
+
+> [!NOTE]
+> Ha Azure Cloud Shell használ, ügyeljen arra, hogy `\` Escape-karaktert adjon hozzá, ha a `$web` tárolóra hivatkozik (például: `\$web`). Ha az Azure CLI helyi telepítését használja, akkor nem kell használni az Escape-karaktert.
+
+Ez a példa feltételezi, hogy Azure Cloud Shell-munkamenetből futtat parancsokat.
+
+```azurecli-interactive
+az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name> --content-type 'text/html; charset=utf-8'
+```
+
+* Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
+
+* Cserélje le a `<source-path>` helyőrzőt a feltölteni kívánt fájlok helyének elérési útjára.
+
+> [!NOTE]
+> Ha az Azure CLI-t használja, az elérési utat a helyi számítógép bármely helyére használhatja (például: `C:\myFolder`.
+>
+> Azure Cloud Shell használata esetén olyan fájlmegosztást kell hivatkoznia, amely látható a Cloud Shell számára. Ez a hely lehet a megosztott felhőalapú fájlmegosztás vagy egy meglévő fájlmegosztás, amelyet a Cloud Shell lehet csatlakoztatni. Ennek megismeréséhez tekintse meg [a fájlok megőrzése Azure Cloud Shellban](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)című témakört.
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Objektumok feltöltése a *$web* tárolóba egy forrás könyvtárából.
+
+```powershell
+# upload a file
+set-AzStorageblobcontent -File "<path-to-file>" `
+-Properties @{ ContentType = "text/html; charset=utf-8";} `
+-Container `$web `
+-Blob "<blob-name>" `
+-Context $ctx
+```
+
+* Cserélje le a `<path-to-file>` helyőrző értékét a feltölteni kívánt fájl teljes elérési útjára (például: `C:\temp\index.html`).
+
+* Cserélje le a `<blob-name>` helyőrző értékét arra a névre, amelyet az eredményül kapott blobhoz kíván adni (például: `index.html`).
+
+---
+
+## <a name="find-the-website-url-by-using-the-azure-portal"></a>A webhely URL-címének megkeresése a Azure Portal használatával
+
+A webhely oldalait egy böngészőből tekintheti meg a webhely nyilvános URL-címének használatával.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+<a id="portal-find-url" />
+
+A Storage-fiók fiók áttekintése oldalán megjelenő ablaktáblán válassza a **statikus webhely**lehetőséget. A webhely URL-címe az **elsődleges végpont** mezőben jelenik meg.
+
+![Azure Storage – statikus webhelyek mérőszámai metrika](./media/storage-blob-static-website/storage-blob-static-website-url.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+<a id="cli-find-url" />
+
+A statikus webhely nyilvános URL-címének megkereséséhez használja a következő parancsot:
+
+```azurecli-interactive
+az storage account show -n <storage-account-name> -g <resource-group-name> --query "primaryEndpoints.web" --output tsv
+```
+
+* Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
+
+* Cserélje le a `<resource-group-name>` helyőrző értékét az erőforráscsoport nevére.
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 <a id="powershell-find-url" />
 
-### <a name="find-the-website-url-by-using-powershell"></a>A webhely URL-címének megkeresése a PowerShell használatával
-
-A tartalmak egy böngészőben a webhely nyilvános URL-címével tekinthetők meg.
-
-Keresse meg az URL-címet a következő parancs használatával:
+A következő parancs használatával keresse meg a statikus webhely nyilvános URL-címét:
 
 ```powershell
  $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -Name "<storage-account-name>"
@@ -184,9 +231,9 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 * Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
 
-<a id="metrics" />
-
 ---
+
+<a id="metrics" />
 
 ## <a name="enable-metrics-on-static-website-pages"></a>Metrikák engedélyezése a statikus webhelyek oldalain
 

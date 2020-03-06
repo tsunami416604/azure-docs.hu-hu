@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: e0458fd257942a455daef911a303437fea03b11b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 07e2d6f174e5af4af9bdcac73dc74f5cf061ed41
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122007"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300485"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Gyors útmutató: az Azure cache használata a Node. js-sel rendelkező Redis
 
@@ -55,7 +55,7 @@ Ne hozzon létre új kapcsolatokat a kód minden műveletéhez. Ehelyett a lehet
 
 ## <a name="create-a-new-nodejs-app"></a>Új Node.js-alkalmazás létrehozása
 
-Hozzon létre egy *redistest.js* nevű új szkriptfájlt.
+Hozzon létre egy *redistest.js* nevű új szkriptfájlt. A szükséges csomagok telepítéséhez használja a `npm install redis bluebird` parancsot.
 
 Adja hozzá a következő példa JavaScriptet a fájlhoz. Ez a kód azt mutatja be, hogyan csatlakozhat egy Azure cache-hez a Redis-példányhoz a gyorsítótár állomásneve és a legfontosabb környezeti változók használatával. A kód emellett tárolja és lekéri gyorsítótár egyik sztringértékét. A rendszer a `PING` és a `CLIENT LIST` parancsot is végrehajtja. További példák a Redis használatára a [node_redis](https://github.com/mranney/node_redis) ügyféllel: [https://redis.js.org/](https://redis.js.org/).
 
@@ -63,6 +63,7 @@ Adja hozzá a következő példa JavaScriptet a fájlhoz. Ez a kód azt mutatja 
 var redis = require("redis");
 var bluebird = require("bluebird");
 
+// Convert Redis client API to use promises, to make it usable with async/await syntax
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 
@@ -115,7 +116,7 @@ Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és �
 Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díjak elkerülése érdekében törölheti az ebben a rövid útmutatóban létrehozott Azure-erőforrásokat. 
 
 > [!IMPORTANT]
-> Az erőforráscsoport törlése nem visszaállítható; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
+> Az erőforráscsoport törlése nem vonható vissza; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
 >
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
@@ -128,7 +129,7 @@ A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t a Redis egy Node. js-alkalmazásból. Folytassa a következő rövid útmutatóval, hogy az Azure cache-t használja a Redis egy ASP.NET-webalkalmazással.
 

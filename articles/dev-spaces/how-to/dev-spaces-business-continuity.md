@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Ismerje meg, hogyan használható az Azure dev Spaces és az Azure Kubernetes Services az üzletmenet folytonosságának biztosításához és a vész-helyreállítás előkészítéséhez
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 8561486bcf8524d309ba46fcbb4b4d3e180d7c72
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252391"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295827"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Üzletmenet-folytonosság és vész-helyreállítás az Azure dev Spaces szolgáltatásban
 
@@ -27,11 +27,9 @@ A fejlesztői szóközöknek a különböző régiókban található AK-fürtök
 
 Az AK többrégiós üzembe helyezésével kapcsolatos általános információkért lásd: [a többrégiós telepítés tervezése](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
 
-Az Azure dev Spaces szolgáltatással kompatibilis AK-fürtök telepítésével kapcsolatos információkért lásd: [Kubernetes-fürt létrehozása Azure Cloud Shell használatával](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell)
-
 ### <a name="enable-dev-spaces-via-the-azure-portal"></a>A fejlesztői szóközök engedélyezése a Azure Portal használatával
 
-Kattintson a **dev Spaces** navigációs elemre a Azure Portal egyes fürtjének tulajdonságai alatt. Ezután válassza a fejlesztői szóközök engedélyezésének lehetőségét.
+Válassza a **dev Spaces** menüpontot a Azure Portal egyes fürtjének beállításai alatt. Ezután válassza a fejlesztői szóközök engedélyezését és a mentés lehetőséget.
 
 ![A fejlesztői szóközök engedélyezése Azure Portal használatával](../media/common/enable-dev-spaces.jpg)
 
@@ -53,7 +51,7 @@ Az alapkonfiguráció-készlet legújabb verzióit több régióban lévő fürt
 
 ## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Válassza ki a fejlesztői Szóközökhez használandó megfelelő AK-fürtöt
 
-Miután megfelelően konfigurált egy biztonsági mentési fürtöt, amely a csapata alapkonfigurációját futtatja, bármikor gyorsan átválthat a tartalék fürtre. Ezután újra futtathatja azokat az egyes szolgáltatásokat, amelyeken dolgozik a fejlesztői terekben.
+Miután megfelelően konfigurált egy biztonsági mentési fürtöt, amely a csapata alapkonfigurációját futtatja, bármikor gyorsan átválthat a tartalék fürtre. Ezután újra futtathatja azokat az egyes szolgáltatásokat, amelyeken dolgozik a gyermek-fejlesztési területeken.
 
 Válasszon másik fürtöt a következő CLI-paranccsal:
 

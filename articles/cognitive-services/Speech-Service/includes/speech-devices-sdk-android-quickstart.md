@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
-ms.openlocfilehash: 44ca89cb9d1ecb1a6b7fb91a146cd440f40bb303
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 2ee6b12923bfd0e06343e8f185226cb72280d806
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563219"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384084"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Androidhoz készült Speech Devices SDK-t, hogy beszédfelismerésre alkalmas terméket hozzon létre, vagy [beszélgetéses átírási](../conversation-transcription-service.md) eszközként használja azt.
 
@@ -96,7 +96,7 @@ A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepí
     A **Build. gradle (modul: alkalmazás)** frissítéséhez adja hozzá ezt a sort a függőségek szakaszhoz. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.9.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.10.0'
     ```
     
 1. Adja hozzá a beszédfelismerési előfizetéshez tartozó kulcsot a forráskódhoz. Ha szeretné kipróbálni a szándék felismerését, adja hozzá a [Language Understanding szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetési kulcsát és az alkalmazás azonosítóját is.

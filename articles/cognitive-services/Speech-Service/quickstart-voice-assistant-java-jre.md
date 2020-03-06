@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: dapine
-ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6baa98d50c50146e93b4832053f63f3bead90a6d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119676"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330829"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Rövid útmutató: hangsegéd létrehozása a Speech SDK-val, Java (előzetes verzió)
 
 A gyors útmutatókat a [szöveg](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre) [-](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre)beszéd, a beszédfelismerés és a [beszéd fordítása](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre)is elérhetővé teszi.
 
-Ebben a cikkben egy Java-konzol alkalmazást hoz létre az [Azure Cognitive Services SPEECH SDK](speech-sdk.md)használatával. Az alkalmazás egy korábban létrehozott robothoz van konfigurálva, amely a közvetlen sortörési csatornát használja, hangkérést küld, és visszaadja a hangválaszi tevékenységet (ha be van állítva). Az alkalmazás a Speech SDK Maven-csomaggal és az Eclipse Java IDE Windows, Ubuntu Linux vagy macOS rendszeren készült. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
+Ebben a cikkben egy Java-konzol alkalmazást hoz létre az [Azure Cognitive Services SPEECH SDK](speech-sdk.md)használatával. Az alkalmazás egy korábban létrehozott robothoz van konfigurálva, amely a közvetlen sortörési csatornát használja, hangkérést küld, és visszaadja a hangválaszi tevékenységet (ha be van állítva). Az alkalmazás a Speech SDK Maven-csomaggal és az Eclipse Java IDE Windows, Linux vagy macOS rendszeren készült. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-- Operációs rendszer: Windows (64 bites), Ubuntu Linux 16.04/18.04 (64 bites), vagy macOS 10,13 vagy újabb.
+- Operációs rendszer: Windows (64 bites), Ubuntu Linux 16.04/18.04 (64-bit), RHEL/CentOS 8 (x64) vagy macOS 10,13 vagy újabb.
 - [Eclipse Java ide](https://www.eclipse.org/downloads/).
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) vagy [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 - Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md) , vagy hozza létre a [Azure Portalban](https://portal.azure.com).
@@ -42,6 +42,17 @@ Ha Ubuntu 16.04/18.04-t futtat, győződjön meg róla, hogy ezek a függősége
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
+
+RHEL/CentOS 8 rendszeren:
+
+```sh
+sudo yum update
+sudo yum groupinstall "Development tools"
+sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl wget
+```
+
+> [!NOTE]
+> A RHEL/CentOS 8 rendszeren kövesse az [OpenSSL Linux rendszerhez való konfigurálásának](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)utasításait.
 
 Ha Windows rendszert futtat (64 bites), győződjön meg arról, hogy telepítette a platformhoz készült Microsoft vizualizációs C++ terjeszthető csomagot:
 

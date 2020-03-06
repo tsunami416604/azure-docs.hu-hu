@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2cb7d82efd010fd7c3395a4f6a9217370d9e5779
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 758ac13530752df481d27e7e253f025f5c8d6430
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349580"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302202"
 ---
 # <a name="replace-azure-cosmos-db"></a>Replace (Azure Cosmos DB)
  A megadott karakterlánc értéket az összes előfordulását lecseréli egy másik karakterláncérték.  
@@ -32,7 +32,7 @@ REPLACE(<str_expr1>, <str_expr2>, <str_expr3>)
    A megtalált karakterlánc-kifejezés.  
   
 *str_expr3*  
-   A karakterlánc-kifejezés a *str_expr2* *str_expr1*-beli előfordulásait váltja fel.  
+   A *str_expr1* *str_expr2* előfordulásait lecserélő karakterlánc-kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
@@ -40,10 +40,10 @@ REPLACE(<str_expr1>, <str_expr2>, <str_expr3>)
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa azt szemlélteti, hogyan használható a `REPLACE` a lekérdezésekben.  
+  Az alábbi példa azt szemlélteti, hogyan használható a `REPLACE` egy lekérdezésben.  
   
 ```sql
-SELECT REPLACE("This is a Test", "Test", "desk") AS replace 
+SELECT REPLACE("This is a Test", "Test", "desk") AS replace
 ```  
   
  Íme az eredményhalmaz.  
@@ -52,7 +52,11 @@ SELECT REPLACE("This is a Test", "Test", "desk") AS replace
 [{"replace": "This is a desk"}]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

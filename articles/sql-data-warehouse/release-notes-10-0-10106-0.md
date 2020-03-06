@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 4811f24fb942689bddcc9d9d1bcb8c33d147c1af
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 934e804b60312a32300c4b884ea8fd15e2195870
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78256018"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302032"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Az Azure szinapszis Analytics kibocsátási megjegyzései
 
@@ -38,6 +38,13 @@ Az azonosított verzió segítségével ellenőrizze, hogy az SQL-készleten mel
 > ```
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="february-2020"></a>2020. február
+
+| Szolgáltatások fejlesztése | Részletek |
+| --- | --- |
+|**Adatbázis-kompatibilitási szint (előzetes verzió)**| Ezzel a kiadással a felhasználók mostantól beállíthatja az adatbázis kompatibilitási szintjét, hogy lekérje a Transact-SQL nyelvét, és lekérdezze az SQL Analytics motor egy adott verziójának feldolgozási viselkedését. További információ: [sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?view=azure-sqldw-latest&branch=pr-en-us-13797) és az [adatbázis-hatókörű konfiguráció módosítása](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?view=sql-server-ver15).|
+|**Sp_describe_undeclared_parameters**| Annak engedélyezése, hogy a felhasználók megtekintsék a nem deklarált paraméterek metaadatait egy Transact-SQL-kötegben. További információ: [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?view=sql-server-ver15).|
 
 ## <a name="january-2020"></a>2020. január
 
@@ -125,7 +132,7 @@ Az azonosított verzió segítségével ellenőrizze, hogy az SQL-készleten mel
 
 | A dokumentáció fejlesztése | Részletek |
 | --- | --- |
-|Nincs | |
+|nincs | |
 | | |
 
 ## <a name="december-2018"></a>2018. december

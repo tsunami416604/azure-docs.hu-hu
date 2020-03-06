@@ -4,12 +4,12 @@ description: Hibaelhárítási útmutatót biztosít a Azure Backup teljesítmé
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: f8988d3df7f61d2fce4c8fa5b49e42e872c185b8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: ed91a1cd8600f4e1ac208b0036c3d4ba74c0e6bb
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603137"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295963"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Az Azure Backup-fájlok és -mappák lassú biztonsági mentésének hibaelhárítása
 
@@ -44,19 +44,19 @@ Javasoljuk továbbá, hogy tekintse át a [Azure Backup szolgáltatással](backu
 
 A biztonsági mentés alatt álló számítógép szűk keresztmetszetei késéseket okozhatnak. Előfordulhat például, hogy a számítógép képes a lemezre írni vagy olvasni, vagy a rendelkezésre álló sávszélességet a hálózaton keresztüli adatküldés esetén szűk keresztmetszetet okozhat.
 
-A Windows a [teljesítmény figyelője](h https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (Perfmon) nevű beépített eszközt biztosít a szűk keresztmetszetek észleléséhez.
+A Windows a [teljesítmény figyelője](https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (Perfmon) nevű beépített eszközt biztosít a szűk keresztmetszetek észleléséhez.
 
 Íme néhány teljesítményszámlálók és tartományok, amelyek hasznosak lehetnek a szűk keresztmetszetek optimális biztonsági mentéshez való diagnosztizálásában.
 
 | Számláló | status |
 | --- | --- |
-| Logikai lemez (fizikai lemez) –% tétlen |• 100% üresjárati állapot: 50% tétlen = kifogástalan</br>• 49% tétlen – 20% tétlen = figyelmeztetés vagy figyelő</br>• 19% üresjáratban 0% tétlen = kritikus vagy a spec |
-| Logikai lemez (fizikai lemez) –% AVG. lemez olvasása vagy írása (mp) |• 0,001 MS – 0,015 MS = kifogástalan</br>• 0,015 MS – 0,025 MS = figyelmeztetés vagy figyelő</br>• 0,026 MS vagy több = kritikus vagy nem a spec |
+| Logikai lemez (fizikai lemez) –% tétlen |* 100% üresjárati állapot: 50% Idle = kifogástalan</br>* 49% üresjáratban 20% tétlen = figyelmeztetés vagy figyelő</br>* 19% üresjáratban 0% tétlen = kritikus vagy a spec |
+| Logikai lemez (fizikai lemez) –% AVG. lemez olvasása vagy írása (mp) |* 0,001 MS – 0,015 MS = kifogástalan</br>* 0,015 MS – 0,025 MS = figyelmeztetés vagy figyelő</br>* 0,026 MS vagy több = kritikus vagy nem a spec |
 | Logikai lemez (fizikai lemez) – a lemez aktuális várólistájának hossza (az összes példány esetében) |80 kérelem 6 percnél hosszabb ideig |
-| Memória – nem lapozható készlet (bájt) |• A felhasznált készlet kevesebb mint 60%-a felhasználva = kifogástalan<br>• 61% – 80%-a készlet felhasználva = figyelmeztetés vagy figyelő</br>• Nagyobb, mint 80%-os készlet felhasználva = kritikus vagy a spec |
-| Memória – a készlet lapozható bájtjai |• A felhasznált készlet kevesebb mint 60%-a felhasználva = kifogástalan</br>• 61% – 80%-a készlet felhasználva = figyelmeztetés vagy figyelő</br>• Nagyobb, mint 80%-os készlet felhasználva = kritikus vagy a spec |
-| Memória – rendelkezésre álló megabájt |• a rendelkezésre álló szabad memória 50%-a vagy több = kifogástalan</br>• a rendelkezésre álló szabad memória 25%-a = figyelő</br>• a rendelkezésre álló szabad memória 10%-a = figyelmeztetés</br>• A rendelkezésre álló szabad memória kevesebb, mint 100 MB vagy 5%-a érhető el = kritikus vagy a spec |
-| Processzor –\%processzoridő (minden példány) |• Kevesebb, mint 60% felhasznált = kifogástalan</br>• 61% – 90% felhasználva = figyelő vagy figyelmeztetés</br>• 91% – 100% felhasználva = kritikus |
+| Memória – nem lapozható készlet (bájt) |* Kevesebb, mint 60%-a felhasznált készlet = kifogástalan<br>* 61% – 80% a készlet felhasználva = figyelmeztetés vagy figyelő</br>* Nagyobb, mint 80%-os készlet felhasználva = kritikus vagy a spec |
+| Memória – a készlet lapozható bájtjai |* Kevesebb, mint 60%-a felhasznált készlet = kifogástalan</br>* 61% – 80% a készlet felhasználva = figyelmeztetés vagy figyelő</br>* Nagyobb, mint 80%-os készlet felhasználva = kritikus vagy a spec |
+| Memória – rendelkezésre álló megabájt |* a rendelkezésre álló szabad memória 50%-a vagy több = kifogástalan</br>* a rendelkezésre álló szabad memória 25%-a = figyelő</br>* a rendelkezésre álló szabad memória 10%-a = figyelmeztetés</br>* Kevesebb, mint 100 MB vagy 5% szabad memória érhető el = kritikus vagy a spec |
+| Processzor –\%processzoridő (minden példány) |* Kevesebb mint 60% felhasznált = kifogástalan</br>* 61% – 90% felhasználva = figyelő vagy figyelmeztetés</br>* 91% – 100% felhasználva = kritikus |
 
 > [!NOTE]
 > Ha azt állapítja meg, hogy az infrastruktúra a bűnös, javasoljuk, hogy a lemezeket a jobb teljesítmény érdekében rendszeresen töredezettségmentesíteni.

@@ -4,18 +4,18 @@ description: Ismerje meg, hogy a Azure Cosmos DB ATN2 SQL System függvénye hog
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 11321ef9d7b81af279b04e0e435b19c645cf3bcf
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 696e14e75998ead04c99fab2b84fc4c742d5f54a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871652"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302661"
 ---
 # <a name="atn2-azure-cosmos-db"></a>ATN2 (Azure Cosmos DB)
- Az y/x arkusz tangensének elsődleges értékét adja vissza radiánban kifejezve.  
+ Az arkusz tangens / x, y radiánban kifejezett fő értékét adja vissza.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,25 +26,29 @@ ATN2(<numeric_expr>, <numeric_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *numeric_expr*  
-   Egy numerikus kifejezés.  
+   A numerikus kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy numerikus kifejezést ad vissza.  
+  A numerikus kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa a megadott x és y összetevők ATN2 számítja ki.  
+  Az alábbi példa alapján számítja ki a ATN2 a megadott x és y összetevőket.  
   
 ```sql
 SELECT ATN2(35.175643, 129.44) AS atn2  
 ```  
   
- Itt látható az eredményhalmaz.  
+ Íme az eredményhalmaz.  
   
 ```json
 [{"atn2": 1.3054517947300646}]  
 ```  
+
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>Következő lépések
 

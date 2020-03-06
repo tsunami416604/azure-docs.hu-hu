@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1858b221418e6cc59c6441e0653299710b5c7e72
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: ca4051e56f7d51ac7ac5fbe534cb8fc536d64a68
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208644"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368685"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Ismerkedés a Azure Maps Android SDK-val
 
@@ -127,10 +127,8 @@ Az alkalmazás létrehozásának következő lépése a Azure Maps Android SDK t
     ```java
     package com.example.myapplication;
 
-    //For older versions use: import android.support.v7.app.AppCompatActivity;
+    //For older versions use: import android.support.v7.app.AppCompatActivity; 
     import androidx.appcompat.app.AppCompatActivity;
-
-    import android.os.Bundle;
     import com.microsoft.azure.maps.mapcontrol.AzureMaps;
     import com.microsoft.azure.maps.mapcontrol.MapControl;
     import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
@@ -270,7 +268,7 @@ Itt látható egy példa arra, hogy Azure Maps a "fr-FR" és a regionális néze
 
 A támogatott nyelvek és regionális nézetek teljes listáját [itt](supported-languages.md)dokumentáljuk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan adhat hozzá átfedéses információkat a térképen:
 

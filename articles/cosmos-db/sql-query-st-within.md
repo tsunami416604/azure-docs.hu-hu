@@ -1,18 +1,18 @@
 ---
-title: ST_WITHIN Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function ST_WITHIN Azure Cosmos DB.
+title: Azure Cosmos DB lekérdezési nyelv ST_WITHIN
+description: Ismerkedjen meg a Azure Cosmos DB SQL System Function ST_WITHINával.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 40ecb26e7ac782d7831e6ef94c9d3cfc6a370cbb
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 07a339d82f5e4bea1ea0412a5d5b19522611b54a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349331"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296116"
 ---
 # <a name="st_within-azure-cosmos-db"></a>ST_WITHIN (Azure Cosmos DB)
  Egy logikai kifejezés, amely azt jelzi, hogy a második argumentum GeoJSON (pont, Polygon vagy LineString) belül van-e a GeoJSON-objektum (pont, Polygon vagy LineString) az első argumentumban megadott adja vissza.  
@@ -34,13 +34,13 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa bemutatja, hogyan keresheti meg az összes családi dokumentumot egy sokszögen belül `ST_WITHIN` használatával.  
+  Az alábbi példa bemutatja, hogyan keresheti meg az összes családi dokumentumot egy sokszögen belül `ST_WITHIN`használatával.  
   
 ```sql
-SELECT f.id   
-FROM Families f   
+SELECT f.id
+FROM Families f
 WHERE ST_WITHIN(f.location, {  
-    'type':'Polygon',   
+    'type':'Polygon',
     'coordinates': [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]  
 })  
 ```  
@@ -51,7 +51,11 @@ WHERE ST_WITHIN(f.location, {
 [{ "id": "WakefieldFamily" }]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfunkció kihasználja a [térinformatikai index](index-policy.md#spatial-indexes)előnyeit.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Térbeli függvények Azure Cosmos DB](sql-query-spatial-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

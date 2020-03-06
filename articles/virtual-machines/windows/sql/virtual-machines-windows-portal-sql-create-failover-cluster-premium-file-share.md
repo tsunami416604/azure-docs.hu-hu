@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 9595ee87801fa4ce187a50197fc58d6c448eac24
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651361"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303222"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása prémium fájlmegosztás esetén az Azure Virtual Machines szolgáltatásban
 
@@ -53,7 +53,7 @@ Ellenőrizze a környezet IOPS tevékenységét, és ellenőrizze, hogy a prémi
 
 Sok számítási feladat kitörte az IO-t, ezért érdemes a nagy mennyiségű használati időszakot is megfigyelni, és a maximális IOPS és az átlagos IOPS is figyelembe venni. A prémium fájlmegosztás a megosztás méretétől függően biztosít IOPS. A prémium szintű fájlmegosztás ingyenes kibontást is biztosít, amely lehetővé teszi, hogy akár egy óráig is tripla az alapértéket.
 
-További információ a prémium szintű fájlmegosztás teljesítményéről: [fájlmegosztás teljesítményi szintjei](https://docs.microsoft.com/azure/storage/files/storage-files-planning#file-share-performance-tiers).
+További információ a prémium szintű fájlmegosztás teljesítményéről: [fájlmegosztás teljesítményi szintjei](https://docs.microsoft.com/azure/storage/files/storage-files-planning#storage-tiers).
 
 ### <a name="licensing-and-pricing"></a>Licencelés és díjszabás
 
@@ -155,7 +155,7 @@ Ezeknek az előfeltételeknek a megkezdése után elkezdheti felépíteni a fela
 
    | Cél | TCP-port | Megjegyzések
    | ------ | ------ | ------
-   | SQL Server | 1433 | Normál port a SQL Server alapértelmezett példányaihoz. Ha a katalógusból rendszerképet használt, a rendszer automatikusan megnyitja a portot.
+   | SQL Server-kiszolgáló | 1433 | Normál port a SQL Server alapértelmezett példányaihoz. Ha a katalógusból rendszerképet használt, a rendszer automatikusan megnyitja a portot.
    | Állapotadat-mintavétel | 59999 | Bármilyen nyitott TCP-port. Egy későbbi lépésben konfigurálja a terheléselosztó [állapotának](#probe) mintavételét és a fürtöt, hogy ezt a portot használja.
    | Fájlmegosztás | 445 | A fájlmegosztási szolgáltatás által használt port.
 

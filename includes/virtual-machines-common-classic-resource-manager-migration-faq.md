@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 57469bef7014010164234638f3d059ac96b125cf
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912570"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383898"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>Mennyi idő szükséges az áttelepítéshez?
 
@@ -22,6 +22,14 @@ Az áttelepítés megtervezése és végrehajtása nagy mértékben függ az arc
 ## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>Mi a IaaS virtuális gépek (klasszikus) új ügyfelének definíciója?
 
 Azok az ügyfelek, akik nem rendelkeznek a IaaS virtuális gépekkel (klasszikus) az előfizetésekben a 2020 Febrauary (egy hónappal az elavult indítás előtt), új ügyfélnek számítanak. 
+
+## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>Mi a IaaS Virtual Machines (klasszikus) meglévő ügyfelének definíciója?
+
+Azok az ügyfelek, akik aktívak vagy leállítottak, de a IaaS virtuális gépeket (klasszikus) a 2020. február hónapjában foglalták le, egy meglévő ügyfélnek számítanak. Csak a 2023. március 1. előtt kapják meg a virtuális gépeket az Azure Service Managerról Azure Resource Managerba. 
+
+## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Miért kapok hibaüzenetet, amely a "NewClassicVMCreationNotAllowedForSubscription"?
+
+A nyugdíjazási folyamat részeként a IaaS VM (klasszikus) már nem érhető el az új ügyfelek számára. Új ügyfelekként azonosította Önt, ezért a művelet nem volt engedélyezve. Erősen ajánlott az [Azure Virtual Machines használata az ARM használatával](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell). Ha nem tudja használni az Azure virtuális gépeket az ARM használatával, forduljon a támogatási szolgálathoz az előfizetés engedélyezési listájának megtekintéséhez.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Érinti ez a migrálási terv az Azure virtuális gépeken futó meglévő szolgáltatásaimat és alkalmazásaimat? 
 

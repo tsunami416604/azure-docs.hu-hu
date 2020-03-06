@@ -4,15 +4,15 @@ description: Ismerkedjen meg az SQL System Function ToString Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 53630a0ecd76459f23a978e98040a86152d7c0d8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 293449b1616e7124245d91c647177b958006009e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349128"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304259"
 ---
 # <a name="tostring-azure-cosmos-db"></a>ToString (Azure Cosmos DB)
  Egy skaláris kifejezés karakterláncként adja vissza. 
@@ -34,7 +34,7 @@ ToString(<expr>)
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa azt szemlélteti, hogyan viselkedik a `ToString` a különböző típusok között.   
+  Az alábbi példa bemutatja, hogyan viselkedik a `ToString` különböző típusokban.   
   
 ```sql
 SELECT 
@@ -57,7 +57,7 @@ SELECT
 ```json
 {"Products":[{"ProductID":1,"Weight":4,"WeightUnits":"lb"},{"ProductID":2,"Weight":32,"WeightUnits":"kg"},{"ProductID":3,"Weight":400,"WeightUnits":"g"},{"ProductID":4,"Weight":8999,"WeightUnits":"mg"}]}
 ```    
- Az alábbi példa azt szemlélteti, hogyan használható a `ToString` más karakterlánc-függvényekkel, például `CONCAT`.   
+ Az alábbi példa azt szemlélteti, hogyan használhatók a `ToString` más karakterlánc-függvényekkel, például a `CONCAT`sal.   
  
 ```sql
 SELECT 
@@ -78,7 +78,7 @@ A következő bemeneti megadott.
 ```json
 {"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
 ```
-Az alábbi példa azt szemlélteti, hogyan használható a `ToString` más karakterlánc-függvényekkel, például `REPLACE`.   
+Az alábbi példa azt szemlélteti, hogyan használhatók a `ToString` más karakterlánc-függvényekkel, például a `REPLACE`sal.   
 ```sql
 SELECT 
     n.id AS nutrientID,
@@ -95,7 +95,11 @@ JOIN n IN food.nutrients
 {"nutrientID":"309","nutritionVal":"null"}]
 ``` 
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Ez a rendszerfüggvény nem fogja használni az indexet.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

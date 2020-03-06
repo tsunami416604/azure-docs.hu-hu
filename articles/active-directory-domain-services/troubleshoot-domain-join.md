@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 286e2ad460e98cfeceab52a3ac21bcba8da2cc7f
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f187dba4eace61695a72e4b7b08731e65ff0d7f9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612807"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299108"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services felügyelt tartományhoz való csatlakozással kapcsolatos problémák elhárítása
 
@@ -55,7 +55,7 @@ A hitelesítő adatokkal kapcsolatos problémák elhárításához tekintse át 
 
 1. Próbálja meg az UPN formátumot használni a hitelesítő adatok megadásához, például `dee@aaddscontoso.onmicrosoft.com`. Győződjön meg arról, hogy az UPN helyesen van konfigurálva az Azure AD-ben.
     * Előfordulhat, hogy a fiókhoz tartozó *sAMAccountName* automatikusan létrejön, ha több felhasználó rendelkezik UGYANAZZAL az UPN-előtaggal a bérlőben, vagy ha az UPN-előtag túl hosszú. Ezért előfordulhat, hogy a fiók *sAMAccountName* -formátuma eltér a helyszíni tartományban várttól vagy használattól.
-1. Próbáljon meg egy olyan felhasználói fiók hitelesítő adatait használni, amely a *HRE DC-rendszergazdák* csoportba tartozik, és csatlakoztassa a virtuális gépeket az Azure AD DS felügyelt tartományhoz.
+1. Próbálja meg használni egy olyan felhasználói fiók hitelesítő adatait, amely az Azure AD DS felügyelt tartomány tagja, hogy a virtuális gépeket a felügyelt tartományhoz csatlakoztassa.
 1. Győződjön meg arról, hogy [engedélyezte a jelszó-szinkronizálást][enable-password-sync] , és elég sokáig várt a jelszó-szinkronizálás kezdeti befejezéséhez.
 
 ## <a name="next-steps"></a>Következő lépések

@@ -3,14 +3,14 @@ title: Átmeneti környezetek beállítása
 description: Megtudhatja, hogyan telepíthet alkalmazásokat egy nem éles környezetbe, és hogyan végezheti el az autoswap szolgáltatást éles környezetben. Növelje a megbízhatóságot, és távolítsa el az alkalmazások leállását az üzembe helyezésből.
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 09/19/2019
+ms.date: 03/04/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 63070b2c1e6adbb0149446b218e6e58023b2d409
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666455"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300860"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezetek beállítása a Azure App Serviceban
 <a name="Overview"></a>
@@ -23,13 +23,13 @@ Az alkalmazás nem éles tárolóhelyre való üzembe helyezése a következő e
 * Ha először helyez üzembe egy alkalmazást egy tárolóhelyen, és az éles környezetbe kerül, akkor győződjön meg arról, hogy a tárolóhely összes példánya bemelegszik az éles környezetbe való váltás előtt. Ezzel kiküszöbölheti az állásidőt az alkalmazás telepítésekor. A forgalom átirányítása zökkenőmentes, és a swap-műveletek miatt a rendszer nem távolít el kérelmeket. Ez a teljes munkafolyamat automatizálható úgy, hogy az [automatikus swap](#Auto-Swap) konfigurálásával nem szükséges az előzetes swap érvényesítése.
 * A swap után a korábban előkészített alkalmazáshoz tartozó tárolóhely már az előző éles alkalmazásban van. Ha az éles tárolóhelyre való váltás nem a várt módon történik, akkor azonnal végrehajthatja ugyanezt a cserét, hogy az "utolsó ismert jó hely" vissza legyen hajtva.
 
-Minden App Service díjcsomag különböző számú üzembe helyezési tárolóhelyet támogat. Az üzembe helyezési pontok használata nem jár további költségekkel. Az alkalmazás szintjei által támogatott résidők számának megállapításához tekintse meg a [app Service korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits)című témakört. 
+Minden App Service díjcsomag különböző számú üzembe helyezési tárolóhelyet támogat. Az üzembe helyezési pontok használata nem jár további költségekkel. Az alkalmazás szintjei által támogatott résidők számának megállapításához tekintse meg a [app Service korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)című témakört. 
 
 Ha az alkalmazást egy másik szinten szeretné méretezni, győződjön meg arról, hogy a cél szintje támogatja az alkalmazás által már használt bővítőhelyek számát. Ha például az alkalmazás ötnél több tárolóhelye van, nem méretezheti le a **standard** szintű csomagra, mert a **standard** szint csak öt üzembe helyezési helyet támogat. 
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>Pont hozzáadása
+## <a name="add-a-slot"></a>Tárolóhely hozzáadása
 Az alkalmazásnak a **standard**, **prémium**vagy **elkülönített** szinten kell futnia, hogy több üzembe helyezési tárolóhelyet engedélyezzen.
 
 
@@ -40,7 +40,7 @@ Az alkalmazásnak a **standard**, **prémium**vagy **elkülönített** szinten k
 
 2. A bal oldali ablaktáblán válassza a **telepítési bővítőhelyek** > **tárolóhely hozzáadása**lehetőséget.
    
-    ![Új üzembehelyezési pont hozzáadása](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![Új üzembe helyezési pont hozzáadása](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
    > Ha az alkalmazás még nem szerepel a **standard**, **prémium**vagy **elkülönített** szinten, egy üzenet jelenik meg, amely a szakaszos közzététel engedélyezésének támogatott szintjeire utal. Ezen a ponton lehetősége van a **frissítés** lehetőség kiválasztására, és a folytatás előtt lépjen az alkalmazás **skálázás** lapjára.
@@ -48,7 +48,7 @@ Az alkalmazásnak a **standard**, **prémium**vagy **elkülönített** szinten k
 
 3. A **tárolóhely hozzáadása** párbeszédpanelen adja meg a tárolóhely nevét, és válassza ki, hogy az alkalmazás konfigurációját egy másik üzembe helyezési pontról szeretné-e klónozott. A folytatáshoz válassza a **Hozzáadás** lehetőséget.
    
-    ![Konfigurációs forrás](./media/web-sites-staged-publishing/ConfigurationSource1.png)
+    ![Konfiguráció forrása](./media/web-sites-staged-publishing/ConfigurationSource1.png)
    
     A konfigurációt bármely meglévő tárolóhelyről klónozással végezheti el. A klónozott beállítások közé tartozik az Alkalmazásbeállítások, a kapcsolati karakterláncok, a nyelvi keretrendszer verziói, a webes szoftvercsatornák, a HTTP-verzió és a platform bitszáma.
 
@@ -101,7 +101,7 @@ A swap művelet bármely pontján a felcserélt alkalmazások inicializálásán
 
 Ha egy adott tárolóhelyre vagy kapcsolódási sztringre kíván beállítani egy adott tárolóhelyet (nem cseréli le), lépjen az adott tárolóhely **konfiguráció** lapjára. Adjon hozzá vagy szerkesszen egy beállítást, majd válassza a **telepítési tárolóhely beállítása**lehetőséget. Ha bejelöli ezt a jelölőnégyzetet, App Service, hogy a beállítás nem cserélhető. 
 
-![Tárolóhely-beállítás](./media/web-sites-staged-publishing/SlotSetting.png)
+![Tárolóhely beállítása](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
@@ -210,7 +210,7 @@ A `applicationInitialization` elem testreszabásával kapcsolatos további infor
 
 A bemelegítő viselkedést a következő [Alkalmazásbeállítások](configure-common.md)egyikével vagy mindkettővel is testreszabhatja:
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: a hely bemelegítésének elérési útja. Adja hozzá ezt az alkalmazás-beállítást egy olyan egyéni elérési út megadásával, amely egy perjelként kezdődik az értékként. Például: `/statuscheck`. Az alapértelmezett érték 0.`/` 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: a hely bemelegítésének elérési útja. Adja hozzá ezt az alkalmazás-beállítást egy olyan egyéni elérési út megadásával, amely egy perjelként kezdődik az értékként. Például: `/statuscheck`. Az alapértelmezett érték `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: érvényes HTTP-válasz kódok a bemelegítő művelethez. Adja hozzá ezt az alkalmazás-beállítást a HTTP-kódok vesszővel tagolt listájához. Példa `200,202`. Ha a visszaadott állapotkód nem szerepel a listában, a bemelegedési és a swap művelet leáll. Alapértelmezés szerint az összes válasz kódja érvényes.
 
 > [!NOTE]
@@ -303,7 +303,7 @@ New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot
 ---
 ### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Váltás kezdeményezése az előzetes verzióval (többfázisú swap) és a tárolóhely konfigurációjának alkalmazása a forrás tárolóhelyre
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
@@ -316,7 +316,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ---
 ### <a name="swap-deployment-slots"></a>Üzembe helyezési pontok cseréje
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 

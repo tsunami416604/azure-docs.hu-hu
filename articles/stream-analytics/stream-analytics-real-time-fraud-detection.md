@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0273a0a729d39de27b9e417c23624992d1d55b42
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b7ca4677507f73467dddac09050f250ae34342a9
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064392"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329461"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Ismerkedés a Azure Stream Analytics használatával: a csalások valós idejű észlelése
 
@@ -81,7 +81,7 @@ Ebben az eljárásban először létre kell hoznia egy Event hub-névteret, majd
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
-9. Kattintson a **Létrehozás** gombra.
+9. Kattintson a  **Create** (Létrehozás) gombra.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Az eseményközponthoz való hozzáférés engedélyezése és kapcsolati sztring beszerzése
 
@@ -94,11 +94,11 @@ Ahhoz, hogy egy folyamat hozzáférhessen az adatközponthoz, az Event hub-nak r
     >[!NOTE]
     >Győződjön meg arról, hogy az Event hub-t használja, nem az Event hub-névteret.
 
-3.  Vegyen fel egy `sa-policy-manage-demo` nevű szabályzatot, és a **jogcím**beállításnál válassza a **kezelés**lehetőséget.
+3.  Vegyen fel egy `asa-policy-manage-demo` nevű szabályzatot, és a **jogcím**beállításnál válassza a **kezelés**lehetőséget.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4.  Kattintson a **Létrehozás** gombra.
+4.  Kattintson a  **Create** (Létrehozás) gombra.
 
 5.  Miután telepítette a házirendet, kattintson rá a megosztott hozzáférési házirendek listájában.
 
@@ -178,7 +178,7 @@ Most, hogy elvégezte a hívási események streamjét, beállíthat egy Stream 
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. Kattintson a **Létrehozás** gombra.
+3. Kattintson a  **Create** (Létrehozás) gombra.
 
     A rendszer létrehozza a feladatot, és a portál megjeleníti a feladatok részleteit. A művelet még nem fut, de a művelet elkezdése előtt konfigurálnia kell a feladatot.
 
@@ -203,7 +203,7 @@ Most, hogy elvégezte a hívási események streamjét, beállíthat egy Stream 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. Kattintson a **Létrehozás** gombra.
+4. Kattintson a  **Create** (Létrehozás) gombra.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Lekérdezések létrehozása a valós idejű adatértékek átalakításához
 

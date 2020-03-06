@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 63543c0ac34536b736bd4b8cdbd47fdd98e9f9be
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 0e2e16ccc04ff6df80597d646a00c40551e4cfd0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802212"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302049"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Közvetlen kapcsolat beállítása az Azure és az Oracle Cloud Infrastructure között  
 
@@ -35,7 +35,7 @@ Az alábbi képen az összekapcsolással kapcsolatos magas szintű áttekintés 
 
 * Az Azure és a OCI közötti kapcsolat létesítéséhez aktív Azure-előfizetéssel és aktív OCI-bérlettel kell rendelkeznie.
 
-* A kapcsolódás csak akkor lehetséges, ha egy Azure ExpressRoute-társítási hely közel van a OCI-FastConnect azonos egyenrangú helyéhez vagy ahhoz. Lásd az előzetes verzióra vonatkozó [korlátozásokat](oracle-oci-overview.md#preview-limitations).
+* A kapcsolódás csak akkor lehetséges, ha egy Azure ExpressRoute-társítási hely közel van a OCI-FastConnect azonos egyenrangú helyéhez vagy ahhoz. Lásd: [régió elérhetősége](oracle-oci-overview.md#region-availability).
 
 * Ehhez az előzetes verzióhoz engedélyezve kell lennie az Azure-előfizetésnek.
 
@@ -63,7 +63,7 @@ Az alábbi képen az összekapcsolással kapcsolatos magas szintű áttekintés 
     * A **szolgáltatói szolgáltatás kulcsában**illessze be a ExpressRoute szolgáltatás kulcsát.
     * Az első/30 magánhálózati IP-címtartomány kifaragva az **elsődleges BGP IP-címére** és a **másodlagos BGP IP** -címéhez tartozó második/30 magánhálózati IP-címtartomány használatára.
         * Rendelje hozzá a két tartomány első használható címét az Oracle BGP IP-címéhez (elsődleges és másodlagos) és a második címet az ügyfél BGP IP-címéhez (FastConnect perspektívából). Az első használható IP-cím a/30 címtartomány második IP-címe (az első IP-cím a Microsoft számára van fenntartva).
-    * Kattintson a **Create** (Létrehozás) gombra.
+    * Kattintson a  **Create** (Létrehozás) gombra.
 1. A FastConnect a dinamikus útválasztási átjárón keresztül, az útválasztási táblázat használatával kapcsolja össze a virtuális felhőalapú hálózattal.
 1. Navigáljon az Azure-hoz, és ellenőrizze, hogy a ExpressRoute áramkör **szolgáltatói állapota** **kiépítve** értékre változott-e, és hogy van-e kiépítve egy **Azure Private** típusú társ. Ez a következő lépések előfeltétele.
 
@@ -79,7 +79,7 @@ Az alábbi képen az összekapcsolással kapcsolatos magas szintű áttekintés 
 
 A hálózati konfiguráció befejezését követően ellenőrizheti a konfiguráció érvényességét. ehhez kattintson az **ARP-rekordok beolvasása** elemre, majd a Azure Portal ExpressRoute privát társítás paneljén található **útválasztási táblázat lekérése** lehetőségre.
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatizálás
 
 A Microsoft Terraform parancsfájlokat hozott létre a hálózati összekötő automatikus üzembe helyezésének engedélyezéséhez. A Terraform parancsfájloknak a végrehajtás előtt hitelesíteniük kell az Azure-ban, mert az Azure-előfizetéshez megfelelő engedélyekkel kell rendelkezniük. A hitelesítés [Azure Active Directory egyszerű szolgáltatásnév](../../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) vagy az Azure CLI használatával végezhető el. További információkért tekintse meg a [Terraform dokumentációját](https://www.terraform.io/docs/providers/azurerm/auth/azure_cli.html).
 

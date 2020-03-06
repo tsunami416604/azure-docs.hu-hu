@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: evansma
-ms.openlocfilehash: 50e5be309d56f58a79fa19b5270a0b6d2fd3db92
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 1506a4180a5991e6f6e8ed946192bcbf10bbeac0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268247"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296151"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Az Azure Marketplace és a AppSource tanácsadói szolgáltatásai
 Az Azure Marketplace-en és a AppSource-ben elérhető tanácsadói szolgáltatások lehetővé teszi a Microsoft partnerei számára, hogy összekapcsolják az ügyfeleket a szolgáltatásokkal az Azure és az üzleti célok támogatásához és bővítéséhez 
@@ -39,7 +39,7 @@ A Microsoft Dynamics 365, a Power apps és a Power BI alapján elérhető tanác
 A Microsoft Azureon alapuló tanácsadói szolgáltatások és felügyelt szolgáltatások az Azure Marketplace-en is szerepelhetnek. További információkért lásd: [Az Azure Consulting Service közzétételére](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) és [a felügyelt szolgáltatások Azure Marketplace-re való közzétételére](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)vonatkozó cikkek.
 
 > [!Note]
-> Az Azure Marketplace-en futó tanácsadói szolgáltatásoknak olyan ajánlatokat kell kihasználnia, amelyek a * * technikai közönség felé irányulnak, és az *Azure technikai megoldásaira és szolgáltatásaira* koncentrálnak. \* * A AppSource tanácsadó szolgálatának olyan ajánlatokat kell kihasználnia, amelyek a Dynamics 365-, Power BI-vagy PowerApps-alapú minőségi megoldások nyújtásával kapcsolatos ismereteiket használják a AppSource
+> Az Azure Marketplace-en futó tanácsadói szolgáltatásoknak olyan ajánlatokat kell kihasználnia, amelyek a * * technikai közönség felé irányulnak, és az *Azure technikai megoldásaira és szolgáltatásaira* koncentrálnak. \* * A AppSource tanácsadó szolgálatának olyan ajánlatokat kell kihasználnia, amelyek a Dynamics 365, Power BI vagy Power apps számára készült minőségi megoldások nyújtásával kapcsolatos ismereteiket használják a AppSource
 > 
 > 
 > [!TIP]
@@ -67,7 +67,7 @@ A partnereknek **Silver vagy Gold kompetenciára** van szükségük a szolgálta
 | Dynamics 365 Customer Insights | Legalább 1 sikeres, a [Dynamics 365](https://dynamics.microsoft.com/ai/customer-insights/) -es és 5-ös szegmenst tartalmazó Customer Insights éles megvalósítását kell végrehajtania. |
 | Dynamics 365 Business Central | A [Vállalati erőforrás-tervezési kompetenciában](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) arany vagy ezüst minősítéssel kell rendelkeznie, és a felhőalapú megoldás szolgáltatójának kell lennie legalább 3 üzleti központi ügyfél számára. <br> <br> VAGY <br> <br> Közzé kell tenni az [üzleti központi alkalmazást a AppSource-ben](https://appsource.microsoft.com/) |
 | Power BI | Szerepelnie kell a [Power bi partner bemutatóján](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
-|Power Apps | A [PowerApps-partnerségi programban](https://aka.ms/PowerAppsPartner)speciális előnyökre van szükség. |
+|Power Apps | A [Power apps partnerkapcsolati programjában](https://aka.ms/PowerAppsPartner)speciális előnyökre van szükség. |
 
 További források és támogatás:
 
@@ -83,7 +83,7 @@ További források és támogatás:
 | Ausztrália | Belgium | Kanada | Dánia |
 | Finnország  | Franciaország | Németország  | India   |
 | Olaszország    | Japán  |  Mexikó  |  Hollandia  |
-|  Új-Zéland  |  Norvégia  |  Lengyelország  | Dél-afrikai Köztársaság |
+|  Új-Zéland  |  Norvégia  |  Lengyelország  | Dél-Afrika |
 |  Spanyolország  | Svédország  | Svájc  |  Egyesült Államok  |
 | Egyesült Királyság  |
 

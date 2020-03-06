@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: afa9437a00c6f30688c7942feea94f7db7ed490a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d3cd330001bcf53e7bd4fb9e6955c76a9ef20511
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919345"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331076"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Rövid útmutató: a hosszú formátumú hang aszinkron szintézise a Pythonban (előzetes verzió)
 
@@ -30,7 +30,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * Python 2.7. x vagy 3. x.
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)vagy a kedvenc szövegszerkesztője.
-* Egy Azure-előfizetés és egy Speech Service-előfizetési kulcs. [Hozzon létre egy Azure-fiókot](../../get-started.md#new-resource) , és [hozzon létre egy beszédfelismerési erőforrást](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) a kulcs lekéréséhez. A beszédfelismerési erőforrás létrehozásakor győződjön meg arról, hogy a díjszabási szintje **S0**, és a hely egy [támogatott régióra](../../regions.md#standard-and-neural-voices)van beállítva.
+* Egy Azure-előfizetés és egy Speech Service-előfizetési kulcs. [Hozzon létre egy Azure-fiókot](../../get-started.md#new-resource) , és [hozzon létre egy beszédfelismerési erőforrást](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-resource) a kulcs lekéréséhez. A beszédfelismerési erőforrás létrehozásakor győződjön meg arról, hogy a díjszabási szintje **S0**, és a hely egy [támogatott régióra](../../regions.md#standard-and-neural-voices)van beállítva.
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 

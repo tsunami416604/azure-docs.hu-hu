@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/27/2020
+ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: f10604d23901c2d7ed23f8b4f32a296f063d8620
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 32d79267559480de8ec91e5e66196bfd57e01cf1
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776273"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299573"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>IoT biztonsági riasztások Azure Security Center
 
@@ -29,11 +29,11 @@ Javasoljuk, hogy hozzon létre egyéni riasztásokat a várt eszköz viselkedés
 
 A IoT-riasztások következő Azure Security Center listáját a várt IoT Hub és/vagy az eszköz viselkedése alapján meghatározhatja. Az egyes riasztások testreszabásával kapcsolatos további információkért lásd: [egyéni riasztások létrehozása](quickstart-create-custom-alerts.md).
 
-## <a name="azure-security-center-for-iot-alerts-available-for-customization"></a>A testreszabáshoz elérhető IoT-riasztások Azure Security Center 
+## <a name="iot-hub-alerts-available-for-customization"></a>A testreszabáshoz elérhető IoT Hub riasztások 
 
 
 
-| Súlyosság | Riasztás neve | Adatforrás | Leírás | Javasolt szervizelés|
+| Severity | Riasztás neve | Adatforrás | Leírás | Javasolt szervizelés|
 |---|---|---|---|---|
 | Alacsony      | Egyéni riasztás – az AMQP-protokollban található, Felhőbeli üzenetek száma kívül esik az engedélyezett tartományon.          | IoT Hub     | A megadott időtartományon belüli felhőből az eszközre irányuló üzenetek (AMQP protokoll) száma a jelenleg konfigurált és engedélyezett tartományon kívül esik.||
 | Alacsony      | Egyéni riasztás – az elutasított Felhőbeli üzenetek száma az AMQP protokollon kívül esik az engedélyezett tartományon. | IoT Hub     | Az eszköz által visszautasított Felhőbeli üzenetek (AMQP protokoll) száma egy adott időszakon belül a jelenleg konfigurált és engedélyezett tartományon kívül esik.||
@@ -49,13 +49,18 @@ A IoT-riasztások következő Azure Security Center listáját a várt IoT Hub �
 | Alacsony      | Egyéni riasztás – a parancssori törlések száma kívül esik az engedélyezett tartományon.                               | IoT Hub     | Egy adott időszakon belül a parancssori törlések mennyisége a jelenleg konfigurált és engedélyezett tartományon kívül esik.||
 | Alacsony      | Egyéni riasztás – a modul különálló frissítéseinek száma kívül esik az engedélyezett tartományon.                                       | IoT Hub     | Egy adott időszakon belül a modulhoz tartozó dupla frissítések mennyisége a jelenleg konfigurált és engedélyezett tartományon kívül esik.|
 | Alacsony      | Egyéni riasztás – a jogosulatlan műveletek száma kívül esik az engedélyezett tartományon.  | IoT Hub     | Egy adott időszakon belül nem engedélyezett műveletek mennyisége a jelenleg konfigurált és engedélyezett tartományon kívül esik.|
+|
+
+## <a name="agent-alerts-available-for-customization"></a>Az ügynök által elérhető riasztások testreszabhatók 
+
+| Severity | Riasztás neve | Adatforrás | Leírás | Javasolt szervizelés|
+|---|---|---|---|---|
 | Alacsony      | Egyéni riasztás – az aktív kapcsolatok száma kívül esik az engedélyezett tartományon.  | Ügynök       | A megadott időszakon belüli aktív kapcsolatok száma a jelenleg konfigurált és engedélyezett tartományon kívül esik.|  Vizsgálja meg az eszköz naplóit. Ismerje meg, hogy a kapcsolatok honnan származnak, és hogy milyen jóindulatú vagy rosszindulatú. Ha rosszindulatú, távolítsa el a lehetséges kártevőket, és értse a forrást. Ha jóindulatú, adja hozzá a forrást az engedélyezett kapcsolatok listájához.  |
 | Alacsony      | Egyéni riasztás – a kimenő kapcsolatok olyan IP-címhez lettek létrehozva, amely nem engedélyezett                             | Ügynök       | Egy kimenő kapcsolat egy olyan IP-címhez lett létrehozva, amely kívül esik az engedélyezett IP-listán. |Vizsgálja meg az eszköz naplóit. Ismerje meg, hogy a kapcsolatok honnan származnak, és hogy milyen jóindulatú vagy rosszindulatú. Ha rosszindulatú, távolítsa el a lehetséges kártevőket, és értse a forrást. Ha jóindulatú, adja hozzá a forrást az engedélyezett IP-listához.                        |
 | Alacsony      | Egyéni riasztás – a sikertelen helyi bejelentkezések száma kívül esik az engedélyezett tartományon.                               | Ügynök       | Egy adott időszakon belül sikertelen helyi bejelentkezések mennyisége a jelenleg konfigurált és engedélyezett tartományon kívül esik. |   |
 | Alacsony      | Egyéni riasztás – olyan felhasználó bejelentkezése, amely nem szerepel az engedélyezett felhasználók listáján | Ügynök       | Az engedélyezett felhasználók listáján kívüli helyi felhasználó, amely be van jelentkezve az eszközre.|  Nyers adatmentéskor keresse meg a log Analytics-fiókját, és az adataival vizsgálja meg az eszközt, azonosítsa a forrást, majd javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz. Ha jelenleg nem menti a nyers adatmentést, nyissa meg az eszközt, és javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz.|
 | Alacsony      | Egyéni riasztás – a folyamat végrehajtása nem engedélyezett | Ügynök       | Nem engedélyezett folyamat lett végrehajtva az eszközön. |Nyers adatmentéskor keresse meg a log Analytics-fiókját, és az adataival vizsgálja meg az eszközt, azonosítsa a forrást, majd javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz. Ha jelenleg nem menti a nyers adatmentést, nyissa meg az eszközt, és javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz.  |
 |
-
 
 ## <a name="next-steps"></a>Következő lépések
 

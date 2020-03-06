@@ -15,22 +15,20 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: fee7ff6ffbd18cf514ce1bfda81aca727ed362c3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7ee3939c1a1b450f2458267ab0b70e3924a4869b
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773509"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330600"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Gyors útmutató: Service Bus Queues használata az Azure-ban Node. js-sel és az Azure-SB-csomaggal
-
-> [!div class="op_multi_selector" title1="Programozási nyelv" title2="Node. js-csomagjának felvétele"]
-> - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-queues.md)
-> - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
-
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Node. js-alkalmazást az üzenetek küldéséhez és fogadásához egy Azure Service Bus [-sorból az Azure-SB](https://www.npmjs.com/package/azure-sb) csomag használatával. A mintákat JavaScript nyelven írták, és a Node. js [Azure-modult](https://www.npmjs.com/package/azure) használják, amely belsőleg használja az Azure-SB-csomagot.
 
-Az [Azure-SB](https://www.npmjs.com/package/azure-sb) csomag [Service Bus Rest futásidejű API-kat](/rest/api/servicebus/service-bus-runtime-rest)használ. A gyorsabb [AMQP 1,0 protokollt](service-bus-amqp-overview.md)használó új [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) használatával gyorsabb élményt érhet el. Ha többet szeretne megtudni az új csomagról, tekintse meg a [Service Bus Queues with Node. js és a @azure/service-bus csomag használatát](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package)ismertető témakört, máskülönben folytassa az olvasással, hogy az [Azure](https://www.npmjs.com/package/azure) -csomag hogyan használható.
+> [!IMPORTANT]
+> Az [Azure-SB](https://www.npmjs.com/package/azure-sb) csomag [Service Bus Rest futásidejű API-kat](/rest/api/servicebus/service-bus-runtime-rest)használ. A gyorsabb [AMQP 1,0 protokollt](service-bus-amqp-overview.md)használó új [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) használatával gyorsabb élményt érhet el. 
+> 
+> Ha többet szeretne megtudni az új csomagról, tekintse meg a [Service Bus Queues with Node. js és a @azure/service-bus csomag használatát](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package)ismertető témakört, máskülönben folytassa az olvasással, hogy az [Azure](https://www.npmjs.com/package/azure) -csomag hogyan használható.
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja MSDN- [előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
@@ -194,7 +192,7 @@ Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően össze
 ## <a name="next-steps"></a>Következő lépések
 A várólistákkal kapcsolatos további tudnivalókért tekintse meg a következő forrásokat.
 
-* [Üzenetsorok, témakörök és előfizetések][Queues, topics, and subscriptions]
+* [Queues, topics, and subscriptions][Queues, topics, and subscriptions] (Üzenetsorok, témakörök és előfizetések)
 * [Azure SDK a Node][Azure SDK for Node] adattárhoz a githubon
 * [Node.js fejlesztői központ](https://azure.microsoft.com/develop/nodejs/)
 
