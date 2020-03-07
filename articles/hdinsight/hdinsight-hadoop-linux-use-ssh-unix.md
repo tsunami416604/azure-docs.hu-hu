@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: 31e85876d60ae6fcd8f3b29633506d698a323acb
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192948"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386445"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>Kapcsolódás HDInsight (Apache Hadoop) SSH használatával
 
@@ -256,7 +256,7 @@ scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
 >
 > * [HDInsight Azure Data Lake Storage használatával](hdinsight-hadoop-use-data-lake-store.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [SSH-alagútkezelés használata a HDInsighttal](hdinsight-linux-ambari-ssh-tunnel.md)
 * [Virtuális hálózat megtervezése a HDInsight](hdinsight-plan-virtual-network-deployment.md)

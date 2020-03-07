@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 2e7c1eedf02c8a7783ee90f403dbd77ec2ee53ea
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963329"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365831"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000-es sorozatú szoftverek, magas rendelkezésre állás és hálózati követelmények
 
@@ -61,7 +61,7 @@ A következő szoftverek követelményei a választható StorSimple-összetevők
 
 ## <a name="networking-requirements-for-your-storsimple-device"></a>A StorSimple-eszköz hálózati követelményei
 
-A StorSimple-eszköz egy zárolt eszköz. A tűzfalon azonban meg kell nyitni a portokat az iSCSI-, a felhő-és a felügyeleti forgalom engedélyezéséhez. A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon. A (z) vagy a *bejövő* tábla a bejövő ügyfelek által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* állapot arra utal, hogy a StorSimple-eszköz hogyan küldi el az adatokat külsőleg, az üzembe helyezésen kívül: például az internet felé.
+A StorSimple-eszköz egy zárolt eszköz. A tűzfalon azonban meg kell nyitni a portokat az iSCSI-, a felhő-és a felügyeleti forgalom engedélyezéséhez. A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon. A (z) vagy a *bejövő* tábla a bejövő ügyfelek által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* állapot arra utal, hogy a StorSimple-eszköz hogyan küldi *el az* adatokat külsőleg, az üzembe helyezésen kívül: például az internet felé.
 
 | Portszám:<sup>1, 2</sup> | Be vagy ki | Port hatóköre | Kötelező | Megjegyzések |
 | --- | --- | --- | --- | --- |
@@ -122,14 +122,14 @@ Javasoljuk, hogy a legtöbb esetben a StorSimple rögzített IP-címek alapján 
 
 Az útválasztási metrika társítva van az interfészekhez és az átjáróhoz, amely az adatokat a megadott hálózatokra irányítja. Az útválasztási metrikát az útválasztási protokoll használja az adott célhelyhez tartozó legjobb elérési út kiszámításához, ha több elérési út is létezik ugyanarra a célhelyre. Minél alacsonyabb az útválasztási metrika, annál magasabb a preferencia.
 
-A StorSimple kontextusában, ha több hálózati adapter és átjáró van konfigurálva a forgalom továbbítására, az útválasztási mérőszámok lejátszásra kerülnek, hogy meghatározzák azt a relatív sorrendet, amelyben a rendszer használni fogja a csatolókat. A felhasználó nem módosíthatja az útválasztási metrikákat. A `Get-HcsRoutingTable` parancsmag segítségével azonban kinyomtathatja az útválasztási táblázatot (és metrikákat) a StorSimple-eszközön. További információ a Get-HcsRoutingTable parancsmagról a [StorSimple-telepítés hibaelhárítása című](storsimple-troubleshoot-deployment.md)témakörben.
+A StorSimple kontextusában, ha több hálózati adapter és átjáró van konfigurálva a forgalom továbbítására, az útválasztási mérőszámok lejátszásra kerülnek, hogy meghatározzák azt a relatív sorrendet, amelyben a rendszer használni fogja a csatolókat. A felhasználó nem módosíthatja az útválasztási metrikákat. A `Get-HcsRoutingTable` parancsmaggal azonban kinyomtathatja az útválasztási táblázatot (és mérőszámokat) a StorSimple-eszközön. További információ a Get-HcsRoutingTable parancsmagról a [StorSimple-telepítés hibaelhárítása című](storsimple-troubleshoot-deployment.md)témakörben.
 
 A 2. frissítéshez és újabb verziókhoz használt útválasztási metrikai algoritmust a következő módon lehet megmagyarázni.
 
 * Előre meghatározott értékek halmaza lett hozzárendelve a hálózati adapterekhez.
 * Vegye fontolóra az alábbi példában szereplő táblázatot a különböző hálózati adapterekhez rendelt értékekkel, ha azok felhőalapú vagy felhőalapú, de konfigurált átjáróval rendelkeznek. Figyelje meg, hogy az itt hozzárendelt értékek csak példa értékeket tartalmaznak.
 
-    | Hálózati adapter | Felhőben engedélyezve | Felhő – letiltva az átjáróval |
+    | Hálózati illesztő | Felhőben engedélyezve | Felhő – letiltva az átjáróval |
     |-----|---------------|---------------------------|
     | 0\. adatérték  | 1            | -                        |
     | 1\. adatérték  | 2            | 20                       |
@@ -147,7 +147,7 @@ A 2. frissítéshez és újabb verziókhoz használt útválasztási metrikai al
   
     Vegyünk fel egy StorSimple-eszközt két felhőalapú hálózati csatolóval, a 0. adatértékkel és az 5. adattal. Az 1 – 4. adatértékek a felhőben le vannak tiltva, de konfigurált átjáróval rendelkeznek. Az eszközre irányuló forgalom átirányításának sorrendje a következő lesz:
   
-    *Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)*
+    *Adatértékek 0 (1) > adat> (6) az 1. (20.) adat>i adat>i (30) adat>i adat (40) 4 (50)*
   
     *A zárójelben lévő számok a megfelelő útválasztási mérőszámokat jelölik.*
   
@@ -157,7 +157,7 @@ A 2. frissítéshez és újabb verziókhoz használt útválasztási metrikai al
 * A rendszer riasztást küld a StorSimple-eszközön is, ha VIP-hiba történik. További információkért tekintse meg a [riasztás gyors leírása](storsimple-8000-manage-alerts.md)című témakört.
 * Az újrapróbálkozások tekintetében az iSCSI elsőbbséget élvez a felhővel szemben.
   
-    Vegye figyelembe a következő példát: A StorSimple-eszközökön két hálózati adapter van engedélyezve, az adat0 és az 1. adategység. A 0. adat felhőben engedélyezett, míg az 1. adat Felhőbeli és iSCSI-kompatibilis. Az eszközön nincs más hálózati adapter engedélyezve a felhőben vagy az iSCSI-ben.
+    Vegye figyelembe a következő példát: egy StorSimple-eszközön két hálózati adapter van engedélyezve, az adat0 és az 1. adategység. A 0. adat felhőben engedélyezett, míg az 1. adat Felhőbeli és iSCSI-kompatibilis. Az eszközön nincs más hálózati adapter engedélyezve a felhőben vagy az iSCSI-ben.
   
     Ha az 1. adat meghiúsul, mivel ez az utolsó iSCSI hálózati adapter, akkor a vezérlő feladatátvételt hajt végre a másik vezérlőn lévő 1. adatban.
 
@@ -174,7 +174,7 @@ A fenti hálózati követelmények mellett a StorSimple-megoldás optimális tel
 
 A StorSimple-megoldás részét képező hardver platform olyan rendelkezésre állási és megbízhatósági funkciókkal rendelkezik, amelyek alapot biztosítanak az adatközpontban található, nagy rendelkezésre állású, hibatűrő tárolási infrastruktúrához. Vannak azonban olyan követelmények és ajánlott eljárások, amelyeket be kell tartania a StorSimple-megoldás rendelkezésre állásának biztosítása érdekében. A StorSimple telepítése előtt alaposan tekintse át az alábbi követelményeket és ajánlott eljárásokat a StorSimple-eszközhöz és a csatlakoztatott gazdagépekhez.
 
-A StorSimple-eszköz hardveres összetevőinek figyelésével és karbantartásával kapcsolatos további információkért látogasson el [a StorSimple Eszközkezelő szolgáltatás használatára a hardver összetevőinek és állapotának](storsimple-8000-monitor-hardware-status.md) , valamint a StorSimple hardveres összetevők cseréjének figyeléséhez. [ ](storsimple-8000-hardware-component-replacement.md).
+A StorSimple-eszköz hardveres összetevőinek figyelésével és karbantartásával kapcsolatos további információkért látogasson el [a StorSimple Eszközkezelő szolgáltatás használatára a hardver összetevőinek és állapotának](storsimple-8000-monitor-hardware-status.md) , valamint a [StorSimple hardveres összetevők cseréjének](storsimple-8000-hardware-component-replacement.md)figyeléséhez.
 
 ### <a name="high-availability-requirements-and-procedures-for-your-storsimple-device"></a>Magas rendelkezésre állási követelmények és eljárások a StorSimple-eszközhöz
 
@@ -201,7 +201,7 @@ A StorSimple-eszközök közé tartozik a redundáns, lecserélhető vezérlő m
 * Ne távolítsa el egyszerre mindkét vezérlő modult. Ha a vezérlő feladatátvétele folyamatban van, ne állítsa le a készenléti vezérlő modulját, vagy távolítsa el az alvázról.
 * A vezérlő feladatátvétele után várjon legalább öt percet, mielőtt eltávolítja bármelyik vezérlő modult.
 
-#### <a name="network-interfaces"></a>Hálózati adapterek
+#### <a name="network-interfaces"></a>Hálózati illesztők
 
 A StorSimple-vezérlő moduljai négy 1 Gigabit és 2 10 Gigabit Ethernet hálózati adapterrel rendelkeznek.
 
@@ -233,7 +233,7 @@ A StorSimple-eszköz 8600-es verziójában az elsődleges ház mellett egy kiter
 * Győződjön meg arról, hogy mind a EBOD, mind az SAS-kábelek, mind a merevlemez-meghajtók mindig telepítve vannak.
 * Ha egy EBOD-bekerítés-vezérlő modul meghibásodik, azonnal kérjen cserét.
 * Ha egy EBOD ház-vezérlő modul meghibásodik, győződjön meg arról, hogy a másik vezérlő modul aktív, mielőtt lecseréli a hibás modult. Ha ellenőrizni szeretné, hogy a vezérlő aktív-e, nyissa [meg az eszközön az aktív vezérlőt](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).
-* Egy EBOD-vezérlő modul cseréje során a StorSimple Eszközkezelő szolgáltatásban folyamatosan figyeli az összetevő állapotát a **figyelési** > **hardver állapotával**.
+* A EBOD vezérlő moduljának cseréje során folyamatosan figyeli az összetevő állapotát a StorSimple Eszközkezelő szolgáltatásban a **monitor** > **hardver állapotának**figyelésével.
 * Ha egy SAS-kábel meghibásodása vagy pótlása szükséges (Microsoft ügyfélszolgálata kell vennie az ilyen meghatározáshoz), ügyeljen arra, hogy csak a cserét igénylő SAS-kábelt távolítsa el.
 * Ne egyidejűleg távolítsa el mindkét SAS-kábelt a rendszerből.
 
@@ -244,9 +244,9 @@ Körültekintően tekintse át az ajánlott eljárásokat a StorSimple-eszközh�
 * Konfigurálja az StorSimple [-t két csomópontos fájlkiszolgálói fürt-konfigurációval][1]. Ha eltávolítja az egyes meghibásodási pontokat, és a gazdagép oldalon redundancia-felépítést készít, a teljes megoldás rendkívül elérhetővé válik.
 * A Windows Server 2012 (SMB 3,0) szolgáltatásban elérhető folyamatos rendelkezésre állású (CA) megosztások használata a tárolási vezérlők feladatátvétele során. A fájlkiszolgáló-fürtök és a folyamatosan rendelkezésre álló megosztások Windows Server 2012-ben történő konfigurálásával kapcsolatos további információkért tekintse meg ezt a [videót bemutató](https://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)részt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [A StorSimple](storsimple-8000-limits.md)rendszerkorlátainak megismerése.
+* [A StorSimple rendszerkorlátainak megismerése](storsimple-8000-limits.md).
 * [Ismerje meg, hogyan helyezheti üzembe a StorSimple-megoldást](storsimple-8000-deployment-walkthrough-u2.md).
 
 <!--Reference links-->

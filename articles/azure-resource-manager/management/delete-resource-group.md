@@ -1,15 +1,15 @@
 ---
 title: Erőforráscsoport és erőforrások törlése
-description: Az erőforráscsoportok és erőforrások törlését ismerteti. Leírja, hogy a Azure Resource Manager hogyan rendeli az erőforrások törlését az erőforráscsoport törlésekor. Leírja a hibakódokat és azt, hogy a Resource Manager hogyan kezeli őket annak megállapításához, hogy a törlés sikeres volt-e.
+description: Az erőforráscsoportok és erőforrások törlését ismerteti. Leírja, hogy a Azure Resource Manager hogyan rendeli az erőforrások törlését az erőforráscsoport törlésekor. Leírja a válaszkódot, valamint hogyan Resource Manager kezeli őket határozza meg, ha a törlés sikerült.
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.custom: seodec18
 ms.openlocfilehash: db56cf0897cd90f1e6e51199032d0d9712530f1c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478889"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360678"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Erőforrás-csoport és erőforrás-törlés Azure Resource Manager
 
@@ -17,60 +17,60 @@ Ez a cikk az erőforráscsoportok és erőforrások törlését ismerteti. Leír
 
 ## <a name="how-order-of-deletion-is-determined"></a>A törlés sorrendjének meghatározása
 
-Egy erőforráscsoport törlésekor a Resource Manager meghatározza az erőforrások törlésének sorrendjét. A következő sorrendet használja:
+Ha töröl egy erőforráscsoportot, a Resource Manager ahhoz, hogy törölje az erőforrást a határozza meg. Használja a következő sorrendben:
 
-1. Az összes alárendelt (beágyazott) erőforrás törölve.
+1. Az összes gyermek (beágyazott) erőforrások törlődnek.
 
-2. A többi erőforrást kezelő erőforrásokat a következő lépéssel törli a rendszer. Egy erőforrás rendelkezhet a `managedBy` tulajdonsággal, amely azt jelzi, hogy egy másik erőforrás kezeli azt. Ha ez a tulajdonság be van állítva, a másik erőforrást kezelő erőforrás törlődik a többi erőforrás előtt.
+2. Erőforrások, amelyek egyéb erőforrások kezelése a következő törlődnek. Egy erőforrás rendelkezhet a `managedBy` tulajdonsággal, amely azt jelzi, hogy egy másik erőforrás kezeli azt. Ha ez a tulajdonság értéke, az erőforrást, amely kezeli a többi erőforrás törlődik, mielőtt a többi erőforrást.
 
-3. A fennmaradó erőforrásokat az előző két kategória után törli a rendszer.
+3. A további erőforrások az előző két kategóriába után törlődnek.
 
-A megrendelés meghatározása után a Resource Manager minden erőforráshoz kiállít egy TÖRLÉSi műveletet. A folytatás előtt megvárja, amíg a függőségek befejeződik.
+A sorrend határozza meg, miután a Resource Manager problémák minden erőforrás egy törlési művelet. A folytatás előtt befejezéséhez függőségek vár.
 
-A szinkron műveletek esetében a várt sikeres válasz kódok a következők:
+A szinkron műveletek esetében a sikeres válasz várt kódok a következők:
 
 * 200
 * 204
 * 404
 
-Aszinkron műveletek esetén a várt sikeres válasz a 202. A Resource Manager a Location (hely) vagy az Azure-aszinkron művelet fejlécét követi nyomon az aszinkron törlési művelet állapotának meghatározásához.
+Az aszinkron műveletek a várt a sikeres válasz 202. Erőforrás-kezelő nyomon követi a location fejlécet, vagy az azure-aszinkron művelet fejlécére az aszinkron törlési művelet állapotának megállapítása.
   
 ### <a name="deletion-errors"></a>Törlési hibák
 
-Ha egy törlési művelet hibát ad vissza, a Resource Manager újrapróbálkozik a TÖRLÉSi hívással. Újrapróbálkozások történnek a 5xx, az 429-es és a 408-es állapotkódok esetében. Alapértelmezés szerint az Újrapróbálkozás időtartama 15 perc.
+Egy törlési művelet hibát ad vissza, ha a Resource Manager újrapróbálkozik a törlési hívásban. Az újrapróbálkozások az 5xx, 429-es és 408 állapotkódok fordulhat elő. Alapértelmezés szerint az adott időszakban újra beállítás 15 perc.
 
 ## <a name="after-deletion"></a>Törlés után
 
-A Resource Manager egy GET hívást indít el minden olyan erőforráson, amelyet törölni próbált. A GET hívás válaszának várható értéke 404. Ha a Resource Manager 404-as lekérést kap, a törlés sikeres befejezését veszi figyelembe. A Resource Manager eltávolítja az erőforrást a gyorsítótárból.
+Erőforrás-kezelő kiad egy GET hívást végrehajtó erőforrásokra helyezett próbált meg törölni. A válasz a GET-hívás várhatóan 404-es. Ha a Resource Manager lekérdezi a 404-es, úgy ítéli meg, a törlés sikeresen befejeződött. Resource Manager az erőforrás eltávolítja a gyorsítótárból.
 
-Ha azonban az erőforrás GET hívása egy 200 vagy 201 értéket ad vissza, a Resource Manager újból létrehozza az erőforrást.
+Azonban az erőforráson a GET-hívás 200-as vagy a 201-es adja vissza, ha a Resource Manager az erőforrást újra létrehozza.
 
-Ha a GET művelet hibát ad vissza, a Resource Manager újrapróbálkozik a következő hibakóddal:
+A GET-művelet hibát ad vissza, ha a Resource Manager újrapróbálkozik a GET esetében a következő hibakóddal:
 
-* Kevesebb mint 100
+* 100-nál kisebb
 * 408
 * 429
 * Nagyobb, mint 500
 
-Más hibakódok esetén a Resource Manager nem tudja törölni az erőforrást.
+Más hibakódok erőforrás-kezelő nem az erőforrás törlését.
 
 ## <a name="delete-resource-group"></a>Erőforráscsoport törlése
 
 Az erőforráscsoport törléséhez használja az alábbi módszerek egyikét.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name ExampleResourceGroup
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group delete --name ExampleResourceGroup
 ```
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. A [portálon](https://portal.azure.com)válassza ki a törölni kívánt erőforráscsoportot.
 
@@ -86,7 +86,7 @@ az group delete --name ExampleResourceGroup
 
 Az erőforrások törléséhez használja az alábbi módszerek egyikét.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResource `
@@ -95,7 +95,7 @@ Remove-AzResource `
   -ResourceType Microsoft.Compute/virtualMachines
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az resource delete \
@@ -104,7 +104,7 @@ az resource delete \
   --resource-type "Microsoft.Compute/virtualMachines"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. A [portálon](https://portal.azure.com)válassza ki a törölni kívánt erőforrást.
 

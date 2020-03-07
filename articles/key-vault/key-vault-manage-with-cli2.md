@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 642cc42a9853fe0a93a40ca65652b6dc5fcd8d40
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195277"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387282"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Key Vault kezelése az Azure CLI használatával 
 
@@ -321,7 +321,7 @@ az keyvault key delete --vault-name "ContosoKeyVault" --name "ContosoFirstKey"
 az keyvault secret delete --vault-name "ContosoKeyVault" --name "SQLPassword"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Key Vault-parancsokkal kapcsolatos teljes Azure CLI-referenciáért lásd: [Key Vault CLI-hivatkozás](/cli/azure/keyvault).
 

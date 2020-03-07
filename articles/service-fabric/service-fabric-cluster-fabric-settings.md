@@ -4,11 +4,11 @@ description: Ez a cikk a háló beállításait és a testre szabható háló-fr
 ms.topic: reference
 ms.date: 08/30/2019
 ms.openlocfilehash: 01f8eb861a1fc53ad95a95d7695df8e4b5b8a2ab
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164508"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393258"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric fürt beállításainak testreszabása
 Ez a cikk a Service Fabric-fürthöz testreszabható különböző háló-beállításokat ismerteti. Az Azure-ban üzemeltetett fürtök esetében a beállításokat a [Azure Portal](https://portal.azure.com) vagy egy Azure Resource Manager sablon segítségével szabhatja testre. További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Önálló fürtök esetében testreszabhatja a beállításokat a *ClusterConfig. JSON* fájl frissítésével és a fürtön végzett konfigurációs frissítés elindításával. További információ: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -79,7 +79,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |MaxOperationTimeout |Az idő másodpercben, az alapértelmezett érték a MaxValue |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. A ClusterManager belüli belső feldolgozási műveletek maximális globális időtúllépése. |
 |MaxTimeoutRetryBuffer | Az idő másodpercben, az alapértelmezett érték 600 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A maximális művelet időtúllépése, ha az időtúllépések miatt belsőleg próbálkozik `<Original Time out> + <MaxTimeoutRetryBuffer>`. A MinOperationTimeout-növekmények további időtúllépést adnak hozzá. |
 |MinOperationTimeout | Az idő másodpercben, az alapértelmezett érték 60 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A ClusterManager belüli belső feldolgozási műveletek minimális globális időtúllépése. |
-|MinReplicaSetSize |Int, az alapértelmezett érték 3 |Nem engedélyezett|A ClusterManager MinReplicaSetSize. |
+|MinReplicaSetSize |int, az alapértelmezett érték 3 |Nem engedélyezett|A ClusterManager MinReplicaSetSize. |
 |PlacementConstraints | karakterlánc, az alapértelmezett érték: "" |Nem engedélyezett|A ClusterManager PlacementConstraints. |
 |QuorumLossWaitDuration |Az idő másodpercben, az alapértelmezett érték a MaxValue |Nem engedélyezett| Másodpercek alatt meg kell adni a TimeSpan. A ClusterManager QuorumLossWaitDuration. |
 |ReplicaRestartWaitDuration |Idő másodpercben, alapértelmezett érték (60,0 \* 30)|Nem engedélyezett|Másodpercek alatt meg kell adni a TimeSpan. A ClusterManager ReplicaRestartWaitDuration. |
@@ -118,7 +118,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 | --- | --- | --- | --- |
 |AdminOnlyHttpAudit |Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus | Zárja ki azokat a HTTP-kérelmeket, amelyek nem befolyásolják a fürt állapotát a naplózásból. Jelenleg a rendszer csak a "GET" típusú kérelmeket zárja ki; Ez azonban változhat. |
 |AppDiagnosticStoreAccessRequiresImpersonation |Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus |Azt határozza meg, hogy szükséges-e megszemélyesítés, ha a diagnosztikai tárolókat az alkalmazás nevében éri el. |
-|AppEtwTraceDeletionAgeInDays |Int, az alapértelmezett érték 3 | Dinamikus |Ennyi nap elteltével töröljük az Application ETW-nyomkövetést tartalmazó régi ETL-fájlokat. |
+|AppEtwTraceDeletionAgeInDays |int, az alapértelmezett érték 3 | Dinamikus |Ennyi nap elteltével töröljük az Application ETW-nyomkövetést tartalmazó régi ETL-fájlokat. |
 |ApplicationLogsFormatVersion |int, az alapértelmezett érték 0 | Dinamikus |Az Application logs formátumának verziója. A támogatott értékek: 0 és 1. Az 1. verzió több mezőt is tartalmaz a ETW-esemény rekordjából, mint a 0. verzió. |
 |AuditHttpRequests |Bool, az alapértelmezett érték false | Dinamikus | A HTTP-naplózás be-és kikapcsolása. A naplózás célja, hogy megtekintse a fürtön végrehajtott tevékenységeket. beleértve a kérelmet kezdeményező személyeket is. Vegye figyelembe, hogy ez a legjobb kísérlet a naplózásra; és a nyomkövetés elvesztése is előfordulhat. A "user" hitelesítéssel rendelkező HTTP-kérelmek nincsenek rögzítve. |
 |CaptureHttpTelemetry|Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus | A HTTP-telemetria be-vagy kikapcsolása. A Service Fabric telemetria célja, hogy a telemetria-adat rögzíthető legyen a jövőbeli munka megtervezése és a problémás területek azonosítása érdekében. A telemetria nem rögzíti a személyes adatok vagy a kérés törzsét. A telemetria csak akkor rögzíti az összes HTTP-kérelmet, ha másként van konfigurálva. |
@@ -320,7 +320,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |MaxPercentDeltaUnhealthyNodes|Int, az alapértelmezett érték 10|Statikus|A fürt frissítése állapotának kiértékelésére szolgáló házirend: a fürt kifogástalan állapotának megfelelő különbözeti csomópontok maximális százaléka |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|Int, az alapértelmezett érték 15|Statikus|A fürt frissítése állapotának kiértékelésére szolgáló házirend: a nem kifogástalan állapotú csomópontok különbözetének maximális százaléka egy frissítési tartományban, amely lehetővé teszi, hogy a fürt állapota Kifogástalan legyen. |
 
-## <a name="hosting"></a>Hosting
+## <a name="hosting"></a>Üzemeltetés
 
 | **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
@@ -390,7 +390,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 | **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
 |Engedélyezve |Bool, az alapértelmezett érték false |Statikus|A ImageStoreService engedélyezett jelzője. Alapértelmezett: false |
-|MinReplicaSetSize | Int, az alapértelmezett érték 3 |Statikus|A ImageStoreService MinReplicaSetSize. |
+|MinReplicaSetSize | int, az alapértelmezett érték 3 |Statikus|A ImageStoreService MinReplicaSetSize. |
 |PlacementConstraints | karakterlánc, az alapértelmezett érték: "" |Statikus| A ImageStoreService PlacementConstraints. |
 |QuorumLossWaitDuration | Az idő másodpercben, az alapértelmezett érték a MaxValue |Statikus| Másodpercek alatt meg kell adni a TimeSpan. A ImageStoreService QuorumLossWaitDuration. |
 |ReplicaRestartWaitDuration | Az idő másodpercben, az alapértelmezett érték 60,0 \* 30 |Statikus|Másodpercek alatt meg kell adni a TimeSpan. A ImageStoreService ReplicaRestartWaitDuration. |
@@ -421,7 +421,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 | --- | --- | --- | --- |
 |AutomaticUnprovisionInterval|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromMinutes (5)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az alkalmazás típusának törléséhez engedélyezett törlési időköz az alkalmazás automatikus kitakarítása során.|
 |AzureStorageMaxConnections | Int, alapértelmezett érték 5000 |Dinamikus|Az Azure Storage-hoz való egyidejű kapcsolatok maximális száma. |
-|AzureStorageMaxWorkerThreads | Int, az alapértelmezett érték 25 |Dinamikus|A feldolgozói szálak maximális száma párhuzamosan. |
+|AzureStorageMaxWorkerThreads | int, az alapértelmezett érték 25 |Dinamikus|A feldolgozói szálak maximális száma párhuzamosan. |
 |AzureStorageOperationTimeout | Az idő másodpercben, az alapértelmezett érték 6000 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Időtúllépés a xstore művelet befejezéséhez. |
 |CleanupApplicationPackageOnProvisionSuccess|bool, az alapértelmezett érték FALSE |Dinamikus|Engedélyezheti vagy letilthatja az alkalmazáscsomag automatikus törlését a sikeres üzembe helyezéshez. |
 |CleanupUnusedApplicationTypes|bool, az alapértelmezett érték FALSE |Dinamikus|Ez a konfiguráció, ha engedélyezve van, lehetővé teszi a nem használt alkalmazások típusának regisztrációját a legújabb három nem használt verzió kihagyása mellett, így a rendszerkép-tárolóban foglalt lemezterület kivágása is megtörténik. Az automatikus tisztítás az adott alkalmazás típusának sikeres kiépítését követően aktiválódik, és az összes alkalmazás típusának naponta egyszer rendszeresen fut. A kihagyható verziók száma a "MaxUnusedAppTypeVersionsToKeep" paraméter használatával konfigurálható. |
@@ -430,7 +430,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |ImageCachingEnabled | Bool, az alapértelmezett érték TRUE (igaz) |Statikus|Ez a konfiguráció lehetővé teszi a gyorsítótárazás engedélyezését vagy letiltását. |
 |ImageStoreConnectionString |SecureString |Statikus|A Lemezképtárolóba gyökeréhez tartozó kapcsolódási karakterlánc. |
 |ImageStoreMinimumTransferBPS | Int, alapértelmezett érték 1024 |Dinamikus|A fürt és a Lemezképtárolóba közötti minimális adatátviteli sebesség. Ez az érték határozza meg az időtúllépést a külső Lemezképtárolóba elérésekor. Csak akkor módosítsa ezt az értéket, ha a fürt és a Lemezképtárolóba közötti késés magas, hogy több idő legyen a fürt külső Lemezképtárolóba való letöltésére. |
-|MaxUnusedAppTypeVersionsToKeep | Int, az alapértelmezett érték 3 |Dinamikus|Ez a konfiguráció határozza meg a tisztításhoz kihagyható, nem használt alkalmazás-verziók számát. Ez a paraméter csak akkor alkalmazható, ha a CleanupUnusedApplicationTypes paraméter engedélyezve van. |
+|MaxUnusedAppTypeVersionsToKeep | int, az alapértelmezett érték 3 |Dinamikus|Ez a konfiguráció határozza meg a tisztításhoz kihagyható, nem használt alkalmazás-verziók számát. Ez a paraméter csak akkor alkalmazható, ha a CleanupUnusedApplicationTypes paraméter engedélyezve van. |
 
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
@@ -460,8 +460,8 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |MaxNamingServiceHealthReports | Int, az alapértelmezett érték 10 |Dinamikus|Az adattárolási szolgáltatás által jelentett lassú műveletek maximális száma egyszerre. Ha 0; minden lassú művelet elküldése. |
 |MaxOperationTimeout |Az idő másodpercben, az alapértelmezett érték 600 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az ügyfél műveleteihez engedélyezett maximális időkorlát. A nagyobb időtúllépést megadó kérések el lesznek utasítva. |
 |MaxOutstandingNotificationsPerClient |Int, alapértelmezett érték 1000 |Dinamikus|A függőben lévő értesítések maximális száma, mielőtt az átjáró kényszeríti az ügyfél regisztrálását. |
-|MinReplicaSetSize | Int, az alapértelmezett érték 3 |Nem engedélyezett| A frissítés befejezéséhez szükséges elnevezési szolgáltatás-replikák minimális száma. Ha kevesebb replika van a rendszeren, a megbízhatósági rendszer megtagadja a elnevezési szolgáltatás-tároló frissítését, amíg a replikák vissza nem állnak. Ez az érték soha nem lehet nagyobb, mint a TargetReplicaSetSize. |
-|PartitionCount |Int, az alapértelmezett érték 3 |Nem engedélyezett|A létrehozandó elnevezési szolgáltatás tároló partícióinak száma. Minden partíció rendelkezik egy olyan partíciós kulccsal, amely megfelel az indexének. tehát a partíció kulcsai [0; PartitionCount] létezik. A elnevezési szolgáltatás partíciók számának növelésével megnövelhető a elnevezési szolgáltatás által elvégezhető skála, amely csökkenti a biztonsági másolati készletben tárolt adatok átlagos mennyiségét. az erőforrások megnövekedett kihasználtságának díja (mivel a PartitionCount * ReplicaSetSize szolgáltatás replikáit fenn kell tartani).|
+|MinReplicaSetSize | int, az alapértelmezett érték 3 |Nem engedélyezett| A frissítés befejezéséhez szükséges elnevezési szolgáltatás-replikák minimális száma. Ha kevesebb replika van a rendszeren, a megbízhatósági rendszer megtagadja a elnevezési szolgáltatás-tároló frissítését, amíg a replikák vissza nem állnak. Ez az érték soha nem lehet nagyobb, mint a TargetReplicaSetSize. |
+|PartitionCount |int, az alapértelmezett érték 3 |Nem engedélyezett|A létrehozandó elnevezési szolgáltatás tároló partícióinak száma. Minden partíció rendelkezik egy olyan partíciós kulccsal, amely megfelel az indexének. tehát a partíció kulcsai [0; PartitionCount] létezik. A elnevezési szolgáltatás partíciók számának növelésével megnövelhető a elnevezési szolgáltatás által elvégezhető skála, amely csökkenti a biztonsági másolati készletben tárolt adatok átlagos mennyiségét. az erőforrások megnövekedett kihasználtságának díja (mivel a PartitionCount * ReplicaSetSize szolgáltatás replikáit fenn kell tartani).|
 |PlacementConstraints | karakterlánc, az alapértelmezett érték: "" |Nem engedélyezett| A elnevezési szolgáltatás elhelyezési megkötése. |
 |QuorumLossWaitDuration | Az idő másodpercben, az alapértelmezett érték a MaxValue |Nem engedélyezett| Másodpercek alatt meg kell adni a TimeSpan. Ha egy elnevezési szolgáltatás kvórum elvesztése válik elérhetővé; Ez az időzítő elindul. Az FM lejáratakor a rendszer a lefelé irányuló replikákat elveszettnek tekinti. és próbálja meg helyreállítani a kvórumot. Ez adatvesztéshez vezethet. |
 |RepairInterval | Az idő másodpercben, az alapértelmezett érték 5 |Statikus| Másodpercek alatt meg kell adni a TimeSpan. Az az intervallum, amelyben a hatóság tulajdonosának és nevének tulajdonosának neve inkonzisztencia-javítása megkezdődik. |
@@ -593,7 +593,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |MaxCopyQueueSize|uint, alapértelmezett érték 1024|Statikus|Ez a maximális érték határozza meg a várólista kezdeti méretét, amely megőrzi a replikációs műveleteket. Vegye figyelembe, hogy a teljesítményének 2-nek kell lennie. Ha a futás közben a várólista erre a méretre nő, a rendszer az elsődleges és a másodlagos replikálók között szabályozza a műveletet.|
 |MaxPrimaryReplicationQueueMemorySize|Uint, az alapértelmezett érték 0|Statikus|Az elsődleges replikációs várólista maximális értéke bájtban megadva.|
 |MaxPrimaryReplicationQueueSize|uint, alapértelmezett érték 1024|Statikus|Az elsődleges replikációs várólistában található műveletek maximális száma. Vegye figyelembe, hogy a teljesítményének 2-nek kell lennie.|
-|MaxReplicationMessageSize|uint, alapértelmezett érték 52428800|Statikus|A replikációs műveletek maximális mérete. Az alapértelmezett érték 50 MB.|
+|MaxReplicationMessageSize|Uint, alapértelmezett érték 52428800|Statikus|A replikációs műveletek maximális mérete. Az alapértelmezett érték 50 MB.|
 |MaxSecondaryReplicationQueueMemorySize|Uint, az alapértelmezett érték 0|Statikus|A másodlagos replikálási várólista maximális értéke bájtban megadva.|
 |MaxSecondaryReplicationQueueSize|uint, alapértelmezett érték 2048|Statikus|A másodlagos replikálási várólistában található műveletek maximális száma. Vegye figyelembe, hogy a teljesítményének 2-nek kell lennie.|
 |QueueHealthMonitoringInterval|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (30)|Statikus|Másodpercek alatt meg kell adni a TimeSpan. Ez az érték határozza meg azt az időtartamot, amelyet a replikátor használ a replikációs műveletek várólistáján lévő összes figyelmeztetési/hiba állapottal kapcsolatos esemény figyelésére. A "0" érték letiltja az állapot figyelését |
@@ -900,7 +900,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |OnlyBaseUpgrade | Bool, az alapértelmezett érték false |Dinamikus|A UpgradeService OnlyBaseUpgrade. |
 |PlacementConstraints |karakterlánc, az alapértelmezett érték: "" |Nem engedélyezett|A frissítési szolgáltatás PlacementConstraints. |
 |PollIntervalInSeconds|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (60) |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az ARM-felügyeleti műveletek UpgradeService-lekérdezési időköze. |
-|TargetReplicaSetSize | Int, az alapértelmezett érték 3 |Nem engedélyezett| A UpgradeService TargetReplicaSetSize. |
+|TargetReplicaSetSize | int, az alapértelmezett érték 3 |Nem engedélyezett| A UpgradeService TargetReplicaSetSize. |
 |TestCabFolder | karakterlánc, az alapértelmezett érték: "" |Statikus| A UpgradeService TestCabFolder. |
 |X509FindType | karakterlánc, az alapértelmezett érték: ""|Dinamikus| A UpgradeService X509FindType. |
 |X509FindValue | karakterlánc, az alapértelmezett érték: "" |Dinamikus| A UpgradeService X509FindValue. |

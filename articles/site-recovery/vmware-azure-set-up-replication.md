@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954326"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362802"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>A VMware vész-helyreállítási replikációs szabályzatok konfigurálása és kezelése
 

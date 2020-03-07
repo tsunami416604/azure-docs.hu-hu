@@ -7,11 +7,11 @@ ms.topic: overview
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582129"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388230"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Mi az az Azure HPC Cache?
 
@@ -60,13 +60,13 @@ Az Azure HPC cache a következő Azure-régiókban érhető el:
 
 A legfrissebb rendelkezésre állási információkért tekintse meg az [Azure HPC cache-termék oldalát](https://azure.microsoft.com/services/hpc-cache) .
 
-## <a name="service-availability"></a>Elérhető szolgáltatások
+## <a name="service-availability"></a>Szolgáltatás rendelkezésre állása
 
 Az Azure HPC cache használatával használni kívánt előfizetésekhez hozzáférést kell kérnie. Ez a korlátozás segít a szolgáltatás minőségének biztosításában az általánosan elérhető kezdeti hónapokban.
 
 Hozzáférés kérése az [űrlap](https://aka.ms/onboard-hpc-cache)kitöltésével. Miután hozzáadta az előfizetést a hozzáférési listához, létrehozhat gyorsítótárat is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A képességeivel kapcsolatos további információkért olvassa el az [Azure HPC cache-termék oldalát](https://azure.microsoft.com/services/hpc-cache)
 * További tudnivalók a termékek [előfeltételeiről](hpc-cache-prereqs.md)

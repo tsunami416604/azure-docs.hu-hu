@@ -4,11 +4,11 @@ description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705547"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363877"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóban
 
@@ -41,7 +41,7 @@ Emellett van néhány dolog, amit bizonyos esetekben szükség lehet:
 
  Egy tároló tárolja az idő múlásával létrehozott biztonsági mentéseket és helyreállítási pontokat, és a biztonsági mentési szabályzatokat a biztonsági másolattal rendelkező gépekhez társítja. Hozzon létre egy tárolót az alábbiak szerint:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. A Keresés mezőbe írja be a következőt: **Recovery Services**. A **szolgáltatások**területen kattintson a **Recovery Services**-tárolók elemre.
 
      ![Recovery Services-tárolók keresése](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
@@ -101,7 +101,7 @@ Módosítsa a tárolási replikálás típusát a következőképpen:
 
       ![Alapértelmezett biztonsági mentési szabályzat](./media/backup-azure-arm-vms-prepare/default-policy.png)
 
-4. A **virtuális gépek kiválasztása**területen válassza ki azokat a virtuális gépeket, amelyekről biztonsági másolatot szeretne készíteni a szabályzat használatával. Ezután kattintson az **OK** gombra.
+4. A **virtuális gépek kiválasztása**területen válassza ki azokat a virtuális gépeket, amelyekről biztonsági másolatot szeretne készíteni a szabályzat használatával. Végül kattintson az **OK** gombra.
 
    * A kiválasztott virtuális gépek ellenőrzése megtörtént.
    * Csak a tárolóval megegyező régióban lévő virtuális gépeket lehet kiválasztani.
@@ -148,7 +148,7 @@ A kezdeti biztonsági mentés az ütemterv szerint fog futni, de az alábbiak sz
 2. A **biztonsági másolati elemek**területen kattintson az Azure-beli **virtuális gép**elemre.
 3. A **biztonsági mentési elemek** listában kattintson a három pontra (...).
 4. Kattintson a **biztonsági mentés**gombra.
-5. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ezután kattintson az **OK** gombra.
+5. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Végül kattintson az **OK** gombra.
 6. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > a **biztonsági mentési feladatok** > **folyamatban**van. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
 
 ## <a name="verify-backup-job-status"></a>Biztonsági mentési feladatok állapotának ellenőrzése
@@ -171,19 +171,19 @@ A feladatok állapota a következő esetektől függően változhat:
 Befejezve | Folyamatban | Folyamatban
 Befejezve | Kihagyva | Befejezve
 Befejezve | Befejezve | Befejezve
-Befejezve | Meghiúsult | Figyelmeztetéssel fejeződött be
-Meghiúsult | Meghiúsult | Meghiúsult
+Befejezve | Sikertelen | Figyelmeztetéssel fejeződött be
+Sikertelen | Sikertelen | Sikertelen
 
 Ezzel a képességgel ugyanezen a virtuális gépen két biztonsági mentés futtatható párhuzamosan, de mindkét fázisban (pillanatkép, adatok átvitele a tárba) csak egy Alfeladat futhat. Így az olyan helyzetekben, amikor a következő napi biztonsági mentés sikertelen lesz, a biztonsági mentési feladat elkerülhető a leválasztási funkciókkal. A következő napi biztonsági másolatok rendelkezhetnek pillanatképtel **, miközben az adatok átvitele a tárba** kihagyva, ha egy korábbi nap biztonsági mentési feladata folyamatban van.
 A tárolóban létrehozott növekményes helyreállítási pont rögzíti a tárolóban létrehozott utolsó helyreállítási pont összes változását. Nincs hatással a felhasználóra.
 
-## <a name="optional-steps"></a>Nem kötelező lépések
+## <a name="optional-steps"></a>Választható lépések
 
 ### <a name="install-the-vm-agent"></a>A virtuálisgép-ügynök telepítése
 
 Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a számítógépen futó Azure virtuálisgép-ügynök bővítményének telepítésével. Ha a virtuális gép Azure Piactéri rendszerképből lett létrehozva, akkor az ügynök telepítve van és fut. Ha egyéni virtuális gépet hoz létre, vagy egy helyszíni gépet telepít át, előfordulhat, hogy manuálisan kell telepítenie az ügynököt a táblázatban foglaltak szerint.
 
-**Virtuális gép** | **Részletek**
+**VM** | **Részletek**
 --- | ---
 **Windows** | 1. [töltse le és telepítse](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) az ügynök MSI-fájlját.<br/><br/> 2. telepítsen rendszergazdai engedélyekkel a gépen.<br/><br/> 3. Ellenőrizze a telepítést. A virtuális gép *C:\WindowsAzure\Packages* kattintson a jobb gombbal a **WaAppAgent. exe** > **Tulajdonságok**elemre. A **részletek** lapon a **termék verziószámának** 2.6.1198.718 vagy magasabbnak kell lennie.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, majd [telepítse újra az ügynököt](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | A telepítést egy RPM vagy egy DEB-csomag használatával telepítheti a terjesztési csomag adattárában. Ez az Azure Linux-ügynök telepítésének és frissítésének előnyben részesített módszere. Az összes [támogatott terjesztési szolgáltató](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrálja az Azure Linux-ügynök csomagját a lemezképbe és a tárházba. Az ügynök elérhető a [githubon](https://github.com/Azure/WALinuxAgent), de nem javasoljuk, hogy innen telepítsen.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, és frissítse a bináris fájlokat.

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 7886d5a1ad0745550767b7d6f19592ca3c84b00a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891261"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357027"
 ---
 # <a name="get-started-with-storage-explorer"></a>A Storage Explorer használatának első lépései
 
@@ -25,7 +25,7 @@ A Microsoft Azure Storage Explorer egy önálló alkalmazás, amely megkönnyít
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 A Windows támogatási Storage Explorer következő verziói:
 
@@ -35,13 +35,13 @@ A Windows támogatási Storage Explorer következő verziói:
 
 A Windows összes verziójában Storage Explorer a .NET-keretrendszer 4.6.2 vagy újabb verziójára van szükség.
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 A macOS-támogatás következő verziói Storage Explorer:
 
 * macOS 10,12 Sierra és újabb verziók
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Az Storage Explorer a Linux leggyakoribb disztribúcióinak [beépülő moduljában](https://snapcraft.io/storage-explorer) érhető el. Javasoljuk, hogy ehhez a telepítéshez a Snap Store-t. A Storage Explorer beépülő modul telepíti az összes függőségét és frissítését, amikor a rendszer közzéteszi az új verziókat az illesztési tárolóban.
 
@@ -266,7 +266,7 @@ Amikor szöveget ír be a keresőmezőbe, Storage Explorer megjeleníti az össz
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Blob Storage-erőforrások kezelése Storage Explorer](vs-azure-tools-storage-explorer-blobs.md)
 * [Adatkezelés Azure Storage Explorer használatával](./cosmos-db/storage-explorer.md)
