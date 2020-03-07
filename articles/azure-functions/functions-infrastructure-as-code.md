@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 48d98d6fef896f9288be88824a62fa1c8179217f
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621053"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356214"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>A Function alkalmazás erőforrás-telepítésének automatizálása Azure Functions
 
@@ -472,7 +472,7 @@ Egy App Service-csomagban lévő Function alkalmazásnak rendelkeznie kell a kor
 
 A Linux-alkalmazásoknak tartalmaznia kell egy `linuxFxVersion` tulajdonságot is `siteConfig`alatt. Ha csak a kód üzembe helyezését végzi, az értéket a kívánt futtatókörnyezeti verem határozza meg:
 
-| Verem            | Példaérték                                         |
+| Halom            | Példaérték                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
 | JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |

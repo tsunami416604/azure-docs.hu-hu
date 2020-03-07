@@ -12,14 +12,14 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
-ms.openlocfilehash: 56a5221504a3905855fa5dc713707f34ae357aea
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: MT
+ms.openlocfilehash: d910a76397a40a14d960b59f60561cbee470f5c4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165136"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356280"
 ---
-# <a name="why-update-to-microsoft-identity-platform-v20"></a>Miért érdemes frissíteni a Microsoft Identity platformot (v 2.0)?
+# <a name="why-update-to-microsoft-identity-platform-v20"></a>Miért érdemes Microsoft Identitásplatformra (a 2.0-s verzióra) frissíteni?
 
 Új alkalmazás fejlesztésekor fontos tudni a Microsoft Identity platform (v 2.0) és a Azure Active Directory (v 1.0) végpontok közötti különbségeket. Ez a cikk a végpontok és a Microsoft Identity platform meglévő korlátai közötti fő különbségeket ismerteti.
 
@@ -34,7 +34,7 @@ ms.locfileid: "77165136"
 * A Microsoft Identity platform végpontja lehetővé teszi a munkahelyi és iskolai fiókok Azure AD-és személyes Microsoft-fiókjai (MSA), például a hotmail.com, a outlook.com és a msn.com használatát a bejelentkezéshez.
 * Mindkét végpont fogadja az Azure AD-címtár *[vendég felhasználói](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* számára az *[egybérlős](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* vagy a bérlői végpontra (`https://login.microsoftonline.com/{TenantId_or_Name}`) való rámutató alkalmazásokhoz konfigurált *több-bérlős* alkalmazások bejelentkezését is.
 
-A Microsoft Identity platform végpontja lehetővé teszi olyan alkalmazások írását, amelyek elfogadják a személyes Microsoft-fiókokból, valamint a munkahelyi és iskolai fiókokból érkező bejelentkezéseket. Ez lehetővé teszi, hogy az alkalmazást teljes mértékben fiók-agnosztikusként írja. Ha például az alkalmazás meghívja a [Microsoft Graph](https://graph.microsoft.io), néhány további funkció és adat is elérhető lesz a munkahelyi fiókok, például a SharePoint-webhelyek vagy a címtáradatok számára. Azonban számos művelethez, például [egy felhasználó levelezésének olvasásához](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_messages)ugyanez a kód férhet hozzá az e-mailekhez a személyes és munkahelyi és az iskolai fiókokhoz is.
+A Microsoft Identity platform végpontja lehetővé teszi olyan alkalmazások írását, amelyek elfogadják a személyes Microsoft-fiókokból, valamint a munkahelyi és iskolai fiókokból érkező bejelentkezéseket. Ez lehetővé teszi, hogy az alkalmazást teljes mértékben fiók-agnosztikusként írja. Ha például az alkalmazás meghívja a [Microsoft Graph](https://graph.microsoft.io), néhány további funkció és adat is elérhető lesz a munkahelyi fiókok, például a SharePoint-webhelyek vagy a címtáradatok számára. Azonban számos művelethez, például [egy felhasználó levelezésének olvasásához](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0)ugyanez a kód férhet hozzá az e-mailekhez a személyes és munkahelyi és az iskolai fiókokhoz is.
 
 A Microsoft Identity platform végpontja esetében a Microsoft Authentication Library (MSAL) használatával férhet hozzá a fogyasztó, az oktatási és a vállalati világhoz. Az Azure AD v 1.0 végpont csak a munkahelyi és iskolai fiókokból érkező bejelentkezéseket fogadja el.
 
@@ -70,7 +70,7 @@ A 1.0-s végpont esetében az OAuth 2,0-es verziójának engedélyezése az Azur
 ```text
 GET https://login.microsoftonline.com/common/oauth2/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&resource=https://graph.windows.net/
+&resource=https://graph.microsoft.com/
 ...
 ```
 
@@ -81,7 +81,7 @@ A Microsoft Identity platform végpontját használó alkalmazások esetében ug
 ```text
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&scope=https://graph.windows.net/directory.read%20https://graph.windows.net/directory.write
+&scope=https://graph.microsoft.com/directory.read%20https://graph.microsoft.com/directory.write
 ...
 ```
 

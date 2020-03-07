@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 85aeafb2c4461b50d399e40d9abff2ac04b677c0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887138"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395156"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>A régióbeli kiszolgálókkal kapcsolatos problémák az Azure HDInsight
 
@@ -34,7 +34,7 @@ Az Apache HBase Master felhasználói felületén megtekintheti az összes régi
 
 A lyukak az offline régiók eredményei lehetnek.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 Javítsa ki a hozzárendeléseket. Az alábbi lépések végrehajtásával visszahelyezheti a hozzá nem rendelt régiókat a normál állapotba:
 
@@ -66,7 +66,7 @@ Több felosztó WAL-könyvtár.
 
 1. Vizsgálja meg a `wals.out` fájlt. Ha túl sok felosztó könyvtár van (a *-felosztástól kezdve), akkor a régió-kiszolgáló valószínűleg sikertelen lesz a könyvtárak miatt.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 1. A HBase leállítása a Ambari-portálról.
 

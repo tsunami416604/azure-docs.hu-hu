@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 18f30af4595a7679d5c3ef56763e992d54fae536
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928071"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358556"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Adatok másolása Azure SQL Data Warehouseba és onnan a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -30,7 +30,7 @@ ms.locfileid: "74928071"
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Azure SQL Data Warehouseba való áthelyezéséhez. Az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkre épül, amely általános áttekintést nyújt az adatáthelyezésről a másolási tevékenységgel.
 
 > [!TIP]
-> A legjobb teljesítmény érdekében az adatok Azure SQL Data Warehouseba való betöltéséhez használja a következőt: Base. Az [adatok Azure SQL Data Warehouse szakaszba való betöltéséhez használja](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) a következőt:. A használati eseteket bemutató bemutatóért lásd: [1 TB Betöltése Azure SQL Data Warehouse 15 perc alatt Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+> A legjobb teljesítmény érdekében, az adatok betöltése az Azure SQL Data Warehouse a polybase szolgáltatást akkor használja. Az [adatok Azure SQL Data Warehouse szakaszba való betöltéséhez használja](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) a következőt:. A használati eseteket bemutató bemutatóért lásd: [1 TB Betöltése Azure SQL Data Warehouse 15 perc alatt Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 **Azure SQL Data Warehouse** adatait a következő adattárakba másolhatja:
@@ -47,7 +47,7 @@ Az adatok a következő adattárakból másolhatók **Azure SQL Data Warehouseba
 ## <a name="supported-authentication-type"></a>Támogatott hitelesítési típus
 Azure SQL Data Warehouse-összekötő támogatja az egyszerű hitelesítést.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely a különböző eszközök/API-k segítségével áthelyezi az adatokra egy Azure SQL Data Warehouse.
 
 A legkönnyebben olyan folyamat hozható létre, amely az adatok másolását Azure SQL Data Warehouse az adatok másolása varázsló használatával másolja. Tekintse meg az [oktatóanyag: az adatgyűjtés SQL Data Warehouseba való betöltését](../../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md) ismertető témakört Data Factory, amely gyors áttekintést nyújt a folyamat létrehozásáról az Adatmásolás varázsló segítségével.
@@ -68,9 +68,9 @@ A következő szakaszokban részletesen ismertetjük azokat a JSON-tulajdonságo
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a Azure SQL Data Warehouse társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A Type tulajdonságot a következőre kell beállítani: **AzureSqlDW** |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **AzureSqlDW** |Igen |
 | connectionString |A connectionString tulajdonsághoz Azure SQL Data Warehouse-példányhoz való kapcsolódáshoz szükséges adatok megadása. Csak az alapszintű hitelesítés támogatott. |Igen |
 
 > [!IMPORTANT]
@@ -81,7 +81,7 @@ Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok telje
 
 A typeProperties szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **AzureSqlDWTable** típusú adatkészlet **typeProperties** szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | tableName |Azon tábla vagy nézet neve a Azure SQL Data Warehouse adatbázisban, amelyhez a társított szolgáltatás hivatkozik. |Igen |
 
@@ -96,11 +96,11 @@ Míg a tevékenység typeProperties szakaszában elérhető tulajdonságok az eg
 ### <a name="sqldwsource"></a>SqlDWSource
 Ha a forrás **SqlDWSource**típusú, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Nem |
-| sqlReaderStoredProcedureName |Azon tárolt eljárás neve, amely beolvassa az adatokat a forrás táblából. |A tárolt eljárás neve. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. |Nem |
-| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |Nem |
+| sqlReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from MyTable. |Nem |
+| sqlReaderStoredProcedureName |Azon tárolt eljárás neve, amely beolvassa az adatokat a forrás táblából. |A tárolt eljárás neve. Az utolsó SQL-utasítást a tárolt eljárás a SELECT utasítással kell lennie. |Nem |
+| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. Nevek és a kis-és a paraméterek meg kell egyeznie a neveket és a kis-és nagybetűhasználatot, a tárolt eljárás paraméterértékeinek. |Nem |
 
 Ha a **sqlReaderQuery** meg van adva a SqlDWSource, a másolási tevékenység lefuttatja ezt a lekérdezést a Azure SQL Data Warehouse forráson az adatkéréshez.
 
@@ -108,7 +108,7 @@ Azt is megteheti, hogy megadhat egy tárolt eljárást a **sqlReaderStoredProced
 
 Ha nem ad meg sqlReaderQuery vagy sqlReaderStoredProcedureName, a JSON-adatkészlet szerkezet szakaszában definiált oszlopok a Azure SQL Data Warehouseon futtatandó lekérdezés létrehozásához használatosak. Példa: `select column1, column2 from mytable`. Ha az adatkészlet definíciója nem rendelkezik a struktúrával, az összes oszlop ki lesz választva a táblából.
 
-#### <a name="sqldwsource-example"></a>SqlDWSource példa
+#### <a name="sqldwsource-example"></a>SqlDWSource example
 
 ```JSON
 "source": {
@@ -142,17 +142,17 @@ GO
 ### <a name="sqldwsink"></a>SqlDWSink
 A **SqlDWSink** a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| sqlWriterCleanupScript |A másolási tevékenységre vonatkozó lekérdezés megadása úgy, hogy egy adott szeletből származó adatmennyiséget takarítson meg. Részletekért lásd: [ismételhetőség szakasz](#repeatability-during-copy). |Egy lekérdezési utasítás. |Nem |
-| allowPolyBase |Azt jelzi, hogy a BULKINSERT mechanizmus helyett a következőt kell-e használni (ha van ilyen). <br/><br/> **Az adatok a SQL Data Warehouseba való betöltésének ajánlott módja a Base használata.** A korlátozások és részletek a következő témakörben olvashatók: az adatok Azure SQL Data Warehouse szakaszba való [betöltésének használata](#use-polybase-to-load-data-into-azure-sql-data-warehouse) . |Igaz <br/>False (alapértelmezett) |Nem |
+| sqlWriterCleanupScript |A másolási tevékenységre vonatkozó lekérdezés megadása úgy, hogy egy adott szeletből származó adatmennyiséget takarítson meg. Részletekért lásd: [ismételhetőség szakasz](#repeatability-during-copy). |A lekérdezési utasítást. |Nem |
+| allowPolyBase |Azt jelzi, hogy a BULKINSERT mechanizmus helyett a következőt kell-e használni (ha van ilyen). <br/><br/> **Az adatok a SQL Data Warehouseba való betöltésének ajánlott módja a Base használata.** A korlátozások és részletek a következő témakörben olvashatók: az adatok Azure SQL Data Warehouse szakaszba való [betöltésének használata](#use-polybase-to-load-data-into-azure-sql-data-warehouse) . |True (Igaz) <br/>False (alapértelmezett) |Nem |
 | polyBaseSettings |A tulajdonságok olyan csoportja, amely akkor adható meg, ha a **allowPolybase** tulajdonság értéke **true (igaz**). |&nbsp; |Nem |
-| rejectValue |A lekérdezés sikertelensége előtt visszautasítható sorok számát vagy százalékos arányát adja meg. <br/><br/>További információ a [create External Table (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) című témakör **argumentumok** szakaszában található alapszintű elutasítás beállításairól. |0 (alapértelmezett), 1, 2,... |Nem |
+| rejectValue |Megadja a szám vagy százalékos aránya, amelyek is vissza kell utasítani, mielőtt a lekérdezés nem sikerült sorokat. <br/><br/>További információ a [create External Table (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) című témakör **argumentumok** szakaszában található alapszintű elutasítás beállításairól. |0 (alapértelmezett), 1, 2,... |Nem |
 | rejectType |Megadja, hogy a rejectValue beállítás literál értékként vagy százalékként van-e megadva. |Érték (alapértelmezett), százalék |Nem |
-| rejectSampleValue |Meghatározza a lekérdezni kívánt sorok számát, mielőtt a rendszer újraszámítja az elutasított sorok százalékos arányát. |1, 2,... |Igen, ha a rejectType **százaléka** |
-| useTypeDefault |Meghatározza, hogy a rendszer hogyan kezelje a hiányzó értékeket a tagolt szövegfájlokban, ha a viszonyítási adatok beolvasása a szövegfájlból történik.<br/><br/>Erről a tulajdonságról a [külső fájlformátum létrehozása (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)argumentumai című szakaszban olvashat bővebben. |Igaz, hamis (alapértelmezett) |Nem |
+| rejectSampleValue |Meghatározza a lekérdezni kívánt sorok számát, mielőtt a rendszer újraszámítja az elutasított sorok százalékos arányát. |1, 2, … |Igen, ha a rejectType **százaléka** |
+| useTypeDefault |Itt adhatja meg, hogyan szeretné kezelni a PolyBase kér le adatokat a szövegfájl elválasztójellel tagolt szöveges fájlok a hiányzó értékeket.<br/><br/>Erről a tulajdonságról a [külső fájlformátum létrehozása (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)argumentumai című szakaszban olvashat bővebben. |Igaz, hamis (alapértelmezett) |Nem |
 | writeBatchSize |Az SQL-táblába szúrja be az adatmennyiséget, ha a puffer mérete eléri a writeBatchSize |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
-| writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt. |TimeSpan<br/><br/> Például: "00:30:00" (30 perc). |Nem |
+| writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt. |TimeSpan<br/><br/> Példa: "00: 30:00" (30 perc). |Nem |
 
 #### <a name="sqldwsink-example"></a>SqlDWSink példa
 
@@ -163,7 +163,7 @@ A **SqlDWSink** a következő tulajdonságokat támogatja:
 }
 ```
 
-## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Adatok betöltése a Azure SQL Data Warehouseba a Base használatával
+## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Adatok betöltése az Azure SQL Data Warehouse a PolyBase használatával
 A **[Base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** használatával nagy mennyiségű adat a nagy adatátviteli sebességű Azure SQL Data Warehouseba való betöltésének hatékony módja. Az átviteli sebesség nagy mennyiségű nyereségét az alapértelmezett BULKINSERT mechanizmus helyett a Base használatával láthatja. Lásd: a [teljesítmény hivatkozási számának másolása](data-factory-copy-activity-performance.md#performance-reference) részletes összehasonlítással. A használati eseteket bemutató bemutatóért lásd: [1 TB Betöltése Azure SQL Data Warehouse 15 perc alatt Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 * Ha a forrásadatok az **Azure blobban vagy a Azure Data Lake Storeban**vannak, és a formátum kompatibilis a következővel, akkor közvetlenül is másolhatja a Azure SQL Data Warehouset a albase használatával. A részleteket lásd: a **[közvetlen másolás a Base használatával](#direct-copy-using-polybase)** .
@@ -259,7 +259,7 @@ A szolgáltatás használatához hozzon létre egy [Azure Storage-beli társíto
 ## <a name="best-practices-when-using-polybase"></a>Ajánlott eljárások a Base használatakor
 A következő szakaszokban további ajánlott eljárásokat talál a [Azure SQL Data Warehouse ajánlott eljárásaiban](../../sql-data-warehouse/sql-data-warehouse-best-practices.md)említettek közül.
 
-### <a name="required-database-permission"></a>Szükséges adatbázis-engedély
+### <a name="required-database-permission"></a>Adatbázishoz szükséges engedélyt
 A (z) rendszerhez szükséges, hogy a felhasználó az adatok betöltéséhez használt felhasználónak a ["vezérlés" engedéllyel](https://msdn.microsoft.com/library/ms191291.aspx) rendelkezzen a céladatbázis SQL Data Warehouse. Ennek egyik módja, ha az adott felhasználót a "db_owner" szerepkör tagjaként adja hozzá. [Ebből a szakaszból](../../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)megtudhatja, hogyan teheti meg ezt a műveletet.
 
 ### <a name="row-size-and-data-type-limitation"></a>Sor mérete és adattípus korlátozása
@@ -267,18 +267,18 @@ A kiinduló terhelések csak **1 MB** -nál kisebb sorok betöltésére korláto
 
 Ha 1 MB-nál nagyobb méretű adatsorokkal rendelkezik, érdemes lehet függőlegesen felosztani a forrás táblákat több kis méretre, ahol a legnagyobb sorok mérete nem haladhatja meg a korlátot. Ezután a kisebb táblák betölthetők a Base használatával, és a Azure SQL Data Warehouse együtt egyesítve lesznek.
 
-### <a name="sql-data-warehouse-resource-class"></a>SQL Data Warehouse Resource osztály
+### <a name="sql-data-warehouse-resource-class"></a>Az SQL Data Warehouse erőforrásosztály
 A lehető legjobb átviteli sebesség eléréséhez vegye fontolóra, hogy nagyobb erőforrás-osztályt rendeljen hozzá a felhasználóhoz, amellyel az adatok betölthetők a SQL Data Warehouseba a Base használatával. Ebből a témakörből megtudhatja, hogyan teheti ezt meg a [felhasználói erőforrás osztályra vonatkozó példa módosítása](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)után.
 
 ### <a name="tablename-in-azure-sql-data-warehouse"></a>Táblanév Azure SQL Data Warehouse
 A következő táblázat példákat mutat be arra, hogyan határozhatja meg a **Táblanév** tulajdonságot az adatkészlet JSON-ban a séma és a tábla különböző kombinációi esetében.
 
-| ADATBÁZIS-séma | Tábla neve | Táblanév JSON-tulajdonság |
+| Adatbázis-séma | Tábla neve | Táblanév JSON-tulajdonság |
 | --- | --- | --- |
-| dbo |Sajáttábla |Sajáttábla vagy dbo. Sajáttábla vagy [dbo]. Sajáttábla |
-| dbo1 |Sajáttábla |dbo1. Sajáttábla vagy [dbo1]. Sajáttábla |
-| dbo |Saját. tábla |[Saját. table] vagy [dbo]. [Saját tábla] |
-| dbo1 |Saját. tábla |[dbo1]. [Saját tábla] |
+| dbo |MyTable |MyTable vagy dbo.MyTable vagy [dbo].[MyTable] |
+| dbo1 |MyTable |dbo1.MyTable vagy [dbo1].[MyTable] |
+| dbo |My.Table |[My.Table] vagy [dbo].[My.Table] |
+| dbo1 |My.Table |[dbo1].[My.Table] |
 
 Ha a következő hiba jelenik meg, akkor a táblanév tulajdonsághoz megadott értékkel kapcsolatos probléma lehet. A táblanév JSON-tulajdonság értékeinek megadásához tekintse meg a táblázatot a megfelelő módon.
 
@@ -286,7 +286,7 @@ Ha a következő hiba jelenik meg, akkor a táblanév tulajdonsághoz megadott �
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
 ```
 
-### <a name="columns-with-default-values"></a>Alapértelmezett értékeket tartalmazó oszlopok
+### <a name="columns-with-default-values"></a>Az alapértelmezett értékekkel oszlopok
 A Data Factory-alapú alapszolgáltatások jelenleg csak ugyanannyi oszlopot fogadnak el, mint a célként megadott táblában. Tegyük fel, hogy van egy négy oszlopot tartalmazó táblája, és az egyik az alapértelmezett értékkel van definiálva. A bemeneti adatoknak továbbra is négy oszlopot kell tartalmazniuk. A 3 oszlopos bemeneti adatkészlet megadása a következő üzenethez hasonló hibát eredményez:
 
 ```
@@ -305,30 +305,30 @@ Data Factory létrehozza a tárolóban található táblát a forrás adattárba
 | BigInt | BigInt |
 | SmallInt | SmallInt |
 | TinyInt | TinyInt |
-| bites | bites |
-| Decimális | Decimális |
-| Numerikus | Decimális |
-| Lebegőpontos szám | Lebegőpontos szám |
-| Money | Money |
-| Real | Real |
+| Bites | Bites |
+| tizedes tört | tizedes tört |
+| Numeric | tizedes tört |
+| Float | Float |
+| money | money |
+| Valós | Valós |
 | Túlcsordulási | Túlcsordulási |
 | Bináris | Bináris |
-| varbinary | Varbinary (legfeljebb 8000) |
+| Varbinary | Varbinary (legfeljebb 8000) |
 | Dátum | Dátum |
-| Dátum és idő | Dátum és idő |
+| DateTime | DateTime |
 | DateTime2 | DateTime2 |
-| Idő | Idő |
+| Time | Time |
 | DateTimeOffset | DateTimeOffset |
-| Idő adattípusúra | Idő adattípusúra |
+| SmallDateTime | SmallDateTime |
 | Szöveg | Varchar (legfeljebb 8000) |
 | NText | NVarChar (legfeljebb 4000) |
-| Lemezkép | VarBinary (legfeljebb 8000) |
+| Kép | VarBinary (legfeljebb 8000) |
 | UniqueIdentifier | UniqueIdentifier |
-| Char | Char |
+| CHAR | CHAR |
 | NChar | NChar |
 | VarChar | VarChar (legfeljebb 8000) |
 | NVarChar | NVarChar (legfeljebb 4000) |
-| XML | Varchar (legfeljebb 8000) |
+| Xml | Varchar (legfeljebb 8000) |
 
 [!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
@@ -345,37 +345,37 @@ A leképezés megegyezik a [ADO.net Adattípusának SQL Server-leképezésével]
 | SQL Server adatbázismotor típusa | .NET-keretrendszer típusa |
 | --- | --- |
 | bigint |Int64 |
-| binary |Bájt [] |
+| binary |Byte[] |
 | bit |Logikai |
-| char |Karakterlánc, char [] |
-| dátum |Dátum és idő |
-| Dátum/idő |Dátum és idő |
-| datetime2 |Dátum és idő |
-| DateTimeOffset |DateTimeOffset |
-| Decimális |Decimális |
-| FILESTREAM attribútum (varbinary (max)) |Bájt [] |
-| Lebegőpontos szám |Double |
-| image |Bájt [] |
+| char |String, Char[] |
+| dátum |DateTime |
+| Dátum és idő |DateTime |
+| datetime2 |DateTime |
+| Datetimeoffset |DateTimeOffset |
+| tizedes tört |tizedes tört |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Float |Dupla |
+| image |Byte[] |
 | int |Int32 |
-| pénzt |Decimális |
-| NCHAR |Karakterlánc, char [] |
-| ntext |Karakterlánc, char [] |
-| numerikus |Decimális |
-| nvarchar |Karakterlánc, char [] |
-| real |Önálló |
-| ROWVERSION |Bájt [] |
-| idő adattípusúra |Dátum és idő |
+| money |tizedes tört |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |tizedes tört |
+| nvarchar |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
+| smalldatetime |DateTime |
 | smallint |Int16 |
-| túlcsordulási |Decimális |
-| sql_variant |Objektum |
-| szöveg |Karakterlánc, char [] |
+| smallmoney |tizedes tört |
+| sql_variant |Object * |
+| szöveg |String, Char[] |
 | time |időtartam |
-| időbélyeg |Bájt [] |
+| időbélyeg |Byte[] |
 | tinyint |Bájt |
-| uniqueidentifier |GUID |
-| varbinary |Bájt [] |
-| varchar |Karakterlánc, char [] |
-| xml |XML |
+| uniqueidentifier |Guid |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |Xml |
 
 A másolási tevékenység definíciójában a forrás adatkészletből származó oszlopokat is leképezheti a fogadó adatkészletből származó oszlopokra. Részletekért lásd: [adatkészlet-oszlopok leképezése Azure Data Factoryban](data-factory-map-columns.md).
 

@@ -12,11 +12,11 @@ author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 98aebb4733c2aa2a6d0b0217f1f437bcea1992e9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541061"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396228"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX és Azure Machine Learning: ML modellek létrehozása és felgyorsítása
 
@@ -32,9 +32,9 @@ A ONNX futtatókörnyezet nagy léptékű Microsoft-szolgáltatásokban, példá
 
 [![ONNX-folyamatábra, amely bemutatja a képzést, a konvertereket és az üzembe helyezést](./media/concept-onnx/onnx.png)](././media/concept-onnx/onnx.png#lightbox)
 
-## <a name="get-onnx-models"></a>ONNX-modellek beolvasása
+## <a name="get-onnx-models"></a>ONNX-modellekkel beolvasása
 
-A ONNX-modelleket többféleképpen is beszerezheti:
+ONNX-modellekkel többféle módon szerezheti be:
 + Új ONNX-modell betanítása Azure Machine Learningban (lásd a cikk alján található példákat)
 + Meglévő modell átalakítása más formátumból ONNX (lásd az [oktatóanyagokat](https://github.com/onnx/tutorials)) 
 + Egy előre betanított ONNX-modell beszerzése a [ONNX Model Zoo](https://github.com/onnx/models) -ból (lásd a cikk alján található példákat)
@@ -42,7 +42,7 @@ A ONNX-modelleket többféleképpen is beszerezheti:
 
 Számos modell, beleértve a képbesorolást, az objektumok észlelését és a ONNX modellként is megjeleníthető. Előfordulhat azonban, hogy egyes modellek nem alakíthatók át sikeresen. Ha ebben a helyzetben fut, a megfelelő konverter GitHubján egy problémát kell megadnia. A probléma megoldása előtt továbbra is használhatja a meglévő Format modellt.
 
-## <a name="deploy-onnx-models-in-azure"></a>ONNX-modellek üzembe helyezése az Azure-ban
+## <a name="deploy-onnx-models-in-azure"></a>Az Azure-ban az ONNX-modellek üzembe helyezése
 
 A Azure Machine Learning segítségével üzembe helyezheti, kezelheti és figyelheti a ONNX-modelljeit. A normál [üzembe helyezési munkafolyamat](concept-model-management-and-deployment.md) és a ONNX futtatókörnyezet használatával létrehozhat egy felhőben üzemeltetett Rest-végpontot. Tekintse meg a cikk végén található példa Jupyter jegyzetfüzeteket a kipróbáláshoz. 
 
@@ -56,20 +56,20 @@ pip install onnxruntime       # CPU build
 pip install onnxruntime-gpu   # GPU build
 ```
 
-A ONNX Runtime a Python-szkriptben való meghívásához használja a következőt:    
+Az ONNX-futtatókörnyezet hívja meg a Python-szkript, használja:    
 ```python
 import onnxruntime
 session = onnxruntime.InferenceSession("path to model")
 ```
 
-A modellt kísérő dokumentáció általában megadja a modell használatának bemeneteit és kimeneteit. A modell megjelenítéséhez olyan vizualizációs eszközt is használhat, mint például a [Netron](https://github.com/lutzroeder/Netron) . A ONNX Runtime lehetővé teszi a modell metaadatainak, bemenetének és kimenetének lekérdezését is:    
+A dokumentáció a modell általában kísérő kiderül, hogy a bemeneteit és kimeneteit a modell használatával. A modell megjelenítéséhez olyan vizualizációs eszközt is használhat, mint például a [Netron](https://github.com/lutzroeder/Netron) . Az ONNX-modul is lehetővé teszi a modell metaadatainak lekérdezés, bemenetek és kimenetek:    
 ```python
 session.get_modelmeta()
 first_input_name = session.get_inputs()[0].name
 first_output_name = session.get_outputs()[0].name
 ```
 
-A modell kiszámításához használja a `run` és a pass értéket a visszaadott kimenetek listájában (hagyja üresen, ha az összeset meg szeretné jeleníteni) és a bemeneti értékek egy térképét. Az eredmény a kimenetek listája.  
+A modell kiszámításához használja a `run` és a pass értéket a visszaadott kimenetek listájában (hagyja üresen, ha az összeset meg szeretné jeleníteni) és a bemeneti értékek egy térképét. Ez a kimenetek listáját.  
 ```python
 results = session.run(["output1", "output2"], {
                       "input1": indata1, "input2": indata2})
@@ -86,11 +86,11 @@ Lásd: [útmutató – azureml/Deployment/Onnx](https://github.com/Azure/Machine
 
 ## <a name="more-info"></a>További információ
 
-További információ a ONNX vagy a projekthez való hozzájárulásról:
+További információ az ONNX vagy járulnak hozzá a projekthez:
 + [ONNX projekt webhelye](https://onnx.ai)
 + [ONNX-kód a GitHubon](https://github.com/onnx/onnx)
 
-További információ a ONNX Futtatókörnyezetről vagy a projekthez való hozzájárulásról:
+További információ az ONNX-futtatókörnyezet, illetve járulnak hozzá a projekthez:
 + [ONNX futásidejű GitHub-tárház](https://github.com/Microsoft/onnxruntime)
 
 

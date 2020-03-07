@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670508"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394387"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Windows Eseménynapló-adatforrások a Azure Monitor-ban
 A Windows-eseménynaplók a leggyakoribb [adatforrások](agent-data-sources.md) , amelyek a Windows-ügynökökkel való adatgyűjtéshez használják, mivel számos alkalmazás ír a Windows-eseménynaplóba.  Az eseményeket összegyűjtheti a szabványos naplókból, például a rendszerből és az alkalmazásból is, és megadhatja a figyelni kívánt alkalmazások által létrehozott egyéni naplókat.
@@ -46,7 +46,7 @@ A Windows-események rekordjainak típusa **esemény** , és a tulajdonságok a 
 | EventCategory |Az esemény kategóriája. |
 | EventData |Az összes eseményvezérelt érték nyers formátumban. |
 | EventID |Az esemény száma. |
-| eventLevel |Az esemény súlyossága numerikus formában. |
+| EventLevel |Az esemény súlyossága numerikus formában. |
 | EventLevelName |Az esemény súlyossága szöveges formában. |
 | EventLog |Annak az Eseménynaplónak a neve, amelyből az eseményt gyűjtötték. |
 | ParameterXml |Az esemény paramétereinek értékei XML formátumban. |

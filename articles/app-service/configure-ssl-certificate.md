@@ -7,11 +7,11 @@ ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226334"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356904"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>SSL-tanúsítvány hozzáadása Azure App Service
 
@@ -117,7 +117,7 @@ A következő táblázat segítséget nyújt a tanúsítvány konfigurálásába
 |-|-|
 | Name (Név) | A App Service tanúsítvány rövid neve. |
 | Naked domain Host neve | Itt adhatja meg a legfelső szintű tartományt. A kiállított tanúsítvány a legfelső szintű tartományt és a `www` altartományt *is* védi. A kiállított tanúsítványban a köznapi név mező tartalmazza a gyökértartomány tartományát, a tulajdonos alternatív neve mező pedig a `www` tartományt tartalmazza. Csak az altartományok biztonságossá tételéhez adja meg az altartomány teljes tartománynevét (például `mysubdomain.contoso.com`).|
-| Előfizetést | Az előfizetés, amely a tanúsítványt fogja tartalmazni. |
+| -előfizetés | Az előfizetés, amely a tanúsítványt fogja tartalmazni. |
 | Erőforráscsoport | Az erőforráscsoport, amely a tanúsítványt fogja tartalmazni. Használhat új erőforráscsoportot, vagy kiválaszthatja ugyanazt az erőforráscsoportot, mint a App Service alkalmazás, például:. |
 | Tanúsítvány SKU | Meghatározza a létrehozandó tanúsítvány típusát, legyen az egy standard tanúsítvány vagy egy [helyettesítő tanúsítvány](https://wikipedia.org/wiki/Wildcard_certificate). |
 | Jogi feltételek | Ide kattintva erősítse meg, hogy elfogadja a jogi feltételeket. A tanúsítványok a GoDaddyből szerezhetők be. |
@@ -193,7 +193,7 @@ A következő táblázat segítségével választhatja ki a tanúsítványt.
 
 | Beállítás | Leírás |
 |-|-|
-| Előfizetést | Az előfizetés, amelyhez a Key Vault tartozik. |
+| -előfizetés | Az előfizetés, amelyhez a Key Vault tartozik. |
 | Key Vault | Az importálni kívánt tanúsítvánnyal rendelkező tároló. |
 | Tanúsítvány | Válassza ki a PKCS12/pfx-profil-tanúsítványok listáját a tárolóban. A tár összes PKCS12/pfx-profil-tanúsítványa szerepel a ujjlenyomatai megfelelnek, de a App Serviceban nem támogatottak. |
 

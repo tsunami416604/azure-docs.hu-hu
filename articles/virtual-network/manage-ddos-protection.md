@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 786b21e7571ed173d2da90f587a5b76d8c92a13d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450882"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390742"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure DDoS Protection standard kezelése a Azure Portal használatával
 
@@ -42,12 +42,12 @@ A legtöbb szervezet esetében nem szükséges több csomag létrehozása. A cso
 3. Kattintson a **Létrehozás** gombra.
 4. Adja meg vagy válassza ki a saját értékeit, vagy írja be, vagy válassza ki a következő példában szereplő értékeket, majd válassza a **Létrehozás**lehetőséget:
 
-    |Beállítás        |Value (Díj)                                              |
+    |Beállítás        |Érték                                              |
     |---------      |---------                                          |
-    |Név           | myDdosProtectionPlan                              |
-    |Előfizetés   | Válassza ki előfizetését.                         |
+    |Name (Név)           | myDdosProtectionPlan                              |
+    |Előfizetést   | Válassza ki előfizetését.                         |
     |Erőforráscsoport | Válassza az **új létrehozása** elemet, és adja meg a *myResourceGroup* |
-    |Földrajzi egység       | USA keleti régiója                                           |
+    |Hely       | USA keleti régiója                                           |
 
 ## <a name="enable-ddos-for-a-new-virtual-network"></a>A DDoS engedélyezése új virtuális hálózathoz
 
@@ -55,12 +55,12 @@ A legtöbb szervezet esetében nem szükséges több csomag létrehozása. A cso
 2. Válassza a **Hálózatkezelés**, majd a **Virtuális hálózat** elemet.
 3. Adja meg vagy válassza ki a saját értékeit, vagy válassza ki a következő példákat, fogadja el a fennmaradó alapértelmezett értékeket, majd válassza a **Létrehozás**elemet:
 
-    | Beállítás         | Value (Díj)                                                        |
+    | Beállítás         | Érték                                                        |
     | ---------       | ---------                                                    |
-    | Név            | myVirtualNetwork                                             |
-    | Előfizetés    | Válassza ki előfizetését.                                    |
+    | Name (Név)            | myVirtualNetwork                                             |
+    | Előfizetést    | Válassza ki előfizetését.                                    |
     | Erőforráscsoport  | Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget. |
-    | Földrajzi egység        | USA keleti régiója                                                      |
+    | Hely        | USA keleti régiója                                                      |
     | DDos-védelem | Válassza a **standard** lehetőséget, majd a **DDoS Protection**területen válassza a **myDdosProtectionPlan**lehetőséget. A kiválasztott csomag a virtuális hálózattal megegyező vagy eltérő előfizetésben is lehet, de mindkét előfizetéshez ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia.|
 
 A virtuális hálózat nem helyezhető át másik erőforráscsoporthoz vagy előfizetésbe, ha a DDoS standard engedélyezve van a virtuális hálózathoz. Ha a virtuális hálózatot a DDoS standard használatával kell áthelyeznie, először tiltsa le a DDoS standardot, helyezze át a virtuális hálózatot, majd engedélyezze a DDoS standard használatát. Az áthelyezést követően a rendszer alaphelyzetbe állítja a virtuális hálózatban lévő összes védett nyilvános IP-cím automatikusan beállított szabályzatának küszöbértékeit.
@@ -105,10 +105,10 @@ A rendelkezésre álló DDoS-védelmi mérőszámok bármelyikét kiválaszthatj
 3. Válassza a **metrikák** lehetőséget a **megosztott szolgáltatások**területen.
 4. Adja meg vagy válassza ki a saját értékeit, vagy adja meg a következő példákat, fogadja el a fennmaradó alapértelmezett értékeket, majd kattintson az **OK gombra**:
 
-    |Beállítás                  |Value (Díj)                                                                                               |
+    |Beállítás                  |Érték                                                                                               |
     |---------                |---------                                                                                           |
-    |Név                     | myDdosAlert                                                                                        |
-    |Előfizetés             | Válassza ki azt az előfizetést, amely a nyilvános IP-címet tartalmazza, amelyhez riasztásokat szeretne kapni.        |
+    |Name (Név)                     | myDdosAlert                                                                                        |
+    |Előfizetést             | Válassza ki azt az előfizetést, amely a nyilvános IP-címet tartalmazza, amelyhez riasztásokat szeretne kapni.        |
     |Erőforráscsoport           | Válassza ki azt az erőforráscsoportot, amely tartalmazza azt a nyilvános IP-címet, amelyhez riasztásokat szeretne kapni.      |
     |Erőforrás                 | Válassza ki azt a nyilvános IP-címet, amely tartalmazza azt a nyilvános IP-címet, amelyhez riasztásokat szeretne kapni. A DDoS figyeli a virtuális hálózaton belüli erőforrásokhoz rendelt nyilvános IP-címeket. Ha nem rendelkezik nyilvános IP-címmel rendelkező erőforrásokkal a virtuális hálózaton, először létre kell hoznia egy nyilvános IP-címmel rendelkező erőforrást. Az [Azure-szolgáltatásokhoz tartozó Virtual Network](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)(nem klasszikus) Resource Managerrel telepített összes erőforrás nyilvános IP-címét a Azure app Service környezetek és az Azure VPN Gateway kivételével figyelheti. Az oktatóanyag folytatásához gyorsan létrehozhat egy Windows vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet.                   |
     |Metrika                   | DDoS-támadás alatt vagy nem                                                                            |
@@ -230,12 +230,12 @@ A riasztások a támadás, a Geo és a veszélyforrások felderítésére vonatk
 
 A DDoS elleni védelmi tervekkel való együttműködéshez a fiókját hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkörhöz, amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Műveletek                                            | Név                                     |
+| Műveletek                                            | Name (Név)                                     |
 | ---------                                         | -------------                            |
-| Microsoft. Network/ddosProtectionPlans/READ        | DDoS Protection-csomag beolvasása              |
-| Microsoft. Network/ddosProtectionPlans/Write       | DDoS elleni védelmi terv létrehozása vagy frissítése  |
-| Microsoft. Network/ddosProtectionPlans/delete      | DDoS elleni védelmi terv törlése            |
-| Microsoft. Network/ddosProtectionPlans/csatlakozás/művelet | A DDoS elleni védelmi terv csatlakoztatása              |
+| Microsoft.Network/ddosProtectionPlans/read        | DDoS Protection-csomag beolvasása              |
+| Microsoft.Network/ddosProtectionPlans/write       | DDoS elleni védelmi terv létrehozása vagy frissítése  |
+| Microsoft.Network/ddosProtectionPlans/delete      | DDoS elleni védelmi terv törlése            |
+| Microsoft.Network/ddosProtectionPlans/join/action | A DDoS elleni védelmi terv csatlakoztatása              |
 
 Ha engedélyezni szeretné a DDoS Protectiont egy virtuális hálózat számára, a fióknak hozzá kell rendelnie a [virtuális hálózatok megfelelő műveleteit](manage-virtual-network.md#permissions)is.
 

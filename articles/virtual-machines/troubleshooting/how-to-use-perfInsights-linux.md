@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080515"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394775"
 ---
 # <a name="how-to-use-perfinsights"></a>A PerfInsights használata
 
@@ -69,7 +69,7 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
   - Illesztőprogram-információk
 
 - Hardver
-  - PCI-eszközök`*`[]
+  - PCI-eszközök [`*`]
 
 - Folyamatok és memória
   - Folyamatok listája (feladat neve, felhasznált memória, megnyitott fájlok)
@@ -83,7 +83,7 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
   - Hálózati útválasztási táblázat
   - Nyitott portok és állapot
 
-- Storage
+- Tárterület
   - Eszközök listájának letiltása
   - Partíciók listája
   - Csatlakoztatási pontok listája
@@ -91,7 +91,7 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
   - LVM kötet adatai
   - Profilkészítés rögzítése az összes lemezen 5 másodperces intervallumban
 
-- Logs
+- Naplók
   - /var/log/messages
   - /var/log/syslog
   - /var/log/kern.log
@@ -103,7 +103,7 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
   - /var/log/waagent.log
-  - /var/log/Azure/[bővítmény mappája]\*/napló\*
+  - /var/log/Azure/[kiterjesztés mappája]/\*log\*
   - /var/opt/microsoft/omsconfig/omsconfig.log
   - /var/opt/microsoft/omsagent/log/omsagent.log
   - /etc/waagent.config
@@ -125,12 +125,12 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
 
 - A következő eloszlások jelenleg támogatottak:
 
-    | Disztribúció               | Version                                         |
+    | Disztribúció               | Verzió                                         |
     |----------------------------|-------------------------------------------------|
     | Oracle Linux kiszolgáló        | 6,10 [`*`], 7,3, 7,6, 7,5 (Oracle-Database-EE 13,8 Marketplace-rendszerkép)|
     | CentOS                     | 6,5 [`*`], 7,6                                    |
     | RHEL                       | 7,2, 7,5, 8,0 [`*`]                               |
-    | Ubuntu                     | 14.04-es, 16.04, 18.04                               |
+    | Ubuntu                     | 14.04, 16.04, 18.04                               |
     | Debian                     | 8, 9, 10 [`*`]                                    |
     | SLES                       | 12 SP4 [`*`]                                      |
     |                            |                                                   |
@@ -173,7 +173,7 @@ A PerfInsights eszköz futtatásához kövesse az alábbi lépéseket:
    tar xzvf PerfInsights.tar.gz
    ```
 
-2. Keresse meg a fájlt tartalmazó `perfinsights.py` mappát, majd futtassa a parancsot `perfinsights.py` az elérhető parancssori paraméterek megtekintéséhez.
+2. Navigáljon a `perfinsights.py` fájlt tartalmazó mappához, majd a `perfinsights.py` futtatásával tekintse meg az elérhető parancssori paramétereket.
 
     ```bash
     cd <the path of PerfInsights folder>
@@ -205,11 +205,11 @@ A PerfInsights eszköz futtatásához kövesse az alábbi lépéseket:
     >
     >Ha aktív támogatási jegyet használ a Microsofttal, és PerfInsights-t futtat a támogatási szakember kérelmére, akkor ügyeljen arra, hogy a támogatási jegy számát a **-s vagy a--support-Request** kapcsoló használatával adja meg.
 
-Ha a Futtatás befejeződött, egy új tar-fájl ugyanabban a mappában jelenik meg, mint a PerfInsights, kivéve, ha nincs megadva kimeneti mappa. A fájl neve **PerformanceDiagnostics\_éééé-hh\_-nn hh-mm-SS-fff. tar. gz.** Ezt a fájlt elküldheti a támogatási ügynöknek elemzésre, vagy megnyithatja a jelentést a fájlon belül a megállapítások és javaslatok áttekintéséhez.
+Ha a Futtatás befejeződött, egy új tar-fájl ugyanabban a mappában jelenik meg, mint a PerfInsights, kivéve, ha nincs megadva kimeneti mappa. A fájl neve **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-SS-fff. tar. gz.** Ezt a fájlt elküldheti a támogatási ügynöknek elemzésre, vagy megnyithatja a jelentést a fájlon belül a megállapítások és javaslatok áttekintéséhez.
 
 ## <a name="review-the-diagnostics-report"></a>A diagnosztikai jelentés áttekintése
 
-A **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-SS-fff. tar. gz** fájlon belül egy HTML-jelentést talál, amely a PerfInsights eredményeit részletezi. A jelentés áttekintéséhez bontsa ki **a\_PerformanceDiagnostics éééé-hh-\_nn hh-mm-SS-fff. tar. gz** fájlt, majd nyissa meg a **PerfInsights report. html** fájlt.
+A **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-SS-fff. tar. gz** fájlon belül egy HTML-jelentést talál, amely a PerfInsights eredményeit részletezi. A jelentés áttekintéséhez bontsa ki a **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-SS-fff. tar. gz** fájlt, majd nyissa meg a **PerfInsights report. html** fájlt.
 
 ### <a name="overview-tab"></a>Áttekintés lap
 
@@ -233,7 +233,7 @@ A **CPU** lap a PerfInsights futtatása során a rendszerszintű CPU-használatr
 
 Az **eredmények** szakasz a tárolással kapcsolatos különböző eredményeket és javaslatokat jeleníti meg.
 
-Az **eszközök** és egyéb kapcsolódó szakaszok, például a **Partitions**, az **LVM**és a **MDADM** lapok letiltják, hogy az eszközök hogyan vannak konfigurálva és hogyan kapcsolódnak egymáshoz.
+Az eszközök és egyéb kapcsolódó szakaszok, például a **Partitions**, az **LVM**és a **MDADM** lapok **letiltják** , hogy az eszközök hogyan vannak konfigurálva és hogyan kapcsolódnak egymáshoz.
 
 ![Képernyőfelvétel a Storage lapról](media/how-to-use-perfinsights-linux/perfinsights-linux-storage-tab.png)  
 ![Képernyőkép a MDADM lapról](media/how-to-use-perfinsights-linux/perfinsights-linux-mdadm-config.png)
@@ -244,7 +244,7 @@ A **Linux** lapon a virtuális gépen futó hardverre és operációs rendszerre
 
 ![A Linux lap képernyőképe](media/how-to-use-perfinsights-linux/perfinsights-linux-tab.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A diagnosztikai naplókat és jelentéseket feltöltheti Microsoft ügyfélszolgálata további áttekintés céljából. Ha a Microsoft ügyfélszolgálata munkatársaival dolgozik, kérheti, hogy továbbítsa a PerfInsights által generált kimenetet, hogy segítséget nyújtson a hibaelhárítási folyamathoz.
 
@@ -254,4 +254,4 @@ Az alábbi képernyőképen egy, a következőhöz hasonló üzenet látható:
 
 Az üzenetben található utasításokat követve férhet hozzá a fájlátviteli munkaterülethez. A további biztonság érdekében meg kell változtatnia a jelszavát az első használatkor.
 
-A bejelentkezést követően egy párbeszédpanel jelenik meg, amely feltölti a PerfInsights által gyűjtött **PerformanceDiagnostics\_éééé-hh\_-nn hh-mm-SS-fff. tar. gz** fájlt.
+A bejelentkezést követően egy párbeszédpanel jelenik meg, amelyen feltöltheti a PerfInsights által gyűjtött **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-SS-fff. tar. gz** fájlt.

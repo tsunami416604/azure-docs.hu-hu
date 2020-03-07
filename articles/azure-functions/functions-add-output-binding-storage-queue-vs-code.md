@@ -5,11 +5,11 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
 ms.openlocfilehash: 22f7df52e90a35a3ed9a26a7672f8354efc173e3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191040"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356854"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure Functions összekötése az Azure Storage-ba a Visual Studio Code használatával
 
@@ -178,7 +178,7 @@ E rövid útmutatók elvégzéséhez erőforrásokat hozott létre. [Fiókjának
 
 [!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Frissítette a HTTP által aktivált függvényt az adattárolási várólistába való íráshoz. Most már többet is megtudhat a függvények a Visual Studio Code használatával történő fejlesztéséről:
 

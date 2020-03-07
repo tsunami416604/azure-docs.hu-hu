@@ -12,11 +12,11 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 6f660426c41b37dd27438c28cbf603bdbf1e58b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822110"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359133"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Séma kezelése egy több-bérlős SQL-adatbázist használó SaaS-alkalmazásban
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag a következő két forgatókönyvet vizsgálja:
 
 A Azure SQL Database [rugalmas feladatok](elastic-jobs-overview.md) funkciójának használatával végrehajthatja ezeket a műveleteket a bérlői adatbázisok között. A feladatok a sablon bérlői adatbázisán is működnek. Az Wingtip tickets minta alkalmazásban ez a sablon-adatbázis egy új bérlői adatbázis kiépítésére lett másolva.
 
-Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Hozzon létre egy feladatot tartalmazó ügynököt.
@@ -64,7 +64,7 @@ A mintában használt többbérlős adatbázis-modell lehetővé teszi, hogy egy
 
 A rugalmas feladatok új verziója már a Azure SQL Database integrált szolgáltatása. Ez Elastic Jobs-nak ez az új verziója jelenleg korlátozott előzetes verzió. A korlátozott előzetes verzió jelenleg a PowerShell használatával teszi lehetővé a feladatok ügynökének létrehozását és a T-SQL-T a feladatok létrehozásához és kezeléséhez.
 > [!NOTE]
-> Ez az oktatóanyag egy korlátozott előzetes verzióban (rugalmas adatbázis-feladatok) található SQL Database szolgáltatás funkcióit használja. Ha ezt az oktatóanyagot szeretné elvégezni, adja meg az előfizetés AZONOSÍTÓját SaaSFeedback@microsoft.com tulajdonos = rugalmas feladatok előzetes verziójával. Miután megkapta a megerősítést, hogy az előfizetése engedélyezve lett, töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagokat. Ez az előzetes verzió korlátozott, ezért vegye fel a kapcsolatot a következővel: SaaSFeedback@microsoft.com a kapcsolódó kérdésekhez vagy támogatáshoz.
+> Ez az oktatóanyag egy korlátozott előzetes verzióban (rugalmas adatbázis-feladatok) található SQL Database szolgáltatás funkcióit használja. Ha ezt az oktatóanyagot szeretné elvégezni, adja meg az előfizetési azonosítót SaaSFeedback@microsoft.com tulajdonos = rugalmas feladatok előzetes verziójával. Miután megkapta a megerősítést, hogy az előfizetése engedélyezve lett, töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagokat. Ez az előzetes verzió korlátozott, ezért lépjen kapcsolatba SaaSFeedback@microsoft.com a kapcsolódó kérdésekkel vagy támogatással kapcsolatban.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>A Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás forráskódjának és parancsfájljainak beszerzése
 
@@ -88,7 +88,7 @@ Az egyes bérlői adatbázisok a **VenueTypes** táblában tartalmazzák a helys
 Először tekintse át az egyes bérlői adatbázisokban található helyszín típusait. Kapcsolódjon SQL Server Management Studio (SSMS) egyik bérlői adatbázisához, és vizsgálja meg a VenueTypes táblát.  Ezt a táblázatot a Azure Portal lekérdezés-szerkesztőjében is lekérdezheti, amely az adatbázis lapról érhető el.
 
 1. Nyissa meg a SSMS, és kapcsolódjon a bérlői kiszolgálóhoz: *tenants1-DPT-&lt;user&gt;. database.Windows.net*
-1. Annak megerősítéséhez, hogy a *motorkerékpár-verseny* és **az** *úszás Club* jelenleg nem szerepel, keresse meg a *contosoconcerthall* -adatbázist a *tenants1-DPT-&lt;felhasználói&gt;* kiszolgálón, és kérdezze le a *VenueTypes* tábla.
+1. Annak ellenőrzéséhez, hogy a *motorkerékpár-verseny* és **az** *úszás Club* jelenleg nem szerepel, keresse meg a *contosoconcerthall* -adatbázist a *tenants1-DPT-&lt;felhasználói&gt;* kiszolgálón, és kérdezze le a *VenueTypes* táblát.
 
 
 
@@ -162,9 +162,9 @@ Figyelje meg a következő elemeket a *Sémakezelés. SQL* parancsfájlban:
 -->
 * [Kiterjesztett felhőalapú adatbázisok kezelése](elastic-jobs-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
+Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
 
 > [!div class="checklist"]
 > * Feladat-ügynök létrehozása a T-SQL-feladatok több adatbázison való futtatásához

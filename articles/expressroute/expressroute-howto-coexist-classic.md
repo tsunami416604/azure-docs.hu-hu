@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: charwen
 ms.openlocfilehash: aba07e0a1dd8e7b1db8677907672d919ef034057
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926242"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374141"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Párhuzamos ExpressRoute- és párhuzamos helyek közötti kapcsolatok konfigurálása (klasszikus)
 > [!div class="op_single_selector"]
@@ -22,11 +22,11 @@ ms.locfileid: "74926242"
 > 
 > 
 
-Ez a cikk segítséget nyújt a ExpressRoute és a helyek közötti VPN-kapcsolatok konfigurálásához. A helyek közötti VPN és az ExpressRoute konfigurálásának lehetősége több előnnyel jár. A helyek közötti VPN-t konfigurálhatja biztonságos feladatátvételi útvonalként a ExpressRoute, vagy a helyek közötti VPN-kapcsolattal csatlakozhat olyan helyekhez, amelyek nem csatlakoznak a ExpressRoute-on keresztül. A cikkben mindkét forgatókönyv lépéseit ismertetjük. Ez a cikk a klasszikus üzembehelyezési modellre vonatkozik. Ez a konfiguráció a portálon nem érhető el.
+Ez a cikk segít fennálló ExpressRoute és Site-to-Site VPN-kapcsolatok konfigurálása. A helyek közötti VPN és az ExpressRoute konfigurálásának lehetősége több előnnyel jár. Site-to-Site VPN konfigurálhatja biztonságos feladatátvételi útvonalként az expressroute-hoz, vagy a nem expressroute-on keresztül kapcsolódó helyekhez való csatlakozáshoz használja a Site-to-Site VPN-eket. A cikkben mindkét forgatókönyv lépéseit ismertetjük. Ez a cikk a klasszikus üzembehelyezési modellre vonatkozik. Ez a konfiguráció a portálon nem érhető el.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
-**Tudnivalók az Azure üzembehelyezési modellekről**
+**Tudnivalók az Azure üzembe helyezési modelljeiről**
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
@@ -125,7 +125,7 @@ Az eljárás a VNetek, valamint az egyidejűleg jelenlévő helyek közötti és
 5. Csatlakoztassa az ExpressRoute-átjárót az ExpressRoute-kapcsolatcsoporthoz. A lépés végrehajtásával létrejön a kapcsolat a helyszíni hálózat és az Azure között az ExpressRoute-on keresztül.
    
         New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
-6. <a name="vpngw"></a>Ezután hozza létre a helyek közötti VPN-átjárót. A GatewaySKU paraméterben a *Standard*, a *HighPerformance* vagy az *UltraPerformance* értéket, a GatewayType paraméterben pedig a *DynamicRouting* értéket kell megadnia.
+6. <a name="vpngw"></a>Ezután hozza létre a webhelyek közötti VPN-átjárót. A GatewaySKU paraméterben a *Standard*, a *HighPerformance* vagy az *UltraPerformance* értéket, a GatewayType paraméterben pedig a *DynamicRouting* értéket kell megadnia.
    
         New-AzureVirtualNetworkGateway -VNetName MyAzureVNET -GatewayName S2SVPN -GatewayType DynamicRouting -GatewaySKU  HighPerformance
    

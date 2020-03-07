@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173481"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390482"
 ---
-# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation runbookok hozzáadása helyreállítási tervekhez
+# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbookok hozzáadása helyreállítási tervekhez
 
 Ez a cikk azt ismerteti, hogyan integrálható Azure Automation runbookok, hogy kiterjessze [Azure site Recovery](site-recovery-overview.md) helyreállítási terveket. Bemutatjuk, hogy miként automatizálható az olyan alapszintű feladatok automatizálása, amelyek egyébként manuális beavatkozást igényelnek, és hogyan lehet egy többlépéses helyreállítást egyetlen kattintással végrehajtható műveletre konvertálni.
 
@@ -53,7 +53,7 @@ Parancsfájl futtatásakor a helyreállítási terv környezetét befecskendezi 
 | VMMap kulcs |Egyedi kulcs (GUID) az egyes virtuális gépekhez. |
 | SubscriptionId |Az Azure-előfizetés azonosítója, amelyben a virtuális gép létrejött. |
 | ResourceGroupName | Azon erőforráscsoport neve, amelyben a virtuális gép található.
-| Felhőszolgáltatásneve |Az Azure Cloud Service neve, amely alatt a virtuális gép létrejött. |
+| CloudServiceName |Az Azure Cloud Service neve, amely alatt a virtuális gép létrejött. |
 | RoleName |Az Azure-beli virtuális gép neve. |
 | RecoveryPointId|A virtuális gép helyreállításának időbélyege. |
 
@@ -99,7 +99,7 @@ Aman Sharma blogja a [betakarítási felhőben](http://harvestingclouds.com) a [
 
 - Ha még nem ismeri a Azure Automation, [regisztrálhat és](https://azure.microsoft.com/services/automation/) [letöltheti a minta parancsfájlokat](https://azure.microsoft.com/documentation/scripts/).
 - Győződjön meg arról, hogy az Automation-fiók a következő modulokkal rendelkezik:
-    - AzureRM. profil
+    - AzureRM.profile
     - AzureRM.Resources
     - AzureRM.Automation
     - AzureRM.Network
@@ -117,7 +117,7 @@ Aman Sharma blogja a [betakarítási felhőben](http://harvestingclouds.com) a [
 
     ![Kattintson a Testreszabás gombra](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. Kattintson az 1. csoport melletti három pontra (...) **: Start** > **Add post művelet**.
+2. Kattintson a három pontra (...) az **1. csoport mellett: Start** > **post művelet hozzáadása**.
 3. A **beszúrási művelet**területen ellenőrizze, hogy a **parancsfájl** ki van-e választva, majd adja meg a parancsfájl nevét ( **"Helló világ!" alkalmazás**).
 4. Adjon meg egy Automation-fiókot, és válasszon ki egy runbook. A parancsfájl mentéséhez kattintson **az OK**gombra. A szkript hozzá lett adva az **1. csoporthoz: utólagos lépések**.
 
@@ -247,7 +247,7 @@ Ehhez több értéket kell megadnia Azure PowerShell használatával.
 
 A különböző helyreállítási tervekhez ugyanazt a parancsfájlt használhatja. Adjon meg különböző paramétereket úgy, hogy a különböző változókban lévő helyreállítási tervnek megfelelő értéket tárolja.
 
-## <a name="sample-scripts"></a>Mintaszkriptek
+## <a name="sample-scripts"></a>Mintaparancsfájlok
 
 Ha a parancsfájlokat az Automation-fiókban szeretné üzembe helyezni, kattintson az **üzembe helyezés az Azure** -ban gombra.
 

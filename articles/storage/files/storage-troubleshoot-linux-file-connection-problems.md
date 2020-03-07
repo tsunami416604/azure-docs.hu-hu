@@ -8,11 +8,11 @@ ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 9849e8ab918562267e93506771a4c32cf96533a4
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544939"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362121"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files problémáinak elhárítása
 
@@ -31,9 +31,9 @@ A probléma gyakori okai a következők:
 |   | SMB 2.1 <br>(Ugyanazon az Azure-régióban lévő virtuális gépekre csatlakoztatások) | SMB 3.0 <br>(A helyszíni és a régiók közötti) |
 | --- | :---: | :---: |
 | Ubuntu Server | 14.04 + | 16.04 + |
-| RHEL | 7 + | 7.5 + |
-| CentOS | 7 + |  7.5 + |
-| Debian | 8 + |   |
+| RHEL | 7+ | 7.5 + |
+| CentOS | 7+ |  7.5 + |
+| Debian | 8+ |   |
 | openSUSE | 13.2 + | 42.3 + |
 | SUSE Linux Enterprise Server | 12 | 12 SP3 + |
 
@@ -227,9 +227,9 @@ Ha egy Azure-fájlmegosztás fájljait az ls parancs használatával próbálja 
 ### <a name="solution"></a>Megoldás
 Frissítse a Linux-kernelt a következő verziókra, amelyek a probléma javításával rendelkeznek:
 
-- 4.4.87 +
-- 4.9.48 +
-- 4.12.11 +
+- 4.4.87+
+- 4.9.48+
+- 4.12.11+
 - Az összes olyan verzió, amely nagyobb vagy egyenlő, mint 4,13
 
 ## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>A szimbolikus hivatkozások nem hozhatók létre – ln: nem sikerült létrehozni a szimbolikus hivatkozást: a művelet nem támogatott
@@ -288,6 +288,6 @@ Azonban előfordulhat, hogy ezen módosítások még nem mindegyike lett portolv
 
 Ha nem tud frissíteni a legújabb kernelverziókra, áthidaló megoldásként létrehozhat egy fájlt az Azure-fájlmegosztásban, amelybe legfeljebb 30 másodpercenként ír. Ennek mindenképpen írási műveletnek kell lennie, például a fájl létrehozási vagy módosítási dátumának átírásának. Ellenkező esetben gyorsítótárazott eredményeket kaphat, így előfordulhat, hogy a művelet nem vált ki újracsatlakozást.
 
-## <a name="need-help-contact-support"></a>Segítség Vegye fel a kapcsolatot az ügyfélszolgálattal.
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Vegye fel a kapcsolatot az ügyfélszolgálattal.
 
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és kérje meg a probléma gyors megoldását.

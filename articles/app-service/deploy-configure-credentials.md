@@ -6,11 +6,11 @@ ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: a9d875e2c3899fa91b9cc41c0ee3b5a93ec5b8c8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843786"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372077"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Központi telepítési hitelesítő adatok konfigurálása Azure App Servicehoz
 A [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) kétféle hitelesítő adatot támogat a [helyi git üzembe helyezéséhez](deploy-local-git.md) és az [FTP/S](deploy-ftp.md)környezethez. Ezek a hitelesítő adatok nem egyeznek meg az Azure-előfizetés hitelesítő adataival.
@@ -27,7 +27,7 @@ A felhasználói szintű hitelesítő adatokat bármely alkalmazás [erőforrás
 
 Ha a [Cloud Shell](https://shell.azure.com)szeretné konfigurálni a központi telepítési felhasználót, futtassa az az [WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) parancsot. Cserélje le \<username > és \<Password > egy üzembe helyezési felhasználónévvel és jelszóval. 
 
-- A felhasználónévnek egyedinek kell lennie az Azure-ban, a helyi git-leküldések esetében pedig nem tartalmazhatja a "@" szimbólumot. 
+- A felhasználónév Azure-on belül egyedinek kell lennie, és a helyi git leküldés, nem tartalmazhat a "\@" szimbólummal. 
 - A jelszónak legalább nyolc karakterből kell állnia, és a következő három elem közül kettőnek kell lennie: betűk, számok és szimbólumok. 
 
 ```azurecli-interactive

@@ -12,11 +12,11 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: a225c375d877ae44c2b21ea8e79e31f17db36878
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198184"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357173"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Az Azure szinapszis Analytics (korábbi nevén SQL DW) kapacitásának korlátai
 
@@ -40,11 +40,11 @@ Az Azure szinapszis különböző összetevői számára engedélyezett maximál
 |:--- |:--- |:--- |
 | Adatbázis |Maximális méret | Gen1:240 TB tömörített lemezen. Ez a terület független a tempdb és a naplózási területtől, ezért ez a terület állandó táblákhoz van hozzárendelve.  A fürtözött oszlopcentrikus-tömörítés becsült értéke 5X.  Ez a tömörítés lehetővé teszi, hogy az adatbázis körülbelül 1 PB-re növelje, ha az összes tábla fürtözött oszlopcentrikus (az alapértelmezett tábla típusa). <br/><br/> Gen2: korlátlan tárterület a oszlopcentrikus-táblákhoz.  Az adatbázis sortárindex létrehozását része továbbra is korlátozott a lemezen lévő, 240 TB-os tömörítéssel. |
 | Tábla |Maximális méret |Korlátlan méret a oszlopcentrikus táblákhoz. <br>60 TB a lemezen tömörített sortárindex létrehozását-táblákhoz. |
-| Tábla |Táblák/adatbázis | 100,000 |
+| Tábla |Táblák/adatbázis | 100 000 |
 | Tábla |Oszlopok száma táblában |1024 oszlop |
 | Tábla |Bájt/oszlop |Az oszlop [adattípusának](sql-data-warehouse-tables-data-types.md)függvénye. A karakteres adattípusok esetében a maximális korlát legfeljebb 2 GB-ot tárolhat a kikapcsolt lapon (egymást követő) tárolóban.  A nem Unicode karakterek, például a char vagy a varchar limit 8000 egy adatlapon, a Unicode-karakterek, például a nchar vagy a nvarchar korlátja 4000 egy adatlapon.  A teljesítmény növeléséhez használja az adatlapok tárolási méretét. |
 | Tábla |Bájt/sor, meghatározott méret |8060 bájt<br/><br/>A másodpercenkénti bájtok számát ugyanúgy számítjuk ki, mint az oldal tömörítéséhez SQL Server. A SQL Serverhoz hasonlóan a soros túlcsordulású tárolás is támogatott, ami lehetővé teszi a **változó hosszúságú oszlopok** leküldését a sorból. Ha a változó hosszúságú sorok kiküldése sorban történik, a fő rekordban csak 24 bájtos gyökér tárolódik. További információ: [8 kb-ot meghaladó, soros túlcsordulási adatok](https://msdn.microsoft.com/library/ms186981.aspx). |
-| Tábla |Partíciók száma táblában |15,000<br/><br/>A nagy teljesítmény érdekében javasoljuk, hogy minimalizálja a szükséges partíciók számát, miközben továbbra is támogatja az üzleti igényeit. Ahogy nő a partíciók száma, az adatdefiníciós nyelv (DDL) és az adatmanipulációs nyelv (DML) műveleteinek terhelése növekszik, és lassabb teljesítményt eredményez. |
+| Tábla |Partíciók száma táblában |15 000<br/><br/>A nagy teljesítmény érdekében javasoljuk, hogy minimalizálja a szükséges partíciók számát, miközben továbbra is támogatja az üzleti igényeit. Ahogy nő a partíciók száma, az adatdefiníciós nyelv (DDL) és az adatmanipulációs nyelv (DML) műveleteinek terhelése növekszik, és lassabb teljesítményt eredményez. |
 | Tábla |Karakter/partíciós határ értéke. |4000 |
 | Index |Nem fürtözött indexek száma táblábanként. |50<br/><br/>Csak a sortárindex létrehozását táblákra vonatkozik. |
 | Index |Fürtözött indexek száma táblábanként. |1<br><br/>A sortárindex létrehozását és a oszlopcentrikus táblákra is érvényes. |
@@ -97,6 +97,6 @@ Az Azure szinapszis különböző összetevői számára engedélyezett maximál
 | sys.dm_pdw_sql_requests |A sys. dm_pdw_exec_requestsban tárolt legutóbbi 1000 SQL-kérelmek. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure szinapszis használatával kapcsolatos javaslatokért tekintse meg a [Cheat lapot](cheat-sheet.md).

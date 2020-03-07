@@ -17,11 +17,11 @@ ms.date: 01/25/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e4dd51640c4eeda2ec99c14812a534ee506faeda
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036866"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392004"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Linuxos virtuálisgép-lemezképek keresése az Azure Marketplace-en az Azure CLI-vel
 

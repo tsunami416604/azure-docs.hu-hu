@@ -12,11 +12,11 @@ ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 3f78934fb11dd4f9e34bf27d565d471d47f250b4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928197"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387314"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Adatok áthelyezése SFTP-kiszolgálóról Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -48,22 +48,22 @@ Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely egy S
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat az FTP-hez társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | type | A Type tulajdonságot `Sftp`értékre kell beállítani. |Igen |
-| gazdagép | Az SFTP-kiszolgáló neve vagy IP-címe. |Igen |
+| host | Az SFTP-kiszolgáló neve vagy IP-címe. |Igen |
 | port |Az a port, amelyen az SFTP-kiszolgáló figyel. Az alapértelmezett érték: 21 |Nem |
 | authenticationType |Adja meg a hitelesítési típust. Megengedett értékek: **Alapszintű**, **SshPublicKey**. <br><br> Tekintse meg az [alapszintű hitelesítés használatát](#using-basic-authentication) és az [SSH nyilvános kulcsú hitelesítés](#using-ssh-public-key-authentication) használatát ismertető SZAKASZT további tulajdonságok és JSON-minták használatával. |Igen |
 | skipHostKeyValidation | Megadhatja, hogy kihagyja-e a gazdagép kulcsának érvényesítését | Nem. Az alapértelmezett érték: false |
 | hostKeyFingerprint | A gazdagép kulcsának ujj-nyomtatását határozza meg. | Igen, ha a `skipHostKeyValidation` hamis értékre van beállítva.  |
-| Átjáró neve |A helyszíni SFTP-kiszolgálóhoz való kapcsolódáshoz használandó adatkezelés átjáró neve. | Igen, ha helyszíni SFTP-kiszolgálóról másol adatok. |
+| gatewayName |A helyszíni SFTP-kiszolgálóhoz való kapcsolódáshoz használandó adatkezelés átjáró neve. | Igen, ha helyszíni SFTP-kiszolgálóról másol adatok. |
 | encryptedCredential | Titkosított hitelesítő adatok az SFTP-kiszolgálóhoz való hozzáféréshez. Automatikusan jön létre, ha alapszintű hitelesítést (username + Password) vagy SshPublicKey hitelesítést (Felhasználónév + titkos kulcs elérési útja vagy tartalma) ad meg a másolási varázslóban vagy a ClickOnce előugró ablakban. | Nem. Csak a helyszíni SFTP-kiszolgálóról származó adatok másolásakor érvényes. |
 
 ### <a name="using-basic-authentication"></a>Alapszintű hitelesítés használata
 
 Az alapszintű hitelesítés használatához állítsa a `authenticationType` as `Basic`értékre, és adja meg a következő tulajdonságokat az SFTP-összekötő általános beállításain kívül, az utolsó szakaszban bemutatott módon:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | felhasználónév | Az a felhasználó, aki hozzáfér az SFTP-kiszolgálóhoz. |Igen |
 | jelszó | A felhasználó jelszava (username). | Igen |
@@ -113,12 +113,12 @@ Az alapszintű hitelesítés használatához állítsa a `authenticationType` as
 
 Az SSH nyilvánoskulcs-hitelesítés használatához állítsa a `authenticationType` as `SshPublicKey`értékre, és adja meg a következő tulajdonságokat az SFTP-összekötő általános beállításain kívül, az utolsó szakaszban bemutatott módon:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | felhasználónév |Az SFTP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó |Igen |
 | privateKeyPath | Az átjáró által elérhető titkos kulcsfájl abszolút elérési útját határozza meg. | Adjon meg `privateKeyPath` vagy `privateKeyContent`. <br><br> Csak a helyszíni SFTP-kiszolgálóról származó adatok másolásakor érvényes. |
 | privateKeyContent | A titkos kulcs tartalmának szerializált karakterlánca. A másolás varázsló elolvashatja a titkos kulcs fájlját, és automatikusan kibonthatja a titkos kulcs tartalmát. Ha bármilyen más eszközt vagy SDK-t használ, használja helyette a privateKeyPath tulajdonságot. | Adjon meg `privateKeyPath` vagy `privateKeyContent`. |
-| Jelszót | Adja meg a pass kifejezést/jelszót a titkos kulcs visszafejtéséhez, ha a kulcsot egy pass kifejezés védi. | Igen, ha a titkos kulcs fájlját egy pass kifejezés védi. |
+| passPhrase | Adja meg a pass kifejezést/jelszót a titkos kulcs visszafejtéséhez, ha a kulcsot egy pass kifejezés védi. | Igen, ha a titkos kulcs fájlját egy pass kifejezés védi. |
 
 > [!NOTE]
 > Az SFTP-összekötő támogatja az RSA/DSA OpenSSH-kulcsot. Győződjön meg arról, hogy a kulcsfájl tartalma "-----BEGIN [RSA/DSA] titkos kulccsal-----". Ha a titkos kulcs fájlja PPK-formátumú fájl, a PuTTY eszközzel konvertálhatja a. PPK-ből az OpenSSH formátumba.
@@ -169,14 +169,14 @@ Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok telje
 
 A **typeProperties** szakasz eltérő az egyes adatkészletek esetében. Az adatkészlet típusára jellemző információkat biztosít. A **fájlmegosztás** adatkészlet típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | folderPath |A mappa alárendelt elérési útja. A karakterláncban a speciális karaktereknél használja a Escape karaktert. Példákat a következő témakörben talál: példa társított szolgáltatás és adatkészlet-definíciók.<br/><br/>Ezt a tulajdonságot kombinálhatja a **partitionBy** , hogy a mappa elérési útjai a szelet kezdő/befejező dátum-és időpontjain alapulnak. |Igen |
 | fileName |Adja meg a fájl nevét a **folderPath** , ha azt szeretné, hogy a tábla egy adott fájlra hivatkozzon a mappában. Ha nem ad meg értéket ehhez a tulajdonsághoz, a tábla a mappában található összes fájlra mutat.<br/><br/>Ha a fájlnév nincs megadva egy kimeneti adatkészlethez, a létrehozott fájl neve a következő formátumú lesz: <br/><br/>`Data.<Guid>.txt` (példa: a. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt fájl |Nem |
 | fileFilter |Adja meg azt a szűrőt, amelyet a folderPath található fájlok részhalmazának kiválasztására kíván használni az összes fájl helyett.<br/><br/>Az engedélyezett értékek a következők: `*` (több karakter) és `?` (egyetlen karakter).<br/><br/>1\. példa: `"fileFilter": "*.log"`<br/>2\. példa: `"fileFilter": 2014-1-?.txt"`<br/><br/> a fileFilter egy bemeneti fájlmegosztás adatkészlet esetében alkalmazható. Ez a tulajdonság nem támogatott a HDFS. |Nem |
 | partitionedBy |a partitionedBy használható egy dinamikus folderPath, az idősorozat-adatfájlok fájlnevének megadására. Például a folderPath paramétert minden óra adatértéknél. |Nem |
-| formátum | A következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a Format értékre a következő értékek egyikére. További információkért lásd: [Szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), JSON- [Formátum](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ork-formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és a [parketta formátuma](data-factory-supported-file-and-compression-formats.md#parquet-format) című rész. <br><br> Ha **fájlokat szeretne másolni** a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt mind a bemeneti, mind a kimeneti adatkészlet-definíciókban. |Nem |
-| tömörítés | Adja meg az adattömörítés típusát és szintjét. A támogatott típusok a következők: **gzip**, **deflate**, **BZip2**és **ZipDeflate**. A támogatott szintek a következők: **optimális** és **leggyorsabb**. További információ: [fájl-és Tömörítési formátumok Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
+| format | A következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a Format értékre a következő értékek egyikére. További információkért lásd: [Szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), JSON- [Formátum](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ork-formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és a [parketta formátuma](data-factory-supported-file-and-compression-formats.md#parquet-format) című rész. <br><br> Ha **fájlokat szeretne másolni** a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt mind a bemeneti, mind a kimeneti adatkészlet-definíciókban. |Nem |
+| compression | Adja meg a típus és az adatok tömörítési szintje. A támogatott típusok a következők: **gzip**, **deflate**, **BZip2**és **ZipDeflate**. A támogatott szintek a következők: **optimális** és **leggyorsabb**. További információ: [fájl-és Tömörítési formátumok Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
 | useBinaryTransfer |Adja meg, hogy a bináris átviteli módot használja-e. A bináris mód és a hamis ASCII esetében igaz. Alapértelmezett érték: true (igaz). Ez a tulajdonság csak akkor használható, ha a társított társított szolgáltatás típusa: FTP. |Nem |
 
 > [!NOTE]
@@ -410,7 +410,7 @@ A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kime
 ## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
 A [másolási tevékenység teljesítményének & hangolási útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére Azure Data Factory és az optimalizálás különféle módjaival.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
 * A [másolási](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) tevékenységről szóló oktatóanyag részletesen ismerteti a folyamat másolási tevékenységgel történő létrehozását.

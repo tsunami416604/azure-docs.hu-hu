@@ -16,14 +16,14 @@ ms.custom: seodec18
 ms.date: 12/20/2019
 ms.author: shvija
 ms.openlocfilehash: 385430d993afe8b7a0ad57991d3c93eebd46ddcb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437267"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365370"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>Gyors útmutató: események küldése vagy fogadása az Azure Event Hubs a .NET-keretrendszerrel
-Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok és telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
+Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre C# a .NET-keretrendszer konzoljának alkalmazásait az események eventhub való küldéséhez vagy fogadásához. 
 
@@ -31,7 +31,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre C# a .NET-keretrend
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
 - [Microsoft Visual Studio 2019](https://visualstudio.com).
-- **Hozzon létre egy Event Hubs névteret és egy Event hubot**. Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az Event hub létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md)ismertetett eljárást. Ezután szerezze be a **kapcsolati karakterláncot az Event hub-névtérhez** a következő cikk utasításait követve: [kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Az oktatóanyag későbbi részében a kapcsolatok karakterláncát kell használnia.
+- **Hozzon létre egy Event Hubs névteret és egy Event hubot**. Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az Event hub létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md)ismertetett eljárást. Ezután szerezze be a **kapcsolati karakterláncot az Event hub-névtérhez** a következő cikk utasításait követve: [kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Az oktatóanyag későbbi részében használja a kapcsolati karakterláncot.
 
 ## <a name="send-events"></a>Események küldése 
 Ebből a szakaszból megtudhatja, hogyan hozhat létre egy .NET-keretrendszerbeli Console-alkalmazást, hogy eseményeket küldjön az Event hub-nak. 
@@ -53,7 +53,7 @@ Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Applica
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Kód írása az üzenetek eseményközpontba való küldésére
 
-1. Adja hozzá a következő `using`utasításokat a **Program.cs** fájl elejéhez:
+1. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
    
     ```csharp
     using System.Threading;
@@ -118,7 +118,7 @@ Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Applica
 1. A Megoldáskezelőben kattintson a jobb gombbal a **Receiver** (Fogadó) projektre, majd kattintson a **Manage NuGet Packages for Solution** (Megoldás NuGet-csomagjainak kezelése) parancsra.
 2. Kattintson a **Browse** (Tallózás) lapra, és keressen a következőre: `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket.
    
-    ![Az Event Processor Host NuGet-csomag keresése](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
+    ![Event Processor Host NuGet-csomag keresése](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    
     A Visual Studio letölti és telepíti az [Azure Service Bus Event Hub - EventProcessorHost NuGet csomagot](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) minden függőségével együtt, és hozzáad egy rá mutató hivatkozást is.
 
@@ -126,7 +126,7 @@ Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Applica
 
 1. Kattintson a jobb gombbal a **Receiver** (Fogadó) projektre, kattintson az **Add** (Hozzáadás) lehetőségre, majd a **Class** (Osztály) elemre. Nevezze el az új osztályt **SimpleEventProcessor** névre, és kattintson az **Add** (Hozzáadás) gombra az osztály létrehozásához.
    
-    ![SimpleEventProcessor osztály hozzáadása](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
+    ![Adja hozzá a SimpleEventProcessor osztályt](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
 2. Adja hozzá a következő utasításokat a SimpleEventProcessor.cs fájl elejéhez:
     
       ```csharp
@@ -134,7 +134,7 @@ Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Applica
       using System.Diagnostics;
       ```
     
-3. Helyettesítse be a következő kódot a osztály törzséhez:
+3. Helyettesítse be a szervezet az osztály alábbi kódjában:
     
       ```csharp
       class SimpleEventProcessor : IEventProcessor

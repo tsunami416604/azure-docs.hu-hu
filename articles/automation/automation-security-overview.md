@@ -8,11 +8,11 @@ ms.date: 03/19/2018
 ms.topic: conceptual
 ROBOTS: NOINDEX
 ms.openlocfilehash: b2003469fa35de837c3a9214e40cfb333156b40c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420686"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360843"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Bevezetés a hitelesítési folyamatba az Azure Automationben  
 Az Azure Automation lehetővé teszi a feladatok automatizálását az Azure erőforrásain, továbbá olyan felhőszolgáltatókkal, mint az Amazon webszolgáltatások (AWS).  Annak érdekében, hogy a forgatókönyv elvégezze a szükséges műveleteket, engedélyekkel kell rendelkeznie az erőforrások biztonságos eléréséhez az előfizetésben szükséges minimális jogokkal.
@@ -35,7 +35,7 @@ A szerepköralapú hozzáférés-vezérlés az Azure Resource Managerben érhet�
 
 Az adatközpontban egy hibrid forgatókönyv-feldolgozón vagy az AWS számítástechnikai szolgáltatásain futó forgatókönyvek nem használhatják ugyanazt a módszert, amelyet az Azure-erőforrásokon hitelesítő forgatókönyvek használnak.  Ennek oka az, hogy azok az erőforrások az Azure-on kívül futnak, és emiatt az Automation szolgáltatásban meghatározott saját biztonsági hitelesítő adataikra van szükség a helyileg elérhető erőforrásokhoz történő hitelesítéshez.  
 
-## <a name="authentication-methods"></a>Hitelesítési módok
+## <a name="authentication-methods"></a>Hitelesítési módszerek
 A következő táblázat összefoglalja az Azure Automation által támogatott összes környezet különböző hitelesítési módszereit, valamint az azt ismertető cikket, hogy miként lehet beállítani a hitelesítést a forgatókönyvekhez.
 
 | Módszer | Környezet | Cikk |
@@ -44,5 +44,5 @@ A következő táblázat összefoglalja az Azure Automation által támogatott �
 | Azure-futtatófiók |Azure Resource Manager |[Runbookok hitelesítése Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) |
 | Klasszikus Azure-futtatófiók |Klasszikus Azure portál |[Runbookok hitelesítése Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) |
 | Windows-hitelesítés |Helyszíni adatközpont |[Runbookok hitelesítése hibrid runbook-feldolgozókhoz](automation-hybrid-runbook-worker.md) |
-| AWS hitelesítő adatok |Amazon Web Services összehasonlítása |[Runbookok hitelesítése az Amazon webszolgáltatásokkal (AWS)](automation-config-aws-account.md) |
+| AWS hitelesítő adatok |Amazon webszolgáltatások |[Runbookok hitelesítése az Amazon webszolgáltatásokkal (AWS)](automation-config-aws-account.md) |
 

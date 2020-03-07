@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176568"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374467"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Termékcsoportok az Azure API Management
 
-Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxis és az Ön által választott szerkesztő használatával, például a [tervezők DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), a karakterjel- [erőforrások](api-management-template-resources.md#glyphs)és a [lapok vezérlőelemek](api-management-page-controls.md)széles választékával nagy rugalmasságot biztosíthat a konfiguráláshoz a lapok tartalmának megjelenítése, ahogy az a sablonok használatával illik.  
+Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxisának és a választott szerkesztőnek, például a [tervezők DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), a karakterjel- [erőforrások](api-management-template-resources.md#glyphs)és a [lap vezérlőelemeknek](api-management-page-controls.md)a használatával nagyszerű rugalmasságot biztosít a lapok tartalmának konfigurálásához, ahogy az a fenti sablonok használatával illik.  
   
  Az ebben a szakaszban található sablonok segítségével testre szabhatja a termékek oldalain lévő tartalmat a fejlesztői portálon.  
   
@@ -79,11 +79,11 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Type (Típus)|Leírás|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |Lapozás|[Lapozófájl](api-management-template-data-model-reference.md#Paging) entitása.|A termékek gyűjteményének lapozási adatai.|  
 |Szűrés|Entitás [szűrése](api-management-template-data-model-reference.md#Filtering) .|A Products List lap szűrési információi.|  
-|Termék|A [termék](api-management-template-data-model-reference.md#Product) entitások gyűjteménye.|Az aktuális felhasználó számára látható termékek.|  
+|Termékek|A [termék](api-management-template-data-model-reference.md#Product) entitások gyűjteménye.|Az aktuális felhasználó számára látható termékek.|  
   
 ### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
@@ -204,12 +204,12 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Type (Típus)|Leírás|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|Termék|[Termék](api-management-template-data-model-reference.md#Product)|A megadott termék.|  
+|Product|[Termék](api-management-template-data-model-reference.md#Product)|A megadott termék.|  
 |IsDeveloperSubscribed|logikai|Azt határozza meg, hogy az aktuális felhasználó előfizetett-e erre a termékre.|  
 |SubscriptionState|szám|Az előfizetés állapota. A lehetséges állapotok a következők:<br /><br /> -   `0 - suspended` – az előfizetés le van tiltva, és az előfizető nem hívhat meg semmilyen API-t a termékről.<br />-   `1 - active` – az előfizetés aktív.<br />-   `2 - expired` – az előfizetés elérte a lejárati dátumot, és inaktiválva lett.<br />-   `3 - submitted` – az előfizetési kérést a fejlesztő hozta létre, de még nem hagyta jóvá vagy nem utasította el.<br />-   `4 - rejected` – az előfizetési kérelmet a rendszergazda megtagadta.<br />-   `5 - cancelled` – az előfizetést a fejlesztő vagy a rendszergazda megszakította.|  
-|Korlátozások|tömb|Ez a tulajdonság elavult, és nem használható.|  
+|Korlátok|tömb|Ez a tulajdonság elavult, és nem használható.|  
 |DelegatedSubscriptionEnabled|logikai|Engedélyezve van-e a [delegálás](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) ehhez az előfizetéshez.|  
 |DelegatedSubscriptionUrl|sztring|Ha a delegálás engedélyezve van, a delegált előfizetési URL-cím.|  
 |IsAgreed|logikai|Ha a termék rendelkezik feltételekkel, azt, hogy az aktuális felhasználó elfogadta-e a feltételeket.|  

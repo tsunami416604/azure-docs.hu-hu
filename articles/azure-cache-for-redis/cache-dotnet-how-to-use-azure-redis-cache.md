@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/18/2018
 ms.openlocfilehash: b22d40e29d2150592f2753edd789458fbf25911f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433524"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357495"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Gyors útmutató: az Azure cache használata a Redis .NET-keretrendszerbeli alkalmazással
 
@@ -121,7 +121,7 @@ A rendszer a *CacheConnection* alkalmazásbeállítás értékét használja ahh
 
 ## <a name="executing-cache-commands"></a>Gyorsítótárparancsok végrehajtása
 
-Adja hozzá a következő kódot a konzolalkalmazás `Program` osztályának `Main` eljárásához:
+Adja hozzá a következő kódot a konzolalkalmazás `Main` osztályának `Program` eljárásához:
 
 ```csharp
         static void Main(string[] args)
@@ -177,7 +177,7 @@ Az alábbi példában a `Message` kulcsot láthatja. A kulcsnak korábban gyors�
 
 A Redis-hez készült Azure cache gyorsítótárba helyezheti a .NET-objektumokat és az egyszerű adattípusokat, de a .NET-objektumok gyorsítótárazása előtt szerializálni kell. Ez a .NET-objektumszerializálás az alkalmazásfejlesztők feladata, akik így rugalmasan kiválaszthatják a szerializálót.
 
-Az objektumok szerializálásának egy egyszerű módja, ha a [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) kódtárban található `JsonConvert` szerializálási metódusokat használja a JSON formátumból és a JSON formátumba szerializálásra. Ebben a szakaszban egy .NET-objektumot fog hozzáadni a gyorsítótárhoz.
+Az objektumok szerializálásának egy egyszerű módja, ha a `JsonConvert`Newtonsoft.Json[ kódtárban található ](https://www.nuget.org/packages/Newtonsoft.Json/) szerializálási metódusokat használja a JSON formátumból és a JSON formátumba szerializálásra. Ebben a szakaszban egy .NET-objektumot fog hozzáadni a gyorsítótárhoz.
 
 A Visual Studióban kattintson a **Tools (Eszközök)**  > **NuGet Package Manager (NuGet-csomagkezelő)**  > **Package Manager Console (Csomagkezelő konzol)** parancsra, majd futtassa a következő parancsot a Package Manager Console (Csomagkezelő konzol) ablakából.
 
@@ -209,7 +209,7 @@ Adja hozzá a következő `Employee` osztálydefiníciót a *Program.cs* fájlho
         }
 ```
 
-Másolja és illessze be a következő kódsorokat a *Program.cs* fájl `Main()` eljárásának végére, a `Dispose()` hívása elé, egy szerializált .NET-objektum gyorsítótárazásához és lekéréséhez:
+Másolja és illessze be a következő kódsorokat a `Main()`Program.cs*fájl* eljárásának végére, a `Dispose()` hívása elé, egy szerializált .NET-objektum gyorsítótárazásához és lekéréséhez:
 
 ```csharp
             // Store .NET object to cache
@@ -237,16 +237,16 @@ Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és �
 Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díjak elkerülése érdekében törölheti az ebben a rövid útmutatóban létrehozott Azure-erőforrásokat. 
 
 > [!IMPORTANT]
-> Az erőforráscsoport törlése nem visszaállítható; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
+> Az erőforráscsoport törlése nem vonható vissza; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
 >
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
 
-A **Szűrés név alapján...** mezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az eredménylistában kattintson a **…** ikonra az erőforráscsoport mellett, majd kattintson az **Erőforráscsoport törlése** elemre.
+A **Szűrés név alapján...** mezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az eredménylistában kattintson a **…** ikonra az erőforráscsoport mellett, majd kattintson az **Erőforráscsoport törlése** lehetőségre.
 
 ![Törlés](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
-A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be az erőforráscsoport nevét, és kattintson a **Törlés** gombra.
+A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be az erőforráscsoport nevét, és kattintson a **Törlés** elemre.
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 

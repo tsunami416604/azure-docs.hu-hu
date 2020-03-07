@@ -12,11 +12,11 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818964"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382393"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Új DBA a felhőben – az önálló és a készletezett adatbázisok kezelése Azure SQL Database
 
@@ -66,9 +66,9 @@ Nem kell biztonsági mentéseket létrehoznia az Azure SQL DB-ben, ezért nem sz
 
 |Szolgáltatásszint|Megőrzési időszak (nap)|
 |---|:---:|
-|Basic|7|
+|Alapszintű|7|
 |Standard|35|
-|Prémium|35|
+|Premium|35|
 |||
 
 Emellett a [hosszú távú adatmegőrzés (ltr)](sql-database-long-term-retention.md) funkciója lehetővé teszi, hogy a biztonsági másolat fájljait jóval hosszabb ideig, akár 10 évig is megtartsa, és a biztonsági másolatokból származó adatokat az adott időszakon belül bármikor helyreállítsa. Emellett az adatbázis biztonsági mentései a földrajzilag replikált tárolókban is megmaradnak a regionális katasztrófák rugalmasságának biztosítása érdekében. Ezeket a biztonsági másolatokat bármely Azure-régióban visszaállíthatja a megőrzési időtartamon belül bármikor. Lásd: [Üzletmenet-folytonosság áttekintése](sql-database-business-continuity.md).
@@ -138,7 +138,7 @@ Alapértelmezés szerint az SQL-adatbázis úgy van konfigurálva, hogy "engedé
 
 A szolgáltatási végpontok (SE) lehetővé teszik, hogy a kritikus Azure-erőforrásokat csak az Azure saját privát virtuális hálózatára tegye elérhetővé. Ezzel lényegében megszünteti az erőforrásaihoz való nyilvános hozzáférést. Az Azure-beli virtuális hálózat közötti forgalom az Azure gerinc hálózatán marad. Az SE használata nélkül kényszerített bújtatású csomagok útválasztása. A virtuális hálózata kényszeríti az internetes forgalmat a szervezet és az Azure-szolgáltatás forgalmára, hogy ugyanarra az útvonalra lépjen át. A szolgáltatási végpontokkal optimalizálhatja ezt, mivel a csomagok közvetlenül a virtuális hálózatról az Azure gerinces hálózaton lévő szolgáltatásba áramlanak.
 
-![VNet szolgáltatási végpontok](./media/sql-database-manage-after-migration/vnet-service-endpoints.png)
+![Virtuális hálózati Szolgáltatásvégpontok](./media/sql-database-manage-after-migration/vnet-service-endpoints.png)
 
 #### <a name="reserved-ips"></a>Fenntartott IP-címek
 
@@ -288,7 +288,7 @@ Lekérdezheti a [sys. dm_db_resource_stats](/sql/relational-databases/system-dyn
 
 A lekérdezési és adatbázis-teljesítménnyel kapcsolatos problémák diagnosztizálásához használni kívánt hibaelhárítási technikák jelentős része változatlan marad. Miután az összes SQL Server motor felhatalmazott a felhőre. Az Azure SQL DB platform azonban az "intelligencia"-ben készült. Megkönnyíti a teljesítménnyel kapcsolatos problémák megoldását és diagnosztizálását. Emellett elvégezheti ezeket a javítási műveleteket az Ön nevében, és bizonyos esetekben proaktív módon kijavítani azokat – automatikusan.
 
-A teljesítménnyel kapcsolatos problémák megoldásának megközelítése jelentősen kihasználhatja az olyan intelligens funkciók használatát, mint például a [lekérdezési terheléselemző (QPI)](sql-database-query-performance.md) és a [Database Advisor](sql-database-advisor.md) , és így a módszertan különbségei eltérőek lehetnek ezt figyelembe véve – már nem kell elvégezni a manuális munkát, amely a probléma megoldásához segítséget nyújtó alapvető adatokat is megkönnyíti. A platform a nehezen használható. Egy példa erre a QPI. A QPI segítségével egészen a lekérdezés szintjéig lehatolhat, és megtekintheti a korábbi trendeket, és kiderítheti, hogy pontosan a lekérdezés romlott. A Database Advisor javaslatokat tesz olyan dolgokra, amelyek segíthetnek az általános teljesítmény növelésében, például a hiányzó indexek, az indexek eldobása, a lekérdezések parameterizing stb.
+A teljesítménnyel kapcsolatos problémák megoldásának megközelítése jelentősen kihasználhatja az olyan intelligens funkciók használatát, mint például a [lekérdezési terheléselemző (QPI)](sql-database-query-performance.md) és a [Database Advisor](sql-database-advisor.md) , és így a módszertanban bekövetkező különbség különbözik ebben a tekintetben. a továbbiakban nem kell elvégezni a manuális munkát, amely segíthet a probléma megoldásában. A platform a nehezen használható. Egy példa erre a QPI. A QPI segítségével egészen a lekérdezés szintjéig lehatolhat, és megtekintheti a korábbi trendeket, és kiderítheti, hogy pontosan a lekérdezés romlott. A Database Advisor javaslatokat tesz olyan dolgokra, amelyek segíthetnek az általános teljesítmény növelésében, például a hiányzó indexek, az indexek eldobása, a lekérdezések parameterizing stb.
 
 A teljesítménnyel kapcsolatos hibaelhárítás során fontos megállapítani, hogy csak az alkalmazás vagy az adatbázis biztonsági mentése van-e hatással az alkalmazás teljesítményére. A teljesítménnyel kapcsolatos probléma gyakran az alkalmazás rétegében rejlik. Ez lehet az architektúra vagy az adatelérési minta. Tegyük fel például, hogy egy olyan csevegési alkalmazás van, amely érzékeny a hálózati késésre. Ebben az esetben az alkalmazás az alkalmazás és a kiszolgáló, illetve egy zsúfolt hálózat között sok rövid kérelem ("beszédes") miatt válik elérhetővé, és a szolgáltatás gyorsan felveszi a kapcsolatot. Ebben az esetben a teljesítmény javítása érdekében [kötegelt lekérdezéseket](sql-database-performance-guidance.md#batch-queries)használhat. A batchs használatával rendkívül nagy mértékben biztosíthatja, hogy a kérések feldolgozása egy kötegben történjen. így segítve az adatelérési idő csökkentését és az alkalmazások teljesítményének növelését.
 
@@ -334,6 +334,6 @@ Ezt többféleképpen is elérheti:
 - **[Adatszinkronizálás](sql-database-sync-data.md)** – ez a funkció segítséget nyújt a kétirányú adatszinkronizáláshoz több helyszíni SQL Server-adatbázis és-SQL Database között. A helyszíni SQL Server adatbázisaival való szinkronizáláshoz telepítenie és konfigurálnia kell a szinkronizálási ügynököt egy helyi számítógépen, és meg kell nyitnia a 1433-es kimenő TCP-portot.
 - **[Tranzakciós](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** replikáció – a tranzakciós replikációval szinkronizálhatja a helyszíni adatokat az Azure SQL db-be a helyszíni környezettel, a kiadóval és az Azure SQL-adatbázissal, amely az előfizető. Egyelőre csak ez a beállítás támogatott. További információ arról, hogyan migrálhatja adatait a helyszínről az Azure SQL-be minimális állásidővel: a [tranzakciós replikáció használata](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [SQL Database](sql-database-technical-overview.md)megismerése.

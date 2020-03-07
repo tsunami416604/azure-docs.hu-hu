@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 2631a0906a0f0886bdc106f1afef99860a6fe00b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919634"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381642"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Oktatóanyag: a Azure Toolkit for IntelliJ használata Apache Spark alkalmazások HDInsight-fürthöz való létrehozásához
 
@@ -164,7 +164,7 @@ A felhasználó [bejelentkezhet az Azure-előfizetésbe](#sign-in-to-your-azure-
 
 7. Miután bejelentkezett, az **előfizetések kiválasztása** párbeszédpanel felsorolja az összes olyan Azure-előfizetést, amely társítva van a hitelesítő adatokhoz. Válassza ki az előfizetését, majd kattintson a **kiválasztás** gombra.
 
-    ![A Select Subscriptions (Előfizetések kiválasztása) párbeszédpanel](./media/apache-spark-intellij-tool-plugin/Select-Subscriptions.png)
+    ![Az Előfizetések kiválasztása párbeszédpanel](./media/apache-spark-intellij-tool-plugin/Select-Subscriptions.png)
 
 8. Az **Azure Explorerben**bontsa ki a **HDInsight** elemet, és tekintse meg az előfizetésekben található HDInsight Spark-fürtöket.
 

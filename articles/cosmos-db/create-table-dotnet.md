@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: TABLE API .NET-tel – Azure Cosmos DB használatával'
+title: 'Gyors útmutató: Table API .NET-tel – Azure Cosmos DB használatával'
 description: Ez a rövid útmutató ismerteti, hogyan használható az Azure Cosmos DB Table API alkalmazások létrehozására az Azure Portal és a .NET segítségével
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
 ms.openlocfilehash: 629adfe558aec71e156e50c75aa0891eac5a8bcf
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "65979031"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370852"
 ---
-# <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás a .NET SDK-t és az Azure Cosmos DB létrehozása 
+# <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás létrehozása .NET SDK-val és Azure Cosmos DB 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -28,7 +28,7 @@ Ez a rövid útmutató ismerteti, hogyan használható a .NET és az Azure Cosmo
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha már nincs telepítve a Visual Studio 2019, letöltheti és használhatja a **ingyenes** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+Ha még nincs telepítve a Visual Studio 2019, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -60,7 +60,7 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
    cd "C:\git-samples"
    ```
 
-3. Futtassa a következő parancsot a minta tárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
+3. Az alábbi parancs futtatásával klónozhatja a mintatárházat. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
    ```bash
    git clone https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started.git
@@ -72,7 +72,7 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
 
    ![A megoldás megnyitása](media/create-table-dotnet/azure-cosmosdb-open-solution.png) 
 
-2. Lépjen abba a mappába, amelybe a mintaalkalmazást klónozta, és nyissa meg TableStorage.sln fájlt.
+2. Navigáljon ahhoz a mappához, ahová klónozott a minta alkalmazást, és nyissa meg a TableStorage. SLN fájlt.
 
 ## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
 
@@ -82,9 +82,9 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
    ![Tekintse meg és másolja a vágólapra a PRIMARY CONNECTION STRING (Elsődleges kapcsolati sztring) értékét a Kapcsolati sztring ablaktáblán.](./media/create-table-dotnet/connection-string.png)
 
-2. A Visual Studióban nyissa meg a **Settings.json** fájlt. 
+2. A Visual Studióban nyissa meg a **Settings. JSON** fájlt. 
 
-3. Illessze be a **elsődleges KAPCSOLATI karakterlánc** a portálról StorageConnectionString értékébe. Illessze be a sztringet az idézőjelek közé.
+3. Illessze be az **elsődleges kapcsolatok karakterláncát** a portálról a StorageConnectionString értékre. Illessze be a sztringet az idézőjelek közé.
 
    ```csharp
    {
@@ -92,27 +92,27 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
    }
    ```
 
-4. Nyomja le a CTRL + S menteni a **Settings.json** fájlt.
+4. Nyomja le a CTRL + S billentyűkombinációt a **Settings. JSON** fájl mentéséhez.
 
 Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
 ## <a name="build-and-deploy-the-app"></a>Az alkalmazás létrehozása és üzembe helyezése
 
-1. A Visual Studióban kattintson a jobb gombbal a a **CosmosTableSamples** projektre a **Megoldáskezelőben** majd **NuGet-csomagok kezelése**. 
+1. A Visual Studióban kattintson a jobb gombbal a **CosmosTableSamples** projektre **megoldáskezelő** , majd kattintson a **NuGet-csomagok kezelése**elemre. 
 
    ![NuGet-csomagok kezelése](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
 
-2. A nuget **Tallózás** mezőbe írja be a Microsoft.Azure.Cosmos.Table. Ezzel a Cosmos DB Table API-ügyfélkódtárát keresi meg. Vegye figyelembe, hogy a könyvtár a .NET-keretrendszer és a .NET Standard jelenleg elérhető. 
+2. A NuGet **Tallózás** mezőjébe írja be a Microsoft. Azure. Cosmos. table parancsot. Ezzel a Cosmos DB Table API-ügyfélkódtárát keresi meg. Vegye figyelembe, hogy ez a tár jelenleg a .NET-keretrendszer és a .NET Standard számára érhető el. 
    
    ![A NuGet Tallózás lapja](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 
-3. Kattintson a **telepítése** telepítéséhez a **Microsoft.Azure.Cosmos.Table** könyvtár. Ez telepíti az Azure Cosmos DB Table API csomagot és annak összes függőségét.
+3. A **Microsoft. Azure. Cosmos. table** függvénytár telepítéséhez kattintson a **telepítés** gombra. Ez telepíti az Azure Cosmos DB Table API csomagot és annak összes függőségét.
 
-4. A teljes alkalmazás futtatásakor a mintaadatok tábla entitásba beszúrásakor és törlésekor a végén, így adatokat beszúrni, ha a teljes minta futtatása nem jelenik meg. Azonban beszúrhat néhány töréspontokat a kiválasztott adatok megtekintéséhez. Nyissa meg a BasicSamples.cs fájlt, és kattintson a jobb gombbal az 52, jelölje be **töréspontot**, majd **Töréspont beszúrása**. Szúrjon be egy másik töréspontot az 55. sorban.
+4. Ha a teljes alkalmazást futtatja, a rendszer beszúrja a táblázat entitásba, és a végén törli a mintákat, így a teljes minta futtatásakor nem jelenik meg az összes beszúrt oszlop. Azonban beszúrhat néhány töréspontot is az adatmegjelenítéshez. Nyissa meg a BasicSamples.cs fájlt, és kattintson a jobb gombbal a 52-es sorra, válassza a **töréspont**, majd a **töréspont beszúrása**lehetőséget. Szúrjon be egy másik töréspontot az 55. sorban.
 
    ![Töréspont hozzáadása](media/create-table-dotnet/azure-cosmosdb-breakpoint.png) 
 
-5. Az alkalmazás futtatásához nyomja le az F5 billentyűt. A konzolablakban az Azure Cosmos DB új táblaadatbázisához (ebben az esetben az demoa13b1) nevét megjeleníti. 
+5. Az alkalmazás futtatásához nyomja le az F5 billentyűt. A konzol ablaka megjeleníti az új tábla adatbázisának nevét (ebben az esetben a demoa13b1) a Azure Cosmos DBban. 
     
    ![Konzolkimenet](media/create-table-dotnet/azure-cosmosdb-console.png)
 
@@ -120,7 +120,7 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 
    ![Új entitás](media/create-table-dotnet/azure-cosmosdb-entity.png)
     
-   Ha hibaüzenet arról, hogy a Settings.json fájl nem található, ha futtatja a projektet, megoldhatja a Projektbeállítások között a következő XML-bejegyzés hozzáadásával. A jobb gombbal a CosmosTableSamples, CosmosTableSamples.csproj szerkesztéséhez válassza ki, és adja hozzá a következő itemGroup: 
+   Ha olyan hibaüzenetet kap, amely szerint a Project futtatásakor nem található a Settings. JSON fájl, a következő XML-bejegyzést adja hozzá a projekt beállításaihoz. Kattintson a jobb gombbal a CosmosTableSamples elemre, válassza a CosmosTableSamples. csproj szerkesztése lehetőséget, és adja hozzá a következő itemGroup: 
 
    ```csharp
      <ItemGroup>
@@ -151,7 +151,7 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével táblát készíteni, és hogyan lehet futtatni az alkalmazást.  Most már le tudja kérdezni adatait a Table API segítségével.  
 

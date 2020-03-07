@@ -6,17 +6,17 @@ ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 979b390f65363b43f33ce2f09d26844c3cc1a2e8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759789"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379885"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Vész-helyreállítás beállítása Azure-beli virtuális gépekhez
 
 A [Azure site Recovery](site-recovery-overview.md) szolgáltatás a helyi gépek és az Azure-beli virtuális gépek (VM-EK) replikációjának, feladatátvételének és feladat-visszavételének kezelésével és koordinálásával járul hozzá a vész-helyreállítási stratégiához.
 
-Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-beli virtuális gépek vész-helyreállítását azáltal, hogy egy Azure-régióból egy másikba replikálja őket. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-beli virtuális gépek vész-helyreállítását azáltal, hogy egy Azure-régióból egy másikba replikálja őket. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Recovery Services-tároló létrehozása
@@ -38,7 +38,7 @@ Az oktatóanyag elvégzéséhez:
 
 A forrásrégió kivételével bármelyik régióban létrehozhat tárolót.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget. Ezután válassza ki **& felügyeleti eszközöket** > **a biztonsági mentést és a site Recovery**.
 1. A **Név** mezőben adja meg a tárolót azonosító rövid nevet. Ha egynél több előfizetéssel rendelkezik, válassza ki ezek közül a megfelelőt.
 1. Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy meglévőt. Válassza ki a kívánt Azure-régiót. A támogatott régiók megtekintéséhez olvassa el az [Azure Site Recovery – Díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/) című cikknek a földrajzi elérhetőséggel foglalkozó részét.

@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: 6c7c041565f6376e7f8b8b84f5076b30c1eec7bf
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846403"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358908"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>A prémium szintű Azure cache Virtual Network támogatásának konfigurálása a Redis-hez
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. A VNet a felhőben található magánhálózat. Ha egy Azure cache for Redis-példány VNet van konfigurálva, nem nyilvánosan címezhető, és csak a VNet lévő virtuális gépekről és alkalmazásokról érhető el. Ez a cikk bemutatja, hogyan konfigurálhatja a virtuális hálózatok támogatását egy prémium szintű Azure cache-hez a Redis-példányhoz.
@@ -98,7 +98,7 @@ Ha a Redis tartozó Azure cache-t egy VNet üzemelteti, a rendszer a következő
 
 Kilenc kimenő portra vonatkozó követelmény van. Az ezekben a tartományokban lévő kimenő kérelmek vagy más olyan szolgáltatásoknak vannak kihagyva, amelyek szükségesek a gyorsítótár működéséhez vagy a belső Redis-alhálózathoz a csomópontok közötti kommunikációhoz. Földrajzi replikálás esetén további kimenő követelmények is léteznek az elsődleges és másodlagos gyorsítótár alhálózatai közötti kommunikációhoz.
 
-| Port (ok) | Irány | Átviteli protokoll | Rendeltetés | Helyi IP-cím | Távoli IP-cím |
+| Port(s) | Irány | Átviteli protokoll | Cél | Helyi IP-cím | Távoli IP-cím |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Kimenő |TCP |Redis-függőségek az Azure Storage-ban/PKI-ben (Internet) | (Redis alhálózat) |* |
 | 443 | Kimenő | TCP | Redis függőség Azure Key Vault | (Redis alhálózat) | <sup>1</sup> . AzureKeyVault |
@@ -124,7 +124,7 @@ Ha az Azure Virtual Networks gyorsítótárai között replikáció használ, ve
 
 Nyolc bejövő porttartomány-követelmény van. Az ezekben a tartományokban lévő bejövő kérelmek vagy más, ugyanazon a VNET üzemeltetett, vagy a Redis alhálózaton belüli kommunikációban lévő szolgáltatásokból érkeznek be.
 
-| Port (ok) | Irány | Átviteli protokoll | Rendeltetés | Helyi IP-cím | Távoli IP-cím |
+| Port(s) | Irány | Átviteli protokoll | Cél | Helyi IP-cím | Távoli IP-cím |
 | --- | --- | --- | --- | --- | --- |
 | 6379, 6380 |Bejövő |TCP |Redis-alapú ügyfél-kommunikáció, Azure-terheléselosztás | (Redis alhálózat) | (Redis alhálózat), Virtual Network, Azure Load Balancer <sup>1</sup> |
 | 8443 |Bejövő |TCP |Belső kommunikáció a Redis | (Redis alhálózat) |(Redis alhálózat) |
@@ -157,7 +157,7 @@ Ha a portra vonatkozó követelmények az előző szakaszban leírtak szerint va
 
 - [Indítsa újra](cache-administration.md#reboot) az összes gyorsítótár-csomópontot. Ha az összes szükséges gyorsítótár-függőség nem érhető el (a [bejövő portokra vonatkozó követelmények](cache-how-to-premium-vnet.md#inbound-port-requirements) és a [kimenő portokra vonatkozó követelmények](cache-how-to-premium-vnet.md#outbound-port-requirements)dokumentálása alapján), a gyorsítótár nem fog tudni újraindulni.
 - A gyorsítótár-csomópontok újraindítása után (ahogy a gyorsítótár állapota a Azure Portalban szerepel) a következő teszteket végezheti el:
-  - Pingelje a gyorsítótár-végpontot (az 6380-as port használatával) egy olyan gépről, amely a gyorsítótárral azonos VNET található, a [tcping](https://www.elifulkerson.com/projects/tcping.php)használatával. Példa:
+  - Pingelje a gyorsítótár-végpontot (az 6380-as port használatával) egy olyan gépről, amely a gyorsítótárral azonos VNET található, a [tcping](https://www.elifulkerson.com/projects/tcping.php)használatával. Például:
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
@@ -180,7 +180,7 @@ Kerülje a következő kapcsolódási karakterlánchoz hasonló IP-cím használ
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-Ha nem tudja feloldani a DNS-nevet, egyes ügyféloldali kódtárak olyan konfigurációs beállításokat tartalmaznak, mint például a StackExchange. Redis-ügyfél által biztosított `sslHost`. Ez lehetővé teszi a tanúsítvány-ellenőrzéshez használt állomásnév felülbírálását. Példa:
+Ha nem tudja feloldani a DNS-nevet, egyes ügyféloldali kódtárak olyan konfigurációs beállításokat tartalmaznak, mint például a StackExchange. Redis-ügyfél által biztosított `sslHost`. Ez lehetővé teszi a tanúsítvány-ellenőrzéshez használt állomásnév felülbírálását. Például:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 
