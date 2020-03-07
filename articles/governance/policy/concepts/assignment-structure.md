@@ -4,11 +4,11 @@ description: Az Azure Policy által használt szabályzat-hozzárendelési defin
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747200"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355054"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-hozzárendelés struktúrája
 
@@ -16,7 +16,7 @@ A szabályzat-hozzárendeléseket a Azure Policy használja annak meghatározás
 
 A JSON használatával szabályzat-hozzárendelést hozhat létre. A szabályzat-hozzárendelés a következő elemeket tartalmazza:
 
-- megjelenítendő név
+- Megjelenített név
 - leírás
 - metaadatok
 - kényszerítési mód
@@ -59,7 +59,7 @@ A **enforcementMode** tulajdonság lehetővé teszi a felhasználók számára, 
 
 Ennek a tulajdonságnak a következő értékei vannak:
 
-|Mód |JSON-érték |Type (Típus) |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Leírás |
+|Mód |JSON-érték |Típus |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Leírás |
 |-|-|-|-|-|-|
 |Engedélyezve |Alapértelmezett |sztring |Igen |Igen |A házirend hatása az erőforrás létrehozásakor vagy frissítésekor lép érvénybe. |
 |Letiltva |DoNotEnforce |sztring |Igen |Nem | A házirend-effektus nem kényszerített az erőforrás létrehozásakor vagy frissítésekor. |
