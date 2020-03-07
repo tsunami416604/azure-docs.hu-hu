@@ -5,15 +5,15 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.openlocfilehash: e12596b496483b872f76ccd610fd70710327b586
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450026"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396801"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Fájlok visszaállítása a Windowsba az Azure Resource Manager üzemi modell használatával
 
-Ez a cikk azt ismerteti, hogyan lehet visszaállítani az adatok biztonsági mentési tárból. Az adatok visszaállításához használja az Microsoft Azure Recovery Services (MARS) ügynök adatok helyreállítása varázslóját. Előnyök:
+Ez a cikk azt ismerteti, hogyan lehet visszaállítani az adatok biztonsági mentési tárból. Az adatok visszaállításához használja az Microsoft Azure Recovery Services (MARS) ügynök adatok helyreállítása varázslóját. A következőket teheti:
 
 * Állítsa vissza az adatokat ugyanarra a gépre, amelyről a biztonsági másolatok készültek.
 * Adatok visszaállítása egy másik gépre.

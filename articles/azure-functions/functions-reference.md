@@ -5,11 +5,11 @@ ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769006"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357987"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions fejlesztői útmutató
 Azure Functions az egyes függvények a használt nyelvtől vagy kötéstől függetlenül megosztanak néhány alapvető műszaki fogalmat és összetevőt. Mielőtt beolvassa az adott nyelvre vagy kötésre vonatkozó tanulási adatokat, olvassa el ezt az áttekintést, amely az összesre vonatkozik.
@@ -95,7 +95,7 @@ Problémák léptek fel a kötésekkel kapcsolatos hibákkal kapcsolatban? Tekin
 ## <a name="reporting-issues"></a>Jelentéskészítési problémák
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információkért lásd a következőket:
 
 * [Eseményindítók és kötések Azure Functions](functions-triggers-bindings.md)

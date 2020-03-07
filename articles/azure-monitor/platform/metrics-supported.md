@@ -8,11 +8,11 @@ ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 3e43d2baf4337e7a986d59c47f805183a920c7a1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659679"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357407"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Támogatott metrikák Azure Monitor
 
@@ -1641,13 +1641,13 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Average_ szabad inode (%)|Szabad inode%-ban|Darabszám|Átlag|Average_ szabad inode (%)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_ szabad terület (%)|Szabad terület százalékos aránya|Darabszám|Átlag|Average_ szabad terület (%)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_ szabad terület (%)|% Szabad terület|Darabszám|Átlag|Average_ szabad terület (%)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_ használt inode|Felhasznált inode%-ban|Darabszám|Átlag|Average_ használt inode|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_ felhasznált terület%-ban|Foglalt hely %|Darabszám|Átlag|Average_ felhasznált terület%-ban|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Olvasási sebesség (bájt/s) Average_Disk|Lemezolvasás sebessége bájt/mp-ben|Darabszám|Átlag|Olvasási sebesség (bájt/s) Average_Disk|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Olvasási sebesség (bájt/s) Average_Disk|Lemezolvasási sebesség (bájt/s)|Darabszám|Átlag|Olvasási sebesség (bájt/s) Average_Disk|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Olvasási Average_Disk másodpercenként|Lemezolvasások/mp|Darabszám|Átlag|Olvasási Average_Disk másodpercenként|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Disk adatátvitel másodpercenként|Átvitel/mp|Darabszám|Átlag|Average_Disk adatátvitel másodpercenként|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Írási sebesség (bájt/s) Average_Disk|Lemezírás sebessége bájt/mp-ben|Darabszám|Átlag|Írási sebesség (bájt/s) Average_Disk|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Írási sebesség (bájt/s) Average_Disk|Lemezírási sebesség (bájt/s)|Darabszám|Átlag|Írási sebesség (bájt/s) Average_Disk|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Írás/mp Average_Disk|Lemezírások/mp|Darabszám|Átlag|Írás/mp Average_Disk|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Free megabájt|Szabad hely MB-ban|Darabszám|Átlag|Average_Free megabájt|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Logical lemez sebessége (bájt/s)|Logikai lemez bájt/mp|Darabszám|Átlag|Average_Logical lemez sebessége (bájt/s)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
@@ -1670,9 +1670,9 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Rx-hibák Average_Total|Rx-hibák összesen|Darabszám|Átlag|Rx-hibák Average_Total|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Total TX-hibák|TX-hibák összesen|Darabszám|Átlag|Average_Total TX-hibák|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Ütközések Average_Total|Ütközések összesen|Darabszám|Átlag|Ütközések Average_Total|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.|Átlagos írási idő (mp/olvasás)|Darabszám|Átlag|Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_Avg. teljesítmény mp/átvitelben|Átlagos műveleti idő (mp/átvitel)|Darabszám|Átlag|Average_Avg. teljesítmény mp/átvitelben|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.|Átlagos írási idő (mp/írás)|Darabszám|Átlag|Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_Avg. Lemez mp/Olvasás|Átlagos írási idő (mp/olvasás)|Darabszám|Átlag|Average_Avg. Lemez mp/Olvasás|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_Avg. Lemez mp/átvitel|Átlagos műveleti idő (mp/átvitel)|Darabszám|Átlag|Average_Avg. Lemez mp/átvitel|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_Avg. Lemez mp/írás|Átlagos írási idő (mp/írás)|Darabszám|Átlag|Average_Avg. Lemez mp/írás|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Physical lemez sebessége (bájt/s)|Fizikai lemez sebessége (bájt/s)|Darabszám|Átlag|Average_Physical lemez sebessége (bájt/s)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Pct emelt szintű idő|PCT rendszerjogosultságú idő|Darabszám|Átlag|Average_Pct emelt szintű idő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Pct felhasználói idő|PCT felhasználói idő|Darabszám|Átlag|Average_Pct felhasználói idő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
@@ -1684,7 +1684,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Average_% IO várakozási idő|I/o várakozási idő%-ban|Darabszám|Átlag|Average_% IO várakozási idő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_%-os szép idő|% Nice idő|Darabszám|Átlag|Average_%-os szép idő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_%-os privilegizált idő|%-Os privilegizált idő|Darabszám|Átlag|Average_%-os privilegizált idő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_ processzoridő|A processzor kihasználtsága (%)|Darabszám|Átlag|Average_ processzoridő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_ processzoridő|Processzoridő|Darabszám|Átlag|Average_ processzoridő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_%-os felhasználói idő|Felhasználói idő%-ban|Darabszám|Átlag|Average_%-os felhasználói idő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Fizikai memória Average_Free|Szabad fizikai memória|Darabszám|Átlag|Fizikai memória Average_Free|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Free lemezterület a Lapozófájlokban|Szabad terület a Lapozófájlokban|Darabszám|Átlag|Average_Free lemezterület a Lapozófájlokban|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
@@ -1693,20 +1693,20 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Lapozófájlokban tárolt Average_Size|Lapozófájlokban tárolt méret|Darabszám|Átlag|Lapozófájlokban tárolt Average_Size|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Uptime|Hasznos üzemidő|Darabszám|Átlag|Average_Uptime|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Users|Felhasználók|Darabszám|Átlag|Average_Users|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.|Átlagos írási idő (mp/olvasás)|Darabszám|Átlag|Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.|Átlagos írási idő (mp/írás)|Darabszám|Átlag|Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_Avg. Lemez mp/Olvasás|Átlagos írási idő (mp/olvasás)|Darabszám|Átlag|Average_Avg. Lemez mp/Olvasás|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_Avg. Lemez mp/írás|Átlagos írási idő (mp/írás)|Darabszám|Átlag|Average_Avg. Lemez mp/írás|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Current a lemez várólistájának hossza|Lemez aktuális várólistájának hossza|Darabszám|Átlag|Average_Current a lemez várólistájának hossza|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Olvasási Average_Disk másodpercenként|Lemezolvasások/mp|Darabszám|Átlag|Olvasási Average_Disk másodpercenként|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Disk adatátvitel másodpercenként|Átvitel/mp|Darabszám|Átlag|Average_Disk adatátvitel másodpercenként|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Írás/mp Average_Disk|Lemezírások/mp|Darabszám|Átlag|Írás/mp Average_Disk|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Free megabájt|Szabad hely MB-ban|Darabszám|Átlag|Average_Free megabájt|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_ szabad terület (%)|Szabad terület százalékos aránya|Darabszám|Átlag|Average_ szabad terület (%)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_ szabad terület (%)|% Szabad terület|Darabszám|Átlag|Average_ szabad terület (%)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Available MB-ban|Rendelkezésre álló memória|Darabszám|Átlag|Average_Available MB-ban|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_%-os előjegyzett bájtok használatban|Előjegyzett memória%-ban használatban|Darabszám|Átlag|Average_%-os előjegyzett bájtok használatban|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Fogadott Average_Bytes/mp|Fogadott bájtok/mp|Darabszám|Átlag|Fogadott Average_Bytes/mp|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Küldési Average_Bytes másodpercenként|Küldött bájtok/s|Darabszám|Átlag|Küldési Average_Bytes másodpercenként|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Bytes összesen/mp|Összes bájt/mp|Darabszám|Átlag|Average_Bytes összesen/mp|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_ processzoridő|A processzor kihasználtsága (%)|Darabszám|Átlag|Average_ processzoridő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_ processzoridő|Processzoridő|Darabszám|Átlag|Average_ processzoridő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Processor várólista hossza|Processzor-várólista hossza|Darabszám|Átlag|Average_Processor várólista hossza|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Szívverés|Szívverés|Darabszám|Összesen|Szívverés|Számítógép, OSType, verzió, SourceComputerId|
 |Frissítés|Frissítés|Darabszám|Átlag|Frissítés|Számítógép, termék, besorolás, UpdateState, nem kötelező, jóváhagyott|

@@ -5,11 +5,11 @@ ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 573ec477a3e75beb91f90da0545fb7d4c0f9bf39
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74324713"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381606"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Felhasználók kezelése az Azure Blockchain Workbenchben
 

@@ -10,17 +10,17 @@ ms.localizationpriority: high
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 3f89d713003f1f4265a7ab7c467454af750fab48
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200129"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380561"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-verify-data-upload-from-azure-data-box-disk"></a>Oktatóanyag: Az Azure Data Box Diskről végzett adatfeltöltés ellenőrzése
+# <a name="tutorial-verify-data-upload-from-azure-data-box-disk"></a>Oktatóanyag: az adatfeltöltés ellenőrzése Azure Data Box Diskről
 
-Ez a következő sorozat utolsó oktatóanyaga: Az Azure Data Box Disk üzembe helyezése. Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az Azure Data Box Disk üzembe helyezését ismertető sorozat utolsó oktatóanyaga. Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az Azure-ba történő adatfeltöltés ellenőrzése
@@ -28,7 +28,7 @@ Ez a következő sorozat utolsó oktatóanyaga: Az Azure Data Box Disk üzembe h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt hozzákezd, mindenképp végezze el az [ Az Azure Data Box Disk visszaküldése](data-box-disk-deploy-picked-up.md) című oktatóanyagot.
+Mielőtt elkezdené, győződjön meg arról, hogy végrehajtotta a következő [oktatóanyagot: Return Azure Data Box Disk](data-box-disk-deploy-picked-up.md).
 
 
 ## <a name="verify-data-upload-to-azure"></a>Az Azure-ba történő adatfeltöltés ellenőrzése
@@ -104,7 +104,7 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
 
 ::: zone target="docs"
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az Azure Data Box Diskkel kapcsolatos alábbi témakörökkel ismerkedett meg:
 

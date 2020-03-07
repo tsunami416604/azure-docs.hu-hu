@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17bfbc29f38230dc2533c9ccc63cdee4fc776717
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512108"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377069"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: A hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt tartományokhoz
 
@@ -32,7 +32,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat hibrid Azure AD-cs
 
 A felügyelt környezetek a [jelszó-kivonatolási szinkronizálással (PHS)](../hybrid/whatis-phs.md) vagy az átmenő [HITELESÍTÉSSEL (PTA ESP)](../hybrid/how-to-connect-pta.md) is üzembe helyezhetők, [zökkenőmentes egyszeri bejelentkezéssel](../hybrid/how-to-connect-sso.md). Ezekhez a forgatókönyvekhez nem szükséges összevonási kiszolgálót konfigurálni a hitelesítéshez.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * A hibrid Azure AD-csatlakozás konfigurálása
@@ -88,7 +88,7 @@ A hibrid Azure AD-csatlakozások Azure AD Connecttel való konfigurálásához a
 
 1. Indítsa el Azure AD Connect, majd válassza a **Konfigurálás**lehetőséget.
 
-   ![Üdvözöljük](./media/hybrid-azuread-join-managed-domains/11.png)
+   ![Üdvözlőképernyő](./media/hybrid-azuread-join-managed-domains/11.png)
 
 1. A **További feladatok** lapon válassza az **eszközbeállítások konfigurálása**lehetőséget, majd kattintson a **tovább**gombra.
 

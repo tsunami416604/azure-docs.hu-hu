@@ -12,11 +12,11 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
 ms.openlocfilehash: ec1430e7dd79378473cce9dbb77bedecd14600c8
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228272"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357743"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Felügyelt példány kapcsolati architektúrája Azure SQL Database
 
@@ -103,20 +103,20 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező bejövő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával 
 
-| Name (Név)       |Port                        |Protokoll|Forrás           |Cél|Művelet|
+| Name (Név)       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|kezelés  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI ALHÁLÓZAT  |Engedélyezett |
-|            |9000, 9003                  |TCP     |CorpnetSaw       |MI ALHÁLÓZAT  |Engedélyezett |
-|            |9000, 9003                  |TCP     |65.55.188.0/24, 167.220.0.0/16, 131.107.0.0/16, 94.245.87.0/24|MI ALHÁLÓZAT  |Engedélyezett |
-|mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezett |
-|health_probe|Bármelyik                         |Bármelyik     |AzureLoadBalancer|MI ALHÁLÓZAT  |Engedélyezett |
+|felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI ALHÁLÓZAT  |Engedélyezés |
+|            |9000, 9003                  |TCP     |CorpnetSaw       |MI ALHÁLÓZAT  |Engedélyezés |
+|            |9000, 9003                  |TCP     |65.55.188.0/24, 167.220.0.0/16, 131.107.0.0/16, 94.245.87.0/24|MI ALHÁLÓZAT  |Engedélyezés |
+|mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
+|health_probe|Bármelyik                         |Bármelyik     |AzureLoadBalancer|MI ALHÁLÓZAT  |Engedélyezés |
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező kimenő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával 
 
-| Name (Név)       |Port          |Protokoll|Forrás           |Cél|Művelet|
+| Name (Név)       |Port          |Protokoll|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
-|kezelés  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezett |
-|mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezett |
+|felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
+|mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>A felhasználó által megadott útvonalak a szolgáltatással segített alhálózat konfigurációjával 
 
@@ -298,18 +298,18 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 
 ### <a name="mandatory-inbound-security-rules"></a>Kötelező bejövő biztonsági szabályok
 
-| Name (Név)       |Port                        |Protokoll|Forrás           |Cél|Művelet|
+| Name (Név)       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|kezelés  |9000, 9003, 1438, 1440, 1452|TCP     |Bármelyik              |MI ALHÁLÓZAT  |Engedélyezett |
-|mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezett |
-|health_probe|Bármelyik                         |Bármelyik     |AzureLoadBalancer|MI ALHÁLÓZAT  |Engedélyezett |
+|felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármelyik              |MI ALHÁLÓZAT  |Engedélyezés |
+|mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
+|health_probe|Bármelyik                         |Bármelyik     |AzureLoadBalancer|MI ALHÁLÓZAT  |Engedélyezés |
 
 ### <a name="mandatory-outbound-security-rules"></a>Kötelező kimenő biztonsági szabályok
 
-| Name (Név)       |Port          |Protokoll|Forrás           |Cél|Művelet|
+| Name (Név)       |Port          |Protokoll|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
-|kezelés  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezett |
-|mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezett |
+|felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
+|mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
 
 > [!IMPORTANT]
 > Győződjön meg arról, hogy csak egy bejövő szabály van a 9000, 9003, 1438, 1440, 1452 és egy kimenő szabály számára a következő portokhoz: 443 12000. A felügyelt példányok üzembe helyezése Azure Resource Manager központi telepítések esetén sikertelen lesz, ha a bejövő és a kimenő szabályok külön vannak konfigurálva az egyes portokhoz. Ha ezek a portok külön szabályokban vannak, a telepítés sikertelen lesz, hibakód: `VnetSubnetConflictWithIntendedPolicy`

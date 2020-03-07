@@ -1,7 +1,7 @@
 ---
 title: Parancssori felület – Knowledge Exploration Service API
 titlesuffix: Azure Cognitive Services
-description: A parancssori felület használatával hozhat létre a strukturált adatok index és a nyelvi fájlokat, és telepítheti őket a webszolgáltatásként.
+description: A parancssori felület segítségével index-és nyelvhelyesség-fájlokat hozhat létre a strukturált adatokból, majd webszolgáltatásként telepítheti azokat.
 services: cognitive-services
 author: bojunehsu
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
 ms.openlocfilehash: 018552982a8ece3bbbaea2d60e2a6e64f681f822
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60815138"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385635"
 ---
 # <a name="command-line-interface"></a>Parancssori felület
 
-A Knowledge Exploration Service (KES) parancssori felület lehetővé teszi a strukturált adatok index és a nyelvi fájlokat készíthet és helyezhet üzembe a őket webszolgáltatásként.  Az általános szintaxist használ: `kes.exe <command> <required_args> [<optional_args>]`.  Futtathat `kes.exe` listázza a parancsok, argumentumok nélkül, vagy `kes.exe <command>` a megadott parancs elérhető argumentumok listájának megjelenítéséhez.  Az alábbiakban az elérhető parancsok listája:
+A Knowledge Exploration Service (KES) parancssori felület lehetővé teszi index-és nyelvhelyességi fájlok összeállítását a strukturált adatokból, valamint webszolgáltatásként való üzembe helyezését.  Az általános szintaxist használja: `kes.exe <command> <required_args> [<optional_args>]`.  Az `kes.exe` argumentumok nélkül is futtathatók a parancsok listájának megjelenítéséhez, vagy `kes.exe <command>` az adott parancshoz elérhető argumentumok listájának megjelenítéséhez.  Alább látható az elérhető parancsok listája:
 
 * build_index
 * build_grammar
@@ -30,107 +30,107 @@ A Knowledge Exploration Service (KES) parancssori felület lehetővé teszi a st
 
 <a name="build_index-command"></a>
 
-## <a name="buildindex-command"></a>a parancs build_index
+## <a name="build_index-command"></a>build_index parancs
 
-A **build_index** a parancs létrehozza a fájl és a egy adatfájlt indexelendő objektumok egy bináris indexfájl.  Az eredményül kapott indexfájl használható strukturált lekérdezési kifejezések kiértékelése, vagy létrehozhat egy természetes nyelvű lekérdezések értelmezések együtt egy lefordított nyelvtani fájlt.
+Az **build_index** parancs bináris index fájlt hoz létre egy séma-definíciós fájlból és egy indexelt objektumok adatfájlját.  Az eredményül kapott indexfájl felhasználható a strukturált lekérdezési kifejezések kiértékelésére, illetve a természetes nyelvű lekérdezések értelmezésének előállítására egy lefordított nyelvtani fájllal együtt.
 
 `kes.exe build_index <schemaFile> <dataFile> <indexFile> [options]`
 
 | Paraméter      | Leírás               |
 |----------------|---------------------------|
-| `<schemaFile>` | A bemeneti séma elérési útja |
-| `<dataFile>`   | A bemeneti adatok elérési útja   |
+| `<schemaFile>` | Bemeneti séma elérési útja |
+| `<dataFile>`   | Bemeneti adatok elérési útja   |
 | `<indexFile>`  | Kimeneti index elérési útja |
-| `--description <description>` | Leíró karakterlánc |
-| `--remote <vmSize>`           | Protokol vzdáleného buildu. a virtuális gép mérete |
+| `--description <description>` | Leírás karakterlánca |
+| `--remote <vmSize>`           | A virtuális gép mérete távoli buildhez |
 
-Ezek a fájlok helyi fájlok elérési útja vagy URL-elérési útvonal az Azure-blobok adható meg.  A sémafájl struktúráját az objektumok indexelt, valamint a támogatott műveleteket ismerteti (lásd: [sémaformátum](SchemaFormat.md)).  Az adatfájl számba veszi azokat az objektumokat és indexelése attribútumértékek (lásd: [adatformátum](DataFormat.md)).  Ha a build sikeres, a kimeneti index fájl tartalmazza a bemeneti adatokat a kívánt műveleteket támogató tömörített reprezentációját.  
+Ezeket a fájlokat a helyi fájlelérési utak vagy az Azure-Blobok URL-elérési útjai adhatják meg.  A sémafájl leírja az indexelt objektumok szerkezetét, valamint a támogatott műveleteket (lásd: [séma formátuma](SchemaFormat.md)).  Az adatfájl enumerálja az indexelni kívánt objektumokat és attribútumokat (lásd [az adatformátumot](DataFormat.md)).  Ha a létrehozás sikeres, a kimeneti index fájl a kívánt műveleteket támogató bemeneti adatok tömörített ábrázolását tartalmazza.  
 
-A leíró karakterlánc igény szerint megadható ezt követően a egy bináris index használatával azonosíthatja a **describe_index** parancsot.  
+A leírási karakterláncok opcionálisan megadhatók a bináris index későbbi azonosításához a **describe_index** parancs használatával.  
 
-Alapértelmezés szerint az index felépítését a helyi gépen.  Azure-környezeten kívül helyi buildek korlátozva, legfeljebb 10 000 objektumokat tartalmazó adatfájlokat.  Ha a--távoli jelző van megadva, az index a megadott méretű ideiglenesen létrehozott Azure virtuális gép a lesz felépítve.  Ez lehetővé teszi az Azure virtuális gépek hatékony használata több memóriát kell létrehozni nagy indexek.  Lapozófájl, ami lelassítja az összeállítási folyamat elkerülése érdekében javasoljuk, egy virtuális gép használata a 3-szor a RAM mennyisége, a bemeneti adatok mérete.  Elérhető virtuálisgép-méretek listája: [Virtuális gépek méretei](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
+Alapértelmezés szerint az index a helyi gépre épül.  Az Azure-környezeten kívül a helyi buildek legfeljebb 10 000 objektumot tartalmazó adatfájlokra korlátozódnak.  Ha a--Remote jelző meg van adva, az index a megadott méretű, ideiglenesen létrehozott Azure-beli virtuális gépre lesz felépítve.  Ez lehetővé teszi, hogy a nagyméretű indexek hatékonyan legyenek felépítve az Azure-beli virtuális gépek több memóriával való használatával.  Ha el szeretné kerülni a lapozást, amely lelassítja a felépítési folyamatot, javasoljuk, hogy használjon egy virtuális gépet, amely a bemeneti adatfájl méretének háromszorosa.  Elérhető virtuálisgép-méretek listája: [Virtuális gépek méretei](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
 
 > [!TIP] 
-> A gyorsabb buildek presort az adatfájl található objektumok valószínűség csökkentésével.
+> A gyorsabb buildek esetében az adatfájlban lévő objektumokat csökkenő valószínűséggel rendezheti.
 
 <a name="build_grammar-command"></a>
 
-## <a name="buildgrammar-command"></a>a parancs build_grammar
+## <a name="build_grammar-command"></a>build_grammar parancs
 
-A **build_grammar** parancs lefordítja a megadott XML-fájlba binární gramatika je nyelvtan.  Az eredményül kapott szintaxis-fájl használható együtt egy index fájllal értelmezéseket a természetes nyelvű lekérdezések létrehozásához.
+A **build_grammar** parancs egy XML-fájlban megadott nyelvtant állít össze egy bináris nyelvtani fájlba.  Az eredményül kapott nyelvtani fájl használható egy indexfájl használatával a természetes nyelvi lekérdezések értelmezésének létrehozásához.
 
 `kes.exe build_grammar <xmlFile> <grammarFile>`
 
 | Paraméter       | Leírás               |
 |-----------------|---------------------------|
-| `<xmlFile>`     | Bemeneti XML nyelvi specifikáció elérési útja |
-| `<grammarFile>` | Kimeneti lefordított nyelvtani elérési útja         |
+| `<xmlFile>`     | Bemeneti XML nyelvtani specifikációjának elérési útja |
+| `<grammarFile>` | Kimenet lefordított nyelvtani elérési útja         |
 
-Ezek a fájlok helyi fájlok elérési útja vagy URL-elérési útvonal az Azure-blobok adható meg.  A nyelvi specifikáció súlyozott természetes nyelvi kifejezéseket és azok szemantikai értelmezések ismerteti (lásd: [Szintaxisformátum](GrammarFormat.md)).  A build sikeres, ha a kimeneti nyelvtani fájl tartalmazza a nyelvi specifikáció gyors dekódolás engedélyezése bináris kódolású karakterláncként.
+Ezeket a fájlokat a helyi fájlelérési utak vagy az Azure-Blobok URL-elérési útjai adhatják meg.  A nyelvtani specifikáció a súlyozott természetes nyelvi kifejezések és a szemantikai értelmezések készletét írja le (lásd a [nyelvtan formátumát](GrammarFormat.md)).  Ha a létrehozás sikeres, a kimeneti nyelvhelyességi fájl a nyelvtani specifikáció bináris ábrázolását tartalmazza a gyors dekódolás engedélyezéséhez.
 
 <a name="host_service-command"/>
 
-## <a name="hostservice-command"></a>host_service Command
+## <a name="host_service-command"></a>host_service parancs
 
-A **host_service** parancsot a helyi gépen a KES szolgáltatás példányát futtatja.
+Az **host_service** parancs a Kes szolgáltatás egy példányát futtatja a helyi gépen.
 
 `kes.exe host_service <grammarFile> <indexFile> [options]`
 
 | Paraméter       | Leírás                |
 |-----------------|----------------------------|
-| `<grammarFile>` | A bemeneti binární gramatika je elérési útja         |
-| `<indexFile>`   | A bemeneti bináris index elérési útja           |
-| `--port <port>` | Helyi port száma.  alapértelmezett érték: 8000 |
+| `<grammarFile>` | Bemeneti bináris nyelvtani útvonal         |
+| `<indexFile>`   | Bemeneti bináris index elérési útja           |
+| `--port <port>` | Helyi portszám.  Alapértelmezett: 8000 |
 
-Ezek a fájlok helyi fájlok elérési útja vagy URL-elérési útvonal az Azure-blobok adható meg.  Egy webszolgáltatás üzemeltetett http://localhost:&lt portot;&gt; /.  Lásd: [webes API-k](WebAPI.md) támogatott műveletek listáját.
+Ezeket a fájlokat a helyi fájlelérési utak vagy az Azure-Blobok URL-elérési útjai adhatják meg.  A webszolgáltatásokat a rendszer a http://localhost:&lt;p ORT&gt;/.  A támogatott műveletek listáját a [webes API](WebAPI.md) -k részben tekintheti meg.
 
-Az Azure-on kívül a környezetben, helyileg üzemeltetett szolgáltatások korlátozva, index legfeljebb 1 MB méretű, 10 kérelmek / másodperc és 1000 teljes hívás fájlok.  Futtassa, hogy ezek a korlátozások, **host_service** egy Azure virtuális gépen, vagy helyezze üzembe az Azure cloud service használatával **deploy_service**.
+Az Azure-környezeten kívül a helyileg üzemeltetett szolgáltatások legfeljebb 1 MB méretű, 10 kérés/másodperc és 1000 összes hívást képesek indexelni.  A korlátozások leküzdéséhez futtasson **host_service** egy Azure-beli virtuális gépen, vagy telepítsen egy Azure Cloud Service-be **deploy_service**használatával.
 
 <a name="deploy_service-command"/>
 
-## <a name="deployservice-command"></a>a parancs deploy_service
+## <a name="deploy_service-command"></a>deploy_service parancs
 
-A **deploy_service** a parancs üzembe helyezi a KES service egy példányát az Azure felhőszolgáltatás.
+Az **deploy_service** parancs üzembe helyezi a Kes szolgáltatás egy példányát egy Azure Cloud Service-ben.
 
 `kes.exe deploy_service <grammarFile> <indexFile> <serviceName> <vmSize>[options]`
 
 | Paraméter       | Leírás                  |
 |-----------------|------------------------------|
-| `<grammarFile>` | A bemeneti binární gramatika je elérési útja           |
-| `<indexFile>`   | A bemeneti bináris index elérési útja             |
-| `<serviceName>` | Cél felhőszolgáltatás neve |
-| `<vmSize>`      | Felhőszolgáltatás virtuális gép mérete     |
-| `--slot <slot>` | Felhőszolgáltatási tárolóhely: "átmeneti" (alapértelmezett), az "éles" |
+| `<grammarFile>` | Bemeneti bináris nyelvtani útvonal           |
+| `<indexFile>`   | Bemeneti bináris index elérési útja             |
+| `<serviceName>` | A cél felhőalapú szolgáltatás neve |
+| `<vmSize>`      | A Cloud Service virtuális gép mérete     |
+| `--slot <slot>` | Cloud Service-tárolóhely: "előkészítés" (alapértelmezett), "éles" |
 
-Ezek a fájlok helyi fájlok elérési útja vagy URL-elérési útvonal az Azure-blobok adható meg.  Szolgáltatás nevét megadja egy előre konfigurált Azure-felhőszolgáltatásban (lásd: [hogyan hozhat létre és telepíthet egy Felhőszolgáltatást](../../../articles/cloud-services/cloud-services-how-to-create-deploy-portal.md)).  A parancs a megadott Azure cloud Services, a megadott méretű virtuális gépeket használ, automatikusan KES szolgáltatás üzembe helyezése.  Lapozófájl, ami jelentősen csökkenti a teljesítmény elkerülése érdekében javasoljuk egy virtuális Gépet 1 GB több RAM Memóriát, mint az index a bemeneti fájl mérete.  Elérhető Virtuálisgép-méretek listáját lásd: [méretű felhőszolgáltatások](../../../articles/cloud-services/cloud-services-sizes-specs.md).
+Ezeket a fájlokat a helyi fájlelérési utak vagy az Azure-Blobok URL-elérési útjai adhatják meg.  A szolgáltatás neve egy előre konfigurált Azure Cloud Service-szolgáltatást határoz meg (lásd: [felhőalapú szolgáltatás létrehozása és üzembe helyezése](../../../articles/cloud-services/cloud-services-how-to-create-deploy-portal.md)).  A parancs automatikusan telepíti a KES szolgáltatást a megadott Azure Cloud Service-be a megadott méretű virtuális gépek használatával.  Ha el szeretné kerülni a lapozást, amely jelentősen csökkenti a teljesítményt, javasoljuk, hogy használjon 1 GB-nál nagyobb méretű virtuális gépet a bemeneti index fájlméretének megfelelően.  A rendelkezésre álló virtuálisgép-méretek listáját lásd: [Cloud Services méretei](../../../articles/cloud-services/cloud-services-sizes-specs.md).
 
-Alapértelmezés szerint a szolgáltatás üzembe helyezése az átmeneti környezetben keresztül a--céltárolóhely paramétere igény szerint felülbírált.  Lásd: [webes API-k](WebAPI.md) támogatott műveletek listáját.
+Alapértelmezés szerint a szolgáltatás az átmeneti környezetbe van telepítve, opcionálisan felülbírálva a--slot paraméterrel.  A támogatott műveletek listáját a [webes API](WebAPI.md) -k részben tekintheti meg.
 
 <a name="describe_index-command"/>
 
-## <a name="describeindex-command"></a>describe_index parancs
+## <a name="describe_index-command"></a>describe_index parancs
 
-A **describe_index** paranccsal kiadathatja információkat egy index, beleértve a séma és a leírást.
+Az **describe_index** parancs egy indexfájl adatait jeleníti meg, beleértve a sémát és a leírást is.
 
 `kes.exe describe_index <indexFile>`
 
 | Paraméter     | Leírás      |
 |---------------|------------------|
-| `<indexFile>` | Index a bemeneti elérési út |
+| `<indexFile>` | Bemeneti index elérési útja |
 
-Ezt a fájlt egy helyi fájlelérési út vagy egy Azure-blobba URL-cím adható meg.  A kimeneti leíró karakterlánc segítségével adható meg, a--leíró paraméter a **build_index** parancsot.
+Ezt a fájlt egy helyi fájl elérési útja vagy egy Azure-Blob URL-elérési útja is megadhatja.  A kimeneti leírást megadó karakterlánc a **build_index** parancs--Description paraméterrel adható meg.
 
 <a name="describe_grammar-command"/>
 
-## <a name="describegrammar-command"></a>describe_grammar parancs
+## <a name="describe_grammar-command"></a>describe_grammar parancs
 
-A **describe_grammar** paranccsal kiadathatja az eredeti szintaxis-specifikáció a binární gramatika je összeállításához.
+A **describe_grammar** parancs kimenete a bináris nyelvtan felépítéséhez használt eredeti nyelvtani specifikáció.
 
 `kes.exe describe_grammar <grammarFile>`
 
 | Paraméter       | Leírás      |
 |-----------------|------------------|
-| `<grammarFile>` | A bemeneti nyelvtani elérési útja |
+| `<grammarFile>` | Bemeneti nyelvtani elérési út |
 
-Ezt a fájlt egy helyi fájlelérési út vagy egy Azure-blobba URL-cím adható meg.
+Ezt a fájlt egy helyi fájl elérési útja vagy egy Azure-Blob URL-elérési útja is megadhatja.
 

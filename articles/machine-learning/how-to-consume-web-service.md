@@ -12,16 +12,16 @@ ms.reviewer: larryfr
 ms.date: 01/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4c3e60e9c296dc8e3a1e31a52a262d8462237407
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75765663"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355277"
 ---
-# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Webszolgáltatásként üzembe helyezett Azure Machine Learning-modell felhasználása
+# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning modell webszolgáltatásként való üzembe helyezése egy REST API hoz létre. Ebben az API-ban küldhet adatküldést, és megkaphatja a modell által visszaadott előrejelzést. Ebből a dokumentumból megtudhatja, hogyan hozhat létre ügyfeleket a webszolgáltatáshoz a, a go, a Java és a Python használatával C#.
+REST API-t üzembe helyezése az Azure Machine Learning-modellek webszolgáltatásként hoz létre. Adatokat küldeni az API-t, és a modell által visszaadott az előrejelzést kapni. Ebből a dokumentumból megtudhatja, hogyan hozhat létre ügyfeleket a webszolgáltatáshoz a, a go, a Java és a Python használatával C#.
 
 Webszolgáltatást akkor hozhat létre, amikor lemezképet telepít Azure Container Instances, Azure Kubernetes Service vagy Field-programozható Gate-tömbökbe (FPGA). A lemezképeket regisztrált modellből és pontozási fájlokból hozza létre. A webszolgáltatásokhoz való hozzáféréshez használt URI-t a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val kéri le. Ha a hitelesítés engedélyezve van, az SDK használatával is beolvashatja a hitelesítési kulcsokat vagy jogkivonatokat.
 
@@ -34,10 +34,10 @@ A Machine learning-webszolgáltatást használó ügyfelek létrehozásának ál
 > [!TIP]
 > A dokumentumban szereplő példákat manuálisan hozza létre a OpenAPI (hencegés) specifikációk használata nélkül. Ha engedélyezte a OpenAPI-specifikációt a központi telepítéshez, olyan eszközöket használhat, mint például a [hencegés-CODEGEN](https://github.com/swagger-api/swagger-codegen) a szolgáltatáshoz tartozó ügyféloldali kódtárak létrehozásához.
 
-## <a name="connection-information"></a>Kapcsolatok adatai
+## <a name="connection-information"></a>Kapcsolatadatok
 
 > [!NOTE]
-> A webszolgáltatási információk beszerzéséhez használja a Azure Machine Learning SDK-t. Ez egy Python SDK. A szolgáltatáshoz bármilyen nyelven létrehozhat egy ügyfelet.
+> A webszolgáltatási információk beszerzéséhez használja a Azure Machine Learning SDK-t. Ez a Python SDK-t. A szolgáltatáshoz bármilyen nyelven létrehozhat egy ügyfelet.
 
 A [azureml. Core. webszolgáltatási](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) osztály a-ügyfél létrehozásához szükséges információkat tartalmazza. Az ügyfélalkalmazás létrehozásához a következő `Webservice` tulajdonságok hasznosak:
 
@@ -46,7 +46,7 @@ A [azureml. Core. webszolgáltatási](https://docs.microsoft.com/python/api/azur
 * `scoring_uri` – a REST API címe.
 * `swagger_uri` – a OpenAPI-specifikáció címe. Ez az URI akkor érhető el, ha engedélyezte az automatikus séma létrehozását. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md#schema).
 
-Az alábbi három módon kérheti le ezeket az információkat az üzembe helyezett webszolgáltatások számára:
+Az üzembe helyezett webszolgáltatások ezen információk lekérése egy három módja van:
 
 * Modell telepítésekor a rendszer `Webservice` objektumot ad vissza a szolgáltatással kapcsolatos információkkal:
 
@@ -57,7 +57,7 @@ Az alábbi három módon kérheti le ezeket az információkat az üzembe helyez
     print(service.swagger_uri)
     ```
 
-* A `Webservice.list` segítségével lekérheti az üzembe helyezett webszolgáltatások listáját a munkaterületen. Szűrőket adhat hozzá a visszaadott információk listájának szűkítéséhez. További információ arról, hogy mit lehet szűrni [. a webszolgáltatások listáját](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) ismertető dokumentációban talál további információt.
+* A `Webservice.list` segítségével lekérheti az üzembe helyezett webszolgáltatások listáját a munkaterületen. Visszaadott adatok leszűkítése szűrőt is hozzáadhat. További információ arról, hogy mit lehet szűrni [. a webszolgáltatások listáját](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) ismertető dokumentációban talál további információt.
 
     ```python
     services = Webservice.list(ws)
@@ -65,7 +65,7 @@ Az alábbi három módon kérheti le ezeket az információkat az üzembe helyez
     print(services[0].swagger_uri)
     ```
 
-* Ha ismeri a telepített szolgáltatás nevét, létrehozhat egy `Webservice`új példányát, és paraméterként megadhatja a munkaterület és a szolgáltatás nevét. Az új objektum a központilag telepített szolgáltatással kapcsolatos információkat tartalmaz.
+* Ha ismeri a telepített szolgáltatás nevét, létrehozhat egy `Webservice`új példányát, és paraméterként megadhatja a munkaterület és a szolgáltatás nevét. Az új objektum tartalmazza a telepített szolgáltatással kapcsolatos információkat.
 
     ```python
     service = Webservice(workspace=ws, name='myservice')
@@ -88,8 +88,8 @@ A Azure Machine Learning két módszert biztosít a webszolgáltatásokhoz való
 
 |Hitelesítési módszer|ACI|AKS|
 |---|---|---|
-|Jelmagyarázat|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezett?|
-|Jogkivonat| Nincs| Alapértelmezés szerint letiltva |
+|Paraméter|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezett?|
+|Jogkivonat| Nem érhető el| Alapértelmezés szerint letiltva |
 
 Egy kulccsal vagy jogkivonattal védett szolgáltatásnak küldött kérelem küldésekor az __engedélyezési__ fejléc használatával adja át a kulcsot vagy a jogkivonatot. A kulcsot vagy tokent `Bearer <key-or-token>`ként kell formázni, ahol a `<key-or-token>` a kulcs vagy a jogkivonat értéke.
 
@@ -131,9 +131,9 @@ print(token)
 > [!IMPORTANT]
 > Új jogkivonatot kell kérnie a jogkivonat `refresh_by` időpontja után. 
 
-## <a name="request-data"></a>Adatkérés
+## <a name="request-data"></a>Kérelem adatai
 
-A REST API azt várja, hogy a kérelem törzse JSON-dokumentum legyen a következő szerkezettel:
+A REST API-t vár egy JSON-dokumentumot, az alábbi struktúra használatával kell a kérés törzse:
 
 ```json
 {
@@ -145,9 +145,9 @@ A REST API azt várja, hogy a kérelem törzse JSON-dokumentum legyen a követke
 ```
 
 > [!IMPORTANT]
-> Az adatok struktúrájának meg kell egyeznie a szolgáltatás által várt pontozási szkripttel és modellel. Előfordulhat, hogy a pontozási parancsfájl módosítja az adattípust, mielőtt átadná azt a modellnek.
+> Az adatok struktúráját milyen a pontozó szkript és a szolgáltatás várt modellek egyeznie kell. A pontozó szkript előfordulhat, hogy módosíthatja az adatokat a modell való továbbítás előtt.
 
-A példában szereplő modell a [jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) példaként egy 10 számból álló tömböt vár. A példában szereplő pontozási szkript létrehoz egy NumPy tömböt a kérelemből, és átadja a modellnek. A következő példában a szolgáltatás által várt adatok láthatók:
+A példában szereplő modell a [jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) példaként egy 10 számból álló tömböt vár. A példában szereplő pontozási szkript létrehoz egy NumPy tömböt a kérelemből, és átadja a modellnek. Az alábbi példa bemutatja az adatok, ez a szolgáltatás vár:
 
 ```json
 {
@@ -169,7 +169,7 @@ A példában szereplő modell a [jegyzetfüzetben](https://github.com/Azure/Mach
 }
 ```
 
-A webszolgáltatás több adatkészletet is elfogadhat egyetlen kérelemben. Egy olyan JSON-dokumentumot ad vissza, amely a válaszok tömbjét tartalmazza.
+A webszolgáltatás egy kérelem több adatkészletek tud fogadni. Egy JSON-dokumentum, amely egy tömböt adott vissza.
 
 ### <a name="binary-data"></a>Bináris adatok
 
@@ -179,7 +179,7 @@ További információ a szolgáltatásban található bináris adatok támogatá
 
 Az CORS-támogatás szolgáltatásban való engedélyezésével kapcsolatos információkért lásd: a [több eredetű erőforrás-megosztás](how-to-deploy-and-where.md#cors).
 
-## <a name="call-the-service-c"></a>A szolgáltatás meghívása (C#)
+## <a name="call-the-service-c"></a>Meghívja a szolgáltatást (C#)
 
 Ebből a példából megtudhatja C# , hogyan hívhatja meg a vonattal létrehozott webszolgáltatást a jegyzetfüzet példáján [belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) :
 
@@ -262,13 +262,13 @@ namespace MLWebServiceClient
 }
 ```
 
-A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
+A következő JSON-dokumentumot kapott eredmények hasonlók:
 
 ```json
 [217.67978776218715, 224.78937091757172]
 ```
 
-## <a name="call-the-service-go"></a>A szolgáltatás meghívása (go)
+## <a name="call-the-service-go"></a>Meghívja a szolgáltatást (Futtatás)
 
 Ez a példa azt szemlélteti, hogyan használhatja a Go-t a [vonattal a jegyzetfüzetből](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) létrehozott webszolgáltatás meghívásához:
 
@@ -354,13 +354,13 @@ func main() {
 }
 ```
 
-A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
+A következő JSON-dokumentumot kapott eredmények hasonlók:
 
 ```json
 [217.67978776218715, 224.78937091757172]
 ```
 
-## <a name="call-the-service-java"></a>A szolgáltatás meghívása (Java)
+## <a name="call-the-service-java"></a>Meghívja a szolgáltatást (Java)
 
 Ebből a példából megtudhatja, hogyan használhatja a Java-t a [vonattal a notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) létrehozott webszolgáltatás meghívására:
 
@@ -434,13 +434,13 @@ public class App {
 }
 ```
 
-A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
+A következő JSON-dokumentumot kapott eredmények hasonlók:
 
 ```json
 [217.67978776218715, 224.78937091757172]
 ```
 
-## <a name="call-the-service-python"></a>Szolgáltatás meghívása (Python)
+## <a name="call-the-service-python"></a>Meghívja a szolgáltatást (Python)
 
 Ez a példa bemutatja, hogyan használhatja a Pythont a [vonattal a notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) létrehozott webszolgáltatás meghívásához:
 
@@ -494,7 +494,7 @@ resp = requests.post(scoring_uri, input_data, headers=headers)
 print(resp.text)
 ```
 
-A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
+A következő JSON-dokumentumot kapott eredmények hasonlók:
 
 ```JSON
 [217.67978776218715, 224.78937091757172]

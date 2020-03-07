@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: 4b8cfed883ffef780de2e82e3f309e97bcb5515c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412074"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356407"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Az Azure cache Redis-időtúllépésekkel kapcsolatos hibáinak megoldása
 
@@ -43,9 +43,9 @@ Ez a hibaüzenet olyan metrikákat tartalmaz, amelyek segíthetnek a probléma o
 | üzenetsor |Összesen 73 folyamatban lévő művelet |
 | l |a folyamatban lévő műveletek közül 6 a nem küldött várólistában van, és még nem lett beírva a kimenő hálózatra. |
 | QS |67 a folyamatban lévő műveletek elküldése a kiszolgálónak, de a válasz még nem érhető el. A válasz lehet `Not yet sent by the server` vagy `sent by the server but not yet processed by the client.` |
-| QC |a folyamatban lévő műveletek közül 0 a válaszokat észlelte, de még nem jelölték meg befejezettként, mert a befejezési hurokra várnak. |
+| qc |a folyamatban lévő műveletek közül 0 a válaszokat észlelte, de még nem jelölték meg befejezettként, mert a befejezési hurokra várnak. |
 | WR |Aktív író van (vagyis a 6 el nem küldött kérések nincsenek figyelmen kívül hagyva) bájt/activewriters |
-| a következő helyen: |Nincs aktív olvasó, és a rendszer nulla bájtot olvas be a hálózati adapter bájtjainak/activereaders |
+| nevű lemezt a |Nincs aktív olvasó, és a rendszer nulla bájtot olvas be a hálózati adapter bájtjainak/activereaders |
 
 A lehetséges kiváltó okok kivizsgálásához a következő lépéseket használhatja.
 
@@ -111,7 +111,7 @@ A lehetséges kiváltó okok kivizsgálásához a következő lépéseket haszn�
 
    További információ: [a Redis-kiszolgáló memória-nyomása](cache-troubleshoot-server.md#memory-pressure-on-redis-server).
 
-## <a name="additional-information"></a>További információk
+## <a name="additional-information"></a>További információ
 
 - [Az Azure Cache for Redis ügyféloldali hibáinak elhárítása](cache-troubleshoot-client.md)
 - [Az Azure Cache for Redis kiszolgálóoldali hibáinak elhárítása](cache-troubleshoot-server.md)

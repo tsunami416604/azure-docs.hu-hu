@@ -508,11 +508,13 @@
     - name: Virtuális gépek monitorozása
       items:
         - name: Azure Monitor virtuális gépekhez
-          href: ../../azure-monitor/insights/vminsights-overview.md
+          href: ../../azure-monitor/insights/vminsights-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Metrikákhoz kapcsolódó riasztások létrehozása
-          href: ../../azure-monitor/platform/alerts-metric.md
+          href: ../../azure-monitor/platform/alerts-metric.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Naplóriasztások létrehozása
-          href: ../../azure-monitor/platform/alerts-log.md
+          href: ../../azure-monitor/platform/alerts-log.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Használati metrikák lekérése a REST használatával
+          href: ../linux/metrics-vm-usage-rest.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Rendszerképek használata
       items:
         - name: Megosztott lemezképek

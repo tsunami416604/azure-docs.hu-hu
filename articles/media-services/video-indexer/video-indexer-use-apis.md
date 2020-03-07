@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: juliako
 ms.openlocfilehash: 8b6d160f71bfe8b2e5c447296d511b54ce6542c8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989773"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382913"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
 
@@ -99,7 +99,7 @@ A Fiókazonosító paraméterre minden műveleti API-híváshoz szükség van. A
     https://www.videoindexer.ai/accounts/00000000-f324-4385-b142-f77dacb0a368/videos/d45bf160b5/
     ```
 
-## <a name="recommendations"></a>Ajánlatok
+## <a name="recommendations"></a>Javaslatok
 
 Ebben a részben a Video Indexer API használatára vonatkozó javaslatokat talál.
 
@@ -207,7 +207,7 @@ Debug.WriteLine(playerWidgetLink);
 
 ```
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [A Video Indexer áttekintése](video-indexer-overview.md)
 - [Régiók](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

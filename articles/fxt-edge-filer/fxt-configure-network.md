@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551063"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397030"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Oktatóanyag: a fürt hálózati beállításainak konfigurálása
 
@@ -19,7 +19,7 @@ Az újonnan létrehozott Azure FXT Edge Filer-fürt használata előtt tekintse 
 
 Ez az oktatóanyag ismerteti azokat a hálózati beállításokat, amelyekre szükség lehet az új fürthöz való alkalmazkodáshoz. 
 
-Megtanulhatja a következőket: 
+Az oktatóanyagban érintett témák köre: 
 
 > [!div class="checklist"]
 > * Lehet, hogy mely hálózati beállításokat kell frissíteni a fürt létrehozása után
@@ -142,7 +142,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 * DNS-kiszolgáló címe
 * DNS-tartománynév
-* DNS-keresési tartományok
+* DNS search domains
 
 További részletekért olvassa el a [DNS-beállítások](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) című témakört a fürt konfigurációs útmutatójában.
 

@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
 ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714448"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78371989"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Az Azure cache méretezése a Redis
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak kiválasztásában. A gyorsítótár létrehozása után méretezheti a gyorsítótár méretét és díjszabási szintjét, ha az alkalmazás követelményei megváltoznak. Ez a cikk bemutatja, hogyan méretezheti a gyorsítótárat a Azure Portal és az eszközök, például a Azure PowerShell és az Azure CLI használatával.
@@ -31,7 +31,7 @@ Ha azt állapítja meg, hogy a gyorsítótár már nem felel meg az alkalmazás 
 ## <a name="scale-a-cache"></a>Gyorsítótár skálázása
 A gyorsítótár méretezéséhez keresse meg a [gyorsítótárat](cache-configure.md#configure-azure-cache-for-redis-settings) a [Azure Portal](https://portal.azure.com) , majd kattintson a **Méretezés** elemre az **erőforrás menüben**.
 
-![Beosztás](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+![Méretezés](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
 Válassza ki a kívánt díjszabási szintet a **Select díjszabási csomag kiválasztása** panelen, és kattintson a **kiválasztás**elemre.
 

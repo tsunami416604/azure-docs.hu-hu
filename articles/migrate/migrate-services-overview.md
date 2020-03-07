@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 12/29/2019
 ms.custom: mvc
 ms.openlocfilehash: c336b2f95a17896edcc7eaad2b2586c6859804f9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772193"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361922"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -37,7 +37,7 @@ Az Azure Migrate hub a következő eszközöket biztosítja.
 **Azure Migrate: kiszolgáló áttelepítése** | Kiszolgálók migrálása | A VMware virtuális gépek, a Hyper-V virtuális gépek, a fizikai kiszolgálók, valamint az egyéb virtualizált gépek és a nyilvános felhőalapú virtuális gépek migrálása az Azure-ba. 
 **Adatbázis-Migration Assistant (DMA)** | A helyszíni SQL Server adatbázisok kiértékelésével áttelepíthetők az Azure SQL DB-be, az Azure SQL felügyelt példányaira vagy SQL Server rendszert futtató Azure-beli virtuális gépekre. | A DMA információt nyújt az áttelepítéssel kapcsolatos lehetséges blokkolási problémákról. Azonosítja a nem támogatott funkciókat, valamint az áttelepítés után kihasználható új funkciókat, és segít az adatbázis-áttelepítés megfelelő elérési útjának azonosításában. [További információk](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017).
 **Database Migration Service (DMS)** | Helyszíni adatbázisok migrálása az SQL, az Azure SQL DB és az Azure SQL felügyelt példányain futó Azure virtuális gépekre. | [További](https://docs.microsoft.com/azure/dms/dms-overview) információ a DMS-ről.
-**Mozgató** | Kiszolgálók értékelése | [További](#movere) információ a mozgató szolgáltatásról.
+**Movere** | Kiszolgálók értékelése | [További](#movere) információ a mozgató szolgáltatásról.
 **Webalkalmazás-Migration Assistant** | Helyszíni webalkalmazások felmérése és migrálása az Azure-ba. |  A Azure App Service Migration Assistant segítségével kivizsgálhatja a helyszíni webhelyeket Azure App Servicere való áttelepítéshez.<br/><br/> Telepítse át a .NET-és PHP-webalkalmazásokat az Azure-ba Azure App Service Migration Assistant használatával. [További](https://appmigration.microsoft.com/) információ a segédről.
 **Azure Data Box** | Offline adatáttelepítés. | A Azure Data Box termékek használatával az Azure-ba irányuló nagy mennyiségű adattal is át lehet helyezni. [További információk](https://docs.microsoft.com/azure/databox/).
 
@@ -51,7 +51,7 @@ Azure Migrate számos ISV-ajánlattal integrálható.
 [Cloudamize](https://www.cloudamize.com/platform) | Kiszolgálók értékelése
 [A kölcsönzés technológiája](https://www.corenttech.com/AzureMigrate/) | Kiszolgálók értékelése és migrálása
 [Eszköz 42](https://docs.device42.com/) | Kiszolgálók értékelése
-[Tóparti](https://go.microsoft.com/fwlink/?linkid=2104908) | VDI értékelése
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | VDI értékelése
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Kiszolgálók migrálása
 [Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Kiszolgálók értékelése
 [UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Kiszolgálók és adatbázisok értékelése

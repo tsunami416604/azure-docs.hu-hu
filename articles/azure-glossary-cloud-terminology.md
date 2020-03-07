@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978763"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356566"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure Szószedet: az Azure platform felhőalapú terminológiájának szótára
 
@@ -94,7 +94,7 @@ Az Azure-szolgáltatások üzembe helyezésére és kezelésére szolgáló bizt
 Egy geo-n belüli, nem határokon átnyúló, és egy vagy több adatközpontot tartalmazó régió. A díjszabás, a regionális szolgáltatások és az ajánlatok típusai a régió szintjén érhetők el. Egy régiót általában egy másik régióval párosítanak, amely akár több száz kilométerre is felhasználható. A regionális párok a vész-helyreállítási mechanizmusként használhatók, és magas rendelkezésre állást biztosítanak. Más néven *hely*.  
 Lásd: [Azure-régiók](best-practices-availability-paired-regions.md)
 
-## <a name="resource"></a>erőforrás
+## <a name="resource"></a>resource
 Az Azure-megoldás részét képező elem. Minden egyes Azure-szolgáltatás lehetővé teszi különböző típusú erőforrások, például adatbázisok vagy virtuális gépek üzembe helyezését.   
 Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/management/overview.md)
 
@@ -110,7 +110,7 @@ Lásd: [Azure Resource Manager sablonok készítése](resource-group-authoring-t
 A Resource Manageren keresztül üzembe helyezhető és felügyelhető erőforrásokat ellátó szolgáltatás. Mindegyik erőforrás-szolgáltató műveleteket biztosít a telepített erőforrásokkal folytatott munkához. Az erőforrás-szolgáltatók a Azure Portalon, Azure PowerShellon és számos programozási SDK-n keresztül érhetők el.  
 Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/management/overview.md)
 
-## <a name="role"></a>szerepkör
+## <a name="role"></a>role
 A felhasználókhoz, csoportokhoz és szolgáltatásokhoz hozzárendelhető hozzáférés szabályozására szolgáló eszköz. A szerepkörök olyan műveleteket hajthatnak végre, mint például az Azure-erőforrások létrehozása, kezelése és olvasása.  
 Lásd [: RBAC: beépített szerepkörök](role-based-access-control/built-in-roles.md)
 
@@ -129,7 +129,7 @@ Lásd: [Az Azure Storage-fiókok ismertetése](storage/common/storage-create-sto
 Az ügyfélnek a Microsofttal kötött szerződése, amely lehetővé teszi számukra az Azure-szolgáltatások beszerzését. Az előfizetés díjszabása és a kapcsolódó feltételek az előfizetéshez választott ajánlat hatálya alá tartoznak.
 Lásd: [Microsoft Online előfizetői szerződés](https://azure.microsoft.com/support/legal/subscription-agreement/) és [Az Azure-előfizetések társítása Azure Active Directory](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-## <a name="tag"></a>címke
+## <a name="tag"></a>tag
 Egy indexelési kifejezés, amely lehetővé teszi az erőforrások kategorizálását a kezelés vagy a számlázás követelményeinek megfelelően. Ha összetett erőforrásokkal rendelkezik, a címkék használatával megjelenítheti ezeket az eszközöket úgy, hogy a lehető legtöbbet hozza meg. Például elláthat címkével olyan erőforrásokat, amelyek hasonló szerepet töltenek be a szervezetben, vagy ugyanahhoz a részleghez tartoznak.  
 Lásd: [címkék használata az Azure-erőforrások rendszerezéséhez](resource-group-using-tags.md)
 
@@ -153,7 +153,7 @@ Lásd: [Virtual Network áttekintése](virtual-network/virtual-networks-overview
 ## <a name="web-app"></a>Webalkalmazás
 [App Service alkalmazás](#app-service-app)másik neve.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Bevezetés az Azure használatába](https://azure.microsoft.com/get-started/)
 * [Felhőalapú erőforrás-központ](https://azure.microsoft.com/resources/)  
