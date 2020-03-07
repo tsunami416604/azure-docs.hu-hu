@@ -14,11 +14,11 @@ ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 4a3b699c90e1fefb834f8ddfe3a23fc2a97354ec
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186134"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359347"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Fejlesztés Media Services V3 API-kkal
 
@@ -136,7 +136,7 @@ Egy adott élő esemény vagy bármely hozzá tartozó élő kimenet esetében c
 
 A [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) a Windows-ügyfelek számára elérhető eszköz, akik a Media Servicesről szeretnének többet megtudni. A AMSE egy WinForms/C# alkalmazás, amely feltölti, letölti, kódolja, TOVÁBBÍTJA a VOD-t és az élő tartalmakat Media Services. A AMSE eszköz olyan ügyfelek számára készült, akik kód írása nélkül szeretnék tesztelni Media Services. A AMSE-kód olyan ügyfelek számára biztosít erőforrásként, akik Media Serviceskal szeretnének fejleszteni.
 
-A AMSE egy nyílt forráskódú projekt, amelyet a Közösség nyújt (a probléma https://github.com/Azure/Azure-Media-Services-Explorer/issues). Ez a projekt elfogadta a [Microsoft Nyílt forráskóddal kapcsolatos viselkedési szabályzatát](https://opensource.microsoft.com/codeofconduct/). További információkért tekintse meg a [viselkedési szabályzatot](https://opensource.microsoft.com/codeofconduct/faq/) , vagy forduljon a opencode@microsoft.comhoz bármilyen más kérdéssel vagy megjegyzéssel.
+A AMSE egy nyílt forráskódú projekt, amelyet a Közösség nyújt (a probléma https://github.com/Azure/Azure-Media-Services-Explorer/issues). A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. További információkért tekintse meg a [viselkedési szabályzatot](https://opensource.microsoft.com/codeofconduct/faq/) , vagy forduljon a opencode@microsoft.comhoz bármilyen más kérdéssel vagy megjegyzéssel.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
 

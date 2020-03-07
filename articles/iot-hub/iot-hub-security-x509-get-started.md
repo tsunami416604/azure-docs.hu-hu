@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457022"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382026"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Az X. 509 Biztonság beállítása az Azure IoT hub-ban
 
@@ -97,7 +97,7 @@ Ezután megmutatjuk, hogyan hozhat létre egy C# alkalmazást az IoT hub-hoz reg
 
     Ez a lépés letölti, telepíti és hozzáadja az Azure IoT Device SDK NuGet csomagra és annak függőségeire mutató hivatkozást.
 
-1. Adja hozzá a következő `using`utasításokat a **Program.cs** fájl elejéhez:
+1. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
 
     ```csharp
         using Microsoft.Azure.Devices.Client;

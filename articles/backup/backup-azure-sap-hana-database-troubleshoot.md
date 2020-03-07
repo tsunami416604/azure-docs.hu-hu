@@ -4,11 +4,11 @@ description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok bi
 ms.topic: troubleshooting
 ms.date: 11/7/2019
 ms.openlocfilehash: 8872cfe87df9b8d0553d777f72fe7102d08dea4d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916863"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382496"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 

@@ -15,11 +15,11 @@ ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04bd0993873568ba7cce368ddd9277ed356b636c
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847048"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375474"
 ---
 # <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Azure AD-szerepkörök biztonsági varázslójának Privileged Identity Management
 
@@ -37,7 +37,7 @@ A varázsló második lépése lehetőséget biztosít a rendszergazda szerepkö
 
 ## <a name="run-the-wizard"></a>A varázsló futtatása
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
@@ -67,7 +67,7 @@ A varázsló második lépése lehetőséget biztosít a rendszergazda szerepkö
 
 Ha más kiemelt jogosultsági szintű szerepkör-hozzárendeléseket is át kell alakítania a jogosultra, futtassa újra a varázslót. Ha a varázsló helyett a Privileged Identity Management felületet szeretné használni, tekintse meg [Az Azure ad-szerepkörök kiosztása a Privileged Identity Managementban](pim-how-to-add-role-to-user.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD-szerepkörök kiosztása Privileged Identity Management](pim-how-to-add-role-to-user.md)
 - [Hozzáférés biztosítása más rendszergazdáknak a Privileged Identity Management kezeléséhez](pim-how-to-give-access-to-pim.md)

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 02/12/2020
 ms.author: shvija
 ms.openlocfilehash: 9b69feef7c6587f7356648e6a6828277ba500aea
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460075"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365373"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Az Azure Event Hubs az Azure Blob Storage vagy az Azure Data Lake Storage keresztül események rögzítése
 Az Azure Event Hubs lehetővé teszi, hogy automatikusan rögzítsen egy [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) -ban található Event Hubs adatfolyam-adatait, vagy [Azure Data Lake Storage 1. vagy 2. generációs](https://azure.microsoft.com/services/data-lake-store/) fiókot, és a rugalmasságot az idő vagy a méret megadásával. A rögzítés beállítása gyorsan elvégezhető, ezért a futtatásához nincs szükség felügyeleti költségekre, és a rendszer automatikusan méretezi Event Hubs [átviteli egységekkel](event-hubs-scalability.md#throughput-units). Az Event Hubs Capture legegyszerűbb módja a streamelési adatok betöltése az Azure-ba, és lehetővé teszi, hogy fókusz adatfeldolgozási helyett az adatváltozások rögzítése.

@@ -4,11 +4,11 @@ description: Parancssor beállítása a BelépésiPont felülbírálására egy 
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533405"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365159"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>A parancssor beállítása tároló-példányban az alapértelmezett parancssori művelet felülbírálásához
 
@@ -52,7 +52,7 @@ A parancssori szintaxis a példányok létrehozásához használt Azure API vagy
 
 ### <a name="examples"></a>Példák
 
-|    |  Azure parancssori felület (CLI)   | Portál | Sablon | 
+|    |  Azure CLI   | Portál | Sablon | 
 | ---- | ---- | --- | --- |
 | Egyetlen parancs | `--command-line "python myscript.py arg1 arg2"` | **Parancs felülbírálása**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
 | Több parancs | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Parancs felülbírálása**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |

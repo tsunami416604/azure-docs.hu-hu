@@ -12,11 +12,11 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: d59a66b25b55572865f297436331971434d831c3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199886"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384316"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>Ajánlott eljárások az adattárházak betöltéséhez
 
@@ -141,7 +141,7 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 A mögöttes külső adatforrásokban nem kell más módosítást elvégezni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a PolyBase-ről és a kinyerési, betöltési és átalakítási (ELT) folyamat megtervezéséről: [ELT tervezése SQL Data Warehouse-hoz](design-elt-data-loading.md).
 - Betöltési oktatóanyag: [Adatok betöltése az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba a PolyBase használatával](load-data-from-azure-blob-storage-using-polybase.md).

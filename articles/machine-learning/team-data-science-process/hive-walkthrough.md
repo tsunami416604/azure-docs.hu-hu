@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 005d4fe1b6ec59e7f05be3dd2ab3e72d0e7aa8e0
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720571"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393367"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csoportos adatelemzési folyamat működés közben: használata Azure HDInsight Hadoop-fürtök
 Ebben az útmutatóban egy végpontok közötti forgatókönyvben használjuk a [csoportos adatelemzési folyamatot (TDSP)](overview.md) . Egy Azure HDInsight Hadoop- [fürtöt](https://azure.microsoft.com/services/hdinsight/) használunk a nyilvánosan elérhető [NYC-taxis](https://www.andresmh.com/nyctaxitrips/) adatkészletből származó adatok tárolására, megismerésére és szolgáltatására, valamint az adatok leállására. Bináris és többosztályos besorolási és regressziós prediktív feladatok kezelésére, hogy ki, hogy az adatok az Azure Machine Learning modellek. 

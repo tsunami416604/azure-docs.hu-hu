@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d3f18fb11dc54f560d867e2b5ff87251e2c836
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
-ms.translationtype: MT
+ms.openlocfilehash: 5aff2ff2b2e60a35d0525cf5733c940aedb7976c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249106"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377708"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -67,7 +67,35 @@ A szervezetek dönthetnek úgy, hogy az eszköz identitását használják a fel
 
 A szervezeteknek meg kell követelniük, hogy a kiválasztott felhőalapú alkalmazásokhoz való hozzáférési kísérletet egy jóváhagyott ügyfélalkalmazás alapján kell végrehajtani. Ezek a jóváhagyott ügyfélalkalmazások a mobileszköz-kezelési (MDM) megoldástól függetlenül támogatják az [Intune app Protection-szabályzatokat](/intune/app-protection-policy) .
 
-A támogatott alkalmazások a cikkben, [Microsoft Intune védett alkalmazásokban](/intune/apps/apps-supported-intune-apps)találhatók.
+Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
+
+- Microsoft Azure Information Protection
+- Microsoft-foglalások
+- Microsoft-Cortana
+- Microsoft Dynamics 365
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Flow
+- Microsoft Intune Managed Browser
+- A Microsoft számlázás
+- Microsoft Kaizala
+- A Microsoft indítója
+- Microsoft OneDrive
+- Microsoft OneNote
+- Microsoft Outlook
+- A Microsoft Planner
+- Microsoft PowerApps
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Microsoft Skype vállalati verzió
+- Microsoft StaffHub
+- Microsoft Stream
+- Microsoft Teams
+- Microsoft To-Do
+- Microsoft Visio
+- Microsoft Word
+- Microsoft-Yammer
 
 **Megjegyzések**
 
@@ -76,17 +104,26 @@ A támogatott alkalmazások a cikkben, [Microsoft Intune védett alkalmazásokba
    - A csak az iOS és az Android for Device platform feltételeit támogatja.
 - A feltételes hozzáférés nem tekintheti meg a Microsoft Edge-t InPrivate módban egy jóváhagyott ügyfélalkalmazás.
 
+Tekintse meg a következő cikket [: a felhőalapú alkalmazások hozzáférésének megkövetelése a Cloud app Accesshez feltételes hozzáféréssel](app-based-conditional-access.md) a konfigurációs példákhoz.
+
 ### <a name="require-app-protection-policy"></a>Alkalmazásvédelmi szabályzat megkövetelése
 
 A feltételes hozzáférési házirendben megkövetelheti, hogy az [Intune app Protection szabályzata](/intune/app-protection-policy) elérhető legyen az ügyfélalkalmazás számára, mielőtt a kiválasztott felhőalapú alkalmazások hozzáférhessenek a hozzáféréshez. 
 
-A támogatott alkalmazások a cikkben, [Microsoft Intune védett alkalmazásokban](/intune/apps/apps-supported-intune-apps)találhatók.
+Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
+
+- Microsoft-Cortana
+- Microsoft OneDrive
+- Microsoft Outlook
+- A Microsoft Planner
 
 **Megjegyzések**
 
 - Az App Protection-házirend alkalmazásai támogatják az Intune Mobile Application Management szolgáltatást a házirend-védelemmel.
 - Az **alkalmazás-védelmi házirend követelményeinek megkövetelése** :
     - A csak az iOS és az Android for Device platform feltételeit támogatja.
+
+Tekintse meg a következő cikket [: How to: app Protection-házirend és egy jóváhagyott ügyfélalkalmazás a Cloud app Accesshez feltételes hozzáféréssel](app-protection-based-conditional-access.md) a konfigurációs példákhoz.
 
 ### <a name="terms-of-use"></a>Használati feltételek
 

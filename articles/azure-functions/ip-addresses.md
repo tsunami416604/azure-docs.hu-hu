@@ -4,11 +4,11 @@ description: Megtudhatja, hogyan keresheti meg a beérkező és a kimenő IP-cí
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612887"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358073"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions IP-címei
 
@@ -25,9 +25,9 @@ Az IP-címek a Function apps szolgáltatáshoz vannak társítva, nem az egyes f
 
 Mindegyik Function alkalmazás egyetlen bejövő IP-címmel rendelkezik. Az IP-cím megkeresése:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Navigáljon a Function alkalmazáshoz.
-3. Válassza a **Platformfunkciók** lehetőséget.
+3. Válassza ki a **platform funkcióit**.
 4. Válassza a **Tulajdonságok**lehetőséget, és a bejövő IP-cím megjelenik a **virtuális IP-cím**területen.
 
 ## <a name="find-outbound-ip-addresses"></a>Function alkalmazás kimenő IP-címei
@@ -115,9 +115,9 @@ Ha statikus, dedikált IP-címekre van szüksége, javasoljuk [app Service körn
 
 Annak megállapítása, hogy a függvény alkalmazás fut-e egy App Service Environmentban:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Navigáljon a Function alkalmazáshoz.
-3. Lépjen az **Áttekintés** fülre.
+3. Válassza az **Áttekintés** lapot.
 4. A App Service csomag szintje a **app Service terv/árképzési**szinten jelenik meg. A App Service Environment díjszabási szintje **elkülönített**.
  
 Másik lehetőségként használhatja a [Cloud Shell](../cloud-shell/quickstart.md):

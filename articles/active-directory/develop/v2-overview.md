@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
-ms.translationtype: MT
+ms.openlocfilehash: f6953fb5d016c802db260c55bc4970c3f029ab1a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194500"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358525"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft Identity platform (v 2.0) – áttekintés
 
@@ -33,7 +33,7 @@ A Microsoft identitásplatformja az Azure Active Directory (Azure AD) fejlesztő
   - Közösségi vagy helyi fiókok (Azure AD B2Con keresztül)
 - **Nyílt forráskódú kódtárak**: Microsoft Authentication librarys (MSAL) és más szabványoknak megfelelő kódtárak támogatása
 - **Application Management Portal**: a Azure Portal beépített regisztrációs és konfigurációs élmény, valamint az összes többi Azure-felügyeleti lehetőség.
-- Az **Application CONFIGURATION API és a PowerShell**: lehetővé teszi az alkalmazások programozott konfigurálását REST API (Microsoft Graph és Azure Active Directory gráf 1,6) és a PowerShell segítségével, így automatizálhatja a DevOps-feladatokat.
+- Az **Application CONFIGURATION API és a PowerShell**: lehetővé teszi az alkalmazások programozott konfigurálását az Microsoft Graph API és a PowerShell segítségével, így automatizálhatja a DevOps feladatait.
 - **Fejlesztői tartalom**: elméleti és hivatkozási dokumentáció, gyors üzembe helyezési minták, mintakód-minták, oktatóanyagok és útmutatók.
 
 A fejlesztők számára a Microsoft Identity platform zökkenőmentesen integrálható az identitások és a biztonság terén, például a jelszó nélküli hitelesítéssel, a lépésenkénti hitelesítéssel és a feltételes hozzáféréssel.  Nincs szükség ilyen funkciók megvalósítására: a Microsoft Identity platformmal integrált alkalmazások natív módon kihasználhatják ezeket az innovációkat.

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: e318e5f9b192b9f857a0b97d076ce4cc87cfb73d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: MT
+ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710981"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356231"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-kötések Azure Functions
 
@@ -32,13 +32,17 @@ A SendGrid-kötések a [Microsoft. Azure. webjobs. Extensions. SendGrid](https:/
 
 ## <a name="example"></a>Példa
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely egy Service Bus üzenetsor-triggert és egy SendGrid kimeneti kötést használ.
 
 ### <a name="synchronous"></a>Szinkron
 
 ```cs
+using SendGrid.Helpers.Mail;
+
+...
+
 [FunctionName("SendEmail")]
 public static void Run(
     [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
@@ -65,6 +69,10 @@ public class OutgoingEmail
 ### <a name="asynchronous"></a>Aszinkron
 
 ```cs
+using SendGrid.Helpers.Mail;
+
+...
+
 [FunctionName("SendEmail")]
 public static async void Run(
  [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
@@ -92,7 +100,7 @@ public class OutgoingEmail
 
 Ha az API-kulcs egy "AzureWebJobsSendGridApiKey" nevű alkalmazás-beállításban van, akkor kihagyhatja az attribútum `ApiKey` tulajdonságának beállítását.
 
-# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 Az alábbi példa egy SendGrid kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja.
 
@@ -151,7 +159,7 @@ public class Message
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Az alábbi példa egy SendGrid kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja.
 
@@ -193,7 +201,7 @@ module.exports = function (context, input) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Az alábbi példa egy HTTP által aktivált függvényt mutat be, amely a SendGrid kötés használatával küld e-mailt. A kötési konfigurációban alapértelmezett értékeket adhat meg. A *from* e-mail cím például a *function. JSON*fájlban van konfigurálva. 
 
@@ -250,7 +258,7 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
     return func.HttpResponse(f"Sent")
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Az alábbi példa a [Java functions runtime library](/java/api/overview/azure/functions/runtime) `@SendGridOutput` jegyzetét használja egy e-mailt küldeni a SendGrid kimeneti kötés használatával.
 
@@ -306,7 +314,7 @@ public class HttpTriggerSendGrid {
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) attribútumot.
 
@@ -324,19 +332,19 @@ public static void Run(
 
 Teljes példa: [ C# példa](#example).
 
-# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 Az C# attribútumokat a parancsfájl nem támogatja.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 A Python nem támogatja az attribútumokat.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 A [SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/SendGridOutput.java) jegyzet lehetővé teszi a SendGrid-kötések deklaratív konfigurálását a konfigurációs értékek megadásával. További részletekért tekintse meg a [példa](#example) és a [konfigurációs](#configuration) szakaszt.
 
@@ -348,11 +356,11 @@ A következő táblázat a *function. JSON* fájlban és a `SendGrid` attribútu
 
 | *function. JSON* -tulajdonság | Attribútum/Megjegyzés tulajdonság | Leírás | Optional |
 |--------------------------|-------------------------------|-------------|----------|
-| típus |n/a| `sendGrid`értékre kell állítani.| Nem |
+| type |n/a| `sendGrid`értékre kell állítani.| Nem |
 | irány |n/a| `out`értékre kell állítani.| Nem |
 | név |n/a| A kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték `$return`, ha csak egy visszatérési érték van. | Nem |
 | apiKey | ApiKey | Az API-kulcsot tartalmazó Alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett Alkalmazásbeállítás neve *AzureWebJobsSendGridApiKey*.| Nem |
-| a következőig:| Végpont | A címzett e-mail-címe. | Igen |
+| erre:| Művelet | A címzett e-mail-címe. | Igen |
 | from| Forrás | A feladó e-mail-címe. |  Igen |
 | subject| Tárgy | Az e-mail tárgya. | Igen |
 | szöveg| Szöveg | Az e-mail tartalma. | Igen |

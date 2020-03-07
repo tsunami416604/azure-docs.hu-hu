@@ -9,11 +9,11 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: e300bc0f29808215673407d21b65fe329e50ad45
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930428"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372347"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation-modulok kezelése
 
@@ -50,7 +50,7 @@ A Azure Portal navigáljon az Automation-fiókjához, és válassza a **modulok*
 
 A PowerShell-galériából származó modulok közvetlenül a [PowerShell-Galéria](https://www.powershellgallery.com) importálhatók, vagy az Automation-fiókjából.
 
-Ha egy modult szeretne importálni a PowerShell-galériaból, lépjen a https://www.powershellgallery.com ra, és keresse meg az importálni kívánt modult. Kattintson a telepítés gombra a **Azure Automation** lapon a **telepítési beállítások**alatt **Azure Automation** . Ez a művelet megnyitja a Azure Portal. Az **Importálás** lapon válassza ki az Automation-fiókját, és kattintson az **OK**gombra.
+Ha egy modult szeretne importálni a PowerShell-galériaból, lépjen a https://www.powershellgallery.comra, és keresse meg az importálni kívánt modult. Kattintson a telepítés gombra a **Azure Automation** lapon a **telepítési beállítások**alatt **Azure Automation** . Ez a művelet megnyitja a Azure Portal. Az **Importálás** lapon válassza ki az Automation-fiókját, és kattintson az **OK**gombra.
 
 ![PowerShell-galéria importálási modul](../media/modules/powershell-gallery.png)
 
@@ -90,7 +90,7 @@ A következő lista felsorolja a belső `Orchestrator.AssetManagement.Cmdlets` m
 |Get-AutomationVariable|`Get-AutomationVariable [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]`|
 |Set-AutomationVariable|`Set-AutomationVariable [-Name] <string> -Value <Object> [<CommonParameters>]` |
 |Start – AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
-|Várakozás – AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
+|Wait-AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
 
 ## <a name="add-a-connection-type-to-your-module"></a>Kapcsolattípus hozzáadása a modulhoz
 
@@ -264,13 +264,13 @@ A következő táblázat felsorolja az Automation-fiók létrehozásakor alapér
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0,2 |
-| Microsoft. PowerShell. Core | 0 |
-| Microsoft. PowerShell. Diagnostics |  |
-| Microsoft. PowerShell. Management |  |
-| Microsoft. PowerShell. Security |  |
+| GPRegistryPolicyParser | 0.2 |
+| Microsoft.PowerShell.Core | 0 |
+| Microsoft.PowerShell.Diagnostics |  |
+| Microsoft.PowerShell.Management |  |
+| Microsoft.PowerShell.Security |  |
 | Microsoft.PowerShell.Utility |  |
-| Microsoft. WSMan. Management |  |
+| Microsoft.WSMan.Management |  |
 | Orchestrator. AssetManagement. parancsmagok | 1 |
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |

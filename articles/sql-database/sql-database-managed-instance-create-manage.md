@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823408"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360498"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Felügyelt API-referenciák Azure SQL Database felügyelt példányokhoz
 
@@ -72,7 +72,7 @@ Felügyelt példányok [Azure CLI](/cli/azure)-vel való létrehozásához és k
 Példány-adatbázis létrehozásához és kezeléséhez a felügyelt példány létrehozása után használja az alábbi T-SQL-parancsokat. Ezeket a parancsokat a Azure Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio) [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is)használatával adhatja ki. A [Visual Studio Code](https://code.visualstudio.com/docs)vagy bármely más olyan program, amely csatlakozhat egy Azure SQL Database-kiszolgálóhoz, és hogyan adhat át Transact-SQL-parancsokat.
 
 > [!TIP]
-> A Microsoft Windows SQL Server Management Studio használatával felügyelt példányok konfigurálásához és a hozzájuk való kapcsolódáshoz szükséges gyors útmutatókért lásd: gyors útmutató [: az Azure virtuális gép konfigurálása Azure SQL Database felügyelt példányhoz való kapcsolódáshoz](sql-database-managed-instance-configure-vm.md) és gyors üzembe helyezéshez [: Pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszínen](sql-database-managed-instance-configure-p2s.md).
+> A Microsoft Windows SQL Server Management Studio használatával felügyelt példányok konfigurálásához és a hozzájuk való kapcsolódáshoz szükséges gyors útmutatók: rövid útmutató [: Azure-beli virtuális gép konfigurálása Azure SQL Database felügyelt példányhoz való kapcsolódáshoz](sql-database-managed-instance-configure-vm.md) és rövid útmutató [: pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszínen](sql-database-managed-instance-configure-p2s.md).
 > [!IMPORTANT]
 > Felügyelt példány nem hozható létre és nem törölhető a Transact-SQL használatával.
 
@@ -94,7 +94,7 @@ Felügyelt példányok létrehozásához és kezeléséhez használja ezeket a R
 |[Felügyelt példányok – erőforráslista szerint csoportosítva](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|Egy erőforráscsoport felügyelt példányainak listáját adja vissza.|
 |[Felügyelt példányok – frissítés](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|Felügyelt példány frissítése.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A SQL Server-adatbázisok Azure-ba történő áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](sql-database-single-database-migrate.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](sql-database-features.md).

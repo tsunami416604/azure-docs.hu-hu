@@ -16,16 +16,16 @@ search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a3f7d7c9af807120457b119e0be047c7a342b961
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190534"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378428"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása
 A cikk ismerteti, hogy az egy felhőalapú Azure Active Directory (Azure AD) példány egy helyszíni Active Directory-példányból származó felhasználói jelszavakat szinkronizálja szükséges információkat.
 
-## <a name="how-password-hash-synchronization-works"></a>A Jelszókivonat-szinkronizálás működése
+## <a name="how-password-hash-synchronization-works"></a>A jelszókivonat-szinkronizálás működése
 Az Active Directory tartományi szolgáltatások tárolja a jelszavak kivonat értéke, a tényleges felhasználói jelszó jelképeként formájában. A kivonatoló érték egy egyirányú matematikai függvény (a *kivonatoló algoritmus*) eredménye. Az egyirányú függvény eredménye semmilyen módszerrel nem fejthető vissza a jelszó egyszerű szöveges verziójára. 
 
 A jelszó szinkronizálása, az Azure AD Connect szinkronizálása a Jelszókivonat kigyűjti a helyszíni Active Directory-példányból. További biztonsági feldolgozási alkalmazza a rendszer a Jelszókivonat előtt, a rendszer szinkronizálja az Azure Active Directory hitelesítési szolgáltatás. Jelszavak szinkronizálódnak, felhasználónkénti alapon és időrendi sorrendben.
@@ -198,7 +198,7 @@ Ha a Azure AD Domain Services segítségével örökölt hitelesítést biztosí
     * A Kerberos-jelszó kivonatait írja a Azure AD Domain Services tartományvezérlőnek. A rendszer menti a kivonatokat a felhasználói objektum *supplementalCredentials* attribútumában, amely a Azure ad Domain Services tartományvezérlő nyilvános kulcsára van titkosítva.
     * Azure AD Domain Services írja be a Azure AD Domain Services tartományvezérlőnek fogadott NTLM-jelszó kivonatát. A rendszer menti a kivonatot a felhasználói objektum *unicodePwd* attribútumában, amely a Azure ad Domain Services tartományvezérlő nyilvános kulcsához van titkosítva.
 
-## <a name="enable-password-hash-synchronization"></a>Jelszókivonat-szinkronizálás engedélyezése
+## <a name="enable-password-hash-synchronization"></a>Jelszókivonat szinkronizálásának engedélyezése
 
 >[!IMPORTANT]
 >Ha AD FSról (vagy más összevonási technológiáról) végez áttelepítést jelszó-kivonatolási szinkronizálásra, javasoljuk, hogy kövesse az [itt](https://aka.ms/adfstophsdpdownload)közzétett részletes telepítési útmutatót.
@@ -207,7 +207,7 @@ Ha az **expressz beállítások** lehetőséggel telepíti a Azure ad Connectt, 
 
 Ha az Azure AD Connect telepítése egyéni beállításokat használja, ha a felhasználó bejelentkezési oldalán a Jelszókivonat-szinkronizálás érhető el. További információ: [Azure ad Connect egyéni telepítése](how-to-connect-install-custom.md).
 
-![Jelszókivonat-szinkronizálás engedélyezése](./media/how-to-connect-password-hash-synchronization/usersignin2.png)
+![Jelszókivonat szinkronizálásának engedélyezése](./media/how-to-connect-password-hash-synchronization/usersignin2.png)
 
 ### <a name="password-hash-synchronization-and-fips"></a>A Jelszókivonat-szinkronizálás és a FIPS
 A kiszolgáló zárolva lett megfelelően Federal információk Processing Standard (FIPS), ha MD5-tel is le van tiltva.
@@ -235,7 +235,7 @@ A biztonsággal és az FIPS-vel kapcsolatos további információkért lásd: az
 ## <a name="troubleshoot-password-hash-synchronization"></a>A Jelszókivonat-szinkronizálás hibaelhárítása
 Ha problémái vannak a jelszó kivonatának szinkronizálásával kapcsolatban, olvassa el a [jelszó-kivonat szinkronizálásának hibaelhárítása](tshoot-connect-password-hash-synchronization.md)című témakört
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure AD Connect Sync: szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
 * [Lépésenkénti üzembe helyezési terv az ADFS-ből a jelszó-kivonatolási szinkronizálásba való áttelepítéshez](https://aka.ms/authenticationDeploymentPlan)

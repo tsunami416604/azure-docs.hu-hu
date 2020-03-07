@@ -8,11 +8,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: 64f285ea27bde4565d051a84a65c5b4d7b8e9e8c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906983"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396520"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Hivatkozás – IoT Hub kvóták és szabályozás
 
@@ -96,7 +96,7 @@ IoT Hub érvényesíti a többi működési korlátot:
 | Művelet | Korlát |
 | --------- | ----- |
 | Eszközök | Az egyetlen IoT hub-ban regisztrálható eszközök és modulok száma 1 000 000. A korlát növelésének egyetlen módja a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/)való kapcsolódás.|
-| Fájlfeltöltés | 10 egyidejű fájl feltöltése eszközönként. |
+| Fájlfeltöltések | 10 egyidejű fájl feltöltése eszközönként. |
 | <sup>1</sup> . feladatok | Az egyidejű feladatok maximális száma 1 (ingyenes és S1), 5 (S2 esetén) és 10 (S3 esetén). Az egyidejű [eszköz-importálási/exportálási feladatok](iot-hub-bulk-identity-mgmt.md) maximális száma azonban az összes szinten 1. <br/>A feladatok előzményeit 30 napig őrzi meg a rendszer. |
 | További végpontok | A fizetős SKU-hubok 10 további végponttal rendelkezhetnek. Az ingyenes SKU-hubok egy további végponttal rendelkezhetnek. |
 | Üzenet-útválasztási lekérdezések | A fizetős SKU-hubok 100-es útválasztási lekérdezéssel rendelkezhetnek. Előfordulhat, hogy az ingyenes SKU-hubok öt útválasztási lekérdezéssel rendelkeznek. |

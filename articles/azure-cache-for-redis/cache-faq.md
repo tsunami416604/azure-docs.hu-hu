@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433455"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355884"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis – Gyakori kérdések
 Ismerje meg az Azure cache-hez készült Redis kapcsolatos gyakori kérdésekre, mintákra és ajánlott eljárásokra adott válaszokat.
@@ -98,8 +98,8 @@ A gyorsítótár-ajánlat kiválasztásának szempontjai a következők:
 
 * **Memória**: az alapszintű és a Standard csomag 250 MB – 53 GB. A prémium szint akár 1,2 TB-ot (fürtöt) vagy 120 GB-ot (nem fürtözött) is kínál. További információt az [Azure cache Redis díjszabását](https://azure.microsoft.com/pricing/details/cache/)ismertető témakörben talál.
 * Hálózati teljesítmény: Ha olyan számítási **feladattal**rendelkezik, amely nagy adatátvitelt igényel, a prémium szint nagyobb sávszélességet biztosít a standard és az alapszinthez képest. Az egyes szinteknél a nagyobb méretű gyorsítótárak is nagyobb sávszélességet igényelnek a gyorsítótárat működtető mögöttes virtuális gép miatt. További információkért tekintse meg a [következő táblázatot](#cache-performance).
-* **Átviteli sebesség**: a prémium szint a maximálisan elérhető átviteli sebességet kínálja. Ha a gyorsítótár-kiszolgáló vagy-ügyfél eléri a sávszélesség-korlátot, időtúllépést kaphat az ügyfél oldalán. További információt az alábbi táblázat tartalmaz.
-* **Magas rendelkezésre állás/SLA**: az Azure cache for Redis garantálja, hogy az idő legalább 99,9%-ában elérhető a standard/Premium gyorsítótár. Az SLA-val kapcsolatos további tudnivalókért tekintse meg [Az Azure cache Redis díjszabását](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Az SLA csak a cache-végpontokhoz való kapcsolódást fedi le. A szolgáltatói szerződés nem biztosít védelmet az adatvesztéssel szemben. Javasoljuk, hogy a prémium szint Redis adatmegőrzési funkciójának használatával növelje a rugalmasságot az adatvesztéssel szemben.
+* **Átviteli sebesség**: a prémium szint a maximálisan elérhető átviteli sebességet kínálja. Ha a gyorsítótár-kiszolgáló vagy-ügyfél eléri a sávszélesség-korlátot, időtúllépést kaphat az ügyfél oldalán. További információkért tekintse meg a következő táblázatot.
+* **Magas rendelkezésre állás/SLA**: az Azure cache for Redis garantálja, hogy az idő legalább 99,9%-ában elérhető a standard/Premium gyorsítótár. Az SLA-val kapcsolatos további tudnivalókért tekintse meg [Az Azure cache Redis díjszabását](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Az SLA csak a cache-végpontokhoz való kapcsolódást fedi le. Az SLA nem fedi le az adatvesztés elleni védelmet. Javasoljuk, hogy a prémium szint Redis adatmegőrzési funkciójának használatával növelje a rugalmasságot az adatvesztéssel szemben.
 * **Redis-adatmegőrzés**: a prémium szint lehetővé teszi, hogy megmaradjon az Azure Storage-fiók gyorsítótár-adatvédelme. Alapszintű/standard gyorsítótárban az összes adat tárolása csak a memóriában történik. Az alapul szolgáló infrastrukturális problémák potenciális adatvesztést okozhatnak. Javasoljuk, hogy a prémium szint Redis adatmegőrzési funkciójának használatával növelje a rugalmasságot az adatvesztéssel szemben. Az Azure cache for Redis RDB és AOF (hamarosan elérhető) lehetőségeket kínál a Redis megőrzésében. További információ: az [adatmegőrzés konfigurálása prémium szintű Azure cache-hez a Redis](cache-how-to-premium-persistence.md)-hez.
 * **Redis-fürt**: a 120 GB-nál nagyobb gyorsítótárak létrehozásához, illetve az adatszegmensek több Redis-csomóponton keresztüli kibontásához használhatja a Redis-fürtszolgáltatást, amely a prémium szintű csomagban érhető el. Minden csomópont egy elsődleges/replika-gyorsítótárból áll a magas rendelkezésre állás érdekében. További információ: [fürtözés konfigurálása prémium szintű Azure cache-hez a Redis](cache-how-to-premium-clustering.md)-hez.
 * **Fokozott biztonság és hálózati elkülönítés**: az Azure Virtual Network (VNET) üzembe helyezése fokozott biztonságot és elkülönítést biztosít az Azure-gyorsítótár Redis, valamint az alhálózatok, a hozzáférés-vezérlési házirendek és más funkciók számára a hozzáférés további korlátozásához. További információkért lásd: [Virtual Network támogatásának konfigurálása prémium szintű Azure cache-hez a Redis](cache-how-to-premium-vnet.md)-hez.
@@ -125,22 +125,22 @@ Ebből a táblázatból a következő következtetéseket tudjuk felhívni:
 * A Redis fürtszolgáltatással a teljesítmény lineárisan növekszik a fürtben lévő szegmensek számának növelésével. Ha például 10 szegmensből álló P4-fürtöt hoz létre, akkor az elérhető átviteli sebesség 400 000 * 10 = 4 000 000 RPS.
 * A nagyobb méretű kulcsok átviteli sebessége magasabb a prémium szinten a standard szinthez képest.
 
-| Díjcsomag | Méret | Processzormagok | Rendelkezésre álló sávszélesség | 1 KB-os érték mérete | 1 KB-os érték mérete |
+| Tarifacsomag | Méret | Processzormagok | Rendelkezésre álló sávszélesség | 1 KB-os érték mérete | 1 KB-os érték mérete |
 | --- | --- | --- | --- | --- | --- |
 | **Standard gyorsítótár mérete** | | |**Megabit/mp (MB/s)/megabájt/mp (MB/s)** |**Másodpercenkénti kérelmek (RPS) nem SSL** |**Másodpercenkénti kérelmek (RPS) SSL** |
-| C0 | 250 MB | Közös | 100/12,5  |  15 000 |   7500 |
-| C1 |   1 GB | 1      | 500/62,5  |  38 000 |  20 720 |
-| C2 | 2,5 GB | 2      | 500/62,5  |  41 000 |  37 000 |
-| C3 |   6 GB | 4      | 1000/125  | 100 000 |  90,000 |
-| C4 |  13 GB | 2      | 500/62,5  |  60 000 |  55 000 |
-| C5 |  26 GB | 4      | 1 000/125 | 102 000 |  93 000 |
-| C6 |  53 GB | 8      | 2 000/250 | 126 000 | 120 000 |
+| C0 | 250 MB | Megosztott | 100 / 12.5  |  15 000 |   7500 |
+| C1 |   1 GB | 1      | 500 / 62.5  |  38 000 |  20 720 |
+| C2 | 2,5 GB | 2      | 500 / 62.5  |  41 000 |  37 000 |
+| C3 csomag |   6 GB | 4      | 1000 / 125  | 100 000 |  90,000 |
+| C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55 000 |
+| C5 csomag |  26 GB | 4      | 1,000 / 125 | 102 000 |  93 000 |
+| C6 |  53 GB | 8      | 2,000 / 250 | 126 000 | 120,000 |
 | **Prémium szintű gyorsítótár mérete** | |**CPU-magok/szegmensek** | **Megabit/mp (MB/s)/megabájt/mp (MB/s)** |**Másodpercenkénti kérelmek (RPS) nem SSL, szegmens szerint** |**Másodpercenkénti kérelmek másodpercenkénti száma (RPS)** |
-| P1 |   6 GB |  2 | 1 500/187,5 | 180 000 | 172 000 |
-| P2 |  13 GB |  4 | 3 000/375   | 350 000 | 341 000 |
-| P3 |  26 GB |  4 | 3 000/375   | 350 000 | 341 000 |
-| P4 |  53 GB |  8 | 6 000/750   | 400,000 | 373 000 |
-| P5 | 120 GB | 20 | 6 000/750   | 400,000 | 373 000 |
+| P1 |   6 GB |  2 | 1,500 / 187.5 | 180,000 | 172 000 |
+| P2 |  13 GB |  4 | 3,000 / 375   | 350 000 | 341 000 |
+| P3 |  26 GB |  4 | 3,000 / 375   | 350 000 | 341 000 |
+| P4 |  53 GB |  8 | 6,000 / 750   | 400,000 | 373 000 |
+| P5 | 120 GB | 20 | 6,000 / 750   | 400,000 | 373 000 |
 
 A stunnel beállításával vagy a Redis-eszközök, például a `redis-benchmark.exe`letöltésével kapcsolatos utasításokért lásd a [Redis-parancsok futtatásának menetét](#cache-commands) ismertető szakaszt.
 
@@ -157,12 +157,12 @@ Az Azure cache for Redis díjszabása [itt](https://azure.microsoft.com/pricing/
 ### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>Használhatom az Azure cache-t a Redis Azure Government Cloud, az Azure China Cloud vagy a Microsoft Azure Germany használatával?
 Igen, a Redis-hez készült Azure cache Azure Government felhőben, az Azure China 21Vianet-felhőben és Microsoft Azure Germany érhető el. A Redis Azure cache eléréséhez és kezeléséhez használt URL-címek eltérőek ezekben a felhőkben az Azure nyilvános felhővel szemben.
 
-| Felhőbeli   | Redis DNS-utótagja            |
+| Felhő   | Redis DNS-utótagja            |
 |---------|---------------------------------|
-| Nyilvános  | *. redis.cache.windows.net       |
-| US Gov  | *. redis.cache.usgovcloudapi.net |
-| Németország | *. redis.cache.cloudapi.de       |
-| Kína   | *. redis.cache.chinacloudapi.cn  |
+| Nyilvános  | *.redis.cache.windows.net       |
+| US Gov  | *.redis.cache.usgovcloudapi.net |
+| Németország | *.redis.cache.cloudapi.de       |
+| Kína   | *.redis.cache.chinacloudapi.cn  |
 
 Az Azure cache más Felhőkkel való Redis való használatának szempontjaival kapcsolatos további információkért tekintse meg a következő hivatkozásokat.
 
@@ -196,7 +196,7 @@ A StackExchange. Redis számos lehetőséget kínál. Ez a szakasz néhány gyak
   * Egyetlen ConnectionMultiplexer-példányt használjon az alkalmazáshoz. A LazyConnection használatával létrehozhat egyetlen, a kapcsolati tulajdonság által visszaadott példányt, ahogy az a [ConnectionMultiplexer osztály használatával a gyorsítótárhoz való kapcsolódással](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)is látható.
   * Állítsa be a `ConnectionMultiplexer.ClientName` tulajdonságot az alkalmazás példányának egyedi nevére diagnosztikai célokra.
   * Több `ConnectionMultiplexer` példány használata az egyéni munkaterhelésekhez.
-      * Ezt a modellt követheti, ha eltérő terhelést használ az alkalmazásban. Példa:
+      * Ezt a modellt követheti, ha eltérő terhelést használ az alkalmazásban. Például:
       * A nagyméretű kulcsok kezeléséhez egy multiplexer is tartozhat.
       * A kis kulcsok kezeléséhez egy multiplexer is tartozhat.
       * Megadhat különböző értékeket a kapcsolati időtúllépésekhez, és újrapróbálkozhat a logikával minden egyes használt ConnectionMultiplexer.
@@ -307,7 +307,7 @@ A Redis-eszközök letöltésével kapcsolatos utasításokért tekintse meg a [
 * Vegye figyelembe a futtatott különböző műveletekhez kapcsolódó teljesítménnyel kapcsolatos költségeket. Például az `KEYS` parancs egy O (n) művelet, ezért el kell kerülni. A [Redis.IO hely](https://redis.io/commands/) részletesen ismerteti az általa támogatott műveletek időbeli összetettségét. Az egyes parancsokra kattintva megtekintheti az egyes műveletek bonyolultságát.
 
 #### <a name="configuration-and-concepts"></a>Konfigurálás és fogalmak
-* Használjon standard vagy prémium szintű üzemi rendszereket. Az Alapszint egyetlen csomópontot tartalmaz adatreplikáció nélkül, és SLA sem tartozik hozzá. Ezen kívül használjon legalább C1 szintű gyorsítótárat. A C0 cache-gyorsítótárak jellemzően egyszerű fejlesztési/tesztelési helyzetekben használatosak.
+* Használjon standard vagy prémium szintű üzemi rendszereket. Az alapszintű csomag egyetlen csomópontos rendszer, amely nem rendelkezik adatreplikálással, és nem biztosít SLA-t. Emellett használjon legalább egy C1 gyorsítótárat. A C0 cache-gyorsítótárak jellemzően egyszerű fejlesztési/tesztelési helyzetekben használatosak.
 * Ne feledje, hogy a Redis egy **memóriában** tárolt adattároló. Olvassa el [ezt a cikket](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) , hogy tisztában legyenek az adatvesztést okozó forgatókönyvekkel.
 * Fejlessze a rendszerét úgy, hogy a [javítás és a feladatátvétel miatt](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md)képes legyen kezelni a kapcsolódási naplókat.
 
@@ -381,7 +381,7 @@ Ezeknek az információknak az alapján határozottan azt javasoljuk, hogy az ü
 
 A beállítás konfigurálása:
 
-* Azt javasoljuk, hogy programozott módon módosítsa ezt a beállítást a `global.asax.cs`[szálkészlet munkaszála belépett. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metódusának használatával. Példa:
+* Azt javasoljuk, hogy programozott módon módosítsa ezt a beállítást a `global.asax.cs`[szálkészlet munkaszála belépett. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metódusának használatával. Például:
 
 ```cs
 private readonly int minThreads = 200;
@@ -456,7 +456,7 @@ A gyorsítótár leválasztásának néhány gyakori oka a következő:
   * Az Azure a gyorsítótár üzembe helyezési példányának javítását használta
     * Ez lehet a Redis-kiszolgáló frissítései vagy az általános virtuális gép karbantartása.
 
-### <a name="which-azure-cache-offering-is-right-for-me"></a>Melyik Azure Gyorsítótárat használjam?
+### <a name="which-azure-cache-offering-is-right-for-me"></a>Melyik Azure cache-ajánlat megfelelő a számomra?
 > [!IMPORTANT]
 > A tavalyi év [bejelentése](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)szerint az Azure Managed cache Service és az Azure szerepköralapú gyorsítótár szolgáltatás 2016. november 30-án **megszűnt** . Javasoljuk, hogy használja az [Azure cache-t a Redis](https://azure.microsoft.com/services/cache/). Az áttelepítéssel kapcsolatos információkért lásd: [áttelepítés Managed cache Serviceról az Azure cache-be a Redis-hez](cache-migrate-to-redis.md).
 >
@@ -478,7 +478,7 @@ A Redis készült Azure cache használatának első lépéseivel kapcsolatos tov
 
 Az archivált dokumentáció megtekintéséhez tekintse meg az [archivált Managed cache Service dokumentációját](/previous-versions/azure/azure-services/dn386094(v=azure.100)).
 
-### <a name="in-role-cache"></a>Szerepköralapú gyorsítótár
+### <a name="in-role-cache"></a>szerepköralapú gyorsítótár
 [A szerepköralapú gyorsítótár 2016. november 30-án megszűnt.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
 Az archivált dokumentáció megtekintéséhez tekintse meg az [archivált szerepköralapú gyorsítótár dokumentációját](/previous-versions/azure/azure-services/dn386103(v=azure.100)).

@@ -13,11 +13,11 @@ ms.reviewer: vanto, carlrab
 ms.date: 01/07/2020
 tags: azure-synapse
 ms.openlocfilehash: 42f79b83d174571d26f49b28ed480f86a004036c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196127"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357188"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory hitelesítés konfigurálása és kezelése SQL-sel
 
@@ -129,7 +129,7 @@ A felügyelt példánynak engedélyre van szüksége az Azure AD olvasásához, 
 
 5. A művelet sikeres befejeződése után a következő értesítés jelenik meg a jobb felső sarokban:
 
-    ![success](./media/sql-database-aad-authentication/success.png)
+    ![sikeres](./media/sql-database-aad-authentication/success.png)
 
 6. Most kiválaszthatja a felügyelt példányához tartozó Azure AD-rendszergazdát. Ehhez a Active Directory admin lapon válassza a **felügyeleti parancs beállítása** lehetőséget.
 
@@ -525,7 +525,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 Az Azure AD-hitelesítéssel kapcsolatos hibaelhárítási útmutató a következő blogban található: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az SQL Database hozzáféréseinek és felügyeletének áttekintéséről az [SQL Database-hozzáférés és -felügyelet](sql-database-control-access.md) részben olvashat.
 - Az SQL Database bejelentkezéseinek, felhasználóinak és adatbázis-szerepköreinek áttekintését a [Bejelentkezések, felhasználók és adatbázis-szerepkörök](sql-database-manage-logins.md) részben találja.

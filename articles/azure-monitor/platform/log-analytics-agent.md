@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 365c228edd97ffcd02b86508deff4272365447f6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 99083cd08db98a6d6ac56d4cf55aaf9d0e64e2b4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672140"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362086"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
 Az Azure Log Analytics Agent a Felhőbeli, a helyszíni gépeken és a [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)által felügyelt virtuális gépek teljes körű felügyeletére lett kifejlesztve. A Windows-és Linux-ügynökök különböző forrásokból származó összegyűjtött adatokat küldenek a Log Analytics munkaterületre Azure Monitor, valamint a figyelési megoldásban meghatározott egyedi naplókat vagy metrikákat. A Log Analytics ügynök az Azure Monitor, például a [Azure monitor for VMS](../insights/vminsights-enable-overview.md), a [Azure Security Center](/azure/security-center/)és a [Azure Automation](../../automation/automation-intro.md)által nyújtott bepillantást és egyéb szolgáltatásokat is támogatja.
@@ -101,7 +101,7 @@ Ez a szakasz ismerteti a támogatott Linux-disztribúciók részleteit.
 Kiadás dátuma: 2018 augusztus után verzióval kezdődően igyekszünk a következő módosításokat a támogatási modell:  
 
 * Csak a kiszolgáló-verziók támogatottak, nem az ügyfél.  
-* Az [Azure Linux által támogatott disztribúciók](../../virtual-machines/linux/endorsed-distros.md) új verziói mindig támogatottak.  
+* Koncentráljon az [Azure Linux által támogatott disztribúciók](../../virtual-machines/linux/endorsed-distros.md)bármelyikére. Vegye figyelembe, hogy az Azure Linux új disztribúciója/verziója esetében némi késéssel rendelkezik, és a Log Analytics Linux-ügynök támogatja.
 * Összes kisebb kiadások támogatottak egyes felsorolt főverzió.
 * Verziók, amelyek megfeleltek a gyártó támogatása befejezési dátum nem támogatottak.  
 * AMI új verziói nem támogatottak.  

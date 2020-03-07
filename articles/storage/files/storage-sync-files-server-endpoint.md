@@ -8,11 +8,11 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932622"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362118"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Azure File Sync kiszolgálói végpont hozzáadása/eltávolítása
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ez a Windows-kiszolgálók Azure-fájlmegosztás gyors gyorsítótárba alakításával végezhető el. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -35,9 +35,9 @@ Kiszolgálói végpont hozzáadásához navigáljon a kívánt szinkronizálási
 
 A **kiszolgáló-végpont hozzáadása**területen a következő információk szükségesek:
 
-- **Regisztrált kiszolgáló**: Annak a kiszolgálónak vagy fürtnek a neve, amelyen létre szeretné hozni a kiszolgálói végpontot.
-- **Elérési út**: A szinkronizálási csoport részeként szinkronizálandó Windows Server elérési útja.
-- **Felhőbeli rétegek**: A felhőalapú rétegek engedélyezésére vagy letiltására szolgáló kapcsoló. Ha ez a beállítás engedélyezve van, a Felhőbeli rétegek a fájlokat az Azure-fájlmegosztás *szintjére* fogják felvenni. Ez átalakítja a helyszíni fájlmegosztást egy gyorsítótárba, és nem az adatkészlet teljes másolatát, így segít a hely hatékonyságának kezelésében a kiszolgálón.
+- **Regisztrált kiszolgáló**: annak a kiszolgálónak vagy fürtnek a neve, amelyen létre kívánja hozni a kiszolgálói végpontot.
+- **Elérési út**: a szinkronizálási csoport részeként szinkronizálandó Windows Server elérési útja.
+- **Felhőbeli rétegek**: a felhőalapú rétegek engedélyezésére vagy letiltására szolgáló kapcsoló. Ha ez a beállítás engedélyezve van, a Felhőbeli rétegek a fájlokat az Azure-fájlmegosztás *szintjére* fogják felvenni. Ez átalakítja a helyszíni fájlmegosztást egy gyorsítótárba, és nem az adatkészlet teljes másolatát, így segít a hely hatékonyságának kezelésében a kiszolgálón.
 - **Kötet szabad területe**: a kiszolgálói végpontot tároló köteten foglalható szabad terület mennyiségét. Ha például a kötet szabad területe 50%-ra van állítva egy olyan köteten, amely egyetlen kiszolgálói végponttal rendelkezik, az adatmennyiség nagyjából fele lesz a Azure Files. Függetlenül attól, hogy engedélyezve van-e a felhőalapú rétegek használata, az Azure-fájlmegosztás mindig a szinkronizálási csoportban lévő összes adattal rendelkezik.
 
 Válassza a **Létrehozás** lehetőséget a kiszolgálói végpont hozzáadásához. A szinkronizálási csoport névterében lévő fájlok már szinkronban lesznek tárolva. 
@@ -54,14 +54,14 @@ Annak biztosítása érdekében, hogy a rendszer az összes rétegű fájlt viss
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
-A megadásával a rendszer visszahívja a legutóbb módosított fájlokat. `-Order CloudTieringPolicy`
+`-Order CloudTieringPolicy` megadásával a rendszer visszahívja a legutóbb módosított fájlokat.
 További választható, de hasznos paraméterek:
-* `-ThreadCount`meghatározza, hogy hány fájlt lehet visszahívni párhuzamosan.
+* `-ThreadCount` meghatározza, hogy hány fájlt lehet visszahívni párhuzamosan.
 * `-PerFileRetryCount`meghatározza, hogy a rendszer milyen gyakran próbálkozzon a visszahívással egy jelenleg blokkolt fájlon.
-* `-PerFileRetryDelaySeconds`meghatározza azt az időtartamot másodpercben, ameddig a rendszer újrahívja az újrapróbálkozási kísérleteket, és mindig az előző paraméterrel együtt kell használni őket.
+* `-PerFileRetryDelaySeconds`meghatározza azt az időt másodpercben, ameddig a rendszer újrahívja az újrapróbálkozási kísérleteket, és mindig az előző paraméterrel együtt kell használni őket.
 
 > [!Note]  
-> Ha a kiszolgálót üzemeltető helyi köteten nincs elég szabad hely az összes rétegű adat felidézéséhez, a `Invoke-StorageSyncFileRecall` parancsmag meghiúsul.  
+> Ha a kiszolgálót futtató helyi köteten nincs elég szabad hely az összes rétegű adat felidézéséhez, akkor a `Invoke-StorageSyncFileRecall` parancsmag sikertelen lesz.  
 
 A kiszolgálói végpont eltávolítása:
 
@@ -71,7 +71,7 @@ A kiszolgálói végpont eltávolítása:
 
     ![Kiszolgálói végpont eltávolítása egy szinkronizálási csoportból](media/storage-sync-files-server-endpoint/remove-server-endpoint-1.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Kiszolgáló regisztrálása/regisztrációjának törlése Azure File Sync](storage-sync-files-server-registration.md)
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

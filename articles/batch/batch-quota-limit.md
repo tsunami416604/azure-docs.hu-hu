@@ -15,11 +15,11 @@ ms.date: 08/13/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: c8a78acfa1f3e7332cee337ae1a82ee365fe356a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022970"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356252"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -33,7 +33,7 @@ Ha éles számítási feladatokat kíván futtatni a Batch szolgáltatásban, el
 
 ## <a name="resource-quotas"></a>Erőforráskvóták
 
-A kvóta egy hitelkeret, nem pedig a kapacitási garancia. Ha nagyméretű kapacitásra van szüksége, vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
+Kvóta kreditjét, nem kapacitás garantálja. Ha nagyméretű kapacitásra van szüksége, vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
 
 Azt is vegye figyelembe, hogy a kvóták nem garantált értékek. A kvóták a Batch szolgáltatás módosításaitól vagy a kvóta értékének módosítására vonatkozó felhasználói kéréstől függően változhatnak.
 
@@ -101,7 +101,7 @@ Kövesse az alábbi lépéseket a kvóta növeléséhez a Batch-fiókjához vagy
       
     Kattintson a **Tovább** gombra.
     
-1. **Részletek**:
+1. A **Details** (Részletek) lapon:
       
     a. A **részletek**megadása területen adja meg a helyet, a kvóta típusát és a Batch-fiókot.
     

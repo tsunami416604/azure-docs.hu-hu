@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
 ms.openlocfilehash: dd73f42aaa0d0bd1884892143d96446935a401a5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048436"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395473"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
 
@@ -24,7 +24,7 @@ Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos
 
 |Tulajdonság  |Leírás |
 |---------|---------|
-|Név    |    Az erőforráscsoporthoz tartozó egyedi név.      |
+|Name (Név)    |    Az erőforráscsoporthoz tartozó egyedi név.      |
 |Alhálózat    |  A magánhálózati IP-címek virtuális hálózatról való üzembe helyezésére és lefoglalására szolgáló alhálózat. Az alhálózatra vonatkozó követelményekért tekintse meg a jelen cikk korlátozások című szakaszát.         |
 |Magánhálózati kapcsolat erőforrása    |   A privát kapcsolati erőforrás az erőforrás-AZONOSÍTÓval vagy az aliassal való kapcsolódáshoz az elérhető típusok listájából. Az erőforrásnak elküldett összes forgalomhoz egyedi hálózati azonosító jön létre.       |
 |Cél alerőforrás   |      A kapcsolódáshoz használandó alerőforrás. Minden egyes privát kapcsolati erőforrástípus különböző beállításokkal választható ki a megfelelő beállítás alapján.    |

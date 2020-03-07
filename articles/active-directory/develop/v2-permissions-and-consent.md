@@ -17,12 +17,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 64d8481200359b4a4421e3f3c99e4fc5a32ef23f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 88b61b29b1386f461620ad602a88d2d1253aa905
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159541"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375620"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és beleegyezett a Microsoft Identity platform végpontjában
 
@@ -37,11 +37,10 @@ A Microsoft Identity platform implementálja a [OAuth 2,0](active-directory-v2-p
 
 * Microsoft Graph: `https://graph.microsoft.com`
 * Office 365 levelezési API: `https://outlook.office.com`
-* Azure AD Graph: `https://graph.windows.net`
 * Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
-> Azt javasoljuk, hogy az Azure AD Graph, az Office 365 mail API stb. helyett használjon Microsoft Graph.
+> Javasoljuk, hogy az Office 365 mail API helyett az Microsoft Graph-et használja.
 
 Ugyanez érvényes a Microsoft Identity platformmal integrált, harmadik féltől származó erőforrások esetében is. Ezen erőforrások bármelyike meghatározhat olyan engedélyeket is, amelyek az adott erőforrás funkcióinak kisebb adattömbökbe való felosztására használhatók. A [Microsoft Graph](https://graph.microsoft.com) például a következő feladatok elvégzésére vonatkozó engedélyekkel rendelkezik, egyebek között:
 
@@ -123,7 +122,7 @@ A `scope` paraméter az alkalmazás által kért delegált engedélyek szóközz
 Miután a felhasználó beírja a hitelesítő adatait, a Microsoft Identity platform-végpont ellenőrzi a *felhasználói beleegyezési*rekordokat. Ha a felhasználó nem járult hozzá a korábban kért engedélyekhez, és a rendszergazda nem fogadta el ezeket az engedélyeket a teljes szervezet nevében, a Microsoft Identity platform végpontja kéri a felhasználót, hogy adja meg a kért engedélyeket.
 
 > [!NOTE]
-> Ebben az esetben a `offline_access` ("a hozzáférés megtartása az Ön által megadott adathozzáféréshez") és a `user.read` ("bejelentkezés és a profil olvasása") engedélyek automatikusan beletartoznak az alkalmazás kezdeti beleegyezőbe.  Ezek az engedélyek általában szükségesek az alkalmazás megfelelő működéséhez – `offline_access` lehetővé teszi az alkalmazás számára, hogy a natív és a webalkalmazások számára kritikus frissítési jogkivonatokat biztosítson, míg a `user.read` hozzáférést biztosít a `sub` jogcímek számára, így az ügyfél vagy az alkalmazás helyesen azonosíthatja a felhasználót az idő múlásával, és elérheti az alapvető felhasználói adatokat.  
+>Ebben az esetben a `offline_access` ("a hozzáférés megtartása az Ön által megadott adathozzáféréshez") és a `user.read` ("bejelentkezés és a profil olvasása") engedélyek automatikusan beletartoznak az alkalmazás kezdeti beleegyezőbe.  Ezek az engedélyek általában szükségesek az alkalmazás megfelelő működéséhez – `offline_access` lehetővé teszi az alkalmazás számára, hogy a natív és a webalkalmazások számára kritikus frissítési jogkivonatokat biztosítson, míg a `user.read` hozzáférést biztosít a `sub` jogcímek számára, így az ügyfél vagy az alkalmazás helyesen azonosíthatja a felhasználót az idő múlásával, és elérheti az alapvető felhasználói adatokat.  
 
 ![A munkahelyi fiók beleegyezikét bemutató képernyőkép](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -166,16 +165,16 @@ Ha meg szeretne tekinteni egy kódot, amely megvalósítja a lépéseket, tekint
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>Az engedélyek igénylése az alkalmazás regisztrációs portálján
 
-Az alkalmazások megtekinthetik, hogy mely engedélyek szükségesek (delegált és alkalmazásként egyaránt) az alkalmazás regisztrációs portálján.  Ez lehetővé teszi a `/.default` hatókör használatát és az Azure Portal "rendszergazdai jóváhagyás megadása" beállítását.  Általánosságban az ajánlott eljárás az, hogy az adott alkalmazáshoz statikusan meghatározott engedélyek a dinamikusan/növekményes igényeknek megfelelő engedélyek kibővítettek legyenek.
+Az alkalmazások megtekinthetik, hogy mely engedélyek szükségesek (delegált és alkalmazásként egyaránt) az alkalmazás regisztrációs portálján.  Ez lehetővé teszi a `/.default` hatókör használatát, valamint a Azure Portal "rendszergazdai jóváhagyás megadása" lehetőséget.  Általánosságban az ajánlott eljárás az, hogy az adott alkalmazáshoz statikusan meghatározott engedélyek a dinamikusan/növekményes igényeknek megfelelő engedélyek kibővítettek legyenek.
 
 > [!NOTE]
-Az alkalmazás engedélyei csak [`/.default`](#the-default-scope) használatával kérhetők le – ha az alkalmazásnak szüksége van az alkalmazás engedélyeire, győződjön meg róla, hogy szerepelnek az alkalmazás regisztrációs portálján.  
+>Az alkalmazás engedélyei csak [`/.default`](#the-default-scope) használatával kérhetők le – ha az alkalmazásnak szüksége van az alkalmazás engedélyeire, győződjön meg róla, hogy szerepelnek az alkalmazás regisztrációs portálján.
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>Az alkalmazáshoz tartozó statikusan kért engedélyek listájának konfigurálása
 
 1. Ha még nem tette meg, nyissa meg az alkalmazást az [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felületen, vagy [hozzon létre egy alkalmazást](quickstart-register-app.md) .
 2. Keresse meg az **API-engedélyek** szakaszt, és az API-engedélyek területen kattintson az engedély hozzáadása lehetőségre.
-3. Válassza ki a kívánt erőforrást (például **Microsoft Graph**) az elérhető API-k listájából, majd adja hozzá az alkalmazás által igényelt engedélyeket.
+3. Válassza a **Microsoft Graph** lehetőséget az elérhető API-k listájából, majd adja hozzá az alkalmazás által igényelt engedélyeket.
 3. **Mentse** az alkalmazás regisztrációját.
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>Ajánlott: a felhasználó aláírása az alkalmazásba
@@ -265,7 +264,7 @@ A OAuth 2,0 protokollról és a hozzáférési jogkivonatok beszerzéséről a [
 
 ## <a name="the-default-scope"></a>A/.default hatóköre
 
-A `/.default` hatókörrel az alkalmazások a 1.0-s végpontról a Microsoft Identity platform végpontra történő áttelepíthetők. Ez egy beépített hatókör minden olyan alkalmazáshoz, amely az alkalmazás regisztrációján konfigurált engedélyek statikus listájára hivatkozik. A `https://graph.microsoft.com/.default` `scope` értéke ugyanúgy működik, mint a v 1.0-s végpontok `resource=https://graph.microsoft.com` – nevezetesen, ha az alkalmazás által a Azure Portalban regisztrált hatókörrel rendelkező jogkivonatot kér Microsoft Graph.  Az erőforrás URI + `/.default` (például ha az erőforrás URI-ja `https://contosoApp.com`, a kért hatókör `https://contosoApp.com/.default`).  Tekintse [meg](#trailing-slash-and-default) az olyan eseteket, amikor egy második perjelet kell tartalmaznia a token megfelelő kéréséhez.  
+A `/.default` hatókörrel az alkalmazások a 1.0-s végpontról a Microsoft Identity platform végpontra történő áttelepíthetők. Ez egy beépített hatókör minden olyan alkalmazáshoz, amely az alkalmazás regisztrációján konfigurált engedélyek statikus listájára hivatkozik. A `https://graph.microsoft.com/.default` `scope` értéke ugyanúgy működik, mint a v 1.0-s végpontok `resource=https://graph.microsoft.com` – nevezetesen, ha az alkalmazás által a Azure Portalban regisztrált hatókörrel rendelkező jogkivonatot kér Microsoft Graph.  Az erőforrás URI + `/.default` (például ha az erőforrás URI-ja `https://contosoApp.com`, a kért hatókör `https://contosoApp.com/.default`).  Tekintse [meg](#trailing-slash-and-default) az olyan eseteket, amikor egy második perjelet kell tartalmaznia a token megfelelő kéréséhez.
 
 A/.default-hatókör bármely OAuth 2,0-flow-ban használható, de szükséges a [folyamaton](v2-oauth2-on-behalf-of-flow.md) belüli és az [ügyfél-hitelesítő adatok folyamatában](v2-oauth2-client-creds-grant-flow.md), valamint a v2 rendszergazdai jóváhagyás végpontjának használatakor az alkalmazás engedélyeinek kérelmezéséhez.  
 
@@ -286,7 +285,7 @@ Ebben a példában a felhasználó (vagy egy bérlői rendszergazda) engedélyez
 
 #### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>2\. példa: a felhasználó nem adott meg engedélyeket az ügyfél és az erőforrás között
 
-Ebben a példában a felhasználó nem rendelkezik beleegyezéssel az ügyfél és a Microsoft Graph között. Az ügyfél regisztrálva van a `user.read` és `contacts.read` engedélyekhez, valamint a Azure Key Vault hatókör `https://vault.azure.net/user_impersonation`. Amikor az ügyfél `scope=https://graph.microsoft.com/.default`jogkivonatot kér, a felhasználó a `user.read`, `contacts.read`és Key Vault `user_impersonation` hatókörökhöz tartozó beleegyezési képernyőt fog látni. A visszaadott token csak a `user.read` és `contacts.read` hatóköröket fogja tartalmazni, és csak Microsoft Graphon használható. 
+Ebben a példában a felhasználó nem rendelkezik beleegyezéssel az ügyfél és a Microsoft Graph között. Az ügyfél regisztrálva van a `user.read` és `contacts.read` engedélyekhez, valamint a Azure Key Vault hatókör `https://vault.azure.net/user_impersonation`. Amikor az ügyfél `scope=https://graph.microsoft.com/.default`jogkivonatot kér, a felhasználó a `user.read`, `contacts.read`és Key Vault `user_impersonation` hatókörökhöz tartozó beleegyezési képernyőt fog látni. A visszaadott token csak a `user.read` és `contacts.read` hatóköröket fogja tartalmazni, és csak Microsoft Graphon használható.
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>3\. példa: a felhasználó beleegyezett, és az ügyfél további hatóköröket kér
 
@@ -313,7 +312,7 @@ Ez egy beleegyezési képernyőt hoz létre minden regisztrált engedélyhez (ha
 
 Egyes erőforrás-URI-k záró perjeltel rendelkeznek (`https://contoso.com/` a `https://contoso.com`), ami problémákat okozhat a jogkivonat-ellenőrzés során.  Ez elsősorban akkor fordulhat elő, ha jogkivonatot kér az Azure Erőforrás-kezelés (`https://management.azure.com/`) számára, amely záró perjelet tartalmaz az erőforrás URI azonosítójában, és megköveteli, hogy a jogkivonat kérésekor legyen jelen.  Ezért, amikor jogkivonatot kér a `https://management.azure.com/`hoz, és `/.default`használ, meg kell adnia `https://management.azure.com//.default`-Note The Double perjelet! 
 
-Általánosságban – ha ellenőrizte, hogy a jogkivonat ki van-e állítva, és a jogkivonatot el kell utasítani az API-nak, amelynek el kell fogadnia, vegye fontolóra egy második perjel hozzáadását, és próbálkozzon újra. Ez azért történik, mert a bejelentkezési kiszolgáló olyan tokent bocsát ki, amely a `scope` paraméterben szereplő URI azonosítóval rendelkezik, `/.default` a végpontból eltávolítva.  Ha ez eltávolítja a záró perjelet, a bejelentkezési kiszolgáló továbbra is feldolgozza a kérést, és érvényesíti az erőforrás URI-ja alapján, annak ellenére, hogy már nem egyeznek – ez nem szabványos, és az alkalmazás nem hivatkozhat rá. 
+Általánosságban – ha ellenőrizte, hogy a jogkivonat ki van-e állítva, és a jogkivonatot el kell utasítani az API-nak, amelynek el kell fogadnia, vegye fontolóra egy második perjel hozzáadását, és próbálkozzon újra. Ez azért történik, mert a bejelentkezési kiszolgáló olyan tokent bocsát ki, amely a `scope` paraméterben szereplő URI azonosítóval rendelkezik, `/.default` a végpontból eltávolítva.  Ha ez eltávolítja a záró perjelet, a bejelentkezési kiszolgáló továbbra is feldolgozza a kérést, és érvényesíti az erőforrás URI-ja alapján, annak ellenére, hogy már nem egyeznek – ez nem szabványos, és az alkalmazás nem hivatkozhat rá.  
 
 ## <a name="troubleshooting-permissions-and-consent"></a>Hibaelhárítási engedélyek és beleegyezett
 

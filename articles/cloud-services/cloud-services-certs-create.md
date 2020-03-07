@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 783343dd8877bdf18e783494960c3052c293cc7c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75361347"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357517"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Az Azure Cloud Services tanúsítványok áttekintése
 A tanúsítványok az Azure for Cloud Services ([szolgáltatás-tanúsítványok](#what-are-service-certificates)) és a felügyeleti API ([felügyeleti tanúsítványok](#what-are-management-certificates)) használatával történő hitelesítéshez használatosak. Ez a témakör általános áttekintést nyújt mindkét tanúsítvány típusáról, valamint arról, hogyan [hozhatja létre](#create) és helyezheti üzembe őket az Azure-ban.
 
-Az Azure-ban használt tanúsítványok x. 509 v3 tanúsítványok, és egy másik megbízható tanúsítvány alá is vonhatók, vagy önaláírtak. Az önaláírt tanúsítványt a saját létrehozója írja alá, ezért alapértelmezés szerint nem megbízható. A legtöbb böngésző figyelmen kívül tudja hagyni ezt a problémát. A felhőalapú szolgáltatások fejlesztése és tesztelése során csak önaláírt tanúsítványokat használhat. 
+Az Azure-ban használt tanúsítványok x. 509 v3 tanúsítványok, és egy másik megbízható tanúsítvány alá is vonhatók, vagy önaláírtak. Az önaláírt tanúsítványt a saját létrehozója írja alá, ezért alapértelmezés szerint nem megbízható. A legtöbb böngésző figyelmen kívül hagyhatja ezt a problémát. A felhőalapú szolgáltatások fejlesztése és tesztelése során csak önaláírt tanúsítványokat használhat. 
 
 Az Azure által használt tanúsítványok tartalmazhatnak magán-vagy nyilvános kulcsot. A tanúsítványok ujjlenyomattal rendelkeznek, amely azt jelenti, hogy egyértelmű módon azonosítja őket. Ezt az ujjlenyomatot használja az Azure [konfigurációs fájlban](cloud-services-configure-ssl-certificate-portal.md) annak azonosítására, hogy melyik tanúsítványnak kell használnia a Cloud Service-t. 
 
@@ -26,17 +26,17 @@ Az Azure által használt tanúsítványok tartalmazhatnak magán-vagy nyilváno
 >Az Azure Cloud Services nem fogadja el a AES256-SHA256 titkosított tanúsítványt.
 
 ## <a name="what-are-service-certificates"></a>Mik azok a szolgáltatási tanúsítványok?
-A szolgáltatási tanúsítványok a felhőszolgáltatásokhoz kapcsolódnak, és a szolgáltatásból kifelé és befelé irányuló biztonságos kommunikációt teszik lehetővé. Ha például központilag telepített egy webes szerepkört, olyan tanúsítványt kell megadnia, amely képes a kitett HTTPS-végpont hitelesítésére. A szolgáltatás definíciójában definiált szolgáltatási tanúsítványokat a rendszer automatikusan telepíti a szerepkör példányát futtató virtuális gépre. 
+A szolgáltatási tanúsítványok a Cloud Serviceshez kapcsolódnak, és lehetővé teszik a szolgáltatás felé irányuló biztonságos kommunikációt. Ha például központilag telepített egy webes szerepkört, olyan tanúsítványt kell megadnia, amely képes a kitett HTTPS-végpont hitelesítésére. A szolgáltatás definíciójában definiált szolgáltatási tanúsítványokat a rendszer automatikusan telepíti a szerepkör példányát futtató virtuális gépre. 
 
-A szolgáltatási tanúsítványokat feltöltheti az Azure-ba az Azure Portal használatával, vagy a klasszikus üzembehelyezési modell alkalmazásával is. A szolgáltatási tanúsítványok az adott felhőszolgáltatáshoz vannak társítva. Ezek a szolgáltatás definíciós fájljában vannak hozzárendelve a központi telepítéshez.
+A szolgáltatási tanúsítványokat feltöltheti az Azure-ba a Azure Portal vagy a klasszikus üzemi modell használatával. A szolgáltatási tanúsítványok egy adott felhőalapú szolgáltatáshoz vannak társítva. Ezek egy központi telepítéshez vannak rendelve a szolgáltatás definíciós fájljában.
 
-A szolgáltatási tanúsítványok a szolgáltatásaitól függetlenül kezelhetők, és a különböző személyek is kezelhetik. Előfordulhat például, hogy egy fejlesztő feltölt egy olyan tanúsítványt, amely egy IT-kezelő által korábban az Azure-ba feltöltött tanúsítványra hivatkozik. Az IT-menedzser felügyelheti és megújíthatja a tanúsítványt (vagyis módosíthatja a szolgáltatás konfigurációját) anélkül is, hogy új szervizcsomagot kellene feltölteni. Az új szervizcsomag nélküli frissítés lehetséges, mert a tanúsítvány logikai neve, tárolójának neve és helye a szolgáltatás definíciós fájljában található, és a Tanúsítvány ujjlenyomata meg van adva a szolgáltatás konfigurációs fájljában. A tanúsítvány frissítéséhez ezért elég feltölteni egy új tanúsítványt és megváltoztatni az ujjlenyomat értéket a szolgáltatás konfigurációs fájljában.
+A szolgáltatási tanúsítványok a szolgáltatásaitól függetlenül kezelhetők, és a különböző személyek is kezelhetik. Előfordulhat például, hogy egy fejlesztő feltölt egy olyan tanúsítványt, amely egy IT-kezelő által korábban az Azure-ba feltöltött tanúsítványra hivatkozik. Az informatikai vezető felügyelheti és megújíthatja a tanúsítványt (a szolgáltatás konfigurációjának módosítása) anélkül, hogy új szervizcsomagot kellene feltöltenie. Az új szervizcsomag nélküli frissítés lehetséges, mert a tanúsítvány logikai neve, tárolójának neve és helye a szolgáltatás definíciós fájljában található, és a Tanúsítvány ujjlenyomata meg van adva a szolgáltatás konfigurációs fájljában. A tanúsítvány frissítéséhez csak új tanúsítványt kell feltöltenie, és módosítania kell az ujjlenyomat értékét a szolgáltatás konfigurációs fájljában.
 
 >[!Note]
 >A [Cloud Services GYIK – konfigurációs és felügyeleti](cloud-services-configuration-and-management-faq.md) cikk hasznos információkat tartalmaz a tanúsítványokról.
 
 ## <a name="what-are-management-certificates"></a>Mik azok a felügyeleti tanúsítványok?
-A felügyeleti tanúsítványok lehetővé teszik a klasszikus üzembehelyezési modell alkalmazásával történő hitelesítést. Számos program és eszköz (például a Visual Studio vagy az Azure SDK) ezeket a tanúsítványokat használja a különböző Azure-szolgáltatások konfigurációjának és üzembe helyezésének automatizálására. Ezek nem igazán kapcsolódnak a Cloud Serviceshez. 
+A felügyeleti tanúsítványok lehetővé teszik a klasszikus üzemi modellel történő hitelesítést. Számos program és eszköz (például a Visual Studio vagy az Azure SDK) ezeket a tanúsítványokat használja a különböző Azure-szolgáltatások konfigurációjának és üzembe helyezésének automatizálására. Ezek nem igazán kapcsolódnak a Cloud Serviceshez. 
 
 > [!WARNING]
 > légy óvatos! Az ilyen típusú tanúsítványok lehetővé teszik, hogy bárki hitelesítse őket a velük társított előfizetés kezeléséhez. 
@@ -62,7 +62,7 @@ A rendelkezésre álló bármely eszköz használatával létrehozhat egy önal�
 
 A Windows rendszerű tanúsítványoknak két egyszerű módja van, a `makecert.exe` segédprogrammal vagy az IIS-sel.
 
-### <a name="makecertexe"></a>MakeCert. exe
+### <a name="makecertexe"></a>Makecert.exe
 Ez a segédprogram elavult, és már nem dokumentálva van. További információt [ebben az MSDN-cikkben](/windows/desktop/SecCrypto/makecert)talál.
 
 ### <a name="powershell"></a>PowerShell
