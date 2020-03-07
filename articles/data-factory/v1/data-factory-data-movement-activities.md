@@ -13,11 +13,11 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931920"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356313"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Az adatáthelyezés a másolási tevékenység használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -28,9 +28,9 @@ ms.locfileid: "74931920"
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg a másolási tevékenységet a v2-ben](../copy-activity-overview.md)című témakört.
 
 ## <a name="overview"></a>Áttekintés
-Azure Data Factory a másolási tevékenységgel Adatmásolást végez a helyszíni és a Felhőbeli adattárak között. Az Adatmásolás után a rendszer tovább alakíthatja és elemezheti a fájlokat. A másolási tevékenység használatával is közzéteheti az üzleti intelligencia (BI) és az alkalmazások felhasználásának átalakítási és elemzési eredményeit.
+Azure Data Factory a másolási tevékenységgel Adatmásolást végez a helyszíni és a Felhőbeli adattárak között. Után az adatok másolását követően képes lehet további alakította át és elemzése. A másolási tevékenység használatával Adatátalakítási és elemzési eredmények az üzleti intelligenciára épülő (BI) és az alkalmazás elküldött közzététele.
 
-![A másolási tevékenység szerepe](media/data-factory-data-movement-activities/copy-activity.png)
+![Szerepkör-másolási tevékenység](media/data-factory-data-movement-activities/copy-activity.png)
 
 A másolási tevékenységet biztonságos, megbízható, méretezhető és [globálisan elérhető szolgáltatás](#global)működteti. Ez a cikk a Data Factory és a másolási tevékenység adatáthelyezési adatait ismerteti.
 
@@ -42,10 +42,10 @@ Először is lássuk, hogyan történik az adatáttelepítés két felhőalapú 
 >
 
 ### <a name="copy-data-between-two-cloud-data-stores"></a>Az Adatmásolás két felhőalapú adattár között
-Ha a forrás-és fogadó adattárak is a felhőben vannak, a másolási tevékenység a következő szakaszokon halad át az adatok forrásból a fogadóba való másolásához. Az a szolgáltatás, amely a másolási tevékenységet felruházza:
+Ha a forrás-és fogadó adattárak is a felhőben vannak, a másolási tevékenység a következő szakaszokon halad át az adatok forrásból a fogadóba való másolásához. A másolási tevékenység biztosító szolgáltatás:
 
 1. Adatokat olvas be a forrás adattárból.
-2. Szerializálási/deszerializálási, tömörítési/kibontási, oszlop-hozzárendelési és átalakítási műveletet végez. Ezek a műveletek a bemeneti adatkészlet, a kimeneti adatkészlet és a másolási tevékenység konfigurációján alapulnak.
+2. Szerializálási/deszerializálási, tömörítési/kibontási, oszlop-hozzárendelési és átalakítási műveletet végez. Ezeket a műveleteket a konfiguráció a bemeneti adatkészlet, a kimeneti adatkészlet és a másolási tevékenység alapján hajtja végre.
 3. Beírja az adatot a célhely adattárba.
 
 A szolgáltatás automatikusan kiválasztja az optimális régiót az adatok áthelyezéséhez. Ez a régió általában a fogadó adattárhoz legközelebb eső hely.
@@ -63,7 +63,7 @@ Lásd: az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között](d
 
 Az Azure IaaS Virtual Machines szolgáltatásban (VM) üzemeltetett támogatott adattárakba vagy adatkezelés átjáró használatával is áthelyezheti az adatait. Ebben az esetben a adatkezelés-átjárót telepítheti ugyanarra a virtuális gépre, mint maga az adattár, vagy egy különálló virtuális gépen, amely hozzáfér az adattárhoz.
 
-## <a name="supported-data-stores-and-formats"></a>Támogatott adattárak és-formátumok
+## <a name="supported-data-stores-and-formats"></a>Támogatott adattárak és formátumok
 A Data Factory másolási tevékenysége adatokat másol egy forrásadattárból egy fogadó adattárba. A Data Factory a következő adattárakat támogatja. Az adatok bármilyen forrásból bármilyen fogadóba másolhatók. Az adattárra kattintva megtudhatja, hogy az adott tárolóba, illetve tárolóból hogyan másolhat adatokat.
 
 > [!NOTE] 
@@ -79,15 +79,15 @@ A másolási tevékenység használatával **fájlok másolását** végezheti e
 
 A másolási tevékenység a megadott formátumú fájlokra is beolvassa és írja a fájlokat: **szöveg, JSON, Avro, ork és parketta**, valamint a tömörítési kodek **gzip, deflate, BZip2 és ZipDeflate** támogatott. A részleteket a [támogatott fájl-és Tömörítési formátumok](data-factory-supported-file-and-compression-formats.md) című részben tekintheti meg.
 
-Például a következő másolási tevékenységeket végezheti el:
+Ha például a következő másolási tevékenységek teheti:
 
-* Az Adatmásolás a helyszíni SQL Serverban, és az Azure Data Lake Store az ork formátumba írás.
-* A fájlok szövegfájlba (CSV) való másolása a helyszíni fájlrendszerből és az Azure Blobba való írás Avro formátumban.
-* Másolja a tömörített fájlokat a helyszíni fájlrendszerből, majd bontsa ki a kibontást, majd Azure Data Lake Store.
-* Adatok másolása GZip tömörített szöveg (CSV) formátumban az Azure Blobból, és írás a Azure SQL Databaseba.
+* Adatok másolása helyszíni SQL Server és írni az Azure Data Lake Store ORC formátumban.
+* Fájlok másolása a helyszíni fájlrendszer (CSV) szöveges formátumban, és Avro formátumban az Azure-Blobba írni.
+* Tömörített fájlok másolása a helyszíni fájlrendszerben és az Azure Data Lake Store föld majd kibontása a.
+* A GZip tömörített szöveg (CSV) formátumú adatok másolása az Azure-Blobból, és az Azure SQL Database írási.
 
 ## <a name="global"></a>Globálisan elérhető adatáthelyezés
-Azure Data Factory csak az USA nyugati régiójában, az USA keleti régiójában és az észak-európai régióban érhető el. A másolási tevékenységet biztosító szolgáltatás azonban globálisan elérhető a következő régiókban és földrajzi területeken. A globálisan elérhető topológia biztosítja a hatékony adatáthelyezést, amely általában elkerüli a régiók közötti ugrásokat. Tekintse meg a [szolgáltatások régiónként](https://azure.microsoft.com/regions/#services) való elérhetőségét Data Factory és az adatáthelyezést egy adott régióban.
+Azure Data Factory csak az USA nyugati régiójában, az USA keleti régiójában és az észak-európai régióban érhető el. A másolási tevékenységet biztosító szolgáltatás azonban globálisan elérhető a következő régiókban és földrajzi területeken. A globálisan elérhető topológia általában Ezzel elkerülheti a régiók közötti útválasztók ugrásainak hatékony adatáthelyezés biztosítja. Tekintse meg a [szolgáltatások régiónként](https://azure.microsoft.com/regions/#services) való elérhetőségét Data Factory és az adatáthelyezést egy adott régióban.
 
 ### <a name="copy-data-between-cloud-data-stores"></a>Az Adatmásolás a felhőalapú adattárak között
 Ha a forrás-és fogadó adattárak is a felhőben vannak, Data Factory a szolgáltatás központi telepítését használja abban a régióban, amely az adott földrajzi helyen található fogadóhoz legközelebb esik az adatáthelyezéshez. A hozzárendeléseket a következő táblázatban tekintheti meg:
@@ -101,17 +101,17 @@ Ha a forrás-és fogadó adattárak is a felhőben vannak, Data Factory a szolg�
 | &nbsp; | USA déli középső régiója | USA déli középső régiója |
 | &nbsp; | USA nyugati középső régiója | USA nyugati középső régiója |
 | &nbsp; | USA nyugati régiója | USA nyugati régiója |
-| &nbsp; | USA 2. nyugati régiója | USA 2. nyugati régiója |
+| &nbsp; | USA nyugati régiója, 2. | USA nyugati régiója, 2. |
 | Kanada | Kelet-Kanada | Közép-Kanada |
 | &nbsp; | Közép-Kanada | Közép-Kanada |
 | Brazília | Dél-Brazília | Dél-Brazília |
 | Európa | Észak-Európa | Észak-Európa |
 | &nbsp; | Nyugat-Európa | Nyugat-Európa |
-| Egyesült Királyság | Egyesült Királyság nyugati régiója | Egyesült Királyság déli régiója |
-| &nbsp; | Egyesült Királyság déli régiója | Egyesült Királyság déli régiója |
+| Egyesült Királyság | Az Egyesült Királyság nyugati régiója | Az Egyesült Királyság déli régiója |
+| &nbsp; | Az Egyesült Királyság déli régiója | Az Egyesült Királyság déli régiója |
 | Ázsia és a Csendes-óceáni térség | Délkelet-Ázsia | Délkelet-Ázsia |
 | &nbsp; | Kelet-Ázsia | Délkelet-Ázsia |
-| Ausztrália | Ausztrália keleti régiója | Ausztrália keleti régiója |
+| Ausztrália | Kelet-Ausztrália | Kelet-Ausztrália |
 | &nbsp; | Délkelet-Ausztrália | Délkelet-Ausztrália |
 | India | Közép-India | Közép-India |
 | &nbsp; | Nyugat-India | Közép-India |
@@ -191,7 +191,7 @@ A kimeneti adatkészletben definiált ütemterv meghatározza, hogy a tevékenys
 Több bemeneti adatkészletet is megadhat a másolási tevékenységhez. Ezek a függőségek ellenőrzéséhez használatosak a tevékenység futtatása előtt. Azonban csak az első adatkészlet adatait másolja a rendszer a cél adatkészletbe. További információ: [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md).  
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
-Tekintse meg a [másolási tevékenység teljesítményére és hangolására vonatkozó útmutatót](data-factory-copy-activity-performance.md), amely az adatáthelyezés (másolási tevékenység) teljesítményét befolyásoló legfontosabb tényezőket ismerteti Azure Data Factoryban. A belső tesztelés során a megfigyelt teljesítményt is felsorolja, és a másolási tevékenységek teljesítményének optimalizálására szolgáló különböző módokat tárgyalja.
+Tekintse meg a [másolási tevékenység teljesítményére és hangolására vonatkozó útmutatót](data-factory-copy-activity-performance.md), amely az adatáthelyezés (másolási tevékenység) teljesítményét befolyásoló legfontosabb tényezőket ismerteti Azure Data Factoryban. Felsorolja a megfigyelt teljesítmény belső tesztelése során és a különböző módjait a másolási tevékenység teljesítményének ismerteti.
 
 ## <a name="fault-tolerance"></a>Hibatűrés
 Alapértelmezés szerint a másolási tevékenység leállítja az adatok másolását, és sikertelenül tér vissza a forrás és a fogadó közötti inkompatibilis adatok észlelésekor. Habár a explicit módon konfigurálhatja a nem kompatibilis sorok kihagyását és naplózását, és csak a kompatibilis adatmásolt fájlokat másolja át a másolás sikerességének érdekében. További részletekért tekintse meg a [másolási tevékenység hibatűrését](data-factory-copy-activity-fault-tolerance.md) ismertető témakört.

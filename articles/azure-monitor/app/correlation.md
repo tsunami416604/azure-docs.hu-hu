@@ -7,11 +7,11 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672055"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367658"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
 
@@ -49,7 +49,7 @@ Az eredmények között vegye figyelembe, hogy az összes telemetria-elem megosz
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Stock lap                |              | STYz               | STYz         |
 | függőségi | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
-| kérés    | Kezdőlap/készlet letöltése            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| request    | Kezdőlap/készlet letöltése            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | függőségi | /API/Stock/Value beolvasása      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
 Ha egy külső szolgáltatás hívása `GET /api/stock/value`, ismernie kell a kiszolgáló identitását, hogy megfelelően beállítsa a `dependency.target` mezőt. Ha a külső szolgáltatás nem támogatja a figyelést, `target` a szolgáltatás állomásneve (például `stock-prices-api.com`) értékre van állítva. Ha azonban a szolgáltatás egy előre meghatározott HTTP-fejléc visszaadásával azonosítja magát, `target` tartalmazza a szolgáltatás identitását, amely lehetővé teszi, hogy a Application Insights elosztott nyomkövetést hozzon létre a szolgáltatásból származó telemetria lekérdezésével.

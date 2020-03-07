@@ -1,18 +1,18 @@
 ---
-title: A Reliable Actors a Service Fabricen
+title: Reliable Actors on Service Fabric
 description: Leírja, hogy a Reliable Actors hogyan vannak rétegben Reliable Services és hogyan használják a Service Fabric platform funkcióit.
 author: vturecek
 ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: vturecek
 ms.openlocfilehash: 92c717fa2c82dd147acd3c28333e37ccf8dd2e89
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75349231"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391882"
 ---
-# <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Így használja a Reliable Actors a Service Fabric platformot
+# <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Hogyan Reliable Actors használni a Service Fabric platformot?
 Ez a cikk azt ismerteti, hogy Reliable Actors hogyan működik az Azure Service Fabric platformon. A Reliable Actors egy olyan keretrendszerben fut, amely egy, a *Actors szolgáltatásnak*nevezett, állapot-nyilvántartó megbízható szolgáltatás implementációjában található. A Actors szolgáltatás tartalmazza az életciklus és az üzenetek a szereplőkkel való elküldésének kezeléséhez szükséges összes összetevőt:
 
 * A színész futtatókörnyezete kezeli az életciklusokat, a Garbage gyűjteményt, és kikényszeríti az egyszálas hozzáférést.

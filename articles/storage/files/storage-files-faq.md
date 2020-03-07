@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f1be146a5173c86a8b19bca5c7b3b8c72d72b9c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598187"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362124"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Gyakran ismételt kérdések (GYIK) a Azure Filesról
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
@@ -179,12 +179,12 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 * <a id="ad-support-rest-apis"></a>
 van olyan **REST API-k, amelyek támogatják a beolvasási/beállítási/másolási/fájl NTFS ACL-eket?**
 
-    Igen, támogatjuk a REST API-kat, amelyek a könyvtárakra vagy fájlokra vonatkozó NTFS ACL-ek beszerzését, beállítását vagy másolását használják az [2019-02-02](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-02-02) (vagy újabb) REST API használatakor.
+    Igen, támogatjuk a REST API-kat, amelyek a könyvtárakra vagy fájlokra vonatkozó NTFS ACL-ek beszerzését, beállítását vagy másolását használják az [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (vagy újabb) REST API használatakor.
 
 * <a id="ad-vm-subscription"></a>
 **hozzáférhetek az Azure ad-beli hitelesítő adatokkal rendelkező Azure Files egy másik előfizetéshez tartozó virtuális gépről?**
 
-    Ha az előfizetés, amely alatt a fájlmegosztás telepítve van, ugyanahhoz az Azure AD-bérlőhöz van társítva, mint az Azure AD Domain Services-példány, amelyhez a virtuális gép tartományhoz csatlakozik, akkor a Azure Files ugyanazzal az Azure AD-beli hitelesítő adatokkal érheti el. A korlátozás nem az előfizetésre, hanem a kapcsolódó Azure AD-bérlőre is érvényes.    
+    Ha az előfizetés, amely alatt a fájlmegosztás telepítve van, ugyanahhoz az Azure AD-bérlőhöz van társítva, mint az Azure AD Domain Services-példány, amelyhez a virtuális gép tartományhoz csatlakozik, akkor a Azure Files ugyanazzal az Azure AD-beli hitelesítő adatokkal érheti el. A korlátozás nem az előfizetésre, hanem a kapcsolódó Azure AD-bérlőre is érvényes.
     
 * <a id="ad-support-subscription"></a>
 **engedélyezhető Azure Files azure AD DS vagy ad-hitelesítés olyan Azure ad-Bérlővel, amely eltér az elsődleges bérlőtől, amelyhez a fájlmegosztás társítva van?**

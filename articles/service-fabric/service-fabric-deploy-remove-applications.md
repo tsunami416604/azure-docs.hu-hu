@@ -4,11 +4,11 @@ description: Ismerje meg, hogyan távolíthat el és helyezhet üzembe alkalmaz�
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614502"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379999"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Alkalmazások telepítése és eltávolítása a PowerShell használatával
 
@@ -312,7 +312,7 @@ A [Regisztráció törlése-ServiceFabricApplicationType](/powershell/module/ser
 Unregister-ServiceFabricApplicationType MyApplicationType 1.0.0
 ```
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>A copy-ServiceFabricApplicationPackage ImageStoreConnectionString kér
 
@@ -347,7 +347,7 @@ A rendszerkép-tároló és a rendszerkép-tároló közötti kapcsolatok karakt
 ### <a name="deploy-large-application-package"></a>Nagyméretű alkalmazáscsomag üzembe helyezése
 
 Probléma: a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) időtúllépést jelent egy nagyméretű alkalmazáscsomag esetében (GB-os sorrend).
-Próbálja
+Próbálja ki:
 - Nagyobb időtúllépést ad meg a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) parancshoz `TimeoutSec` paraméterrel. Alapértelmezés szerint az időtúllépés 30 percet vesz igénybe.
 - Keresse meg a számítógép és a fürt közötti hálózati kapcsolatot. Ha a kapcsolatok lassúak, érdemes lehet olyan gépet használni, amelynek jobb hálózati kapcsolatai vannak.
 Ha az ügyfélszámítógép más régióban található, mint a fürt, érdemes lehet egy ügyfélszámítógépet használni a fürttel megegyező vagy azonos régióban.
@@ -373,7 +373,7 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ### <a name="deploy-application-package-with-many-files"></a>Alkalmazáscsomag központi telepítése sok fájllal
 
 Probléma: a [ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) időtúllépést jelent a sok fájllal rendelkező alkalmazáscsomag esetében (több ezer).
-Próbálja
+Próbálja ki:
 - [Tömörítse a csomagot](service-fabric-package-apps.md#compress-a-package) a rendszerkép-tárolóba történő másolás előtt. A tömörítés csökkenti a fájlok számát.
 - Nagyobb időtúllépést ad meg a `TimeoutSec` paraméterrel rendelkező [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) .
 - `Async` kapcsoló megadása a [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)számára. A parancs visszaadja a parancsot, ha a fürt elfogadja a parancsot, és az alkalmazás típusának regisztrálása aszinkron módon folytatódik.

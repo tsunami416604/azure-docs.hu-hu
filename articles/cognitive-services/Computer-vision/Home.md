@@ -12,11 +12,11 @@ ms.date: 01/27/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: eb338c39ed3b1a095c1ad31e3f695e8d3fec0ed3
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565961"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391455"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -73,7 +73,7 @@ A Computer Vision a következő követelményeknek megfelelő képeket képes el
 
 Akárcsak az összes Cognitive Services esetében, a Computer Vision szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft adatkezelési szabályzatait. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Computer Vision használatának első lépései a gyors üzembe helyezési útmutatót követve:
 

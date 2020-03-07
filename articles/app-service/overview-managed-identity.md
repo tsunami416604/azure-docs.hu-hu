@@ -1,17 +1,17 @@
 ---
 title: Felügyelt identitások
-description: Ismerje meg, hogyan működnek a felügyelt identitások Azure App Service és Azure Functions, hogyan konfigurálhatja a felügyelt identitásokat, és hogyan hozhatja ki a jogkivonatot a háttér-erőforrásokhoz.
+description: Ismerje meg, hogyan működnek a felügyelt identitások Azure App Service és Azure Functions, hogyan konfigurálhatja a felügyelt identitásokat, és hogyan hozhatja ki a jogkivonatot a háttérbeli erőforrásokhoz.
 author: mattchenderson
 ms.topic: article
-ms.date: 10/30/2019
+ms.date: 03/04/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 3e414e40cb92f5c7e8c2e1d083419d57e06a0995
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 6e3169f2bfcba0a02af1490f875cbab8a14d02f6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161919"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365523"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
@@ -22,9 +22,9 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre felügyelt identitást 
 
 Az alkalmazás két típusú identitást biztosíthat: 
 - A **rendszer által hozzárendelt identitás** az alkalmazáshoz van kötve, és törlődik, ha az alkalmazás törölve lett. Egy alkalmazásnak csak egy rendszerhez rendelt identitása lehet.
-- A **felhasználó által hozzárendelt identitás** egy önálló Azure-erőforrás, amelyet hozzá lehet rendelni az alkalmazáshoz. Egy alkalmazáshoz több felhasználó által hozzárendelt identitás is tartozhat.
+- A **felhasználó által hozzárendelt identitás** egy önálló Azure-erőforrás, amelyet az alkalmazáshoz rendelhet hozzá. Egy alkalmazáshoz több felhasználó által hozzárendelt identitás is tartozhat.
 
-## <a name="adding-a-system-assigned-identity"></a>Rendszerhez rendelt identitás hozzáadása
+## <a name="add-a-system-assigned-identity"></a>Rendszerhez rendelt identitás hozzáadása
 
 A rendszer által hozzárendelt identitással rendelkező alkalmazások létrehozásához további tulajdonságot kell beállítani az alkalmazásban.
 
@@ -146,10 +146,10 @@ A hely létrehozásakor a következő tulajdonságokkal rendelkezik:
 }
 ```
 
-Ahol a `<TENANTID>` és `<PRINCIPALID>` GUID azonosítókkal lesznek lecserélve. A tenantId tulajdonság azt határozza meg, hogy az identitás melyik HRE-bérlőhöz tartozik. A principalId az alkalmazás új identitásának egyedi azonosítója. A HRE belül az egyszerű szolgáltatásnév neve megegyezik a App Service vagy Azure Functions példányával.
+A tenantId tulajdonság azt határozza meg, hogy az identitás melyik HRE-bérlőhöz tartozik. A principalId az alkalmazás új identitásának egyedi azonosítója. A HRE belül az egyszerű szolgáltatásnév neve megegyezik a App Service vagy Azure Functions példányával.
 
 
-## <a name="adding-a-user-assigned-identity"></a>Felhasználó által hozzárendelt identitás hozzáadása
+## <a name="add-a-user-assigned-identity"></a>Felhasználó által hozzárendelt identitás hozzáadása
 
 A felhasználó által hozzárendelt identitással rendelkező alkalmazások létrehozásához létre kell hoznia az identitást, majd hozzá kell adnia annak erőforrás-azonosítóját az alkalmazás-konfigurációhoz.
 
@@ -230,15 +230,17 @@ A hely létrehozásakor a következő tulajdonságokkal rendelkezik:
 }
 ```
 
-Ahol a `<PRINCIPALID>` és `<CLIENTID>` GUID azonosítókkal lesznek lecserélve. A principalId a HRE felügyeletéhez használt identitás egyedi azonosítója. A clientId az alkalmazás új identitásának egyedi azonosítója, amely a futásidejű hívásokban használandó identitás megadására szolgál.
+A principalId a HRE-felügyelethez használt identitás egyedi azonosítója. A clientId az alkalmazás új identitásának egyedi azonosítója, amely a futásidejű hívásokban használandó identitás megadására szolgál.
 
 
-## <a name="obtaining-tokens-for-azure-resources"></a>Jogkivonatok beszerzése az Azure-erőforrásokhoz
+## <a name="obtain-tokens-for-azure-resources"></a>Jogkivonatok beszerzése az Azure-erőforrásokhoz
 
 Egy alkalmazás a felügyelt identitásával lekérheti a jogkivonatokat a HRE által védett egyéb erőforrások, például a Azure Key Vault eléréséhez. Ezek a tokenek az erőforráshoz hozzáférő alkalmazást, és nem az alkalmazás adott felhasználóját jelölik. 
 
+Előfordulhat, hogy a cél erőforrást úgy kell konfigurálnia, hogy engedélyezze az alkalmazáshoz való hozzáférést. Ha például jogkivonatot kér Key Vaulthoz való hozzáféréshez, meg kell győződnie arról, hogy az alkalmazás identitását tartalmazó hozzáférési szabályzatot adott hozzá. Ellenkező esetben a rendszer elutasítja a Key Vault meghívásait, még akkor is, ha azok tartalmazzák a jogkivonatot. Ha többet szeretne megtudni arról, hogy mely erőforrások támogatják Azure Active Directory jogkivonatokat, tekintse meg az Azure [ad-hitelesítést támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+
 > [!IMPORTANT]
-> Előfordulhat, hogy a cél erőforrást úgy kell konfigurálnia, hogy engedélyezze az alkalmazáshoz való hozzáférést. Ha például jogkivonatot kér Key Vaulthoz való hozzáféréshez, meg kell győződnie arról, hogy az alkalmazás identitását tartalmazó hozzáférési szabályzatot adott hozzá. Ellenkező esetben a rendszer elutasítja a Key Vault meghívásait, még akkor is, ha azok tartalmazzák a jogkivonatot. Ha többet szeretne megtudni arról, hogy mely erőforrások támogatják Azure Active Directory jogkivonatokat, tekintse meg az Azure [ad-hitelesítést támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+> A felügyelt identitások háttér-szolgáltatásai az erőforrás-URI-n kívüli gyorsítótárat tartanak fenn körülbelül 8 órán keresztül. Ha frissíti egy adott cél erőforrás hozzáférési házirendjét, és azonnal lekéri az adott erőforráshoz tartozó jogkivonatot, a jogkivonat lejárta után továbbra is elavult engedélyekkel rendelkező gyorsítótárazott tokent kaphat. Jelenleg nincs mód kényszeríteni a tokenek frissítését.
 
 Létezik egy egyszerű REST-protokoll a jogkivonat beszerzéséhez App Service és Azure Functions. Ezt minden alkalmazáshoz és nyelvhez használhatja. A .NET és a Java esetében az Azure SDK absztrakciót biztosít a protokollon keresztül, és megkönnyíti a helyi fejlesztési élményt.
 
@@ -301,7 +303,7 @@ Content-Type: application/json
 
 ### <a name="code-examples"></a>Példák a kódokra
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!TIP]
 > A .NET nyelveken a [Microsoft. Azure. Services. AppAuthentication](#asal) is használhatja a kérelem elvégzése helyett.
@@ -317,7 +319,7 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const rp = require('request-promise');
@@ -333,7 +335,7 @@ const getToken = function(resource, cb) {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 import os
@@ -352,7 +354,7 @@ def get_bearer_token(resource_uri):
     return access_token
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
@@ -413,7 +415,7 @@ A Java-alkalmazások és-függvények esetében a felügyelt identitással való
 
 ## <a name="remove"></a>Identitás eltávolítása
 
-A rendszer által hozzárendelt identitást eltávolíthatja a szolgáltatás a portál, a PowerShell vagy a parancssori felület használatával történő letiltásával ugyanúgy, ahogyan azt létrehozták. A felhasználó által hozzárendelt identitások egyenként eltávolíthatók. Az összes identitás eltávolításához a REST/ARM sablon protokollban ezt úgy teheti meg, hogy a "None" értékre állítja a típust:
+A rendszer által hozzárendelt identitást eltávolíthatja a szolgáltatás a portál, a PowerShell vagy a parancssori felület használatával történő letiltásával ugyanúgy, ahogyan azt létrehozták. A felhasználó által hozzárendelt identitások egyenként eltávolíthatók. Az összes identitás eltávolításához állítsa a típust "nincs" értékre az [ARM-sablonban](#using-an-azure-resource-manager-template):
 
 ```json
 "identity": {

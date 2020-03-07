@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD szinkronizálási szolgáltatáskezelő UI-összekötők |} A Microsoft Docs
-description: Ismerje meg az összekötők lap a Synchronization Service Managert, az Azure AD Connect.
+title: Az Azure AD Synchronization Service Manager felhasználói felületének összekötői | Microsoft Docs "
+description: Ismerje meg a Azure AD Connect Synchronization Service Manager összekötők lapját.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,82 +18,82 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60384195"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376363"
 ---
-# <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Összekötők használata az Azure AD Connect szinkronizálása a Service Manager rendszerrel
+# <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Összekötők használata a Azure AD Connect Sync Service Manager
 
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
+![Service Manager szinkronizálása](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
 
-Az összekötők lap a szinkronizálási motor csatlakozik az összes rendszer kezelésére szolgál.
+Az összekötők lapon minden olyan rendszer felügyelhető, amelyhez a Szinkronizáló motor csatlakozik.
 
-## <a name="connector-actions"></a>Összekötő-műveletek
+## <a name="connector-actions"></a>Összekötő műveletei
 | Műveletek | Megjegyzés |
 | --- | --- |
-| Hozzon létre |Ne használja. További AD-erdőhöz való csatlakozáshoz, a telepítési varázslóval. |
-| Tulajdonságok |Tartomány és szervezeti egységek szűrése használható. |
-| [Törlés](#delete) |Vagy törölni szeretné az adatokat az összekötőtérben, illetve törli a kapcsolatot, az adott erdő használják. |
-| [Futtatási profilok konfigurálása](#configure-run-profiles) |Kivéve a szűréshez, tartomány konfigurálása itt semmi sem. Ez a művelet segítségével tekintse meg a már konfigurált futtatási profilokat. |
-| Futtassa a következőt: |A profil egy egyszeri futtatás indításához használt. |
-| Leállítás |Leállítja az összekötő jelenleg fut egy profilt. |
+| Létrehozás |Ne használja. További AD-erdőkhöz való csatlakozáshoz használja a telepítővarázslót. |
+| Tulajdonságok |Tartomány-és OU-szűréshez használatos. |
+| [Törlés](#delete) |Az összekötő területének vagy az erdőhöz való csatlakozás törlésére szolgál. |
+| [Futtatási profilok konfigurálása](#configure-run-profiles) |A tartományi szűrés kivételével itt nem kell konfigurálnia. Ezt a műveletet használhatja a már konfigurált futtatási profilok megjelenítéséhez. |
+| Futtassa a következőt: |Egy profil egyszeri futtatásának elindítására szolgál. |
+| Leállítás |Egy profilt jelenleg futtató összekötő leállítása. |
 | Összekötő exportálása |Ne használja. |
 | Összekötő importálása |Ne használja. |
 | Összekötő frissítése |Ne használja. |
-| Séma frissítése |Frissíti a gyorsítótárazott séma. Azt részesíti előnyben a telepítési varázsló, a beállítás használata óta, amely szintén frissítések szabályok szinkronizálása. |
-| [Keresési Összekötőterét](#search-connector-space) |Objektumok keresése, és kövesse az objektum és a rendszer az adatokat használják. |
+| Séma frissítése |Frissíti a gyorsítótárazott sémát. Ehelyett inkább a telepítési varázslóban található beállítást érdemes használni, mivel ez frissíti a szinkronizálási szabályokat is. |
+| [Keresési összekötő területe](#search-connector-space) |Objektumok keresésére, valamint egy objektum és annak az adott rendszeren keresztüli követésére szolgál. |
 
 ### <a name="delete"></a>Törlés
-A törlési művelet használható két különböző dolgok.  
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
+A törlési művelet két különböző dolog esetében használatos.  
+![Service Manager szinkronizálása](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
 
-A beállítás **törlés csak az összekötő-térben** eltávolítható az összes adat, de a konfiguráció megtartása.
+Az **összekötő törlése lehetőség csak** az összes adathalmazt távolítja el, de megtartja a konfigurációt.
 
-A beállítás **összekötő törlése és összekötő** eltávolítja az adatokat és a konfigurációt. Ha nem szeretne csatlakozni egy erdő már ezt a beállítást használják.
+Az **összekötő és összekötő terület törlése** lehetőséggel törlődik az adathalmaz és a konfiguráció. Ezt a beállítást akkor kell használni, ha már nem szeretne csatlakozni egy erdőhöz.
 
-Mindkét lehetőség összes objektum szinkronizálása, és a metaverzum-objektum frissítése. Ez a művelet egy olyan hosszú ideig futó művelet.
+Mindkét lehetőség szinkronizálja az összes objektumot, és frissíti a metaverse-objektumokat. Ez a művelet hosszú ideig futó művelet.
 
 ### <a name="configure-run-profiles"></a>Futtatási profilok konfigurálása
-Ez a beállítás lehetővé teszi, hogy megtekintheti a konfigurált összekötők futtatási profilokat.
+Ez a beállítás lehetővé teszi az összekötőhöz konfigurált futtatási profilok megtekintését.
 
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
+![Service Manager szinkronizálása](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
 
-### <a name="search-connector-space"></a>Keresési Összekötőterét
-A keresési összekötő terület művelet hasznos keresheti meg az objektumot, és az adatokkal kapcsolatos problémák elhárítása.
+### <a name="search-connector-space"></a>Keresési összekötő területe
+A keresési összekötő területe művelet hasznos lehet objektumok kereséséhez és az adathibák elhárításához.
 
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
+![Service Manager szinkronizálása](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
-Első lépésként válassza ki a **hatókör**. Kereshet az adatok alapján (RDN, DN-t, rögzítési, részfájának), vagy az objektum (az összes többi beállítást) állapot.  
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
-Ha például egy részfájának keresési, egy szervezeti egység összes objektum beolvasása.  
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
-A rácsban válasszon ki egy objektumot, jelölje be **tulajdonságok**, és [, kövesse](tshoot-connect-object-not-syncing.md) a forrás összekötőtérben, a metaverzumba, és a cél összekötőterében.
+Először válasszon ki egy **hatókört**. Kereshet az objektum (RDN, DN, Anchor, Sub-Tree) vagy az objektum állapota alapján (az összes többi lehetőség).  
+![szinkronizálási Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
+Ha például faszerkezetes keresést végez, az összes objektum egy szervezeti egységben fog megjelenni.  
+![szinkronizálási Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
+Ebből a rácsból kiválaszthat egy objektumot, kiválaszthatja a **tulajdonságokat**, és [követheti azt](tshoot-connect-object-not-syncing.md) a forrás-összekötő területéről, a metaverse használatával és a cél összekötő területéhez.
 
-### <a name="changing-the-ad-ds-account-password"></a>Az AD DS-fiók jelszavának módosítása
-Ha módosítja a fiók jelszavát, a szinkronizálási szolgáltatás már nem tudja importálni/exportálni a módosításokat a helyszíni AD.   A következők jelenhetnek meg:
+### <a name="changing-the-ad-ds-account-password"></a>A AD DS fiók jelszavának módosítása
+Ha megváltoztatja a fiók jelszavát, a szinkronizálási szolgáltatás többé nem fogja tudni importálni/exportálni a helyszíni AD-t.   A következők jelenhetnek meg:
 
-- Az importálási/exportálási lépés az AD-összekötő "no-start – hitelesítő adatok" hibaüzenettel meghiúsul.
-- A Windows eseménynaplót az alkalmazás eseménynaplója tartalmaz Event ID 6000, az üzenet hiba "a"contoso.com"kezelőügynök futtatása sikertelen, mert a hitelesítő adatok érvénytelenek voltak."
+- Az AD-összekötő importálási/exportálási lépése a "No-Start-hitelesítő adatok" hibával meghiúsul.
+- A Windows Eseménynapló alatt az alkalmazás eseménynaplója hibát tartalmaz a 6000-es azonosítójú eseménynél, és az "a felügyeleti ügynök" contoso.com "üzenetet nem sikerült futtatni, mert a hitelesítő adatok érvénytelenek voltak."
 
-A probléma megoldásához frissítse az Active Directory tartományi szolgáltatások felhasználói fiókot az alábbiak használatával:
-
-
-1. Indítsa el a Synchronization Service Managert (KEZDŐ → szinkronizálási szolgáltatás).
-</br>![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/startmenu.png)
-2. Nyissa meg a **összekötők** fülre.
-3. Válassza ki az AD-összekötő, amely a Tartományi fiók használatára van konfigurálva.
-4. A műveletek, válassza ki a **tulajdonságok**.
-5. Az előugró párbeszédpanelen válassza ki a csatlakozás az Active Directory-erdő:
-6. Az erdő nevét jelzi, hogy a megfelelő a helyszíni AD.
-7. A felhasználó nevét jelzi a szinkronizáláshoz használt AD DS-fiókot.
-8. Adja meg az új jelszót az AD DS-fiók a jelszó szövegmező ![az Azure AD Connect szinkronizálási titkosítási kulcs segédprogram](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
-9. Kattintson az OK gombra az új jelszó mentése, és indítsa újra a szinkronizálási szolgáltatást a régi jelszó törlése a memória-gyorsítótárból.
+A probléma megoldásához frissítse a AD DS felhasználói fiókot a következő paranccsal:
 
 
+1. Indítsa el a Synchronization Service Managert (START → szinkronizációs szolgáltatás).
+</br>![szinkronizálási Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/startmenu.png)
+2. Nyissa meg az **Összekötők** lapot.
+3. Válassza ki azt az AD-összekötőt, amely a AD DS fiók használatára van konfigurálva.
+4. A műveletek területen válassza a **Tulajdonságok**lehetőséget.
+5. Az előugró párbeszédpanelen válassza a kapcsolódás Active Directory erdőhöz lehetőséget:
+6. Az erdő neve jelzi a megfelelő helyszíni AD-t.
+7. A Felhasználónév jelzi a szinkronizáláshoz használt AD DS fiókot.
+8. Adja meg a AD DS fiók új jelszavát a jelszó szövegmezőben ![Azure AD Connect Sync encryption Key segédprogram](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
+9. Az új jelszó mentéséhez és a szinkronizálási szolgáltatás újraindításához kattintson az OK gombra, hogy eltávolítsa a régi jelszót a memória-gyorsítótárból.
 
-## <a name="next-steps"></a>További lépések
-Tudjon meg többet a [Azure AD Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációja.
+
+
+## <a name="next-steps"></a>Következő lépések
+További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

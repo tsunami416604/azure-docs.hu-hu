@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918730"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387535"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Adatok áthelyezése az Azure Table-be és onnan az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -60,11 +60,11 @@ Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok telje
 
 A typeProperties szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **AzureTable** típusú adatkészlet **typeProperties** szakasza a következő tulajdonságokkal rendelkezik.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | tableName |Azon tábla neve, amely a társított szolgáltatás által hivatkozott Azure Table Database-példányban található. |Igen. Ha egy Táblanév azureTableSourceQuery nélkül van megadva, a rendszer a táblából származó összes rekordot átmásolja a célhelyre. Ha a azureTableSourceQuery is meg van adva, a rendszer a lekérdezésnek megfelelő rekordokat a célhelyre másolja. |
 
-### <a name="schema-by-data-factory"></a>Séma Data Factory szerint
+### <a name="schema-by-data-factory"></a>Adat-előállítók által séma
 A séma nélküli adattárak (például az Azure Table) esetében a Data Factory szolgáltatás a következő módszerek egyikével vezeti le a sémát:
 
 1. Ha az adatszerkezetet az adatkészlet definíciójának **struktúra** tulajdonságának használatával határozza meg, akkor a Data Factory szolgáltatás sémaként értékeli ezt a struktúrát. Ebben az esetben, ha egy sor nem tartalmaz értéket egy oszlophoz, a rendszer null értéket biztosít.
@@ -79,12 +79,12 @@ A tevékenység typeProperties szakaszában elérhető tulajdonságok az egyes t
 
 A **AzureTableSource** a következő tulajdonságokat támogatja a typeProperties szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
 | azureTableSourceQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |Azure Table lekérdezési karakterlánc. Tekintse meg a példákat a következő szakaszban. |Nem. Ha egy Táblanév azureTableSourceQuery nélkül van megadva, a rendszer a táblából származó összes rekordot átmásolja a célhelyre. Ha a azureTableSourceQuery is meg van adva, a rendszer a lekérdezésnek megfelelő rekordokat a célhelyre másolja. |
 | azureTableSourceIgnoreTableNotFound |Jelezze, hogy nem létezik-e a lenyelés a tábla kivételével. |TRUE<br/>HAMIS |Nem |
 
-### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery-példák
+### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery examples
 Ha az Azure Table oszlop karakterlánc típusú:
 
 ```JSON
@@ -99,7 +99,7 @@ Ha az Azure Table oszlop datetime típusú:
 
 A **AzureTableSink** a következő tulajdonságokat támogatja a typeProperties szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
 | azureTableDefaultPartitionKeyValue |A fogadó által használható alapértelmezett partíciós kulcs értéke. |Egy karakterlánc-érték. |Nem |
 | azureTablePartitionKeyName |Adja meg annak az oszlopnak a nevét, amelynek értékeit partíciós kulcsként használja a rendszer. Ha nincs megadva, a rendszer a AzureTableDefaultPartitionKeyValue használja a partíciós kulcsként. |Egy oszlop neve. |Nem |
@@ -474,13 +474,13 @@ Ahogy azt az [adattovábbítási tevékenységek](data-factory-data-movement-act
 
 Amikor az Azure-táblázatból &ba helyezi az adatátvitelt, az Azure- [Table Service által definiált következő leképezések](https://msdn.microsoft.com/library/azure/dd179338.aspx) az Azure Table OData-típusok és a .net-típus között használatosak, és fordítva.
 
-| OData-adatok típusa | .NET-típus | Részletek |
+| OData adattípusa | .NET-típus | Részletek |
 | --- | --- | --- |
-| EDM. Binary |bájt [] |Legfeljebb 64 KB méretű bájtok tömbje. |
-| Edm.Boolean |logikai |Logikai érték. |
-| EDM. DateTime |Dátum és idő |64 bites érték, amely egyezményes világidő (UTC) szerint van kifejezve. A támogatott dátum/idő tartomány 12:00 éjféltől kezdődik, január 1-től 1601 A.D. (CE), UTC. A tartomány 9999. december 31-ig ér véget. |
+| Edm.Binary |bájt [] |Legfeljebb 64 KB méretű bájtok tömbje. |
+| Edm.Boolean |bool |Logikai érték. |
+| Edm.DateTime |DateTime |64 bites érték, amely egyezményes világidő (UTC) szerint van kifejezve. A támogatott dátum és idő tartomány kezdődik 12:00 éjféltől. január 1, i 1601. (CE), UTC. A tartomány 9999. december 31-ig ér véget. |
 | Edm.Double |double |64 bites lebegőpontos érték. |
-| EDM. GUID |GUID |Egy 128 bites globálisan egyedi azonosító. |
+| Edm.Guid |Guid |Egy 128 bites globálisan egyedi azonosító. |
 | Edm.Int32 |Int32 |32 bites egész szám. |
 | Edm.Int64 |Int64 |64 bites egész szám. |
 | Edm.String |Sztring |Egy UTF-16 kódolású érték. A sztringek értéke legfeljebb 64 KB lehet. |
@@ -534,11 +534,11 @@ A típusnak az Azure Table OData típusról .NET-típusra való leképezése mia
 
 **Azure Table séma:**
 
-| Oszlop neve | Type (Típus) |
+| Oszlop neve | Típus |
 | --- | --- |
-| userid |Edm.Int64 |
+| felhasználói azonosító |Edm.Int64 |
 | név |Edm.String |
-| lastlogindate |EDM. DateTime |
+| lastlogindate |Edm.DateTime |
 
 Ezután adja meg az Azure Table-adatkészletet az alábbiak szerint. Nem kell megadnia a "Structure" szakaszt a típus adataival, mivel a típus adatai már meg vannak adva az alapul szolgáló adattárban.
 

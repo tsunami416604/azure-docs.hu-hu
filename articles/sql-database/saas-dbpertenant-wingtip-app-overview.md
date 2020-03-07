@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 46cdcd5f768278dbc729f48e450c68a63be604be
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822167"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359124"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Bevezetés egy több-bérlős SaaS-alkalmazásba, amely az adatbázis-/bérlői mintát használja SQL Database
 
@@ -52,7 +52,7 @@ Az alkalmazás üzembe helyezése után vizsgálja meg a következő, a kezdeti 
 |[Elemzés futtatása a kinyert bérlői adatbázison](saas-tenancy-tenant-analytics.md) | A bérlői adatok kinyerése egy elemzési adatbázisba vagy adattárházba offline elemzési lekérdezésekhez. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Általános útmutatás és tippek a Wingtip tickets SaaS-alkalmazás üzembe helyezéséhez és használatához – példa](saas-tenancy-wingtip-app-guidance-tips.md)
 - [A Wingtip SaaS-alkalmazás üzembe helyezése](saas-dbpertenant-get-started-deploy.md)
