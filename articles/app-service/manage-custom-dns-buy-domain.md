@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: afb40d0f3681bc02351e43166fccfaafe7741128
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023412"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375201"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Egyéni tartománynév vásárlása Azure App Service
 
@@ -108,7 +108,7 @@ Ezután válassza ki a tartományhoz a kívánt beállításokat. A magyarázato
 
 | Beállítás | Ajánlott érték | Leírás |
 |-|-|-|
-|Adatvédelem | Engedélyezés | Ha az "Adatvédelem" lehetőséget választja, az _ingyenes_vásárlási díj részét képezi. Néhány legfelső szintű tartományt a regisztrátorok felügyelnek, amelyek nem támogatják az adatvédelem védelmét, és az **Adatvédelem** lapon vannak felsorolva. |
+|Adatvédelem | Bekapcsolás | Ha az "Adatvédelem" lehetőséget választja, az _ingyenes_vásárlási díj részét képezi. Néhány legfelső szintű tartományt a regisztrátorok felügyelnek, amelyek nem támogatják az adatvédelem védelmét, és az **Adatvédelem** lapon vannak felsorolva. |
 | Alapértelmezett állomásnevek kiosztása | **www** és **\@** | Szükség esetén válassza ki a kívánt állomásnév-kötéseket. A tartományi megvásárlási művelet befejezésekor az alkalmazás a kiválasztott gazdagépeken is elérhető. Ha az alkalmazás az [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)mögött van, nem jelenik meg a gyökértartomány (@) hozzárendelésének lehetősége, mert Traffic Manager nem támogatja a rekordokat. A tartománynév-hozzárendelések módosítása a tartomány megvásárlása után végezhető el. |
 
 ### <a name="accept-terms-and-purchase"></a>Feltételek és vásárlás elfogadása
@@ -168,7 +168,7 @@ Győződjön meg arról, hogy a megvásárolt tartomány szerepel a **app Servic
 Válassza a **Gazdagépnév hozzáadása** lehetőséget.
 
 ### <a name="configure-hostname"></a>Állomásnév konfigurálása
-Az **állomásnév hozzáadása** párbeszédpanelen írja be a app Service tartomány vagy bármely altartomány teljes tartománynevét. Példa:
+Az **állomásnév hozzáadása** párbeszédpanelen írja be a app Service tartomány vagy bármely altartomány teljes tartománynevét. Például:
 
 - kontoso.net
 - www\.kontoso.net

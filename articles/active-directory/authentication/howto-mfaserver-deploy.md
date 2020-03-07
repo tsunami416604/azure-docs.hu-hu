@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53428039055005693f30f63a709105b77fe65f8f
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155230"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378013"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication-kiszolgáló – első lépések
 
@@ -54,7 +54,7 @@ Győződjön meg róla, hogy az Azure Multi-Factor Authenticationhöz használt 
 | Az Azure Multi-Factor Authentication-kiszolgáló követelményei | Leírás |
 |:--- |:--- |
 | Hardver |<li>200 MB merevlemez-terület</li><li>x32-es vagy x64-es verzió futtatására képes processzor</li><li>Legalább 1 GB RAM</li> |
-| Szoftverek |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, minden kiadás</li><li>Windows 8, minden kiadás</li><li>Windows 7, minden kiadás</li><li>Windows Vista, minden kiadás, SP1, SP2</li><li>Microsoft .NET-keretrendszer 4.0</li><li>IIS 7.0 vagy újabb a felhasználói portál vagy a web service SDK telepítésekor</li> |
+| Szoftver |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, minden kiadás</li><li>Windows 8, minden kiadás</li><li>Windows 7, minden kiadás</li><li>Windows Vista, minden kiadás, SP1, SP2</li><li>Microsoft .NET-keretrendszer 4.0</li><li>IIS 7.0 vagy újabb a felhasználói portál vagy a web service SDK telepítésekor</li> |
 | Engedélyek | Tartományi rendszergazda vagy vállalati rendszergazdai fiók Active Directoryhoz való regisztráláshoz |
 
 ### <a name="azure-mfa-server-components"></a>Az Azure MFA-kiszolgáló összetevői
@@ -96,7 +96,7 @@ Ha nem használja az eseménymegerősítési szolgáltatást, a felhasználók p
 Az alábbi lépéseket követve töltse le az Azure Multi-Factor Authentication-kiszolgálót az Azure Portalról:
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
-2. Keresse meg és válassza ki az *Azure Active Directoryt*. Válassza a **biztonság** > **MFA**elemet.
+2. Keresse meg és válassza ki a *Azure Active Directory*. Válassza a **biztonság** > **MFA**elemet.
 3. A **kezelő MFA-kiszolgáló**területen válassza a **kiszolgáló beállításai**lehetőséget.
 4. Válassza a **Letöltés** lehetőséget, és kövesse a letöltési oldalon megjelenő utasításokat a telepítő mentéséhez. 
 

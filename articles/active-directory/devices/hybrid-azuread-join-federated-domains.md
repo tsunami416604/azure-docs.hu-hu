@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28d6e5362df9f41822525af0d256cfd99568d6de
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512130"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377081"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz
 
@@ -106,7 +106,7 @@ Ha Azure AD Connect használatával szeretne hibrid Azure AD-csatlakozást konfi
 
 1. Indítsa el Azure AD Connect, majd válassza a **Konfigurálás**lehetőséget.
 
-   ![Üdvözöljük](./media/hybrid-azuread-join-federated-domains/11.png)
+   ![Üdvözlőképernyő](./media/hybrid-azuread-join-federated-domains/11.png)
 
 1. A **További feladatok** lapon válassza az **eszközbeállítások konfigurálása**lehetőséget, majd kattintson a **tovább**gombra.
 

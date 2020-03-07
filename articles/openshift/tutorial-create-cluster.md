@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
 ms.openlocfilehash: 0e6aecccc19572ee980feb4d816fae1f2b0101b7
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274885"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381460"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift-fürt létrehozása
 
@@ -123,7 +123,7 @@ Például:`VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceGroup
 
 Először kérje le a **meglévő** log-Analytics-munkaterület azonosítóját. Az azonosító a (z) formátumú lesz:
 
-`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}` kérdésre adott válaszban foglalt lépéseket.
+`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`.
 
 Ha nem tudja, hogy a log-Analytics-munkaterület neve vagy az erőforráscsoport, amelyhez a meglévő log-Analytics munkaterület tartozik, lépjen a [log-Analytics munkaterületre](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) , és kattintson a log-Analytics-munkaterületekre. Megjelenik a log-Analytics-munkaterület lap, amely felsorolja a munkaterület nevét és a hozzá tartozó erőforráscsoportot.
 

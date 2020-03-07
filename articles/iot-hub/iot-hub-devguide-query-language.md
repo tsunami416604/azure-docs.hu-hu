@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.openlocfilehash: b224de96f6b6baedc3b57e0245a4c4e8748576b4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767734"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344118"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Az ikrek, a feladatok és az üzenet-útválasztás IoT Hub lekérdezési nyelve
 
@@ -23,7 +23,7 @@ A IoT Hub hatékony, SQL-szerű nyelvet biztosít az [eszközökhöz](iot-hub-de
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="device-and-module-twin-queries"></a>Eszközök és modulok kettős lekérdezései
+## <a name="device-and-module-twin-queries"></a>Eszköz- és modul ikereszköz-lekérdezések
 
 Az ikrek és a [modulok ikrek](iot-hub-devguide-module-twins.md) tetszőleges [JSON-objektumokat](iot-hub-devguide-device-twins.md) tartalmazhatnak címkék és tulajdonságok használatával. A IoT Hub lehetővé teszi, hogy az ikrek és a modul Twins-t egyetlen JSON-dokumentumként kérdezze le, amely tartalmazza az összes Twin-információt.
 
@@ -441,17 +441,17 @@ Ha meg szeretné tudni, hogy a kifejezések szintaxisa milyen szimbólumokat ké
 | function_name| A [függvények](#functions) szakaszban felsorolt függvények. |
 | decimal_literal |Decimális jelöléssel kifejezett lebegőpontos. |
 | hexadecimal_literal |A (z) "0x" karakterláncban kifejezett szám, amelyet hexadecimális számjegyek karakterlánca követ. |
-| string_literal |A karakterlánc-literálok olyan Unicode-karakterláncok, amelyek nulla vagy több Unicode-karakter vagy Escape-kódrészletek sorozatából állnak. A karakterlánc-literálok szimpla idézőjelek vagy idézőjelek közé vannak lefoglalva. Engedélyezett menekülési útvonalak: `\'`, `\"`, `\\``\uXXXX` Unicode-karakterek számára 4 hexadecimális számjegytel megadva. |
+| string_literal |Karakterlánc-literálnak sorozata, nulla vagy több Unicode-karaktereket vagy escape-karaktersorozatokat által képviselt Unicode karakterláncokat is. A karakterlánc-literálok szimpla idézőjelek vagy idézőjelek közé vannak lefoglalva. Engedélyezett menekülési útvonalak: `\'`, `\"`, `\\``\uXXXX` Unicode-karakterek számára 4 hexadecimális számjegytel megadva. |
 
 ### <a name="operators"></a>Operátorok
 
 A következő operátorok támogatottak:
 
-| Családi | Operátorok |
+| Termékcsalád | Operátorok |
 | --- | --- |
 | Aritmetikai |+, -, *, /, % |
-| Logikai |ÉS, VAGY NEM |
-| Összehasonlítás |=,! =, <, >, < =, > =, < > |
+| Logikai |ÉS, VAGY SEM |
+| Összehasonlítás |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Functions
 
@@ -465,42 +465,42 @@ Az útvonalakra vonatkozó feltételekben a következő matematikai függvények
 
 | Függvény | Leírás |
 | -------- | ----------- |
-| ABS (x) | A megadott numerikus kifejezés abszolút (pozitív) értékét adja vissza. |
-| EXP (x) | A megadott numerikus kifejezés exponenciális értékét adja vissza (e ^ x). |
+| ABS(x) | A megadott numerikus kifejezés (pozitív) abszolút értékét adja vissza. |
+| EXP(x) | A megadott numerikus kifejezés exponenciális értékét adja vissza (e ^ x). |
 | TELJESÍTMÉNY (x, y) | A megadott kifejezés értékét adja vissza a megadott hatványra (x ^ y).|
-| NÉGYZET (x) | A megadott numerikus érték négyzetét adja vissza. |
-| FELSŐ határ (x) | A megadott numerikus kifejezésnél nagyobb, vagy azzal egyenlő legkisebb egész értéket adja vissza. |
-| EMELET (x) | A legnagyobb olyan egész számot adja vissza, amely kisebb vagy egyenlő, mint a megadott numerikus kifejezés. |
-| ALÁÍRÁS (x) | A megadott numerikus kifejezés pozitív (+ 1), nulla (0) vagy negatív (-1) előjelét adja vissza.|
-| SQRT (x) | A megadott numerikus érték szögletes gyökerét adja vissza. |
+| NÉGYZET (x) | A megadott számérték négyzetét adja vissza. |
+| CEILING(x) | A legkisebb egész értéket ad vissza, nagyobb vagy egyenlő a megadott numerikus kifejezés. |
+| EMELET (x) | Visszaadja a legnagyobb egész szám kisebb vagy egyenlő a megadott numerikus kifejezés. |
+| SIGN(x) | A pozitív (+ 1), a nulla (0) vagy a megadott numerikus kifejezés mínuszjel (-1) adja vissza.|
+| SQRT(x) | A megadott numerikus érték négyzetgyökét adja vissza. |
 
 Az útvonalakra vonatkozó feltételekben a következő típusú ellenőrzési és öntési függvények támogatottak:
 
 | Függvény | Leírás |
 | -------- | ----------- |
 | AS_NUMBER | A bemeneti karakterláncot számmá alakítja. `noop`, ha a bemenet egy szám; `Undefined`, ha a karakterlánc nem jelöli meg a számot.|
-| IS_ARRAY | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa tömb-e. |
-| IS_BOOL | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa logikai. |
-| IS_DEFINED | Egy logikai értéket ad vissza, amely azt jelzi, hogy a tulajdonsághoz hozzá van-e rendelve érték. |
-| IS_NULL | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa NULL-e. |
-| IS_NUMBER | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa szám-e. |
-| IS_OBJECT | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa JSON-objektum-e. |
+| IS_ARRAY | Egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa egy tömböt ad vissza. |
+| IS_BOOL | Egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa egy logikai érték visszaadása. |
+| IS_DEFINED | Jelzi, ha a tulajdonság hozzá lett rendelve egy érték logikai érték beolvasása. |
+| IS_NULL | Adja vissza egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa null. |
+| IS_NUMBER | Egy logikai értéket, amely azt jelzi, ha a megadott kifejezés típusa egy számot ad vissza. |
+| IS_OBJECT | Egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa egy JSON-objektumot ad vissza. |
 | IS_PRIMITIVE | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa primitív (karakterlánc, logikai, numerikus vagy `null`). |
-| IS_STRING | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa sztring-e. |
+| IS_STRING | Egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa egy karakterláncot ad vissza. |
 
 Az útvonalakra vonatkozó feltételekben a következő karakterlánc-függvények támogatottak:
 
 | Függvény | Leírás |
 | -------- | ----------- |
-| CONCAt (x, y,...) | Egy olyan karakterláncot ad vissza, amely két vagy több karakterlánc-érték összefűzését eredményezi. |
-| Hossz (x) | A megadott karakterlánc-kifejezés karaktereinek számát adja vissza.|
-| ALSÓ (x) | Egy karakterlánc-kifejezést ad vissza, miután a nagybetűs karaktereket a kisbetűs értékre konvertálta. |
-| FELSŐ (x) | Egy karakterlánc-kifejezést ad vissza a kisbetűs karakterek nagybetűssé alakítását követően. |
-| Alkarakterlánc (karakterlánc, Kezdés [, hossz]) | Egy karakterlánc-kifejezés egy részét adja vissza, amely a megadott karakteres nulla alapú pozíciótól kezdődik, és a megadott hosszra, illetve a karakterlánc végére mutat. |
-| INDEX_OF (karakterlánc, töredék) | A második karakterlánc-kifejezés első előfordulásának kezdő pozícióját adja vissza az első megadott karakterlánc-kifejezésen belül, vagy-1 értéket, ha a sztring nem található.|
-| STARTS_WITH (x, y) | Olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc-kifejezés a másodikval kezdődik-e. |
-| ENDS_WITH (x, y) | Egy olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc kifejezése a másodperctel végződik-e |
-| TARTALMAZZA (x, y) | Egy logikai értéket ad vissza, amely azt jelzi, hogy az első karakterlánc-kifejezés tartalmazza-e a másodpercet. |
+| CONCAt (x, y,...) | Legalább két karakterlánc-értékek összetűzésének eredménye karakterláncként adja vissza. |
+| LENGTH(x) | A megadott karakterlánc-kifejezés karakterek számát adja vissza.|
+| ALSÓ (x) | Egy karakterlánc-kifejezés nagybetűt adatok átalakítása kisbetűvé után adja vissza. |
+| FELSŐ (x) | Egy karakterlánc-kifejezés után kisbetűt adatok nagybetűssé alakításával adja vissza. |
+| Alkarakterlánc (karakterlánc, Kezdés [, hossz]) | Már a megadott karakter számolt helyzetét megadja egy karakterlánc-kifejezés részét adja vissza, és továbbra is fennáll, a megadott időtartam, illetve a karakterlánc végén. |
+| INDEX_OF (karakterlánc, töredék) | A második első előfordulásának kezdőpozícióját adja vissza karakterlánc-kifejezés található a megadott karakterlánc első kifejezés, vagy a -1, ha a karakterlánc nem található.|
+| STARTS_WITH (x, y) | Adja vissza egy logikai jelzi-e az első karakterlánc-kifejezés második kezdődik. |
+| ENDS_WITH (x, y) | Adja vissza egy logikai jelzi-e az első karakterlánc-kifejezés második végződik. |
+| TARTALMAZZA (x, y) | Visszaadja egy logikai arról a második-e az első karakterlánc-kifejezést tartalmaz. |
 
 ## <a name="next-steps"></a>Következő lépések
 

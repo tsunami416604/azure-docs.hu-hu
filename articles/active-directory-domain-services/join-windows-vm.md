@@ -9,18 +9,18 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2020
 ms.author: iainfou
-ms.openlocfilehash: d15877107e49c57f8f33b8ec41caeb7d48230b91
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 05705d14db336b15a6ddf2317f9e69464c8e575b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613881"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378545"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Oktatóanyag: Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz
 
 Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, az LDAP, a Kerberos/NTLM hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directoryekkel. Az Azure AD DS felügyelt tartománya lehetővé teszi a tartományhoz való csatlakozást és a felügyeletet az Azure-beli virtuális gépekhez (VM). Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Windows Server rendszerű virtuális gépet, majd hogyan csatlakozhat egy Azure AD DS felügyelt tartományhoz.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Windows Server rendszerű virtuális gép létrehozása
@@ -39,7 +39,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra lesz szüksége:
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
     * Szükség esetén [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services példányt][create-azure-ad-ds-instance].
-* Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
+* Egy olyan felhasználói fiók, amely az Azure AD DS felügyelt tartomány részét képezi.
     * Győződjön meg arról, hogy Azure AD Connect jelszó-kivonat szinkronizálása vagy az önkiszolgáló jelszó-visszaállítás végrehajtása megtörtént, hogy a fiók be tudja jelentkezni az Azure AD DS felügyelt tartományba.
 * Az Azure-beli AD DS virtuális hálózatban üzembe helyezett Azure Bastion-gazdagép.
     * Ha szükséges, [hozzon létre egy Azure Bastion-gazdagépet][azure-bastion].
@@ -153,7 +153,7 @@ A létrehozott virtuális géppel és az Azure Bastion használatával létrehoz
 
     ![Az Azure AD DS felügyelt tartományának meghatározása a csatlakozáshoz](./media/join-windows-vm/join-domain.png)
 
-1. Adja meg a tartományhoz való csatlakozáshoz szükséges tartományi hitelesítő adatokat. Használja az *Azure ad DC-rendszergazdák* csoportjához tartozó felhasználó hitelesítő adatait. Csak a csoport tagjai jogosultak a gépek Azure AD DS felügyelt tartományhoz való csatlakoztatására. A fióknak az Azure AD DS felügyelt tartományhoz vagy Azure AD-bérlőhöz kell tartoznia – az Azure AD-bérlőhöz társított külső könyvtárak fiókjai nem tudnak helyesen hitelesíteni a tartományhoz való csatlakozás során. A fiók hitelesítő adatai a következő módszerek egyikével adhatók meg:
+1. Adja meg a tartományhoz való csatlakozáshoz szükséges tartományi hitelesítő adatokat. Használja az Azure AD DS felügyelt tartomány részét képező felhasználó hitelesítő adatait. A fióknak az Azure AD DS felügyelt tartományhoz vagy Azure AD-bérlőhöz kell tartoznia – az Azure AD-bérlőhöz társított külső könyvtárak fiókjai nem tudnak helyesen hitelesíteni a tartományhoz való csatlakozás során. A fiók hitelesítő adatai a következő módszerek egyikével adhatók meg:
 
     * **UPN formátuma** (ajánlott) – Itt adhatja meg az Azure ad-ben konfigurált felhasználói fiókhoz tartozó egyszerű felhasználónév (UPN) utótagot. Például a felhasználó *CONTOSOADMIN* UPN-utótagja `contosoadmin@aaddscontoso.onmicrosoft.com`. Létezik néhány gyakori felhasználási eset, ha az UPN formátuma megbízhatóan használható a tartományba való bejelentkezéshez a *sAMAccountName* formátum helyett:
         * Ha a felhasználó UPN-előtagja hosszú (például *deehasareallylongname*), akkor előfordulhat, hogy a *sAMAccountName* automatikusan létrejön.
@@ -169,7 +169,7 @@ A létrehozott virtuális géppel és az Azure Bastion használatával létrehoz
 1. Az Azure AD DS felügyelt tartományhoz való csatlakozás folyamatának befejezéséhez indítsa újra a virtuális gépet.
 
 > [!TIP]
-> Tartományhoz csatlakoztathat egy virtuális gépet a PowerShell használatával a [Add-Computer][add-computer] parancsmaggal. A következő példa csatlakozik a *AADDSCONTOSO* tartományhoz, majd újraindítja a virtuális gépet. Ha a rendszer kéri, adja meg az *Azure ad DC-rendszergazdák* csoportjához tartozó felhasználó hitelesítő adatait:
+> Tartományhoz csatlakoztathat egy virtuális gépet a PowerShell használatával a [Add-Computer][add-computer] parancsmaggal. A következő példa csatlakozik a *AADDSCONTOSO* tartományhoz, majd újraindítja a virtuális gépet. Ha a rendszer kéri, adja meg egy olyan felhasználó hitelesítő adatait, aki az Azure AD DS felügyelt tartomány részét képezi:
 >
 > `Add-Computer -DomainName AADDSCONTOSO -Restart`
 >
@@ -218,13 +218,13 @@ Ha olyan kérést kap, amely megkéri a hitelesítő adatok megadását a tartom
 
 A hibaelhárítási lépések elvégzése után próbáljon újra csatlakozni a Windows Server rendszerű virtuális géphez a felügyelt tartományhoz.
 
-* Győződjön meg arról, hogy a megadott felhasználói fiók az *HRE DC-rendszergazdák* csoport tagja.
+* Győződjön meg arról, hogy a megadott felhasználói fiók az Azure AD DS felügyelt tartományhoz tartozik.
 * Győződjön meg arról, hogy a fiók az Azure AD DS felügyelt tartományhoz vagy az Azure AD-bérlőhöz tartozik. Az Azure AD-bérlőhöz társított külső könyvtárak fiókjai nem tudják megfelelően hitelesíteni magukat a tartományhoz való csatlakozás során.
 * Próbálja meg az UPN formátumot használni a hitelesítő adatok megadásához, például `contosoadmin@aaddscontoso.onmicrosoft.com`. Ha sok felhasználó rendelkezik ugyanazzal az UPN-előtaggal a bérlőben, vagy ha az UPN-előtag túl hosszú, akkor előfordulhat, hogy a fiók *sAMAccountName* automatikusan létrejön. Ezekben az esetekben előfordulhat, hogy a fiók *sAMAccountName* formátuma eltér a helyszíni tartományban várttól vagy használattól.
 * Győződjön meg arról, hogy [engedélyezte a jelszó-szinkronizálást][password-sync] a felügyelt tartományhoz. A konfigurációs lépés nélkül a szükséges jelszó-kivonatok nem jelennek meg az Azure AD DS felügyelt tartományában, hogy megfelelően hitelesítse a bejelentkezési kísérletet.
 * Várjon, amíg a jelszó-szinkronizálás be nem fejeződik. A felhasználói fiók jelszavának módosításakor az Azure AD automatikus háttérben történő szinkronizálása frissíti az Azure AD DSban található jelszót. Időbe telik, amíg a jelszó elérhetővé válik a tartományhoz való csatlakozáshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Támogatott topológiák | Microsoft Docs'
+title: 'Azure AD Connect: támogatott topológiák | Microsoft Docs'
 description: Ez a témakör a Azure AD Connect támogatott és nem támogatott topológiáit részletezi.
 services: active-directory
 documentationcenter: ''
@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275215"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376015"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
 Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure AD) topológiákat, amelyek a Azure AD Connect szinkronizálást használják kulcsfontosságú integrációs megoldásként. Ebben a cikkben a támogatott és a nem támogatott konfigurációk is szerepelnek.
@@ -42,7 +42,7 @@ A cikkben található képek jelmagyarázata:
 
 
 > [!IMPORTANT]
-> A Microsoft nem támogatja az olyan konfigurációkon vagy műveleteken kívüli Azure AD Connect-szinkronizálások módosítását vagy működtetését, amelyek hivatalosan dokumentálva vannak. Ezen konfigurációk vagy műveletek bármelyike inkonzisztens vagy nem támogatott állapotba Azure AD Connect szinkronizálást eredményezhet. A Microsoft ezért nem tud műszaki támogatást biztosítani az ilyen környezetekhez.
+> A Microsoft nem támogatja az olyan konfigurációkon vagy műveleteken kívüli Azure AD Connect-szinkronizálások módosítását vagy működtetését, amelyek hivatalosan dokumentálva vannak. Ezen konfigurációk vagy műveletek bármelyike inkonzisztens vagy nem támogatott állapotba Azure AD Connect szinkronizálást eredményezhet. Ennek eredményeképpen a Microsoft nem tud technikai támogatást biztosítani az ilyen üzemelő példányokhoz.
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>Egyetlen erdő, egyetlen Azure AD-bérlő
@@ -192,7 +192,7 @@ Az Azure AD-bérlőket a kialakítás elkülöníti. Ezek a feladatok nem támog
 
 A helyszíni FIM 2010 2016 vagy a GALSync segítségével szinkronizálhatja a felhasználókat a két Exchange-szervezet között. Az egyik szervezet felhasználói idegen felhasználóként vagy partnerként jelennek meg a másik szervezetben. Ezek a különböző helyszíni Active Directory példányok ezután szinkronizálhatók a saját Azure AD-bérlők használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha meg szeretné tudni, hogyan telepítheti Azure AD Connect a forgatókönyvekhez, tekintse meg a [Azure ad Connect egyéni telepítését](how-to-connect-install-custom.md)ismertető témakört.
 
 További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.

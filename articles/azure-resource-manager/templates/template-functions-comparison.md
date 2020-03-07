@@ -4,11 +4,11 @@ description: A Azure Resource Manager-sablonban az értékek összehasonlítás�
 ms.topic: conceptual
 ms.date: 09/05/2017
 ms.openlocfilehash: 67cb1c1f92694ca217e99fb6528fb1d00f2cfcf6
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207310"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358611"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok összehasonlító funkciói
 

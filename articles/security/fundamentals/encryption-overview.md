@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
 ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804037"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358965"
 ---
 # <a name="azure-encryption-overview"></a>Az Azure encryption áttekintése
 
 Ez a cikk áttekintést nyújt a titkosítás használatáról Microsoft Azureban. A titkosítás főbb területeit fedi le, beleértve a inaktív titkosítást, a repülés közbeni titkosítást és a Azure Key Vaultsal való kulcskezelő felügyeletet. Minden szakasz részletesebb információkra mutató hivatkozásokat tartalmaz.
 
-## <a name="encryption-of-data-at-rest"></a>A tárolt adatok titkosítása
+## <a name="encryption-of-data-at-rest"></a>Inaktív adatok titkosítása
 
 A nyugalmi állapotban lévő adatok olyan információkat tartalmaznak, amelyek a fizikai adathordozón található állandó tárolóban találhatók, bármilyen digitális formátumban. Az adathordozó tartalmazhat mágneses vagy optikai adathordozón található fájlokat, archivált adatokat és az adatok biztonsági másolatait. Microsoft Azure különféle adattárolási megoldásokat kínál a különböző igények kielégítéséhez, többek között fájl-, lemez-, blob-és Table Storage-szolgáltatásokhoz. A Microsoft emellett titkosítást is biztosít [Azure SQL Database](../../sql-database/sql-database-technical-overview.md), [Azure Cosmos db](../../data-factory/introduction.md)és Azure Data Lake védelemmel.
 
@@ -63,7 +63,7 @@ A Windows-és Linux-alapú virtuális gépeket az [Azure Disk Encryption](/azure
 
 A titkosítási kulcsok és a titkos kódok védelme a [Azure Key Vault-előfizetésben](../../key-vault/key-vault-overview.md)történik. A Azure Backup szolgáltatás használatával biztonsági mentést készíthet és visszaállíthatja a titkosítási kulcs (KEK) konfigurációját használó titkosított virtuális gépeket (VM).
 
-### <a name="azure-storage-service-encryption"></a>Azure Storage Service Encryption
+### <a name="azure-storage-service-encryption"></a>Azure-Storage Service Encryption
 
 Az Azure Blob Storage-ban tárolt adatok és az Azure-fájlmegosztás a kiszolgálóoldali és az ügyféloldali helyzetekben is titkosítható.
 
@@ -105,7 +105,7 @@ A CLE olyan beépített funkciókkal rendelkezik, amelyekkel az adatok a szimmet
 
 ### <a name="cosmos-db-database-encryption"></a>Adatbázis-titkosítás Cosmos DB
 
-[Azure Cosmos db](../../cosmos-db/database-encryption-at-rest.md) a Microsoft globálisan elosztott, többmodelles adatbázisa. A nem felejtő tárolóban (SSD-meghajtók) Cosmos DB tárolt felhasználói adatforgalom alapértelmezés szerint titkosítva van. Nincsenek be-és kikapcsolható vezérlők. A REST-alapú titkosítás számos biztonsági technológiával valósul meg, többek között a biztonságos kulcsú tárolási rendszerek, a titkosított hálózatok és a titkosítási API-k használatával. A titkosítási kulcsokat a Microsoft felügyeli, és a Microsoft belső iránymutatásai szerint elforgatva.
+[Azure Cosmos db](../../cosmos-db/database-encryption-at-rest.md) a Microsoft globálisan elosztott, többmodelles adatbázisa. A nem felejtő tárolóban (SSD-meghajtók) Cosmos DB tárolt felhasználói adatforgalom alapértelmezés szerint titkosítva van. Nincsenek be-és kikapcsolható vezérlők. Inaktív adatok titkosítását számos biztonsági technológia, többek között a biztonságos kulcs tárolása rendszerek, a titkosított hálózatokat és a titkosítási API-k segítségével van megvalósítva. A titkosítási kulcsokat a Microsoft felügyeli, és a Microsoft belső iránymutatásai szerint elforgatva.
 
 ### <a name="at-rest-encryption-in-data-lake"></a>REST-alapú titkosítás Data Lake
 
@@ -181,7 +181,7 @@ A helyek közötti VPN Gateway-kapcsolattal a helyszíni hálózatot egy IPsec/I
 
 A helyek közötti VPN-kapcsolat a Azure Portal, a PowerShell vagy az Azure CLI használatával konfigurálható egy virtuális hálózathoz.
 
-További információ eléréséhez lásd:
+További információkért lásd:
 
 [Helyek közötti kapcsolat létrehozása a Azure Portalban](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 

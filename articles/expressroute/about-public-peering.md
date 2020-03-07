@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: bae44f67a485546ba29148a114d88df198f7c3e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483088"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361688"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>ExpressRoute nyilvános társának létrehozása és kezelése
 
@@ -28,15 +28,15 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet nyilvános tár
 >A nyilvános társítás elavult. Az új ExpressRoute-áramkörökben nem hozhatók létre nyilvános társak. Ha egy új ExpressRoute-áramkört használ, használja a [Microsoft-partnert](expressroute-circuit-peerings.md#microsoftpeering) az Azure-szolgáltatásokhoz.
 >
 
-## <a name="connectivity"></a>Kapcsolódás
+## <a name="connectivity"></a>Kapcsolatok
 
-A kapcsolat mindig a WAN-ból Microsoft Azure szolgáltatások felé kezdeményezhető. Microsoft Azure szolgáltatás nem tud kapcsolatot létesíteni a hálózattal ezen az útválasztási tartományon keresztül. Ha a ExpressRoute-áramkör engedélyezve van az Azure-beli nyilvános kapcsolatok esetében, az [Azure-ban használt nyilvános IP-tartományokat](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) az áramkörön keresztül érheti el.
+Kapcsolat WAN hálózatból mindig kezdeményezett a Microsoft Azure-szolgáltatásokhoz. Microsoft Azure-szolgáltatások nem lesz képes kezdeményeznek kapcsolatokat a hálózatban az útválasztási tartomány segítségével. Ha a ExpressRoute-áramkör engedélyezve van az Azure-beli nyilvános kapcsolatok esetében, az [Azure-ban használt nyilvános IP-tartományokat](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) az áramkörön keresztül érheti el.
 
-A nyilvános társítás engedélyezése után a legtöbb Azure-szolgáltatáshoz csatlakozhat. Nem engedélyezzük szelektíven olyan szolgáltatások kivételezését, amelyekhez útvonalakat hirdetünk.
+A nyilvános társítás engedélyezése után a legtöbb Azure-szolgáltatáshoz csatlakozhat. Azt teszi lehetővé külön-külön válassza ki a szolgáltatásokat, amelyhez a Microsoft felé haladó útvonalak meghirdetéséhez.
 
 * Az Azure Storage, az SQL Database és a websites szolgáltatás nyilvános IP-címeken elérhető.
 * A nyilvános partneri útválasztási tartományon keresztül privát módon csatlakozhat a nyilvános IP-címeken üzemeltetett szolgáltatásokhoz, beleértve a Cloud Services VIP-címét is.
-* A nyilvános kiszolgáló tartományát a DMZ-hez is összekapcsolhatja, és az interneten keresztüli kapcsolódás nélkül csatlakozhat az összes Azure-szolgáltatáshoz a nyilvános IP-címein.
+* A nyilvános társviszony-létesítési tartományhoz csatlakozni a DMZ-t, és az összes Azure-szolgáltatások a saját nyilvános IP-címek kapcsolat WAN hálózatból nélkül az interneten keresztül.
 
 ## <a name="services"></a>Services
 
@@ -45,13 +45,13 @@ Ez a szakasz a nyilvános társításon keresztül elérhető szolgáltatásokat
 **Támogatott**
 
 * Power BI
-* Az Azure-szolgáltatások többsége támogatott. Jelölje be a közvetlenül a támogatás ellenőrzéséhez használni kívánt szolgáltatást.
+* Az Azure-szolgáltatások többsége támogatottak. Jelölje be a közvetlenül a támogatás ellenőrzéséhez használni kívánt szolgáltatást.
 
 **Nem támogatott:**
-  * CDN
+  * Tartalomkézbesítési hálózat (CDN)
   * Azure Front Door
   * Multi-Factor Authentication kiszolgáló (örökölt)
-  * Forgalomkezelő
+  * Traffic Manager
 
 Egy adott szolgáltatás rendelkezésre állásának ellenőrzéséhez ellenőrizheti a szolgáltatás dokumentációját, és ellenőrizheti, hogy van-e fenntartott tartomány közzétéve az adott szolgáltatás számára. Ezután megkeresheti a cél szolgáltatás IP-tartományait, és összehasonlíthatja az [Azure IP-tartományok és szolgáltatások címkék – nyilvános felhő XML-fájljában](https://www.microsoft.com/download/details.aspx?id=56519)felsorolt tartományokkal. Azt is megteheti, hogy megnyit egy támogatási jegyet a kérdéses szolgáltatáshoz a tisztázás érdekében.
 
@@ -65,7 +65,7 @@ Egy adott szolgáltatás rendelkezésre állásának ellenőrzéséhez ellenőri
 
 ## <a name="custom-route-filters"></a>Egyéni útválasztási szűrők
 
-A hálózaton belül egyéni útválasztási szűrőket is meghatározhat, hogy csak a szükséges útvonalakat használja. Az útválasztási konfigurációval kapcsolatos részletes információkért tekintse meg az [Útválasztás](expressroute-routing.md) lapot.
+Egyéni útvonalszűrőket meghatározhatja csak a szükséges útvonalakat használhat a hálózaton belül. Az útválasztási konfigurációval kapcsolatos részletes információkért tekintse meg az [Útválasztás](expressroute-routing.md) lapot.
 
 ## <a name="powershell"></a>Azure PowerShell lépések
 
@@ -105,7 +105,7 @@ Mivel a nyilvános társítás elavult, nem lehet új ExpressRoute-áramkörön 
    ServiceKey                       : **************************************
    Peerings                         : []
    ```
-2. Konfigurálja az Azure nyilvános társviszony-létesítést a kapcsolatcsoporthoz. A folytatás előtt győződjön meg arról, hogy rendelkezik a következő információkkal.
+2. Konfigurálja az Azure nyilvános társviszony-létesítést a kapcsolatcsoporthoz. Győződjön meg arról, hogy rendelkezik a következő adatokat, mielőtt folytatná.
 
    * Egy /30 alhálózat az elsődleges kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie.
    * Egy /30 alhálózat a másodlagos kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie.
@@ -114,7 +114,7 @@ Mivel a nyilvános társítás elavult, nem lehet új ExpressRoute-áramkörön 
    * Nem kötelező:
    * Egy MD5-kivonat, ha használni kívánja.
 
-   A következő példa futtatásával konfigurálhatja az Azure-beli nyilvános társítást az áramkörhöz
+   Futtassa az alábbi példa konfigurálása az Azure nyilvános társviszony-létesítést a kapcsolatcsoporthoz.
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100
@@ -122,7 +122,7 @@ Mivel a nyilvános társítás elavult, nem lehet új ExpressRoute-áramkörön 
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-   Ha MD5-kivonatot szeretne használni, használja a következő példát:
+   Ha MD5-kivonatot használja, használja a következő példát:
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100  -SharedKey "A1B2C3D4"
@@ -137,7 +137,7 @@ Mivel a nyilvános társítás elavult, nem lehet új ExpressRoute-áramkörön 
 
 ### <a name="getpublic"></a>Az Azure-beli nyilvános partneri kapcsolat részleteinek beszerzése
 
-A konfigurációs adatokat a következő parancsmaggal kérheti le:
+Konfiguráció részleteit az alábbi parancsmaggal kérheti le:
 
 ```azurepowershell-interactive
   $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -147,7 +147,7 @@ A konfigurációs adatokat a következő parancsmaggal kérheti le:
 
 ### <a name="updatepublic"></a>Az Azure nyilvános társ-összevonási konfigurációjának frissítése
 
-A konfiguráció bármely részét frissítheti a következő példán keresztül. Ebben a példában az áramkör VLAN-azonosítója 200 és 600 között frissül.
+Az alábbi példa a konfiguráció bármelyik részét frissítheti. Ebben a példában a kör VLAN-azonosító frissítése folyamatban van 200-ról 600-ra.
 
 ```azurepowershell-interactive
 Set-AzExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 600
@@ -157,7 +157,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ### <a name="deletepublic"></a>Az Azure nyilvános társának törlése
 
-A következő példa futtatásával távolíthatja el a társ-konfigurációt:
+A társviszony-létesítés konfigurációját a következő példa futtatásával távolíthatja el:
 
 ```azurepowershell-interactive
 Remove-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
@@ -169,7 +169,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 [!INCLUDE [CloudShell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-1. Ellenőrizze a ExpressRoute áramkört, és győződjön meg arról, hogy az üzembe helyezése és engedélyezése is megtörténik. Használja a következő példát:
+1. Ellenőrizze a ExpressRoute-kapcsolatcsoport győződjön meg arról, hogy kiosztott és engedélyezett. Használja a következő példát:
 
    ```azurecli-interactive
    az network express-route list
@@ -206,7 +206,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    "type": "Microsoft.Network/expressRouteCircuits]
    ```
 
-2. Konfigurálja az Azure nyilvános társviszony-létesítést a kapcsolatcsoporthoz. A folytatás előtt győződjön meg arról, hogy rendelkezik a következő információkkal.
+2. Konfigurálja az Azure nyilvános társviszony-létesítést a kapcsolatcsoporthoz. Győződjön meg arról, hogy rendelkezik a következő adatokat, mielőtt folytatná.
 
    * Egy /30 alhálózat az elsődleges kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie.
    * Egy /30 alhálózat a másodlagos kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie.
@@ -214,13 +214,13 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat.
    * Nem **kötelező –** Egy MD5-kivonat, ha úgy dönt, hogy használ egyet.
 
-   A következő példa futtatásával konfigurálhatja az Azure-beli nyilvános társítást az áramkörhöz:
+   Futtassa az alábbi példa az Azure nyilvános társviszony-létesítést a kapcsolatcsoporthoz konfigurálása:
 
    ```azurecli-interactive
    az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering
    ```
 
-   Ha MD5-kivonatot szeretne használni, használja a következő példát:
+   Ha MD5-kivonatot használja, használja a következő példát:
 
    ```azurecli-interactive
    az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering --SharedKey "A1B2C3D4"
@@ -231,7 +231,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ### <a name="getpublic"></a>Az Azure nyilvános peering részleteinek megtekintése
 
-A konfigurációs adatokat a következő példa használatával szerezheti be:
+Konfiguráció részleteit az alábbi példa használatával kérheti le:
 
 ```azurecli
 az network express-route peering show -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
@@ -266,7 +266,7 @@ A kimenet a következő példához hasonló:
 
 ### <a name="updatepublic"></a>Az Azure nyilvános társ-összevonási konfigurációjának frissítése
 
-A konfiguráció bármely részét frissítheti a következő példán keresztül. Ebben a példában az áramkör VLAN-azonosítója 200 és 600 között frissül.
+Az alábbi példa a konfiguráció bármelyik részét frissítheti. Ebben a példában a kör VLAN-azonosító frissítése folyamatban van 200-ról 600-ra.
 
 ```azurecli-interactive
 az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
@@ -274,7 +274,7 @@ az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGro
 
 ### <a name="deletepublic"></a>Az Azure nyilvános társának törlése
 
-A következő példa futtatásával távolíthatja el a társ-konfigurációt:
+A társviszony-létesítés konfigurációját a következő példa futtatásával távolíthatja el:
 
 ```azurecli-interactive
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering

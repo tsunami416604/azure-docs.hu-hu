@@ -9,11 +9,11 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.openlocfilehash: 25c047dc9b2ce08ca39e69c6f106e41c5d9bd0dc
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484893"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360975"
 ---
 # <a name="azure-storage-analytics-logging"></a>Az Azure Storage Analytics naplózása
 
@@ -202,7 +202,7 @@ Ha többet szeretne megtudni az egyes fájlok letöltéséről, tekintse meg az 
 
 Ha letöltötte a napló adatait, megtekintheti a bejegyzéseket a fájlokban. Ezek a naplófájlok olyan tagolt szöveges formátumot használnak, amelyet számos napló-olvasási eszköz képes elemezni, beleértve a Microsoft Message Analyzert (további információért lásd: útmutató a [figyeléshez, a diagnosztizáláshoz és a hibaelhárításhoz Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)). A különböző eszközök különböző lehetőségekkel rendelkeznek a naplófájlok tartalmának formázásához, szűréséhez, rendezéséhez, valamint az ad-kereséshez. További információ a tárolási naplózási naplófájl formátumáról és tartalmáról: [Storage Analytics naplózási formátum](/rest/api/storageservices/storage-analytics-log-format) és [Storage Analytics naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Storage Analytics naplózási formátum](/rest/api/storageservices/storage-analytics-log-format)
 * [Naplózott műveletek és állapotüzenetek Storage Analytics](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)

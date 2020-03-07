@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176874"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374435"
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-sablonok az Azure API Management
 
-Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxis és az Ön által választott szerkesztő használatával, például a [tervezők DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), a karakterjel- [erőforrások](api-management-template-resources.md#glyphs)és a [lapok vezérlőelemek](api-management-page-controls.md)széles választékával nagy rugalmasságot biztosíthat a konfiguráláshoz a lapok tartalmának megjelenítése, ahogy az a sablonok használatával illik.  
+Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxisának és a választott szerkesztőnek, például a [tervezők DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), a karakterjel- [erőforrások](api-management-template-resources.md#glyphs)és a [lap vezérlőelemeknek](api-management-page-controls.md)a használatával nagyszerű rugalmasságot biztosít a lapok tartalmának konfigurálásához, ahogy az a fenti sablonok használatával illik.  
 
 Az ebben a szakaszban található sablonok segítségével testre szabhatja az API-lapok tartalmát a fejlesztői portálon.  
   
@@ -89,7 +89,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Type (Típus)|Leírás|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |`apis`|[API összefoglaló](api-management-template-data-model-reference.md#APISummary) entitások gyűjteménye.|Az aktuális felhasználó számára látható API-k.|  
   
@@ -344,7 +344,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Type (Típus)|Leírás|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |`apiId`|sztring|Az aktuális API azonosítója.|  
 |`apiName`|sztring|Az API neve.|  

@@ -1,6 +1,6 @@
 ---
-title: Az Azure DevTest Labs szolgáltatásban laborszabályzatok kezelése |} A Microsoft Docs
-description: Ismerje meg, például a Virtuálisgép-méretek, maximális virtuális gépeket, valamint a felhasználói és leállítás automation laborszabályzatok definiálása.
+title: Tesztkörnyezet-házirendek kezelése a Azure DevTest Labsban | Microsoft Docs
+description: Megtudhatja, hogyan határozhat meg olyan labor-házirendeket, mint a virtuálisgép-méretek, a virtuális gépek maximális száma felhasználónként és a Leállítás automatizálása
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,129 +14,129 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: aa0ffbd69e73ddbef72e0eabf79f2736079c3d23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60636431"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385607"
 ---
-# <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet szabályzatainak kezelését
+# <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>A labor összes szabályzatának kezelése Azure DevTest Labs
 
-Az Azure DevTest Labs lehetővé teszi a költségek és minimálisra csökkenti a pazarlást a Labs-környezetben, mivel kezeli az egyes lab (beállítások) házirendeket. Ez a cikk lépésről lépésre részletesen ismerteti, hogyan minden házirend beállítása.  
+Azure DevTest Labs segítségével szabályozhatja a költségeket, és a laborokban a házirendek (beállítások) kezelésével csökkentheti a hulladékokat a laborokban. Ez a cikk részletesen ismerteti az egyes házirendek beállításának lépéseit.  
 
-## <a name="set-allowed-virtual-machine-sizes"></a>Engedélyezett a virtuális gép méretének beállítása
-A szabályzat beállításához az engedélyezett Virtuálisgép-méretek segít labor hatékonyság engedélyezésével adhatja meg, melyik Virtuálisgép-méretek használata engedélyezett a tesztkörnyezetben. Ez a szabályzat aktiválódik, ha csak Virtuálisgép-méretek ebből a listából virtuális gépek létrehozásához használható.
+## <a name="set-allowed-virtual-machine-sizes"></a>Engedélyezett virtuális gépek méretének beállítása
+Az engedélyezett virtuálisgép-méretek beállítására szolgáló szabályzat segít a laboratóriumi hulladékok minimalizálásában azáltal, hogy meghatározza, hogy mely virtuálisgép-méretek engedélyezettek a laborban. Ha ez a szabályzat aktiválva van, a virtuális gépek létrehozásához csak a listából származó virtuálisgép-méretek használhatók.
 
-1. Az a [az Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)válassza ki a labor, majd válassza ki **Konfigurace a zásady**.
+1. A [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)válassza ki a labort, majd válassza a **konfiguráció és szabályzatok**lehetőséget.
 
-    ![A labor konfigurace a zásady eléréséhez](./media/devtest-lab-set-lab-policy/policies-menu.png)
+    ![A labor konfigurációjának és házirendjeinek elérése](./media/devtest-lab-set-lab-policy/policies-menu.png)
 
-1. A laborgyakorlat **Konfigurace a zásady** ablaktáblán válassza előbb **engedélyezett a virtuálisgép-méretekről**.
+1. A labor **konfiguráció és házirendek** paneljén válassza az **engedélyezett virtuális gépek mérete**lehetőséget.
    
-    ![Engedélyezett virtuálisgép-méretekről](./media/devtest-lab-set-lab-policy/allowed-vm-sizes.png)
+    ![Engedélyezett virtuális gépek méretei](./media/devtest-lab-set-lab-policy/allowed-vm-sizes.png)
 
-1. Válassza ki **a** ahhoz, hogy ezt a házirendet, és **ki** letiltja azt.
+1. Ezzel **a** beállítással engedélyezheti a szabályzatot **, és** letilthatja azt.
 
-1. Ha engedélyezi ezt a házirendet, válassza ki a lab-ben létrehozható egy vagy több Virtuálisgép-méretek.
+1. Ha engedélyezi ezt a házirendet, válasszon ki egy vagy több virtuálisgép-méretet, amelyek a laborban hozhatók létre.
 
 1. Kattintson a **Mentés** gombra.
 
-## <a name="set-virtual-machines-per-user"></a>Virtuális gépeihez felhasználónként
-A szabályzat **virtuális gépek felhasználónként** megadhatja az egyes felhasználók által létrehozott virtuális gépek számát. Ha egy felhasználó megpróbál létrehozni vagy jogcím egy virtuális Gépet, ha a felhasználói korlátot elérte, egy hibaüzenet azt jelzi, hogy a virtuális gép nem létrehozott/állította. 
+## <a name="set-virtual-machines-per-user"></a>Virtuális gépek beállítása felhasználónként
+A **virtuális gépekre** vonatkozó házirend felhasználónként megadhatja, hogy az egyes felhasználók hány virtuális gépet hozhatnak létre. Ha a felhasználó egy virtuális gépet próbál létrehozni vagy igényelni, amikor a felhasználói korlát teljesült, egy hibaüzenet jelzi, hogy a virtuális gép nem hozható létre/nem igényelhető. 
 
-1. A laborgyakorlat **Konfigurace a zásady** ablaktáblán válassza előbb **virtuális gépek felhasználónként**.
+1. A labor **konfiguráció és házirendek** paneljén válassza a **virtuális gépek felhasználónként**lehetőséget.
    
     ![Virtuális gépek felhasználónként](./media/devtest-lab-set-lab-policy/max-vms-per-user.png)
 
-1. Válassza ki **Igen** korlátozni a virtuális gépek száma felhasználónként. Ha nem szeretné korlátozni a virtuális gépek száma felhasználónként, válassza ki a **nem**. Ha **Igen**, adjon meg egy numerikus érték, amely virtuális gépek létrehozása vagy a felhasználó által igényelt. 
+1. Válassza az **Igen** lehetőséget a virtuális gépek számának korlátozásához felhasználónként. Ha nem szeretné, hogy felhasználónként korlátozza a virtuális gépek számát, válassza a **nem**lehetőséget. Ha az **Igen**lehetőséget választja, adjon meg egy numerikus értéket, amely azt jelzi, hogy hány virtuális gépet lehet létrehozni vagy igényelni egy felhasználó. 
 
-1. Válassza ki **Igen** SSD (tartós állapotú lemezt) használó virtuális gépek számának korlátozására. Ha nem szeretné korlátozni a virtuális gépek SSD meghajtókon, válassza ki is **nem**. Ha **Igen**, adja meg, amely SSD segítségével hozható létre virtuális gépek számát jelző érték beolvasása. 
+1. Válassza az **Igen** lehetőséget, ha korlátozni szeretné az SSD-t (SSD-t) használó virtuális gépek számát. Ha nem szeretné korlátozni az SSD-t használó virtuális gépek számát, válassza a **nem**lehetőséget. Ha az **Igen**lehetőséget választja, adjon meg egy értéket, amely az SSD használatával létrehozható virtuális gépek számát jelzi. 
 
 1. Kattintson a **Mentés** gombra.
 
-## <a name="set-virtual-machines-per-lab"></a>Labor beállítása virtuális gépet
-A szabályzat **tesztkörnyezeti virtuális gépet** megadhatja, hogy az aktuális tesztlabor hozható létre virtuális gépek számát. Ha egy felhasználó megpróbál egy virtuális gép létrehozása, ha a labor korlátot elérte, egy hibaüzenet azt jelzi, hogy a virtuális gép nem hozható létre. 
+## <a name="set-virtual-machines-per-lab"></a>Virtuális gépek beállítása tesztkörnyezetben
+A **virtuális gépekre** vonatkozó szabályzat a laborban meghatározza az aktuális laborhoz létrehozható virtuális gépek számát. Ha a felhasználó egy virtuális gépet próbál létrehozni a labor korlátjának teljesülése esetén, a hibaüzenet azt jelzi, hogy a virtuális gép nem hozható létre. 
 
-1. A laborgyakorlat **Konfigurace a zásady** ablaktáblán válassza előbb **tesztkörnyezeti virtuális gépet**.
+1. A labor **konfiguráció és házirendek** paneljén válassza a **virtuális gépek/labor**lehetőséget.
    
-    ![Tesztkörnyezeti virtuális gépet](./media/devtest-lab-set-lab-policy/max-vms-per-lab.png)
+    ![Virtuális gépek/labor](./media/devtest-lab-set-lab-policy/max-vms-per-lab.png)
 
-1. Válassza ki **Igen** korlátozni a labor virtuális gépek száma. Ha nem szeretné korlátozni a labor virtuális gépek száma, válassza ki a **nem**. Ha **Igen**, adjon meg egy numerikus érték, amely virtuális gépek létrehozása vagy a felhasználó által igényelt. 
+1. Válassza az **Igen** lehetőséget a virtuális gépek számának korlátozásához. Ha nem szeretné korlátozni a virtuális gépek számát laborban, válassza a **nem**lehetőséget. Ha az **Igen**lehetőséget választja, adjon meg egy numerikus értéket, amely azt jelzi, hogy hány virtuális gépet lehet létrehozni vagy igényelni egy felhasználó. 
 
-1. Válassza ki **Igen** SSD (tartós állapotú lemezt) használó virtuális gépek számának korlátozására. Ha nem szeretné korlátozni a virtuális gépek SSD meghajtókon, válassza ki is **nem**. Ha **Igen**, adja meg, amely SSD segítségével hozható létre virtuális gépek számát jelző érték beolvasása. 
+1. Válassza az **Igen** lehetőséget, ha korlátozni szeretné az SSD-t (SSD-t) használó virtuális gépek számát. Ha nem szeretné korlátozni az SSD-t használó virtuális gépek számát, válassza a **nem**lehetőséget. Ha az **Igen**lehetőséget választja, adjon meg egy értéket, amely az SSD használatával létrehozható virtuális gépek számát jelzi. 
 
 1. Kattintson a **Mentés** gombra.
 
 ## <a name="set-auto-shutdown"></a>Automatikus leállítás beállítása
-Az automatikus leállítási házirend segítségével tesztlabor hatékonyság azáltal, hogy adja meg a labor virtuális gépek leállítása idejét.
+Az automatikus leállítási szabályzat segít a laborban lévő virtuális gépek leállításának időpontjának meghatározásában.
 
-1. A laborgyakorlat **Konfigurace a zásady** ablaktáblán válassza előbb **automatikus leállítás**.
+1. A labor **konfigurációjának és házirendjeinek** ablaktábláján válassza az **automatikus leállítás**lehetőséget.
    
     ![Automatikus leállítás](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
 
-1. Válassza ki **a** ahhoz, hogy ezt a házirendet, és **ki** letiltja azt.
+1. Ezzel **a** beállítással engedélyezheti a szabályzatot **, és** letilthatja azt.
 
-1. Ha engedélyezi ezt a házirendet, adja meg a jelenlegi laborkörnyezetben található összes virtuális gép leállítása idő (és időzóna).
+1. Ha engedélyezi ezt a házirendet, az aktuális laborban lévő összes virtuális gép leállításához válassza ki az időt (és az időzónát).
 
-1. Adja meg **Igen** vagy **nem** értesítés küldése a megadott automatikus leállítási időpont előtt 15 perc a következő kapcsoló számára. Ha úgy dönt, **Igen**, adjon meg egy webhook URL-végpontot, vagy adja meg, ahol azt szeretné, hogy az értesítés tesznek közzé vagy küldött e-mail-címet. A felhasználó értesítést kap, és elhalasztja a leállítást lehetősége van megadva.
+1. Adja meg az **Igen** vagy a **nem** lehetőséget az értesítés 15 perccel a megadott automatikus leállítási idő előtti elküldéséhez. Ha az **Igen**lehetőséget választja, adjon meg egy WEBHOOK URL-végpontot vagy egy e-mail-címet, amely megadja, hogy hová szeretné közzétenni vagy elküldeni az értesítést. A felhasználó értesítést kap, és a Leállítás elhalasztására van lehetőség.
 
-   További információ a webhookok: [hozzon létre egy webhook vagy API Azure-függvény](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+   A webhookokkal kapcsolatos további információkért lásd: [webhook vagy API Azure-függvény létrehozása](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
 
 1. Kattintson a **Mentés** gombra.
 
-Alapértelmezés szerint engedélyezve van, ezt a házirendet alkalmazza az összes virtuális gépen a jelenlegi tesztkörnyezetben. Távolítsa el ezt a beállítást egy adott virtuális gépről, a virtuális gép kezelése panel megnyitásához, és módosítsa a **automatikus leállítás** beállítás.
+Alapértelmezés szerint, ha engedélyezve van, ez a házirend az aktuális laborban található összes virtuális gépre vonatkozik. Ha egy adott virtuális gépről szeretné eltávolítani a beállítást, nyissa meg a virtuális gép felügyeleti paneljét, és módosítsa az **automatikus leállítás** beállítást.
 
-## <a name="set-auto-shutdown-policy"></a>Az automatikus leállítás szabályzat beállítása
-Labortulajdonosként leállítási ütemezés szerint konfigurálhatja a virtuális gépek a lab-ben. Ezzel a módszerrel mentheti az éppen nem használt gépek fut (inaktív) költségek. A leállítási házirend az összes a labor virtuális gépeken, hanem központilag is menteni a labor felhasználók részéről az erőfeszítés egyes gépeikhez egy ütemezés beállításával kényszerítheti. Ez a funkció lehetővé teszi, hogy állítson be a házirendet a Labs-környezeti ütemezés kezdő ajánlat teljes hozzáférés nem szabályozza a labor számára. Labortulajdonosként konfigurálja a házirendet a következő lépések végrehajtásával:
+## <a name="set-auto-shutdown-policy"></a>Automatikus leállítási szabályzat beállítása
+A labor tulajdonosaként beállíthatja a tesztkörnyezetben lévő összes virtuális gép leállítási ütemtervét. Ennek köszönhetően a nem használt gépektől (inaktív) származó költségek is megmenthetők. Központilag is kényszerítheti a leállítási szabályzatokat az összes laboratóriumi virtuális gépen, de mentheti a labor-felhasználókat arra, hogy ütemezést állítsanak be az egyes gépekhez. Ezzel a szolgáltatással beállíthatja a szabályzatot a labor-ütemtervre, kezdve a teljes hozzáférés szabályozása nélkül, a labor felhasználói számára. A labor tulajdonosaként a következő lépésekkel konfigurálhatja ezt a házirendet:
 
-1. Válassza ki a labor kezdőlapja, **Konfigurace a zásady**.
-2. Válassza ki **automatikus leállítási házirend** a a **ütemezések** szakaszában a bal oldali menüben.
-3. Válassza ki a beállítások. Az alábbi szakaszok ezen lehetőségekről további részleteket biztosítanak: A set-szabályzat vonatkozik, csak a lab-ben létrehozott új virtuális gépek és a már meglévő virtuális gépet. 
+1. A labor kezdőlapján válassza a **konfiguráció és szabályzatok**lehetőséget.
+2. Válassza a bal oldali menü **ütemtervek** szakaszának **automatikus leállítás házirend** elemét.
+3. Válasszon egyet a lehetőségek közül. A következő fejezetekben részletesebb információkat talál ezekről a beállításokról: a set Policy csak a tesztkörnyezetben létrehozott új virtuális gépekre vonatkozik, nem pedig a már meglévő virtuális gépekre. 
 
-    ![Automatikus leállítási házirend-beállítások](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
+    ![Automatikus leállítási házirend beállításai](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 
-### <a name="user-sets-a-schedule-and-can-opt-out"></a>Felhasználó beállítja az ütemezés és kikapcsolhatja az újat
-Ha a labor-e a házirend, a labor felhasználók felülbírálás vagy tilthatják le a Labs-környezeti ütemezés. Ez a beállítás a virtuális gépek automatikus leállítási ütemezés teljes hozzáférést biztosít a labor felhasználók. Labor felhasználók nem változik a virtuális gépek automatikus leállítási ütemezés lapon talál.
+### <a name="user-sets-a-schedule-and-can-opt-out"></a>A felhasználó beállít egy ütemtervet, és letilthatja
+Ha a laborban ezt a házirendet állítja be, akkor a labor felhasználói felülbírálják vagy letiltják a labor-ütemtervet. Ez a beállítás lehetővé teszi a tesztkörnyezet felhasználói számára a virtuális gépek automatikus leállítási ütemtervének teljes körű felügyeletét. A labor felhasználói nem változnak a virtuális gép automatikus leállításának ütemterve lapon.
 
-![Az automatikus leállítás szabályzat 1. lehetőség –](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-1.png)
+![Automatikus leállítási házirend-beállítás – 1](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-1.png)
 
-### <a name="user-sets-a-schedule-and-cannot-opt-out"></a>Felhasználói csoportok ütemezés szerint, és nem vesznek
-Ha a labor-e a házirend, a labor felhasználók felülbírálhatják a Labs-környezeti ütemezés. Azonban ezek nem tilthatók le automatikus leállítási házirend. Ez a beállítás gondoskodik arról, hogy a lab-ben minden gép van-e egy automatikus leállítási ütemezés szerint. Labor a felhasználók a virtuális gépek automatikus leállítási ütemezés frissítése, és leállítást értesítések beállítása.
+### <a name="user-sets-a-schedule-and-cannot-opt-out"></a>A felhasználó beállít egy ütemtervet, és nem tud letiltani
+Ha a laborban ezt a házirendet állítja be, a labor felhasználói felülbírálhatja a laborok ütemtervét. Azonban nem tudják letiltani az automatikus leállítási szabályzatot. Ezzel a beállítással gondoskodhat arról, hogy a laborban lévő összes gép automatikusan leállítási ütemterv alá kerüljön. A labor-felhasználók frissíthetik a virtuális gépek automatikus leállítási ütemtervét, és beállítják a leállítási értesítéseket.
 
-![Az automatikus leállítás szabályzat 2. lehetőség –](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-2.png)
+![Automatikus leállítási házirend lehetőség – 2](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-2.png)
 
-### <a name="user-has-no-control-over-the-schedule-set-by-lab-admin"></a>Felhasználó rendelkezik nem szabályozza a labor-rendszergazda által beállított ütemezés szerint
-Ha a labor-e a házirend, a labor felhasználók nem bírálja felül, és tilthatják le a Labs-környezeti ütemezés. Ez a beállítás lehetővé teszi a labor rendszergazdai a teljes az ütemezés a lab-ben minden gép. Labor felhasználók csak értesítéseket állíthat be automatikus leállítás a virtuális gépek számára.
+### <a name="user-has-no-control-over-the-schedule-set-by-lab-admin"></a>A felhasználónak nincs hozzáférése a labor rendszergazdája által beállított ütemtervhez
+Ha a laborban ezt a házirendet állítja be, a labor-felhasználók nem tudják felülbírálni vagy letiltani a labor-ütemtervet. Ez a beállítás a tesztkörnyezet rendszergazdájának teljes körű vezérlését kínálja a laborban lévő összes gép számára. A labor felhasználói csak automatikus leállítási értesítéseket állíthatnak be a virtuális gépekhez.
 
-![Automatikus leállítási házirend-beállításként – 3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
+![Automatikus leállítási házirend lehetőség – 3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
 
-## <a name="set-autostart"></a>Készlet automatikus indítása
-Az automatikus indítási házirend adja meg, amikor el kell indítani a virtuális gépek, a jelenlegi tesztkörnyezetben teszi lehetővé.  
+## <a name="set-autostart"></a>Automatikus indítás beállítása
+Az automatikus indítási házirend segítségével megadhatja, hogy mikor induljon el az aktuális laborban lévő virtuális gépek.  
 
-1. A laborgyakorlat **Konfigurace a zásady** ablaktáblán válassza előbb **Autostart**.
+1. A labor **konfigurációjának és házirendjeinek** ablaktábláján válassza az **Automatikus indítás**lehetőséget.
    
     ![Automatikus indítás](./media/devtest-lab-set-lab-policy/auto-start.png)
 
-2. Válassza ki **a** ahhoz, hogy ezt a házirendet, és **ki** letiltja azt.
+2. Ezzel **a** beállítással engedélyezheti a szabályzatot **, és** letilthatja azt.
 
-3. Ha engedélyezi ezt a házirendet, adja meg az ütemezett kezdési idő időzóna és az idő vonatkozik, amelyhez a hét napjait. 
+3. Ha engedélyezi ezt a házirendet, határozza meg az ütemezett kezdési időpontot, az időzónát és a hét azon napját, amelyre az idő vonatkozik. 
 
 4. Kattintson a **Mentés** gombra.
 
-Ha engedélyezve van, ezt a házirendet nem automatikusan alkalmazható olyan virtuális gépek, a jelenlegi tesztkörnyezetben. Egy adott virtuális gépre alkalmazza ezt a beállítást, nyissa meg a virtuális gép kezelése panelen, és módosítsa a **Autostart** beállítás.
+Ha engedélyezve van, a rendszer nem alkalmazza automatikusan a szabályzatot az aktuális laborban található virtuális gépekre. Ha egy adott virtuális gépre szeretné alkalmazni a beállítást, nyissa meg a virtuális gép felügyeleti paneljét, és módosítsa az **automatikus indítási** beállítást.
 
-## <a name="set-expiration-date"></a>Lejárati dátum megadása
-Beállíthat egy lejárati dátum, amikor Ön [a virtuális gép létrehozása](devtest-lab-add-vm.md). A **speciális beállítások**, kattintson a naptár ikonra, amelyen a rendszer automatikusan törli a virtuális gép dátumot adhat meg. Alapértelmezés szerint a virtuális gép soha nem jár le.
+## <a name="set-expiration-date"></a>Lejárati dátum beállítása
+[A virtuális gép létrehozásakor](devtest-lab-add-vm.md)megadhat egy lejárati dátumot. A **Speciális beállítások**területen válassza a naptár ikont annak a dátumnak a megadásához, amelyen a virtuális gép automatikusan törlődik. Alapértelmezés szerint a virtuális gép soha nem jár le.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>További lépések
-Miután meghatározott, és a tesztkörnyezethez a különböző virtuális gép házirend-beállításokat alkalmazni, néhány dolog, próbálja meg a következő:
+## <a name="next-steps"></a>Következő lépések
+Miután meghatározta és alkalmazta a tesztkörnyezet különböző virtuálisgép-házirend-beállításait, a következő lépésekkel próbálkozhat:
 
-* [Megismerheti a közös IP-címek](devtest-lab-shared-ip.md) -ismerteti, hogyan megosztott IP címek segítségével a DevTest Labs szolgáltatásban a labor virtuális gépeken való kapcsolódáshoz szükséges nyilvános IP-címek számának csökkentése érdekében.
-* [Költségkezelés konfigurálása](devtest-lab-configure-cost-management.md) -azt ábrázolja, hogyan használhatja a **havi becsült költség Trend** diagram  
-  megtekintéséhez az aktuális havi becsült költség dátum és a hónap teljes költségről.
-* [Egyéni lemezkép készítése](devtest-lab-create-template.md) – a virtuális gép létrehozásakor megad egy talál, amely egy egyéni rendszerkép vagy a Piactéri lemezképet. Ez a cikk bemutatja, hogyan hozzon létre egy egyéni rendszerkép VHD-fájlból.
-* [Piactér képeinek konfigurálása](devtest-lab-configure-marketplace-images.md) – a VM-EK alapján az Azure Marketplace-rendszerképek létrehozása az Azure DevTest Labs támogatja. Ez a cikk bemutatja, hogyan határozhatja meg, ha van ilyen, az Azure Marketplace-rendszerképek lehet a labor virtuális gépek létrehozásakor használt.
-* [Virtuális gép létrehozása tesztkörnyezetben](devtest-lab-add-vm.md) -azt ábrázolja, hogyan hozhat létre egy virtuális Gépet egy alaplemezkép (vagy egyéni vagy a Marketplace-en), és a virtuális gépen összetevők használata.
+* A [megosztott IP-címek ismertetése](devtest-lab-shared-ip.md) – ismerteti, hogyan használják a megosztott IP-címeket a DevTest Labs szolgáltatásban, hogy minimálisra csökkentsék a laboratóriumi virtuális gépekhez való kapcsolódáshoz szükséges nyilvános IP-címek számát.
+* A [Cost Management konfigurálása](devtest-lab-configure-cost-management.md) – bemutatja, hogyan használható a **havi becsült költség trend** diagram  
+  megtekintheti az aktuális hónap becsült költségeit és a tervezett hónap végi költségeket.
+* [Egyéni rendszerkép létrehozása](devtest-lab-create-template.md) – virtuális gép létrehozásakor meg kell adnia egy alapot, amely lehet egyéni rendszerkép vagy Piactéri rendszerkép is. Ez a cikk bemutatja, hogyan hozhat létre egyéni rendszerképet egy VHD-fájlból.
+* [Marketplace-lemezképek konfigurálása](devtest-lab-configure-marketplace-images.md) – Azure DevTest Labs támogatja a virtuális gépek Azure Marketplace-lemezképek alapján történő létrehozását. Ez a cikk bemutatja, hogyan határozható meg, hogy mely, ha van ilyen, Azure Marketplace-lemezképeket használhat a virtuális gépek tesztkörnyezetben való létrehozásakor.
+* [Virtuális gép létrehozása laborban](devtest-lab-add-vm.md) – azt mutatja be, hogyan hozható létre virtuális gép egy alaprendszerképből (akár egyéni, akár piactér), és hogyan használhatók az összetevők a virtuális gépen.
 

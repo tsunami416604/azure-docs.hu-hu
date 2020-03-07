@@ -1,6 +1,6 @@
 ---
-title: Az Azure bejárati ajtajának Service - forgalom-útválasztási módszerei |} A Microsoft Docs
-description: Ez a cikk segít megérteni a különböző forgalom-útválasztási módszer bejárati ajtajának által használt
+title: Azure bejárati ajtó szolgáltatás – forgalom-útválasztási módszerek | Microsoft Docs
+description: Ez a cikk segít megismerni a bejárati ajtó által használt különböző forgalom-útválasztási módszereket
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -12,79 +12,79 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: bd1278db43ba31ed78f13a826a330e16c3bc8d57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736224"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382102"
 ---
-# <a name="front-door-routing-methods"></a>Bejárati ajtajának útválasztási módszerek
+# <a name="front-door-routing-methods"></a>A bejárati ajtó útválasztási módszerei
 
-Azure bejárati ajtajának Service többféle forgalom-útválasztási módszerrel határozza meg, hogyan irányíthatja a HTTP/HTTPS-forgalmat a különböző Szolgáltatásvégpontok támogat. Az egyes bejárati ajtajának elérése ügyfél kérelmet a konfigurált útválasztási módszert alkalmazva lesz annak érdekében, hogy a rendszer továbbítja a kérelmeket a legjobb háttér-példányhoz. 
+Az Azure bevezető ajtó szolgáltatás különböző forgalom-útválasztási módszereket támogat a HTTP/HTTPS-forgalom különböző szolgáltatási végpontokra való továbbításának meghatározásához. A bejárati ajtóhoz tartozó összes ügyfél-kérelem esetében a konfigurált útválasztási módszer lesz alkalmazva, hogy a kérések továbbítása a legjobb háttér-példányra történjen. 
 
-Nincsenek elérhető bejárati ajtó a négy fő fogalmat kell forgalom-útválasztás:
+Négy fő fogalmat kell megnyitnia a forgalom útválasztásához a bejárati ajtóban:
 
-* **[Késés](#latency):** A késés-alapú útválasztás biztosítja, hogy kérések érkeznek a legkisebb késés háttérkomponenseinek elfogadható érzékenységi tartományon belül. Alapvetően a felhasználói kérések érkeznek a hálózati késés megállapodást háttérrendszerek "legközelebbi" készletét.
-* **[Prioritás](#priority):** A különböző háttérrendszerekre is prioritásokat lehet kiosztani, ha szeretne egy elsődleges service háttérrendszer használata minden forgalmat, és adja meg a biztonsági mentések, abban az esetben, ha az elsődleges vagy a biztonsági mentési háttérrendszerek nem érhető el.
-* **[Súlyozott](#weighted):** Ha meg szeretné elosztani a forgalmat egy készletét-háttérrendszerek esetében egyenletesen vagy súly együttható megfelelően, súlyok rendelhet a különböző háttérrendszerekre.
-* **Munkamenet-affinitás:** Munkamenet-affinitás az előtér-gazdagépek vagy tartományokban, ha azt szeretné, hogy egy felhasználó érkező későbbi kérelmeket érkeznek ugyanarra a háttérrendszerre mindaddig, amíg a felhasználó munkamenetét még mindig aktív és a háttér-példány továbbra is jelentések kifogástalan állapotadat-mintavételek alapján konfigurálhatja. 
+* **[Késés](#latency):** A késleltetés-alapú útválasztás biztosítja, hogy a rendszer a kérelmeket az érzékenységi tartományon belül elfogadható legalacsonyabb késési szintekre küldje. A felhasználói kérelmeket alapvetően a "legközelebbi" háttérrendszer-csoportba küldik a hálózati késés tekintetében.
+* **[Prioritás](#priority):** A különböző háttérekhez is rendelhet prioritásokat, ha az elsődleges szolgáltatási hátteret szeretné használni az összes forgalomhoz, és biztonsági mentéseket biztosít, ha az elsődleges vagy a biztonsági mentési háttérrendszer nem érhető el.
+* **[Súlyozott](#weighted):** A súlyok kiosztása a különböző háttérrendszer esetében történik, ha a forgalmat háttérrendszer-készleten keresztül szeretné terjeszteni, akár egyenletesen, akár súlyozási együtthatók alapján.
+* **Munkamenet-affinitás:** Beállíthatja a munkamenet-affinitást a előtér-gazdagépekhez vagy-tartományokhoz, ha azt szeretné, hogy a felhasználótól érkező további kérések ugyanarra a háttérre legyenek küldve, amíg a felhasználói munkamenet továbbra is aktív, és a backend-példány továbbra is Kifogástalan állapotba állítja a Health-mintavételek alapján. 
 
-A Front Door összes konfigurációja tartalmazza a háttérrendszer állapotának monitorozását és az automatizált azonnali globális feladatátvételt. További információkért lásd: [bejárati ajtajának háttérrendszer figyelési](front-door-health-probes.md). A bejárati ajtajának beállítható úgy, hogy egyetlen útválasztási módszer alapján vagy munkahelyi és az alkalmazástól függően kell segítségével több vagy minden útválasztási módszer kombinálva hozhat létre egy optimális útválasztási topológiáját.
+A Front Door összes konfigurációja tartalmazza a háttérrendszer állapotának monitorozását és az automatizált azonnali globális feladatátvételt. További információ: az [első ajtó háttér-figyelése](front-door-health-probes.md). A bejárati ajtót úgy is konfigurálhatja, hogy egyetlen útválasztási módszer alapján működjön, és az alkalmazás igényeinek megfelelően több vagy mindegyik útválasztási módszert is használhat az optimális útválasztási topológia létrehozásához.
 
-## <a name = "latency"></a>Legalacsonyabb késések alapú forgalom-útválasztási
+## <a name = "latency"></a>Legalacsonyabb késések alapú forgalom – Útválasztás
 
-Két vagy több hely háttérrendszereket telepítése szerte a világon számos alkalmazás válaszkészségét növelheti irányítaná a forgalmat, hogy a végfelhasználók számára "legközelebb" helyre. Számára a bejárati ajtajának konfigurációt az alapértelmezett forgalom-útválasztási módszer kéréseket a végfelhasználók számára a bejárati ajtajának környezetből, amely a kérés érkezett a legközelebbi háttérrendszere továbbítja. A csomópontválasztásos architektúra az Azure bejárati ajtajának Service kombinálva, ez a megközelítés biztosítja, hogy, hogy a végfelhasználók get maximális teljesítmény személyre szabott mindegyike saját helye alapján.
+A háttérrendszer két vagy több helyen történő üzembe helyezése a világ számos pontján javíthatja a különböző alkalmazások rugalmasságát azáltal, hogy az útválasztási forgalmat a végfelhasználók számára legközelebb eső helyre irányítja. Az alapértelmezett forgalom – a bejárati ajtó konfigurációjának útválasztási módszere továbbítja a végfelhasználók kéréseit a legközelebb háttérbe a kérést befogadó háztól. Ez a megközelítés biztosítja, hogy a végfelhasználók a saját helyük alapján a maximális teljesítmény személyre szabott teljesítményt kapjanak.
 
-A "legközelebbi" háttér nem feltétlenül legközelebbi mért földrajzi távolságra. Ehelyett bejárati ajtajának hálózati késés megvizsgálja, hogy a legközelebbi háttérrendszerek határozza meg. Tudjon meg többet [bejárati ajtajának útválasztási architektúra](front-door-routing-architecture.md). 
+A "legközelebb" háttér nem feltétlenül a legközelebbi földrajzi távolság alapján mérve. Ehelyett a bejárati ajtó határozza meg a legközelebbi háttereket a hálózati késés mérésével. További információ a [bejárati ajtó útválasztási architektúráján](front-door-routing-architecture.md). 
 
-Az alábbi, az általános döntési folyamatot:
+Alább látható a teljes döntési folyamat:
 
-| Rendelkezésre álló háttérkomponensei | Prioritás | Késés jel (állapotadat-mintavétel alapján) | Súlyok |
+| Elérhető háttérrendszer | Prioritás | Késési jel (állapot-mintavétel alapján) | Súlyozással |
 |-------------| ----------- | ----------- | ----------- |
-| Először is, válassza ki az engedélyezett és a visszaadott kifogástalan háttérkomponenseinek (200 OK) az állapotmintához. Tegyük fel, nincsenek hat háttérrendszerek A, B, C, D, E, és az F, és a közöttük lévő C nem kifogástalan, és E le van tiltva. Így elérhető háttérrendszerek listája a következő A, B, D és F.  | Ezután a rendelkezésre állók közül a legmagasabb prioritást háttérrendszerek ki van jelölve. Tegyük fel háttérrendszer A, B és D prioritása 1 és a háttérrendszer F 2-es prioritást. Így a kiválasztott háttérrendszerek lesz A, B és d| Válassza ki a késési tartományon (legkisebb késés & megadott ms késést és nagybetűk megkülönböztetése)-alapú háttérkomponensek. Tegyük fel, ha egy 15 ms, a B kiszolgáló lesz az ms 30 és D, erről a bejárati ajtajának környezetben, ahol a kérés érkezett, és késés érzékenységi 30 ms, akkor legkisebb késés készlet magában foglalja a háttérrendszer A és B 60 ms, mert D túli 30 ms erről a legközelebbi háttérrendszerhez, amely rögzíti. | Végül bejárati ajtajának a rendszer Ciklikus időszeleteléses a forgalmat, többek között a megadott súlyok aránya háttérrendszereket végső kiválasztott készletét. Tegyük fel, A háttér-e legalább 5 és a háttérkiszolgáló B súlyú, 8, majd a forgalom szétosztani 5:8, többek között a és b háttérrendszerek aránya |
+| Először válassza ki az összes engedélyezett és kifogástalan állapotú (200 OK) háttérrendszer állapotát. Tegyük fel, hogy hat háttér van A, B, C, D, E és F, és ezek közül C nem kifogástalan, és az E le van tiltva. Így a rendelkezésre álló hátterek listája A, B, D és F.  | Ezután a legfontosabb prioritási háttérrendszer van kiválasztva a rendelkezésre állók közül. Tegyük fel, hogy az A, A B és A D háttér 1. prioritással rendelkezik, a háttérbeli F prioritása pedig 2. Így A kiválasztott háttérrendszer A, B és D lesz.| Válassza ki a késési tartománnyal rendelkező háttereket (a megadott ms-os késleltetési idő & késési érzékenysége). Tegyük fel, hogy ha a 15 MS, B 30 MS, és 60 D az a bejárati ajtót, ahol a kérelem kirakodása és a késés érzékenysége 30 MS, akkor a legalacsonyabb késési készlet az A és A B háttérből áll, mivel a D az a legközelebbi háttértől számított 30 MS távolságon kívül esik. | Végül a bejárati ajtó a kiválasztott súlyok arányában a háttérrendszer utolsó kijelölt készlete közötti adatforgalomra kerekíti a forgalmat. Tegyük fel, hogy ha az A backend 5 és a "B" háttérbeli súlyozása 8, akkor a forgalom a 5:8 arányban lesz elosztva az A és A B háttérrendszer között. |
 
 >[!NOTE]
-> Alapértelmezés szerint a késés érzékenységi tulajdonság értéke 0 ms, vagyis, mindig továbbítja a kérést a leggyorsabb háttérrendszert.
+> Alapértelmezés szerint a késleltetési érzékenység tulajdonság értéke 0 MS, azaz mindig továbbítja a kérést a leggyorsabb rendelkezésre állási háttérnek.
 
 
-## <a name = "priority"></a>Prioritásalapú forgalom-útválasztási
+## <a name = "priority"></a>Prioritáson alapuló forgalom – Útválasztás
 
-Gyakran egy szervezet szeretné a szolgáltatások megbízhatóságot biztosítanak egy vagy több biztonsági mentési szolgáltatás telepítésével, abban az esetben, ha az elsődleges szolgáltatás leáll. A teljes Ez a topológia is nevezzük aktív/készenléti vagy az aktív/passzív telepítési topológia. A "Priority" forgalom-útválasztási módszer lehetővé teszi, hogy az Azure-ügyfelek egyszerűen implementálni a feladatátvételi minta.
+A szervezet gyakran szeretne megbízhatóságot biztosítani a szolgáltatásaihoz egy vagy több biztonsági mentési szolgáltatás üzembe helyezése esetén, ha az elsődleges szolgáltatás leáll. Az iparágban ezt a topológiát aktív/készenléti vagy aktív/passzív telepítési topológiának is nevezzük. A "prioritás" forgalom – az útválasztási módszer lehetővé teszi, hogy az Azure-ügyfelek könnyedén implementálják ezt a feladatátvételi mintát.
 
-Az alapértelmezett bejárati ajtajának háttérrendszerek az azonos prioritású listáját tartalmazza. Alapértelmezés szerint bejárati ajtajának küld forgalmat csak a legmagasabb prioritást háttérrendszerek (prioritás a legalacsonyabb érték), a háttérrendszerek elsődleges készletét. Az elsődleges háttérrendszerek nem érhetők el, ha az bejárati ajtajának irányítja a forgalmat a másodlagos készletét háttérrendszerek (prioritás a második legkisebb metrikájút érték). Ha az elsődleges és másodlagos háttérrendszerek nem érhetők el, áramlik a forgalom, a harmadik, és így tovább. A háttérrendszer rendelkezésre állását a konfigurált állapota (engedélyezve vagy letiltva) alapul, és állapota határozza meg, a folyamatban lévő háttérrendszer állapotának mintavételei.
+Az alapértelmezett bejárati ajtó a háttérrendszer azonos prioritású listáját tartalmazza. Alapértelmezés szerint a bevezető ajtó csak a legfontosabb prioritási háttérrendszer (a prioritás legalacsonyabb értéke) esetében küld forgalmat, azaz a háttérrendszer elsődleges készletét. Ha az elsődleges háttér nem érhető el, a bevezető ajtó a háttérrendszer másodlagos készletére irányítja át a forgalmat (a prioritás második legalacsonyabb értéke). Ha az elsődleges és a másodlagos háttérrendszer nem érhető el, a forgalom a harmadikra kerül, és így tovább. A háttérrendszer rendelkezésre állása a beállított állapoton (engedélyezve vagy letiltva), valamint az állapotú Szondák által meghatározott aktuális háttérbeli állapoton alapul.
 
-### <a name="configuring-priority-for-backends"></a>A háttérrendszerek prioritás konfigurálása
+### <a name="configuring-priority-for-backends"></a>A háttérrendszer prioritásának konfigurálása
 
-A háttérkészlet, a bejárati ajtajának konfigurációs belül a háttérrendszereket mindegyike rendelkezik tulajdonságot, "Priority", amely 1 és 5 közötti szám lehet. A Azure bejárati ajtajának szolgáltatás explicit módon Ez a tulajdonság használatával az egyes háttérrendszerek háttérrendszer prioritás konfigurálását. Ez a tulajdonság 1 és 5 közötti értéket. Alacsonyabb érték egy nagyobb prioritást jelölnek. Háttérrendszerek megoszthatja a prioritási értékek.
+Az első ajtó konfigurációjában a háttér-készletben található összes háttérrendszer egy "priority" nevű tulajdonsággal rendelkezik, amely 1 és 5 közötti szám lehet. Az Azure bejárati ajtó szolgáltatásával az egyes háttérrendszer esetében explicit módon konfigurálja a háttér prioritását. Ez a tulajdonság 1 és 5 közötti érték. Az alacsonyabb értékek magasabb prioritást jelentenek. A hátterek megoszthatják a prioritási értékeket.
 
-## <a name = "weighted"></a>Súlyozott forgalom-útválasztási módszer
-"Súlyozott" forgalom-útválasztási módszer lehetővé teszi, hogy egyenletesen osztja el a forgalmat, vagy egy előre meghatározott súlyozási használandó.
+## <a name = "weighted"></a>Súlyozott forgalom – útválasztási módszer
+A "súlyozott" forgalom-útválasztási módszer lehetővé teszi, hogy egyenletesen ossza el a forgalmat, vagy használjon előre definiált súlyozást.
 
-Súlyozott forgalom-útválasztási módszer esetében a súlyt rendel az egyes háttérrendszerek a háttérkészlet bejárati ajtajának konfigurációjában. A súlyok 1 és 1000 közötti egész számok. Ez a paraméter '50' alapértelmezett súlyozást használ.
+A súlyozott forgalom – útválasztási módszernél a háttérbeli készlet előtérben lévő konfigurációjában minden egyes háttérhez hozzá kell rendelni a súlyozást. A súlyok 1 és 1000 közötti egész számok. Ez a paraméter az alapértelmezett "50" súlyozást használja.
 
-Az elfogadott késés érzékenységi (meghatározottak szerint) belül elérhető háttérrendszerek listájában, többek között a forgalmat egy Ciklikus időszeleteléses mechanizmust megadott súlyok aránya lekérdezi terjesztése. Ha a késés érzékenységi értéke 0 ezredmásodperc, majd ezt a tulajdonságot nem lépnek életbe, kivéve ha az azonos hálózati késéssel rendelkező két háttérrendszerek. 
+Az elfogadott késési érzékenységen belüli elérhető háttérrendszer (ahogy meg van adva) többek között a forgalom a megadott súlyok arányában egy ciklikus időszeletelési mechanizmusban kerül kiosztásra. Ha a késési érzékenység 0 ezredmásodpercre van beállítva, akkor ez a tulajdonság nem lép érvénybe, kivéve, ha két háttérrel rendelkezik ugyanazzal a hálózati késéssel. 
 
-A súlyozott mód néhány hasznos forgatókönyveket teszi lehetővé:
+A súlyozott módszer néhány hasznos forgatókönyvet is lehetővé tesz:
 
-* **Az alkalmazásfrissítés fokozatos**: Forgalom átirányítása az új háttérrendszer százalékát, és fokozatosan növelje a forgalom a többi háttérrendszerek névértéken életre idővel.
-* **Alkalmazás migrálását az Azure**: Hozzon létre egy háttérkészlet Azure és a külső háttérrendszerek. Állítsa be az új háttérrendszerek előnye a háttérrendszerek súlyát. Fokozatosan beállíthat ez kezdve az új háttérrendszerek le van tiltva, amelyek majd hozzá kell rendelni őket a legalacsonyabb súlyok lassan növelje, szintre, ahol a legnagyobb forgalmú tartanak. Majd végül a kevésbé előnyben részesített háttérrendszerek letiltása és eltávolításával, majd a készletből.  
-* **Felhőbeli tartalékkapacitás további kapacitás**: Gyorsan bontsa ki a-felhőbe egy helyi központi mögött bejárati ajtajának helyezésével. A felhőben extra kapacitásra van szüksége, amikor hozzáadása vagy további háttérrendszerek engedélyezze, és adja meg, milyen forgalom részét az egyes háttérrendszerek irányul.
+* **Fokozatos alkalmazás frissítése**: az új háttér felé irányuló forgalom százalékos arányának kiosztása, és az idő múlásával fokozatosan növelheti a forgalmat a többi háttérrel való egyenrangúság érdekében.
+* **Alkalmazások áttelepítése az Azure**-ba: hozzon létre egy háttér-készletet az Azure-ban és a külső háttérrendszer használatával. Állítsa be a háttérrendszer súlyozását úgy, hogy az új háttérrendszer legyen előnyben részesíteni. Fokozatosan beállíthatja, hogy az új háttérrendszer le legyen tiltva, majd hozzárendeli a legalacsonyabb súlyozást, és lassan növelje azokat a szinteket, ahol a legtöbb forgalmat megkezdik. Végül tiltsa le a kevésbé preferált háttereket, és távolítsa el őket a készletből.  
+* **Felhőbeli felskálázás a további kapacitáshoz**: gyorsan kiterjesztheti a helyszíni üzembe helyezést a felhőbe azáltal, hogy az első ajtót helyezi el. Ha további kapacitásra van szüksége a felhőben, több háttér hozzáadására és engedélyezésére is lehetősége van, és megadhatja, hogy a forgalom milyen hányada kerüljön az egyes háttérbe.
 
 ## <a name = "affinity"></a>Munkamenet-affinitás
-Munkamenet-affinitás nélküli alapértelmezés szerint bejárati ajtajának továbbítja a terheléselosztás konfigurációs, különösen az késleltetések a különböző háttérrendszereket módosítása esetén, vagy ha a terhelés alapján különböző háttérrendszereket az ugyanazon ügyféltől érkező kérések ugyanaz a felhasználó a különböző kérésekhez egy másik bejárati ajtajának környezetben Sarkvidék. Egyes állapotalapú alkalmazások vagy forgatókönyvek esetében viszont előnyösebb, ha az ugyanazon felhasználótól érkező későbbi kérelmek ugyanarra a háttérrendszerre kerülnek, amely az első kérelmet feldolgozta. A cookie-alapú munkamenet-affinitás akkor hasznos, ha ugyanazon a háttérrendszeren szeretne tartani egy felhasználói munkamenetet. Felügyelt bejárati ajtajának cookie-k használatával Azure bejárati ajtajának Service irányíthatók forgalmát háttérkiszolgálóra egy felhasználói munkamenetet ugyanarra a háttérrendszerre feldolgozás céljából, ha a háttérrendszer állapota kifogástalan, és a felhasználói munkamenet még nem járt le. 
+Alapértelmezés szerint a munkamenet-affinitás nélkül a bejárati ajtó továbbítja az azonos ügyféltől származó kérelmeket a különböző háttérrendszer-beállításokhoz a terheléselosztási konfiguráció alapján, különösen a különböző háttérrendszer-változások késése esetén, vagy ha az azonos felhasználótól érkező különböző kérések egy másik bejárati ajtós környezetben landol. Egyes állapotalapú alkalmazások vagy forgatókönyvek esetében viszont előnyösebb, ha az ugyanazon felhasználótól érkező későbbi kérelmek ugyanarra a háttérrendszerre kerülnek, amely az első kérelmet feldolgozta. A cookie-alapú munkamenet-affinitás akkor hasznos, ha ugyanazon a háttérrendszeren szeretne tartani egy felhasználói munkamenetet. A bejárati ajtók által felügyelt cookie-k használatával az Azure bejárati ajtó szolgáltatás a felhasználói munkamenetből egy adott háttérre irányíthatja a további forgalmat, ha a háttér állapota Kifogástalan, és a felhasználói munkamenet nem járt le. 
 
 A munkamenet-affinitást az előtérbeli gazdagép szintjén engedélyezheti minden konfigurált tartomány (vagy altartomány) számára. Az engedélyezés után a Front Door hozzáad egy cookie-t a felhasználói munkamenethez. A cookie-alapú munkamenet-affinitás lehetővé teszi a Front Door számára, hogy azonos IP-cím esetén is azonosítsa a különböző felhasználókat, amely egyenletesebb forgalomelosztást tesz lehetővé a különböző háttérrendszerek között.
 
 A cookie élettartama megegyezik a felhasználói munkamenet élettartamával, mivel a Front Door jelenleg csak a munkameneti cookie-kat támogatja. 
 
 > [!NOTE]
-> Nyilvános proxyk zavarhatják munkamenet-affinitás. Ez azért van így, mert egy munkamenet-affinitási cookie-k hozzáadása a választ, amely nem hajtható végre, ha a válasz gyorsítótárazható, azt lenne zavarja a cookie-kat, ugyanazt az erőforrást igénylő ügyfelek számára a bejárati ajtajának munkamenetet megköveteli. Ennek megelőzése érdekében a munkamenet-affinitás fog **nem** létesíthető, ha a háttérrendszer gyorsítótárazható választ küld, amikor kísérlet történik ez. Ha a munkamenet már létrejött, nem számít, ha a válasz a háttérbeli gyorsítótárazható.
-> Munkamenet-affinitás jön létre a következő körülmények között **, kivéve, ha** a választ egy HTTP-304 állapotkódja:
-> - A válasz beállítása adott értékkel rendelkezik a ```Cache-Control``` fejlécet, amely megakadályozza a gyorsítótárazás, például a "privát" vagy a no-store ".
-> - A válasz tartalmaz egy ```Authorization``` fejlécet, amely nem járt le.
-> - A válasz állapotkódja egy HTTP 302.
+> A nyilvános proxyk megakadályozhatják a munkamenet-affinitást. Ennek az az oka, hogy a munkamenet létrehozásához a bejárati ajtót kell hozzáadni egy munkamenet-affinitási cookie-nak a válaszhoz való hozzáadásához, ami nem végezhető el, ha a válasz gyorsítótárazható, mert az adott erőforrást kérő más ügyfelek cookie-jait megszakítja. Ennek elleni védelem érdekében a munkamenet-affinitás **nem** lesz létrehozva, ha a háttér-kezelő gyorsítótárazható választ küld a kísérlet során. Ha a munkamenet már létrejött, nem számít, hogy a háttérbeli válasz gyorsítótárazható-e.
+> A munkamenet-affinitás a következő esetekben lesz létrehozva, **kivéve, ha** a válasz http 304 állapotkódot tartalmaz:
+> - A válasz meghatározott értékekkel rendelkezik a gyorsítótárazást megakadályozó ```Cache-Control``` fejléchez, például "Private" vagy "Store".
+> - A válasz olyan ```Authorization``` fejlécet tartalmaz, amely nem járt le.
+> - A válasz HTTP 302 állapotkódot tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

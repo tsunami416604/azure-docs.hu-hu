@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.openlocfilehash: 31ad7a9d1108adc9071812454419252a813cb93e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194869"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364476"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Átviteli sebesség kiosztása tárolókra és adatbázisokra
 
@@ -20,7 +20,7 @@ Egy Azure Cosmos database tárolók több felügyeleti egység. Egy adatbázis s
 A Azure Cosmos DB segítségével két részletességgel kiépítheti az átviteli sebességet:
  
 - Azure Cosmos-tárolók
-- Az Azure Cosmos Database.
+- Azure Cosmos-adatbázisok
 
 ## <a name="set-throughput-on-a-container"></a>Átviteli sebesség beállítása egy tárolón  
 
@@ -111,7 +111,7 @@ A tárolók vagy adatbázisok kiépített átviteli sebességét bármikor mére
 |Egy adott tároló logikai partíció egységenkénti maximális adatátviteli sebesség|10 ezer kérelemegység|10 ezer kérelemegység|
 |Maximális tárterület (adatok + index) egy adott tároló logikai partíciónként|20 GB|20 GB|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [logikai partíciókhoz](partition-data.md).
 * Útmutató az [átviteli sebesség Azure Cosmos-tárolón](how-to-provision-container-throughput.md)való kiépítéséhez.

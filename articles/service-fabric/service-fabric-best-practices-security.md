@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551760"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365071"
 ---
 # <a name="azure-service-fabric-security"></a>Az Azure Service Fabric biztonsága 
 
@@ -210,13 +210,13 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 ## <a name="azure-firewall"></a>Azure Firewall
 A [Azure Firewall felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely megvédi az Azure-Virtual Network erőforrásait. Ez egy teljesen állapot-nyilvántartó tűzfal, amely beépített, magas rendelkezésre állású és korlátlan Felhőbeli méretezhetőséggel rendelkezik.](https://docs.microsoft.com/azure/firewall/overview) Ez lehetővé teszi, hogy a kimenő HTTP/S forgalmat a teljes tartománynevek (FQDN) egy adott listájára korlátozza, beleértve a helyettesítő kártyákat is. Ehhez a szolgáltatáshoz nem szükséges SSL-lezárás. Javasoljuk, hogy a Windows-frissítések [Azure Firewall FQDN-címkéit](https://docs.microsoft.com/azure/firewall/fqdn-tags) használja, és engedélyezze a hálózati forgalmat a Microsoft Windows Update végpontok számára a tűzfalon keresztül. [Azure Firewall üzembe helyezése sablon használatával](https://docs.microsoft.com/azure/firewall/deploy-template) a Microsoft. Network/azureFirewalls erőforrás-sablon definícióját tartalmazza. Az Service Fabric alkalmazások számára közös tűzfalszabályok lehetővé teszik a következők használatát a fürtök virtuális hálózata számára:
 
-- \* download.microsoft.com
-- \* servicefabric.azure.com
+- *download.microsoft.com
+- *servicefabric.azure.com
 - *.core.windows.net
 
 Ezek a tűzfalszabályok kiegészítik az engedélyezett kimenő hálózati biztonsági csoportokat, amelyek a ServiceFabric és a tárterületet is tartalmazzák a virtuális hálózatból engedélyezett célhelyként.
 
-## <a name="tls-12"></a>TLS 1.2
+## <a name="tls-12"></a>TLS 1,2
 [HKT](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
 ## <a name="windows-defender"></a>Windows Defender 

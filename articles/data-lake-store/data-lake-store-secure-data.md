@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Lake Storage Gen1 tárolt adatok védelme |} A Microsoft Docs
-description: Ismerje meg, hogyan használata az adatok megóvására az Azure Data Lake Storage Gen1 csoportok és hozzáférés-vezérlési listák
+title: A Azure Data Lake Storage Gen1 tárolt adatvédelem védelme | Microsoft Docs
+description: Megtudhatja, hogyan védheti meg Azure Data Lake Storage Gen1 a csoportok és hozzáférés-vezérlési listák használatával az adatvédelmet
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,33 +13,33 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60198262"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361392"
 ---
-# <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 tárolt adatok védelme
-Az adatok védelme az Azure Data Lake Storage Gen1 egy három lépéses megközelítést.  Mindkét szerepköralapú hozzáférés-vezérlés (RBAC), és a hozzáférés-vezérlési listák (ACL) kell állítani a felhasználók és biztonsági csoportok adatokhoz való hozzáférés teljes mértékű engedélyezéséhez.
+# <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>A Azure Data Lake Storage Gen1 tárolt adatvédelem védelme
+A Azure Data Lake Storage Gen1ban lévő adatvédelme egy három lépésből álló megközelítés.  Mind a szerepköralapú hozzáférés-vezérlést (RBAC), mind a hozzáférés-vezérlési listákat (ACL-eket) úgy kell beállítani, hogy teljes mértékben engedélyezzék a felhasználók és biztonsági csoportok számára az adathozzáférést.
 
-1. Először hozzon létre biztonsági csoportokat az Azure Active Directory (AAD). A biztonsági csoportok használatban vannak a szerepköralapú hozzáférés-vezérlés (RBAC) megvalósítása az Azure Portalon. További információkért lásd: [szerepköralapú hozzáférés-vezérlés a Microsoft Azure-ban](../role-based-access-control/role-assignments-portal.md).
-2. Data Lake Storage Gen1 fiókjához hozzárendelni az AAD biztonsági csoportokat. Ez vezérli a hozzáférést a portál vagy API-k a portál és a felügyeleti műveletek a Data Lake Storage Gen1 fiókhoz.
-3. Hozzáférés-vezérlési listák (ACL) a Data Lake Storage Gen1 fájlrendszerben az AAD biztonsági csoportokat rendeljen hozzá.
-4. Data Lake Storage Gen1 lévő adatokat elérő ügyfelek emellett egy IP-címtartományt is beállíthat.
+1. Első lépésként hozzon létre biztonsági csoportokat a Azure Active Directoryban (HRE). Ezek a biztonsági csoportok szerepköralapú hozzáférés-vezérlés (RBAC) megvalósítására szolgálnak Azure Portalban. További információ: [szerepköralapú Access Control Microsoft Azure](../role-based-access-control/role-assignments-portal.md).
+2. Rendelje hozzá a HRE biztonsági csoportokat a Data Lake Storage Gen1 fiókhoz. Ez szabályozza a Data Lake Storage Gen1 fiók hozzáférését a portálról vagy API-kból a portálról és a felügyeleti műveletekről.
+3. Rendelje hozzá a HRE biztonsági csoportokat hozzáférés-vezérlési listákként (ACL) a Data Lake Storage Gen1 fájlrendszerben.
+4. Emellett beállíthat egy IP-címtartományt is olyan ügyfelek számára, akik hozzáférhetnek a Data Lake Storage Gen1 található adatelérési pontokhoz.
 
-Ez a cikk útmutatást nyújt a fenti feladatok elvégzéséhez az Azure portal használatával. Hogyan valósítja meg a Data Lake Storage Gen1 biztonsági a fiók és adatok szintjén a részletes információkért lásd: [biztonság az Azure Data Lake Storage Gen1](data-lake-store-security-overview.md). Hogyan találhatók meg hozzáférés-vezérlési listák Data Lake Storage Gen1 részletes információkért lásd: [áttekintése a hozzáférés-vezérlés a Data Lake Storage Gen1](data-lake-store-access-control.md).
+Ez a cikk azt ismerteti, hogyan használható a Azure Portal a fenti feladatok végrehajtásához. Részletes információk arról, hogy a Data Lake Storage Gen1 hogyan valósítja meg a biztonságot a fiók és az adatok szintjén, lásd: [Biztonság a Azure Data Lake Storage Gen1ban](data-lake-store-security-overview.md). Az ACL-ek Data Lake Storage Gen1-ben való megvalósításával kapcsolatos részletes információkért lásd: [a Data Lake Storage Gen1 Access Control áttekintése](data-lake-store-access-control.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **A Data Lake Storage Gen1 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [Ismerkedés az Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
+* **Egy Data Lake Storage Gen1-fiók**. A létrehozásával kapcsolatos útmutatásért tekintse meg az Ismerkedés [a Azure Data Lake Storage Gen1rel](data-lake-store-get-started-portal.md) című témakört.
 
-## <a name="create-security-groups-in-azure-active-directory"></a>Az Azure Active Directory biztonsági csoportok létrehozása
-AAD biztonsági csoportok létrehozásával és felhasználók hozzáadása a csoporthoz, lásd: [kezelése az Azure Active Directory biztonsági csoportok](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+## <a name="create-security-groups-in-azure-active-directory"></a>Biztonsági csoportok létrehozása a Azure Active Directoryban
+A HRE biztonsági csoportok létrehozásával és a felhasználók csoportba való felvételével kapcsolatos útmutatásért lásd: [biztonsági csoportok kezelése Azure Active Directoryban](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 > [!NOTE] 
-> Adhat hozzá felhasználókat és a többi csoport egy csoportot az Azure ad-ben az Azure portal használatával. Azonban ahhoz, hogy a szolgáltatásnév hozzáadása a csoporthoz, használható [az Azure AD PowerShell-modul](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
+> Az Azure AD-ben a Azure Portal használatával is hozzáadhat felhasználókat és más csoportokat egy csoporthoz. Ahhoz azonban, hogy egy egyszerű szolgáltatásnevet hozzá lehessen adni egy csoporthoz, használja az [Azure ad PowerShell-modulját](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
 > 
 > ```powershell
 > # Get the desired group and service principal and identify the correct object IDs
@@ -50,109 +50,109 @@ AAD biztonsági csoportok létrehozásával és felhasználók hozzáadása a cs
 > Add-AzureADGroupMember -ObjectId <Group object ID> -RefObjectId <SPI object ID>
 > ```
  
-## <a name="assign-users-or-security-groups-to-data-lake-storage-gen1-accounts"></a>Felhasználók vagy biztonsági csoportok hozzárendelése a Data Lake Storage Gen1 fiókokhoz
-Amikor a felhasználók vagy biztonsági csoportok hozzárendelése Data Lake Storage Gen1 fiókokhoz, a műveletek az Azure Portallal és az Azure Resource Manager API-k a fiók elérését Ön szabályozza. 
+## <a name="assign-users-or-security-groups-to-data-lake-storage-gen1-accounts"></a>Felhasználók vagy biztonsági csoportok társítása Data Lake Storage Gen1 fiókokhoz
+Amikor felhasználókat vagy biztonsági csoportokat rendel hozzá Data Lake Storage Gen1 fiókokhoz, a Azure Portal és a Azure Resource Manager API-k használatával vezérelheti a fiók felügyeleti műveleteinek elérését. 
 
-1. Nyissa meg a Data Lake Storage Gen1 fiókot. A bal oldali ablaktáblában kattintson **összes erőforrás**, és az összes erőforrás panelen kattintson a fiók nevét, amelyhez szeretné egy felhasználó vagy biztonsági csoport hozzárendelése.
+1. Nyisson meg egy Data Lake Storage Gen1 fiókot. A bal oldali panelen kattintson a **minden erőforrás**lehetőségre, majd a minden erőforrás panelen kattintson arra a fiók nevére, amelyhez felhasználót vagy biztonsági csoportot szeretne rendelni.
 
-2. A Data Lake Storage Gen1 fiók panelén kattintson **hozzáférés-vezérlés (IAM)** . A panel alapértelmezés szerint az előfizetés-tulajdonost tulajdonosként sorolja fel.
+2. A Data Lake Storage Gen1-fiók panelen kattintson a **Access Control (iam)** elemre. A panel alapértelmezés szerint a tulajdonosként listázza az előfizetés tulajdonosait.
    
-    ![Biztonsági csoport hozzárendelése az Azure Data Lake Storage Gen1 fiók](./media/data-lake-store-secure-data/adl.select.user.icon1.png "biztonsági csoport hozzárendelése az Azure Data Lake Storage Gen1 fiókhoz")
+    ![Biztonsági csoport kiosztása Azure Data Lake Storage Gen1-fiókhoz](./media/data-lake-store-secure-data/adl.select.user.icon1.png "Biztonsági csoport kiosztása Azure Data Lake Storage Gen1-fiókhoz")
 
-3. Az a **hozzáférés-vezérlés (IAM)** panelen kattintson a **Hozzáadás** megnyitásához a **engedélyek hozzáadása** panelen. Az a **engedélyek hozzáadása** panelen válassza ki a **szerepkör** a felhasználó vagy csoport. Keresse meg a korábban létrehozott Azure Active Directory biztonsági csoport, és válassza ki azt. Ha a felhasználók és csoportok kell keresni a sok, használja a **kiválasztása** a csoport nevére szűrésére szolgáló szövegmező. 
+3. A **Access Control (iam)** panelen kattintson a **Hozzáadás** gombra az **engedélyek hozzáadása** panel megnyitásához. Az **engedélyek hozzáadása** panelen válasszon ki egy **szerepkört** a felhasználó/csoport számára. Keresse meg a korábban létrehozott biztonsági csoportot Azure Active Directory és jelölje ki. Ha sok felhasználóval és csoporttal rendelkezik a kereséshez, a csoport nevére való szűréshez használja a **Select** szövegmezőt. 
    
-    ![A felhasználó szerepkör hozzáadása](./media/data-lake-store-secure-data/adl.add.user.1.png "a felhasználó szerepkör hozzáadása")
+    ![Szerepkör hozzáadása a felhasználóhoz](./media/data-lake-store-secure-data/adl.add.user.1.png "Szerepkör hozzáadása a felhasználóhoz")
    
-    A **tulajdonosa** és **közreműködői** szerepkör számos felügyeleti feladatot a hozzáférést biztosítsanak a data lake-fiók. A felhasználók számára, akik működjön együtt a data lake, ugyanakkor a fiók felügyeleti információk megtekintéséhez szükséges adatok, hozzáadhatja őket a **olvasó** szerepkör. Ezek a szerepkörök hatókörének a felügyeleti műveletek a Data Lake Storage Gen1 fiókkal kapcsolatos korlátozódik.
+    A **tulajdonos** és a **közreműködő** szerepkör számos felügyeleti funkcióhoz biztosít hozzáférést a Microsoft Access Lake-fiókban. Azok a felhasználók, akik a Information Lake-ben lévő adatokkal működnek, de még meg kell tekinteniük a fiókkezelés adatait, hozzáadhatják őket az **olvasó** szerepkörhöz. Ezeknek a szerepköröknek a hatóköre az Data Lake Storage Gen1-fiókhoz kapcsolódó felügyeleti műveletekre korlátozódik.
    
-    Adatműveletek egyes fájlrendszerre vonatkozó engedélyekkel határozza meg a felhasználók mit tehetnek. Ezért egy olvasói szerepkörrel rendelkező felhasználói is csak a fiókhoz tartozó felügyeleti beállítások megtekintése, de képes potenciálisan olvasási és írási hozzájuk rendelt fájlrendszeri engedélyek alapján. Data Lake Storage Gen1 fájlrendszerre vonatkozó engedélyekkel címen leírt [biztonsági csoport hozzárendelése ACL-ként az Azure Data Lake Storage Gen1 fájlrendszerhez](#filepermissions).
+    Az adatműveletek esetében egyéni fájlrendszerbeli engedélyek határozzák meg, hogy a felhasználók mit tehetnek. Ezért az olvasó szerepkörrel rendelkező felhasználók csak a fiókhoz társított felügyeleti beállításokat tekinthetik meg, de a hozzájuk rendelt fájlrendszer-engedélyek alapján is olvashatók és írhatók. Data Lake Storage Gen1 fájlrendszerbeli engedélyeket [a biztonsági csoport társítása ACL-ként a Azure Data Lake Storage Gen1 fájlrendszerhez](#filepermissions)című témakörben talál.
 
     > [!IMPORTANT]
-    > Csak a **tulajdonosa** szerepkör automatikusan lehetővé teszi, hogy a fájlrendszer elérése. A **közreműködői**, **olvasó**, és a többi szerepkör szükséges ahhoz, hogy bármilyen szinten fájlok és mappák hozzáférési ACL-ek.  A **tulajdonosa** szerepkör felügyelő fájl- és mappaengedélyeket, amely nem bírálható felül az ACL-alapú biztosít. Hogyan leképezése az RBAC-házirendeket adatelérési további információkért lásd: [fiókkezeléshez RBAC](data-lake-store-security-overview.md#rbac-for-account-management).
+    > Csak a **tulajdonosi** szerepkör engedélyezi automatikusan a fájlrendszer-hozzáférést. A **közreműködő**, az **olvasó**és az összes többi szerepkör hozzáférés-vezérlési listákat igényel a mappákhoz és fájlokhoz való hozzáférés bármely szintjének engedélyezéséhez.  A **tulajdonosi** szerepkör olyan felügyelői fájl-és mappaengedélyek-engedélyeket biztosít, amelyeket nem lehet felülbírálni az ACL-eken keresztül. További információ arról, hogy a RBAC-szabályzatok hogyan képezhetők le az adatokhoz való hozzáférésről: [RBAC](data-lake-store-security-overview.md#rbac-for-account-management).
 
-4. Ha szeretné-e, amely nem szerepel a csoport vagy felhasználó hozzáadása a **engedélyek hozzáadása** panelen meghívhatja munkatársait, azokat a saját e-mail cím beírásával a **kiválasztása** szövegmezőbe, és válassza a listából.
+4. Ha olyan csoportot/felhasználót szeretne hozzáadni, amely nem szerepel az **engedélyek hozzáadása** panelen, meghívja őket úgy, hogy beírja az e-mail-címét a **kijelölés** szövegmezőbe, majd kiválasztja őket a listából.
    
-    ![Adja meg a biztonsági csoport](./media/data-lake-store-secure-data/adl.add.user.2.png "biztonsági csoport hozzáadása")
+    ![Biztonsági csoport hozzáadása](./media/data-lake-store-secure-data/adl.add.user.2.png "Biztonsági csoport hozzáadása")
    
-5. Kattintson a **Save** (Mentés) gombra. A biztonsági csoport hozzáadva a lent látható módon kell megjelennie.
+5. Kattintson a **Save** (Mentés) gombra. A hozzáadott biztonsági csoport az alábbi módon jelenik meg.
    
-    ![Biztonsági csoport hozzáadva](./media/data-lake-store-secure-data/adl.add.user.3.png "biztonsági csoport hozzáadása")
+    ![Biztonsági csoport hozzáadva](./media/data-lake-store-secure-data/adl.add.user.3.png "Biztonsági csoport hozzáadva")
 
-6. A felhasználó vagy biztonsági csoport mostantól a Data Lake Storage Gen1 fiók hozzáféréssel rendelkezik. Ha szeretne hozzáférést biztosítanak az egyes felhasználókhoz, felveheti őket a biztonsági csoporthoz. Hasonlóképpen ha vissza szeretné vonni a hozzáférést egy felhasználó, eltávolíthatja őket a biztonsági csoportból. Több biztonsági csoportot is rendelhet egy fiókot. 
+6. A felhasználó/biztonsági csoport most már rendelkezik hozzáféréssel a Data Lake Storage Gen1 fiókhoz. Ha bizonyos felhasználók számára szeretne hozzáférést biztosítani, a biztonsági csoportba is felveheti őket. Hasonlóképpen, ha egy felhasználó hozzáférését vissza kívánja vonni, eltávolíthatja őket a biztonsági csoportból. Egy fiókhoz több biztonsági csoportot is hozzárendelhet. 
 
-## <a name="filepermissions"></a>Felhasználók vagy biztonsági csoport hozzárendelése ACL-ként a Data Lake Storage Gen1 fájlrendszer
-A Data Lake Storage Gen1 fájlrendszer rendelhet a felhasználó vagy biztonsági csoporttal, beállíthat egy hozzáférés-vezérlés a Data Lake Storage Gen1 tárolt adatokat.
+## <a name="filepermissions"></a>Felhasználók vagy biztonsági csoportok társítása ACL-ként a Data Lake Storage Gen1 fájlrendszerhez
+Ha felhasználói/biztonsági csoportokat rendel hozzá a Data Lake Storage Gen1 fájlrendszerhez, a Data Lake Storage Gen1 tárolt adathozzáférés-vezérlést kell megadnia.
 
-1. A Data Lake Storage Gen1 fiók panelén kattintson **adatkezelő**.
+1. A Data Lake Storage Gen1-fiók paneljén kattintson az **adatkezelő**elemre.
    
-    ![Megtekintheti az adatkezelő segítségével adatokat](./media/data-lake-store-secure-data/adl.start.data.explorer.png "adatkezelő keresztül adatok megtekintése")
-2. Az a **adatkezelő** panelen kattintson arra a mappára, amelyhez konfigurálni az ACL-t, és kattintson a kívánt **hozzáférés**. ACL-ek hozzárendelése egy fájlt, először kattintson a tekintse meg a lapot, majd kattintson a fájl **hozzáférés** származó a **Fájlelőnézet** panelen.
+    ![Az adatmegjelenítés Adatkezelő használatával](./media/data-lake-store-secure-data/adl.start.data.explorer.png "Az adatmegjelenítés Adatkezelő használatával")
+2. A **adatkezelő** panelen kattintson arra a mappára, amelyhez konfigurálni szeretné az ACL-t, majd kattintson a **hozzáférés**elemre. Ha ACL-eket szeretne hozzárendelni egy fájlhoz, először a fájlra kell kattintania az előnézethez, majd a **fájl előnézete panelen** kattintson a **hozzáférés** elemre.
    
-    ![Állítsa be a hozzáférés-vezérlési listák Data Lake Storage Gen1 fájlrendszerben](./media/data-lake-store-secure-data/adl.acl.1.png "beállítva hozzáférés-vezérlési listák Data Lake Storage Gen1 fájlrendszer")
-3. A **hozzáférés** panel felsorolja a tulajdonosok között, és már hozzá van rendelve a legfelső szintű engedélyekkel. Kattintson a **Hozzáadás** ikonra kattintva adja hozzá a további hozzáférési ACL-ek.
+    ![ACL-ek beállítása Data Lake Storage Gen1 fájlrendszerben](./media/data-lake-store-secure-data/adl.acl.1.png "ACL-ek beállítása Data Lake Storage Gen1 fájlrendszerben")
+3. A **hozzáférés** panel felsorolja azokat a tulajdonosokat és hozzárendelt engedélyeket, amelyek már hozzá vannak rendelve a gyökérkönyvtárhoz. További hozzáférési ACL-ek hozzáadásához kattintson a **Hozzáadás** ikonra.
     > [!IMPORTANT]
-    > Egyetlen fájl a hozzáférési engedélyek beállítása nem feltétlenül biztosít hozzáférést egy felhasználó/csoport, amely a fájl. A fájl elérési útját a hozzárendelt felhasználói csoportok számára elérhetőnek kell lennie. További információért és példákért lásd: [az engedélyekhez kapcsolódó gyakori helyzetek](data-lake-store-access-control.md#common-scenarios-related-to-permissions).
+    > Egyetlen fájl hozzáférési engedélyeinek beállítása nem feltétlenül biztosít felhasználói vagy csoportos hozzáférést ehhez a fájlhoz. A fájl elérési útjának elérhetőnek kell lennie a hozzárendelt felhasználó/csoport számára. További információkért és példákért tekintse [meg az engedélyekkel kapcsolatos gyakori forgatókönyveket](data-lake-store-access-control.md#common-scenarios-related-to-permissions).
    
-    ![Standard és egyéni hozzáférési listán](./media/data-lake-store-secure-data/adl.acl.2.png "szabványos és egyéni hozzáférési listázása")
+    ![Szabványos és egyéni hozzáférés listázása](./media/data-lake-store-secure-data/adl.acl.2.png "Szabványos és egyéni hozzáférés listázása")
    
-   * A **tulajdonosok** és **mindenki más** UNIX típusú hozzáférést biztosíthat, adhatja meg Olvasás, írás, hajtsa végre (rwx) a három különböző felhasználói osztályok: tulajdonos, csoport és mások.
-   * **Hozzárendelt engedélyek** a POSIX hozzáférés-vezérlési listák, amelyek lehetővé teszik, hogy az engedélyek beállítása az adott nevesített felhasználók vagy csoportok a fájl tulajdonosa vagy a csoport nem felel meg. 
+   * A **tulajdonosok** és **mindenki más** Unix-stílusú hozzáférést biztosít, ahol megadhatja az olvasási, írási, végrehajtási (rwx) három különböző felhasználói osztályt: tulajdonos, csoport és egyebek.
+   * A **hozzárendelt engedélyek** a POSIX ACL-ek, amelyek lehetővé teszik a fájl tulajdonosán vagy csoportján kívüli meghatározott felhasználók vagy csoportok engedélyeinek beállítását. 
      
-     További információkért lásd: [HDFS hozzáférés-vezérlési listák](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Hogyan találhatók meg hozzáférés-vezérlési listák Data Lake Storage Gen1 további információkért lásd: [hozzáférés-vezérlés a Data Lake Storage Gen1](data-lake-store-access-control.md).
-4. Kattintson a **Hozzáadás** ikonra kattintva nyissa meg a **engedélyek hozzárendelése** panelen. Ezen a panelen kattintson a **felhasználó vagy csoport kiválasztása**, majd **felhasználó vagy csoport kiválasztása** panelen keresse meg a korábban létrehozott Azure Active Directory biztonsági csoport. Ha csoportokat kell keresni a sok, a szövegmező felső szűréséhez használja a csoport nevére. Kattintson a csoport hozzáadása, és kattintson a kívánt **kiválasztása**.
+     További információ: [HDFS ACL](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists)-EK. Az ACL-ek Data Lake Storage Gen1-ben való megvalósításával kapcsolatos további információkért lásd: [Access Control Data Lake Storage Gen1](data-lake-store-access-control.md).
+4. Kattintson a **Hozzáadás** ikonra az **engedélyek kiosztása** panel megnyitásához. Ezen a panelen kattintson a **felhasználó vagy csoport kiválasztása**elemre, majd a **felhasználó vagy csoport kiválasztása** panelen keresse meg a korábban létrehozott biztonsági csoportot Azure Active Directory. Ha sok csoporttal rendelkezik a kereséshez, a felül található szövegmezővel szűrheti a csoport nevét. Kattintson a hozzáadni kívánt csoportra, majd a **kiválasztás**elemre.
    
-    ![Csoport hozzáadása](./media/data-lake-store-secure-data/adl.acl.3.png "csoport hozzáadása")
-5. Kattintson a **engedélyek kiválasztása**, jelölje be az engedélyeket, hogy engedélyeket kell alkalmazni rekurzív módon és, hogy kívánja-e az engedélyek hozzárendelése a hozzáférési ACL-t, mint alapértelmezett ACL-t, vagy mindkettőt. Kattintson az **OK** gombra.
+    ![Csoport hozzáadása](./media/data-lake-store-secure-data/adl.acl.3.png "Csoport hozzáadása")
+5. Kattintson az **engedélyek kiválasztása**elemre, jelölje ki az engedélyeket, hogy az engedélyeket rekurzív módon kell-e alkalmazni, és hogy szeretné-e hozzárendelni az engedélyeket hozzáférési ACL-ként, alapértelmezett ACL-ként vagy mindkettőként. Kattintson az **OK** gombra.
    
-    ![Engedélyek csoporthoz való hozzárendelése](./media/data-lake-store-secure-data/adl.acl.4.png "csoporthoz engedélyek hozzárendelése")
+    ![Engedélyek kiosztása a csoportnak](./media/data-lake-store-secure-data/adl.acl.4.png "Engedélyek kiosztása a csoportnak")
    
-    A Data Lake Storage Gen1 és alapértelmezett/hozzáférési ACL-ek engedélyekkel kapcsolatos további információkért lásd: [hozzáférés-vezérlés a Data Lake Storage Gen1](data-lake-store-access-control.md).
-6. Kattintás után **Ok** a a **engedélyek kiválasztása** panelen, az újonnan létrehozott csoport és az engedélyek most már megjelenik a **hozzáférés** panelen.
+    A Data Lake Storage Gen1 engedélyeivel és az alapértelmezett/hozzáférési ACL-ekkel kapcsolatos további információkért lásd: [Access Control Data Lake Storage Gen1](data-lake-store-access-control.md).
+6. Miután rákattintott az **OK gombra** az **engedélyek kiválasztása** panelen, az újonnan hozzáadott csoport és a társított engedélyek mostantól megjelennek a **hozzáférési** panelen.
    
-    ![Engedélyek csoporthoz való hozzárendelése](./media/data-lake-store-secure-data/adl.acl.5.png "csoporthoz engedélyek hozzárendelése")
+    ![Engedélyek kiosztása a csoportnak](./media/data-lake-store-secure-data/adl.acl.5.png "Engedélyek kiosztása a csoportnak")
    
    > [!IMPORTANT]
-   > A jelenlegi kiadásban, használhat akár 28 bejegyzések **engedélyeket az**. Ha azt szeretné, több mint 28 felhasználók hozzáadása, hozzunk létre biztonsági csoportokat, felhasználók hozzáadása a biztonsági csoportok, adja hozzá ezeket a csoportokat a Data Lake Storage Gen1 fiók elérést biztosíthat.
+   > A jelenlegi kiadásban a **hozzárendelt engedélyek**alatt legfeljebb 28 bejegyzés adható meg. Ha több mint 28 felhasználót szeretne hozzáadni, hozzon létre biztonsági csoportokat, adja hozzá a felhasználókat a biztonsági csoportokhoz, adja hozzá a hozzáférést a Data Lake Storage Gen1 fiókhoz a biztonsági csoportokhoz.
    > 
    > 
-7. Szükség esetén módosíthatja is a hozzáférési engedélyeket a csoport hozzáadása után. Törölje a jelet, vagy jelölje be az egyes engedélyt (olvasási, írási, végrehajtási) alapján, hogy távolítsa el, vagy hogy engedélyeket rendeljenek hozzá a biztonsági csoport. Kattintson a **mentése** menti a módosításokat, vagy **elveti** visszavonja a módosításokat.
+7. Ha szükséges, a hozzáférési engedélyeket a csoport hozzáadása után is módosíthatja. Törölje vagy jelölje be a jelölőnégyzetet az egyes engedélyek típusaihoz (olvasás, írás, végrehajtás) attól függően, hogy el kívánja-e távolítani vagy hozzárendelni az engedélyt a biztonsági csoporthoz. Kattintson a **Save (Mentés** ) gombra a módosítások mentéséhez, vagy a módosítások visszavonásához.
 
-## <a name="set-ip-address-range-for-data-access"></a>Állítsa be az IP-címtartományt az adatok eléréséhez
-Data Lake Storage Gen1 lehetővé teszi további zárolási hálózati szinten az adattárhoz való hozzáférés. Tűzfal engedélyezése, adja meg az IP-cím vagy IP-címtartomány megadása a megbízható ügyfelek számára. Ha engedélyezve van, csak a definiált tartományon belüli IP-címek rendelkező ügyfelek a tároló csatlakozhat.
+## <a name="set-ip-address-range-for-data-access"></a>IP-címtartomány beállítása adateléréshez
+Data Lake Storage Gen1 lehetővé teszi, hogy hálózati szinten tovább zárolja az adattárhoz való hozzáférést. Engedélyezheti a tűzfalat, megadhat egy IP-címet, vagy megadhat egy IP-címtartományt a megbízható ügyfelek számára. Ha engedélyezve van, csak a megadott tartományon belüli IP-címmel rendelkező ügyfelek csatlakozhatnak az áruházhoz.
 
-![Tűzfalbeállítások és IP-hozzáférési](./media/data-lake-store-secure-data/firewall-ip-access.png "tűzfalbeállítások és IP-cím")
+![Tűzfalbeállítások és IP-hozzáférés](./media/data-lake-store-secure-data/firewall-ip-access.png "Tűzfalbeállítások és IP-cím")
 
-## <a name="remove-security-groups-for-a-data-lake-storage-gen1-account"></a>Biztonsági csoportok egy Data Lake Storage Gen1 fiók eltávolítása
-Amikor a biztonsági csoportok eltávolítja a Data Lake Storage Gen1 fiókok, csak változtatja a műveletek az Azure Portallal és az Azure Resource Manager API-k a fiók hozzáférési.  
+## <a name="remove-security-groups-for-a-data-lake-storage-gen1-account"></a>Biztonsági csoportok eltávolítása egy Data Lake Storage Gen1 fiókhoz
+Ha Data Lake Storage Gen1 fiókokból távolít el biztonsági csoportokat, csak az Azure Portal és a Azure Resource Manager API-k használatával módosítja a fiók felügyeleti műveleteihez való hozzáférést.  
 
-Adatokhoz való hozzáférés nem változik, és továbbra is felügyeli a hozzáférési ACL-ek.  A kivétel ez alól a tulajdonosok szerepkörű felhasználók/csoportok.  Felhasználók/csoportok eltávolítva a tulajdonos szerepkör már nem felügyelők és hozzáférésüket visszavált hozzáférési ACL-beállítások. 
+Az adathozzáférés nem változik, és továbbra is a hozzáférési ACL-ek kezelik.  Ez alól kivételt képeznek a tulajdonosi szerepkörben lévő felhasználók/csoportok.  A tulajdonosi szerepkörből eltávolított felhasználók és csoportok már nem felügyelők, és a hozzáférésük a hozzáférés-VEZÉRLÉSi beállításokhoz is vissza fog térni. 
 
-1. A Data Lake Storage Gen1 fiók panelén kattintson **hozzáférés-vezérlés (IAM)** . 
+1. A Data Lake Storage Gen1-fiók panelen kattintson a **Access Control (iam)** elemre. 
    
-    ![Biztonsági csoport hozzárendelése a Data Lake Storage Gen1 fiók](./media/data-lake-store-secure-data/adl.select.user.icon.png "biztonsági csoport hozzárendelése a Data Lake Storage Gen1 fiókhoz")
-2. Az a **hozzáférés-vezérlés (IAM)** panelen kattintson az eltávolítani kívánt biztonsági csoport(ok). Kattintson a **eltávolítása**.
+    ![Biztonsági csoport kiosztása Data Lake Storage Gen1-fiókhoz](./media/data-lake-store-secure-data/adl.select.user.icon.png "Biztonsági csoport kiosztása Data Lake Storage Gen1-fiókhoz")
+2. A **Access Control (iam)** panelen kattintson az eltávolítani kívánt biztonsági csoport (ok) ra. Kattintson az **Eltávolítás**gombra.
    
-    ![Biztonsági csoport eltávolítva](./media/data-lake-store-secure-data/adl.remove.group.png "biztonsági csoport eltávolítva")
+    ![Biztonsági csoport eltávolítva](./media/data-lake-store-secure-data/adl.remove.group.png "Biztonsági csoport eltávolítva")
 
-## <a name="remove-security-group-acls-from-a-data-lake-storage-gen1-file-system"></a>A Data Lake Storage Gen1 fájlrendszer ACL-ek biztonsági csoport eltávolítása
-Ha eltávolítja az ACL-ek biztonsági csoport egy Data Lake Storage Gen1 fájlrendszer, a Data Lake Storage Gen1 fiókban lévő adatok hozzáférés módosítja.
+## <a name="remove-security-group-acls-from-a-data-lake-storage-gen1-file-system"></a>Biztonsági csoport ACL-listáinak eltávolítása Data Lake Storage Gen1 fájlrendszerből
+Ha a biztonsági csoport ACL-jeit egy Data Lake Storage Gen1 fájlrendszerből távolítja el, akkor a Data Lake Storage Gen1-fiókban lévő adatokhoz való hozzáférést kell megváltoztatnia.
 
-1. A Data Lake Storage Gen1 fiók panelén kattintson **adatkezelő**.
+1. A Data Lake Storage Gen1-fiók paneljén kattintson az **adatkezelő**elemre.
    
-    ![Könyvtárak létrehozása a Data Lake Storage Gen1 fiókban](./media/data-lake-store-secure-data/adl.start.data.explorer.png "könyvtárak létrehozása a Data Lake Storage Gen1-fiókban")
-2. Az a **adatkezelő** panelen kattintson arra a mappára, amelyhez az ACL eltávolítása, és kattintson a kívánt **hozzáférés**. Egy fájl hozzáférés-vezérlési listák eltávolításához először kattintson a tekintse meg a lapot, majd kattintson a fájl **hozzáférés** a a **Fájlelőnézet** panelen. 
+    ![Könyvtárak létrehozása Data Lake Storage Gen1 fiókban](./media/data-lake-store-secure-data/adl.start.data.explorer.png "Könyvtárak létrehozása Data Lake Storage Gen1 fiókban")
+2. A **adatkezelő** panelen kattintson arra a mappára, amelyről el szeretné távolítani az ACL-t, majd kattintson a **hozzáférés**elemre. A fájlokhoz tartozó ACL-ek eltávolításához először a fájlra kell kattintania, majd a **fájl előnézete panelen** kattintson a **hozzáférés** elemre. 
    
-    ![Állítsa be a hozzáférés-vezérlési listák Data Lake Storage Gen1 fájlrendszerben](./media/data-lake-store-secure-data/adl.acl.1.png "beállítva hozzáférés-vezérlési listák Data Lake Storage Gen1 fájlrendszer")
-3. Az a **hozzáférés** panelen kattintson az eltávolítani kívánt biztonsági csoportot. Az a **részleteit** panelen kattintson a **eltávolítása**.
+    ![ACL-ek beállítása Data Lake Storage Gen1 fájlrendszerben](./media/data-lake-store-secure-data/adl.acl.1.png "ACL-ek beállítása Data Lake Storage Gen1 fájlrendszerben")
+3. A **hozzáférés** panelen kattintson az eltávolítani kívánt biztonsági csoportra. A **hozzáférési részletek** panelen kattintson az **Eltávolítás**elemre.
    
-    ![Engedélyek csoporthoz való hozzárendelése](./media/data-lake-store-secure-data/adl.remove.acl.png "csoporthoz engedélyek hozzárendelése")
+    ![Engedélyek kiosztása a csoportnak](./media/data-lake-store-secure-data/adl.remove.acl.png "Engedélyek kiosztása a csoportnak")
 
 ## <a name="see-also"></a>Lásd még
-* [Az Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
-* [Adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
-* [Az Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Az Azure HDInsight használata a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [Get Started with Data Lake Storage Gen1 PowerShell-lel](data-lake-store-get-started-powershell.md)
-* [Get Started with Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-get-started-net-sdk.md)
-* [Data Lake Storage Gen1 diagnosztikai naplóinak elérése](data-lake-store-diagnostic-logs.md)
+* [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
+* [Adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1ba](data-lake-store-copy-data-azure-storage-blob.md)
+* [Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Az Azure HDInsight használata Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Ismerkedés a Data Lake Storage Gen1 a PowerShell használatával](data-lake-store-get-started-powershell.md)
+* [A Data Lake Storage Gen1 használatának első lépései a .NET SDK-val](data-lake-store-get-started-net-sdk.md)
+* [Diagnosztikai naplók elérése Data Lake Storage Gen1hoz](data-lake-store-diagnostic-logs.md)
 

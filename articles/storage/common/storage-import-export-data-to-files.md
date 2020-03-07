@@ -9,11 +9,11 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 201d0c0a545c5ba7ae1bb0b5e119f7acb1ae362f
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029954"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363908"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Az Azure import/export szolgáltatás használata az adatAzure Filesba való importáláshoz
 
@@ -115,7 +115,7 @@ További mintákért lépjen a [minták a Journal-fájlokhoz](#samples-for-journ
 ## <a name="step-2-create-an-import-job"></a>2\. lépés: importálási feladatok létrehozása
 
 Az alábbi lépések végrehajtásával hozzon létre egy importálási feladatot a Azure Portal.
-1. Jelentkezzen be https://portal.azure.com/ ra.
+1. Jelentkezzen be https://portal.azure.com/ra.
 2. Lépjen az **összes szolgáltatás > Storage > importálási/exportálási feladatok lehetőségre**.
 
     ![Importálási/exportálási ugrás](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
@@ -130,7 +130,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
     - Adjon meg egy leíró nevet az importálási feladatokhoz. Ezzel a névvel követheti nyomon a feladatokat, miközben azok folyamatban vannak, és ha azok befejeződtek.
         -  Ez a név csak kisbetűket, számokat, kötőjeleket és aláhúzást tartalmazhat.
         -  A névnek betűvel kell kezdődnie, és nem tartalmazhat szóközt.
-    - Válasszon előfizetést.
+    - Válasszon egy előfizetést.
     - Válasszon ki egy erőforráscsoportot.
 
         ![Importálási feladatok létrehozása – 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob3.png)

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227475"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391303"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Az Azure FXT Edge Filer-specifikációi
 
@@ -67,7 +67,7 @@ Az Azure FXT Edge Filer úgy lett kialakítva, hogy a standard 19 "berendezés-r
 | Csomag dimenzió | Milliméter | hüvelyk |
 |-------------------|-------------|--------|
 | Magasság            | 311,2       | 12,25 " |
-| szélesség             | 642,8       | 25,31 " |
+| Szélesség             | 642,8       | 25,31 " |
 | Hossz            | 1 051,1     | 41,38 " |
 
 ## <a name="power-and-thermal-specifications"></a>Energiaellátási és termikus specifikációk

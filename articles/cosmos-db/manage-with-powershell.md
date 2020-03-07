@@ -8,15 +8,15 @@ ms.date: 10/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 978f37d08275de704dd01c0251dde42665fca552
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882112"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364470"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL API-erőforrások kezelése a PowerShell használatával
 
-Az alábbi útmutató ismerteti, hogyan használható a PowerShell a Azure Cosmos DB erőforrások, például a fiók, az adatbázis, a tároló és az átviteli sebesség kezelésére és automatizálására. A Azure Cosmos DB felügyeletét a AzResource-parancsmag közvetlenül a Azure Cosmos DB erőforrás-szolgáltatón keresztül kezeli. Az Azure Cosmos DB erőforrás-szolgáltató PowerShell használatával felügyelhető összes tulajdonság megtekintéséhez lásd: [Azure Cosmos db erőforrás-szolgáltató sémája](/azure/templates/microsoft.documentdb/allversions)
+Az alábbi útmutatóban megismerheti, hogyan szkriptelheti és automatizálhatja az Azure Cosmos DB-erőforrások (például a fiókok, az adatbázisok, a tárolók és az átviteli sebesség) felügyeletét a PowerShell használatával. Az Azure Cosmos DB felügyelete az AzResource parancsmagon keresztül történik, közvetlenül az Azure Cosmos DB erőforrás-szolgáltatóba. Az Azure Cosmos DB erőforrás-szolgáltató PowerShell használatával felügyelhető összes tulajdonság megtekintéséhez lásd: [Azure Cosmos db erőforrás-szolgáltató sémája](/azure/templates/microsoft.documentdb/allversions)
 
 Azure Cosmos DB platformfüggetlen felügyeletéhez használhatja az [Azure CLI](manage-with-cli.md)-t, a [REST API][rp-rest-api]vagy a [Azure Portal](create-sql-api-dotnet.md#create-account).
 
@@ -27,7 +27,7 @@ Azure Cosmos DB platformfüggetlen felügyeletéhez használhatja az [Azure CLI]
 Kövesse a [Azure PowerShell telepítésének és konfigurálásának][powershell-install-configure] lépéseit a PowerShell Azure-fiókjába való telepítéséhez és bejelentkezéséhez.
 
 * Ha a következő parancsokat szeretné végrehajtani a felhasználó megerősítésének megkövetelése nélkül, fűzze hozzá a `-Force` jelzőt a parancshoz.
-* Az összes következő parancs szinkronban van.
+* Az alábbi parancsokat a rendszer szinkron.
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos-fiókok
 
@@ -243,7 +243,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="list-keys"></a>Fiók kulcsainak listázása
 
-Azure Cosmos DB fiók létrehozásakor a szolgáltatás két fő hozzáférési kulcsot hoz létre, amelyek hitelesítésre használhatók a Azure Cosmos DB-fiók elérésekor. A két hozzáférési kulcs megadásával a Azure Cosmos DB lehetővé teszi, hogy a kulcsokat a Azure Cosmos DB-fiók megszakítása nélkül újra létrehozza. A csak olvasási jogosultságú kulcsok a csak olvasási műveletek hitelesítéséhez is elérhetők. Két írható-olvasható kulcs (elsődleges és másodlagos) és két írásvédett kulcs (elsődleges és másodlagos).
+Az Azure Cosmos DB-fiók létrehozásakor a szolgáltatás két fő kulcsot, amely az Azure Cosmos DB-fiók elérésekor hitelesítéshez használt állít elő. Azáltal, hogy a két hozzáférési kulcsot, az Azure Cosmos DB lehetővé teszi a kulcsok az Azure Cosmos DB-fiók megszakítás nélkül. Írásvédett kulcsok hitelesítéséhez a csak olvasható műveletekhez is elérhetők. Nincsenek két írható és olvasható kulcsok (elsődleges és másodlagos) és a két csak olvasható kulcsok (elsődleges és másodlagos).
 
 ```azurepowershell-interactive
 # List keys for an Azure Cosmos Account
@@ -261,7 +261,7 @@ Write-Host "SecondaryKey =" $keys.secondaryMasterKey
 
 ### <a id="list-connection-strings"></a>Kapcsolatok karakterláncok listázása
 
-A MongoDB-fiókok esetében a MongoDB-alkalmazásnak az adatbázis-fiókhoz való csatlakoztatásához használt kapcsolati karakterlánc a következő paranccsal kérhető le.
+MongoDB-fiókok esetében a kapcsolati karakterláncot a MongoDB-alkalmazás csatlakozni az adatbázis-fiókot az alábbi parancs használatával lekérhetők.
 
 ```azurepowershell-interactive
 # List connection strings for an Azure Cosmos Account

@@ -10,19 +10,19 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: dc8a870d692108f3a33b89a1c3826d421dfd1f63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824384"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390658"
 ---
-# <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amit elvégezhet a Windows Data Science Virtual Machine
+# <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amire alkalmas a Windows Data Science virtuális gépen
 
 A Windows Data Science Virtual Machine (DSVM) az adatelemzési és-modellezési feladatok elvégzésére szolgáló hatékony adattudományi fejlesztési környezet. A környezet már több népszerű adatelemző eszközzel is rendelkezik, amelyek megkönnyítik a helyszíni, Felhőbeli vagy hibrid üzembe helyezések elemzését. 
 
 A DSVM szorosan együttműködik az Azure-szolgáltatásokkal. Elolvashatja és feldolgozhatja az Azure-ban már tárolt, Azure SQL Data Warehouse, Azure Data Lake, Azure Storage vagy Azure Cosmos DB rendszerű adattárakat. Más elemzési eszközök, például a Azure Machine Learning és a Azure Data Factory előnyeit is kihasználhatja.
 
-Ebből a cikkből megtudhatja, hogyan használhatja a DSVM az adatelemzési feladatok elvégzésére és más Azure-szolgáltatásokkal való interakcióra. Íme néhány dolog, amit elvégezhet a DSVM:
+Ebből a cikkből megtudhatja, hogyan használhatja a DSVM az adatelemzési feladatok elvégzésére és más Azure-szolgáltatásokkal való interakcióra. Az alábbiakban néhány, a DSVM végezhet el:
 
 - Microsoft Machine Learning Server és Python használatával megismerheti az adatelemzést és a modellek helyi fejlesztését a DSVM.
 - A Jupyter notebook használatával kísérletezhet a böngészőben tárolt adataival a Python 2, a Python 3 és a Microsoft R használatával. (a Microsoft R az R nagyvállalati használatra kész, teljesítményre tervezett verziója.)
@@ -42,18 +42,18 @@ Ebből a cikkből megtudhatja, hogyan használhatja a DSVM az adatelemzési fela
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Szüksége van egy Azure-előfizetésre. Regisztrálhat [az ingyenes próbaverzióra](https://azure.microsoft.com/free/).
+* Azure-előfizetés szükséges. Regisztrálhat [az ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 * A Azure Portal Data Science Virtual Machine üzembe helyezésére vonatkozó utasítások a [virtuális gépek létrehozásakor](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)érhetők el.
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="explore-data-and-develop-models-with-microsoft-machine-learning-server"></a>Ismerje meg az adatgyűjtést és a modellek fejlesztését Microsoft Machine Learning Server
-Használhatja az R és a Python nyelveket is, hogy az adatelemzést közvetlenül a DSVM végezze el.
+Például az R és Python nyelvek használatával az adatok elemzését közvetlenül a dsvm-hez.
 
 Az R esetében használhat olyan IDE-t, mint a RStudio, amely a Start menüben vagy az asztalon található. Vagy használhatja az R Tools for Visual Studio alkalmazást. A Microsoft további könyvtárakat biztosított a nyílt forráskódú CRAN R-re vonatkozóan, hogy lehetővé tegye a skálázható elemzést, és hogy képes legyen elemezni a párhuzamosan tagolt elemzésekben engedélyezett memória méretét. 
 
-A Python esetében használhat olyan IDE-t, mint a Visual Studio Community Edition, amelyen előre telepítve van a Python Tools for Visual Studio (PTVS) bővítmény. Alapértelmezés szerint csak a Python 3,6, a root Conda-környezet van konfigurálva a PTVS. A következő lépések elvégzésével engedélyezheti az anaconda Python 2,7-et:
+A Python például a Visual Studio Community Edition, amely rendelkezik a Python Tools for Visual Studio (PTVS) bővítmény előre telepítve van egy IDE is használhatja. Alapértelmezés szerint csak a Python 3,6, a root Conda-környezet van konfigurálva a PTVS. A következő lépések elvégzésével engedélyezheti az anaconda Python 2,7-et:
 
 1. Hozzon létre egyéni környezeteket minden verzióhoz az **eszközök** > **python-eszközök** > Python- **környezetek**területen, majd válassza a **+ Custom** elemet a Visual Studio Community Edition kiadásban.
 1. Adjon meg egy leírást, és állítsa be a környezeti előtag elérési útját **c:\anaconda\envs\python2** for anaconda Python 2,7.
@@ -68,7 +68,7 @@ A Jupyter Notebook egy böngészőalapú IDE-t biztosít az adatelemzéshez és 
 
 A Jupyter Notebook elindításához kattintson a **Start** menüben vagy az asztalon található **Jupyter notebook** ikonra. A DSVM parancssorában a ```jupyter notebook``` parancs futtatásával is futtathatja azt a könyvtárat, ahol meglévő jegyzetfüzetekkel rendelkezik, vagy ahol új jegyzetfüzeteket kíván létrehozni.  
 
-A Jupyter megkezdése után egy olyan könyvtárat kell látnia, amely néhány példát tartalmaz a DSVM előre csomagolt jegyzetfüzetek számára. Mostantól a következőket teheti:
+A Jupyter megkezdése után egy olyan könyvtárat kell látnia, amely néhány példát tartalmaz a DSVM előre csomagolt jegyzetfüzetek számára. Most a következőket teheti:
 
 * Válassza ki a jegyzetfüzetet a kód megtekintéséhez.
 * Futtassa az egyes cellákat a SHIFT + ENTER billentyűkombináció kiválasztásával.
@@ -83,7 +83,7 @@ A Jupyter megkezdése után egy olyan könyvtárat kell látnia, amely néhány 
 A jegyzetfüzetben megtekintheti az adatait, felépítheti a modellt, és tesztelheti a modellt a választott könyvtárak használatával.
 
 ## <a name="train-and-deploy-models-by-using-azure-machine-learning"></a>Modellek betanítása és üzembe helyezése Azure Machine Learning használatával
-A modell kiépítése és ellenőrzése után a következő lépés általában az éles környezetben történő üzembe helyezés. Ez a lépés lehetővé teszi az ügyfélalkalmazások számára, hogy valós idejű vagy kötegelt mód alapján meghívják a modell előrejelzéseit. Azure Machine Learning lehetővé teszi az R-vagy Python-ban épített modellek működővé tenni.
+A modell kiépítése és ellenőrzése után a következő lépés általában az éles környezetben történő üzembe helyezés. Ez a lépés lehetővé teszi az ügyfélalkalmazások számára, hogy valós idejű vagy kötegelt mód alapján meghívják a modell előrejelzéseit. Az Azure Machine Learning lehetővé teszi a beépített R vagy Python modell üzembe helyezése.
 
 Ha Azure Machine Learningban működővé tenni a modellt, a webszolgáltatás elérhetővé válnak. Lehetővé teszi az ügyfelek számára, hogy olyan REST-hívásokat végezzenek, amelyek bemeneti paramétereket adnak át, és az előrejelzéseket a modellből kimenetként kapják meg.
 
@@ -114,7 +114,7 @@ def predictIris(sep_l, sep_w, pet_l, pet_w):
 return clf.predict(inputArray)
 ```
 
-Az ügyfelek mostantól hívásokat indíthatnak a webszolgáltatásba. A kényelmes burkolók létrehozza a REST API kérelmeket. A webszolgáltatást a következő mintakód használatával lehet felhasználni:
+Egy ügyfél hajtsa végre a webszolgáltatás-hívások. A kényelmes burkolók létrehozza a REST API kérelmeket. A webszolgáltatást a következő mintakód használatával lehet felhasználni:
 
 ```python
 # Consume through web service URL and keys
@@ -155,7 +155,7 @@ A Settings. JSON fájl szerkezete:
 }}
 ```
 
-#### <a name="build-a-model-in-r-and-publish-it-in-azure-machine-learning"></a>Hozzon létre egy modellt az R-ben, és tegye közzé Azure Machine Learning
+#### <a name="build-a-model-in-r-and-publish-it-in-azure-machine-learning"></a>Modell létrehozása az R, és közzé kell tennie az Azure Machine Learningben
 
 ```r
 library(AzureML)
@@ -175,7 +175,7 @@ sleepyPredict <- function(newdata){
 ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema = sleepstudy, data.frame=TRUE)
 ```
 
-#### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>A Azure Machine Learning üzembe helyezett modell felhasználása
+#### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>Az Azure Machine Learning-ban üzembe helyezett modell felhasználása
 Ha a modellt egy ügyfélalkalmazás alapján kívánja használni, a Azure Machine Learning-függvénytár használatával keresse meg a közzétett webszolgáltatás nevét. A végpont meghatározásához használja a `services` API-hívást. Ezután hívja meg az `consume` függvényt, és adja át az adatkeretet az előrejelzéshez.
 
 Használja a következő kódot a Azure Machine Learning webszolgáltatásként közzétett modell felhasználásához:
@@ -205,7 +205,7 @@ Az Azure-előfizetések és a felhőalapú erőforrások felügyeletéhez két l
 + PowerShell-parancsfájlok használata. Azure PowerShell futtatása az asztal egyik parancsikonjára vagy a **Start** menüből. A részletekért tekintse meg a [Microsoft Azure PowerShell dokumentációját](../../powershell-azure-resource-manager.md) . 
 
 ## <a name="extend-storage-by-using-shared-file-systems"></a>Tárterület kiterjesztése megosztott fájlrendszerek használatával
-Az adatszakértők megoszthatnak nagy adatkészleteket, kódokat vagy más erőforrásokat a csapaton belül. A DSVM körülbelül 45 GB szabad területtel rendelkezik. A tárterület bővítéséhez Azure Files használhat, és csatlakoztathatja egy vagy több DSVM-példányhoz, vagy elérheti azt egy REST API keresztül. A [Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) is használhatja, vagy a [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) használatával további dedikált adatlemezeket adhat hozzá. 
+Az adatszakértők megoszthatja a nagyméretű adathalmazok, kódok vagy egyéb erőforrások a csapaton belüli. A DSVM körülbelül 45 GB szabad területtel rendelkezik. A tárterület bővítéséhez Azure Files használhat, és csatlakoztathatja egy vagy több DSVM-példányhoz, vagy elérheti azt egy REST API keresztül. A [Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) is használhatja, vagy a [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) használatával további dedikált adatlemezeket adhat hozzá. 
 
 > [!NOTE]
 > A Azure Files-megosztás maximális mérete 5 TB. Az egyes fájlok maximális mérete 1 TB. 
@@ -242,10 +242,10 @@ cmdkey /add:<<mydatadisk>>.file.core.windows.net /user:<<mydatadisk>> /pass:<sto
 net use z:  \\<mydatadisk>.file.core.windows.net\<<teamsharename>>
 ```
 
-Most már elérheti a meghajtót, ahogy a virtuális gép bármely normál meghajtóján lenne.
+Most már hozzáférhet a meghajtó, mint bármilyen normál meghajtó a virtuális gépen.
 
 ## <a name="share-code-in-github"></a>Kód megosztása a GitHubban
-A GitHub egy olyan kódrészlet, amelyben a fejlesztői közösség által megosztott technológiák használatával különböző eszközökhöz használhat programkódokat és forrásokat. A git technológiát használja a programkódok verzióinak nyomon követésére és tárolására. A GitHub egy olyan platform is, ahol saját tárházat hozhat létre a csapat megosztott kódjának és dokumentációjának tárolásához, a verziókövetés megvalósításához, valamint azt, hogy ki férhet hozzá a kód megtekintéséhez és használatához. 
+A GitHub egy olyan kódrészlet, amelyben a fejlesztői közösség által megosztott technológiák használatával különböző eszközökhöz használhat programkódokat és forrásokat. Használ a Git, a technológia nyomon követheti, és tárolja a kódot fájlok verzióival. A GitHub egy olyan platform is, ahol saját tárházat hozhat létre a csapat megosztott kódjának és dokumentációjának tárolásához, a verziókövetés megvalósításához, valamint azt, hogy ki férhet hozzá a kód megtekintéséhez és használatához. 
 
 A git használatával kapcsolatos további információkért látogasson el a [GitHub Súgó oldalaira](https://help.github.com/) . Használhatja a GitHubot a csapatával való együttműködésre, a Közösség által fejlesztett kód használatára, valamint a kód visszavonására a Közösséghez.
 
@@ -255,7 +255,7 @@ Ha egy GitHub-tárházból szeretne kódot letölteni, használja a ```git clone
 
     git clone https://github.com/Azure/DataScienceVM.git
 
-A Visual Studióban ugyanezt a klónozási műveletet végezheti el. Az alábbi képernyőfelvételen a git-és GitHub-eszközök a Visual Studióban való elérését mutatja be:
+A Visual Studióban érdemes ugyanazt a Klónozási műveletet. Az alábbi képernyőfelvételen a git-és GitHub-eszközök a Visual Studióban való elérését mutatja be:
 
 ![A Visual Studio képernyőképe a megjelenő GitHub-kapcsolatban](./media/vm-do-ten-things/VSGit.PNG)
 
@@ -272,7 +272,7 @@ Az Azure Blob Storage egy megbízható, gazdaságos felhőalapú tárolási szol
    ![Képernyőfelvétel a Storage-fiók létrehozási folyamatáról a Azure Portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Ellenőrizze, hogy a parancssori AzCopy eszköz előre van-e telepítve: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. A azcopy. exe fájlt tartalmazó könyvtár már a PATH környezeti változóban van, így az eszköz futtatásakor nem lehet beírni a teljes parancs elérési útját. A AzCopy eszközzel kapcsolatos további információkért tekintse meg a [AzCopy dokumentációját](../../storage/common/storage-use-azcopy.md).
-* Indítsa el a Azure Storage Explorer eszközt. A [Storage Explorer weboldaláról](https://storageexplorer.com/)tölthető le. 
+* Az Azure Storage Explorer eszköz elindításához. A [Storage Explorer weboldaláról](https://storageexplorer.com/)tölthető le. 
 
    ![A Storage-fiók elérésének Azure Storage Explorer képernyőképe](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
@@ -310,7 +310,7 @@ Az adatok a virtuális gépen lévő helyi fájlból is tölthetők fel Azure St
 
 A Azure Machine Learning Studioban az adatok importálása modul használatával olvashatja el a blob adatait.
 
-![Képernyőkép az Adatimportálási modulról Machine Learning Studio](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
+![Képernyőkép a Machine Learning studióban az adatok importálása modullal](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>Adatok beolvasása egy Azure-blobból: Python ODBC
 
@@ -362,10 +362,10 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 
 Az adatgyűjtés adatkeretként történik:
 
-![Képernyőfelvétel az első 10 adatsorról](./media/vm-do-ten-things/IPNB_data_readin.PNG)
+![Az első 10 sornyi adatot képernyőképe](./media/vm-do-ten-things/IPNB_data_readin.PNG)
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
-A Azure Data Lake Storage big data elemzési számítási feladatokhoz használható nagy kapacitású-tárház, amely kompatibilis a Hadoop elosztott fájlrendszerával (HDFS). A Hadoop, a Spark és a Azure Data Lake Analytics is működik. Ebből a szakaszból megtudhatja, hogyan helyezheti át az információkat a Azure Data Lake Storageba, és hogyan futtathatja az elemzéseket Azure Data Lake Analytics használatával.
+A Azure Data Lake Storage big data elemzési számítási feladatokhoz használható nagy kapacitású-tárház, amely kompatibilis a Hadoop elosztott fájlrendszerával (HDFS). A Hadoop, Spark- és az Azure Data Lake Analytics működik. Ebből a szakaszból megtudhatja, hogyan helyezheti át az információkat a Azure Data Lake Storageba, és hogyan futtathatja az elemzéseket Azure Data Lake Analytics használatával.
 
 #### <a name="prerequisites"></a>Előfeltételek
 
@@ -439,7 +439,7 @@ Miután elküldte a lekérdezést a kiszolgálónak, a diagram megjeleníti a fe
 
 #### <a name="query-data-in-data-lake-u-sql"></a>Adatlekérdezés Data Lakeban: U-SQL
 
-Az adatkészletnek a Azure Data Lakeba való betöltését követően a [U-SQL nyelv](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) használatával kérdezheti le és vizsgálhatja meg az adatokat. Az U-SQL nyelv a T-SQL-hez hasonló, de néhány funkciót C# kombinál, hogy a felhasználók egyéni modulokat és felhasználó által definiált függvényeket tudjanak írni. A szkripteket az előző lépésben használhatja.
+Az adatkészletnek a Azure Data Lakeba való betöltését követően a [U-SQL nyelv](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) használatával kérdezheti le és vizsgálhatja meg az adatokat. Az U-SQL nyelv a T-SQL-hez hasonló, de néhány funkciót C# kombinál, hogy a felhasználók egyéni modulokat és felhasználó által definiált függvényeket tudjanak írni. Az előző lépésben a parancsfájlokat használhat.
 
 Miután elküldte a lekérdezést a kiszolgálónak, tripdata_summary. A CSV a Azure Data Lake Explorerben jelenik meg. Az adatmegjelenítést úgy is megtekintheti, hogy a jobb gombbal a fájlra kattint.
 
@@ -447,20 +447,20 @@ Miután elküldte a lekérdezést a kiszolgálónak, tripdata_summary. A CSV a A
 
 Ekkor megjelenik a fájl adatai:
 
-![A fájl összegző információinak képernyőképe](./media/vm-do-ten-things/USQL_tripdata_summary.png)
+![Képernyőkép a összefoglaló információk](./media/vm-do-ten-things/USQL_tripdata_summary.png)
 
 ### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop-fürtök
 Az Azure HDInsight egy felügyelt Apache Hadoop-, Spark-, HBase-és Storm-szolgáltatás a felhőben. Az Azure HDInsight-fürtökkel könnyedén dolgozhat a Data Science Virtual Machine.
 
 #### <a name="prerequisites"></a>Előfeltételek
 
-* Hozza létre az Azure Blob Storage-fiókot a [Azure Portal](https://portal.azure.com). Ezt a Storage-fiókot használjuk a HDInsight-fürtökre vonatkozó adattároláshoz.
+* Hozza létre az Azure Blob Storage-fiókot a [Azure Portal](https://portal.azure.com). Ez a tárfiók HDInsight-fürtök adatok tárolására szolgál.
 
    ![Képernyőkép a Storage-fiók létrehozásáról a Azure Portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Azure HDInsight Hadoop fürtök testreszabása a [Azure Portal](../team-data-science-process/customize-hadoop-cluster.md).
   
-   Csatolja a HDInsight-fürttel létrehozott Storage-fiókot a létrehozásakor. Ez a Storage-fiók a fürtön belül feldolgozható adatok elérésére szolgál.
+   Csatolja a HDInsight-fürttel létrehozott Storage-fiókot a létrehozásakor. Ehhez a tárfiókhoz való hozzáféréshez szükséges adatokat a fürtön belül feldolgozható szolgál.
 
    ![A HDInsight-fürttel létrehozott Storage-fiók összekapcsolásának kijelölése](./media/vm-do-ten-things/Create_HDI_v4.PNG)
 
@@ -468,13 +468,13 @@ Az Azure HDInsight egy felügyelt Apache Hadoop-, Spark-, HBase-és Storm-szolg�
 
    ![Távoli asztal gomb a HDInsight-fürt távoli elérésének engedélyezéséhez](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
-* Hozzon létre egy Azure Machine Learning munkaterületet. A Machine Learning kísérleteket ebben a Machine Learning-munkaterületen tárolja a rendszer. Válassza ki a Kiemelt beállításokat a portálon, az alábbi képernyőképen látható módon:
+* Az Azure Machine Learning-munkaterület létrehozása. A Machine Learning kísérleteket ebben a Machine Learning-munkaterületen tárolja a rendszer. Válassza ki a Kiemelt beállításokat a portálon, az alábbi képernyőképen látható módon:
 
    ![Azure Machine Learning-munkaterület létrehozása](./media/vm-do-ten-things/Create_ML_Space.PNG)
 
 * Adja meg a munkaterület paramétereit.
 
-   ![Machine Learning munkaterület paramétereinek megadása](./media/vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
+   ![Adja meg a Machine Learning-munkaterület paraméterek](./media/vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
 
 * Adatok feltöltése a IPython notebook használatával. Importálja a szükséges csomagokat, csatlakoztassa a hitelesítő adatokat, hozzon létre egy adatbázist a Storage-fiókban, majd töltse be az adatokat a HDI-fürtökbe.
 
@@ -571,7 +571,7 @@ for i in range(1, 13):
     cursor.execute(queryString)
 ```
 
-Azt is megteheti, hogy [ezt a bemutatót](../team-data-science-process/hive-walkthrough.md) követve feltölthet egy NYC-taxi-adatát a HDI-fürtbe. A főbb lépések a következők:
+Azt is megteheti, hogy [ezt a bemutatót](../team-data-science-process/hive-walkthrough.md) követve feltölthet egy NYC-taxi-adatát a HDI-fürtbe. Fő lépései a következők:
   
 * A AzCopy használatával töltse le a tömörített CSV a nyilvános blobból a helyi mappájába.
 * A AzCopy használatával töltse fel a kibontott CSV a helyi mappából a HDI-fürtbe.
@@ -592,7 +592,7 @@ pd.read_sql(queryString, connection)
 
 ![Meglévő táblák megtekintése](./media/vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
 
-Nézzük meg az egyes hónapokban lévő rekordok számát, illetve a kimondott vagy nem az utazási táblázatban szereplő gyakoriságot:
+Nézzük meg a rekordok száma havonta és gyakoriságát Formabontó vagy nem a trip táblázatban:
 
 ```python
 queryString = """
@@ -608,7 +608,7 @@ df.index = df['month']
 df['trip_count'].plot(kind='bar')
 ```
 
-![Rekordok számának ábrázolása minden hónapban](./media/vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
+![A bejegyzések száma havonta a diagram](./media/vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
 
 ```python
 queryString = """
@@ -628,7 +628,7 @@ df.index = df['tipped']
 df['trip_count'].plot(kind='bar')
 ```
 
-![Tipp gyakoriságának ábrázolása](./media/vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
+![Tipp gyakoriságok diagram](./media/vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
 
 Kiszámíthatja a felvételi hely és a legördülő hely közötti távolságot is, majd összehasonlíthatja azt az utazási távolsággal.
 
@@ -802,7 +802,7 @@ cursor.execute(queryString)
 pd.read_sql(queryString, connection)
 ```
 
-![A tábla adatainak legfelső sora](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
+![Az adatok a tábla első sorok](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
 #### <a name="read-data-from-hdi-by-using-azure-machine-learning-studio-classic-reader-module"></a>Adatok beolvasása a HDI-ből Azure Machine Learning Studio (klasszikus): olvasó modul használatával
 
@@ -812,7 +812,7 @@ A Hadoop-fürtben található adatbázis eléréséhez használhatja a Azure Mac
 
 Ezután megtekintheti a pontszámmal ellátható adatkészletet:
 
-![Pontozásos adatkészlet megtekintése](./media/vm-do-ten-things/AML_Model_Results.PNG)
+![Pontozott adatkészlet megtekintése](./media/vm-do-ten-things/AML_Model_Results.PNG)
 
 ### <a name="azure-sql-data-warehouse-and-databases"></a>Azure SQL Data Warehouse és adatbázisok
 Azure SQL Data Warehouse egy rugalmas adattárház-szolgáltatás, amely nagyvállalati szintű SQL Server-felülettel rendelkezik.
@@ -820,7 +820,7 @@ Azure SQL Data Warehouse egy rugalmas adattárház-szolgáltatás, amely nagyvá
 Az Azure SQL-adattárházat a [jelen cikk](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)utasításait követve építheti ki. Az SQL-adattárház üzembe helyezése után ezzel az [útmutatóval](../team-data-science-process/sqldw-walkthrough.md) az adatok feltöltését, feltárását és modellezését végezheti el az SQL-adattárházban lévő adatok használatával.
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
-Azure Cosmos DB egy NoSQL-adatbázis a felhőben. Használhatja a JSON-hoz hasonló dokumentumokkal, valamint a dokumentumok tárolására és lekérdezésére.
+Az Azure Cosmos DB egy NoSQL-adatbázis a felhőben. Használhatja a JSON-hoz hasonló dokumentumokkal, valamint a dokumentumok tárolására és lekérdezésére.
 
 A következő előfeltételek végrehajtásával érheti el Azure Cosmos DB a DSVM:
 
@@ -834,12 +834,12 @@ A következő előfeltételek végrehajtásával érheti el Azure Cosmos DB a DS
 Az adat importálása után nyissa meg a Jupyter, és nyissa meg a *DocumentDBSample*című jegyzetfüzetet. Python-kódot tartalmaz a Azure Cosmos DB eléréséhez, és elvégezheti az alapszintű lekérdezéseket. A Azure Cosmos DBról további információt a szolgáltatás [dokumentációs oldalának](https://docs.microsoft.com/azure/cosmos-db/)webhelyén talál.
 
 ## <a name="use-power-bi-reports-and-dashboards"></a>Power BI jelentések és irányítópultok használata 
-Megjelenítheti a vulkáni JSON-fájlt az előző Azure Cosmos DB például Power BI Desktop, hogy vizuális elemzéseket nyerjen az adatokból. A részletes lépések a [Power bi cikkben](../../cosmos-db/powerbi-visualize.md)találhatók. A magas szintű lépések:
+Megjelenítheti a vulkáni JSON-fájlt az előző Azure Cosmos DB például Power BI Desktop, hogy vizuális elemzéseket nyerjen az adatokból. A részletes lépések a [Power bi cikkben](../../cosmos-db/powerbi-visualize.md)találhatók. Magas szintű lépései a következők:
 
 1. Nyissa meg Power BI Desktop és válassza **az adatlekérdezés**lehetőséget. Az URL-címet a következőképpen adhatja meg: https://cahandson.blob.core.windows.net/samples/volcano.json.
 2. Ekkor megjelenik a listaként importált JSON-rekordok listája. Alakítsa át a listát egy táblázatba, hogy Power BI képes legyen vele dolgozni.
 4. Bontsa ki az oszlopokat a Expand (nyíl) ikon kiválasztásával.
-5. Figyelje meg, hogy a hely egy **rekord** mező. Bontsa ki a rekordot, és csak a koordinátákat válassza ki. A **koordináta** egy lista oszlop.
+5. Figyelje meg, hogy a hely egy **rekord** mező. Bontsa ki a bejegyzést, és válassza ki a csak a koordinátákat. A **koordináta** egy lista oszlop.
 6. Adjon hozzá egy új oszlopot a lista koordináta oszlopának egy vesszővel tagolt **LatLong** oszlopba való átalakításához. Összefűzi a két elemet a koordináta-lista mezőben a következő képlet használatával: ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```.
 7. Alakítsa át a **jogosultságszint-emelési** oszlopot decimális értékre, és válassza a **Bezárás** és **alkalmazás** gombokat.
 
@@ -857,7 +857,7 @@ in
     #"Changed Type"
 ```
 
-Most már rendelkezik a Power BI adatmodellben lévő adataival. A Power BI Desktop példányának a következőképpen kell megjelennie:
+Most már az adatok a Power BI-adatmodellben. A Power BI Desktop példányának a következőképpen kell megjelennie:
 
 ![Power BI Desktop](./media/vm-do-ten-things/PowerBIVolcanoData.png)
 
@@ -878,7 +878,7 @@ Hasonlóképpen, a virtuális gépek feldolgozási kapacitásának csökkentése
 ## <a name="add-more-tools"></a>További eszközök hozzáadása
 A DSVM beépített eszközök számos gyakori adatelemzési igényt tudnak kezelni. Ezzel időt takaríthat meg, mert nem kell egyenként telepítenie és konfigurálnia a környezeteket. Pénzt takarít meg, mivel csak a felhasznált erőforrásokért kell fizetnie.
 
-A cikkben ismertetett egyéb Azure-adatelemzési és-elemzési szolgáltatások segítségével javíthatja az elemzési környezetét. Bizonyos esetekben további eszközökre lehet szükség, beleértve néhány saját partneri eszközt is. A virtuális gépen teljes körű rendszergazdai hozzáféréssel rendelkezik a szükséges új eszközök telepítéséhez. További csomagokat is telepíthet a Pythonban és az R-ben, amelyek nincsenek előre telepítve. A Python esetében ```conda``` vagy ```pip```is használható. Az R esetében használhatja a ```install.packages()``` az R-konzolon, vagy használhatja az IDE-t, majd kiválaszthatja a **csomagokat** > **csomagok telepítése**lehetőséget.
+A cikkben ismertetett egyéb Azure-adatelemzési és-elemzési szolgáltatások segítségével javíthatja az elemzési környezetét. Bizonyos esetekben további eszközökre lehet szükség, beleértve néhány saját partneri eszközt is. A virtuális gépen teljes körű rendszergazdai hozzáféréssel rendelkezik a szükséges új eszközök telepítéséhez. A Python és előre nem telepített R további csomagokat is telepíthet. A Python esetében ```conda``` vagy ```pip```is használható. Az R esetében használhatja a ```install.packages()``` az R-konzolon, vagy használhatja az IDE-t, majd kiválaszthatja a **csomagokat** > **csomagok telepítése**lehetőséget.
 
 ## <a name="deep-learning"></a>Deep learning
 
@@ -887,12 +887,12 @@ A keretrendszeren alapuló mintákon kívül olyan átfogó útmutatók is besze
 
 - [Neurális hálózatok futtatása különböző keretrendszerekben](https://github.com/ilkarman/DeepLearningFrameworks): Ez a bemutató bemutatja, hogyan lehet áttelepíteni a kódot az egyik keretrendszerről a másikra. Azt is bemutatja, hogyan lehet összehasonlítani a modelleket és a futásidejű teljesítményt a keretrendszerek között. 
 
-- [Útmutató a képeken belüli termékek észlelésére szolgáló teljes körű megoldás](https://github.com/Azure/cortana-intelligence-product-detection-from-images)létrehozásához: a képészlelés egy olyan technika, amely képes objektumokat megkeresni és osztályozni a képeken belül. Ez a technológia jelentős előnyökkel bír számos valós üzleti tartományban. A kiskereskedők például használhatják ezt a technikát annak meghatározására, hogy az ügyfél melyik terméket választotta fel a polcról. Ezek az információk segítenek a termékek leltározásának kezelésében. 
+- [Útmutató a képeken belüli termékek észlelésére szolgáló teljes körű megoldás](https://github.com/Azure/cortana-intelligence-product-detection-from-images)létrehozásához: a képészlelés egy olyan technika, amely képes objektumokat megkeresni és osztályozni a képeken belül. Ez a technológia jelentős előnyökkel bír számos valós üzleti tartományban. A kiskereskedők például használhatja ezt a módszert meghatározni, melyik terméket olyan rendelkezik felülettől a kereskedelmi. Ez az információ viszonzásul segíti a Termékleltár kezelése tárolók. 
 
 - [Mély tanulás a hanggal](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): ez az oktatóanyag azt mutatja be, hogyan lehet betanítani a Hangesemények észlelésére szolgáló mélyreható tanulási modellt a [városi hangok adatkészletében](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html). Emellett áttekintést nyújt a hangadatokkal való munkáról.
 
-- [Szöveges dokumentumok besorolása](https://github.com/anargyri/lstm_han): Ez a bemutató azt mutatja be, hogyan lehet két neurális hálózati architektúrát létrehozni és betanítani: hierarchikus figyelmet a hálózatra és a hosszú távú memória-(LSTM-) hálózatra. Ezek a neurális hálózatok a kerasz API-t használják a mélyreható tanuláshoz a szöveges dokumentumok besorolásához. A kerasz a legnépszerűbb mélyreható tanulási keretrendszerek: Microsoft Cognitive Toolkit, TensorFlow és theano.
+- [Szöveges dokumentumok besorolása](https://github.com/anargyri/lstm_han): Ez a bemutató azt mutatja be, hogyan lehet két neurális hálózati architektúrát létrehozni és betanítani: hierarchikus figyelmet a hálózatra és a hosszú távú memória-(LSTM-) hálózatra. Ezeket a Neurális hálózatokat a deep learninghez a Keras API használatával szöveges dokumentumok besorolását. A kerasz a legnépszerűbb mélyreható tanulási keretrendszerek: Microsoft Cognitive Toolkit, TensorFlow és theano.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Ez a cikk néhány olyan dolgot ismertetett, amelyet a Microsoft Data Science Virtual Machine végezhet el. Számos további dolgot tehet a DSVM hatékony elemzési környezetének elvégzéséhez.
 

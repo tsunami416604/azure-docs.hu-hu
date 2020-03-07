@@ -1,6 +1,6 @@
 ---
-title: Szeretne csatlakozni, konfigurálja, az oktatóanyag az Azure Portalon az Azure Data Box Edge-eszköz aktiválása |} A Microsoft Docs
-description: Az oktatóanyagban a Data Box Edge üzembe helyezése arra utasítja, hogy csatlakozzon, és állítsa be, és a fizikai eszköz aktiválása.
+title: 'Oktatóanyag: Azure Data Box Edge eszköz csatlakoztatása, konfigurálása, aktiválása Azure Portalban | Microsoft Docs'
+description: Az Data Box Edge üzembe helyezésére vonatkozó oktatóanyag arra utasítja a fizikai eszköz csatlakoztatását, beállítását és aktiválását.
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,150 +10,150 @@ ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
 ms.openlocfilehash: cf2aa9bc1234f8bc92829b107d1a788b75d56a6b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075072"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384687"
 ---
-# <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Oktatóanyag: Csatlakozás, beállítása és aktiválni az Azure Data Box Edge 
+# <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Oktatóanyag: a Azure Data Box Edge összekapcsolása, beállítása és aktiválása 
 
-Ez az oktatóanyag leírja, hogyan csatlakozhat, állítsa be, és aktiválja az Azure Data Box Edge-eszköz helyi webes felhasználói felület használatával.
+Ez az oktatóanyag azt ismerteti, hogyan lehet csatlakozni, beállítani és aktiválni a Azure Data Box Edge eszközt a helyi webes KEZELŐFELÜLET használatával.
 
-A telepítő-aktiválási folyamat befejezéséhez is igénybe vehet körülbelül 20 percet.
+A telepítés és az aktiválás folyamata körülbelül 20 percet vesz igénybe.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Csatlakozás egy fizikai eszköz
-> * Állítsa be, és a fizikai eszköz aktiválása
+> * Kapcsolódás fizikai eszközhöz
+> * A fizikai eszköz beállítása és aktiválása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt konfigurálja, és állítsa be a Data Box peremhálózati eszköz, ellenőrizze, hogy:
+A Data Box Edge eszköz konfigurálása és beállítása előtt győződjön meg az alábbiakról:
 
-* Ahogy az az, hogy telepítette a fizikai eszköz [telepítése Data Box Edge](data-box-edge-deploy-install.md).
-* A Data Box Edge szolgáltatásból, a Data Box peremhálózati eszköz kezeléséhez létrehozott az aktiválási kulcs van. További információért ugorjon [üzembe helyezését az Azure Data Box Edge](data-box-edge-deploy-prep.md).
+* Telepítette a fizikai eszközt a [Data Box Edge telepítésének](data-box-edge-deploy-install.md)részletesen.
+* A Data Box Edge eszköz kezeléséhez a létrehozott Data Box Edge szolgáltatásból aktiválhatja az aktiválási kulcsot. További információ: [felkészülés a Azure Data Box Edge üzembe helyezésére](data-box-edge-deploy-prep.md).
 
-## <a name="connect-to-the-local-web-ui-setup"></a>Csatlakozás a helyi webes felhasználói felület beállítása 
+## <a name="connect-to-the-local-web-ui-setup"></a>Kapcsolódás a helyi webes felhasználói felület telepítéséhez 
 
-1. Ethernet-adapterét konfigurálja a Data Box peremhálózati eszköz, és a 255.255.255.0 alhálózati maszkkal 192.168.100.5 statikus IP-címmel csatlakozni a számítógépen.
+1. Konfigurálja úgy az Ethernet-adaptert a számítógépén, hogy a 192.168.100.5 és az alhálózat 255.255.255.0 statikus IP-címmel kapcsolódjon a Data Box Edge eszközhöz.
 
-2. Csatlakoztassa a számítógépet PORTHOZ 1 az eszközön. Az alábbi ábra segítségével azonosíthatja a PORTHOZ 1 az eszközön.
+2. A számítógép csatlakoztatása az 1. PORThoz az eszközön. Az alábbi ábra segítségével azonosíthatja az eszközön az 1. PORTOT.
 
     ![Egy bekábelezett eszköz hátlapja](./media/data-box-edge-deploy-install/backplane-cabled.png)
 
 
-3. Nyisson meg egy böngészőablakot és hozzáférés a helyi webes felhasználói felülete a következő címen `https://192.168.100.10`.  
-    Ez a művelet már az eszköz bekapcsolása után néhány percet is igénybe vehet. 
+3. Nyisson meg egy böngészőablakot, és nyissa meg az eszköz helyi webes FELÜLETét `https://192.168.100.10`címen.  
+    Ez a művelet néhány percet is igénybe vehet, miután bekapcsolta az eszközt. 
 
-    Láthatja, hogy egy hiba vagy figyelmeztetés jelzi, hogy nincs-e a webhely biztonsági tanúsítványával kapcsolatos problémára. 
+    Hibaüzenet vagy figyelmeztetés jelenik meg, amely jelzi, hogy probléma van a webhely biztonsági tanúsítványával. 
    
-    ![Webhely biztonsági tanúsítványa hibaüzenet](./media/data-box-edge-deploy-connect-setup-activate/image2.png)
+    ![A webhely biztonsági tanúsítványának hibaüzenete](./media/data-box-edge-deploy-connect-setup-activate/image2.png)
 
-4. Válassza ki **tovább a weblapra a**.  
-    Ezeket a lépéseket a használt böngészőtől függően változhat.
+4. Válassza **a folytatás ehhez a weboldalhoz**lehetőséget.  
+    Ezek a lépések a használt böngészőtől függően eltérőek lehetnek.
 
-5. Jelentkezzen be a webes felhasználói felületen, az eszköz. Az alapértelmezett jelszó az *jelszó1*. 
+5. Jelentkezzen be az eszköz webes felhasználói felületére. Az alapértelmezett jelszó a *jelszó1*. 
    
-    ![Data Box peremhálózati eszköz bejelentkezési oldal](./media/data-box-edge-deploy-connect-setup-activate/image3.png)
+    ![Data Box Edge eszköz bejelentkezési lapja](./media/data-box-edge-deploy-connect-setup-activate/image3.png)
 
-6. Amikor a rendszer az eszköz rendszergazdai jelszavának módosítása  
-    Az új jelszó 8 – 16 karakterből állhat. A következő karakterek közül hármat tartalmaznia kell: nagybetű, kisbetű, számjegyeket és speciális karaktereket.
+6. A parancssorban módosítsa az eszköz rendszergazdai jelszavát.  
+    Az új jelszónak 8 és 16 karakter közöttinek kell lennie. A következő karakterek közül hármat tartalmaznia kell: nagybetűk, kisbetűk, számok és speciális karakterek.
 
-Most már az eszköz irányítópultján található.
+Most már az eszköz irányítópultján van.
 
-## <a name="set-up-and-activate-the-physical-device"></a>Állítsa be, és a fizikai eszköz aktiválása
+## <a name="set-up-and-activate-the-physical-device"></a>A fizikai eszköz beállítása és aktiválása
  
-Az irányítópulton jeleníti meg a különböző beállítások konfigurálása és regisztrálása a fizikai eszköz a Data Box Edge szolgáltatással szükséges. A **eszköznév**, **hálózati beállítások**, **webalkalmazás-proxy beállításai**, és **időbeállítások** megadása nem kötelező. Csak a szükséges beállítások **Felhőbeállítások**.
+Az irányítópulton a fizikai eszköz a Data Box Edge szolgáltatással való konfigurálásához és regisztrálásához szükséges különböző beállítások láthatók. Az **eszköz neve**, a **hálózati beállítások**, a **webproxy beállításai**és az **időbeállítások** megadása nem kötelező. Az egyetlen szükséges beállítás a **felhő beállításai**.
    
-![Local web UI "Dashboard" page](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-1.png)
+![Helyi webes felhasználói felület "irányítópult" lapja](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-1.png)
 
-1. A bal oldali panelen válassza ki a **eszköznév**, majd adja meg az eszköz rövid nevét.  
-    A rövid neve 1 – 15 karakter hosszúságú, és rendelkezik betűket, számokat és kötőjeleket tartalmazhat.
+1. A bal oldali panelen válassza az **eszköznév**lehetőséget, majd adjon meg egy rövid nevet az eszköznek.  
+    A felhasználóbarát névnek 1 és 15 karakter közöttinek kell lennie, és betűket, számokat és kötőjeleket kell tartalmaznia.
 
-    ![Helyi webes felhasználói felület "Eszköz neve" lap](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-2.png)
+    ![Helyi webes felhasználói felület "eszköznév" lapja](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-2.png)
 
-2. (Nem kötelező) A bal oldali panelen válassza ki a **hálózati beállítások** , majd konfigurálja a beállításokat.  
-    A fizikai eszközön nincsenek hat hálózati adapterrel. PORTHOZ 1 és PORT 2 az 1-GB/s sebességű hálózati adapterrel. PORT 3, a PORT 4, PORT 5 és PORT 6 minden 10-GB/s sebességű hálózati adapterrel is szolgálhat 25-GB/s sebességű hálózati adapterek. PORT 1 automatikusan csak felügyeleti port van beállítva, és PORT 2 PORT 6 minden adat port. A **hálózati beállítások** lap az alább látható módon.
+2. Választható A bal oldali ablaktáblán válassza a **hálózati beállítások** lehetőséget, majd konfigurálja a beállításokat.  
+    A fizikai eszközön hat hálózati adapter található. Az 1. és a 2. port 1 GB/s hálózati adapter. A 3. port, a 4-es port, az 5. port és a 6-os PORT mind a 25 GB-os hálózati adapterek, amelyek 10 GB/s hálózati adapterként is használhatók. Az 1. PORT automatikusan csak felügyeleti portként van konfigurálva, a 2-es port pedig minden adatport. A **hálózati beállítások** lap az alábbi ábrán látható.
     
-    ![Helyi webes felhasználói felület "Hálózati beállítások" lap](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-3.png)
+    ![Helyi webes felhasználói felület "hálózati beállítások" lapja](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-3.png)
    
-    Amikor beállítja a hálózati beállításokat, vegye figyelembe:
+    A hálózati beállítások konfigurálásakor vegye figyelembe a következőket:
 
-   - Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. Az IP-cím, alhálózat, átjáró és DNS automatikusan hozzárendelve.
-   - Ha nincs engedélyezve a DHCP, hozzárendelheti statikus IP-címek, szükség esetén.
-   - A hálózati adapter IPv4-t konfigurálhatja.
+   - Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. A rendszer automatikusan hozzárendeli az IP-címet, az alhálózatot, az átjárót és a DNS-t.
+   - Ha a DHCP nincs engedélyezve, szükség esetén statikus IP-címeket is hozzárendelhet.
+   - A hálózati adaptert IPv4-ként is konfigurálhatja.
 
      >[!NOTE] 
-     > Javasoljuk, hogy nem váltson át a helyi IP-címét a hálózati adaptert a statikus a DCHP, kivéve, ha az eszköz csatlakozni egy másik IP-címet. Ha egy hálózati adaptert, és váltson a DHCP, akkor is nem lehet megállapítani a DHCP-címet. Ha meg szeretné változtatni a DHCP-címére, várja meg, amíg után az eszköz regisztrálva van a szolgáltatással, és lépjen be. Ezután megtekintheti az összes adapter IP-címekről a **eszköztulajdonságok** a szolgáltatás az Azure Portalon.
+     > Azt javasoljuk, hogy ne váltson át a hálózati adapter helyi IP-címére statikusról DHCP-re, hacsak nem rendelkezik másik IP-címmel az eszközhöz való csatlakozáshoz. Ha egy hálózati adaptert használ, és a DHCP-re vált, a DHCP-címeket nem lehet meghatározni. Ha egy DHCP-címről szeretne váltani, várjon, amíg az eszköz regisztrálva van a szolgáltatásban, majd módosítsa a következőt:. Ezután megtekintheti az összes adapter IP-címeit az **eszköz tulajdonságai** között a szolgáltatás Azure Portal.
 
-3. (Nem kötelező) A bal oldali panelen válassza ki a **webalkalmazás-proxy beállításai**, majd konfigurálja a webproxy-kiszolgálót. Bár a webproxy konfigurálása nem kötelező, ha olyan webproxyt használ, csak ezen az oldalon konfigurálható.
+3. Választható A bal oldali ablaktáblán válassza a **webproxy beállításai**lehetőséget, majd konfigurálja a webproxy-kiszolgálót. Bár a webproxy konfigurálása nem kötelező, ha webproxyt használ, csak ezen a lapon konfigurálhatja.
    
-   ![Helyi webes felhasználói felület "Webproxy beállításai" lap](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-4.png)
+   ![Helyi webes felhasználói felület "Webproxy-beállítások" lapja](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-4.png)
    
-   Az a **webalkalmazás-proxy beállításai** lapon, tegye a következőket:
+   A **webproxy beállításai** lapon tegye a következőket:
    
-   a. Az a **webalkalmazás-proxy URL-címe** mezőbe írja be az URL-cím a következő formátumban: `http://host-IP address or FQDN:Port number`. HTTPS URL-címek nem támogatottak.
+   a. A **webproxy URL-címe** mezőbe írja be az URL-címet a következő formátumban: `http://host-IP address or FQDN:Port number`. A HTTPS URL-címek nem támogatottak.
 
-   b. A **hitelesítési**válassza **nincs** vagy **NTLM**.
+   b. A **hitelesítés**területen válassza a **nincs** vagy az **NTLM**lehetőséget.
 
-   c. Ha használ hitelesítést, adja meg a felhasználónevet és jelszót.
+   c. Ha hitelesítést használ, adjon meg egy felhasználónevet és egy jelszót.
 
-   d. Érvényesítéséhez és a alkalmazni a konfigurált webes proxykiszolgáló beállításait, válassza ki a **beállítások alkalmazásához**.
+   d. A konfigurált Webproxy-beállítások érvényesítéséhez és alkalmazásához válassza a **Beállítások alkalmazása**lehetőséget.
 
-4. (Nem kötelező) A bal oldali panelen válassza ki a **időbeállítások**, majd konfigurálja az időzónát és az elsődleges és másodlagos NTP-kiszolgálóhoz az eszközhöz.  
-    Az NTP-kiszolgálókra szükség, mert az eszköz szinkronizálnia kell az időt, hogy a felhőszolgáltatókkal hitelesítést.
+4. Választható A bal oldali panelen válassza az **időbeállítások**lehetőséget, majd konfigurálja az adott eszközhöz tartozó időzónát és az elsődleges és másodlagos NTP-kiszolgálókat.  
+    Az NTP-kiszolgálókra azért van szükség, mert az eszköznek szinkronizálnia kell az időt ahhoz, hogy hitelesíteni lehessen a felhőalapú szolgáltatóktól.
        
-    Az a **időbeállítások** lapon, tegye a következőket:
+    Az **idő beállításai** lapon tegye a következőket:
     
-    1. Az a **időzóna** legördülő listára, válassza ki az időzónát, amely megfelel a földrajzi helyet, ahol az eszközön telepített.
-        Az eszköz az alapértelmezett időzóna PST. Az eszköz minden ütemezett művelethez ezt az időzónát használja.
+    1. Az **időzóna** legördülő listában válassza ki azt az időzónát, amely megfelel az eszköz üzembe helyezésének földrajzi helyének.
+        Az eszköz alapértelmezett időzónája a PST. Az eszköz minden ütemezett művelethez ezt az időzónát használja.
 
-    2. Az a **elsődleges NTP-kiszolgáló** mezőben adja meg az eszköz az elsődleges kiszolgáló, vagy fogadja el alapértékként a time.windows.com.  
-        Győződjön meg arról, hogy a hálózat lehetővé teszi, hogy NTP-adatforgalmat az Adatközpont az internethez.
+    2. Az **Elsődleges NTP-kiszolgáló** mezőbe írja be az eszköz elsődleges kiszolgálóját, vagy fogadja el a Time.Windows.com alapértelmezett értékét.  
+        Győződjön meg arról, hogy a hálózat lehetővé teszi, hogy az NTP-forgalom áthaladjon az adatközpontból az internetre.
 
-    3. Szükség esetén a a **másodlagos NTP-kiszolgáló** adja meg az eszköz egy másodlagos kiszolgálón.
+    3. Szükség esetén a **másodlagos NTP-kiszolgáló** mezőbe írja be az eszköz másodlagos kiszolgálóját.
 
-    4. Érvényesítéséhez és a konfigurált beállításokat alkalmazni, válassza ki a **beállítások alkalmazásához**.
+    4. A beállított idő beállításainak ellenőrzéséhez és alkalmazásához válassza a **Beállítások alkalmazása**lehetőséget.
 
-        ![Helyi webes felhasználói felület "Idő beállításai" lap](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
+        ![Helyi webes felhasználói felület "Time Settings" lapja](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
 
-5. (Nem kötelező) A bal oldali panelen válassza ki a **tárolási beállítások** a storage-rugalmasság konfigurálására az eszközön. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Alapértelmezés szerint a storage, az eszközön nem rugalmas és nincs adatvesztés, adatlemez meghibásodásakor az eszközön. Ha engedélyezi a rugalmas beállítást, a storage, az eszközön újra kell konfigurálni, és az eszköz képes elviselni a hiba, az adatvesztés nélküli egy adatlemezt. A tárolás konfigurálása a rugalmas, az eszköz használható kapacitása csökkenthető.
+5. Választható A bal oldali ablaktáblán válassza a **tárolási beállítások** lehetőséget a tárterület rugalmasságának konfigurálásához az eszközön. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Alapértelmezés szerint az eszközön lévő tárterület nem rugalmas, és adatvesztés történik, ha egy adatlemez meghibásodik az eszközön. Ha engedélyezi a rugalmas beállítást, a rendszer újrakonfigurálja az eszközön lévő tárolót, és az eszköz nem tudja elviselni az adatvesztés nélkül egy adatlemez meghibásodását. A tárterület rugalmasként való konfigurálása csökkenti az eszköz felhasználható kapacitását.
 
     > [!IMPORTANT] 
-    > A rugalmasság csak akkor állítható be, az eszköz aktiválása előtt. 
+    > A rugalmasságot csak az eszköz aktiválása előtt lehet konfigurálni. 
 
-    ![Helyi webes felhasználói felület "Tárolási beállítások" lap](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
+    ![Helyi webes felhasználói felület "tárolási beállítások" lapja](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
 
-6. A bal oldali panelen válassza ki a **Felhőbeállítások**, és aktiválja az eszköz a Data Box Edge szolgáltatással az Azure Portalon.
+6. A bal oldali ablaktáblán válassza a **felhő beállításai**lehetőséget, majd aktiválja az eszközt a Azure Portal Data Box Edge szolgáltatásával.
     
-    1. Az a **aktiválási kulcs** mezőbe írja be a termékaktiválási kulcsot, a kapott [aktiválási kulcs lekérése](data-box-edge-deploy-prep.md#get-the-activation-key) a Data Box Edge-hez.
+    1. Az **aktiválási kulcs** mezőben adja meg a Data Box Edge [aktiválási kulcsának lekérése](data-box-edge-deploy-prep.md#get-the-activation-key) aktiválási kulcsát.
     2. Kattintson az **Alkalmaz** gombra.
        
-        ![Local web UI "Cloud settings" page](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-6.png)
+        ![Helyi webes felhasználói felület "Cloud Settings" (Felhőbeli beállítások) lapja](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-6.png)
 
-    3. Először az eszköz akkor aktiválódik. Az eszköz ezután a fontos frissítéseket keres a, és ha elérhető, a rendszer automatikusan alkalmazza a frissítéseket. Megjelenik egy értesítés erre a célra.
+    3. Először az eszköz aktiválva van. Az eszköz ekkor megkeresi a kritikus frissítéseket, és ha elérhető, a rendszer automatikusan alkalmazza a frissítéseket. Ekkor megjelenik egy értesítés erre a hatásra.
 
-        A párbeszédpanelen is, hogy másolja és mentse azt biztonságos helyre a helyreállítási kulccsal rendelkezik. Ezt a kulcsot használja az adatok helyreállításához, abban az esetben, ha az eszköz nem indul el.
+        A párbeszédpanelen egy helyreállítási kulcs is található, amelyet egy biztonságos helyen kell átmásolnia és menteni. Ez a kulcs az adatok helyreállításához használható abban az esetben, ha az eszköz nem tud elindulni.
 
-        ![Local web UI "Cloud settings" page updated](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-7.png)
+        ![A helyi webes felhasználói felület "Cloud Settings" (Felhőbeli beállítások) lapja frissítve](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-7.png)
 
-    4. Szükség lehet Várjon néhány percet, miután a frissítés sikeresen befejeződött. Jelzi, hogy az eszköz aktiválása sikeresen frissül az oldal.
+    4. Előfordulhat, hogy a frissítés sikeres befejeződése után néhány percet várnia kell. Az oldal frissül, és jelzi, hogy az eszköz aktiválása sikeres volt.
 
-        ![Local web UI "Cloud settings" page updated](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-8.png)
+        ![A helyi webes felhasználói felület "Cloud Settings" (Felhőbeli beállítások) lapja frissítve](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-8.png)
 
-Az eszköz beállítása befejeződik. Most már hozzáadhat megosztások az eszközön.
+Az eszköz telepítése befejeződött. Mostantól megosztásokat is hozzáadhat az eszközhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Csatlakozás egy fizikai eszköz
-> * Állítsa be, és a fizikai eszköz aktiválása
+> * Kapcsolódás fizikai eszközhöz
+> * A fizikai eszköz beállítása és aktiválása
 
-Ismerje meg, hogyan viheti át az adatokat a Data Box peremhálózati eszköz, tekintse meg:
+Az adatok Data Box Edge eszközzel történő átviteléről a következő témakörben tájékozódhat:
 
 > [!div class="nextstepaction"]
-> [A Data Box Edge adatátvitel](./data-box-edge-deploy-add-shares.md).
+> [Adatok átvitele Data Box Edgesal](./data-box-edge-deploy-add-shares.md).

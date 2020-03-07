@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270822"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365835"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>A StorSimple-riasztások megtekintése és kezelése a StorSimple Eszközkezelő szolgáltatással
 
@@ -35,7 +35,7 @@ Emellett előfordulhat, hogy a biztonsággal, a frissítésekkel vagy a feladato
 
 ## <a name="alert-severity-levels"></a>Riasztás súlyossági szintjei
 
-A riasztások eltérő súlyossági szinttel bírnak, attól függően, hogy milyen hatással van a riasztási helyzetre, és hogy a riasztásra adott válaszra van szükség. A súlyossági szintek a következőek:
+A riasztások eltérő súlyossági szinttel bírnak, attól függően, hogy milyen hatással van a riasztási helyzetre, és hogy a riasztásra adott válaszra van szükség. A súlyossági szintek a következők:
 
 * **Kritikus** – ez a riasztás olyan feltételre reagál, amely hatással van a rendszer sikeres teljesítményére. A művelet végrehajtásához szükséges, hogy a StorSimple szolgáltatás ne legyen megszakítva.
 * **Figyelmeztetés** – ez az állapot kritikus lehet, ha nincs megoldva. Meg kell vizsgálnia a helyzetet, és el kell végeznie a probléma törléséhez szükséges lépéseket.
@@ -64,7 +64,7 @@ Miután engedélyezte az e-mailes értesítéseket egy eszközhöz, az értesít
       
 3. Teszt e-mail értesítés küldéséhez kattintson a **Tesztüzenet küldése**elemre. A StorSimple Eszközkezelő szolgáltatás megjeleníti az állapotüzenetek üzeneteit, mert továbbítja a teszt értesítését.
 
-    ![Riasztási beállítások](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
+    ![riasztási beállítások](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
 
 4. Ekkor megjelenik egy értesítés, amikor a teszt e-mailt elküldte. 
    

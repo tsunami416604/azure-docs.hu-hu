@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: aschhab
 ms.openlocfilehash: 683a28ca3cdabd5a7ffbf6e9ffdc3ed0c58d3247
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264695"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370479"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Ajánlott eljárások a teljesítmény növeléséhez Service Bus üzenetkezelés használatával
 
@@ -84,7 +84,7 @@ Az ügyféloldali kötegek lehetővé teszik egy üzenetsor vagy egy témakör-�
 
 Alapértelmezés szerint az ügyfél 20 ms-os batch-intervallumot használ. A Batch-intervallum módosításához állítsa a [BatchFlushInterval][BatchFlushInterval] tulajdonságot az üzenetküldési gyár létrehozása előtt. Ez a beállítás a gyár által létrehozott összes ügyfelet érinti.
 
-A kötegelt feldolgozás letiltásához állítsa a [BatchFlushInterval][BatchFlushInterval] tulajdonságot **TimeSpan. Zero**értékre. Példa:
+A kötegelt feldolgozás letiltásához állítsa a [BatchFlushInterval][BatchFlushInterval] tulajdonságot **TimeSpan. Zero**értékre. Például:
 
 ```csharp
 MessagingFactorySettings mfs = new MessagingFactorySettings();
@@ -113,7 +113,7 @@ Egy üzenetsor, témakör vagy előfizetés átviteli sebességének növelésé
 
 Az ezen intervallumban megjelenő további tárolási műveletek hozzáadódnak a köteghez. A kötegelt tárolók hozzáférése csak a **küldési** és a **befejezési** műveleteket érinti; a fogadási műveletek nem érintettek. A kötegelt tár hozzáférése egy entitás egyik tulajdonsága. A kötegelt tárolás az összes olyan entitáson megtörténik, amelyek engedélyezik a Batch-tárolók elérését.
 
-Új üzenetsor, témakör vagy előfizetés létrehozásakor a kötegelt tároló-hozzáférés alapértelmezés szerint engedélyezve van. A kötegelt tárolók elérésének letiltásához állítsa **hamis** értékre az [EnableBatchedOperations][EnableBatchedOperations] tulajdonságot az entitás létrehozása előtt. Példa:
+Új üzenetsor, témakör vagy előfizetés létrehozásakor a kötegelt tároló-hozzáférés alapértelmezés szerint engedélyezve van. A kötegelt tárolók elérésének letiltásához állítsa **hamis** értékre az [EnableBatchedOperations][EnableBatchedOperations] tulajdonságot az entitás létrehozása előtt. Például:
 
 ```csharp
 QueueDescription qd = new QueueDescription();
@@ -160,7 +160,7 @@ Service Bus rendelkezik egy, a fejlesztéshez használt funkcióval, amelyet **s
 
 Ha új szabályok vagy szűrők vannak hozzáadva a témakörhöz, a [TopicDescription.EnableFilteringMessagesBeforePublishing][] használatával ellenőrizheti, hogy az új szűrő kifejezés a várt módon működik-e.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
 A következő szakaszok ismertetik a tipikus üzenetkezelési forgatókönyveket, és körvonalazzák az előnyben részesített Service Bus beállításait. Az átviteli sebességet kisméretű (kevesebb, mint 1 üzenet/másodperc), mérsékelt (1 üzenet/másodperc vagy nagyobb, de kevesebb mint 100 üzenet/másodperc) és magas (100 üzenet/másodperc vagy nagyobb) értékre sorolják be. Az ügyfelek száma kisméretű (5 vagy kevesebb), mérsékelt (több mint 5, de legfeljebb 20) és nagy (több mint 20).
 
