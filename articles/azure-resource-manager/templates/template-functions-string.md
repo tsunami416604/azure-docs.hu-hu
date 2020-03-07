@@ -4,11 +4,11 @@ description: A Azure Resource Manager-sablonban a sztringekkel való együttműk
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.openlocfilehash: f8d19179461693331a6091ec7a3562f536b959e4
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207061"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357389"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Karakterlánc-függvények Azure Resource Manager-sablonokhoz
 
@@ -331,7 +331,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| Visszatérési | Tömb | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| visszatérési | Tömb | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 ## <a name="contains"></a>tartalmaz
 
@@ -589,7 +589,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | objectEmpty | Bool | True (Igaz) |
 | stringEmpty | Bool | True (Igaz) |
 
-## <a name="endswith"></a>EndsWith
+## <a name="endswith"></a>endsWith
 
 `endsWith(stringToSearch, stringToFind)`
 
@@ -1364,7 +1364,7 @@ Karakterláncok tömbjét adja vissza, amely a megadott elválasztó karakterrel
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | inputString |Igen |sztring |A felosztani kívánt karakterlánc. |
-| Elválasztó |Igen |karakterlánc vagy karakterláncok tömbje |A karakterlánc felosztásához használandó elválasztó karakter. |
+| elválasztó |Igen |karakterlánc vagy karakterláncok tömbje |A karakterlánc felosztásához használandó elválasztó karakter. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1824,7 +1824,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| Visszatérési | Sztring | egy két há' |
+| visszatérési | Sztring | egy két há' |
 
 ## <a name="uniquestring"></a>uniqueString
 

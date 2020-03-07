@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015447"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392982"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Több bemeneti fájl és összetevő tulajdonságainak használata prémium szintű kódolóval
 ## <a name="overview"></a>Áttekintés
@@ -31,7 +31,7 @@ Vannak olyan helyzetek, amikor szükség lehet az összetevő tulajdonságainak 
 * Embléma képének befedése a bemeneti videón a videó kódolásakor.
 * Több hang nyelvi kódolása.
 
-Ahhoz, hogy a **Media Encoder Premium workflow** tudja, hogy a feladat létrehozásakor vagy több bemeneti fájl elküldésekor megváltoztatja a munkafolyamat egyes tulajdonságait, olyan konfigurációs karakterláncot kell használnia, amely tartalmazza a **setRuntimeProperties** és/vagy **a transcodeSource**. Ez a témakör a használatuk módját ismerteti.
+Ahhoz, hogy a **Media Encoder Premium workflow** tudja, hogy a feladat létrehozásakor vagy több bemeneti fájl elküldésekor megváltoztatja a munkafolyamat egyes tulajdonságait, olyan konfigurációs karakterláncot kell használnia, amely **setRuntimeProperties** és/vagy **transcodeSource**tartalmaz. Ez a témakör a használatuk módját ismerteti.
 
 ## <a name="configuration-string-syntax"></a>Konfigurációs karakterlánc szintaxisa
 A kódolási feladatban beállított konfigurációs karakterlánc egy XML-dokumentumot használ, amely a következőképpen néz ki:
@@ -97,7 +97,7 @@ Példa:
 ```
 
 ### <a name="property-with-an-xml-value"></a>XML-értéket tartalmazó tulajdonság
-Egy XML-értéket megadó tulajdonság beállításához használja `<![CDATA[ and ]]>`a következőt:.
+Ha olyan tulajdonságot szeretne beállítani, amely egy XML-értéket vár, akkor `<![CDATA[ and ]]>`használatával ágyazza be.
 
 Példa:
 
@@ -131,7 +131,7 @@ Példa:
 ```
 
 > [!NOTE]
-> Győződjön meg arról, hogy a kocsit csak utána `<![CDATA[`helyezi vissza.
+> Ügyeljen arra, hogy a `<![CDATA[`után ne helyezzen vissza kocsivissza karaktert.
 
 ### <a name="propertypath-value"></a>Propertypath szintaxisnak érték
 Az előző példákban a Propertypath szintaxisnak "/Media file input/filename" vagy "/inactiveTimeout" vagy "clipListXml" volt.
@@ -151,7 +151,7 @@ A **Media Encoder Premium workflow** elküldött minden feladat két eszközt ig
 
 Ha több médiafájlt küld a **Media Encoder Premium workflow** kódolónak, a következő korlátozások érvényesek:
 
-* Az összes médiafájlnak ugyanabban a *média*-eszközben kell lennie. A több adathordozós eszközök használata nem támogatott.
+* Az összes médiafájlnak ugyanabban a *média-eszközben*kell lennie. A több adathordozós eszközök használata nem támogatott.
 * Az elsődleges fájlt be kell állítania ebben az adathordozó-eszközben (ideális esetben ez a fő videofájl, amelyet a kódolónak fel kell dolgoznia).
 * A **setRuntimeProperties** és/vagy **transcodeSource** elemet tartalmazó konfigurációs adategységeket át kell adni a processzornak.
   * a **setRuntimeProperties** a filename tulajdonság vagy más tulajdonság felülbírálására szolgál a munkafolyamat összetevőiben.
@@ -199,7 +199,7 @@ A munkafolyamatban megadhatja a klipek XML-fájlját futásidőben a **transcode
   </transcodeRequest>
 ```
 
-Ha meg szeretné adni a/primarySourceFile, hogy ez a tulajdonság a "kifejezések" használatával nevezze el a kimeneti fájlokat, akkor azt javasoljuk, hogy a klip lista XML-fájlját a/primarySourceFile tulajdonság *utáni* tulajdonságként adja át, hogy ne legyen felülbírálva a klipek listája a/primarySourceFile beállítás.
+Ha meg szeretné adni a/primarySourceFile, hogy ez a tulajdonság a "kifejezések" használatával nevezze el a kimeneti fájlokat, akkor azt javasoljuk, hogy a klip lista XML-fájlját a/primarySourceFile tulajdonság *utáni* tulajdonságként adja át, hogy ne legyen felülbírálva a/primarySourceFile beállítás.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -269,10 +269,10 @@ További keretek – pontos vágás:
   </transcodeRequest>
 ```
 
-## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>1\. példa: Videó átfedő képe
+## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>1\. példa: képek átfedése a videó fölé
 
 ### <a name="presentation"></a>Bemutató
-Vegyünk egy példát arra, hogy a videó kódolásakor a bemeneti videóban lévő embléma képét szeretné átfedőként használni. Ebben a példában a bemeneti videó neve "Microsoft_HoloLens_Possibilities_816p24. mp4", és a logó neve "logo. png". A következő lépéseket kell végrehajtania:
+Vegyünk egy példát arra, hogy a videó kódolásakor a bemeneti videóban lévő embléma képét szeretné átfedőként használni. Ebben a példában a bemeneti videó neve "Microsoft_HoloLens_Possibilities_816p24. mp4", és az embléma neve "logo. png". A következő lépéseket kell végrehajtania:
 
 * Hozzon létre egy munkafolyamat-objektumot a munkafolyamat-fájllal (lásd a következő példát).
 * Hozzon létre egy Media-objektumot, amely két fájlt tartalmaz: MyInputVideo. MP4, mint az elsődleges fájl és a MyLogo. png.
@@ -299,7 +299,7 @@ A fenti példában a videofájl neve a Media file input összetevőbe és a prim
 ### <a name="step-by-step-workflow-creation"></a>Lépésről lépésre a munkafolyamat létrehozása
 A következő lépésekkel hozhat létre egy olyan munkafolyamatot, amely két fájlt bemenetként fogad: egy videót és egy képet. A képet a videó tetején fogja átfedőként ábrázolni.
 
-Nyissa meg a **munkafolyamat** -tervezőt, és válassza a **fájl** > **Új munkaterület** > **átkódoló tervezet**lehetőséget.
+Nyissa meg a **munkafolyamat-tervezőt** , és válassza a **fájl** > **Új munkaterület** > **transcode Blueprint**lehetőséget.
 
 Az új munkafolyamat három elemet mutat be:
 
@@ -352,7 +352,7 @@ Ha módosítani szeretné az embléma pozícióját a videón (például előfor
 *Átfedési pozíció*
 
 A videó stream H. 264-re való kódolásához adja hozzá az AVC-videó Kódolóját és az AAC-kódoló összetevőit a tervező felületéhez. A PIN-kódok összekapcsolásához.
-Állítsa be az AAC-kódolót, és válassza a hangformátum átalakítása/beállításkészlet lehetőséget: 2,0 (L, R)
+Állítsa be az AAC-kódolót, és válassza a hangformátum átalakítása/előre beállított: 2,0 (L, R) lehetőséget.
 
 ![Hang-és video-kódolók](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
 
@@ -427,11 +427,11 @@ A feladatok befejezése után a kimeneti eszköz MP4-fájlja megjeleníti az át
 
 *Átfedés a videón*
 
-A minta munkafolyamatot letöltheti [](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/)a githubról.
+A minta munkafolyamatot letöltheti a [githubról](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/).
 
-## <a name="example-2--multiple-audio-language-encoding"></a>2\. példa: Több hang nyelvi kódolása
+## <a name="example-2--multiple-audio-language-encoding"></a>2\. példa: több hang nyelvi kódolása
 
-A githubon több hang-nyelvi kódolási munkafolyamat is elérhető [](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding).
+A [githubon](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding)több hang-nyelvi kódolási munkafolyamat is elérhető.
 
 Ez a mappa egy minta munkafolyamatot tartalmaz, amely egy MXF-fájlnak több hangsávot tartalmazó több MP4-fájlba való kódolására használható.
 

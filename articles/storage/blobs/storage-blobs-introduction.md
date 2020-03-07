@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 11/04/2019
+ms.date: 03/04/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8c2bbd3aff8c2c10864fb2fa8937c9159ecd3606
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: aeb6971d37601367e62b8f883ccbc576e9534cdb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972454"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356486"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Az Azure Blob Storage bemutatása
 
@@ -23,13 +23,13 @@ ms.locfileid: "75972454"
 
 A blob Storage háromféle típusú erőforrást kínál:
 
-- A **Storage-fiók**. 
+- A **Storage-fiók**
 - Egy **tároló a Storage** -fiókban
-- Egy tárolóban lévő **blob** 
+- Egy tárolóban lévő **blob**
 
 Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
-![a fiók blob és a Container erőforrás közötti kapcsolat](./media/storage-blob-introduction/blob1.png)
+![a fiók blob és a Container erőforrás közötti kapcsolat](./media/storage-blobs-introduction/blob1.png)
 
 ### <a name="storage-accounts"></a>Tárfiókok
 
@@ -54,9 +54,9 @@ Egy tároló blobokat szervez, hasonlóan a fájlrendszer egy könyvtárához. E
  
 Az Azure Storage három típusú blobot támogat:
 
-* A **Blobok** a szöveg és a bináris adat tárolására, körülbelül 4,7 TB-ra. A blokkblobok önállóan felügyelhető adatblokkokból állnak.
-* A **hozzáfűzési Blobok** olyan blokkokból állnak, mint a blokkos Blobok, de a hozzáfűzési műveletekre vannak optimalizálva. A hozzáfűző blobok ideálisak például a virtuális gépek adatainak naplózásához és hasonló forgatókönyvekhez.
-* Az **oldal Blobok** legfeljebb 8 TB méretű véletlenszerű hozzáférési fájlokat tárolhatnak. Az oldal Blobok tárolják a virtuális merevlemezeket (VHD-fájlokat), és az Azure-beli virtuális gépek lemezként szolgálnak. További információ a lapok Blobokkal kapcsolatban: [Az Azure-oldal Blobok áttekintése](storage-blob-pageblob-overview.md)
+- A **Blobok** a szöveg és a bináris adat tárolására, körülbelül 4,7 TB-ra. A blokkblobok önállóan felügyelhető adatblokkokból állnak.
+- A **hozzáfűzési Blobok** olyan blokkokból állnak, mint a blokkos Blobok, de a hozzáfűzési műveletekre vannak optimalizálva. A hozzáfűző blobok ideálisak például a virtuális gépek adatainak naplózásához és hasonló forgatókönyvekhez.
+- Az **oldal Blobok** legfeljebb 8 TB méretű véletlenszerű hozzáférési fájlokat tárolhatnak. Az oldal Blobok tárolják a virtuális merevlemezeket (VHD-fájlokat), és az Azure-beli virtuális gépek lemezként szolgálnak. További információ a lapok Blobokkal kapcsolatban: [Az Azure-oldal Blobok áttekintése](storage-blob-pageblob-overview.md)
 
 A Blobok különböző típusaival kapcsolatos további információkért lásd: a [Blobok, a Blobok hozzáfűzése és az oldal Blobok ismertetése](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 

@@ -1,6 +1,6 @@
 ---
-title: A StorSimple 8000 sorozat az eszközvezérlő cseréje |} A Microsoft Docs
-description: Távolítsa el, és cserélje le a StorSimple 8000 sorozatú eszköz az egyik vagy mindkét vezérlő modulok módját ismerteti.
+title: StorSimple 8000 sorozatú eszközillesztő cseréje | Microsoft Docs
+description: Elmagyarázza, hogyan távolíthat el és cserélhet le egy vagy mindkét vezérlő modult a StorSimple 8000 Series eszközön.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,80 +15,80 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61482870"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365827"
 ---
-# <a name="replace-a-controller-module-on-your-storsimple-device"></a>Cserélje le a StorSimple eszköz vezérlő modul
+# <a name="replace-a-controller-module-on-your-storsimple-device"></a>Vezérlő modul cseréje a StorSimple-eszközön
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag azt ismerteti, hogyan távolítsa el, és cserélje le a StorSimple eszköz egyik vagy mindkét vezérlő modulokat. A cikk ismerteti az alapul szolgáló logikai az egyszeres és kettős vezérlő cseréje forgatókönyvek esetén is.
+Ez az oktatóanyag azt ismerteti, hogyan lehet egy vagy mindkét vezérlő modult eltávolítani és cserélni egy StorSimple-eszközön. Emellett az egyetlen és kettős vezérlő helyettesítési forgatókönyvek alapjául szolgáló logikát is tárgyalja.
 
 > [!NOTE]
-> A vezérlő cseréje előtt, azt javasoljuk, hogy Ön mindig a vezérlő belső vezérlőprogramjának frissítéséhez a legújabb verzióra.
+> A vezérlő cseréjének végrehajtása előtt azt javasoljuk, hogy mindig frissítse a vezérlő belső vezérlőprogramot a legújabb verzióra.
 > 
-> A StorSimple-eszköz sérülés elkerülése ne vegye ki a vezérlő mindaddig, amíg a LED-ek láthatók a következők egyike lehet:
+> Ha meg szeretné akadályozni, hogy a StorSimple-eszköz kárt okozzon, ne távolítsa el a vezérlőt addig, amíg a LED-ek a következők egyike nem látható:
 > 
-> * Minden lámpa KAPCSOLVA.
-> * LED 3, ![zöld pipa ikon](./media/storsimple-controller-replacement/HCS_GreenCheckIcon.png), és ![Red közötti ikon](./media/storsimple-controller-replacement/HCS_RedCrossIcon.png) villogó vannak, és LED 0 és LED 7 **ON**.
+> * Az összes jelzőfény ki van kapcsolva.
+> * A LED 3, ![zöld pipa ikon](./media/storsimple-controller-replacement/HCS_GreenCheckIcon.png), és ![piros kereszt ikon](./media/storsimple-controller-replacement/HCS_RedCrossIcon.png) villog, és a LED 0 és a LED 7 **be van kapcsolva**.
 
 
-Az alábbi táblázat a támogatott vezérlő cseréje eseteit mutatja be.
+A következő táblázat a támogatott vezérlő-helyettesítési forgatókönyveket mutatja be.
 
-| Eset | Csere forgatókönyv | Az eljárás alkalmazható |
+| Esetben | Helyettesítési forgatókönyv | Alkalmazható eljárás |
 |:--- |:--- |:--- |
-| 1 |Egy tartományvezérlő sikertelen állapotban van, a többi vezérlő kifogástalan állapotú és aktív. |[Egyetlen tartományvezérlő helyettesítő](#replace-a-single-controller), melyik leírás fedi le a [egyetlen tartományvezérlő a csere mögötti logika](#single-controller-replacement-logic), valamint a [helyettesítő lépéseket](#single-controller-replacement-steps). |
-| 2 |Mindkét vezérlő sikertelen volt, és helyettesítő igényelnek. A váz, az adatlemezeket és a lemezes olyan kifogástalan állapotú. |[Kettős vezérlő cseréje](#replace-both-controllers), melyik leírás fedi le a [kettős vezérlő helyett mögötti logika](#dual-controller-replacement-logic), valamint a [helyettesítő lépéseket](#dual-controller-replacement-steps). |
-| 3 |A tartományvezérlők vagy a különböző eszközök ugyanarra az eszközre vannak cserélni. A váz, az adatlemezeket és a lemez ház olyan kifogástalan állapotú. |A tárolóhely verzióeltérési riasztás üzenet fog megjelenni. |
-| 4 |Hiányzik egy tartományvezérlőre, és a többi tartományvezérlő sikertelen lesz. |[Kettős vezérlő cseréje](#replace-both-controllers), melyik leírás fedi le a [kettős vezérlő helyett mögötti logika](#dual-controller-replacement-logic), valamint a [helyettesítő lépéseket](#dual-controller-replacement-steps). |
-| 5 |Legalább az egyik vezérlő sikertelen volt. Az eszköz nem érhető el a soros konzol vagy a Windows PowerShell távoli eljáráshívás keresztül. |[Forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md) manuális vezérlő cseréje eljárás. |
-| 6 |A tartományvezérlők van egy másik build verziót, amely előfordulhat, hogy a következő lehet:<ul><li>Vezérlők különböző szoftver verziója szükséges.</li><li>Vezérlők különböző belső vezérlőprogram verziója szükséges.</li></ul> |Ha a tartományvezérlő szoftver verziója nem egyezik, a csere logika észleli, hogy, és frissíti a szoftververzió a helyettesítő tartományvezérlő.<br><br>Ha a tartományvezérlő belsővezérlőprogram-verziói különböző, és a belső vezérlőprogram régi verzió **nem** automatikusan frissíthető, egy figyelmeztető üzenet jelenik meg az Azure Portalon. Frissítések keresése kell, és a belső vezérlőprogram frissítéseinek telepítése.</br></br>A vezérlő belső vezérlőprogramjának verziója különböző, és a régi belső vezérlőprogram verziója automatikusan frissíthető, ha a vezérlő cseréje logika észleli ezt, és a vezérlő indítása után a belső vezérlőprogram automatikusan frissül. |
+| 1 |Egy vezérlő meghibásodott állapotban van, a másik vezérlő állapota Kifogástalan és aktív. |[Egyetlen vezérlő cseréje](#replace-a-single-controller), amely leírja az [egyetlen vezérlő cseréje mögötti logikát](#single-controller-replacement-logic), valamint a [pótlás lépéseit](#single-controller-replacement-steps). |
+| 2 |Mindkét vezérlő meghibásodott, és cserére van szükség. Az alváz, a lemezek és a lemezes ház kifogástalan állapotú. |[Kettős vezérlő cseréje](#replace-both-controllers), amely a [kettős vezérlő cseréje mögötti logikát](#dual-controller-replacement-logic), valamint a [helyettesítő lépéseket](#dual-controller-replacement-steps)ismerteti. |
+| 3 |Az azonos eszközről vagy különböző eszközökről származó vezérlőket cseréli a rendszer. Az alváz, a lemezek és a lemezes ház kifogástalan állapotú. |A tárolóhelyek eltérésére figyelmeztető üzenet jelenik meg. |
+| 4 |Hiányzik egy vezérlő, és a másik vezérlő meghibásodik. |[Kettős vezérlő cseréje](#replace-both-controllers), amely a [kettős vezérlő cseréje mögötti logikát](#dual-controller-replacement-logic), valamint a [helyettesítő lépéseket](#dual-controller-replacement-steps)ismerteti. |
+| 5 |Egy vagy mindkét vezérlő meghiúsult. Az eszköz nem érhető el a soros konzolon vagy a Windows PowerShell távelérési szolgáltatásán keresztül. |A manuális vezérlő helyettesítési eljárásához [forduljon Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) . |
+| 6 |A vezérlők eltérő Build-verzióval rendelkeznek, amelynek oka a következő lehet:<ul><li>A vezérlők eltérő verziójú szoftverrel rendelkeznek.</li><li>A vezérlők eltérő belső vezérlőprogram-verzióval rendelkeznek.</li></ul> |Ha a vezérlő szoftver verziója eltérő, a helyettesítő logika észleli a szoftvert, és frissíti a szoftver verzióját a helyettesítő vezérlőn.<br><br>Ha a vezérlő belső vezérlőprogram-verziói eltérnek, és a régi belső vezérlőprogram verziója **nem** frissíthető automatikusan, a Azure Portal riasztási üzenet jelenik meg. Frissítéseket kell keresnie, és telepítenie kell a belső vezérlőprogram frissítéseit.</br></br>Ha a vezérlő belső vezérlőprogram-verziója eltér, és a régi belső vezérlőprogram verziója automatikusan frissíthető, a vezérlő helyettesítési logikája ezt fogja érzékelni, és a vezérlő elindítása után a rendszer automatikusan frissíti a belső vezérlőprogram frissítését. |
 
-El kell távolítania egy vezérlő modult, ha sikertelen volt. Legalább az egyik a vezérlő modulok sikertelen lehet, ami eredményezhet egyetlen tartományvezérlő helyett vagy kettős vezérlő cseréje. A csere eljárások és azok mögötti logika tekintse meg a következőket:
+Ha nem sikerült, el kell távolítania egy vezérlő modult. Az egyik vagy mindkét vezérlő modul meghibásodhat, ami egyetlen vezérlő helyettesítését vagy kettős vezérlő cseréjét eredményezheti. A helyettesítési eljárások és a mögöttes logika a következőket ismerteti:
 
 * [Egyetlen vezérlő cseréje](#replace-a-single-controller)
 * [Mindkét vezérlő cseréje](#replace-both-controllers)
-* [A vezérlő eltávolítása](#remove-a-controller)
-* [Egy tartományvezérlő beszúrása](#insert-a-controller)
-* [Az eszközön az aktív vezérlő megkeresése](#identify-the-active-controller-on-your-device)
+* [Vezérlő eltávolítása](#remove-a-controller)
+* [Vezérlő beszúrása](#insert-a-controller)
+* [Az aktív vezérlő azonosítása az eszközön](#identify-the-active-controller-on-your-device)
 
 > [!IMPORTANT]
-> Mielőtt eltávolítása és a egy vezérlőt, és tekintse át a biztonsági információkat a [StorSimple összetevő hardvercseréhez](storsimple-8000-hardware-component-replacement.md).
+> A vezérlő eltávolítása és cseréje előtt tekintse át a [StorSimple hardver-összetevő cseréje](storsimple-8000-hardware-component-replacement.md)biztonsági információit.
 > 
 > 
 
 ## <a name="replace-a-single-controller"></a>Egyetlen vezérlő cseréje
-Ha a Microsoft Azure StorSimple eszközön a két vezérlőn egyike sikertelen volt, hibásan működik, vagy hiányzik, kell egyetlen vezérlő cseréje.
+Ha a Microsoft Azure StorSimple eszköz egyik két vezérlője meghiúsult, hibás vagy hiányzik, akkor egyetlen vezérlőt kell cserélnie.
 
-### <a name="single-controller-replacement-logic"></a>Egyetlen tartományvezérlő helyettesítő logika
-Az egyetlen tartományvezérlő helyett el kell távolítania a hibás vezérlők. (A többi vezérlő az eszközön az aktív vezérlőt a.) Ha a helyettesítő tartományvezérlő, a következő műveletek történnek:
+### <a name="single-controller-replacement-logic"></a>Egyetlen vezérlő helyettesítési logikája
+Egyetlen vezérlő cseréjekor először távolítsa el a sikertelen vezérlőt. (Az eszköz többi vezérlője az aktív vezérlő.) A helyettesítő vezérlő beszúrásakor a következő műveletek végezhetők el:
 
-1. A helyettesítő tartományvezérlő azonnal elindítja a StorSimple-eszközhöz való kommunikáció során.
-2. Pillanatkép a virtuális merevlemez (VHD) az aktív vezérlőt a helyettesítő tartományvezérlő másolódik.
-3. A pillanatkép módosítását, hogy a csere vezérlő elindításakor a VHD-ből felismerhető lesz, a készenléti állapotban lévő vezérlőnek.
-4. Amikor a módosításokat végzett, a helyettesítő tartományvezérlő kezdetben a készenléti állapotban lévő vezérlőnek.
-5. Ha mindkét vezérlő futtatja, a fürt online állapotba kerül.
+1. A helyettesítő vezérlő azonnal elindítja a StorSimple-eszközzel folytatott kommunikációt.
+2. A rendszer átmásolja az aktív vezérlő virtuális merevlemezének (VHD) pillanatképét a helyettesítő vezérlőre.
+3. A pillanatkép úgy módosul, hogy amikor a helyettesítő vezérlő ettől a VHD-től indul, a rendszer készenléti vezérlőként fogja felismerni.
+4. Ha a módosítások befejeződik, a rendszer a helyettesítő vezérlőt készenléti vezérlőként indítja el.
+5. Ha mindkét vezérlő fut, a fürt online állapotba kerül.
 
-### <a name="single-controller-replacement-steps"></a>Egyetlen tartományvezérlő helyettesítő lépések
-Ha az egyik vezérlő a Microsoft Azure StorSimple-eszköz nem sikerül, kövesse az alábbi lépéseket. (A többi vezérlő kell aktív és futtatni. Ha mindkét vezérlő sikertelen vagy hibás működésével, nyissa meg [kettős vezérlő cseréje lépéseket](#dual-controller-replacement-steps).)
+### <a name="single-controller-replacement-steps"></a>Egyetlen vezérlő helyettesítésének lépései
+Ha a Microsoft Azure StorSimple-eszköz egyik vezérlője meghibásodik, hajtsa végre a következő lépéseket. (A másik vezérlőnek aktívnak kell lennie és futnia kell. Ha mindkét vezérlő meghibásodik vagy meghibásodik, nyissa meg a [kettős vezérlő helyettesítésének lépéseit](#dual-controller-replacement-steps).)
 
 > [!NOTE]
-> A vezérlő újraindítása, és az egyetlen tartományvezérlő helyettesítő eljárás teljesen helyreállítása 30 – 45 percig is eltarthat. A teljes folyamat fordított időt a kábelek csatolása való körülbelül 2 óra.
+> 30 – 45 percet is igénybe vehet, hogy a vezérlő újrainduljon, és teljesen helyre tudja állítani az egyetlen vezérlőt helyettesítő eljárásból. A teljes eljárás teljes ideje, beleértve a kábelek csatolását, körülbelül 2 óra.
 
 
-#### <a name="to-remove-a-single-failed-controller-module"></a>Egyetlen eltávolítása sikertelen volt a vezérlő modul
-1. Az Azure Portalon keresse meg a StorSimple-Eszközkezelő szolgáltatást, kattintson a **eszközök**, és kattintson a figyelni kívánt eszköz nevét.
-2. Lépjen a **figyelő > hardverállapot**. 0\. vezérlő vagy a vezérlő 1 állapotát kell piros, ami egy hibát jelez.
+#### <a name="to-remove-a-single-failed-controller-module"></a>Egyetlen sikertelen vezérlő modul eltávolítása
+1. A Azure Portal nyissa meg a StorSimple Eszközkezelő szolgáltatást, kattintson az **eszközök**elemre, majd kattintson a figyelni kívánt eszköz nevére.
+2. Válassza a **figyelés > hardver állapota**lehetőséget. A vezérlő 0 vagy a vezérlő 1 állapotának pirosnak kell lennie, ami hibát jelez.
    
    > [!NOTE]
-   > Az egyetlen tartományvezérlő helyettesíti a hibás vezérlők, mindig a készenléti állapotban lévő vezérlőnek.
+   > A meghibásodott vezérlő egyetlen vezérlőn való cseréje mindig készenléti vezérlő.
    
-3. 1\. ábra és a következő táblázat segítségével keresse meg a hibás vezérlők modul.
+3. Az 1. ábra és a következő táblázat segítségével keresse meg a sikertelen vezérlő modult.
    
-    ![Az eszköz elsődleges ház modulok csatlakozópanel meghibásodása](./media/storsimple-controller-replacement/IC740994.png)
+    ![Az eszköz elsődleges bekerítési moduljainak hátlapja](./media/storsimple-controller-replacement/IC740994.png)
    
-    **1. ábra** vissza a StorSimple-eszköz
+    **1. ábra** StorSimple-eszköz visszaállítása
    
    | Címke | Leírás |
    |:--- |:--- |
@@ -96,146 +96,146 @@ Ha az egyik vezérlő a Microsoft Azure StorSimple-eszköz nem sikerül, kövess
    | 2 |PCM 1 |
    | 3 |Vezérlő 0 |
    | 4 |Vezérlő 1 |
-4. A hibás tartományvezérlőre távolítsa el az összes csatlakoztatott hálózati kábel adatok portot. Ha egy 8600-as modellt használja, is távolítsa el a SAS-kábel, amely a vezérlő csatlakozni az EBOD-vezérlő.
-5. Kövesse a [egy vezérlő eltávolítása](#remove-a-controller) a hibás vezérlők eltávolítása.
-6. Telepítse a gyári helyettesítő ugyanaz a tárolóhely, amelyről a hibás vezérlők el lett távolítva. Ez elindítja az egyetlen tartományvezérlő helyettesítő logikát. További információkért lásd: [egyetlen vezérlő cseréje logikai](#single-controller-replacement-logic).
-7. Az egyetlen tartományvezérlő helyettesítő logika futtatása során a háttérben, amíg újra a kábelek. Ügyeljen arra, csatlakoztassa az összes a kábeleket, ugyanúgy, hogy a csere előtt csatlakoztatva lett.
-8. A vezérlő újraindítása után ellenőrizze a **vezérlő állapota** és a **a fürt állapota** arról, hogy a vezérlő vissza a kifogástalan állapotban van, és a készenléti üzemmódban van, az Azure Portalon.
+4. A sikertelen vezérlőn távolítsa el az összes csatlakoztatott hálózati kábelt az adatportokból. Ha 8600 modellt használ, távolítsa el a vezérlőt a EBOD vezérlőhöz csatlakoztató SAS-kábeleket is.
+5. Kövesse a [vezérlő eltávolítása](#remove-a-controller) a sikertelen vezérlő eltávolításához című témakör lépéseit.
+6. Telepítse a gyári cserét ugyanabba a tárolóhelyre, ahonnan a meghibásodott vezérlő el lett távolítva. Ez elindítja az egyetlen vezérlő helyettesítési logikáját. További információ: [Single Controller helyettesítési logikája](#single-controller-replacement-logic).
+7. Míg az egyetlen vezérlőt helyettesítő logika a háttérben halad, csatlakoztassuk újra a kábeleket. Ügyeljen arra, hogy az összes kábelt pontosan ugyanúgy csatlakoztatja, mint a csere előtt.
+8. A vezérlő újraindítása után ellenőrizze a **vezérlő állapotát** és a **fürt állapotát** a Azure Portalban annak ellenőrzéséhez, hogy a vezérlő vissza van-e állítva Kifogástalan állapotba, és készenléti állapotban van-e.
 
 > [!NOTE]
-> Az eszköz soros konzolon keresztül figyelt jelenhet meg több újraindítást, amíg a vezérlő cseréje eljárás helyre. Ha a soros konzol menüjének egyike jelenik meg, majd azt jelzi, hogy a csere befejeződött. Ha a menüben nem jelenik meg a vezérlő cseréje a kiindulási két órán belül, [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+> Ha az eszközt a soros konzolon keresztül figyeli, több újraindítást is láthat, amíg a vezérlőt helyreállítják a csere eljárásból. Ha megjelenik a soros konzol menüje, akkor tudja, hogy a csere befejeződött. Ha a menü nem jelenik meg két órán belül a vezérlő cseréjének megkezdése után, vegye [fel a kapcsolatot Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md).
 >
-> Update 4-től kezdődően is használhatja a parancsmagot `Get-HCSControllerReplacementStatus` az eszköz a vezérlő cseréjét állapotának figyelése a Windows PowerShell felületén.
+> A 4. frissítés megkezdése után az eszköz Windows PowerShell-felületének parancsmag `Get-HCSControllerReplacementStatus` is használható a vezérlő helyettesítési folyamata állapotának figyelésére.
 > 
 
 ## <a name="replace-both-controllers"></a>Mindkét vezérlő cseréje
-Ha mindkét vezérlő a Microsoft Azure StorSimple eszközön nem sikerült, vannak jól működik, vagy hiányoznak, kell mindkét vezérlő cseréje. 
+Ha a Microsoft Azure StorSimple eszközön mindkét vezérlő meghibásodik, hibásak vagy hiányoznak, akkor mindkét vezérlőt le kell cserélni. 
 
-### <a name="dual-controller-replacement-logic"></a>Kettős vezérlő cseréje logika
-Kettős vezérlő helyett először távolítsa el a mindkét sikertelen vezérlő, és helyezze be cseréjére. Ha a két helyettesítő vezérlők egészül ki, a következő műveletek történnek:
+### <a name="dual-controller-replacement-logic"></a>Kettős vezérlő helyettesítési logikája
+A kettős vezérlő cseréjekor először távolítsa el a sikertelen vezérlőket, majd szúrja be a helyettesítőket. A két helyettesítő vezérlő beillesztése után a következő műveletek történnek:
 
-1. A helyettesítő tartományvezérlő adatszalagot a 0 a következőket ellenőrzi:
+1. A 0. tárolóhelyen található helyettesítő vezérlő a következőket ellenőrzi:
    
-   1. Azt a belső vezérlőprogram és a szoftver jelenlegi verzióját használja?
-   2. Ez egy része a fürtnek?
-   3. A társ futtató tartományvezérlőnek futnia, és ez fürtözött?
+   1. A belső vezérlőprogram és a szoftver jelenlegi verzióját használja?
+   2. A fürt része?
+   3. Fut a társ-vezérlő, és fürtözött?
       
-      Ha egyik feltétel sem teljesül, a vezérlő megjelenését a legújabb napi biztonsági mentés (található a **nonDOMstorage** S meghajtón található). A vezérlő a legutóbbi pillanatképe, a virtuális Merevlemezt másolja át a biztonsági mentés.
-2. A vezérlő 0-s bővítőhelyen a kép maga a pillanatfelvételt használja.
-3. A vezérlő 1 tárolóhely, végezze el a lemezképpel végrehajtott telepítéshez, és indítsa el a 0. vezérlő várakozik.
-4. Miután elindult a vezérlő 0, 1. vezérlő észleli hozott létre vezérlő 0, a fürt, amely elindítja a egyetlen vezérlő cseréje logikai. További információkért lásd: [egyetlen vezérlő cseréje logikai](#single-controller-replacement-logic).
-5. Ezt követően mindkét vezérlő fog futni, és a fürt online állapotba kerül.
+      Ha ezek a feltételek egyike sem teljesül, a vezérlő a napi biztonsági mentést keresi (amely a meghajtó **nonDOMstorage** található). A vezérlő átmásolja a virtuális merevlemez legújabb pillanatképét a biztonsági másolatból.
+2. A 0. bővítőhely vezérlője maga a pillanatképet használja a rendszerképhez.
+3. Eközben az 1. bővítőhely vezérlője megvárja a 0. vezérlőt a lemezkép befejezéséhez és a kezdéshez.
+4. A vezérlő 0 elindítása után az 1. vezérlő észleli a 0. vezérlő által létrehozott fürtöt, amely kiváltja az egyetlen vezérlő helyettesítési logikáját. További információ: [Single Controller helyettesítési logikája](#single-controller-replacement-logic).
+5. Ezt követően mindkét vezérlő futni fog, és a fürt online állapotba kerül.
 
 > [!IMPORTANT]
-> Kettős vezérlő helyett, a következő a StorSimple-eszköz konfigurálása után, elengedhetetlen fontosságú, hogy Ön manuális biztonsági mentést az eszköz. Napi eszköz konfigurációs biztonsági nem aktivált amíg 24 óra eltelte után. Együttműködve [Support](storsimple-8000-contact-microsoft-support.md) , készítsen biztonsági másolatot, az eszköz manuális.
+> A kettős vezérlő cseréjét követően a StorSimple-eszköz konfigurálása után elengedhetetlen, hogy manuális biztonsági mentést készítsen az eszközről. A napi eszköz konfigurációjának biztonsági mentése nem indul el, amíg a 24 óra el nem telik. A [Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) használata az eszköz manuális biztonsági mentésének elvégzéséhez.
 
 
-### <a name="dual-controller-replacement-steps"></a>Kettős vezérlő cseréje lépések
-Ez a munkafolyamat kötelező, amikor mindkét vezérlő a Microsoft Azure StorSimple-eszköz a meghibásodott. Ez akkor történhet egy adatközpontban, amelyben a hűtési rendszer leáll, és ennek eredményeképpen mindkét vezérlő nem sikerül, egy rövid időn belül. Attól függően, hogy a StorSimple-eszköz ki van kapcsolva vagy a, és használ-e egy 8600-as vagy egy 8100-as modell, a lépések egy másik készletét szükség.
+### <a name="dual-controller-replacement-steps"></a>Kettős vezérlő helyettesítésének lépései
+Ez a munkafolyamat akkor szükséges, ha a Microsoft Azure StorSimple eszköz mindkét vezérlője meghiúsult. Ez olyan adatközpontokban fordulhat elő, amelyekben a hűtési rendszer leáll, és ennek eredményeképpen a vezérlők rövid időn belül meghiúsulnak. Attól függően, hogy a StorSimple-eszköz ki van-e kapcsolva, vagy egy 8600-es vagy 8100-es modellt használ, különböző lépések szükségesek.
 
 > [!IMPORTANT]
-> Indítsa újra, és a egy kettős vezérlő cseréje eljárás teljesen helyreállítása a vezérlő 1 óra 45 percet is igénybe vehet. A teljes folyamat fordított időt a kábelek csatolása való körülbelül 2,5 óra.
+> Akár 45 percet is igénybe vehet, amíg a vezérlő újraindul, és teljesen helyre tudja állítani a kettős vezérlő helyettesítési eljárását. A teljes eljárás teljes ideje, beleértve a kábelek csatolását, körülbelül 2,5 óra.
 
-#### <a name="to-replace-both-controller-modules"></a>Cserélje le mindkét vezérlő modulok
+#### <a name="to-replace-both-controller-modules"></a>Mindkét vezérlő modul cseréje
 1. Ha az eszköz ki van kapcsolva, hagyja ki ezt a lépést, és folytassa a következő lépéssel. Ha az eszköz be van kapcsolva, kapcsolja ki az eszközt.
    
-   1. Ha egy 8600-as modellt használja, kapcsolja ki az elsődleges ház első, és ezután kapcsolja ki a EBOD ház.
-   2. Várjon, amíg az eszköz teljesen leállt. Az összes a LED-ek hátulján az eszköz ki lesz kapcsolva.
-2. Távolítsa el az adatok portok csatlakoztatott összes hálózati kábeleket. Ha egy 8600-as modellt használja, is távolítsa el a SAS-kábel, amelyhez az elsődleges ház csatlakozni a EBOD ház.
-3. Távolítsa el a StorSimple-eszköz mindkét vezérlőn. További információkért lásd: [egy vezérlő eltávolítása](#remove-a-controller).
-4. Helyezze be a vezérlő 0 gyári helyettesítő először, és helyezze a vezérlő 1. További információkért lásd: [beszúrása egy vezérlő](#insert-a-controller). Ez elindítja a kettős vezérlő cseréje logikát. További információkért lásd: [kettős vezérlő cseréje logikai](#dual-controller-replacement-logic).
-5. Amíg a vezérlő cseréje logika futtatása során a háttérben, csatlakoztassa újra a kábelek. Ügyeljen arra, csatlakoztassa az összes a kábeleket, ugyanúgy, hogy a csere előtt csatlakoztatva lett. További tájékoztatást a modell a kábel részletesen ismerteti az eszköz [telepítse a StorSimple 8100 sorozatú eszköz](storsimple-8100-hardware-installation.md) vagy [telepítse a StorSimple 8600 sorozatú eszköz](storsimple-8600-hardware-installation.md).
-6. Kapcsolja be a StorSimple-eszköz. Ha egy 8600-as modellt használ:
+   1. Ha 8600 modellt használ, először kapcsolja ki az elsődleges burkolatot, majd kapcsolja ki a EBOD bekerítését.
+   2. Várjon, amíg az eszköz teljesen leállt. Az eszköz hátulján lévő összes LED ki lesz kapcsolva.
+2. Távolítsa el az adatportokhoz csatlakozó összes hálózati kábelt. Ha 8600 modellt használ, távolítsa el azokat az SAS-kábeleket is, amelyek az elsődleges bekerítést csatlakoztatják az EBOD-ház számára.
+3. Távolítsa el mindkét vezérlőt a StorSimple-eszközről. További információ: [vezérlő eltávolítása](#remove-a-controller).
+4. Illessze be először a 0. vezérlőhöz tartozó gyári cserét, majd szúrja be az 1. vezérlőt. További információ: [vezérlő beszúrása](#insert-a-controller). Ez elindítja a kettős vezérlő helyettesítési logikáját. További információ: [kettős vezérlő helyettesítési logikája](#dual-controller-replacement-logic).
+5. Míg a vezérlő cseréjének logikája a háttérben halad, csatlakoztassuk újra a kábeleket. Ügyeljen arra, hogy az összes kábelt pontosan ugyanúgy csatlakoztatja, mint a csere előtt. Tekintse meg a modellre vonatkozó részletes utasításokat a [StorSimple 8100-eszköz telepítéséhez](storsimple-8100-hardware-installation.md) vagy a [StorSimple 8600](storsimple-8600-hardware-installation.md)-eszköz telepítéséhez.
+6. Kapcsolja be a StorSimple eszközt. Ha 8600 modellt használ:
    
-   1. Győződjön meg arról, hogy a EBOD ház első van-e kapcsolva.
-   2. Várjon, amíg a EBOD ház fut-e.
-   3. Kapcsolja be az elsődleges ház.
-   4. Miután az első vezérlő újraindul, és kifogástalan állapotban van, a rendszer fog futni.
+   1. Győződjön meg arról, hogy a EBOD bekerítése először be van kapcsolva.
+   2. Várjon, amíg a EBOD ház fut.
+   3. Kapcsolja be az elsődleges bekerítést.
+   4. Miután az első vezérlő újraindult, és kifogástalan állapotban van, a rendszer futni fog.
       
       > [!NOTE]
-      > Az eszköz soros konzolon keresztül figyelt jelenhet meg több újraindítást, amíg a vezérlő cseréje eljárás helyre. Amikor megjelenik a soros konzol menüjének, majd, hogy a csere befejeződött. Ha a menüben nem jelenik meg a vezérlő cseréje a kiindulási 2,5 órán belül, [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+      > Ha az eszközt a soros konzolon keresztül figyeli, több újraindítást is láthat, amíg a vezérlőt helyreállítják a csere eljárásból. Ha megjelenik a soros konzol menü, akkor tudja, hogy a csere befejeződött. Ha a menü nem jelenik meg a vezérlő cseréje után 2,5 órán belül, forduljon a [Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md).
      
-## <a name="remove-a-controller"></a>A vezérlő eltávolítása
-A következő eljárás használatával távolítsa el a hibás vezérlő modul a StorSimple-eszköz.
+## <a name="remove-a-controller"></a>Vezérlő eltávolítása
+Az alábbi eljárással távolíthat el egy hibás vezérlő modult a StorSimple-eszközről.
 
 > [!NOTE]
-> Az alábbi ábrákon 0. vezérlő vonatkoznak. 1\. vezérlő ezek akkor vonható vissza.
+> A következő ábrák a 0. vezérlőre vonatkoznak. Az 1. vezérlő esetében ezek fordítottak.
 
 
-#### <a name="to-remove-a-controller-module"></a>Egy tartományvezérlő modul eltávolítása
-1. A modul zárolás az USB- és mutatóujj között bonyolultnak.
-2. Óvatosan nyomja össze az USB és mutatóujj együtt a tartományvezérlő-zárolás feloldásához.
+#### <a name="to-remove-a-controller-module"></a>Vezérlő modul eltávolítása
+1. Fogja meg a modul zárolását a hüvelykujj és a mutatóujj között.
+2. A vezérlő zárolásának felszabadításához finoman nyomja össze a hüvelykujját és a mutatóujját.
    
-    ![Vezérlő zárolás feloldása](./media/storsimple-controller-replacement/IC741047.png)
+    ![Vezérlő zárolásának felszabadítása](./media/storsimple-controller-replacement/IC741047.png)
    
-    **2. ábra** felszabadításával vezérlő zárolás
-3. A zárolás használjuk egy leírót a vezérlő kívül a váz csúsztatott.
+    **2. ábra** Vezérlő zárolásának felszabadítása
+3. A kilincset leíróként használva csúsztassa ki a vezérlőt az alvázról.
    
-    ![Váz kívül mozgó vezérlő](./media/storsimple-controller-replacement/IC741048.png)
+    ![Kicsúsztatható vezérlő az alvázon kívül](./media/storsimple-controller-replacement/IC741048.png)
    
-    **3. ábra** késleltetett a vezérlő kívül a váz
+    **3. ábra** A vezérlő kicsúsztatása az alvázról
 
-## <a name="insert-a-controller"></a>Egy tartományvezérlő beszúrása
-A következő eljárással után hibás modul eltávolításához a StorSimple-eszköz gyári által megadott tartományvezérlő modul telepítésére.
+## <a name="insert-a-controller"></a>Vezérlő beszúrása
+Az alábbi eljárással telepítheti a gyári vezérlő modult, miután eltávolította a hibás modult a StorSimple-eszközről.
 
-#### <a name="to-install-a-controller-module"></a>A tartományvezérlő-moduljának telepítése
-1. Ellenőrizze, hogy van-e a felület összekötőkre károkat. Ha bármelyik az összekötő PIN-kód sérült vagy hajlított ne telepítse a modul.
-2. Húzza az ujját a vezérlő modul a váz, amíg a Zárolás feloldva teljes mértékben.
+#### <a name="to-install-a-controller-module"></a>Vezérlő modul telepítése
+1. Ellenőrizze, hogy van-e sérülés a csatoló-összekötők számára. Ne telepítse a modult, ha bármelyik összekötő PIN-kód sérült vagy hajlított.
+2. Csúsztassa a vezérlő modult az alvázra, miközben a zárolás teljesen ki van szabadítva.
    
-    ![Váz be mozgó vezérlő](./media/storsimple-controller-replacement/IC741053.png)
+    ![A csúszó vezérlőt a váz](./media/storsimple-controller-replacement/IC741053.png)
    
-    **4. ábra** csúszó vezérlő be a váz
-3. A vezérlő modullal beszúrt miközben továbbra is a vezérlő modul leküldése a váz a zárolás bezárása kezdődik. A zárolás, a vezérlő útmutató helyen vesz részt.
+    **4. ábra** Az alvázon lévő csúszó vezérlő
+3. Ha beszúrta a vezérlő modult, kezdje el bezárni a zárolást, miközben továbbra is leküldi a vezérlő modult az alvázra. A zárolás a vezérlő üzembe helyezéséhez vezet.
    
-    ![Vezérlő reteszes bezárása](./media/storsimple-controller-replacement/IC741054.png)
+    ![Vezérlő zárolásának bezárása](./media/storsimple-controller-replacement/IC741054.png)
    
-    **5. ábra** a vezérlő zárolás bezárása
-4. Elkészült, amikor a zárolás illeszti be a helyen. A **OK** LED most meg kell lennie.
+    **5. ábra** A vezérlő retesz bezárása
+4. Elkészült, amikor a zárolás a helyére kerül. Az **OK** LED-nek most be kell jelentkeznie.
    
    > [!NOTE]
-   > A vezérlő és a LED aktiválása akár 5 percet is igénybe vehet.
+   > Akár 5 percet is igénybe vehet a vezérlő és a LED aktiválása.
   
-5. Annak ellenőrzéséhez, hogy a csere sikeres, az Azure Portalon, nyissa meg az eszközt, és navigáljon arra **figyelő** > **hardverállapot**, és ellenőrizze, hogy mindkét vezérlő 0 és 1. vezérlő kifogástalan állapotú (állapota zöld színnel).
+5. Annak ellenőrzéséhez, hogy a csere sikeres-e, a Azure Portal lépjen az eszközre, majd navigáljon a **figyelés** > a **hardver**állapota elemre, és győződjön meg arról, hogy a vezérlő 0 és a vezérlő 1 kifogástalan állapotban van (az állapot zöld).
 
-## <a name="identify-the-active-controller-on-your-device"></a>Az eszközön az aktív vezérlő megkeresése
-Vannak olyan helyzetek, például az első eszköz regisztrációs vagy -vezérlő cseréje, igénylő keresse meg az aktív vezérlőt a StorSimple eszközön. Az aktív vezérlőt dolgozza fel az összes lemez belső vezérlőprogram és hálózatkezelési műveletet. Az aktív vezérlő megkeresése az alábbi módszerek bármelyikét használhatja:
+## <a name="identify-the-active-controller-on-your-device"></a>Az aktív vezérlő azonosítása az eszközön
+Számos szituáció létezik, például az eszköz első vagy a vezérlő cseréje, amely megköveteli, hogy megkeresse az aktív vezérlőt egy StorSimple-eszközön. Az aktív vezérlő feldolgozza az összes lemez belső vezérlőprogram és hálózati műveletét. Az aktív vezérlő azonosításához a következő módszerek bármelyikét használhatja:
 
-* [Az aktív vezérlő megkeresése az Azure portal használatával](#use-the-azure-portal-to-identify-the-active-controller)
-* [Storsimple-höz készült Windows PowerShell használatával az aktív vezérlő megkeresése](#use-windows-powershell-for-storsimple-to-identify-the-active-controller)
-* [Ellenőrizze a fizikai eszköz az aktív vezérlő megkeresése](#check-the-physical-device-to-identify-the-active-controller)
+* [A Azure Portal használata az aktív vezérlő azonosításához](#use-the-azure-portal-to-identify-the-active-controller)
+* [A Windows PowerShell StorSimple-bővítménye használata az aktív vezérlő azonosításához](#use-windows-powershell-for-storsimple-to-identify-the-active-controller)
+* [Az aktív vezérlő azonosításához keresse meg a fizikai eszközt](#check-the-physical-device-to-identify-the-active-controller)
 
-Ezek az eljárások leírását mellett.
+A következő eljárások mindegyikét ismertetjük.
 
-### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>Az aktív vezérlő megkeresése az Azure portal használatával
-Az Azure Portalon keresse meg az eszköz majd **figyelő** > **hardverállapot**, és görgessen a **tartományvezérlők** szakaszban. Itt ellenőrizheti, melyik tartományvezérlő aktív.
+### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>A Azure Portal használata az aktív vezérlő azonosításához
+A Azure Portal navigáljon az eszközhöz, majd **figyelje** > **hardver állapotát**, és görgessen a **vezérlők** szakaszhoz. Itt ellenőrizheti, hogy melyik vezérlő aktív.
 
-![Azonosíthatja az aktív vezérlőn az Azure Portalon](./media/storsimple-controller-replacement/IC752072.png)
+![Az aktív vezérlő azonosítása Azure Portal](./media/storsimple-controller-replacement/IC752072.png)
 
-**6. ábra** az aktív vezérlőn az Azure portál
+**6. ábra** Az aktív vezérlőt megjelenítő Azure Portal
 
-### <a name="use-windows-powershell-for-storsimple-to-identify-the-active-controller"></a>Storsimple-höz készült Windows PowerShell használatával az aktív vezérlő megkeresése
-Amikor az eszköz soros konzolon keresztül fér hozzá, egy szalagcím üzenet jelenik meg. A szalagcím üzenet alapszintű eszközadatok, például a modellt, a nevét, a telepített szoftververzió és az Ön hozzáfér a vezérlő állapotának tartalmaz. Az alábbi képen egy címsorában látható egy példa látható:
+### <a name="use-windows-powershell-for-storsimple-to-identify-the-active-controller"></a>A Windows PowerShell StorSimple-bővítménye használata az aktív vezérlő azonosításához
+Amikor az eszközt a soros konzolon keresztül éri el, megjelenik egy szalagcím üzenet. A szalagcím üzenet olyan alapvető eszköz-információkat tartalmaz, mint például a modell, a név, a telepített szoftver verziója és az elérni kívánt vezérlő állapota. Az alábbi képen egy szalagcímre mutató üzenet látható:
 
-![Soros szalagcímüzenet](./media/storsimple-controller-replacement/IC741098.png)
+![Soros szalagcím üzenet](./media/storsimple-controller-replacement/IC741098.png)
 
-**7. ábra** szalagcím üzenet megjelenítő vezérlő 0 aktív
+**7. ábra** A Controller 0 aktívként megjelenített szalagcíme
 
-Annak megállapításához, hogy a vezérlő van aktív vagy passzív használhatja a címsorában látható.
+A szalagcím üzenettel meghatározhatja, hogy a csatlakoztatott vezérlő aktív vagy passzív.
 
-### <a name="check-the-physical-device-to-identify-the-active-controller"></a>Ellenőrizze a fizikai eszköz az aktív vezérlő megkeresése
-Az eszközön az aktív vezérlő megkeresése, keresse meg a kék vezetett a feletti 5 port az elsődleges ház-jének.
+### <a name="check-the-physical-device-to-identify-the-active-controller"></a>Az aktív vezérlő azonosításához keresse meg a fizikai eszközt
+Az eszközön található aktív vezérlő azonosításához keresse meg az elsődleges ház hátoldalán található 5. adatport feletti kék LED-t.
 
-Ha ez LED villogó van, a vezérlő és aktív készenléti üzemmódban van, a másik vezérlőre. Használja a következő ábra és táblázat elősegítésére.
+Ha a LED villog, a vezérlő aktív, és a másik vezérlő készenléti állapotban van. A következő diagramot és táblázatot használja támogatásként.
 
-![Eszköz elsődleges ház csatlakozópanel meghibásodása az adatportok](./media/storsimple-controller-replacement/IC741055.png)
+![Az eszköz elsődleges burkolatának hátlapja a dataports](./media/storsimple-controller-replacement/IC741055.png)
 
-**8. ábra** oldalán az adatok portok és figyelési LED-ek elsődleges ház
+**8. ábra** Az elsődleges ház hátoldala adatportokkal és figyelő LED-ekkel
 
 | Címke | Leírás |
 |:--- |:--- |
-| 1-6 |DATA 0 – 5 hálózati portok |
+| 1-6 |0 – 5 hálózati port |
 | 7 |Kék LED |
 
-## <a name="next-steps"></a>További lépések
-Tudjon meg többet [StorSimple összetevő hardvercseréhez](storsimple-8000-hardware-component-replacement.md).
+## <a name="next-steps"></a>Következő lépések
+További információ a [StorSimple hardveres összetevők cseréjéről](storsimple-8000-hardware-component-replacement.md).
 

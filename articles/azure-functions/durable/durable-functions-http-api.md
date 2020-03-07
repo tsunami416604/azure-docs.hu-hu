@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769625"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356691"
 ---
 # <a name="http-api-reference"></a>HTTP API-referenciák
 
@@ -20,9 +20,9 @@ A bővítmény által megvalósított összes HTTP API-nak a következő paramé
 
 | Paraméter        | Paraméter típusa  | Leírás |
 |------------------|-----------------|-------------|
-| **`taskHub`**    | Lekérdezési sztring    | A [feladat hub](durable-functions-task-hubs.md)neve. Ha nincs megadva, a rendszer feltételezi, hogy az aktuális Function-alkalmazás feladatának hub-neve. |
-| **`connection`** | Lekérdezési sztring    | A Storage-fiókhoz tartozó kapcsolatok karakterláncának **neve** . Ha nincs megadva, a rendszer a Function alkalmazás alapértelmezett kapcsolatok sztringjét feltételezi. |
-| **`systemKey`**  | Lekérdezési sztring    | Az API meghívásához szükséges hitelesítési kulcs. |
+| **`taskHub`**    | Lekérdezési karakterlánc    | A [feladat hub](durable-functions-task-hubs.md)neve. Ha nincs megadva, a rendszer feltételezi, hogy az aktuális Function-alkalmazás feladatának hub-neve. |
+| **`connection`** | Lekérdezési karakterlánc    | A Storage-fiókhoz tartozó kapcsolatok karakterláncának **neve** . Ha nincs megadva, a rendszer a Function alkalmazás alapértelmezett kapcsolatok sztringjét feltételezi. |
+| **`systemKey`**  | Lekérdezési karakterlánc    | Az API meghívásához szükséges hitelesítési kulcs. |
 
 `systemKey` az Azure Functions gazdagép által automatikusan generált engedélyezési kulcs. Kifejezetten hozzáférést biztosít a tartós feladathoz tartozó API-khoz, és ugyanúgy kezelhető, mint a [többi hitelesítési kulcs](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Olyan URL-címeket hozhat létre, amelyek a megfelelő `taskHub`, `connection`és `systemKey` lekérdezési karakterlánc-értékeket tartalmazzák a hanghangoló [ügyfél-kötési](durable-functions-bindings.md#orchestration-client) API-k használatával, például a .net-ben lévő `CreateCheckStatusResponse` és `CreateHttpManagementPayload` API-kkal, illetve a `createCheckStatusResponse` és `createHttpManagementPayload` API-kkal a JavaScriptben.
 
@@ -32,7 +32,7 @@ A következő néhány szakasz a bővítmény által támogatott HTTP API-kat fe
 
 Elindítja a megadott Orchestrator függvény új példányának végrehajtását.
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>Kérés
 
 A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
 
@@ -57,7 +57,7 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 | Mező              | Paraméter típusa  | Leírás |
 |--------------------|-----------------|-------------|
 | **`functionName`** | URL-cím             | Az elindítani kívánt Orchestrator-függvény neve. |
-| **`instanceId`**   | URL-cím             | Nem kötelező megadni. A koordináló példány azonosítója. Ha nincs megadva, a Orchestrator függvény véletlenszerűen kiválasztott AZONOSÍTÓJÚ példánnyal fog kezdődni. |
+| **`instanceId`**   | URL-cím             | Nem kötelező paraméter. A koordináló példány azonosítója. Ha nincs megadva, a Orchestrator függvény véletlenszerűen kiválasztott AZONOSÍTÓJÚ példánnyal fog kezdődni. |
 | **`{content}`**    | Tartalomkérelem | Választható. A JSON-formátumú Orchestrator függvény bemenete. |
 
 ### <a name="response"></a>Válasz
@@ -108,7 +108,7 @@ Az alábbi példa egy, a `abc123` AZONOSÍTÓval (az olvashatósághoz formázot
 A HTTP-válasz célja, hogy kompatibilis legyen a *lekérdezési fogyasztói mintával*. A következő jelentős válasz fejléceket is tartalmazza:
 
 * **Hely**: az állapot VÉGPONTJÁNAK URL-címe. Ez az URL-cím a `statusQueryGetUri` mezővel megegyező értéket tartalmazza.
-* **Újrapróbálkozás ennyi idő után**: ennyi másodpercig kell várni a lekérdezési műveletek között. Az alapértelmezett érték 0.`10`
+* **Újrapróbálkozás ennyi idő után**: ennyi másodpercig kell várni a lekérdezési műveletek között. Az alapértelmezett érték `10`.
 
 Az aszinkron HTTP-lekérdezési mintával kapcsolatos további információkért tekintse meg az aszinkron http- [műveletek követése](durable-functions-http-features.md#async-operation-tracking) dokumentációját.
 
@@ -116,7 +116,7 @@ Az aszinkron HTTP-lekérdezési mintával kapcsolatos további információkért
 
 Egy megadott összehangoló példány állapotának beolvasása.
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>Kérés
 
 A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
 
@@ -147,12 +147,12 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 | Mező                   | Paraméter típusa  | Leírás |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL-cím             | A koordináló példány azonosítója. |
-| **`showInput`**         | Lekérdezési sztring    | Nem kötelező megadni. Ha `false`értékre van állítva, a függvény bemenete nem fog szerepelni a válasz adattartalomban.|
-| **`showHistory`**       | Lekérdezési sztring    | Nem kötelező megadni. Ha a `true`értékre van állítva, a rendszer a hangfelvétel-végrehajtási előzményeket fogja tartalmazni a válasz adattartalomban.|
-| **`showHistoryOutput`** | Lekérdezési sztring    | Nem kötelező megadni. Ha `true`értékre van állítva, a függvény kimenetei szerepelni fognak a előkészítési végrehajtási előzményekben.|
-| **`createdTimeFrom`**   | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, szűri a megadott ISO8601 időbélyegzőn vagy azt követően létrehozott visszaadott példányok listáját.|
-| **`createdTimeTo`**     | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, szűri a megadott ISO8601 időbélyegzőn vagy azt megelőzően létrehozott visszaadott példányok listáját.|
-| **`runtimeStatus`**     | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, a visszaadott példányok listáját a futásidejű állapotuk alapján szűri. A lehetséges futásidejű állapotüzenetek listájának megtekintéséhez tekintse meg a [példányok lekérdezése](durable-functions-instance-management.md) című cikket. |
+| **`showInput`**         | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha `false`értékre van állítva, a függvény bemenete nem fog szerepelni a válasz adattartalomban.|
+| **`showHistory`**       | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha a `true`értékre van állítva, a rendszer a hangfelvétel-végrehajtási előzményeket fogja tartalmazni a válasz adattartalomban.|
+| **`showHistoryOutput`** | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha `true`értékre van állítva, a függvény kimenetei szerepelni fognak a előkészítési végrehajtási előzményekben.|
+| **`createdTimeFrom`**   | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha meg van adva, szűri a megadott ISO8601 időbélyegzőn vagy azt követően létrehozott visszaadott példányok listáját.|
+| **`createdTimeTo`**     | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha meg van adva, szűri a megadott ISO8601 időbélyegzőn vagy azt megelőzően létrehozott visszaadott példányok listáját.|
+| **`runtimeStatus`**     | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha meg van adva, a visszaadott példányok listáját a futásidejű állapotuk alapján szűri. A lehetséges futásidejű állapotüzenetek listájának megtekintéséhez tekintse meg a [példányok lekérdezése](durable-functions-instance-management.md) című cikket. |
 
 ### <a name="response"></a>Válasz
 
@@ -166,7 +166,7 @@ Több lehetséges állapotkód-érték is visszaadható.
 
 A **http 200** és a **http 202** esetek válaszának adattartalma egy JSON-objektum, amely a következő mezőket tartalmazhatja:
 
-| Mező                 | Data type | Leírás |
+| Mező                 | Adattípus | Leírás |
 |-----------------------|-----------|-------------|
 | **`runtimeStatus`**   | sztring    | A példány futtatókörnyezeti állapota. Az értékek közé tartoznak a következők: *Futtatás*, *függő*, *sikertelen*, *megszakított*, *leállított*, *befejezett*. |
 | **`input`**           | JSON      | A példány inicializálásához használt JSON-adatbázis. Ez a mező akkor `null`, ha a `showInput` lekérdezési karakterlánc paraméter értéke `false`.|
@@ -240,7 +240,7 @@ Az összes példány állapotát lekérdezheti úgy is, hogy eltávolítja a `in
 Ne feledje, hogy `connection` és `code` megadása nem kötelező. Ha a függvényben névtelen hitelesítés található, `code` nem szükséges.
 Ha nem szeretne más tárolási kapcsolódási karakterláncot használni, mint a AzureWebJobsStorage alkalmazás beállítása, akkor nyugodtan figyelmen kívül hagyhatja a kapcsolódási lekérdezési karakterlánc paraméterét.
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>Kérés
 
 A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
 
@@ -275,13 +275,13 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 | Mező                   | Paraméter típusa  | Leírás |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL-cím             | A koordináló példány azonosítója. |
-| **`showInput`**         | Lekérdezési sztring    | Nem kötelező megadni. Ha `false`értékre van állítva, a függvény bemenete nem fog szerepelni a válasz adattartalomban.|
-| **`showHistory`**       | Lekérdezési sztring    | Nem kötelező megadni. Ha a `true`értékre van állítva, a rendszer a hangfelvétel-végrehajtási előzményeket fogja tartalmazni a válasz adattartalomban.|
-| **`showHistoryOutput`** | Lekérdezési sztring    | Nem kötelező megadni. Ha `true`értékre van állítva, a függvény kimenetei szerepelni fognak a előkészítési végrehajtási előzményekben.|
-| **`createdTimeFrom`**   | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, szűri a megadott ISO8601 időbélyegzőn vagy azt követően létrehozott visszaadott példányok listáját.|
-| **`createdTimeTo`**     | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, szűri a megadott ISO8601 időbélyegzőn vagy azt megelőzően létrehozott visszaadott példányok listáját.|
-| **`runtimeStatus`**     | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, a visszaadott példányok listáját a futásidejű állapotuk alapján szűri. A lehetséges futásidejű állapotüzenetek listájának megtekintéséhez tekintse meg a [példányok lekérdezése](durable-functions-instance-management.md) című cikket. |
-| **`top`**               | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, korlátozza a lekérdezés által visszaadott példányok számát. |
+| **`showInput`**         | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha `false`értékre van állítva, a függvény bemenete nem fog szerepelni a válasz adattartalomban.|
+| **`showHistory`**       | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha a `true`értékre van állítva, a rendszer a hangfelvétel-végrehajtási előzményeket fogja tartalmazni a válasz adattartalomban.|
+| **`showHistoryOutput`** | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha `true`értékre van állítva, a függvény kimenetei szerepelni fognak a előkészítési végrehajtási előzményekben.|
+| **`createdTimeFrom`**   | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha meg van adva, szűri a megadott ISO8601 időbélyegzőn vagy azt követően létrehozott visszaadott példányok listáját.|
+| **`createdTimeTo`**     | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha meg van adva, szűri a megadott ISO8601 időbélyegzőn vagy azt megelőzően létrehozott visszaadott példányok listáját.|
+| **`runtimeStatus`**     | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha meg van adva, a visszaadott példányok listáját a futásidejű állapotuk alapján szűri. A lehetséges futásidejű állapotüzenetek listájának megtekintéséhez tekintse meg a [példányok lekérdezése](durable-functions-instance-management.md) című cikket. |
+| **`top`**               | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha meg van adva, korlátozza a lekérdezés által visszaadott példányok számát. |
 
 ### <a name="response"></a>Válasz
 
@@ -348,7 +348,7 @@ Ha a folytatási jogkivonat értékét a következő kérelem fejlécében áll�
 
 Törli a megadott előkészítési példány előzményeit és a kapcsolódó összetevőket.
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>Kérés
 
 A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
 
@@ -383,7 +383,7 @@ A következő HTTP-állapotkód értékei adhatók vissza.
 
 A **HTTP 200** eset válaszának tartalma egy JSON-objektum, amely a következő mezővel rendelkezik:
 
-| Mező                  | Data type | Leírás |
+| Mező                  | Adattípus | Leírás |
 |------------------------|-----------|-------------|
 | **`instancesDeleted`** | egész szám   | A példányok száma törölve. Az Egypéldányos eset esetében ennek az értéknek mindig `1`nak kell lennie. |
 
@@ -399,7 +399,7 @@ A **HTTP 200** eset válaszának tartalma egy JSON-objektum, amely a következő
 
 Az előzményeket és a kapcsolódó összetevőket is törölheti egy adott munkaközpontban található több példányhoz, ha eltávolítja a `{instanceId}` az "egypéldányos előzmények kiürítése" kérelemből. A példányok előzményeinek szelektív törléséhez használja az "összes példány állapota" kérelemben ismertetett szűrőket.
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>Kérés
 
 A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
 
@@ -429,9 +429,9 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 
 | Mező                 | Paraméter típusa  | Leírás |
 |-----------------------|-----------------|-------------|
-| **`createdTimeFrom`** | Lekérdezési sztring    | A megadott ISO8601 időbélyegzőn vagy azt követően létrehozott kiürített példányok listájának szűrése.|
-| **`createdTimeTo`**   | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, szűri az adott ISO8601 időbélyegzőn vagy azt megelőzően létrehozott kiürített példányok listáját.|
-| **`runtimeStatus`**   | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, a rendszer kiszűri a törölt példányok listáját a futásidejű állapotuk alapján. A lehetséges futásidejű állapotüzenetek listájának megtekintéséhez tekintse meg a [példányok lekérdezése](durable-functions-instance-management.md) című cikket. |
+| **`createdTimeFrom`** | Lekérdezési karakterlánc    | A megadott ISO8601 időbélyegzőn vagy azt követően létrehozott kiürített példányok listájának szűrése.|
+| **`createdTimeTo`**   | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha meg van adva, szűri az adott ISO8601 időbélyegzőn vagy azt megelőzően létrehozott kiürített példányok listáját.|
+| **`runtimeStatus`**   | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha meg van adva, a rendszer kiszűri a törölt példányok listáját a futásidejű állapotuk alapján. A lehetséges futásidejű állapotüzenetek listájának megtekintéséhez tekintse meg a [példányok lekérdezése](durable-functions-instance-management.md) című cikket. |
 
 > [!NOTE]
 > Ez a művelet nagyon költséges lehet az Azure Storage I/O esetében, ha a példányok és/vagy az előzmények táblázatában sok sor van. A táblázatokkal kapcsolatos további részletekért tekintse meg a [Durable functions (Azure functions) dokumentációjának teljesítményét és méretezését](durable-functions-perf-and-scale.md#instances-table) .
@@ -445,7 +445,7 @@ A következő HTTP-állapotkód értékei adhatók vissza.
 
 A **HTTP 200** eset válaszának tartalma egy JSON-objektum, amely a következő mezővel rendelkezik:
 
-| Mező                   | Data type | Leírás |
+| Mező                   | Adattípus | Leírás |
 |-------------------------|-----------|-------------|
 | **`instancesDeleted`**  | egész szám   | A példányok száma törölve. |
 
@@ -461,7 +461,7 @@ A **HTTP 200** eset válaszának tartalma egy JSON-objektum, amely a következő
 
 Esemény-értesítési üzenet küldése egy futó összehangoló példánynak.
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>Kérés
 
 A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
 
@@ -514,7 +514,7 @@ Az API-val kapcsolatos válaszok nem tartalmaznak tartalmat.
 
 Leállítja a futó összehangoló példányt.
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>Kérés
 
 A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
 
@@ -541,7 +541,7 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 | Mező             | Paraméter típusa  | Leírás |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL-cím             | A koordináló példány azonosítója. |
-| **`reason`**      | Lekérdezési sztring    | Választható. Az előkészítési példány megszakításának oka. |
+| **`reason`**      | Lekérdezési karakterlánc    | Választható. Az előkészítési példány megszakításának oka. |
 
 ### <a name="response"></a>Válasz
 
@@ -563,7 +563,7 @@ Az API-val kapcsolatos válaszok nem tartalmaznak tartalmat.
 
 Visszaállítja a sikertelen előkészítési példányt egy futó állapotba a legutóbbi sikertelen műveletek visszajátszásával.
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>Kérés
 
 A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
 
@@ -590,7 +590,7 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 | Mező             | Paraméter típusa  | Leírás |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL-cím             | A koordináló példány azonosítója. |
-| **`reason`**      | Lekérdezési sztring    | Választható. Az előkészítési példány újratekercselésének oka. |
+| **`reason`**      | Lekérdezési karakterlánc    | Választható. Az előkészítési példány újratekercselésének oka. |
 
 ### <a name="response"></a>Válasz
 
@@ -615,7 +615,7 @@ Egy egyirányú műveleti üzenetet küld egy [tartós entitásnak](durable-func
 > [!NOTE]
 > A tartós entitások Durable Functions 2,0-tól kezdve érhetők el.
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>Kérés
 
 A HTTP-kérés a következőképpen van formázva (az érthetőség kedvéért több sor jelenik meg):
 
@@ -633,7 +633,7 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 |-------------------|-----------------|-------------|
 | **`entityName`**  | URL-cím             | Az entitás neve (típusa). |
 | **`entityKey`**   | URL-cím             | Az entitás kulcsa (egyedi azonosítója). |
-| **`op`**          | Lekérdezési sztring    | Választható. A meghívni kívánt felhasználó által definiált művelet neve. |
+| **`op`**          | Lekérdezési karakterlánc    | Választható. A meghívni kívánt felhasználó által definiált művelet neve. |
 | **`{content}`**   | Tartalomkérelem | A JSON-formátumú esemény hasznos adata. |
 
 Az alábbi példa egy, a felhasználó által definiált "add" üzenetet küld egy `steps`nevű `Counter` entitásnak. Az üzenet tartalma `5`. Ha az entitás még nem létezik, akkor ez a kérelem jön létre:
@@ -662,7 +662,7 @@ A sikeres HTTP-kérések nem tartalmaznak semmilyen tartalmat a válaszban. A hi
 
 Lekéri a megadott entitás állapotát.
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>Kérés
 
 A HTTP-kérés a következőképpen van formázva (az érthetőség kedvéért több sor jelenik meg):
 
@@ -701,7 +701,7 @@ Ha az `Counter` entitás egyszerűen egy `currentValue` mezőben mentett néhán
 
 Az entitás neve vagy az utolsó művelet dátuma alapján több entitás is lekérdezhető.
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>Kérés
 
 A HTTP-kérés a következőképpen van formázva (az érthetőség kedvéért több sor jelenik meg):
 
@@ -721,10 +721,10 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 | Mező                       | Paraméter típusa  | Leírás |
 |-----------------------------|-----------------|-------------|
 | **`entityName`**            | URL-cím             | Választható. Ha meg van adva, az entitás neve alapján szűri a visszaadott entitások listáját (kis-és nagybetűk megkülönböztetése). |
-| **`fetchState`**            | Lekérdezési sztring    | Nem kötelező megadni. Ha `true`értékre van állítva, az entitás állapota szerepelni fog a válasz adattartalmaban. |
-| **`lastOperationTimeFrom`** | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, szűri a visszaadott entitások listáját, amelyek a megadott ISO8601 timestamp után feldolgozott műveleteket végeznek. |
-| **`lastOperationTimeTo`**   | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, az adott ISO8601 időbélyege előtt szűri a feldolgozott műveleteket végző visszaadott entitások listáját. |
-| **`top`**                   | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, korlátozza a lekérdezés által visszaadott entitások számát. |
+| **`fetchState`**            | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha `true`értékre van állítva, az entitás állapota szerepelni fog a válasz adattartalmaban. |
+| **`lastOperationTimeFrom`** | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha meg van adva, szűri a visszaadott entitások listáját, amelyek a megadott ISO8601 timestamp után feldolgozott műveleteket végeznek. |
+| **`lastOperationTimeTo`**   | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha meg van adva, az adott ISO8601 időbélyege előtt szűri a feldolgozott műveleteket végző visszaadott entitások listáját. |
+| **`top`**                   | Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha meg van adva, korlátozza a lekérdezés által visszaadott entitások számát. |
 
 
 ### <a name="response"></a>Válasz

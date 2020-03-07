@@ -8,11 +8,11 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.openlocfilehash: 0c9a3c2ef05f4a11933ca7fc81c7c0f87a612293
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789927"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395884"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Oszlopok mintáinak használata a leképezési adatfolyamban
 
@@ -35,7 +35,7 @@ Az egyeztetési feltétel alá tartozó két kifejezés mező adja meg az érint
 
 ![oszlop mintázatai](media/data-flow/columnpattern2.png "Oszlopminták")
 
-A fenti oszlop mintája minden dupla típusú oszlopra illeszkedik, és egy összesített oszlopot hoz létre egymás után. Az új oszlop neve az egyező oszlop neve az "összesen" értékkel összefűzve. Az új oszlop értéke a meglévő dupla érték lekerekített, összesített összege.
+A fenti oszlop mintája minden dupla típusú oszlopra illeszkedik, és egy összesített oszlopot hoz létre egymás után. Az új oszlop neve az egyező oszlop neve az "_total" értékkel összefűzve. Az új oszlop értéke a meglévő dupla érték lekerekített, összesített összege.
 
 Az egyeztetési feltétel helyességének ellenőrzéséhez ellenőrizheti a **megvizsgálandó** lapon definiált oszlopok kimeneti sémáját, vagy beolvashatja az adatok pillanatképét az **adatelőnézet** lapon. 
 
@@ -64,8 +64,8 @@ Ha a szabály több azonos leképezést eredményez, engedélyezze az ismétlőd
 ## <a name="pattern-matching-expression-values"></a>Mintázattal egyező kifejezés értékei.
 
 * a `$$` az egyes egyezések nevét vagy értékét futtatja futási időben
-* a `name` a bejövő oszlopok nevét jelöli.
-* a `type` érték az egyes bejövő oszlopok adattípusát jelöli.
+* `name` a bejövő oszlopok nevét jelöli
+* `type` az egyes bejövő oszlopok adattípusát jelöli
 * `stream` az egyes adatfolyamokhoz társított nevet vagy a folyamat átalakítását jelöli
 * `position` az adatfolyamat oszlopainak sorszáma
 

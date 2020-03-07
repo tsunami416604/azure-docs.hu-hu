@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: aschhab
 ms.openlocfilehash: 3dc78a22e0e596d812d90fec63475a0b21e9164f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759584"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358263"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)
 
@@ -73,7 +73,7 @@ A lehetséges szűrési értékekkel kapcsolatos további információkért teki
 
 További információt és példákat a Service Bus üzenetkezelés használatával kapcsolatban a következő speciális témakörökben talál:
 
-* [Service Bus messaging overview](service-bus-messaging-overview.md) (A Service Bus üzenetkezelésének áttekintése)
+* [A Service Bus üzenetkezelésének áttekintése](service-bus-messaging-overview.md)
 * [Gyors útmutató: üzenetek küldése és fogadása a Azure Portal és a .NET használatával](service-bus-quickstart-portal.md)
 * [Oktatóanyag: leltár frissítése Azure Portal és témakörök/előfizetések használatával](service-bus-tutorial-topics-subscriptions-portal.md)
 

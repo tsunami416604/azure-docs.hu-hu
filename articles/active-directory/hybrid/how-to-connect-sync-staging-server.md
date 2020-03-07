@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect szinkronizálás: Üzemeltetési feladatok és szempontok | Microsoft Docs'
+title: 'Azure AD Connect szinkronizálás: üzemeltetési feladatok és szempontok | Microsoft Docs'
 description: Ez a témakör a Azure AD Connect szinkronizálásának működési feladatait és az összetevő működésének előkészítését ismerteti.
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900059"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376221"
 ---
-# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Kiszolgáló- és vészhelyreállítás előkészítése
+# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: átmeneti kiszolgáló és vész-helyreállítás
 Ha egy kiszolgáló átmeneti módban van, módosíthatja a konfigurációt, és előkészítheti a módosításokat a kiszolgáló aktív állapotba helyezése előtt. Azt is lehetővé teszi, hogy teljes importálást és teljes szinkronizálást futtasson annak ellenőrzéséhez, hogy az összes módosítás várható-e, mielőtt a módosításokat elvégezte az éles környezetben.
 
 ## <a name="staging-mode"></a>Átmeneti mód
@@ -64,25 +64,25 @@ A metódus alkalmazásához kövesse az alábbi lépéseket:
 Ha egyéni módosításokat hajtott végre az elsődleges kiszolgálón, és össze szeretné hasonlítani a konfigurációt az átmeneti kiszolgálóval, akkor a [Azure ad Connect Configuration documenter](https://github.com/Microsoft/AADConnectConfigDocumenter)használatával kell összehasonlítania.
 
 #### <a name="import-and-synchronize"></a>Importálás és szinkronizálás
-1. Válasszaaz összekötők lehetőséget, majd válassza ki az első összekötőt **Active Directory tartományi szolgáltatások**típussal. Kattintson a **Futtatás**elemre, válassza a **teljes importálás**lehetőséget, majd **az OK gombot**. Hajtsa végre ezeket a lépéseket az összes ilyen típusú összekötőhöz.
+1. Válassza az **Összekötők**lehetőséget, majd válassza ki az első összekötőt **Active Directory tartományi szolgáltatások**típussal. Kattintson a **Futtatás**elemre, válassza a **teljes importálás**lehetőséget, majd **az OK gombot**. Hajtsa végre ezeket a lépéseket az összes ilyen típusú összekötőhöz.
 2. Válassza ki a **Azure Active Directory (Microsoft)** típusú összekötőt. Kattintson a **Futtatás**elemre, válassza a **teljes importálás**lehetőséget, majd **az OK gombot**.
 3. Győződjön meg arról, hogy a TAB-összekötők továbbra is ki vannak választva. Minden **Active Directory tartományi szolgáltatások**típusú összekötőhöz kattintson a **Futtatás**elemre, válassza a **különbözeti szinkronizálás**lehetőséget, majd **az OK gombot**.
 4. Válassza ki a **Azure Active Directory (Microsoft)** típusú összekötőt. Kattintson a **Futtatás**elemre, válassza a **különbözeti szinkronizálás**lehetőséget, majd **az OK gombot**.
 
 Ezzel elvégezte az Azure AD és a helyszíni Active Directory módosításainak exportálását (ha az Exchange hibrid üzembe helyezést használja). A következő lépésekkel megvizsgálhatja, hogy mi a változás, mielőtt ténylegesen elindítja az exportálást a címtárakba.
 
-#### <a name="verify"></a>Megerősítés
-1. Indítsa el a parancssort, és nyissa meg a következő parancsot`%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Futtassa a következőt: `csexport "Name of Connector" %temp%\export.xml /f:x`Az összekötő neve megtalálható a szinkronizációs szolgáltatásban. Az Azure AD-hez hasonló "contoso.com – HRE" névvel.
-3. Futtassa a következőt: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`Van egy fájlja a (z)% Temp% nevű export. csv fájlban, amely megvizsgálható a Microsoft Excelben. Ez a fájl tartalmazza az exportálandó összes módosítást.
+#### <a name="verify"></a>Ellenőrzés
+1. Indítsa el a parancssort, és lépjen a `%ProgramFiles%\Microsoft Azure AD Sync\bin`
+2. Run: `csexport "Name of Connector" %temp%\export.xml /f:x` az összekötő neve megtalálható a szinkronizációs szolgáltatásban. Az Azure AD-hez hasonló "contoso.com – HRE" névvel.
+3. Futtatás: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` van egy fájl a (z)% Temp% nevű exportált. csv fájlban, amely megvizsgálható a Microsoft Excelben. Ez a fájl tartalmazza az exportálandó összes módosítást.
 4. Végezze el a szükséges módosításokat az adatokat vagy a konfigurációban, majd futtassa újra ezeket a lépéseket (Importálás és szinkronizálás és ellenőrzés), amíg az exportálandó módosítások várhatóak lesznek.
 
 **Az export. csv fájl ismertetése** A fájl nagy része magától értetődő. Néhány rövidítés a tartalom megértéséhez:
 * OMODT – objektum módosításának típusa. Azt jelzi, hogy egy objektum szintjén a művelet egy Hozzáadás, frissítés vagy törlés.
 * AMODT – attribútum módosításának típusa. Azt jelzi, hogy egy attribútum szintjén a művelet egy Hozzáadás, frissítés vagy törlés.
 
-**Közös azonosítók** beolvasása Az export. csv fájl tartalmazza az exportálandó összes módosítást. Minden sor az összekötő terület egy objektumának változásának felel meg, és az objektumot a DN attribútum azonosítja. A DN attribútum egyedi azonosító, amely az összekötő terület egy objektumához van rendelve. Ha az export. csv fájlban sok sort vagy változást elemez, akkor nehéz lehet megállapítani, hogy mely objektumok esetében a módosítások csak a DN attribútumon alapulnak. A módosítások elemzésének egyszerűbbé tételéhez használja a csanalyzer. ps1 PowerShell-szkriptet. A parancsfájl az objektumok közös azonosítóit (például displayName, userPrincipalName) kérdezi le. A szkript használata:
-1. Másolja a PowerShell-szkriptet a szakasz [CSAnalyzer](#appendix-csanalyzer) egy nevű `csanalyzer.ps1`fájlba.
+**Közös azonosítók beolvasása** Az export. csv fájl tartalmazza az exportálandó összes módosítást. Minden sor az összekötő terület egy objektumának változásának felel meg, és az objektumot a DN attribútum azonosítja. A DN attribútum egyedi azonosító, amely az összekötő terület egy objektumához van rendelve. Ha az export. csv fájlban sok sort vagy változást elemez, akkor nehéz lehet megállapítani, hogy mely objektumok esetében a módosítások csak a DN attribútumon alapulnak. A módosítások elemzésének egyszerűbbé tételéhez használja a csanalyzer. ps1 PowerShell-szkriptet. A parancsfájl az objektumok közös azonosítóit (például displayName, userPrincipalName) kérdezi le. A szkript használata:
+1. Másolja a PowerShell-szkriptet a [CSAnalyzer](#appendix-csanalyzer) szakaszból egy `csanalyzer.ps1`nevű fájlba.
 2. Nyisson meg egy PowerShell-ablakot, és keresse meg azt a mappát, ahová a PowerShell-parancsfájlt létrehozta.
 3. Futtatás: `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`.
 4. Most már rendelkezik egy **processedusers1. csv** nevű fájllal, amely megvizsgálható a Microsoft Excelben. Vegye figyelembe, hogy a fájl leképezést biztosít a DN attribútumból a közös azonosítók (például a displayName és a userPrincipalName) számára. Jelenleg nem tartalmazza a ténylegesen exportálandó attribútumok változásait.
@@ -267,8 +267,8 @@ Write-Host Writing processedusers${outputfilecount}.csv -ForegroundColor Yellow
 $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeInformation
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 **Áttekintő témakörök**  
 
-* [Az Azure AD Connect szinkronizálása: A szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)  
+* [Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)  
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)  

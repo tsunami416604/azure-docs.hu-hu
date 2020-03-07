@@ -9,17 +9,17 @@ ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 965897afc8e23c123575de0c497d4071ff4ca85a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767103"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356153"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Oktatóanyag: egyéni rendszerkép létrehozása és App Service futtatása privát beállításjegyzékből
 
 A [app Service](app-service-linux-intro.md) beépített Docker-rendszerképeket biztosít a Linuxon, és bizonyos verziókat, például a PHP 7,3-t és a Node. js 10,14-t támogatja. A App Service a Docker-tároló technológiáját használja a beépített rendszerképek és az Egyéni rendszerképek szolgáltatásként való üzemeltetéséhez. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egyéni rendszerképet, és hogyan futtathatja App Serviceban. Ez a minta akkor hasznos, ha a beépített rendszerképek nem tartalmazzák a választott nyelvet, vagy ha az alkalmazás egy meghatározott konfigurációt igényel, amelyet a beépített rendszerképek nem tartalmaznak.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Egyéni rendszerkép üzembe helyezése egy privát tároló beállításjegyzékében
@@ -99,7 +99,7 @@ Győződjön meg arról, hogy a webalkalmazás és a tároló megfelelően műk�
 
 Az imént létrehozott rendszerképet használó alkalmazás létrehozásához futtassa az Azure CLI-parancsokat, amelyek létrehoznak egy erőforráscsoportot, leküldi a rendszerképet, majd létrehozza a App Service terv webalkalmazást a futtatásához.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
@@ -147,7 +147,7 @@ Győződjön meg arról, hogy a bejelentkezés sikeres.
 
 ### <a name="push-image-to-azure-container-registry"></a>Rendszerkép leküldése az Azure Container Registrybe
 
-A Azure Container Registry helyi rendszerképének címkézése. Példa:
+A Azure Container Registry helyi rendszerképének címkézése. Például:
 ```bash
 docker tag mydockerimage <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
@@ -178,7 +178,7 @@ A következő kimenetnek kell megjelennie.
 
 ### <a name="create-web-app"></a>Webalkalmazás létrehozása
 
-A Cloud Shellben az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal hozzon létre egy [webalkalmazást](app-service-linux-intro.md) a `myAppServicePlan` App Service-csomagban. Cserélje le az _\<app-name >_ egyedi alkalmazás nevére, és _\<Azure-Container-registry-Name >_ a beállításjegyzék nevével.
+A Cloud Shellben az [](app-service-linux-intro.md)`myAppServicePlan` paranccsal hozzon létre egy [webalkalmazást`az webapp create` a ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) App Service-csomagban. Cserélje le az _\<app-name >_ egyedi alkalmazás nevére, és _\<Azure-Container-registry-Name >_ a beállításjegyzék nevével.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0

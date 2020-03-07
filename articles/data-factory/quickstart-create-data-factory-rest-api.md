@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
 ms.openlocfilehash: fbfd3e2577655e8cfccd84fffe2971ff509bd2f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977454"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357966"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Gyors útmutató: Azure-beli adatfeldolgozó és-folyamat létrehozása a REST API használatával
 
@@ -44,7 +44,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="set-global-variables"></a>Globális változók beállítása
 
-1. Indítsa el a **PowerShellt**. Az Azure PowerShellt hagyja megnyitva a rövid útmutató végéig. Ha bezárja és újra megnyitja a programot, akkor újra le kell futtatnia a parancsokat.
+1. Indítsa el a **PowerShellt**. Az Azure PowerShellt hagyja megnyitva a rövid útmutató végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell a parancsokat.
 
     Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
 
@@ -108,7 +108,7 @@ $response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Bod
 $response | ConvertTo-Json
 ```
 
-Vegye figyelembe a következő szempontokat:
+Vegye figyelembe a következő pontokat:
 
 * Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a nevet, majd próbálkozzon újra.
 
@@ -169,7 +169,7 @@ $response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Bod
 $response | ConvertTo-Json
 ```
 
-Itt látható a minta kimenete:
+Itt látható a kimenet mintája:
 
 ```json
 {  
@@ -223,7 +223,7 @@ $response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Bod
 $response | ConvertTo-Json
 ```
 
-Itt látható a minta kimenete:
+Itt látható a kimenet mintája:
 
 ```json
 {  
@@ -276,7 +276,7 @@ $response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Bod
 $response | ConvertTo-Json
 ```
 
-Itt látható a minta kimenete:
+Itt látható a kimenet mintája:
 
 ```json
 {  
@@ -360,7 +360,7 @@ $response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Bod
 $response | ConvertTo-Json
 ```
 
-Itt látható a minta kimenete:
+Itt látható a kimenet mintája:
 
 ```json
 {  
@@ -393,7 +393,7 @@ $response | ConvertTo-Json
 $runId = $response.runId
 ```
 
-Itt látható a minta kimenete:
+Itt látható a kimenet mintája:
 
 ```json
 {  
@@ -421,7 +421,7 @@ Itt látható a minta kimenete:
     }
     ```
 
-    Itt látható a minta kimenete:
+    Itt látható a kimenet mintája:
 
     ```json
     {  
@@ -460,7 +460,7 @@ Itt látható a minta kimenete:
     $response = Invoke-RestMethod -Method POST -Uri $request -Header $authHeader
     $response | ConvertTo-Json
     ```
-    Itt látható a minta kimenete:
+    Itt látható a kimenet mintája:
 
     ```json
     {  

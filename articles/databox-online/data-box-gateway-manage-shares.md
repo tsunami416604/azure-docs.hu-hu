@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 9284400254860b47f3aea6de5c79ab4c2a77f199
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60755832"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384582"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Az Azure Data Box Gateway megosztási beállításait az Azure Portalon keresztül kezelheti 
 
@@ -69,7 +69,7 @@ Megosztás törléséhez hajtsa végre a következő lépéseket az Azure Portal
 
     ![Jelölje ki a megosztást](media/data-box-gateway-manage-shares/delete-1.png)
 
-2. Kattintson a **Törlés** gombra. 
+2. Kattintson a **Delete** (Törlés) gombra. 
 
     ![Kattintson a Törlés gombra](media/data-box-gateway-manage-shares/delete-2.png)
 
@@ -85,7 +85,7 @@ A törlés végrehajtása után annak megfelelően frissül a megosztások list�
 A frissítési funkció lehetővé teszi a helyszíni megosztások tartalmának frissítését. A megosztások frissítésekor a rendszer keresést indít a legutóbbi frissítés óta a felhőbe feltöltött Azure-objektumok (például blobok és fájlok) azonosítására. Az eszközön található helyszíni megosztás tartalma ezt követően frissül ezekkel a fájlokkal. 
 
 > [!NOTE]
-> Engedélyek és hozzáférés-vezérlési listák (ACL) nem maradnak a frissítési művelet között. 
+> Az engedélyek és hozzáférés-vezérlési listák (ACL-ek) nem őrződnek meg a frissítési művelet során. 
 
 Megosztás frissítéséhez hajtsa végre a következő lépéseket az Azure Portalon.
 
@@ -110,7 +110,7 @@ Megosztás frissítéséhez hajtsa végre a következő lépéseket az Azure Por
 Hiba esetén a rendszer riasztást ad ki. A riasztás részletei között szerepel a hiba oka és a hibaelhárítási javaslat. A riasztás továbbá tartalmaz egy fájlra mutató hivatkozást is, amelyre rákattintva megtekintheti a teljes hibajegyzéket, azon fájlok listájával együtt, amelyek esetében a frissítési vagy törlési művelet meghiúsult.
 
 >[!IMPORTANT]
-> Ebben a kiadásban ne frissüljön legfeljebb egyetlen megosztása egyszerre.
+> Ebben a kiadásban ne frissítsen egyszerre több megosztást.
 
 ## <a name="sync-storage-keys"></a>Tárkulcsok szinkronizálása
 
@@ -119,7 +119,7 @@ Ha a tárfiók kulcsai le lettek cserélve, akkor szinkronizálni kell a tárel�
 A tárelérési kulcsok szinkronizálásához hajtsa végre a következő lépéseket az Azure Portalon.
 
 1. Lépjen az erőforrás **Áttekintés** területére. 
-2. A megosztások listájában válassza ki a szinkronizálni kívánt tárfiókhoz tartozó megosztást, majd kattintson rá. Kattintson a **Tárkulcsok szinkronizálása** elemre. 
+2. A megosztások listájában válassza ki, majd kattintson a szinkronizálni kívánt Storage-fiókhoz társított megosztásra. Kattintson a **Storage-kulcs szinkronizálása**elemre. 
 
      ![1\. tárkulcs szinkronizálása](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 
@@ -131,6 +131,6 @@ A tárelérési kulcsok szinkronizálásához hajtsa végre a következő lépé
 > Ezt a műveletet csak egyszer kell elvégezni az egyes tárfiókok esetében, nem kell megismételni minden egyes, ugyanazon tárfiókhoz tartozó megosztásnál.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [kezelheti a felhasználókat az Azure Portalon keresztül](data-box-gateway-manage-users.md).

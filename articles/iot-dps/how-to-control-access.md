@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453810"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396064"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Az Azure IoT Hub Device Provisioning Servicehoz való hozzáférés szabályozása
 
 Ez a cikk a IoT-eszközök kiépítési szolgáltatásának biztonságossá tételének lehetőségeit ismerteti. A kiépítési szolgáltatás *engedélyeket* használ az egyes végpontokhoz való hozzáférés biztosításához. Az engedélyek funkció alapján korlátozzák a szolgáltatáshoz való hozzáférést.
 
-Ez a cikk a következőket ismerteti:
+Ez a cikk ismerteti:
 
 * A háttér-alkalmazások számára a kiépítési szolgáltatás eléréséhez megadható különböző engedélyek.
 * A hitelesítési folyamat és az általa használt tokenek az engedélyek ellenőrzéséhez.
 
-### <a name="when-to-use"></a>When to use
+### <a name="when-to-use"></a>A következő esetekben használja
 
 Megfelelő engedélyekkel kell rendelkeznie a kiépítési szolgáltatási végpontok eléréséhez. Például egy háttérbeli alkalmazásnak tartalmaznia kell egy biztonsági hitelesítő adatokat tartalmazó jogkivonatot, valamint a szolgáltatásnak küldött összes üzenetet.
 
@@ -39,7 +39,7 @@ A következő módokon adhat meg [engedélyeket](#device-provisioning-service-pe
 > [!NOTE]
 > Részletes információk: [engedélyek](#device-provisioning-service-permissions) .
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Az Azure IoT Hub Device Provisioning Service hozzáférést biztosít a végpontokhoz egy jogkivonat ellenőrzésével a közös hozzáférési házirendekkel. A biztonsági hitelesítő adatokat, például a szimmetrikus kulcsokat a rendszer soha nem továbbítja a huzalon.
 
@@ -75,11 +75,11 @@ A biztonsági jogkivonat formátuma a következő:
 
 A várt értékek a következők:
 
-| Value (Díj) | Leírás |
+| Érték | Leírás |
 | --- | --- |
 | aláírás |Az űrlap HMAC-SHA256 aláírási karakterlánca: `{URL-encoded-resourceURI} + "\n" + expiry`. **Fontos**: a kulcs dekódolása base64-ből történik, és kulcsként használatos a HMAC-sha256 számítás végrehajtásához.|
-| lejárta |UTF8-karakterláncok a 00:00:00-es, 1970-os UTC-kor óta eltelt idő másodpercben. |
-| {URL-kódolt-resourceURI} | Kisbetűs URL-cím – a kisbetűs erőforrás URI-ja kódolása. A jogkivonattal elérhető végpontok URI-előtagja (szegmens szerint), a IoT-eszköz kiépítési szolgáltatásának állomásneve (nincs protokoll). Például: `mydps.azure-devices-provisioning.net`. |
+| {expiry} |UTF8-karakterláncok a 00:00:00-es, 1970-os UTC-kor óta eltelt idő másodpercben. |
+| {URL-encoded-resourceURI} | Kisbetűs URL-cím – a kisbetűs erőforrás URI-ja kódolása. A jogkivonattal elérhető végpontok URI-előtagja (szegmens szerint), a IoT-eszköz kiépítési szolgáltatásának állomásneve (nincs protokoll). Például: `mydps.azure-devices-provisioning.net`. |
 | PolicyName |Annak a megosztott hozzáférési házirendnek a neve, amelyre ez a jogkivonat hivatkozik. |
 
 **Megjegyzés az előtagnál**: az URI-előtagot szegmens és nem karakter alapján számítja ki a rendszer. Például `/a/b` a `/a/b/c` előtagja, de nem `/a/bc`.

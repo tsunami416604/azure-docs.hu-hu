@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: e7b8f8a33b741a8dcf2d1a68ae3cf86d6e3687eb
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950414"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392516"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
 
@@ -28,7 +28,7 @@ A IoT Hub legfeljebb 7 napig engedélyezi az adatok megőrzését a beépített 
 
 A IoT Hub lehetővé teszi a fogyasztói csoportok kezelését is a beépített, eszközről a felhőbe irányuló fogadási végponton. Az egyes IoT Hubekhez legfeljebb 20 fogyasztói csoport tartozhat.
 
-Ha [üzenet](iot-hub-devguide-messages-d2c.md) -útválasztást használ, és a [tartalék útvonal](iot-hub-devguide-messages-d2c.md#fallback-route) engedélyezve van, minden olyan üzenet, amely nem felel meg egyetlen lekérdezésnek sem, lépjen a beépített végpontra. Ha letiltja ezt a tartalék útvonalat, a rendszer elveti az összes lekérdezésnek nem megfelelő üzeneteket.
+Ha [üzenet-útválasztást](iot-hub-devguide-messages-d2c.md) használ, és a [tartalék útvonal](iot-hub-devguide-messages-d2c.md#fallback-route) engedélyezve van, minden olyan üzenet, amely nem felel meg egyetlen lekérdezésnek sem, lépjen a beépített végpontra. Ha letiltja ezt a tartalék útvonalat, a rendszer elveti az összes lekérdezésnek nem megfelelő üzeneteket.
 
 A megőrzési időt a [IoT hub erőforrás-szolgáltató REST API](/rest/api/iothub/iothubresource)-k vagy a [Azure Portal](https://portal.azure.com)használatával lehet módosítani.
 
@@ -40,20 +40,20 @@ Néhány termék-integráció és Event Hubs SDK ismeri a IoT Hub, és lehetőv�
 
 Ha Event Hubs SDK-kat vagy olyan termék-integrációt használ, amely nem tud IoT Hub, akkor az Event hub-kompatibilis végpont és az Event hub-kompatibilis név szükséges. Ezeket az értékeket a következő módon kérheti le a portálról:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az IoT hubot.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon az IoT hubhoz.
 
 2. Kattintson a **beépített végpontok**elemre.
 
-3. Az **események** szakasz a következő értékeket tartalmazza: **Partíciók**, **Event hub-kompatibilis név**, **Event hub-kompatibilis végpont**, **megőrzési idő**és **fogyasztói csoportok**.
+3. Az **események** szakasz a következő értékeket tartalmazza: **Partitions**, **Event hub-kompatibilis név**, **Event hub-kompatibilis végpont**, **megőrzési idő**és **fogyasztói csoportok**.
 
-    ![Eszközről-a-felhőbe típusú üzenetek beállításai](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
+    ![Eszközről a felhőbe irányuló beállítások](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
-A portálon az Event hub-kompatibilis végpont mező egy teljes Event Hubs kapcsolati karakterláncot tartalmaz, amely a következőképpen néz ki: **Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**. Ha az Ön által használt SDK más értékeket igényel, akkor a következő lesz:
+A portálon az Event hub-kompatibilis végpont mező egy teljes Event Hubs kapcsolati karakterláncot tartalmaz, amely a következőképpen néz ki: **Endpoint = SB://abcd1234namespace.servicebus.Windows.net/; SharedAccessKeyName = iothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = iothub-eHub-ABCD-1234-123456**. Ha az Ön által használt SDK más értékeket igényel, akkor a következő lesz:
 
-| Name (Név) | Value |
+| Name (Név) | Érték |
 | ---- | ----- |
 | Végpont | sb://abcd1234namespace.servicebus.windows.net/ |
-| Állomásnév | abcd1234namespace.servicebus.windows.net |
+| Gazdanév | abcd1234namespace.servicebus.windows.net |
 | Névtér | abcd1234namespace |
 
 Ezután bármilyen megosztott elérési házirendet használhat, amely rendelkezik a **ServiceConnect** engedéllyel a megadott Event hubhoz való kapcsolódáshoz.
@@ -69,19 +69,19 @@ A beépített, az Event hub-kompatibilis végponthoz való kapcsolódáshoz hasz
 
 A beépített, az Event hub-kompatibilis végponttal használható termék-integrációk, amelyeket IoT Hub tesznek elérhetővé:
 
-* [Az Azure Functions](https://docs.microsoft.com/azure/azure-functions/). Lásd: [adatok feldolgozása IoT Hubról Azure functions](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/).
+* [Azure functions](https://docs.microsoft.com/azure/azure-functions/). Lásd: [adatok feldolgozása IoT Hubról Azure functions](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/).
 * [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/). Lásd: [stream-adatok bevitele stream Analyticsba](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub).
 * [Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/). Lásd: [az IoT hub-eseményforrás hozzáadása a Time Series Insights-környezethez](../time-series-insights/time-series-insights-how-to-add-an-event-source-iothub.md).
 * [Apache Storm kiöntő](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md). A [kiöntő forrás](https://github.com/apache/storm/tree/master/external/storm-eventhubs) a githubon tekinthető meg.
 * [Apache Spark integráció](../hdinsight/spark/apache-spark-eventhub-streaming.md).
-* [Az Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/).
+* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* IoT Hub végpontokkal kapcsolatos további információkért lásd: [IoT hub](iot-hub-devguide-endpoints.md)-végpontok.
+* IoT Hub végpontokkal kapcsolatos további információkért lásd: [IoT hub-végpontok](iot-hub-devguide-endpoints.md).
 
-* A [](quickstart-send-telemetry-node.md) rövid útmutatók bemutatják, hogyan küldhet eszközről a felhőbe irányuló üzeneteket a szimulált eszközökről, és hogyan olvashatja el az üzeneteket a beépített végpontról. 
+* A [rövid](quickstart-send-telemetry-node.md) útmutatók bemutatják, hogyan küldhet eszközről a felhőbe irányuló üzeneteket a szimulált eszközökről, és hogyan olvashatja el az üzeneteket a beépített végpontról. 
 
 További részletekért tekintse meg a [folyamat IoT hub eszközről a felhőbe](tutorial-routing.md) irányuló üzeneteket az útvonalak oktatóanyag használatával.
 
-* Ha az eszközről a felhőbe irányuló üzeneteket egyéni végpontokra szeretné irányítani, tekintse meg [az üzenetek és az egyéni végpontok használata az eszközről a felhőbe](iot-hub-devguide-messages-read-custom.md)irányuló üzenetekhez című témakört.
+* Ha az eszközről a felhőbe irányuló üzeneteket egyéni végpontokra szeretné irányítani, tekintse meg [az üzenetek és az egyéni végpontok használata az eszközről a felhőbe irányuló üzenetekhez](iot-hub-devguide-messages-read-custom.md)című témakört.

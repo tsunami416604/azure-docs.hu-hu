@@ -6,11 +6,11 @@ ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: e31d4a5f513355e61cb53a6548b3091637bfe9a4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472841"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379151"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése
 
@@ -22,7 +22,7 @@ Ha szeretné megismerni a sablonok használatának előnyeit, és azt, hogy mié
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="get-tools"></a>Eszközök letöltése
+## <a name="get-tools"></a>Eszközök beolvasása
 
 Először is győződjön meg arról, hogy rendelkezik a sablonok létrehozásához és üzembe helyezéséhez szükséges eszközökkel.
 
@@ -79,13 +79,13 @@ Gratulálunk, létrehozta az első sablont.
 
 A Azure PowerShell/Azure CLI használatának megkezdéséhez jelentkezzen be az Azure-beli hitelesítő adataival.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az login
@@ -96,7 +96,7 @@ az login
 
 Sablon központi telepítésekor megadhat egy erőforráscsoportot, amely az erőforrásokat fogja tartalmazni. Az üzembe helyezési parancs futtatása előtt hozza létre az erőforráscsoportot az Azure CLI vagy a Azure PowerShell használatával. Válassza ki az alábbi kódrészletet a Azure PowerShell és az Azure CLI közötti választáshoz. A cikkben található CLI-példák a bash-rendszerhéjra íródnak.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -104,7 +104,7 @@ New-AzResourceGroup `
   -Location "Central US"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group create \
@@ -118,7 +118,7 @@ az group create \
 
 A sablon üzembe helyezéséhez használja az Azure CLI-t vagy a Azure PowerShell. Használja az Ön által létrehozott erőforráscsoportot. Adjon nevet a központi telepítésnek, hogy könnyen azonosítható legyen az üzembe helyezési előzményekben. A kényelem érdekében hozzon létre egy olyan változót is, amely a sablonfájl elérési útját tárolja. Ez a változó megkönnyíti az üzembe helyezési parancsok futtatását, mert minden egyes telepítésekor nem kell újraírnia az elérési utat.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
@@ -128,7 +128,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile $templateFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
@@ -142,11 +142,11 @@ az group deployment create \
 
 Az üzembehelyezési parancs az eredményeket adja vissza. Keresse meg a `ProvisioningState`, és ellenőrizze, hogy sikeres volt-e az üzembe helyezés.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ![PowerShell üzembe helyezési állapota](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ![Azure CLI üzembe helyezési állapot](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
@@ -156,7 +156,7 @@ Az üzembehelyezési parancs az eredményeket adja vissza. Keresse meg a `Provis
 
 A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
 
