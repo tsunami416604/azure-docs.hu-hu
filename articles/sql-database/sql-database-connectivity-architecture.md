@@ -13,11 +13,11 @@ ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
 ms.openlocfilehash: 6a90e9ba264c4abddf2c26cb7b1761a7a51b1778
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647679"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360356"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL-kapcsolat architektúrája
 
@@ -72,20 +72,20 @@ Az alábbi táblázat az átjárók régió szerinti IP-címeit sorolja fel. Azu
 A forgalom áttelepítésének részletei az egyes régiókban lévő új átjárók számára a következő cikkben olvashatók: [Azure SQL Database forgalom áttelepítése újabb átjáróra](sql-database-gateway-migration.md)
 
 
-| Régió neve          | Átjáró IP-címei |
+| Régiónév          | Átjáró IP-címei |
 | --- | --- |
 | Ausztrália középső régiója    | 20.36.105.0 |
 | Ausztráliai Central2   | 20.36.113.0 |
-| Ausztrália keleti régiója       | 13.75.149.87, 40.79.161.1 |
+| Kelet-Ausztrália       | 13.75.149.87, 40.79.161.1 |
 | Délkelet-Ausztrália | 191.239.192.109, 13.73.109.251 |
 | Dél-Brazília         | 104.41.11.5, 191.233.200.14 |
 | Közép-Kanada       | 40.85.224.249      |
 | Kelet-Kanada          | 40.86.226.166      |
 | USA középső régiója           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
 | Kelet-Kína           | 139.219.130.35     |
-| Kína 2. keleti régiója         | 40.73.82.1         |
+| Kelet-Kína 2         | 40.73.82.1         |
 | Észak-Kína          | 139.219.15.17      |
-| Kína 2. északi régiója        | 40.73.50.0         |
+| Észak-Kína 2        | 40.73.50.0         |
 | Kelet-Ázsia            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
 | USA keleti régiója              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | USA 2. keleti régiója            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
@@ -105,14 +105,14 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | Dél-Afrika nyugati régiója    | 102.133.24.0       |
 | USA déli középső régiója     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
 | Délkelet-Ázsia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
-| Egyesült Arab Emírségek középső régiója          | 20.37.72.64        |
-| Egyesült Arab Emírségek északi régiója            | 65.52.248.0        |
-| Egyesült Királyság déli régiója             | 51.140.184.11      |
-| Egyesült Királyság nyugati régiója              | 51.141.8.11        |
+| UAE középső régiója          | 20.37.72.64        |
+| Észak-Egyesült Arab            | 65.52.248.0        |
+| Az Egyesült Királyság déli régiója             | 51.140.184.11      |
+| Az Egyesült Királyság nyugati régiója              | 51.141.8.11        |
 | USA nyugati középső régiója      | 13.78.145.25       |
 | Nyugat-Európa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | USA nyugati régiója              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
-| USA 2. nyugati régiója            | 13.66.226.202      |
+| USA nyugati régiója, 2.            | 13.66.226.202      |
 |                      |                    |
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Azure SQL Databasei kapcsolatok házirendjének módosítása

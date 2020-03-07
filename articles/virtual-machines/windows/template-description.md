@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
 ms.openlocfilehash: e1b513344b6ea16c25d829939e64cd5ca1063c87
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838891"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360102"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager sablonban található virtuális gépek
 
@@ -456,7 +456,7 @@ Ha kíváncsi a telepítésben lévő erőforrások állapotára, tekintse meg a
     
 Nem probléma, hogy ugyanazt a sablont használja az erőforrások létrehozásához vagy a meglévő erőforrások frissítéséhez. Amikor parancsokat használ a sablonok üzembe helyezéséhez, lehetősége van megmondani, hogy melyik [módot](../../resource-group-template-deploy.md) kívánja használni. A mód beállítható **teljes** vagy **növekményes**értékre is. Az alapértelmezett érték a növekményes frissítések használata. Ügyeljen arra, hogy a **teljes** módot használja, mert véletlenül törölheti az erőforrásokat. Ha a módot a **befejezésre**állítja, a Resource Manager törli a sablonban nem szereplő összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Hozzon létre saját sablont a [szerzői Azure Resource Manager sablonok](../../resource-group-authoring-templates.md)használatával.
 - Telepítse a létrehozott sablont a [Windows rendszerű virtuális gép Resource Manager-sablonnal történő létrehozásával](ps-template.md).

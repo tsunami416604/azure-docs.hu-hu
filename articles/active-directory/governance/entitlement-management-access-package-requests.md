@@ -17,17 +17,17 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: addc7db2aa2f0f9ba16438d2a31d6c7cc6bfa49e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174496"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376544"
 ---
 # <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomagra vonatkozó kérelmek megtekintése az Azure AD-jogosultságok kezelésében
 
 Az Azure AD-jogosultságok kezelése szolgáltatásban megtekintheti, hogy ki kért hozzáférési csomagokat, a szabályzatot és az állapotot. Ez a cikk azt ismerteti, hogyan lehet megtekinteni a hozzáférési csomagok kéréseit.
 
-## <a name="view-requests"></a>Kérelmek megtekintése
+## <a name="view-requests"></a>Kérések megtekintése
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 

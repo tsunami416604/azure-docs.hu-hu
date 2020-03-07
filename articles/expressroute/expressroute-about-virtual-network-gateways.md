@@ -1,6 +1,6 @@
 ---
-title: Tudnivalók a ExpressRoute virtuális hálózati átjárókkal kapcsolatban – Azure | Microsoft Docs
-description: A ExpressRoute virtuális hálózati átjáróinak megismerése. Ez a cikk az átjáró-SKU-ról és-típusokról tartalmaz információkat.
+title: Kapcsolatos az ExpressRoute virtuális hálózati átjárók – Azure |} A Microsoft Docs
+description: További információ a virtuális hálózati átjárók az expressroute-hoz. Ez a cikk az átjáró-termékváltozatok és típusok kapcsolatos információkat tartalmaz.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mialdrid
 ms.openlocfilehash: 58e75e4efecf390c4c1449b7ec59684554fa7516
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894378"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356336"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>Tudnivalók a ExpressRoute virtuális hálózati átjárókkal kapcsolatban
 
@@ -20,26 +20,26 @@ Az Azure-beli virtuális hálózat és a helyszíni hálózat ExpressRoute-on ke
 
 ## <a name="gateway-types"></a>Átjárótípusok
 
-Virtuális hálózati átjáró létrehozásakor több beállítást kell megadnia. A kötelező beállítások egyike, a "-GatewayType", megadja, hogy az átjáró a ExpressRoute vagy a VPN-forgalomhoz van-e használva. A két átjáró típusa:
+A virtuális hálózati átjáró létrehozásakor több beállítást adja meg kell. A szükséges beállításokat egyik "-GatewayType", megadja, hogy az átjáró, az expressroute vagy VPN-forgalmat. A két átjáró típusok a következők:
 
-* **VPN** – titkosított forgalom küldése a nyilvános interneten keresztül, a "VPN" átjáró-típust használja. Ezt VPN-átjárónak is nevezzük. A hely–hely, pont–hely és a virtuális hálózatok közötti kapcsolat kapcsolatok mind VPN-átjárót használnak.
+* **VPN** – titkosított forgalom küldése a nyilvános interneten keresztül, a "VPN" átjáró-típust használja. Ez is nevezik VPN-átjáró. A hely–hely, pont–hely és a virtuális hálózatok közötti kapcsolat kapcsolatok mind VPN-átjárót használnak.
 
-* **ExpressRoute** – a hálózati forgalom privát kapcsolatban való küldéséhez használja a "ExpressRoute" átjáró típusát. Ezt a ExpressRoute-átjárónak is nevezik, és a ExpressRoute konfigurálásakor használt átjáró típusa.
+* **ExpressRoute** – a hálózati forgalom privát kapcsolatban való küldéséhez használja a "ExpressRoute" átjáró típusát. Ez egy ExpressRoute-átjárót is nevezik, és az ExpressRoute konfigurálása során használt átjáró típusát.
 
 Mindegyik virtuális hálózat csak egy virtuális hálózati átjáróval rendelkezhet átjárótípusonként. Rendelkezhet például egy virtuális hálózati átjáróval, amely a -GatewayType Vpn típust, és egy másikkal, amelyik a -GatewayType ExpressRoute típust használja.
 
 ## <a name="gwsku"></a>Átjáró-termékváltozatok
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-Ha az átjárót egy nagyobb teljesítményű átjáró-SKU-ra szeretné frissíteni, akkor a legtöbb esetben használhatja az "átméretezés – AzVirtualNetworkGateway" PowerShell-parancsmagot. Ez a standard és a HighPerformance SKU-ra való frissítés esetén fog működni. A UltraPerformance SKU-ra való frissítéshez azonban újra létre kell hoznia az átjárót. Az átjárók újbóli létrehozása leállást okoz.
+Ha az átjárót egy nagyobb teljesítményű átjáró-SKU-ra szeretné frissíteni, akkor a legtöbb esetben használhatja az "átméretezés – AzVirtualNetworkGateway" PowerShell-parancsmagot. Ez a Standard és a nagy teljesítményű termékváltozatok frissítéseket fog működni. Azonban az UltraPerformance Termékváltozattal frissíteni, meg kell hozza létre újra az átjárót. Újra létre kellene hoznia egy átjáró leállást.
 
 ### <a name="aggthroughput"></a>Az átjárói SKU becsült teljesítménye
-A következő táblázat az átjárók típusát és a becsült teljesítményt mutatja be. Ez a tábla a Resource Managerre és a klasszikus üzembe helyezési modellre is érvényes.
+Az alábbi táblázatban az átjárótípusok és a becsült teljesítményét mutatja. Ez a tábla a Resource Managerrel végzett és a klasszikus üzembe helyezési modellre is érvényes.
 
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
 > [!IMPORTANT]
-> Az alkalmazás teljesítménye több tényezőtől függ, például a végpontok közötti késéstől, valamint az alkalmazás által megnyitott adatforgalom számától. A táblázatban szereplő számok azt a felső korlátot jelentik, amelyet az alkalmazás elméletileg érhet el ideális környezetben.
+> Alkalmazások teljesítményének attól függ, hogy több tényezővel bővül, például a végpontok közötti késés és a forgalom adatfolyamait, megnyílik az alkalmazás számát. A táblában szereplő számok jelölik a felső határ, amely ideális környezetet a elméletileg érheti el az alkalmazást.
 >
 >
 
@@ -65,17 +65,17 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 ### <a name="zrgw"></a>Zóna – redundáns átjárók SKU-i
 
-A ExpressRoute-átjárókat Azure Availability Zones is üzembe helyezheti. Ez fizikailag és logikailag elkülöníti őket különböző Availability Zones, így biztosítva a helyszíni hálózati kapcsolatot az Azure-hoz a zóna szintű hibák miatt.
+ExpressRoute-átjárók az Azure-beli rendelkezésre állási zónák is telepítheti. Ez fizikailag és logikailag a két különböző rendelkezésre állási zónában, a helyszíni hálózati kapcsolatok védelme az Azure-bA a zónaszintű hibák történő.
 
-![Zóna – redundáns ExpressRoute-átjáró](./media/expressroute-about-virtual-network-gateways/zone-redundant.png)
+![Zónaredundáns ExpressRoute-átjáró](./media/expressroute-about-virtual-network-gateways/zone-redundant.png)
 
-Zóna – a redundáns átjárók a ExpressRoute-átjáróhoz megadott új Gateway SKU-ket használnak.
+Átjárók zónaredundáns adott új átjáró-termékváltozatok ExpressRoute-átjárót használja.
 
 * ErGw1AZ
 * ErGw2AZ
 * ErGw3AZ
 
-Az új átjárói SKU-ket más üzembe helyezési lehetőségek is támogatják az igényeinek leginkább megfelelő módon. Ha az új átjárók használatával hoz létre virtuális hálózati átjárót, lehetősége van arra is, hogy az átjárót egy adott zónába telepítse. Ezt egy zóna-átjárónak nevezzük. Ha egy zóna-átjárót helyez üzembe, az átjáró összes példánya ugyanabban a rendelkezésre állási zónában lesz telepítve.
+Az új átjáró-termékváltozatok támogatják az igényeinek leginkább megfelelő egyéb telepítési lehetőségekért is. Az új átjáró SKU-k használatával virtuális hálózati átjáró létrehozásakor, akkor is telepíteni az átjárót a megadott zónában. Ez a zónaszintű átjáró nevezzük. Zónaszintű az átjáró telepítésekor az átjáró összes példánya ugyanabban a rendelkezésre állási zónában üzemelnek.
 
 ## <a name="fastpath"></a>FastPath
 
@@ -84,7 +84,7 @@ A ExpressRoute virtuális hálózati átjáró a hálózati útvonalak cseréjé
 További információ a FastPath, beleértve a korlátozásokat és a követelményeket, lásd: [a FastPath névjegye](about-fastpath.md).
 
 ## <a name="resources"></a>REST API-k és PowerShell-parancsmagok
-A REST API-k és a virtuális hálózati átjárók konfigurációinak PowerShell-parancsmagok használata esetén a következő lapokon talál további technikai forrásokat és konkrét szintaxisi követelményeket:
+További technikai erőforrások és a megadott szintaxissal kapcsolatos követelményeket REST API-k és PowerShell-parancsmagok használata a virtuális hálózati átjáró-konfigurációk tekintse meg a következő lapokon:
 
 | **Klasszikus** | **Resource Manager** |
 | --- | --- |

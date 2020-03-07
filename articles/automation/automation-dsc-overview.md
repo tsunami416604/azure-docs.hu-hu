@@ -11,11 +11,11 @@ ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 787cade13a0636bb25afa1d4043a977f512484f9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850890"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372359"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation állapot konfigurációjának áttekintése
 
@@ -45,7 +45,7 @@ Azure Automation állapot-konfigurációval felügyelt csomópontok részletes j
 
 Azure Automation állapot konfigurációjának (DSC) használatakor vegye figyelembe az alábbi követelményeket.
 
-### <a name="operating-system-requirements"></a>Az operációs rendszerre vonatkozó követelmények
+### <a name="operating-system-requirements"></a>Operációs rendszerre vonatkozó követelmények
 
 A Windows rendszert futtató csomópontok esetében a következő verziók támogatottak:
 
@@ -56,7 +56,7 @@ A Windows rendszert futtató csomópontok esetében a következő verziók támo
 - Windows Server 2008 R2 SP1
 - Windows 10
 - Windows 8.1
-- Windows 7 rendszeren
+- Windows 7
 
 Az [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) önálló termék SKU nem tartalmazza a kívánt állapot konfigurációja megvalósítását, így nem felügyelhető a PowerShell DSC-vel vagy Azure Automation állapot-konfigurációval.
 
@@ -75,7 +75,7 @@ Az Azure-ban futó összes Linux-csomópont esetében a [POWERSHELL DSC for Linu
 Ha a csomópontok egy magánhálózaton belül találhatók, a következő portok és URL-címek szükségesek az állapot konfigurálásához (DSC) az automatizálással való kommunikációhoz:
 
 * Port: a kimenő internet-hozzáféréshez csak TCP 443 szükséges.
-* Globális URL-cím: *. azure-automation.net
+* Global URL: *.azure-automation.net
 * US Gov Virginia globális URL-címe: *. azure-automation.us
 * Ügynök szolgáltatás: https://\<munkaterület azonosítója\>. agentsvc.azure-automation.net
 
@@ -110,8 +110,8 @@ Ha egy adott régióhoz meghatározott Automation-fiókkal rendelkezik, akkor ko
 | Közép-India |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Kelet-Japán |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Délkelet-Ausztrália |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Egyesült Királyság déli régiója | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| US Gov Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| Az Egyesült Királyság déli régiója | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
+| USA-beli államigazgatás – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 A régiók neveit tartalmazó régió IP-címeinek listáját az Azure- [adatközpont IP-címének](https://www.microsoft.com/download/details.aspx?id=41653) XML-fájlját a Microsoft letöltőközpontból töltheti le.
 

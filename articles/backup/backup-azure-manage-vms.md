@@ -5,11 +5,11 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: dd4e9dc199048b3faf3da0cadfdf60bdcb26c5bc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989688"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363811"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése Azure Backup szolgáltatással
 
@@ -30,7 +30,7 @@ A biztonsági mentéseket az irányítópult használatával és az egyes virtu�
 
 Virtuális gépek megtekintése a tároló irányítópultján:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. A központi menüben válassza a **Tallózás**lehetőséget. Az erőforrások listájába írja be a következőt: **Recovery Services**. A beíráskor a lista a bemenet alapján szűrve lesz. Válassza ki **Recovery Services**tárolókat.
 
     ![Recovery Services-tároló létrehozása](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
@@ -56,7 +56,7 @@ Virtuális gépek megtekintése a tároló irányítópultján:
 
 Biztonsági mentési szabályzat kezelése:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/). Nyissa meg a tároló irányítópultját.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/). Nyissa meg a tároló irányítópultját.
 2. A **biztonsági mentési elemek** csempén válassza az **Azure Virtual Machines**elemet.
 
     ![A biztonsági mentési elemek csempe megnyitása](./media/backup-azure-manage-vms/contoso-vault-1606.png)

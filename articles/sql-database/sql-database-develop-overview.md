@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.openlocfilehash: 26aa9948a44727ff4c8092eb5131b1c054bf5442
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082438"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357659"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database alkalmazás-fejlesztés áttekintése
 
@@ -52,7 +52,7 @@ Azure SQL Database egy felhőalapú szolgáltatás, amely az alapul szolgáló i
 
 Az Azure SQL Database-ben tervezett karbantartási események előkészítésével kapcsolatos további információkért lásd: [Az Azure karbantartási eseményeinek tervezése Azure SQL Databaseban](sql-database-planned-maintenance.md).
 
-## <a name="network-considerations"></a>Hálózati megfontolások
+## <a name="network-considerations"></a>A hálózatokkal kapcsolatos szempontok
 
 - Győződjön meg róla, hogy az ügyfélprogramot futtató számítógép tűzfala engedélyezi a kimenő TCP-kommunikációt az 1433-as porton.  További információ: [Azure SQL Database tűzfal konfigurálása](sql-database-configure-firewall-settings.md).
 - Ha az ügyfélprogram egy Azure-beli virtuális gépen (VM) fut, akkor a SQL Databasehoz kell csatlakoznia, és meg kell nyitnia bizonyos porttartomány-tartományokat a virtuális gépen. További információ: [a 1433-es, ADO.NET 4,5-es és SQL Database-es porton túli portok](sql-database-develop-direct-route-ports-adonet-v12.md).

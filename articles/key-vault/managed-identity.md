@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 36a4871339401629300eedd77b6441aed10aabf3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199835"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395944"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Felügyelt identitással rendelkező Key Vault hitelesítés megadása
 
@@ -110,7 +110,7 @@ Ahhoz, hogy hozzáférést biztosítson az alkalmazáshoz a kulcstartóhoz, hasz
 az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-permissions get list 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Key Vault biztonság: identitás-és hozzáférés-kezelés](overview-security.md#identity-and-access-management)
 - [Hozzáférés-vezérlési házirenddel Key Vault hitelesítés megadása](key-vault-group-permissions-for-apps.md)

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: f93bea240ee3f139c9be84199d116f9f3f231261
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682727"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361448"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Folyamatok és tevékenységek Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -94,15 +94,15 @@ Nézzük meg közelebbről, hogyan történik egy folyamat JSON-formátumban val
 
 | Címke | Leírás | Kötelező |
 | --- | --- | --- |
-| név |A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 260</li><li>Betűvel vagy aláhúzással kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "\*", "%", "&", ":", "\\"</li></ul> |Igen |
+| név |A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 260</li><li>Betűvel vagy aláhúzással (\_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "\*", "%", "&", ":", "\\"</li></ul> |Igen |
 | leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. |Igen |
 | tevékenységek | A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek JSON-elemével kapcsolatos részletekért tekintse meg a következő szakaszt. | Igen |
 | start | A folyamat kezdési dátuma és időpontja. [ISO formátumúnak](https://en.wikipedia.org/wiki/ISO_8601)kell lennie. Például: `2016-10-14T16:32:41Z`. <br/><br/>Helyi időt is megadhat, például egy EST-időpontot. Íme egy példa: `2016-02-27T06:00:00-05:00`", amely 6 EST.<br/><br/>A kezdő és a záró tulajdonságok együttesen határozzák meg a folyamat aktív időszakát. A kimeneti szeletek csak ebben az aktív időszakban jönnek létre. |Nem<br/><br/>Ha a end tulajdonsághoz értéket ad meg, meg kell adnia a Start tulajdonság értékét.<br/><br/>Egy folyamat létrehozásához a kezdő és a záró időpont is lehet üres. Mindkét értéket meg kell adnia ahhoz, hogy aktív időszakot állítson be a folyamat futtatásához. Ha nem ad meg kezdési és befejezési időpontot a folyamat létrehozásakor, akkor később is beállíthatja őket a set-AzDataFactoryPipelineActivePeriod parancsmag használatával. |
-| végén | A folyamat befejező dátuma és időpontja. Ha meg van adva, ISO-formátumúnak kell lennie. Például:`2016-10-14T17:32:41Z` <br/><br/>Helyi időt is megadhat, például egy EST-időpontot. Íme egy példa: `2016-02-27T06:00:00-05:00`, amely 6 EST.<br/><br/>A folyamat határozatlan ideig történő futtatásához adja meg a 9999-09-09 értéket a befejezési tulajdonság értékeként. <br/><br/> A folyamat csak a kezdő és a befejező időpont között aktív. A kezdési időpont előtt vagy a befejezési időpont előtt nem hajtható végre. Ha a folyamat szüneteltetve van, a rendszer nem hajtja végre az indítási és befejezési időponttól függetlenül. Ahhoz, hogy egy folyamat fusson, nem szabad szüneteltetni. Lásd: [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) , hogy megtudja, hogyan működik az ütemezés és a végrehajtás a Azure Data Factoryban. |Nem <br/><br/>Ha megad egy értéket a Start tulajdonsághoz, meg kell adnia a end (Befejezés) tulajdonság értékét.<br/><br/>Lásd: Megjegyzések a **Start** tulajdonsághoz. |
-| Ispaused fogalmak | Ha igaz értékre van állítva, a folyamat nem fut le. Ez a szüneteltetett állapotban van. Alapértelmezett érték = false. Ezt a tulajdonságot használhatja egy folyamat engedélyezéséhez vagy letiltásához. |Nem |
+| vége | A folyamat befejező dátuma és időpontja. Ha meg van adva, ISO-formátumúnak kell lennie. Például:`2016-10-14T17:32:41Z` <br/><br/>Helyi időt is megadhat, például egy EST-időpontot. Íme egy példa: `2016-02-27T06:00:00-05:00`, amely 6 EST.<br/><br/>A folyamat határozatlan ideig történő futtatásához adja meg a 9999-09-09 értéket a befejezési tulajdonság értékeként. <br/><br/> A folyamat csak a kezdő és a befejező időpont között aktív. A kezdési időpont előtt vagy a befejezési időpont előtt nem hajtható végre. Ha a folyamat szüneteltetve van, a rendszer nem hajtja végre az indítási és befejezési időponttól függetlenül. Ahhoz, hogy egy folyamat fusson, nem szabad szüneteltetni. Lásd: [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) , hogy megtudja, hogyan működik az ütemezés és a végrehajtás a Azure Data Factoryban. |Nem <br/><br/>Ha megad egy értéket a Start tulajdonsághoz, meg kell adnia a end (Befejezés) tulajdonság értékét.<br/><br/>Lásd: Megjegyzések a **Start** tulajdonsághoz. |
+| isPaused | Ha igaz értékre van állítva, a folyamat nem fut le. Ez a szüneteltetett állapotban van. Alapértelmezett érték = false. Ezt a tulajdonságot használhatja egy folyamat engedélyezéséhez vagy letiltásához. |Nem |
 | pipelineMode | A folyamat futtatásának módszere. Az engedélyezett értékek a következők: ütemezett (alapértelmezett), egyszeri.<br/><br/>Az "ütemezett" érték azt jelzi, hogy a folyamat egy adott időintervallumban fut az aktív időszak (Kezdés és Befejezés időpontja) szerint. Az "egykori" érték azt jelzi, hogy a folyamat csak egyszer fut le. A létrehozott egyszeri folyamatok nem módosíthatók és nem frissíthetők jelenleg. Az egyszeri beállítással kapcsolatos részletekért tekintse meg az [egykori folyamat](#onetime-pipeline) című témakört. |Nem |
 | Expirationtime tulajdonságok | Az a létrehozás utáni időtartam, ameddig az [egyszeri folyamat](#onetime-pipeline) érvényes, és a kiépítés előtt kell állnia. Ha nem rendelkezik aktív, sikertelen vagy függőben lévő futtatással, a folyamat automatikusan törlődik, amint eléri a lejárati időt. Az alapértelmezett érték: `"expirationTime": "3.00:00:00"`|Nem |
-| Adatkészletek |A folyamat során meghatározott tevékenységek által használandó adatkészletek listája. Ezzel a tulajdonsággal definiálhatja az erre a folyamatra jellemző adatkészleteket, és nem határozható meg az adat-előállítón belül. A folyamaton belül definiált adatkészleteket csak ez a folyamat használhatja, és nem osztható meg. A részletekért lásd a [hatókörrel rendelkező adatkészleteket](data-factory-create-datasets.md#scoped-datasets) . |Nem |
+| datasets |A folyamat során meghatározott tevékenységek által használandó adatkészletek listája. Ezzel a tulajdonsággal definiálhatja az erre a folyamatra jellemző adatkészleteket, és nem határozható meg az adat-előállítón belül. A folyamaton belül definiált adatkészleteket csak ez a folyamat használhatja, és nem osztható meg. A részletekért lásd a [hatókörrel rendelkező adatkészleteket](data-factory-create-datasets.md#scoped-datasets) . |Nem |
 
 ## <a name="activity-json"></a>Tevékenység JSON-fájlja
 A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. Minden tevékenység a következő legfelső szintű struktúrával rendelkezik:
@@ -132,28 +132,28 @@ Az alábbi táblában a tevékenység JSON-definíciójában lévő tulajdonság
 
 | Címke | Leírás | Kötelező |
 | --- | --- | --- |
-| név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 260</li><li>Betűvel vagy aláhúzással kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\\"</li></ul> |Igen |
+| név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 260</li><li>Betűvel vagy aláhúzással (\_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\\"</li></ul> |Igen |
 | leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg |Igen |
 | type | A tevékenység típusa. Tekintse meg az [adattovábbítási tevékenységek](#data-movement-activities) és az [Adatátalakítási tevékenységek](#data-transformation-activities) szakaszt a különböző típusú tevékenységekhez. |Igen |
-| bemenetek |A tevékenység által használt bemeneti táblák<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Igen |
-| kimenetek |A tevékenység által használt kimeneti táblák.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Igen |
+| inputs |A tevékenység által használt bemeneti táblák<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Igen |
+| outputs |A tevékenység által használt kimeneti táblák.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Igen |
 | linkedServiceName |A tevékenység által használt társított szolgáltatás neve. <br/><br/>Egy adott tevékenység megkövetelheti annak a társított szolgáltatásnak a megadását, amely a szükséges számítási környezethez kapcsolódik. |Igen a HDInsight tevékenységhez és Azure Machine Learning batch-pontozási tevékenységhez <br/><br/>Minden egyéb esetében: nem |
 | typeProperties |A **typeProperties** szakaszban található tulajdonságok a tevékenység típusától függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | Nem |
 | szabályzat |Olyan szabályzatok, amelyek az adott tevékenység futásidejű viselkedését befolyásolják. Ha nincs megadva, a rendszer az alapértelmezett szabályzatokat használja. |Nem |
-| Scheduler | a "Scheduler" tulajdonság a tevékenység kívánt ütemezésének meghatározására szolgál. Az altulajdonságok ugyanazok, mint az [adatkészlet rendelkezésre állási tulajdonságában](data-factory-create-datasets.md#dataset-availability)lévők. |Nem |
+| scheduler | "a scheduler" tulajdonság a tevékenység kívánt ütemezés meghatározására szolgál. Az altulajdonságok ugyanazok, mint az [adatkészlet rendelkezésre állási tulajdonságában](data-factory-create-datasets.md#dataset-availability)lévők. |Nem |
 
-### <a name="policies"></a>Házirendek
+### <a name="policies"></a>Szabályzatok
 A házirendek hatással vannak egy tevékenység futásidejű viselkedésére, különösen akkor, ha egy tábla szeletét dolgozzák fel. A részleteket a következő táblázat tartalmazza.
 
 | Tulajdonság | Megengedett értékek | Alapértelmezett érték | Leírás |
 | --- | --- | --- | --- |
-| Egyidejűség |Egész szám <br/><br/>Maximális érték: 10 |1 |A tevékenység egyidejű végrehajtásának száma.<br/><br/>Meghatározza, hogy hány párhuzamos tevékenység-végrehajtás történhet a különböző szeleteken. Ha például egy tevékenységnek az elérhető adatmennyiség nagy készletén kell haladnia, a nagyobb párhuzamossági érték felgyorsítja az adatfeldolgozást. |
+| concurrency |Egész szám <br/><br/>Maximális érték: 10 |1 |A tevékenység egyidejű végrehajtásának száma.<br/><br/>Meghatározza, hogy hány párhuzamos tevékenység-végrehajtás történhet a különböző szeleteken. Ha például egy tevékenységnek az elérhető adatmennyiség nagy készletén kell haladnia, a nagyobb párhuzamossági érték felgyorsítja az adatfeldolgozást. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Meghatározza a feldolgozás alatt álló adatszeletek sorrendjét.<br/><br/>Ha például 2 szelete van (egy 16:00-kor történik, egy másik pedig 5 órakor), és mindkettő függőben van. Ha úgy állítja be a executionPriorityOrder, hogy a NewestFirst, a szeletet 5 ÓRAKOR dolgozza fel a rendszer. Hasonlóképpen, ha úgy állítja be a executionPriorityORder, hogy a OldestFIrst legyen, akkor a szelet 4 ÓRAKOR lesz feldolgozva. |
 | retry |Egész szám<br/><br/>A maximális érték lehet 10 |0 |Az újrapróbálkozások száma, mielőtt a szelet adatfeldolgozása sikertelenként van megjelölve. Az adatszeletek tevékenység-végrehajtásának újrapróbálkozása a megadott újrapróbálkozások számával történik. Az újrapróbálkozás a hiba után a lehető leghamarabb megtörténik. |
-| timeout |TimeSpan |00:00:00 |A tevékenység időtúllépése. Példa: 00:10:00 (a 10 perc időtúllépését jelenti)<br/><br/>Ha egy érték nincs megadva vagy 0, az időtúllépés végtelen.<br/><br/>Ha egy szelet adatfeldolgozási ideje meghaladja az időtúllépési értéket, a rendszer megszakítja, és a rendszer megkísérli a feldolgozást. Az újrapróbálkozások száma az Újrapróbálkozás tulajdonságtól függ. Időtúllépés esetén az állapot időtúllépés értékre van állítva. |
-| késedelem |TimeSpan |00:00:00 |A szelet adatfeldolgozásának megkezdése előtti késleltetés meghatározása.<br/><br/>Az adatszeletek tevékenységének végrehajtása akkor indul el, ha a késés a várt végrehajtási idő alatt van.<br/><br/>Példa: 00:10:00 (a 10 perc késleltetését jelenti) |
+| timeout |Időtartam |00:00:00 |A tevékenység időtúllépése. Példa: 00:10:00 (a 10 perc időtúllépését jelenti)<br/><br/>Ha egy érték nincs megadva vagy 0, az időtúllépés végtelen.<br/><br/>Ha egy szelet adatfeldolgozási ideje meghaladja az időtúllépési értéket, a rendszer megszakítja, és a rendszer megkísérli a feldolgozást. Az újrapróbálkozások száma az Újrapróbálkozás tulajdonságtól függ. Időtúllépés esetén az állapot időtúllépés értékre van állítva. |
+| delay |Időtartam |00:00:00 |A szelet adatfeldolgozásának megkezdése előtti késleltetés meghatározása.<br/><br/>Az adatszeletek tevékenységének végrehajtása akkor indul el, ha a késés a várt végrehajtási idő alatt van.<br/><br/>Példa: 00:10:00 (a 10 perc késleltetését jelenti) |
 | longRetry |Egész szám<br/><br/>Maximális érték: 10 |1 |A hosszú újrapróbálkozási kísérletek száma a szelet végrehajtásának meghiúsulása előtt.<br/><br/>a longRetry-kísérletek longRetryInterval szerint vannak elfoglalva. Ha tehát az újrapróbálkozási kísérletek közötti időt kell megadnia, használja a longRetry. Ha az újrapróbálkozási és a longRetry is meg van adva, az egyes longRetry-kísérletek az újrapróbálkozási kísérleteket is tartalmazzák, és a kísérletek maximális száma újrapróbálkozás * longRetry.<br/><br/>Ha például a következő beállítások szerepelnek a tevékenység-házirendben:<br/>Újrapróbálkozás: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Tegyük fel, hogy csak egy szeletet kell végrehajtani (az állapot várakozik), és a tevékenység végrehajtása minden alkalommal meghiúsul. Kezdetben 3 egymást követő végrehajtási kísérlet lenne. Minden kísérlet után a szelet állapota újra próbálkozik. Az első 3 próbálkozás után a szelet állapota LongRetry lesz.<br/><br/>Egy óra (azaz a longRetryInteval értéke) után egy másik 3 egymást követő végrehajtási kísérlet lenne. Ezt követően a szelet állapota meghiúsul, és a rendszer nem próbálkozik újra. Ezért összesen 6 kísérlet történt.<br/><br/>Ha bármelyik végrehajtás sikeres, a szelet állapota készen áll, és a rendszer nem próbálkozik újra.<br/><br/>a longRetry olyan helyzetekben használhatók, ahol a függő adat nem determinisztikus időpontokban érkezik, vagy az általános környezet az adatfeldolgozási folyamat alatt álló adatfeldolgozás. Ilyen esetekben előfordulhat, hogy egy másik után újrapróbálkozik, és a kívánt kimenet eltelte után egy idő elteltével nem jár sikerrel.<br/><br/>Figyelmeztetés: ne állítson be magas értéket a longRetry vagy a longRetryInterval. A magasabb értékek jellemzően más rendszerszintű problémákat jelentenek. |
-| longRetryInterval |TimeSpan |00:00:00 |A hosszú újrapróbálkozási kísérletek közötti késleltetés |
+| longRetryInterval |Időtartam |00:00:00 |A hosszú újrapróbálkozási kísérletek közötti késleltetés |
 
 ## <a name="sample-copy-pipeline"></a>Minta másolási folyamat
 Az alábbi mintafolyamat **tevékenységek** szakaszában egyetlen **Másolás** típusú tevékenység található. Ebben a mintában a [másolási tevékenység](data-factory-data-movement-activities.md) adatokat másol egy Azure blobtárolóból egy Azure SQL-adatbázisba.
@@ -201,7 +201,7 @@ Az alábbi mintafolyamat **tevékenységek** szakaszában egyetlen **Másolás**
 }
 ```
 
-Vegye figyelembe a következő szempontokat:
+Vegye figyelembe a következő pontokat:
 
 * A tevékenységek szakaszban csak egyetlen tevékenység van, amelynek a **típusa** **Copy** értékre van beállítva.
 * A tevékenység bemenetének beállítása **InputDataset**, a kimeneté pedig **OutputDataset**. Az adatkészletek JSON-fáljban történő meghatározását lásd az [Adatkészletek](data-factory-create-datasets.md) cikket.
@@ -257,7 +257,7 @@ Az alábbi mintafolyamat **tevékenységek** szakaszában egyetlen **HDInsightHi
 }
 ```
 
-Vegye figyelembe a következő szempontokat:
+Vegye figyelembe a következő pontokat:
 
 * A tevékenységek szakaszban csak egyetlen tevékenység van, amelynek a **típusa** **HDInsightHive** értékre van beállítva.
 * A **partitionweblogs.hql** Hive-parancsfájl tárolása az Azure Storage-fiókban (az **AzureStorageLinkedService** nevű scriptLinkedService szolgáltatás által megadva), és az **adfgetstarted** tároló **script** mappájában történik.
@@ -348,9 +348,9 @@ Vegye figyelembe a következőket:
 
 * A folyamat **kezdési** és **befejezési** időpontja nincs megadva.
 * A bemeneti és a kimeneti adatkészletek **rendelkezésre állása** van megadva (**gyakoriság** és **időköz**), bár Data Factory nem használja az értékeket.
-* A diagram nézet nem jeleníti meg az egyszeri folyamatokat. Ez a működésmód szándékos.
+* A diagram nézet nem jeleníti meg az egyszeri folyamatokat. Ez a program tervezett működésének része.
 * Az egyszeri folyamatok nem frissíthetők. Létrehozhat egy egyszeri folyamatot, átnevezheti, frissítheti a tulajdonságokat, és üzembe helyezheti egy másik létrehozásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Az adatkészletekről további információt az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben talál.
 - További információ a folyamatok ütemezéséről és végrehajtásáról: [Azure Data Factory cikk ütemezése és végrehajtása](data-factory-scheduling-and-execution.md) .

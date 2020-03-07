@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
 ms.openlocfilehash: d4409fe61bfe1f0a9fe74171f5b1ec471b9a6a26
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774426"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363026"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>A helyszíni Hyper-V virtuális gépek Azure-ba való vész-helyreállításának támogatási mátrixa
 
@@ -79,7 +79,7 @@ Azure ExpressRoute | Igen | Igen
 ILB | Igen | Igen
 ELB | Igen | Igen
 Azure Traffic Manager | Igen | Igen
-Több hálózati adapter | Igen | Igen
+Multi-NIC | Igen | Igen
 Fenntartott IP | Igen | Igen
 IPv4 | Igen | Igen
 Forrás IP-címének megőrzése | Igen | Igen
@@ -91,7 +91,7 @@ Gyorsított hálózatkezelés | Nem | Nem
 
 **Storage** | **Hyper-V Virtual Machine Manager** | **Hyper-V Virtual Machine Manager nélkül**
 --- | --- | --- 
-NFS | n/a | n/a
+NFS | NA | NA
 SMB 3.0 | Igen | Igen
 SAN (ISCSI) | Igen | Igen
 Több elérési út (MPIO). Tesztelve:<br></br> Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM for CLARiiON | Igen | Igen
@@ -100,15 +100,15 @@ Több elérési út (MPIO). Tesztelve:<br></br> Microsoft DSM, EMC PowerPath 5,7
 
 **Storage** | **Hyper-V Virtual Machine Manager** | **Hyper-V Virtual Machine Manager nélkül**
 --- | --- | ---
-VMDK | n/a | n/a
+VMDK | NA | NA
 VHD/VHDX | Igen | Igen
 2\. generációs VM | Igen | Igen
 EFI/UEFI<br></br>Az Azure-ban áttelepített virtuális gép automatikusan BIOS rendszerindító virtuális gépre lesz konvertálva. A virtuális gépnek csak a Windows Server 2012-es vagy újabb verziójának kell futnia. Az operációsrendszer-lemez legfeljebb öt partíciót tartalmazhat, és az operációsrendszer-lemez mérete nem haladhatja meg a 300 GB-ot.| Igen | Igen
 Megosztott fürtözött lemez | Nem | Nem
 Titkosított lemez | Nem | Nem
-NFS | n/a | n/a
+NFS | NA | NA
 SMB 3.0 | Nem | Nem
-RDM | n/a | n/a
+RDM | NA | NA
 Lemez > 1 TB | Igen, akár 4 095 GB-ig | Igen, akár 4 095 GB-ig
 Lemez: 4K logikai és fizikai szektor | Nem támogatott: 1. generációs/2. gen | Nem támogatott: 1. generációs/2. gen
 Lemez: 4K logikai és 512 – bájtos fizikai szektor | Igen |  Igen
@@ -143,7 +143,7 @@ Storage-fiók módosítása | Nem. A cél Azure Storage-fiók nem módosítható
 --- | --- | ---
 Rendelkezésre állási csoportok | Igen | Igen
 HUB | Igen | Igen  
-Managed Disks | Igen, a feladatátvételhez.<br/><br/> A felügyelt lemezek feladat-visszavétele nem támogatott. | Igen, a feladatátvételhez.<br/><br/> A felügyelt lemezek feladat-visszavétele nem támogatott.
+Felügyelt lemezek | Igen, a feladatátvételhez.<br/><br/> A felügyelt lemezek feladat-visszavétele nem támogatott. | Igen, a feladatátvételhez.<br/><br/> A felügyelt lemezek feladat-visszavétele nem támogatott.
 
 ## <a name="azure-vm-requirements"></a>Azure-beli virtuális gépekre vonatkozó követelmények
 
@@ -158,12 +158,12 @@ Operációsrendszer-lemezek száma | 1 | Az Előfeltételek ellenőrzése sikert
 Adatlemezek száma | 16 vagy kevesebb  | Az Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 Adatlemez virtuális merevlemezének mérete | Legfeljebb 4 095 GB | Az Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 Hálózati adapterek | Több adapter támogatott |
-Megosztott virtuális merevlemez | Nem támogatott | Az Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
+Megosztott VHD | Nem támogatott | Az Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 FC-lemez | Nem támogatott | Az Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 Merevlemez formátuma | VHD <br/><br/> VHDX | A Site Recovery automatikusan átalakítja a VHDX a VHD-re, amikor feladatátvételt hajt végre az Azure-ba. Ha a feladatátvételt a helyszíni rendszerre végzi, a virtuális gépek továbbra is a VHDX formátumot használják.
 BitLocker | Nem támogatott | A virtuális gép replikálásának engedélyezése előtt le kell tiltani a BitLockert.
 a virtuális gép neve | 1 és 63 karakter között. Csak betűket, számokat és kötőjelet tartalmazhat. A virtuális gép nevének betűvel vagy számmal kell kezdődnie és végződnie. | Frissítse az értéket a virtuális gép tulajdonságainál Site Recoveryban.
-Virtuális gép típusa | 1\. generáció<br/><br/> 2\. generációs – Windows | A 2. generációs virtuális gépek alapszintű operációsrendszer-lemezzel (amely egy vagy két VHDX formázott adatkötetet tartalmaz) és kevesebb mint 300 GB lemezterületet támogat.<br></br>A Linux 2. generációs virtuális gépek nem támogatottak. [További információk](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
+Virtuális gép típusa | 1\. generáció<br/><br/> Generation 2--Windows | A 2. generációs virtuális gépek alapszintű operációsrendszer-lemezzel (amely egy vagy két VHDX formázott adatkötetet tartalmaz) és kevesebb mint 300 GB lemezterületet támogat.<br></br>A Linux 2. generációs virtuális gépek nem támogatottak. [További információk](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Recovery Services tároló műveletei
 

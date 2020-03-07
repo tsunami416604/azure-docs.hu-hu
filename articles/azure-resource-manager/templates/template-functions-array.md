@@ -4,11 +4,11 @@ description: Leírja a Azure Resource Manager-sablonban a tömbök és objektumo
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.openlocfilehash: 1359951c00ba04e641ae84636459a8836924c729
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591183"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380653"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok tömb-és objektum-funkciói
 
@@ -258,7 +258,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| Visszatérési | Tömb | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| visszatérési | Tömb | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 

@@ -17,37 +17,37 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422496"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376584"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Az Azure AD-jogosultságok kezelése – problémamegoldás
 
 Ez a cikk néhány olyan elemet ismertet, amely segítséget nyújt az Azure Active Directory (Azure AD) jogosultságok kezelésének hibaelhárításában.
 
-## <a name="administration"></a>Felügyelet
+## <a name="administration"></a>Adminisztráció
 
 * Ha hozzáférés-megtagadási üzenetet kap a jogosultságok kezelésének konfigurálásakor, és Ön globális rendszergazda, győződjön meg arról, hogy a címtárban van egy [prémium szintű Azure ad P2 (vagy EMS E5) licenc](entitlement-management-overview.md#license-requirements).
 
 * Ha hozzáférési csomagok létrehozásakor vagy megtekintésekor kap hozzáférés-megtagadási üzenetet, és Ön egy katalógus-létrehozó csoport tagja, létre kell [hoznia egy katalógust](entitlement-management-catalog-create.md) az első hozzáférési csomag létrehozása előtt.
 
-## <a name="resources"></a>Segédanyagok és eszközök
+## <a name="resources"></a>További források
 
-* Az alkalmazások szerepkörei az alkalmazás által definiált és az Azure AD-ben kezelhetők. Ha egy alkalmazás nem rendelkezik erőforrás-szerepkörökkel, a jogosultságok kezelése a felhasználókat egy **alapértelmezett hozzáférési** szerepkörhöz rendeli.
+* Az alkalmazások szerepköreit maguk az alkalmazások határozzák meg, a kezelésük pedig az Azure AD-ben történik. Ha egy alkalmazás nem rendelkezik erőforrás-szerepkörökkel, a jogosultságok kezelése a felhasználókat egy **alapértelmezett hozzáférési** szerepkörhöz rendeli.
 
-    Vegye figyelembe, hogy a Azure Portal olyan szolgáltatások egyszerű szolgáltatásait is megjelenítheti, amelyek nem választhatók ki alkalmazásként.  Az **Exchange Online** és a **SharePoint Online** például szolgáltatások, nem pedig a címtárban erőforrás-szerepkörökkel rendelkező alkalmazások, ezért nem szerepelhetnek hozzáférési csomagban.  Ehelyett a csoport alapú licencelés használatával hozzon létre egy megfelelő licencet azon felhasználók számára, akiknek hozzáférésre van szüksége a szolgáltatásokhoz.
+    Vegye figyelembe, hogy a Azure Portal olyan szolgáltatások egyszerű szolgáltatásait is megjelenítheti, amelyek nem választhatók ki alkalmazásként.  Az **Exchange Online** és a **SharePoint Online** például szolgáltatások, nem pedig a címtárban erőforrás-szerepkörökkel rendelkező alkalmazások, ezért nem szerepelhetnek hozzáférési csomagban.  Ehelyett csoportalapú licencelés használatával hozzon létre egy megfelelő licencet azon felhasználók számára, akiknek hozzáférésre van szükségük a kérdéses szolgáltatásokhoz.
 
-* Ahhoz, hogy egy csoport egy hozzáférési csomagban lévő erőforrás legyen, módosítható kell lennie az Azure ad-ben.  A helyszíni Active Directoryból származó csoportok nem rendelhetők hozzá erőforrásként, mert a tulajdonos vagy a tag attribútumai nem módosíthatók az Azure AD-ben.   Az Exchange Online-ból származó csoportok terjesztési csoportokként nem módosíthatók az Azure AD-ben. 
+* Ahhoz, hogy egy csoport erőforrásként belefoglalható legyen egy hozzáférési csomagba, módosíthatónak kell lennie az Azure AD-ben.  A helyszíni Active Directoryból származó csoportok nem rendelhetők hozzá erőforrásként, mert a tulajdonosi vagy tagi attribútumaik nem módosíthatók az Azure AD-ben.   Az Exchange Online-ból származó terjesztési csoportok szintén nem módosíthatók az Azure AD-ben. 
 
-* A SharePoint Online-dokumentumtárak és az egyes dokumentumok nem vehetők fel erőforrásként.  Ehelyett hozzon létre egy [Azure ad biztonsági csoportot](../fundamentals/active-directory-groups-create-azure-portal.md), amely tartalmazza azt a csoportot és egy hely szerepkört a hozzáférési csomagban, a SharePoint Online-ban pedig ezt a csoportot használja a dokumentumtárhoz vagy dokumentumhoz való hozzáférés szabályozásához.
+* SharePoint Online-dokumentumtárak és egyedi dokumentumok nem adhatók hozzá erőforrásként.  Ehelyett hozzon létre egy [Azure ad biztonsági csoportot](../fundamentals/active-directory-groups-create-azure-portal.md), amely tartalmazza azt a csoportot és egy hely szerepkört a hozzáférési csomagban, a SharePoint Online-ban pedig ezt a csoportot használja a dokumentumtárhoz vagy dokumentumhoz való hozzáférés szabályozásához.
 
-* Ha vannak olyan felhasználók, akik már hozzá vannak rendelve egy hozzáférési csomaggal felügyelni kívánt erőforráshoz, akkor győződjön meg arról, hogy a felhasználók a megfelelő házirenddel vannak hozzárendelve a hozzáférési csomaghoz. Előfordulhat például, hogy egy olyan csoportot szeretne felvenni egy olyan hozzáférési csomagba, amely már rendelkezik a csoport felhasználóinak. Ha a csoportban lévő felhasználók folyamatos hozzáférést igényelnek, akkor megfelelő szabályzattal kell rendelkezniük a hozzáférési csomagokhoz, hogy ne veszítsék el a csoporthoz való hozzáférésüket. A hozzáférési csomagot úgy rendelheti hozzá, hogy kéri a felhasználókat, hogy kérjenek az adott erőforrást tartalmazó hozzáférési csomagot, vagy közvetlenül hozzárendelik azokat a hozzáférési csomaghoz. További információ: [hozzáférési csomag kérésének és jóváhagyási beállításainak módosítása](entitlement-management-access-package-request-policy.md).
+* Ha vannak olyan felhasználók, amelyek már hozzá lettek rendelve egy hozzáférési csomaggal felügyelni kívánt erőforráshoz, akkor meg kell győződni arról, hogy a felhasználók megfelelő szabályzat használatával lettek-e hozzárendelve a hozzáférési csomaghoz. Például előfordulhat, hogy a hozzáférési csomagba belefoglalni kívánt csoportban már találhatók felhasználók. Ha az adott csoportban lévő felhasználók folyamatos hozzáférést igényelnek, akkor megfelelő szabályzattal kell rendelkezniük a hozzáférési csomagok esetében, hogy ne veszítsék el a csoporthoz való hozzáférésüket. A hozzáférési csomagok hozzárendeléséhez megkérheti a felhasználókat, hogy kérelmezzék az adott erőforrást tartalmazó hozzáférési csomagot, vagy közvetlenül hozzárendelheti őket a hozzáférési csomaghoz. További információ: [hozzáférési csomag kérésének és jóváhagyási beállításainak módosítása](entitlement-management-access-package-request-policy.md).
 
-* Ha eltávolít egy csapat tagjait, azok törlődnek az Office 365-csoportból is. Előfordulhat, hogy a csapat csevegési funkciójának eltávolítása késleltetve van. További [információ: csoporttagság](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
+* Az eltávolított csapattagok az Office 365-csoportból is törlődnek. Előfordulhat, hogy a csapat csevegési funkciójából való eltávolítás késleltetve történik meg. További [információ: csoporttagság](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
 
-* Győződjön meg arról, hogy a címtár nincs konfigurálva több földrajzi helyhez. A jogosultságok kezelése jelenleg nem támogatja a SharePoint Online-hoz tartozó több földrajzi hely használatát. A SharePoint Online-webhelyeknek az alapértelmezett földrajzi helyen kell lenniük, hogy az a jogosultságok kezelésével legyen szabályozva. További információkért lásd: [a OneDrive és a SharePoint Online több földrajzi lehetőségei](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
+* Győződjön meg arról, hogy a címtár nincs-e több földrajzi helyes használatra konfigurálva. A jogosultságkezelés jelenleg nem támogatja a Multi-Geo-helyeket a SharePoint Online esetében. A SharePoint Online-webhelyeknek az alapértelmezett földrajzi helyen kell lenniük a jogosultságkezeléssel történő szabályozáshoz. További információkért lásd: [a OneDrive és a SharePoint Online több földrajzi lehetőségei](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
 
 ## <a name="external-users"></a>Külső felhasználók
 
@@ -55,19 +55,19 @@ Ez a cikk néhány olyan elemet ismertet, amely segítséget nyújt az Azure Act
 
 * Ha egy külső felhasználó nem tud hozzáférést kérni egy hozzáférési csomaghoz, vagy nem fér hozzá az erőforrásokhoz, ügyeljen arra, hogy ellenőrizze a [külső felhasználók beállításait](entitlement-management-external-users.md#settings-for-external-users).
 
-* Ha egy olyan új külső felhasználó, amely korábban még nem jelentkezett be a címtárba, olyan hozzáférési csomagot kap, amely tartalmazza a SharePoint Online-webhelyet, a hozzáférési csomagja nem teljes kézbesítésre kerül, amíg a fiók a SharePoint Online-ban nincs kiépítve. A beállítások megosztásával kapcsolatos további információkért lásd: [a SharePoint Online külső megosztási beállításainak áttekintése](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings).
+* Ha egy új, külső felhasználó, amely korábban még nem jelentkezett be a címtárba, SharePoint Online-webhelyet tartalmazó hozzáférési csomagot kap, akkor ez a hozzáférési csomag nem teljesen kézbesítettként jelenik meg mindaddig, amíg a felhasználó fiókja nincs létrehozva a SharePoint Online-ban. A beállítások megosztásával kapcsolatos további információkért lásd: [a SharePoint Online külső megosztási beállításainak áttekintése](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings).
 
 ## <a name="requests"></a>Kérelmek
 
 * Ha a felhasználó hozzáférést szeretne kérni egy hozzáférési csomaghoz, győződjön meg róla, hogy a hozzáférési csomaghoz tartozó **saját hozzáférési portál hivatkozást** használja. További információ: [megosztási hivatkozás a hozzáférési csomag igényléséhez](entitlement-management-access-package-settings.md).
 
-* Ha úgy nyitja meg a saját hozzáférési portált, hogy a böngészőben a saját vagy az Incognito üzemmódra van beállítva, akkor ez ütközik a bejelentkezési viselkedéssel. Azt javasoljuk, hogy ne használja a saját böngészőjét a saját hozzáférési portálon, hanem a saját böngészőjében.
+* Ha privát/inkognitó módba állított böngészőből nyitja meg a Saját hozzáférés portált, a beállítás problémát okozhat a bejelentkezési viselkedés esetében. Azt javasoljuk, hogy a Saját hozzáférés portál megnyitásakor ne használja a böngésző privát/inkognitó módját.
 
-* Ha egy olyan felhasználó, aki még nem szerepel a címtárban, bejelentkezik a saját hozzáférési portálra egy hozzáférési csomag igényléséhez, akkor győződjön meg arról, hogy az a szervezeti fiók használatával végzi a hitelesítést. A szervezeti fiók lehet egy fiók az erőforrás-címtárban, vagy egy olyan címtárban, amely a hozzáférési csomag egyik szabályzatában szerepel. Ha a felhasználó fiókja nem szervezeti fiók, vagy a hitelesítést végző címtár nem szerepel a szabályzatban, akkor a felhasználó nem fogja látni a hozzáférési csomagot. További információ: hozzáférés [kérése egy hozzáférési csomaghoz](entitlement-management-request-access.md).
+* Ha egy, a címtárban még nem szereplő felhasználó jelentkezik be a Saját hozzáférés portálra hozzáférési csomag igénylése céljából, akkor meg kell győződni arról, hogy a hitelesítést a szervezeti fiók használatával végzi el. A szervezeti fiók lehet egy fiók az erőforráskönyvtárban vagy egy olyan könyvtárban, amely a hozzáférési csomag valamelyik szabályzatában szerepel. Ha a felhasználó fiókja nem szervezeti fiók, vagy a hitelesítés helyéül szolgáló könyvtár nem szerepel a szabályzatban, akkor a felhasználó nem fogja látni a hozzáférési csomagot. További információ: hozzáférés [kérése egy hozzáférési csomaghoz](entitlement-management-request-access.md).
 
-* Ha a felhasználó nem tud bejelentkezni az erőforrás-könyvtárba, nem fog tudni hozzáférést kérni a saját hozzáférési portálon. Mielőtt a felhasználó hozzáférést igényelhet, el kell távolítania a bejelentkezési blokkot a felhasználó profiljából. A bejelentkezési blokk eltávolításához kattintson a Azure Portal **Azure Active Directory**, majd a **felhasználók**elemre, majd a felhasználó elemre, végül a **profil**elemre. Szerkessze a **Settings (beállítások** ) szakaszt, és módosítsa a **Letiltás bejelentkezést** a **nem**értékre. További információ: [felhasználói profil adatainak hozzáadása vagy frissítése Azure Active Directory használatával](../fundamentals/active-directory-users-profile-azure-portal.md).  Azt is megtekintheti, hogy a felhasználó blokkolva lett-e egy [Identity Protection-házirend](../identity-protection/howto-unblock-user.md)miatt.
+* Ha a felhasználó számára le van tiltva az erőforráskönyvtárba való bejelentkezés, akkor nem fog tudni hozzáférést kérni a Saját hozzáférés portálon. Ahhoz, hogy a felhasználó hozzáférést igényelhessen, el kell távolítani a bejelentkezés letiltását a felhasználó profiljából. A bejelentkezési blokk eltávolításához kattintson a Azure Portal **Azure Active Directory**, majd a **felhasználók**elemre, majd a felhasználó elemre, végül a **profil**elemre. Szerkessze a **Settings (beállítások** ) szakaszt, és módosítsa a **Letiltás bejelentkezést** a **nem**értékre. További információ: [felhasználói profil adatainak hozzáadása vagy frissítése Azure Active Directory használatával](../fundamentals/active-directory-users-profile-azure-portal.md).  Azt is megtekintheti, hogy a felhasználó blokkolva lett-e egy [Identity Protection-házirend](../identity-protection/howto-unblock-user.md)miatt.
 
-* Ha a saját hozzáférési portálon, ha a felhasználó egy kérelmező és egy jóváhagyó is, a **jóváhagyások** lapon nem fogja látni a hozzáférési csomagra vonatkozó kérelmét. Ez szándékos viselkedés – a felhasználók nem hagyhatják jóvá a saját kérésükre. Győződjön meg arról, hogy a kért hozzáférési csomaghoz további jóváhagyók vannak konfigurálva a szabályzatban. További információ: [hozzáférési csomag kérésének és jóváhagyási beállításainak módosítása](entitlement-management-access-package-request-policy.md).
+* Ha a saját hozzáférési portálon, ha a felhasználó egy kérelmező és egy jóváhagyó is, a **jóváhagyások** lapon nem fogja látni a hozzáférési csomagra vonatkozó kérelmét. Ez a viselkedés szándékos – a felhasználók nem hagyhatják jóvá a saját kéréseiket. Győződjön meg arról, hogy a felhasználó által kérelmezett hozzáférési csomaghoz további jóváhagyók vannak konfigurálva a szabályzatban. További információ: [hozzáférési csomag kérésének és jóváhagyási beállításainak módosítása](entitlement-management-access-package-request-policy.md).
 
 ### <a name="view-a-requests-delivery-errors"></a>Kérelem kézbesítési hibáinak megtekintése
 

@@ -9,17 +9,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: da6d17e42407048b7ecbcacade67ef48046d7fe1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457121"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382206"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Hivatkozás – IoT Hub végpontok
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="iot-hub-names"></a>IoT Hub nevek
+## <a name="iot-hub-names"></a>IoT Hub names
 
 Megkeresheti a végpontokat üzemeltető IoT hub állomásnevét a központ **Áttekintés** oldalán található portálon. Alapértelmezés szerint az IoT hub DNS-neve a következőképpen néz ki: `{your iot hub name}.azure-devices.net`.
 
@@ -39,7 +39,7 @@ A következő lista a végpontokat ismerteti:
 
 * **Feladatok kezelése**. Mindegyik IoT hub egy szolgáltatáshoz kapcsolódó HTTPS REST-végpontot tesz elérhetővé a [feladatok](iot-hub-devguide-jobs.md)lekérdezéséhez és kezeléséhez.
 
-* **Eszköz-végpontok**. Az IoT Hub az identitásjegyzékben szereplő valamennyi eszközhöz elérhetővé tesz néhány végpontot:
+* **Eszköz-végpontok**. Az Identity Registry minden eszközén IoT Hub a végpontok egy készletét teszi elérhetővé:
 
   * *Eszközről a felhőbe irányuló üzenetek küldése*. Az eszköz ezt a végpontot használja az [eszközről a felhőbe irányuló üzenetek küldéséhez](iot-hub-devguide-messages-d2c.md).
 
@@ -76,7 +76,7 @@ Az előfizetéshez tartozó meglévő Azure-szolgáltatásokat összekapcsolhatj
 IoT Hub jelenleg a következő Azure-szolgáltatásokat támogatja további végpontként:
 
 * Azure Storage-tárolók
-* Azure Event Hubs-eseményközpontok
+* Event Hubs
 * Service Bus által kezelt üzenetsorok
 * Service Bus-üzenettémák
 
@@ -86,7 +86,7 @@ A végpontok állapotának beolvasásához használja a REST API a [végpont ál
 
 |Állapotadatok|Leírás|
 |---|---|
-|kifogástalan|A végpont fogadja az üzeneteket a várt módon.|
+|healthy|A végpont fogadja az üzeneteket a várt módon.|
 |sérült|A végpont nem fogadja el az elvárt üzeneteket, és IoT Hub megpróbálja elküldeni az adatküldés erre a végpontra. A nem kifogástalan állapotú végpont állapota akkor frissül, ha a IoT Hub végül konzisztens állapotba került.|
 |ismeretlen|IoT Hub nem létesített kapcsolatokat a végponttal. Nem érkezett üzenet a végponttól, illetve nem utasította el azokat.|
 |kézbesítetlen|A végpont nem fogad üzeneteket, miután IoT Hub újrapróbálták elküldeni a próbaidőszakra az üzeneteket.|

@@ -13,11 +13,11 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438830"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385346"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -551,7 +551,7 @@ Ebben a lépésben adatkészleteket hoz létre a bemeneti és kimeneti adatok á
    |:--- |:--- |:--- |
    | 1 |2016-11-16T00:00:00 |2016-11-16 -00. txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16 -01. txt |
-   | 3 |2016-11-16T02:00:00 |2016-11-16 -02. txt |
+   | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
    | 4 |2016-11-16T03:00:00 |2016-11-16 -03. txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16 -04. txt |
 
@@ -607,7 +607,7 @@ Ebben a lépésben adatkészleteket hoz létre a bemeneti és kimeneti adatok á
     }
     ```
 
-    Vegye figyelembe a következő szempontokat:
+    Vegye figyelembe a következő pontokat:
 
    * A **Egyidejűség** **2** értékre van állítva, hogy két szeletet párhuzamosan dolgozza fel a rendszer a Azure batch készletben lévő 2 virtuális géppel.
    * A tevékenységek szakaszban egy tevékenység található, és a következő típusú: **DotNetActivity**.
@@ -720,7 +720,7 @@ A hibaelhárítás néhány alapvető módszerből áll:
 ## <a name="update-custom-activity"></a>Egyéni tevékenység frissítése
 Ha frissíti az egyéni tevékenység kódját, hozza létre, és töltse fel a blob Storage-ba új bináris fájlokat tartalmazó zip-fájlt.
 
-## <a name="appdomain-isolation"></a>Alkalmazástartomány elkülönítése
+## <a name="appdomain-isolation"></a>Appdomain isolation
 Tekintse meg a [alkalmazástartomány mintáját](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) , amely bemutatja, hogyan hozhat létre olyan egyéni tevékenységet, amely nem korlátozza a Data Factory indító által használt szerelvény-verziókat (például: WindowsAzure. Storage v 4.3.0, Newtonsoft. JSON v 6.0. x stb.).
 
 ## <a name="access-extended-properties"></a>Kiterjesztett tulajdonságok elérése
@@ -1021,7 +1021,7 @@ namespace DataFactoryAPITestApp
 A GitHubon található [Azure Data Factory helyi környezeti](https://github.com/gbrueckl/Azure.DataFactory.LocalEnvironment) minta olyan eszközt tartalmaz, amely lehetővé teszi az egyéni .net-tevékenységek hibakeresését a Visual Studióban.
 
 ## <a name="sample-custom-activities-on-github"></a>Egyéni tevékenységek mintája a GitHubon
-| Minta | Milyen egyéni tevékenységet végez |
+| Sample | Milyen egyéni tevékenységet végez |
 | --- | --- |
 | [Http-adatletöltő](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample). |Letölti az adatait egy HTTP-végpontról az Azure C# -ba Blob Storage a Data Factory egyéni tevékenységével. |
 | [Twitter Hangulatelemzés minta](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Meghívja a Azure Machine Learning Studio modellt, és elvégzi az érzelmek elemzését, pontozását, előrejelzését stb. |

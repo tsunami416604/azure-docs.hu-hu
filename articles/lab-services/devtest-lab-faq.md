@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760521"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380927"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Választ kaphat a Azure DevTest Labsával kapcsolatos leggyakoribb kérdésekre.
@@ -42,7 +42,7 @@ A kiesési frissítéseket a Twitter-leírónk használatával tesszük elérhet
 ### <a name="twitter"></a>Twitter
 A Twitter-leírónk: [@azlabservices](https://twitter.com/azlabservices)
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 ### <a name="what-if-my-question-isnt-answered-here"></a>Mi a teendő, ha nem válaszolt a kérdésre?
 Ha a kérdés nem szerepel a listán, tudassa velünk, hogy segítsen megtalálni a választ.
 
@@ -186,7 +186,7 @@ Javasoljuk, hogy a megfelelő engedélyeket a labor szintjén állítsa be úgy,
 > [!NOTE]
 > Ha a tesztkörnyezet felhasználója olyan külső felhasználó, aki Microsoft-fiók rendelkezik, de nem tagja a szervezet Active Directory példányának, a felhasználó hibaüzenetet kap, amikor megpróbálnak hozzáférni a megosztott hivatkozáshoz. Ha egy külső felhasználó hibaüzenetet jelenít meg, kérje meg a felhasználót, hogy válassza ki a nevét a Azure Portal jobb felső sarkában. Ezután a menü címtár szakaszában a felhasználó kiválaszthatja azt a könyvtárat, ahol a labor létezik.
 
-## <a name="virtual-machines"></a>Virtuális gépek
+## <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 
 ### <a name="why-cant-i-see-vms-on-the-virtual-machines-page-that-i-see-in-devtest-labs"></a>Miért nem látom a virtuális gépeket a DevTest Labs szolgáltatásban megjelenő Virtual Machines oldalon?
 Amikor létrehoz egy virtuális gépet a DevTest Labs szolgáltatásban, engedélyt kap a virtuális géphez való hozzáférésre. A virtuális gépet a Labs lapon és a **Virtual Machines** oldalon is megtekintheti. A **DevTest Labs tulajdonosi** szerepkörhöz hozzárendelt felhasználók a labor **összes Virtual Machines** oldalán a laborban létrehozott összes virtuális gépet megtekinthetik. Az **DevTest Labs felhasználói** szerepkörrel rendelkező felhasználók azonban nem kapnak automatikusan olvasási hozzáférést a többi felhasználó által létrehozott virtuálisgép-erőforrásokhoz. Így ezek a virtuális gépek nem jelennek meg a **Virtual Machines** oldalon.
@@ -285,7 +285,7 @@ A VHD-fájlok egyéni lemezképek létrehozására való feltöltésének automa
 
 A laborhoz társított cél Storage-fiók megkeresése:
 
-1.  Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1.  Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2.  A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
 3.  Keresse meg és válassza ki a laborhoz társított erőforráscsoportot.
 4.  Az **Áttekintés**területen válassza ki a Storage-fiókok egyikét.
@@ -304,7 +304,7 @@ Alapértelmezés szerint az Azure Marketplace-t kell használni, hacsak nem rend
 - Megfelelőségi vagy szabályozási feltételek (például biztonsági szabályzatok), amelyeknek az összes gépen meg kell felelnie.
 - Az egyéni lemezképek használata nem tekinthető könnyelműnek. További bonyolultságot jelentenek, mivel most a VHD-fájlokat a mögöttes alaplemezképekhez kell kezelnie. Ezeket az alapképeket is rendszeresen kell frissítenie a szoftverfrissítések használatával. Ezek a frissítések tartalmazzák az új operációs rendszer (OS) frissítéseit, valamint a szoftvercsomag szükséges frissítéseit és konfigurációs módosításait.
 
-## <a name="artifacts"></a>Artifacts
+## <a name="artifacts"></a>Összetevők
 
 ### <a name="what-are-artifacts"></a>Mik azok az összetevők?
 Az összetevők olyan testreszabható elemek, amelyek segítségével telepítheti a legújabb biteket, vagy üzembe helyezheti a fejlesztői eszközöket egy virtuális gépen. A virtuális gép létrehozásakor az összetevők csatlakoztatása a virtuális géphez. A virtuális gép kiépítése után az összetevők üzembe helyezik és konfigurálja a virtuális gépet. A [nyilvános GitHub-tárházban](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)számos már meglévő összetevő elérhető. [Saját](devtest-lab-artifact-author.md)összetevőket is létrehozhat.
@@ -345,7 +345,7 @@ A következő blogbejegyzések útmutatást és információkat nyújtanak az Az
 
 Más folyamatos integrációs (CI)/Continuous kézbesítési (CD) eszközlánccal esetében ugyanezeket a forgatókönyveket [Azure PowerShell-parancsmagok](../azure-resource-manager/templates/deploy-powershell.md) és [.net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/)-k használatával, [Azure Resource Manager-sablonokkal](https://azure.microsoft.com/resources/templates/) is elérheti. A [DevTest Labs REST API](https://aka.ms/dtlrestapis) -jait is használhatja a toolchain való integráláshoz.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Mikor hozzon létre egy új virtuális hálózatot a DevTest Labs-környezethez és egy meglévő virtuális hálózat használatával?
 Ha a virtuális gépeknek kapcsolatba kell lépniük a meglévő infrastruktúrával, akkor érdemes lehet egy meglévő virtuális hálózatot használni a DevTest Labs-környezetben. Ha a ExpressRoute-t használja, érdemes lehet minimálisra csökkenteni a virtuális hálózatok/alhálózatok mennyiségét, hogy az előfizetésekben való használatra kiosztott IP-címtartomány ne legyen feldarabolva.
@@ -375,7 +375,7 @@ Igen. Két szempontot kell figyelembe venni – a bejövő és a kimenő forgalm
 
 Hálózati biztonsági csoportokat is használhat virtuális gépekhez vagy alhálózatokhoz. Ez a lépés egy további védelmi réteget ad hozzá a forgalom engedélyezéséhez/letiltásához.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 ### <a name="why-isnt-my-existing-virtual-network-saving-properly"></a>Miért nem megfelelő a meglévő virtuális hálózat mentése?
 Az egyik lehetőség, hogy a virtuális hálózat neve időszakokat tartalmaz. Ha igen, próbálja meg eltávolítani az időszakokat, vagy cserélje le őket kötőjelekkel. Ezután próbálja meg újra a virtuális hálózat mentését.

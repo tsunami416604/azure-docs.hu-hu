@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: e6e7beeb4c10098f36636aad2709e03d1a1a0fea
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953647"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362997"
 ---
-# <a name="manage-the-mobility-agent"></a>A mobilitási ügynök kezelése 
+# <a name="manage-the-mobility-agent"></a>A Mobility-ügynök kezelése 
 
 Ha Azure Site Recoveryt használ a VMware virtuális gépek és a fizikai kiszolgálók Azure-ba történő helyreállításához, akkor a mobilitási ügynököt a kiszolgálón kell beállítania. A mobilitási ügynök koordinálja a védett számítógép, a konfigurációs kiszolgáló/kibővíthető folyamat kiszolgálója közötti kommunikációt, és kezeli az adatreplikációt. Ez a cikk összefoglalja a mobilitási ügynök telepítés utáni általános feladatait.
 
@@ -29,7 +29,7 @@ Ha Azure Site Recoveryt használ a VMware virtuális gépek és a fizikai kiszol
 
      ![Replikált elemek ablak](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
-4. Kattintson az értesítésre, majd az **ügynök frissítése**területen válassza ki azokat a gépeket, amelyeken frissíteni kívánja a mobilitási szolgáltatást. Ezután kattintson az **OK** gombra.
+4. Kattintson az értesítésre, majd az **ügynök frissítése**területen válassza ki azokat a gépeket, amelyeken frissíteni kívánja a mobilitási szolgáltatást. Végül kattintson az **OK** gombra.
 
      ![Replikált elemek virtuálisgép-listája](./media/vmware-azure-install-mobility-service/update-okpng.png)
 

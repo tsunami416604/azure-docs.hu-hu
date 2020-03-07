@@ -10,11 +10,11 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839478"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361307"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Data Lake Analytics kezelése a Azure Portal használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -29,7 +29,7 @@ Ez a cikk ismerteti, hogyan kezelheti Azure Data Lake Analytics fiókokat, adatf
 
 ### <a name="create-an-account"></a>Fiók létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Kattintson **az erőforrás létrehozása** > **Intelligence + Analytics** > **Data Lake Analytics**elemre.
 3. Adja meg az alábbi elemek értékeit: 
    1. **Name (név**): az Data Lake Analytics fiók neve.
@@ -37,16 +37,16 @@ Ez a cikk ismerteti, hogyan kezelheti Azure Data Lake Analytics fiókokat, adatf
    3. **Erőforráscsoport**: az az Azure-erőforráscsoport, amelyben létre kell hozni a fiókot. 
    4. **Hely**: az Data Lake Analytics-fiókhoz tartozó Azure-adatközpont. 
    5. **Data Lake Store**: a Data Lake Analytics-fiókhoz használandó alapértelmezett tároló. A Azure Data Lake Store fióknak és a Data Lake Analytics fióknak ugyanazon a helyen kell lennie.
-4. Kattintson a **Létrehozás** elemre. 
+4. Kattintson a  **Create** (Létrehozás) gombra. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Data Lake Analytics fiók törlése
 
 Data Lake Analytics fiók törlése előtt törölje az alapértelmezett Data Lake Store-fiókját.
 
 1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
-2. Kattintson a **Törlés** gombra.
+2. Kattintson a **Delete** (Törlés) gombra.
 3. Írja be a fiók nevét.
-4. Kattintson a **Törlés** gombra.
+4. Kattintson a **Delete** (Törlés) gombra.
 
 <!-- ################################ -->
 <!-- ################################ -->
@@ -161,7 +161,7 @@ Az ismétlődő U-SQL-feladatok listájának megtekintése:
 2. Kattintson a **Job bepillantások**elemre. A "minden feladat" lap alapértelmezésben megjelenik, amely megjeleníti a futó, a várólistán lévő és a Befejezett feladatok listáját.
 3. Kattintson az **ismétlődő feladatok** fülre. Az ismétlődő feladatok listája az egyes ismétlődő feladatokhoz tartozó összesített statisztikával együtt jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [Azure Data Lake Analytics kezelése Azure PowerShell használatával](data-lake-analytics-manage-use-powershell.md)
