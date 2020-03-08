@@ -3,12 +3,12 @@ title: Fájlok és mappák biztonsági mentése – gyakori kérdések
 description: A fájlok és mappák Azure Backupsal történő biztonsági mentésével kapcsolatos gyakori kérdéseket tárgyalja.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 7b80932d49038bb42fa93f71b3ac0194c2869489
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425068"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673073"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések
 
@@ -98,7 +98,7 @@ A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről 
 1. Alapértelmezés szerint a Scratch mappa a következő helyen található: `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 2. Győződjön meg arról, hogy a mappa helyének elérési útja megegyezik az alább látható beállításkulcs-bejegyzések értékeivel:
 
-    | Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Érték |
+    | Beállításjegyzékbeli elérési út | Beállításkulcs | Érték |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Új gyorsítótár-mappa helye* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Új gyorsítótár-mappa helye* |
@@ -113,7 +113,7 @@ A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről 
 4. Másolja a teljes `\Scratch` mappát egy másik, elegendő lemezterülettel rendelkező meghajtóra. Győződjön meg arról, hogy a tartalom másolása megtörtént, nincs áthelyezve.
 5. Frissítse a következő beállításjegyzékbeli bejegyzéseket az újonnan áthelyezett Scratch mappa elérési útjával.
 
-    | Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Érték |
+    | Beállításjegyzékbeli elérési út | Beállításkulcs | Érték |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Új mappa helye* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Új mappa helye* |
@@ -149,7 +149,7 @@ A gyorsítótár mappája és a metaadatok virtuális merevlemeze nem rendelkezi
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Be lehet állítani a biztonsági mentéshez használt sávszélesség mennyiségét?
 
-Igen, a MARS-ügynök **Tulajdonságok módosítása** beállításával állíthatja be a sávszélességet és az időzítést. [További információk](backup-configure-vault.md#enable-network-throttling).
+Igen, a MARS-ügynök **Tulajdonságok módosítása** beállításával állíthatja be a sávszélességet és az időzítést. [További információk](backup-windows-with-mars-agent.md#enable-network-throttling).
 
 ## <a name="restore"></a>Visszaállítás
 

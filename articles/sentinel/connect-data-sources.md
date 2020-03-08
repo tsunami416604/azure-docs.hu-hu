@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 311bb367748be98af704ab11919abea6e38d0ff3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 9d2d1985b23e1c7f5e0f7d9fd2795bd85e28ace0
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588331"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668766"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
@@ -56,7 +56,6 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
     - [Office 365](connect-office-365.md)
     - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
     - [Microsoft webalkalmazási tűzfal](connect-microsoft-waf.md)
-    - [Windows biztonsági események](connect-windows-security-events.md) 
     - [Windows tűzfal](connect-windows-firewall.md)
     - [Windows biztonsági események](connect-windows-security-events.md)
 
@@ -117,7 +116,7 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 | CommonSecurityLog  | [CEF összekötése](connect-common-event-format.md)  | V | |
 | OfficeActivity | [Az Office 365 összekötése](connect-office-365.md) | V | |
 | SecurityEvents | [Windows biztonsági események összekötése](connect-windows-security-events.md)  | V | A nem biztonságos protokollok-munkafüzetek esetében lásd: nem [biztonságos protokollok beállítása](/azure/sentinel/quickstart-get-visibility#use-built-in-workbooks)  |
-| Rendszernapló | [A syslog összekötése](connect-syslog.md) | V | |
+| Rendszernapló: | [A syslog összekötése](connect-syslog.md) | V | |
 | Microsoft webalkalmazási tűzfal (WAF) – (AzureDiagnostics) |[A Microsoft webalkalmazási tűzfal összekapcsolása](connect-microsoft-waf.md) | V | |
 | SymantecICDx_CL | [A Symantec összekötése](connect-symantec.md) | V | |
 | ThreatIntelligenceIndicator  | [A fenyegetés intelligenciának összekapcsolása](connect-threat-intelligence.md)  | V | |

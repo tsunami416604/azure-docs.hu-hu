@@ -1,6 +1,6 @@
 ---
-title: Data Lake Storage Gen1 érintő forgatókönyvek |} A Microsoft Docs
-description: Megismerheti a különböző forgatókönyveket és eszközök használatával, mely adatokat is betöltött, a feldolgozás, a letöltött és a webalkalmazásban jelennek meg a Data Lake Storage Gen1 (korábbi nevén Azure Data Lake Store)
+title: Az Data Lake Storage Gen1t érintő adatforgatókönyvek | Microsoft Docs
+description: Megismerheti azokat a különböző forgatókönyveket és eszközöket, amelyek segítségével az adatok betölthetők, feldolgozhatók, letölthetők és megjeleníthetők Data Lake Storage Gen1ban (korábbi nevén Azure Data Lake Store)
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -11,124 +11,124 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 0b16154edbda4bedfd4e9b680ba4311e7a235212
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60879037"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361290"
 ---
-# <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Az Azure Data Lake Storage Gen1 használata big data-követelményekhez
+# <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>A Azure Data Lake Storage Gen1 használata big data követelményekhez
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
-Big data-feldolgozáshoz négy fő szakaszból áll:
+A big data feldolgozásának négy fő szakasza van:
 
-* Nagy mennyiségű adatot tölt be egy adattár, valós idejű, illetve kötegek formájában
-* Az adatok feldolgozása
-* Az adatok letöltése
-* Az adatok megjelenítése
+* Nagy mennyiségű adatot tölt be egy adattárba valós időben vagy kötegekben
+* Az adatfeldolgozás
+* Az adatletöltés
+* Az adatmegjelenítés
 
-Ebben a cikkben áttekintjük az Azure Data Lake Storage Gen1 megtudhatja, hogy a beállítások és a big Data típusú adatok igény szerint elérhető eszközök megállapodást szakaszokat.
+Ebben a cikkben ezeket a szakaszokat tekintjük át, hogy Azure Data Lake Storage Gen1 a big data igényeinek megfelelő lehetőségek és eszközök megismerése érdekében.
 
-## <a name="ingest-data-into-data-lake-storage-gen1"></a>Betölteni az adatokat az Data Lake Storage Gen1
-Ez a szakasz kiemeli a különböző adatforrás és a különböző módokon, amelyben az adatok olvasódnak be egy Data Lake Storage Gen1 fiókot.
+## <a name="ingest-data-into-data-lake-storage-gen1"></a>Adatbevitel a Data Lake Storage Gen1ba
+Ez a szakasz kiemeli a különböző adatforrásokat, valamint azokat a különböző módokat, amelyekben az adott adatot betöltheti egy Data Lake Storage Gen1-fiókba.
 
-![Betölteni az adatokat az Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/ingest-data.png "betölteni az adatokat az Data Lake Storage Gen1")
+![Adatbevitel a Data Lake Storage Gen1ba](./media/data-lake-store-data-scenarios/ingest-data.png "Adatbevitel a Data Lake Storage Gen1ba")
 
-### <a name="ad-hoc-data"></a>Ad hoc adatok
-Ez jelöli, amelyek kisebb adatkészletek használt prototípus-készítés big data-alkalmazásokat. Különböző módon ad-hoc adatok feldolgozására függően az adatok forrását.
+### <a name="ad-hoc-data"></a>Ad hoc adatszolgáltatások
+Ez kisebb adathalmazokat jelent, amelyeket egy big data alkalmazás prototípusához használ. Az ad hoc adatmennyiség különböző módokon végezhető el az adatforrástól függően.
 
-| Adatforrás | Kigyűjtés használatával |
+| Adatforrás | A |
 | --- | --- |
-| Helyi számítógép |<ul> <li>[Azure Portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[A Data Lake Tools for Visual Studio használatával](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
-| Azure Storage Blob |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[Az AdlCopy eszköz](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight-fürtön futó DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
+| Helyi számítógép |<ul> <li>[Azure Portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[A Visual studióhoz készült Data Lake Tools használata](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
+| Azure Storage Blob |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy eszköz](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[A HDInsight-fürtön futó DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
-### <a name="streamed-data"></a>Streamelési adatok hangulatelemzéséhez
-Vásárlói adatok hozhat létre különböző forrásokból, például az alkalmazások, eszközök, szenzorok, stb. Ezeket az adatokat az eszközök széles által olvasódnak be a Data Lake Storage Gen1. Ezek az eszközök általában fog rögzítése és feldolgozni az adatokat egy eseményt az esemény által történik, a valós idejű, majd írja be az események kötegekben Data Lake Storage Gen1 be, hogy ezek tovább dolgozhatók fel.
+### <a name="streamed-data"></a>Továbbított adattartalom
+Ez olyan adatforrásokat jelent, amelyeket különböző források, például alkalmazások, eszközök, érzékelők stb. hozhatnak létre. Ezeket az adatmennyiségeket számos eszköz Data Lake Storage Gen1 is betöltheti. Ezek az eszközök általában valós időben rögzítik és feldolgozzák az adott eseményt, majd a kötegekben lévő eseményeket a Data Lake Storage Gen1ba írják, hogy tovább lehessen feldolgozni őket.
 
-Eszközök, amelyekkel a következők:
+A következő eszközök használhatók:
 
-* [Az Azure Stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md) -események Event hubsba betöltött szolgáltatásba lehet írni az Azure Data Lake Storage Gen1 használatával egy Azure Data Lake Storage Gen1 kimenetet.
-* [Az Azure HDInsight Storm](../hdinsight/storm/apache-storm-write-data-lake-store.md) -írhat adatokat közvetlenül a Data Lake Storage Gen1, a Storm-fürt.
-* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) – események fogadása az Event Hubs, és ezután a Data Lake Storage Gen1 használatával írja a [Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md).
+* [Azure stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md) – a Event Hubsba betöltött események Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen1 kimenet használatával is megírhatók.
+* [Azure HDInsight Storm](../hdinsight/storm/apache-storm-write-data-lake-store.md) – az adatok közvetlenül a Storm-fürtről Data Lake Storage Gen1 is írhatók.
+* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) – események fogadása Event Hubsről, majd a [Data Lake Storage Gen1 .net SDK](data-lake-store-get-started-net-sdk.md)-val való Data Lake Storage Gen1ának megírása.
 
 ### <a name="relational-data"></a>Relációs adatok
-A forrásadatok relációs adatbázisból. Egy időszakon belül a relációs adatbázisok gyűjtése hatalmas mennyiségű adatokat, ami a legfontosabb elemzéseket keresztül big Data jellegű adatok feldolgozása. A következő eszközök segítségével a Data Lake Storage Gen1 helyezhetik át az adatokat.
+A kapcsolódó adatbázisok adatait is megtekintheti. Egy adott időszakban a kapcsolati adatbázisok nagy mennyiségű adatot gyűjtenek, amelyek kulcsfontosságú elemzéseket biztosítanak, ha big data folyamaton keresztül dolgozzák fel őket. Az alábbi eszközök használatával helyezheti át ezeket az eszközöket Data Lake Storage Gen1ba.
 
 * [Apache Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
 * [Azure Data Factory](../data-factory/copy-activity-overview.md)
 
-### <a name="web-server-log-data-upload-using-custom-applications"></a>Web server naplóadatok (feltöltés használó egyéni alkalmazások)
-Ez a fajta adatkészlet azért hívjuk fel, mert a web server naplóadatok elemzése egy gyakori alkalmazási helyzet a big data-alkalmazások és a Data Lake Storage Gen1 fel kell tölteni a naplófájlok nagy mennyiségű kell. A következő eszközök bármelyikét használhatja saját parancsfájlok vagy alkalmazások töltse fel az adatokat írni.
+### <a name="web-server-log-data-upload-using-custom-applications"></a>Webkiszolgáló naplójának adatai (egyéni alkalmazásokkal történő feltöltés)
+Az ilyen típusú adathalmazokat a rendszer kifejezetten felhívta, mert a webkiszolgáló naplófájljainak elemzése gyakori használati eset big data alkalmazásokhoz, és nagy mennyiségű naplófájlt igényel a Data Lake Storage Gen1ba való feltöltéshez. Az alábbi eszközök bármelyikével írhat saját parancsfájlokat vagy alkalmazásokat az ilyen adatok feltöltéséhez.
 
 * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [Azure Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Azure Data Factory](../data-factory/copy-activity-overview.md)
 
-A web server naplózási adatok feltöltését, valamint is fel más típusú adatok (például közösségi hangulati adatok) egy jó módszer a saját egyéni parancsfájlok vagy alkalmazások írni, mert azt a rugalmasságot biztosít az adatok feltöltése összetevő részeként a nagyobb big data-alkalmazásokat. Bizonyos esetekben ez a kód is igénybe vehet egy parancsfájl vagy egyszerű parancssori segédprogrammal formájában. Más esetekben a kódot egy üzleti alkalmazás vagy megoldás big data-feldolgozáshoz integrálhatók használhatók.
+A webkiszolgáló-naplózási adatainak feltöltéséhez, valamint más típusú adatmennyiségek (például a közösségi érzelmek adatainak) feltöltéséhez jó módszer a saját egyéni parancsfájljainak/alkalmazásainak megírása, mivel lehetővé teszi a rugalmasságot, hogy a nagyobb big data alkalmazás részeként feltöltse az adatfeltöltési összetevőt is. Bizonyos esetekben ez a kód parancsfájl vagy egyszerű parancssori segédprogram formájában is elvégezhető. Más esetekben a kód a big data feldolgozás üzleti alkalmazásba vagy megoldásba való integrálására használható.
 
-### <a name="data-associated-with-azure-hdinsight-clusters"></a>Az Azure HDInsight-fürtök kapcsolódó adatok
-A legtöbb HDInsight-fürttípusok (Hadoop, HBase, Storm-) tároló adattár Data Lake Storage Gen1 támogatja. HDInsight-fürtök az Azure Storage Blobs (WASB) adatok eléréséhez. A jobb teljesítmény érdekében a egy Data Lake Storage Gen1 figyelembe, hogy a fürthöz társított másolhatja az adatokat a WASB. A következő eszközök használatával másolja az adatokat.
+### <a name="data-associated-with-azure-hdinsight-clusters"></a>Az Azure HDInsight-fürtökhöz kapcsolódó adatmennyiség
+A legtöbb HDInsight-fürt (Hadoop, HBase, Storm) támogatja az adattároló adattárként való Data Lake Storage Gen1. A HDInsight-fürtök az Azure Storage-Blobokból (WASB) származó adatokhoz férnek hozzá. A jobb teljesítmény érdekében a WASB származó adatok másolása a fürthöz társított Data Lake Storage Gen1-fiókba. Az adatmásoláshoz a következő eszközök használhatók.
 
 * [Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)
-* [AdlCopy Service](data-lake-store-copy-data-azure-storage-blob.md)
+* [AdlCopy szolgáltatás](data-lake-store-copy-data-azure-storage-blob.md)
 * [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)
 
-### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>Adatok tárolása a helyszíni vagy IaaS Hadoop fürtök
-Nagy mennyiségű adat tárolható a meglévő Hadoop-fürtök helyi HDFS használó gépeken. A Hadoop-fürtök lehet egy helyszíni környezetben vagy egy IaaS-fürtöt az Azure-on belül. Az ilyen adatok másolása az Azure Data Lake Storage Gen1 megközelítésre egyszeri vagy ismétlődő módon követelményeket is lehet. Különféle módon használhatja, ennek érdekében. Az alábbi, az alternatív megoldások és a kapcsolódó feláldozását listáját.
+### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>A helyszíni vagy IaaS Hadoop-fürtökben tárolt adatkészletek
+Nagy mennyiségű adattal rendelkezhetnek a meglévő Hadoop-fürtökben, helyileg a HDFS-t használó gépeken. Előfordulhat, hogy a Hadoop-fürtök helyszíni környezetben találhatók, vagy egy Azure-beli IaaS-fürtön belül vannak. Előfordulhat, hogy az ilyen jellegű adatmásolásra vonatkozó követelmények egy egyszeri vagy ismétlődő módon Azure Data Lake Storage Gen1. Ennek eléréséhez számos lehetőség közül választhat. Az alábbiakban felsoroljuk az alternatívák listáját, valamint a hozzájuk kapcsolódó kompromisszumokat.
 
-| A módszer | Részletek | Előnyök | Megfontolandó szempontok |
+| A módszer | Részletek | Előnyök | Megfontolások |
 | --- | --- | --- | --- |
-| Adatok másolása az Azure Data Lake Storage Gen1 közvetlenül a Hadoop-fürtök az Azure Data Factory (ADF) használatával |[Az ADF támogatja a HDFS adatforrásként](../data-factory/connector-hdfs.md) |Az ADF HDFS és elsőrangú – teljes körű felügyeleti és figyelési-a-beépített támogatást nyújt a |Az adatkezelési átjáró üzembe helyezhető a helyszínen vagy az iaas-fürt szükséges |
-| Adatok exportálása a Hadoop-fájlok formájában. Ezután másolja a fájlokat, és az Azure Data Lake Storage Gen1 megfelelő mechanizmussal. |Az Azure Data Lake Storage Gen1 használatával másolja a fájlokat: <ul><li>[Az Azure PowerShell, a Windows operációs rendszer](data-lake-store-get-started-powershell.md)</li><li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li><li>Minden Data Lake Storage Gen1 SDK használatával egyéni alkalmazás</li></ul> |A gyors kezdéshez. Testre szabott feltöltések hajthatja végre. |Többlépéses folyamat, amely magában foglalja a több technológiákat. Felügyeleti és monitorozási növekszik, nagy kihívást jelent az eszközök testreszabott természetéből idővel |
-| A Distcp használatával adatokat másol a Hadoop az Azure Storage. Ezután másolja az adatokat az Azure Storage a Data Lake Storage Gen1 megfelelő mechanizmussal. |A Data Lake Storage Gen1 használatával másolhat adatokat az Azure Storage-ból: <ul><li>[Azure Data Factory](../data-factory/copy-activity-overview.md)</li><li>[Az AdlCopy eszköz](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[A HDInsight-fürtökön futó Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)</li></ul> |Nyílt forráskódú eszközöket is használhat. |Többlépéses folyamat, amely magában foglalja a több technológiák |
+| Azure Data Factory (ADF) használatával közvetlenül a Hadoop-fürtökről másolhatja az adatok Azure Data Lake Storage Gen1 |[Az ADF támogatja a HDFS adatforrásként](../data-factory/connector-hdfs.md) |Az ADF beépített támogatást nyújt a HDFS és az első osztályú végpontok közötti felügyelethez és figyeléshez |A adatkezelés átjárót a helyszíni vagy a IaaS-fürtön kell telepíteni |
+| Adatok exportálása Hadoop fájlként. Ezután másolja a fájlokat Azure Data Lake Storage Gen1 a megfelelő mechanizmus használatával. |A következő paranccsal másolhat fájlokat Azure Data Lake Storage Gen1ba: <ul><li>[Azure PowerShell a Windows operációs rendszerhez](data-lake-store-get-started-powershell.md)</li><li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li><li>Bármely Data Lake Storage Gen1 SDK-t használó egyéni alkalmazás</li></ul> |Gyors kezdés. Testre szabott feltöltések is megadhatók |Többlépéses folyamat, amely több technológiát is magában foglal. A felügyelet és a monitorozás az eszközök testreszabott jellegéből adódóan az idő múlásával növekedni fog. |
+| Adatok másolása a Hadoop-ből az Azure Storage-ba a Distcp használatával. Ezután másolja az Azure Storage-ból származó adatok Data Lake Storage Gen1 a megfelelő mechanizmus használatával. |Az adatok az Azure Storage-ból Data Lake Storage Gen1 a következő használatával másolhatók: <ul><li>[Azure Data Factory](../data-factory/copy-activity-overview.md)</li><li>[AdlCopy eszköz](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight-fürtökön futó Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)</li></ul> |Használhatja a nyílt forráskódú eszközöket. |Többlépéses folyamat, amely több technológiát is magában foglal |
 
-### <a name="really-large-datasets"></a>Nagyon nagy méretű adatkészletek
-Több terabájt tartománya az adatkészletek fel, a fenti módszerek használatával néha lassú és költséges lehet. Ezekben az esetekben használhatja az alábbi beállítások közül.
+### <a name="really-large-datasets"></a>Nagyon nagy adatkészletek
+A több terabájtos tartományba tartozó adatkészletek feltöltéséhez a fent ismertetett módszerek használatával időnként lassú és költséges lehet. Ilyen esetekben az alábbi beállításokat használhatja.
 
-* **Az Azure ExpressRoute használatával**. Az Azure ExpressRoute használatával magánkapcsolatok hozhatók létre az Azure-adatközpontok és olyan infrastruktúrák között a helyszínen. Ez nagy mennyiségű adat átvitelére megbízható lehetőséget kínál. További információkért lásd: [Azure ExpressRoute dokumentációja](../expressroute/expressroute-introduction.md).
-* **"Offline állapotba helyezi" az adatok feltöltése**. Ha az Azure ExpressRoute használata nem megvalósítható bármilyen okból, [Azure Import/Export szolgáltatás](../storage/common/storage-import-export-service.md) tehetnek a merevlemez-meghajtók egy Azure-adatközpontban található adatait. Az adatfeltöltés először az Azure Storage-blobokat. Ezután [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) vagy [AdlCopy eszköz](data-lake-store-copy-data-azure-storage-blob.md) az adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1.
+* **Az Azure ExpressRoute használata**. Az Azure ExpressRoute lehetővé teszi privát kapcsolatok létrehozását az Azure-adatközpontok és a helyszíni infrastruktúra között. Ez megbízható lehetőséget biztosít a nagy mennyiségű adatátvitelhez. További információ: az [Azure ExpressRoute dokumentációja](../expressroute/expressroute-introduction.md).
+* **"Kapcsolat nélküli" adatok feltöltése**. Ha az Azure ExpressRoute használata bármilyen okból nem valósítható meg, az [Azure import/export szolgáltatás](../storage/common/storage-import-export-service.md) használatával a merevlemezeket az Azure-adatközpontba helyezheti el az adataival. Az adatait először feltölti az Azure Storage-Blobokra. Ezután az [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) vagy a [AdlCopy eszközzel](data-lake-store-copy-data-azure-storage-blob.md) másolhat adatokból az Azure Storage-blobokból a Data Lake Storage Gen1ba.
 
   > [!NOTE]
-  > Bár az Import/Export szolgáltatással, a méretűek, a lemezeken, amelyek az Azure-adatközpontban történő nem lehet nagyobb, mint 195 GB.
+  > Az import/export szolgáltatás használatakor az Azure-adatközpontba szállított lemezek fájlmérete nem haladhatja meg a 195 GB-ot.
   >
   >
 
-## <a name="process-data-stored-in-data-lake-storage-gen1"></a>A Data Lake Storage Gen1 tárolt adatok feldolgozása
-Amint az adatok Data Lake Storage Gen1 elérhető analysis futtathatja az adatok a támogatott big data-alkalmazások használatával. Jelenleg használhatja az Azure HDInsight és az Azure Data Lake Analytics a Data Lake Storage Gen1-ban tárolt adatokkal kapcsolatos adatok elemzési feladatok futtatásához.
+## <a name="process-data-stored-in-data-lake-storage-gen1"></a>Data Lake Storage Gen1 tárolt adatfeldolgozás
+Ha az adatai elérhetők a Data Lake Storage Gen1ban, a támogatott big data alkalmazásokkal is futtathatja az elemzést. Jelenleg az Azure HDInsight és a Azure Data Lake Analytics használatával futtathatja az adatelemzési feladatokat a Data Lake Storage Gen1 tárolt adatokon.
 
-![Adatok elemzése az Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/analyze-data.png "adatok elemzése az Data Lake Storage Gen1")
+![Data Lake Storage Gen1ban lévő adatelemzés](./media/data-lake-store-data-scenarios/analyze-data.png "Data Lake Storage Gen1ban lévő adatelemzés")
 
-Tekintse meg az alábbi példák.
+Az alábbi példákat is megtekintheti.
 
-* [Hozzon létre egy HDInsight-fürt tárolójaként a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [Az Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Data Lake Storage Gen1 tárolóval rendelkező HDInsight-fürt létrehozása](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 
-## <a name="download-data-from-data-lake-storage-gen1"></a>Töltse le az adatokat a Data Lake Storage Gen1
-Érdemes azt is, töltse le vagy adatok áthelyezése az Azure Data Lake Storage Gen1 forgatókönyvek, például:
+## <a name="download-data-from-data-lake-storage-gen1"></a>Adatok letöltése Data Lake Storage Gen1ról
+Előfordulhat, hogy a következő forgatókönyvek esetében is szeretné letölteni vagy áthelyezni az adatok Azure Data Lake Storage Gen1:
 
-* Adatok áthelyezése más tárházakban való kapcsolat a meglévő adatfeldolgozási folyamatok. Például érdemes Data Lake Storage Gen1 adatok áthelyezése az Azure SQL Database vagy a helyszíni SQL Server.
-* Adatok letöltése a helyi számítógép prototípusok application készítése során IDE-környezetek feldolgozásra.
+* Más adattárakba helyezheti át az adatait a meglévő adatfeldolgozási folyamatokkal. Előfordulhat például, hogy át szeretné helyezni az adatok Data Lake Storage Gen1ról Azure SQL Database vagy helyszíni SQL Serverre.
+* Az alkalmazások prototípusának kiépítése során az IDE-környezetekben tárolt adatfeldolgozási folyamatokat a helyi számítógépre töltheti le.
 
-![Kimenő forgalom a Data Lake Storage Gen1 adatait](./media/data-lake-store-data-scenarios/egress-data.png "kimenő forgalom a Data Lake Storage Gen1 adatait")
+![Kimenő adatok Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/egress-data.png "Kimenő adatok Data Lake Storage Gen1")
 
-Ilyen esetben a következő lehetőségek bármelyikét használhatja:
+Ilyen esetekben az alábbi lehetőségek közül választhat:
 
 * [Apache Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
 * [Azure Data Factory](../data-factory/copy-activity-overview.md)
 * [Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)
 
-Az alábbi módszerek használatával írja a saját adatokat letölteni a Data Lake Storage Gen1 parancsfájl/alkalmazást.
+A következő módszerekkel írhat saját parancsfájlt/alkalmazást az adatok Data Lake Storage Gen1 való letöltéséhez.
 
 * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [Azure Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md)
 
-## <a name="visualize-data-in-data-lake-storage-gen1"></a>Adatok megjelenítése a Data Lake Storage Gen1
-Szolgáltatások kombinációját használhatja létrehozása a Data Lake Storage Gen1 tárolt adatok vizuális ábrázolásai.
+## <a name="visualize-data-in-data-lake-storage-gen1"></a>Az Data Lake Storage Gen1ban lévő adatmegjelenítés
+A szolgáltatások együttes használatával a Data Lake Storage Gen1ban tárolt adatvizualizációk is létrehozhatók.
 
-![Adatok megjelenítése a Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/visualize-data.png "adatok megjelenítése a Data Lake Storage Gen1")
+![Az Data Lake Storage Gen1ban lévő adatmegjelenítés](./media/data-lake-store-data-scenarios/visualize-data.png "Az Data Lake Storage Gen1ban lévő adatmegjelenítés")
 
-* Első lépésként használatával [Azure Data Factoryben az adatok áthelyezése az Azure SQL Data Warehouse Data Lake Storage Gen1](../data-factory/copy-activity-overview.md)
-* Ezt követően is [Power BI integrálható az Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) hozhat létre az adatok vizuális megjelenítése.
+* A Azure Data Factory használatával elindíthatja az [adatok áthelyezését Data Lake Storage Gen1ról Azure SQL Data Warehouse](../data-factory/copy-activity-overview.md)
+* Ezt követően [integrálhatja a Power BIt Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) segítségével vizuálisan jelenítheti meg az adatmegjelenítést.

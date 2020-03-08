@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (AVS) – virtuális gép létrehozása az Azure-ban VM-sablonokkal
-description: Ismerteti, hogyan hozhat létre virtuális gépeket az Azure-ban virtuálisgép-sablonokkal az AVS Private Cloud-hoz készült VMware-infrastruktúrában
+title: Azure VMware Solution by CloudSimple – virtuális gép létrehozása az Azure-ban virtuálisgép-sablonokkal
+description: Ismerteti, hogyan hozhat létre virtuális gépeket az Azure-ban virtuálisgép-sablonokkal a saját CloudSimple-felhőhöz készült VMware-infrastruktúrában
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,45 +8,45 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 533aaab13f1b957e709f66b23b511fc199ee0285
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77015201"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360763"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>Virtuális gép létrehozása az Azure-ban virtuálisgép-sablonok használatával a VMware-infrastruktúrában
 
-Létrehozhat egy virtuális gépet a Azure Portalban virtuálisgép-sablonok használatával a VMware-infrastruktúrában, amelyhez az AVS-rendszergazda engedélyezte az előfizetését.
+Létrehozhat egy virtuális gépet a Azure Portal a VMware-infrastruktúrában található virtuálisgép-sablonok használatával, amelyekkel a CloudSimple rendszergazdája engedélyezte az előfizetését.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
-## <a name="create-avs-virtual-machine"></a>AVS-beli virtuális gép létrehozása
+## <a name="create-cloudsimple-virtual-machine"></a>CloudSimple virtuális gép létrehozása
 
 1. Válassza az **Összes szolgáltatás** elemet.
 
-2. Az **AVS Virtual Machines**keresése.
+2. Keresse meg a **CloudSimple Virtual Machines**.
 
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson az **Hozzáadás** parancsra.
 
-    ![AVS-beli virtuális gép létrehozása](media/create-cloudsimple-virtual-machine.png)
+    ![CloudSimple virtuális gép létrehozása](media/create-cloudsimple-virtual-machine.png)
 
 4. Adja meg az alapszintű adatokat kattintson a **Tovább gombra: méret**.
 
     > [!NOTE]
-    > Az Azure-ban az AVS virtuális gépek létrehozásához virtuálisgép-sablon szükséges. A virtuálisgép-sablonnak léteznie kell a saját Felhőbeli vCenter. Hozzon létre egy virtuális gépet a saját felhőben a vCenter felhasználói felületén a kívánt operációs rendszerrel és konfigurációkkal. Hozzon létre egy sablont a [virtuális gép klónozása a vSphere webes ügyfélben lévő sablonban](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-FE6DE4DF-FAD0-4BB0-A1FD-AFE9A40F4BFE_copy.html)található utasítások használatával.
+    > A CloudSimple virtuális gépek Azure-beli létrehozásához virtuálisgép-sablon szükséges.  A virtuálisgép-sablonnak léteznie kell a saját Felhőbeli vCenter.  Hozzon létre egy virtuális gépet a saját felhőben a vCenter felhasználói felületén a kívánt operációs rendszerrel és konfigurációkkal.  Hozzon létre egy sablont a [virtuális gép klónozása a vSphere webes ügyfélben lévő sablonban](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-FE6DE4DF-FAD0-4BB0-A1FD-AFE9A40F4BFE_copy.html)található utasítások használatával.
 
-    ![AVS-alapú virtuális gép létrehozása – alapismeretek](media/create-cloudsimple-virtual-machine-basic-info.png)
+    ![CloudSimple virtuális gép létrehozása – alapismeretek](media/create-cloudsimple-virtual-machine-basic-info.png)
 
     | Mező | Leírás |
     | ------------ | ------------- |
     | Előfizetést | A saját felhőhöz társított Azure-előfizetés.  |
     | Erőforráscsoport | Az erőforráscsoport, amelyhez a virtuális gép hozzá lesz rendelve. Választhat egy meglévő csoportot, vagy létrehozhat egy újat. |
     | Name (Név) | A virtuális gép azonosítására szolgáló név.  |
-    | Földrajzi egység | Az az Azure-régió, amelyben a virtuális gép üzemeltetve van.  |
-    | Magánfelhő | Az AVS Private Cloud, ahol létre szeretné hozni a virtuális gépet. |
+    | Hely | Az az Azure-régió, amelyben a virtuális gép üzemeltetve van.  |
+    | Magánfelhő | CloudSimple, ahol létre szeretné hozni a virtuális gépet. |
     | Erőforráskészlet | A virtuális géphez hozzárendelt erőforráskészlet. Válasszon a rendelkezésre álló erőforráskészlet közül. |
     | vSphere-sablon | a virtuális gép vSphere-sablonja.  |
     | Felhasználónév | A virtuális gép rendszergazdájának felhasználóneve (Windows-sablonok esetén)|
@@ -54,42 +54,42 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 5. Válassza ki a virtuális gép számára a magok és a memória kapacitásának számát, majd kattintson a Next (tovább) gombra **: konfigurációk**. Jelölje be a jelölőnégyzetet, ha azt szeretné, hogy a teljes CPU-virtualizálás elérhető legyen a vendég operációs rendszer számára, hogy a hardveres virtualizációt igénylő alkalmazások bináris fordítás vagy paravirtualizációs nélkül is futtathatók legyenek a virtuális gépeken. További információkért lásd a [VMware hardveres virtualizációs szolgáltatás elérhetővé](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html)tételével foglalkozó cikket.
 
-    ![AVS virtuális gép létrehozása – méret](media/create-cloudsimple-virtual-machine-size.png)
+    ![CloudSimple virtuális gép létrehozása – méret](media/create-cloudsimple-virtual-machine-size.png)
 
 6. Konfigurálja a hálózati adaptereket és a lemezeket az alábbi táblázatokban leírtak szerint, és kattintson a **felülvizsgálat + létrehozás**gombra.
 
-    ![AVS-alapú virtuális gép létrehozása – konfigurációk](media/create-cloudsimple-virtual-machine-configurations.png)
+    ![CloudSimple virtuális gép létrehozása – konfigurációk](media/create-cloudsimple-virtual-machine-configurations.png)
 
     Hálózati adapterek esetében kattintson a **hálózati adapter hozzáadása** lehetőségre, és konfigurálja a következő beállításokat.
 
     | Vezérlés | Leírás |
     | ------------ | ------------- |
     | Name (Név) | Adja meg a felületet azonosító nevet.  |
-    | Network (Hálózat) | Válassza ki a saját Felhőbeli vSphere a konfigurált elosztott portok listájából.  |
+    | Hálózat | Válassza ki a saját Felhőbeli vSphere a konfigurált elosztott portok listájából.  |
     | Adapter | Válasszon ki egy vSphere-adaptert a virtuális géphez konfigurált elérhető típusok listájából. További információkért lásd a VMware tudásbázist a [virtuális gép hálózati adapterének kiválasztásával](https://kb.vmware.com/s/article/1001805)foglalkozó cikkben. |
     | Bekapcsolás rendszerindításkor | Adja meg, hogy engedélyezi-e a hálózati adapter hardverét a virtuális gép indításakor. Az alapértelmezett érték az **Engedélyezés**. |
 
     Lemezek esetében kattintson a **lemez hozzáadása** elemre, és konfigurálja a következő beállításokat.
 
-    | Tétel | Leírás |
+    | Elem | Leírás |
     | ------------ | ------------- |
     | Name (Név) | Adjon meg egy nevet a lemez azonosításához.  |
     | Méret | Válasszon ki egy rendelkezésre álló méretet.  |
     | SCSI-vezérlő | Válasszon ki egy SCSI-vezérlőt a lemezhez.  |
-    | Mód | Meghatározza, hogy a lemez hogyan vegyen részt a pillanatképekben. Válasszon egyet a következő lehetőségek közül: <br> – Független állandó: a lemezre írt összes adattal véglegesen írásra kerül.<br> – Független nem állandó: a lemezre írt módosítások a virtuális gép kikapcsolásakor vagy alaphelyzetbe állításakor törlődnek. A független, nem állandó mód lehetővé teszi, hogy a virtuális gépet mindig ugyanabban az állapotban indítsa újra. További információt a [VMware dokumentációjában](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)talál.
+    | Mód | Meghatározza, hogy a lemez hogyan vegyen részt a pillanatképekben. Válasszon egyet a következő lehetőségek közül: <br> – Független állandó: a lemezre írt összes adattal véglegesen írásra kerül.<br> – Független nem állandó: a lemezre írt módosítások a virtuális gép kikapcsolásakor vagy alaphelyzetbe állításakor törlődnek.  A független, nem állandó mód lehetővé teszi, hogy a virtuális gépet mindig ugyanabban az állapotban indítsa újra. További információt a [VMware dokumentációjában](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)talál.
 
 7. Az érvényesítés befejeződése után tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra. A módosítások elvégzéséhez kattintson a felül található lapfülekre, vagy kattintson a gombra.
 
-    ![AVS-alapú virtuális gép létrehozása – áttekintés](media/create-cloudsimple-virtual-machine-review.png)
+    ![CloudSimple virtuális gép létrehozása – áttekintés](media/create-cloudsimple-virtual-machine-review.png)
 
-## <a name="view-list-of-avs-virtual-machines"></a>AVS-beli virtuális gépek listájának megtekintése
+## <a name="view-list-of-cloudsimple-virtual-machines"></a>CloudSimple virtuális gépek listájának megtekintése
 
 1. Válassza az **Összes szolgáltatás** elemet.
 
-2. Az **AVS Virtual Machines**keresése.
+2. Keresse meg a **CloudSimple Virtual Machines**.
 
 3. Válassza ki, hogy a saját felhője hogyan lett létrehozva.
 
-    ![AVS-Virtual Machines listája](media/list-cloudsimple-virtual-machines.png)
+    ![A CloudSimple listája Virtual Machines](media/list-cloudsimple-virtual-machines.png)
 
-Az AVS virtuális gépek listája a Azure Portal-ból létrehozott virtuális gépeket tartalmazza.  A leképezett vCenter-erőforráskészlet saját Felhőbeli vCenter létrehozott virtuális gépek megjelennek a listában.  
+A CloudSimple virtuális gépek listája a Azure Portal-ból létrehozott virtuális gépeket tartalmazza.  A leképezett vCenter-erőforráskészlet saját Felhőbeli vCenter létrehozott virtuális gépek megjelennek a listában.  

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048165"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356745"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -197,10 +197,10 @@ Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat
 | Dél-India | 12076:51019 | 12076:52019 | 12076:53019 | 12076:54019 |
 | Nyugat-India | 12076:51018 | 12076:52018 | 12076:53018 | 12076:54018 |
 | Közép-India | 12076:51017 | 12076:52017 | 12076:53017 | 12076:54017 |
-| **Korea** | |
+| **Dél-Korea** | |
 | Dél-Korea déli régiója | 12076:51028 | 12076:52028 | 12076:53028 | 12076:54028 |
 | Dél-Korea középső régiója | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 |
-| **Dél-Afrika**| |
+| **Dél-afrikai Köztársaság**| |
 | Dél-Afrika északi régiója | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
 | Dél-Afrika nyugati régiója | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
 | **Egyesült Arab Emírségek**| |

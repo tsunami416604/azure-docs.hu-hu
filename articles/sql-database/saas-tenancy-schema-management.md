@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/19/2018
 ms.openlocfilehash: b6802d97b964b8863f6c2fce0cebfe16782b46fe
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822014"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397172"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>A sémák kezelése SaaS-alkalmazásokban az adatbázis-bérlői minta használatával Azure SQL Database
  
@@ -24,7 +24,7 @@ Az adatbázis-alkalmazások fejlődése során az adatbázis-séma vagy a hivatk
 
 Ez az oktatóanyag két forgatókönyvet mutat be – a hivatkozási adatok frissítéseinek üzembe helyezése az összes bérlő számára, valamint a hivatkozási adatokkal rendelkező tábla indexének újraépítése. A [rugalmas feladatok](elastic-jobs-overview.md) funkció használatával végrehajthatja ezeket a műveleteket az összes bérlői adatbázison és az új bérlői adatbázisok létrehozásához használt sablon-adatbázison.
 
-Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > 
@@ -37,11 +37,11 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
 * A Wingtip jegyek SaaS-adatbázisa egy bérlői alkalmazáson van üzembe helyezve. Ha kevesebb, mint öt perc alatt kíván üzembe helyezni, tekintse meg [a Wingtip tickets SaaS-adatbázis üzembe helyezése és megismerése bérlői alkalmazásokban](saas-dbpertenant-get-started-deploy.md)
-* Az Azure PowerShell telepítve van. Részletes információk: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
+* Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * Telepítve van az SQL Server Management Studio (SSMS) legújabb verziója. [Az SSMS letöltése és telepítése](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 > [!NOTE]
-> Ez az oktatóanyag egy korlátozott előzetes verzióban (rugalmas adatbázis-feladatok) található SQL Database szolgáltatás funkcióit használja. Ha ezt az oktatóanyagot szeretné elvégezni, adja meg az előfizetés AZONOSÍTÓját SaaSFeedback@microsoft.com tulajdonos = rugalmas feladatok előzetes verziójával. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előzetes verzió korlátozott, ezért vegye fel a kapcsolatot a következővel: SaaSFeedback@microsoft.com a kapcsolódó kérdésekhez vagy támogatáshoz.
+> Ez az oktatóanyag egy korlátozott előzetes verzióban (rugalmas adatbázis-feladatok) található SQL Database szolgáltatás funkcióit használja. Ha ezt az oktatóanyagot szeretné elvégezni, adja meg az előfizetési azonosítót SaaSFeedback@microsoft.com tulajdonos = rugalmas feladatok előzetes verziójával. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előzetes verzió korlátozott, ezért lépjen kapcsolatba SaaSFeedback@microsoft.com a kapcsolódó kérdésekkel vagy támogatással kapcsolatban.
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Az SaaS-séma felügyeleti mintáinak bemutatása
 
@@ -55,7 +55,7 @@ Az adatbázis/bérlői minta elkülöníti a bérlői adatmennyiséget, de növe
 A rugalmas feladatok új verziója már a Azure SQL Database integrált szolgáltatása. Ez Elastic Jobs-nak ez az új verziója jelenleg korlátozott előzetes verzió. Ez a korlátozott előzetes verzió jelenleg a PowerShell használatával teszi lehetővé a feladatok ügynökének létrehozását és a T-SQL-T a feladatok létrehozásához és kezeléséhez.
 
 > [!NOTE]
-> Ez az oktatóanyag egy korlátozott előzetes verzióban (rugalmas adatbázis-feladatok) található SQL Database szolgáltatás funkcióit használja. Ha ezt az oktatóanyagot szeretné elvégezni, adja meg az előfizetés AZONOSÍTÓját SaaSFeedback@microsoft.com tulajdonos = rugalmas feladatok előzetes verziójával. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előzetes verzió korlátozott, ezért vegye fel a kapcsolatot a következővel: SaaSFeedback@microsoft.com a kapcsolódó kérdésekhez vagy támogatáshoz.
+> Ez az oktatóanyag egy korlátozott előzetes verzióban (rugalmas adatbázis-feladatok) található SQL Database szolgáltatás funkcióit használja. Ha ezt az oktatóanyagot szeretné elvégezni, adja meg az előfizetési azonosítót SaaSFeedback@microsoft.com tulajdonos = rugalmas feladatok előzetes verziójával. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előzetes verzió korlátozott, ezért lépjen kapcsolatba SaaSFeedback@microsoft.com a kapcsolódó kérdésekkel vagy támogatással kapcsolatban.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip tickets SaaS-adatbázis beszerzése bérlői alkalmazás parancsfájljai alapján
 
@@ -77,7 +77,7 @@ A Wingtip tickets alkalmazásban a bérlői adatbázisok a támogatott helyszín
 Először tekintse át az egyes bérlői adatbázisokban található helyszín típusait. Kapcsolódjon SQL Server Management Studio (SSMS) egyik bérlői adatbázisához, és vizsgálja meg a VenueTypes táblát.  Ezt a táblázatot a Azure Portal lekérdezés-szerkesztőjében is lekérdezheti, amely az adatbázis lapról érhető el. 
 
 1. Nyissa meg a SSMS, és kapcsolódjon a bérlői kiszolgálóhoz: *tenants1-DPT-&lt;user&gt;. database.Windows.net*
-1. Annak megerősítéséhez, hogy a *motorkerékpár-verseny* és **az** *úszás Club* jelenleg nem szerepel, keresse meg a _contosoconcerthall_ -adatbázist a *tenants1-DPT-&lt;felhasználói&gt;* kiszolgálón, és kérdezze le a *VenueTypes* tábla.
+1. Annak ellenőrzéséhez, hogy a *motorkerékpár-verseny* és **az** *úszás Club* jelenleg nem szerepel, keresse meg a _contosoconcerthall_ -adatbázist a *tenants1-DPT-&lt;felhasználói&gt;* kiszolgálón, és kérdezze le a *VenueTypes* táblát.
 
 Most hozzon létre egy feladatot, amely frissíti a *VenueTypes* táblát az összes bérlői adatbázisban az új helyszín típusának hozzáadásához.
 
@@ -116,9 +116,9 @@ Figyelje meg a következő elemeket a _Sémakezelés. SQL_ parancsfájlban:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
+Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
 
 > [!div class="checklist"]
 > 
@@ -129,7 +129,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Ezután próbálja ki az [ad hoc jelentéskészítési oktatóanyagot](saas-tenancy-cross-tenant-reporting.md) , és vizsgálja meg a bérlői adatbázisok közötti elosztott lekérdezések futtatását.
 
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 * [További oktatóanyagok, amelyek az Wingtip tickets SaaS-adatbázisra épülnek a bérlői alkalmazások üzembe helyezése után](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Kiterjesztett felhőalapú adatbázisok kezelése](elastic-jobs-overview.md)

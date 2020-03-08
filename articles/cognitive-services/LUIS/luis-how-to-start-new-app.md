@@ -1,7 +1,7 @@
 ---
 title: Új alkalmazás létrehozása – LUIS
 titleSuffix: Azure Cognitive Services
-description: Alkalmazások létrehozása és kezelése a Language Understanding (LUIS) weblapon.
+description: Létrehozhat és kezelhet az alkalmazások, a Language Understanding (LUIS) weblapon.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
 ms.openlocfilehash: d3f8696388a33a8ea112aae438c6bbe9af520c61
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904271"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390070"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Új LUIS-alkalmazás létrehozása a LUIS portálon
-A LUIS-alkalmazások többféleképpen is létrehozhatók. Luis-alkalmazást a LUIS-portálon vagy a LUIS authoring [API](developer-reference-resource.md)-kon keresztül hozhat létre.
+Nincsenek többféle módon LUIS-alkalmazások létrehozásához. Luis-alkalmazást a LUIS-portálon vagy a LUIS authoring [API](developer-reference-resource.md)-kon keresztül hozhat létre.
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="using-the-luis-portal"></a>A LUIS-portál használata
+## <a name="using-the-luis-portal"></a>A LUIS-portál használatával
 
 A betekintő portálon többféleképpen is létrehozhat egy új alkalmazást:
 
-* Kezdjen egy üres alkalmazással, és hozzon létre leképezéseket, hosszúságú kimondott szöveg és entitásokat.
+* Üres alkalmazás kezdődhet, és szándék fog vonatkozni, utterances és entitások létrehozásához.
 * Kezdjen egy üres alkalmazással, és adjon hozzá egy [előre elkészített tartományt](luis-how-to-use-prebuilt-domains.md).
 * Egy LUIS-alkalmazás importálása `.lu` vagy `.json` fájlból, amely már tartalmaz szándékokat, hosszúságú kimondott szöveg és entitásokat.
 
-## <a name="using-the-authoring-apis"></a>A szerzői API-k használata
-Több módon is létrehozhat egy új alkalmazást a szerzői API-kkal:
+## <a name="using-the-authoring-apis"></a>Az Authoring Tool API-k használatával
+Az Authoring Tool API-khoz többféle módon hozhat létre egy új alkalmazást:
 
 * [Alkalmazás hozzáadása](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f) – kezdje üres alkalmazással, és hozzon létre leképezéseket, hosszúságú kimondott szöveg és entitásokat.
 * Előre elkészített [alkalmazás hozzáadása](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/59104e515aca2f0b48c76be5) – kezdés egy előre elkészített tartománnyal, beleértve a szándékokat, a hosszúságú kimondott szöveg és az entitásokat.  
@@ -45,7 +45,7 @@ Több módon is létrehozhat egy új alkalmazást a szerzői API-kkal:
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
-## <a name="create-new-app-in-luis"></a>Új alkalmazás létrehozása a LUIS-ban
+## <a name="create-new-app-in-luis"></a>Új alkalmazás létrehozása a LUIS
 
 1. A **saját alkalmazások** oldalon válassza ki az előfizetését, és **hozzon létre**egy erőforrást, majd a + létrehozás elemet. Ha ingyenes próbaverziós kulcsot használ, Ismerje meg, hogyan [hozhat létre authoring-erőforrásokat](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
 
@@ -54,7 +54,7 @@ Több módon is létrehozhat egy új alkalmazást a szerzői API-kkal:
 
 1. A párbeszédpanelen adja meg az alkalmazás nevét, például `Pizza Tutorial`.
 
-    ![Új alkalmazás létrehozása párbeszédpanel](./media/create-pizza-tutorial-app-in-portal.png)
+    ![Hozzon létre új alkalmazás párbeszédpanel](./media/create-pizza-tutorial-app-in-portal.png)
 
 1. Válassza ki az alkalmazás kulturális környezetét, majd válassza a **kész**lehetőséget. A leírás és az előrejelzési erőforrás ezen a ponton nem kötelező. Ezt követően bármikor megadhatja a portál **kezelés** szakaszában.
 

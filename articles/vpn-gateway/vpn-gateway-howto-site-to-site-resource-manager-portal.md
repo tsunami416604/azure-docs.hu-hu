@@ -6,21 +6,21 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2e6aeda0e84b11221af110bda738d6d93f258978
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 857b50a04466f43a25cf80d7930cfb4639dc9d65
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894991"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391142"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Helyek közötti kapcsolat létrehozása az Azure Portalon
 
 Ez a cikk bemutatja, hogyan használhatja az Azure Portalt egy helyek közötti VPN-átjárókapcsolat létrehozására egy helyszíni hálózat és a Vnet között. A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre vonatkoznak. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure Portalra](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [Parancssori felület](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -31,7 +31,7 @@ A helyek közötti VPN-átjárókapcsolat használatával kapcsolat hozható lé
 
 ![Helyek közötti VPN Gateway létesítmények közötti kapcsolathoz – diagram](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
@@ -51,7 +51,7 @@ A cikkben szereplő példák a következő értékeket használják. Ezekkel az 
 * **Alhálózat:** Előtér: 10.1.0.0/24, Háttér: 10.1.1.0/24 (nem kötelező ehhez a gyakorlathoz)
 * **Átjáró-alhálózati címtartomány:** 10.1.255.0/27
 * **Virtuális hálózati átjáró neve:** VNet1GW
-* **Nyilvános IP-cím neve:** VNet1GWIP
+* **Nyilvános IP-cím neve:** VNet1GWpip
 * **VPN típusa:** útvonalalapú
 * **Kapcsolattípus:** Helyek közötti (IPsec)
 * **Átjáró típusa:** VPN
@@ -61,11 +61,11 @@ A cikkben szereplő példák a következő értékeket használják. Ezekkel az 
 
 ## <a name="CreatVNet"></a>1. virtuális hálózat létrehozása
 
-[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
+[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
 ## <a name="VNetGateway"></a>2. a VPN-átjáró létrehozása
 
-Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fogja létrehozni. Az átjáró létrehozása akár 45 percet vagy hosszabb időt is igénybe vehet a választott átjáró-termékváltozattól függően.
+Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fogja létrehozni. Az átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
@@ -77,7 +77,7 @@ Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fo
 * **Példány részletei > átjáró típusa:** VPN-
 * **Példány részletei > VPN-típus:** Route-alapú
 * **Virtual Network > átjáró-alhálózati címtartomány:** 10.1.255.0/27
-* **Nyilvános IP-cím > nyilvános IP-cím neve:** VNet1GWIP
+* **Nyilvános IP-cím > nyilvános IP-cím neve:** VNet1GWpip
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 

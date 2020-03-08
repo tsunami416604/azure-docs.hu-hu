@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465218"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362749"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure-ExpressRoute Azure Site Recovery
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan használható az Azure ExpressRoute a Azure Site
 
 ## <a name="expressroute-circuits"></a>ExpressRoute-kapcsolatcsoportok
 
-A ExpressRoute áramkör a helyszíni infrastruktúra és a Microsoft Cloud Services közötti logikai kapcsolatot jelenti a kapcsolat szolgáltatóján keresztül. Több ExpressRoute-áramkört is rendelhet. Minden áramkör lehet azonos vagy különböző régiókban, és a különböző kapcsolati szolgáltatókon keresztül csatlakozhat a telephelyéhez. További információ az ExpressRoute- [áramkörökről](../expressroute/expressroute-circuit-peerings.md).
+ExpressRoute-kapcsolatcsoport a helyszíni infrastruktúra és a egy kapcsolatszolgáltatón keresztül a Microsoft-felhőszolgáltatások közötti logikai kapcsolatot jelöli. Több ExpressRoute-Kapcsolatcsoportok rendezheti. Minden kapcsolatnak az azonos vagy eltérő régiókban is lehetnek, és a helyszíni eredetű különböző kapcsolatszolgáltatók keresztül lehet csatlakoztatni. További információ az ExpressRoute- [áramkörökről](../expressroute/expressroute-circuit-peerings.md).
 
 Egy ExpressRoute-áramkörhöz több útválasztási tartomány van társítva. További információ az ExpressRoute [útválasztási tartományokról](../expressroute/expressroute-circuit-peerings.md#peeringcompare)és azok összehasonlításáról.
 

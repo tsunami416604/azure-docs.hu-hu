@@ -4,11 +4,11 @@ description: Ebből a cikkből megtudhatja, hogyan kezelheti és figyelheti az A
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.openlocfilehash: a9462f8608fc5ae35255ac321a0742b3f1834fde
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390629"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382480"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Biztonsági másolattal rendelkező SAP HANA-adatbázisok kezelése és monitorozása
 
@@ -32,7 +32,7 @@ A figyeléssel kapcsolatos további információkért tekintse meg [a Azure Port
 
 A riasztások a SAP HANA adatbázisok biztonsági mentésének egyszerű figyelését jelentik. A riasztások segítséget nyújtanak a lehető legtöbbet a biztonsági másolatok által generált események sokaságának elvesztése nélkül. Azure Backup lehetővé teszi a riasztások beállítását, és a következőképpen figyelhetők:
 
-* Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+* Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 * A tároló irányítópultján válassza a **biztonsági mentési riasztások**lehetőséget.
 
   ![Biztonsági mentési riasztások a tároló irányítópultján](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
@@ -63,7 +63,7 @@ A biztonsági mentések a szabályzat ütemezésével összhangban futnak. Az ig
 
 1. A tároló menüjében kattintson a **biztonsági másolati elemek elemre**.
 2. A **biztonsági másolati elemek**területen válassza ki a SAP HANA adatbázist futtató virtuális gépet, majd kattintson a **biztonsági mentés**elemre.
-3. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ezután kattintson az **OK** gombra.
+3. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Végül kattintson az **OK** gombra.
 4. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > a **biztonsági mentési feladatok** > **folyamatban**van. Az adatbázis méretétől függően a kezdeti biztonsági mentés hosszabb időt is igénybe vehet.
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>Natív ügyfél biztonsági mentésének futtatása az Azure Backup szolgáltatást használó adatbázison SAP HANA

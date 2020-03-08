@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: a50dbe4d1e100032282891ccd15a94330f7fead4
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272974"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373378"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafikus szerzői műveletek Azure Automation
 
@@ -39,11 +39,11 @@ A vászon vezérlőelem lehetővé teszi a runbook megtervezését. Hozzáadhat 
 
 A könyvtár vezérlőelem lehetővé teszi, hogy kiválassza a runbook hozzáadni kívánt [tevékenységeket](#activities) . Hozzáadja őket a vászonhoz, ahol más tevékenységekhez is csatlakozhat. A könyvtár vezérlőelem a következő táblázatban definiált szakaszt tartalmazza.
 
-| Section | Leírás |
+| Szakasz | Leírás |
 |:--- |:--- |
 | Parancsmagok |Az összes olyan parancsmag, amely használható a runbook. A parancsmagok modul szerint vannak rendszerezve. Az Automation-fiókba telepített összes modul elérhető. |
 | Runbookok |Az Automation-fiók runbookok. Ezeket a runbookok felveheti a vászonra, hogy gyermek runbookok lehessen használni. Csak a szerkesztett runbook azonos alaptípusú runbookok jelennek meg. Grafikus runbookok csak a PowerShell-alapú runbookok jelennek meg. A grafikus PowerShell-munkafolyamat runbookok csak a PowerShell munkafolyamat-alapú runbookok jelennek meg. |
-| Objektumok |Az Automation-fiókban található [Automation-eszközök](/previous-versions/azure/dn939988(v=azure.100)) , amelyeket a runbook használhat. Egy eszköz runbook való hozzáadása egy munkafolyamat-tevékenységet ad hozzá, amely beolvassa a kijelölt objektumot. Változó eszközök esetén kiválaszthatja, hogy szeretne-e tevékenységet hozzáadni a változóhoz, vagy beállítja a változót. |
+| eszközök |Az Automation-fiókban található [Automation-eszközök](/previous-versions/azure/dn939988(v=azure.100)) , amelyeket a runbook használhat. Egy eszköz runbook való hozzáadása egy munkafolyamat-tevékenységet ad hozzá, amely beolvassa a kijelölt objektumot. Változó eszközök esetén kiválaszthatja, hogy szeretne-e tevékenységet hozzáadni a változóhoz, vagy beállítja a változót. |
 | Runbook-vezérlő |Az aktuális runbook használható vezérlési tevékenységek. A csatlakozási tevékenységek több bemenetet is igénybe vesznek, és addig vár, amíg az összes befejezve nem fejeződött be a munkafolyamat folytatása előtt. A kód tevékenység a grafikus runbook függően a PowerShell-vagy a PowerShell-munkafolyamat kódjának egy vagy több sorát futtatja. Ezt a tevékenységet egyéni kódokhoz vagy olyan funkciókhoz használhatja, amelyeket nehéz elérni más tevékenységekkel. |
 
 ### <a name="configuration-control"></a>Konfiguráció vezérlő

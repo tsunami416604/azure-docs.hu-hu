@@ -12,11 +12,11 @@ ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
 ms.openlocfilehash: 3f6bbef8f274c5efb99d5b98961450aa7b001527
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264865"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359951"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>A rugalmas készletek DTU beszerzési modell használatával történő korlátozása
 
@@ -39,7 +39,7 @@ SQL Database rugalmas készletek esetében az alábbi táblázatok az egyes szol
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Foglalt tárterület/készlet (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Tárolási lehetőségek maximális száma (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | – | – | – | – | – | – | – | – |
+| Memóriában tárolt OLTP-tárolók maximális száma (GB) | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. |
 | Adatbázisok maximális száma készletenként | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -54,7 +54,7 @@ SQL Database rugalmas készletek esetében az alábbi táblázatok az egyes szol
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Foglalt tárterület/készlet (GB) | 50 | 100 | 200 | 300 | 400 | 800 |
 | Tárolási lehetőségek maximális száma (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | – | – | – | – | – | – |
+| Memóriában tárolt OLTP-tárolók maximális száma (GB) | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. |
 | Adatbázisok maximális száma készletenként | 100 | 200 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -69,7 +69,7 @@ SQL Database rugalmas készletek esetében az alábbi táblázatok az egyes szol
 |:---|---:|---:|---:| ---: | ---: |
 | Foglalt tárterület/készlet (GB) | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Tárolási lehetőségek maximális száma (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | – | – | – | – | – |
+| Memóriában tárolt OLTP-tárolók maximális száma (GB) | N.A. | N.A. | N.A. | N.A. | N.A. |
 | Adatbázisok maximális száma készletenként | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -109,7 +109,7 @@ SQL Database rugalmas készletek esetében az alábbi táblázatok az egyes szol
 |||||||
 
 > [!IMPORTANT]
-> A prémium szinten több mint 1 TB tárterület érhető el az összes régióban, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország, Németország északkeleti régiója, az USA nyugati középső régiója, US DoD régiók és az USA kormányzati központja. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB.  További információ: [P11-P15 current korlátozások](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
+> A prémium szinten több mint 1 TB tárterület érhető el az összes régióban, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország, Németország északkeleti régiója, az USA nyugati középső régiója, US DoD régiók és az USA kormányzati központja. Ezekben a régiókban a prémium szintű Storage Max 1 TB-ra van korlátozva.  További információ: [P11-P15 current korlátozások](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
 
 Ha egy rugalmas készlet minden DTU-ja használatban van, akkor a készletben található minden adatbázis ugyanannyi erőforrást kap a lekérdezések feldolgozásához. Az SQL Database szolgáltatás egyenlő erőforrás-megosztást biztosít az adatbázisok között azáltal, hogy mindegyiküknek egyenlő szeleteket ad a számítási időből. A rugalmas készlet egyenlő erőforrás-megosztása hozzáadódik az egyes adatbázisok számára máshonnan garantált erőforrások mennyiségéhez, ha a minimális DTU/adatbázis érték nem 0-ra van állítva.
 

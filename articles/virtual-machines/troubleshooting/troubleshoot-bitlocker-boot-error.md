@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749669"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382677"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker rendszerindítási hibák egy Azure-beli virtuális gépen
 
@@ -25,7 +25,7 @@ ms.locfileid: "73749669"
 
  
 
-## <a name="symptom"></a>Hibajelenség
+## <a name="symptom"></a>Tünet
 
  Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a képernyőképeket a [rendszerindítási diagnosztika](../windows/boot-diagnostics.md) ablakban, a következő hibaüzenetek egyike jelenik meg:
 

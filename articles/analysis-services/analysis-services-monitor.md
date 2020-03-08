@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan Analysis Services az Azure Metrikaböngésző e
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9e6eab38e0f7bd55fa671aa8c1e99693eeb54c84
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: aaa3a6d128fe7dd466f6f60ab515f05fa38ba63b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572730"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375156"
 ---
 # <a name="monitor-server-metrics"></a>A kiszolgáló metrikáinak monitorozása
 
@@ -44,7 +44,7 @@ A táblázat segítségével meghatározhatja, hogy mely mérőszámok a legmegf
 |CurrentUserSessions|Aktuális felhasználói munkamenetek|Darabszám|Átlag|A létrejött felhasználói munkamenetek aktuális száma.|
 |mashup_engine_memory_metric|M motor memóriája|Bájt|Átlag|Memóriahasználat az adategyesítési motor folyamatai szerint|
 |mashup_engine_qpu_metric|M motor QPU|Darabszám|Átlag|QPU-használat az adategyesítési motor folyamatai szerint|
-|memory_metric|Memory (Memória)|Bájt|Átlag|Memória. 0-25 GB-os tartomány S1, 0-50 GB az S2 és 0-100 GB for S4 esetében|
+|memory_metric|Memória|Bájt|Átlag|Memória. 0-25 GB-os tartomány S1, 0-50 GB az S2 és 0-100 GB for S4 esetében|
 |memory_thrashing_metric|Memória-Kiverés|Százalék|Átlag|Memória átlagos kiverése.|
 |CleanerCurrentPrice|Memória: tisztító – aktuális ár|Darabszám|Átlag|A memória aktuális ára, a $ re normalizálva, 1000-ra normalizálva.|
 |CleanerMemoryNonshrinkable|Memória: nem csökkenthető a tisztább memória|Bájt|Átlag|A memória mennyisége (bájtban), amelyet a háttérben futó tisztító nem szabályoz.|
@@ -54,7 +54,7 @@ A táblázat segítségével meghatározhatja, hogy mely mérőszámok a legmegf
 |MemoryLimitLow|Memória: kevés a memória korlátja|Bájt|Átlag|Kevés a memória korlátja a konfigurációs fájlból.|
 |MemoryLimitVertiPaq|Memória: VertiPaq korlátja|Bájt|Átlag|Memóriabeli korlát a konfigurációs fájlból.|
 |MemoryUsage|Memória: memóriahasználat|Bájt|Átlag|A kiszolgálói folyamat memóriahasználat a tisztább memória árának kiszámításakor használt módon. Egyenlő a számláló Process\PrivateBytes és a memóriához rendelt adatmennyiséggel, figyelmen kívül hagyva a memóriát, amelyet a memória-elemzési motor (VertiPaq) leképezett vagy lefoglalt a memória korlátja felett.|
-|private_bytes_metric|Saját bájtok |Bájt|Átlag|A memória teljes mennyisége a Analysis Services motor folyamata és az adategyesítési tároló folyamatai lefoglalva, nem beleértve a más folyamatokkal megosztott memóriát.|
+|private_bytes_metric|Saját [nem megosztható] memória (bájt) |Bájt|Átlag|A memória teljes mennyisége a Analysis Services motor folyamata és az adategyesítési tároló folyamatai lefoglalva, nem beleértve a más folyamatokkal megosztott memóriát.|
 |virtual_bytes_metric|Virtuális bájtok |Bájt|Átlag|A Analysis Services motor és az adategyesítési tároló folyamatai által használt virtuális címtartomány jelenlegi mérete.|
 |mashup_engine_private_bytes_metric|M motor saját bájtjai |Bájt|Átlag|A memória-adategyesítési tároló folyamatainak teljes mennyisége kiosztott, és nem tartalmazza a más folyamatokkal megosztott memóriát.|
 |mashup_engine_virtual_bytes_metric|M motor virtuális bájtjai |Bájt|Átlag|A virtuális címtartomány összemashup-tároló folyamatainak jelenlegi mérete a.|

@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: 6e466675a9bd86693ce0ee048480712a55829ce6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280733"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386671"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei
 
@@ -107,7 +107,7 @@ Egy folyamat JSON-formátumban való meghatározása a következő módon tört�
 
 Címke | Leírás | Típus | Kötelező
 --- | ----------- | ---- | --------
-név | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzással kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „*”, „%”, „&”, „:”, „\”</li></ul> | Sztring | Igen
+név | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzással kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\”</li></ul> | Sztring | Igen
 leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | Sztring | Nem
 tevékenységek | A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek JSON-elemeiről részletes információkat a [Tevékenység JSON-fájlja](#activity-json) szakaszban talál. | Tömb | Igen
 paraméterek | Az adott folyamat **paraméterek** szakaszában egy vagy több paraméter adható meg, így a folyamat rugalmasan újrafelhasználható. | Lista | Nem
@@ -142,7 +142,7 @@ Az alábbi táblában a tevékenység JSON-definíciójában lévő tulajdonság
 
 Címke | Leírás | Kötelező
 --- | ----------- | ---------
-név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel vagy aláhúzással (\_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „*”, „%”, „&”, „:”, „\” | Igen</li></ul>
+név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel vagy aláhúzással (\_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li></ul>
 leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
 type | A tevékenység típusa. A különböző tevékenységtípusokkal kapcsolatban lásd az [adattovábbítási tevékenységeket](#data-movement-activities), az [adat-átalakítási tevékenységeket](#data-transformation-activities) és a [vezérlési tevékenységeket](#control-flow-activities). | Igen
 linkedServiceName | A tevékenység által használt társított szolgáltatás neve.<br/><br/>Egy adott tevékenység megkövetelheti annak a társított szolgáltatásnak a megadását, amely a szükséges számítási környezethez kapcsolódik. | HDInsight-tevékenységek, Azure Machine Learning kötegelt pontozási tevékenységek, tárolt eljárási tevékenységek esetében: igen. <br/><br/>Minden egyéb esetében: nem
@@ -207,7 +207,7 @@ A vezérlési tevékenységek az alábbi felső szintű struktúrával rendelkez
 
 Címke | Leírás | Kötelező
 --- | ----------- | --------
-név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel vagy aláhúzással (\_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „*”, „%”, „&”, „:”, „\” | Igen</li><ul>
+név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel vagy aláhúzással (\_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li><ul>
 leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
 type | A tevékenység típusa. A különböző tevékenységtípusokkal kapcsolatban lásd az [adattovábbítási tevékenységeket](#data-movement-activities), az [adat-átalakítási tevékenységeket](#data-transformation-activities) és a [vezérlési tevékenységeket](#control-flow-activities). | Igen
 typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | Nem
@@ -307,7 +307,7 @@ Az alábbi mintafolyamat **tevékenységek** szakaszában egyetlen **Másolás**
   }
 }
 ```
-Vegye figyelembe a következő szempontokat:
+Vegye figyelembe a következő pontokat:
 
 - A tevékenységek szakaszban csak egyetlen tevékenység van, amelynek a **típusa** **Copy** értékre van beállítva.
 - A tevékenység bemenetének beállítása **InputDataset**, a kimeneté pedig **OutputDataset**. Az adatkészletek JSON-fáljban történő meghatározását lásd az [Adatkészletek](concepts-datasets-linked-services.md) cikket.
@@ -354,7 +354,7 @@ Az alábbi mintafolyamat **tevékenységek** szakaszában egyetlen **HDInsightHi
     }
 }
 ```
-Vegye figyelembe a következő szempontokat:
+Vegye figyelembe a következő pontokat:
 
 - A tevékenységek szakaszban csak egyetlen tevékenység van, amelynek a **típusa** **HDInsightHive** értékre van beállítva.
 - A **partitionweblogs.hql** Hive-parancsfájl tárolása az Azure Storage-fiókban (az AzureStorageLinkedService nevű scriptLinkedService szolgáltatás által megadva), és az `adfgetstarted` tároló script mappájában történik.

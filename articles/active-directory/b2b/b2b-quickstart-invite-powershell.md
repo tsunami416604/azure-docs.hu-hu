@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50c283122fe707e922275b6c1a6c576009964855
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273358"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377756"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Rövid útmutató: Vendégfelhasználó hozzáadása PowerShell-lel
 
@@ -56,13 +56,13 @@ Ha az AzureADPreview modul anélkül megjelenik anélkül, hogy újabb verzióra
    Install-Module AzureADPreview 
   ```
 
-Előfordulhat, hogy kap egy kérdést, hogy a modult nem megbízható tárházból telepíti. Ez akkor fordul elő, ha korábban még nem állította be megbízható tárháznak a PSGallery tárházat. Nyomja meg **Y**-t a modul telepítéséhez.
+Előfordulhat, hogy kap egy kérdést, hogy a modult nem megbízható tárházból telepíti. Ez akkor fordul elő, ha korábban még nem állította be megbízható tárháznak a PSGallery tárházat. Nyomja meg az **Y-t** a modul telepítéséhez.
 
 ### <a name="get-a-test-email-account"></a>Teszt e-mail-fiók létrehozása
 
 Szüksége lesz egy próba e-mail fiókra, ahova a meghívót küldheti. A fióknak a szervezeten kívülinek kell lennie. Bármilyen típusú fiókot használhat, közösségi fiókot is például gmail.com vagy Outlook.com-os e-mail címet.
 
-## <a name="sign-in-to-your-tenant"></a>Bejelentkezés bérlőhöz
+## <a name="sign-in-to-your-tenant"></a>Bejelentkezés a bérlőbe
 
 Futtassa a következő parancsot a bérlőtartományhoz való csatlakozáshoz:
 
@@ -82,7 +82,7 @@ Amikor a rendszer erre kéri, adja meg a hitelesítő adatait.
    ```
 2. A parancs elküldi a meghívót a megadott e-mail-címre. Ellenőrizze a kimenetet, aminek a következőképpen kell kinéznie:
 
-   ![Felhasználói elfogadásra várakozást mutató PowerShell kimenet](media/quickstart-invite-powershell/powershell-azureadmsinvitation-result.png)
+   ![Felhasználói elfogadásra várakozást mutató PowerShell-kimenet](media/quickstart-invite-powershell/powershell-azureadmsinvitation-result.png)
 
 ## <a name="verify-the-user-exists-in-the-directory"></a>A felhasználó létezésének ellenőrzése a címtárban
 
@@ -105,7 +105,7 @@ Ha már nincs rá szükség, törölheti a tesztfelhasználói fiókot a címtá
 Például:`Remove-AzureADUser -ObjectId "sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban egyetlen vendégfelhasználót hívtunk meg és adtunk hozzá a címtárhoz a PowerShell használatával. Ezután megnézzük, hogyan lehet a PowerShell segítségével vendégfelhasználókat tömegesen meghívni.
 
 > [!div class="nextstepaction"]

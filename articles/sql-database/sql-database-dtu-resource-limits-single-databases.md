@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
 ms.openlocfilehash: a4c435b4874301fe6fb804085c5b265954cd4f5a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75637592"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359922"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>Az DTU beszerzési modellt használó önálló adatbázisok erőforrás-korlátai
 
@@ -31,14 +31,14 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 > [!IMPORTANT]
 > Az útmutatás és a megfontolások méretezésével kapcsolatban lásd: [önálló adatbázis skálázása](sql-database-single-database-scale.md)
 
-### <a name="basic-service-tier"></a>Alapszintű szolgáltatáscsomag
+### <a name="basic-service-tier"></a>Alapszintű szolgáltatási szint
 
 | **Számítási méret** | **Basic** |
 | :--- | --: |
 | DTU-k maximális száma | 5 |
 | Belefoglalt tárterület (GB) | 2 |
 | Maximális tárolási lehetőségek (GB) | 2 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) |– |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) |N/A |
 | Egyidejű feldolgozók maximális száma (kérelem) | 30 |
 | Egyidejű munkamenetek maximális száma | 300 |
 |||
@@ -49,14 +49,14 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 >Az adattárolásra vonatkozó alapszintű szolgáltatási szintet a standard oldal Blobokra helyezi. A standard oldal Blobok a merevlemezes (HDD-) alapú tárolóeszközöket használják, és a leghatékonyabb fejlesztéshez, teszteléshez és más, ritkán használt számítási feladatokhoz, amelyek kevésbé érzékenyek a teljesítmény változékonyságára.
 >
 
-### <a name="standard-service-tier"></a>Standard szintű szolgáltatáscsomag
+### <a name="standard-service-tier"></a>Standard szolgáltatási szint
 
 | **Számítási méret** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
 | DTU-k maximális száma | 10 | 20 | 50 | 100 |
 | Belefoglalt tárterület (GB) | 250 | 250 | 250 | 250 |
 | Maximális tárolási lehetőségek (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) | – | – | – | – |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) | N/A | N/A | N/A | N/A |
 | Egyidejű feldolgozók maximális száma (kérelem)| 60 | 90 | 120 | 200 |
 | Egyidejű munkamenetek maximális száma |600 | 900 | 1200 | 2400 |
 ||||||
@@ -74,18 +74,18 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 | DTU-k maximális száma | 200 | 400 | 800 | 1600 | 3000 |
 | Belefoglalt tárterület (GB) | 250 | 250 | 250 | 250 | 250 |
 | Maximális tárolási lehetőségek (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) | – | – | – | – |– |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) | N/A | N/A | N/A | N/A |N/A |
 | Egyidejű feldolgozók maximális száma (kérelem)| 400 | 800 | 1600 | 3200 |6000 |
 | Egyidejű munkamenetek maximális száma |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
 
-### <a name="premium-service-tier"></a>Prémium szintű szolgáltatáscsomag
+### <a name="premium-service-tier"></a>Prémium szolgáltatási szint
 
 | **Számítási méret** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | DTU-k maximális száma | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| Belefoglalt tárterület (GB) | 500 | 500 | 500 | 500 | 4096 * | 4096 * |
-| Maximális tárolási lehetőségek (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 * | 4096 * |
+| Belefoglalt tárterület (GB) | 500 | 500 | 500 | 500 | 4096* | 4096* |
+| Maximális tárolási lehetőségek (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096* | 4096* |
 | Memóriában tárolt OLTP-k maximális tárterülete (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Egyidejű feldolgozók maximális száma (kérelem)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | Egyidejű munkamenetek maximális száma | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -94,7 +94,7 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 \* 1024 GB-ig 4096 GB-onként 256 GB-os növekményekben
 
 > [!IMPORTANT]
-> A prémium szinten több mint 1 TB tárterület érhető el az összes régióban, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország, Németország északkeleti régiója, az USA nyugati középső régiója, US DoD régiók és az USA kormányzati központja. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB.  További információ: [P11-P15 current korlátozások](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
+> A prémium szinten több mint 1 TB tárterület érhető el az összes régióban, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország, Németország északkeleti régiója, az USA nyugati középső régiója, US DoD régiók és az USA kormányzati központja. Ezekben a régiókban a prémium szintű Storage Max 1 TB-ra van korlátozva.  További információ: [P11-P15 current korlátozások](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
 > [!NOTE]
 > `tempdb` korlátok esetében lásd: [tempdb korlátok](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 

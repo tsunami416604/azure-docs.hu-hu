@@ -15,13 +15,13 @@ ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
 ms.openlocfilehash: f58bb534728660b85f7d16910dde7a37914fd571
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933960"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387826"
 ---
-# <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Magas rendelkezésre állás és vészhelyreállítás az Azure-beli SQL Server-alapú virtuális gépeken
+# <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Magas rendelkezésre állás és vész-helyreállítási SQL Server az Azure-ban Virtual Machines
 
 Microsoft Azure virtuális gépek (VM-EK) SQL Server segítségével csökkenthetik a magas rendelkezésre állású és vész-helyreállítási (HADR) adatbázis-megoldás költségeit. A legtöbb SQL Server HADR-megoldás támogatott az Azure Virtual Machines szolgáltatásban, akár csak Azure-, akár hibrid megoldásként. Egy csak Azure-megoldásban a teljes HADR rendszer fut az Azure-ban. A hibrid konfigurációban a megoldás egy része az Azure-ban fut, a másik pedig a helyszínen fut a szervezeten belül. Az Azure-környezet rugalmassága lehetővé teszi, hogy részben vagy egészben helyezze át az Azure-ba, hogy kielégítse a SQL Server adatbázis-rendszereinek költségvetési és HADR követelményeit.
 
@@ -156,7 +156,7 @@ Az Azure-beli virtuális gépeken futó SQL Server legjobb teljesítményének m
 
 A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további témakörökért lásd: [SQL Server az azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md).
 
-### <a name="other-resources"></a>Egyéb háttéranyagok
+### <a name="other-resources"></a>Egyéb erőforrások
 * [Új Active Directory erdő telepítése az Azure-ban](../../../active-directory/active-directory-new-forest-virtual-machine.md)
 * [Feladatátvevő fürt létrehozása rendelkezésre állási csoportok számára az Azure-beli virtuális gépen](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
 

@@ -1,6 +1,6 @@
 ---
-title: Jelszavas védelem hibaelhárítása – Azure Active Directory
-description: Az Azure AD jelszavas védelem gyakori hibaelhárítása
+title: Helyszíni Azure AD jelszavas védelem – problémamegoldás
+description: Ismerje meg, hogyan lehet elhárítani az Azure AD jelszavas védelmét helyszíni Active Directory tartományi szolgáltatások környezetekben
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd609eb1f289c0a104bddaa08a60e7dc6202acee
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847660"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671709"
 ---
-# <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD jelszavas védelem – hibaelhárítás
+# <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Hibakeresés: helyszíni Azure AD jelszavas védelem
 
 Az Azure AD jelszavas védelem üzembe helyezése után szükség lehet a hibaelhárításra. Ez a cikk részletesen ismerteti a gyakori hibaelhárítási lépéseket.
 
@@ -82,9 +82,9 @@ A probléma több oka is lehet.
 
 1. A tartományvezérlő ügynöke nem tud letölteni egy házirendet, vagy nem tudja visszafejteni a meglévő szabályzatokat. A fenti témakörökben a lehetséges okokat érdemes megkeresni.
 
-1. A jelszóházirend kényszerített módja továbbra is naplózásra van beállítva. Ha ez a konfiguráció van érvényben, konfigurálja újra úgy, hogy az az Azure AD jelszavas védelmi portál használatával érvénybe lépjen. Lásd a [jelszavas védelem engedélyezése](howto-password-ban-bad-on-premises-operations.md#enable-password-protection)című témakört.
+1. A jelszóházirend kényszerített módja továbbra is naplózásra van beállítva. Ha ez a konfiguráció van érvényben, konfigurálja újra úgy, hogy az az Azure AD jelszavas védelmi portál használatával érvénybe lépjen. További információ: [működési módok](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
-1. A jelszó-házirend le van tiltva. Ha ez a konfiguráció van érvényben, konfigurálja újra a beállítást az Azure AD jelszavas védelem portál használatával. Lásd a [jelszavas védelem engedélyezése](howto-password-ban-bad-on-premises-operations.md#enable-password-protection)című témakört.
+1. A jelszó-házirend le van tiltva. Ha ez a konfiguráció van érvényben, konfigurálja újra a beállítást az Azure AD jelszavas védelem portál használatával. További információ: [működési módok](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
 1. Nem telepítette a tartományvezérlő-ügynök szoftverét a tartomány összes tartományvezérlőjén. Ebben az esetben nehéz biztosítani, hogy a távoli Windows-ügyfelek egy adott tartományvezérlőt célozzanak meg a jelszó-módosítási művelet során. Ha úgy gondolja, hogy sikeresen megcélozta azt a TARTOMÁNYVEZÉRLŐt, ahol a DC-ügynök szoftvere telepítve van, akkor a tartományvezérlő ügynök rendszergazdai eseménynaplójának dupla ellenőrzésével ellenőrizheti, hogy az eredménytől függetlenül van-e legalább egy esemény a jelszó eredményének dokumentálására. érvényesítés. Ha nincs olyan esemény a felhasználó számára, akinek a jelszava megváltozik, a jelszó módosítását valószínűleg egy másik tartományvezérlő dolgozza fel.
 
@@ -189,13 +189,13 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 
 Az Azure AD jelszavas védelmi proxy szoftver semmilyen verzióban nem korlátozott. A Microsoft továbbra is javasolja a DC és a proxy ügynökök frissítését a legújabb verzióra, amint azok megjelentek. A `Get-AzureADPasswordProtectionProxy` parancsmag használatával a DC-ügynököknél a fenti példához hasonló, frissítést igénylő proxykat kereshet.
 
-Az adott frissítési eljárásokkal kapcsolatos további részletekért tekintse meg a [tartományvezérlő-ügynök frissítését](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) és [a proxy ügynök frissítését](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) ismertető témakört.
+Az adott frissítési eljárásokkal kapcsolatos további részletekért tekintse meg a [DC Agent frissítését](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) és [a proxy szolgáltatás frissítését](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service) ismertető témakört.
 
 ## <a name="emergency-remediation"></a>Vészhelyzeti szervizelés
 
 Ha olyan helyzet történik, ahol a tartományvezérlő ügynöke problémát okoz, előfordulhat, hogy a tartományvezérlő ügynök szolgáltatása azonnal leáll. A DC Agent jelszó-szűrő DLL-fájlja továbbra is megkísérli hívni a nem futó szolgáltatást, és naplózza a figyelmeztetési eseményeket (10012, 10013), de az összes bejövő jelszót elfogadja a rendszer. A DC Agent szolgáltatás ezután a Windows szolgáltatásvezérlő kezelőjén keresztül is konfigurálható a "Letiltva" indítási típussal, igény szerint.
 
-Egy másik szervizelési mérték az engedélyezés mód beállítása a nem értékre az Azure AD jelszavas védelem portálon. Miután letöltötte a frissített szabályzatot, minden egyes tartományvezérlő ügynök-szolgáltatás nyugalmi módba kerül, ahol az összes jelszó elfogadva van. További információ: [érvényesítési mód](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
+Egy másik szervizelési mérték az engedélyezés mód beállítása a nem értékre az Azure AD jelszavas védelem portálon. Miután letöltötte a frissített szabályzatot, minden egyes tartományvezérlő ügynök-szolgáltatás nyugalmi módba kerül, ahol az összes jelszó elfogadva van. További információ: [működési módok](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
 ## <a name="removal"></a>Eltávolítása
 

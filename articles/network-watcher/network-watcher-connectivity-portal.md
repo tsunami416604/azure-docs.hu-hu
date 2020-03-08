@@ -13,23 +13,23 @@ ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: damendo
 ms.openlocfilehash: e405a91b1ea541b4ed3328fdb3bf80ca82731c93
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842852"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390229"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Az Azure Network Watcher-kapcsolatok hibáinak megoldása a Azure Portal használatával
 
 > [!div class="op_single_selector"]
-> - [Portál](network-watcher-connectivity-portal.md)
+> - [Portal](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure-REST API](network-watcher-connectivity-rest.md)
 
 Megtudhatja, hogyan hozhatja meg a kapcsolódási hibák megoldását annak ellenőrzéséhez, hogy egy virtuális gépről egy adott végpontra irányuló közvetlen TCP-kapcsolódás létesíthető-e.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk feltételezi, hogy rendelkezik a következő erőforrásokkal:
 

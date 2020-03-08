@@ -4,11 +4,11 @@ description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup 
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152867"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392043"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek biztonsági mentése a Azure Backup Server
 
@@ -31,7 +31,7 @@ Ez a cikk a következőket ismerteti:
 
 Alapértelmezés szerint a Azure Backup Server HTTPS-kapcsolaton keresztül kommunikál a VMware-kiszolgálókkal. A HTTPS-kapcsolat beállításához töltse le a VMware hitelesítésszolgáltató (CA) tanúsítványát, és importálja azt a Azure Backup Server.
 
-### <a name="before-you-begin"></a>Előzetes teendők
+### <a name="before-you-begin"></a>Előkészületek
 
 - Ha nem szeretné a HTTPS-t használni, [Tiltsa le a https-tanúsítvány érvényesítését az összes VMware-kiszolgálón](backup-azure-backup-server-vmware.md#disable-https-certificate-validation).
 - Általában a vSphere webes ügyfélprogram használatával kapcsolódhat a vCenter/ESXi-kiszolgálóhoz a Azure Backup Server gép böngészőjében. Első alkalommal a kapcsolat nem biztonságos, és a következőt fogja megjeleníteni.
@@ -132,20 +132,20 @@ A Azure Backup Server egy olyan felhasználói fiókra van szüksége, amely jog
 
 | **A vCenter 6,5-es és a fenti felhasználói fiókhoz tartozó jogosultságok**        | **Jogosultságok a vCenter 6,0 felhasználói fiókhoz**               | **Jogosultságok a vCenter 5,5 felhasználói fiókhoz** |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------- |
-| Adattár. AllocateSpace                                      |                                                           |                                             |
-| Adattár. Tallózás az adattárban                                   | Adattár. AllocateSpace                                   | Network. assign                              |
-| Adattár. alacsony szintű fájl műveletei                          | Globális. egyéni attribútumok kezelése                           | Adattár. AllocateSpace                     |
-| Adattár-fürt. Datatstore-fürt konfigurálása             | Globális. egyéni attribútum beállítása                               | VirtualMachine. config. változáskövetési        |
-| Globális. disable metódusok                                       | Gazdagép. local művelet. Virtuális gép létrehozása              | VirtualMachine. State. RemoveSnapshot         |
-| Globális. Enable metódusok                                        | Hálózat: Hálózat kiosztása                                   | VirtualMachine. State. CreateSnapshot         |
-| Global. licenses                                              | Erőforrás. Virtuális gép erőforrás-készlethez rendelése         | VirtualMachine. kiépítés. DiskRandomRead  |
-| Globális. log esemény                                             | Virtuális gép. Konfiguráció. új lemez hozzáadása                | VirtualMachine. Interact. erő            |
-| Globális. egyéni attribútumok kezelése                              | Virtuális gép. Konfigurálás. speciális                    | VirtualMachine. Inventory. Create             |
-| Globális. egyéni attribútum beállítása                                  | Virtuális gép. Konfiguráció. lemez változásának követése        | VirtualMachine. config. AddNewDisk            |
-| Hálózat. hálózati hozzárendelés                                       | Virtuális gép. Configuration. Host USB-eszköz             | VirtualMachine. config. HostUSBDevice         |
-| Erőforrás. Virtuális gép erőforrás-készlethez rendelése            | Virtuális gép. Konfiguráció. a nem tulajdonában lévő fájlok lekérdezése         | VirtualMachine. config. AdvancedConfig        |
-| Virtuális gép. Konfiguráció. új lemez hozzáadása                   | Virtuális gép. Configuration. swapfile elhelyezése          | VirtualMachine. config. SwapPlacement         |
-| Virtuális gép. Konfigurálás. speciális                       | Virtuális gép. Interakció. kikapcsolás                     | Global. ManageCustomFields                   |
+| Datastore.AllocateSpace                                      |                                                           |                                             |
+| Adattár. Tallózás az adattárban                                   | Datastore.AllocateSpace                                   | Network.Assign                              |
+| Adattár. alacsony szintű fájl műveletei                          | Globális. egyéni attribútumok kezelése                           | Datastore.AllocateSpace                     |
+| Adattár-fürt. Datatstore-fürt konfigurálása             | Globális. egyéni attribútum beállítása                               | VirtualMachine.Config.ChangeTracking        |
+| Globális. disable metódusok                                       | Gazdagép. local művelet. Virtuális gép létrehozása              | VirtualMachine.State.RemoveSnapshot         |
+| Globális. Enable metódusok                                        | Hálózati. Hálózat kiosztása                                   | VirtualMachine.State.CreateSnapshot         |
+| Global. licenses                                              | Erőforrás. Virtuális gép erőforrás-készlethez rendelése         | VirtualMachine.Provisioning.DiskRandomRead  |
+| Globális. log esemény                                             | Virtuális gép. Konfiguráció. új lemez hozzáadása                | VirtualMachine.Interact.PowerOff            |
+| Globális. egyéni attribútumok kezelése                              | Virtuális gép. Konfigurálás. speciális                    | VirtualMachine.Inventory.Create             |
+| Globális. egyéni attribútum beállítása                                  | Virtuális gép. Konfiguráció. lemez változásának követése        | VirtualMachine.Config.AddNewDisk            |
+| Hálózat. hálózati hozzárendelés                                       | Virtuális gép. Configuration. Host USB-eszköz             | VirtualMachine.Config.HostUSBDevice         |
+| Erőforrás. Virtuális gép erőforrás-készlethez rendelése            | Virtuális gép. Konfiguráció. a nem tulajdonában lévő fájlok lekérdezése         | VirtualMachine.Config.AdvancedConfig        |
+| Virtuális gép. Konfiguráció. új lemez hozzáadása                   | Virtuális gép. Configuration. swapfile elhelyezése          | VirtualMachine.Config.SwapPlacement         |
+| Virtuális gép. Konfigurálás. speciális                       | Virtuális gép. Interakció. kikapcsolás                     | Global.ManageCustomFields                   |
 | Virtuális gép. Konfiguráció. lemez változásának követése           | Virtuális gép. Hardverleltár. Új létrehozása                     |                                             |
 | Virtuális gép. Konfiguráció. Disk bérlet                     | Virtuális gép. Kiépítés. lemezes hozzáférés engedélyezése            |                                             |
 | Virtuális gép. Konfiguráció. virtuális lemez kiterjesztése            | Virtuális gép. Kiépítési. Írásvédett lemezes hozzáférés engedélyezése |                                             |
@@ -281,7 +281,7 @@ VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csopo
 
 1. Az **adatvédelmi módszer kiválasztása** lapon adja meg a védelmi csoport nevét, valamint a védelmi beállításokat. Az Azure-ba történő biztonsági mentéshez állítsa be a rövid távú védelmet a **lemezre** , és engedélyezze az online védelmet. Ezután kattintson a **Next** (Tovább) gombra.
 
-    ![Az adatvédelmi módszer kiválasztása](./media/backup-azure-backup-server-vmware/name-protection-group.png)
+    ![Adatvédelmi módszer kiválasztása](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
 1. A **rövid távú célok megadása**területen határozza meg, hogy mennyi ideig szeretné megőrizni a lemezre történő biztonsági mentést.
    - A **megőrzési tartomány**mezőben határozza meg, hogy hány nap elteltével kell megőrizni a lemezes helyreállítási pontokat.

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
 ms.openlocfilehash: 5a41d5653de0d8a9f674009904756892ac343609
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930922"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357246"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Adatok másolása a Teradata Vantage-ból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -53,7 +53,7 @@ Az Integration Runtime a 3,18-es verziótól kezdődően beépített Teradata-il
 
 Az 3,18-nál korábbi, saját üzemeltetésű Integration Runtime-verziók esetében telepítse a [.net-adatszolgáltatót a Teradata](https://go.microsoft.com/fwlink/?LinkId=278886), 14-ös vagy újabb verzióra az Integration Runtime-gépen. 
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -63,13 +63,13 @@ A következő szakaszokban részletesen ismertetjük a Teradata-összekötőhöz
 
 A Teradata társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot **Teradata**értékre kell beállítani. | Igen |
+| típus | A Type tulajdonságot **Teradata**értékre kell beállítani. | Igen |
 | connectionString | Meghatározza az Teradata-példányhoz való kapcsolódáshoz szükséges adatokat. Tekintse át a következő mintákat.<br/>A jelszót Azure Key Vaultba is helyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md) című témakört. | Igen |
 | felhasználónév | Adja meg a Teradata való kapcsolódáshoz használandó felhasználónevet. Windows-hitelesítés használatakor érvényes. | Nem |
 | jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Azt is megteheti, hogy [hivatkozik Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). <br>A Windows-hitelesítés használatakor, vagy az alapszintű hitelesítéshez Key Vault jelszóra hivatkozik. | Nem |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Igen |
+| connectVia | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Igen |
 
 További kapcsolatok tulajdonságai az adott esetben a kapcsolatok karakterláncában állíthatók be:
 
@@ -150,11 +150,11 @@ Ez a szakasz a Teradata adatkészlet által támogatott tulajdonságok listájá
 
 Az adatok Teradata történő másolásához a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát `TeradataTable`értékre kell beállítani. | Igen |
-| adatbázis | Az Teradata-példány neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
-| table | A Teradata-példányban található tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
+| típus | Az adatkészlet Type tulajdonságát `TeradataTable`értékre kell beállítani. | Igen |
+| database | Az Teradata-példány neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+| table | A Teradata-példányban található tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -204,10 +204,10 @@ Ez a szakasz a Teradata forrás által támogatott tulajdonságok listáját tar
 
 Az adatok Teradata történő másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát `TeradataSource`értékre kell állítani. | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`.<br>Ha engedélyezi a particionált terhelést, össze kell kapcsolnia a lekérdezéshez tartozó beépített partíciós paramétereket. Példákat a [párhuzamos másolás Teradata](#parallel-copy-from-teradata) szakaszban talál. | Nem (ha meg van adva táblázat az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát `TeradataSource`értékre kell állítani. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`.<br>Ha engedélyezi a particionált terhelést, össze kell kapcsolnia a lekérdezéshez tartozó beépített partíciós paramétereket. Példákat a [párhuzamos másolás Teradata](#parallel-copy-from-teradata) szakaszban talál. | Nem (ha meg van adva table az adatkészletben) |
 | partitionOptions | Meghatározza az adatok Teradata való betöltéséhez használt adatparticionálási beállításokat. <br>Értékek engedélyezése: **none** (alapértelmezett), **kivonat** -és **DynamicRange**.<br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None`), akkor a Teradata származó adatok párhuzamos betöltésének fokát a másolási tevékenység [`parallelCopies`](copy-activity-performance.md#parallel-copy) beállítása vezérli. | Nem |
 | partitionSettings | Határozza meg az adatparticionálási beállítások csoportját. <br>Akkor alkalmazza, ha a partíció beállítása nem `None`. | Nem |
 | partitionColumnName | Adja meg annak a forrás oszlopnak a nevét, amelyet a tartomány partíció vagy a kivonatoló partíció használ a párhuzamos másoláshoz. Ha nincs megadva, a rendszer automatikusan észleli a tábla elsődleges indexét, és a partíciós oszlopként használja. <br>Akkor alkalmazza, ha a partíciós beállítás `Hash` vagy `DynamicRange`. Ha lekérdezést használ a forrásadatok beolvasásához, a Hook `?AdfHashPartitionCondition` vagy `?AdfRangePartitionColumnName` a WHERE záradékban. Lásd: példa [párhuzamos másolással a Teradata](#parallel-copy-from-teradata) szakaszból. | Nem |
@@ -260,7 +260,7 @@ A particionált másolás engedélyezésekor a Data Factory párhuzamos lekérde
 
 Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálásával, különösen akkor, ha nagy mennyiségű adatmennyiséget tölt be a Teradata. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációk szerepelnek. Az adatok file-alapú adattárba való másolása során a rendszer úgy helyezi át, hogy több fájlként írjon egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájl írásakor.
 
-| Alkalmazási helyzet                                                     | Javaslatokra vonatkozó beállítások                                           |
+| Forgatókönyv                                                     | Javasolt beállítások                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Teljes terhelés a nagyméretű táblából.                                   | **Partíciós beállítás**: kivonat. <br><br/>A végrehajtás során a Data Factory automatikusan észleli a PK-oszlopot, alkalmaz egy kivonatot, és az adatokat partíciók szerint másolja. |
 | Nagy mennyiségű adattal tölthetők be egyéni lekérdezések használatával.                 | **Partíciós beállítás**: kivonat.<br>**Lekérdezés**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`.<br>**Partíciós oszlop**: a kivonatoló partíció alkalmazásához használt oszlop megadása. Ha nincs megadva, a Data Factory automatikusan észleli a Teradata adatkészletben megadott tábla PK oszlopát.<br><br>A végrehajtás során a Data Factory lecseréli az `?AdfHashPartitionCondition`t a kivonatoló partíciós logikával, és elküldi a Teradata. |
@@ -298,47 +298,47 @@ Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálá
 
 Az adatok Teradata történő másolásakor a következő leképezések érvényesek. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadónak, tekintse meg a [séma-és adattípus-leképezéseket](copy-activity-schema-and-type-mapping.md).
 
-| Teradata adattípusa | Data Factory időközi adattípus |
+| Teradata adattípusa | Data Factory közbenső adattípus |
 |:--- |:--- |
 | BigInt |Int64 |
-| Blob |Bájt [] |
-| Bájt |Bájt [] |
+| Blob |Byte[] |
+| Bájt |Byte[] |
 | ByteInt |Int16 |
-| Char |Sztring |
-| CLOB |Sztring |
-| Dátum |Dátum és idő |
-| Decimális |Decimális |
-| Double |Double |
-| Grafikus |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Egész szám |Int32 |
-| Intervallum napja |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Nap és óra közötti időszak |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Időköz (nap és perc) |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Időintervallum – másodperc |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Intervallum óra |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Óra és perc közötti intervallum |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Óra és másodperc közötti intervallum |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Időköz (perc) |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Időköz (perc) – másodperc |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Intervallum hónapja |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Másodperc intervalluma |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Intervallum éve |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Év és hónap közötti időszak |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Szám |Double |
+| CHAR |Sztring |
+| Clob |Sztring |
+| Dátum |DateTime |
+| tizedes tört |tizedes tört |
+| Dupla |Dupla |
+| Graphic |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+| Egész |Int32 |
+| Interval Day |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+| Interval Day To Hour |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+| Interval Day To Minute |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+| Interval Day To Second |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+| Interval Hour |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+| Interval Hour To Minute |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+| Interval Hour To Second |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+| Interval Minute |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+| Interval Minute To Second |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+| Interval Month |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+| Interval Second |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+| Interval Year |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+| Interval Year To Month |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+| Szám |Dupla |
 | Időszak (dátum) |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | Időszak (idő) |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | Időtartam (idő zónával) |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | Időszak (timestamp) |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | Időtartam (időbélyegző az időzónával) |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | SmallInt |Int16 |
-| Idő |időtartam |
-| Időzónával ellátott idő |időtartam |
-| Időbélyeg |Dátum és idő |
-| Időbélyeg időzónával |Dátum és idő |
-| VarByte |Bájt [] |
+| Time |időtartam |
+| Time With Time Zone |időtartam |
+| Időbélyeg |DateTime |
+| Timestamp With Time Zone |DateTime |
+| VarByte |Byte[] |
 | VarChar |Sztring |
 | VarGraphic |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| XML |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+| Xml |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai

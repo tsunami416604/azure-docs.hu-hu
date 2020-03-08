@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
 ms.openlocfilehash: 16837782af2f08e27363091dc21587a100194cd8
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083704"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363505"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>Gyorsított hálózatkezeléssel rendelkező Windows rendszerű virtuális gép létrehozása Azure PowerShell használatával
 
@@ -53,7 +53,7 @@ A feleznie támogató példányokon a gyorsított hálózatkezelést a 4 vagy t�
 
 A virtuálisgép-példányokkal kapcsolatos további információkért lásd: [Windows rendszerű virtuális gépek méretei](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-### <a name="regions"></a>Regions
+### <a name="regions"></a>Régiók
 Elérhető az összes nyilvános Azure-régióban és Azure Government felhőben.
 
 ### <a name="enabling-accelerated-networking-on-a-running-vm"></a>Gyorsított hálózatkezelés engedélyezése egy futó virtuális gépen

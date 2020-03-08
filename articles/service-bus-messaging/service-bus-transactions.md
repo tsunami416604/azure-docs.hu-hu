@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 22744ecbced40b3195f4d047227b1e2a37228102
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774509"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390998"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>A tranzakciók feldolgozásának Service Bus áttekintése
 
@@ -51,7 +51,7 @@ A tranzakciós képesség ereje nyilvánvalóvá válik, ha maga az átviteli v�
 
 ### <a name="see-it-in-code"></a>Megtekintés a kódban
 
-Az ilyen átvitelek beállításához létre kell hoznia egy üzenetet küldőt, amely az átviteli várólistán keresztül célozza meg a célhelyet. Olyan fogadóval is rendelkezik, amely ugyanazon a várólistán lévő üzeneteket kéri le. Példa:
+Az ilyen átvitelek beállításához létre kell hoznia egy üzenetet küldőt, amely az átviteli várólistán keresztül célozza meg a célhelyet. Olyan fogadóval is rendelkezik, amely ugyanazon a várólistán lévő üzeneteket kéri le. Például:
 
 ```csharp
 var connection = new ServiceBusConnection(connectionString);
@@ -101,7 +101,7 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 
 Service Bus várólistákkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [A Service Bus-üzenetsorok használata](service-bus-dotnet-get-started-with-queues.md)
+* [How to use Service Bus Queues](service-bus-dotnet-get-started-with-queues.md) (A Service Bus-üzenetsorok használata)
 * [Service Bus entitások láncolása automatikus továbbítással](service-bus-auto-forwarding.md)
 * [Automatikus továbbítás mintája](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
 * [Atomi tranzakciók Service Bus mintával](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)

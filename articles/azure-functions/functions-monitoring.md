@@ -5,11 +5,11 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.openlocfilehash: dda62e3041d04d5becc9179fff1c56d0c587ba1e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292926"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356768"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -72,7 +72,7 @@ Ha [engedélyezve van Application Insights integráció](#enable-application-ins
 
 Láthatja, hogy mindkét oldalon **fut Application Insights** hivatkozás az Application Insights Analytics-lekérdezésre, amely beolvassa az információt.
 
-![Futtatás az Application Insightsban](media/functions-monitoring/run-in-ai.png)
+![Futtatás Application Insights](media/functions-monitoring/run-in-ai.png)
 
 A következő lekérdezés jelenik meg. Láthatja, hogy a lekérdezés eredményei az elmúlt 30 napra korlátozódnak (`where timestamp > ago(30d)`). Emellett az eredmények legfeljebb 20 sort mutatnak (`take 20`). Ezzel szemben a függvény Meghívási részleteinek listája az elmúlt 30 napra, korlátozás nélkül.
 
@@ -92,7 +92,7 @@ A Application Insights használatáról az [Application Insights dokumentációj
 
 Az Application Insights következő területei hasznosak lehetnek a függvények viselkedésének, teljesítményének és hibáinak kiértékelése során:
 
-| Tab | Leírás |
+| Lapon | Leírás |
 | ---- | ----------- |
 | **[Hibák](../azure-monitor/app/asp-net-exceptions.md)** |  Diagramok és riasztások létrehozása a függvények hibái és a kiszolgálói kivételek alapján. A **művelet** neve a függvény neve. A függőségek meghibásodása csak akkor jelenik meg, ha egyéni telemetria valósít meg a függőségekhez. |
 | **[Teljesítmény](../azure-monitor/app/performance-counters.md)** | Teljesítménnyel kapcsolatos problémák elemzése. |
@@ -119,7 +119,7 @@ requests
 
 A rendelkezésre álló táblák a bal oldali **séma** lapon jelennek meg. Az alábbi táblázatokban megtalálhatja a függvények által generált adathívásokat:
 
-| Table | Leírás |
+| Tábla | Leírás |
 | ----- | ----------- |
 | **nyomok** | A futtatókörnyezet és a függvény kódja által létrehozott naplók. |
 | **kérelmek** | Egy kérelem az egyes függvények meghívásához. |
@@ -163,7 +163,7 @@ A Azure Functions naplózó *naplózási szintet* is tartalmaz minden naplóval.
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |
-|None        | 6 |
+|Nincs        | 6 |
 
 A naplózási szintű `None` a következő szakaszban ismertetjük. 
 
@@ -271,7 +271,7 @@ A naplók a Application Insights **customMetrics** táblájában érhetők el. I
 
 Az összes napló `Information` szinten van írva. Ha `Warning` vagy annál újabb szűrést végez, nem fog megjelenni ezek az információk.
 
-### <a name="other-categories"></a>További kategóriák
+### <a name="other-categories"></a>Egyéb kategóriák
 
 A már felsorolt kategóriákhoz tartozó összes napló a Application Insights **nyomkövetési** táblájában érhető el.
 
@@ -612,7 +612,7 @@ Kétféle módon lehet megtekinteni a függvények végrehajtásával létrehozo
 
 A naplózási streamek a Portálon és a legtöbb helyi fejlesztési környezetben is megtekinthetők. 
 
-### <a name="portal"></a>Portál
+### <a name="portal"></a>portál
 
 A portálon mindkét típusú naplózási adatfolyamot megtekintheti.
 
@@ -634,7 +634,7 @@ A Application Insights területen válassza a **élő metrikastream**lehetőség
 
 ![Élő metrikastream megtekintése a portálon](./media/functions-monitoring/live-metrics-stream.png) 
 
-### <a name="visual-studio-code"></a>Visual Studio-kód
+### <a name="visual-studio-code"></a>Visual Studio Code
 
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
@@ -642,7 +642,7 @@ A Application Insights területen válassza a **élő metrikastream**lehetőség
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 Az [Azure CLI](/cli/azure/install-azure-cli)használatával engedélyezheti a folyamatos átviteli naplókat. A következő parancsokkal jelentkezzen be, válassza ki az előfizetését és a stream naplófájljait:
 

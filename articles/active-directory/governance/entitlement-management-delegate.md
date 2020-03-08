@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422587"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376700"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegálás és szerepkörök az Azure AD-jogosultságok kezelésében
 
@@ -65,7 +65,7 @@ Az alábbi ábrán a marketing, a Pénzügy és a jogi részleg erőforrásaival
 
 A delegálás után a marketing részleg a következő táblázathoz hasonló szerepkörökkel rendelkezhet.
 
-| Felhasználó | Munkakör | Azure AD-szerepkör | Jogosultsági felügyeleti szerepkör |
+| Felhasználó | Feladat szerepköre | Azure AD-szerepkör | Jogosultsági felügyeleti szerepkör |
 | --- | --- | --- | --- |
 | Hana | Rendszergazda | Globális rendszergazda vagy felhasználói rendszergazda |  |
 | Elemér | Marketing Manager | Felhasználó | Katalógus létrehozója és katalógusának tulajdonosa |
@@ -84,14 +84,14 @@ A jogosultságok kezeléséhez a következő szerepkörök tartoznak, amelyek a 
 
 Emellett a kijelölt jóváhagyó és egy hozzáférési csomag kérelmezője is rendelkezik jogosultságokkal, bár ezek nem szerepkörök.
 
-| Jobbra | Leírás |
+| Jobb oldali | Leírás |
 | --- | --- |
 | Jóváhagyó | A szabályzat engedélyezi a csomagok elérésére irányuló kérések jóváhagyását vagy elutasítását, bár a hozzáférési csomag definíciói nem módosíthatók. |
-| Requestor (Kérelmező) | Egy hozzáférési csomag szabályzata által jogosult a hozzáférési csomag igénylésére. |
+| Kérelmező | Egy hozzáférési csomag szabályzata által jogosult a hozzáférési csomag igénylésére. |
 
 A következő táblázat felsorolja azokat a feladatokat, amelyeket a jogosultsági felügyeleti szerepkörök elvégezhetnek.
 
-| Tevékenység | Rendszergazda | Katalógus létrehozója | Katalógus tulajdonosa | A Package Manager elérése |
+| Feladat | Rendszergazda | Katalógus létrehozója | Katalógus tulajdonosa | A Package Manager elérése |
 | --- | :---: | :---: | :---: | :---: |
 | [Delegálás katalógus-létrehozóra](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
 | [Csatlakoztatott szervezet hozzáadása](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |
@@ -122,8 +122,8 @@ Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhaszná
 
 | Azure AD-címtárbeli szerepkör | Jogosultsági felügyeleti szerepkör | Hozzáadhat biztonsági csoportot | Office 365-csoportot adhat hozzá | Hozzáadhat alkalmazást | Hozzáadhat SharePoint Online-webhelyet |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [Globális rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | – |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Felhasználói rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | – |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Globális rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Felhasználói rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Intune-rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa | :heavy_check_mark: | :heavy_check_mark: |  |  |
 | [Exchange-rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa |  | :heavy_check_mark: |  |  |
 | [Teams szolgáltatás rendszergazdája](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa |  | :heavy_check_mark: |  |  |

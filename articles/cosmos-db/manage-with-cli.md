@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: mjbrown
 ms.openlocfilehash: 325840f8961fac49e599f1aa567ad8d4137820b4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705802"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364471"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure Cosmos-erőforrások kezelése az Azure CLI-vel
 
-Az alábbi útmutató általános parancsokat tartalmaz a Azure Cosmos DB-fiókok,-adatbázisok és-tárolók Azure CLI-vel való felügyeletének automatizálásához. Az Azure Cosmos DB CLI-parancsainak egyes referenciaoldalait az [Azure CLI referenciái](https://docs.microsoft.com/cli/azure/cosmosdb) között érheti el. Az [Azure CLI-mintákban](cli-samples.md)további példákat is találhat Azure Cosmos DBhoz, beleértve Cosmos db fiókok, adatbázisok és tárolók létrehozását és kezelését a MongoDB, a Gremlin, a Cassandra és a Table APIhoz.
+Az alábbi útmutató az Azure Cosmos DB-fiókok, -adatbázisok és -tárolók felügyeletének Azure CLI-vel történő automatizálásához használható általános parancsokat ismerteti. Az Azure Cosmos DB CLI-parancsainak egyes referenciaoldalait az [Azure CLI referenciái](https://docs.microsoft.com/cli/azure/cosmosdb) között érheti el. Az [Azure CLI-mintákban](cli-samples.md)további példákat is találhat Azure Cosmos DBhoz, beleértve Cosmos db fiókok, adatbázisok és tárolók létrehozását és kezelését a MongoDB, a Gremlin, a Cassandra és a Table APIhoz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakör az Azure CLI 2.0-s vagy annál újabb verziójának futtatását követeli meg. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
 

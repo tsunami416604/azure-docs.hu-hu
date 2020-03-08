@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/19/2019
 ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444501"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395968"
 ---
 # <a name="what-are-mapping-data-flows"></a>Mik azok a leképezési adatfolyamok?
 
@@ -21,7 +21,7 @@ Az adatfolyamatok leképezése vizuálisan tervezett adatátalakítások Azure D
 
 Az adatforgalom leképezése teljes körű vizuális élményt biztosít, és nem igényel kódolást. Az adatfolyamatok a saját végrehajtási fürtön futnak a kibővíthető adatfeldolgozáshoz. Azure Data Factory kezeli az adatáramlási feladatok összes fordítását, az elérési út optimalizálását és végrehajtását.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 Az adatfolyamatok létrehozásához jelölje ki a **gyári erőforrások**területen a plusz jelre, majd válassza az **adatfolyam**lehetőséget. 
 
@@ -35,7 +35,7 @@ Az adatfolyam-vászon három részből áll: a felső sáv, a gráf és a konfig
 
 ![Vászon](media/data-flow/canvas1.png "Vászon")
 
-### <a name="graph"></a>Gráf
+### <a name="graph"></a>Graph
 
 A gráf megjeleníti az átalakítási adatfolyamot. Megjeleníti a forrásadatok vonalát, mivel az egy vagy több mosogatóba áramlik. Új forrás hozzáadásához válassza a **forrás hozzáadása**elemet. Új átalakítás hozzáadásához válassza a meglévő átalakítás jobb alsó sarkában látható plusz jelre.
 
@@ -121,15 +121,15 @@ A dinamikus tartomány a megadott oszlopok vagy kifejezések alapján a Spark di
 
 Hozzon létre egy olyan kifejezést, amely rögzített tartományt biztosít a particionált adatoszlopokban lévő értékek számára. Ha el szeretné kerülni a partíciók eldöntését, érdemes megismernie az adatait, mielőtt ezt a beállítást használja. A kifejezéshez megadott értékek a Partition függvény részeként lesznek felhasználva. Megadhatja a fizikai partíciók számát.
 
-##### <a name="key"></a>Jelmagyarázat
+##### <a name="key"></a>Paraméter
 
 Ha jól ismeri az Ön adatait, a kulcsfontosságú particionálás jó stratégia lehet. A kulcsok particionálásakor a rendszer létrehozza a partíciókat az oszlop minden egyedi értékéhez. A partíciók száma nem állítható be, mert a szám az adatok egyedi értékein alapul.
 
-#### <a name="inspect"></a>Vizsgálat
+#### <a name="inspect"></a>Vizsgálata
 
 Az **ellenőrzés** lapon megtekintheti az átalakítás alatt álló adatfolyam metaadatait. Láthatja az oszlopok számát, a megváltoztatott oszlopokat, a hozzáadott oszlopokat, az adattípusokat, az oszlopok sorrendjét és az oszlopok hivatkozásait. A **vizsgálat** a metaadatok csak olvasható nézete. Nem kell engedélyezni a hibakeresési módot a metaadatok megjelenítéséhez a **vizsgálat** ablaktáblán.
 
-![Vizsgálata](media/data-flow/inspect1.png "Vizsgálat")
+![Vizsgálata](media/data-flow/inspect1.png "Vizsgálata")
 
 Amikor átalakításokon keresztül módosítja az adatok alakját, a metaadatok változásai a **vizsgálat** panelen jelennek meg. Ha nincs definiált séma a forrás-átalakításban, akkor a metaadatok nem lesznek láthatók a **vizsgálat** ablaktáblán. A metaadatok hiánya gyakori a séma-drift forgatókönyvekben.
 

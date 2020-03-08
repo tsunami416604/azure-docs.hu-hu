@@ -11,11 +11,11 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 12/09/2019
 ms.openlocfilehash: 4149e90e07bbcd03a0df41060b42b8902b89e774
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541880"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396193"
 ---
 # <a name="data-access-in-azure-machine-learning"></a>Adatelérés Azure Machine Learning
 
@@ -28,7 +28,7 @@ Ha készen áll a tárolóban lévő adatfelhasználásra, javasoljuk, hogy
 3. Használja ezt az adatkészletet a Machine learning-kísérletben a következők bármelyikével: 
     1. Csatlakoztatás a kísérlet számítási céljához a modell betanításához
 
-        **OR** 
+        **VAGY** 
 
     1. Közvetlenül a Azure Machine Learning-megoldások, például az automatizált gépi tanulás (automatizált ML) kísérlet futtatása, a gépi tanulási folyamatok és a [Azure Machine learning Designer](concept-designer.md)használatában.
 4. Hozzon létre adatkészlet-figyelőket a modell kimeneti adatkészletéhez az adateltolódás észleléséhez. 
@@ -54,11 +54,11 @@ Támogatott Azure Storage-szolgáltatások, amelyek adattárként regisztrálhat
 + Azure Data Lake
 + Azure Data Lake Gen2
 + Azure SQL Database
-+ A PostgreSQL-hez készült Azure Database
++ Azure Database for PostgreSQL
 + Databricks fájlrendszer
-+ A MySQL-hez készült Azure Database
++ Azure Database for MySQL
 
-### <a name="datasets"></a>Adathalmazok
+### <a name="datasets"></a>Adatkészletek
 
 [Hozzon létre egy Azure Machine learning adatkészletet](how-to-create-register-datasets.md) az adattárolókban lévő adatokkal való kommunikációhoz, és a gépi tanulási feladatokhoz csomagolja ki az adatokat egy fogyasztható objektumba. Regisztrálja az adatkészletet a munkaterületen, hogy az adatfeldolgozási bonyolultság nélkül ossza meg és használja fel a különböző kísérletek között.
 
@@ -91,7 +91,7 @@ Az adatkészletekkel számos gépi tanulási feladatot hajthat végre Azure Mach
 
 <a name="open"></a>
 
-## <a name="azure-open-datasets"></a>Azure Open-adatkészletek
+## <a name="azure-open-datasets"></a>Azure Open Datasets
 
 Az [Azure Open-adatkészletek](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets) olyan beszerzett nyilvános adatkészletek, amelyekkel pontosabb modelleket adhat hozzá a gépi tanulási megoldásokhoz. A nyílt adatkészletek a felhőben vannak Microsoft Azure és integrálva vannak a Azure Machine Learningba. Az adatkészleteket API-kon keresztül is elérheti, és más termékekben, például Power BI és Azure Data Factory is használhatja.
 

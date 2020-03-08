@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
 ms.openlocfilehash: 70523dc12f3f20362fcf4a2c3cb456a182038e8a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982252"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355893"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Virtuális hálózat létrehozása, módosítása vagy törlése
 
@@ -25,7 +25,7 @@ ms.locfileid: "75982252"
 
 Megtudhatja, hogyan hozhat létre és törölhet virtuális hálózatokat, és hogyan módosíthatja a beállításokat, például a DNS-kiszolgálókat és az IP-címeket a meglévő virtuális hálózatok esetében. Ha még nem ismeri a virtuális hálózatokat, a [virtuális hálózatok áttekintésében](virtual-networks-overview.md) és az [oktatóanyag](quick-create-portal.md)elvégzésével többet is megtudhat. Egy virtuális hálózat alhálózatokat tartalmaz. Az alhálózatok létrehozásának, módosításának és törlésének megismeréséhez lásd: [alhálózatok kezelése](virtual-network-manage-subnet.md).
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a következő feladatokat:
 
@@ -137,7 +137,7 @@ A virtuális hálózathoz csatlakozó virtuális gépek a virtuális hálózatho
 1. A portál felső részén található Keresés mezőben adja meg a *virtuális hálózatok* kifejezést a keresőmezőbe. Ha a **virtuális hálózatok** megjelennek a keresési eredmények között, válassza ki.
 2. A virtuális hálózatok listájából válassza ki azt a virtuális hálózatot, amelyre vonatkozóan módosítani kívánja a DNS-kiszolgálókat.
 3. Válassza a **DNS-kiszolgálók**lehetőséget a **Beállítások**területen.
-4. Válasszon egyet az alábbi lehetőségek közül:
+4. Válasszon az alábbi lehetőségek közül:
    - **Alapértelmezett (Azure által biztosított)** : az összes erőforrás neve és magánhálózati IP-címe automatikusan regisztrálva lesz a Azure DNS-kiszolgálókon. A neveket az ugyanahhoz a virtuális hálózathoz csatlakozó erőforrások között lehet feloldani. Ezzel a beállítással nem oldhatók fel a nevek a virtuális hálózatok között. A nevek virtuális hálózatokon keresztüli feloldásához egyéni DNS-kiszolgálót kell használnia.
    - **Egyéni**: hozzáadhat egy vagy több kiszolgálót, akár egy virtuális hálózat Azure-ra vonatkozó korlátját is. További információ a DNS-kiszolgáló korlátairól: [Azure-korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). A következő lehetőségek közül választhat:
    - **Adja**meg a következő címeket: hozzáadja a kiszolgálót a virtuális hálózati DNS-kiszolgálók listájához. Ez a beállítás a DNS-kiszolgálót is regisztrálja az Azure-ban. Ha már regisztrált egy DNS-kiszolgálót az Azure-ban, akkor kiválaszthatja a listában a DNS-kiszolgálót.
@@ -171,11 +171,11 @@ A virtuális hálózat csak akkor törölhető, ha nincs csatlakoztatva erőforr
 
 Ha virtuális hálózatokon szeretné elvégezni a feladatokat, a fiókját hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkörhöz, amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Műveletek                                  |   Név                                |
+| Művelet                                  |   Name (Név)                                |
 |---------------------------------------- |   --------------------------------    |
-|Microsoft. Network/virtualNetworks/READ   |   Virtuális hálózat beolvasása              |
-|Microsoft. Network/virtualNetworks/Write  |   Virtuális hálózat létrehozása vagy frissítése  |
-|Microsoft. Network/virtualNetworks/delete |   Virtuális hálózat törlése            |
+|Microsoft.Network/virtualNetworks/read   |   Virtuális hálózat beolvasása              |
+|Microsoft.Network/virtualNetworks/write  |   Virtuális hálózat létrehozása vagy frissítése  |
+|Microsoft.Network/virtualNetworks/delete |   Virtuális hálózat törlése            |
 
 ## <a name="next-steps"></a>Következő lépések
 
