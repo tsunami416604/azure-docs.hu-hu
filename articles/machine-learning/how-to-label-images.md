@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e27fca86613757c36ac664e2e449cabed68d550
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 6d0a9bf172039adcaa756660d38acc1547e91b49
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772448"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898700"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben
 
-Miután a projekt rendszergazdája [létrehoz egy címkézési projektet](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) a Azure Machine Learningban, a címkézés eszközzel gyorsan elő lehet készíteni egy Machine learning projekt adatait. Ez a cikk a következőket ismerteti:
+Miután a projekt rendszergazdája [létrehoz egy címkézési projektet](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) a Azure Machine Learningban, a címkézés eszközzel gyorsan elő lehet készíteni egy Machine learning projekt adatait. Ez a cikk ismerteti:
 
 > [!div class="checklist"]
 > * A címkézési projektek elérése
@@ -58,6 +58,16 @@ Az Azure lehetővé teszi a **Küldés** gombot, amikor címkézte az összes k�
 
 Miután elküldte a címkéket az adatokhoz, az Azure frissíti a lapot egy új rendszerképekkel a munkahelyi sorból.
 
+### <a name="assisted-machine-learning"></a>Támogatott gépi tanulás 
+
+A gépi tanulási algoritmusok egy többosztályos vagy több címkés besorolási feladat során indíthatók. Ha ezek az algoritmusok engedélyezve vannak a projektben, a következők jelenhetnek meg:
+
+* Néhány kép megjelölése után előfordulhat, hogy a képernyő tetején a projekt neve mellett **fürtözött feladatok** láthatók.  Ez azt jelenti, hogy a képek csoportosítva vannak, hogy hasonló képeket nyújtsanak ugyanazon a lapon.  Ha igen, váltson át a több Képnézet egyikére, hogy kihasználhassa a csoportosítást.  
+
+* Egy későbbi időpontban a projekt neve mellett előre **címkézett feladatokat** láthat.  A képek ezután egy gépi tanulási besorolási modellből származó javasolt címkével jelennek meg. A Machine learning modellnek nincs 100%-os pontossága. Habár csak olyan rendszerképeket használunk, amelyek esetében a modell magabiztos, előfordulhat, hogy ezek a képek még mindig helytelenül vannak megjelölve.  Ha ezeket a címkéket látja, javítsa ki a helytelen címkéket az oldal elküldése előtt.  
+
+Különösen a címkézési projekt korai szakaszában a gépi tanulási modell csak akkor lehet elég pontos, ha a képek kis részhalmazát szeretné előre megjelölni. Miután megcímkézte a lemezképeket, a címkézési projekt visszatér a manuális címkézéshez, hogy további adatokat gyűjtsön a következő kör betanításához. Az idő múlásával a modell nagyobb biztonságban lesz a képek nagyobb hányadával kapcsolatban, így a projekt későbbi feladataihoz is hozzájárul.
+
 ## <a name="tag-images-for-multi-class-classification"></a>Képek címkézése többosztályos besoroláshoz
 
 Ha a projekt "képbesorolás többosztályos" típusú, akkor egyetlen címkét fog rendelni a teljes képhez. Ha bármikor át szeretné tekinteni az utasításokat, lépjen az **utasítások** lapra, és válassza a **részletes utasítások megtekintése**lehetőséget.
@@ -81,6 +91,7 @@ A hiba elhárításához kattintson az "**X**" elemre egy adott címke törlés�
 ![A képernyőképen több kijelölés látható](./media/how-to-label-images/multiple-deselection.png)
 
 Az Azure csak akkor engedélyezi a **Küldés** gombot, ha legalább egy címkét alkalmaz az egyes képekre. A munka mentéséhez válassza a **Submit (Küldés** ) lehetőséget.
+
 
 ## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Képek címkézése és az objektumok észleléséhez tartozó határoló mezők megadása
 
@@ -112,7 +123,7 @@ Ha címkézett adatok oldalát küldi el, az Azure új címkézetlen adatok hozz
 
 Ha végzett a címkézéssel, válassza ki a nevét a címkézési portál jobb felső sarkában, majd válassza a **kijelentkezés lehetőséget.** Ha nem jelentkezik ki, az Azure-ban az idő kimarad, és az adatait egy másik Labeler rendeli hozzá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg a [képbesorolási modellek betanítását az Azure-ban](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)
 * További információ [az objektumok észleléséről az Azure-ban és a gyorsabb R-CNN-módszer használatával](https://www.microsoft.com/developerblog/2017/10/24/bird-detection-with-azure-ml-workbench/)

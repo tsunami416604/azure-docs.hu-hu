@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 443b6ea2583c7c8a1c633cf1825e83cc02bd168c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756068"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897851"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Azure Cosmos DB erőforrás-tokenek használata a Gremlin SDK-val
 
@@ -101,6 +101,6 @@ Egyetlen Gremlin-fiókkal korlátlan számú tokent adhat ki. Ugyanakkor legfelj
 
 Gyakori hiba, hogy az alkalmazások az erőforrás-jogkivonatok használata közben jelentkeznek, "nincs elegendő jogosultsága az engedélyezési fejlécben a megfelelő kéréshez. Próbálkozzon újra egy másik engedélyezési fejléccel. " Ezt a hibát akkor adja vissza a rendszer, amikor egy Gremlin bejárási kísérletet tesz egy Edge vagy egy csúcspont írására, de az erőforrás-jogkivonat csak *olvasási* jogosultságot biztosít. Vizsgálja meg a bejárást, és ellenőrizze, hogy a következő lépések bármelyikét tartalmazza-e: *. addV ()* , *. addE ()* , *. drop ()* , vagy *. Property ()* .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Szerepköralapú hozzáférés-vezérlés](role-based-access-control.md) a Azure Cosmos DBban
 * [Megtudhatja, hogyan védheti meg Azure Cosmos db az adathozzáférését](secure-access-to-data.md)

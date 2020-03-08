@@ -2,23 +2,29 @@
 title: Erőforrások központi telepítése a felügyeleti csoportba
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni a felügyeleti csoport hatókörében egy Azure Resource Manager sablonban.
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/06/2020
+ms.openlocfilehash: ae561468531b0c3fa584a02793c58ee64ca3610f
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228113"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894889"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Erőforrások létrehozása a felügyeleti csoport szintjén
 
-Az Azure-erőforrásokat általában az Azure-előfizetésében lévő erőforráscsoporthoz helyezheti üzembe. A felügyeleti csoport szintjén azonban erőforrásokat is létrehozhat. A felügyeleti csoport szintjén üzemelő példányok használatával olyan műveleteket hajthat végre, amelyek az adott szinten ésszerűek, például [szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md) hozzárendelésével vagy [házirendek](../../governance/policy/overview.md)alkalmazásával.
+Az Azure-erőforrásokat általában az Azure-előfizetésében lévő erőforráscsoporthoz helyezheti üzembe. Létrehozhat azonban erőforrásokat is a következő helyeken:
+
+* [előfizetés szintje](deploy-to-subscription.md)
+* felügyeleti csoport szintje (ebben a cikkben szerepel)
+* [bérlői szint](deploy-to-tenant.md)
+
+A felügyeleti csoport szintjén üzemelő példányok használatával olyan műveleteket hajthat végre, amelyek az adott szinten ésszerűek, például [szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md) hozzárendelésével vagy [házirendek](../../governance/policy/overview.md)alkalmazásával.
 
 ## <a name="supported-resources"></a>Támogatott erőforrások
 
 A felügyeleti csoport szintjén a következő erőforrástípusok helyezhetők üzembe:
 
-* [központi telepítések](/azure/templates/microsoft.resources/deployments)
+* [központi telepítések](/azure/templates/microsoft.resources/deployments) – előfizetések vagy erőforráscsoportok számára üzembe helyezett beágyazott sablonok esetén.
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
@@ -159,7 +165,7 @@ A következő példa egy meglévő szabályzat-definíciót rendel hozzá a fel�
 
 * [Hozzon létre egy erőforráscsoportot, egy házirendet és egy házirend-hozzárendelést](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A szerepkörök hozzárendelésével kapcsolatos további tudnivalókért lásd: [Az Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával](../../role-based-access-control/role-assignments-template.md).
 * A Azure Security Center munkaterület-beállításainak üzembe helyezésére példát a következő témakörben talál: [deployASCwithWorkspaceSettings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).

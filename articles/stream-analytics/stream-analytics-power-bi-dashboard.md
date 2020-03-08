@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 76f5c1f0cd3186244e9a262358c9c9a652a73fdb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/05/2019
+ms.openlocfilehash: 8466fbcb4325dc244551a3b84fc20581366b7071
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431634"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851148"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics és Power BI: valós idejű elemzési irányítópult az adatfolyam-továbbításhoz
 
@@ -28,7 +28,7 @@ Megtekintheti [a](https://www.youtube.com/watch?v=SGUpT-a99MA) forgatókönyvet 
 Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Egy Azure-fiók.
-* Egy fiók a Power BIhoz. Munkahelyi fiókot vagy iskolai fiókot is használhat.
+* Egy fiók a Power BI Prohoz. Munkahelyi fiókot vagy iskolai fiókot is használhat.
 * A [valós idejű csalások észlelésére](stream-analytics-real-time-fraud-detection.md) vonatkozó oktatóanyag befejezett verziója. Az oktatóanyag egy olyan alkalmazást tartalmaz, amely fiktív telefonhívási metaadatokat hoz létre. Az oktatóanyagban létrehoz egy Event hubot, és elküldi a streaming Phone-hívási adatátvitelt az Event hub-nak. Olyan lekérdezést kell írnia, amely észleli a csalárd hívásokat (az azonos számú hívások a különböző helyeken található azonos időpontban). 
 
 
@@ -47,7 +47,7 @@ A valós idejű csalások észlelését ismertető oktatóanyagban a kimenetet a
    |Adatkészlet neve  |   SA-adatkészlet  |
    |Tábla neve |  csalárd – hívások  |
 
-   ![Stream Analytics kimenet konfigurálása](media/stream-analytics-power-bi-dashboard/configure-stream-analytics-output.png)
+   ![Stream Analytics-kimenetben konfigurálása](media/stream-analytics-power-bi-dashboard/configure-stream-analytics-output.png)
 
    > [!WARNING]
    > Ha Power BI rendelkezik olyan adatkészlettel és táblával, amelynek neve megegyezik a Stream Analytics feladatban megadott névvel, a rendszer felülírja a meglévőket.
@@ -56,7 +56,7 @@ A valós idejű csalások észlelését ismertető oktatóanyagban a kimenetet a
 
 4. Miután kiválasztotta az **Engedélyezés** lehetőséget, megjelenik egy előugró ablak, ahol meg kell adnia a hitelesítő adatait a Power BI-fiókja hitelesítéséhez. A sikeres hitelesítés után válassza a **Mentés** lehetőséget a beállítások mentéséhez.
 
-8. Kattintson a **Create** (Létrehozás) gombra.
+8. Kattintson a  **Create** (Létrehozás) gombra.
 
 Az adatkészlet a következő beállításokkal jön létre:
 
@@ -99,7 +99,7 @@ Power BI adatkészletekkel kapcsolatos további információkért tekintse meg a
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. Kattintson a **Mentés** gombra.
+4. Kattintson a **Save** (Mentés) gombra.
 
 
 ## <a name="test-the-query"></a>A lekérdezés tesztelése
@@ -185,7 +185,7 @@ A streaming Analytics-feladatok a bejövő adatfolyamban megjelenő csalárd hí
      ![Elkészült Power BI irányítópulton két csempe látható a csalárd hívásokhoz](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
 
-## <a name="learn-more-about-power-bi"></a>További információ a Power BI szolgáltatásról
+## <a name="learn-more-about-power-bi"></a>További információ a Power BI
 
 Ez az oktatóanyag azt mutatja be, hogyan hozhat létre csak néhány fajta vizualizációt egy adatkészlethez. A Power BI segítséget nyújthat más ügyfél üzleti intelligencia-eszközeinek létrehozásához a szervezet számára. További ötleteket a következő forrásokban talál:
 
@@ -201,7 +201,7 @@ A következő egyenlettel számíthatja ki az értéket, hogy másodpercek alatt
 
 ![A számítási értékhez tartozó egyenlet, amely másodpercek alatt megadja az ablakokat](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
-Példa:
+Például:
 
 * A 1 000-es eszközök egymásodperces időközönként küldik el az adatokat.
 * Az Power BI Pro SKU-t használja, amely óránként 1 000 000 sort támogat.
@@ -234,10 +234,10 @@ Hasonlóképpen, ha egy feladatot a jogkivonat lejárta után is elindít, hiba 
 
 Miután az engedélyezést Power BItel frissítette, egy zöld riasztás jelenik meg az engedélyezési területen, hogy tükrözze a probléma megoldását.
 
-## <a name="get-help"></a>Segítség
+## <a name="get-help"></a>Segítségkérés
 További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)

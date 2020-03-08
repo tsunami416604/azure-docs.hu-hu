@@ -6,8 +6,8 @@
       href: scheduler-intro.md
 - name: Bevezetés
   items:
-    - name: Feladatok létrehozása és kezelése – portál
-      href: scheduler-get-started-portal.md
+    - name: Ütemezések létrehozása és felügyelete – Azure PowerShell
+      href: scheduler-powershell-reference.md
     - name: Migrálás a Schedulerből a Logic Appsba
       href: migrate-from-scheduler-to-logic-apps.md
 - name: Alapelvek

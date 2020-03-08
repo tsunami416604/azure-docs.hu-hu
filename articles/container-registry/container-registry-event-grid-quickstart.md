@@ -4,12 +4,12 @@ description: Ebben a rövid útmutatóban engedélyezheti Event Grid eseményeit
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1ff9572cf8614e3eb5d015a602ca3f878875a0a4
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455344"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78403240"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Gyors útmutató: események küldése a privát tároló beállításjegyzékből a Event Gridba
 
@@ -110,7 +110,7 @@ az eventgrid event-subscription create \
 
 Az előfizetés befejezésekor a következőhöz hasonló kimenetnek kell megjelennie:
 
-```JSON
+```json
 {
   "destination": {
     "endpointBaseUrl": "https://eventgridviewer.azurewebsites.net/api/updates",
@@ -149,8 +149,7 @@ az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://githu
 
 A következőhöz hasonló kimenetnek kell megjelennie, míg az ACR-feladatok buildek, majd leküldi a rendszerképet. A következő minta kimenete rövidítve lett csonkítva.
 
-```console
-$ az acr build -r $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
+```output
 Sending build context to ACR...
 Queued a build with build ID: aa2
 Waiting for build agent...
@@ -172,8 +171,7 @@ az acr repository show-tags --name $ACR_NAME --repository myimage
 
 A létrehozott rendszerkép "v1" címkéje a kimenetben jelenik meg, a következőhöz hasonlóan:
 
-```console
-$ az acr repository show-tags --name $ACR_NAME --repository myimage
+```output
 [
   "v1"
 ]
@@ -189,10 +187,9 @@ az acr repository delete --name $ACR_NAME --image myimage:v1
 
 Az alábbihoz hasonló kimenetnek kell megjelennie, amely megerősítést kér a jegyzékfájl és a kapcsolódó rendszerképek törléséhez:
 
-```console
-$ az acr repository delete --name $ACR_NAME --image myimage:v1
+```output
 This operation will delete the manifest 'sha256:f15fa9d0a69081ba93eee308b0e475a54fac9c682196721e294b2bc20ab23a1b' and all the following images: 'myimage:v1'.
-Are you sure you want to continue? (y/n): y
+Are you sure you want to continue? (y/n): 
 ```
 
 ## <a name="view-registry-events"></a>Beállításjegyzék-események megtekintése

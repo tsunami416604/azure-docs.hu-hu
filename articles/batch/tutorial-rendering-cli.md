@@ -6,15 +6,15 @@ author: LauraBrenner
 manager: evansma
 ms.service: batch
 ms.topic: tutorial
-ms.date: 12/11/2018
+ms.date: 03/05/2020
 ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 12205fd04b015ac3cfe32765779808b636f53946
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a415a74af654ef9cf56a37c1fca5ac6632ba4418
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023072"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672979"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Oktatóanyag: Jelenetek renderelése az Azure Batch segítségével 
 
@@ -33,7 +33,7 @@ Az oktatóanyagban egy 3ds Max-jelenetet fog renderelni a Batch és az [Arnold](
 
 Ha használatalapú fizetést szeretne alkalmazni a Batch renderelő alkalmazásaira, használatalapú előfizetésre vagy egy egyéb Azure vásárlási opcióra van szüksége. **A használatalapú fizetés licencelése nem támogatott, ha olyan ingyenes Azure-ajánlatot használ, amely elkölthető kreditet biztosít.**
 
-Az oktatóanyagban szereplő 3ds Max-mintajelenet, valamint a Bash-mintaszkript és a JSON konfigurációs fájlok elérhetők a [GitHubon](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene). A 3ds Max-jelenet az [Autodesk 3ds Max-mintafájlok](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe) közül származik. (Az Autodesk 3ds Max-mintafájlok az Attribution-NonCommercial-Share Alike Creative Commons-licenc szerint érhetők el. Copyright © Autodesk, Inc.)
+Az oktatóanyagban szereplő 3ds Max-mintajelenet, valamint a Bash-mintaszkript és a JSON konfigurációs fájlok elérhetők a [GitHubon](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene). A 3ds Max-jelenet az [Autodesk 3ds Max-mintafájlok](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe) közül származik. (Az Autodesk 3ds Max-mintafájlok az Attribution-NonCommercial-Share Alike Creative Commons-licenc szerint érhetők el. Copyright &copy; Autodesk, Inc.)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -96,7 +96,7 @@ az storage container create \
     --name scenefiles
 ```
 
-Töltse le a `MotionBlur-Dragon-Flying.max` jelenetet a [GitHubról](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) egy helyi munkakönyvtárba. Példa:
+Töltse le a `MotionBlur-Dragon-Flying.max` jelenetet a [GitHubról](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) egy helyi munkakönyvtárba. Például:
 
 ```azurecli-interactive
 wget -O MotionBlur-DragonFlying.max https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max
@@ -124,7 +124,7 @@ Hozzon létre egy Batch-készletet a rendereléshez az [az batch pool create](/c
       "publisher": "batch",
       "offer": "rendering-windows2016",
       "sku": "rendering",
-      "version": "1.3.2"
+      "version": "1.3.8"
     },
     "nodeAgentSKUId": "batch.node.windows amd64"
   },
@@ -301,7 +301,7 @@ az batch task create --job-id myrenderjob --json-file myrendertask_multi.json
 
 ### <a name="view-task-output"></a>A tevékenység kimenetének megtekintése
 
-A tevékenység futtatása néhány percet vesz igénybe. Az [az batch task list](/cli/azure/batch/task#az-batch-task-list) paranccsal tekintheti meg a tevékenységek állapotát. Példa:
+A tevékenység futtatása néhány percet vesz igénybe. Az [az batch task list](/cli/azure/batch/task#az-batch-task-list) paranccsal tekintheti meg a tevékenységek állapotát. Például:
 
 ```azurecli-interactive
 az batch task list \
@@ -309,7 +309,7 @@ az batch task list \
     --output table
 ```
 
-Az [az batch task show](/cli/azure/batch/task#az-batch-task-show) paranccsal tekintheti meg az egyes tevékenységek részleteit. Példa:
+Az [az batch task show](/cli/azure/batch/task#az-batch-task-show) paranccsal tekintheti meg az egyes tevékenységek részleteit. Például:
 
 ```azurecli-interactive
 az batch task show \
@@ -317,7 +317,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-A tevékenységek létrehozzák a *dragon0002.jpg* - *dragon0007.jpg* képeket a számítási csomópontokon, és feltöltik őket a tárfiók *job-myrenderjob* tárolójába. A kimenet megtekintéséhez töltse le a fájlokat a helyi számítógép egyik mappájába az [az storage blob download-batch](/cli/azure/storage/blob) paranccsal. Példa:
+A tevékenységek létrehozzák a *dragon0002.jpg* - *dragon0007.jpg* képeket a számítási csomópontokon, és feltöltik őket a tárfiók *job-myrenderjob* tárolójába. A kimenet megtekintéséhez töltse le a fájlokat a helyi számítógép egyik mappájába az [az storage blob download-batch](/cli/azure/storage/blob) paranccsal. Például:
 
 ```azurecli-interactive
 az storage blob download-batch \
@@ -338,7 +338,7 @@ Ha már nincs szükség rájuk, az [az group delete](/cli/azure/group#az-group-d
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következőket sajátította el:
 

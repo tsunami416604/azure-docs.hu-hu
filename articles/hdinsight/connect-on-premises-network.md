@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/16/2019
-ms.openlocfilehash: 97725099e82c5edb05447d97b47f352c440bd8e8
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.custom: hdinsightactive
+ms.date: 03/04/2020
+ms.openlocfilehash: 2ed7a5b9c81d1b50f80f379a88688b69c49ed382
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529294"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897918"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>A HDInsight csatlakoztatása a helyszíni hálózathoz
 
@@ -28,12 +28,12 @@ Ismerje meg, hogyan csatlakoztathatók a HDInsight a helyszíni hálózathoz az 
 
 A következő műveletek végrehajtásával engedélyezheti, hogy a csatlakoztatott hálózat HDInsight és erőforrásai kommunikáljanak a név alapján:
 
-* Azure-Virtual Network létrehozása.
-* Hozzon létre egy egyéni DNS-kiszolgálót az Azure Virtual Networkban.
-* Konfigurálja úgy a virtuális hálózatot, hogy az alapértelmezett Azure rekurzív feloldó helyett az egyéni DNS-kiszolgálót használja.
-* Konfigurálja a továbbítást az egyéni DNS-kiszolgáló és a helyszíni DNS-kiszolgáló között.
+1. Azure-Virtual Network létrehozása.
+1. Hozzon létre egy egyéni DNS-kiszolgálót az Azure Virtual Networkban.
+1. Konfigurálja úgy a virtuális hálózatot, hogy az alapértelmezett Azure rekurzív feloldó helyett az egyéni DNS-kiszolgálót használja.
+1. Konfigurálja a továbbítást az egyéni DNS-kiszolgáló és a helyszíni DNS-kiszolgáló között.
 
-Ez a konfiguráció a következő viselkedést teszi lehetővé:
+Ezek a konfigurációk a következő viselkedést teszik lehetővé:
 
 * A rendszer a __virtuális hálózat__ DNS-utótagját tartalmazó teljes tartománynevek kérelmeit továbbítja az egyéni DNS-kiszolgálónak. Az egyéni DNS-kiszolgáló ezután továbbítja ezeket a kéréseket az Azure rekurzív feloldónak, amely visszaadja az IP-címet.
 * Minden más kérelem továbbítva lesz a helyszíni DNS-kiszolgálónak. Még a nyilvános internetes erőforrásokra vonatkozó kéréseket, például a microsoft.com a rendszer a helyszíni DNS-kiszolgálónak továbbítja a névfeloldáshoz.
@@ -63,22 +63,24 @@ A következő dokumentumok segítségével megtudhatja, hogyan hozhat létre a h
 
 Ezek a lépések a [Azure Portal](https://portal.azure.com) használatával létrehoznak egy Azure-beli virtuális gépet. A virtuális gépek létrehozásának egyéb módjaiért lásd: virtuális gép [létrehozása – Azure CLI](../virtual-machines/linux/quick-create-cli.md) és [VM-Azure PowerShell létrehozása](../virtual-machines/linux/quick-create-powershell.md).  A [kötési](https://www.isc.org/downloads/bind/) DNS szoftvert használó linuxos virtuális gép létrehozásához kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
   
-2. A bal oldali menüben navigáljon a **+ erőforrás létrehozása**  > **számítási**  > **Ubuntu Server 18,04 LTS**.
+1. A felső menüben válassza az **+ erőforrás létrehozása**lehetőséget.
 
-    ![Ubuntu rendszerű virtuális gép létrehozása](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
+    ![Ubuntu rendszerű virtuális gép létrehozása](./media/connect-on-premises-network/azure-portal-create-resource.png)
 
-3. Az __alapok__ lapon adja meg a következő adatokat:  
+1. Válassza a **számítási** > **virtuális gép** lehetőséget, hogy a **virtuális gép létrehozása** lapra ugorjon.
+
+1. Az __alapok__ lapon adja meg a következő adatokat:  
   
-    | Mező | Value (Díj) |
+    | Mező | Érték |
     | --- | --- |
-    |Előfizetés |Válassza ki a megfelelő előfizetést.|
+    |-előfizetés |Válassza ki a megfelelő előfizetést.|
     |Erőforráscsoport |Válassza ki azt az erőforráscsoportot, amely a korábban létrehozott virtuális hálózatot tartalmazza.|
     |Virtuális gép neve | Adjon meg egy rövid nevet, amely azonosítja ezt a virtuális gépet. Ez a példa az **DNSProxy**-t használja.|
-    |Region (Régió) | Válassza ki ugyanazt a régiót, mint a korábban létrehozott virtuális hálózat.  Nem minden virtuálisgép-méret érhető el minden régióban.  |
+    |Régió | Válassza ki ugyanazt a régiót, mint a korábban létrehozott virtuális hálózat.  Nem minden virtuálisgép-méret érhető el minden régióban.  |
     |Rendelkezésre állási beállítások |  Válassza ki a kívánt rendelkezésre állási szintet.  Az Azure számos lehetőséget kínál az alkalmazások rendelkezésre állásának és rugalmasságának kezelésére.  A Availability Zones-vagy rendelkezésre állási csoportokban lévő replikált virtuális gépek használatát az adatközpont-kimaradások és a karbantartási események védelme érdekében Ebben a példában **nem szükséges infrastruktúra-redundancia**. |
-    |Kép | Hagyja az **Ubuntu Server 18,04 LTS**-et. |
+    |Image (Kép) | Hagyja az **Ubuntu Server 18,04 LTS**-et. |
     |Hitelesítés típusa | __Jelszó__ vagy __nyilvános SSH-kulcs__: az SSH-fiók hitelesítési módszere. Javasoljuk, hogy használjon nyilvános kulcsokat, mivel azok biztonságosabbak. Ez a példa a **jelszót**használja.  További információ: [ssh-kulcsok létrehozása és használata Linux rendszerű virtuális gépekhez](../virtual-machines/linux/mac-create-ssh-keys.md) dokumentum.|
     |Felhasználónév |Adja meg a virtuális gép rendszergazdai felhasználónevét.  Ez a példa az **sshuser**-t használja.|
     |Jelszó vagy nyilvános SSH-kulcs | A rendelkezésre álló mező meghatározása a **hitelesítési típus**alapján történik.  Adja meg a megfelelő értéket.|
@@ -90,10 +92,10 @@ Ezek a lépések a [Azure Portal](https://portal.azure.com) használatával lét
 
 4. A **hálózatkezelés** lapon adja meg a következő adatokat:
 
-    | Mező | Value (Díj) |
+    | Mező | Érték |
     | --- | --- |
     |Virtuális hálózat | Válassza ki a korábban létrehozott virtuális hálózatot.|
-    |Alhálózat | Válassza ki a korábban létrehozott virtuális hálózat alapértelmezett alhálózatát. Ne __válassza ki__ a VPN-átjáró által használt alhálózatot.|
+    |Subnet | Válassza ki a korábban létrehozott virtuális hálózat alapértelmezett alhálózatát. Ne __válassza ki__ a VPN-átjáró által használt alhálózatot.|
     |Nyilvános IP-cím | Használja az automatikusan feltöltött értéket.  |
 
     ![HDInsight virtuális hálózati beállításai](./media/connect-on-premises-network/virtual-network-settings.png)
@@ -178,7 +180,7 @@ Miután létrehozta a virtuális gépet, az **üzembe helyezés sikeres** értes
     dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
     ```
 
-    A `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` szöveg a virtuális hálózat __DNS-utótagja__ . Mentse ezt az értéket, mivel később még használni fogjuk.
+    A `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` szöveg a virtuális hálózat __DNS-utótagja__ . Mentse ezt az értéket, mivel később használatban van.
 
 5. A virtuális hálózaton belüli erőforrások DNS-neveinek feloldásához a kötés konfigurálásához használja a következő szöveget a `/etc/bind/named.conf.local` fájl tartalmaként:
 
@@ -232,7 +234,7 @@ Miután létrehozta a virtuális gépet, az **üzembe helyezés sikeres** értes
 
 Ha úgy szeretné konfigurálni a virtuális hálózatot, hogy az egyéni DNS-kiszolgálót használja az Azure rekurzív feloldó helyett, kövesse az alábbi lépéseket a [Azure Portal](https://portal.azure.com):
 
-1. A bal oldali menüben navigáljon az **összes szolgáltatás**  > **hálózatkezelés**  > **virtuális hálózatok**elemre.
+1. A bal oldali menüben navigáljon az **összes szolgáltatás** > **hálózatkezelés** > **virtuális hálózatok**elemre.
 
 2. Válassza ki a virtuális hálózatot a listából, amely megnyitja a virtuális hálózat alapértelmezett nézetét.  
 
@@ -333,7 +335,7 @@ Ha közvetlenül szeretne csatlakozni a HDInsight a virtuális hálózaton keres
     >
     > Például az Apache Ambari egyszerre csak egy fő csomóponton aktív. Ha megpróbál hozzáférni a Ambari egy fő csomóponton, és 404-es hibát ad vissza, akkor a másik fő csomóponton fut.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A virtuális hálózatok HDInsight használatával kapcsolatos további információkért lásd: [virtuális hálózat központi telepítésének megtervezése az Azure HDInsight-fürtökhöz](./hdinsight-plan-virtual-network-deployment.md).
 

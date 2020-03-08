@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 8fb4d50a4ba56efd9087a829c7d54c3010fc671e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5fd38a781a58da530ad805bbeee352858eb33b41
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382054"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892792"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Gyors útmutató: Stream Analytics-feladatok létrehozása Azure PowerShell használatával
 
@@ -28,7 +28,7 @@ A példában szereplő művelet beolvassa az adatfolyam-adatokat egy IoT Hub esz
 
 * Ehhez a rövid útmutatóhoz a Azure PowerShell modul szükséges. Ahhoz, hogy megtudja, melyik verzió van telepítve a helyi gépen, futtassa a `Get-Module -ListAvailable Az` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket.
 
-* Egyes IoT Hub műveleteket a Azure PowerShell nem támogat, és az Azure CLI 2.0.24 vagy újabb verziójával, valamint az Azure CLI-hez készült IoT-bővítménnyel kell befejezni. [Telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t, és a `az extension add --name azure-cli-iot-ext` használatával telepítse a IoT bővítményt.
+* Egyes IoT Hub műveleteket a Azure PowerShell nem támogat, és az Azure CLI 2.0.70 vagy újabb verziójával, valamint az Azure CLI-hez készült IoT-bővítménnyel kell befejezni. [Telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t, és a `az extension add --name azure-iot` használatával telepítse a IoT bővítményt.
 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
@@ -50,7 +50,7 @@ Get-AzSubscription
 Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubscription
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -329,7 +329,7 @@ Remove-AzResourceGroup `
   -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy egyszerű Stream Analytics-feladatot helyezett üzembe a PowerShell használatával. A Stream Analytics-feladatokat az [Azure Portallal](stream-analytics-quick-create-portal.md) és a [Visual Studióval](stream-analytics-quick-create-vs.md) is üzembe helyezheti.
 

@@ -4,19 +4,19 @@ description: Ez a cikk áttekintést nyújt az Azure webalkalmazási tűzfal (WA
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/04/2019
+ms.date: 03/06/2020
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 7b43a6bdac254493da8693b55158e15746e76dc3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 44bc8db5d8ada0378f8f9d0911ed398ba491d289
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502043"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851186"
 ---
-# <a name="what-is-azure-web-application-firewall"></a>Mi az Azure Webalkalmazási tűzfal?
+# <a name="what-is-azure-web-application-firewall"></a>Mi az az Azure Web Application Firewall?
 
-A webalkalmazási tűzfal (WAF) lehetővé teszi a webalkalmazások központosított védelmét a gyakori támadások és biztonsági rések ellen. A webalkalmazások egyre inkább a gyakran ismert biztonsági réseket kihasználó rosszindulatú támadásokra irányulnak. Az SQL-injektálás és a helyek közötti parancsfájlkezelés a leggyakoribb támadások közé tartozik.
+A Web Application Firewall (WAF) központosított védelmet biztosít a webalkalmazások számára a biztonsági rések és az azokat kihasználó támadások ellen. A webalkalmazások egyre inkább a gyakran ismert biztonsági réseket kihasználó rosszindulatú támadásokra irányulnak. Az SQL-injektálás és a helyek közötti parancsfájlkezelés a leggyakoribb támadások közé tartozik.
 
 ![A WAF áttekintése](media/overview/wafoverview.png)
 
@@ -24,9 +24,13 @@ Az ilyen támadások megelőzése az alkalmazás kódjában kihívást jelent. A
 
 Az egyes webalkalmazások biztonságossá tétele helyett a WAF-megoldás gyorsabban reagálhat a biztonsági fenyegetésekre, ha központilag javít egy ismert biztonsági rést.
 
-A WAF üzembe helyezhető az Azure Application Gateway és az Azure bejárati ajtó szolgáltatásával. A WAF jelenleg minden egyes szolgáltatáshoz testre szabott funkciókkal rendelkezik. Az egyes szolgáltatások WAF funkcióival kapcsolatos további információkért tekintse meg az egyes szolgáltatások áttekintését.
+## <a name="supported-services"></a>Támogatott szolgáltatások
 
-## <a name="next-steps"></a>További lépések
+A WAF üzembe helyezhető az [azure Application Gateway](../application-gateway/overview.md) és az [Azure bejárati ajtó szolgáltatásával](../frontdoor/front-door-overview.md). Mindkét szolgáltatás 7. rétegbeli (HTTP/S) terheléselosztó, de Application Gateway regionális szolgáltatás, és a bejárati ajtó egy globális szolgáltatás. A WAF az egyes szolgáltatásokhoz testreszabott funkciókat tartalmaz.
+
+További információkért tekintse meg az egyes szolgáltatások WAF áttekintését.
+
+## <a name="next-steps"></a>Következő lépések
 
 - A Application Gateway webalkalmazási tűzfallal kapcsolatos további információkért lásd: [webalkalmazási tűzfal az Azure Application Gateway](./ag/ag-overview.md).
-- További információ a webalkalmazási tűzfalról az Azure bejárati ajtó szolgáltatásban: [webalkalmazási tűzfal az Azure bejárati ajtó szolgáltatásban](./afds/afds-overview.md).
+- A webalkalmazási tűzfallal kapcsolatos további információkért lásd: [webalkalmazási tűzfal az Azure bejárati ajtó szolgáltatásban](./afds/afds-overview.md).

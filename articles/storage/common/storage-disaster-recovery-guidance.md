@@ -10,12 +10,12 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 40a7f49cbb2d74b55ccb85dce64eea936a20801e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905524"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894530"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Vész-helyreállítás és fiók feladatátvétele (előzetes verzió)
 
@@ -114,22 +114,17 @@ A Azure Portal, a PowerShell, az Azure CLI vagy az Azure Storage erőforrás-szo
 
 ## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
 
-A fiók feladatátvétele az GRS-t vagy RA-GRS-t használó összes ügyfél számára előzetes verzióban érhető el Azure Resource Manager üzemelő példányokkal. Az általános célú v1, az általános célú v2 és a blob Storage-fiókok típusai támogatottak. a fiók feladatátvétele jelenleg a következő régiókban érhető el:
-
-- Kelet-Ázsia
-- Délkelet-Ázsia
-- Ausztrália keleti régiója
-- Délkelet-Ausztrália
-- USA középső régiója
-- USA 2. keleti régiója
-- USA nyugati középső régiója
-- USA 2. nyugati régiója
+A fiók feladatátvétele az GRS-t vagy RA-GRS-t használó összes ügyfél számára előzetes verzióban érhető el Azure Resource Manager üzemelő példányokkal. Az általános célú v1, az általános célú v2 és a blob Storage-fiókok típusai támogatottak. A fiók feladatátvétele jelenleg az összes nyilvános régióban elérhető. A fiók feladatátvétele jelenleg nem érhető el szuverén/országos felhőkben.
 
 Az előzetes verzió csak nem éles használatra készült. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
 
-### <a name="additional-considerations"></a>Néhány fontos megjegyzés
+### <a name="additional-considerations"></a>További szempontok
 
 Tekintse át az ebben a szakaszban ismertetett további szempontokat annak megismeréséhez, hogy az alkalmazások és szolgáltatások milyen hatással lehetnek a feladatátvétel kényszerítésére az előzetes verzió ideje alatt.
+
+#### <a name="storage-account-containing-archived-blobs"></a>Archivált blobokat tartalmazó Storage-fiók
+
+Az archivált blobokat tartalmazó Storage-fiókok támogatják a fiók feladatátvételét. A feladatátvétel befejeződése után vissza kell alakítani a fiókot GRS vagy RA-GRS az összes archieved-blobot először egy online rétegbe.
 
 #### <a name="storage-resource-provider"></a>Tárolásierőforrás-szolgáltató
 
@@ -137,7 +132,7 @@ A feladatátvétel befejezése után az ügyfelek újra elolvashatják és írha
 
 Mivel az Azure Storage erőforrás-szolgáltató nem hajtja végre a feladatátvételt, a [Location (hely](/dotnet/api/microsoft.azure.management.storage.models.trackedresource.location) ) tulajdonság az eredeti elsődleges helyet adja vissza a feladatátvétel befejeződése után.
 
-#### <a name="azure-virtual-machines"></a>Azure-alapú virtuális gépek
+#### <a name="azure-virtual-machines"></a>Azure virtuális gépek
 
 Az Azure Virtual Machines (VM) nem végez feladatátvételt a fiók feladatátvételének részeként. Ha az elsődleges régió elérhetetlenné válik, és feladatátvételt hajt végre a másodlagos régióban, akkor a feladatátvételt követően újra létre kell hoznia a virtuális gépeket. Emellett lehetséges, hogy a fiók feladatátvételével kapcsolatos adatvesztés történik. A Microsoft az Azure-beli virtuális gépekre jellemző, [magas rendelkezésre állású](../../virtual-machines/windows/manage-availability.md) és vész- [helyreállítási](../../virtual-machines/virtual-machines-disaster-recovery-guidance.md) útmutatót javasolja.
 
@@ -162,8 +157,8 @@ Ne feledje, hogy az ideiglenes lemezen tárolt összes adatmennyiség elvész a 
 
 Az előzetes verzióhoz tartozó fiók feladatátvétele nem támogatja a következő szolgáltatásokat és szolgáltatásokat:
 
-- A Azure File Sync nem támogatja a Storage-fiók feladatátvételét. A Azure File Syncben felhőbeli végpontként használt Azure-fájlmegosztásokat tartalmazó tárfiókokon nem lehet feladatátvételt végezni. Feladatátvétel esetén a szinkronizálás leáll, és az újonnan rétegzett fájlok esetében váratlan adatvesztést is okozhat.  
-- Az archivált blobokat tartalmazó Storage-fiókok feladatátvétele nem végezhető el. Az archivált blobokat egy különálló Storage-fiókban kezelheti, amelyet nem szeretne átadni.
+- A Azure File Sync nem támogatja a Storage-fiók feladatátvételét. A Azure File Syncben felhőbeli végpontként használt Azure-fájlmegosztásokat tartalmazó tárfiókokon nem lehet feladatátvételt végezni. Feladatátvétel esetén a szinkronizálás leáll, és az újonnan rétegzett fájlok esetében váratlan adatvesztést is okozhat.
+- ADLS Gen2 Storage-fiókok (a hierarchikus névteret engedélyező fiókok) jelenleg nem támogatottak.
 - A prémium szintű blokk blobokat tartalmazó Storage-fiókok feladatátvétele nem végezhető el. A prémium szintű blokk blobokat támogató Storage-fiókok jelenleg nem támogatják a Geo-redundanciát.
 - Nem lehet felvenni egy olyan Storage-fiókot, amely bármely, a [módosíthatatlansági házirendet](../blobs/storage-blob-immutable-storage.md) engedélyező tárolót tartalmaz. Zárolt/zárolt időalapú adatmegőrzési vagy jogszabályi szabályzatok megakadályozzák a feladatátvételt a megfelelőség fenntartása érdekében.
 - A feladatátvétel befejeződése után a következő funkciók nem működnek, ha eredetileg engedélyezve vannak: [esemény-előfizetések](../blobs/storage-blob-event-overview.md), a [hírcsatorna módosítása](../blobs/storage-blob-change-feed.md), [életciklus-szabályzatok](../blobs/storage-lifecycle-management-concepts.md)és [Storage Analytics naplózás](storage-analytics-logging.md).
@@ -180,7 +175,7 @@ Ha a Storage-fiókja RA-GRS van konfigurálva, akkor a másodlagos végpont hasz
 
 Szélsőséges körülmények között, amikor egy régiót súlyos katasztrófa okoz, a Microsoft regionális feladatátvételt kezdeményezhet. Ebben az esetben nincs szükség beavatkozásra a részen. Amíg a Microsoft által felügyelt feladatátvétel nem fejeződött be, nem rendelkezik írási hozzáféréssel a Storage-fiókhoz. Az alkalmazások a másodlagos régióból is beolvashatók, ha a Storage-fiókja RA-GRS van konfigurálva. 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [Fiók feladatátvételének kezdeményezése (előzetes verzió)](storage-initiate-account-failover.md)
 - [Magas rendelkezésre állású alkalmazások tervezése az RA-GRS használatával](storage-designing-ha-apps-with-ragrs.md)

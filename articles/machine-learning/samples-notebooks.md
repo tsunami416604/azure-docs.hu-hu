@@ -1,5 +1,5 @@
 ---
-title: Példa Jupyter-jegyzetfüzetekre
+title: A példában Jupyter notebookok
 titleSuffix: Azure Machine Learning
 description: Megkeresheti és használhatja például a Jupyter jegyzetfüzeteket a Azure Machine Learning Python for SDK megismeréséhez.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: sample
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
-ms.date: 11/04/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1f155d153ef7af8a83fb86a37cd1b9fa826ad2ff
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 7242b82ee5c43878a33731bd1f02b685020f22b0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533432"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673625"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>A Azure Machine Learning megismerése Jupyter notebookokkal
 
@@ -53,7 +53,7 @@ A Data Science Virtual Machine (DSVM) egy testreszabott virtuálisgép-rendszerk
 
 [!INCLUDE [aml-dsvm-server](../../includes/aml-dsvm-server.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg a [minta jegyzetfüzetekkel](https://aka.ms/aml-notebooks) , hogy megismerje, milyen Azure Machine learning teheti, vagy próbálja ki a következő oktatóanyagokat:
 

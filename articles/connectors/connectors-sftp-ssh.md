@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 02/28/2020
+ms.date: 03/7/2020
 tags: connectors
-ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0f62fb835fdd2353557a4aff47128bb94ba91a31
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161874"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851527"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-fájlok figyelése, létrehozása és kezelése SSH és Azure Logic Apps használatával
 
@@ -36,29 +36,34 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
   > [!NOTE]
   > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
+  Ezt az adaptív viselkedést felülbírálhatja, ha [egy állandó adatméretet ad meg](#change-chunk-size) helyette. Ez a méret 5 MB és 50 MB között lehet. Tegyük fel például, hogy rendelkezik egy 45 MB-os fájllal és egy olyan hálózattal, amely az adott fájlméretet késés nélkül támogatja. Az adaptív adatdarabolás több hívást eredményez, inkább egy hívást. A hívások számának csökkentéséhez próbáljon meg 50 MB-os méretet beállítani. A különböző forgatókönyvekben, ha a logikai alkalmazás időtúllépést mutat be, például 15 MB-os adattömbök használata esetén, a méretet 5 MB-ra csökkentheti.
+
   Az adatrészlet mérete egy kapcsolatban van társítva, ami azt jelenti, hogy ugyanazt a kapcsolatokat használhatja a darabolást támogató műveletekhez, majd olyan műveletekhez, amelyek nem támogatják a darabolást. Ebben az esetben az adathalmaz mérete olyan műveletek esetében, amelyek nem támogatják az adatdarabolási tartományokat 5 MB-ról 50 MB-ra. Ez a táblázat azt mutatja, hogy mely SFTP-SSH-műveletek támogatják a darabolást:
 
-  | Műveletek | Adatdarabolás támogatása |
-  |--------|------------------|
-  | **Fájl másolása** | Nem |
-  | **Fájl létrehozása** | Igen |
-  | **Mappa létrehozása** | Nem alkalmazható |
-  | **Fájl törlése** | Nem alkalmazható |
-  | **Archív fájl kibontása a mappába** | Nem alkalmazható |
-  | **Fájl tartalmának beolvasása** | Igen |
-  | **Fájl tartalmának beolvasása elérési út alapján** | Igen |
-  | **Fájl metaadatainak beolvasása** | Nem alkalmazható |
-  | **Fájl metaadatainak beolvasása elérési út használatával** | Nem alkalmazható |
-  | **Mappában található fájlok listázása** | Nem alkalmazható |
-  | **Fájl átnevezése** | Nem alkalmazható |
-  | **Fájl frissítése** | Nem |
-  |||
+  | Műveletek | Adatdarabolás támogatása | Adatméret-méretezési támogatás felülbírálása |
+  |--------|------------------|-----------------------------|
+  | **Fájl másolása** | Nem | Nem alkalmazható |
+  | **Fájl létrehozása** | Igen | Igen |
+  | **Mappa létrehozása** | Nem alkalmazható | Nem alkalmazható |
+  | **Fájl törlése** | Nem alkalmazható | Nem alkalmazható |
+  | **Archív fájl kibontása a mappába** | Nem alkalmazható | Nem alkalmazható |
+  | **Fájl tartalmának beolvasása** | Igen | Igen |
+  | **Fájl tartalmának beolvasása elérési út alapján** | Igen | Igen |
+  | **Fájl metaadatainak beolvasása** | Nem alkalmazható | Nem alkalmazható |
+  | **Fájl metaadatainak beolvasása elérési út használatával** | Nem alkalmazható | Nem alkalmazható |
+  | **Mappában található fájlok listázása** | Nem alkalmazható | Nem alkalmazható |
+  | **Fájl átnevezése** | Nem alkalmazható | Nem alkalmazható |
+  | **Fájl frissítése** | Nem | Nem alkalmazható |
+  ||||
 
-* SFTP – az SSH-eseményindítók nem támogatják a darabolást. Fájl tartalmának kérésekor az eseményindítók csak a 15 MB vagy annál kisebb fájlokat jelölik ki. A 15 MB-nál nagyobb fájlok lekéréséhez kövesse az alábbi mintát:
+  > [!NOTE]
+  > Nagyméretű fájlok feltöltéséhez olvasási és írási engedéllyel kell rendelkeznie a gyökérmappa számára az SFTP-kiszolgálón.
 
-  * Használjon olyan SFTP-SSH-triggert, amely a fájl tulajdonságait adja vissza, például **egy fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)** .
+* SFTP – az SSH-eseményindítók nem támogatják az üzenetek darabolását. Fájl tartalmának kérésekor az eseményindítók csak a 15 MB vagy annál kisebb fájlokat jelölik ki. A 15 MB-nál nagyobb fájlok lekéréséhez kövesse az alábbi mintát:
 
-  * Kövesse a triggert az SFTP-SSH- **Get fájl tartalma** művelettel, amely beolvassa a teljes fájlt, és implicit módon használja az üzenetek darabolását.
+  1. Használjon olyan SFTP-SSH-triggert, amely csak a fájl tulajdonságait adja vissza, például **egy fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)** .
+
+  1. Kövesse a triggert az SFTP-SSH- **Get fájl tartalma** művelettel, amely beolvassa a teljes fájlt, és implicit módon használja az üzenetek darabolását.
 
 <a name="comparison"></a>
 
@@ -153,11 +158,11 @@ Ha a titkos kulcs Putty formátumú, amely a. PPK (Putty titkos kulcs) fájlnév
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Üres logikai alkalmazások esetén a keresőmezőbe írja be a "SFTP SSH" kifejezést a szűrőként. Válassza ki a kívánt eseményindítót az eseményindítók listából.
+1. Üres logikai alkalmazások esetén a keresőmezőbe írja be a `sftp ssh` szűrőt. Válassza ki a kívánt eseményindítót az eseményindítók listából.
 
    – vagy –
 
-   Meglévő Logic apps esetén az utolsó lépésben, amelyhez műveletet szeretne hozzáadni, válassza az **új lépés**lehetőséget. A keresőmezőbe írja be a "SFTP SSH" kifejezést a szűrőként. A műveletek listában válassza ki a kívánt műveletet.
+   Meglévő Logic apps esetén az utolsó lépésben, amelyhez műveletet szeretne hozzáadni, válassza az **új lépés**lehetőséget. A keresőmezőbe írja be a `sftp ssh` szűrőt. A műveletek listában válassza ki a kívánt műveletet.
 
    A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
 
@@ -180,6 +185,22 @@ Ha a titkos kulcs Putty formátumú, amely a. PPK (Putty titkos kulcs) fájlnév
 1. Ha végzett a kapcsolat részleteinek megadásával, válassza a **Létrehozás**lehetőséget.
 
 1. Most adja meg a kiválasztott trigger vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
+
+<a name="change-chunk-size"></a>
+
+## <a name="override-chunk-size"></a>Adathalmaz méretének felülbírálása
+
+A darabolást használó alapértelmezett adaptív működés felülbírálásához megadhat egy állandó adatméretet 5 MB és 50 MB között.
+
+1. A művelet jobb felső sarkában válassza az ellipszisek gombot ( **...** ), majd válassza a **Beállítások**lehetőséget.
+
+   ![Az SFTP-SSH beállítások megnyitása](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
+
+1. A **tartalom átvitele**elemnél az **adatdarab mérete** tulajdonságban adjon meg egy egész számot `5`ról `50`ra, például: 
+
+   ![Válassza ki a használni kívánt adatméretet](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
+
+1. Ha elkészült, válassza a **Kész** lehetőséget.
 
 ## <a name="examples"></a>Példák
 
@@ -204,6 +225,6 @@ Az összekötő részletes technikai részleteiről, például az eseményindít
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

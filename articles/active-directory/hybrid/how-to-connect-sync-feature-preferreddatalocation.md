@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a493179e6e657a1d99d7cdb808629bae7332567
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: faecb0bc8cbb5ca84e9fc8bfc3cb99e2ccef1f11
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918967"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894569"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect Sync: az Office 365-erőforrások előnyben részesített adatelérési helyének konfigurálása
 Ennek a témakörnek a célja, hogy megtudja, hogyan konfigurálhatja az attribútumot az előnyben részesített adathelyhez az Azure Active Directory (Azure AD) kapcsolódási szinkronizálásban. Ha valaki multi-geo képességeket használ az Office 365-ben, ezzel az attribútummal jelölheti meg a felhasználó Office 365-beli adatmennyiségének földrajzi helyét. (A feltételek *régiója* és a *földrajzi* terület szinonimaként használható.)
@@ -40,7 +40,7 @@ Az Office 365 összes térségek listája megtalálható [ott, ahol az Ön adata
 
 A térségek az Office 365-ben több geo esetén is elérhető:
 
-| Geo (Térség) | preferredDataLocation érték |
+| Térség | preferredDataLocation érték |
 | --- | --- |
 | Ázsia és a Csendes-óceáni térség | APC |
 | Ausztrália | Au |
@@ -61,7 +61,7 @@ A térségek az Office 365-ben több geo esetén is elérhető:
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>A szinkronizálás Azure AD Connect támogatása
 
-Azure AD Connect támogatja a **preferredDataLocation** attribútum szinkronizálását a 1.1.524.0 vagy újabb verzióban lévő **felhasználói** objektumokhoz. Konkrétan:
+Azure AD Connect támogatja a **preferredDataLocation** attribútum szinkronizálását a 1.1.524.0 vagy újabb verzióban lévő **felhasználói** objektumokhoz. Ezek:
 
 * Az Azure AD-összekötőben az objektumtípus- **felhasználó** sémája ki van bővítve a **preferredDataLocation** attribútum belefoglalásával. Az attribútum típusa, egyértékű karakterlánc.
 * A metaverse-beli objektumtípus- **személy** sémája ki van bővítve, hogy tartalmazza a **preferredDataLocation** attribútumot. Az attribútum típusa, egyértékű karakterlánc.
@@ -139,15 +139,15 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért
 3. Új bejövő szabály létrehozásához válassza az **új szabály hozzáadása**lehetőséget.
 4. A **Leírás** lapon adja meg a következő konfigurációt:
 
-    | Attribútum | Value (Díj) | Részletek |
+    | Attribútum | Érték | Részletek |
     | --- | --- | --- |
     | Név | *Adjon meg egy nevet* | Például: "az AD-User preferredDataLocation" |
     | Leírás | *Egyéni Leírás megadása* |  |
     | Csatlakoztatott rendszerek | *A helyszíni Active Directory-összekötő kiválasztása* |  |
-    | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** |  |
+    | Csatlakoztatott rendszerobjektum típusa | **Felhasználói** |  |
     | Metaverse objektum típusa | **Személy** |  |
     | Hivatkozás típusa | **Csatlakozás** |  |
-    | Prioritás | *Válasszon egy 1 – 99 közötti számot* | az 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Ne válasszon olyan értéket, amelyet egy másik szinkronizálási szabály használ. |
+    | Sorrend | *Válasszon egy 1 – 99 közötti számot* | az 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Ne válasszon olyan értéket, amelyet egy másik szinkronizálási szabály használ. |
 
 5. Az összes objektum belefoglalásához hagyja üresen a **hatókör-szűrőt** . Előfordulhat, hogy a Azure AD Connect központi telepítésének megfelelően kell megcsípése a hatókör-szűrőt.
 6. Nyissa meg az **átalakítás lapot**, és hajtsa végre a következő átalakítási szabályt:
@@ -168,24 +168,24 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 3. Válassza az **új szabály hozzáadása**lehetőséget.
 4. A **Leírás** lapon adja meg a következő konfigurációt:
 
-    | Attribútum | Value (Díj) | Részletek |
+    | Attribútum | Érték | Részletek |
     | ----- | ------ | --- |
     | Név | *Adjon meg egy nevet* | Például: "az Azure AD – User preferredDataLocation" |
     | Leírás | *Adja meg a leírást* ||
     | Csatlakoztatott rendszerek | *Válassza ki az Azure AD-összekötőt* ||
-    | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** ||
+    | Csatlakoztatott rendszerobjektum típusa | **Felhasználói** ||
     | Metaverse objektum típusa | **Személy** ||
     | Hivatkozás típusa | **Csatlakozás** ||
-    | Prioritás | *Válasszon egy 1 – 99 közötti számot* | az 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Ne válasszon olyan értéket, amelyet egy másik szinkronizálási szabály használ. |
+    | Sorrend | *Válasszon egy 1 – 99 közötti számot* | az 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Ne válasszon olyan értéket, amelyet egy másik szinkronizálási szabály használ. |
 
 5. Nyissa meg a **hatókör-szűrő** lapot, és adjon hozzá egyetlen hatókörű szűrőt két záradékkal:
 
-    | Attribútum | Művelet | Value (Díj) |
+    | Attribútum | Művelet | Érték |
     | --- | --- | --- |
-    | sourceObjectType | EGYENLŐ | Felhasználó |
-    | cloudMastered | NOTEQUAL | Igaz |
+    | sourceObjectType | EQUAL | Felhasználó |
+    | cloudMastered | NOTEQUAL | True (Igaz) |
 
-    A hatóköri szűrő határozza meg, hogy mely Azure AD-objektumokat alkalmazza a kimenő szinkronizálási szabály. Ebben a példában ugyanazt a hatókör-szűrőt használjuk a "kimenő az Azure AD – felhasználói identitás" OOB (beépített) szinkronizálási szabálya alapján. Megakadályozza, hogy a szinkronizálási szabály olyan **felhasználói** objektumokra legyen alkalmazva, amelyek nincsenek szinkronizálva a helyszíni Active Directory. Előfordulhat, hogy a Azure AD Connect központi telepítésének megfelelően kell megcsípése a hatókör-szűrőt.
+    A hatóköri szűrő határozza meg, hogy mely Azure AD-objektumokat alkalmazza a kimenő szinkronizálási szabály. Ebben a példában ugyanazt a hatókör-szűrőt használjuk a "kimenő az Azure AD – felhasználói identitás" OOB (beépített) szinkronizálási szabálya alapján. Megakadályozza, hogy a szinkronizálási szabály olyan **felhasználói** objektumokra legyen alkalmazva, amelyek nem szinkronizálhatók a helyszíni Active Directory. Előfordulhat, hogy a Azure AD Connect központi telepítésének megfelelően kell megcsípése a hatókör-szűrőt.
 
 6. Nyissa meg az **átalakítás** lapot, és hajtsa végre a következő átalakítási szabályt:
 
@@ -260,9 +260,8 @@ Itt az ideje, hogy ellenőrizze a konfigurációt, és engedélyezze azt a felha
 3. Az Exchange Online PowerShell használatával ellenőrizze, hogy a postaláda-régió helyesen van-e beállítva.  
 ![Képernyőfelvétel az Exchange Online PowerShellről](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
 Ha a bérlőt úgy jelölte meg, hogy használni tudja ezt a funkciót, a rendszer áthelyezi a postaládát a megfelelő földrajzi helyre. Ennek ellenőrzéséhez tekintse meg a kiszolgáló nevét, ahol a postaláda található.
-4. Annak ellenőrzéséhez, hogy ez a beállítás több postaláda esetében is érvényben van-e, használja a [TechNet](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e)-katalógusban található parancsfájlt. Ez a szkript tartalmazza az Office 365-adatközpontok kiszolgálói előtagjainak listáját is, valamint azt, hogy mely geo-ben található. Az előző lépésben hivatkozásként is használható a postaláda helyének ellenőrzéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Office 365-ben elérhető multi-geo szolgáltatásról:
 

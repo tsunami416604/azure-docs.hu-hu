@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 353501912836e0f6706f20deed1c1d9d416f1ce6
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367250"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894520"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>A munkamenet-gazdagépek méretezése Azure Automation használatával
 
@@ -37,7 +37,7 @@ A maximális kihasználtság ideje alatt a feladattípus ellenőrzi a munkamenet
 >[!NOTE]
 >A *SessionThresholdPerCPU* nem korlátozza a virtuális gépen futó munkamenetek számát. Ez a paraméter csak azt határozza meg, hogy mikor kell elindítani az új virtuális gépeket a kapcsolatok terheléselosztásához. A munkamenetek számának korlátozásához kövesse a [set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) utasítást, hogy ennek megfelelően konfigurálja a *MaxSessionLimit* paramétert.
 
-A maximális kihasználtsági idő alatt a feladattípus határozza meg, hogy a *MinimumNumberOfRDSH* paraméter alapján melyik munkamenet-gazda virtuális gépek legyenek leállítva. A feladattípus beállítja a munkamenet-gazda virtuális gépek kiürítési módját, hogy megakadályozza, hogy az új munkamenetek csatlakozzanak a gazdagépekhez. Ha a *LimitSecondsToForceLogOffUser* paramétert nem nulla értékű pozitív értékre állítja be, a parancsfájl értesíti a jelenleg bejelentkezett felhasználókat, hogy mentse a munkáját, várjon a beállított időtartamra, majd kényszerítse ki a felhasználókat a kijelentkezésre. Ha a munkamenet-gazda virtuális gépen lévő összes felhasználói munkamenet ki lett jelentkezve, a parancsfájl leállítja a virtuális gépet.
+A maximális kihasználtsági idő alatt a feladattípus határozza meg, hogy a *MinimumNumberOfRDSH* paraméter alapján melyik munkamenet-gazda virtuális gépek legyenek leállítva. A feladattípus beállítja a munkamenet-gazda virtuális gépek kiürítési módját, hogy megakadályozza, hogy az új munkamenetek csatlakozzanak a gazdagépekhez. Ha a *LimitSecondsToForceLogOffUser* paramétert nem nulla értékű pozitív értékre állítja be, akkor a feladatokkal a jelenleg bejelentkezett felhasználók megmenthetik a munkájukat, megvárhatják a beállított időtartamot, majd kényszerítik a felhasználókat a kijelentkezésre. Ha a munkamenet-gazda virtuális gépen lévő összes felhasználói munkamenet ki lett jelentkezve, a rendszer leállítja a virtuális gépet.
 
 Ha a *LimitSecondsToForceLogOffUser* paramétert nulla értékre állítja, a művelet engedélyezi a megadott csoportházirendek munkamenet-konfigurációs beállítását a felhasználói munkamenetek kijelentkezésének kezeléséhez. A csoportházirendek megjelenítéséhez nyissa meg a **Számítógép konfigurációja** > **házirendek** > **Felügyeleti sablonok** > **Windows-összetevők** > a **Terminálszolgáltatások** > a **terminálkiszolgáló** > a **munkamenet időkorlátait**. Ha egy munkamenet-gazda virtuális gépen vannak aktív munkamenetek, a feladatokból a munkamenet-gazda virtuális gép fut. Ha nincsenek aktív munkamenetek, a rendszer leállítja a munkamenet-gazda virtuális gépet.
 

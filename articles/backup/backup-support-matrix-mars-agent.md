@@ -3,12 +3,12 @@ title: A MARS-ügynök támogatási mátrixa
 description: Ez a cikk a Microsoft Azure Recovery Services (MARS) ügynököt futtató gépek biztonsági mentésének Azure Backup támogatását foglalja össze.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: ef57688dd7b5ccee4e71ac0a54138ac567320aa2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 515ca065914dc535c1ba21fdb5ac574e3987ca32
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392764"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668564"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
 
@@ -85,7 +85,7 @@ A Microsoft-partnerekkel válassza ki a következő szolgáltatásokat/régióka
 - Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)
 - Azure Storage (az Recovery Services-tároló helyének megfelelően)
 
-További részletekért tekintse meg a [ExpressRoute útválasztási követelményeit](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+További információkért tekintse meg a [ExpressRoute útválasztási követelményeit](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
 
 >[!NOTE]
 >Az új áramkörök esetében a nyilvános társítás elavult.
@@ -97,7 +97,7 @@ További részletekért tekintse meg a [ExpressRoute útválasztási követelmé
 Sávszélesség-vezérlés | Támogatott. A MARS-ügynökben a sávszélesség módosításához használja a **Tulajdonságok módosítása** lehetőséget.
 Hálózati sávszélesség-szabályozás | Nem érhető el a Windows Server 2008 R2, a Windows Server 2008 SP2 vagy a Windows 7 rendszerű biztonsági másolattal rendelkező gépekhez.
 
-## <a name="support-for-direct-backups"></a>Közvetlen biztonsági másolatok támogatása
+## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
 >[!NOTE]
 > A MARS-ügynök nem támogatja a Windows Server Core SKU-t.
@@ -114,7 +114,6 @@ Az operációs rendszernek 64 bitesnek kell lennie, és a legújabb szervizcsoma
 Windows 10 (Enterprise, Pro, Home) | Igen | Nem |  A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
 Windows 8,1 (Enterprise, Pro)| Igen |Nem | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
 Windows 8 (Enterprise, Pro) | Igen | Nem | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
-Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Igen | Nem | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
 Windows Server 2016 (Standard, Datacenter, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2012 (Standard, Datacenter, Foundation) | Igen | Igen |-.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe)
@@ -122,6 +121,20 @@ Windows Storage Server 2016/2012 R2/2012 (standard, munkacsoport) | Igen | Nem |
 Windows Server 2019 (standard, Datacenter, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
 
 További információ: [támogatott MABS és DPM operációs rendszerek](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
+
+### <a name="operating-systems-at-end-of-support"></a>A támogatás végén lévő operációs rendszerek
+
+A következő operációs rendszerek a támogatás végén találhatók, ezért erősen ajánlott az operációs rendszer frissítése, hogy továbbra is védve maradjon.
+
+Ha a meglévő kötelezettségvállalások megakadályozzák az operációs rendszer frissítését, érdemes lehet áttelepíteni a Windows-kiszolgálókat az Azure-beli virtuális gépekre, és az Azure-beli virtuális gépek biztonsági mentéseit használják a védett A Windows Server áttelepítésével kapcsolatos további információkért tekintse meg az [áttelepítési oldalt](https://azure.microsoft.com/migration/windows-server/) .
+
+Helyszíni vagy üzemeltetett környezetekben, ahol nem tudja frissíteni az operációs rendszert, vagy migrálni az Azure-ba, aktiválja a kiterjesztett biztonsági frissítéseket a gépek számára, hogy továbbra is védett és támogatott maradjon. Figyelje meg, hogy csak bizonyos kiadások jogosultak a kiterjesztett biztonsági frissítésekre. További információért látogasson el a [GYIK-oldalra](https://www.microsoft.com/cloud-platform/extended-security-updates) .
+
+| **Operációs rendszer**                                       | **Fájlok/mappák** | **Rendszerállapot** | **Szoftver/modulra vonatkozó követelmények**                           |
+| ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
+| Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Igen               | Nem                 | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése |
+| Windows Server 2008 R2 (standard, Enterprise, Datacenter, Foundation) | Igen               | Igen                | -.NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilis Microsoft VC + + terjeszthető csomag <br>  – Microsoft Management Console (MMC) 3,0 <br>  -Telepítési lemezképek karbantartása és kezelése (DISM. exe) |
+| Windows Server 2008 SP2 (standard, Datacenter, Foundation)  | Igen               | Nem                 | -.NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilis Microsoft VC + + terjeszthető csomag <br>  – Microsoft Management Console (MMC) 3,0 <br>  -Telepítési lemezképek karbantartása és kezelése (DISM. exe) <br>  – Virtual Server 2005 Base + KB KB948515 |
 
 ## <a name="backup-limits"></a>Biztonsági mentési korlátok
 
@@ -184,7 +197,7 @@ Azure Backup [azonnali visszaállítási](backup-instant-restore-capability.md) 
 
 A biztonsági mentések nem állíthatók vissza olyan célszámítógépre, amely az operációs rendszer korábbi verzióját futtatja. Például egy Windows 7 rendszerű számítógépről készített biztonsági mentés visszaállítható a Windows 8 vagy újabb verzióra. A Windows 8 rendszert futtató számítógépekről azonban nem lehet visszaállítani a Windows 7 rendszert futtató számítógépeken.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [a Mars-ügynököt használó biztonsági mentési architektúráról](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
 - Ismerje meg, hogy mi támogatott [a Mars-ügynök MABS vagy DPM-kiszolgálón való futtatásakor](backup-support-matrix-mabs-dpm.md).

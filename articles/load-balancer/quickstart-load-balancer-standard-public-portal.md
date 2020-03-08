@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 2477d91ac885d4ef39df7b9246f7272d66c3f7ee
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b424fe315737b84479283eed2d77398c8ce4f148
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251859"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898831"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Gyors útmutató: Load Balancer létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával
 
@@ -34,16 +34,16 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="create-a-load-balancer"></a>Load Balancer létrehozása
 
-Ebben a szakaszban egy olyan Load Balancer hoz létre, amely a virtuális gépek terheléselosztását segíti. Létrehozhat egy nyilvános Load Balancer vagy egy belső Load Balancer is. Ha nyilvános Load Balancer hoz létre, és létre kell hoznia egy új nyilvános IP-címet is, amely a Load Balancer számára az előtérként konfigurált (alapértelmezett néven *LoadBalancerFrontend* ).
+Ebben a szakaszban egy olyan Load Balancer hoz létre, amely a virtuális gépek terheléselosztását segíti. Létrehozhat egy nyilvános Load Balancer vagy egy belső Load Balancer is. Amikor nyilvános Load Balancer hoz létre, létre kell hoznia egy új nyilvános IP-címet is, amely a Load Balancer számára a (alapértelmezés szerint *LoadBalancerFrontend* ) előtérben van konfigurálva.
 
 1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **Load Balancer**lehetőséget.
 2. A **Load Balancer létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **felülvizsgálat + létrehozás**:
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Előfizetést               | Válassza ki előfizetését.    |    
+    | -előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a *myresourcegroupslb erőforráscsoportban* szöveget a szövegmezőbe.|
-    | Name (Név)                   | *myLoadBalancer*                                   |
+    | Név                   | *myLoadBalancer*                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **nyilvános**lehetőséget.                                        |
     | SKU           | Válassza a **standard** vagy az **alapszintű**lehetőséget. A Microsoft a standard szintű üzemi számítási feladatokhoz ajánlja. |
@@ -80,7 +80,7 @@ Ha engedélyezni szeretné a Load Balancer számára az alkalmazás állapotána
     
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név) | Adja meg a *myHealthProbe*. |
+    | Név | Adja meg a *myHealthProbe*. |
     | Protokoll | Válassza a **http**lehetőséget. |
     | Port | Adja meg a *80*értéket.|
     | Intervallum | A mintavételi kísérletek közötti időtartam másodpercben megadott számú **intervallumában** adja meg a *15* értéket. |
@@ -97,7 +97,7 @@ A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossz
     
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név) | Adja meg a *: myhttprule*. |
+    | Név | Adja meg a *: myhttprule*. |
     | Protokoll | Válassza a **TCP**lehetőséget. |
     | Port | Adja meg a *80*értéket.|
     | Háttér-port | Adja meg a *80*értéket. |
@@ -158,7 +158,7 @@ A nyilvános IP-címek és a Load Balancer SKU-nak egyezniük kell. Standard Loa
 
     | Beállítás | VM 2| VM 3|
     | ------- | ----- |---|
-    | Name (Név) |  *myVM2* |*myVM3*|
+    | Név |  *myVM2* |*myVM3*|
     | Rendelkezésreállási zóna | 2 |3|
     |Nyilvános IP-cím| **Standard szintű** SKU|**Standard szintű** SKU|
     | Nyilvános IP-cím rendelkezésre állási zónája| **Felesleges zóna** |**Felesleges zóna**|
@@ -221,7 +221,7 @@ Ha szeretné megtekinteni a Load Balancer a forgalom elosztása mindhárom virtu
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, Load Balancer és az összes kapcsolódó erőforrást. Ehhez válassza ki azt az erőforráscsoportot (*myresourcegroupslb erőforráscsoportban*), amely a Load Balancer tartalmazza, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy standard Load Balancer, csatlakoztatott virtuális gépeket, konfigurálta az Load Balancer forgalmi szabályt, az állapot-mintavételt, majd tesztelte a Load Balancer. Ha többet szeretne megtudni a Azure Load Balancerről, folytassa a [Azure Load Balancer oktatóanyagokkal](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
 

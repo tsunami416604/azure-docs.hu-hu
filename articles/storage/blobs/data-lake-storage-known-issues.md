@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7d637c2fb3f4a4d5f8deac9cd99c0a44af6568e6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 7fd76be8d17dc1c632e555a56d038d4f5c1e1486
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359748"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668897"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 ismert problémái
 
@@ -29,7 +29,7 @@ Data Lake Storage a Gen2 számos olyan Azure-szolgáltatást támogat, amelyet a
 
 Lásd: [Azure Data Lake Storage Gen2 támogató Azure-szolgáltatások](data-lake-storage-supported-azure-services.md).
 
-## <a name="supported-open-source-platforms"></a>Támogatott nyílt forráskódú platformok
+## <a name="supported-open-source-platforms"></a>Támogatja a nyílt forráskódú platformok
 
 Számos nyílt forráskódú platformra támogatja a Data Lake Storage Gen2. A teljes listát lásd: a [Azure Data Lake Storage Gen2t támogató nyílt forráskódú platformok](data-lake-storage-supported-open-source-platforms.md).
 
@@ -102,7 +102,7 @@ Csak `1.6.0` vagy újabb verziót használjon. Jelenleg van olyan tárolási h
 
 <a id="explorer-in-portal" />
 
-## <a name="storage-explorer-in-the-azure-portal"></a>Storage Explorer az Azure Portalon
+## <a name="storage-explorer-in-the-azure-portal"></a>Storage Explorer a Azure Portal
 
 Az ACL-ek még nem támogatottak.
 
@@ -111,6 +111,14 @@ Az ACL-ek még nem támogatottak.
 ## <a name="thirdpartyapplications"></a>Harmadik féltől származó alkalmazások
 
 A REST API-kat használó harmadik féltől származó alkalmazások továbbra is működni fognak, ha a blob API-kat hívó Data Lake Storage Gen2 alkalmazásokkal valószínűleg működni fognak.
+
+## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Hozzáférés-vezérlési listák (ACL) és névtelen olvasási hozzáférés
+
+Ha a tárolóhoz [Névtelen olvasási hozzáférés](storage-manage-access-to-resources.md) van megadva, akkor az ACL-ek nincsenek hatással a tárolóra vagy a tárolóban lévő fájlokra.
+
+## <a name="windows-azure-storage-blob-wasb-driver"></a>Windows Azure Storage Blob (WASB) illesztőprogram
+
+Jelenleg számos probléma van a WASB-illesztőprogram használatával, valamint a hierarchikus névtérrel rendelkező fiókokkal. Javasoljuk, hogy a számítási [feladatokban használja az Azure Blob fájlrendszer (ABFS)](data-lake-storage-abfs-driver.md) illesztőprogramját. 
 
 
 

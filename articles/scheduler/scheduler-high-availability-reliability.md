@@ -1,25 +1,26 @@
 ---
-title: Magas rendelkezésre állás és megbízhatóság – Azure Scheduler
+title: Magas rendelkezésre állás és megbízhatóság
 description: Tudnivalók a magas rendelkezésre állásról és a megbízhatóságról az Azure Schedulerben
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 6a729df7eb08f8dacff4b0d35d011854208510ff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979283"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898566"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Magas rendelkezésre állás és megbízhatóság az Azure Schedulerben
 
 > [!IMPORTANT]
 > [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a lehető leghamarabb [telepítse át Azure Logic apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
+>
+> Az ütemező már nem érhető el a Azure Portalban, de a [REST API](/rest/api/scheduler) és az [Azure Scheduler PowerShell-parancsmagjai](scheduler-powershell-reference.md) jelenleg is elérhetők maradnak, így a feladatok és a feladatok gyűjteményei kezelhetők.
 
 Az Azure Scheduler [magas rendelkezésre állást](https://docs.microsoft.com/azure/architecture/framework/#resiliency) és megbízhatóságot biztosít a feladatokhoz. További információ: [a Feladatütemező SLA](https://azure.microsoft.com/support/legal/sla/scheduler)-ja.
 
@@ -29,7 +30,7 @@ Az Azure Scheduler [kiválóan elérhető], és a Geo-redundáns szolgáltatáso
 
 ### <a name="geo-redundant-service-deployment"></a>Geo-redundáns szolgáltatás központi telepítése
 
-Az Azure Scheduler a Azure Portal az [Azure által jelenleg támogatott csaknem minden földrajzi régióban](https://azure.microsoft.com/global-infrastructure/regions/#services)elérhető. Ha tehát egy üzemeltetett régióban lévő Azure-adatközpont elérhetetlenné válik, továbbra is használhatja az Azure Schedulert, mert a szolgáltatás feladatátvételi képességei elérhetővé teszik a Scheduler szolgáltatást egy másik adatközpontból.
+Az Azure Scheduler csaknem minden, [Az Azure által támogatott földrajzi régióban](https://azure.microsoft.com/global-infrastructure/regions/#services)elérhető. Ha tehát egy üzemeltetett régióban lévő Azure-adatközpont elérhetetlenné válik, továbbra is használhatja az Azure Schedulert, mert a szolgáltatás feladatátvételi képességei elérhetővé teszik a Scheduler szolgáltatást egy másik adatközpontból.
 
 ### <a name="geo-regional-job-replication"></a>Földrajzilag regionális feladatok replikációja
 
@@ -70,9 +71,9 @@ Az alternatív művelet Művelettípus eltérhet az eredeti művelettől. Ha pé
 
 A másodlagos végpontok beállításával kapcsolatos további információkért lásd: [errorAction](scheduler-concepts-terms.md#error-action).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="next-steps"></a>További lépések
 
-* [Mi az Azure Scheduler?](scheduler-intro.md)
 * [Alapfogalmak, terminológia és entitáshierarchia](scheduler-concepts-terms.md)
-* [Komplex ütemezések és speciális ismétlődések létrehozása](scheduler-advanced-complexity.md)
+* [Az Azure Scheduler REST API-jának leírása](/rest/api/scheduler)
+* [Az Azure Scheduler PowerShell-parancsmagjainak leírása](scheduler-powershell-reference.md)
 * [Korlátok, kvóták, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)

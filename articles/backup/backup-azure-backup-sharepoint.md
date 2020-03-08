@@ -4,12 +4,12 @@ description: Ez a cikk áttekintést nyújt a SharePoint-farmok Azure-ba való D
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: b766c0401dde10fdc257044e004de3dbf8a7b84c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6640690f725c84899babef6825f817bad447b40f
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586478"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673272"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>SharePoint-farm biztonsági mentése az Azure-ba a DPM használatával
 
@@ -69,7 +69,7 @@ A **ConfigureSharePoint. exe** a [DPM telepítési útvonala] \bin mappában tal
 
 1. A WFE-kiszolgálón a parancssorban lépjen a [DPM telepítési hely] \bin\ mappát
 2. Adja meg a ConfigureSharePoint-EnableSharePointProtection értéket.
-3. Adja meg a farm rendszergazdai hitelesítő adatait. Ennek a fióknak a helyi rendszergazda csoport tagjának kell lennie a WFE-kiszolgálón. Ha a farm rendszergazdája nem helyi rendszergazda, adja meg a következő engedélyeket az előtér-webkiszolgálón:
+3. Adja meg a farm rendszergazdai hitelesítő adatait. Ennek a fióknak a helyi rendszergazda csoport tagjának kell lennie a WFE-kiszolgálón. Ha a farm rendszergazdája nem helyi rendszergazda, a következő engedélyeket kell megadnia a WFE-kiszolgálón:
    * Adja meg az WSS_Admin_WPG csoport teljes hozzáférését a DPM mappához (% Program Files%\Microsoft adatvédelem Manager\DPM).
    * Adjon olvasási hozzáférést a WSS_Admin_WPG csoportnak a DPM beállításkulcs (HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager) számára.
 
@@ -133,7 +133,7 @@ Miután a korábban ismertetett módon konfigurálta a DPM-t és a SharePoint-fa
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > A DPM legfeljebb két napi biztonsági mentést biztosít az Azure-ba különböző időpontokban. A Azure Backup az [Azure Backup hálózati sávszélesség-szabályozás](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)használatával is szabályozhatja azt a WAN-sávszélességet, amelyet a biztonsági mentéshez használhat a csúcs-és a távolsági órákban.
+    > A DPM legfeljebb két napi biztonsági mentést biztosít az Azure-ba különböző időpontokban. A Azure Backup az [Azure Backup hálózati sávszélesség-szabályozás](backup-windows-with-mars-agent.md#enable-network-throttling)használatával is szabályozhatja azt a WAN-sávszélességet, amelyet a biztonsági mentéshez használhat a csúcs-és a távolsági órákban.
     >
     >
 11. A kiválasztott biztonsági mentési ütemezéstől függően az **online adatmegőrzési szabály megadása** lapon válassza ki a napi, heti, havi és éves biztonsági mentési pontok megőrzési szabályát.
@@ -240,7 +240,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
     ![DPM SharePoint-Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Ezen a ponton kövesse a cikkben korábban ismertetett helyreállítási lépéseket a SharePoint tartalmi adatbázis lemezről történő helyreállításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További tudnivalók a SharePoint DPM-védelméről – lásd: [videó sorozat – DPM védelme](https://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
 * Tekintse át [a System Center 2012 – Data Protection Manager kibocsátási megjegyzéseit](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj860415(v=sc.12)?redirectedfrom=MSDN)

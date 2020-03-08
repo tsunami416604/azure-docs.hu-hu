@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6887edacafb4fd4a68cfbe7d97e788c71dc68522
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 8c44d6266f5ea8cdd4f75d0449cb49852e71c905
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194449"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672393"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>A vállalati állapothordozás engedélyezése az Azure Active Directoryban
 
@@ -25,13 +25,13 @@ Enterprise State Roaming bármely szervezet számára elérhető prémium szint�
 A Enterprise State Roaming engedélyezésekor a szervezet automatikusan ingyenes, korlátozott használati licencet kap az Azure Rights Management Protection számára a Azure Information Protectionból. Ez az ingyenes előfizetés a vállalati beállítások és az Enterprise State Roaming által szinkronizált alkalmazásadatok titkosítására és visszafejtésére korlátozódik. Az Azure Rights Management szolgáltatás teljes képességeinek használatához [fizetős előfizetéssel](https://azure.microsoft.com/pricing/details/information-protection/) kell rendelkeznie.
 
 > [!NOTE]
-> Ez a cikk a Microsoft Edge korábbi HTML-alapú böngészőre vonatkozik, amely a Windows 10 2015-es verziójában indult el. A cikk nem vonatkozik az új, 2020. január 15-én kiadott Microsoft Edge Chromium-alapú böngészőre. Az új Microsoft Edge szinkronizálási működésével kapcsolatos további információkért tekintse meg a [Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)című cikket.
+> Ez a cikk a Microsoft Edge korábbi HTML-alapú böngészőre vonatkozik, amely a Windows 10 2015-es verziójában indult el. A cikk nem vonatkozik az új, 2020. január 15-én kiadott Microsoft Edge Chromium-alapú böngészőre. Az új Microsoft Edge szinkronizálási működésével kapcsolatos további információkért tekintse meg a [Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)című cikket.
 
 ## <a name="to-enable-enterprise-state-roaming"></a>A Enterprise State Roaming engedélyezése
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com/).
 1. Válassza ki **Azure Active Directory** &gt; **eszközök** &gt; **Enterprise State roaming**.
-1. Válassza ki **, hogy a felhasználók szinkronizálják a beállításokat és az alkalmazásadatok az eszközök között**. További információ: [az eszközbeállítások konfigurálása](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
+1. Válassza ki **, hogy a felhasználók szinkronizálják a beállításokat és az alkalmazásadatok az eszközök között**. További információ: [az eszközbeállítások konfigurálása](/azure/active-directory/device-management-azure-portal).
   
    ![a felhasználók által címkézett eszközbeállítások képe szinkronizálhatja a beállításokat és az alkalmazásadatok az eszközök között](./media/enterprise-state-roaming-enable/device-settings.png)
   
@@ -89,7 +89,7 @@ Az egy évig nem elért adatok ("a megőrzési időszak") elavultnak minősülne
 
 Az adatmegőrzési szabályzat nem konfigurálható. Az adattörlést követően nem lehet helyreállítani az adatvesztést. A beállítások adatait azonban csak a Microsoft-felhőből, nem pedig a végfelhasználói eszközről törli a rendszer. Ha bármelyik eszköz később újracsatlakozik a Enterprise State Roaming szolgáltatáshoz, a beállítások újra szinkronizálhatók és tárolódnak a Microsoft Cloud-ban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Enterprise State Roaming áttekintése](enterprise-state-roaming-overview.md)
 * [Beállítások és adatroaming – gyakori kérdések](enterprise-state-roaming-faqs.md)

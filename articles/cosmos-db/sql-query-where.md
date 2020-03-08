@@ -4,14 +4,14 @@ description: Tudnivalók a Azure Cosmos DB SQL WHERE záradékáról
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 03/06/2020
 ms.author: tisande
-ms.openlocfilehash: 31653b598f0f3a79bf7f9c09231b1d111f167a16
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982229"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898774"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>WHERE záradék Azure Cosmos DB
 
@@ -29,16 +29,17 @@ WHERE <filter_condition>
 
 - `<filter_condition>`  
   
-   Meghatározza a visszaadott dokumentumok számára teljesítendő feltételt.  
+   Itt adhatja meg az állapotot, a dokumentumok vissza kell teljesülniük.  
   
 - `<scalar_expression>`  
   
-   A kiszámítani kívánt értéket jelölő kifejezés. Részletekért lásd a [skaláris kifejezéseket](sql-query-scalar-expressions.md) .  
+   A kifejezés a következő időpontban számítja értéket jelölő. Részletekért lásd a [skaláris kifejezéseket](sql-query-scalar-expressions.md) .  
   
-
 ## <a name="remarks"></a>Megjegyzések
   
-  Ahhoz, hogy a dokumentum visszaadja a szűrési feltételnek megadott kifejezést, az igaz értéket kell kiértékelni. Csak a True logikai érték felel meg a feltételnek, a nem definiált, a null, a false, a number, a Array vagy az Object érték nem felel meg a feltételnek. 
+  Ahhoz, hogy a dokumentum egy kifejezést a megadott kifejezés adja vissza a feltétel igaz értéket kell adnia. Csak a logikai érték `true` fogja kielégíteni a feltételt, bármilyen más értéket: nem definiált, null, hamis, szám, tömb vagy objektum nem fogja kielégíteni a feltételt.
+
+  Ha a `WHERE` záradékban szerepel a partíciós kulcs egy egyenlőségi szűrő részeként, a lekérdezés automatikusan csak a megfelelő partíciókat fogja szűrni.
 
 ## <a name="examples"></a>Példák
 
@@ -64,7 +65,7 @@ Az eredmények a következők:
 
 ### <a name="scalar-expressions-in-the-where-clause"></a>Skaláris kifejezések a WHERE záradékban
 
-Az előző példában egy egyszerű egyenlőségi lekérdezés látható. Az SQL API különböző [skaláris kifejezéseket](sql-query-scalar-expressions.md)is támogat. A leggyakrabban használt bináris és egyoperandusú kifejezések. A forrás JSON-objektumra mutató tulajdonságok szintén érvényes kifejezések.
+Az előző példából kiderült, egy egyszerű egyenlőség lekérdezést. Az SQL API különböző [skaláris kifejezéseket](sql-query-scalar-expressions.md)is támogat. A leggyakrabban használt olyan bináris és egyoperandusú kifejezés. A forrás JSON-objektumból tulajdonság hivatkozásokat akkor is érvényes kifejezések.
 
 A következő támogatott bináris operátorok használhatók:  
 
@@ -72,7 +73,7 @@ A következő támogatott bináris operátorok használhatók:
 |---------|---------|
 |Aritmetikai | +,-,*,/,% |
 |Bitenkénti    | \|, &, ^, < <, > >, > > > (nulla kitöltés jobb eltolása) |
-|Logikai    | ÉS, VAGY NEM      |
+|Logikai    | ÉS, VAGY SEM      |
 |Összehasonlítás | =,! =, &lt;, &gt;, &lt;=, &gt;=, < > |
 |Sztring     |  \|\| (összefűzés) |
 
@@ -106,8 +107,8 @@ A következő példákban látható módon használhatja az unáris operátorok 
 
 A lekérdezésekben tulajdonságok hivatkozásait is használhatja. A `SELECT * FROM Families f WHERE f.isRegistered` például a tulajdonságot tartalmazó JSON-elemeket adja vissza, `isRegistered` értékkel egyenlő `true`. Bármely más érték, például `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>`vagy `<array>`, kizárja az elemet az eredményből.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Bevezetés](sql-query-getting-started.md)
+- [Első lépések](sql-query-getting-started.md)
 - [A kulcsszóban](sql-query-keywords.md#in)
 - [FROM záradék](sql-query-from.md)

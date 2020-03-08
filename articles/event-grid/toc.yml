@@ -96,8 +96,12 @@
   items:
     - name: Az Event Griddel kapcsolatos fogalmak
       href: concepts.md
-    - name: Biztonság és hitelesítés
-      href: security-authentication.md
+    - name: Biztonság
+      items:
+        - name: Hitelesítés
+          href: security-authentication.md
+        - name: Engedélyezés
+          href: security-authorization.md
     - name: Teljesítés és újrapróbálkozás
       href: delivery-and-retry.md
     - name: Eseményszűrés

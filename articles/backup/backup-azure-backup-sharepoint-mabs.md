@@ -3,12 +3,12 @@ title: SharePoint-farm biztonsági mentése az Azure-ba a MABS használatával
 description: A SharePoint-adatai biztonsági mentését és visszaállítását Azure Backup Server használatával végezheti el. Ez a cikk ismerteti a SharePoint-farm konfigurálásához szükséges információkat, hogy a kívánt adatok az Azure-ban is tárolhatók legyenek. A védett SharePoint-adatok a lemezről vagy az Azure-ból is visszaállíthatók.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: ba9d79270da839cf99574322d68ccdba27fe2d93
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 441a896f2faa67a1380007ebb9474d7c311a4842
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77584251"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673137"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>SharePoint-farm biztonsági mentése az Azure-ba a MABS használatával
 
@@ -63,7 +63,7 @@ A **ConfigureSharePoint. exe** a [MABS telepítési útvonala] \bin mappában ta
 
 1. A WFE-kiszolgálón a parancssorban lépjen a [MABS telepítési hely] \bin\ mappát
 2. Adja meg a ConfigureSharePoint-EnableSharePointProtection értéket.
-3. Adja meg a farm rendszergazdai hitelesítő adatait. Ennek a fióknak a helyi rendszergazda csoport tagjának kell lennie a WFE-kiszolgálón. Ha a farm rendszergazdája nem helyi rendszergazda, adja meg a következő engedélyeket az előtér-webkiszolgálón:
+3. Adja meg a farm rendszergazdai hitelesítő adatait. Ennek a fióknak a helyi rendszergazda csoport tagjának kell lennie a WFE-kiszolgálón. Ha a farm rendszergazdája nem helyi rendszergazda, a következő engedélyeket kell megadnia a WFE-kiszolgálón:
    * Adja meg az WSS_Admin_WPG csoport teljes hozzáférését a DPM mappához (% Program Files%\Microsoft Azure Backup\DPM).
    * Adjon olvasási hozzáférést a WSS_Admin_WPG csoportnak a DPM beállításkulcs (HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager) számára.
 
@@ -127,7 +127,7 @@ Miután a korábban ismertetett módon konfigurálta a MABS-t és a SharePoint-f
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > A MABS legfeljebb két napi biztonsági mentést biztosít az Azure-hoz a később elérhető legújabb lemezes biztonsági mentési pontról. A Azure Backup az [Azure Backup hálózati sávszélesség-szabályozás](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)használatával is szabályozhatja azt a WAN-sávszélességet, amelyet a biztonsági mentéshez használhat a csúcs-és a távolsági órákban.
+    > A MABS legfeljebb két napi biztonsági mentést biztosít az Azure-hoz a később elérhető legújabb lemezes biztonsági mentési pontról. A Azure Backup az [Azure Backup hálózati sávszélesség-szabályozás](backup-windows-with-mars-agent.md#enable-network-throttling)használatával is szabályozhatja azt a WAN-sávszélességet, amelyet a biztonsági mentéshez használhat a csúcs-és a távolsági órákban.
     >
     >
 11. A kiválasztott biztonsági mentési ütemezéstől függően az **online adatmegőrzési szabály megadása** lapon válassza ki a napi, heti, havi és éves biztonsági mentési pontok megőrzési szabályát.
@@ -234,7 +234,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
     ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Ezen a ponton kövesse a cikkben korábban ismertetett helyreállítási lépéseket a SharePoint tartalmi adatbázis lemezről történő helyreállításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd az [Exchange Server biztonsági mentése](backup-azure-exchange-mabs.md) című cikket.
 Tekintse meg a [SQL Server biztonsági mentése](backup-azure-sql-mabs.md) című cikket.

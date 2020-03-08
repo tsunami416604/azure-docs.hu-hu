@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: edea7a7b4dcb5ed18adcbab973f9f351543c6422
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: af44f4a96567cc86c9f884cdfe5e28ff6b7bd8f3
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330872"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897693"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az Azure SQL Database-kapcsolat biztonságossá tétele az App Service-ből felügyelt identitás segítségével
 
@@ -127,6 +127,9 @@ A *web. config*fájlban a fájl elejére, és végezze el a következő módosí
 
 - Keresse meg a `MyDbConnection` nevű kapcsolati karakterláncot, és cserélje le a `connectionString` értékét `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`re. Cserélje le az _\<Server-name >_ és a _\<db-Name > nevet_ a kiszolgáló nevére és az adatbázis nevére.
 
+> [!NOTE]
+> Az imént regisztrált SqlAuthenticationProvider a korábban telepített AppAuthentication-könyvtár tetején alapul. Alapértelmezés szerint a rendszer hozzárendelt identitást használ. A felhasználó által hozzárendelt identitás kihasználása érdekében további konfigurációt kell megadnia. Tekintse meg a AppAuthentication könyvtárának a [kapcsolatok karakterláncának támogatását](../key-vault/service-to-service-authentication.md#connection-string-support) .
+
 Ez minden dolog, amire szüksége van a SQL Databasehoz való kapcsolódáshoz. A Visual Studióban végzett hibakeresés során a kód a [Visual Studióban](#set-up-visual-studio)beállított Azure ad-felhasználót használja. A SQL Database-kiszolgálót később kell beállítania, hogy engedélyezze a kapcsolódást a App Service alkalmazás felügyelt identitásával.
 
 Írja be a `Ctrl+F5` parancsot az alkalmazás újbóli futtatásához. A böngészőben megjelenő szifilisz-alkalmazás mostantól közvetlenül az Azure AD-hitelesítés használatával csatlakozik a Azure SQL Databasehoz. Ez a beállítás lehetővé teszi, hogy adatbázis-áttelepítést futtasson a Visual studióból.
@@ -189,6 +192,9 @@ Ez minden dolog, amire szüksége van a SQL Databasehoz való kapcsolódáshoz. 
 
 Ezután konfigurálja a App Service alkalmazást úgy, hogy az SQL Databasehoz kapcsolódjon egy rendszerhez rendelt felügyelt identitással.
 
+> [!NOTE]
+> Míg az ebben a szakaszban szereplő utasítások egy rendszerhez rendelt identitásra vonatkoznak, a felhasználó által hozzárendelt identitást egyszerűen használhatja. Ehhez tegye a következőt:. szükség van a `az webapp identity assign command` módosítására a kívánt felhasználóhoz rendelt identitás hozzárendeléséhez. Ezután az SQL-felhasználó létrehozásakor ügyeljen arra, hogy a hely neve helyett a felhasználó által hozzárendelt identitási erőforrás nevét használja.
+
 ### <a name="enable-managed-identity-on-app"></a>Felügyelt identitás engedélyezése az alkalmazásban
 
 Ha engedélyezni szeretné a felügyelt identitást az Azure-alkalmazásához, használja az [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) parancsot a Cloud Shellben. A következő parancsban cserélje le *\<app-name >* .
@@ -237,7 +243,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<Identity-name >* a felügyelt identitás neve az Azure ad-ben. Mivel a rendszer hozzá van rendelve, mindig ugyanaz, mint a App Service alkalmazás neve. Az Azure AD-csoportok engedélyeinek megadásához használja helyette a csoport megjelenítendő nevét (például *myAzureSQLDBAccessGroup*).
+*\<Identity-name >* a felügyelt identitás neve az Azure ad-ben. Ha az identitás rendszerhez van rendelve, a név mindig ugyanaz, mint a App Service alkalmazás neve. Az Azure AD-csoportok engedélyeinek megadásához használja helyette a csoport megjelenítendő nevét (például *myAzureSQLDBAccessGroup*).
 
 Az `EXIT` parancs begépelésével térjen vissza a Cloud Shell-parancssorba.
 
@@ -277,7 +283,7 @@ Most már ugyanúgy szerkesztheti a feladatlistát, mint korábban.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiak elvégzését ismerte meg:
 

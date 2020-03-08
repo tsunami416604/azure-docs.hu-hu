@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b135b14fb18904901ad78a1f5d9dc66c8a2bc67
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538805"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672302"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Útmutató: elavult eszközök kezelése az Azure AD-ben
 
@@ -53,11 +53,11 @@ Ha a tevékenység időbélyegének meglévő értéke és a jelenlegi érték k
 
 A tevékenység-időbélyegző értékét két módon kérheti le:
 
-- Az Azure Portal [Eszközök oldalán](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) található **Tevékenység** oszlopból
+- Az Azure Portal **Eszközök oldalán** található [Tevékenység](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) oszlopból
 
     ![Tevékenység-időbélyeg](./media/manage-stale-devices/01.png)
 
-- A [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) parancsmaggal
+- A [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) parancsmaggal
 
     ![Tevékenység-időbélyeg](./media/manage-stale-devices/02.png)
 
@@ -75,7 +75,7 @@ Egy eszköz Azure AD-ben történő frissítéséhez szükség van egy fiókra, 
 
 A törlési szabályzatban válasszon olyan fiókokat, amelyekhez hozzá vannak rendelve a szükséges szerepkörök. 
 
-### <a name="timeframe"></a>Időkeret
+### <a name="timeframe"></a>Időszak
 
 Határozza meg az időszakot, amelyen túl egy eszköz elavultnak minősül. Az időkeret meghatározásakor a tevékenység időbélyegének az értékre való frissítéséhez feljegyzett ablak. Egy elavult eszköz esetében például nem érdemes olyan időbélyeget figyelembe venni, amely 21 napnál fiatalabb (beleértve a varianciaot is). Bizonyos esetekben egy eszköz akkor is elavultnak tűnhet, ha valójában nem az. Lehet, hogy az érintett eszköz tulajdonosa nyaral vagy betegállományban van.  amely túllépi az elavult eszközökhöz meghatározott időszakot.
 
@@ -129,11 +129,11 @@ Bár az elavult eszközök törlése az Azure Portalon is elvégezhető, hatéko
 
 A folyamat jellemzően a következő lépésekből áll:
 
-1. Csatlakozás az Azure Active Directoryhoz a [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) parancsmaggal
+1. Csatlakozás az Azure Active Directoryhoz a [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) parancsmaggal
 1. Az eszközök listájának lekérése
-1. Az eszköz letiltása a [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) parancsmaggal. 
+1. Az eszköz letiltása a [Disable-MsolDevice](/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) parancsmaggal. 
 1. Az eszköz törlése előtt várja ki a kívánt hosszúságú türelmi időszakot.
-1. Az eszköz törlése a [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) parancsmaggal.
+1. Az eszköz törlése a [Remove-MsolDevice](/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) parancsmaggal.
 
 ### <a name="get-the-list-of-devices"></a>Az eszközök listájának lekérése
 
@@ -180,6 +180,6 @@ Meghiúsul minden hitelesítés, amelynek keretében az eszköz végezné a hite
 - **Azure AD-hez csatlakoztatott eszköz** – A felhasználók nem használhatják az eszközt bejelentkezésre. 
 - **Mobileszköz** – A felhasználók nem férhetnek hozzá az Azure AD-erőforrásokhoz, például az Office 365-höz. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információk az eszközök Azure Portalon végzett felügyeletéről: [Eszközfelügyelet az Azure Portalon](device-management-azure-portal.md).

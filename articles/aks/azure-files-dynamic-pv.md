@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre dinamikusan állandó kötetet Az
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: a6e46433354be0d9d958ec69da4529e94a4edd75
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: ef9ef10a5523bd91b346e16e105c5ff5cd9cb669
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596420"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897708"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Állandó kötet létrehozása és használata Azure Files az Azure Kubernetes szolgáltatásban (ak)
 
@@ -29,11 +29,13 @@ A tárolási osztály segítségével határozható meg az Azure-fájlmegosztás
 
 * *Standard_LRS* – standard, helyileg redundáns tárolás (LRS)
 * *Standard_GRS* – szabványos geo-redundáns tárolás (GRS)
+* *Standard_ZRS* – szabványos zóna redundáns tárolója (GRS)
 * *Standard_RAGRS* – szabványos olvasási hozzáférésű geo-redundáns tárolás (ra-GRS)
 * *Premium_LRS* – prémium helyileg redundáns tárolás (LRS)
+* *Premium_ZRS* – Premium Zone redundáns tárolás (GRS)
 
 > [!NOTE]
-> Azure Files támogatja a Premium Storage-t a Kubernetes 1,13-es vagy újabb verzióját futtató AK-fürtökben.
+> Azure Files a Premium Storage-t a Kubernetes 1,13-es vagy újabb verzióját futtató AK-fürtök támogatják, a minimális prémium fájlmegosztás 100 GB
 
 A Azure Files Kubernetes tárolási osztályaival kapcsolatos további információkért lásd: [Kubernetes tárolási][kubernetes-storage-classes]osztályok.
 
@@ -48,11 +50,10 @@ provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
   - file_mode=0777
-  - uid=1000
-  - gid=1000
+  - uid=0
+  - gid=0
   - mfsymlinks
-  - nobrl
-  - cache=none
+  - cache=strict
 parameters:
   skuName: Standard_LRS
 ```
@@ -163,7 +164,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Csatlakoztatási beállítások
 
-A *fileMode* és a *dirMode* alapértelmezett értéke *0755* a Kubernetes 1.9.1-es vagy újabb verziójához. Ha olyan fürtöt használ, amelynek Kuberetes-verziója 1.8.5 vagy nagyobb, és dinamikusan hozza létre az állandó kötetet egy tárolási osztállyal, a csatlakoztatási beállítások megadhatók a tárolási osztály objektumban. A következő példa a *0777*-es készletet állítja be:
+A *fileMode* és a *dirMode* alapértelmezett értéke *0777* a Kubernetes 1.13.0-es vagy újabb verziójához. Ha egy tárolási osztállyal dinamikusan hozza létre az állandó kötetet, a tárolási osztály objektumon meg lehet adni a csatlakoztatási beállításokat. A következő példa a *0777*-es készletet állítja be:
 
 ```yaml
 kind: StorageClass
@@ -174,18 +175,15 @@ provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
   - file_mode=0777
-  - uid=1000
-  - gid=1000
+  - uid=0
+  - gid=0
   - mfsymlinks
-  - nobrl
-  - cache=none
+  - cache=strict
 parameters:
   skuName: Standard_LRS
 ```
 
-Ha 1.8.0-1.8.4-alapú fürtöt használ, a *runAsUser* értékkel megadható egy biztonsági környezet, amely a *0*értékre van állítva. A pod biztonsági környezettel kapcsolatos további információkért lásd: [biztonsági környezet konfigurálása][kubernetes-security-context].
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 

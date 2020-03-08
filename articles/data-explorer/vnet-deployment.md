@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 28b9c55df8cd7883e05e964b8b67e08c7a3eb8c1
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: e845b44c51b7611cd3f23f8b33e6576aced2d6ca
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812727"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851448"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Az Azure Adatkezelő üzembe helyezése a Virtual Network (előzetes verzió)
 
@@ -52,7 +52,7 @@ Az IP-címek teljes száma:
 | --- | --- |
 | Motor szolgáltatás | 1/példány |
 | Adatkezelési szolgáltatás | 2 |
-| Belső terheléselosztók | 2 |
+| Belső terheléselosztó | 2 |
 | Azure-beli fenntartott címek | 5 |
 | **Teljes** | **#engine_instances + 9** |
 
@@ -75,16 +75,16 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 
 #### <a name="inbound-nsg-configuration"></a>Bejövő NSG-konfiguráció
 
-| **Használat**   | **From**   | **Címzett**   | **Protocol (Protokoll)**   |
+| **Használat**   | **A**   | **Címzett**   | **Protocol (Protokoll)**   |
 | --- | --- | --- | --- |
 | Felügyelet  |[ADX-felügyeleti címek](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | ADX alhálózat: 443  | TCP  |
 | Állapotfigyelés  | [ADX állapot-figyelési címei](#health-monitoring-addresses)  | ADX alhálózat: 443  | TCP  |
-| Belső kommunikáció ADX  | ADX alhálózat: minden port  | ADX alhálózat: minden port  | Mind  |
+| Belső kommunikáció ADX  | ADX alhálózat: minden port  | ADX alhálózat: minden port  | Összes  |
 | Azure Load Balancer bejövő (állapotának) engedélyezése  | AzureLoadBalancer  | ADX alhálózat: 80443  | TCP  |
 
 #### <a name="outbound-nsg-configuration"></a>Kimenő NSG-konfiguráció
 
-| **Használat**   | **From**   | **Címzett**   | **Protocol (Protokoll)**   |
+| **Használat**   | **A**   | **Címzett**   | **Protocol (Protokoll)**   |
 | --- | --- | --- | --- |
 | Függőség az Azure Storage-ban  | ADX alhálózat  | Tárolás: 443  | TCP  |
 | Függőség Azure Data Lake  | ADX alhálózat  | AzureDataLake: 443  | TCP  |
@@ -93,18 +93,18 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | Azure Monitor konfiguráció letöltése  | ADX alhálózat  | [Azure monitor konfigurációs végpont címei](#azure-monitor-configuration-endpoint-addresses): 443 | TCP  |
 | Active Directory (ha van ilyen) | ADX alhálózat | AzureActiveDirectory: 443 | TCP |
 | Hitelesítésszolgáltató | ADX alhálózat | Internet: 80 | TCP |
-| Belső kommunikáció  | ADX alhálózat  | ADX alhálózat: minden port  | Mind  |
+| Belső kommunikáció  | ADX alhálózat  | ADX alhálózat: minden port  | Összes  |
 | `sql\_request` és `http\_request` beépülő modulok számára használt portok  | ADX alhálózat  | Internet: egyéni  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>Kapcsolódó IP-címek
 
 #### <a name="azure-data-explorer-management-ip-addresses"></a>Azure Adatkezelő felügyeleti IP-címek
 
-| Region (Régió) | Címek |
+| Régió | Címek |
 | --- | --- |
 | Ausztrália középső régiója | 20.37.26.134 |
 | Ausztráliai Central2 | 20.39.99.177 |
-| Ausztrália keleti régiója | 40.82.217.84 |
+| Kelet-Ausztrália | 40.82.217.84 |
 | Délkelet-Ausztrália | 20.40.161.39 |
 | BrazilSouth | 191.233.25.183 |
 | Közép-Kanada | 40.82.188.208 |
@@ -120,8 +120,8 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | Dél-Franciaország | 40.82.236.24 |
 | Kelet-Japán | 20.43.89.90 |
 | Nyugat-Japán | 40.81.184.86 |
-| Dél-Korea középső régiója | 40.82.156.149 |
-| Dél-Korea déli régiója | 40.80.234.9 |
+| Korea középső régiója | 40.82.156.149 |
+| Korea déli régiója | 40.80.234.9 |
 | USA északi középső régiója | 40.81.45.254 |
 | Észak-Európa | 52.142.91.221 |
 | Dél-Afrika északi régiója | 102.133.129.138 |
@@ -129,8 +129,8 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | USA déli középső régiója | 20.45.3.60 |
 | Délkelet-Ázsia | 40.119.203.252 |
 | Dél-India | 40.81.72.110 |
-| Egyesült Királyság déli régiója | 40.81.154.254 |
-| Egyesült Királyság nyugati régiója | 40.81.122.39 |
+| Az Egyesült Királyság déli régiója | 40.81.154.254 |
+| Az Egyesült Királyság nyugati régiója | 40.81.122.39 |
 | USA nyugati középső régiója | 52.159.55.120 |
 | Nyugat-Európa | 51.145.176.215 |
 | Nyugat-India | 40.81.88.112 |
@@ -139,11 +139,11 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 
 #### <a name="health-monitoring-addresses"></a>Állapot-figyelési címek
 
-| Region (Régió) | Címek |
+| Régió | Címek |
 | --- | --- |
 | Ausztrália középső régiója | 191.239.64.128 |
 | Ausztrália 2. középső régiója | 191.239.64.128 |
-| Ausztrália keleti régiója | 191.239.64.128 |
+| Kelet-Ausztrália | 191.239.64.128 |
 | Délkelet-Ausztrália | 191.239.160.47 |
 | Dél-Brazília | 23.98.145.105 |
 | Közép-Kanada | 168.61.212.201 |
@@ -159,8 +159,8 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | Dél-Franciaország | 23.97.212.5 |
 | Kelet-Japán | 138.91.19.129 |
 | Nyugat-Japán | 138.91.19.129 |
-| Dél-Korea középső régiója | 138.91.19.129 |
-| Dél-Korea déli régiója | 138.91.19.129 |
+| Korea középső régiója | 138.91.19.129 |
+| Korea déli régiója | 138.91.19.129 |
 | USA északi középső régiója | 23.96.212.108 |
 | Észak-Európa | 191.235.212.69 
 | Dél-Afrika északi régiója | 104.211.224.189 |
@@ -168,17 +168,17 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | USA déli középső régiója | 23.98.145.105 |
 | Dél-India | 23.99.5.162 |
 | Délkelet-Ázsia | 168.63.173.234 |
-| Egyesült Királyság déli régiója | 23.97.212.5 |
-| Egyesült Királyság nyugati régiója | 23.97.212.5 |
+| Az Egyesült Királyság déli régiója | 23.97.212.5 |
+| Az Egyesült Királyság nyugati régiója | 23.97.212.5 |
 | USA nyugati középső régiója | 168.61.212.201 |
 | Nyugat-Európa | 23.97.212.5 |
 | Nyugat-India | 23.99.5.162 |
 | USA nyugati régiója | 23.99.5.162 |
-| USA 2. nyugati régiója | 23.99.5.162 | 
+| USA nyugati régiója, 2. | 23.99.5.162 |    
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure Monitor konfigurációs végpont címei
 
-| Region (Régió) | Címek |
+| Régió | Címek |
 | --- | --- |
 | Közép-Ausztrália | 52.148.86.165 |
 | Közép-Ausztrália, 2 | 52.148.86.165 |
@@ -192,7 +192,7 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | USA középső – EUAP | 13.90.43.231 |
 | Kelet-Ázsia | 13.75.117.221 |
 | USA keleti régiója | 13.90.43.231 |
-| USA 2. keleti régiója | 13.68.89.19 | 
+| USA 2. keleti régiója | 13.68.89.19 |    
 | USA 2. keleti – EUAP | 13.68.89.19 |
 | Közép-Franciaország | 52.174.4.112 |
 | Dél-Franciaország | 52.174.4.112 |
@@ -263,3 +263,149 @@ Az **USA nyugati** régiója esetében például a következő UDR kell definiá
 Ha Azure Adatkezelő-fürtöt szeretne üzembe helyezni a virtuális hálózaton, használja az [azure adatkezelő-fürt üzembe](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) helyezése a VNet Azure Resource Manager-sablonban.
 
 Ez a sablon létrehozza a fürtöt, a virtuális hálózatot, az alhálózatot, a hálózati biztonsági csoportot és a nyilvános IP-címeket.
+
+## <a name="troubleshooting"></a>Hibakeresés
+
+Ebből a szakaszból megtudhatja, hogyan lehet elhárítani a [Virtual Network](/azure/virtual-network/virtual-networks-overview)üzembe helyezett fürtök kapcsolódási, működési és fürtbeli létrehozási problémáit.
+
+### <a name="access-issues"></a>Hozzáférési problémák
+
+Ha a nyilvános (cluster.region.kusto.windows.net) vagy a Private (private-cluster.region.kusto.windows.net) végponton keresztül éri el a fürtöt, és azt gyanítja, hogy a virtuális hálózat beállításához kapcsolódik, hajtsa végre a következő lépéseket a Hárítsa el a problémát.
+
+#### <a name="check-tcp-connectivity"></a>TCP-kapcsolat ellenőrzése
+
+Az első lépés a TCP-kapcsolatok Windows vagy Linux operációs rendszer használatával történő ellenőrzését foglalja magában.
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+   1. Töltse le a [TCping](https://www.elifulkerson.com/projects/tcping.php) a fürthöz csatlakozó gépre.
+   2. Pingelje a célhelyet a forrás gépről a következő parancs használatával:
+
+    ```cmd
+     C:\> tcping -t yourcluster.kusto.windows.net 443 
+    
+     ** Pinging continuously.  Press control-c to stop **
+    
+     Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
+     ```
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+   1. Telepítse a *netcat* a fürthöz csatlakozó gépen
+
+    ```bash
+    $ apt-get install netcat
+     ```
+
+   2. Pingelje a célhelyet a forrás gépről a következő parancs használatával:
+
+     ```bash
+     $ netcat -z -v yourcluster.kusto.windows.net 443
+    
+     Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
+     ```
+---
+
+Ha a teszt nem sikerül, folytassa a következő lépésekkel. Ha a teszt sikeres, a probléma nem a TCP-kapcsolat hibája miatt fordul elő. A további hibaelhárításhoz lépjen a [működési problémákra](#cluster-creation-and-operations-issues) .
+
+#### <a name="check-the-network-security-group-nsg"></a>Hálózati biztonsági csoport (NSG) keresése
+
+   Győződjön meg arról, hogy a fürt alhálózatához csatolt [hálózati biztonsági csoport](/azure/virtual-network/security-overview) (NSG) rendelkezik egy bejövő szabállyal, amely engedélyezi a hozzáférést az ügyfélszámítógép IP-címéről a 443-es porthoz.
+
+#### <a name="check-route-table"></a>Útválasztási táblázat keresése
+
+   Ha a fürt alhálózata kényszerített bújtatást biztosít a tűzfalnak (az alapértelmezett "0.0.0.0/0" útvonalat tartalmazó [útválasztási táblázattal](/azure/virtual-network/virtual-networks-udr-overview) rendelkező alhálózatnak), győződjön meg arról, hogy a számítógép IP-címe a [következő ugrás típusú](/azure/virtual-network/virtual-networks-udr-overview) útvonallal rendelkezik a VirtualNetwork/Internet értékre. Ez szükséges az aszimmetrikus útválasztási problémák elkerüléséhez.
+
+### <a name="ingestion-issues"></a>Betöltési problémák
+
+Ha betöltési problémákat tapasztal, és azt gyanítja, hogy a virtuális hálózat beállításához kapcsolódik, hajtsa végre a következő lépéseket.
+
+#### <a name="check-ingestion-health"></a>Betöltés állapotának keresése
+
+    Check that the [cluster ingestion metrics](/azure/data-explorer/using-metrics#ingestion-health-and-performance-metrics) indicate a healthy state.
+
+#### <a name="check-security-rules-on-data-source-resources"></a>Az adatforrás-erőforrások biztonsági szabályainak megkeresése
+
+Ha a mérőszámok azt jelzik, hogy az adatforrásból nem történtek feldolgozott*események (az Event/* IoT hubok esetében), győződjön meg arról, hogy az adatforrás erőforrásai (Event hub vagy Storage) engedélyezik a hozzáférést a fürt alhálózatáról a tűzfalszabályok vagy a szolgáltatási végpontok számára.
+
+#### <a name="check-security-rules-configured-on-clusters-subnet"></a>A fürt alhálózatán konfigurált biztonsági szabályok keresése
+
+Győződjön meg arról, hogy a fürt alhálózata NSG, UDR és tűzfalszabályok megfelelően van konfigurálva. Továbbá ellenőrizze az összes függő végpont hálózati kapcsolatát. 
+
+### <a name="cluster-creation-and-operations-issues"></a>Fürtök létrehozásával és működésével kapcsolatos problémák
+
+Ha a fürt létrehozásával vagy működésével kapcsolatos problémákat tapasztal, és azt gyanítja, hogy a virtuális hálózat beállításához kapcsolódik, a probléma elhárításához kövesse az alábbi lépéseket.
+
+#### <a name="diagnose-the-virtual-network-with-the-rest-api"></a>A virtuális hálózat diagnosztizálása a REST API
+
+A [ARMClient](https://chocolatey.org/packages/ARMClient) a PowerShell használatával hívja meg a REST API. 
+
+1. Bejelentkezés a ARMClient
+
+   ```powerShell
+   armclient login
+   ```
+
+1. Diagnosztizálási művelet meghívása
+
+    ```powershell
+    $subscriptionId = '<subscription id>'
+    $clusterName = '<name of cluster>'
+    $resourceGroupName = '<resource group name>'
+    $apiversion = '2019-11-09'
+    
+    armclient post "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Kusto/clusters/$clusterName/diagnoseVirtualNetwork?api-version=$apiversion" -verbose
+    ```
+
+1. Válasz keresése
+
+    ```powershell
+    HTTP/1.1 202 Accepted
+    ...
+    Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
+    ...
+    ```
+
+1. Várakozás a művelet befejezésére
+
+    ```powershell
+    armclient get https://management.azure.com/subscriptions/$subscriptionId/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
+    
+    {
+      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
+      "name": "{operation-name}",
+      "status": "[Running/Failed/Completed]",
+      "startTime": "{start-time}",
+      "endTime": "{end-time}",
+      "properties": {...}
+    }
+    ```
+    
+   Várjon, amíg az *állapot* tulajdonsága be nem *fejeződik*, majd a *Properties (Tulajdonságok* ) mezőben a következő jelenik meg:
+
+    ```powershell
+    {
+      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
+      "name": "{operation-name}",
+      "status": "Completed",
+      "startTime": "{start-time}",
+      "endTime": "{end-time}",
+      "properties": {
+        "Findings": [...]
+      }
+    }
+    ```
+
+Ha az *eredmények* tulajdonság üres eredményt mutat, az azt jelenti, hogy az összes átadott hálózati teszt és kapcsolat nem szakad meg. Ha a következő hibaüzenetet jeleníti meg: a *(z) {dependencyName} kimenő függőség ({port}) nem teljesíthető (kimenő)* , a fürt nem tudja elérni a függő szolgáltatási végpontokat. A hibaelhárításhoz folytassa a következő lépésekkel.
+
+#### <a name="check-network-security-group-nsg"></a>Hálózati biztonsági csoport (NSG) keresése
+
+Ellenőrizze, hogy a [hálózati biztonsági csoport](/azure/virtual-network/security-overview) megfelelően van-e konfigurálva a [VNet-telepítés függőségeinek](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment) utasításai szerint
+
+#### <a name="check-route-table"></a>Útválasztási táblázat keresése
+
+Ha a fürt alhálózata kényszerített bújtatást állított be a tűzfalra (az alapértelmezett "0.0.0.0/0" útvonalat tartalmazó [útválasztási táblázattal](/azure/virtual-network/virtual-networks-udr-overview) rendelkező alhálózatot), [Győződjön meg arról](/azure/virtual-network/virtual-networks-udr-overview#how-azure-selects-a-route) , hogy a [felügyeleti IP-címek](#azure-data-explorer-management-ip-addresses) és az állapot- [figyelési IP-címek](#health-monitoring-addresses) rendelkeznek a [következő ugrás típusú](/azure/virtual-network/virtual-networks-udr-overview##next-hop-types-across-azure-tools) *internettel*rendelkező útvonallal, valamint a *"Management-IP/32"* és a *"Health-monitoring-IP* Ez szükséges az aszimmetrikus útválasztási problémák elkerüléséhez.
+
+#### <a name="check-firewall-rules"></a>Tűzfalszabályok keresése
+
+Ha kényszeríti a bújtatási alhálózat kimenő forgalmát egy tűzfalra, győződjön meg arról, hogy az összes függőség teljes tartományneve (például *. blob.Core.Windows.net*) engedélyezve van a tűzfal konfigurációjában a [kimenő forgalom biztonságossá tétele a tűzfallal](/azure/data-explorer/vnet-deployment#securing-outbound-traffic-with-firewall)című témakörben leírtak szerint.

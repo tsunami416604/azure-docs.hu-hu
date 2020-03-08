@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 99f255d9991b51897ee31671835dabb5f3e359fd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9e5b3e633bf35a25a68eb513d0ec691c3254bde4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916506"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674228"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -182,12 +182,26 @@ A következő táblázat felsorolja az ingyenes próbaverzióra vonatkozó [kipr
 | Tárolók maximális száma/előfizetés (SQL, Gremlin, Table API) | 1 |
 | Tárolók maximális száma (MongoDB API) | 3 |
 | Maximális átviteli sebesség/tároló | 5000 |
-| Maximális átviteli sebesség egy megosztott átviteli sebességű adatbázisban | 20000 |
+| Maximális átviteli sebesség egy megosztott átviteli sebességű adatbázisban | 20 000 |
 | Összes tárterület maximális száma | 10 GB |
 
 Próbálja ki, Cosmos DB támogatja a globális terjesztést csak az USA középső, Észak-és Délkelet-ázsiai régiójában. Nem hozhatók létre Azure-támogatási jegyek az Azure Cosmos DB-fiókok kipróbálásához. Azonban támogatást biztosítanak a meglévő támogatási csomagokkal rendelkező előfizetőknek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="free-tier-account-limits"></a>Ingyenes szintű fiókok korlátai
+A következő táblázat felsorolja az [ingyenes szintű fiókok Azure Cosmos db](optimize-dev-test.md#azure-cosmos-db-free-tier) korlátozásait.
+
+| Erőforrás | Alapértelmezett korlát |
+| --- | --- |
+| Az Azure-előfizetések által felszámított ingyenes szintű fiókok száma | 1 |
+| Az ingyenes rétegbeli kedvezmény időtartama | A fiók élettartama. A fiók létrehozása során kötelező bejelentkezni. |
+| Maximális RU/mp ingyenesen | 400 RU/s |
+| Maximális tárterület ingyenesen | 5 GB |
+| Megosztott átviteli sebességű adatbázisok maximális száma | 5 |
+| Tárolók maximális száma egy megosztott átviteli sebességű adatbázisban | 25 <br>Az ingyenes szintű fiókok esetében a közös átviteli sebességű adatbázishoz legfeljebb 25 tárolóval rendelkező minimális RU/s 400 RU/s. |
+
+  A fentiek mellett a [fiókra vonatkozó korlátok](#per-account-limits) az ingyenes szintű fiókok esetében is érvényesek.
+
+## <a name="next-steps"></a>További lépések
 
 További információ a Cosmos DB alapvető fogalmak [globális eloszlásáról](distribute-data-globally.md) , [particionálásáról](partitioning-overview.md) és kiosztott [átviteli sebességéről](request-units.md).
 

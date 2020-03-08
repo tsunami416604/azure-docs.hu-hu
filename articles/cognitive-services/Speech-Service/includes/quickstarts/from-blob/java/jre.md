@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
-ms.openlocfilehash: 1225a1e528b32401f350374fb9393c52225c49e8
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
-ms.translationtype: MT
+ms.openlocfilehash: b58ca353bffb99b21b1049dd23620f575bde687b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942650"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669228"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,7 +32,9 @@ Első lépésként győződjön meg arról, hogy a projekt az Eclipse-ben nyitva
 ## <a name="add-a-reference-to-gson"></a>Gson mutató hivatkozás hozzáadása
 Ebben a rövid útmutatóban egy külső JSON-szerializáló/deszerializáló fogunk használni. A Java általunk választott [Gson](https://github.com/google/gson).
 
-Nyissa meg a Pom. xml fájlt, és adja hozzá a következő hivatkozást: [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
+Nyissa meg a Pom. xml fájlt, és adja hozzá a következő hivatkozást.
+
+[!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
 
 ## <a name="start-with-some-boilerplate-code"></a>Kezdés néhány szabványos kóddal
 
@@ -82,6 +84,6 @@ Ezen a ponton a kódnak így kell kinéznie: (adtunk hozzá néhány megjegyzés
 
 Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

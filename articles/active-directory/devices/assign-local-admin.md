@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8087e9eaa11ced5da9b445af9d33377b4391c0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 613c5e9f153f2e3f02ab35d3be16ef3b29d15634
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379660"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672730"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön
 
@@ -68,8 +68,8 @@ Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhö
 
 Alapértelmezés szerint az Azure AD hozzáadja az Azure AD-csatlakozást végző felhasználót az eszközön található rendszergazdai csoporthoz. Ha meg szeretné akadályozni, hogy a normál felhasználók helyi rendszergazdák legyenek, a következő lehetőségek közül választhat:
 
-- [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) – a Windows Autopilot lehetővé teszi, hogy megakadályozza, hogy az összekapcsolást végző elsődleges felhasználó helyi rendszergazda legyen. Ezt az [Autopilot-profil létrehozásával](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile)végezheti el.
-- [Tömeges beléptetés](https://docs.microsoft.com/intune/windows-bulk-enroll) – egy olyan Azure ad-csatlakozás, amely egy tömeges beléptetés kontextusában történik, egy automatikusan létrehozott felhasználó kontextusában történik. Az eszköz csatlakoztatása után bejelentkezett felhasználók nem lesznek hozzáadva a rendszergazdák csoporthoz.   
+- [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot) – a Windows Autopilot lehetővé teszi, hogy megakadályozza, hogy az összekapcsolást végző elsődleges felhasználó helyi rendszergazda legyen. Ezt az [Autopilot-profil létrehozásával](/intune/enrollment-autopilot#create-an-autopilot-deployment-profile)végezheti el.
+- [Tömeges beléptetés](/intune/windows-bulk-enroll) – egy olyan Azure ad-csatlakozás, amely egy tömeges beléptetés kontextusában történik, egy automatikusan létrehozott felhasználó kontextusában történik. Az eszköz csatlakoztatása után bejelentkezett felhasználók nem lesznek hozzáadva a rendszergazdák csoporthoz.   
 
 ## <a name="manually-elevate-a-user-on-a-device"></a>Felhasználó manuális megemelése egy eszközön 
 

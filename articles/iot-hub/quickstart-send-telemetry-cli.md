@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 948dfd25881a6a90dd441ad640091d88812cc298
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 711e15986265324bbb353fb2b4404cbfeb48dc84
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931821"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851422"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és az Azure CLI-vel való figyelése
 
@@ -24,7 +24,7 @@ Az IoT Hub olyan Azure-szolgáltatás, amely lehetővé teszi nagy mennyiségű 
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egyet ingyen a](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) Kezdés előtt.
-- Azure CLI-vel. Ebben a rövid útmutatóban az összes parancsot futtathatja a böngészőben futtatott interaktív CLI-rendszerhéj Azure Cloud Shellával. Ha a Cloud Shell használja, semmit nem kell telepítenie. Ha a parancssori felület helyi használatát szeretné használni, ehhez a rövid útmutatóhoz az Azure CLI 2.0.76 vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következő parancsot: az --version. A telepítéshez vagy a frissítéshez lásd: az [Azure CLI telepítése]( /cli/azure/install-azure-cli).
+- Azure CLI. Ebben a rövid útmutatóban az összes parancsot futtathatja a böngészőben futtatott interaktív CLI-rendszerhéj Azure Cloud Shellával. Ha a Cloud Shell használja, semmit nem kell telepítenie. Ha a parancssori felület helyi használatát szeretné használni, ehhez a rövid útmutatóhoz az Azure CLI 2.0.76 vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következő parancsot: az --version. A telepítéshez vagy a frissítéshez lásd: az [Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
@@ -35,6 +35,7 @@ Függetlenül attól, hogy helyileg futtatta-e a CLI-t, vagy a Cloud Shellban me
 Ebben a szakaszban a Azure Cloud Shell egy példányát indítja el. Ha helyileg használja a CLI-t, ugorjon a [két CLI-munkamenet előkészítése](#prepare-two-cli-sessions)című szakaszra.
 
 A Cloud Shell elindítása:
+
 1. A Azure Portal jobb felső menüsorában kattintson a **Cloud Shell** gombra. 
 
     ![Azure Portal Cloud Shell gomb](media/quickstart-send-telemetry-cli/cloud-shell-button.png)
@@ -42,25 +43,30 @@ A Cloud Shell elindítása:
     > [!NOTE]
     > Ha első alkalommal használja a Cloud Shell, a rendszer kéri, hogy hozzon létre egy tárolót, amely a Cloud Shell használatához szükséges.  Válasszon egy előfizetést, és hozzon létre egy Storage-fiókot, és Microsoft Azure a fájlok megosztását. 
 
-1. Válassza ki az előnyben részesített CLI-környezetet a **környezet kiválasztása** legördülő menüben. Ez a rövid útmutató a **bash** -környezetet használja. Az alábbi CLI-parancsok a PowerShell-környezetben is működnek. 
+2. Válassza ki az előnyben részesített CLI-környezetet a **környezet kiválasztása** legördülő menüben. Ez a rövid útmutató a **bash** -környezetet használja. Az alábbi CLI-parancsok a PowerShell-környezetben is működnek. 
 
     ![CLI-környezet kiválasztása](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
 ## <a name="prepare-two-cli-sessions"></a>Két CLI-munkamenet előkészítése
+
 Ebben a szakaszban két Azure CLI-munkamenetet készít elő. Ha a Cloud Shell használja, a két munkamenetet külön böngésző lapokon fogja futtatni. Ha helyi CLI-ügyfelet használ, két külön CLI-példányt fog futtatni. Az első munkamenetet szimulált eszközként fogja használni, és az üzenetek figyelésére és küldésére szolgáló második munkamenetet. Ha parancsot szeretne futtatni, válassza a **Másolás** elemet a rövid útmutatóban szereplő kódrészlet másolásához, illessze be a rendszerhéj-munkamenetbe, majd futtassa.
 
 Az Azure CLI használatához be kell jelentkeznie az Azure-fiókjába. Az Azure CLI rendszerhéj-munkamenet és az IoT hub közötti kommunikáció hitelesítése és titkosítása megtörtént. Ennek eredményeképpen ehhez a rövid útmutatóhoz nincs szükség olyan további hitelesítésre, amelyet valódi eszközzel használ, például egy kapcsolatok sztringjét.
 
-1. Futtassa az az [Extension Add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) parancsot az Azure CLI-hez készült Microsoft Azure IoT-BŐVÍTMÉNY a CLI-rendszerhéjhoz való hozzáadásához. Az IOT bővítmény a IoT Hub, IoT Edge és IoT Device kiépítési szolgáltatás (DPS) adott parancsait hozzáadja az Azure CLI-hez.
+*  Futtassa az az [Extension Add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) parancsot az Azure CLI-hez készült Microsoft Azure IoT-BŐVÍTMÉNY a CLI-rendszerhéjhoz való hozzáadásához. Az IOT bővítmény a IoT Hub, IoT Edge és IoT Device kiépítési szolgáltatás (DPS) adott parancsait hozzáadja az Azure CLI-hez.
 
    ```azurecli
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
-    Az Azure IOT bővítmény telepítése után nem kell újra telepítenie a Cloud Shell-munkamenetben. 
+   
+   Az Azure IOT bővítmény telepítése után nem kell újra telepítenie a Cloud Shell-munkamenetben. 
 
-1. Nyisson meg egy második CLI-munkamenetet.  Ha a Cloud Shell használja, válassza az **új munkamenet megnyitása**lehetőséget. Ha helyileg használja a CLI-t, nyisson meg egy második példányt. 
+   [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-    ![Új Cloud Shell munkamenet megnyitása](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
+*  Nyisson meg egy második CLI-munkamenetet.  Ha a Cloud Shell használja, válassza az **új munkamenet megnyitása**lehetőséget. Ha helyileg használja a CLI-t, nyisson meg egy második példányt. 
+
+    >[!div class="mx-imgBorder"]
+    >![új Cloud Shell munkamenet megnyitása](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 Ebben a szakaszban az Azure CLI használatával hozzon létre egy erőforráscsoportot és egy IoT Hub.  Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az IoT Hub központi üzenetsorként szolgálnak a IoT-alkalmazás és az eszközök közötti kétirányú kommunikációhoz. 

@@ -6,19 +6,23 @@ ms.author: lcozzens
 ms.date: 03/05/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
-ms.custom: mvc
-ms.openlocfilehash: 7c6f4b2ea9494c004067a8b19df2c2f098ac2b7f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.custom:
+- mvc
+- subject-armqs
+ms.openlocfilehash: 702c03aec1980b12debeef3afeb84e0cbaef55b6
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274955"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671587"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration"></a>Gyors útmutató: automatikus virtuális gép üzembe helyezése az alkalmazás konfigurációjával
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Gyors útmutató: automatikus virtuálisgép-telepítés az alkalmazás-konfigurációval és Resource Manager-sablonnal
 
 A Azure PowerShell modul Azure-erőforrások létrehozásához és kezeléséhez használható PowerShell-parancsmagokkal vagy parancsfájlokkal. Ez a rövid útmutató bemutatja, hogyan használhatók Azure PowerShell és Azure Resource Manager sablonok az Azure-alkalmazások konfigurációs tárolójának üzembe helyezéséhez. Ezután megtudhatja, hogyan használhatja a tárolóban lévő kulcs-értékeket a virtuális gépek üzembe helyezéséhez.
 
 Az előfeltételként szükséges sablonnal létrehozhat egy alkalmazás-konfigurációs tárolót, majd a Azure Portal vagy az Azure CLI használatával adhat hozzá kulcs-értékeket az áruházhoz. Az elsődleges sablon meglévő konfigurációs tárolóból származó létező kulcs-érték konfigurációkra hivatkozik. A beolvasott értékek a sablon által létrehozott erőforrások tulajdonságainak beállítására szolgálnak, például egy virtuális gépre ebben a példában.
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 

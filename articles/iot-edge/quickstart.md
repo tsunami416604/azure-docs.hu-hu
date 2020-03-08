@@ -1,6 +1,6 @@
 ---
-title: Gyors útmutató Azure IoT Edge-eszköz létrehozásához Windows rendszeren | Microsoft Docs
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre IoT Edge eszközt, majd távolról is üzembe helyezheti az előre elkészített kódot a Azure Portal.
+title: Rövid útmutató az Azure IoT Edge-eszköz létrehozása a Windows |} A Microsoft Docs
+description: Ebben a rövid útmutató egy IoT Edge-eszköz létrehozása és üzembe helyezhesse az előre összeállított kódot távolról az Azure Portalról.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: cefd8472c23458b94c4da5ae3c239e9d427276bf
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 54efe7b5c392ad2b4cc3a0de414e04951b268508
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760181"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674244"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése virtuális Windows-eszközön
 
@@ -27,7 +27,7 @@ Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
 3. Telepítse és indítsa el a IoT Edge futtatókörnyezetet a virtuális eszközön.
 4. Modul távoli üzembe helyezése IoT Edge-eszközön és Telemetria küldése az IoT Hubnak
 
-![Diagram – az eszköz és a felhő gyors üzembe helyezési architektúrája](./media/quickstart/install-edge-full.png)
+![Diagram – rövid útmutató architektúra eszközhöz és a felhő](./media/quickstart/install-edge-full.png)
 
 Ez a rövid útmutató végigvezeti a Windows rendszerű virtuális gépek létrehozásának és a IoT Edge eszközre való konfigurálásának lépésein. Ezután egy modult helyezhet üzembe az eszközén az Azure Portalról. A jelen rövid útmutatóban üzembe helyezett modul egy szimulált érzékelő, amely hőmérséklet-, páratartalom- és nyomásadatokat állít elő. A további Azure IoT Edge-oktatóanyagok az itt elvégzett munkára építkeznek olyan modulok üzembe helyezésével, amelyek a szimulált adatok elemzésével üzleti megállapításokat hoznak létre.
 
@@ -40,8 +40,10 @@ Az Azure CLI-vel az ebben a rövid útmutatóban ismertetett lépések számos l
 Adja hozzá az Azure IoT bővítményt a Cloud Shell-példányhoz.
 
    ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -78,7 +80,7 @@ IoT Edge-eszköz:
 
 A rövid útmutató elindításához hozzon létre egy IoT hubot az Azure CLI-vel.
 
-![Diagram – IoT hub létrehozása a felhőben](./media/quickstart/create-iot-hub.png)
+![Diagram – a felhőben az IoT hub létrehozása](./media/quickstart/create-iot-hub.png)
 
 Ehhez a rövid útmutatóhoz az IoT Hub ingyenes csomagja is elegendő. Ha korábban már használta az IoT Hubot, és már létrehozott egy ingyenes központot, használhatja azt is. Mindegyik előfizetés csak egy ingyenes IoT-központtal rendelkezhet.
 
@@ -88,7 +90,7 @@ A következő kód egy ingyenes **F1** -hubot hoz létre az erőforráscsoport `
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
-   Ha hibaüzenetet kap, mert az előfizetése már tartalmaz egy ingyenes központot, akkor módosítsa az SKU-t **S1**-re. Ha hibaüzenet jelenik meg, hogy a IoT Hub neve nem érhető el, az azt jelenti, hogy valaki más már rendelkezik az adott névvel rendelkező hubhoz. Próbálkozzon új névvel.
+   Ha hibaüzenetet kap, mert az előfizetése már tartalmaz egy ingyenes központot, akkor módosítsa az SKU-t **S1**-re. Ha a hiba, hogy az IoT Hub-név nem érhető el, az azt jelenti, hogy valaki más már van ilyen nevű hub. Adjon meg új nevet.
 
 ## <a name="register-an-iot-edge-device"></a>IoT Edge-eszköz regisztrálása
 
@@ -105,7 +107,7 @@ Mivel IoT Edge-eszközök viselkedése és kezelése eltérően történik, mint
    az iot hub device-identity create --device-id myEdgeDevice --hub-name {hub_name} --edge-enabled
    ```
 
-   Ha hibaüzenetet kap a iothubowner, győződjön meg arról, hogy a Cloud shell az Azure-CLI-IOT-ext bővítmény legújabb verzióját futtatja.
+   Ha hibaüzenetet kap a iothubowner, győződjön meg arról, hogy a Cloud shell az Azure-IOT bővítmény legújabb verzióját futtatja.
 
 2. Kérje le az eszköze kapcsolati sztringjét, amely összeköti a fizikai eszközt az IoT Hubban tárolt identitással.
 
@@ -128,7 +130,7 @@ A telepítési parancsfájl tartalmaz egy Moby nevű tároló motort is, amely a
 
 A futtatókörnyezet telepítése során a rendszer rá fog kérdezni az eszközkapcsolati sztringre. Ez esetben az Azure CLI-ről lekért sztringet használja. Ez a sztring társítja a fizikai eszközt az IoT Edge-eszköz identitásához az Azure-ban.
 
-### <a name="connect-to-your-iot-edge-device"></a>Kapcsolódás a IoT Edge eszközhöz
+### <a name="connect-to-your-iot-edge-device"></a>Csatlakozás az IoT Edge-eszköz
 
 Az ebben a szakaszban foglalt lépések mindegyike a IoT Edge eszközön történik, így most a Távoli asztalról szeretne csatlakozni a virtuális géphez.
 
@@ -233,7 +235,7 @@ A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vscio
 
 Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ellenkező esetben törölheti a létrehozott Azure-erőforrásokat a díjak elkerülése érdekében.
 
-Ha a virtuális gépet és az IoT Hubot egy új erőforráscsoportban hozta létre, törölheti azt a csoportot és az összes társított erőforrást. Ellenőrizze az erőforráscsoport tartalmát, és győződjön meg róla, hogy nem kívánja megőrizni a lépést. Ha nem szeretné törölni a teljes csoportot, az egyes erőforrásokat is törölheti.
+Ha a virtuális gépet és az IoT Hubot egy új erőforráscsoportban hozta létre, törölheti azt a csoportot és az összes társított erőforrást. Ellenőrizze a győződjön meg arról, hogy ott az erőforráscsoportot, amelybe a tartalmát a semmi meg szeretné tartani. A teljes csoport törlése nem szeretné, ha ehelyett törölheti az egyes erőforrásokat.
 
 Távolítsa el az **IoTEdgeResources** csoportot.
 

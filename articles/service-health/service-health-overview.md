@@ -3,12 +3,12 @@ title: Service Health áttekintése | Microsoft Docs
 description: Személyre szabott információk arról, hogy az Azure-alkalmazások milyen hatással vannak a jelenlegi és jövőbeli Azure-szolgáltatásokkal kapcsolatos problémákra és karbantartásra.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: db9d74e2883e755c3e5c3dbbe9d6570f1e78c4a6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a1c6a10ab48125c030c9a35864f829438404ad97
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654018"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898442"
 ---
 # <a name="service-health-overview"></a>Service Health áttekintése
 
@@ -16,11 +16,12 @@ A Service Health testreszabható irányítópultot biztosít, amely nyomon köve
 
 ## <a name="service-health-events"></a>Események Service Health
 
-A Service Health három olyan típusú eseményt követ nyomon, amelyek befolyásolhatják az erőforrásokat:
+A Service Health négy olyan típusú eseményt követ nyomon, amelyek hatással lehetnek az erőforrásokra:
 
 1. **Szolgáltatásokkal kapcsolatos problémák** – az Azure-szolgáltatások által jelenleg érintett problémák. 
 2. **Tervezett karbantartás** – közelgő karbantartás, amely hatással lehet a szolgáltatások rendelkezésre állására a jövőben.  
 3. **Egészségügyi tanácsadók** – a figyelmet igénylő Azure-szolgáltatások változásai. Ilyenek például az Azure-szolgáltatások elavulttá váltása, vagy ha túllépi a használati kvótát.
+4. **Biztonsági tanácsadók (előzetes verzió)** – a biztonsággal kapcsolatos értesítések, amelyek befolyásolhatják az Azure-szolgáltatások rendelkezésre állását.
 
 > [!NOTE]
 > Service Health események megtekintéséhez a felhasználóknak meg kell [adni az olvasó szerepkört az](../role-based-access-control/role-assignments-portal.md) előfizetésben.
@@ -65,6 +66,6 @@ A Service Health integrálható Azure Monitorekkel, hogy e-mailben, szöveges ü
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Riasztások beállítása, hogy értesítést kapjon az állapottal kapcsolatos problémákról. További információ: [ajánlott eljárások Azure Service Health riasztások beállításához](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s). 

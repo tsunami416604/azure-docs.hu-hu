@@ -6,22 +6,22 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85d32e96335a9fffa874f1f370f72883ff420df0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de2b99666dbed4eaec3db3e56800e9a7352e10e7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369864"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898388"
 ---
-# <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Azure Stream Analytics-feladatok tesztelése mintaadatok
+# <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Azure Stream Analytics-feladatok tesztelése a portálon
 
-A Azure Stream Analytics a feladatok elindítása vagy leállítása nélkül is tesztelheti a lekérdezést. A bejövő adatok lekérdezéseit tesztelheti a bemeneti fogadóból, vagy feltöltötte a mintaadatok egy helyi fájlból az Azure Portalon. A lekérdezéseket helyileg is tesztelheti a helyi mintaadatok vagy élő adatok alapján a [Visual Studióban](stream-analytics-live-data-local-testing.md) és a [Visual Studio Code](visual-studio-code-local-run-live-input.md)-ban.
+A Azure Stream Analytics a feladatok elindítása vagy leállítása nélkül is tesztelheti a lekérdezést. A bejövő adatok lekérdezéseit tesztelheti a folyamatos átviteli forrásokból, vagy feltölthet mintaadatok egy helyi fájlból az Azure Portalon. A lekérdezéseket helyileg is tesztelheti a helyi mintaadatok vagy élő adatok alapján a [Visual Studióban](stream-analytics-live-data-local-testing.md) és a [Visual Studio Code](visual-studio-code-local-run-live-input.md)-ban.
 
-## <a name="sample-incoming-data-from-input"></a>Bejövő adatok mintája bemenetből
+## <a name="automatically-sample-incoming-data-from-input"></a>Bejövő adatok automatikus mintavételezése bemenetből
 
-Azure Stream Analytics automatikusan beolvassa az eseményeket a folyamatos átviteli bemenetből. Futtathat lekérdezéseket az alapértelmezett mintán, vagy beállíthatja a minta egy adott időkeretét.
+Azure Stream Analytics automatikusan beolvassa az eseményeket a folyamatos átviteli bemenetekről. Futtathat lekérdezéseket az alapértelmezett mintán, vagy beállíthatja a minta egy adott időkeretét.
 
 1. Jelentkezzen be az Azure portálra.
 
@@ -73,7 +73,7 @@ Az élő adatok helyett helyi fájlokból származó mintaadatok használatával
 
 1. Jelentkezzen be az Azure portálra.
    
-2. Keresse meg a meglévő Stream Analytics feladatot, és válassza ki.
+2. Keresse meg a meglévő Stream Analytics-feladatot, és válassza ki azt.
 
 3. A Stream Analytics-feladatok lap **feladatok topológiájának** fejlécében válassza a **lekérdezés** lehetőséget a lekérdezés-szerkesztő ablak megnyitásához.
 
@@ -97,7 +97,8 @@ Az élő adatok helyett helyi fájlokból származó mintaadatok használatával
 
 10. A böngészőben megjelenített eredmények ellenőrzése után **elindíthatja** a feladatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
+* [IoT-megoldás létrehozása stream Analytics használatával](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics): ez az oktatóanyag bemutatja, hogyan hozhat létre egy teljes körű megoldást egy olyan adatgenerátorral, amely egy autópályadíj-kezelőn keresztül szimulálja a forgalmat.
 
 * [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 

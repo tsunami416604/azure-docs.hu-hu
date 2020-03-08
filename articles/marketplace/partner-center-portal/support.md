@@ -1,19 +1,19 @@
 ---
 title: Támogatás kérése a kereskedelmi piactér portálhoz a partner Centerben
 description: Ismerje meg a partner Center támogatási lehetőségeit, beleértve a támogatási kérések beszerzését.
-author: ChJenk
+author: qianw211
 manager: evansma
 ms.author: jamwall
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.openlocfilehash: 53d6b5b43a028d552c95c58aebf7268353621759
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/07/2020
+ms.openlocfilehash: 032d4793576e2fb9b8de9e36666548e5bffb9460
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827885"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898259"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>A kereskedelmi piactér program támogatása a partner Centerben
 
@@ -29,66 +29,54 @@ A Microsoft számos termék és szolgáltatás támogatását biztosítja. A meg
 
 1. A lap jobb oldalán található felső menüben válassza a **támogatás** ikont. 
  
-   ![Támogatás ikon](./media/commercial-marketplace-support.png)
-
-1. A **Súgó és támogatás** panel az oldal jobb oldaláról fog megjelenni. A partner Centerben minden olyan program legördülő lista jelenik meg, amelyhez a fiók regisztrálva van. Válassza a **kereskedelmi piactér** legördülő menüt. 
+1. A **Súgó és támogatás** panel az oldal jobb oldaláról fog megjelenni. 
  
    ![Támogatás legördülő menü](./media/commercial-marketplace-support-pane.png)
+
+    Vagy nyissa meg a **Kezdőlap** ablaktáblát, és kattintson a **Súgó és támogatás**elemre.
+
+   ![Súgó és támogatás a kezdőlapon](./media/homepage-help-support.png)
 
 1. Válassza ki a **[dokumentációt](../index.md)** a kérdésekre és erőforrásokra vonatkozó átfogó válaszok áttekintéséhez. 
 
 1. Válassza ki a **[Piactéri partnerek közösségi fórumát](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** , hogy válaszoljon a kérdéseire más Microsoft-közzétevők ismeretének kihasználásával. 
 
-1. Válassza a **[további Súgó](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)** lehetőséget egy **új támogatási kérelem** jegyének megnyitásához. 
+1. Válassza a **[további Súgó](https://aka.ms/marketplacepublishersupport)** lehetőséget egy **új támogatási kérelem** jegyének megnyitásához.  
 
 ## <a name="how-to-open-a-support-ticket"></a>Támogatási jegy megnyitása
 
-Ha **további segítségre** van szüksége a partner Center kereskedelmi piactér támogatás menüjében, akkor a Microsoft ügyfélszolgálata for Business (vállalati portál) oldalára irányítjuk. Több legördülő menü jelenik meg. Az első néhány legördülő menüt automatikusan kitölti a rendszer. A piactér támogatásához azonosítsa a termékcsaládot **felhő-és online szolgáltatásként**, a termékként a **piactér-közzétevőként**, valamint a termék verziószámát **piactér-közzétételként**. Ezeket az előre megadott legördülő menüket ne módosítsa. 
+Most már készen áll egy támogatási jegy megnyitására a **Súgó és támogatás** képernyőjén.
 
-- **Válasszon ki egy kategóriát, amely a legjobban leírja a problémát**: válassza ki azt a kategóriát, amely a legjobban megfelel a kérdésének vagy problémájának. Egy kategória kiválasztásakor egy további legördülő menü jelenik meg, amely arra kéri, hogy válassza ki a problémát legjobban leíró problémát.
+![Súgó és támogatás](./media/help-and-support.png)
 
-- **Válasszon olyan problémát, amely a legjobban leírja a**problémát: válassza ki a problémát a felsorolt lehetőségek közül, amelyek a legjobban illeszkednek a problémához. A problémától függően egy új szakasz jelenhet meg, amely a problémával kapcsolatos hivatkozásokat tartalmaz. A **következő** gomb megnyomása előtt tekintse át ezeket a hivatkozásokat, és ellenőrizze, hogy megtörtént-e a kérdés vagy probléma megoldása.
+>[!Note]
+>Ha bejelentkezett a partner Centerben, a támogatással jobb élményt kaphat.
 
-A Next ( **tovább** ) gomb kiválasztásával a rendszer átirányítja a **probléma részletei** lapra. 
+**1. lehetőség:** Adja meg a kulcsszavakat, például: piactér, Azure-alkalmazás, SaaS-ajánlat, Fiókkezelés, vezető felügyelet, üzembe helyezési probléma, fizetés stb.
 
-#### <a name="tell-us-more-about-your-issue"></a>További információk a hibával kapcsolatban
+**2. lehetőség:** Témakörök tallózása – > **Kategória** kiválasztása = kereskedelmi piactér – > Válassza ki a megfelelő **témakört** , majd **altémakört**.
 
-A **probléma részletei** részben magyarázza el, hogy mire van szüksége segítségre.
+Ha megtalálta a kívánt témakört, válassza a **megoldások áttekintése**elemet.
 
-- Válassza ki az országot.
-- Válassza ki azt a nyelvet, amelyben támogatást szeretne kapni.
-- Adja meg a probléma címét (3 – 200 karakter).  
-- Adja meg a probléma rövid leírását (max. 2000 karakter).
-- Kattintson a **Tovább** gombra.
+![További lépések](./media/next-step.png)
 
-#### <a name="select-a-support-plan"></a>Támogatási csomag kiválasztása
+A következő lehetőségek lesznek elérhetők:
 
-A **támogatási csomag** szakaszban nem szükséges információ. Kattintson a **Tovább** gombra. 
+* Egy másik témakör kiválasztásához válasszon egy másik témakör-hivatkozást a **kiválasztott probléma**területen.
+* Tekintse át a probléma leírását, ha van ilyen.  Ez az **ajánlott lépések**felett látható szöveg.
+* Tekintse át az **ajánlott lépéseket**, ha vannak ilyenek.
+* Tekintse át az **ajánlott dokumentumokat**, ha vannak ilyenek.
 
-#### <a name="select-the-severity-of-your-issue"></a>A probléma súlyosságának kiválasztása
+![Ajánlott megoldások](./media/recommended-solutions.png)
 
-A **Súlyosság** szakaszban nem szükséges információ. Kattintson a **Tovább** gombra. 
+Ha nem találja a választ a **javasolt megoldásokban**, kattintson a **probléma részleteinek megadása**lehetőségre.  Töltse ki az űrlapot és az összes kötelező mezőt a megoldási folyamat felgyorsításához.  Ezután kattintson a **Submit (Küldés**) gombra.
 
-#### <a name="who-should-we-contact"></a>Kapcsolatfelvétel
-
-A **kapcsolattartási adatok** szakaszban győződjön meg arról, hogy az elsődleges partner neve, telefonszáma és e-mail-címe helyes. 
-- Frissítse ezt az információt, ha bármilyen helytelen
-- Ha kívánja, további névjegyeket is hozzáadhat a vállalattól ehhez a támogatási kéréshez.
-- Kattintson a **Tovább** gombra.
-
-#### <a name="review-and-submit-your-support-request"></a>Támogatási kérelem áttekintése és elküldése
-
-Tekintse át a támogatási kérelem információit a **felülvizsgálati** szakaszban. 
-- Ha minden adat helyes, válassza a **Küldés**lehetőséget. 
-- Ha bármilyen információt frissíteni kell, kattintson a **módosítás** gombra a frissítéshez szükséges szakasz mellett.
+>[!Note]
+>Ha még nem jelentkezett be a partner Centerben, és a témakör hitelesítésre szorul, a folytatáshoz a rendszer kérni fogja a bejelentkezést.  Nyilvános témakörök esetén nincs szükség hitelesítésre.
 
 ## <a name="track-your-existing-support-requests"></a>Meglévő támogatási kérelmek nyomon követése 
 
-A támogatási kérelem nyomon követéséhez látogasson el a [kereskedelmi piactér támogatási oldalára](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). 
-
-A felső kék menüsoron, a vállalati támogatás lehetőség mellett válassza a **támogatási kérések** hivatkozást. 
-
-Tekintse át az összes nyitott és zárt támogatási kérelmet a **Microsoft Professional support** szakaszban. 
+A nyitott és lezárt jegyek áttekintéséhez nyissa meg a **kereskedelmi piactér** elemet a bal oldali navigációs sávon, majd válassza a **támogatás**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

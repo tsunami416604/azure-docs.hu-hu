@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 46be210ead3816356b63293b910e1c0e7ffc087b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9f4831fd60038a2265990c0774106a5ea2f98a5a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200095"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672078"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
 
@@ -134,8 +134,8 @@ A szolgáltatás által definiált változók értékének beszerzésével a Bat
 | $SucceededTasks |A sikeresen befejeződött feladatok száma. |
 | $FailedTasks |A sikertelen feladatok száma. |
 | $CurrentDedicatedNodes |A dedikált számítási csomópontok aktuális száma. |
-| $CurrentLowPriorityNodes |Az alacsony prioritású számítási csomópontok aktuális száma, beleértve az előre kiszolgálása kimarad összes csomópontot. |
-| $PreemptedNodeCount | A készletben lévő, előre kiszolgálása kimarad állapotú csomópontok száma. |
+| $CurrentLowPriorityNodes |Az alacsony prioritású számítási csomópontok aktuális száma, beleértve a előzik összes csomópontját. |
+| $PreemptedNodeCount | A készletben lévő azon csomópontok száma, amelyek előzik állapotban vannak. |
 
 > [!TIP]
 > Az előző táblázatban szereplő írásvédett, szolgáltatás által definiált változók olyan *objektumok* , amelyek különböző módszereket biztosítanak az egyes adatbázisokhoz kapcsolódó adateléréshez. További információ: [Mintaadatok beszerzése](#getsampledata) a cikk későbbi részében.
@@ -736,7 +736,7 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [Azure batch számítási erőforrások használatának maximalizálása egyidejű csomópont-feladatokkal](batch-parallel-node-tasks.md) : részletes információ arról, hogy miként hajtható végre egyszerre több feladat a készlet számítási csomópontjain. Az automatikus skálázás mellett ez a funkció bizonyos munkaterhelések esetében csökkentheti a feladatok időtartamát, így pénzt takaríthat meg.
 * Egy másik hatékonysági emlékeztető esetén győződjön meg arról, hogy a Batch-alkalmazás a legoptimálisabb módon kérdezi le a Batch szolgáltatást. Lásd: [a Azure batch szolgáltatás hatékony lekérdezése](batch-efficient-list-queries.md) , amelyből megtudhatja, hogy miként lehet korlátozni a drótot keresztező adatok mennyiségét, ha egy akár több ezer számítási csomópont vagy feladat állapotát kérdezi le.

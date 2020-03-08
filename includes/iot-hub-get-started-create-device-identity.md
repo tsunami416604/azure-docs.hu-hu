@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 1e919f22d5dd7975f055f262ec9ba69230aebd17
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 68260bf8aafbbe5afd46ec7dfb763eb88ee2123e
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780848"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892954"
 ---
 Ebben a szakaszban az Azure CLI használatával hozza létre az eszköz identitását ehhez a cikkhez. Az eszközazonosítókban különbözőnek számítanak a kis- és nagybetűk.
 
@@ -22,10 +22,10 @@ Ebben a szakaszban az Azure CLI használatával hozza létre az eszköz identit�
 1. Azure Cloud Shell futtassa a következő parancsot az Azure CLI-hez készült Microsoft Azure IoT-bővítmény telepítéséhez:
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
+    az extension add --name azure-iot
     ```
 
-2. Hozzon létre egy új eszköz `myDeviceId` identitását, és kérje le az eszköz-kapcsolatok karakterláncát a következő parancsokkal:
+2. Hozzon létre egy `myDeviceId` nevű új eszközt, majd az alábbi parancsokkal olvassa be az eszközhöz tartozó kapcsolatok karakterláncát:
 
     ```azurecli-interactive
     az iot hub device-identity create --device-id myDeviceId --hub-name {Your IoT Hub name}

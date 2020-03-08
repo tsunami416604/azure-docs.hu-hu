@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a3ad81091fa93993f71c6d65175e50f6ee216757
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: fd74b3fad7f0b26eff2fdedddae171a1b7297dcd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073472"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898903"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Rövid útmutató: Windows rendszerű virtuális gép létrehozása az Azure CLI segítségével
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/bash](https://shell.azure.com/bash) cím megnyitásával. Válassza a **Másolás** lehetőséget a kód blokkok másolásához, illessze be a Cloud Shellba, majd nyomja le az **ENTER** billentyűt a futtatásához.
+A Cloud Shell megnyitásához csak kattintson a kódblokk jobb felső sarkában található **Kipróbálás** elemre. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/bash](https://shell.azure.com/bash) cím megnyitásával. Válassza a **Másolás** lehetőséget a kód blokkok másolásához, illessze be a Cloud Shellba, majd nyomja le az **ENTER** billentyűt a futtatásához.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -46,16 +46,15 @@ az group create --name myResourceGroup --location eastus
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Az alábbi példában egy *myVM* nevű virtuális gépet hoz létre. Ez a példa egy rendszergazdai felhasználónévhez tartozó *azureuser* -t használ. 
 
-Meg kell változtatnia `--admin-password` értékét, vagy sikertelen lesz. Módosítsa olyan jelszóra, amely megfelel az [Azure-beli virtuális gépek jelszavára vonatkozó követelményeknek](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
-). A felhasználónevet és a jelszót később fogja használni a rendszer a virtuális géphez való csatlakozáskor.
+Meg kell adnia egy jelszót, amely megfelel az Azure-beli [virtuális gépek jelszavára vonatkozó követelményeknek](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+). Az alábbi példa használatával a rendszer felszólítja, hogy adjon meg egy jelszót a parancssorban. A jelszóhoz hozzáadott értéket is hozzáadhat a `--admin-password` paraméterhez. A felhasználónevet és a jelszót később fogja használni a rendszer a virtuális géphez való csatlakozáskor.
 
 ```azurecli-interactive
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
     --image win2016datacenter \
-    --admin-username azureuser \
-    --admin-password myPassword
+    --admin-username azureuser 
 ```
 
 A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány percet vesz igénybe. A következő kimeneti példa azt mutatja be, hogy a virtuális gép létrehozási művelete sikeres volt.
@@ -101,9 +100,9 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 Ha elkészült, zárja be a virtuális géphez nyitott RDP-kapcsolatot.
 
-## <a name="view-the-web-server-in-action"></a>A webkiszolgáló működésének ellenőrzése
+## <a name="view-the-web-server-in-action"></a>A webkiszolgáló megtekintése működés közben
 
-Miután az IIS telepítve lett, és a 80-as port meg van nyitva a virtuális gépen az internet irányából, egy tetszőleges böngésző használatával megtekintheti az alapértelmezett IIS-kezdőlapot. Használja a virtuális gép az egyik előző lépésben megkapott nyilvános IP-címét. Az alábbi példa az alapértelmezett IIS-webhelyet mutatja:
+Miután az IIS telepítve lett, és a 80-as port meg van nyitva a virtuális gépen az internet irányából, egy tetszőleges böngésző használatával megtekintheti az alapértelmezett IIS-kezdőlapot. Használja a virtuális gép korábbi lépésben beszerzett nyilvános IP-címét. A következő példában az alapértelmezett IIS-webhely látható:
 
 ![Alapértelmezett IIS-webhely](./media/quick-create-powershell/default-iis-website.png)
 

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan kezelheti és figyelheti Microsoft Azure Recove
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 26ed6fefdf95281429a8c91057195785db4f5589
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c11d73edd32c197aac2cec58eeb1cc20e5c6a339
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617606"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673251"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Microsoft Azure Recovery Services-(MARS-) ügynök biztonsági másolatainak kezelése a Azure Backup szolgáltatás használatával
 
@@ -169,7 +169,7 @@ A hitelesítő adatok titkosítására és visszafejtésére szolgálnak a helys
 - Győződjön meg arról, hogy a jelszó biztonságos módon mentve van egy másik helyen (a forrásoldali gépen kívül), lehetőleg a Azure Key Vault. Tartsa nyomon az összes hozzáférési kódot, ha több géppel is rendelkezik a MARS-ügynökökkel való biztonsági mentéssel.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A támogatott forgatókönyvekkel és korlátozásokkal kapcsolatos információkért tekintse meg a [Mars-ügynök támogatási mátrixát](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
-- További információ az [igény szerinti biztonsági mentési szabályzat megőrzési viselkedéséről](backup-configure-vault.md#set-up-on-demand-backup-policy-retention-behavior).
+- További információ az [igény szerinti biztonsági mentési szabályzat megőrzési viselkedéséről](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior).

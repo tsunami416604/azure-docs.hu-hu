@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.openlocfilehash: d16954760d1f2bf11ec5575f912ee32810696590
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: c812e00699cd8f8cfbaf32feea1b43866ffb0990
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108220"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674358"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Oktatóanyag: az Azure IoT Hub üzenet-gazdagítás használata
 
@@ -76,9 +76,9 @@ Ha még nem tette meg, nyisson meg egy Azure [Cloud Shell ablakot](https://shell
 
 Itt láthatók a szkript által létrehozott erőforrások. A *dúsított* érték azt jelenti, hogy az erőforrás a dúsítással rendelkező üzenetekhez használható. Az *eredeti* érték azt jelenti, hogy az erőforrás a nem dúsított üzenetekhez használható.
 
-| Name (Név) | Érték |
+| Név | Érték |
 |-----|-----|
-| resourceGroup | ContosoResourcesMsgEn |
+| Erőforráscsoport | ContosoResourcesMsgEn |
 | tároló neve | eredeti  |
 | tároló neve | sokoldalú és  |
 | IoT-eszköz neve | Contoso-test-Device |
@@ -102,7 +102,7 @@ randomValue=$RANDOM
 # This command installs the IOT Extension for Azure CLI.
 # You only need to install this the first time.
 # You need it to create the device identity.
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Set the values for the resource names that
 #   don't have to be globally unique.
@@ -296,9 +296,9 @@ A Resource Manager-sablonok segítségével létrehozhatja és konfigurálhatja 
 
    Itt láthatók a sablon betöltésével létrehozott erőforrások. A **dúsított** érték azt jelenti, hogy az erőforrás a dúsítással rendelkező üzenetekhez használható. Az **eredeti** érték azt jelenti, hogy az erőforrás a nem dúsított üzenetekhez használható. Ezek az Azure CLI-szkriptben használt értékek.
 
-   | Name (Név) | Érték |
+   | Név | Érték |
    |-----|-----|
-   | resourceGroup | ContosoResourcesMsgEn |
+   | Erőforráscsoport | ContosoResourcesMsgEn |
    | tároló neve | eredeti  |
    | tároló neve | sokoldalú és  |
    | IoT-eszköz neve | Contoso-test-Device |
@@ -391,7 +391,7 @@ Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/
 az group delete --name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következő lépések végrehajtásával konfigurálta és tesztelte az üzenet-gazdagítás hozzáadását IoT Hub üzenetekhez:
 

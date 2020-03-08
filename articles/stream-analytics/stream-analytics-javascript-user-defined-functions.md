@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: f82add78eef418e3644a5961d984708d3721a8dd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: feb0361b460f5b18b5a8aaa585332e2179023458
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426061"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851163"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Oktatóanyag: Az Azure Stream Analytics felhasználói JavaScript-függvényei
  
 Az Azure Stream Analytics támogatja a JavaScript nyelven írt felhasználói függvényeket. A JavaScript által biztosított **String**, **RegExp**, **Math**, **Array** és **Date** metódusok széles választékának köszönhetően könnyebben hozhatók létre összetett adatátalakítások Stream Analytics-feladatokkal.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Felhasználói JavaScript-függvények definiálása
@@ -102,7 +102,7 @@ A Stream Analytics lekérdezési nyelv és a JavaScript által támogatott típu
 Stream Analytics | JavaScript
 --- | ---
 bigint | Szám (a JavaScript legfeljebb pontosan a 2^53-ig tudja a számokat kezelni)
-Dátum és idő | Dátum (a JavaScript csak az ezredmásodperceket támogatja)
+DateTime | Dátum (a JavaScript csak az ezredmásodperceket támogatja)
 double | Szám
 nvarchar(MAX) | Sztring
 Record | Objektum
@@ -116,7 +116,7 @@ A JavaScriptről a Stream Analyticsre történő átalakítások:
 JavaScript | Stream Analytics
 --- | ---
 Szám | Bigint (ha a szám kerek és a long.MinValue és a long.MaxValue közé esik, máskülönben double)
-Dátum | Dátum és idő
+Dátum | DateTime
 Sztring | nvarchar(MAX)
 Objektum | Record
 Tömb | Tömb
@@ -125,7 +125,7 @@ Bármely más típus (például függvény vagy hiba) | Nem támogatott (futási
 
 A JavaScript-nyelv megkülönbözteti a kis-és nagybetűket, és a JavaScript-kódban lévő Object mezőinek meg kell egyeznie a beérkező adatok mezőinek a házával. Vegye figyelembe, hogy a 1,0 kompatibilitási szintű feladatok esetében az SQL SELECT utasítás mezőinek kisbetűsnek kell lennie. A 1,1-es és magasabb kompatibilitási szint alatt a SELECT utasítás mezőinek az SQL-lekérdezésben megadottal azonos burkolattal kell rendelkezniük.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 A JavaScript futásidejű hibái végzetesnek minősülnek, és a tevékenységnaplóban tekinthetők meg. A napló lekéréséhez lépjen a feladatra az Azure Portalon, és válassza a **Tevékenységnapló** elemet.
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>Egyéb felhasználói JavaScript-függvényminták
@@ -147,7 +147,7 @@ SELECT
     DataString,
     DataValue,
     HexValue,
-    UDF.json_stringify(input) As InputEvent
+    UDF.jsonstringify(input) As InputEvent
 INTO
     output
 FROM
@@ -156,15 +156,15 @@ FROM
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha a feladatot a jövőben is szeretné használni, leállíthatja, és később újraindíthatja amikor ismét szükség van rá. Ha már nem használja a feladatot, akkor a következő lépésekkel az útmutatóban létrehozott összes erőforrást törölheti:
+Ha már nincs rá szükség, törölje az erőforráscsoportot, a streamelési feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megelőzheti a feladat által használt streamelési egységek kiszámlázását. Ha a feladatot a jövőben is szeretné használni, leállíthatja, és később újraindíthatja amikor ismét szükség van rá. Ha többé már nem kívánja használni ezt a feladatot, az alábbi lépéseket követve törölheti a gyors útmutató által létrehozott összes erőforrást:
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére.  
 2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="get-help"></a>Segítség
+## <a name="get-help"></a>Segítségkérés
 További segítségért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy egyszerű felhasználói JavaScript-függvényt futtató Stream Analytics-feladatot. A Stream Analytics szolgáltatással kapcsolatos további információkért folytassa a valós idejű forgatókönyveket ismertető cikkekkel:
 

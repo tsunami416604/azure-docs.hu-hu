@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab378fe1e06de49df0fe6481a1aa475d426648dc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377737"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668855"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásokba az alkalmazásproxy használatával
 
@@ -66,17 +66,27 @@ Az Active Directory konfigurálása az Application Proxy connector és az alkalm
 
 #### <a name="connector-and-application-server-in-different-domains"></a>Összekötő és az alkalmazáskiszolgáló eltérő tartományokban
 1. A tartományok közötti KCD-használat előfeltételeinek listáját a [Kerberos által korlátozott delegálás tartományok között](https://technet.microsoft.com/library/hh831477.aspx)című témakörben tekintheti meg.
-2. Az összekötő-kiszolgáló `principalsallowedtodelegateto` tulajdonságával engedélyezheti az alkalmazásproxy számára az összekötő-kiszolgáló delegálását. Az alkalmazáskiszolgáló `sharepointserviceaccount`, és a delegált kiszolgáló `connectormachineaccount`. Windows 2012 R2 használata esetén ezt a kódot használja példaként:
+2. A webalkalmazáshoz tartozó szolgáltatásfiók (számítógép vagy dedikált tartományi felhasználói fiók) `principalsallowedtodelegateto` tulajdonságával engedélyezze a Kerberos-hitelesítés delegálását az alkalmazásproxy (összekötő) használatával. Az alkalmazáskiszolgáló a `webserviceaccount` kontextusában fut, és a delegált kiszolgáló `connectorcomputeraccount`. Futtassa az alábbi parancsokat egy tartományvezérlőn (Windows Server 2012 R2 vagy újabb rendszert futtatva) `webserviceaccount`tartományában. Mindkét fiókhoz használjon egyszerű neveket (nem UPN).
 
-```powershell
-$connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
+   Ha a `webserviceaccount` egy számítógépfiók, használja a következő parancsokat:
 
-Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+   ```powershell
+   $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
 
-Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
-```
+   Set-ADComputer -Identity webserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
 
-`sharepointserviceaccount` lehet az SPS-számítógépfiók vagy egy olyan szolgáltatásfiók, amely alatt az SPS-alkalmazáskészlet fut.
+   Get-ADComputer webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+   ```
+
+   Ha a `webserviceaccount` felhasználói fiók, használja a következő parancsokat:
+
+   ```powershell
+   $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
+
+   Set-ADUser -Identity webserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+
+   Get-ADUser webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+   ```
 
 ## <a name="configure-single-sign-on"></a>Egyszeri bejelentkezés konfigurálása 
 1. Tegye közzé az alkalmazást az Application [proxyval történő alkalmazások közzététele](application-proxy-add-on-premises-application.md)című részben leírt utasítások szerint. Győződjön meg arról, hogy a **Azure Active Directory** az **előhitelesítési módszerként**van kiválasztva.
@@ -142,11 +152,10 @@ Delegált bejelentkezési azonosító használata esetén az érték nem egyedi 
 Ha az egyszeri bejelentkezés folyamata során hiba lép fel, az az összekötő számítógép eseménynaplójában jelenik meg, a [Hibaelhárítás](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)során.
 De egyes esetekben a sikeresen irányuló kérést küld a háttéralkalmazás az alkalmazás válaszol a különböző HTTP-válaszok során. Ezekben az esetekben hibaelhárítási el kell indítaniuk az alkalmazásproxy-munkamenet eseménynaplóban összekötő gépen 24029 eseményazonosítóval megvizsgálásával. A felhasználói identitás delegálásához használt belül az esemény részleteinek a "user" mezőjében jelenik meg. A munkamenet-napló bekapcsolásához válassza az **elemzési és hibakeresési naplók megjelenítése** lehetőséget az Eseménynapló Nézet menüjében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Alkalmazásproxy-alkalmazás konfigurálása a Kerberos által korlátozott delegálás használatára](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Az Application proxyval kapcsolatos problémák elhárítása](application-proxy-troubleshoot.md)
 
 
 A legújabb híreket és frissítéseket itt találja: [Alkalmazásproxy blog](https://blogs.technet.com/b/applicationproxyblog/).
-

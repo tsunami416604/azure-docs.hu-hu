@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2c1a088e4c200dcc4a2ff35db942e3eb8480674
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c6bb57a60b2ed3b39bf83154d3afea88071efbac
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512091"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672426"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás szabályozott ellenőrzése
 
@@ -82,13 +82,13 @@ A következő példa segítségével hozzon létre egy Csoportházirend objektum
 Ha AD FS használ, először konfigurálnia kell az ügyféloldali SCP-t a fent említett utasítások alapján a csoportházirend-objektumnak a AD FS-kiszolgálókhoz való összekapcsolásával. Az SCP objektum határozza meg az eszköz-objektumok szolgáltatójának forrását. Helyszíni vagy Azure AD-t is használhat. Ha az ügyféloldali SZOLGÁLTATÁSKAPCSOLÓDÁSI pont AD FS van konfigurálva, az eszköz objektumainak forrása Azure AD-ként van kialakítva.
 
 > [!NOTE]
-> Ha nem tudta konfigurálni az ügyféloldali szolgáltatáskapcsolódási pontot a AD FS-kiszolgálókon, az eszköz identitásának forrása a helyszínen tekinthető. Az ADFS ezután megkezdi az eszközbeállítások törlését a helyszíni címtárból az ADFS-eszköz regisztrációjának "MaximumInactiveDays" attribútumában meghatározott meghatározott időtartam után. Az ADFS-eszköz regisztrációs objektumai a [Get-AdfsDeviceRegistration parancsmag](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)használatával találhatók meg.
+> Ha nem tudta konfigurálni az ügyféloldali szolgáltatáskapcsolódási pontot a AD FS-kiszolgálókon, az eszköz identitásának forrása a helyszínen tekinthető. Az ADFS ezután megkezdi az eszközbeállítások törlését a helyszíni címtárból az ADFS-eszköz regisztrációjának "MaximumInactiveDays" attribútumában meghatározott meghatározott időtartam után. Az ADFS-eszköz regisztrációs objektumai a [Get-AdfsDeviceRegistration parancsmag](/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)használatával találhatók meg.
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Hibrid Azure AD-csatlakozás ellenőrzött ellenőrzése Windows rendszerű eszközökön
 
 A Windows Down szintű eszközök regisztrálásához a szervezeteknek telepíteniük kell a Microsoft Workplace Joint a Microsoft letöltőközpontból elérhető, [nem Windows 10 rendszerű számítógépekre](https://www.microsoft.com/download/details.aspx?id=53554) .
 
-A csomagot központilag telepítheti egy szoftverterjesztési rendszer, például a [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/configmgr/)használatával. A csomag a csendes paraméterrel támogatja a normál csendes telepítési beállításokat. A Configuration Manager aktuális ága a korábbi verziók előnyeit kínálja, mint például a befejezett regisztrációk nyomon követésének lehetősége.
+A csomagot központilag telepítheti egy szoftverterjesztési rendszer, például a [Microsoft Endpoint Configuration Manager](/configmgr/)használatával. A csomag a csendes paraméterrel támogatja a normál csendes telepítési beállításokat. A Configuration Manager aktuális ága a korábbi verziók előnyeit kínálja, mint például a befejezett regisztrációk nyomon követésének lehetősége.
 
 A telepítő létrehoz egy ütemezett feladatot a felhasználói környezetben futó rendszeren. A feladat akkor aktiválódik, amikor a felhasználó bejelentkezik a Windowsba. A feladat csendesen csatlakoztatja az eszközt az Azure AD-vel a felhasználói hitelesítő adatokkal az Azure AD-vel való hitelesítés után.
 
@@ -100,6 +100,6 @@ Az eszköz regisztrációjának szabályozásához a Windows Installer csomagot 
 
 Miután meggyőződött róla, hogy minden a várt módon működik-e, automatikusan regisztrálhatja a Windows jelenlegi és régebbi verziójú eszközeit az Azure AD-vel az [SCP konfigurálásával Azure ad Connect használatával](hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A hibrid Azure Active Directory-csatlakozás megvalósításának megtervezése](hybrid-azuread-join-plan.md)

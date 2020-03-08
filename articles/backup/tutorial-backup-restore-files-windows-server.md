@@ -4,16 +4,16 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Micr
 ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
-ms.openlocfilehash: 5958f6574f8c559bae8f500b1cb555e96e007d0e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171820"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672945"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Azure-beli fájlok helyreállítása Windows Serverre
 
-Az Azure Backup lehetővé teszi kiválasztott elemek helyreállítását a Windows Server biztonsági másolataiból. Az egyes fájlok visszaállítása akkor hasznos megoldás, ha gyorsan szeretné visszaállítani a véletlenül törölt fájlokat. Ez az oktatóanyag bemutatja, hogyan használhatja a Microsoft Azure Recovery Services- (MARS-) ügynököt egyes elemek helyreállítására az Azure-ban készített biztonsági másolatokból. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Az Azure Backup lehetővé teszi kiválasztott elemek helyreállítását a Windows Server biztonsági másolataiból. Az egyes fájlok visszaállítása akkor hasznos megoldás, ha gyorsan szeretné visszaállítani a véletlenül törölt fájlokat. Ez az oktatóanyag bemutatja, hogyan használhatja a Microsoft Azure Recovery Services- (MARS-) ügynököt egyes elemek helyreállítására az Azure-ban készített biztonsági másolatokból. Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 >
@@ -21,7 +21,7 @@ Az Azure Backup lehetővé teszi kiválasztott elemek helyreállítását a Wind
 > * Helyreállítási pont kiválasztása
 > * Elemek visszaállítása a helyreállítási pontból
 
-Ez az oktatóanyag azt feltételezi, hogy már elvégezte a [Windows Serverről az Azure-ba történő biztonsági mentés](backup-configure-vault.md) lépéseit, és van legalább egy biztonsági másolata a Windows Server-fájlokról az Azure-ban.
+Ez az oktatóanyag azt feltételezi, hogy már elvégezte a [Windows Serverről az Azure-ba történő biztonsági mentés](backup-windows-with-mars-agent.md) lépéseit, és van legalább egy biztonsági másolata a Windows Server-fájlokról az Azure-ban.
 
 ## <a name="initiate-recovery-of-individual-items"></a>Csak egyes elemek helyreállításának indítása
 
@@ -65,7 +65,7 @@ A Microsoft Azure Recovery Services- (MARS-) ügynökkel együtt egy Microsoft A
 
     A pillanatkép leválasztása után az ügynökkonzol **Feladatok** ablaktábláján a **Feladat befejezve** üzenet jelenik meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezzel befejeződik az oktatóanyag-sorozat, amely a Windows Server adatainak az Azure-ba történő biztonsági mentését és visszaállítását ismerteti. Az Azure Backuppal kapcsolatos további információért tekintse meg a titkosított virtuális gépek biztonsági mentéséhez készült PowerShell-mintát.
 

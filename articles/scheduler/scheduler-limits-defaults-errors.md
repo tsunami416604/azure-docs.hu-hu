@@ -5,21 +5,22 @@ services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 88f4a3e9-6dbd-4943-8543-f0649d423061
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 293cd956f8270a4863fcc657f58c970096cec1e3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 610232dab776648bb3dcc7c301ec292e9acad9fc
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300925"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898527"
 ---
 # <a name="limits-quotas-and-throttle-thresholds-in-azure-scheduler"></a>Korlátok, kvóták és szabályozási küszöbértékek az Azure Schedulerben
 
 > [!IMPORTANT]
-> [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a lehető leghamarabb [telepítse át Azure Logic apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a lehető leghamarabb [telepítse át Azure Logic apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
+>
+> Az ütemező már nem érhető el a Azure Portalban, de a [REST API](/rest/api/scheduler) és az [Azure Scheduler PowerShell-parancsmagjai](scheduler-powershell-reference.md) jelenleg is elérhetők maradnak, így a feladatok és a feladatok gyűjteményei kezelhetők.
 
 ## <a name="limits-quotas-and-thresholds"></a>Korlátok, kvóták és küszöbértékek
 
@@ -34,7 +35,9 @@ Minden, az ütemező szolgáltatással kapcsolatban benyújtott kérelem egy **x
 * Az Azure-előfizetéshez, a feladathoz és a feladathoz tartozó azonosítók 
 * A kérelem által megkísérelt művelet típusa
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>További lépések
 
-* [Mi az Azure Scheduler?](scheduler-intro.md)
 * [Az Azure Scheduler alapfogalmai, terminológiája és entitáshierarchiája](scheduler-concepts-terms.md)
+* [Csomagok és számlázás az Azure Schedulerben](scheduler-plans-billing.md)
+* [Az Azure Scheduler REST API-jának leírása](/rest/api/scheduler)
+* [Az Azure Scheduler PowerShell-parancsmagjainak leírása](scheduler-powershell-reference.md)

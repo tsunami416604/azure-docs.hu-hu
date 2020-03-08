@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ab0ed56b953cf2c0d96fd2d91d9a3b09fddace72
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: a5cf3c59c94134e1d0751c1467cd324a95c366eb
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165921"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898819"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Oktatóanyag: Windows Presentation Framework (WPF) alkalmazás létrehozása egy Rendszerképbeli Arcfelismerés megjelenítéséhez
 
@@ -49,7 +49,7 @@ Az alábbi lépéseket követve hozzon létre egy új WPF-alkalmazás projektjé
 1. A Visual Studióban nyissa meg az új projekt párbeszédpanelt. Bontsa ki a **telepített**, majd a **vizualizáció C#** , majd a **WPF-alkalmazás (.NET-keretrendszer)** elemet.
 1. Adja a **FaceTutorial** nevet az alkalmazásnak, majd kattintson az **OK** gombra.
 1. Szerezze be a szükséges NuGet-csomagokat. Kattintson a jobb gombbal a projektre a Megoldáskezelő, majd válassza a **NuGet-csomagok kezelése**lehetőséget. Ezután keresse meg és telepítse a következő csomagot:
-    - [Microsoft. Azure. CognitiveServices. vízió. Face 2.2.0 – előzetes verzió](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
+    - [Microsoft. Azure. CognitiveServices. vízió. Face 2.5.0 – előzetes verzió. 1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)
 
 ## <a name="add-the-initial-code"></a>Kezdeti kód hozzáadása
 
@@ -124,7 +124,7 @@ Futtassa az alkalmazást, és keressen egy képet, amelyen egy arc látható. V�
 ![Képernyőfelvétel téglalappal bekeretezett arcokról](../Images/getting-started-cs-detected.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta a Face Service .NET SDK használatának alapszintű folyamatát, és létrehozott egy alkalmazást az arcok észleléséhez és a képek keretének megjelenítéséhez. Következő lépésként tekintse meg a Arcfelismerés részletes adatait.
 

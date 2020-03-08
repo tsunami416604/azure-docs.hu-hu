@@ -6,12 +6,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: a2b66cdc7a0704cd3560c0776a0ca5302dc689d2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: eb1bde6bb58e3e5299311636f8222e2fc181ec5d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250754"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673300"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor beállítása a Python-alkalmazáshoz (előzetes verzió)
 
@@ -425,13 +425,14 @@ További információ a lekérdezések és naplók használatáról: [naplók a 
 
 * [OpenCensus Python a GitHubon](https://github.com/census-instrumentation/opencensus-python)
 * [Testreszabási](https://github.com/census-instrumentation/opencensus-python/blob/master/README.rst#customization)
-* [Lombik-integráció](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-flask)
-* [Django-integráció](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-django)
-* [MySQL-integráció](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-mysql)
-* [PostgreSQL](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-postgresql)
+* [Azure Monitor-exportőrök a GitHubon](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
+* [OpenCensus-integrációk](https://github.com/census-instrumentation/opencensus-python#extensions)
+* [Azure Monitor minta alkalmazások](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
+* [Bejövő kérelmek nyomon követése](./../../azure-monitor/app/opencensus-python-dependency.md)
+* [Folyamatban lévő kérelmek nyomon követése](./../../azure-monitor/app/opencensus-python-request.md)
 * [Alkalmazás-hozzárendelés](./../../azure-monitor/app/app-map.md)
 * [Végpontok közötti teljesítmény figyelése](./../../azure-monitor/learn/tutorial-performance.md)
 

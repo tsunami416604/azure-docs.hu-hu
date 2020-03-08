@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: fa1651e88226080cca970cc756f2c0522b39f1be
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: ef46b86186d1f5e26360de891b3a090ab0ece66b
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670627"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894812"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Az ASP.NET Core-webalkalmazás monitorozásának indítása
 
@@ -24,10 +24,10 @@ Ez a rövid útmutató végigvezeti a Application Insights SDK meglévő ASP.NET
 
 A gyorsútmutató elvégzéséhez:
 
-- [Telepítse a Visual Studio 2019](https://www.visualstudio.com/downloads/) -et a következő munkaterhelésekkel:
+- [Telepítse a Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) -et a következő munkaterhelésekkel:
   - ASP.NET és webfejlesztés
   - Azure-fejlesztés
-- [A .NET Core 2.0 SDK telepítése](https://www.microsoft.com/net/core)
+- [A .NET Core 2.0 SDK telepítése](https://dotnet.microsoft.com/download)
 - Szüksége lesz egy Azure-előfizetésre és egy meglévő .NET Core-webalkalmazásra.
 
 Ha nem rendelkezik ASP.NET Core webalkalmazással, a lépésenkénti útmutatót követve [létrehozhat egy ASP.net Core alkalmazást, és hozzáadhatja Application Insights.](../../azure-monitor/app/asp-net-core.md)
@@ -55,7 +55,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
    | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve az alkalmazás-elemzési adatforrások üzemeltetéséhez. Létrehozhat egy új erőforráscsoportot, vagy használhat egy meglévőt is. |
    | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-2. Kattintson a **Létrehozás** gombra.
+2. Kattintson a  **Create** (Létrehozás) gombra.
 
 
 
@@ -114,7 +114,7 @@ Ha végzett a teszteléssel, törölheti az erőforráscsoportot és az összes 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a **myResourceGroup** elemre.
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Futásidejű kivételek észlelése és diagnosztizálása](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-runtime-exceptions)

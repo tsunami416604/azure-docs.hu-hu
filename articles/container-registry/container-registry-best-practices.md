@@ -3,12 +3,12 @@ title: Ajánlott eljárások a beállításjegyzék használatához
 description: Az ajánlott eljárások követésével megismerkedhet az Azure Container Registry leghatékonyabb használatával.
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 7efea468a6c5c042f709d8a5bb493516458ce52b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 233d84b8bfa6f3d8c800e76032ef74a643db11ca
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362354"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668662"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Az Azure Container Registry ajánlott eljárásai
 
@@ -35,12 +35,10 @@ Az adattárnévterek használatával engedélyezheti egyetlen regisztrációs ad
 
 Vegyük példaként a következő tárolórendszerkép-címkéket. A vállalati szintű, például a `aspnetcore`hoz használt rendszerképek a legfelső szintű névtérbe kerülnek, míg a termékek és a marketing csoportok által birtokolt tároló lemezképek saját névtereket használnak.
 
-```
-contoso.azurecr.io/aspnetcore:2.0
-contoso.azurecr.io/products/widget/web:1
-contoso.azurecr.io/products/bettermousetrap/refundapi:12.3
-contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
-```
+- *contoso.azurecr.io/aspnetcore:2.0*
+- *contoso.azurecr.io/products/widget/web:1*
+- *contoso.azurecr.io/products/bettermousetrap/refundapi:12.3*
+- *contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42*
 
 ## <a name="dedicated-resource-group"></a>Dedikált erőforráscsoport
 
@@ -48,7 +46,7 @@ Mivel a tároló-beállításjegyzékek olyan erőforrások, amelyeket több tá
 
 Nyugodtan kísérletezhet speciális gazdagéptípusokkal, például az Azure Container Instances-zel, de utána valószínűleg törölni szeretné majd a tárolópéldányt. Előfordulhat azonban, hogy meg szeretné tartani azokat a rendszerképeket, amelyeket átvitt az Azure Container Registry-be. Azzal, hogy a regisztrációs adatbázis a saját erőforráscsoportjába helyezi, csökkentheti annak esélyét, hogy véletlenül törli a rendszerképeket, amikor törli a tárolópéldány erőforráscsoportját.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Azure tárolóregisztrációs adatbázissal való hitelesítéskor két fő forgatókönyv fordulhat elő: az egyéni hitelesítés és a szolgáltatásos (vagy „távfelügyelt”) hitelesítés. A következő táblázat röviden bemutatja ezeket a forgatókönyveket és a hozzájuk fűződő ajánlott hitelesítési módokat.
 
@@ -65,8 +63,11 @@ Az egyes [tárolók beállításjegyzékbeli SKU][container-registry-skus] táro
 
 Használja az Azure CLI-parancsot az [ACR show-][az-acr-show-usage] use paranccsal a beállításjegyzék aktuális méretének megjelenítéséhez:
 
-```console
-$ az acr show-usage --resource-group myResourceGroup --name myregistry --output table
+```azurecli
+az acr show-usage --resource-group myResourceGroup --name myregistry --output table
+```
+
+```output
 NAME      LIMIT         CURRENT VALUE    UNIT
 --------  ------------  ---------------  ------
 Size      536870912000  185444288        Bytes
@@ -83,7 +84,7 @@ Azure Container Registry számos módszert támogat a képadatoknak a tároló-b
 
 A képadatok beállításjegyzékből való törlésével kapcsolatos részletekért, beleértve a címkézett (más néven "lelógó" vagy "árva") lemezképeket, lásd: [tároló lemezképek törlése Azure Container Registry](container-registry-delete.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Container Registry több szinten, azaz termékváltozatban érhető el, melyek különféle képességeket biztosítanak. Részletek az elérhető termékváltozatokról: [Az Azure Container Registry termékváltozatai](container-registry-skus.md).
 

@@ -3,12 +3,12 @@ title: A Windows Server biztonsági mentése a PowerShell használatával az Azu
 description: Ebből a cikkből megtudhatja, hogyan használható a PowerShell a Azure Backup Windows Serveren vagy Windows-ügyfélen való beállításához, valamint a biztonsági mentés és a helyreállítás kezeléséhez.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 85006a318864aed537b70a97fb38f89746d2878c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: efe0b93fe1e37990422ffbd2256e38c12401dca5
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622808"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673201"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
 
@@ -735,9 +735,9 @@ $Session = New-PSSession -ComputerName REMOTESERVER01
 Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath $D $A -Wait } -ArgumentList $Agent, $Args
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Windows Server/Client Azure Backupról:
 
 * [Az Azure Backup bemutatása](backup-introduction-to-azure-backup.md)
-* [Windows-kiszolgálók biztonsági mentése](backup-configure-vault.md)
+* [Windows-kiszolgálók biztonsági mentése](backup-windows-with-mars-agent.md)

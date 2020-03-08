@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: cf182e55e172b308a288c741640538ab680e1103
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 64af62cb6c2c56ca8c7e67e2f1467d4a7e8335a0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462088"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675521"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Gyors útmutató: IoT Hub- C# adatfolyamon keresztüli kommunikáció egy eszköz alkalmazásával (előzetes verzió)
 
@@ -47,8 +47,10 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 * A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Azure IoT-bővítményt a Cloud Shell-példányához. Az IOT bővítmény hozzáadja az Azure CLI-hez IoT Hub, IoT Edge és IoT eszközök kiépítési szolgáltatásának (DPS) specifikus parancsait.
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
+    az extension add --name azure-iot
     ```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 * [Töltse le az Azure C# IoT-mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) , és CSOMAGOLja ki a zip-archívumot. Szüksége lesz rá az eszköz és a szolgáltatás oldalán is.
 

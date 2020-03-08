@@ -6,12 +6,12 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4da63b7b2a6da4316215b85a09ca7420745251c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646994"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898403"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Az Azure adatelemzési Virtual Machines
 
@@ -26,7 +26,7 @@ Alapértelmezés szerint a projektek az **ingyenes számítási** szinten futnak
 
 Új DSVM-példány létrehozásához kövesse az [Ubuntu-Data Science VM létrehozása](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)című témakör utasításait. A díjszabással kapcsolatos további információkért lásd: [Adatelemzési Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
-## <a name="connect-to-the-dsvm"></a>Kapcsolódás a DSVM
+## <a name="connect-to-the-dsvm"></a>A dsvm-hez való csatlakozáshoz
 
 Miután létrehozta a DSVM, válassza a **Futtatás** legördülő listát a Azure Notebooks projekt irányítópulton, és válassza ki a megfelelő DSVM-példányt. A legördülő lista DSVM-példányokat jelenít meg, ha a következő feltételek teljesülnek:
 
@@ -37,6 +37,9 @@ Miután létrehozta a DSVM, válassza a **Futtatás** legördülő listát a Azu
 ![Data Science Virtual Machine példányok a projekt irányítópultjának legördülő listájában](media/project-compute-tier-dsvm.png)
 
 Ha kiválaszt egy DSVM-példányt, Azure Notebooks kérheti a virtuális gép létrehozásakor használt adott számítógép hitelesítő adatait.
+
+> [!Important]
+> A felhasználónévnek kisbetűsnek kell lennie a JupyterHub-vel való használathoz.
 
 Ha valamelyik feltétel nem teljesül, továbbra is csatlakozhat a DSVM. A legördülő listában válassza a **közvetlen számítás** lehetőséget, amely egy név (a listában megjelenítendő), a virtuális gép IP-címe és portja (jellemzően 8000, az alapértelmezett port, amelyre a JupyterHub figyeli), valamint a virtuális gép hitelesítő adatainak megadását kéri:
 
@@ -60,9 +63,9 @@ Ha több felhasználó osztozik egy DSVM, elkerülheti egymás blokkolását úg
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon a virtuális géphez.
 1. A bal oldali margó **támogatás + hibaelhárítás** területén válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
-1. Adjon meg egy új felhasználónevet és jelszót, és válassza a **frissítés**lehetőséget. (A meglévő felhasználónevek nincsenek hatással.)
+1. Adjon meg egy új **felhasználónevet**. A felhasználónévnek kisbetűsnek kell lennie a JupyterHub-vel való használathoz. Adjon meg egy jelszót. Ezután válassza a **frissítés**lehetőséget. (A meglévő felhasználónevek nincsenek hatással.)
 1. Ismételje meg az előző lépést a további felhasználók számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [Azure Adatelemzési Virtual Machines bevezetésének](/azure/machine-learning/data-science-virtual-machine/overview)dsvm.

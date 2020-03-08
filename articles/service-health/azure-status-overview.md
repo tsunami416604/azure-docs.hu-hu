@@ -3,12 +3,12 @@ title: Az Azure status áttekintése | Microsoft Docs
 description: Globális nézet az Azure-szolgáltatások állapotáról
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 4f4a0bf09c9256362e71466b9545389f4341ef38
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 766e9795b01c4a09916a025cba77744dea235faf
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654154"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898345"
 ---
 # <a name="azure-status-overview"></a>Az Azure állapotának áttekintése
 
@@ -26,7 +26,7 @@ Az Azure-állapot lap valós időben frissül az Azure-szolgáltatások állapot
 
 Amíg az Azure Status (állapot) lapon mindig a legfrissebb állapotadatok láthatók, a régebbi események az [Azure status History (Azure status előzmények) lapon](https://status.azure.com/status/history/)tekinthetők meg.
 
-A múltban akár 90 napig is megtekintheti az eseményeket, beleértve az előzetes kiváltó okot, a mérséklést és az Azure-ra vonatkozó további lépéseket.
+A 2019 novemberében közzétett eseményektől kezdve az állapot előzményei oldal a múltban legfeljebb 365 nappal mutatja be az eseményeket, beleértve az előzetes kiváltó okot, a mérséklést és az Azure következő lépéseit.
 
 ## <a name="rss-feed"></a>RSS-hírcsatorna
 

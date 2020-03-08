@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec568793d717da2493b2c45fe1dca5ad56073886
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4ae90b729db51287f2a98caa36ae43d83a2a207c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986253"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897795"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kronos"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a következővel
 
@@ -54,8 +54,8 @@ Ahhoz, hogy az Azure AD-ba be lehessen állítani a WebApp integrációját, a k
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt: "a" keresőmezőbe.
-1. Válassza ki a WebApp elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt: **"a"** keresőmezőbe.
+1. Válassza **ki a WebApp** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-kronos"></a>Azure AD-beli egyszeri bejelentkezés konfigurálása és tesztelése
 
@@ -74,26 +74,26 @@ Az Azure AD SSO és a következő építőelemek konfigurálásához és tesztel
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)az alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **az alkalmazás-** integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<company name>.kronos.net/`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<company name>.kronos.net/`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<company name>.kronos.net/wfc/navigator/logonWithUID`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<company name>.kronos.net/wfc/navigator/logonWithUID`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Ezekhez az értékekhez forduljon a következőhöz: a- [ügyfél támogatási csapata](https://www.kronos.in/contact/en-in/form) . Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Ezekhez az értékekhez forduljon a következőhöz: a- [ügyfél támogatási csapata](https://www.kronos.in/contact/en-in/form) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. A az SAML-alkalmazás meghatározott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-1. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
+1. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
     a. Kattintson a **Szerkesztés ikonra** a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
@@ -103,15 +103,15 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. Az **átalakítás** listából válassza a **ExtractMailPrefix ()** elemet.
 
-    c. Az **1. paraméter** listából válassza a **User. userprinicipalname**elemet.
+    c. Az **1. paraméter** listából válassza a **User. userPrincipalName**elemet.
 
     d. Kattintson a **Save** (Mentés) gombra.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML** -fájlját, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-1. A kiinduló és a szükséges URL-cím (eke) t a saját követelménye alapján másolja.
+1. **A kiinduló** és a szükséges URL-cím (eke) t a saját követelménye alapján másolja.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
@@ -120,19 +120,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
 1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza ki **új felhasználó** a képernyő tetején.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban a "B. Simon" lehetőséget fogja használni az Azure egyszeri bejelentkezés használatára azáltal, hogy hozzáférést biztosít a következőhöz:.
 
 1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a "a" lehetőséget.
+1. Az alkalmazások **listában válassza a**"a" lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
@@ -147,11 +147,11 @@ Ebben a szakaszban a "B. Simon" lehetőséget fogja használni az Azure egyszeri
 
 ## <a name="configure-kronos-sso"></a>A (
 
-Ha az egyszeri bejelentkezést a következőre szeretné beállítani, akkor a következőt kell elküldenie: az összevonási metaadatokat tartalmazó XML [](https://www.kronos.in/contact/en-in/form)-fájl és a megfelelő másolt URL-címek a Azure Portalról a **-** től a Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Ha az egyszeri bejelentkezést a következőre szeretné beállítani, **akkor a** következőt kell elküldenie: az **összevonási metaadatokat tartalmazó XML-fájl** és a megfelelő másolt url-címek a Azure Portalról a-től a [](https://www.kronos.in/contact/en-in/form) Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-kronos-test-user"></a>A-felhasználó létrehozása a felhasználók számára
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a-ban. A következővel veheti fel a felhasználók munkáját a a "a"-platformon. [](https://www.kronos.in/contact/en-in/form) Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a-ban. A következővel veheti fel a felhasználók munkáját [a a "](https://www.kronos.in/contact/en-in/form) a"-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
@@ -159,7 +159,7 @@ Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai 
 
 Ha a hozzáférés panelen a "a" gombra kattint, automatikusan be kell jelentkeznie arra a következőre, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

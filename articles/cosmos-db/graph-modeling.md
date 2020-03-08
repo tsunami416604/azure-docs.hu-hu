@@ -4,15 +4,15 @@ description: Útmutató a Graph-adatbázisok modellezéséhez Azure Cosmos DB Gr
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: d1e21827dda26f1c577f6cc70a5e34bb09a34d9c
-ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
+ms.openlocfilehash: dc9a5616aa2bb1f7e09045b9cfe4f4d7e9c69be2
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75500063"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898329"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Graph adatmodellezés Azure Cosmos DB Gremlin API-hoz
 
@@ -45,15 +45,15 @@ Az [Apache Tinkerpop Property Graph standard](https://tinkerpop.apache.org/docs/
 
 A Graph-objektumok tulajdonságaira vonatkozó ajánlott eljárások a következők:
 
-| Objektum | Tulajdonság | Type (Típus) | Megjegyzések |
+| Objektum | Tulajdonság | Típus | Megjegyzések |
 | --- | --- | --- |  --- |
-| Vertex | ID (Azonosító) | Sztring | A partíciók egyedi kikényszerítve. Ha nincs megadva érték a beszúráskor, az automatikusan generált GUID-t fogja tárolni. |
+| Vertex | ID | Sztring | A partíciók egyedi kikényszerítve. Ha nincs megadva érték a beszúráskor, az automatikusan generált GUID-t fogja tárolni. |
 | Vertex | label | Sztring | Ez a tulajdonság határozza meg a csúcspont által reprezentált entitás típusát. Ha nincs megadva érték, a rendszer az alapértelmezett "Vertex" értéket fogja használni. |
-| Vertex | properties | Karakterlánc, logikai, numerikus | Az egyes csúcspontokban kulcs-érték párokként tárolt külön tulajdonságok listája. |
+| Vertex | tulajdonságok | Karakterlánc, logikai, numerikus | Az egyes csúcspontokban kulcs-érték párokként tárolt külön tulajdonságok listája. |
 | Vertex | partíciós kulcs | Karakterlánc, logikai, numerikus | Ez a tulajdonság határozza meg, hogy a csúcspont és a kimenő élek hol lesznek tárolva. További információ a [Graph particionálásról](graph-partitioning.md). |
-| Edge | ID (Azonosító) | Sztring | A partíciók egyedi kikényszerítve. Alapértelmezés szerint automatikusan létrejön. Az éleket általában nem kell egyedi módon beolvasni egy AZONOSÍTÓval. |
+| Edge | ID | Sztring | A partíciók egyedi kikényszerítve. Alapértelmezés szerint automatikusan létrejön. Az éleket általában nem kell egyedi módon beolvasni egy AZONOSÍTÓval. |
 | Edge | label | Sztring | Ez a tulajdonság határozza meg, hogy milyen típusú kapcsolatra van két csúcspont. |
-| Edge | properties | Karakterlánc, logikai, numerikus | Az egyes szegélyekben kulcs-érték párokként tárolt külön tulajdonságok listája. |
+| Edge | tulajdonságok | Karakterlánc, logikai, numerikus | Az egyes szegélyekben kulcs-érték párokként tárolt külön tulajdonságok listája. |
 
 > [!NOTE]
 > Az élek nem igénylik a partíciós kulcs értékét, mivel az értékét a rendszer automatikusan hozzárendeli a forrás csúcspontja alapján. További információt a [Graph particionálási](graph-partitioning.md) cikkében talál.

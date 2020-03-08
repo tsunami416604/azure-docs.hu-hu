@@ -7,15 +7,15 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: f7d6e98205afad2ed2c4aea30e635254f79acaa1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448092"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898371"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Címkézett gép – megtanult entitás egy példa kimondottan
 
@@ -86,7 +86,7 @@ Az entitások szerepkörei az Entity paletta használatával vannak megjelölve.
 1. A leképezés részletei lapon válassza ki az Entity ( **entitás) palettát** a helyi eszköztárból.
 1. Az entitás-paletta megnyitása után válassza ki az entitást az entitás listából.
 1. Lépjen az **entitás-felügyelőre**, és válasszon ki egy meglévő szerepkört, vagy hozzon létre egy új szerepkört.
-1. A példában a Kimondás szövegében címkézze fel a szöveget az entitás szerepkörrel. 
+1. A példában a Kimondás szövegében címkézze fel a szöveget az entitás szerepkörrel.
 
 ## <a name="unlabel-entities"></a>Entitások címkézésének kicsomagolása
 
@@ -96,7 +96,7 @@ Entitás kicímkézéséhez válassza ki az entitás nevét a szöveg alatt, és
 
 Ha a címkézés során hiba történik, az Entity paletta egy egyszerű eszköz, amely lehetővé teszi a gyors szerkesztést. Ha például egy entitás címkéje egy további szót mutat be a hiba alapján, és már rendelkezik címkézett alösszetevőkkel, akkor az Entity paletta használatával ecsetet adhat a szavak rövidebb időtartamára.
 
-Példa:
+Például:
 
 1. A pizza Type alösszetevő a "Cheese pizza with" kifejezéssel is rendelkezik, amely tartalmaz egy extra helytelen szót – "with"
 
@@ -119,6 +119,6 @@ Az entitás-előrejelzési hibák azt jelzik, hogy az előre jelzett entitás ne
 > [!div class="mx-imgBorder"]
 > ![a gépi megtanult entitáshoz tartozó Entity paletta](media/label-utterances/example-utterance-indicates-prediction-error.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Használja az [irányítópultot](luis-how-to-use-dashboard.md) , és [tekintse át a végpont hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md) az alkalmazás előrejelzési minőségének javítása érdekében.

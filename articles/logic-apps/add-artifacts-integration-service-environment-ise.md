@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: d6e5eb8875e6b7d930a002708079dab0e357297f
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 7b9ce8be4ffc306417dd836e28127641f6100321
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250929"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899190"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Erőforrások hozzáadása az integrációs szolgáltatási környezethez (ISE) Azure Logic Apps
 
@@ -51,7 +51,7 @@ Az integrációs szolgáltatási környezetben (ISE) futó logikai alkalmazások
 
 1. Folytassa a [logikai alkalmazás létrehozását a szokásos módon](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-   Az eseményindítók és műveletek működésének, valamint a a globális Logic Apps szolgáltatással összehasonlított ISE használata esetén a következő témakörben talál további információt: [elkülönített versus Global az ISE áttekintésében](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference).
+   Az eseményindítók és műveletek működésének, valamint a több-bérlős Logic Apps szolgáltatáshoz képest az ISE használatakor megjelenő különbségekért lásd: [elkülönített és több-bérlős megoldás az ISE áttekintésében](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference).
 
 1. Az ISE-ben a Logic apps és az API-kapcsolatok kezeléséhez lásd: [az integrációs szolgáltatási környezet kezelése](../logic-apps/ise-manage-integration-service-environment.md).
 
@@ -128,6 +128,6 @@ Ha az ISE-ben egyéni összekötőket szeretne használni, hozza létre ezeket a
 
 1. Az ISE-ben lévő egyéni összekötők kezeléséhez lásd: [az integrációs szolgáltatási környezet kezelése](../logic-apps/ise-manage-integration-service-environment.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Integrációs szolgáltatási környezetek kezelése](../logic-apps/ise-manage-integration-service-environment.md)

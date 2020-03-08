@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f17192e738bb82fb348c660488e6296aa550bd25
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 72bf08dce36d857c1fe91bbe9806336dfa185f7e
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913480"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671971"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Általános indexelő hibák és figyelmeztetések hibaelhárítása Az Azure Cognitive Search
 
@@ -48,7 +48,7 @@ Az indexelő nem tudta olvasni a dokumentumot az adatforrásból. Ez az alábbia
 
 | Ok | Részletek/példa | Megoldás: |
 | --- | --- | --- |
-| inkonzisztens mezők típusai különböző dokumentumokban | Az érték típusa nem egyezik az oszlop típusával. Nem sikerült tárolni a `'{47.6,-122.1}'` a szerzők oszlopban.  A várt típus: JArray. | Ügyeljen arra, hogy az egyes mezők típusa azonos legyen a különböző dokumentumok között. Ha például az első dokumentum `'startTime'` a dátum DateTime, és a második dokumentumban ez egy karakterlánc, akkor ez a hiba fog megjelenni. |
+| inkonzisztens mezők típusai különböző dokumentumokban | "Az érték típusa nem egyezik az oszlop típusával. Nem sikerült tárolni a `'{47.6,-122.1}'` a szerzők oszlopban.  A várt típus: JArray. "  "Hiba történt az adattípusok nvarchar való konvertálásakor."  "A konverzió meghiúsult a (z)" 12 hónapos "nvarchar érték" int "adattípusra való konvertálásakor."  "Aritmetikai túlcsordulási hiba történt a kifejezés átalakítása int adattípusra." | Ügyeljen arra, hogy az egyes mezők típusa azonos legyen a különböző dokumentumok között. Ha például az első dokumentum `'startTime'` a dátum DateTime, és a második dokumentumban ez egy karakterlánc, akkor ez a hiba fog megjelenni. |
 | hibák az adatforrás mögöttes szolgáltatásában | (Cosmos DB) `{"Errors":["Request rate is large"]}` | Ellenőrizze, hogy a tárolási példány kifogástalan állapotú-e. Előfordulhat, hogy módosítania kell a skálázást/particionálást. |
 | átmeneti problémák | Átviteli szintű hiba történt a kiszolgáló eredményeinek fogadása során. (szolgáltató: TCP-szolgáltató, hiba: 0 – a távoli gazdagép kényszerített módon lezárta a meglévő kapcsolatokat | Esetenként váratlan kapcsolódási problémák léptek fel. Próbálja meg később futtatni a dokumentumot az indexelő használatával. |
 
@@ -322,7 +322,7 @@ Az [adatváltozás-észlelési szabályzatok](https://docs.microsoft.com/rest/ap
 
 Az [Indexelő elemzési módjának](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters) tudnia kell, hogy a szöveg hogyan legyen kódolva az elemzés előtt. A kódolási szövegek két leggyakoribb módja az UTF-16 és az UTF-8. Az UTF-8 egy változó hosszúságú kódolás, amelyben minden karakter 1 bájt és 4 bájt hosszú lehet. Az UTF-16 egy rögzített hosszúságú kódolás, amelyben minden karakter 2 bájt hosszúságú. Az UTF-16 két különböző változatot tartalmaz: "big endian" és "Little endian". A szöveges kódolást egy "byte Order Mark", egy bájtos sorozat határozza meg a szöveg előtt.
 
-| Encoding | Byte Order Mark |
+| Kódolás | Byte Order Mark |
 | --- | --- |
 | UTF-16 big endian | 0xFE 0xFF |
 | UTF-16 kis endian | 0xFF 0xFE |

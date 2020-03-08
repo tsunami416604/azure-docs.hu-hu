@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 6ba7bca0756b4e2f6fdcb89208fe15e3517a9513
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 3775070320b8c6e96dd06031bd87ea53f37046c5
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661703"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894858"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Az ASP.NET-alkalmazás monitorozásának indítása
 
@@ -23,7 +23,7 @@ Ez a rövid útmutató bemutatja, hogyan adhatja hozzá az Application Insightst
 ## <a name="prerequisites"></a>Előfeltételek
 A gyorsútmutató elvégzéséhez:
 
-- Telepítse a [Visual Studio 2019](https://www.visualstudio.com/downloads/) -et a következő munkaterhelésekkel:
+- Telepítse a [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) -et a következő munkaterhelésekkel:
     - ASP.NET és webfejlesztés
     - Azure-fejlesztés
 
@@ -110,7 +110,7 @@ Ha végzett a teszteléssel, törölheti az erőforráscsoportot és az összes 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a **myResourceGroup** elemre.
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban engedélyezte az alkalmazás figyelését az Azure Application Insights.  Folytassa a további oktatóanyagokkal, amelyekből megtudhatja, hogyan használhatja a statisztika monitorozására és az alkalmazáshibák észlelésére is.
 
 > [!div class="nextstepaction"]

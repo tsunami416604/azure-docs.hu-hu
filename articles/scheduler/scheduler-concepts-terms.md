@@ -1,26 +1,27 @@
 ---
-title: Alapfogalmak, terminológia és entitások – Azure Scheduler  Microsoft Docs
+title: Alapfogalmak, terminológia és entitások
 description: Elsajátíthatja az Azure Scheduler alapfogalmait, entitáshierarchiáját és terminológiáját, beleértve a feladatokat és a feladatgyűjteményeket
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
+ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 7e31f891cfd758b888e4045566ad2cd2d9ab6fb8
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300949"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898569"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Az Azure Scheduler alapfogalmai, terminológiája és entitásai
 
 > [!IMPORTANT]
-> [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a lehető leghamarabb [telepítse át Azure Logic apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a lehető leghamarabb [telepítse át Azure Logic apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
+>
+> Az ütemező már nem érhető el a Azure Portalban, de a [REST API](/rest/api/scheduler) és az [Azure Scheduler PowerShell-parancsmagjai](scheduler-powershell-reference.md) jelenleg is elérhetők maradnak, így a feladatok és a feladatok gyűjteményei kezelhetők.
 
 ## <a name="entity-hierarchy"></a>Entitáshierarchia
 
@@ -61,7 +62,7 @@ A 60 napos feladat-végrehajtási előzménytörténetet lekérő GET műveletet
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
 ```
 
-## <a name="job-types"></a>Feladattípusok
+## <a name="job-types"></a>Job types (Feladattípusok)
 
 Az Azure Scheduler több feladattípust támogat: 
 
@@ -75,13 +76,13 @@ Az Azure Scheduler több feladattípust támogat:
 Magasabb szinteken a Scheduler-feladatok az alábbi alapszintű összetevőkből állnak:
 
 * A feladat időzítőjének indításakor futó művelet
-* Nem kötelező: A feladatok futtatásának ideje
-* Nem kötelező: Mikor és milyen gyakran kell megismételni a feladatot
-* Nem kötelező: Hiba történt, amely akkor fut le, ha az elsődleges művelet meghiúsul
+* Nem kötelező: A feladat futtatásának időpontja
+* Nem kötelező: A feladat megismétlésének időpontja és gyakorisága
+* Nem kötelező: Az elsődleges művelet meghiúsulása esetén futó hibaművelet
 
 A feladat olyan, a rendszer által biztosított adatokat is tartalmaz, mint a következő ütemezett futás időpontja. A feladat kóddefiníciója egy JavaScript Object Notation (JSON) formátumú objektum, amely a következő elemeket tartalmazza:
 
-| Elem | Szükséges | Leírás | 
+| Elem | Kötelező | Leírás | 
 |---------|----------|-------------| 
 | [**startTime**](#start-time) | Nem | A feladat kezdési ideje időzóna-eltolódással [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601) | 
 | [**action**](#action) | Igen | Az elsődleges művelet részletei, amelyek **errorAction** objektumot tartalmazhatnak | 
@@ -227,7 +228,7 @@ Az elsődleges **action** művelethez hasonlóan a hibakezelési művelet is leh
 
 <a name="recurrence"></a>
 
-## <a name="recurrence"></a>ismétlődés
+## <a name="recurrence"></a>recurrence
 
 Egy feladat akkor ismétlődik, ha annak JSON-definíciója tartalmazza a **recurrence** objektumot, például:
 
@@ -245,7 +246,7 @@ Egy feladat akkor ismétlődik, ha annak JSON-definíciója tartalmazza a **recu
 },
 ```
 
-| Tulajdonság | Szükséges | Value | Leírás | 
+| Tulajdonság | Kötelező | Érték | Leírás | 
 |----------|----------|-------|-------------| 
 | **frequency** | Igen, a **recurrence** használatakor | Percenként, óránként, naponta, hetente, havonta, évente | Az előfordulások közötti időegység | 
 | **interval** | Nem | 1 és 1000 között, a szélsőértékeket is beleértve | Pozitív egész szám, amely a **frequency** gyakoriságérték alapján meghatározza az egyes előfordulások közötti időegységek számát | 
@@ -275,7 +276,7 @@ Arra az esetre, ha a Scheduler-feladat hibába ütközik, beállíthat egy újra
 },
 ```
 
-| Tulajdonság | Szükséges | Value | Leírás | 
+| Tulajdonság | Kötelező | Érték | Leírás | 
 |----------|----------|-------|-------------| 
 | **retryType** | Igen | **Fixed**, **None** | Azt határozza meg, hogy megad-e egy újrapróbálkozási szabályzatot (**fixed** – rögzített) vagy sem (**none** – nincs). | 
 | **retryInterval** | Nem | PT30S | Megadja az újrapróbálkozások gyakoriságát [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). A minimális érték 15 másodperc, a maximális érték pedig 18 hónap. | 
@@ -307,7 +308,7 @@ Miután elindul egy feladat, a Scheduler megjeleníti annak állapotadatait a **
 * A meghiúsulások száma (ha volt ilyen)
 * A hibák száma (ha volt ilyen)
 
-Példa:
+Például:
 
 ```json
 "status": {
@@ -319,11 +320,9 @@ Példa:
 }
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>További lépések
 
-* [Mi az Azure Scheduler?](scheduler-intro.md)
-* [Alapfogalmak, terminológia és entitáshierarchia](scheduler-concepts-terms.md)
 * [Komplex ütemezések és speciális ismétlődések létrehozása](scheduler-advanced-complexity.md)
-* [Korlátok, kvóták, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)
 * [Az Azure Scheduler REST API-jának leírása](/rest/api/scheduler)
 * [Az Azure Scheduler PowerShell-parancsmagjainak leírása](scheduler-powershell-reference.md)
+* [Korlátok, kvóták, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)

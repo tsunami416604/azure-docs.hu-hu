@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24ec4373bceb3cc3c9e5be2c7a0dab1f62197b3c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 40f89fbe19b93601f9e0525f0387e402bd175fe4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512198"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672680"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD-hez csatlakoztatott eszközök
 
@@ -30,7 +30,7 @@ Az Azure AD JOIN olyan szervezetek számára készült, amelyek csak felhőalap�
 | **Eszköz tulajdonjoga** | Szervezet |
 | **Operációs rendszerek** | Minden Windows 10-es eszköz |
 | **Kiépítés** | Önkiszolgáló: Windows OOBE vagy beállítások |
-|   | Csoportos regisztráció |
+|   | Tömeges beléptetés |
 |   | Windows Autopilot |
 | **Eszköz bejelentkezési beállításai** | Szervezeti fiókok a használatával: |
 |   | Jelszó |
@@ -45,13 +45,13 @@ Az Azure AD JOIN olyan szervezetek számára készült, amelyek csak felhőalap�
 
 Az Azure AD-hez csatlakoztatott eszközök bejelentkeznek egy szervezeti Azure AD-fiók használatával. A szervezet erőforrásaihoz való hozzáférés az Azure AD-fiók és az eszköz identitására alkalmazott [feltételes hozzáférési szabályzatok](../conditional-access/overview.md) alapján tovább korlátozható.
 
-A rendszergazdák az Azure AD-hez csatlakoztatott eszközöket a mobileszköz-felügyeleti (MDM) eszközök, például a Microsoft Intune vagy a Microsoft Endpoint Configuration Manager használatával történő közös felügyeleti forgatókönyvek használatával védhetik és vezérelhetik. Ezek az eszközök lehetővé teszik a szervezet által szükséges konfigurációk betartatását, például a tárolás titkosítását, a jelszó bonyolultságát, a szoftverek telepítését és a szoftverfrissítések használatát. A rendszergazdák a vállalati alkalmazások számára elérhetővé tehetik az Azure AD-hez csatlakoztatott eszközöket a Configuration Manager használatával [az üzleti és oktatási Microsoft Store alkalmazások felügyeletéhez](https://docs.microsoft.com/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
+A rendszergazdák az Azure AD-hez csatlakoztatott eszközöket a mobileszköz-felügyeleti (MDM) eszközök, például a Microsoft Intune vagy a Microsoft Endpoint Configuration Manager használatával történő közös felügyeleti forgatókönyvek használatával védhetik és vezérelhetik. Ezek az eszközök lehetővé teszik a szervezet által szükséges konfigurációk betartatását, például a tárolás titkosítását, a jelszó bonyolultságát, a szoftverek telepítését és a szoftverfrissítések használatát. A rendszergazdák a vállalati alkalmazások számára elérhetővé tehetik az Azure AD-hez csatlakoztatott eszközöket a Configuration Manager használatával [az üzleti és oktatási Microsoft Store alkalmazások felügyeletéhez](/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
 
-Az Azure AD JOIN szolgáltatás önkiszolgáló lehetőségekkel is elvégezhető, például a kezdőélmény (OOBE), a csoportos regisztráció vagy a [Windows Autopilot](https://docs.microsoft.com/intune/enrollment-autopilot)használatával.
+Az Azure AD JOIN szolgáltatás önkiszolgáló lehetőségekkel is elvégezhető, például a kezdőélmény (OOBE), a csoportos regisztráció vagy a [Windows Autopilot](/intune/enrollment-autopilot)használatával.
 
 Az Azure AD-hez csatlakoztatott eszközök továbbra is használhatják az egyszeri bejelentkezéses hozzáférést a helyszíni erőforrásokhoz, amikor azok a szervezet hálózatán vannak. Az Azure AD-hez csatlakoztatott eszközök továbbra is hitelesíthetők a helyszíni kiszolgálókra, például a fájlokra, a nyomtatásra és az egyéb alkalmazásokra.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
 Habár az Azure AD elsősorban az olyan cégek számára készült, amelyek nem rendelkeznek helyszíni Windows Server Active Directory-infrastruktúrával, a szolgáltatás a következő helyzetekben is használható:
 
@@ -74,11 +74,11 @@ Az Azure AD-hez csatlakoztatott eszközök leegyszerűsítik:
 
 Az alábbi módszerekkel létesíthet Azure AD-csatlakozást:
 
-- [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)
-- [Tömeges üzembe helyezés](https://docs.microsoft.com/intune/windows-bulk-enroll)
+- [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot)
+- [Tömeges üzembe helyezés](/intune/windows-bulk-enroll)
 - [Önkiszolgáló megoldás használata](azuread-joined-devices-frx.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure AD JOIN megvalósításának megtervezése](azureadjoin-plan.md)
 - [A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön](assign-local-admin.md)

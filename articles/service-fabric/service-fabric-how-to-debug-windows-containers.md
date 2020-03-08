@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
 ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464569"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899333"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Útmutató: Windows-tárolók hibakeresése az Azure Service Fabric a Visual Studio 2019 használatával
 
@@ -71,5 +71,5 @@ Az alábbiakban felsoroljuk a Service Fabric és a lehetséges megoldásokkal ka
 
     A Visual Studio támogatja a .NET és a .NET Core konzol-és ASP.NET.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni a Service Fabric és a tárolók képességeiről, tekintse meg a [Service Fabric-tárolók áttekintése](service-fabric-containers-overview.md)című témakört.

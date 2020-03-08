@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/17/2020
+ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ee3d1d896d99d892d0a41799c4c1695633d29c4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: a7a92bef85cd4ee7530940a065135e88c7530781
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291498"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675611"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP számításifeladat-konfigurációk az Azure Availability Zones szolgáltatással
 [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) az Azure által biztosított magas rendelkezésre állási funkciók egyike. A Availability Zones használata javítja az Azure-beli SAP-munkaterhelések teljes rendelkezésre állását. Ez a funkció már elérhető néhány [Azure-régióban](https://azure.microsoft.com/global-infrastructure/regions/). A jövőben több régióban is elérhető lesz.
@@ -119,6 +119,9 @@ Ehhez a konfigurációhoz a következő szempontokat kell figyelembe venni:
 - A kritikus fontosságú üzleti folyamatok futtatási időkonzisztenciájának eléréséhez próbáljon meg bizonyos batch-feladatokat és felhasználókat olyan alkalmazás-példányokhoz irányítani, amelyek az aktív adatbázis-kezelői példánnyal rendelkeznek az SAP batch Server-csoportok, az SAP-bejelentkezési csoportok vagy az RFC-csoportok használatával. A zónák közötti feladatátvétel esetén azonban ezeket a csoportokat manuálisan kell áthelyeznie az aktív adatbázis-virtuálisgép-zónán belüli virtuális gépeken futó példányokra.  
 - Előfordulhat, hogy minden zónában érdemes lehet alvó párbeszédpanel-példányokat telepíteni. Ezzel a megoldással azonnal visszatérhet a korábbi erőforrás-kapacitáshoz, ha az alkalmazás példányainak részeként használt zóna kívül esik a szolgáltatáson.
 
+> [!IMPORTANT]
+> Ebben az aktív/aktív forgatókönyvben a Microsoft a 04/01/2020-es verzióban további díjakat jelent a sávszélességgel kapcsolatban. Olvassa el a dokumentum [sávszélesség-díjszabását](https://azure.microsoft.com/pricing/details/bandwidth/). Az SAP-alkalmazás réteg és az SAP adatbázis-kezelő réteg közötti adatátvitel meglehetősen intenzív. Ezért az aktív/aktív forgatókönyvek nagy mértékben hozzájárulhatnak a költségekhez. A részletes költségek beszerzéséhez tekintse meg a cikk ellenőrzését 
+
 
 ## <a name="activepassive-deployment"></a>Aktív/passzív üzembe helyezés
 Ha nem talál elfogadható különbözetet az egyik zónán belüli hálózati késés és a zónák közötti hálózati forgalom késése között, olyan architektúrát helyezhet üzembe, amely aktív/passzív karaktert tartalmaz az SAP-alkalmazás rétegének nézetében. Definiáljon egy *aktív* zónát, amely az a zóna, amelyben a teljes alkalmazás réteget üzembe helyezi, és ahol megkísérli az aktív adatbázis-kezelő és az SAP központi szolgáltatások példányának futtatását. Ilyen konfiguráció esetén meg kell győződnie arról, hogy nem rendelkezik a szélsőséges futásidejű változatokkal, attól függően, hogy a feladat a zónában fut-e az aktív adatbázis-kezelői példánnyal, vagy sem, az üzleti tranzakciókban és a kötegelt feladatokban.
@@ -176,7 +179,7 @@ Ehhez a konfigurációhoz a következő szempontokat kell figyelembe venni:
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Íme néhány további lépés a Azure Availability Zones üzembe helyezéséhez:
 
 - [Az SAP ASCS/SCS-példányok fürtözése Windows feladatátvevő fürtön az Azure-ban megosztott fürtözött lemez használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)

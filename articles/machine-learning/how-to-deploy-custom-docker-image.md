@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 8c55fec08f05352d4587a8821c10600b7d7fad07
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 24ca37f5610589ae675a47a1dd966871b3004800
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396155"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851270"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Modell üzembe helyezése egyéni Docker-alapú rendszerkép használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -155,6 +155,9 @@ Az ebben a szakaszban ismertetett lépések végigvezetik az egyéni Docker-rend
     az acr build --image myimage:v1 --registry <registry_name> --file Dockerfile .
     ```
 
+    > [!TIP]
+    > Ebben a példában egy `:v1` címkéje lesz alkalmazva a képre. Ha nincs megadva címke, a rendszer a `:latest` címkét alkalmazza.
+
     A létrehozási folyamat során a rendszer továbbítja az adatokat a parancssorba. Ha a Build sikeres, az alábbihoz hasonló üzenet jelenik meg:
 
     ```text
@@ -170,6 +173,10 @@ A meglévő lemezképek Azure Container Registryra való feltöltésével kapcso
 Egyéni rendszerkép használatához a következő információk szükségesek:
 
 * A __rendszerkép neve__. Például `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` a Microsoft által biztosított alapszintű Docker-rendszerkép elérési útja.
+
+    > [!IMPORTANT]
+    > A létrehozott egyéni lemezképek esetében ügyeljen arra, hogy tartalmazza a képhez használt címkéket. Például ha a rendszerkép egy adott címkével lett létrehozva, például `:v1`. Ha nem adott meg címkét a rendszerkép létrehozásakor, a rendszer egy `:latest` címkét alkalmazott.
+
 * Ha a rendszerkép egy __privát tárházban__található, a következő információkra lesz szüksége:
 
     * A beállításjegyzék __címe__. Például: `myregistry.azureecr.io`.
@@ -293,7 +300,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc depl
 
 A modellek ML parancssori felülettel történő üzembe helyezésével kapcsolatos további információkért tekintse meg [Azure Machine learning cikk CLI-bővítményének](reference-azure-machine-learning-cli.md#model-registration-profiling-deployment) "modell regisztrálása, profilkészítés és központi telepítése" szakaszát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [telepítéséről és a módjáról](how-to-deploy-and-where.md).
 * Ismerje meg, hogyan lehet [gépi tanulási modelleket betanítani és üzembe helyezni az Azure-folyamatok használatával](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops).

@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 478b6cffb6fbb2be7a87b9b61d5b7e2ee71a74c2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0723ddc9b0e2f15d5c8e51c96d51f58f1313493a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840706"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673666"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Az Azure Network Watcher PowerShell-lel Virtual Network átjáró és kapcsolatok hibáinak megoldása
 
 > [!div class="op_single_selector"]
-> - [Portál](diagnose-communication-problem-between-networks.md)
+> - [Portal](diagnose-communication-problem-between-networks.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
@@ -32,7 +32,7 @@ A Network Watcher számos képességgel rendelkezik, amelyek az Azure hálózati
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a forgatókönyv feltételezi, hogy már követte a [Network Watcher létrehozása](network-watcher-create.md) című témakör lépéseit Network Watcher létrehozásához.
 
@@ -47,7 +47,7 @@ Az erőforrás-hibaelhárítás lehetővé teszi a Virtual Network átjárókkal
 Az első lépés az Network Watcher példány beolvasása. A `$networkWatcher` változó a 4. lépésben megadott `Start-AzNetworkWatcherResourceTroubleshooting` parancsmagnak lesz átadva.
 
 ```powershell
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
+$networkWatcher = Get-AzNetworkWatcher -Location "WestCentralUS" 
 ```
 
 ## <a name="retrieve-a-virtual-network-gateway-connection"></a>Virtual Network átjáróval létesített kapcsolatok beolvasása
@@ -58,7 +58,7 @@ Ebben a példában az erőforrás-hibaelhárítást egy kapcsolatban futtatja a 
 $connection = Get-AzVirtualNetworkGatewayConnection -Name "2to3" -ResourceGroupName "testrg"
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Az erőforrás-hibaelhárítás az erőforrás állapotával kapcsolatos információkat ad vissza, és a naplókat is menti egy áttekinthető Storage-fiókba. Ebben a lépésben létrehozunk egy Storage-fiókot, ha meglévő Storage-fiók létezik, használhatja azt.
 
@@ -87,6 +87,6 @@ A művelet szövege általános útmutatást nyújt a probléma megoldásához. 
 
 A fájlok Azure Storage-fiókokból való letöltésével kapcsolatos utasításokért tekintse meg az [Azure Blob Storage használatának első lépései a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md)című témakört. Egy másik eszköz is használható Storage Explorer. Storage Explorer további információ a következő hivatkozáson található: [Storage Explorer](https://storageexplorer.com/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a beállítások megváltoztak a VPN-kapcsolat leállításakor, tekintse meg a [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) a hálózati biztonsági csoport és az esetlegesen érintett biztonsági szabályok nyomon követéséhez című témakört.

@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 79c27d252136281249c217f51019e53987922334
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: f06c50c35e25f2f64948c5f18672e00382d4ef42
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370325"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893339"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions hálózati beállítások
 
@@ -34,7 +34,7 @@ A Function apps több módon is üzemeltethető:
 |[Virtuális hálózat integrációja](#virtual-network-integration)|❌nem|✅igen (regionális)|✅igen (regionális és átjáró)|✅igen|
 |[Virtuális hálózati eseményindítók (nem HTTP)](#virtual-network-triggers-non-http)|❌nem| ✅igen |✅igen|✅igen|
 |[Hibrid kapcsolatok](#hybrid-connections) (csak Windows)|❌nem|✅igen|✅igen|✅igen|
-|[Kimenő IP-korlátozások](#outbound-ip-restrictions)|❌nem| ❌nem|❌nem|✅igen|
+|[Kimenő IP-korlátozások](#outbound-ip-restrictions)|❌nem| ✅igen|✅igen|✅igen|
 
 ## <a name="inbound-ip-restrictions"></a>Bejövő IP-korlátozások
 
@@ -57,65 +57,34 @@ A privát helyhez való hozzáférés arra utal, hogy az alkalmazás csak magán
 
 ## <a name="virtual-network-integration"></a>Virtuális hálózat integrációja
 
-A virtuális hálózat integrációja lehetővé teszi, hogy a Function alkalmazás hozzáférjen a virtuális hálózaton belüli erőforrásokhoz. Ez a funkció a prémium csomagban és a App Service csomagban is elérhető. Ha az alkalmazás egy App Service Environmentban van, akkor már egy virtuális hálózatban van, és nem igényel virtuális hálózati integrációt az erőforrások eléréséhez ugyanabban a virtuális hálózaton.
+A virtuális hálózat integrációja lehetővé teszi, hogy a Function alkalmazás hozzáférjen a virtuális hálózaton belüli erőforrásokhoz. A Azure Functions kétféle virtuális hálózati integrációt támogat:
 
-A Virtual Network Integration használatával lehetővé teheti az alkalmazásokból való hozzáférést a virtuális hálózatban futó adatbázisokhoz és webszolgáltatásokhoz. A Virtual Network Integration szolgáltatással nem kell nyilvános végpontot közzétennie az alkalmazások számára a virtuális GÉPEN. Ehelyett használhat privát, nem internetes irányítható címeket.
-
-A virtuális hálózatok integrálásának két formája létezik:
-
-+ **Regionális Virtual Network Integration (előzetes verzió)** : lehetővé teszi, hogy az azonos régióban lévő virtuális hálózatokkal is integrálható legyen. Az ilyen típusú integrációhoz ugyanahhoz a régióhoz tartozó virtuális hálózat alhálózata szükséges. Ez a funkció még mindig előzetes verzióban érhető el, de a Windows rendszeren futó Function apps esetében is támogatott, a következő probléma/megoldás tábla után leírt kikötésekkel.
-+ **Átjáró szükséges virtuális hálózat integrációja**: lehetővé teszi a távoli régiókban lévő virtuális hálózatok és a klasszikus virtuális hálózatok integrálását. Az ilyen típusú integrációhoz szükség van egy virtuális hálózati átjáró üzembe helyezésére a VNet. Ez egy pont – hely típusú VPN-alapú szolgáltatás, amely csak Windows rendszeren futó Function apps esetén támogatott.
-
-Egy alkalmazás egyszerre csak egy típusú virtuális hálózati integrációs funkciót használhat. Bár mindkettő számos esetben hasznos lehet, az alábbi táblázat az egyes használatban lévőket mutatja be:
-
-| Probléma  | Megoldás |
-|----------|----------|
-| Egy adott régióban szeretné elérni az RFC 1918-es címeket (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16). | Regionális virtuális hálózat integrációja |
-| A klasszikus virtuális hálózatban vagy egy másik régióban lévő virtuális hálózaton szeretné elérni az erőforrásokat | Átjáró szükséges virtuális hálózati integráció |
-| Az RFC 1918-végpontokat szeretné elérni az Azure ExpressRoute | Regionális virtuális hálózat integrációja |
-| Erőforrásokat szeretne elérni a szolgáltatási végpontok között | Regionális virtuális hálózat integrációja |
-
-Egyik funkció sem teszi lehetővé a nem RFC 1918-címek elérését a ExpressRoute között. Ehhez jelenleg egy App Service Environment kell használnia.
-
-A regionális virtuális hálózati integráció használata nem kapcsolja össze a virtuális hálózatot a helyszíni végpontokkal, vagy konfigurálja a szolgáltatási végpontokat. Ez egy különálló hálózati konfiguráció. A regionális virtuális hálózatok integrációja egyszerűen lehetővé teszi, hogy az alkalmazás hívásokat hajtson végre a kapcsolati típusok között.
-
-A használt verziótól függetlenül a Virtual Network Integration lehetővé teszi, hogy az alkalmazás hozzáférjen a virtuális hálózatban található erőforrásokhoz, de a virtuális hálózatról nem biztosít privát helyet a Function alkalmazáshoz. A privát webhelyek hozzáférése azt jelenti, hogy az alkalmazás csak olyan magánhálózathoz érhető el, mint egy Azure Virtual Network. A virtuális hálózat integrációja csak az alkalmazásból a virtuális hálózatra irányuló kimenő hívásokat teszi.
-
-A Virtual Network integrációs funkciója:
-
-* Standard, prémium vagy PremiumV2 App Service csomagra van szükség
-* A TCP és az UDP támogatása
-* Együttműködik App Service alkalmazásokkal és a Function-alkalmazásokkal
-
-Néhány dolog, amit a virtuális hálózat integrációja nem támogat, beleértve a következőket:
-
-* Meghajtó csatlakoztatása
-* Active Directory-integráció
-* NetBIOS
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 A Azure Functions virtuális hálózati integrációja a megosztott infrastruktúrát App Service Web Apps használatával használja. Ha többet szeretne megtudni a virtuális hálózatok integrációjának két típusáról, tekintse meg a következőt:
 
 * [Regionális virtuális hálózat integrációja](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
 * [Átjáró szükséges virtuális hálózati integráció](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
-A Virtual Network Integration használatával kapcsolatos további tudnivalókért lásd: [Function App-alkalmazás integrálása Azure-beli virtuális hálózattal](functions-create-vnet.md).
+A virtuális hálózati integráció beállításával kapcsolatos további információkért lásd: [Function App-alkalmazás integrálása Azure-beli virtuális hálózattal](functions-create-vnet.md).
+
+## <a name="regional-virtual-network-integration"></a>Regionális Virtual Network integráció
+
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-regional.md)]
 
 ## <a name="connecting-to-service-endpoint-secured-resources"></a>Kapcsolódás a szolgáltatás végpontjának biztonságos erőforrásaihoz
-
-> [!NOTE]
-> Egyelőre akár 12 órát is igénybe vehet, amíg az új szolgáltatási végpontok elérhetővé válnak a Function alkalmazás számára, miután konfigurálta a hozzáférési korlátozásokat az alárendelt erőforráson. Ebben az időszakban az erőforrás teljes mértékben elérhetetlenné válik az alkalmazás számára.
 
 A magasabb szintű biztonság érdekében a szolgáltatás-végpontok segítségével számos Azure-szolgáltatást korlátozhat egy virtuális hálózatra. Ezután integrálnia kell a Function alkalmazást az adott virtuális hálózattal az erőforrás eléréséhez. Ezt a konfigurációt minden olyan csomag támogatja, amely támogatja a virtuális hálózatok integrálását.
 
 [További információ a Virtual Network szolgáltatásbeli végpontokról.](../virtual-network/virtual-network-service-endpoints-overview.md)
 
-### <a name="restricting-your-storage-account-to-a-virtual-network"></a>A Storage-fiók korlátozása egy virtuális hálózatra
+## <a name="restricting-your-storage-account-to-a-virtual-network"></a>A Storage-fiók korlátozása egy virtuális hálózatra
 
 Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t. Jelenleg nem használhat virtuális hálózati korlátozásokat ezen a fiókon. Ha egy virtuális hálózati szolgáltatás végpontját konfigurálja a Function alkalmazáshoz használt Storage-fiókon, akkor az alkalmazás megszakítja az alkalmazást.
 
 [További információ a Storage-fiókra vonatkozó követelményekről.](./functions-create-function-app-portal.md#storage-account-requirements)
 
-### <a name="using-key-vault-references"></a>Key Vault hivatkozások használata 
+## <a name="using-key-vault-references"></a>Key Vault hivatkozások használata 
 
 A Key Vault referenciák lehetővé teszik, hogy programkód módosítása nélkül használja a Azure Functions alkalmazásban található Azure Key Vault titkokat. A Azure Key Vault egy olyan szolgáltatás, amely központosított titkok felügyeletét teszi lehetővé a hozzáférési házirendek és a naplózási előzmények teljes körű szabályozásával.
 
@@ -171,11 +140,15 @@ További információt a [Hibrid kapcsolatok app Service dokumentációjában](.
 
 ## <a name="outbound-ip-restrictions"></a>Kimenő IP-korlátozások
 
-A kimenő IP-korlátozások csak egy App Service Environment központilag telepített függvények esetén érhetők el. Konfigurálhatja a kimenő korlátozásokat arra a virtuális hálózatra, amelyen a App Service Environment telepítve van.
+A kimenő IP-korlátozások prémium csomagokban, App Service csomagban vagy App Service Environment érhetők el. Konfigurálhatja a kimenő korlátozásokat arra a virtuális hálózatra, amelyen a App Service Environment telepítve van.
 
-Ha egy prémium szintű csomagban vagy egy virtuális hálózattal rendelkező App Service tervben integrál egy függvényt, az alkalmazás továbbra is kezdeményezheti a kimenő hívásokat az interneten.
+Ha egy prémium szintű csomagban vagy egy virtuális hálózattal rendelkező App Service tervben integrál egy függvényt, az alkalmazás alapértelmezés szerint továbbra is elvégezheti a kimenő hívásokat az internetre. Alkalmazás-beállítás hozzáadásával `WEBSITE_VNET_ROUTE_ALL=1`a virtuális hálózatba küldendő összes kimenő forgalmat, ahol a hálózati biztonsági csoportra vonatkozó szabályok használhatók a forgalom korlátozására.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="troubleshooting"></a>Hibakeresés 
+
+[!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
+
+## <a name="next-steps"></a>További lépések
 
 További információ a hálózatkezelésről és a Azure Functions:
 

@@ -3,12 +3,12 @@ title: Offline biztonsági mentés Azure Data Box használatával
 description: Ebből a témakörből megtudhatja, hogyan használhatja a Azure Data Box a nagyméretű kezdeti biztonsági mentési adatoknak a MARS-ügynökből egy Recovery Services-tárolóba való összevetéséhez
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 9a8288939adba8ec1b0cbe38d2243b1bdd84fa2e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a031a8cac357e7d212f8f6a3a5dbec749fbccc21
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196477"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672968"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offline biztonsági mentés Azure Backup Azure Data Box használatával
 
@@ -124,7 +124,7 @@ Az offline biztonsági mentési folyamat a MARS és a Azure Data Box használat�
 
 1. Győződjön meg arról, hogy eltávolítja a MARS-ügynök korábbi telepítését.
 1. Töltse le a legújabb MARS-ügynököt [erről a webhelyről](https://aka.ms/azurebackup_agent).
-1. Futtassa a *MARSAgentInstaller. exe fájlt*, és *csak* az [ügynök telepítéséhez és regisztrálásához](https://docs.microsoft.com/azure/backup/backup-configure-vault#install-and-register-the-agent) szükséges lépéseket a Recovery Services tárolóban, ahol a biztonsági másolatokat tárolni szeretné.
+1. Futtassa a *MARSAgentInstaller. exe fájlt*, és *csak* az [ügynök telepítéséhez és regisztrálásához](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) szükséges lépéseket a Recovery Services tárolóban, ahol a biztonsági másolatokat tárolni szeretné.
 
    > [!NOTE]
    > A Recovery Services-tárolónak ugyanabban az előfizetésben kell lennie, mint a Azure Data Box feladatoknak.
@@ -247,7 +247,7 @@ Ez a szakasz ismerteti azokat a lépéseket, amelyeket az Azure Data Box Disk si
 
 * Miután a MARS-ügynök sikeresen létrehoz egy helyreállítási pontot, amely megfelel a kezdeti biztonsági mentésnek, törölheti a Storage-fiókot vagy a Azure Data Box-feladatokhoz tartozó konkrét tartalmakat.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 A Microsoft Azure Backup (Mohácsi) ügynök létrehoz egy Azure Active Directory (Azure AD) alkalmazást a bérlőben. Az alkalmazáshoz szükség van egy tanúsítványra az offline kiindulási házirend konfigurálásakor létrehozott és feltöltött hitelesítéshez. A Azure PowerShell használatával hozza létre és töltse fel a tanúsítványt az Azure AD-alkalmazásba.
 
@@ -307,7 +307,7 @@ Az offline biztonsági mentéshez konfigurálni kívánt kiszolgálóról végez
     >[!NOTE]
     > Az Azure User ID beszerzéséhez hajtsa végre az alábbi műveletek egyikét:
     >
-    >* Az Azure-hoz csatlakoztatott PowerShellben futtassa a `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as defined in the portal”` parancsot.
+    >* Az Azure-hoz csatlakoztatott PowerShellben futtassa a `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` parancsot.
     > * Nyissa meg a beállításjegyzékbeli elérési út *számítógép \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows az Azure Backup\DbgSettings\OnlineBackup* nevet a *CurrentUserId*néven.
 
 6. Kattintson a jobb gombbal az előző lépésben hozzáadott sztringre, majd válassza a **módosítás**lehetőséget. Az érték mezőben adja meg a 2. lépésben exportált tanúsítvány ujjlenyomatát. Kattintson az **OK** gombra.

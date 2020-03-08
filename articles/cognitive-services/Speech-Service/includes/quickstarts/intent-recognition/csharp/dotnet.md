@@ -6,12 +6,12 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 7faf4a029168c12a3213bc9a06891200e9ac6142
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
-ms.translationtype: MT
+ms.openlocfilehash: d6d75e47edc5cb759e28098a5932e62bc0ed4678
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445901"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669201"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -76,7 +76,9 @@ Hozzá kell rendelnie egy `LanguageUnderstandingModel`t a szándék-felismerőve
 
 A `IntentRecognizer` objektumban meg kell hívnia a `RecognizeOnceAsync()` metódust. Ez a módszer lehetővé teszi, hogy a beszédfelismerési szolgáltatás tudja, hogy egyetlen kifejezést küld az észleléshez, és ha a kifejezést azonosította a beszédfelismerés felismerésének leállításához.
 
-A using utasításon belül adja hozzá a következő kódot a modellhez: [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=46)]
+A using utasításon belül adja hozzá ezt a kódot a modellhez.
+
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=46)]
 
 ## <a name="display-recognition-results-or-errors"></a>Megjelenítés felismerési eredményei (vagy hibák)
 

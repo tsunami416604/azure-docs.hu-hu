@@ -1,25 +1,26 @@
 ---
-title: Csomagok és számlázás – Azure Scheduler
+title: Csomagok és számlázás
 description: Az Azure Scheduler csomagjainak és számlázásának ismertetése
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 4b63367ab9686eee66bf3f00dddc2e2efe4cb941
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e821036ff4ddb5a9786bc4f4537bb81539ab2c87
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300870"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898473"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Csomagok és számlázás az Azure Schedulerben
 
 > [!IMPORTANT]
-> [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a lehető leghamarabb [telepítse át Azure Logic apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a lehető leghamarabb [telepítse át Azure Logic apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
+>
+> Az ütemező már nem érhető el a Azure Portalban, de a [REST API](/rest/api/scheduler) és az [Azure Scheduler PowerShell-parancsmagjai](scheduler-powershell-reference.md) jelenleg is elérhetők maradnak, így a feladatok és a feladatok gyűjteményei kezelhetők.
 
 ## <a name="job-collection-plans"></a>A feladatütemezés csomagjai
 
@@ -72,7 +73,7 @@ Az P20 prémium számlázható egység akár 5 000 P20 prémium szintű feladato
 
 A prémium szintű P20 ugyanazokat a képességeket nyújtják, mint a prémium szintű P10, de több feladatot is támogatnak egy gyűjteményen belül, és a prémium szinthez képest nagyobb számú feladatot is megadhatnak, ami nagyobb méretezhetőséget biztosít.
 
-## <a name="plan-comparison"></a>Csomagok összehasonlítása
+## <a name="plan-comparison"></a>Terv összehasonlítása
 
 * Ha több mint 100 standard felállása van (10 standard számlázási egység), akkor jobb megoldás, ha az összes feladatot egy prémium csomaggal látja el.
 
@@ -80,8 +81,7 @@ A prémium szintű P20 ugyanazokat a képességeket nyújtják, mint a prémium 
 
   Az ütemező szolgáltatás a standard vagy a prémium szintű aktív Webhelycsoportok száma alapján számláz.
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>További lépések
 
-* [Mi az Azure Scheduler?](scheduler-intro.md)
 * [Az Azure Scheduler alapfogalmai, terminológiája és entitáshierarchiája](scheduler-concepts-terms.md)
 * [Azure Scheduler – korlátozások, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)

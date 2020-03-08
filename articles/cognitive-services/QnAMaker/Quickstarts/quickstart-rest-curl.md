@@ -1,14 +1,16 @@
 ---
 title: 'Rövid útmutató: a & REST használatával kezelheti a tudásbázist – QnA Maker'
 description: Ez a rövid útmutató bemutatja, hogyan hozhatja létre, teheti közzé és kérdezheti le tudásbázisát a REST API-k használatával.
+ms.date: 02/27/2020
+ROBOTS: NOINDEX,NOFOLLOW
+ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.date: 12/16/2019
-ms.openlocfilehash: d2542a0307387cef1c96ecfb426a8e7c01621ee2
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 00ec52fe20fb0e6a976f3e7142386e835713c98c
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78165459"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851208"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Rövid útmutató: a Tudásbázis és a REST használata a Tudásbázis kezeléséhez
 
@@ -198,13 +200,13 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 
 A válasz állapota 204, és nincs találat. A `-v` parancssori paraméter használatával megtekintheti a cURL parancs részletes kimenetét. Ez magában foglalja a HTTP-állapotot is.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 * [Szerzői műveletek](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) Dokumentáció
 * [Futtatókörnyezet](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/) Dokumentáció
 * [BASH-parancsfájlok minta a cURL használatával](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/curl/QnAMaker)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

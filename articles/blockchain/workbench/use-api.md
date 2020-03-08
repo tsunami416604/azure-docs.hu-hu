@@ -1,27 +1,19 @@
 ---
 title: Az Azure Blockchain Workbench REST API-k használata
 description: Az Azure Blockchain Workbench előzetes verziójának használatának forgatókönyvei REST API
-ms.date: 10/14/2019
+ms.date: 03/05/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: 188bbb9a9f6d289a7950ff74596352dff36e79f2
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 3084fcf343bc42fe01bf352b6791916d62f63540
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74324205"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672747"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Az Azure Blockchain Workbench előzetes verziójának használata REST API
 
-Az Azure Blockchain Workbench előzetes verziójának REST API a fejlesztők és az informatikai szakemberek számára lehetővé teszi, hogy gazdag integrációkat építsen ki az alkalmazások Blockchain. Ez a dokumentum bemutatja, hogy hogyan használhatja a Workbench REST API-jának számos fő metódusát. Tegyük fel például, hogy egy fejlesztő egyéni blockchain-ügyfelet szeretne létrehozni. Ez a blockchain-ügyfél lehetővé teszi a bejelentkezett felhasználók számára, hogy megtekintsék és használják a hozzájuk rendelt blockchain-alkalmazásaikat. Az ügyféllel a felhasználók megtekinthetik a szerződéspéldányokat, és műveleteket végezhetnek az intelligens szerződéseken. Az ügyfél a Workbench REST APIt használja a bejelentkezett felhasználó környezetében a következő műveletek elvégzéséhez:
-
-* Alkalmazások listázása
-* Az egyes alkalmazások munkafolyamatainak listázása
-* Az egyes munkafolyamatok intelligensszerződés-példányainak listázása
-* Az egyes szerződések elérhető műveleteinek listázása
-* Az egyes szerződések egyes műveleteinek végrehajtása
-
-A forgatókönyvekben használt példa blockchain-alkalmazások [letölthetők a githubról](https://github.com/Azure-Samples/blockchain).
+Az Azure Blockchain Workbench előzetes verziójának REST API a fejlesztők és az informatikai szakemberek számára lehetővé teszi, hogy gazdag integrációkat építsen ki az alkalmazások Blockchain. Ez a cikk a Workbench REST API használatának számos forgatókönyvét ismerteti. Tegyük fel például, hogy olyan egyéni blockchain-ügyfelet szeretne létrehozni, amely lehetővé teszi a bejelentkezett felhasználók számára a hozzárendelt blockchain-alkalmazások megtekintését és kezelését. Az ügyfél a Blockchain Workbench API használatával megtekintheti a szerződések példányait, és műveleteket végezhet az intelligens szerződéseken.
 
 ## <a name="blockchain-workbench-api-endpoint"></a>Blockchain Workbench API-végpont
 
@@ -36,21 +28,125 @@ Az Blockchain Workbench API-k egy végponton keresztül érhetők el az üzembe 
 
     ![App Service API-végpont URL-címe](media/use-api/app-service-api.png)
 
+## <a name="authentication"></a>Hitelesítés
+
+Az Blockchain Workbench REST APIra irányuló kérelmeket Azure Active Directory (Azure AD) védi.
+
+Ahhoz, hogy a REST API-khoz hitelesített kérelmet lehessen készíteni, az ügyfél kódjának az API meghívása előtt érvényes hitelesítő adatokkal kell rendelkeznie a hitelesítéshez. A hitelesítés a különböző szereplők által az Azure AD-ben van koordinálva, és a hitelesítést igazoló [hozzáférési jogkivonattal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#access-token) látja el az ügyfelet. Ezután a jogkivonat a REST API kérelmek HTTP-engedélyezési fejlécében lesz elküldve. Az Azure AD-hitelesítéssel kapcsolatos további tudnivalókért tekintse meg [a Azure Active Directory fejlesztők számára](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)című témakört.
+
+A hitelesítéssel kapcsolatos példákért tekintse meg [REST API mintákat](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples) .
+
+## <a name="using-postman"></a>A Postman használata
+
+Ha a Workbench API-kkal szeretne tesztelni vagy kísérletezni, a [Poster](https://www.postman.com) használatával API-hívásokat indíthat az üzembe helyezéshez. [Töltse le a WORKBENCH API-kérések mintájának Poster-gyűjteményét](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples/postman) a githubról. A példa API-kérések hitelesítésével és használatával kapcsolatos részletekért tekintse meg a README fájlt.
+
+## <a name="create-an-application"></a>Alkalmazás létrehozása
+
+Két API-hívást használ egy Blockchain Workbench-alkalmazás létrehozásához. Ezt a metódust csak Workbench-rendszergazda felhasználók végezhetik el.
+
+Az alkalmazások JSON-fájljának feltöltéséhez és az alkalmazás AZONOSÍTÓjának beszerzéséhez használja az API-k [közzététele](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationspost) lehetőséget.
+
+### <a name="applications-post-request"></a>Alkalmazások POST kérelem
+
+A **appFile** paraméter segítségével küldje el a konfigurációs fájlt a kérelem törzsének részeként.
+
+``` http
+POST /api/v1/applications
+Content-Type: multipart/form-data;
+Authorization : Bearer {access token}
+Content-Disposition: form-data; name="appFile"; filename="/C:/smart-contract-samples/HelloWorld.json"
+Content-Type: application/json
+```
+
+### <a name="applications-post-response"></a>Alkalmazások utáni válasz
+
+A rendszer a válaszban visszaadja a létrehozott alkalmazás AZONOSÍTÓját. A következő API meghívásakor szüksége lesz az alkalmazás AZONOSÍTÓJÁRA, hogy társítsa a konfigurációs fájlt a fájlhoz.
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: "application/json"
+1
+```
+
+### <a name="contract-code-post-request"></a>Szerződési kód POST kérelem
+
+Használja az Applications [SZERZŐDÉSSABLON post API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/contractcodepost) -ját az alkalmazás-azonosító feltöltésével az alkalmazás szilárdsági kódjának feltöltéséhez. A hasznos adatok lehetnek egyetlen szilárdtest-fájlok vagy a szilárdtest fájlokat tartalmazó tömörített fájlok.
+
+Cserélje le a következő értékeket:
+
+| Paraméter | Érték |
+|-----------|-------|
+| ApplicationId | Visszatérési érték az alkalmazások utáni API-ból. |
+| {ledgerId} | A Főkönyv indexe. Az érték általában 1. Az értékhez tartozó [Főkönyvi táblázatot](data-sql-management-studio.md) is megtekintheti. |
+
+``` http
+POST /api/v1/applications/{applicationId}/contractCode?ledgerId={ledgerId}
+Content-Type: multipart/form-data;
+Authorization : Bearer {access token}
+Content-Disposition: form-data; name="contractFile"; filename="/C:/smart-contract-samples/HelloWorld.sol"
+```
+
+### <a name="contract-code-post-response"></a>Szerződés kódja POST Response
+
+Ha ez sikeres, a válasz tartalmazza a létrehozott szerződés kódjának AZONOSÍTÓját a [ContractCode táblából](data-sql-management-studio.md).
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: "application/json"
+2
+```
+
+## <a name="assign-roles-to-users"></a>Szerepkörök hozzárendelése felhasználókhoz
+
+Az [alkalmazások szerepkör-hozzárendelések közzététele API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) -val az alkalmazás-azonosító, a felhasználói azonosító és az alkalmazás-szerepkör azonosítója segítségével hozzon létre egy felhasználó – szerepkör leképezést a megadott blockchain alkalmazásban. Ezt a metódust csak Workbench-rendszergazda felhasználók végezhetik el.
+
+### <a name="role-assignments-post-request"></a>Szerepkör-hozzárendelések POST kérelem
+
+Cserélje le a következő értékeket:
+
+| Paraméter | Érték |
+|-----------|-------|
+| ApplicationId | Visszatérési érték az alkalmazások utáni API-ból. |
+| UserId | Felhasználói azonosító értéke a [felhasználói táblából](data-sql-management-studio.md). |
+| {applicationRoleId} | Az alkalmazás-szerepkör AZONOSÍTÓjának értéke a [ApplicationRole tábla](data-sql-management-studio.md)alkalmazás-azonosítójával. |
+
+``` http
+POST /api/v1/applications/{applicationId}/roleAssignments
+Content-Type: application/json;
+Authorization : Bearer {access token}
+
+{
+  "userId": {userId},
+  "applicationRoleId": {applicationRoleId}
+}
+```
+
+### <a name="role-assignments-post-response"></a>Szerepkör-hozzárendelések POST Response
+
+Ha ez sikeres, a válasz tartalmazza a létrehozott szerepkör-hozzárendelési azonosítót a [RoleAssignment táblából](data-sql-management-studio.md).
+
+``` http
+HTTP/1.1 200
+1
+```
+
 ## <a name="list-applications"></a>Alkalmazások listázása
 
-Miután a felhasználó bejelentkezett a blockchain-ügyfélbe, az első feladat, hogy beolvassa az összes Blockchain Workbench alkalmazást a felhasználó számára. Ebben a példában a felhasználó két alkalmazáshoz tud hozzáférni:
+Az [alkalmazások letöltése API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget) -val lekérheti az összes Blockchain Workbench-alkalmazást a felhasználó számára. Ebben a példában a bejelentkezett felhasználó két alkalmazáshoz fér hozzá:
 
-1. [Eszközök átvitele](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
-2. [Hűtött szállítás](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
+- [Eszközök átvitele](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
+- [Hűtött szállítás](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
 
-Használja az [Applications GET API-t](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget):
+### <a name="applications-get-request"></a>Alkalmazások GET kérelem
 
 ``` http
 GET /api/v1/applications
 Authorization : Bearer {access token}
 ```
 
-A válasz felsorolja az összes olyan blockchain-alkalmazást, amelyhez a felhasználó hozzáfér a Blockchain Workbenchben. A Blockchain Workbench-rendszergazdák minden Blockchain-alkalmazást megkapnak. A nem Workbench rendszergazdák megkapják az összes olyan blokkláncok, amelyhez legalább egy társított alkalmazási szerepkör vagy egy kapcsolódó intelligens szerződés-példány szerepkör tartozik.
+### <a name="applications-get-response"></a>Az alkalmazások választ kapnak
+
+A válasz felsorolja az összes olyan blockchain-alkalmazást, amelyhez a felhasználó hozzáfér a Blockchain Workbenchben. A Blockchain Workbench-rendszergazdák minden Blockchain-alkalmazást megkapnak. A nem Workbench rendszergazdák lekérik az összes olyan blockchain-alkalmazást, amelyhez legalább egy társított alkalmazási szerepkör vagy egy kapcsolódó intelligens szerződés-példány szerepkör tartozik.
 
 ``` http
 HTTP/1.1 200 OK
@@ -84,16 +180,18 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>Az egyes alkalmazások munkafolyamatainak listázása
 
-Miután a felhasználó kiválasztja a megfelelő blockchain alkalmazást (például az **eszköz átvitelét**), a blockchain-ügyfél lekéri az adott blockchain-alkalmazás összes munkafolyamatát. A felhasználók ezután kiválaszthatják a megfelelő munkafolyamatot, majd láthatják az adott munkafolyamathoz tartozó összes intelligensszerződés-példányt. Minden egyes blokklánc-alkalmazás rendelkezik egy vagy több munkafolyamattal, és minden munkafolyamathoz tartozik nulla vagy több intelligensszerződés-példány. Olyan blockchain-ügyfélalkalmazás esetén, amelyeknek csak egy munkafolyamata van, javasoljuk, hogy hagyja ki a felhasználói élmény folyamatát, amely lehetővé teszi a felhasználók számára a megfelelő munkafolyamat kiválasztását. Ebben az esetben az **Asset-átvitelnek** csak egy munkafolyamata van, más néven az **eszközök átvitele**.
+Az [alkalmazások munkafolyamatainak BEolvasása API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) -val egy adott blockchain-alkalmazás összes munkafolyamatát listázhatja, amelyhez a felhasználó hozzáfér a blockchain workbenchben. Minden egyes blokklánc-alkalmazás rendelkezik egy vagy több munkafolyamattal, és minden munkafolyamathoz tartozik nulla vagy több intelligensszerződés-példány. Olyan blockchain-ügyfélalkalmazás esetén, amelyeknek csak egy munkafolyamata van, javasoljuk, hogy hagyja ki a felhasználói élmény folyamatát, amely lehetővé teszi a felhasználók számára a megfelelő munkafolyamat kiválasztását.
 
-Használja az [Applications Workflows GET API-t](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget):
+### <a name="application-workflows-request"></a>Alkalmazás-munkafolyamatok kérelme
 
 ``` http
 GET /api/v1/applications/{applicationId}/workflows
 Authorization: Bearer {access token}
 ```
 
-A válasz felsorolja az adott blokkláncalkalmazás összes olyan munkafolyamatát, amelyhez a felhasználó hozzáfér a Blockchain Workbenchben. A Blockchain Workbench-rendszergazdák minden Blockchain-munkafolyamatot megkapnak. A nem Workbench rendszergazdák minden olyan munkafolyamatot megkapnak, amelyhez legalább egy társított alkalmazási szerepkör tartozik, vagy egy intelligens szerződési példány szerepkörhöz vannak társítva.
+### <a name="application-workflows-response"></a>Alkalmazás-munkafolyamatok válasza
+
+A Blockchain Workbench-rendszergazdák minden Blockchain-munkafolyamatot megkapnak. A nem Workbench rendszergazdák minden olyan munkafolyamatot megkapnak, amelyhez legalább egy társított alkalmazási szerepkör tartozik, vagy egy intelligens szerződési példány szerepkörhöz vannak társítva.
 
 ``` http
 HTTP/1.1 200 OK
@@ -114,18 +212,72 @@ Content-type: application/json
 }
 ```
 
+## <a name="create-a-contract-instance"></a>Szerződési példány létrehozása
+
+A [szerződések v2 utáni API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contractsv2/contractpost) -t használva hozzon létre egy új, intelligens szerződési példányt egy munkafolyamathoz. A felhasználók csak akkor hozhatnak létre új intelligens szerződési példányt, ha a felhasználó egy alkalmazás-szerepkörhöz van társítva, amely a munkafolyamathoz intelligens szerződési példányt indíthat.
+
+> [!NOTE]
+> Ebben a példában a rendszer az API 2-es verzióját használja. A 2. verziójú szerződések API-jai részletesebben biztosítják a társított ProvisioningStatus mezőket.
+
+### <a name="contracts-post-request"></a>Szerződések POST kérelem
+
+Cserélje le a következő értékeket:
+
+| Paraméter | Érték |
+|-----------|-------|
+| WorkflowId | A munkafolyamat-azonosító értéke a szerződés ConstructorID a [munkafolyamat-táblából](data-sql-management-studio.md). |
+| {contractCodeId} | A [ContractCode táblához](data-sql-management-studio.md)tartozó SZERZŐDÉSSABLON-azonosító érték. Korrelálja az alkalmazás AZONOSÍTÓját és a létrehozni kívánt szerződés-példányhoz tartozó főkönyvi azonosítót. |
+| ConnectionId | A kapcsolatok AZONOSÍTÓjának értéke a [kapcsolatok táblából](data-sql-management-studio.md). |
+
+A kérelem törzse esetében az alábbi információk alapján állítsa be az értékeket:
+
+| Paraméter | Érték |
+|-----------|-------|
+| workflowFunctionID | AZONOSÍTÓ a [WorkflowFunction táblából](data-sql-management-studio.md). |
+| workflowActionParameters | A konstruktornak átadott paraméterek neve érték párok. Minden paraméternél használja a workflowFunctionParameterID értéket a [WorkflowFunctionParameter](data-sql-management-studio.md) táblából. |
+
+``` http
+POST /api/v2/contracts?workflowId={workflowId}&contractCodeId={contractCodeId}&connectionId={connectionId}
+Content-Type: application/json;
+Authorization : Bearer {access token}
+
+{
+  "workflowFunctionID": 2,
+  "workflowActionParameters": [
+    {
+      "name": "message",
+      "value": "Hello, world!",
+      "workflowFunctionParameterId": 3
+    }
+  ]
+}
+```
+
+### <a name="contracts-post-response"></a>Szerződések POST Response
+
+Ha a művelet sikeres, a szerepkör-hozzárendelések API visszaadja a ContractActionID a [ContractActionParameter táblából](data-sql-management-studio.md).
+
+``` http
+HTTP/1.1 200 OK
+4
+```
+
 ## <a name="list-smart-contract-instances-for-a-workflow"></a>Az egyes munkafolyamatok intelligensszerződés-példányainak listázása
 
-Miután a felhasználó kiválasztja a megfelelő munkafolyamatot, ez az adategység- **átvitel**, a blockchain-ügyfél lekéri a megadott munkafolyamat összes intelligens szerződési példányát. Ezeket az információkat a munkafolyamat összes intelligens szerződési példányának megjelenítésére használhatja. Vagy lehetővé teheti a felhasználók számára, hogy a megjelenített intelligens szerződési példányok bármelyikére bemutassanak. A jelen példában tegyük fel, hogy egy felhasználó szeretne műveleteket végezni az intelligensszerződés-példányok egyikével.
+A [szerződések](/rest/api/azure-blockchain-workbench/contractsv2/contractsget) használatával az API-t a munkafolyamatok összes intelligens szerződési példányának megjelenítéséhez használhatja. Vagy lehetővé teheti a felhasználók számára, hogy a megjelenített intelligens szerződési példányok bármelyikére bemutassanak.
 
-Használja a [Contracts GET API-t](/rest/api/azure-blockchain-workbench/contractsv2/contractsget):
+### <a name="contracts-request"></a>Szerződések kérése
+
+A jelen példában tegyük fel, hogy egy felhasználó szeretne műveleteket végezni az intelligensszerződés-példányok egyikével.
 
 ``` http
 GET api/v1/contracts?workflowId={workflowId}
 Authorization: Bearer {access token}
 ```
 
-A válasz felsorolja az adott munkafolyamathoz tartozó összes intelligensszerződés-példányt. A Workbench-rendszergazdák az összes intelligens szerződési példányt megkapják. A nem Workbench rendszergazdák minden olyan intelligens szerződési példányt megkapnak, amelyhez legalább egy társított alkalmazási szerepkör tartozik, vagy egy intelligens szerződési példány szerepkörhöz van társítva.
+### <a name="contracts-response"></a>Szerződések válasza
+
+A válasz felsorolja a megadott munkafolyamat összes intelligens szerződési példányát. A Workbench-rendszergazdák az összes intelligens szerződési példányt megkapják. A nem Workbench rendszergazdák minden olyan intelligens szerződési példányt megkapnak, amelyhez legalább egy társított alkalmazási szerepkör tartozik, vagy egy intelligens szerződési példány szerepkörhöz van társítva.
 
 ``` http
 HTTP/1.1 200 OK
@@ -215,19 +367,25 @@ Content-type: application/json
 
 ## <a name="list-available-actions-for-a-contract"></a>Az egyes szerződések elérhető műveleteinek listázása
 
-Ha a felhasználó úgy dönt, hogy részletesen belevetik a szerződést, a blockchain-ügyfél ezután megjelenítheti az elérhető felhasználói műveleteket a szerződés állapota alapján. Ebben a példában a felhasználó megtekinti egy frissen létrehozott intelligens szerződés összes elérhető műveletét:
+A szerződés állapota alapján az elérhető felhasználói műveletek megjelenítéséhez használja a [szerződéses művelet BEolvasása API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget) -t. 
 
-* Módosítás: A felhasználó módosíthatja egy objektum leírását és árát.
-* Megszakítás: lehetővé teszi a felhasználó számára az eszköz szerződésének befejezését.
+### <a name="contract-action-request"></a>Szerződésre vonatkozó műveleti kérelem
 
-Használja a [Contract Action GET API-t](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget):
+Ebben a példában a felhasználó az összes elérhető műveletet megtekinti egy új intelligens szerződés létrehozásához.
 
 ``` http
 GET /api/v1/contracts/{contractId}/actions
 Authorization: Bearer {access token}
 ```
 
-A válasz felsorolja az összes olyan műveletet, amelyhez a felhasználó hozzáférhet az adott intelligensszerződés-példány aktuális állapotában. A felhasználók megkapják az összes elérhető műveletet, ha rendelkeznek alkalmazás-szerepkörrel vagy intelligensszerződés-példányi szerepkörrel az adott intelligensszerződés-példány aktuális állapotához.
+### <a name="contract-action-response"></a>Szerződési művelet válasza
+
+A válasz felsorolja az összes olyan műveletet, amelyhez a felhasználó hozzáférhet az adott intelligensszerződés-példány aktuális állapotában.
+
+* Módosítás: A felhasználó módosíthatja egy objektum leírását és árát.
+* Megszakítás: lehetővé teszi a felhasználó számára az eszköz szerződésének befejezését.
+
+A felhasználók megkapják az összes elérhető műveletet, ha rendelkeznek alkalmazás-szerepkörrel vagy intelligensszerződés-példányi szerepkörrel az adott intelligensszerződés-példány aktuális állapotához.
 
 ``` http
 HTTP/1.1 200 OK
@@ -282,12 +440,11 @@ Content-type: application/json
 
 ## <a name="execute-an-action-for-a-contract"></a>Az egyes szerződések egyes műveleteinek végrehajtása
 
-A felhasználó ezután eldöntheti, hogy milyen műveletet kíván végezni az adott intelligensszerződés-példányon. Ebben az esetben vegye figyelembe azt a forgatókönyvet, amelyben a felhasználó módosítani szeretné egy eszköz leírását és árát a következő művelethez:
+A megadott intelligens szerződési példányra vonatkozó művelet végrehajtásához használja az API-t az [egyezményes művelet után](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost) .
 
-* Leírás: „Az én frissített autóm”
-* Ár: 543210
+### <a name="contract-action-post-request"></a>Szerződési művelet POST kérelem
 
-Használja a [Contract Action POST API-t](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost):
+Ebben az esetben vegye figyelembe azt a forgatókönyvet, amelyben a felhasználó módosítani szeretné egy eszköz leírását és árát.
 
 ``` http
 POST /api/v1/contracts/{contractId}/actions
@@ -307,14 +464,17 @@ actionInformation: {
 }
 ```
 
-A felhasználók csak olyan műveleteket tudnak végrehajtani, amelyhez rendelkeznek alkalmazás-szerepkörrel vagy intelligensszerződés-példányi szerepkörrel az adott intelligensszerződés-példány aktuális állapotára vonatkozóan. Ha a POST művelet sikeres, HTTP 200 OK választ fog kapni választörzs nélkül.
+A felhasználók csak olyan műveleteket tudnak végrehajtani, amelyhez rendelkeznek alkalmazás-szerepkörrel vagy intelligensszerződés-példányi szerepkörrel az adott intelligensszerződés-példány aktuális állapotára vonatkozóan.
+
+### <a name="contract-action-post-response"></a>Szerződési művelet POST Response
+
+Ha a POST művelet sikeres, HTTP 200 OK választ fog kapni választörzs nélkül.
 
 ``` http
 HTTP/1.1 200 OK
 Content-type: application/json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Az Azure Blockchain Workbench REST API leírása](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)
+Az Blockchain Workbench API-kkal kapcsolatos tudnivalókat az [Azure Blockchain Workbench REST API dokumentációjában](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)talál.

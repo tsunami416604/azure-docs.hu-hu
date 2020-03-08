@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44de5878dcc39e09adf24f69b883a29370f00b48
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505722"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851382"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>A virtuális gépek indítása és leállítása a munkaidőn kívüli megoldással – problémamegoldás
 
@@ -203,7 +203,7 @@ Ezt a problémát egy nem megfelelően konfigurált vagy lejárt futtató fiók 
 
 A futtató fiók megfelelő konfigurálásához lépjen a Azure Portal Automation-fiókjába, és válassza a **fiók beállításai**alatt a **futtató fiókok** elemet. Itt láthatja a futtató fiókok állapotát, ha a futtató fiók helytelenül van konfigurálva vagy lejárt, és ez az állapot jelenik meg.
 
-Ha a futtató fiók [helytelenül van konfigurálva](../manage-runas-account.md#misconfiguration), törölje, majd hozza létre újra a futtató fiókot.
+Ha a futtató fiók helytelenül van konfigurálva, törölje, majd hozza létre újra a futtató fiókot. Lásd: [Azure Automation futtató fiókok kezelése](../manage-runas-account.md).
 
 Ha a tanúsítvány lejárt a futtató fiókhoz, kövesse az [önaláírt tanúsítvány megújításakor](../manage-runas-account.md#cert-renewal) felsorolt lépéseket a tanúsítvány megújításához.
 
@@ -226,7 +226,7 @@ Sokszor a megoldás régi és elavult változata is okozhatja a hibákat.
 
 Sok hiba elhárításához javasolt a megoldás eltávolítása és frissítése. A megoldás frissítéséről a [virtuális gépek indítása és leállítása a munkaidőn kívüli megoldásban](../automation-solution-vm-management.md#update-the-solution)című témakörben olvashat bővebben. Emellett a [feladatok adatfolyamait](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) is megtekintheti a hibák kereséséhez. A portálon nyissa meg az Automation-fiókját, és válassza a **feladatok** **automatizálása**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

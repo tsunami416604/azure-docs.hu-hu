@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1df037b66c72177a96f77231cee70782d04992
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3fff08690eb2807fbbd50f297761c57d3fef88fe
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620714"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671846"
 ---
 # <a name="custom-controls-preview"></a>Egyéni vezérlők (előzetes verzió)
 
@@ -49,11 +49,11 @@ Másolja a JSON-adatforrást, majd illessze be a kapcsolódó szövegmezőbe. Ne
 
 Az egyéni vezérlő létrehozásának lehetősége a **feltételes hozzáférés** lap **kezelés** szakaszában található.
 
-![Vezérlés](./media/controls/82.png)
+![Vezérlő](./media/controls/82.png)
 
 Az **új egyéni vezérlő**elemre kattintva megnyílik egy panel, amely a vezérlőelem JSON-adataihoz tartozó szövegmezővel rendelkezik.  
 
-![Vezérlés](./media/controls/81.png)
+![Vezérlő](./media/controls/81.png)
 
 ## <a name="deleting-custom-controls"></a>Egyéni vezérlők törlése
 
@@ -67,22 +67,10 @@ Egyéni vezérlő törléséhez először gondoskodnia kell arról, hogy ne legy
 
 Egyéni vezérlő szerkesztéséhez törölnie kell a jelenlegi vezérlőt, és létre kell hoznia egy új vezérlőt a frissített információkkal.
 
-## <a name="session-controls"></a>Munkamenet-vezérlőelemek
+## <a name="next-steps"></a>További lépések
 
-A munkamenet-vezérlők lehetővé teszik a felhőalapú alkalmazások korlátozott felhasználói élményét. A munkamenet-vezérlőket a Cloud apps kényszeríti, és az Azure AD által az alkalmazással kapcsolatban elérhető további információkra támaszkodik.
+- [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 
-![Vezérlés](./media/controls/31.png)
+- [Csak jelentési mód](concept-conditional-access-report-only.md)
 
-### <a name="use-app-enforced-restrictions"></a>Alkalmazás által kényszerített korlátozások használata
-
-Ezzel a vezérlővel megkövetelheti, hogy az Azure AD átadja az eszköz adatait a kiválasztott felhőalapú alkalmazásoknak. Az eszköz adatai lehetővé teszik a felhőalapú alkalmazások számára, hogy megismerjék, hogy a kapcsolat kompatibilis vagy tartományhoz csatlakoztatott eszközről kezdeményezhető-e. Ez a vezérlő csak a SharePoint Online-t és az Exchange Online-t támogatja a kiválasztott felhőalapú alkalmazásokként. Ha bejelöli, a felhőalapú alkalmazás az eszköz információi alapján biztosítja a felhasználók számára az eszköz állapotától függően korlátozott vagy teljes körű felhasználói élményt.
-
-További tudnivalókért lásd:
-
-- [Korlátozott hozzáférés engedélyezése a SharePoint Online-ban](https://aka.ms/spolimitedaccessdocs)
-- [Korlátozott hozzáférés engedélyezése az Exchange Online-ban](https://aka.ms/owalimitedaccess)
-
-## <a name="next-steps"></a>Következő lépések
-
-- Ha tudni szeretné, hogyan konfigurálhat egy feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című témakört.
-- Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md).
+- [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)

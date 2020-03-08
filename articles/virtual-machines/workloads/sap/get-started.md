@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/03/2020
+ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0219b3e35ed82795e9c799754cabdeb5d17096d6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 4a02fb7ab7e42f2a56041638a3d883287da3eb42
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78267409"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674503"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -43,6 +43,7 @@ Ha konkrét kérdései vannak, egy adott dokumentumra vagy folyamatra fogunk rá
 - Milyen SAP-telepítési forgatókönyvek támogatottak az Azure-beli virtuális gépek és a HANA Large-példányok esetében. A támogatott forgatókönyvekkel kapcsolatos információk a következő dokumentumokban találhatók:
     - [SAP számítási feladatok az Azure-beli virtuális gépek által támogatott forgatókönyvekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)
     - [A HANA nagyméretű példányának támogatott forgatókönyvei](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)
+- Az Azure-szolgáltatások, az Azure-beli virtuális gépek típusai és az Azure Storage a különböző Azure-régiókban érhetők el, és a [régiókban elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/) 
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA az Azure-ban (nagyméretű példányok)
@@ -109,6 +110,8 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 
 ## <a name="change-log"></a>Változásnapló
+
+- 03/05/2020: az Azure-régiók és Azure-beli virtuális gépek szerkezetének változásai és tartalmi változásai az Azure-ban [Virtual Machines az SAP NetWeaver tervezése és megvalósítása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
 - 03/03/2020: az [SAP NW magas rendelkezésre állásának megváltozása Azure-beli virtuális gépeken a SLES-ben a ANF for SAP-alkalmazások](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) a hatékonyabb ANF mennyiségi elrendezésre való váltáshoz
 - 03/01/2020: átdolgozott [biztonsági mentési útmutató az Azure Virtual Machines SAP HANAához](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide) Azure Backup szolgáltatás belefoglalásához. Csökkenthető és tömörített tartalom a [SAP HANA Azure Backup a fájl szintjén](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level) , és törölte a biztonsági mentéssel foglalkozó harmadik dokumentumot a lemez pillanatképének használatával. A tartalom az Azure-beli SAP HANA biztonsági mentési útmutatójában lesz kezelve Virtual Machines 
 - 02/27/2020: a magas rendelkezésre állás megváltozása az SAP NW-ben Azure-beli [virtuális gépeken a SLES for](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)SAP-alkalmazások esetében, magas rendelkezésre állás az Azure-beli virtuális gépeken a SLES-ben a [ANF for SAP Applications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) és [magas rendelkezésre állású SAP NetWeaver Azure-beli virtuális gépeken a SLES multi-SID útmutatójában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid) a "sikertelen"

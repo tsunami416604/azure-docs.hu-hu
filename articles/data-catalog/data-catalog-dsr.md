@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8f148bfe08d5f7933857eb46cf0d13d4582da108
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950275"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898152"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog támogatott adatforrások
 
@@ -71,7 +71,7 @@ A metaadatokat nyilvános API-k vagy egyszer használatos regisztrációs eszkö
       </td>
     </tr>
     <tr>
-      <td>HDFS-címtár</td>
+      <td>HDFS könyvtár</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -124,7 +124,7 @@ A metaadatokat nyilvános API-k vagy egyszer használatos regisztrációs eszkö
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 és újabb verziók.</td>
     </tr>
     <tr>
       <td>Oracle Database nézet</td>
@@ -132,7 +132,7 @@ A metaadatokat nyilvános API-k vagy egyszer használatos regisztrációs eszkö
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 és újabb verziók.</td>
     </tr>
     <tr>
       <td>Egyéb (általános eszköz)</td>
@@ -195,11 +195,11 @@ A metaadatokat nyilvános API-k vagy egyszer használatos regisztrációs eszkö
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Browser</td>
+      <td>Böngésző</td>
       <td>Csak natív üzemmódú kiszolgálók. A SharePoint-mód nem támogatott. Csak SQL Server 2008-es és újabb verziók</td>
     </tr>
     <tr>
-      <td>SQL Server-tábla</td>
+      <td>SQL Server táblázat</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: da44e8482e335c209f45db478797efa5461bbfe1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186088"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671858"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Feltételes hozzáférési szabályzat konfigurálása csak jelentési módban (előzetes verzió)
 
@@ -48,8 +48,8 @@ Egy adott bejelentkezéshez tartozó jelentés-házirend eredményének megtekin
 
 Ha szeretné megtekinteni a feltételes hozzáférési szabályzatok összesített hatását az új feltételes hozzáférési elemzések használatával, integrálnia kell Azure Monitor az Azure AD-vel, és exportálnia kell a bejelentkezési naplókat. Az integráció beállítása két lépésből áll: 
 
-1. [Regisztráljon Azure monitor előfizetésre, és hozzon létre egy munkaterületet](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
-1. [Exportálja a bejelentkezési naplókat az Azure ad](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)-ből a Azure monitorba.
+1. [Regisztráljon Azure monitor előfizetésre, és hozzon létre egy munkaterületet](/azure/azure-monitor/learn/quick-create-workspace).
+1. [Exportálja a bejelentkezési naplókat az Azure ad](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)-ből a Azure monitorba.
 
 A Azure Monitor díjszabásával kapcsolatos további információkért tekintse meg a [Azure monitor díjszabási oldalát](https://azure.microsoft.com/pricing/details/monitor/). A költségeket megbecsülő erőforrások, a napi korlát beállítása vagy az adatmegőrzési időszak testreszabása a cikkben található, a [használat és a költségek kezelése Azure monitor naplók](../../azure-monitor/platform/manage-cost-storage.md#estimating-the-costs-to-manage-your-environment)használatával.
 
@@ -82,7 +82,7 @@ Az ügyfelek észrevették, hogy a lekérdezések néha meghiúsulnak, ha a hib�
 
 A feltételes hozzáférési szabályzatok legördülő lista a legutóbbi bejelentkezések 4 órás időszakon keresztüli lekérdezésével töltődik fel. Ha a bérlő nem rendelkezik bejelentkezéssel az elmúlt 4 órában, akkor előfordulhat, hogy a legördülő lista üres lesz. Ha ez a késés állandó probléma, például a ritkán előforduló kis-és nagyvállalati bejelentkezések esetében, a rendszergazdák szerkeszthetik a feltételes hozzáférési házirendek legördülő lekérdezését, és a lekérdezés időtartamát 4 óránál hosszabb ideig meghosszabbítják.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

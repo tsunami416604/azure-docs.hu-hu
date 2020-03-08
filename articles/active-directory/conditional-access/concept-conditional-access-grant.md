@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5aff2ff2b2e60a35d0525cf5733c940aedb7976c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 09a720be10b09e11adc8acdc8ab26a06870311b0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377708"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893150"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -35,7 +35,7 @@ A Block egy hatékony vezérlő, amelyet megfelelő ismeretekkel kell megforgatn
 A rendszergazdák dönthetnek úgy, hogy egy vagy több vezérlőt kényszerítenek a hozzáférés engedélyezésekor. Ezek a vezérlőelemek a következő beállításokat tartalmazzák: 
 
 - [Többtényezős hitelesítés megkövetelése (Azure Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
-- [Eszköz megfelelőként való megjelölésének megkövetelése (Microsoft Intune)](https://docs.microsoft.com/intune/protect/device-compliance-get-started)
+- [Eszköz megfelelőként való megjelölésének megkövetelése (Microsoft Intune)](/intune/protect/device-compliance-get-started)
 - [Hibrid Azure AD-hez csatlakoztatott eszköz megkövetelése](../devices/concept-azure-ad-join-hybrid.md)
 - [Jóváhagyott ügyfélalkalmazás megkövetelése](app-based-conditional-access.md)
 - [Alkalmazás-védelmi házirend megkövetelése](app-protection-based-conditional-access.md)
@@ -53,7 +53,7 @@ Ha bejelöli ezt a jelölőnégyzetet, a felhasználóknak az Azure Multi-Factor
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>Eszköz megfelelőként való megjelölésének megkövetelése
 
-A Microsoft Intune központilag telepített szervezetek a megfelelőségi követelményeknek megfelelő eszközök azonosítására használhatják az eszközük által visszaadott adatokat. A szabályzat megfelelőségi információi továbbítva lesznek az Intune-ból az Azure AD-ba, ahol a feltételes hozzáférés az erőforrásokhoz való hozzáférés engedélyezésére vagy letiltására vonatkozó döntéseket hozhat. A megfelelőségi szabályzatokkal kapcsolatos további információkért tekintse [meg az eszközökön a szervezet erőforrásaihoz való hozzáférés engedélyezése az Intune-](https://docs.microsoft.com/intune/protect/device-compliance-get-started)nal című cikket.
+A Microsoft Intune központilag telepített szervezetek a megfelelőségi követelményeknek megfelelő eszközök azonosítására használhatják az eszközük által visszaadott adatokat. A szabályzat megfelelőségi információi továbbítva lesznek az Intune-ból az Azure AD-ba, ahol a feltételes hozzáférés az erőforrásokhoz való hozzáférés engedélyezésére vagy letiltására vonatkozó döntéseket hozhat. A megfelelőségi szabályzatokkal kapcsolatos további információkért tekintse [meg az eszközökön a szervezet erőforrásaihoz való hozzáférés engedélyezése az Intune-](/intune/protect/device-compliance-get-started)nal című cikket.
 
 Az eszközök az Intune (bármilyen eszköz operációs rendszer esetén) vagy külső gyártótól származó, Windows 10-es eszközökhöz tartozó MDM-rendszerek szerint megfelelőként jelölhetők meg. A JAMF Pro az egyetlen támogatott harmadik féltől származó MDM-rendszer. További információ az integrációról: a [JAMF Pro integrálása az Intune](/intune/protect/conditional-access-integrate-jamf)-nal a megfelelőség érdekében.
 
@@ -129,7 +129,7 @@ Tekintse meg a következő cikket [: How to: app Protection-házirend és egy j�
 
 Ha a szervezet létrehozta a használati feltételeket, az engedélyezési vezérlők területen további beállítások is láthatók. Ezek a beállítások lehetővé teszik a rendszergazdák számára, hogy a szabályzat által védett erőforrások elérésének feltétele megkövetelje a használati feltételek visszaigazolását. A használati feltételekkel kapcsolatos további információkért tekintse meg a cikkben [Azure Active Directory használati feltételeket](terms-of-use.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Feltételes hozzáférés: munkamenet-vezérlők](concept-conditional-access-session.md)
 

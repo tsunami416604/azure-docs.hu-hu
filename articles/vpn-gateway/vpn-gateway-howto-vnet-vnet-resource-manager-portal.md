@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: dbdc13b8c861c620bfdbaaf53c0901a51bb9ce08
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 3d91203253c08acdaa159fc70f7a34fa7fca20c8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399199"
+ms.locfileid: "78674160"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>A virtuális hálózatok közötti VPN gateway-kapcsolat konfigurálása az Azure portal használatával
 
@@ -127,7 +127,7 @@ Ha már rendelkezik egy virtuális hálózattal, győződjön meg arról, hogy a
 ### <a name="to-create-a-virtual-network"></a>Virtuális hálózat létrehozása
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="create-a-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
+## <a name="create-the-vnet1-gateway"></a>Az VNet1-átjáró létrehozása
 Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fogja létrehozni. Az átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően. Ha gyakorlatként hozza létre ezt a konfigurációt, tekintse meg a [példa beállításait](#example-settings).
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
@@ -138,7 +138,7 @@ Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fo
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="create-and-configure-vnet4"></a>Vnet4 felé létrehozása és konfigurálása
-A VNet1 konfigurálása után hozzon létre Vnet4 felé az előző lépések megismétlésével, és cserélje le az értékeket a Vnet4 felé értékekre. A Vnet4 felé konfigurálása előtt nem kell megvárnia, amíg a VNet1 virtuális hálózati átjárója létre nem fejeződött. Ha a saját értékeit használja, ellenőrizze a címterek nincsenek átfedésben azokkal a virtuális hálózat, amelyhez szeretné csatlakoztatni.
+A VNet1 konfigurálása után hozzon létre Vnet4 felé és a Vnet4 felé-átjárót az előző lépések megismétlésével, és cserélje le az értékeket a Vnet4 felé értékekre. A Vnet4 felé konfigurálása előtt nem kell megvárnia, amíg a VNet1 virtuális hálózati átjárója létre nem fejeződött. Ha a saját értékeit használja, ellenőrizze a címterek nincsenek átfedésben azokkal a virtuális hálózat, amelyhez szeretné csatlakoztatni.
 
 ## <a name="configure-the-vnet1-gateway-connection"></a>VNet1-átjárói kapcsolatok konfigurálása
 Ha a VNet1 és a Vnet4 felé virtuális hálózati átjárói is befejeződtek, létrehozhatók a virtuális hálózati átjárók kapcsolatai. Ebben a szakaszban létrehozza a kapcsolatot a VNet1 felől a VNet4 felé. Ezek a lépések csak egyazon előfizetésben lévő virtuális hálózatokkal működnek. Ha a virtuális hálózatok különböző előfizetésekben vannak, a kapcsolódáshoz a [PowerShellt](vpn-gateway-vnet-vnet-rm-ps.md) kell használnia. Azonban ha a virtuális hálózatok eltérő erőforráscsoportokban ugyanabban az előfizetésben, csatlakoztathatja őket a portál használatával.
@@ -148,7 +148,7 @@ Ha a VNet1 és a Vnet4 felé virtuális hálózati átjárói is befejeződtek, 
    ![Kapcsolatok lap](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png "Kapcsolatok lap")
 2. Válassza a **+ Hozzáadás** lehetőséget a **Kapcsolódás hozzáadása** lap megnyitásához.
 
-   ![Kapcsolatok hozzáadása](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-to-vnet4.png "kapcsolatok hozzáadása")
+   ![Kapcsolatok hozzáadása](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4-connection.png "kapcsolatok hozzáadása")
 3. A **kapcsolatok hozzáadása** lapon adja meg a kapcsolatok értékeit:
 
    - **Név**: adja meg a kapcsolatok nevét. Például: *VNet1toVNet4*.
@@ -189,7 +189,7 @@ A virtuális hálózatok közötti kapcsolatokról további információt a gyak
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a virtuális hálózatban lévő erőforrásokra irányuló hálózati forgalom korlátozásáról: [hálózati biztonság](../virtual-network/security-overview.md).
 

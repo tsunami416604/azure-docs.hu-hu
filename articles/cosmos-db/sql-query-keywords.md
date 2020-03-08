@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: a9de9435c0e2fb2b67733a995ff412978ea02d89
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 711e961bd5eb1607e2e6f11b0b5762423d78c0e7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386974"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898766"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB kulcsszavai
 Ez a cikk a Azure Cosmos DB SQL-lekérdezésekben felhasználható kulcsszavakat részletezi.
@@ -108,7 +108,7 @@ Az összesített rendszerfunkcióval rendelkező lekérdezések és a különál
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
 
-## <a name="in"></a>A
+## <a name="in"></a>IN
 
 A IN kulcsszó használatával megvizsgálhatja, hogy egy adott érték egyezik-e egy lista bármely értékével. Például a következő lekérdezés az összes olyan családi elemet adja vissza, amelyben a `id` `WakefieldFamily` vagy `AndersenFamily`.
 
@@ -126,7 +126,9 @@ A következő példa azokat az elemeket adja vissza, amelyekben az állapot a me
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-Az SQL API támogatást nyújt a [JSON-tömbök megismétléséhez](sql-query-object-array.md#Iteration), és egy új, a from forrásban található kulcsszóval hozzáadott összeállítást biztosít. 
+Az SQL API támogatást nyújt a [JSON-tömbök megismétléséhez](sql-query-object-array.md#Iteration), és egy új, a from forrásban található kulcsszóval hozzáadott összeállítást biztosít.
+
+Ha a `IN` szűrőben tartalmazza a partíciós kulcsot, a lekérdezés automatikusan csak a megfelelő partíciókat fogja szűrni.
 
 ## <a name="top"></a>TOP
 
@@ -161,7 +163,7 @@ Az eredmények a következők:
     }]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Első lépések](sql-query-getting-started.md)
 - [Csatlakozik](sql-query-join.md)

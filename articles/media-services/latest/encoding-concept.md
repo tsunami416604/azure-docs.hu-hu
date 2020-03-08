@@ -13,18 +13,21 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6a134d2bdfe7f370503b80703933ff646970d976
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 7f3825a2d87d5948de4bb4a9b86be8e3050f2100
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359455"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892947"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Videó és hang kódolása Media Services
 
 A Media Services kódolása a digitális videót és/vagy hangot tartalmazó fájlok egyik standard formátumból egy másikba való konvertálásának folyamatára vonatkozik, amelynek célja, hogy (a) csökkentse a fájlok méretét, és/vagy (b) olyan formátumot hozzon létre, amely kompatibilis az eszközök és alkalmazások széles körével. Ezt a folyamatot a videó tömörítésének vagy az átkódolásnak is nevezzük. Tekintse meg az [adattömörítést](https://en.wikipedia.org/wiki/Data_compression) és a [Mi a kódolás és az átkódolás?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) című témakört a fogalmak további megvitatására.
 
 A videók általában [progresszív letöltéssel](https://en.wikipedia.org/wiki/Progressive_download) vagy [adaptív sávszélességű adatfolyam](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)használatával érkeznek meg az eszközökre és alkalmazásokra.
+
+> [!IMPORTANT]
+> A Media Services nem számláz a megszakított vagy hibás feladatokért. Például egy olyan feladat, amely elérte a 50%-os előrehaladást, és a megszakítása megszakadt, a feladat percének 50%-ában nem történik számlázás. Csak a befejezett feladatokért kell fizetnie.
 
 * A progresszív letöltéssel történő továbbításhoz a Azure Media Services segítségével konvertálhat egy digitális médiafájlt [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) -fájlba, amely a [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) kodekkel kódolt videókat és az [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) -kodekkel kódolt hanganyagot tartalmaz. Ez az MP4-fájl a Storage-fiókban lévő eszközre íródik. A fájl közvetlen letöltéséhez használhatja az Azure Storage API-jait vagy SDK-kat (például a [Storage REST API](../../storage/common/storage-rest-api-auth.md) vagy a [.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)-t). Ha a kimeneti eszközt egy adott tároló nevével hozta létre a tárolóban, használja ezt a helyet. Ellenkező esetben a Media Services használatával [listázhatja az objektum-tároló URL-címeit](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
 * A tartalom adaptív sávszélességű adatfolyamként történő kézbesítésének előkészítéséhez a köztes fájlt több bitrátán kell kódolni (magasról alacsonyra). A minőség kecses átállásának biztosítása érdekében a videó felbontása alacsonyabb, mint a sávszélesség. Ez egy úgynevezett kódolási létrát eredményez, amely a felbontások és a bitráta (lásd: [automatikusan generált adaptív sávszélességű létrák](autogen-bitrate-ladder.md)) táblázata. Media Services használatával több bitrátán is kódolhatja a köztes fájlokat. Ennek során az MP4-fájlok és a hozzájuk tartozó, a Storage-fiókban lévő eszközre írt társított adatfolyam-konfigurációs fájlok készletét fogja kapni. Ezután a Media Services [dinamikus csomagolási](dynamic-packaging-overview.md) funkciójának használatával továbbíthatja a videót a streaming protokollok, például az [MPEG-Dash](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) és a [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)segítségével. Ehhez létre kell hoznia egy [adatfolyam-keresőt](streaming-locators-concept.md) , és a támogatott protokolloknak megfelelő streaming URL-címeket kell létrehoznia, amelyek az eszközök és alkalmazások számára a képességeik alapján adhatók ki.
@@ -111,7 +114,7 @@ Az előzetes beállítások használatáról a [fájlok feltöltése, kódolása
 
 A [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) a bemeneti videó standard kódolóval való kódolásakor használandó beállításokat ismerteti. Ezzel a készlet, átalakító készletek testreszabásához.
 
-#### <a name="considerations"></a>Megfontolások
+#### <a name="considerations"></a>Megfontolandó szempontok
 
 Egyéni beállításkészletek létrehozásakor a következő szempontokat kell figyelembe venni:
 
@@ -136,11 +139,17 @@ A Media Services v3-as verzióban az előzetes beállítások az API-ban erősen
 
 A médiafájlok feldolgozásának méretezéséhez lásd: [Méretezés a CLI-vel](media-reserved-units-cli-how-to.md).
 
+## <a name="billing"></a>Számlázás
+
+A Media Services nem számláz a megszakított vagy hibás feladatokért. Például egy olyan feladat, amely elérte a 50%-os előrehaladást, és a megszakítása megszakadt, a feladat percének 50%-ában nem történik számlázás. Csak a befejezett feladatokért kell fizetnie.
+
+További információt a [díjszabás](https://azure.microsoft.com/pricing/details/media-services/) tartalmaz.
+
 ## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Feltöltés, kódolás és stream Media Services használatával](stream-files-tutorial-with-api.md).
 * [KÓDOLÁS HTTPS-URL-címről beépített beállításkészletek használatával](job-input-from-http-how-to.md).

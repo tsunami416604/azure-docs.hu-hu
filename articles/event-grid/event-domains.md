@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: df560df21740d5396bc177e20de5d0eb4bf47713
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f6698f91d7659f9fc2c314a9291380301146f8ed
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511382"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898862"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Az Event Grid témakörök kezeléséhez kapcsolódó események tartományának ismertetése
 
@@ -43,13 +43,13 @@ Emellett egyetlen végpontot is biztosít, amely az összes ügyfél-eseményt k
 
 A tartományokkal az Azure szerepköralapú hozzáférés-vezérlés (RBAC) révén részletes, gabona-engedélyezési és hitelesítési vezérlési lehetőségekkel látja el az egyes témaköröket. Ezekkel a szerepkörökkel korlátozhatja, hogy az alkalmazás minden bérlője csak azokra a témakörökre korlátozódjon, amelyeknek hozzáférést kíván biztosítani számukra.
 
-Az RBAC ugyanúgy működik, ahogy a [felügyelt hozzáférés-vezérlés](security-authentication.md#management-access-control) a többi Event Grid és az Azure-ban is működik. Az RBAC használatával egyéni szerepkör-definíciókat hozhat létre és alkalmazhat az esemény-tartományokban.
+Az RBAC ugyanúgy működik, ahogy a [felügyelt hozzáférés-vezérlés](security-authorization.md) a többi Event Grid és az Azure-ban is működik. Az RBAC használatával egyéni szerepkör-definíciókat hozhat létre és alkalmazhat az esemény-tartományokban.
 
 ### <a name="built-in-roles"></a>Beépített szerepkörök
 
 A Event Grid két beépített szerepkör-definícióval rendelkezik, amelyek megkönnyítik az RBAC való munkavégzést. Ezek a szerepkörök a **EventGrid EventSubscription közreműködő (előzetes verzió)** és a **EventGrid EventSubscription Reader (előzetes verzió)** . Ezeket a szerepköröket olyan felhasználókhoz rendeli, akiknek elő kell fizetniük az esemény tartományában lévő témakörökre. A szerepkör-hozzárendelést csak arra a témakörre kell hozzárendelni, amelyre a felhasználóknak elő kell fizetniük.
 
-További információ ezekről a szerepkörökről: [Event Grid beépített szerepkörei](security-authentication.md#built-in-roles).
+További információ ezekről a szerepkörökről: [Event Grid beépített szerepkörei](security-authorization.md#built-in-roles).
 
 ## <a name="subscribing-to-topics"></a>Feliratkozás a témakörökre
 
@@ -96,12 +96,12 @@ Például a következő eseménysorozat közzétételével az eseményt `"id": "
 
 Az esemény-tartományok kezelik a témakörökre való közzétételt. Ahelyett, hogy minden egyes, egyenként felügyelt témakörhöz eseményeket tegyen közzé, az összes eseményt közzéteheti a tartomány végpontján. Event Grid gondoskodik arról, hogy az egyes események a megfelelő témakörbe legyenek küldve.
 
-## <a name="limits-and-quotas"></a>Korlátozások és kvóták
+## <a name="limits-and-quotas"></a>Korlátok és kvóták
 Az esemény-tartományokhoz kapcsolódó korlátok és kvóták:
 
 - 100 000 témakör/esemény tartománya 
 - 100 esemény-tartomány Azure-előfizetéssel 
-- 500 esemény-feliratkozás témakörönként egy eseménytartományban
+- 500 esemény-előfizetések egy adott esemény tartományában
 - 50 tartományhoz tartozó előfizetések 
 - 5 000 esemény/másodperc betöltési arány (tartományba)
 
@@ -112,6 +112,6 @@ Az esemény-tartományok ugyanazokat az [üzemeltetési díjszabást](https://az
 
 A műveletek ugyanúgy működnek az esemény-tartományokban, mint az egyéni témakörökben. Az események egy adott esemény tartományba való beáramlása egy művelet, és az eseményekhez tartozó minden kézbesítési kísérlet egy művelet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az események tartományának beállításával, a témakörök létrehozásával, az esemény-előfizetések létrehozásával és az események közzétételével kapcsolatos további tudnivalókért lásd: események [tartományának kezelése](./how-to-event-domains.md).

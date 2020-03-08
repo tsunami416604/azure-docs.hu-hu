@@ -3,12 +3,12 @@ title: SharePoint-farm biztonsági mentése Azure Stack
 description: A Azure Backup Server használatával biztonsági mentést készíthet a SharePoint-adatairól, és visszaállíthatja azokat Azure Stackeken. Ez a cikk ismerteti a SharePoint-farm konfigurálásához szükséges információkat, hogy a kívánt adatok az Azure-ban is tárolhatók legyenek. A védett SharePoint-adatok a lemezről vagy az Azure-ból is visszaállíthatók.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: c503ac7a76872e71d1920765656610dd462d4db3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: d080605022cadf121fa6be99c9758fe9c0d878ef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583214"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673042"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>SharePoint-farm biztonsági mentése Azure Stack
 
@@ -123,7 +123,7 @@ Miután a korábban ismertetett módon konfigurálta a MABS-t és a SharePoint-f
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > A MABS legfeljebb két napi biztonsági mentést biztosít az Azure-hoz a később elérhető legújabb lemezes biztonsági mentési pontról. A Azure Backup az [Azure Backup hálózati sávszélesség-szabályozás](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)használatával is szabályozhatja azt a WAN-sávszélességet, amelyet a biztonsági mentéshez használhat a csúcs-és a távolsági órákban.
+    > A MABS legfeljebb két napi biztonsági mentést biztosít az Azure-hoz a később elérhető legújabb lemezes biztonsági mentési pontról. A Azure Backup az [Azure Backup hálózati sávszélesség-szabályozás](backup-windows-with-mars-agent.md#enable-network-throttling)használatával is szabályozhatja azt a WAN-sávszélességet, amelyet a biztonsági mentéshez használhat a csúcs-és a távolsági órákban.
     >
     >
 11. A kiválasztott biztonsági mentési ütemezéstől függően az **online adatmegőrzési szabály megadása** lapon válassza ki a napi, heti, havi és éves biztonsági mentési pontok megőrzési szabályát.
@@ -238,7 +238,7 @@ Válasz: igen, az elem visszaállítható az eredeti SharePoint-webhelyre.
 K: lehet helyreállítani egy SharePoint-adatbázist az eredeti helyre, ha a SharePoint az SQL AlwaysOn használatával van konfigurálva?<br>
 A: mivel a SharePoint-adatbázisok konfigurálva vannak az SQL-AlwaysOn, csak akkor módosíthatók, ha a rendelkezésre állási csoport el lett távolítva. Ennek eredményeképpen a MABS nem tudja visszaállítani az adatbázist az eredeti helyére. SQL Server-adatbázist egy másik SQL Server-példányra is helyreállíthatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a [biztonsági másolat fájljait és az alkalmazásról](backup-mabs-files-applications-azure-stack.md) szóló cikket.
 A [biztonsági mentési SQL Server Azure stack](backup-mabs-sql-azure-stack.md) cikkben talál.

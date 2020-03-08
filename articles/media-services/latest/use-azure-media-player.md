@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: a0b0a4e89242103811f20071b7235c825c9d8bd2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d9e42e809443a2dd6cdeb989f692b96d63269f79
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967524"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673577"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player áttekintése
 
@@ -26,8 +26,6 @@ Microsoft Azure Media Services lehetővé teszi, hogy a tartalmak a HLS, a DASH,
 
 > [!NOTE]
 > A titkosított tartalom Widevine HTTPS-lejátszás szükséges.
-
-[Az ingyenes próbaverzió elindítása](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>Azure Media Player bemutató oldal használata
 
@@ -55,7 +53,7 @@ A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igén
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Media Player dokumentációja](https://aka.ms/ampdocs)
 - [Azure Media Player minták](https://aka.ms/ampsamples)

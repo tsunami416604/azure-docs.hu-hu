@@ -4,12 +4,12 @@ description: Hibaelhárítás, Azure Backup Server regisztrációja, valamint az
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 018a6cee3f00531752684b12f4988cac174d3d26
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: cc0cf7e91c1aacbc637d33ab1e5546cc54836b28
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617589"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673119"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Az Azure Backup Server hibaelhárítása
 
@@ -76,7 +76,7 @@ Javasoljuk, hogy a Microsoft Azure Backup Server (MABS) hibaelhárítása előtt
 | Művelet | A hiba részletei | Áthidaló megoldás |
 | --- | --- | --- |
 | Ügynök (ek) leküldése a védett kiszolgálókra | A kiszolgálóhoz megadott hitelesítő adatok érvénytelenek. | **Ha a termékben bemutatott javasolt művelet nem működik, hajtsa végre a következő lépéseket**: <br> Próbálja meg manuálisan telepíteni a védelmi ügynököt az üzemi kiszolgálón az ebben a [cikkben](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)megadott módon.|
-| Azure Backup ügynök nem tudott csatlakozni a Azure Backup szolgáltatáshoz (azonosító: 100050) | A Azure Backup ügynök nem tudott kapcsolódni a Azure Backup szolgáltatáshoz. | **Ha a termékben bemutatott javasolt művelet nem működik, hajtsa végre a következő lépéseket**: <br>1. Futtassa a következő parancsot egy emelt szintű parancssorból: **PsExec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**. Ekkor megnyílik az Internet Explorer ablaka. <br/> 2. Lépjen az **eszközök** > Internetbeállítások > **kapcsolatok** > **LAN-beállítások** **lehetőségre** . <br/> 3. módosítsa a beállításokat a proxykiszolgáló használatára. Ezután adja meg a proxykiszolgáló részleteit.<br/> 4. Ha a számítógépén korlátozott az Internet-hozzáférés, győződjön meg arról, hogy a számítógép vagy a proxy tűzfal beállításai lehetővé teszik ezeket az [URL-címeket](backup-configure-vault.md#verify-internet-access) és [IP-címeket](backup-configure-vault.md#verify-internet-access).|
+| Azure Backup ügynök nem tudott csatlakozni a Azure Backup szolgáltatáshoz (azonosító: 100050) | A Azure Backup ügynök nem tudott kapcsolódni a Azure Backup szolgáltatáshoz. | **Ha a termékben bemutatott javasolt művelet nem működik, hajtsa végre a következő lépéseket**: <br>1. Futtassa a következő parancsot egy emelt szintű parancssorból: **PsExec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**. Ekkor megnyílik az Internet Explorer ablaka. <br/> 2. Lépjen az **eszközök** > Internetbeállítások > **kapcsolatok** > **LAN-beállítások** **lehetőségre** . <br/> 3. módosítsa a beállításokat a proxykiszolgáló használatára. Ezután adja meg a proxykiszolgáló részleteit.<br/> 4. Ha a számítógépén korlátozott az Internet-hozzáférés, győződjön meg arról, hogy a számítógép vagy a proxy tűzfal beállításai lehetővé teszik ezeket az [URL-címeket](install-mars-agent.md#verify-internet-access) és [IP-címeket](install-mars-agent.md#verify-internet-access).|
 | Azure Backup ügynök telepítése nem sikerült | A Microsoft Azure Recovery Services telepítése sikertelen volt. A rendszer által a Microsoft Azure Recovery Services telepítés során végrehajtott összes módosítás vissza lett állítva. (AZONOSÍTÓ: 4024) | Manuálisan telepítse az Azure-ügynököt.
 
 ## <a name="configuring-protection-group"></a>Védelmi csoport konfigurálása

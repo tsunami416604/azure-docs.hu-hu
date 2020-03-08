@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9465b77d03fb3dbb668bd40bf2c7e6ded6891a05
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 5718a23e5669de6ba16354a718d72b68d14bbf49
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962057"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894554"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Forgatókönyv: a webes API-kat meghívó alkalmazás
 
@@ -46,7 +46,7 @@ Van egy másik gyakori eset, amikor a nem Daemon-alkalmazások az ügyfél hitel
 
 Olyan alkalmazások, amelyek jogkivonatot szerzik be a saját identitásuk számára:
 
-- bizalmas ügyfélalkalmazások. Ezek az alkalmazások, mivel a felhasználóktól függetlenül férnek hozzá az erőforrásokhoz, bizonyítaniuk kell identitásukat. Ők is eléggé bizalmas alkalmazások. A Azure Active Directory (Azure AD) bérlői rendszergazdáinak jóvá kell hagyniuk.
+- Bizalmas ügyfélalkalmazások. Ezek az alkalmazások, mivel a felhasználóktól függetlenül férnek hozzá az erőforrásokhoz, bizonyítaniuk kell identitásukat. Ők is eléggé bizalmas alkalmazások. A Azure Active Directory (Azure AD) bérlői rendszergazdáinak jóvá kell hagyniuk.
 - Titkos (alkalmazás jelszava vagy tanúsítvány) van regisztrálva az Azure AD-ben. Ezt a titkot a rendszer átadja az Azure AD-nek a jogkivonat beszerzésére irányuló hívásakor.
 
 ## <a name="specifics"></a>Sajátosságai
@@ -63,7 +63,7 @@ A fejlesztők számára a forgatókönyv teljes körű tapasztalata a következ�
 - Az [alkalmazás konfigurációjának](./scenario-daemon-app-configuration.md) az Azure ad-ben megosztott ügyfél-hitelesítő adatokat kell megadnia az alkalmazás regisztrációja során.
 - Az ügyfél hitelesítő adataival rendelkező token beszerzéséhez használt [hatókörnek](scenario-daemon-acquire-token.md#scopes-to-request) statikus hatókörre van szüksége.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Daemon App – alkalmazás regisztrálása](./scenario-daemon-app-registration.md)
