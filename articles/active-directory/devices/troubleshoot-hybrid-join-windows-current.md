@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd53b95472c72d70721612d8684779c206aad74e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f3ce27c59ead4e126cb143d1831ece0e93e119ef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888780"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672231"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directory csatlakoztatott eszközök hibaelhárítása 
 
@@ -356,7 +356,7 @@ A csatlakozási hibák fázisának és ErrorCode megkereséséhez használja Ese
    - Megoldás: tiltsa le a TPM-eszközt a hibával rendelkező eszközökön. A Windows 1809 automatikusan észleli a TPM-hibákat, és a TPM használata nélkül befejezi a hibrid Azure AD-csatlakozást.
 - **NTE_AUTHENTICATION_IGNORED** (0x80090031/-2146893775)
    - Ok: a TPM ki van zárva.
-   - Megoldás: átmeneti hiba. Várjon a hűtési időszakra. Egy kis idő elteltével a csatlakozás sikertelen lesz. További információt a [TPM alapjai](https://docs.microsoft.com/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering) című cikkben talál.
+   - Megoldás: átmeneti hiba. Várjon a hűtési időszakra. Egy kis idő elteltével a csatlakozás sikertelen lesz. További információt a [TPM alapjai](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering) című cikkben talál.
 
 ##### <a name="network-errors"></a>Hálózati hibák
 
@@ -372,13 +372,13 @@ A csatlakozási hibák fázisának és ErrorCode megkereséséhez használja Ese
 
 ##### <a name="federated-join-server-errors"></a>Összevont kapcsolódási kiszolgáló hibái
 
-| Kiszolgáló hibakódja | Kiszolgálóhiba üzenet | Lehetséges okok | Felbontás |
+| Kiszolgáló hibakódja | Kiszolgálóhiba üzenet | Lehetséges okok | Megoldás: |
 | --- | --- | --- | --- |
 | Címtárhiba | A kérést átmenetileg szabályozzák. Próbálkozzon 300 másodperc elteltével. | Várt hiba. Valószínűleg azért, mert a gyors öröklés több regisztrációs kérelmet tesz elérhetővé. | Csatlakozzon újra a hűtési időszak után |
 
 ##### <a name="sync-join-server-errors"></a>Csatlakozási kiszolgáló hibáinak szinkronizálása
 
-| Kiszolgáló hibakódja | Kiszolgálóhiba üzenet | Lehetséges okok | Felbontás |
+| Kiszolgáló hibakódja | Kiszolgálóhiba üzenet | Lehetséges okok | Megoldás: |
 | --- | --- | --- | --- |
 | Címtárhiba | AADSTS90002: a bérlő <UUID> nem található. Ez a hiba akkor fordulhat elő, ha a bérlőhöz nem tartoznak aktív előfizetések. Egyeztessen az előfizetés rendszergazdájával. | A SZOLGÁLTATÁSKAPCSOLÓDÁSI pont objektumának bérlői azonosítója helytelen | Győződjön meg arról, hogy az SCP-objektum a megfelelő Azure AD-bérlői AZONOSÍTÓval és aktív előfizetésekkel van konfigurálva, és szerepel a bérlőn. |
 | Címtárhiba | Nem található az eszköz objektuma a megadott azonosító alapján. | A szinkronizáláshoz való csatlakozás várható hiba. Az eszköz objektuma nem lett szinkronizálva az AD-ből az Azure AD-be | Várjon, amíg a Azure AD Connect szinkronizálás befejeződik, és a szinkronizálás befejezését követően a következő csatlakozási kísérlet megoldja a problémát |
@@ -408,7 +408,7 @@ Ezek a mezők jelzik, hogy a felhasználó sikeresen hitelesített-e az Azure AD
 ## <a name="known-issues"></a>Ismert problémák
 - A beállítások – > fiókok – > hozzáférés munkahelyi vagy iskolai rendszerhez, a hibrid Azure AD-hez csatlakoztatott eszközök két különböző fiókot mutatnak be, amelyek közül az egyik az Azure AD, egy pedig a helyszíni AD-hez, a mobil hozzáférési pontokhoz vagy külső WiFi hálózatokhoz csatlakoztatva. Ez csak egy felhasználói felületi probléma, és nincs hatással a funkcióra. 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az eszközök hibaelhárításának folytatása a dsregcmd parancs használatával](troubleshoot-device-dsregcmd.md)
 

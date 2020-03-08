@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d713dd968956f5bcc93e7b53ed2d7801e5d7bec2
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5d02b0299b6267fdd9d880d5bc0fe8c93d0edadc
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561928"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672605"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Biztonságos, Azure által felügyelt munkaállomás üzembe helyezése
 
@@ -29,13 +29,13 @@ A megoldás üzembe helyezése előtt válasszon ki egy profilt. Egyszerre több
 > [!NOTE]
 > Igény szerint alkalmazza a profilok bármelyikét. A másik profilba való áthelyezéshez rendeljen hozzá Microsoft Intune.
 
-| Profil | Alacsony | Továbbfejlesztett | Magas | Specializált | Biztosított | Izolált |
+| Profil | Alacsony | Továbbfejlesztett | Magas | Specializált | Biztosított | Elszigetelt |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Felhasználó az Azure AD-ben | Igen | Igen | Igen | Igen | Igen | Igen |
-| Intune által felügyelt | Igen | Igen | Igen | Igen | Igen | Igen |
+| Intune-managed | Igen | Igen | Igen | Igen | Igen | Igen |
 | Eszköz – Azure AD regisztrálva | Igen |  |  |  |  | |   |
 | Eszköz – Azure AD-hez csatlakoztatott |   | Igen | Igen | Igen | Igen | Igen |
-| Az Intune biztonsági alapterve alkalmazva |   | Igen <br> Bővített | Igen <br> (HighSecurity) | Igen <br> (NCSC) | Igen <br> Biztosított | n/a |
+| Az Intune biztonsági alapterve alkalmazva |   | Igen <br> Bővített | Igen <br> (HighSecurity) | Igen <br> (NCSC) | Igen <br> Biztosított | NA |
 | A hardver megfelel a biztonságos Windows 10-es szabványoknak |   | Igen | Igen | Igen | Igen | Igen |
 | Microsoft Defender ATP engedélyezve |   | Igen  | Igen | Igen | Igen | Igen |
 | Rendszergazdai jogosultságok eltávolítása |   |   | Igen  | Igen | Igen | Igen |
@@ -57,15 +57,15 @@ A licencek kiépítés automatizálásához gondolja át a felhasználók [csopo
 
 Azure Active Directory (Azure AD) a rendszergazdai munkaállomásokhoz tartozó felhasználókat, csoportokat és eszközöket kezeli. Az Identity Services és szolgáltatások engedélyezése [rendszergazdai fiókkal](../users-groups-roles/directory-assign-admin-roles.md).
 
-A biztonságos munkaállomás-rendszergazdai fiók létrehozásakor a fiók elérhetővé válnak az aktuális munkaállomáson. Győződjön meg arról, hogy ismert biztonságos eszközt használ ehhez a kezdeti konfigurációhoz és az összes globális konfigurációhoz. Ha csökkenteni szeretné a támadási expozíciót az első alkalommal, vegye figyelembe az [útmutatást a kártevők elleni fertőzések megelőzése](https://docs.microsoft.com/windows/security/threat-protection/intelligence/prevent-malware-infection)érdekében.
+A biztonságos munkaállomás-rendszergazdai fiók létrehozásakor a fiók elérhetővé válnak az aktuális munkaállomáson. Győződjön meg arról, hogy ismert biztonságos eszközt használ ehhez a kezdeti konfigurációhoz és az összes globális konfigurációhoz. Ha csökkenteni szeretné a támadási expozíciót az első alkalommal, vegye figyelembe az [útmutatást a kártevők elleni fertőzések megelőzése](/windows/security/threat-protection/intelligence/prevent-malware-infection)érdekében.
 
 A többtényezős hitelesítés megkövetelése legalább a rendszergazdák számára. Lásd: [FELHŐALAPÚ MFA üzembe helyezése](../authentication/howto-mfa-getstarted.md) a megvalósítási útmutatóban.
 
 ### <a name="azure-ad-users-and-groups"></a>Azure AD-felhasználók és-csoportok
 
 1. A Azure Portal keresse meg **Azure Active Directory** > **felhasználó** > **új felhasználót**.
-1. Hozza létre az eszköz rendszergazdáját a [felhasználói oktatóanyag létrehozása](https://docs.microsoft.com/Intune/quickstart-create-user)című témakör lépéseit követve.
-1. Be
+1. Hozza létre az eszköz rendszergazdáját a [felhasználói oktatóanyag létrehozása](/Intune/quickstart-create-user)című témakör lépéseit követve.
+1. Adja meg a következőt:
 
    * **Név** – biztonságos munkaállomás rendszergazdája
    * **Felhasználónév** - `secure-ws-admin@identityitpro.com`
@@ -127,7 +127,7 @@ A Azure Portal:
 1. Módosítsa a **Mdm felhasználói hatókörét** az **összes**értékre.
 1. Kattintson a **Mentés** gombra.
 
-Ezek a lépések lehetővé teszik bármely eszköz Intune-nal való kezelését. További információ [: az Intune gyors üzembe helyezésének beállítása a Windows 10-es eszközök automatikus regisztrálásához](https://docs.microsoft.com/Intune/quickstart-setup-auto-enrollment). Az Intune konfigurációs és megfelelőségi szabályzatait egy későbbi lépésben hozza létre.
+Ezek a lépések lehetővé teszik bármely eszköz Intune-nal való kezelését. További információ [: az Intune gyors üzembe helyezésének beállítása a Windows 10-es eszközök automatikus regisztrálásához](/Intune/quickstart-setup-auto-enrollment). Az Intune konfigurációs és megfelelőségi szabályzatait egy későbbi lépésben hozza létre.
 
 #### <a name="azure-ad-conditional-access"></a>Azure AD feltételes hozzáférés
 
@@ -137,7 +137,7 @@ Az Azure AD feltételes hozzáférés segítségével a megfelelő eszközökre 
 
 ### <a name="configure-enrollment-status"></a>Beléptetési állapot konfigurálása
 
-Fontos, hogy a biztonságos munkaállomás megbízható tiszta eszköz legyen. Új eszközök vásárlása esetén ragaszkodhat ahhoz, hogy a gyári beállítások a [Windows 10 Pro-ra, S üzemmódban](https://docs.microsoft.com/Windows/deployment/Windows-10-pro-in-s-mode)legyenek, ami korlátozza a biztonsági rések kockázatát az ellátási lánc kezelése során. Miután megkapta az eszközt a szállítótól, az Autopilot használatával módosíthatja azt S módból. Az alábbi útmutató részletesen ismerteti az átalakítási folyamat alkalmazását.
+Fontos, hogy a biztonságos munkaállomás megbízható tiszta eszköz legyen. Új eszközök vásárlása esetén ragaszkodhat ahhoz, hogy a gyári beállítások a [Windows 10 Pro-ra, S üzemmódban](/Windows/deployment/Windows-10-pro-in-s-mode)legyenek, ami korlátozza a biztonsági rések kockázatát az ellátási lánc kezelése során. Miután megkapta az eszközt a szállítótól, az Autopilot használatával módosíthatja azt S módból. Az alábbi útmutató részletesen ismerteti az átalakítási folyamat alkalmazását.
 
 Annak biztosítása érdekében, hogy az eszközök a használat előtt teljesen konfigurálva legyenek, az Intune lehetővé teszi az eszközök **használatának blokkolását, amíg az összes alkalmazás és profil nincs telepítve**.
 
@@ -147,22 +147,22 @@ A **Azure Portal**:
 1. Állítsa az **alkalmazás-profil telepítési folyamatát** **Igen**értékre.
 1. Állítsa be az **eszköz használatát, amíg az összes alkalmazás és profil nem települ** az **Igen**értékre.
 
-### <a name="create-an-autopilot-deployment-profile"></a>Autopilot Deployment-profil létrehozása
+### <a name="create-an-autopilot-deployment-profile"></a>AutoPilot üzembehelyezési profil létrehozása
 
 Az eszközcsoport létrehozása után létre kell hoznia egy központi telepítési profilt az Autopilot-eszközök konfigurálásához.
 
 Az Intune-ban a Azure Portalban:
 
 1. Válassza az **eszközök beléptetése** > **Windows-beléptetés** > **üzembe helyezési profilok** > a **profil létrehozása**lehetőséget.
-1. Be
+1. Adja meg a következőt:
 
    * Név – **biztonságos munkaállomás telepítési profilja**.
    * Leírás – **biztonságos munkaállomások üzembe helyezése**.
-   * Állítsa az **összes megcélzó eszköz konvertálása az Autopilot** -re beállítást **Igen**értékre. Ez a beállítás biztosítja, hogy a listában szereplő összes eszköz regisztrálva legyen az Autopilot Deployment szolgáltatásban. 48 óra engedélyezése a regisztráció feldolgozásához.
+   * Állítsa az **összes megcélzó eszköz konvertálása az Autopilot** -re beállítást **Igen**értékre. Ez a beállítás biztosítja, hogy a listában szereplő összes eszköz regisztrálva legyen az Autopilot Deployment szolgáltatásban. A regisztráció feldolgozása 48 órát is igénybe vehet.
 
 1. Kattintson a **Tovább** gombra.
 
-   * Az **üzembe helyezési mód**beállításnál válassza a **saját üzembe helyezés (előzetes verzió)** lehetőséget. Az ezzel a profillal rendelkező eszközök az eszközt regisztráló felhasználóhoz vannak társítva. Az eszköz regisztrálásához felhasználói hitelesítő adatokra van szükség. Fontos megjegyezni, hogy az eszközök **Öntelepítési** módban való üzembe helyezése lehetővé teszi a laptopok közös modellben való üzembe helyezését. A felhasználói hozzárendelés addig nem történik meg, amíg az eszköz első alkalommal nem lesz hozzárendelve a felhasználóhoz. Ennek eredményeképpen minden olyan felhasználói házirend, például a BitLocker nem lesz engedélyezve, amíg a felhasználó-hozzárendelés be nem fejeződik. A biztonságos eszközökre való bejelentkezéssel kapcsolatos további információkért lásd a [kiválasztott profilok](https://docs.microsoft.com/intune/device-profile-assign)című témakört.
+   * Az **üzembe helyezési mód**beállításnál válassza a **saját üzembe helyezés (előzetes verzió)** lehetőséget. Az ezzel a profillal rendelkező eszközök az eszközt regisztráló felhasználóhoz vannak társítva. Az eszköz regisztrálásához felhasználói hitelesítő adatokra van szükség. Fontos megjegyezni, hogy az eszközök **Öntelepítési** módban való üzembe helyezése lehetővé teszi a laptopok közös modellben való üzembe helyezését. A felhasználói hozzárendelés addig nem történik meg, amíg az eszköz első alkalommal nem lesz hozzárendelve a felhasználóhoz. Ennek eredményeképpen minden olyan felhasználói házirend, például a BitLocker nem lesz engedélyezve, amíg a felhasználó-hozzárendelés be nem fejeződik. A biztonságos eszközökre való bejelentkezéssel kapcsolatos további információkért lásd a [kiválasztott profilok](/intune/device-profile-assign)című témakört.
    * Az Azure AD-hez való **csatlakozáshoz** a box-ban be kell mutatni az **Azure ad** -t, és szürkén kell kinéznie.
    * Válassza ki a nyelvet (régió), a felhasználói fiók típusát **standard**értéket. 
 
@@ -173,9 +173,9 @@ Az Intune-ban a Azure Portalban:
 1. Kattintson a **Tovább** gombra.
 1. Válassza a **hozzárendelések** >  > **kiválasztott csoportok** **számára** elemet. A **felvenni kívánt csoportok kiválasztása**területen válassza a **biztonságos munkaállomások**lehetőséget.
 1. Kattintson a **Tovább** gombra.
-1. Válassza a **Létrehozás** gombot a profil létrehozásához. Az Autopilot Deployment-profil mostantól elérhető az eszközökhöz való hozzárendeléshez.
+1. Válassza a **Létrehozás** gombot a profil létrehozásához. Az AutoPilot üzembehelyezési profil most már hozzárendelhető az eszközökhöz.
 
-Az Autopilot eszköz regisztrálása egy másik felhasználói élményt nyújt az eszköz típusától és szerepköreitől függően. Az üzembe helyezési példában egy olyan modellt mutatunk be, amelyben a biztonságos eszközök tömeges üzembe helyezhetők, és megoszthatók, de ha első alkalommal használják, az eszköz hozzá van rendelve egy felhasználóhoz. További információ: az [Intune Autopilot-eszközök regisztrációja](https://docs.microsoft.com/intune/device-enrollment).
+Az Autopilot eszköz regisztrálása egy másik felhasználói élményt nyújt az eszköz típusától és szerepköreitől függően. Az üzembe helyezési példában egy olyan modellt mutatunk be, amelyben a biztonságos eszközök tömeges üzembe helyezhetők, és megoszthatók, de ha első alkalommal használják, az eszköz hozzá van rendelve egy felhasználóhoz. További információ: az [Intune Autopilot-eszközök regisztrációja](/intune/device-enrollment).
 
 ### <a name="configure-windows-update"></a>Windows Update konfigurálása
 
@@ -186,7 +186,7 @@ Ez az útmutató azt javasolja, hogy hozzon létre egy új frissítési gyűrűt
 Az Azure Portalon:
 
 1. Nyissa meg **Microsoft Intune** > **szoftverfrissítések** > **Windows 10 frissítési**körök lehetőséget.
-1. Be
+1. Adja meg a következőt:
 
    * Név – az **Azure által felügyelt munkaállomás frissítései**
    * Karbantartási csatorna – **Windows Insider – gyors**
@@ -203,7 +203,7 @@ Az Azure Portalon:
 1. Kattintson a **Létrehozás** gombra.
 1. A **hozzárendelések** lapon adja hozzá a **biztonságos munkaállomások** csoportot.
 
-Windows Update házirendekkel kapcsolatos további információkért lásd: [házirend CSP-Update](https://docs.microsoft.com/windows/client-management/mdm/policy-csp-update).
+Windows Update házirendekkel kapcsolatos további információkért lásd: [házirend CSP-Update](/windows/client-management/mdm/policy-csp-update).
 
 ### <a name="windows-defender-atp-intune-integration"></a>Windows Defender ATP Intune-integráció
 
@@ -223,7 +223,7 @@ A Windows Defender ATP és az Intune integrálásának konfigurálásához lépj
 1. Állítsa be a Windows **-eszközök csatlakoztatása 10.0.15063 és újabb verzióját a Windows DEFENDER ATP** -be **a**következőre:.
 1. Kattintson a **Mentés** gombra.
 
-További információ: a [Windows Defender komplex veszélyforrások elleni védelem](https://docs.microsoft.com/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection).
+További információ: a [Windows Defender komplex veszélyforrások elleni védelem](/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection).
 
 ### <a name="finish-workstation-profile-hardening"></a>Munkaállomás-profil megkeményedésének befejezése
 
@@ -231,12 +231,12 @@ A megoldás megerősítésének sikeres befejezéséhez töltse le és hajtsa v�
 
 | Profil | Letöltési hely | Filename |
 | --- | --- | --- |
-| Alacsony biztonság | – | – |
-| Fokozott biztonság | https://aka.ms/securedworkstationgit | Enhanced-Workstation-Windows10-(1809). ps1 |
+| Alacsony biztonság | N.A. | N.A. |
+| Fokozott biztonság | https://aka.ms/securedworkstationgit | Enhanced-Workstation-Windows10-(1809).ps1 |
 | Magas biztonság | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809). ps1 |
 | Specializált | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline. ps1 |
-| Speciális megfelelőség * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10 (1803). ps1 |
-| Biztosított | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline. ps1 |
+| Speciális megfelelőség * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10(1803).ps1 |
+| Biztosított | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline.ps1 |
 
 \* a speciális megfelelőség egy olyan parancsfájl, amely a NCSC-Windows10 SecurityBaseline megadott speciális konfigurációt kényszeríti.
 
@@ -245,13 +245,13 @@ A szkript sikeres végrehajtása után frissítheti a profilokat és a szabályz
 * Itt találja a parancsfájlok által létrehozott Intune-eszköz konfigurációs profilokat: **Azure Portal** > **Microsoft Intune** > **Device Configuration** > **Profiles**.
 * Itt találja a parancsfájlok által létrehozott Intune-eszközök megfelelőségi szabályzatait: **Azure Portal** > **Microsoft Intune** > **eszköz megfelelőségi** > **szabályzatok**.
 
-A parancsfájlok által végzett módosítások áttekintéséhez exportálhatja a profilokat. Így meghatározhat további megerősítést, amely a [SECCON dokumentációjában](https://docs.microsoft.com/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework)ismertetett módon szükséges.
+A parancsfájlok által végzett módosítások áttekintéséhez exportálhatja a profilokat. Így meghatározhat további megerősítést, amely a [SECCON dokumentációjában](/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework)ismertetett módon szükséges.
 
 Futtassa az Intune-adatexportálási parancsfájlt `DeviceConfiguration_Export.ps1` a [DeviceConfiguration GiuHub adattárból](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration) az összes aktuális Intune-profil exportálásához.
 
 ## <a name="additional-configurations-and-hardening-to-consider"></a>További konfigurációk és megerősítés a megfontoláshoz
 
-Az itt található útmutatást követve biztonságos munkaállomást helyezett üzembe. Érdemes azonban további vezérlőket is figyelembe venni. Példa:
+Az itt található útmutatást követve biztonságos munkaállomást helyezett üzembe. Érdemes azonban további vezérlőket is figyelembe venni. Például:
 
 * másodlagos böngészőkhöz való hozzáférés korlátozása
 * kimenő HTTP engedélyezése
@@ -260,7 +260,7 @@ Az itt található útmutatást követve biztonságos munkaállomást helyezett 
 
 ### <a name="set-rules-in-the-firewall-configuration-service-provider-csp"></a>Szabályok beállítása a tűzfal konfigurációs szolgáltatójában (CSP)
 
-Az engedélyezett és a letiltott végpontok esetében szükség szerint további módosításokat végezhet a bejövő és a kimenő szabályok kezelésében. Ahogy folytatja a biztonságos munkaállomás megerősítését, megszüntetheti a korlátozást, amely megtagadja az összes bejövő és kimenő forgalmat. Az engedélyezett kimenő helyek hozzáadásával általános és megbízható webhelyeket is hozzáadhat. További információ: [tűzfal konfigurációs szolgáltatás](https://docs.microsoft.com/Windows/client-management/mdm/firewall-csp).
+Az engedélyezett és a letiltott végpontok esetében szükség szerint további módosításokat végezhet a bejövő és a kimenő szabályok kezelésében. Ahogy folytatja a biztonságos munkaállomás megerősítését, megszüntetheti a korlátozást, amely megtagadja az összes bejövő és kimenő forgalmat. Az engedélyezett kimenő helyek hozzáadásával általános és megbízható webhelyeket is hozzáadhat. További információ: [tűzfal konfigurációs szolgáltatás](/Windows/client-management/mdm/firewall-csp).
 
 A korlátozó URL-forgalom kezelése a következőket tartalmazza:
 
@@ -302,7 +302,7 @@ A Chrome-beállítások konfigurálásával kapcsolatos további információké
 
 Biztonságos módban az alkalmazás telepítése az Intune vállalati portálra korlátozódik. A portál telepítésének azonban a Microsoft Storehoz való hozzáférésre van szüksége. A biztonságos megoldásban a vállalati portált offline módban is elérhetővé teheti az összes eszköz számára.
 
-A [céges portál](https://docs.microsoft.com/Intune/store-apps-company-portal-app) Intune által felügyelt példánya igény szerinti hozzáférést biztosít a biztonságos munkaállomások felhasználói számára leküldhető további eszközökhöz.
+A [céges portál](/Intune/store-apps-company-portal-app) Intune által felügyelt példánya igény szerinti hozzáférést biztosít a biztonságos munkaállomások felhasználói számára leküldhető további eszközökhöz.
 
 Előfordulhat, hogy telepítenie kell a Windows 32 bites alkalmazásokat vagy más alkalmazásokat, amelyek üzembe helyezéséhez speciális előkészületek szükségesek. Ilyen esetekben a [Microsoft Win32 Content PREP eszköz](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool) használatra kész `.intunewin` formátumú fájlt biztosít a telepítéshez.
 
@@ -371,11 +371,11 @@ Az eszköz konfigurálása után végezze el a felülvizsgálatot, és ellenőri
 
 ## <a name="assign-devices"></a>Eszközök kiosztása
 
-Az eszközök és a felhasználók hozzárendeléséhez le kell képeznie a [kiválasztott profilokat](https://docs.microsoft.com/intune/device-profile-assign) a biztonsági csoportra. A szolgáltatáshoz engedélyeket igénylő összes új felhasználót is fel kell venni a biztonsági csoportba.
+Az eszközök és a felhasználók hozzárendeléséhez le kell képeznie a [kiválasztott profilokat](/intune/device-profile-assign) a biztonsági csoportra. A szolgáltatáshoz engedélyeket igénylő összes új felhasználót is fel kell venni a biztonsági csoportba.
 
 ## <a name="using-sentinel-and-windows-defender-atp-to-monitor-and-respond-to-security-incidents"></a>A Sentinel és a Windows Defender ATP használata a biztonsági incidensek monitorozásához és megválaszolásához
 
-A biztonságos munkaállomás központi telepítésének figyelése a [Sentinel] engedélyezésével és a [fenyegetések és a biztonsági rések kezelésével](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt) valósítható meg, az útmutató nem nyújt teljes körű fenyegetést a fenyegetések ellen, de jó általános erőfeszítést tesz a lehetséges biztonsági incidensek monitorozására és reagálására.
+A biztonságos munkaállomás központi telepítésének figyelése a [Sentinel] engedélyezésével és a [fenyegetések és a biztonsági rések kezelésével](/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt) valósítható meg, az útmutató nem nyújt teljes körű fenyegetést a fenyegetések ellen, de jó általános erőfeszítést tesz a lehetséges biztonsági incidensek monitorozására és reagálására.
 
 Az **Azure Sentinel** az alábbiakat fogja használni: 
 
@@ -387,7 +387,7 @@ A Sentinel monitorozásához az szükséges, hogy az összekötők az adatforrá
 
 1. A **Azure Portal**lépjen az **Azure Sentinel (előzetes verzió)** > válassza a **Hozzáadás** lehetőséget.
 1. Az **Azure sentinelhez hozzáadandó munkaterület** kiválasztása lapon válassza az **Új munkaterület létrehozása** lehetőséget.
-1. Be
+1. Adja meg a következőt:
    * **Log Analytics munkaterület** – "biztonságos munkaállomás figyelése"
    * **Előfizetés** – válassza ki az aktív előfizetését
    * **Erőforráscsoport** – válassza az * * új * * > biztonságos munkaállomás RG > **OK**
@@ -412,7 +412,7 @@ A **Windows DEFENDER ATP (WDATP)** szolgáltatását a következőre fogjuk hasz
 * A számítógép szintű biztonsági rések azonosítása a vizsgálat során az irányítópult használatával
 * Szervizelések leküldése az Intune-ba
 
-Állítsa be a [DEFENDER ATP-irányítópultját](https://securitycenter.windows.com/machines). Útmutató a [veszélyforrások & a sebezhetőségi kezelés irányítópultjának áttekintéséhez](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-dashboard-insights).
+Állítsa be a [DEFENDER ATP-irányítópultját](https://securitycenter.windows.com/machines). Útmutató a [veszélyforrások & a sebezhetőségi kezelés irányítópultjának áttekintéséhez](/windows/security/threat-protection/microsoft-defender-atp/tvm-dashboard-insights).
 
 ## <a name="monitoring-application-activity-using-microsoft-monitoring-agent-mma"></a>Alkalmazások figyelése a Microsoft monitoring Agent (MMA) használatával
 A speciális munkaállomástól kezdődően az App Locker engedélyezve van az alkalmazások munkaállomáson való figyelésére. Ahhoz, hogy a figyelés integrálva legyen a Log Analytics munkaterületen, az MMA-ügynököt és a konfigurációt követni kell. 
@@ -438,7 +438,7 @@ Ezután be kell állítania Log Analytics az új naplók fogadásához
 1. A **Azure Portal**nyissa meg a **log Analytics munkaterületet** > Select-"Secure Workstation monitoring"
 1. Válassza a **Speciális beállítások** > **az** adat > **Windows-eseménynaplók** lehetőséget.
 1. Az **események gyűjtése a következő eseménynaplókban** 
-1. Be
+1. Adja meg a következőt:
    * "Microsoft-Windows-AppLocker/EXE és DLL" > a **tájékoztató** kijelölésének kiválasztása
    * "Microsoft-Windows-AppLocker/MSI és script" > a **tájékoztató** kijelölésének kiválasztása
    * "Microsoft-Windows-AppLocker/csomagolt alkalmazás – központi telepítés" **> kijelölésének** kikapcsolása
@@ -447,20 +447,20 @@ Ezután be kell állítania Log Analytics az új naplók fogadásához
 
 Az alkalmazás naplózása a kiválasztott Log Analytics munkaterületen lesz elérhető.
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>Figyelés
 
-* Ismerje meg, hogyan [derítheti fel a fenyegetéseket az Azure Sentinel](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) használatával
-* [Incidensek vizsgálata az Azure Sentineltel](https://docs.microsoft.com/azure/sentinel/tutorial-investigate-cases)
-* [Automatizált veszélyforrásokkal kapcsolatos válaszok beállítása az Azure Sentinelben](https://docs.microsoft.com/azure/sentinel/tutorial-respond-threats-playbook)
-* Az [expozíciós pontszám](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score) áttekintésének ismertetése
-* [Biztonsági javaslat](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation) áttekintése
-* Biztonsági [szervizelések](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation) kezelése
-* [Végpontok észlelésének és válaszának](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response) kezelése
-* Profilok figyelése az [Intune-profilok figyelésével](https://docs.microsoft.com/intune/device-profile-monitor).
+* Ismerje meg, hogyan [derítheti fel a fenyegetéseket az Azure Sentinel](/azure/sentinel/tutorial-detect-threats) használatával
+* [Incidensek vizsgálata az Azure Sentineltel](/azure/sentinel/tutorial-investigate-cases)
+* [Automatizált veszélyforrásokkal kapcsolatos válaszok beállítása az Azure Sentinelben](/azure/sentinel/tutorial-respond-threats-playbook)
+* Az [expozíciós pontszám](/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score) áttekintésének ismertetése
+* [Biztonsági javaslat](/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation) áttekintése
+* Biztonsági [szervizelések](/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation) kezelése
+* [Végpontok észlelésének és válaszának](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response) kezelése
+* Profilok figyelése az [Intune-profilok figyelésével](/intune/device-profile-monitor).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ a [Microsoft Intuneról](https://docs.microsoft.com/intune/index).
+* További információ a [Microsoft Intuneról](/intune/index).
 * Az [Azure ad](../index.yml)megismerése.
-* A [Microsoft Defender komplex veszélyforrások elleni védelem](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) használata
-* Az [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) felderítése
+* A [Microsoft Defender komplex veszélyforrások elleni védelem](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) használata
+* Az [Azure Sentinel](/azure/sentinel/) felderítése

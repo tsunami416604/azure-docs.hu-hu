@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/27/2020
-ms.openlocfilehash: 0b9e7732e5274fd71c773a19d17e09ecdaa2ceb0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 169a33d12e98235dcb4e4f317dbb8d91eb7446a4
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270018"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851136"
 ---
 # <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Oktatóanyag: a C# és a AI használata kereshető tartalmak létrehozásához az Azure-blobokból
 
@@ -186,7 +186,7 @@ namespace EnrichwithAI
 
 ### <a name="create-a-client"></a>Ügyfél létrehozása
 
-Hozza létre a `SearchServiceClient` osztály egy példányát a Main alatt.
+Hozza létre a `SearchServiceClient` osztály egy példányát a `Main`alatt.
 
 ```csharp
 public static void Main(string[] args)
@@ -213,6 +213,22 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 > [!NOTE]
 > A `SearchServiceClient` osztály kezeli a keresőszolgáltatása kapcsolatait. A túl sok kapcsolat megnyitásának elkerülése érdekében, ha lehetséges, próbálja meg a `SearchServiceClient` egyetlen példányát megosztani az alkalmazásban. A módszerei szálbiztosak az ilyen megosztás engedélyezéséhez.
 > 
+
+### <a name="add-function-to-exit-the-program-during-failure"></a>Függvény hozzáadása a programból való kilépéshez a hiba során
+
+Ez az oktatóanyag az indexelési folyamat egyes lépéseinek megismerését segíti. Ha van olyan kritikus probléma, amely megakadályozza, hogy a program létrehozza az adatforrást, a készségkészlet, az indexet vagy az indexelő, a program kiírja a hibaüzenetet, és kilép, így a probléma érthető és orvosolható lesz.
+
+`ExitProgram` hozzáadása a `Main`hoz a program kilépését igénylő forgatókönyvek kezeléséhez.
+
+```csharp
+private static void ExitProgram(string message)
+{
+    Console.WriteLine("{0}", message);
+    Console.WriteLine("Press any key to exit the program...");
+    Console.ReadKey();
+    Environment.Exit(0);
+}
+```
 
 ## <a name="3---create-the-pipeline"></a>3 – a folyamat létrehozása
 
@@ -251,7 +267,7 @@ private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceCl
 
 Sikeres kérelem esetén a metódus a létrehozott adatforrást fogja visszaadni. Ha probléma merül fel a kéréssel, például egy érvénytelen paraméterrel, akkor a metódus kivételt jelez.
 
-Most adjon hozzá egy sort a Main-ban az imént hozzáadott `CreateOrUpdateDataSource` függvény meghívásához.
+Most adjon hozzá egy sort a `Main` az imént hozzáadott `CreateOrUpdateDataSource` függvény meghívásához.
 
 ```csharp
 public static void Main(string[] args)
@@ -537,7 +553,7 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 }
 ```
 
-Adja hozzá a következő sorokat a Mainhoz.
+Adja hozzá a következő sorokat a `Main`hoz.
 
 ```csharp
     // Create the skills
@@ -675,7 +691,7 @@ private static Index CreateDemoIndex(SearchServiceClient serviceClient)
 
 A tesztelés során előfordulhat, hogy egynél többször próbálkozik az index létrehozásával. Emiatt ellenőrizze, hogy a létrehozni kívánt index már létezik-e, mielőtt megpróbálja létrehozni.
 
-Adja hozzá a következő sorokat a Mainhoz.
+Adja hozzá a következő sorokat a `Main`hoz.
 
 ```csharp
     // Create the index
@@ -779,7 +795,7 @@ private static Indexer CreateDemoIndexer(SearchServiceClient serviceClient, Data
     return indexer;
 }
 ```
-Adja hozzá a következő sorokat a Mainhoz.
+Adja hozzá a következő sorokat a `Main`hoz.
 
 ```csharp
     // Create the indexer, map fields, and execute transformations
@@ -840,7 +856,7 @@ private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient,
 
 A figyelmeztetések bizonyos forrásfájl- és képességkombinációk esetében gyakoriak, és nem mindig utalnak hibára. Ebben az oktatóanyagban a figyelmeztetések jóindulatúak (például nincs szöveges bemenet a JPEG-fájlokból).
 
-Adja hozzá a következő sorokat a Mainhoz.
+Adja hozzá a következő sorokat a `Main`hoz.
 
 ```csharp
     // Check indexer overall status
@@ -854,7 +870,7 @@ Az indexelés befejezése után futtathat olyan lekérdezéseket, amelyek az egy
 
 Ellenőrzési lépésként kérdezze le az index összes mezőjét.
 
-Adja hozzá a következő sorokat a Mainhoz.
+Adja hozzá a következő sorokat a `Main`hoz.
 
 ```csharp
 DocumentSearchResult<DemoIndex> results;
@@ -890,7 +906,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-Adja hozzá a következő kódot a Mainhoz. Az első try-catch az index definícióját adja vissza az egyes mezők neve, típusa és attribútumai szerint. A második egy paraméteres lekérdezés, ahol a `Select` megadja, hogy mely mezők szerepeljenek az eredmények között, például `organizations`. `"*"` keresési karakterlánca egy adott mező összes tartalmát adja vissza.
+Adja hozzá a következő kódot a `Main`hoz. Az első try-catch az index definícióját adja vissza az egyes mezők neve, típusa és attribútumai szerint. A második egy paraméteres lekérdezés, ahol a `Select` megadja, hogy mely mezők szerepeljenek az eredmények között, például `organizations`. `"*"` keresési karakterlánca egy adott mező összes tartalmát adja vissza.
 
 ```csharp
 //Verify content is returned after indexing is finished
@@ -949,7 +965,7 @@ Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávo
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már ismeri a mesterséges intelligencia-bővítési folyamat összes objektumát, ismerkedjen meg közelebbről a készségkészlet-definíciókkal és az egyéni ismeretekkel.
 

@@ -9,14 +9,14 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8d7aab43641c6c594ff60368ccb3810e0c060dd7
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971500"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671566"
 ---
-# <a name="frequently-asked-questions-about-azure-databricks"></a>Az Azure Databricks szolgáltatással kapcsolatos gyakori kérdések
+# <a name="frequently-asked-questions-about-azure-databricks"></a>Gyakori kérdések a Azure Databricks
 
 Ez a cikk a Azure Databrickshoz kapcsolódó leggyakoribb kérdéseket sorolja fel. Emellett felsorolja a Databricks használata során esetlegesen előforduló gyakori problémákat is. További információ: [What is Azure Databricks](what-is-azure-databricks.md). 
 
@@ -88,11 +88,20 @@ Ha nem hozta létre a munkaterületet, és felhasználóként adja hozzá, fordu
 
 #### <a name="error-message"></a>Hibaüzenet
 
-"A Cloud Provider elindítása sikertelen: A fürt beállítása során hiba történt A Felhőbeli szolgáltatónál. További információ: Databricks útmutató. Azure-hibakód: PublicIPCountLimitReached. Azure-hibaüzenet: ebben a régióban nem lehet több, mint 60 nyilvános IP-címet létrehozni ehhez az előfizetéshez. "
+"A Cloud Provider elindítása sikertelen: A fürt beállítása során hiba történt A Felhőbeli szolgáltatónál. További információ: Databricks útmutató. Azure-hibakód: PublicIPCountLimitReached. Azure-hibaüzenet: ebben a régióban nem hozható létre több mint 10 nyilvános IP-cím ehhez az előfizetéshez. "
+
+#### <a name="background"></a>Háttér
+
+A Databricks-fürtök minden csomóponton egy nyilvános IP-címet használnak (az illesztőprogram-csomópontot is beleértve). Az Azure-előfizetések régiónként egy [nyilvános IP-cím korláttal](/azure/azure-resource-manager/management/azure-subscription-service-limits#publicip-address) rendelkeznek. Ezért előfordulhat, hogy a fürt létrehozása és a vertikális Felskálázási műveletek sikertelenek lesznek, ha az adott régióban az adott előfizetéshez lefoglalt nyilvános IP-címek száma meghaladja a korlátot. Ez a korlát magában foglalja a nem Databricks használathoz lefoglalt nyilvános IP-címeket is, például az egyéni felhasználó által definiált virtuális gépeket.
+
+Általában a fürtök csak a nyilvános IP-címeket használják aktív állapotban. Előfordulhat azonban, hogy `PublicIPCountLimitReached` hibák rövid ideig továbbra is előfordulhatnak, még a többi fürt leállítása után is. Ennek az az oka, hogy a Databricks átmenetileg gyorsítótárazza az Azure-erőforrásokat a fürt leállításakor. Az erőforrás-gyorsítótárazást úgy tervezték, hogy jelentősen csökkenti a fürt indítási és automatikus skálázási késését számos gyakori helyzetben.
 
 #### <a name="solution"></a>Megoldás
 
-A Databricks-fürtök csomópontonként egy nyilvános IP-címet használnak. Ha az előfizetése már használta az összes nyilvános IP-címet, akkor [a kvóta növelését kell kérnie](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). Válassza a **kvóta** lehetőséget a **probléma típusaként**, és a **hálózatkezelés: ARM** **értéket a kvóta típusaként**. A **részletek**területen kérjen egy nyilvános IP-cím kvótájának növekedését. Ha például a korlátja jelenleg 60, és egy 100 csomópontos fürtöt szeretne létrehozni, igényeljen határérték-növekedést 160-ra.
+Ha az előfizetése már elérte a nyilvános IP-cím korlátját egy adott régióban, akkor a következők egyikét kell tennie.
+
+- Hozzon létre új fürtöket egy másik Databricks-munkaterületen. A másik munkaterületnek olyan régióban kell lennie, amelyben nem érte el az előfizetés nyilvános IP-címének korlátját.
+- [A nyilvános IP-cím korlátjának növelésére irányuló kérés](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). Válassza a **kvóta** lehetőséget a **probléma típusaként**, és a **hálózatkezelés: ARM** **értéket a kvóta típusaként**. A **részletek**területen kérjen egy nyilvános IP-cím kvótájának növekedését. Ha például a korlátja jelenleg 60, és egy 100 csomópontos fürtöt szeretne létrehozni, igényeljen határérték-növekedést 160-ra.
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Probléma: a Cloud Provider indításának második típusa a fürt beállításakor (MissingSubscriptionRegistration)
 
@@ -119,8 +128,7 @@ Azure Databricks integrálva van Azure Active Directorysal. Az Azure AD-beli fel
 
 Jelentkezzen be globális rendszergazdaként a Azure Portalba. Azure Active Directory esetében lépjen a **felhasználói beállítások** lapra, és győződjön meg arról, hogy a **felhasználók jóváhagyják az alkalmazások számára a vállalati adatokhoz való hozzáférést** az **Igen**értékre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Gyors útmutató: az Azure Databricks használatának első lépései](quickstart-create-databricks-workspace-portal.md)
 - [Mi az Azure Databricks?](what-is-azure-databricks.md)
-

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 82f6da54aec7aee94c19fd75a06d2850ca0db8b6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883142"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673382"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Fejlesztés az Android-eszközök platformon az Azure IoT SDK-k használatával
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet az Azure IoT Java SDK használat�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Android-eszközök által támogatott hardverek Android rendszerű operációs rendszereken.  Az Android- [](https://developer.android.com/things/get-started/kits#flash-at) eszközökre vonatkozó dokumentációt követve megtekintheti a Flash Android-eszközök operációs rendszerét.  Győződjön meg arról, hogy az Android-eszközök az internethez csatlakoznak az alapvető perifériákkal, például a billentyűzettel, a megjelenítéssel és az egérrel csatlakoztatva.  Ez az oktatóanyag a málna PI 3 szolgáltatást használja.
+* Az Android-eszközök által támogatott hardverek Android rendszerű operációs rendszereken.  Az Android-eszközökre vonatkozó [dokumentációt](https://developer.android.com/things/get-started/kits#flash-at) követve megtekintheti a Flash Android-eszközök operációs rendszerét.  Győződjön meg arról, hogy az Android-eszközök az internethez csatlakoznak az alapvető perifériákkal, például a billentyűzettel, a megjelenítéssel és az egérrel csatlakoztatva.  Ez az oktatóanyag a málna PI 3 szolgáltatást használja.
 
 * A [Android Studio](https://developer.android.com/studio/) legújabb verziója
 
@@ -40,16 +40,16 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa az alábbi parancsokat az Azure Cloud Shellben az IoT Hub CLI-bővítmény hozzáadásához és az eszközidentitás létrehozásához.
 
-   **YourIoTHubName** : Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName**: A helyőrző helyére írja be az IoT Hubjához választott nevet.
 
    **MyAndroidThingsDevice** : Ez a regisztrált eszköz nevét adja meg. Használja a MyAndroidThingsDevice az ábrán látható módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
+    az extension add --name azure-iot
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyAndroidThingsDevice
     ```
 
-2. Futtassa az alábbi parancsokat a Azure Cloud Shellban az imént regisztrált eszközhöz tartozó *eszköz-kapcsolódási karakterlánc* beszerzéséhez. A `YourIoTHubName` lenti helyére írja be az IoT hub számára kiválasztott nevet.
+2. Futtassa az alábbi parancsokat a Azure Cloud Shellban az imént regisztrált eszközhöz tartozó *eszköz-kapcsolódási karakterlánc* beszerzéséhez. Az alábbi `YourIoTHubName` cserélje le az IoT hub-hoz kiválasztott névvel.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidThingsDevice --output table
@@ -63,7 +63,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 ## <a name="building-an-android-things-application"></a>Android Things-alkalmazások létrehozása
 
-1. Az Android Things-alkalmazások létrehozásának első lépése az androidos eszközökhöz való csatlakozás. Az Android-eszközök csatlakoztatása egy kijelzőhöz és az internethez csatlakoztatása. Az Android- [](https://developer.android.com/things/get-started/kits) eszközök a Wi-Fi-hez való kapcsolódással kapcsolatos dokumentációt biztosítanak. Miután csatlakozott az internethez, jegyezze fel a hálózatok területen látható IP-címet.
+1. Az Android Things-alkalmazások létrehozásának első lépése az androidos eszközökhöz való csatlakozás. Az Android-eszközök csatlakoztatása egy kijelzőhöz és az internethez csatlakoztatása. Az Android-eszközök a Wi-Fi-hez való kapcsolódással kapcsolatos [dokumentációt](https://developer.android.com/things/get-started/kits) biztosítanak. Miután csatlakozott az internethez, jegyezze fel a hálózatok területen látható IP-címet.
 
 2. Az [ADB](https://developer.android.com/studio/command-line/adb) eszköz használatával csatlakozhat az Android-eszközökhöz a fent említett IP-címmel. A terminálon a parancs használatával ellenőrizze a kapcsolatokat. Az eszközök "csatlakoztatottként" jelennek meg.
 
@@ -79,7 +79,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 4. A Android Studioban nyissa meg az Android-projektet a "\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample" helyen.
 
-5. Nyissa meg a gradle. properties fájlt, és cserélje le a "Device_connection_string" karakterláncot a korábban feljegyzett eszköz-kapcsolatok sztringre.
+5. Nyissa meg a gradle. properties fájlt, és cserélje le a "Device_connection_string" kifejezést a korábban feljegyzett eszköz-csatlakoztatási karakterlánccal.
  
 6. Kattintson a Run-debug elemre, és válassza ki az eszközét, hogy az Android-eszközökre telepítse ezt a kódot.
 

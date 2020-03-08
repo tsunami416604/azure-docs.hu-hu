@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a18715385eca85c199b17f6a675be1a7e60153
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: bdffbc3a140bd13dcd6d352db8c192803d39b03e
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194313"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672371"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Csoportházirend és MDM beállítások
 
@@ -26,13 +26,13 @@ Azok a vállalatok, amelyek személyes (nem felügyelt) eszközök barangolásá
 A következő táblázatok ismertetik az elérhető házirend-beállításokat.
 
 > [!NOTE]
-> Ez a cikk a Microsoft Edge korábbi HTML-alapú böngészőre vonatkozik, amely a Windows 10 2015-es verziójában indult el. A cikk nem vonatkozik az új, 2020. január 15-én kiadott Microsoft Edge Chromium-alapú böngészőre. Az új Microsoft Edge szinkronizálási működésével kapcsolatos további információkért tekintse meg a [Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)című cikket.
+> Ez a cikk a Microsoft Edge korábbi HTML-alapú böngészőre vonatkozik, amely a Windows 10 2015-es verziójában indult el. A cikk nem vonatkozik az új, 2020. január 15-én kiadott Microsoft Edge Chromium-alapú böngészőre. Az új Microsoft Edge szinkronizálási működésével kapcsolatos további információkért tekintse meg a [Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)című cikket.
 
 ## <a name="mdm-settings"></a>MDM-beállítások
 
 A MDM házirend-beállítások a Windows 10 és a Windows 10 Mobile rendszerre egyaránt érvényesek.  A Windows 10 Mobile-támogatás csak a felhasználó OneDrive-fiókján keresztül Microsoft-fiók-alapú barangoláshoz van. Az Azure AD-alapú szinkronizálás által támogatott eszközökről az eszközök [és végpontok](enterprise-state-roaming-windows-settings-reference.md) című témakörben talál további információt.
 
-| Name (Név) | Leírás |
+| Név | Leírás |
 | --- | --- |
 | Microsoft-fiókok közötti kapcsolatok engedélyezése |Lehetővé teszi a felhasználók számára, hogy egy Microsoft-fiók használatával hitelesítsék az eszközt |
 | Beállítások szinkronizálásának engedélyezése |Lehetővé teszi a felhasználóknak a Windows-beállítások és az alkalmazásadatok barangolását; A szabályzat letiltásával letilthatja a szinkronizálást és a mobileszközök biztonsági mentését |
@@ -43,7 +43,7 @@ A csoportházirend-beállítások olyan Windows 10-es eszközökre vonatkoznak, 
 
 Ezek a beállítások a következő helyen találhatók: `Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
-| Name (Név) | Leírás |
+| Név | Leírás |
 | --- | --- |
 | Fiókok: Microsoft-fiókok blokkolása |Ezzel a házirend-beállítással megakadályozható, hogy a felhasználók új Microsoft-fiókokat adjanak hozzá a számítógépen |
 | Ne szinkronizáljon |Megakadályozza, hogy a felhasználók barangolják a Windows beállításait és az alkalmazásadatok |
@@ -57,6 +57,6 @@ Ezek a beállítások a következő helyen találhatók: `Computer Configuration
 | Alkalmazás-beállítások szinkronizálásának mellőzése |Az alkalmazásadatok barangolásának letiltása |
 | Ne szinkronizáljon indítási beállításokat |Ne használja; nincs hatása |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az áttekintést lásd: a [nagyvállalati állapot barangolása – áttekintés](enterprise-state-roaming-overview.md).

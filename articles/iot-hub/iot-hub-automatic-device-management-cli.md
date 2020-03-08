@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
-ms.openlocfilehash: 9a7e2d9874f049000dadcb3e46cccb2202b53698
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381f550f6d64dee3c7649a040c1e24b7c9d42f2c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429287"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669433"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Az eszközök és modulok automatikus IoT az Azure CLI használatával
 
@@ -36,8 +36,12 @@ Az automatikus konfigurációk az első alkalommal futnak a konfiguráció létr
 ## <a name="cli-prerequisites"></a>A CLI előfeltételei
 
 * Egy [IoT hub](../iot-hub/iot-hub-create-using-cli.md) az Azure-előfizetésében. 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) a környezetben. Legalább az Azure CLI-verziójának 2.0.24 vagy újabbnak kell lennie. A verziószámot az `az –-version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer. 
-* Az [Azure CLI-hez készült IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension).
+
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) a környezetben. Legalább az Azure CLI-verziójának 2.0.70 vagy újabbnak kell lennie. A verziószámot az `az –-version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer. 
+
+* Az [Azure CLI-hez készült IoT-bővítmény](https://github.com/Azure/azure-cli).
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="implement-twins"></a>Az ikrek megvalósítása
 
@@ -102,7 +106,7 @@ Példa a metrikus lekérdezésekre:
 }
 ```
 
-A modulok metrikai lekérdezései hasonlóak az eszközök lekérdezéséhez is, de a `moduleId` a `devices.modules`közül választhat. Példa: 
+A modulok metrikai lekérdezései hasonlóak az eszközök lekérdezéséhez is, de a `moduleId` a `devices.modules`közül választhat. Például: 
 
 ```json
 {
@@ -127,11 +131,11 @@ Konfiguráció létrehozásához használja a következő parancsot:
 
 * --**config-ID** – annak a konfigurációnak a neve, amely az IoT központban lesz létrehozva. Adjon egy egyedi nevet a konfigurációnak, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /`.
 
-* --**feliratok** – címkék hozzáadásával követheti nyomon a konfigurációt. A címkék név, érték párok, amelyek leírják az üzemelő példányt. Például: `HostPlatform, Linux` vagy `Version, 3.0.1`
+* --**feliratok** – címkék hozzáadásával követheti nyomon a konfigurációt. Címkék olyan név, érték párok, melyek az üzemelő példány leírására. Például `HostPlatform, Linux` vagy `Version, 3.0.1`
 
 * --**Content** -line JSON-vagy elérési út a célként megadott tartalomhoz, amely csak a kívánt tulajdonságokat adja meg. 
 
-* --**hub –** a IoT hub neve, amelyben a rendszer létrehozza a konfigurációt. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]`
+* --**hub –** a IoT hub neve, amelyben a rendszer létrehozza a konfigurációt. A központ az aktuális előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]`
 
 * --**célalkalmazás** – adjon meg egy célként megadott feltételt annak meghatározásához, hogy mely eszközök vagy modulok lesznek megcélozva ezzel a konfigurációval. Az eszközök automatikus konfigurálásához a feltétel az eszköz Twin-címkék vagy az eszközök Twin kívánt tulajdonságain alapul, és meg kell egyeznie a kifejezés formátumával. Például `tags.environment='test'` vagy `properties.desired.devicemodel='4000x'`. A modul automatikus konfigurálásához a feltétel a modul Twin címkék vagy a modul Twin kívánt tulajdonságai alapján történik. Például `from devices.modules where tags.environment='test'` vagy `from devices.modules where properties.reported.chillerProperties.model='4000x'`.
 
@@ -150,7 +154,7 @@ az iot hub configuration show --config-id [configuration id] \
 
 * --**config-ID** – az IoT hub-ban található konfiguráció neve.
 
-* --**hub –** a IoT hub neve, amelyben a konfiguráció létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]`
+* --**hub –** a IoT hub neve, amelyben a konfiguráció létezik. A központ az aktuális előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]`
 
 Ellenőrizze a konfigurációt a parancsablakban. A **metrikák** tulajdonság felsorolja az egyes hubok által kiértékelt metrikák darabszámát:
 
@@ -171,7 +175,7 @@ az iot hub configuration show-metric --config-id [configuration id] \
 
 * --**metrika – azonosító** – annak a metrikának a neve, amelynek az eszköz-azonosítóit vagy modul-azonosítóit meg szeretné jeleníteni, például `appliedCount`.
 
-* --**hub –** a IoT hub neve, amelyben a központi telepítés létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre `az account set -s [subscription name]`paranccsal.
+* --**hub –** a IoT hub neve, amelyben a központi telepítés létezik. A központ az aktuális előfizetésben kell lennie. Váltson a kívánt előfizetésre `az account set -s [subscription name]`paranccsal.
 
 * --**metrika** típusú-metrikus típus lehet `system` vagy `user`.  A rendszermetrikák `targetedCount` és `appliedCount`. Minden más metrika felhasználói metrika.
 
@@ -179,7 +183,7 @@ az iot hub configuration show-metric --config-id [configuration id] \
 
 Konfiguráció módosításakor a módosítások azonnal replikálódnak az összes megadott eszközre. 
 
-Ha frissíti a célként megadott feltételt, a következő frissítések történnek:
+A célfeltétel frissít, ha elő a következő frissítéseket:
 
 * Ha egy iker nem felelt meg a régi cél feltételnek, de megfelel az új célként megadott feltételnek, és ez a konfiguráció az adott Twin legmagasabb prioritása, akkor ezt a konfigurációt alkalmazza a rendszer. 
 
@@ -196,15 +200,15 @@ az iot hub configuration update --config-id [configuration id] \
 
 * --**config-ID** – az IoT hub-ban található konfiguráció neve.
 
-* --**hub –** a IoT hub neve, amelyben a konfiguráció létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre `az account set -s [subscription name]`paranccsal.
+* --**hub –** a IoT hub neve, amelyben a konfiguráció létezik. A központ az aktuális előfizetésben kell lennie. Váltson a kívánt előfizetésre `az account set -s [subscription name]`paranccsal.
 
-* --**beállítása** – egy tulajdonság frissítése a konfigurációban. A következő tulajdonságokat frissítheti:
+* --**beállítása** – egy tulajdonság frissítése a konfigurációban. Az alábbi tulajdonságok frissíthetők:
 
     * targetCondition – például `targetCondition=tags.location.state='Oregon'`
 
-    * Címkék 
+    * címkék 
 
-    * prioritású
+    * priority
 
 ## <a name="delete-a-configuration"></a>Konfiguráció törlése
 
@@ -218,9 +222,9 @@ az iot hub configuration delete --config-id [configuration id] \
 ```
 * --**config-ID** – az IoT hub-ban található konfiguráció neve.
 
-* --**hub –** a IoT hub neve, amelyben a konfiguráció létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre `az account set -s [subscription name]`paranccsal.
+* --**hub –** a IoT hub neve, amelyben a konfiguráció létezik. A központ az aktuális előfizetésben kell lennie. Váltson a kívánt előfizetésre `az account set -s [subscription name]`paranccsal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja és figyelheti a IoT-eszközök méretét. Az alábbi hivatkozásokat követve további információkat tudhat meg az Azure IoT Hub kezeléséről:
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed28b4bb8ec61455168f50058c8cdcaf9f50717d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 6754393bdeabcd67dcf6514102e3c825a26fc3e9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377044"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672280"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök manuális konfigurálása
 
@@ -82,10 +82,10 @@ Az alábbi táblázatban áttekintheti a forgatókönyvéhez szükséges lépés
 
 | Lépések | Jelenlegi Windows és a jelszókivonat szinkronizálása | Jelenlegi Windows és összevonás | Korábbi verziójú Windows |
 | :--- | :---: | :---: | :---: |
-| A szolgáltatáskapcsolódási pont konfigurálása | ![Jelölőnégyzet][1] | ![Jelölőnégyzet][1] | ![Jelölőnégyzet][1] |
-| Jogcímek kiállításának beállítása |     | ![Jelölőnégyzet][1] | ![Jelölőnégyzet][1] |
-| Nem Windows 10 operációs rendszerű eszközök engedélyezése |       |        | ![Jelölőnégyzet][1] |
-| Csatlakoztatott eszközök ellenőrzése | ![Jelölőnégyzet][1] | ![Jelölőnégyzet][1] | [Ellenőrizze][1] |
+| A szolgáltatáskapcsolódási pont konfigurálása | ![Ellenőrzés][1] | ![Ellenőrzés][1] | ![Ellenőrzés][1] |
+| Jogcímek kiállításának beállítása |     | ![Ellenőrzés][1] | ![Ellenőrzés][1] |
+| Nem Windows 10 operációs rendszerű eszközök engedélyezése |       |        | ![Ellenőrzés][1] |
+| Csatlakoztatott eszközök ellenőrzése | ![Ellenőrzés][1] | ![Ellenőrzés][1] | [Ellenőrizze][1] |
 
 ## <a name="configure-a-service-connection-point"></a>Szolgáltatási kapcsolódási pont konfigurálása
 
@@ -185,7 +185,7 @@ AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat:
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> Az **ADFS/Services/Trust/2005/windowstransport** , vagy az **ADFS/Services/Trust/13/windowstransport** beállítást csak intranetes végpontként kell engedélyezni, és a webalkalmazás-proxyn keresztül nem szabad az extranet felé irányuló végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg a következőt: [ws-Trust Windows-végpontok letiltása a proxyn](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). A AD FS felügyeleti konzolon a **szolgáltatás** > **végpontok**területen megtekintheti, hogy mely végpontok engedélyezettek.
+> Az **ADFS/Services/Trust/2005/windowstransport** , vagy az **ADFS/Services/Trust/13/windowstransport** beállítást csak intranetes végpontként kell engedélyezni, és a webalkalmazás-proxyn keresztül nem szabad az extranet felé irányuló végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg a következőt: [ws-Trust Windows-végpontok letiltása a proxyn](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). A AD FS felügyeleti konzolon a **szolgáltatás** > **végpontok**területen megtekintheti, hogy mely végpontok engedélyezettek.
 
 > [!NOTE]
 >Ha nincs AD FS a helyszíni összevonási szolgáltatásként, kövesse a gyártó utasításait, és győződjön meg róla, hogy támogatják a WS-Trust 1,3 vagy 2005 végpontokat, és hogy ezeket a metaadatok Exchange-fájlján (MEX) keresztül teszik közzé.
@@ -549,7 +549,7 @@ A korábbi verziójú Windows-eszközök regisztrálásához a Letöltőközpont
 
 ## <a name="verify-joined-devices"></a>Csatlakoztatott eszközök ellenőrzése
 
-A [Azure Active Directory PowerShell-modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0) [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) parancsmagjának használatával megkeresheti a sikeresen csatlakoztatott eszközöket a szervezetben.
+A [Azure Active Directory PowerShell-modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0) [Get-MsolDevice](/powershell/msonline/v1/get-msoldevice) parancsmagjának használatával megkeresheti a sikeresen csatlakoztatott eszközöket a szervezetben.
 
 Ezen parancsmag kimenete megjeleníti az Azure AD-be regisztrált és az ahhoz csatlakoztatott eszközöket. Az összes eszköz beszerzéséhez használja az **-all** paramétert, majd a **deviceTrustType** tulajdonság használatával szűrje azokat. A tartományhoz csatlakoztatott eszközökhöz **tartományhoz csatlakozó**érték tartozik.
 
@@ -560,7 +560,7 @@ Ha problémákat tapasztal a hibrid Azure AD-csatlakozásnak a tartományhoz csa
 * [Jelenlegi Windows-eszközök hibrid Azure AD-csatlakozásának hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
 * [Korábbi verziójú Windows-eszközök hibrid Azure AD-csatlakozásának hibaelhárítása](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Active Directory eszközkezelésének alapjai](overview.md)
 

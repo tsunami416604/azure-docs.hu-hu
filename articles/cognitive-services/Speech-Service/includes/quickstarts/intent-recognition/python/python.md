@@ -6,12 +6,12 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 1a9a85ebc9d883db0415382ecf40de343d300667
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
-ms.translationtype: MT
+ms.openlocfilehash: af7c7d992db9afa0fb7affa0053bd89257a5a30e
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446287"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668777"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -74,7 +74,7 @@ Szúrja be ezt a kódot a `IntentRecognizer`alá. Győződjön meg arról, hogy 
 
 A `IntentRecognizer` objektumban meg kell hívnia a `recognize_once()` metódust. Ez a módszer lehetővé teszi, hogy a beszédfelismerési szolgáltatás tudja, hogy egyetlen kifejezést küld az észleléshez, és ha a kifejezést azonosította a beszédfelismerés felismerésének leállításához.
 
-Szúrja be a kódot a modell alá:
+Szúrja be ezt a kódot a modell alá.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=35)]
 
@@ -82,11 +82,13 @@ Szúrja be a kódot a modell alá:
 
 Ha a beszédfelismerési szolgáltatás visszaadja a felismerés eredményét, érdemes megtennie a dolgot. Megtartjuk az egyszerűséget, és kinyomtathatjuk az eredményt a konzolon.
 
-A `recognize_once()`hívása alatt adja hozzá a következő kódot: [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
+A `recognize_once()`hívása alatt adja hozzá ezt a kódot.
+
+[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
 
 ## <a name="check-your-code"></a>A kód megkeresése
 
-Ezen a ponton a kódnak így kell kinéznie:
+Ezen a ponton a kódnak így kell kinéznie.
 
 > [!NOTE]
 > Ehhez a verzióhoz hozzáadott néhány megjegyzést.

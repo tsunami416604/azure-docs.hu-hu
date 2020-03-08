@@ -1,6 +1,6 @@
 ---
-title: Jelszavas védelem figyelője és naplózása – Azure Active Directory
-description: Az Azure AD jelszavas védelem figyelésének és naplózásának ismertetése
+title: Helyszíni Azure AD jelszavas védelem figyelése
+description: Ismerje meg, hogyan figyelheti és tekintheti át az Azure AD jelszavas védelem naplóit egy helyszíni Active Directory tartományi szolgáltatások-környezetben
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c74ea99d3a0e39729bb4d89f012d7b790bf0568b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fbb533d5565009fb22d686e4082c9b4bfaae6dc1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847711"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671657"
 ---
-# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD jelszavas védelem figyelése és naplózása
+# <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>A helyszíni Azure AD-beli jelszavas védelmi környezetek naplófájljainak figyelése és áttekintése
 
 Az Azure AD jelszavas védelem üzembe helyezése után a figyelés és a jelentéskészítés elengedhetetlen feladat. Ez a cikk részletesen ismerteti a különböző figyelési technikákat, beleértve az egyes szolgáltatások adatainak naplózását és az Azure AD jelszavas védelem használatára vonatkozó jelentések módját.
 
@@ -40,7 +40,7 @@ Vegye figyelembe, hogy a nyomkövetési napló alapértelmezés szerint ki van k
 
 A különböző DC-ügynök összetevői által naplózott események a következő tartományokon belül vannak:
 
-|Component (Összetevő) |Eseményazonosító tartománya|
+|Összetevő |Eseményazonosító tartománya|
 | --- | --- |
 |TARTOMÁNYVEZÉRLŐi ügynök jelszavas szűrője dll| 10000-19999|
 |TARTOMÁNYVEZÉRLŐ ügynök szolgáltatás üzemeltetési folyamata| 20000-29999|
@@ -98,7 +98,7 @@ A parancsmag jelentéskészítési hatóköre befolyásolhatja az – erdő, a t
 
 A `Get-AzureADPasswordProtectionSummaryReport` parancsmag a DC-ügynök rendszergazdai eseménynaplójának lekérdezésével működik, majd megszámolja az összes megjelenített eredmény kategóriának megfelelő események teljes számát. A következő táblázat az egyes eredmények és a hozzá tartozó eseményazonosító közötti leképezéseket tartalmazza:
 
-|Get-AzureADPasswordProtectionSummaryReport tulajdonság |Megfelelő eseményazonosító|
+|Get-AzureADPasswordProtectionSummaryReport property |Megfelelő eseményazonosító|
 | :---: | :---: |
 |PasswordChangesValidated |10014|
 |PasswordSetsValidated |10015|
@@ -309,11 +309,11 @@ Vegye figyelembe, hogy a nyomkövetési napló alapértelmezés szerint ki van k
 
 Az eseményeket a különböző proxy-összetevők naplózzák a következő tartományok használatával:
 
-|Component (Összetevő) |Eseményazonosító tartománya|
+|Összetevő |Eseményazonosító tartománya|
 | --- | --- |
 |Proxy szolgáltatás üzemeltetési folyamata| 10000-19999|
 |Proxy szolgáltatás alapszintű üzleti logikája| 20000-29999|
-|PowerShell-parancsok| 30000-39999|
+|PowerShell-parancsmagok| 30000-39999|
 
 ## <a name="proxy-service-text-logging"></a>Proxy szolgáltatás szöveges naplózása
 
@@ -382,7 +382,7 @@ A fenti esemény nem határozza meg az újabb szoftver verzióját. Az adott inf
 
 Ezt az eseményt akkor is kibocsátja a rendszer, ha a proxykiszolgáló engedélyezve van az automatikus frissítés beállítással.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hibaelhárítás az Azure AD jelszavas védelméhez](howto-password-ban-bad-on-premises-troubleshoot.md)
 

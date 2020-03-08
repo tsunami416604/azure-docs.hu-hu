@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87a9c9b808e737f8e72da803085bfebd8263319a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194347"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672378"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
 
@@ -35,7 +35,7 @@ Ez a cikk bizonyos kérdésekre ad választ, amelyekkel a rendszergazdák a beá
 * *Egyéb Windows-beállítások*, például az egér beállításai.
 
 > [!NOTE]
-> Ez a cikk a Microsoft Edge korábbi HTML-alapú böngészőre vonatkozik, amely a Windows 10 2015-es verziójában indult el. A cikk nem vonatkozik az új, 2020. január 15-én kiadott Microsoft Edge Chromium-alapú böngészőre. Az új Microsoft Edge szinkronizálási működésével kapcsolatos további információkért tekintse meg a [Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)című cikket.
+> Ez a cikk a Microsoft Edge korábbi HTML-alapú böngészőre vonatkozik, amely a Windows 10 2015-es verziójában indult el. A cikk nem vonatkozik az új, 2020. január 15-én kiadott Microsoft Edge Chromium-alapú böngészőre. Az új Microsoft Edge szinkronizálási működésével kapcsolatos további információkért tekintse meg a [Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)című cikket.
 
 **Alkalmazásadatok**: az univerzális Windows-alkalmazások a beállításokat egy barangoló mappába írhatják, és a mappába írt összes adattal automatikusan szinkronizálva lesznek. Az egyes alkalmazás-fejlesztőknek köszönhetően az alkalmazások kihasználhatják ezt a képességet. A barangolást használó univerzális Windows-alkalmazások fejlesztésével kapcsolatos további információkért tekintse meg az [AppData Storage API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) és a [Windows 8 AppData barangolás fejlesztői blogját](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
 
@@ -135,6 +135,6 @@ Ha a szervezet már használ barangolást a Windows 10-es verzióban az Azure Ri
 
 Az ismert problémák listájáért tekintse meg a [hibaelhárítási](enterprise-state-roaming-troubleshooting.md) szakaszban található dokumentációt. 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 Áttekintést a [vállalati állapot barangolásának áttekintése](enterprise-state-roaming-overview.md) című témakörben talál.

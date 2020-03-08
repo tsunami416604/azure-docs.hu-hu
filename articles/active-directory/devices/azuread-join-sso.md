@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 083433d31f088eae1e138dd9cbd5ac05bbe8a304
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f9d8c0cd803424e117bd4dc7a3382b7b32df2d05
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773306"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672704"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Hogyan működik az SSO a helyszíni erőforrásokkal az Azure AD-hez csatlakoztatott eszközökön
 
@@ -28,7 +28,7 @@ Ez a cikk a működésének módját ismerteti.
 
  Ha az Azure AD-hez csatlakoztatott gépek nincsenek csatlakoztatva a szervezet hálózatához, VPN-vagy egyéb hálózati infrastruktúrára van szükség. A helyszíni egyszeri bejelentkezéshez a helyszíni AD DS tartományvezérlőkkel való helyszíni kommunikáció szükséges.
 
-## <a name="how-it-works"></a>Működési elv 
+## <a name="how-it-works"></a>Működés 
 
 Mivel csak egyetlen felhasználónevet és jelszót kell megjegyeznie, az SSO leegyszerűsíti a hozzáférést az erőforrásokhoz, és javítja a környezet biztonságát. Az Azure AD-hez csatlakoztatott eszközzel a felhasználók már rendelkeznek egyszeri bejelentkezéssel a környezetében lévő felhőalapú alkalmazásokhoz. Ha a környezet rendelkezik Azure AD-val és helyszíni AD-vel, érdemes kiterjesztenie az egyszeri bejelentkezés hatókörét a helyszíni üzletági (LOB) alkalmazások, a fájlmegosztás és a nyomtatók számára.
 
@@ -42,13 +42,13 @@ Az Azure AD-t és a helyszíni AD-t egyaránt tartalmazó környezetek is ismert
 A felhasználó helyszíni környezetében a Kerberost kérő erőforráshoz való hozzáférési kísérlet során az eszköz:
 
 1. Elküldi a helyszíni tartományi adatokat és a felhasználói hitelesítő adatokat a helyi tartományvezérlőnek a hitelesített felhasználó beszerzéséhez.
-1. Az AD-hez csatlakoztatott erőforrások eléréséhez használt Kerberos [-jegy (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets) fogadása. Ha a HRE kapcsolódási tartomány TGT beolvasására tett kísérlet meghiúsul (a kapcsolódó DCLocator időtúllépése késleltetheti), a Hitelesítőadat-kezelő bejegyzéseit, vagy a felhasználó kaphat egy hitelesítési előugrót, amely a cél erőforráshoz tartozó hitelesítő adatokat kér le.
+1. Az AD-hez csatlakoztatott erőforrások eléréséhez használt Kerberos [-jegy (TGT)](/windows/desktop/secauthn/ticket-granting-tickets) fogadása. Ha a HRE kapcsolódási tartomány TGT beolvasására tett kísérlet meghiúsul (a kapcsolódó DCLocator időtúllépése késleltetheti), a Hitelesítőadat-kezelő bejegyzéseit, vagy a felhasználó kaphat egy hitelesítési előugrót, amely a cél erőforráshoz tartozó hitelesítő adatokat kér le.
 
 Minden, a **Windows rendszerhez integrált hitelesítéshez** konfigurált alkalmazás ZÖKKENŐMENTESEN egyszeri bejelentkezést kap, amikor egy felhasználó megpróbál hozzáférni azokhoz.
 
-A vállalati Windows Hello használatához további konfiguráció szükséges, amely lehetővé teszi a helyszíni egyszeri bejelentkezést egy Azure AD-hez csatlakoztatott eszközről. További információ: az [Azure ad-hez csatlakoztatott eszközök konfigurálása helyszíni egyszeri bejelentkezéshez a Windows Hello for Business használatával](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
+A vállalati Windows Hello használatához további konfiguráció szükséges, amely lehetővé teszi a helyszíni egyszeri bejelentkezést egy Azure AD-hez csatlakoztatott eszközről. További információ: az [Azure ad-hez csatlakoztatott eszközök konfigurálása helyszíni egyszeri bejelentkezéshez a Windows Hello for Business használatával](/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
 
-## <a name="what-you-get"></a>Az ajándékok
+## <a name="what-you-get"></a>Amihez jut
 
 Az SSO-val egy Azure AD-hez csatlakoztatott eszközön a következőket teheti: 
 
@@ -70,6 +70,6 @@ A Active Directory számítógép-hitelesítéstől függő alkalmazások és er
 
 Egy Azure AD-hez csatlakoztatott eszközön nem oszthat meg fájlokat más felhasználókkal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: [Mi az Eszközkezelés a Azure Active Directory?](overview.md) 

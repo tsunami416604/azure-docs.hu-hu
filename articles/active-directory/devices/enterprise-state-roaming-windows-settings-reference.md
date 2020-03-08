@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a75b662fabcce8ffa64f1b705e86a1c1dde625
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3a7abc402f1fc2e449e7aac5effdb01b6b941100
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194330"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672628"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 roaming beállítások referenciája
 
@@ -26,7 +26,7 @@ A következő lista felsorolja azokat a beállításokat, amelyek a Windows 10 r
 
 A Windows 10 szinkronizálási, biztonsági mentési és helyreállítási keretrendszere által támogatott eszközök és fióktípus összefoglalását a következő táblázat tartalmazza.
 
-| Fiók típusa és művelet | Asztal | Mobiltelefon |
+| Fiók típusa és művelet | Asztal | Mobil |
 | --- | --- | --- |
 | Azure Active Directory: sync |Igen |Nem |
 | Azure Active Directory: biztonsági mentés/visszaállítás |Nem |Nem |
@@ -52,7 +52,7 @@ A következő beállítási csoportok érhetők el a végfelhasználók számár
 ![Beállítások szinkronizálása](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 > [!NOTE]
-> Ez a cikk a Microsoft Edge korábbi HTML-alapú böngészőre vonatkozik, amely a Windows 10 2015-es verziójában indult el. A cikk nem vonatkozik az új, 2020. január 15-én kiadott Microsoft Edge Chromium-alapú böngészőre. Az új Microsoft Edge szinkronizálási működésével kapcsolatos további információkért tekintse meg a [Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)című cikket.
+> Ez a cikk a Microsoft Edge korábbi HTML-alapú böngészőre vonatkozik, amely a Windows 10 2015-es verziójában indult el. A cikk nem vonatkozik az új, 2020. január 15-én kiadott Microsoft Edge Chromium-alapú böngészőre. Az új Microsoft Edge szinkronizálási működésével kapcsolatos további információkért tekintse meg a [Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)című cikket.
 
 A Microsoft Edge böngésző beállítási csoportjának (Kedvencek, olvasások listája) szinkronizálása engedélyezhető vagy letiltható a végfelhasználók számára a Microsoft Edge böngésző beállításai menüpontban.
 
@@ -69,7 +69,7 @@ A következő táblázatban a Settings Group (beállítások) csoport oszlopába
 A beállítások csoport oszlop belső bejegyzései olyan beállításokat és alkalmazásokat mutatnak be, amelyek csak az alkalmazáson belüli szinkronizálásból, vagy a teljes eszköz szinkronizálásának a mobileszköz-kezelés (MDM) vagy a Csoportházirend beállítások használatával történő letiltásával érhetők el.
 A nem barangoló vagy szinkronizált beállítások nem tartoznak csoporthoz.
 
-| Beállítások | Asztal | Mobiltelefon | Csoport |
+| Beállítások | Asztal | Mobil | Csoport |
 | --- | --- | --- | --- |
 | **Fiókok**: fiók képe |szinkronizálás |X |Téma |
 | **Fiókok**: egyéb Fiókbeállítások |X |X | |
@@ -184,6 +184,6 @@ A nem barangoló vagy szinkronizált beállítások nem tartoznak csoporthoz.
 
 A Windows Creators Update minimális támogatott operációsrendszer-verziója (Build 15063). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az áttekintést lásd: a [nagyvállalati állapot barangolása – áttekintés](enterprise-state-roaming-overview.md).

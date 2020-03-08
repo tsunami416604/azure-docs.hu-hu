@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b9240b863eef4d460cd8d3a47304fb96ffb4bc8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917779"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672634"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Mi az elsődleges frissítési jogkivonat?
 
@@ -33,7 +33,7 @@ A következő Windows-összetevők kulcsszerepet játszanak a PRT igénylésébe
 * **Azure ad CloudAP beépülő modul**: a CloudAP-keretrendszerre épülő Azure ad-specifikus beépülő modul, amely a felhasználói hitelesítő adatokat ellenőrzi az Azure ad-ben a Windows bejelentkezés során.
 * **Azure ad WAM beépülő modul**: a WAM-keretrendszerre épülő Azure ad-specifikus beépülő modul, amely lehetővé teszi az egyszeri bejelentkezést az Azure ad-t használó alkalmazásokhoz a hitelesítéshez.
 * **Dsreg**: egy Azure ad-specifikus összetevő a Windows 10 rendszerben, amely az eszköz regisztrációs folyamatát kezeli az összes eszköz állapotára vonatkozóan.
-* **Platformmegbízhatósági modul** (TPM): a TPM egy eszközbe épített hardver-összetevő, amely hardveres biztonsági funkciókat biztosít a felhasználók és az eszközök titkos kulcsaihoz. További részletekért tekintse meg a következő cikket: [platformmegbízhatósági modul Technology áttekintése](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-overview).
+* **Platformmegbízhatósági modul** (TPM): a TPM egy eszközbe épített hardver-összetevő, amely hardveres biztonsági funkciókat biztosít a felhasználók és az eszközök titkos kulcsaihoz. További részletekért tekintse meg a következő cikket: [platformmegbízhatósági modul Technology áttekintése](/windows/security/information-protection/tpm/trusted-platform-module-overview).
 
 ## <a name="what-does-the-prt-contain"></a>Mit tartalmaz a PRT?
 
@@ -48,7 +48,7 @@ A PRT egy olyan átlátszatlan blob, amely az Azure AD-ből származik, és a ta
 
 ## <a name="how-is-a-prt-issued"></a>Hogyan lett kibocsátva a PRT?
 
-Az eszköz regisztrációja az eszközön alapuló hitelesítés előfeltétele az Azure AD-ben. A PRT-ket csak regisztrált eszközökön adják ki a felhasználók számára. További részletes információk az eszközök regisztrálásáról: a [Windows Hello for Business és az eszközök regisztrációja](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration). Az eszköz regisztrálása során a dsreg összetevő két titkosítási kulcspár-készletet hoz létre:
+Az eszköz regisztrációja az eszközön alapuló hitelesítés előfeltétele az Azure AD-ben. A PRT-ket csak regisztrált eszközökön adják ki a felhasználók számára. További részletes információk az eszközök regisztrálásáról: a [Windows Hello for Business és az eszközök regisztrációja](/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration). Az eszköz regisztrálása során a dsreg összetevő két titkosítási kulcspár-készletet hoz létre:
 
 * Eszköz kulcsa (dkpub/dkpriv)
 * Átviteli kulcs (tkpub/tkpriv)
@@ -147,7 +147,7 @@ A következő diagramok illusztrálják a PRT-ket kiállító és megújítási,
 
 | Lépés | Leírás |
 | :---: | --- |
-| A | A felhasználó a bejelentkezési felhasználói felületen írja be a jelszavát. A LogonUI átadja a hitelesítő adatokat egy Auth-pufferben az LSA-nak, ami viszont belsőleg továbbítja a CloudAP. A CloudAP továbbítja ezt a kérést a CloudAP beépülő modulnak. |
+| Az | A felhasználó a bejelentkezési felhasználói felületen írja be a jelszavát. A LogonUI átadja a hitelesítő adatokat egy Auth-pufferben az LSA-nak, ami viszont belsőleg továbbítja a CloudAP. A CloudAP továbbítja ezt a kérést a CloudAP beépülő modulnak. |
 | B | A CloudAP beépülő modul egy tartományi felderítési kérelmet kezdeményez a felhasználó identitás-szolgáltatójának azonosításához. Ha a felhasználó bérlője rendelkezik összevonási szolgáltatói beállítással, az Azure AD az összevonási szolgáltató metaadat-(MEX-) végpontját adja vissza. Ha nem, az Azure AD azt adja vissza, hogy a felhasználó felügyeli az Azure AD-vel való hitelesítést. |
 | C | Ha a felhasználó felügyelt, a CloudAP az Azure AD-ből kapja meg az alkalomból. Ha a felhasználó összevont, a CloudAP beépülő modul SAML-jogkivonatot kér az összevonási szolgáltatótól a felhasználó hitelesítő adataival. Amint megkapta az SAML-tokent, az Azure AD-től egy alkalomra kér. |
 | D | A CloudAP beépülő modul létrehozza a hitelesítési kérést a felhasználó hitelesítő adataival, és egy ügynök hatókörével aláírja a kérést az eszköz kulcsával (dkpriv), és elküldi az Azure AD-nek. Összevont környezetekben a CloudAP beépülő modul az összevonási szolgáltató által visszaadott SAML-tokent használja a felhasználói hitelesítő adatok helyett. |
@@ -160,7 +160,7 @@ A következő diagramok illusztrálják a PRT-ket kiállító és megújítási,
 
 | Lépés | Leírás |
 | :---: | --- |
-| A | A felhasználó a bejelentkezési felhasználói felületen írja be a jelszavát. A LogonUI átadja a hitelesítő adatokat egy Auth-pufferben az LSA-nak, ami viszont belsőleg továbbítja a CloudAP. A CloudAP továbbítja ezt a kérést a CloudAP beépülő modulnak. |
+| Az | A felhasználó a bejelentkezési felhasználói felületen írja be a jelszavát. A LogonUI átadja a hitelesítő adatokat egy Auth-pufferben az LSA-nak, ami viszont belsőleg továbbítja a CloudAP. A CloudAP továbbítja ezt a kérést a CloudAP beépülő modulnak. |
 | B | Ha a felhasználó korábban bejelentkezett a felhasználóba, a Windows megkezdi a gyorsítótárazott bejelentkezést, és ellenőrzi a hitelesítő adatokat, hogy naplózza a felhasználót a alkalmazásban. A CloudAP beépülő modul 4 óránként aszinkron módon megújítja a PRT-megújítást. |
 | C | A CloudAP beépülő modul egy tartományi felderítési kérelmet kezdeményez a felhasználó identitás-szolgáltatójának azonosításához. Ha a felhasználó bérlője rendelkezik összevonási szolgáltatói beállítással, az Azure AD az összevonási szolgáltató metaadat-(MEX-) végpontját adja vissza. Ha nem, az Azure AD azt adja vissza, hogy a felhasználó felügyeli az Azure AD-vel való hitelesítést. |
 | D | Ha a felhasználó összevont, a CloudAP beépülő modul SAML-jogkivonatot kér az összevonási szolgáltatótól a felhasználó hitelesítő adataival. Amint megkapta az SAML-tokent, az Azure AD-től egy alkalomra kér. Ha a felhasználó felügyelete alatt áll, a CloudAP közvetlenül az Azure AD-ből kapja meg az alkalomból. |
@@ -174,7 +174,7 @@ A következő diagramok illusztrálják a PRT-ket kiállító és megújítási,
 
 | Lépés | Leírás |
 | :---: | --- |
-| A | Az alkalmazások (például az Outlook, a OneNote stb.) egy jogkivonat-kérelmet kezdeményeznek a WAM számára. A WAM ezt követően kéri az Azure AD WAM beépülő modult a jogkivonat-kérelem kiszolgálására. |
+| Az | Az alkalmazások (például az Outlook, a OneNote stb.) egy jogkivonat-kérelmet kezdeményeznek a WAM számára. A WAM ezt követően kéri az Azure AD WAM beépülő modult a jogkivonat-kérelem kiszolgálására. |
 | B | Ha az alkalmazás frissítési jogkivonata már elérhető, az Azure AD WAM beépülő modul használatával kérhet hozzáférési tokent. Az eszközök kötésének igazolásához a WAM beépülő modul a munkamenet-kulccsal aláírja a kérést. Az Azure AD érvényesíti a munkamenetkulcsot, és kiadja a hozzáférési jogkivonatot és egy új frissítési jogkivonatot az alkalmazáshoz, amelyet a munkamenetkulcs titkosít. A WAM beépülő modul kéri a Cloud AP beépülő modult, hogy visszafejtse a jogkivonatokat, ami viszont azt kéri, hogy a TPM a munkamenetkulcs használatával legyen visszafejtve, ami a WAM beépülő modult is beolvassa Ezután a WAM beépülő modul csak a hozzáférési jogkivonatot biztosítja az alkalmazásnak, miközben újra titkosítja a frissítési tokent a DPAPI, és a saját gyorsítótárában tárolja azokat.  |
 | C |  Ha az alkalmazás frissítési jogkivonata nem érhető el, az Azure AD WAM beépülő modul a PRT használatával kér hozzáférési jogkivonatot. Ahhoz, hogy igazolni lehessen a tulajdonjogot, a WAM beépülő modul aláírja a PRT-t tartalmazó kérelmet a munkamenetkulcsot. Az Azure AD ellenőrzi a munkamenetkulcs aláírását a PRT-ben beágyazott munkamenetkulcs összehasonlításával, ellenőrzi, hogy az eszköz érvényes-e, és az alkalmazáshoz hozzáférési jogkivonatot és frissítési jogkivonatot állít ki. Az Azure AD továbbá egy új PRT-t (frissítési ciklus alapján) is kiadhat, és mindegyiket a munkamenetkulcs titkosítja. |
 | D | A WAM beépülő modul kéri a Cloud AP beépülő modult, hogy visszafejtse a jogkivonatokat, ami viszont azt kéri, hogy a TPM a munkamenetkulcs használatával legyen visszafejtve, ami a WAM beépülő modult is beolvassa Ezután a WAM beépülő modul csak a hozzáférési jogkivonatot biztosítja az alkalmazásnak, miközben újra titkosítja a frissítési tokent a DPAPI, és a saját gyorsítótárában tárolja azt. A WAM beépülő modul az alkalmazásra vonatkozó frissítési tokent fogja használni. A WAM beépülő modul az új PRT-t is visszaadja a Cloud AP beépülő modulhoz, amely ellenőrzi a PRT-t az Azure AD-ben, mielőtt frissíti azt a saját gyorsítótárába. A Cloud AP beépülő modul az új PRT-ket fogja használni. |
@@ -186,13 +186,13 @@ A következő diagramok illusztrálják a PRT-ket kiállító és megújítási,
 
 | Lépés | Leírás |
 | :---: | --- |
-| A | A felhasználó hitelesítő adataival bejelentkezik a Windowsba a PRT beszerzéséhez. Miután a felhasználó megnyitta a böngészőt, a böngésző (vagy a bővítmény) betölti az URL-címeket a beállításjegyzékből. |
+| Az | A felhasználó hitelesítő adataival bejelentkezik a Windowsba a PRT beszerzéséhez. Miután a felhasználó megnyitta a böngészőt, a böngésző (vagy a bővítmény) betölti az URL-címeket a beállításjegyzékből. |
 | B | Amikor egy felhasználó megnyit egy Azure AD bejelentkezési URL-címet, a böngésző vagy a bővítmény érvényesíti az URL-címet a beállításjegyzékből beszerzett adatokkal. Ha egyeznek, a böngésző meghívja a natív ügyfél-gazdagépet a jogkivonat lekéréséhez. |
 | C | A natív ügyfél gazdagépe ellenőrzi, hogy az URL-címek szerepelnek-e a Microsoft Identity Providers (Microsoft-fiók vagy az Azure AD) szolgáltatásban, kinyeri az URL-címről érkező egyszeres hívást, és meghívja a CloudAP beépülő modult a PRT-cookie-hoz |
 | D | A CloudAP beépülő modul létrehozza a PRT cookie-t, majd bejelentkezik a TPM-kötésű munkamenetkulcs használatával, és visszaküldi a natív ügyfél-gazdagépre. Mivel a cookie-t a munkamenetkulcs aláírja, azt nem lehet illetéktelenül módosítani. |
 | E | A natív ügyfél-gazdagép visszaadja ezt a PRT-cookie-t a böngészőnek, amely magában foglalja az x-MS-RefreshTokenCredential nevű kérelem fejlécének részeként, és az Azure AD-től kér jogkivonatokat. |
 | F | Az Azure AD ellenőrzi a munkamenet-kulcs aláírását a PRT-cookie-ban, érvényesíti az időpontot, ellenőrzi, hogy az eszköz érvényes-e a bérlőben, és kiadja a weboldalhoz tartozó azonosító jogkivonatot, valamint a böngészőhöz tartozó titkosított munkamenet-cookie-t. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A PRT-vel kapcsolatos problémák elhárításáról további információt a [hibrid Azure Active Directory csatlakoztatott Windows 10 és Windows Server 2016 rendszerű eszközök hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)című cikkben talál.

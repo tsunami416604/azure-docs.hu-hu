@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 03/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fa6da347289a12867a2416dea16631ba4758832f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c23648d70192607b2a5b977dcdd445931e995154
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187474"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671788"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>JWT jogkivonat-kiállító technikai profiljának meghatározása egy Azure Active Directory B2C egyéni házirendben
 
@@ -45,7 +45,7 @@ A **szabályzattípushoz**, a **OutputClaims**és a **PersistClaims** elemek ür
 
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | Igen | Az a jogcím, amelyet felhasználói identitási jogcímként kell használni a OAuth2-engedélyezési kódokban és a jogkivonatok frissítésében. Alapértelmezés szerint `objectId`re kell állítania, hacsak nem ad meg másik SubjectNamingInfo jogcím-típust. |
 | SendTokenResponseBodyWithJsonNumbers | Nem | Mindig `true`re van állítva. Olyan örökölt formátum esetén, ahol a numerikus értékek JSON-számok helyett karakterláncként vannak megadva, `false`értékre kell állítani. Ez az attribútum olyan ügyfelek esetében szükséges, akik egy korábbi implementációtól függenek, amely a tulajdonságokat karakterláncként adja vissza. |
@@ -56,12 +56,13 @@ A **szabályzattípushoz**, a **OutputClaims**és a **PersistClaims** elemek ür
 | allow_infinite_rolling_refresh_token | Nem | Ha `true`értékre van állítva, a jogkivonat-lecsúszó ablak élettartama soha nem jár le. |
 | IssuanceClaimPattern | Nem | A kiállítói (ISS) jogcímet vezérli. Az értékek egyike:<ul><li>AuthorityAndTenantGuid – az ISS-jogcím magában foglalja a tartománynevet, például `login.microsoftonline` vagy `tenant-name.b2clogin.com`, valamint a bérlői azonosítóját https:\//login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp – az ISS jogcím tartalmazza a tartománynevet, például `login.microsoftonline` vagy `tenant-name.b2clogin.com`, a bérlő azonosítóját és a függő entitás házirendjét. https:\//login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> Alapértelmezett érték: AuthorityAndTenantGuid |
 | AuthenticationContextReferenceClaimPattern | Nem | A `acr` jogcím értékének szabályozása.<ul><li>Nincs – Azure AD B2C nem adja ki az ACR-jogcímet</li><li>PolicyId – az `acr` jogcím tartalmazza a szabályzat nevét</li></ul>Az érték beállításának beállításai a következők: TFP (megbízhatósági keretrendszer házirendje) és ACR (hitelesítési környezet referenciája). Javasoljuk, hogy ezt az értéket TFP adja meg az érték beállításához, győződjön meg arról, hogy a `<Item>` a `Key="AuthenticationContextReferenceClaimPattern"` létezik, és az érték `None`. A függő entitás házirendjében adja hozzá `<OutputClaims>` elemet, adja hozzá ezt az elemet `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`. Győződjön meg arról is, hogy a szabályzat tartalmazza a jogcím típusát `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` |
+|RefreshTokenUserJourneyId| Nem | Egy felhasználói út azonosítója, amelyet a [hozzáférési jogkivonat frissítése](authorization-code-flow.md#4-refresh-the-token) a `/token` végpontra irányuló post kérelem frissítésekor kell végrehajtani. |
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
 A CryptographicKeys elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | issuer_secret | Igen | A JWT-token aláírásához használt X509-tanúsítvány (RSA-kulcs). Ez az a `B2C_1A_TokenSigningKeyContainer` kulcs, amelyet az [Egyéni szabályzatok első lépéseiben](custom-policy-get-started.md)alakítottunk ki. |
 | issuer_refresh_token_key | Igen | A frissítési jogkivonat titkosításához használt X509-tanúsítvány (RSA-kulcs). A `B2C_1A_TokenEncryptionKeyContainer` kulcsot konfigurálta az [Egyéni szabályzatok első lépéseiben](custom-policy-get-started.md) |

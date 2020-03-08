@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83b86b9bc5c09cc9f97a320e3019ddea68434309
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3a0a5d39a7cb2162186291ea534a623ef45c40d4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616455"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675626"
 ---
 # <a name="operating-system-upgrade"></a>Operációs rendszer frissítése
 Ez a dokumentum ismerteti az operációs rendszer frissítésének részleteit a HANA nagyméretű példányain.
@@ -58,11 +58,11 @@ Az operációs rendszer konfigurációja a javítások, a Rendszerfrissítések 
   A megfelelő hálózati teljesítmény és a rendszer stabilitásának biztosítása érdekében javasoljuk, hogy a eNIC és a fNIC illesztőprogramok operációs rendszerre vonatkozó megfelelő verzióját a következő kompatibilitási táblázatban látható módon telepítse. A kiszolgálók a kompatibilis verziókkal rendelkező ügyfeleknek érkeznek. Vegye figyelembe, hogy bizonyos esetekben az operációs rendszer/kernel javítása során az illesztőprogramok visszaállíthatók az alapértelmezett illesztőprogram-verzióra. Győződjön meg arról, hogy az illesztőprogram megfelelő verziója az operációs rendszer/kernel javítási műveleteit futtatja.
        
       
-  |  Operációs rendszer szállítója    |  Operációs rendszer csomagjának verziója     |  eNIC-illesztőprogram  |  fNIC-illesztőprogram |
-  |---------------|-------------------------|---------------|--------------|
-  |   SuSE        |  SLES 12 SP2            |   2.3.0.40    |   1.6.0.34   |
-  |   SuSE        |  SLES 12 SP3            |   2.3.0.44    |   1.6.0.36   |
-  |   Red Hat     |  RHEL 7,2               |   2.3.0.39    |   1.6.0.34   |
+  |  Operációs rendszer szállítója    |  Operációs rendszer csomagjának verziója     |  Belső vezérlőprogram verziója  |  eNIC-illesztőprogram |  fNIC-illesztőprogram | 
+  |---------------|-------------------------|--------------------|--------------|--------------|
+  |   SuSE        |  SLES 12 SP2            |   3.1.3 h           |  2.3.0.40    |   1.6.0.34   |
+  |   SuSE        |  SLES 12 SP3            |   3.1.3 h           |  2.3.0.44    |   1.6.0.36   |
+  |   Red Hat     |  RHEL 7,2               |   3.1.3 h           |  2.3.0.39    |   1.6.0.34   |
  
 
 ### <a name="commands-for-driver-upgrade-and-to-clean-old-rpm-packages"></a>Az illesztőprogram verziófrissítésére és a régi rpm-csomagok tisztítására vonatkozó parancsok
@@ -129,6 +129,6 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 * Rendszer újraindítása.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Tekintse át a [biztonsági mentést és a visszaállítást](hana-overview-high-availability-disaster-recovery.md) az operációs rendszer biztonsági mentése I SKU osztályban.
 - Tekintse át az [operációs rendszer biztonsági másolatát](os-backup-type-ii-skus.md) , amely a 2. típusú SKU osztályhoz tartozó 3. típusú bélyegzőket használja.

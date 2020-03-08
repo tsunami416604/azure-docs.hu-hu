@@ -3,12 +3,12 @@ title: A Recovery Services-tárolók áttekintése
 description: Áttekintés és összehasonlítás Recovery Services-tárolók és Azure Backup-tárolók között.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 327f17aca29f2787c86269e8dd707f5152285154
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 94a3e5a0865bcc8c0a9ecb866ca013f20a558e1a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397041"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673238"
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services-tárolók áttekintése
 
@@ -72,9 +72,9 @@ A következő szakaszokban olyan cikkekre mutató hivatkozások találhatók, am
 
 - [A Felhőbeli biztonsági másolatok védelmének biztosítása Recovery Services-tárolókban](backup-azure-security-feature.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkek használhatók:</br>
 [IaaS virtuális gép biztonsági mentése](backup-azure-arm-vms-prepare.md)</br>
 [Azure Backup Server biztonsági mentése](backup-azure-microsoft-azure-backup.md)</br>
-[Windows Server biztonsági mentése](backup-configure-vault.md)
+[Windows Server biztonsági mentése](backup-windows-with-mars-agent.md)

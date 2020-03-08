@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70fe718884796ac127be38c375003dd728089be8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c8fe33f78b96dbfe780c94fbddfc5c8821148279
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016034"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672593"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -33,12 +33,12 @@ Az Azure AD-hitelesítés használatának számos előnye van az Azure-beli Wind
 - A továbbiakban nem kell helyi rendszergazdai fiókokat kezelnie.
 - Az Azure RBAC lehetővé teszi a megfelelő hozzáférés megadását a virtuális gépek igény szerinti eléréséhez, és ha már nincs rá szükség, távolítsa el azt.
 - A virtuális géphez való hozzáférés engedélyezése előtt az Azure AD feltételes hozzáférése további követelményeket is kikényszerítheti, például: 
-   - Többtényezős hitelesítés
+   - Multi-Factor Authentication
    - Bejelentkezési kockázat-ellenőrzési
 - Automatizálhatja és méretezheti az Azure AD Joint az Azure Windows rendszerű virtuális gépekhez, amelyek részét képezik a VDI üzembe helyezésének.
 
 > [!NOTE]
-> Ha engedélyezi ezt a funkciót, az Azure-beli Windows rendszerű virtuális gépek az Azure AD-vel lesznek csatlakoztatva. Nem csatlakoztatható más tartományhoz, például a Prem AD-hez vagy az Azure AD DShoz. Ha így tesz, le kell választania a virtuális gépet az Azure AD-bérlőről a bővítmény eltávolításával.
+> Ha engedélyezi ezt a funkciót, az Azure-beli Windows rendszerű virtuális gépek az Azure AD-vel lesznek csatlakoztatva. Nem csatlakoztatható más tartományhoz, például a helyszíni AD-hez vagy az Azure AD DShoz. Ha így tesz, le kell választania a virtuális gépet az Azure AD-bérlőről a bővítmény eltávolításával.
 
 ## <a name="requirements"></a>Követelmények
 
@@ -103,10 +103,10 @@ Válassza a kipróbálás lehetőséget a kódrészlet jobb felső sarkában.
 Nyissa meg a Cloud Shellt a böngészőben.
 Kattintson a Cloud Shell gombra a [Azure Portal](https://portal.azure.com)jobb felső sarkában található menüben.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.31 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következő parancsot: az --version. Ha telepíteni vagy frissíteni szeretne, olvassa el az [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli)című cikket.
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.31 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következő parancsot: az --version. Ha telepíteni vagy frissíteni szeretne, olvassa el az [Azure CLI telepítése](/cli/azure/install-azure-cli)című cikket.
 
-1. Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) paranccsal. 
-1. Hozzon létre egy virtuális gépet az [az VM Create](https://docs.microsoft.com/cli/azure/vm#az-vm-create) használatával egy támogatott régió támogatott eloszlásával. 
+1. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. 
+1. Hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm#az-vm-create) használatával egy támogatott régió támogatott eloszlásával. 
 1. Telepítse az Azure AD login VM-bővítményt. 
 
 A következő példa egy myVM nevű virtuális gépet telepít, amely az Win2019Datacenter-t használja egy myResourceGroup nevű erőforráscsoporthoz a southcentralus régióban. Az alábbi példákban megadhatja a saját erőforráscsoport és a virtuális gépek nevét igény szerint.
@@ -128,7 +128,7 @@ az vm create \
 
 A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány percet vesz igénybe.
 
-Végül telepítse az Azure AD bejelentkezési virtuálisgép-bővítményét, hogy engedélyezze az Azure AD-bejelentkezést a Windows rendszerű virtuális gépeken. A virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Az az [VM Extension](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) SET paranccsal telepítse a AADLoginForWindows-bővítményt a myVM nevű virtuális gépre a myResourceGroup erőforráscsoporthoz:
+Végül telepítse az Azure AD bejelentkezési virtuálisgép-bővítményét, hogy engedélyezze az Azure AD-bejelentkezést a Windows rendszerű virtuális gépeken. A virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Az az [VM Extension](/cli/azure/vm/extension#az-vm-extension-set) SET paranccsal telepítse a AADLoginForWindows-bővítményt a myVM nevű virtuális gépre a myResourceGroup erőforráscsoporthoz:
 
 > [!NOTE]
 > A AADLoginForWindows bővítményt telepítheti egy meglévő Windows Server 2019 vagy Windows 10 1809 és újabb rendszerű virtuális gépre az Azure AD-hitelesítés engedélyezéséhez. Alább látható egy példa az az parancssori felületre.
@@ -152,8 +152,7 @@ Most, hogy létrehozta a virtuális gépet, konfigurálnia kell az Azure RBAC-sz
 
 > [!NOTE]
 > Annak engedélyezéséhez, hogy a felhasználó RDP-en keresztül jelentkezzen be a virtuális GÉPRE, hozzá kell rendelnie a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési szerepkörét. Egy virtuális géphez hozzárendelt tulajdonosi vagy közreműködői szerepkörökkel rendelkező Azure-felhasználó nem jogosult automatikusan a virtuális gépre RDP-kapcsolaton keresztül bejelentkezni. Ez a virtuális gépeket vezérlő személyek, illetve a virtuális gépeket elérő személyek között naplózható elkülönítést biztosít.
-
-A virtuális gép szerepkör-hozzárendelései több módon is konfigurálhatók:
+' A virtuális gép szerepkör-hozzárendelései több módon is konfigurálhatók:
 
 - Az Azure AD portál felületének használata
 - A Azure Cloud Shell felület használata
@@ -175,9 +174,9 @@ Néhány pillanat elteltével a rendszerbiztonsági tag a kiválasztott hatókö
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>A Azure Cloud Shell felület használata
 
-Az alábbi példa az [az role hozzárendelés Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) paranccsal rendeli hozzá a virtuális gép rendszergazdai bejelentkezési szerepkörét a virtuális géphez az aktuális Azure-felhasználóhoz. Az aktív Azure-fiókjának felhasználónevét az az [Account show](https://docs.microsoft.com/cli/azure/account#az-account-show)paranccsal szerezheti be, a hatókör pedig az előző lépésben létrehozott virtuális gépre az [az VM show](https://docs.microsoft.com/cli/azure/vm#az-vm-show)paranccsal. A hatókör egy erőforráscsoport vagy előfizetés szintjén is hozzárendelhető, és a normál RBAC öröklési engedélyek is érvényesek. További információ: [szerepköralapú hozzáférés-vezérlés](../../virtual-machines/linux/login-using-aad.md).
+Az alábbi példa az [az role hozzárendelés Create](/cli/azure/role/assignment#az-role-assignment-create) paranccsal rendeli hozzá a virtuális gép rendszergazdai bejelentkezési szerepkörét a virtuális géphez az aktuális Azure-felhasználóhoz. Az aktív Azure-fiókjának felhasználónevét az az [Account show](/cli/azure/account#az-account-show)paranccsal szerezheti be, a hatókör pedig az előző lépésben létrehozott virtuális gépre az [az VM show](/cli/azure/vm#az-vm-show)paranccsal. A hatókör egy erőforráscsoport vagy előfizetés szintjén is hozzárendelhető, és a normál RBAC öröklési engedélyek is érvényesek. További információ: [szerepköralapú hozzáférés-vezérlés](../../virtual-machines/linux/login-using-aad.md).
 
-```AzureCLI
+```   zureCLI
 username=$(az account show --query user.name --output tsv)
 vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
 
@@ -188,14 +187,14 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> Ha a HRE tartomány és a bejelentkezési Felhasználónév tartománya nem egyezik, meg kell adnia a felhasználói fiók objektumazonosítóát a `--assignee-object-id`, nem csak a `--assignee`felhasználónevét. A felhasználói fiókhoz tartozó objektumazonosítót az [az ad User List](https://docs.microsoft.com/cli/azure/ad/user#az-ad-user-list)paranccsal kérheti le.
+> Ha a HRE tartomány és a bejelentkezési Felhasználónév tartománya nem egyezik, meg kell adnia a felhasználói fiók objektumazonosítóát a `--assignee-object-id`, nem csak a `--assignee`felhasználónevét. A felhasználói fiókhoz tartozó objektumazonosítót az [az ad User List](/cli/azure/ad/user#az-ad-user-list)paranccsal kérheti le.
 
 Az Azure-előfizetések erőforrásaihoz való hozzáférés RBAC használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és az Azure CLI használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
-- [Azure-erőforrásokhoz való hozzáférés kezelése az RBAC és az Azure Portal használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
-- [Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure PowerShell használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
-
+- [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és az Azure CLI használatával](/azure/role-based-access-control/role-assignments-cli)
+- [Azure-erőforrásokhoz való hozzáférés kezelése az RBAC és az Azure Portal használatával](/azure/role-based-access-control/role-assignments-portal)
+- [Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure PowerShell használatával](/azure/role-based-access-control/role-assignments-powershell).
+'
 ## <a name="using-conditional-access"></a>Feltételes hozzáférés használata
 
 A feltételes hozzáférési szabályzatok, például a többtényezős hitelesítés vagy a felhasználói bejelentkezés kockázatának érvényesítése előtt engedélyezheti a hozzáférést az Azure-beli Windows rendszerű virtuális gépekhez, amelyek engedélyezve vannak az Azure AD-bejelentkezéssel. A feltételes hozzáférési szabályzat alkalmazásához ki kell választania az "Azure Windows VM-bejelentkezés" alkalmazást a Cloud apps vagy a műveletek hozzárendelési beállításból, majd a bejelentkezési kockázatot feltételként kell használnia, és/vagy a többtényezős hitelesítést kell megadni hozzáférés-vezérlésként. 
@@ -224,17 +223,16 @@ Most bejelentkezett a Windows Server 2019 Azure-beli virtuális gépre a hozzár
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-### <a name="troubleshoot-deployment-issues"></a>Üzembe helyezési problémák elhárítása
+### <a name="troubleshoot-deployment-issues"></a>Üzembe helyezés hibáinak elhárítása
 
 A AADLoginForWindows-bővítményt sikeresen kell telepíteni ahhoz, hogy a virtuális gép végre lehessen hajtani az Azure AD JOIN folyamatát. Ha a virtuálisgép-bővítményt nem sikerül megfelelően telepíteni, hajtsa végre a következő lépéseket.
 
-1. RDP-t a virtuális géphez a helyi rendszergazdai fiók használatával, és vizsgálja meg a CommandExecution. log naplófájlt  
+1. RDP-t a virtuális géphez a helyi rendszergazdai fiók használatával, és vizsgálja meg a CommandExecuti'n. log naplófájlt  
    
    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.ActiveDirectory.AADLoginForWindows\0.3.1.0. 
 
    > [!NOTE]
-   > Ha a bővítmény a kezdeti hiba után újraindul, a rendszer a központi telepítési hibát tartalmazó naplót CommandExecution_YYYYMMDDHHMMSSSSS. log néven menti. 
-
+   > Ha a bővítmény a kezdeti hiba után újraindul, a rendszer a központi telepítési hibát tartalmazó naplót CommandExecution_YYYYMMDDHHMMSSSSS. log néven menti. "
 1. Nyisson meg egy parancssort a virtuális gépen, és ellenőrizze ezeket a lekérdezéseket az Azure-gazdagépen futó Instance Metadata Service (IMDS) végponton:
 
    | Futtatandó parancs | Várt kimenet |
@@ -338,7 +336,7 @@ Ha a következő hibaüzenet jelenik meg, amikor távoli asztali kapcsolattal ke
 
 ![A hitelesítő adatai nem működnek](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
-Győződjön meg arról, hogy a távoli asztali kapcsolat kezdeményezéséhez használt Windows 10 rendszerű számítógép vagy az Azure AD-hez csatlakoztatott vagy a hibrid Azure AD ugyanahhoz az Azure AD-címtárhoz van csatlakoztatva, amelyben a virtuális gép csatlakoztatva van. Az eszköz identitásával kapcsolatos további információkért tekintse meg az [eszköz identitását](https://docs.microsoft.com/azure/active-directory/devices/overview)ismertető cikket.
+Győződjön meg arról, hogy a távoli asztali kapcsolat kezdeményezéséhez használt Windows 10 rendszerű számítógép vagy az Azure AD-hez csatlakoztatott vagy a hibrid Azure AD ugyanahhoz az Azure AD-címtárhoz van csatlakoztatva, amelyben a virtuális gép csatlakoztatva van. Az eszköz identitásával kapcsolatos további információkért tekintse meg az [eszköz identitását](/azure/active-directory/devices/overview)ismertető cikket.
 
 > [!NOTE]
 > A Windows 10 20H1 támogatja az Azure AD regisztrált SZÁMÍTÓGÉPét, hogy kezdeményezzen távoli asztali kapcsolatokat a virtuális géppel. Csatlakozzon a Windows Insider programhoz, és próbálja ki a Windows 10 új funkcióit.
@@ -355,7 +353,7 @@ Ha a következő hibaüzenet jelenik meg, amikor távoli asztali kapcsolattal ke
 
 Ha olyan feltételes hozzáférési szabályzatot állított be, amely a többtényezős hitelesítés (MFA) használatát igényli az erőforráshoz való hozzáféréshez, meg kell győződnie arról, hogy a Windows 10 rendszerű számítógép a távoli asztali kapcsolatot kezdeményezi a virtuális géppel, és erős hitelesítési módszer, például a Windows Hello. Ha nem használ erős hitelesítési módszert a távoli asztali kapcsolathoz, az előző hibaüzenet jelenik meg.
 
-Ha még nem telepítette a vállalati Windows Hello szolgáltatást, és ha ez nem lehetséges, kizárhatja az MFA-követelményt úgy, hogy a feltételes hozzáférési szabályzatot, amely kizárja az "Azure Windows VM-bejelentkezés" alkalmazást az MFA-t igénylő felhőalapú alkalmazások listájából. A vállalati Windows Hello szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [vállalati Windows Hello áttekintése](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)című témakört.
+Ha még nem telepítette a vállalati Windows Hello szolgáltatást, és ha ez nem lehetséges, kizárhatja az MFA-követelményt úgy, hogy a feltételes hozzáférési szabályzatot, amely kizárja az "Azure Windows VM-bejelentkezés" alkalmazást az MFA-t igénylő felhőalapú alkalmazások listájából. A vállalati Windows Hello szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [vállalati Windows Hello áttekintése](/windows/security/identity-protection/hello-for-business/hello-identity-verification)című témakört.
 
 > [!NOTE]
 > A Windows Hello for Business PIN-kódjának RDP protokollal való hitelesítését a Windows 10 több verzióra is támogatja, azonban a Windows 10 1809-es verziójában hozzá lett adva a biometrikus hitelesítés támogatása az RDP használatával. Ha a Windows Hello for Business hitelesítést használja az RDP-ben, csak a CERT megbízhatósági modellt használó központi telepítések esetén érhető el, és a kulcs megbízhatósági modellje jelenleg nem érhető el.
@@ -364,5 +362,5 @@ Ha még nem telepítette a vállalati Windows Hello szolgáltatást, és ha ez n
 
 Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse a problémát az [Azure ad visszajelzési fórumának](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)használatával.
 
-## <a name="next-steps"></a>Következő lépések
-További információ a Azure Active Directoryről: [Mi az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+## <a name="next-steps"></a>További lépések
+További információ a Azure Active Directoryről: [Mi az a Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)

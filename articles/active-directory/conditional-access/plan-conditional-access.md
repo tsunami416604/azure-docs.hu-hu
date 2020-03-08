@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e1c75d5022432a9a57b30aabec4dd2c4f76f2f29
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468437"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671830"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Útmutató: a feltételes hozzáférési telepítés megtervezése Azure Active Directory
 
@@ -163,13 +163,13 @@ A tesztelési terv fontos, hogy összehasonlítsa a várt eredmények és a tén
 
 |Szabályzat |Forgatókönyv |Várt eredmény | Eredmény |
 |---|---|---|---|
-|[MFA megkövetelése, ha nem működik](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|A meghatalmazott felhasználó bejelentkezik az *alkalmazásba* egy megbízható helyen/munkahelyen|A felhasználónak nem kell megadnia az MFA-t| |
-|[MFA megkövetelése, ha nem működik](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Az engedélyezve lévő felhasználó bejelentkezik az *alkalmazásba* , és nem megbízható helyen/munkahelyen|A rendszer felszólítja a felhasználót az MFA használatára, és sikeresen bejelentkezhet| |
-|[MFA megkövetelése (rendszergazda)](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Globális rendszergazda bejelentkezik az *alkalmazásba*|A rendszergazda az MFA-t kéri| |
-|[Kockázatos bejelentkezések](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|A felhasználó bejelentkezik az *alkalmazásba* egy [Tor-böngésző](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook) használatával|A rendszergazda az MFA-t kéri| |
-|[Eszközkezelés](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|A jogosultsággal rendelkező felhasználó megpróbál bejelentkezni egy jóváhagyott eszközről|Hozzáférés engedélyezve| |
-|[Eszközkezelés](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Az engedéllyel rendelkező felhasználó megpróbál bejelentkezni egy jogosulatlan eszközről|Hozzáférés letiltva| |
-|[A kockázatos felhasználók jelszavának módosítása](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|A jogosultsággal rendelkező felhasználó megpróbál bejelentkezni a feltört hitelesítő adatokkal (nagy kockázatú bejelentkezés)|A rendszer megkéri a felhasználót, hogy változtassa meg a jelszót, vagy a hozzáférés le legyen tiltva a szabályzat alapján| |
+|[MFA megkövetelése, ha nem működik](/azure/active-directory/conditional-access/untrusted-networks)|A meghatalmazott felhasználó bejelentkezik az *alkalmazásba* egy megbízható helyen/munkahelyen|A felhasználónak nem kell megadnia az MFA-t| |
+|[MFA megkövetelése, ha nem működik](/azure/active-directory/conditional-access/untrusted-networks)|Az engedélyezve lévő felhasználó bejelentkezik az *alkalmazásba* , és nem megbízható helyen/munkahelyen|A rendszer felszólítja a felhasználót az MFA használatára, és sikeresen bejelentkezhet| |
+|[MFA megkövetelése (rendszergazda)](/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Globális rendszergazda bejelentkezik az *alkalmazásba*|A rendszergazda az MFA-t kéri| |
+|[Kockázatos bejelentkezések](/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|A felhasználó bejelentkezik az *alkalmazásba* egy [Tor-böngésző](/azure/active-directory/active-directory-identityprotection-playbook) használatával|A rendszergazda az MFA-t kéri| |
+|[Eszközkezelés](/azure/active-directory/conditional-access/require-managed-devices)|A jogosultsággal rendelkező felhasználó megpróbál bejelentkezni egy jóváhagyott eszközről|Hozzáférés engedélyezve| |
+|[Eszközkezelés](/azure/active-directory/conditional-access/require-managed-devices)|Az engedéllyel rendelkező felhasználó megpróbál bejelentkezni egy jogosulatlan eszközről|Hozzáférés letiltva| |
+|[A kockázatos felhasználók jelszavának módosítása](/azure/active-directory/identity-protection/howto-user-risk-policy)|A jogosultsággal rendelkező felhasználó megpróbál bejelentkezni a feltört hitelesítő adatokkal (nagy kockázatú bejelentkezés)|A rendszer megkéri a felhasználót, hogy változtassa meg a jelszót, vagy a hozzáférés le legyen tiltva a szabályzat alapján| |
 
 ### <a name="configure-the-policy"></a>A házirend konfigurálása
 
@@ -234,6 +234,6 @@ Ha vissza kell állítania az újonnan megvalósított szabályzatokat, az aláb
 
 1. **A házirend törlése** – ha a házirend már nem szükséges, törölje.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át az [Azure ad feltételes hozzáférési dokumentációját](index.yml) , és tekintse át a rendelkezésre álló információkat.

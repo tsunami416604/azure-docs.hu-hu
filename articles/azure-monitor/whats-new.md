@@ -5,16 +5,70 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 02/05/2020
-ms.openlocfilehash: ecee13850e735f827a5465e0f49039f514afe233
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/05/2020
+ms.openlocfilehash: b42acdf64612da6837bc67752f7a22169ddef7e2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657741"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673322"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Az Azure Monitor dokumentációjának újdonságai
 Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített cikkeket. A rendszer minden hónap első hetében frissíti az előző hónapból származó cikkek frissítéseinek befoglalásával.
+
+## <a name="march-2020"></a>Március 2020
+
+### <a name="agents"></a>Ügynökök
+Több frissítés a diagnosztikai bővítmény tartalmának újraírása részeként.
+
+- [Az Azure monitoring-ügynökök áttekintése](platform/agents-overview.md) – átstrukturált táblázatok az egyes ügynökök egyedi funkcióinak jobb tisztázásához.
+- [Azure Diagnostics bővítmény áttekintése](platform/diagnostics-extension-overview.md) – teljes újraírás.
+- A [blob Storage használata az IIS-hez és a Table Storage](platform/diagnostics-extension-logs.md) -hoz a frissítéshez és a tisztasághoz Azure monitor általános újraírással kapcsolatos eseményekhez.
+- [Telepítse és konfigurálja a Windows Azure Diagnostics bővítményt (wad)](platform/diagnostics-extension-windows-install.md) – új cikk. 
+- [Windows Diagnostics bővítmény sémája](platform/diagnostics-extension-schema-windows.md) – átrendezve.
+- [Adatok küldése a Windows Azure Diagnostics bővítményből az azure Event Hubsba](platform/diagnostics-extension-stream-event-hubs.md) – teljes mértékben újraírható és frissítve.
+- [Diagnosztikai adatgyűjtés tárolása és megtekintése az Azure Storage-ban](platform/diagnostics-extension-to-storage.md) – teljes mértékben újraírható és frissíthető.
+- [Log Analytics virtuálisgép-bővítmény a Windowshoz](../virtual-machines/extensions/oms-windows.md) – jobban tisztázza log Analytics ügynökkel való kapcsolatot.
+- [Azure monitor virtuálisgép-bővítmény a Linux](../virtual-machines/extensions/oms-linux.md) rendszerhez – jobban tisztázza log Analytics-ügynökkel való kapcsolatot.
+
+
+
+
+### <a name="application-insights"></a>Application Insights
+- [A kapcsolatok karakterláncai az Azure Application Insightsban](app/sdk-connection-string.md) – új cikk.
+
+### <a name="insights-and-solutions"></a>Bepillantást és megoldásokat
+
+#### <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
+- [Azure Active Directory integrálása az Azure Kubernetes szolgáltatással](../aks/azure-ad-integration.md) – vegye figyelembe, hogy egy ügyfélalkalmazás létrehozásával támogatja a RBAC-kompatibilis fürtöt a tárolók Azure monitor támogatásához.
+
+#### <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez
+- [Azure monitor for VMS (GA) gyakori kérdések](insights/vminsights-ga-release-faq.md) – a teljesítményadatok tárolási módjának módosítása.
+
+#### <a name="office-365"></a>Office 365
+- [Office 365 felügyeleti megoldás az Azure-ban](insights/solution-office-365.md) – frissített elavulás dátuma.
+
+
+### <a name="logs"></a>Naplók
+- Azure Monitor-új cikkben [található naplók optimalizálása](log-query/query-optimization.md) .
+- [Azure monitor naplók használatának és költségeinek kezelése](platform/manage-cost-storage.md) – továbbfejlesztett minta-lekérdezések, amelyek segítenek a használat megértésében.
+
+### <a name="metrics"></a>Mérőszámok
+- [Azure monitor a platform metrikái exportálhatók a diagnosztikai beállítások](platform/metrics-supported-export-diagnostic-settings.md) – hozzáadott szakasz a nullák és a nulla értékek viselkedésének változása esetén.
+
+
+### <a name="visualizations"></a>Vizualizációk
+Több új cikk a Designer for munkafüzetek átalakítási útmutatójában.
+
+- [Azure monitor a Designer és a munkafüzetek közötti áttérési útmutató](platform/view-designer-conversion-overview.md) – új cikk.
+- [Azure monitor tervező átalakítása munkafüzetekbe konvertálási beállítások](platform/view-designer-conversion-options.md) – új cikk.
+- [Azure monitor megtekintheti a tervezőt munkafüzetekhez csempe-konverziók](platform/view-designer-conversion-tiles.md) – új cikk.
+- [Azure monitor megtekintheti a tervezőt a munkafüzetek átalakításának összegzése és a hozzáférés](platform/view-designer-conversion-access.md) – új cikk alapján.
+- [Azure monitor tervező átalakítása munkafüzetekhez gyakori feladatok konvertálása](platform/view-designer-conversion-tasks.md) – új cikk.
+- [Azure monitor tervező átalakítása munkafüzetek átalakítására – példák](platform/view-designer-conversion-examples.md) – új cikk.
+
+
+
 
 ## <a name="january-2020"></a>2020. január
 
@@ -43,14 +97,14 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 ### <a name="insights-and-solutions"></a>Bepillantást és megoldásokat
 
 #### <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
-- [Azure monitor konfigurálása a containers Agent adatgyűjtéshez](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config) – további részletek az ügynök frissítéséhez az Azure Red Hat OpenShift, és további információkkal bővült az ügynök verziófrissítésének módszerei.
-- [Teljesítmény-riasztások létrehozása a tárolók Azure monitor számára](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-alerts) – felülvizsgált információk és frissített lépések a munkaterületen tárolt teljesítményadatok riasztásának létrehozásához munkaterületen belüli riasztások használatával.
-- [Kubernetes-figyelés a Azure monitor for containers szolgáltatással](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze) – a Windows Kubernetes-fürtök támogatásáról szóló áttekintő cikk és a elemzésre vonatkozó cikk frissítése.
-- [Azure Red Hat OpenShift-fürtök konfigurálása az Azure monitor for containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-azure-redhat-setup) szolgáltatással – további részletek az ügynök frissítéséhez az Azure Red Hat OpenShift, és további információkkal bővült az ügynök verziófrissítésének módszerei.
-- [Hibrid Kubernetes-fürtök konfigurálása Azure monitor for containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-hybrid-setup) használatával – frissítve a biztonságos port hozzáadásának támogatásával: a 10250 a Kubelet cAdvisor.
-- [A containers agent Azure monitor kezelése – az](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-manage-agent) Azure Red Hat OpenShift és a metrikák leselejtezésének a viselkedésével és konfigurálásával kapcsolatos frissített részletek a más típusú Kubernetes-fürtökhöz képest.
-- [Azure monitor konfigurálása a containers Prometheus-integrációhoz](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-prometheus-integration) – frissített részletek az Azure Red Hat OpenShift származó metrika-leselejtezési viselkedéssel és konfigurációval kapcsolatban, más típusú Kubernetes-fürtökhöz képest.
-- A [tárolók Azure monitorának frissítése a metrikák számára](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-update-metrics) – frissített részletek az Azure Red Hat OpenShift a metrika-lekaparás működésével és konfigurálásával, valamint más típusú Kubernetes-fürtökhöz képest.
+- [Azure monitor konfigurálása a containers Agent adatgyűjtéshez](insights/container-insights-agent-config.md) – további részletek az ügynök frissítéséhez az Azure Red Hat OpenShift, és további információkkal bővült az ügynök verziófrissítésének módszerei.
+- [Teljesítmény-riasztások létrehozása a tárolók Azure monitor számára](insights/container-insights-alerts.md) – felülvizsgált információk és frissített lépések a munkaterületen tárolt teljesítményadatok riasztásának létrehozásához munkaterületen belüli riasztások használatával.
+- [Kubernetes-figyelés a Azure monitor for containers szolgáltatással](insights/container-insights-analyze.md) – a Windows Kubernetes-fürtök támogatásáról szóló áttekintő cikk és a elemzésre vonatkozó cikk frissítése.
+- [Azure Red Hat OpenShift-fürtök konfigurálása az Azure monitor for containers](insights/container-insights-azure-redhat-setup.md) szolgáltatással – további részletek az ügynök frissítéséhez az Azure Red Hat OpenShift, és további információkkal bővült az ügynök verziófrissítésének módszerei.
+- [Hibrid Kubernetes-fürtök konfigurálása Azure monitor for containers](insights/container-insights-hybrid-setup.md) használatával – frissítve a biztonságos port hozzáadásának támogatásával: a 10250 a Kubelet cAdvisor.
+- [A containers agent Azure monitor kezelése – az](insights/container-insights-manage-agent.md) Azure Red Hat OpenShift és a metrikák leselejtezésének a viselkedésével és konfigurálásával kapcsolatos frissített részletek a más típusú Kubernetes-fürtökhöz képest.
+- [Azure monitor konfigurálása a containers Prometheus-integrációhoz](insights/container-insights-prometheus-integration.md) – frissített részletek az Azure Red Hat OpenShift származó metrika-leselejtezési viselkedéssel és konfigurációval kapcsolatban, más típusú Kubernetes-fürtökhöz képest.
+- A [tárolók Azure monitorának frissítése a metrikák számára](insights/container-insights-update-metrics.md) – frissített részletek az Azure Red Hat OpenShift a metrika-lekaparás működésével és konfigurálásával, valamint más típusú Kubernetes-fürtökhöz képest.
 
 
 #### <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez

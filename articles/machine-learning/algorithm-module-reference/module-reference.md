@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 02/22/2020
-ms.openlocfilehash: ece4b7a85ff5738900b8f999cc2f14ba35ecab0d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 334cf69db70e8a1e0c2994c492f15ff44505af0d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920093"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673375"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>A Azure Machine Learning Designer (előzetes verzió) & modul-hivatkozásának algoritmusa
 
@@ -44,25 +44,25 @@ Az algoritmusok kiválasztásával kapcsolatos segítségért lásd:
 | Funkció | Leírás | Modul |
 | --- |--- | --- |
 | Regresszió | Egy érték előrejelzése. | [A döntési fa regressziójának fokozása](boosted-decision-tree-regression.md) <br/> [Döntési erdő regressziója](decision-forest-regression.md) <br/> [Lineáris regresszió](linear-regression.md)  <br/> [Neurális hálózat regressziója](neural-network-regression.md)  <br/> |
-| Fürtözés | Csoportosítsa az adathalmazokat.| [K – fürtözés](k-means-clustering.md)
+| Fürtszolgáltatás | Csoportosítsa az adathalmazokat.| [K – fürtözés](k-means-clustering.md)
 | Osztályozás | Egy osztály előrejelzése.  Válasszon a bináris (kétosztályos) vagy a többosztályos algoritmusok közül.| [Többosztályos növelt döntési fa](multiclass-boosted-decision-tree.md) <br/> [Többosztályos döntési erdő](multiclass-decision-forest.md) <br/> [Többosztályos logisztikai regresszió](multiclass-logistic-regression.md)  <br/> [Többosztályos neurális hálózat](multiclass-neural-network.md) <br/> [Egy vagy minden többosztályos](one-vs-all-multiclass.md) <br/> [Kétosztályos átlagú Perceptron](two-class-averaged-perceptron.md) <br/>  [Kétosztályos, megnövelt döntési fa](two-class-boosted-decision-tree.md)  <br/> [Kétosztályos döntési erdő](two-class-decision-forest.md) <br/>  [Kétosztályos logisztikai regresszió](two-class-logistic-regression.md) <br/> [Kétosztályos neurális hálózat](two-class-neural-network.md) <br/> [Kétosztályos támogatási vektoros gép](two-class-support-vector-machine.md) | 
 
 ## <a name="modules-for-building-and-evaluating-models"></a>Modellek létrehozásához és kiértékeléséhez használható modulok
 
 | Funkció | Leírás | Modul |
 | --- |--- | --- |
-| A modell betanítása | Adatfuttatás az algoritmuson keresztül. |  [Fürtözési modell betanítása](train-clustering-model.md) <br/> [Betanítási modell](train-model.md)  <br/> [Modell Hiperparaméterek beállítása hangolása](tune-model-hyperparameters.md) |
+| Modell betanítása | Adatfuttatás az algoritmuson keresztül. |  [Fürtözési modell betanítása](train-clustering-model.md) <br/> [Betanítási modell](train-model.md)  <br/> [Modell Hiperparaméterek beállítása hangolása](tune-model-hyperparameters.md) |
 | Modell pontozása és kiértékelése | Mérje fel a betanított modell pontosságát. | [Átalakítás alkalmazása](apply-transformation.md) <br/> [Az adatfürthöz rendelése](assign-data-to-clusters.md) <br/> [Kereszt-ellenőrzési modell](cross-validate-model.md) <br/> [Modell kiértékelése](evaluate-model.md) <br/> [Pontszám modell](score-model.md) |
-| Python nyelv | Kód írása és beágyazása modulba a Python és a folyamat integrálásához. | [Python-modell létrehozása](create-python-model.md) <br/> [Python-szkript végrehajtása](execute-python-script.md) |
+| Python nyelven | Kód írása és beágyazása modulba a Python és a folyamat integrálásához. | [Python-modell létrehozása](create-python-model.md) <br/> [Python-szkript végrehajtása](execute-python-script.md) |
 | R nyelv | Kód írása és beágyazása egy modulba az R és a folyamat integrálásához. | [R-szkript végrehajtása](execute-r-script.md) |
 | Szövegelemzés | Speciális számítási eszközöket biztosít a strukturált és strukturálatlan szöveggel való munkához. | [N grammos funkciók kinyerése szövegből](extract-n-gram-features-from-text.md) <br/> [Szolgáltatások kivonatolása](feature-hashing.md) <br/> [Szöveg előfeldolgozása](preprocess-text.md) |
 | Ajánlás | Build-javaslatok modelljei. | [Az ajánló kiértékelése](evaluate-recommender.md) <br/> [Pontszám SVD ajánló](score-svd-recommender.md) <br/> [SVD-ajánló](train-SVD-recommender.md) |
-| Rendellenességek észlelése | Hozzon létre anomáliák észlelési modelljeit. | [PCA-alapú anomáliák észlelése](pca-based-anomaly-detection.md) <br/> [Tanítási rendellenesség észlelési modellje](train-anomaly-detection-model.md) |
+
 
 ## <a name="error-messages"></a>Hibaüzenetek
 
 Ismerje meg, hogy milyen [hibaüzenetek és kivétel-kódok](designer-error-codes.md) merülhetnek fel a Azure Machine learning Designer moduljaival.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: modell létrehozása Designerben az automatikus árak előrejelzéséhez](../tutorial-designer-automobile-price-train-score.md)

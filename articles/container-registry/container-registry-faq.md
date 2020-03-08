@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252065"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78403210"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
 
@@ -241,7 +241,7 @@ A megbízott ezután képes hitelesíteni és elérni a rendszerképeket a beál
 
 * Rendszerkép lekérése:
 
-  ```console
+  ```bash
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -297,28 +297,25 @@ grep OPTIONS /etc/sysconfig/docker
 
 A Fedora 28 kiszolgáló például a következő Docker-démoni beállításokkal rendelkezik:
 
-```
-OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
-```
+`OPTIONS='--selinux-enabled --log-driver=journald --live-restore'`
 
 Ha `--signature-verification=false` hiányzik, `docker pull` a következőhöz hasonló hibával meghiúsul:
 
-```bash
+```output
 Trying to pull repository myregistry.azurecr.io/myimage ...
 unauthorized: authentication required
 ```
 
 A hiba elhárítása:
 1. Adja hozzá a `--signature-verification=false` elemet a Docker-démon konfigurációs fájljához `/etc/sysconfig/docker`. Például:
-
-  ```
-  OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
-  ```
+   
+   `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
+   
 2. Indítsa újra a Docker Daemon szolgáltatást a következő parancs futtatásával:
-
-  ```bash
-  sudo systemctl restart docker.service
-  ```
+   
+   ```bash
+   sudo systemctl restart docker.service
+   ```
 
 A `--signature-verification` részletei a `man dockerd`futtatásával találhatók.
 
@@ -478,9 +475,7 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 Ha átadja a helyi forrás mappáját a `az acr build` parancsnak, a rendszer alapértelmezés szerint kizárja a `.git` mappát a feltöltött csomagból. `.dockerignore` fájlt a következő beállítással hozhat létre. Azt jelzi, hogy a parancs a feltöltött csomagban lévő `.git` összes fájlját visszaállítja. 
 
-```sh
-!.git/**
-```
+`!.git/**`
 
 Ez a beállítás a `az acr run` parancsra is érvényes.
 
@@ -499,7 +494,7 @@ Jelenleg nem támogatjuk a GitLab a forrás-eseményindítók esetében.
 
 ## <a name="run-error-message-troubleshooting"></a>Hibaüzenetek futtatása – hibaelhárítás
 
-| Hibaüzenet | Hibaelhárítási útmutató |
+| Hibaüzenet | Troubleshooting guide (Hibaelhárítási útmutató) |
 |---|---|
 |Nincs hozzáférés konfigurálva a virtuális géphez, ezért nem találhatók előfizetések|Ez akkor fordulhat elő, ha `az login --identity`t használ az ACR-feladatban. Ez egy átmeneti hiba, amely akkor fordul elő, ha a felügyelt identitás szerepkör-hozzárendelése nem lett propagálva. Várakozás néhány másodpercre az újrapróbálkozások előtt.|
 
@@ -508,6 +503,6 @@ Jelenleg nem támogatjuk a GitLab a forrás-eseményindítók esetében.
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
 - [GitHub-műveletek](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További](container-registry-intro.md) információ a Azure Container Registryról.

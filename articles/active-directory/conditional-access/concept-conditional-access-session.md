@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84c794e6fe751bc1c12b90353ef7b285f31a2331
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192141"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671875"
 ---
 # <a name="conditional-access-session"></a>Feltételes hozzáférés: munkamenet
 
@@ -30,12 +30,12 @@ A szervezetek használhatják ezt a vezérlőt arra, hogy az Azure AD-t az eszk�
 
 Az alkalmazás által kényszerített korlátozások használatával és konfigurálásával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Korlátozott hozzáférés engedélyezése a SharePoint Online-ban](https://docs.microsoft.com/sharepoint/control-access-from-unmanaged-devices)
+- [Korlátozott hozzáférés engedélyezése a SharePoint Online-ban](/sharepoint/control-access-from-unmanaged-devices)
 - [Korlátozott hozzáférés engedélyezése az Exchange Online-ban](https://aka.ms/owalimitedaccess)
 
 ## <a name="conditional-access-application-control"></a>Feltételes hozzáférésű alkalmazás vezérlője
 
-A feltételes hozzáférést biztosító alkalmazás-vezérlő fordított proxy-architektúrát használ, és egyedi módon integrálva van az Azure AD feltételes hozzáférésével. Az Azure AD feltételes hozzáférés használatával bizonyos feltételek alapján kényszerítheti a szervezet alkalmazásaihoz való hozzáférés-vezérlést. A feltételek határozzák meg, hogy kik (felhasználók vagy csoportok) és mi (mely Felhőbeli alkalmazások) és hol (mely helyekről és hálózatokból) a feltételes hozzáférési szabályzat érvényes. A feltételek meghatározása után átirányíthatja a felhasználókat [Microsoft Cloud app Securityba](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) , ahol a hozzáférés-és munkamenet-vezérlők alkalmazásával védelemmel láthatja el az feltételes hozzáférést biztosító alkalmazás-vezérlő az adataikat.
+A feltételes hozzáférést biztosító alkalmazás-vezérlő fordított proxy-architektúrát használ, és egyedi módon integrálva van az Azure AD feltételes hozzáférésével. Az Azure AD feltételes hozzáférés használatával bizonyos feltételek alapján kényszerítheti a szervezet alkalmazásaihoz való hozzáférés-vezérlést. A feltételek határozzák meg, hogy kik (felhasználók vagy csoportok) és mi (mely Felhőbeli alkalmazások) és hol (mely helyekről és hálózatokból) a feltételes hozzáférési szabályzat érvényes. A feltételek meghatározása után átirányíthatja a felhasználókat [Microsoft Cloud app Securityba](/cloud-app-security/what-is-cloud-app-security) , ahol a hozzáférés-és munkamenet-vezérlők alkalmazásával védelemmel láthatja el az feltételes hozzáférést biztosító alkalmazás-vezérlő az adataikat.
 
 A feltételes hozzáférést biztosító alkalmazás-vezérlő lehetővé teszi a felhasználó alkalmazás-hozzáférés és a megfigyelés és a hozzáférési és munkamenet-szabályzatok alapján valós időben ellenőrzött-munkameneteket. Hozzáférési és munkamenet-szabályzatok segítségével a Cloud App Security portálon tovább finomíthatja a szűrőket, és állítsa be a felhasználó által végrehajtandó műveleteket. A hozzáférési és munkamenet-szabályzatok a következőket teheti:
 
@@ -46,7 +46,7 @@ A feltételes hozzáférést biztosító alkalmazás-vezérlő lehetővé teszi 
 - Hozzáférés letiltása: a különböző kockázati tényezőktől függően részletesen letilthatja az egyes alkalmazások és felhasználók hozzáférését. Például letilthatja őket, ha Ügyféltanúsítványok formájában használják az ügyféltanúsítványt.
 - Egyéni tevékenységek blokkolása: egyes alkalmazások olyan egyedi forgatókönyvekkel rendelkeznek, amelyek kockázatokat hordoznak, például a Microsoft Teams vagy a Slack-alkalmazásokban bizalmas tartalmú üzeneteket küldenek. Ezekben a forgatókönyvekben a bizalmas tartalmak üzeneteinek vizsgálatára és valós idejű blokkolására van lehetőség.
 
-További információkért tekintse meg a [Kiemelt alkalmazások feltételes hozzáférést biztosító alkalmazás-vezérlő üzembe helyezése](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)című cikket.
+További információkért tekintse meg a [Kiemelt alkalmazások feltételes hozzáférést biztosító alkalmazás-vezérlő üzembe helyezése](/cloud-app-security/proxy-deployment-aad)című cikket.
 
 ## <a name="sign-in-frequency-preview"></a>Bejelentkezési gyakoriság (előzetes verzió)
 
@@ -72,7 +72,7 @@ Az állandó böngésző-munkamenet lehetővé teszi a felhasználók számára,
 
 További információ: a [hitelesítési munkamenetek kezelésének konfigurálása feltételes hozzáféréssel](howto-conditional-access-session-lifetime.md#persistence-of-browsing-sessions).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

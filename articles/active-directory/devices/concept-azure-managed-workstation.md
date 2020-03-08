@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26197a14e78b1cf1a1e078ba0145eca207206bf
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 05a3a8cf14a591dd3037175e4eed5b5bd8d3096c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561965"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672663"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>A biztonságos, Azure által felügyelt munkaállomások ismertetése
 
@@ -81,18 +81,18 @@ Az adattárolási stratégiák megszigorítják a biztonságot azáltal, hogy n�
 
 A biztonságos munkaállomás esetében elengedhetetlen egy olyan ellátási Láncos megoldás, amelyben a "megbízhatóság gyökere" nevű megbízható munkaállomás használatos. A megbízhatósági eszközök gyökerének kiválasztásakor figyelembe veendő technológiáknak a modern laptopok következő technológiáit kell tartalmazniuk: 
 
-* [Platformmegbízhatósági modul (TPM) 2,0](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-tpm)
-* [BitLocker meghajtótitkosítás](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-bitlocker)
-* [UEFI biztonságos rendszerindítás](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot)
-* [Windows Update használatával terjesztett illesztőprogramok és belső vezérlőprogram](https://docs.microsoft.com/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
-* [Virtualizálás és HVCI engedélyezve](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-vbs)
-* [Az illesztőprogramok és az alkalmazások készen állnak a HVCI](https://docs.microsoft.com/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
-* [Windows Hello](https://docs.microsoft.com/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
-* [DMA I/O-védelem](https://docs.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
-* [Rendszerőr](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
-* [Modern készenlét](https://docs.microsoft.com/windows-hardware/design/device-experiences/modern-standby)
+* [Platformmegbízhatósági modul (TPM) 2,0](/windows-hardware/design/device-experiences/oem-tpm)
+* [BitLocker meghajtótitkosítás](/windows-hardware/design/device-experiences/oem-bitlocker)
+* [UEFI biztonságos rendszerindítás](/windows-hardware/design/device-experiences/oem-secure-boot)
+* [Windows Update használatával terjesztett illesztőprogramok és belső vezérlőprogram](/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
+* [Virtualizálás és HVCI engedélyezve](/windows-hardware/design/device-experiences/oem-vbs)
+* [Az illesztőprogramok és az alkalmazások készen állnak a HVCI](/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
+* [Windows Hello](/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
+* [DMA I/O-védelem](/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
+* [Rendszerőr](/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
+* [Modern készenlét](/windows-hardware/design/device-experiences/modern-standby)
 
-Ebben a megoldásban a megbízhatóság gyökerét a [Microsoft Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot) technológiájának használatával helyezi üzembe, amely megfelel a modern műszaki követelményeknek. Egy munkaállomás biztonságossá tételéhez az Autopilot lehetővé teszi a Microsoft OEM-re optimalizált Windows 10-es eszközök kihasználása. Ezek az eszközök a gyártótól származó ismert jó állapotba kerülnek. A potenciálisan nem biztonságos eszközök rendszerképének átállítása helyett az Autopilot képes a Windows-eszközök "üzleti használatra kész" állapotba alakítására. Alkalmazza a beállításokat és a házirendeket, telepíti az alkalmazásokat, és még módosítja a Windows 10 kiadását. Előfordulhat például, hogy az Autopilot a Windows 10 Pro verzióról a Windows 10 Enterprise rendszerre módosítja az eszköz Windows rendszerre való telepítését, hogy az képes legyen speciális funkciók használatára.
+Ebben a megoldásban a megbízhatóság gyökerét a [Microsoft Autopilot](/windows/deployment/windows-autopilot/windows-autopilot) technológiájának használatával helyezi üzembe, amely megfelel a modern műszaki követelményeknek. Egy munkaállomás biztonságossá tételéhez az Autopilot lehetővé teszi a Microsoft OEM-re optimalizált Windows 10-es eszközök kihasználása. Ezek az eszközök a gyártótól származó ismert jó állapotba kerülnek. A potenciálisan nem biztonságos eszközök rendszerképének átállítása helyett az Autopilot képes a Windows-eszközök "üzleti használatra kész" állapotba alakítására. Alkalmazza a beállításokat és a házirendeket, telepíti az alkalmazásokat, és még módosítja a Windows 10 kiadását. Előfordulhat például, hogy az Autopilot a Windows 10 Pro verzióról a Windows 10 Enterprise rendszerre módosítja az eszköz Windows rendszerre való telepítését, hogy az képes legyen speciális funkciók használatára.
 
 ![Biztonságos munkaállomás-szintek](./media/concept-azure-managed-workstation/supplychain.png)
 
@@ -105,7 +105,7 @@ Ez az útmutató számos olyan biztonsági profilt és szerepkört hivatkozik, a
 
 * **Fokozott biztonság** – ez a belépési szintű, védett megoldás jó választás az otthoni felhasználók, a kisvállalkozások és az általános fejlesztők számára.
 
-   A továbbfejlesztett munkaállomás egy házirend-alapú módszer az alacsony biztonsági profil biztonságának növelésére. Biztonságos eszközöket biztosít az ügyféladatok használatához, miközben olyan hatékonyságnövelő eszközöket is használhat, mint az e-mailek és a webböngészés. A naplózási házirendekkel és az Intune-nal figyelheti a felhasználók viselkedésére és a profilok használatára szolgáló bővített munkaállomást. Üzembe helyezi a továbbfejlesztett munkaállomás-profilt a Windows10 (1809) parancsfájllal, és kihasználhatja a fejlett kártevők elleni védelem előnyeit a komplex [veszélyforrások elleni védelem (ATP)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)használatával.
+   A továbbfejlesztett munkaállomás egy házirend-alapú módszer az alacsony biztonsági profil biztonságának növelésére. Biztonságos eszközöket biztosít az ügyféladatok használatához, miközben olyan hatékonyságnövelő eszközöket is használhat, mint az e-mailek és a webböngészés. A naplózási házirendekkel és az Intune-nal figyelheti a felhasználók viselkedésére és a profilok használatára szolgáló bővített munkaállomást. Üzembe helyezi a továbbfejlesztett munkaállomás-profilt a Windows10 (1809) parancsfájllal, és kihasználhatja a fejlett kártevők elleni védelem előnyeit a komplex [veszélyforrások elleni védelem (ATP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)használatával.
 
 * **Magas biztonság** – a leghatékonyabb módszer a munkaállomás támadási felületének csökkentésére, hogy eltávolítsa a munkaállomás önálló felügyeletének képességét. A helyi rendszergazdai jogosultságok eltávolítása egy olyan lépés, amely javítja a biztonságot, de a hatékonyságot nem megfelelően implementálja. A magas biztonsági profil a fokozott biztonsági profilra épít egy jelentős módosítással: a helyi rendszergazda eltávolításával. Ez a profil nagy horderejű felhasználók számára készült: vezetők, bérszámfejtés és bizalmas adatok felhasználói, a szolgáltatásokhoz és folyamatokhoz tartozó jóváhagyók.
 
@@ -121,9 +121,9 @@ Ez az útmutató számos olyan biztonsági profilt és szerepkört hivatkozik, a
 
 * **Elkülönített** – ez az egyéni, offline forgatókönyv a spektrum szélsőséges végét jelöli. Ebben az esetben nincsenek telepítési parancsfájlok megadva. Előfordulhat, hogy olyan üzleti szempontból kritikus fontosságú függvényt kell kezelnie, amelyhez nem támogatott vagy nem javított örökölt operációs rendszer szükséges. Például egy nagy értékkel rendelkező gépsor vagy egy élettartam-támogató rendszer. Mivel a biztonság kritikus fontosságú, és a felhőalapú szolgáltatások nem érhetők el, ezeket a számítógépeket manuálisan vagy elszigetelt Active Directory erdőszintű architektúrával, például a fokozott biztonságú felügyeleti környezettel (ESAE) kezelheti és frissítheti. Ilyen esetekben érdemes lehet eltávolítani az összes hozzáférést, kivéve az alapszintű Intune-t és az ATP állapot-ellenőrzéseket.
 
-   * [Intune hálózati kommunikációs követelmények](https://docs.microsoft.com/intune/network-bandwidth-use)
-   * [ATP hálózati kommunikációs követelmények](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
+   * [Intune hálózati kommunikációs követelmények](/intune/network-bandwidth-use)
+   * [ATP hálózati kommunikációs követelmények](/azure-advanced-threat-protection/configure-proxy)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Biztonságos Azure által felügyelt munkaállomás üzembe helyezése](howto-azure-managed-workstation.md).

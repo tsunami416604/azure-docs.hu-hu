@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 020055c1629a66ec1aa82beb050501803b2a0f18
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168318"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668403"
 ---
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Minden kérelemhez engedélyezési fejléc szükséges. Ez a táblázat mutatja be, hogy mely fejlécek az egyes szolgáltatások támogatottak:
 
@@ -22,7 +22,7 @@ Minden kérelemhez engedélyezési fejléc szükséges. Ez a táblázat mutatja 
 
 A `Ocp-Apim-Subscription-Key` fejléc használatakor csak az előfizetési kulcsot kell megadnia. Például:
 
-```
+```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
@@ -34,7 +34,7 @@ Hozzáférési jogkivonat beszerzéséhez a `Ocp-Apim-Subscription-Key` és az e
 
 A `issueToken` végpont formátuma a következő:
 
-```
+```http
 https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
@@ -62,7 +62,7 @@ A válasz törzse JSON Web Token (JWT) formátumban tartalmazza a hozzáférési
 
 Ebben a példában egy egyszerű PowerShell-parancsfájlt, hogy hozzáférési jogkivonatot kapjon. Cserélje le a `YOUR_SUBSCRIPTION_KEY`t a beszédfelismerési szolgáltatás előfizetési kulcsára. Ellenőrizze, hogy a helyes-e a végpontot használja a régiót, amelyben megegyezik az előfizetés. Ebben a példában az USA nyugati RÉGIÓJA van beállítva.
 
-```Powershell
+```powershell
 $FetchTokenHeader = @{
   'Content-type'='application/x-www-form-urlencoded';
   'Content-Length'= '0';
@@ -81,7 +81,7 @@ $OAuthToken
 
 a cURL egy Linux (és a Linux Windows alrendszere) elérhető parancssori eszköz. A cURL-parancs bemutatja, hogyan hozzáférési jogkivonatot kapjon. Cserélje le a `YOUR_SUBSCRIPTION_KEY`t a beszédfelismerési szolgáltatás előfizetési kulcsára. Ellenőrizze, hogy a helyes-e a végpontot használja a régiót, amelyben megegyezik az előfizetés. Ebben a példában az USA nyugati RÉGIÓJA van beállítva.
 
-```cli
+```console
 curl -v -X POST
  "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
  -H "Content-type: application/x-www-form-urlencoded" \
@@ -93,7 +93,7 @@ curl -v -X POST
 
 Ez C# osztály mutatja be a hozzáférési jogkivonat beszerzése. Át a az Speech Service előfizetési kulcs, ha az osztály példányosítania. Ha az előfizetése nem az USA nyugati régiójában található, módosítsa `FetchTokenUri` értékét, hogy az megfeleljen az előfizetése régiójának.
 
-```cs
+```csharp
 public class Authentication
 {
     public static readonly string FetchTokenUri =

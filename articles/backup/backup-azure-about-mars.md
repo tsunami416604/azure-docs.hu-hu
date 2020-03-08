@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan támogatja a MARS-ügynök a biztonsági menté
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 348980b840b814c09ce46627f286489d4caa9f8f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d2cc8e32152f6930c9c250e2811668cc2c924616
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023956"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673296"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Tudnivalók a Microsoft Azure Recovery Services (MARS) ügynökről
 
@@ -27,40 +27,40 @@ A MARS-ügynök a következő visszaállítási forgatókönyveket támogatja:
 
 ![MARS helyreállítási forgatókönyvek](./media/backup-try-azure-backup-in-10-mins/restore-scenarios.png)
 
--   **Ugyanazon kiszolgáló**: az a kiszolgáló, amelyen a biztonsági másolatot eredetileg létrehozták.
-    -    **Fájlok és mappák**: válassza ki a visszaállítani kívánt fájlokat és mappákat.
-    -    **Kötet szintje**: válassza ki azt a kötetet és helyreállítási pontot, amelyet vissza szeretne állítani, majd állítsa vissza ugyanarra a helyre, vagy egy másik helyre ugyanazon a gépen.  Meglévő fájlok másolatának létrehozása, meglévő fájlok felülírása vagy a meglévő fájlok helyreállításának kihagyása.
-    -    **Rendszerszintű**: válassza ki a rendszerállapotot és a helyreállítási pontot, hogy a visszaállítás ugyanarra a gépre történjen egy adott helyen.
+- **Ugyanazon kiszolgáló**: az a kiszolgáló, amelyen a biztonsági másolatot eredetileg létrehozták.
+  - **Fájlok és mappák**: válassza ki a visszaállítani kívánt fájlokat és mappákat.
+  - **Kötet szintje**: válassza ki azt a kötetet és helyreállítási pontot, amelyet vissza szeretne állítani, majd állítsa vissza ugyanarra a helyre, vagy egy másik helyre ugyanazon a gépen.  Meglévő fájlok másolatának létrehozása, meglévő fájlok felülírása vagy a meglévő fájlok helyreállításának kihagyása.
+  - **Rendszerszintű**: válassza ki a rendszerállapotot és a helyreállítási pontot, hogy a visszaállítás ugyanarra a gépre történjen egy adott helyen.
 
-
--   **Másodlagos kiszolgáló**: a biztonsági mentést végző kiszolgálótól eltérő kiszolgáló.
-    -    **Fájlok és mappák**: válassza ki azokat az egyes fájlokat és mappákat, amelyeknek a helyreállítási pontját szeretné visszaállítani a célszámítógépen.
-    -    **Kötet szintje**: válassza ki azt a kötetet és helyreállítási pontot, amelyet vissza szeretne állítani egy másik helyre. Meglévő fájlok másolatának létrehozása, meglévő fájlok felülírása vagy a meglévő fájlok helyreállításának kihagyása.
-    -    **Rendszerszintű**: válassza ki a rendszerállapotot és a helyreállítási pontot, ha rendszerállapot-fájlként szeretné visszaállítani egy másik számítógépre.
+- **Másodlagos kiszolgáló**: a biztonsági mentést végző kiszolgálótól eltérő kiszolgáló.
+  - **Fájlok és mappák**: válassza ki azokat az egyes fájlokat és mappákat, amelyeknek a helyreállítási pontját szeretné visszaállítani a célszámítógépen.
+  - **Kötet szintje**: válassza ki azt a kötetet és helyreállítási pontot, amelyet vissza szeretne állítani egy másik helyre. Meglévő fájlok másolatának létrehozása, meglévő fájlok felülírása vagy a meglévő fájlok helyreállításának kihagyása.
+  - **Rendszerszintű**: válassza ki a rendszerállapotot és a helyreállítási pontot, ha rendszerállapot-fájlként szeretné visszaállítani egy másik számítógépre.
 
 ## <a name="backup-process"></a>Biztonsági mentési folyamat
 
-1. A Azure Portal hozzon létre egy [Recovery Services](https://docs.microsoft.com/azure/backup/backup-configure-vault#create-a-recovery-services-vault)-tárolót, majd a biztonsági mentési célokból válassza a fájlok, mappák és a rendszerállapot lehetőséget.
-2. [Töltse le a Recovery Services-tároló hitelesítő adatait és az ügynök telepítőjét](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent) egy helyszíni gépre. 
+1. A Azure Portal hozzon létre egy [Recovery Services](install-mars-agent.md#create-a-recovery-services-vault)-tárolót, majd a biztonsági mentési célokból válassza a fájlok, mappák és a rendszerállapot lehetőséget.
+2. [Töltse le a Recovery Services-tároló hitelesítő adatait és az ügynök telepítőjét](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) egy helyszíni gépre.
 
     Ha a biztonsági mentés lehetőség kiválasztásával szeretné megóvni a helyszíni gépet, válassza a fájlok, mappák és a rendszerállapot lehetőséget, majd töltse le a MARS-ügynököt.
 
 3. Az infrastruktúra előkészítése:
 
-    a. Futtassa a telepítőt az [ügynök telepítéséhez](https://docs.microsoft.com/azure/backup/backup-configure-vault#install-and-register-the-agent).
+    a. Futtassa a telepítőt az [ügynök telepítéséhez](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent).
 
     b. A letöltött tároló hitelesítő adataival regisztrálja a gépet a Recovery Services-tárolóban.
-4. [Konfigurálja a biztonsági mentést](https://docs.microsoft.com/azure/backup/backup-configure-vault#create-a-backup-policy)az ügyfél ügynök-konzolján. A biztonsági mentési adatok megőrzési szabályának megadásával megkezdheti a védelem megkezdését.
+4. [Konfigurálja a biztonsági mentést](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy)az ügyfél ügynök-konzolján. A biztonsági mentési adatok megőrzési szabályának megadásával megkezdheti a védelem megkezdését.
 
 ![Azure Backup-ügynök diagramja](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
 
-
 ### <a name="additional-scenarios"></a>További helyzetek
--   **Meghatározott fájlok és mappák biztonsági mentése az Azure Virtual Machines**szolgáltatásban: az Azure-beli virtuális gépek (VM-EK) biztonsági mentésének elsődleges módszere egy Azure Backup-bővítmény használata a virtuális gépen. A bővítmény biztonsági másolatot készít a teljes virtuális gépről. Ha meghatározott fájlokról és mappákról szeretne biztonsági mentést készíteni egy virtuális gépen belül, telepítheti a MARS-ügynököt az Azure-beli virtuális gépekre. További információ: [architektúra: beépített Azure virtuális gépek biztonsági mentése](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup).
 
--   **Offline előkészítés**: az Azure-ba irányuló adatok kezdeti teljes biztonsági mentése általában nagy mennyiségű adat átvitelét és nagyobb hálózati sávszélességet igényel. A következő biztonsági másolatok csak a különbözetet, vagy növekményes adatmennyiséget továbbítanak. Azure Backup tömöríti a kezdeti biztonsági mentéseket. Az *Offline kivetés*folyamatán keresztül a Azure Backup lemezek használatával feltölthetik a tömörített kezdeti biztonsági mentési adatok az Azure-ba. További információ: [Azure Backup offline biztonsági mentés Azure Data Box használatával](offline-backup-azure-data-box.md).
+- **Meghatározott fájlok és mappák biztonsági mentése az Azure Virtual Machines**szolgáltatásban: az Azure-beli virtuális gépek (VM-EK) biztonsági mentésének elsődleges módszere egy Azure Backup-bővítmény használata a virtuális gépen. A bővítmény biztonsági másolatot készít a teljes virtuális gépről. Ha meghatározott fájlokról és mappákról szeretne biztonsági mentést készíteni egy virtuális gépen belül, telepítheti a MARS-ügynököt az Azure-beli virtuális gépekre. További információ: [architektúra: beépített Azure virtuális gépek biztonsági mentése](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup).
 
-## <a name="next-steps"></a>Következő lépések
+- **Offline előkészítés**: az Azure-ba irányuló adatok kezdeti teljes biztonsági mentése általában nagy mennyiségű adat átvitelét és nagyobb hálózati sávszélességet igényel. A következő biztonsági másolatok csak a különbözetet, vagy növekményes adatmennyiséget továbbítanak. Azure Backup tömöríti a kezdeti biztonsági mentéseket. Az *Offline kivetés*folyamatán keresztül a Azure Backup lemezek használatával feltölthetik a tömörített kezdeti biztonsági mentési adatok az Azure-ba. További információ: [Azure Backup offline biztonsági mentés Azure Data Box használatával](offline-backup-azure-data-box.md).
+
+## <a name="next-steps"></a>További lépések
+
 [MARS-ügynök támogatási mátrixa](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)
 
 [MARS-ügynök – gyakori kérdések](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq)

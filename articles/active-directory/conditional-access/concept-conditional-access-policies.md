@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87224c9e3e697b86aab51d1e922af8ab2130ac40
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2d2ebcc885b4018f4d9c3ff1b525ffc19b1abdda
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186236"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671929"
 ---
 # <a name="building-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
@@ -34,7 +34,7 @@ A hozzárendelések rész a feltételes hozzáférési szabályzatot határozza 
 
 A [felhasználók és csoportok](concept-conditional-access-users-groups.md) hozzárendelik a szabályzatot, vagy kizárják azokat. Ez a hozzárendelés magában foglalhatja az összes felhasználót, a felhasználók adott csoportjait, a címtárbeli szerepköröket vagy a külső vendég felhasználókat. 
 
-### <a name="cloud-apps-or-actions"></a>Felhőalapú alkalmazások vagy műveletek
+### <a name="cloud-apps-or-actions"></a>Felhőalkalmazások vagy műveletek
 
 A [felhőalapú alkalmazások vagy műveletek](concept-conditional-access-cloud-apps.md) magukban foglalhatják vagy kizárhatják a szabályzat hatálya alá eső felhőalapú alkalmazásokat vagy felhasználói műveleteket.
 
@@ -70,7 +70,7 @@ Ez a vezérlő a hibrid Azure AD-hez csatlakoztatott vagy az Intune-ban megfelel
 
 A feltételes hozzáférési házirend hozzáférés-vezérlési része szabályozza a szabályzatok betartatásának módját.
 
-### <a name="grant"></a>Grant
+### <a name="grant"></a>Engedély
 
 A [Grant](concept-conditional-access-grant.md) lehetővé teszi a rendszergazdák számára a szabályzatok betartatását, ahol letilthatják vagy megadhatják a hozzáférést.
 
@@ -125,12 +125,12 @@ A feltételes hozzáférési szabályzatnak legalább a következőket kell tart
 
 Az [általános feltételes hozzáférési szabályzatok](concept-conditional-access-policy-common.md) a legtöbb szervezet számára hasznosnak bizonyuló szabályzatokat tartalmaznak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
 
 [Felhőalapú Azure-beli Multi-Factor Authentication üzembe helyezés tervezése](../authentication/howto-mfa-getstarted.md)
 
-[Az eszközök megfelelőségének kezelése az Intune-nal](https://docs.microsoft.com/intune/device-compliance-get-started)
+[Az eszközök megfelelőségének kezelése az Intune-nal](/intune/device-compliance-get-started)
 
-[Microsoft Cloud App Security és feltételes hozzáférés](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+[Microsoft Cloud App Security és feltételes hozzáférés](/cloud-app-security/proxy-intro-aad)

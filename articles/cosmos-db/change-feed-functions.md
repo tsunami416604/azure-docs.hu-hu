@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3487de958df100cd43d4191028d0a15d7007067a
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7a74635551d8416bf60689b1f1403f29883e81bd
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604998"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851373"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Kiszolgáló nélküli eseményvezérelt architektúrák Azure Cosmos DB és Azure Functions
 
@@ -37,7 +37,7 @@ Kiszolgáló nélküli eseményvezérelt folyamat megvalósításához a követk
 Az Azure-függvény létrehozása egy Azure Functions triggerrel Cosmos DB mostantól támogatott az összes Azure Functions IDE és CLI-integráción keresztül:
 
 * Visual Studio- [bővítmény](../azure-functions/functions-develop-vs.md) a Visual Studio-felhasználók számára.
-* [Visual Studio Core-bővítmény](/azure/javascript/tutorial-vscode-serverless-node-01) a Visual Studio Code-felhasználók számára.
+* [Visual Studio Code-bővítmény](/azure/javascript/tutorial-vscode-serverless-node-01) a Visual Studio Code-felhasználók számára.
 * És végül a [CLI-eszközök alapszintű](../azure-functions/functions-run-local.md#create-func) , többplatformos ide-alapú felhasználói élményhez.
 
 ## <a name="run-your-trigger-locally"></a>Trigger helyi futtatása
@@ -46,7 +46,7 @@ Az [Azure-függvényt helyileg](../azure-functions/functions-develop-local.md) i
 
 Ha élő forgatókönyveket szeretne tesztelni a felhőben, akkor [ingyenesen kipróbálhatja a Cosmos DBT](https://azure.microsoft.com/try/cosmosdb/) bankkártyás vagy Azure-előfizetés nélkül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkekben továbbra is megismerheti a hírcsatornák változását:
 
