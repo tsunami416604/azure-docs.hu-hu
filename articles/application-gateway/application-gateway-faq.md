@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/31/2019
+ms.date: 03/06/2020
 ms.author: victorh
-ms.openlocfilehash: 27048a8464fc7380a5c11ab6bbb543e35c089774
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ad3289d9b93421df6776c685325f388d552bdba4
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919600"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893006"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -65,6 +65,8 @@ Tekintse meg a [figyelő feldolgozásának sorrendjét](https://docs.microsoft.c
 ### <a name="where-do-i-find-the-application-gateway-ip-and-dns"></a>Hol találom a Application Gateway IP-címet és a DNS-t?
 
 Ha nyilvános IP-címet használ végpontként, a nyilvános IP-cím erőforráson megtalálhatja az IP-és DNS-információkat. Vagy keresse meg a portálon az Application Gateway áttekintés lapján. Ha belső IP-címeket használ, keresse meg az információkat az Áttekintés oldalon.
+
+A v2 SKU esetében nyissa meg a nyilvános IP-erőforrást, és válassza a **konfiguráció**lehetőséget. A DNS-név **címke (nem kötelező)** mezője elérhető a DNS-név konfigurálásához.
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Mik a Keep-Alive időkorlát és a TCP Üresjárati időkorlát beállításai?
 
@@ -130,7 +132,7 @@ Nem. A példányok a frissítési tartományok és a tartalék tartományok köz
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Támogatja a Application Gateway a kapcsolatok kiürítését?
 
-Igen. A kapcsolatok kiürítését beállíthatja úgy, hogy megszakítsa a háttérbeli készlet tagjainak megváltoztatását. További információ: [a Application Gateway csatlakoztatási kiürítésének szakasza](overview.md#connection-draining).
+Igen. A kapcsolatok kiürítését beállíthatja úgy, hogy megszakítsa a háttérbeli készlet tagjainak megváltoztatását. További információ: [a Application Gateway csatlakoztatási kiürítésének szakasza](features.md#connection-draining).
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Válthatok a példány mérete közepesről nagyra megszakítás nélkül?
 

@@ -3,12 +3,12 @@ title: VMware-Migrálás támogatása Azure Migrateban
 description: További információ a VMware virtuális gépek áttelepítésének támogatásáról Azure Migrateban.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: eea2ef1f84e5c31dd18ea4ef65ccf2796231352b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 9d8dc4dadc975a0fb69ea207f6062b72231460ef
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597983"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388981"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-Migrálás támogatási mátrixa
 
@@ -35,7 +35,7 @@ Tekintse át [ezt a cikket](server-migrate-overview.md) , hogy kiderítse, melyi
 --- | ---
 **VMware vCenter Server** | 5,5, 6,0, 6,5 vagy 6,7.
 **VMware vSphere ESXI-gazdagép** | 5,5, 6,0, 6,5 vagy 6,7.
-**engedélyek vCenter Server** | Az ügynök nélküli áttelepítés az áttelepítési [készüléket](migrate-appliance.md)használja. A készüléknek ezekre az engedélyekre van szüksége:<br/><br/> - **adattár. Tallózás**: engedélyezi a virtuális gépek naplófájljainak böngészését a pillanatképek létrehozásával és törlésével kapcsolatos hibák megoldásához.<br/><br/> - **adattár. LowLevelFileOperations**: olvasási/írási/törlési/átnevezési műveletek engedélyezése az adattár böngészőben a pillanatképek létrehozásához és törléséhez.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: engedélyezheti vagy letilthatja a virtuálisgép-lemezek módosításának nyomon követését, így a pillanatképek között megváltoztathatja az adatblokkokat.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: a virtuális gép lemez-címbérleti műveleteinek engedélyezése a lemez olvasásához a VMware vSphere Virtual Disk Development Kit (VDDK) használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowDiskAccess**: (kifejezetten a vSphere 6,0-es és újabb verziók esetében) lehetővé teszi, hogy a virtuális gép lemezét véletlenszerű olvasási hozzáféréssel lehessen megnyitni a LEMEZEN a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowReadOnlyDiskAccess**: lehetővé teszi a lemez megnyitását egy virtuális gépen, hogy beolvassa a lemezt a VDDK használatával.<br/><br/>- **VirtualMachine. kiépítés. AllowVirtualMachineDownload**: engedélyezi az olvasási műveleteket a virtuális géphez társított fájlokon, letölti a naplókat, és hiba esetén hibaelhárítást végez.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: lehetővé teszi a virtuális gépek pillanatképek létrehozását és kezelését a replikáláshoz.<br/><br/> - **virtuális gép. interakció.** kikapcsolás: lehetővé teszi, hogy a virtuális gép ki legyen kapcsolva az Azure-ba való áttelepítés során.
+**engedélyek vCenter Server** | Az ügynök nélküli áttelepítés az áttelepítési [készüléket](migrate-appliance.md)használja. A készüléknek ezekre az engedélyekre van szüksége:<br/><br/> - **adattár. Tallózás**: engedélyezi a virtuális gépek naplófájljainak böngészését a pillanatképek létrehozásával és törlésével kapcsolatos hibák megoldásához.<br/><br/> - **adattár. LowLevelFileOperations**: olvasási/írási/törlési/átnevezési műveletek engedélyezése az adattár böngészőben a pillanatképek létrehozásához és törléséhez.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: engedélyezheti vagy letilthatja a virtuálisgép-lemezek módosításának nyomon követését, így a pillanatképek között megváltoztathatja az adatblokkokat.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: a virtuális gép lemez-címbérleti műveleteinek engedélyezése a lemez olvasásához a VMware vSphere Virtual Disk Development Kit (VDDK) használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowDiskAccess**: (kifejezetten a vSphere 6,0-es és újabb verziók esetében) lehetővé teszi, hogy a virtuális gép lemezét véletlenszerű olvasási hozzáféréssel lehessen megnyitni a LEMEZEN a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowReadOnlyDiskAccess**: lehetővé teszi a lemez megnyitását egy virtuális gépen, hogy beolvassa a lemezt a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowDiskRandomAccess**: lehetővé teszi a lemez megnyitását egy virtuális gépen, hogy beolvassa a lemezt a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowVirtualMachineDownload**: engedélyezi az olvasási műveleteket a virtuális géphez társított fájlokon, letölti a naplókat, és hiba esetén hibaelhárítást végez.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: lehetővé teszi a virtuális gépek pillanatképek létrehozását és kezelését a replikáláshoz.<br/><br/> - **virtuális gép. interakció.** kikapcsolás: lehetővé teszi, hogy a virtuális gép ki legyen kapcsolva az Azure-ba való áttelepítés során.
 
 
 

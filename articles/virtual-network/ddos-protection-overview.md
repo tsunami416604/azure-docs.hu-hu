@@ -1,13 +1,9 @@
 ---
-title: A standard szintű Azure DDoS Protection áttekintése | Microsoft Docs
+title: Azure DDoS Protection standard áttekintése
 description: Ismerkedjen meg a Azure DDoS Protection szolgáltatással.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,34 +11,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 0b0052d58ab4f950467902c4b177e844c9bc498d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6392c1a128032670ae9d43a1f23c59194c2964bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905177"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389940"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection standard áttekintése
 
-Az elosztott szolgáltatásmegtagadásos (DDoS-) támadások az egyik legnagyobb rendelkezésreállási és biztonsági kockázatot jelentik az olyan felhasználók számára, akik alkalmazásaikat a felhőbe helyezik át. A DDoS-támadások megpróbálják kimeríteni az alkalmazás erőforrásait, elérhetetlenné téve az alkalmazást a jogosult felhasználók számára. A DDoS-támadások bármilyen, az interneten keresztül nyilvánosan elérhető végpontot megcélozhatnak.
+Az elosztott szolgáltatásmegtagadásos (DDoS-) támadások az egyik legnagyobb rendelkezésreállási és biztonsági kockázatot jelentik az olyan felhasználók számára, akik alkalmazásaikat a felhőbe helyezik át. A DDoS-támadás megpróbál kimeríteni egy alkalmazás erőforrásait, így az alkalmazás nem érhető el a legitim felhasználók számára. A DDoS-támadások bármilyen, az interneten keresztül nyilvánosan elérhető végpontot megcélozhatnak.
 
 Az Azure DDoS Protection az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva védelmet nyújt a DDoS-támadásokkal szemben. Az Azure DDoS Protection a következő szolgáltatási szinteket biztosítja:
 
 - **Alapszintű**: automatikusan engedélyezve van az Azure platform részeként. A forgalom folyamatos monitorozása és a gyakori hálózati szintű támadások valós idejű enyhítése biztosítja a Microsoft online szolgáltatások által használt védelmi adatokat. Az Azure globális hálózatának teljes skálája felhasználható a különböző régiók közötti támadási forgalom elosztására és enyhítésére. A védelem az IPv4-és IPv6-alapú Azure [nyilvános IP-címekhez](virtual-network-public-ip-address.md)van megadva.
 - **Standard**: további enyhítő képességeket biztosít az alapszintű szolgáltatási szinten, amelyeket kifejezetten az Azure Virtual Network erőforrásaihoz hangoltak. DDoS Protection a standard egyszerűen engedélyezhető, és nem igényel alkalmazás-módosítást. A védelmi szabályzatok a dedikált forgalom monitorozásával és a gépi tanulási algoritmusokkal vannak összehangolva. A házirendeket a rendszer a virtuális hálózatokban üzembe helyezett erőforrásokhoz társított nyilvános IP-címekre alkalmazza, például az Azure Load Balancer, az Azure Application Gateway és az Azure Service Fabric példányokban, de ez a védelem nem vonatkozik App Service környezetekre. A valós idejű telemetria a támadás során Azure Monitor nézeteken keresztül érhető el, és az előzményekhez. A hatékony támadások enyhítése diagnosztikai beállításokon keresztül érhető el. Az alkalmazások rétegének védelme az [azure Application Gateway webalkalmazási tűzfalon](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) keresztül, vagy egy külső gyártótól származó tűzfal az Azure Marketplace-ről való telepítésével adható hozzá. A védelem az IPv4-és IPv6-alapú Azure [nyilvános IP-címekhez](virtual-network-public-ip-address.md)van megadva.
 
-|Szolgáltatás                                         |Alapszintű DDoS Protection                 |DDoS Protection standard                      |
+|Funkció                                         |Alapszintű DDoS Protection                 |DDoS Protection Standard                      |
 |------------------------------------------------|--------------------------------------|----------------------------------------------|
 |Aktív forgalom figyelése & always on észlelés |Igen                                   |Igen                                           |
 |Automatikus támadás-enyhítés                    |Igen                                   |Igen                                           |
-|Rendelkezésre állási garancia                          |Azure-régió                          |Jelentkezés                                   |
+|Rendelkezésre állási garancia                          |Azure-régió                          |Alkalmazás                                   |
 |Kockázatcsökkentő házirendek                             |Az Azure-beli forgalom régiójához hangolva |Az alkalmazások forgalmának mennyiségére hangolva          |
-|Metrikák és értesítések                                |Nem                                    |Valós idejű támadási mérőszámok & diagnosztikai naplók az Azure monitoron keresztül                                 |
+|Metrikák & riasztások                                |Nem                                    |Valós idejű támadási mérőszámok & diagnosztikai naplók az Azure monitoron keresztül                                 |
 |Kockázatcsökkentő jelentések                              |Nem                                    |Támadás utáni kockázatcsökkentő jelentések                |
 |A kockázatcsökkentő folyamat naplói                            |Nem                                    |VIZSGÁLJA-naplózási stream a SIEM-integrációhoz           |
 |Áttelepítési szabályzat testreszabása                 |Nem                                    |DDoS-szakértők részvétele                           |
 |Támogatás                                         |Legjobb erőfeszítés                           |Hozzáférés a DDoS-szakértőkhöz aktív támadás során|
-|Szolgáltatási szerződés                                             |Azure-régió                          |Alkalmazás-garancia & Cost Protection       |
+|SLA                                             |Azure-régió                          |Alkalmazás-garancia & Cost Protection       |
 |Díjszabás                                         |Ingyenes                                  |Havi & használat alapján                         |
 
 ## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>A standard megoldásokkal DDoS Protection DDoS-támadások típusai

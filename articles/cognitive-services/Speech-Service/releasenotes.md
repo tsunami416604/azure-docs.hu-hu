@@ -3,22 +3,48 @@ title: Kibocsátási megjegyzések – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
 description: A Speech Service egy futó naplója, amely kiadásokat, javításokat, hibajavításokat és ismert problémákat tartalmaz.
 services: cognitive-services
-author: oscholz
-manager: nitinme
+author: brianem
+manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.author: oliversc
+ms.date: 02/25/2020
+ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 235d8788b47355925d93cb3e3835d32e25c1b51f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: cbe9c7cbd0f402e38d1163050d77b055f89948ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168149"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394780"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
+## <a name="speech-sdk-1100-2020-february-release"></a>Speech SDK 1.10.0:2020 – februári kiadás
+
+**Új funkciók**
+ - Python-csomagok hozzáadása a Python új 3,8-es kiadásának támogatásához.
+ - Red Hat Enterprise Linux (RHEL)/CentOS 8 x64 támogatás (C++, C#, Java, Python).
+   > [!NOTE] 
+   > A felhasználóknak az [alábbi utasítások](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)szerint kell konfigurálniuk az OpenSSL-t.
+ - Linux ARM32-támogatás Debian és Ubuntu rendszerekhez.
+ - A DialogServiceConnector mostantól támogatja az opcionális "bot ID" paramétert a BotFrameworkConfig. Ez a paraméter lehetővé teszi, hogy egyetlen Azure Speech-erőforrással több közvetlen vonalas beszédfelismerési robotot használjon. A megadott paraméter nélkül a rendszer a következő alapértelmezett robotot használja: (a Direct line Speech Channel konfigurációs lapja határozza meg).
+ - A DialogServiceConnector most már rendelkezik egy SpeechActivityTemplate tulajdonsággal. A JSON-karakterlánc tartalmát a közvetlen vonalas beszéd fogja használni, hogy előre töltse fel a támogatott mezők széles körét az összes olyan tevékenységben, amelyek a közvetlen sortörési robothoz jutnak, beleértve a beszédfelismerésre adott eseményekre adott válaszként automatikusan generált tevékenységeket is.
+ - A TTS mostantól előfizetési kulcsot használ a hitelesítéshez, így csökkentve az első szintézis eredményének első bájtos késését a szintetizátor létrehozása után.
+ - Frissített beszédfelismerési modellek 19 területi beállításhoz az átlagos Word-hibák 18,6%-os csökkenéséhez (es-ES, es-MX, fr-CA, fr-FR, IT-IT, ja-JP, ko-KR, PT-BR, zh-CN, ZH-HK, NB-NO, fi-FL, ru-RU, pl-PL, CA-ES, zh-TW, th-TH, PT-PT, TR-TR). Az új modellek jelentős mértékben javítják a különböző tartományokat, beleértve a diktálást, a Call-Center átírást és a videó indexelési forgatókönyveit.
+
+**Hibajavítások**
+ - Kijavítva a hiba, ahol a beszélgetési átiratok nem várnak megfelelően a JAVA API-kon 
+ - Android x86-emulátor javítás a Xamarin [GitHub-probléma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363) esetén
+ - Hiányzó hozzáadása (get | Set) tulajdonság-metódusok AudioConfig
+ - Olyan TTS-hiba javítása, amelyben a audioDataStream nem állítható le, ha a csatlakozás meghiúsul
+ - Ha olyan végpontot használ, amelynek nincs régiója, az USP-hibákat okoz a beszélgetési fordítónál
+ - Az univerzális Windows-alkalmazásokban az azonosító generálás mostantól egy megfelelően egyedi GUID algoritmust használ; korábban egy stubbed-implementációban, amely gyakran ütközéseket okozott nagy mennyiségű interakció során.
+ 
+ **Minták**
+ - Unity-minta a Speech SDK [és az Unity mikrofon és a leküldéses mód streaming](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone) használatával való használatához
+
+**Egyéb változások**
+ - [Az OpenSSL konfigurációs dokumentációjának frissítése Linuxra](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)
 
 ## <a name="speech-sdk-190-2020-january-release"></a>Speech SDK 1.9.0:2020 – januári kiadás
 

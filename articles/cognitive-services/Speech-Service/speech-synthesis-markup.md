@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 03/05/2020
 ms.author: dapine
-ms.openlocfilehash: b39b8712f3e8b869d7dbe496dd30f0599aa4150d
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 68691ad60542c55db4d381e2923a9f928a22995a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78254789"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674456"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -329,7 +329,7 @@ A fonetikus ábécék olyan telefonokból állnak, amelyek betűkből, számokb�
 
 | Attribútum | Leírás | Kötelező / választható |
 |-----------|-------------|---------------------|
-| `alphabet` | Meghatározza a karakterlánc kiejtésének szintetizálása során használandó fonetikus ábécét a `ph` attribútumban. Az ábécét megadó karakterláncot kisbetűs betűkkel kell megadni. Az alábbiakban megadhatja a lehetséges ábécéket.<ul><li>IPA &ndash; nemzetközi fonetikus ábécé</li><li>SAPI &ndash; Speech API telefonos készlet</li><li>UPS &ndash; univerzális telefonvonal</li></ul>Az ábécé csak az elem fonéma vonatkozik. További információ: [fonetikus ábécé referenciája](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx). | Optional |
+| `alphabet` | Meghatározza a karakterlánc kiejtésének szintetizálása során használandó fonetikus ábécét a `ph` attribútumban. Az ábécét megadó karakterláncot kisbetűs betűkkel kell megadni. Az alábbiakban megadhatja a lehetséges ábécéket.<ul><li>`ipa` &ndash; nemzetközi fonetikus ábécé</li><li>`sapi` &ndash; beszédfelismerési szolgáltatás fonetikus ábécéje</li><li>`ups` &ndash; univerzális telefonvonal</li></ul><br>Az ábécé csak a elemben lévő `phoneme`re vonatkozik. További információ: [fonetikus ábécé referenciája](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet). | Optional |
 | `ph` | Olyan telefonszámot tartalmazó karakterlánc, amely a szó kiejtését határozza meg a `phoneme` elemben. Ha a megadott karakterlánc nem felismerhető telefonokat tartalmaz, a szöveg-beszéd (TTS) szolgáltatás elutasítja a teljes SSML-dokumentumot, és a dokumentumban megadott egyik beszédfelismerési kimenetet sem hozza létre. | Fonémák használata esetén kötelező. |
 
 **Példák**
@@ -418,13 +418,11 @@ A "BTW" a következőképpen lesz beolvasva: "by the way". A "Benigni" a megadot
 - Fájlméret: az egyéni lexikon fájlméretének maximális korlátja 100 kb, ha ez meghaladja a méretet, a szintézisi kérelem sikertelen lesz.
 - Lexikon gyorsítótárának frissítése: az egyéni lexikont a rendszer az első betöltéskor kulcsként fogja gyorsítótárazni a TTS szolgáltatásban. Az azonos URI-val rendelkező lexikon 15 percen belül nem lesz újratöltve, ezért az egyéni lexikon-módosításnak 15 percnél hosszabb ideig kell megvárnia, hogy érvénybe lépjen.
 
-**SAPI-telefon készlete**
+**Beszédfelismerési szolgáltatás fonetikus készletei**
 
-A fenti példában a nemzetközi fonetikus társítás (IPA) telefonvonalat használjuk. Javasoljuk, hogy a fejlesztők az IPA-t használják, mivel az IPA a nemzetközi szabvány. 
+A fenti mintában a nemzetközi fonetikus ábécét használjuk, más néven IPA-telefont. Javasoljuk, hogy a fejlesztők az IPA-t használják, mivel ez a nemzetközi szabvány. Figyelembe véve, hogy az IPA nem könnyen megjegyezhető, a beszédfelismerési szolgáltatás hét nyelv (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`és `zh-TW`) fonetikus készletét határozza meg.
 
-Figyelembe véve, hogy az IPA nem könnyű megjegyezni, a Microsoft definiálja a SAPI-telefont hét nyelvre (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`és `zh-TW`). További ABC-információk: [fonetikus ábécé-hivatkozás](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx).
-
-Az alábbi ábrán látható módon használhatja a SAPI-telefont egyéni lexikonokkal. Állítsa az ABC értéket a **SAPI**értékre.
+A `sapi` a `alphabet` attribútumhoz tartozó Vale-ként használhatja az alábbi ábrán látható módon:
 
 ```xml
 <?xml version="1.0" encoding="UTF-16"?>
@@ -445,7 +443,7 @@ Az alábbi ábrán látható módon használhatja a SAPI-telefont egyéni lexiko
 </lexicon>
 ```
 
-A részletes SAPI-ábécével kapcsolatos további információkért tekintse meg a [SAPI ábécé-referenciát](sapi-phoneset-usage.md).
+További információ a beszédfelismerési szolgáltatás részletes fonetikus ábécével kapcsolatban: [beszédfelismerési szolgáltatás fonetikus készletei](speech-ssml-phonetic-sets.md).
 
 ## <a name="adjust-prosody"></a>Prosody módosítása
 

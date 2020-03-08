@@ -4,12 +4,12 @@ description: Ez a rövid útmutató bemutatja, hogyan hozhat létre és kezelhet
 ms.topic: quickstart
 ms.date: 01/13/2020
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 33725eb54e8a78547f4bf82d6a8f6fae58fdb5cb
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 065f88ce12037109773b7023972c151d968840a8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524418"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389344"
 ---
 # <a name="quickstart-create-and-manage-knowledge-base"></a>Rövid útmutató: Tudásbázis létrehozása és kezelése
 
@@ -30,7 +30,7 @@ Ismerkedjen meg az QnA Maker ügyféloldali kódtár használatába. Az alábbi 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
->[Oktatóanyag: KB létrehozása és megválaszolása](../tutorials/create-publish-query-in-portal.md)
+>[Oktatóanyag: a Tudásbázis tesztelése batch-fájllal](./batch-testing.md)
 
 * [Mi a QnA Maker API?](../Overview/overview.md)
 * [Tudásbázis szerkesztése](../how-to/edit-knowledge-base.md)

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c94b2a755d85bdf425980574b63d8fd74a232b19
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 97c5bf0c7bdf036a0555e8d536b5421d739327ad
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195991"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668932"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Számítási feladatok kezelése erőforrás-osztályokkal az Azure szinapszis Analyticsben
 
@@ -73,7 +73,7 @@ Az egyes erőforrás-osztályok memóriájának kiosztása a következő.
 | DW200c         | 12,5%             | 12,5%                  | 22%                    | 70%                    |
 | DW300c         | 8                | 10                    | 22%                    | 70%                    |
 | DW400c         | 6,25%             | 10                    | 22%                    | 70%                    |
-| DW500c         | 20               | 10                    | 22%                    | 70%                    |
+| DW500c         | 5%                | 10                    | 22%                    | 70%                    |
 | DW1000c<br> DW30000c | 3%       | 10                    | 22%                    | 70%                    |
 
 
@@ -592,7 +592,7 @@ SELECT  CASE
 GO
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatbázis-felhasználók és a biztonság kezelésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele az SQL Analyticsben](./sql-data-warehouse-overview-manage-security.md). További információ arról, hogy a nagyobb erőforrás-osztályok Hogyan javíthatják a fürtözött oszlopcentrikus index minőségét: [a oszlopcentrikus tömörítésének memória-optimalizálása](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 

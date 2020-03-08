@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0ef9609cded29c94260d027212abbf0c62f8653c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b2469a2b5819b3011f919a2b483933bb030eed70
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772108"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925387"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztás az [SMB kernel-ügyféllel](https://wiki.samba.org/index.php/LinuxCIFS)is csatlakoztatható Linux-disztribúciókban. Ebből a cikkből megtudhatja, hogyan csatlakoztathat egy Azure-fájlmegosztást: igény szerint a `mount` paranccsal és a rendszerindítással, ha `/etc/fstab`-bejegyzést hoz létre.
@@ -22,9 +22,9 @@ Az Azure-fájlmegosztás Linux rendszeren való csatlakoztatásának ajánlott m
 | | SMB 2.1 <br>(Ugyanazon az Azure-régióban lévő virtuális gépekre csatlakoztatások) | SMB 3.0 <br>(A helyszíni és a régiók közötti) |
 | --- | :---: | :---: |
 | Ubuntu | 14.04 + | 16.04 + |
-| Red Hat Enterprise Linux (RHEL) | 7 + | 7.5 + |
-| CentOS | 7 + |  7.5 + |
-| Debian | 8 + | 10+ |
+| Red Hat Enterprise Linux (RHEL) | 7+ | 7.5 + |
+| CentOS | 7+ |  7.5 + |
+| Debian | 8+ | 10+ |
 | openSUSE | 13.2 + | 42.3 + |
 | SUSE Linux Enterprise Server | 12+ | 12 SP3 + |
 
@@ -199,7 +199,7 @@ Az Azure-fájlmegosztás Linux rendszeren való csatlakoztatásához a 445-es po
 
 A Linux kernel 4,18-es verziótól kezdődően az SMB kernel modul, amelyet örökölt okok miatt `cifs`, egy új modul-paramétert (más néven a különböző külső dokumentációban *paramétert* ) tesz elérhetővé (más néven `disable_legacy_dialects`). Bár a Linux kernel 4,18-ben jelent meg, egyes gyártók backported ezt a változást az általuk támogatott régebbi kerneleken. A kényelmes használat érdekében a következő táblázat részletezi a modul paraméterének rendelkezésre állását a gyakori Linux-disztribúciók esetében.
 
-| Terjesztés | Az SMB 1 letiltása |
+| Disztribúció | Az SMB 1 letiltása |
 |--------------|-------------------|
 | Ubuntu 14.04 – 16.04 | Nem |
 | Ubuntu 18.04 | Igen |
@@ -276,11 +276,11 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 ## <a name="feedback"></a>Visszajelzés
 Linux-felhasználók, szeretnénk hallani!
 
-A Linux-felhasználók csoportjának Azure Files egy olyan fórumot biztosít, amellyel megoszthatja a visszajelzéseket, és elfogadhatja a Linuxon a fájlok tárolását. E-mail [Azure Files Linux-felhasználók](mailto:azurefileslinuxusers@microsoft.com) csatlakozhatnak a felhasználók csoportjához.
+A Linux-felhasználók csoportjának Azure Files egy olyan fórumot biztosít, amellyel megoszthatja a visszajelzéseket, és elfogadhatja a Linuxon a fájlok tárolását. E-mail [Azure Files Linux-felhasználók](mailto:azurefiles@microsoft.com) csatlakozhatnak a felhasználók csoportjához.
 
 ## <a name="next-steps"></a>Következő lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról:
 
 * [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
-* [Gyakori kérdések](../storage-files-faq.md)
-* [hibaelhárítással](storage-troubleshoot-linux-file-connection-problems.md)
+* [GYIK](../storage-files-faq.md)
+* [Hibaelhárítás](storage-troubleshoot-linux-file-connection-problems.md)

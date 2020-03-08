@@ -3,12 +3,12 @@ title: Azure Resource Health áttekintése
 description: A Azure Resource Health áttekintése
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f22b41e66f15dd12d973c5744870969fae795bc1
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356794"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925887"
 ---
 # <a name="resource-health-overview"></a>Resource Health áttekintése
  
@@ -22,7 +22,7 @@ Az *erőforrás* egy Azure-szolgáltatás adott példánya, például egy virtu�
 
 Az állapot értékelésével kapcsolatos további információkért tekintse meg az erőforrástípusok és állapot-ellenőrzések listáját [Azure Resource Health](resource-health-checks-resource-types.md).
 
-## <a name="health-status"></a>Állapotadatok
+## <a name="health-status"></a>Állapot
 
 Egy erőforrás állapota a következő állapotok egyike jelenik meg.
 
@@ -38,7 +38,7 @@ A nem *érhető el* érték azt jelenti, hogy a szolgáltatás egy folyamatos pl
 
 #### <a name="platform-events"></a>Platform eseményei
 
-A platform eseményeire az Azure-infrastruktúra több összetevője is aktiválódik. Ezek közé tartoznak az ütemezett műveletek (például a tervezett karbantartás) és a váratlan incidensek (például egy nem tervezett gazdagép újraindítása).
+A platform eseményeire az Azure-infrastruktúra több összetevője is aktiválódik. Ezek közé tartoznak az ütemezett műveletek (például a tervezett karbantartás) és a váratlan incidensek (például egy nem tervezett gazdagép újraindítása vagy csökkentett teljesítményű gazdagép hardvere, amelyet egy adott időablak után kell ellátni).
 
 Resource Health további részleteket tartalmaz az eseményről és a helyreállítási folyamatról. Azt is lehetővé teszi, hogy kapcsolatba lépjen Microsoft ügyfélszolgálata akkor is, ha nem rendelkezik aktív támogatási szerződéssel.
 
@@ -80,7 +80,7 @@ A Resource Health **állapotának korábbi** 14 napja is elérhető.
 
 ![Resource Health események listája az elmúlt két hétben](./media/resource-health-overview/history-blade.png)
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Első lépések
 
 Resource Health megnyitása egy erőforráshoz:
 

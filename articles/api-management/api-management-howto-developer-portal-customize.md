@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 8629d07830622770c3b30dacdd1fabc8417d7f52
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454423"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893116"
 ---
 # <a name="access-and-customize-developer-portal"></a>A fejlesztői portál elérése és testreszabása
 
@@ -91,7 +91,7 @@ Amikor változást hajt végre a portálon, manuálisan kell mentenie a **Save (
 Ahhoz, hogy a portál elérhető legyen a látogatók számára, testre kell szabnia az automatikusan generált tartalmat. Az ajánlott módosítások közé tartozik a Kezdőlap elrendezései, stílusa és tartalma.
 
 > [!NOTE]
-> Az integrációs megfontolások miatt a következő lapok nem távolíthatók el vagy nem helyezhetők át másik URL-cím alatt: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso`, `/signup`.
+> Az integrációs megfontolások miatt a következő lapok nem távolíthatók el és nem helyezhetők át másik URL-cím alatt: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso`, `/signup`.
 
 ### <a name="home-page"></a>Kezdőlap
 
@@ -125,6 +125,10 @@ Ahhoz, hogy a portál és a legújabb módosításai elérhetők legyenek a lát
 ## <a name="visit-the-published-portal"></a>A közzétett portál meglátogatása
 
 A portál közzététele után a felügyeleti panellel megegyező URL-címen érheti el, például `https://contoso-api.developer.azure-api.net`. Megtekintheti egy különálló böngésző-munkamenetben (inkognitóban/privát böngészési mód) külső látogatóként.
+
+## <a name="apply-the-cors-policy-on-apis"></a>A CORS szabályzat alkalmazása az API-kra
+
+Engedélyeznie kell a CORS (több eredetű erőforrás-megosztást) az API-kon, hogy a portál látogatói a beépített interaktív konzolon keresztül tesztelje az API-kat. További részletekért tekintse meg [ezt a dokumentációt](api-management-howto-developer-portal.md#cors) .
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4c85fbc2c1f926f89dbfe9f2a5ae47cc48edf73
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966277"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671869"
 ---
 # <a name="what-is-conditional-access"></a>Mi az a feltételes hozzáférés?
 
@@ -50,7 +50,7 @@ Azok a gyakori jelek, amelyekben a feltételes hozzáférés a szabályzat megho
    - A rendszergazdák az összes ország IP-tartományát megadhatják a forgalom blokkolásához vagy engedélyezéséhez.
 - Eszköz
    - A feltételes hozzáférési szabályzatok kényszerítése esetén a megadott platformmal rendelkező vagy meghatározott állapotú eszközökkel rendelkező felhasználók is használhatók.
-- Jelentkezés
+- Alkalmazás
    - Azok a felhasználók, akik egy adott alkalmazáshoz próbálnak hozzáférni, különböző feltételes hozzáférési házirendeket válthatnak ki. 
 - Valós idejű és számított kockázati észlelés
    - A Azure AD Identity Protection lehetővé teszi az integrációt a feltételes hozzáférési házirendekkel a kockázatos bejelentkezési viselkedés azonosítása érdekében. A házirendek ezt követően kényszerítheti a felhasználókat a jelszó módosítására vagy a többtényezős hitelesítésre a kockázati szint csökkentése vagy a hozzáférés letiltása előtt, amíg a rendszergazda manuális beavatkozást nem végez.
@@ -81,7 +81,7 @@ Számos szervezet rendelkezik olyan általános hozzáféréssel, amelyekkel a f
 - Kockázatos bejelentkezési viselkedések blokkolása
 - Szervezet által felügyelt eszközök megkövetelése adott alkalmazásokhoz
 
-## <a name="customer-case-studies"></a>Ügyfél-esettanulmányok
+## <a name="customer-case-studies"></a>Ügyféleset-tanulmányok
 
 Ismerje meg, hogy más szervezetek hogyan használják az Azure AD feltételes hozzáférést az automatizált hozzáférés-vezérlési döntések definiálásához és megvalósításához. A következő Kiemelt történetek bemutatják, hogyan teljesítik ezeket az ügyfelek igényeit.
 
@@ -92,7 +92,7 @@ Ismerje meg, hogy más szervezetek hogyan használják az Azure AD feltételes h
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-A [Microsoft 365 vállalati verzió licenccel](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is. 
+A [Microsoft 365 vállalati verzió licenccel](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is. 
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -102,6 +102,6 @@ Ha meg szeretné tudni, hogyan valósítható meg a feltételes hozzáférés a 
 
 [Tudnivalók az Identity Protectionről](../identity-protection/overview-v2.md)
 
-[Tudnivalók a Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)
+[Tudnivalók a Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
 
-[Tudnivalók a Microsoft Intune](https://docs.microsoft.com/intune/index)
+[Tudnivalók a Microsoft Intune](/intune/index)

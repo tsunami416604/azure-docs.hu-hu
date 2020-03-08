@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 876026b5399631728331c4a9e67482a34f9d0b2d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a5140da32eb6fce03131a42bfa90e71e64552431
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225558"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669386"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Szerzői és futtatókörnyezeti erőforrás-kulcsok használata
 
@@ -58,7 +58,7 @@ Ha készen áll az előrejelzési végpont közzétételére, hozzon létre és 
 
     ![A Language Understanding-erőforrás létrehozása](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
-    |Név|Cél|
+    |Name (Név)|Cél|
     |--|--|
     |Erőforrás neve| Egyéni név, amelyet a szerzői műveletek és előrejelzési végpontok lekérdezéséhez használt URL-cím részeként használ.|
     |Előfizetés neve| az erőforrásért fizetendő előfizetés.|
@@ -81,7 +81,7 @@ Erőforrás-`kind`:
 
 1. Jelentkezzen be az Azure CLI-be:
 
-    ```console
+    ```azurecli
     az login
     ```
 
@@ -89,13 +89,13 @@ Erőforrás-`kind`:
 
 1. Hozzon létre egy `my-luis-authoring-resource` nevű **Luis authoring-erőforrást**a `westus` régióhoz `my-resource-group` nevű _meglévő_ erőforráscsoport `LUIS.Authoring`. 
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
 1. Hozzon létre egy **Luis előrejelzési végpont-erőforrást**, amely a `westus` régióhoz `my-resource-group` nevű _meglévő_ erőforráscsoport `my-luis-prediction-resource` nevű `LUIS`. Ha az ingyenes szintjénél nagyobb átviteli sebességet szeretne, módosítsa `F0`t `S0`re. További információ a [díjszabási szintekről és az átviteli sebességről](luis-boundaries.md#key-limits).
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 
@@ -212,7 +212,7 @@ Ha szeretné tudni, hogy ha egy bizonyos tranzakció küszöbértéket, példáu
 
 Adjon hozzá egy metrikai riasztást a **hívások teljes** metrikája számára egy adott időtartamra vonatkozóan. Adja hozzá, amelyek megkapják a riasztás minden személyek e-mail címét. Adja hozzá a webhookok az összes rendszer, amelyre a riasztást kapni. A riasztás akkor aktiválódik, ha egy logikai alkalmazást is futtathatja. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja [, hogyan használhatja a verzióit](luis-how-to-manage-versions.md) az alkalmazás életciklusának szabályozására.
 * Ismerje meg az adott erőforrással kapcsolatos fogalmakat, például a [szerzői erőforrást](luis-concept-keys.md#authoring-key) és a [közreműködőket](luis-concept-keys.md#contributions-from-other-authors) .
