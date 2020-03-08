@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614621"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386261"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>A fürterőforrás-kezelő integrációja Service Fabric fürtszolgáltatással
 A Service Fabric fürterőforrás-kezelő nem hajtja Service Fabric a frissítéseit, de az érintett. A fürt erőforrás-kezelője által a felügyelethez nyújtott első módszer a fürt és a benne lévő szolgáltatások kívánt állapotának nyomon követése. A fürterőforrás-kezelő jelentést küld, amikor nem tudja a fürtöt a kívánt konfigurációba helyezni. Ha például nincs elegendő kapacitás, a fürterőforrás-kezelő kiküldi az állapottal kapcsolatos figyelmeztetéseket, és hibákat jelez a problémával kapcsolatban. A frissítések működéséhez egy másik integrációra van szükség. A fürterőforrás-kezelő némileg megváltoztatja a viselkedését a frissítések során.  
@@ -122,7 +122,7 @@ Speciális helyzetekben módosíthatja a korlátozási prioritásokat. Tegyük f
 
 A különböző megkötések alapértelmezett prioritási értékei a következő konfigurációban vannak megadva:
 
-ClusterManifest. XML
+ClusterManifest.xml
 
 ```xml
         <Section Name="PlacementAndLoadBalancing">

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Lake Storage Gen1 Eseményközpontokból származó adatok rögzítése |} A Microsoft Docs
-description: Használja az Azure Data Lake Storage Gen1 Eseményközpontokból származó adatok
+title: Adatok rögzítése Event Hubsból a Azure Data Lake Storage Gen1ba | Microsoft Docs
+description: Adatok rögzítése a Azure Data Lake Storage Gen1 használatával Event Hubs
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,116 +12,116 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bb67c1769510710b368bef4dc0b501f939b3427e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60879522"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397194"
 ---
-# <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Használja az Azure Data Lake Storage Gen1 Eseményközpontokból származó adatok
+# <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Adatok rögzítése a Azure Data Lake Storage Gen1 használatával Event Hubs
 
-Ismerje meg, hogyan használható az Azure Data Lake Storage Gen1 Azure Event Hubs által fogadott adatok.
+Megtudhatja, hogyan rögzíthet Azure Data Lake Storage Gen1 az Azure Event Hubs által fogadott adatgyűjtéshez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Az Azure Data Lake Storage Gen1 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [Ismerkedés az Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
+* **Egy Azure Data Lake Storage Gen1-fiók**. A létrehozásával kapcsolatos útmutatásért tekintse meg a [Azure Data Lake Storage Gen1 első lépései](data-lake-store-get-started-portal.md)című témakört.
 
-*  **Event Hubs-névtér**. Útmutatásért lásd: [Event Hubs-névtér létrehozása](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace). Győződjön meg arról, hogy a Data Lake Storage Gen1 fiók és az Event Hubs-névtér az Azure-előfizetéshez.
+*  **Egy Event Hubs névtér**. Útmutatásért tekintse meg [Event Hubs névtér létrehozása](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)című témakört. Győződjön meg arról, hogy a Data Lake Storage Gen1 fiók és a Event Hubs névtér ugyanahhoz az Azure-előfizetéshez tartoznak.
 
 
-## <a name="assign-permissions-to-event-hubs"></a>Engedélyek hozzárendelése az Event hubs szolgáltatásba
+## <a name="assign-permissions-to-event-hubs"></a>Engedélyek kiosztása Event Hubshoz
 
-Ebben a szakaszban hozzon létre egy mappát a fiókon belül, ahol szeretné rögzíteni az adatokat az Event hubs Eseményközpontokból. Emellett engedélyeket ad az Event Hubs, hogy azt is írja az adatokat, egy Data Lake Storage Gen1 fiókot. 
+Ebben a szakaszban egy mappát hoz létre azon a fiókon belül, ahová az Event Hubs-ból származó adatok rögzítését szeretné. A Event Hubshoz is rendelhet engedélyeket, így az adatData Lake Storage Gen1-fiókba írhat. 
 
-1. Nyissa meg a Data Lake Storage Gen1 fiókot, ahol szeretné rögzíteni az Eseményközpontokból származó adatokat, majd kattintson a **adatkezelő**.
+1. Nyissa meg azt a Data Lake Storage Gen1 fiókot, ahová az adatok rögzítését Event Hubs, majd kattintson a **adatkezelő**gombra.
 
     ![Data Lake Storage Gen1 adatkezelő](./media/data-lake-store-archive-eventhub-capture/data-lake-store-open-data-explorer.png "Data Lake Storage Gen1 adatkezelő")
 
-1.  Kattintson a **új mappa** , és írjon be egy nevet a mappára, ahol az adatok rögzítéséhez.
+1.  Kattintson az **új mappa** elemre, majd adja meg annak a mappának a nevét, ahová rögzíteni szeretné az adatmennyiséget.
 
-    ![Hozzon létre egy új mappát a Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "hozzon létre egy új mappát a Data Lake Storage Gen1")
+    ![Új mappa létrehozása a Data Lake Storage Gen1ban](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "Új mappa létrehozása a Data Lake Storage Gen1ban")
 
-1. A Data Lake Storage Gen1 gyökerénél engedélyek hozzárendelése. 
+1. Engedélyeket rendelhet Data Lake Storage Gen1 gyökeréhez. 
 
-    a. Kattintson a **adatkezelő**, válassza ki a Data Lake Storage Gen1 fiók gyökérkönyvtárában, és kattintson **hozzáférés**.
+    a. Kattintson a **adatkezelő**elemre, válassza ki a Data Lake Storage Gen1-fiók gyökerét, majd kattintson a **hozzáférés**elemre.
 
-    ![A Data Lake Storage Gen1 legfelső szintű engedélyeket](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "a Data Lake Storage Gen1 legfelső szintű engedélyek hozzárendelése")
+    ![Engedélyek kiosztása a Data Lake Storage Gen1 gyökeréhez](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Engedélyek kiosztása a Data Lake Storage Gen1 gyökeréhez")
 
-    b. Alatt **hozzáférés**, kattintson a **Hozzáadás**, kattintson a **felhasználó vagy csoport kiválasztása**, és keressen `Microsoft.EventHubs`. 
+    b. A **hozzáférés**területen kattintson a **Hozzáadás**gombra, kattintson a **felhasználó vagy csoport kiválasztása**elemre, majd keresse meg a `Microsoft.EventHubs`. 
 
-    ![A Data Lake Storage Gen1 legfelső szintű engedélyeket](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "a Data Lake Storage Gen1 legfelső szintű engedélyek hozzárendelése")
+    ![Engedélyek kiosztása a Data Lake Storage Gen1 gyökeréhez](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Engedélyek kiosztása a Data Lake Storage Gen1 gyökeréhez")
     
     Kattintson a **Kiválasztás** gombra.
 
-    c. A **engedélyek hozzárendelése**, kattintson a **engedélyek kiválasztása**. Állítsa be **engedélyek** való **végrehajtása**. Állítsa be **hozzá** való **ezt a mappát, és az összes gyermekre**. Állítsa be **hozzáadása** való **hozzáférési engedély bejegyzés és alapértelmezett engedély bejegyzés**.
+    c. Az **engedélyek kiosztása**területen kattintson az **engedélyek kiválasztása**elemre. Állítsa be az **engedélyeket** a **végrehajtáshoz**. A **Hozzáadás** ehhez a **mappához és az összes gyermekhez**beállítás megadása. Adja meg a **Hozzáadás másként** **lehetőséget egy hozzáférési engedély bejegyzéséhez és egy alapértelmezett engedély bejegyzéshez**.
 
     > [!IMPORTANT]
-    > Amikor egy új mappát hierarchia létrehozása az Azure Event Hubs által fogadott adatok rögzítésére, ez egyszerű módja elérhetőségét a rendeltetési mappára.  Azonban hozzáadása engedélyek összes gyermekre a legfelső szintű mappa számos gyermek fájlok és mappák is igénybe vehet egy hosszú ideig.  Ha a gyökérmappában található fájlok és mappák nagy számú tartalmaz, valószínűleg gyorsabb hozzáadása **Execute** engedélyeinek `Microsoft.EventHubs` külön-külön az egyes mappák elérési útját a végső rendeltetési mappára. 
+    > Amikor új mappastruktúrát hoz létre az Azure Event Hubs által fogadott adatrögzítéshez, ez egy egyszerű módja annak, hogy hozzáférést biztosítson a célmappához.  Ha azonban egy legfelső szintű mappa összes gyermekéhez ad hozzá engedélyeket, és sok gyermek fájl és mappa is hosszú időt vehet igénybe.  Ha a gyökérmappa nagy mennyiségű fájlt és mappát tartalmaz, előfordulhat, hogy a végső célmappa elérési útjában lévő egyes mappákhoz külön **végrehajtási** engedélyeket adhat hozzá a `Microsoft.EventHubs`hoz. 
 
-    ![A Data Lake Storage Gen1 legfelső szintű engedélyeket](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "a Data Lake Storage Gen1 legfelső szintű engedélyek hozzárendelése")
+    ![Engedélyek kiosztása a Data Lake Storage Gen1 gyökeréhez](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Engedélyek kiosztása a Data Lake Storage Gen1 gyökeréhez")
 
     Kattintson az **OK** gombra.
 
-1. Rendelje hozzá kívánja rögzíteni az adatokat a Data Lake Storage Gen1 fiókban mappára vonatkozó engedélyeket.
+1. Rendeljen engedélyeket a mappához abban a Data Lake Storage Gen1 fiókban, ahol az adatrögzítést szeretné.
 
-    a. Kattintson a **adatkezelő**, válassza ki a mappát a Data Lake Storage Gen1 fiókban, és kattintson **hozzáférés**.
+    a. Kattintson a **adatkezelő**elemre, válassza ki a mappát a Data Lake Storage Gen1-fiókban, majd kattintson a **hozzáférés**elemre.
 
-    ![A Data Lake Storage Gen1 mappa engedélyeinek hozzárendeléséhez](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "rendelje hozzá a Data Lake Storage Gen1 mappára vonatkozó engedélyeket")
+    ![Engedélyek kiosztása a Data Lake Storage Gen1 mappához](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Engedélyek kiosztása a Data Lake Storage Gen1 mappához")
 
-    b. Alatt **hozzáférés**, kattintson a **Hozzáadás**, kattintson a **felhasználó vagy csoport kiválasztása**, és keressen `Microsoft.EventHubs`. 
+    b. A **hozzáférés**területen kattintson a **Hozzáadás**gombra, kattintson a **felhasználó vagy csoport kiválasztása**elemre, majd keresse meg a `Microsoft.EventHubs`. 
 
-    ![A Data Lake Storage Gen1 mappa engedélyeinek hozzárendeléséhez](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "rendelje hozzá a Data Lake Storage Gen1 mappára vonatkozó engedélyeket")
+    ![Engedélyek kiosztása a Data Lake Storage Gen1 mappához](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Engedélyek kiosztása a Data Lake Storage Gen1 mappához")
     
     Kattintson a **Kiválasztás** gombra.
 
-    c. A **engedélyek hozzárendelése**, kattintson a **engedélyek kiválasztása**. Állítsa be **engedélyek** való **Olvasás, írás,** és **végrehajtása**. Állítsa be **hozzá** való **ezt a mappát, és az összes gyermekre**. Végezetül állítsa **hozzáadása** való **hozzáférési engedély bejegyzés és alapértelmezett engedély bejegyzés**.
+    c. Az **engedélyek kiosztása**területen kattintson az **engedélyek kiválasztása**elemre. **Olvasási, írási** és **végrehajtási** **engedélyek** beállítása. A **Hozzáadás** ehhez a **mappához és az összes gyermekhez**beállítás megadása. Végül állítsa a **Hozzáadás másként** **lehetőséget egy hozzáférési engedély bejegyzéséhez és egy alapértelmezett engedély bejegyzéshez**.
 
-    ![A Data Lake Storage Gen1 mappa engedélyeinek hozzárendeléséhez](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "rendelje hozzá a Data Lake Storage Gen1 mappára vonatkozó engedélyeket")
+    ![Engedélyek kiosztása a Data Lake Storage Gen1 mappához](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Engedélyek kiosztása a Data Lake Storage Gen1 mappához")
     
     Kattintson az **OK** gombra. 
 
-## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>Az Event Hubs-adatok, Data Lake Storage Gen1 konfigurálása
+## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>Event Hubs konfigurálása az adatData Lake Storage Gen1ba való rögzítéshez
 
-Ebben a szakaszban lévő Event Hubs-névtér Event Hub létrehozása. Emellett konfigurálnia az Event Hubs, az adatok rögzítése egy Azure Data Lake Storage Gen1 fiókba. Ez a szakasz azt feltételezi, hogy már létrehozott Event Hubs-névtér.
+Ebben a szakaszban egy Event Hubs névtéren belül hoz létre egy Event hubot. Az Event hub-t úgy is konfigurálhatja, hogy az Azure Data Lake Storage Gen1 fiókba rögzítse az adatmennyiséget. Ez a szakasz azt feltételezi, hogy már létrehozott egy Event Hubs névteret.
 
-1. Az a **áttekintése** az Event Hubs-névtér ablakában kattintson **+ Event Hub**.
+1. A Event Hubs névtér **Áttekintés** paneljén kattintson a **+ Event hub**elemre.
 
-    ![Eseményközpont létrehozása](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Eseményközpont létrehozása")
+    ![Event hub létrehozása](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Eseményközpont létrehozása")
 
-1. Adja meg a következő adatokat a Data Lake Storage Gen1 rögzítheti az Event Hubs konfigurálása.
+1. Adja meg a következő értékeket a Event Hubs konfigurálásához az adatok Data Lake Storage Gen1ba való rögzítéséhez.
 
-    ![Eseményközpont létrehozása](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Eseményközpont létrehozása")
+    ![Event hub létrehozása](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Eseményközpont létrehozása")
 
-    a. Adjon meg egy nevet az Eseményközpontnak.
+    a. Adja meg az Event hub nevét.
     
-    b. A jelen oktatóanyag esetében állítsa be **partíciószám** és **Üzenetmegőrzés** az alapértelmezett értékükre.
+    b. Ebben az oktatóanyagban állítsa be a **partíciók darabszámát** és az **üzenetek megőrzését** az alapértelmezett értékekre.
     
-    c. Állítsa be **rögzítése** való **a**. Állítsa be a **időtartomány** (hogy milyen gyakran rögzítése) és **Méretablak** (adatméret rögzítése). 
+    c. A **rögzítés** beállítása **a**következőre:. Állítsa be az **időablakot** (a rögzítés gyakorisága) és a **méret ablakot** (a rögzítendő adatméretet). 
     
-    d. A **Capture-szolgáltató**válassza **Azure Data Lake Store** , és válassza ki azt a korábban létrehozott Data Lake Storage Gen1 fiókot. A **Data Lake-útvonal**, adja meg a mappát a Data Lake Storage Gen1 fiókban létrehozott nevét. Csak meg kell adnia azt a mappát a relatív elérési út.
+    d. A **rögzítési szolgáltatónál**válassza a **Azure Data Lake Store** lehetőséget, majd válassza ki a korábban létrehozott Data Lake Storage Gen1 fiókot. A **Data Lake elérési útja**mezőbe írja be a Data Lake Storage Gen1 fiókban létrehozott mappa nevét. Csak a mappa relatív elérési útját kell megadnia.
 
-    e. Hagyja a **minta rögzítési fájlformátumok neve** az alapértelmezett értékre. Ez a beállítás szabályozza a mappastruktúra a rögzítési mappa alatt létrehozott.
+    e. Hagyja meg a **minta rögzítési fájlnevének formátumát** az alapértelmezett értékre. Ezzel a beállítással szabályozható a rögzítési mappa alatt létrehozott mappastruktúrát.
 
-    f. Kattintson a **Create** (Létrehozás) gombra.
+    f. Kattintson a  **Create** (Létrehozás) gombra.
 
-## <a name="test-the-setup"></a>A beállítások ellenőrzése
+## <a name="test-the-setup"></a>A telepítés tesztelése
 
-A megoldás az Azure Event Hubs el most tesztelheti. Kövesse az utasításokat, [események küldése az Azure Event Hubs](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md). Az adatküldés elindítását követően látja-e az adatok Data Lake Storage Gen1 megjelennek a mappa használata struktúra megadott. Például lásd a mappastruktúrát, ahogyan az alábbi képernyőképen a Data Lake Storage Gen1-fiókban.
+Most tesztelheti a megoldást úgy, hogy adatokat küld az Azure Event hub-nak. Kövesse az [események küldése az Azure Event Hubsba](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md)című témakör útmutatását. Az adatok küldésének megkezdése után a Data Lake Storage Gen1ban látható adatok megjelennek a megadott mappastruktúrát használva. Például megtekintheti a mappa struktúráját, ahogyan az a következő képernyőképen látható a Data Lake Storage Gen1-fiókjában.
 
-![Az EventHub-adatok a Data Lake Storage Gen1 minta](./media/data-lake-store-archive-eventhub-capture/data-lake-store-eventhub-data-sample.png "minta az EventHub-adatok a Data Lake Storage Gen1")
+![Minta EventHub-adatData Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-eventhub-data-sample.png "Minta EventHub-adatData Lake Storage Gen1")
 
 > [!NOTE]
-> Akkor is, ha nem rendelkezik az Event Hubs érkező üzeneteket, az Event Hubs írja az üres fájlok csak a fejlécek a Data Lake Storage Gen1 fiókot. A fájlokat, hogy az Event Hubs létrehozásakor megadott azonos időközönként készültek.
+> Akkor is, ha nem rendelkezik a Event Hubsba érkező üzenetekkel, Event Hubs a Data Lake Storage Gen1 fiókba csak a fejléceket tartalmazó üres fájlokat ír. A fájlok a Event Hubs létrehozásakor megadott időintervallumban íródnak.
 > 
 >
 
-## <a name="analyze-data-in-data-lake-storage-gen1"></a>A Data Lake Storage Gen1 adatok elemzése
+## <a name="analyze-data-in-data-lake-storage-gen1"></a>Data Lake Storage Gen1ban lévő adatelemzés
 
-Amint az adatok Data Lake Storage Gen1, elemzési feladatok futtatásához folyamat és elemzése a hatékonyabb játékelemzésért az adatokat. Lásd: [USQL Avro példa](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) az ehhez az Azure Data Lake Analytics használatával.
+Ha az adatok Data Lake Storage Gen1, az adatok feldolgozásához és összegyűjtéséhez futtathat analitikai feladatokat. Lásd: [USQL Avro-példa](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) a Azure Data Lake Analytics használatával történő végrehajtásához.
   
 
 ## <a name="see-also"></a>Lásd még
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
-* [Adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
+* [Adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1ba](data-lake-store-copy-data-azure-storage-blob.md)

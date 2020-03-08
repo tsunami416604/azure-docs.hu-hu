@@ -4,11 +4,11 @@ description: A Azure Site Recovery helyreállítási terveinek megismerése.
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705853"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396980"
 ---
 # <a name="about-recovery-plans"></a>A helyreállítási tervek ismertetése
 
@@ -62,11 +62,11 @@ Ennek a testreszabásnak a helyén a következő történik, ha feladatátvétel
 
 A nagyméretű alkalmazások helyreállítása összetett feladat lehet. A manuális lépések végrehajtásával a folyamat hibát észlelt, és előfordulhat, hogy a feladatátvételt futtató személy nem veszi figyelembe az alkalmazás összes bonyolult feltételét. A helyreállítási terv segítségével megadhatja a sorrendet, és automatizálhatja az egyes lépésekhez szükséges műveleteket, Azure Automation runbookok használatával végezheti el a feladatátvételt az Azure-ba vagy a parancsfájlokba. Olyan feladatokhoz, amelyek nem lehetnek automatizáltak, a manuális műveletekre vonatkozó szüneteltetéseket is beillesztheti helyreállítási tervbe. Több különböző típusú feladat is konfigurálható:
 
-* **Feladatok az Azure virtuális gépen feladatátvétel után**: Ha feladatátvételt végez az Azure-ba, általában műveleteket kell végrehajtania, hogy a feladatátvételt követően csatlakozni lehessen a virtuális géphez. Példa: 
+* **Feladatok az Azure virtuális gépen feladatátvétel után**: Ha feladatátvételt végez az Azure-ba, általában műveleteket kell végrehajtania, hogy a feladatátvételt követően csatlakozni lehessen a virtuális géphez. Például: 
     * Hozzon létre egy nyilvános IP-címet az Azure-beli virtuális gépen.
     * Rendeljen egy hálózati biztonsági csoportot az Azure-beli virtuális gép hálózati adapteréhez.
     * Terheléselosztó hozzáadása egy rendelkezésre állási készlethez.
-* **Feladatok a virtuális gépen a feladatátvételt követően**: ezek a feladatok általában újrakonfigurálja a gépen futó alkalmazást, hogy az továbbra is megfelelően működjön az új környezetben. Példa:
+* **Feladatok a virtuális gépen a feladatátvételt követően**: ezek a feladatok általában újrakonfigurálja a gépen futó alkalmazást, hogy az továbbra is megfelelően működjön az új környezetben. Például:
     * Módosítsa az adatbázis-kapcsolatok karakterláncát a gépen belül.
     * Módosítsa a webkiszolgáló konfigurációját vagy szabályait.
 

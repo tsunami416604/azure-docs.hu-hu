@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 6e2437fadb743706d4f4215bbcbab8616817de5f
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545619"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381477"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory integráció az Azure Red Hat OpenShift
 
@@ -107,7 +107,7 @@ További információ az új Azure AD-alkalmazások létrehozásáról: [Alkalma
 
 A rendszergazdák és egyéb szerepkörök kezelésével kapcsolatos részletekért lásd: [Azure-előfizetési rendszergazdák hozzáadása vagy módosítása](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator).
 
-## <a name="resources"></a>Segédanyagok és eszközök
+## <a name="resources"></a>További források
 
 * [Alkalmazások és egyszerű szolgáltatások objektumai a Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
 * [Gyors útmutató: alkalmazás regisztrálása a Azure Active Directory v 1.0 végponttal](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)

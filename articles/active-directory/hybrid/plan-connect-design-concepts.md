@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Tervezési fogalmak | Microsoft Docs'
+title: 'Azure AD Connect: tervezési fogalmak | Microsoft Docs'
 description: Ez a témakör bizonyos megvalósítási tervezési területeket részletez
 services: active-directory
 documentationcenter: ''
@@ -18,13 +18,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135739"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375956"
 ---
-# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Tervezési alapelvek
+# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: tervezési fogalmak
 A dokumentum célja, hogy leírja, milyen területeken kell átgondolni a Azure AD Connect megvalósításának tervezése során. Ez a dokumentum részletesen ismerteti az egyes területeket, és ezeket a fogalmakat röviden ismertetjük más dokumentumokban is.
 
 ## <a name="sourceanchor"></a>sourceAnchor
@@ -45,7 +45,7 @@ Az attribútum értékének a következő szabályoknak kell megfelelnie:
 
 * Kevesebb mint 60 karakter hosszúságú
   * Nem a-z, A-Z vagy 0-9 karakterek kódolása és 3 karakternek számít.
-* Nem tartalmaz speciális karaktert: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > () '; : , [ ] " \@ _
+* Nem tartalmaz speciális karaktert: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > () '; :, [] "\@ _
 * Globálisan egyedinek kell lennie
 * Karakterlánc, egész szám vagy bináris értéknek kell lennie
 * Nem lehet a felhasználó nevén alapulni, mert ezek módosíthatók
@@ -122,7 +122,7 @@ A Azure AD Connect egyéni módban való telepítésekor a Azure AD Connect var�
 | Beállítás | Leírás |
 | --- | --- |
 | Let Azure manage the source anchor for me (Az Azure kezelje a forráshorgonyt) | Válassza ezt a lehetőséget, ha azt szeretné, hogy az Azure AD válassza ki az attribútumot. Ha ezt a lehetőséget választja, a Azure AD Connect varázsló ugyanazt a [sourceAnchor attribútumot alkalmazza, amelyet az expressz telepítéskor használ](#express-installation)a rendszer. Az expressz telepítéshez hasonlóan a varázsló arról tájékoztatja, hogy az egyéni telepítés befejeződése után melyik attribútumot választotta a forrás-szerkesztőpont attribútumként. |
-| Egy meghatározott attribútum | Válassza ezt a lehetőséget, ha meglévő AD-attribútumot szeretne megadni forráshorgony-attribútumként. |
+| A specific attribute (Egy adott attribútum) | Válassza ezt a lehetőséget, ha meglévő AD-attribútumot szeretne megadni forráshorgony-attribútumként. |
 
 ### <a name="how-to-enable-the-consistencyguid-feature---existing-deployment"></a>A ConsistencyGuid funkció engedélyezése – meglévő telepítés
 Ha meglévő Azure AD Connect üzemelő példánya, amely a objectGUID-t használja a forrás-szerkesztőpont attribútumként, ehelyett átválthatja a ConsistencyGuid használatára.
@@ -134,13 +134,13 @@ Váltás a objectGUID és a ConsistencyGuid között a forrás-horgony attribút
 
 1. Indítsa el a Azure AD Connect varázslót, és kattintson a **configure (Konfigurálás** ) gombra a feladatok képernyőre való ugráshoz.
 
-2. Jelölje be a forrás-rögzítési feladat **konfigurálása** beállítást, majd kattintson a **tovább**gombra.
+2. Jelölje be a **forrás-rögzítési feladat konfigurálása** beállítást, majd kattintson a **tovább**gombra.
 
    ![ConsistencyGuid engedélyezése meglévő központi telepítéshez – 2. lépés](./media/plan-connect-design-concepts/consistencyguidexistingdeployment01.png)
 
 3. Adja meg az Azure AD-rendszergazdai hitelesítő adatait, és kattintson a **tovább**gombra.
 
-4. Azure AD Connect varázsló elemzi az MS-DS-ConsistencyGuid attribútum állapotát a helyszíni Active Directory. Ha az attribútum nincs konfigurálva a címtár egyik objektumán sem, Azure AD Connect azt a következtetést vonja le, hogy egy másik alkalmazás jelenleg nem használja az attribútumot, és biztonságos a forrás-szerkesztőpont attribútumként használni. A folytatáshoz kattintson a **tovább** gombra.
+4. Azure AD Connect varázsló elemzi az MS-DS-ConsistencyGuid attribútum állapotát a helyszíni Active Directory. Ha az attribútum nincs konfigurálva a címtár egyik objektumán sem, Azure AD Connect azt a következtetést vonja le, hogy egy másik alkalmazás jelenleg nem használja az attribútumot, és biztonságos a forrás-szerkesztőpont attribútumként használni. A folytatáshoz kattintson a **Tovább** gombra.
 
    ![ConsistencyGuid engedélyezése meglévő központi telepítéshez – 4. lépés](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
@@ -165,12 +165,12 @@ Az elemzés során (4. lépés), ha az attribútum egy vagy több objektumon van
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>AD FS vagy külső összevonási konfigurációra gyakorolt hatás
 Ha Azure AD Connectt használ a helyszíni AD FS központi telepítésének kezeléséhez, a Azure AD Connect automatikusan frissíti a jogcím-szabályokat, hogy ugyanazt az AD attribútumot használják, mint a sourceAnchor. Ez biztosítja, hogy az ADFS által létrehozott ImmutableID-jogcím konzisztens legyen az Azure AD-ba exportált sourceAnchor-értékekkel.
 
-Ha Azure AD Connectn kívüli AD FS felügyel, vagy harmadik féltől származó összevonási kiszolgálókat használ hitelesítésre, akkor manuálisan kell frissítenie a ImmutableID jogcím szabályait, hogy konzisztens legyen az Azure AD-ba exportált sourceAnchor-értékekkel, a következő témakörben leírtak szerint: cikk szakasz [AD FS jogcím szabályainak módosítása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims). A varázsló a telepítés befejeződése után a következő figyelmeztetést adja vissza:
+Ha Azure AD Connectn kívüli AD FS felügyel, vagy harmadik féltől származó összevonási kiszolgálókat használ a hitelesítéshez, akkor manuálisan kell frissítenie a ImmutableID jogcím szabályait úgy, hogy konzisztensek legyenek az Azure AD-ba exportált sourceAnchor-értékekkel, az [AD FS jogcímek módosítása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims)című szakaszban leírtak szerint. A varázsló a telepítés befejeződése után a következő figyelmeztetést adja vissza:
 
 ![Harmadik féltől származó összevonási konfiguráció](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>Új címtárak hozzáadása meglévő központi telepítéshez
-Tegyük fel, hogy üzembe helyezte a Azure AD Connectt a ConsistencyGuid szolgáltatás engedélyezésével, és most egy másik könyvtárat szeretne hozzáadni a központi telepítéshez. Amikor megpróbálja felvenni a könyvtárat, Azure AD Connect varázsló ellenőrzi az MS-DS-ConsistencyGuid attribútum állapotát a címtárban. Ha az attribútum egy vagy több objektumon van konfigurálva a címtárban, a varázsló arra a következtetésre jut, hogy az attribútumot más alkalmazások használják, és az alábbi ábrán jelzett hibát ad vissza. Ha biztos abban, hogy a meglévő alkalmazások nem használják az attribútumot, akkor a Azure AD Connect varázsló újraindításával letilthatja a fentiekben leírt **/SkipLdapSearch** kapcsolót, vagy további információért kapcsolatba kell lépnie az ügyfélszolgálattal. .
+Tegyük fel, hogy üzembe helyezte a Azure AD Connectt a ConsistencyGuid szolgáltatás engedélyezésével, és most egy másik könyvtárat szeretne hozzáadni a központi telepítéshez. Amikor megpróbálja felvenni a könyvtárat, Azure AD Connect varázsló ellenőrzi az MS-DS-ConsistencyGuid attribútum állapotát a címtárban. Ha az attribútum egy vagy több objektumon van konfigurálva a címtárban, a varázsló arra a következtetésre jut, hogy az attribútumot más alkalmazások használják, és az alábbi ábrán jelzett hibát ad vissza. Ha biztos abban, hogy a meglévő alkalmazások nem használják az attribútumot, akkor a Azure AD Connect varázsló újraindításával letilthatja a fentiekben leírt **/SkipLdapSearch** kapcsolót, vagy további információért kapcsolatba kell lépnie az ügyfélszolgálattal.
 
 ![Új címtárak hozzáadása meglévő központi telepítéshez](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 
@@ -180,7 +180,7 @@ A helyszíni címtár és az Azure AD integrálásával fontos tisztában lenni 
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>A userPrincipalName attribútumának kiválasztása
 Ha kiválasztja az attribútumot az Azure-ban használandó egyszerű felhasználónév értékének megadásához, akkor biztosítania kell a következőt:
 
-* Az attribútum értékei megfelelnek az UPN-szintaxisnak (RFC 822), vagyis a Felhasználónév\@tartományának kell lennie
+* Az attribútum értékei megfelelnek az UPN-szintaxisnak (RFC 822), vagyis a Felhasználónév\@tartomány formátumúnak kell lennie
 * Az értékek utótagja megegyezik az Azure AD-ben ellenőrzött egyéni tartományok valamelyikével
 
 Az expressz beállításokban az attribútum feltételezett megválasztása userPrincipalName. Ha a userPrincipalName attribútum nem tartalmazza azt az értéket, amelyet a felhasználóknak be kell jelentkezniük az Azure-ba, akkor **Egyéni telepítést**kell választania.
@@ -188,14 +188,14 @@ Az expressz beállításokban az attribútum feltételezett megválasztása user
 ### <a name="custom-domain-state-and-upn"></a>Egyéni tartomány állapota és UPN
 Fontos, hogy ellenőrizze, hogy van-e ellenőrzött tartomány az UPN-utótaghoz.
 
-John a contoso.com felhasználója. Azt szeretné, hogy János a helyszíni UPN John\@contoso.com használatával jelentkezzen be az Azure-ba, miután szinkronizálta a felhasználókat az Azure ad-címtár contoso.onmicrosoft.com. Ehhez hozzá kell adnia és ellenőriznie kell a contoso.com egyéni tartományként az Azure AD-ben a felhasználók szinkronizálásának megkezdése előtt. Ha a János UPN-utótagja (például contoso.com) nem felel meg egy ellenőrzött tartománynak az Azure AD-ben, akkor az Azure AD az UPN-utótagot az contoso.onmicrosoft.com-vel helyettesíti.
+John a contoso.com felhasználója. Azt szeretné, hogy János a helyszíni UPN John\@contoso.com használatával jelentkezzen be az Azure-ba, miután szinkronizálta a felhasználókat az Azure AD-címtár contoso.onmicrosoft.com. Ehhez hozzá kell adnia és ellenőriznie kell a contoso.com egyéni tartományként az Azure AD-ben a felhasználók szinkronizálásának megkezdése előtt. Ha a János UPN-utótagja (például contoso.com) nem felel meg egy ellenőrzött tartománynak az Azure AD-ben, akkor az Azure AD az UPN-utótagot az contoso.onmicrosoft.com-vel helyettesíti.
 
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>Nem irányítható helyszíni tartományok és UPN az Azure AD-hez
 Egyes szervezetek nem irányítható tartományokkal, például a contoso. local vagy az egyszerű, egycímkés tartományokkal, például a contoso. Nem lehet ellenőrizni az Azure AD-ben nem irányítható tartományt. Azure AD Connect csak ellenőrzött tartományba tud szinkronizálni az Azure AD-ben. Amikor létrehoz egy Azure AD-címtárat, egy olyan, az Azure AD-hoz tartozó alapértelmezett tartományba kerülő, áthelyezhető tartományt hoz létre, például contoso.onmicrosoft.com. Ezért szükség lesz arra, hogy ellenőrizze a többi átirányítható tartományt ebben az esetben, ha nem szeretne szinkronizálni az alapértelmezett onmicrosoft.com-tartománnyal.
 
-A tartományok hozzáadásával és ellenőrzésével kapcsolatos további információkért olvassa el [az Egyéni tartománynév hozzáadása](../active-directory-domains-add-azure-portal.md) a Azure Active Directoryhoz című témakört.
+A tartományok hozzáadásával és ellenőrzésével kapcsolatos további információkért olvassa el [az Egyéni tartománynév hozzáadása a Azure Active Directoryhoz](../active-directory-domains-add-azure-portal.md) című témakört.
 
 Azure AD Connect észleli, ha nem átirányítható tartományi környezetben fut, és megfelelően figyelmezteti Önt az expressz beállításokkal. Ha nem átirányítható tartományban működik, akkor valószínű, hogy a felhasználók UPN-je nem irányítható utótaggal rendelkezik. Ha például a contoso. local alatt fut, Azure AD Connect javasolja, hogy az expressz beállítások használata helyett egyéni beállításokat használjon. Egyéni beállításokkal megadhatja azt az attribútumot, amelyet UPN-ként kell használni az Azure-ba való bejelentkezéshez, miután a felhasználók szinkronizálva lettek az Azure AD szolgáltatással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

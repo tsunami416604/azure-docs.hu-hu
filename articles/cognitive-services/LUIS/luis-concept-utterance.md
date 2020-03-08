@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
 ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280797"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396938"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Ismerje meg, hogy a LUIS-alkalmazás milyen jó hosszúságú kimondott szöveg
 
@@ -150,6 +150,6 @@ A következő hosszúságú kimondott szöveg a Word `fair` egy homográfia. Akk
 Ha azt szeretné, hogy az esemény entitása az összes eseményt megkeresse, címkézse a szót `fair` az első kiíráskor, de a másodikban nem.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A felhasználói hosszúságú kimondott szöveg megismeréséhez lásd: [példa hosszúságú kimondott szöveg hozzáadása](luis-how-to-add-example-utterances.md) a Luis-alkalmazások betanításához.
 

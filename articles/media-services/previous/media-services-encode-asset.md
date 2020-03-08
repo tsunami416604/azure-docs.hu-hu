@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
 ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901511"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392959"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Az Azure igény szerinti adathordozó-kódolóinak áttekintése 
 
@@ -51,7 +51,7 @@ Alapértelmezés szerint minden Media Services fiók egyszerre csak egy aktív k
 ### <a name="formats"></a>Formátumok
 [Formátumok és kodekek](media-services-media-encoder-standard-formats.md)
 
-### <a name="presets"></a>Előzetes beállítások
+### <a name="presets"></a>Készletek
 Media Encoder Standard az [itt](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)ismertetett kódoló-beállításkészletek egyikével van konfigurálva.
 
 ### <a name="input-and-output-metadata"></a>Bemeneti és kimeneti metaadatok
@@ -59,7 +59,7 @@ A kódolók bemeneti metaadatait [itt](media-services-input-metadata-schema.md)m
 
 A kódoló kimeneti metaadatait [itt](media-services-output-metadata-schema.md)mutatjuk be.
 
-### <a name="generate-thumbnails"></a>Miniatűrök létrehozása
+### <a name="generate-thumbnails"></a>Miniatűrök előállítása
 További információ: [miniatűrök készítése a Media Encoder standard használatával](media-services-advanced-encoding-with-mes.md#thumbnails).
 
 ### <a name="trim-videos-clipping"></a>Videók körülvágása (vágás)
@@ -68,7 +68,7 @@ További információ: [videók körülvágása Media Encoder standard használa
 ### <a name="create-overlays"></a>Átfedések létrehozása
 További információ: [átfedések létrehozása Media Encoder standard használatával](media-services-advanced-encoding-with-mes.md#overlay).
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 [A Media Services blog](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
 ## <a name="media-encoder-premium-workflow"></a>Media Encoder Premium-munkafolyamat

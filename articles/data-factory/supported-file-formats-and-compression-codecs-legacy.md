@@ -1,6 +1,6 @@
 ---
 title: Támogatott fájlformátumok a Azure Data Factoryban (örökölt)
-description: Ez a témakör azokat a fájlformátumokat és tömörítési kódokat ismerteti, amelyeket a Azure Data Factory található fájl alapú összekötők támogatnak.
+description: Ez a témakör ismerteti a fájlformátumokat és a fájl alapú összekötők az Azure Data Factory által támogatott tömörítési kódokat.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 423706c391e8d8c2c609798d9f50e5a22f5c39bb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483218"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358472"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Támogatott fájlformátumok és tömörítési kodekek a Azure Data Factory (örökölt)
 
@@ -30,21 +30,21 @@ ms.locfileid: "75483218"
 
 Ha szövegfájlból szeretne olvasni, vagy szöveges fájlba ír, a **Szövegformátum**adatkészlethez tartozó `format` szakaszban állítsa be a `type` tulajdonságot. Emellett megadhatja a következő **választható** tulajdonságokat a `format` szakaszban. A konfigurálással kapcsolatban lásd [A TextFormat használatát bemutató példa](#textformat-example) című szakaszt.
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| columnDelimiter |A fájlokban az oszlopok elválasztására használt karakter. Érdemes lehet olyan ritka, nem nyomtatható karaktert használni, amely nem létezik az adataiban. Adja meg például a "\u0001" kifejezést, amely a fejléc kezdetét jelöli (rendszerállapot-kimutatás). |Csak egy karakter használata engedélyezett. Az **alapértelmezett** érték a **vessző (,)** . <br/><br/>Ha Unicode-karaktert szeretne használni, a megfelelő kód beszerzéséhez tekintse meg a [Unicode-karaktereket](https://en.wikipedia.org/wiki/List_of_Unicode_characters) . |Nem |
+| columnDelimiter |A fájlokban az oszlopok elválasztására használt karakter. Érdemes lehet nem létezik az adatokat a ritka nem nyomtatható karaktert használhatja. Adja meg például a "\u0001", indítsa el a fejléc (SOH) jelölő. |Csak egy karakter használata engedélyezett. Az **alapértelmezett** érték a **vessző (,)** . <br/><br/>Ha Unicode-karaktert szeretne használni, a megfelelő kód beszerzéséhez tekintse meg a [Unicode-karaktereket](https://en.wikipedia.org/wiki/List_of_Unicode_characters) . |Nem |
 | rowDelimiter |A fájlokban a sorok elválasztására használt karakter. |Csak egy karakter használata engedélyezett. Az **alapértelmezett** érték olvasáskor a következő értékek bármelyike: **[„\r\n”, „\r”, „\n”]** , illetve **„\r\n”** írás esetén. |Nem |
 | escapeChar |Az oszlophatároló feloldására szolgáló speciális karakter a bemeneti fájl tartalmában. <br/><br/>Egy táblához nem határozható meg az escapeChar és a quoteChar is. |Csak egy karakter használata engedélyezett. Nincs alapértelmezett érték. <br/><br/>Ha például vessző (,) az oszlophatároló, de a vessző karaktert szeretné megjeleníteni a szövegben (például: „Helló, világ”), megadhatja a „$” karakter feloldójelként, és a „Helló$, világ” sztringet használhatja a forrásban. |Nem |
 | quoteChar |Egy sztringérték idézéséhez használt karakter. Ekkor az idézőjel-karakterek közötti oszlop- és sorhatárolókat a rendszer a sztringérték részeként kezeli. Ez a tulajdonság a bemeneti és a kimeneti adatkészleteken is alkalmazható.<br/><br/>Egy táblához nem határozható meg az escapeChar és a quoteChar is. |Csak egy karakter használata engedélyezett. Nincs alapértelmezett érték. <br/><br/>Ha például vessző (,) az oszlophatároló, de a vessző karaktert szeretné megjeleníteni a szövegben (például: &lt;Helló, világ&gt;), megadhatja a " (angol dupla idézőjel) értéket idézőjel-karakterként, és a "Helló$, világ" sztringet használhatja a forrásban. |Nem |
 | nullValue |A null értéket jelölő egy vagy több karakter. |Egy vagy több karakter. Az **alapértelmezett** értékek az **„\N” és „NULL”** olvasás, illetve **„\N”** írás esetén. |Nem |
 | encodingName |A kódolási név megadására szolgál. |Egy érvényes kódolási név. Lásd az [Encoding.EncodingName tulajdonságot](https://msdn.microsoft.com/library/system.text.encoding.aspx). Például: windows-1250 vagy shift_jis. Az **alapértelmezett** érték az **UTF-8**. |Nem |
-| firstRowAsHeader |Megadja, hogy az első sort fejlécnek kell-e tekinteni. A bemeneti adatkészletek első sorát a Data Factory fejlécként olvassa be. A kimeneti adatkészletek első sorát a Data Factory fejlécként írja ki. <br/><br/>[A `firstRowAsHeader` és a `skipLineCount` használatára vonatkozó forgatókönyvekben](#scenarios-for-using-firstrowasheader-and-skiplinecount) tekinthet meg minta-forgatókönyveket. |Igaz<br/><b>False (alapértelmezett)</b> |Nem |
+| firstRowAsHeader |Megadja, hogy az első sort fejlécnek kell-e tekinteni. A bemeneti adatkészletek első sorát a Data Factory fejlécként olvassa be. A kimeneti adatkészletek első sorát a Data Factory fejlécként írja ki. <br/><br/>[A `firstRowAsHeader` és a `skipLineCount` használatára vonatkozó forgatókönyvekben](#scenarios-for-using-firstrowasheader-and-skiplinecount) tekinthet meg minta-forgatókönyveket. |True (Igaz)<br/><b>False (alapértelmezett)</b> |Nem |
 | skipLineCount |Az adatok bemeneti fájlokból való olvasásakor kihagyható **nem üres** sorok számát jelzi. Ha a skipLineCount és a firstRowAsHeader tulajdonság is meg van adva, a rendszer először kihagyja a sorokat, majd beolvassa a fejléc-információkat a bemeneti fájlból. <br/><br/>[A `firstRowAsHeader` és a `skipLineCount` használatára vonatkozó forgatókönyvekben](#scenarios-for-using-firstrowasheader-and-skiplinecount) tekinthet meg minta-forgatókönyveket. |Egész szám |Nem |
-| treatEmptyAsNull |Meghatározza, hogy az adatok bemeneti fájlból történő olvasásakor a sztring null vagy üres értékeit null értékként kell-e kezelni. |**True (alapértelmezett)**<br/>Hamis |Nem |
+| treatEmptyAsNull |Meghatározza, hogy az adatok bemeneti fájlból történő olvasásakor a sztring null vagy üres értékeit null értékként kell-e kezelni. |**True (alapértelmezett)**<br/>False (Hamis) |Nem |
 
 ### <a name="textformat-example"></a>A TextFormat használatát bemutató példa
 
-Az adatkészletek következő JSON-definíciójában a választható tulajdonságok némelyike meg van adva.
+A következő JSON-definíciót egy adatkészletet, az egyes nem kötelező tulajdonságok vannak megadva.
 
 ```json
 "typeProperties":
@@ -65,7 +65,7 @@ Az adatkészletek következő JSON-definíciójában a választható tulajdonsá
 },
 ```
 
-`quoteChar` helyett `quoteChar` használatához cserélje le a sort `escapeChar` értékre a következő escapeChar kifejezéssel:
+`escapeChar` helyett `quoteChar` használatához cserélje le a sort `quoteChar` értékre a következő escapeChar kifejezéssel:
 
 ```json
 "escapeChar": "$",
@@ -86,7 +86,7 @@ A **JSON-fájlok Azure Cosmos DBba való importálásához/exportálásához**l�
 
 Ha szeretné elemezni a JSON-fájlokat, vagy JSON formátumban kell írnia az adatírást, a `format` szakaszban állítsa be a `type` tulajdonságot a **JsonFormat**értékre. Emellett megadhatja a következő **választható** tulajdonságokat a `format` szakaszban. A konfigurálással kapcsolatban lásd [A JsonFormat használatát bemutató példa](#jsonformat-example) című szakaszt.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | filePattern |Az egyes JSON-fájlokban tárolt adatok mintáját jelzi. Az engedélyezett értékek a következők: **setOfObjects** és **arrayOfObjects**. Az **alapértelmezett** érték a **setOfObjects**. A mintákkal kapcsolatban lásd a [JSON-fájlminták](#json-file-patterns) című szakaszt. |Nem |
 | jsonNodeReference | Ha egy azonos mintával rendelkező tömbmezőben található objektumokat szeretne iterálni, vagy azokból adatokat kinyerni, adja meg a tömb JSON-útvonalát. Ez a tulajdonság csak akkor támogatott, ha JSON **-** fájlokból másol adatok. | Nem |
@@ -99,7 +99,7 @@ Ha szeretné elemezni a JSON-fájlokat, vagy JSON formátumban kell írnia az ad
 
 ### <a name="json-file-patterns"></a>JSON-fájlminták
 
-A másolási tevékenység a JSON-fájlok következő mintáit tudja elemezni:
+Másolási tevékenység a JSON-fájlok következő mintáit tudja elemezni:
 
 - **I. típus: setOfObjects**
 
@@ -352,7 +352,7 @@ A **JsonFormat** típusú bemeneti adatkészlet a következőképpen van meghat�
 
 **2. eset: Adatok írása JSON-fájlba**
 
-Ha a következő táblázat szerepel a SQL Databaseban:
+Ha az alábbi táblázat az SQL Database:
 
 | ID (Azonosító) | order_date | order_price | order_by |
 | --- | --- | --- | --- |
@@ -360,7 +360,7 @@ Ha a következő táblázat szerepel a SQL Databaseban:
 | 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
-minden rekord esetében a következő formátumban kell írnia egy JSON-objektumba:
+és az egyes rekordokhoz, a következő formátumban JSON-objektum írását várja:
 
 ```json
 {
@@ -418,7 +418,7 @@ Ha szeretné elemezni a parketta-fájlokat, vagy a parketta formátumba írja az
 }
 ```
 
-Vegye figyelembe a következő szempontokat:
+Vegye figyelembe a következő pontokat:
 
 * Az összetett adattípusok nem támogatottak (Térkép, lista).
 * Az oszlopnév nem támogatja az üres helyet.
@@ -439,30 +439,30 @@ A saját üzemeltetésű, a Parquet-fájlok szerializálásával/deszerializál�
 
 Példa: állítsa be a változó `_JAVA_OPTIONS` értéket a `-Xms256m -Xmx16g`értékkel. A jelző `Xms` megadja egy Java virtuális gép (JVM) kezdeti memória-kiosztási készletét, míg a `Xmx` megadja a maximális memória-kiosztási készletet. Ez azt jelenti, hogy a JVM `Xms` mennyiségű memóriával fog elindulni, és legfeljebb `Xmx` mennyiségű memóriát tud használni. Alapértelmezés szerint az ADF min 64 MB és Max 1G értéket használ.
 
-### <a name="data-type-mapping-for-parquet-files"></a>A Parquet-fájlok adattípusának leképezése
+### <a name="data-type-mapping-for-parquet-files"></a>Adattípus-leképezés Parquet-fájlokat
 
-| Az adatgyár átmeneti adattípusa | Parketta primitív típusa | Parketta eredeti típusa (deszerializálása) | Parketta eredeti típusa (szerializálás) |
+| Data factory közbenső adattípus | Parquet primitív típus | Parquet eredeti típusa (deszerializálni) | Parquet eredeti típusa (szerializálni) |
 |:--- |:--- |:--- |:--- |
-| Logikai | Logikai | – | – |
-| Sbyte érték | Int32 | Int8 | Int8 |
+| Logikai | Logikai | N/A | N/A |
+| SByte | Int32 | Int8 | Int8 |
 | Bájt | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
 | UInt16 | Int32 | UInt16 | Int32 |
 | Int32 | Int32 | Int32 | Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64/bináris | UInt64 | Decimális |
-| Önálló | Lebegőpontos szám | – | – |
-| Double | Double | – | – |
-| Decimális | Bináris | Decimális | Decimális |
+| UInt64 | Int64/bináris fájl | UInt64 | tizedes tört |
+| Single | Float | N/A | N/A |
+| Dupla | Dupla | N/A | N/A |
+| tizedes tört | Bináris | tizedes tört | tizedes tört |
 | Sztring | Bináris | Utf8 | Utf8 |
-| Dátum és idő | Int96 | – | – |
-| időtartam | Int96 | – | – |
-| DateTimeOffset | Int96 | – | – |
-| ByteArray | Bináris | – | – |
-| GUID | Bináris | Utf8 | Utf8 |
-| Char | Bináris | Utf8 | Utf8 |
-| CharArray | Nem támogatott | – | – |
+| DateTime | Int96 | N/A | N/A |
+| Időtartam | Int96 | N/A | N/A |
+| DateTimeOffset | Int96 | N/A | N/A |
+| ByteArray | Bináris | N/A | N/A |
+| Guid | Bináris | Utf8 | Utf8 |
+| CHAR | Bináris | Utf8 | Utf8 |
+| CharArray | Nem támogatott | N/A | N/A |
 
 ## <a name="orc-format"></a>ORK formátum (örökölt)
 
@@ -478,7 +478,7 @@ Ha szeretné elemezni az ork-fájlokat, vagy az-t ork formátumban kell írnia, 
 }
 ```
 
-Vegye figyelembe a következő szempontokat:
+Vegye figyelembe a következő pontokat:
 
 * Az összetett adattípusok nem támogatottak (STRUCT, Térkép, lista, UNION).
 * Az oszlopnév nem támogatja az üres helyet.
@@ -492,12 +492,12 @@ A saját üzemeltetésű IR-ben az ork-fájl szerializálásával/deszerializál
 - A **JRE használatához**: a 64 bites IR használatához 64 bites JRE szükséges. [Itt](https://go.microsoft.com/fwlink/?LinkId=808605)találhatja meg.
 - **A OpenJDK használata**: az IR 3,13-es verzió óta támogatott. Csomagolja a JVM. dll fájlt a OpenJDK összes többi szükséges szerelvényéhez a saját üzemeltetésű IR-gépre, és ennek megfelelően állítsa be a rendszerkörnyezeti változót JAVA_HOME.
 
-### <a name="data-type-mapping-for-orc-files"></a>Az adattípusok leképezése az ork-fájlokhoz
+### <a name="data-type-mapping-for-orc-files"></a>Adattípus-leképezés ORC-fájlokat
 
-| Az adatgyár átmeneti adattípusa | ORK-típusok |
+| Data factory közbenső adattípus | ORC-típusok |
 |:--- |:--- |
 | Logikai | Logikai |
-| Sbyte érték | Bájt |
+| SByte | Bájt |
 | Bájt | Rövid |
 | Int16 | Rövid |
 | UInt16 | Int |
@@ -505,16 +505,16 @@ A saját üzemeltetésű IR-ben az ork-fájl szerializálásával/deszerializál
 | UInt32 | Hosszú |
 | Int64 | Hosszú |
 | UInt64 | Sztring |
-| Önálló | Lebegőpontos szám |
-| Double | Double |
-| Decimális | Decimális |
+| Single | Float |
+| Dupla | Dupla |
+| tizedes tört | tizedes tört |
 | Sztring | Sztring |
-| Dátum és idő | Időbélyeg |
+| DateTime | Időbélyeg |
 | DateTimeOffset | Időbélyeg |
-| időtartam | Időbélyeg |
+| Időtartam | Időbélyeg |
 | ByteArray | Bináris |
-| GUID | Sztring |
-| Char | Char (1) |
+| Guid | Sztring |
+| CHAR | Char(1) |
 
 ## <a name="avro-format"></a>AVRO formátuma (örökölt)
 
@@ -532,18 +532,18 @@ Ha elemezni szeretné a Avro-fájlokat, vagy Avro formátumban kell írnia az ad
 
 Az Avro formátum Hive-táblákban való használatával kapcsolatban lásd az [Apache Hive oktatóanyagát](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe).
 
-Vegye figyelembe a következő szempontokat:
+Vegye figyelembe a következő pontokat:
 
 * Az [összetett adattípusok](https://avro.apache.org/docs/current/spec.html#schema_complex) nem támogatottak (rekordok, enumerálások, tömbök, térképek, szakszervezetek és rögzített).
 
 ## <a name="compression-support"></a>Tömörítési támogatás (örökölt)
 
-Azure Data Factory támogatja az adatok tömörítését vagy kibontását a másolás során. Ha `compression` tulajdonságot ad meg egy bemeneti adatkészletben, a másolási tevékenység beolvassa a tömörített adatokat a forrásból, és kibontja azt; Ha pedig egy kimeneti adatkészletben megadja a tulajdonságot, a másolási tevékenység tömöríti, majd adatokat ír a fogadóba. Íme néhány példa a példákra:
+Az Azure Data Factory támogatja az adatok tömörítése és kibontása másolása során. Ha `compression` tulajdonságot ad meg egy bemeneti adatkészletben, a másolási tevékenység beolvassa a tömörített adatokat a forrásból, és kibontja azt; Ha pedig egy kimeneti adatkészletben megadja a tulajdonságot, a másolási tevékenység tömöríti, majd adatokat ír a fogadóba. Az alábbiakban néhány mintaként használható jelen forgatókönyvek:
 
-* A GZIP által tömörített adatok beolvasása egy Azure-blobból, kibontása és az eredmények adatainak írása egy Azure SQL Database-adatbázisba. A bemeneti Azure Blob-adatkészletet a `compression` `type` tulajdonsággal adja meg GZIP-ként.
-* Az adatok beolvasása egy egyszerű szöveges fájlból a helyszíni fájlrendszerből, GZip formátum használatával tömöríthető, és a tömörített adatok megírása egy Azure-blobba. A kimeneti Azure Blob-adatkészletet a `compression` `type` tulajdonsággal, GZip-ként definiálhatja.
-* Olvassa el a. zip fájlt az FTP-kiszolgálóról, bontsa ki, hogy beolvassa a fájlokat a belsejében, és a fájlokat a Azure Data Lake Store. A bemeneti FTP-adatkészletet a `compression` `type` tulajdonsággal ZipDeflate kell definiálni.
-* Egy Azure-blobból származó, GZIP-tömörített adatok beolvasása, kibontása, a BZIP2 használatával történő tömörítés, valamint az eredmények egy Azure-blobba írása. Megadhatja a bemeneti Azure Blob-adatkészletet a `compression` `type` a GZIP és a kimeneti adatkészlet `compression` `type` a BZIP2 értékre állításával.
+* Olvasási gzip Formátumban tömörített adatok egy Azure-blobból kibontása azt, és eredmény adatokat írni az Azure SQL-adatbázis. A bemeneti Azure Blob-adatkészletet a `compression` `type` tulajdonsággal adja meg GZIP-ként.
+* Egy egyszerű szöveges fájlt a helyi fájlrendszerből adatokat olvasni, és tömörítése a GZip formátumban tömörített adatokat írni az Azure-blobba. A kimeneti Azure Blob-adatkészletet a `compression` `type` tulajdonsággal, GZip-ként definiálhatja.
+* FTP-kiszolgálóról a .zip fájl olvasása kibontása található fájlokat, és ezeket a fájlokat az Azure Data Lake Store megnyitja azt. A bemeneti FTP-adatkészletet a `compression` `type` tulajdonsággal ZipDeflate kell definiálni.
+* Olvassa el a GZIP-tömörített adatok egy Azure-blobból, azt kibontani, tömörítése BZIP2 használatával és eredmény adatokat írni az Azure-blobba. Megadhatja a bemeneti Azure Blob-adatkészletet a `compression` `type` a GZIP és a kimeneti adatkészlet `compression` `type` a BZIP2 értékre állításával.
 
 Az adatkészlet tömörítésének megadásához használja az adatkészlet JSON **tömörítés** tulajdonságát az alábbi példában látható módon:
 
@@ -582,7 +582,7 @@ A **tömörítési** szakasz két tulajdonsággal rendelkezik:
     További információ: [tömörítési szint](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) témakör.
 
 > [!NOTE]
-> A **AvroFormat**, **OrcFormat**vagy **ParquetFormat**lévő adattömörítési beállítások nem támogatottak. Ezekben a formátumokban a fájlok olvasásakor a Data Factory észleli és a metaadatokban használja a tömörítési kodeket. A formátumokban lévő fájlok írásakor Data Factory kiválasztja az alapértelmezett tömörítési kodeket az adott formátumhoz. Például: ZLIB for OrcFormat és SNAPPY for ParquetFormat.
+> A **AvroFormat**, **OrcFormat**vagy **ParquetFormat**lévő adattömörítési beállítások nem támogatottak. Ezek a formátumok a fájlok olvasásakor a Data Factory észleli, és a metaadatokban szereplő tömörítési kodeket használja. Ezek a formátumok fájlok írásakor a Data Factory úgy dönt, az alapértelmezett tömörítési kodeket azt a formátumot. Ha például ZLIB OrcFormat és ParquetFormat a SNAPPY.
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>A fájltípusok és a tömörítési formátumok nem támogatottak
 

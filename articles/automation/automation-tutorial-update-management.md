@@ -4,14 +4,14 @@ description: Ez a cikk áttekintést nyújt a Azure Automation Update Management
 services: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 01/21/2020
+ms.date: 03/04/2020
 ms.custom: mvc
-ms.openlocfilehash: 3922f8a2478f00c632b6daf294f23c7b5ad8c261
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 347f2fbc0f12aa775c42dbb14a4625dc509a20ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310135"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372825"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure-beli virtuális gépek frissítéseinek és javításának kezelése
 
@@ -19,10 +19,9 @@ A virtuális gépek frissítéseit és javításait az Update Management megold�
 
 Díjszabási információkért tekintse meg az [Automation Update Management-díjszabását](https://azure.microsoft.com/pricing/details/automation/) ismertető cikket.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Virtuális gép felvétele az Update Managementbe
 > * Frissítésfelmérés megtekintése
 > * Riasztások konfigurálása
 > * Frissítéstelepítés ütemezése
@@ -32,39 +31,12 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja havi Visual Studio-előfizetői Azure-kreditjeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Azure Automation-fiók](automation-offering-get-started.md) a megfigyelő és műveleti runbookok, valamint a figyelőfeladat tárolásához.
+* A [Update Management](automation-update-management.md) -megoldás engedélyezve van egy vagy több virtuális gépen.
 * A szolgáltatásba felvenni kívánt [virtuális gép](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
-
-## <a name="enable-update-management"></a>Az Update Management engedélyezése
-
-Az oktatóanyag első lépéseként engedélyezze az Update Management megoldást a virtuális gépen:
-
-1. A [Azure Portal](https://portal.azure.com) menüben válassza a **virtuális gépek** lehetőséget, vagy keresse meg és válassza ki a **virtuális gépek** lehetőséget a **kezdőlapon** .
-1. Válassza ki azt a virtuális gépet, amelynek engedélyezni szeretné a Update Management.
-1. A virtuális gép lapjának **MŰVELETEK** szakaszában válassza a **Frissítéskezelés** elemet. Megjelenik **Az Update Management engedélyezése** ablaktábla.
-
-A rendszer ellenőrzi, hogy az Update Management engedélyezve van-e a virtuális gépen, Ez az ellenőrzés magában foglalja a Log Analytics munkaterület és a társított Automation-fiók ellenőrzését, valamint azt, hogy a Update Management megoldás engedélyezve van-e a munkaterületen.
-
-A [Log Analytics](../azure-monitor/platform/data-platform-logs.md)-munkaterület az Update Management, valamint a hasonló funkciók és szolgáltatások által létrehozott adatok gyűjtésére szolgál. A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
-
-Az érvényesítési folyamat azt is ellenőrzi, hogy a virtuális gép a Log Analytics ügynökkel és az Automation hibrid Runbook-feldolgozóval van-e kiépítve. Ez az ügynök kommunikál az Azure Automationnel, és begyűjti a frissítési állapottal kapcsolatos információkat. Az ügynök számára a 443-as port szükséges, hogy kommunikálhasson az Azure Automation szolgáltatással és letölthesse a frissítéseket.
-
-Ha az előkészítés közben az alábbi előfeltételek bármelyike hiányzik, a rendszer automatikusan hozzáadja azt:
-
-* [Log Analytics](../azure-monitor/platform/data-platform-logs.md)-munkaterület
-* Egy [Automation-fiók](./automation-offering-get-started.md)
-* Egy [hibrid runbook-feldolgozó](./automation-hybrid-runbook-worker.md) (a virtuális gépen engedélyezve)
-
-Az **Update Management** adja meg a használni kívánt helyet, Log Analytics-munkaterületet és Automation-fiókot. Ezt követően válassza az **Engedélyezés** lehetőséget. Ha ezek a beállítások nem érhetők el, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen. Ebben az esetben az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia.
-
-![Az Update Management megoldás engedélyezése ablak](./media/automation-tutorial-update-management/manageupdates-update-enable.png)
-
-A megoldás engedélyezése néhány percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot. A megoldás engedélyezését követően a virtuális gép hiányzó frissítéseivel kapcsolatos információk Azure Monitor naplókra áramlanak. Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
 
 ## <a name="view-update-assessment"></a>A frissítésfelmérés megtekintése
 
@@ -74,7 +46,7 @@ Az **információ hivatkozás**alatt válassza a frissítés hivatkozást a fris
 
 ![Frissítés állapotának megtekintése](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 
-A frissítés bármely más részére kattintva megnyílik a kiválasztott frissítésre vonatkozó **Naplók keresése** ablaktábla. A naplókeresés lekérdezése az adott frissítéshez előre meg van adva. Ezt a lekérdezést módosíthatja, vagy létrehozhatja saját lekérdezését, amellyel részletes információkat jeleníthet meg a környezetben telepített vagy a hiányzó frissítésekre vonatkozóan.
+A frissítésben kattintson a továbbiak elemre, hogy megnyissa a **naplóbeli keresés** ablaktáblát a kiválasztott frissítéshez. A naplókeresés lekérdezése az adott frissítéshez előre meg van adva. Ezt a lekérdezést módosíthatja, vagy létrehozhatja saját lekérdezését, amellyel részletes információkat jeleníthet meg a környezetben telepített vagy a hiányzó frissítésekre vonatkozóan.
 
 ![Frissítés állapotának megtekintése](./media/automation-tutorial-update-management/logsearch.png)
 
@@ -111,15 +83,15 @@ A **műveleti csoportok**területen válassza az **új létrehozása**lehetősé
 
 A **Műveletcsoport neve** mezőben adja meg a riasztás nevét és egy rövid nevet. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
 
-A **Műveletek** szakaszban adja meg a művelet nevét, például **E-mail-értesítések**. A **MŰVELETTÍPUS** területen válassza az **E-mail/SMS/Küldés/Hang** lehetőséget. A **RÉSZLETEK** területen válassza a **Részletek szerkesztése** lehetőséget.
+A **műveletek**területen adja meg a művelet nevét, például az **e-mailes értesítéseket**. A **művelet típusa**területen válassza az **e-mail/SMS/leküldés/hang**lehetőséget. A **részletek**területen válassza a **részletek szerkesztése**lehetőséget.
 
 Az **E-mail/SMS/Küldés/Hang** ablaktáblán adjon meg egy nevet. Jelölje be az **E-mail** jelölőnégyzetet, és adjon meg egy érvényes e-mail-címet.
 
 ![E-mail műveletcsoport konfigurálása](./media/automation-tutorial-update-management/configure-email-action-group.png)
 
-Az **E-mail/SMS/Küldés/Hang** ablaktáblán kattintson az **OK** gombra. A **Műveletcsoport hozzáadása** ablaktáblán kattintson az **OK** gombra.
+Az **e-mail/SMS/leküldés/hang** ablaktáblán kattintson az **OK gombra**. A **műveleti csoport hozzáadása** panelen kattintson **az OK gombra**.
 
-A riasztási e-mail tárgyának testreszabásához kattintson az **E-mail tárgya** gombra a **Szabály létrehozása** lap **Műveletek testreszabása** területén. Ha végzett, kattintson a **Riasztási szabály létrehozása** gombra. A riasztás figyelmezteti, ha egy frissítés telepítése sikeresen befejeződött, és tájékoztat róla, hogy mely számítógépeket érintett az adott frissítéstelepítés.
+A riasztási e-mail tárgyának testreszabásához a **szabály létrehozása**területen a **műveletek testreszabása**területen válassza az **e-mail tárgy**elemet. Ha végzett, kattintson a **Riasztási szabály létrehozása** gombra. A riasztás figyelmezteti, ha egy frissítés telepítése sikeresen befejeződött, és tájékoztat róla, hogy mely számítógépeket érintett az adott frissítéstelepítés.
 
 ## <a name="schedule-an-update-deployment"></a>Frissítéstelepítés ütemezése
 
@@ -139,13 +111,13 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
 * **Frissítendő csoportok (előzetes verzió)** : Meghatározhat egy előfizetéseken, erőforráscsoportokon, helyeken és címkéken alapuló lekérdezést, amellyel egy dinamikus, Azure-beli virtuális gépekből álló csoportot hozhat létre, majd belefoglalhatja a telepítésbe. További információ: [dinamikus csoportok](automation-update-management-groups.md)
 
-* **Frissítendő gépek**: Válasszon ki egy Mentett keresést vagy Importált csoportot, vagy válassza a legördülő listában a Gép lehetőséget, és válasszon ki egyes gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/platform/computer-groups.md)
+* **Frissítendő gépek**: Válasszon ki egy Mentett keresést vagy Importált csoportot, vagy válassza a legördülő listában a Gép lehetőséget, és válasszon ki egyes gépeket. Ha a **gépeket**választja, a gép készültsége megjelenik a **frissítési ügynök készültsége** oszlopban. A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/platform/computer-groups.md)
 
 * **Frissítés besorolása**: válassza ki az egyes termékek számára elérhető, támogatott frissítési besorolásokat, amelyek a frissítés központi telepítésében is szerepelhetnek. Ebben az oktatóanyagban hagyjon minden típust kiválasztva.
 
   A választható besorolási típusok a következők:
 
-   |Operációs rendszer  |Type (Típus)  |
+   |Operációs rendszer  |Típus  |
    |---------|---------|
    |Windows     | Kritikus frissítések</br>Biztonsági frissítések</br>Kumulatív frissítések</br>Funkciócsomagok</br>Szervizcsomagok</br>Definíciófrissítések</br>Eszközök</br>Frissítések        |
    |Linux     | Kritikus vagy biztonsági frissítések</br>Egyéb frissítések       |
@@ -163,7 +135,7 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
 * **Ütemezési beállítások**: Megnyitja az **Ütemezési beállítások** ablaktáblát. Az alapértelmezett kezdési időpont az aktuális időpontnál 30 perccel későbbi időpont. Bármilyen időpontra beállítható a pillanatnyi időt követő 10. perc után.
 
-   Azt is megadhatja, hogy a telepítés egyszer történjen meg, vagy ismétlődő legyen. Az **Ismétlődés** menüpontban válassza az **Egyszer** lehetőséget. Tartsa meg az 1 napos alapértelmezett beállítást, majd kattintson az **OK** gombra. Ezzel egy ismétlődő ütemezést állít be.
+   Azt is megadhatja, hogy a telepítés egyszer történjen meg, vagy ismétlődő legyen. Az **Ismétlődés** menüpontban válassza az **Egyszer** lehetőséget. Hagyja meg az alapértelmezett értéket 1 nap alatt, majd kattintson **az OK gombra**. Ezzel egy ismétlődő ütemezést állít be.
 
 * **Előkészítő szkriptek és utólagos szkriptek**: Válassza ki, mely szkripteket szeretné futtatni az üzembe helyezés előtt, illetve után. További információ: [Előkészítő és utólagos szkriptek kezelése](pre-post-scripts.md).
 
@@ -201,7 +173,7 @@ A **frissítési központi telepítések** programozott módon is létrehozható
 
 Miután az ütemezett telepítés elindult, a **Frissítéskezelés** panel **Frissítéstelepítések** lapján láthatóvá válik a telepítés állapota. Ha a telepítés fut, az állapota **Folyamatban** lesz. A telepítés befejezése után, ha az sikeresnek bizonyult, **Sikeres** állapotúra változik. Ha a telepítésben lévő frissítések közül egy vagy több meghiúsul, az állapota **Részben sikertelen**.
 
-Ha kiválasztja a befejezett frissítéstelepítést, megjelenik az adott frissítéstelepítés irányítópultja.
+Ha kiválasztja a befejezett frissítéstelepítést, az megjelenik az adott frissítéstelepítés irányítópultja.
 
 ![Adott telepítés frissítéstelepítési állapotának irányítópultja](./media/automation-tutorial-update-management/manageupdates-view-results.png)
 

@@ -8,11 +8,11 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861285"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391737"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>A VMware virtuális gépek vész-helyreállításának beállítása az Azure-ba a PowerShell használatával
 
@@ -118,7 +118,7 @@ Az alábbi példában a $vault változóból származó tár adatait a rendszer 
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-A set-ASRVaultContext parancsmag alternatívájaként az egyik az import-AzRecoveryServicesAsrVaultSettingsFile parancsmagot is használhatja a tár környezetének beállításához. Itt adhatja meg azt az elérési utat, amelyen a tároló regisztrációs kulcsa a-Path paraméterként található az import-AzRecoveryServicesAsrVaultSettingsFile parancsmaghoz. Példa:
+As an alternative to the Set-ASRVaultContext cmdlet, one can also use the Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet to set the vault context. Itt adhatja meg azt az elérési utat, amelyen a tároló regisztrációs kulcsa a-Path paraméterként található az import-AzRecoveryServicesAsrVaultSettingsFile parancsmaghoz. Például:
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -351,11 +351,11 @@ A felderített virtuális gépek elleni védelemhez a következő adatokra lesz 
 Most replikálja a következő virtuális gépeket az ebben a táblázatban megadott beállítások használatával.
 
 
-|Virtuális gép  |Kiszolgáló feldolgozása        |Tárfiók              |Log Storage-fiók  |Szabályzat           |Fiók a mobilitási szolgáltatás telepítéséhez|Célzott erőforráscsoport  | Cél virtuális hálózata  |Célként megadott alhálózat  |
+|Virtuális gép  |Kiszolgáló feldolgozása        |Tárfiók              |Log Storage-fiók  |Szabályzat           |Fiók a mobilitási szolgáltatás telepítéséhez|Cél erőforráscsoport  | Célként megadott virtuális hálózat  |Célként megadott alhálózat  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |–| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – vnet                 |1\. alhálózat       |
-|Win2K12VM1       |Horizontális felskálázás – ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – vnet                 |1\. alhálózat       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| –                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – vnet                 |1\. alhálózat       |   
+|CentOSVM1       |ConfigurationServer   |N/A| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Alhálózat – 1       |
+|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Alhálózat – 1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| N/A                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Alhálózat – 1       |   
 
 
 ```azurepowershell

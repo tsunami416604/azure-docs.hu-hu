@@ -1,7 +1,7 @@
 ---
 title: Szemantikai értelmezés – Knowledge Exploration Service API
 titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan használható a szemantikai értelmezés a a Knowledge Exploration Service (KES) API.
+description: Megtudhatja, hogyan használhatja a szemantikai értelmezést a Knowledge Exploration Service (KES) API-ban.
 services: cognitive-services
 author: bojunehsu
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 26f8d885f8cf85ab849ba221392df206e492aac4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60814474"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385662"
 ---
 # <a name="semantic-interpretation"></a>Szemantikai értelmezés
 
-Szemantikai értelmezés szemantikai kimeneti mindegyik értelmezett elérési út a szintaxis használatával társítja.  Ilyen például a szolgáltatás kiértékeli az parancsfájlblokkokban lévő utasítások sorrendje a `tag` számítja ki a végső kimenet értelmezésének haladnia elemek.  
+A szemantikai értelmezés szemantikai kimenetet társít az összes értelmezett útvonalhoz a nyelvtanon keresztül.  A szolgáltatás különösen kiértékeli az utasítások sorát az értelmezés által áthaladó `tag` elemekben a végső kimenet kiszámításához.  
 
-Lehet, hogy egy utasítás szövegkonstans vagy egy változót, egy másik változó-hozzárendelés.  Változóhoz is rendelhet hozzá a kimenet egy függvény 0 vagy több paramétert.  Minden függvény paramétere egy vagy egy változó adható meg.  Ha a függvény nem ad vissza kimenetet, a hozzárendelés van hagyva.
+Egy utasítás lehet egy literál vagy egy változó hozzárendelése egy másik változóhoz.  Egy függvény kimenetét is hozzárendelheti 0 vagy több paraméterrel egy változóhoz.  Az egyes functions paramétereket literál vagy változó használatával lehet megadni.  Ha a függvény nem ad vissza kimenetet, a hozzárendelés kimarad.
 
 ```xml
 <tag>x = 1; y = x;</tag>
@@ -29,43 +29,43 @@ Lehet, hogy egy utasítás szövegkonstans vagy egy változót, egy másik vált
 <tag>AssertEquals(x, 1);</tag>
 ```
 
-A változó meg van adva, amely betűvel kezdődik, és csak betűket (A – Z), számjegyek (0 – 9) és az aláhúzás tartalmaz alkalmazásnév-azonosító használatával (\_).  A típusa implicit módon fióktól vette a beállításait az a konstans vagy függvény kimeneti hozzárendelt érték. 
+Egy változót egy betűvel kezdődő azonosítóval kell megadni, amely csak betűkből (A-Z), számokból (0-9) és az aláhúzásból (\_) áll.  A típust implicit módon következtetik ki a hozzá rendelt literál vagy függvény kimeneti értékből. 
 
-Az alábbiakban felsoroljuk a jelenleg támogatott adattípusok:
+Az alábbi lista a jelenleg támogatott adattípusokat tartalmazza:
 
 |Típus|Leírás|Példák|
 |----|----|----|
-|String|0 vagy több karakter sorozata|"Hello World!"<br/>""|
+|Sztring|0 vagy több karakteres sorszám|""Helló világ!"alkalmazás!"<br/>""|
 |Bool|Logikai érték|true<br/>false|
-|Int32|32 bites előjeles egész számokat.  -2.1e9 való 2.1e9|123<br/>-321|
-|Int64|64 bites előjeles egész számokat. -9.2e18 és 9.2e18|9876543210|
-|Double|Kétszeres pontosságú lebegőpontos. 1.7E +/-308 (15 számjegy)|123.456789<br/>1.23456789e2|
+|Int32|32 bites előjeles egész szám.  -2.1 E9 – 2.1 E9|123<br/>-321|
+|Int64|64 bites előjeles egész szám. -9.2 E18 és 9.2 E18|9876543210|
+|Dupla|Dupla pontosságú lebegőpontos pont. 1.7 e +/-308 (15 számjegy)|123.456789<br/>1.23456789e2|
 |Guid|Globálisan egyedi azonosító|"602DD052-CC47-4B23-A16A-26B52D30C05B"|
-|Lekérdezés|Lekérdezési kifejezés, amely meghatározza az objektumok egy részét az indexben|All()<br/>És (*q1*, *q2*)|
+|Lekérdezés|Az indexben található adatobjektumok részhalmazát megadó lekérdezési kifejezés|Összes ()<br/>És (*Q1*, *Q2*)|
 
-## <a name="semantic-functions"></a>Szemantikai funkciók
+## <a name="semantic-functions"></a>Szemantikai függvények
 
-Nincs beépített szemantikai funkciók készletét.  Lehetővé teszi az összetett lekérdezések építését, és adja meg a nyelvtani értelmezések környezetfüggő felett.
+A szemantikai függvények beépített halmaza.  Lehetővé teszik a kifinomult lekérdezések kiépítését, és környezetfüggő szabályozást biztosítanak a nyelvtani értelmezésekhez.
 
-### <a name="and-function"></a>És a függvény
+### <a name="and-function"></a>És függvény
 
 `query = And(query1, query2);`
 
-A lekérdezés feloldásra használt két bemeneti lekérdezést metszetét adja vissza.
+A két bemeneti lekérdezés metszéspontján álló lekérdezést ad vissza.
 
 ### <a name="or-function"></a>Vagy függvény
 
 `query = Or(query1, query2);`
 
-Egy lekérdezés feloldásra használt két bemeneti lekérdezést unióját adja vissza.
+Egy olyan lekérdezést ad vissza, amely a két bemeneti lekérdezés Uniójának tagjaiból áll.
 
 ### <a name="all-function"></a>Minden függvény
 
 `query = All();`
 
-A lekérdezés, amely tartalmazza az összes adat objektum adja vissza.
+Egy olyan lekérdezést ad vissza, amely az összes adatobjektumot tartalmazza.
 
-A következő példában a All() függvényt használjuk iteratív építse fel a lekérdezés 1 vagy több kulcsszavak metszetét alapul.
+Az alábbi példában az All () függvényt használjuk, hogy iteratív egy lekérdezést az 1 vagy több kulcsszó metszéspontja alapján.
 
 ```
 <tag>query = All();</tag>
@@ -75,13 +75,13 @@ A következő példában a All() függvényt használjuk iteratív építse fel 
 </item>
 ```
 
-### <a name="none-function"></a>Egyik sem működik
+### <a name="none-function"></a>Nincs függvény
 
 `query = None();`
 
-A lekérdezés, amely tartalmazza az objektumok nem ad vissza.
+Az adatobjektumokat nem tartalmazó lekérdezést ad vissza.
 
-A következő példában a None() függvényt használjuk iteratív építse fel egy lekérdezést a union, 1 vagy több kulcsszavak alapján.
+A következő példában a none () függvényt használjuk, hogy iteratív egy lekérdezést az 1 vagy több kulcsszóból álló Unió alapján.
 
 ```
 <tag>query = None();</tag>
@@ -91,16 +91,16 @@ A következő példában a None() függvényt használjuk iteratív építse fel
 </item>
 ```
 
-### <a name="query-function"></a>Lekérdezés függvény
+### <a name="query-function"></a>Lekérdezési függvény
 
 ```
 query = Query(attrName, value)
 query = Query(attrName, value, op)
 ```
 
-Adja vissza egy lekérdezést, amely csak az adatok objektumokat tartalmazza, amelyek attribútuma *attrName* érték megegyezik *érték* szerint a megadott művelet *op*, amely az alapértelmezett "eq".  Általában egy `attrref` elem az egyező bemeneti lekérdezési karakterlánc alapján egy lekérdezés létrehozásához.  Ha értéket adott vagy egyéb módon beszerzett, a Query() függvény ezt az értéket a megfelelő lekérdezés létrehozására használható.
+Egy olyan lekérdezést ad vissza, amely csak olyan adatobjektumokat tartalmaz, amelyek attribútuma a megadott *attrName* *megfelel az értéknek* *, ami*alapértelmezés szerint "EQ".  Általában egy `attrref` elemmel hozhat létre egy lekérdezést a megfeleltetett bemeneti lekérdezési karakterlánc alapján.  Ha egy értéket adott meg vagy más módon szerez be, a lekérdezés () függvény használatával létrehozhat egy, az értéknek megfelelő lekérdezést.
 
-A következő példában a Query() függvényt használjuk adjon meg egy adott évtizede nyújt védelmet a tanulmányi kiadványok támogatása megvalósításához.
+A következő példában a Query () függvényt használjuk egy adott évtizedből származó akadémiai kiadványok megadásának támogatásához.
 
 ```xml
 written in the 90s
@@ -115,15 +115,15 @@ written in the 90s
 
 `query = Composite(innerQuery);`
 
-Adja vissza egy lekérdezést, amely magában foglalja egy *innerQuery* mikroszolgáltatásokból álló, egy közös összetett attribútum alárendelt attribútumai egyezések *attr*.  A beágyazás igényel az összetett attribútum *attr* bármely megfelelő adatok objektum legalább egy olyan értékkel, amely külön-külön eleget tesz a *innerQuery*.  Vegye figyelembe, hogy rendelkezik-e a lekérdezés egy összetett attribútum alárendelt attribútumok egyesítse a Composite() függvény használatával, mielőtt kombinálható más lekérdezések.
+Egy olyan lekérdezést ad vissza, amely egy, a közös összetett attribútum *attr*tartozó alattribútumokból álló *innerQuery* ágyaz be.  A beágyazáshoz a megfelelő adatobjektumhoz tartozó összetett attribútum *attr* legalább egy olyan értékkel kell rendelkeznie, amely külön megfelel a *innerQuery*.  Vegye figyelembe, hogy egy összetett attribútum alattribútumain lévő lekérdezést az összetett () függvény használatával kell beágyazni, mielőtt más lekérdezésekkel kombinálhatók.
 
-Például a következő lekérdezés adja vissza "harry shum" academic kiadványok szerint közben a "Microsoft" volt:
+Például a következő lekérdezés a "Harry Sum" nevű akadémiai kiadványokat adja vissza, miközben a "Microsoft" volt:
 ```
 Composite(And(Query("academic#Author.Name", "harry shum"), 
               Query("academic#Author.Affiliation", "microsoft")));
 ```
 
-A következő lekérdezést, másrészt academic kiadványok esetében, ahol a szerző egyik "harry shum" és a tagságok egyik "microsoft" adja vissza:
+Másfelől a következő lekérdezés olyan akadémiai kiadványokat ad vissza, amelyekben a szerzők egyike a "Harry Sum", a másik pedig a "Microsoft":
 ```
 And(Composite(Query("academic#Author.Name", "harry shum"), 
     Composite(Query("academic#Author.Affiliation", "microsoft")));
@@ -133,35 +133,35 @@ And(Composite(Query("academic#Author.Name", "harry shum"),
 
 `value = GetVariable(name, scope);`
 
-A változó értékét adja vissza *neve* alatt a megadott meghatározott *hatókör*.  *név* azonosítója, amely betűvel kezdődik, és csak betűket (A – Z), számjegyek (0 – 9) és aláhúzást (_) tartalmaz.  *hatókör* "kérés" vagy "rendszer" értékre lehet beállítani.  Vegye figyelembe, hogy a különböző hatókörökhöz definiált változókat elkülönülnek egymástól, beleértve a szemantikai függvények kimenete keresztül definiálva.
+A megadott *hatókörben*definiált változó *nevének* értékét adja vissza.  a *Name* olyan azonosító, amely betűvel kezdődik, és csak betűkből (a-Z), számokból (0-9) és aláhúzásból (_) áll.  a *hatókör* beállítható "kérelem" vagy "System" értékre.  Vegye figyelembe, hogy a különböző hatókörökben definiált változók különböznek egymástól, beleértve azokat is, amelyeket a szemantikai függvények kimenete határoz meg.
 
-Kérelem hatókör változókat az aktuális kérelem értelmezése belül minden értelmezések vannak megosztva.  Értelmezések keresése szabályozhatóbbá nyelvtani használható.
+A kérelem hatókör-változói az aktuális értelmezési kérelemben szereplő összes értelmezés között megoszthatók.  Használhatók a nyelvtani értelmezések keresésének szabályozására.
 
-Rendszerváltozók a szolgáltatás által előre meghatározott, és használható különböző statisztikákról, a rendszer az aktuális állapotával kapcsolatos információkat lekérni.  Alul látható a jelenleg támogatott rendszerváltozók készletét:
+A szolgáltatás a rendszerváltozókat előre definiálja, és a rendszer aktuális állapotával kapcsolatos különböző statisztikák lekérésére használható.  Alább láthatók a jelenleg támogatott rendszerváltozók:
 
 |Name (Név)|Típus|Leírás|
 |----|----|----|
-|IsAtEndOfQuery|Bool|IGAZ, ha az aktuális értelmezése felelt meg az összes bemeneti lekérdezés szövege|
-|IsBeyondEndOfQuery|Bool|IGAZ, ha az aktuális értelmezése javasolt befejezésekből túl a bemeneti lekérdezés szövege|
+|IsAtEndOfQuery|Bool|igaz, ha az aktuális értelmezés megfelelt az összes bemeneti lekérdezési szövegnek|
+|IsBeyondEndOfQuery|Bool|igaz, ha az aktuális értelmezés a bemeneti lekérdezési szövegen felüli befejezést javasolt|
 
 ### <a name="setvariable-function"></a>SetVariable függvény
 
 `SetVariable(name, value, scope);`
 
-Hozzárendeli *érték* változóhoz *neve* a megadott *hatókör*.  *név* azonosítója, amely betűvel kezdődik, és csak betűket (A – Z), számjegyek (0 – 9) és aláhúzást (_) tartalmaz.  Jelenleg az egyetlen érvényes érték a *hatókör* van a "request".  Nincsenek nem állítható be rendszerváltozók.
+Az *értéket* a megadott *hatókörben*lévő változó *neveként* rendeli hozzá.  a *Name* olyan azonosító, amely betűvel kezdődik, és csak betűkből (a-Z), számokból (0-9) és aláhúzásból (_) áll.  Jelenleg a *hatókör* egyetlen érvényes értéke "Request".  Nincsenek beállítható rendszerváltozók.
 
-Kérelem hatókör változókat az aktuális kérelem értelmezése belül minden értelmezések vannak megosztva.  Értelmezések keresése szabályozhatóbbá nyelvtani használható.
+A kérelem hatókör-változói az aktuális értelmezési kérelemben szereplő összes értelmezés között megoszthatók.  Használhatók a nyelvtani értelmezések keresésének szabályozására.
 
 ### <a name="assertequals-function"></a>AssertEquals függvény
 
 `AssertEquals(value1, value2);`
 
-Ha *érték1* és *value2* megfelelője, a függvény sikeres lesz, és még nincsenek hatásai.  Ellenkező esetben a függvény sikertelen lesz, és értelmezése elutasítja.
+Ha a *érték1* és a *érték2* egyenértékű, a függvény sikeres lesz, és nincs mellékhatása.  Ellenkező esetben a függvény meghiúsul, és elutasítja az értelmezést.
 
 ### <a name="assertnotequals-function"></a>AssertNotEquals függvény
 
 `AssertNotEquals(value1, value2);`
 
-Ha *érték1* és *value2* nem egyenértékű, a függvény sikeres lesz, és még nincsenek hatásai.  Ellenkező esetben a függvény sikertelen lesz, és értelmezése elutasítja.
+Ha a *érték1* és a *érték2* nem egyenértékűek, a függvény sikeres lesz, és nincs mellékhatása.  Ellenkező esetben a függvény meghiúsul, és elutasítja az értelmezést.
 
 

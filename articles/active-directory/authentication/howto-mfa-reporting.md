@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52d9f7a0b2a7cebefdb5ade8e16417043c5c83d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425293"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378063"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Jelentések az Azure Multi-Factor Authentication
 
 Az Azure Multi-Factor Authentication számos jelentést biztosít, amelyeket Ön és a szervezete a Azure Portal keresztül is elérhet. A következő táblázat felsorolja a rendelkezésre álló jelentéseket:
 
-| Jelentés | Földrajzi egység | Leírás |
+| Jelentés | Hely | Leírás |
 |:--- |:--- |:--- |
 | Letiltott felhasználók előzményei | Az Azure AD > biztonsági > MFA > a felhasználók blokkolására/feloldására | Megjeleníti a felhasználók blokkolására vagy feloldására irányuló kérelmek előzményeit. |
 | Használati és csalási riasztások | Azure AD > bejelentkezések | Információt nyújt a teljes használatról, a felhasználói összesítésekről és a felhasználói adatokról; valamint a megadott dátumtartomány szerint elküldött csalási riasztások előzményei. |
@@ -32,7 +32,7 @@ Az Azure Multi-Factor Authentication számos jelentést biztosít, amelyeket Ön
 
 ## <a name="view-mfa-reports"></a>MFA-jelentések megtekintése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. A bal oldalon válassza a **Azure Active Directory** > **biztonsági** > **MFA**elemet.
 3. Válassza ki a megtekinteni kívánt jelentést.
 

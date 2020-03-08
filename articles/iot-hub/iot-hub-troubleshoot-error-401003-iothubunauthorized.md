@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: d0a9f643516af5945037acb3dd1da24b06944171
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960632"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396478"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -37,7 +37,7 @@ A következő hibaüzenetek egyikével sikertelen IoT Hub kérelmek:
 
 ## <a name="cause"></a>Ok
 
-### <a name="cause-1"></a>1\. ok
+### <a name="cause-1"></a>OK: 1
 
 A MQTT esetében egyes SDK-k az IoT Hub-t használják, hogy kiállítsák a leválasztást, amikor az SAS-token lejár a frissítéshez. Így 
 
@@ -47,7 +47,7 @@ A MQTT esetében egyes SDK-k az IoT Hub-t használják, hogy kiállítsák a lev
 1. A IoT SDK új SAS-jogkivonatot hoz létre
 1. Az eszköz újrakapcsolódik IoT Hub sikeresen
 
-### <a name="cause-2"></a>2\. ok
+### <a name="cause-2"></a>OK 2
 
 A IoT Hub nem tudta hitelesíteni az Auth fejlécét, szabályát vagy kulcsát.
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
 ms.openlocfilehash: f009b438cb0dc227289d65604d89c11fd382b675
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892964"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356284"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatmásolás és átalakítás az Azure szinapszis Analyticsben (korábban Azure SQL Data Warehouse) a használatával Azure Data Factory 
 
@@ -37,15 +37,15 @@ Ez az Azure szinapszis Analytics-összekötő a következő tevékenységek eset
 
 Másolási tevékenység esetén ez az Azure szinapszis Analytics-összekötő a következő funkciókat támogatja:
 
-- Adatmásolás SQL-hitelesítéssel és Azure Active Directory (Azure AD) alkalmazás-jogkivonat hitelesítéssel az Azure-erőforrásokhoz tartozó egyszerű szolgáltatásnév vagy felügyelt identitás használatával.
-- Forrásként egy SQL-lekérdezés vagy tárolt eljárás használatával kérhet le egy adatforrást.
+- Adatok másolása az Azure-erőforrások egy egyszerű vagy felügyelt szolgáltatásidentitások SQL-hitelesítés és Azure Active Directory (Azure AD) alkalmazástoken-hitelesítésének használata által.
+- Forrásként adatok lekérdezése egy SQL-lekérdezést vagy tárolt eljárás használatával.
 - Fogadóként az adatok betöltését a [Base](#use-polybase-to-load-data-into-azure-sql-data-warehouse) vagy a [copy utasítás](#use-copy-statement) (előzetes verzió) vagy a tömeges Beszúrás használatával. A jobb másolási teljesítmény érdekében javasolt a Base vagy a COPY utasítás (előzetes verzió).
 
 > [!IMPORTANT]
 > Ha Azure Data Factory Integration Runtime használatával másol Adatmásolást, konfigurálja az [Azure SQL Server-tűzfalat](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) úgy, hogy az Azure-szolgáltatások hozzáférhessenek a kiszolgálóhoz.
-> Ha saját üzemeltetésű integrációs modul használatával másol Adatmásolást, konfigurálja az Azure SQL Server-tűzfalat a megfelelő IP-címtartomány engedélyezéséhez. Ez a tartomány tartalmazza a számítógép IP-címét, amely az Azure szinapszis Analyticshez való kapcsolódáshoz használatos.
+> Ha adatokat másolja egy saját üzemeltetésű integrációs modul használatával, konfigurálja az Azure SQL-kiszolgáló tűzfalán, hogy a megfelelő IP-címtartomány. Ez a tartomány tartalmazza a számítógép IP-címét, amely az Azure szinapszis Analyticshez való kapcsolódáshoz használatos.
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Első lépések
 
 > [!TIP]
 > A legjobb teljesítmény eléréséhez használja a Base-t az adatok Azure szinapszis Analyticsbe való betöltéséhez. Az [adatok Azure szinapszis analyticsbe való betöltéséhez használja](#use-polybase-to-load-data-into-azure-sql-data-warehouse) a következőt:. A használati eseteket bemutató bemutatóért lásd: [1 TB betöltése az Azure szinapszis Analytics szolgáltatásba 15 perc alatt, Azure Data Factory](load-azure-sql-data-warehouse.md).
@@ -58,16 +58,16 @@ A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, 
 
 Az Azure szinapszis Analytics társított szolgáltatása a következő tulajdonságokat támogatja:
 
-| Tulajdonság            | Leírás                                                  | Szükséges                                                     |
+| Tulajdonság            | Leírás                                                  | Kötelező                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | type                | A Type tulajdonságot **AzureSqlDW**értékre kell beállítani.             | Igen                                                          |
 | connectionString    | A **ConnectionString** tulajdonsághoz tartozó Azure szinapszis Analytics-példányhoz való kapcsolódáshoz szükséges információk megadása. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A jelszó/egyszerű szolgáltatásnév kulcsát a Azure Key Vaultban is elhelyezheti, és ha az SQL-hitelesítése lekéri a `password` konfigurációt a kapcsolatok karakterláncán kívülre. További részletekért tekintse meg a táblázat alatti JSON-példát, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen                                                          |
-| servicePrincipalId  | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját.                         | Igen, ha Azure AD-hitelesítést használ egy egyszerű szolgáltatással. |
-| servicePrincipalKey | Az alkalmazás kulcsának meghatározása. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen, ha Azure AD-hitelesítést használ egy egyszerű szolgáltatással. |
-| Bérlő              | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Igen, ha Azure AD-hitelesítést használ egy egyszerű szolgáltatással. |
-| Connectvia tulajdonsággal          | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhat Azure Integration Runtime vagy saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem                                                           |
+| servicePrincipalId  | Adja meg az alkalmazás ügyfél-azonosítót.                         | Igen, egy egyszerű szolgáltatást az Azure AD-hitelesítés használata esetén. |
+| servicePrincipalKey | Adja meg az alkalmazáskulcsot. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen, egy egyszerű szolgáltatást az Azure AD-hitelesítés használata esetén. |
+| tenant              | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Kérheti a viszi az egérmutatót az Azure portal jobb felső sarkában. | Igen, egy egyszerű szolgáltatást az Azure AD-hitelesítés használata esetén. |
+| connectVia          | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure integrációs modul vagy a saját üzemeltetésű integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nem                                                           |
 
-Különböző hitelesítési típusok esetén tekintse át az előfeltételek és JSON-minták következő, az előfeltételeket és a JSON-mintákat ismertető szakaszt:
+Különböző hitelesítési típus tekintse meg a következő szakaszok az Előfeltételek és a JSON-minták, illetve:
 
 - [SQL-hitelesítés](#sql-authentication)
 - Azure AD-alkalmazás-jogkivonat hitelesítése: [szolgáltatásnév](#service-principal-authentication)
@@ -78,7 +78,7 @@ Különböző hitelesítési típusok esetén tekintse át az előfeltételek é
 
 ### <a name="sql-authentication"></a>SQL-hitelesítés
 
-#### <a name="linked-service-example-that-uses-sql-authentication"></a>SQL-hitelesítést használó társított szolgáltatási példa
+#### <a name="linked-service-example-that-uses-sql-authentication"></a>SQL-hitelesítést használó társított szolgáltatás példa
 
 ```json
 {
@@ -124,17 +124,17 @@ Különböző hitelesítési típusok esetén tekintse át az előfeltételek é
 
 ### <a name="service-principal-authentication"></a>Egyszerű szolgáltatásnév hitelesítése
 
-A szolgáltatás egyszerű Azure AD-alapú alkalmazás-jogkivonat-hitelesítésének használatához kövesse az alábbi lépéseket:
+Szolgáltatás egyszerűszolgáltatás-alapú Azure AD alkalmazástoken-hitelesítésének használatához kövesse az alábbi lépéseket:
 
-1. **[Hozzon létre egy Azure Active Directory alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)** a Azure Portal. Jegyezze fel az alkalmazás nevét és a társított szolgáltatást meghatározó következő értékeket:
+1. **[Hozzon létre egy Azure Active Directory alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)** a Azure Portal. Jegyezze fel az alkalmazás nevét és a következő értékeket, amelyek meghatározzák a társított szolgáltatást:
 
     - Alkalmazásazonosító
-    - Alkalmazás kulcsa
+    - Alkalmazáskulcs
     - Bérlőazonosító
 
-2. Ha még nem tette meg, hozzon **[létre egy Azure Active Directory rendszergazdát](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** az Azure SQL Server-kiszolgáló Azure Portal. Az Azure AD-rendszergazda lehet egy Azure AD-felhasználó vagy egy Azure AD-csoport. Ha a csoportot felügyelt identitással adja meg rendszergazdai szerepkörrel, ugorja át a 3. és a 4. lépést. A rendszergazdának teljes hozzáférése lesz az adatbázishoz.
+2. Ha még nem tette meg, hozzon **[létre egy Azure Active Directory rendszergazdát](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** az Azure SQL Server-kiszolgáló Azure Portal. Az Azure AD-rendszergazda lehet egy Azure AD-felhasználó vagy az Azure AD-csoporthoz. Ha a csoportot felügyelt identitással adja meg rendszergazdai szerepkörrel, ugorja át a 3. és a 4. lépést. A rendszergazda az adatbázis teljes hozzáféréssel fog rendelkezni.
 
-3. **[Hozzon létre tárolt adatbázis-felhasználókat](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** az egyszerű szolgáltatásnév számára. Kapcsolódjon az adattárházhoz a vagy a rendszerből, amelyről olyan eszközökkel szeretné másolni az adatait, mint a SSMS, egy olyan Azure AD-identitással, amely legalább bármilyen felhasználói engedély megváltoztatásával rendelkezik. Futtassa a következő T-SQL-T:
+3. **[Hozzon létre tárolt adatbázis-felhasználókat](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** az egyszerű szolgáltatásnév számára. A data warehouse-bA a, vagy amely adatok másolása az Azure AD identitás, amelynek legalább az ssms-ben, más eszközök használatával szeretné bármely felhasználó ALTER engedéllyel. Futtassa a következő T-SQL:
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
@@ -149,7 +149,7 @@ A szolgáltatás egyszerű Azure AD-alapú alkalmazás-jogkivonat-hitelesítés�
 5. Az **Azure szinapszis Analytics társított szolgáltatásának konfigurálása** Azure Data Factoryban.
 
 
-#### <a name="linked-service-example-that-uses-service-principal-authentication"></a>A szolgáltatás egyszerű hitelesítését használó társított szolgáltatási példa
+#### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Társított szolgáltatás példa, amely használja az egyszerű szolgáltatásnév hitelesítése
 
 ```json
 {
@@ -175,13 +175,13 @@ A szolgáltatás egyszerű Azure AD-alapú alkalmazás-jogkivonat-hitelesítés�
 
 ### <a name="managed-identity"></a>Felügyelt identitások az Azure-erőforrások hitelesítéséhez
 
-Az adatok előállítója az adott gyárat képviselő [Azure-erőforrások felügyelt identitásával](data-factory-service-identity.md) társítható. Ezt a felügyelt identitást használhatja az Azure szinapszis Analytics-hitelesítéshez. A kijelölt gyár ezen identitás használatával elérheti és átmásolhatja az adattárházból származó és onnan származó adatok adatait.
+Az adatok előállítója az adott gyárat képviselő [Azure-erőforrások felügyelt identitásával](data-factory-service-identity.md) társítható. Ezt a felügyelt identitást használhatja az Azure szinapszis Analytics-hitelesítéshez. Férhet hozzá a kijelölt gyári, és a, vagy az adatok másolása az adatraktár-Ez az identitás használatával.
 
 A felügyelt identitásos hitelesítés használatához kövesse az alábbi lépéseket:
 
-1. Ha még nem tette meg, hozzon **[létre egy Azure Active Directory rendszergazdát](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** az Azure SQL Server-kiszolgáló Azure Portal. Az Azure AD-rendszergazda lehet egy Azure AD-felhasználó vagy egy Azure AD-csoport. Ha a csoportot felügyelt identitással adja meg rendszergazdai szerepkörrel, ugorja át a 3. és a 4. lépést. A rendszergazdának teljes hozzáférése lesz az adatbázishoz.
+1. Ha még nem tette meg, hozzon **[létre egy Azure Active Directory rendszergazdát](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** az Azure SQL Server-kiszolgáló Azure Portal. Az Azure AD-rendszergazda lehet egy Azure AD-felhasználó vagy az Azure AD-csoporthoz. Ha a csoportot felügyelt identitással adja meg rendszergazdai szerepkörrel, ugorja át a 3. és a 4. lépést. A rendszergazda az adatbázis teljes hozzáféréssel fog rendelkezni.
 
-2. **[Hozzon létre tárolt adatbázis-felhasználókat](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** a Data Factory felügyelt identitáshoz. Kapcsolódjon az adattárházhoz a vagy a rendszerből, amelyről olyan eszközökkel szeretné másolni az adatait, mint a SSMS, egy olyan Azure AD-identitással, amely legalább bármilyen felhasználói engedély megváltoztatásával rendelkezik. Futtassa az alábbi T-SQL-T. 
+2. **[Hozzon létre tárolt adatbázis-felhasználókat](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** a Data Factory felügyelt identitáshoz. A data warehouse-bA a, vagy amely adatok másolása az Azure AD identitás, amelynek legalább az ssms-ben, más eszközök használatával szeretné bármely felhasználó ALTER engedéllyel. Futtassa a következő T-SQL. 
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
@@ -219,14 +219,14 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az Azure szinapszis Analytics-adatkészlet a következő tulajdonságokat támogatja:
 
-| Tulajdonság  | Leírás                                                  | Szükséges                    |
+| Tulajdonság  | Leírás                                                  | Kötelező                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | Az adatkészlet **Type** tulajdonságát **AzureSqlDWTable**értékre kell állítani. | Igen                         |
-| séma | A séma neve. |Nem, forrás, igen, fogadó  |
-| table | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
-| tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a `schema` és a `table`. | Nem, forrás, igen, fogadó |
+| schema | A séma neve. |Nincs forrás, a fogadó Igen  |
+| table | A tábla vagy nézet neve. |Nincs forrás, a fogadó Igen  |
+| tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a `schema` és a `table`. | Nincs forrás, a fogadó Igen |
 
-#### <a name="dataset-properties-example"></a>Adatkészlet tulajdonságai – példa
+#### <a name="dataset-properties-example"></a>Adatkészlet tulajdonságai példa
 
 ```json
 {
@@ -255,12 +255,12 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok Azure szinapszis Analyticsből való másolásához állítsa a **Type (típus** ) tulajdonságot a másolási tevékenység forrása **SqlDWSource**értékre. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság                     | Leírás                                                  | Szükséges |
+| Tulajdonság                     | Leírás                                                  | Kötelező |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | A másolási tevékenység forrásának **Type** tulajdonságát **SqlDWSource**értékre kell állítani. | Igen      |
-| sqlReaderQuery               | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `select * from MyTable`. | Nem       |
-| sqlReaderStoredProcedureName | Annak a tárolt eljárásnak a neve, amely beolvassa az adatokat a forrás táblából. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. | Nem       |
-| storedProcedureParameters    | A tárolt eljárás paraméterei.<br/>Az engedélyezett értékek név vagy érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. | Nem       |
+| sqlReaderQuery               | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Példa: `select * from MyTable`. | Nem       |
+| sqlReaderStoredProcedureName | A tárolt eljárást, amely adatokat olvas be a forrás-tábla neve. Az utolsó SQL-utasítást a tárolt eljárás a SELECT utasítással kell lennie. | Nem       |
+| storedProcedureParameters    | A tárolt eljárás paraméterei.<br/>Megengedett értékek: neve vagy értéke párokat. Nevek és a kis-és a paraméterek meg kell egyeznie a neveket és a kis-és nagybetűhasználatot, a tárolt eljárás paraméterértékeinek. | Nem       |
 
 **Példa: SQL-lekérdezés használata**
 
@@ -363,7 +363,7 @@ Az adatok betöltésének leggyorsabb és leginkább méretezhető módja a [(va
 
 Az adatAzure SQL Data Warehouseba való másoláshoz állítsa a fogadó típust a másolási tevékenység **SqlDWSink**. A másolási tevékenység fogadója szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság          | Leírás                                                  | Szükséges                                      |
+| Tulajdonság          | Leírás                                                  | Kötelező                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | A másolási tevékenység fogadójának **Type** tulajdonságát **SqlDWSink**értékre kell állítani. | Igen                                           |
 | allowPolyBase     | Azt jelzi, hogy az adatok a SQL Data Warehouseba való betöltéséhez használható-e a albase. `allowCopyCommand` és `allowPolyBase` nem lehet egyszerre igaz. <br/><br/>A korlátozások és részletek a következő témakörben olvashatók: az adatok Azure SQL Data Warehouse szakaszba való [betöltésének használata](#use-polybase-to-load-data-into-azure-sql-data-warehouse) .<br/><br/>Az engedélyezett értékek: **true** és **false** (alapértelmezett). | Nem.<br/>Alkalmazhatja a Base használatakor.     |
@@ -371,12 +371,12 @@ Az adatAzure SQL Data Warehouseba való másoláshoz állítsa a fogadó típust
 | allowCopyCommand | Azt jelzi, hogy a [copy utasítást](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (előzetes verzió) kell-e használni az adatok SQL Data Warehouseba való betöltéséhez. `allowCopyCommand` és `allowPolyBase` nem lehet egyszerre igaz. <br/><br/>Megkötések és részletek a [másolási utasítás használata az adatok Azure SQL Data Warehouse szakaszba való betöltéséhez](#use-copy-statement) című témakörben talál.<br/><br/>Az engedélyezett értékek: **true** és **false** (alapértelmezett). | Nem.<br>A MÁSOLÁSkor alkalmazandó. |
 | copyCommandSettings | A tulajdonságok olyan csoportja, amely akkor adható meg, ha `allowCopyCommand` tulajdonság értéke TRUE (igaz). | Nem.<br/>A MÁSOLÁSkor alkalmazandó. |
 | writeBatchSize    | A **kötegekben**az SQL-táblába beillesztett sorok száma.<br/><br/>Az engedélyezett érték **egész szám** (sorok száma). Alapértelmezés szerint a Data Factory dinamikusan meghatározza a megfelelő batch-méretet a sor mérete alapján. | Nem.<br/>Tömeges Beszúrás használatakor alkalmazandó.     |
-| writeBatchTimeout | Várakozási idő a kötegelt beszúrási művelet befejezéséhez az időtúllépés előtt.<br/><br/>Az engedélyezett érték a **TimeSpan**. Például: "00:30:00" (30 perc). | Nem.<br/>Tömeges Beszúrás használatakor alkalmazandó.        |
-| preCopyScript     | Adja meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az egyes futtatások Azure SQL Data Warehousebe írna. Ezzel a tulajdonsággal törölheti az előre feltöltött adatkészleteket. | Nem                                            |
+| writeBatchTimeout | Várjon, amíg a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot.<br/><br/>Az engedélyezett érték a **TimeSpan**. Példa: "00: 30:00" (30 perc). | Nem.<br/>Tömeges Beszúrás használatakor alkalmazandó.        |
+| preCopyScript     | Adja meg a másolási tevékenység futtatása előtt az adatok Azure SQL Data Warehouse-bA írt minden egyes futtatásához egy SQL-lekérdezést. Ez a tulajdonság használatával az előre betöltött adatokat. | Nem                                            |
 | tableOption | Meghatározza, hogy a rendszer automatikusan létrehozza-e a fogadó táblát, ha az nem létezik a forrásoldali séma alapján. Az automatikus tábla létrehozása nem támogatott, ha a szakaszos másolás a másolási tevékenységben van konfigurálva. Az engedélyezett értékek a következők: `none` (alapértelmezett), `autoCreate`. |Nem |
 | disableMetricsCollection | A Data Factory olyan mérőszámokat gyűjt, mint például a SQL Data Warehouse DWU a másolási teljesítmény optimalizálása és a javaslatok tekintetében. Ha ezt a viselkedést érinti, a kikapcsolásához válassza a `true` lehetőséget. | Nem (az alapértelmezett érték `false`) |
 
-#### <a name="sql-data-warehouse-sink-example"></a>SQL Data Warehouse fogadó példa
+#### <a name="sql-data-warehouse-sink-example"></a>Az SQL Data Warehouse fogadó példa
 
 ```json
 "sink": {
@@ -392,39 +392,39 @@ Az adatAzure SQL Data Warehouseba való másoláshoz állítsa a fogadó típust
 }
 ```
 
-## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Adatok betöltése a Azure SQL Data Warehouseba a Base használatával
+## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Adatok betöltése az Azure SQL Data Warehouse a PolyBase használatával
 
-A [Base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) használatával nagy mennyiségű adat tölthető be az Azure szinapszis analyticsbe nagy átviteli sebességgel. Az adatátviteli sebesség nagy mennyiségű nyereségét az alapértelmezett BULKINSERT mechanizmus helyett a albase használatával fogja látni. A használati eseteket bemutató bemutatóért lásd: [1 TB betöltése az Azure szinapszis analyticsbe](v1/data-factory-load-sql-data-warehouse.md).
+A [Base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) használatával nagy mennyiségű adat tölthető be az Azure szinapszis analyticsbe nagy átviteli sebességgel. Átviteli sebesség nagyobb nyereség láthatja az alapértelmezett BULKINSERT mechanizmus helyett a PolyBase használatával. A használati eseteket bemutató bemutatóért lásd: [1 TB betöltése az Azure szinapszis analyticsbe](v1/data-factory-load-sql-data-warehouse.md).
 
 * Ha a forrásadatok az **Azure blobban vannak, Azure Data Lake Storage Gen1 vagy Azure Data Lake Storage Gen2**, és a **formátum a Base-kompatibilis**, a másolási tevékenység használatával közvetlenül is meghívhatja a albaseot, hogy Azure SQL Data Warehouse lekérje az adatok forrásból való lekérését. Részletekért lásd: a **[közvetlen másolás a Base használatával](#direct-copy-by-using-polybase)** .
-* Ha a forrás adattárat és a formátumot eredetileg nem a Base támogatja, használja a **[szakaszos másolást a kiindulási funkció használatával](#staged-copy-by-using-polybase)** . Az előkészített másolási funkció jobb átviteli sebességet is biztosít. A szolgáltatás automatikusan konvertálja az adatokat a Base-kompatibilis formátumba, az Azure Blob Storage-ban tárolja az adatok tárolását. Ezután meghívja a SQL Data Warehouseba az adatok betöltését.
+* Ha a forrás adattárat és a formátumot eredetileg nem a Base támogatja, használja a **[szakaszos másolást a kiindulási funkció használatával](#staged-copy-by-using-polybase)** . A szakaszos másolás funkciót is, nagyobb átviteli sebességet biztosít. A szolgáltatás automatikusan konvertálja az adatokat a Base-kompatibilis formátumba, az Azure Blob Storage-ban tárolja az adatok tárolását. Ezután meghívja a SQL Data Warehouseba az adatok betöltését.
 
 >[!TIP]
 >További információ a [Base használatának ajánlott eljárásairól](#best-practices-for-using-polybase).
 
 A másolási tevékenység `polyBaseSettings` a következő alapbeállításokat támogatja:
 
-| Tulajdonság          | Leírás                                                  | Szükséges                                      |
+| Tulajdonság          | Leírás                                                  | Kötelező                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| rejectValue       | A lekérdezés sikertelensége előtt visszautasítható sorok számát vagy százalékos arányát adja meg.<br/><br/>További információk a [create External Table (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)argumentumok szakaszban található "a Base 's elutasítás" beállításairól. <br/><br/>Az engedélyezett értékek: 0 (alapértelmezett), 1, 2 stb. | Nem                                            |
+| rejectValue       | Megadja a szám vagy százalékos aránya, amelyek is vissza kell utasítani, mielőtt a lekérdezés nem sikerült sorokat.<br/><br/>További információk a [create External Table (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)argumentumok szakaszban található "a Base 's elutasítás" beállításairól. <br/><br/>Megengedett értékek: 0 (alapértelmezett), 1, 2, stb. | Nem                                            |
 | rejectType        | Megadja, hogy a **rejectValue** kapcsoló literális érték vagy százalék-e.<br/><br/>Az engedélyezett értékek **érték** (alapértelmezett) és **százalék**. | Nem                                            |
-| rejectSampleValue | Meghatározza a lekérdezni kívánt sorok számát, mielőtt a rendszer újraszámítja az elutasított sorok százalékos arányát.<br/><br/>Az engedélyezett értékek: 1, 2 stb. | Igen, ha a **rejectType** **százaléka százalék**. |
-| useTypeDefault    | Meghatározza, hogy a rendszer hogyan kezelje a hiányzó értékeket a tagolt szövegfájlokban, ha a viszonyítási adatok beolvasása a szövegfájlból történik.<br/><br/>Erről a tulajdonságról a [külső fájlformátum létrehozása (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)argumentumai című szakaszban olvashat bővebben.<br/><br/>Az engedélyezett értékek: **true** és **false** (alapértelmezett).<br><br> | Nem                                            |
+| rejectSampleValue | Mielőtt PolyBase újraszámítja a visszautasított sorok aránya beolvasandó sorok számát határozza meg.<br/><br/>Megengedett értékek: 1, 2, stb. | Igen, ha a **rejectType** **százaléka százalék**. |
+| useTypeDefault    | Itt adhatja meg, hogyan szeretné kezelni a PolyBase kér le adatokat a szövegfájl elválasztójellel tagolt szöveges fájlok a hiányzó értékeket.<br/><br/>Erről a tulajdonságról a [külső fájlformátum létrehozása (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)argumentumai című szakaszban olvashat bővebben.<br/><br/>Az engedélyezett értékek: **true** és **false** (alapértelmezett).<br><br> | Nem                                            |
 
-### <a name="direct-copy-by-using-polybase"></a>Közvetlen másolás a Base használatával
+### <a name="direct-copy-by-using-polybase"></a>Közvetlen másolás a PolyBase használatával
 
 SQL Data Warehouse a közvetlenül támogatja az Azure blobot, Azure Data Lake Storage Gen1 és Azure Data Lake Storage Gen2. Ha a forrásadatok megfelelnek az ebben a szakaszban ismertetett feltételeknek, használja a következőt a forrás adattárból az Azure szinapszis Analyticsbe való közvetlen másoláshoz. Ellenkező esetben használjon [a szakaszos másolást a Base használatával](#staged-copy-by-using-polybase).
 
 > [!TIP]
 > Ha az adatok hatékony másolását SQL Data Warehousera szeretné elvégezni, további információt a [Azure Data Factory még könnyebbé és kényelmesebben is megtudhatja, hogy a Data Lake Store SQL Data Warehouse használatával hogyan lehet az adatokból információkat feltárni](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
 
-Ha a követelmények nem teljesülnek, Azure Data Factory ellenőrzi a beállításokat, és automatikusan visszakerül a BULKINSERT mechanizmusra az adatáthelyezéshez.
+A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beállításokat, és automatikusan visszavált az adatok áthelyezése a BULKINSERT mechanizmusa.
 
 1. A **forráshoz társított szolgáltatás** a következő típusokkal és hitelesítési módszerekkel rendelkezik:
 
     | Támogatott forrásoldali adattár típusa                             | Támogatott forrás-hitelesítési típus                        |
     | :----------------------------------------------------------- | :---------------------------------------------------------- |
-    | [Azure Blob](connector-azure-blob-storage.md)                | Fiók kulcsának hitelesítése, felügyelt identitások hitelesítése |
+    | [Azure-Blob](connector-azure-blob-storage.md)                | Fiók kulcsának hitelesítése, felügyelt identitások hitelesítése |
     | [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md) | Egyszerű szolgáltatásnév hitelesítése                            |
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Fiók kulcsának hitelesítése, felügyelt identitások hitelesítése |
 
@@ -482,9 +482,9 @@ Ha a követelmények nem teljesülnek, Azure Data Factory ellenőrzi a beállít
 ]
 ```
 
-### <a name="staged-copy-by-using-polybase"></a>Előkészített másolás a Base használatával
+### <a name="staged-copy-by-using-polybase"></a>A PolyBase használatával szakaszos másolás
 
-Ha a forrásadatok nem natív módon kompatibilisek a-alapú alkalmazásokkal, engedélyezze az adatok másolását egy átmeneti Azure Blob Storage-példányon keresztül (nem lehet Azure Premium Storage). Ebben az esetben a Azure Data Factory automatikusan átalakítja az adatokra, hogy megfeleljenek a Base adatformátumra vonatkozó követelményeinek. Ezután meghívja a SQL Data Warehouseba az adatok betöltését. Végezetül törli az ideiglenes adatait a blob Storage-ból. Az adatok átmeneti Azure Blob Storage-példányon keresztül történő másolásával kapcsolatos részletekért tekintse meg a [Lépcsőzetes másolás című szakaszt](copy-activity-performance.md#staged-copy) .
+Ha a forrásadatok nem natív módon kompatibilisek a-alapú alkalmazásokkal, engedélyezze az adatok másolását egy átmeneti Azure Blob Storage-példányon keresztül (nem lehet Azure Premium Storage). Ebben az esetben a Azure Data Factory automatikusan átalakítja az adatokra, hogy megfeleljenek a Base adatformátumra vonatkozó követelményeinek. Ezután meghívja a SQL Data Warehouseba az adatok betöltését. Végül, megtisztítja az ideiglenes adatokat a blob storage-ból. Az adatok átmeneti Azure Blob Storage-példányon keresztül történő másolásával kapcsolatos részletekért tekintse meg a [Lépcsőzetes másolás című szakaszt](copy-activity-performance.md#staged-copy) .
 
 A szolgáltatás használatához hozzon létre egy [azure blob Storage társított szolgáltatást](connector-azure-blob-storage.md#linked-service-properties) , amely az Azure Storage-fiókra hivatkozik az ideiglenes blob Storage-tárolóval. Ezután adja meg a másolási tevékenység `enableStaging` és `stagingSettings` tulajdonságait, ahogy az a következő kódban látható.
 
@@ -528,25 +528,25 @@ A szolgáltatás használatához hozzon létre egy [azure blob Storage társíto
 ]
 ```
 
-### <a name="best-practices-for-using-polybase"></a>Ajánlott eljárások a Base használatához
+### <a name="best-practices-for-using-polybase"></a>Ajánlott eljárások a polybase használatához
 
 A következő szakaszokban az ajánlott eljárások az [Azure szinapszis Analytics ajánlott eljárásaiban](../sql-data-warehouse/sql-data-warehouse-best-practices.md)is szerepelnek.
 
-#### <a name="required-database-permission"></a>Szükséges adatbázis-engedély
+#### <a name="required-database-permission"></a>Adatbázishoz szükséges engedélyt
 
 A (z) rendszerbe való betöltést követően a felhasználónak ["vezérlés" engedéllyel](https://msdn.microsoft.com/library/ms191291.aspx) kell rendelkeznie a céladatbázis SQL Data Warehouse. Ennek egyik módja, ha a felhasználót a **db_owner** szerepkör tagjaként adja hozzá. Ebből a cikkből megtudhatja, hogyan teheti meg ezt a [SQL Data Warehouse áttekintésében](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization).
 
-#### <a name="row-size-and-data-type-limits"></a>Sorok mérete és adattípusi korlátai
+#### <a name="row-size-and-data-type-limits"></a>Sor mérete és az adatok írja be a korlátok
 
-A kiinduló terhelések az 1 MB-nál kisebb sorokra korlátozódnak. Nem használható a VARCHR (MAX), a NVARCHAR (MAX) vagy a VARBINARY (MAX) való betöltéshez. További információ: [SQL Data Warehouse szolgáltatási kapacitás korlátai](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
+A PolyBase-betöltések pedig csak 1 MB-nál kisebb méretű sorokat. Nem használható a VARCHR (MAX), a NVARCHAR (MAX) vagy a VARBINARY (MAX) való betöltéshez. További információ: [SQL Data Warehouse szolgáltatási kapacitás korlátai](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
 
-Ha a forrásadatok 1 MB-nál nagyobb méretű sorokkal rendelkeznek, érdemes lehet függőlegesen felosztani a forrás táblákat több kis méretre. Győződjön meg arról, hogy az egyes sorok legnagyobb mérete nem haladja meg a korlátot. A kisebb táblák ezután a Base használatával tölthetők be, és összekapcsolhatók az Azure szinapszis Analyticsben.
+Ha a forrásadatok 1 MB-nál nagyobb sorral rendelkezik, érdemes a forrástáblákhoz függőlegesen felosztása több kis azokat. Győződjön meg arról, hogy az egyes sorok legnagyobb mérete nem haladja meg a határértéket. A kisebb táblák ezután a Base használatával tölthetők be, és összekapcsolhatók az Azure szinapszis Analyticsben.
 
 Azt is megteheti, hogy az ilyen széles oszlopokkal rendelkező adatok esetében nem hozhatók be az adatok az ADF használatával, ha kikapcsolja az "alapszintű" beállítást.
 
-#### <a name="sql-data-warehouse-resource-class"></a>SQL Data Warehouse Resource osztály
+#### <a name="sql-data-warehouse-resource-class"></a>Az SQL Data Warehouse erőforrásosztály
 
-A lehető legjobb teljesítmény elérése érdekében rendeljen hozzá egy nagyobb erőforrás-osztályt ahhoz a felhasználóhoz, amely az adatok a SQL Data Warehouseba való betöltését teszi lehetővé.
+A felhasználót, hogy adatokat tölt be az SQL Data Warehouse polybase nagyobb erőforrásosztályt hozzárendelni a legjobb teljesítmény elérése érdekében.
 
 #### <a name="polybase-troubleshooting"></a>Alapszintű hibaelhárítás
 
@@ -563,14 +563,14 @@ A megoldás az "**alapértelmezett típus használata**" beállítás kijelölé
 
 **`tableName` az Azure szinapszis Analyticsben**
 
-A következő táblázat példákat mutat be arra, hogyan határozhatja meg a **Táblanév** tulajdonságot a JSON-adatkészletben. A séma és a táblanév számos kombinációját mutatja.
+A következő táblázat példákat mutat be arra, hogyan határozhatja meg a **Táblanév** tulajdonságot a JSON-adatkészletben. Séma és a táblázat neve különböző kombinációit jeleníti meg.
 
-| ADATBÁZIS-séma | Tábla neve | **Táblanév** JSON-tulajdonság               |
+| Adatbázis-séma | Tábla neve | **Táblanév** JSON-tulajdonság               |
 | --------- | ---------- | ----------------------------------------- |
-| dbo       | Sajáttábla    | Sajáttábla vagy dbo. Sajáttábla vagy [dbo]. Sajáttábla |
-| dbo1      | Sajáttábla    | dbo1. Sajáttábla vagy [dbo1]. Sajáttábla          |
-| dbo       | Saját. tábla   | [Saját. table] vagy [dbo]. [Saját tábla]            |
-| dbo1      | Saját. tábla   | [dbo1]. [Saját tábla]                         |
+| dbo       | MyTable    | MyTable vagy dbo.MyTable vagy [dbo].[MyTable] |
+| dbo1      | MyTable    | dbo1.MyTable vagy [dbo1].[MyTable]          |
+| dbo       | My.Table   | [My.Table] vagy [dbo].[My.Table]            |
+| dbo1      | My.Table   | [dbo1].[My.Table]                         |
 
 Ha a következő hiba jelenik meg, a probléma lehet a **Táblanév** tulajdonsághoz megadott érték. A **Táblanév** JSON-tulajdonság értékeinek megadásához tekintse meg a fenti táblázatot a megfelelő módon.
 
@@ -580,13 +580,13 @@ Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account
 
 **Alapértelmezett értékeket tartalmazó oszlopok**
 
-Jelenleg a Data Factory a (z) alapszintű szolgáltatása csak a célként megadott tábla oszlopainak számát fogadja el. Ilyen például egy olyan tábla, amelyben négy oszlop található, ahol az egyiket alapértelmezett értékkel definiálják. A bemeneti adatoknak még négy oszlopra van szükségük. A három oszlopból álló bemeneti adatkészlet a következő üzenethez hasonló hibát eredményez:
+A PolyBase szolgáltatás, a Data Factory jelenleg csak az azonos számú oszlopot, mint a céltábla fogad el. Ilyen például, ahol az egyiket van definiálva az alapértelmezett érték négy oszlopot tartalmazó táblát. A bemeneti adatok továbbra is rendelkeznie kell négy oszlopot. Három oszlop a bemeneti adatkészlet az alábbihoz hasonló hibaüzenetet eredményez:
 
 ```
 All columns of the table must be specified in the INSERT BULK statement.
 ```
 
-A NULL érték az alapértelmezett érték egy speciális formája. Ha az oszlop üres, akkor előfordulhat, hogy az adott oszlop blobjában lévő bemeneti adatok üresek. De nem lehet hiányzik a bemeneti adatkészletből. Az Azure szinapszis Analyticsben hiányzó értékekhez tartozó unbase lapkák NULL értékűek.
+A NULL érték az alapértelmezett érték formája. Ha az oszlop nullázható, a bemeneti adatokat az a blob az adott oszlop lehet üres. De hiányzik a bemeneti adatkészlet a nem lehet. Az Azure szinapszis Analyticsben hiányzó értékekhez tartozó unbase lapkák NULL értékűek.
 
 ## <a name="use-copy-statement"></a>Adatok betöltése a MÁSOLÁSi utasítás használatával Azure SQL Data Warehouseba (előzetes verzió)
 
@@ -601,7 +601,7 @@ A COPY utasítás használata a következő konfigurációt támogatja:
 
     | Támogatott forrásoldali adattár típusa                             | Támogatott formátum           | Támogatott forrás-hitelesítési típus                         |
     | :----------------------------------------------------------- | -------------------------- | :----------------------------------------------------------- |
-    | [Azure Blob](connector-azure-blob-storage.md)                | [Tagolt szöveg](format-delimited-text.md)             | Fiók kulcsának hitelesítése, közös hozzáférésű aláírás-hitelesítés, egyszerű szolgáltatásnév hitelesítés, felügyelt identitások hitelesítése |
+    | [Azure-Blob](connector-azure-blob-storage.md)                | [Tagolt szöveg](format-delimited-text.md)             | Fiók kulcsának hitelesítése, közös hozzáférésű aláírás-hitelesítés, egyszerű szolgáltatásnév hitelesítés, felügyelt identitások hitelesítése |
     | &nbsp;                                                       | [Parquet](format-parquet.md)                    | Fiók kulcsának hitelesítése, közös hozzáférésű aláírások hitelesítése |
     | &nbsp;                                                       | [ORC](format-orc.md)                        | Fiók kulcsának hitelesítése, közös hozzáférésű aláírások hitelesítése |
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | [Tagolt szöveg](format-delimited-text.md)<br/>[Parquet](format-parquet.md)<br/>[ORC](format-orc.md) | Fiók kulcsának hitelesítése, egyszerű szolgáltatásnév hitelesítése, felügyelt identitások hitelesítése |
@@ -627,7 +627,7 @@ A COPY utasítás használata a következő konfigurációt támogatja:
 
 A másolási tevékenység `allowCopyCommand` alatt a következő MÁSOLÁSi utasítás beállításai támogatottak:
 
-| Tulajdonság          | Leírás                                                  | Szükséges                                      |
+| Tulajdonság          | Leírás                                                  | Kötelező                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | defaultValues | Meghatározza az SQL DW-beli egyes célértékek alapértelmezett értékeit.  A tulajdonság alapértelmezett értékei felülírják az adatraktárban beállított alapértelmezett korlátozást, és az Identity oszlop nem rendelkezhet alapértelmezett értékkel. | Nem |
 | additionalOptions | További beállítások, amelyek az SQL DW COPY utasításhoz közvetlenül a [copy utasítás](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)"with" záradékával lesznek átadva. A MÁSOLÁSi utasítás követelményeinek megfelelően adja meg az értéket, ha szükséges. | Nem |
@@ -688,7 +688,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [GetMetaData tevékenységet](control-flow-get-metadata-activity.md) 
 
-## <a name="data-type-mapping-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse adattípusának leképezése
+## <a name="data-type-mapping-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse adattípus-leképezés
 
 ## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
 
@@ -741,35 +741,35 @@ Amikor a vagy az Azure szinapszis Analytics szolgáltatásba másol adatait, a k
 >[!TIP]
 >Az SQL DW által támogatott adattípusok és a nem támogatott megoldások esetében tekintse meg a [táblázat adattípusait az Azure szinapszis Analytics-](../sql-data-warehouse/sql-data-warehouse-tables-data-types.md) cikkben.
 
-| Az Azure szinapszis Analytics adattípusa    | Data Factory időközi adattípus |
+| Az Azure szinapszis Analytics adattípusa    | Data Factory közbenső adattípus |
 | :------------------------------------ | :----------------------------- |
 | bigint                                | Int64                          |
-| binary                                | Bájt []                         |
+| binary                                | Byte[]                         |
 | bit                                   | Logikai                        |
-| char                                  | Karakterlánc, char []                 |
-| dátum                                  | Dátum és idő                       |
-| Dátum/idő                              | Dátum és idő                       |
-| datetime2                             | Dátum és idő                       |
-| DateTimeOffset                        | DateTimeOffset                 |
-| Decimális                               | Decimális                        |
-| FILESTREAM attribútum (varbinary (max)) | Bájt []                         |
-| Lebegőpontos szám                                 | Double                         |
-| image                                 | Bájt []                         |
+| char                                  | String, Char[]                 |
+| dátum                                  | DateTime                       |
+| Dátum és idő                              | DateTime                       |
+| datetime2                             | DateTime                       |
+| Datetimeoffset                        | DateTimeOffset                 |
+| tizedes tört                               | tizedes tört                        |
+| FILESTREAM attribute (varbinary(max)) | Byte[]                         |
+| Float                                 | Dupla                         |
+| image                                 | Byte[]                         |
 | int                                   | Int32                          |
-| pénzt                                 | Decimális                        |
-| NCHAR                                 | Karakterlánc, char []                 |
-| numerikus                               | Decimális                        |
-| nvarchar                              | Karakterlánc, char []                 |
-| real                                  | Önálló                         |
-| ROWVERSION                            | Bájt []                         |
-| idő adattípusúra                         | Dátum és idő                       |
+| money                                 | tizedes tört                        |
+| nchar                                 | String, Char[]                 |
+| numeric                               | tizedes tört                        |
+| nvarchar                              | String, Char[]                 |
+| real                                  | Single                         |
+| rowversion                            | Byte[]                         |
+| smalldatetime                         | DateTime                       |
 | smallint                              | Int16                          |
-| túlcsordulási                            | Decimális                        |
-| time                                  | időtartam                       |
+| smallmoney                            | tizedes tört                        |
+| time                                  | Időtartam                       |
 | tinyint                               | Bájt                           |
-| uniqueidentifier                      | GUID                           |
-| varbinary                             | Bájt []                         |
-| varchar                               | Karakterlánc, char []                 |
+| uniqueidentifier                      | Guid                           |
+| varbinary                             | Byte[]                         |
+| varchar                               | String, Char[]                 |
 
 ## <a name="next-steps"></a>Következő lépések
 A forrásként és fogadóként támogatott adattárak listáját a Azure Data Factory másolási tevékenysége című részben tekintheti meg a [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben.

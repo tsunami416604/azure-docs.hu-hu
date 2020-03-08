@@ -13,11 +13,11 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927940"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387436"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Adatok áthelyezése webtábla-forrásokból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -70,7 +70,7 @@ A következő szakaszokban részletesen ismertetjük a webtáblára jellemző Da
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a webes társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **web** |Igen |
 | URL-cím |A webes forrás URL-címe |Igen |
@@ -98,7 +98,7 @@ Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok telje
 
 A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **webtable** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type |Az adatkészlet típusa. a **webtable** értékre kell beállítani |Igen |
 | elérési út |A táblázatot tartalmazó erőforrás relatív URL-címe. |Nem. Ha nincs megadva az elérési út, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. |
@@ -298,7 +298,7 @@ A Webforrások által támogatott tulajdonságok listájáért lásd: Webforrás
    ![Hozzáférés a webes tartalomhoz párbeszédpanel](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
 5. Kattintson a fanézetben **a táblázat elemre** a tartalom megjelenítéséhez, majd kattintson a lap alján található **Szerkesztés** gombra.  
 
-   ![Kezelő párbeszédpanel](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
+   ![Navigátor párbeszédpanel](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
 6. A **Lekérdezés-szerkesztő** ablakban kattintson **speciális szerkesztő** gombra az eszköztáron.
 
     ![Speciális szerkesztő gomb](./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png)

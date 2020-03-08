@@ -3,12 +3,12 @@ title: Python fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használatával
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 1b94cb51bcb4e2634cdb04c389efbab44bb024bb
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
-ms.translationtype: MT
+ms.openlocfilehash: 6c625c050652ffac568ac45b06af7a853c75c8c2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206333"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358059"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -65,16 +65,16 @@ A Python functions projekt javasolt mappastruktúrát a következő példához h
 
 ```
  __app__
- | - MyFirstFunction
+ | - my_first_function
  | | - __init__.py
  | | - function.json
  | | - example.py
- | - MySecondFunction
+ | - my_second_function
  | | - __init__.py
  | | - function.json
- | - SharedCode
- | | - myFirstHelperFunction.py
- | | - mySecondHelperFunction.py
+ | - shared_code
+ | | - my_first_helper_function.py
+ | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
  tests
@@ -89,19 +89,47 @@ A fő projekt mappája (\_\_alkalmazás\_\_) a következő fájlokat tartalmazha
 
 Minden függvényhez tartozik a saját kód fájlja és a kötési konfigurációs fájl (function. JSON). 
 
-A megosztott kódokat \_\_alkalmazás\_\_egy külön mappában kell tárolni. A következő szintaxissal hivatkozhat a SharedCode mappában található modulokra:
-
-```python
-from __app__.SharedCode import myFirstHelperFunction
-```
-
-A függvények helyi hivatkozásához a relatív importálási szintaxist a következőképpen használhatja:
-
-```python
-from . import example
-```
-
 Amikor az Azure-beli Function alkalmazásba helyezi üzembe a projektet, a főprojekt teljes tartalmát ( *\_\_app\_\_* ) a csomagban kell szerepelnie, de nem maga a mappa. Javasoljuk, hogy a teszteket a Project mappától eltérő mappában tartsa karban, ebben a példában `tests`. Így a tesztelési kód üzembe helyezése az alkalmazással megtartható. További információ: [Unit Testing (egység tesztelése](#unit-testing)).
+
+## <a name="import-behavior"></a>Importálási viselkedés
+
+A függvény kódjában lévő modulokat explicit relatív és abszolút referenciák használatával is importálhatja. A fent látható mappa szerkezete alapján a következő importálások működnek a (z *)\_\_app\_\_my\_első\_function\\_\_init\_\_.*
+
+```python
+from . import example #(explicit relative)
+```
+
+```python
+from ..shared_code import my_first_helper_function #(explicit relative)
+```
+
+```python
+from __app__ import shared_code #(absolute)
+```
+
+```python
+import __app__.shared_code #(absolute)
+```
+
+A következő importálások *nem működnek* ugyanazon a fájlon belül:
+
+```python
+import example
+```
+
+```python
+from example import some_helper_code
+```
+
+```python
+import shared_code
+```
+
+A megosztott kódokat *\_\_alkalmazás\_\_* egy külön mappában kell tárolni. A *shared\_Code (megosztott kód* ) mappában található modulok a következő szintaxissal használhatók:
+
+```python
+from __app__.shared_code import my_first_helper_function
+```
 
 ## <a name="triggers-and-inputs"></a>Eseményindítók és bemenetek
 

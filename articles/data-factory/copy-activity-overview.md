@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: jingwang
 ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754460"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355783"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Másolási tevékenység Azure Data Factory
 
@@ -37,13 +37,13 @@ Integrációs modult kell társítani az egyes forrásokhoz és fogadó adattár
 
 Az adatok forrásról fogadóba való másolásához a másolási tevékenységet futtató szolgáltatás a következő lépéseket hajtja végre:
 
-1. Adatokat olvas be egy forrás adattárból.
+1. Beolvassa az adatokat a forrásadattárból.
 2. Szerializálási/deszerializálási, tömörítési/kibontási, oszlop-hozzárendelési és egyéb műveleteket hajt végre. Ezeket a műveleteket a bemeneti adatkészlet, a kimeneti adatkészlet és a másolási tevékenység konfigurációja alapján hajtja végre.
-3. Az adatot a fogadó/cél adattárba írja.
+3. A fogadó és a cél adattárolóba írja az adatokat.
 
 ![Másolási tevékenység áttekintése](media/copy-activity-overview/copy-activity-overview.png)
 
-## <a name="supported-data-stores-and-formats"></a>Támogatott adattárak és-formátumok
+## <a name="supported-data-stores-and-formats"></a>Támogatott adattárak és formátumok
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores.md)]
 
@@ -61,7 +61,7 @@ A másolási tevékenységgel fájlok másolását végezheti el két fájl alap
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-A másolási tevékenységet engedélyező szolgáltatás globálisan elérhető az [Azure Integration Runtime helyein](concepts-integration-runtime.md#integration-runtime-location)felsorolt régiókban és földrajzi területeken. A globálisan elérhető topológia biztosítja a hatékony adatáthelyezést, amely általában elkerüli a régiók közötti ugrásokat. A [termékek régiónként](https://azure.microsoft.com/regions/#services) való megtekintésével ellenőrizze, hogy rendelkezésre áll-e a Data Factory és az adatáthelyezés egy adott régióban.
+A másolási tevékenységet engedélyező szolgáltatás globálisan elérhető az [Azure Integration Runtime helyein](concepts-integration-runtime.md#integration-runtime-location)felsorolt régiókban és földrajzi területeken. A globálisan elérhető topológia általában Ezzel elkerülheti a régiók közötti útválasztók ugrásainak hatékony adatáthelyezés biztosítja. A [termékek régiónként](https://azure.microsoft.com/regions/#services) való megtekintésével ellenőrizze, hogy rendelkezésre áll-e a Data Factory és az adatáthelyezés egy adott régióban.
 
 ## <a name="configuration"></a>Konfiguráció
 
@@ -69,11 +69,11 @@ A másolási tevékenység Azure Data Factoryban való használatához a követk
 
 1. **Társított szolgáltatások létrehozása a forrás adattárhoz és a fogadó adattárhoz.** A konfigurációs információk és a támogatott tulajdonságok esetében tekintse meg az összekötő cikk "társított szolgáltatás tulajdonságai" szakaszát. A támogatott összekötők listáját a jelen cikk [támogatott adattárak és formátumok](#supported-data-stores-and-formats) című szakaszában találja.
 2. **Hozzon létre adatkészleteket a forráshoz és a fogadóhoz.** A konfigurációs információkat és a támogatott tulajdonságokat a forrás és a fogadó összekötő cikkek "adatkészlet tulajdonságai" szakaszában találja.
-3. **Hozzon létre egy folyamatot a másolási tevékenységgel.** A következő szakasz egy példát mutat be.
+3. **Hozzon létre egy folyamatot a másolási tevékenységgel.** Ez a szakasz mutatja be.
 
 ### <a name="syntax"></a>Szintaxis
 
-A másolási tevékenység következő sablonja a támogatott tulajdonságok teljes listáját tartalmazza. Adja meg a forgatókönyvnek megfelelőket.
+A másolási tevékenység következő sablonja a támogatott tulajdonságok teljes listáját tartalmazza. Adja meg, amelyekre a saját forgatókönyvéhez igazítva.
 
 ```json
 "activities":[
@@ -126,19 +126,19 @@ A másolási tevékenység következő sablonja a támogatott tulajdonságok tel
 | Tulajdonság | Leírás | Kötelező? |
 |:--- |:--- |:--- |
 | type | Másolási tevékenység esetén állítsa a következőre: `Copy` | Igen |
-| bemenetek | Itt adhatja meg a forrásadatok számára kimutatott adatkészletet. A másolási tevékenység csak egyetlen bemenetet támogat. | Igen |
-| kimenetek | Itt adhatja meg a fogadó adatra mutató adatkészletet. A másolási tevékenység csak egyetlen kimenetet támogat. | Igen |
+| inputs | Itt adhatja meg a forrásadatok számára kimutatott adatkészletet. A másolási tevékenység csak egyetlen bemenetet támogat. | Igen |
+| outputs | Itt adhatja meg a fogadó adatra mutató adatkészletet. A másolási tevékenység csak egyetlen kimenetet támogat. | Igen |
 | typeProperties | A másolási tevékenység konfigurálásához adja meg a tulajdonságokat. | Igen |
 | source | Adja meg a másolás forrásának típusát és a megfelelő tulajdonságokat az adatok beolvasásához.<br/>További információ: "másolási tevékenység tulajdonságai" szakasz, a [támogatott adattárakban és-formátumokban](#supported-data-stores-and-formats)felsorolt összekötők című cikke. | Igen |
-| mosogató | Adja meg a másolási fogadó típusát és a hozzá tartozó tulajdonságokat az adatíráshoz.<br/>További információ: "másolási tevékenység tulajdonságai" szakasz, a [támogatott adattárakban és-formátumokban](#supported-data-stores-and-formats)felsorolt összekötők című cikke. | Igen |
-| fordító | Explicit oszlop-hozzárendelések meghatározása a forrásból a fogadóba. Ez a tulajdonság akkor érvényes, ha az alapértelmezett másolási viselkedés nem felel meg az igényeinek.<br/>További információ: [séma-hozzárendelés a másolási tevékenységben](copy-activity-schema-and-type-mapping.md). | Nem |
+| sink | Adja meg a másolási fogadó típusát és a hozzá tartozó tulajdonságokat az adatíráshoz.<br/>További információ: "másolási tevékenység tulajdonságai" szakasz, a [támogatott adattárakban és-formátumokban](#supported-data-stores-and-formats)felsorolt összekötők című cikke. | Igen |
+| translator | Adja meg a forrás és fogadó-, a kifejezett oszlopleképezés. Ez a tulajdonság akkor érvényes, ha az alapértelmezett másolási viselkedés nem felel meg az igényeinek.<br/>További információ: [séma-hozzárendelés a másolási tevékenységben](copy-activity-schema-and-type-mapping.md). | Nem |
 | dataIntegrationUnits | Adja meg azt a mértéket, amely az [Azure Integration Runtime](concepts-integration-runtime.md) által az adatmásoláshoz használt teljesítmény mennyiségét jelöli. Ezeket az egységeket korábban Felhőbeli adatáthelyezési egységeknek (DMU) nevezik. <br/>További információ: [adatintegrációs egységek](copy-activity-performance.md#data-integration-units). | Nem |
 | parallelCopies | Itt adhatja meg azt a párhuzamosságot, amelyet a másolási tevékenység az adatok forrásból való beolvasásakor és az adatok fogadóba való írásához használni kíván.<br/>További információ: [párhuzamos másolás](copy-activity-performance.md#parallel-copy). | Nem |
 | Preserve | Itt adhatja meg, hogy szeretné-e megőrizni a metaadatokat vagy az ACL-eket az adatok másolása <br/>További információ: a [metaadatok megőrzése](copy-activity-preserve-metadata.md). |Nem |
 | enableStaging<br/>stagingSettings | Itt adhatja meg, hogy a blob Storage szolgáltatásban lévő ideiglenes adatok közvetlenül a forrásról a fogadóba másolva legyenek-e.<br/>További információ a hasznos forgatókönyvekről és a konfigurációs adatokról: [szakaszos másolás](copy-activity-performance.md#staged-copy). | Nem |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Válassza ki, hogyan kezelje a nem kompatibilis sorokat a forrásról a fogadóba másolt adatok másolása során.<br/>További információ: [hibatűrés](copy-activity-fault-tolerance.md). | Nem |
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>Figyelés
 
 A másolási tevékenység futtatását a Azure Data Factory szerző & a felhasználói felület **figyelése** vagy programozott módon követheti.
 
@@ -163,31 +163,31 @@ A **műveletek** oszlopban a **részletek** gombra kattintva megtekintheti a má
 **Példa: másolás Azure SQL Databaseról Azure SQL Data Warehousera előkészített másolással**
 ![figyelési tevékenység futtatási részletei](./media/copy-activity-overview/monitor-activity-run-details-sql-dw.png)
 
-### <a name="monitor-programmatically"></a>Programozott figyelés
+### <a name="monitor-programmatically"></a>Programozott figyelése
 
 A másolási tevékenység végrehajtásának részletei és a teljesítmény jellemzői a **másolási tevékenység futtatási eredmények** > **kimenet** szakaszában is visszakerülnek. A következő lista az esetleg visszaadott tulajdonságok teljes listáját tartalmazza. Csak a másolási forgatókönyvre vonatkozó tulajdonságokat fogja látni. További információ a tevékenységek futtatásának figyeléséről: [a folyamat futásának figyelése](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run).
 
 | Tulajdonság neve  | Leírás | Unit (Egység) |
 |:--- |:--- |:--- |
-| DataRead | A forrásból beolvasott adatok mennyisége. | Int64 érték bájtban |
-| DataWritten | A fogadóba írt adatmennyiség. | Int64 érték bájtban |
-| filesRead | A file Storage-ból másolás során másolt fájlok száma. | Int64 érték (egység nélkül) |
-| filesWritten | A file Storage-ba másolás során másolt fájlok száma. | Int64 érték (egység nélkül) |
-| sourcePeakConnections | A másolási tevékenység futtatása során a forrás adattárban létesített egyidejű kapcsolatok maximális száma. | Int64 érték (egység nélkül) |
-| sinkPeakConnections | A fogadó adattárhoz a másolási tevékenység futtatása során létesített egyidejű kapcsolatok maximális száma. | Int64 érték (egység nélkül) |
-| rowsRead | A forrásból beolvasott sorok száma (bináris másolás esetén nem alkalmazható). | Int64 érték (egység nélkül) |
-| rowsCopied | A fogadóba másolt sorok száma (bináris másolás esetén nem alkalmazható). | Int64 érték (egység nélkül) |
-| rowsSkipped | A kihagyott inkompatibilis sorok száma. A nem kompatibilis sorok kihagyását a `enableSkipIncompatibleRow` True értékre állításával engedélyezheti. | Int64 érték (egység nélkül) |
+| dataRead | A forrásból beolvasott adatok mennyisége. | Int64 érték bájtban |
+| dataWritten | A fogadóba írt adatmennyiség. | Int64 érték bájtban |
+| filesRead | A file Storage-ból másolás során másolt fájlok száma. | Int64 típusú érték (egység) |
+| filesWritten | A file Storage-ba másolás során másolt fájlok száma. | Int64 típusú érték (egység) |
+| sourcePeakConnections | A másolási tevékenység futtatása során a forrás adattárban létesített egyidejű kapcsolatok maximális száma. | Int64 típusú érték (egység) |
+| sinkPeakConnections | A fogadó adattárhoz a másolási tevékenység futtatása során létesített egyidejű kapcsolatok maximális száma. | Int64 típusú érték (egység) |
+| rowsRead | A forrásból beolvasott sorok száma (bináris másolás esetén nem alkalmazható). | Int64 típusú érték (egység) |
+| rowsCopied | A fogadóba másolt sorok száma (bináris másolás esetén nem alkalmazható). | Int64 típusú érték (egység) |
+| rowsSkipped | A kihagyott inkompatibilis sorok száma. A nem kompatibilis sorok kihagyását a `enableSkipIncompatibleRow` True értékre állításával engedélyezheti. | Int64 típusú érték (egység) |
 | copyDuration | A másolás futtatásának időtartama. | Int32 érték másodpercben |
-| korlátozások | Adatátviteli sebesség. | Lebegőpontos szám (Kbit/s) |
+| Átviteli sebesség | Adatátviteli sebesség. | Lebegőpontos szám (Kbit/s) |
 | sourcePeakConnections | A másolási tevékenység futtatása során a forrás adattárban létesített egyidejű kapcsolatok maximális száma. | Int32 érték (nincs egység) |
 | sinkPeakConnections| A fogadó adattárhoz a másolási tevékenység futtatása során létesített egyidejű kapcsolatok maximális száma.| Int32 érték (nincs egység) |
 | sqlDwPolyBase | Azt jelzi, hogy a rendszer az adatok másolásakor használja-e a SQL Data Warehouse. | Logikai |
 | redshiftUnload | Azt jelzi, hogy a rendszer az ELTÁVOLÍTÁSt használja-e az adatok Vöröseltolódásból történő másolásakor. | Logikai |
 | hdfsDistcp | Azt határozza meg, hogy a rendszer DistCp használ-e az adatok HDFS-ből való másolásakor. | Logikai |
 | effectiveIntegrationRuntime | A tevékenység futtatásához használt integrációs modul (IR) vagy futtatókörnyezet a következő formátumban: `<IR name> (<region if it's Azure IR>)`. | Szöveg (karakterlánc) |
-| usedDataIntegrationUnits | A tényleges adatintegrációs egységek a másolás során. | Int32 érték |
-| usedParallelCopies | A tényleges parallelCopies a másolás során. | Int32 érték |
+| usedDataIntegrationUnits | A hatékony integrációs adategységek másolása során. | Int32 érték |
+| usedParallelCopies | A hatékony parallelCopies másolása során. | Int32 érték |
 | redirectRowPath | A `redirectIncompatibleRowSettings` tulajdonságban konfigurált blob Storage-beli kihagyott inkompatibilis sorok naplójának elérési útja. Tekintse meg a jelen cikk későbbi [hibatűrését](#fault-tolerance) . | Szöveg (karakterlánc) |
 | executionDetails | További részletek a másolási tevékenység lépésein, valamint a megfelelő lépéseken, időtartamokon, konfigurációkon stb. Nem javasoljuk, hogy elemezze ezt a szakaszt, mert megváltozhat.<br/><br/>A Data Factory a `detailedDurations`alatt a különböző fázisokban töltött részletes időtartamokat (másodpercben) is jelenti. A lépések időtartama kizárólagos. Csak a megadott másolási tevékenység futtatására érvényes időtartamok jelennek meg:<br/>**Üzenetsor** -kezelő időtartama (`queuingDuration`): a másolási tevékenységnek az integrációs modulban ténylegesen elinduló ideje. Ha saját üzemeltetésű integrációs modult használ, és ez az érték nagy, ellenőrizze az IR-kapacitást és a használatot, és a számítási feladatok alapján fel-vagy leskálázást. <br/>**Másolás előtti parancsfájl időtartama** (`preCopyScriptDuration`): az az időpont, amikor a másolási tevékenység ELINDUL az IR-ben, és ha a másolási tevékenység befejezi a fogadó adattárban lévő, másolás előtti parancsfájl futtatását. A másolás előtti parancsfájl konfigurálására vonatkozik. <br/>Az **első bájtig** eltelt idő (`timeToFirstByte`): az előző lépés vége és az az idő, amikor az IR megkapja az első bájtot a forrás adattárból. A nem fájl alapú forrásokra vonatkozik. Ha ez az érték nagy, ellenőrizze és optimalizálja a lekérdezést vagy a kiszolgálót.<br/>**Átvitel időtartama** (`transferDuration`): az előző lépés vége és az az idő, amikor az IR átviszi a forrásról a fogadóba a teljes adatmennyiséget. | Tömb |
 | perfRecommendation | Teljesítmény-finomhangolási tippek másolása. A részletekért lásd a [teljesítmény és hangolás](#performance-and-tuning) című témakört. | Tömb |
@@ -237,7 +237,7 @@ A másolási tevékenység végrehajtásának részletei és a teljesítmény je
 }
 ```
 
-## <a name="incremental-copy"></a>Növekményes másolat
+## <a name="incremental-copy"></a>A növekményes másolási
 
 A Data Factory lehetővé teszi a különbözeti adatok növekményes másolását egy forrás adattárból egy fogadó adattárba. További részletek: [oktatóanyag: adatok növekményes másolása](tutorial-incremental-copy-overview.md).
 
@@ -276,7 +276,7 @@ Más forgatókönyvek esetén, mint a bináris fájlmásolás, a másolási tev�
 
 Amikor adatokat másol a forrásról a fogadóba, olyan helyzetekben, mint a Lake Migration, úgy is dönthet, hogy a metaadatokat és az ACL-eket is megőrizte az adatok másolási tevékenységgel történő megőrzése mellett. A részletekért lásd a [metaadatok megőrzése](copy-activity-preserve-metadata.md) című témakört.
 
-## <a name="schema-and-data-type-mapping"></a>Séma-és adattípus-hozzárendelés
+## <a name="schema-and-data-type-mapping"></a>Séma- és adattípus-leképezés
 
 Tekintse meg a [séma-és adattípusok leképezése](copy-activity-schema-and-type-mapping.md) című témakört, amely arról nyújt tájékoztatást, hogy a másolási tevékenység hogyan képezi le a forrás adatait
 
@@ -285,7 +285,7 @@ Tekintse meg a [séma-és adattípusok leképezése](copy-activity-schema-and-ty
 Alapértelmezés szerint a másolási tevékenység leállítja az adatok másolását, és hibát ad vissza, ha a forrásoldali adatsorok nem kompatibilisek a fogadó adatsoraival. A másolás sikeres végrehajtásához beállíthatja a másolási tevékenységet úgy, hogy kihagyja és naplózza a nem kompatibilis sorokat, és csak a kompatibilis adatfájlokat másolja. Részletekért lásd a [másolási tevékenység hibatűrését](copy-activity-fault-tolerance.md) ismertető témakört.
 
 ## <a name="next-steps"></a>Következő lépések
-Tekintse meg az alábbi rövid útmutatókat, oktatóanyagokat és mintákat:
+Tekintse meg a következő útmutatóink, oktatóanyagaink és példáink segítségével:
 
 - [Adatok másolása az egyik helyről egy másik helyre ugyanazon Azure Blob Storage-fiókban](quickstart-create-data-factory-dot-net.md)
 - [Adatok másolása az Azure Blob Storage-ból a Azure SQL Databaseba](tutorial-copy-data-dot-net.md)
