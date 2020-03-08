@@ -7,12 +7,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
-ms.openlocfilehash: 62b6fe76fcd55df7f1fe65bd3d8d7d2aa7cc0841
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: e2c4530dbd5fa8b65e149e7467ce0f27adc15782
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446761"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925504"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -20,8 +20,7 @@ Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=windows)
-> * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=windows)
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=windows)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -302,6 +301,6 @@ Az első lépések előtt ügyeljen a következőre:
 
 9. Lépjen vissza a böngészőbe, és lépjen ki a beszélgetésből a jobb felső sarokban található Exit (Kilépés) gomb használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

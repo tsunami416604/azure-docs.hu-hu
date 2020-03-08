@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: af213ba8dc6621d7d1141887edbf4ddbb645dcde
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 9e24179c1c47ab3cfb78449f1784cec26197ef60
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445913"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78926102"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -23,8 +23,7 @@ Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
-> * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=dotnetcore)
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -122,6 +121,6 @@ RECOGNIZED 'en-US': What's the weather in Seattle?
 TRANSLATED into 'de': Wie ist das Wetter in Seattle?
 ````
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

@@ -6,19 +6,18 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: af7c7d992db9afa0fb7affa0053bd89257a5a30e
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
-ms.translationtype: HT
+ms.openlocfilehash: 724f52317ce2afda023ae0514a330da0032e8710
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668777"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925818"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az első lépések előtt:
 
-* Ha ez az első Python-projekt, az útmutató segítségével <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">hozzon létre egy üres minta <span class="docon docon-navigate-external x-hidden-focus"> </span>projektet </a>.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Telepítse a fejlesztői <span class="docon docon-navigate-external x-hidden-focus"> </span>környezethez készült Speech SDK </a>-t.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Telepítse a fejlesztői környezethez készült SPEECH SDK-t, és hozzon<span class="docon docon-navigate-external x-hidden-focus"></span>létre egy üres minta projektet</a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>LUIS-alkalmazás létrehozása a szándék-felismeréshez
 
@@ -105,6 +104,6 @@ python quickstart.py
 
 A mikrofonból érkező következő 15 másodpercnyi beszédet a rendszer felismeri, és a konzolablakban naplózza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

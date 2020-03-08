@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/30/2020
 ms.author: dapine
-ms.openlocfilehash: 4e8d100000e7191c77c09a1b2e4c28088e247d8f
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: b326f7ebcec3c371839d9bccb95e8bedf9768f1c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384020"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924702"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -23,8 +23,7 @@ Az első lépések előtt ügyeljen a következőre:
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [LUIS-alkalmazás létrehozása és végponti kulcs beszerzése](../../../../quickstarts/create-luis.md)
-> * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
-> * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?pivots=programming-language-python)
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 

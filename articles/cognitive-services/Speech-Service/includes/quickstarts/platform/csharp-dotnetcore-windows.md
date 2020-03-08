@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: 16cc31a1d66414a04433d0dd15086830c18c5090
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2387e0879ac73ae79858b110eaa88dcb8fe0eb78
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467374"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925384"
 ---
-Ez az útmutató bemutatja, hogyan telepítheti a C# .net Core-hoz készült [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t.
+Ez az útmutató bemutatja, hogyan telepítheti a C# .net Core-hoz készült [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t. Ha csak azt szeretné, hogy a csomag neve a saját számára induljon el, futtassa `Install-Package Microsoft.CognitiveServices.Speech` a NuGet-konzolon.
 
 > [!NOTE]
 > A .NET Core egy nyílt forráskódú, platformfüggetlen .NET-platform, amely implementálja a [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) specifikációt.

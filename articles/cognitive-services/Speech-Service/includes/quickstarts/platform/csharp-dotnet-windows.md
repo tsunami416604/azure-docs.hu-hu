@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: db00398efa638ac945bc188ad0c44f904059e689
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a09b969ee3e11aeb04f338cf035b21b5da9bd952
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468802"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925655"
 ---
-Ez az útmutató bemutatja, hogyan telepítheti a .NET-keretrendszerhez készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t (Windows).
+Ez az útmutató bemutatja, hogyan telepítheti a .NET-keretrendszerhez készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t (Windows). Ha csak azt szeretné, hogy a csomag neve a saját számára induljon el, futtassa `Install-Package Microsoft.CognitiveServices.Speech` a NuGet-konzolon.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -55,7 +55,7 @@ Telepítenie kell a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget) ,
 
 1. A Megoldáskezelő kattintson a jobb gombbal a **HelloWorld** projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget a NuGet csomagkezelő megjelenítéséhez.
 
-   ![NuGet-csomagkezelő](~/articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
+   ![NuGet csomagkezelő](~/articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
 
 1. A jobb felső sarokban keresse meg a **csomag forrása** legördülő listát, és ellenőrizze, hogy a **`nuget.org`** ki van-e választva.
 
@@ -71,7 +71,21 @@ Telepítenie kell a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget) ,
 
    A csomag telepítése után a rendszer megerősítő üzenetet jelenít meg a **Package Manager konzol** ablakban.
 
-Ezután az alábbi [lépésekkel](#next-steps) léphet tovább.
+### <a name="choose-target-architecture"></a>Cél architektúra kiválasztása
+
+A konzol alkalmazás létrehozásához és futtatásához hozzon létre egy, a számítógép architektúrájának megfelelő platform-konfigurációt.
+
+1. A menüsávban válassza a **Build** > **Configuration Manager**lehetőséget. Megjelenik a **Configuration Manager** párbeszédpanel.
+
+   ![Configuration Manager párbeszédpanel](~/articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
+
+1. Az **aktív megoldási platform** legördülő listában válassza az **új**lehetőséget. Megjelenik az **új megoldás-platform** párbeszédpanel.
+
+1. A **típus vagy a válassza ki az új platform** legördülő listát:
+   - Ha 64 bites Windows rendszert futtat, válassza az **x64**elemet.
+   - Ha 32 bites Windows rendszert futtat, válassza az **x86**lehetőséget.
+
+1. Válassza **az OK** , majd a **Bezárás**lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

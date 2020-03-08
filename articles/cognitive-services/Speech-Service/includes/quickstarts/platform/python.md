@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 9c398c755db78583b93cbba5bdef6c3cf01eb9e5
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 458a6940ce214ef1931a2cc9ee95f2cb5ca16779
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383992"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924754"
 ---
-Ez az útmutató bemutatja, hogyan telepítheti a Pythonhoz készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t.
+Ez az útmutató bemutatja, hogyan telepítheti a Pythonhoz készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t. Ha csak azt szeretné, hogy a csomag neve a saját számára induljon el, futtassa `pip install azure-cognitiveservices-speech`.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -59,6 +59,26 @@ Ez az útmutató bemutatja, hogyan telepítheti a Pythonhoz készült [SPEECH SD
 - Windows rendszeren a platformhoz a [Visual Studio C++ 2019-hez készült Microsoft vizualizációs terjeszthető](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) csomag szükséges. Vegye figyelembe, hogy az első telepítéskor szükség lehet a Windows újraindítására az útmutató folytatása előtt.
 - Végül pedig [a Python 3,5 és a 3,8](https://www.python.org/downloads/)között kell lennie. A telepítés ellenőrzéséhez nyisson meg egy parancssort, és írja be a `python --version` parancsot, és vizsgálja meg az eredményt. Ha megfelelően van telepítve, a "Python 3.5.1" vagy hasonló választ kap.
 
+## <a name="install-the-speech-sdk-from-pypi"></a>A Speech SDK telepítése a PyPI-ből
+
+Ha saját környezetét használja, vagy eszközöket hoz létre, futtassa a következő parancsot a Speech SDK telepítéséhez a [PyPI](https://pypi.org/)-ből. A Visual Studio Code-felhasználók esetében ugorjon a következő alszakaszra az irányított telepítéshez.
+
+```sh
+pip install azure-cognitiveservices-speech
+```
+
+Ha macOS rendszeren fut, előfordulhat, hogy a következő parancsot kell futtatnia a `pip` parancs működéséhez:
+
+```sh
+python3 -m pip install --upgrade pip
+```
+
+Miután sikeresen felhasználta `pip` a `azure-cognitiveservices-speech`telepítésére, a Speech SDK használatával importálja a névteret a Python-projektbe.
+
+```py
+import azure.cognitiveservices.speech as speechsdk
+```
+
 ## <a name="install-the-speech-sdk-using-visual-studio-code"></a>A Speech SDK telepítése a Visual Studio Code használatával
 
 1. Töltse le és telepítse a [Python](https://www.python.org/downloads/) legújabb támogatott verzióját a platformhoz, 3,5 – 3,8.
@@ -72,29 +92,7 @@ Ez az útmutató bemutatja, hogyan telepítheti a Pythonhoz készült [SPEECH SD
    1. Nyisson meg egy terminált (a legördülő menükből, a **terminal** > **új terminálból**)
    1. A megnyíló terminálon írja be a parancsot `python -m pip install azure-cognitiveservices-speech`
 
-Ekkor készen áll a Pythonban a Speech SDK-ra való kódolásra, és a [következő lépésekre](#next-steps) léphet tovább. Ha még nem ismeri a Visual Studio Code-ot, tekintse meg a részletes [Visual Studio Code-dokumentációt](https://code.visualstudio.com/docs). További információ a Visual Studio Code-ról és a Pythonról: [Visual Studio Code Python oktatóanyag](https://code.visualstudio.com/docs/python/python-tutorial).
-
-## <a name="install-the-speech-sdk-using-the-command-line"></a>A Speech SDK telepítése a parancssor használatával
-
-Ha nem használja a Visual Studio Code-ot, a következő parancs telepíti a Python-csomagot a [PyPI](https://pypi.org/) -ből a Speech SDK-hoz. A Visual Studio Code-felhasználók esetében ugorjon a következő alszakaszra.
-
-```sh
-pip install azure-cognitiveservices-speech
-```
-
-Ha macOS rendszeren fut, előfordulhat, hogy a következő parancsot kell futtatnia a `pip` parancs működéséhez:
-
-```sh
-python3 -m pip install --upgrade pip
-```
-
-Miután sikeresen felhasználta `pip` a `azure-cognitiveservices-speech`telepítésére, a Speech SDK használatával importálja a névteret a Python-projektbe. Például:
-
-```py
-import azure.cognitiveservices.speech as speechsdk
-```
-
-Ez a [következő lépésekben](#next-steps) felsorolt példákban részletesebben látható.
+Ha még nem ismeri a Visual Studio Code-ot, tekintse meg a részletes [Visual Studio Code-dokumentációt](https://code.visualstudio.com/docs). További információ a Visual Studio Code-ról és a Pythonról: [Visual Studio Code Python oktatóanyag](https://code.visualstudio.com/docs/python/python-tutorial).
 
 ## <a name="support-and-updates"></a>Támogatás és frissítések
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 9b69feef7c6587f7356648e6a6828277ba500aea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: c166f4cace6a8cc25b36a84f4614033801e69a51
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365373"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925669"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Az Azure Event Hubs az Azure Blob Storage vagy az Azure Data Lake Storage keresztül események rögzítése
 Az Azure Event Hubs lehetővé teszi, hogy automatikusan rögzítsen egy [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) -ban található Event Hubs adatfolyam-adatait, vagy [Azure Data Lake Storage 1. vagy 2. generációs](https://azure.microsoft.com/services/data-lake-store/) fiókot, és a rugalmasságot az idő vagy a méret megadásával. A rögzítés beállítása gyorsan elvégezhető, ezért a futtatásához nincs szükség felügyeleti költségekre, és a rendszer automatikusan méretezi Event Hubs [átviteli egységekkel](event-hubs-scalability.md#throughput-units). Az Event Hubs Capture legegyszerűbb módja a streamelési adatok betöltése az Azure-ba, és lehetővé teszi, hogy fókusz adatfeldolgozási helyett az adatváltozások rögzítése.
@@ -94,10 +94,11 @@ Teljes körű minta érhető el a streaming on Scale repositoryban:
 
 ### <a name="use-apache-spark"></a>Apache Spark használata
 
-A [Apache Spark][Apache Spark] egy "egységes analitikai motor a nagyméretű adatfeldolgozáshoz". Más nyelveket is támogat, beleértve az SQL-t, és könnyen elérheti az Azure Blob Storage-t. Az Azure-ban két lehetőség van Apache Spark futtatására, és mindkettő egyszerű hozzáférést biztosít az Azure Blob Storage-hoz:
+A [Apache Spark][Apache Spark] egy "egységes analitikai motor a nagyméretű adatfeldolgozáshoz". Más nyelveket is támogat, beleértve az SQL-t, és könnyen elérheti az Azure Blob Storage-t. Az Azure-ban néhány lehetőség van Apache Spark futtatására, és az Azure Blob Storage-hoz való könnyű hozzáférést biztosít:
 
 - [HDInsight: az Azure Storage-ban tárolt fájlok címei][HDInsight: Address files in Azure storage]
 - [Azure Databricks: Azure Blob Storage][Azure Databricks: Azure Blob Storage]
+- [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/spark-job) 
 
 ### <a name="use-avro-tools"></a>Avro-eszközök használata
 
