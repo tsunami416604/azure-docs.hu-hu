@@ -9,17 +9,17 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 7f3f5177e084693c45bed1088a4e1d091be100ed
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960684"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396379"
 ---
-# <a name="500xxx-internal-errors"></a>Belső hibák 500xxx
+# <a name="500xxx-internal-errors"></a>500xxx Belső hibák
 
 Ez a cikk a **belső hibák 500xxx**okait és megoldásait ismerteti.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Tünetek
 
 Az IoT Hubre irányuló kérelme egy, a 500-as és/vagy valamilyen "kiszolgálóhiba" típusú hibával meghiúsul. Néhány lehetőség:
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 71cf1a2c4a0a2ff07d2aa0b48a8ee3bb3da8a540
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c76b14e4f08ec930159498da4a35fdad0341929e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919710"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372890"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
 
@@ -27,9 +27,9 @@ A virtuális gépek (VM-EK) Update Management a következő módszerekkel enged�
 > [!NOTE]
 > A Update Management megoldáshoz egy Log Analytics-munkaterületet kell összekapcsolnia az Automation-fiókkal. A támogatott régiók végleges listáját az [Azure Workspace-hozzárendelések](./how-to/region-mappings.md)című témakörben tekintheti meg. A régió-hozzárendelések nem befolyásolják a virtuális gépek az Automation-fióktól eltérő régióban való felügyeletének képességét.
 
-Elérhető egy Azure [Resource Manager-sablon](automation-update-management-deploy-template.md) , amely lehetővé teszi az Update Management-megoldás üzembe helyezését egy új vagy meglévő Automation-fiókban, és log Analytics munkaterületet az előfizetésében.
-
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+Elérhető egy Azure [Resource Manager-sablon](automation-update-management-deploy-template.md) , amely lehetővé teszi az Update Management-megoldás üzembe helyezését egy új vagy meglévő Automation-fiókban, és log Analytics munkaterületet az előfizetésében.
 
 ## <a name="solution-overview"></a>Megoldás áttekintése
 
@@ -248,10 +248,15 @@ A Update Management a helyileg konfigurált frissítési tárházra támaszkodik
 
 A rendszerek frissítésének megkezdéséhez engedélyeznie kell a Update Management megoldást. A megoldás bevezetésének ajánlott és támogatott módszerei a következők:
 
-* [Virtuális gépről](automation-onboard-solutions-from-vm.md)
-* [Több gép tallózása](automation-onboard-solutions-from-browse.md)
-* [Az Automation-fiókból](automation-onboard-solutions-from-automation-account.md)
-* [Azure Automation runbook](automation-onboard-solutions.md)
+- [Virtuális gépről](automation-onboard-solutions-from-vm.md)
+
+- [Több gép tallózása](automation-onboard-solutions-from-browse.md)
+
+- [Az Automation-fiókból](automation-onboard-solutions-from-automation-account.md)
+
+- [Azure Automation runbook](automation-onboard-solutions.md)
+
+- [Azure Resource Manager sablonnal](automation-update-management-deploy-template.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

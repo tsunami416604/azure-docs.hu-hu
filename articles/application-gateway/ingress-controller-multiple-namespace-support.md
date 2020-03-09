@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795563"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373469"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Több névtér támogatásának engedélyezése egy AK-fürtön Application Gateway bejövő adatkezelővel
 
@@ -83,8 +83,8 @@ spec:
 
 Annak ellenére, hogy a két bejövő erőforrás a `www.contoso.com` felé irányuló forgalmat a megfelelő Kubernetes-névterekhez irányítja, csak egy háttér képes a forgalom kiszolgálására. A AGIC létrehoz egy konfigurációt az egyik erőforrásra vonatkozóan az "első alkalommal kiszolgált" alapján. Ha egyszerre két ingresses-erőforrást hoz létre, akkor az ábécében az egyik korábbi is elsőbbséget élvez. A fenti példában csak a `production` beérkező adatokra vonatkozó beállításokat lehet létrehozni. A Application Gateway a következő erőforrásokkal lesz konfigurálva:
 
-  - Figyelő: `fl-www.contoso.com-80`
-  - Útválasztási szabály: `rr-www.contoso.com-80`
+  - Figyelő: `fl- www.contoso.com-80`
+  - Útválasztási szabály: `rr- www.contoso.com-80`
   - Háttér-készlet: `pool-production-contoso-web-service-80-bp-80`
   - HTTP-beállítások: `bp-production-contoso-web-service-80-80-websocket-ingress`
   - Állapot mintavételi állapota: `pb-production-contoso-web-service-80-websocket-ingress`

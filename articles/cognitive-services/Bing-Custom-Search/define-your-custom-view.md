@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072821"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391964"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>A Bing Custom Search-élmény konfigurálása
 
@@ -148,16 +148,16 @@ Ha több PIN-kód is megfelel egy egyeztetési feltételnek, Bing Custom Search 
 
 Ha a megfelelő szinten előfizetett az egyéni keresésre (lásd a [díjszabási oldalakat](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)), a rendszer a **statisztikák** lapot adja hozzá az éles példányokhoz. A Statistics (statisztika) lapon az egyéni keresési végpontok használatáról olvashat részletesen, beleértve a hívások mennyiségét, a leggyakoribb lekérdezéseket, a földrajzi eloszlást, a reagálási kódokat és a biztonságos keresést. A megadott vezérlők használatával szűrheti a részleteket.
 
-## <a name="usage-guidelines"></a>Használati útmutató
+## <a name="usage-guidelines"></a>Használati irányelvek
 
 - Az egyes egyéni keresési példányok esetében az **aktív** és a **blokkolt** szeletekre vonatkozó rangsorolási módosítások maximális száma 400.
 - Ha egy szeletet ad hozzá az aktív vagy a letiltott lapokhoz, egy rangsorolási beállításnak számít.
 - A szám növelése és lefokozása két rangsorolási beállításként.
 - Az egyes egyéni keresési példányok esetében az elvégezhető PIN-kódok maximális száma a 200-ra korlátozódik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni keresés meghívása](./search-your-custom-view.md)
-- [Üzemeltetett felhasználói felület konfigurálása](./hosted-ui.md)
+- [Szolgáltatott felhasználói felületi élmény konfigurálása](./hosted-ui.md)
 - [Díszítő jelölők használata szövegkiemeléshez](../bing-web-search/hit-highlighting.md)
 - [Weboldalak lapozása](./page-webpages.md)

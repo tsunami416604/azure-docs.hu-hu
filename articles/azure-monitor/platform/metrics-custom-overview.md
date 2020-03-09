@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 0050112dc7d9d2fa20da612691f1ff0927df93fb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662348"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385331"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Egyéni metrikák a Azure Monitorban
 
@@ -156,13 +156,17 @@ A kibocsátása előtt nem kell előre definiálni egy egyéni metrikát Azure M
 
 ## <a name="using-custom-metrics"></a>Egyéni metrikák használata
 Miután elküldte az egyéni metrikákat Azure Monitorre, böngészheti őket a Azure Portal, és a Azure Monitor REST API-kon keresztül kérdezheti le őket. Riasztásokat is létrehozhat rajtuk, hogy értesítést kapjon, ha bizonyos feltételek teljesülnek.
+
+> [!NOTE]
+> Az egyéni metrikák megtekintéséhez olvasó vagy közreműködői szerepkörnek kell lennie.
+
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Egyéni metrikák böngészése az Azure Portal használatával
-1.  Nyissa meg az [Azure Portalt](https://portal.azure.com).
-2.  Válassza a **figyelés** ablaktáblát.
-3.  Válassza a **Metrika** lehetőséget.
-4.  Válassza ki azt az erőforrást, amelyről egyéni metrikákat adott ki.
-5.  Válassza ki az egyéni metrika metrikai névterét.
-6.  Válassza ki az egyéni metrikát.
+1.    Nyissa meg az [Azure Portalt](https://portal.azure.com).
+2.    Válassza a **figyelés** ablaktáblát.
+3.    Válassza a **Metrika** lehetőséget.
+4.    Válassza ki azt az erőforrást, amelyről egyéni metrikákat adott ki.
+5.    Válassza ki az egyéni metrika metrikai névterét.
+6.    Válassza ki az egyéni metrikát.
 
 ## <a name="supported-regions"></a>Támogatott régiók
 A nyilvános előzetes verzióban az egyéni metrikák közzétételének lehetősége csak az Azure-régiók egy részhalmazában érhető el. Ez a korlátozás azt jelenti, hogy a metrikák csak az egyik támogatott régió erőforrásai számára tehetők közzé. A következő táblázat felsorolja az egyéni metrikák támogatott Azure-régióinak készletét. Emellett felsorolja azokat a végpontokat is, amelyek az adott régiókban lévő erőforrások metrikáit teszik közzé:

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
 ms.openlocfilehash: 461d6021a201ca1fa5722bb44c427baca2a7728e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903377"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389839"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Serveren futó különálló fürt létrehozása
 Az Azure Service Fabric használatával Service Fabric-fürtöket hozhat létre a Windows Servert futtató virtuális gépeken vagy számítógépeken. Ez azt jelenti, hogy Service Fabric alkalmazásokat bármely olyan környezetben telepítheti és futtathatja, amely összekapcsolt Windows Server-számítógépeket, illetve helyszíni vagy bármilyen felhőalapú szolgáltatót tartalmaz. A Service Fabric egy önálló Windows Server-csomagot tartalmazó Service Fabric-fürtök létrehozására szolgáló telepítőcsomagot biztosít. Az Azure-beli hagyományos Service Fabric-fürtök felügyelt szolgáltatásként érhetők el, míg a különálló Service Fabric-fürtök önkiszolgáló szolgáltatások. További információ a különbségekről: az [Azure és az önálló Service Fabric-fürtök összehasonlítása](./service-fabric-deploy-anywhere.md).
@@ -126,7 +126,7 @@ Nem biztonságos fürthöz való kapcsolódáshoz futtassa a következő PowerSh
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
 
-Példa:
+Például:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
@@ -144,7 +144,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 ```
 
 ### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>3\. lépés: a fürt megjelenítése a Service Fabric Explorer használatával
-A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) hatékony eszköz a fürtök megjelenítéséhez és az alkalmazások kezeléséhez.  Service Fabric Explorer egy olyan szolgáltatás, amely a fürtben fut, és a böngészővel fér hozzá a [http://localhost:19080/Explorer hoz ](http://localhost:19080/Explorer).
+A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) hatékony eszköz a fürtök megjelenítéséhez és az alkalmazások kezeléséhez.  Service Fabric Explorer egy olyan szolgáltatás, amely a fürtben fut, és a böngészővel fér hozzá a [http://localhost:19080/Explorerhoz ](http://localhost:19080/Explorer).
 
 A fürt irányítópultja áttekintést nyújt a fürtről, beleértve az alkalmazások és a csomópontok állapotának összefoglalását. A csomópontnézet a fürt fizikai elrendezését mutatja. Az egyes csomópontoknál megtekintheti, hogy melyik alkalmazások kódja üzemel az adott csomóponton.
 
@@ -157,7 +157,7 @@ Az üzleti igényei változásával hozzáadhat vagy eltávolíthat csomópontok
 ## <a name="remove-a-cluster"></a>Fürt eltávolítása
 Egy fürt eltávolításához futtassa a *RemoveServiceFabricCluster.ps1* PowerShell-szkriptet a csomag mappájából, és adja meg a JSON-konfigurációs fájl elérési útját. Megadhatja a törlés naplójának mentési helyét is.
 
-Ez a parancsfájl bármely olyan gépen futtatható, amely rendszergazdai hozzáféréssel rendelkezik az összes olyan géphez, amely csomópontként szerepel a fürt konfigurációs fájljában. A parancsfájl futtatásához használt gépnek nem kell a fürt részét képeznie.
+Ezt a parancsfájlt minden olyan gép, amely számítanak csomópontnak a fürt konfigurációs fájlban felsorolt összes gép rendszergazdai hozzáféréssel rendelkezik. Ez a szkript futtatott a gép nem rendelkezik a fürt részeként.
 
 ```powershell
 # Removes Service Fabric from each machine in the configuration
@@ -172,7 +172,7 @@ Ez a parancsfájl bármely olyan gépen futtatható, amely rendszergazdai hozzá
 <a id="telemetry"></a>
 
 ## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>Telemetria gyűjtött adatok és az onnan való leiratkozás
-Alapértelmezés szerint a termék a termék telemetria gyűjti a Service Fabric használatot. A telepítés részeként futó ajánlott eljárásokat elemző eszköz a [https://vortex.data.microsoft.com/collect/v1 hoz ](https://vortex.data.microsoft.com/collect/v1)való kapcsolódást ellenőrzi. Ha nem érhető el, a telepítés sikertelen lesz, hacsak nem törli a telemetria.
+Alapértelmezés szerint a termék a termék telemetria gyűjti a Service Fabric használatot. A telepítés részeként futó ajánlott eljárásokat elemző eszköz a [https://vortex.data.microsoft.com/collect/v1hoz ](https://vortex.data.microsoft.com/collect/v1)való kapcsolódást ellenőrzi. Ha nem érhető el, a telepítés sikertelen lesz, hacsak nem törli a telemetria.
 
 1. A telemetria folyamat naponta egyszer megpróbálja [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) a következő adatok feltöltését. Ez a legjobb feltöltés, és nincs hatással a fürt működésére. A telemetria csak a Feladatátvevőfürt-kezelőt futtató csomópontról lesz elküldve. Más csomópontok nem küldenek telemetria.
 2. A telemetria a következőkből áll:

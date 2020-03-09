@@ -7,13 +7,13 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 4b80004a3d818e66cc2fb61f3d611bbe3e3ded92
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
-ms.translationtype: MT
+ms.date: 02/01/2020
+ms.openlocfilehash: 51e58de92f111c8854add613a299f2b8ccec0503
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807034"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358575"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Az IoT Hub eszközön található ikrek megismerése és használata
 
@@ -21,7 +21,7 @@ Az *ikrek* olyan JSON-dokumentumok, amelyek az eszköz állapotával kapcsolatos
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Ez a cikk a következőket ismerteti:
+Ez a cikk ismerteti:
 
 * A két eszköz szerkezete: *címkék*, *kívánt* és *jelentett tulajdonságok*.
 * Az eszközön futó alkalmazások és a háttérbeli műveletek az eszközökön is elvégezhetők.
@@ -119,7 +119,7 @@ Az előző példában az eszköz Twin `batteryLevel` tulajdonságot tartalmaz, a
 
 ### <a name="desired-property-example"></a>Példa a kívánt tulajdonságra
 
-Az előző példában a megoldás háttérbe állítása és a jelentett tulajdonságok a `telemetryConfig` Device Twin kívánt és jelentett tulajdonságokat használják az eszköz telemetria-konfigurációjának szinkronizálásához. Példa:
+Az előző példában a megoldás háttérbe állítása és a jelentett tulajdonságok a `telemetryConfig` Device Twin kívánt és jelentett tulajdonságokat használják az eszköz telemetria-konfigurációjának szinkronizálásához. Például:
 
 1. A megoldás háttérbe állítása a kívánt tulajdonságot a kívánt konfigurációs értékkel állítja be. Itt látható a dokumentum azon része, amely a kívánt tulajdonságot beállítja:
 
@@ -182,16 +182,16 @@ A megoldás háttérrendszer a következő, HTTPS protokollon keresztül elérhe
 
   - Tulajdonságok
 
-    | Név | Value (Díj) |
+    | Name (Név) | Érték |
     | --- | --- |
     $content típusa | application/json |
-    $iothub – enqueuedtime |  Az értesítés elküldésének ideje |
-    $iothub – üzenet – forrás | twinChangeEvents |
-    $content – kódolás | UTF-8 |
+    $iothub-enqueuedtime |  Az értesítés elküldésének ideje |
+    $iothub-message-source | twinChangeEvents |
+    $content – kódolás | utf-8 |
     deviceId | Az eszköz azonosítója |
     hubName | IoT Hub neve |
     operationTimestamp | A művelet [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) időbélyege |
-    iothub – üzenet – séma | twinChangeNotification |
+    iothub-message-schema | twinChangeNotification |
     opType | "replaceTwin" vagy "updateTwin" |
 
     Az üzenetrendszer tulajdonságai előtaggal vannak ellátva a `$` szimbólummal.
@@ -245,11 +245,15 @@ Az [Azure IoT-eszközök SDK](iot-hub-devguide-sdks.md) -k megkönnyítik az el�
 
 A címkék, a kívánt tulajdonságok és a jelentett tulajdonságok a JSON-objektumok a következő korlátozásokkal:
 
-* A JSON-objektumokban lévő összes kulcs UTF-8 kódolású, kis-és nagybetűket megkülönböztető, és legfeljebb 1 KB hosszúságú lehet. Az engedélyezett karakterek kizárják a UNICODE vezérlőkarakterek (szegmensek C0 és C1), valamint `.`, `$`és SP.
+* **Kulcsok**: a JSON-objektumokban lévő összes kulcs UTF-8 kódolású, kis-és nagybetűket megkülönböztető, és legfeljebb 1 kb hosszúságú lehet. Az engedélyezett karakterek kizárják a UNICODE vezérlőkarakterek (szegmensek C0 és C1), valamint `.`, `$`és SP.
 
-* A JSON-objektumokban lévő összes érték a következő JSON-típusokkal rendelkezhet: logikai, szám, karakterlánc, objektum. Tömbök használata nem engedélyezett. Az egész számok maximális értéke 4503599627370495, az egész számok minimális értéke pedig-4503599627370496.
+* **Értékek**: a JSON-objektumokban lévő összes érték a következő JSON-típusokkal rendelkezhet: logikai, szám, karakterlánc, objektum. Tömbök használata nem engedélyezett.
 
-* A címkék, a kívánt és a jelentett tulajdonságok összes JSON-objektuma legfeljebb 10 mélységet tartalmazhat. Például a következő objektum érvényes:
+    * Az egész számok minimális értéke-4503599627370496 és a 4503599627370495-es maximális érték lehet.
+
+    * A karakterlánc-értékek UTF-8 kódolással rendelkeznek, és legfeljebb 4 KB-os hosszúságú lehet.
+
+* **Mélység**: a címkékben, a kívánt tulajdonságokban és a jelentett tulajdonságok között a JSON-objektumok maximális mélysége 10. A következő objektum például érvényes:
 
    ```json
    {
@@ -281,21 +285,29 @@ A címkék, a kívánt tulajdonságok és a jelentett tulajdonságok a JSON-obje
    }
    ```
 
-* Az összes karakterlánc-érték legfeljebb 4 KB hosszúságú lehet.
-
 ## <a name="device-twin-size"></a>Eszköz kettős mérete
 
-IoT Hub kényszeríti a `tags`értékének 8 KB-os korlátját, és egy 32 KB méretű korlátot a `properties/desired` és `properties/reported`értékére. Ezek az összegek kizárólag a csak olvasható elemekből állnak.
+IoT Hub kényszeríti a `tags`értékének 8 KB-os korlátját, és egy 32 KB méretű korlátot a `properties/desired` és `properties/reported`értékére. Ezek az összegek kizárólag a csak olvasható elemek, például a `$etag`, a `$version`és a `$metadata/$lastUpdated`.
 
-A méret kiszámítása az összes karakter számlálásával történik, kivéve a UNICODE vezérlő karaktereket (szegmensek C0 és C1), valamint a karakterlánc-konstansokon kívüli szóközöket.
+A Twin méret kiszámítása a következőképpen történik:
 
-IoT Hub elutasítja az összes olyan műveletet, amely a határértéknél nagyobb mértékben növelné a dokumentumok méretét.
+* A JSON-dokumentum minden tulajdonságához IoT Hub a kumulatív számításokat, és hozzáadja a tulajdonság kulcsának és értékének hosszát.
+
+* A tulajdonságmezők UTF8-kódolású karakterláncnak tekintendők.
+
+* Az egyszerű tulajdonságértékek UTF8-kódolású karakterláncoknak, numerikus értékeknek (8 bájt) vagy logikai értékeknek (4 bájt) tekintendők.
+
+* Az UTF8-kódolású karakterláncok méretét az összes karakter számlálásával számítjuk ki, a UNICODE vezérlőkarakterek kivételével (szegmens C0 és C1).
+
+* Az összetett tulajdonságértékek (beágyazott objektumok) kiszámítása az általuk tartalmazott tulajdonságértékek és tulajdonságértékek összesített mérete alapján történik.
+
+IoT Hub elutasítja az összes olyan műveletet, amely a határértéknél nagyobb mértékben növelné a `tags`, a `properties/desired`vagy a `properties/reported` a dokumentumok méretét.
 
 ## <a name="device-twin-metadata"></a>Eszköz – Twin metaadatok
 
 IoT Hub karbantartja az összes JSON-objektum utolsó frissítésének időbélyegét az eszközök Twin-beli kívánt és jelentett tulajdonságaiban. Az időbélyegek UTC szerint vannak kódolva, és a [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) formátuma `YYYY-MM-DDTHH:MM:SS.mmmZ`.
 
-Példa:
+Például:
 
 ```json
 {
@@ -344,7 +356,7 @@ Példa:
 
 Ezek az információk minden szinten megmaradnak (nem csak a JSON-struktúra levelei) az objektumok kulcsait eltávolító frissítések megőrzése érdekében.
 
-## <a name="optimistic-concurrency"></a>Optimista párhuzamosság
+## <a name="optimistic-concurrency"></a>Optimista Egyidejűség
 
 Címkék, kívánt és jelentett tulajdonságok az optimista párhuzamosságok támogatásával.
 A címkékhez ETag ( [RFC7232](https://tools.ietf.org/html/rfc7232)) tartozik, amely a címke JSON-ábrázolását jelöli. A konzisztencia biztosításához használhatja a megoldás Etagek a feltételes frissítési műveletekben.

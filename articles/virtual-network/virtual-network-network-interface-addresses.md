@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
 ms.openlocfilehash: a2a85d98bf29e78d58bf0c578ce79943bae21fc1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543086"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356640"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure hálózati adapter IP-címeinek hozzáadása, módosítása vagy eltávolítása
 
@@ -28,7 +28,7 @@ Megtudhatja, hogyan adhat hozzá, módosíthat és távolíthat el nyilvános é
 
 Ha egy hálózati adaptert kell létrehoznia, módosítania vagy törölnie, olvassa el a [hálózati adapter kezelése](virtual-network-network-interface.md) című cikket. Ha hálózati adaptereket kell hozzáadnia a virtuális gépről, vagy el kell távolítani a hálózati adaptereket, olvassa el a [hálózati adapterek hozzáadása vagy eltávolítása](virtual-network-network-interface-vm.md) című cikket.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -54,7 +54,7 @@ A hálózati adapterekhez szükség szerint annyi [magán](#private) -és [nyilv
    |Beállítás|Kötelező?|Részletek|
    |---|---|---|
    |Name (Név)|Igen|Egyedinek kell lennie a hálózati adapterhez|
-   |Type (Típus)|Igen|Mivel IP-konfigurációt ad hozzá egy meglévő hálózati adapterhez, és az egyes hálózati adaptereknek [elsődleges](#primary) IP-konfigurációval kell rendelkezniük, az egyetlen lehetőség a **másodlagos**.|
+   |Típus|Igen|Mivel IP-konfigurációt ad hozzá egy meglévő hálózati adapterhez, és az egyes hálózati adaptereknek [elsődleges](#primary) IP-konfigurációval kell rendelkezniük, az egyetlen lehetőség a **másodlagos**.|
    |Magánhálózati IP-cím hozzárendelési módszere|Igen|[**Dinamikus**](#dynamic): az Azure a következő elérhető címeket rendeli hozzá a hálózati adapterhez tartozó alhálózat-címtartomány számára. [**Statikus**](#static): Ha a hálózati adaptert a (z) rendszerhez tartozó alhálózat-címtartomány számára nem használt címeket rendel hozzá.|
    |Nyilvános IP-cím|Nem|**Letiltva:** A nyilvános IP-cím erőforrás jelenleg nincs társítva az IP-konfigurációhoz. **Engedélyezve:** Válasszon egy meglévő IPv4 nyilvános IP-címet, vagy hozzon létre egy újat. Ha meg szeretné tudni, hogyan hozható létre nyilvános IP-cím, olvassa el a [nyilvános IP-címekkel](virtual-network-public-ip-address.md#create-a-public-ip-address) foglalkozó cikket.|
 6. Manuálisan adja hozzá a másodlagos magánhálózati IP-címeket a virtuális gép operációs rendszeréhez a [több IP-cím társítása a virtuális gép operációs](virtual-network-multiple-ip-addresses-portal.md#os-config) rendszeréhez című cikk utasításait követve. Az IP-címek virtuális gépi operációs rendszerhez való manuális hozzáadása előtt tekintse meg a [magánhálózati](#private) IP-címek című témakört. Ne adjon meg nyilvános IP-címeket a virtuális gép operációs rendszeréhez.
@@ -63,7 +63,7 @@ A hálózati adapterekhez szükség szerint annyi [magán](#private) -és [nyilv
 
 |Eszköz|Parancs|
 |---|---|
-|CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
+|parancssori felület|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>IP-cím beállításainak módosítása
@@ -84,7 +84,7 @@ Előfordulhat, hogy módosítania kell egy IPv4-cím hozzárendelési módszeré
 
 |Eszköz|Parancs|
 |---|---|
-|CLI|[az Network NIC IP-config Update](/cli/azure/network/nic/ip-config)|
+|parancssori felület|[az Network NIC IP-config Update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>IP-címek eltávolítása
@@ -100,7 +100,7 @@ A [magánhálózati](#private) és a [nyilvános](#public) IP-címeket eltávol�
 
 |Eszköz|Parancs|
 |---|---|
-|CLI|[az Network NIC IP-config delete](/cli/azure/network/nic/ip-config)|
+|parancssori felület|[az Network NIC IP-config delete](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>IP-konfigurációk
@@ -129,7 +129,7 @@ Az elsődleges IP-konfiguráción kívül a hálózati adapterek nulla vagy töb
 
 A következő IP-címeket rendelheti hozzá egy [IP-konfigurációhoz](#ip-configurations):
 
-### <a name="private"></a>Saját
+### <a name="private"></a>Privát
 
 A magánhálózati [IPv4](#ipv4) -vagy IPv6-címek lehetővé teszik, hogy a virtuális gépek más erőforrásokkal kommunikáljanak a virtuális hálózatokban vagy más csatlakoztatott hálózatokban. 
 

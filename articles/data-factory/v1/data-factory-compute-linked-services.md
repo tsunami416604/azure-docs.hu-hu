@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 0cc7c3b7d8b364e0bcca671efaff2cf324695428
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73667750"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361444"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott számítási környezetek
 > [!NOTE]
@@ -49,15 +49,15 @@ A Microsoft frissíti a támogatott HDInsight-verziók listáját a legújabb Ha
 2017. december 15. után:
 
 - Már nem hozhat létre a Linux-alapú HDInsight 3,3-es (vagy korábbi verziójú) fürtöket egy igény szerinti HDInsight társított szolgáltatás használatával Data Factory az 1. verzióban. 
-- Ha a [ **osType** és a **verzió** tulajdonságok](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nincsenek explicit módon megadva a JSON-definícióban egy meglévő Data Factory 1. verziójú, igény szerinti HDInsight társított szolgáltatáshoz, az alapértelmezett érték a következő **verzióra módosul: = 3.1, osType = Windows** a **version =\<legújabb HDI alapértelmezett verziójának\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), OsType = Linux**.
+- Ha a [ **osType** és a **verzió** tulajdonságai](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nincsenek explicit módon meghatározva egy meglévő Data Factory 1. verziójú, igény szerinti HDInsight társított szolgáltatáshoz, az alapértelmezett érték a **verzió = 3.1, OSTYPE = Windows** verzió **=\<legújabb HDI alapértelmezett verziója\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType = Linux**.
 
 2018. július 31-ig:
 
 - A Windows-alapú HDInsight-fürtöket már nem hozhatja létre egy igény szerinti HDInsight társított szolgáltatás használatával Data Factory az 1. verzióban. 
 
-### <a name="recommended-actions"></a>Ajánlott műveletek 
+### <a name="recommended-actions"></a>Javasolt teendők 
 
-- Annak biztosítása érdekében, hogy a legújabb Hadoop ökoszisztéma-összetevőket és-javításokat is használhassa, frissítse az érintett Data Factory 1. verziójú, igény szerinti HDInsight társított szolgáltatás-definíciók [ **OsType** és **verziójának** tulajdonságait](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) az újabb Linux-alapú HDInsight verziók (HDInsight 3,6). 
+- Annak érdekében, hogy a legújabb Hadoop ökoszisztéma-összetevőket és-javításokat is használhassa, frissítse az érintett Data Factory 1. verziójú, igény szerinti HDInsight társított szolgáltatási definíciók [ **OsType** és **verziójának** tulajdonságait](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) az újabb Linux-alapú HDInsight-verzióra (HDInsight 3,6). 
 - 2017. december 15. előtt Data Factory tesztelje az 1. verziójú kaptár, a Pig, a MapReduce és a Hadoop streaming tevékenységeket, amelyek az érintett társított szolgáltatásra hivatkoznak. Győződjön meg arról, hogy kompatibilisek az új **osType** és a **verzió** alapértelmezett értékeivel (**Version = 3.6**, **OsType = Linux**) vagy a explicit HDInsight-verzióval és az operációs rendszer típusával, amelyre frissíteni szeretne. 
   További információ a kompatibilitásról: [áttelepítés Windows-alapú HDInsight-fürtről Linux-alapú fürtre](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-from-windows-to-linux) , valamint [a HDInsight-hez elérhető Hadoop-összetevők és-verziók](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hortonworks-release-notes-associated-with-hdinsight-versions). 
 - Ha **a Windows-** alapú HDInsight-2017 fürtök létrehozásához Data Factory egy igény szerinti HDInsight **társított szolgáltatással** kívánja tovább használni az 1 Javasoljuk, hogy 2018. július 31-ig telepítsen Linux-alapú HDInsight-fürtökre. 
@@ -122,7 +122,7 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 | Tulajdonság                     | Leírás                              | Kötelező |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Állítsa a Type (típus) tulajdonságot **HDInsightOnDemand**értékre. | Igen      |
-| clusterSize                  | A fürtben található feldolgozó és adatcsomópontok száma. A HDInsight-fürt két fő csomóponttal jön létre a tulajdonsághoz megadott munkavégző csomópontok száma mellett. A csomópontok mérete Standard_D3, amely 4 magot tartalmaz. A 4 munkavégző csomópont-fürt 24 magot (4\*4 = 16 magot biztosít a feldolgozó csomópontok számára, valamint 2\*4 = 8 maggal a fő csomópontok számára). A Standard_D3 réteg részletes ismertetését lásd: [Linux-alapú Hadoop-fürtök létrehozása a HDInsight-ben](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Igen      |
+| clusterSize                  | A fürtben található feldolgozó és adatcsomópontok száma. A HDInsight-fürt két fő csomóponttal jön létre a tulajdonsághoz megadott munkavégző csomópontok száma mellett. A csomópontok mérete Standard_D3, amely 4 magot tartalmaz. A 4 munkavégző csomópont-fürt 24 magot (4\*4 = 16 magot biztosít a feldolgozó csomópontok számára, valamint 2\*4 = 8 maggal a fő csomópontok számára). A Standard_D3 szintjével kapcsolatos további információkért lásd: [Linux-alapú Hadoop-fürtök létrehozása a HDInsight-ben](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Igen      |
 | timeToLive                   | Az igény szerinti HDInsight-fürt számára engedélyezett üresjárati idő. Meghatározza, hogy az igény szerinti HDInsight-fürt mennyi ideig maradjon életben, ha a tevékenység futtatása befejeződött, ha nincsenek más aktív feladatok a fürtben.<br /><br />Ha például egy tevékenység futása 6 percet vesz igénybe, és a **TimeToLive** 5 percre van állítva, a fürt a tevékenység futtatásának 6 perce után 5 perccel továbbra is életben marad. Ha egy másik tevékenység futtatása a 6 perces ablakban történik, akkor azt ugyanazon fürt dolgozza fel.<br /><br />Egy igény szerinti HDInsight-fürt létrehozása költséges művelet (eltarthat egy darabig). Ezt a beállítást igény szerint használhatja az adat-előállító teljesítményének növeléséhez egy igény szerinti HDInsight-fürt újrafelhasználásával.<br /><br />Ha a **TimeToLive** értéket **0-ra**állítja, akkor a rendszer a tevékenység futtatása után azonnal törli a fürtöt. Ha azonban magas értéket állít be, előfordulhat, hogy a fürt tétlen maradhat, ami szükségtelenül magas költségekkel jár. Fontos, hogy az igényeinek megfelelően állítsa be a megfelelő értéket.<br /><br />Ha a **TimeToLive** értéke megfelelően van beállítva, több folyamat is megoszthatja az igény szerinti HDInsight-fürt példányát. | Igen      |
 | version                      | A HDInsight-fürt verziója. Az engedélyezett HDInsight-verziók esetében lásd: [támogatott HDInsight-verziók](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). Ha ez az érték nincs megadva, a rendszer a [legújabb HDI alapértelmezett verziót](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) használja. | Nem       |
 | linkedServiceName            | Az Azure Storage társított szolgáltatása, amelyet az igény szerinti fürt az adattároláshoz és-feldolgozáshoz használ. A HDInsight-fürt ugyanabban a régióban jön létre, mint a Storage-fiók.<p>Jelenleg nem hozhat létre Azure Data Lake Store tárolóként használó igény szerinti HDInsight-fürtöt. Ha az HDInsight feldolgozásból származó eredményeket szeretné tárolni Data Lake Storeban, a másolási tevékenység használatával másolja át az adatait a blob Storage-ból a Data Lake Storeba. </p> | Igen      |
@@ -197,14 +197,14 @@ A fej-, az adatés a ZooKeeper-csomópontok méretének megadásához használja
 
 | Tulajdonság          | Leírás                              | Kötelező |
 | :---------------- | :--------------------------------------- | :------- |
-| headNodeSize      | Beállítja a fő csomópont méretét. Az alapértelmezett érték a **Standard_D3**. Részletekért lásd a [csomópontok méretének megadása](#specify-node-sizes)című témakört. | Nem       |
-| dataNodeSize      | Az adatcsomópont méretének beállítása. Az alapértelmezett érték a **Standard_D3**. | Nem       |
-| zookeeperNodeSize | Beállítja a ZooKeeper-csomópont méretét. Az alapértelmezett érték a **Standard_D3**. | Nem       |
+| headNodeSize      | Beállítja a fő csomópont méretét. Az alapértelmezett érték **Standard_D3**. Részletekért lásd a [csomópontok méretének megadása](#specify-node-sizes)című témakört. | Nem       |
+| dataNodeSize      | Az adatcsomópont méretének beállítása. Az alapértelmezett érték **Standard_D3**. | Nem       |
+| zookeeperNodeSize | Beállítja a ZooKeeper-csomópont méretét. Az alapértelmezett érték **Standard_D3**. | Nem       |
 
 #### <a name="specify-node-sizes"></a>Csomópontok méretének meghatározása
 Az előző szakaszban ismertetett tulajdonságokkal megadható karakterlánc-értékekhez lásd: [virtuális gépek méretei](../../virtual-machines/linux/sizes.md). Az értékeknek meg kell felelniük a [virtuális gépek méreteiben](../../virtual-machines/linux/sizes.md)hivatkozott parancsmagoknak és API-knak. A nagyméretű (alapértelmezett) adatcsomópont-méret 7 GB memóriával rendelkezik. Előfordulhat, hogy ez nem elegendő a forgatókönyvhöz. 
 
-Ha a D4 méretű fő csomópontokat és a feldolgozó csomópontokat szeretné létrehozni, a **Standard_D4** értéket a **HeadNodeSize** és a **dataNodeSize** tulajdonságok értékének megadásával adhatja meg: 
+Ha D4 méretű főcsomópontokat és munkavégző csomópontokat szeretne létrehozni, akkor a **headNodeSize** és a **dataNodeSize** tulajdonságok értékének megadásához a **Standard_D4** értéket kell megadnia: 
 
 ```json
 "headNodeSize": "Standard_D4",    
@@ -353,9 +353,9 @@ A következő táblázat a JSON-definícióban használt általános tulajdonsá
 A Data Lake Analytics társított szolgáltatás esetében a hitelesítés egy egyszerű szolgáltatásnév vagy egy felhasználói hitelesítő adatok használatával választható.
 
 #### <a name="service-principal-authentication-recommended"></a>Egyszerű szolgáltatásnév hitelesítése (ajánlott)
-Az egyszerű szolgáltatás hitelesítésének használatához regisztráljon egy alkalmazás-entitást Azure Active Directory (Azure AD). Ezután engedélyezze az Azure AD-hozzáférést Data Lake Storehoz. A részletes lépésekért lásd: [szolgáltatások közötti hitelesítés](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Jegyezze fel a következő értékeket, amelyeket a társított szolgáltatás definiálásához használ:
+Az egyszerű szolgáltatás hitelesítésének használatához regisztráljon egy alkalmazás-entitást Azure Active Directory (Azure AD). Ezután engedélyezze az Azure AD-hozzáférést Data Lake Storehoz. A részletes lépésekért lásd: [szolgáltatások közötti hitelesítés](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Jegyezze fel a következő értékeket, mert a társított szolgáltatás definiálásához használja:
 * Alkalmazásazonosító
-* Alkalmazás kulcsa 
+* Alkalmazáskulcs 
 * Bérlőazonosító
 
 Az egyszerű szolgáltatás hitelesítését a következő tulajdonságok megadásával használhatja:
@@ -364,7 +364,7 @@ Az egyszerű szolgáltatás hitelesítését a következő tulajdonságok megad�
 | :---------------------- | :--------------------------------------- | :------- |
 | servicePrincipalId  | Az alkalmazás ügyfél-azonosítója.     | Igen      |
 | servicePrincipalKey | Az alkalmazás kulcsa.           | Igen      |
-| Bérlő              | A bérlői információ (tartománynév vagy bérlő azonosítója), ahol az alkalmazás található. Ezen információk beszerzéséhez vigye az egérmutatót a Azure Portal jobb felső sarkában. | Igen      |
+| tenant              | A bérlői információ (tartománynév vagy bérlő azonosítója), ahol az alkalmazás található. Ezen információk beszerzéséhez vigye az egérmutatót a Azure Portal jobb felső sarkában. | Igen      |
 
 **Példa: egyszerű szolgáltatásnév hitelesítése**
 ```json
@@ -390,7 +390,7 @@ A Data Lake Analytics felhasználói hitelesítő adatainak hitelesítéséhez a
 
 | Tulajdonság          | Leírás                              | Kötelező |
 | :---------------- | :--------------------------------------- | :------- |
-| engedély | Data Factory szerkesztőben kattintson az **Engedélyezés** gombra. Adja meg azt a hitelesítő adatot, amely az automatikusan generált engedélyezési URL-címet rendeli hozzá ehhez a tulajdonsághoz. | Igen      |
+| authorization | Data Factory szerkesztőben kattintson az **Engedélyezés** gombra. Adja meg azt a hitelesítő adatot, amely az automatikusan generált engedélyezési URL-címet rendeli hozzá ehhez a tulajdonsághoz. | Igen      |
 | sessionId     | A OAuth munkamenet-azonosítója a OAuth-engedélyezési munkamenetből. Az egyes munkamenet-AZONOSÍTÓk egyediek, és csak egyszer használhatók fel. A beállítás automatikusan létrejön, amikor Data Factory szerkesztőt használ. | Igen      |
 
 **Példa: felhasználói hitelesítő adatok hitelesítése**
