@@ -1,6 +1,6 @@
 ---
-title: Importálja a Postman-környezetből az Azure Media Services REST-hívások
-description: Ez a témakör az Azure Media Services REST-hívások a Postman-környezet definíciójának.
+title: A Poster-környezet importálása Azure Media Services REST-hívásokhoz
+description: Ez a témakör a Poster-környezet definícióját ismerteti Azure Media Services REST-hívásokhoz.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,16 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 6813dfca4a89263a10887ef4fa58c7403a9b1294
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60637556"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78926715"
 ---
-# <a name="import-the-postman-environment"></a>Importálja a Postman-környezet  
+# <a name="import-the-postman-environment"></a>A Poster-környezet importálása  
 
-Ez a cikk a definíciót tartalmaz a **Postman** környezeti változókat, amelyek a [Postman-gyűjtemény](postman-collection.md) , amely tartalmazza a Media Services REST API-k hívása a csoportosított HTTP-kérelmekre. A környezet és a gyűjtemény fájlokat használja a [Postman konfigurálása a Media Services REST API-hívások](media-rest-apis-with-postman.md) oktatóanyag.
+Ez a cikk **a Poster-környezet azon** változóinak definícióját tartalmazza, amelyek a Media Services REST API-kat meghívó CSOPORTOSÍTott http-kérelmeket tartalmazó [Poster-gyűjteményt](postman-collection.md) használják. A környezet és a gyűjtemény fájljait a [Poster beállítása a Media Services REST API-hívások](media-rest-apis-with-postman.md) oktatóanyagához használja.
+
+> [!NOTE]
+> `AzureADSTSEndpoint ` = `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`értéke. A bérlői azonosító lekéréséhez vigye az egérmutatót a saját felhasználónevére a portálon (a jobb felső sarokban), és a "címtár: Microsoft ({{TENANTID}})" könyvtárba kerül.
 
 ```
 {

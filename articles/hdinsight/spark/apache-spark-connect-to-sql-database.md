@@ -1,33 +1,33 @@
 ---
-title: A Apache Spark használata az Azure SQL Database-be való adatolvasásra és-írásra
-description: Megtudhatja, hogyan állíthat be kapcsolatot a HDInsight Spark-fürt és egy Azure SQL-adatbázis között az adatolvasáshoz, az adatíráshoz és az adatfolyamok SQL Database-be történő olvasásához
+title: A Apache Spark használatával olvashatja és írhatja az adatAzure SQL Database
+description: Megtudhatja, hogyan állíthat be kapcsolatot a HDInsight Spark-fürt és a Azure SQL Database között az adatolvasáshoz, az adatíráshoz és az adatfolyamok SQL-adatbázisba való olvasásához.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/03/2019
-ms.openlocfilehash: cc225f4cae3935212844c19464afc716092e73ca
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.custom: hdinsightactive
+ms.date: 03/05/2020
+ms.openlocfilehash: 4e0c1626582297aa7d80cbbd4241b6f81e314f8f
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035199"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927461"
 ---
-# <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Az HDInsight Spark-fürt használata az Azure SQL Database-be való adatolvasásra és-írásra
+# <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Az HDInsight Spark-fürt használata az Azure SQL Databaseba való adatolvasásra és írásra
 
-Ismerje meg, hogyan csatlakoztatható Apache Spark-fürt az Azure HDInsight egy Azure SQL Database-adatbázishoz, majd hogyan lehet olvasni, írni és továbbítani az információkat az SQL Database-be. A cikkben szereplő utasítások egy [Jupyter notebook](https://jupyter.org/) használatával futtatják a Scala-kódrészleteket. Létrehozhat azonban egy önálló alkalmazást a Scalaben vagy a Pythonban, és ugyanazokat a feladatokat hajthatja végre.
+Megtudhatja, hogyan csatlakoztatható egy Apache Spark-fürt az Azure HDInsight egy Azure SQL Database, majd hogyan lehet olvasni, írni és továbbítani az információkat az SQL Database-be. A cikkben szereplő utasítások egy [Jupyter notebook](https://jupyter.org/) használatával futtatják a Scala-kódrészleteket. Létrehozhat azonban egy önálló alkalmazást a Scalaben vagy a Pythonban, és ugyanazokat a feladatokat hajthatja végre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure HDInsight Spark fürt *.  Kövesse az [Apache Spark-fürt létrehozása a HDInsight-ben](apache-spark-jupyter-spark-sql.md)című témakör utasításait.
+* Azure HDInsight Spark-fürt.  Kövesse az [Apache Spark-fürt létrehozása a HDInsight-ben](apache-spark-jupyter-spark-sql.md)című témakör utasításait.
 
-* Azure SQL Database. Kövesse az [Azure SQL Database létrehozása](../../sql-database/sql-database-get-started-portal.md)című témakör utasításait. Győződjön meg arról, hogy létrehoz egy adatbázist a minta **AdventureWorksLT** sémával és az adattal. Győződjön meg arról is, hogy a kiszolgálói szintű tűzfalszabály létrehozása lehetővé teszi, hogy az ügyfél IP-címe hozzáférjen az SQL-adatbázishoz a kiszolgálón. A tűzfalszabály hozzáadására vonatkozó utasítások ugyanabban a cikkben találhatók. Miután létrehozta az Azure SQL Database-adatbázist, ügyeljen rá, hogy a következő értékeket érdemes megtartania. Szüksége van rájuk, hogy egy Spark-fürtből csatlakozhasson az adatbázishoz.
+* Azure SQL Database. Kövesse az [Azure SQL Database létrehozása](../../sql-database/sql-database-get-started-portal.md)című témakör utasításait. Győződjön meg arról, hogy létrehoz egy adatbázist a minta **AdventureWorksLT** sémával és az adattal. Győződjön meg arról is, hogy a kiszolgálói szintű tűzfalszabály létrehozása lehetővé teszi, hogy az ügyfél IP-címe hozzáférjen az SQL-adatbázishoz a kiszolgálón. A tűzfalszabály hozzáadására vonatkozó utasítások ugyanabban a cikkben találhatók. A Azure SQL Database létrehozása után ügyeljen arra, hogy a következő értékeket érdemes megtartania. Szüksége van rájuk, hogy egy Spark-fürtből csatlakozhasson az adatbázishoz.
 
-    * Az Azure SQL Database-t futtató kiszolgáló neve.
-    * Azure SQL Database-adatbázis neve.
-    * Azure SQL Database-rendszergazda Felhasználónév/jelszó.
+    * A Azure SQL Database üzemeltető kiszolgáló neve.
+    * Azure SQL Database neve.
+    * Azure SQL Database rendszergazdai Felhasználónév/jelszó.
 
 * SQL Server Management Studio (SSMS). Kövesse az [SSMS használata a kapcsolódáshoz és az adatlekérdezéshez](../../sql-database/sql-database-connect-query-ssms.md)című témakör utasításait.
 
@@ -38,7 +38,7 @@ Kezdje a Spark-fürthöz társított [Jupyter notebook](https://jupyter.org/) l�
 1. A [Azure Portal](https://portal.azure.com/)nyissa meg a fürtöt.
 1. A jobb oldalon válassza a **Jupyter notebook** alatt a **fürt irányítópultok** elemet.  Ha nem látja a **fürt irányítópultját**, válassza az **Áttekintés** lehetőséget a bal oldali menüben. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
-    ![Jupyter notebook on Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter notebook on Spark")
+    ![Jupyter notebook on Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter notebook a Sparkban")
 
    > [!NOTE]  
    > A Jupyter-jegyzetfüzetet a Spark-fürtön is elérheti, ha megnyitja a következő URL-címet a böngészőben. Cserélje le a **CLUSTERNAME** elemet a fürt nevére:
@@ -47,7 +47,7 @@ Kezdje a Spark-fürthöz társított [Jupyter notebook](https://jupyter.org/) l�
 
 1. A Jupyter jegyzetfüzetben, a jobb felső sarokban kattintson az **új**elemre, majd a **Spark** elemre a Scala notebook létrehozásához. A HDInsight Spark-fürtön található Jupyter-jegyzetfüzetek a Python2-alkalmazások **PySpark** -kernelét, valamint a PySpark3-alkalmazások **Python3** -kernelét is biztosítják. Ebben a cikkben egy Scala-jegyzetfüzetet hozunk létre.
 
-    ![Kernelek Jupyter notebookhoz Spark](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "kerneleken a Spark-Jupyter notebookhoz")
+    ![Kernelek Jupyter notebookhoz a Sparkban](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Kernelek Jupyter notebookhoz a Sparkban")
 
     A kernelekkel kapcsolatos további információkért lásd: [Jupyter notebookkernelek használata Apache Spark-fürtökkel a HDInsightban](apache-spark-jupyter-notebook-kernels.md).
 
@@ -56,15 +56,15 @@ Kezdje a Spark-fürthöz társított [Jupyter notebook](https://jupyter.org/) l�
 
 1. Ekkor megnyílik egy új, alapértelmezett névvel rendelkező jegyzetfüzet, **névtelenül**. Kattintson a jegyzetfüzet nevére, és adjon meg egy tetszőleges nevet.
 
-    ![Adjon nevet a notebooknak](./media/apache-spark-connect-to-sql-database/hdinsight-spark-jupyter-notebook-name.png "Adjon nevet a notebooknak")
+    ![Adja meg a jegyzetfüzet nevét](./media/apache-spark-connect-to-sql-database/hdinsight-spark-jupyter-notebook-name.png "A notebook elnevezése")
 
 Most már megkezdheti az alkalmazás létrehozását.
 
-## <a name="read-data-from-azure-sql-database"></a>Adatok beolvasása az Azure SQL Database-ből
+## <a name="read-data-from-azure-sql-database"></a>Adatok beolvasása a Azure SQL Databaseból
 
 Ebben a szakaszban egy tábla (például **SalesLT. címe**) adatait olvassa be a AdventureWorks-adatbázisban.
 
-1. Egy új Jupyter jegyzetfüzetben írja be a következő kódrészletet, és cserélje le a helyőrző értékeket az Azure SQL Database értékeire.
+1. Egy új Jupyter jegyzetfüzetben írja be a következő kódrészletet, és cserélje le a helyőrző értékeket a Azure SQL Database értékeire.
 
        // Declare the values for your Azure SQL database
 
@@ -76,7 +76,7 @@ Ebben a szakaszban egy tábla (például **SalesLT. címe**) adatait olvassa be 
 
     A kódcella futtatásához nyomja le a **SHIFT + ENTER** billentyűparancsot.  
 
-1. Az alábbi kódrészlettel hozzon létre egy JDBC URL-címet, amelyet át tud adni a Spark dataframe API-khoz. A kód létrehoz egy `Properties` objektumot, amely a paramétereket fogja tárolni. Illessze be a kódrészletet egy kód cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a futtatáshoz.
+1. Az alábbi kódrészlettel hozzon létre egy JDBC URL-címet, amelyet át tud adni a Spark dataframe API-khoz. A kód létrehoz egy `Properties` objektumot a paraméterek tárolásához. Illessze be a kódrészletet egy kód cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a futtatáshoz.
 
        import java.util.Properties
 
@@ -85,7 +85,7 @@ Ebben a szakaszban egy tábla (például **SalesLT. címe**) adatait olvassa be 
        connectionProperties.put("user", s"${jdbcUsername}")
        connectionProperties.put("password", s"${jdbcPassword}")         
 
-1. Az alábbi kódrészlet használatával hozzon létre egy dataframe az Azure SQL Database egyik táblájából származó adatokkal. Ebben a kódrészletben a **AdventureWorksLT** -adatbázis részeként elérhető **SalesLT. címünket** használjuk. Illessze be a kódrészletet egy kód cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a futtatáshoz.
+1. Az alábbi kódrészlet használatával hozzon létre egy dataframe a Azure SQL Database egy táblából származó adatokkal. Ebben a kódrészletben egy `SalesLT.Address` táblázatot használunk, amely a **AdventureWorksLT** -adatbázis részeként érhető el. Illessze be a kódrészletet egy kód cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a futtatáshoz.
 
        val sqlTableDF = spark.read.jdbc(jdbc_url, "SalesLT.Address", connectionProperties)
 
@@ -95,7 +95,7 @@ Ebben a szakaszban egy tábla (például **SalesLT. címe**) adatait olvassa be 
 
     A következőhöz hasonló kimenet jelenik meg:
 
-    ![séma kimeneti](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "sémájának kimenete")
+    ![séma kimenete](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "séma kimenete")
 
 1. Olyan műveleteket is végrehajthat, mint például az első 10 sor beolvasása.
 
@@ -105,11 +105,11 @@ Ebben a szakaszban egy tábla (például **SalesLT. címe**) adatait olvassa be 
 
        sqlTableDF.select("AddressLine1", "City").show(10)
 
-## <a name="write-data-into-azure-sql-database"></a>Adatírás az Azure SQL Database-be
+## <a name="write-data-into-azure-sql-database"></a>Adatírás az Azure SQL Databaseba
 
-Ebben a szakaszban egy CSV-fájlt használunk a fürtön, amely létrehoz egy táblát az Azure SQL Database-ben, és feltölti azokat az adatokkal. A minta CSV-fájl (**HVAC. csv**) az összes HDInsight-fürtön elérhető a következő helyen: `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv`.
+Ebben a szakaszban egy CSV-fájlt használunk a fürtön, amely létrehoz egy táblázatot a Azure SQL Databaseban, és feltölti azokat az adatokkal. A minta CSV-fájl (**HVAC. csv**) az összes HDInsight-fürtön elérhető a következő helyen: `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv`.
 
-1. Egy új Jupyter jegyzetfüzetben írja be a következő kódrészletet, és cserélje le a helyőrző értékeket az Azure SQL Database értékeire.
+1. Egy új Jupyter jegyzetfüzetben írja be a következő kódrészletet, és cserélje le a helyőrző értékeket a Azure SQL Database értékeire.
 
        // Declare the values for your Azure SQL database
 
@@ -121,7 +121,7 @@ Ebben a szakaszban egy CSV-fájlt használunk a fürtön, amely létrehoz egy t�
 
     A kódcella futtatásához nyomja le a **SHIFT + ENTER** billentyűparancsot.  
 
-1. Az alábbi kódrészlet egy JDBC URL-címet hoz létre, amelyet átadhat a Spark dataframe API-khoz. A kód létrehoz egy `Properties` objektumot, amely a paramétereket fogja tárolni. Illessze be a kódrészletet egy kód cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a futtatáshoz.
+1. Az alábbi kódrészlet egy JDBC URL-címet hoz létre, amelyet átadhat a Spark dataframe API-khoz. A kód létrehoz egy `Properties` objektumot a paraméterek tárolásához. Illessze be a kódrészletet egy kód cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a futtatáshoz.
 
        import java.util.Properties
 
@@ -135,24 +135,24 @@ Ebben a szakaszban egy CSV-fájlt használunk a fürtön, amely létrehoz egy t�
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readDf = spark.read.format("csv").schema(userSchema).load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-1. Egy ideiglenes tábla létrehozásához használja a `readDf` dataframe `temphvactable`. Ezután az ideiglenes táblázat segítségével hozzon létre egy struktúra-táblázatot, `hvactable_hive`.
+1. Egy ideiglenes tábla létrehozásához használja a `readDf` dataframe `temphvactable`. Ezután az ideiglenes táblázat segítségével hozzon létre egy kaptár-táblázatot, `hvactable_hive`.
 
        readDf.createOrReplaceTempView("temphvactable")
        spark.sql("create table hvactable_hive as select * from temphvactable")
 
-1. Végül a kaptár táblázat segítségével hozzon létre egy táblát az Azure SQL Database-ben. Az alábbi kódrészlet `hvactable` értéket hoz létre az Azure SQL Database-ben.
+1. Végül a kaptár táblázat segítségével hozzon létre egy táblázatot a Azure SQL Database. A következő kódrészlet `hvactable` hoz létre a Azure SQL Databaseban.
 
        spark.table("hvactable_hive").write.jdbc(jdbc_url, "hvactable", connectionProperties)
 
-1. Kapcsolódjon az Azure SQL Database-hez az SSMS használatával, és ellenőrizze, hogy megjelenik-e a `dbo.hvactable`.
+1. Kapcsolódjon a Azure SQL Database a SSMS használatával, és ellenőrizze, hogy megjelenik-e a `dbo.hvactable`.
 
-    a. Indítsa el a SSMS, és kapcsolódjon az Azure SQL Database-hez a kapcsolat részleteinek megadásával, ahogy az alábbi képernyőképen is látható.
+    a. Indítsa el a SSMS, és kapcsolódjon a Azure SQL Databasehoz a kapcsolat részleteinek megadásával, ahogy az alábbi képernyőképen is látható.
 
-    ![Kapcsolódás az SQL Database-hez az SSMS1 használatával](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "az SQL Database-hez a SSMS1 használatával")
+    ![Kapcsolódás az SQL Database-hez a SSMS1 használatával](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "Kapcsolódás az SQL Database-hez a SSMS1 használatával")
 
-    b. **Object Explorerból**bontsa ki az Azure SQL Database és a Table csomópontot, hogy megtekintse a **dbo. hvactable** létrejöttét.
+    b. **Object Explorerból**bontsa ki a Azure SQL Database és a tábla csomópontot, hogy megtekintse a **dbo. hvactable** létrejöttét.
 
-    ![Kapcsolódás az SQL Database-hez az SSMS2 használatával](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "az SQL Database-hez a SSMS2 használatával")
+    ![Kapcsolódás az SQL Database-hez a SSMS2 használatával](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Kapcsolódás az SQL Database-hez a SSMS2 használatával")
 
 1. Futtasson egy lekérdezést a SSMS-ben a tábla oszlopainak megtekintéséhez.
 
@@ -160,11 +160,11 @@ Ebben a szakaszban egy CSV-fájlt használunk a fürtön, amely létrehoz egy t�
     SELECT * from hvactable
     ```
 
-## <a name="stream-data-into-azure-sql-database"></a>Adatfolyamok beküldése az Azure SQL Database-be
+## <a name="stream-data-into-azure-sql-database"></a>Adatfolyam-továbbítás Azure SQL Databaseba
 
-Ebben a szakaszban az előző szakaszban az Azure SQL Database-ben már létrehozott **hvactable** továbbítjuk az adatátvitelt.
+Ebben a szakaszban az adatátvitelt az előző szakaszban Azure SQL Databaseban már létrehozott `hvactable`ba.
 
-1. Első lépésként győződjön meg arról, hogy nincsenek rekordok a **hvactable**. A SSMS használatával futtassa a következő lekérdezést a táblán.
+1. Első lépésként győződjön meg arról, hogy nincsenek rekordok a `hvactable`. A SSMS használatával futtassa a következő lekérdezést a táblán.
 
     ```sql
     TRUNCATE TABLE [dbo].[hvactable]
@@ -178,17 +178,17 @@ Ebben a szakaszban az előző szakaszban az Azure SQL Database-ben már létreho
        import org.apache.spark.sql.streaming._
        import java.sql.{Connection,DriverManager,ResultSet}
 
-1. Az adatok továbbítása a **HVAC. csv** fájlból a hvactable. A HVAC. csv fájl a fürtön `/HdiSamples/HdiSamples/SensorSampleData/HVAC/` címen érhető el. A következő kódrészletben először megkapjuk a továbbított adatmennyiség sémáját. Ezután létrehozunk egy streaming dataframe az adott séma használatával. Illessze be a kódrészletet egy kód cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a futtatáshoz.
+1. Az adatok továbbítása a **HVAC. csv** fájlból a `hvactable`ba. A HVAC. csv fájl elérhető a fürtön `/HdiSamples/HdiSamples/SensorSampleData/HVAC/`on. A következő kódrészletben először megkapjuk a továbbított adatmennyiség sémáját. Ezután létrehozunk egy streaming dataframe az adott séma használatával. Illessze be a kódrészletet egy kód cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a futtatáshoz.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 
        readStreamDf.printSchema
 
-1. A kimenet a **HVAC. csv**sémáját jeleníti meg. A **hvactable** ugyanazzal a sémával is rendelkezik. A kimenet listázza a tábla oszlopait.
+1. A kimenet a **HVAC. csv**sémáját jeleníti meg. A `hvactable` is ugyanazzal a sémával rendelkezik. A kimenet listázza a tábla oszlopait.
 
-    ![hdinsight Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "tábla") sémája
+    ![hdinsight Apache Spark séma tábla](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Tábla sémája")
 
-1. Végül használja az alábbi kódrészletet az adatok beolvasásához a HVAC. csv fájlból, és továbbítsa azt a **hvactable** az Azure SQL Database-ben. Illessze be a kódrészletet egy kód cellájába, cserélje le a helyőrző értékeket az Azure SQL Database-adatbázis értékeire, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a futtatáshoz.
+1. Végül használja az alábbi kódrészletet az adatok beolvasásához a HVAC. csv fájlból, és továbbítsa azt a Azure SQL Database `hvactable`ba. Illessze be a kódrészletet egy cellába, cserélje le a helyőrző értékeket a Azure SQL Database értékeire, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a futtatáshoz.
 
        val WriteToSQLQuery  = readStreamDf.writeStream.foreach(new ForeachWriter[Row] {
           var connection:java.sql.Connection = _
@@ -229,13 +229,13 @@ Ebben a szakaszban az előző szakaszban az Azure SQL Database-ben már létreho
         
          var streamingQuery = WriteToSQLQuery.start()
 
-1. A következő lekérdezés futtatásával ellenőrizze, hogy a rendszer a **hvactable** továbbítja-e az adatátvitelt a SQL Server Management Studio (SSMS). A lekérdezés minden futtatásakor a tábla sorainak száma növekszik.
+1. A következő lekérdezés SQL Server Management Studio (SSMS) futtatásával ellenőrizze, hogy a rendszer a `hvactable` adatfolyamként továbbítja-e az adatátvitelt. A lekérdezés minden futtatásakor a tábla sorainak száma növekszik.
 
     ```sql
     SELECT COUNT(*) FROM hvactable
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az HDInsight Spark-fürt használata Data Lake Storageban lévő adatelemzéshez](apache-spark-use-with-data-lake-store.md)
 * [Strukturált adatfolyam-események feldolgozása a EventHub használatával](apache-spark-eventhub-structured-streaming.md)

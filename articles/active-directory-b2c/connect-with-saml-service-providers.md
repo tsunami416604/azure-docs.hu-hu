@@ -12,12 +12,12 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4cf572b09f1e44faca002528fd00fe5be0b51bc5
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189650"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933023"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -113,7 +113,7 @@ Ezután töltse fel az SAML-jogkivonatot és a válasz aláíró tanúsítvány�
 
 ### <a name="21-create-the-saml-token-issuer"></a>2,1 az SAML-jogkivonat kiállítójának létrehozása
 
-Most adja hozzá a bérlői képességet, hogy SAML-jogkivonatokat bocsásson ki.
+Most adja hozzá a bérlői képességet, hogy SAML-jogkivonatokat bocsásson ki az [SAML-jogkivonat kiállítója](saml-issuer-technical-profile.md) és a [SAML-munkamenet-szolgáltató](custom-policy-reference-sso.md#samlssosessionprovider) technikai profiljai használatával.
 
 Nyissa meg `SocialAndLocalAccounts\` **`TrustFrameworkExtensions.xml`** az egyéni házirend alapszintű csomagban.
 
@@ -297,7 +297,7 @@ A metaadatok az SAML-protokollban használt információk egy SAML-fél, példá
 
 Ha az SAML-metaadatok URL-címében és az alkalmazás regisztrációs jegyzékfájljában *is vannak* megadva tulajdonságok, a rendszer **egyesíti**őket. A metaadatok URL-címében megadott tulajdonságokat a rendszer először dolgozza fel, és elsőbbséget élvez.
 
-Ehhez az oktatóanyaghoz, amely az SAML-teszt alkalmazást használja, használja a következő értéket a `samlMetadataUrl`számára:
+Ebben az oktatóanyagban, amely az SAML-teszt alkalmazást használja, használja a következő értéket a `samlMetadataUrl`számára:
 
 ```JSON
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
@@ -373,7 +373,7 @@ A saját metaadat-végponton keresztül a következő, SAML-függő entitások (
 * A jogkivonat-titkosítási kulcs megadásához az Application/Service Principal objektumban.
 * Az identitás-szolgáltató által kezdeményezett bejelentkezések jelenleg nem támogatottak az előzetes verzióban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információt az [SAML-protokollról az Oasis webhelyén](https://www.oasis-open.org/)talál.
 

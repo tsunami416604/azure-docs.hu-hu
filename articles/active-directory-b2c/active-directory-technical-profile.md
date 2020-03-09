@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2c36a2c47605e7e672996a4a33734c9281dad042
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 82daf447270fc0413284e3e7a908a8b5237a4f9c
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78397831"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78932978"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -58,13 +58,13 @@ A következő példa a **HRE-közös** technikai profilt mutatja be:
 
 ## <a name="input-claims"></a>Bemeneti jogcímek
 
-A következő műszaki profilok a közösségi és helyi fiókok **szabályzattípushoz** tartalmazzák:
+A Szabályzattípushoz elem tartalmaz egy jogcímet, amely egy fiók keresésére szolgál a címtárban, vagy létrehozhat egy újat. A bemeneti jogcímek gyűjteményében pontosan egy InputClaim elemnek kell szerepelnie az összes Azure AD technikai profilhoz. Előfordulhat, hogy le kell képeznie a szabályzatban definiált jogcím nevét a Azure Active Directoryban definiált névre.
 
-- A közösségi fiók technikai profiljai **HRE-UserReadUsingAlternativeSecurityId** és **HRE-UserWriteUsingAlternativeSecurityId** tartalmazza a **AlternativeSecurityId** jogcímet. Ez a jogcím a közösségi fiók felhasználói azonosítóját tartalmazza.
-- A helyi fiók technikai profiljai **HRE-UserReadUsingEmailAddress** és **HRE-UserWriteUsingLogonEmail** tartalmazza az **e-mail** jogcímet. Ez a jogcím a helyi fiók bejelentkezési nevét tartalmazza.
-- Az egyesített (helyi és közösségi) technikai profilok **HRE-UserReadUsingObjectId**, **HRE-UserWritePasswordUsingObjectId**, **HRE-UserWriteProfileUsingObjectId**és **HRE-UserWritePhoneNumberUsingObjectId** tartalmazza a **objectId** jogcímet. Egy fiók egyedi azonosítója.
+Meglévő felhasználói fiók olvasásához, frissítéséhez vagy törléséhez a bemeneti jogcímek egy olyan kulcs, amely egyedileg azonosítja a fiókot az Azure AD-címtárban. Például: **objectId**, **userPrincipalName**, **signInNames. emailAddress**, **signInNames. username**vagy **alternativeSecurityId**. 
 
-A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak előállítására szolgálnak.
+Új felhasználói fiók létrehozásához a bemeneti jogcím olyan kulcs, amely egyedileg azonosít egy helyi vagy összevont fiókot. Például: helyi fiók: **signInNames. emailAddress**vagy **signInNames. username**. Összevont fiók esetén: a **alternativeSecurityId**.
+
+A InputClaimsTransformations elem olyan bemeneti jogcím-átalakítási elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosításához vagy újak létrehozásához használatosak.
 
 ## <a name="output-claims"></a>Kimeneti jogcímek
 

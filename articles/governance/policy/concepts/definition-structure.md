@@ -3,12 +3,12 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1100248b43dbdf668dc1164651f3d9f941f3f016
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 95625894d0eb603ae9a37c96c91d01f3720346b1
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360254"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932672"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -578,16 +578,16 @@ Az összes [Resource Manager-sablon funkció](../../../azure-resource-manager/te
 - resourceId()
 - változók ()
 
-A következő függvények használhatók egy házirend-szabályban, de különböznek a Azure Resource Manager sablonban lévő használattól:
+A következő függvény használható egy házirend-szabályban, de eltér a használattól egy Azure Resource Manager sablonban:
 
-- `addDays(dateTime, numberOfDaysToAdd)`
-  - **datetime**: [Required] String-String in the Universal ISO 8601 datetime Format éééé-hh-NNTóó: PP: SS. fffffffZ '
-  - **numberOfDaysToAdd**: [kötelező] egész szám – hozzáadandó napok száma
 - `utcNow()` – a Resource Manager-sablonoktól eltérően ez a defaultValue-n kívül is használható.
   - Egy olyan karakterláncot ad vissza, amely az univerzális ISO 8601 DateTime formátumban van beállítva az aktuális dátumra és időpontra vonatkozóan (éééé-hh-NNTóó: PP: SS. fffffffZ).
 
 A következő függvények csak a házirend-szabályokban érhetők el:
 
+- `addDays(dateTime, numberOfDaysToAdd)`
+  - **datetime**: [Required] String-String in the Universal ISO 8601 datetime Format éééé-hh-NNTóó: PP: SS. fffffffZ '
+  - **numberOfDaysToAdd**: [kötelező] egész szám – hozzáadandó napok száma
 - `field(fieldName)`
   - **Mezőnév**: [kötelező] karakterlánc – a beolvasandó [mező](#fields) neve
   - Annak az erőforrásnak az értékét adja vissza, amelyet az IF feltétel kiértékel.

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/27/2019
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a9fb1d64fb27507e4ee42c39be9ea80fbe5f168
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5dcbc2ee35620d0a29c495b24bd3756769095a17
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184451"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78932999"
 ---
 # <a name="localization"></a>Honosítás
 
@@ -39,7 +39,7 @@ A **honosítási** elem lehetővé teszi, hogy a felhasználói útvonalakhoz ta
 
 A **honosítási** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Engedélyezve | Nem | Lehetséges értékek: `true` vagy `false`. |
 
@@ -54,7 +54,7 @@ A **honosítási** elem a következő XML-elemeket tartalmazza
 
 A **SupportedLanguages** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | DefaultLanguage | Igen | A honosított erőforrások alapértelmezettként használandó nyelve. |
 | MergeBehavior | Nem | Olyan értékek enumerálási értékei, amelyek össze vannak egyesítve egy olyan ClaimType, amely ugyanabban az azonosítóban szerepel egy szülő házirendben. Ezt az attribútumot akkor használja, ha az alapházirendben megadott jogcímet felülírja. Lehetséges értékek: `Append`, `Prepend`vagy `ReplaceAll`. A `Append` érték azt határozza meg, hogy a rendszer az adatgyűjtést a szülő házirendben megadott gyűjtemény végéhez fűzi. A `Prepend` érték azt adja meg, hogy a rendszer a szülő házirendben megadott gyűjtemény előtt hozzá lehessen adni a jelen lévő adatgyűjteményt. A `ReplaceAll` érték azt határozza meg, hogy a fölérendelt házirendben definiált adatgyűjteményt figyelmen kívül kell hagyni, ehelyett az aktuális házirendben definiált adatmennyiséget kell használnia. |
@@ -71,7 +71,7 @@ A **SupportedLanguages** elem a következő elemeket tartalmazza:
 
 A **LocalizedResources** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | Egy azonosító, amely a honosított erőforrások egyedi azonosítására szolgál. |
 
@@ -94,7 +94,7 @@ A **LocalizedCollections** elem a következő elemeket tartalmazza:
 
 A **LocalizedCollection** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ElementType | Igen | Egy ClaimType elemre vagy egy felhasználói felületi elemre hivatkozik a házirend fájljában. |
 | ElementId | Igen | A ClaimsSchema szakaszban már definiált jogcím-típusra mutató hivatkozást tartalmazó karakterlánc, amely akkor használatos, ha a **ElementType** claimType van beállítva. |
@@ -108,7 +108,7 @@ A **LocalizedCollection** elem a következő elemeket tartalmazza:
 
 Az **Item** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Szöveg | Igen | Az ehhez a beállításhoz tartozó felhasználói felületen megjeleníteni kívánt felhasználóbarát megjelenítési karakterlánc. |
 | Érték | Igen | A beállítás kiválasztásához társított karakterlánc-jogcím értéke. |
@@ -144,9 +144,9 @@ A **LocalizedStrings** elem a következő elemeket tartalmazza:
 
 A **LocalizedString** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ElementType | Igen | Egy jogcím típusú elemre vagy a szabályzat felhasználói felületi elemére mutató hivatkozás. Lehetséges értékek: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`vagy. A `ClaimType` érték az egyik jogcím-attribútum honosítására szolgál a elemtípusú megadott módon. A `UxElement` érték a elemtípusú megadott felhasználói felületi elemek egyikének honosítására szolgál. A `ErrorMessage` érték a elemtípusú megadott rendszerüzenetek egyikének honosítására szolgál. A `Predicate` érték a elemtípusú megadott, a [predikátumban](predicates.md) található hibaüzenetek egyikének honosítására szolgál. A `InputValidation` érték a elemtípusú megadott [PredicateValidation](predicates.md) csoportba tartozó hibaüzenetek egyikének honosítására szolgál. |
+| ElementType | Igen | Egy jogcím típusú elemre vagy a szabályzat felhasználói felületi elemére mutató hivatkozás. Lehetséges értékek: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`vagy `GetLocalizedStringsTransformationClaimType`. A `ClaimType` érték az egyik jogcím-attribútum honosítására szolgál a elemtípusú megadott módon. A `UxElement` érték a elemtípusú megadott felhasználói felületi elemek egyikének honosítására szolgál. A `ErrorMessage` érték a elemtípusú megadott rendszerüzenetek egyikének honosítására szolgál. A `Predicate` érték a elemtípusú megadott, a [predikátumban](predicates.md) található hibaüzenetek egyikének honosítására szolgál. A `InputValidation` érték a elemtípusú megadott [PredicateValidation](predicates.md) csoportba tartozó hibaüzenetek egyikének honosítására szolgál. A `GetLocalizedStringsTransformationClaimType` érték a honosított karakterláncok jogcímbe másolására szolgál. További információ: [GetLocalizedStringsTransformation jogcímek átalakítása](string-transformations.md#getlocalizedstringstransformation)  | 
 | ElementId | Igen | Ha a **ElementType** `ClaimType`, `Predicate`vagy `InputValidation`értékre van beállítva, akkor ez az elem a ClaimsSchema szakaszban már definiált jogcím-típusra mutató hivatkozást tartalmaz. |
 | StringId | Igen | Ha a **ElementType** értéke `ClaimType`, akkor ez az elem egy jogcím típusú attribútumra mutató hivatkozást tartalmaz. Lehetséges értékek: `DisplayName`, `AdminHelpText`vagy `PatternHelpText`. A `DisplayName` érték a jogcím megjelenítendő nevének megadására szolgál. A `AdminHelpText` érték a jogcím felhasználójának Súgó szövegének megadására szolgál. A `PatternHelpText` érték a jogcím mintájának Súgó szövegének megadására szolgál. Ha a **ElementType** értéke `UxElement`, akkor ez az elem egy felhasználói felületi elem attribútumára mutató hivatkozást tartalmaz. Ha a **ElementType** értéke `ErrorMessage`, akkor ez az elem egy hibaüzenet azonosítóját adja meg. A `UxElement`-azonosítók teljes listájáért tekintse meg a [honosítási karakterlánc-azonosítókat](localization-string-ids.md) .|
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
-ms.openlocfilehash: 032d4793576e2fb9b8de9e36666548e5bffb9460
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: a85d9ebb03ea0c9ebe078ad49ce6bbf40a5b004d
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898259"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927537"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>A kereskedelmi piactér program támogatása a partner Centerben
 
@@ -27,9 +27,9 @@ A Microsoft számos termék és szolgáltatás támogatását biztosítja. A meg
 
 1. Jelentkezzen be a [kereskedelmi piactér programba](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) a munkahelyi fiókjával a partner Centerben. (Ha még nem tette meg, [létre kell hoznia egy partner Center-fiókot](./create-account.md).)
 
-1. A lap jobb oldalán található felső menüben válassza a **támogatás** ikont. 
+2. A lap jobb oldalán található felső menüben válassza a **támogatás** ikont. 
  
-1. A **Súgó és támogatás** panel az oldal jobb oldaláról fog megjelenni. 
+3. A **Súgó és támogatás** panel az oldal jobb oldaláról fog megjelenni. 
  
    ![Támogatás legördülő menü](./media/commercial-marketplace-support-pane.png)
 
@@ -37,11 +37,11 @@ A Microsoft számos termék és szolgáltatás támogatását biztosítja. A meg
 
    ![Súgó és támogatás a kezdőlapon](./media/homepage-help-support.png)
 
-1. Válassza ki a **[dokumentációt](../index.md)** a kérdésekre és erőforrásokra vonatkozó átfogó válaszok áttekintéséhez. 
+4. Válassza ki a **[dokumentációt](../index.yml)** a kérdésekre és erőforrásokra vonatkozó átfogó válaszok áttekintéséhez. 
 
-1. Válassza ki a **[Piactéri partnerek közösségi fórumát](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** , hogy válaszoljon a kérdéseire más Microsoft-közzétevők ismeretének kihasználásával. 
+5. Válassza ki a **[Piactéri partnerek közösségi fórumát](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** , hogy válaszoljon a kérdéseire más Microsoft-közzétevők ismeretének kihasználásával. 
 
-1. Válassza a **[további Súgó](https://aka.ms/marketplacepublishersupport)** lehetőséget egy **új támogatási kérelem** jegyének megnyitásához.  
+6. Válassza a **[további Súgó](https://aka.ms/marketplacepublishersupport)** lehetőséget egy **új támogatási kérelem** jegyének megnyitásához.  
 
 ## <a name="how-to-open-a-support-ticket"></a>Támogatási jegy megnyitása
 
@@ -58,7 +58,7 @@ Most már készen áll egy támogatási jegy megnyitására a **Súgó és támo
 
 Ha megtalálta a kívánt témakört, válassza a **megoldások áttekintése**elemet.
 
-![További lépések](./media/next-step.png)
+![Következő lépés](./media/next-step.png)
 
 A következő lehetőségek lesznek elérhetők:
 
@@ -78,6 +78,6 @@ Ha nem találja a választ a **javasolt megoldásokban**, kattintson a **problé
 
 A nyitott és lezárt jegyek áttekintéséhez nyissa meg a **kereskedelmi piactér** elemet a bal oldali navigációs sávon, majd válassza a **támogatás**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

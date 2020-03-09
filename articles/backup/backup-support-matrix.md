@@ -3,12 +3,12 @@ title: Az Azure Backup támogatási mátrixa
 description: Összefoglalja a Azure Backup szolgáltatás támogatási beállításait és korlátozásait.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 788da5708178cfa533d4382a4a417cef73f46a5e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: d036e527880a98d323e8de2f3a8721d7e12dbb07
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363836"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932766"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -84,7 +84,7 @@ Ha a Linux rendszerű gépek biztonsági mentését kívánja végezni, a követ
 
 ## <a name="daylight-saving-time-support"></a>Nyári időtakarékosság támogatása
 
-Az Azure-beli virtuális gépek biztonsági mentései esetében a Azure Backup nem támogatja az automatikus időzítő beállítását a nyári időszámításhoz. Szükség szerint manuálisan módosítsa a biztonsági mentési házirendeket.
+Az Azure-beli virtuális gépek biztonsági mentései esetében a Azure Backup nem támogatja az automatikus időzítő beállítását a nyári időszámításhoz. Nem irányítja át a biztonsági mentés óráját előre vagy visszafelé. Ha biztosítani szeretné, hogy a biztonsági mentés a kívánt időpontban fusson, módosítsa a biztonsági mentési szabályzatokat manuálisan, igény szerint.
 
 ## <a name="disk-deduplication-support"></a>Lemezes deduplikálás támogatása
 

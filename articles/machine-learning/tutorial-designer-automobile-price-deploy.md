@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 6fc6479ccda77bff84319d3244b2bd4a0599dc47
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 390655e3caab89425fe3c8623928c584f8bd3324
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933989"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933150"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a Designerben (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -39,7 +39,7 @@ A folyamat üzembe helyezéséhez először át kell alakítania a betanítási 
 
 1. A csővezeték fölött válassza a **következtetési folyamat létrehozása** > a **valós idejű következtetések folyamata**lehetőséget.
 
-    ![Képernyőfelvétel a folyamat létrehozása gombról](./media/tutorial-designer-automobile-price-deploy/create-inference-pipeline.png)
+    ![Képernyőfelvétel a folyamat létrehozása gombról](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
 
     A folyamatnak most így kell kinéznie: 
 
@@ -56,7 +56,7 @@ A folyamat üzembe helyezéséhez először át kell alakítania a betanítási 
     > Alapértelmezés szerint a **webszolgáltatás bemenete** ugyanazt az adatsémát fogja várni, mint a prediktív folyamat létrehozásához használt betanítási adatok. Ebben az esetben a séma tartalmazza az árat. Az előrejelzés során azonban az ár nem használható faktorként.
     >
 
-1. Válassza a **Futtatás**lehetőséget, és használja ugyanazt a számítási célt és kísérletet, amelyet az első részben használt.
+1. Válassza a **Submit (Küldés**) lehetőséget, és használja ugyanazt a számítási célt és kísérletet, amelyet az első részben használt.
 
 1. Válassza az **Üzembe helyezés** lehetőséget.
 

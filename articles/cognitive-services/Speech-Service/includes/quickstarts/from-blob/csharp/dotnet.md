@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
-ms.openlocfilehash: 959e035dc632e84595bdb54c7202f19991697fdb
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 9404818142fdde109bfa89d54b9287108352f132
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78925625"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932688"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,24 +30,51 @@ Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visu
 ## <a name="add-a-reference-to-newtonsoftjson"></a>Hivatkozás hozzáadása a Newtonsoft. JSON fájlhoz
 
 1. A Megoldáskezelő kattintson a jobb gombbal a **HelloWorld** projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget a NuGet csomagkezelő megjelenítéséhez.
-
 1. A jobb felső sarokban keresse meg a **csomag forrása** legördülő listát, és ellenőrizze, hogy a **`nuget.org`** ki van-e választva.
-
 1. A bal felső sarokban válassza a **Tallózás**lehetőséget.
-
 1. A keresőmezőbe írja be a *newtonsoft. JSON* kifejezést, és válassza az **ENTER billentyűt**.
-
 1. A keresési eredmények közül válassza ki a [**Newtonsoft. JSON**](https://www.nuget.org/packages/Newtonsoft.Json) csomagot, majd válassza a **telepítés** lehetőséget a legújabb stabil verzió telepítéséhez.
-
 1. A telepítés elindításához fogadja el az összes szerződést és licencet.
-
    A csomag telepítése után a rendszer megerősítő üzenetet jelenít meg a **Package Manager konzol** ablakban.
 
 ## <a name="start-with-some-boilerplate-code"></a>Kezdés néhány szabványos kóddal
 
 Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=6-43,138,277)]
+```csharp
+class Program
+{
+    // Replace with your subscription key
+    const string SubscriptionKey = "YourSubscriptionKey";
+
+    // Update with your service region
+    const string Region = "YourServiceRegion";
+    const int Port = 443;
+ 
+    // Recordings and locale
+    const string Locale = "en-US";
+    const string RecordingsBlobUri = "YourFileUrl";
+ 
+    // Name and description
+    const string Name = "Simple transcription";
+    const string Description = "Simple transcription description";
+ 
+    const string SpeechToTextBasePath = "api/speechtotext/v2.0/";
+ 
+    static async Task Main()
+    {
+        // For non-Windows 10 users.
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+ 
+        await TranscribeAsync();
+    }
+ 
+    static async Task TranscribeAsync()
+    {
+        Console.WriteLine("Starting transcriptions client...");
+    }
+}
+```
 
 [!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
@@ -57,18 +84,154 @@ Mivel a REST API JSON formátumban fogadja a kérelmeket, és a JSON eredményei
 Annak érdekében, hogy a kérések és válaszok könnyebben kezelhetők legyenek, deklaráljuk néhány osztályt a JSON szerializálásához/deszerializálásához.
 
 `TranscribeAsync`után helyezze el a bejelentéseit.
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=140-276)]
+
+```csharp
+public class ModelIdentity
+{
+    ModelIdentity(Guid id) => Id = id;
+
+    public Guid Id { get; private set; }
+
+    public static ModelIdentity Create(Guid Id) => new ModelIdentity(Id);
+}
+
+public class Transcription
+{
+    [JsonConstructor]
+    Transcription(
+        Guid id,
+        string name,
+        string description,
+        string locale,
+        DateTime createdDateTime,
+        DateTime lastActionDateTime,
+        string status,
+        Uri recordingsUrl,
+        IReadOnlyDictionary<string, string> resultsUrls)
+    {
+        Id = id;
+        Name = name;
+        Description = description;
+        CreatedDateTime = createdDateTime;
+        LastActionDateTime = lastActionDateTime;
+        Status = status;
+        Locale = locale;
+        RecordingsUrl = recordingsUrl;
+        ResultsUrls = resultsUrls;
+    }
+
+    public string Name { get; set; }
+
+    public string Description { get; set; }
+
+    public string Locale { get; set; }
+
+    public Uri RecordingsUrl { get; set; }
+
+    public IReadOnlyDictionary<string, string> ResultsUrls { get; set; }
+
+    public Guid Id { get; set; }
+
+    public DateTime CreatedDateTime { get; set; }
+
+    public DateTime LastActionDateTime { get; set; }
+
+    public string Status { get; set; }
+
+    public string StatusMessage { get; set; }
+}
+
+public class TranscriptionDefinition
+{
+    TranscriptionDefinition(
+        string name,
+        string description,
+        string locale,
+        Uri recordingsUrl,
+        IEnumerable<ModelIdentity> models)
+    {
+        Name = name;
+        Description = description;
+        RecordingsUrl = recordingsUrl;
+        Locale = locale;
+        Models = models;
+        Properties = new Dictionary<string, string>
+        {
+            ["PunctuationMode"] = "DictatedAndAutomatic",
+            ["ProfanityFilterMode"] = "Masked",
+            ["AddWordLevelTimestamps"] = "True"
+        };
+    }
+
+    public string Name { get; set; }
+
+    public string Description { get; set; }
+
+    public Uri RecordingsUrl { get; set; }
+
+    public string Locale { get; set; }
+
+    public IEnumerable<ModelIdentity> Models { get; set; }
+
+    public IDictionary<string, string> Properties { get; set; }
+
+    public static TranscriptionDefinition Create(
+        string name,
+        string description,
+        string locale,
+        Uri recordingsUrl)
+        => new TranscriptionDefinition(name, description, locale, recordingsUrl, new ModelIdentity[0]);
+}
+```
 
 ## <a name="create-and-configure-an-http-client"></a>Http-ügyfél létrehozása és konfigurálása
 Első lépésként egy olyan http-ügyfélre van szükségünk, amely megfelelő alap URL-címmel és hitelesítési készlettel rendelkezik.
-A kód beillesztése `TranscribeAsync` [!code-csharpba [](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=46-50)]
+Szúrja be ezt a kódot a `TranscribeAsync`ba.
+
+```csharp
+var client = new HttpClient
+{
+    Timeout = TimeSpan.FromMinutes(25),
+    BaseAddress = new UriBuilder(Uri.UriSchemeHttps, $"{Region}.cris.ai", Port).Uri,
+    DefaultRequestHeaders =
+    {
+        { "Ocp-Apim-Subscription-Key", SubscriptionKey }
+    }
+};
+```
 
 ## <a name="generate-a-transcription-request"></a>Átírási kérelem létrehozása
-Ezután létrehozjuk az átírási kérelmet. A kód hozzáadása a `TranscribeAsync` [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=52-57)]
+Ezután létrehozjuk az átírási kérelmet. Adja hozzá ezt a kódot a `TranscribeAsync`hoz.
+
+```csharp
+var transcriptionDefinition =
+    TranscriptionDefinition.Create(
+        Name,
+        Description,
+        Locale,
+        new Uri(RecordingsBlobUri));
+
+var res = JsonConvert.SerializeObject(transcriptionDefinition);
+var sc = new StringContent(res);
+sc.Headers.ContentType = JsonMediaTypeFormatter.DefaultMediaType;
+```
 
 ## <a name="send-the-request-and-check-its-status"></a>Küldje el a kérést, és keresse meg az állapotát
 Most közzétesszük a kérést a beszédfelismerési szolgáltatásba, és megvizsgáljuk a kezdeti válasz kódját. A válasz kódja egyszerűen azt jelzi, hogy a szolgáltatás megkapta-e a kérelmet. A szolgáltatás egy URL-címet ad vissza a válasz fejlécekben, amely az a hely, ahol az átírási állapotot tárolni fogja.
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=59-70)]
+
+```csharp
+Uri transcriptionLocation = null;
+using (var response = await client.PostAsync($"{SpeechToTextBasePath}Transcriptions/", sc))
+{
+    if (!response.IsSuccessStatusCode)
+    {
+        Console.WriteLine("Error {0} starting transcription.", response.StatusCode);
+        return;
+    }
+
+    transcriptionLocation = response.Headers.Location;
+}
+```
 
 ## <a name="wait-for-the-transcription-to-complete"></a>Várja meg, amíg az átírás befejeződik
 Mivel a szolgáltatás aszinkron módon dolgozza fel az átírást, minden olyan esetben le kell kérdezni annak állapotát. 5 másodpercenként megvizsgáljuk.
@@ -76,17 +239,312 @@ Mivel a szolgáltatás aszinkron módon dolgozza fel az átírást, minden olyan
 Az állapotot úgy is megtekintheti, hogy beolvassa a tartalmat a kérelem elküldésekor kapott URL-címen. Ha visszavesszük a tartalmat, deszerializáljuk az egyik segítő osztályba, hogy könnyebb legyen az együttműködés.
 
 A sikeres befejezést követően az állapotot megjelenítő lekérdezési kód a következő lesz.
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=72-106,121-137)]
+
+```csharp
+Console.WriteLine($"Created transcription at location {transcriptionLocation}.");
+Console.WriteLine("Checking status.");
+
+var completed = false;
+
+// Check for the status of our transcriptions periodically
+while (!completed)
+{
+    Transcription transcription = null;
+    using (var response = await client.GetAsync(transcriptionLocation.AbsolutePath))
+    {
+        var contentType = response.Content.Headers.ContentType;
+        if (response.IsSuccessStatusCode &&
+            string.Equals(contentType.MediaType, "application/json", StringComparison.OrdinalIgnoreCase))
+        {
+            transcription = await response.Content.ReadAsAsync<Transcription>();
+        }
+        else
+        {
+            Console.WriteLine("Error with status {0} getting transcription result", response.StatusCode);
+            continue;
+        }
+    }
+
+    switch (transcription.Status)
+    {
+        case "Failed":
+            completed = true;
+            Console.WriteLine("Transcription failed. Status: {0}", transcription.StatusMessage);
+            break;
+
+        case "Succeeded":
+            break;
+
+        case "Running":
+            Console.WriteLine("Transcription is still running.");
+            break;
+
+        case "NotStarted":
+            Console.WriteLine("Transcription has not started.");
+            break;
+    }
+
+    await Task.Delay(TimeSpan.FromSeconds(5));
+}
+
+Console.WriteLine("Press any key...");
+Console.ReadKey();
+```
 
 ## <a name="display-the-transcription-results"></a>Az átírás eredményeinek megjelenítése
-Ha a szolgáltatás sikeresen befejezte az átírást, a rendszer egy másik URL-címen tárolja az eredményeket, amelyet az állapot válasza alapján kaphat.
+Ha a szolgáltatás sikeresen befejezte az átírást, a rendszer egy másik URL-címen tárolja az eredményeket, amelyet az állapot válasza alapján kaphat. Itt az eredmények egy ideiglenes fájlba való letöltésére vonatkozó kérést teszünk, mielőtt beolvassák és deszerializáljuk őket.
+Az eredmények betöltése után kinyomtathatjuk azokat a konzolon. Adja hozzá a következő kódot a `case "Succeeded":` címkéhez.
 
-Itt az eredmények egy ideiglenes fájlba való letöltésére vonatkozó kérést teszünk, mielőtt beolvassák és deszerializáljuk őket.
-Az eredmények betöltése után kinyomtathatjuk azokat a konzolon.
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=107-120)]
+```csharp
+completed = true;
+var webClient = new WebClient();
+var filename = Path.GetTempFileName();
+webClient.DownloadFile(transcription.ResultsUrls["channel_0"], filename);
+var results = File.ReadAllText(filename);
+Console.WriteLine($"Transcription succeeded. Results: {Environment.NewLine}{results}");
+File.Delete(filename);
+```
 
 ## <a name="check-your-code"></a>A kód megkeresése
-Ezen a ponton a kódnak így kell kinéznie: (adtunk hozzá néhány megjegyzést ehhez a verzióhoz) [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=6-277)]
+Ezen a ponton a kódnak így kell kinéznie: (adtunk hozzá néhány megjegyzést ehhez a verzióhoz)
+
+```csharp
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Threading.Tasks;
+using System.Net.Http;
+using System.Net.Http.Formatting;
+
+namespace BatchClient
+{
+    class Program
+    {
+        // Replace with your subscription key
+        const string SubscriptionKey = "YourSubscriptionKey";
+
+        // Update with your service region
+        const string Region = "YourServiceRegion";
+        const int Port = 443;
+
+        // Recordings and locale
+        const string Locale = "en-US";
+        const string RecordingsBlobUri = "YourFileUrl";
+
+        // Name and description
+        const string Name = "Simple transcription";
+        const string Description = "Simple transcription description";
+
+        const string SpeechToTextBasePath = "api/speechtotext/v2.0/";
+
+        static async Task Main()
+        {
+            // For non-Windows 10 users.
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            await TranscribeAsync();
+        }
+
+        static async Task TranscribeAsync()
+        {
+            Console.WriteLine("Starting transcriptions client...");
+
+            // Create the client object and authenticate
+            var client = new HttpClient
+            {
+                Timeout = TimeSpan.FromMinutes(25),
+                BaseAddress = new UriBuilder(Uri.UriSchemeHttps, $"{Region}.cris.ai", Port).Uri,
+                DefaultRequestHeaders =
+                {
+                    { "Ocp-Apim-Subscription-Key", SubscriptionKey }
+                }
+            };
+
+            var transcriptionDefinition =
+                TranscriptionDefinition.Create(
+                    Name,
+                    Description,
+                    Locale,
+                    new Uri(RecordingsBlobUri));
+
+            var res = JsonConvert.SerializeObject(transcriptionDefinition);
+            var sc = new StringContent(res);
+            sc.Headers.ContentType = JsonMediaTypeFormatter.DefaultMediaType;
+
+            Uri transcriptionLocation = null;
+
+            using (var response = await client.PostAsync($"{SpeechToTextBasePath}Transcriptions/", sc))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Error {0} starting transcription.", response.StatusCode);
+                    return;
+                }
+
+                transcriptionLocation = response.Headers.Location;
+            }
+
+            Console.WriteLine($"Created transcription at location {transcriptionLocation}.");
+            Console.WriteLine("Checking status.");
+
+            var completed = false;
+
+            // Check for the status of our transcriptions periodically
+            while (!completed)
+            {
+                Transcription transcription = null;
+
+                // Get all transcriptions for the user
+                using (var response = await client.GetAsync(transcriptionLocation.AbsolutePath))
+                {
+                    var contentType = response.Content.Headers.ContentType;
+                    if (response.IsSuccessStatusCode &&
+                        string.Equals(contentType.MediaType, "application/json", StringComparison.OrdinalIgnoreCase))
+                    {
+                        transcription = await response.Content.ReadAsAsync<Transcription>();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error with status {0} getting transcription result", response.StatusCode);
+                        continue;
+                    }
+                }
+
+                // For each transcription in the list we check the status
+                switch (transcription.Status)
+                {
+                    case "Failed":
+                        completed = true;
+                        Console.WriteLine("Transcription failed. Status: {0}", transcription.StatusMessage);
+                        break;
+
+                    case "Succeeded":
+                        completed = true;
+                        var webClient = new WebClient();
+                        var filename = Path.GetTempFileName();
+                        webClient.DownloadFile(transcription.ResultsUrls["channel_0"], filename);
+                        var results = File.ReadAllText(filename);
+                        Console.WriteLine($"Transcription succeeded. Results: {Environment.NewLine}{results}");
+                        File.Delete(filename);
+                        break;
+
+                    case "Running":
+                        Console.WriteLine("Transcription is still running.");
+                        break;
+
+                    case "NotStarted":
+                        Console.WriteLine("Transcription has not started.");
+                        break;
+                }
+
+                await Task.Delay(TimeSpan.FromSeconds(5));
+            }
+
+            Console.WriteLine("Press any key...");
+            Console.ReadKey();
+        }
+    }
+
+    public class ModelIdentity
+    {
+        ModelIdentity(Guid id) => Id = id;
+
+        public Guid Id { get; private set; }
+
+        public static ModelIdentity Create(Guid Id) => new ModelIdentity(Id);
+    }
+
+    public class Transcription
+    {
+        [JsonConstructor]
+        Transcription(
+            Guid id,
+            string name,
+            string description,
+            string locale,
+            DateTime createdDateTime,
+            DateTime lastActionDateTime,
+            string status,
+            Uri recordingsUrl,
+            IReadOnlyDictionary<string, string> resultsUrls)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            CreatedDateTime = createdDateTime;
+            LastActionDateTime = lastActionDateTime;
+            Status = status;
+            Locale = locale;
+            RecordingsUrl = recordingsUrl;
+            ResultsUrls = resultsUrls;
+        }
+
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public string Locale { get; set; }
+
+        public Uri RecordingsUrl { get; set; }
+
+        public IReadOnlyDictionary<string, string> ResultsUrls { get; set; }
+
+        public Guid Id { get; set; }
+
+        public DateTime CreatedDateTime { get; set; }
+
+        public DateTime LastActionDateTime { get; set; }
+
+        public string Status { get; set; }
+
+        public string StatusMessage { get; set; }
+    }
+
+    public class TranscriptionDefinition
+    {
+        TranscriptionDefinition(
+            string name,
+            string description,
+            string locale,
+            Uri recordingsUrl,
+            IEnumerable<ModelIdentity> models)
+        {
+            Name = name;
+            Description = description;
+            RecordingsUrl = recordingsUrl;
+            Locale = locale;
+            Models = models;
+            Properties = new Dictionary<string, string>
+            {
+                ["PunctuationMode"] = "DictatedAndAutomatic",
+                ["ProfanityFilterMode"] = "Masked",
+                ["AddWordLevelTimestamps"] = "True"
+            };
+        }
+
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public Uri RecordingsUrl { get; set; }
+
+        public string Locale { get; set; }
+
+        public IEnumerable<ModelIdentity> Models { get; set; }
+
+        public IDictionary<string, string> Properties { get; set; }
+
+        public static TranscriptionDefinition Create(
+            string name,
+            string description,
+            string locale,
+            Uri recordingsUrl)
+            => new TranscriptionDefinition(name, description, locale, recordingsUrl, new ModelIdentity[0]);
+    }
+}
+```
 
 ## <a name="build-and-run-your-app"></a>Az alkalmazás létrehozása és futtatása
 

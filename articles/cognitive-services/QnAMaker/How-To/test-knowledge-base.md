@@ -1,22 +1,14 @@
 ---
 title: Tudásbázis – QnA Maker tesztelése
-titleSuffix: Azure Cognitive Services
 description: A QnA Maker Tudásbázis tesztelése egy, a visszaadott válaszokat pontosságának javítása iteratív folyamat fontos részét képezi. A Tudásbázis is lehetővé teszi a Szerkesztés továbbfejlesztett Csevegés felületen tesztelheti.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: c139d3a740067e3cecaff90d3171d7b0cb3d52c7
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.date: 03/05/2020
+ms.openlocfilehash: da4988ced0b077952ce64e6227d16e58d40ae329
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091757"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927276"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>A Tudásbázis tesztelése QnA Maker
 
@@ -49,26 +41,26 @@ A teszt eredményének részleteit a vizsgálat panelen tekintheti meg.
 
 ### <a name="correct-the-top-scoring-answer"></a>Javítsa ki az első válasz a pontozás
 
-Ha pontozási válasz felső helytelen, jelölje be a megfelelő választ a listában, majd válassza a **mentéséhez és Betanítunk**.
+Ha a felső pontozási válasz helytelen, válassza ki a megfelelő választ a listából, és válassza a **Mentés és a betanítás**lehetőséget.
 
 ![Javítsa ki az első válasz a pontozás](../media/qnamaker-how-to-test-kb/choose-answer.png)
 
 ### <a name="add-alternate-questions"></a>Alternatív kérdések hozzáadása
 
-Egy adott válasz egy kérdést alternatív formáját is hozzáadhat. Írja be a másodlagos válaszokat a szövegmezőbe, majd kattintson a adja meg, adja hozzá őket. Válassza ki **mentéséhez és a vonat** a frissítések tárolásához.
+Egy adott válasz egy kérdést alternatív formáját is hozzáadhat. Írja be a másodlagos válaszokat a szövegmezőbe, majd kattintson a adja meg, adja hozzá őket. A frissítések mentéséhez válassza a **Mentés és a betanítás** lehetőséget.
 
 ![Alternatív kérdések hozzáadása](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
 
 ### <a name="add-a-new-answer"></a>Adjon hozzá egy új válasz
 
-Új válasz is hozzáadhat, ha minden meglévő választ egyezést mutató helytelen, vagy a válasz nem szerepel a Tudásbázis (nem jó egyezés található a KB-ban). 
+Új válasz is hozzáadhat, ha minden meglévő választ egyezést mutató helytelen, vagy a válasz nem szerepel a Tudásbázis (nem jó egyezés található a KB-ban).
 
-A válaszok lista alján található szövegmezővel adjon meg egy új választ, és az ENTER billentyű lenyomásával adja hozzá. 
+A válaszok lista alján található szövegmezővel adjon meg egy új választ, és az ENTER billentyű lenyomásával adja hozzá.
 
-Válassza ki **mentéséhez és a vonat** segítségével őrzi meg a választ. Kérdés-válasz párokat már hozzá van adva a tudásbázist. 
+Válassza a **Mentés és a tanítás** lehetőséget a válasz megőrzéséhez. Kérdés-válasz párokat már hozzá van adva a tudásbázist.
 
 > [!NOTE]
-> A Tudásbázis minden módosítását csak mentette amikor lenyomja a **mentéséhez és a vonat** gombra.
+> A Tudásbázis összes módosítása csak a **Mentés és a betanítás** gomb megnyomása után menthető.
 
 ### <a name="test-the-published-knowledge-base"></a>A közzétett Tudásbázis tesztelése
 
@@ -83,12 +75,14 @@ A Batch Testing eszközt a következő esetekben használhatja:
 * a legfontosabb válasz és a pontszám meghatározása a kérdésekre
 * a várt válasz ellenőrzése a kérdéses csoportra vonatkozóan
 
-A Batch Testing eszközt a Batch-tesztelési eszközzel együtt kell megadnia. Ez az eszköz letölthető vagy [ C# forráskódként](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)használható [tömörített végrehajtható fájlként](https://aka.ms/qnamakerbatchtestingtool) . 
+Részletes útmutatásért olvassa el a Batch-tesztelési [oktatóanyagot](../Quickstarts/batch-testing.md) .
+
+A Batch Testing eszközt a Batch-tesztelési eszközzel együtt kell megadnia. Ez az eszköz letölthető vagy [ C# forráskódként](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)használható [tömörített végrehajtható fájlként](https://aka.ms/qnamakerbatchtestingtool) .
 
 [Az eszközre vonatkozó dokumentáció az](../reference-tsv-format-batch-testing.md) alábbiakat tartalmazza:
 
 * az eszköz parancssori példája
-* a TSV bemeneti és kimeneti fájljainak formátuma 
+* a TSV bemeneti és kimeneti fájljainak formátuma
 
 ## <a name="next-steps"></a>Következő lépések
 

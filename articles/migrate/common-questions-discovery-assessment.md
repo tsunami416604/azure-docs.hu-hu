@@ -1,77 +1,77 @@
 ---
-title: Gyakori kérdések – felderítés, értékelés és függőség elemzése Azure Migrate
+title: Felderítési, felmérési és függőségi elemzés – GYIK
 description: Választ kaphat a felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos gyakori kérdésekre Azure Migrateban.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7edc73742b61e4e5e94431c50d14d263bbbea641
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 7733213f78452b3f35b835eec847ec837138b8e5
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362029"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932685"
 ---
-# <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Gyakori kérdések a felderítéssel, az értékeléssel és a függőségek elemzésével kapcsolatban
+# <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Felderítés, értékelés és függőségek elemzése – gyakori kérdések
 
-Ez a cikk a felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos gyakori kérdésekre ad választ a Azure Migrateban. Ha további kérdései vannak, tekintse át a következő cikkeket:
+Ez a cikk a felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos gyakori kérdésekre ad választ a Azure Migrateban. Ha további kérdései vannak, tekintse meg a következő erőforrásokat:
 
-- [Általános kérdések](resources-faq.md) a Azure Migrateról.
-- Az Azure Migrate berendezéssel kapcsolatos [kérdések](common-questions-appliance.md) .
-- A kiszolgálók áttelepítésével kapcsolatos [kérdések](common-questions-server-migration.md) .
-- Kérdések közzététele a [Azure Migrate fórumban](https://aka.ms/AzureMigrateForum)
-
-
+- [Általános kérdések](resources-faq.md) a Azure Migrate
+- Az [Azure Migrate berendezéssel](common-questions-appliance.md) kapcsolatos kérdések
+- A [kiszolgálók áttelepítésével](common-questions-server-migration.md) kapcsolatos kérdések
+- A [Azure Migrate fórumban](https://aka.ms/AzureMigrateForum) választ kaphat kérdéseire
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Hány virtuális gépet tudok felderíteni egy berendezéssel?
 
-Akár 10 000 VMware virtuális gép, akár 5 000 Hyper-V virtuális gép, valamint akár 250 fizikai kiszolgáló is felderíthető egyetlen berendezéssel. Ha több géppel rendelkezik, tekintse át a [Hyper-V](scale-hyper-v-assessment.md), a [VMware](scale-vmware-assessment.md)és a [fizikai kiszolgáló](scale-physical-assessment.md) értékelésével kapcsolatos cikkeket.
+Akár 10 000 VMware virtuális gépet, akár 5 000 Hyper-V virtuális gépet és akár 250 fizikai kiszolgálót is felderítheti egyetlen készülék használatával. Ha több géppel rendelkezik, olvassa el a [Hyper-V felmérés skálázását](scale-hyper-v-assessment.md), [a VMware-értékelés méretezését](scale-vmware-assessment.md)vagy [a fizikai kiszolgáló értékelésének](scale-physical-assessment.md)méretezését ismertető cikkét.
 
+## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>A virtuális gép mérete megváltozott. Újraértékelést is Futtathatok?
 
-
-## <a name="vm-size-changed-can-i-run-an-assessment-again"></a>A virtuális gép mérete megváltozott. Újraértékelést is Futtathatok?
-
-Az Azure Migrate készülék folyamatosan gyűjti a helyszíni gépekre vonatkozó információkat, és az értékelés egy időponthoz kapcsolódó pillanatkép. Ha módosítja egy olyan virtuális gép beállításait, amelyet fel szeretne mérni, használja az újraszámítási lehetőséget az értékelés frissítéséhez a legújabb módosításokkal.
+A Azure Migrate berendezés folyamatosan gyűjt információkat a helyszíni környezetről.  Az értékelés a helyszíni virtuális gépekre vonatkozó időponthoz kapcsolódó pillanatkép. Ha módosítja egy olyan virtuális gép beállításait, amelyet fel szeretne mérni, használja az újraszámítási lehetőséget az értékelés frissítéséhez a legújabb módosításokkal.
 
 ## <a name="how-do-i-discover-vms-in-a-multitenant-environment"></a>Hogyan a virtuális gépek felderítését több-bérlős környezetben?
 
-- **VMware**: Ha egy környezet megosztott a bérlők között, és nem szeretné felderíteni a bérlő virtuális gépei egy másik bérlő előfizetésében, hozzon létre vCenter Server hitelesítő adatokat, amelyek csak a felderíteni kívánt virtuális gépekhez férhetnek hozzá. Ezután használja ezeket a hitelesítő adatokat, amikor elindítja a felderítést a Azure Migrate berendezésben.
+- **VMware**: Ha egy környezet megosztott a bérlők között, és nem szeretné felderíteni a bérlő virtuális gépei egy másik bérlő előfizetésében, hozzon létre VMware vCenter Server hitelesítő adatokat, amelyek csak a felderíteni kívánt virtuális gépekhez férhetnek hozzá. Ezután használja ezeket a hitelesítő adatokat, amikor elindítja a felderítést a Azure Migrate berendezésben.
 - **Hyper-v**: a felderítés a Hyper-v gazdagép hitelesítő adatait használja. Ha a virtuális gépek ugyanazt a Hyper-V-gazdagépet használják, jelenleg nincs lehetőség a felderítés elválasztására.  
-
 
 ## <a name="do-i-need-vcenter-server"></a>Szükségem van vCenter Serverre?
 
-Igen, Azure Migrate a felderítést a VMware-környezetben vCenter Server kell végrehajtania. Nem támogatja az vCenter Server által nem felügyelt ESXi-gazdagépek felderítését.
+Igen, Azure Migrate a felderítés végrehajtásához VMware-környezetben vCenter Server szükséges. A Azure Migrate nem támogatja a vCenter Server által nem felügyelt ESXi-gazdagépek felderítését.
 
+## <a name="what-are-the-sizing-options"></a>Mik a méretezési lehetőségek?
 
-## <a name="whats-are-the-sizing-options"></a>Mik a méretezési lehetőségek?
+Helyszíni méretezés esetén a Azure Migrate nem veszi figyelembe a virtuális gépek teljesítményadatait az értékeléshez. Azure Migrate a virtuális gépek méretét a helyszíni konfiguráció alapján méri. A teljesítmény-alapú méretezéssel a méretezés a kihasználtsági adatain alapul.
 
-Helyszíni méretezés esetén a Azure Migrate nem veszi figyelembe a virtuális gépek teljesítményadatait az értékeléshez. A helyszíni konfiguráció alapján felméri a virtuális gépek méretét. A teljesítmény-alapú méretezéssel a méretezés a kihasználtsági adatain alapul.
+Ha például egy helyszíni virtuális gép négy maggal és 8 GB memóriával rendelkezik, 50%-os CPU-kihasználtság és 50% memória kihasználtsága:
+- A helyszíni méretezés olyan Azure VM SKU-t javasol, amely négy maggal és 8 GB memóriával rendelkezik.
+- A teljesítmény-alapú méretezési szolgáltatás olyan virtuálisgép-SKU-t javasol, amely két maggal és 4 GB memóriával rendelkezik, mert a kihasználtság százalékos arányát veszi figyelembe.
 
-- Ha például egy helyszíni virtuális gép 4 maggal és 8 GB memóriával rendelkezik a 50%-os CPU-kihasználtság és a 50% memória kihasználtsága esetén:
-    - A helyszíni méretezés olyan Azure VM SKU-t javasol, amely négy maggal és 8 GB memóriával rendelkezik.
-    - A teljesítmény-alapú méretezés olyan virtuálisgép-SKU-t javasol, amely két maggal és 4 GB memóriával rendelkezik, mert a kihasználtság százalékos arányát veszi figyelembe.
+Hasonlóképpen, a lemezek méretezése a méretezési feltételektől és a tárolási típustól függ:
+- Ha a méretezési feltétel teljesítmény-alapú, és a tárolási típus automatikus, Azure Migrate a lemez IOPS és átviteli értékeit veszi figyelembe, amikor azonosítja a céllemez típusát (standard vagy prémium).
+- Ha a méretezési feltétel teljesítmény-alapú, és a tárolási típus prémium, Azure Migrate a helyszíni lemez méretétől függően a prémium szintű lemezes SKU-t javasolja. Ugyanez a logikát alkalmazza a lemez méretezésére, ha a méretezés a helyszínen történik, és a tárolási típus a standard vagy a prémium.
 
-- Hasonlóképpen, a lemezek méretezése a méretezési feltételektől és a tárolási típustól függ.
-    - Ha a méretezési feltétel teljesítmény-alapú, és a tárolási típus automatikus, Azure Migrate a lemez IOPS és átviteli értékeit veszi figyelembe, amikor azonosítja a céllemez típusát (standard vagy prémium).
-    - Ha a méretezési feltétel teljesítmény-alapú, és a tárolási típus prémium, Azure Migrate a helyszíni lemez méretétől függően a prémium szintű lemezes SKU-t javasolja. Ugyanez a logikát alkalmazza a lemez méretezésére, amikor a méretezés a helyszínen történik, és a tárolási típus a standard vagy a prémium.
+## <a name="does-performance-history-and-utilization-affect-sizing"></a>Befolyásolja a teljesítmény előzményei és kihasználtsága a méretezést?
 
-## <a name="does-performance-historyutilization-impact-sizing"></a>A teljesítmény-előzmények/kihasználtság befolyásolja a méretezést?
+Igen, a teljesítmény előzményei és kihasználtsága hatással van a Azure Migrate méretezésére.
 
-Ez a tulajdonságok csak a teljesítményalapú méretezés esetén számítanak.
+### <a name="performance-history"></a>A teljesítmény előzményei
 
-- Azure Migrate gyűjti a helyszíni gépek teljesítményének előzményeit, és azt használja a virtuális gép méretének és a lemez típusának az Azure-ban való használatát.
-- A berendezés folyamatosan a helyszíni környezetet, a valós idejű kihasználtsági adatok gyűjtését végzi 20 másodpercenként.
-- A készülék összesíti a 20 másodperces mintákat, és 15 percenként létrehoz egyetlen adatpontot.
-- Az adatpont létrehozásához a berendezés a 20 másodperces mintákból kiválasztja a csúcsérték értékét.
-- A készülék elküldi ezt az adatpontot az Azure-nak.
+A csak teljesítmény-alapú méretezéshez Azure Migrate gyűjti a helyszíni gépek teljesítményének előzményeit, majd az Azure-ban a virtuális gép méretének és a lemez típusának a használatát javasolja:
 
-Amikor értékelést hoz létre az Azure-ban, a teljesítmény időtartama és a teljesítményi előzmények percentilis értéke alapján Azure Migrate kiszámítja a tényleges kihasználtság értékét, és azt használja a méretezéshez.
+1. A készülék folyamatosan a helyszíni környezetet gyűjti a valós idejű kihasználtsági adatok gyűjtésére 20 másodpercenként.
+1. A készülék összesíti az összegyűjtött 20 másodperces mintákat, és a használatával 15 percenként egyetlen adatpontot hoz létre.
+1. Az adatpont létrehozásához a készülék az összes 20 másodperces mintából kiválasztja a csúcsérték értékét.
+1. A készülék elküldi az adatpontot az Azure-nak.
 
-- Ha például egy napra állítja be a teljesítmény időtartamát, a percentilis értékét pedig 95 percentilis értékre, Azure Migrate rendezi a gyűjtő által az elmúlt napra vonatkozóan a növekvő sorrendben eljuttatott 15 perces mintavételi pontokat, és a 95. percentilis értékét a hatályos értékre választja. kihasználtsága.
-- A 95. percentilis értékének használata esetén a rendszer figyelmen kívül hagyja a kiugró értékeket. A kiugró értékek a esetek 99% percentilis használata esetén szerepelhetnek. Ha ki szeretné választani az időszak maximális kihasználtságát anélkül, hogy a kiugró értékek hiányoznak, válassza ki a esetek 99% percentilis értéket.
+### <a name="utilization"></a>Kihasználtsága
+
+Ha az Azure-ban hoz létre értékelést, a teljesítmény időtartamától és a beállított teljesítménybeli százalékos értéktől függően a Azure Migrate kiszámítja a tényleges kihasználtság értékét, majd ezt használja a méretezéshez.
+
+Ha például a teljesítmény időtartamát egy napra állítja be, és a percentilis értéke 95. percentilis értékre van állítva, akkor a Azure Migrate a gyűjtő által az elmúlt napra eljuttatott 15 perces mintavételi pontokat növekvő sorrendbe rendezi. A 95. percentilis értéket a tényleges kihasználtságként választja.
+
+A 95. percentilis értékének használata biztosítja, hogy a rendszer figyelmen kívül hagyja a kiugró értékeket. A kiugró értékek akkor is szerepelhetnek, ha a Azure Migrate a esetek 99% percentilis-t használja. Ha ki szeretné választani az időszak maximális kihasználtságát anélkül, hogy a kiugró értékek hiányoznak, állítsa be Azure Migrate a esetek 99% percentilis használatára.
 
 ## <a name="what-is-dependency-visualization"></a>Mi a függőségi vizualizáció?
 
-A függőségi vizualizáció használatával felmérhetővé teheti a virtuális gépek csoportjait a nagyobb megbízhatóság érdekében. A függőségi vizualizációk átvizsgálják a számítógép függőségeit az értékelés futtatása előtt. Ezzel biztosítható, hogy semmi ne maradjon hátra, így elkerülhető a váratlan kimaradások elkerülése az Azure-ba való Migrálás során. Azure Migrate a függőségi vizualizáció engedélyezéséhez a Azure Monitor Service Map megoldását használja. [További információ](concepts-dependency-visualization.md).
+A függőségi vizualizáció segíthet felmérni a virtuális gépek csoportjait, hogy nagyobb megbízhatósággal legyenek áttelepítve. A függőségi vizualizációk átvizsgálják a számítógép függőségeit az értékelés futtatása előtt. Így biztosítható, hogy semmi sincs hátra, és segít elkerülni a váratlan kimaradásokat az Azure-ba való Migrálás során. Azure Migrate a függőségi vizualizáció engedélyezéséhez a Azure Monitor Service Map megoldását használja. [További információk](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > A függőségi vizualizáció nem érhető el Azure Governmentban.
@@ -91,22 +91,19 @@ Adatok | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve
 Megjelenítés | Az önálló kiszolgálók függőségi térképe egy óra és 30 nap közötti időtartamon belül megtekinthető. | Egyetlen kiszolgáló függőségi térképe.<br/><br/> A Térkép csak egy órán át jeleníthető meg.<br/><br/> Kiszolgálók egy csoportjának függőségi térképe.<br/><br/> Kiszolgálók hozzáadása és eltávolítása a Térkép nézetből.
 Adatexportálás | Jelenleg nem tölthető le táblázatos formátumban. | Az adatlekérdezés a Log Analytics használatával kérdezhető le.
 
-
-
-
 ## <a name="do-i-pay-for-dependency-visualization"></a>Fizetnem kell a függőségi vizualizációért?
-Nem. [Itt talál további információkat](https://azure.microsoft.com/pricing/details/azure-migrate/) az Azure Migrate díjszabásáról.
+
+Nem. További információ a [Azure Migrate díjszabásáról](https://azure.microsoft.com/pricing/details/azure-migrate/).
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>Mit kell telepíteni az ügynök-alapú függőségi vizualizációhoz?
 
-Az ügynök-alapú függőségi vizualizációk használatához le kell töltenie és telepítenie kell az ügynököket minden olyan helyszíni gépen, amelyet ki szeretne értékelni.
+Az ügynök-alapú függőségi vizualizációk használatához töltse le és telepítse az ügynököket minden olyan helyszíni gépen, amelyet ki szeretne értékelni:
 
-Telepítse a következő ügynököket mindegyik gépen:
-- [Microsoft monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).
-- [Függőségi ügynök](../azure-monitor/platform/agents-overview.md#dependency-agent).
-- Ha olyan gépekkel rendelkezik, amelyeknek nincs internetkapcsolata, le kell töltenie és telepítenie kell Log Analytics-átjárót.
+- [Microsoft monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)
+- [Függőségi ügynök](../azure-monitor/platform/agents-overview.md#dependency-agent)
+- Ha olyan gépekkel rendelkezik, amelyeknek nincs internetkapcsolata, töltse le és telepítse a Log Analytics átjárót rajtuk.
 
-Ezek az ügynökök nem szükségesek, kivéve, ha ügynök-alapú függőségi vizualizációt használ.
+Ezeket az ügynököket csak akkor kell használni, ha ügynök-alapú függőségi vizualizációt használ.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Használhatok egy meglévő munkaterületet?
 
@@ -117,29 +114,28 @@ Igen, az ügynök-alapú függőségi vizualizációhoz csatolhat egy meglévő 
 Nem, az ügynök-alapú vizualizációban nem lehet exportálni a függőség vizualizációs jelentését. A Azure Migrate azonban Service Mapt használ, és az [Service Map REST API](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) használatával kérheti le a függőségeket JSON formátumban.
 
 ## <a name="can-i-automate-agent-installation"></a>Automatizálható az ügynök telepítése?
-Az ügynök-alapú függőségi vizualizációk esetében az alábbi módon automatizálható:
 
-- Ezzel [a parancsfájllal telepítheti a függőségi ügynököt](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples).
-- Az MMA esetében kövesse az alábbi [utasításokat](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) a parancssor vagy az Automation használatához, vagy használja [ezt a parancsfájlt](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+Ügynök-alapú függőségi vizualizáció esetén:
+
+- Parancsfájl használatával [telepítse a függőségi ügynököt](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples).
+- Az MMA esetében [használja a parancssort vagy az automationt](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration), vagy használjon [parancsfájlt](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 - A parancsfájlok mellett olyan központi telepítési eszközöket is használhat, mint például a Microsoft Endpoint Configuration Manager és a [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) az ügynökök üzembe helyezéséhez.
-
 
 ## <a name="what-operating-systems-does-mma-support"></a>Milyen operációs rendszereket támogat az MMA?
 
 - Tekintse meg az [MMA által támogatott Windows operációs rendszerek](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)listáját.
 - Megtekintheti az [MMA által támogatott Linux operációs rendszerek](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)listáját.
 
-## <a name="can-i-visualize-dependencies-for-more-than-an-hour"></a>Megjeleníthető-e a függőségek több mint egy óráig?
-Az ügynök-alapú vizualizációk esetében akár egy óráig is megjelenítheti a függőségeket. Visszatérhet egy adott dátumhoz az előzményekben, egy hónapra visszamenőleg, de a vizualizációk maximális időtartama egy óra. Használhatja például az időtartamot a függőségi térképen a tegnapi függőségek megjelenítéséhez, de csak egyórás időszakra vonatkozóan tekintheti meg a függőségeket. A [függőségi adat](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) hosszabb időtartamon keresztül történő lekérdezéséhez azonban Azure monitor naplókat is használhat.
+## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>Megjeleníthető több mint egy órányi függőség?
 
-Az ügynök nélküli vizualizációk esetében egy adott kiszolgáló függőségi térképét egy óra és 30 nap közötti időtartamra tekintheti meg.
+Az ügynök-alapú vizualizációk esetében akár egy óráig is megjelenítheti a függőségeket. Akár egy hónapig is visszatérhet egy adott dátumra az előzményekben, de a vizualizációk maximális időtartama egy óra. Használhatja például az időtartamot a függőségi térképen a tegnapi függőségek megtekintéséhez, de a függőségeket csak egy órás időszakra lehet megtekinteni. Azonban Azure Monitor naplók használatával hosszabb időtartamra [kérdezheti le a függőségi adatmennyiséget](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) .
 
+Az ügynök nélküli vizualizációk esetében egy adott kiszolgáló függőségi térképét egy óra és 30 nap közötti időtartamon belül tekintheti meg.
 
-## <a name="can-visualize-dependencies-for-groups-of-more-than-10-vms"></a>Képes megjeleníteni a több mint 10 virtuális gépen álló csoportok függőségeit?
-A legfeljebb 10 virtuális gépet tartalmazó csoportok [függőségeit megjelenítheti](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) . Ha több mint 10 virtuális géppel rendelkező csoporttal rendelkezik, javasoljuk, hogy ossza szét a csoportot kisebb csoportokba, majd jelenítse meg a függőségeket.
+## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-vms"></a>Megjeleníthető a több mint 10 virtuális gépen lévő csoportok függőségei?
 
-
-
+Megjelenítheti a [függőségeket](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) a legfeljebb 10 virtuális géppel rendelkező csoportok esetében. Ha több mint 10 virtuális géppel rendelkező csoporttal rendelkezik, javasoljuk, hogy ossza szét a csoportot kisebb csoportokba, majd jelenítse meg a függőségeket.
 
 ## <a name="next-steps"></a>Következő lépések
+
 Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).

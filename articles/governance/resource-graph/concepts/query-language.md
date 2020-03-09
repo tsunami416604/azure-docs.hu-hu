@@ -1,14 +1,14 @@
 ---
 title: A lekérdezés nyelvének megismerése
 description: Az Azure Resource Graph-ban használható Resource Graph-táblákat, valamint az elérhető Kusto adattípusokat, operátorokat és függvényeket ismerteti.
-ms.date: 12/05/2019
+ms.date: 03/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: a3503ce8d83b5bd47872db4b1de0eadb88be432c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2f4be4d86a340867e1ad3015ff288f98fc54cecf
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851213"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927494"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure Resource Graph lekérdezési nyelvének megismerése
 
@@ -26,10 +26,14 @@ Az erőforrás-diagram több táblázatot is biztosít a Resource Manager-erőfo
 
 |Resource Graph-táblák |Leírás |
 |---|---|
-|Segédanyagok és eszközök |Az alapértelmezett tábla, ha nincs megadva a lekérdezésben. A legtöbb Resource Manager-erőforrás típusa és tulajdonsága itt található. |
+|További források |Az alapértelmezett tábla, ha nincs megadva a lekérdezésben. A legtöbb Resource Manager-erőforrás típusa és tulajdonsága itt található. |
 |ResourceContainers |Az előfizetést (előzetes verzió – `Microsoft.Resources/subscriptions`) és az erőforráscsoport (`Microsoft.Resources/subscriptions/resourcegroups`) típusú erőforrásokat és az adattípusokat tartalmazza. |
+|AdvisorResources |`Microsoft.Advisor`hoz _kapcsolódó_ erőforrásokat tartalmaz. |
 |AlertsManagementResources |`Microsoft.AlertsManagement`hoz _kapcsolódó_ erőforrásokat tartalmaz. |
+|MaintenanceResources |`Microsoft.Maintenance`hoz _kapcsolódó_ erőforrásokat tartalmaz. |
 |SecurityResources |`Microsoft.Security`hoz _kapcsolódó_ erőforrásokat tartalmaz. |
+
+A teljes listát, például az erőforrástípusok listáját a következő témakörben tekintheti meg [: hivatkozás: támogatott táblák és erőforrástípusok](../reference/supported-tables-resources.md).
 
 > [!NOTE]
 > Az _erőforrások_ az alapértelmezett tábla. A _Resources (erőforrások_ ) tábla lekérdezésekor nem kell megadnia a tábla nevét, kivéve `join` vagy `union` használata esetén. Azonban az ajánlott eljárás az, hogy mindig tartalmazza a kezdeti táblát a lekérdezésben.

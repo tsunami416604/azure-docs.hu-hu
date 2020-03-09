@@ -8,28 +8,28 @@ ms.topic: include
 ms.date: 04/05/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 9971b16da42cdf1de0464857291c74a947535735
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 64c900e01496dad0d5f6a96d8d790ae0c2a8c95a
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179664"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927383"
 ---
-Segítségével lekérdezések az Adatkezelőben lekérheti és szűrheti az adatokat.
+Az Adatkezelő lévő lekérdezések segítségével lekérheti és szűrheti az adatait.
 
-1. Felső részén a **dokumentumok** az Adatkezelőben lapján, az alapértelmezett lekérdezéssel `SELECT * FROM c`. Ez a lekérdezés lekéri és összes dokumentum a gyűjtemény azonosítója sorrendben jeleníti meg. 
+1. Az Adatkezelő **elemek** lapjának tetején tekintse át az alapértelmezett lekérdezési `SELECT * FROM c`. A lekérdezés lekérdezi és megjeleníti a gyűjteményben lévő összes dokumentumot azonosító sorrendben. 
    
    ![Az alapértelmezett lekérdezés az Adatkezelőben a `SELECT * FROM c`](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png)
    
-1. A lekérdezés módosításához válassza **szűrő szerkesztése**, cserélje le az alapértelmezett lekérdezéssel rendelkező `ORDER BY c._ts DESC`, majd válassza ki **szűrő alkalmazása**.
+1. A lekérdezés módosításához válassza a **Szűrő szerkesztése**lehetőséget, cserélje le az alapértelmezett lekérdezést `ORDER BY c._ts DESC`re, majd válassza a **szűrő alkalmazása**lehetőséget.
    
    ![Az alapértelmezett lekérdezés módosítása az ORDER BY c._ts DESC hozzáadásával és a Szűrő alkalmazása lehetőségre való kattintással](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edit-query.png)
 
-   A módosított lekérdezés megjeleníti a dokumentumok az időbélyegzőt, így most már a második dokumentum alapján csökkenő sorrendben az első helyen szerepel. 
+   A módosított lekérdezés a dokumentumokat csökkenő sorrendben jeleníti meg az időbélyegző alapján, így most már a második dokumentum jelenik meg. 
    
-   ![Az ORDER BY c._ts DESC lekérdezés és szűrés gombra kattintva módosítani](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edited-query.png)
+   ![A lekérdezés módosult a következő SORRENDre: c. _ts DESC, és kattintson a szűrő alkalmazása lehetőségre.](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edited-query.png)
 
-Ha ismeri az SQL szintaxisát, megadhatja bármelyik támogatott [SQL-lekérdezések](../articles/cosmos-db/sql-api-sql-query.md) a lekérdezési predikátumhoz a. Az adatkezelő segítségével hozzon létre a tárolt eljárásokat, felhasználói függvények és eseményindítók a kiszolgálóoldali üzleti logikát. 
+Ha már ismeri az SQL-szintaxist, megadhat bármilyen támogatott [SQL-lekérdezést](../articles/cosmos-db/sql-api-sql-query.md) a lekérdezési predikátum mezőben. A Adatkezelő használatával tárolt eljárásokat, UDF és a kiszolgálóoldali üzleti logikát kiváltó eseményindítókat is létrehozhat. 
 
-Az adatkezelő könnyen elérhetők az Azure portál összes beépített, programozható adatok hozzáférési funkcióit az API-k. A portál skálázhatja átviteli sebességet, a kulcsok és a kapcsolati karakterláncok beolvasása és a metrikák és SLA-k áttekintése az Azure Cosmos DB-fiók is használhatja. 
+A Adatkezelő egyszerű Azure Portal hozzáférést biztosít az API-kkal elérhető beépített programozott adathozzáférési funkciókhoz. A portálon az átviteli sebességet, a kulcsok és a kapcsolódási karakterláncok beszerzését, valamint a Azure Cosmos DB-fiók metrikáinak és SLA-ának áttekintését is használhatja. 
 

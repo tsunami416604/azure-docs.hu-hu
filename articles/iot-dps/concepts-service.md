@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975601"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378898"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>IoT Hub Device Provisioning Service fogalmak
 
@@ -31,7 +31,7 @@ A szolgáltatási műveletek végpontja a szolgáltatás beállításainak kezel
 
 Az eszköz kiépítési végpontja az egyetlen végpont, amelyet minden eszköz használ az automatikus kiépítés során. Az URL-cím megegyezik az összes kiépítési szolgáltatási példány esetében, így nincs szükség az eszközök új kapcsolódási információkkal való újratöltésére az ellátási lánc forgatókönyvei között. Az azonosító hatóköre biztosítja a bérlő elkülönítését.
 
-## <a name="linked-iot-hubs"></a>IoT-központtal összekapcsolva
+## <a name="linked-iot-hubs"></a>Csatolt IoT hubok
 
 A Device kiépítési szolgáltatás csak olyan IoT-hubok számára tud eszközöket kiépíteni, amelyek hozzá lettek kapcsolva. Az IoT hub és az eszköz kiépítési szolgáltatásának egy példányához való csatolásával a szolgáltatás olvasási/írási jogosultságot biztosít az IoT hub eszközének beállításjegyzékéhez; a hivatkozással egy eszköz kiépítési szolgáltatása regisztrálhat egy eszköz-azonosítót, és beállíthatja a kezdeti konfigurációt az eszköz Twin-ben. A csatolt IoT hubok bármelyik Azure-régióban lehetnek. A kiépítési szolgáltatáshoz más előfizetésekben lévő hubokat is csatolhat.
 
@@ -50,7 +50,7 @@ A szolgáltatás szintjének beállítása, amely meghatározza, hogy az eszköz
 A regisztráció az automatikus kiépítés útján regisztrálhatók eszközeinek vagy csoportjainak a nyilvántartása. A beléptetési rekord információt tartalmaz az eszközről vagy az eszközök csoportjából, beleértve a következőket:
 - az eszköz által használt [igazolási mechanizmus](concepts-security.md#attestation-mechanism)
 - a választható kezdeti kívánt konfiguráció
-- kívánt IoT hub
+- desired IoT hub
 - a kívánt eszköz azonosítója
 
 A Device kiépítési szolgáltatás két típusú regisztrációt támogat:
@@ -75,4 +75,4 @@ A regisztráció egy eszköz rekordja, amely sikeresen regisztrálja/kiépít eg
 
 ## <a name="operations"></a>Műveletek
 
-A műveletek az eszköz kiépítési szolgáltatásának számlázási egységei. Egy művelet egy utasítás sikeres befejezése a szolgáltatás számára. Művelet lehet az eszköz regisztrálása és újraregisztrálása, vagy a szolgáltatásoldali változások, például tételek hozzáadása a regisztrálási listákhoz vagy a tételek frissítése a listákban.
+A műveletek az eszköz kiépítési szolgáltatásának számlázási egységei. Egy művelet egy utasítás sikeres befejezése a szolgáltatás számára. A műveletek közé tartozik az eszközök regisztrációja és az újbóli regisztráció; a műveletek olyan szolgáltatás-oldali módosításokat is tartalmaznak, mint például a regisztrációs lista bejegyzéseinek hozzáadása és a regisztrációs lista bejegyzéseinek frissítése.

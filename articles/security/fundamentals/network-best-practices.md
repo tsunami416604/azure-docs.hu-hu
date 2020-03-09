@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
 ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771994"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392037"
 ---
 # <a name="azure-best-practices-for-network-security"></a>A hálózati biztonságra vonatkozó Azure ajánlott eljárások
 Ez a cikk az Azure ajánlott eljárásainak gyűjteményét ismerteti a hálózati biztonság növelése érdekében. Ezek az ajánlott eljárások az Azure hálózatkezelési tapasztalataiból és az ügyfelek, például saját tapasztalataiból származnak.
@@ -133,7 +133,7 @@ Egy hibrid IT-forgatókönyvben általában valamilyen típusú létesítmények
 * [Helyek közötti VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md). Ez egy megbízható, megbízható és kialakított technológia, de a kapcsolat az interneten keresztül zajlik. A sávszélességet a rendszer legfeljebb 1,25 GB/s-ra korlátozza. Bizonyos helyzetekben a helyek közötti VPN használata kívánatos.
 * **Azure-ExpressRoute**. Javasoljuk, hogy a [ExpressRoute](../../expressroute/expressroute-introduction.md) használja a létesítmények közötti kapcsolathoz. Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. A ExpressRoute használatával kapcsolatokat létesíthet a Microsoft felhőalapú szolgáltatásaihoz, például az Azure-hoz, az Office 365-hoz és a Dynamics 365-hoz. A ExpressRoute egy dedikált WAN-kapcsolat a helyszíni hely vagy egy Microsoft Exchange-szolgáltató között. Mivel ez egy távközlési kapcsolat, az adatai nem jutnak el az interneten keresztül, így nem jelentenek az internetes kommunikáció lehetséges kockázatait.
 
-A ExpressRoute-kapcsolatok helye hatással lehet a tűzfal kapacitására, a méretezhetőségre, a megbízhatóságra és a hálózati forgalom láthatóságára. Meg kell határoznia, hogy hol kell leállítani a ExpressRoute a meglévő (helyszíni) hálózatokban. Előnyök:
+A ExpressRoute-kapcsolatok helye hatással lehet a tűzfal kapacitására, a méretezhetőségre, a megbízhatóságra és a hálózati forgalom láthatóságára. Meg kell határoznia, hogy hol kell leállítani a ExpressRoute a meglévő (helyszíni) hálózatokban. A következőket teheti:
 
 - Ha a tűzfalon kívülről (a peremhálózati paradigma) leáll, ha az adatközpontok elkülönítéséhez meglévő gyakorlatot kell folytatnia, vagy ha kizárólag extranetes erőforrásokat helyez üzembe az Azure-ban.
 - Megszakítás a tűzfalon belül (a hálózati bővítmény paradigma). Ez az alapértelmezett javaslat. Minden más esetben azt javasoljuk, hogy az Azure-t n/s adatközpontként kezelje.

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/06/2019
-ms.openlocfilehash: bbc62aa153e6ecb5d9ae65c37392c2697b9beaa2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/06/2020
+ms.openlocfilehash: 958794cda60d0ce1b0d223b9b5a6c03283022a6c
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979708"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927564"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Az Azure Machine learning monitorozási adatreferenciája
 
@@ -63,7 +63,7 @@ A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyű
 | Kategória | A naplózási esemény neve, AmlComputeClusterNodeEvent |
 | ProvisioningState | A fürt kiépítési állapota |
 | ClusterName | A fürt neve |
-| ClusterType | A fürt típusa |
+| clusterType | A fürt típusa |
 | CreatedBy | A fürtöt létrehozó felhasználó |
 | CoreCount | A fürtben lévő magok száma |
 | VmSize | A fürt virtuálisgép-mérete |
@@ -73,9 +73,9 @@ A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyű
 | MinimumNodeCount | A fürt minimális csomópontjainak száma |
 | MaximumNodeCount | A fürt maximális csomópontjainak száma |
 | NodeDeallocationOption | A csomópont kiosztásának módja |
-| Gyártó/kiadó | A fürt típusának közzétevője |
+| Közzétevő | A fürt típusának közzétevője |
 | Ajánlat | Az ajánlat, amellyel a fürt létrejött |
-| Termékváltozat | A fürtön belül létrehozott csomópont/virtuális gép SKU-a |
+| SKU | A fürtön belül létrehozott csomópont/virtuális gép SKU-a |
 | Verzió | A csomópont/virtuális gép létrehozásakor használt rendszerkép verziója |
 | A netI | A fürt kimutatása |
 | AllocationState | Fürt kiosztási állapota |
@@ -109,9 +109,9 @@ A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyű
 | VmSize | A csomópont virtuális gép mérete |
 | VmFamilyName | A virtuális gép családja, amelyhez a csomópont tartozik |
 | VmPriority | Dedikált/LowPriority létrehozott csomópont prioritása |
-| Gyártó/kiadó | A virtuálisgép-rendszerkép kiadója, például Microsoft-dsvm |
+| Közzétevő | A virtuálisgép-rendszerkép kiadója, például Microsoft-dsvm |
 | Ajánlat | A virtuális gép létrehozásával kapcsolatos ajánlat |
-| Termékváltozat | A létrehozott csomópont/virtuális gép SKU-jának száma |
+| SKU | A létrehozott csomópont/virtuális gép SKU-jának száma |
 | Verzió | A csomópont/virtuális gép létrehozásakor használt rendszerkép verziója |
 | ClusterCreationTime | A fürt létrehozásának ideje |
 | ResizeStartTime | A fürt vertikális fel-és leskálázásának ideje |
@@ -122,7 +122,7 @@ A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyű
 | StartTaskEndTime | A csomóponthoz rendelt feladat befejezésének ideje |
 | TotalE2ETimeInSeconds | A teljes idő csomópont aktív volt |
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
 Az alábbi táblázatok felsorolják az összes metrika Azure Machine Learning gyűjtött platform-metrikákat a névtér **Azure Machine learning-munkaterület**.
 
@@ -130,11 +130,11 @@ Az alábbi táblázatok felsorolják az összes metrika Azure Machine Learning g
 
 | Metrika | Unit (Egység) | Leírás |
 | ----- | ----- | ----- |
-| A modell üzembe helyezése nem sikerült | Mennyiség | A sikertelen telepítési modellek száma. |
-| A modell üzembe helyezése elindult | Mennyiség | A modell központi telepítésének száma megkezdődött. |
-| A modell telepítése sikerült | Mennyiség | A sikeres modell-telepítések száma. |
-| A modell regisztrálása nem sikerült | Mennyiség | A sikertelen modell-regisztrációk száma. |
-| A modell regisztrálása sikerült | Mennyiség | A sikeres modell-regisztrációk száma. |
+| A modell üzembe helyezése nem sikerült | Darabszám | A sikertelen telepítési modellek száma. |
+| A modell üzembe helyezése elindult | Darabszám | A modell központi telepítésének száma megkezdődött. |
+| A modell telepítése sikerült | Darabszám | A sikeres modell-telepítések száma. |
+| A modell regisztrálása nem sikerült | Darabszám | A sikertelen modell-regisztrációk száma. |
+| A modell regisztrálása sikerült | Darabszám | A sikeres modell-regisztrációk száma. |
 
 **Kvóta**
 
@@ -142,19 +142,19 @@ A kvóta adatai csak Azure Machine Learning számítási feladatokhoz használha
 
 | Metrika | Unit (Egység) | Leírás |
 | ----- | ----- | ----- |
-| Aktív magok | Mennyiség | Az aktív számítási magok száma. |
-| Aktív csomópontok | Mennyiség | Az aktív csomópontok száma. |
-| Üresjárati magok | Mennyiség | Az üresjáratban lévő számítási magok száma. |
-| Tétlen csomópontok | Mennyiség | Az üresjáratban lévő számítási csomópontok száma. |
-| Magok kihagyása | Mennyiség | A magok elhagyásának száma. |
-| Csomópontok elhagyása | Mennyiség | A csomópontok elhagyásának száma. |
-| Előzik magok | Mennyiség | A előzik magok száma. |
-| Előzik-csomópontok | Mennyiség | A előzik-csomópontok száma. |
+| Aktív magok | Darabszám | Az aktív számítási magok száma. |
+| Aktív csomópontok | Darabszám | Az aktív csomópontok száma. |
+| Üresjárati magok | Darabszám | Az üresjáratban lévő számítási magok száma. |
+| Tétlen csomópontok | Darabszám | Az üresjáratban lévő számítási csomópontok száma. |
+| Magok kihagyása | Darabszám | A magok elhagyásának száma. |
+| Csomópontok elhagyása | Darabszám | A csomópontok elhagyásának száma. |
+| Előzik magok | Darabszám | A előzik magok száma. |
+| Előzik-csomópontok | Darabszám | A előzik-csomópontok száma. |
 | Kvóta kihasználtsága (%) | Százalék | A felhasznált kvóta százalékaránya. |
-| Összes mag | Mennyiség | A magok teljes száma. |
-| Csomópontok összesen | Mennyiség | Az összes csomópont. |
-| Használhatatlan magok | Mennyiség | A használhatatlan magok száma. |
-| Használhatatlan csomópontok | Mennyiség | A használhatatlan csomópontok száma. |
+| Magok összesen | Darabszám | A magok teljes száma. |
+| Csomópontok összesen | Darabszám | Az összes csomópont. |
+| Használhatatlan magok | Darabszám | A használhatatlan magok száma. |
+| Használhatatlan csomópontok | Darabszám | A használhatatlan csomópontok száma. |
 
 A kvóta metrikáinak szűrésére a következő dimenziók használhatók:
 
@@ -164,15 +164,15 @@ A kvóta metrikáinak szűrésére a következő dimenziók használhatók:
 | VM-család neve | Kvóta kihasználtsága (%) | A fürt által használt virtuálisgép-család neve. |
 | Virtuális gép prioritása | Kvóta kihasználtsága (%) | A virtuális gép prioritása.
 
-**Futtatás**
+**Futtassa**
 
 A képzések futtatásával kapcsolatos információk.
 
 | Metrika | Unit (Egység) | Leírás |
 | ----- | ----- | ----- |
-| Befejezett futtatások | Mennyiség | A befejezett futtatások száma. |
-| Sikertelen futtatások | Mennyiség | A sikertelen futtatások száma. |
-| Elindított futtatások | Mennyiség | Az elindított futtatások száma. |
+| Befejezett futtatások | Darabszám | A befejezett futtatások száma. |
+| Sikertelen futtatások | Darabszám | A sikertelen futtatások száma. |
+| Elindított futtatások | Darabszám | Az elindított futtatások száma. |
 
 A következő méretek használhatók a futtatási metrikák szűréséhez:
 
@@ -185,9 +185,9 @@ A következő méretek használhatók a futtatási metrikák szűréséhez:
 
 A RunType dimenzió érvényes értékei a következők:
 
-| Value (Díj) | Leírás |
+| Érték | Leírás |
 | ----- | ----- |
-| Kísérlet | Nem folyamatban lévő futtatások. |
+| Experiment | Nem folyamatban lévő futtatások. |
 | PipelineRun | Egy folyamat futtatása, amely egy StepRun szülője. |
 | StepRun | Egy folyamat lépésének futtatása. |
 | ReusedStepRun | Az előző futtatást használó folyamat lépéseinek futtatása. |

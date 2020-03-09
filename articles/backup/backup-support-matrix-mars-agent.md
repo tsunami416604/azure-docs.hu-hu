@@ -3,12 +3,12 @@ title: A MARS-ügynök támogatási mátrixa
 description: Ez a cikk a Microsoft Azure Recovery Services (MARS) ügynököt futtató gépek biztonsági mentésének Azure Backup támogatását foglalja össze.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 515ca065914dc535c1ba21fdb5ac574e3987ca32
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668564"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932617"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
 
@@ -158,7 +158,7 @@ Windows 7| 1 700 GB
 
 **Típus** | **Támogatás**
 --- | ---
-Titkosított| Támogatott.
+Titkosított<sup>*</sup>| Támogatott.
 Tömörített | Támogatott.
 Ritka | Támogatott.
 Tömörített és ritka |Támogatott.
@@ -169,6 +169,8 @@ Tömörített adatfolyam| Nem támogatott. Kimarad.
 Ritka adatfolyam| Nem támogatott. Kimarad.
 OneDrive (a szinkronizált fájlok ritka adatfolyamok)| Nem támogatott.
 Elosztott fájlrendszer replikációs szolgáltatása engedélyezett mappák | Nem támogatott.
+
+\* gondoskodjon arról, hogy a MARS-ügynök hozzáférjen a szükséges tanúsítványokhoz a titkosított fájlok eléréséhez. A rendszer kihagyja a nem elérhető fájlokat.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>A biztonsági mentéshez támogatott meghajtók vagy kötetek
 
@@ -197,7 +199,7 @@ Azure Backup [azonnali visszaállítási](backup-instant-restore-capability.md) 
 
 A biztonsági mentések nem állíthatók vissza olyan célszámítógépre, amely az operációs rendszer korábbi verzióját futtatja. Például egy Windows 7 rendszerű számítógépről készített biztonsági mentés visszaállítható a Windows 8 vagy újabb verzióra. A Windows 8 rendszert futtató számítógépekről azonban nem lehet visszaállítani a Windows 7 rendszert futtató számítógépeken.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ [a Mars-ügynököt használó biztonsági mentési architektúráról](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
 - Ismerje meg, hogy mi támogatott [a Mars-ügynök MABS vagy DPM-kiszolgálón való futtatásakor](backup-support-matrix-mabs-dpm.md).

@@ -1,14 +1,14 @@
 ---
 title: Azure Policy-bővítmény a Visual Studio Code-hoz
 description: Megtudhatja, hogyan használhatja a Visual Studio Code Azure Policy bővítményét Resource Manager-aliasok kereséséhez.
-ms.date: 11/04/2019
+ms.date: 03/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 48ef098cf970b5128185c40c92f8bb02ad8d9698
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386808"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932765"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-bővítmény használata a Visual Studio Code-hoz
 
@@ -82,7 +82,7 @@ Amikor először jelentkezik be, csak az alapértelmezett előfizetési erőforr
 
    - Parancs paletta: 
 
-     A menüsávban válassza a > **parancs-paletta** **megjelenítése** elemet, majd írja be a **Azure Policy: Select Subscriptions (előfizetések kiválasztása**) elemet.
+     A menüsávban válassza a > **parancs-paletta** **megjelenítése** elemet, és írja be az **Azure: Select Subscriptions (előfizetések) lehetőséget**.
 
    - Ablak lábléce
 
