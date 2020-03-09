@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 19c136c7f312d800b76aa60f2cab6e8da992591c
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
-ms.translationtype: MT
+ms.openlocfilehash: 1d9f148351e4ce12d6f6bcd699cdd74e94ba09ef
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161567"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358106"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium csomag Azure Functions
 
@@ -65,7 +65,7 @@ Az alkalmazáshoz további számítási példányok is automatikusan hozzáadód
 
 ### <a name="longer-run-duration"></a>Hosszabb Futtatás időtartama
 
-A Azure Functions a használati terv egyetlen végrehajtás esetén 10 percre van korlátozva.  A Prémium csomag esetében a futtatási időtartam alapértelmezett értéke 30 perc, hogy megakadályozza a Runaway végrehajtást. [A Host. JSON-konfiguráció azonban módosítható](./functions-host-json.md#functiontimeout) úgy, hogy ezt a 60 percet biztosítsa a prémium szintű csomag alkalmazásai számára.
+A Azure Functions a használati terv egyetlen végrehajtás esetén 10 percre van korlátozva.  A Prémium csomag esetében a futtatási időtartam alapértelmezett értéke 30 perc, hogy megakadályozza a Runaway végrehajtást. Azonban [módosíthatja a Host. JSON-konfigurációt](./functions-host-json.md#functiontimeout) , hogy ez a prémium szintű csomag alkalmazásai számára is elérhető legyen (garantált 60 perc).
 
 ## <a name="plan-and-sku-settings"></a>Csomag-és SKU-beállítások
 

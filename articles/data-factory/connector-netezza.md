@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása a Netezza a Azure Data Factory használatával
-description: Bemutatjuk, hogy miként másolhatók adatok a Netezza-ből a támogatott fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
+title: Netezza adatokat másol az Azure Data Factory használatával
+description: Megtudhatja, hogyan másolhat adatokat a Netezza támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
 ms.openlocfilehash: c51469997af23be7a5e1b88677ecadb37e10ac64
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440556"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358428"
 ---
-# <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Adatok másolása a Netezza a Azure Data Factory használatával
+# <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Netezza adatokat másol az Azure Data Factory használatával
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Netezza való másolásához. A cikk a [másolási tevékenységre épül Azure Data Factoryban](copy-activity-overview.md), amely a másolási tevékenység általános áttekintését mutatja be.
+Ez a cikk az Azure Data Factory másolási tevékenység használatával adatokat másol a Netezza módját ismerteti. A cikk a [másolási tevékenységre épül Azure Data Factoryban](copy-activity-overview.md), amely a másolási tevékenység általános áttekintését mutatja be.
 
 >[!TIP]
 >A Netezza-ből az Azure-ba irányuló adatáttelepítési forgatókönyvek esetében további információ a [Azure Data Factory használatával a helyszíni Netezza-kiszolgálóról az Azure-ba való Migrálás](data-migration-guidance-netezza-azure-sqldw.md)során.
@@ -33,38 +33,38 @@ Ez a Netezza-összekötő a következő tevékenységek esetén támogatott:
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
 
-Az adatok a Netezza bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által a forrásként és a fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
+Másolhat adatokat Netezza bármely támogatott fogadó adattárba. A másolási tevékenység által a forrásként és a fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Az Netezza-összekötő támogatja a forrásról való párhuzamos másolást. A részletekért tekintse meg a [Parallel másolás a Netezza](#parallel-copy-from-netezza) szakaszát.
 
-A Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez. Az összekötő használatához nem kell manuálisan telepítenie az illesztőprogramot.
+Az Azure Data Factory-kapcsolat beépített illesztőprogramot tartalmaz. Nem kell manuálisan telepítenie az összes illesztőprogram az összekötő használatához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Első lépések
 
-A másolási tevékenységet használó folyamatokat a .NET SDK, a Python SDK, a Azure PowerShell, a REST API vagy egy Azure Resource Manager sablon használatával is létrehozhatja. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokért tekintse meg a [másolási tevékenységről szóló oktatóanyagot](quickstart-create-data-factory-dot-net.md) .
+Létrehozhat egy folyamatot, amely egy másolási tevékenységet használ a .NET SDK-t, a Python SDK-t, az Azure PowerShell, a REST API vagy egy Azure Resource Manager-sablon használatával. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokért tekintse meg a [másolási tevékenységről szóló oktatóanyagot](quickstart-create-data-factory-dot-net.md) .
 
-A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, amelyekkel meghatározhatja Data Factory az Netezza-összekötőhöz tartozó entitásokat.
+A következő szakaszok segítségével konkrétan a Netezza-összekötő a Data Factory-entitások definiálása-tulajdonságokkal kapcsolatos részletekért.
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-A Netezza társított szolgáltatás a következő tulajdonságokat támogatja:
+A következő tulajdonságok támogatottak a Netezza társított szolgáltatást:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A **Type** tulajdonságot **Netezza**értékre kell beállítani. | Igen |
-| connectionString | ODBC-kapcsolati sztring a Netezza való kapcsolódáshoz. <br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `pwd` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. |Nem |
+| connectionString | Az ODBC kapcsolati karakterlánc Netezza csatlakozni. <br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `pwd` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
+| connectVia | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
-Egy tipikus `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`a kapcsolatok karakterlánca. A következő táblázat a további beállítható tulajdonságokat ismerteti:
+Egy tipikus `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`a kapcsolatok karakterlánca. A következő táblázat ismerteti, amely lehet további tulajdonságok:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| SecurityLevel | Az a biztonsági szint (SSL/TLS), amelyet az illesztőprogram az adattárhoz való kapcsolódáshoz használ. Példa: `SecurityLevel=preferredSecured`. A támogatott értékek a következők:<br/>- **csak nem biztonságos** (**OnlyUnSecured**): az illesztőprogram nem használ SSL-t.<br/>- **előnyben részesített nem védett (preferredUnSecured) (alapértelmezett)** : Ha a kiszolgáló választási lehetőséget biztosít, az illesztőprogram nem használ SSL-t. <br/>- **előnyben részesített védett (preferredSecured)** : Ha a kiszolgáló választási lehetőséget biztosít, az illesztőprogram SSL-t használ. <br/>- **csak biztonságos (onlySecured)** : az illesztőprogram nem csatlakozik, ha nem érhető el SSL-kapcsolat. | Nem |
-| HitelesítésszolgáltatóiTanúsítványfájl | A kiszolgáló által használt SSL-tanúsítvány teljes elérési útja. Például: `CaCertFile=<cert path>;`| Igen, ha az SSL engedélyezve van |
+| SecurityLevel | Az adattárban való csatlakozáshoz használja az illesztőprogram (SSL/TLS) biztonsági szintjét. Példa: `SecurityLevel=preferredSecured`. Támogatott értékei a következők:<br/>- **csak nem biztonságos** (**OnlyUnSecured**): az illesztőprogram nem használ SSL-t.<br/>- **előnyben részesített nem védett (preferredUnSecured) (alapértelmezett)** : Ha a kiszolgáló választási lehetőséget biztosít, az illesztőprogram nem használ SSL-t. <br/>- **előnyben részesített védett (preferredSecured)** : Ha a kiszolgáló választási lehetőséget biztosít, az illesztőprogram SSL-t használ. <br/>- **csak biztonságos (onlySecured)** : az illesztőprogram nem csatlakozik, ha nem érhető el SSL-kapcsolat. | Nem |
+| CaCertFile | A kiszolgáló által használt SSL-tanúsítvány teljes elérési útja. Például: `CaCertFile=<cert path>;`| Igen, ha SSL engedélyezve van |
 
 **Példa**
 
@@ -112,18 +112,18 @@ Egy tipikus `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Ez a szakasz a Netezza-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Ez a szakasz felsorolja, amely támogatja a Netezza adatkészlet tulajdonságai.
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [adatkészletek](concepts-datasets-linked-services.md).
 
 Az adatok Netezza való másolásához állítsa az adatkészlet **Type (típus** ) tulajdonságát **NetezzaTable**értékre. A következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **NetezzaTable** | Igen |
-| séma | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
-| table | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
-| tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Új számítási feladatokhoz használjon `schema` és `table`. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
+| schema | A séma neve. |Nem (Ha a tevékenység forrása az "query" van megadva)  |
+| table | A tábla neve. |Nem (Ha a tevékenység forrása az "query" van megadva)  |
+| tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Új számítási feladatokhoz használjon `schema` és `table`. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -143,7 +143,7 @@ Az adatok Netezza való másolásához állítsa az adatkészlet **Type (típus*
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Ez a szakasz a Netezza forrás által támogatott tulajdonságok listáját tartalmazza.
+Ez a szakasz felsorolja, amely támogatja a Netezza forrás tulajdonságai.
 
 A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját lásd: [folyamatok](concepts-pipelines-activities.md).
 
@@ -154,10 +154,10 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok Netezza való másolásához állítsa a **forrás** típusát a másolás tevékenység **NetezzaSource**értékére. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának **Type** tulajdonságát **NetezzaSource**értékre kell állítani. | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"` | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"` | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 | partitionOptions | Meghatározza az adatok Netezza való betöltéséhez használt adatparticionálási beállításokat. <br>Értékek engedélyezése: **none** (alapértelmezett), **DataSlice**és **DynamicRange**.<br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None`), az Netezza-adatbázisból származó adatok párhuzamos betöltésének fokát a másolási tevékenység [`parallelCopies`](copy-activity-performance.md#parallel-copy) beállítása szabályozza. | Nem |
 | partitionSettings | Határozza meg az adatparticionálási beállítások csoportját. <br>Akkor alkalmazza, ha a partíció beállítása nem `None`. | Nem |
 | partitionColumnName | Adja meg a forrás oszlop **olyan egész típusú** nevét, amelyet a párhuzamos másolási tartomány particionálásakor fog használni. Ha nincs megadva, a rendszer automatikusan felismeri a tábla elsődleges kulcsát, és a partíció oszlopként használja. <br>Akkor alkalmazza, ha a partíció beállítása `DynamicRange`. Ha lekérdezést használ a forrásadatok beolvasásához, a Hook `?AdfRangePartitionColumnName` a WHERE záradékban. Lásd: példa [párhuzamos másolással a Netezza](#parallel-copy-from-netezza) szakaszból. | Nem |
@@ -206,7 +206,7 @@ A particionált másolás engedélyezésekor a Data Factory párhuzamos lekérde
 
 Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálásával, különösen akkor, ha nagy mennyiségű adatmennyiséget tölt be a Netezza-adatbázisból. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációk szerepelnek. Az adatok file-alapú adattárba való másolása során a rendszer úgy helyezi át, hogy több fájlként írjon egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájl írásakor.
 
-| Alkalmazási helyzet                                                     | Javaslatokra vonatkozó beállítások                                           |
+| Forgatókönyv                                                     | Javasolt beállítások                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Teljes terhelés a nagyméretű táblából.                                   | **Partíciós beállítás**: adatszelet. <br><br/>A végrehajtás során a Data Factory automatikusan particionálja az [Netezza-t a beépített adatszeletek](https://www.ibm.com/support/knowledgecenter/en/SSULQD_7.2.1/com.ibm.nz.adm.doc/c_sysadm_data_slices_parts_disks.html)alapján, és az Adatmásolást partíciók szerint másolja. |
 | Nagy mennyiségű adattal tölthetők be egyéni lekérdezések használatával.                 | **Partíciós beállítás**: adatszelet.<br>**Lekérdezés**: `SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>`.<br>A végrehajtás során a Data Factory lecseréli a `?AdfPartitionCount` (párhuzamos másolási számmal a másolási tevékenységnél), és `?AdfDataSliceCondition` az adatszelet partíciós logikával, és elküldi a Netezza. |

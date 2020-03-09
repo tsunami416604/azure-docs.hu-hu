@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
 ms.openlocfilehash: 9d3fa1e0b62ea6f4762c3df6ac7da310d5703807
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208796"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394688"
 ---
 # <a name="feature-coverage-for-machines"></a>Szolgáltatások lefedettsége gépekhez
 
@@ -44,12 +44,12 @@ Az alábbi táblázatok a virtuális gépek és a kiszolgálók számára elérh
 |Adaptív hálózati vezérlők|✔|✔|-|Standard|
 |[Szabályozási megfelelőségi irányítópult & jelentések](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Javaslatok és veszélyforrások elleni védelem a Docker által üzemeltetett IaaS-tárolókban|-|-|-|Standard|
-|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Free|
-|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Free|
-|[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Free|
-|Lemez titkosításának felmérése|✔|✔|-|Free|
-|Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|Free|
-|[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|Free|
+|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Ingyenes|
+|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Ingyenes|
+|[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Ingyenes|
+|Lemez titkosításának felmérése|✔|✔|-|Ingyenes|
+|Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|Ingyenes|
+|[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|Ingyenes|
 
 
 ### <a name="linux-machines"></a>[Linux rendszerű gépek](#tab/features-linux)
@@ -70,12 +70,12 @@ Az alábbi táblázatok a virtuális gépek és a kiszolgálók számára elérh
 |Adaptív hálózati vezérlők|✔|✔|-|Standard|
 |[Szabályozási megfelelőségi irányítópult & jelentések](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Javaslatok és veszélyforrások elleni védelem a Docker által üzemeltetett IaaS-tárolókban|✔|✔|✔|Standard|
-|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Free|
-|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Free|
-|[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Free|
-|Lemez titkosításának felmérése|✔|✔|-|Free|
-|Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|Free|
-|[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|Free|
+|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Ingyenes|
+|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Ingyenes|
+|[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Ingyenes|
+|Lemez titkosításának felmérése|✔|✔|-|Ingyenes|
+|Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|Ingyenes|
+|[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|Ingyenes|
 
 --- 
 
@@ -93,7 +93,7 @@ A következő táblázat a következőkhöz nyújt mátrixot:
 
 További információ az egyes védelemekhez kapcsolódó javaslatok létrehozásáról: [Endpoint Protection Értékelés és javaslatok](security-center-endpoint-protection.md).
 
-| Endpoint Protection| Platformok | Security Center telepítése | Security Center felderítése |
+| Endpoint Protection (Végpontok védelme)| Platformok | Security Center telepítése | Security Center felderítése |
 |------|------|-----|-----|
 | Windows Defender (Microsoft-kártevőirtó)| Windows Server 2016| Nincs, az operációs rendszerbe van beépítve| Igen |
 | System Center Endpoint Protection (Microsoft-kártevőirtó) | Windows Server 2012 R2, 2012, 2008 R2 (lásd az alábbi megjegyzést) | Bővítmény útján | Igen |
@@ -110,7 +110,7 @@ További információ az egyes védelemekhez kapcsolódó javaslatok létrehozá
 > - A Trend Micro Protection észlelése a mély biztonsági ügynökök esetében támogatott.  A OfficeScan-ügynökök nem támogatottak.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [, hogyan gyűjt Security Center adatokat és a log Analytics ügynököt](security-center-enable-data-collection.md).
 - Megtudhatja [, hogyan kezeli és védi a Security Center az információkat](security-center-data-security.md).

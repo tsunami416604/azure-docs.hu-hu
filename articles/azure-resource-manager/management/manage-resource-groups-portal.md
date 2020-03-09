@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
 ms.openlocfilehash: 8087baf7595bfd2497f97fbff4822b356cd1b146
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485636"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357318"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure Resource Manager erőforráscsoportok kezelése a Azure Portal használatával
 
@@ -33,7 +33,7 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Amikor meg
 
 ## <a name="create-resource-groups"></a>Erőforráscsoportok létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. **Erőforráscsoportok** kiválasztása
 
     ![Erőforráscsoport hozzáadása](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
@@ -53,7 +53,7 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Amikor meg
 
 ## <a name="list-resource-groups"></a>Erőforráscsoportok listázása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Az erőforráscsoportok listázásához válassza az **erőforráscsoportok** lehetőséget.
 
     ![erőforráscsoportok tallózása](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -62,7 +62,7 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Amikor meg
 
 ## <a name="open-resource-groups"></a>Erőforráscsoportok megnyitása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Válassza az **Erőforráscsoportok** lehetőséget.
 3. Válassza ki a megnyitni kívánt erőforráscsoportot.
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972948"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384141"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Bevezetés a Cloud Service Monitorozásba
 
@@ -58,7 +58,7 @@ Ezután navigáljon a **Storage-fiók (klasszikus)** erőforráshoz. Válassza a
 
 A speciális diagnosztika engedélyezéséhez két konfigurációs fájlra van szükség, a **ServiceDefinition. csdef** és a **ServiceConfiguration. cscfg**.
 
-### <a name="servicedefinitioncsdef"></a>ServiceDefinition. csdef
+### <a name="servicedefinitioncsdef"></a>ServiceDefinition.csdef
 
 A **ServiceDefinition. csdef** fájlban adjon hozzá egy új, `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` nevű beállítást minden olyan szerepkörhöz, amely speciális diagnosztikát használ. Ha új projektet hoz létre, a Visual Studio hozzáadja ezt az értéket a fájlhoz. Ha hiányzik, most hozzáadhatja. 
 

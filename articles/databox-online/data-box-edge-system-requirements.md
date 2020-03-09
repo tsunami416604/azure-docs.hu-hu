@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757866"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384757"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Rendszerkövetelmények Azure Data Box Edge
 
@@ -36,7 +36,7 @@ A Data Box Edge rendszerkövetelményei a következők:
 
 [!INCLUDE [Supported storage accounts](../../includes/data-box-edge-gateway-supported-storage-accounts.md)]
 
-## <a name="supported-storage-types"></a>Támogatott tárolási típusok
+## <a name="supported-storage-types"></a>Támogatott tárolási típus
 
 [!INCLUDE [Supported storage types](../../includes/data-box-edge-gateway-supported-storage-types.md)]
 
@@ -58,9 +58,9 @@ Azure IoT Edge lehetővé teszi a kimenő kommunikációt egy helyszíni peremh�
 
 Használja a következő táblázatot a port konfigurálásához a Azure IoT Edge futtatókörnyezetet futtató kiszolgálókon:
 
-| Port nem. | Be vagy ki | Port hatóköre | Szükséges | Segédletek |
+| Port nem. | Be vagy ki | Port hatóköre | Kötelező | Útmutatás |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Ki       | WAN        | Igen      | A kimenő Megnyitás IoT Edge kiépítés esetén. Ez a konfiguráció kézi parancsfájlok vagy Azure IoT Device kiépítési szolgáltatás (DPS) használata esetén szükséges.|
+| TCP 443 (HTTPS)| Ki       | WAN        | Igen      | A kimenő Megnyitás IoT Edge kiépítés esetén. Ez a konfiguráció manuális parancsprogramokkal vagy az Azure IoT Device Provisioning Service (DPS) szükség.|
 
 A teljes információ: a [tűzfal és a port konfigurációs szabályai IoT Edge központi telepítéshez](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 
