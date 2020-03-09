@@ -1,6 +1,6 @@
 ---
-title: A StorSimple Virtual Array webes felhasználói felület felügyeleti |} A Microsoft Docs
-description: Ismerteti, hogyan hajthat végre egyszerű eszköz lesz a felügyeleti feladatokat a StorSimple Virtual Array webes felületen keresztül.
+title: StorSimple virtuális tömb webes felhasználói felületének felügyelete | Microsoft Docs
+description: Ismerteti, hogyan lehet alapszintű eszközöket felügyeleti feladatokat végrehajtani a StorSimple virtuális tömb webes FELÜLETén.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,100 +15,100 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 92671206a4171ca838423f55b526191ef30e5c35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630469"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365697"
 ---
-# <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>A webes felhasználói felület használata a StorSimple Virtual Array felügyeletéhez
-![a telepítő folyamat](./media/storsimple-ova-web-ui-admin/manage4.png)
+# <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>A webes felhasználói felület használata a StorSimple virtuális tömb felügyeletéhez
+![folyamat beállítása folyamatban](./media/storsimple-ova-web-ui-admin/manage4.png)
 
 ## <a name="overview"></a>Áttekintés
-Ebben a cikkben szereplő oktatóanyagok vonatkozik a Microsoft Azure StorSimple Virtual Array (más néven a StorSimple helyszíni virtuális eszköz) 2016. március általánosan (elérhetővé tétel GA) verzióját futtatja. Ez a cikk ismerteti az egyes a bonyolult munkafolyamatok és a feladat, amely a StorSimple Virtual Array hajtható végre. Kezelheti a StorSimple Virtual Array használatával a StorSimple Manager szolgáltatás (néven a portál felhasználói Felületét) felhasználói felület és az eszköz helyi webes felületén. Ez a cikk foglalkozik, hogy a webes felhasználói felülete segítségével végrehajtható feladatokat.
+A cikkben szereplő oktatóanyagok a Microsoft Azure StorSimple Virtual array (más néven StorSimple-alapú virtuális eszköz) használatára vonatkoznak, amely március 2016-os kiadást futtat. Ez a cikk néhány olyan összetett munkafolyamatot és felügyeleti feladatot ismertet, amelyek a StorSimple virtuális tömbön végezhetők el. A StorSimple virtuális tömböt a StorSimple Manager szolgáltatás felhasználói felületének (más néven a portál felhasználói felületének) és az eszköz helyi webes felhasználói felületének használatával kezelheti. Ez a cikk a webes felhasználói felület használatával végrehajtható feladatokra összpontosít.
 
 A cikk az alábbi oktatóanyagokat tartalmazza:
 
-* A szolgáltatásadat-titkosítási kulcs beszerzése
-* Webes felhasználói felület beállítási hibák elhárítása
-* -Log-csomag létrehozása
+* A szolgáltatásban tárolt adattitkosítási kulcs beszerzése
+* A webes felhasználói felület telepítési hibáinak elhárítása
+* Naplófájl létrehozása
 * Az eszköz leállítása és újraindítása
 
-## <a name="get-the-service-data-encryption-key"></a>A szolgáltatásadat-titkosítási kulcs beszerzése
-A szolgáltatásadat-titkosítási kulcs jön létre, amikor az első eszköz regisztrálja a StorSimple Manager szolgáltatásban. Ez a kulcs van, majd a szolgáltatás regisztrációs kulcsával együtt szükséges további eszközöket regisztrálni a StorSimple Manager szolgáltatásban.
+## <a name="get-the-service-data-encryption-key"></a>A szolgáltatásban tárolt adattitkosítási kulcs beszerzése
+A szolgáltatás adattitkosítási kulcsa akkor jön létre, amikor regisztrálja az első eszközt a StorSimple Manager szolgáltatással. Ezt a kulcsot ezután a szolgáltatás regisztrációs kulcsával kell regisztrálni a StorSimple Manager szolgáltatásban található további eszközök regisztrálásához.
 
-Ha rendelkezik ügyfél elveszíti a szolgáltatásadat-titkosítási kulcsot, és meg is lekérheti azt kell, végezze el az alábbi lépéseket a helyi webes felhasználói felületen, az eszköz regisztrálva a szolgáltatásban.
+Ha elvégezte a szolgáltatási adatok titkosítási kulcsának lekérését, és le kell kérnie azt, hajtsa végre a következő lépéseket a szolgáltatásban regisztrált eszköz helyi webes FELÜLETén.
 
-#### <a name="to-get-the-service-data-encryption-key"></a>A szolgáltatásadat-titkosítási kulcs beolvasásához
-1. Csatlakozzon a helyi webes felületén. Lépjen a **konfigurációs** > **Felhőbeállítások**.
-2. Kattintson a lap alján **Get szolgáltatásadat-titkosítási kulcs**. Egy kulcsot fog megjelenni. Másolja és mentse ezt a kulcsot.
+#### <a name="to-get-the-service-data-encryption-key"></a>A szolgáltatásban tárolt adattitkosítási kulcs beszerzése
+1. Kapcsolódjon a helyi webes felhasználói felülethez. Lépjen a **konfiguráció** > a **felhő beállításai menüpontra**.
+2. A lap alján kattintson a **szolgáltatás adattitkosítási kulcsának beolvasása**elemre. Ekkor megjelenik egy kulcs. Másolja ki és mentse a kulcsot.
    
-    ![szolgáltatásadat-titkosítási kulcs 1 beolvasása](./media/storsimple-ova-web-ui-admin/image27.png)
+    ![szolgáltatás adattitkosítási kulcsának beolvasása 1](./media/storsimple-ova-web-ui-admin/image27.png)
 
-## <a name="troubleshoot-web-ui-setup-errors"></a>Webes felhasználói felület beállítási hibák elhárítása
-Bizonyos esetekben az eszköz helyi webes felhasználói felületen keresztül konfigurálásakor előfordulhat, hogy hibákba ütközik. Felderítésére, és az ilyen hibák elhárítása a diagnosztikai tesztek is futtathatja.
+## <a name="troubleshoot-web-ui-setup-errors"></a>A webes felhasználói felület telepítési hibáinak elhárítása
+Bizonyos esetekben, amikor az eszközt a helyi webes felületen konfigurálja, hibákba ütközhet. Az ilyen hibák diagnosztizálásához és elhárításához futtathatja a diagnosztikai teszteket.
 
 #### <a name="to-run-the-diagnostic-tests"></a>A diagnosztikai tesztek futtatása
-1. A helyi webes felhasználói felületen váltson **hibaelhárítás** > **diagnosztikai tesztek**.
+1. A helyi webes KEZELŐFELÜLETen lépjen a **hibaelhárítás** > **diagnosztikai tesztek**elemre.
    
-    ![1 diagnosztika futtatása](./media/storsimple-ova-web-ui-admin/image29.png)
-2. Kattintson a lap alján **diagnosztikai tesztek futtatása**. A szolgáltatás kezdeményez a hálózat, az eszköz, a webalkalmazás-proxy lehetséges problémák diagnosztizálásához tesztek idő vagy a felhő beállításait. Értesíteni fogjuk, hogy az eszköz teszteket futtat.
-3. Miután elvégezte a vizsgálatokat, az eredmények jelennek meg. Az alábbi példa bemutatja a diagnosztikai tesztek eredményét. Vegye figyelembe, hogy a webproxy beállításai nem lettek konfigurálva ezen az eszközön, és ezért a webalkalmazás-proxy teszt nem futott. A hálózati beállításokat, a DNS-kiszolgáló és az időbeállítások összes egyéb teszt sikeres volt.
+    ![diagnosztika futtatása 1](./media/storsimple-ova-web-ui-admin/image29.png)
+2. A lap alján kattintson a **diagnosztikai tesztek futtatása**elemre. Ez teszteket kezdeményez a hálózat, az eszköz, a webproxy, az idő vagy a felhő beállításaival kapcsolatos esetleges problémák diagnosztizálásához. A rendszer értesítést küld arról, hogy az eszköz teszteket futtat.
+3. A tesztek befejezését követően megjelennek az eredmények. A következő példában a diagnosztikai tesztek eredményei láthatók. Vegye figyelembe, hogy a webproxy beállításai nincsenek konfigurálva ezen az eszközön, ezért a webproxy-teszt nem volt futtatva. A hálózati beállításokkal, a DNS-kiszolgálóval és az időbeállításokkal kapcsolatos egyéb tesztek sikeresek voltak.
    
-    ![2 diagnosztika futtatása](./media/storsimple-ova-web-ui-admin/image30.png)
+    ![diagnosztika futtatása 2](./media/storsimple-ova-web-ui-admin/image30.png)
 
-## <a name="generate-a-log-package"></a>-Log-csomag létrehozása
-A napló csomag áll a megfelelő naplók, amelyek segítségére lehetnek Support bármely eszköz kapcsolatos hibák elhárítása. Ebben a kiadásban a napló csomag létrehozható a helyi webes felhasználói felületen.
+## <a name="generate-a-log-package"></a>Naplófájl létrehozása
+A naplófájlok a kapcsolódó naplókból állnak, amelyek segítséget nyújthatnak Microsoft ügyfélszolgálatanek az eszközkel kapcsolatos problémák elhárításában. Ebben a kiadásban a helyi webes felületen keresztül lehet létrehozni egy naplófájlt.
 
-#### <a name="to-generate-the-log-package"></a>A napló-csomag létrehozása
-1. A helyi webes felhasználói felületen váltson **hibaelhárítás** > **rendszernaplók**.
+#### <a name="to-generate-the-log-package"></a>A naplófájl előállítása
+1. A helyi webes felhasználói felületen lépjen a következő **témakörre: hibaelhárítás** > **rendszernaplók**.
    
-    ![1\. napló csomagjának létrehozása](./media/storsimple-ova-web-ui-admin/image31.png)
-2. Kattintson a lap alján **log-csomag létrehozása**. A rendszer naplóit tartalmazó csomagot hoz létre. Ez eltarthat néhány percig.
+    ![1\. log csomag előállítása](./media/storsimple-ova-web-ui-admin/image31.png)
+2. A lap alján kattintson a **naplófájl létrehozása**lehetőségre. Létrejön a rendszernaplók csomagja. Ez eltarthat néhány percig.
    
-    ![napló 2. csomag létrehozása](./media/storsimple-ova-web-ui-admin/image32.png)
+    ![2\. log csomag előállítása](./media/storsimple-ova-web-ui-admin/image32.png)
    
-    Ön értesítést kap, ha a csomag sikeresen létrejött, és az oldal frissül, és a csomag létrehozásának időpontját jelzi.
+    A csomag sikeres létrehozása után értesítést kap, és a rendszer frissíti a lapot, hogy jelezze a csomag létrehozásának időpontját és dátumát.
    
-    ![3\. napló csomagjának létrehozása](./media/storsimple-ova-web-ui-admin/image33.png)
-3. Kattintson a **log letöltőcsomag**. Egy tömörített csomagot a rendszer letölti a rendszeren.
+    ![3\. log-csomag előállítása](./media/storsimple-ova-web-ui-admin/image33.png)
+3. Kattintson a **naplófájl letöltése**elemre. A rendszer a tömörített csomagot fogja letölteni.
    
-    ![4\. napló csomagjának létrehozása](./media/storsimple-ova-web-ui-admin/image34.png)
-4. Tömörítse ki a letöltött log csomagot, és megtekintheti a rendszernapló fájljaiban.
+    ![4\. log csomag előállítása](./media/storsimple-ova-web-ui-admin/image34.png)
+4. Kibonthatja a letöltött naplófájlt, és megtekintheti a rendszernapló fájljait.
 
-## <a name="shut-down-and-restart-your-device"></a>Állítsa le és indítsa újra az eszközt
-Állítsa le, vagy indítsa újra a virtuális eszköz helyi webes felhasználói felület használatával. Azt javasoljuk, hogy az újraindítás előtt igénybe a kötetek vagy megosztások kapcsolat nélküli módban a gazdagép és az eszköz. Ezzel a minimálisra csökkentheti adatsérülés lehetőségét. 
+## <a name="shut-down-and-restart-your-device"></a>Az eszköz leállítása és újraindítása
+Leállíthatja vagy újraindíthatja a virtuális eszközt a helyi webes felhasználói felület használatával. Javasoljuk, hogy az újraindítás előtt állítsa offline állapotba a köteteket vagy a megosztásokat a gazdagépen, majd az eszközön. Ez a szolgáltatás a lehető legkisebbre csökkentheti az adatsérülés lehetőségét. 
 
 #### <a name="to-shut-down-your-virtual-device"></a>A virtuális eszköz leállítása
-1. A helyi webes felhasználói felületen váltson **karbantartási** > **energiaellátási beállítások**.
-2. Kattintson a lap alján **leállítási**.
+1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás** > **energiagazdálkodási beállítások**elemre.
+2. Kattintson a lap alján található **Leállítás**elemre.
    
-    ![1\. eszköz leállítása](./media/storsimple-ova-web-ui-admin/image36.png)
-3. Figyelmezteti, hogy az eszköz egy leállítási szakítja meg egy leállást eredményez a folyamatban lévő i figyelmeztetés jelenik meg. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-ova-web-ui-admin/image3.png).
+    ![eszköz leállítása 1](./media/storsimple-ova-web-ui-admin/image36.png)
+3. Megjelenik egy figyelmeztetés, amely azt jelzi, hogy az eszköz leállítása megszakítja az összes folyamatban lévő IO-t, ami állásidőt eredményezett. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-ova-web-ui-admin/image3.png).
    
-    ![eszköz leállítás figyelmeztetés](./media/storsimple-ova-web-ui-admin/image37.png)
+    ![eszköz leállítására vonatkozó figyelmeztetés](./media/storsimple-ova-web-ui-admin/image37.png)
    
-    Értesíteni fogjuk, hogy a leállás kezdeményeztek.
+    A rendszer értesítést küld arról, hogy a Leállítás megkezdődött.
    
-    ![eszköz leállítás használatába](./media/storsimple-ova-web-ui-admin/image38.png)
+    ![az eszköz leállítása megkezdődött](./media/storsimple-ova-web-ui-admin/image38.png)
    
-    Az eszköz most már le fog állni. Ha el szeretné indítani az eszközt, szüksége lesz a Hyper-V kezelője segítségével valósítható meg.
+    Az eszköz ekkor leáll. Ha el szeretné indítani az eszközt, ezt a Hyper-V kezelőjén keresztül kell végrehajtania.
 
 #### <a name="to-restart-your-virtual-device"></a>A virtuális eszköz újraindítása
-1. A helyi webes felhasználói felületen váltson **karbantartási** > **energiaellátási beállítások**.
-2. Kattintson a lap alján **indítsa újra a**.
+1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás** > **energiagazdálkodási beállítások**elemre.
+2. Az oldal alján kattintson az **Újraindítás**elemre.
    
     ![eszköz újraindítása](./media/storsimple-ova-web-ui-admin/image36.png)
-3. Egy figyelmeztetés fog megjelenni arról, hogy az eszköz újraindítása szakítja meg minden, az IOs, folyamatban volt egy leállást eredményez. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-ova-web-ui-admin/image3.png).
+3. Megjelenik egy figyelmeztetés, amely szerint az eszköz újraindítása megszakítja az összes folyamatban lévő IOs-t, ami állásidőt eredményezett. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-ova-web-ui-admin/image3.png).
    
-    ![újraindítási figyelmeztetés](./media/storsimple-ova-web-ui-admin/image37.png)
+    ![Figyelmeztetés újraindítása](./media/storsimple-ova-web-ui-admin/image37.png)
    
-    Értesíteni fogjuk, hogy az újraindítás kezdeményezéséről.
+    A rendszer értesítést küld arról, hogy az újraindítás megkezdődött.
    
-    ![Újraindítás elindítva](./media/storsimple-ova-web-ui-admin/image39.png)
+    ![újraindítás kezdeményezve](./media/storsimple-ova-web-ui-admin/image39.png)
    
-    Az újraindítás folyamatban van, amíg a kapcsolat a felhasználói felületre elvesznek. A felhasználói felület rendszeres időközönként frissítésével figyelemmel kísérheti az újraindítást. Azt is megteheti az eszköz újraindítási állapotát a Hyper-V Manager segítségével figyelheti.
+    Amíg az újraindítás folyamatban van, elveszíti a kapcsolódást a felhasználói felülethez. A felhasználói felület rendszeres frissítésével nyomon követheti az újraindítást. Azt is megteheti, hogy az eszköz újraindítási állapotát a Hyper-V kezelőjével figyelheti.
 
-## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan [felügyelje az eszközt a StorSimple Manager szolgáltatás használatával](storsimple-virtual-array-manager-service-administration.md).
+## <a name="next-steps"></a>Következő lépések
+Megtudhatja, hogyan [kezelheti az eszközt a StorSimple Manager szolgáltatással](storsimple-virtual-array-manager-service-administration.md).
 

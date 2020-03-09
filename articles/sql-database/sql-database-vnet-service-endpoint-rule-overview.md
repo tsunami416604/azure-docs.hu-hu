@@ -12,11 +12,11 @@ ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
 ms.openlocfilehash: 0562d609231d69d95f1d2b5b838663b704f8f2f3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972701"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358452"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Virtuális hálózati szolgáltatási végpontok és az adatbázis-kiszolgálók szabályainak használata
 
@@ -235,7 +235,7 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 
 ## <a name="azure-portal-steps"></a>Azure Portal lépések
 
-1. Jelentkezzen be az [Azure portálra][http-azure-portal-link-ref-477t].
+1. Jelentkezzen be az [Azure Portal][http-azure-portal-link-ref-477t].
 
 2. Keresse meg és válassza ki az **SQL-kiszolgálók**elemet, majd válassza ki a kiszolgálót. A **Biztonság**területen válassza a **tűzfalak és virtuális hálózatok**lehetőséget.
 

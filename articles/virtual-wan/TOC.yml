@@ -34,24 +34,36 @@
       href: connect-virtual-network-gateway-vwan.md
     - name: Virtuális hálózatok közötti globális társviszony konfigurálása
       href: global-peering-vnet.md
-    - name: ExpressRoute-titkosítás konfigurálása
-      href: vpn-over-expressroute.md
     - name: Virtuális WAN SKU-jának frissítése
       href: upgrade-virtual-wan.md
     - name: Egyéni IPsec-szabályzat konfigurálása
       href: virtual-wan-custom-ipsec-portal.md
-    - name: Tanúsítványok konfigurálása felhasználói VPN-hez (pont–hely)
-      href: certificates-point-to-site.md
-    - name: Azure AD-bérlő konfigurálása felhasználói VPN-hez
-      href: openvpn-azure-ad-tenant.md
-    - name: Többtényezős hitelesítés (MFA) engedélyezése felhasználói VPN-hez
-      href: openvpn-azure-ad-mfa.md
-    - name: Azure AD-hitelesítés konfigurálása felhasználói VPN-hez
-      href: virtual-wan-point-to-site-azure-ad.md
-    - name: Több alkalmazásra kiterjedő Azure AD-hitelesítés konfigurálása felhasználói VPN-hez
-      href: openvpn-azure-ad-tenant-multi-app.md
-    - name: Globális és hubalapú VPN-profilok letöltése
-      href: global-hub-profile.md
+    - name: ExpressRoute
+      items:
+        - name: ExpressRoute-kapcsolat létrehozása
+          href: virtual-wan-expressroute-portal.md
+        - name: ExpressRoute-titkosítás konfigurálása
+          href: vpn-over-expressroute.md
+    - name: Helyek közötti kapcsolat
+      items:
+        - name: Helyek közötti kapcsolat létrehozása
+          href: virtual-wan-site-to-site-portal.md
+    - name: Felhasználói VPN-kapcsolatok (pont–hely)
+      items:
+        - name: Felhasználói VPN-kapcsolatok (pont–hely) létrehozása
+          href: virtual-wan-point-to-site-portal.md
+        - name: Tanúsítványok konfigurálása felhasználói VPN-hez
+          href: certificates-point-to-site.md
+        - name: Azure AD-bérlő konfigurálása felhasználói VPN-hez
+          href: openvpn-azure-ad-tenant.md
+        - name: Többtényezős hitelesítés (MFA) engedélyezése felhasználói VPN-hez
+          href: openvpn-azure-ad-mfa.md
+        - name: Azure AD-hitelesítés konfigurálása felhasználói VPN-hez
+          href: virtual-wan-point-to-site-azure-ad.md
+        - name: Több alkalmazásra kiterjedő Azure AD-hitelesítés konfigurálása felhasználói VPN-hez
+          href: openvpn-azure-ad-tenant-multi-app.md
+        - name: Globális és központalapú felhasználói VPN-profilok letöltése
+          href: global-hub-profile.md
     - name: Útválasztás konfigurálása
       items:
         - name: Forgalom irányítása virtuális központról NVA-ra

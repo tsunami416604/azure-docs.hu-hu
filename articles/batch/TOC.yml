@@ -81,8 +81,12 @@
           href: batch-aad-auth-management.md
         - name: A Key Vault biztonságos elérése a Batch használatával
           href: credential-access-key-vault.md
-    - name: Alkalmazáscsomagok használata
-      href: batch-application-packages.md
+    - name: Fájlok és alkalmazások másolása készletcsomópontokba
+      items:
+        - name: Alkalmazáscsomagok használata
+          href: batch-application-packages.md
+        - name: Erőforrásfájlok létrehozása
+          href: resource-files.md
     - name: Készletek létrehozása és kezelése
       items:
         - name: Számítási csomópontok automatikus méretezése
@@ -123,12 +127,12 @@
           href: batch-user-accounts.md
         - name: Nagy számú feladat elküldése
           href: large-number-tasks.md
+        - name: Feladatok ütemezése a hatékony végrehajtás érdekében
+          href: batch-job-schedule.md
         - name: Hibakeresés feladatokban és tevékenységekben
           href: batch-job-task-error-checking.md
         - name: A Batch szolgáltatás hibáinak észlelése és kezelése
           href: batch-retry-after-errors.md
-    - name: Erőforrásfájlok létrehozása
-      href: resource-files.md
     - name: Feladatok és tevékenységek kimenetének megőrzése
       href: batch-task-output.md
       items:

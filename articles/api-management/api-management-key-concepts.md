@@ -14,15 +14,15 @@ ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073430"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374367"
 ---
 # <a name="about-api-management"></a>Az API Management ismertetése
 
-A API Management (APIM) segítségével konzisztens és modern API-átjárókat hozhat létre a meglévő háttér-szolgáltatásokhoz.
+Az API Management (APIM) segítségével konzisztens és modern API-átjárókat hozhat létre a meglévő háttérszolgáltatásokhoz.
 
 API Management segítségével a szervezetek API-kat tehetnek közzé külső, partneri és belső fejlesztők számára, hogy feloldják az adataikat és szolgáltatásaikat. A vállalkozások világszerte digitális platformon szeretnék bővíteni a működésüket, új csatornákat szeretnének létrehozni, új ügyfeleket szeretnének találni és mélyíteni szeretnék a meglévő ügyfelekkel kialakított kapcsolatot. Az API Management a fejlesztők bevonásán, az üzleti elemzéseken, a biztonságon és a védelmen keresztül biztosítja az alapvető kompetenciákat az API-program sikeressé tételéhez. Az Azure API Management szolgáltatással bármely háttérrendszer alapján elindíthat egy teljes értékű API-programot.
 
@@ -60,7 +60,7 @@ A rendszer az alábbi összetevőkből áll:
   * Létrehozhatnak egy fiókot és előfizethetnek, hogy API-kulcsokat szerezzenek.
   * Hozzáférhetnek a használat adataikról készült elemzésekhez.
 
-További információkért tekintse meg a [felhőalapú API Management: Az API](https://j.mp/ms-apim-whitepaper) -k hatékonyságának kiaknázása PDF-tanulmány. A CITO Research által írt, az API Management szolgáltatást bemutató tanulmány az alábbiakat tárgyalja: 
+További információkért tekintse meg a [Felhőalapú API Management: Az API-kban rejlő lehetőségek kihasználása](https://j.mp/ms-apim-whitepaper) című PDF tanulmányt. A CITO Research által írt, az API Management szolgáltatást bemutató tanulmány az alábbiakat tárgyalja: 
  
  * Gyakori API-követelmények és kihívások
  * Az API-k leválasztása és a homlokzatok bemutatása
@@ -71,7 +71,7 @@ További információkért tekintse meg a [felhőalapú API Management: Az API](
  * Felhőalapú és helyszíni megoldások használata
  * Azure API Management
  
-## <a name="apis"></a>API-k és műveletek
+## <a name="apis"> </a>API-k és műveletek
 Az API-k az API Management szolgáltatáspéldányok alapjai. Minden API egy, a fejlesztők számára elérhető műveletkészletet képvisel. Minden API tartalmaz egy hivatkozást az API-t megvalósító háttérszolgáltatáshoz, a műveletei pedig leképezik a háttérszolgáltatás által megvalósított műveleteket. Az API Management műveletei részletesen konfigurálhatók, szabályozni lehet az URL-címmegfeleltetést, a lekérdezések és útvonalak paramétereit, a kérelmek és válaszok tartalmát, valamint a művelet válaszainak gyorsítótárazását. A sebességkorlát, a kvóták és az IP-korlátozás házirendjeit az API vagy az egyéni műveletek szintjén is meg lehet valósítani.
 
 További információkért lásd: [API-k létrehozása][How to create APIs] és [Műveletek hozzáadása API-khoz][How to add operations to an API].
@@ -99,7 +99,7 @@ Amikor a fejlesztők előfizetnek egy termékre, megkapják a termék elsődlege
 
 További információkért lásd: [Fejlesztők létrehozása vagy meghívása][How to create or invite developers] és [Csoportok társítása a fejlesztőkhöz][How to associate groups with developers].
 
-## <a name="policies"></a> Házirendek
+## <a name="policies"></a> Szabályzatok
 A házirend az API Management kiemelkedő funkciója, amely lehetővé teszi az Azure Portal számára, hogy konfigurálással módosítsa az API viselkedését. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. A népszerű utasítások közé tartozik a formátumátalakítás XML-ről JSON-ra, a hívások sebességének korlátozása a fejlesztőktől érkező hívások számának korlátozásához és számos más elérhető házirend.
 
 A házirend-kifejezéseket attribútumértékekként vagy szövegértékekként lehet használni bármelyik API Management házirendben, hacsak a házirend másként nem rendelkezik. Néhány házirend, például a [Vezérlés folyamata](/azure/api-management/api-management-advanced-policies#choose) és a [Változó beállítása](/azure/api-management/api-management-advanced-policies#set-variable) házirend-kifejezéseken alapul. További információ: [Speciális szabályzatok](/azure/api-management/api-management-advanced-policies#AdvancedPolicies) és [Szabályzatkifejezések](/azure/api-management/api-management-policy-expressions).
@@ -108,7 +108,7 @@ A házirend-kifejezéseket attribútumértékekként vagy szövegértékekként 
 Az API Management házirendek teljes listájáért tekintse meg a [Házirend-referencia][Policy reference] szakaszt. További információ a házirendek használatáról és konfigurálásáról: [API Management házirendek][API Management policies]. Ha egy sebességkorlát- és kvótaházirendekkel rendelkező termék létrehozásához keres oktatóanyagot, tekintse meg a [Speciális termékbeállítások létrehozása és konfigurálása][How create and configure advanced product settings] című szakaszt.
 
 
-## <a name="developer-portal"></a> Fejlesztői portálon
+## <a name="developer-portal"></a> Fejlesztői portál
 A fejlesztők a fejlesztői portálon ismerhetik meg az API-kat, tekinthetik meg és hívhatják meg a műveleteket, és ott fizethetnek elő a termékekre. A leendő ügyfelek meglátogathatják a fejlesztői portált, megtekinthetik az API-kat és a műveleteket, illetve regisztrálhatnak. A fejlesztői portál URL-címe az API Management szolgáltatáspéldányhoz tartozó Azure Portal irányítópultján található.
 
 A fejlesztői portál megjelenését és működését egyéni tartalom hozzáadásával, a stílusok testre szabásával és a vállalat emblémájának hozzáadásával lehet személyre szabni.
@@ -121,7 +121,7 @@ Ha többet szeretne megtudni az API Management szolgáltatásról, tekintse meg 
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hajtsa végre az alábbi gyors útmutatót, és kezdje el használni az Azure API Management szolgáltatást:
 

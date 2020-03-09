@@ -16,11 +16,11 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: db5f52c95daf4e93c140b4c93f39dad19971319d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775203"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377334"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Webes API-kat meghívó Daemon-alkalmazás – áttérés éles környezetbe
 
@@ -41,7 +41,7 @@ Meg kell magyaráznia ügyfeleinek, hogy miként hajtják végre ezeket a művel
 
 Íme néhány hivatkozás, amely segítséget nyújt a további információk megismeréséhez:
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 - Gyors útmutató: [token beszerzése és Microsoft Graph API meghívása egy konzol alkalmazásból az alkalmazás identitásával](./quickstart-v2-netcore-daemon.md).
 - Dokumentáció a következőhöz:
@@ -60,11 +60,11 @@ Meg kell magyaráznia ügyfeleinek, hogy miként hajtják végre ezeket a művel
 
     ![topology](media/scenario-daemon-app/damon-app-sample-web.svg)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Próbálja ki [, hogyan szerezzen be tokent, és hívja meg Microsoft Graph API-t egy Python-konzol alkalmazásból az alkalmazás identitásával](./quickstart-v2-python-daemon.md).
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 A MSAL Java jelenleg nyilvános előzetes verzióban érhető el. További információ: [MSAL Java dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
 

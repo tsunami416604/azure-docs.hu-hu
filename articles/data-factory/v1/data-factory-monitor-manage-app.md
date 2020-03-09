@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666927"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384768"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Azure Data Factory folyamatok monitorozása és kezelése a figyelési és felügyeleti alkalmazás használatával
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ Ha nem rendelkezik Data Factory alkalmazással a lépések teszteléséhez, tegy
 ## <a name="understand-the-monitoring-and-management-app"></a>A figyelési és felügyeleti alkalmazás megismerése
 A bal oldalon három lap található: **erőforrás-kezelő**, **figyelési nézetek**és **riasztások**. Alapértelmezés szerint az első lap (**erőforrás-kezelő**) van kiválasztva.
 
-### <a name="resource-explorer"></a>erőforrás-kezelő
+### <a name="resource-explorer"></a>Erőforrás-kezelő
 A következőket látja:
 
 * A erőforrás-kezelő **fanézet** a bal oldali ablaktáblán.
@@ -75,7 +75,7 @@ Erőforrás-kezelő az adat-előállító összes erőforrását (folyamatait, a
 * A kijelölt objektum tulajdonságai a jobb oldali ablaktábla Tulajdonságok ablak láthatók.
 * A kiválasztott objektum JSON-definíciója látható, ha van ilyen. Például: egy társított szolgáltatás, egy adatkészlet vagy egy folyamat.
 
-![erőforrás-kezelő](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
+![Erőforrás-kezelő](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
 
 Tekintse meg az [ütemezési és végrehajtási](data-factory-scheduling-and-execution.md) cikket, amely részletesen ismerteti a tevékenységekkel kapcsolatos Windows-információkat.
 
@@ -159,7 +159,7 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 
 <table>
 <tr>
-    <th align="left">Állapot</th><th align="left">Részállapot</th><th align="left">Leírás</th>
+    <th align="left">status</th><th align="left">Részállapot</th><th align="left">Leírás</th>
 </tr>
 <tr>
     <td rowspan="8">Várakozás</td><td>ScheduleTime</td><td>A tevékenység ablak futtatásának ideje.</td>
@@ -187,13 +187,13 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Folyamatban</td><td>Érvényesítése</td><td>Az érvényesítés folyamatban van.</td>
+<td rowspan="2">InProgress</td><td>Érvényesítése</td><td>Az érvényesítés folyamatban van.</td>
 </tr>
 <td>-</td>
 <td>A tevékenység ablak feldolgozása folyamatban van.</td>
 </tr>
 <tr>
-<td rowspan="4">Meghiúsult</td><td>Időtúllépés</td><td>A tevékenység végrehajtása hosszabb időt vett igénybe, mint amit a tevékenység engedélyez.</td>
+<td rowspan="4">Sikertelen</td><td>Időtúllépés</td><td>A tevékenység végrehajtása hosszabb időt vett igénybe, mint amit a tevékenység engedélyez.</td>
 </tr>
 <tr>
 <td>Megszakítva</td><td>A felhasználói művelet megszakította a tevékenység ablakát.</td>
@@ -207,10 +207,10 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 <td>Kész</td><td>-</td><td>A tevékenység ablak készen áll a felhasználásra.</td>
 </tr>
 <tr>
-<td>Kimarad</td><td>-</td><td>A tevékenység ablaka nem lett feldolgozva.</td>
+<td>Kihagyva</td><td>-</td><td>A tevékenység ablaka nem lett feldolgozva.</td>
 </tr>
 <tr>
-<td>None</td><td>-</td><td>Eltérő állapotú, de alaphelyzetbe állított tevékenységi időszak.</td>
+<td>Nincs</td><td>-</td><td>Eltérő állapotú, de alaphelyzetbe állított tevékenységi időszak.</td>
 </tr>
 </table>
 
@@ -244,7 +244,7 @@ A **parancsfájl** lapon megtekintheti a kijelölt Data Factory entitás (társ�
 ![Parancsfájl lap](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
 ## <a name="use-system-views"></a>Rendszernézetek használata
-A figyelési és felügyeleti alkalmazás olyan előre elkészített rendszernézeteket tartalmaz (**legutóbbi tevékenységi ablakok**, **sikertelen tevékenységek**, Windows, **folyamatban lévő tevékenységek Windows**), amelyek lehetővé teszik a legutóbbi/sikertelen/folyamatban lévő tevékenységek Windows rendszerbeli megtekintését az adataihoz gyári.
+A figyelési és felügyeleti alkalmazás olyan előre elkészített rendszernézeteket tartalmaz (**legutóbbi tevékenységek**, Windows, **sikertelen tevékenységek**Windows, **folyamatban lévő tevékenységek Windows**), amelyekkel megtekintheti a legutóbbi/sikertelen/folyamatban lévő tevékenységek windowsját a saját adatelőállítója számára.
 
 Kattintson rá a bal oldali **figyelési nézetek** lapra.
 

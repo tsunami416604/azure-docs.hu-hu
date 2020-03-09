@@ -14,12 +14,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: daf26f346ab10906eb5c37c6d7d2bb24736417cb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d47ed3a4cd4fbdcb69b956d3c8418f70a71cf44f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698816"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375656"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Alkalmazások hozzáadása az Azure AD-hez
 
@@ -33,7 +33,7 @@ Az Azure AD-ben két alkalmazás van jelen:
 Az alkalmazás- [objektumok](app-objects-and-service-principals.md#application-object) a Azure Portalban kezelhetők az alkalmazások [regisztrációjának](https://aka.ms/appregistrations) felhasználói felületén keresztül. Az Application Objects leírja az alkalmazást az Azure AD-nek, és az alkalmazás definíciójának is tekinthető, amely lehetővé teszi, hogy a szolgáltatás tudja, hogyan kell jogkivonatokat kibocsátani az alkalmazásnak a beállításai alapján. Az Application objektum csak a saját könyvtárában létezik, még akkor is, ha egy több-bérlős alkalmazás, amely más címtárakban is támogatja az egyszerű szolgáltatásokat. Az Application objektum a következők bármelyikét tartalmazhatja (valamint további, itt nem említett információkat):
 
 * Név, embléma és közzétevő
-* Átirányítási URI azonosítók
+* Átirányítási URI-k
 * Titkos kódok (az alkalmazás hitelesítéséhez használt szimmetrikus és/vagy aszimmetrikus kulcsok)
 * API-függőségek (OAuth)
 * Közzétett API-k/erőforrások/hatókörök (OAuth)
@@ -77,7 +77,7 @@ Az Application Objects szolgáltatáshoz hasonlóan az egyszerű szolgáltatáso
 * Amikor egy rendszergazda felvesz egy alkalmazást az alkalmazás-gyűjteményből (ez egy mögöttes alkalmazás-objektumot is létrehoz)
 * Alkalmazás hozzáadása az [Azure ad Application proxy](/azure/active-directory/manage-apps/application-proxy) használatához
 * Alkalmazás összekapcsolása egyszeri bejelentkezéshez SAML vagy jelszó egyszeri bejelentkezés (SSO) használatával
-* Programozott módon az Azure AD Graph API vagy a PowerShell használatával
+* Programozott módon a Microsoft Graph API vagy a PowerShell használatával
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>Hogyan kapcsolódnak egymáshoz az Application Objects és az egyszerű szolgáltatások?
 
@@ -100,13 +100,13 @@ A saját maga által hozzáadott alkalmazások (amelyek a diagramon az **alkalma
 
 ### <a name="notes-and-exceptions"></a>Megjegyzések és kivételek
 
-* Nem minden egyszerű szolgáltatásnév mutat vissza egy alkalmazás-objektumra. Ha az Azure AD-t eredetileg az alkalmazások számára elérhetővé tettük, a szolgáltatás korlátozottabb volt, és az egyszerű szolgáltatásnév elegendő volt az alkalmazás identitásának létrehozásához. Az eredeti szolgáltatásnév a Windows Server Active Directory Service-fiókhoz közelebb volt. Emiatt még mindig lehetséges az egyszerű szolgáltatás létrehozása különböző elérési utakon, például az Azure AD PowerShell használatával anélkül, hogy először létre kellene hoznia egy alkalmazás-objektumot. Az Azure AD Graph API egy egyszerű szolgáltatásnév létrehozása előtt igényel egy alkalmazás-objektumot.
+* Nem minden egyszerű szolgáltatásnév mutat vissza egy alkalmazás-objektumra. Ha az Azure AD-t eredetileg az alkalmazások számára elérhetővé tettük, a szolgáltatás korlátozottabb volt, és az egyszerű szolgáltatásnév elegendő volt az alkalmazás identitásának létrehozásához. Az eredeti szolgáltatásnév a Windows Server Active Directory Service-fiókhoz közelebb volt. Emiatt még mindig lehetséges az egyszerű szolgáltatás létrehozása különböző elérési utakon, például az Azure AD PowerShell használatával anélkül, hogy először létre kellene hoznia egy alkalmazás-objektumot. A Microsoft Graph API-nak alkalmazás-objektumra van szüksége az egyszerű szolgáltatásnév létrehozása előtt.
 * A fent ismertetett információk közül a jelenleg nem érhető el programozott módon. A következő csak a felhasználói felületen érhető el:
   * Jogcím-átalakítási szabályok
   * Attribútum-hozzárendelések (felhasználói kiépítés)
-* Az egyszerű szolgáltatással és az alkalmazás-objektumokkal kapcsolatos részletesebb információkért tekintse meg az Azure AD Graph REST API dokumentációját:
-  * [Alkalmazás](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [Egyszerű szolgáltatásnév](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+* Az egyszerű szolgáltatással és az alkalmazás-objektumokkal kapcsolatos részletes információkért tekintse meg a Microsoft Graph API-dokumentációt:
+  * [Alkalmazás](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
+  * [Egyszerű szolgáltatásnév](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Az alkalmazások hogyan integrálhatók az Azure AD-vel?
 

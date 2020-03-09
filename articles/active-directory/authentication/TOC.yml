@@ -110,20 +110,18 @@
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
     - name: Azure AD jelszóvédelem
       items:
-        - name: Helyszíni integráció
-          items:
-            - name: Azure AD jelszóvédelem üzembe helyezése
-              href: howto-password-ban-bad-on-premises-deploy.md
-            - name: Azure AD jelszóvédelem konfigurálása
-              href: howto-password-ban-bad-on-premises-operations.md
-            - name: Azure AD jelszóvédelem monitorozása
-              href: howto-password-ban-bad-on-premises-monitor.md
-            - name: Azure AD-jelszóvédelem hibaelhárítása
-              href: howto-password-ban-bad-on-premises-troubleshoot.md
-            - name: Gyakori kérdések
-              href: howto-password-ban-bad-on-premises-faq.md
-            - name: Helyszíni ügynök verzióelőzményei
-              href: howto-password-ban-bad-on-premises-agent-versions.md
+        - name: Helyszíni megtervezése és üzembe helyezés
+          href: howto-password-ban-bad-on-premises-deploy.md
+        - name: Helyszíni engedélyezés és konfigurálás
+          href: howto-password-ban-bad-on-premises-operations.md
+        - name: A helyszíni üzemelő példányok monitorozása
+          href: howto-password-ban-bad-on-premises-monitor.md
+        - name: Helyszíni üzemelő példányok hibaelhárítása
+          href: howto-password-ban-bad-on-premises-troubleshoot.md
+        - name: Helyszíni üzemeltetésre vonatkozó gyakori kérdések
+          href: howto-password-ban-bad-on-premises-faq.md
+        - name: Helyszíni ügynök verzióelőzményei
+          href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Azure AD intelligens zárolás
       href: howto-password-smart-lockout.md
     - name: Jelszó nélküli

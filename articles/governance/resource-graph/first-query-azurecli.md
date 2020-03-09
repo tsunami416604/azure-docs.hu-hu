@@ -4,11 +4,11 @@ description: Ebben a rövid útmutatóban az Azure CLI-hez készült Resource Gr
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: e75152c720d94f084b43f855452e5e8ce4dc6bc8
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304135"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360226"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure CLI használatával
 
@@ -89,7 +89,7 @@ Ha el szeretné távolítani a Resource Graph bővítményt az Azure CLI környe
 az extension remove -n resource-graph
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban hozzáadta a Resource Graph-bővítményt az Azure CLI-környezethez, és futtatta az első lekérdezést. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

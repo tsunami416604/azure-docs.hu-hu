@@ -75,10 +75,10 @@
       href: samples-notebooks.md
     - name: Azure Open Datasets
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
+    - name: Tervezői adathalmazok
+      href: sample-designer-datasets.md
     - name: Teljes körű MLOps-példák
       href: 'https://github.com/microsoft/MLOps'
-    - name: Tervezői mintaadatkészletek
-      href: designer-sample-datasets.md
 - name: Alapelvek
   items:
     - name: Munkaterület

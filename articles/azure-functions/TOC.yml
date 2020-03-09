@@ -50,6 +50,8 @@
       href: /learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr
     - name: Gépi tanulás a TensorFlow-val
       href: functions-machine-learning-tensorflow.md
+    - name: Képek besorolása a PyTorch használatával
+      href: machine-learning-pytorch.md
     - name: Egyéni linuxos lemezkép létrehozása
       href: functions-create-function-linux-custom-image.md
     - name: Functions IoT Edge-eszközön

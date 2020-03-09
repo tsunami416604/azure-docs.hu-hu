@@ -165,6 +165,22 @@
               href: map-get-information-from-coordinate.md
             - name: Útvonal megjelenítése A-ból B-be
               href: map-route.md
+        - name: Térbeli IO-modul
+          items:
+            - name: A térbeli IO-modul használata
+              href: how-to-use-spatial-io-module.md
+            - name: Egyszerű adatréteg hozzáadása
+              href: spatial-io-add-simple-data-layer.md
+            - name: Térbeli adatok beolvasása és írása
+              href: spatial-io-read-write-spatial-data.md
+            - name: OGC-térképréteg hozzáadása
+              href: spatial-io-add-ogc-map-layer.md
+            - name: Kapcsolódás WFS-szolgáltatáshoz
+              href: spatial-io-connect-wfs-service.md
+            - name: Alapvető műveletek előnyeinek kihasználása
+              href: spatial-io-core-operations.md
+            - name: Támogatott adatformátumokra vonatkozó részletek
+              href: spatial-io-supported-data-format-details.md
         - name: A webes SDK által támogatott böngészők
           href: supported-browsers.md
     - name: Fejlesztés az Android SDK-val

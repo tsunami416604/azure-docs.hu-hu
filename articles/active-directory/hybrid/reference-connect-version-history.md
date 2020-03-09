@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75fdc59b9110c3bfc29fe52be917a7d6e6636b8a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963206"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376256"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: verziók kiadási előzményei
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -420,9 +420,9 @@ Probléma merült fel a konfiguráció újrapróbálkozási logikájában, ami e
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>Hibák kijavítva:
-* A következő lapra váltáskor javítsa ki az időzítési időszakot a particionálási feladatok oldalának háttérben végzett feladatainál.
+* Javítsa ki a időzítési háttérfeladatok laphoz Partíciószűrés a következő lapra történő váltáskor.
 
-* Kijavítva egy olyan hibát, amely a configdb elemre egyéni művelet során hozzáférési szabálysértést okozott.
+* Kijavítva a hiba, amely engedély nélküli hozzáférési kísérlet során a configdb elemre egyéni művelet okozza.
 
 * Kijavított egy hibát az SQL-kapcsolat időtúllépése miatti helyreállításhoz.
 
@@ -442,7 +442,7 @@ Probléma merült fel a konfiguráció újrapróbálkozási logikájában, ami e
 * alkalmazás-telemetria – a rendszergazda a következő időpontban állíthatja be az adatosztályt:
 
 * Azure AD Health-adatkezelés – a rendszergazdának meg kell keresnie az állapotfigyelő portált az állapotadatok szabályozása érdekében.
-   A szolgáltatási házirend megváltozása után az ügynökök beolvassák és érvényesítik azt.
+   Után a szolgáltatás házirend módosítva lett, az ügynökök olvassa el, és azt kényszerítése.
 
 * Hozzáadott eszköz írási-visszaállítási konfigurációs műveletei és folyamatjelző sáv az oldal inicializálásához
 
@@ -461,13 +461,13 @@ A módosítások a következő lépéseket teszik:
 
 * Új segédprogram hozzáadva egy adott objektum szinkronizálási problémáinak elhárításához. A Azure AD Connect varázsló "objektum-szinkronizálásának hibakeresése" lehetőségével további feladatokat is elháríthat. A segédprogram jelenleg a következőket ellenőrzi:
 
-  * UserPrincipalName eltérés a szinkronizált felhasználói objektum és az Azure AD-bérlő felhasználói fiókja között.
-  * Ha a rendszer tartományi szűrés miatt szűri az objektumot a szinkronizálásból
-  * Ha a rendszer a szervezeti egység (OU) szűrése miatt szűri az objektumot a szinkronizálásból
+  * Szinkronizált felhasználói objektum és a felhasználói fiók az Azure AD-bérlő a UserPrincipalName nem egyezik.
+  * Ha az objektum ki lett szűrve a tartomány szűrés miatt
+  * Ha az objektum ki lett szűrve a szervezeti egység (OU) szűrés miatt
 
 * Egy új segédprogrammal szinkronizálhatja a helyszíni Active Directoryban tárolt aktuális jelszó-kivonatot egy adott felhasználói fiókhoz.
 
-A segédprogram nem igényli a jelszó módosítását. A (z) Azure AD Connect varázsló jelszó-kivonatolási szinkronizálásának hibakeresése lehetőség alatt a további feladattal kapcsolatos további feladatok című részében található.
+A segédprogram nem szükséges a jelszó módosítása. A (z) Azure AD Connect varázsló jelszó-kivonatolási szinkronizálásának hibakeresése lehetőség alatt a további feladattal kapcsolatos további feladatok című részében található.
 
 
 
@@ -496,7 +496,7 @@ Zárja le a AD DS fiók hozzáférését a helyszíni AD-ben a következő enged
 *   Távolítsa el az összes Ace-t az adott objektumon, kivéve az önmagukhoz tartozó Ace-ket. Azt szeretnénk, hogy az alapértelmezett engedélyek érintetlenek maradjanak, ha önmagukban is megmaradnak.
 *   Rendelje hozzá ezeket a konkrét engedélyeket:
 
-Type (Típus)     | Name (Név)                          | Hozzáférés               | A következőkre vonatkozik
+Típus     | Name (Név)                          | Access               | A következőkre vonatkozik
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |
@@ -841,23 +841,23 @@ CBool(
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Válassza ezt:|
     |CertKeyAlgorithmParams|CertHashString|Ahol|
-    |||A következővel:|
+    |||With|
 
 * A következő séma-változások bevezetése lehetővé teszi, hogy az ügyfelek egyéni szinkronizálási szabályokat hozzanak létre a sAMAccountName, a domainNetBios és a domainFQDN, valamint a felhasználói objektumok distinguishedName:
 
   * A következő attribútumok lettek hozzáadva az MV-sémához:
     * Csoport: AccountName
-    * Csoport: domainNetBios
+    * Group: domainNetBios
     * Csoport: domainFQDN
     * Személy: distinguishedName
 
   * A következő attribútumok lettek hozzáadva az Azure AD Connector sémához:
-    * Csoport: OnPremisesSamAccountName
+    * Group: OnPremisesSamAccountName
     * Csoport: NetBiosName
     * Csoport: DnsDomainName
     * Felhasználó: OnPremisesDistinguishedName
 
-* A ADSyncDomainJoinedComputerSync-parancsmag parancsfájlja mostantól egy új, AzureEnvironment nevű paramétert is tartalmaz. A paraméter segítségével meghatározható, hogy a megfelelő Azure Active Directory bérlő melyik régiót futtatja. Az érvényes értékek a következők:
+* A ADSyncDomainJoinedComputerSync-parancsmag parancsfájlja mostantól egy új, AzureEnvironment nevű paramétert is tartalmaz. A paraméter segítségével meghatározható, hogy a megfelelő Azure Active Directory bérlő melyik régiót futtatja. Érvényes értékek a következők:
   * AzureCloud (alapértelmezett)
   * AzureChinaCloud
   * AzureGermanyCloud
@@ -1223,7 +1223,7 @@ Kiadás dátuma: november 2015
 * Nem lehet hosszú egész értékeket használni a szinkronizálási szabályok hatókörében.
 * Ha nem érhető el tartományvezérlő, az "eszköz visszaírási" jelölőnégyzet le lesz tiltva.
 
-## <a name="1086670"></a>eszközök 1.0.8667.0
+## <a name="1086670"></a>1.0.8667.0
 Kiadás dátuma: augusztus 2015
 
 **Új funkciók:**

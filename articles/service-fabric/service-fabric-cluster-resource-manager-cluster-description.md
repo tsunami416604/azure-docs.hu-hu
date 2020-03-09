@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774480"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389172"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Service Fabric-fürt leírása a fürterőforrás-kezelő használatával
 Az Azure Service Fabric fürterőforrás-kezelő funkciója számos módszert kínál a fürtök leírására:
@@ -118,7 +118,7 @@ Tegyük fel, hogy ez a korlátozás "maximális különbség" garanciát biztos�
 
 Tegyük fel például, hogy van egy hat csomóponttal rendelkező fürt, amely öt tartalék tartománnyal és öt frissítési tartománnyal van konfigurálva.
 
-|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N1 | | | | |
 | **UD1** |N6 |N2 | | | |
@@ -130,7 +130,7 @@ Most tegyük fel, hogy létrehozunk egy szolgáltatást egy **TargetReplicaSetSi
 
 Itt látható az elrendezés, valamint a replikák száma a hibák és a frissítési tartományok esetében:
 
-|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 | UDTotal |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** | |R2 | | | |1 |
@@ -143,7 +143,7 @@ Ez az elrendezés a csomópontok és a frissítési tartomány csomópontjainak 
 
 Most nézzük meg, mi történne, ha az N2 helyett az N6-ot használta. Hogyan történik a replikák terjesztése?
 
-|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 | UDTotal |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** |R5 | | | | |1 |
@@ -154,7 +154,7 @@ Most nézzük meg, mi történne, ha az N2 helyett az N6-ot használta. Hogyan t
 
 Ez az elrendezés sérti a "maximális különbség" garanciát a tartalék tartományi korlátozásra vonatkozóan. A FD0 két replikával rendelkezik, míg a FD1 értéke nulla. A FD0 és a FD1 közötti különbség összesen kettő, ami nagyobb, mint a maximális különbség. Mivel a korlátozást megsértették, a fürterőforrás-kezelő nem engedélyezi ezt a megállapodást. Hasonlóképpen, ha az N2-t és az N6-ot (N1 és N2 helyett) választottuk, a következőt fogjuk kapni:
 
-|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 | UDTotal |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** | | | | | |0 |
 | **UD1** |R5 |R1 | | | |2 |
@@ -169,7 +169,7 @@ Az állapot-nyilvántartó replikák vagy állapot nélküli példányok eloszl�
 
 Másfelől ez a megközelítés túl szigorú lehet, és nem teszi lehetővé, hogy a fürt az összes erőforrást kihasználja. Bizonyos fürtcsomópontok esetében bizonyos csomópontok nem használhatók. Ennek hatására előfordulhat, hogy Service Fabric a szolgáltatások nem helyezhetők el, ami figyelmeztető üzeneteket eredményez. Az előző példában az egyes fürtcsomópontok nem használhatók (a példában N6). Még akkor is, ha csomópontokat adott hozzá a fürthöz (N7-N10), a replikák/példányok csak az N1-N5 lesznek elhelyezve a hibák és a frissítési tartományok korlátozásai miatt. 
 
-|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N1 | | | |N10 |
 | **UD1** |N6 |N2 | | | |
@@ -212,7 +212,7 @@ Mivel mindkét megközelítés rendelkezik erősségekkel és gyengeségekkel, e
 
 Térjünk vissza az előző példához, és tegyük fel, hogy egy fürt most már nyolc csomóponttal rendelkezik. A fürt továbbra is öt tartalék tartománnyal és öt frissítési tartománnyal van konfigurálva, és a fürtben üzemeltetett szolgáltatás **TargetReplicaSetSize** értéke öt marad. 
 
-|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N1 | | | | |
 | **UD1** |N6 |N2 | | | |
@@ -222,7 +222,7 @@ Térjünk vissza az előző példához, és tegyük fel, hogy egy fürt most má
 
 Mivel az összes szükséges feltétel teljesül, a fürterőforrás-kezelő a "kvórum-alapú" logikát fogja használni a szolgáltatás terjesztésekor. Ez az N6-N8 használatát teszi lehetővé. Ebben az esetben az egyik lehetséges szolgáltatás a következőhöz hasonló lehet:
 
-|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 | UDTotal |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** |R2 | | | | |1 |
@@ -235,9 +235,9 @@ Ha a szolgáltatás **TargetReplicaSetSize** értéke négyre van csökkentve (p
 
 Az előző elrendezésben, ha a **TargetReplicaSetSize** értéke öt, és a rendszer eltávolítja az N1-t a fürtből, a frissítési tartományok száma négy értékkel egyenlő lesz. A fürterőforrás-kezelő a "maximális különbség" logikát használja, mivel a frissítési tartományok száma többé nem osztja el a szolgáltatás **TargetReplicaSetSize** értékét. Ennek eredményeképpen a (z)-replika R1-es verziójának újraépítése az N4-es porton keresztül történik, hogy a hiba-és frissítési tartományra vonatkozó megkötés ne legyen megsértve.
 
-|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 | UDTotal |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |– |– |– |– |– |– |
+| **UD0** |N/A |N/A |N/A |N/A |N/A |N/A |
 | **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |1 |
@@ -347,7 +347,7 @@ Néha (valójában az idő nagy részében) érdemes biztosítani, hogy bizonyos
 
 Nagyszerű példa arra, hogy a hardverek konkrét számítási feladatokhoz való célzása szinte minden n szintű architektúra. Bizonyos gépek az alkalmazás előtér-vagy API-kiszolgálóként szolgálnak, és elérhetők az ügyfelek vagy az Internet számára. A különböző gépek – gyakran különböző hardveres erőforrásokkal – kezelik a számítási vagy tárolási rétegek munkáját. Ezeket általában _nem_ közvetlenül az ügyfelek vagy az Internet teszi elérhetővé. 
 
-Service Fabric bizonyos esetekben várhatóan bizonyos számítási feladatoknak bizonyos hardveres konfigurációkon is futniuk kell. Példa:
+Service Fabric bizonyos esetekben várhatóan bizonyos számítási feladatoknak bizonyos hardveres konfigurációkon is futniuk kell. Például:
 
 * Egy meglévő n szintű alkalmazás "felemelve és áthelyezve" lett egy Service Fabric környezetbe.
 * A munkaterhelést meghatározott hardveren kell futtatni teljesítmény-, méretezési vagy biztonsági elkülönítési okokból.
@@ -375,20 +375,20 @@ A Node tulajdonságban megadott érték karakterlánc, logikai vagy hosszú lehe
 
 * Feltételes ellenőrzések adott utasítások létrehozásához:
 
-  | nyilatkozat | Szintaxis |
+  | Kimutatás | Szintaxis |
   | --- |:---:|
   | "egyenlő" | "==" |
   | "nem egyenlő" | "!=" |
   | "nagyobb, mint" | ">" |
-  | "nagyobb vagy egyenlő" | "> =" |
+  | "nagyobb vagy egyenlő" | ">=" |
   | "kisebb, mint" | "<" |
-  | "kisebb vagy egyenlő" | "< =" |
+  | "kisebb vagy egyenlő" | "<=" |
 
 * Logikai utasítások csoportosításhoz és logikai műveletekhez:
 
-  | nyilatkozat | Szintaxis |
+  | Kimutatás | Szintaxis |
   | --- |:---:|
-  | és | "& &" |
+  | és | "&&" |
   | vagy | "&#124;&#124;" |
   | nem | "!" |
   | "csoport mint egyetlen utasítás" | "()" |

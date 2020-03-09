@@ -35,8 +35,8 @@
           href: howto-aad-app-configuration.md
     - name: Különálló Prometheus üzembe helyezése Azure Red Hat OpenShift-fürtön
       href: howto-deploy-prometheus.md
-    - name: Projektek kezelése egy Azure Red Hat OpenShift-fürtben
-      href: howto-manage-projects.md
+    - name: Privát Azure Red Hat OpenShift-fürt létrehozása
+      href: howto-create-private-cluster.md
     - name: Monitorozás és naplózás
       items:
         - name: Tárolókhoz készült Azure Monitor (előzetes verzió)

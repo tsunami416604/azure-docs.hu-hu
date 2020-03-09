@@ -4,11 +4,11 @@ description: Ebben az oktatóanyagban szabályzatokat alkalmaz a szabványok bet
 ms.date: 12/20/2019
 ms.topic: tutorial
 ms.openlocfilehash: a4e4190e5ff6a87098c349cde99572df2dba4331
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436255"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384520"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében
 
@@ -77,7 +77,7 @@ A megfelelőség Azure Policy használatával történő kikényszerítésének 
 
 ## <a name="implement-a-new-custom-policy"></a>Új egyéni szabályzat megvalósítása
 
-Most, hogy hozzárendelt egy beépített szabályzatdefiníciót, még többet végezhet el az Azure Policyvel. Ezután hozzon létre egy új egyéni szabályzatot a költségek megtakarításához, ha ellenőrzi, hogy a környezetben létrehozott virtuális gépek nem lehetnek-e a G sorozatban. Így valahányszor a cég egy felhasználója megpróbál létrehozni egy G sorozatú virtuális gépet, a rendszer megtagadja a kérelmet.
+Most, hogy hozzárendelt egy beépített szabályzatdefiníciót, még többet végezhet el az Azure Policyvel. Ezután hozzon létre egy új egyéni szabályzatot a költségek ellenőrzi, hogy a környezetben létrehozott virtuális gépek a G sorozat nem lehet. Így valahányszor a cég egy felhasználója megpróbál létrehozni egy G sorozatú virtuális gépet, a rendszer megtagadja a kérelmet.
 
 1. A **Létrehozás** területen válassza a **Definíciók** elemet az Azure Policy lap bal oldalán.
 
@@ -351,17 +351,17 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
 
 1. Adja meg a kezdeményezés **nevét** és **leírását**.
 
-   Ez a példa azt ellenőrzi, hogy az erőforrások megfelelnek-e a biztonságos állapotra vonatkozó szabályzat-definícióknak. Adja a kezdeményezésnek a **Biztonságossá tétel** nevet, és állítsa be a következő leírást: **Ez a kezdeményezés az erőforrások biztosításához kapcsolódó szabályzatdefiníciók kezelésére lett létrehozva**.
+   Ebben a példában azt ellenőrzi, hogy vannak-e erőforrások tételről szóló biztonságossá. Adja a kezdeményezésnek a **Biztonságossá tétel** nevet, és állítsa be a következő leírást: **Ez a kezdeményezés az erőforrások biztosításához kapcsolódó szabályzatdefiníciók kezelésére lett létrehozva**.
 
 1. A **Kategória** megadásakor válasszon a meglévő lehetőségek közül, vagy hozzon létre új kategóriát.
 
 1. Tekintse át az **Elérhető definíciók** listáját a **Kezdeményezési definíció** oldal jobb oldalán, és válassza ki azt a szabályzatdefiníciót (vagy definíciókat), amelye(ke)t hozzá szeretne adni a kezdeményezéshez. A **biztonságos** kezdeményezéshez adja hozzá a következő beépített szabályzat-definíciókat a házirend-definíciós információk melletti **+** kiválasztásával, majd a Részletek lapon a **+ Hozzáadás** lehetőség kiválasztásával:
 
    - Engedélyezett helyek
-   - Az Endpoint Protection hiányának figyelése az Azure Security Centerben
+   - Hiányzó Endpoint Protection figyelése Azure Security Center
    - Az internetre irányuló virtuális gépek hálózati biztonsági csoportjának szabályait meg kell szigorítani
    - A Azure Backup engedélyezni kell a Virtual Machines
-   - A virtuális gépeken alkalmazni kell a lemeztitkosítást
+   - A lemezes titkosítást a virtuális gépeken kell alkalmazni
 
    Miután kiválasztotta a házirend-definíciót a listából, a rendszer mindegyiket hozzáadja a **Kategória**alá.
 
@@ -443,7 +443,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. Válassza a **Paraméterek** fület a varázsló tetején. Ha az előző lépések során konfigurált egy kezdeményezési paramétert, itt állítson be egy értéket.
 
-1. Válassza a **szervizelés** fület a varázsló tetején. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. Ezt a jelölőnégyzetet _meg_ kell adni, ha a hozzárendelt házirend vagy kezdeményezés olyan szabályzatot tartalmaz, amely a [deployIfNotExists](../concepts/effects.md#deployifnotexists) vagy a [módosítás](../concepts/effects.md#modify) hatásait tartalmazza. Mivel az oktatóanyaghoz használt szabályzat nem, hagyja üresen. További információkat a [felügyelt identitásokkal](../../../active-directory/managed-identities-azure-resources/overview.md) és [a szervizelési biztonság működésével](../how-to/remediate-resources.md#how-remediation-security-works) kapcsolatos cikkben találhat.
+1. Válassza a **szervizelés** fület a varázsló tetején. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. Ezt a jelölőnégyzetet _meg_ kell adni, ha a hozzárendelt házirend vagy kezdeményezés olyan szabályzatot tartalmaz, amely a [deployIfNotExists](../concepts/effects.md#deployifnotexists) vagy a [módosítás](../concepts/effects.md#modify) hatásait tartalmazza. Mivel nem az ebben az oktatóanyagban használt házirendet, hagyja üresen a mezőt. További információkat a [felügyelt identitásokkal](../../../active-directory/managed-identities-azure-resources/overview.md) és [a szervizelési biztonság működésével](../how-to/remediate-resources.md#how-remediation-security-works) kapcsolatos cikkben találhat.
 
 1. Válassza a **felülvizsgálat + létrehozás** fület a varázsló tetején.
 
@@ -458,7 +458,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
    ![Kezdeményezés megfelelőségi lapja – nem indított értékelések](../media/create-and-manage/compliance-status-not-started.png)
 
-1. A kezdeményezés hozzárendelésének befejezését követően a megfelelőségi lap frissül a **Megfelelő**_Megfelelőségi állapottal_.
+1. A kezdeményezés hozzárendelésének befejezését követően a megfelelőségi lap frissül a _Megfelelő_**Megfelelőségi állapottal**.
 
    ![Kezdeményezési megfelelőség lap – az erőforrások megfelelőek](../media/create-and-manage/compliance-status-compliant.png)
 
@@ -493,7 +493,7 @@ Ebben a példában a Trent Baker, az egyik contoso SR. Virtualization specialist
 
 1. Válassza a **felülvizsgálat + mentés** lehetőséget, majd kattintson a **Mentés**gombra.
 
-Ebben a szakaszban megoldotta a megtagadott kérelmet úgy, hogy egyetlen erőforráscsoport számára létrehoz egy kizárást.
+Ebben a szakaszban az elutasított kérelem egyetlen kizárás létrehozásával feloldva.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

@@ -11,11 +11,11 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 2399849b87e44c5cb70d2db987ae18d8d2d9c552
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564040"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356271"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Integrációs modul figyelése Azure Data Factory  
 Az **Integration Runtime** a Azure Data Factory által használt számítási infrastruktúra, amely különböző adatintegrációs képességeket biztosít a különböző hálózati környezetekben. A Data Factory három különböző típusú integrációs modult kínál:
@@ -42,17 +42,17 @@ A következő táblázat az Azure Integration Runtime parancsmag által visszaad
 
 | Tulajdonság | Leírás |
 -------- | ------------- | 
-| Név | Az Azure Integration Runtime neve. |  
-| State | Az Azure Integration Runtime állapota. | 
+| Name (Név) | Az Azure Integration Runtime neve. |  
+| Állapot | Az Azure Integration Runtime állapota. | 
 | Hely | Az Azure Integration Runtime helye. Az Azure Integration Runtime helyével kapcsolatos részletekért lásd: [az Integration Runtime bemutatása](concepts-integration-runtime.md). |
 | DataFactoryName | Annak az adatelőállítónak a neve, amelyhez az Azure Integration Runtime tartozik. | 
 | ResourceGroupName | Azon erőforráscsoport neve, amelyhez az adatelőállító tartozik.  |
 | Leírás | Az Integration Runtime leírása.  |
 
-### <a name="status"></a>Állapot
+### <a name="status"></a>status
 Az alábbi táblázat az Azure Integration Runtime lehetséges állapotait tartalmazza:
 
-| Állapot | Megjegyzések/forgatókönyvek | 
+| status | Megjegyzések/forgatókönyvek | 
 | ------ | ------------------ |
 | Online | Az Azure Integration Runtime online állapotban van, és készen áll a használatra. | 
 | Offline | Az Azure Integration Runtime belső hiba miatt offline állapotban van. |
@@ -69,11 +69,11 @@ Az alábbi táblázat az **egyes csomópontok**figyelési tulajdonságainak leí
 
 | Tulajdonság | Leírás | 
 | -------- | ----------- | 
-| Név | A saját üzemeltetésű Integration Runtime és a hozzá társított csomópontok neve. A csomópont egy helyszíni Windows rendszerű számítógép, amelyen telepítve van a saját üzemeltetésű integrációs modul. |  
-| Állapot | A saját üzemeltetésű integrációs modul általános és minden csomópontjának állapota. Példa: online/offline/korlátozott/stb. Ezekről az állapotokról további információt a következő szakaszban talál. | 
+| Name (Név) | A saját üzemeltetésű Integration Runtime és a hozzá társított csomópontok neve. A csomópont egy helyszíni Windows rendszerű számítógép, amelyen telepítve van a saját üzemeltetésű integrációs modul. |  
+| status | A saját üzemeltetésű integrációs modul általános és minden csomópontjának állapota. Példa: online/offline/korlátozott/stb. Ezekről az állapotokról további információt a következő szakaszban talál. | 
 | Verzió | A saját üzemeltetésű Integration Runtime és az egyes csomópontok verziója. A saját üzemeltetésű integrációs modul verziója a csoportban lévő csomópontok többségének verziója alapján van meghatározva. Ha a saját üzemeltetésű integrációs modul telepítője eltérő verziójú csomópontokkal rendelkezik, akkor csak a logikai saját üzemeltetésű integrációs modulnak megfelelő verziószámmal rendelkező csomópontok működnek megfelelően. Mások korlátozott módban vannak, és manuálisan kell frissíteni (csak abban az esetben, ha az automatikus frissítés meghiúsul). | 
 | Rendelkezésre álló memória | Rendelkezésre álló memória a saját üzemeltetésű integrációs modul csomópontján. Ez az érték a közel valós idejű pillanatkép. | 
-| Processzorkihasználtság | Egy saját üzemeltetésű Integration Runtime-csomópont CPU-kihasználtsága. Ez az érték a közel valós idejű pillanatkép. |
+| Processzorhasználat | Egy saját üzemeltetésű Integration Runtime-csomópont CPU-kihasználtsága. Ez az érték a közel valós idejű pillanatkép. |
 | Hálózatkezelés (be/ki) | Egy saját üzemeltetésű integrációs modul csomópontjának hálózati kihasználtsága. Ez az érték a közel valós idejű pillanatkép. | 
 | Egyidejű feladatok (futó/korlát) | **Fut**. Az egyes csomópontokon futó feladatok vagy feladatok száma. Ez az érték a közel valós idejű pillanatkép. <br/><br/>**Korlát**. A korlát az egyes csomópontok maximális egyidejű feladatait jelzi. Ez az érték a gép méretétől függően van meghatározva. Az egyidejű feladatok végrehajtásának korlátját növelheti a speciális forgatókönyvekben, ha a tevékenységek a CPU, a memória vagy a hálózat kihasználtsága alatt állnak. Ez a funkció egy egycsomópontos, saját üzemeltetésű integrációs futtatókörnyezettel is elérhető. |
 | Szerepkör | A több csomópontos, saját üzemeltetésű integrációs modulban két típusú szerepkör létezik – diszpécser és feldolgozó. Minden csomópont munkavégző, ami azt jelenti, hogy mind a feladatok végrehajtásához használhatók. Csak egy kiosztó csomópont létezik, amely a feladatok/feladatok a Cloud servicesből való lekérésére és különböző munkavégző csomópontokra történő küldésére szolgál. A diszpécser csomópont is egy feldolgozó csomópont. |
@@ -91,7 +91,7 @@ A Azure Portalban felülbírálhatja a számított alapértelmezett értéket. V
 ### <a name="status-per-node"></a>Állapot (/csomópont)
 A következő táblázat a saját üzemeltetésű Integration Runtime csomópont lehetséges állapotait tartalmazza:
 
-| Állapot | Leírás |
+| status | Leírás |
 | ------ | ------------------ | 
 | Online | A csomópont a Data Factory szolgáltatáshoz van csatlakoztatva. |
 | Offline | A csomópont offline állapotban van. |
@@ -104,7 +104,7 @@ Egy csomópont inaktív lehet, ha nem tud csatlakozni más csomópontokhoz.
 ### <a name="status-overall-self-hosted-integration-runtime"></a>Állapot (teljes saját üzemeltetésű integrációs modul)
 A következő táblázat a saját üzemeltetésű integrációs modul lehetséges állapotait tartalmazza. Ez az állapot a futtatókörnyezethez tartozó összes csomópont állapotától függ. 
 
-| Állapot | Leírás |
+| status | Leírás |
 | ------ | ----------- | 
 | Regisztráció szükséges | Ehhez a saját üzemeltetésű integrációs modulhoz még nincs regisztrálva csomópont. |
 | Online | Minden csomópont online állapotú. |
@@ -162,7 +162,7 @@ Az Azure-SSIS Integration Runtime egy teljes körűen felügyelt Azure-beli virt
 | Csomópontok | Az Azure-SSIS integrációs modul lefoglalt/elérhető csomópontjai, a csomópont-specifikus állapotokkal (kezdő/elérhető/újrahasznosítási/nem elérhető) és a végrehajtható hibákkal. |
 | OtherErrors | Az Azure-SSIS integrációs modulján nem Node-specifikus működés közbeni hibák. |
 | LastOperation | Az Azure-SSIS integrációs modul utolsó indítási/leállítási műveletének eredménye, ha a művelet sikertelen. |
-| State | Az Azure-SSIS integrációs modul általános állapota (kezdeti/indítás/elindítva/leállítva). |
+| Állapot | Az Azure-SSIS integrációs modul általános állapota (kezdeti/indítás/elindítva/leállítva). |
 | Hely | Az Azure-SSIS Integration Runtime helye. |
 | NodeSize | Az Azure-SSIS Integration Runtime egyes csomópontjainak mérete. |
 | NodeCount | Az Azure-SSIS Integration Runtime csomópontjainak száma. |
@@ -172,23 +172,23 @@ Az Azure-SSIS Integration Runtime egy teljes körűen felügyelt Azure-beli virt
 | CatalogAdminPassword | A meglévő Azure SQL Database/felügyelt példány kiszolgálójának rendszergazdai jelszava. |
 | CatalogPricingTier | A meglévő Azure SQL Database-kiszolgáló által üzemeltetett SSISDB díjszabási szintje.  Nem alkalmazható Azure SQL Database felügyelt példány-üzemeltetési SSISDB. |
 | VNetId | Az Azure-SSIS Integration Runtime virtuális hálózati erőforrás-azonosítója a csatlakozáshoz. |
-| Subnet | Az Azure-SSIS integrációs modul alhálózatának neve, amelyhez csatlakozni szeretne. |
-| ID | Az Azure-SSIS Integration Runtime erőforrás-azonosítója. |
+| Alhálózat | Az Azure-SSIS integrációs modul alhálózatának neve, amelyhez csatlakozni szeretne. |
+| ID (Azonosító) | Az Azure-SSIS Integration Runtime erőforrás-azonosítója. |
 | Típus | Az Azure-SSIS Integration Runtime típusa (felügyelt/helyi). |
 | ResourceGroupName | Az Azure-erőforráscsoport neve, amelyben az adatgyár és az Azure-SSIS Integration Runtime létrejött. |
 | DataFactoryName | Az Azure-beli adatgyár neve. |
-| Név | Az Azure-SSIS Integration Runtime neve. |
+| Name (Név) | Az Azure-SSIS Integration Runtime neve. |
 | Leírás | Az Azure SSIS Integration Runtime leírása. |
 
   
 ### <a name="status-per-node"></a>Állapot (/csomópont)
 
-| Állapot | Leírás |
+| status | Leírás |
 | ------ | ----------- | 
 | Indítás | A csomópont előkészítése folyamatban van. |
 | Elérhető | Ez a csomópont készen áll a SSIS-csomagok üzembe helyezésére és végrehajtására. |
 | Újrahasznosítás | A csomópont javítása/újraindítása folyamatban van. |
-| Nem elérhető | Ez a csomópont nem áll készen a SSIS-csomagok üzembe helyezésére és végrehajtására, valamint a feloldható hibákra/problémákra. |
+| Nem érhető el | Ez a csomópont nem áll készen a SSIS-csomagok üzembe helyezésére és végrehajtására, valamint a feloldható hibákra/problémákra. |
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>Állapot (teljes Azure-SSIS Integration Runtime)
 
@@ -226,7 +226,7 @@ Az Azure-SSIS integrációs modulról további információt az alábbi cikkekbe
 - [Azure-SSIS integrációs modul kezelése](manage-azure-ssis-integration-runtime.md). Ez a cikk bemutatja, hogyan lehet leállítani, elindítani vagy eltávolítani egy Azure-SSIS integrációs modult. Azt is bemutathatja, hogyan skálázhatja fel horizontálisan az Azure-SSIS integrációs modult úgy, hogy további csomópontokat ad hozzá. 
 - [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md). Ez a cikk egy Azure-SSIS integrációs modul Azure virtuális hálózathoz való csatlakoztatásával kapcsolatos elméleti információkat tartalmaz. Emellett olyan lépéseket is tartalmaz, amelyekkel a Azure Portal konfigurálhatja a virtuális hálózatot úgy, hogy a Azure-SSIS IR csatlakozni tudjanak a virtuális hálózathoz. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A folyamatok figyelésének különböző módjai a következő cikkekben találhatók: 
 
 - Gyors útmutató [: adatelőállító létrehozása](quickstart-create-data-factory-dot-net.md).

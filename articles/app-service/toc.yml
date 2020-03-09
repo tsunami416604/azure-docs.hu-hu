@@ -87,6 +87,8 @@
           href: networking-features.md
         - name: Application Gateway szolgáltatásvégpontokkal
           href: networking/app-gateway-with-service-endpoints.md
+        - name: Privát végpontok
+          href: networking/private-endpoint.md
     - name: Bemeneti és kimeneti IP-címek
       href: overview-inbound-outbound-ips.md
     - name: Virtuális hálózat integrációja

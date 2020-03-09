@@ -17,11 +17,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: bc303dc62892f8fac67bb6869e72db0e40f19779
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164031"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377830"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Hozzáférés engedélyezése Azure Active Directory webes alkalmazásokhoz az OAuth 2.0 kódengedélyezési folyamat használatával
 
@@ -90,7 +90,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | state |ajánlott |A kérelemben szereplő, a jogkivonat-válaszban visszaadott érték. A véletlenszerűen generált egyedi érték általában a [helyek közötti kérelmek hamisításának megelőzésére](https://tools.ietf.org/html/rfc6749#section-10.12)szolgál. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
 | resource | ajánlott |A célként szolgáló webes API (biztonságos erőforrás) alkalmazás-azonosító URI-ja. Az alkalmazás-azonosító URI azonosítójának megkereséséhez az Azure Portalon kattintson a **Azure Active Directory**elemre, majd az **alkalmazás regisztrációja**elemre, nyissa meg az alkalmazás **beállításait** tartalmazó lapot, majd kattintson a **Tulajdonságok**elemre. Külső erőforrás is lehet, például `https://graph.microsoft.com`. Erre az engedélyezési vagy a jogkivonat-kérelmek egyikében van szükség. Annak biztosítása érdekében, hogy kevesebb hitelesítési kérdés kerüljön az engedélyezési kérelembe annak biztosításához, hogy a felhasználó elfogadja a jóváhagyást. |
 | scope | **figyelmen kívül hagyja** | A v1 Azure AD-alkalmazások esetében a hatóköröket statikusan kell konfigurálni az Azure Portalon az alkalmazások **beállításai**, a **szükséges engedélyek**területen. |
-| gyors |választható |Adja meg a szükséges felhasználói interakció típusát.<p> Az érvényes értékek az alábbiak: <p> *Bejelentkezés*: a rendszer kérni fogja a felhasználótól az ismételt hitelesítést. <p> *select_account*: a rendszer megkéri a felhasználót, hogy válasszon egy fiókot, és szakítsa meg az egyszeri bejelentkezést. A felhasználó kiválaszthat egy meglévő bejelentkezett fiókot, megadhatja a megjegyzett fiók hitelesítő adatait, vagy választhat, hogy egy másik fiókot is használ-e. <p> *beleegyezik*: a felhasználói beleegyezett, de frissíteni kell. A felhasználónak meg kell adnia a hozzájárulásukat. <p> *admin_consent*: a rendszergazdának a szervezet összes felhasználója nevében kell megadnia a hozzájárulásukat |
+| gyors |választható |Adja meg a szükséges felhasználói interakció típusát.<p> Érvényes értékek a következők: <p> *Bejelentkezés*: a rendszer kérni fogja a felhasználótól az ismételt hitelesítést. <p> *select_account*: a rendszer megkéri a felhasználót, hogy válasszon egy fiókot, és szakítsa meg az egyszeri bejelentkezést. A felhasználó kiválaszthat egy meglévő bejelentkezett fiókot, megadhatja a megjegyzett fiók hitelesítő adatait, vagy választhat, hogy egy másik fiókot is használ-e. <p> *beleegyezik*: a felhasználói beleegyezett, de frissíteni kell. A felhasználónak meg kell adnia a hozzájárulásukat. <p> *admin_consent*: a rendszergazdának a szervezet összes felhasználója nevében kell megadnia a hozzájárulásukat |
 | login_hint |választható |A használatával előre kitöltheti a felhasználó bejelentkezési oldalának username/e-mail címe mezőjét, ha már ismeri a felhasználónevét. Az alkalmazások gyakran ezt a paramétert használják az újrahitelesítés során, miután az `preferred_username` jogcím használatával már kibontották a felhasználónevet egy korábbi bejelentkezésből. |
 | domain_hint |választható |A felhasználó által a bejelentkezéshez használt bérlőről vagy tartományról nyújt be egy tippet. A domain_hint értéke a bérlő regisztrált tartománya. Ha a bérlőt egy helyszíni címtárba összevonták, a HRE átirányítja a megadott bérlői összevonási kiszolgálóra. |
 | code_challenge_method | ajánlott    | A `code_challenge` paraméterhez tartozó `code_verifier` kódolására szolgáló metódus. `plain` vagy `S256`egyike lehet. Ha ki van zárva, a rendszer a `code_challenge`t úgy tekinti, hogy egyszerű szöveges, ha `code_challenge` szerepel. Az Azure HRE 1.0-s verziójában `plain` és `S256`is támogatott. További információ: [PKCE RFC](https://tools.ietf.org/html/rfc7636). |

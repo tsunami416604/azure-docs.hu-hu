@@ -142,10 +142,16 @@
       items:
         - name: Áttekintés
           href: backup-azure-about-mars.md
+        - name: Telepítés vagy frissítés
+          items:
+            - name: MARS-ügynök telepítése
+              href: install-mars-agent.md
+            - name: MARS-ügynök frissítése
+              href: upgrade-mars-agent.md
         - name: Backup
           items:
             - name: Windows Serveren lévő fájlok és mappák biztonsági mentése
-              href: backup-configure-vault.md
+              href: backup-windows-with-mars-agent.md
             - name: A Windows Server rendszerállapotának biztonsági mentése
               href: backup-azure-system-state.md
         - name: Visszaállítás

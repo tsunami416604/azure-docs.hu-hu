@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
 ms.openlocfilehash: 783737729601bfef3bee8741a097d4319349f18e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671653"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373788"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A [Azure app Service](overview.md) biztonsági mentési és visszaállítási funkciója lehetővé teszi, hogy egyszerűen hozza létre az alkalmazások biztonsági másolatait manuálisan vagy ütemezés szerint. Beállíthatja, hogy a biztonsági másolatok határozatlan ideig maradjanak. Az alkalmazást visszaállíthatja egy korábbi állapot pillanatképére a meglévő alkalmazás felülírásával vagy egy másik alkalmazásra való visszaállítással.
@@ -23,7 +23,7 @@ Az alkalmazások biztonsági mentésből való visszaállításáról az [alkalm
 App Service a következő információk biztonsági mentését végezheti egy Azure Storage-fiókba és-tárolóba, amelyet az alkalmazás használatára konfigurált. 
 
 * Alkalmazás konfigurációja
-* Fájl tartalma
+* Fájltartalmak
 * Az alkalmazáshoz csatlakoztatott adatbázis
 
 A biztonsági mentési funkció a következő adatbázis-megoldásokat támogatja: 
@@ -168,5 +168,5 @@ Példákat a következő témakörben talál:
 
 <a name="nextsteps"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alkalmazások biztonsági másolatból való visszaállításáról az [alkalmazás visszaállítása az Azure-ban](web-sites-restore.md)című témakörben olvashat bővebben. 

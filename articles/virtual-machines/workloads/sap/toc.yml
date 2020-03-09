@@ -24,6 +24,8 @@
           href: hana-data-tiering-extension-nodes.md
         - name: Működési modell és feladatok
           href: hana-operations-model.md
+        - name: Kompatibilis operációs rendszerek
+          href: os-compatibility-matrix-hana-large-instance.md
     - name: Architektúra
       items:
         - name: Általános architektúra
