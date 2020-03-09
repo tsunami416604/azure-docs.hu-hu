@@ -17,11 +17,11 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591931"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395278"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Az Azure-infrastruktúra előkészítése az SAP-hez a Windows feladatátvevő fürt és az SAP ASCS/SCS közös lemezének használatával
 
@@ -554,7 +554,7 @@ Ha az SAP ASCS/SCS-példányt mindkét fürtcsomóponton szeretné felvenni, el�
 | --- | --- |
 | Változó neve |`KeepAliveTime` |
 | Változó típusa |REG_DWORD (decimális) |
-| Érték |120000 |
+| Érték |120 000 |
 | Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 **3. táblázat:** Az első TCP/IP-paraméter módosítása
@@ -565,7 +565,7 @@ Ezt követően adja hozzá ezt a Windows beállításjegyzékbeli bejegyzést az
 | --- | --- |
 | Változó neve |`KeepAliveInterval` |
 | Változó típusa |REG_DWORD (decimális) |
-| Érték |120000 |
+| Érték |120 000 |
 | Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 **4. táblázat:** A második TCP/IP-paraméter módosítása

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714632"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356433"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Az Azure cache konfigurálása a Redis-hez
 Ez a témakör az Azure cache Redis-példányok számára elérhető konfigurációkat ismerteti. Ez a témakör az Azure cache alapértelmezett Redis-kiszolgáló-konfigurációját is ismerteti Redis-példányok esetén.
@@ -44,12 +44,12 @@ A következő beállításokat tekintheti meg és konfigurálhatja az **erőforr
     * [Adatmegőrzés](#redis-data-persistence)
     * [Frissítések ütemezése](#schedule-updates)
     * [Georeplikáció](#geo-replication)
-    * [Virtual Network](#virtual-network)
+    * [Virtuális hálózat](#virtual-network)
     * [Tűzfal](#firewall)
     * [Tulajdonságok](#properties)
     * [Zárak](#locks)
     * [Automation-parancsfájl](#automation-script)
-* Felügyelet
+* Adminisztráció
     * [Adatok importálása](#importexport)
     * [Adatok exportálása](#importexport)
     * [Újraindítás](#reboot)
@@ -96,7 +96,7 @@ A **Settings (beállítások** ) szakasz a gyorsítótár következő beállít�
 * [Adatmegőrzés](#redis-data-persistence)
 * [Frissítések ütemezése](#schedule-updates)
 * [Georeplikáció](#geo-replication)
-* [Virtual Network](#virtual-network)
+* [Virtuális hálózat](#virtual-network)
 * [Tűzfal](#firewall)
 * [Tulajdonságok](#properties)
 * [Zárak](#locks)
@@ -193,7 +193,7 @@ Az egyes díjszabási szintek eltérő korlátokkal rendelkeznek az ügyfélkapc
 A gyorsítótár frissítéséhez kattintson a **Frissítés most** lehetőségre a díjszabási csomag módosításához és a gyorsítótár [skálázásához](#scale) . Az árképzési szintek kiválasztásával kapcsolatos további információkért tekintse meg [Az Azure cache Redis-ajánlat és-méret használatát](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use) ismertető témakört.
 
 
-### <a name="scale"></a>Beosztás
+### <a name="scale"></a>Méretezés
 Kattintson a **Scale (méretezés** ) elemre a gyorsítótár díjszabási szintjeinek megtekintéséhez vagy módosításához. A skálázással kapcsolatos további információkért lásd: az [Azure cache méretezése a Redis](cache-how-to-scale.md).
 
 ![Azure cache a Redis díjszabási szintjéhez](./media/cache-configure/pricing-tier.png)
@@ -288,7 +288,7 @@ Kattintson az **Automation script (automatizálási parancsfájl** ) lehetőség
 ## <a name="administration-settings"></a>Felügyeleti beállítások
 A **felügyelet** szakaszban található beállítások lehetővé teszik a következő rendszergazdai feladatok végrehajtását a gyorsítótárban.
 
-![Felügyelet](./media/cache-configure/redis-cache-administration.png)
+![Adminisztráció](./media/cache-configure/redis-cache-administration.png)
 
 * [Adatok importálása](#importexport)
 * [Adatok exportálása](#importexport)

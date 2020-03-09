@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Griddel kapcsolatos fogalmak
-description: Az Azure Event Gridet és a vele kapcsolatos fogalmakat ismerteti. Event Grid számos főbb összetevőit határozza meg.
+title: Azure Event Grid fogalmak
+description: Az Azure Event Gridet és a vele kapcsolatos fogalmakat ismerteti. A Event Grid számos kulcsfontosságú összetevőjét határozza meg.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,84 +8,84 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
 ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66305256"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359438"
 ---
-# <a name="concepts-in-azure-event-grid"></a>Az Azure Event Griddel kapcsolatos fogalmak
+# <a name="concepts-in-azure-event-grid"></a>Fogalmak a Azure Event Grid
 
-Ez a cikk az Azure Event Grid főbb fogalmakat ismerteti.
+Ez a cikk a Azure Event Grid főbb fogalmait ismerteti.
 
-## <a name="events"></a>Events
+## <a name="events"></a>Események
 
-Az esemény leíró adatokkal teljes hiba történt a rendszer a legkisebb mennyisége jelenti. Minden esemény rendelkezik közös információkat, például: az esemény forrása idő az esemény tartott a hely és az egyedi azonosítója. Minden esemény is rendelkezik, amely csak az adott típusú eseményre vonatkozó információkat. Például az Azure Storage-ban létrehozott új fájlt rendezvényére részletesen a fájlról, például a `lastTimeModified` értéket. Vagy az Event Hubs esemény rendelkezik a rögzítési fájl URL-CÍMÉT. 
+Az esemény az a legkisebb mennyiségű információ, amely teljes mértékben leírja a rendszeren történteket. Minden eseményhez olyan általános információk tartoznak, mint például: az esemény forrása, az esemény időpontja és egyedi azonosító. Minden eseményhez konkrét információ is tartozik, amely csak az adott típusú eseményre vonatkozik. Például az Azure Storage-ban létrehozott új fájlra vonatkozó esemény a fájl részleteit, például a `lastTimeModified` értéket. Vagy egy Event Hubs esemény rendelkezik a rögzítési fájl URL-címével. 
 
-Egy esemény mérete legfeljebb 64 KB-os által általánosan elérhető (GA) szolgáltatói szerződés (SLA) vonatkozik. Támogatást biztosít az esemény mérete legfeljebb 1 MB jelenleg előzetes verzióban érhető el. Események több mint 64 KB-os 64 KB-os egységekben számoljuk. 
+A 64 KB-ig terjedő méretű események általánosan elérhetők (GA) szolgáltatói szerződés (SLA). A legfeljebb 1 MB méretű esemény támogatása jelenleg előzetes verzióban érhető el. Az 64 KB-nál nagyobb számú esemény díja 64 KB. 
 
 
-A tulajdonságok, amelyek egy eseményt küld, lásd: [Azure Event Grid-esemény séma](event-schema.md).
+Az eseményekben eljuttatott tulajdonságokért lásd: [Azure Event Grid Event Schema](event-schema.md).
 
 ## <a name="publishers"></a>Kiadók
 
-A közzétevő, a felhasználó vagy a szervezet, amely úgy dönt, hogy az események küldése az Event Gridbe. A Microsoft számos Azure-szolgáltatások eseményeket tesz közzé. Események teheti közzé a saját-alkalmazás. Azure-on kívül szolgáltatásokat üzemeltető szervezetek tehetik közzé az eseményeket Event Griden keresztül.
+A közzétevő az a felhasználó vagy szervezet, aki úgy dönt, hogy elküldi az eseményeket Event Gridba. A Microsoft számos Azure-szolgáltatáshoz tesz közzé eseményeket. Az eseményeket a saját alkalmazásból teheti közzé. Azok a szervezetek, amelyek az Azure-on kívüli szolgáltatásokat üzemeltetnek, Event Gridon keresztül tehetik közzé az eseményeket.
 
 ## <a name="event-sources"></a>Eseményforrások
 
-Eseményforrás, ahol az esemény történik. Minden egyes eseményforrás kapcsolódik egy vagy több esemény típusa. Például az Azure Storage az eseményforrás a létrehozott események blob. Az IoT Hub az eseményforrás a létrehozott események eszköz. Az alkalmazás az Ön által meghatározott egyéni események az esemény forrását. Események küldése az Event Grid eseményforrások felelőssége.
+Az esemény forrása az esemény. Minden eseményforrás egy vagy több eseménytípus kapcsolódik. Az Azure Storage például a blob által létrehozott események eseményforrás. A IoT Hub az eszköz által létrehozott események eseményforrás. Az alkalmazás a definiált egyéni események eseményforrás. Az esemény-források felelősek az események Event Grid való elküldéséhez.
 
-A támogatott Event Grid forrásokban megvalósításával kapcsolatos további információkért lásd: [eseményforrások az Azure Event Grid](event-sources.md).
+A támogatott Event Grid források megvalósításával kapcsolatos további információkért lásd: [eseményforrás a Azure Event Grid](event-sources.md).
 
 ## <a name="topics"></a>Témakörök
 
-Az event grid-témakör tartalmaz egy végpontot, ahol a forrás küldi az eseményeket. A közzétevő az event grid-témakör hoz létre, és úgy dönt, hogy eseményforrás kell-e egynél több vagy egy témakört. A témakör a kapcsolódó események gyűjteménye szolgál. Bizonyos típusú eseményekről válaszolni előfizetők döntse el, melyik témakörök előfizetni.
+Az Event Grid-témakör olyan végpontot biztosít, amelyben a forrás eseményeket küld. A közzétevő létrehozza az Event Grid-témakört, és eldönti, hogy egy adott eseményforrás egy vagy több témakörre van-e szüksége. A témakörök a kapcsolódó események gyűjteményéhez használatosak. Bizonyos típusú események megválaszolásához az előfizetők eldönthetik, hogy mely témakörökre kell előfizetni.
 
-Rendszer témakörök Azure-szolgáltatások által biztosított beépített témakörök szolgálnak. Rendszer témakörök nem jelenik meg az Azure-előfizetésben, mert a közzétevő a témakörök tulajdonában van, de feliratkozhat rájuk. Előfizetés, adja meg az erőforrással kapcsolatos információkat szeretne kapni az eseményeket. Mindaddig, amíg hozzáférhet az erőforráshoz, az események fizethet.
+A rendszertémakörök az Azure-szolgáltatások által biztosított beépített témakörök. Nem látja a rendszertémaköröket az Azure-előfizetésében, mert a kiadó a témakörök tulajdonosa, de feliratkozhat rájuk. Az előfizetéshez meg kell adnia egy információt arról az erőforrásról, amelyről eseményeket szeretne kapni. Ha hozzáfér az erőforráshoz, előfizethet az eseményeire.
 
-Egyéni témakörök olyan alkalmazás és a külső témaköröket. Amikor hoz létre, vagy egy egyéni témakörre hozzáféréssel rendelkező, láthatja, hogy egyéni témakör az előfizetésében.
+Az egyéni témakörök az alkalmazások és a harmadik féltől származó témakörök. Ha egyéni témakörhöz hoz létre vagy rendel hozzá hozzáférést, az előfizetésében szereplő egyéni témakör jelenik meg.
 
-Az alkalmazás tervezésekor rugalmasságot hogy hány témakörök létrehozása során. Nagy megoldásokhoz kapcsolódó események kategóriákhoz tartozó egyéni témakör létrehozása. Például vegyünk egy alkalmazást, amely módosítja a felhasználói fiókok és a rendelések feldolgozása kapcsolódó eseményeket. Nem valószínű, bármely eseménykezelő szeretne mindkét események kategóriáját. Két egyéni témakör létrehozása, és lehetővé teszik az őket érdeklő egy előfizetés eseménykezelők. Kis megoldások inkább minden eseményt küldeni egy témakör. Az eseménytípusok, szeretnének előfizetőket is szűrheti.
+Az alkalmazás tervezésekor rugalmasságot biztosít, amikor eldönti, hány témakört kell létrehoznia. Nagyméretű megoldások esetében hozzon létre egy egyéni témakört a kapcsolódó események egyes kategóriáira. Vegyünk például egy olyan alkalmazást, amely a felhasználói fiókok és a feldolgozási rendelések módosításával kapcsolatos eseményeket küld. Nem valószínű, hogy az eseménykezelő mindkét típusú eseményt szeretné használni. Hozzon létre két egyéni témakört, és engedje, hogy az eseménykezelők előfizessenek az őket érdeklő személyre. Kis megoldások esetében érdemes lehet az összes eseményt egyetlen témakörbe elküldeni. Az esemény-előfizetők szűrhetik a kívánt típusú eseményeket.
 
 ## <a name="event-subscriptions"></a>Esemény-előfizetések
 
-Előfizetés közli az Event Grid mely eseményeket a témakör az Önt érdeklő fogadását. Az előfizetés létrehozásakor adja meg a végpont az esemény kezelésére. Szűrheti a végpontnak küldött eseményeket. Esemény típusa, vagy a tulajdonos minta szerint szűrheti. További információkért lásd: [Event Grid-előfizetés séma](subscription-creation-schema.md).
+Az előfizetés azt mutatja be, Event Grid hogy mely események érdeklik egy adott témakörben. Az előfizetés létrehozásakor meg kell adnia egy végpontot az esemény kezelésére. A végpontnak elküldett eseményeket szűrheti. A szűrést eseménytípus szerint vagy a tárgy mintája alapján végezheti el. További információ: [Event Grid előfizetés sémája](subscription-creation-schema.md).
 
-Az előfizetés-létrehozási példákért lásd:
+Az előfizetések létrehozására példákat a következő témakörben talál:
 
-* [Az Event Griddel kapcsolatos Azure CLI-minták](cli-samples.md)
-* [Az Event Griddel kapcsolatos Azure PowerShell-minták](powershell-samples.md)
-* [Az Azure Resource Manager-sablonok az Event Gridhez](template-samples.md)
+* [Azure CLI-minták a Event Gridhoz](cli-samples.md)
+* [Azure PowerShell minták a Event Grid](powershell-samples.md)
+* [Event Grid Azure Resource Manager sablonjai](template-samples.md)
 
-További információ az aktuális event grid-előfizetések első: [lekérdezés Event Grid-előfizetések](query-event-subscriptions.md).
+További információ az aktuális Event Grid-előfizetések beszerzéséről: [Event Grid-előfizetések lekérdezése](query-event-subscriptions.md).
 
-## <a name="event-subscription-expiration"></a>Esemény-előfizetés lejárta
-Az esemény-előfizetés a megadott dátumot követően automatikusan lejár. Beállíthatja egy esemény-előfizetésekhez, amely csak korlátozott ideig szükséges lejárati idejét, és nem kívánja ezen előfizetések törlése foglalkoznia. Például amikor a forgatókönyv teszteléséhez egy esemény-előfizetést hoz létre, érdemes beállíthatja egy lejárati idejét. 
+## <a name="event-subscription-expiration"></a>Esemény-előfizetés lejárata
+Az esemény-előfizetés a megadott dátumot követően automatikusan lejár. Olyan esemény-előfizetések elévülésének beállítása, amelyek csak korlátozott ideig szükségesek, és nem szeretne aggódni az előfizetések tisztítása során. Ha például esemény-előfizetést hoz létre egy forgatókönyv teszteléséhez, érdemes lehet lejáratot beállítani. 
 
-Egy példa egy lejárati beállítása: [előfizetés a speciális szűrők](how-to-filter-events.md#subscribe-with-advanced-filters).
+A lejárati idő beállítására példa: [előfizetés speciális szűrőkkel](how-to-filter-events.md#subscribe-with-advanced-filters).
 
 ## <a name="event-handlers"></a>Eseménykezelők
 
-Event Grid szempontból egy eseménykezelő a hely, ahol a rendszer. A kezelő néhány további művelet feldolgozni az eseményt vesz igénybe. Event Grid számos kezelő különböző támogatja. Használhatja a kezelő egy támogatott Azure-szolgáltatás vagy a saját webhook. Kezelő típusától függően az Event Grid követi az események kézbesítésének garantálása érdekében használható különböző mechanizmusokat. A HTTP-webhook eseménykezelőket, az esemény mindaddig, amíg a kezelő állapotkódot adja vissza újrapróbált `200 – OK`. Az Azure Storage-üzenetsor az események megismétlődnek mindaddig, amíg a Queue szolgáltatás sikeresen feldolgozza az üzenetet leküldéses az üzenetsorba.
+Egy Event Grid perspektívából az eseménykezelő az a hely, ahol az eseményt elküldjék. A kezelő további műveletet hajt végre az esemény feldolgozásához. Event Grid számos kezelő típust támogat. A kezelőként támogatott Azure-szolgáltatást vagy saját webhookot is használhat. A kezelő típusától függően a Event Grid különböző mechanizmusokat követ az esemény kézbesítésének garantálása érdekében. A HTTP webhook-eseménykezelők esetében az eseményt a rendszer újra megkísérli, amíg a kezelő `200 – OK`állapotkódot ad vissza. Az Azure Storage-üzenetsor esetében az eseményeket a rendszer újra megkísérli, amíg a Queue szolgáltatás sikeresen feldolgozza az üzenetet a várólistába.
 
-A támogatott Event Grid-kezelők bármelyikét megvalósításával kapcsolatos további információkért lásd: [eseménykezelők az Azure Event Grid](event-handlers.md).
+A támogatott Event Grid kezelők megvalósításával kapcsolatos további információkért lásd: [eseménykezelők a Azure Event Gridban](event-handlers.md).
 
 ## <a name="security"></a>Biztonság
 
-Event Grid való előfizetéssel kapcsolatos témakörök, és a témakörök közzététele biztonságot nyújt. Amikor feliratkozik, az erőforrás- vagy event grid-témakör az megfelelő engedélyekkel kell rendelkeznie. A közzétételkor rendelkeznie kell egy SAS-token vagy a témakör kulcsos hitelesítés. További információkért lásd: [Event Grid biztonsági és hitelesítési](security-authentication.md).
+Event Grid biztosít biztonságot a témakörökre való feliratkozáshoz és a témakörök közzétételéhez. Feliratkozáskor megfelelő engedélyekkel kell rendelkeznie az erőforrás vagy az Event Grid témakörben. Közzétételkor SAS-jogkivonattal vagy kulcs-hitelesítéssel kell rendelkeznie a témakörhöz. További információ: [Event Grid biztonság és hitelesítés](security-authentication.md).
 
-## <a name="event-delivery"></a>Eseménykézbesítés
+## <a name="event-delivery"></a>Esemény kézbesítése
 
-Event Grid nem győződjön meg arról, hogy az előfizető végpontja egy eseményt kapott, ha ez az esemény redelivers. További információkért lásd: [Event Grid az üzenetek kézbesítését, és ismételje meg](delivery-and-retry.md).
+Ha Event Grid nem tudja megerősíteni, hogy az előfizető végpontja megkapta-e az eseményt, az visszaadja az eseményt. További információ: [Event Grid üzenet kézbesítése, és próbálkozzon újra](delivery-and-retry.md).
 
 ## <a name="batching"></a>Kötegelés
 
-Egy egyéni témakör használatakor az események mindig közzé kell tenni a tömbben. Ez lehet egy kötegelt, az alacsony átviteli sebességű forgatókönyvek, azonban a nagy mennyiségű használati esetek, azt javasoljuk, hogy több batch együtt kiszolgálónként események közzététele nagyobb hatékonyság elérése érdekében. Kötegek legfeljebb 1 MB lehet. Minden esemény még mindig nem lehet nagyobb, mint 64 KB-os (nyilvánosan elérhetők) vagy 1 MB (előzetes verzió).
+Egyéni témakör használatakor az eseményeket mindig közzé kell tenni egy tömbben. Ez lehet egy köteg az alacsony átviteli sebességű forgatókönyvek esetében, azonban a nagy mennyiségű használati esetek esetében ajánlott egyszerre több eseményt felvenni egy közzétételsel, hogy nagyobb hatékonyságot érjenek el. A kötegek legfeljebb 1 MB méretűek lehetnek. Minden eseménynek még nem szabad nagyobbnak lennie, mint 64 KB (általánosan elérhető) vagy 1 MB (előzetes verzió).
 
 > [!NOTE]
-> Egy esemény mérete legfeljebb 64 KB-os által általánosan elérhető (GA) szolgáltatói szerződés (SLA) vonatkozik. Támogatást biztosít az esemény mérete legfeljebb 1 MB jelenleg előzetes verzióban érhető el. Több mint 64 KB-os esemény 64 KB-os léptékben számítjuk fel. 
+> A 64 KB-ig terjedő méretű események általánosan elérhetők (GA) szolgáltatói szerződés (SLA). A legfeljebb 1 MB méretű esemény támogatása jelenleg előzetes verzióban érhető el. Az 64 KB-nál nagyobb események díját 64 KB-os növekményekben számoljuk el. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
-* Tekintse meg a gyors kezdéshez Event Grid használatával [az Azure Event Griddel egyéni események létrehozása és útvonal](custom-event-quickstart.md).
+* Az Event Grid használatának gyors megkezdéséhez tekintse meg [az egyéni események létrehozása és irányítása Azure Event Grid](custom-event-quickstart.md)használatával című témakört.

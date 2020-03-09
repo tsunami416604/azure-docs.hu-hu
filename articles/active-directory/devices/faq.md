@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f5345a96e333e0f75264880ee18a95c9ab8dd63c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185847"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672317"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory eszközkezelés – gyakori kérdések
 
@@ -25,7 +25,7 @@ ms.locfileid: "77185847"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>K: nemrég regisztráltam az eszközt. Miért nem látom az eszközt a felhasználói adatok között a Azure Portal? Vagy a hibrid Azure Active Directory (Azure AD) csatlakoztatott eszközökhöz tartozó N/A-ként jelölt eszköz tulajdonosa
 
 **A:** A hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközök nem jelennek meg a **felhasználói eszközök**területen.
-Használja a Azure Portal **minden eszköz** nézetét. Használhat egy PowerShell [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) parancsmagot is.
+Használja a Azure Portal **minden eszköz** nézetét. Használhat egy PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) parancsmagot is.
 
 Csak a következő eszközök szerepelnek a **felhasználói eszközök**területen:
 
@@ -62,7 +62,7 @@ Csak a következő eszközök szerepelnek a **felhasználói eszközök**terüle
 - A felhasználó letiltja az eszközt a saját alkalmazások portálján. 
 - A rendszergazda (vagy felhasználó) törli vagy letiltja az eszközt a Azure Portal vagy a PowerShell használatával
 - Csak hibrid Azure AD-csatlakozás: a rendszergazda eltávolítja az eszközöket az Azure AD-ből törölni kívánt eszközökről a szinkronizálási hatókörből
-- Az Azure AD-kapcsolódás frissítése az 1.4. xx. x verzióra. [Az Azure ad Connect 1.4. xx. x és az eszközön való megjelenés ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance).
+- Az Azure AD-kapcsolódás frissítése az 1.4. xx. x verzióra. [Az Azure ad Connect 1.4. xx. x és az eszközön való megjelenés ismertetése](/azure/active-directory/hybrid/reference-connect-device-disappearance).
 
 
 A műveletek kijavításának menetét alább találja.
@@ -128,7 +128,7 @@ A műveletek kijavításának menetét alább találja.
 **A:** Akár egy óráig is eltarthat, amíg a visszavonás érvénybe lép az Azure AD-eszköz letiltottként való jelölésének időpontjában.
 
 >[!NOTE] 
->A regisztrált eszközök esetében ajánlott törölni az eszközt, hogy a felhasználók ne férhessenek hozzá az erőforrásokhoz. További információ: [Mi az az eszköz beléptetése?](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+>A regisztrált eszközök esetében ajánlott törölni az eszközt, hogy a felhasználók ne férhessenek hozzá az erőforrásokhoz. További információ: [Mi az az eszköz beléptetése?](/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 ---
 
@@ -180,13 +180,13 @@ A korábban nem bejelentkezett felhasználók törlése vagy letiltása nem fér
 
 ### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>K: a felhasználók nem kereshetnek nyomtatókat az Azure AD-hez csatlakoztatott eszközökről. Hogyan engedélyezhető a nyomtatás az eszközökről?
 
-**A:** A nyomtatók Azure AD-hez csatlakoztatott eszközökön való üzembe helyezéséről lásd: [a Windows Server Hybrid Cloud Print üzembe helyezése előzetes hitelesítéssel](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). A hibrid Felhőbeli nyomtatás üzembe helyezéséhez helyszíni Windows Serverre van szükség. Jelenleg a felhőalapú nyomtatási szolgáltatás nem érhető el. 
+**A:** A nyomtatók Azure AD-hez csatlakoztatott eszközökön való üzembe helyezéséről lásd: [a Windows Server Hybrid Cloud Print üzembe helyezése előzetes hitelesítéssel](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). A hibrid Felhőbeli nyomtatás üzembe helyezéséhez helyszíni Windows Serverre van szükség. Jelenleg a felhőalapú nyomtatási szolgáltatás nem érhető el. 
 
 ---
 
 ### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>K: Hogyan csatlakozni egy távoli Azure AD-hez csatlakoztatott eszközhöz?
 
-**A:** Lásd: [Csatlakozás távoli Azure Active Directoryhoz csatlakoztatott számítógép](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc).
+**A:** Lásd: [Csatlakozás távoli Azure Active Directoryhoz csatlakoztatott számítógép](/windows/client-management/connect-to-remote-aadj-pc).
 
 ---
 
@@ -220,7 +220,7 @@ Ez a viselkedés:
 
 ### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>K: Miért látom a *Hoppá... Hiba történt.* párbeszédpanel, amikor megpróbálok csatlakozni a számítógéphez az Azure AD-vel?
 
-**A:** Ez a hiba akkor fordul elő, amikor beállítja Azure Active Directory az Intune-ban való regisztrálást. Győződjön meg arról, hogy az Azure AD JOIN-t próbáló felhasználó a megfelelő Intune-licenccel van hozzárendelve. További információ: [a Windows-eszközök regisztrálásának beállítása](https://docs.microsoft.com/intune/windows-enroll).  
+**A:** Ez a hiba akkor fordul elő, amikor beállítja Azure Active Directory az Intune-ban való regisztrálást. Győződjön meg arról, hogy az Azure AD JOIN-t próbáló felhasználó a megfelelő Intune-licenccel van hozzárendelve. További információ: [a Windows-eszközök regisztrálásának beállítása](/intune/windows-enroll).  
 
 ---
 
@@ -307,7 +307,7 @@ A hibrid Azure AD-csatlakozás elsőbbséget élvez az Azure AD regisztrált ál
 
 **A:** Hajtsa végre a következő lépéseket:
 
-1.  [Megfelelőségi szabályzat létrehozása](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
+1.  [Megfelelőségi szabályzat létrehozása](/intune/compliance-policy-create-mac-os)
 1.  [Feltételes hozzáférési szabályzat definiálása macOS-eszközökhöz](../active-directory-conditional-access-azure-portal.md) 
 
 **Megjegyzéseket tartalmazó**

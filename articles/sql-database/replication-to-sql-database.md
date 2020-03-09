@@ -12,11 +12,11 @@ ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
 ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997275"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359862"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikálás egyetlen és készletezett adatbázis SQL Database
 
@@ -59,9 +59,9 @@ A Azure SQL Database összes funkciójának használatához a [SQL Server Manage
 
 ## <a name="replication-architecture"></a>Replikációs architektúra  
 
-![replikálás – SQL-adatbázis](./media/replication-to-sql-database/replication-to-sql-database.png)  
+![replication-to-sql-database](./media/replication-to-sql-database/replication-to-sql-database.png)  
 
-## <a name="scenarios"></a>Alkalmazási helyzetek  
+## <a name="scenarios"></a>Forgatókönyvek  
 
 ### <a name="typical-replication-scenario"></a>Tipikus replikációs forgatókönyv  
 
@@ -86,7 +86,7 @@ Azure SQL Database-előfizetések esetén a következő beállítások nem támo
 - Alapértelmezett kötések másolása  
 - Szabály-kötések másolása  
 - Teljes szöveges indexek másolása  
-- XML XSD másolása  
+- Copy XML XSD  
 - XML-indexek másolása  
 - Másolási engedélyek  
 - Térbeli indexek másolása  
@@ -106,7 +106,7 @@ Azure SQL Database-előfizetések esetén a következő beállítások nem támo
 
 ## <a name="examples"></a>Példák
 
-Hozzon létre egy kiadványt és egy leküldéses előfizetést. További információ eléréséhez lásd:
+Hozzon létre egy kiadványt és egy leküldéses előfizetést. További információkért lásd:
   
 - [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Hozzon létre egy leküldéses előfizetést](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) a Azure SQL Database kiszolgáló nevének előfizetőként való használatával (például **N'azuresqldbdns. database. Windows. net**) és az Azure SQL Database-adatbázis nevét célként megadott adatbázisként (például **AdventureWorks**).  

@@ -4,11 +4,11 @@ description: Megtudhatja, hogyan kerülheti el a teljesítménnyel kapcsolatos p
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226495"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370462"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Kapcsolatok kezelése Azure Functionsban
 
@@ -132,7 +132,7 @@ A függvény kódja a .NET-keretrendszer adatszolgáltatóját használhatja SQL
 > [!TIP]
 > Egyes adatkeretrendszerek (például a Entity Framework) általában a konfigurációs fájl **ConnectionStrings** szakaszából kapják meg a kapcsolatok karakterláncait. Ebben az esetben explicit módon fel kell vennie az SQL Database-kapcsolódási karakterláncokat a Function app-beállítások és a helyi projekt [Local. Settings. JSON fájljának](functions-run-local.md#local-settings-file) **kapcsolatok karakterlánc** -gyűjteményéből. Ha a [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) egy példányát hozza létre, a kapcsolati sztring értékét a többi kapcsolattal együtt kell tárolnia az **Alkalmazásbeállítások** között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy a statikus ügyfelek miért javasoltak: [helytelen példány-létrehozási minta](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/).
 

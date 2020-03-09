@@ -17,11 +17,11 @@ ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
 ms.openlocfilehash: 8b95bb45436f45dc0e62fb12d6ab1b24c37372e1
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562564"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357548"
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -210,7 +210,7 @@ A nyilak az adatforgalom irányát jelzik.
 
 A képen látható *Subnet1* alhálózat útvonaltáblája a következő útvonalakat tartalmazza:
 
-|ID  |Forrás |State  |Címelőtagok    |A következő ugrás típusa          |A következő ugrás IP-címe|Felhasználó által megadott útvonal neve| 
+|ID (Azonosító)  |Forrás |Állapot  |Címelőtagok    |A következő ugrás típusa          |A következő ugrás IP-címe|Felhasználó által megadott útvonal neve| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |Alapértelmezett|Érvénytelen|10.0.0.0/16         |Virtuális hálózat        |                   |              |
 |2   |Felhasználó   |Aktív |10.0.0.0/16         |Virtuális berendezés      |10.0.100.4         |Ezen belül: VNet1  |
@@ -244,7 +244,7 @@ Az egyes útvonal-azonosítók magyarázata:
 
 A *Subnet2* a képen látható útvonaltáblája a következő útvonalakat tartalmazza:
 
-|Forrás  |State  |Címelőtagok    |A következő ugrás típusa             |A következő ugrás IP-címe|
+|Forrás  |Állapot  |Címelőtagok    |A következő ugrás típusa             |A következő ugrás IP-címe|
 |------- |-------|------              |-------                   |--------           
 |Alapértelmezett |Aktív |10.0.0.0/16         |Virtuális hálózat           |                   |
 |Alapértelmezett |Aktív |10.1.0.0/16         |Társviszony létesítése virtuális hálózatok között              |                   |
@@ -257,7 +257,7 @@ A *Subnet2* a képen látható útvonaltáblája a következő útvonalakat tart
 
 A *Subnet2* útvonaltáblája tartalmazza az összes, Azure által létrehozott alapértelmezett útvonalat és a választható virtuális hálózatok közötti társviszony és a virtuális hálózati átjáró választható útvonalait. Az Azure a virtuális hálózaton lévő összes alhálózathoz hozzáadta a választható útvonalakat, amikor az átjáró és a társviszony a virtuális hálózathoz lett adva. *Az Azure* eltávolította a 10.0.0.0/8, a 192.168.0.0/16 és a 100.64.0.0/10 címek előtagjainak útvonalait, ha a 0.0.0.0/0 címnek a felhasználó által definiált útvonala hozzá lett adva a *Subnet1*-hez.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Felhasználó által megadott útvonaltábla létrehozása útvonalakkal és hálózati virtuális berendezéssel](tutorial-create-route-table-portal.md)<br>
 * [A BGP konfigurálása Azure VPN Gateway-átjáróhoz](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>

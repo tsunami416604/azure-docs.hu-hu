@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919069"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376314"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect szinkronizálás: az alapértelmezett konfiguráció módosítása
 Ebből a cikkből megtudhatja, hogyan módosíthatja az alapértelmezett konfigurációt Azure Active Directory (Azure AD) csatlakozási szinkronizálásban. Néhány gyakori forgatókönyvhöz nyújt lépéseket. Ezzel az ismerettel a saját üzleti szabályai alapján egyszerű módosításokat végezhet saját konfigurációjában.
@@ -262,19 +262,19 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútumért�
 3. Új bejövő szabály létrehozásához kattintson az **új szabály hozzáadása** gombra.
 4. A **Leírás** lapon adja meg a következő konfigurációt:
 
-    | Attribútum | Value (Díj) | Részletek |
+    | Attribútum | Érték | Részletek |
     | --- | --- | --- |
-    | Név | *Adjon meg egy nevet* | Például az *ad – User UserType* |
+    | Name (Név) | *Adjon meg egy nevet* | Például az *ad – User UserType* |
     | Leírás | *Adja meg a leírást* |  |
     | Csatlakoztatott rendszerek | *A helyszíni AD-összekötő kiválasztása* |  |
-    | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** |  |
+    | Csatlakoztatott rendszerobjektum típusa | **Felhasználói** |  |
     | Metaverse objektum típusa | **Személy** |  |
     | Hivatkozás típusa | **Csatlakozás** |  |
-    | Prioritás | *Válasszon egy 1 – 99 közötti számot* | az 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Ne válasszon olyan értéket, amelyet egy másik szinkronizálási szabály használ. |
+    | Sorrend | *Válasszon egy 1 – 99 közötti számot* | az 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Ne válasszon olyan értéket, amelyet egy másik szinkronizálási szabály használ. |
 
 5. Lépjen a **hatóköri szűrő** lapra, és vegyen fel **egyetlen hatókörű szűrőt** a következő záradékkal:
 
-    | Attribútum | Művelet | Value (Díj) |
+    | Attribútum | Művelet | Érték |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | Felhasználói\_ |
 
@@ -284,13 +284,13 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútumért�
 
     | Folyamat típusa | Cél attribútum | Forrás | Egyszeri alkalmazás | Egyesítés típusa |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType (Felhasználótípus) | extensionAttribute1 | Nincs bejelölve | Frissítés |
+    | Direct | UserType | extensionAttribute1 | Nincs bejelölve | Frissítés |
 
     Egy másik példában szeretné származtatni a UserType attribútum értékét más tulajdonságok alapján. Például ha a helyszíni AD userPrincipalName attribútuma a <em>@partners.fabrikam123.org</em>tartományi résszel végződik, szinkronizálni szeretné az összes felhasználót. A következőhöz hasonló kifejezés valósítható meg:
 
     | Folyamat típusa | Cél attribútum | Forrás | Egyszeri alkalmazás | Egyesítés típusa |
     | --- | --- | --- | --- | --- |
-    | Kifejezés | UserType (Felhasználótípus) | IIF (IsPresent ([userPrincipalName]), IIF (CBool (LCase ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "tag", "vendég"), hiba ("a UserPrincipalName nem áll rendelkezésre a UserType meghatározásához")) | Nincs bejelölve | Frissítés |
+    | Kifejezés | UserType | IIF (IsPresent ([userPrincipalName]), IIF (CBool (LCase ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "tag", "vendég"), hiba ("a UserPrincipalName nem áll rendelkezésre a UserType meghatározásához")) | Nincs bejelölve | Frissítés |
 
 7. A Bejövő szabály létrehozásához kattintson a **Hozzáadás** gombra.
 
@@ -304,22 +304,22 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 3. Kattintson az **új szabály hozzáadása** gombra.
 4. A **Leírás** lapon adja meg a következő konfigurációt:
 
-    | Attribútum | Value (Díj) | Részletek |
+    | Attribútum | Érték | Részletek |
     | ----- | ------ | --- |
-    | Név | *Adjon meg egy nevet* | Például *a HRE – User UserType* |
+    | Name (Név) | *Adjon meg egy nevet* | Például *a HRE – User UserType* |
     | Leírás | *Adja meg a leírást* ||
     | Csatlakoztatott rendszerek | *Válassza ki a HRE-összekötőt* ||
-    | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** ||
+    | Csatlakoztatott rendszerobjektum típusa | **Felhasználói** ||
     | Metaverse objektum típusa | **Személy** ||
     | Hivatkozás típusa | **Csatlakozás** ||
-    | Prioritás | *Válasszon egy 1 – 99 közötti számot* | az 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Ne válasszon olyan értéket, amelyet egy másik szinkronizálási szabály használ. |
+    | Sorrend | *Válasszon egy 1 – 99 közötti számot* | az 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Ne válasszon olyan értéket, amelyet egy másik szinkronizálási szabály használ. |
 
 5. Lépjen a **hatókör-szűrő** lapra, és vegyen fel **egyetlen hatókörű szűrőt** két záradékkal:
 
-    | Attribútum | Művelet | Value (Díj) |
+    | Attribútum | Művelet | Érték |
     | --- | --- | --- |
-    | sourceObjectType | EGYENLŐ | Felhasználó |
-    | cloudMastered | NOTEQUAL | Igaz |
+    | sourceObjectType | EQUAL | Felhasználó |
+    | cloudMastered | NOTEQUAL | True (Igaz) |
 
     A hatóköri szűrő határozza meg, hogy mely Azure AD-objektumokra vonatkozik ez a kimenő szinkronizálási szabály. Ebben a példában ugyanezt a hatókör-szűrőt használjuk a *kimenetből az ad-user identity* out-of-box szinkronizációs szabály alapján. Megakadályozza, hogy a szinkronizálási szabály olyan felhasználói objektumokra legyen alkalmazva, amelyek nincsenek szinkronizálva a helyszíni Active Directory. Előfordulhat, hogy a Azure AD Connect központi telepítésének megfelelően kell megcsípése a hatókör-szűrőt.
 
@@ -327,7 +327,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
     | Folyamat típusa | Cél attribútum | Forrás | Egyszeri alkalmazás | Egyesítés típusa |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType (Felhasználótípus) | UserType (Felhasználótípus) | Nincs bejelölve | Frissítés |
+    | Direct | UserType | UserType | Nincs bejelölve | Frissítés |
 
 7. A Kimenő szabály létrehozásához kattintson a **Hozzáadás** gombra.
 

@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022279"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374736"
 ---
 # <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>A profil és a fiókadatok frissítése a saját alkalmazások portálján
 

@@ -8,11 +8,11 @@ ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713196"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358098"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Hálózatkezelési megfontolások App Service Environment #
 
@@ -53,9 +53,9 @@ Vertikális fel-vagy leskálázáskor a rendszer hozzáadja a megfelelő méret�
 
 Ahhoz, hogy a bejelentési funkció működjön, a beadáshoz a következő portok megnyitása szükséges:
 
-| Használat | Forrás | Végpont |
+| Használat | Forrás | Művelet |
 |-----|------|----|
-| Felügyelet | Felügyeleti címek App Service | Bekapcsolási alhálózat: 454, 455 |
+| Kezelés | Felügyeleti címek App Service | Bekapcsolási alhálózat: 454, 455 |
 |  Belső belső kommunikáció | Bekapcsolási alhálózat: minden port | Bekapcsolási alhálózat: minden port
 |  Azure Load Balancer bejövő engedélyezése | Azure Load Balancer | Bemutató alhálózat: 16001
 

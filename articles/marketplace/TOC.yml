@@ -1,5 +1,5 @@
 - name: Az Azure Marketplace és az AppSource dokumentációja
-  href: index.md
+  href: index.yml
   items:
     - name: Az Azure Marketplace és az AppSource ütemterve
       href: ./marketplace-roadmap.md
@@ -51,9 +51,6 @@
           items:
             - name: Ajánlatlistákra vonatkozó ajánlott eljárások
               href: ./gtm-offer-listing-best-practices.md
-              items:
-                - name: Kategóriák
-                  href: ./gtm-offer-listing-best-practices-categories.md
             - name: Hogyan válhat kiemeltté?
               href: ./gtm-how-to-get-featured.md
             - name: Marketplace-tartalmak érvényesítése

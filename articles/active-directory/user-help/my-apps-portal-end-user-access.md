@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: a5dae30c8b8f43602581b39005389211da83cb9e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022305"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375831"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján
 
@@ -97,7 +97,7 @@ Ha rendelkezik engedéllyel a szervezet felhőalapú alkalmazásainak elérésé
 
 1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába a számítógépén.
 
-2. Egy támogatott webböngészőben nyissa meg a https://myapps.microsoft.com t, vagy használja a szervezet által biztosított hivatkozást, ha egy testreszabott oldalra irányítja, például `https://myapps.microsoft.com/contoso.com`.
+2. Egy támogatott webböngészőben nyissa meg a https://myapps.microsoft.comt, vagy használja a szervezet által biztosított hivatkozást, ha egy testreszabott oldalra irányítja, például `https://myapps.microsoft.com/contoso.com`.
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, amely elérhető a használatra.
 
@@ -111,7 +111,7 @@ Az iOS-és Android-eszközökön Intune Managed Browser megtekintheti és haszn�
 
 1. A mobileszközön töltse le és telepítse a Intune Managed Browser alkalmazást az [Apple App Store áruházból](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) és a [Google Play áruházból](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
-2. Nyissa meg a Intune Managed Browser alkalmazást, lépjen a https://myapps.microsoft.com lehetőségre, vagy használja a szervezete által biztosított hivatkozást, ha egy testreszabott oldalra irányítja, például https://myapps.microsoft.com/contoso.com.
+2. Nyissa meg a Intune Managed Browser alkalmazást, lépjen a https://myapps.microsoft.comlehetőségre, vagy használja a szervezete által biztosított hivatkozást, ha egy testreszabott oldalra irányítja, például https://myapps.microsoft.com/contoso.com.
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
@@ -125,7 +125,7 @@ Az iOS 7-es vagy újabb verzióját futtató iPhone-vagy iPad-eszközön megteki
 
 1. A mobileszközön indítson el egy webböngészőt, például a Safari alkalmazást.
 
-2. Válassza a https://myapps.microsoft.com lehetőséget, vagy használja a szervezete által megadott hivatkozást, ha egy testreszabott lapra (például https://myapps.microsoft.com/contoso.com ) irányítja őket.
+2. Válassza a https://myapps.microsoft.comlehetőséget, vagy használja a szervezete által megadott hivatkozást, ha egy testreszabott lapra (például https://myapps.microsoft.com/contoso.com) irányítja őket.
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, amely elérhető a használatra.
 
@@ -139,7 +139,7 @@ A **My apps** portál megtekintése és használata Android-eszközön.
 
 1. A mobileszközön indítsa el a webböngésző alkalmazást, például a Google Chrome-ot.
 
-2. Válassza a https://myapps.microsoft.com lehetőséget, vagy használja a szervezete által megadott hivatkozást, ha egy testreszabott lapra (például https://myapps.microsoft.com/contoso.com ) irányítja őket.
+2. Válassza a https://myapps.microsoft.comlehetőséget, vagy használja a szervezete által megadott hivatkozást, ha egy testreszabott lapra (például https://myapps.microsoft.com/contoso.com) irányítja őket.
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
