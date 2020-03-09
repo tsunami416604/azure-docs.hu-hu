@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058177"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389531"
 ---
 # <a name="how-to-use-perfinsights"></a>A PerfInsights használata
 
@@ -79,15 +79,15 @@ Ez a forgatókönyv egy speciális teljesítményszámláló-rögzítést futtat
 | Késés      | Átlagos/mp/adatkérés         |
 |              | Átlagos/olvasási sebesség (mp)                 |
 |              | Átlagos/írási sebesség (mp)                |
-| IO-méret      | Átl. Bájt/adat kérése       |
-|              | Átl. Bájt/olvasás               |
-|              | Átl. Bájt/írás              |
-| Teljesítmény   | Adatmennyiség (bájt/s)                |
+| IO-méret      | Átlagos bájt/adat kérése       |
+|              | Átlagos bájt/olvasás               |
+|              | Átlagos bájt/írás              |
+| Átviteli sebesség   | Adatmennyiség (bájt/s)                |
 |              | Olvasott bájt/mp                |
 |              | Írt bájt/mp               |
-| Várólista hossza | Átl. Olvasási várólista hossza        |
-|              | Átl. Írási várólista hossza       |
-|              | Átl. Adatvárólista hossza        |
+| Várólista hossza | Átlagos olvasási várólista hossza        |
+|              | Átlagos írási várólista hossza       |
+|              | Az adatvárólista átlagos hossza        |
 
 ### <a name="advanced-performance-analysis"></a>Fejlett teljesítmény-elemzés
 
@@ -108,7 +108,7 @@ A Windows rendszerű virtuális gépekre, lemezekre vagy tárolási készletek k
 | Rendszerinformáció                | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Kötet térképe                        | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Lemezes Térkép                          | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Futó tevékenységek                     | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
+| Futó feladatok                     | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Tárolási megbízhatósági számlálók      | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Szolgáltatás adatai               | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Fsutil kimenet                     | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
@@ -131,10 +131,10 @@ A Windows rendszerű virtuális gépekre, lemezekre vagy tárolási készletek k
 
 A háttérben futtat egy szabály-alapú motort az adatok gyűjtéséhez és a folyamatban lévő teljesítménnyel kapcsolatos problémák diagnosztizálásához. Jelenleg a következő szabályok támogatottak:
 
-- HighCpuUsage szabály: Észleli a PROCESSZORok magas kihasználtsági időszakait, és megjeleníti az adott időszakokban a legfelső szintű CPU-használati felhasználókat.
-- HighDiskUsage szabály: Észleli a nagy kihasználtságú lemezeket a fizikai lemezeken, és megjeleníti a legfelső szintű felhasználási felhasználókat az adott időszakokban.
-- HighResolutionDiskMetric szabály: Az egyes fizikai lemezek IOPS, átviteli sebességét és I/O-késleltetési metrikáit jeleníti meg 50 ezredmásodpercben. Segít a lemez-szabályozási időszakok gyors azonosításában.
-- HighMemoryUsage szabály: Észleli a nagy memória-használati időszakokat, és megjeleníti az adott időszakokban a legfelső szintű használatú felhasználókat.
+- HighCpuUsage szabály: észleli a PROCESSZORok magas kihasználtsági időszakait, és megjeleníti az adott időszakokban a PROCESSZORok legfelső szintű használatát.
+- HighDiskUsage szabály: nagy lemezterület-használati időszakokat észlel a fizikai lemezeken, és megjeleníti a legfelső szintű használatot az adott időszakban.
+- HighResolutionDiskMetric szabály: a IOPS, az átviteli sebességet és az I/O-késleltetési metrikákat jeleníti meg 50 ezredmásodpercen belül minden egyes fizikai lemez esetében. Segít a lemez-szabályozási időszakok gyors azonosításában.
+- HighMemoryUsage szabály: nagy mennyiségű memóriahasználat észlelését észleli, és megjeleníti a legfelső szintű használatot az adott időszakban.
 
 > [!NOTE] 
 > Jelenleg a .NET-keretrendszer 4,5-es vagy újabb verzióit tartalmazó Windows-verziók támogatottak.
@@ -248,12 +248,12 @@ A Nyomkövetések vagy műveletek befejezésekor az új fájl ugyanabban a mapp�
 
 ## <a name="review-the-diagnostics-report"></a>A diagnosztikai jelentés áttekintése
 
-A **\_PerformanceDiagnostics éééé-hh-nn\_hh-mm-SS-fff. zip** fájlon belül egy HTML-jelentést talál, amely a PerfInsights eredményeit részletezi. A jelentés áttekintéséhez bontsa ki **a\_PerformanceDiagnostics éééé-hh-\_nn hh-mm-SS-fff. zip** fájlt, majd nyissa meg a **PerfInsights report. html** fájlt.
+A **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-SS-fff. zip** fájlon belül egy HTML-jelentést talál, amely a PerfInsights eredményeit részletezi. A jelentés áttekintéséhez bontsa ki a **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-SS-fff. zip** fájlt, majd nyissa meg a **PerfInsights report. html** fájlt.
 
 Válassza az **eredmények** lapot.
 
-![Képernyőkép a PerfInsights jelentésről](media/how-to-use-perfInsights/pi-finding-tab.png)
-![a PerfInsights-jelentésről](media/how-to-use-perfInsights/pi-findings.png)
+![képernyőkép a PerfInsights-jelentésről](media/how-to-use-perfInsights/pi-finding-tab.png)
+![képernyőkép az PerfInsights-jelentésről](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > A magas kategóriába sorolt megállapítások olyan ismert problémák, amelyek teljesítménnyel kapcsolatos problémákat okozhatnak. A közepesként kategorizált eredmények olyan nem optimális konfigurációkat jelentenek, amelyek nem szükségszerűen okoznak teljesítménnyel kapcsolatos problémákat. Az alacsonyként kategorizált eredmények csak tájékoztató utasítások.
@@ -270,7 +270,7 @@ A fizikai lemez perspektívájában (Disk map) a táblázatban a lemezen futó �
 
 ![A lemez lap képernyőképe](media/how-to-use-perfInsights/pi-disk-tab.png)
 
-A kötet perspektívájában (Volume map) a táblázatok az egyes logikai kötetek összes fizikai lemezét megjelenítik. Figyelje meg, hogy a RAID/dinamikus lemezek esetében több fizikai lemezen is futtathat logikai köteteket. A következő példában a *C:\\Mount* egy csatlakoztatási pont, amely a 2. és 3. fizikai lemezeken *SpannedDisk* van konfigurálva:
+A kötet perspektívájában (Volume map) a táblázatok az egyes logikai kötetek összes fizikai lemezét megjelenítik. Figyelje meg, hogy a RAID/dinamikus lemezek esetében több fizikai lemezen is futtathat logikai köteteket. A következő példában a *C:\\Mount* egy, a 2. és 3. fizikai lemezeken *SpannedDisk* konfigurált csatlakoztatási pont:
 
 ![Képernyőfelvétel a Volume lapról](media/how-to-use-perfInsights/pi-volume-tab.png)
 
@@ -303,7 +303,7 @@ A Diskspd egy Storage Load Generator és Performance test eszköz a Microsofttó
 
 A XPerf egy parancssori eszköz, amely a Windows Performance Toolkit nyomkövetéseit rögzíti. További információ: [Windows Performance Toolkit – XPerf](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A diagnosztikai naplókat és jelentéseket feltöltheti Microsoft ügyfélszolgálata további áttekintés céljából. A támogatás kérheti, hogy továbbítsa a PerfInsights által generált kimenetet, hogy segítséget nyújtson a hibaelhárítási folyamathoz.
 
@@ -313,5 +313,5 @@ Az alábbi képernyőképen egy, a következőhöz hasonló üzenet látható:
 
 Az üzenetben található utasításokat követve férhet hozzá a fájlátviteli munkaterülethez. A további biztonság érdekében meg kell változtatnia a jelszavát az első használatkor.
 
-A bejelentkezést követően egy párbeszédpanel jelenik meg, amely feltölti a PerfInsights által gyűjtött **\_PerformanceDiagnostics éééé-hh\_-nn hh-mm-SS-fff. zip** fájlt.
+A bejelentkezést követően egy párbeszédpanel jelenik meg, amely feltölti a PerfInsights által gyűjtött **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-SS-fff. zip** fájlt.
 

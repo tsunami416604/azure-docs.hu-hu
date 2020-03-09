@@ -11,11 +11,11 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: 4545a75cc2082c21dcb87986eba819ebe39adf7b
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208760"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388323"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott számítási környezetek
 Ez a cikk az adatok feldolgozásához és átalakításához használható különböző számítási környezeteket ismerteti. Emellett a Data Factory által támogatott különböző konfigurációkról (igény szerinti és saját) is gondoskodik, ha a társított szolgáltatások konfigurálásával a számítási környezeteket egy Azure-beli adat-előállítóhoz kapcsolja.

@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666737"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358808"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Adatműveletek végrehajtása a Azure Logic Appsban
 
@@ -200,7 +200,7 @@ A műveletben hagyja üresen a **fejléc** oszlopot. A **Value (érték** ) oszl
 
    `item()?['<array-property-name>']`
 
-   Példa:
+   Például:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -232,7 +232,7 @@ A művelet JSON-definíciójában a `columns` tömbben állítsa be a `header` t
    }
    ```
 
-   Példa:
+   Például:
 
    ```json
    "Create_CSV_table": {
@@ -351,7 +351,7 @@ A műveletben hagyja üresen a **fejléc** oszlopot. A **Value (érték** ) oszl
 
    `item()?['<array-property-name>']`
 
-   Példa:
+   Például:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -383,7 +383,7 @@ A művelet JSON-definíciójában a `columns` tömbben állítsa be a `header` t
    }
    ```
 
-   Példa:
+   Például:
 
    ```json
    "Create_HTML_table": {

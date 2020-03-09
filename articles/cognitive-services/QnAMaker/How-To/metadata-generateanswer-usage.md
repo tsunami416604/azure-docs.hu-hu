@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: e84a6c93ad8757b302670af202f9d4b407f3ef57
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 6a8cbabfd4e47c50d2c2e6f4a23c50a931e645a0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945318"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389321"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz kérése a GenerateAnswer API-val és a metaadatokkal
 
@@ -64,7 +64,7 @@ A GenerateAnswer HTTP POST-kéréssel hívható meg. A GenerateAnswer meghívás
 A POST kérelem a következőket használja:
 
 * Szükséges [URI-paraméterek](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* Szükséges [fejléc-tulajdonság](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer), `Authorization`, biztonsági
+* Szükséges fejléc-tulajdonság, `Authorization`, biztonsági
 * A [törzs szükséges tulajdonságai](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto).
 
 A GenerateAnswer URL-címének formátuma a következő:
@@ -248,11 +248,11 @@ A közzétett Tudásbázisban `isTest=false`vagy a tesztelési Tudásbázisban k
 |Kód|Magyarázat|
 |:--|--|
 |2xx|Sikeres|
-|400|A kérelem paraméterei helytelenek, mert a szükséges paraméterek hiányoznak, helytelenül formázottak vagy túl nagyok.|
-|400|A kérelem törzse helytelen, mert a JSON hiányzik, helytelenül formázott vagy túl nagy.|
+|400|kérés paraméterei helytelen, ami azt jelenti, a szükséges paraméterek: hiányzó, hibás vagy túl nagy|
+|400|kérelem törzse nem megfelelő, ami azt jelenti, a JSON-ja hiányzik, hibás vagy túl nagy|
 |401|Érvénytelen kulcs|
-|403|Tiltott – nem rendelkezik megfelelő engedélyekkel|
-|404|A KB nem létezik|
+|403|-Tiltott nem rendelkezik megfelelő engedélyekkel|
+|404|KB nem létezik.|
 |410|Ez az API elavult, és már nem érhető el|
 
 ## <a name="next-steps"></a>Következő lépések

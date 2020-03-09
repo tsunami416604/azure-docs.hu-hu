@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768177"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376275"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
 A szűrés használatával szabályozhatja, hogy mely objektumok jelenjenek meg Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció a konfigurált erdők összes tartományában lévő összes objektumot átveszi. Általában ez az ajánlott konfiguráció. Az Office 365 munkaterheléseket, például az Exchange Online-t és a Skype vállalati alkalmazást használó felhasználók teljes globális címlistát használhatnak, így e-maileket küldhetnek, és meghívhatnak mindenkit. Az alapértelmezett konfigurációval ugyanazzal a tapasztalattal rendelkeznek, mint az Exchange vagy a Lync helyszíni megvalósításával.
@@ -279,7 +279,7 @@ Ebben a példában úgy módosítja a szűrést, hogy csak azok a felhasználók
 5. Az előugró ablakban válaszoljon az **Igen** gombra a szabály másolatának létrehozásához.
 6. A **Leírás** lapon módosítsa a **sorrendet** egy nem használt értékre (például 50).
 7. A bal oldali navigációs sávon kattintson a **hatókör szűrő** elemre, majd kattintson a **záradék hozzáadása**lehetőségre. Az **attribútum**területen válassza az **e-mail**lehetőséget. A **kezelőben**válassza a **ENDSWITH**lehetőséget. Az **érték**mezőbe írja be **\@contoso.com**, majd kattintson a **záradék hozzáadása**elemre. Az **attribútum**területen válassza a **userPrincipalName**lehetőséget. A **kezelőben**válassza a **ENDSWITH**lehetőséget. Az **érték**mezőbe írja be a következőt: **\@contoso.com**.
-8. Kattintson a **Mentés** gombra.
+8. Kattintson a **Save** (Mentés) gombra.
 9. A konfigurálás befejezéséhez **teljes szinkronizálást**kell futtatnia. Folytassa a szakasz olvasásával [, és ellenőrizze a módosításokat](#apply-and-verify-changes).
 
 ## <a name="apply-and-verify-changes"></a>Módosítások alkalmazása és ellenőrzése

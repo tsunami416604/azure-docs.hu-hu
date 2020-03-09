@@ -8,11 +8,11 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
 ms.openlocfilehash: 6319d2d72df69cc9633bd2b2ff8e777c2a48966a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982539"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386581"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logikai alkalmazások kezelése a Visual Studióval
 
@@ -63,7 +63,7 @@ A Visual Studióban megtalálhatja az Azure-előfizetéshez társított összes 
 
 1. Nyissa meg a Visual Studiót. A **nézet** menüben válassza a **Cloud Explorer**lehetőséget.
 
-1. A Cloud Explorerben válassza a **fiókok kezelése**lehetőséget. Válassza ki a logikai alkalmazásokhoz társított Azure-előfizetést, majd válassza az **alkalmaz**lehetőséget. Példa:
+1. A Cloud Explorerben válassza a **fiókok kezelése**lehetőséget. Válassza ki a logikai alkalmazásokhoz társított Azure-előfizetést, majd válassza az **alkalmaz**lehetőséget. Például:
 
    !["Fiókkezelés" kiválasztása](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
@@ -226,7 +226,7 @@ A Logic app-futtatások állapotának ellenőrzéséhez és a problémák diagno
 
    ![A logikai alkalmazás futtatási előzményeinek megnyitása](./media/manage-logic-apps-with-visual-studio/open-run-history-for-logic-app.png)
 
-1. Egy adott Futtatás részleteinek megtekintéséhez kattintson duplán egy futtatásra. Példa:
+1. Egy adott Futtatás részleteinek megtekintéséhez kattintson duplán egy futtatásra. Például:
 
    ![Adott futtatással kapcsolatos információk megtekintése](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   
@@ -259,7 +259,7 @@ Ha törölni szeretné a logikai alkalmazást a Azure Portal, a Cloud Explorerbe
 > [!NOTE]
 > Amikor törli a logikai alkalmazást, a rendszer nem kezdeményez új futtatásokat. A rendszer minden folyamatban lévő és függő futtatást megszakít. Ha több ezer futtatása van, a megszakítás jelentős ideig eltarthat. 
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Ha a Logic app-projektet a Logic Apps Designerben nyitja meg, előfordulhat, hogy nem kapja meg az Azure-előfizetés kiválasztásának lehetőségét. Ehelyett a logikai alkalmazás egy olyan Azure-előfizetéssel nyílik meg, amelyet nem a használni kívánt. Ez azért fordulhat elő, mert a Logic apps. JSON fájljának megnyitása után a Visual Studio gyorsítótárazza az első kiválasztott előfizetést későbbi használatra. A probléma megoldásához próbálja meg a következő lépések egyikét:
 

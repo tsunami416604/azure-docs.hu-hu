@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190653"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390350"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Sokoldalú navigáció megvalósítása az Azure-ban Cognitive Search
 
@@ -38,7 +38,7 @@ Ez a cikk a feladatok keresési portálját használja példaként. A példa ASP
 
 - Töltse le a kódot az [Azure-Samples repóból a githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 Ha még nem ismeri a fejlesztést, a legjobb módszer a sokoldalú navigálásra, hogy a saját irányított keresés lehetőségeit jelenítse meg. Az előre meghatározott szűrők alapján részletezett keresési élményt nyújt, amely a keresési eredmények gyors, pont-és kattintásos műveletekkel való szűkítéséhez használható. 
 
 ### <a name="interaction-model"></a>Interakciós modell
