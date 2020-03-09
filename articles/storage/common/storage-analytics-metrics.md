@@ -9,11 +9,11 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514778"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360974"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics-metrikák (klasszikus)
 
@@ -53,11 +53,11 @@ A Storage Analytics olyan metrikákat tárolhat, amelyek összesített tranzakci
 
 |Metrikák szintje|Táblák nevei|Verziók esetében támogatott|  
 |-------------------|-----------------|----------------------------|  
-|Óránkénti mérőszámok, elsődleges hely|– $MetricsTransactionsBlob<br />– $MetricsTransactionsTable<br />– $MetricsTransactionsQueue|Csak 2013-08-15-nél korábbi verziók. Habár ezek a nevek továbbra is támogatottak, javasoljuk, hogy váltson az alább felsorolt táblázatok használatára.|  
-|Óránkénti mérőszámok, elsődleges hely|– $MetricsHourPrimaryTransactionsBlob<br />– $MetricsHourPrimaryTransactionsTable<br />– $MetricsHourPrimaryTransactionsQueue<br />– $MetricsHourPrimaryTransactionsFile|Minden verzió. A file Service-metrikák támogatása csak a 2015-04-05-es és újabb verziókban érhető el.|  
-|Perc mérőszámok, elsődleges hely|– $MetricsMinutePrimaryTransactionsBlob<br />– $MetricsMinutePrimaryTransactionsTable<br />– $MetricsMinutePrimaryTransactionsQueue<br />– $MetricsMinutePrimaryTransactionsFile|Minden verzió. A file Service-metrikák támogatása csak a 2015-04-05-es és újabb verziókban érhető el.|  
-|Óránkénti metrika, másodlagos hely|– $MetricsHourSecondaryTransactionsBlob<br />– $MetricsHourSecondaryTransactionsTable<br />– $MetricsHourSecondaryTransactionsQueue|Minden verzió. Az olvasási hozzáférés geo-redundáns replikációját engedélyezni kell.|  
-|Perc mérőszámok, másodlagos hely|– $MetricsMinuteSecondaryTransactionsBlob<br />– $MetricsMinuteSecondaryTransactionsTable<br />– $MetricsMinuteSecondaryTransactionsQueue|Minden verzió. Az olvasási hozzáférés geo-redundáns replikációját engedélyezni kell.|  
+|Óránkénti mérőszámok, elsődleges hely|– $MetricsTransactionsBlob<br />– $MetricsTransactionsTable<br />-   $MetricsTransactionsQueue|Csak 2013-08-15-nél korábbi verziók. Habár ezek a nevek továbbra is támogatottak, javasoljuk, hogy váltson az alább felsorolt táblázatok használatára.|  
+|Óránkénti mérőszámok, elsődleges hely|– $MetricsHourPrimaryTransactionsBlob<br />– $MetricsHourPrimaryTransactionsTable<br />-   $MetricsHourPrimaryTransactionsQueue<br />– $MetricsHourPrimaryTransactionsFile|Minden verzió. A file Service-metrikák támogatása csak a 2015-04-05-es és újabb verziókban érhető el.|  
+|Perc mérőszámok, elsődleges hely|– $MetricsMinutePrimaryTransactionsBlob<br />– $MetricsMinutePrimaryTransactionsTable<br />-   $MetricsMinutePrimaryTransactionsQueue<br />– $MetricsMinutePrimaryTransactionsFile|Minden verzió. A file Service-metrikák támogatása csak a 2015-04-05-es és újabb verziókban érhető el.|  
+|Óránkénti metrika, másodlagos hely|– $MetricsHourSecondaryTransactionsBlob<br />– $MetricsHourSecondaryTransactionsTable<br />-   $MetricsHourSecondaryTransactionsQueue|Minden verzió. Az olvasási hozzáférés geo-redundáns replikációját engedélyezni kell.|  
+|Perc mérőszámok, másodlagos hely|– $MetricsMinuteSecondaryTransactionsBlob<br />– $MetricsMinuteSecondaryTransactionsTable<br />-   $MetricsMinuteSecondaryTransactionsQueue|Minden verzió. Az olvasási hozzáférés geo-redundáns replikációját engedélyezni kell.|  
 |Kapacitás (csak Blob service)|$MetricsCapacityBlob|Minden verzió.|  
 
  Ezek a táblák automatikusan létrejönnek, ha Storage Analytics van engedélyezve a tárolási szolgáltatás végpontja számára. Ezek a Storage-fiók névterén keresztül érhetők el, például: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`. A metrikák táblázat nem jelenik meg egy listaelem-műveletben, és közvetlenül a táblanév használatával kell elérni.  
@@ -75,7 +75,7 @@ Az alábbi lépéseket követve engedélyezheti a metrikákat a [Azure Portalban
 A [Azure Portal](https://portal.azure.com) jelenleg nem teszi lehetővé a percenkénti mérőszámok konfigurálását a Storage-fiókban; a perc típusú metrikákat a PowerShell vagy programozott módon kell engedélyeznie.
 
 ## <a name="enable-storage-metrics-using-powershell"></a>Tárolási metrikák engedélyezése a PowerShell használatával  
-A helyi gépen található PowerShell használatával konfigurálhatja a Storage-fiókban a Storage-metrikákat, ha a **Get-AzStorageServiceMetricsProperty** Azure PowerShell parancsmaggal szeretné lekérni az aktuális beállításokat, és a parancsmagot  **A set-AzStorageServiceMetricsProperty** beállítással módosíthatja az aktuális beállításokat.  
+A helyi gépen található PowerShell használatával konfigurálhatja a Storage-fiók tárolási metrikáit a **Get-AzStorageServiceMetricsProperty Azure PowerShell-** parancsmag használatával a jelenlegi beállítások lekéréséhez, valamint a **set-AzStorageServiceMetricsProperty** parancsmagot az aktuális beállítások módosításához.  
 
 A tárolási metrikákat vezérlő parancsmagok a következő paramétereket használják:  
 
@@ -99,7 +99,7 @@ Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -Metri
 
 * Cserélje le a `<resource-group-name>` helyőrző értékét az erőforráscsoport nevére.
         
-* Cserélje le a `<storage-account-name>` helyőrző értéket a Storage-fiók nevére.
+* Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
 
 
 
@@ -114,7 +114,7 @@ Az Azure PowerShell-parancsmagoknak az Azure-előfizetéssel való használatáh
 ## <a name="enable-storage-metrics-programmatically"></a>A tárolási mérőszámok programozott módon történő engedélyezése  
 Amellett, hogy a Azure Portal vagy a Azure PowerShell parancsmagokat használja a tárolási metrikák szabályozására, használhatja az egyik Azure Storage API-t is. Ha például .NET nyelvet használ, használhatja a Storage ügyféloldali kódtárat.  
 
-A **CloudBlobClient**, a **CloudQueueClient**, a **CloudTableClient**és a **CloudFileClient** osztályok minden olyan metódussal rendelkeznek, mint például a **SetServiceProperties** és a **SetServicePropertiesAsync**  **ServiceProperties** objektum paraméterként. A **ServiceProperties** objektum használatával konfigurálhatja a tárolási metrikákat. Az alábbi C# kódrészlet például azt mutatja be, hogyan módosíthatja a metrikák szintjét és a megőrzési napokat az óránkénti üzenetsor-metrikák esetében:  
+A **CloudBlobClient**, a **CloudQueueClient**, a **CloudTableClient**és a **CloudFileClient** osztályok minden olyan metódussal rendelkeznek, mint például a **SetServiceProperties** **és a SetServicePropertiesAsync,** amelyek paraméterként egy **ServiceProperties** objektumot készítenek. A **ServiceProperties** objektum használatával konfigurálhatja a tárolási metrikákat. Az alábbi C# kódrészlet például azt mutatja be, hogyan módosíthatja a metrikák szintjét és a megőrzési napokat az óránkénti üzenetsor-metrikák esetében:  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -155,10 +155,10 @@ A táblázatok sémáinak részletes ismertetését [Storage Analytics mérősz�
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
 |**PartitionKey**|**RowKey**|**Időbélyeg**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**Rendelkezésre állás**|**AverageE2ELatency**|**Averageserverlatency értéket mutatnak**|**PercentSuccess**|  
-|20140522T1100|felhasználói Összes|2014-05-22T11:01:16.7650250 Z|7|7|4003|46801|100|104,4286|6,857143|100|  
-|20140522T1100|felhasználói QueryEntities|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7,8|100|  
-|20140522T1100|felhasználói QueryEntity|2014-05-22T11:01:16.7650250 Z|1|1|538|633|100|3|3|100|  
-|20140522T1100|felhasználói UpdateEntity|2014-05-22T11:01:16.7650250 Z|1|1|771|217|100|9|6|100|  
+|20140522T1100|user;All|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
+|20140522T1100|felhasználói QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
+|20140522T1100|user;QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  
+|20140522T1100|user;UpdateEntity|2014-05-22T11:01:16.7650250Z|1|1|771|217|100|9|6|100|  
 
 Ebben a példában a perc mérőszámok adataiban a partíciós kulcs az időt percenkénti felbontásban használja. A sor kulcsa azonosítja a sorban tárolt információ típusát, és ez két adatból, a hozzáférési típusból és a kérelem típusától tevődik össze:  
 
@@ -166,7 +166,7 @@ Ebben a példában a perc mérőszámok adataiban a partíciós kulcs az időt p
 
 -   A kérelem típusa vagy **minden** , amely esetben ez egy összegző sor, vagy azonosítja az adott API-t (például **QueryEntity** vagy **UpdateEntity**).  
 
-A fenti mintaadatok egy percen belüli összes rekordot jelenítik meg (a 11. naptól kezdődően), így a **QueryEntities** -kérések száma, valamint a **QueryEntity** -kérések száma és a **UpdateEntity** -kérelmek száma legfeljebb hét, ami a a **felhasználón** megjelenített összeg: az összes sor. Hasonlóképpen, az átlagos végpontok közötti késés 104,4286 a **felhasználónál: az összes** sor kiszámításával ((143,8 * 5) + 3 + 9)/7.  
+A fenti mintaadatok egy percen belüli összes rekordot jelenítik meg (a 11. naptól kezdődően), így a **QueryEntities** -kérések száma, valamint a **QueryEntity** -kérések száma, valamint a **UpdateEntity** -kérések száma legfeljebb hét, amely a felhasználó által megjelenített teljes összeg **: az összes** sor. Hasonlóképpen, az átlagos végpontok közötti késés 104,4286 a **felhasználónál: az összes** sor kiszámításával ((143,8 * 5) + 3 + 9)/7.  
 
 ## <a name="metrics-alerts"></a>Metrikák riasztásai
 Érdemes megfontolnia a riasztások beállítását a [Azure Portalban](https://portal.azure.com) , hogy automatikusan értesüljön a tárolási szolgáltatások működésével kapcsolatos fontos változásokról. Ha Storage Explorer eszközzel tölti le ezt a metrikát, akkor a Microsoft Excel használatával elemezheti az adatokat. Az elérhető Storage Explorer-eszközök listáját az [Azure Storage ügyféleszközök](/azure/storage/storage-explorers) című témakörben tekintheti meg. A riasztásokat a **(klasszikus)** panelen is konfigurálhatja, amely elérhető a **figyelés (klasszikus)** elemnél a Storage-fiók menü paneljén.

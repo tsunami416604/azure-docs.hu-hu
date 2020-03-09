@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980319"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362914"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Vész-helyreállítás beállítása az Azure-ba helyszíni fizikai kiszolgálók esetén
 
 Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás a helyszíni számítógépek és az Azure-beli virtuális gépek replikálásának, feladatátvételének és feladat-visszavételének kezelésével és irányításával járul hozzá a vészhelyreállítási stratégia megvalósításához.
 
-Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a helyszíni fizikai Windows-és Linux-kiszolgálók vész-helyreállítását az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a helyszíni fizikai Windows-és Linux-kiszolgálók vész-helyreállítását az Azure-ba. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Az Azure és a helyszíni előfeltételek beállítása
@@ -71,7 +71,7 @@ Hozzon létre egy [Azure-hálózatot](../virtual-network/quick-create-portal.md)
 - A hálózatnak ugyanabban a régióban kell lennie, mint a Recovery Services-tárolónak
 
 
-## <a name="set-up-an-azure-storage-account"></a>Azure-tárfiók létrehozása
+## <a name="set-up-an-azure-storage-account"></a>Azure-tárfiók beállítása
 
 Hozzon létre egy [Azure Storage-fiókot](../storage/common/storage-account-create.md).
 
@@ -172,7 +172,7 @@ Engedélyezze a replikációt az egyes kiszolgálókon.
 1. Kattintson az **Alkalmazás replikálása** > **Forrás** elemre.
 2. A **Forrás** mezőben válassza ki a konfigurációs kiszolgálót.
 3. A **gép típusa**területen válassza a **fizikai gépek**lehetőséget.
-4. Válassza ki a Process Server (a konfigurációs kiszolgáló) elemet. Ezután kattintson az **OK** gombra.
+4. Válassza ki a Process Server (a konfigurációs kiszolgáló) elemet. Végül kattintson az **OK** gombra.
 5. A **cél**mezőben válassza ki azt az előfizetést és erőforráscsoportot, amelyben létre szeretné hozni az Azure-beli virtuális gépeket a feladatátvételt követően. Válassza ki az Azure-ban használni kívánt üzembe helyezési modellt (klasszikus vagy erőforrás-kezelés).
 6. Válassza ki az adatok replikálásához használni kívánt Azure-tárfiókot. 
 7. Válassza ki azt az Azure-hálózatot, valamint alhálózatot, amelyhez a feladatátvételt követően felálló Azure virtuális gépek csatlakozni fognak.
