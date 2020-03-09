@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 0c997fffc1adc60f774e651ed458d253b35a3bdd
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f422d1dd6c76d78448ae4fb1012a5dae8d6108b3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612216"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376564"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: felügyeleti virtuális gép létrehozása Azure Active Directory Domain Services felügyelt tartomány konfigurálásához és felügyeletéhez
 
@@ -59,7 +59,6 @@ Az Azure AD DS felügyelt tartományt biztosít a felhasználók, az alkalmazás
 
 Az *HRE DC-rendszergazdák* csoport tagjai jogosultságokat kapnak az Azure AD DS felügyelt tartományon, amely lehetővé teszi, hogy a következő feladatokat hajtsák végre:
 
-* Csatlakoztassa a gépeket a felügyelt tartományhoz.
 * Konfigurálja a beépített csoportházirend-objektumot (GPO) a *AADDC számítógépekhez* és a *AADDC felhasználói* tárolókat a felügyelt tartományban.
 * DNS-kezelés a felügyelt tartományon.
 * Egyéni szervezeti egységeket (OU-ket) hozhat létre és felügyelhet a felügyelt tartományon.

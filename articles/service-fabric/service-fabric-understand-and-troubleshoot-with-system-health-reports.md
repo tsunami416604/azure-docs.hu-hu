@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370375"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364962"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
 Az Azure Service Fabric-összetevők rendszerállapot-jelentéseket biztosítanak a fürtben lévő összes entitáshoz, közvetlenül a jelölőnégyzetből. A [Health Store](service-fabric-health-introduction.md#health-store) a rendszerjelentések alapján hozza létre és törli az entitásokat. Azt is megszervezi egy hierarchiában, amely rögzíti az entitások interakcióit.
@@ -27,7 +27,7 @@ A rendszerállapot-jelentések a fürt és az alkalmazás funkcióinak látható
 > 
 > 
 
-A rendszerösszetevő-jelentéseket a forrás azonosítja, amely a "rendszer" kifejezéssel kezdődik **.** előtagot. A watchdog nem használhatja ugyanazt az előtagot a forrásaihoz, mert a rendszer visszautasítja az érvénytelen paraméterekkel rendelkező jelentéseket.
+A rendszerösszetevő-jelentéseket a forrás azonosítja, amely a "rendszer" kifejezéssel kezdődik **.** előtag. A watchdog nem használhatja ugyanazt az előtagot a forrásaihoz, mert a rendszer visszautasítja az érvénytelen paraméterekkel rendelkező jelentéseket.
 
 Tekintse át a rendszerjelentéseket, amelyekből megtudhatja, hogy mi váltja ki, és hogy miként lehet kijavítani az általuk képviselt lehetséges problémákat.
 
@@ -48,7 +48,7 @@ A jelentés az élettartam (TTL) globális címbérleti időtúllépését hatá
 * **Tulajdonság**: a **szomszédsággal** kezdődik, és csomópont-információkat tartalmaz.
 * **Következő lépések**: vizsgálja meg, miért elveszett a környék. Például vizsgálja meg a fürtcsomópontok közötti kommunikációt.
 
-### <a name="rebuild"></a>Újraépítés
+### <a name="rebuild"></a>Újraépítése
 
 A Feladatátvételi felügyelő (FM) szolgáltatás kezeli a fürtcsomópontok információit. Ha az FM elveszti az adatait, és adatvesztéssel jár, nem tudja garantálni, hogy a fürt csomópontjaival kapcsolatos legnaprakészebb információval rendelkezik. Ebben az esetben a rendszer egy Újraépítés útján halad át, a System.FM pedig a fürt összes csomópontjának adatait gyűjti az állapotának újbóli létrehozásához. A hálózati vagy csomóponti problémák miatt előfordulhat, hogy az Újraépítés elakad, vagy leáll. Ugyanez a Feladatátvételi felügyelő Master (FMM) szolgáltatással is történhet. A FMM olyan állapot nélküli rendszerszolgáltatás, amely nyomon követi, hogy az összes FMs a fürtben legyen. A FMM elsődleges értéke mindig a 0 értékhez legközelebbi AZONOSÍTÓJÚ csomópont. Ha a csomópont eldobásra kerül, egy Újraépítés aktiválódik.
 Ha az előző feltételek egyike történik, a **System.FM** vagy a **System. FMM** egy hibajelentésen keresztül jelzőt jelez. Az Újraépítés a két fázis egyikében elakadhat:
@@ -139,7 +139,7 @@ A System. hosting figyelmeztetést küld, ha a fürt jegyzékfájljában defini�
 ## <a name="application-system-health-reports"></a>Alkalmazásrendszer állapotáról készült jelentések
 A Fürtfelügyelő szolgáltatást jelképező System.CM az alkalmazással kapcsolatos információkat kezelő szolgáltató.
 
-### <a name="state"></a>Állami
+### <a name="state"></a>Állapot
 A System.CM-jelentések az alkalmazás létrehozásakor vagy frissítésekor OKként jelennek meg. A szolgáltatás törli az állapot-tárolót az alkalmazás törlésekor, hogy az eltávolítható legyen az áruházból.
 
 * **SourceId forrásazonosító**: System.cm
@@ -172,7 +172,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>Szolgáltatási rendszerállapot-jelentések
 A Feladatátvételi felügyelő szolgáltatást jelképező System.FM a szolgáltatásokkal kapcsolatos információkat kezelő szolgáltató.
 
-### <a name="state"></a>Állami
+### <a name="state"></a>Állapot
 A System.FM jelentések a szolgáltatás létrehozásakor rendben vannak. A szolgáltatás törlése után törli az entitást az állapotfigyelő tárolóból.
 
 * **SourceId forrásazonosító**: System.FM
@@ -214,7 +214,7 @@ A **System. PLB** hibát jelez, amikor azt észleli, hogy egy szolgáltatás fri
 ## <a name="partition-system-health-reports"></a>Partíció rendszerállapot-jelentései
 A Feladatátvételi felügyelő szolgáltatást jelölő System.FM az a szolgáltató, amely a szolgáltatási partíciókkal kapcsolatos információkat kezeli.
 
-### <a name="state"></a>Állami
+### <a name="state"></a>Állapot
 A System.FM-jelentések a partíció létrehozásakor és kifogástalan állapotában is rendben vannak. A partíció törlése után törli az entitást az állapotfigyelő tárolóból.
 
 Ha a partíció a replikák minimális száma alatt van, hibát jelez. Ha a partíció nem a replika minimális száma alá esik, de a cél replikák száma alá esik, a rendszer figyelmeztetést jelenít meg. Ha a partíció kvórum elvesztése miatt következik be, a System.FM hibát jelez.
@@ -391,7 +391,7 @@ A **System. PLB** figyelmeztetést küld, ha a replika korlátozásának megsér
 ## <a name="replica-system-health-reports"></a>Replika rendszerállapot-jelentései
 Az újrakonfigurálási ügynök összetevőjét képviselő **System. ra**, a replika állapotának szolgáltatója.
 
-### <a name="state"></a>Állami
+### <a name="state"></a>Állapot
 A System. RA-jelentések a replika létrehozásakor rendben vannak.
 
 * **SourceId forrásazonosító**: System. ra
@@ -647,7 +647,7 @@ A tulajdonság és a szöveg jelzi, hogy melyik API ragadt. A különböző bera
 
 - **IStatefulServiceReplica. changerole művelet (P)** : a leggyakoribb eset az, hogy a szolgáltatás nem adott vissza feladatot a `RunAsync`ból.
 
-A beragadható egyéb API-hívások a **IReplicator** felületen találhatók. Példa:
+A beragadható egyéb API-hívások a **IReplicator** felületen találhatók. Például:
 
 - **IReplicator. CatchupReplicaSet**: Ez a figyelmeztetés két dolog egyikét jelzi. Nincsenek elegendő replikák. Ha meg szeretné tekinteni, hogy ez a helyzet-e, tekintse meg a partíció replikáinak replika állapotát, vagy a System.FM állapotáról szóló jelentést egy beragadt újrakonfiguráláshoz. Vagy a replikák nem ismerik fel a műveleteket. A PowerShell-parancsmag `Get-ServiceFabricDeployedReplicaDetail` használható az összes replika előrehaladásának meghatározásához. A probléma olyan replikákkal rendelkezik, amelyek `LastAppliedReplicationSequenceNumber` értéke az elsődleges `CommittedSequenceNumber` érték mögött van.
 

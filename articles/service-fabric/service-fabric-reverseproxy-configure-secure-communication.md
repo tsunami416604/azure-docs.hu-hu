@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/10/2017
 ms.author: kavyako
 ms.openlocfilehash: 4cfeaf34a39231ffa91ea970a61f66632bae40c7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639394"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393247"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Csatlakozás biztonságos szolgáltatáshoz fordított proxyval
 
@@ -34,7 +34,7 @@ A következő szakasz az egyes beállítások konfigurációs részleteit mutatj
 
 ### <a name="service-certificate-validation-options"></a>Szolgáltatás tanúsítvány-ellenőrzési lehetőségei 
 
-- **Nincs**: a fordított proxy kihagyja a proxyzott szolgáltatás tanúsítványának ellenőrzését, és létrehozza a biztonságos kapcsolatot. Ez az alapértelmezett viselkedés.
+- **Nincs**: a fordított proxy kihagyja a proxyzott szolgáltatás tanúsítványának ellenőrzését, és létrehozza a biztonságos kapcsolatot. Ez az az alapértelmezett viselkedést.
 A [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban válassza a **none** értéket a **ApplicationCertificateValidationPolicy** .
 
    ```json
@@ -176,7 +176,7 @@ A fordított proxy kijelöli az egyik végpontot, hogy továbbítsa a kérést a
 Az SSL-lezárás a fordított proxyn történik, és az összes ügyféltanúsítvány-érték elvész. Ahhoz, hogy a szolgáltatások ügyféltanúsítvány-alapú hitelesítést végezzenek, a [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban a **ForwardClientCertificate** beállítást kell megadnia.
 
 1. Ha a **ForwardClientCertificate** **hamis**értékre van állítva, akkor a fordított proxy nem kéri le az ügyféltanúsítványt az SSL-kézfogás során az ügyféllel.
-Ez az alapértelmezett viselkedés.
+Ez az az alapértelmezett viselkedést.
 
 2. Ha a **ForwardClientCertificate** értéke **true (igaz**), a fordított proxy az ügyfél tanúsítványát az SSL-kézfogás során kéri le.
 Ezután továbbítja az ügyféltanúsítvány-adatkészletet egy **X-Client-Certificate**nevű egyéni http-fejlécbe. A fejléc értéke az ügyfél tanúsítványának Base64 kódolású PEM formátumú karakterlánca. A szolgáltatás a tanúsítvány adatai vizsgálatát követően a megfelelő állapotkódot követően sikeres vagy sikertelen lehet.

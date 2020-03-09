@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
 ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169608"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396606"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>IoT hub létrehozása a Azure Portal használatával
 
@@ -112,7 +112,7 @@ Az alábbi két módon találhat egy adott IoT hubot az előfizetésében:
 
 1. Ha ismeri azt az erőforráscsoportot, amelyhez az IoT hub tartozik, kattintson az **erőforráscsoportok**elemre, majd válassza ki az erőforráscsoportot a listából. Az erőforráscsoport képernyő megjeleníti a csoport összes erőforrását, beleértve a IoT hubokat is. Kattintson arra a hubhoz, amelyre keres.
 
-2. Kattintson a **Minden erőforrás** elemre. A **minden erőforrás** panelen megjelenik egy legördülő lista, amely az alapértelmezett `All types`. Kattintson a legördülő listára, törölje `Select all`. Keresse meg `IoT Hub` és ellenőrizze. Kattintson a legördülő listára a bezárásához, és a bejegyzések szűrve lesznek, és csak a IoT hubok láthatók.
+2. Kattintson **a minden erőforrás**elemre. A **minden erőforrás** panelen megjelenik egy legördülő lista, amely az alapértelmezett `All types`. Kattintson a legördülő listára, törölje `Select all`. Keresse meg `IoT Hub` és ellenőrizze. Kattintson a legördülő listára a bezárásához, és a bejegyzések szűrve lesznek, és csak a IoT hubok láthatók.
 
 ## <a name="delete-the-iot-hub"></a>Az IoT hub törlése
 

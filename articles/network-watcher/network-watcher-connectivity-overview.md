@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842869"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396968"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Az Azure-Network Watcher kapcsolódási hibáinak bemutatása
 
@@ -38,18 +38,18 @@ A következő táblázat azokat a tulajdonságokat mutatja be, amelyeket a rends
 |ProbesSent     | Az ellenőrzés során eljuttatott mintavételek száma. A maximális érték 100.        |
 |ProbesFailed     | Az ellenőrzés során meghiúsult mintavételek száma. A maximális érték 100.        |
 |Ugrások     | Ugrás a forrás és a cél között a hop útvonalon.        |
-|Ugrások []. Típusa     | Az erőforrás típusa. A lehetséges értékek a következők: **forrás**, **VirtualAppliance**, **VnetLocal**és **Internet**.        |
-|Ugrások []. ID | Az Ugrás egyedi azonosítója.|
-|Ugrások []. Cím | Az ugrás IP-címe.|
-|Ugrások []. ResourceId | ResourceID, ha az Ugrás egy Azure-erőforrás. Ha ez egy internetes erőforrás, a ResourceID az **Internet**. |
-|Ugrások []. NextHopIds | A következő ugrás egyedi azonosítója.|
+|Ugrások []. Típusa     | Az erőforrás típusát. A lehetséges értékek a következők: **forrás**, **VirtualAppliance**, **VnetLocal**és **Internet**.        |
+|Hops[].Id | Az Ugrás egyedi azonosítója.|
+|Hops[].Address | Az ugrás IP-címe.|
+|Hops[].ResourceId | ResourceID, ha az Ugrás egy Azure-erőforrás. Ha ez egy internetes erőforrás, a ResourceID az **Internet**. |
+|Hops[].NextHopIds | A következő ugrás egyedi azonosítója.|
 |Ugrások []. Kérdések | A hop-ellenőrzés során észlelt problémák gyűjteménye. Ha nem volt probléma, az érték üres.|
-|Ugrások []. Problémák []. Származási | Az aktuális ugrásban, ahol a probléma történt. Lehetséges értékek:<br/> **Bejövő** – probléma az előző ugrásról az aktuális ugrásra mutató hivatkozáson<br/>**Kimenő** – probléma az aktuális ugrásról a következő ugrásra mutató hivatkozáson<br/>**Helyi** – a probléma az aktuális ugráson van.|
-|Ugrások []. Problémák []. Súlyosság | A probléma súlyossága észlelhető. A lehetséges értékek a **hiba** és a **Figyelmeztetés**. |
+|Hops[].Issues[].Origin | Az aktuális ugrásban, ahol a probléma történt. Lehetséges értékek:<br/> **Bejövő** – probléma az előző ugrásról az aktuális ugrásra mutató hivatkozáson<br/>**Kimenő** – probléma az aktuális ugrásról a következő ugrásra mutató hivatkozáson<br/>**Helyi** – a probléma az aktuális ugráson van.|
+|Hops[].Issues[].Severity | A probléma súlyossága észlelhető. A lehetséges értékek a **hiba** és a **Figyelmeztetés**. |
 |Ugrások []. Problémák []. Típusa |A talált probléma típusa. Lehetséges értékek: <br/>**CPU**<br/>**Memória**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
-|Ugrások []. Problémák []. Összefüggésben |A hibával kapcsolatos részletek.|
-|Ugrások []. Problémák []. Kontextus []. Key |A kulcs érték pár visszaadott kulcsa.|
-|Ugrások []. Problémák []. Context []. Value |A visszaadott kulcs érték párok értéke.|
+|Hops[].Issues[].Context |A hibával kapcsolatos részletek.|
+|Hops[].Issues[].Context[].key |A kulcs érték pár visszaadott kulcsa.|
+|Hops[].Issues[].Context[].value |A visszaadott kulcs érték párok értéke.|
 
 Az alábbi példa egy hop-beli problémát mutat be.
 
@@ -72,10 +72,10 @@ Az alábbi példa egy hop-beli problémát mutat be.
 
 A kapcsolatok hibaelhárítása a kapcsolatban fellépő hibák típusait adja vissza. A következő táblázat felsorolja az aktuálisan visszaadott típusú hibakódokat.
 
-|Type (Típus)  |Leírás  |
+|Típus  |Leírás  |
 |---------|---------|
 |CPU     | Magas CPU-kihasználtság.       |
-|Memória     | Nagy memória kihasználtsága.       |
+|Memory (Memória)     | Nagy memória kihasználtsága.       |
 |GuestFirewall     | A virtuális gép tűzfalának konfigurálása miatt a rendszer blokkolja a forgalmat.        |
 |DNSResolution     | A célcím DNS-feloldása nem sikerült.        |
 |NetworkSecurityRule    | Egy NSG szabály blokkolta a forgalmat (a rendszer visszaadja a szabályt)        |

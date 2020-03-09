@@ -4,11 +4,11 @@ description: Ismerteti azokat a funkciókat, amelyek az Azure-tervrajzok és-hoz
 ms.date: 12/09/2019
 ms.topic: reference
 ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970890"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386252"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Az Azure-tervezetekhez használható függvények
 
@@ -23,7 +23,7 @@ A következő függvények támogatottak:
 - [resourceGroups](#resourcegroups)
 - [előfizetést](#subscription)
 
-## <a name="artifacts"></a>leletek
+## <a name="artifacts"></a>artifacts
 
 `artifacts(artifactName)`
 
@@ -34,11 +34,11 @@ Egy olyan objektumot ad vissza, amely az adott tervrajz-összetevők kimenetéve
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Type (Típus) | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | artifactName |Igen |sztring |Egy tervrajz-összetevő neve. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 A kimeneti tulajdonságok egy objektuma. A **kimenetek** tulajdonságai függnek a hivatkozott tervi összetevő típusától. Az összes típus formátuma a következő:
 
@@ -106,14 +106,14 @@ Egy Resource Manager-sablon, amely a következő minta kimeneti tulajdonságot t
 
 Néhány példa az adatok a _myTemplateArtifact_ mintából való beolvasására:
 
-| Kifejezés | Type (Típus) | Value (Díj) |
+| Kifejezés | Típus | Érték |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Tömb | \["első", "Second"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Sztring | első |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | Sztring | "saját karakterlánc értéke" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Objektum | {"myproperty": "saját érték", "anotherProperty": true} |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Sztring | "saját érték" |
-|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Logikai | Igaz |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Sztring | "my value" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True (Igaz) |
 
 ## <a name="concat"></a>concat
 
@@ -123,12 +123,12 @@ Több karakterlánc-értéket egyesít, és visszaadja az összefűzött karakte
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Type (Típus) | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| karakterlánc1 |Igen |sztring |Az Összefűzés első értéke. |
+| string1 |Igen |sztring |Az Összefűzés első értéke. |
 | További argumentumok |Nem |sztring |További értékek szekvenciális sorrendben az összefűzéshez |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 Összefűzött értékek karakterlánca.
 
@@ -148,11 +148,11 @@ Egy terv paramétereinek értékét adja vissza. A megadott paraméter nevét me
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Type (Típus) | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 A megadott terv vagy tervrajz-összetevő paraméterének értéke.
 
@@ -203,11 +203,11 @@ Ezután használja a _principalIds_ argumentumként `parameters()` egy tervrajz-
 
 `resourceGroup()`
 
-Egy olyan objektumot ad vissza, amely az aktuális erőforráscsoportot jelképezi.
+Az aktuális erőforráscsoport képviselő objektumot adja vissza.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A visszaadott objektum formátuma a következő:
+A visszaadott objektum a következő formátumban kell megadni:
 
 ```json
 {
@@ -269,13 +269,13 @@ Egy olyan objektumot ad vissza, amely a megadott erőforráscsoport-összetevőt
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Type (Típus) | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | placeholderName |Igen |sztring |A visszaadni kívánt erőforráscsoport-összetevő helyőrző neve. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A visszaadott objektum formátuma a következő:
+A visszaadott objektum a következő formátumban kell megadni:
 
 ```json
 {
@@ -329,9 +329,9 @@ Ezután használja a `resourceGroups()` függvényt bármely tervrajzi összetev
 
 Az aktuális terv-hozzárendelésre vonatkozó előfizetés részleteit adja vissza.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A visszaadott objektum formátuma a következő:
+A visszaadott objektum a következő formátumban kell megadni:
 
 ```json
 {
