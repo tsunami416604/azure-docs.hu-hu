@@ -7,15 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 89af30788fe5129cddc6a3607b8c722549b610d1
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264050"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365554"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Azure Cosmos-tárolók és-adatbázisok létrehozása Autopilot módban (előzetes verzió)
 
-Az Azure Cosmos DB segítségével manuális és Autopilot (automatikus) módban is kioszthatja a tárolók átviteli sebességét. Ez a cikk az Autopilot mód előnyeit és használati eseteit ismerteti.
+Azure Cosmos DB lehetővé teszi az átviteli sebesség manuális vagy Autopilot módban való kiépítését a tárolókban. Ez a cikk az Autopilot mód előnyeit és használati eseteit ismerteti.
 
 > [!NOTE]
 > Az Autopilot mód jelenleg nyilvános előzetes verzióban érhető el. [Az Autopilot csak új adatbázisok és tárolók esetében engedélyezhető](#create-a-database-or-a-container-with-autopilot-mode) . A meglévő tárolók és adatbázisok esetében nem érhető el.
@@ -62,8 +62,8 @@ Az előző problémák megoldásához nem csupán nagy mennyiségű időt kell i
 |---------|---------|---------|
 | **Kiosztott átviteli sebesség** | Manuálisan kiépítve. | Automatikusan és azonnal méretezhető a munkaterhelés-használati minták alapján. |
 | **Kérelmek/műveletek korlátozása (429)**  | Előfordulhat, hogy a felhasználás meghaladja a kiosztott kapacitást. | Nem fog történni, ha a felhasznált átviteli sebesség az Autopilot módban kiválasztott maximális átviteli sebességen belül van.   |
-| **Kapacitástervezés** |  Meg kell tennie a kezdeti kapacitás megtervezését és a szükséges átviteli sebesség kiépítését. |    Nem kell aggódnia a kapacitás megtervezése miatt. A rendszer automatikusan gondoskodik a kapacitás megtervezéséről és a kapacitások kezeléséről. |
-| **Díjszabás** | Manuálisan kiépített RU/s óránként. | Az egyszeri írási régió fiókjai esetében óradíjat használ a robotpilóta (RU/s) óránkénti díjszabása alapján. <br/><br/>A több írási régióval rendelkező fiókok esetében nem számítunk fel külön díjat a robotpilóta számára. Az óránkénti átviteli sebességért kell fizetnie, ugyanazzal a több főkiszolgálós RU/s-díj használatával. |
+| **Kapacitás megtervezése** |  Meg kell tennie a kezdeti kapacitás megtervezését és a szükséges átviteli sebesség kiépítését. |    Nem kell aggódnia a kapacitás megtervezése miatt. A rendszer automatikusan gondoskodik a kapacitás megtervezéséről és a kapacitások kezeléséről. |
+| **Árképzési** | Manuálisan kiépített RU/s óránként. | Az egyszeri írási régió fiókjai esetében óradíjat használ a robotpilóta (RU/s) óránkénti díjszabása alapján. <br/><br/>A több írási régióval rendelkező fiókok esetében nem számítunk fel külön díjat a robotpilóta számára. Az óránkénti átviteli sebességért kell fizetnie, ugyanazzal a több főkiszolgálós RU/s-díj használatával. |
 | **Legmegfelelőbb a számítási feladatok típusaihoz** |  Kiszámítható és stabil számítási feladatok|   Kiszámíthatatlan és változó számítási feladatok  |
 
 ## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Adatbázis vagy tároló létrehozása robotpilóta-móddal
@@ -78,7 +78,7 @@ Az Autopilot-t konfigurálhatja új adatbázisokhoz vagy tárolók létrehozás�
 
    ![Tároló létrehozása és az Autopilot átviteli sebességének konfigurálása](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
-1. Kattintson az **OK** gombra.
+1. Kattintson **az OK gombra**.
 
 Az **adatbázis-átviteli sebesség** kiosztása lehetőség kiválasztásával létrehozhat egy olyan megosztott átviteli sebességű adatbázist, amely robotpilóta-móddal rendelkezik.
 
@@ -93,7 +93,7 @@ Az alábbi táblázat az Autopilot mód különböző lehetőségeinek maximáli
 |100 000 RU/s    |  1 TB   |
 |500 000 RU/s    |  5 TB  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át az [Autopilot – gyakori kérdések](autopilot-faq.md)című szakaszt.
 * További információ a [logikai partíciókhoz](partition-data.md).

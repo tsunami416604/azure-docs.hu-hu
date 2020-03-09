@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366234"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358736"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>A séma-referenciák útmutatója az triggerekhez és a műveletek típusaihoz Azure Logic Apps
 
@@ -1081,7 +1081,7 @@ A `includeTrigger` attribútum esetében megadhatja `true` vagy `false` értéke
 
 | Érték | Típus | Leírás |
 |-------|------|-------------|
-| *előző műveletek* <> | karakterlánc-tömb | Egy tömb a megadott műveleti nevekkel. Használja a munkafolyamat-definícióban megjelenő műveletek neveit, ahol a műveleti nevek aláhúzást (_) használnak, nem szóközöket (""). |
+| *előző műveletek* <> | Karakterlánc-tömb | Egy tömb a megadott műveleti nevekkel. Használja a munkafolyamat-definícióban megjelenő műveletek neveit, ahol a műveleti nevek aláhúzást (_) használnak, nem szóközöket (""). |
 ||||
 
 *1. példa*
