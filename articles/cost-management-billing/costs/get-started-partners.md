@@ -4,17 +4,17 @@ description: Ez a cikk bemutatja, hogyan használják a partnerek az Azure Cost 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/10/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: f81ec71ffe5cdf7f70e309282307a1c4bb293219
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117592"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245474"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással
 
@@ -140,18 +140,14 @@ Ha a szabályzat**Igen** értékre van állítva, az előfizetés az ügyfélbé
 
 Ha a költségek láthatóságára vonatkozó szabályzat engedélyezve van, az összes, előfizetés-felhasználással rendelkező szolgáltatás a használatalapú díjszabás szerint mutatja a költségeket. A foglalások felhasználása a tényleges és az amortizált költségekre vonatkozóan nulla költséggel jelenik meg. A vásárlások és jogosultságok nem konkrét előfizetésekhez vannak társítva. Így a vásárlások nem jelennek meg az előfizetés hatókörében.
 
-Az ügyfélbérlő költségeinek megtekintéséhez lépjen a **Költségkezelés + számlázás** területre, és válassza ki a megfelelő, Microsoft Partnerszerződéshez tartozó számlázási fiókot.
 
-![Számlázási fiók kiválasztása](./media/get-started-partners/select-billing-account.png)
+### <a name="view-customer-costs"></a>Ügyfélköltségek megtekintése
 
-A **Számlázás** területen válassza ki az **Azure-előfizetések** elemet, majd válasszon ki egy ügyfelet.
-
-![Válasszon ki egy Azure-előfizetéshez tartozó ügyfelet](./media/get-started-partners/subscriptions-select-customer.png)
-
-válassza a **Költségelemzés** lehetőséget, és kezdje el a költségek áttekintését.
-A költségelemzés, a költségvetések és a riasztások a használatalapú fizetés díjszabása szerinti költségek mellett érhetők el az előfizetés és az erőforráscsoport RBAC-hatóköreihez.
+Az ügyfélbérlő költségeinek megtekintéséhez lépjen a **Költségkezelés + számlázás** területre. Válassza a **Költségelemzés** lehetőséget, és módosítsa a hatókört az ügyfélbérlő előfizetésére a költségek áttekintéséhez.
 
 ![Költségelemzés megtekintése ügyfélként ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+
+A költségelemzés, a költségvetések és a riasztások a használatalapú fizetés díjszabása szerinti költségek mellett érhetők el az előfizetés és az erőforráscsoport RBAC-hatóköreihez.
 
 A fenntartott példányok amortizált nézetei és tényleges költségei nulla díjat mutatnak az RBAC-hatókörben. A fenntartott példányok költségei csak azokban a számlázási hatókörökben jelennek meg, ahol a vásárlások történtek.
 

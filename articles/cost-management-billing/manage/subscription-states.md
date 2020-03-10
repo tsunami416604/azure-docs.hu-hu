@@ -1,27 +1,29 @@
 ---
 title: Az Azure-előfizetések állapotai
-description: Az Azure-előfizetés különféle állapotait ismerteti.
+description: A cikk az Azure-előfizetés különféle állapotait ismerteti.
 keywords: azure-előfizetés állapota
 author: anuragdalmia
-ms.reviewer: andalmia
+ms.reviewer: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/03/2020
 ms.author: andalmia
-ms.openlocfilehash: df8a60c0249eb51168e1a67cdd67116813312626
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 29af3d064b481548cdb9b9518e9735eb34aaf034
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200537"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270236"
 ---
 # <a name="azure-subscription-states"></a>Az Azure-előfizetések állapotai
-A cikk az Azure-előfizetések különféle állapotait ismerteti. Ezek az állapotok az előfizetési panelek Állapot részén jelennek meg.
+
+A cikk az Azure-előfizetések különféle állapotait ismerteti. Ezek az állapotok az Azure Portal előfizetési területének **Állapot** részén jelennek meg.
 
 | Előfizetés állapota | Leírás |
 |-------------| ----------------|
 | **Aktív** | Az Azure-előfizetés aktív. Az előfizetés használatával üzembe helyezhet új erőforrásokat, és kezelheti a meglévőket.|
-| **Lejárt** | Az Azure-előfizetés esetében kiegyenlítetlen tartozás áll fenn. Az előfizetés továbbra is aktív, de a díjak meg nem fizetése az előfizetés letiltásához vezethet. [Rendezze az Azure-előfizetés lejárt esedékességű tartozását.](https://docs.microsoft.com/azure/billing/billing-azure-subscription-past-due-balance) |
-| **Letiltva** | Az Azure-előfizetés le van tiltva, és a továbbiakban nem használható Azure-erőforrások létrehozására vagy kezelésére. Ha az előfizetés ebben az állapotban van, a virtuális gépek felszabadulnak, az ideiglenes IP-címek szabadok, a tárterület csak olvasható, és az egyéb szolgáltatások is le vannak tiltva. Az Azure-előfizetés letiltásának az lehet az oka, hogy lejártak a kreditjei, elérte a költségkeretét, az egyik számlája lejárt esedékességű, túllépte a hitelkártyalimitjét, vagy le lett tiltva/le lett mondva az előfizetés. Az előfizetés típusától és a letiltás okától függően az előfizetés 1–90 napig marad letiltva, mielőtt véglegesen törölve lesz. [Aktiválja újra a letiltott Azure-előfizetést.](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable)|
 | **Törölve** | Az Azure-előfizetés törölve lett az összes alapul szolgáló erőforrással/adattal együtt. |
+| **Letiltva** | Az Azure-előfizetés le van tiltva, és a továbbiakban nem használható Azure-erőforrások létrehozására vagy kezelésére. Ha az előfizetés ebben az állapotban van, a virtuális gépek felszabadulnak, az ideiglenes IP-címek szabadok, a tárterület csak olvasható, és az egyéb szolgáltatások is le vannak tiltva. Az előfizetés letiltásának a következő okai lehetnek: Előfordulhat, hogy lejárt a kreditje. Lehetséges, hogy elérte a költségkeretet. Lejárt esedékességű számlája van. Túllépte a hitelkártyakeretét. Esetleg az előfizetés explicit módon le lett tiltva vagy törölve lett. Az előfizetés típusától függően az előfizetés 1–90 napig lehet letiltva. Ezt követően az előfizetés véglegesen törölve lesz. További információ: [Letiltott Azure-előfizetés újraaktiválása](subscription-disabled.md). |
+| **Lejárt** | Azure-előfizetése lejárt, mert törölve lett. A lejárt előfizetés újraaktiválható. További információ: [Letiltott Azure-előfizetés újraaktiválása](subscription-disabled.md).|
+| **Lejárt** | Az Azure-előfizetés esetében kiegyenlítetlen tartozás áll fenn. Az előfizetés továbbra is aktív, de a díjak meg nem fizetése az előfizetés letiltásához vezethet. További információ: [Az Azure-előfizetés lejárt esedékességű tartozásának rendezése](resolve-past-due-balance.md). |

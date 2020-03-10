@@ -4,23 +4,25 @@ description: Ez a cikk segít az Azure Cost Managementben található adatok, va
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/21/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff3ed7ee65fd34ef9cd3541832f9cffc306e1aa8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560609"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245370"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
 Ez a cikk segít az Azure az Azure Cost Managementben található költség- és használati adatainak jobb megértésében. Ismerteti az adatok feldolgozásának, gyűjtésének, megjelenítésének és lezárásának gyakoriságát. Az Azure-használat számlázása havonta történik. Bár a számlázási ciklusok havi időszakok, a ciklusok kezdő- és záródátuma előfizetési típusonként eltér. Az, hogy a Cost Management milyen gyakran kap használati adatokat, különböző tényezőktől függ. Az ilyen tényezők közé tartozik például az, hogy mennyi ideig tart az adatok feldolgozása, illetve hogy az Azure-szolgáltatások milyen gyakran szolgáltatnak használati adatokat a számlázási rendszernek.
 
 A Cost Management magában foglalja az összes használatot és vásárlást, beleértve a Nagyvállalati Szerződéses (EA-) fiókokhoz tartozó foglalásokat és külső ajánlatokat. A Microsoft Ügyfélszerződéshez tartozó fiókok és használatalapú díjszabású egyéni előfizetések csak az Azure- és Marketplace-szolgáltatások használatát tartalmazzák. A támogatási és egyéb költségeket nem tartalmazza. A számla létrehozásáig a költségek csak becsült összegek, és nem veszik figyelembe a jóváírásokat.
+
+Új előfizetés esetén nem használhatja azonnal a Cost Management szolgáltatásait. Akár 48 órára is szükség lehet, hogy a Cost Management összes szolgáltatását használhassa.
 
 ## <a name="supported-microsoft-azure-offers"></a>Támogatott Microsoft Azure-ajánlatok
 
