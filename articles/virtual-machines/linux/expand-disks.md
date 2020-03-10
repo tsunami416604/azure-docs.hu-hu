@@ -1,18 +1,18 @@
 ---
-title: Virtuális merevlemezek kibontása Linux rendszerű virtuális GÉPEN az Azure-ban
-description: Megtudhatja, hogyan bővítheti a virtuális merevlemezeket Linux rendszerű virtuális GÉPEN az Azure CLI-vel
+title: Virtuális merevlemezek kibontása linuxos virtuális gépen
+description: Megtudhatja, hogyan bővítheti a virtuális merevlemezeket egy Linux rendszerű virtuális GÉPEN az Azure CLI-vel.
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3bd85048cf12760d5918544ed6aac803e9fe120a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1295c5276f0f342323acf8d86eaaf9f785af3e9f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036209"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945186"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Virtuális merevlemezek kibontása Linux rendszerű virtuális GÉPEN az Azure CLI-vel
 
@@ -140,6 +140,6 @@ Kibontott lemez használatához bontsa ki a mögöttes partíciót és a fájlre
     /dev/sdc1        197G   60M   187G   1% /datadrive
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ha további tárhelyre van szüksége, [adatlemezeket is hozzáadhat egy Linux rendszerű virtuális géphez](add-disk.md). 
 * További információ a lemezek titkosításáról: [Azure Disk Encryption Linux rendszerű virtuális gépekhez](disk-encryption-overview.md).

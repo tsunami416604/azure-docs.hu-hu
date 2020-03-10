@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f73dd8dbef3f08cd4ea5841e4ec21bac2f55bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 70cdb4b42e835a9bfa03f4551ba25088ef8c5226
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276508"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942853"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezelésére
 
@@ -99,11 +99,14 @@ Míg a bérlői korlátozások konfigurálása a vállalati proxy infrastruktúr
 
 1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com/). Megjelenik a **Azure Active Directory felügyeleti központ** irányítópultja.
 
-2. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. Megjelenik a Azure Active Directory áttekintés oldal.
+2. A bal oldali panelen válassza az **Azure Active Directory** gombot. Megjelenik a Azure Active Directory áttekintés oldal.
 
 3. A **többi funkció** fejlécében válassza a **bérlői korlátozások**elemet.
 
 A korlátozott hozzáférésű bérlőként megadott bérlő rendszergazdája a jelentés használatával megtekintheti a bérlői korlátozási szabályzat miatt letiltott bejelentkezéseket, beleértve a használt identitást és a cél könyvtár-azonosítót is. Bejelentkezések szerepelnek, ha a bérlői beállítások a korlátozás a felhasználó bérlői vagy az erőforrás-bérlő számára a bejelentkezés.
+
+> [!NOTE]
+> Előfordulhat, hogy a jelentés korlátozott információt tartalmaz, például a célként megadott címtár-azonosítót, ha egy olyan felhasználó, aki nem a korlátozott hozzáférésű bérlőhöz tartozik Ebben az esetben a felhasználó által azonosítható információk, például a név és az egyszerű felhasználónév, a más bérlők felhasználói adatainak védelme érdekében vannak eltakarva.
 
 Más jelentések az Azure Portalon, például a szűrők segítségével határozhatja meg a jelentés hatókörét. Szűrheti egy adott időintervallumot, felhasználót, alkalmazást, ügyfelet vagy állapotot. Ha az **oszlopok** gombot választja, a következő mezők tetszőleges kombinációjával választhat:
 

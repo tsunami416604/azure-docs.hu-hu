@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: bb8b23513738a6696d65bf7f06a741be2ada7a93
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8babacfede6e13fde629492e1cd9f80af7f0e53f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250253"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943072"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Új szimulált eszköz létrehozása és tesztelése
 
@@ -30,7 +30,7 @@ A második forgatókönyvben a contoso egy új intelligens villanykörte-eszköz
 
 *Tulajdonságok*
 
-| Name (Név)                     | Értékek                      |
+| Név                     | értékek                      |
 | ------------------------ | --------------------------- |
 | Szín                    | Fehér, piros, kék            |
 | Fényerő               | 0 – 100                    |
@@ -40,9 +40,9 @@ A második forgatókönyvben a contoso egy új intelligens villanykörte-eszköz
 
 Az alábbi táblázat azokat az adatstream-jelentéseket mutatja be, amelyeket a villanykörte jelent a felhőnek:
 
-| Name (Név)   | Értékek      |
+| Név   | értékek      |
 | ------ | ----------- |
-| status | "on", "off" |
+| Állapot | "on", "off" |
 | Hőmérséklet | Fok F |
 | online | IGAZ, hamis |
 
@@ -53,7 +53,7 @@ Az alábbi táblázat azokat az adatstream-jelentéseket mutatja be, amelyeket a
 
 A következő táblázat az új eszköz által támogatott műveleteket mutatja be:
 
-| Name (Név)        |
+| Név        |
 | ----------- |
 | Bekapcsolás   |
 | Kikapcsolás  |
@@ -62,7 +62,7 @@ A következő táblázat az új eszköz által támogatott műveleteket mutatja 
 
 Az alábbi táblázat az eszköz kezdeti állapotát mutatja be:
 
-| Name (Név)                     | Értékek |
+| Név                     | értékek |
 | ------------------------ | -------|
 | Kezdeti szín            | Fehér  |
 | Kezdeti fényerő       | 75     |
@@ -82,7 +82,7 @@ A útmutató követéséhez a következőkre lesz szüksége:
 
 * Visual Studio Code. [A Visual Studio Code letölthető Mac, Linux és Windows rendszerekhez](https://code.visualstudio.com/download).
 * .NET Core. [A .net Core for Mac, Linux és Windows rendszerhez](https://www.microsoft.com/net/download)is letölthető.
-* [C# a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [C# a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * Postman. [A Poster letölthető Mac, Windows vagy Linux rendszerű számítógépekre](https://www.getpostman.com/apps).
 * Az [Azure-előfizetéshez üzembe helyezett IoT hub](../../articles/iot-hub/iot-hub-create-through-portal.md). Az útmutató lépéseinek elvégzéséhez szüksége lesz az IoT hub kapcsolódási karakterláncára. A Azure Portal a kapcsolatok sztringjét is beszerezheti.
 * Egy Cosmos DB adatbázis, amely az SQL API-t használja, és [erős konzisztencia](../../articles/cosmos-db/how-to-manage-database-account.md)használatára van konfigurálva. A jelen útmutató lépéseinek elvégzéséhez szüksége lesz a Cosmos DB adatbázisához tartozó kapcsolódási karakterláncra. A Azure Portal a kapcsolatok sztringjét is beszerezheti.
@@ -498,7 +498,7 @@ A két helyileg futó Service-t leállíthatja a Visual Studio Code-példányaib
 
 Ha már nincs szüksége a IoT Hubra és Cosmos DB példányokra, törölje azokat az Azure-előfizetésből a szükségtelen költségek elkerülése érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az útmutató bemutatja, hogyan hozhat létre egyéni szimulált eszközöket, és hogyan tesztelheti őket az eszköz-szimulációs szolgáltatás helyi futtatásával.
 

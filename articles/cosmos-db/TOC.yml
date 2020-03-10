@@ -89,7 +89,7 @@
       href: relational-nosql.md
     - name: Globális terjesztés
       items:
-        - name: Áttekintés
+        - name: Globális terjesztés áttekintése
           displayName: 'replication, replicate, geo distribution'
           href: distribute-data-globally.md
         - name: Konzisztenciaszintek
@@ -118,7 +118,7 @@
           href: globally-distributed-transactional-analytical-storage.md
     - name: Particionálás
       items:
-        - name: Áttekintés
+        - name: Particionálás áttekintése
           href: partitioning-overview.md
         - name: Particionálás és horizontális skálázás
           href: partition-data.md
@@ -461,7 +461,7 @@
           href: modeling-data.md
         - name: Indexelés
           items:
-            - name: Áttekintés
+            - name: Indexelés áttekintése
               displayName: 'range, spatial'
               href: index-overview.md
             - name: Indexelési szabályzatok
@@ -476,7 +476,7 @@
           href: database-transactions-optimistic-concurrency.md
     - name: Csatorna módosítása
       items:
-        - name: Áttekintés
+        - name: Változáscsatorna áttekintése
           href: change-feed.md
         - name: Változáscsatorna olvasása
           href: read-change-feed.md
@@ -530,7 +530,7 @@
           href: cosmos-db-reserved-capacity.md
     - name: Biztonság
       items:
-        - name: Áttekintés
+        - name: Biztonsági áttekintés
           href: database-security.md
         - name: Adattitkosítás
           href: database-encryption-at-rest.md
@@ -564,12 +564,12 @@
   items:
     - name: Cassandra API
       items:
-        - name: Introduction (Bevezetés)
-          href: cassandra-introduction.md
-        - name: Vonalprotokoll-támogatás
-          href: cassandra-support.md
-        - name: Rugalmas méretezés
-          href: manage-scale-cassandra.md
+        - name: Áttekintés
+          items:
+            - name: Mi az a Cassandra API a Cosmos DB-ben?
+              href: cassandra-introduction.md
+            - name: Vonalprotokoll-támogatás
+              href: cassandra-support.md
         - name: Rövid útmutatók
           items:
             - name: .NET
@@ -591,6 +591,10 @@
             - name: 4 – Adatok migrálása
               displayName: import
               href: cassandra-import-data.md
+        - name: Alapelvek
+          items:
+            - name: Rugalmas méretezés
+              href: manage-scale-cassandra.md
         - name: Útmutatók
           items:
             - name: Csatorna módosítása
@@ -628,12 +632,14 @@
               href: cli-samples-cassandra.md
     - name: MongoDB API
       items:
-        - name: Introduction (Bevezetés)
-          href: mongodb-introduction.md
-        - name: Vonalprotokoll-támogatás (3.2)
-          href: mongodb-feature-support.md
-        - name: Vonalprotokoll-támogatás (3.6)
-          href: mongodb-feature-support-36.md
+        - name: Áttekintés
+          items:
+            - name: Mi az a MongoDB API a Cosmos DB-ben?
+              href: mongodb-introduction.md
+            - name: Vonalprotokoll-támogatás (3.2)
+              href: mongodb-feature-support.md
+            - name: Vonalprotokoll-támogatás (3.6)
+              href: mongodb-feature-support-36.md
         - name: Rövid útmutatók
           items:
             - name: .NET
@@ -719,10 +725,12 @@
     - name: Gremlin API
       displayName: 'graph, graph database'
       items:
-        - name: Introduction (Bevezetés)
-          href: graph-introduction.md
-        - name: Vonalprotokoll-támogatás
-          href: gremlin-support.md
+        - name: Áttekintés
+          items:
+            - name: Mi az a Gremlin API a Cosmos DB-ben?
+              href: graph-introduction.md
+            - name: Vonalprotokoll-támogatás
+              href: gremlin-support.md
         - name: Rövid útmutatók
           items:
             - name: Gremlin-konzol
@@ -778,8 +786,10 @@
               href: cli-samples-gremlin.md
     - name: Tábla API
       items:
-        - name: Introduction (Bevezetés)
-          href: table-introduction.md
+        - name: Áttekintés
+          items:
+            - name: Mi az a Table API a Cosmos DB-ben?
+              href: table-introduction.md
         - name: Rövid útmutatók
           items:
             - name: .NET
@@ -849,10 +859,14 @@
               href: /rest/api/storageservices/table-service-rest-api
     - name: Etcd API
       items:
-        - name: Introduction (Bevezetés)
-          href: etcd-api-introduction.md
-        - name: Azure Kubernetes az Azure Cosmos DB-vel
-          href: bootstrap-kubernetes-cluster.md
+        - name: Áttekintés
+          items:
+            - name: Mi az az Etcd API a Cosmos DB-ben
+              href: etcd-api-introduction.md
+        - name: Útmutatók
+          items:
+            - name: Azure Kubernetes az Azure Cosmos DB-vel
+              href: bootstrap-kubernetes-cluster.md
 - name: Útmutatók
   items:
     - name: Azure Cosmos-fiók használata

@@ -9,12 +9,12 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 8cd49f9714746578ec701e22f9e6b0ccce772c6b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138152"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942290"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Az adatai importálása Azure Machine Learning designerbe (előzetes verzió)
 
@@ -56,6 +56,8 @@ Habár azt javasoljuk, hogy adatkészletek használatával importálja az adatok
 
 Az adatok importálása modul használatával kapcsolatos részletes információkért lásd az [adatok importálása – hivatkozás lapot](algorithm-module-reference/import-data.md).
 
+[!NOTE]
+> Ha az adatmennyiségnek több oszlopa van, előfordulhat, hogy az Adatimportálási modulban az "Érvényesítés sikertelen a méret korlátozása miatt" érték szerepel. Ennek oka, hogy az oszlopok a kódolás után kizárják a Maxmium modul paraméterének hosszát. Ebben az esetben javasoljuk, hogy [regisztrálja az adatkészletet az adatkészletek felhasználói felületén](how-to-create-register-datasets.md#use-the-ui), ami megelőzheti a hibát.  
 
 ## <a name="supported-sources"></a>Támogatott források
 
@@ -69,7 +71,7 @@ A támogatott adattár-források listáját lásd: az [Azure Storage-szolgáltat
 A Designer a következő forrásokból létrehozott táblázatos adatkészleteket támogatja:
  * Tagolt fájlok
  * JSON-fájlok
- * Parquet-fájlok
+ * Parquet-fájlokat
  * SQL-lekérdezések
 
 ## <a name="data-types"></a>Adattípusok
@@ -88,6 +90,6 @@ A tervező egy belső adattípust használ a modulok közötti adatátvitelhez. 
 
 A tervezőben lévő modulokat a számítási cél mérete korlátozza. Nagyobb adatkészletek esetén nagyobb Azure Machine Learning számítási erőforrást kell használnia. További információ a Azure Machine Learning számítási feladatokról: [Mik a számítási célok a Azure Machine Learningban?](concept-compute-target.md#azure-machine-learning-compute-managed)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg a tervező alapjait az [oktatóanyaggal: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md).

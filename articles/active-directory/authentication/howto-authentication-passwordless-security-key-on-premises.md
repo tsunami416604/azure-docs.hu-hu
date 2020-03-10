@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 03/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e28403d905a25e9e792b3b1f31b79c39cd7728b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 5b29f84931c169ffe1c2c81d5e32201cbc63fc88
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522091"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942877"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a helyszíni erőforrásokhoz Azure Active Directory használatával (előzetes verzió)
 
@@ -50,6 +50,7 @@ A szervezeteknek a következő szoftverekre vonatkozó követelményeket is meg 
 
 - Az eszközökön a Windows 10 belső Build 18945-es vagy újabb verziójának kell futnia.
 - A [Azure ad Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)1.4.32.0 vagy újabb verziójának kell lennie.
+  - További információ az elérhető Azure AD hibrid hitelesítési lehetőségekről: [válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz](../../security/fundamentals/choose-ad-authn.md) , és [válassza ki, hogy melyik telepítési típust szeretné használni a Azure ad Connecthoz](../hybrid/how-to-connect-install-select-installation.md).
 - A Windows Server-tartományvezérlőkhöz a következő javításokat kell telepíteni:
     - Windows Server 2016 – https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
     - Windows Server 2019 – https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
@@ -112,7 +113,7 @@ Ez a parancs kiírja az Azure AD Kerberos-kiszolgáló tulajdonságait. A tulajd
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| ID (Azonosító) | Az AD DS tartományvezérlő objektum egyedi azonosítója. Ezt az azonosítót más néven "slot"-nak vagy "ág-AZONOSÍTÓnak" is nevezzük. |
+| ID | Az AD DS tartományvezérlő objektum egyedi azonosítója. Ezt az azonosítót más néven "slot"-nak vagy "ág-AZONOSÍTÓnak" is nevezzük. |
 | DomainDnsName | A Active Directory-tartomány DNS-tartományneve. |
 | ComputerAccount | Az Azure AD Kerberos-kiszolgáló objektum számítógépfiók-objektuma (a tartományvezérlő). |
 | Felhasználóifiók | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsát birtokló letiltott felhasználói fiók objektum. Ennek a fióknak a megkülönböztető neve `CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
@@ -198,6 +199,6 @@ Ha a hibrid Azure AD-hez csatlakoztatott gép tiszta telepítését végzi, a ta
 
 Győződjön meg arról, hogy elegendő tartományvezérlő van, hogy az erőforrás-kérelem kiszolgálásához időben válaszoljon. Annak ellenőrzéséhez, hogy látható-e a szolgáltatást futtató tartományvezérlő, tekintse át a `nltest /dsgetdc:contoso /keylist /kdc`kimenetét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További információ a jelszóval nem rendelkező](concept-authentication-passwordless.md)

@@ -3,19 +3,19 @@ title: Custom Speech beszédfelismerési szolgáltatás tesztelési célú feldo
 titleSuffix: Azure Cognitive Services
 description: A Microsoft beszédfelismerés pontosságának tesztelésekor vagy egyéni modelljeinek betanításakor a hang-és szöveges adatokra lesz szüksége. Ezen az oldalon bemutatjuk az adattípusokat, a használatot és a felügyeletet.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.author: erhopf
-ms.openlocfilehash: 6100ac6a6b01a7d0eac74b0e83539bf4e671cb89
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.date: 03/09/2020
+ms.author: dapine
+ms.openlocfilehash: 969c1450966d2754e6e8f00126da52a1e88181fc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660409"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942687"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speechi adatfeldolgozás előkészítése
 
@@ -25,7 +25,7 @@ A Microsoft beszédfelismerés pontosságának tesztelésekor vagy egyéni model
 
 Ez a táblázat felsorolja az elfogadott adattípusokat, valamint az egyes adattípusok használatát, valamint az ajánlott mennyiséget. Nem minden adattípus szükséges a modell létrehozásához. Az adatkövetelmények attól függően változnak, hogy szeretne-e tesztet létrehozni vagy egy modellt betanítani.
 
-| Data type | Teszteléshez használatos | Ajánlott mennyiség | Képzéshez használatos | Ajánlott mennyiség |
+| Adattípus | Teszteléshez használatos | Ajánlott mennyiség | Képzéshez használatos | Ajánlott mennyiség |
 |-----------|-----------------|----------|-------------------|----------|
 | [Hang](#audio-data-for-testing) | Igen<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | Nem | N/a |
 | [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Igen<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Igen | 1 – 1000 órányi hang |
@@ -55,15 +55,17 @@ A hangadatok optimálisan tesztelik a Microsoft alapvető beszédfelismerési mo
 
 Ezzel a táblázattal ellenőrizheti, hogy a hangfájlok formátuma helyesen van-e formázva a Custom Speech használatával:
 
-| Tulajdonság | Value (Díj) |
-|----------|-------|
-| Fájl formátuma | RIFF (WAV) |
-| Mintavételezési arány | 8 000 Hz vagy 16 000 Hz |
-| Csatornák | 1 (mono) |
-| Maximális hossz/hang | 2 óra |
-| Minta formátuma | PCM, 16 bites |
-| Archív formátum | .zip |
-| Archiválás maximális mérete | 2 GB |
+| Tulajdonság                 | Érték                 |
+|--------------------------|-----------------------|
+| Fájl formátuma              | RIFF (WAV)            |
+| Mintavételezési arány              | 8 000 Hz vagy 16 000 Hz |
+| Csatornák                 | 1 (mono)              |
+| Maximális hossz/hang | 2 óra               |
+| Minta formátuma            | PCM, 16 bites           |
+| Archív formátum           | .zip                  |
+| Archiválás maximális mérete     | 2 GB                  |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!TIP]
 > A képzés és a tesztelési célú adatfeldolgozás során a. zip fájl mérete nem haladhatja meg a 2 GB-ot. Ha további adatokra van szüksége a betanításhoz, Ossza szét azt több. zip-fájlba, és töltse fel őket külön. Később is dönthet úgy, hogy *több* adatkészletből is betanít. Azonban csak *egyetlen* adatkészletből lehet tesztelni.
@@ -79,22 +81,24 @@ A <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span 
 
 Ha a Microsoft beszéd-szöveg pontosságát szeretné mérni a hangfájlok feldolgozásakor, az összehasonlításhoz meg kell adnia az emberi címkével ellátott átírásokat (Word-by-Word). Míg az emberi címkével ellátott átírás gyakran időigényes, a pontosság kiértékelése és a modell betanítása szükséges a használati esetekhez. Ne feledje, hogy az elismerés fejlesztése csak a megadott adatszolgáltatások esetében lesz megfelelő. Ezért fontos, hogy csak a kiváló minőségű átiratok legyenek feltöltve.
 
-| Tulajdonság | Value (Díj) |
-|----------|-------|
-| Fájl formátuma | RIFF (WAV) |
-| Mintavételezési arány | 8 000 Hz vagy 16 000 Hz |
-| Csatornák | 1 (mono) |
+| Tulajdonság                 | Érték                               |
+|--------------------------|-------------------------------------|
+| Fájl formátuma              | RIFF (WAV)                          |
+| Mintavételezési arány              | 8 000 Hz vagy 16 000 Hz               |
+| Csatornák                 | 1 (mono)                            |
 | Maximális hossz/hang | 2 óra (tesztelés)/60 s (képzés) |
-| Minta formátuma | PCM, 16 bites |
-| Archív formátum | .zip |
-| Maximális zip-méret | 2 GB |
+| Minta formátuma            | PCM, 16 bites                         |
+| Archív formátum           | .zip                                |
+| Maximális zip-méret         | 2 GB                                |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!NOTE]
-> A képzés és a tesztelési célú adatfeldolgozás során a. zip fájl mérete nem haladhatja meg a 2 GB-ot. A uou csak *egyetlen* adatkészletből tesztelhető, ügyeljen rá, hogy a megfelelő fájlméreten belül maradjon.
+> A képzés és a tesztelési célú adatfeldolgozás során a. zip fájl mérete nem haladhatja meg a 2 GB-ot. Csak *egyetlen* adatkészletből lehet tesztelni, ügyeljen arra, hogy a fájl a megfelelő fájlméreten belül maradjon. Emellett az egyes betanítási fájlok nem haladhatják meg a 60 másodpercet, ellenkező esetben hiba történik.
 
 A Word törlési vagy helyettesítési problémák megoldásához jelentős mennyiségű adattal kell foglalkoznia az elismerés javítása érdekében. Általánosságban elmondható, hogy nagyjából 10 – 1 000 órányi hanganyagot biztosít a Word-by-Word típusú átírásoknak. Az összes WAV fájl átiratát egyetlen, egyszerű szöveges fájlnak kell tartalmaznia. Az átiratfájl minden sorának egy hangfájl nevét és az annak megfelelő átiratot kell tartalmaznia. A fájlnevet és az átiratot tabulátorral (\t) kell elválasztani.
 
-  Példa:
+  Például:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
@@ -115,7 +119,7 @@ A hangfájlok és a megfelelő átírások összegyűjtése után egyetlen. zip 
 
 Az egyedi terméknév vagy szolgáltatások esetében a betanításhoz kapcsolódó szöveges adatnak kell szerepelnie. A kapcsolódó szövegek segítenek biztosítani a helyes felismerést. A következő két típusú kapcsolódó szöveges adat adható meg az elismerés javítása érdekében:
 
-| Data type | Az adatfelismerés javítása |
+| Adattípus | Az adatfelismerés javítása |
 |-----------|------------------------------------|
 | Mondatok (hosszúságú kimondott szöveg) | A termékek nevének felismerése, illetve az iparágra jellemző Szószedet használata a mondatok kontextusában. |
 | Kiejtés | A nem definiált kiejtésekkel kapcsolatos gyakori kifejezések, mozaikszavak és egyéb szavak kiejtésének javítása. |
@@ -130,7 +134,7 @@ Egyéni modell mondatok használatával történő létrehozásához meg kell ad
 
 Ezzel a táblázattal ellenőrizheti, hogy a hosszúságú kimondott szöveg kapcsolódó adatfájlja helyesen van-e formázva:
 
-| Tulajdonság | Value (Díj) |
+| Tulajdonság | Érték |
 |----------|-------|
 | Szövegkódolás | UTF-8 BOM |
 | Kimondott szövegek száma soronként | 1 |
@@ -151,7 +155,7 @@ Ha nem általános feltételek vannak a felhasználók által tapasztalt vagy ha
 
 Ide tartoznak a kimondott kifejezésekre vonatkozó példák, valamint a következő egyéni kiejtések:
 
-| Felismert/megjelenített űrlap | Szóbeli űrlap |
+| Felismert/megjelenített űrlap | Használja a beszélt űrlap |
 |--------------|--------------------------|
 | 3CPO | három c p o |
 | CNTK | c n t k |
@@ -161,20 +165,20 @@ A kimondott űrlap a fonetikus sorszám. Betűből, szóból, szótagból vagy m
 
 A testreszabott kiejtés angol (`en-US`) és német (`de-DE`) nyelven érhető el. Ez a táblázat a támogatott karaktereket mutatja nyelv szerint:
 
-| Nyelv | Területi beállítás | Karaktereket |
+| Nyelv | Területi beállítás | Karakterek |
 |----------|--------|------------|
 | Angol | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
-| Német | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
+| német | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 
 A következő táblázat segítségével biztosíthatja, hogy a kiejtésekhez kapcsolódó adatfájl megfelelően legyen formázva. A kiejtési fájlok kicsik, és csak néhány kilobájt méretűek lehetnek.
 
-| Tulajdonság | Value (Díj) |
+| Tulajdonság | Érték |
 |----------|-------|
 | Szövegkódolás | UTF-8 AJ (ANSI is támogatott angol nyelven) |
 | kiejtések száma soronként | 1 |
 | Maximális fájlméret | 1 MB (1 KB ingyenes szinten) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)
 * [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 74b0fa4643907493904e77ce333d1ec1dba01f49
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727104"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942952"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database biztonsági funkciók    
 A Azure SQL Database az Azure-ban egy kapcsolódó adatbázis-szolgáltatást biztosít. Az ügyféladatok védelme és az ügyfelek által a kapcsolati adatbázis-szolgáltatástól várt erős biztonsági funkciók biztosítása érdekében SQL Database saját biztonsági képességekkel rendelkezik. Ezek a képességek az Azure-ból örökölt vezérlőkre épülnek.
@@ -62,9 +62,9 @@ Mivel a Fabric Controller (FC) az Azure-háló központi Orchestrator, jelentős
 ### <a name="vlan-isolation"></a>VLAN-elkülönítés
 Az Azure-beli üzemi hálózatot logikailag elkülönítettük három elsődleges VLAN-ra:
 
-- A fő VLAN: Kapcsolatot létesít a nem megbízható ügyfél-csomópontokkal.
-- Az FC VLAN: Megbízható FCs-és támogató rendszereket tartalmaz.
-- Az eszköz VLAN-je: Megbízható hálózatot és egyéb infrastruktúra-eszközöket tartalmaz.
+- A fő VLAN: kapcsolat nélküli ügyfél-csomópontok közötti kapcsolat.
+- Az FC VLAN: megbízható FCs-és támogató rendszereket tartalmaz.
+- Az eszköz VLAN: megbízható hálózati és egyéb infrastruktúra-eszközöket tartalmaz.
 
 ### <a name="packet-filtering"></a>Csomagszűrés
 Az IPFilter és a csomópontok operációs rendszerén megvalósított szoftveres tűzfalak kényszerítik a kapcsolati korlátozásokat, és megakadályozzák a virtuális gépek közötti jogosulatlan adatforgalmat.
@@ -75,7 +75,7 @@ A gyökérszintű operációs rendszer és a vendég virtuális gépek egymást�
 ### <a name="types-of-rules-on-firewalls"></a>A tűzfalakra vonatkozó szabályok típusai
 A szabály a következőképpen van definiálva:
 
-{Security Response Center (src) IP, src port, cél IP-cím, célport, cél protokoll, be/ki, állapot-nyilvántartó/állapot nélküli, állapot-nyilvántartó időtúllépés}.
+{Src IP, src port, cél IP-cím, célport, cél protokoll, be/ki, állapot-nyilvántartó/állapot nélküli, állapot-nyilvántartó időtúllépés}.
 
 A szinkron inaktív karakter (SYN) csomagok csak abban az esetben engedélyezettek, ha az egyik szabály engedélyezi azt. A TCP esetében az Azure állapot nélküli szabályokat használ, ahol az elv az, hogy csak az összes nem SYN-csomagot engedélyezi a virtuális gép számára. A biztonsági előfeltétel, hogy minden gazdagép-verem rugalmasan figyelmen kívül hagyja a nem SYN-csomagokat, ha korábban még nem látott SYN-csomagot. Maga a TCP protokoll állapota, és az állapot nélküli SYN-alapú szabállyal együtt az állapot-nyilvántartó megvalósítás általános viselkedését éri el.
 
@@ -104,5 +104,3 @@ Ha többet szeretne megtudni arról, hogy a Microsoft Hogyan védi az Azure-infr
 - [Azure-infrastruktúra figyelése](infrastructure-monitoring.md)
 - [Azure-infrastruktúra integritása](infrastructure-integrity.md)
 - [Azure Customer-adatvédelem](protection-customer-data.md)
-
-

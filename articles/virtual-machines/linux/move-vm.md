@@ -1,36 +1,26 @@
 ---
-title: Linux rendszerű virtuális gép áthelyezése az Azure-ban
-description: Linux rendszerű virtuális gép áthelyezése egy másik Azure-előfizetésre vagy erőforráscsoporthoz a Resource Manager-alapú üzemi modellben.
-services: virtual-machines-linux
-documentationcenter: ''
+title: Virtuális gép áthelyezése az Azure CLI használatával
+description: Helyezze át a virtuális gépet egy másik Azure-előfizetésbe vagy-erőforráscsoporthoz az Azure CLI használatával.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d635f0a5-4458-4b95-a5f8-eed4f41eb4d4
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 2ba8a8cdc324f46e25f9665cfce0aa07fc948e88
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ebcd5f166fd1876f67121787c23d23860c9fa4b6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979038"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944589"
 ---
-# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Linux rendszerű virtuális gép áthelyezése másik előfizetésre vagy erőforráscsoport-csoportba
-Ez a cikk bemutatja, hogyan helyezhet át egy linuxos virtuális gépet (VM) Az erőforráscsoportok vagy előfizetések között. A virtuális gépek előfizetések közötti áthelyezése akkor lehet hasznos, ha létrehozott egy virtuális gépet egy személyes előfizetésben, és most át szeretné helyezni a céges előfizetésbe.
+# <a name="move-a-vm-to-another-subscription-or-resource-group"></a>Virtuális gép áthelyezése másik előfizetésre vagy erőforráscsoport-csoportba
+Ebből a cikkből megtudhatja, hogyan helyezhet át egy virtuális gépet (VM) Az erőforráscsoportok vagy előfizetések között. A virtuális gépek előfizetések közötti áthelyezése akkor lehet hasznos, ha létrehozott egy virtuális gépet egy személyes előfizetésben, és most át szeretné helyezni a céges előfizetésbe.
 
 > [!IMPORTANT]
->Jelenleg nem helyezhető át az Azure Managed Disks.
->
 >Az áthelyezés részeként új erőforrás-azonosítók jönnek létre. A virtuális gép áthelyezése után frissítenie kell az eszközöket és a parancsfájlokat az új erőforrás-azonosítók használatára.
 >
->
+
 
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>Virtuális gép áthelyezése az Azure CLI használatával
 
@@ -71,5 +61,5 @@ Ha a rendszer arra kéri, hogy erősítse meg, hogy szeretné-e áthelyezni a me
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Több különböző típusú erőforrást is áthelyezhet az erőforráscsoportok és az előfizetések között. További információ: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md).    

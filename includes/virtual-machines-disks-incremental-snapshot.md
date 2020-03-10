@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 083051fd621194d39d0092046e187e0809fd62d9
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 2316b52115cc23d11dfb26d951a7f1820f2737cc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77520706"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945642"
 ---
 A növekményes Pillanatképek (előzetes verzió) olyan felügyelt lemezek időpontra vonatkozó biztonsági mentései, amelyek az utolsó pillanatkép óta csak az összes változást tartalmazzák. Ha egy növekményes pillanatkép letöltését vagy más módon történő használatát kísérli meg, a rendszer a teljes VHD-t használja. Ez az új képesség a felügyelt lemezek pillanatképei számára potenciálisan költséghatékony lehet, mivel már nem szükséges a teljes lemez tárolása az egyes Pillanatképek esetében, hacsak nem választja. A normál pillanatképekhez hasonlóan a növekményes Pillanatképek is használhatók teljes felügyelt lemezek létrehozásához, vagy rendszeres pillanatkép készítéséhez.
 
@@ -25,8 +25,7 @@ A növekményes Pillanatképek egy különbözeti képességet is biztosítanak,
 
 Jelenleg csak a következő régiók támogatottak:
 
-- Elérhető az USA nyugati középső régiójában, Kelet-Kanadában, Közép-Kanadában.
-- Elérhető nyilvános előzetesként az USA keleti régiójában, az USA 2. keleti régiójában, az USA középső régiójában, Észak-Európában, Dél-Kelet-Ázsia régióban.
+- Elérhető az USA nyugati középső régiójában, az USA keleti régiójában, az USA 2. keleti régiójában, az USA középső régiójában, Kelet-Kanada, Közép-Kanada, Észak-Európa, Dél-Kelet-Ázsia régióban.
 
 ## <a name="restrictions"></a>Korlátozások
 - A növekményes Pillanatképek jelenleg nem hozhatók létre a lemez méretének módosítása után (csak az előzetes verzióban).
@@ -157,6 +156,6 @@ Növekményes pillanatkép létrehozásához Azure Resource Manager sablonokat i
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné megtekinteni a növekményes Pillanatképek különbözeti képességét bemutató mintakód használatát, tekintse meg az [Azure-Managed Disks biztonsági mentések másolása másik régióba a növekményes Pillanatképek különbözeti képességével](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)című témakört.

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: f322a240835d86697ae18c984700f22ca7b00145
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 7fee3a1e2c26bc9fa89a4766c771a3715398b1a2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882183"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673359"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -19,7 +19,7 @@ A mai alkalmazások nagyon rugalmasak és mindig online állapotban vannak. Az a
 
 Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Egy gombnyomással a Cosmos DB lehetővé teszi, hogy rugalmasan és egymástól függetlenül méretezheti az átviteli sebességet és a tárterületet a globálisan tetszőleges számú Azure-régióban. Rugalmasan méretezheti az átviteli sebességet és a tárterületet, és kihasználhatja az olyan gyors, egyszámjegyű ezredmásodperces adatelérést, amely a kedvenc API-ját, például az SQL, a MongoDB, a Cassandra, a Tables vagy a Gremlin. A Cosmos DB átfogó [szolgáltatói szerződéseket](https://aka.ms/acdbsla) (SLA-kat) biztosít az átviteli sebesség, a késés, a rendelkezésre állás és a konzisztencia garantálása érdekében, ami semmilyen más adatbázis-szolgáltatást sem biztosít.
 
-Az [Azure Cosmos DB-t kipróbálhatja ingyenesen](https://azure.microsoft.com/try/cosmosdb/), Azure-előfizetés, díjfizetés és elköteleződés nélkül.
+Ha ingyenes Azure-előfizetéssel, díjmentesen, vagy a [Azure Cosmos db ingyenes](optimize-dev-test.md#azure-cosmos-db-free-tier) szinten szeretné [kipróbálni a Azure Cosmos DBT](https://azure.microsoft.com/try/cosmosdb/) , akkor az első 400 ru/s és 5 GB tárhellyel rendelkező fiókot is igénybe veheti.
 
 > [!div class="nextstepaction"]
 > [Az Azure Cosmos DB ingyenes kipróbálása](https://azure.microsoft.com/try/cosmosdb/)
@@ -28,13 +28,13 @@ Az [Azure Cosmos DB-t kipróbálhatja ingyenesen](https://azure.microsoft.com/tr
 
 ## <a name="key-benefits"></a>Főbb előnyök
 
-### <a name="turnkey-global-distribution"></a>Kulcsrakész globális disztribúció
+### <a name="turnkey-global-distribution"></a>Kulcsrakész globális terjesztés
 
 A Cosmos DB lehetővé teszi, hogy világszerte gyorsan reagáló és magasan elérhető alkalmazásokat építsen ki. Cosmos DB transzparens módon replikálja az adatait, bárhol is legyenek a felhasználók, így a felhasználók kommunikálhatnak a számukra legközelebb eső adatreplikával.
 
 A Cosmos DB segítségével bármikor hozzáadhat vagy eltávolíthat egy Azure-régiót a Cosmos-fiókjához egy kattintással. A Cosmos DB zökkenőmentesen replikálja az adatait a Cosmos-fiókjához társított összes régióba, miközben az alkalmazás továbbra is nagyon elérhető marad, a szolgáltatás *több-* vezérelt képességeinek köszönhetően. További információt a [globális terjesztéssel](distribute-data-globally.md) foglalkozó cikkben talál.
 
-### <a name="always-on"></a>Folyamatos üzem
+### <a name="always-on"></a>Always on
 
 Az Azure-infrastruktúrával és az átlátszó, [több főkiszolgálós replikációval](global-dist-under-the-hood.md)való szoros integráció révén Cosmos db [99,999%-os magas rendelkezésre állást](high-availability.md) biztosít mind az olvasási, mind az írási műveletekhez. A Cosmos DB lehetővé teszi, hogy programozott módon (vagy a portálon keresztül) meghívja a Cosmos-fiók regionális feladatátvételét. Ezzel a képességgel biztosítható, hogy az alkalmazás a regionális katasztrófa esetén feladatátvételre legyen kialakítva.
 
@@ -48,7 +48,7 @@ A Cosmos DB használatával rendkívül rugalmas, bolygó-méretezési alkalmaz�
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Pontosan meghatározott, több konzisztencia-választás
 
-Globálisan elosztott alkalmazások Cosmos DB-ben történő létrehozásakor a [konzisztencia, a rendelkezésre állás, a késés és az átviteli sebesség közötti rendkívüli kompromisszumok](consistency-levels-tradeoffs.md)nem szükségesek. Az Cosmos DB több főkiszolgálós replikációs protokollját gondosan tervezték, hogy [öt jól meghatározott konzisztencia-választási lehetőséget](consistency-levels.md) biztosítson - *erős* *, korlátozott*elavulás, *munkamenet*, *konzisztens előtag*és *végleges* – intuitív programozási modell esetében, amely alacsony késéssel és magas rendelkezésre állással rendelkezik a globálisan elosztott alkalmazáshoz.
+Globálisan elosztott alkalmazások Cosmos DB-ben történő létrehozásakor a [konzisztencia, a rendelkezésre állás, a késés és az átviteli sebesség közötti rendkívüli kompromisszumok](consistency-levels-tradeoffs.md)nem szükségesek. Az Cosmos DB több főkiszolgálós replikációs protokollját gondosan úgy tervezték, hogy [öt jól meghatározott következetességi lehetőséget](consistency-levels.md) kínáljon - *erős*, korlátozott elavulás, *munkamenet*, *konzisztens előtag*és *végleges* – egy intuitív programozási modellhez *, amely*alacsony késést és magas rendelkezésre állást biztosít a globálisan elosztott alkalmazások számára.
 
 ### <a name="no-schema-or-index-management"></a>Nincs séma-vagy indexelési felügyelet
 
@@ -89,9 +89,9 @@ A Cosmos DB API-k közül választhat a Cosmos-adatbázisban tárolt adataival v
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Az Azure Cosmos DB előnyeit kihasználó megoldások
 
-Az olyan [webes, mobil-, játék-és IoT-alkalmazások](use-cases.md) , amelyek nagy mennyiségű adatot, olvasási és írási műveleteket igényelnek [globális szinten](distribute-data-globally.md) , a különböző adatokhoz közel valós válaszidő esetén, Cosmos db [garantált magas rendelkezésre állást biztosítanak ](https://azure.microsoft.com/support/legal/sla/cosmos-db/), nagy teljesítményű, kis késleltetésű és hangolt konzisztencia. Ismerje meg, hogyan használhatók a Azure Cosmos DB a [IoT és a telematika](use-cases.md#iot-and-telematics), a [kiskereskedelmi és a marketing](use-cases.md#retail-and-marketing), a [játékok](use-cases.md#gaming) és a [webes és mobil alkalmazások](use-cases.md#web-and-mobile-applications)létrehozásához.
+Az olyan [webes, mobil-, játék-és IoT-alkalmazások](use-cases.md) , amelyek nagy mennyiségű adatot, olvasási és írási műveleteket igényelnek [globális szinten](distribute-data-globally.md) , a különböző adatokhoz közel valós válaszidő esetén, Cosmos db [garantált magas rendelkezésre állást](https://azure.microsoft.com/support/legal/sla/cosmos-db/), magas átviteli sebességet, kis késést és hangolt konzisztenciát biztosítanak. Ismerje meg, hogyan használhatók a Azure Cosmos DB a [IoT és a telematika](use-cases.md#iot-and-telematics), a [kiskereskedelmi és a marketing](use-cases.md#retail-and-marketing), a [játékok](use-cases.md#gaming) és a [webes és mobil alkalmazások](use-cases.md#web-and-mobile-applications)létrehozásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Cosmos DB alapfogalmai: [kulcsrakész globális terjesztés](distribute-data-globally.md) , [particionálás](partitioning-overview.md) és [kiépített átviteli sebesség](request-units.md).
 

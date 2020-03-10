@@ -57,6 +57,8 @@
       href: test-your-model.md
     - name: Tartalombesoroló teljesítményének fokozása
       href: getting-started-improving-your-classifier.md
+    - name: Tartomány kiválasztása
+      href: select-domain.md
     - name: Előrejelzési API használata
       href: use-prediction-api.md
     - name: Intelligens feliratozó használata

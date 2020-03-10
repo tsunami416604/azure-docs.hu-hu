@@ -1,27 +1,17 @@
 ---
-title: Terraform telepítése és konfigurálása Azure-erőforrások kiépítéséhez
-description: Ismerje meg, hogyan telepítheti és konfigurálhatja az Azure-erőforrások létrehozásához szükséges Terraform
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: tomarchermsft
-manager: gwallace
-editor: na
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 09/20/2019
-ms.author: tarcher
-ms.openlocfilehash: 74728fb05e900c534580f1c8eaf14dd0e48fc42c
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+title: Rövid útmutató – az Azure-erőforrások kiépítéséhez szükséges Terraform telepítése és konfigurálása
+description: Ebben a quicstart a Terraform telepítése és konfigurálása Azure-erőforrások létrehozásához
+keywords: Azure devops Terraform telepítésének konfigurálása
+ms.topic: quickstart
+ms.date: 03/09/2020
+ms.openlocfilehash: 82635f59ec8165add2046a230a040b06f89d9898
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77473128"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943505"
 ---
-# <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Terraform telepítése és konfigurálása Azure-erőforrások kiépítéséhez
+# <a name="quickstart-install-and-configure-terraform-to-provision-azure-resources"></a>Gyors útmutató: az Azure-erőforrások kiépítéséhez szükséges Terraform telepítése és konfigurálása
  
 A Terraform segítségével egyszerűen meghatározhatja, megtekintheti és üzembe helyezheti a felhőalapú infrastruktúrát egy [egyszerű sablonos nyelv](https://www.terraform.io/docs/configuration/syntax.html)használatával. Ez a cikk a Terraform Azure-beli erőforrások kiépítéséhez szükséges lépéseit ismerteti.
 
@@ -29,9 +19,9 @@ Ha többet szeretne megtudni arról, hogyan használható az Terraform az Azure-
 > [!NOTE]
 > A Terraform-specifikus támogatáshoz forduljon közvetlenül a Terraform a közösségi csatornák egyikének használatával:
 >
->   • A közösségi portál [Terraform szakasza](https://discuss.hashicorp.com/c/terraform-core) kérdéseket, használati eseteket és hasznos mintákat tartalmaz.
+>    * A közösségi portál [Terraform szakasza](https://discuss.hashicorp.com/c/terraform-core) kérdéseket, használati eseteket és hasznos mintákat tartalmaz.
 >
->   • A szolgáltatóval kapcsolatos kérdésekért látogasson el a közösségi portál [Terraform-szolgáltatók](https://discuss.hashicorp.com/c/terraform-providers) szakaszára.
+>    * A szolgáltatóval kapcsolatos kérdésekért látogasson el a közösségi portál [Terraform-szolgáltatók](https://discuss.hashicorp.com/c/terraform-providers) szakaszára.
 
 
 
@@ -104,6 +94,10 @@ Hozzon létre egy fájlt `test.tf` egy üres könyvtárban, és illessze be az a
 
 ```hcl
 provider "azurerm" {
+  # The "feature" block is required for AzureRM provider 2.x. 
+  # If you are using version 1.x, the "features" block is not allowed.
+  version = "~>2.0"
+  features {}
 }
 resource "azurerm_resource_group" "rg" {
         name = "testResourceGroup"
@@ -153,7 +147,7 @@ azurerm_resource_group.rg: Creating...
 azurerm_resource_group.rg: Creation complete after 1s
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben telepítette a Terraform-t, vagy használta a Cloud Shell az Azure-beli hitelesítő adatok konfigurálásához és az erőforrások létrehozásának megkezdéséhez az Azure-előfizetésében. A Terraform üzembe helyezéséhez az Azure-ban a következő cikkben talál további információt:
 

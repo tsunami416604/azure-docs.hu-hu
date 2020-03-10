@@ -6,13 +6,13 @@ ms.author: cynthn
 ms.date: 04/20/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 08441a98d9104109b4cfc130ab6adb31dc4fce45
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.subservice: imaging
+ms.openlocfilehash: bf1dca61ec6b39e52d4f76c1c77cd3def6973ab8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260514"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945014"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Előzetes verzió: Linux-rendszerkép létrehozása és terjesztése megosztott képgyűjteménybe 
 
@@ -186,7 +186,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Csatlakozzon a virtuális géphez SSH-n keresztül.
+SSH-t a virtuális gépre.
 
 ```azurecli-interactive
 ssh aibuser@<publicIpAddress>
@@ -259,6 +259,6 @@ Törölje az erőforráscsoportot.
 az group delete -n $sigResourceGroup -y
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [Azure megosztott Képgalériákkal](shared-image-galleries.md)kapcsolatban.

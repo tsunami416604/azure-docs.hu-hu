@@ -1,14 +1,15 @@
 ---
 title: Oktatóanyag – Kubernetes-fürt létrehozása az Azure Kubernetes szolgáltatással (ak) a Terraform használatával
-description: Oktatóanyag, amely bemutatja, hogyan hozhat létre egy Kubernetes-fürtöt az Azure Kubernetes Service-szel és a Terraformmal
+description: Ebben az oktatóanyagban egy Kubernetes-fürtöt hoz létre az Azure Kubernetes Service és a Terraform
+keywords: Azure devops Terraform AK kubernetes
 ms.topic: tutorial
-ms.date: 11/07/2019
-ms.openlocfilehash: eb8619418cf6d42f600499bb5a12322adce6f44b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 03/09/2020
+ms.openlocfilehash: 0a193c8da6441a04f742894797521fe92f26b2e1
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472247"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945298"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Oktatóanyag: Kubernetes-fürt létrehozása az Azure Kubernetes szolgáltatással az Terraform használatával
 
@@ -71,7 +72,10 @@ Hozza létre az Azure-szolgáltatót deklaráló Terraform konfigurációs fájl
 
     ```hcl
     provider "azurerm" {
-        version = "~>1.5"
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
     }
 
     terraform {
@@ -390,7 +394,7 @@ A Kubernetes-eszközök használhatók az újonnan létrehozott fürt tesztelés
 
 Az AKS-fürt létrejöttekor a monitorozás is engedélyezve lett, hogy rögzítse a fürtcsomópontok és a podok állapotmetrikáit. Ezek az állapotmetrikák elérhetők az Azure Portalon. A tároló állapotának figyelésével kapcsolatos további információkért lásd: az [Azure Kubernetes szolgáltatás állapotának figyelése](/azure/azure-monitor/insights/container-insights-overview).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
 > [További információ a Terraform Azure-beli használatáról](/azure/terraform)

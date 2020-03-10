@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0ad780c04954c09ddfd432b3c7de3dc65f0841bf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988634"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942995"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Az Azure Cognitive Search tudásbázisának bemutatása
 
@@ -97,7 +97,7 @@ Az [Indexelő](search-indexer-overview.md) megadása kötelező. A készségkés
 
 A Knowledge Store létrehozásához használja a portált vagy az előzetes verziójú REST API (`api-version=2019-05-06-Preview`).
 
-### <a name="use-the-azure-portal"></a>Az Azure-portál használata
+### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
 Az **adat importálása** varázsló a Tudásbázis létrehozási lehetőségeit tartalmazza. A kezdeti feltáráshoz [négy lépésben hozza létre első tudásbázisát](knowledge-store-connect-power-bi.md).
 
@@ -131,7 +131,7 @@ Ha a dúsítások már léteznek a tárolóban, az Azure Blobhoz vagy a Table St
 
 <a name="kstore-rest-api"></a>
 
-## <a name="api-reference"></a>API-leírások
+## <a name="api-reference"></a>API-referencia
 
 A REST API verzió `2019-05-06-Preview` a szakértelmével további definíciói segítségével biztosít a Tudásbázisban. A hivatkozáson kívül tekintse meg a [Knowledge Store létrehozása a Poster használatával](knowledge-store-create-rest.md) című részt az API-k meghívásával kapcsolatos részletekért.
 
@@ -139,7 +139,7 @@ A REST API verzió `2019-05-06-Preview` a szakértelmével további definíciói
 + [Készségkészlet frissítése (API-Version = 2019-05 -06-előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Knowledge Store az Azure Storage-fiókokhoz való hozzáférésre alkalmas bármely ügyfélalkalmazás által a készségkészlet tervezésekor hasznosnak tartja a dúsított dokumentumok megőrzését, illetve az új struktúrák és tartalmak felhasználását.
 
@@ -147,3 +147,13 @@ A bővített dokumentumok létrehozásának legegyszerűbb megközelítése [a p
 
 > [!div class="nextstepaction"]
 > [Knowledge Store létrehozása a Poster és a REST használatával](knowledge-store-create-rest.md)
+
+További információ a kivetítésekről, a képességekről és a [készségkészlet való definiálásáról](knowledge-store-projection-overview.md)
+
+> [!div class="nextstepaction"]
+> [Kivetítések a Knowledge Store-ban](knowledge-store-projection-overview.md)
+
+A speciális kivetítésekkel kapcsolatos fogalmakkal, például a szeleteléssel, a beágyazott formázással és a kapcsolatokkal, a [kivetítések meghatározása a Tudásbázisban](knowledge-store-projections-examples.md) című oktatóanyagban
+
+> [!div class="nextstepaction"]
+> [Kivetítések meghatározása a Knowledge Store-ban](knowledge-store-projections-examples.md)

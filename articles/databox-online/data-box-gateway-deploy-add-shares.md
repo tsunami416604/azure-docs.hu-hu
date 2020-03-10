@@ -8,19 +8,19 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: d930b1db48e3a5c4bda96f0b7d80a9c9f24d53d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 623ec5e082a8ed889329936d020bf28434a56fbf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60755641"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942532"
 ---
-# <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Oktatóanyag: Adatok áthelyezése az Azure Data Box Gateway
+# <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Oktatóanyag: adatok átvitele Azure Data Box Gateway
 
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
-Ez a cikk azt ismerteti, hogyan adhat hozzá, és csatlakozhat a Data Box-Gateway-megosztások. Miután hozzáadta a megosztásokat, a Data Box átjáróeszköz küldhetnek adatokat az Azure-bA.
+Ez a cikk azt ismerteti, hogyan lehet hozzáadni és csatlakozni a Data Box Gateway-megosztásokhoz. A megosztások hozzáadása után Data Box Gateway eszköz adatátvitelt hajthat végre az Azure-ba.
 
 A folyamat elvégzése körülbelül 10 percet vesz igénybe.
 
@@ -35,58 +35,58 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt megosztásokat ad a Data Box Gatewayhez, ellenőrizze az alábbiakat:
 
-- A virtuális eszköz kiépítése és az ahhoz kapcsolódó leírt módon a [a Hyper-V Data Box átjáró kiépítése](data-box-gateway-deploy-provision-hyperv.md) vagy [üzembe helyezése VMware-ben Data Box Gateway](data-box-gateway-deploy-provision-vmware.md).
+- Kiépített egy virtuális eszközt, és azt részletesen csatlakoztatta a [Hyper-V Data Box Gateway](data-box-gateway-deploy-provision-hyperv.md) üzembe helyezése vagy [a VMware-Data Box Gateway kiépítése](data-box-gateway-deploy-provision-vmware.md)során.
 
-- Miután aktiválta a virtuális eszköz ismertetett [Connect és az Azure Data Box Gateway aktiválása](data-box-gateway-deploy-connect-setup-activate.md).
+- Aktiválta a [Azure Data Box Gateway csatlakoztatása és aktiválása](data-box-gateway-deploy-connect-setup-activate.md)című témakörben leírt virtuális eszközt.
 
 - Az eszköz készen áll a megosztások létrehozására és az adatátvitelre.
 
 ## <a name="add-a-share"></a>Megosztás hozzáadása
 
-Egy megosztás tegye az alábbi eljárás létrehozása:
+A megosztás létrehozásához hajtsa végre a következő eljárást:
 
-1. Az a [az Azure portal](https://portal.azure.com/), válassza ki a Data Box-átjáró-erőforrást, és folytassa a **áttekintése**. Az eszköz online állapotúnak kell lennie. Válassza ki **+ Hozzáadás megosztás** az eszköz parancssávon.
+1. A [Azure Portal](https://portal.azure.com/)válassza ki a Data Box Gateway erőforrást, majd kattintson az **Áttekintés**gombra. Az eszköznek online állapotban kell lennie. Válassza a **+ megosztás hozzáadása** lehetőséget az eszköz parancssáv-sávján.
    
    ![Megosztás hozzáadása](./media/data-box-gateway-deploy-add-shares/click-add-share.png)
 
-4. A **megosztás hozzáadása**, hajtsa végre az alábbi eljárást:
+4. A **megosztás hozzáadása**területen hajtsa végre a következő eljárást:
 
-    1. Adjon egy egyedi nevet a megosztásnak. A fájlmegosztások neve csak kisbetűket, számokat és kötőjeleket tartalmazhat rendelkezhet. A megosztás neve 3 és 63 karakter között kell, és betűvel vagy számmal kezdődhet. A kötőjelek előtt és után csak nem kötőjel karakter állhat.
+    1. Adjon egy egyedi nevet a megosztásnak. A megosztások nevei csak kisbetűket, számokat és kötőjeleket tartalmazhatnak. A megosztási névnek 3 – 63 karakter hosszúnak kell lennie, és betűvel vagy számmal kell kezdődnie. A kötőjelek előtt és után csak nem kötőjel karakter állhat.
     
     2. Válassza ki a megosztás **típusát**. A típus SMB vagy NFS lehet. Az alapértelmezett érték az SMB. Ez a szokásos típus Windows-ügyfelekhez, míg az NFS a Linux rendszerű ügyfelekhez használatos. Attól függően, hogy az SMB vagy az NFS típust választja, a megjelenő beállítások kis mértékben eltérőek.
 
-    3. Adja meg a megosztást tároló tárfiók. Ha egy tároló nem létezik, az újonnan létrehozott megosztás neve az a tárfiók létrejön. Ha a tároló már létezik, a tárolót használja.
+    3. Adja meg azt a Storage-fiókot, amelyben a megosztás található. Ha egy tároló még nem létezik, a rendszer létrehozza a Storage-fiókban az újonnan létrehozott megosztási névvel. Ha a tároló már létezik, a rendszer a tárolót használja.
     
     4. Válassza ki a **tárolási szolgáltatást** a blokkblobok, lapblobok vagy fájlok közül. A kiválasztott szolgáltatástípustól függ, hogy az Azure milyen formátumban tárolja az adatokat. Ebben az esetben például azt szeretnénk, hogy az adatok blokkblobokban legyenek tárolva az Azure-ban, ezért a Blokkblob lehetőséget választjuk. Ha a Lapblob lehetőséget választja, biztosítania kell az adatok 512 bájtos igazítását. A VHDX például mindig 512 bájtos igazítású.
    
     5. A következő lépés attól függ, hogy SMB- vagy NFS-megosztást hozunk-e létre.
      
-    - **SMB-megosztás** – a **jogosultság az összes helyi felhasználó**válassza **új létrehozása** vagy **meglévő**. Ha létrehoz egy új helyi felhasználót, adja meg egy **felhasználónév** és **jelszó**, majd **jelszó megerősítése**. Ez a művelet rendel a helyi felhasználói engedélyeket. Miután az engedélyek itt társított, használhatja a Fájlkezelőben módosítani ezeket az engedélyeket.
+    - **SMB-megosztás** – **az összes jogosultság helyi felhasználó**területen válassza az **új létrehozása** vagy a **meglévő használata**lehetőséget. Ha új helyi felhasználót hoz létre, adjon meg egy **felhasználónevet** és egy **jelszót**, majd **erősítse meg a jelszót**. Ez a művelet hozzárendeli az engedélyeket a helyi felhasználóhoz. A megosztási szintű engedélyek módosítása jelenleg nem támogatott.
     
         ![SMB-megosztás hozzáadása](./media/data-box-gateway-deploy-add-shares/add-share-smb-1.png)
         
-        Ha **csak olvasási műveletek engedélyezése** jelölőnégyzetet a megosztás adataihoz, megadhatja a csak olvasható felhasználók.
+        Ha bejelöli a **csak olvasási műveletek engedélyezése** jelölőnégyzetet a megosztási adatokhoz, megadhat csak olvasási jogosultsággal rendelkező felhasználókat.
         
-    - **Az NFS-megosztások** – adja meg az IP-címeit az engedélyezett ügyfeleknek, amely hozzáféréssel rendelkezik a megosztáshoz.
+    - **NFS-megosztás** – adja meg azon engedélyezett ügyfelek IP-címeit, akik hozzáférhetnek a megosztáshoz.
 
         ![NFS-megosztás hozzáadása](./media/data-box-gateway-deploy-add-shares/add-share-nfs-1.png)
    
-9. Válassza ki **létrehozás** a megosztás létrehozásához.
+9. A megosztás létrehozásához válassza a **Létrehozás** lehetőséget.
     
-    Értesítést kap arról, hogy a megosztás létrehozása folyamatban van. A megadott beállításokkal a megosztás létrehozása után a **megosztások** csempére, hogy az új megosztásban frissítéseket.
+    Értesítést kap arról, hogy a megosztás létrehozása folyamatban van. Miután létrehozta a megosztást a megadott beállításokkal, a **megosztások** csempe frissül, hogy tükrözze az új megosztást.
     
-    ![Frissített megosztások csempén](./media/data-box-gateway-deploy-add-shares/updated-list-of-shares.png) 
+    ![Frissített megosztások csempe](./media/data-box-gateway-deploy-add-shares/updated-list-of-shares.png) 
 
 ## <a name="connect-to-the-share"></a>Csatlakozás a megosztáshoz
 
-Mostantól csatlakozhat egy vagy több, amely az előző lépésben létrehozott megosztás. Attól függően, hogy van-e az SMB vagy NFS-megosztás esetén, a lépések eltérőek lehetnek.
+Most már csatlakozhat egy vagy több, az utolsó lépésben létrehozott megosztáshoz. Attól függően, hogy van-e SMB vagy NFS-megosztás, a lépések változhatnak.
 
 ### <a name="connect-to-an-smb-share"></a>Csatlakozás SMB-megosztáshoz
 
-A Windows Server-ügyfél csatlakozik a Data Box Gateway csatlakozhat egy SMB-megosztás a parancsok beírásával:
+A Data Box Gatewayhoz csatlakoztatott Windows Server-ügyfélen a következő parancsok megadásával csatlakozhat egy SMB-megosztáshoz:
 
 
-1. Egy parancsablakban írja be:
+1. A parancssorba írja be a következőt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -104,8 +104,8 @@ A Windows Server-ügyfél csatlakozik a Data Box Gateway csatlakozhat egy SMB-me
     ```   
 
 
-2. Válassza ki a billentyűzet Windows + r billentyűkombinációt. 
-3. Az a **futtatása** ablakban adja meg a `\\<device IP address>` majd **OK**. Megnyílik a Fájlkezelőben. Most már lehet a megosztások, mappák létrehozott megtekintheti. A Fájlkezelőben kattintson duplán egy megosztási (mappa), a tartalom megtekintéséhez.
+2. A billentyűzeten válassza a Windows + R lehetőséget. 
+3. A **Futtatás** ablakban adja meg a `\\<device IP address>`, majd kattintson az **OK gombra**. Megnyílik a fájlkezelő. Ekkor meg kell tudnia tekinteni a mappákként létrehozott megosztásokat. A Fájlkezelőben kattintson duplán egy megosztásra (mappára) a tartalom megtekintéséhez.
  
     ![Csatlakozás SMB-megosztáshoz](./media/data-box-gateway-deploy-add-shares/connect-to-share2.png)-->
 
@@ -113,9 +113,9 @@ A Windows Server-ügyfél csatlakozik a Data Box Gateway csatlakozhat egy SMB-me
 
 ### <a name="connect-to-an-nfs-share"></a>Csatlakozás NFS-megosztáshoz
 
-A Linux-ügyfél a Data Box peremhálózati eszköz csatlakozik hajtsa végre az alábbi eljárást:
+A Data Box Edge eszközhöz csatlakoztatott Linux-ügyfélen hajtsa végre a következő eljárást:
 
-1. Győződjön meg arról, hogy az ügyfél rendelkezik-e az NFSv4 ügyfél telepítve van. Ha nincs, az NFS-ügyfél telepítéséhez használja az alábbi parancsot:
+1. Győződjön meg arról, hogy az ügyfélen telepítve van a Nfsv4 névleképezője-ügyfél. Ha nincs, az NFS-ügyfél telepítéséhez használja az alábbi parancsot:
 
    `sudo apt-get install nfs-common`
 
@@ -132,10 +132,10 @@ A Linux-ügyfél a Data Box peremhálózati eszköz csatlakozik hajtsa végre az
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/gateway`
 
 > [!NOTE] 
-> Az alábbi korlátozásokkal erre a kiadásra vonatkoznak:
-> - Miután létrehoz egy fájlt a megosztásokban, a fájl átnevezése nem támogatott.
+> A következő kikötések alkalmazhatók erre a kiadásra:
+> - Miután létrehozott egy fájlt a megosztásokban, a fájl átnevezése nem támogatott.
 > - A fájlok megosztásból való törlése nem törli a bejegyzéseket a tárfiókból.
-> - Ha használ `rsync` másolhat adatokat, majd `rsync -a` beállítás nem támogatott.
+> - Ha az adatmásoláshoz `rsync` használ, a `rsync -a` lehetőség nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
 

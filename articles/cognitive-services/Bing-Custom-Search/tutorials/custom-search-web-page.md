@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: c3d571f494d5f08c7c9e3c551eba88fb86e1ec23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448788"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943907"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-weboldal létrehozása
 
@@ -34,7 +34,7 @@ Az oktatóanyag az alábbi feladatokat tárgyalja:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ahhoz, hogy követni tudja az oktatóanyagot, szüksége lesz egy előfizetői azonosítóra a Bing Custom Search API-hoz.  Az előfizetői azonosító beszerzéséhez lásd [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) témakört.
+- Ahhoz, hogy követni tudja az oktatóanyagot, szüksége lesz egy előfizetői azonosítóra a Bing Custom Search API-hoz.  A kulcs lekéréséhez [hozzon létre egy Bing Custom Search erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) a Azure Portalban. használhat [próbaverziós kulcsot](https://azure.microsoft.com/try/cognitive-services)is.
 - Ha még nem rendelkezik a Visual Studio 2017-es vagy újabb verziójával, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-custom-search-instance"></a>Egyéni keresési példány létrehozása
@@ -45,9 +45,9 @@ Bing Custom Search-példány létrehozása:
   
 2. Navigáljon a Custom Search [portálra](https://customsearch.ai).  
   
-3. Egy Microsoft-fiók (MSA) használatával jelentkezzen be a portálra. Ha nincs MSA-fiókja, kattintson a **Microsoft-fiók létrehozása** elemre. A portál az első használat során engedélyeket fog kérni, hogy hozzáférhessen az adataihoz. Kattintson az **Igen** gombra.  
+3. Egy Microsoft-fiók (MSA) használatával jelentkezzen be a portálra. Ha nem rendelkezik MSA, kattintson **a Microsoft-fiók létrehozása**elemre. Ha első alkalommal használja a portált, a rendszer engedélyt kér az adatai eléréséhez. Kattintson a **Yes** (Igen) gombra.  
   
-4. A bejelentkezés után kattintson a **New custom search** (Új egyéni keresés) elemre. A **Create a new custom search instance** (Új Custom Search-példány létrehozása) ablakban adjon meg egy jelentéssel bíró nevet, amely leírja a visszaadott tartalom típusát. A nevet bármikor módosíthatja.  
+4. A bejelentkezés után kattintson a **New custom search** (Új egyéni keresés) elemre. Az **új egyéni keresési példány létrehozása** ablakban adjon meg egy értelmes nevet, és írja le a keresés által visszaadott tartalom típusát. A nevet bármikor módosíthatja.  
   
    ![A Create a new custom search (Új Custom Search-példány) mező képernyőképe](../media/newCustomSrch.png)  
   
@@ -60,11 +60,11 @@ Bing Custom Search-példány létrehozása:
 
 Ha adott webhelyekről vagy URL-címekről származó eredményeket szeretne figyelembe venni, adja hozzá a címeket az **Active** (Aktív) laphoz.
 
-1.  A **Configuration** (Konfiguráció) oldalon kattintson az **Active** (Aktív) lapra, és adja meg a keresésbe belefoglalni kívánt egy vagy több webhely URL-címét.
+1.       A **Configuration** (Konfiguráció) oldalon kattintson az **Active** (Aktív) lapra, és adja meg a keresésbe belefoglalni kívánt egy vagy több webhely URL-címét.
 
     ![A Definíciószerkesztő aktív lapjának képernyőképe](../media/customSrchEditor.png)
 
-2.  Ha meg kíván győződni arról, hogy a példány visszaad eredményeket, akkor adjon meg egy lekérdezést a jobb oldalon található előnézet panelen. A Bing csak az általa indexelt nyilvános webhelyekről jelenít meg eredményeket.
+2.       Ha meg kíván győződni arról, hogy a példány visszaad eredményeket, akkor adjon meg egy lekérdezést a jobb oldalon található előnézet panelen. A Bing csak az általa indexelt nyilvános webhelyekről jelenít meg eredményeket.
 
 ## <a name="add-blocked-entries"></a>Blokkolt bejegyzések hozzáadása
 
@@ -79,7 +79,7 @@ Ha szeretné kizárni egyes webhelyek vagy URL-címek eredményeit, adja hozzá 
 
 ## <a name="add-pinned-entries"></a>Rögzített bejegyzések hozzáadása
 
-Egy adott weboldal a keresési eredmények tetejére való rögzítéséhez adja hozzá a weblapot és a lekérdezési kifejezést a **rögzített** laphoz. A **rögzített** lap a weblap és a lekérdezési kifejezés párok listáját tartalmazza, amelyek az adott lekérdezés legfontosabb eredményének megfelelő weblapot határozzák meg. A webhely csak akkor rögzített, ha a felhasználó lekérdezési sztringje egyezik a rögzített elem egyezési állapotának rögzített lekérdezési sztringjével. Csak az indexelt webhelyek jelennek meg a keresésekben. További információkért lásd az [egyéni nézet meghatározásával](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results) foglalkozó témakört.
+Egy adott weboldal a keresési eredmények tetejére való rögzítéséhez adja hozzá a weblapot és a lekérdezési kifejezést a **rögzített** laphoz. A **rögzített** lap a weblap és a lekérdezési kifejezés párok listáját tartalmazza, amelyek az adott lekérdezés legfontosabb eredményének megfelelő weblapot határozzák meg. A weblap rögzítése csak akkor történik meg, ha a felhasználó lekérdezési karakterlánca a PIN-kód egyeztetési feltétele alapján egyezik a PIN-kód lekérdezési karakterláncával. Csak az indexelt webhelyek jelennek meg a keresésekben. További információkért lásd az [egyéni nézet meghatározásával](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results) foglalkozó témakört.
 
 1. A **Configuration** (Konfiguráció) lapon kattintson a **Pinned** (Rögzített) lapra, és adja meg az első helyen megjeleníteni kívánt weblapot és a hozzá tartozó lekérdezési kifejezést.  
   
@@ -209,7 +209,7 @@ A keresés végrehajtásakor a következőkhöz hasonló eredmények jelennek me
 
 ![Képernyőkép az egyéni keresés eredményeiről](./media/custom-search-webapp-results.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Bing Custom Search-végpont hívása (C#)](../call-endpoint-csharp.md)

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c590a27f61c1a555ae30828332e4140a6116f95f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2413601db629fda62976b75e349b0340749dc6fa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443856"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944089"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service Linuxon – gyakori kérdések
 
@@ -181,6 +181,10 @@ Az alkalmazás által futtatott órák számának normál Azure App Service díj
 
 ## <a name="other-questions"></a>Egyéb kérdések
 
+**Mit jelent a "kért szolgáltatás nem érhető el az erőforrás-csoportban" kifejezés?**
+
+Ez az üzenet akkor jelenik meg, amikor Azure Resource Manager (ARM) használatával hoz létre webalkalmazást. Egy aktuális korlátozás alapján ugyanazon erőforráscsoport esetében nem keverheti össze a Windows és Linux rendszerű alkalmazásokat ugyanabban a régióban.
+
 **Mik a támogatott karakterek az Alkalmazásbeállítások neveiben?**
 
 Az Alkalmazásbeállítások csak betűk (A-Z, a-z), számok (0-9) és aláhúzás karakter (_) használatával használhatók.
@@ -189,7 +193,7 @@ Az Alkalmazásbeállítások csak betűk (A-Z, a-z), számok (0-9) és aláhúz�
 
 Ötleteit a [Web Apps visszajelzési fórumában](https://aka.ms/webapps-uservoice)küldheti el. Adja hozzá a "[Linux]" címet az ötlete címéhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi a Linux Azure App Service?](app-service-linux-intro.md)
 - [Átmeneti környezetek beállítása az Azure App Service-ben](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)

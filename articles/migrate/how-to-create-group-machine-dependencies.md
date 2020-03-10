@@ -1,14 +1,14 @@
 ---
 title: Függőségi vizualizáció beállítása Azure Migrate
-description: Leírja a függőségi vizualizáció beállítását Azure Migrate kiszolgáló értékelése során.
+description: Ez a cikk azt ismerteti, hogyan állítható be a függőségi vizualizáció a Azure Migrate Server Assessment szolgáltatásban.
 ms.topic: article
 ms.date: 2/24/2020
-ms.openlocfilehash: 054e2301160a885909630c2968863e5f9e25af69
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2b75a38a376558946841d08ab7a9dbf730232e51
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916285"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78941015"
 ---
 # <a name="set-up-dependency-visualization"></a>Függőségi vizualizáció beállítása
 
@@ -199,7 +199,7 @@ VMConnection
 | summarize sum(BytesSent), sum(BytesReceived) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hozzon létre egy értékelést](how-to-create-assessment.md) egy csoport számára.
 

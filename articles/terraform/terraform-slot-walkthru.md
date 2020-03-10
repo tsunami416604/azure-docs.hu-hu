@@ -1,14 +1,15 @@
 ---
 title: Oktatóanyag – infrastruktúra kiépítése az Azure üzembe helyezési pontjaival a Terraform használatával
-description: Oktatóanyag a Terraform az Azure-szolgáltatók üzembehelyezési pontjaival való használatáról
+description: Ebben az oktatóanyagban az Terraform-t használja az Azure Provider üzembe helyezési pontjaival
+keywords: Azure devops Terraform üzembe helyezési pontok
 ms.topic: tutorial
-ms.date: 11/07/2019
-ms.openlocfilehash: 68c790b4fad442d94e6ac82d1a545b8554d2dd4f
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 03/09/2020
+ms.openlocfilehash: ddd4d84ee8bf4ab1e90dd68da185cdd9075fe1e0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159176"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943485"
 ---
 # <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Oktatóanyag: infrastruktúra kiépítése az Azure üzembe helyezési pontjaival a Terraform használatával
 
@@ -68,7 +69,12 @@ Ez a cikk egy példát mutat be az üzembehelyezési pontok használatára, és 
 
     ```hcl
     # Configure the Azure provider
-    provider "azurerm" { }
+    provider "azurerm" { 
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
+    }
 
     resource "azurerm_resource_group" "slotDemo" {
         name = "slotDemoResourceGroup"
@@ -247,7 +253,12 @@ A két üzembe helyezési pont lecserélésének teszteléséhez hajtsa végre a
 
     ```hcl
     # Configure the Azure provider
-    provider "azurerm" { }
+    provider "azurerm" { 
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
+    }
 
     # Swap the production slot and the staging slot
     resource "azurerm_app_service_active_slot" "slotDemoActiveSlot" {
@@ -291,7 +302,7 @@ terraform apply
 
 Az alkalmazás cseréjét követően az eredeti konfiguráció látható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
 > [További információ a Terraform Azure-beli használatáról](/azure/terraform)

@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c13d6ed773b582e1ca59ec31de9101fa1541dcb5
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 53e1863f6f3421a6d8df9112f463f16443cff93e
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759960"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943048"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Oktatóanyag: C# IoT Edge modul létrehozása Linux-eszközökhöz
 
@@ -24,7 +24,7 @@ Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül
 
 > [!div class="checklist"]
 >
-> * A Visual Studio Code segítségével hozzon létre egy IoT Edge modult, amely a .NET Core 2,1 SDK-ra épül.
+> * A Visual Studio Code használatával hozzon létre egy IoT Edge-modul, amely a .NET Core SDK 2.1-es alapul.
 > * Docker-rendszerkép létrehozása és közzététele a regisztrációs adatbázisba a Visual Studio Code és a Docker használatával.
 > * A modul üzembe helyezése az IoT Edge-eszközön.
 > * A létrejött adatok megtekintése.
@@ -39,7 +39,7 @@ Ez az oktatóanyag bemutatja, hogyan fejleszthet egy modult **C#** a **Visual St
 
 A következő táblázat segítségével megismerheti a C# modulok Linux rendszeren történő fejlesztésének és üzembe helyezésének lehetőségeit:
 
-| C# | Visual Studio-kód | Visual Studio |
+| C# | Visual Studio Code | Visual Studio |
 | -- | ------------------ | ------------- |
 | **Linux AMD64** | ![C#LinuxAMD64-modulok a VS Code-ban](./media/tutorial-c-module/green-check.png) | ![C#LinuxAMD64-modulok a Visual Studióban](./media/tutorial-c-module/green-check.png) |
 | **Linuxos ARM32** | ![C#LinuxARM32-modulok a VS Code-ban](./media/tutorial-c-module/green-check.png) | ![C#LinuxARM64-modulok a Visual Studióban](./media/tutorial-c-module/green-check.png) |
@@ -59,7 +59,7 @@ Az oktatóanyag megkezdése előtt el kellett volna haladnia az előző oktatóa
 
 Az oktatóanyagok végrehajtásához készítse elő a következő további előfeltételeket a fejlesztői gépen:
 
-* [C# bővítmény a Visual Studio Code-hoz (szolgáltató: OmniSharp) ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+* [C# bővítmény a Visual Studio Code-hoz (szolgáltató: OmniSharp) ](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
 
 ## <a name="create-a-module-project"></a>Modul-projekt létrehozása
@@ -76,7 +76,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
 
 3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. Kövesse a parancskatalógusban található utasításokat a megoldás létrehozásához.
 
-   | Mező | Value (Díj) |
+   | Mező | Érték |
    | ----- | ----- |
    | Select folder (Mappa kiválasztása) | Válassza ki azt a helyet a fejlesztői gépen, ahol a VS Code létre fogja hozni a megoldásfájlokat. |
    | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, vagy fogadja el az alapértelmezett **EdgeSolution**. |
@@ -260,7 +260,7 @@ A Visual Studio Code jelenleg Linux AMD64 C# és Linux rendszerű ARM32v7-eszkö
        }
     ```
 
-    ![Modul Twin hozzáadása a központi telepítési sablonhoz](./media/tutorial-csharp-module/module-twin.png)
+    ![Ikermodul központi telepítési sablon hozzáadása](./media/tutorial-csharp-module/module-twin.png)
 
 11. Mentse a Deployment. template. JSON fájlt.
 
@@ -332,7 +332,7 @@ Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és a
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban olyan kódot tartalmazó IoT Edge-modult hozott létre, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll a saját modulok létrehozására, többet is megtudhat a [saját IoT Edge moduljainak fejlesztéséről](module-development.md) , illetve a [Visual Studio Code-hoz készült modulok fejlesztéséről](how-to-vs-code-develop-module.md). IoT Edge modulokra, például a szimulált hőmérsékleti modulra példaként lásd: [IoT Edge modul minták](https://github.com/Azure/iotedge/tree/master/edge-modules).
 

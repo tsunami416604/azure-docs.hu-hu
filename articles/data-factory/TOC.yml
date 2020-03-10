@@ -491,6 +491,8 @@
           href: data-flow-exists.md
         - name: Szűrés
           href: data-flow-filter.md
+        - name: Egybesimítás
+          href: data-flow-flatten.md
         - name: Csatlakozás
           href: data-flow-join.md
         - name: Keresés
@@ -515,8 +517,6 @@
           href: data-flow-unpivot.md
         - name: Ablak
           href: data-flow-window.md
-        - name: Egybesimítás
-          href: data-flow-flatten.md
     - name: Paraméterezés
       items:
         - name: Társított szolgáltatások paraméterezése

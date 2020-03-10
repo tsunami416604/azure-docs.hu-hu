@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: afa3b0f3ed345ccc7f4c627ec485351838ab2bee
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649278"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942935"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurációs és felügyeleti GYIK az Azure-beli Web Apps
 
@@ -212,7 +212,7 @@ További információ: [app Service Environment létrehozása](environment/app-s
 Előfordulhat, hogy egy App Service Environment létrehozása sikertelen. Ebben az esetben a következő hibaüzenet jelenik meg a tevékenység naplófájljaiban:
 ```
 ResourceID: /subscriptions/{SubscriptionID}/resourceGroups/Default-Networking/providers/Microsoft.Web/hostingEnvironments/{ASEname}
-Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period.”}}
+Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period."}}
 ```
 
 A probléma megoldásához győződjön meg arról, hogy a következő feltételek egyike sem teljesül:
@@ -248,7 +248,7 @@ A behatolási teszt elvégzéséhez [küldje el a kérelmet](https://portal.msrc
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Hogyan a Traffic Managert használó App Service webalkalmazáshoz egyéni tartománynevet konfigurálhat?
 
-Ha szeretné megismerni, hogyan használhat egyéni tartománynevet egy olyan App Service alkalmazással, amely az Azure Traffic Managert használja a terheléselosztáshoz, tekintse meg az [Egyéni tartománynév konfigurálása az Azure-webalkalmazásokhoz Traffic Manager](web-sites-traffic-manager-custom-domain-name.md)használatával című témakört.
+Ha szeretné megismerni, hogyan használhat egyéni tartománynevet egy olyan App Service alkalmazással, amely az Azure Traffic Managert használja a terheléselosztáshoz, tekintse meg az [Egyéni tartománynév konfigurálása az Azure-webalkalmazásokhoz Traffic Manager](configure-domain-traffic-manager.md)használatával című témakört.
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>Az App Service-tanúsítvány csalásra van megjelölve. Hogyan megoldja ezt?
 

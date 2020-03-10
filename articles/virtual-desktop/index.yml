@@ -1,41 +1,52 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: A Windows Virtual Desktop dokumentációja
+summary: Bármilyen eszközön használhat virtuális asztalt és távoli alkalmazásokat. Egyedül a Microsoft 365 és az Azure együttműködése teszi lehetővé a Windows 10 több munkamenetes használatát nagy léptékben és csökkentett informatikai költségek mellett.
 metadata:
-  title: A Windows Virtual Desktop dokumentációja | Microsoft Docs
+  title: A Windows Virtual Desktop dokumentációja
   description: Az Azure-hoz készült Windows Virtual Desktop a Windows 10 Enterprise több felhasználó általi használatát teszi lehetővé a felhőalapú virtualizálásnak köszönhetően.
-  author: Heidilohr
-  manager: lizross
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
-  ms.date: 02/20/2019
+  manager: lizross
+  author: Heidilohr
   ms.author: helohr
-abstract:
-  description: Bármilyen eszközön használhat virtuális asztalt és távoli alkalmazásokat. Egyedül a Microsoft 365 és az Azure együttműködése teszi lehetővé a Windows 10 több munkamenetes használatát nagy léptékben és csökkentett informatikai költségek mellett.
-sections:
-  - title: Áttekintés
-    items:
-      - type: paragraph
-        text: 'Ismerkedjen meg a Windows Virtual Desktoppal és annak használatával. Oktatóanyagok, útmutatók, referenciatartalmak és egyéb anyagok mutatják be, hogyan állíthatja be a gazdagépcsoportokat és bérlőket, és hogyan rendelhet szerepköröket a felhasználókhoz a Windows Virtual Desktop környezetében.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/virtual-desktop/overview">Mit takar a Windows Virtual Desktop</a>
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan telepítheti és konfigurálhatja a Windows Virtual Desktopot, és ha készen van, hogyan csatlakozhat az ügyfélhez.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">Bérlő létrehozása a Windows Virtual Desktopon</a>
-          - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">Gazdagépcsoport létrehozása az Azure Marketplace-en</a>
-          - html: <a href="/azure/virtual-desktop/manage-app-groups">A Windows Virtual Desktop alkalmazáscsoportjainak kezelése</a>
-          - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel</a>
-  - title: Referencia
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>
+  ms.date: 03/06/2020
+  ms.openlocfilehash: f37b0cd68c62813dd4c642d9e45a20a91d08c31c
+  ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/07/2020
+  ms.locfileid: "78898656"
+landingContent:
+- title: Tudnivalók a Windows Virtual Desktopról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mit takar a Windows Virtual Desktop?
+      url: overview.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Bérlő létrehozása a Windows Virtual Desktopon
+      url: tenant-setup-azure-active-directory.md
+    - text: Gazdagépcsoport létrehozása az Azure Marketplace-en
+      url: create-host-pools-azure-marketplace.md
+    - text: A Windows Virtual Desktop alkalmazáscsoportjainak kezelése
+      url: manage-app-groups.md
+    - text: Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel
+      url: create-service-principal-role-powershell.md
+- title: Csatlakozás a Windows Virtual Desktophoz
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Windows asztali ügyfél
+      url: connect-windows-7-and-10.md
+    - text: Webes ügyfél
+      url: connect-web.md
+    - text: Android-ügyfél
+      url: connect-android.md
+    - text: macOS-ügyfél
+      url: connect-macos.md
+    - text: iOS-ügyfél
+      url: connect-ios.md

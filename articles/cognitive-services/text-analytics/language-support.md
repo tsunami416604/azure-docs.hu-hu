@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899439"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942662"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>A Text Analytics API nyelvi és területi támogatása
 
@@ -49,12 +49,12 @@ A nyelvi támogatást kezdetben előzetes verzióban, az általánosan elérhet�
 
 | Nyelv              | Nyelvkód | Hangulat | Legfontosabb kifejezések | Megnevezett entitások felismerése | Entitás összekapcsolása |       Megjegyzések        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
-| Arab                |     `ar`      |           |             |           ✔ \*           |                |                    |
+| arab                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | cseh                 |     `cs`      |           |             |           ✔ \*           |                |                    |
 | Egyszerűsített kínai    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                | `zh` is elfogadva                   |
 | Kínai – hagyományos   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | dán                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Holland                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| holland                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Angol               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
 | finn               |     `fi`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | francia                |     `fr`      |   ✔ \**   |      ✔      |            ✔             |                |                    |

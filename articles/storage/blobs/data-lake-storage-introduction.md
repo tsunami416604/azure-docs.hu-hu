@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 75bd27f0945c66b9757055c0777b43a050ba67d7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2f920e29fafdc55478e0e2c16d683bd1c3bc81d8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920994"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942917"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Bevezetés a Azure Data Lake Storage Gen2ba
 
@@ -25,15 +25,15 @@ Data Lake Storage Gen2 lehetővé teszi az Azure Storage az alapítvány enterpr
 
 Data Lake Storage Gen2 alapvető része egy [hierarchikus névtér](data-lake-storage-namespace.md) hozzáadása a blob Storage-hoz. A hierarchikus névtér objektumok vagy fájlokat rendszerezi be egy hatékony adatelérés könyvtár-hierarchia. Egy közös tároló elnevezési konvenciót objektum neve perjeleket hierarchikus könyvtárstruktúrát utánzására használja. Ez a struktúra válik a Data Lake Storage Gen2 valós. Műveletek, például a átnevezése vagy törlése egy könyvtár egyetlen elemi metaadat-művelet a címtár helyett enumerálása és annak a könyvtárnak a nevét előtagot használó összes objektum feldolgozása a válnak.
 
-Múltbeli időpont felhőalapú elemzési kellett veszélyeztetheti a teljesítmény, a felügyelet és biztonság területéhez. Data Lake Storage Gen2-címek ezeket a szempontokat mindegyike a következő módon:
+A Data Lake Storage Gen2 a blob Storage-ra épül, és a következő módokon javítja a teljesítményt, a felügyeletet és a biztonságot:
 
--   A **teljesítmény** optimalizálva van, mert nem szükséges az adatok másolása és átalakítása előfeltételként az elemzéshez. A hierarchikus névtér nagy mértékben javítja a könyvtár-felügyeleti műveleteket, ami javítja az általános feladat teljesítményt.
+-   A **teljesítmény** optimalizálva van, mert nem szükséges az adatok másolása és átalakítása előfeltételként az elemzéshez. A blob Storage-beli sík névtérhez képest a hierarchikus névtér nagy mértékben javítja a címtár-felügyeleti műveletek teljesítményét, ami javítja a feladatok általános teljesítményét.
 
 -   A **felügyelet** egyszerűbb, mivel a fájlokat címtárakban és Alkönyvtárakban is rendszerezheti és kezelheti.
 
 -   A **Biztonság** kényszeríthető, mert POSIX-engedélyeket adhat meg a címtárakhoz vagy az egyes fájlokhoz.
 
--   A **költséghatékonyságot** az [Azure Blob Storage](storage-blobs-introduction.md)szolgáltatásra épülő, Data Lake Storage Gen2-ra épülő eszközön lehet elvégezni. A további szolgáltatások tovább csökkentheti a teljes tulajdonosi költség, a big data-elemzés futtatása az Azure-ban.
+Emellett a Data Lake Storage Gen2 nagyon költséghatékony, mert az [Azure Blob Storage](storage-blobs-introduction.md)-ra épül. A további szolgáltatások tovább csökkentheti a teljes tulajdonosi költség, a big data-elemzés futtatása az Azure-ban.
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage Gen2 főbb funkciói
 

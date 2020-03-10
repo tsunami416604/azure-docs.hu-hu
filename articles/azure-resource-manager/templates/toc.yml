@@ -145,10 +145,6 @@
             - name: Kimenetek
               displayName: 'iteration,copy'
               href: copy-outputs.md
-        - name: Előfizetés-szintű erőforrások
-          href: deploy-to-subscription.md
-        - name: Felügyeleticsoport-szintű erőforrások
-          href: deploy-to-management-group.md
     - name: Szerkesztőeszközök használata
       items:
         - name: VS Code
@@ -182,7 +178,15 @@
           href: rollback-on-error.md
         - name: Sablon védelme SAS-jogkivonattal
           href: secure-template-with-sas-token.md
-        - name: Üzembe helyezés több erőforráscsoporton vagy előfizetésben
+    - name: Hatókörön belüli üzembe helyezés
+      items:
+        - name: Előfizetés
+          href: deploy-to-subscription.md
+        - name: Felügyeleti csoport
+          href: deploy-to-management-group.md
+        - name: Bérlő
+          href: deploy-to-tenant.md
+        - name: Több erőforráscsoport vagy előfizetés
           href: cross-resource-group-deployment.md
     - name: Paraméterek megadása
       items:

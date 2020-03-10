@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 82daf447270fc0413284e3e7a908a8b5237a4f9c
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: f7a6c5872c5e2b7e1b47b40e32ddb047641e8b2e
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2020
-ms.locfileid: "78932978"
+ms.locfileid: "78944214"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -56,7 +56,7 @@ A következő példa a **HRE-közös** technikai profilt mutatja be:
 </TechnicalProfile>
 ```
 
-## <a name="input-claims"></a>Bemeneti jogcímek
+## <a name="inputclaims"></a>Szabályzattípushoz
 
 A Szabályzattípushoz elem tartalmaz egy jogcímet, amely egy fiók keresésére szolgál a címtárban, vagy létrehozhat egy újat. A bemeneti jogcímek gyűjteményében pontosan egy InputClaim elemnek kell szerepelnie az összes Azure AD technikai profilhoz. Előfordulhat, hogy le kell képeznie a szabályzatban definiált jogcím nevét a Azure Active Directoryban definiált névre.
 
@@ -66,7 +66,7 @@ Meglévő felhasználói fiók olvasásához, frissítéséhez vagy törléséhe
 
 A InputClaimsTransformations elem olyan bemeneti jogcím-átalakítási elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosításához vagy újak létrehozásához használatosak.
 
-## <a name="output-claims"></a>Kimeneti jogcímek
+## <a name="outputclaims"></a>OutputClaims
 
 A **OutputClaims** elem az Azure ad technikai profil által visszaadott jogcímek listáját tartalmazza. Előfordulhat, hogy le kell képeznie a szabályzatban definiált jogcím nevét a Azure Active Directoryban definiált névre. Olyan jogcímeket is tartalmazhat, amelyeket a Azure Active Directory nem ad vissza, ha a `DefaultValue` attribútumot állítja be.
 
@@ -121,7 +121,7 @@ A jogcím neve az Azure AD attribútum neve, kivéve, ha meg van adva a **Partne
 
 ## <a name="azure-ad-technical-provider-operations"></a>Azure AD technikai szolgáltatói műveletek
 
-### <a name="read"></a>Olvasás
+### <a name="read"></a>Olvassa el
 
 Az **olvasási** művelet egyetlen felhasználói fiók adatait olvassa be. A felhasználói adatok olvasásához bemeneti jogcímként meg kell adnia egy kulcsot, például **objectId**, **userPrincipalName**, **signInNames** (bármilyen típusú, Felhasználónév és e-mail-alapú fiók) vagy **alternativeSecurityId**.
 
@@ -253,7 +253,7 @@ A következő technikai profil töröl egy közösségi felhasználói fiókot a
 ```
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Művelet | Igen | A végrehajtandó művelet. Lehetséges értékek: `Read`, `Write`, `DeleteClaims`vagy `DeleteClaimsPrincipal`. |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Nem | Hiba, ha a felhasználói objektum nem létezik a címtárban. Lehetséges értékek: `true` vagy `false`. |

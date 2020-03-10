@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: b5032d9d39e66435ca4df36081d6acb225e2327b
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 10e25338ab6960addeebcc224d0a6633df451964
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402633"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943148"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Oktatóanyag: keresési javaslatok beszerzése weblapokon
 
@@ -29,7 +29,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy követni tudja az oktatóanyagot, szüksége lesz egy előfizetői azonosítóra a Bing Autosuggest API-hoz. Ha nem rendelkezik ilyennel, regisztrálhat az [ingyenes próbaverzióra](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api).
+Ahhoz, hogy követni tudja az oktatóanyagot, szüksége lesz egy előfizetői azonosítóra a Bing Autosuggest API-hoz. Ha még nem rendelkezik ilyennel, [hozzon létre egy Bing AutoSuggest erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7) a Azure Portalban. használhat [próbaverziós kulcsot](https://azure.microsoft.com/try/cognitive-services/)is.
 
 ## <a name="create-a-new-web-page"></a>Új weboldal létrehozása
 
@@ -349,7 +349,7 @@ Nyissa meg a weboldalt a böngészőjében. Ha a rendszer kéri, adja meg a Bing
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Használati és megjelenítési követelmények](../UseAndDisplayRequirements.md)

@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Serv
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 0a05bd15fff97d4f0020f6ce82ee90a2fe995edf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649507"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944204"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Privát Azure Kubernetes Service-fürt létrehozása (előzetes verzió)
 
@@ -43,8 +43,8 @@ A vezérlő síkja vagy az API-kiszolgáló egy Azure Kubernetes szolgáltatásb
 * Észak-Németország
 * Kelet-Japán
 * Nyugat-Japán
-* Dél-Korea középső régiója
-* Dél-Korea déli régiója
+* Korea középső régiója
+* Korea déli régiója
 * USA északi középső régiója
 * Észak-Európa
 * Észak-Európa
@@ -100,6 +100,14 @@ az provider register --namespace Microsoft.Network
 ```
 ## <a name="create-a-private-aks-cluster"></a>Privát AK-fürt létrehozása
 
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+
+Hozzon létre egy erőforráscsoportot, vagy használjon egy meglévő erőforráscsoportot az AK-fürthöz.
+
+```azurecli-interactive
+az group create -l westus -n MyResourceGroup
+```
+
 ### <a name="default-basic-networking"></a>Alapértelmezett alapszintű hálózatkezelés 
 
 ```azurecli-interactive
@@ -126,35 +134,29 @@ Where *--enable-Private-cluster* kötelező jelző egy privát fürthöz.
 > [!NOTE]
 > Ha a Docker-híd CIDR (172.17.0.1/16) ütközne az alhálózati CIDR, módosítsa a Docker-híd megfelelőjét.
 
-## <a name="connect-to-the-private-cluster"></a>Kapcsolódás a privát fürthöz
+## <a name="options-for-connecting-to-the-private-cluster"></a>A privát fürthöz való csatlakozás lehetőségei
 
-Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Ennek következtében létre kell hoznia egy Azure-beli virtuális gépet (VM) egy virtuális hálózatban, és kapcsolódnia kell az API-kiszolgálóhoz. Ehhez tegye a következőket:
+Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Az API-kiszolgáló kezeléséhez olyan virtuális gépet kell használnia, amely hozzáféréssel rendelkezik az AK-fürt Azure-Virtual Networkához (VNet). Több lehetőség is van a magánhálózati kapcsolat létrehozására a privát fürthöz.
 
-1. Hitelesítő adatok beszerzése a fürthöz való kapcsolódáshoz.
+* Hozzon létre egy virtuális gépet ugyanabba az Azure-Virtual Networkba (VNet), mint az AK-fürtöt.
+* Használjon különálló hálózatban található virtuális GÉPET, és állítsa be a [virtuális hálózatok][virtual-network-peering]közötti társítást.  Erről a lehetőségről az alábbi szakaszban talál további információt.
+* [Express Route-vagy VPN-][express-route-or-VPN] kapcsolat használata.
 
-   ```azurecli-interactive
-   az aks get-credentials --name MyManagedCluster --resource-group MyResourceGroup
-   ```
+A legegyszerűbb lehetőség a virtuális gép létrehozása ugyanabban a VNET, mint az AK-fürt.  Az expressz útvonal és a VPN-EK növelik a költségeket és további hálózati bonyolultságot igényelnek.  A virtuális hálózat társításához meg kell terveznie a hálózati CIDR-tartományokat, hogy ne legyenek átfedésben lévő tartományok.
 
-1. A következő lehetőségek közül választhat:
-   * Hozzon létre egy virtuális GÉPET ugyanabban a virtuális hálózatban, mint az AK-fürtöt.  
-   * Hozzon létre egy virtuális GÉPET egy másik virtuális hálózatban, és a virtuális hálózatot az AK-fürt virtuális hálózatával.
+## <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
-     Ha egy másik virtuális hálózatban hoz létre egy virtuális GÉPET, állítson be egy hivatkozást a virtuális hálózat és a magánhálózati DNS-zóna között. Ehhez tegye a következőket:
+Ahogy említettük, a VNet-társítás az egyik módja a privát fürt elérésének. A VNet-társítás használatához létre kell hoznia egy kapcsolatot a virtuális hálózat és a magánhálózati DNS-zóna között.
     
-     a. Lépjen a Azure Portal MC_ * erőforráscsoporthoz.  
-     b. Válassza ki a magánhálózati DNS-zónát.   
-     c. A bal oldali ablaktáblán válassza ki a **virtuális hálózati** kapcsolatot.  
-     d. Hozzon létre egy új hivatkozást, amely hozzáadja a virtuális gép virtuális hálózatát a magánhálózati DNS-zónához. Néhány percet vesz igénybe, amíg a DNS-zóna hivatkozása elérhetővé válik.  
-     e. Térjen vissza a Azure Portal MC_ * erőforráscsoporthoz.  
-     f. A jobb oldali ablaktáblában válassza ki a virtuális hálózatot. A virtuális hálózat neve: *AK-vnet-\** .  
-     g. A bal oldali ablaktáblán válassza **a**társítások lehetőséget.  
-     h. Válassza a **Hozzáadás**lehetőséget, adja hozzá a virtuális gép virtuális hálózatát, majd hozza létre a társítást.  
-     i. Nyissa meg a virtuális hálózatot, ahol a virtuális gép rendelkezik **, válassza a társítások lehetőséget,** válassza ki az AK-beli virtuális hálózatot, majd hozza létre a társítást. Ha a címtartomány az AK-beli virtuális hálózaton és a virtuális gép virtuális hálózatának összevonásán alapul, a társítás sikertelen lesz. További információ: [Virtual Network peering][virtual-network-peering].
-
-1. A virtuális gép a Secure Shell (SSH) használatával érhető el.
-1. Telepítse a Kubectl eszközt, és futtassa a Kubectl-parancsokat.
-
+1. Lépjen a Azure Portal MC_ * erőforráscsoporthoz.  
+2. Válassza ki a magánhálózati DNS-zónát.   
+3. A bal oldali ablaktáblán válassza ki a **virtuális hálózati** kapcsolatot.  
+4. Hozzon létre egy új hivatkozást, amely hozzáadja a virtuális gép virtuális hálózatát a magánhálózati DNS-zónához. Néhány percet vesz igénybe, amíg a DNS-zóna hivatkozása elérhetővé válik.  
+5. Térjen vissza a Azure Portal MC_ * erőforráscsoporthoz.  
+6. A jobb oldali ablaktáblában válassza ki a virtuális hálózatot. A virtuális hálózat neve: *AK-vnet-\** .  
+7. A bal oldali ablaktáblán válassza **a**társítások lehetőséget.  
+8. Válassza a **Hozzáadás**lehetőséget, adja hozzá a virtuális gép virtuális hálózatát, majd hozza létre a társítást.  
+9. Nyissa meg a virtuális hálózatot, ahol a virtuális gép rendelkezik **, válassza a társítások lehetőséget,** válassza ki az AK-beli virtuális hálózatot, majd hozza létre a társítást. Ha a címtartomány az AK-beli virtuális hálózaton és a virtuális gép virtuális hálózatának összevonásán alapul, a társítás sikertelen lesz. További információ: [Virtual Network peering][virtual-network-peering].
 
 ## <a name="dependencies"></a>Függőségek  
 * A Private link Service csak a standard Azure Load Balancer esetén támogatott. Az alapszintű Azure Load Balancer nem támogatott.  
@@ -179,6 +181,8 @@ Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Ennek következté
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: https://docs.microsoft.com/azure/private-link/private-link-service-overview
+[private-link-service]: /private-link/private-link-service-overview
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
+[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 

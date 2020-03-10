@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: a255d89aa4850d1249f1af9bdd0cb43b0826914f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/08/2020
+ms.openlocfilehash: 2d04de420f743e4fef4cff4bd2912559dae0886a
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930245"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934177"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Adatforgalom leképezése válassza az átalakítás lehetőséget
 
@@ -56,5 +56,10 @@ Ha a szabály alapú leképezést választja, akkor a rendszer az ADF-et arra ut
 
 A minták megfeleltetésével kapcsolatos további részletek az [oszlop mintájának dokumentációjában](concepts-data-flow-column-pattern.md)olvashatók.
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="use-rule-based-mapping-to-parameterize-the-select-transformation"></a>Szabály-alapú hozzárendelés használata a Select transzformáció parametrizálja
+A parametrizálja az átalakítás kiválasztása szabály alapján történő leképezés használatával végezheti el. A kulcsszó ```name``` segítségével megvizsgálhatja a bejövő oszlopok nevét egy paraméterrel. Ha például egy ```mycolumn``` nevű adatáramlási paraméterrel rendelkezik, létrehozhat egy olyan kiválasztási átalakítási szabályt, amely mindig az adott oszlopnevet rendeli hozzá, ```mycolumn``` a mező nevére:
+
+```name == $mycolumn```
+
+## <a name="next-steps"></a>További lépések
 * Miután a Select paranccsal átnevezi, átrendezi és alias oszlopokat, a fogadó [transzformáció](data-flow-sink.md) használatával az adatait egy adattárba helyezheti.

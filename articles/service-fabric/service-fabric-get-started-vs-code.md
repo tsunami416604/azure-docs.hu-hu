@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251634"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945829"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric a Visual Studio Code-hoz
 
@@ -48,7 +48,7 @@ A Java-fejlesztéshez a következő előfeltételeket kell telepíteni:
 A .NET Core/C# Development szolgáltatáshoz a következő előfeltételeket kell telepíteni:
 
 * [.Net Core](https://www.microsoft.com/net/learn/get-started) (2.0.0 vagy újabb verzió)
-* [Visual Studio Code (OmniSharp-alapú) vs Code-bővítmény C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) A szolgáltatások hibakereséséhez C# szükséges. A-t a VS Code **tevékenység sávján** található Extensions (bővítmények) ikonra kattintva telepítheti, és megkeresheti a bővítményt, vagy a vs Code piactéren is.
+* [Visual Studio Code (OmniSharp-alapú) vs Code-bővítmény C# ](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) A szolgáltatások hibakereséséhez C# szükséges. A-t a VS Code **tevékenység sávján** található Extensions (bővítmények) ikonra kattintva telepítheti, és megkeresheti a bővítményt, vagy a vs Code piactéren is.
 
 ## <a name="setup"></a>Beállítás
 
@@ -124,7 +124,7 @@ A **Service Fabric: Clean Application** parancs törli a Build által generált 
 2.  Válassza a **Service Fabric: Clean Application (alkalmazás tisztítása** ) parancsot.
 3.  A tiszta folyamat kimenete az integrált terminálba íródik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megtudhatja, hogyan [fejleszthet C# és kereshet Service FABRIC alkalmazásokat a vs Code](./service-fabric-develop-csharp-applications-with-vs-code.md)használatával.
 * Ismerje meg, hogyan [fejleszthet és kereshet Java Service Fabric-alkalmazásokat a vs Code](./service-fabric-develop-java-applications-with-vs-code.md)használatával.

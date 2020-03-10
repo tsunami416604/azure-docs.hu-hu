@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: daaedf346bed78a93e0762a37687b623d25ef753
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 23c370289669c2dde4f8969a2921018cd0abc08c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441969"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943682"
 ---
 # <a name="knowledge-store-projections-how-to-shape-and-export-enrichments"></a>Knowledge Store-kivetítések: gazdagítók formázása és exportálása
 
@@ -667,11 +667,17 @@ A kivetítés meghatározásakor van néhány gyakori probléma, amely nem várt
 
 + Elérésiút-szintaktikai hibák. Az elérésiút-választók megkülönböztetik a kis-és nagybetűket, és hiányzó bemeneti figyelmeztetéseket okozhatnak, ha nem a pontos esetet használja a választóhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A jelen cikkben szereplő példák a kivetítések létrehozásának általános mintáit mutatják be. Most, hogy már jól ismeri a fogalmakat, jobban fel van szerelve, hogy kivetítéseket építsen ki az adott forgatókönyvhöz.
 
-Az Knowledge Store-definíciók megismétlése után a következő lépésként vegye figyelembe a növekményes dúsítást. A növekményes bővítés a gyorsítótárazáson alapul, amely lehetővé teszi, hogy a készségkészlet módosítása által más módon nem érintett bővítéseket használja fel. Ez különösen olyan folyamatok esetében hasznos, amelyek OCR-t és képelemzést tartalmaznak.
+Az új funkciók megismerése érdekében vegye figyelembe a növekményes bővítést a következő lépésként. A növekményes bővítés a gyorsítótárazáson alapul, amely lehetővé teszi, hogy a készségkészlet módosítása által más módon nem érintett bővítéseket használja fel. Ez különösen olyan folyamatok esetében hasznos, amelyek OCR-t és képelemzést tartalmaznak.
 
 > [!div class="nextstepaction"]
 > [A növekményes gazdagodás és a gyorsítótárazás bemutatása](cognitive-search-incremental-indexing-conceptual.md)
+
+A kivetítésekkel kapcsolatos további információkért tekintse meg a csoportok és a szeletelők funkcióit, valamint azt, hogy miként [definiálja őket egy készségkészlet](knowledge-store-projection-overview.md)
+
+> [!div class="nextstepaction"]
+> [Kivetítések a Knowledge Store-ban](knowledge-store-projection-overview.md)
+

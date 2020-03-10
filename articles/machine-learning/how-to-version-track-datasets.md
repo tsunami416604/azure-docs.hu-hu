@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sihhu
 author: sihhu
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
+ms.date: 03/09/2020
 ms.custom: ''
-ms.openlocfilehash: 4c8f3e7e47f9c8f924faf513d984d5474c105038
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 7b124c0f35b5cfda4380555385971e4968d4c45c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834794"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939253"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Adatkészletek verziója és nyomon követése kísérletekben
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,6 +60,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'titanic training data',
                                  create_new_version = True)
 ```
+Az adatkészlet új verzióját is regisztrálhatja a következő helyen: 
 
 ### <a name="retrieve-a-dataset-by-name"></a>Adatkészlet lekérése név szerint
 
@@ -120,7 +121,7 @@ dataset2.register(workspace = workspace,
 
 Az adatkészleteket minden Machine Learning folyamat lépéseinek bemenete és kimenete használatával is használhatja. Ha Újrafuttatja a folyamatokat, az egyes folyamatokhoz tartozó lépések kimenete új adatkészlet-verzióként lesz regisztrálva.
 
-Mivel Machine Learning folyamatok minden egyes lépés kimenetét egy új mappába töltik fel, valahányszor a folyamat újratöltődik, a verziószámmal ellátott kimeneti adatkészletek reprodukálva lesznek.
+Mivel Machine Learning folyamatok minden egyes lépés kimenetét egy új mappába töltik fel, valahányszor a folyamat újratöltődik, a verziószámmal ellátott kimeneti adatkészletek reprodukálva lesznek. További információ a [folyamatok adatkészletekről](how-to-create-your-first-pipeline.md#steps).
 
 ```Python
 from azureml.core import Dataset
@@ -169,7 +170,7 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-A kísérletek `input_datasets` a [Azure Machine learning Studio](https://ml.azure.com/)használatával is megtalálhatja. 
+A kísérletek `input_datasets` a https://ml.azure.com/használatával is megtalálhatja. 
 
 Az alábbi képen látható, hol található egy kísérlet bemeneti adatkészlete Azure Machine Learning Studióban. Ebben a példában lépjen a **kísérletek** ablaktáblára, és nyissa meg a kísérlet adott futtatásához tartozó **tulajdonságok** lapot, `keras-mnist`.
 
@@ -183,11 +184,13 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-A regisztráció után megtekintheti az adatkészlethez regisztrált modellek listáját a Python vagy a [Azure Machine learning Studio](https://ml.azure.com/)használatával. A következő nézet az **adatkészletek** ablaktábla **eszközök**területén található. Válassza ki az adatkészletet, majd válassza a **modellek** fület az adatkészletben regisztrált modellek listájához. 
+A regisztráció után megtekintheti az adatkészlethez regisztrált modellek listáját a Python használatával, vagy a https://ml.azure.com/.
+
+A következő nézet az **adatkészletek** ablaktábla **eszközök**területén található. Válassza ki az adatkészletet, majd válassza a **modellek** fület az adatkészletben regisztrált modellek listájához. 
 
 ![Bemeneti adatkészletek modelljei](./media/how-to-version-track-datasets/dataset-models.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Betanítás adatkészletekkel](how-to-train-with-datasets.md)
 * [További minta-adathalmazi jegyzetfüzetek](https://aka.ms/dataset-tutorial)

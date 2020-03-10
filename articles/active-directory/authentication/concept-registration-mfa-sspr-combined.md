@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/06/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4cb5aca128679b21072a2a3daa503dc43a8e2885
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425349"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942897"
 ---
 # <a name="combined-security-information-registration-preview"></a>Kombinált biztonsági információk regisztrálása (előzetes verzió)
 
@@ -47,17 +47,18 @@ A saját profil oldalai honosítva vannak az oldalt elérő számítógép nyelv
 
 A kombinált regisztráció a következő hitelesítési módszereket és műveleteket támogatja:
 
-|   | Regisztráció | Módosítás | Törlés |
+|   | Regisztráljon | Módosítás | Törlés |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Igen (legfeljebb 5) | Nem | Igen |
 | Egyéb hitelesítő alkalmazás | Igen (legfeljebb 5) | Nem | Igen |
 | Hardver jogkivonata | Nem | Nem | Igen |
-| Telefonszám | Igen | Igen | Igen |
+| Phone | Igen | Igen | Igen |
 | Másik telefon | Igen | Igen | Igen |
 | Irodai telefon | Nem | Nem | Nem |
-| E-mail cím | Igen | Igen | Igen |
+| E-mail | Igen | Igen | Igen |
 | Biztonsági kérdések | Igen | Nem | Igen |
-| Alkalmazásjelszók | Igen | Nem | Igen |
+| Alkalmazás jelszavai | Igen | Nem | Igen |
+| FIDO2 biztonsági kulcsok<br />*Felügyelt mód csak a [biztonsági adatok](https://mysignins.microsoft.com/security-info) lapról*| Igen | Igen | Igen |
 
 > [!NOTE]
 > Az alkalmazás jelszavai csak az Multi-Factor Authentication számára kikényszerített felhasználók számára érhetők el. Az alkalmazás jelszavai nem érhetők el azokhoz a felhasználókhoz, akik számára engedélyezett a Multi-Factor Authentication egy feltételes hozzáférési szabályzaton keresztül.
@@ -95,7 +96,7 @@ Az alábbiakban néhány olyan forgatókönyv látható, amelyben a felhasznál�
 
 A regisztráció érvénybe léptetése esetén a felhasználók a lehető legkevesebb módszert mutatják be a Multi-Factor Authentication és a SSPR szabályzatoknak való megfeleléshez.
 
-Példa:
+Például:
 
 - A SSPR engedélyezve van egy felhasználó. A SSPR házirendben két módszer szükséges az alaphelyzetbe állításhoz, és engedélyezte a Mobile App Code, az e-mail és a Phone használatát.
    - Ez a felhasználó két módszer regisztrálásához szükséges.
@@ -136,7 +137,7 @@ Az a felhasználó, aki korábban beállított legalább egy metódust, navigál
 
 Az a felhasználó, aki korábban beállított legalább egy olyan metódust, amelyet Multi-Factor Authentication használhat a [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). A felhasználó az aktuális alapértelmezett metódust egy másik alapértelmezett metódusra módosítja. Ha elkészült, a felhasználó az új alapértelmezett metódust látja a biztonsági adatok lapon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A felhasználók számára a hitelesítési módszerek ismételt regisztrálásának kényszerítése](howto-mfa-userdevicesettings.md#manage-authentication-methods)
 

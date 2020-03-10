@@ -3,12 +3,12 @@ title: Erőforrások telepítése több előfizetés & erőforráscsoporthoz
 description: Bemutatja, hogyan célozhat meg több Azure-előfizetést és erőforráscsoportot az üzembe helyezés során.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 47573fedd7915d95d6ed98e3fd0aaf840331552b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3cc31e64e9595c637a23fc54d9d02274ded40dda
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250601"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944034"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure-erőforrások üzembe helyezése több előfizetéshez vagy erőforráscsoporthoz
 
@@ -209,11 +209,11 @@ A [resourceGroup ()](template-functions-resource.md#resourcegroup) és az [előf
 
 Az alábbi táblázat azt mutatja, hogy a függvények feloldhatók-e a szülő vagy a beágyazott erőforráscsoport és előfizetés esetében.
 
-| Sablon típusa | Hatókör | Megoldás: |
+| Sablon típusa | Scope | Megoldás: |
 | ------------- | ----- | ---------- |
 | beágyazott        | külső (alapértelmezett) | Szülő erőforráscsoport |
 | beágyazott        | belső | Alerőforrás-csoport |
-| csatolt        | N/A   | Alerőforrás-csoport |
+| csatolt        | –   | Alerőforrás-csoport |
 
 A következő [példában a sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) látható:
 
@@ -331,7 +331,7 @@ New-AzResourceGroupDeployment `
 
 Az előző példa kimenete a következő:
 
-```powershell
+```output
  Name             Type                       Value
  ===============  =========================  ==========
  parentRG         String                     Parent resource group is parentGroup
@@ -378,7 +378,7 @@ Az előző példa kimenete a következő:
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha szeretné megtudni, hogyan határozhat meg paramétereket a sablonban, olvassa el [a Azure Resource Manager sablonok struktúrájának és szintaxisának megismerését](template-syntax.md)ismertető témakört.
 * A gyakori telepítési hibák megoldásával kapcsolatos tippekért lásd: [gyakori Azure-telepítési hibák elhárítása Azure Resource Managerokkal](common-deployment-errors.md).

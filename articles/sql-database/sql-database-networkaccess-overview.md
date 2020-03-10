@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
-ms.date: 08/05/2019
-ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 03/09/2020
+ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251906"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945383"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>A Azure SQL Database és az adatraktár hálózati hozzáférés-vezérlése
 
@@ -27,19 +27,28 @@ ms.locfileid: "77251906"
 > [!IMPORTANT]
 > Ez a cikk *nem* vonatkozik **Azure SQL Database felügyelt példányra**. a hálózati konfigurációval kapcsolatos további információkért lásd: [Csatlakozás felügyelt példányhoz](sql-database-managed-instance-connect-app.md) .
 
-Amikor új Azure-SQL Server hoz létre a [Azure Portalból](sql-database-single-database-get-started.md), az eredmény egy nyilvános végpont a *yourservername.database.Windows.net*formátumban. A terv szerint a nyilvános végponthoz való hozzáférés megtagadva. A következő hálózati hozzáférés-vezérlések használatával szelektíven engedélyezheti az SQl Database-hez való hozzáférést a nyilvános végponton keresztül.
-- Azure-szolgáltatások engedélyezése: – Ha be van kapcsolva, az Azure határán belüli egyéb erőforrások, például egy Azure-beli virtuális gép, hozzáférhetnek SQL Database
+Amikor új Azure-SQL Server hoz létre a [Azure Portalból](sql-database-single-database-get-started.md), az eredmény egy nyilvános végpont, a *yourservername.database.Windows.net*formátumban.
 
-- IP-tűzfalszabályok: – ezzel a funkcióval explicit módon engedélyezheti a kapcsolódást egy adott IP-címről, például a helyszíni gépekről.
+A következő hálózati hozzáférés-vezérlések használatával szelektíven engedélyezheti az SQl Database-hez való hozzáférést a nyilvános végponton keresztül:
+- Azure-szolgáltatások engedélyezése: Ha be van kapcsolva, az Azure határán belüli egyéb erőforrások, például az Azure-beli virtuális gépek, hozzáférhetnek SQL Database
 
-- Virtual Network tűzfalszabályok: – ezzel a szolgáltatással engedélyezheti az Azure határán belüli adott Virtual Network forgalmát
+- IP-tűzfalszabályok: ezzel a funkcióval explicit módon engedélyezheti a kapcsolódást egy adott IP-címről, például a helyszíni gépekről.
 
+A [virtuális hálózatok](../virtual-network/virtual-networks-overview.md) SQL Database a következő módon is engedélyezheti a privát hozzáférést:
+- Virtual Network tűzfalszabályok: ezzel a szolgáltatással engedélyezheti az Azure határán belüli adott Virtual Network forgalmát
+
+- Privát hivatkozás: ezzel a szolgáltatással saját végpontot hozhat létre az Azure SQL Serverhoz egy adott Virtual Networkon belül
+
+
+
+Tekintse meg az alábbi videót, amely részletesen ismerteti ezeket a hozzáférés-vezérléseket, és hogy mit tesznek:
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
+
 
 ## <a name="allow-azure-services"></a>Azure-szolgáltatások engedélyezése 
 Új Azure-SQL Server [Azure Portalból](sql-database-single-database-get-started.md)való létrehozásakor a beállítás nincs bejelölve.
 
- ![Képernyőfelvétel az új kiszolgáló létrehozásáról][1]
+
 
 Ezt a beállítást a tűzfal panelen is módosíthatja az Azure-SQL Server létrehozása után az alábbiak szerint.
   
@@ -129,7 +138,10 @@ A virtuális hálózati szabályok egyszerűbben használhatók a virtuális gé
 > [!NOTE]
 > Még nem rendelkezhet SQL Database alhálózaton. Ha a Azure SQL Database-kiszolgáló a virtuális hálózat egyik alhálózatának csomópontja volt, a virtuális hálózaton belüli összes csomópont kommunikálhat a SQL Databaseval. Ebben az esetben a virtuális gépek kommunikálhatnak a SQL Database anélkül, hogy virtuális hálózati szabályokat vagy IP-szabályokat kellene megadnia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="private-link"></a>Privát kapcsolat 
+A privát hivatkozás lehetővé teszi, hogy **privát végponton**keresztül kapcsolódjon az Azure SQL Serverhoz. A privát végpontok egy adott [Virtual Network](../virtual-network/virtual-networks-overview.md) és alhálózaton belüli magánhálózati IP-címek.
+
+## <a name="next-steps"></a>További lépések
 
 - A kiszolgálói szintű IP-Tűzfalszabályok létrehozásával kapcsolatos rövid útmutató: [Azure SQL Database létrehozása](sql-database-single-database-get-started.md).
 
@@ -146,3 +158,4 @@ A virtuális hálózati szabályok egyszerűbben használhatók a virtuális gé
 <!--Image references-->
 [1]: ./media/sql-database-get-started-portal/new-server2.png
 [2]: ./media/sql-database-get-started-portal/manage-server-firewall.png
+

@@ -1,25 +1,21 @@
 ---
 title: IBM DB2-pureScale az Azure-ban
 description: Ebben a cikkben egy olyan architektúrát mutatunk be, amely egy IBM DB2 pureScale-környezetet futtat az Azure-ban.
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
 manager: edprice
 editor: edprice
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 4012048100bbed2229c45434ee4a27dfe9b952e7
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530075"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945057"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2-pureScale az Azure-ban
 
@@ -96,7 +92,7 @@ A DB2-pureScale egy megosztott – minden olyan architektúrát használ, ahol a
 
 A nagyméretű DB2 pureScale-fürtök 200 terabájt (TB) vagy több prémium szintű megosztott tárterületet igényelhetnek, 100 000-IOPS. A DB2 pureScale támogatja az Azure-ban használható iSCSI-blokk felületet. Az iSCSI-felülethez olyan megosztott S2D szükséges, amelyet egy másik eszközzel lehet megvalósítani. Ez a típusú megoldás létrehoz egy Virtual Storage Network (vSAN) eszközt az Azure-ban. A DB2 pureScale a vSAN használatával telepíti az adatmegosztáshoz használt fürtözött fájlrendszert a virtuális gépek között.
 
-### <a name="networking-considerations"></a>Hálózati szempontok
+### <a name="networking-considerations"></a>Hálózati megfontolások
 
 Az IBM a InfiniBand hálózatkezelést javasolja egy DB2 pureScale-fürt összes tagjához. A DB2 pureScale a távoli közvetlen memória-hozzáférést (RDMA) is használja, ahol elérhető, a CFs számára.
 
@@ -108,6 +104,6 @@ Használjon [hálózati biztonsági csoportokat](https://docs.microsoft.com/azur
 
 Az Azure-ban a DB2-pureScale a TCP/IP protokollt kell használnia hálózati kapcsolódásként a tároláshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 -   [Az architektúra üzembe helyezése az Azure-ban](deploy-ibm-db2-purescale-azure.md)

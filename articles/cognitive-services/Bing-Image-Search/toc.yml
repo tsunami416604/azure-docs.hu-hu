@@ -8,7 +8,7 @@
     - name: Bing Search API-k összehasonlítása
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: REST API
       items:
@@ -26,14 +26,8 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'A C# használata'
-          href: image-search-sdk-quickstart.md
-        - name: A Node.js használata
-          href: image-search-sdk-node-quickstart.md
-        - name: A Python használata
-          href: image-sdk-python-quickstart.md
-        - name: A Java használata
-          href: image-sdk-java-quickstart.md
+        - name: Bing Image Search-ügyfélkódtár
+          href: ./quickstarts/client-libraries.md
 - name: Oktatóanyagok
   items:
     - name: Képkeresési webalkalmazás létrehozása

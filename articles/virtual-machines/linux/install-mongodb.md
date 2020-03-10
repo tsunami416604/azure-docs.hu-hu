@@ -1,25 +1,22 @@
 ---
 title: A MongoDB telepítése Linux rendszerű virtuális gépen az Azure CLI-vel
 description: Ismerje meg, hogyan telepíthet és konfigurálhat MongoDB Linux rendszerű virtuális gépeken az Azure CLI-iusing
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
 manager: gwallace
-editor: ''
-ms.assetid: 3f55b546-86df-4442-9ef4-8a25fae7b96e
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 643d4b918dd8677e8ed02a7def383efa77e71fce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e1bc7c8a6f97d6dc6bb1d6cb54825425244b2158
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430294"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944889"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>A MongoDB telepítése és konfigurálása Linux rendszerű virtuális gépen
 
@@ -210,7 +207,7 @@ az group deployment show \
     --output tsv
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ezekben a példákban helyileg csatlakozik a MongoDB-példányhoz a virtuális gépről. Ha másik virtuális gépről vagy hálózatról szeretne csatlakozni a MongoDB-példányhoz, győződjön meg arról, hogy a megfelelő [hálózati biztonsági csoportra vonatkozó szabályok jönnek létre](nsg-quickstart.md).
 
 Ezek a példák a központi MongoDB környezetet telepítik fejlesztési célokra. Alkalmazza a környezetéhez szükséges biztonsági konfigurációs beállításokat. További információt a [MongoDB biztonsági dokumentációjában](https://docs.mongodb.com/manual/security/)talál.

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 74d9aa8228e841b17313fb3c15efe459ccd7339a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: bce71355eef19ec3cc85525033274f57b1a3e0b9
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613583"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946409"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Csoportházirend felügyelete Azure AD Domain Services felügyelt tartományban
 
@@ -42,7 +42,11 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 * Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
 
 > [!NOTE]
-> Mivel az [Azure AD DS nem fér hozzá](faqs.md#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop)a tartományvezérlőkhöz, nem hozhat létre és nem használhat központi tárolót a csoportházirend felügyeleti sablonjaihoz a felügyelt tartományokban. A [SYSVOL nem része a helyszíni Azure ad Connect szinkronizálásnak](synchronization.md#what-isnt-synchronized-to-azure-ad-ds), ezért nem hozható létre helyszíni központi tároló, és nem szinkronizálható az Azure AD DS az Azure ad-n keresztül.
+> Csoportházirend Felügyeleti sablonok az új sablonok felügyeleti munkaállomásra másolásával is használhatja. Másolja az *. admx* fájlokat a `%SYSTEMROOT%\PolicyDefinitions`ba, és másolja a locale-specifikus *. adml* fájlokat a `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`ba, ahol a `Language-CountryRegion` megegyezik a *. adml* fájlok nyelvével és régiójával.
+>
+> Másolja például a *. adml* fájl angol Egyesült Államok nyelvű verzióját a `\en-us` mappába.
+>
+> Azt is megteheti, hogy központilag tárolja a Csoportházirend felügyeleti sablont az Azure AD DS felügyelt tartomány részét képező tartományvezérlőkön. További információ: [Csoportházirend felügyeleti sablonok központi tárolójának létrehozása és kezelése a Windowsban](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
 
 ## <a name="install-group-policy-management-tools"></a>Csoportházirend felügyeleti eszközök telepítése
 
@@ -114,7 +118,7 @@ A hasonló házirend-beállítások csoportosításához gyakran további csopor
 
     Ha elkészült, válassza a **fájl > mentés** lehetőséget a szabályzat mentéséhez. A számítógépek alapértelmezés szerint 90 percenként frissülnek, és az elvégzett módosítások alkalmazásával Csoportházirend.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Csoportházirend-kezelő konzol használatával konfigurálható elérhető Csoportházirend beállításokról: [csoportházirend beállításelemek][group-policy-console]használata.
 

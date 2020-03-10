@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 02/24/2020
 ms.author: juliako
-ms.openlocfilehash: f5b02376111a3deba33cd5688330018bd7c370d8
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: afaa7545fbcbab016249e73a2247817310c5cdfc
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899216"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934194"
 ---
 # <a name="media-services-high-availability-encoding"></a>Media Services magas rendelkezésre állású kódolás 
 
@@ -42,8 +42,8 @@ A cikkben leírt irányelvek és ajánlott eljárások követésével csökkenth
     * [Microsoft. Azure. EVENTGRID SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) (amely natív módon támogatja az Media Services eseményeket).
 
     Azure Functions használatával Event Grid eseményeket is felhasználhat.
-*    A [feladatok](transforms-jobs-concept.md)létrehozásakor:
-    
+* A [feladatok](transforms-jobs-concept.md)létrehozásakor:
+
     * Véletlenszerűen válasszon ki egy fiókot a jelenleg használt fiókok listájából (ez a lista általában mindkét fiókot tartalmazza, de ha problémát észlel, akkor csak egy fiókot tartalmazhat). Ha a lista üres, riasztást küld, hogy az operátor megvizsgálja.
     * Általános útmutatóként egy [JobOutput](https://docs.microsoft.com/rest/api/media/jobs/create#joboutputasset) (kivéve, ha a [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) 3 Media szolgáltatás [számára fenntartott](media-reserved-units-cli-how-to.md) egységet használ, JobOutput ajánlott).
     * A kiválasztott fiókhoz tartozó Media szolgáltatás számára fenntartott egységek (MRUs) számának beolvasása. Ha a **Media szolgáltatás számára fenntartott egységek** száma még nincs a maximális értéknél, adja hozzá a feladatokhoz szükséges MRUs számát, és frissítse a szolgáltatást. Ha a feladatokhoz tartozó beküldési arány magas, és gyakran kérdezi le a MRUs, hogy a lehető legtöbbet találja, használjon egy elosztott gyorsítótárat az értékhez ésszerű időkorlát mellett.

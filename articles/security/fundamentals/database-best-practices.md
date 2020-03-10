@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 72b15d77baedae318d4503f2d481b08202730459
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 316c3ef3c5bd16b52291029924d04fc159375bc8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927993"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943662"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure-beli adatbázis-biztonság – ajánlott eljárások
 Ez a cikk az adatbázis-biztonsággal kapcsolatos ajánlott eljárásokat ismerteti.
@@ -72,10 +72,10 @@ Ha SQL Server hitelesítést használ, a következőket kell tennie:
 
 - Saját kezűleg kezelheti az erős hitelesítő adatokat.
 - A hitelesítő adatok megvédése a kapcsolatok karakterláncában.
-- (Potenciálisan) a webkiszolgálóról az adatbázisba átadott hitelesítő adatok védetté tehetők. További információkért lásd: [hogyan: Kapcsolódjon SQL Server a ASP.NET 2,0](/previous-versions/msp-n-p/ff648340(v=pandp.10))SQL-hitelesítés használatával.
+- (Potenciálisan) a webkiszolgálóról az adatbázisba átadott hitelesítő adatok védetté tehetők. További információkért lásd [: Hogyan lehet csatlakozni a SQL Serverhoz az SQL-hitelesítés használatával a ASP.NET 2,0-ben](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Azure Active Directory (AD) hitelesítés*
-Az Azure AD-hitelesítés olyan mechanizmus, amellyel az Azure [](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ad-ben identitások használatával kapcsolódhat Azure SQL Databasehoz és SQL Data Warehousehoz. Az Azure AD-hitelesítés használatával egyetlen központi helyen kezelheti az adatbázis-felhasználók és más Microsoft-szolgáltatások identitásait. A központi AZONOSÍTÓk kezelése egyetlen helyet biztosít az adatbázis-felhasználók felügyeletéhez, és egyszerűsíti az engedélyek kezelését.
+Az Azure AD-hitelesítés olyan mechanizmus, amellyel az Azure AD-ben identitások használatával kapcsolódhat Azure SQL Databasehoz és [SQL Data Warehousehoz](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) . Az Azure AD-hitelesítés használatával egyetlen központi helyen kezelheti az adatbázis-felhasználók és más Microsoft-szolgáltatások identitásait. A központi AZONOSÍTÓk kezelése egyetlen helyet biztosít az adatbázis-felhasználók felügyeletéhez, és egyszerűsíti az engedélyek kezelését.
 
 > [!NOTE]
 > Az Azure AD-hitelesítés használatát javasoljuk SQL Server hitelesítéshez.
@@ -90,12 +90,12 @@ Ez az alábbi előnyökkel jár:
 - A tárolt adatbázis-felhasználók használatával hitelesíti az identitásokat az adatbázis szintjén.
 - Támogatja a jogkivonat-alapú hitelesítést a SQL Databasehoz csatlakozó alkalmazások esetében.
 - Támogatja a AD FS (tartományi összevonást) vagy a natív felhasználói/jelszó-hitelesítést egy helyi Azure Active Directory példányon, tartomány-szinkronizálás nélkül.
-- Az Azure AD olyan SQL Server Management Studio kapcsolatokat támogat, amelyek Active Directory univerzális hitelesítést használnak, beleértve a többtényezős hitelesítést is. A többtényezős hitelesítés erős hitelesítést biztosít számos ellenőrzési lehetőséggel – telefonhívást, szöveges üzenetet, intelligens kártyákat PIN-kóddal vagy a Mobile App Notification szolgáltatással. További információ: [SSMS-támogatás az Azure ad multi-Factor Authentication szolgáltatáshoz SQL Database és SQL Data Warehouse](../../sql-database/sql-database-ssms-mfa-authentication.md).
+- Az Azure AD olyan SQL Server Management Studio kapcsolatokat támogat, amelyek Active Directory univerzális hitelesítést használnak, beleértve a Multi-Factor Authenticationt. Multi-Factor Authentication erős hitelesítést biztosít számos ellenőrzési lehetőséggel – telefonhívást, szöveges üzenetet, intelligens kártyákat PIN-kóddal vagy Mobile apps-értesítéssel. További információ: [SSMS-támogatás az Azure AD multi-Factor Authenticationhoz SQL Database és SQL Data Warehouse](../../sql-database/sql-database-ssms-mfa-authentication.md).
 
 A konfigurációs lépések az Azure AD-hitelesítés konfigurálásához és használatához a következő eljárásokkal rendelkeznek:
 
 - Hozza létre és töltse fel az Azure AD-t.
-- Nem kötelező: Társítsa vagy módosítsa az Azure-előfizetéshez jelenleg társított Active Directory-példányt.
+- Nem kötelező: társítsa vagy módosítsa az Azure-előfizetéshez jelenleg társított Active Directory-példányt.
 - Hozzon létre egy Azure Active Directory rendszergazdát Azure SQL Database vagy [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 - Konfigurálja az ügyfélszámítógépeket.
 - Hozzon létre tárolt adatbázis-felhasználókat az adatbázisban az Azure AD-identitásokhoz rendelve.
@@ -145,18 +145,18 @@ A veszélyforrások elleni védelem az észlelésen túl is meghalad. Az adatbá
 - Biztonságos konfigurációk megvalósítása az adatbázisban, hogy megvédje az adatbázist.
 - A potenciális fenyegetések észlelése és reagálásuk, amint azok bekövetkeznek, így gyorsan reagálhat és javíthat.
 
-**Ajánlott eljárás**: Felderítheti, osztályozhatja és címkézheti a bizalmas adatokat az adatbázisaiban.   
-**Részletek**: Az [adatfelderítés és a besorolás](/azure/sql-database/sql-database-data-discovery-and-classification) Azure SQL Databaseban való engedélyezésével osztályozhatja az SQL-adatbázisban tárolt adatait. A bizalmas adatokhoz való hozzáférést az Azure-irányítópulton vagy a jelentések letöltésén keresztül figyelheti.
+**Ajánlott eljárás**: a bizalmas adatok felderítése, osztályozása és címkézése az adatbázisokban.   
+**Részletek**: az SQL-adatbázisban lévő adatok osztályozása az [adatfelderítés és a besorolás](/azure/sql-database/sql-database-data-discovery-and-classification) Azure SQL Databaseban való engedélyezésével. A bizalmas adatokhoz való hozzáférést az Azure-irányítópulton vagy a jelentések letöltésén keresztül figyelheti.
 
-**Ajánlott eljárás**: Az adatbázis-biztonsági rések nyomon követésével proaktív módon javíthatja az adatbázis biztonságát.   
-**Részletek**: Használja a Azure SQL Database [sebezhetőségi felmérési](/azure/sql-database/sql-vulnerability-assessment) szolgáltatást, amely a lehetséges adatbázis-biztonsági réseket vizsgálja. A szolgáltatás olyan szabályok tudásbázisát alkalmazza, amelyek a biztonsági réseket megjelölik, és az ajánlott eljárásoktól, például a helytelen konfigurációtól, a túlzott engedélyektől és a nem védett bizalmas adatoktól származó eltéréseket jelenítenek meg.
+**Ajánlott eljárás**: az adatbázis-sebezhetőségek nyomon követése, hogy proaktív módon fejlessze az adatbázis biztonságát.   
+**Részletek**: használja a Azure SQL Database [sebezhetőségi felmérési](/azure/sql-database/sql-vulnerability-assessment) szolgáltatást, amely a lehetséges adatbázis-biztonsági réseket vizsgálja. A szolgáltatás olyan szabályok tudásbázisát alkalmazza, amelyek a biztonsági réseket megjelölik, és az ajánlott eljárásoktól, például a helytelen konfigurációtól, a túlzott engedélyektől és a nem védett bizalmas adatoktól származó eltéréseket jelenítenek meg.
 
 A szabályok a Microsoft ajánlott eljárásain alapulnak, és azokra a biztonsági problémákra összpontosítanak, amelyek az adatbázisra és értékes adataira vonatkozó legnagyobb kockázatot jelentenek. Ezek az adatbázis-szintű problémákra és a kiszolgálói szintű biztonsági problémákra, például a kiszolgálói tűzfalbeállítások és a kiszolgálói szintű engedélyekre is kiterjednek. Ezek a szabályok a szabályozási szervek számos követelményét is tükrözik a megfelelőségi szabványoknak való megfelelés érdekében.
 
-**Ajánlott eljárás**: A veszélyforrások észlelésének engedélyezése.  
-**Részletek**:  A fenyegetések [](/azure/sql-database/sql-database-threat-detection) kivizsgálására és elhárítására vonatkozó biztonsági riasztások és javaslatok beszerzésének engedélyezése Azure SQL Database veszélyforrások észleléséhez. Riasztást kap a gyanús adatbázis-tevékenységekről, a potenciális sebezhetőségekről és az SQL-injektálási támadásokról, valamint a rendellenes adatbázis-hozzáférésről és a lekérdezési mintákról.
+**Ajánlott eljárás**: a fenyegetések észlelésének engedélyezése.  
+**Részletek**: Azure SQL Database [fenyegetés észlelésének](/azure/sql-database/sql-database-threat-detection) engedélyezése a fenyegetések kivizsgálására és enyhítésére vonatkozó biztonsági riasztások és javaslatok beszerzéséhez. Riasztást kap a gyanús adatbázis-tevékenységekről, a potenciális sebezhetőségekről és az SQL-injektálási támadásokról, valamint a rendellenes adatbázis-hozzáférésről és a lekérdezési mintákról.
 
-A komplex [veszélyforrások elleni védelem](/azure/sql-database/sql-advanced-threat-protection) a fejlett SQL biztonsági funkciók egységes csomagja. Tartalmazza a korábban említett szolgáltatásokat: Az adatfelderítés és-besorolás, a sebezhetőségi felmérés és a fenyegetések észlelése. Egyetlen helyet biztosít a képességek engedélyezéséhez és kezeléséhez.
+A komplex [veszélyforrások elleni védelem](/azure/sql-database/sql-advanced-threat-protection) a fejlett SQL biztonsági funkciók egységes csomagja. Magában foglalja a korábban említett szolgáltatásokat: az adatfelderítést és besorolást, a sebezhetőségek felmérését és a fenyegetések észlelését. Egyetlen helyet biztosít a képességek engedélyezéséhez és kezeléséhez.
 
 A képességek engedélyezése a következőket teszi lehetővé:
 
@@ -167,13 +167,9 @@ A képességek engedélyezése a következőket teszi lehetővé:
 
 A veszélyforrások észlelése továbbá a riasztásokat a Azure Security Center az összes Azure-erőforrás biztonsági állapotának központi nézetével integrálja.
 
-## <a name="enable-feature-restrictions"></a>Szolgáltatási korlátozások engedélyezése
-
-Az adatbázisokban tárolt adatai a támadók számára az adatbázis-hibákat és a lekérdezés-végrehajtási időpontokat használó támadási vektorok használatával tehetők elérhetővé. Azure SQL Database számos szolgáltatás-korlátozási mechanizmust biztosít az adatbázisának megóvására. További információ: [SQL Database szolgáltatás korlátozásai](/azure/sql-database/sql-database-feature-restrictions).
-
 ## <a name="next-steps"></a>További lépések
-Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági](best-practices-and-patterns.md) eljárásaival és modelljeivel foglalkozó témakörben talál.
+Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.
 
 Az Azure-biztonsággal és a kapcsolódó Microsoft-szolgáltatásokkal kapcsolatos általános információk az alábbi forrásokból érhetők el:
 * Az [Azure Security csapatának blogja](https://blogs.msdn.microsoft.com/azuresecurity/) – naprakész információk az Azure Security legújabb frissítéseiről
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – a Microsoft biztonsági rései, például az Azure-nal kapcsolatos problémák, jelentések vagy e-mailen keresztülsecure@microsoft.com
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – a Microsoft biztonsági rései, például az Azure-nal kapcsolatos problémák, vagy e-mailen keresztül secure@microsoft.com

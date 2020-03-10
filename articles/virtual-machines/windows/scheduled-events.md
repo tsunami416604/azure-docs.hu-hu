@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: c4461856bd5eeb01eb84b0d39afef9507438f8d3
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2b3aa5d50822863e3aa46fcf9970e0b3e67a6f69
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920662"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944465"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events a Windows rendszerű virtuális gépekhez
 
@@ -45,7 +45,7 @@ Scheduled Events alkalmazása képes észlelni, hogy mikor kerül sor a karbanta
 
 Scheduled Events a következő használati esetekben nyújt eseményeket:
 - [Platform által kezdeményezett karbantartás](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates) (például virtuális gép újraindítása, élő áttelepítés vagy memória megőrzése a gazdagépen)
-- Csökkentett teljesítményű hardver
+- A virtuális gép olyan [csökkentett teljesítményű gazdagép hardverén](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events) fut, amely hamarosan meghiúsul
 - A felhasználó által kezdeményezett karbantartás (például a felhasználó újraindítja vagy újratelepíti a virtuális gépet)
 - [Helyszíni virtuális gép](spot-vms.md) és [direktszín-méretezési csoport](../../virtual-machine-scale-sets/use-spot.md) példányainak kizárása
 
@@ -63,7 +63,7 @@ Ha a virtuális gép nem egy Virtual Networkon belül jön létre, a Cloud Servi
 ### <a name="version-and-region-availability"></a>Verzió és régió elérhetősége
 A Scheduled Events szolgáltatás verziója. A verziók megadása kötelező, és az aktuális verzió `2019-01-01`.
 
-| Verzió | Kiadás típusa | Régiók | Kibocsátási megjegyzések | 
+| Verzió | Kiadás típusa | Regions | Kibocsátási megjegyzések | 
 | - | - | - | - |
 | 2019-01-01 | Általános rendelkezésre állás | Összes | <li> A virtuálisgép-méretezési csoportok támogatásának támogatása a EventType leállításához |
 | 2017-11-01 | Általános rendelkezésre állás | Összes | <li> A (z) megelőzik helyszíni VM-kilakoltatás EventType támogatása<br> | 
@@ -135,6 +135,9 @@ Az egyes események ütemezése a jövőben az esemény típusa alapján várhat
 | Ismételt üzembe helyezés | 10 perc |
 | Megelőzik | 30 másodperc |
 | Felmondhatja | [Felhasználó által konfigurálható](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 – 15 perc |
+
+> [!NOTE] 
+> Bizonyos esetekben az Azure képes megjósolni a gazdagép meghibásodását, mivel a hardver elromlott, és megkísérli a szolgáltatás megszakadásának enyhítését az áttelepítés ütemezésével. Az érintett virtuális gépek egy ütemezett eseményt kapnak egy olyan `NotBefore`, amely általában néhány nap a jövőben. A tényleges idő a várható meghibásodási kockázattól függ. Az Azure a lehetségesnél 7 napos előzetes értesítést próbál megadni, de a tényleges idő változó, és kisebb is lehet, ha az előrejelzés szerint a hardver hamarosan leáll. Annak érdekében, hogy a rendszer az áttelepítés megkezdése előtt a hardver meghibásodása esetén is minimálisra csökkentse a szolgáltatás kockázatát, javasoljuk, hogy a lehető leghamarabb telepítse újra a virtuális gépet.
 
 ### <a name="event-scope"></a>Esemény hatóköre     
 Az ütemezett események a következőre érkeznek:
@@ -228,7 +231,7 @@ foreach($event in $scheduledEvents.Events)
 }
 ``` 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 - Tekintse meg az Azure Friday [Scheduled Events bemutatóját](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) . 
 - Tekintse át a Scheduled Events kód mintáit az [Azure-példány metaadatainak Scheduled Events GitHub-tárházban](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: f57a0431bbdafee2d38038d0039b47a34e5454c7
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 3aa1190fb713c2fbdedcb1ce84a65d4263693827
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315822"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942549"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>C# IoT Edge modul fejlesztése a fájlok áthelyezéséhez Data Box Edge
 
@@ -53,7 +53,7 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 - A következő fejlesztői erőforrások:
 
     - [Visual Studio Code](https://code.visualstudio.com/).
-    - [C# bővítmény a Visual Studio Code-hoz (szolgáltató: OmniSharp) ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+    - [C# bővítmény a Visual Studio Code-hoz (szolgáltató: OmniSharp) ](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
     - [Azure IoT Edge-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
     - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
     - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows). Előfordulhat, hogy létre kell hoznia egy fiókot a szoftver letöltéséhez és telepítéséhez.
@@ -63,15 +63,15 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék az Azure-ban, amelyben tárolhatja és kezelheti privát Docker-tárolóinak rendszerképeit. A felhőben elérhető két népszerű Docker beállításjegyzék-szolgáltatás Azure Container Registry és a Docker hub. Ez a cikk a Container Registry használja.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
-2. Válassza **az erőforrás létrehozása > tárolók > Container Registry**lehetőséget. Kattintson a **Create** (Létrehozás) gombra.
+2. Válassza **az erőforrás létrehozása > tárolók > Container Registry**lehetőséget. Kattintson a  **Create** (Létrehozás) gombra.
 3. Nyújt
 
    1. Egy egyedi, az Azure-ban található, 5 – 50 alfanumerikus karaktert tartalmazó **beállításjegyzékbeli név** .
-   2. Válasszon egyelőfizetést.
+   2. Válasszon egy **előfizetést**.
    3. Hozzon létre egy új csoportot, vagy válasszon ki egy meglévő **erőforráscsoportot**.
    4. Válasszon ki egy **helyet**. Azt javasoljuk, hogy ez a hely azonos legyen a Data Box Edge erőforráshoz társított hellyel.
    5. A **Rendszergazdai felhasználó** beállítást váltsa **Engedélyezés** értékre.
-   6. Az SKU beállítása alapszintű értékre.
+   6. Az SKU beállítása **alapszintű**értékre.
 
       ![Tárolóregisztrációs adatbázis létrehozása](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
@@ -92,8 +92,8 @@ A következő lépésekkel hozzon létre egy IoT Edge modul-projektet a .NET Cor
 Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
 
 1. A Visual Studio Code-ban válassza a **megtekintés > parancs paletta** elemet a vs Code parancs paletta megnyitásához.
-2. A parancs palettáján írja be és futtassa az Azure **parancsot: Jelentkezzen** be, és kövesse az Azure-fiókba való bejelentkezéshez szükséges utasításokat. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
-3. A Command paletta írja be és futtassa a parancsot **Azure IoT Edge: Új IoT Edge megoldás**. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához:
+2. A parancskatalógusban írja be és futtassa az **Azure: Sign in** parancsot, és az utasításokat követve jelentkezzen be az Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
+3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához:
 
     1. Válassza ki azt a mappát, ahol a megoldást létre szeretné hozni.
     2. Adja meg a megoldás nevét, vagy fogadja el az alapértelmezett **EdgeSolution** nevet.
@@ -107,7 +107,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
 
     5. Adja meg az előző szakaszban létrehozott tároló-beállításjegyzéket az első modul rendszerkép-tárháza. Cserélje le a **localhost:5000** értéket a bejelentkezési kiszolgáló kimásolt értékére.
 
-        A végső sztring így néz `<Login server name>/<Module name>`ki. Ebben a példában a karakterlánc a következő: `mycontreg2.azurecr.io/filecopymodule`.
+        A végső karakterlánc úgy néz ki, mint `<Login server name>/<Module name>`. Ebben a példában a karakterlánc a következő: `mycontreg2.azurecr.io/filecopymodule`.
 
         ![3\. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-3.png)
 
@@ -270,9 +270,9 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
 
     A következő figyelmeztetést láthatja, amelyet figyelmen kívül hagyhat:
 
-    *Program. cs (77, 44): figyelmeztetés CS1998: Ez az aszinkron metódus nem rendelkezik "várakozási" operátorokkal, és szinkronban fog futni. Érdemes lehet a "várakozás" operátort használni, hogy a nem blokkoló API-hívásokat, vagy a "várakozási feladat. Run (...)" metódust használja a CPU-kötésű működéshez a háttérben futó szálon.*
+    *Program. cs (77, 44): figyelmeztetési CS1998: ez az aszinkron metódus nem rendelkezik "várakozási" operátorral, és szinkronban fog futni. Érdemes lehet a "várakozás" operátort használni, hogy a nem blokkoló API-hívásokat, vagy a "várakozási feladat. Run (...)" metódust használja a CPU-kötésű működéshez a háttérben futó szálon.*
 
-4. A VS Code integrált termináljában láthatja a teljes tárolórendszerképet címkével együtt. A képcímet a Module. JSON fájlban található, formátummal `<repository>:<version>-<platform>`ellátott információ alapján építették. Ehhez a cikkhez hasonlóan `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`kell kinéznie.
+4. A VS Code integrált termináljában láthatja a teljes tárolórendszerképet címkével együtt. A rendszerkép címe a Module. JSON fájlban található, `<repository>:<version>-<platform>`formátumú adatokból épül fel. Ehhez a cikkhez hasonlóan kell kinéznie `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`.
 
 ## <a name="next-steps"></a>További lépések
 

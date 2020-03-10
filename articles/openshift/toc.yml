@@ -33,6 +33,12 @@
           href: howto-create-tenant.md
         - name: Azure AD-alkalmazásobjektum és -felhasználó létrehozása
           href: howto-aad-app-configuration.md
+    - name: Azure Red Hat OpenShift 4.3 (előzetes verzió)
+      items:
+        - name: Azure Red Hat OpenShift 4.3-fürt létrehozása
+          href: howto-using-azure-redhat-openshift.md
+        - name: Az Azure Monitor beállítása az Azure Red Hat OpenShift 4.3-hoz
+          href: howto-azure-monitor-v4.md
     - name: Különálló Prometheus üzembe helyezése Azure Red Hat OpenShift-fürtön
       href: howto-deploy-prometheus.md
     - name: Privát Azure Red Hat OpenShift-fürt létrehozása

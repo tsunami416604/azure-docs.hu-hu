@@ -1,5 +1,5 @@
 ---
-title: Migrálás a DTU-ből a virtuális mag-be
+title: Migrálás DTU-ról virtuálismag-alapú modellre
 description: Migrálás a DTU modellből a virtuális mag modellbe. A virtuális mag-re való Migrálás hasonló a standard és a prémium szint közötti verziófrissítéshez vagy visszalépéshez.
 services: sql-database
 ms.service: sql-database
@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/08/2019
-ms.openlocfilehash: f34439b7750ca1858e71d4a36121eb65001fff50
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/09/2020
+ms.openlocfilehash: 693065046f92e0e9eade14c43e9942772440937d
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811273"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945402"
 ---
 # <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrálás a DTU-alapú modellből a virtuális mag-alapú modellbe
 
@@ -36,16 +36,16 @@ Az alábbi táblázat a speciális áttelepítési forgatókönyvekhez nyújt ú
 |Aktuális szolgáltatási szintek|Cél szolgáltatási szintje|Áttelepítés típusa|Felhasználói műveletek|
 |---|---|---|---|
 |Standard|Általános célú|Oldalirányú|Az áttelepíthető bármilyen sorrendben, de biztosítani kell a megfelelő virtuális mag-méretezést *|
-|Prémium|Üzletileg kritikus|Oldalirányú|Az áttelepíthető bármilyen sorrendben, de biztosítani kell a megfelelő virtuális mag-méretezést *|
-|Standard|Üzletileg kritikus|Frissítés|Először át kell telepítenie a másodlagost|
-|Üzletileg kritikus|Standard|Alacsonyabb szintre|Először át kell telepítenie az elsődlegest|
+|Prémium|Üzleti szempontból kritikus|Oldalirányú|Az áttelepíthető bármilyen sorrendben, de biztosítani kell a megfelelő virtuális mag-méretezést *|
+|Standard|Üzleti szempontból kritikus|Upgrade|Először át kell telepítenie a másodlagost|
+|Üzleti szempontból kritikus|Standard|Alacsonyabb szintre|Először át kell telepítenie az elsődlegest|
 |Prémium|Általános célú|Alacsonyabb szintre|Először át kell telepítenie az elsődlegest|
-|Általános célú|Prémium|Frissítés|Először át kell telepítenie a másodlagost|
-|Üzletileg kritikus|Általános célú|Alacsonyabb szintre|Először át kell telepítenie az elsődlegest|
-|Általános célú|Üzletileg kritikus|Frissítés|Először át kell telepítenie a másodlagost|
+|Általános célú|Prémium|Upgrade|Először át kell telepítenie a másodlagost|
+|Üzleti szempontból kritikus|Általános célú|Alacsonyabb szintre|Először át kell telepítenie az elsődlegest|
+|Általános célú|Üzleti szempontból kritikus|Upgrade|Először át kell telepítenie a másodlagost|
 ||||
 
-\* a standard szinten minden 100 DTU legalább 1 virtuális mag kell lennie, és a prémium szintű 125 DTU legalább 1 virtuális mag kell lennie.
+a virtuális mag a standard szinten 100 DTU legalább 1 kell lennie, és a prémium szint 125 DTU legalább 1 virtuális mag kell lennie. \* További információ: [virtuális mag-alapú vásárlási modell](https://docs.microsoft.com/azure/sql-database/sql-database-purchase-models#vcore-based-purchasing-model).
 
 ## <a name="migrate-failover-groups"></a>Feladatátvételi csoportok áttelepíthetők
 
@@ -55,7 +55,7 @@ A több adatbázissal rendelkező feladatátvételi csoportok áttelepítése az
 
 A Geo-replikációs másodlagos adatbázist (a Geo-másodlagost) csak az elsődleges adatbázishoz használt szolgáltatási réteg használatával lehet létrehozni. A nagy log-generálási arányú adatbázisok esetében javasoljuk, hogy a Geo-másodlagost ugyanazzal a számítási mérettel hozza létre, mint az elsődleges.
 
-Ha egyetlen elsődleges adatbázishoz hoz létre egy geo-másodlagost a rugalmas készletben, akkor győződjön meg arról, hogy a készlet `maxVCore` beállítása megfelel az elsődleges adatbázis számítási méretének. Ha egy másik rugalmas készletben elsődlegesként hoz létre egy geo-másodlagost, azt javasoljuk, hogy a készletek azonos `maxVCore` beállításokkal rendelkezzenek.
+Ha egyetlen elsődleges adatbázishoz hoz létre egy geo-másodlagost a rugalmas készletben, akkor győződjön meg arról, hogy a készlet `maxVCore` beállítása megfelel az elsődleges adatbázis számítási méretének. Ha egy másik rugalmas készletben elsődlegesként hoz létre egy geo-másodlagost, azt javasoljuk, hogy a készleteknek ugyanazok a `maxVCore` beállításai.
 
 ## <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Adatbázis-másolat használata DTU-alapú adatbázis virtuális mag-alapú adatbázisba való átalakításához
 

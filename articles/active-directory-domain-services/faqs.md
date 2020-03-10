@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 3abd9835c1cf750b926f49442f3e34e96dc9c865
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a57826c79babded6e616548879a5ec0c223307d0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917356"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946438"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Gyakori kérdések (GYIK)
 
@@ -36,6 +36,7 @@ Ez az oldal válaszol a Azure Active Directory Domain Servicesekkel kapcsolatos 
 * [Adhatok tartományvezérlőket Azure AD Domain Services felügyelt tartományhoz?](#can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain)
 * [A vendégnek a címtárat használó felhasználók meghívókat Azure AD Domain Services?](#can-guest-users-invited-to-my-directory-use-azure-ad-domain-services)
 * [Áthelyezhetek egy meglévő Azure AD Domain Services felügyelt tartományt egy másik előfizetésbe, erőforráscsoporthoz, régióba vagy virtuális hálózatra?](#can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network)
+* [A Azure AD Domain Services magas rendelkezésre állási lehetőségeket is tartalmaz?](#does-azure-ad-domain-services-include-high-availability-options)
 
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Több felügyelt tartományt is Létrehozhatok egyetlen Azure AD-címtárhoz?
 Nem. Egyetlen Azure AD-címtárhoz Azure AD Domain Services egyetlen felügyelt tartományt hozhat létre.
@@ -75,6 +76,10 @@ Nem. Az Azure ad [B2B](../active-directory/active-directory-b2b-what-is-azure-ad
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Áthelyezhetek egy meglévő Azure AD Domain Services felügyelt tartományt egy másik előfizetésbe, erőforráscsoporthoz, régióba vagy virtuális hálózatra?
 Nem. Azure AD Domain Services felügyelt tartomány létrehozása után nem helyezheti át a példányt másik erőforráscsoporthoz, virtuális hálózatba, előfizetésbe stb. Ügyeljen arra, hogy a legmegfelelőbb előfizetést, erőforráscsoportot, régiót és virtuális hálózatot válassza ki az Azure AD DS-példány telepítésekor.
 
+### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>A Azure AD Domain Services magas rendelkezésre állási lehetőségeket is tartalmaz?
+
+Igen. Minden Azure AD Domain Services felügyelt tartomány két tartományvezérlőt tartalmaz. Ezek a tartományvezérlők nem kezelhetők és nem csatlakoznak, hanem a felügyelt szolgáltatás részét képezik. Ha Availability Zonest támogató régióba telepít Azure AD Domain Services, a tartományvezérlők a zónák között oszlanak meg. A Availability Zonest nem támogató régiókban a tartományvezérlők a rendelkezésre állási csoportokon keresztül oszlanak meg. Ehhez a terjesztéshez nincsenek konfigurációs beállítások vagy felügyeleti vezérlők. További információ: a [virtuális gépek rendelkezésre állási lehetőségei az Azure-ban](../virtual-machines/windows/availability.md).
+
 ## <a name="administration-and-operations"></a>Felügyelet és műveletek
 
 * [Csatlakozhatok a felügyelt tartományhoz tartozó tartományvezérlőhöz a Távoli asztal használatával?](#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop)
@@ -91,13 +96,13 @@ Nem. Azure AD Domain Services felügyelt tartomány létrehozása után nem hely
 Nem. Nem rendelkezik engedéllyel a felügyelt tartományhoz való kapcsolódáshoz a Távoli asztal használatával. A *HRE DC rendszergazdák* csoport tagjai felügyelhetik a felügyelt TARTOMÁNYT az ad felügyeleti eszközök, például a Active Directory felügyeleti központ (ADAC) vagy az ad PowerShell használatával. Ezek az eszközök a felügyelt tartományhoz csatlakoztatott Windows Server *Távoli kiszolgálófelügyelet eszközei* funkciójával vannak telepítve. További információ: [felügyeleti virtuális gép létrehozása Azure ad Domain Services felügyelt tartomány konfigurálásához és felügyeletéhez](tutorial-create-management-vm.md).
 
 ### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>Engedélyeztem Azure AD Domain Services. Milyen felhasználói fiókot használok a tartományhoz való csatlakozáshoz ehhez a tartományhoz?
-A *HRE DC-rendszergazdák* csoport tagjai tartományhoz csatlakozó gépeket is használhatnak. Emellett a csoport tagjai távoli asztali hozzáférést kapnak a tartományhoz csatlakoztatott gépekhez.
+Az Azure AD DS felügyelt tartomány részét képező felhasználói fiókok csatlakozhatnak egy virtuális géphez. A *HRE DC rendszergazdák* csoport tagjai távoli asztali hozzáférést kapnak a felügyelt tartományhoz csatlakoztatott gépekhez.
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Vannak tartományi rendszergazdai jogosultságok a Azure AD Domain Services által biztosított felügyelt tartományhoz?
 Nem. Nem kap rendszergazdai jogosultságokat a felügyelt tartományon. A tartományi *rendszergazda* és a *vállalati rendszergazdai* jogosultságok nem használhatók a tartományon belül. A helyszíni Active Directory tartományi rendszergazda vagy vállalati rendszergazdai csoportok tagjai nem kapnak tartományi/vállalati rendszergazdai jogosultságokat a felügyelt tartományhoz.
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>Módosíthatom a csoporttagság a felügyelt tartományokban található LDAP vagy más AD felügyeleti eszközök használatával?
-Nem. A csoporttagságok nem módosíthatók Azure AD Domain Services által kiszolgált tartományokon. Ugyanez vonatkozik a felhasználói attribútumokra is. A csoporttagságok vagy a felhasználói attribútumok módosíthatók az Azure AD-ben vagy a helyszíni tartományban is. A rendszer automatikusan szinkronizálja a módosításokat a Azure AD Domain Services.
+Azok a felhasználók és csoportok, amelyek Azure Active Directoryról Azure AD Domain Services szinkronizálva, nem módosíthatók, mert a forrás forrása Azure Active Directory. Előfordulhat, hogy a felügyelt tartományból származó bármely felhasználó vagy csoport módosítva lesz.
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Mennyi időt vesz igénybe, hogy az Azure AD-címtárban végrehajtott módosítások megjelenjenek a felügyelt tartományban?
 Az Azure AD-címtárban az Azure AD felhasználói felület vagy a PowerShell használatával végzett módosítások automatikusan szinkronizálhatók a felügyelt tartományba. Ez a szinkronizálási folyamat a háttérben fut. Nincs meghatározott időtartam a szinkronizáláshoz az összes objektum módosításának befejezéséhez.
@@ -141,11 +146,11 @@ Nem. A Azure AD Domain Services egy utólagos elszámolású Azure-szolgáltatá
 ### <a name="what-azure-regions-is-the-service-available-in"></a>Milyen Azure-régiók érhetők el a szolgáltatásban?
 Az Azure- [szolgáltatások régiónként](https://azure.microsoft.com/regions/#services/) lapon megtekintheti az Azure-régiók listáját, ahol a Azure ad Domain Services elérhető.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 A Azure AD Domain Services konfigurálásával és felügyeletével kapcsolatos gyakori problémák megoldásához tekintse meg a [hibaelhárítási útmutatót](troubleshoot.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a Azure AD Domain Servicesről, tekintse meg a [Mi az a Azure Active Directory Domain Services?](overview.md)című témakört.
 

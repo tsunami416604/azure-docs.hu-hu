@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3af62a75228959478a80c2628307fff2b47c3c4a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3abf38a4b1ea798c39150454ac33f73ea588b782
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187491"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933058"
 ---
 # <a name="localization-string-ids"></a>Honosítási sztringazonosítók
 
@@ -215,6 +215,23 @@ Az alábbi azonosítók egy [ellenőrző képernyő vezérlőelemhez](display-co
 |verification_control_but_send_code |Kód küldése |
 |verification_control_but_send_new_code |Új kód küldése |
 |verification_control_but_verify_code |Kód ellenőrzése |
+|verification_control_code_sent| Az ellenőrző kód elküldése megtörtént. Másolja az alábbi beviteli mezőbe. |
+
+### <a name="example"></a>Példa
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_change_claims">Change</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_fail_send_code">Failed to send the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_fail_verify_code">Failed to verify the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_send_code">Send Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_send_new_code">Send New Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_verify_code">Verify Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_code_sent">Verification code has been sent. Please copy it to the input box below.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
 
 ## <a name="one-time-password-error-messages"></a>Egyszeri jelszó hibaüzenetei
 A következő azonosítók egy [egyszeri jelszó technikai profiljának](one-time-password-technical-profile.md) hibaüzenetei
@@ -226,6 +243,18 @@ A következő azonosítók egy [egyszeri jelszó technikai profiljának](one-tim
 |UserMessageIfSessionConflict |Az egyszeri jelszó-ellenőrzési munkamenet ütközik |
 |UserMessageIfInvalidCode |Az ellenőrzéshez megadott egyszeri jelszó helytelen |
 
+### <a name="example"></a>Példa
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
 
 
 

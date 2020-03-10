@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 0af2b5f7d756060d463d2b4f3ef71bdd135710ee
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591523"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933811"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Virtuális gépek készleteinek létrehozása és kezelése 
 Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
@@ -103,7 +103,14 @@ A labor Creator (oktató/professzor) a következő feltételek teljesülése ese
 > [!NOTE]
 > Ha a professzor elindítja a virtuális gépet, és csatlakozik hozzá, a tanulói kvóta nincs hatással. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>Virtuális gépek listájának exportálása CSV-fájlba
+
+1. Váltson a **virtuálisgép-készlet** lapra.
+2. Válassza a **...** (három pont) lehetőséget az eszköztáron, majd válassza a **CSV exportálása**lehetőséget. 
+
+    ![Virtuális gépek listájának exportálása](../media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
+
+## <a name="next-steps"></a>További lépések
 Ha szeretne többet megtudni a tanulók által beállítható egyéb használati lehetőségekről, tekintse meg a következő cikket: a [tanulói használat konfigurálása](how-to-configure-student-usage.md).
 
 A virtuális gépek jelszavának alaphelyzetbe állításáról a következő témakörben olvashat: [Virtual Machines-jelszó beállítása vagy alaphelyzetbe állítása a tanterem Labs-ban (diákok)](how-to-set-virtual-machine-passwords-student.md).

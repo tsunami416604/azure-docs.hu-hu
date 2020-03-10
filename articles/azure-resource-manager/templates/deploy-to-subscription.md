@@ -2,17 +2,17 @@
 title: Erőforrások üzembe helyezése az előfizetésben
 description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Resource Manager sablonban. Azt is bemutatja, hogyan helyezhet üzembe erőforrásokat az Azure-előfizetési hatókörben.
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 2e747b7faa6e9766a577b472cc3e283d6223109e
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/09/2020
+ms.openlocfilehash: 1a76e41b4b2264bc535752e8f765b3303080abbd
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228118"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945951"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten
 
-Az Azure-erőforrásokat általában az Azure-előfizetésében lévő erőforráscsoporthoz helyezheti üzembe. Az előfizetési szinten azonban erőforrásokat is létrehozhat. Az előfizetési szintű központi telepítések használatával olyan műveleteket hajthat végre, amelyek ésszerűek az adott szinten, például erőforráscsoportok létrehozása vagy [szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)kiosztása.
+Az Azure-előfizetésében lévő erőforrások kezelésének egyszerűbbé tétele érdekében [szabályzatokat](../../governance/policy/overview.md) vagy [szerepköralapú hozzáférés-vezérlést](../../role-based-access-control/overview.md) adhat meg és rendelhet hozzá az előfizetéshez. Az előfizetési szintű sablonokkal a szabályzatok deklaratív alkalmazása és szerepkörök társítása az előfizetéshez. Erőforráscsoportokat is létrehozhat, és erőforrásokat telepíthet.
 
 A sablonok előfizetési szinten való üzembe helyezéséhez használja az Azure CLI-t, a PowerShellt vagy a REST API. A Azure Portal nem támogatja az előfizetés szintjén történő telepítést.
 
@@ -21,7 +21,7 @@ A sablonok előfizetési szinten való üzembe helyezéséhez használja az Azur
 A következő erőforrástípusok az előfizetés szintjén helyezhetők üzembe:
 
 * [költségvetése](/azure/templates/microsoft.consumption/budgets)
-* [központi telepítések](/azure/templates/microsoft.resources/deployments)
+* [központi telepítések](/azure/templates/microsoft.resources/deployments) – az erőforráscsoportok üzembe helyezett beágyazott sablonokhoz.
 * [peerAsns](/azure/templates/microsoft.peering/peerasns)
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
@@ -40,10 +40,10 @@ Sablonok esetén használja a következőt:
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
 ```
 
-A paraméter fájljaihoz használja a következőt:
+A paraméterérték sémája megegyezik az összes központi telepítési hatókörnél. A paraméter fájljaihoz használja a következőt:
 
 ```json
-https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>Üzembe helyezési parancsok
@@ -88,12 +88,12 @@ Az előfizetési szintű központi telepítések esetében néhány fontos szemp
 
 * A [resourceGroup ()](template-functions-resource.md#resourcegroup) függvény **nem** támogatott.
 * A [Reference ()](template-functions-resource.md#reference) és a [List ()](template-functions-resource.md#list) függvények támogatottak.
-* A [resourceId ()](template-functions-resource.md#resourceid) függvény támogatott. Ezzel az eszközzel lekérheti az előfizetés szintjén üzemelő példányokon használt erőforrások erőforrás-AZONOSÍTÓját. Ne adjon meg értéket az erőforráscsoport paraméter számára.
+* Használja a [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) függvényt az előfizetési szinten üzembe helyezett erőforrások erőforrás-azonosítójának lekéréséhez.
 
   Ha például egy házirend-definíció erőforrás-AZONOSÍTÓját szeretné lekérni, használja a következőt:
   
   ```json
-  resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
+  subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
   ```
   
   A visszaadott erőforrás-azonosító formátuma a következő:
@@ -101,8 +101,6 @@ Az előfizetési szintű központi telepítések esetében néhány fontos szemp
   ```json
   /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```
-
-  Vagy használja a [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) függvényt az előfizetési szint erőforrásaihoz tartozó erőforrás-azonosító lekéréséhez.
 
 ## <a name="create-resource-groups"></a>Erőforráscsoportok létrehozása
 
@@ -378,10 +376,9 @@ New-AzSubscriptionDeployment `
 * [Hozzon létre egy erőforráscsoportot, zárolja, és adjon hozzá engedélyeket](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
 * [Hozzon létre egy erőforráscsoportot, egy házirendet és egy házirend-hozzárendelést](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A szerepkörök hozzárendelésével kapcsolatos további tudnivalókért lásd: [Az Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával](../../role-based-access-control/role-assignments-template.md).
 * A Azure Security Center munkaterület-beállításainak üzembe helyezésére példát a következő témakörben talál: [deployASCwithWorkspaceSettings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
 * A sablonok a [githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments)találhatók.
-* Azure Resource Manager sablonok létrehozásával kapcsolatos további tudnivalókért lásd: [sablonok készítése](template-syntax.md).
-* A sablonban elérhető függvények listáját itt tekintheti meg: [sablon függvények](template-functions.md).
+* A sablonokat [felügyeleti csoport szintjén](deploy-to-management-group.md) és [bérlői szinten](deploy-to-tenant.md)is üzembe helyezheti.

@@ -3,13 +3,13 @@ title: Statikus IP-cím és DNS-címke használata az Azure Kubernetes Service (
 description: Ismerje meg, hogyan hozhat létre és használhat statikus IP-címet az Azure Kubernetes Service (ak) terheléselosztó használatával.
 services: container-service
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: d5177494ecdd112342b2cd719e9305bfab97902c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/09/2020
+ms.openlocfilehash: 32889dbbcafd9510f8d04cb9c602d4802c6d1a1a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593597"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943567"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statikus nyilvános IP-cím és DNS-címke használata az Azure Kubernetes Service (ak) terheléselosztó használatával
 
@@ -67,7 +67,7 @@ A szolgáltatás létrehozása előtt győződjön meg arról, hogy az AK-fürt 
 ```azurecli-interactive
 az role assignment create \
     --assignee <SP Client ID> \
-    --role "Contributor" \
+    --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
@@ -97,7 +97,7 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="apply-a-dns-label-to-the-service"></a>DNS-címke alkalmazása a szolgáltatásra
 
-Ha a szolgáltatás dinamikus vagy statikus nyilvános IP-címet használ, akkor a szolgáltatás megjegyzése `service.beta.kubernetes.io/azure-dns-label-name` használatával megadhatja a nyilvános DNS-címkét. Ez egy teljes tartománynevet tesz közzé a szolgáltatáshoz az Azure nyilvános DNS-kiszolgálói és legfelső szintű tartománya segítségével. A jegyzet értékének egyedinek kell lennie az Azure-helyen belül, ezért ajánlott egy megfelelően minősített címkét használni.   
+Ha a szolgáltatás dinamikus vagy statikus nyilvános IP-címet használ, akkor a szolgáltatás megjegyzése `service.beta.kubernetes.io/azure-dns-label-name` használatával megadhatja a nyilvános DNS-címkét. Ez egy teljes tartománynevet tesz közzé a szolgáltatáshoz az Azure nyilvános DNS-kiszolgálói és legfelső szintű tartománya segítségével. A jegyzet értékének egyedinek kell lennie az Azure-ban, ezért azt javasoljuk, hogy használjon megfelelően minősített címkét.   
 
 Az Azure ezt követően automatikusan hozzáfűz egy alapértelmezett alhálózatot, például a `<location>.cloudapp.azure.com` (ahol a hely a kiválasztott régió), a megadott névre, hogy létrehozza a teljesen minősített DNS-nevet. Például:
 
@@ -151,7 +151,7 @@ Events:
   Warning  CreatingLoadBalancerFailed  6s (x2 over 12s)  service-controller  Error creating load balancer (will retry): Failed to create load balancer for service default/azure-load-balancer: user supplied IP Address 40.121.183.52 was not found
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alkalmazásokra irányuló hálózati forgalom további szabályozása érdekében érdemes lehet [egy bejövő vezérlőt létrehozni][aks-ingress-basic]. Egy [statikus nyilvános IP-címmel rendelkező bejövő vezérlőt is létrehozhat][aks-static-ingress].
 

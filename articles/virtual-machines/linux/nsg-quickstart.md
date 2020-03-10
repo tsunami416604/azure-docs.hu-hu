@@ -1,27 +1,22 @@
 ---
-title: Portok megnyitása Linux rendszerű virtuális géphez az Azure CLI-vel
-description: Megtudhatja, hogyan nyithat meg egy portot/hozzon létre egy végpontot a linuxos virtuális géphez az Azure Resource Manager-alapú üzemi modell és az Azure CLI használatával
-services: virtual-machines-linux
-documentationcenter: ''
+title: Portok megnyitása egy virtuális géphez az Azure CLI-vel
+description: Megtudhatja, hogyan nyithat meg egy portot/hozzon létre egy végpontot a virtuális géphez az Azure CLI használatával.
 author: cynthn
 manager: gwallace
-editor: ''
-ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
-ms.service: virtual-machines-linux
-ms.devlang: azurecli
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: cfcea8c775b2d6a9bee3c078cf67f0a942af5984
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d9488b7a466dfc67edbf2dcbee966fc1fc72e8b7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354050"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944549"
 ---
-# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Portok és végpontok megnyitása Linux rendszerű virtuális gépre az Azure CLI-vel
+# <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Portok és végpontok megnyitása egy virtuális gépre az Azure CLI-vel
 
 Megnyit egy portot, vagy létrehozhat egy végpontot egy virtuális géphez (VM) az Azure-ban egy alhálózat vagy virtuálisgép-hálózati adapter hálózati szűrőjének létrehozásával. Ezeket a szűrőket, amelyek a bejövő és a kimenő forgalmat is szabályozzák, a forgalmat fogadó erőforráshoz csatolt hálózati biztonsági csoporton. Az 80-as porton a webes forgalom általános példáját használjuk. Ez a cikk bemutatja, hogyan nyithat meg egy portot egy virtuális géphez az Azure CLI-vel. 
 
@@ -89,7 +84,7 @@ Az itt található gyors parancsok lehetővé teszik a virtuális gép felé ir�
 
 A magasan elérhető webalkalmazások esetében a virtuális gépeket egy Azure Load Balancer mögé kell helyeznie. A terheléselosztó elosztja a forgalmat a virtuális gépekre egy olyan hálózati biztonsági csoporttal, amely forgalmi szűrést biztosít. További információkért lásd: a [Linux rendszerű virtuális gépek terheléselosztása az Azure-ban egy olyan, magasan elérhető alkalmazás létrehozásához](tutorial-load-balancer.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a példában egy egyszerű szabályt hozott létre a HTTP-forgalom engedélyezéséhez. A részletesebb környezetek létrehozásáról a következő cikkekben talál információt:
 
 * [Az Azure Resource Manager áttekintése](../../azure-resource-manager/management/overview.md)

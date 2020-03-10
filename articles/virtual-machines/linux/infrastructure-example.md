@@ -1,26 +1,18 @@
 ---
 title: Példa az Azure infrastruktúra-útmutatóra
 description: Ismerje meg az Azure-beli infrastruktúra üzembe helyezésének legfontosabb tervezési és megvalósítási irányelveit.
-documentationcenter: ''
-services: virtual-machines-linux
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 281fc2c0-b533-45fa-81a3-728c0049c73d
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf63db18dac5fa202bbf339723c6555c4acb2ca2
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6040bf8862131f5a8a5564cd2f5d845fa0490a95
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036034"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944906"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Példa Azure Infrastructure-útmutató Linux rendszerű virtuális gépekhez
 Ez a cikk végigvezeti egy példaként szolgáló alkalmazás-infrastruktúra kiépítésén. Részletesen ismertetjük az infrastruktúra megtervezését egy egyszerű, online tároláshoz, amely összefoglalja az elnevezési konvenciók, a rendelkezésre állási csoportok, a virtuális hálózatok és a terheléselosztó, valamint a virtuális gépek (VM-EK) tényleges üzembe helyezésének összes irányelvét és döntését.
@@ -60,7 +52,7 @@ A fenti elnevezési konvenciók mindegyike a következő:
 ## <a name="azure-subscriptions-and-accounts"></a>Azure-előfizetések és-fiókok
 Az Adventure Works-ciklusok nagyvállalati előfizetéssel rendelkeznek, amely az Adventure Works Enterprise előfizetését használja az IT-számítási feladatok számlázásához.
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 Az Adventure Works-ciklusok határozzák meg, hogy az Azure Managed Disks-t használják. Virtuális gépek létrehozásakor a rendszer a tárterület rendelkezésre álló tárolási szintjein is használható:
 
 * A webkiszolgálók, az alkalmazás-kiszolgálók és a tartományvezérlők, valamint az adatlemezek **szabványos tárolói** .

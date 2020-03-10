@@ -2,24 +2,21 @@
 title: Azure-Instance Metadata Service
 description: REST-felület a linuxos virtuális gépek számítási, hálózati és közelgő karbantartási eseményeivel kapcsolatos információk beszerzéséhez.
 services: virtual-machines-linux
-documentationcenter: ''
 author: KumariSupriya
 manager: paulmey
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
+ms.subservice: monitoring
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: b0d4d1d13a329b0d95fcd0358f6141486b4435e5
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 3281b4dafa5436c9df760ac8aa3fc82f535b4286
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205007"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944865"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-példány metaadatainak szolgáltatása
 
@@ -36,7 +33,7 @@ A végpont egy jól ismert, nem irányítható IP-címen (`169.254.169.254`) ér
 
 A szolgáltatás az általánosan elérhető Azure-régiókban érhető el. Nem minden API-verzió érhető el az összes Azure-régióban.
 
-Régiók                                        | Rendelkezésre állási?                                 | Támogatott verziók
+Regions                                        | Rendelkezésre állási?                                 | Támogatott verziók
 -----------------------------------------------|-----------------------------------------------|-----------------
 [Az összes általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/)     | Általánosan elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Általánosan elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
@@ -856,6 +853,6 @@ Puppet | https://github.com/keirans/azuremetadata
 
     ![Példány metaadatainak támogatása](./media/instance-metadata-service/InstanceMetadata-support.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Scheduled Events](scheduled-events.md)

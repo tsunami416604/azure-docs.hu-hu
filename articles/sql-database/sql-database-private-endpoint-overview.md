@@ -7,15 +7,15 @@ titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
-ms.date: 09/17/2019
-ms.openlocfilehash: 427ba0e46f8f4090ce8c2080b1d6780b165e864c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/09/2020
+ms.openlocfilehash: ab9c5c5c1134d2e09a790a788a3b7e55f807dd9b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121080"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945368"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Privát hivatkozás a Azure SQL Database és az adattárházhoz (előzetes verzió)
+# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Privát hivatkozás a Azure SQL Database és az adattárházhoz
 
 A privát hivatkozás lehetővé teszi, hogy egy **privát végponton**keresztül kapcsolódjon az Azure-beli különböző Pásti-szolgáltatásokhoz. A privát kapcsolati funkciót támogató Pásti-szolgáltatások listájának megtekintéséhez lépjen a [Private link dokumentációs](../private-link/index.yml) oldalára. A privát végpont egy adott [VNet](../virtual-network/virtual-networks-overview.md) és alhálózaton belüli magánhálózati IP-cím. 
 
@@ -48,7 +48,7 @@ A privát kapcsolat lehetővé teszi, hogy az ügyfelek az [ExpressRoute](../exp
 
 ### <a name="creation-process"></a>Létrehozási folyamat
 A privát végpontokat a portál, a PowerShell vagy az Azure CLI használatával lehet létrehozni:
-- [Portál](../private-link/create-private-endpoint-portal.md)
+- [Portal](../private-link/create-private-endpoint-portal.md)
 - [PowerShell](../private-link/create-private-endpoint-powershell.md)
 - [Parancssori felület](../private-link/create-private-endpoint-cli.md)
 
@@ -145,7 +145,7 @@ Az eredmény azt mutatja, hogy egy IP-cím működik; a magánhálózati végpon
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Kapcsolat ellenőrzése SQL Server Management Studio használatával (SSMS)
 > [!NOTE]
->A kiszolgáló **teljes tartománynevét (FQDN)** használja az ügyfelekhez tartozó kapcsolatok karakterláncában. Az IP-cím felé irányuló bejelentkezési kísérleteket a terv szerint nem sikerül elvégezni.
+> A kiszolgáló **teljes tartománynevét (FQDN)** használja az ügyfelekhez tartozó kapcsolatok karakterláncában. A közvetlenül az IP-címen végrehajtott bejelentkezési kísérletek sikertelenek lesznek. Ez a viselkedés a tervezés szerint történik, mivel a magánhálózati végpont továbbítja a forgalmat a régióbeli SQL-átjáró felé, és a sikeres bejelentkezéshez meg kell adni a teljes tartománynevet.
 
 A [SQL Databasehoz való kapcsolódáshoz](sql-database-connect-query-ssms.md)kövesse az alábbi lépéseket a SSMS használatához. Miután a SSMS használatával kapcsolódott a SQL Databasehoz, ellenőrizze, hogy az Azure-beli virtuális gép magánhálózati IP-címéről csatlakozik a következő lekérdezés futtatásával:
 
@@ -153,8 +153,9 @@ A [SQL Databasehoz való kapcsolódáshoz](sql-database-connect-query-ssms.md)k�
 select client_net_address from sys.dm_exec_connections 
 where session_id=@@SPID
 ````
-> [!NOTE]
-> Az előzetes verzióban a privát végponttal létesített kapcsolatok csak a **proxyt** támogatják a [kapcsolati házirendként](sql-database-connectivity-architecture.md#connection-policy) .
+
+## <a name="limitations"></a>Korlátozások 
+A magánhálózati végponttal létesített kapcsolatok csak a **proxyt** támogatják a [kapcsolati házirendként](sql-database-connectivity-architecture.md#connection-policy)
 
 
 ## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Csatlakozás egy Azure-beli virtuális gépről a Virtual Network (VNet) 
@@ -179,7 +180,7 @@ A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseb
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Azure SQL Database biztonság áttekintését lásd: [az adatbázis biztonságossá tétele](sql-database-security-overview.md)
 - Az Azure SQL Database kapcsolatok áttekintését lásd: [Azure SQL connectivity Architecture](sql-database-connectivity-architecture.md)

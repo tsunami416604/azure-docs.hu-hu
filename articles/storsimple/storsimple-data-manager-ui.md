@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: d485a2655b569b3def6162934857b02dbe4f75ea
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273967"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933752"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>A StorSimple Data Manager szolgáltatás kezelése Azure Portal
 
@@ -48,7 +48,7 @@ StorSimple Data Manager szolgáltatás létrehozásához hajtsa végre az alább
     
    5. Ha a szolgáltatásra mutató hivatkozást szeretne kapni az irányítópulton, válassza a **rögzítés az irányítópulton**lehetőséget.
     
-   6. Kattintson a **Create** (Létrehozás) gombra.
+   6. Kattintson a  **Create** (Létrehozás) gombra.
 
       ![StorSimple Data Manager szolgáltatás létrehozása 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
@@ -102,7 +102,7 @@ A feladatdefiníció létrehozásához hajtsa végre az alábbi lépéseket.
 
    3. A **Filter** alszakaszban adja meg azt a gyökérkönyvtárat, amely a _\MyRootDirectory\Data_ formátumban tartalmazza az Ön számára fontos adatait. Meghajtóbetűjelek, például a _\C: a \Data_ nem támogatottak. Itt is hozzáadhat szűrőket.
 
-   4. Az Adatátalakítási szolgáltatás a pillanatképeken keresztül az Azure-ba küldött összes adattal működik. Ha futtatja ezt a feladatot, dönthet úgy, hogy biztonsági másolatot készít a feladatok futtatásakor (a legfrissebb adatok működéséhez), vagy használja a felhőben az utolsó meglévő biztonsági mentést (ha egyes archivált adatokon dolgozik).
+   4. Az Adatátalakítási szolgáltatás csak az Azure-ba küldött adatok legújabb pillanatképén működik.
 
    5. Kattintson az **OK** gombra.
 
@@ -133,7 +133,7 @@ A feladatdefiníció létrehozásához hajtsa végre az alábbi lépéseket.
 
 ### <a name="run-the-job-definition"></a>A feladatdefiníció futtatása
 
-Ha az StorSimple-ből a feladatdefiníció által megadott Storage-fiókba kell áthelyeznie az adatait, futtatnia kell azt. Futásidőben egyes paramétereket különbözőképpen lehet megadni. A konfigurálás lépései a következők:
+Ha az StorSimple-ből a feladatdefiníció által megadott Storage-fiókba kell áthelyeznie az adatait, futtatnia kell azt. Futásidőben egyes paramétereket különbözőképpen lehet megadni. A lépések a következők:
 
 1. Válassza ki a StorSimple Data Manager szolgáltatást, és lépjen a **felügyeleti > feladatok definíciói**között. Jelölje ki, majd kattintson a futtatni kívánt feladatdefiníció elemre.
      
@@ -151,7 +151,12 @@ Ha az StorSimple-ből a feladatdefiníció által megadott Storage-fiókba kell 
 
     ![A 4. futtatási hely elindítása](./media/storsimple-data-manager-ui/start-job-run4.png)
 
+### <a name="view-logs-after-job-completion"></a>Naplók megtekintése a feladatok befejezését követően
 
-## <a name="next-steps"></a>Következő lépések
+A feladatok befejezése után megtekintheti a feladatok állapotát. A feladatok állapota **sikeres**lehet, **részben sikeres** és **sikertelen volt**. Megtekintheti a sikeresen másolt fájlok listáját és a nem másolható fájlokat. Ezek a felsorolások a **"storsimple-Manager-joblogs"** nevű tárolóban érhetők el a cél Storage-fiókon belül. Ezen a tárolón belül megkeresheti a feladattípus nevével megegyező nevű mappát. Ebben az esetben a rendszer létrehoz egy mappát minden olyan futtatáshoz, amely tartalmazza a listát. Ennek a mappának a neve lesz a feladathoz tartozó GUID-azonosító, amelyet a feladatok részletei lapon lehet beolvasni. Azt is megteheti, hogy a legtöbb esetben a feladatok oldalon található másolási naplókra mutató hivatkozást fog látni.
+A mappában két CSV-fájl látható. A **copiedfilelist..** . kezdetű összes fájl tartalmazni fogja a fájlok sikeres másolásának listáját. A **failedfilelist...** értékkel kezdődő összes fájl olyan fájlokat tartalmaz, amelyek nem másolhatók, valamint hibaüzenetet tartalmaznak.
+
+
+## <a name="next-steps"></a>További lépések
 
 [StorSimple Data Manager feladatok elindításához használja a .net SDK-t](storsimple-data-manager-dotnet-jobs.md).

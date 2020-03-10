@@ -4,30 +4,26 @@ description: Megtudhatja, hogyan telepíthet át egy StorSimple 8100-es vagy 860
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d04b38fac2b42d2d510902c7ba54ddebb8e3f410
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: d937852ace8d9bf39495f1fdd92e6edfc4452a0a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330310"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943590"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 Migrálás Azure File Syncre
 
-Az StorSimple 8000 sorozatot a 8100 vagy a 8600 fizikai, a helyszíni készülék és a Cloud Service-összetevők jelölik. Az adatok bármelyik készülékről egy Azure File Sync környezetbe telepíthetők át. Ez a cikk a Azure File Syncba való sikeres áttelepítéshez szükséges háttérbeli ismereteket és áttelepítési lépéseket ismerteti.
+Az StorSimple 8000 sorozatot a 8100, a 8600 fizikai, a helyszíni készülékek és a Cloud Service-összetevők jelölik. Az adatok bármelyik készülékről egy Azure File Sync környezetbe telepíthetők át. A Azure File Sync az alapértelmezett és a stratégiai hosszú távú Azure-szolgáltatás, amelyet a StorSimple berendezések áttelepíthetnek.
 
-## <a name="storsimple"></a>StorSimple
+A StorSimple 8000-es sorozat [életciklusa](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series) december 2022-ig ér véget. Fontos, hogy a lehető leghamarabb megkezdje az áttelepítés megtervezését. Ez a cikk a Azure File Syncba való sikeres áttelepítéshez szükséges háttérbeli ismereteket és áttelepítési lépéseket ismerteti. 
 
-A StorSimple egy megszűnt Microsoft-termék. A termék és a felhőalapú szolgáltatás kiterjesztett támogatása 31 2022 decemberében lejár. Fontos, hogy azonnal megkezdje a StorSimple áttelepítésének megtervezését.
-
-A Azure File Sync az alapértelmezett és a stratégiai hosszú távú Azure-szolgáltatás, amelyet a StorSimple berendezések áttelepíthetnek.
+## <a name="azure-file-sync"></a>Azure File Sync
 
 > [!IMPORTANT]
 > A Microsoft elkötelezte magát, hogy segítse az ügyfeleket az áttelepítés során. E-mail-AzureFilesMigration@microsoft. com a testreszabott áttelepítési tervhez, valamint az áttelepítés során nyújtandó támogatáshoz.
-
-## <a name="azure-file-sync"></a>Azure File Sync
 
 A Azure File Sync egy Microsoft Cloud Service, amely két fő összetevő alapján érhető el:
 
@@ -247,10 +243,10 @@ Az áttelepítési folyamat során több kötet-klónt fog csatlakoztatni a virt
 > [!IMPORTANT]
 > Ahhoz, hogy működjön, meg kell adni egy beállításkulcsot a kiszolgálón, mielőtt a Azure File Sync konfigurálva lenne.
 
-1. Hozzon létre egy új könyvtárat a virtuális gép rendszermeghajtóján. A csatlakoztatott kötetek klónozása helyett Azure File Sync adatokat is meg kell őrizni. Például:`“C:\syncmetadata”`
+1. Hozzon létre egy új könyvtárat a virtuális gép rendszermeghajtóján. A csatlakoztatott kötetek klónozása helyett Azure File Sync adatokat is meg kell őrizni. Például:`"C:\syncmetadata"`
 2. Nyissa meg a regeditt, és keresse meg a következő beállításjegyzék-struktúrát `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`:
 3. Hozzon létre egy string típusú új kulcsot, amelynek neve: ***MetadataRootPath***
-4. Állítsa be a rendszerköteten létrehozott könyvtár teljes elérési útját, például: `C:\syncmetadata”`
+4. Állítsa be a rendszerköteten létrehozott könyvtár teljes elérési útját, például: `C:\syncmetadata"`
 
 ### <a name="configure-azure-file-sync-on-the-azure-vm"></a>Azure File Sync konfigurálása az Azure-beli virtuális gépen
 
@@ -438,7 +434,7 @@ Ha meggyőződött róla, hogy legalább néhány napig megfigyelte az AFS üzem
 
 A Migrálás befejeződött.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg Azure File Syncával. Különösen a felhő-előteret biztosító házirendek rugalmasságával.
 

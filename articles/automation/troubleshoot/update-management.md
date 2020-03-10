@@ -8,12 +8,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 359f78cabbe0372e6892695c092ae49b62df7bfa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227466"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944182"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Hibák elhárítása Update Management
 
@@ -217,16 +217,19 @@ Ez a hiba a következő okok valamelyike miatt jelentkezhet:
 
 ### <a name="resolution"></a>Megoldás:
 
-Ha alkalmazható, használjon [dinamikus csoportokat](../automation-update-management-groups.md) a frissítés központi telepítéséhez. Ezenkívül:
+Ha alkalmazható, használjon [dinamikus csoportokat](../automation-update-management-groups.md) a frissítés központi telepítéséhez. Egyéb rendelkezések:
 
-* Győződjön meg arról, hogy a gép még létezik, és elérhető. Ha nem létezik, szerkessze az üzemelő példányt, és távolítsa el a gépet.
+* Győződjön meg arról, hogy a gép még létezik, és elérhető. 
+* Ha a gép nem létezik, szerkessze az üzemelő példányt, és távolítsa el a gépet.
 * Tekintse meg a [hálózati tervezés](../automation-update-management.md#ports) szakaszt a Update Managementhoz szükséges portok és címek listájának megtekintéséhez, majd ellenőrizze, hogy a gép megfelel-e a követelményeknek.
-* Futtassa a következő lekérdezést a Log Analyticsban azon gépek megkereséséhez, amelyek `SourceComputerId` megváltoztak. Keressen olyan számítógépeket, amelyek azonos `Computer` értékkel rendelkeznek, de eltérő `SourceComputerId` értékkel rendelkeznek. 
+* Ellenőrizze a hibrid Runbook-feldolgozóval való kapcsolatot a hibrid Runbook Worker Agent-hibakereső használatával. A hibaelhárítással kapcsolatos további tudnivalókért tekintse meg a [frissítési ügynökkel kapcsolatos problémák elhárítása](update-agent-issues.md)című témakört.
+* Futtassa a következő lekérdezést a Log Analyticsban, hogy megkeresse a környezetben található gépeket, amelyekhez `SourceComputerId` megváltozott. Keressen olyan számítógépeket, amelyek azonos `Computer` értékkel rendelkeznek, de eltérő `SourceComputerId` értékkel rendelkeznek.
 
    ```loganalytics
    Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
    ```
-   Miután megtalálta az érintett gépeket, szerkessze az ezeket a gépeket tároló frissítési központi telepítéseket, majd távolítsa el, majd adja hozzá őket, hogy `SourceComputerId` a helyes értéket tükrözze.
+
+* Miután megtalálta az érintett gépeket, szerkessze az ezeket a gépeket tároló frissítési központi telepítéseket, majd távolítsa el, majd adja hozzá őket, hogy `SourceComputerId` a helyes értéket tükrözze.
 
 ## <a name="updates-nodeployment"></a>Forgatókönyv: a frissítések központi telepítés nélkül települnek
 
@@ -426,7 +429,7 @@ Ha nem tudja feloldani a javítási problémát, készítsen másolatot a követ
 
 * A KB2267602 a [Windows Defender definíciófrissítése](https://www.microsoft.com/wdsi/definitions). Naponta frissül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nem találta meg a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 

@@ -8,18 +8,18 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f218c64d3ffe4955877516551a29376372144598
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526722"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933582"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Adatok átvitele a AzCopy és a blob Storage szolgáltatással
 
 A AzCopy egy parancssori segédprogram, amellyel az adatok átmásolhatók a, a-ból vagy a Storage-fiókok között. Ez a cikk a blob Storage-hoz használható példaként szolgáló parancsokat tartalmaz.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Tekintse meg az első [lépések a AzCopy](storage-use-azcopy-v10.md) című cikket a AzCopy letöltéséhez és a tárolási szolgáltatás engedélyezési hitelesítő adatainak megadásához szükséges módszerekről.
 
@@ -73,7 +73,8 @@ A részletes dokumentációt lásd: [azcopy másolás](storage-ref-azcopy-copy.m
 A fájl elérési útja vagy fájlneve tetszőleges helyettesítő karakter (*) használatával is feltölthet egy fájlt. Például: `'C:\myDirectory\*.txt'`vagy `C:\my*\*.txt`.
 
 > [!NOTE]
-> A AzCopy alapértelmezés szerint feltölti az adatblokk-blobokat. A fájlok hozzáfűzési Blobként való feltöltéséhez vagy az oldal Blobok a jelzőt használják `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
+> A AzCopy alapértelmezés szerint a blokk blobként tölti fel az adatokkal. A fájlok hozzáfűzési Blobként vagy Blobként való feltöltéséhez használja a jelzőt `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
+> A AzCopy alapértelmezés szerint feltölti az adatait, hogy örökölje a fiók hozzáférési szintjét. Ha fájlokat szeretne feltölteni egy adott [hozzáférési szintjére](../blobs/storage-blob-storage-tiers.md), használja a jelzőt `--block-blob-tier=[Hot|Cool|Archive]`.
 
 ### <a name="upload-a-directory"></a>Könyvtár feltöltése
 
@@ -346,7 +347,7 @@ A parancsban megjelenő első könyvtár a forrás. A második a cél.
 | **Szintaxis** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
 | **Példa** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További példákat a következő cikkekben talál:
 

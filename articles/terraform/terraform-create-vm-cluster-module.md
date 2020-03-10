@@ -1,14 +1,15 @@
 ---
 title: Oktatóanyag – Azure virtuálisgép-fürt létrehozása a Terraform a modul beállításjegyzékének használatával
-description: Megtudhatja, hogyan használhatók a Terraform-modulok Windows rendszerű virtuálisgép-fürtök létrehozásra az Azure-ban
+description: Ebben az oktatóanyagban a Terraform-modulok használatával hoz létre egy Windows rendszerű virtuálisgép-fürtöt az Azure-ban
+keywords: Azure devops Terraform virtuális gép virtuálisgép-fürt moduljának beállításjegyzéke
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: d17a0d7c26cc1a16ab73350fe6e8c28ba4af6ff2
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 03/09/2020
+ms.openlocfilehash: 9faeee9bb2f0fb6dc148a3868f6fc0dae3833a2a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472203"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945288"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Oktatóanyag: Azure-beli virtuálisgép-fürt létrehozása a Terraform a modul beállításjegyzékének használatával
 
@@ -36,6 +37,8 @@ variable client_id {}
 variable client_secret {}
 
 provider "azurerm" {
+    version = "~>1.40"
+
     subscription_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     tenant_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     client_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -97,7 +100,7 @@ Futtassa a `terraform apply` parancsot a virtuális gépek kiépítéséhez az A
 
 ![Terraform alkalmazása](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
 > [Az Azure Terraform-modulok listájának tallózása](https://registry.terraform.io/modules/Azure)

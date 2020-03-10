@@ -3,12 +3,12 @@ title: Azure Migrate Server Migration – gyakori kérdések
 description: Választ kaphat a Azure Migrate kiszolgáló áttelepítésének a gépek áttelepítésére való használatával kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 273ef746e685afcf9f3654963dd9c6bd5b855b24
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 4d3638e930b4e12a29df4ab189ffb24ab248582b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927520"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939202"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate kiszolgáló áttelepítése: gyakori kérdések
 
@@ -74,7 +74,20 @@ Nem. A Azure Migrate csak felügyelt lemezekre (standard HDD, prémium SSD) tám
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Hány virtuális gépet lehet egyszerre replikálni az ügynök nélküli áttelepítés használatával?
 
 Jelenleg a 100-es virtuális gépeket a vCenter Server egy példányán egyszerre telepítheti át. Migrálás 10 virtuális gép kötegei között.
+
+## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Mikor telepíthetem a gépeket fizikai kiszolgálóként?
+
+A gépek áttelepítése a fizikai kiszolgálóként való kezeléssel számos esetben hasznos:
+
+- Helyszíni fizikai kiszolgálók áttelepítésekor.
+- Ha olyan virtuális gépeket telepít át, amelyek platformokon, például a Xen-ban, a KVM-ban vannak virtualizálva.
+- A Hyper-V vagy a VMware virtuális gépek áttelepítéséhez, ha valamilyen okból kifolyólag nem tudja használni a [Hyper-v](tutorial-migrate-hyper-v.md)normál áttelepítési folyamatát, vagy a [VMware](server-migrate-overview.md) áttelepítését. Ha például nem futtat VMware-vCenter, és csak ESXi-gazdagépeket használ.
+- Saját felhőben futó virtuális gépek migrálása az Azure-ba
+- Ha nyilvános felhőben (például Amazon Web Services (AWS) vagy Google Cloud Platform (GCP)) futó virtuális gépeket szeretne áttelepíteni az Azure-ba.
+
+## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>A VMWare virtuális gépek áttelepítéséhez VMware vCenter szükséges?
+[VMWare virtuális gépek](server-migrate-overview.md) áttelepítéséhez VMware ügynök-alapú vagy ügynök nélküli Migrálás esetén az ESXi-gazdagépeket, amelyeken a virtuális gépek találhatók, vCenter Server kell felügyelni. Ha nem rendelkezik vCenter Serverekkel, áttelepítheti a VMware virtuális gépeket fizikai kiszolgálóként való áttelepítéssel. [További információk](migrate-support-matrix-physical-migration.md).
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).

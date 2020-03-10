@@ -4,30 +4,26 @@ description: Megtudhatja, hogyan telepíthet át egy StorSimple 1200 sorozatú v
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4a32251b60066d6a85595e4d1b6c002f8587c01d
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 6863e7f8ef8e2f263cda824fd13186dc7b035454
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330940"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943613"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 Migrálás Azure File Syncre
 
-A StorSimple 1200 sorozat egy virtuális berendezés, amely egy helyszíni adatközpontban fut. Az adatok áttelepíthetők a készülékről egy Azure File Sync környezetbe. Ez a cikk a Azure File Syncba való sikeres áttelepítéshez szükséges háttérbeli ismereteket és áttelepítési lépéseket ismerteti.
+A StorSimple 1200 sorozat egy virtuális berendezés, amely egy helyszíni adatközpontban fut. Az adatok áttelepíthetők a készülékről egy Azure File Sync környezetbe. A Azure File Sync az alapértelmezett és a stratégiai hosszú távú Azure-szolgáltatás, amelyet a StorSimple berendezések áttelepíthetnek.
 
-## <a name="storsimple"></a>StorSimple
+A StorSimple 1200-es sorozat [életciklusa](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%201200%20Series) december 2022-ig ér véget.  Fontos, hogy a lehető leghamarabb megkezdje az áttelepítés megtervezését. Ez a cikk a Azure File Syncba való sikeres áttelepítéshez szükséges háttérbeli ismereteket és áttelepítési lépéseket ismerteti. 
 
-A StorSimple egy megszűnt Microsoft-termék. A termék és a felhőalapú szolgáltatás kiterjesztett támogatása 31 2022 decemberében lejár. Fontos, hogy azonnal megkezdje a StorSimple áttelepítésének megtervezését.
-
-A Azure File Sync az alapértelmezett és a stratégiai hosszú távú Azure-szolgáltatás, amelyet a StorSimple berendezések áttelepíthetnek.
+## <a name="azure-file-sync"></a>Azure File Sync
 
 > [!IMPORTANT]
 > A Microsoft elkötelezte magát, hogy segítse az ügyfeleket az áttelepítés során. E-mail-AzureFilesMigration@microsoft. com a testreszabott áttelepítési tervhez, valamint az áttelepítés során nyújtandó támogatáshoz.
-
-## <a name="azure-file-sync"></a>Azure File Sync
 
 A Azure File Sync egy Microsoft Cloud Service, amely két fő összetevő alapján érhető el:
 
