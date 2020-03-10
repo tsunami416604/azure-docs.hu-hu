@@ -13,11 +13,11 @@ ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 89bafeb077fc83f4f3165d591006831bf8287875
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190483"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365259"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Hitelesítési folyamatok és alkalmazási helyzetek
 
@@ -33,7 +33,7 @@ Ez a cikk a hitelesítési folyamatokat és a használt alkalmazási forgatókö
 A jogkivonatok számos különböző típusú alkalmazásból szerezhetők be, többek között:
 
 - Webalkalmazások
-- Mobilalkalmazásokban
+- Mobilalkalmazások
 - Asztali alkalmazások
 - Webes API-k
 
@@ -73,7 +73,7 @@ A biztonsági jogkivonatok többféle típusú alkalmazásból is beszerezhetők
 
 - **Nyilvános ügyfélalkalmazások**: ezek az alkalmazások mindig bejelentkeznek a felhasználókba:
   - A bejelentkezett felhasználó nevében webes API-kat hívó asztali alkalmazások
-  - Mobilalkalmazásokban
+  - Mobilalkalmazások
   - A böngészővel nem rendelkező eszközökön futó alkalmazások, például a iOT-on futó alkalmazások
 
   Ezeket az alkalmazásokat a MSAL [PublicClientApplication](/dotnet/api/microsoft.identity.client.publicclientapplication) osztály képviseli. További információ: [nyilvános ügyfél és bizalmas ügyfélalkalmazások](msal-client-applications.md).
@@ -92,7 +92,7 @@ A Microsoft Identity platform végpontja támogatja a különböző alkalmazás-
 - Egyoldalas alkalmazások
 - Webalkalmazások
 - Webes API-k
-- Mobilalkalmazásokban
+- Mobilalkalmazások
 - Natív alkalmazások
 - Démonalkalmazások
 - Kiszolgálóoldali alkalmazások
@@ -311,6 +311,6 @@ A következő táblázat Windows oszlopában a .NET-keretrendszer minden alkalom
 
 További információ: Microsoft által [támogatott könyvtárak operációs rendszer/nyelv alapján](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [hitelesítés alapjairól](authentication-scenarios.md) és a [Microsoft Identity platform hozzáférési jogkivonatáról](access-tokens.md).

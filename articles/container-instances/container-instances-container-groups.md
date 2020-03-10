@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888056"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365013"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Tároló-csoportok a Azure Container Instances
 
@@ -34,7 +34,7 @@ Ez a példa tároló Csoport:
 > [!NOTE]
 > A több tárolóból álló csoportok jelenleg csak a Linux-tárolókat támogatják. A Windows-tárolók esetében Azure Container Instances csak egyetlen tároló példány üzembe helyezését támogatja. Miközben dolgozunk a Windows-tárolók összes funkciójának bekapcsolásán, megkeresheti a platform aktuális eltéréseit a szolgáltatás [áttekintésében](container-instances-overview.md#linux-and-windows-containers).
 
-## <a name="deployment"></a>Üzembe helyezés
+## <a name="deployment"></a>Környezet
 
 A többtárolós csoportok üzembe helyezésének két gyakori módja van: egy [Resource Manager-sablon][resource-manager template] vagy egy [YAML-fájl][yaml-file]használata. A Resource Manager-sablonok használata akkor ajánlott, ha további Azure-szolgáltatási erőforrásokat (például [Azure Files megosztást][azure-files]) kell üzembe helyeznie a tároló példányainak telepítésekor. A YAML formátumának tömörebb jellege miatt a YAML-fájlok használata akkor ajánlott, ha a központi telepítés csak tároló példányokat tartalmaz. A beállítható tulajdonságokkal kapcsolatos részletekért tekintse meg a [Resource Manager-sablonok referenciáját](/azure/templates/microsoft.containerinstance/containergroups) vagy a [YAML](container-instances-reference-yaml.md) dokumentációját.
 
@@ -64,7 +64,7 @@ Ebben az esetben beállíthatja a Container-példányhoz tartozó 2 processzoros
 
 * A tárolói csoportok **maximális** erőforrásaival kapcsolatban tekintse meg az [Erőforrás rendelkezésre állását][region-availability] Azure Container instances a telepítési régióban.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 A Container groups megoszthat egy külső elérésű IP-címet, egy vagy több portot az adott IP-címen, valamint egy teljes tartománynevet (FQDN) tartalmazó DNS-címkét is. Ahhoz, hogy a külső ügyfelek elérjék a csoporton belüli tárolókat, ki kell jelölnie a portot az IP-címen és a tárolóból. Mivel a csoportba tartozó tárolók a portok névterét használják, a port megfeleltetése nem támogatott. A rendszer a tároló csoportjának IP-címét és teljes tartománynevét fogja felszabadítani a Container Group törlésekor. 
 
@@ -72,7 +72,7 @@ Egy tároló csoporton belül a Container instances a localhost-on keresztül b�
 
 A tároló-csoportok üzembe helyezése egy Azure-beli [virtuális hálózatban][virtual-network] , amely lehetővé teszi, hogy a tárolók biztonságosan kommunikáljanak a virtuális hálózat más erőforrásaival.
 
-## <a name="storage"></a>Adattárolás
+## <a name="storage"></a>Tárterület
 
 Külső köteteket is megadhat a tároló csoportba való csatlakoztatáshoz. A támogatott kötetek a következők:
 * [Azure-fájlmegosztás][azure-files]
@@ -82,7 +82,7 @@ Külső köteteket is megadhat a tároló csoportba való csatlakoztatáshoz. A 
 
 Ezeket a köteteket meghatározott elérési utakra is leképezheti egy csoport egyes tárolói között. 
 
-## <a name="common-scenarios"></a>Gyakori forgatókönyvek
+## <a name="common-scenarios"></a>Gyakori alkalmazási helyzetek
 
 A többtárolós csoportok olyan esetekben hasznosak, amikor egyetlen funkcionális feladatot szeretne megosztani kis számú tároló-lemezképbe. Ezeket a lemezképeket ezután különböző csapatok továbbítják, és külön erőforrás-követelményekkel rendelkezhetnek.
 

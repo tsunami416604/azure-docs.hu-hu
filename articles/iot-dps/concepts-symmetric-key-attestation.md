@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975295"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393941"
 ---
 # <a name="symmetric-key-attestation"></a>Szimmetrikus kulcsú igazolás
 
@@ -46,12 +46,12 @@ Az SAS-jogkivonatok formátuma a következő:
 
 Az egyes tokenek összetevői:
 
-| Value (Díj) | Leírás |
+| Érték | Leírás |
 | --- | --- |
 | aláírás |Egy HMAC-SHA256 aláírási karakterlánc. Az egyéni regisztrációk esetében ez az aláírás a szimmetrikus kulcs (elsődleges vagy másodlagos) segítségével történik a kivonat végrehajtásához. A beléptetési csoportok esetében a rendszer a beléptetési csoport kulcsa alapján származtatott kulcsot használja a kivonat végrehajtásához. A kivonatot a következő formában lévő üzenetben kell elvégezni: `URL-encoded-resourceURI + "\n" + expiry`. **Fontos**: a kulcsot a HMAC-sha256 számítás végrehajtásához a Base64-ből kell dekódolni. Emellett az aláírás eredményének URL-kódolású kell lennie. |
-| ResourceURI |A jogkivonattal elérhető regisztrációs végpont URI-ja, amely az eszköz kiépítési szolgáltatási példányának hatókör-azonosítójával kezdődik. Például: `{Scope ID}/registrations/{Registration ID}` |
-| lejárta |UTF8-karakterláncok a 00:00:00-es, 1970-os UTC-kor óta eltelt idő másodpercben. |
-| {URL-kódolt-resourceURI} |Kisbetűs URL-cím – a kisbetűs erőforrás URI-ja kódolása |
+| {resourceURI} |A jogkivonattal elérhető regisztrációs végpont URI-ja, amely az eszköz kiépítési szolgáltatási példányának hatókör-azonosítójával kezdődik. Például: `{Scope ID}/registrations/{Registration ID}` |
+| {expiry} |UTF8-karakterláncok a 00:00:00-es, 1970-os UTC-kor óta eltelt idő másodpercben. |
+| {URL-encoded-resourceURI} |Kisbetűs URL-cím – a kisbetűs erőforrás URI-ja kódolása |
 | PolicyName |Annak a megosztott hozzáférési házirendnek a neve, amelyre ez a jogkivonat hivatkozik. A szimmetrikus kulcs igazolásával való kiépítés során használt szabályzat neve **regisztráció**. |
 
 Ha egy eszköz egyéni regisztrációt tanúsít, az eszköz az egyéni beléptetési bejegyzésben definiált szimmetrikus kulcs használatával hozza létre az SAS-jogkivonat kivonatos aláírását.

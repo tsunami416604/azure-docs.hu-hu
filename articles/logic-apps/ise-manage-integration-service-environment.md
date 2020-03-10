@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 1d91813e0f39207bcf7768de89600a6bdee0fc53
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792621"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358819"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Az integrációs szolgáltatási környezet (ISE) kezelése Azure Logic Apps
 
@@ -19,7 +19,7 @@ Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtua
 
 ## <a name="view-your-ise"></a>Az ISE megtekintése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. A portál keresési mezőjébe írja be az "integrációs szolgáltatási környezetek" kifejezést, majd válassza az **integrációs szolgáltatási környezetek**lehetőséget.
 

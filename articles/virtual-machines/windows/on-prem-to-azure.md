@@ -16,11 +16,11 @@ ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: dbce2969ccb508c2bf3ee33730d0b112caa45c9e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033049"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388646"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrálás Amazon Web Servicesról (AWS) és más platformokról az Azure-ba Managed Disks
 
@@ -63,7 +63,7 @@ Válasszon ki egy helyet, ahol elérhetők az Azure Managed Disks. Ha prémium s
 Ha prémium szintű Managed Disksra végez áttelepítést, frissítenie kell a virtuális gép méretét, hogy Premium Storage a virtuális gép helyét tartalmazó régióban elérhető méretet. Tekintse át a Premium Storage képes virtuális gépek méretét. Az Azure-beli virtuális gép méretének specifikációi a [virtuális gépek méretei](sizes.md)szerint vannak felsorolva.
 Tekintse át a Premium Storaget használó virtuális gépek teljesítményének jellemzőit, és válassza ki a legmegfelelőbb virtuálisgép-méretet, amely legjobban megfelel a számítási feladatnak. Győződjön meg arról, hogy elegendő sávszélesség áll rendelkezésre a virtuális gépen a lemez forgalmának elvégzéséhez.
 
-### <a name="disk-sizes"></a>Lemezméretek
+### <a name="disk-sizes"></a>Lemezek mérete
 
 **Prémium Managed Disks**
 
@@ -73,7 +73,7 @@ A virtuális géppel, valamint a IOPs és az átviteli sebességével kapcsolatb
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
 | Lemezméret           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
 | IOPS-érték lemezenként       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7500              | 7500              | 
-| Adattovábbítás lemezenként | 25 MB/másodperc  | 50 MB/másodperc  | 100 MB/másodperc | 125 MB/másodperc |150 MB/másodperc | 200 MB/másodperc | 250 MB/másodperc | 250 MB/másodperc |
+| Adattovábbítás lemezenként | 25 MB/másodperc  | 50 MB/másodperc  | 100 MB/s | 125 MB/másodperc |150 MB/másodperc | 200 MB/másodperc | 250 MB/másodperc | 250 MB/másodperc |
 
 **Standard Managed Disks**
 

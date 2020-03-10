@@ -4,11 +4,11 @@ description: Diagramok értelmezése a metrika-kezelőben és a metrikai Explore
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670168"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368257"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>A metrikák feltárása Application Insights
 A [Application Insights][start] mérőszámai az alkalmazásból telemetria eljuttatott események értékeit és számát mérik. Segítenek észlelni a teljesítménnyel kapcsolatos problémákat, és figyeli az alkalmazás használatának folyamatát. A standard mérőszámok széles skáláját használhatja, és saját egyéni metrikákat és eseményeket is létrehozhat.

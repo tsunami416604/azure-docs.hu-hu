@@ -12,11 +12,11 @@ ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 4ae2e84ab5f6108de4e8236c39371cf9658809d8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823865"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359889"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Rugalmas készletek kezelése Azure SQL Database
 
@@ -115,7 +115,7 @@ SQL Database rugalmas készletek és készletezett adatbázisok létrehozásáho
 |[Adatbázisok – kiszolgálók listázása](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Egy kiszolgáló adatbázisainak listáját adja vissza.|
 |[Adatbázisok – frissítés](https://docs.microsoft.com/rest/api/sql/databases/update)|Frissít egy meglévő adatbázist.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.
 * A rugalmas készleteket használó SaaS-oktatóanyagért tekintse [meg a Wingtip SaaS-alkalmazás bemutatása](sql-database-wtp-overview.md)című témakört.

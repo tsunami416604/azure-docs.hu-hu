@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111415"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381810"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>A keresési választ tartalmazó válaszok szűrése  
 
@@ -111,7 +111,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 > [!NOTE]
 > A lekérdezéstől függően, ha a `site:` lekérdezési operátort használja, akkor előfordulhat, hogy a válasz csak felnőtt tartalmat tartalmazhat, a [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) beállítástól függetlenül. Csak akkor használja a `site:` operátort, ha ismeri a webhely tartalmát, és a felnőtteknek szóló tartalmak megjelenítése nem okoz problémát.
 
-### <a name="freshness"></a>Közzététel ideje
+### <a name="freshness"></a>Frissesség
 
 Ha korlátozni szeretné a webválaszok eredményeit arra a weblapra, amelyet a Bing adott időszakban észlelt, állítsa a [frissesség](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) lekérdezési paraméterét a következő kis-és nagybetűket megkülönböztető értékek egyikére:
 

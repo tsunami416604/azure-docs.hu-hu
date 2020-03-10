@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: bc318aff0dad7d7fdff16df549c013927ef0e799
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: acdac6e3eafc5251ebd31a34bcb9a4db34f0ebbe
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938815"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945825"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager gyakori kérdések (GYIK)
 
@@ -43,7 +43,7 @@ Ahogy azt a [Traffic Manager működése című témakör](../traffic-manager/tr
 
 A további vizsgálatnak ezért az alkalmazásra kell összpontosítania.
 
-Az ügyfél böngészőjéből eljuttatott HTTP-állomásfejléc a leggyakoribb problémák forrása. Győződjön meg arról, hogy az alkalmazás úgy van konfigurálva, hogy fogadja el a megfelelő állomásfejléc-fejlécet a használt tartománynévhez. A Azure App Servicet használó végpontok esetében lásd: [Egyéni tartománynév konfigurálása webalkalmazáshoz a Azure app Service a Traffic Manager használatával](../app-service/web-sites-traffic-manager-custom-domain-name.md).
+Az ügyfél böngészőjéből eljuttatott HTTP-állomásfejléc a leggyakoribb problémák forrása. Győződjön meg arról, hogy az alkalmazás úgy van konfigurálva, hogy fogadja el a megfelelő állomásfejléc-fejlécet a használt tartománynévhez. A Azure App Servicet használó végpontok esetében lásd: [Egyéni tartománynév konfigurálása webalkalmazáshoz a Azure app Service a Traffic Manager használatával](../app-service/configure-domain-traffic-manager.md).
 
 ### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Milyen hatással van a Traffic Manager használatának teljesítményére?
 
@@ -145,9 +145,9 @@ A végfelhasználói eszközök jellemzően DNS-feloldót használnak a DNS-cím
 
 A végpontokhoz társítandó IP-címek kétféleképpen adhatók meg. Először is használhatja a quad pontozott decimális oktettjét a kezdő és záró címekkel a tartomány meghatározásához (például 1.2.3.4-5.6.7.8 vagy 3.4.5.6-3.4.5.6). Másodszor, a CIDR jelölés használatával megadhatja a tartományt (például 1.2.3.0/24). Több tartományt is megadhat, és használhat mindkét jelölési típust egy tartomány készletében. Néhány korlátozás érvényes.
 
--   A címtartományok átfedése nem lehetséges, mivel az egyes IP-címeket csak egyetlen végpontra kell leképezni.
--   A kezdő címnek nem lehet hosszabb a záró címtől
--   A CIDR-jelölés esetén az IP-címnek, amely előtt a "/" értéknek kell lennie, az adott tartomány kezdő címének kell lennie (például 1.2.3.0/24 érvényes, de a 1.2.3.4.4/24 érvénytelen).
+-    A címtartományok átfedése nem lehetséges, mivel az egyes IP-címeket csak egyetlen végpontra kell leképezni.
+-    A kezdő címnek nem lehet hosszabb a záró címtől
+-    A CIDR-jelölés esetén az IP-címnek, amely előtt a "/" értéknek kell lennie, az adott tartomány kezdő címének kell lennie (például 1.2.3.0/24 érvényes, de a 1.2.3.4.4/24 érvénytelen).
 
 ### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Hogyan adhatok tartalék végpontot alhálózati útválasztás használatakor?
 
@@ -172,7 +172,7 @@ Megadhatja a visszaadni kívánt végpontok maximális számát, és a többért
 
 Nem garantáljuk, hogy az egyes lekérdezésekben ugyanazok a végpontok lesznek visszaadva. Ezt az is befolyásolja, hogy egyes végpontok nem megfelelő állapotba kerülhetnek, amikor a válaszban nem fognak szerepelni.
 
-## <a name="real-user-measurements"></a>Valós felhasználóiélmény-mérések
+## <a name="real-user-measurements"></a>Valós felhasználói mérések
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Milyen előnyökkel jár a valós felhasználómérés használata?
 
@@ -252,7 +252,7 @@ Nem, a valós felhasználómérés működéséhez nem szükséges kiszolgálóo
 
 Az előző válaszban említettek szerint a valós felhasználómérés kiszolgálóoldali összetevői az Azure tulajdonában és felügyelete alatt állnak. Ez azt jelenti, hogy az Azure-sávszélesség használata nem fog növekedni, mert valós felhasználómérés használ. Ez nem tartalmazza az Azure-díjakon kívüli sávszélesség-használatot. A sávszélességet az Azure-régiók késésének méréséhez csak egyetlen képpontos rendszerkép letöltésével lehet csökkenteni. 
 
-## <a name="traffic-view"></a>Traffic View
+## <a name="traffic-view"></a>Forgalomnézet
 
 ### <a name="what-does-traffic-view-do"></a>Mit tesz forgalomáttekintő?
 
@@ -382,25 +382,25 @@ Amikor lekérdezést fogad egy profilhoz, Traffic Manager először a megadott �
 
 Olyan profilok esetében, amelyek nem a többértékű útválasztási módszerrel rendelkeznek:
 
-|Bejövő lekérdezési kérelem|    Végpont típusa|  Válasz megadva|
+|Bejövő lekérdezési kérelem|     Végpont típusa|     Válasz megadva|
 |--|--|--|
-|BÁRMELY |  A/AAAA/CNAME |  Cél végpont| 
-|A |    A/CNAME | Cél végpont|
-|A |    AAAA |  NODATA |
-|AAAA | AAAA/CNAME |  Cél végpont|
-|AAAA | A | NODATA |
-|CNAME |    CNAME | Cél végpont|
-|CNAME  |A/AAAA | NODATA |
+|BÁRMELY |    A / AAAA / CNAME |    Cél végpont| 
+|A |    A / CNAME |    Cél végpont|
+|A |    AAAA |    NODATA |
+|AAAA |    AAAA / CNAME |    Cél végpont|
+|AAAA |    A |    NODATA |
+|CNAME |    CNAME |    Cél végpont|
+|CNAME     |A / AAAA |    NODATA |
 |
 
 Olyan profilok esetében, amelyeknél az útválasztási módszer értéke többértékű:
 
-|Bejövő lekérdezési kérelem|    Végpont típusa | Válasz megadva|
+|Bejövő lekérdezési kérelem|     Végpont típusa |    Válasz megadva|
 |--|--|--|
-|BÁRMELY |  A és AAAA kombinációja | Cél végpontok|
-|A |    A és AAAA kombinációja | Csak az A típusú cél végpontok|
-|AAAA   |A és AAAA kombinációja|     Csak AAAA típusú cél végpontok|
-|CNAME |    A és AAAA kombinációja | NODATA |
+|BÁRMELY |    A és AAAA kombinációja |    Cél végpontok|
+|A |    A és AAAA kombinációja |    Csak az A típusú cél végpontok|
+|AAAA    |A és AAAA kombinációja|     Csak AAAA típusú cél végpontok|
+|CNAME |    A és AAAA kombinációja |    NODATA |
 
 ### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Használhatok egy beágyazott profil IPv4/IPv6-beli végpontját használó profilt?
 
@@ -499,7 +499,7 @@ A következő táblázat ismerteti a beágyazott végpontok Traffic Manager áll
 
 | Gyermek Profil figyelő állapota | Szülő Endpoint monitor állapota | Megjegyzések |
 | --- | --- | --- |
-| Tiltva. A gyermek profil le lett tiltva. |Leállítva |A fölérendelt végpont állapota leáll, nem letiltva. A letiltott állapot annak jelzésére van fenntartva, hogy letiltotta a végpontot a szülő profilban. |
+| Letiltva. A gyermek profil le lett tiltva. |Leállítva |A fölérendelt végpont állapota leáll, nem letiltva. A letiltott állapot annak jelzésére van fenntartva, hogy letiltotta a végpontot a szülő profilban. |
 | Leromlott. Legalább egy alárendelt profil-végpont csökkentett teljesítményű állapotban van. |Online: a gyermek profilban található online végpontok száma legalább a MinChildEndpoints értéke.<BR>CheckingEndpoint: az online plusz CheckingEndpoint végpontok száma a gyermek profilban legalább a MinChildEndpoints értéke.<BR>Csökkentett teljesítményű: máskülönben. |A forgalmat az állapot CheckingEndpoint-végpontja irányítja át. Ha a MinChildEndpoints túl magasra van állítva, a végpont mindig csökken. |
 | Online. Legalább egy alárendelt profil végpontja online állapotú. Egy végpont nem csökkentett teljesítményű állapotban van. |Lásd fentebb. | |
 | CheckingEndpoints. Legalább egy alárendelt profil végpontja a következő: "CheckingEndpoint". Nincsenek végpontok "online" vagy "csökkentett teljesítményű" |Ugyanaz, mint a fenti. | |

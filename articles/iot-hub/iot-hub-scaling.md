@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
 ms.openlocfilehash: d1de29124825a7f398b9722bb2455d1105e9c9f7
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023641"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393659"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Válassza ki a megoldás megfelelő IoT Hubi szintjét
 
@@ -42,7 +42,7 @@ Egy adott rétegen belül csak egy [kiadást](https://azure.microsoft.com/pricin
 | [Üzenetek útválasztása](iot-hub-devguide-messages-read-custom.md), [üzenetek gazdagítása](iot-hub-message-enrichments-overview.md)és [Event Grid integráció](iot-hub-event-grid.md) | Igen | Igen |
 | [HTTP-, AMQP-és MQTT-protokollok](iot-hub-devguide-protocols.md) | Igen | Igen |
 | [Eszköz kiépítési szolgáltatása](../iot-dps/about-iot-dps.md) | Igen | Igen |
-| [Figyelés és diagnosztika](iot-hub-monitor-resource-health.md) | Igen | Igen |
+| [Monitorozás és diagnosztika](iot-hub-monitor-resource-health.md) | Igen | Igen |
 | [A felhőből az eszközre irányuló üzenetküldés](iot-hub-devguide-c2d-guidance.md) |   | Igen |
 | [Eszközök](iot-hub-devguide-device-twins.md), ikrek, [modulok](iot-hub-devguide-module-twins.md) [és eszközkezelés](iot-hub-device-management-overview.md) |   | Igen |
 | [Eszköz streamek (előzetes verzió)](iot-hub-device-streams-overview.md) |   | Igen |
@@ -134,7 +134,7 @@ Adott burst-teljesítményi számok esetében lásd: [IoT hub kvóták és szab�
 
 Ha közeledik az engedélyezett IoT hub-korláthoz, a következő [lépésekkel automatikusan méretezheti](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) az IoT hub egységet ugyanazon a IoT hub szinten.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a IoT Hub képességekről és a teljesítmény részleteiről: [IoT hub díjszabási](https://azure.microsoft.com/pricing/details/iot-hub) vagy [IoT hub kvóták és szabályozások](iot-hub-devguide-quotas-throttling.md).
 

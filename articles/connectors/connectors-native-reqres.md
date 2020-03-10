@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 tags: connectors
 ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900261"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386516"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Bejövő HTTPS-hívások fogadása és válaszadás a Azure Logic Apps használatával
 
@@ -48,7 +48,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített ké
 
 Ez a beépített trigger egy manuálisan megadható HTTPS-végpontot hoz létre, amely *csak* a bejövő HTTPS-kérelmek fogadására képes. Ha ez az esemény történik, az eseményindító elindít és futtatja a logikai alkalmazást. Az trigger alapjául szolgáló JSON-definícióval és az trigger meghívásával kapcsolatos további információkért tekintse meg a [kérelem trigger típusának](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) és [hívásának, triggerének vagy beágyazásának munkafolyamatait http-végpontokkal Azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Üres logikai alkalmazás létrehozása.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Üres logikai alkalmazás létrehozása.
 
 1. A Logic app Designer megnyitása után a keresőmezőbe írja be szűrőként a "http-kérelem" kifejezést. Az eseményindítók listából válassza ki a **http-kérelem fogadása** eseményindítót, amely a logikai alkalmazás munkafolyamatának első lépése.
 
@@ -58,7 +58,7 @@ Ez a beépített trigger egy manuálisan megadható HTTPS-végpontot hoz létre,
 
    ![Kérelem triggere](./media/connectors-native-reqres/request-trigger.png)
 
-   | Tulajdonság neve | JSON-tulajdonság neve | Szükséges | Leírás |
+   | Tulajdonság neve | JSON-tulajdonság neve | Kötelező | Leírás |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL-CÍM** | nEz egy | Igen | A logikai alkalmazás mentése után generált végponti URL-cím, amely a logikai alkalmazás meghívására szolgál |
    | **Kérelem törzsének JSON-sémája** | `schema` | Nem | A bejövő kérelem törzsében található tulajdonságokat és értékeket leíró JSON-séma |
@@ -157,7 +157,7 @@ Ez a beépített trigger egy manuálisan megadható HTTPS-végpontot hoz létre,
 
 1. További tulajdonságok megadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a hozzáadni kívánt paramétereket.
 
-   | Tulajdonság neve | JSON-tulajdonság neve | Szükséges | Leírás |
+   | Tulajdonság neve | JSON-tulajdonság neve | Kötelező | Leírás |
    |---------------|--------------------|----------|-------------|
    | **Metódus** | `method` | Nem | Az a módszer, amelyet a bejövő kérelemnek használnia kell a logikai alkalmazás meghívásához. |
    | **Relatív elérési út** | `relativePath` | Nem | Annak a paraméternek a relatív elérési útja, amelyet a logikai alkalmazás végpontjának URL-címe el tud fogadni |
@@ -189,7 +189,7 @@ Ez a beépített trigger egy manuálisan megadható HTTPS-végpontot hoz létre,
 
 További információ a kérelmek trigger kimenetéről:
 
-| JSON-tulajdonság neve | Data type | Leírás |
+| JSON-tulajdonság neve | Adattípus | Leírás |
 |--------------------|-----------|-------------|
 | `headers` | Objektum | Egy JSON-objektum, amely leírja a kérelem fejléceit. |
 | `body` | Objektum | Egy JSON-objektum, amely leírja a kérelem törzsének tartalmát |
@@ -231,7 +231,7 @@ A logikai alkalmazás csak egy percig tart nyitva a bejövő kérelemben. Felté
 
    A válasz műveletben megadható tulajdonságokkal kapcsolatos további információk. 
 
-   | Tulajdonság neve | JSON-tulajdonság neve | Szükséges | Leírás |
+   | Tulajdonság neve | JSON-tulajdonság neve | Kötelező | Leírás |
    |---------------|--------------------|----------|-------------|
    | **Állapotkód** | `statusCode` | Igen | A válaszban visszaadni kívánt állapotkód |
    | **Fejlécek** | `headers` | Nem | Egy JSON-objektum, amely egy vagy több, a válaszban szerepeltetni kívánt fejlécet ismertet. |

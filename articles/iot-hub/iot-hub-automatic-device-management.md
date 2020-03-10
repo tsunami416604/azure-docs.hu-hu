@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
 ms.openlocfilehash: 75c6b7d89e7ae540e7428afde127281aa3f15fc6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429349"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386092"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Az eszköz-és IoT automatikus kezelése a Azure Portal használatával
 
@@ -62,7 +62,7 @@ A konfiguráció létrehozása előtt meg kell adnia, hogy mely eszközöket vag
 
    ![Eszköz konfigurációjának vagy modul-konfigurációjának hozzáadása](./media/iot-hub-automatic-device-management/create-automatic-configuration.png)
 
-A konfiguráció létrehozásához öt lépés szükséges. A következő szakasz végigvezeti a műveletet. 
+A konfiguráció létrehozásához öt lépés szükséges. A következő szakaszok egyenként végig. 
 
 ### <a name="name-and-label"></a>Név és címke
 
@@ -106,7 +106,7 @@ Mindegyik konfiguráció legfeljebb öt egyéni metrikával rendelkezhet.
 
 2. Adja meg a **mérőszám feltételeinek**lekérdezését.  A lekérdezés az eszköz Twin jelentett tulajdonságain alapul.  A metrika a lekérdezés által visszaadott sorok számát jelöli.
 
-Példa:
+Például:
 
 ```sql
 SELECT deviceId FROM devices 
@@ -121,7 +121,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-Ha mérőszámot készít a konfigurált modulok jelentésére, válassza a `moduleId` lehetőséget `devices.modules`. Példa:
+Ha mérőszámot készít a konfigurált modulok jelentésére, válassza a `moduleId` lehetőséget `devices.modules`. Például:
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules
@@ -188,7 +188,7 @@ A konfiguráció részleteinek megtekintéséhez és az azt futtató eszközök 
 
 Konfiguráció módosításakor a módosítások azonnal replikálódnak az összes megadott eszközre vagy modulra. 
 
-Ha frissíti a célként megadott feltételt, a következő frissítések történnek:
+A célfeltétel frissít, ha elő a következő frissítéseket:
 
 * Ha egy iker nem felelt meg a régi cél feltételnek, de megfelel az új célként megadott feltételnek, és ez a konfiguráció az adott Twin legmagasabb prioritása, akkor ezt a konfigurációt alkalmazza a rendszer. 
 
@@ -204,12 +204,12 @@ A konfiguráció módosításához kövesse az alábbi lépéseket:
 
 3. Válassza ki a módosítani kívánt konfigurációt. 
 
-4. Frissítse a következő mezőket: 
+4. Hajtsa végre a frissítéseket a következő mezőket: 
 
-   * Cél feltétel 
+   * Célfeltétel 
    * Címkék 
    * Prioritás 
-   * Metrikák
+   * Mérőszámok
 
 4. Kattintson a **Mentés** gombra.
 

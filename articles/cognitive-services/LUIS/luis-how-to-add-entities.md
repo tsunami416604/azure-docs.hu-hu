@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383679"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393840"
 ---
 # <a name="add-entities-to-extract-data"></a>Entitások hozzáadása az adatok kinyeréséhez 
 
@@ -177,7 +177,7 @@ A LUIS nem engedi, hogy az entitás típusa módosítható, mert ez nem tudja, h
 
 <a name="create-a-pattern-from-an-utterance"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [Előre elkészített modellek használata](howto-add-prebuilt-models.md) 

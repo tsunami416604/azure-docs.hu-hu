@@ -11,11 +11,11 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.openlocfilehash: 69cf79f8258f85f2fb5e787f91aa843837d0a3a1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538487"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393351"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Az automatizált gépi tanulás eredményeinek megismerése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Az automatizált gépi tanulási kísérlet futtatása után a futtatások előz
 
 1. A munkaterület bal oldali paneljén válassza a **kísérletek**lehetőséget.
 
-   ![A kísérlet menü képernyőképe](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-menu.png)
+   ![Kísérlet menü képernyőképe](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-menu.png)
 
 1. A kísérletek listájában válassza ki a felderíteni kívánt elemet.
 
@@ -78,36 +78,36 @@ A következő metrikákat menti a rendszer minden egyes futtatási iterációban
 
 Metrika|Leírás|Számítás|További paraméterek
 --|--|--|--
-AUC_Macro| A AUC a fogadó operációs karakterisztika görbe alatti terület. A makró az egyes osztályok AUC számtani középértéke.  | [Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | átlag = "makró"|
-AUC_Micro| A AUC a fogadó operációs karakterisztika görbe alatti terület. A Micro kiszámításának alapja az egyes osztályok valódi pozitív és hamis pozitív kombinációja.| [Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | átlag = "Micro"|
-AUC_Weighted  | A AUC a fogadó operációs karakterisztika görbe alatti terület. A súlyozott érték az egyes osztályok pontszámának számtani középértéke, amelyet az egyes osztályokban lévő igaz példányok száma alapján kell súlyozni.| [Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|átlag = "súlyozott"
-accuracy|A pontosság azon előre jelzett címkék százaléka, amelyek pontosan megfelelnek az igaz feliratoknak. |[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |None|
-average_precision_score_macro|Az átlagos pontosság egy precíziós visszahívás görbét összegzi, amely az egyes küszöbértékekben elért pontosságok súlyozott középértékét jelenti, és a rendszer visszahívja az előző küszöbértéket, amelyet a súlyozáshoz használtak. A makró az egyes osztályok átlagos pontossági pontszámának számtani középértéke.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|átlag = "makró"|
-average_precision_score_micro|Az átlagos pontosság egy precíziós visszahívás görbét összegzi, amely az egyes küszöbértékekben elért pontosságok súlyozott középértékét jelenti, és a rendszer visszahívja az előző küszöbértéket, amelyet a súlyozáshoz használtak. A Micro kiszámításának alapja a valódi pozitív és a hamis pozitív érték összevonása minden egyes levágáskor.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|átlag = "Micro"|
-average_precision_score_weighted|Az átlagos pontosság egy precíziós visszahívás görbét összegzi, amely az egyes küszöbértékekben elért pontosságok súlyozott középértékét jelenti, és a rendszer visszahívja az előző küszöbértéket, amelyet a súlyozáshoz használtak. A súlyozott érték az egyes osztályok átlagos pontossági pontszámának számtani középértéke, amelyet az egyes osztályokban lévő igaz példányok száma alapján kell súlyozni.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|átlag = "súlyozott"|
-balanced_accuracy|A kiegyensúlyozott pontosság az egyes osztályok visszahívásának számtani középértéke.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlag = "makró"|
-f1_score_macro|Az F1 pontszám a pontosság és a visszahívás harmonikus középértéke. A makró az F1 pontszám számtani középértéke az egyes osztályokhoz.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|átlag = "makró"|
-f1_score_micro|Az F1 pontszám a pontosság és a visszahívás harmonikus középértéke. A Micro kiszámításának alapja a teljes valódi pozitív, a hamis negatív és a téves pozitív érték számítása.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|átlag = "Micro"|
-f1_score_weighted|Az F1 pontszám a pontosság és a visszahívás harmonikus középértéke. Súlyozott középértékek az egyes osztályokhoz tartozó F1-pontszámok osztályának gyakorisága alapján|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|átlag = "súlyozott"|
-log_loss|Ez a (MULTINOMIAL) logisztikai regresszió és bővítmények (például neurális hálózatok) által használt veszteséges függvény, amely negatív naplózási valószínűséggel van meghatározva az igaz címkék valószínűsége alapján, az osztályozó jóslatai. Egyetlen olyan minta esetében, amelynél az {0,1} és a következő a valószínűsége: a YT = 1, a log P (YT&#124;YP) =-(YT-napló (YP) + (1-YT) napló (1-YP)|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|None|
-norm_macro_recall|A normalizált makrók felidézése a makró-visszahívás normalizált, így a véletlenszerű teljesítmény pontszáma 0, a tökéletes teljesítmény pedig 1. Ezt a norm_macro_recall: = (recall_score_macro-R)/(1-R) értékekkel érheti el, ahol az R az recall_score_macro várt értéke a véletlenszerű előrejelzések esetében (pl. R = 0,5 a bináris besoroláshoz és R = (1/C) a C osztályú besorolási problémákhoz).|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlag = "makró" |
-precision_score_macro|A pontosság a megfelelő címkével ellátott, pozitívan megjósolt elemek százaléka. A makró az egyes osztályok pontosságának számtani középértéke.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|átlag = "makró"|
-precision_score_micro|A pontosság a megfelelő címkével ellátott, pozitívan megjósolt elemek százaléka. A Micro kiszámításának alapja a teljes valódi pozitív és a hamis pozitív eredmény.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|átlag = "Micro"|
-precision_score_weighted|A pontosság a megfelelő címkével ellátott, pozitívan megjósolt elemek százaléka. A súlyozott érték az egyes osztályok pontosságának számtani középértéke, az egyes osztályokban lévő igaz példányok számával súlyozottan.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|átlag = "súlyozott"|
-recall_score_macro|A visszahívás egy adott osztály megfelelően címkézett elemeinek százaléka. A makró az egyes osztályok visszahívásának számtani középértéke.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlag = "makró"|
-recall_score_micro|A visszahívás egy adott osztály megfelelően címkézett elemeinek százaléka. A Micro kiszámításának alapja a teljes valódi pozitív, a hamis negatív és a téves pozitív érték megszámlálása|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlag = "Micro"|
-recall_score_weighted|A visszahívás egy adott osztály megfelelően címkézett elemeinek százaléka. A súlyozott érték az egyes osztályok visszahívásának számtani középértéke, az egyes osztályokban lévő igaz példányok számával súlyozottan.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlag = "súlyozott"|
-weighted_accuracy|A súlyozott pontosság az a pontosság, amelyben az egyes példákban megadott súlyozás egyenlő az adott példában szereplő igaz osztályokba tartozó valódi példányok arányával.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|a sample_weight egy vektor, amely az adott osztálynak a cél egyes elemeinek arányával egyenlő.|
+AUC_Macro| AUC az a terület, a fogadó működő jellemző görbe alatt. Makró minden egyes osztály a AUC számtani középértékét.  | [Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | átlagos = "makra."|
+AUC_Micro| AUC az a terület, a fogadó működő jellemző görbe alatt. A Micro kiszámításának alapja az egyes osztályok valódi pozitív és hamis pozitív kombinációja.| [Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | átlagos = "micro"|
+AUC_Weighted  | AUC az a terület, a fogadó működő jellemző görbe alatt. A súlyozott érték az egyes osztályok pontszámának számtani középértéke, amelyet az egyes osztályokban lévő igaz példányok száma alapján kell súlyozni.| [Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|átlagos = "súlyozott"
+accuracy|Pontosság pontosan egyezik a valódi címkéket előre jelzett címkékhez százaléka. |[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |Nincs|
+average_precision_score_macro|Átlagos pontosság pontosság-visszahívási görbe elért minden egyes küszöbértéket, a korábbi küszöbértéket, a súly használt fogyasztóktól növekedés az szükséges, a súlyozott átlag foglalja össze. A makró az egyes osztályok átlagos pontossági pontszámának számtani középértéke.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|átlagos = "makra."|
+average_precision_score_micro|Átlagos pontosság pontosság-visszahívási görbe elért minden egyes küszöbértéket, a korábbi küszöbértéket, a súly használt fogyasztóktól növekedés az szükséges, a súlyozott átlag foglalja össze. A Micro kiszámításának alapja a valódi pozitív és a hamis pozitív érték összevonása minden egyes levágáskor.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|átlagos = "micro"|
+average_precision_score_weighted|Átlagos pontosság pontosság-visszahívási görbe elért minden egyes küszöbértéket, a korábbi küszöbértéket, a súly használt fogyasztóktól növekedés az szükséges, a súlyozott átlag foglalja össze. A súlyozott érték az egyes osztályok átlagos pontossági pontszámának számtani középértéke, amelyet az egyes osztályokban lévő igaz példányok száma alapján kell súlyozni.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|átlagos = "súlyozott"|
+balanced_accuracy|Elosztott terhelésű pontosságát az egyes osztályok visszaírási számtani középértékét.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlagos = "makra."|
+f1_score_macro|F1 pontszám: közepének pontosság és a visszahívás. A makró az F1 pontszám számtani középértéke az egyes osztályokhoz.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|átlagos = "makra."|
+f1_score_micro|F1 pontszám: közepének pontosság és a visszahívás. A Micro kiszámításának alapja a teljes valódi pozitív, a hamis negatív és a téves pozitív érték számítása.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|átlagos = "micro"|
+f1_score_weighted|F1 pontszám: közepének pontosság és a visszahívás. Súlyozott átlag által az egyes osztályok F1 pontszám osztály gyakorisága|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|átlagos = "súlyozott"|
+log_loss|Ez az a veszteség függvény a logisztikai regressziós (multinomial) és -bővítmények, például a Neurális hálózatokat definiálva a valószínűségi besorolás előrejelzéseket megadott igaz címkék negatív log valószínűségét, használt. Egyetlen olyan minta esetében, amelynél az {0,1} és a következő a valószínűsége: a YT = 1, a log P (YT&#124;YP) =-(YT-napló (YP) + (1-YT) napló (1-YP)|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|Nincs|
+norm_macro_recall|Normalizált makró visszahívása makró ne felejtse el, hogy a véletlenszerű teljesítmény 0 pontszámot pedig tökéletes teljesítmény 1 pontszámot normalized. Ezt a norm_macro_recall: = (recall_score_macro-R)/(1-R) értékekkel érheti el, ahol az R az recall_score_macro várt értéke a véletlenszerű előrejelzések esetében (pl. R = 0,5 a bináris besoroláshoz és R = (1/C) a C osztályú besorolási problémákhoz).|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlag = "makró" |
+precision_score_macro|A pontosság a megfelelő címkével ellátott, pozitívan megjósolt elemek százaléka. A makró az egyes osztályok pontosságának számtani középértéke.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|átlagos = "makra."|
+precision_score_micro|A pontosság a megfelelő címkével ellátott, pozitívan megjósolt elemek százaléka. A Micro kiszámításának alapja a teljes valódi pozitív és a hamis pozitív eredmény.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|átlagos = "micro"|
+precision_score_weighted|A pontosság a megfelelő címkével ellátott, pozitívan megjósolt elemek százaléka. A súlyozott érték az egyes osztályok pontosságának számtani középértéke, az egyes osztályokban lévő igaz példányok számával súlyozottan.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|átlagos = "súlyozott"|
+recall_score_macro|A visszahívás egy adott osztály megfelelően címkézett elemeinek százaléka. A makró az egyes osztályok visszahívásának számtani középértéke.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlagos = "makra."|
+recall_score_micro|A visszahívás egy adott osztály megfelelően címkézett elemeinek százaléka. A Micro kiszámításának alapja a teljes valódi pozitív, a hamis negatív és a téves pozitív érték megszámlálása|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlagos = "micro"|
+recall_score_weighted|A visszahívás egy adott osztály megfelelően címkézett elemeinek százaléka. A súlyozott érték az egyes osztályok visszahívásának számtani középértéke, az egyes osztályokban lévő igaz példányok számával súlyozottan.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlagos = "súlyozott"|
+weighted_accuracy|A súlyozott pontosság az a pontosság, amelyben az egyes példákban megadott súlyozás egyenlő az adott példában szereplő igaz osztályokba tartozó valódi példányok arányával.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight egy adott osztály az egyes elemekhez az időarány, amíg a célzott egyenlő vektor|
 
 <a name="confusion-matrix"></a>
 
-### <a name="confusion-matrix"></a>Zavart mátrix
+### <a name="confusion-matrix"></a>Keveredési mátrix
 
 #### <a name="what-is-a-confusion-matrix"></a>Mi az a zűrzavaros mátrix?
-A rendszer a besorolási modell teljesítményének leírására használja a zűrzavaros mátrixot. Minden sor megjeleníti az adott adatkészlet igaz vagy tényleges osztályának példányait, és minden oszlop az osztály azon példányaira vonatkozik, amelyeket a modell előre jelzett. 
+Egy keveredési mátrixot egy osztályozási modell teljesítményét leírására szolgál. Minden sor megjeleníti az adott adatkészlet igaz vagy tényleges osztályának példányait, és minden oszlop az osztály azon példányaira vonatkozik, amelyeket a modell előre jelzett. 
 
 #### <a name="what-does-automated-ml-do-with-the-confusion-matrix"></a>Mit tesz az automatikus ML a zavartsági mátrixmal?
-Besorolási problémák esetén Azure Machine Learning automatikusan egy összekeverhető mátrixot biztosít minden létrehozott modellhez. Az automatikus ML minden egyes zavart mátrix esetében megjeleníti az összes előre jelzett címke (oszlop) gyakoriságát, összehasonlítva az igaz címkével (sor). Minél sötétebb a szín, annál nagyobb számnak kell lennie a mátrix adott részében. 
+Az Azure Machine Learning osztályozási problémák, automatikusan biztosít mindegyik modellt, amely egy keveredési mátrixot. Az automatikus ML minden egyes zavart mátrix esetében megjeleníti az összes előre jelzett címke (oszlop) gyakoriságát, összehasonlítva az igaz címkével (sor). Minél sötétebb a szín, annál nagyobb számnak kell lennie a mátrix adott részében. 
 
 #### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
 Összehasonlítjuk az adatkészlet tényleges értékét a modell által megadott előre jelzett értékekkel. Emiatt a gépi tanulási modellek nagyobb pontossággal rendelkeznek, ha a modellben a legtöbb érték az átló mentén van, ami azt jelenti, hogy a modell a helyes értéket jelezte. Ha a modellnek van osztály-egyensúlyhiánya, a zavart mátrix segít felderíteni egy elfogult modellt.
@@ -122,13 +122,13 @@ Besorolási problémák esetén Azure Machine Learning automatikusan egy összek
 ![Nagy pontosságú és nagy mértékű torzulást biztosító besorolási modell a modell-előrejelzésekben](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-biased-model.png)
 
 <a name="precision-recall-chart"></a>
-### <a name="precision-recall-chart"></a>Precíziós visszahívási diagram
+### <a name="precision-recall-chart"></a>Pontosság-visszahívási diagram
 #### <a name="what-is-a-precision-recall-chart"></a>Mi az a precíziós visszahívás diagram?
-A precíziós visszahívás görbe a modellből származó pontosság és visszahívás közötti kapcsolatot mutatja. A pontosság kifejezés azt jelenti, hogy a modell képes az összes példány megfelelő címkézésére. A visszahívás azt jelöli, hogy egy osztályozó képes-e egy adott címke összes példányának megkeresésére.
+A precíziós visszahívás görbe a modellből származó pontosság és visszahívás közötti kapcsolatot mutatja. A pontosság kifejezés azt jelenti, hogy a modell képes az összes példány megfelelő címkézésére. Visszaírási arra, hogy az összes példányát egy adott címkét az osztályozó által igénybe vett jelöli.
 
 #### <a name="what-does-automated-ml-do-with-the-precision-recall-chart"></a>Mit tesz az automatizált ML a precíziós visszahívás diagrammal?
 
-Ezzel a diagrammal összevetheti az egyes modellek pontossági felidézési görbéit, és meghatározhatja, hogy melyik modell elfogadható kapcsolata legyen a pontosság és az adott üzleti probléma felidézése között. Ebben a diagramban a makrók pontossága – visszahívás, a mikro-átlag pontossága – visszahívás, valamint a modell összes osztályához társított pontossági visszahívás látható. 
+Az ezen a diagramon hasonlítsa össze a pontosság-visszahívási görbék egyes modellekre meghatározni, mely a modellnek van egy elfogadható pontosság és a visszaírási az adott üzleti probléma közötti kapcsolat. A diagram bemutatja a makró átlagos pontosság-visszahívási, a Micro átlagos pontosság-visszahívási és a egy modell minden osztály társított pontosság-visszahívási. 
 
 A Macro-átlag minden osztálytól függetlenül kiszámítja a metrikát, majd az átlagot, és az összes osztályt egyformán kezeli. A mikro-átlag azonban összesíti az összes osztály hozzájárulását az átlag számításához. A mikro-átlag előnyben részesített, ha az adatkészletben van osztálybeli egyensúlyhiány.
 
@@ -144,7 +144,7 @@ Az üzleti probléma céljától függően az ideális precíziós visszahívás
 ### <a name="roc-chart"></a>ROC-diagram
 
 #### <a name="what-is-a-roc-chart"></a>Mi az a ROC-diagram?
-A fogadó működési jellemzője (vagy a ROC) a helyesen besorolt címkék és egy adott modell helytelen besorolású címkéi. A ROC-görbe kevésbé informatív lehet, ha nagy mértékű torzítással rendelkező adatkészleteken tanít modelleket, mivel nem jeleníti meg a hamis pozitív címkéket.
+Jellemző (vagy ROC) működő fogadó egy diagram, a megfelelő osztályozott címkék és a egy adott modell hibásan besorolt címkéit. ROC-görbe kevesebb adatot tartalmazó lehet, amikor nagy eltérés, mivel az adatkészletek képzési modellek nem jelenik meg a hamis pozitív címkéket.
 
 #### <a name="what-does-automated-ml-do-with-the-roc-chart"></a>Mit tesz az automatizált ML a ROC-diagrammal?
 Az automatizált ML a makrók átlagos pontosságát – visszahívás, a mikro-átlag pontossága – visszahívás, valamint a modell összes osztályához társított pontossági visszahívás. 
@@ -162,9 +162,9 @@ magas igaz címkéket és alacsony hamis címkéket tartalmazó besorolási mode
 <a name="lift-curve"></a>
 ### <a name="lift-chart"></a>Diagram emelése
 #### <a name="what-is-a-lift-chart"></a>Mi az a lift-diagram?
-A kiemelési diagramok a besorolási modell teljesítményének kiértékelésére szolgálnak. Ez azt mutatja, hogy mennyit érdemes a generált modellhez képest a modell pontossága nélkül.
+Lift diagramok segítségével egy osztályozási modell teljesítményének értékeléséhez. Ez azt mutatja, hogy mennyit érdemes a generált modellhez képest a modell pontossága nélkül.
 #### <a name="what-does-automated-ml-do-with-the-lift-chart"></a>Mit jelent az automatizált ML a felvonó diagrammal?
-Az adott modell értékének megszerzéséhez összehasonlíthatja a modell azon felvonóját, amelyet a rendszer automatikusan Azure Machine Learning az alaptervhez.
+Összehasonlíthatja a felvonó, a létrehozott modell automatikusan az Azure Machine Learning az alaptervhez annak érdekében, hogy az érték nyer, hogy az adott modell megtekintéséhez.
 #### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
 
 ##### <a name="example-1-a-classification-model-that-does-worse-than-a-random-selection-model"></a>1\. példa: egy véletlenszerű kiválasztási modellnél rosszabb besorolási modell
@@ -175,10 +175,10 @@ t végző besorolási modellt<a name="gains-curve"></a>
 ### <a name="gains-chart"></a>Adatnyereség diagramja
 #### <a name="what-is-a-gains-chart"></a>Mi az a nyereség diagram?
 
-A nyereségi diagram kiértékeli a besorolási modell teljesítményét az adat egyes részei alapján. Ez az adathalmaz minden egyes százalékos arányát mutatja, ami sokkal jobb lehet, ha a véletlenszerű kiválasztási modellhez képest jobban elvárható.
+Az adatok minden egyes része egy osztályozási modell teljesítményét értékeli ki a nyereséget diagram. Az egyes PERCENTILIS mennyi jobban várható végrehajtásához egy véletlenszerű kijelölés modell összehasonlítja az adatkészlet jeleníti meg.
 
 #### <a name="what-does-automated-ml-do-with-the-gains-chart"></a>Mit tesz az automatizált ML a nyereség diagrammal?
-A halmozott nyereség diagram segítségével kiválaszthatja a besorolást a modell kívánt nyereségének megfelelő százalékos arány használatával. Ez az információ egy másik módszert biztosít a kapcsolódó felvonó diagram eredményeinek megtekintésére.
+A halmozott nyereség diagram segítségével válassza ki a besorolást megszakítási használatával, amely megfelel a modellből a kívánt nyereség százalékban. Ezt az információt biztosít egy másik módszer a megnézzük a kísérő növekedési diagramon az eredményeket.
 
 #### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
 ##### <a name="example-1-a-classification-model-with-minimal-gain"></a>1\. példa: osztályozási modell minimális nyereséggel
@@ -190,13 +190,13 @@ jelentős nyereségű besorolási modellt ![](./media/how-to-understand-automate
 ### <a name="calibration-chart"></a>Kalibrációs diagram
 
 #### <a name="what-is-a-calibration-chart"></a>Mi az a kalibrációs diagram?
-Egy kalibrációs terület a prediktív modell megbízhatóságának megjelenítésére szolgál. Ez az előre jelzett valószínűség és a tényleges valószínűség közötti kapcsolat bemutatásával történik, ahol a "valószínűség" azt jelzi, hogy egy adott példány egy adott címkéhez tartozik-e.
+Hitelesítési rajzot a prediktív modellek magabiztosan megjelenítésére szolgál. Ezt nem: Megjeleníti az előre jelzett valószínűség és a tényleges valószínűsége közötti kapcsolat, ahol "valószínűség" jelenti a valószínűsége, hogy az adott példány néhány címke alatt tartozik.
 #### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>Mit tesz a kalibrációs diagramon az automatikus ML?
-Az összes besorolási probléma esetében áttekintheti a kalibrációs vonalat a mikro-átlag, a makro-átlag és az egyes osztályok számára egy adott prediktív modellben.
+Az összes besorolási kapcsolatos problémák esetén a hitelesítési sor micro – átlag, a makró-átlagos és a egy adott prediktív modellt az egyes osztályok tekintheti meg.
 
 A Macro-átlag minden osztálytól függetlenül kiszámítja a metrikát, majd az átlagot, és az összes osztályt egyformán kezeli. A mikro-átlag azonban összesíti az összes osztály hozzájárulását az átlag számításához. 
 #### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
- A jól kalibrált modell az y = x sorral összhangban van, ahol az előrejelzések szerint ésszerűen magabiztos. A túlzottan magabiztos modell az y = 0 sorral van igazítva, ahol az előre jelzett valószínűség látható, de nincs tényleges valószínűség. 
+ A jól kalibrált modell az y = x sorral összhangban van, ahol az előrejelzések szerint ésszerűen magabiztos. Egy túlzott confident modell igazítja az y = 0 sort, amelyben az előre jelzett valószínűség megtalálható, de nem tényleges valószínűsége. 
 
 
 ##### <a name="example-1-a-well-calibrated-model"></a>1\. példa: egy jól kalibrált modell
@@ -220,24 +220,24 @@ A rendszer a következő metrikákat menti a regressziós vagy előrejelzési fe
 
 |Metrika|Leírás|Számítás|További paraméterek
 --|--|--|--|
-explained_variance|Az elmagyarázott variancia azt az arányt adja meg, amelynek a matematikai modellje egy adott adathalmaz variációját mutatja. Ez az eredeti és a hibák eltérésének százalékos csökkenése. Ha a hibák középértéke 0, akkor egyenlő a magyarázattal.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|None|
-r2_score|R2 a meghatározási együttható vagy a négyzetes hibák százalékos csökkenése a középértéket eredményező alapmodellhez képest. |[Kiszámítása](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|None|
-spearman_correlation|A lándzsás korreláció a két adathalmaz közötti kapcsolat monotonicity nem számszerű mérőszáma. A Pearson korrelációtól eltérően a lándzsás korreláció nem feltételezi, hogy mindkét adathalmazt általában kiosztják. Más korrelációs tényezőhöz hasonlóan ez az 1 és + 1 között változik, és a 0 érték nem jelent korrelációt. Az-1 vagy + 1 korrelációk pontos monoton kapcsolatot jelentenek. A pozitív korrelációk azt sugallják, hogy az x növekszik, így az y. A negatív korrelációk azt sugallják, hogy az x nő, az y pedig csökken.|[Kiszámítása](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|None|
-mean_absolute_error|Abszolút érték: a cél és az előrejelzés közötti különbség abszolút értéke a várt érték.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|None|
-normalized_mean_absolute_error|Normalizált Mean abszolút hiba: abszolút hiba, amelyet az adattartomány feloszt|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Osztás az adattartomány szerint|
-median_absolute_error|A medián abszolút hiba a cél és az előrejelzés közötti összes abszolút különbség középértéke. Ez a veszteség robusztus a kiugró értékeknél.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|None|
-normalized_median_absolute_error|Normalizált medián abszolút hiba: az adattartományon belül az abszolút érték középértékének hányadosa.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Osztás az adattartomány szerint|
-root_mean_squared_error|A legfelső szintű, négyzetes hiba a cél és az előrejelzés között a várt négyzetes különbség négyzetes gyökere.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|None|
-normalized_root_mean_squared_error|Normalizált legfelső szintű, négyzetes hiba: a legfelső szintű, négyzetes hiba, amely az adattartomány szerint oszlik el|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Osztás az adattartomány szerint|
-root_mean_squared_log_error|A legfelső szintű négyzetes naplózási hiba a várt szögletes logaritmikus hiba négyzetének gyökere.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|None|
-normalized_root_mean_squared_log_error|Normalizált legfelső szintű, négyzetes naplózási hiba: legfelső szintű négyzetes naplózási hiba az adattartomány szerint elosztva|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Osztás az adattartomány szerint|
+explained_variance|MAGYARÁZAT eltérés az időarány, amíg, amelyhez a modell matematikai fiókok számára egy adott adatkészlet változata. A százalékos varianciát a varianciát a hibák az eredeti adatok csökkenése. Az átlag, a hibák értéke 0, esetén egyenlő magyarázat eltérés.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Nincs|
+r2_score|R2 meghatározása vagy a képest egy alapkonfiguráció modellt, amely a mean squared hibák százalékos csökkenését a relatív. |[Kiszámítása](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Nincs|
+spearman_correlation|Valamennyi korrelációs a két adatkészlet között fennálló monotonicity nonparametric mértékegysége. A Pearson-korrelációs eltérően a valamennyi korrelációs nem feltételezi azt, hogy mindkét olyan adatkészlettel általában oszlanak meg. Más korrelációs együttható, például az egyik platformjától függően -1 és + 1 nincs korreláció úgy 0-val. -1 és + 1 összefüggéseket egy pontos monoton kapcsolatot jelenti. Pozitív összefüggéseket jelenti azt, hogy x növekszik, hogy mit y. Negatív összefüggéseket jelenti azt, hogy növeli az x y csökken.|[Kiszámítása](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|Nincs|
+mean_absolute_error|Jelenti azt, hogy abszolút hiba a várt értékkel, az abszolút értékét a cél- és az előrejelzési közötti különbség|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Nincs|
+normalized_mean_absolute_error|Normalizált átlagos abszolút hiba osztva az adatok tartományán mean Absolute Error|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Az adatok számos nullával|
+median_absolute_error|Közepes abszolút hiba a cél- és az előrejelzési közötti összes abszolút eltérések középértékének. Ezen adatveszteség robusztus a kiugró értékeket.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Nincs|
+normalized_median_absolute_error|Normalizált medián abszolút hiba osztva az adatok tartományán medián abszolút hiba|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Az adatok számos nullával|
+root_mean_squared_error|Root mean squared hiba a cél- és az előrejelzési várt eltéréseinek négyzetgyökét|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Nincs|
+normalized_root_mean_squared_error|Normalizált legfelső szintű mean squared hiba root mean squared hiba osztva az adatok tartományán:|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Az adatok számos nullával|
+root_mean_squared_log_error|Legfelső szintű mean squared log hiba a várt squared logaritmikus hiba négyzetgyökét|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Nincs|
+normalized_root_mean_squared_log_error|Normalizált legfelső szintű, négyzetes naplózási hiba: legfelső szintű négyzetes naplózási hiba az adattartomány szerint elosztva|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Az adatok számos nullával|
 
 ### <a name="pvt"></a>Előre jelzett és igaz diagram
 #### <a name="what-is-a-predicted-vs-true-chart"></a>Mi az az előre jelzett vagy igaz diagram?
-Az előre jelzett és az igaz érték azt mutatja, hogy egy regressziós probléma esetén az előre jelzett érték és a korrelációs valódi értéke közötti kapcsolat látható. Ez a gráf felhasználható egy modell teljesítményének mérésére, ahogy az y = x vonal közelebb van az előre jelzett értékekhez, annál jobb a prediktív modell pontossága.
+Az előre jelzett és az igaz érték azt mutatja, hogy egy regressziós probléma esetén az előre jelzett érték és a korrelációs valódi értéke közötti kapcsolat látható. Ez a diagram segítségével mérheti a modell teljesítményét, minél közelebb az y = x sor az előre jelzett értékek a következők, annál jobb a prediktív modell pontosságát.
 
 #### <a name="what-does-automated-ml-do-with-the-predicted-vs-true-chart"></a>Mit tesz az automatikus ML az előre jelzett és az igaz diagrammal?
-Az egyes futtatások után megtekintheti az egyes regressziós modellekhez tartozó, előre jelzett és igaz gráfot is. Az adatok védelme érdekében az értékek együtt dobozolni, és az egyes raktárhelyek mérete a diagramterület alsó részén oszlopdiagramként jelenik meg. A prediktív modellt összehasonlíthatja a világosabb árnyalattal, amely a hibák margóit mutatja, így a modellnek ideális értékkel kell rendelkeznie.
+Minden egyes futás után megjelenik egy előre jelzett és minden egyes regressziós modell igaz grafikon. Adatok védelme érdekében értékek együtt vannak binned, és a egy oszlopdiagram a diagramterület alsó részén jelenik meg minden doboz méretét. Hiba történt a margók, ahol a modell lehet ideális megoldás értékkel megjelenítő világosabb terület árnyékolása a össze lehessen hasonlítani a prediktív modellben.
 
 #### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
 ##### <a name="example-1-a-classification-model-with-low-accuracy"></a>1\. példa: kis pontosságú besorolási modell
@@ -250,7 +250,7 @@ Az egyes futtatások után megtekintheti az egyes regressziós modellekhez tarto
 
 ### <a name="histo"></a>Maradványok diagramjának hisztogramja
 #### <a name="what-is-a-residuals-chart"></a>Mi az a fennmaradó diagram?
-A maradék egy megfigyelt y – az előre jelzett y karaktert jelöli. Ha alacsony torzítású hibát szeretne megjeleníteni, a maradékok hisztogramját harang alakú görbévé kell alakítani, a 0 körüli középpontba. 
+A fennmaradó megfigyelt y – az előre jelzett y jelöli. A hibahatáron az alacsony eltérés megjelenítéséhez, például a hisztogram kell alakúak lehetnek harang görbe 0 Eszközkezelőre. 
 #### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>Mit jelent az automatizált ML a fennmaradó diagrammal?
 Az automatikus ML automatikusan megjelenít egy fennmaradó diagramot, amely megjeleníti a hibák eloszlását a jóslatokban.
 #### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?

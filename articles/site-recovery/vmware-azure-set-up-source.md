@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622213"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391745"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>A forrás-környezet beállítása a VMware – Azure replikáláshoz
 
@@ -62,7 +62,7 @@ A következő mappák kizárása a víruskereső szoftverből a zökkenőmentes 
   - C:\Temp
   - C:\strawberry
   - C:\ProgramData\MySQL
-  - C:\Program Files (x86) \MySQL
+  - C:\Program Files (x86)\MySQL
   - C:\ProgramData\ASR
   - C:\ProgramData\Microsoft Azure Site Recovery
   - C:\ProgramData\ASRLogs
@@ -84,5 +84,5 @@ A következő mappák kizárása a víruskereső szoftverből
 7. Azure Site Recovery terheléselosztási folyamat kiszolgálójának telepítési könyvtára, példa: C:\Program Files (x86) \Microsoft Azure Site Recovery
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A célként megadott környezet beállítása](./vmware-azure-set-up-target.md) 

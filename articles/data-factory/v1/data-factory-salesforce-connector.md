@@ -13,11 +13,11 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929273"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387474"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Adatok áthelyezése a Salesforce a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -39,7 +39,7 @@ Ez az összekötő a következő Salesforce-kiadásokat támogatja: Developer Ed
 * Ahhoz, hogy az adatok a Salesforce-ből a helyszíni adattárakba másolva legyenek, legalább adatkezelés Gateway 2,0-es átjárót kell telepítenie a helyszíni környezetbe.
 
 ## <a name="salesforce-request-limits"></a>Salesforce kérelmek korlátai
-A Salesforce mind az API-kérelmek, mind az egyidejű API-kérelmek esetében korlátozza a korlátot. Vegye figyelembe a következő szempontokat:
+A Salesforce mind az API-kérelmek, mind az egyidejű API-kérelmek esetében korlátozza a korlátot. Vegye figyelembe a következő pontokat:
 
 - Ha az egyidejű kérelmek száma meghaladja a korlátot, a szabályozás bekövetkezik, és véletlenszerű hibák jelennek meg.
 - Ha a kérelmek száma meghaladja a korlátot, a Salesforce-fiók 24 óráig le lesz tiltva.
@@ -66,7 +66,7 @@ A következő szakaszokban részletesen ismertetjük a Salesforce specifikus ent
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a Salesforce társított szolgáltatáshoz tartozó JSON-elemek leírásait tartalmazza.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **Salesforce**. |Igen |
 | environmentUrl | Itt adhatja meg az Salesforce-példány URL-címét. <br><br> – Az alapértelmezett érték a "https:\//login.salesforce.com". <br> – Adatok másolásához a homokozóból válassza a "https://test.salesforce.com" lehetőséget. <br> – Az adatok egyéni tartományból történő másolásához írja be például a következőt: "https://[tartomány]. my. Salesforce. com". |Nem |
@@ -79,7 +79,7 @@ Az adatkészletek definiálásához elérhető csoportok és tulajdonságok telj
 
 A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **RelationalTable** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | tableName |A tábla neve a Salesforce. |Nem (ha meg van adva a **RelationalSource** **lekérdezése** ) |
 
@@ -95,7 +95,7 @@ A tevékenység typeProperties szakaszában elérhető tulajdonságok, másfelő
 
 A másolási tevékenységben, ha a forrás típusa **RelationalSource** (amely magában foglalja a Salesforce), a typeProperties szakaszban a következő tulajdonságok érhetők el:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
 | lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-92 lekérdezés vagy [Salesforce objektum lekérdezési nyelve (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) lekérdezése. Például: `select * from MyTable__c`. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
 
@@ -106,7 +106,7 @@ A másolási tevékenységben, ha a forrás típusa **RelationalSource** (amely 
 
 ## <a name="query-tips"></a>Lekérdezési tippek
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Adatok beolvasása WHERE záradék használatával DateTime oszlopban
-A SOQL vagy az SQL-lekérdezés megadásakor ügyeljen arra, hogy a DateTime formátuma legyen a különbség. Példa:
+A SOQL vagy az SQL-lekérdezés megadásakor ügyeljen arra, hogy a DateTime formátuma legyen a különbség. Például:
 
 * **SOQL minta**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
 * **SQL-minta**:
@@ -114,7 +114,7 @@ A SOQL vagy az SQL-lekérdezés megadásakor ügyeljen arra, hogy a DateTime for
     * **A JSON-szerkesztés használata a lekérdezés megadásához (megfelelő escape-karakter):** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
 ### <a name="retrieving-data-from-salesforce-report"></a>Adatok beolvasása a Salesforce-jelentésből
-A Salesforce-jelentésekben lévő adatok lekéréséhez adja meg a lekérdezést `{call "<report name>"}`ként, például:. `"query": "{call \"TestReport\"}"` kérdésre adott válaszban foglalt lépéseket.
+A Salesforce-jelentésekben lévő adatok lekéréséhez adja meg a lekérdezést `{call "<report name>"}`ként, például:. `"query": "{call \"TestReport\"}"`.
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Törölt rekordok beolvasása a Salesforce Lomtárból
 Ha le szeretné kérdezni a Salesforce Lomtárában lévő nem törölt rekordokat, megadhatja a **"IsDeleted = 1"** kifejezést a lekérdezésben. Például:
@@ -285,24 +285,24 @@ A RelationalSource által támogatott tulajdonságok listáját a [RelationalSou
 
 | Salesforce típusa | . NET-alapú típus |
 | --- | --- |
-| Automatikus szám |Sztring |
-| Jelölőnégyzet |Logikai |
-| Currency (Deviza) |Decimális |
-| Dátum |Dátum és idő |
-| Dátum/idő |Dátum és idő |
-| E-mail cím |Sztring |
+| Auto Number |Sztring |
+| Checkbox |Logikai |
+| Currency (Pénznem) |tizedes tört |
+| Dátum |DateTime |
+| Dátum és idő |DateTime |
+| E-mail |Sztring |
 | Azonosító |Sztring |
-| Keresési kapcsolat |Sztring |
-| Többszörös kijelölési lista |Sztring |
-| Szám |Decimális |
-| Százalék |Decimális |
-| Telefonszám |Sztring |
+| Lookup Relationship |Sztring |
+| Multi-Select Picklist |Sztring |
+| Szám |tizedes tört |
+| Százalék |tizedes tört |
+| Phone |Sztring |
 | Picklist |Sztring |
 | Szöveg |Sztring |
-| Szövegterület |Sztring |
-| Szövegterület (hosszú) |Sztring |
-| Szövegterület (Rich) |Sztring |
-| Szöveg (titkosított) |Sztring |
+| Text Area |Sztring |
+| Text Area (Long) |Sztring |
+| Text Area (Rich) |Sztring |
+| Text (Encrypted) |Sztring |
 | URL-cím |Sztring |
 
 > [!NOTE]

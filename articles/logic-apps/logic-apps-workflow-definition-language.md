@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ff2267c2d03076d3abc44d0bd1dddc64577cc7f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428664"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386002"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Séma-útmutató a munkafolyamat-definíciós nyelvhez Azure Logic Apps
 
@@ -35,7 +35,7 @@ A munkafolyamat-definíciók magas szintű szerkezete:
 }
 ```
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 |-----------|----------|-------------|
 | `definition` | Igen | A munkafolyamat-definíció kezdő eleme |
 | `$schema` | Csak akkor, ha külsőleg hivatkozik egy munkafolyamat-definícióra | A munkafolyamat-definíció nyelvi verzióját leíró JSON-sémafájl helye, amelyet itt talál: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
@@ -74,7 +74,7 @@ A paraméterek definíciójának általános szerkezete:
 },
 ```
 
-| Attribútum | Szükséges | Type (Típus) | Leírás |
+| Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
 | <*paraméter – név*> | Igen | Sztring | A definiálni kívánt paraméter neve |
 | <*paraméter típusa*> | Igen | int, float, string, bool, Array, Object, SecureString, secureobject <p><p>**Megjegyzés**: az összes jelszóhoz, kulcshoz és titokhoz használja a `securestring` vagy a `secureobject` típust, mert az `GET` művelet nem ad vissza ilyen típusokat. A paraméterek biztonságossá tételével kapcsolatos további információkért lásd: [biztonsági javaslatok a műveletekhez és a bemeneti paraméterekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | A paraméter típusa |
@@ -112,7 +112,7 @@ A `staticResults` attribútumban Definiáljon egy művelet modelljét `outputs` 
 }
 ```
 
-| Attribútum | Szükséges | Type (Típus) | Leírás |
+| Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
 | <*statikus-result-definition-name*> | Igen | Sztring | Egy olyan statikus eredmény-definíció neve, amelyet a műveleti definíció egy `runtimeConfiguration.staticResult` objektumon keresztül tud hivatkozni. További információ: [futásidejű konfigurációs beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Bármilyen egyedi nevet használhat. Alapértelmezés szerint ez az egyedi név egy számmal van hozzáfűzve, amely szükség szerint növekszik. |
 | <*output-attributes-and-Values – visszaadott*> | Igen | Változó | Az attribútumokra vonatkozó követelmények eltérő feltételek alapján változnak. Ha például a `status` `Succeeded`, a `outputs` attribútum a művelet által az ál-kimenetként visszaadott attribútumokat és értékeket tartalmazza. Ha a `status` `Failed`, a `outputs` attribútum magában foglalja a `errors` attribútumot, amely egy vagy több hibás adatokat tartalmazó tömb `message`. |
@@ -275,10 +275,10 @@ A kimenet definíciójának általános szerkezete:
 }
 ```
 
-| Attribútum | Szükséges | Type (Típus) | Leírás |
+| Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
 | <*kulcs neve*> | Igen | Sztring | A kimenet visszatérési értékének kulcsa |
-| <*kulcs típusú*> | Igen | int, float, string, SecureString, bool, Array, JSON objektum | A kimenet visszatérési értékének típusa |
+| <*kulcs típusú*> | Igen | int, float, string, securestring, bool, array, JSON-objektum | A kimenet visszatérési értékének típusa |
 | <*kulcs-érték*> | Igen | Ugyanaz, mint <*Key-type*> | A kimenet visszatérési értéke |
 |||||
 
@@ -292,7 +292,7 @@ A [kifejezésekben](#expressions) és [függvényekben](#functions)a kezelők ad
 
 | Művelet | Tevékenység |
 |----------|------|
-| ' | Ha karakterláncot vagy kifejezéseket és függvényeket szeretne használni, a sztringet csak egyszeres idézőjelek közé kell becsomagolni, például `'<myString>'`. Ne használjon idézőjeleket (""), amelyek ütköznek a teljes kifejezés JSON-formázásával. Példa: <p>**Igen**: hossz ("Hello") </br>**Nem**: hossz ("helló") <p>Tömbök vagy számok átadásakor nincs szükség a tördelési írásjelekre. Példa: <p>**Igen**: hossz ([1, 2, 3]) </br>**Nem**: hossz ("[1, 2, 3]") |
+| ' | Ha karakterláncot vagy kifejezéseket és függvényeket szeretne használni, a sztringet csak egyszeres idézőjelek közé kell becsomagolni, például `'<myString>'`. Ne használjon idézőjeleket (""), amelyek ütköznek a teljes kifejezés JSON-formázásával. Például: <p>**Igen**: hossz ("Hello") </br>**Nem**: hossz ("helló") <p>Tömbök vagy számok átadásakor nincs szükség a tördelési írásjelekre. Például: <p>**Igen**: hossz ([1, 2, 3]) </br>**Nem**: hossz ("[1, 2, 3]") |
 | [] | Ha egy tömbben egy adott pozíció (index) értékére szeretne hivatkozni, szögletes zárójeleket kell használnia. Például egy tömb második elemének lekéréséhez: <p>`myArray[1]` |
 | . | Egy objektum egy tulajdonságára való hivatkozáshoz használja a dot operátort. Például egy `customer` JSON-objektum `name` tulajdonságának beolvasásához: <p>`"@parameters('customer').name"` |
 | ? | Ha futásidejű hibát nem tartalmazó objektumban szeretne null tulajdonságokat hivatkozni, használja a kérdőjel operátort. Ha például egy triggerből null kimenetet szeretne kezelni, ezt a kifejezést használhatja: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |

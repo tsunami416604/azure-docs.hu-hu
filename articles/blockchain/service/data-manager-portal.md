@@ -5,11 +5,11 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
 ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977019"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387029"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>A Blockchain Data Manager konfigurálása az Azure Portallal
 
@@ -32,7 +32,7 @@ Egy Blockchain Data Manager-példány csatlakozik egy Azure Blockchain szolgált
 
 A kimenő kapcsolatok a blockchain adatokat küldenek Azure Event Grid. A példány létrehozásakor egyetlen kimenő kapcsolódást kell konfigurálnia. A Blockchain Data Manager több Event Grid témakör kimenő kapcsolatait is támogatja bármely adott Blockchain Data Manager-példány esetében. Blockchain-adatküldést egyetlen célhelyre is küldhet, vagy több célhelyre is küldhet blockchain-fájlokat. Egy másik cél hozzáadásához csak további kimenő kapcsolatokat adjon hozzá a példányhoz.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Nyissa meg az Azure Blockchain szolgáltatás azon tagját, amelyhez csatlakozni szeretne a Blockchain Data Manager. Válassza ki a **Blockchain Data Manager**.
 1. Válassza a **Hozzáadás** lehetőséget.
 
@@ -42,7 +42,7 @@ A kimenő kapcsolatok a blockchain adatokat küldenek Azure Event Grid. A péld�
 
     Beállítás | Leírás
     --------|------------
-    Név | Adjon egyedi nevet a csatlakoztatott Blockchain Data Manager. A Blockchain Data Manager neve kisbetűket és számokat tartalmazhat, és legfeljebb 20 karakter hosszúságú lehet.
+    Name (Név) | Adjon egyedi nevet a csatlakoztatott Blockchain Data Manager. A Blockchain Data Manager neve kisbetűket és számokat tartalmazhat, és legfeljebb 20 karakter hosszúságú lehet.
     Tranzakciós csomópont | Válasszon tranzakciós csomópontot. Csak az olvasási hozzáféréssel rendelkező tranzakciós csomópontok jelennek meg.
     Kapcsolat neve | Adja meg a kimenő kapcsolatok egyedi nevét, ahol a blockchain tranzakciós adatküldés történik.
     Event Grid-végpont | Válassza ki az Event Grid-témakört ugyanabban az előfizetésben, mint a Blockchain Data Manager-példányt.
@@ -110,14 +110,14 @@ A Blockchain Data Manager megköveteli, hogy a szerződési ABI és a bytecode f
 
     | Mező | Leírás |
     |-------|-------------|
-    | Név  | Nevezze el a tárolót. Például: *smartcontract* |
-    | Nyilvános hozzáférés szintje | *Privát kiválasztása (névtelen hozzáférés nélkül)* |
+    | Name (Név)  | Nevezze el a tárolót. Például: *smartcontract* |
+    | Nyilvános hozzáférési szint | *Privát kiválasztása (névtelen hozzáférés nélkül)* |
 
 1. A tároló létrehozásához válassza az **OK** gombot.
 1. Válassza ki a tárolót, majd válassza a **feltöltés**lehetőséget.
 1. Válassza ki a [szerződések beszerzése ABI és bytecode](#get-contract-abi-and-bytecode) szakaszban létrehozott JSON-fájlokat.
 
-    ![Blob feltöltése](./media/data-manager-portal/upload-blobs.png)
+    ![BLOB feltöltése](./media/data-manager-portal/upload-blobs.png)
 
     Válassza a **Feltöltés** lehetőséget.
 
@@ -146,7 +146,7 @@ Az egyes Blobok esetében egy közös hozzáférési aláírás létrehozása.
 
     Beállítás | Leírás
     --------|------------
-    Név | Adjon meg egy egyedi nevet a nyomon követett blockchain-alkalmazás számára.
+    Name (Név) | Adjon meg egy egyedi nevet a nyomon követett blockchain-alkalmazás számára.
     Egyezményes ABI | A szerződéses ABI-fájl URL-címének elérési útja. További információkért lásd: [egyezményes ABI és bytecode URL-cím létrehozása](#create-contract-abi-and-bytecode-url).
     Szerződés bytecode | A bytecode fájl URL-elérési útja. További információkért lásd: [egyezményes ABI és bytecode URL-cím létrehozása](#create-contract-abi-and-bytecode-url).
 

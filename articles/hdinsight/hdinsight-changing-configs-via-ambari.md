@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150114"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386927"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Az Apache Ambari használata a HDInsight-fürtök konfigurációjának optimalizálásához
 
@@ -240,7 +240,7 @@ A struktúra lehetővé teszi, hogy dinamikus partíciókat hozzon létre, amiko
 
 1. A létrehozandó dinamikus partíciók számának korlátozásához módosítsa a `hive.exec.max.dynamic.partitions` paramétert. Az alapértelmezett érték a 5000.
 
-1. Ha korlátozni szeretné a dinamikus partíciók teljes számát egy csomóponton, módosítsa `hive.exec.max.dynamic.partitions.pernode`. Az alapértelmezett érték a 2000.
+1. Ha korlátozni szeretné a dinamikus partíciók teljes számát egy csomóponton, módosítsa `hive.exec.max.dynamic.partitions.pernode`. Az alapértelmezett érték: 2000.
 
 ### <a name="enable-local-mode"></a>Helyi mód engedélyezése
 
@@ -282,7 +282,7 @@ További javaslatok a kaptár-végrehajtó motor optimalizálásához:
 | `tez.am.resource.memory.mb` | 4 GB felső korlát a legtöbb | Automatikusan hangolt |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |
-| `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20000 |
+| `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20 000 |
 
 ## <a name="apache-pig-optimization"></a>Apache Pig-optimalizálás
 
@@ -432,7 +432,7 @@ A Memstore helyi kiosztási puffer használatát a `hbase.hregion.memstore.mslab
 
 ![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürtök kezelése az Apache Ambari webes FELÜLETtel](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

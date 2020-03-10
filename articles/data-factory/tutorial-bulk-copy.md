@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 4ab467c0dc5014ec6c8a543fe7e8ecc136dfa02d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439504"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388692"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
 
@@ -75,7 +75,7 @@ Az SQL Database és az SQL Data Warehouse esetében is engedélyezze az SQL Ser
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. Indítsa el a **PowerShellt**. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja a programot, akkor újra le kell futtatnia a parancsokat.
+1. Indítsa el a **PowerShellt**. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell a parancsokat.
 
     Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
         
@@ -100,7 +100,7 @@ Az SQL Database és az SQL Data Warehouse esetében is engedélyezze az SQL Ser
     Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
     ```
 
-    Vegye figyelembe a következő szempontokat:
+    Vegye figyelembe a következő pontokat:
 
     * Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a nevet, majd próbálkozzon újra.
 
@@ -142,7 +142,7 @@ Ebben az oktatóanyagban létrehoz három társított szolgáltatást a forrás,
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
     ```
 
-    Itt látható a minta kimenete:
+    Itt látható a kimenet mintája:
 
     ```json
     LinkedServiceName : AzureSqlDatabaseLinkedService
@@ -176,7 +176,7 @@ Ebben az oktatóanyagban létrehoz három társított szolgáltatást a forrás,
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
     ```
 
-    Itt látható a minta kimenete:
+    Itt látható a kimenet mintája:
 
     ```json
     LinkedServiceName : AzureSqlDWLinkedService
@@ -212,7 +212,7 @@ Ebben az oktatóanyagban a jobb másolási teljesítmény érdekében az Azure B
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
     ```
 
-    Itt látható a minta kimenete:
+    Itt látható a kimenet mintája:
 
     ```json
     LinkedServiceName : AzureStorageLinkedService
@@ -251,7 +251,7 @@ Ebben az oktatóanyagban létrehozza a forrás és a fogadó adatkészletet, ame
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
     ```
 
-    Itt látható a minta kimenete:
+    Itt látható a kimenet mintája:
 
     ```json
     DatasetName       : AzureSqlDatabaseDataset
@@ -295,7 +295,7 @@ Ebben az oktatóanyagban létrehozza a forrás és a fogadó adatkészletet, ame
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
     ```
 
-    Itt látható a minta kimenete:
+    Itt látható a kimenet mintája:
 
     ```json
     DatasetName       : AzureSqlDWDataset
@@ -387,7 +387,7 @@ Ez a folyamat a táblák listáját használja paraméterként. A lista minden e
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
     ```
 
-    Itt látható a minta kimenete:
+    Itt látható a kimenet mintája:
 
     ```json
     PipelineName      : IterateAndCopySQLTables
@@ -463,7 +463,7 @@ Ez a folyamat két lépést hajt végre:
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"
     ```
 
-    Itt látható a minta kimenete:
+    Itt látható a kimenet mintája:
 
     ```json
     PipelineName      : GetTableListAndTriggerCopyData

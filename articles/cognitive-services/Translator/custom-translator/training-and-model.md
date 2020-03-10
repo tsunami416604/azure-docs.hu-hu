@@ -1,5 +1,5 @@
 ---
-title: Mi az a képzés és a modell? -Egyéni fordító
+title: Mi az a képzés és a modell? -Egyéni a fordítót
 titleSuffix: Azure Cognitive Services
 description: A modell a rendszer, amely egy adott nyelvi pár fordítását biztosítja. A sikeres képzés eredménye egy modell. A modellek betanításakor a három egymást kölcsönösen kizáró adatkészlet kötelező betanítási adatkészletet, hangolási adatkészletet és tesztelési adatkészletet.
 author: swmachan
@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.openlocfilehash: 71f1e3f460fa58b999af0a60c8cffa90c8ac8cd4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446729"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395510"
 ---
 # <a name="what-are-trainings-and-models"></a>Mik azok a tréningek és modellek?
 

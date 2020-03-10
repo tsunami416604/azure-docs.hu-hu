@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: d9778544fd9e20dc3244a37c644117d1cd505a96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 179a6181efdc6c31d50d3b5b3f708fd9149dadd3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438666"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384713"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Oktatóanyag: Felkészülés a Azure Data Box Edge üzembe helyezésére  
 
@@ -22,7 +22,7 @@ Ez az első oktatóanyag a Azure Data Box Edge teljes telepítéséhez szükség
 
 A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogosultságok szükségesek. A portál előkészítése kevesebb mint 10 percet vesz igénybe.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Új erőforrás létrehozása
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-### <a name="get-started"></a>Az első lépések
+### <a name="get-started"></a>Első lépések
 
 Data Box Edge telepítéséhez tekintse meg az alábbi oktatóanyagokat az előírt sorozatban.
 
@@ -95,9 +95,9 @@ Data Box Edge-erőforrás létrehozásához hajtsa végre a következő lépése
     - Vagy a Azure Government portál ezen az URL-címen: [https://portal.azure.us](https://portal.azure.us). További részletekért lépjen a [kapcsolódás Azure Government a portál használatával](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
 2. A bal oldali panelen válassza az **+ erőforrás létrehozása**lehetőséget. **Data Box Edge/Data Box Gateway**keresése. Válassza a **Data Box Edge/Data Box Gateway**lehetőséget. Kattintson a **Létrehozás** gombra.
-3. Válassza ki a Data Box Edge eszközhöz használni kívánt előfizetést. Válassza ki a régiót, ahol üzembe szeretné helyezni a Data Box Edge-erőforrást. Ebben a kiadásban az USA keleti régiója, Dél-Kelet-Ázsia és Nyugat-Európa is elérhető. 
+3. Válassza ki a Data Box Edge eszközhöz használni kívánt előfizetést. Válassza ki a régiót, ahol üzembe szeretné helyezni a Data Box Edge-erőforrást. Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
-    Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon. A régió csak az eszközkezelés metaadatait tárolja. A tényleges adatok bármilyen Storage-fiókban tárolhatók. 
+    Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon. A régió csak az eszközkezelés metaadatait tárolja. A tényleges adatok bármilyen Storage-fiókban tárolhatók.
     
     A **Data Box Edge** lehetőségnél válassza a **Létrehozás**lehetőséget.
 
@@ -105,17 +105,17 @@ Data Box Edge-erőforrás létrehozásához hajtsa végre a következő lépése
 
 3. Az **alapvető beállítások** lapon adja meg vagy válassza ki a következő **projekt részleteit**.
     
-    |Beállítás  |Value (Díj)  |
+    |Beállítás  |Érték  |
     |---------|---------|
-    |Előfizetés    |Ezt a rendszer automatikusan kitölti a korábbi kiválasztás alapján. A számlázási fiókhoz társított előfizetés. |
+    |Előfizetést    |Ezt a rendszer automatikusan kitölti a korábbi kiválasztás alapján. A számlázási fiókhoz társított előfizetés. |
     |Erőforráscsoport  |Válasszon ki egy meglévő csoportot, vagy hozzon létre egy újat.<br>Itt tekinthet meg további információt az [Azure-erőforráscsoportokkal](../azure-resource-manager/management/overview.md) kapcsolatban.     |
 
 4. Adja meg vagy válassza ki a következő **példány részleteit**.
 
-    |Beállítás  |Value (Díj)  |
+    |Beállítás  |Érték  |
     |---------|---------|
-    |Név   | Az erőforrást azonosító valódi név.<br>A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
-    |Region (Régió)     |Ebben a kiadásban az USA keleti régiója, Dél-Kelet-Ázsia és Nyugat-Európa is elérhető az erőforrás üzembe helyezéséhez. Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
+    |Name (Név)   | Az erőforrást azonosító valódi név.<br>A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
+    |Régió     |Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
 
     ![Projekt és példány részletei](media/data-box-edge-deploy-prep/data-box-edge-resource.png)
 

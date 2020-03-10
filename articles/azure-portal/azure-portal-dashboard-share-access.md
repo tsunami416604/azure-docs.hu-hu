@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/29/2020
 ms.author: mblythe
 ms.openlocfilehash: e8d251cef9e67cb8fc0c11df8ce546383f75a679
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900879"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389715"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Azure-irányítópultok megosztása szerepköralapú Access Control használatával
 
@@ -38,7 +38,7 @@ Szerepköralapú Access Control (RBAC) esetén a felhasználók a hatókör hár
 
 * előfizetést
 * erőforráscsoport
-* erőforrás
+* resource
 
 A hozzárendelt engedélyek az előfizetésből öröklik az erőforrást. A közzétett irányítópult egy erőforrás. Lehetséges, hogy már rendelkezik a közzétett irányítópultra vonatkozó előfizetéshez tartozó szerepkörökhöz hozzárendelt felhasználókkal.
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: manayar
 ms.openlocfilehash: 49327ff0c3aeab25de02fc67c049f24597215d45
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274452"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390411"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport módosítása
 
@@ -360,7 +360,7 @@ Néhány tulajdonság csak akkor módosítható bizonyos értékekre, ha a mére
 Bizonyos módosítások a globális méretezési csoport tulajdonságai helyett meghatározott virtuális gépekre is alkalmazhatók. Jelenleg az egyetlen támogatott virtuálisgép-frissítés a méretezési csoportba tartozó virtuális gépekhez kapcsolódó adatlemezek csatlakoztatása/leválasztása. Ez a funkció előzetes verzióban érhető el. További információkért tekintse meg az [előzetes verzió dokumentációját](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk).
 
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
 ### <a name="application-updates"></a>Alkalmazások frissítései
 Ha egy alkalmazás egy méretezési csoportra van telepítve kiterjesztéseken keresztül, a bővítmény konfigurációjának frissítése az alkalmazás frissítését eredményezi a frissítési szabályzatnak megfelelően. Ha például egy parancsfájl új verziója fut egy egyéni parancsfájl-bővítményben, a *fileUris* tulajdonság frissítésével az új parancsfájlra mutathat. Bizonyos esetekben előfordulhat, hogy egy frissítést is kényszeríteni kíván, bár a bővítmény konfigurációja nem változik (például a parancsfájl URI-azonosítójának módosítása nélkül frissítette a szkriptet). Ezekben az esetekben a *forceUpdateTag* módosításával kényszerítheti a frissítést. Az Azure platform nem értelmezi ezt a tulajdonságot. Ha megváltoztatja az értéket, nincs hatással a bővítmény futtatására. A módosítás egyszerűen kényszeríti a bővítmény újrafuttatását. A *forceUpdateTag*kapcsolatos további információkért tekintse meg a [bővítmények REST API dokumentációját](/rest/api/compute/virtualmachineextensions/createorupdate). Vegye figyelembe, hogy a *forceUpdateTag* minden bővítménnyel használható, nem csak az egyéni szkriptek bővítménye.

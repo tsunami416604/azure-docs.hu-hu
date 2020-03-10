@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: rohogue
 ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990606"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388221"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
@@ -148,9 +148,9 @@ Ez a táblázat a használati modell eltéréseit foglalja össze:
 
 | Használati modell | Gyorsítótárazási mód | Háttér-ellenőrzés | Maximális írási késleltetés |
 | ---- | ---- | ---- | ---- |
-| Súlyos, ritka írások olvasása | Olvasás | Soha | None |
-| 15%-nál nagyobb írások | Olvasás/írás | Soha | 1 óra |
-| Az ügyfelek megkerülik a gyorsítótárat | Olvasás | 30 másodperc | None |
+| Súlyos, ritka írások olvasása | Olvasás | Soha nem | Nincs |
+| 15%-nál nagyobb írások | Olvasás/írás | Soha nem | 1 óra |
+| Az ügyfelek megkerülik a gyorsítótárat | Olvasás | 30 másodperc | Nincs |
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,15 +1,15 @@
 ---
-title: Mi az Azure Backup?
+title: Mi az az Azure Backup?
 description: Áttekintést nyújt a Azure Backup szolgáltatásról, valamint arról, hogy miként járul hozzá az üzletmenet-folytonossági és a vész-helyreállítási (BCDR) stratégiához.
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
 ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294303"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397067"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Mi a Azure Backup szolgáltatás?
 
@@ -25,7 +25,7 @@ Az Azure Backup szolgáltatás egyszerű, biztonságos és költséghatékony me
 - **SQL Server Azure-beli virtuális gépeken** -  Azure-beli [virtuális gépeken futó SQL Server-adatbázisok biztonsági mentése](backup-azure-sql-database.md)
 - SAP HANA Azure-beli virtuális gépeken **található adatbázisok** - [biztonsági mentési SAP HANA Azure-beli virtuális gépeken futó adatbázisok](backup-azure-sap-hana-database.md)
 
-![Azure Backup – áttekintés](./media/backup-overview/azure-backup-overview.png)
+![Azure Backup áttekintése](./media/backup-overview/azure-backup-overview.png)
 
 ## <a name="why-use-azure-backup"></a>Miért érdemes az Azure Backupot használni?
 

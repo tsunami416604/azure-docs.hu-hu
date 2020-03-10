@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 37932a3669dc1ed7f8f3f103db93ee6757a06aad
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: dbea68f5699f26b866d2e22c960c0359bcb3479b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920178"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944484"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux rendszerű virtuális gépekhez Scheduled Events
 
@@ -46,7 +46,7 @@ A Scheduled Events segítségével az alkalmazás képes észlelni, ha a karbant
 Scheduled Events a következő használati esetekben nyújt eseményeket:
 
 - [Platform által kezdeményezett karbantartás](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (például virtuális gép újraindítása, élő áttelepítés vagy memória megőrzése a gazdagépen)
-- Csökkentett teljesítményű hardver
+- A virtuális gép olyan [csökkentett teljesítményű gazdagép hardverén](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events) fut, amely hamarosan meghiúsul
 - Felhasználó által kezdeményezett karbantartás (például egy felhasználó újraindítja vagy újratelepíti a virtuális gépet)
 - [Helyszíni virtuális gép](spot-vms.md) és [direktszín-méretezési csoport](../../virtual-machine-scale-sets/use-spot.md) példányainak kizárása.
 
@@ -146,6 +146,9 @@ Az események a jövőben az esemény típusa alapján a lehető legkevesebb id�
 | Ismételt üzembe helyezés | 10 perc |
 | Megelőzik | 30 másodperc |
 | Felmondhatja | [Felhasználó által konfigurálható](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 – 15 perc |
+
+> [!NOTE] 
+> Bizonyos esetekben az Azure képes megjósolni a gazdagép meghibásodását, mivel a hardver elromlott, és megkísérli a szolgáltatás megszakadásának enyhítését az áttelepítés ütemezésével. Az érintett virtuális gépek egy ütemezett eseményt kapnak egy olyan `NotBefore`, amely általában néhány nap a jövőben. A tényleges idő a várható meghibásodási kockázattól függ. Az Azure a lehetségesnél 7 napos előzetes értesítést próbál megadni, de a tényleges idő változó, és kisebb is lehet, ha az előrejelzés szerint a hardver hamarosan leáll. Ha a hardvert a rendszer által kezdeményezett áttelepítés előtt nem sikerül végrehajtani, akkor a lehető leghamarabb telepítse újra a virtuális gépet.
 
 ### <a name="start-an-event"></a>Esemény indítása 
 

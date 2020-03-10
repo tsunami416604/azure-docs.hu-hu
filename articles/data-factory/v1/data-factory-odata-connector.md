@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931871"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387678"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Adatok áthelyezése egy OData-forrásból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -60,7 +60,7 @@ A következő szakaszokban részletesen ismertetjük a OData-forrásra jellemző
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a OData társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **OData** |Igen |
 | url |A OData szolgáltatás URL-címe. |Igen |
@@ -68,7 +68,7 @@ A következő táblázat a OData társított szolgáltatáshoz tartozó JSON-ele
 | felhasználónév |Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. |Igen (csak akkor, ha alapszintű hitelesítést használ) |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |Igen (csak akkor, ha alapszintű hitelesítést használ) |
 | authorizedCredential |Ha OAuth használ, kattintson az **Engedélyezés** gombra a Data Factory másolás varázslóban vagy a szerkesztőben, és adja meg a hitelesítő adatait, majd a tulajdonság értékét automatikusan létrehozza a rendszer. |Igen (csak OAuth-hitelesítés használata esetén) |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni OData szolgáltatáshoz való kapcsolódáshoz. Csak akkor kell megadni, ha a helyszíni OData forrásból másol Adatmásolást. |Nem |
+| gatewayName |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni OData szolgáltatáshoz való kapcsolódáshoz. Csak akkor kell megadni, ha a helyszíni OData forrásból másol Adatmásolást. |Nem |
 
 ### <a name="using-basic-authentication"></a>Alapszintű hitelesítés használata
 ```json
@@ -145,7 +145,7 @@ Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok telje
 
 A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **ODataResource** típusú (OData-adatkészletet tartalmazó) adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | elérési út |A OData erőforrás elérési útja |Nem |
 
@@ -156,9 +156,9 @@ A tevékenység typeProperties szakaszában elérhető tulajdonságok az egyes t
 
 Ha a forrás típusa **RelationalSource** (beleértve a OData is), a typeProperties szakaszban a következő tulajdonságok érhetők el:
 
-| Tulajdonság | Leírás | Példa | Szükséges |
+| Tulajdonság | Leírás | Példa | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |"? $select = név, leírás & $top = 5" |Nem |
+| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |"?$select=Name, Description&$top=5" |Nem |
 
 ## <a name="type-mapping-for-odata"></a>Típus leképezése OData
 Ahogy azt az [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikk ismerteti, a másolási tevékenység az alábbi kétlépéses megközelítéssel hajtja végre az automatikus típus-konverziókat a forrás típusairól a fogadó típusokba.
@@ -168,22 +168,22 @@ Ahogy azt az [adattovábbítási tevékenységek](data-factory-data-movement-act
 
 Az adatok OData való áthelyezésekor a rendszer a következő leképezéseket használja a OData típusokból a .NET típusra.
 
-| OData-adatok típusa | .NET-típus |
+| OData adattípusa | .NET-típus |
 | --- | --- |
-| EDM. Binary |Bájt [] |
-| Edm.Boolean |Logikai |
-| EDM. byte |Bájt [] |
-| EDM. DateTime |Dátum és idő |
-| EDM. decimális |Decimális |
-| Edm.Double |Double |
-| EDM. Single |Önálló |
-| EDM. GUID |GUID |
-| EDM. Int16 |Int16 |
+| Edm.Binary |Byte[] |
+| Edm.Boolean |Bool |
+| Edm.Byte |Byte[] |
+| Edm.DateTime |DateTime |
+| Edm.Decimal |tizedes tört |
+| Edm.Double |Dupla |
+| Edm.Single |Single |
+| Edm.Guid |Guid |
+| Edm.Int16 |Int16 |
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
-| EDM. sbyte érték |Int16 |
+| Edm.SByte |Int16 |
 | Edm.String |Sztring |
-| EDM. Time |időtartam |
+| Edm.Time |Időtartam |
 | Edm.DateTimeOffset |DateTimeOffset |
 
 > [!Note]

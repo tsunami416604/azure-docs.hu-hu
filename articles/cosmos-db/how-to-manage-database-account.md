@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873675"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357645"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos-fiók kezelése
 
-Ez a cikk azt ismerteti, hogyan kezelhető az Azure Cosmos-fiók különböző feladatai a Azure Portal, a Azure PowerShell, az Azure CLI és a Azure Resource Manager sablonok használatával.
+Ez a cikk az Azure Cosmos-fiók különböző feladatainak az Azure Portal, az Azure PowerShell, az Azure CLI és az Azure Resource Manager-sablonok használatával történő kezelését ismerteti.
 
 ## <a name="create-an-account"></a>Fiók létrehozása
 
@@ -51,9 +51,9 @@ Ez a Azure Resource Manager-sablon létrehoz egy Azure Cosmos-fiókot az SQL API
 
    ![Régiók hozzáadása vagy eltávolítása menü](./media/how-to-manage-database-account/add-region.png)
 
-Egy egyrégiós írási módban nem távolíthatja el az írási régiót. Az aktuális írási régió törlése előtt a feladatátvételt egy másik régióba kell átadnia.
+Egyrégiós írási módban nem távolíthatja el az írási régiót. Az aktuális írási régió törlése előtt feladatátvételt kell végeznie egy másik régióba.
 
-Többrégiós írási módban bármely régiót hozzáadhat vagy eltávolíthat, ha legalább egy régióval rendelkezik.
+Többrégiós írási módban szabadon adhat hozzá és távolíthat el régiókat, ha marad legalább egy régió.
 
 ### <a id="add-remove-regions-via-cli"></a>Azure CLI
 
@@ -165,7 +165,7 @@ Lásd: [az automatikus feladatátvétel engedélyezése az Azure CLI-vel](manage
 
 Lásd: [az automatikus feladatátvétel engedélyezése a PowerShell](manage-with-powershell.md#enable-automatic-failover) -lel
 
-## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>Feladatátvételi prioritások beállítása az Azure Cosmos-fiókhoz
+## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>Az Azure Cosmos-fiók feladatátvételi prioritásainak beállítása
 
 Ha egy Cosmos-fiók automatikus feladatátvételre van konfigurálva, a régiók feladatátvételi prioritása módosítható.
 

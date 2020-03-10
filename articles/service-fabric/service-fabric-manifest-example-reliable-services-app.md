@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: pepogors
 ms.openlocfilehash: f40e54f5260f827f0b18c833d23d1f57b5ebc3a3
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617473"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382820"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Példák Reliable Services-alkalmazások és szolgáltatások jegyzékeire
 A következő példák a Service Fabric alkalmazás alkalmazás-és szolgáltatási jegyzékfájlait ASP.NET Core webes kezelőfelülettel és állapot-nyilvántartó háttérrel rendelkeznek. A példák célja, hogy megmutassa, milyen beállítások érhetők el, és hogyan használhatja őket. Ezek az alkalmazások és szolgáltatások jegyzékfájli a [Service Fabric .net](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) gyors üzembe helyezési jegyzékeken alapulnak.

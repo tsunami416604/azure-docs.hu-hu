@@ -7,11 +7,11 @@ ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
 ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756143"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356012"
 ---
 # <a name="what-are-durable-functions"></a>Mik azok a tartós függvények?
 
@@ -50,7 +50,7 @@ Az alábbi példában látható módon az Durable Functions használatával vég
 
 Ebben a példában a `F1`, `F2`, `F3`és `F4` értékek az azonos Function alkalmazásban található egyéb függvények nevei. A vezérlési folyamat normál, kötelező kódolási szerkezetek használatával valósítható meg. A kód felülről lefelé fut. A kód a meglévő nyelvi vezérlési folyamatokat, például a feltételes és a hurkokat is magában foglalja. A `try`/`catch`/`finally` blokkokban a hibák kezelésére szolgáló logika is felhasználható.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Chaining")]
@@ -73,7 +73,7 @@ public static async Task<object> Run(
 
 A `context` paraméterrel más függvények is meghívhatók név, pass paraméterek és visszatérési függvény kimenete alapján. Minden alkalommal, amikor a kód meghívja a `await`, a Durable Functions Framework ellenőrzőpontok az aktuális függvény példányának állapotát. Ha a folyamat vagy a virtuális gép a végrehajtás során félúton újraindul, a függvény példánya az előző `await` hívást folytatja. További információkért tekintse meg a következő, minta #2: fan out/Fan in című szakaszt.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -107,7 +107,7 @@ A normál függvények segítségével kipróbálhatja, hogy a függvény több 
 
 A Durable Functions bővítmény ezt a mintát viszonylag egyszerű kóddal kezeli:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FanOutFanIn")]
@@ -136,7 +136,7 @@ A kivezetési műveletet a `F2` függvény több példánya is terjeszti. A rend
 
 A `Task.WhenAll` `await` hívásakor az automatikus ellenőrzőpont-ellenőrzés biztosítja, hogy egy lehetséges Midway-összeomlás vagy-újraindítás nem igényli a már befejezett feladatok újraindítását.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -218,7 +218,7 @@ Néhány sornyi kódban a Durable Functions használatával több, tetszőleges 
 
 A következő kód egy alapszintű figyelőt valósít meg:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("MonitorJobStatus")]
@@ -248,7 +248,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -292,7 +292,7 @@ Ebben a példában egy Orchestrator függvény használatával valósítható me
 
 Ezek a példák jóváhagyási folyamatot hoznak létre az emberi interakciós minta bemutatásához:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalWorkflow")]
@@ -321,7 +321,7 @@ public static async Task Run(
 
 A tartós időzítő létrehozásához hívja meg a `context.CreateTimer`. Az értesítést `context.WaitForExternalEvent`fogadja. Ezt követően `Task.WhenAny` a rendszer eldönti, hogy ki kell-e bővíteni (időtúllépés történik), vagy fel kell dolgoznia a jóváhagyást (a jóváhagyás az időkorlát előtt érkezik).
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -355,7 +355,7 @@ curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{ins
 
 Egy esemény is kiemelhető a tartós összehangoló ügyféllel egy másik függvényből ugyanabban a Function alkalmazásban:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
@@ -368,7 +368,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -392,7 +392,7 @@ A minta a normál, állapot nélküli függvények használatával történő me
 
 [Tartós entitások](durable-functions-entities.md) használatával egyszerűen implementálhatja ezt a mintát egyetlen függvényként.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Counter")]
@@ -435,7 +435,7 @@ public class Counter
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -461,7 +461,7 @@ module.exports = df.entity(function(context) {
 
 Az ügyfelek az entitás- [ügyfél kötésének](durable-functions-bindings.md#entity-client)használatával sorba helyezni *műveleteket* (más néven "jelzés").
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -481,7 +481,7 @@ public static async Task Run(
 > [!NOTE]
 > A dinamikusan generált proxyk a .NET-keretrendszerben is elérhetők, ha az entitások típus-biztonságos módon vannak jelezve. Továbbá a jelzésen felül az ügyfelek az entitások függvényének állapotáról is lekérhetik a [típus-biztonságos metódusok](durable-functions-bindings.md#entity-client-usage) használatával.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

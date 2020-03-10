@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: Ismerteti az Azure dev Spaces Azure Kubernetes Servicesben való futtatásának hálózati követelményeit
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, CNI, kubenet, SDN, hálózat
 ms.openlocfilehash: 9e32e3b65451dceefaeeaf7faed7c8337797e0b8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044995"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389685"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Hálózatkezelés konfigurálása az Azure dev Spaces szolgáltatáshoz különböző hálózati topológiákban
 
@@ -28,7 +28,7 @@ Az Azure dev Spaces szolgáltatásban a *bejövő és a kimenő* hálózati forg
 
 Az Azure dev Spaces szolgáltatásnak a következő teljes tartománynevek felé irányuló bejövő és kimenő forgalomra van szüksége:
 
-| FQDN                       | Port       | Használat      |
+| TELJES TARTOMÁNYNÉV                       | Port       | Használat      |
 |----------------------------|------------|----------|
 | cloudflare.docker.com      | HTTPS: 443 | Docker-rendszerképek lekérése az Azure dev Spaces szolgáltatásban |
 | gcr.io                     | HTTPS: 443 | Helm-lemezképek lekérése az Azure dev Spaces szolgáltatásban |
@@ -65,7 +65,7 @@ Az AK-fürtök lehetővé teszik olyan további biztonsági beállítások konfi
 
 Ebben az esetben az Azure fejlesztői tárhelyek nem támogatottak az AK-beli [privát fürtökön][aks-private-clusters].
 
-## <a name="client-requirements"></a>Ügyfélkövetelmények
+## <a name="client-requirements"></a>Ügyfélre vonatkozó követelmények
 
 Az Azure dev Spaces ügyféloldali eszközöket használ, például az Azure dev Spaces CLI-bővítményt, a Visual Studio Code-bővítményt és a Visual Studio-bővítményt, hogy a hibakereséshez kommunikáljon az AK-fürttel. Az Azure dev Spaces ügyféloldali eszközeinek használatához engedélyezze a fejlesztési gépekről érkező forgalmat a *azds-\*. azds.IO* tartományba. A teljes tartománynevet a `USERPROFILE\.azds\settings.json` *dataplaneFqdn* című részben tekintheti meg. Ha az [API-kiszolgáló által engedélyezett IP-tartományokat][auth-range-section]használja, engedélyeznie kell az AK-fürthöz csatlakozó fejlesztői gépek IP-címét is, hogy hibakeresést VÉGEZZEN az API-kiszolgálóhoz való kapcsolódáshoz.
 

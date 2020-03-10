@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
 ms.openlocfilehash: 019ddbac1900856666b958d90b4395f25eb5ee84
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461538"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380767"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Oktatóanyag: SQL-adatszinkronizálás beállítása Azure SQL Database és a helyszíni SQL Server között
 
@@ -169,7 +169,7 @@ Az új szinkronizálási csoport tagjainak létrehozása és telepítése után 
 
     ![Manuális szinkronizálás](media/sql-database-get-started-sql-data-sync/datasync-sync.png)
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 **Milyen gyakran tud szinkronizálni az adatszinkronizálási adatokat?**
 

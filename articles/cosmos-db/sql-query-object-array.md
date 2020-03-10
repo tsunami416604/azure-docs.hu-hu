@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870921"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386990"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Tömbök és objektumok használata Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Tömböket a következő példában látható módon hozhat létre:
     FROM Families f
 ```
 
-Az eredmény a következő:
+Az eredmények a következők:
 
 ```json
     [
@@ -61,7 +61,7 @@ Az SQL API támogatást nyújt a JSON-tömbök megismétléséhez, és egy új, 
     FROM Families.children
 ```
 
-Az eredmény a következő:
+Az eredmények a következők:
 
 ```json
     [
@@ -97,7 +97,7 @@ A következő lekérdezés a `Families` tárolóban `children`on végzett iterá
     FROM c IN Families.children
 ```
 
-Az eredmény a következő:
+Az eredmények a következők:
 
 ```json
     [
@@ -130,7 +130,7 @@ A tömb egyes bejegyzésein tovább szűrhető, ahogy az alábbi példában is l
     WHERE c.grade = 8
 ```
 
-Az eredmény a következő:
+Az eredmények a következők:
 
 ```json
     [{
@@ -145,7 +145,7 @@ Egy tömb iterációs eredménye is összesíthető. Az alábbi lekérdezés pé
     FROM child IN Families.children
 ```
 
-Az eredmény a következő:
+Az eredmények a következők:
 
 ```json
     [

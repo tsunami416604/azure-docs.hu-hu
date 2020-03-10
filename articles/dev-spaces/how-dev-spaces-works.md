@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces és hogyan vannak konfigurálva a azds. YAML konfigurációs fájlban
 keywords: azds. YAML, Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: e96541b0008dca9cbaeda92152f835c188036971
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771138"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375268"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Az Azure dev Spaces működése és konfigurálása
 
@@ -205,7 +205,7 @@ A `up` parancs feltölti az alkalmazás forrásfájljait és a projekt létrehoz
 1. Létrehozza az alkalmazás tárolóját.
 1. Üzembe helyezi az alkalmazást a fejlesztői térben.
 1. Nyilvánosan elérhető DNS-nevet hoz létre az alkalmazás-végponthoz, ha konfigurálva van.
-1. A *porton keresztül továbbítja* az alkalmazás-végpont elérését http://localhost használatával.
+1. A *porton keresztül továbbítja* az alkalmazás-végpont elérését http://localhosthasználatával.
 1. Az stdout és a stderr továbbítása az ügyféloldali eszközökhöz.
 
 
@@ -220,7 +220,7 @@ Részletesebben a `azds up`futtatásakor a következő történik:
 1. A vezérlő lecseréli az *$ (tag)* helyőrzőt a Helm diagramon az egyedi munkamenet-azonosítóval, és telepíti a Helm-diagramot a szolgáltatáshoz. Az egyedi munkamenet-AZONOSÍTÓra mutató hivatkozás hozzáadása a Helm diagramhoz lehetővé teszi, hogy az AK-fürtön üzembe helyezett tároló a munkamenet-kérelemhez és a kapcsolódó információkhoz legyen kötve.
 1. A Helm diagram telepítése során a Kubernetes webhook-felvételi kiszolgáló további tárolókat hoz létre az alkalmazás Pod eszközéhez, és hozzáfér a projekt forráskódhoz. A rendszer hozzáadja a devspaces-proxy és a devspaces-proxy-init tárolókat a HTTP-nyomkövetés és a térköz-útválasztás biztosításához. A rendszer hozzáadja a devspaces tárolót, amely hozzáférést biztosít a Docker-példányhoz és a projekt forráskódját az alkalmazás tárolójának létrehozásához.
 1. Az alkalmazás Pod indításakor a devspaces-Build tároló és a devspaces-proxy-init tároló az alkalmazás-tároló összeállítására szolgál. Az alkalmazás-tároló és a devspaces-proxy tárolók elindulnak.
-1. Az alkalmazás-tároló elindítása után az ügyféloldali funkció a Kubernetes *Port-Forward* funkciót használja az alkalmazáshoz való http-hozzáférés biztosításához http://localhost on keresztül. Ez a port továbbítása a fejlesztési gépet a fejlesztői térben található szolgáltatáshoz köti.
+1. Az alkalmazás-tároló elindítása után az ügyféloldali funkció a Kubernetes *Port-Forward* funkciót használja az alkalmazáshoz való http-hozzáférés biztosításához http://localhoston keresztül. Ez a port továbbítása a fejlesztési gépet a fejlesztői térben található szolgáltatáshoz köti.
 1. Ha a pod összes tárolója elindult, a szolgáltatás fut. Ezen a ponton az ügyféloldali funkciók elkezdik továbbítani a HTTP-nyomkövetéseket, az stdout-t és a stderr. Ezt az információt a fejlesztő ügyféloldali funkciója jeleníti meg.
 
 ### <a name="updating-a-running-service"></a>Futó szolgáltatás frissítése
@@ -415,7 +415,7 @@ Létrehozhat egy másik fejlesztői területből származtatott új fejlesztői 
 
 A származtatott fejlesztői terület is intelligens módon irányítja a kérelmeket a saját alkalmazásai és a szülőtől megosztott alkalmazások között. Az Útválasztás úgy működik, hogy megpróbál átirányítani egy alkalmazást a származtatott fejlesztői területen, és visszakerül a megosztott alkalmazásra a szülő fejlesztői területről. Ha az alkalmazás nincs a szülő térben, az Útválasztás visszakerül a szülő terület megosztott alkalmazására.
 
-Példa:
+Például:
 * A fejlesztői terület *alapértelmezett értéke* az Applications *Servicea* és a *serviceB* .
 * A dev Space *Azureus* az *alapértelmezett értékből*származik.
 * A *servicea* frissített verziója van üzembe helyezve az *azureuser*-ben.

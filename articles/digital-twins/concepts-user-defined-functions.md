@@ -9,11 +9,11 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: 75ed2029582438ede43687addfd54c0a187e0120
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861098"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382246"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Adatfeldolgozás és felhasználó által definiált függvények
 
@@ -97,7 +97,7 @@ Az egyeztetések olyan feltételeket határoznak meg, amelyek kiértékelik, hog
 
 A felhasználó által definiált függvény egy elszigetelt Azure digitális Twins-környezetben végrehajtott egyéni függvény. A felhasználó által definiált függvények hozzáférhetnek a nyers érzékelő telemetria-üzeneteihez, amint az beérkezett. A felhasználó által definiált függvények hozzáférhetnek a térbeli gráfhoz és a diszpécser szolgáltatáshoz is. A felhasználó által definiált függvény egy gráfon belüli regisztrálása után létre kell hozni egy Matcher ( [fent](#matchers)részletezett), hogy meg lehessen adni a függvény végrehajtásának időpontját. Ha például az Azure Digital Twins új telemetria kap egy adott érzékelőből, az egyeztetett felhasználó által definiált függvény az utolsó néhány érzékelő beolvasásának mozgóátlagát is kiszámíthatja.
 
-A felhasználó által definiált függvények a JavaScriptben is megírhatók. A segítő módszerek a felhasználó által definiált végrehajtási környezetben működnek a gráfmal. A fejlesztők egyéni kódrészleteket futtathatnak az érzékelő telemetria üzeneteiben. Példák:
+A felhasználó által definiált függvények a JavaScriptben is megírhatók. A segítő módszerek a felhasználó által definiált végrehajtási környezetben működnek a gráfmal. A fejlesztők egyéni kódrészleteket futtathatnak az érzékelő telemetria üzeneteiben. Példák erre vonatkozóan:
 
 - Állítsa az érzékelőt közvetlenül az érzékelő objektumra a gráfon belül.
 - Hajtson végre egy műveletet a diagramon belül a különböző szenzorok beolvasása alapján.

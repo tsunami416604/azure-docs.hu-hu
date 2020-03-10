@@ -8,11 +8,11 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70d0246debc532260d287104bacea2f15c1b94d2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277299"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384927"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Távoli kapcsolódás a StorSimple 8000 Series eszközhöz
 
@@ -189,7 +189,7 @@ Az előző eljárások mindegyikét alább mutatjuk be.
 3. Jelölje be **az összes tanúsítvány tárolása a következő tárolóban**jelölőnégyzetet, majd kattintson a **Tallózás**gombra. Navigáljon a távoli gazdagép legfelső szintű tárolójához, majd kattintson a **tovább**gombra.
    
     ![Tanúsítvány importálása varázsló 2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
-4. Kattintson a **Befejezés** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt.
+4. Kattintson a **Finish** (Befejezés) gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt.
    
     ![Tanúsítvány importálása varázsló 3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 

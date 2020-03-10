@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791745"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358983"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>A munkafolyamat-műveleteket ismétlődő vagy a Azure Logic Appsban feldolgozó hurkok létrehozása
 
@@ -173,10 +173,10 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
    ![Ismétlődési ütemterv beállítása](./media/logic-apps-control-flow-loops/do-until-loop-set-trigger-properties.png)
 
-   | Tulajdonság | Value (Díj) |
+   | Tulajdonság | Érték |
    | -------- | ----- |
    | **Intervallum** | 1 | 
-   | **Gyakoriság** | Nap |
+   | **Gyakoriság** | Day |
    | **Ezekben az órákban** | 8 |
    ||| 
 
@@ -189,7 +189,7 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
    ![Változó tulajdonságainak beállítása](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | Tulajdonság | Value (Díj) | Leírás |
+   | Tulajdonság | Érték | Leírás |
    | -------- | ----- | ----------- |
    | **Name (Név)** | Korlát | A változó neve | 
    | **Típus** | Egész szám | Változó adattípusa | 
@@ -230,9 +230,9 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
       ![E-mail-tulajdonságok beállítása](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-      | Tulajdonság | Value (Díj) | Leírás |
+      | Tulajdonság | Érték | Leírás |
       | -------- | ----- | ----------- | 
-      | **Címzett** | *\<e-mail-cím\@tartomány >* | a címzett e-mail-címe. Teszteléshez használja a saját e-mail-címét. | 
+      | **Címzett** | *\<e-mail-cím\@tartomány >* | A címzett e-mail-címe. Teszteléshez használja a saját e-mail-címét. | 
       | **Tárgy** | A "Limit" jelenlegi értéke **limit** | Határozza meg az e-mail tárgyát. Ebben a példában ellenőrizze, hogy tartalmazza-e a **határérték** változót. | 
       | **Törzs** | <*e-mail-tartalom*> | Itt adhatja meg a küldeni kívánt e-mail üzenet tartalmát. Ebben a példában írjon be egy tetszőleges szöveget. | 
       |||| 

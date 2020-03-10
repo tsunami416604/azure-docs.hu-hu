@@ -8,13 +8,13 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687348"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374173"
 ---
-# <a name="network-architecture-overview-of-app-service-environments"></a>Az App Service Environment-környezetek hálózati architektúrájának áttekintése
+# <a name="network-architecture-overview-of-app-service-environments"></a>App Service környezetek hálózati architektúrájának áttekintése
 App Service környezetek mindig egy [virtuális hálózat][virtualnetwork] alhálózatán belül jönnek létre – a app Service Environmentban futó alkalmazások képesek kommunikálni az azonos virtuális hálózati topológián belül található privát végpontokkal.  Mivel az ügyfelek lefoglalhatják a virtuális hálózati infrastruktúrájuk egyes részeit, fontos megérteni, hogy milyen típusú hálózati kommunikációs folyamatok történnek egy App Service Environment.
 
 ## <a name="general-network-flow"></a>Általános hálózati folyamat
@@ -29,7 +29,7 @@ Az alábbi ábra áttekintést nyújt a különböző bejövő és kimenő hál�
 Egy App Service Environment számos privát ügyfél-végponttal kommunikálhat.  A App Service Environment futó alkalmazások például csatlakozhatnak a IaaS virtuális gépeken futó adatbázis-kiszolgáló (k) hoz ugyanazon a virtuális hálózati topológiában.
 
 > [!IMPORTANT]
-> A hálózati diagramon a "más számítási erőforrások" a App Service Environment egy másik alhálózatán vannak telepítve. Ahhoz, hogy az erőforrások ugyanabban az alhálózatban legyenek telepítve, a központtal együtt, letiltja a bevezetési kapcsolatot a bevezetéstől az adott erőforrásokhoz (kivéve a konkrét, a belső Telepítsen helyet egy másik alhálózatra (ugyanabban a VNET). Ekkor a App Service Environment csatlakozni tud. Nincs szükség további konfigurálásra.
+> A hálózati diagramon a "más számítási erőforrások" a App Service Environment egy másik alhálózatán vannak telepítve. Ahhoz, hogy az erőforrások ugyanabban az alhálózatban legyenek telepítve, a központtal együtt, letiltja a bevezetési kapcsolatot a bevezetéstől az adott erőforrásokhoz (kivéve a konkrét, a belső Telepítsen helyet egy másik alhálózatra (ugyanabban a VNET). Ekkor a App Service Environment csatlakozni tud. Ebben az esetben nincs szükség további konfigurációra.
 > 
 > 
 

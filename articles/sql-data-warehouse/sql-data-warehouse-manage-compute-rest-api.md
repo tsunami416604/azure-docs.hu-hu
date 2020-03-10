@@ -12,11 +12,11 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 4e3435fdaa505a73abf96b9463b061c623c192ad
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199393"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381057"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>REST API-k Azure SQL Data Warehousehoz
 REST API-k a számítások kezeléséhez az Azure szinapszis Analytics-adattárházban.
@@ -94,6 +94,6 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: a [számítások kezelése](sql-data-warehouse-manage-compute-overview.md).
 

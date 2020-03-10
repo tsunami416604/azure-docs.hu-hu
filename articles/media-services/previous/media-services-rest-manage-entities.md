@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: a03bc24b689df342be40536c26149a7611fc5176
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773647"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390542"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Media Services entitások kezelése a REST-tel  
 
@@ -36,11 +36,11 @@ Ez a témakör bemutatja, hogyan felügyelheti Azure Media Services entitásokat
 >[!NOTE]
 > 2017. április 1-től kezdődően a fiókokban a 90 napnál régebbi Feladat rekordok automatikusan törölve lesznek, a kapcsolódó Művelet rekordokkal egyetemben, még ha a rekordok összesített száma nem is éri el a maximális kvótát. Például 2017. április 1-jén a fiókban lévő minden olyan feladatra vonatkozó rekordot, amely a 2016 december 31-én régebbi, automatikusan törlődik. Ha archiválni szeretné a feladat/feladat adatait, használhatja a jelen témakörben ismertetett kódot.
 
-## <a name="considerations"></a>Megfontolandó szempontok  
+## <a name="considerations"></a>Megfontolások  
 
 A Media Servicesban lévő entitásokhoz való hozzáféréskor meg kell adnia a HTTP-kérelmekben megadott fejléc-mezőket és-értékeket. További információ: [Media Services REST API-fejlesztés beállítása](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Kapcsolódás a Media Serviceshez
+## <a name="connect-to-media-services"></a>Kapcsolódás a Media Services szolgáltatáshoz
 
 További információ az AMS API-hoz való kapcsolódásról: [a Azure Media Services API Azure ad-hitelesítéssel való elérése](media-services-use-aad-auth-to-access-ams-api.md). 
 
@@ -169,7 +169,7 @@ Az alábbi példa bemutatja, hogyan törölhet egy olyan lokátort, amely a fáj
     Host: media.windows.net
     Content-Length: 0
 
-## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
+## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

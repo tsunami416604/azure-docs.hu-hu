@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
 ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610080"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386285"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Azure Service Fabric-fürtök méretezése
 A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A fürtök akár több ezer csomópontot is tartalmazhatnak. Service Fabric-fürt létrehozása után vízszintesen méretezheti a fürtöt (a csomópontok számának módosítása) vagy függőlegesen (a csomópontok erőforrásainak módosítása).  A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.  A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
@@ -22,12 +22,12 @@ Megváltoztatja a fürt csomópontjainak számát.  Miután az új csomópontok 
 - Előnyök: végtelen skála, elméletileg.  Ha az alkalmazás méretezhetőségre van tervezve, további csomópontok hozzáadásával engedélyezheti a korlátlan növekedést.  A felhőalapú környezetekben az eszközök megkönnyítik a csomópontok hozzáadását és eltávolítását, így egyszerűen beállíthatja a kapacitást, és csak a felhasznált erőforrásokért kell fizetnie.  
 - Hátrányok: az alkalmazásokat [a méretezhetőség érdekében kell tervezni](service-fabric-concepts-scalability.md).  Az alkalmazás adatbázisai és az adatmegőrzés további építészeti munkát is igényelhet a méretezéshez.  Service Fabric állapot-nyilvántartó szolgáltatások [megbízható gyűjteményei](service-fabric-reliable-services-reliable-collections.md) azonban sokkal egyszerűbbé teszik az alkalmazásadatok méretezését.
 
-A virtuálisgép-méretezési csoportok egy olyan Azure-beli számítási erőforrás, amellyel készletként telepítheti és kezelheti a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután az egyes csomópont-típusok egymástól függetlenül méretezhetők, különböző portokat nyitnak meg, és rendelkezhetnek különböző kapacitási metrikákkal. 
+Virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások üzembe helyezése és kezelése a virtuális gépek csoportként gyűjtemény használható. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Mindegyik csomóponttípus majd leskálázható vagy el egymástól függetlenül, más-más részhalmazához nyitott portokkal rendelkezik, és eltérő kapacitásmetrikái. 
 
 Egy Azure-fürt skálázásakor tartsa szem előtt a következő irányelveket:
 - az éles munkaterheléseket futtató elsődleges csomópontok típusának mindig legalább öt csomóponttal kell rendelkeznie.
-- az állapot-nyilvántartó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább öt csomópontnak kell futnia.
-- az állapot nélküli éles környezetben futó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább két csomópontnak kell futnia.
+- Az állapot-nyilvántartó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább öt csomópontnak kell futnia.
+- Az állapot nélküli éles környezetben futó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább két csomópontnak kell futnia.
 - Az arany vagy ezüst [tartóssági szintjének](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) minden csomópont-típusának mindig öt vagy több csomóponttal kell rendelkeznie.
 - Ne távolítsa el a véletlenszerű virtuálisgép-példányokat/csomópontokat a csomópont típusától, mindig használja a virtuálisgép-méretezési csoport méretezési funkcióját. A véletlenszerű virtuálisgép-példányok törlése hátrányosan befolyásolhatja a rendszerek megfelelő terheléselosztásának képességét.
 - Ha automatikus skálázási szabályokat használ, állítsa be a szabályokat úgy, hogy a (virtuálisgép-példányok eltávolítása) méretezése egyszerre egy csomóponton történjen. Egyszerre legfeljebb egy példány skálázása nem biztonságos.
@@ -59,7 +59,7 @@ Módosítja a fürt csomópontjainak erőforrásait (processzor, memória vagy t
 - Előnyök: a szoftverek és az alkalmazások architektúrája ugyanaz marad.
 - Hátrányok: véges skála, mivel korlátozva van, hogy mennyit növelheti az erőforrások az egyes csomópontokon. A leállás miatt a fizikai vagy virtuális gépeket offline állapotba kell helyezni, hogy erőforrásokat lehessen hozzáadni vagy eltávolítani.
 
-A virtuálisgép-méretezési csoportok egy olyan Azure-beli számítási erőforrás, amellyel készletként telepítheti és kezelheti a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni.  A csomópontok típusának felfelé vagy lefelé méretezése magában foglalja a méretezési csoport virtuálisgép-példányainak SKU-jának módosítását. 
+Virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások üzembe helyezése és kezelése a virtuális gépek csoportként gyűjtemény használható. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni.  A csomópontok típusának felfelé vagy lefelé méretezése magában foglalja a méretezési csoport virtuálisgép-példányainak SKU-jának módosítását. 
 
 > [!WARNING]
 > Azt javasoljuk, hogy ne változtassa meg a méretezési csoport/csomópont típusa virtuálisgép-SKU-jának használatát, kivéve, ha az [ezüst tartósságon vagy annál nagyobb mértékben](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)fut. A VM SKU méretének módosítása egy adatpusztító helyi infrastruktúra-művelet. A módosítás késleltetése vagy monitorozása nélkül lehetséges, hogy a művelet adatvesztést okozhat az állapot-nyilvántartó szolgáltatások számára, vagy más, előre nem látható működési problémákat okozhat, még az állapot nélküli munkaterhelések esetében is. 

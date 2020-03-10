@@ -12,16 +12,16 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e6e1144043cbbbc8124785351e1e56a776b84527
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692814"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383766"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>Tárolt eljárások használata a SQL Data Warehouseban
 Tippek a Azure SQL Data Warehouse tárolt eljárások megvalósításához a megoldások fejlesztéséhez.
 
-## <a name="what-to-expect"></a>Mi várható?
+## <a name="what-to-expect"></a>Mire számíthat
 
 A SQL Data Warehouse számos olyan T-SQL-funkciót támogat, amelyek a SQL Serverban használatosak. Még ennél is fontosabb, hogy a megoldás teljesítményének maximalizálása érdekében Felskálázási funkciók érhetők el.
 
@@ -86,6 +86,6 @@ Ezek a következők:
 * végrehajtási környezetek
 * visszatérési utasítás
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További fejlesztési tippek: a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md).
 

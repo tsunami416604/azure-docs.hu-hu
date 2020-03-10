@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 07/08/2019
 ms.author: kumud
 ms.openlocfilehash: d8e95f9c345a943eb458800b852640e3f1fde907
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488480"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393121"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Rövid útmutató: Virtuális hálózat létrehozása az Azure Portallal
 
@@ -30,7 +30,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
@@ -44,9 +44,9 @@ Bejelentkezés az [Azure Portalra](https://portal.azure.com).
     | ------- | ----- |
     | Name (Név) | Adja meg a *myVirtualNetwork*. |
     | Címtér | Adja meg a *10.1.0.0/16*értéket. |
-    | Előfizetés | Válassza ki előfizetését.|
+    | Előfizetést | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
-    | Földrajzi egység | Válassza az **USA keleti régiója** lehetőséget.|
+    | Hely | Válassza az **USA keleti régiója** lehetőséget.|
     | Alhálózat – név | Adja meg a *myVirtualSubnet*. |
     | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24*értéket. |
 
@@ -67,7 +67,7 @@ Hozzon létre két virtuális gépet a virtuális hálózaton:
     | Beállítás | Érték |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetést | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre. |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Virtuális gép neve | Adja meg a *myVm1*. |
@@ -223,7 +223,7 @@ Ha végzett a virtuális hálózat és a virtuális gépek használatával, tör
 
 3. Írja be a *myResourceGroup* **nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy alapértelmezett virtuális hálózatot és két virtuális gépet. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál a két virtuális gép között. További információ a virtuális hálózatok beállításairól: [Virtuális hálózat kezelése](manage-virtual-network.md).
 

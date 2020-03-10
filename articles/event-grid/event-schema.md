@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 1fceda6fcbb6e8db1fa8afbc5181315bd0c98940
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: MT
+ms.openlocfilehash: 35cea2e6df311d2f4071686c21c8e4c36477abc1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512980"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370570"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Gridi esemény sémája
 
@@ -83,16 +83,16 @@ Az Azure Blob Storage-eseményekhez közzétett séma például a következő:
 
 Minden esemény a következő legfelső szintű adatértékekkel rendelkezik:
 
-| Tulajdonság | Type (Típus) | Leírás |
-| -------- | ---- | ----------- |
-| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
-| tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
-| EventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
-| EventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
-| id | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | Az erőforrás-szolgáltatóhoz tartozó esemény-adatértékek. |
-| dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
-| metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
+| Tulajdonság | Típus | Kötelező | Leírás |
+| -------- | ---- | -------- | ----------- |
+| témakör | sztring | Nem, de ha belefoglalt, akkor pontosan meg kell egyeznie a Event Grid témakör Azure Resource Manager AZONOSÍTÓjának. Ha nem szerepel, Event Grid az eseményre Pecsétel. | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Event Grid megadja ezt az értéket. |
+| subject | sztring | Igen | Közzétevő által megadott elérési út az esemény tárgya számára. |
+| eventType | sztring | Igen | Az eseményforrás egyik regisztrált eseménytípus. |
+| eventTime | sztring | Igen | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| id | sztring | Igen | Az esemény egyedi azonosítója. |
+| data | objektum | Nem | Az erőforrás-szolgáltatóhoz tartozó esemény-adatértékek. |
+| dataVersion | sztring | Nem, de a rendszer üres értékkel fogja lepecsételni őket. | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
+| metadataVersion | sztring | Nem kötelező, de ha szerepel, pontosan meg kell egyeznie a Event Grid sémával `metadataVersion` pontosan (jelenleg csak `1`). Ha nem szerepel, Event Grid az eseményre Pecsétel. | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
 
 Az adatobjektum tulajdonságainak megismeréséhez tekintse meg az esemény forrását:
 
@@ -103,7 +103,7 @@ Az adatobjektum tulajdonságainak megismeréséhez tekintse meg az esemény forr
 * [IoT Hub](event-schema-iot-hub.md)
 * [Médiaszolgáltatások](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [Erőforráscsoportok (felügyeleti műveletek)](event-schema-resource-groups.md)
-* [Service Bus](event-schema-service-bus.md)
+* [Szolgáltatásbusz](event-schema-service-bus.md)
 * [Azure-jelző](event-schema-azure-signalr.md)
 * [Azure Machine Learning](event-schema-machine-learning.md)
 

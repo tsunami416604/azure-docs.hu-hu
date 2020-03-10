@@ -1,16 +1,16 @@
 ---
-title: Aktordiagnosztika és -monitorozás
+title: Actors diagnosztika és monitorozás
 description: Ez a cikk a Service Fabric Reliable Actors Runtime diagnosztikai és teljesítmény-figyelési funkcióit ismerteti, beleértve az általa kibocsátott eseményeket és teljesítményszámlálókat is.
 author: abhishekram
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: e6e9fb66368461e0d3ebdd2709f4ced0e796bea5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75376732"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389603"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>A Reliable Actors diagnosztizálása és teljesítmény-figyelése
 A Reliable Actors futtatókörnyezet [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) [eseményeket és teljesítményszámlálókat](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)bocsát ki. Ezek betekintést nyújtanak a futtatókörnyezet működésével, és segítenek a hibaelhárításban és a teljesítmény-figyelésben.
@@ -85,8 +85,8 @@ A Reliable Actors Runtime a következő, a [Actor metódusokkal](service-fabric-
 
 | Esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
-| ActorMethodStart |7 |Részletezés |0x2 |A Actors futtatókörnyezet egy Actor metódus meghívására készül. |
-| ActorMethodStop |8 |Részletezés |0x2 |Egy Actor metódus befejezte a végrehajtást. Ez azt eredményezi, hogy a futásidejű aszinkron hívást kapott a Actor metódus, és a Actor metódus által visszaadott feladat befejeződött. |
+| ActorMethodStart |7 |Részletes |0x2 |A Actors futtatókörnyezet egy Actor metódus meghívására készül. |
+| ActorMethodStop |8 |Részletes |0x2 |Egy Actor metódus befejezte a végrehajtást. Ez azt eredményezi, hogy a futásidejű aszinkron hívást kapott a Actor metódus, és a Actor metódus által visszaadott feladat befejeződött. |
 | ActorMethodThrewException |9 |Figyelmeztetés |0x3 |Kivétel történt egy Actor metódus végrehajtása során, vagy a futásidejű aszinkron hívása során, vagy a Actor metódus által visszaadott feladat végrehajtása során. Ez az esemény bizonyos típusú hibát jelez a színészi kódban, amelynek vizsgálatára van szükség. |
 
 A Reliable Actors futtatókörnyezet a Actor metódusok végrehajtásával kapcsolatos következő teljesítményszámlálók közzétételét teszi közzé.
@@ -102,7 +102,7 @@ A Reliable Actors futtatókörnyezet az [egyidejűséghez](service-fabric-reliab
 
 | Esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
-| ActorMethodCallsWaitingForLock |12 |Részletezés |0x8 |Ezt az eseményt a színész minden új bekapcsolásának elején kell megírni. Tartalmazza azon függőben lévő Actor-hívások számát, amelyek arra várnak, hogy beszerezzék a bekapcsolási egyidejűséget végrehajtó, a színészi zárolást. |
+| ActorMethodCallsWaitingForLock |12 |Részletes |0x8 |Ezt az eseményt a színész minden új bekapcsolásának elején kell megírni. Tartalmazza azon függőben lévő Actor-hívások számát, amelyek arra várnak, hogy beszerezzék a bekapcsolási egyidejűséget végrehajtó, a színészi zárolást. |
 
 A Reliable Actors futtatókörnyezet a párhuzamossághoz kapcsolódó következő teljesítményszámlálók közzétételét teszi közzé.
 
@@ -117,8 +117,8 @@ A Reliable Actors Runtime a következő eseményeket bocsátja ki a [szereplők 
 
 | Esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
-| ActorSaveStateStart |10 |Részletezés |0x4 |A Actors futtatókörnyezet a színész állapotának mentésére készül. |
-| ActorSaveStateStop |11 |Részletezés |0x4 |A Actors Runtime befejezte a színész állapotának mentését. |
+| ActorSaveStateStart |10 |Részletes |0x4 |A Actors futtatókörnyezet a színész állapotának mentésére készül. |
+| ActorSaveStateStop |11 |Részletes |0x4 |A Actors Runtime befejezte a színész állapotának mentését. |
 
 A Reliable Actors Runtime közzéteszi a szereplők állapotának kezelésével kapcsolatos következő teljesítményszámlálókat.
 

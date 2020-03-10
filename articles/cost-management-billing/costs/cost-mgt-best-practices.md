@@ -10,11 +10,11 @@ ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
 ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201067"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383535"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Management használatával
 
@@ -190,5 +190,5 @@ További információért lásd az [Azure Hybrid Benefit megtakarításkalkulát
 
 Az Azure olyan szolgáltatást is biztosít, amellyel a kedvezményes díjszabás érdekében az Azure többletkapacitását kihasználó szolgáltatásokat hozhat létre. További információ: [Alacsony prioritású virtuális gépek használata a Batch szolgáltatással](../../batch/batch-low-pri-vms.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ha először használja a Cost Managementet, olvassa el a [Mi az Azure Cost Management?](../cost-management-billing-overview.md) című cikket, amely ismerteti, hogy milyen segítséget nyújt ez a szolgáltatás az Azure-költségek monitorozásához és szabályozásához, valamint az erőforrás-használat optimalizálásához.

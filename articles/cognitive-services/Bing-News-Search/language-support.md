@@ -1,7 +1,7 @@
 ---
 title: Nyelvi támogatás – Bing News Search API
 titleSuffix: Azure Cognitive Services
-description: Természetes nyelvek, ország és a Bing News Search API által támogatott régiók listáját.
+description: A Bing News Search API által támogatott természetes nyelvek, országok és régiók listája.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384983"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385076"
 ---
-# <a name="language-and-region-support-for-the-bing-news-search-api"></a>A Bing News Search API nyelvéhez és régiójához támogatása
+# <a name="language-and-region-support-for-the-bing-news-search-api"></a>A Bing News Search API nyelvi és területi támogatása
 
-A Bing News Search API számos országok/régiók, számos, az egynél több nyelvet támogat. Adjon meg egy adott ország/régió lekérdezéssel elsősorban az ország/régió kimutatott érdeklődések alapján találatok szűkítése szolgálja ki. Ezenkívül az eredmények Bing mutató hivatkozásokat is tartalmazhat, és ezeket a hivatkozásokat is honosítani a Bing felhasználói élmény az adott ország/régió vagy nyelv szerint.
+A Bing News Search API számos országot/régiót támogat, több mint egy nyelvet. A lekérdezéssel rendelkező ország/régió megadásával elsődlegesen az adott országban vagy régióban lévő érdekeltségek alapján pontosíthatja a keresési eredményeket. Emellett az eredmények a Bingre mutató hivatkozásokat is tartalmazhatnak, és ezek a hivatkozások a megadott ország/régió vagy nyelv alapján lokalizálják a Bing felhasználói élményt.
 
-Megadhatja, hogy egy ország/régió használata a `cc` lekérdezési paraméter. Ha megad egy adott ország/régió, meg kell adnia egy vagy több nyelvi kódot használ a `Accept-Language` HTTP-fejléc. A támogatott nyelvek régiónként countr /; minden ország/régió, a piacot táblázatban azok jellegűek.
+Megadhat egy országot/régiót a `cc` lekérdezési paraméterrel. Ha országot vagy régiót ad meg, meg kell adnia egy vagy több nyelvi kódot is a `Accept-Language` HTTP-fejléc használatával. A támogatott nyelvek a Counter/régió szerint változnak; a piacok táblában minden országhoz/régióhoz meg vannak adva.
 
-Másik lehetőségként megadhatja azt a piaci használatával a `mkt` lekérdezési paraméter és a egy kódot a a **piacok** tábla. Egy adott ország/régió és a egy előnyben részesített nyelvi egyidejűleg adja meg a piacon adja meg. A `setLang` lekérdezési paraméter ebben az esetben előfordulhat, hogy állítható be olyan nyelvi kód; általában ez a megadott nyelvre `mkt` , kivéve, ha a felhasználó, tekintse meg a Bing más nyelvet részesíti előnyben.
+Azt is megteheti, hogy a piacot a `mkt` lekérdezési paraméterrel és a **piacok** táblából származó kóddal határozza meg. A piac egyidejű megadása megadja az országot/régiót és az előnyben részesített nyelvet. Ebben az esetben a `setLang` lekérdezési paramétert nyelvi kódra lehet beállítani. Ez általában a `mkt` által megadott nyelv, kivéve, ha a felhasználó egy másik nyelven szeretné megtekinteni a Binget.
 
-## <a name="supported-markets-for-news-search-endpoint"></a>Támogatott piacok news search-végpont
+## <a name="supported-markets-for-news-search-endpoint"></a>A Hírek keresési végpontjának támogatott piacai
 
-Az a `/news/search` végpont, a következő táblázat felsorolja a piaci kód használatával adjon meg értékeket a `mkt` lekérdezési paraméter. A Bing csak ezek piacok tartalmát adja vissza. A lista a változhat.  
+Az `/news/search` végpont esetében az alábbi táblázat felsorolja a `mkt` lekérdezési paraméter megadásához használható piaci kódok értékeit. A Bing csak ezekre a piacokra vonatkozó tartalmat adja vissza. A lista módosítása változhat.  
 
-Az ország/régió listáját, amelyek kódjai, előfordulhat, hogy adja meg a `cc` lekérdezési paraméter, lásd: [országkódok](#countrycodes).  
+Az `cc` lekérdezési paraméterben megadható ország-/régiókódok listáját itt tekintheti meg: [országkódok](#countrycodes).  
 
 |Ország/régió|Nyelv|Piaci kód|  
 |---------------------|--------------|-----------------|
@@ -40,45 +40,45 @@ Az ország/régió listáját, amelyek kódjai, előfordulhat, hogy adja meg a `
 |Ausztrália|Angol|en-Ausztrália|
 |Kanada|Angol|en-hitelesítésszolgáltató|
 |Egyesült Királyság|Angol|en-GB|
-|Indonézia|Angol|en-azonosító|
+|Indonézia|Angol|EN-ID|
 |Írország|Angol|en-IE|
 |India|Angol|en-IN|
 |Malajzia|Angol|en-MY|
 |Új-Zéland|Angol|en-NZ|
-|Fülöp-szigeteki Köztársaság|Angol|en-PH|
-|Szingapúr|Angol|en-SG|
-|Egyesült Államok|Angol|en-US|
-|Angol|Általános|en-WW|
-|Angol|Általános|en-XA|
-|Dél-Afrika|Angol|en-ZA|
+|Fülöp-szigeteki Köztársaság|Angol|EN-PH|
+|Szingapúr|Angol|EN-SG|
+|Egyesült Államok|Angol|hu-HU|
+|Angol|általános|EN-WW|
+|Angol|általános|en-XA|
+|Dél-afrikai Köztársaság|Angol|en-ZA|
 |Argentína|spanyol|es-AR|
 |Chile|spanyol|es-CL|
 |Spanyolország|spanyol|es-ES|
 |Mexikó|spanyol|es-MX|
 |Egyesült Államok|spanyol|es-US|
-|spanyol|Általános|es-XL|
+|spanyol|általános|es-XL|
 |Finnország|finn|fi-FI|  
-|Franciaország|francia|FR-lehet|
+|Franciaország|francia|fr-BE|
 |Kanada|francia|FR-hitelesítésszolgáltató|
 |Belgium|holland|nl-BE|
 |Svájc|francia|FR-CH|
 |Franciaország|francia|FR-FR|  
 |Olaszország|olasz|it-IT|
-|Hongkong (KKT)|Kínai (hagyományos)|zh-HK|  
-|Tajvan|Kínai (hagyományos)|zh-TW|
+|Hongkong (KKT)|Hagyományos kínai|zh-HK|  
+|Tajvan|Hagyományos kínai|zh-TW|
 |Japán|japán|ja-JP|  
-|Korea|koreai|ko-KR|  
+|Dél-Korea|koreai|ko-KR|  
 |Hollandia|holland|NL-NL|  
 |Kínai Népköztársaság|kínai|zh-CN|  
 |Brazília|portugál|pt-BR|
-|Oroszország|orosz|ru-RU|  
+|Oroszország|Orosz|ru-RU|  
 |Svédország|svéd|SV-SE|  
 |Törökország|török|tr-TR|  
 
-## <a name="supported-markets-for-news-endpoint"></a>Hírek végpont támogatott piac
-Az a `/news` végpont, a következő táblázat felsorolja a piaci kód használatával adjon meg értékeket a `mkt` lekérdezési paraméter. A Bing csak ezek piacok tartalmát adja vissza. A lista a változhat.  
+## <a name="supported-markets-for-news-endpoint"></a>A hírek végpontjának támogatott piacai
+Az `/news` végpont esetében az alábbi táblázat felsorolja a `mkt` lekérdezési paraméter megadásához használható piaci kódok értékeit. A Bing csak ezekre a piacokra vonatkozó tartalmat adja vissza. A lista módosítása változhat.  
 
-Az ország/régió listáját, amelyek kódjai, előfordulhat, hogy adja meg a `cc` lekérdezési paraméter, lásd: [országkódok](#countrycodes).  
+Az `cc` lekérdezési paraméterben megadható ország-/régiókódok listáját itt tekintheti meg: [országkódok](#countrycodes).  
 
 |Ország/régió|Nyelv|Piaci kód|  
 |---------------------|--------------|-----------------|
@@ -86,8 +86,8 @@ Az ország/régió listáját, amelyek kódjai, előfordulhat, hogy adja meg a `
 |Németország|német|de-DE|
 |Ausztrália|Angol|en-Ausztrália|
 |Egyesült Királyság|Angol|en-GB|
-|Egyesült Államok|Angol|en-US|
-|Angol|Általános|en-WW|
+|Egyesült Államok|Angol|hu-HU|
+|Angol|általános|EN-WW|
 |Chile|spanyol|es-CL|
 |Mexikó|spanyol|es-MX|
 |Egyesült Államok|spanyol|es-US|
@@ -98,17 +98,17 @@ Az ország/régió listáját, amelyek kódjai, előfordulhat, hogy adja meg a `
 |Brazília|portugál|pt-BR|
 |Kínai Népköztársaság|kínai|zh-CN|
 
-## <a name="supported-markets-for-news-trending-endpoint"></a>Támogatott piacon népszerű hírek-végpont
-Az a `/news/trendingtopics` végpont, a következő táblázat felsorolja a piaci kód használatával adjon meg értékeket a `mkt` lekérdezési paraméter. A Bing csak ezek piacok tartalmát adja vissza. A lista a változhat.  
+## <a name="supported-markets-for-news-trending-endpoint"></a>Támogatott piacok a hírek trendi végpontja számára
+Az `/news/trendingtopics` végpont esetében az alábbi táblázat felsorolja a `mkt` lekérdezési paraméter megadásához használható piaci kódok értékeit. A Bing csak ezekre a piacokra vonatkozó tartalmat adja vissza. A lista módosítása változhat.  
 
-Az ország/régió listáját, amelyek kódjai, előfordulhat, hogy adja meg a `cc` lekérdezési paraméter, lásd: [országkódok](#countrycodes).  
+Az `cc` lekérdezési paraméterben megadható ország-/régiókódok listáját itt tekintheti meg: [országkódok](#countrycodes).  
 
 |Ország/régió|Nyelv|Piaci kód|  
 |---------------------|--------------|-----------------|
 |Németország|német|de-DE|
 |Ausztrália|Angol|en-Ausztrália|
 |Egyesült Királyság|Angol|en-GB|
-|Egyesült Államok|Angol|en-US|
+|Egyesült Államok|Angol|hu-HU|
 |Kanada|Angol|en-hitelesítésszolgáltató|
 |India|Angol|en-IN|
 |Franciaország|francia|FR-FR|
@@ -120,9 +120,9 @@ Az ország/régió listáját, amelyek kódjai, előfordulhat, hogy adja meg a `
 <a name="countrycodes"></a>   
 ### <a name="country-codes"></a>Országkódok  
 
-Az alábbiakban a ország/régió kódokat, amelyeket lehet, hogy a `cc` lekérdezési paraméter. A lista a változhat.  
+A `cc` lekérdezési paraméterben megadható ország-és régiókódok az alábbiak. A lista módosítása változhat.  
 
-|Ország/régió|Országkód|  
+|Ország/régió|Országhívó szám|  
 |---------------------|------------------|  
 |Argentína|AR|  
 |Ausztrália|AU|  
@@ -137,10 +137,10 @@ Az alábbiakban a ország/régió kódokat, amelyeket lehet, hogy a `cc` lekérd
 |Németország|DE|  
 |Hongkong (KKT)|HK|  
 |India|IN|  
-|Indonézia|azonosító|  
+|Indonézia|ID (Azonosító)|  
 |Olaszország|IT|  
 |Japán|JP|  
-|Korea|KR|  
+|Dél-Korea|KR|  
 |Malajzia|MY|  
 |Mexikó|MX|  
 |Hollandia|NL|  
@@ -152,7 +152,7 @@ Az alábbiakban a ország/régió kódokat, amelyeket lehet, hogy a `cc` lekérd
 |Fülöp-szigeteki Köztársaság|PH|  
 |Oroszország|RU|  
 |Szaúd-Arábia|SA|  
-|Dél-Afrika|ZA|  
+|Dél-afrikai Köztársaság|ZA|  
 |Spanyolország|ES|  
 |Svédország|SE|  
 |Svájc|CH|  
@@ -161,5 +161,5 @@ Az alábbiakban a ország/régió kódokat, amelyeket lehet, hogy a `cc` lekérd
 |Egyesült Királyság|GB|  
 |Egyesült Államok|USA|
 
-## <a name="next-steps"></a>További lépések
-A Bing News Search végpontok kapcsolatos további információkért lásd: [News Search API 7-es referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).
+## <a name="next-steps"></a>Következő lépések
+További információ az Bing News Search-végpontokról: [News Search API v7-dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).

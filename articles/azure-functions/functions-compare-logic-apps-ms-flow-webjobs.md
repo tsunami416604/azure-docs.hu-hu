@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
 ms.openlocfilehash: bd9f3bfe1578b632707382cfe422f19514e7ce48
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988107"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358022"
 ---
 > [!NOTE]
 > A Microsoft Flow mostantól automatizálható. További információt [ebben a blogban](https://aka.ms/flow-now-pa) talál.
@@ -94,7 +94,7 @@ Az Azure Functions a WebJobs SDK-ra épül, így sok, más Azure-szolgáltatáso
 
 <sup>2</sup> a webjobs (a webjobs SDK nélkül) támogatja a NPM és a NuGet.
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 
 Azure Functions nagyobb fejlesztői hatékonyságot biztosít, mint Azure App Service webjobs. Emellett több lehetőséget is kínál a programozási nyelvek, a fejlesztői környezetek, az Azure-szolgáltatások integrálására és a díjszabásra. A legtöbb forgatókönyvhöz ez a legjobb választás.
 

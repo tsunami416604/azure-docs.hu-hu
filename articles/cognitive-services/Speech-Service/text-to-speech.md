@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: erhopf
 ms.openlocfilehash: d076d2520bda4d6209fbdd991df57c4eedaa3938
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379878"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394781"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az a szövegfelolvasás?
 
@@ -37,7 +37,7 @@ A beszédfelismerési szolgáltatás szöveg-beszéd formátuma lehetővé teszi
 
 * Speech szintézis Markup Language (SSML) – XML-alapú leíró nyelv, amely a beszédfelismerési kimenetek testreszabására szolgál. A SSML beállíthatja a Pitch, a szüneteltetések hozzáadását, a kiejtés növelését, a sebesség növelését vagy lelassulását, a kötetek növelését és csökkentését, valamint több hang megadását egyetlen dokumentumra. Lásd: [SSML](speech-synthesis-markup.md).
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Első lépések
 
 A szöveg-beszéd szolgáltatás a [SPEECH SDK](speech-sdk.md)-n keresztül érhető el. Számos gyakori forgatókönyv érhető el, különböző nyelveken és platformokon:
 
@@ -72,7 +72,7 @@ Részletes információkat a [díjszabásban](https://azure.microsoft.com/pricin
 > [!IMPORTANT]
 > Minden kínai, Japán és koreai nyelvi karakter két karakternek számít a számlázáshoz.
 
-## <a name="reference-docs"></a>Segédanyagok
+## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
 - [Beszéd SDK](speech-sdk.md)
 - [REST API: szövegről beszédre](rest-text-to-speech.md)

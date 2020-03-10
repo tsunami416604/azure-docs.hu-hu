@@ -8,13 +8,13 @@ ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
 ms.openlocfilehash: 5b2e2c51eaa878ba0ce8bc31c001575acebe6919
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967549"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386950"
 ---
-# <a name="introduction-to-azure-cosmos-db-table-api"></a>Bevezetés: az Azure Cosmos DB: Tábla API
+# <a name="introduction-to-azure-cosmos-db-table-api"></a>Alapvető ismeretek az Azure Cosmos DB tábla API szolgáltatásáról
 
 Az [Azure Cosmos DB](introduction.md) Table API-t biztosít olyan, az Azure Table Storage-hoz írt alkalmazások számára, amelyekhez a következő prémium képességek szükségesek:
 
@@ -35,7 +35,7 @@ Ha jelenleg az Azure Table Storage szolgáltatást használja, az alábbi előny
 | | Azure Table Storage | Azure Cosmos DB Table API |
 | --- | --- | --- |
 | Késés | Gyors, de nincs felső korlátja a késésnek. | Az olvasások és írások egyszámjegyű ezredmásodperces késése < 10 ms-os késéssel, az olvasási és írási műveletek esetében a esetek 99% percentilis esetében, bármilyen méretben, bárhol a világon. |
-| Teljesítmény | Változó teljesítménymodell. A táblák skálázhatósági korlátja másodpercenként 20 000 művelet. | Hatékonyan skálázható a [táblánként dedikált és fenntartott átviteli sebességgel](request-units.md), amelynek rendelkezésre állását SLA-k szavatolják. A fiókokban nincs korlátozva az átviteli sebesség felső határa, és a szolgáltatás táblánként és másodpercenként legalább 10 millió műveletet támogat. |
+| Átviteli sebesség | Változó teljesítménymodell. A táblák skálázhatósági korlátja másodpercenként 20 000 művelet. | Hatékonyan skálázható a [táblánként dedikált és fenntartott átviteli sebességgel](request-units.md), amelynek rendelkezésre állását SLA-k szavatolják. A fiókokban nincs korlátozva az átviteli sebesség felső határa, és a szolgáltatás táblánként és másodpercenként legalább 10 millió műveletet támogat. |
 | Globális terjesztés | Egyetlen régió egyetlen választható olvasható, másodlagos olvasási régióval a magas szintű rendelkezésre állásért. Nem kezdeményezhető feladatátvétel. | [Kulcsrakész globális eloszlás](distribute-data-globally.md) egy vagy több régióból. Támogatja az [automatikus és manuális feladatátvételt](high-availability.md) bármikor és bárhol a világon. Több főkiszolgálós képesség, amely lehetővé teszi, hogy bármely régió fogadjon írási műveleteket. |
 | Indexelés | Csak elsődleges indexelés a PartitionKey és a RowKey tulajdonságok esetén. Nincsenek másodlagos indexek. | Az összes tulajdonság automatikus és teljes indexelése alapértelmezés szerint, indexek kezelése nélkül. |
 | Lekérdezés | A lekérdezés végrehajtásakor az elsődleges kulcshoz tartozó indexet használja, és egyéb esetben csak vizsgálati műveletet végez. | A lekérdezések a gyorsaság céljából kihasználhatják a tulajdonságok automatikus indexelését. |
@@ -43,7 +43,7 @@ Ha jelenleg az Azure Table Storage szolgáltatást használja, az alábbi előny
 | Díjszabás | Tárolásra optimalizált. | Átviteli sebességre optimalizált. |
 | SLA-k | 99,9% – 99,99% rendelkezésre állás a replikációs stratégiától függően. | 99,999%-os olvasási rendelkezésre állás, 99,99% írási rendelkezésre állás egy egyrégiós fiókon és 99,999% írási rendelkezésre állás a többrégiós fiókokon. A rendelkezésre állást, a késést, az átviteli sebességet és a konzisztenciát [átfogó SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) . |
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 Hozzon létre egy Azure Cosmos DB-fiókot az [Azure Portalon](https://portal.azure.com). Ezután első lépésként hajtsa végre a [Table API .NET-keretrendszerrel való használatának rövid útmutatóját](create-table-dotnet.md). 
 
@@ -51,7 +51,7 @@ Hozzon létre egy Azure Cosmos DB-fiókot az [Azure Portalon](https://portal.azu
 > Ha az előzetes verzióban hozta létre a Table API-fiókot, hozzon létre egy [új Table API-fiókot](create-table-dotnet.md#create-a-database-account), amely használható az általánosan elérhető Table API SDK-kkal.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Íme, pár hivatkozás az első lépések megtételéhez:
 * [.NET-alkalmazás létrehozása a Table API-val](create-table-dotnet.md)

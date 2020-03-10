@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464590"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391421"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric üzemeltetési modell
 Ez a cikk áttekintést nyújt az Azure Service Fabric által biztosított alkalmazás-üzemeltetési modellekről, valamint ismerteti a **megosztott folyamat** és az **exkluzív folyamat** modelljei közötti különbségeket. Leírja, hogyan néz ki egy telepített alkalmazás egy Service Fabric csomóponton, valamint a szolgáltatás replikái (vagy példányai) és a Service-Host folyamat közötti kapcsolat.

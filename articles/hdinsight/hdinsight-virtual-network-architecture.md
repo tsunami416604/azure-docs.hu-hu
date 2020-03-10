@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744748"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389822"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight virtuális hálózati architektúra
 
@@ -22,7 +22,7 @@ Ez a cikk ismerteti azokat az erőforrásokat, amelyek akkor jelennek meg, amiko
 
 Az Azure HDInsight-fürtök különböző típusú virtuális gépekkel vagy csomópontokkal rendelkeznek. Minden csomópont-típus a rendszer működésében játszik szerepet. A következő táblázat összefoglalja ezeket a csomópont-típusokat és azok szerepköreit a fürtben.
 
-| Type (Típus) | Leírás |
+| Típus | Leírás |
 | --- | --- |
 | Átjárócsomópont |  Az Apache Storm kivételével az összes fürtjénél a fő csomópontok futtatják az elosztott alkalmazás végrehajtását kezelő folyamatokat. A fő csomópont egyben a csomópont is, amelyből SSH-ba helyezheti és végrehajthatja azokat az alkalmazásokat, amelyek a fürt erőforrásai között futnak. A fő csomópontok száma a fürt összes típusa esetében kettőnél van rögzítve. |
 | ZooKeeper csomópont | A Zookeeper az adatfeldolgozást végző csomópontok között koordinálja a feladatokat. Emellett a fő csomópontot is vezeti, és nyomon követi, hogy melyik főcsomóponton fut egy adott főkiszolgáló. A ZooKeeper-csomópontok száma három helyen van rögzítve. |
@@ -54,18 +54,18 @@ A következő táblázat összefoglalja azokat a kilenc fürtcsomópont-csomópo
 
 | Erőforrás típusa | Szám jelen | Részletek |
 | --- | --- | --- |
-|Átjárócsomópont | kettő |    |
+|Átjárócsomópont | két |    |
 |Zookeeper-csomópont | három | |
-|Munkavégző csomópont | kettő | Ez a szám a fürtkonfiguráció és a skálázás alapján változhat. Apache Kafkahez legalább három munkavégző csomópontra van szükség.  |
-|Átjárócsomópont | kettő | Az átjáró-csomópontok olyan Azure-beli virtuális gépek, amelyek az Azure-ban jönnek létre, de nem láthatók az előfizetésében. Ha újra kell indítania ezeket a csomópontokat, forduljon az ügyfélszolgálathoz. |
+|Munkavégző csomópont | két | Ez a szám a fürtkonfiguráció és a skálázás alapján változhat. Apache Kafkahez legalább három munkavégző csomópontra van szükség.  |
+|Átjárócsomópont | két | Az átjáró-csomópontok olyan Azure-beli virtuális gépek, amelyek az Azure-ban jönnek létre, de nem láthatók az előfizetésében. Ha újra kell indítania ezeket a csomópontokat, forduljon az ügyfélszolgálathoz. |
 
 A következő hálózati erőforrások automatikusan létrejönnek a HDInsight használt virtuális hálózaton belül:
 
 | Hálózati erőforrás | Szám jelen | Részletek |
 | --- | --- | --- |
-|Load Balancer | három | |
+|Terheléselosztó | három | |
 |Hálózati illesztők | kilenc | Ez az érték egy normál fürtön alapul, ahol minden egyes csomópont saját hálózati adapterrel rendelkezik. A kilenc csatoló a két fő csomópontra, három Zookeeper-csomópontra, két feldolgozói csomópontra és az előző táblázatban említett két átjáró-csomópontra mutat. |
-|Nyilvános IP-címek | kettő |    |
+|Nyilvános IP-címek | két |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>Végpontok a HDInsight való csatlakozáshoz
 

@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894217"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382648"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Vöröseltolódásból a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -38,7 +38,7 @@ Data Factory jelenleg csak az Amazon vöröseltolódásról származó adatok á
 * Ha helyszíni adattárba helyezi át az adatátvitelt, telepítse [adatkezelés átjárót](data-factory-data-management-gateway.md) egy helyszíni gépre. A helyszíni számítógép IP-címének használatával adjon hozzáférést egy átjáróhoz az Amazon Vöröseltolódási fürthöz. Útmutatásért lásd: [hozzáférés engedélyezése a fürthöz](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
 * Az adatok Azure-adattárba való áthelyezéséhez tekintse meg az [Microsoft Azure adatközpontok által használt számítási IP-címeket és SQL-tartományokat](https://www.microsoft.com/download/details.aspx?id=41653).
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök és API-k használatával helyezi át az adatait egy Amazon Vöröseltolódási forrásból.
 
 A folyamat létrehozásának legegyszerűbb módja a Azure Data Factory másolási varázsló használata. A folyamat a másolás varázslóval történő létrehozásával kapcsolatos gyors útmutatóért tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md)című témakört.
@@ -59,7 +59,7 @@ A következő szakaszok ismertetik az Amazon vöröseltolódás Data Factory ent
 
 Az alábbi táblázat az Amazon vöröseltolódás társított szolgáltatásához tartozó JSON-elemek leírásait tartalmazza.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | **type** |Ezt a tulajdonságot **AmazonRedshift**értékre kell beállítani. |Igen |
 | **Server** |Az Amazon Vöröseltolódási kiszolgáló IP-címe vagy állomásneve. |Igen |
@@ -74,7 +74,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt a tárolóban lévő adatok helyéről. A **RelationalTable**típusú, Amazon vöröseltolódás-adatkészletet tartalmazó adatkészlet **typeProperties** szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | **Táblanév** |Annak a táblának a neve az Amazon vöröseltolódás-adatbázisban, amelyre a társított szolgáltatás hivatkozik. |Nem (ha a **RelationalSource** típusú másolási tevékenység **lekérdezési** tulajdonsága meg van adva) |
 
@@ -84,7 +84,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok list
 
 Másolási tevékenység esetén, ha a forrás **AmazonRedshiftSource**típusú, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | **lekérdezés** | Az egyéni lekérdezéssel olvashatja el az adatgyűjtést. |Nem (ha meg van adva egy adatkészlet **Táblanév** tulajdonsága) |
 | **redshiftUnloadSettings** | A tulajdonságot tartalmazza **a vöröseltolódás eltávolítása** parancs használatakor. | Nem |
@@ -93,7 +93,7 @@ Másolási tevékenység esetén, ha a forrás **AmazonRedshiftSource**típusú,
 
 Azt is megteheti, hogy a **RelationalSource** típust használja, amely tartalmazza az Amazon vöröseltolódását, és a következő tulajdonsággal rendelkezik a **typeProperties** szakaszban. Megjegyzés: Ez a forrástípus nem támogatja a vöröseltolódás **KItöltése** parancsot.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | **lekérdezés** |Az egyéni lekérdezéssel olvashatja el az adatgyűjtést. | Nem (ha meg van adva egy adatkészlet **Táblanév** tulajdonsága) |
 
@@ -330,16 +330,16 @@ A következő leképezések akkor használatosak, ha a másolási tevékenység 
 | Amazon Vöröseltolódásának típusa | .NET-típus |
 | --- | --- |
 | SMALLINT |Int16 |
-| EGÉSZ SZÁM |Int32 |
+| INTEGER |Int32 |
 | BIGINT |Int64 |
-| DECIMÁLIS |Decimális |
-| VALÓS SZÁM |Önálló |
-| DUPLA PONTOSSÁG |Double |
-| LOGIKAI |Sztring |
+| DECIMAL |tizedes tört |
+| REAL |Single |
+| DOUBLE PRECISION |Dupla |
+| BOOLEAN |Sztring |
 | CHAR |Sztring |
 | VARCHAR |Sztring |
-| DATE |Dátum és idő |
-| IDŐBÉLYEG |Dátum és idő |
+| DATE |DateTime |
+| TIMESTAMP |DateTime |
 | TEXT |Sztring |
 
 ## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra

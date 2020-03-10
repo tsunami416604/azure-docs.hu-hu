@@ -9,15 +9,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: 9b6db1b7171652ea5ace4db370b72dc22b6bdc90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626230"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396555"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Az Azure IoT Hub díjszabása
 
-[Az Azure IoT Hub díjszabás](https://azure.microsoft.com/pricing/details/iot-hub) különböző SKU-k és az IoT Hub díjszabása az általános információkat nyújt. Ez a cikk tartalmaz további részleteket a hogyan az IoT Hub különféle funkciók biztosításához mérjük üzenetekként IoT Hub által.
+Az [Azure IoT hub díjszabása](https://azure.microsoft.com/pricing/details/iot-hub) a IoT hub különböző SKU-ról és díjszabásáról nyújt általános információt. Ez a cikk tartalmaz további részleteket a hogyan az IoT Hub különféle funkciók biztosításához mérjük üzenetekként IoT Hub által.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -28,8 +28,8 @@ ms.locfileid: "60626230"
 | Identitásjegyzék műveletei <br/> (létrehozása, beolvasása, listázása, frissítése és törlése) | Nem számítunk fel díjat. |
 | Az eszközről a felhőbe irányuló üzenetek | Sikeresen elküldött üzenetet az IoT Hub a bejövő forgalom 4 KB-os blokkonként számítunk fel. Ha például egy 6 KB-os üzenetet 2 darab kell fizetnie. |
 | Felhőből az eszközre irányuló üzenetek | Sikeresen elküldött üzeneteket 4 KB-os blokkonként számítunk, például 6 KB-os üzenetet 2 darab díját. |
-| Fájlfeltöltések | Az Azure Storage-fájlátvitel IoT Hub által nem forgalmi díjas. Fájl adatátviteli kezdeményezése és -befejezési üzenetet számítunk fel, a 4 KB-os egységekben mért messaged. Ha például 10 MB-os fájl áttelepítése közben díjat számítunk fel Azure tárolási költségek mellett két darab üzenetként. |
-| Közvetlen metódusok | Sikeres metódus kérelmek 4 KB-os blokkonként számítunk, és a válaszok, a további üzeneteket 4 KB-os blokkonként számítunk. A leválasztott eszközöket kérelmeket 4 KB-os blokkonként darab üzenetként számítjuk fel. Például egy 4 KB-os szervezethez, amely az eszköz válaszára nincs szervezethez eredményez metódus díjat számítunk fel két darab üzenetként. A kérelem számára két üzenet és a egy másik üzenet a válasz egy metódust, amely az eszközről egy 1 KB-os válaszul 6 KB-os szervezethez kell fizetnie. |
+| Fájlfeltöltések | Az Azure Storage-fájlátvitel IoT Hub által nem forgalmi díjas. Fájl adatátviteli kezdeményezése és -befejezési üzenetet számítunk fel, a 4 KB-os egységekben mért messaged. Például egy 10 MB-os fájl átvitele két üzenetként történik az Azure Storage-költség mellett. |
+| Közvetlen metódusok | A metódusok sikeres kérelmeit 4 KB-os adattömbökben számítjuk fel, a válaszokat pedig 4 KB-os adattömbökben, további üzenetként számítjuk fel. A leválasztott eszközöket kérelmeket 4 KB-os blokkonként darab üzenetként számítjuk fel. Például egy 4 KB-os törzstel rendelkező metódus, amely az eszköz törzsével kapcsolatos választ eredményez, két üzenetként lesz felszámítva. A kérelem számára két üzenet és a egy másik üzenet a válasz egy metódust, amely az eszközről egy 1 KB-os válaszul 6 KB-os szervezethez kell fizetnie. |
 | Eszköz- és a modul a páros olvasási | A páros olvasási az eszköz vagy a modul és a megoldás háttérrendszere a végfelhasználók 512 bájtos tömbökben darab üzenetként számítjuk fel. Ha például egy 6 KB-os pár olvasása díjat számítunk fel 12 darab üzenetként. |
 | Eszköz- és modul ikereszköz-frissítések (címkék és tulajdonságok) | Az eszköz vagy a modul és a megoldás háttérrendszere az ikereszköz-frissítések 512 bájtos tömbökben darab üzenetként számítjuk fel. Ha például egy 6 KB-os pár olvasása díjat számítunk fel 12 darab üzenetként. |
 | Eszköz- és modul ikereszköz-lekérdezések | Lekérdezések függően az eredmény mérete 512 bájtos adattömbök darab üzenetként számítjuk fel. |
@@ -38,11 +38,11 @@ ms.locfileid: "60626230"
 | Életben tartási üzenetek | Az AMQP és MQTT protokoll használata esetén a kapcsolat által küldött üzenetek és a vyjednávání által küldött üzenetek nem terheli. |
 
 > [!NOTE]
-> Méretek arra az esetre vonatkoznak a hasznos adatainak mérete (bájt) (protokoll keretező figyelmen kívül hagyja) a mérlegeli. Üzenetek, tulajdonságok és a szervezet rendelkezik, amelyek mérete számított protokoll-független módon. További információkért lásd: [az IoT Hub üzenet formátuma](iot-hub-devguide-messages-construct.md).
+> Méretek arra az esetre vonatkoznak a hasznos adatainak mérete (bájt) (protokoll keretező figyelmen kívül hagyja) a mérlegeli. Üzenetek, tulajdonságok és a szervezet rendelkezik, amelyek mérete számított protokoll-független módon. További információ: [IoT hub üzenet formátuma](iot-hub-devguide-messages-construct.md).
 
 ## <a name="example-1"></a>#1. példa
 
-Egy eszközt az IoT hubhoz, amelyeket majd az Azure Stream Analytics egy 1 KB-os eszköz – felhő üzenet percenkénti küld. A megoldás háttérrendszere hív meg egy metódust (egy 512 bájtos adattartalom) az eszközön 10 percenként egy bizonyos művelet indításához. Az eszköz válaszol az módszer az eredménye, 200 bájt.
+Egy eszközt az IoT hubhoz, amelyeket majd az Azure Stream Analytics egy 1 KB-os eszköz – felhő üzenet percenkénti küld. A megoldás háttérbe állítása 10 percenként meghívja a (512 bájtos adattartalommal rendelkező) metódust az eszközön egy adott művelet elindításához. Az eszköz válaszol az módszer az eredménye, 200 bájt.
 
 Az eszköz felhasználja:
 

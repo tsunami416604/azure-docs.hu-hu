@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
 ms.openlocfilehash: 07ed22879180d8126711eba9af0a2cac5b7b2953
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936497"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381627"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse használata Apache Spark-alkalmazások HDInsight-fürthöz való létrehozásához
 
@@ -53,7 +53,7 @@ Az Eclipse megnyitásakor a HDInsight-eszközök automatikusan észlelik, hogy t
     * Azure Toolkit for Eclipse \<verzió >.
     * A Scala IDE \<verziója >.
 
-## <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetésébe
+## <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetésbe
 
 1. Indítsa el az Eclipse IDE-t.
 
@@ -238,7 +238,7 @@ Alapértelmezés szerint a HDInsight eszköz a Azure Toolkit for Eclipse felsoro
 
 A Azure Toolkit for Eclipse HDInsight eszközeivel helyileg is futtathat Spark Scala-alkalmazásokat a munkaállomáson. Ezeknek az alkalmazásoknak általában nincs szükségük a fürt erőforrásaihoz, például a tárolóhoz való hozzáféréshez, és a helyileg futtathatja és tesztelheti is azokat.
 
-### <a name="prerequisite"></a>Előfeltétel
+### <a name="prerequisite"></a>Előfeltételek
 
 Miközben a helyi Spark Scala alkalmazást futtatja egy Windows rendszerű számítógépen, előfordulhat, hogy kivételt tapasztal a [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). Ez a kivétel azért fordul elő, mert a **WinUtils. exe** hiányzik a Windows rendszerből.
 
@@ -327,11 +327,11 @@ Két mód van a feladatok elküldésére. Ha megadja a tárolási hitelesítő a
 
 ![Eclipse Get hiba, ha a fürt foglalt fonala](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "Eclipse Get hiba, ha a fürt foglalt fonala")
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Alkalmazási helyzetek
+### <a name="scenarios"></a>Forgatókönyvek
 
 * [Apache Spark BI: interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
 * [Apache Spark a Machine Learning használatával: a Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)

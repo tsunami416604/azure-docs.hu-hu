@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 0f2cd1b7228f2cc9cadb84232222f658a512a81f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872162"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373850"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>MongoDB-alkalmazás összekötése Azure Cosmos DB
-Megtudhatja, hogyan csatlakoztathatja a MongoDB-alkalmazást egy Azure Cosmos DBhoz egy MongoDB kapcsolati sztring használatával. Ezután egy Azure Cosmos-adatbázist is használhat a MongoDB-alkalmazás adattárában. 
+Megtudhatja, hogyan csatlakoztathatja a MongoDB-alkalmazását egy Azure Cosmos DB-adatbázishoz MongoDB kapcsolati sztring használatával. Ezt követően az Azure Cosmos-adatbázist használhatja a MongoDB-alkalmazása adattáraként. 
 
-Ez az oktatóanyag két módszert biztosít a kapcsolódási karakterlánc adatainak lekérésére:
+Ez az oktatóanyag két módszert ismertet a kapcsolati sztringgel kapcsolatos információk lekéréséhez:
 
 - [A](#QuickstartConnection)gyors üzembe helyezési módszer .net-, Node. js-, MongoDB-rendszerhéj-, Java-és Python-illesztőprogramokkal való használatra
 - [Az egyéni kapcsolatok karakterláncának módszere](#GetCustomConnection), a más illesztőprogramokkal való használathoz

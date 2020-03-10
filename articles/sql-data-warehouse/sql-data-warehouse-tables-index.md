@@ -12,11 +12,11 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 5167c897109f9e4f050ac6f7416ecabbbb28a4a9
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196601"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389548"
 ---
 # <a name="indexing-tables-in-sql-analytics"></a>Táblázatok indexelése az SQL Analyticsben
 
@@ -285,6 +285,6 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 
 A partíciók CTAS használatával történő ismételt létrehozásával kapcsolatos további információkért lásd: [partíciók használata az SQL Analyticsben](sql-data-warehouse-tables-partition.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a táblázatok létrehozásáról: a [táblázatok fejlesztése](sql-data-warehouse-tables-overview.md).

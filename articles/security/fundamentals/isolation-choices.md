@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756160"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359057"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
 Az Azure lehetővé teszi alkalmazások és virtuális gépek (VM-EK) futtatását megosztott fizikai infrastruktúrán. Az alkalmazások felhőalapú környezetben való futtatásának egyik legfőbb gazdasági indítéka az, hogy a megosztott erőforrások költségeit több ügyfél között is el tudja osztani. A több-bérlős megoldás a hatékonyságot növeli a különböző ügyfelek számára alacsony költségek mellett. Sajnos a fizikai kiszolgálók és más infrastruktúra-erőforrások megosztásának kockázata is fennáll, hogy az érzékeny alkalmazásokat és virtuális gépeket tetszőleges és potenciálisan rosszindulatú felhasználóhoz lehessen futtatni.
@@ -164,10 +164,10 @@ A szabályok két kategóriába sorolhatók:
 
 -   **Szerepkör-konfigurációs fájl:** Ez határozza meg a beérkező Access Control listákat (ACL-eket) a bérlő szolgáltatási modellje alapján.
 
-### <a name="vlan-isolation"></a>VLAN-elkülönítés
+### <a name="vlan-isolation"></a>VLAN elkülönítése
 Az egyes fürtökön három VLAN van:
 
-![VLAN-elkülönítés](./media/isolation-choices/azure-isolation-fig8.jpg)
+![VLAN elkülönítése](./media/isolation-choices/azure-isolation-fig8.jpg)
 
 
 -   A fő VLAN – a nem megbízható ügyfél-csomópontok közötti kapcsolat
@@ -321,7 +321,7 @@ Az Azure-beli üzembe helyezés több rétegű hálózati elkülönítéssel ren
 
 Az [alhálózat](../../virtual-network/virtual-networks-overview.md) egy további elkülönítési réteget biztosít a virtuális hálózaton az IP-címtartomány alapján. A virtuális hálózat IP-címei a virtuális hálózatok több alhálózatra oszthatók a szervezet és a biztonság érdekében. Egy VNeten belül az alhálózatokra üzembe helyezett virtuális gépek és a PaaS szerepkörpéldányok (ugyanaz vagy különböző) további konfigurálás nélkül is tudnak egymással kommunikálni. A [hálózati biztonsági csoport (NSG)](../../virtual-network/virtual-networks-overview.md) konfigurálható úgy is, hogy engedélyezze vagy megtagadja a virtuálisgép-példányok hálózati FORGALMÁT a NSG hozzáférés-vezérlési listájában (ACL) konfigurált szabályok alapján. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg a [Windows Azure virtuális hálózatokban található gépek hálózati elkülönítési lehetőségeit](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/). Ez magában foglalja a klasszikus előtér-és háttér-forgatókönyvet, ahol egy adott háttérrendszer vagy alhálózat számítógépei csak bizonyos ügyfelek vagy más számítógépek számára engedélyezhetik az IP-címek engedélyezési listáján alapuló adott végponthoz való kapcsolódást.
 

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450166"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395565"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Azure-beli virtuális gép biztonsági mentése Azure Backup használatával REST API
 
@@ -41,7 +41,7 @@ A "refresh" művelet egy [aszinkron művelet](https://docs.microsoft.com/azure/a
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Type (Típus)  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |204 nincs tartalom     |         |  Nem visszaadott tartalommal rendelkező OK      |
 |202 elfogadva     |         |     Elfogadva    |
@@ -104,7 +104,7 @@ A *Get* URI az összes szükséges paraméterrel rendelkezik. Nincs szükség to
 
 #### <a name="responses-1"></a>Válaszok
 
-|Név  |Type (Típus)  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Védett elem létrehozásához kövesse a kérelem törzsének összetevőit.
 
-|Név  |Type (Típus)  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem erőforrás tulajdonságai         |
 
@@ -208,7 +208,7 @@ A védett elemek létrehozása egy [aszinkron művelet](https://docs.microsoft.c
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Type (Típus)  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 elfogadva     |         |     Elfogadva    |
@@ -294,7 +294,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Az igény szerinti biztonsági mentés elindításához kövesse a kérelem törzsének összetevőit.
 
-|Név  |Type (Típus)  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource tulajdonságai         |
 
@@ -319,7 +319,7 @@ Az igény szerinti biztonsági mentés indítása [aszinkron művelet](https://d
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Type (Típus)  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |202 elfogadva     |         |     Elfogadva    |
 
@@ -439,9 +439,9 @@ A védelem *törlése* [aszinkron művelet](https://docs.microsoft.com/azure/azu
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 204 (nincs tartalom), amikor a művelet befejeződik.
 
-|Név  |Type (Típus)  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
-|204 tartalom     |         |  Nincs tartalom       |
+|204 tartalom     |         |  NoContent       |
 |202 elfogadva     |         |     Elfogadva    |
 
 > [!IMPORTANT]

@@ -6,20 +6,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/15/2020
+ms.date: 03/04/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18a9578cc454ea5259b9564d64dcd4308ee5ef87
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d15efee635e131d658cd650b7f80eb9e670a0dea
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148980"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392102"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése natív Azure-beli tanúsítvány-hitelesítési P2S-konfigurációkhoz
 
-A VPN-ügyfél konfigurációs fájljai zip-fájlban vannak tárolva. A konfigurációs fájlok biztosítják a natív Windows-, Mac-IKEv2 VPN-vagy Linux-ügyfelek számára a natív Azure tanúsítványalapú hitelesítést használó, pont – hely kapcsolatokhoz való csatlakozáshoz szükséges beállításokat.
+A VPN-ügyfél konfigurációs fájljai zip-fájlban vannak tárolva. A konfigurációs fájlok biztosítják a natív Windows-, Mac-IKEv2 VPN-vagy Linux-ügyfelek számára, hogy olyan pont – hely kapcsolatokon keresztül csatlakozzanak a virtuális hálózathoz, amelyek natív Azure tanúsítványalapú hitelesítést használnak.
 
-Az ügyfél-konfigurációs fájlok a VNet tartozó VPN-konfigurációra vonatkoznak. Ha a VPN-ügyfél konfigurációs fájljainak létrehozása után megváltozik a pont – hely VPN-konfiguráció, például a VPN protokoll típusa vagy a hitelesítés típusa, ne felejtsen el új VPN-ügyfél konfigurációs fájlokat készíteni a felhasználói eszközökhöz. 
+Az ügyfél-konfigurációs fájlok a virtuális hálózat VPN-konfigurációjához vannak jellemzőek. Ha a VPN-ügyfél konfigurációs fájljainak létrehozása után megváltozik a pont – hely VPN-konfiguráció, például a VPN protokoll típusa vagy a hitelesítés típusa, ne felejtsen el új VPN-ügyfél konfigurációs fájlokat készíteni a felhasználói eszközökhöz. 
 
 * További információk a pont–hely kapcsolatokról: [Információk a pont–hely VPN-ről](point-to-site-about.md).
 * Az OpenVPN-utasításokért lásd: [az OpenVPN konfigurálása a P2S](vpn-gateway-howto-openvpn.md) és az [OpenVPN-ügyfelek konfigurálása](vpn-gateway-howto-openvpn-clients.md).
@@ -41,6 +41,8 @@ Az ügyfél-konfigurációs fájlokat a PowerShell-lel vagy a Azure Portal haszn
 
 1. A Azure Portal navigáljon annak a virtuális hálózatnak a virtuális hálózati átjáróhoz, amelyhez csatlakozni szeretne.
 2. A virtuális hálózati átjáró lapon kattintson a **pont – hely konfiguráció**elemre.
+
+   ![ügyféloldali portál letöltése](./media/point-to-site-vpn-client-configuration-azure-cert/client-configuration-portal.png)
 3. A pont – hely konfiguráció lap tetején kattintson a **VPN-ügyfél letöltése**elemre. Az ügyfél-konfigurációs csomag létrehozása néhány percet vesz igénybe.
 4. A böngésző azt jelzi, hogy az ügyfél-konfiguráció zip-fájlja elérhető. Neve megegyezik az átjáró nevével. A mappák megtekintéséhez bontsa ki a fájlt.
 
@@ -90,7 +92,7 @@ A következő lépésekkel konfigurálhatja a natív VPN-ügyfelet a Mac számí
     >
   
 2. Ellenőrizze, hogy telepítette-e az Azure-ba a P2S-beállítások konfigurálásakor feltöltött főtanúsítvány által kiadott ügyféltanúsítványt. Ez eltér az előző lépésben telepített VPNServerRoot. Az ügyféltanúsítvány hitelesítésre szolgál, és kötelező megadni. A tanúsítványok létrehozásával kapcsolatos további információkért lásd: [tanúsítványok létrehozása](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert). Az ügyféltanúsítványok telepítésével kapcsolatos információkért lásd: [ügyféltanúsítvány telepítése](point-to-site-how-to-vpn-client-install-azure-cert.md).
-3. Nyissa meg a **hálózat** párbeszédpanelt a **hálózati beállítások** területen, és kattintson a **"+"** gombra egy új VPN-ügyfél kapcsolati profil létrehozásához az Azure VNet való P2S-kapcsolathoz.
+3. Nyissa meg a **hálózat** párbeszédpanelt a **hálózati beállítások** területen, és kattintson a **"+"** gombra egy új VPN-ügyfél kapcsolati profil létrehozásához az Azure Virtual Network P2S-kapcsolathoz.
 
    Az **illesztőfelület** értéke "VPN", a **VPN-típus** értéke pedig "IKEv2". Adja meg a profil nevét a **szolgáltatás neve** mezőben, majd kattintson a **Létrehozás** elemre a VPN-ügyfél kapcsolati profiljának létrehozásához.
 
@@ -114,8 +116,8 @@ A következő lépésekkel konfigurálhatja a natív VPN-ügyfelet a Mac számí
    ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. A **helyi azonosító** mezőben adja meg a tanúsítvány nevét (a 6. lépésből). Ebben a példában ez a "ikev2Client.com". Ezután kattintson az **Apply (alkalmaz** ) gombra a módosítások mentéséhez.
 
-   ![alkalmazása](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
-9. A **hálózat** párbeszédpanelen kattintson az **alkalmaz** gombra az összes módosítás mentéséhez. Ezután kattintson a **Kapcsolódás** gombra a P2S-kapcsolat Azure-VNet való elindításához.
+   ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+9. A **hálózat** párbeszédpanelen kattintson az **alkalmaz** gombra az összes módosítás mentéséhez. Ezután kattintson a **Kapcsolódás** gombra a P2S-kapcsolat Azure-beli virtuális hálózatra való indításához.
 
 ## <a name="linuxgui"></a>Linux (alapú strongswan GUI)
 
@@ -138,7 +140,7 @@ Az alábbi utasítások az Ubuntu 18.0.4 lettek létrehozva. Az Ubuntu-16.0.10 n
    ```
    sudo apt install network-manager-strongswan
    ```
-2. Válassza a **Beállítások** , majd a **hálózat**lehetőséget.
+2. Válassza a **Beállítások**, majd a **hálózat**lehetőséget.
 
    ![kapcsolatok szerkesztése](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
 3. Új kapcsolatok létrehozásához kattintson a **+** gombra.

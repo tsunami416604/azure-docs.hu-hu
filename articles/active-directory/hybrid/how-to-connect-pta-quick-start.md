@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fe38b434c4e54b375b22d76c573d3bbe88b0e16
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: be6a6e9231b13c47d1421543464c720f6283b5f9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889940"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376177"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory átmenő hitelesítés: gyors üzembe helyezés
 
@@ -148,7 +148,7 @@ Másodszor, létrehozhat és futtathat felügyelet nélküli telepítési paranc
         $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
 3. Nyissa meg a **C:\Program Files\Microsoft Azure ad Connect hitelesítési ügynököt** , és futtassa a következő szkriptet a létrehozott `$cred` objektum használatával:
 
-        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 >[!IMPORTANT]
 >Ha egy hitelesítési ügynök telepítve van egy virtuális gépen, a virtuális gép nem telepíthető másik hitelesítési ügynök beállítására. Ez a metódus nem **támogatott**.

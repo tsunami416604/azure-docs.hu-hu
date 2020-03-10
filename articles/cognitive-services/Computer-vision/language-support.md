@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: a834c68119340d796f87971912a07fc0524a6d21
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718616"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365472"
 ---
 # <a name="language-support-for-computer-vision"></a>A Computer Vision nyelvi támogatása
 
@@ -30,8 +30,8 @@ Az OCR automatikusan észleli a bemeneti anyag nyelvét, így nincs szükség a 
 |Nyelv| Nyelvkód | OCR API |
 |:-----|:----:|:-----:|
 |arab | `ar`|✔ |
-|Kínai (egyszerűsített) | `zh-Hans`|✔ |
-|Kínai (hagyományos) | `zh-Hant`|✔ |
+|kínai (egyszerűsített) | `zh-Hans`|✔ |
+|kínai (hagyományos) | `zh-Hant`|✔ |
 |cseh | `cs` |✔ |
 |dán | `da` |✔ |
 |holland | `nl` |✔ |
@@ -48,9 +48,9 @@ Az OCR automatikusan észleli a bemeneti anyag nyelvét, így nincs szükség a 
 |lengyel | `pl` |✔ |
 |portugál | `pt` |✔ |
 |román | `ro` |✔ |
-|orosz | `ru` |✔ |
+|Orosz | `ru` |✔ |
 |szerb (cirill betűs) | `sr-Cyrl` |✔ |
-|Szerb (latin betűs) | `sr-Latn` |✔ |
+|szerb (latin betűs) | `sr-Latn` |✔ |
 |szlovák | `sk` |✔ |
 |spanyol | `es` |✔ |
 |svéd | `sw` |✔ |
@@ -60,7 +60,7 @@ Az OCR automatikusan észleli a bemeneti anyag nyelvét, így nincs szükség a 
 
 Az [elemzés-rendszerkép](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API egyes műveletei más nyelveket is visszaadhatnak, amelyek a `language` lekérdezési paraméterrel vannak megadva. A többi művelet angol nyelven adja vissza az eredményeket, függetlenül attól, hogy milyen nyelven van megadva, mások pedig kivételt képeznek a nem támogatott nyelvek esetében. A műveletek a `visualFeatures` és a `details` lekérdezési paraméterekkel vannak megadva; a képelemzéssel elvégezhető műveletek listáját az [áttekintésben](home.md) tekintheti meg.
 
-|Nyelv | Nyelvkód | Kategóriák | Címkék | Leírás | Felnőtt tartalom | Márkák | Szín | Arcok | Képtípus | Objektumok | Hírességek | Arcrész |
+|Nyelv | Nyelvkód | Kategóriák | Címkék | Leírás | Felnőtt | Márkák | Szín | Arcok | ImageType | Objektumok | Hírességek | Arcrész |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |kínai | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Angol | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
@@ -68,7 +68,7 @@ Az [elemzés-rendszerkép](https://westus.dev.cognitive.microsoft.com/docs/servi
 |portugál | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |spanyol | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg az útmutatóban említett Computer Vision-funkciókkal.
 

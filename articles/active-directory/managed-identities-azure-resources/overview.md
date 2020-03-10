@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a721d1e486010e22927512985611cccdd99f4505
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 47bd3b5da79bdb9c7dca75d521aa39d3652ab1ab
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78248326"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946010"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Mik azok az Azure-erőforrások felügyelt identitásai?
 
@@ -56,7 +56,7 @@ A kód a felügyelt identitások használatával hozzáférési jogkivonatokat i
 
 Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuális gépekkel (VM) való működése látható:
 
-![Felügyeltszolgáltatás-identitások és Azure-beli virtuális gépek](media/overview/msi-vm-vmextension-imds-example.png)
+![Felügyeltszolgáltatás-identitások és Azure-beli virtuális gépek](media/overview/data-flow.png)
 
 |  Tulajdonság    | Rendszer által hozzárendelt felügyelt identitás | Felhasználó által hozzárendelt felügyelt identitás |
 |------|----------------------------------|--------------------------------|

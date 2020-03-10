@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 1d1368ef8ffb474c6bec1240f567f043961597fb
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838176"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389795"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>HDInsight-fürtök létrehozása Azure Data Lake Storage Gen1ekkel a Azure Portal használatával
 
@@ -45,7 +45,7 @@ Ebben a szakaszban egy HDInsight-fürtöt hoz létre Data Lake Storage Gen1 fió
 
 Data Lake Storage Gen1-fiókkal rendelkező HDInsight-fürt létrehozása alapértelmezett Storage-fiókként:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. A HDInsight-fürtök létrehozásával kapcsolatos általános információkért kövesse a [fürtök létrehozása](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) című témakört.
 3. A **tároló** panel **elsődleges tároló típusa**területén válassza a **Azure Data Lake Storage Gen1**lehetőséget, majd adja meg a következő adatokat:
 
@@ -64,7 +64,7 @@ Az alábbi utasítások egy Azure Storage-fiókkal rendelkező HDInsight-fürtö
 
 Data Lake Storage Gen1-fiókkal rendelkező HDInsight-fürt létrehozása további Storage-fiókként:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. A HDInsight-fürtök létrehozásával kapcsolatos általános információkért kövesse a [fürtök létrehozása](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) című témakört.
 3. A **tároló** panel **elsődleges tároló típusa**területén válassza az **Azure Storage**lehetőséget, majd adja meg a következő adatokat:
 
@@ -195,7 +195,7 @@ A Spark-fürtöket a Spark-feladatok futtatására használhatja Data Lake Stora
 
 A Data Lake Storage Gen1 fiók használatával írhat adatokat egy Storm-topológiából. Ennek a forgatókönyvnek a megvalósításával kapcsolatos útmutatásért lásd: [Azure Data Lake Storage Gen1 használata a Apache Storm és a HDInsight használatával](../hdinsight/storm/apache-storm-write-data-lake-store.md).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
 * [PowerShell: hozzon létre egy HDInsight-fürtöt Data Lake Storage Gen1 használatához](data-lake-store-hdinsight-hadoop-use-powershell.md)

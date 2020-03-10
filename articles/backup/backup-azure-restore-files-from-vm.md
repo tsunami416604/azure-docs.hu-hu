@@ -3,12 +3,12 @@ title: Fájlok és mappák helyreállítása az Azure virtuális gép biztonság
 description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlokat és mappákat egy Azure-beli virtuális gép helyreállítási pontjából.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: d80fb1060eca766305ecbfffe151d975472f8b3c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660920"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363899"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -125,7 +125,7 @@ Az összes logikai kötet, név és elérési út listázása egy kötet csoport
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command's results>
 ```
 
 A logikai kötetek csatlakoztatása a választott útvonalhoz:
@@ -202,10 +202,10 @@ Ha korlátozott hozzáféréssel rendelkező számítógépen futtatja a parancs
 
 - `download.microsoft.com`
 - Helyreállítási szolgáltatás URL-címei (a Geo-név arra a régióra utal, ahol a helyreállítási tár található)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.com> (az Azure nyilvános térségek)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (az Azure China 21Vianet esetében)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.us> (az USA kormánya számára)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.de> (az Azure Germany esetében)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (az Azure nyilvános térségek)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (az Azure China 21Vianet esetében)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (az USA kormánya számára)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (az Azure Germany esetében)
 - Kimenő portok 53 (DNS), 443, 3260
 
 > [!NOTE]
@@ -295,7 +295,7 @@ A fájlok és mappák tallózásához a parancsfájl az iSCSI-kezdeményezőt ha
 
 Kölcsönös CHAP-hitelesítési mechanizmust használunk, hogy minden összetevő hitelesítse a másikat. Ez azt jelenti, hogy a hamis kezdeményezők rendkívül nehéz csatlakozni az iSCSI-tárolóhoz, és ahhoz, hogy hamis célt lehessen csatlakoztatni ahhoz a géphez, amelyen a parancsfájl fut.
 
-A helyreállítási szolgáltatás és a gép közötti adatforgalom védelme a biztonságos SSL-alagút TCP-kapcsolaton keresztüli létrehozásával történik (a TLS 1,2-et a parancsfájl futtatására szolgáló gépen[kell támogatni](#system-requirements) ).
+A helyreállítási szolgáltatás és a gép közötti adatforgalom védelme a biztonságos TLS-alagút TCP-kapcsolaton keresztüli létrehozásával történik (a TLS 1,2-et a parancsfájl futtatására szolgáló gépen[kell támogatni](#system-requirements) ).
 
 A szülő/biztonsági mentés alatt lévő virtuális gépen található összes fájl Access Control lista (ACL) a csatlakoztatott fájlrendszerben is megmarad.
 

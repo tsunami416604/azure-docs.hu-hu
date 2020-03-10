@@ -13,11 +13,11 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928114"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387332"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Adatok áthelyezése a MySQL-ből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -65,23 +65,23 @@ A következő szakaszokban részletesen ismertetjük a MySQL-adattárra jellemz�
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a MySQL-hez társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMySql** |Igen |
 | kiszolgáló |A MySQL-kiszolgáló neve. |Igen |
-| adatbázis |A MySQL-adatbázis neve. |Igen |
-| séma |A séma neve az adatbázisban. |Nem |
+| database |A MySQL-adatbázis neve. |Igen |
+| schema |A séma neve az adatbázisban. |Nem |
 | authenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: `Basic`. |Igen |
-| userName (Felhasználónév) |Adja meg a MySQL-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
+| userName |Adja meg a MySQL-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
 | jelszó |Adja meg a megadott felhasználói fiók jelszavát. |Igen |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni MySQL-adatbázishoz való kapcsolódáshoz. |Igen |
+| gatewayName |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni MySQL-adatbázishoz való kapcsolódáshoz. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
 
 A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **RelationalTable** típusú (MySQL-adatkészletet tartalmazó) adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | tableName |Annak a MySQL-adatbázis-példánynak a neve, amelyhez a társított szolgáltatás hivatkozik. |Nem (ha meg van adva a **RelationalSource** **lekérdezése** ) |
 
@@ -92,9 +92,9 @@ Míg a tevékenység **typeProperties** szakaszában elérhető tulajdonságok a
 
 Ha a másolási tevékenységben a forrás **RelationalSource** típusú (amely tartalmazza a MySQL-t), a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
+| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from MyTable. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON-példa: adatok másolása a MySQL-ből az Azure Blobba
@@ -300,40 +300,40 @@ Az adatok MySQL-re való áthelyezésekor a következő leképezések használat
 
 | MySQL-adatbázis típusa | .NET-keretrendszer típusa |
 | --- | --- |
-| bigint aláíratlan |Decimális |
+| bigint aláíratlan |tizedes tört |
 | bigint |Int64 |
-| bit |Decimális |
-| blob |Bájt [] |
-| logikai |Logikai |
+| bit |tizedes tört |
+| blob |Byte[] |
+| bool |Logikai |
 | char |Sztring |
-| dátum |Dátum/idő |
-| dátum/idő |Dátum/idő |
-| tizedes tört |Decimális |
-| dupla pontosság |Double |
-| double |Double |
+| dátum |Dátum és idő |
+| dátum/idő |Dátum és idő |
+| tizedes tört |tizedes tört |
+| dupla pontosság |Dupla |
+| double |Dupla |
 | Enum |Sztring |
-| lebegőpontos |Önálló |
+| lebegőpontos |Single |
 | int előjel nélküli |Int64 |
 | int |Int32 |
 | egész szám előjel nélküli |Int64 |
 | egész szám |Int32 |
-| hosszú varbinary |Bájt [] |
+| hosszú varbinary |Byte[] |
 | hosszú varchar |Sztring |
-| dereglye |Bájt [] |
+| longblob |Byte[] |
 | LONGTEXT |Sztring |
-| mediumblob |Bájt [] |
+| mediumblob |Byte[] |
 | mediumint aláíratlan |Int64 |
 | mediumint |Int32 |
 | mediumtext |Sztring |
-| numerikus |Decimális |
-| real |Double |
+| numeric |tizedes tört |
+| real |Dupla |
 | halmaz |Sztring |
 | smallint aláíratlan |Int32 |
 | smallint |Int16 |
 | szöveg |Sztring |
-| time |időtartam |
-| időbélyeg |Dátum/idő |
-| tinyblob |Bájt [] |
+| time |Időtartam |
+| időbélyeg |Dátum és idő |
+| tinyblob |Byte[] |
 | tinyint aláíratlan |Int16 |
 | tinyint |Int16 |
 | tinytext |Sztring |

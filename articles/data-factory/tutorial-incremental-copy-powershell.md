@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 1a3651f82d7818ad105c0a8a7b5fd9fcf073b4a1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982548"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387842"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba a PowerShell használatával
 
@@ -181,7 +181,7 @@ END
     Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
     ```
 
-Vegye figyelembe a következő szempontokat:
+Vegye figyelembe a következő pontokat:
 
 * Az adat-előállító nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a nevet, majd próbálkozzon újra:
 
@@ -218,7 +218,7 @@ Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattára
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
     ```
 
-    Itt látható a minta kimenete:
+    Itt látható a kimenet mintája:
 
     ```json
     LinkedServiceName : AzureStorageLinkedService
@@ -249,7 +249,7 @@ Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattára
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
     ```
 
-    Itt látható a minta kimenete:
+    Itt látható a kimenet mintája:
 
     ```json
     LinkedServiceName : AzureSQLDatabaseLinkedService
@@ -501,7 +501,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
    ```
 
-   Itt látható a minta kimenete:
+   Itt látható a kimenet mintája:
 
    ```json
     PipelineName      : IncrementalCopyPipeline
@@ -524,7 +524,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
     ```
 
-    Itt látható a minta kimenete:
+    Itt látható a kimenet mintája:
 
     ```json
     ResourceGroupName : ADF
@@ -602,7 +602,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     Select * from watermarktable
     ```
 
-    Itt látható a minta kimenete:
+    Itt látható a kimenet mintája:
 
     TableName | WatermarkValue
     --------- | --------------
@@ -644,7 +644,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
     ```
 
-    Itt látható a minta kimenete:
+    Itt látható a kimenet mintája:
 
     ```json
     ResourceGroupName : ADF

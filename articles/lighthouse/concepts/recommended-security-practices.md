@@ -4,17 +4,17 @@ description: Az Azure-beli delegált erőforrás-kezelés használatakor fontos 
 ms.date: 07/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8972d6548eccb1006d90bfcbb4dba8c01b05a981
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456882"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394051"
 ---
 # <a name="recommended-security-practices"></a>Ajánlott biztonsági eljárások
 
 Az Azure-beli delegált erőforrás-kezelés használatakor fontos figyelembe venni a biztonsági és hozzáférés-vezérlést. A bérlő felhasználóinak közvetlen hozzáférésük lesz az ügyfél-előfizetésekhez és az erőforráscsoportokhoz, ezért a bérlő biztonságának fenntartásához lépéseket kell végrehajtania. Azt is érdemes biztosítani, hogy csak az ügyfelek erőforrásainak hatékony kezeléséhez szükséges hozzáférést engedélyezze. Ez a témakör ajánlásokat nyújt a segítségére.
 
-## <a name="require-azure-multi-factor-authentication"></a>Azure-Multi-Factor Authentication megkövetelése
+## <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication szükséges
 
 Az [Azure multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (más néven kétlépéses ellenőrzés) segít megakadályozni, hogy a támadók több hitelesítési lépés megkövetelésével hozzáférjenek a fiókokhoz. A szolgáltatói bérlő összes felhasználója számára szükséges Multi-Factor Authentication, beleértve az ügyfelek erőforrásaihoz hozzáférő felhasználókat is.
 
@@ -28,12 +28,12 @@ Az engedélyezési struktúra létrehozásakor ügyeljen arra, hogy kövesse a l
 
 Előfordulhat például, hogy a következőhöz hasonló struktúrát szeretne használni:
 
-|Csoport neve  |Type (Típus)  |principalId  |Szerepkör-definíció  |Szerepkör-definíció azonosítója  |
+|Csoport neve  |Típus  |principalId  |Szerepkör-definíció  |Szerepkör-definíció azonosítója  |
 |---------|---------|---------|---------|---------|
-|Mérnökök     |Felhasználói csoport         |\<principalId\>         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Építészek     |Felhasználói csoport         |\<principalId\>         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 |Értékelés     |Felhasználói csoport         |\<principalId\>         |Olvasó         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
 |VM-szakemberek     |Felhasználói csoport         |\<principalId\>         |VIRTUÁLIS gépek közreműködője         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
-|Automation     |Egyszerű szolgáltatásnév (SPN)         |\<principalId\>         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Automatizálás     |Egyszerű szolgáltatásnév (SPN)         |\<principalId\>         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
 Miután létrehozta ezeket a csoportokat, igény szerint rendelhet hozzá felhasználókat. Csak azokat a felhasználókat adja hozzá, akiknek valóban szükségük van a hozzáférésre. Mindenképpen tekintse át a csoporttagság rendszeres áttekintését, és távolítsa el azokat a felhasználókat, akik már nem megfelelőek vagy szükségesek a belefoglalásához.
 

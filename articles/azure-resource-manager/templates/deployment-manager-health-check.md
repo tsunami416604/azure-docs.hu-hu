@@ -1,16 +1,16 @@
 ---
 title: Health Integration bevezetése – Azure telepítéskezelő
-description: Ismerteti, hogyan helyezhet üzembe egy szolgáltatást több régióban az Azure telepítéskezelő használatával. A biztonságos üzembe helyezési eljárásokat mutatja be a telepítés stabilitásának ellenőrzéséhez, mielőtt az összes régióba bekerül.
+description: Ismerteti, hogyan lehet a szolgáltatás telepítése több választható régióban az Azure Deployment Manager keresztül. Ellenőrizze a telepítés előtt minden régióban elérhetőek stabilitását biztonságos üzembe helyezési eljárásokat jeleníti meg.
 author: mumian
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: jgao
 ms.openlocfilehash: aa99bdfcbc2f42ae81bdd55c266bcd7d87808031
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484804"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388153"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Állapot-integráció bevezetése az Azure telepítéskezelő (nyilvános előzetes verzió)
 
@@ -154,7 +154,7 @@ Ezen a ponton az Azure telepítéskezelő tudja, hogyan kérdezheti le a szolgá
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan integrálhatja az állapotfigyelő szolgáltatásait az Azure telepítéskezelőba. A következő cikkből megtudhatja, hogyan helyezheti üzembe a telepítéskezelő használatával.
+Ebben a cikkben megtanulta, hogyan integrálhatja az állapotfigyelő szolgáltatásait az Azure telepítéskezelőba. Folytassa a következő cikkben megtudhatja, hogyan helyezhet üzembe a Deployment Manager.
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: állapot-ellenõrzés integrálása az Azure-ban telepítéskezelő](./deployment-manager-tutorial-health-check.md)

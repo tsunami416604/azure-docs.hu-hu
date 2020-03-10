@@ -4,11 +4,11 @@ description: Az Azure-erőforrások elnevezési szabályait és korlátozásait 
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153162"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391177"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
@@ -482,7 +482,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | dnsZones | erőforráscsoport | 1-63 karakter<br><br>2 – 34 felirat<br><br>Minden címke egy ponttal elválasztott karakterből áll. Például a **contoso.com** 2 címkével rendelkezik. | Az egyes címkék alfanumerikus karaktereket, aláhúzásokat és kötőjeleket tartalmazhatnak.<br><br>Mindegyik címkét egy pont választja el egymástól. |
 > | expressRouteCircuits | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
 > | firewallPolicies | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | firewallPolicies / ruleGroups | tűzfal házirendje | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
+> | firewallPolicies / ruleGroups | Tűzfal házirendje | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
 > | frontDoors | globális | 5-64 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
 > | loadBalancers | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
 > | loadBalancers/inboundNatRules | terheléselosztó | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
@@ -518,7 +518,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | névterek | globális | 6-50 | Alfanumerikus karakterek és kötőjelek<br><br>Kezdő és záró alfanumerikus karakterek. |
 > | névterek/engedélyezési szabályok | névtér | 1-256 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Alfanumerikus karakterek indítása |
 > | névterek/notificationHubs | névtér | 1-260 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Alfanumerikus karakterek indítása |
-> | névterek/notificationHubs/engedélyezési szabályok | értesítési központ | 1-256 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Alfanumerikus karakterek indítása |
+> | névterek/notificationHubs/engedélyezési szabályok | Értesítési központ | 1-256 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Alfanumerikus karakterek indítása |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
@@ -577,7 +577,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | központi telepítések | erőforráscsoport | 1-64 | Alfanumerikus karakterek, aláhúzások, zárójelek, kötőjelek és időszakok. |
 > | resourcegroups | előfizetést | 1–90 | Alfanumerikus karakterek, aláhúzások, zárójelek, kötőjelek, időszakok és Unicode-karakterek, amelyek megfelelnek a [regex dokumentációjának](/rest/api/resources/resourcegroups/createorupdate).<br><br>Nem végződhet ponttal. |
 > | tagNames | resource | 1-512 | Nem használható:<br>`<>%&\?/` |
-> | tagNames / tagValues | címke neve | 1-256 | Minden karakter. |
+> | tagNames / tagValues | Címke neve | 1-256 | Minden karakter. |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 

@@ -4,11 +4,11 @@ description: A tudásbázist közzé kell tenni. A közzététel után a tudásb
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843315"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389280"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>A válaszok tudásbázisának lekérdezése
 
@@ -24,7 +24,7 @@ A betanított és [közzétett](/azure/cognitive-services/qnamaker/quickstarts/c
 
 A folyamatot az alábbi táblázat ismerteti.
 
-|Lépés:|Rendeltetés|
+|Lépés|Cél|
 |--|--|
 |1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezést a [GENERATEANSWER API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)-nak.|
 |2|QnA Maker elődolgozza a felhasználói lekérdezést a nyelvfelismerés, a helyesírás-ellenőrző és a Word-megszakítók használatával.|

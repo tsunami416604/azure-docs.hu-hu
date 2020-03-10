@@ -12,11 +12,11 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
 ms.openlocfilehash: 30b2ba92174996ea2bae34e7553a3258d8ebee27
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818914"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388188"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Gyors útmutató: pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszíni környezetből
 
@@ -63,7 +63,7 @@ Ez a rövid útmutató:
 
 ## <a name="create-a-vpn-connection-to-your-managed-instance"></a>VPN-kapcsolat létrehozása a felügyelt példányhoz
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. Nyissa meg azt az erőforráscsoportot, amelyben létrehozta a virtuális hálózati átjárót, majd nyissa meg a virtuális hálózati átjáró erőforrását.
 3. Válassza a **pont – hely konfiguráció** lehetőséget, majd válassza a **VPN-ügyfél letöltése**lehetőséget.
 
@@ -92,7 +92,7 @@ Ez a rövid útmutató:
 
     ![VPN-kapcsolat](./media/sql-database-managed-instance-configure-p2s/vpn-connection-succeeded.png)  
 
-## <a name="use-ssms-to-connect-to-the-managed-instance"></a>A SSMS használata a felügyelt példányhoz való kapcsolódáshoz
+## <a name="use-ssms-to-connect-to-the-managed-instance"></a>Csatlakozhat a felügyelt példányhoz az SSMS használatával
 
 1. A helyszíni ügyfélszámítógépen nyissa meg SQL Server Management Studio (SSMS).
 2. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a felügyelt példány teljes **állomásnevét** a **kiszolgáló neve** mezőben.
@@ -102,7 +102,7 @@ Ez a rövid útmutató:
 
 A csatlakozási lehetőség után megtekintheti a rendszer és a felhasználói adatbázisokat az adatbázisok csomópontban. A biztonság, a kiszolgálói objektumok, a replikálás, a felügyelet, a SQL Server Agent és a XEvent Profiler-csomópontok különböző objektumait is megtekintheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure-beli virtuális gépekről történő kapcsolódást bemutató rövid útmutató: [pont – hely kapcsolat konfigurálása](sql-database-managed-instance-configure-p2s.md).
 - Az alkalmazások csatlakozási lehetőségeinek áttekintéséért lásd: [Alkalmazások csatlakoztatása felügyelt példányhoz](sql-database-managed-instance-connect-app.md).

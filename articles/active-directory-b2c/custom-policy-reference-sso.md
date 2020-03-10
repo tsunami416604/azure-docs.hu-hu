@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bdea51c6cb53222f31a07906785a94073a0293a1
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 80cf0d101a29de7fca9d4dd36e188a500d35e290
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226794"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933024"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés munkamenet-kezelés a Azure Active Directory B2C-ben
 
@@ -138,7 +138,7 @@ Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a 
 
 Ha a B2C SAML-munkamenet tárolására szolgáltatót használ, a `RegisterServiceProviders` `true`ra kell beállítania. Az SAML-munkamenet kijelentkezéséhez szükség van a `SessionIndex`ra, és `NameID` a befejezéshez.
 
-Az [SAML-kiállító technikai profilja](connect-with-saml-service-providers.md) a következő `SM-Saml-idp` technikai profilt használja
+Az [SAML-kiállító technikai profilja](saml-issuer-technical-profile.md) a következő `SM-Saml-idp` technikai profilt használja
 
 ```XML
 <TechnicalProfile Id="SM-Saml-sp">

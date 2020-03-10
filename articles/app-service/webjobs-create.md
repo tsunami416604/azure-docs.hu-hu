@@ -1,5 +1,5 @@
 ---
-title: Háttérbeli feladatok futtatása a WebJobs segítségével
+title: Háttérben futó feladatok futtatása webjobs-feladatokkal
 description: Ismerje meg, hogyan használhatók a webjobs a háttérben végzett feladatok futtatásához Azure App Serviceban. Számos parancsfájl-formátum közül választhat, és futtathatja őket CRON-kifejezésekkel.
 author: ggailey777
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
@@ -9,11 +9,11 @@ ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
 ms.openlocfilehash: 4c568c95a5dbc1799a765c95a2b224de53dfbe9f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684196"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374165"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Háttérben futó feladatok futtatása webjobs-feladatokkal Azure App Service
 
@@ -65,7 +65,7 @@ when making changes in one don't forget the other two.
 
 2. Válassza a **Webjobs**elemet.
 
-   ![Webjobs-feladatok kiválasztása](./media/web-sites-create-web-jobs/select-webjobs.png)
+   ![Select WebJobs](./media/web-sites-create-web-jobs/select-webjobs.png)
 
 2. A **webjobs** lapon válassza a **Hozzáadás**lehetőséget.
 
@@ -78,7 +78,7 @@ when making changes in one don't forget the other two.
    | Beállítás      | Mintaérték   | Leírás  |
    | ------------ | ----------------- | ------------ |
    | **Name (Név)** | myContinuousWebJob | Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat olyan speciális karaktereket, mint a "-" és a "_". |
-   | **Fájlfeltöltés** | ConsoleApp. zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
+   | **Fájlfeltöltés** | ConsoleApp.zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
    | **Típus** | Folyamatos | A [webjobs-típusok](#webjob-types) leírását a cikk korábbi részében találja. |
    | **Méretezés** | Több példány | Csak a folyamatos webjobs-feladatok esetében érhető el. Meghatározza, hogy a program vagy a parancsfájl az összes példányon vagy csak egy példányon fusson-e. A több példányon való futtatás lehetősége nem vonatkozik az ingyenes vagy a közös [díjszabási szintekre](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). | 
 
@@ -103,7 +103,7 @@ when making changes in one don't forget the other two.
 
 2. Válassza a **Webjobs**elemet.
 
-   ![Webjobs-feladatok kiválasztása](./media/web-sites-create-web-jobs/select-webjobs.png)
+   ![Select WebJobs](./media/web-sites-create-web-jobs/select-webjobs.png)
 
 2. A **webjobs** lapon válassza a **Hozzáadás**lehetőséget.
 
@@ -116,7 +116,7 @@ when making changes in one don't forget the other two.
    | Beállítás      | Mintaérték   | Leírás  |
    | ------------ | ----------------- | ------------ |
    | **Name (Név)** | myTriggeredWebJob | Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat olyan speciális karaktereket, mint a "-" és a "_".|
-   | **Fájlfeltöltés** | ConsoleApp. zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
+   | **Fájlfeltöltés** | ConsoleApp.zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
    | **Típus** | Kiváltott | A [webjobs-típusok](#webjob-types) leírását a cikk korábbi részében találja. |
    | **Eseményindítók** | Kézi | |
 
@@ -141,7 +141,7 @@ when making changes in one don't forget the other two.
 
 2. Válassza a **Webjobs**elemet.
 
-   ![Webjobs-feladatok kiválasztása](./media/web-sites-create-web-jobs/select-webjobs.png)
+   ![Select WebJobs](./media/web-sites-create-web-jobs/select-webjobs.png)
 
 2. A **webjobs** lapon válassza a **Hozzáadás**lehetőséget.
 
@@ -154,7 +154,7 @@ when making changes in one don't forget the other two.
    | Beállítás      | Mintaérték   | Leírás  |
    | ------------ | ----------------- | ------------ |
    | **Name (Név)** | myScheduledWebJob | Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat olyan speciális karaktereket, mint a "-" és a "_". |
-   | **Fájlfeltöltés** | ConsoleApp. zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
+   | **Fájlfeltöltés** | ConsoleApp.zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
    | **Típus** | Kiváltott | A [webjobs-típusok](#webjob-types) leírását a cikk korábbi részében találja. |
    | **Eseményindítók** | Ütemezett | Ahhoz, hogy az ütemezés megbízhatóan működjön, engedélyezze az Always On funkciót. Az Always on csak az alapszintű, a standard és a prémium szintű díjszabásban érhető el.|
    | **CRON kifejezés** | 0 0/20 * * * * | A [cron-kifejezéseket](#ncrontab-expressions) a következő szakasz ismerteti. |

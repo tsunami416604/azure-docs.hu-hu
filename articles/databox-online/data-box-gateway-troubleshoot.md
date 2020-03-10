@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: 54f6473954c73de6ec29602c3d1563579b3e8cc6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60754451"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384657"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Az Azure Data Box Gateway hibáinak elhárítása 
 
@@ -31,11 +31,11 @@ Az eszközök diagnosztizálásához és a hibák elhárításához futtassa le 
 
 1. A helyi webes felhasználói felületen válassza a **Hibaelhárítás > Diagnosztikai tesztek** lehetőséget. Válassza ki a tesztet a futtatáshoz, és kattintson a **Teszt futtatása** gombra. Megtörténik a hálózat, az eszköz, a webalkalmazás-proxy, az idő és a felhő beállításaival kapcsolatos lehetséges problémák diagnosztizálása. Értesítést kap, hogy az eszköz teszteket futtat.
 
-    ![Kattintson a Felhasználó hozzáadása gombra](media/data-box-gateway-troubleshoot/run-diag-1.png)
+    ![Kattintson a Felhasználó hozzáadása elemre](media/data-box-gateway-troubleshoot/run-diag-1.png)
  
 2. A tesztek lefutása után megjelennek az eredmények. Ha egy teszt sikertelen, megjelenik a javasolt művelet URL-címe. Az URL-címre kattintva tekintse meg a javasolt műveletet. 
  
-    ![Kattintson a Felhasználó hozzáadása gombra](media/data-box-gateway-troubleshoot/run-diag-2.png)
+    ![Kattintson a Felhasználó hozzáadása elemre](media/data-box-gateway-troubleshoot/run-diag-2.png)
 
 
 ## <a name="collect-support-package"></a>Támogatási csomag összeállítása
@@ -46,9 +46,9 @@ Kövesse az alábbi lépéseket a támogatási csomag összeállításához.
 
 1. A helyi webes felhasználói felületen válassza a **Hibaelhárítás > Támogatás** lehetőséget. Kattintson a **Támogatási csomag létrehozása** elemre. A rendszer megkezdi a támogatási csomag összeállítását. A csomagok gyűjteményének létrehozása eltarthat néhány percig.
 
-    ![Kattintson a Felhasználó hozzáadása gombra](media/data-box-gateway-troubleshoot/collect-logs-1.png)
+    ![Kattintson a Felhasználó hozzáadása elemre](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
-2. A támogatási csomag létrehozásának befejezését követően kattintson a **Támogatási csomag letöltése** elemre. A rendszer a tömörített csomagot letölti a megadott helyre. A csomag is kibontásához.
+2. A támogatási csomag létrehozásának befejezését követően kattintson a **Támogatási csomag letöltése** elemre. A rendszer a tömörített csomagot letölti a megadott helyre. A csomag kibontható.
 
     ![Kattintson a Felhasználó hozzáadása elemre](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
@@ -58,7 +58,7 @@ A feltöltési és frissítési folyamat során észlelt hibákat a megfelelő h
 
 1. A hibafájlok megtekintéséhez nyissa meg saját megosztását, majd megosztásra kattintva tekintse meg tartalmát. 
 
-      ![Kattintson a Felhasználó hozzáadása gombra](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
+      ![Kattintson a Felhasználó hozzáadása elemre](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
 
 2. Kattintson a _Microsoft Data Box Gateway mappára_. Ebben a mappában két almappát talál:
 
@@ -98,14 +98,14 @@ A feltöltési és frissítési folyamat során észlelt hibákat a megfelelő h
     |    2006            |    ERROR_CLOUD_ACCOUNT_DISABLED                            |    Nem sikerült feltölteni az adatokat a fiókba, mert a fiók vagy a megosztás le van tiltva.                                                                                                                                                            |
     |    2007            |    ERROR_CLOUD_ACCOUNT_PERMISSIONS                         |    Nem sikerült csatlakozni a tárolóhoz, mert a fiók engedélyei helytelenek vagy elavultak. Ellenőrizze a hozzáférési engedélyeit.                                                                                                               |
     |    2008            |    ERROR_CLOUD_CONTAINER_SIZE_LIMIT_REACHED                |    Nem sikerült hozzáadni az új adatokat, mert a tároló megtelt. Az Azure-specifikációkban tekintse meg, hogy típusonként mely tárolóméretek támogatottak. Az Azure File például csak az 5 TB-os maximális fájlméret támogatja.                                     |
-    |    2009            |    ERROR_CLOUD_CONTAINER_MISSING                |     Nem sikerült feltölteni az adatokat, mert a tároló társítva a megosztás nem létezik.                                     |    
-    |    2997            |    ERROR_ITEM_CANCELED                                     |    Váratlan hiba történt. Ez az egy átmeneti hiba, magától megoldódik.                                                                           |
+    |    2009            |    ERROR_CLOUD_CONTAINER_MISSING                |     Az adatok nem tölthetők fel, mert a megosztáshoz társított tároló nem létezik.                                     |    
+    |    2997            |    ERROR_ITEM_CANCELED                                     |    Váratlan hiba történt. Ez egy átmeneti hiba, amely magától megoldódik.                                                                           |
     |    2998            |    ERROR_UNMAPPED_FAILURE                                  |    Váratlan hiba történt. Lehet, hogy a hiba magától megoldódik, de ha több mint 24 órán keresztül nem szűnik meg, forduljon a Microsoft ügyfélszolgálatához.                                                                                                     |
     |    16000           |    RefreshException                                        |    A fájlt nem sikerült leállítani.                                                                                                                                                                                                        |
     |    16001           |    RefreshAlreadyExistsException                           |    Nem sikerült leállítani a fájlt, mert már létezik a helyi számítógépen.                                                                                                                                                         |
     |    16002           |    RefreshWorkNeededException                              |    Nem sikerült frissíteni a fájlt, mert nincs teljesen feltöltve.                                                                                                                                                                          | 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információk a [jelen kiadás ismert problémáiról](data-box-gateway-release-notes.md).

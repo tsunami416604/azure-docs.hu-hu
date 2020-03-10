@@ -14,12 +14,12 @@ ms.date: 02/19/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: b3338edf644aee8409cfca05d4ac801594cbf66b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 33116039d5e47b95322ffafb4e8f4eef31bd84cf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467759"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375637"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: bejelentkezés bármely Azure Active Directory felhasználó számára a több-bérlős alkalmazás mintájának használatával
 
@@ -115,7 +115,7 @@ Bizonyos engedélyeket egy normál felhasználó is jóváhagyhat, míg mások a
 
 Csak az alkalmazásra vonatkozó engedélyek szükségesek a bérlői rendszergazda beleegyezni. Ha az alkalmazás csak alkalmazásra vonatkozó engedélyt kér, és egy felhasználó megpróbál bejelentkezni az alkalmazásba, megjelenik egy hibaüzenet, amely azt jelzi, hogy a felhasználó nem tud beleegyezni.
 
-Bizonyos delegált engedélyekhez bérlői rendszergazda beleegyező engedélye is szükséges. Például az Azure AD-be való visszaírási képességnek, mivel a bejelentkezett felhasználó a bérlői rendszergazda beleegyezik. A csak az alkalmazás engedélyeihez hasonlóan, ha egy általános felhasználó megpróbál bejelentkezni egy olyan alkalmazásba, amely rendszergazdai hozzájárulást igénylő delegált engedélyt kér, az alkalmazás hibaüzenetet kap. Azt határozza meg, hogy egy engedélyhez rendszergazdai hozzájárulásra van-e szükség az erőforrást közzétevő fejlesztőtől, és az erőforrás dokumentációjában található. Az [Azure AD Graph API][AAD-Graph-Perm-Scopes] és [Microsoft Graph API][MSFT-Graph-permission-scopes] engedélyeinek dokumentációja azt jelzi, hogy mely engedélyek szükségesek rendszergazdai jogosultság megadásához.
+Bizonyos delegált engedélyekhez bérlői rendszergazda beleegyező engedélye is szükséges. Például az Azure AD-be való visszaírási képességnek, mivel a bejelentkezett felhasználó a bérlői rendszergazda beleegyezik. A csak az alkalmazás engedélyeihez hasonlóan, ha egy általános felhasználó megpróbál bejelentkezni egy olyan alkalmazásba, amely rendszergazdai hozzájárulást igénylő delegált engedélyt kér, az alkalmazás hibaüzenetet kap. Azt határozza meg, hogy egy engedélyhez rendszergazdai hozzájárulásra van-e szükség az erőforrást közzétevő fejlesztőtől, és az erőforrás dokumentációjában található. A [Microsoft Graph API][MSFT-Graph-permission-scopes] -hoz tartozó engedélyek dokumentációja azt jelzi, hogy mely engedélyekre van szükség rendszergazdai jogosultsággal.
 
 Ha az alkalmazás rendszergazdai jogosultságot igénylő engedélyeket használ, olyan kézmozdulattal kell rendelkeznie, mint például egy gomb vagy hivatkozás, ahol a rendszergazda kezdeményezheti a műveletet. Az alkalmazás által a művelethez küldött kérelem a szokásos OAuth2/OpenID Connect engedélyezési kérelem, amely tartalmazza a `prompt=admin_consent` Query string paramétert is. Ha a rendszergazda beleegyezett, és az ügyfél bérlője létrehozta a szolgáltatást, a későbbi bejelentkezési kérések nem igénylik a `prompt=admin_consent` paramétert. Mivel a rendszergazda úgy döntött, hogy a kért engedélyek elfogadhatók, a bérlőn kívül más felhasználókat sem kell megadnia az adott időponthoz.
 
@@ -182,7 +182,6 @@ Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazásokat, amelyek 
 * [Alkalmazások integrálása az Azure Active Directoryval][AAD-Integrating-Apps]
 * [Az engedélyezési keretrendszer áttekintése][AAD-Consent-Overview]
 * [Az API-engedélyek hatókörének Microsoft Graph][MSFT-Graph-permission-scopes]
-* [Azure AD-Graph API engedélyek hatókörei][AAD-Graph-Perm-Scopes]
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com
@@ -192,8 +191,6 @@ Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazásokat, amelyek 
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Consent-Overview]:consent-framework.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Overview]: https://azure.microsoft.com/documentation/articles/active-directory-graph-api/
-[AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AAD-Samples-MT]: https://docs.microsoft.com/samples/browse/?products=azure-active-directory
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
@@ -213,10 +210,6 @@ Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazásokat, amelyek 
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
-[AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
-[AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
-[AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios/#claims-in-azure-ad-security-tokens
 [AAD-Tokens-Claims]:access-tokens.md

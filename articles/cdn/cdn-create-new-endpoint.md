@@ -16,11 +16,11 @@ ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 2a3325217c1ec854e4f6cef3facce5580fb06a57
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593994"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383563"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Gyors útmutató: Azure CDN-profil és -végpont létrehozása
 Ebben a gyors útmutatóban egy új CDN-profil és -végpont létrehozásán keresztül engedélyezi az Azure Content Delivery Network (CDN) aktiválását. Miután létrehozott egy profilt és egy végpontot, elindíthatja a tartalomszolgáltatást az ügyfelek felé.
@@ -30,7 +30,7 @@ Ebben a gyors útmutatóban egy új CDN-profil és -végpont létrehozásán ker
 ## <a name="prerequisites"></a>Előfeltételek
 Ehhez a gyors útmutatóhoz rendelkeznie kell egy már létrehozott *mystorageacct123* nevű tárfiókkal, amelyet a forrásgazdanévként használ. További információért lásd az [Azure Storage-fiók és az Azure CDN integrálásával](cdn-create-a-storage-account-with-cdn.md) foglalkozó cikket.
 
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 
 [!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
@@ -51,9 +51,9 @@ A CDN-profil létrehozását követően használhatja azt egy végpont létrehoz
 
 3. A végpont beállításaihoz a következő táblázatban megadott értékeket használja:
 
-    | Beállítás | Value |
+    | Beállítás | Érték |
     | ------- | ----- |
-    | **Name** | Adja meg a *my-endpoint-123* nevet végpontja gazdaneveként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másik nevet. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a _&lt;végpont neve&gt;_ .azureedge.net tartományban.|
+    | **Name (Név)** | Adja meg a *my-endpoint-123* nevet végpontja gazdaneveként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másik nevet. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a _&lt;végpont neve&gt;_ .azureedge.net tartományban.|
     | **Forrás típusa** | Válassza a **Storage** lehetőséget. | 
     | **Forrás gazdaneve** | Adja meg a *mystorageacct123.blob.core.windows.net* nevet gazdanévként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másik nevet. |
     | **Forrás elérési útvonala** | Hagyja üresen. |
@@ -84,7 +84,7 @@ A korábbi lépésekben létrehozott egy CDN-profilt és egy végpontot egy erő
 
     Ezzel törli a gyors útmutatóban létrehozott erőforráscsoportot, profilt és a végpontot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi útmutatóból megtudhatja, hogyan adhat hozzá egyéni tartományt CDN-végpontjához:
 
 > [!div class="nextstepaction"]

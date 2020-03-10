@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 448b14168e85e75b7ed19e189600186ce11c2902
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756419"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395491"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Biztonságos hozzáférés a Azure Cosmos DB lévő adateléréshez
 
@@ -19,7 +19,7 @@ Ez a cikk áttekintést nyújt a [Microsoft Azure Cosmos DBban](https://azure.mi
 
 Azure Cosmos DB kétféle kulcsot használ a felhasználók hitelesítéséhez és az adataihoz és erőforrásaihoz való hozzáférés biztosításához. 
 
-|Kulcs típusa|Segédanyagok és eszközök|
+|Kulcs típusa|További források|
 |---|---|
 |[Főkulcsok](#master-keys) |Felügyeleti erőforrásokhoz használatos: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
 |[Erőforrás-tokenek](#resource-tokens)|Alkalmazás-erőforrásokhoz használatos: tárolók, dokumentumok, mellékletek, tárolt eljárások, eseményindítók és UDF|
@@ -155,7 +155,7 @@ Ha Azure Cosmos DB fiók-olvasóhoz szeretne hozzáférni a felhasználói fiók
 4. A **hozzáférés kiosztása mezőben**válassza az **Azure ad-felhasználó,-csoport vagy-alkalmazás**lehetőséget.
 5. Válassza ki a címtárban azt a felhasználót, csoportot vagy alkalmazást, amelyhez hozzáférést szeretne biztosítani.  A címtárban a megjelenítendő név, e-mail-cím vagy objektumazonosító alapján kereshet.
     A kiválasztott felhasználó, csoport vagy alkalmazás megjelenik a kijelölt tagok listájában.
-6. Kattintson a **Mentés** gombra.
+6. Kattintson a **Save** (Mentés) gombra.
 
 Az entitás mostantól képes olvasni Azure Cosmos DB erőforrásait.
 

@@ -1,14 +1,14 @@
 ---
 title: 'Gyors útmutató: Tudásbázis létrehozása, betanítása és közzététele – QnA Maker'
 description: Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori kérdések és termékkézikönyvek alapján. Ebből a cikkből megtudhatja, hogyan hozhat létre egy QnA Maker tudásbázist egy egyszerű gyakori kérdések weblapján, hogy válaszoljon a kérdésekre QnA Maker.
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 02/08/2020
-ms.openlocfilehash: a4c4d9b2e8f4b816510fb35a75b3c9b8b2afa5e2
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: b1f80006e2dc72b5b623f4c29c093c734dc1efea
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108726"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892912"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
 
@@ -154,6 +154,5 @@ További információk:
 
 * [Markdown-formátum a válaszokban](../reference-markdown-format.md)
 * QnA Maker [adatforrások](../concepts/knowledge-base.md).
-* A [robot erőforrás-konfigurációs beállításai](../tutorials/create-qna-bot.md).
 
 

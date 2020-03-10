@@ -11,17 +11,17 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: zivr
 ms.openlocfilehash: c90e70900c019340cacc169325155ac74cf7807c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171467"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380620"
 ---
 # <a name="co-locate-resources-for-improved-latency"></a>Erőforrások közös elhelyezése a jobb késés érdekében
 
 Amikor üzembe helyezi az alkalmazást az Azure-ban, a különböző régiókba vagy rendelkezésre állási zónákba tartozó példányok elterjedése hálózati késést okoz, ami hatással lehet az alkalmazás általános teljesítményére. 
 
-## <a name="proximity-placement-groups"></a>Proximity elhelyezési csoportok
+## <a name="proximity-placement-groups"></a>Közelségi elhelyezési csoportok
 
 [!INCLUDE [virtual-machines-common-ppg-overview](../../../includes/virtual-machines-common-ppg-overview.md)]
 

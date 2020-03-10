@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Box-átjáró általános rendelkezésre állás kibocsátási megjegyzések |} A Microsoft Docs
-description: Általánosan elérhető kiadások futtató Azure-Box adatátjáróhoz kritikus megoldatlan problémák és megoldásuk ismertetése
+title: A Azure Data Box Gateway általánosan elérhető kiadási megjegyzései | Microsoft Docs
+description: Az általános rendelkezésre állási kiadást futtató Azure Data Box Gateway kritikusan nyitott problémáit és megoldásait ismerteti.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,45 +9,45 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
 ms.openlocfilehash: f4ee3a5bd754335ab1c7f124671e9c37307a6a28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60754199"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384666"
 ---
-# <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Azure Data Box Edge/Azure Data Box Gateway General Availability release notes
+# <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Azure Data Box Edge/Azure Data Box Gateway általános elérhetőségi kibocsátási megjegyzések
 
 ## <a name="overview"></a>Áttekintés
 
-A következő kiadási megjegyzések a kritikus fontosságú megoldatlan problémák azonosításához, és az Azure Data Box Edge és az Azure Data Box Gateway kiadás megoldott problémák az általánosan elérhető (GA).
+A következő kibocsátási megjegyzések azonosítják a kritikus nyitott problémákat, valamint a Azure Data Box Edge és Azure Data Box Gateway általánosan elérhető kiadásával kapcsolatos feloldott problémákat.
 
-A kibocsátási megjegyzésekben folyamatosan frissülnek, és ahogy ismertté kritikus problémák adódnak. A Data Box Edge/Data Box Gateway, üzembe helyezése előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.
+A kibocsátási megjegyzések folyamatosan frissülnek, és olyan kritikus fontosságú problémák észlelhetők, amelyek megkerülő megoldást igényelnek. A Data Box Edge/Data Box Gateway üzembe helyezése előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.
 
-Az általánosan elérhető kiadás felel meg a szoftver verziójával:
+A GA-kiadás a szoftverek verziószámának felel meg:
 
-- **Data Box átjáró 1903 (1.5.814.447)**
+- **Data Box Gateway 1903 (1.5.814.447)**
 - **Data Box Edge 1903 (1.5.814.447)**
 
 
 ## <a name="whats-new"></a>Újdonságok
 
-- **Új virtuális lemez lemezképek** – új VHDX és VMDK mostantól elérhetők az Azure Portalon. Töltse le a lemezképek létrehozása, konfigurálása, és új Data Box Gateway általánosan elérhető eszközök üzembe. A Data Box Gateway eszközök létrehozott a korábbi előzetes verziók nem frissíthető erre a verzióra. További információért ugorjon [üzembe helyezését az Azure Data Box Gateway](data-box-gateway-deploy-prep.md).
-- **Támogatja az NFS** -NFS-támogatása jelenleg előzetes verzióban érhető el, és elérhető legyen a 3.0-s verzió és v4.1 ügyfelek férnek hozzá a Data Box Edge és a Data Box Gateway eszközöket.
-- **Storage rugalmasságot** – a Data Box Edge-eszköz képes elviselni a hiba, a Storage rugalmassági funkcióval egy adatlemezt. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Storage rugalmasságot kiválasztásával engedélyezheti a **rugalmas** beállítást a **tárolási beállítások** a helyi webes felhasználói Felületét.
+- **Új virtuális lemezes rendszerképek** – az új VHDX és VMDK mostantól elérhetők a Azure Portal. Töltse le ezeket a lemezképeket új Data Box Gateway GA-eszközök kiépítéséhez, konfigurálásához és üzembe helyezéséhez. A korábbi előzetes verziókban létrehozott Data Box Gateway-eszközök nem frissíthetők erre a verzióra. További információ: [felkészülés a Azure Data Box Gateway üzembe helyezésére](data-box-gateway-deploy-prep.md).
+- **NFS-támogatás** – az NFS-támogatás jelenleg előzetes verzióban érhető el, és elérhető a v 3.0 és a v 4.1 rendszerű ügyfeleknek, amelyek hozzáférnek a Data Box Edge és Data Box Gateway eszközökhöz.
+- **Tárolási rugalmasság** – a Data Box Edge eszköz képes ellenállni egy adatlemez meghibásodásának a tárolási rugalmassági funkcióval. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. A tárterület rugalmasságának engedélyezéséhez válassza a **rugalmas** lehetőséget a helyi webes felhasználói felület **tárolási beállításai** között.
 
 
-## <a name="known-issues-in-ga-release"></a>Ismert problémák a GA kiadás
+## <a name="known-issues-in-ga-release"></a>Ismert problémák a GA kiadásban
 
-Az alábbi táblázat összefoglalja az ismert problémákról a Data Box átjáró verzióját futtatja.
+A következő táblázat összefoglalja az Data Box Gateway futó kiadásának ismert problémáit.
 
-| Nem. | Funkció | Probléma | Megkerülő megoldás és megjegyzések |
+| Nem. | Funkció | Probléma | Áthidaló megoldás/megjegyzések |
 | --- | --- | --- | --- |
-| **1.** |Fájltípusok | A következő fájltípusok nem támogatottak: fájlokat, blokk-fájlok, sockets, pipe-ok, a szimbolikus hivatkozások karakter.  |Ossza meg ezeket a fájlokat az NFS első létrehozott 0 hosszúságú fájlokat eredményez. Ezeket a fájlokat a is jelenti, és továbbra is a hibás állapotú *error.xml*. <br> Szimbolikus hivatkozások címtárakhoz soha nem offline kezdeti megjelölve könyvtárak eredményez. Ennek eredményeképpen, előfordulhat, hogy nem jelenik meg a szürke keresztszűrés a könyvtárak, amely azt jelzi, hogy a könyvtárakat offline üzemmódban van, a kapcsolódó tartalmat teljesen töltött fel az Azure-bA. |
-| **2.** |Törlés | Ebben a kiadásban egy hiba miatt az NFS-megosztások törlésekor, majd a megosztás nem törölhetők. A megosztás állapot *törlése*.  |Ez akkor történik, csak ha a megosztás egy nem támogatott fájl nevét. |
-| **3.** |Másolás | Adatok másolása hibával meghiúsul:  A kért művelet nem sikerült a fájlrendszer egy korlátozása miatt.  |A másodlagos Data Stream (ADS) fájl mérete 128 KB-nál nagyobb társított nem támogatott.   |
+| **1.** |Fájltípusok | A következő fájltípusok nem támogatottak: karakterek, fájlok, szoftvercsatornák, csövek és szimbolikus hivatkozások.  |Ezeknek a fájloknak a másolása az NFS-megosztáson létrehozott, 0 hosszúságú fájlokat eredményez. Ezek a fájlok hibás állapotban maradnak, és a *error. xml fájlban*is szerepelnek. <br> A címtárakra mutató szimbolikus hivatkozások azt eredményezik, hogy a címtárak soha nem jelennek meg offline állapotban. Ennek eredményeképpen előfordulhat, hogy nem látja a szürke keresztet azon könyvtárakon, amelyek jelzik, hogy a címtárak offline állapotban vannak, és az összes kapcsolódó tartalmat teljesen feltöltötte az Azure-ba. |
+| **2.** |Törlés | A jelen kiadás hibája miatt, ha egy NFS-megosztást törölnek, akkor előfordulhat, hogy nem törli a megosztást. A megosztás állapota a *törlést*fogja megjeleníteni.  |Ez csak akkor fordul elő, ha a megosztás nem támogatott fájlnevet használ. |
+| **3.** |Másolás | Az adatmásolási hiba a következő hibával meghiúsul: a kért műveletet nem lehetett befejezni a fájlrendszer korlátozása miatt.  |A 128 KB-nál nagyobb fájlmérethez társított alternatív adatfolyam (ADS) nem támogatott.   |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az üzembe helyezés az Azure Data Box Gateway előkészítése](data-box-gateway-deploy-prep.md).
-- [Az üzembe helyezés az Azure Data Box Edge előkészítése](data-box-edge-deploy-prep.md).
+- [Felkészülés a Azure Data Box Gateway üzembe helyezésére](data-box-gateway-deploy-prep.md).
+- [Felkészülés a Azure Data Box Edge üzembe helyezésére](data-box-edge-deploy-prep.md).

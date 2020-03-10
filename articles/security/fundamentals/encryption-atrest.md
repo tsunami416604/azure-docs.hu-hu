@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/07/2020
 ms.author: barclayn
 ms.openlocfilehash: 682f0b66f7632bce16ae134e71ea27c4df976f43
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087099"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389968"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-beli adatok titkosítása – Rest
 
@@ -306,7 +306,7 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 | Azure Databricks                 | Igen                | Igen                | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps                     | Igen                | -                  | Igen                |
-| Azure-repók                      | Igen                | -                  | Igen                |
+| Azure Repos                      | Igen                | -                  | Igen                |
 | **Identitáskezelés**                     |                    |                    |                    |
 | Azure Active Directory           | Igen                | -                  | -                  |
 | Azure Active Directory tartományi szolgáltatások | Igen          | Igen, RSA 2048-bit  | -                  |

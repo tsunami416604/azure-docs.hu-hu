@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: e641340ac04415ee4a20cda2bc09bbdbef9802a6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931398"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389505"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>HDInsight-fürtök testreszabása a bootstrap használatával
 
@@ -21,26 +21,26 @@ A rendszerindítási parancsfájlok lehetővé teszik, hogy programozott módon 
 
 A HDInsight-fürt létrehozásakor három módszer van a konfigurációs fájlok beállításainak beállítására:
 
-* Az Azure PowerShell használata
+* Azure PowerShell használatával
 * A .NET SDK használata
-* Az Azure Resource Manager sablonjainak használata
+* Azure Resource Manager sablon használata
 
 Ilyen programozási módszerek használatával például a következő fájlokban konfigurálhatja a beállításokat:
 
-* clusterIdentity. XML
+* clusterIdentity.xml
 * Core-site. XML
-* Gateway. XML
-* hbase-env. XML
-* hbase-site. XML
-* hdfs-site. XML
-* Hive-env. XML
-* Hive-site. XML
+* gateway.xml
+* hbase-env.xml
+* hbase-site.xml
+* hdfs-site.xml
+* hive-env.xml
+* hive-site.xml
 * mapred – hely
 * oozie-site. XML
-* oozie-env. XML
+* oozie-env.xml
 * Storm-site. XML
-* Tez-site. XML
-* webhcat-site. XML
+* tez-site.xml
+* webhcat-site.xml
 * yarn-site. XML
 * Server. Properties (Kafka-Broker konfiguráció)
 
@@ -50,7 +50,7 @@ További információ a HDInsight-fürt további összetevőinek a létrehozás 
 
 * Ha a PowerShellt használja, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/overview).
 
-## <a name="use-azure-powershell"></a>Az Azure PowerShell használata
+## <a name="use-azure-powershell"></a>Azure PowerShell használatával
 
 A következő PowerShell-kód testreszab egy [Apache Hive](https://hive.apache.org/) konfigurációt:
 
@@ -126,7 +126,7 @@ A Bootstrap a Resource Manager-sablonban használható:
 
 ![A Hadoop testreszabja a fürt rendszerindítási Azure Resource Manager sablonját](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Apache Hadoop-fürtök létrehozása a HDInsight-ben](hdinsight-hadoop-provision-linux-clusters.md) útmutatást nyújt a HDInsight-fürtök más egyéni beállítások használatával történő létrehozásához.
 * [Parancsfájl-műveleti parancsfájlok fejlesztése a HDInsight](hdinsight-hadoop-script-actions-linux.md)

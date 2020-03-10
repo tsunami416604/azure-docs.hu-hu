@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5911f7235f1469fed460f173b808fbfdf9c853e8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 90ac6f35cafbe63e8c6cdb77450089d00c0e3099
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183873"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925593"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -102,7 +102,7 @@ A `DefaultUserJourney` elem az alap-vagy a kiterjesztési szabályzatban által�
 
 A **DefaultUserJourney** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ReferenceId | Igen | A felhasználó által a szabályzatban megjelenő út azonosítója. További információ: [felhasználói útvonalak](userjourneys.md) |
 
@@ -123,9 +123,9 @@ A **UserJourneyBehaviors** elem a következő elemeket tartalmazza:
 
 A **SingleSignon** elem a következő attribútumban szerepel:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Scope | Igen | Az egyszeri bejelentkezés viselkedésének hatóköre. Lehetséges értékek: `Suppressed`, `Tenant`, `Application`vagy `Policy`. A `Suppressed` érték azt jelzi, hogy a rendszer letiltja a viselkedést. Ha például egyszeri bejelentkezéses munkamenetre van szükség, a felhasználó számára a rendszer nem őrzi meg a munkamenetet, és a felhasználó mindig kéri az identitás-szolgáltató kijelölését. A `TrustFramework` érték azt jelzi, hogy a rendszer a megbízhatósági keretrendszer összes házirendjére alkalmazza a viselkedést. Egy megbízhatósági keretrendszer két házirend-útvonalon való navigálásakor például a rendszer nem kéri az identitás-szolgáltató kijelölését. A `Tenant` érték azt jelzi, hogy a rendszer a bérlő összes házirendjére alkalmazza a viselkedést. Ha például egy felhasználó két házirend-útvonalon keresztül navigál a bérlőhöz, a rendszer nem kéri az identitás-szolgáltató kijelölését. A `Application` érték azt jelzi, hogy a rendszer alkalmazza a viselkedést a kérést kérő alkalmazás összes szabályzatára. Ha például egy alkalmazásra két házirend-útvonalon navigál, a rendszer nem kéri az identitás-szolgáltató kijelölését. A `Policy` érték azt jelzi, hogy a viselkedés csak egy házirendre vonatkozik. Egy megbízhatósági keretrendszer két házirend-útvonalon való navigálásakor például a rendszer a házirendek közötti váltáskor megkéri az identitás-szolgáltató kijelölését. |
+| Hatókör | Igen | Az egyszeri bejelentkezés viselkedésének hatóköre. Lehetséges értékek: `Suppressed`, `Tenant`, `Application`vagy `Policy`. A `Suppressed` érték azt jelzi, hogy a rendszer letiltja a viselkedést. Ha például egyszeri bejelentkezéses munkamenetre van szükség, a felhasználó számára a rendszer nem őrzi meg a munkamenetet, és a felhasználó mindig kéri az identitás-szolgáltató kijelölését. A `TrustFramework` érték azt jelzi, hogy a rendszer a megbízhatósági keretrendszer összes házirendjére alkalmazza a viselkedést. Egy megbízhatósági keretrendszer két házirend-útvonalon való navigálásakor például a rendszer nem kéri az identitás-szolgáltató kijelölését. A `Tenant` érték azt jelzi, hogy a rendszer a bérlő összes házirendjére alkalmazza a viselkedést. Ha például egy felhasználó két házirend-útvonalon keresztül navigál a bérlőhöz, a rendszer nem kéri az identitás-szolgáltató kijelölését. A `Application` érték azt jelzi, hogy a rendszer alkalmazza a viselkedést a kérést kérő alkalmazás összes szabályzatára. Ha például egy alkalmazásra két házirend-útvonalon navigál, a rendszer nem kéri az identitás-szolgáltató kijelölését. A `Policy` érték azt jelzi, hogy a viselkedés csak egy házirendre vonatkozik. Egy megbízhatósági keretrendszer két házirend-útvonalon való navigálásakor például a rendszer a házirendek közötti váltáskor megkéri az identitás-szolgáltató kijelölését. |
 | KeepAliveInDays | Igen | Meghatározza, hogy a felhasználó mennyi ideig maradjon bejelentkezve. Ha a 0 értéket állítja be, kikapcsolja a KMSI funkciót. További információt a [bejelentkezett adatok megtartása](custom-policy-keep-me-signed-in.md)című témakörben talál. |
 |EnforceIdTokenHintOnLogout| Nem|  Egy korábban kiállított azonosító token átadásának kényszerítése a kijelentkezési végpontra, amely a végfelhasználó aktuálisan hitelesített munkamenetével kapcsolatos mutatóként szolgál a-ügyféllel. Lehetséges értékek: `false` (alapértelmezett) vagy `true`. További információ: [webes bejelentkezés OpenID-kapcsolattal](openid-connect.md).  |
 
@@ -134,7 +134,7 @@ A **SingleSignon** elem a következő attribútumban szerepel:
 
 A **JourneyInsights** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | TelemetryEngine | Igen | Az értéknek `ApplicationInsights`nak kell lennie. |
 | InstrumentationKey | Igen | Az Application ininsights elem kialakítási kulcsát tartalmazó karakterlánc. |
@@ -161,9 +161,9 @@ A **ContentDefinitionParameters** elem a következő elemet tartalmazza:
 
 A **ContentDefinitionParameter** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Név | Igen | A kulcs-érték párok neve. |
+| Name (Név) | Igen | A kulcs-érték párok neve. |
 
 További információ: [a felhasználói felület konfigurálása dinamikus tartalommal egyéni házirendek használatával](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)
 
@@ -171,7 +171,7 @@ További információ: [a felhasználói felület konfigurálása dinamikus tart
 
 A **kivonatjogcím** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | Az értéknek `PolicyProfile`nak kell lennie. |
 
@@ -188,9 +188,9 @@ A **kivonatjogcím** a következő elemeket tartalmazza:
 
 A **protokoll** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Név | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek: `OpenIdConnect` vagy `SAML2`. Az `OpenIdConnect` érték az OpenID Connect 1,0 protokoll standard értékét jelöli az OpenID Foundation-specifikációnak megfelelően. A `SAML2` az SAML 2,0 protokoll standardot jelöli, mint az OASIS-specifikáció. Ne használjon SAML-jogkivonatot éles környezetben. |
+| Name (Név) | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek: `OpenIdConnect` vagy `SAML2`. Az `OpenIdConnect` érték az OpenID Connect 1,0 protokoll standard értékét jelöli az OpenID Foundation-specifikációnak megfelelően. A `SAML2` az SAML 2,0 protokoll standardot jelöli, mint az OASIS-specifikáció. Ne használjon SAML-jogkivonatot éles környezetben. |
 
 ## <a name="outputclaims"></a>OutputClaims
 
@@ -202,7 +202,7 @@ A **OutputClaims** elem a következő elemet tartalmazza:
 
 A **OutputClaim** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Igen | A házirend fájljának **ClaimsSchema** szakaszában már definiált **claimType** mutató hivatkozás. |
 | DefaultValue | Nem | Alapértelmezett érték, amely akkor használható, ha a jogcím értéke üres. |
@@ -216,7 +216,7 @@ A **SubjectNameingInfo** elemmel szabályozhatja a jogkivonat tulajdonosának é
 
 A **SubjectNamingInfo** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ClaimType | Igen | A kimeneti jogcímek **PartnerClaimType**mutató hivatkozás. A kimeneti jogcímeket a függő entitások házirendjének **OutputClaims** -gyűjteményében kell meghatározni. |
 
