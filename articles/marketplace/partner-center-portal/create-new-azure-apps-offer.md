@@ -9,11 +9,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760894"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391466"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -50,7 +50,7 @@ Az összes Azure-alkalmazás legalább két fájlt tartalmaz egy `.zip` Archívu
 
 Minden új Azure-alkalmazás ajánlatának tartalmaznia kell egy [Azure-partner ügyfél-használati azonosítóját (GUID](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)).
 
-### <a name="before-you-begin"></a>Előzetes teendők
+### <a name="before-you-begin"></a>Előkészületek
 
 Tekintse át a következő Azure-alkalmazás dokumentációját, amely rövid útmutatók, oktatóanyagok és minták áttekintését nyújtja.
 
@@ -125,7 +125,7 @@ Miután megadta az **ajánlat-azonosítót** és az **ajánlati aliast**, válas
 
 Az **ajánlat beállítása** lap a következő információkat kéri. A mezők kitöltése után válassza a **Mentés** lehetőséget.
 
-### <a name="test-drive"></a>Próbaüzem
+### <a name="test-drive"></a>Tesztelési meghajtó
 
 A test Drive nagyszerű lehetőséget nyújt arra, hogy ajánlatot nyújtson a potenciális ügyfelek számára azáltal, hogy a vásárlás előtt megkeresi a "kipróbálás előtt" lehetőséget, ami növeli a konverziót és a magas minősítésű érdeklődők generációját. [További információ a tesztelési meghajtókról.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
@@ -169,11 +169,11 @@ Meg kell határoznia a piactér részleteit (az ajánlat nevét, leírását, k�
 > [!NOTE]
 > Az ajánlat tartalmának listázása (például a leírás, a dokumentumok, a képernyőképek, a használati feltételek stb.) nem kötelező angol nyelven lennie, amennyiben az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelvű] verzióban érhető el." Azt is elfogadható, hogy egy *hasznos hivatkozási URL-címet* adjon meg, amely nem az ajánlatban szereplő tartalomban használt tartalmat tartalmazza.
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 
 Adja meg az ajánlat rövid leírását (legfeljebb 100 karakter), amelyet a piactér keresési eredményeiben használhat.
 
@@ -208,7 +208,7 @@ Ez a szakasz olyan hivatkozásokat tartalmaz, amelyek segítségével az ügyfel
 
 Adja meg a szervezete adatvédelmi szabályzatának URL-címét. Ön felelős azért, hogy az alkalmazás megfeleljen az adatvédelmi törvényeknek és előírásoknak, valamint érvényes adatvédelmi szabályzatot biztosítson.
 
-#### <a name="useful-links"></a>Hasznos oldalak
+#### <a name="useful-links"></a>Hasznos hivatkozások
 
 Adjon meg opcionális kiegészítő online dokumentumokat a megoldásáról.  További hasznos hivatkozások hozzáadásához kattintson **a + hivatkozás hozzáadása**lehetőségre.
 
@@ -309,11 +309,11 @@ Azure Government a szolgáltatások bizonyos kormányzati szabályozások és k�
 
 A **csomag listázása** lap a csomagra vonatkozó olyan listaelemeket jeleníti meg, amelyek eltérőek lehetnek az azonos ajánlat különböző csomagjai között.
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Előre kitöltve a saját neve alapján, amikor létrehozta a tervét.  Ez a név fog megjelenni a piactéren megjelenített "szoftvercsomag" címmel.  Legfeljebb 100 karaktert tartalmazhat.
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 
 Adja meg a szoftveres csomag rövid összefoglalását.  Legfeljebb 100 karaktert tartalmazhat.
 
@@ -323,7 +323,7 @@ Ez a leírás egy olyan lehetőség, amely ismerteti, hogy mi teszi ezt a csomag
 
 A mezők befejezése után válassza a **Mentés** lehetőséget.
 
-## <a name="availability"></a>Elérhetőség
+## <a name="availability"></a>Rendelkezésre állás
 
 A **rendelkezésre állás** lap csak a megoldási sablon csomagjai számára látható.  A tervet mindenki számára elérhetővé teheti, csak bizonyos ügyfelek (privát célközönségek) számára, valamint azt, hogy a tervet más megoldási sablon vagy csak felügyelt alkalmazások általi használatra szeretné-e ellátni.
 
@@ -457,7 +457,7 @@ Az ajánlat közzétételéhez teljes mértékben nem kötelező megadni a bead�
 
 További információ a lap befejezéséről: [közös értékesítés lehetőség a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell).
 
-## <a name="test-drive"></a>Próbaüzem
+## <a name="test-drive"></a>Tesztelési meghajtó
 
 A **tesztvezetés** lapon egy bemutatót (vagy "tesztelési meghajtót") állíthat be, amely lehetővé teszi az ügyfeleknek, hogy a megvásárlása előtt kipróbálják az ajánlatot. További információt a [Mi a test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive) című cikkben talál.  Ha már nem szeretne tesztelési meghajtót biztosítani az ajánlatához, térjen vissza az **ajánlat beállítása** lapra, és törölje a **Test Drive engedélyezése**jelölőnégyzet jelölését.
 

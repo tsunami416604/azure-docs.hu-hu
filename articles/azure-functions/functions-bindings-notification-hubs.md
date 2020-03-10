@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 211f8c8a203b81a4df6a8e9515b403f99cec572a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926314"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370851"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions Notification Hubs kimeneti kötése
 
@@ -23,7 +23,7 @@ Az Azure Notification Hubs-t konfigurálni kell a használni kívánt platform N
 > [!IMPORTANT]
 > A Google [elavult Google Cloud Messaging (GCM) a Firebase Cloud Messaging (FCM) javára](https://developers.google.com/cloud-messaging/faq). Ez a kimeneti kötés nem támogatja az FCM-et. Ha az FCM használatával szeretne értesítéseket küldeni, használja a [Firebase API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) -t közvetlenül a függvényében, vagy használja a [sablonra vonatkozó értesítéseket](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
-## <a name="packages---functions-1x"></a>Csomagok – 1. x függvények
+## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
 A Notification Hubs kötések a [Microsoft. Azure. webjobs. Extensions. NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) NuGet csomagban találhatók, 1. x verzióban. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.NotificationHubs) tárházban található.
 
@@ -37,7 +37,7 @@ Ez a kötés nem érhető el a 2. x és újabb függvényeknél.
 
 Az Ön által küldött értesítések lehetnek natív értesítések vagy [sablon-értesítések](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). A natív értesítések a kimeneti kötés `platform` tulajdonságában megadott ügyféloldali platformot céloznak meg. A sablonokkal kapcsolatos értesítések több platform megcélzására is használhatók.   
 
-Tekintse meg a nyelvspecifikus példát:
+Tekintse meg az adott nyelvű példa:
 
 * [C#parancsfájl-kilépési paraméter](#c-script-template-example---out-parameter)
 * [C#parancsfájl – aszinkron](#c-script-template-example---asynchronous)
@@ -247,11 +247,11 @@ Az attribútum konstruktorának paraméterei és tulajdonságai a [konfiguráci�
 
 A következő táblázat ismerteti a *function. JSON* fájlban és a `NotificationHub` attribútumban beállított kötési konfigurációs tulajdonságokat:
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** |–| `notificationHub`értékre kell állítani. |
-|**direction** |–| `out`értékre kell állítani. | 
-|**név** |–| Az értesítési központ üzenetének függvény kódjában használt változó neve. |
+|**type** |n/a| `notificationHub`értékre kell állítani. |
+|**direction** |n/a| `out`értékre kell állítani. | 
+|**név** |n/a| Az értesítési központ üzenetének függvény kódjában használt változó neve. |
 |**tagExpression** |**TagExpression** | A címkézési kifejezések lehetővé teszik annak megadását, hogy a rendszer az értesítéseket a címkével megegyező értesítések fogadására regisztrált eszközök egy csoportjának adja meg.  További információ: [útválasztási és címkézési kifejezések](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**hubName** | **HubName** | Az értesítési központ erőforrásának neve a Azure Portalban. |
 |**kapcsolat** | **ConnectionStringSetting** | Egy Notification Hubs-kapcsolatok sztringjét tartalmazó Alkalmazásbeállítás neve.  A kapcsolódási karakterláncot az értesítési központ *DefaultFullSharedAccessSignature* értékére kell beállítani. A jelen cikk későbbi, a [kapcsolatok karakterláncának beállítása](#connection-string-setup) című szakaszban talál.|
@@ -294,11 +294,11 @@ Ennek az alkalmazásnak a neve a *function. JSON* vagy a .NET attribútum kimene
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
+## <a name="exceptions-and-return-codes"></a>Kivételek és a visszatérési kódok
 
-| Kötés | Leírások |
+| Kötés | Referencia |
 |---|---|
-| Notification Hub (Értesítési központ) | [Üzemeltetési útmutató](https://docs.microsoft.com/rest/api/notificationhubs/) |
+| Notification Hubs | [Üzemeltetési útmutató](https://docs.microsoft.com/rest/api/notificationhubs/) |
 
 ## <a name="next-steps"></a>Következő lépések
 

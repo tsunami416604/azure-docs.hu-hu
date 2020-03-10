@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666307"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379660"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Pontozási profilok hozzáadása egy Azure Cognitive Search indexhez
 
-  A pontozás a keresési eredményekben visszaadott összes elem *keresési pontszámának* kiszámítására vonatkozik. A pontszám az aktuális keresési művelet kontextusában az elemek relevanciáját jelzi. Minél magasabb a pontszám, annál fontosabb az elem. A keresési eredmények között az elemek sorrendje magasról alacsonyra van rendezve, az egyes elemek kiszámított keresési pontszáma alapján.  
+  A pontozás a keresési eredményekben visszaadott összes elem *keresési pontszámának* kiszámítására vonatkozik. A pontszám az elemek relevanciáját jelzi az aktuális keresési művelet kontextusában. Minél nagyobb a pontszám, annál relevánsabb az elem. A keresési eredmények között az elemek sorrendje magasról alacsonyra van rendezve, az egyes elemek kiszámított keresési pontszáma alapján.  
 
  Az Azure Cognitive Search az alapértelmezett pontozást használja a kezdeti pontszám kiszámításához, de a számítást *pontozási profilon*keresztül is testreszabhatja. A pontozási profilok nagyobb mértékben szabályozzák a keresési eredményekben lévő elemek rangsorolását. Előfordulhat például, hogy a bevételi potenciál alapján szeretné növelni az elemeket, előléptetheti az újabb elemeket, vagy növelheti az olyan elemeket, amelyek túl hosszúak voltak a leltárban.  
 
@@ -284,7 +284,7 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 
  További példákat az [XML-séma: adattípusok (w3.org webhely)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)című témakörben talál.  
 
-## <a name="see-also"></a>Lásd még:  
+## <a name="see-also"></a>Lásd még  
  [Azure Cognitive Search REST](https://docs.microsoft.com/rest/api/searchservice/)   
  [Index &#40;létrehozása Azure Cognitive Search REST API&#41; ](https://docs.microsoft.com/rest/api/searchservice/create-index)   
  [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

@@ -18,13 +18,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5440c54b01f62b3ad61b355f4c622a31910a65c1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290932"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376326"
 ---
-# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect szinkronizálás: A telepítési varázsló másodszori futtatása
+# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect szinkronizálás: a telepítővarázsló második alkalommal történő futtatása
 A Azure AD Connect telepítővarázsló első futtatásakor végigvezeti a telepítés konfigurálásának lépésein. Ha újra futtatja a telepítővarázslót, a karbantartási lehetőségeket kínál.
 
 >[!IMPORTANT]
@@ -68,14 +68,14 @@ A kezdeti telepítés többi beállítása nem módosítható, és nem érhető 
 * Módosítsa az összekapcsolási módszert különböző erdő objektumaihoz.
 * Csoportházirend-alapú szűrés engedélyezése.
 
-## <a name="refresh-directory-schema"></a>Címtárséma frissítése
+## <a name="refresh-directory-schema"></a>Címtár-séma frissítése
 Ez a beállítás akkor használható, ha a sémát a helyszíni AD DS erdők egyikén módosította. Előfordulhat például, hogy telepítette az Exchange-et, vagy frissített egy Windows Server 2012 sémára az eszköz objektumaival. Ebben az esetben meg kell utasítania Azure AD Connect a séma újbóli beolvasásához AD DS és frissítenie kell a gyorsítótárat. Ezzel a művelettel a szinkronizálási szabályokat is újra létrehozza. Ha hozzáadja az Exchange-sémát, például az Exchange szinkronizálási szabályait a rendszer hozzáadja a konfigurációhoz.
 
 Ha ezt a beállítást választja, a rendszer a konfigurációban lévő összes könyvtárat listázza. Megtarthatja az alapértelmezett beállítást, és frissítheti az összes erdőt, vagy törölheti a kijelölését.
 
 ![A környezetben található összes könyvtár listáját tartalmazó oldal](./media/how-to-connect-installation-wizard/refreshschema.png)
 
-## <a name="configure-staging-mode"></a>Átmeneti környezetű üzemmód konfigurálása
+## <a name="configure-staging-mode"></a>Átmeneti üzemmód konfigurálása
 Ezzel a beállítással engedélyezheti és letilthatja az átmeneti üzemmódot a kiszolgálón. További információt az átmeneti üzemmódról és annak használatáról az [Operations (műveletek](how-to-connect-sync-staging-server.md)) című témakörben találhat.
 
 A beállítás azt mutatja, hogy jelenleg engedélyezve van-e az előkészítés, vagy le van tiltva:  
@@ -89,10 +89,10 @@ Ez a beállítás lehetővé teszi a felhasználói bejelentkezési módszer mó
 
 A beállítással kapcsolatos további információkért lásd: [felhasználói bejelentkezés](plan-connect-user-signin.md#changing-the-user-sign-in-method).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a Azure AD Connect Sync által használt konfigurációs modellről a [deklaratív kiépítés ismertetése](concept-azure-ad-connect-sync-declarative-provisioning.md)című témakörben található.
 
 **Áttekintő témakörök**
 
-* [Az Azure AD Connect szinkronizálása: A szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)
+* [Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

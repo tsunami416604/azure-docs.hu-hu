@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
 ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760351"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362965"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Általános kérdések a Azure Site Recovery
 
@@ -19,7 +19,7 @@ Ez a cikk a Azure Site Recoveryokkal kapcsolatos gyakori kérdéseket foglalja �
 - [A VMware virtuális gép vész-helyreállításával kapcsolatos kérdések az Azure-ba](vmware-azure-common-questions.md)
 - [Kérdések a Hyper-V virtuális gép vész-helyreállításáról az Azure-ba](hyper-v-azure-common-questions.md)
  
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-does-site-recovery-do"></a>Mire való a Site Recovery?
 Site Recovery hozzájárul az üzletmenet-folytonossági és a vész-helyreállítási (BCDR) stratégiához az Azure-beli virtuális gépek régiók, helyszíni virtuális gépek és fizikai kiszolgálók közötti, az Azure-ba, illetve a helyszíni gépek közötti replikációjának összehangolásával és automatizálásával másodlagos adatközpont. [További információk](site-recovery-overview.md).
@@ -73,13 +73,13 @@ A költségek részletes becsléséhez futtassa a Deployment Planner eszközt a 
 
 Nem, a gyorsítótárra vonatkozóan nem számítunk fel további díjakat. A standard Storage-fiókba való replikáláskor a gyorsítótár tárolója ugyanahhoz a célként megadott Storage-fiókhoz tartozik.
 
-### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Már több mint egy hónapja Azure Site Recovery-felhasználó vagyok. Továbbra is minden egyes védett példány esetében vonatkozik rám a díjmentes első 31 nap?
+### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Egy hónapig Azure Site Recovery felhasználó vagyok. Minden védett példány esetében továbbra is ingyenes az első 31 nap?
 
-Igen. Az első 31 napra egyetlen védett példány tekintetében sem számítunk fel Azure Site Recovery-díjat. Ha például az elmúlt 6 hónap során 10 példányt védett, és egy 11. példányt hoz Azure Site Recoveryhoz, akkor a 11. példányra az első 31 nap során nem számítunk fel díjat. Az első 10 példány továbbra is Azure Site Recovery díjat von maga után, mert több mint 31 napja volt védetté tenni.
+Igen. Minden védett példány esetében az első 31 nap során nem számítunk fel Azure Site Recovery díjat. Ha például az elmúlt 6 hónap során 10 példányt védett, és egy 11. példányt hoz Azure Site Recoveryhoz, akkor a 11. példányra az első 31 nap során nem számítunk fel díjat. Az első 10 példány továbbra is Azure Site Recovery díjat von maga után, mert több mint 31 napja volt védetté tenni.
 
-### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Az első 31 nap során kell valamilyen más Azure-díjat fizetni?
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Az első 31 napban bármilyen más Azure-díjat számolunk fel?
 
-Igen, annak ellenére, hogy Site Recovery a védett példányok első 31 napján ingyenes, díjköteles lehet az Azure Storage, a tárolási tranzakciók és az adatátvitelek esetében. Továbbá a helyreállított virtuális gépekre is vonatkozhatnak Azure-díjak a számítási idő alapján.
+Igen, annak ellenére, hogy Site Recovery a védett példányok első 31 napján ingyenes, díjköteles lehet az Azure Storage, a tárolási tranzakciók és az adatátvitelek esetében. A helyreállított virtuális gépek is felmerülhetnek az Azure számítási díjaival.
 
 
 ### <a name="is-there-a-cost-associated-to-perform-disaster-recovery-drillstest-failover"></a>Van olyan díja, amely vész-helyreállítási részletezést vagy feladatátvételi tesztet hajt végre?
@@ -219,7 +219,7 @@ Igen, a másik helyre történő helyreállítást használhatja a feladat-vissz
 * [VMware virtuális gépekhez](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Hyper-V rendszerű virtuális gépek esetén](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatizálás
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Automatizálható Site Recovery forgatókönyvek SDK-val?
 Igen. A Site Recovery munkafolyamatainak automatizálásához a Rest API-t, a PowerShellt vagy az Azure SDK-t használhatja. Jelenleg támogatott forgatókönyvek Site Recovery üzembe helyezéséhez a PowerShell használatával:

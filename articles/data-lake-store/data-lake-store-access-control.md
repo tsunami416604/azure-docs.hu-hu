@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226098"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394250"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen1
 
@@ -27,9 +27,9 @@ Az Azure Data Lake Storage Gen1 egy hozzáférés-vezérlési modellből szárma
 
 Kétféle hozzáférés-vezérlési lista (ACL) létezik – a **hozzáférési ACL** és az **alapértelmezett ACL**.
 
-* **Hozzáférési ACL**-EK: Ezek a vezérlőelemek egy objektumhoz férnek hozzá. A fájlok és mappák egyaránt rendelkeznek hozzáférési ACL-lel.
+* **Hozzáférési ACL-ek**: Egy objektum hozzáféréseit vezérlik. A fájlok és mappák egyaránt rendelkeznek hozzáférési ACL-lel.
 
-* **Alapértelmezett ACL**-EK: Egy olyan mappához tartozó ACL sablonja, amely meghatározza az adott mappában létrehozott alárendelt elemek hozzáférési ACL-jeit. A fájlok nem rendelkeznek alapértelmezett ACL-ekkel.
+* **Alapértelmezett ACL**: A mappához társított ACL „sablon”, amely meghatározza az adott mappában létrehozott gyermekelemek hozzáférési ACL-jeit. A fájlok nem rendelkeznek alapértelmezett ACL-ekkel.
 
 
 A hozzáférési ACL-ek és alapértelmezett ACL-ek ugyanazzal a struktúrával rendelkeznek.
@@ -108,7 +108,7 @@ A felügyelő rendelkezik a felhasználók a legtöbb joggal a Data Lake Storage
 * Bármely fájl vagy mappa engedélyeit megváltoztathatja.
 * Bármely fájl vagy mappa tulajdonosát vagy tulajdonoscsoportját megváltoztathatja.
 
-Minden felhasználó részét képező a **tulajdonosok** szerepkört egy Data Lake Storage Gen1 a fiókhoz a program automatikusan a felügyelők sem.
+A Data Lake Storage Gen1 fiók **tulajdonosi** szerepköréhez tartozó összes felhasználó automatikusan egy felügyelő.
 
 ### <a name="the-owning-user"></a>A tulajdonos felhasználó
 
@@ -130,12 +130,12 @@ A POSIX ACL-ekben minden felhasználó társítva van egy „elsődleges csoport
 
 Mivel nincs "elsődleges csoporttal" tartozó Data Lake Storage Gen1 a felhasználók számára, a tulajdonoscsoport hozzá van rendelve az alábbi.
 
-**Egy új fájl vagy mappa esetében a tulajdonoscsoport hozzárendelése**
+**A tulajdonos csoport kiosztása új fájlhoz vagy mappához**
 
-* **1. eset**: A gyökérmappa "/". Ez a mappa a Data Lake Storage Gen1 fiók létrehozásakor jön létre. Ebben az esetben a tulajdonoscsoport értéke egy minden nulla GUID-Azonosítót.  Ez az érték nem engedélyezi a hozzáférést.  Egy helyőrző addig egy csoport van hozzárendelve.
-* **2. eset** (Minden egyéb eset): Új elem létrehozásakor a rendszer átmásolja a tulajdonos csoportot a szülőmappa mappájából.
+* **1. eset**: A gyökérmappa „/”. Ez a mappa a Data Lake Storage Gen1 fiók létrehozásakor jön létre. Ebben az esetben a tulajdonoscsoport értéke egy minden nulla GUID-Azonosítót.  Ez az érték nem engedélyezi a hozzáférést.  Egy helyőrző addig egy csoport van hozzárendelve.
+* **2. eset** (minden egyéb eset): Egy új elem létrehozásakor a tulajdonoscsoport a szülőmappából másolódik át.
 
-**A tulajdonoscsoport módosítása**
+**A tulajdonos csoport módosítása**
 
 A tulajdonoscsoportot megváltoztathatja:
 * Bármely felügyelő.
@@ -144,7 +144,7 @@ A tulajdonoscsoportot megváltoztathatja:
 > [!NOTE]
 > A tulajdonoscsoport *nem* változtathatja meg egy fájl vagy mappa ACL-eit.
 >
-> Vagy az 2018 szeptember előtt létrehozott fiókok esetében a felhasználónak, aki létrehozta a fiókot a a gyökérmappa esetében a tulajdonoscsoport volt beállítva **1. eset**fenti.  Egyetlen felhasználói fiók érvénytelen nem jogosult engedélyeket kiadni a tulajdonoscsoporton keresztül, így nem engedélyekkel ezen alapbeállítás szerint. Ezt az engedélyt hozzárendelheti egy érvényes felhasználói csoport számára.
+> Az 2018-on vagy azt megelőzően létrehozott fiókokhoz a tulajdonos csoportot arra a felhasználóra állították be, aki létrehozta a fiókot az **1. eset**esetén a gyökérmappa esetében.  Egyetlen felhasználói fiók érvénytelen nem jogosult engedélyeket kiadni a tulajdonoscsoporton keresztül, így nem engedélyekkel ezen alapbeállítás szerint. Ezt az engedélyt hozzárendelheti egy érvényes felhasználói csoport számára.
 
 
 ## <a name="access-check-algorithm"></a>Hozzáférés-ellenőrzési algoritmus
@@ -194,7 +194,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="the-mask"></a>A maszk
 
-A maszk, ahogyan a hozzáférés-ellenőrzési algoritmus, korlátozza a hozzáférést **nevesített felhasználókhoz**, a **tulajdonoscsoport**, és **nevesített csoportokhoz**.  
+Ahogy az a hozzáférés-ellenőrzési algoritmusban is látható, a maszk korlátozza a **megnevezett felhasználók**, a **tulajdonos csoport**és a **nevesített csoportok**hozzáférését.  
 
 > [!NOTE]
 > Az új Data Lake Storage Gen1-fiókoknál a gyökérmappa ("/") hozzáférési ACL-JÉNEK maszk alapértelmezés szerint RWX-re.
@@ -299,4 +299,4 @@ Nem, az alapértelmezett ACL-ek azonban használhatók a szülő mappán belül 
 
 ## <a name="see-also"></a>Lásd még
 
-* [Az Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
+* [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)

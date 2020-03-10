@@ -8,11 +8,11 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 06/29/2018
 ms.openlocfilehash: 2327632fc2a71855874bb8fe45e97af430fa696a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791850"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358843"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>Áttekintés – mi az Azure Logic Apps?
 
@@ -28,7 +28,7 @@ A logikai alkalmazásokkal többek között a következő munkafolyamatok automa
 
 * Egy adott témához tartozó tweetek monitorozása, vélemények elemzése, valamint riasztások és feladatok létrehozása az ellenőrzést igénylő elemekhez.
 
-Ha Azure Logic Apps segítségével szeretne nagyvállalati integrációs megoldásokat kiépíteni, [több száz használatra kész összekötővel](../connectors/apis-list.md)is választhat, amelyek olyan szolgáltatásokat foglalnak magukban, mint például a Azure Service Bus, a Azure functions, az Azure Storage, a SQL Server, az Office 365, a Dynamics, a Salesforce, a BizTalk, az SAP, a Oracle db, a fájlmegosztás és egyebek. Az [összekötők](#logic-app-concepts) [triggereket](#logic-app-concepts) és [műveleteket](#logic-app-concepts) biztosítanak az olyan logikai alkalmazások létrehozásához, amelyek valós időben, biztonságosan érik el és dolgozzák fel az adatokat.
+Ha Azure Logic Apps segítségével szeretne nagyvállalati integrációs megoldásokat kiépíteni, [több száz használatra kész összekötővel](../connectors/apis-list.md)is választhat, amelyek olyan szolgáltatásokat foglalnak magukban, mint például a Azure Service Bus, a Azure functions, az Azure Storage, a SQL Server, az Office 365, a Dynamics, a Salesforce, a BizTalk, az SAP, a Oracle db, a fájlmegosztás és egyebek. Az [összekötők](#logic-app-concepts)[triggereket](#logic-app-concepts) és [műveleteket](#logic-app-concepts) biztosítanak az olyan logikai alkalmazások létrehozásához, amelyek valós időben, biztonságosan érik el és dolgozzák fel az adatokat.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
@@ -132,7 +132,7 @@ Többet tudhat meg a Logic Apps szolgáltatásról az alábbi bevezető videókb
 
 Ezen szolgáltatások mindegyike a különböző rendszerek csatlakoztatásában és „összeragasztásában” segít. Mindegyiknek megvannak a maga előnyei, épp ezért a képességeik egyesítése a legjobb módja egy méretezhető, teljes körű képességekkel rendelkező integrációs rendszer létrehozásának. További információkért lásd: [Választás a következők közül: Flow, Logic Apps, Functions és WebJobs](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Első lépések
 
 A Logic Apps a Microsoft Azure-ban üzemeltetett számos szolgáltatás egyike. Éppen ezért a használatához rendelkeznie kell Azure-előfizetéssel. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 

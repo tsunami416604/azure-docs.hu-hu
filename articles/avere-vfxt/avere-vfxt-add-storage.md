@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153989"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372206"
 ---
 # <a name="configure-storage"></a>A tárolás konfigurálása
 
@@ -49,7 +49,7 @@ A következő lépésekkel adhat hozzá egy NAS Core Filer-t:
 
 1. Kattintson a **Core filer** > a bal oldalon található **Core filers kezelése** lehetőségre.
 
-1. Kattintson a **Create** (Létrehozás) gombra.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 
    ![Képernyőkép az új alapszintű Filer hozzáadása oldalról, amely kurzort mutat a létrehozás gombon](media/avere-vfxt-add-core-filer-start.png)
 
@@ -125,7 +125,7 @@ Ha a fürt létrehozása után szeretne BLOB-tárolót hozzáadni, kövesse az a
 
 1. Adja meg a következő információkat a Cloud Core Filer hitelesítő adatainak létrehozásához:
 
-   | Mező | Value (Díj) |
+   | Mező | Érték |
    | --- | --- |
    | Hitelesítő adat neve | bármilyen leíró név |
    | Szolgáltatás típusa | (Azure Storage-hozzáférési kulcs kiválasztása) |
@@ -133,7 +133,7 @@ Ha a fürt létrehozása után szeretne BLOB-tárolót hozzáadni, kövesse az a
    | Előfizetést | subscription ID |
    | Tároló-hozzáférési kulcs | Azure Storage-fiók kulcsa (az előző lépésben másolva) |
 
-   Kattintson a **Submit** (Küldés) gombra.
+   Kattintson a **Küldés** gombra.
 
    ![A Felhőbeli hitelesítő adatok űrlapja befejeződött a avere Vezérlőpultján](media/avere-vfxt-new-credential-submit.png)
 

@@ -16,11 +16,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9d3f4f4ab6cc1c928761fce740d39f3f73426e62
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516797"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365699"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple virtuális tömb üzembe helyezése – létesítés a Hyper-V-ben
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
@@ -40,7 +40,7 @@ Itt megtalálhatja a virtuális tömb üzembe helyezésének előfeltételeit a 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 * Elvégezte a [portál StorSimple virtuális tömbre való előkészítésének](storsimple-virtual-array-deploy1-portal-prep.md)lépéseit.
-* Letöltötte a Hyper-V virtuális tömb rendszerképét a Azure Portalról. További információ **: 3. lépés: Töltse le a** [StorSimple Virtual Array útmutató a portál előkészítésére szolgáló](storsimple-virtual-array-deploy1-portal-prep.md)virtuális tömb rendszerképét.
+* Letöltötte a Hyper-V virtuális tömb rendszerképét a Azure Portalról. További információt a 3. **lépés: a** [portál előkészítése a StorSimple virtuális](storsimple-virtual-array-deploy1-portal-prep.md)tömbhöz című témakörben talál.
 
   > [!IMPORTANT]
   > A StorSimple virtuális tömbön futó szoftver csak a StorSimple Eszközkezelő szolgáltatással használható.
@@ -83,7 +83,7 @@ Győződjön meg arról, hogy a virtuális tömböt létrehozó mögöttes hardv
 * Egy hálózati adapter.
 * Egy 500 GB méretű virtuális lemez a rendszeradathoz.
 
-## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>2\. lépés: Virtuális tömb kiépítése a hypervisorban
+## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>2\. lépés: virtuális tömb kiépítése a hypervisorban
 A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipervizoron.
 
 #### <a name="to-provision-a-virtual-array"></a>Virtuális tömb kiépítése
@@ -112,7 +112,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 8. A **Hálózatkezelés beállítása** lapon adja meg az internetre csatlakoztatott virtuális kapcsolót, majd kattintson a **Tovább** gombra.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image7.png)
-9. A **virtuális merevlemez** összekapcsolása lapon válassza a **meglévő virtuális merevlemez használata**lehetőséget, adja meg a virtuális tömb rendszerképének helyét (. vhdx vagy. vhd), majd kattintson a **tovább**gombra.
+9. A **virtuális merevlemez összekapcsolása** lapon válassza a **meglévő virtuális merevlemez használata**lehetőséget, adja meg a virtuális tömb rendszerképének helyét (. vhdx vagy. vhd), majd kattintson a **tovább**gombra.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image8m.png)
 10. Tekintse át az **összefoglalást**, majd kattintson a **Befejezés** gombra a virtuális gép létrehozásához.
@@ -153,7 +153,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image20.png)
 
-## <a name="step-3-start-the-virtual-array-and-get-the-ip"></a>3\. lépés: Indítsa el a virtuális tömböt, és szerezze be az IP-címet
+## <a name="step-3-start-the-virtual-array-and-get-the-ip"></a>3\. lépés: a virtuális tömb elindítása és az IP-cím beszerzése
 A következő lépések végrehajtásával indítsa el a virtuális tömböt, és kapcsolódjon hozzá.
 
 #### <a name="to-start-the-virtual-array"></a>A virtuális tömb elindítása
@@ -163,7 +163,7 @@ A következő lépések végrehajtásával indítsa el a virtuális tömböt, é
 2. Amikor az eszköz már fut, jelölje ki, kattintson rá a jobb gombbal, és válassza a **Csatlakozás** lehetőséget.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image22.png)
-3. Előfordulhat, hogy várnia kell 5-10 percet, amíg az eszköz készen áll. A folyamat előrehaladtát egy állapotüzenet jelzi a konzolon. Ha az eszköz kész, lépjen a **Művelet** területre. Nyomja `Ctrl + Alt + Delete` meg a gombot a virtuális tömbbe való bejelentkezéshez. Az alapértelmezett felhasználó a *StorSimpleAdmin* , az alapértelmezett jelszó pedig a *jelszó1*.
+3. Előfordulhat, hogy várnia kell 5-10 percet, amíg az eszköz készen áll. A folyamat előrehaladtát egy állapotüzenet jelzi a konzolon. Ha az eszköz kész, lépjen a **Művelet** területre. Kattintson a `Ctrl + Alt + Delete` gombra a virtuális tömbbe való bejelentkezéshez. Az alapértelmezett felhasználó a *StorSimpleAdmin* , az alapértelmezett jelszó pedig a *jelszó1*.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. Biztonsági okokból az eszköz rendszergazdai jelszava az első bejelentkezéskor lejár. A rendszer megkéri a jelszó módosítására.
@@ -185,7 +185,7 @@ A következő lépések végrehajtásával indítsa el a virtuális tömböt, é
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image28m.png)
 
     Ezután konfigurálja a hálózatot.
-7. `Get-HcsIpAddress` A parancs használatával listázhatja a virtuális tömbön engedélyezett hálózati adaptereket. Ha az eszközön egyetlen hálózati adapter van engedélyezve, az ehhez az adapterhez rendelt alapértelmezett név az `Ethernet`.
+7. A `Get-HcsIpAddress` parancs használatával listázhatja a virtuális tömbön engedélyezett hálózati adaptereket. Ha az eszközön egyetlen hálózati adapter van engedélyezve, az ehhez az adapterhez rendelt alapértelmezett név az `Ethernet`.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image29m.png)
 8. A `Set-HcsIpAddress` parancsmaggal konfigurálhatja a hálózatot. Lásd a következő példát:
@@ -208,7 +208,7 @@ A következő lépések végrehajtásával indítsa el a virtuális tömböt, é
        >
        >
 
-Ha az eszköz nem felel meg a minimális konfigurációs követelményeknek, a következő hibaüzenet jelenik meg a szalagcím szövege (lásd alább). Módosítsa az eszköz konfigurációját, hogy a gép elegendő erőforrással rendelkezzen a minimális követelmények kielégítéséhez. Ezután újraindíthatja az eszközt, és csatlakozhat hozzá. Tekintse meg az 1. lépésben szükséges minimális konfigurációs követelményeket: Győződjön meg arról, hogy a gazdagéprendszer megfelel a virtuális tömb minimális követelményeinek.
+Ha az eszköz nem felel meg a minimális konfigurációs követelményeknek, a következő hibaüzenet jelenik meg a szalagcím szövege (lásd alább). Módosítsa az eszköz konfigurációját, hogy a gép elegendő erőforrással rendelkezzen a minimális követelmények kielégítéséhez. Ezután újraindíthatja az eszközt, és csatlakozhat hozzá. Tekintse meg az 1. lépés minimális konfigurációs követelményeit: Ellenőrizze, hogy a gazdagéprendszer megfelel-e a virtuális tömb minimális követelményeinek.
 
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image32.png)
 
@@ -217,6 +217,6 @@ Ha a kezdeti konfiguráció során bármilyen más hibával szembesül a helyi w
 * Diagnosztikai tesztek futtatása a [webes felhasználói felület beállításának hibakereséséhez](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
 * [Naplófájlok előállítása és a naplófájlok megtekintése](storsimple-ova-web-ui-admin.md#generate-a-log-package).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A StorSimple virtuális tömb beállítása fájlkiszolgálóként](storsimple-virtual-array-deploy3-fs-setup.md)
 * [A StorSimple virtuális tömb beállítása iSCSI-kiszolgálóként](storsimple-virtual-array-deploy3-iscsi-setup.md)

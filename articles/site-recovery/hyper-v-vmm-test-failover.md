@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132945"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362746"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépekhez tartozó DR-részletezés futtatása másodlagos helyre
 
@@ -45,7 +45,7 @@ A feladatátvételi teszt futtatásakor a rendszer arra kéri, hogy válassza ki
 
 | **Beállítás** | **Részletek** | |
 | --- | --- | --- |
-| **Nincsenek** | A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép található. Nincs hozzáadva a felhőhöz, és nincs csatlakoztatva egyetlen hálózathoz sem.<br/><br/> A gépet a létrehozása után a virtuálisgép-hálózathoz is összekapcsolhatjuk.| |
+| **NEz egy** | A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép található. Nincs hozzáadva a felhőhöz, és nincs csatlakoztatva egyetlen hálózathoz sem.<br/><br/> A gépet a létrehozása után a virtuálisgép-hálózathoz is összekapcsolhatjuk.| |
 | **Meglévő használata** | A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép található. Nincs hozzáadva a felhőhöz.<br/><br/>Hozzon létre egy, az éles hálózattól elkülönített virtuálisgép-hálózatot.<br/><br/>Ha VLAN-alapú hálózatot használ, javasoljuk, hogy hozzon létre egy külön logikai hálózatot (éles környezetben nem használt) a VMM erre a célra. Ezzel a logikai hálózattal virtuálisgép-hálózatokat lehet létrehozni a feladatátvételi tesztekhez.<br/><br/>A logikai hálózatot társítani kell legalább egy, a virtuális gépeket üzemeltető Hyper-V-kiszolgáló hálózati adapteréhez.<br/><br/>A VLAN logikai hálózatok esetében a logikai hálózathoz hozzáadott hálózati helyeket el kell különíteni.<br/><br/>Ha Windowsos hálózati virtualizálási alapú logikai hálózatot használ, a Azure Site Recovery automatikusan elkülönített virtuálisgép-hálózatokat hoz létre. | |
 | **Hálózat létrehozása** | A rendszer automatikusan létrehoz egy ideiglenes tesztelési hálózatot a **logikai hálózatban** és a kapcsolódó hálózati telephelyeken megadott beállítás alapján.<br/><br/> A feladatátvétel ellenőrzi, hogy a virtuális gépek létrejöttek-e.<br/><br/> Akkor használja ezt a beállítást, ha a helyreállítási terv egynél több virtuálisgép-hálózatot használ.<br/><br/> Ha Windows-alapú hálózati virtualizálási hálózatokat használ, ez a beállítás automatikusan képes virtuális gépeket létrehozni ugyanazokkal a beállításokkal (alhálózatokkal és IP-címkészlet) a replika virtuális gép hálózatában. Ezek a virtuálisgép-hálózatok a feladatátvételi teszt befejeződése után automatikusan törlődnek.<br/><br/> A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép létezik. Nincs hozzáadva a felhőhöz.|
 
@@ -143,7 +143,7 @@ Azt javasoljuk, hogy ne futtasson feladatátvételi tesztet a hálózati leképe
 * A teszteléshez hasonlóan az éles környezetbeli alkalmazás leállásához vezet. Kérje meg az alkalmazás felhasználóit, hogy ne használják az alkalmazást, amikor a DR-részletezés folyamatban van.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A DR-részletezés sikeres futtatása után [futtathatja a teljes feladatátvételt](site-recovery-failover.md).
 
 

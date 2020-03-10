@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929054"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387512"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Adatok áthelyezése a Teradata a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -61,14 +61,14 @@ A következő szakaszokban részletesen ismertetjük a Teradata-adattárra jelle
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a Teradata társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesTeradata** |Igen |
 | kiszolgáló |A Teradata-kiszolgáló neve. |Igen |
 | authenticationType |A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Igen |
 | felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |Nem |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni Teradata-adatbázishoz való kapcsolódáshoz. |Igen |
+| gatewayName |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni Teradata-adatbázishoz való kapcsolódáshoz. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
@@ -82,9 +82,9 @@ Míg a tevékenység typeProperties szakaszában elérhető tulajdonságok az eg
 
 Ha a forrás **RelationalSource** típusú (amely magában foglalja a Teradata), a **typeProperties** szakaszban a következő tulajdonságok érhetők el:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Igen |
+| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from MyTable. |Igen |
 
 ### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON-példa: adatok másolása a Teradata-ből az Azure-Blobba
 Az alábbi példa olyan JSON-definíciókat tartalmaz, amelyeket a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy a [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával hozhat létre a folyamat létrehozásához. Bemutatják, hogyan másolhatók adatok a Teradata-ből az Azure-Blob Storageba. Az adatmásolási művelet azonban az [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) megadott összes mosogatóba átmásolható a Azure Data Factoryban.
@@ -284,45 +284,45 @@ Az adatok Teradata való áthelyezésekor a rendszer a következő leképezések
 
 | Teradata-adatbázis típusa | .NET-keretrendszer típusa |
 | --- | --- |
-| Char |Sztring |
-| CLOB |Sztring |
-| Grafikus |Sztring |
+| CHAR |Sztring |
+| Clob |Sztring |
+| Graphic |Sztring |
 | VarChar |Sztring |
 | VarGraphic |Sztring |
-| Blob |Bájt [] |
-| Bájt |Bájt [] |
-| VarByte |Bájt [] |
+| Blob |Byte[] |
+| Bájt |Byte[] |
+| VarByte |Byte[] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
-| Decimális |Decimális |
-| Double |Double |
+| tizedes tört |tizedes tört |
+| Dupla |Dupla |
 | Egész szám |Int32 |
-| Szám |Double |
+| Szám |Dupla |
 | SmallInt |Int16 |
-| Dátum |Dátum és idő |
-| Idő |időtartam |
-| Időzónával ellátott idő |Sztring |
-| Időbélyeg |Dátum és idő |
-| Időbélyeg időzónával |DateTimeOffset |
-| Intervallum napja |időtartam |
-| Nap és óra közötti időszak |időtartam |
-| Időköz (nap és perc) |időtartam |
-| Időintervallum – másodperc |időtartam |
-| Intervallum óra |időtartam |
-| Óra és perc közötti intervallum |időtartam |
-| Óra és másodperc közötti intervallum |időtartam |
-| Időköz (perc) |időtartam |
-| Időköz (perc) – másodperc |időtartam |
-| Másodperc intervalluma |időtartam |
-| Intervallum éve |Sztring |
-| Év és hónap közötti időszak |Sztring |
-| Intervallum hónapja |Sztring |
-| Időszak (dátum) |Sztring |
+| Dátum |DateTime |
+| Time |Időtartam |
+| Time With Time Zone |Sztring |
+| Időbélyeg |DateTime |
+| Timestamp With Time Zone |DateTimeOffset |
+| Interval Day |Időtartam |
+| Interval Day To Hour |Időtartam |
+| Interval Day To Minute |Időtartam |
+| Interval Day To Second |Időtartam |
+| Interval Hour |Időtartam |
+| Interval Hour To Minute |Időtartam |
+| Interval Hour To Second |Időtartam |
+| Interval Minute |Időtartam |
+| Interval Minute To Second |Időtartam |
+| Interval Second |Időtartam |
+| Interval Year |Sztring |
+| Interval Year To Month |Sztring |
+| Interval Month |Sztring |
+| Period(Date) |Sztring |
 | Időszak (idő) |Sztring |
-| Időtartam (idő zónával) |Sztring |
+| Period(Time With Time Zone) |Sztring |
 | Időszak (timestamp) |Sztring |
-| Időtartam (időbélyegző az időzónával) |Sztring |
-| XML |Sztring |
+| Period(Timestamp With Time Zone) |Sztring |
+| Xml |Sztring |
 
 ## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra
 A forrás adatkészletben lévő oszlopok a fogadó adatkészlet oszlopaihoz való leképezésével kapcsolatos további tudnivalókért lásd: [adatkészlet oszlopainak leképezése Azure Data Factoryban](data-factory-map-columns.md).

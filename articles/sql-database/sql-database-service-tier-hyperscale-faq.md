@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
-ms.date: 10/12/2019
-ms.openlocfilehash: 6a25d5197746e04ffa25ee397e6d8451e24ae176
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.date: 03/03/2020
+ms.openlocfilehash: 9f518df02b1923513fd014be53646a9a1be8465e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614989"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359865"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database nagy kapacitású – gyakori kérdések
 
@@ -39,19 +39,19 @@ A nagy kapacitású szolgáltatási réteg csak az önálló adatbázisok eseté
 
 A virtuális mag-alapú szolgáltatási rétegek a következő táblázatban leírtak szerint differenciálva vannak az adatbázisok rendelkezésre állása és a tárolási típus, a teljesítmény és a maximális méret alapján.
 
-| | Erőforrás típusa | Általános rendeltetés |  Rugalmas méretezés | Üzletileg kritikus |
+| | Erőforrás típusa | Általános célú |  Rugalmas skálázás | üzletileg kritikus |
 |:---:|:---:|:---:|:---:|:---:|
-| **Legjobb a következőhöz:** |Mind|A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál.|A legtöbb üzleti számítási feladat. A tárterület automatikus skálázása 100 TB-ig, gyors vertikális és horizontális számítási skálázás, gyors adatbázis-visszaállítás.|OLTP alkalmazások nagy tranzakciós sebességgel és alacsony IO-késéssel. Maximális rugalmasságot biztosít a hibák és a gyors feladatátvételek esetében, több szinkronban frissített replika használatával.|
+| **Legjobb a következőhöz:** |Összes|A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál.|A legtöbb üzleti számítási feladat. A tárterület automatikus skálázása 100 TB-ig, gyors vertikális és horizontális számítási skálázás, gyors adatbázis-visszaállítás.|OLTP alkalmazások nagy tranzakciós sebességgel és alacsony IO-késéssel. Maximális rugalmasságot biztosít a hibák és a gyors feladatátvételek esetében, több szinkronban frissített replika használatával.|
 |  **Erőforrás típusa** ||Önálló adatbázis/rugalmas készlet/felügyelt példány | Önálló adatbázis | Önálló adatbázis/rugalmas készlet/felügyelt példány |
 | **Számítási méret**|Önálló adatbázis/rugalmas készlet * | 1 – 80 virtuális mag | 1 – 80 virtuális mag * | 1 – 80 virtuális mag |
-| |Felügyelt példány | 8, 16, 24, 32, 40, 64, 80 virtuális mag | – | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
-| **Tárolás típusa** | Mind |Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
+| |Felügyelt példány | 8, 16, 24, 32, 40, 64, 80 virtuális mag | N/A | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
+| **Tárolás típusa** | Összes |Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
 | **Tárterület mérete** | Önálló adatbázis/rugalmas készlet *| 5 GB – 4 TB | Akár 100 TB | 5 GB – 4 TB |
-| | Felügyelt példány  | 32 GB – 8 TB | – | 32 GB – 4 TB |
+| | Felügyelt példány  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
 | **IOPS** | Önálló adatbázis | 500 IOPS/virtuális mag 7000 maximális IOPS | A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS a munkaterheléstől függ. | 5000 IOPS 200 000 maximális IOPS|
-| | Felügyelt példány | Fájlmérettől függ | – | 1375 IOPS/virtuális mag |
-|**Rendelkezésre állás**|Mind|1 replika, nincs olvasási felskálázás, nincs helyi gyorsítótár | Több replika, legfeljebb 4 olvasási felskálázás, részleges helyi gyorsítótár | 3 replika, 1 olvasási felskálázás, zóna – redundáns HA, teljes helyi tárterület |
-|**Mentések**|Mind|RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap)| RA-GRS, 7 napos megőrzés, állandó időpontok közötti helyreállítási idő (PITR) | RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap) |
+| | Felügyelt példány | Fájlmérettől függ | N/A | 1375 IOPS/virtuális mag |
+|**Rendelkezésre állás**|Összes|1 replika, nincs olvasási felskálázás, nincs helyi gyorsítótár | Több replika, legfeljebb 4 olvasási felskálázás, részleges helyi gyorsítótár | 3 replika, 1 olvasási felskálázás, zóna – redundáns HA, teljes helyi tárterület |
+|**Mentések**|Összes|RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap)| RA-GRS, 7 napos megőrzés, állandó időpontok közötti helyreállítási idő (PITR) | RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap) |
 
 \* rugalmas készletek nem támogatottak a nagy kapacitású szolgáltatási szinten
 
@@ -143,7 +143,7 @@ A nagy kapacitású-adatbázisokban az adatrugalmasságot a tárolási szinten b
 
 Ha azonban csak egy replika van, eltarthat egy ideig, hogy a feladatátvételt követően létrejöjjön a helyi gyorsítótár az új replikában. A gyorsítótár-újraépítési fázisban az adatbázis közvetlenül az oldalról kérdezi le az adatforrásokat, ami nagyobb tárolási késést és csökkentett teljesítményű lekérdezési teljesítményt eredményez.
 
-A magas rendelkezésre állást igénylő, kritikus fontosságú alkalmazások esetében minimális feladatátvételi hatás esetén legalább 2 számítási replikát kell kiépíteni, beleértve az elsődleges számítási replikát is. Ez az alapértelmezett beállítás. Így rendelkezésre áll egy olyan gyors készenléti replika, amely feladatátvételi célként szolgál.
+A magas rendelkezésre állást igénylő, kritikus fontosságú alkalmazások esetében minimális feladatátvételi hatás esetén legalább 2 számítási replikát kell kiépíteni, beleértve az elsődleges számítási replikát is. Ez az alapértelmezett konfiguráció. Így rendelkezésre áll egy olyan gyors készenléti replika, amely feladatátvételi célként szolgál.
 
 ## <a name="data-size-and-storage-questions"></a>Az adatméretre és a tárolásra vonatkozó kérdések
 
@@ -274,7 +274,7 @@ Nem. A biztonsági mentéseket a tárolási alrendszer kezeli, és a tárolási 
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Végezhetek geo-visszaállítást egy nagy kapacitású-adatbázissal
 
-Igen.  A Geo-visszaállítás teljes mértékben támogatott. Az időpontra vonatkozó visszaállítástól eltérően a Geo-visszaállítás hosszú ideig futó adatmennyiség-adatműveletet igényelhet.
+Igen. A Geo-visszaállítás teljes mértékben támogatott. Az időponthoz képesti visszaállítástól eltérően a Geo-visszaállításhoz adatmennyiség-adatműveletre van szükség. Az adatfájlok másolása párhuzamosan történik, így a művelet időtartama elsősorban az adatbázis legnagyobb fájljának méretétől függ, nem pedig az adatbázis teljes méretétől. A Geo-visszaállítási idő jelentősen rövidebb lesz, ha a rendszer visszaállítja az adatbázist az Azure-régióban, amely a forrás-adatbázis régiójával [párosítva](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) van.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Beállítható a Geo-replikáció a nagy kapacitású-adatbázissal
 
@@ -389,6 +389,6 @@ Nem. A nagy kapacitású-adatbázisok megosztott tárolóval rendelkeznek, ami a
 
 Az adatok késése attól az időponttól kezdve, amikor egy tranzakció véglegesítve lett az elsődlegestől a másodlagosnál látható időpontig, az aktuális log-generálási aránytól függ. A jellemző Adatkésési érték kis ezredmásodpercben van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a nagy kapacitású szolgáltatási szintjéről: [nagy kapacitású szolgáltatási szintje](sql-database-service-tier-hyperscale.md).

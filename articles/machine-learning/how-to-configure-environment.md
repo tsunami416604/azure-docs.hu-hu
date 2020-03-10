@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
 ms.openlocfilehash: 32db7b19b7ec63135c3359f9685dd767dd0921f5
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169845"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355236"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -289,7 +289,7 @@ Hozzon létre egy [Databricks-fürtöt](https://docs.microsoft.com/azure/azure-d
 
 Használja ezeket a beállításokat:
 
-| Beállítás |A következőkre vonatkozik| Érték |
+| Beállítás |A következőkre vonatkozik:| Érték |
 |----|---|---|
 | Fürt neve |mindig| yourclustername |
 | A Databricks futtatókörnyezete |mindig|Nem ML futtatókörnyezet 6,0 (Scala 2,11, Spark 2.4.3) |

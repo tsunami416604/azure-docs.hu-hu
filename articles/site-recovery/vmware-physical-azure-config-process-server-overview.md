@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: ad816f39dd4182dfa41fca975c99824a5d77f860
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961310"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395028"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Tudnivalók Site Recovery összetevőkről (konfiguráció, folyamat, fő cél)
 
@@ -22,7 +22,7 @@ Ez a cikk a VMware virtuális gépek és fizikai kiszolgálók Azure-ba történ
 
 A helyszíni VMware virtuális gépek és fizikai kiszolgálók vész-helyreállításához a helyszínen üzembe helyezett Site Recovery konfigurációs kiszolgálóra van szükség.
 
-**Beállítás** | **Részletek** | **Linkek**
+**Beállítás** | **Részletek** | **Hivatkozások**
 --- | --- | ---
 **Összetevők**  | A konfigurációs kiszolgáló számítógép az összes helyszíni Site Recovery-összetevőt futtatja, amely tartalmazza a konfigurációs kiszolgálót, a feldolgozási kiszolgálót és a fő célkiszolgáló-kiszolgálót.<br/><br/> A konfigurációs kiszolgáló beállításakor a rendszer az összes összetevőt automatikusan telepíti. | [Olvassa el](vmware-azure-common-questions.md#configuration-server) a konfigurációs kiszolgálóval kapcsolatos gyakori kérdéseket.
 **Szerepkör** | A konfigurációs kiszolgáló koordinálja a helyszíni rendszer és az Azure közötti kommunikációt, és felügyeli az adatreplikációt. | További információ a [VMware](vmware-azure-architecture.md) és a [fizikai kiszolgáló](physical-azure-architecture.md) által az Azure-ba való vész-helyreállítás architektúráján.
@@ -34,11 +34,11 @@ A helyszíni VMware virtuális gépek és fizikai kiszolgálók vész-helyreáll
 
 ## <a name="process-server"></a>Kiszolgáló feldolgozása
 
-**Beállítás** | **Részletek** | **Linkek**
+**Beállítás** | **Részletek** | **Hivatkozások**
 --- | --- | ---
-**Üzembe helyezés**  | A helyszíni VMware virtuális gépek és fizikai kiszolgálók vészhelyzeti helyreállításához és replikálásához helyszíni folyamatra van szükség. Alapértelmezés szerint a rendszer telepíti a Process Servert a konfigurációs kiszolgálóra. | [Részletek](vmware-azure-architecture.md?#architectural-components).
-**Szerepkör (helyszíni** | – A replikáláshoz engedélyezett gépekről érkező replikációs adatok fogadása.<br/> – A replikációs adatokat a gyorsítótárazással, tömörítéssel és titkosítással optimalizálja, és elküldi az Azure Storage-nak.<br/> – A Site Recovery mobilitási szolgáltatás leküldéses telepítését végzi a replikálni kívánt helyszíni VMware virtuális gépeken és fizikai kiszolgálókon.<br/> -A helyszíni gépek automatikus felderítését végzi. | [Részletek](vmware-physical-azure-config-process-server-overview.md#process-server). 
-**Szerepkör (feladat-visszavétel az Azure-ból)** | A helyszíni helyről történő feladatátvétel után az Azure-beli Process Servert egy Azure-beli virtuális gépként állíthatja be a helyszíni helyre történő feladat-visszavétel kezeléséhez.<br/><br/> Az Azure-beli Process Server ideiglenes. Az Azure-beli virtuális gép a feladat-visszavétel befejezése után törölhető. | [Részletek](vmware-azure-set-up-process-server-azure.md).
+**Üzembe helyezés**  | A helyszíni VMware virtuális gépek és fizikai kiszolgálók vészhelyzeti helyreállításához és replikálásához helyszíni folyamatra van szükség. Alapértelmezés szerint a rendszer telepíti a Process Servert a konfigurációs kiszolgálóra. | [További információk](vmware-azure-architecture.md?#architectural-components).
+**Szerepkör (helyszíni** | – A replikáláshoz engedélyezett gépekről érkező replikációs adatok fogadása.<br/> – A replikációs adatokat a gyorsítótárazással, tömörítéssel és titkosítással optimalizálja, és elküldi az Azure Storage-nak.<br/> – A Site Recovery mobilitási szolgáltatás leküldéses telepítését végzi a replikálni kívánt helyszíni VMware virtuális gépeken és fizikai kiszolgálókon.<br/> -A helyszíni gépek automatikus felderítését végzi. | [További információk](vmware-physical-azure-config-process-server-overview.md#process-server). 
+**Szerepkör (feladat-visszavétel az Azure-ból)** | A helyszíni helyről történő feladatátvétel után az Azure-beli Process Servert egy Azure-beli virtuális gépként állíthatja be a helyszíni helyre történő feladat-visszavétel kezeléséhez.<br/><br/> Az Azure-beli Process Server ideiglenes. Az Azure-beli virtuális gép a feladat-visszavétel befejezése után törölhető. | [További információk](vmware-azure-set-up-process-server-azure.md).
 **Méretezés** | A helyszíni nagyobb telepítések esetén további, kibővíthető folyamat-kiszolgálókat is beállíthat. A további kiszolgálók kibővítik a kapacitást, így nagyobb számú replikáló gépet kezelnek, és nagyobb mennyiségű replikációs forgalmat bonyolítanak le.<br/><br/> A gépeket áthelyezheti két folyamat kiszolgálója között a replikálási forgalom terheléselosztásához. | [További információ](vmware-azure-set-up-process-server-scale.md)
 
 

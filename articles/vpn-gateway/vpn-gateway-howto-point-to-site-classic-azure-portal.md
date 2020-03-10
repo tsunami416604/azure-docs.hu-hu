@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: 5d80cb2f2ed844126d1e9311151e6c53fcb11840
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894875"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391269"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Pont – hely kapcsolat konfigurálása tanúsítványalapú hitelesítés használatával (klasszikus)
 
@@ -21,7 +21,7 @@ ms.locfileid: "75894875"
 Ez a cikk bemutatja, hogyan hozhat létre pont – hely kapcsolattal rendelkező VNet. Ezt a vnet a klasszikus üzemi modellel hozza létre a Azure Portal használatával. A konfiguráció önaláírt vagy hitelesítésszolgáltató által kibocsátott tanúsítványokat használ a kapcsolódó ügyfelek hitelesítéséhez. Ezt a konfigurációt egy másik központi telepítési eszközzel vagy modellel is létrehozhatja az alábbi cikkekben ismertetett beállítások használatával:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [Azure Portalra](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 >
@@ -124,7 +124,7 @@ Ebben a lépésben létrehoz egy átjáró-alhálózatot és egy dinamikus útv�
 
    ![Az átjáró választható konfigurációjának kiválasztása](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/optsubnet125.png)
 
-6. Az átjáró **konfigurációja** lapon válassza az **alhálózat** lehetőséget az átjáró alhálózatának hozzáadásához. Az átjáró alhálózata is létrehozható kisebb as/29-ként. Azt javasoljuk azonban, hogy hozzon létre egy nagyobb alhálózatot, amely több címet is tartalmaz a legalább/28 vagy/27 érték kiválasztásával. Ez lehetővé teszi, hogy a jövőben elegendő címet biztosítson a lehetséges további konfigurációkhoz. Amikor átjáró-alhálózatokkal dolgozik, kerülje a hálózati biztonsági csoportok (NSG) társítását az átjáró-alhálózathoz. Ha hálózati biztonsági csoportot társít ehhez az alhálózathoz, előfordulhat, hogy a VPN-átjáró nem a várt módon fog működni. A beállítás mentéséhez kattintson **az OK gombra** .
+6. Az átjáró **konfigurációja** lapon válassza az **alhálózat** lehetőséget az átjáró alhálózatának hozzáadásához. Az átjáró alhálózata is létrehozható kisebb as/29-ként. Azt javasoljuk azonban, hogy hozzon létre egy nagyobb alhálózatot, amely több címet is tartalmaz a legalább/28 vagy/27 érték kiválasztásával. Ez lehetővé teszi, hogy a jövőben elegendő címet biztosítson a lehetséges további konfigurációkhoz. Átjáróalhálózatokkal való munka esetén ne társítsa a hálózati biztonsági csoportot (NSG) az átjáróalhálózathoz. Ha hálózati biztonsági csoportot társít ehhez az alhálózathoz, előfordulhat, hogy a VPN-átjáró nem a várt módon fog működni. A beállítás mentéséhez kattintson **az OK gombra** .
 
    ![Átjáró-alhálózat hozzáadása](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsubnet125.png)
 7. Válassza ki az átjáró **méretét**. A méret a virtuális hálózati átjáró termékváltozata. A Azure Portal az alapértelmezett SKU **alapértelmezett érték**. További információ az átjárók SKU-ról: [Tudnivalók a VPN Gateway beállításairól](vpn-gateway-about-vpn-gateway-settings.md#gwsku).

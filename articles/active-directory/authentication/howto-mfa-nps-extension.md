@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908853"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378128"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Meglévő NPS-infrastruktúra integrálása az Azure Multi-Factor Authentication
 
@@ -51,7 +51,7 @@ A hálózati házirend-kiszolgáló bővítmény célja, hogy működjön a megl
 
 Az Azure MFA NPS-bővítménye az [azure multi-Factor Authentication-licenccel](multi-factor-authentication.md) rendelkező ügyfelek számára érhető el (prémium szintű Azure ad, EMS vagy egy MFA önálló licenccel). Az Azure MFA-hoz készült, például felhasználónként vagy hitelesítési licenccel rendelkező, fogyasztáson alapuló licencek nem kompatibilisek a hálózati házirend-kiszolgáló bővítménnyel. 
 
-### <a name="software"></a>Szoftverek
+### <a name="software"></a>Szoftver
 
 Windows Server 2008 R2 SP1 vagy újabb.
 
@@ -142,7 +142,7 @@ A következő lépésekkel kérhet le egy teszt fiókot:
 2. Kövesse az utasításokat az ellenőrzési módszer beállításához.
 3. [Hozzon létre egy feltételes hozzáférési szabályzatot](howto-mfa-getstarted.md#create-conditional-access-policy) a többtényezős hitelesítés megköveteléséhez a teszt fiókhoz.
 
-## <a name="install-the-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének telepítése
+## <a name="install-the-nps-extension"></a>Az NPS-bővítményének telepítése
 
 > [!IMPORTANT]
 > Telepítse a hálózati házirend-kiszolgáló bővítményt egy másik kiszolgálóra, mint a VPN-hozzáférési pont.
@@ -165,7 +165,7 @@ Ha egy meglévő NPS-bővítmény frissítését végzi, a mögöttes kiszolgál
 
 A telepítő létrehoz egy PowerShell-parancsfájlt a következő helyen: `C:\Program Files\Microsoft\AzureMfa\Config` (ahol a C:\ a telepítési meghajtója). Ez a PowerShell-parancsfájl minden futtatáskor végrehajtja a következő műveleteket:
 
-- Hozzon létre egy önaláírt tanúsítványt.
+- Önaláírt tanúsítvány létrehozása.
 - Rendelje hozzá a tanúsítvány nyilvános kulcsát az egyszerű szolgáltatásnév számára az Azure AD-ben.
 - Tárolja a tanúsítványt a helyi számítógép tanúsítvány-tárolójában.
 - Hozzáférés biztosítása a tanúsítvány titkos kulcsához a hálózati felhasználó számára.
@@ -200,7 +200,7 @@ Azure Government felhőt használó ügyfelek esetén a következő további kon
 1. Nyissa meg a **Rendszerleíróadatbázis-szerkesztőt** az NPS-kiszolgálón.
 1. Nyissa meg a `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` címet. Állítsa be a következő kulcs értékeit:
 
-    | Beállításkulcs       | Value (Díj) |
+    | Beállításkulcs       | Érték |
     |--------------------|-----------------------------------|
     | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
     | STS_URL            | https://login.microsoftonline.us/ |
@@ -238,7 +238,7 @@ Miután engedélyezte az MFA-t egy RADIUS-ügyfél számára a hálózati házir
 
 Ha az MFA-ban nem regisztrált felhasználók vannak, akkor megadhatja, hogy mi történjen a hitelesítéskor. A szolgáltatás működésének vezérléséhez használja a beállításjegyzék elérési útja *HKLM\Software\Microsoft\AzureMFA* *REQUIRE_USER_MATCH* beállításjegyzékbeli beállítását. Ez a beállítás egyetlen konfigurációs lehetőséggel rendelkezik:
 
-| Jelmagyarázat | Value (Díj) | Alapértelmezett |
+| Paraméter | Érték | Alapértelmezett |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | IGAZ/HAMIS | Nincs beállítva (megegyezik az igaz értékkel) |
 
@@ -246,7 +246,7 @@ Ennek a beállításnak a célja annak meghatározása, hogy mi a teendő, ha eg
 
 Dönthet úgy, hogy létrehozza ezt a kulcsot, és FALSE (hamis) értékre állítja a felhasználók bevezetését, és az Azure MFA még nem minden esetben regisztrálható. Mivel azonban a kulcs beállítása lehetővé teszi, hogy az MFA-ban nem regisztrált felhasználók bejelentkezzenek, el kell távolítania ezt a kulcsot az éles környezetbe való belépés előtt.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 ### <a name="nps-extension-health-check-script"></a>NPS-bővítmény állapot-ellenőrzési parancsfájlja
 

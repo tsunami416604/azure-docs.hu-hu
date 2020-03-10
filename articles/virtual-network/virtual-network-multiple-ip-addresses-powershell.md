@@ -17,11 +17,11 @@ ms.date: 03/24/2017
 ms.author: kumud
 ms.reviewer: annahar
 ms.openlocfilehash: a8bd4e4779d94cfc22ac7726c9746fe755764033
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647322"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381051"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Több IP-cím társítása virtuális gépekhez a PowerShell használatával
 
@@ -295,7 +295,7 @@ Az alábbi lépések végrehajtásával adhat hozzá privát és nyilvános IP-c
    $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
    ```
 
-   Az alábbihoz hasonló kimenetet fog látni:
+   Az alábbihoz hasonló kimenet jelenik meg:
 
    ```
    Name       PrivateIpAddress PublicIpAddress                                           Primary

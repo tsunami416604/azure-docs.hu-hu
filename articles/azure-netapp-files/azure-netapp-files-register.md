@@ -1,6 +1,6 @@
 ---
-title: Regisztráljon a Azure NetApp-fájlok |} A Microsoft Docs
-description: Regisztráljon, és az Azure Files-NetApp használatának módját ismerteti.
+title: Regisztráció a Azure NetApp Filesra | Microsoft Docs
+description: Leírja, hogyan regisztrálhat a Azure NetApp Files használatára.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,46 +15,46 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: b-juche
 ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299217"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381295"
 ---
 # <a name="register-for-azure-netapp-files"></a>Regisztrálás az Azure NetApp Filesra
 
 > [!IMPORTANT] 
-> Mielőtt regisztrálná az Azure Files-NetApp erőforrás-szolgáltató, kell kapott e-mailt az Azure NetApp fájlok csapat megerősíti, hogy rendelkezik a szolgáltatáshoz való hozzáférést. 
+> A Azure NetApp Files erőforrás-szolgáltató regisztrálása előtt meg kell kapnia egy e-mailt a Azure NetApp Files csapattól, amely megerősíti, hogy hozzáférést kapott a szolgáltatáshoz. 
 
-Ebből a cikkből megtudhatja, hogyan regisztrálhat Azure NetApp fájlokat, hogy a szolgáltatás használatának megkezdése.
+Ebből a cikkből megtudhatja, hogyan regisztrálhat a Azure NetApp Files, hogy megkezdhesse a szolgáltatás használatát.
 
-## <a name="waitlist"></a>A szolgáltatás eléréséhez nagyságától kérelem küldése
+## <a name="waitlist"></a>Várólista-kérelem küldése a szolgáltatás eléréséhez
 
-1. Igényelnie nagyságától Azure NetApp Files szolgáltatáson keresztül fér hozzá a [Azure NetApp fájlok nagyságától alkalmazásbeküldési oldalára](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u). 
+1. A Azure NetApp Files szolgáltatás eléréséhez a [Azure NetApp Files várólista-beküldési lapon](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)keresztül küldje el a várólista-kérést. 
 
-    Nagyságától regisztráció nem garantálja a közvetlen elérése. 
+    A várólista-regisztráció nem garantálja a szolgáltatás azonnali elérését. 
 
-2. Egyéb feladatok folytatása előtt várja meg, a NetApp fájlokat az Azure-csapat hivatalos megerősítő e-mail. 
+2. Várjon egy hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól, mielőtt folytatná a többi feladatot. 
 
 ## <a name="resource-provider"></a>A NetApp erőforrás-szolgáltató regisztrálása
 
-A szolgáltatás használatához regisztrálnia kell az Azure erőforrás-szolgáltató Azure NetApp fájlok.
+A szolgáltatás használatához regisztrálnia kell az Azure erőforrás-szolgáltatót Azure NetApp Fileshoz.
 
 > [!NOTE] 
-> Sikerült regisztrálni a NetApp erőforrás-szolgáltató szolgáltatás hozzáférési engedély megadása nélkül is lehet. Ugyanakkor anélkül, hogy hozzáférési engedélyt, bármely Azure Portalon vagy a NetApp fiók vagy bármely más NetApp fájlokat az Azure-erőforrás létrehozása API-kérelem a rendszer elutasítja a következő hiba miatt:  
+> A NetApp erőforrás-szolgáltatót a szolgáltatáshoz való hozzáférés engedélyezése nélkül is sikeresen regisztrálhatja. A hozzáférés engedélyezése nélkül azonban a NetApp-fiókok vagy más Azure NetApp Files-erőforrások létrehozásához Azure Portal vagy API-kérelmek elutasítása a következő hibaüzenettel történik:  
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
 
-1. Az Azure Portalon kattintson az Azure Cloud Shell ikonra a jobb felső sarokban található:
+1. A Azure Portal kattintson a jobb felső sarokban található Azure Cloud Shell ikonra:
 
-      ![Az Azure Cloud Shell ikon](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
+      ![Azure Cloud Shell ikon](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
 
-2. Ha több előfizetéssel rendelkezik az Azure-fiókjával, válassza ki azt, amelyik már szerepel az engedélyezési listán NetApp Azure-fájlok:
+2. Ha több előfizetéssel rendelkezik az Azure-fiókjában, válassza ki a Azure NetApp Files engedélyezési listán szereplőt:
     
         az account set --subscription <subscriptionId>
 
-3. Az Azure Cloud Shell-konzolon adja meg annak ellenőrzésére, hogy az előfizetés lett szerepel az engedélyezési listán a következő parancsot:
+3. A Azure Cloud Shell-konzolon adja meg a következő parancsot az előfizetés engedélyezési listájának ellenőrzéséhez:
     
         az feature list | grep NetApp
 
@@ -65,15 +65,15 @@ A szolgáltatás használatához regisztrálnia kell az Azure erőforrás-szolg�
        
    `<SubID>` az előfizetés-azonosítója.
 
-    Ha nem látja a szolgáltatásnév `Microsoft.NetApp/ANFGA`, nem rendelkezik a szolgáltatáshoz való hozzáférést. Ebben a lépésben állni. Kövesse az utasításokat [igényelnie nagyságától a szolgáltatás elérésével](#waitlist) szolgáltatás hozzáférés kéréséhez a folytatás előtt. 
+    Ha nem látja a szolgáltatás nevét `Microsoft.NetApp/ANFGA`, nem férhet hozzá a szolgáltatáshoz. Leállítás ebben a lépésben. A folytatás előtt kövesse a várólista-hozzáférés kérése a [szolgáltatáshoz](#waitlist) való hozzáféréshez szolgáltatás eléréséhez című témakör utasításait. 
 
-4. Az Azure Cloud Shell-konzolon adja meg az Azure erőforrás-szolgáltató regisztrálásához a következő parancsot: 
+4. Az Azure Cloud Shell-konzolon adja meg a következő parancsot az Azure erőforrás-szolgáltató regisztrálásához: 
     
         az provider register --namespace Microsoft.NetApp --wait
 
-   A `--wait` paraméter arra utasítja a konzolt, hogy Várjon, amíg a regisztráció befejezéséhez. A regisztrációs folyamat befejezése hosszabb időt is igénybe vehet.
+   A `--wait` paraméter arra utasítja a konzolt, hogy várjon, amíg a regisztráció befejeződik. A regisztrációs folyamat hosszabb időt is igénybe vehet.
 
-5. Az Azure Cloud Shell-konzolon adja meg, győződjön meg arról, hogy az Azure erőforrás-szolgáltató regisztrálva van-e a következő parancsot: 
+5. A Azure Cloud Shell-konzolon adja meg a következő parancsot az Azure-erőforrás-szolgáltató regisztrálásának ellenőrzéséhez: 
     
         az provider show --namespace Microsoft.NetApp
 
@@ -85,15 +85,15 @@ A szolgáltatás használatához regisztrálnia kell az Azure erőforrás-szolg�
         "registrationState": "Registered", 
         "resourceTypes": […. 
 
-   `<SubID>` az előfizetés-azonosítója.  A `state` paraméter értéke azt jelzi, hogy `Registered`.
+   `<SubID>` az előfizetés-azonosítója.  A `state` paraméter értéke `Registered`.
 
-6. Az Azure Portalon kattintson a **előfizetések** panelen.
-7. Az előfizetések panelen kattintson az előfizetési azonosítóját. 
-8. Kattintson a beállítások az előfizetés **erőforrás-szolgáltatók** , győződjön meg arról, hogy Microsoft.NetApp szolgáltató azt jelzi, hogy a regisztrált állapota: 
+6. A Azure Portal kattintson az **előfizetések** panelre.
+7. Az előfizetések panelen kattintson az előfizetés-AZONOSÍTÓra. 
+8. Az előfizetés beállításaiban kattintson az erőforrás- **szolgáltatók** elemre annak ellenőrzéséhez, hogy a Microsoft. NetApp szolgáltató a regisztrált állapotot jelzi-e: 
 
       ![Registered Microsoft.NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [NetApp-fiók létrehozása](azure-netapp-files-create-netapp-account.md)

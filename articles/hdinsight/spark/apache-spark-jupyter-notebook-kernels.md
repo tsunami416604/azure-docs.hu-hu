@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.openlocfilehash: 44089ea4b997e06cb7654fc6665a1a9a59ae2658
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494123"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389703"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernelek Jupyter notebookhoz Apache Spark-fürtökön az Azure HDInsight
 
@@ -53,7 +53,7 @@ Egy Apache Spark-fürt a HDInsight-ben. További útmutatásért lásd: [Apache 
 
 Íme néhány előnye az új kernelek használatában a Spark HDInsight-fürtökön futó Jupyter notebook használatával.
 
-- **Előre beállított környezetek**. A **PySpark**, a **PySpark3**vagy a **Spark** kernelek esetében nem kell explicit módon beállítania a Spark vagy a kaptár környezetét az alkalmazásokkal való munka megkezdése előtt. Ezek alapértelmezés szerint elérhetők. Ezek a kontextusok a következők:
+- **Előre beállított környezetek**. A **PySpark**, a **PySpark3**vagy a **Spark** kernelek esetében nem kell explicit módon beállítania a Spark vagy a kaptár környezetét az alkalmazásokkal való munka megkezdése előtt. Ezek alapértelmezés szerint elérhetők. Ezek a környezetek a következők:
 
   - **SC** – Spark-környezethez
   - **sqlContext** – a kaptár kontextusához
@@ -71,10 +71,10 @@ Egy Apache Spark-fürt a HDInsight-ben. További útmutatásért lásd: [Apache 
 
    | Magic | Példa | Leírás |
    | --- | --- | --- |
-   | segítség |`%%help` |Létrehoz egy táblázatot az összes elérhető varázslatról a példával és a leírással |
-   | információ |`%%info` |A jelenlegi Livy-végponthoz tartozó munkamenet-információk kimenete |
-   | Konfigurálása |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfigurálja a munkamenetek létrehozásához szükséges paramétereket. A kényszerített jelző (-f) megadása kötelező, ha már létrejött egy munkamenet, amely biztosítja a munkamenet eldobását és újbóli létrehozását. Tekintse meg az érvényes paraméterek listáját a [LIVY post/Sessions kérelem törzsében](https://github.com/cloudera/livy#request-body) . A paramétereket JSON-karakterláncként kell átadni, és a Magic után a következő sorban kell szerepelniük, ahogy az a példában látható oszlopban látható. |
-   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Struktúra-lekérdezést hajt végre a sqlContext. Ha a `-o` paraméter át lett adva, a lekérdezés eredménye a (z)%% helyi Python-kontextusban marad a [Panda](https://pandas.pydata.org/) dataframe. |
+   | help |`%%help` |Létrehoz egy táblázatot az összes elérhető varázslatról a példával és a leírással |
+   | info |`%%info` |A jelenlegi Livy-végponthoz tartozó munkamenet-információk kimenete |
+   | Konfigurálás |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfigurálja a munkamenetek létrehozásához szükséges paramétereket. A kényszerített jelző (-f) megadása kötelező, ha már létrejött egy munkamenet, amely biztosítja a munkamenet eldobását és újbóli létrehozását. Tekintse meg az érvényes paraméterek listáját a [LIVY post/Sessions kérelem törzsében](https://github.com/cloudera/livy#request-body) . A paramétereket JSON-karakterláncként kell átadni, és a Magic után a következő sorban kell szerepelniük, ahogy az a példában látható oszlopban látható. |
+   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Futtatják a Hive-lekérdezést a kontext sqlContext ellen. Ha a `-o` paraméter át lett adva, a lekérdezés eredménye a (z)%% helyi Python-kontextusban marad a [Panda](https://pandas.pydata.org/) dataframe. |
    | helyi |`%%local`<br>`a=1` |A következő sorokban lévő összes kód helyileg fut. A kódnak érvényes Python2-kódnak is kell lennie, a használt kerneltől függetlenül. Tehát akkor is, ha a **PySpark3** vagy a **Spark** kernelt választotta a jegyzetfüzet létrehozásakor, ha a `%%local` varázslatot egy cellában használja, akkor a cellának csak érvényes Python2-kóddal kell rendelkeznie. |
    | naplók |`%%logs` |Megjeleníti a naplókat az aktuális Livy-munkamenethez. |
    | delete |`%%delete -f -s <session number>` |Törli az aktuális Livy-végpont adott munkamenetét. A rendszermag számára kezdeményezett munkamenet nem törölhető. |
@@ -93,7 +93,7 @@ A `%%sql` Magic különböző paramétereket támogat, amelyek segítségével s
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Ezzel a paraméterrel megtarthatja a lekérdezés eredményét a (z)%% helyi Python kontextusban, [pandák](https://pandas.pydata.org/) dataframe. A dataframe változó neve a megadott név. |
 | -q |`-q` |Ezzel kikapcsolhatja a cella vizualizációit. Ha nem szeretné megjeleníteni a cella tartalmát, és csak dataframe szeretné rögzíteni, akkor használja a `-q -o <VARIABLE>`. Ha az eredmények rögzítése nélkül szeretné kikapcsolni a vizualizációkat (például egy SQL-lekérdezés futtatásához, például egy `CREATE TABLE` utasításhoz), a `-q`t `-o` argumentum megadása nélkül használhatja. |
-| – m |`-m <METHOD>` |Ahol a **metódus** vagy a **Take** vagy a **Sample** (alapértelmezett **érték).** Ha a metódus **elvégzése**megtörténik, a kernel a MAXROWS által meghatározott eredmény-adathalmaz elejétől (a táblázat későbbi részében leírtak szerint) kiválasztja az elemeket. Ha a metódus **minta**, a kernel véletlenszerűen mintákat vesz fel az adatkészletből `-r` paraméternek megfelelően, amely a táblázat következő részében olvasható. |
+| -m |`-m <METHOD>` |Ahol a **metódus** vagy a **Take** vagy a **Sample** (alapértelmezett **érték).** Ha a metódus **elvégzése**megtörténik, a kernel a MAXROWS által meghatározott eredmény-adathalmaz elejétől (a táblázat későbbi részében leírtak szerint) kiválasztja az elemeket. Ha a metódus **minta**, a kernel véletlenszerűen mintákat vesz fel az adatkészletből `-r` paraméternek megfelelően, amely a táblázat következő részében olvasható. |
 | -r |`-r <FRACTION>` |Itt a **frakció** egy 0,0 és 1,0 közötti lebegőpontos szám. Ha az SQL-lekérdezéshez tartozó minta metódus `sample`, akkor a kernel véletlenszerűen megkeresi az eredményhalmaz elemeinek megadott részét. Ha például egy SQL-lekérdezést futtat az argumentumokkal `-m sample -r 0.01`, akkor az eredmény sorainak 1%-a véletlenszerűen lett kiválasztva. |
 | – n |`-n <MAXROWS>` |A **MAXROWS** egész érték. A kernel korlátozza az **MAXROWS**kimeneti sorok számát. Ha a **MAXROWS** negatív szám, például **-1**, akkor az eredményhalmaz sorainak száma nem korlátozott. |
 
@@ -140,7 +140,7 @@ Az új kernelek folyamatosan fejlődnek, és idővel kiforrnak. Ez azt is jelent
 
 - [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Alkalmazási helyzetek
+### <a name="scenarios"></a>Forgatókönyvek
 
 - [Apache Spark BI: interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
 - [Apache Spark a Machine Learning használatával: a Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)

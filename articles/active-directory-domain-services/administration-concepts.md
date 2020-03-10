@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
 ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931565"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378487"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Felügyeleti fogalmak a felhasználói fiókokhoz, jelszavakhoz és felügyelethez Azure Active Directory Domain Services
 
@@ -82,7 +82,7 @@ Az Azure AD DS a rendelkezésre álló teljesítmény és szolgáltatások az SK
 |------------|----------------------|------------------|----|
 | Standard   | Korlátlan            | 7 naponta     | 0  |
 | Enterprise | Korlátlan            | 3 naponta     | 5  |
-| Prémium    | Korlátlan            | Napi            | 10 |
+| Premium    | Korlátlan            | Napi            | 10 |
 
 Az Azure AD DS SKU-nak az Azure AD DS felügyelt tartományában lévő objektumok (felhasználói és számítógépfiókok) száma alapján elszámolási modellt használtak. A felügyelt tartomány objektumainak száma alapján már nem változik a díjszabás.
 

@@ -15,11 +15,11 @@ ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1c46facb2d43137175730bf04fea0efec9c1ecbd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063849"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389996"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Az Azure AD-ben a hibrid és a Felhőbeli üzemelő példányokhoz való emelt szintű hozzáférés biztonságossá tétele
 
@@ -348,7 +348,7 @@ Annak megállapítása, hogy az aktuális beépített Azure AD-rendszergazdai sz
 
 További információ: [hibrid Azure Active Directory csatlakoztatott eszközök konfigurálása](../device-management-hybrid-azuread-joined-devices-setup.md).
 
-#### <a name="review-members-of-built-in-office-365-admin-roleshttpssupportofficecomarticleabout-office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d"></a>A [beépített Office 365 rendszergazdai szerepkörök](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) tagjainak áttekintése
+#### <a name="review-members-of-built-in-office-365-admin-roles"></a>A [beépített Office 365 rendszergazdai szerepkörök](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) tagjainak áttekintése
 Ha az Office 365-et használja.
 ‎
 #### <a name="validate-incident-response-plan"></a>Incidens-válasz tervének ellenőrzése

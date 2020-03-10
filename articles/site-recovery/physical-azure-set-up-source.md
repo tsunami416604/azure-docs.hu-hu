@@ -1,6 +1,6 @@
 ---
-title: Állítsa be a konfigurációs kiszolgálót a fizikai kiszolgálók az Azure-bA az Azure Site Recovery használata vész-helyreállítási |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan állítható be a helyszíni konfigurációs kiszolgáló, valamint a helyszíni fizikai kiszolgálóknak az Azure-bA.
+title: Állítsa be a konfigurációs kiszolgálót a fizikai kiszolgálók Azure-ba történő helyreállításához a Azure Site Recovery használatával | Microsoft Docs "
+description: Ez a cikk azt ismerteti, hogyan állíthatja be a helyszíni konfigurációs kiszolgálót a helyszíni fizikai kiszolgálók Azure-ba való vész-helyreállításához.
 services: site-recovery
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -9,61 +9,61 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: 902c14211e91a1500c6b50cd790b347e337c4f70
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67589062"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367094"
 ---
-# <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Állítsa be a konfigurációs kiszolgáló, valamint fizikai kiszolgálók Azure-bA
+# <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>A konfigurációs kiszolgáló beállítása az Azure-ba irányuló fizikai kiszolgálók vész-helyreállítására
 
-Ez a cikk ismerteti, hogyan állítható be a helyszíni környezetben való fizikai kiszolgálók, Windows vagy Linux rendszerű Azure-ba való replikálásának megkezdéséhez.
+Ez a cikk azt ismerteti, hogyan állíthatja be a helyszíni környezetet a Windows vagy Linux rendszerű fizikai kiszolgálók Azure-ba történő replikálásának megkezdéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk feltételezi, hogy már rendelkezik:
-- A Recovery Services-tároló az a [az Azure portal](https://portal.azure.com "az Azure portal").
-- Fizikai számítógép, amelyen a konfigurációs kiszolgáló telepítése.
-- Ha, le lett tiltva a TLS 1.0-t a gépen, amelyen a konfigurációs kiszolgálót telepít, ellenőrizze, hogy engedélyezve van-e a TLs 1.2-es és, hogy a .NET-keretrendszer 4.6-os vagy újabb verziója telepítve van a számítógépen (az erős titkosítás engedélyezve van). [További információk](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
+A cikk feltételezi, hogy már rendelkezik az alábbiakkal:
+- A [Azure Portal](https://portal.azure.com "Azure Portal")Recovery Services-tárolója.
+- Egy fizikai számítógép, amelyre telepíteni kívánja a konfigurációs kiszolgálót.
+- Ha letiltotta a TLS 1,0-et azon a számítógépen, amelyre a konfigurációs kiszolgálót telepíti, győződjön meg arról, hogy a TLs 1,2 engedélyezve van, és hogy a .NET-keretrendszer 4,6-as vagy újabb verziója telepítve van a gépen (erős kriptográfia engedélyezve van). [További információk](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
-### <a name="configuration-server-minimum-requirements"></a>Konfigurációs kiszolgáló minimális követelményei
-A következő táblázat felsorolja a minimális hardver-, szoftver, és a konfigurációs kiszolgáló hálózati követelményei.
+### <a name="configuration-server-minimum-requirements"></a>A konfigurációs kiszolgáló minimális követelményei
+A következő táblázat a konfigurációs kiszolgáló minimális hardver-, szoftver-és hálózati követelményeit sorolja fel.
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 > [!NOTE]
-> A konfigurációs kiszolgáló által a HTTPS-alapú proxykiszolgálók nem támogatottak.
+> A konfigurációs kiszolgáló nem támogatja a HTTPS-alapú proxykiszolgálók használatát.
 
-## <a name="choose-your-protection-goals"></a>Védelmi célok megválasztása
+## <a name="choose-your-protection-goals"></a>Válassza ki a védelmi célokat
 
-1. Az Azure Portalon nyissa meg a **Recovery Services** blade-tárolók, és válassza ki a tárolót.
-2. Az a **erőforrás** a tároló menüjében kattintson **bevezetés** > **Site Recovery** > **1. lépés: Az infrastruktúra előkészítése** > **védelmi cél**.
+1. A Azure Portal nyissa meg a **Recovery Services** -tárolók panelt, és válassza ki a tárolót.
+2. A tároló **erőforrás** menüjében kattintson a **Első lépések** > **site Recovery** > **1. lépés: az infrastruktúra előkészítése** > **védelmi cél**elemre.
 
     ![Célok megválasztása](./media/physical-azure-set-up-source/choose-goals.png)
-3. A **védelmi cél**válassza **az Azure-bA** és **nem virtualizált/egyéb**, és kattintson a **OK**.
+3. A **védelem célja**területen válassza **Az Azure-t** , és **ne virtualizált/egyéb**beállítást, majd kattintson **az OK**gombra.
 
     ![Célok megválasztása](./media/physical-azure-set-up-source/physical-protection-goal.png)
 
 ## <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
 
-1. A **forrás előkészítése**, ha nem rendelkezik a konfigurációs kiszolgáló, kattintson a **+ konfigurációs kiszolgáló** kattintva felvehet egyet.
+1. Ha nem rendelkezik konfigurációs kiszolgálóval, a **forrás előkészítése**területen kattintson a **+ konfigurációs kiszolgáló** elemre a hozzáadáshoz.
 
    ![A forrás beállítása](./media/physical-azure-set-up-source/plus-config-srv.png)
-2. Az a **-kiszolgáló hozzáadása** panelen ellenőrizze, hogy **konfigurációs kiszolgáló** megjelenik **kiszolgálótípus**.
-4. A Site Recovery egyesített telepítőjének telepítőfájl letöltéséhez.
-5. Töltse le a tárolóregisztrációs kulcsot. A regisztrációs kulcs egyesített telepítő futtatásakor kell. A kulcs a generálásától számított öt napig érvényes.
+2. A **kiszolgáló hozzáadása** panelen győződjön meg arról, hogy a **konfigurációs kiszolgáló** megjelenik a **kiszolgáló típusa mezőben**.
+4. Töltse le a Site Recovery egyesített telepítési telepítőfájlt.
+5. Töltse le a tároló regisztrációs kulcsát. Az egyesített telepítő futtatásakor szüksége lesz a regisztrációs kulcsra. A kulcs a generálásától számított öt napig érvényes.
 
     ![A forrás beállítása](./media/physical-azure-set-up-source/set-source2.png)
-6. A számítógépen, mint a konfigurációs kiszolgálót használ, futtassa **Azure Site Recovery egyesített telepítőjének** a konfigurációs kiszolgáló, a folyamatkiszolgáló és a fő célkiszolgáló telepítéséhez.
+6. A konfigurációs kiszolgálóként használt gépen futtassa **Azure site Recovery egyesített telepítőt** a konfigurációs kiszolgáló, a Process Server és a fő célkiszolgáló telepítéséhez.
 
-#### <a name="run-azure-site-recovery-unified-setup"></a>Futtassa az Azure Site Recovery egyesített telepítővel
+#### <a name="run-azure-site-recovery-unified-setup"></a>Azure Site Recovery egyesített telepítő futtatása
 
 > [!TIP]
-> Konfigurációs kiszolgáló regisztrálása sikertelen lesz, ha a rendszeróra az Ön számítógépének idő engedményt helyi idő több mint öt perc alatt. A rendszeróra szinkronizálása egy [időkiszolgálóval](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) telepítésének megkezdése előtt.
+> A konfigurációs kiszolgáló regisztrációja meghiúsul, ha a számítógép rendszeróráján lévő idő több mint öt percen belül helyi idő alatt van. A telepítés megkezdése előtt szinkronizálja a rendszeridőt egy [időkiszolgálóval](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) .
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> A konfigurációs kiszolgálót a parancssorból is telepíthető. [További információk](physical-manage-configuration-server.md#install-from-the-command-line).
+> A konfigurációs kiszolgáló parancssor használatával telepíthető. [További információk](physical-manage-configuration-server.md#install-from-the-command-line).
 
 
 ## <a name="common-issues"></a>Gyakori problémák
@@ -71,6 +71,6 @@ A következő táblázat felsorolja a minimális hardver-, szoftver, és a konfi
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Magában foglalja a következő lépésben [a célkörnyezet beállítása](physical-azure-set-up-target.md) az Azure-ban.
+A következő lépés magában foglalja [a cél környezet beállítását](physical-azure-set-up-target.md) az Azure-ban.

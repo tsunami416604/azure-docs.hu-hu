@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
 ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75349696"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389882"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorozás és diagnosztika az Azure Service Fabric
 
@@ -53,7 +53,7 @@ Emellett azt is lehetővé tesszük, hogy a felhasználók felülbírálják az 
 ![SFX állapot irányítópult](media/service-fabric-diagnostics-overview/sfx-healthstatus.png)
 
 
-### <a name="watchdogs"></a>Házőrző
+### <a name="watchdogs"></a>Watchdogs
 A watchdog általában egy különálló szolgáltatás, amely az állapotot és a terhelést a szolgáltatásokban, a ping végpontokat és a jelentések állapotát a fürtben található összes adatnál megtekintheti. Ez segít megakadályozni azokat a hibákat, amelyek nem észlelhetők egyetlen szolgáltatás nézete alapján. A watchdogok olyan kód futtatására is alkalmasak, amely felhasználói beavatkozás nélkül végez javító műveleteket (például a naplófájlok bizonyos időközönkénti tisztítása). [Itt](https://github.com/Azure-Samples/service-fabric-watchdog-service)talál egy példa watchdog Service-implementációt.
 
 ## <a name="infrastructure-performance-monitoring"></a>Infrastruktúra (teljesítmény) figyelése

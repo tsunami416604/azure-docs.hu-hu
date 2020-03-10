@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: cbd171e10cc1a8b27de98d9d4d779f345ac5a3ed
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754907"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78371601"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Particionálás és horizontális skálázás Azure Cosmos DB
 
-Ez a cikk a Azure Cosmos DB fizikai és logikai partícióit ismerteti. Emellett a méretezésre és particionálásra vonatkozó ajánlott eljárásokat is tárgyalja. 
+Ez a cikk ismerteti a fizikai és logikai particionálást az Azure Cosmos DB-ben Emellett tárgyalja a skálázáshoz és particionáláshoz kapcsolódó ajánlott eljárásokat is 
 
 ## <a name="logical-partitions"></a>Logikai partíciók
 
-A logikai partíciók olyan elemekből állnak, amelyek ugyanazzal a partíciós kulccsal rendelkeznek. Például egy olyan tárolóban, ahol minden elem `City` tulajdonságot tartalmaz, a tároló partíciós kulcsaként használhatja a `City`. A `City`, például `London`, `Paris` és `NYC` speciális értékekkel rendelkező elemek csoportjai eltérő logikai partíciókat alkotnak. Nem kell aggódnia, hogy a rendszer törli a partíciókat az alapul szolgáló adatokat.
+A logikai partíciók olyan elemekből állnak, amelyek ugyanazzal a partíciós kulccsal rendelkeznek. Például egy olyan tárolóban, ahol minden elem `City` tulajdonságot tartalmaz, a tároló partíciós kulcsaként használhatja a `City`. A `City`, például `London`, `Paris`és `NYC`speciális értékekkel rendelkező elemek csoportjai eltérő logikai partíciókat alkotnak. Nem kell aggódnia, hogy a rendszer törli a partíciókat az alapul szolgáló adatokat.
 
 Azure Cosmos DB a tároló a méretezhetőség alapvető egysége. A tárolóhoz hozzáadott adatok, valamint a tárolón kiépített átviteli sebesség automatikusan (vízszintesen) particionálva van a logikai partíciók készletében. Az adatok és az átviteli sebesség az Azure Cosmos-tárolóhoz megadott partíciós kulcs alapján van particionálva. További információ: [Azure Cosmos-tároló létrehozása](how-to-create-container.md).
 

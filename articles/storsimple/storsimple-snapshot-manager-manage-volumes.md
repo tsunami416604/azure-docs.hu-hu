@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931634"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365924"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Kötetek megtekintése és kezelése StorSimple Snapshot Manager használatával
 ## <a name="overview"></a>Áttekintés
@@ -93,7 +93,7 @@ Az alábbi eljárással tekintheti meg a helyi és az Azure-beli StorSimple-köt
    
    | Eredmények oszlop | Leírás |
    |:--- |:--- |
-   |  Név |A **Name (név** ) oszlop tartalmazza az egyes felderített kötetekhez rendelt meghajtóbetűjelet. |
+   |  Name (Név) |A **Name (név** ) oszlop tartalmazza az egyes felderített kötetekhez rendelt meghajtóbetűjelet. |
    |  Eszköz |Az **eszköz** oszlop tartalmazza a gazdaszámítógéphez csatlakoztatott eszköz IP-címét. |
    |  Eszköz kötetének neve |Az **eszköz kötet neve** oszlop tartalmazza annak az eszköznek a nevét, amelyhez a kiválasztott kötet tartozik. Ez az adott kötethez tartozó Azure Portalban definiált kötet neve. |
    |  Elérési utak |A **hozzáférési útvonalak** oszlop a kötet elérési útját jeleníti meg. Ez az a meghajtóbetűjel vagy csatlakoztatási pont, amelyen a kötet elérhető a gazdaszámítógépen. |
@@ -131,7 +131,7 @@ A következő eljárással ellenőrizheti újra a StorSimple-Snapshot Managerhoz
 Az alábbi eljárással konfigurálhatja az alapszintű kötetek biztonsági mentését, majd azonnal elindíthatja a biztonsági mentést, vagy létrehozhat egy szabályzatot az ütemezett biztonsági mentésekhez.
 
 ### <a name="prerequisites"></a>Előfeltételek
-Előzetes teendők
+Előkészületek:
 
 * Győződjön meg arról, hogy a StorSimple eszköz és a gazdaszámítógép megfelelően van konfigurálva. További információért látogasson el a helyszíni [StorSimple-eszköz üzembe helyezése](storsimple-deployment-walkthrough-u2.md)című témakörre.
 * Telepítse és konfigurálja a StorSimple Snapshot Manager. További információért látogasson el a [StorSimple Snapshot Manager üzembe helyezése](storsimple-snapshot-manager-deployment.md)című témakörre.
@@ -149,7 +149,7 @@ Előzetes teendők
 8. Kattintson a jobb gombbal a kötet csoport nevére.
    
    * Az interaktív (igény szerinti) biztonsági mentési feladatok elindításához kattintson a **biztonsági mentés**készítése gombra. 
-   * Ha automatikus biztonsági mentést szeretne ütemezni, kattintson a **biztonsági mentési szabályzat létrehozása**elemre. Az **általános** lapon válasszon ki egy kötet csoportot a listából. Az **ütemterv** lapon adja meg az ütemterv részleteit. Amikor végzett, kattintson az **OK**gombra. 
+   * Ha automatikus biztonsági mentést szeretne ütemezni, kattintson a **biztonsági mentési szabályzat létrehozása**elemre. Az **általános** lapon válasszon ki egy kötet csoportot a listából. Az **ütemterv** lapon adja meg az ütemterv részleteit. Ha elkészült, kattintson **az OK**gombra. 
 9. Annak ellenőrzéséhez, hogy elindult-e a biztonsági mentési feladat, bontsa ki a **hatókör** ablaktáblán a **feladatok** csomópontot, majd kattintson a **futó** csomópontra. Az aktuálisan futó feladatok listája megjelenik az **eredmények** ablaktábláján. 
 
 ## <a name="configure-and-back-up-a-dynamic-mirrored-volume"></a>Dinamikus tükrözött kötet konfigurálása és biztonsági mentése
@@ -159,7 +159,7 @@ A dinamikus tükrözött kötetek biztonsági mentésének konfigurálásához h
 * 2\. lépés: a biztonsági mentés konfigurálásához használja a StorSimple Snapshot Manager.
 
 ### <a name="prerequisites"></a>Előfeltételek
-Előzetes teendők
+Előkészületek:
 
 * Győződjön meg arról, hogy a StorSimple eszköz és a gazdaszámítógép megfelelően van konfigurálva. További információért látogasson el a helyszíni [StorSimple-eszköz üzembe helyezése](storsimple-8000-deployment-walkthrough-u2.md)című témakörre.
 * Telepítse és konfigurálja a StorSimple Snapshot Manager. További információért látogasson el a [StorSimple Snapshot Manager üzembe helyezése](storsimple-snapshot-manager-deployment.md)című témakörre.
@@ -183,7 +183,7 @@ A Lemezkezelés a merevlemezek felügyeletére szolgáló rendszersegédprogram,
 6. A **meghajtóbetűjel vagy elérési út kiosztása** lapon fogadja el az alapértelmezett értékeket, majd kattintson a **tovább**gombra. 
 7. A **kötet formázása** lap **foglalási egység mérete** mezőjében válassza a **64 kb**-ot. Jelölje be a **gyors formátum elvégzése** jelölőnégyzetet, majd kattintson a **tovább**gombra. 
 8. Az **Új tükrözött kötet befejezése** lapon tekintse át a beállításokat, majd kattintson a **Befejezés**gombra. 
-9. Megjelenik egy üzenet, amely jelzi, hogy az alaplemez dinamikus lemezzé lesz konvertálva. Kattintson az **Igen** gombra.
+9. Megjelenik egy üzenet, amely jelzi, hogy az alaplemez dinamikus lemezzé lesz konvertálva. Kattintson a **Yes** (Igen) gombra.
    
     ![Dinamikus lemez konverziójának üzenete](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
 10. A Lemezkezelés alkalmazásban ellenőrizze, hogy az 1. és a 2. lemez dinamikus tükrözött kötetekként jelenik-e meg. (A**dinamikus** értéknek szerepelnie kell az Állapot oszlopban, és a kapacitási sáv színének pirosra kell váltania, amely tükrözött kötetet jelez.) 
@@ -202,7 +202,7 @@ A következő eljárással konfigurálhatja a dinamikus tükrözött köteteket,
 6. Kattintson a jobb gombbal a kötet csoport nevére. 
    
    * Az interaktív (igény szerinti) biztonsági mentési feladatok elindításához kattintson a **biztonsági mentés**készítése gombra. 
-   * Ha automatikus biztonsági mentést szeretne ütemezni, kattintson a **biztonsági mentési szabályzat létrehozása**elemre. Az **általános** lapon válassza ki a kötet csoportot a listából. Az **ütemterv** lapon adja meg az ütemterv részleteit. Amikor végzett, kattintson az **OK**gombra. 
+   * Ha automatikus biztonsági mentést szeretne ütemezni, kattintson a **biztonsági mentési szabályzat létrehozása**elemre. Az **általános** lapon válassza ki a kötet csoportot a listából. Az **ütemterv** lapon adja meg az ütemterv részleteit. Ha elkészült, kattintson **az OK**gombra. 
 7. A biztonsági mentési feladatot a Futtatás közben is figyelheti. A **hatókör** ablaktáblán bontsa ki a **feladatok** csomópontot, majd kattintson a **Futtatás**elemre, a feladat részletei megjelennek az **eredmények** ablaktábláján. A biztonsági mentési feladatok befejezése után a rendszer átviszi a részleteket az **elmúlt 24** órás feladatok listájára. 
 
 ## <a name="next-steps"></a>Következő lépések

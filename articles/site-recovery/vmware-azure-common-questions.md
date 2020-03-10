@@ -8,17 +8,17 @@ ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
 ms.openlocfilehash: 11f593bae6b3aab8355a8f39b56639cad8133b51
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719551"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362833"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Gyakori kérdések VMware-ből az Azure-ba történő replikációról
 
 Ez a cikk a helyszíni VMware virtuális gépek (VM-EK) Azure-ba történő vész-helyreállításának telepítésekor felmerülő gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-do-i-need-for-vmware-vm-disaster-recovery"></a>Mire van szükség a VMware virtuális gépek vész-helyreállításához?
 

@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
 ms.openlocfilehash: 4c89489964410104726b65e1b1fc3577945ce14a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224752"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388728"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Always On rendelkezésre állási csoportok létrehozásának előfeltételei az Azure-beli virtuális gépeken SQL Server
 
@@ -40,7 +40,7 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik a SQL Server always on rendelk
 ## <a name="create-an-azure-account"></a>Azure-fiók létrehozása
 Rendelkeznie kell Azure-fiókkal. [Megnyithat egy ingyenes Azure-fiókot](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) , vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Kattintson a **+** gombra egy új objektum létrehozásához a portálon.
 
@@ -50,7 +50,7 @@ Rendelkeznie kell Azure-fiókkal. [Megnyithat egy ingyenes Azure-fiókot](https:
 
    ![Erőforráscsoport](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. Kattintson az **erőforráscsoport**elemre.
-5. Kattintson a **Létrehozás** gombra.
+5. Kattintson a  **Create** (Létrehozás) gombra.
 6. Az **erőforráscsoport neve**alatt adja meg az erőforráscsoport nevét. Írja be például az **SQL-ha-RG**értéket.
 7. Ha több Azure-előfizetéssel rendelkezik, ellenőrizze, hogy az előfizetés az Azure-előfizetés, amelyben létre kívánja hozni a rendelkezésre állási csoportot.
 8. Válasszon ki egy helyet. A hely az az Azure-régió, ahol létre szeretné hozni a rendelkezésre állási csoportot. Ez a cikk egy Azure-beli hely összes erőforrását felépíti.
@@ -94,7 +94,7 @@ A virtuális hálózat létrehozása:
 
    A példa az alhálózati név **rendszergazdáját**használja. Ez az alhálózat a tartományvezérlők számára érhető el.
 
-5. Kattintson a **Létrehozás** gombra.
+5. Kattintson a  **Create** (Létrehozás) gombra.
 
    ![A virtuális hálózat konfigurálása](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/06-configurevirtualnetwork.png)
 
@@ -183,7 +183,7 @@ A következő táblázat a két gép beállításait mutatja be:
 | **Erőforráscsoport** |SQL-HA-RG |
 | **Hely** |*Tartózkodási hely* |
 | **Méret** |DS1_V2 |
-| **Tárolás** | **Felügyelt lemezek használata** - **Igen** |
+| **Storage** | **Felügyelt lemezek használata** - **Igen** |
 | **Virtuális hálózat** |autoHAVNET |
 | **Alhálózat** |felügyeleti |
 | **Nyilvános IP-cím** |*A virtuális géppel megegyező név* |
@@ -364,7 +364,7 @@ Az alábbi tervezési döntések meghozatala előtt tekintse át a következő l
 Ezután hozzon létre három virtuális gépet – két SQL Server virtuális gépet és egy virtuális gépet egy további fürtcsomópont számára. Az egyes virtuális gépek létrehozásához lépjen vissza az **SQL-ha-RG** erőforráscsoporthoz, kattintson a **Hozzáadás**gombra, keresse meg a megfelelő gyűjteményt, és kattintson a **virtuális gép**elemre, majd kattintson **a**katalógusból lehetőségre. A következő táblázatban található információk segítségével hozhatja létre a virtuális gépeket:
 
 
-| Oldal | VM1 | VM2 | VM3 |
+| Oldalala | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
 | Válassza ki a megfelelő gyűjtemény elemet |**Windows Server 2016 Datacenter** |**SQL Server 2016 SP1 Enterprise Windows Server 2016 rendszeren** |**SQL Server 2016 SP1 Enterprise Windows Server 2016 rendszeren** |
 | A virtuális gép konfigurációjának **alapjai** |**Név** = fürt – FSW<br/>**Felhasználónév** = rdfe<br/>**Password** = contoso! 0000<br/>**Előfizetés** = az előfizetése<br/>**Erőforráscsoport** = SQL-ha-RG<br/>**Location** = az Azure-beli helye |**Név** = SQLServer-0<br/>**Felhasználónév** = rdfe<br/>**Password** = contoso! 0000<br/>**Előfizetés** = az előfizetése<br/>**Erőforráscsoport** = SQL-ha-RG<br/>**Location** = az Azure-beli helye |**Név** = SQLServer-1<br/>**Felhasználónév** = rdfe<br/>**Password** = contoso! 0000<br/>**Előfizetés** = az előfizetése<br/>**Erőforráscsoport** = SQL-ha-RG<br/>**Location** = az Azure-beli helye |

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 600b0f598c54b5db154fd488aebf26a6fcdc0b1d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368789"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925587"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Oktatóanyag: bérlő létrehozása a Windows Virtual Desktopban
 
@@ -72,7 +72,7 @@ Azure Active Directory felhasználó kiosztása a TenantCreator alkalmazási sze
 
 A TenantCreator-alkalmazás szerepkörének hozzárendeléséhez:
 
-1. A TenantCreator-alkalmazás szerepkörének kezeléséhez lépjen a [Azure Portal](https://portal.azure.com) . **Vállalati alkalmazások**keresése és kiválasztása. Ha több Azure Active Directory Bérlővel dolgozik, ajánlott megnyitnia egy privát böngésző-munkamenetet, és az URL-címeket a címsorba másolhatja és beillesztheti.
+1. A TenantCreator-alkalmazás szerepkörének kezeléséhez lépjen a [Azure Portal](https://portal.azure.com) . **Vállalati alkalmazások**keresése és kiválasztása. Ha több Azure Active Directory Bérlővel dolgozik, ajánlott megnyitnia egy privát böngésző-munkamenetet, és az URL-címeket a címsorba másolhatja és beillesztheti.
 
    ![Képernyőkép a nagyvállalati alkalmazások kereséséről a Azure Portal](media/azure-portal-enterprise-applications.png)
 2. A **vállalati alkalmazásokban**keresse meg a **Windows rendszerű virtuális asztal**kifejezést. Ekkor megjelenik a két, az előző szakaszban megadott beleegyezett alkalmazás. A két alkalmazás közül válassza a **Windows virtuális asztal**lehetőséget.

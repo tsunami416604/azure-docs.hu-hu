@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 7c77527b7300c1149e96c94a4dbe122da226ac6d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720435"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382560"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>A HTTP-fejlécek protokoll-támogatása az Azure-beli előtérben szolgáltatásban
 Ez a cikk azt a protokollt ismerteti, amelyet a bevezető ajtó szolgáltatás a hívási útvonal részeivel támogat (lásd a képet). A következő szakaszokban további információk találhatók a bejárati szolgáltatás által támogatott HTTP-fejlécekről.

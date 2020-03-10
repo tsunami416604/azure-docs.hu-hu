@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd6cacae9c7af705b0de7b59e0f25f25637a5a89
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962492"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376944"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirend és korlátozások a Azure Active Directory
 
@@ -32,10 +32,10 @@ A kétkapus szabályzathoz két hitelesítési adat szükséges, például **e-m
 
 * A rendszer az alábbi Azure-rendszergazdai szerepköröket érinti:
   * Segélyszolgálat rendszergazdája
-  * Szolgáltatás-támogatási rendszergazda
+  * Szolgáltatás-rendszergazda
   * Számlázási rendszergazda
-  * Partneri Tier1-támogatás
-  * Partneri szint-támogatás
+  * 1\. szintű partnertámogatás
+  * 2\. szintű partnertámogatás
   * Exchange-rendszergazda
   * Skype vállalati verzió-rendszergazda
   * Felhasználói rendszergazda
@@ -81,7 +81,7 @@ A következő táblázat az Azure AD-ben létrehozott és kezelt felhasználói 
 
 | Tulajdonság | Követelmények |
 | --- | --- |
-| Engedélyezett karakterek |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $% ^ & *-_! + = [] {} &#124; \: ',. ? / \` ~ "();</li> <li>üres terület</li></ul> |
+| Engedélyezett karakterek |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ "();</li> <li>üres terület</li></ul> |
 | Nem engedélyezett karakterek | Unicode-karakterek. |
 | Jelszó korlátozásai |<ul><li>Legalább 8 karakterből és legfeljebb 256 karakterből állhat.</li><li>A három közül a következők közül hármat igényel:<ul><li>Kisbetűs karakterek.</li><li>Nagybetűs karakterek.</li><li>Számok (0-9).</li><li>Szimbólumok (lásd a jelszó korábbi korlátozásait).</li></ul></li></ul> |
 | Jelszó lejárati időtartama (jelszó maximális kora) |<ul><li>Alapértelmezett érték: **90** nap.</li><li>Az érték konfigurálható a Windows PowerShell Azure Active Directory moduljának `Set-MsolPasswordPolicy` parancsmagjának használatával.</li></ul> |

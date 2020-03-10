@@ -8,11 +8,11 @@ ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
 ms.openlocfilehash: 6ee6b6f325ba58ecaa3c3acb5d5ded173262bafb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715430"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344055"
 ---
 # <a name="payout-reporting"></a>Kifizetési jelentések
 
@@ -32,7 +32,7 @@ Ha az Azure Marketplace-en értékesít ajánlatokat, akkor a sikeres kifizetés
 
 ## <a name="roles-and-permission-to-access-the-payout-report"></a>A kifizetési jelentés eléréséhez szükséges szerepkörök és engedélyek
 
-| Jelentések/lapok    | Fióktulajdonos    | Manager  | Fejlesztő | Üzleti közreműködő |  Pénzügyi közreműködő | Marketingszakértő |
+| Jelentések/lapok    | Fióktulajdonos    | Manager  | Fejlesztői | Üzleti közreműködő |  Pénzügyi közreműködő | Marketingszakértő |
 |------------------|------------------|----------|-----------|----|----|-----|
 | Beszerzési jelentés (beleértve a közel valós idejű adatfeldolgozást) | Megtekinthető | Megtekinthető | Nincs hozzáférés | Nincs hozzáférés | Megtekinthető | Nincs hozzáférés |
 | Visszajelzési jelentés/válaszok | Megtekintheti és elküldheti a visszajelzést | Megtekintheti és elküldheti a visszajelzést | Megtekintheti és elküldheti a visszajelzést | Nincs hozzáférés | Nincs hozzáférés | Megtekintheti és elküldheti a visszajelzést |
@@ -74,11 +74,11 @@ Például, ha az ügyfél bankkártyával vásárol.
 |Befejezési időszak (hónap)   | Augusztus 30, 2019 | | |
 |Számlázási dátum | Szeptember 1., 2019 | | |
 |Ügyfél-fizetési dátum | Szeptember 1., 2019 | | |
-|Letéti időszak (csak bankkártyák, 30 nap) | Szeptember 1., 2019 – szeptember 30, 2019 | | **Korrelációs attribútumok rendelései:** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li> Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>Vevőkód</li> <li>Ügyfél neve</li> <li>Rendeléskód</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** Feldolgozatlan |
+|Letéti időszak (csak bankkártyák, 30 nap) | Szeptember 1., 2019 – szeptember 30, 2019 | | **Korrelációs attribútumok rendelései:** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li> Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>Vevőkód</li> <li>Ügyfél neve</li> <li>Rendeléskód</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** Feldolgozatlan |
 |Gyűjtési időszak kezdete | Szeptember 1., 2019 | | |
 |Gyűjtési időszak vége (legfeljebb, 30 nap) | Szeptember 30., 2019 | | |
-|Kifizetési számítás dátuma (havonta, 15-én) | Október 1, 2019 | | **Korrelációs attribútumok** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li>Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>Vevőkód</li> <li>Ügyfél neve</li> <li>Rendeléskód</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** Közelgő |
-|Kifizetés dátuma | Október 15., 2019 | | **Korrelációs attribútumok** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li> Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>Vevőkód</li> <li>Ügyfél neve</li> <li>Rendeléskód</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** Fizetés elküldése |
+|Kifizetési számítás dátuma (havonta, 15-én) | Október 1, 2019 | | **Korrelációs attribútumok** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li>Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>Vevőkód</li> <li>Ügyfél neve</li> <li>Rendeléskód</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** Közelgő |
+|Kifizetés dátuma | Október 15., 2019 | | **Korrelációs attribútumok** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li> Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>Vevőkód</li> <li>Ügyfél neve</li> <li>Rendeléskód</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** Fizetés elküldése |
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Nagyvállalati szerződés (negyedévente/havonta)
 
@@ -93,13 +93,13 @@ Például, ha az ügyfél bankkártyával vásárol.
 |Gyűjtési időszak vége (maximum, 90 nap) | Jan. január 15., 2020 | | |
 |Ügyfél-fizetési dátum | Dec. 30, 2019 | | |
 |Kifizetés kiszámítása | Jan. január 15., 2020 | | |
-|Kifizetés dátuma | Február 15., 2020 | | **Negyedéves ügyfelek esetén** <br> <br> **Rendelések jelentés** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li> Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>Vevőkód</li> <li>Ügyfél neve</li> <li>Rendeléskód</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** elküldve |
+|Kifizetés dátuma | Február 15., 2020 | | **Negyedéves ügyfelek esetén** <br> <br> **Rendelések jelentés** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li> Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>Vevőkód</li> <li>Ügyfél neve</li> <li>Rendeléskód</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** elküldve |
 
 ## <a name="transaction-history-download-export"></a>Tranzakciós előzmények letöltésének exportálása
 
 Ez a beállítás letölti a tranzakciós Előzmények lapon, a keresett típus, a dátum, a társított tranzakció összege, az ügyfél, a termék és az ösztönző programra vonatkozó egyéb tranzakciós elemek letöltését.
 
-| oszlop neve     | Leírás    |
+| Oszlop neve     | Leírás    |
 |-------------|-------------------------------|
 | earningId                      | Az egyes keresések egyedi azonosítója                                                                                                       |
 | participantId                  | A program keretében keresett partner elsődleges identitása                                                                            |
@@ -162,7 +162,7 @@ Ez a beállítás letölti a tranzakciós Előzmények lapon, a keresett típus,
 | taxZipCode       | Eladva a Customer zip-be                                                                                                                  |
 | LicensingProgramName       |                                                                                                                   |
 | Programkód       | A program nevével leképezhető karakterlánc                                                                                                                   |
-| earningAmountInLastPaymentCurrency       | Az utolsó fizetési pénznemben befizetett összeg (a mező üres lesz, ha nem fizettek ki előzetes fizetést)                                                                                                                   |
+| EarningAmountInLastPaymentCurrency       | Az utolsó fizetési pénznemben befizetett összeg (a mező üres lesz, ha nem fizettek ki előzetes fizetést)                                                                                                                   |
 | lastPaymentCurrency       | Utolsó fizetési pénznem (a mező üres lesz, ha nem fizettek ki előzetes fizetést)                                                                                                                   |
 | AssetId       | A Piactéri szolgáltatáshoz tartozó ügyfelek rendeléseinek egyedi azonosítója.  Ez a megvásárolt beszerzési sorokhoz tartozó elemeket jelöli. Több eszköz is lehet.                                                                                                                   |
 | Rendeléskód       | az ügyfél számlára vonatkozik                                                                                                                   |

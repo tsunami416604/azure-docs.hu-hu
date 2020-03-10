@@ -13,11 +13,11 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 9db6b5ff517a1b0d67e59591ee634dfad685527b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461468"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359901"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>IP-tűzfalszabályok Azure SQL Database és Azure SQL Data Warehouse
 
@@ -154,7 +154,7 @@ Megnyílik a kiszolgáló Áttekintés lapja. Megjeleníti a teljes kiszolgáló
 | [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx) |Kiszolgáló |Eltávolítja a kiszolgálói szintű IP-tűzfalszabályok szabályait |
 | [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |Adatbázis |Az adatbázis-szintű IP-tűzfalszabályok aktuális szabályait jeleníti meg |
 | [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |Adatbázis |Az adatbázis-szintű IP-tűzfalszabályok létrehozása vagy frissítése |
-| [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx) |Adatbázis-kezelés |Adatbázis-szintű IP-tűzfalszabályok eltávolítása |
+| [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx) |Adatbázisok |Adatbázis-szintű IP-tűzfalszabályok eltávolítása |
 
 Az alábbi példa a meglévő szabályokat tekinti át, lehetővé teszi a kiszolgáló *contoso*IP-címeinek tartományát, és töröl egy IP-tűzfalszabály-szabályt:
 

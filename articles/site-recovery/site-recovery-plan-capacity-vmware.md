@@ -8,11 +8,11 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961358"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362819"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Kapacitás megtervezése és méretezése a VMware vész-helyreállításhoz az Azure-ba
 
@@ -163,7 +163,7 @@ Fő célkiszolgáló hozzáadása Windows-alapú virtuális géphez:
     ![A konfigurációs kiszolgáló IP-címének és jelszavának megadását bemutató képernyőkép](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
 8. Kattintson a **Register** (Regisztrálás) elemre. A regisztráció befejeződése után válassza a **Befejezés**lehetőséget.
 
-Ha a regisztráció sikeresen befejeződik, a kiszolgáló megjelenik a Azure Portal **Recovery Services** -tárolóban > **site Recovery infrastruktúra** > **konfigurációs kiszolgálók**, a fő célkiszolgáló konfigurációs kiszolgáló.
+A regisztráció sikeres befejezését követően a kiszolgáló megjelenik a Azure Portal **Recovery Services** -tárolóban > **site Recovery infrastruktúra** > **konfigurációs kiszolgálók**csomópontot a konfigurációs kiszolgáló fő célkiszolgálón.
 
  > [!NOTE]
  > Töltse le a [Windows rendszerhez készült fő célkiszolgáló egyesített telepítési fájljának](https://aka.ms/latestmobsvc)legújabb verzióját.

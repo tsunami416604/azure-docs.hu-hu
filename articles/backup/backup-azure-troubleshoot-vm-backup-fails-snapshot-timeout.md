@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: beb20518d1350335ceed285f4d5cd9da135132e5
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 4583c02b52ab6b3a4e5056a47db096d4e34399ca
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255732"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932642"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -50,10 +50,11 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 **Hibakód**: UserErrorVmProvisioningStateFailed<br>
 **Hibaüzenet**: a virtuális gép sikertelen kiépítési állapotban van<br>
 
-Ez a hiba akkor fordul elő, ha az egyik bővítmény hibája a virtuális gépet kiépítés sikertelen állapotba helyezi.<br>**Nyissa meg Azure Portal > virtuálisgép-> beállításait > bővítmények >-bővítmények állapota** elemre, és ellenőrizze, hogy az összes bővítmény üzembe helyezése **sikeres** volt-e.
+Ez a hiba akkor fordul elő, ha az egyik bővítmény hibája a virtuális gépet kiépítés sikertelen állapotba helyezi.<br>**Nyissa meg Azure Portal > virtuálisgép-> beállításait > bővítmények >-bővítmények állapota** elemre, és ellenőrizze, hogy az összes bővítmény üzembe helyezése **sikeres** volt-e. További információ: [kiépítési állapotok](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states).
 
 - Ha a VMSnapshot-bővítmény hibás állapotban van, kattintson a jobb gombbal a sikertelen bővítményre, és távolítsa el. Igény szerinti biztonsági mentés indítása. Ez a művelet újratelepíti a bővítményeket, majd futtatja a biztonsági mentési feladatot.  <br>
-- Ha bármely más bővítmény meghibásodott állapotban van, akkor az zavarhatja a biztonsági mentést. Győződjön meg arról, hogy a bővítmények problémái megoldódott, és próbálkozzon újra a biztonsági mentési művelettel.  
+- Ha bármely más bővítmény meghibásodott állapotban van, akkor az zavarhatja a biztonsági mentést. Győződjön meg arról, hogy a bővítmények problémái megoldódott, és próbálkozzon újra a biztonsági mentési művelettel.
+- Ha a virtuális gép kiépítési állapota frissítési állapotban van, az zavarhatja a biztonsági mentést. Győződjön meg arról, hogy kifogástalan állapotban van, majd próbálja megismételni a biztonsági mentési műveletet.
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached – elérte a visszaállítási pont gyűjtésének maximális korlátját
 

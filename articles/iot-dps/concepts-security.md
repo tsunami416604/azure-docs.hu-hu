@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 3191e9886604af9b2a26b71a89cee699197585c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973458"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378903"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub Device Provisioning Service biztonsági fogalmak 
 
@@ -40,13 +40,13 @@ A hardveres biztonsági modul, vagy a HSM biztonságos, hardveres tárolást biz
 
 Az eszköz titkai a szoftverben (memóriában) is tárolhatók, de ez a tárterület kevésbé biztonságos, mint a HSM.
 
-## <a name="trusted-platform-module"></a>Platformmegbízhatósági modul
+## <a name="trusted-platform-module"></a>platformmegbízhatósági modul
 
 A TPM a platform hitelesítéséhez használt kulcsok biztonságos tárolására szolgál, vagy a szabványt megvalósító modulokkal való interakcióhoz használt I/O-felületre hivatkozhat. A TPM különálló hardverként, integrált hardverként, belső vezérlőprogram-vagy szoftver-alapúként is létezhetnek. További információ a [TPM és a TPM-igazolásról](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Az eszközök kiépítési szolgáltatása csak a TPM 2,0-es verziója használatát támogatja.
 
 A TPM-igazolás egy egyszer használatos kihíváson alapul, amely a jóváhagyás és a tároló legfelső szintű kulcsait használja egy aláírt közös hozzáférésű aláírási (SAS) jogkivonat megjelenítéséhez.
 
-### <a name="endorsement-key"></a>Ellenőrzőkulcs
+### <a name="endorsement-key"></a>Érvényesítési kulcs
 
 A jóváhagyó kulcs egy aszimmetrikus kulcs, amely a TPM-ben található, amelyet belsőleg generáltak vagy injektáltak a gyártási időszakban, és minden TPM esetében egyediek. A jóváhagyó kulcs nem módosítható és nem távolítható el. A jóváhagyó kulcs privát része soha nem jelenik meg a TPM-en kívül, míg a jóváhagyó kulcs nyilvános része egy valódi TPM felismerésére szolgál. További információ a [jóváhagyó kulcsról](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
 

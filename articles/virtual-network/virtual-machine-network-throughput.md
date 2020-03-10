@@ -16,11 +16,11 @@ ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
 ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750323"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355818"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Virtuális gép hálózati sávszélessége
 
@@ -64,7 +64,7 @@ Napjainkban az Azure hálózati verem támogatja a 250K teljes hálózati folyam
 
 A metrikák a [Azure monitorban](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) érhetők el, hogy nyomon kövessék a hálózati folyamatok számát és a folyamat létrehozásának sebességét a virtuális GÉPEN vagy VMSS-példányokon.
 
-![Azure-monitor-flow-Metrics. png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
 A kapcsolat létesítése és a megszüntetési díjak is befolyásolhatják a hálózati teljesítményt, mivel a kapcsolat létesítési és megszüntetési megosztása a CPU-t a csomagok feldolgozására szolgáló rutinokkal. Azt javasoljuk, hogy a számítási feladatokat a várt forgalmi mintákkal és a teljesítménybeli igényeknek megfelelő méretezéssel bővítse. 
 

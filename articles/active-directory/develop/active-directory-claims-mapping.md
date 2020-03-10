@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 57a66f73a2c0c37426c23c7274853148fd976ac8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699070"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375786"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: a jogkivonatokban kibocsátott jogcímek testreszabása egy adott alkalmazáshoz a bérlőben (előzetes verzió)
 
@@ -59,19 +59,19 @@ Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használ
 | access_token |
 | account_type |
 | acr |
-| színész |
+| actor |
 | actortoken |
-| AIO |
+| aio |
 | altsecid |
-| AMR |
+| amr |
 | app_chain |
 | app_displayname |
 | app_res |
 | appctx |
 | appctxsender |
-| AppID |
+| appid |
 | appidacr |
-| állítás |
+| assertion |
 | at_hash |
 | aud |
 | auth_data |
@@ -87,12 +87,12 @@ Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használ
 | cloud_graph_host_name |
 | cloud_instance_name |
 | cnf |
-| kód |
+| code |
 | vezérlők |
 | credential_keys |
-| CSR |
+| csr |
 | csr_type |
-| DeviceID |
+| deviceid |
 | dns_names |
 | domain_dns_name |
 | domain_netbios_name |
@@ -103,7 +103,7 @@ Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használ
 | exp |
 | expires_on |
 | grant_type |
-| Graph |
+| graph |
 | group_sids |
 | csoportok |
 | hasgroups |
@@ -116,11 +116,11 @@ Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használ
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
-| IAT |
+| iat |
 | identityprovider |
-| identitásszolgáltató |
+| idp |
 | in_corp |
-| példány |
+| instance |
 | ipaddr |
 | isbrowserhostedapp |
 | ISS |
@@ -134,10 +134,10 @@ Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használ
 | mdm_enrollment_url |
 | mdm_terms_of_use_url |
 | nameid |
-| NBF |
+| nbf |
 | netbios_name |
-| egyszeri |
-| OID |
+| nonce |
+| oid |
 | on_prem_id |
 | onprem_sam_account_name |
 | onprem_sid |
@@ -149,33 +149,33 @@ Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használ
 | preferred_username |
 | previous_refresh_token |
 | primary_sid |
-| PUID |
+| puid |
 | pwd_exp |
 | pwd_url |
 | redirect_uri |
 | refresh_token |
 | refreshtoken |
 | request_nonce |
-| erőforrás |
-| szerepkör |
+| resource |
+| role |
 | roles |
 | scope |
-| SCP |
-| SID |
-| aláírás |
+| scp |
+| sid |
+| signature |
 | signin_state |
 | src1 |
 | src2 |
-| Sub |
+| sub |
 | tbid |
 | tenant_display_name |
 | tenant_region_scope |
 | thumbnail_photo |
-| TID |
+| tid |
 | tokenAutologonEnabled |
 | trustedfordelegation |
 | unique_name |
-| UPN |
+| upn |
 | user_setting_sync_url |
 | felhasználónév |
 | UTI |
@@ -286,16 +286,16 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 
 | Forrás | ID (Azonosító) | Leírás |
 |-----|-----|-----|
-| Felhasználó | surname | Család neve |
-| Felhasználó | givenname | utónév; |
+| Felhasználó | Vezetéknév | Család neve |
+| Felhasználó | givenName | utónév; |
 | Felhasználó | DisplayName | Megjelenítendő név |
-| Felhasználó | ObjectId | ObjectID |
-| Felhasználó | e-mail | E-mail cím |
-| Felhasználó | userPrincipalName | Felhasználó egyszerű neve |
-| Felhasználó | Részleg|Részleg|
+| Felhasználó | oid | ObjectID |
+| Felhasználó | mail | E-mail cím |
+| Felhasználó | userprincipalname | Felhasználó egyszerű neve |
+| Felhasználó | Szervezeti egység|Részleg|
 | Felhasználó | onpremisessamaccountname | Helyszíni SAM-fiók neve |
 | Felhasználó | netbiosname| NetBios-név |
-| Felhasználó | dnsdomainname | DNS-tartománynév |
+| Felhasználó | dnsdomainname | DNS Domain Name |
 | Felhasználó | onpremisesecurityidentifier | Helyszíni biztonsági azonosító |
 | Felhasználó | CompanyName| Szervezet neve |
 | Felhasználó | streetAddress | Utca, házszám |
@@ -319,16 +319,16 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 | Felhasználó | extensionattribute14 | Kiterjesztési attribútum 14 |
 | Felhasználó | extensionAttribute15 | 15. bővítmény-attribútum |
 | Felhasználó | othermail | Egyéb E-mail |
-| Felhasználó | ország | Ország/régió |
+| Felhasználó | ország | Ország |
 | Felhasználó | city | Város |
-| Felhasználó | state | Állami |
+| Felhasználó | state | Állapot |
 | Felhasználó | beosztás | Beosztás |
-| Felhasználó | Alkalmazottkód | Alkalmazott azonosítója |
+| Felhasználó | EmployeeID | Alkalmazott azonosítója |
 | Felhasználó | érték facsimiletelephonenumber | Fax telefonszáma |
 | alkalmazás, erőforrás, célközönség | DisplayName | Megjelenítendő név |
 | alkalmazás, erőforrás, célközönség | kifogásolta | ObjectID |
 | alkalmazás, erőforrás, célközönség | tags | Egyszerű szolgáltatásnév címkéje |
-| Cég | tenantcountry | Bérlő országa |
+| Vállalat | tenantcountry | Bérlő országa |
 
 **TransformationID:** A TransformationID elemet csak akkor kell megadni, ha a forrásoldali elem "átalakítás" értékre van állítva.
 
@@ -360,8 +360,8 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 |TransformationMethod|Várt bemenet|Várt kimenet|Leírás|
 |-----|-----|-----|-----|
-|Csatlakozás|karakterlánc1, karakterlánc2, elválasztó|OutputClaim|Összekapcsolja a bemeneti karakterláncokat a között elválasztó használatával. Például: karakterlánc1: "foo@bar.com", karakterlánc2: "Sandbox", elválasztó: "." eredmény a következő outputClaim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|e-mail|OutputClaim|Egy e-mail-cím helyi részének kibontása. Például: mail: "foo@bar.com" a outputClaim: "foo" eredményt eredményez. Ha nincs \@ jel, akkor a rendszer az eredeti bemeneti karakterláncot adja vissza.|
+|Csatlakozás|karakterlán, karakterlán, elválasztó|outputClaim|Összekapcsolja a bemeneti karakterláncokat a között elválasztó használatával. Például: karakterlán: "foo@bar.com", karakterlán: "Sandbox", elválasztó: "." eredmény a következő outputClaim: "foo@bar.com.sandbox"|
+|ExtractMailPrefix|mail|outputClaim|Egy e-mail-cím helyi részének kibontása. Például: mail: "foo@bar.com" a outputClaim: "foo" eredményt eredményez. Ha nincs \@ jel, akkor a rendszer az eredeti bemeneti karakterláncot adja vissza.|
 
 **Szabályzattípushoz:** Egy Szabályzattípushoz elem használatával továbbíthatja az adatok átadását a jogcím-séma bejegyzéseiből egy átalakításba. Két attribútummal rendelkezik: **ClaimTypeReferenceId** és **TransformationClaimType**.
 
@@ -386,10 +386,10 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 |Forrás|ID (Azonosító)|Leírás|
 |-----|-----|-----|
-| Felhasználó | e-mail|E-mail cím|
-| Felhasználó | userPrincipalName|Felhasználó egyszerű neve|
+| Felhasználó | mail|E-mail cím|
+| Felhasználó | userprincipalname|Felhasználó egyszerű neve|
 | Felhasználó | onpremisessamaccountname|Helyszíni Sam-fiók neve|
-| Felhasználó | Alkalmazottkód|Alkalmazott azonosítója|
+| Felhasználó | EmployeeID|Alkalmazott azonosítója|
 | Felhasználó | extensionattribute1 | 1\. bővítmény-attribútum |
 | Felhasználó | extensionattribute2 | 2\. bővítmény-attribútum |
 | Felhasználó | extensionattribute3 | 3\. kiterjesztési attribútum |
@@ -410,12 +410,12 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 | TransformationMethod | Korlátozások |
 | ----- | ----- |
-| ExtractMailPrefix | None |
+| ExtractMailPrefix | Nincs |
 | Csatlakozás | A csatlakoztatott utótagnak az erőforrás-bérlő ellenőrzött tartományának kell lennie. |
 
 ### <a name="custom-signing-key"></a>Egyéni aláíró kulcs
 
-A jogcím-hozzárendelési szabályzat érvénybe léptetéséhez egyéni aláíró kulcsot kell rendelni az egyszerű szolgáltatásnév objektumhoz. Ez biztosítja, hogy a jogkivonatokat a jogcím-hozzárendelési házirend létrehozója módosította, és megvédi az alkalmazásokat a kártékony szereplőkkel létrehozott jogcímek leképezési házirendjeitől. Egyéni aláíró kulcs hozzáadásához a `new-azureadapplicationkeycredential` Azure PowerShell-parancsmaggal hozhat létre szimmetrikus kulcsú hitelesítő adatokat az alkalmazás objektumához. Az Azure PowerShell-parancsmaggal kapcsolatos további információkért kattintson [ide](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
+A jogcím-hozzárendelési szabályzat érvénybe léptetéséhez egyéni aláíró kulcsot kell rendelni az egyszerű szolgáltatásnév objektumhoz. Ez biztosítja, hogy a jogkivonatokat a jogcím-hozzárendelési házirend létrehozója módosította, és megvédi az alkalmazásokat a kártékony szereplőkkel létrehozott jogcímek leképezési házirendjeitől. Egyéni aláíró kulcs hozzáadásához használhatja a Azure PowerShell parancsmagot `new-azureadapplicationkeycredential` az Application objektumhoz tartozó szimmetrikus kulcsos hitelesítő adatok létrehozásához. További információ erről a Azure PowerShell parancsmagról: [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
 
 Azok az alkalmazások, amelyeken engedélyezve van a jogcímek leképezése, meg kell adniuk a jogkivonat-aláíró kulcsaikat az [OpenID Connect metaadat-kéréseinek](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)`appid={client_id}` hozzáfűzésével Alább látható az OpenID Connect metaadat-dokumentum formátuma, amelyet használni kell: 
 
@@ -469,7 +469,7 @@ Ebben a példában egy olyan házirendet hoz létre, amely eltávolítja az alap
       Get-AzureADPolicy
       ```
 1. Rendelje hozzá a szabályzatot az egyszerű szolgáltatáshoz. Az egyszerű szolgáltatásnév ObjectId is le kell kérnie.
-   1. A szervezet összes szolgáltatásának megtekintéséhez [lekérdezheti Microsoft Graph](/graph/traverse-the-graph). Vagy a [Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)jelentkezzen be az Azure ad-fiókjába.
+   1. A szervezet összes szolgáltatásának megtekintéséhez [lekérdezheti a Microsoft Graph API](/graph/traverse-the-graph)-t. Vagy [Microsoft Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)jelentkezzen be az Azure ad-fiókjába.
    2. Ha rendelkezik az egyszerű szolgáltatásnév ObjectId, futtassa a következő parancsot:  
      
       ``` powershell
@@ -493,7 +493,7 @@ Ebben a példában egy olyan házirendet hoz létre, amely hozzáadja az Alkalma
       Get-AzureADPolicy
       ```
 1. Rendelje hozzá a szabályzatot az egyszerű szolgáltatáshoz. Az egyszerű szolgáltatásnév ObjectId is le kell kérnie. 
-   1. A szervezet összes szolgáltatásának megtekintéséhez [lekérdezheti Microsoft Graph](/graph/traverse-the-graph). Vagy a [Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)jelentkezzen be az Azure ad-fiókjába.
+   1. A szervezet összes szolgáltatásának megtekintéséhez [lekérdezheti a Microsoft Graph API](/graph/traverse-the-graph)-t. Vagy [Microsoft Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)jelentkezzen be az Azure ad-fiókjába.
    2. Ha rendelkezik az egyszerű szolgáltatásnév ObjectId, futtassa a következő parancsot:  
      
       ``` powershell
@@ -517,13 +517,13 @@ Ebben a példában egy olyan házirendet hoz létre, amely egy "JoinedData" egy�
       Get-AzureADPolicy
       ```
 1. Rendelje hozzá a szabályzatot az egyszerű szolgáltatáshoz. Az egyszerű szolgáltatásnév ObjectId is le kell kérnie. 
-   1. A szervezet összes szolgáltatásának megtekintéséhez [lekérdezheti Microsoft Graph](/graph/traverse-the-graph). Vagy a [Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)jelentkezzen be az Azure ad-fiókjába.
+   1. A szervezet összes szolgáltatásának megtekintéséhez [lekérdezheti a Microsoft Graph API](/graph/traverse-the-graph)-t. Vagy [Microsoft Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)jelentkezzen be az Azure ad-fiókjába.
    2. Ha rendelkezik az egyszerű szolgáltatásnév ObjectId, futtassa a következő parancsot: 
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 Ha szeretné megtudni, hogyan szabhatja testre az SAML-jogkivonatban kiállított jogcímeket a Azure Portalon keresztül, tekintse meg a következő témakört [: útmutató: az SAML-jogkivonatban kiállított](active-directory-saml-claims-customization.md)

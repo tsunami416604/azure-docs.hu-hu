@@ -16,11 +16,11 @@ ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: aa0810818bf7cfea21f925ee639b4b5a50dcb23b
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615882"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363304"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver számára
 
@@ -1046,7 +1046,7 @@ Ha az SAP ASCS/SCS-példányt mindkét fürtcsomóponton szeretné felvenni, el�
 | --- | --- |
 | Változó neve |`KeepAliveTime` |
 | Változó típusa |REG_DWORD (decimális) |
-| Érték |120000 |
+| Érték |120 000 |
 | Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 _**3. táblázat:** Az első TCP/IP-paraméter módosítása_
@@ -1057,7 +1057,7 @@ Ezt követően adja hozzá ezt a Windows-beállításjegyzékbeli bejegyzést a 
 | --- | --- |
 | Változó neve |`KeepAliveInterval` |
 | Változó típusa |REG_DWORD (decimális) |
-| Érték |120000 |
+| Érték |120 000 |
 | Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 _**4. táblázat:** A második TCP/IP-paraméter módosítása_

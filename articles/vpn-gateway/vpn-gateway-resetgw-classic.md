@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: e3a5807a0ccfa39cc80acacedaa5fb4d3afaaed3
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862764"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379248"
 ---
-# <a name="reset-a-vpn-gateway"></a>VPN-átjáró alaphelyzetbe állítása
+# <a name="reset-a-vpn-gateway"></a>VPN Gateway alaphelyzetbe állítása
 
 Az Azure VPN Gateway alaphelyzetbe állítása akkor hasznos, ha egy vagy több helyek közötti VPN-alagúton elveszíti a létesítmények közötti VPN-kapcsolatot. Ebben az esetben a helyszíni VPN-eszközei megfelelően működnek, de nem tudnak Ipsec-alagutakat létesíteni az Azure VPN Gateway átjárókkal. Ez a cikk segítséget nyújt a VPN-átjáró alaphelyzetbe állításához.
 
@@ -63,7 +63,7 @@ $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 ```
 
-Eredmény:
+Találat
 
 Ha visszatérési eredményt kap, akkor feltételezhető, hogy az átjáró alaphelyzetbe állítása sikeres volt. A visszatérési eredmény azonban semmis, ami explicit módon jelzi, hogy az Alaphelyzetbe állítás sikeres volt. Ha azt szeretné, hogy az előzmények alapján pontosan megtekinthető legyen az átjáró alaphelyzetbe állítása, megtekintheti ezeket az információkat a [Azure Portal](https://portal.azure.com). A portálon navigáljon a **"átjáró neve"-> Resource Health**.
 
@@ -77,7 +77,7 @@ Az alábbi példa alaphelyzetbe állítja a "Group TestRG1 TestVNet1" nevű virt
 Reset-AzureVNetGateway –VnetName 'Group TestRG1 TestVNet1'
 ```
 
-Eredmény:
+Találat
 
 ```powershell
 Error          :
@@ -96,6 +96,6 @@ Az átjáró alaphelyzetbe állításához használja az az [Network vnet-Gatewa
 az network vnet-gateway reset -n VNet5GW -g TestRG5
 ```
 
-Eredmény:
+Találat
 
 Ha visszatérési eredményt kap, akkor feltételezhető, hogy az átjáró alaphelyzetbe állítása sikeres volt. A visszatérési eredmény azonban semmis, ami explicit módon jelzi, hogy az Alaphelyzetbe állítás sikeres volt. Ha azt szeretné, hogy az előzmények alapján pontosan megtekinthető legyen az átjáró alaphelyzetbe állítása, megtekintheti ezeket az információkat a [Azure Portal](https://portal.azure.com). A portálon navigáljon a **"átjáró neve"-> Resource Health**.

@@ -1,6 +1,6 @@
 ---
-title: A StorSimple 8600-as EBOD-vezérlő cseréje |} A Microsoft Docs
-description: Távolítsa el, és cserélje le a StorSimple 8600-as eszközön egyik vagy mindkét EBOD-vezérlő módját ismerteti.
+title: StorSimple 8600 EBOD vezérlő cseréje | Microsoft Docs
+description: Elmagyarázza, hogyan távolíthat el és cserélhet le egy vagy mindkét EBOD-vezérlőt egy StorSimple 8600-eszközön.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,76 +15,76 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: b05d1f36d1e74b3d915e216676859654fbcbacf3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578663"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365982"
 ---
-# <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>A StorSimple eszköz az EBOD-vezérlő cseréje
+# <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>EBOD-vezérlő cseréje a StorSimple-eszközön
 
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag azt ismerteti, hogyan cserélje le a hibás EBOD vezérlő modul a Microsoft Azure StorSimple eszközön. Az EBOD-vezérlő modul cseréjéhez kell tennie:
+Ez az oktatóanyag azt ismerteti, hogyan lehet lecserélni egy hibás EBOD-vezérlő modult a Microsoft Azure StorSimple eszközön. Egy EBOD vezérlő modul lecseréléséhez a következőket kell tennie:
 
-* Távolítsa el a hibás az EBOD-vezérlő
-* Egy új EBOD-vezérlő telepítése
+* A hibás EBOD-vezérlő eltávolítása
+* Új EBOD-vezérlő telepítése
 
 Mielőtt elkezdené, vegye figyelembe a következő információkat:
 
-* Üres EBOD modulok összes nem használt tárolóhelyek kell beszúrni. A ház nem elérésű megfelelően, ha a tárhely marad nyitva.
-* Az EBOD-vezérlő ritkáról gyakori elérésű-cserélhető és eltávolított vagy lecserélt. Ne távolítsa el a sikertelen modul, amíg nincs egy helyettesítő. A helyettesítő folyamatot kezdeményez, ha 10 percen belül kell befejezéséhez.
+* Üres EBOD-modulokat kell beszúrni az összes fel nem használt tárolóhelybe. A ház nem fog megfelelően kihűlni, ha a tárolóhely nyitva van.
+* A EBOD vezérlő könnyen cserélhető, és eltávolítható vagy lecserélhető. Ne távolítsa el a meghibásodott modult, amíg nincs csere. A helyettesítési folyamat elindításakor 10 percen belül be kell fejeznie.
 
 > [!IMPORTANT]
-> Távolítsa el vagy cserélje le valamelyik StorSimple összetevő megkísérlése előtt győződjön meg arról, hogy tekintse át a [biztonsági ikon konvenciók](storsimple-safety.md#safety-icon-conventions) és egyéb [biztonsági óvintézkedések](storsimple-safety.md).
+> A StorSimple-összetevők eltávolításának vagy cseréjének megkísérlése előtt ellenőrizze, hogy megtekinti-e a [biztonsági ikon konvencióit](storsimple-safety.md#safety-icon-conventions) és az egyéb [biztonsági óvintézkedéseket](storsimple-safety.md).
 
-## <a name="remove-an-ebod-controller"></a>Az EBOD-vezérlő eltávolítása
-A StorSimple eszköz sikertelen EBOD vezérlő moduljának cseréje, előtt ellenőrizze, hogy a többi EBOD vezérlő modul aktív, és fut. Az alábbi eljárást és táblázatot azt ismertetik, hogyan távolítsa el az EBOD-vezérlő modul.
+## <a name="remove-an-ebod-controller"></a>EBOD-vezérlő eltávolítása
+A StorSimple eszköz sikertelen EBOD vezérlő moduljának cseréje, előtt ellenőrizze, hogy a többi EBOD vezérlő modul aktív, és fut. A következő eljárás és táblázat ismerteti, hogyan távolíthatja el a EBOD vezérlő modult.
 
-#### <a name="to-remove-an-ebod-module"></a>Az EBOD-moduljának eltávolítása
+#### <a name="to-remove-an-ebod-module"></a>EBOD-modul eltávolítása
 1. Nyissa meg az Azure Portalt.
-2. Nyissa meg az eszközt, és navigáljon a **beállítások** > **hardverállapot**, és ellenőrizze, hogy a LED-jét az aktív EBOD-vezérlő modult állapota zöld, és a LED-jét a sikertelen az EBOD-vezérlő modul az piros.
-3. Keresse meg a sikertelen EBOD vezérlő modul hátulján az eszköz található.
-4. Távolítsa el a kábelek, amely az EBOD-vezérlő modul csatlakozni a vezérlő előtt az EBOD-modul a rendszerből.
-5. Jegyezze fel a pontos SAS-port a tartományvezérlőre, amely a csatlakoztatott EBOD-vezérlő modul. Az EBOD modul cseréje után állíthatja vissza a rendszer ezt a konfigurációt kell adnia.
+2. Nyissa meg az eszközt, és navigáljon a **beállítások** > **hardver állapota**elemre, és ellenőrizze, hogy az aktív EBOD vezérlő moduljának állapota zöld, és a sikertelen EBOD vezérlő modulhoz tartozó LED piros.
+3. Keresse meg a sikertelen EBOD vezérlő modult az eszköz hátoldalán.
+4. Távolítsa el azokat a kábeleket, amelyek a EBOD-vezérlő modult csatlakoztatják a vezérlőhöz, mielőtt a EBOD-modult a rendszeren kívülre tenné.
+5. Jegyezze fel a vezérlőhöz csatlakoztatott EBOD vezérlő modul pontos SAS-portját. A EBOD modul cseréje után vissza kell állítania a rendszer erre a konfigurációra.
    
    > [!NOTE]
-   > Általában ez a Port, amely van jelölve lesz **üzemeltethetnek** a következő diagram mutatja.
+   > Ez általában az A port, amely a következő ábrán **gazdagépként** van megjelölve.
    
-    ![Csatlakozópanel meghibásodása az EBOD-vezérlő](./media/storsimple-ebod-controller-replacement/IC741049.png)
+    ![EBOD-vezérlő hátlapja](./media/storsimple-ebod-controller-replacement/IC741049.png)
    
-     **1. ábra** vissza az EBOD-modul
+     **1. ábra** A EBOD modul hátoldala
    
    | Címke | Leírás |
    |:--- |:--- |
-   | 1 |Tartalék LED |
-   | 2 |Energiagazdálkodási LED |
+   | 1 |Hiba LED |
+   | 2 |Power LED |
    | 3 |SAS-összekötők |
    | 4 |SAS LEDs |
-   | 5 |Csak a gyári használatra soros portok |
-   | 6 |Port egy (a gazdagép) |
-   | 7 |B port (gazda ki) |
-   | 8 |Port C (csak gyári használata) |
+   | 5 |Csak gyári portok használata |
+   | 6 |A port (a gazdagép) |
+   | 7 |B port (a gazdagépen) |
+   | 8 |C port (csak gyári használatra) |
 
-## <a name="install-a-new-ebod-controller"></a>Egy új EBOD-vezérlő telepítése
-Az alábbi eljárást és táblázatot ismertetik a StorSimple-eszköz az EBOD-vezérlő modul telepítése.
+## <a name="install-a-new-ebod-controller"></a>Új EBOD-vezérlő telepítése
+A következő eljárás és táblázat ismerteti, hogyan telepíthet egy EBOD vezérlő modult a StorSimple-eszközön.
 
-#### <a name="to-install-an-ebod-controller"></a>Az EBOD-vezérlő telepítése
-1. Ellenőrizze az EBOD eszköz kárt, különösen az adapter-összekötő számára. Ne telepítse az új EBOD-vezérlő, ha bármely elgörbülve.
-2. A zárolás van életben nyitva húzza az ujját a modul a ház, mindaddig, amíg a zárolás van életben léphet.
+#### <a name="to-install-an-ebod-controller"></a>EBOD-vezérlő telepítése
+1. Győződjön meg róla, hogy a EBOD-eszköz kárt okoz, különösen az illesztőfelület-összekötőn. Ne telepítse az új EBOD-vezérlőt, ha bármelyik PIN-kód be van hajlítva.
+2. Ha a zárolások nyitott helyzetben vannak, csúsztassa a modult a házba, amíg a zárak bekerülnek.
    
-    ![Az EBOD-vezérlő telepítése](./media/storsimple-ebod-controller-replacement/IC741050.png)
+    ![EBOD-vezérlő telepítése](./media/storsimple-ebod-controller-replacement/IC741050.png)
    
-    **2. ábra** az EBOD-vezérlő modul telepítése
-3. Zárja be a zárolás. Egy-két kattintással kell hall, a zárolás bekövetkezése várható.
+    **2. ábra**  A EBOD vezérlő moduljának telepítése
+3. Zárjuk be a zárat. A zárolás bevonásakor egy kattintással kell megjelennie.
    
-    ![EBOD zárolás feloldása](./media/storsimple-ebod-controller-replacement/IC741047.png)
+    ![EBOD zárolásának felszabadítása](./media/storsimple-ebod-controller-replacement/IC741047.png)
    
-    **3. ábra** a EBOD modul zárolás bezárása
-4. Újracsatlakozás a kábelek. Használjon, amely a cseréje előtt szerepelt pontos konfigurációját. Tekintse meg a következő ábra és csatlakoztassa a kábeleket részleteit a táblában.
+    **3. ábra**  A EBOD modul zárolásának bezárása
+4. A kábelek újracsatlakoztatása. A csere előtt található pontos konfigurációt használja. A kábelek csatlakoztatásával kapcsolatos részletekért tekintse meg a következő diagramot és táblázatot.
    
-    ![Az energiagazdálkodási 4U eszköz kábelezése](./media/storsimple-ebod-controller-replacement/IC770723.png)
+    ![A 4U-eszköz csatlakoztatása a powerhez](./media/storsimple-ebod-controller-replacement/IC770723.png)
    
-    **4. ábra**. Újracsatlakozás a kábelek
+    **4. ábra**. Kábelek újracsatlakoztatása
    
    | Címke | Leírás |
    |:--- |:--- |
@@ -93,11 +93,11 @@ Az alábbi eljárást és táblázatot ismertetik a StorSimple-eszköz az EBOD-v
    | 3 |PCM 1 |
    | 4 |Vezérlő 0 |
    | 5 |Vezérlő 1 |
-   | 6 |Az EBOD-vezérlő 0 |
-   | 7 |Az EBOD-vezérlő 1 |
+   | 6 |EBOD vezérlő 0 |
+   | 7 |1\. EBOD-vezérlő |
    | 8 |EBOD ház |
-   | 9 |Áramelosztó egységek |
+   | 9 |Energiaellátási egységek |
 
-## <a name="next-steps"></a>További lépések
-Tudjon meg többet [StorSimple összetevő hardvercseréhez](storsimple-8000-hardware-component-replacement.md).
+## <a name="next-steps"></a>Következő lépések
+További információ a [StorSimple hardveres összetevők cseréjéről](storsimple-8000-hardware-component-replacement.md).
 

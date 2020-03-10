@@ -4,11 +4,11 @@ description: Ajánlott eljárások használatával növelheti a Tudásbázis, é
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.openlocfilehash: fb935aeed7b492a3a0c213d6d7166bd5d80144c1
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370099"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389306"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Ajánlott eljárások a QnA Maker Tudásbázis
 
@@ -118,7 +118,7 @@ Míg az angol nyelv szinonimái is vannak, a kis-és nagybetűk megkülönbözte
 
 |Eredeti word|Szinonimák|
 |--|--|
-|Vásárlás|vásároljon<br>NET – banki szolgáltatások<br>nettó banki|
+|Vásárlás|beszerzés<br>NET – banki szolgáltatások<br>nettó banki|
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>Önálló szavak használatával tesz különbséget a kérdések
 A QnA Maker rangsorolási algoritmusa, amely egy, a Tudásbázisban kérdéssel rendelkező felhasználói lekérdezésnek felel meg, akkor a legjobban működik, ha az egyes kérdések eltérő igényt mutatnak. Ismétlődő kérdések között ugyanazon szó csökkenti annak valószínűsége, hogy a helyes válasz egy adott felhasználó lekérdezés azokat a szavakat az van kiválasztva.

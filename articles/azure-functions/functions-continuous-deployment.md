@@ -5,11 +5,11 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230900"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372366"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions – folyamatos üzembe helyezés
 
@@ -63,7 +63,7 @@ Egy meglévő Function alkalmazás folyamatos üzembe helyezésének konfigurál
 
 6. Tekintse át az összes adatot, majd a **Befejezés** gombra kattintva fejezze be a telepítési konfigurációt.
 
-    ![Összefoglalás](./media/functions-continuous-deployment/summary.png)
+    ![Összegzés](./media/functions-continuous-deployment/summary.png)
 
 A folyamat befejezésekor a rendszer a megadott forrásból származó összes kódot telepíti az alkalmazásba. Ezen a ponton a központi telepítési forrás változásai elindítják ezeket a módosításokat az Azure-beli Function alkalmazásban.
 

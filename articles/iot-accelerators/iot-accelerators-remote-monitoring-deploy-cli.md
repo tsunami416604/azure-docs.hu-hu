@@ -1,6 +1,6 @@
 ---
-title: A távoli figyelési megoldás parancssori felületével – Azure |} A Microsoft Docs
-description: Ez az útmutató bemutatja, hogyan építheti ki a távoli figyelési megoldásgyorsító a parancssori felület használatával.
+title: A távoli figyelési megoldás üzembe helyezése a parancssori felület használatával – Azure | Microsoft Docs
+description: Ez a útmutató bemutatja, hogyan építheti ki a távoli figyelési megoldás Gyorssegédjét a parancssori felület használatával.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,23 +9,23 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447012"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383113"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>A távoli figyelési megoldásgyorsító a CLI-vel üzembe helyezése
+# <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>A távoli figyelési megoldás gyorsító üzembe helyezése a parancssori felület használatával
 
-Ez az útmutató bemutatja, hogyan lehet a távoli figyelési megoldásgyorsító üzembe helyezése. A megoldás a parancssori felület használatával telepít. A megoldás a webes felhasználói felület használatával a azureiotsolutions.com, további információ: a beállítás is telepítheti a [a távoli figyelési megoldásgyorsító üzembe helyezése](quickstart-remote-monitoring-deploy.md) rövid.
+Ez a útmutató bemutatja, hogyan helyezheti üzembe a távoli figyelési megoldás gyorsító. A megoldást a parancssori felület használatával helyezheti üzembe. A megoldást a azureiotsolutions.com webalapú felhasználói felületén is üzembe helyezheti, ha többet szeretne tudni erről a lehetőségről, tekintse meg a következő témakört: a [távoli figyelési megoldás telepítése gyorsító](quickstart-remote-monitoring-deploy.md) útmutatója.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A távoli figyelési megoldásgyorsító üzembe helyezése, aktív Azure-előfizetésre van szükség.
+A távoli figyelési megoldás-gyorsító üzembe helyezéséhez aktív Azure-előfizetésre van szükség.
 
 Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-Futtassa a parancssori Felületet, kell [Node.js](https://nodejs.org/) telepítve a helyi gépen.
+A CLI futtatásához a helyi gépen telepíteni kell a [Node. js fájlt](https://nodejs.org/) .
 
 ## <a name="install-the-cli"></a>A CLI telepítése
 
@@ -35,91 +35,91 @@ A CLI telepítéséhez futtassa a következő parancsot a parancssori környezet
 npm install iot-solutions -g
 ```
 
-## <a name="sign-in-to-the-cli"></a>Jelentkezzen be a parancssori felület
+## <a name="sign-in-to-the-cli"></a>Bejelentkezés a CLI-be
 
-A megoldásgyorsító központi telepítése, jelentkezzen be az Azure-előfizetéshez a CLI használatával:
+A megoldás-gyorsító üzembe helyezése előtt be kell jelentkeznie az Azure-előfizetésbe a parancssori felület használatával:
 
 ```cmd/sh
 pcs login
 ```
 
-Kövesse a képernyőn megjelenő utasításokat a bejelentkezési folyamat befejezéséhez.
+A bejelentkezési folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
 
 ## <a name="deployment-options"></a>Üzembe helyezési beállítások
 
-A megoldásgyorsító központi telepítésekor többféle módon, amely a telepítési folyamat konfigurálása:
+A megoldás-gyorsító telepítésekor több lehetőség is van a telepítési folyamat konfigurálására:
 
 | Beállítás | Értékek | Leírás |
 | ------ | ------ | ----------- |
-| SKU    | `basic`, `standard`, `local` | A _alapszintű_ központi telepítés a célja a teszt- és bemutatók, mindegyik mikroszolgáltatás egyetlen virtuális gép üzembe helyezve. A _standard_ telepítési szól ez üzembe helyezi a mikroszolgáltatásokat több virtuális gépek éles környezetben. A _helyi_ telepítési konfigurálja egy Docker-tárolót, a mikroszolgáltatásokat futtathatók a helyi gépen, és használja az Azure felhőszolgáltatások, például a storage és a Cosmos DB. |
-| Futtatókörnyezet | `dotnet`, `java` | A mikroszolgáltatások nyelvi végrehajtásának választja ki. |
+| SKU    | `basic`, `standard`, `local` | Az _alapszintű_ üzembe helyezés tesztelési és demonstrációs célokra készült, és egyetlen virtuális gépre telepíti az összes szolgáltatást. A _standard szintű_ üzembe helyezés éles környezetben üzemel, és több virtuális gépre helyezi üzembe a szolgáltatást. A _helyi_ telepítés egy Docker-tárolót állít be, amely a helyi gépen futtatja a-szolgáltatásokat, és az Azure Cloud Servicest (például storage és Cosmos db) használja. |
+| Futtatókörnyezet | `dotnet`, `java` | Kiválasztja a webszolgáltatás nyelvi megvalósítását. |
 
-A helyi üzembe helyezési lehetőség használatával kapcsolatban lásd: [helyben fut a távoli figyelési megoldás](iot-accelerators-remote-monitoring-deploy-local.md).
+A helyi telepítési lehetőség használatáról további információt [a távoli figyelési megoldás helyi futtatása](iot-accelerators-remote-monitoring-deploy-local.md)című témakörben talál.
 
-## <a name="basic-and-standard-deployments"></a>Alap és normál központi telepítések
+## <a name="basic-and-standard-deployments"></a>Alapszintű és standard központi telepítések
 
-Ez a szakasz az alap és normál központi telepítés közötti lényeges különbségeket foglalja össze.
+Ez a szakasz az alapszintű és a normál üzemelő példány közötti fő különbségeket összegzi.
 
 ### <a name="basic"></a>Alapszintű
 
-Az alapszintű központi telepítést végezhet [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) vagy a parancssori felület használatával.
+Az alapszintű telepítést a [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) vagy a parancssori felület használatával végezheti el.
 
-Az alapszintű telepítés a megoldás bemutatását szolgálja. Költségek csökkentése érdekében minden mikroszolgáltatás egyetlen virtuális gép helyezik üzembe. A központi telepítés nem használ egy éles használatra kész architektúra.
+Az alapszintű üzembe helyezés a megoldás bemutatását célozza. A költségek csökkentése érdekében az összes szolgáltatás üzembe helyezése egyetlen virtuális gépen történik. Ez a központi telepítés nem használ éles használatra kész architektúrát.
 
-Alapszintű üzembe helyezéséhez az Azure-előfizetésben hoz létre a következő szolgáltatásokat:
+Az alapszintű üzembe helyezés a következő szolgáltatásokat hozza létre az Azure-előfizetésében:
 
-| Darabszám | Resource                       | Típus         | Használt |
+| Darabszám | Erőforrás                       | Típus         | Használatban |
 |-------|--------------------------------|--------------|----------|
-| 1     | [Linux rendszerű virtuális gép](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 V2  | Mikroszolgáltatás-alapú üzemeltetéséhez |
-| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standard csomag | Kezelés és kommunikáció |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Konfigurációs adatok tárolását, szabályok, riasztások és más ritka elérésű tárolási |  
-| 1     | [Azure Storage Account](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Virtuális gép és a streamelési ellenőrzőpontok |
-| 1     | [Webalkalmazás](https://azure.microsoft.com/services/app-service/web/)        |                 | A webes előtér-alkalmazás üzemeltetése |
-| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Felhasználói identitások kezelése és biztonsági |
-| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Az eszközintelligencia helyek megtekintése |
-| 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 egységet              | Valós idejű elemzési engedélyezése |
-| 1     | [Az Azure Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Üzembe helyezési eszközöket bármilyen méretek |
-| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 egység              | Tárolási üzenetek adatait, és lehetővé teszi, hogy részletesen telemetriai elemzés céljából |
+| 1     | [Linuxos virtuális gép](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 v2  | Szolgáltatók üzemeltetése |
+| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – standard szint | Eszközkezelés és kommunikáció |
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | A konfigurációs, a szabályok, a riasztások és az egyéb hűtőházi tárolók tárolása |  
+| 1     | [Azure Storage-tárfiók](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Tároló a virtuális gép és a folyamatos átviteli ellenőrzőpontok számára |
+| 1     | [Webalkalmazás](https://azure.microsoft.com/services/app-service/web/)        |                 | Előtér-webalkalmazás üzemeltetése |
+| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Felhasználói identitások és biztonság kezelése |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Az eszköz helyeinek megtekintése |
+| 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 egység              | Valós idejű elemzések engedélyezése |
+| 1     | [Azure Device kiépítési szolgáltatás](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Eszközök kiépítés nagy méretben |
+| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 egység              | Az üzenetek tárolására szolgáló tárterület, amely lehetővé teszi a részletes telemetria elemzését |
 
 ### <a name="standard"></a>Standard
 
-Egy normál telepítése csak a parancssori felületről teheti meg.
+A normál telepítést csak a parancssori felület használatával végezheti el.
 
-Normál telepítés az, hogy a fejlesztő testreszabhatja és kibővítheti éles használatra kész üzemelő. Használja a normál telepítés lehetőséget, ha készen áll egy éles használatra kész architektúrát, a méretezés és a bővíthetőségi beépített testreszabásához. Alkalmazás mikroszolgáltatások Docker-tárolókként épülnek, és az Azure Kubernetes Service használatával telepíthetők. A Kubernetes vezénylő helyez üzembe, méretezhető és felügyeli a mikroszolgáltatásokat.
+A normál üzembe helyezés olyan éles használatra kész környezet, amelyet a fejlesztő testre szabhat és kiterjeszt. A normál üzembe helyezési lehetőség használata, ha készen áll a méretezésre és bővíthetőségre épülő, éles használatra kész architektúra testre szabására. Az Application Service-szolgáltatások a Docker-tárolók és az Azure Kubernetes szolgáltatás használatával telepíthetők. A Kubernetes Orchestrator üzembe helyezi, méretezi és kezeli a-szolgáltatásokat.
 
-Szabványos telepítés a következő szolgáltatásokat az Azure-előfizetésben hoz létre:
+A standard szintű üzembe helyezés a következő szolgáltatásokat hozza létre az Azure-előfizetésében:
 
-| Count | Resource                                     | Termékváltozat / méretezés      | Használt |
+| Darabszám | Erőforrás                                     | SKU/méret      | Használatban |
 |-------|----------------------------------------------|-----------------|----------|
-| 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Egy teljes körűen felügyelt Kubernetes tárolószervező szolgáltatást, az alapértelmezett érték 3 ügynökök használata|
-| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – Standard csomag | Eszközkezelés, a parancs és vezérlés |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Konfigurációs adatok és eszközök telemetriát, például a szabályok, a riasztások és az üzenetek tárolására |
-| 5     | [Az Azure Storage-fiókok](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | 4 – Virtuálisgép-tároló, a streamelési ellenőrzőpontokat 1 |
-| 1     | [APP SERVICE](https://azure.microsoft.com/services/app-service/web/)             | S1 – Standard     | Az Application gateway SSL-en keresztül |
-| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Felhasználói identitások kezelése és biztonsági |
-| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Az eszközintelligencia helyek megtekintése |
-| 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 egységet              | Valós idejű elemzési engedélyezése |
-| 1     | [Az Azure Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Üzembe helyezési eszközöket bármilyen méretek |
-| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 egység              | Tárolási üzenetek adatait, és lehetővé teszi, hogy részletesen telemetriai elemzés céljából |
+| 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Teljes körűen felügyelt Kubernetes-tárolói szolgáltatás használata, alapértelmezett érték 3 ügynök|
+| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – standard szint | Eszközkezelés, parancs és vezérlés |
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | A konfigurációs és az eszközök telemetria (például szabályok, riasztások és üzenetek) tárolása |
+| 5     | [Azure Storage-fiókok](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | 4 virtuálisgép-tároláshoz és 1 a folyamatos átviteli ellenőrzőpontokhoz |
+| 1     | [APP SERVICE](https://azure.microsoft.com/services/app-service/web/)             | S1 – Standard     | Application Gateway SSL-en keresztül |
+| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Felhasználói identitások és biztonság kezelése |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Az eszköz helyeinek megtekintése |
+| 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 egység              | Valós idejű elemzések engedélyezése |
+| 1     | [Azure Device kiépítési szolgáltatás](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Eszközök kiépítés nagy méretben |
+| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 egység              | Az üzenetek tárolására szolgáló tárterület, amely lehetővé teszi a részletes telemetria elemzését |
 
 > [!NOTE]
-> Annak a díjszabásról az alábbi szolgáltatások [ https://azure.microsoft.com/pricing ](https://azure.microsoft.com/pricing). Használati és számlázási részletek az Ön előfizetéséhez az [az Azure Portal](https://portal.azure.com/).
+> Ezekről a szolgáltatásokról a [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing)címen talál díjszabási információt. Az előfizetésre vonatkozó használati és számlázási adatokat az [Azure Portalon](https://portal.azure.com/)találhatja meg.
 
-## <a name="deploy-the-solution-accelerator"></a>A megoldásgyorsító üzembe helyezése
+## <a name="deploy-the-solution-accelerator"></a>A megoldás-gyorsító üzembe helyezése
 
-Üzembe helyezés példák:
+Üzembe helyezési példák:
 
 ### <a name="example-deploy-net-version"></a>Példa: .NET-verzió telepítése
 
-Az alábbi példa bemutatja, hogyan helyezhet üzembe a basic, a távoli figyelési megoldásgyorsító verziója .NET:
+Az alábbi példa bemutatja, hogyan helyezheti üzembe a távoli figyelési megoldás gyorsító alapszintű, .NET-es verzióját:
 
 ```cmd/sh
 pcs -t remotemonitoring -s basic -r dotnet
 ```
 
-### <a name="example-deploy-java-version"></a>Példa: a Java-verzió telepítése
+### <a name="example-deploy-java-version"></a>Példa: Java-verzió telepítése
 
-Az alábbi példa bemutatja, hogyan helyezhet üzembe a távoli figyelési megoldásgyorsító a standard szintű, Java-verzió:
+Az alábbi példa bemutatja, hogyan helyezheti üzembe a távoli figyelési megoldás-gyorsító standard, Java-verzióját:
 
 ```cmd/sh
 pcs -t remotemonitoring -s standard -r java
@@ -127,32 +127,32 @@ pcs -t remotemonitoring -s standard -r java
 
 ### <a name="pcs-command-options"></a>számítógépek parancs beállításai
 
-Ha futtatja a `pcs` parancsot a megoldás üzembe helyezése, kéri a:
+Ha a `pcs` parancsot a megoldás üzembe helyezéséhez futtatja, a rendszer a következőt kéri:
 
-- A megoldás nevét. A névnek egyedinek kell lennie.
+- A megoldás neve. A névnek egyedinek kell lennie.
 - A használandó előfizetés.
-- Egy helyen.
-- Hitelesítő adatok a virtuális gépek, amelyeken a mikroszolgáltatás-alapú. Használhatja ezeket a hitelesítő adatokat a virtuális gépek hibaelhárítási eléréséhez.
+- Egy hely.
+- A szolgáltatást futtató virtuális gépek hitelesítő adatai. Ezeket a hitelesítő adatokat használhatja a virtuális gépek hibaelhárításhoz való hozzáféréséhez.
 
-Ha a `pcs` parancs végez, az új megoldásgyorsító URL-CÍMÉT jeleníti meg. A `pcs` parancs létrehoz egy fájlt is `{deployment-name}-output.json` , amely az IoT Hub által létrehozott, például a nevét információkat tartalmaz.
+Amikor az `pcs` parancs befejeződik, megjelenik az új megoldás-gyorsító URL-címe. A `pcs` parancs egy olyan fájl `{deployment-name}-output.json` is létrehoz, amely olyan adatokat tartalmaz, mint például a létrehozott IoT Hub neve.
 
-A parancssori paraméterekkel kapcsolatos további információkért futtassa:
+A parancssori paraméterekkel kapcsolatos további információkért futtassa a következőt:
 
 ```cmd/sh
 pcs -h
 ```
 
-A parancssori felület kapcsolatos további információkért lásd: [a parancssori felület használata](https://github.com/Azure/pcs-cli/blob/master/README.md).
+További információ a parancssori felületről: [a parancssori felület használata](https://github.com/Azure/pcs-cli/blob/master/README.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez az útmutató, megtanulta, hogyan lehet:
+Ebben a útmutatóban megtanulta, hogyan végezheti el a következőket:
 
 > [!div class="checklist"]
 > * A megoldásgyorsító konfigurálása
-> * A megoldásgyorsító üzembe helyezése
-> * Jelentkezzen be a megoldásgyorsító
+> * A megoldás-gyorsító üzembe helyezése
+> * Bejelentkezés a megoldás-gyorsító
 
-Most, hogy a távoli figyelési megoldás üzembe helyezte, a következő lépés, hogy [Fedezze fel a megoldás irányítópultján képességeit](./quickstart-remote-monitoring-deploy.md).
+Most, hogy üzembe helyezte a távoli figyelési megoldást, a következő lépés a [megoldás irányítópultjának képességeinek megismerése](./quickstart-remote-monitoring-deploy.md).
 
 <!-- Next how-to guides in the sequence -->

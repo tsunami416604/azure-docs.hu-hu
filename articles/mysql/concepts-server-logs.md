@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 9a3a58cab2d9673a4660967e3a11d7f88900e718
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844955"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359615"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Lassú lekérdezési naplók a Azure Database for MySQL
 Azure Database for MySQL a lassú lekérdezési napló elérhető a felhasználók számára. A tranzakciónaplóhoz való hozzáférés nem támogatott. A lassú lekérdezési napló használatával azonosíthatók a hibaelhárítási teljesítménybeli szűk keresztmetszetek.
@@ -21,7 +21,7 @@ További információ a MySQL lassú lekérdezési naplóról: a MySQL-hivatkoz�
 ## <a name="access-slow-query-logs"></a>Lassú lekérdezési naplók elérése
 A Azure Portal és az Azure CLI használatával Azure Database for MySQL lassú lekérdezési naplókat listázhat és tölthet le.
 
-A Azure Portal válassza ki a Azure Database for MySQL kiszolgálót. A **figyelés** fejléc alatt válassza ki a **kiszolgálói naplók** lapot.
+Az Azure Portalon válassza ki az Azure Database for MySQL-kiszolgálóhoz. A **figyelés** fejléc alatt válassza ki a **kiszolgálói naplók** lapot.
 
 Az Azure CLI-vel kapcsolatos további információkért lásd: [lassú lekérdezési naplók konfigurálása és elérése az Azure CLI használatával](howto-configure-server-logs-in-cli.md).
 
@@ -79,7 +79,7 @@ Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől füg
 | `insert_id_s` | AZONOSÍTÓ beszúrása |
 | `sql_text_s` | Teljes lekérdezés |
 | `server_id_s` | A kiszolgáló azonosítója |
-| `thread_id_s` | Szál azonosítója |
+| `thread_id_s` | Szálazonosító |
 | `\_ResourceId` | Erőforrás URI-ja |
 
 > [!Note]
@@ -140,6 +140,6 @@ Ha a lassú lekérdezési naplók a diagnosztikai naplókon keresztül Azure Mon
     | where query_time_d > 10
     ```    
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Lassú lekérdezési naplók konfigurálása a Azure Portal](howto-configure-server-logs-in-portal.md)
 - [Lassú lekérdezések naplóinak konfigurálása az Azure CLI-ből](howto-configure-server-logs-in-cli.md).

@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451266"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393523"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Soros konzol használata SysRq-és NMI-hívásokhoz
 
@@ -98,7 +98,7 @@ A SysRq-re és a Linux konfigurálására vonatkozó, az összeomlási memóriak
 - [Összeomlási naplók gyűjtése](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="non-maskable-interrupt-nmi"></a>Nem maszkolt megszakítás (NMI)
-A nem maszkolt megszakítás (NMI) úgy van kialakítva, hogy egy olyan jelet hozzon létre, amelyet a virtuális gépen lévő szoftver nem hagy figyelmen kívül. A NMIs korábban a hardveres problémák figyelésére használták az adott válaszidőt igénylő rendszereken.  Napjainkban a programozók és a rendszergazdák gyakran használják a NMI-t a nem válaszoló rendszerek hibakeresésére vagy hibaelhárítására.
+A nem maszkolt megszakítás (NMI) úgy van kialakítva, hogy egy olyan jelet hozzon létre, amelyet a virtuális gépen lévő szoftver nem hagy figyelmen kívül. Hagyományosan NMIs figyelje a hardverekkel kapcsolatos problémák szerepelnek, amelyek adott válaszidők szükséges rendszereken voltak használva.  Napjainkban a programozók és a rendszergazdák gyakran használják a NMI-t a nem válaszoló rendszerek hibakeresésére vagy hibaelhárítására.
 
 A soros konzol segítségével NMI küldhet egy Azure-beli virtuális gépre az alább látható parancssáv billentyűzet ikonjával. A NMI elszállítása után a virtuális gép konfigurációja vezérli, hogy a rendszer hogyan reagáljon.  A Linux operációs rendszerek összeomolhatnak, és a memóriakép létrehozásával az operációs rendszer NMI kap.
 

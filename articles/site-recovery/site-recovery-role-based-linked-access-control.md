@@ -7,11 +7,11 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083761"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362978"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Site Recovery hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel (RBAC)
 
@@ -53,7 +53,7 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 |  |  | Microsoft.ClassicCompute/virtualMachines/read |
 |  |  | Microsoft.ClassicCompute/virtualMachines/write |
 |  |  | Microsoft.ClassicCompute/virtualMachines/delete |
-| Network (Hálózat) | Resource Manager | Microsoft.Network/networkInterfaces/read |
+| Hálózat | Resource Manager | Microsoft.Network/networkInterfaces/read |
 |  |  | Microsoft.Network/networkInterfaces/write |
 |  |  | Microsoft.Network/networkInterfaces/delete |
 |  |  | Microsoft.Network/networkInterfaces/join/action |
@@ -62,7 +62,7 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 |  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
 |  | Klasszikus | Microsoft.ClassicNetwork/virtualNetworks/read |
 |  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
-| Tárolás | Resource Manager | Microsoft.Storage/storageAccounts/read |
+| Tárterület | Resource Manager | Microsoft.Storage/storageAccounts/read |
 |  |  | Microsoft.Storage/storageAccounts/listkeys/action |
 |  | Klasszikus | Microsoft.ClassicStorage/storageAccounts/read |
 |  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |

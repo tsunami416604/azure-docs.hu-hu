@@ -1,5 +1,5 @@
 ---
-title: Hibaelhárítás
+title: Hibakeresés
 description: Az Azure szinapszis Analytics hibaelhárítása.
 services: sql-data-warehouse
 author: kevinvngo
@@ -12,11 +12,11 @@ ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 085b907b6a848fb534df63b5465948864048cc19
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199869"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383756"
 ---
 # <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Az SQL Analytics hibaelhárítása Az Azure Szinapszisban
 Ez a cikk a gyakori hibaelhárítási kérdéseit sorolja fel.
@@ -67,7 +67,7 @@ Ez a cikk a gyakori hibaelhárítási kérdéseit sorolja fel.
 | Tárolt eljárások korlátai          | A tárolt eljárások korlátainak megismeréséhez tekintse meg a [tárolt eljárásokra vonatkozó korlátozásokat](../sql-data-warehouse/sql-data-warehouse-develop-stored-procedures.md#limitations) . |
 | A UDF nem támogatja a SELECT utasítások használatát | Ez a UDF jelenlegi korlátozása.  Az általunk támogatott szintaxishoz lásd: [create Function](https://docs.microsoft.com/sql/t-sql/statements/create-function-sql-data-warehouse?view=aps-pdw-2016-au7) . |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha további segítségre van szüksége a probléma megoldásához, néhány további erőforrást is kipróbálhat.
 
 * [Blogok](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)

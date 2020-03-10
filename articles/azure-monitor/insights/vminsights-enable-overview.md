@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
 ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669573"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361954"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor for VMs (előzetes verzió) engedélyezése – áttekintés
 
@@ -206,38 +206,38 @@ Azure Monitor for VMs konfigurálja a Log Analytics munkaterületet az általa h
 
 |Objektumnév |Számláló neve |
 |------------|-------------|
-|Logikai lemez |Szabad terület százalékos aránya |
+|Logikai lemez |% Szabad terület |
 |Logikai lemez |Átlagos írási idő (mp/olvasás) |
 |Logikai lemez |Átlagos műveleti idő (mp/átvitel) |
 |Logikai lemez |Átlagos írási idő (mp/írás) |
-|Logikai lemez |Lemez sebessége bájt/mp-ben |
-|Logikai lemez |Lemezolvasás sebessége bájt/mp-ben |
+|Logikai lemez |Bájt/mp |
+|Logikai lemez |Lemezolvasási sebesség (bájt/s) |
 |Logikai lemez |Lemezolvasások/mp |
 |Logikai lemez |Átvitel/mp |
-|Logikai lemez |Lemezírás sebessége bájt/mp-ben |
+|Logikai lemez |Lemezírási sebesség (bájt/s) |
 |Logikai lemez |Lemezírások/mp |
 |Logikai lemez |Szabad hely MB-ban |
 |Memory (Memória) |Rendelkezésre álló memória |
-|Hálózati adapter |Fogadott bájtok/mp |
-|Hálózati adapter |Küldött bájtok/s |
-|Processzor |A processzor kihasználtsága (%) |
+|Hálózati Adapter |Fogadott bájtok/mp |
+|Hálózati Adapter |Küldött bájtok/s |
+|Processzor |Processzoridő |
 
 ### <a name="linux-performance-counters"></a>Linux-teljesítményszámlálók
 
 |Objektumnév |Számláló neve |
 |------------|-------------|
 |Logikai lemez |Foglalt hely % |
-|Logikai lemez |Lemezolvasás sebessége bájt/mp-ben |
+|Logikai lemez |Lemezolvasási sebesség (bájt/s) |
 |Logikai lemez |Lemezolvasások/mp |
 |Logikai lemez |Átvitel/mp |
-|Logikai lemez |Lemezírás sebessége bájt/mp-ben |
+|Logikai lemez |Lemezírási sebesség (bájt/s) |
 |Logikai lemez |Lemezírások/mp |
 |Logikai lemez |Szabad hely MB-ban |
 |Logikai lemez |Logikai lemez bájt/mp |
 |Memory (Memória) |Rendelkezésre álló memória |
 |Hálózat |Fogadott bájtok teljes száma |
 |Hálózat |Küldött bájtok száma összesen |
-|Processzor |A processzor kihasználtsága (%) |
+|Processzor |Processzoridő |
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 

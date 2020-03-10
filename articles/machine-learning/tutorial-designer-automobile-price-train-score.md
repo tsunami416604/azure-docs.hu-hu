@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 01/30/2020
-ms.openlocfilehash: 972f0aa1f6d05c3cc65c62c0991fad87ab4676c4
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.date: 03/04/2020
+ms.openlocfilehash: ed3667ada834437e81ffdcb9161c2a726fe6a6dc
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623634"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933314"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -262,16 +262,16 @@ A **modell kiértékelése** modul használatával kiértékelheti, hogy a model
 
 Most, hogy elvégezte a folyamat minden beállítását, elküldheti a folyamat futtatását a Machine learning-modell betanításához. A folyamatokat bármikor elküldheti, miközben a tervezőben felépíti a folyamatokat. Ezt megteheti a munka ellenőrzéséhez, és a folyamat működésének ellenőrzéséhez a várt módon.
 
-1. A vászon tetején válassza a **Futtatás**lehetőséget.
+1. A vászon tetején válassza a **Küldés**lehetőséget.
 
-1. A **folyamat futtatásának beállítása** párbeszédpanelen válassza az **+ új kísérlet** a **kísérlethez**lehetőséget.
+1. A **folyamat futtatásának beállítása** párbeszédpanelen válassza az **új létrehozása**lehetőséget.
 
     > [!NOTE]
     > A kísérletek csoport hasonló folyamata együtt fut. Ha többször is futtat egy folyamatot, kiválaszthatja ugyanazt a kísérletet egymást követő futtatásokhoz.
 
-    1. Adjon meg egy leíró nevet a **kísérlet neveként**.
+    1. Adjon meg egy leíró nevet az **új kísérlet neveként**.
 
-    1. Válassza a **Futtatás** lehetőséget.
+    1. Válassza a **Küldés**lehetőséget.
     
     A futtatási állapot és a részletek a vászon jobb felső sarkában tekinthetők meg.
 

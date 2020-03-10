@@ -15,11 +15,11 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 894fa2f3cda798a409db3ee8e9761c1702baf955
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035220"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372491"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Linux rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -34,7 +34,7 @@ A rövid útmutató elvégzéséhez egy SSH-kulcspárra lesz szüksége. Ha már
 SSH-kulcspár létrehozásához nyissa meg a Bash-felületet, és használja az [ssh-keygen](https://www.ssh.com/ssh/keygen/) eszközt. Ha nincs Bash-felület a helyi számítógépén, használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
 
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Az oldal tetején lévő menüben válassza a `>_` ikont a Cloud Shell megnyitásához.
 1. Győződjön meg arról, hogy a Cloudshellben a bal felső sarokban található **bash** . Ha a PowerShell-t mondja, a legördülő menüből válassza a **bash** elemet, és válassza a **megerősítés** lehetőséget a bash rendszerhéjra való váltáshoz.
 1. Az SSH-kulcs létrehozásához írja be a `ssh-keygen -t rsa -b 2048`. 
@@ -100,12 +100,12 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-Ha elkészült, az SSH-munkamenetből való kilépéshez írja be: `exit`.
+Ha elkészült, az SSH-munkamenetből való kilépéshez írja be a következőt: `exit`.
 
 
-## <a name="view-the-web-server-in-action"></a>A webkiszolgáló működésének ellenőrzése
+## <a name="view-the-web-server-in-action"></a>A webkiszolgáló megtekintése működés közben
 
-Egy tetszőleges webböngészővel tekintse meg az alapértelmezett NGINX-kezdőlapot. Adja meg a virtuális gép nyilvános IP-címét a webes címként. A nyilvános IP-cím a virtuális gép áttekintő oldalán található, vagy a korábban használt SSH-kapcsolati sztring részeként.
+Egy tetszőleges böngésző használatával megtekintheti az alapértelmezett NGINX-kezdőlapot. Adja meg a virtuális gép nyilvános IP-címét a webes címként. A nyilvános IP-cím a virtuális gép áttekintő oldalán található, vagy a korábban használt SSH-kapcsolati sztring részeként.
 
 ![Alapértelmezett NGINX-webhely](./media/quick-create-portal/nginx.png)
 

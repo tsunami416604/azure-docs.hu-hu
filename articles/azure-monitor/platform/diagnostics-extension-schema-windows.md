@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: 3adf4b59c0605859ada75577c083094541815984
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672361"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384122"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Diagnostics bővítmény sémája
 A Azure Diagnostics Extension olyan Azure Monitor ügynöke, amely a vendég operációs rendszerből és az Azure számítási erőforrások munkaterhelésével kapcsolatos figyelési adatokat gyűjt. Ez a cikk részletesen ismerteti a diagnosztikai bővítmény konfigurálásához használt sémát a Windows rendszerű virtuális gépeken és más számítási erőforrásokon.

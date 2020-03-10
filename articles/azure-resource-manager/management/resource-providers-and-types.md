@@ -3,12 +3,12 @@ title: Erőforrás-szolgáltatók és-erőforrástípusok
 description: A Resource Managert, a sémákat és az elérhető API-verziókat támogató erőforrás-szolgáltatókat, valamint az erőforrásokat tároló régiókat ismerteti.
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: ce68762dae14f98a751cb4b619b75ff04a5f655b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 82b8251006a1a2d4edd198eca843489d3720f8d6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478590"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78941016"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-erőforrás-szolgáltatók és-típusok
 
@@ -29,11 +29,11 @@ Ezeket a lépéseket a Azure Portal, a Azure PowerShell vagy az Azure CLI haszn�
 
 Az erőforrás-szolgáltatókat az Azure-szolgáltatásokhoz leképező listán tekintse meg az [Azure-szolgáltatások erőforrás-szolgáltatóit](azure-services-resource-providers.md)ismertető témakört.
 
-## <a name="azure-portal"></a>Azure portál
+## <a name="azure-portal"></a>Azure Portal
 
 Az összes erőforrás-szolgáltató megjelenítéséhez és az előfizetés regisztrációs állapotának megtekintéséhez:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. A Azure Portal menüben válassza a **minden szolgáltatás**lehetőséget.
 
     ![előfizetések kiválasztása](./media/resource-providers-and-types/select-all-services.png)
@@ -44,13 +44,13 @@ Az összes erőforrás-szolgáltató megjelenítéséhez és az előfizetés reg
 
     ![erőforrás-szolgáltatók megjelenítése](./media/resource-providers-and-types/show-resource-providers.png)
 
-6. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A regisztráció hatóköre mindig az előfizetés. Alapértelmezés szerint számos erőforrás-szolgáltató automatikusan regisztrálva van. Előfordulhat azonban, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálásához engedéllyel kell rendelkeznie az erőforrás-szolgáltató `/register/action` műveletének végrehajtásához. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Erőforrás-szolgáltató regisztrálásához válassza a **regisztráció**lehetőséget. Az előző képernyőképen a **regisztráció** hivatkozás ki van emelve a **Microsoft. Blueprint**számára.
+6. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. Regisztráció a hatókör, mindig az előfizetést. Alapértelmezés szerint számos erőforrás-szolgáltató automatikusan regisztrálva van. Előfordulhat azonban, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálásához engedéllyel kell rendelkeznie az erőforrás-szolgáltató `/register/action` műveletének végrehajtásához. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Erőforrás-szolgáltató regisztrálásához válassza a **regisztráció**lehetőséget. Az előző képernyőképen a **regisztráció** hivatkozás ki van emelve a **Microsoft. Blueprint**számára.
 
     Nem törölheti az erőforrás-szolgáltató regisztrációját, ha továbbra is az adott erőforrás-szolgáltatótól származó erőforrástípusok vannak az előfizetésben.
 
 Egy adott erőforrás-szolgáltató információinak megtekintéséhez:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. A Azure Portal menüben válassza a **minden szolgáltatás**lehetőséget.
 3. A **minden szolgáltatás** mezőben adja meg az **erőforrás-kezelőt**, majd válassza a **erőforrás-kezelő**lehetőséget.
 
@@ -84,7 +84,7 @@ Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, Registr
 
 Amely a következőhöz hasonló eredményeket ad vissza:
 
-```powershell
+```output
 ProviderNamespace                RegistrationState
 -------------------------------- ------------------
 Microsoft.ClassicCompute         Registered
@@ -94,7 +94,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A regisztráció hatóköre mindig az előfizetés. Alapértelmezés szerint számos erőforrás-szolgáltató automatikusan regisztrálva van. Előfordulhat azonban, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálásához engedéllyel kell rendelkeznie az erőforrás-szolgáltató `/register/action` műveletének végrehajtásához. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják.
+Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. Regisztráció a hatókör, mindig az előfizetést. Alapértelmezés szerint számos erőforrás-szolgáltató automatikusan regisztrálva van. Előfordulhat azonban, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálásához engedéllyel kell rendelkeznie az erőforrás-szolgáltató `/register/action` műveletének végrehajtásához. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják.
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -102,7 +102,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
 
 Amely a következőhöz hasonló eredményeket ad vissza:
 
-```powershell
+```output
 ProviderNamespace : Microsoft.Batch
 RegistrationState : Registering
 ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
@@ -119,7 +119,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.Batch
 
 Amely a következőhöz hasonló eredményeket ad vissza:
 
-```powershell
+```output
 {ProviderNamespace : Microsoft.Batch
 RegistrationState : Registered
 ResourceTypes     : {batchAccounts}
@@ -136,7 +136,7 @@ Az erőforrás-szolgáltató erőforrásainak megtekintéséhez használja a kö
 
 Amely a következőket adja vissza:
 
-```powershell
+```output
 batchAccounts
 operations
 locations
@@ -153,7 +153,7 @@ Az erőforrástípus elérhető API-verzióinak beszerzéséhez használja a kö
 
 Amely a következőket adja vissza:
 
-```powershell
+```output
 2017-05-01
 2017-01-01
 2015-12-01
@@ -171,7 +171,7 @@ Az erőforrástípus támogatott helyeinek beszerzéséhez használja a követke
 
 Amely a következőket adja vissza:
 
-```powershell
+```output
 West Europe
 East US
 East US 2
@@ -179,7 +179,7 @@ West US
 ...
 ```
 
-## <a name="azure-cli"></a>Azure parancssori felület (CLI)
+## <a name="azure-cli"></a>Azure CLI
 
 Az Azure összes erőforrás-szolgáltatójának és az előfizetés regisztrációs állapotának megtekintéséhez használja a következőt:
 
@@ -189,7 +189,7 @@ az provider list --query "[].{Provider:namespace, Status:registrationState}" --o
 
 Amely a következőhöz hasonló eredményeket ad vissza:
 
-```azurecli
+```output
 Provider                         Status
 -------------------------------- ----------------
 Microsoft.ClassicCompute         Registered
@@ -199,7 +199,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A regisztráció hatóköre mindig az előfizetés. Alapértelmezés szerint számos erőforrás-szolgáltató automatikusan regisztrálva van. Előfordulhat azonban, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálásához engedéllyel kell rendelkeznie az erőforrás-szolgáltató `/register/action` műveletének végrehajtásához. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják.
+Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. Regisztráció a hatókör, mindig az előfizetést. Alapértelmezés szerint számos erőforrás-szolgáltató automatikusan regisztrálva van. Előfordulhat azonban, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálásához engedéllyel kell rendelkeznie az erőforrás-szolgáltató `/register/action` műveletének végrehajtásához. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják.
 
 ```azurecli
 az provider register --namespace Microsoft.Batch
@@ -217,7 +217,7 @@ az provider show --namespace Microsoft.Batch
 
 Amely a következőhöz hasonló eredményeket ad vissza:
 
-```azurecli
+```output
 {
     "id": "/subscriptions/####-####/providers/Microsoft.Batch",
     "namespace": "Microsoft.Batch",
@@ -236,7 +236,7 @@ az provider show --namespace Microsoft.Batch --query "resourceTypes[*].resourceT
 
 Amely a következőket adja vissza:
 
-```azurecli
+```output
 Result
 ---------------
 batchAccounts
@@ -255,7 +255,7 @@ az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceTyp
 
 Amely a következőket adja vissza:
 
-```azurecli
+```output
 Result
 ---------------
 2017-05-01
@@ -275,7 +275,7 @@ az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceTyp
 
 Amely a következőket adja vissza:
 
-```azurecli
+```output
 Result
 ---------------
 West Europe

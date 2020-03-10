@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895834"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366884"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Az AES-128 Dynamic encryption és a Key Delivery Service használata
 > [!div class="op_single_selector"]
@@ -67,7 +67,7 @@ A cikk végén talál egy teljes [.net-példát](media-services-protect-with-aes
 
 Az alábbi képen az előzőekben leírt munkafolyamatot láthatja. Itt jogkivonatos hitelesítést használtuk.
 
-![Védelem 128 bites AES-titkosítással](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
+![Védelem AES-128](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
 
 A cikk további részében magyarázatokat és példákat talál, és olyan témakörökre mutató hivatkozásokat tartalmaz, amelyek bemutatják, hogyan érheti el a korábban leírt feladatokat.
 
@@ -95,7 +95,7 @@ A Media Services szolgáltatásban a tartalomkulcs tartalmazza az objektum titko
 További információkat a [tartalomkulcs létrehozásával](media-services-dotnet-create-contentkey.md) foglalkozó témakör tartalmaz.
 
 ## <a id="configure_key_auth_policy"></a>A tartalomkulcs hitelesítési szabályzatának konfigurálása
-A Media Services szolgáltatásban több különböző módot is beállíthat, amelynek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. Konfigurálnia kell a tartalomkulcs hitelesítési szabályzatát. Az ügyfélnek (Player) meg kell felelnie a szabályzatnak, mielőtt a kulcsot el lehetne küldeni az ügyfélnek. A tartalmi kulcs engedélyezési házirendje egy vagy több engedélyezési korlátozással rendelkezhet: nyitott, jogkivonat-korlátozás vagy IP-korlátozás.
+A Media Services szolgáltatásban több különböző módot is beállíthat, amelynek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. Konfigurálnia kell a tartalomkulcs hitelesítési szabályzatát. Az ügyfélnek (lejátszó) meg kell felelnie a szabályzat, a kulcs letöltéséhez az ügyfél előtt. A tartalmi kulcs engedélyezési házirendje egy vagy több engedélyezési korlátozással rendelkezhet: nyitott, jogkivonat-korlátozás vagy IP-korlátozás.
 
 További információkért lásd a [tartalomkulcs-hitelesítési szabályzat konfigurálásával](media-services-dotnet-configure-content-key-auth-policy.md) foglalkozó témakört.
 

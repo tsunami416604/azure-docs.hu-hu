@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
 ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367638"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942660"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -47,7 +47,7 @@ A Text Analytics API az elnevezett Entity Recognition-v2 és v3 két verzióját
 További információért lásd a [nyelvi támogatást](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) ismertető témakört.
 
 
-#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 ### <a name="entity-types"></a>Entitás típusa
 
@@ -74,7 +74,7 @@ Entitás összekapcsolása
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 ### <a name="entity-types"></a>Entitás típusa
 
@@ -130,7 +130,7 @@ Hozzon létre egy POST-kérelmet. A következő hivatkozásokon a [Poster](text-
 > [!NOTE]
 > Az Azure Portalon megtalálhatja Text Analytics erőforrásának kulcsát és végpontját. Ezek az erőforrás **gyors üzembe helyezés** lapján, az **Erőforrás-kezelés**területen találhatók. 
 
-#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 [Elnevezett Entity Recognition v3-dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
@@ -144,7 +144,7 @@ NER
 Entitás összekapcsolása
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 [Nevesített entitások felismerése (megnevezett) v2 – dokumentáció](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
@@ -185,7 +185,7 @@ Az összes POST kérelem egy JSON formátumú választ ad vissza az azonosítók
 A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba.
 
 
-#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió)](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>V3-válaszok – példa
 
@@ -242,7 +242,7 @@ A 3. verzió külön végpontokat biztosít az Egypéldányos és az entitások 
 }
 ```
 
-#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 ### <a name="example-ner-v2-response"></a>Példa a kiválasztó v2-re
 ```json

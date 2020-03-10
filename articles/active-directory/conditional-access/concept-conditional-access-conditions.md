@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: b9e6d2d6cf602bca74c8899586eef0a8108fde3c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620729"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893158"
 ---
 # <a name="conditional-access-conditions"></a>Feltételes hozzáférés: feltételek
 
@@ -72,7 +72,7 @@ A feltételes hozzáférési szabályzatok alapértelmezés szerint a modern hit
       - Ez a beállítás olyan ügyfeleket tartalmaz, amelyek olyan alapszintű/örökölt hitelesítési protokollokat használnak, amelyek nem támogatják a modern hitelesítést.
          - Hitelesített SMTP – a POP és az IMAP-ügyfél által használt e-mail üzenetek küldésére használható.
          - Automatikus észlelés – az Outlook és az EAS-ügyfelek által használt postaládák keresése és kapcsolódás az Exchange Online-ban.
-         - Exchange Online PowerShell – az Exchange Online-hoz való kapcsolódáshoz használt távoli PowerShell-lel. Ha letiltja az Exchange Online PowerShell alapszintű hitelesítését, a kapcsolódáshoz az Exchange Online PowerShell-modult kell használnia. Útmutatásért lásd: [Kapcsolódás az Exchange Online powershellhez a multi-Factor Authentication használatával](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
+         - Exchange Online PowerShell – az Exchange Online-hoz való kapcsolódáshoz használt távoli PowerShell-lel. Ha letiltja az Exchange Online PowerShell alapszintű hitelesítését, a kapcsolódáshoz az Exchange Online PowerShell-modult kell használnia. Útmutatásért lásd: [Kapcsolódás az Exchange Online powershellhez a multi-Factor Authentication használatával](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
          - Exchange Web Services (EWS) – az Outlook, az Outlook for Mac és a harmadik féltől származó alkalmazások által használt programozási felület.
          - IMAP4 – az IMAP e-mail ügyfélprogramok által használt.
          - MAPI HTTP-n keresztül (MAPI/HTTP) – az Outlook 2010-es és újabb verzióiban használt.
@@ -142,8 +142,8 @@ Ez a beállítás hatással van a következő Mobile apps és asztali ügyfelek 
 | Mail/Calendar/People app, Outlook 2016, Outlook 2013 (modern hitelesítéssel)| Office 365 Exchange Online | Windows 10 |
 | MFA-és tartózkodási hely szabályzata alkalmazások számára. Az eszközökön alapuló házirendek nem támogatottak.| A saját alkalmazások app Service | Android és iOS |
 | Microsoft Teams Services – Ez vezérli a Microsoft Teams és az összes ügyfélalkalmazás használatát támogató összes szolgáltatást – Windows Desktop, iOS, Android, WP és Web Client | Microsoft Teams | Windows 10, Windows 8,1, Windows 7, iOS, Android és macOS |
-| Office 2016-alkalmazások, Office 2013 (modern hitelesítéssel), [OneDrive-szinkronizálási ügyfél](https://docs.microsoft.com/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8,1, Windows 7 |
-| Office 2016-alkalmazások, univerzális Office-alkalmazások, Office 2013 (modern hitelesítéssel), [OneDrive Sync Client](https://docs.microsoft.com/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
+| Office 2016-alkalmazások, Office 2013 (modern hitelesítéssel), [OneDrive-szinkronizálási ügyfél](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8,1, Windows 7 |
+| Office 2016-alkalmazások, univerzális Office-alkalmazások, Office 2013 (modern hitelesítéssel), [OneDrive Sync Client](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
 | Office 2016 (Word, Excel, PowerPoint, csak OneNote). | Office 365 SharePoint Online | macOS |
 | Office 2019| Office 365 SharePoint Online | Windows 10, macOS |
 | Office Mobile-alkalmazások | Office 365 SharePoint Online | Android, iOS |

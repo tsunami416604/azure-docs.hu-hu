@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155146"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378092"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Felhőalapú Azure-beli Multi-Factor Authentication üzembe helyezés tervezése
 
@@ -28,7 +28,7 @@ Az [Azure multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) segíts�
 
 Az Azure Multi-Factor Authentication üzembe helyezésének megkezdése előtt meg kell fontolnia az előfeltételként szükséges elemeket.
 
-| Alkalmazási helyzet | Előfeltétel |
+| Forgatókönyv | Előfeltételek |
 | --- | --- |
 | **Csak felhőalapú** identitás-környezet modern hitelesítéssel | **Nincsenek további előfeltétel-feladatok** |
 | **Hibrid** identitási forgatókönyvek | [Azure ad Connect](../hybrid/whatis-hybrid-identity.md) települ, és a felhasználói identitások szinkronizálása vagy összevonása a helyszíni Active Directory tartományi szolgáltatások a Azure Active Directory. |
@@ -44,7 +44,7 @@ Az MFA bevezetési tervének tartalmaznia kell egy próba-telepítést, amelyet 
 
 Fontos, hogy tájékoztassa a felhasználókat a tervezett kommunikációról, a közelgő változásokról, az Azure MFA regisztrációs követelményeiről és a szükséges felhasználói műveletekről. Javasoljuk, hogy a kommunikációt a szervezeten belüli képviselőivel, például a kommunikációval, a változás-kezeléssel vagy az emberi erőforrásokkal foglalkozó szervezeti egységekkel együtt fejlesszék.
 
-A Microsoft [kommunikációs sablonokat](https://aka.ms/mfatemplates) és [végfelhasználói dokumentációt](../user-help/security-info-setup-signin.md) biztosít a kommunikáció megtervezéséhez. Az adott oldalon található **biztonsági információk** hivatkozásaira kattintva a felhasználók közvetlenül regisztrálhatnak [https://myprofile.microsoft.com ra](https://myprofile.microsoft.com) .
+A Microsoft [kommunikációs sablonokat](https://aka.ms/mfatemplates) és [végfelhasználói dokumentációt](../user-help/security-info-setup-signin.md) biztosít a kommunikáció megtervezéséhez. Az adott oldalon található **biztonsági információk** hivatkozásaira kattintva a felhasználók közvetlenül regisztrálhatnak [https://myprofile.microsoft.comra](https://myprofile.microsoft.com) .
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 
@@ -52,7 +52,7 @@ Az Azure multi-Factor Authentication üzembe helyezése a szabályzatok feltéte
 
 * Minden felhasználó, egy adott felhasználó, egy csoport tagja vagy hozzárendelt szerepkör
 * Az adott felhőalapú alkalmazás elérése folyamatban van
-* Eszközplatform
+* Eszköz platformja
 * Eszköz állapota
 * Hálózati hely vagy földrajzi elhelyezkedésű IP-cím
 * Ügyfélalkalmazások
@@ -102,7 +102,7 @@ Javasoljuk, hogy a szervezetek a feltételes hozzáférés használatával defin
 
 A rendszergazdák kiválaszthatják a felhasználók számára elérhetővé tenni kívánt [hitelesítési módszereket](../authentication/concept-authentication-methods.md) . Fontos, hogy egynél több hitelesítési módszert engedélyezzen, hogy a felhasználók számára elérhető legyen egy biztonsági mentési módszer, ha az elsődleges metódus nem érhető el. A rendszergazdák a következő módszerekkel engedélyezhetők:
 
-### <a name="notification-through-mobile-app"></a>Értesítés mobilalkalmazásban
+### <a name="notification-through-mobile-app"></a>Értesítés a Mobile App használatával
 
 A rendszer leküldéses értesítést küld a mobileszköz Microsoft Authenticator alkalmazásának. A felhasználó megtekinti az értesítést, és kiválasztja a **jóváhagyás** lehetőséget az ellenőrzés befejezéséhez. A mobil alkalmazások leküldéses értesítései biztosítják a legkevésbé zavaró lehetőséget a felhasználók számára. Emellett a legmegbízhatóbb és biztonságos megoldás is, mivel a telefonos szolgáltatás helyett adatkapcsolatokat használnak.
 
@@ -117,7 +117,7 @@ Egy mobil alkalmazás, például a Microsoft Authenticator alkalmazás, 30 máso
 
 A rendszer automatikusan hanghívást helyez el a felhasználó felé. A felhasználó válaszol a hívásra, és megnyomja a telefon billentyűzetén a **#** a hitelesítés jóváhagyásához. A telefon hívása nagyszerű biztonsági mentési módszer a mobil alkalmazások értesítési vagy ellenőrzési kódjához.
 
-### <a name="text-message-to-phone"></a>Telefonra küldött szöveges üzenet
+### <a name="text-message-to-phone"></a>SMS-üzenet a telefonra
 
 Egy ellenőrző kódot tartalmazó szöveges üzenetet küld a rendszer a felhasználónak, és megkéri a felhasználót, hogy adja meg az ellenőrző kódot a bejelentkezési felületen.
 
@@ -240,7 +240,7 @@ Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A
     * Kattintson a **Kiválasztás** gombra.
 1. Ugorja át a **munkamenet** szakaszt.
 1. Állítsa be a **házirend engedélyezése** kapcsolót **be értékre.**
-1. Kattintson a **Create** (Létrehozás) gombra.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>A helyszíni rendszerekkel való integráció megtervezése
 
@@ -277,7 +277,7 @@ Ha a hálózati házirend-kiszolgáló példánya már telepítve van, és már 
 
 Válassza ki, hogy mi történjen, ha az MFA-ban nem regisztrált felhasználók hitelesítése történik meg. A szolgáltatás működésének vezérléséhez használja a beállításjegyzékbeli elérési út `HKLM\Software\Microsoft\AzureMFA` beállításjegyzék-beállítás `REQUIRE_USER_MATCH`. Ez a beállítás egyetlen konfigurációs lehetőséggel rendelkezik.
 
-| Jelmagyarázat | Value (Díj) | Alapértelmezett |
+| Paraméter | Érték | Alapértelmezett |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | IGAZ/HAMIS | Nincs beállítva (megegyezik az igaz értékkel) |
 
@@ -288,7 +288,7 @@ Ennek a beállításnak a célja annak meghatározása, hogy mi a teendő, ha eg
 | A kulcs nem létezik | Nincs regisztrálva | Az MFA-kérdés nem sikerült |
 | Az érték igaz/nincs beállítva | Nincs regisztrálva | Az MFA-kérdés nem sikerült |
 | A kulcs hamis értékre van állítva | Nincs regisztrálva | Hitelesítés MFA nélkül |
-| A kulcs hamis vagy igaz értékre van beállítva | Regisztrálva | Hitelesítést kell végezni MFA-val |
+| A kulcs hamis vagy igaz értékre van beállítva | Beiratkozott | Hitelesítést kell végezni MFA-val |
 
 ### <a name="integrate-with-active-directory-federation-services"></a>Integrálás Active Directory összevonási szolgáltatások (AD FS)
 
@@ -347,7 +347,7 @@ Jelentések az Azure MFA-hoz
 
 Az Azure Multi-Factor Authentication jelentéseket biztosít a Azure Portalon keresztül:
 
-| Jelentés | Földrajzi egység | Leírás |
+| Jelentés | Hely | Leírás |
 | --- | --- | --- |
 | Használati és csalási riasztások | Azure AD > bejelentkezések | Információt nyújt a teljes használatról, a felhasználói összesítésekről és a felhasználói adatokról; valamint a megadott dátumtartomány szerint elküldött csalási riasztások előzményei. |
 

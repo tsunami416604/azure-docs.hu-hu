@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74887101"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390525"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>A helyszíni kódolók többszörös átviteli sebességű streamjét fogadó csatornák használata
 
@@ -77,7 +77,7 @@ A következő lépések ismertetik a gyakori élő adatfolyam-alkalmazások lét
 
 7. Indítsa el a programot, amikor készen áll a folyamatos átvitelre és archiválásra.
 
-8. További lehetőségként jelzést adhat a valós idejű kódolónak egy hirdetés elindítására. A hirdetés a kimeneti adatfolyamba lesz beszúrva.
+8. További lehetőségként jelzést adhat a valós idejű kódolónak egy hirdetés elindítására. A hirdetés bekerül a kimenő streambe.
 
 9. Amikor le kívánja állítani az esemény streamelését és az archiválását, állítsa le a programot.
 
@@ -176,15 +176,15 @@ Még a program leállítása és törlése után is igény szerint továbbíthat
 ## <a id="states"></a>Csatorna állapotok és számlázás
 A csatorna aktuális állapotának lehetséges értékei a következők:
 
-* **Leállítva**: Ez a csatorna kezdeti állapota a létrehozás után. Ebben az állapotban a csatorna tulajdonságai módosíthatók, a streamelés azonban nem engedélyezett.
-* **Indítás**: a csatorna indítása folyamatban van. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett. Ha hiba történik, a csatorna **visszaállított** állapotba tér vissza.
+* **Leállítva**: Ez a csatorna kezdeti állapota a létrehozás után. Ebben az állapotban a csatorna tulajdonságai frissíthetők, de a folyamatos átvitel nem engedélyezett.
+* **Indítás**: a csatorna indítása folyamatban van. Ebben az állapotban nem engedélyezett a frissítés vagy a folyamatos átvitel. Ha hiba történik, a csatorna **visszaállított** állapotba tér vissza.
 * **Fut**: a csatorna képes az élő streamek feldolgozására.
-* **Leállítás**: a csatorna leállítása folyamatban van. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett.
-* **Törlés**: a csatorna törlése folyamatban van. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett.
+* **Leállítás**: a csatorna leállítása folyamatban van. Ebben az állapotban nem engedélyezett a frissítés vagy a folyamatos átvitel.
+* **Törlés**: a csatorna törlése folyamatban van. Ebben az állapotban nem engedélyezett a frissítés vagy a folyamatos átvitel.
 
-Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében miként alakul a számlázási mód.
+Az alábbi táblázat azt mutatja be, hogy a csatorna állapotai hogyan képezhetők le a számlázási módra.
 
-| Csatorna állapota | Jelzése a portál kezelőfelületén | Számlázandó? |
+| Csatorna állapota | A portál felhasználói felületének kijelzői | Számlázása? |
 | --- | --- | --- |
 | **Indítása** |**Indítása** |Nem (átmeneti állapot) |
 | **Fut** |**Kész** (nincs futó program)<p><p>vagy<p>**Streaming** (legalább egy futó program) |Igen |

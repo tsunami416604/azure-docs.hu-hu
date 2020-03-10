@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
 ms.openlocfilehash: dd4444bf42bcc8dda95f8fa37b42a365538efa85
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482872"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362454"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Cognitive Services-erőforrás létrehozása a Azure Portal használatával
 
@@ -31,7 +31,7 @@ Ez a rövid útmutató az Azure Cognitive Services használatának megkezdésér
 
 1. Hozzon létre egy erőforrást.
 
-    #### <a name="multi-service-resourcetabmultiservice"></a>[Több szolgáltatásból álló erőforrás](#tab/multiservice)
+    #### <a name="multi-service-resource"></a>[Több szolgáltatásból álló erőforrás](#tab/multiservice)
     
     A Multi-Service erőforrás neve **Cognitive Services** a portálon. [Cognitive Services erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne).
     
@@ -39,11 +39,11 @@ Ez a rövid útmutató az Azure Cognitive Services használatának megkezdésér
     
     |                  |                                                      |                    |                               |                  |
     |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
-    | Számítógépes látástechnológia  | Tartalommoderátor                                    | Arcfelismerés               | Hangfelismerés (LUIS) | Szövegelemzés   |
-    | Fordítói szöveg  | Bing Search v7 <br>(Web, kép, hírek, videó, vizualizáció) | Bing egyéni keresés | Bing Entity Search            | Bing – Automatikus kiegészítés |
+    | Számítógépes látástechnológia  | Tartalommoderátor                                    | Arcfelismerés               | Language Understanding (LUIS) | Szövegelemzés   |
+    | Fordítói szöveg  | Bing Search v7 <br>(Web, kép, hírek, videó, vizualizáció) | Bing – Egyéni keresés | Bing – Entitáskeresés            | Bing – Automatikus kiegészítés |
     | Bing – Helyesírás-ellenőrzés |                                                      |                    |                               |                  |
     
-    #### <a name="single-service-resourcetabsingleservice"></a>[Egy szolgáltatásból származó erőforrás](#tab/singleservice)
+    #### <a name="single-service-resource"></a>[Egy szolgáltatásból származó erőforrás](#tab/singleservice)
 
     Az alábbi hivatkozásokat követve hozhat létre erőforrást az elérhető Cognitive Serviceshoz:
 
@@ -58,7 +58,7 @@ Ez a rövid útmutató az Azure Cognitive Services használatának megkezdésér
 
 3. A **Létrehozás** lapon adja meg a következő információkat:
 
-    #### <a name="multi-service-resourcetabmultiservice"></a>[Több szolgáltatásból álló erőforrás](#tab/multiservice)
+    #### <a name="multi-service-resource"></a>[Több szolgáltatásból álló erőforrás](#tab/multiservice)
 
     |    |    |
     |--|--|
@@ -70,9 +70,9 @@ Ez a rövid útmutató az Azure Cognitive Services használatának megkezdésér
 
     ![Erőforrás-létrehozási képernyő](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    Kattintson a **Létrehozás** elemre.
+    Kattintson a  **Create** (Létrehozás) gombra.
 
-    #### <a name="single-service-resourcetabsingleservice"></a>[Egy szolgáltatásból származó erőforrás](#tab/singleservice)
+    #### <a name="single-service-resource"></a>[Egy szolgáltatásból származó erőforrás](#tab/singleservice)
 
     |    |    |
     |--|--|
@@ -84,7 +84,7 @@ Ez a rövid útmutató az Azure Cognitive Services használatának megkezdésér
 
     ![Erőforrás-létrehozási képernyő](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    Kattintson a **Létrehozás** elemre.
+    Kattintson a  **Create** (Létrehozás) gombra.
 
     ***
 

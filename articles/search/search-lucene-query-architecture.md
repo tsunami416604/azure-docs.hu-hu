@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793558"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379728"
 ---
 # <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Hogyan működik a teljes szöveges keresés az Azure-ban Cognitive Search
 
-Ez a cikk olyan fejlesztőknek szól, akiknek alaposabban meg kell ismerniük, hogyan működik a Lucene teljes szöveges keresése az Azure Cognitive Searchban. Szöveges lekérdezéseknél az Azure Cognitive Search a legtöbb esetben zökkenőmentesen kézbesítheti a várt eredményeket, de esetenként előfordulhat, hogy a "Kikapcsolva" érték jelenik meg. Ezekben az esetekben a Lucene-lekérdezés végrehajtásának négy fázisában (lekérdezés-elemzés, lexikális analízis, dokumentumok egyeztetése, pontozás) segíthet azonosítani a lekérdezési paraméterek vagy az indexelési konfiguráció adott módosításait, amelyek a kívánt eredmény. 
+Ez a cikk olyan fejlesztőknek szól, akiknek alaposabban meg kell ismerniük, hogyan működik a Lucene teljes szöveges keresése az Azure Cognitive Searchban. Szöveges lekérdezéseknél az Azure Cognitive Search a legtöbb esetben zökkenőmentesen visszaadja a várt eredményeket, de időnként előfordulhat, hogy az eredmény „helytelennek” tűnik. Ilyenkor a Lucene-lekérdezés végrehajtásának négy fázisában (lekérdezéselemzés, lexikális analízis, dokumentumok egyeztetése, pontozás) szerzett jártasság segíthet azonosítani a lekérdezési paraméterek vagy az indexelési konfiguráció adott módosításait, a kívánt eredmény elérése érdekében. 
 
 > [!Note] 
 > Az Azure Cognitive Search Lucene használ a teljes szöveges kereséshez, de a Lucene-integráció nem teljes. A Lucene funkcióit szelektíven tesszük elérhetővé és bővítjük, hogy az Azure Cognitive Search számára fontos forgatókönyveket lehessen engedélyezni. 
@@ -251,7 +251,7 @@ Gyakori, de nem kötelező, ha ugyanazokat az elemzőket használja a keresési 
 
 Ha visszatér a példánkban, a **title (cím** ) mezőben a fordított index a következőképpen néz ki:
 
-| Időtartam | Dokumentumok listája |
+| Időszak | Dokumentumok listája |
 |------|---------------|
 | Atman | 1 |
 | Beach | 2 |
@@ -265,21 +265,21 @@ A title (cím) mezőben csak a ( *z* ) két dokumentum jelenik meg: 1, 3.
 
 A **Leírás** mezőben az index a következő:
 
-| Időtartam | Dokumentumok listája |
+| Időszak | Dokumentumok listája |
 |------|---------------|
 | levegő | 3
 | és | 4
 | Beach | 1
 | légkondicionált | 3
 | tisztában | 3
-| távolság | 1
+| távolságskála | 1
 | -sziget | 2
-| kaua ʻ | 2
+| kauaʻi | 2
 | található | 2
 | Észak | 2
 | óceáni | 1, 2, 3
-| / | 2
-| A |2
+| a | 2
+| be |2
 | csendes | 4
 | tárgyalótermek  | 1, 3
 | félreeső | 4
@@ -287,9 +287,9 @@ A **Leírás** mezőben az index a következő:
 | tágas | 1
 | műveletnek a(z) | 1, 2
 | erre: | 1
-| megtekintés | 1, 2, 3
+| nézet | 1, 2, 3
 | séta | 1
-| A | 3
+| Adja meg ezt az URL-címet: | 3
 
 
 **Lekérdezési feltételek egyeztetése indexelt kifejezésekkel**
@@ -360,7 +360,7 @@ Ebben a példában egy példa szemlélteti, hogy miért fontos a kérdés. A hel
 Az Azure Cognitive Searchban kétféleképpen hangolhatja be a relevancia pontszámait:
 
 1. A **pontozási profilok** a szabályok egy halmaza alapján támogatják az eredmények rangsorolt listáján szereplő dokumentumokat. A példánkban a title (cím) mezőben szereplő dokumentumokat a Leírás mezőben szereplő dokumentumokra vonatkozó szempontok szerint érdemes megfontolni. Továbbá, ha az indexünk minden egyes szállodára érvényes, akkor alacsonyabb díjszabású dokumentumokat is támogatunk. További információ a [pontozási profilok keresési indexhez való hozzáadásáról.](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
-2. A **kifejezés fokozása** (csak a teljes Lucene lekérdezési szintaxisban érhető el) biztosít egy fellendítő operátort `^`, amely a lekérdezési fa bármely részére alkalmazható. A példánkban, ahelyett, hogy megkeresi a *légkondicionáló*\*, az egyik a pontos *állapotra* vagy az előtagra is rákereshet, de a pontos kifejezéssel egyező dokumentumok magasabbra vannak rangsorolva, ha a lekérdezés kifejezésre való ösztönzést alkalmaz: * légkondicionáló ^ 2 | | légkondicionáló * *. További információ a [kifejezés növeléséről](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+2. A **kifejezés fokozása** (csak a teljes Lucene lekérdezési szintaxisban érhető el) biztosít egy fellendítő operátort `^`, amely a lekérdezési fa bármely részére alkalmazható. A példánkban, ahelyett, hogy megkeresi a *légkondicionáló*\*, az egyik a pontos *állapotra* vagy az előtagokra is rákereshet, de a pontos kifejezéssel megegyező dokumentumok magasabbra vannak rangsorolva, ha a lekéréses lekérdezésre a következő feltételek vonatkoznak: * Air-condition ^ 2 | | légkondicionáló * *. További információ a [kifejezés növeléséről](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Pontozás egy elosztott indexben
@@ -391,9 +391,9 @@ Ez a cikk a teljes szöveges keresést ismerteti az Azure Cognitive Search konte
 
 + [Egyéni elemzők konfigurálása](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) az egyes mezők minimális feldolgozásához vagy speciális feldolgozásához.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-[Dokumentumok keresése REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+[Dokumentumok keresése – REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 
 [Egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
 

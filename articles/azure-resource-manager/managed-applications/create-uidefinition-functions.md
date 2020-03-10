@@ -6,28 +6,28 @@ ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650655"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380858"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition függvények
 Ez a szakasz a CreateUiDefinition összes támogatott funkciójának aláírásait tartalmazza.
 
-A függvények használatához szögletes zárójelek közé kell belefoglalni a deklarációt. Példa:
+A függvények használatához szögletes zárójelek közé kell belefoglalni a deklarációt. Például:
 
 ```json
 "[function()]"
 ```
 
-A karakterláncok és egyéb függvények a függvények paramétereinek is szerepelhetnek, de a sztringeket aposztrófok között kell megadni. Példa:
+A karakterláncok és egyéb függvények a függvények paramétereinek is szerepelhetnek, de a sztringeket aposztrófok között kell megadni. Például:
 
 ```json
 "[fn1(fn2(), 'foobar')]"
 ```
 
-Adott esetben a függvények kimenetének tulajdonságaira hivatkozhat a pont operátor használatával. Példa:
+Adott esetben a függvények kimenetének tulajdonságaira hivatkozhat a pont operátor használatával. Például:
 
 ```json
 "[func().prop1]"
@@ -36,7 +36,7 @@ Adott esetben a függvények kimenetének tulajdonságaira hivatkozhat a pont op
 ## <a name="referencing-functions"></a>Hivatkozó függvények
 Ezekkel a függvényekkel a CreateUiDefinition tulajdonságainak vagy környezetének kimeneteit lehet használni.
 
-### <a name="basics"></a>Alapjai
+### <a name="basics"></a>alapjai
 Az alapvető beállítások lépésben meghatározott elem kimeneti értékeit adja vissza.
 
 Az alábbi példa a `foo` nevű elem kimenetét adja vissza az alapvető lépések lépésben:
@@ -102,7 +102,7 @@ A következő példa visszatérhet `"c7bc8bdc-7252-4a82-ba53-7c468679a511"`:
 "[guid()]"
 ```
 
-### <a name="tolower"></a>ToLower
+### <a name="tolower"></a>toLower
 Egy kisbetűsre konvertált karakterláncot ad vissza.
 
 A következő példa a `"foobar"`t adja vissza:
@@ -111,7 +111,7 @@ A következő példa a `"foobar"`t adja vissza:
 "[toLower('FOOBAR')]"
 ```
 
-### <a name="toupper"></a>ToUpper
+### <a name="toupper"></a>toUpper
 Egy nagybetűre konvertált karakterláncot ad vissza.
 
 A következő példa a `"FOOBAR"`t adja vissza:
@@ -123,7 +123,7 @@ A következő példa a `"FOOBAR"`t adja vissza:
 ## <a name="collection-functions"></a>Gyűjtési függvények
 Ezek a függvények gyűjtemények, például JSON-karakterláncok, tömbök és objektumok használatával használhatók.
 
-### <a name="contains"></a>tartalmazza
+### <a name="contains"></a>tartalmaz
 `true` ad vissza, ha egy karakterlánc tartalmazza a megadott alkarakterláncot, egy tömb tartalmazza a megadott értéket, vagy egy objektum tartalmazza a megadott kulcsot.
 
 #### <a name="example-1-string"></a>1\. példa: karakterlánc
@@ -156,7 +156,7 @@ A következő példa a `true`t adja vissza:
 "[contains(steps('foo').element1, 'key1')]"
 ```
 
-### <a name="length"></a>hossz
+### <a name="length"></a>length
 Egy sztringben szereplő karakterek számát, egy tömbben lévő értékek számát, illetve egy objektum kulcsainak számát adja vissza.
 
 #### <a name="example-1-string"></a>1\. példa: karakterlánc
@@ -189,7 +189,7 @@ A következő példa a `2`t adja vissza:
 "[length(steps('foo').element1)]"
 ```
 
-### <a name="empty"></a>üres
+### <a name="empty"></a>empty
 `true` visszaadása, ha a sztring, tömb vagy objektum null értékű vagy üres.
 
 #### <a name="example-1-string"></a>1\. példa: karakterlánc
@@ -261,7 +261,7 @@ A következő példa a `{"key1": "foobar"}`t adja vissza:
 "[first(steps('foo').element1)]"
 ```
 
-### <a name="last"></a>legutóbbi
+### <a name="last"></a>utolsó
 A megadott karakterlánc utolsó karakterét adja vissza, a megadott tömb utolsó értékét, vagy a megadott objektum utolsó kulcsát és értékét.
 
 #### <a name="example-1-string"></a>1\. példa: karakterlánc
@@ -294,7 +294,7 @@ A következő példa a `{"key2": "raboof"}`t adja vissza:
 "[last(steps('foo').element1)]"
 ```
 
-### <a name="take"></a>eltarthat
+### <a name="take"></a>take
 Megadott számú folytonos karaktert ad vissza a karakterlánc elejétől, a tömb elejétől megadott számú folytonos értékből, vagy az objektum elejétől megadott számú folytonos kulcsból és értékből.
 
 #### <a name="example-1-string"></a>1\. példa: karakterlánc
@@ -383,7 +383,7 @@ A következő példa a `false`t adja vissza:
 "[equals('abc', ['a', 'b', 'c'])]"
 ```
 
-### <a name="less"></a>less
+### <a name="less"></a>kisebb
 `true` visszaadása, ha az első paraméter szigorúan kisebb a második paraméternél. Ez a függvény csak szám és karakterlánc típusú paramétereket támogat.
 
 A következő példa a `true`t adja vissza:
@@ -407,7 +407,7 @@ A következő példa a `true`t adja vissza:
 "[lessOrEquals(2, 2)]"
 ```
 
-### <a name="greater"></a>greater
+### <a name="greater"></a>nagyobb
 `true` visszaadása, ha az első paraméter szigorúan nagyobb a második paraméternél. Ez a függvény csak szám és karakterlánc típusú paramétereket támogat.
 
 A következő példa a `false`t adja vissza:
@@ -461,7 +461,7 @@ A következő példa a `true`t adja vissza:
 "[or(equals(0, 0), greater(1, 2))]"
 ```
 
-### <a name="not"></a>not
+### <a name="not"></a>nem
 `true` visszaadása, ha a paraméter kiértékelése `false`. Ez a függvény csak logikai típusú paramétereket támogat.
 
 A következő példa a `true`t adja vissza:
@@ -545,7 +545,7 @@ A következő példa a `"{"foo":"bar"}"`t adja vissza:
 "[string({\"foo\":\"bar\"})]"
 ```
 
-### <a name="bool"></a>logikai
+### <a name="bool"></a>bool
 A paramétert logikai értékre alakítja. Ez a függvény a következő típusú paramétereket támogatja: number, string és Boolean. A JavaScript logikai értékeihez hasonlóan a `0` és a `'false'` kivételével bármely érték `true`ad vissza.
 
 A következő példa a `true`t adja vissza:
@@ -645,7 +645,7 @@ A következő példa a `3`t adja vissza:
 "[add(1, 2)]"
 ```
 
-### <a name="sub"></a>Sub
+### <a name="sub"></a>sub
 Kivonja a második számot az első számból, és visszaadja az eredményt.
 
 A következő példa a `1`t adja vissza:
@@ -687,7 +687,7 @@ A következő példa a `2`t adja vissza:
 "[mod(6, 4)]"
 ```
 
-### <a name="min"></a>perc
+### <a name="min"></a>min.
 A két szám kis részét adja vissza.
 
 A következő példa a `1`t adja vissza:
@@ -741,8 +741,8 @@ A következő példa a `4`t adja vissza:
 "[ceil(3.14)]"
 ```
 
-## <a name="date-functions"></a>Dátumfüggvények
-### <a name="utcnow"></a>UtcNow
+## <a name="date-functions"></a>Dátum függvények
+### <a name="utcnow"></a>utcNow
 A helyi számítógépen az aktuális dátum és idő ISO 8601 formátumú karakterláncát adja vissza.
 
 A következő példa visszatérhet `"1990-12-31T23:59:59.000Z"`:

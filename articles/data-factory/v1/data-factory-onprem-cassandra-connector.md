@@ -13,11 +13,11 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 05cee60fb1f4d43d1b4ce371aa9f22650b4782da
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931824"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387343"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Adatok áthelyezése helyszíni Cassandra-adatbázisból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -63,15 +63,15 @@ A következő szakaszokban részletesen ismertetjük a Cassandra-adattárra jell
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a Cassandra társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesCassandra** |Igen |
-| gazdagép |A Cassandra-kiszolgálók egy vagy több IP-címe vagy állomásneve.<br/><br/>Megadhatja az IP-címek vagy állomásnevek vesszővel tagolt listáját, hogy az összes kiszolgálóhoz egyszerre kapcsolódjon. |Igen |
+| host |A Cassandra-kiszolgálók egy vagy több IP-címe vagy állomásneve.<br/><br/>Megadhatja az IP-címek vagy állomásnevek vesszővel tagolt listáját, hogy az összes kiszolgálóhoz egyszerre kapcsolódjon. |Igen |
 | port |A Cassandra-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem, alapértelmezett érték: 9042 |
 | authenticationType |Alapszintű vagy névtelen |Igen |
 | felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha a authenticationType értéke alapszintű. |
 | jelszó |A felhasználói fiók jelszavának megadása. |Igen, ha a authenticationType értéke alapszintű. |
-| Átjáró neve |A helyszíni Cassandra-adatbázishoz való kapcsolódáshoz használt átjáró neve. |Igen |
+| gatewayName |A helyszíni Cassandra-adatbázishoz való kapcsolódáshoz használt átjáró neve. |Igen |
 | encryptedCredential |Az átjáró által titkosított hitelesítő adat. |Nem |
 
 >[!NOTE]
@@ -82,9 +82,9 @@ Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok telje
 
 A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **CassandraTable** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| kulcstartomány |A térköz vagy séma neve a Cassandra adatbázisban. |Igen (ha a **CassandraSource** - **lekérdezés** nincs definiálva). |
+| keySpace |A térköz vagy séma neve a Cassandra adatbázisban. |Igen (ha a **CassandraSource** - **lekérdezés** nincs definiálva). |
 | tableName |A tábla neve a Cassandra adatbázisban. |Igen (ha a **CassandraSource** - **lekérdezés** nincs definiálva). |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
@@ -94,7 +94,7 @@ Míg a tevékenység typeProperties szakaszában elérhető tulajdonságok az eg
 
 Ha a forrás **CassandraSource**típusú, a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
 | lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-92 lekérdezés vagy CQL-lekérdezés. Lásd: [CQL-hivatkozás](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>SQL-lekérdezés használatakor adja meg a **térköz nevét. a tábla neve** , amely a lekérdezni kívánt táblát jelöli. |Nem (ha meg van adva a táblanév és a szóköz az adatkészleten). |
 | consistencyLevel |A konzisztencia szintje határozza meg, hogy hány replikának kell válaszolnia egy olvasási kérelemre, mielőtt adatvisszaad az ügyfélalkalmazás számára. Cassandra ellenőrzi a megadott számú replikát az adatolvasási kérelem teljesítéséhez. |EGY, KETTŐ, HÁROM, KVÓRUM, MIND, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. További részletek: az [adatkonzisztencia konfigurálása](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) . |Nem. Az alapértelmezett érték egy. |
@@ -263,19 +263,19 @@ A RelationalSource által támogatott tulajdonságok listáját a [RelationalSou
 | --- | --- |
 | ASCII |Sztring |
 | BIGINT |Int64 |
-| BLOB |Bájt [] |
-| LOGIKAI |Logikai |
-| DECIMÁLIS |Decimális |
-| DUPLÁN |Double |
-| FLOAT |Önálló |
+| BLOB |Byte[] |
+| BOOLEAN |Logikai |
+| DECIMAL |tizedes tört |
+| DOUBLE |Dupla |
+| FLOAT |Single |
 | INET |Sztring |
 | INT |Int32 |
 | TEXT |Sztring |
-| IDŐBÉLYEG |Dátum és idő |
-| TIMEUUID |GUID |
-| UUID |GUID |
+| TIMESTAMP |DateTime |
+| TIMEUUID |Guid |
+| UUID |Guid |
 | VARCHAR |Sztring |
-| VARINT |Decimális |
+| VARINT |tizedes tört |
 
 > [!NOTE]
 > A gyűjtési típusok (Térkép, beállítás, lista stb.) esetében tekintse át a következőt: a [Cassandra Collection types használata virtuális tábla használatával](#work-with-collections-using-virtual-table) szakasz.
@@ -299,7 +299,7 @@ A [Másolás varázslóval](data-factory-data-movement-activities.md#create-a-pi
 ### <a name="example"></a>Példa
 Például a következő "ExampleTable" egy Cassandra adatbázis-tábla, amely egy "pk_int" nevű egész számú elsődleges kulcs oszlopot tartalmaz, egy érték nevű szöveges oszlop, egy lista oszlop, egy Térkép oszlop és egy beállított oszlop ("StringSet").
 
-| pk_int | Value (Díj) | Listázás | Térkép | StringSet |
+| pk_int | Érték | Lista | Térkép | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |"Sample Value 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"3. minta érték" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
@@ -308,7 +308,7 @@ Az illesztőprogram több virtuális táblát fog előállítani, hogy ezt az eg
 
 Az első virtuális tábla a "ExampleTable" nevű alaptábla, amely az alábbi táblázatban látható. Az alaptábla ugyanazokat az adatokkal rendelkezik, mint az eredeti adatbázistábla, kivéve azokat a gyűjteményeket, amelyek ki vannak hagyva ebből a táblából, és más virtuális táblákban kibontva vannak.
 
-| pk_int | Value (Díj) |
+| pk_int | Érték |
 | --- | --- |
 | 1 |"Sample Value 1" |
 | 3 |"3. minta érték" |
@@ -333,12 +333,12 @@ A következő táblázatok azokat a virtuális táblákat mutatják be, amelyek 
 | 1 |S2 |b |
 | 3 |S1 |t |
 
-#### <a name="table-exampletable_vt_stringset"></a>"ExampleTable_vt_StringSet" tábla:
+#### <a name="table-exampletable_vt_stringset"></a>Table “ExampleTable_vt_StringSet”:
 | pk_int | StringSet_value |
 | --- | --- |
 | 1 |A |
 | 1 |B |
-| 1 |C# |
+| 1 |C |
 | 3 |A |
 | 3 |E |
 

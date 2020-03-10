@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: cc4ead968a0ee2c9890c1cd24a6b70516b2b2e74
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b5ee7f60eab0349378767473c9c80f035a65c9a5
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326801"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669139"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>A QnA Maker Tudásbázis szerkesztése
 
@@ -42,8 +42,8 @@ A QnA Maker lehetővé teszi a Tudásbázis tartalmát kezelését azáltal, hog
     |URL-cím törlése|A Törlés ikonra kattintva törölheti a meglévő URL-címeket, a Kuka is.|
     |Tartalom frissítése|Ha azt szeretné, hogy a tudásbázisa a meglévő URL-címek legújabb tartalmát bejárja, jelölje be a **refresh (frissítés** ) jelölőnégyzetet. Ekkor a rendszer egyszer frissíti a tudásbázist a legújabb URL-tartalommal. Ez nem állítja be a frissítések rendszeres ütemtervét.|
     |Fájl hozzáadása|Egy Tudásbázis részét képező támogatott dokumentum hozzáadásához válassza a **Tudásbázis kezelése**lehetőséget, majd a **+ fájl hozzáadása** elemet.|
-    |Importálás|A meglévő tudásbázist a **Ímport Tudásbázis** gombjának kiválasztásával is importálhatja. |
-    |frissítés|A Tudásbázis frissítése a tudásbázishoz kapcsolódó QnA Maker szolgáltatás létrehozásakor használt **felügyeleti díjszabási szinttől** függ. Ha szükséges, a felügyeleti csomag az Azure Portalról is frissítheti.
+    |Importálás|A meglévő tudásbázist a **Tudásbázis importálása** gomb kiválasztásával is importálhatja. |
+    |Frissítés|A Tudásbázis frissítése a tudásbázishoz kapcsolódó QnA Maker szolgáltatás létrehozásakor használt **felügyeleti díjszabási szinttől** függ. Ha szükséges, a felügyeleti csomag az Azure Portalról is frissítheti.
 
 1. Miután végzett a Tudásbázis módosításával, a módosítások megőrzése érdekében válassza a **Mentés és a betanítás** lehetőséget a lap jobb felső sarkában.    
 
@@ -103,7 +103,7 @@ Ha megosztja a KB-ban [közreműködőket](collaborate-knowledge-base.md) , majd
 
 Ha törli a QnA Maker tudásbázisok használt Azure-erőforrások, a tudásbázisok többé nem fognak működni. Az erőforrások törlése előtt győződjön meg arról, hogy a tudásbázisokat a **Beállítások** lapról exportálja. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Együttműködés a Tudásbázisban](./collaborate-knowledge-base.md)

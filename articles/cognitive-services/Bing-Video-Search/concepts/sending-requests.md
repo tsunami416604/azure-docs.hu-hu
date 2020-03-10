@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: aahi
 ms.openlocfilehash: b27aa1409d543c157069d2701c49ef54a097e552
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766548"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387747"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>Keresési kérelmek küldése a Bing Video Search APInak
 

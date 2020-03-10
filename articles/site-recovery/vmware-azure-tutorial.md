@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 37fdd42adf66ebcb11b357ece6ea63384630d9f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458931"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362900"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez
 
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan engedélyezhető a helyszíni VMware virtuális 
 Ez a harmadik oktatóanyag egy sorozatban, amely bemutatja, hogyan állíthatja be a vész-helyreállítást az Azure-ba helyszíni VMware virtuális gépekre. Az előző oktatóanyagban [elkészítettük a helyszíni VMware-környezetet](vmware-azure-tutorial-prepare-on-premises.md) az Azure-ba való vész-helyreállításhoz.
 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Állítsa be a forrás-replikációs beállításokat és a helyszíni Site Recovery konfigurációs kiszolgálót.
@@ -157,7 +157,7 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 
 ## <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 
-1. Nyissa meg az [Azure portált](https://portal.azure.com). Keresse meg és válassza ki **Recovery Services**tárolókat.
+1. Nyissa meg az [Azure Portal](https://portal.azure.com). Keresse meg és válassza ki **Recovery Services**tárolókat.
 2. Válassza ki a Recovery Services helyreállítási tárat (ebben az oktatóanyagban ez a **ContosoVMVault**).
 3. A replikációs szabályzat létrehozásához válassza a **Site Recovery-infrastruktúra** > **Replikációs szabályzatok** >  **+Replikációs szabályzat** elemet.
 4. A **Replikációs szabályzat létrehozása** területen adja meg a szabályzat nevét. Itt a **VMwareRepPolicy** nevet használjuk.

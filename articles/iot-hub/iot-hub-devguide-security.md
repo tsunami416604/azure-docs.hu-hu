@@ -9,13 +9,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546945"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356632"
 ---
-# <a name="control-access-to-iot-hub"></a>Hozzáférés elérésének szabályozása
+# <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
 Ez a cikk az IoT hub biztonságossá tételének lehetőségeit ismerteti. IoT Hub az *engedélyek* használatával engedélyezi az egyes IoT hub-végpontokhoz való hozzáférést. Az engedélyek a funkcionalitás alapján korlátozzák az IoT hub elérését.
 
@@ -59,7 +59,7 @@ Például egy tipikus IoT-megoldásban:
 
 ## <a name="authentication"></a>Authentication
 
-Az Azure IoT Hub egy biztonsági jogkivonatnak a megosztott hozzáférési szabályzatok és az identitásjegyzékbeli biztonsági hitelesítő adatok alapján végzett ellenőrzésével ad hozzáférést a végpontokhoz.
+Az Azure IoT Hub hozzáférést biztosít a végpontokhoz egy jogkivonat ellenőrzésével a megosztott hozzáférési házirendek és a személyazonossági beállításjegyzék biztonsági hitelesítő adataival.
 
 A biztonsági hitelesítő adatokat, például a szimmetrikus kulcsokat a rendszer soha nem továbbítja a huzalon.
 
@@ -134,12 +134,12 @@ A biztonsági jogkivonat formátuma a következő:
 
 A várt értékek a következők:
 
-| Value (Díj) | Leírás |
+| Érték | Leírás |
 | --- | --- |
 | aláírás |Az űrlap HMAC-SHA256 aláírási karakterlánca: `{URL-encoded-resourceURI} + "\n" + expiry`. **Fontos**: a kulcs dekódolása base64-ből történik, és kulcsként használatos a HMAC-sha256 számítás végrehajtásához. |
-| ResourceURI |A jogkivonattal elérhető végpontok URI-előtagja (szegmens szerint), az IoT hub állomásneve (nincs protokoll). Például: `myHub.azure-devices.net/devices/device1` |
-| lejárta |UTF8-karakterláncok a 00:00:00-es, 1970-os UTC-kor óta eltelt idő másodpercben. |
-| {URL-kódolt-resourceURI} |Kisbetűs URL-cím – a kisbetűs erőforrás URI-ja kódolása |
+| {resourceURI} |A jogkivonattal elérhető végpontok URI-előtagja (szegmens szerint), az IoT hub állomásneve (nincs protokoll). Például: `myHub.azure-devices.net/devices/device1` |
+| {expiry} |UTF8-karakterláncok a 00:00:00-es, 1970-os UTC-kor óta eltelt idő másodpercben. |
+| {URL-encoded-resourceURI} |Kisbetűs URL-cím – a kisbetűs erőforrás URI-ja kódolása |
 | PolicyName |Annak a megosztott hozzáférési házirendnek a neve, amelyre ez a jogkivonat hivatkozik. Hiányzik, ha a jogkivonat az eszköz beállításjegyzékbeli hitelesítő adataira hivatkozik. |
 
 **Megjegyzés az előtagnál**: az URI-előtagot szegmens és nem karakter alapján számítja ki a rendszer. Például `/a/b` a `/a/b/c` előtagja, de nem `/a/bc`.

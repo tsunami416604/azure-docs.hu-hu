@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
 ms.openlocfilehash: e77af00dc3352af3265da90685e58b34c96bee81
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825163"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382347"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorozás és teljesítmény-finomhangolás
 
@@ -251,7 +251,7 @@ Ha egyetlen végrehajtható elem sem javíthatja az adatbázis teljesítményét
 
 Optimalizálhatja az adatbázishoz tartozó programkódot, módosíthatja az indexeket, kikényszerítheti a terveket, vagy a mutatókat használva manuálisan igazíthatja az adatbázist a munkaterheléshez. A manuális hangolással és a kód újraírásával kapcsolatos információkért lásd: [teljesítmény-finomhangolási útmutató](sql-database-performance-guidance.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha engedélyezni szeretné az automatikus hangolást a Azure SQL Databaseban, és lehetővé teszi, hogy az Automatikus hangolási funkció teljes mértékben kezelhesse a számítási feladatokat, tekintse meg az [automatikus](sql-database-automatic-tuning-enable.md)
 - A Manuális hangolás használatához tekintse át [a Azure Portal hangolásával kapcsolatos ajánlásokat](sql-database-advisor-portal.md). Manuálisan alkalmazza a lekérdezések teljesítményét javító javaslatokat.

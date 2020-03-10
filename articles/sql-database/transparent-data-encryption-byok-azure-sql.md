@@ -12,11 +12,11 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/12/2020
 ms.openlocfilehash: a29466ad5b261e1e2ce818d7b4a18260e35caaec
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192744"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360328"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transzparens adattitkosítás ügyfél által felügyelt kulccsal
 
@@ -193,7 +193,7 @@ Ha el szeretné kerülni, hogy a kulcsfontosságú anyagok hiányában a Geo-rep
 
 A feladatátvétel teszteléséhez kövesse az [aktív geo-replikáció áttekintése](sql-database-geo-replication-overview.md)című témakör lépéseit. Rendszeres időközönként meg kell győződni arról, hogy az SQL mindkét kulcstartóra vonatkozó hozzáférési engedélyei megmaradtak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő PowerShell-parancsfájlokat is érdemes megtekinteni az ügyfél által felügyelt TDE tartozó általános műveletekhez:
 

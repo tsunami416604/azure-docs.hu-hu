@@ -11,20 +11,20 @@ ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890261"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393812"
 ---
 # <a name="pattern-syntax"></a>Minta szintaxisa
 
-A minta szintaxisa egy kiírás sablonja. A sablonnak tartalmaznia kell azokat a szavakat és entitásokat, amelyeket szeretne egyeztetni, valamint a figyelmen kívül hagyni kívánt szavakat és írásjeleket. **Nem** reguláris kifejezés.
+A minta szintaxisa az utterance (kifejezés) sablont. A sablon tartalmaznia kell a szavak és szavak és egyeztetni kívánt entitásokat és írásjelek figyelmen kívül kívánja. **Nem** reguláris kifejezés.
 
 > [!CAUTION]
 > A minták csak a gépi megtanult entitások szüleit tartalmazzák, nem alösszetevőkből.
 
-A mintákban lévő entitások kapcsos zárójelek között találhatók, `{}`. A minták tartalmazhatnak entitásokat és szerepkörökkel rendelkező entitásokat. [Minta. a bármely](luis-concept-entity-types.md#patternany-entity) entitás csak mintázatokban használható.
+A mintákban lévő entitások kapcsos zárójelek között találhatók, `{}`. Minták lehetnek, alá tartozó alanyokra és szerepkörökkel. [Minta. a bármely](luis-concept-entity-types.md#patternany-entity) entitás csak mintázatokban használható.
 
 A minta szintaxisa a következő szintaxist támogatja:
 
@@ -52,7 +52,7 @@ Ha a Entity1 olyan hely, ahol a szerepkörök, például a Origin (Seattle) és 
 
 |Beágyazott csoportosítás – példa|Magyarázat|
 |--|--|
-|RedWest – C|megfelel a külső csoportosítási entitásnak|
+|RedWest-C|megfelel a külső csoportosítási entitásnak|
 |Seattle|megfelel a belső csoportosítási entitások egyikének.|
 |Cairo|megfelel a belső csoportosítási entitások egyikének.|
 
@@ -60,7 +60,7 @@ Ha a Entity1 olyan hely, ahol a szerepkörök, például a Origin (Seattle) és 
 
 A **választható** szintaxisú **Csoportosítás** kombinációja legfeljebb 3 beágyazási szinttel rendelkezik.
 
-|Engedélyezve|Példa|
+|Engedélyezett|Példa|
 |--|--|
 |Igen|([(test1 &#x7c; teszt2)] &#x7c; test3)|
 |Nem|([([test1] &#x7c; teszt2)] &#x7c; test3)|
@@ -69,35 +69,35 @@ A **választható** szintaxisú **Csoportosítás** kombinációja legfeljebb 3 
 
 A **Group** with vagy a **-ing** szintaxisának kombinációja legfeljebb 2 függőleges sávot tartalmaz.
 
-|Engedélyezve|Példa|
+|Engedélyezett|Példa|
 |--|--|
 |Igen|(test1 &#x7c; teszt2 &#x7c; (test3 &#x7c; test4))|
 |Nem|(test1 &#x7c; teszt2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
-## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Entitás hozzáadása egy minta sablonhoz
+## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Entitás hozzáadása egy minta sablon szintaxisát
 Ha entitást szeretne hozzáadni a mintázat sablonhoz, az entitás nevét kapcsos zárójelekkel kell megadnia, például `Who does {Employee} manage?`.
 
-|Minta entitással|
+|Az entitás minta|
 |--|
 |`Who does {Employee} manage?`|
 
-## <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Az entitások és a szerepkörök sablonba való felvételének szintaxisa
+## <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Az entitásokhoz és a szerepkör hozzáadása egy minta sablon szintaxisát
 Az entitások szerepköre `{entity:role}`ként van megjelölve az entitás nevével, majd egy kettősponttal, majd a szerepkör nevével. Ha szerepkörrel rendelkező entitást szeretne felvenni a minta sablonba, az entitás nevét és a szerepkör nevét kapcsos zárójelekkel kell megadnia, például `Book a ticket from {Location:Origin} to {Location:Destination}`.
 
-|Minta entitási szerepkörökkel|
+|Az entitás szerepkörök minta|
 |--|
 |`Book a ticket from {Location:Origin} to {Location:Destination}`|
 
-## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>A minta hozzáadására szolgáló szintaxis. bármely minta sablon
-A minta. bármely entitás lehetővé teszi, hogy egy változó hosszúságú entitást adjon hozzá a mintához. Ha a minta sablont követi, a mintázatot. bármilyen hosszúságú lehet.
+## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Egy pattern.any hozzáadása minta sablon szintaxisát
+A Pattern.any entitás lehetővé teszi, hogy a minta egy entitás különböző hosszúságú. Mindaddig, amíg a minta sablon követik, a pattern.any lehet bármely olyan.
 
 Egy **minta** hozzáadásához vegye fel a mintát a mintázat sablonba. bármely olyan entitást, amely kapcsos zárójelekkel rendelkezik, például `How much does {Booktitle} cost and what format is it available in?`.
 
-|Minta. bármely entitás|
+|Az entitás Pattern.any minta|
 |--|
 |`How much does {Booktitle} cost and what format is it available in?`|
 
-|Könyv címei a mintában|
+|A mintában a könyv címek|
 |--|
 |Mennyibe kerül a **könyv ellopása** , és milyen formátumban érhető el?|
 |Mennyibe kerül a **Rákérdezés** és milyen formátumban érhető el?|
@@ -105,7 +105,7 @@ Egy **minta** hozzáadásához vegye fel a mintát a mintázat sablonba. bármel
 
 A könyv címének szavai nem zavaróak a LUIS számára, mert LUIS tudja, hol fejeződik be a könyv címe, a minta. bármely entitás alapján.
 
-## <a name="explicit-lists"></a>Explicit felsorolások
+## <a name="explicit-lists"></a>Explicit listák
 
 hozzon létre egy [explicit listát](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) a szerzői API-n keresztül, hogy a kivételt a következő esetekben engedélyezze:
 
@@ -114,23 +114,23 @@ hozzon létre egy [explicit listát](https://westus.dev.cognitive.microsoft.com/
 
 Tegyük fel például, hogy rendelkezik egy olyan mintázattal, amely tartalmazza a választható szintaxist, a `[]`és az entitás szintaxisát, `{}`, kombinálva az adatok helytelen kinyerésének módját.
 
-Vegye figyelembe a (z) [Find] e-mailt a (z) {subject} [{person}] címről.
+Fontolja meg a minta "[keresése] e-mail kapcsolatos {subject} [{személy}]".
 
 A következő hosszúságú kimondott szöveg a **tulajdonos** és a **személy** entitás helyesen és helytelenül van kibontva:
 
-|Kimondott szöveg|Jogi személy|Helyes extrakció|
+|Kimondott szöveg|Entitás|Megfelelő kivonása|
 |--|--|:--:|
-|e-mailek a Christől érkező kutyákról|tárgy = kutyák<br>személy = Chris|✔|
-|e-mailek az embertől a La Manchatól|tárgy = a Man<br>személy = La Mancha|X|
+|a Chris kutyák kapcsolatos e-mail|tulajdonos kutyák =<br>személy = Chris|✔|
+|a férfi a La Mancha kapcsolatos e-mailben|tulajdonos férfi =<br>személy La Mancha =|X|
 
 Az előző táblázatban a tulajdonosnak `the man from La Mancha` kell lennie (könyv címe), de mivel a tárgy tartalmazza a választható szót `from`, a cím helytelenül van jelezve.
 
 Ha ki szeretné javítani ezt a kivételt a mintához, adja hozzá a (`the man from la mancha` explicit listaként a {subject} entitáshoz a [explicit listához tartozó authoring API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8)használatával.
 
-## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Nem kötelező szöveg megjelölésének szintaxisa a sablonban
-Megadhatja a szöveg jelölését a kifejezésben a reguláris kifejezés szögletes zárójelének szintaxisa `[]`használatával. A választható szöveg legfeljebb két szögletes zárójelet tud beágyazni.
+## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Egy sablon utterance (kifejezés) a nem kötelező szöveg megjelölésére szintaxis
+Megadhatja a szöveg jelölését a kifejezésben a reguláris kifejezés szögletes zárójelének szintaxisa `[]`használatával. A nem kötelező szöveg ágyazhatja szögletes zárójelek között legfeljebb csak két zárójelek közé.
 
-|Minta opcionális szöveggel|Jelentés|
+|Nem kötelező szöveg minta|Jelentés|
 |--|--|
 |`[find] email about {subject} [from {person}]`|a `find` és a `from {person}` nem kötelező|
 |"Tud segíteni [?]|Az írásjel nem kötelező.|

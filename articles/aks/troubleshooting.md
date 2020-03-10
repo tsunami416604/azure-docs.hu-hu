@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: b7aa90bd19e52059319570f1e7f6e64b90dee6e4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f0ad8d503b5280b8cba89d940b99dcd81da71ffc
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593347"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892807"
 ---
 # <a name="aks-troubleshooting"></a>AK-hibaelhárítás
 
@@ -384,7 +384,7 @@ Ajánlott beállítások:
 | 1.12.0 – 1.12.1 | 0755 |
 | 1.12.2 és újabb verziók | 0777 |
 
-Ha olyan fürtöt használ, amelynek Kuberetes-verziója 1.8.5 vagy nagyobb, és dinamikusan hozza létre az állandó kötetet egy tárolási osztállyal, a csatlakoztatási beállítások megadhatók a tárolási osztály objektumban. A következő példa a *0777*-es készletet állítja be:
+Ha olyan fürtöt használ, amelynek Kubernetes-verziója 1.8.5 vagy nagyobb, és dinamikusan hozza létre az állandó kötetet egy tárolási osztállyal, a csatlakoztatási beállítások megadhatók a tárolási osztály objektumban. A következő példa a *0777*-es készletet állítja be:
 
 ```yaml
 kind: StorageClass
@@ -491,6 +491,10 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 ```
 
 Ennek a hibának az az oka, hogy egy felsőbb rétegbeli fürthöz tartozó autoskálázási versenyhelyzet olyan feltételt eredményez, amelyben a fürthöz tartozó automéretező eltérő értékkel végződik, mint ami valójában a fürtben van. Az állapotból való kilépéshez egyszerűen tiltsa le, majd engedélyezze újra a [fürt automéretezőjét][cluster-autoscaler].
+
+### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Lassú lemez-melléklet, a GetAzureDiskLun 10 – 15 percet vesz igénybe, és hibaüzenetet kap
+
+A 1.15.0- **nál régebbi** Kubernetes-verzióknál hibaüzenet jelenhet meg, például a **WaitForAttach nem találja a lemez LUN**elemét.  Ennek megkerülő megoldásához várjon körülbelül 15 percet, majd próbálkozzon újra.
 
 <!-- LINKS - internal -->
 [view-master-logs]: view-master-logs.md

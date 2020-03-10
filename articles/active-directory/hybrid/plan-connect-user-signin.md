@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Felhasználói bejelentkezés | Microsoft Docs'
+title: 'Azure AD Connect: felhasználói bejelentkezés | Microsoft Docs'
 description: Felhasználói bejelentkezés Azure AD Connect egyéni beállításokhoz.
 services: active-directory
 documentationcenter: ''
@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dbcc05093d801261493745c61dc5f68878d338b0
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607664"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376270"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Felhasználói bejelentkezési beállítások Azure AD Connect
 Azure Active Directory (Azure AD) kapcsolat lehetővé teszi, hogy a felhasználók ugyanazzal a jelszóval jelentkezzenek be a felhőbe és a helyszíni erőforrásokra. Ez a cikk az egyes identitási modellekkel kapcsolatos főbb fogalmakat ismerteti, így kiválaszthatja az Azure AD-ba való bejelentkezéshez használni kívánt identitást.
@@ -31,7 +31,7 @@ Ha már ismeri az Azure AD Identity modelt, és szeretne többet megtudni egy ad
 * [Jelszó-kivonatolási szinkronizálás](#password-hash-synchronization) [zökkenőmentes egyszeri bejelentkezéssel (SSO)](how-to-connect-sso.md)
 * [Átmenő hitelesítés](how-to-connect-pta.md) [zökkenőmentes egyszeri bejelentkezéssel (SSO)](how-to-connect-sso.md)
 * [Összevont egyszeri bejelentkezés (Active Directory összevonási szolgáltatások (AD FS) (AD FS))](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
-* [Összevonás a pingfederate-tel](#federation-with-pingfederate)
+* [Összevonás a PingFederate](#federation-with-pingfederate)
 
 > [!NOTE] 
 > Fontos megjegyezni, hogy az Azure AD-összevonás konfigurálásával megbízhatósági kapcsolatot létesít az Azure AD-bérlő és az összevont tartományok között. Ezzel a megbízhatósággal összevont tartomány felhasználói hozzáférhetnek majd a bérlőn belüli Azure AD felhőalapú erőforrásokhoz.  
@@ -51,12 +51,12 @@ A legtöbb szervezet számára, amely csak az Office 365, az SaaS-alkalmazások 
  
 A hitelesítési módszer kiválasztásával kapcsolatos részletes információkért lásd: [a megfelelő hitelesítési módszer kiválasztása a Azure Active Directory Hybrid Identity megoldáshoz](../../security/fundamentals/choose-ad-authn.md)
 
-### <a name="password-hash-synchronization"></a>Jelszókivonat-szinkronizálás
+### <a name="password-hash-synchronization"></a>Jelszókivonat szinkronizálása
 A jelszó-kivonatolási szinkronizálással a felhasználói jelszavak kivonatait a helyszíni Active Directoryról az Azure AD-be szinkronizálja a rendszer. Ha a jelszavakat módosítják vagy alaphelyzetbe állítják, a rendszer azonnal szinkronizálja az új jelszó-kivonatokat az Azure AD-be, hogy a felhasználók mindig ugyanazt a jelszót használják a felhőalapú erőforrásokhoz és a helyszíni erőforrásokhoz. A jelszavakat a rendszer soha nem továbbítja az Azure AD-nek, vagy az Azure AD-ben tárolja tiszta szövegben. A jelszó-kivonatolási szinkronizálást és a jelszó-visszaírást is használhatja az önkiszolgáló jelszó-visszaállítás engedélyezéséhez az Azure AD-ben.
 
 Emellett engedélyezheti a [zökkenőmentes egyszeri bejelentkezést](how-to-connect-sso.md) a felhasználók számára a vállalati hálózaton lévő, tartományhoz csatlakoztatott gépeken. Az egyszeri bejelentkezés lehetővé teszi, hogy a felhasználóknak csak a felhasználónevet kell megadniuk ahhoz, hogy biztonságosan hozzáférhessenek a felhőalapú erőforrásokhoz.
 
-![Jelszókivonat-szinkronizálás](./media/plan-connect-user-signin/passwordhash.png)
+![Jelszókivonat szinkronizálása](./media/plan-connect-user-signin/passwordhash.png)
 
 További információkért lásd a jelszó- [kivonatolás szinkronizálása](how-to-connect-password-hash-synchronization.md) című cikket.
 
@@ -77,7 +77,7 @@ Az összevont bejelentkezéssel a felhasználók bejelentkezhetnek az Azure AD-a
 
 <center>
 
-![Összevonás AD FS a Windows Server 2012 R2-ben](./media/plan-connect-user-signin/federatedsignin.png)</center>
+![-összevonás AD FS a Windows Server 2012 R2-ben](./media/plan-connect-user-signin/federatedsignin.png)</center>
 
 #### <a name="deploy-federation-with-ad-fs-in-windows-server-2012-r2"></a>Összevonás üzembe helyezése AD FS a Windows Server 2012 R2-ben
 
@@ -112,14 +112,14 @@ További információ: az [Azure ad harmadik féltől származó összevonási k
 ### <a name="understanding-user-principal-name"></a>Az egyszerű felhasználónevek ismertetése
 Active Directory az alapértelmezett egyszerű felhasználónév (UPN) utótag annak a tartománynak a DNS-neve, amelyben a felhasználói fiókot létrehozták. A legtöbb esetben ez az a tartománynév, amely az interneten vállalati tartományként van regisztrálva. Azonban Active Directory tartományok és megbízhatósági kapcsolatok használatával további UPN-utótagokat adhat hozzá.
 
-A felhasználó UPN-je formátuma username@domain. Például egy "contoso.com" nevű Active Directory tartományhoz a János nevű felhasználó rendelkezhet az UPNjohn@contoso.com-vel (""). A felhasználó egyszerű felhasználóneve a 822-es RFC-dokumentumon alapul. Bár az UPN és az e-mail ugyanazzal a formátummal rendelkezik, előfordulhat, hogy a felhasználó UPN-értéke nem egyezik meg a felhasználó e-mail-címével.
+A felhasználó UPN-je formátuma username@domain. Ha például egy "contoso.com" nevű Active Directory tartományhoz tartozik, akkor a John nevű felhasználó rendelkezhet az egyszerű felhasználónévvel ("john@contoso.com"). A felhasználó egyszerű felhasználóneve a 822-es RFC-dokumentumon alapul. Bár az UPN és az e-mail ugyanazzal a formátummal rendelkezik, előfordulhat, hogy a felhasználó UPN-értéke nem egyezik meg a felhasználó e-mail-címével.
 
 ### <a name="user-principal-name-in-azure-ad"></a>Egyszerű felhasználónév az Azure AD-ben
 A Azure AD Connect varázsló a userPrincipalName attribútumot használja, vagy lehetővé teszi, hogy az Azure AD-ben a helyszínen használt egyszerű felhasználónevet (egyéni telepítésben) adja meg. Ez az az érték, amelyet a rendszer az Azure AD-be való bejelentkezéshez használ. Ha a userPrincipalName attribútum értéke nem felel meg egy ellenőrzött tartománynak az Azure AD-ben, akkor az Azure AD lecseréli egy alapértelmezett. onmicrosoft.com értékre.
 
-Azure Active Directory minden könyvtára egy beépített tartománynévvel rendelkezik, amelynek formátuma contoso.onmicrosoft.com, amely lehetővé teszi az Azure vagy más Microsoft-szolgáltatások használatának megkezdését. Egyéni tartományok használatával javíthatja és egyszerűsítheti a bejelentkezési élményt. További információ az Azure AD egyéni tartománynevéről és a tartományok ellenőrzéséről: [Egyéni tartománynév hozzáadása](../fundamentals/add-custom-domain.md)a Azure Active Directoryhoz.
+Azure Active Directory minden könyvtára egy beépített tartománynévvel rendelkezik, amelynek formátuma contoso.onmicrosoft.com, amely lehetővé teszi az Azure vagy más Microsoft-szolgáltatások használatának megkezdését. Egyéni tartományok használatával javíthatja és egyszerűsítheti a bejelentkezési élményt. További információ az Azure AD egyéni tartománynevéről és a tartományok ellenőrzéséről: [Egyéni tartománynév hozzáadása a Azure Active Directoryhoz](../fundamentals/add-custom-domain.md).
 
-## <a name="azure-ad-sign-in-configuration"></a>Azure AD-ba való bejelentkezés konfigurálása
+## <a name="azure-ad-sign-in-configuration"></a>Azure AD-bejelentkezés konfigurálása
 ### <a name="azure-ad-sign-in-configuration-with-azure-ad-connect"></a>Azure AD bejelentkezési konfiguráció Azure AD Connect
 Az Azure AD bejelentkezési élmény attól függ, hogy az Azure AD képes-e az Azure ad-címtárban ellenőrzött egyéni tartományokra szinkronizált felhasználó egyszerű felhasználónevének utótagját megfeleltetni. A Azure AD Connect segítséget nyújt az Azure AD bejelentkezési beállításainak konfigurálásában, így a felhőben a felhasználó bejelentkezési élménye hasonló a helyszíni környezethez.
 
@@ -128,7 +128,7 @@ Az Azure AD bejelentkezési oldala felsorolja a helyszíni Active Directoryhoz d
 
 | Állapot | Leírás | Beavatkozás szükséges |
 |:--- |:--- |:--- |
-| Ellenőrizve |Azure AD Connect talált egy megfelelő ellenőrzött tartományt az Azure AD-ben. A tartomány összes felhasználója a helyszíni hitelesítő adataival jelentkezhet be. |Nincs szükség beavatkozásra. |
+| Ellenőrzött |Azure AD Connect talált egy megfelelő ellenőrzött tartományt az Azure AD-ben. A tartomány összes felhasználója a helyszíni hitelesítő adataival jelentkezhet be. |Semmilyen műveletre sincs szükség. |
 | Nincs ellenőrizve |Azure AD Connect a megfelelő egyéni tartományt találta az Azure AD-ben, de nem ellenőrzi. A tartomány felhasználóinak UPN-utótagja a szinkronizálás után az alapértelmezett. onmicrosoft.com utótagra változik, ha a tartomány nincs ellenőrizve. | [Ellenőrizze az egyéni tartományt az Azure AD-ben.](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
 | Nincs hozzáadva |Azure AD Connect nem talált olyan egyéni tartományt, amely megfelel az UPN-utótagnak. A tartomány felhasználóinak UPN-utótagja az alapértelmezett. onmicrosoft.com utótagra változik, ha a tartomány nincs hozzáadva és ellenőrizve az Azure-ban. | [Adjon hozzá és ellenőrizzen egy egyéni tartományt, amely megfelel az UPN-utótagnak.](../fundamentals/add-custom-domain.md) |
 
@@ -151,26 +151,26 @@ Határozottan javasoljuk, hogy tartsa meg az alapértelmezett attribútumot a us
 #### <a name="different-custom-domain-states-and-their-effect-on-the-azure-sign-in-experience"></a>Különböző egyéni tartományi állapotok és azok hatása az Azure bejelentkezési felületére
 Nagyon fontos tisztában lenni az Azure AD-címtárban lévő egyéni tartományi állapotok és a helyszínen definiált UPN-utótagok közötti kapcsolattal. Ismerkedjen meg a lehetséges Azure-bejelentkezési élményekkel, amikor Azure AD Connect használatával állítja be a szinkronizálást.
 
-A következő információk alapján feltételezzük, hogy az UPN-utótag contoso.com van szó, amelyet a helyszíni címtárban használ az egyszerű felhasználónév részeként – például user@contoso.com.
+A következő információk esetében tegyük fel, hogy az UPN-utótag contoso.com van szó, amelyet a helyszíni címtárban használ az egyszerű felhasználónév részeként – például user@contoso.com.
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Expressz beállítások/jelszó kivonatának szinkronizálása
 
 | Állapot | A felhasználói Azure bejelentkezési felületének hatása |
 |:---:|:--- |
-| Nincs hozzáadva |Ebben az esetben a contoso.com egyéni tartománya nem lett hozzáadva az Azure AD-címtárban. Azok a felhasználók, akik az utótaggal @contoso.com rendelkeznek a helyszíni UPN-vel, nem fogják tudni használni a helyszíni UPN-t az Azure-ba való bejelentkezéshez. Ehelyett egy új UPN-t kell használniuk, amelyet az Azure AD az alapértelmezett Azure AD-címtár utótagjának hozzáadásával biztosít számukra. Ha például a felhasználókat az Azure ad-címtár azurecontoso.onmicrosoft.com szinkronizálja, akkor a helyszíni felhasználó user@contoso.com számára a rendszer user@azurecontoso.onmicrosoft.comUPN-t kap. |
+| Nincs hozzáadva |Ebben az esetben a contoso.com egyéni tartománya nem lett hozzáadva az Azure AD-címtárban. Azok a felhasználók, akik a helyi UPN-utótaggal rendelkeznek, @contoso.com nem fogják tudni használni a helyszíni UPN-t az Azure-ba való bejelentkezéshez. Ehelyett egy új UPN-t kell használniuk, amelyet az Azure AD az alapértelmezett Azure AD-címtár utótagjának hozzáadásával biztosít számukra. Ha például a felhasználókat az Azure AD-címtár azurecontoso.onmicrosoft.com szinkronizálja, akkor a helyszíni felhasználó user@contoso.com a user@azurecontoso.onmicrosoft.comUPN-t kapja meg. |
 | Nincs ellenőrizve |Ebben az esetben az Azure AD-címtárban hozzáadott egyéni tartomány contoso.com. Azonban még nincs ellenőrizve. Ha a felhasználókat a tartomány ellenőrzése nélkül szinkronizálja, akkor a felhasználók az Azure AD-ben egy új UPN-t kapnak, akárcsak a "nincs hozzáadott" forgatókönyvben. |
-| Ellenőrizve |Ebben az esetben az UPN-utótaghoz az Azure AD-ben már hozzáadott és ellenőrzött egyéni tartományi contoso.com van. A felhasználók az Azure ad-vel való szinkronizálás után használhatják a helyszíni egyszerű felhasználónevet user@contoso.com, például az Azure-ba való bejelentkezéshez. |
+| Ellenőrzött |Ebben az esetben az UPN-utótaghoz az Azure AD-ben már hozzáadott és ellenőrzött egyéni tartományi contoso.com van. A felhasználók a helyszíni egyszerű felhasználónevet (például user@contoso.com) használhatják az Azure-ba való bejelentkezéshez, miután szinkronizálva lettek az Azure AD-be. |
 
 ###### <a name="ad-fs-federation"></a>AD FS-összevonás
 Nem hozható létre összevonás az alapértelmezett. onmicrosoft.com tartománnyal az Azure AD-ben vagy egy nem ellenőrzött egyéni tartományban az Azure AD-ben. Ha a Azure AD Connect varázslót futtatja, ha nem ellenőrzött tartományt választ a alkalmazással való összevonás létrehozásához, akkor Azure AD Connect megkérdezi a szükséges rekordokat, amelyek létrehozásához a DNS-t futtatja a tartomány számára. További információ: [az összevonás számára kijelölt Azure ad-tartomány ellenőrzése](how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation).
 
-Ha a felhasználói bejelentkezés lehetőséget választotta a AD FSval **való**összevonáshoz, akkor az Azure ad-ben való összevonás folytatásához egyéni tartománnyal kell rendelkeznie. A vitánk során ez azt jelenti, hogy az Azure AD-címtárban hozzá kell adni egy egyéni tartományi contoso.com.
+Ha a felhasználói bejelentkezés lehetőséget választotta a **ad FSval való összevonáshoz**, akkor az Azure ad-ben való összevonás folytatásához egyéni tartománnyal kell rendelkeznie. A vitánk során ez azt jelenti, hogy az Azure AD-címtárban hozzá kell adni egy egyéni tartományi contoso.com.
 
 | Állapot | A felhasználói Azure bejelentkezési felületének hatása |
 |:---:|:--- |
-| Nincs hozzáadva |Ebben az esetben Azure AD Connect nem talált egyező egyéni tartományt az UPN-utótag contoso.com az Azure AD-címtárban. Egyéni tartományi contoso.com kell hozzáadnia, ha a felhasználóknak a helyszíni UPN-sel (például user@contoso.com) AD FS használatával kell bejelentkezniük. |
+| Nincs hozzáadva |Ebben az esetben Azure AD Connect nem talált egyező egyéni tartományt az UPN-utótag contoso.com az Azure AD-címtárban. Egyéni tartományi contoso.com kell hozzáadnia, ha a felhasználóknak a helyszíni UPN-sel (például a user@contoso.com) AD FS használatával kell bejelentkezniük. |
 | Nincs ellenőrizve |Ebben az esetben Azure AD Connect megkéri a megfelelő részleteket arról, hogyan ellenőrizheti a tartományt egy későbbi időpontban. |
-| Ellenőrizve |Ebben az esetben további művelet nélkül megtekintheti a konfigurációt. |
+| Ellenőrzött |Ebben az esetben további művelet nélkül megtekintheti a konfigurációt. |
 
 ## <a name="changing-the-user-sign-in-method"></a>A felhasználói bejelentkezési módszer módosítása
 A felhasználói bejelentkezési módszert megváltoztathatja az összevonás, a jelszó-kivonatolás vagy az átmenő hitelesítés használatával, ha a Azure AD Connect kezdeti konfigurálása után a varázslóval Azure AD Connect elérhető feladatok közül választhat. Futtassa újra a Azure AD Connect varázslót, és megtekintheti az elvégezhető feladatok listáját. Válassza a **felhasználói bejelentkezés módosítása** lehetőséget a feladatok listájában.
@@ -179,17 +179,17 @@ A felhasználói bejelentkezési módszert megváltoztathatja az összevonás, a
 
 A következő lapon meg kell adnia az Azure AD hitelesítő adatait.
 
-![Összekapcsolás az Azure AD-vel](./media/plan-connect-user-signin/changeusersignin2.png)
+![Csatlakozás az Azure AD szolgáltatáshoz](./media/plan-connect-user-signin/changeusersignin2.png)
 
 A **felhasználói bejelentkezés** lapon válassza ki a kívánt felhasználói bejelentkezést.
 
-![Összekapcsolás az Azure AD-vel](./media/plan-connect-user-signin/changeusersignin2a.png)
+![Csatlakozás az Azure AD szolgáltatáshoz](./media/plan-connect-user-signin/changeusersignin2a.png)
 
 > [!NOTE]
 > Ha csak ideiglenes kapcsolót használ a jelszó-kivonatolási szinkronizáláshoz, jelölje be a **ne alakítsa át a felhasználói fiókokat** jelölőnégyzetet. Ha nem ellenőrzi a lehetőséget, az egyes felhasználókat összevontra konvertálja, és több óráig is eltarthat.
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a helyszíni [identitások és a Azure Active Directory integrálásáról](whatis-hybrid-identity.md).
-- További információ a [Azure ad Connect kialakításával](plan-connect-design-concepts.md)kapcsolatos fogalmakról.
+- További információ a [Azure ad Connect kialakításával kapcsolatos fogalmakról](plan-connect-design-concepts.md).

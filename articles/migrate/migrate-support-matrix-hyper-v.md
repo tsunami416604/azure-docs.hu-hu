@@ -4,11 +4,11 @@ description: Ismerkedjen meg a Hyper-V felmérés támogatásával Azure Migrate
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: 9c1228992d71e56b9118e88967478e619c14959a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834467"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393303"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>A Hyper-V felmérés támogatási mátrixa
 

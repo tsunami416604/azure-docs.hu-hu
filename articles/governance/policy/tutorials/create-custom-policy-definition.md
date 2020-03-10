@@ -4,18 +4,18 @@ description: Ebben az oktatóanyagban egy egyéni szabályzat-definíciót Azure
 ms.date: 11/25/2019
 ms.topic: tutorial
 ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966022"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386794"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Oktatóanyag: egyéni szabályzat-definíció létrehozása
 
 Az egyéni szabályzatok definíciója lehetővé teszi, hogy az ügyfelek definiálják saját szabályaikat az Azure használatához. Ezek a szabályok gyakran kényszerítik a következőket:
 
 - Biztonsági eljárások
-- Költségkezelés
+- Cost Management
 - Szervezetre vonatkozó szabályok (például elnevezés vagy hely)
 
 Függetlenül attól, hogy az üzleti illesztőprogram egyéni házirendet hoz létre, a lépések ugyanazok, mint az új egyéni házirend definiálásához.
@@ -53,18 +53,18 @@ Az üzleti követelménytől függően az Azure-erőforrás, amellyel a Azure Po
 Az Azure-erőforrások tulajdonságai számos módon meghatározhatók. Ebben az oktatóanyagban a következőket fogjuk megtekinteni:
 
 - Azure Policy-bővítmény VSCode-hoz
-- Erőforrás-kezelői sablonok
+- Resource Manager-sablonok
   - Meglévő erőforrás exportálása
   - Létrehozási élmény
   - Gyorsindítás sablonok (GitHub)
   - Sablon-dokumentációs dokumentumok
-- Azure Resource Manager
+- Azure Resource Explorer
 
 ### <a name="view-resources-in-vs-code-extension"></a>Erőforrások megtekintése a VS Code-bővítményben
 
 A [vs Code bővítmény](../how-to/extension-for-vscode.md#search-for-and-view-resources) használatával böngészheti az erőforrásokat a környezetben, és megtekintheti a Resource Manager-tulajdonságokat az egyes erőforrásokon.
 
-### <a name="resource-manager-templates"></a>Erőforrás-kezelői sablonok
+### <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
 A felügyelni kívánt tulajdonságot több módon is megtekintheti egy [Resource Manager-sablonban](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) .
 
@@ -151,7 +151,7 @@ A GitHubon futó Azure rövid útmutató [sablonjai](https://github.com/Azure/az
 A **supportsHttpsTrafficOnly** helyes tulajdonságának ellenőrzéséhez ellenőrizze a Storage- [fiók erőforrásának](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) Resource Manager-sablonra vonatkozó hivatkozását a tárolási szolgáltatón.
 A Properties objektum érvényes paraméterek listáját tartalmazza. Az [StorageAccountPropertiesCreateParameters-Object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) hivatkozás kiválasztásával egy elfogadható tulajdonságokat tartalmazó táblázat látható. **supportsHttpsTrafficOnly** jelennek meg, és a Leírás megfelel az üzleti igényeknek.
 
-### <a name="azure-resource-explorer"></a>Azure Resource Manager
+### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 
 Az Azure-erőforrások megismerésének egy másik módja a [Azure erőforrás-kezelő](https://resources.azure.com) (előzetes verzió). Ez az eszköz az előfizetés kontextusát használja, ezért az Azure-beli hitelesítő adataival kell hitelesítenie a webhelyet. A hitelesítés után a szolgáltatók, előfizetések, erőforráscsoportok és erőforrások között böngészhet.
 
@@ -164,7 +164,7 @@ Azonosította az erőforrás-tulajdonságot, de a tulajdonságot egy [aliasra](.
 Az Azure-erőforrások aliasait többféleképpen is meghatározhatja. Ebben az oktatóanyagban a következőket fogjuk megtekinteni:
 
 - Azure Policy-bővítmény VSCode-hoz
-- Azure parancssori felület (CLI)
+- Azure CLI
 - Azure PowerShell
 - Azure Resource Graph
 
@@ -172,7 +172,7 @@ Az Azure-erőforrások aliasait többféleképpen is meghatározhatja. Ebben az 
 
 A VS Code bővítmény Azure Policy bővítménye megkönnyíti az erőforrások tallózását és az [aliasok felderítését](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 Az Azure CLI-ben az `az provider`-parancs az erőforrás-aliasok keresésére szolgál. A **Microsoft. Storage** névterét a korábban az Azure-erőforrással kapcsolatban kapott részletek alapján szűrheti.
 
@@ -379,7 +379,7 @@ Habár nem használunk paramétert a kiértékelés módosításához, egy param
 },
 ```
 
-### <a name="policy-rule"></a>Szabályzat szabálya
+### <a name="policy-rule"></a>Szabályzatbeli szabály
 
 A házirend- [szabály](../concepts/definition-structure.md#policy-rule) összeállítása az egyéni szabályzat-definíció kiépítése utolsó lépése. A teszteléshez két utasítást azonosítottak:
 
@@ -455,7 +455,7 @@ Az elkészült definíció használatával új szabályzat hozható létre. A po
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha végzett az oktatóanyag erőforrásainak használatával, a következő lépésekkel törölheti a fent létrehozott hozzárendeléseket vagy definíciókat:
+Ha elkészült ebből az oktatóanyagból erőforrásokkal dolgozik, kövesse az alábbi lépéseket, törölje a létrehozott hozzárendeléseket vagy definíciókat fent:
 
 1. Válassza a **definíciók** **(vagy** hozzárendelések) lehetőséget a Azure Policy lap bal oldalán található **authoring (szerzői műveletek** ) elemnél.
 

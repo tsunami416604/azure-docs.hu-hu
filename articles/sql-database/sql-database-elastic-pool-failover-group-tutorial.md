@@ -12,11 +12,11 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
 ms.openlocfilehash: c57f9eed2147504dd7b3313d58468fb76ab40caa
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552559"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380028"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Oktatóanyag: Azure SQL Database rugalmas készlet hozzáadása egy feladatátvételi csoporthoz
 
@@ -43,7 +43,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 Ebben a lépésben létrehoz egy rugalmas készletet, és hozzáadja az önálló adatbázist. 
 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Hozzon létre rugalmas készletet a Azure Portal használatával. 
 
@@ -71,7 +71,7 @@ Hozzon létre rugalmas készletet a Azure Portal használatával.
 1. A rugalmas készlet beállításainak áttekintéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget, majd válassza a **Létrehozás** lehetőséget a rugalmas készlet létrehozásához. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Hozzon létre rugalmas készleteket és másodlagos kiszolgálót a PowerShell használatával. 
 
    ```powershell-interactive
@@ -129,7 +129,7 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 Ebben a lépésben létre fog hozni egy [feladatátvételi csoportot](sql-database-auto-failover-group.md) egy meglévő Azure SQL Server-kiszolgáló és egy másik régióban lévő új Azure SQL Server között. Ezután adja hozzá a rugalmas készletet a feladatátvételi csoporthoz. 
 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Hozza létre a feladatátvételi csoportot a Azure Portal használatával. 
 
@@ -163,7 +163,7 @@ Hozza létre a feladatátvételi csoportot a Azure Portal használatával.
 1. Válassza a **kiválasztás** elemet a rugalmas készlet beállításainak a feladatátvételi csoportra való alkalmazásához, majd válassza a **Létrehozás** lehetőséget a feladatátvételi csoport létrehozásához. A rugalmas készlet a feladatátvételi csoportba való felvétele automatikusan elindítja a Geo-replikálási folyamatot.
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Hozzon létre egy feladatátvételi csoportot a PowerShell használatával. 
 
@@ -252,7 +252,7 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 Ebben a lépésben a feladatátvételi csoportot a másodlagos kiszolgálóra fogja felvenni, majd a Azure Portal használatával hajtja végre a feladatokat. 
 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 A feladatátvételi csoport feladatátvételi tesztje a Azure Portal használatával. 
 
@@ -276,7 +276,7 @@ A feladatátvételi csoport feladatátvételi tesztje a Azure Portal használat�
 1. Válassza újra a **feladatátvételt** , hogy a feladatátvételi csoportot vissza lehessen térni az eredeti beállításokhoz. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 A feladatátvételi csoport feladatátvételi tesztje a PowerShell használatával. 
 
@@ -357,7 +357,7 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 Törölje az erőforrásokat az erőforráscsoport törlésével. 
 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 
 1. Navigáljon az erőforráscsoporthoz a [Azure Portal](https://portal.azure.com).
@@ -365,7 +365,7 @@ Törölje az erőforrásokat az erőforráscsoport törlésével.
 1. Írja be az erőforráscsoport nevét, `myResourceGroup`, a szövegmezőbe, majd válassza a **Törlés** lehetőséget az erőforráscsoport törléséhez. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Az erőforrások tisztítása a PowerShell használatával. 
 
@@ -392,7 +392,7 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagot használja:
 
 ## <a name="full-script"></a>Teljes szkript
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-elastic-pool-to-failover-group-az-ps.ps1 "Add elastic pool to a failover group")]
 
@@ -414,7 +414,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Erőforráscsoport eltávolítása | 
 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Nincsenek elérhető parancsfájlok a Azure Portal számára.
 
 ---

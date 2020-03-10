@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: e3f09d4e2500b98a7ce68139cd97a04c0d60d73e
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f6817c1ec308e75a4af88825d46848b504775e19
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612547"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383684"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Oktatóanyag: Azure Active Directory Domain Services-példány létrehozása és konfigurálása speciális konfigurációs beállításokkal
 
@@ -139,7 +139,7 @@ A következő módon hajtsa végre a mezőket a *hálózat* ablakban:
 
 Az Azure AD DS-tartomány felügyeletéhez egy *HRE DC-rendszergazdák* nevű speciális felügyeleti csoportot használ a rendszer. Ennek a csoportnak a tagjai rendszergazdai jogosultságokat kapnak a felügyelt tartományhoz csatlakoztatott virtuális gépeken. A tartományhoz csatlakozó virtuális gépeken ez a csoport a helyi rendszergazdák csoportba kerül. Ennek a csoportnak a tagjai is használhatják a Távoli asztalt a tartományhoz csatlakoztatott virtuális gépekhez való távoli csatlakozáshoz.
 
-Nem rendelkezik *tartományi rendszergazdai* vagy *vállalati rendszergazdai* engedélyekkel felügyelt tartományon az Azure AD DS használatával. Ezeket az engedélyeket a szolgáltatás foglalta le, és a bérlőn belüli felhasználók számára nem érhető el. Ehelyett a *HRE DC-rendszergazdák* csoport bizonyos jogosultsági szintű műveletek elvégzését teszi lehetővé. Ezek a műveletek magukban foglalják a számítógépek tartományhoz való csatlakoztatását, a tartományhoz csatlakoztatott virtuális gépek adminisztrációs csoportjának és a Csoportházirend konfigurálásának.
+Nem rendelkezik *tartományi rendszergazdai* vagy *vállalati rendszergazdai* engedélyekkel felügyelt tartományon az Azure AD DS használatával. Ezeket az engedélyeket a szolgáltatás foglalta le, és a bérlőn belüli felhasználók számára nem érhető el. Ehelyett a *HRE DC-rendszergazdák* csoport bizonyos jogosultsági szintű műveletek elvégzését teszi lehetővé. Ezek a műveletek magukban foglalják a tartományhoz csatlakoztatott virtuális gépek adminisztrációs csoportját, valamint a Csoportházirend konfigurálását.
 
 A varázsló automatikusan létrehozza az *HRE DC rendszergazdák* csoportot az Azure ad-címtárban. Ha már létezik ilyen nevű csoport az Azure AD-címtárban, a varázsló kiválasztja ezt a csoportot. A telepítési folyamat során további felhasználókat is hozzáadhat ehhez a *HRE DC-rendszergazdák* csoporthoz. Ezeket a lépéseket később is elvégezheti.
 

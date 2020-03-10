@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics kimenet Azure Cosmos DB
-description: Ez a cikk azt ismerteti, hogyan lehet a Azure Stream Analytics használatával menteni a kimenetet a JSON-kimenetek Azure Cosmos DBához, az adatarchiváláshoz és a nem strukturált JSON-adatokat érintő kis késleltetésű lekérdezésekhez.
+title: Az Azure Cosmos DB Azure Stream Analytics-kimenet
+description: Ez a cikk ismerteti az Azure Stream Analytics használatával az Azure Cosmos DB JSON kimeneti adatok archiválása és kis késleltetésű lekérdezéseket a strukturálatlan JSON-adatok mentése.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
 ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986988"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364563"
 ---
-# <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics kimenet Azure Cosmos DB  
-A Azure Stream Analytics a JSON-kimenethez [Azure Cosmos db](https://azure.microsoft.com/services/documentdb/) , így lehetővé teszi az adatarchiválást és az alacsony késésű lekérdezéseket a strukturálatlan JSON-adatokat illetően. Ez a dokumentum a konfiguráció megvalósításának ajánlott eljárásait ismerteti.
+# <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Az Azure Cosmos DB Azure Stream Analytics-kimenet  
+A Azure Stream Analytics a JSON-kimenethez [Azure Cosmos db](https://azure.microsoft.com/services/documentdb/) , így lehetővé teszi az adatarchiválást és az alacsony késésű lekérdezéseket a strukturálatlan JSON-adatokat illetően. Ez a dokumentum áttekint néhány ajánlott eljárást a konfiguráció implementálása a.
 
 Ha nem ismeri a Azure Cosmos DBt, az első lépésekhez tekintse meg a [Azure Cosmos db dokumentációját](https://docs.microsoft.com/azure/cosmos-db/) . 
 
 > [!Note]
 > A Stream Analytics jelenleg csak az *SQL API*-n keresztül támogatja a Azure Cosmos db való kapcsolódást.
-> Más Azure Cosmos DB API-k még nem támogatottak. Ha a Stream Analytics Azure Cosmos DB más API-kkal létrehozott fiókokra mutat, előfordulhat, hogy az adathalmazok nem lesznek megfelelően tárolva. 
+> Más Azure Cosmos DB API-k még nem támogatott. Ha a Stream Analytics Azure Cosmos DB más API-kkal létrehozott fiókokra mutat, előfordulhat, hogy az adathalmazok nem lesznek megfelelően tárolva. 
 
 ## <a name="basics-of-azure-cosmos-db-as-an-output-target"></a>A Azure Cosmos DB alapjai a kimeneti célként
 A Stream Analytics Azure Cosmos DB kimenete lehetővé teszi, hogy a stream feldolgozásának eredményét JSON-kimenetként írja be a Azure Cosmos DB tárolóba. 
@@ -37,13 +37,13 @@ A következő részekben részletesen ismertetjük a Azure Cosmos DBhoz tartozó
 ## <a name="tuning-consistency-availability-and-latency"></a>A konzisztencia, a rendelkezésre állás és a késés finomhangolása
 Az alkalmazás követelményeinek való megfelelés érdekében Azure Cosmos DB lehetővé teszi az adatbázis és a tárolók finomhangolását, valamint a konzisztencia, a rendelkezésre állás, a késés és az átviteli sebesség közötti kompromisszumok biztosítását. 
 
-Attól függően, hogy milyen szintű olvasási konzisztencia szükséges a forgatókönyvben az olvasási és írási késéssel szemben, kiválaszthatja az adatbázis-fiókban a konzisztencia szintjét. Az átviteli sebességet a tárolóban lévő kérelmek egységének (RUs) skálázásával növelheti. 
+Attól függően, hogy milyen szintű olvasás következetes ellen a forgatókönyv igényeinek olvassa el, és írási késés, választhatja a konzisztenciaszint a fiókot a. Az átviteli sebességet a tárolóban lévő kérelmek egységének (RUs) skálázásával növelheti. 
 
 Alapértelmezés szerint a Azure Cosmos DB lehetővé teszi az egyes szifilisz-műveletek szinkron indexelését a tárolón. Ez egy másik hasznos lehetőség a Azure Cosmos DB írási/olvasási teljesítményének vezérléséhez. 
 
 További információkért tekintse át az [adatbázis módosítása és a lekérdezési konzisztencia szintjei](../cosmos-db/consistency-levels.md) című cikket.
 
-## <a name="upserts-from-stream-analytics"></a>Upsert Stream Analytics
+## <a name="upserts-from-stream-analytics"></a>A Stream Analytics Upserts
 Stream Analytics integrációja Azure Cosmos DB lehetővé teszi a tárolóban lévő rekordok beszúrását vagy frissítését egy adott **dokumentum-azonosító** oszlop alapján. Ezt *upsert*is nevezik.
 
 A Stream Analytics optimista upsert megközelítést használ. A frissítések csak akkor történnek, ha egy Beszúrás meghiúsul egy dokumentum-AZONOSÍTÓval. 
@@ -110,10 +110,10 @@ A Azure Cosmos DB Stream Analytics kimenetként való használata a következő 
 |Kimeneti alias    | Egy alias, amely a Stream Analytics lekérdezésében erre a kimenetre hivatkozik.|
 |Előfizetést    | Az Azure-előfizetés.|
 |Fiókazonosító      | A Azure Cosmos DB fiók neve vagy végpontjának URI azonosítója.|
-|Fiók kulcsa     | A Azure Cosmos DB-fiókhoz tartozó megosztott elérési kulcs.|
+|Fiókkulcs     | A Azure Cosmos DB-fiókhoz tartozó megosztott elérési kulcs.|
 |Adatbázis        | A Azure Cosmos DB adatbázis neve.|
 |Tárolónév | A tároló neve, például `MyContainer`. Egy `MyContainer` nevű tárolónak léteznie kell.  |
-|Dokumentum azonosítója     | Választható. A kimeneti események oszlopának neve, amelyet az INSERT vagy a Update műveleteken alapuló egyedi kulcsként kell használni. Ha üresen hagyja, a rendszer az összes eseményt beszúrja, és nem rendelkezik frissítési lehetőséggel.|
+|Dokumentumazonosító     | Választható. A kimeneti eseményekben a melyik beszúrási vagy frissítési műveletek kell alapozni egyedi kulcsaként használt oszlopok neve. Ha üresen hagyja, a rendszer az összes eseményt beszúrja, és nem rendelkezik frissítési lehetőséggel.|
 
 Miután konfigurálta a Azure Cosmos DB kimenetét, használhatja azt a lekérdezésben a [into utasítás](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics)céljaként. Ha Azure Cosmos DB kimenetet használ, [a partíciós kulcsot explicit módon be kell állítani](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks). 
 

@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: c6e15c9a99a78f0f3637f718b35462fe49fd5ee6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202137"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370850"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Az Azure Blob Storage kimeneti kötése Azure Functions
 
@@ -20,7 +20,7 @@ További információ a telepítésről és a konfigurációról: [Áttekintés]
 
 ## <a name="example"></a>Példa
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 A következő példa egy [ C# olyan függvény](functions-dotnet-class-library.md) , amely blob-triggert és két kimeneti blob-kötést használ. A függvényt egy képblob létrehozásával indítják el a *minta-rendszerkép* tárolóban. Létrehozza a képblob kis és közepes méretű másolatait.
 
@@ -73,7 +73,7 @@ public class ResizeImages
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
@@ -122,7 +122,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 <!--Same example for input and output. -->
 
@@ -171,7 +171,7 @@ module.exports = function(context) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 <!--Same example for input and output. -->
 
@@ -224,7 +224,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
     outputblob.set(inputblob)
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Ez a szakasz tartalmazza az alábbi példák:
 
@@ -295,7 +295,7 @@ Ez a szakasz tartalmazza az alábbi példák:
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs).
 
@@ -323,19 +323,19 @@ public static void Run(
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 Az C# attribútumokat a parancsfájl nem támogatja.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 A Python nem támogatja az attribútumokat.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 A `@BlobOutput` attribútum hozzáférést biztosít a függvényt kiváltó blobhoz. Ha egy bájtos tömböt használ az attribútummal, állítsa a `dataType` `binary`re. A részletekért tekintse meg a [kimeneti példát](#example) .
 
@@ -362,19 +362,19 @@ Az alábbi táblázat a *function. JSON* fájlban és a `Blob` attribútumban be
 
 ## <a name="usage"></a>Használat
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScriptben a `context.bindings.<name from function.json>`használatával férhet hozzá a blob-adataihoz.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 A függvények paramétereinek deklarálása a blob Storage-ba való kiíráshoz a következő típusok szerint végezhető el:
 
@@ -383,7 +383,7 @@ A függvények paramétereinek deklarálása a blob Storage-ba való kiíráshoz
 
 A részletekért tekintse meg a [kimeneti példát](#example) .
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 A `@BlobOutput` attribútum hozzáférést biztosít a függvényt kiváltó blobhoz. Ha egy bájtos tömböt használ az attribútummal, állítsa a `dataType` `binary`re. A részletekért tekintse meg a [kimeneti példát](#example) .
 

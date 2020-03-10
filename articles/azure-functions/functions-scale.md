@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c4ff3ebf6239f9b62409ff0885f23115711e33cb
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: 9970894436107ab51c2ad2d31aa1e14a3e6b5778
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77584541"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356502"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Méretezés és üzemeltetés Azure Functions
 
@@ -63,7 +63,7 @@ A Prémium csomag használatakor a rendszer a Azure Functions gazdagép példán
 
 * Állandóan meleg példányok a hideg indítás elkerüléséhez
 * VNet-kapcsolat
-* Korlátlan végrehajtás időtartama
+* Korlátlan végrehajtás időtartama (60 perc garantált)
 * Prémium példányok méretei (egy mag, két mag és négy fő példány)
 * További kiszámítható díjszabás
 * Nagy sűrűségű alkalmazások kiosztása több Function-alkalmazással rendelkező csomagokhoz

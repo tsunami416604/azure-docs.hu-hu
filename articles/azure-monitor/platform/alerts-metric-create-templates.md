@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
 ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664836"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368014"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
@@ -565,7 +565,7 @@ az group deployment create \
 
 Az újabb metrikai riasztások támogatják a többdimenziós metrikák riasztásait, valamint a több feltétel támogatását. A következő sablonnal további speciális metrikai riasztási szabályt hozhat létre a dimenziós mérőszámokra vonatkozóan, és több feltételt is megadhat.
 
-Ha több feltételt tartalmazó riasztási szabályban dimenziókat használ, vegye figyelembe a következő korlátozásokat:
+Vegye figyelembe a következő korlátozásokat, amikor dimenziókat használ egy több feltételt tartalmazó riasztási szabályban:
 - Minden egyes feltételhez csak egy értéket lehet kijelölni.
 - A "\*" nem használható dimenzió értékként.
 - Ha a különböző feltételekben konfigurált mérőszámok ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzió értékét explicit módon be kell állítani az összes ilyen metrika esetében (a vonatkozó feltételben).

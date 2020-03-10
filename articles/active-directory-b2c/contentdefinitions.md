@@ -12,11 +12,11 @@ ms.date: 02/17/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b55199ec2684ab7b95ce4e4988b19814c27b2cc3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189582"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374796"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -61,7 +61,7 @@ A **LocalAccountSignUpWithLogonEmail** önérvényesített technikai profil meta
 
 A **ContentDefinition** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A tartalom definíciójának azonosítója. Az érték a **tartalom-definíciós azonosítók** szakaszban, a lap későbbi részében van megadva. |
 
@@ -137,15 +137,15 @@ A **metaadat** -elemek a következő elemeket tartalmazzák:
 
 A **metaadatok** elem **elem eleme a** következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Kulcs | Igen | A metaadat-kulcs.  |
+| Paraméter | Igen | A metaadat-kulcs.  |
 
 #### <a name="metadata-keys"></a>Metaadat-kulcsok
 
 A Content Definition a következő metaadat-elemeket támogatja:
 
-| Kulcs | Szükséges | Leírás |
+| Paraméter | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | DisplayName | Nem | Egy karakterlánc, amely tartalmazza a tartalom definíciójának nevét. |
 
@@ -159,7 +159,7 @@ A **LocalizedResourcesReferences** elem a következő elemeket tartalmazza:
 
 A **LocalizedResourcesReference** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Nyelv | Igen | Egy karakterlánc, amely az RFC 5646-címkék által támogatott nyelvet tartalmaz a nyelvek azonosításához. |
 | LocalizedResourcesReferenceId | Igen | A **LocalizedResources** elem azonosítója. |
@@ -188,7 +188,7 @@ Ha szeretné megtudni, hogyan adhat honosított támogatást a tartalmi definíc
 
 A **ContentDefinition** elem ID attribútuma határozza meg a tartalom-definícióhoz kapcsolódó oldal típusát. Az elem határozza meg azt a környezetet, amelyet az egyéni HTML5/CSS-sablon alkalmazni fog. A következő táblázat ismerteti az identitási élmény keretrendszere által felismert tartalmi definíciós azonosítókat, valamint az azokhoz kapcsolódó lapokat. Saját tartalmi definíciókat tetszőleges AZONOSÍTÓval hozhat létre.
 
-| ID | Alapértelmezett sablon | Leírás |
+| ID (Azonosító) | Alapértelmezett sablon | Leírás |
 | -- | ---------------- | ----------- |
 | **API. error** | [kivétel. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hiba lap** – hibaüzenetet jelenít meg, ha kivétel vagy hiba történt. |
 | **API. idpselections** | [idpSelector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identitás-szolgáltató kiválasztása lap** – felsorolja azokat az azonosítókat, amelyeket a felhasználók a bejelentkezés során választhatnak. A lehetőségek általában a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook és a Google +, vagy a helyi fiókok. |
@@ -201,7 +201,7 @@ A **ContentDefinition** elem ID attribútuma határozza meg a tartalom-definíci
 | **API. selfasserted. profileUpdate** | [updateprofile. cshtml](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil frissítése lap** – megjelenít egy űrlapot, amelyet a felhasználók a profiljuk frissítéséhez tudnak elérni. Ez az oldal hasonló a közösségi fiók regisztrálása oldalhoz, a jelszó-beviteli mezők kivételével. |
 | **API. signuporsignin** | [Unified. cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Egyesített regisztrációs vagy bejelentkezési oldal** – kezeli a felhasználói regisztrációt és a bejelentkezési folyamatot. A felhasználók a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook vagy a Google +, vagy a helyi fiókok használatával használhatják a felhasználókat. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználói felület tartalmi definíciók használatával történő testreszabására példát a következő témakörben talál:
 

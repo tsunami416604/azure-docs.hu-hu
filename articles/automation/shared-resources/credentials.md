@@ -10,11 +10,11 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 767c1fddbc3d1f46d4341a70c990c2b57ad40e54
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930416"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373549"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Hitelesítőadat-eszközök a Azure Automation
 
@@ -36,11 +36,11 @@ Azure PowerShell az modulhoz az alábbi táblázatban található parancsmagok h
 | [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |Eltávolít egy Automation-hitelesítő adatot. |
 | [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |Egy meglévő Automation-hitelesítő adat tulajdonságainak beállítása. |
 
-## <a name="activities"></a>Activities (Tevékenységek)
+## <a name="activities"></a>Tevékenységek
 
 Az alábbi táblázatban szereplő tevékenységek a hitelesítő adatok runbook és DSC-konfigurációkhoz való elérésére szolgálnak.
 
-| Activities (Tevékenységek) | Leírás |
+| Tevékenységek | Leírás |
 |:--- |:--- |
 | Get-AutomationPSCredential |A runbook vagy DSC-konfigurációban használandó hitelesítő adatok beolvasása. Egy [System. Management. Automation. PSCredential](/dotnet/api/system.management.automation.pscredential) objektumot ad vissza. |
 
@@ -53,7 +53,7 @@ A következő táblázatban szereplő függvény a hitelesítő adatok Python2-r
 
 | Függvény | Leírás |
 |:---|:---|
-| automationassets. get_automation_credential | A hitelesítő adatokkal kapcsolatos adatok beolvasása. |
+| automationassets.get_automation_credential | A hitelesítő adatokkal kapcsolatos adatok beolvasása. |
 
 > [!NOTE]
 > Az Asset functions eléréséhez importálnia kell a "automationassets" modult a Python-runbook tetején.
@@ -89,7 +89,7 @@ A hitelesítő adatokat egy runbook vagy DSC-konfigurációban kell lekérnie a 
 
 ### <a name="textual-runbook-sample"></a>Szöveges runbook minta
 
-Az alábbi példák azt mutatják be, hogyan használhatók PowerShell-hitelesítő adatok egy runbook. Ebben a példában a rendszer beolvassa a hitelesítő adatokat, valamint a hozzá tartozó felhasználónevet és jelszót.
+A következő mintaparancsok bemutatják a PowerShell-hitelesítő adat használata runbookban. Ebben a példában a rendszer beolvassa a hitelesítő adatokat, valamint a hozzá tartozó felhasználónevet és jelszót.
 
 ```azurepowershell
 $myCredential = Get-AutomationPSCredential -Name 'MyCredential'

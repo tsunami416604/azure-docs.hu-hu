@@ -7,11 +7,11 @@ ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 10b3e572ec61d1eff342f24a6a5a7bcba6276983
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495373"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363058"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-ba történő replikáció engedélyezése VMware virtuális gépekhez
 
@@ -25,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan engedélyezhető a helyszíni VMware virtuális 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy rendelkezik a következővel:
+Ez a cikk feltételezi, hogy rendelkezik:
 
 - [A helyszíni forrás környezet beállítása](vmware-azure-set-up-source.md).
 - [Állítsa be a célként megadott környezetet az Azure-ban](vmware-azure-set-up-target.md).

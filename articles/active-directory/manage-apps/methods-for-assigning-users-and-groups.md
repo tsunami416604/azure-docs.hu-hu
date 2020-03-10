@@ -1,6 +1,6 @@
 ---
-title: Felhasználók és csoportok társítása egy alkalmazáshoz | Microsoft Docs
-description: Felhasználók hozzárendelése az alkalmazáshoz hozzáférés biztosításához
+title: Felhasználók és csoportok hozzárendelése egy alkalmazáshoz |} A Microsoft Docs
+description: Felhasználók hozzárendelése az alkalmazáshoz való hozzáférés biztosítása
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,14 +15,14 @@ ms.date: 04/26/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abd6b13dc56f8f948d50e2b3564712ed8f5b1476
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443349"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376437"
 ---
-# <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Felhasználók és csoportok társítása egy alkalmazáshoz Azure Active Directory
-Ez a cikk bemutatja, hogyan rendelhet hozzá felhasználókat vagy csoportokat Azure Active Directory (Azure AD) alkalmazáshoz. A felhasználókat először hozzá kell rendelni egy alkalmazáshoz, mielőtt a rendszergazda hozzáférést biztosíthat számukra a következő műveletekhez:
+# <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Felhasználók és csoportok hozzárendelése egy alkalmazáshoz az Azure Active Directoryban
+Ez a cikk bemutatja, hogyan felhasználók vagy csoportok hozzárendelése az Azure Active Directoryban (Azure AD-) alkalmazáshoz. Felhasználók először hozzá kell rendelni egy alkalmazás előtt a rendszergazda is hozzáférést biztosít nekik a következőket:
 
 -   Az alkalmazás eléréséhez nyissa **meg közvetlenül az alkalmazás URL-címét** (más néven az SP által kezdeményezett bejelentkezés).
 
@@ -40,16 +40,16 @@ Egy alkalmazás konfigurálható úgy, hogy a hozzáféréshez megkövetelje a h
 
 1. Jelentkezzen be a Azure Portal egy rendszergazdai fiókkal vagy az alkalmazás tulajdonosaként a **vállalati alkalmazások**területen.
 2. Kattintson a főmenü **minden szolgáltatás** elemére.
-3. Válassza ki az alkalmazáshoz használt könyvtárat.
+3. Válassza ki azt a könyvtárat az alkalmazás használ.
 4. Kattintson a **vállalati alkalmazások** fülre.
-5. Válassza ki az alkalmazást a címtárhoz társított alkalmazások listájából.
+5. Ebben a könyvtárban társított alkalmazások listájából válassza ki az alkalmazást.
 6. Kattintson a **Tulajdonságok** fülre.
 7. Módosítani kívánja a **felhasználó-hozzárendelést?** váltson Igen értékre.
 8. Kattintson a **Save (Mentés** ) gombra a képernyő tetején.
 
 ## <a name="assign-users"></a>Felhasználók hozzárendelése
 
-Egy vagy több felhasználó közvetlenül egy alkalmazáshoz való hozzárendeléséhez kövesse az alábbi lépéseket:
+Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse az alábbi lépéseket:
 
 1.  Nyissa meg a [**Azure Portalt**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként vagy nem rendszergazdai alkalmazás tulajdonosaként.**
 
@@ -63,7 +63,7 @@ Egy vagy több felhasználó közvetlenül egy alkalmazáshoz való hozzárendel
 
     * Ha nem látja a használni kívánt alkalmazást, használja a **minden alkalmazás lista** tetején található **szűrő** vezérlőelemet, és állítsa a **show (megjelenítés** ) lehetőséget az **összes alkalmazásra.**
 
-6.  Válassza ki azt az alkalmazást, amelyhez felhasználót szeretne hozzárendelni a listából.
+6.  Válassza ki a kívánt rendelje hozzá egy felhasználót a listáról az alkalmazást.
 
 7.  Az alkalmazás betöltése után kattintson a **felhasználók és csoportok** elemre az alkalmazás bal oldali navigációs menüjében.
 
@@ -85,9 +85,9 @@ Egy vagy több felhasználó közvetlenül egy alkalmazáshoz való hozzárendel
 
 Rövid idő elteltével a kiválasztott felhasználók el tudják indítani ezeket az alkalmazásokat a megoldás leírása szakaszban leírt módszerek alapján.
 
-## <a name="assign-groups"></a>Csoportok társítása
+## <a name="assign-groups"></a>Csoportok hozzárendelése
 
-Egy vagy több csoport egy alkalmazáshoz való közvetlen hozzárendeléséhez kövesse az alábbi lépéseket:
+Közvetlenül egy alkalmazás hozzárendelése egy vagy több csoportot, kövesse az alábbi lépéseket:
 
 1.  Nyissa meg a [**Azure Portalt**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy nem rendszergazdai alkalmazásként egy hozzárendelt prémium szintű Azure ad-licenccel.
 
@@ -101,7 +101,7 @@ Egy vagy több csoport egy alkalmazáshoz való közvetlen hozzárendeléséhez 
 
     * Ha nem látja a használni kívánt alkalmazást, használja a **minden alkalmazás lista** tetején található **szűrő** vezérlőelemet, és állítsa a **show (megjelenítés** ) lehetőséget az **összes alkalmazásra.**
 
-6.  Válassza ki azt az alkalmazást, amelyhez felhasználót szeretne hozzárendelni a listából.
+6.  Válassza ki a kívánt rendelje hozzá egy felhasználót a listáról az alkalmazást.
 
 7.  Az alkalmazás betöltése után kattintson a **felhasználók és csoportok** elemre az alkalmazás bal oldali navigációs menüjében.
 
@@ -121,13 +121,13 @@ Egy vagy több csoport egy alkalmazáshoz való közvetlen hozzárendeléséhez 
 
 15. Kattintson a **hozzárendelés** gombra az alkalmazás a kijelölt csoportokhoz való hozzárendeléséhez.
 
-Rövid idő elteltével a kiválasztott csoportokban lévő felhasználók el tudják indítani ezeket az alkalmazásokat a megoldás leírása szakaszban leírt módszerek alapján. Ha ezek dinamikus csoportok, akkor előfordulhat, hogy az ezekben a hozzárendelt csoportokban lévő felhasználók számára további feldolgozási késleltetés fordul elő ezekben a hozzárendelésekben.
+Rövid idő elteltével a kiválasztott csoportokban lévő felhasználók el tudják indítani ezeket az alkalmazásokat a megoldás leírása szakaszban leírt módszerek alapján. Ha ezek a dinamikus csoportok, lehet néhány további feldolgozás késéssel jelennek meg ezek a hozzárendelt csoportokat lévő felhasználók ezeket a hozzárendeléseket a.
 
-## <a name="enable-self-service-application-access"></a>Önkiszolgáló alkalmazás-hozzáférés engedélyezése
+## <a name="enable-self-service-application-access"></a>Az önkiszolgáló alkalmazás-hozzáférés engedélyezése
 
-Az önkiszolgáló alkalmazás-hozzáférés lehetővé teszi a felhasználók számára az alkalmazások önfelderítését, opcionálisan lehetővé teszi, hogy az üzleti csoport jóváhagyja az alkalmazásokhoz való hozzáférést. Lehetővé teheti az üzleti csoport számára, hogy az adott felhasználókhoz rendelt hitelesítő adatokat a hozzáférési panelektől közvetlenül a jelszó egyszeri bejelentkezésre szolgáló alkalmazásokban kezelhesse.
+Az önkiszolgáló alkalmazás-hozzáférés kiválóan alkalmas, hogy a felhasználók saját felderíteni az alkalmazások, igény szerint jóváhagyása ezeknek az alkalmazásoknak hozzáférést az üzleti csoport lehetővé teszik. Engedélyezheti, hogy az üzleti csoportok a hozzáférési paneljükön jelszó egyszeri bejelentkezést az alkalmazások jobb a felhasználókhoz rendelt hitelesítő adatok kezelésére.
 
-Az önkiszolgáló alkalmazások alkalmazáshoz való hozzáférésének engedélyezéséhez kövesse az alábbi lépéseket:
+Ahhoz, hogy az önkiszolgáló alkalmazás-hozzáférést egy alkalmazáshoz, hajtsa végre az alábbi lépéseket:
 
 1. Nyissa meg a [**Azure Portalt**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként.**
 
@@ -141,7 +141,7 @@ Az önkiszolgáló alkalmazások alkalmazáshoz való hozzáférésének engedé
 
    * Ha nem látja a használni kívánt alkalmazást, használja a **minden alkalmazás lista** tetején található **szűrő** vezérlőelemet, és állítsa a **show (megjelenítés** ) lehetőséget az **összes alkalmazásra.**
 
-6. Válassza ki azt az alkalmazást, amely számára engedélyezni szeretné az önkiszolgáló hozzáférést a listáról.
+6. Válassza ki az önkiszolgáló engedélyezni kívánt alkalmazást a listából való hozzáférést.
 
 7. Az alkalmazás betöltése után kattintson az **önkiszolgáló** elemre az alkalmazás bal oldali navigációs menüjében.
 
@@ -156,7 +156,7 @@ Az önkiszolgáló alkalmazások alkalmazáshoz való hozzáférésének engedé
 12. Nem **kötelező:** Azon üzleti jóváhagyók megadásához, akik számára engedélyezett az alkalmazáshoz való hozzáférés jóváhagyása, kattintson az **alkalmazáshoz való hozzáférés jóváhagyására jogosult** címke melletti választóra? a legfeljebb 10 egyéni üzleti jóváhagyó kiválasztásához.
 
     >[!NOTE]
-    >A csoportok nem támogatottak.
+    >Csoportok nem támogatottak.
     >
     >
 
@@ -164,7 +164,7 @@ Az önkiszolgáló alkalmazások alkalmazáshoz való hozzáférésének engedé
 
 14. A befejezéshez kattintson a **Mentés** gombra a panel tetején.
 
-Az önkiszolgáló alkalmazás konfigurálásának befejezése után a felhasználók az [alkalmazás-hozzáférési panelre](https://myapps.microsoft.com/) léphetnek, és a **+ Hozzáadás** gombra kattintva megkereshetik azokat az alkalmazásokat, amelyekhez engedélyezte az önkiszolgáló hozzáférést. Az üzleti jóváhagyók az [alkalmazás hozzáférési paneljén](https://myapps.microsoft.com/)is megtekinthetik az értesítéseket. Engedélyezheti az e-mailek értesítését, ha egy felhasználó hozzáférést kért egy olyan alkalmazáshoz, amelyhez jóváhagyás szükséges. 
+Az önkiszolgáló alkalmazás konfigurálásának befejezése után a felhasználók az [alkalmazás-hozzáférési panelre](https://myapps.microsoft.com/) léphetnek, és a **+ Hozzáadás** gombra kattintva megkereshetik azokat az alkalmazásokat, amelyekhez engedélyezte az önkiszolgáló hozzáférést. Az üzleti jóváhagyók az [alkalmazás hozzáférési paneljén](https://myapps.microsoft.com/)is megtekinthetik az értesítéseket. Engedélyezheti egy e-mail értesíti őket, amikor a felhasználó által kért a jóváhagyást igénylő alkalmazásokhoz való hozzáférés. 
 
 Ezek a jóváhagyások csak az egyszeri jóváhagyási munkafolyamatokat támogatják, ami azt jelenti, hogy ha több jóváhagyót ad meg, akkor egyetlen jóváhagyó jóváhagyhatja az alkalmazáshoz való hozzáférést.
 

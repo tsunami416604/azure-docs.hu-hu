@@ -1,5 +1,5 @@
 ---
-title: A Azure IoT Edge telepítése Linux rendszeren | Microsoft Docs
+title: Az Azure IoT Edge telepítése Linux rendszeren |} A Microsoft Docs
 description: Azure IoT Edge telepítési utasítások Ubuntu vagy Raspbian rendszerű Linux-eszközökön
 author: kgremban
 manager: philmea
@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
 ms.openlocfilehash: af53dea76670be500e7be20063487e3e4a2177b6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548730"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395702"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>A Azure IoT Edge Runtime telepítése Debian-alapú Linux rendszereken
 
-Az Azure IoT Edge futtatókörnyezet az eszköz IoT Edge eszközre való bekapcsolása. A futtatókörnyezet az eszközökön kisméretű, málna PI-ként vagy ipari kiszolgálóként is telepíthető. Ha egy eszköz konfigurálva van a IoT Edge futtatókörnyezettel, megkezdheti az üzleti logika telepítését a felhőből. További információ: [a Azure IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md).
+Az Azure IoT Edge-futtatókörnyezet az eszköz milyen bekapcsolja az IoT Edge-eszköz. A futtatókörnyezet kis Raspberry Pi-t vagy akkora, mint egy ipari kiszolgáló eszközökön is telepíthető. Miután egy eszközt az IoT Edge-futtatókörnyezet van beállítva, a üzembe helyezése a üzleti logika, hogy a felhőben is elindítható. További információ: [a Azure IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md).
 
 Ez a cikk a Azure IoT Edge futtatókörnyezet x64-, ARM32-vagy ARM64-alapú Linux-eszközre történő telepítésének lépéseit sorolja fel. Telepítési csomagokat biztosítunk Ubuntu Server 16,04, Ubuntu Server 18,04 és Raspbian stretch számára. A támogatott Linux operációs rendszerek és architektúrák listáját a [Azure IoT Edge támogatott rendszerek](support.md#operating-systems) című rész tartalmazza.
 
 > [!NOTE]
-> A linuxos szoftverek tárházában lévő csomagokat az egyes csomagokban található licencfeltételek (/usr/share/doc/ *-csomag neve*) alapján kell megvizsgálni. A csomag használata előtt olvassa el a licencfeltételeket. A csomag telepítése és használata jelenti a jelen feltételek elfogadását. Ha nem fogadja el a licencfeltételeket, ne használja a csomagot.
+> A linuxos szoftverek tárházában lévő csomagokat az egyes csomagokban található licencfeltételek (/usr/share/doc/ *-csomag neve*) alapján kell megvizsgálni. Olvassa el a licencfeltételeket, a csomag használata előtt. Az üzembe helyezése és használata a csomag jelent a feltételek elfogadása. Ha nem fogadja el a licencfeltételeket, ne használja a csomag.
 
 ## <a name="install-the-latest-runtime-version"></a>A legújabb futtatókörnyezet-verzió telepítése
 
@@ -32,7 +32,7 @@ Az alábbi részekben a Azure IoT Edge Runtime legújabb verzióját telepíthet
 >[!NOTE]
 >A ARM64-eszközök támogatása [nyilvános előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhető el.
 
-### <a name="register-microsoft-key-and-software-repository-feed"></a>A Microsoft-kulcs és a szoftver tárház-hírcsatorna regisztrálása
+### <a name="register-microsoft-key-and-software-repository-feed"></a>A Microsoft kulcs és a szoftverfrissítési tárház hírcsatorna regisztrálása
 
 Készítse elő az eszközt az IoT Edge Runtime telepítéséhez.
 
@@ -69,9 +69,9 @@ A Microsoft GPG nyilvános kulcsának telepítése
    sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
    ```
 
-### <a name="install-the-container-runtime"></a>A tároló futtatókörnyezetének telepítése
+### <a name="install-the-container-runtime"></a>A tároló-modul telepítése
 
-Azure IoT Edge egy [OCI-kompatibilis tároló-](https://www.opencontainers.org/) futtatókörnyezetre támaszkodik. Az éles környezetekben ajánlott az alább ismertetett [Moby-alapú](https://mobyproject.org/) motort használni. A Moby motor az egyetlen tároló motor, amelyet hivatalosan támogat a Azure IoT Edge. A Docker CE/EE tároló lemezképei kompatibilisek a Moby Runtime szolgáltatással.
+Azure IoT Edge egy [OCI-kompatibilis tároló-](https://www.opencontainers.org/) futtatókörnyezetre támaszkodik. Az éles környezetekben ajánlott az alább ismertetett [Moby-alapú](https://mobyproject.org/) motort használni. A Moby motor az egyetlen tároló motor, amelyet hivatalosan támogat a Azure IoT Edge. A docker CE/EE tárolórendszerképek Moby futásidejű kompatibilisek.
 
 Frissítési csomagok listája az eszközön.
 
@@ -79,13 +79,13 @@ Frissítési csomagok listája az eszközön.
    sudo apt-get update
    ```
 
-Telepítse a Moby Engine-t.
+Telepítse a Moby motor.
 
    ```bash
    sudo apt-get install moby-engine
    ```
 
-Telepítse a Moby parancssori felületet (CLI). A CLI hasznos a fejlesztéshez, de nem kötelező az éles környezetekben való üzembe helyezéshez.
+Telepítse a Moby parancssori felület (CLI). A parancssori felület az éles környezetekben üzemelő példányok esetén nem kötelező, de hasznos, ha fejlesztési.
 
    ```bash
    sudo apt-get install moby-cli
@@ -93,9 +93,9 @@ Telepítse a Moby parancssori felületet (CLI). A CLI hasznos a fejlesztéshez, 
 
 Ha hibaüzenet jelenik meg a Moby Container Runtime telepítésekor, kövesse a jelen cikk későbbi részében ismertetett, a [Linux-kernel a Moby Compatibility szolgáltatással való ellenőrzésének](#verify-your-linux-kernel-for-moby-compatibility)lépéseit.
 
-### <a name="install-the-azure-iot-edge-security-daemon"></a>A Azure IoT Edge biztonsági démon telepítése
+### <a name="install-the-azure-iot-edge-security-daemon"></a>Az Azure IoT Edge biztonsági démon telepítése
 
-A **IoT Edge biztonsági démon** a IoT Edge eszközön biztosít és tart fenn biztonsági szabványokat. A démon minden rendszerindításkor elindul, és elindítja az eszközt a IoT Edge futtatókörnyezet további részének elindításával.
+A **IoT Edge biztonsági démon** a IoT Edge eszközön biztosít és tart fenn biztonsági szabványokat. A démon a naplózásra kerül minden rendszerindításkor elindul, és csatlakoztatja az eszközt az IoT Edge-futtatókörnyezet a többi elindításával.
 
 A telepítési parancs a **libiothsm** standard verzióját is telepíti, ha még nem létezik.
 
@@ -105,7 +105,7 @@ Frissítési csomagok listája az eszközön.
    sudo apt-get update
    ```
 
-Telepítse a biztonsági démont. A csomag telepítése `/etc/iotedge/`.
+A biztonsági démon telepítése. A csomag telepítése `/etc/iotedge/`.
 
    ```bash
    sudo apt-get install iotedge
@@ -161,17 +161,17 @@ A IoT Edge sikeres telepítése után a kimenet rákérdez a konfigurációs fá
 
 ## <a name="configure-the-security-daemon"></a>A biztonsági démon konfigurálása
 
-Konfigurálja a IoT Edge futtatókörnyezetet úgy, hogy az Azure IoT hub-ban található eszköz identitásával összekapcsolja a fizikai eszközt.
+Állítsa be az IoT Edge-futtatókörnyezet, a fizikai eszköz, amely az Azure IoT hub eszközidentitás-mutató hivatkozást.
 
-A démon a `/etc/iotedge/config.yaml`konfigurációs fájljának használatával konfigurálható. A fájl alapértelmezés szerint írásvédett, ezért a szerkesztéshez emelt szintű engedélyekre lehet szükség.
+A démon a `/etc/iotedge/config.yaml`konfigurációs fájljának használatával konfigurálható. A fájl írásvédett alapértelmezés szerint, szükség lehet emelt szintű engedélyekkel a szerkesztéshez.
 
-Egy IoT Edge eszköz manuálisan is kiépíthető a IoT Hub által biztosított eszköz-kapcsolati karakterlánc használatával. Vagy az eszköz kiépítési szolgáltatásával automatikusan kiépítheti az eszközöket, ami hasznos lehet, ha sok eszközt kell kiépíteni. A kiépítési döntéstől függően válassza ki a megfelelő telepítési parancsfájlt.
+Egy adott IoT Edge-eszköz kiépítése az IoT Hub által biztosított eszközök kapcsolatok karakterlánc segítségével manuálisan. Másik lehetőségként használhatja a Device Provisioning Service-eszközök automatikus kiépítésére, amely akkor hasznos, ha sok eszköz kiépítéséhez van. Üzembe helyezési válaszaitól függően válassza ki a megfelelő telepítési parancsfájlt.
 
-### <a name="option-1-manual-provisioning"></a>1\. lehetőség: manuális kiépítés
+### <a name="option-1-manual-provisioning"></a>1\. lehetőség: Manuális kiépítése
 
 Az eszköz manuális kiépítéséhez meg kell adnia azt egy eszköz- [kapcsolódási karakterlánctal](how-to-register-device.md#register-in-the-azure-portal) , amelyet létrehozhat egy új eszköz regisztrálásával az IoT hub-ban.
 
-Nyissa meg a konfigurációs fájlt.
+Nyissa meg a konfigurációs fájlban.
 
 ```bash
 sudo nano /etc/iotedge/config.yaml
@@ -201,17 +201,17 @@ Mentse és zárja be a fájlt.
 
    `CTRL + X`, `Y`, `Enter`
 
-A konfigurációs fájlban szereplő kiépítési információk megadása után indítsa újra a démont:
+Miután megadta a kiépítési adatokat a konfigurációs fájlban, a démon újraindításához:
 
 ```bash
 sudo systemctl restart iotedge
 ```
 
-### <a name="option-2-automatic-provisioning"></a>2\. lehetőség: automatikus kiépítés
+### <a name="option-2-automatic-provisioning"></a>2\. lehetőség: Az Automatikus kiépítés
 
 Egy eszköz automatikus [kiépítéséhez állítsa be a Device kiépítési szolgáltatást, és kérje le az eszköz regisztrációs azonosítóját](how-to-auto-provision-simulated-device-linux.md). A IoT Edge az automatikus kiépítés használatakor számos igazolási mechanizmust támogat, de a hardverre vonatkozó követelmények is hatással vannak a választásokra. A málna PI-eszközök például nem rendelkeznek alapértelmezett platformmegbízhatósági modul (TPM) csiptel.
 
-Nyissa meg a konfigurációs fájlt.
+Nyissa meg a konfigurációs fájlban.
 
 ```bash
 sudo nano /etc/iotedge/config.yaml
@@ -241,13 +241,13 @@ Mentse és zárja be a fájlt.
 
    `CTRL + X`, `Y`, `Enter`
 
-A konfigurációs fájlban szereplő kiépítési információk megadása után indítsa újra a démont:
+Miután megadta a kiépítési adatokat a konfigurációs fájlban, a démon újraindításához:
 
 ```bash
 sudo systemctl restart iotedge
 ```
 
-## <a name="verify-successful-installation"></a>Sikeres telepítés ellenőrzése
+## <a name="verify-successful-installation"></a>A sikeres telepítésének ellenőrzése
 
 Ha az előző szakaszban a **manuális konfigurációs** lépéseket használta, az IoT Edge futtatókörnyezetet sikeresen üzembe kell helyeznie és futnia kell az eszközön. Ha az **automatikus konfigurációs** lépéseket használta, néhány további lépést is végre kell hajtania, hogy a futtatókörnyezet regisztrálja az eszközt az IoT hub-ban az Ön nevében. A következő lépésekért lásd: [szimulált TPM-IoT Edge eszköz létrehozása és kiépítése Linux rendszerű virtuális gépen](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm).
 
@@ -281,7 +281,7 @@ A IoT Edge telepítését követően az eszközön az egyetlen modulnak kell **e
 
 ## <a name="tips-and-troubleshooting"></a>Tippek és hibaelhárítás
 
-Az `iotedge` parancsok futtatásához megemelt jogosultsági szint szükséges. A futtatókörnyezet telepítése után jelentkezzen ki a gépről, és jelentkezzen be ismét az engedélyek automatikus frissítéséhez. Addig használja a **sudo** -t a parancsok minden `iotedge` elé.
+Az `iotedge` parancsok futtatásához megemelt jogosultsági szint szükséges. A modul telepítése után jelentkezzen ki a gépet, és jelentkezzen be újra az engedélyek automatikusan frissíti a. Addig használja a **sudo** -t a parancsok minden `iotedge` elé.
 
 Az erőforrás által korlátozott eszközök esetében erősen ajánlott a *OptimizeForPerformance* környezeti változót *hamis* értékre állítani a [hibaelhárítási útmutató](troubleshoot.md)utasításai szerint.
 

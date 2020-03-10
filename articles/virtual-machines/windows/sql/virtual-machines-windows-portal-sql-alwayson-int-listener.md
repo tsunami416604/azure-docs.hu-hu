@@ -15,11 +15,11 @@ ms.date: 02/16/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: aefd7a55090da7f55404d6f551ab61268582ff5a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039653"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394487"
 ---
 # <a name="configure-a-load-balancer-for-an-availability-group-on-azure-sql-server-vms"></a>Terheléselosztó konfigurálása egy rendelkezésre állási csoport számára az Azure SQL Server virtuális gépeken
 Ez a cikk azt ismerteti, hogyan hozható létre terheléselosztó egy SQL Server always on rendelkezésre állási csoport számára a Azure Resource Manager-t futtató Azure-beli virtuális gépeken. A rendelkezésre állási csoportoknak terheléselosztó szükségesek, ha a SQL Server példányok Azure-beli virtuális gépeken vannak. A terheléselosztó tárolja az IP-címet a rendelkezésre állási csoport figyelője számára. Ha egy rendelkezésre állási csoport több régióra is kiterjed, az egyes régiókban terheléselosztó szükséges.
@@ -69,13 +69,13 @@ Először hozza létre a Load balancert.
    | **Típus** |**Belső**: a legtöbb implementáció belső Load balancert használ, amely lehetővé teszi, hogy az ugyanazon a virtuális hálózaton lévő alkalmazások csatlakozzanak a rendelkezésre állási csoporthoz.  </br> **Külső**: lehetővé teszi, hogy az alkalmazások nyilvános internetkapcsolaton keresztül csatlakozzanak a rendelkezésre állási csoporthoz. |
    | **Virtuális hálózat** |Válassza ki azt a virtuális hálózatot, amelyre a SQL Server példányok tartoznak. |
    | **Alhálózat** |Válassza ki azt az alhálózatot, amelyhez a SQL Server példányok tartoznak. |
-   | **IP-cím hozzárendelése** |**Static** |
+   | **IP-cím hozzárendelése** |**Statikus** |
    | **Magánhálózati IP-cím** |Válasszon ki egy elérhető IP-címet az alhálózatból. Akkor használja ezt az IP-címet, ha egy figyelőt hoz létre a fürtön. A cikk későbbi részében található PowerShell-parancsfájlban használja ezt a nevet a `$ILBIP` változóhoz. |
    | **Előfizetés** |Ha több előfizetéssel rendelkezik, ez a mező jelenhet meg. Válassza ki azt az előfizetést, amelyet hozzá szeretne rendelni ehhez az erőforráshoz. Ez általában ugyanaz az előfizetés, mint a rendelkezésre állási csoport összes erőforrása. |
    | **Erőforráscsoport** |Válassza ki azt az erőforráscsoportot, amelybe a SQL Server példányok tartoznak. |
    | **Hely** |Válassza ki azt az Azure-helyet, amelyen a SQL Server példányok szerepelnek. |
 
-6. Kattintson a **Létrehozás** gombra. 
+6. Kattintson a  **Create** (Létrehozás) gombra. 
 
 Az Azure létrehozza a Load balancert. A terheléselosztó egy adott hálózathoz, alhálózathoz, erőforráscsoporthoz és helyhez tartozik. Miután az Azure befejezte a feladatot, ellenőrizze a terheléselosztó beállításait az Azure-ban. 
 
@@ -142,7 +142,7 @@ A terheléselosztási szabályok azt konfigurálhatják, hogy a terheléseloszt�
    | **Port** |*1433* |
    | **Háttér-port** |*1433*. Ez az érték figyelmen kívül lesz hagyva, mert ez a szabály **lebegőpontos IP-címet használ (a közvetlen kiszolgáló visszatérése)** . |
    | **Mintavételi** |Használja a terheléselosztó számára létrehozott mintavétel nevét. |
-   | **Munkamenetek megőrzése** |**Nincsenek** |
+   | **Munkamenetek megőrzése** |**NEz egy** |
    | **Üresjárati időkorlát (perc)** |*4* |
    | **Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** |**Engedélyezve** |
 
@@ -244,7 +244,7 @@ Ha IP-címet szeretne hozzáadni egy terheléselosztó számára a Azure Portal,
     |**Háttér-port** |Használja ugyanazt az értéket, mint a **port**.
     |**Háttér-készlet** |Az SQL Server példányokkal rendelkező virtuális gépeket tartalmazó készlet. 
     |**Állapot mintavétele** |Válassza ki a létrehozott mintavételt.
-    |**Munkamenetek megőrzése** |None
+    |**Munkamenetek megőrzése** |Nincs
     |**Üresjárati időkorlát (perc)** |Alapértelmezett (4)
     |**Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | Engedélyezve
 
@@ -293,7 +293,7 @@ Ha egy rendelkezésre állási csoport részt vesz egy elosztott rendelkezésre 
    |**Háttér-port** | 5022 – ugyanazt az értéket használja, mint a **port**.
    |**Háttér-készlet** |Az SQL Server példányokkal rendelkező virtuális gépeket tartalmazó készlet. 
    |**Állapot mintavétele** |Válassza ki a létrehozott mintavételt.
-   |**Munkamenetek megőrzése** |None
+   |**Munkamenetek megőrzése** |Nincs
    |**Üresjárati időkorlát (perc)** |Alapértelmezett (4)
    |**Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | Engedélyezve
 

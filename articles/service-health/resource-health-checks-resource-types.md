@@ -3,12 +3,12 @@ title: Támogatott erőforrástípusok a Azure Resource Healthon keresztül | Mi
 description: Támogatott erőforrástípusok az Azure Resource Health használatával
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 3a61c8b90f4dc5e52a875488afb5374e3d6b7ce4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ec194287e8a8e06d3bb14c4b202cc2f11063d1dd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717066"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925148"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapot-ellenőrzések az Azure Resource Health-ben
 Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes ellenőrzés teljes listáját tartalmazza.
@@ -28,7 +28,7 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 |---|
 |<ul><li>Működik a Batch-fiókja?</li><li>Túllépte a készlet kvótáját ehhez a Batch-fiókhoz?</li></ul>|
 
-## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
+## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>Az összes gyorsítótár-csomópont fel van-e telepítve és fut?</li><li>Elérheti a gyorsítótárat az adatközponton belülről?</li><li>Elérte a gyorsítótárban a kapcsolatok maximális számát?</li><li> A gyorsítótár kimerítette a rendelkezésre álló memóriát? </li><li>A gyorsítótár nagy számú laphibát tapasztal?</li><li>A gyorsítótár nagy terhelés alatt van?</li></ul>|
@@ -41,7 +41,7 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Működik a gazdagép kiszolgálója?</li><li>Befejeződött a gazda operációs rendszer indítása?</li><li>A virtuális gép tárolója kiépítve és felépítve van?</li><li>Van hálózati kapcsolat a gazdagép és a Storage-fiók között?</li><li>Befejeződött a vendég operációs rendszer indítása?</li><li>Folyamatban van a tervezett karbantartás?</li></ul>|
+|<ul><li>Működik a gazdagép kiszolgálója?</li><li>Befejeződött a gazda operációs rendszer indítása?</li><li>A virtuális gép tárolója kiépítve és felépítve van?</li><li>Van hálózati kapcsolat a gazdagép és a Storage-fiók között?</li><li>Befejeződött a vendég operációs rendszer indítása?</li><li>Folyamatban van a tervezett karbantartás?</li><li>A gazdagép hardvere csökkent, és várhatóan sikertelen lesz?</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |Végrehajtott ellenőrzések|
@@ -51,7 +51,7 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>A virtuális gépet üzemeltető kiszolgáló működik?</li><li>Befejeződött a gazda operációs rendszer indítása?</li><li>A virtuális gép tárolója kiépítve és felépítve van?</li><li>Van hálózati kapcsolat a gazdagép és a Storage-fiók között?</li><li>Befejeződött a vendég operációs rendszer indítása?</li><li>Folyamatban van a tervezett karbantartás?</li></ul>|
+|<ul><li>A virtuális gépet üzemeltető kiszolgáló működik?</li><li>Befejeződött a gazda operációs rendszer indítása?</li><li>A virtuális gép tárolója kiépítve és felépítve van?</li><li>Van hálózati kapcsolat a gazdagép és a Storage-fiók között?</li><li>Befejeződött a vendég operációs rendszer indítása?</li><li>Folyamatban van a tervezett karbantartás?</li><li>A gazdagép hardvere csökkent, és várhatóan sikertelen lesz?</li></ul>|
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/gyárak
 |Végrehajtott ellenőrzések|

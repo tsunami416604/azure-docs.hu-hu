@@ -13,11 +13,11 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928156"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387441"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Adatok másolása a helyszíni Oracle-be vagy onnan a Azure Data Factory használatával
 
@@ -76,7 +76,7 @@ Ez az Oracle-összekötő az illesztőprogramok két verzióját támogatja:
 
 Ha a másolás varázslót használja a másolási folyamat létrehozásához, az illesztőprogram típusa a következő: automeghatározva. Alapértelmezés szerint a Microsoft illesztőprogramját használja a rendszer, kivéve, ha az átjáró verziója korábbi, mint a 2,7-es verzió, vagy ha az Oracle-t a fogadóként választja.
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Első lépések
 
 Létrehozhat egy másolási tevékenységet tartalmazó folyamatot. A folyamat különböző eszközök vagy API-k használatával helyezi át az adatait egy helyszíni Oracle-adatbázisba vagy onnan.
 
@@ -99,12 +99,12 @@ A következő szakaszokban részletesen ismertetjük a Data Factory entitások d
 
 A következő táblázat az Oracle-hez társított szolgáltatáshoz tartozó JSON-elemeket ismerteti:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | type |A **Type** tulajdonságot **OnPremisesOracle**értékre kell beállítani. |Igen |
 | driverType | Itt adhatja meg, hogy melyik illesztőprogramot használja az adatok egy Oracle-adatbázisba való másolásához. Az engedélyezett értékek a következők: **Microsoft** és **ODP** (alapértelmezett). Lásd: [támogatott verzió és telepítés](#supported-versions-and-installation) az illesztőprogram részleteihez. | Nem |
 | connectionString | A **ConnectionString** tulajdonsághoz tartozó Oracle Database-példányhoz való kapcsolódáshoz szükséges információk megadása. | Igen |
-| Átjáró neve | A helyszíni Oracle-kiszolgálóhoz való kapcsolódáshoz használt átjáró neve. |Igen |
+| gatewayName | A helyszíni Oracle-kiszolgálóhoz való kapcsolódáshoz használt átjáró neve. |Igen |
 
 **Példa: a Microsoft-illesztőprogram használata**
 
@@ -150,7 +150,7 @@ Az adatkészlet JSON-fájljának (például a struktúra, a rendelkezésre áll�
 
 A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **OracleTable** típusú adatkészlet **typeProperties** szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | tableName |Annak az Oracle-adatbázisnak a neve, amelyre a társított szolgáltatás hivatkozik. |Nem (ha a **oracleReaderQuery** vagy a **OracleSource** meg van adva) |
 
@@ -169,7 +169,7 @@ A tevékenység **typeProperties** szakaszában elérhető tulajdonságok az egy
 
 A másolási tevékenységben, ha a forrás a **OracleSource** típusú, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
 | oracleReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |Egy SQL-lekérdezési karakterlánc. Például: "Select \* from **sajáttábla**". <br/><br/>Ha nincs megadva, a rendszer a következő SQL-utasítást futtatja: "Select \* from **sajáttábla**" |Nem<br />(ha a táblanév **meg van adva** ) |
 
@@ -177,11 +177,11 @@ A másolási tevékenységben, ha a forrás a **OracleSource** típusú, a köve
 
 A **OracleSink** a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Az a várakozási idő, ameddig a Batch INSERT művelet befejeződik, mielőtt időtúllépés történt. |**TimeSpan**<br/><br/> Példa: 00:30:00 (30 perc) |Nem |
 | writeBatchSize |Beilleszti az adatmennyiséget az SQL-táblába, ha a puffer mérete eléri a **writeBatchSize**értékét. |Egész szám (sorok száma) |Nem (alapértelmezett: 100) |
-| sqlWriterCleanupScript |Meghatározza a másolási tevékenység végrehajtásának lekérdezését, hogy egy adott szelet adattisztítása megtörténjen. |Egy lekérdezési utasítás. |Nem |
+| sqlWriterCleanupScript |Meghatározza a másolási tevékenység végrehajtásának lekérdezését, hogy egy adott szelet adattisztítása megtörténjen. |A lekérdezési utasítást. |Nem |
 | sliceIdentifierColumnName |Megadja a másolási tevékenység oszlopának nevét egy automatikusan létrehozott szelet azonosítójának kitöltéséhez. A **sliceIdentifierColumnName** értékének használatával törölheti egy adott szelet adatmennyiségét az újrafuttatáskor. |A bináris adattípusú oszlop neve **(32)** . |Nem |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>JSON-példák az adatok az Oracle-adatbázisba és onnan történő másolásához
@@ -563,7 +563,7 @@ A folyamat egy másolási tevékenységet tartalmaz, amely úgy van konfigurálv
 * A .NET-keretrendszer Oracle-adatszolgáltatója nem lett telepítve.
 * A .NET-keretrendszer Oracle-adatszolgáltatója a .NET-keretrendszer 2,0-es verziójában lett telepítve, és nem található a .NET-keretrendszer 4,0 mappáiban.
 
-**Felbontás**
+**Resolution** (Osztás)
 
 * Ha még nem telepítette az Oracle-hez készült .NET-szolgáltatót, [telepítse azt](https://www.oracle.com/technetwork/topics/dotnet/downloads/), majd próbálja megismételni a forgatókönyvet.
 * Ha a szolgáltató telepítése után is megjelenik a hibaüzenet, hajtsa végre a következő lépéseket:
@@ -578,7 +578,7 @@ A folyamat egy másolási tevékenységet tartalmaz, amely úgy van konfigurálv
 
     Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Előfordulhat, hogy módosítania kell a lekérdezési karakterláncot a másolási tevékenység alapján, hogy a dátumok hogyan vannak konfigurálva az Oracle-adatbázisban. Íme egy példa (a **to_date** függvény használatával):
 
@@ -596,27 +596,27 @@ Ha az Oracle-ből helyez át adatátvitelt, a következő leképezéseket haszn�
 
 | Oracle-adattípus | .NET-keretrendszer adattípusa |
 | --- | --- |
-| BFÁJL |Bájt [] |
-| BLOB |Bájt []<br/>(csak a Microsoft-illesztőprogram használata esetén támogatott az Oracle 10g és újabb verziók esetében) |
+| BFILE |Byte[] |
+| BLOB |Byte[]<br/>(csak a Microsoft-illesztőprogram használata esetén támogatott az Oracle 10g és újabb verziók esetében) |
 | CHAR |Sztring |
 | CLOB |Sztring |
-| DATE |Dátum és idő |
-| FLOAT |Decimális, karakterlánc (ha a pontosság > 28) |
-| EGÉSZ SZÁM |Decimális, karakterlánc (ha a pontosság > 28) |
+| DATE |DateTime |
+| FLOAT |Decimal, String (Ha a pontosság > 28) |
+| INTEGER |Decimal, String (Ha a pontosság > 28) |
 | ÉV ÉS HÓNAP KÖZÖTTI IDŐSZAK |Int32 |
-| IDŐINTERVALLUM – MÁSODPERC |időtartam |
-| HOSSZÚ |Sztring |
-| HOSSZÚ NYERS |Bájt [] |
+| IDŐINTERVALLUM – MÁSODPERC |Időtartam |
+| LONG |Sztring |
+| LONG RAW |Byte[] |
 | NCHAR |Sztring |
 | NCLOB |Sztring |
-| SZÁM |Decimális, karakterlánc (ha a pontosság > 28) |
+| NUMBER |Decimal, String (Ha a pontosság > 28) |
 | NVARCHAR2 |Sztring |
-| NYERS |Bájt [] |
+| RAW |Byte[] |
 | ROWID |Sztring |
-| IDŐBÉLYEG |Dátum és idő |
-| IDŐBÉLYEG HELYI IDŐZÓNÁVAL |Dátum és idő |
-| IDŐBÉLYEG IDŐZÓNÁVAL |Dátum és idő |
-| ELŐJEL NÉLKÜLI EGÉSZ SZÁM |Szám |
+| TIMESTAMP |DateTime |
+| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
+| TIMESTAMP WITH TIME ZONE |DateTime |
+| UNSIGNED INTEGER |Szám |
 | VARCHAR2 |Sztring |
 | XML |Sztring |
 

@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa66299753ab11dcad280361cb5fb6f0c31ef242
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368172"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378310"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszó visszaírási?
 
@@ -63,7 +63,7 @@ A jelszó-visszaírási használatához a bérlőhöz hozzárendelt következő 
 > [!WARNING]
 > Az önálló Office 365 licencelési csomagok *nem támogatják az "önkiszolgáló jelszó-visszaállítás/módosítás/zárolás a helyszíni visszaírási"* lehetőséget, és a funkció működéséhez a fenti csomagok egyikét kell megkövetelni.
 
-## <a name="how-password-writeback-works"></a>A jelszó-visszaírási működése
+## <a name="how-password-writeback-works"></a>A jelszóvisszaíró működése
 
 Ha egy összevont vagy jelszó-kivonat szinkronizálta a felhasználót a felhőben tárolt jelszavának visszaállítására vagy módosítására, a következő műveletek történnek:
 

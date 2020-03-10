@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980257"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364561"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics kimenetek hibáinak megoldása
 
@@ -45,56 +45,56 @@ Ez a lap a kimeneti kapcsolatokkal kapcsolatos gyakori problémákat, valamint a
 
 ## <a name="job-output-is-delayed"></a>A feladatok kimenete késleltetve
 
-### <a name="first-output-is-delayed"></a>Az első kimenet késleltetve
+### <a name="first-output-is-delayed"></a>Első kimeneti késleltetve
 Stream Analytics-feladat elindításakor a bemeneti eseményeket beolvassa a rendszer, azonban bizonyos helyzetekben késés lehet tapasztalható a kimenet előállításában.
 
-Az időbeli lekérdezési elemek nagy időbeli értékei hozzájárulhatnak a kimeneti késleltetéshez. A nagy idő alatt a Windows megfelelő kimenetének létrehozásához a folyamatos átviteli feladatot a rendszer az adatok a lehető legkésőbbi időpontban történő beolvasásával kezdi meg (akár hét nappal ezelőtt) az időablak kitöltéséhez. Ebben az időszakban nem jön létre kimenet, amíg a függőben lévő bemeneti események beolvasása be nem fejeződik. Ez a probléma akkor is felhasználható, ha a rendszer frissíti a folyamatos átviteli feladatokat, így újraindítja a feladatot. Az ilyen verziófrissítések általában néhány havonta egyszer történnek.
+A historikus lekérdezések elemek nagy időértékek hozzájárulhat a kimeneti késés. A nagy windows keresztül megfelelő kimenet létrehozására a folyamatos átviteli feladat indítása adatok olvasása a legújabb idő lehetséges (hét napja), adja meg az időtartomány alapján. Ez idő alatt nincs kimenet jön létre az utólagos olvasási a szálankénti függőben lévő bemeneti események befejezéséig. Ez a probléma akkor merülhet fel, amikor a rendszer frissíti a folyamatos átviteli feladatok, így az a feladat újraindítása. Az ilyen frissítések általában egyszer minden néhány hónap során történik.
 
-Ezért a Stream Analytics-lekérdezés tervezésekor a mérlegelési jogkörrel kell megtervezni. Ha nagy időintervallumot használ (több, mint több óra, legfeljebb hét nap) a feladatok lekérdezési szintaxisában lévő időbeli elemeknél, a művelet elindításakor vagy újraindításakor késleltetést eredményezhet az első kimenetnél.  
+Ezért járjon el körültekintően, a Stream Analytics-lekérdezés tervezése során. Ha egy nagy időablakban (hét napja akár egynél több órát) historikus elemek a feladat lekérdezési szintaxisban, vezethet, késleltetés az az első kimeneti a feladat indításakor vagy újraindítása.  
 
-Az ilyen típusú első kimeneti késések egyike a lekérdezési párhuzamos technikák használata (az adatok particionálásával), vagy több folyamatos átviteli egység hozzáadásával növelheti az átviteli sebességet, amíg a feladatok fel nem zárkóznak.  További információ: [stream Analytics feladatok létrehozásakor megfontolandó szempontok](stream-analytics-concepts-checkpoint-replay.md)
+Egy megoldás ehhez a kiterjesztéstípushoz első kimeneti késleltetés, hogy a lekérdezés ezerszer eljárások (az adatok particionálása), vagy adja hozzá a további Streamelési egységek, amíg a feladat behozza javítani szeretné.  További információ: [stream Analytics feladatok létrehozásakor megfontolandó szempontok](stream-analytics-concepts-checkpoint-replay.md)
 
-Ezek a tényezők befolyásolják az első generált kimenet időszerűségét:
+Ezek a tényezők befolyásolják a határidővel, amely akkor jön létre az első kimeneti:
 
-1. Ablakos összesítések használata (kiesési, átugrási és csúszó ablakok CSOPORTOSÍTÁSa)
-   - Az ablakos összesítések esetében az eredmények az ablak időkeretének végén jönnek létre.
-   - Egy csúszó ablak esetében az eredmények akkor jönnek létre, amikor egy esemény bekerül a csúszó ablakba, vagy kilép onnan.
-   - Ha nagyméretű ablakméret használatát tervezi (> 1 órát), a legjobb megoldás a beugró vagy csúszó ablak kiválasztása, hogy a kimenetet gyakrabban lássuk.
+1. Használható az ablakos összesítéseket (csoport által az Átfedésmentes, segítségével tehetjük meg, és késleltetett windows)
+   - Átfedésmentes vagy segítségével tehetjük meg ablak összesítések, eredmények ablak időkeretét végén jönnek létre.
+   - A csúszóablakban az eredmények jön létre, amikor egy esemény kerül, vagy kilép a csúszóablakban.
+   - Ha azt tervezi, nagy méretű ablak méretének (> 1 óra) használata, célszerű gyakran a kimenetben láthatja, hogy válassza ki a szórási vagy mozgó ablak.
 
-2. Időbeli illesztések használata (JOIN with DATEDIFF)
-   - A egyezések akkor jönnek létre, amikor az egyeztetett események mindkét oldalán megérkeznek.
-   - A egyezést nem tartalmazó adat (a bal oldali külső illesztés) a DATEDIFF ablakának végén jön létre, a bal oldali eseményekre vonatkozóan.
+2. A historikus illesztések (DATEDIFF csatlakoztatás) használata
+   - Egyezések jönnek létre, amint az egyeztetett események mindkét oldalán érkezésekor.
+   - A DATEDIFF ablak megállapodást minden esemény a bal oldali végén található adatokat, amely nem rendelkezik (bal oldali külső ILLESZTÉST) egyezést jön létre.
 
-3. Időbeli elemzési függvények használata (ISFIRST, LAST és LAG a korlát IDŐTARTAMával)
-   - Az analitikai függvények esetében a kimenet minden eseményhez létrejön, nincs késés.
+3. A historikus elemzési funkciók (ISFIRST, utolsó és a LIMIT DURATION LAG) használata
+   - Az analitikai függvények a kimenet jön létre minden eseményhez, nem lesz késleltetés.
 
-### <a name="output-falls-behind"></a>A kimenet elesik
-Ha úgy találja, hogy a feladatok kimenete (több, mint több késés) miatt a feladatok normál működése alatt áll, a kiváltó okokat a következő tényezők vizsgálatával lehet meghatározni:
-- Az alsóbb rétegbeli fogadó szabályozása
-- Azt jelzi, hogy a felsőbb rétegbeli forrás szabályozva van-e
-- Azt jelzi, hogy a lekérdezés feldolgozási logikája nagy számítási igényű-e
+### <a name="output-falls-behind"></a>Kimeneti mögé
+A feladat szokásos működés során a feladat kimenetének elmaradásban van mögött (hosszabb és hosszabb késéssel), ha tudja a okát megvizsgálásával ezek a tényezők:
+- Hogy a rendszer szabályozza az alsóbb rétegbeli fogadó
+- Attól a felsőbb rétegbeli forrás folyamatban van
+- Hogy-e a feldolgozási logika, a lekérdezés a nagy számítási igényű
 
-A részletek megtekintéséhez a Azure Portal válassza ki a folyamatos átviteli feladatot, majd válassza ki a **feladathoz tartozó diagramot**. Minden egyes bemenet esetében a partíción várakozó fájlok száma az esemény metrikája. Ha a várakozó események mérőszáma továbbra is növekszik, a rendszer azt jelzi, hogy a rendszererőforrások korlátozottak. Lehetséges, hogy a kimeneti fogadó szabályozása vagy a nagy CPU okozza. A feladatütemezés használatával kapcsolatos további információkért lásd: [adatvezérelt hibakeresés a feladatütemezés használatával](stream-analytics-job-diagram-with-metrics.md).
+A részletek megtekintéséhez a Azure Portal válassza ki a folyamatos átviteli feladatot, majd válassza ki a **feladathoz tartozó diagramot**. Minden egyes bemenet nincs egy partíció várakozó események metrikánként. A várakozó események metrika is növekszik, ha azt jelzi, hogy a rendszer előrébb. Potenciálisan Ez az oka az, hogy a kimeneti fogadó szabályozás vagy a magas CPU. A feladatütemezés használatával kapcsolatos további információkért lásd: [adatvezérelt hibakeresés a feladatütemezés használatával](stream-analytics-job-diagram-with-metrics.md).
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Kulcs megsértése figyelmeztetés Azure SQL Database kimenettel
 
-Ha az Azure SQL Database-t kimenetként konfigurálja egy Stream Analytics feladatokhoz, a rekordok tömeges beszúrása a céltáblaba. Általánosságban elmondható, hogy az Azure stream Analytics [legalább egyszer](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) megtartja a kimeneti fogadónak való kézbesítést, de az SQL-tábla egyedi korlátozásának meghatározásakor továbbra is [pontosan egyszeri kézbesítést ÉRHET]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) el az SQL-kimenethez.
+Azure SQL database egy Stream Analytics-feladat kimeneteként konfigurálásakor azt tömeges rekordok szúr be a céltáblázatban. Általánosságban elmondható, hogy az Azure stream Analytics [legalább egyszer](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) megtartja a kimeneti fogadónak való kézbesítést, de az SQL-tábla egyedi korlátozásának meghatározásakor továbbra is [pontosan egyszeri kézbesítést ÉRHET]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) el az SQL-kimenethez.
 
-Miután beállította az egyedi kulcsokra vonatkozó korlátozásokat az SQL-táblán, és az SQL-táblába ismétlődő rekordok vannak beszúrva, Azure Stream Analytics eltávolítja az ismétlődő rekordot. Az adatok kötegekre bontása és a kötegek rekurzív beillesztése, amíg egyetlen duplikált rekord nem található. Ha a folyamatos átviteli feladatokhoz jelentős számú ismétlődő sor tartozik, a felosztási és beillesztési folyamatnak figyelmen kívül kell hagynia az ismétlődéseket, ami kevésbé hatékony és időigényes. Ha az elmúlt órában több kulcs megsértését jelző figyelmeztető üzenet jelenik meg a tevékenység naplójában, akkor valószínű, hogy az SQL-kimenet lelassítja a teljes feladatot.
+Miután egyedi kulcsra vonatkozó megkötések állíthatók be, az SQL-táblát, és SQL-táblába beszúrt ismétlődő rekordok, az Azure Stream Analytics eltávolítja az ismétlődő rekord. Ez felosztja a az adatok kötegek és rekurzív módon szúr be a kötegek, amíg talál egy egyetlen ismétlődő rekordot. Ha a folyamatos átviteli feladat ismétlődő sorok, ez a felosztás jelentős számú rendelkezik, és helyezze be a folyamat figyelmen kívül hagyja az ismétlődő egy kevésbé hatékony és időigényes feladat, amely rendelkezik. Ha több kulcsok protokollmegsértési figyelmeztető üzenetek a tevékenységnaplóban az elmúlt egy órán belül jelenik meg, akkor valószínű, hogy az SQL-kimenet lelassítanunk van-e a teljes feladat.
 
-A probléma megoldásához [konfigurálja azt az indexet]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql) , amely a kulcs megsértését okozza a IGNORE_DUP_KEY beállítás engedélyezésével. Ha engedélyezi ezt a beállítást, az SQL figyelmen kívül hagyja az ismétlődő értékeket a tömeges beszúrások során, és a SQL Azure egyszerűen figyelmeztető üzenetet állít elő a hiba helyett. A Azure Stream Analytics az elsődleges kulcs megsértésével kapcsolatos hibákat már nem hozza létre.
+A probléma megoldásához [konfigurálja azt az indexet]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql) , amely a kulcs megsértését okozza a IGNORE_DUP_KEY beállítás engedélyezésével. Ez a beállítás engedélyezése lehetővé teszi a duplikált értékek alapján SQL tömeges Beszúrások során figyelmen kívül, és SQL Azure egyszerűen egy figyelmeztető üzenet helyett hibát eredményez. Az Azure Stream Analytics nem eredményez többé elsődleges kulcsok protokollmegsértési hibák.
 
-A IGNORE_DUP_KEY különböző típusú indexekhez való konfigurálásakor vegye figyelembe a következő észrevételeket:
+Vegye figyelembe a következő megfigyeléseken, számos különböző típusú indexeket az IGNORE_DUP_KEY konfigurálásakor:
 
-* Az ALTER INDEXet használó elsődleges kulcson vagy egyedi korlátozáson nem állítható be IGNORE_DUP_KEY, ezért el kell dobnia, majd újra létre kell hoznia az indexet.  
-* Megadhatja az IGNORE_DUP_KEY beállítást az ALTER INDEX használatával egy egyedi indexhez, amely eltér az elsődleges kulcs/egyedi korlátozástól, és a CREATE INDEX vagy INDEX definition paranccsal hozható létre.  
-* A IGNORE_DUP_KEY nem vonatkozik az oszlopok tárolására szolgáló indexekre, mert nem kényszerítheti ki az ilyen indexek egyediségét.  
+* Elsődleges kulcs, vagy egy egyedi korlátozás, amely használja az ALTER INDEX az IGNORE_DUP_KEY nem állítható be kell, hogy dobja el és hozza létre újból az indexet.  
+* Az IGNORE_DUP_KEY beállítást használja az ALTER INDEX egyedi index, amely nem azonos az elsődleges kulcs vagy UNIQUE megkötést, és a CREATE INDEX vagy az INDEX definícióját használatával létrehozott állíthatja be.  
+* Mivel az ilyen indexek egyedisége nem kényszeríti IGNORE_DUP_KEY oszlopcentrikus indexek nem vonatkozik.  
 
 ## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Az oszlopnevek Azure Stream Analytics
 Az eredeti kompatibilitási szint (1,0) használatakor Azure Stream Analytics az oszlopnevek kisbetűsre való módosítására szolgál. Ez a viselkedés a későbbi kompatibilitási szinteken lett kijavítva. Az eset megőrzése érdekében javasoljuk, hogy az ügyfelek a 1,1-es és újabb kompatibilitási szintre térjenek át. [Azure stream Analytics-feladatok kompatibilitási szintjéről](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)további információt talál.
 
 
-## <a name="get-help"></a>Segítség
+## <a name="get-help"></a>Segítségkérés
 
 További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 

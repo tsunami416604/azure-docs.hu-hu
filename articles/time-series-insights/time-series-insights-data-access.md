@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1c8f14bb1bca082a9d887e5d6d88aec213448c3e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894809"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360002"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Az adathozzáférés biztosítása egy környezethez
 
@@ -27,7 +27,7 @@ Ez a cikk a Azure Time Series Insights előzetes verziójának hozzáférési h�
 
 ## <a name="sign-in-to-time-series-insights"></a>Bejelentkezés Time Series Insights
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 1. Keresse meg Time Series Insights-környezetét. Írja be a `Time Series` **kifejezést a keresőmezőbe** . Válassza az **idősorozat-környezet** lehetőséget a keresési eredmények között.
 1. Válassza ki az Azure Time Series Insights környezetet a listából.
 

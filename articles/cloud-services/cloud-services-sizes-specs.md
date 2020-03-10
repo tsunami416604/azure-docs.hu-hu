@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 34cb4282f64544e67b3724699380d1d54fd9b806
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660426"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386427"
 ---
 # <a name="sizes-for-cloud-services"></a>Méretek Cloud Services
 Ez a témakör a Cloud Service-példányok (webes szerepkörök és feldolgozói szerepkörök) elérhető méreteit és beállításait ismerteti. Emellett üzembe helyezési megfontolásokat is biztosít, hogy az erőforrások használatának megtervezésekor vegye figyelembe a használatát. Minden mérethez tartozik egy azonosító, amelyet a [szolgáltatás definíciós fájljába](cloud-services-model-and-package.md#csdef)helyez. Az egyes méretek árai a [Cloud Services díjszabási](https://azure.microsoft.com/pricing/details/cloud-services/) oldalon érhetők el.
@@ -37,11 +37,11 @@ A virtuális gépek mérete befolyásolja az árképzést. A méret emellett hat
 Az alábbiak segíthetnek a megfelelő méret kiválasztásában:
 
 * Az A8–A11- és a H-sorozat méretei más néven *nagy számítási igényű példányokként* ismertek. Az ezeket a méreteket futtató hardver a nagy számítási és hálózatigényű alkalmazások futtatására lett kialakítva és optimalizálva, ide értve a nagy teljesítményű feldolgozási (HPC) fürtalkalmazásokat, a modellezést és a szimulációkat. Az A8–A11-sorozat Intel Xeon E5-2670 @ 2,6 GHz-es, a H-sorozat pedig Intel Xeon E5-2667 v3 @ 3,2 GHz-es processzorokat használ. A méretek használatával kapcsolatos részletes információkért és szempontokért lásd: [nagy teljesítményű számítási](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)virtuálisgép-méretek.
-* A Dv3 sorozat, a Dv2 sorozat, a D sorozat, a G sorozat, ideális olyan alkalmazások számára, amelyek gyorsabb processzorokat, jobb helyi lemez-teljesítményt vagy nagyobb memóriát igényelnek. A két sorozat hatékony megoldást kínál a nagyvállalati alkalmazások futtatására.
+* A Dv3 sorozat, a Dv2 sorozat, a D sorozat, a G sorozat, ideális olyan alkalmazások számára, amelyek gyorsabb processzorokat, jobb helyi lemez-teljesítményt vagy nagyobb memóriát igényelnek. Nagyon hatékony kombinációt kínálnak számos nagyvállalati szintű alkalmazáshoz.
 * Az Azure-központokban lévő némelyik fizikai gazdagép nem képes futtatni a nagyobb virtuálisgép-méreteket, például az A5–A11 méreteket. Ennek eredményeképpen előfordulhat, hogy a hibaüzenet **nem tudta konfigurálni a (z) {Machine Name} virtuális gépet** , vagy **nem tudta létrehozni a (z) {Machine Name} virtuális** gépet a meglévő virtuális gép új méretre való átméretezése során. hozzon létre egy új virtuális gépet egy, a 2013. április 16. előtt létrehozott virtuális hálózaton. új virtuális gép hozzáadása egy meglévő felhőalapú szolgáltatáshoz. Lásd a következő [hibát: "nem sikerült konfigurálni a virtuális gépet"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) a támogatási fórumon az egyes telepítési forgatókönyvekre vonatkozó megkerülő megoldásokhoz.
 * Az előfizetés is korlátozhatja az egyes családokban üzembe helyezhető magok mennyiségét. A kvóták növelésével kapcsolatban vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
 
-## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos szempontok
+## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 Létrehozta az Azure számítási egység (ACU) koncepcióját, amely lehetővé teszi a számítási (CPU-) teljesítmény összehasonlítását az Azure-beli SKU-ban, valamint annak azonosítását, hogy melyik SKU a legnagyobb valószínűséggel kielégíti a teljesítménybeli igényeket.  Az ACU jelenlegi standard alapjaként a Kisméretű (Standard_A1) virtuális gép 100-as értéket képvisel, és a többi termékváltozat értéke ehhez képest jelöli, hogy mennyivel gyorsabban futtatja az adott termékváltozat a standard teljesítménytesztet.
 
 > [!IMPORTANT]
@@ -59,9 +59,9 @@ Létrehozta az Azure számítási egység (ACU) koncepcióját, amely lehetővé
 | [A8-A11](#a-series) |225* |
 | [Egy v2](#av2-series) |100 |
 | [D](#d-series) |160 |
-| [D v2](#dv2-series) |160 – 190 * |
-| [D v3](#dv3-series) |160 – 190 * |
-| [E v3](#ev3-series) |160 – 190 * |
+| [D v2](#dv2-series) |160 - 190* |
+| [D v3](#dv3-series) |160 - 190* |
+| [E v3](#ev3-series) |160 - 190* |
 | [G](#g-series) |180 - 240* |
 | [H](#h-series) |290 - 300* |
 
@@ -92,8 +92,8 @@ A méretek használatával kapcsolatos információkért és szempontokért lás
 
 | Méret            | Processzormagok | Memória: GiB  | Ideiglenes tárolás: GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
-| A8             |8          | 56           | 1817                 | 2/magas |
-| A9             |16         | 112          | 1817                 | 4/nagyon magas |
+| A8*             |8          | 56           | 1817                 | 2/magas |
+| A9*             |16         | 112          | 1817                 | 4/nagyon magas |
 | A10             |8          | 56           | 1817                 | 2/magas |
 | A11             |16         | 112          | 1817                 | 4/nagyon magas |
 
@@ -112,7 +112,7 @@ A méretek használatával kapcsolatos információkért és szempontokért lás
 | Standard_A8m_v2 | 8         | 64           | 80                   | 8/magas                     |
 
 
-## <a name="d-series"></a>D sorozat
+## <a name="d-series"></a>D-sorozat
 | Méret            | Processzormagok | Memória: GiB  | Ideiglenes tároló (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1     | 1         | 3.5          | 50                   | 1/közepes |
@@ -124,7 +124,7 @@ A méretek használatával kapcsolatos információkért és szempontokért lás
 | Standard_D13    | 8         | 56           | 400                  | 8/magas |
 | Standard_D14    | 16        | 112          | 800                  | 8/nagyon magas |
 
-## <a name="dv2-series"></a>Dv2 sorozat
+## <a name="dv2-series"></a>Dv2-sorozat
 | Méret            | Processzormagok | Memória: GiB  | Ideiglenes tároló (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1_v2  | 1         | 3.5          | 50                   | 1/közepes |
@@ -138,7 +138,7 @@ A méretek használatával kapcsolatos információkért és szempontokért lás
 | Standard_D14_v2 | 16        | 112          | 800                  | 8/rendkívül magas |
 | Standard_D15_v2 | 20        | 140          | 1,000                | 8/rendkívül magas |
 
-## <a name="dv3-series"></a>Dv3 sorozat
+## <a name="dv3-series"></a>Dv3-sorozat
 
 | Méret            | Processzormagok | Memória: GiB   | Ideiglenes tároló (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
@@ -149,7 +149,7 @@ A méretek használatával kapcsolatos információkért és szempontokért lás
 | Standard_D32_v3 | 32        | 128           | 800                  | 8/rendkívül magas |
 | Standard_D64_v3 | 64        | 256           | 1600                 | 8/rendkívül magas |
 
-## <a name="ev3-series"></a>Ev3 sorozat
+## <a name="ev3-series"></a>Ev3-sorozat
 
 | Méret            | Processzormagok | Memória: GiB   | Ideiglenes tároló (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
@@ -161,7 +161,7 @@ A méretek használatával kapcsolatos információkért és szempontokért lás
 | Standard_E64_v3 | 64        | 432           | 1600                 | 8/rendkívül magas |
 
 
-## <a name="g-series"></a>G sorozat
+## <a name="g-series"></a>G-sorozat
 | Méret            | Processzormagok | Memória: GiB  | Ideiglenes tároló (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_G1     | 2         | 28           | 384                  |1/magas |

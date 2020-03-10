@@ -10,11 +10,11 @@ ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442197"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365499"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Tömeges műveletek végrehajtása a tömeges végrehajtó .NET-kódtár használatával Azure Cosmos DB
 
@@ -103,7 +103,7 @@ A "BulkImportSample" alkalmazás véletlenszerű dokumentumokat hoz létre, és 
    |**Paraméter**  |**Leírás** |
    |---------|---------|
    |enableUpsert    |   Egy jelző, amely engedélyezi a upsert műveleteket a dokumentumokon. Ha a megadott AZONOSÍTÓJÚ dokumentum már létezik, frissül. Alapértelmezés szerint hamis értékre van állítva.      |
-   |disableAutomaticIdGeneration    |    Az azonosító automatikus generálásának letiltására szolgáló jelző. Alapértelmezés szerint igaz értékre van állítva.     |
+   |disableAutomaticIdGeneration    |    Azt a jelzőt, automatikus generálása azonosítójának letiltása Alapértelmezés szerint az értéke igaz.     |
    |maxConcurrencyPerPartitionKeyRange    | A partíciós kulcs tartományának maximális párhuzamossági foka, a NULL értékre állítás a függvénytár alapértelmezett értékét fogja használni. |
    |maxInMemorySortingBatchSize     |  A dokumentum-enumerálásból lekért dokumentumok maximális száma, amely minden fázisban az API-hívásnak lesz átadva. A tömeges importálás előtt megjelenő memóriabeli rendezési fázisban a paraméter null értékre állítása esetén a könyvtár az alapértelmezett minimális értéket fogja használni (Documents. Count, 1000000).       |
    |cancellationToken    |    A lemondási token, amely szabályosan kilép a tömeges importálási műveletből.     |
@@ -113,17 +113,17 @@ A "BulkImportSample" alkalmazás véletlenszerű dokumentumokat hoz létre, és 
    |**Paraméter**  |**Leírás**  |
    |---------|---------|
    |NumberOfDocumentsImported (hosszú)   |  Azon dokumentumok teljes száma, amelyek importálása sikeresen megtörtént a tömeges importálási API-híváshoz megadott összes dokumentumból.       |
-   |TotalRequestUnitsConsumed (dupla)   |   A tömeges importálási API-hívás által felhasznált összes kérelmek egysége (RU).      |
+   |TotalRequestUnitsConsumed (dupla)   |   A tömeges által felhasznált teljes kérelemegység (RU) importálni az API-hívás.      |
    |TotalTimeTaken (TimeSpan)    |   A tömeges importálási API hívásának teljes ideje a végrehajtás befejezéséhez.      |
-   |BadInputDocuments (\<objektum listázása >)   |     Azon helytelen formátumú dokumentumok listája, amelyeket nem sikerült importálni a tömeges importálási API-hívásban. Javítsa ki a visszaadott dokumentumokat, és próbálkozzon újra az importálással. A helytelen formátumú dokumentumok közé tartoznak azok a dokumentumok, amelyek azonosító értéke nem sztring (null vagy bármely más adattípus érvénytelennek tekintendő).    |
+   |BadInputDocuments (\<objektum listázása >)   |     A lista rossz formátumú dokumentumok importálása nem sikerült a tömeges importálása API-hívás. Javítsa ki a visszaadott dokumentumokat, és próbálkozzon újra az importálással. Hibás formátumú dokumentumok tartalmazzák a dokumentumok, amelynek azonosító értéke nem egy karakterláncot (NULL értékű vagy bármely más adattípus érvénytelen akkor tekinthető).    |
 
 ## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>Az Azure Cosmos-fiókban tárolt adatmennyiségek tömeges frissítése
 
-A meglévő dokumentumokat a BulkUpdateAsync API használatával frissítheti. Ebben a példában a `Name` mezőt egy új értékre állítja be, és eltávolítja a `Description` mezőt a meglévő dokumentumokból. A támogatott frissítési műveletek teljes készletét az [API dokumentációjában](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)találja.
+Meglévő dokumentumok frissítheti a BulkUpdateAsync API-val. Ebben a példában a `Name` mezőt egy új értékre állítja be, és eltávolítja a `Description` mezőt a meglévő dokumentumokból. A támogatott frissítési műveletek teljes készletét az [API dokumentációjában](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)találja.
 
 1. Navigáljon a "BulkUpdateSample" mappára, és nyissa meg a "BulkUpdateSample. SLN" fájlt.  
 
-2. A frissítési elemek meghatározása a megfelelő mező-frissítési műveletekkel együtt. Ebben a példában a `SetUpdateOperation` segítségével frissíti a `Name` mezőt és `UnsetUpdateOperation` az összes dokumentum `Description` mezőjének eltávolításához. Más műveleteket is végrehajthat, például egy adott értékkel növelheti a dokumentum mező értékét, leküldheti a konkrét értékeket egy tömb mezőjébe, vagy eltávolíthat egy adott értéket egy tömb mezőből. Ha többet szeretne megtudni a tömeges frissítési API által nyújtott különböző módszerekről, tekintse meg az [API dokumentációját](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet).
+2. A frissítési elemek meghatározása a megfelelő mező-frissítési műveletekkel együtt. Ebben a példában a `SetUpdateOperation` segítségével frissíti a `Name` mezőt és `UnsetUpdateOperation` az összes dokumentum `Description` mezőjének eltávolításához. Végez, és más műveletek növekmény például egy dokumentum mező egy adott érték, adott értékekre leküldése egy tömb mezőt, vagy egy adott érték eltávolítása egy tömb mező. Ha többet szeretne megtudni a tömeges frissítési API által nyújtott különböző módszerekről, tekintse meg az [API dokumentációját](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet).
 
    ```csharp
    SetUpdateOperation<string> nameUpdate = new SetUpdateOperation<string>("Name", "UpdatedDoc");
