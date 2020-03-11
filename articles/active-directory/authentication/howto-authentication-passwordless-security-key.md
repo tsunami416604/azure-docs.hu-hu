@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d5ff722d4a035113af8528ed8adb396b01c81eb
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77504943"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378187"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése (előzetes verzió)
 
@@ -61,7 +61,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 biztonsági kulcsok felhasználói regisztrációja és kezelése
 
-1. Tallózással keresse meg [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
+1. Lépjen a [https://myprofile.microsoft.com](https://myprofile.microsoft.com) webhelyre.
 1. Ha még nem tette meg, jelentkezzen be.
 1. Kattintson a **biztonsági adatok**elemre.
    1. Ha a felhasználónak már van legalább egy Azure Multi-Factor Authentication-metódusa, akkor azonnal regisztrálhatnak egy FIDO2 biztonsági kulcsot.

@@ -1,7 +1,7 @@
 ---
 title: Alkalmazás közzététele – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ha befejezte az aktív LUIS-alkalmazás létrehozását és tesztelését, tegye elérhetővé az ügyfélalkalmazás számára a végpontra való közzétételsel.
+description: Ha befejezte a elkészítését és tesztelését a LUIS alkalmazás aktív, tegye elérhetővé számára az ügyfélalkalmazás közzétesszük azt a végpontot.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: 676c6d15c4f439543a3ed74627001725632fecfa
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554849"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361128"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Aktív, betanított alkalmazás közzététele átmeneti vagy éles végponton
 
@@ -38,8 +38,8 @@ Ha befejezte az aktív LUIS-alkalmazás létrehozását, betanítását és tesz
 
 Válassza ki a megfelelő tárolóhelyet, amikor megjelenik az előugró ablak: 
 
-* Előkészítés
-* Éles üzem 
+* Átmeneti
+* Production 
 
 Ha mindkét közzétételi tárolóhelyet használja, ez lehetővé teszi, hogy az alkalmazás két különböző verzióját elérhetővé tegye a közzétett végpontokon vagy ugyanazon a verzión két különböző végponton. 
 
@@ -53,11 +53,11 @@ Ha például egy, a [www.Luis.ai](https://www.luis.ai)-on létrehozott alkalmaz�
 > 3 authoring-régió van. Ahhoz a régióhoz kell tartoznia, amelyet közzé kíván tenni. Ha minden régióban közzé kell tennie az összes régiót, a szerzői folyamatokat és a létrejövő betanított modellt mind a 3 szerzői régióban kell kezelnie. 
 
 
-## <a name="configuring-publish-settings"></a>Közzétételi beállítások konfigurálása
+## <a name="configuring-publish-settings"></a>Nastavení publikování konfigurálása
 
 Miután kiválasztotta a tárolóhelyet, konfigurálja a közzétételi beállításokat a következőhöz:
 
-* Véleményelemzés
+* Hangulatelemzés
 * Helyesírás-javítás – v2 előrejelzési végpont
 * Beszéd alapozó 
 
@@ -67,17 +67,17 @@ A közzététel után ezek a beállítások a **kezelés** szakasz **közzétét
 
 Az alkalmazás sikeres közzétételekor megjelenik egy sikeres értesítés a böngésző tetején. Az értesítés a végpontokra mutató hivatkozást is tartalmaz. 
 
-Ha a végpont URL-címére van szüksége, válassza ki a hivatkozást. A végpont URL-címeihez a felső menüben a **kezelés** lehetőségre kattintva, majd a bal oldali menüben válassza az **Azure-erőforrások** lehetőséget. 
+Ha a végpont URL-címe van szüksége, válassza ki a hivatkozást. A végpont URL-címeihez a felső menüben a **kezelés** lehetőségre kattintva, majd a bal oldali menüben válassza az **Azure-erőforrások** lehetőséget. 
 
-## <a name="sentiment-analysis"></a>Véleményelemzés
+## <a name="sentiment-analysis"></a>Hangulatelemzés
 
 <a name="enable-sentiment-analysis"></a>
 
 A hangulat elemzése lehetővé teszi a LUIS számára a [text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) integrálását az érzelmek és a kulcsfontosságú kifejezések elemzésének biztosítása érdekében. 
 
-Nem kell megadnia Text Analytics kulcsot, és a szolgáltatáshoz nem tartozik számlázási díj az Azure-fiókhoz. 
+Nem kell adnia a Text Analytics kulcsot, és nem jár költségekkel számlázási ezt a szolgáltatást az Azure-fiókjába. 
 
-Az érzelmi adatmennyiség egy 1 és 0 közötti pontszám, amely az adatmennyiség pozitív (közelebbről 1) vagy negatív (közelebbről 0) hangulatát jelzi. A `positive`, `neutral`és `negative` hangulati címkéje támogatott kultúrán alapul. Jelenleg csak az angol támogatja a hangulati címkéket. 
+Véleményadatok egy 1 és 0 a pozitív jelző közötti pontszámot (közelebb 1) vagy negatív (0 közelebb) az adatok a róluk szóló véleményeket. A `positive`, `neutral`és `negative` hangulati címkéje támogatott kultúrán alapul. Jelenleg csak az angol támogatja a hangulati címkéket. 
 
 A JSON-végponti válaszról a [hangulat elemzése című témakörben](luis-concept-data-extraction.md#sentiment-analysis) talál további információt.
 

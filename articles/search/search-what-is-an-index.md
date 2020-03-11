@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460749"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379746"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>Alapszintű index létrehozása az Azure Cognitive Searchban
 
@@ -145,7 +145,7 @@ A [*mezők gyűjteménye*](#fields-collection) általában az index legnagyobb r
 A séma meghatározásakor az index minden egyes mezőjéhez nevet, típust és attribútumokat kell rendelni. Az adott mezőben található adatok osztályozása a mező típusa szerint történik. Az egyes mezők használati módjának megadásához attribútumokat állítunk be. Az itt megadható típusokat és attribútumokat az alábbi tábla sorolja fel.
 
 ### <a name="data-types"></a>Adattípusok
-| Type (Típus) | Leírás |
+| Típus | Leírás |
 | --- | --- |
 | *Edm.String* |A teljes szöveges kereséshez (Word-Breaking, fakadóan stb.) tartozó szöveg, amely lehet jogkivonatos. |
 | *Collection(Edm.String)* |A teljes szöveges keresés érdekében lehetőség van a sztringlista tokenekre bontására. Az egyes gyűjteményekben lévő elemek számának nincs elméleti felső korlátja, a 16 MB-os adattartalom-méretkorlát azonban a gyűjteményekre is érvényes. |
@@ -158,7 +158,7 @@ A séma meghatározásakor az index minden egyes mezőjéhez nevet, típust és 
 
 Az Azure Cognitive Search [által támogatott adattípusokkal](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)kapcsolatos részletesebb információkat itt talál.
 
-### <a name="index-attributes"></a>Indexattribútumok
+### <a name="index-attributes"></a>Index attribútumai
 
 Az index pontosan egy mezőjének a kijelölt **kulcs** mezőnek kell lennie, amely egyedileg azonosítja az egyes dokumentumokat.
 
@@ -190,12 +190,12 @@ A szűrőket és a rendezést támogató indexek arányosan nagyobbak, mint a cs
 > [!Note]
 > A tárolási architektúra az Azure-Cognitive Search megvalósítási részletének minősül, és értesítés nélkül megváltozhat. Nincs garancia arra, hogy a jelenlegi viselkedés továbbra is fennmarad a jövőben.
 
-## <a name="suggesters"></a>Javaslatok
+## <a name="suggesters"></a>Javaslattevők
 A javaslat a séma azon szakasza, amely meghatározza, hogy az indexben mely mezők használhatók az automatikus vagy a beírásos lekérdezések támogatásához a keresésekben. A rendszer általában a részleges keresési karakterláncokat küldi el a [javaslatok (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) számára, amíg a felhasználó begépel egy keresési lekérdezést, és az API a javasolt dokumentumok vagy kifejezések készletét adja vissza. 
 
 A rendszer a javaslathoz hozzáadott mezőket használja a típus előtti keresési feltételek kiépítéséhez. Az összes keresési kifejezés az indexelés során jön létre, és külön tárolja őket. A javaslati struktúra létrehozásával kapcsolatos további információkért lásd: [javaslatok hozzáadása](index-add-suggesters.md).
 
-## <a name="scoring-profiles"></a>Relevanciaprofilok
+## <a name="scoring-profiles"></a>Pontozási profilok
 
 A [pontozási profil](index-add-scoring-profiles.md) a séma olyan szakasza, amely egyéni pontozási viselkedést határoz meg, amely lehetővé teszi, hogy a keresési eredményekben magasabban megjelenjenek az elemek. A pontozási profilok mezőből származó súlyok és függvények alkotják. A használatához a lekérdezési karakterláncban meg kell adnia egy profilt név alapján.
 

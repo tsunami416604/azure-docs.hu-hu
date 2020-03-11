@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
 ms.openlocfilehash: 940baf219f1b3994585472f0eed9d171ba319d4e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023140"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359925"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis-erőforrások méretezése Azure SQL Database
 
@@ -29,7 +29,7 @@ A következő videó bemutatja, hogyan lehet dinamikusan módosítani a szolgál
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 
 > [!IMPORTANT]
-> Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
+> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
 
 ## <a name="impact"></a>Hatás
 
@@ -50,7 +50,7 @@ A szolgáltatási réteg vagy a számítási méret módosítása főleg a köve
 
 A szolgáltatási réteg módosításának becsült késése vagy egy önálló adatbázis vagy rugalmas készlet számítási méretének átméretezése a következő paraméterekkel történik:
 
-|Szolgáltatáscsomag|Alapszintű önálló adatbázis,</br>Standard (S0-S1)|Alapszintű rugalmas készlet,</br>Standard (S2-S12), </br>Nagy kapacitású </br>Önálló adatbázis vagy rugalmas készlet általános célú|Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet|
+|Szolgáltatásszint|Alapszintű önálló adatbázis,</br>Standard (S0-S1)|Alapszintű rugalmas készlet,</br>Standard (S2-S12), </br>Nagy kapacitású </br>Önálló adatbázis vagy rugalmas készlet általános célú|Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet|
 |:---|:---|:---|:---|
 |**Alapszintű önálló adatbázis,</br> standard (S0-S1)**|&bull; &nbsp;állandó időbeli késés a felhasznált területtől függetlenül</br>&bull; &nbsp;általában kevesebb, mint 5 perc|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
 |**Alapszintű rugalmas készlet, </br>standard (S2-S12), </br>nagy kapacitású, </br>általános célú önálló adatbázis vagy rugalmas készlet**|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull; &nbsp;állandó időbeli késés a felhasznált területtől függetlenül</br>&bull; &nbsp;általában kevesebb, mint 5 perc|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
@@ -112,7 +112,7 @@ Az adatbázis óránkénti számlázása az adott órában alkalmazott legmagasa
 - Az önálló adatbázisok tárterületének ára az adattárolás és a naplózási tárolók összege, a szolgáltatási réteg tárolási egységének díja. A TempDB díja a virtuális mag ár része. További információ az extra tárterület díjszabásáról: [SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
+> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
 
 ### <a name="dtu-based-purchasing-model"></a>DTU-alapú vásárlási modell
 
@@ -121,7 +121,7 @@ Az adatbázis óránkénti számlázása az adott órában alkalmazott legmagasa
 - Az önálló adatbázisok extra tárterületének díja a szolgáltatás rétegének extra tárolási egységével megszorzott extra tárterület. További információ az extra tárterület díjszabásáról: [SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
+> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
 
 ### <a name="geo-replicated-database"></a>Földrajzilag replikált adatbázis
 
@@ -129,7 +129,7 @@ A replikált másodlagos adatbázis adatbázis-méretének módosításához mó
 
 ## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>P11 és P15 megkötések, ha a maximális méret nagyobb, mint 1 TB
 
-A prémium szinten több mint 1 TB tárterület érhető el az összes régióban, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország, Németország északkeleti régiója, az USA nyugati középső régiója, US DoD régiók és az USA kormányzati központja. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB. Az alábbi szempontok és korlátozások az 1 TB-nál nagyobb maximális mérettel rendelkező P11 és P15 adatbázisokra vonatkoznak:
+A prémium szinten több mint 1 TB tárterület érhető el az összes régióban, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország, Németország északkeleti régiója, az USA nyugati középső régiója, US DoD régiók és az USA kormányzati központja. Ezekben a régiókban a prémium szintű Storage Max 1 TB-ra van korlátozva. Az alábbi szempontok és korlátozások az 1 TB-nál nagyobb maximális mérettel rendelkező P11 és P15 adatbázisokra vonatkoznak:
 
 - Ha egy P11 vagy P15-adatbázis maximális mérete 1 TB-nál nagyobb értékre lett beállítva, akkor csak visszaállítható vagy átmásolható egy P11 vagy P15-adatbázisba.  Ezt követően az adatbázis átméretezhető egy másik számítási méretre, amennyiben az átméretezési művelet idején lefoglalt terület mennyisége nem haladja meg az új számítási méret maximális méretét.
 - Aktív földrajzi replikálási forgatókönyvek esetén:

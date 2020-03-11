@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 28fb464714f464a4c0a8f5eaf304dcdd5d603c90
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759720"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381013"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Tesztkörnyezet vagy virtuális gép törlése a laborban Azure DevTest Labs
 Ebből a cikkből megtudhatja, hogyan törölhet laboratóriumi vagy virtuális gépet egy laborban.
@@ -31,7 +31,7 @@ Ha töröl egy DevTest Labs-példányt egy erőforráscsoporthoz, a DevTest Labs
 
 Labor törléséhez hajtsa végre a következő műveleteket: 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Válassza a bal oldali menü **minden erőforrás** elemét, válassza ki a **DevTest Labs** lehetőséget a szolgáltatás típusához, és válassza ki a labort.
 
     ![Válassza ki a labort](media/devtest-lab-delete-lab-vm/select-lab.png)
@@ -56,7 +56,7 @@ A virtuális gép, a hálózati adapter és a virtuális géphez társított lem
 
 A laborban lévő virtuális gépek törléséhez hajtsa végre a következő műveleteket: 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Válassza a bal oldali menü **minden erőforrás** elemét, válassza ki a **DevTest Labs** lehetőséget a szolgáltatás típusához, és válassza ki a labort.
 
     ![Válassza ki a labort](media/devtest-lab-delete-lab-vm/select-lab.png)

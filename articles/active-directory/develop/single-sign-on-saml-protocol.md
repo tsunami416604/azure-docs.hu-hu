@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: cecb78a82eb2925813bdc7f6df2503fae94b6437
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701399"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375677"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezéses SAML protokoll
 
@@ -48,12 +48,12 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| ID (Azonosító) | Szükséges | Az Azure AD ezt az attribútumot használja a visszaadott válasz `InResponseTo` attribútumának feltöltéséhez. Az azonosító nem kezdődhet számmal, ezért a közös stratégia egy olyan karakterláncot, mint az "id", egy GUID karakterlánc-ábrázolására. Például `id6c1c178c166d486687be4aaf5e482730` érvényes azonosító. |
-| Verzió | Szükséges | Ezt a paramétert **2,0**-re kell állítani. |
-| IssueInstant | Szükséges | Ez egy UTC-értékkel rendelkező DateTime karakterlánc, amely az ["o" formátummal](https://msdn.microsoft.com/library/az4se3k1.aspx)rendelkezik. Az Azure AD egy ilyen típusú DateTime értéket vár, de nem értékeli vagy nem használja az értéket. |
-| AssertionConsumerServiceUrl | Választható | Ha meg van adni, ennek a paraméternek meg kell egyeznie a Cloud Service `RedirectUri` az Azure AD-ben. |
-| ForceAuthn | Választható | Ez egy logikai érték. Ha az értéke igaz, az azt jelenti, hogy a felhasználónak újra hitelesítenie kell magát, még akkor is, ha az Azure AD-vel érvényes munkamenetük van. |
-| IsPassive | Választható | Ez egy logikai érték, amely azt határozza meg, hogy az Azure AD-nak csendes felhasználói beavatkozás nélkül kell-e hitelesítenie a felhasználót a munkamenet-cookie-val, ha van ilyen. Ha ez igaz, az Azure AD megkísérli hitelesíteni a felhasználót a munkamenet-cookie használatával. |
+| ID (Azonosító) | Kötelező | Az Azure AD ezt az attribútumot használja a visszaadott válasz `InResponseTo` attribútumának feltöltéséhez. Az azonosító nem kezdődhet számmal, ezért a közös stratégia egy olyan karakterláncot, mint az "id", egy GUID karakterlánc-ábrázolására. Például `id6c1c178c166d486687be4aaf5e482730` érvényes azonosító. |
+| Verzió | Kötelező | Ezt a paramétert **2,0**-re kell állítani. |
+| IssueInstant | Kötelező | Ez egy UTC-értékkel rendelkező DateTime karakterlánc, amely az ["o" formátummal](https://msdn.microsoft.com/library/az4se3k1.aspx)rendelkezik. Az Azure AD egy ilyen típusú DateTime értéket vár, de nem értékeli vagy nem használja az értéket. |
+| AssertionConsumerServiceUrl | Optional | Ha meg van adni, ennek a paraméternek meg kell egyeznie a Cloud Service `RedirectUri` az Azure AD-ben. |
+| ForceAuthn | Optional | Ez egy logikai érték. Ha az értéke igaz, az azt jelenti, hogy a felhasználónak újra hitelesítenie kell magát, még akkor is, ha az Azure AD-vel érvényes munkamenetük van. |
+| IsPassive | Optional | Ez egy logikai érték, amely azt határozza meg, hogy az Azure AD-nak csendes felhasználói beavatkozás nélkül kell-e hitelesítenie a felhasználót a munkamenet-cookie-val, ha van ilyen. Ha ez igaz, az Azure AD megkísérli hitelesíteni a felhasználót a munkamenet-cookie használatával. |
 
 A **rendszer figyelmen kívül hagyja**az összes többi `AuthnRequest` attribútumot, például a beleegyezett, a célhelyet, a AssertionConsumerServiceIndex, a AttributeConsumerServiceIndex és a ProviderName.
 
@@ -165,7 +165,7 @@ A kiállítói elemmel kapcsolatos válasz például a következő mintához has
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
-### <a name="status"></a>Állapot
+### <a name="status"></a>status
 
 A `Status` elem a bejelentkezés sikerességét vagy sikertelenségét közvetíti. Tartalmazza a `StatusCode` elemet, amely tartalmaz egy kódot vagy egy beágyazott kódot, amely a kérelem állapotát jelöli. Emellett tartalmazza a `StatusMessage` elemet is, amely a bejelentkezési folyamat során létrehozott egyéni hibaüzeneteket tartalmazza.
 
@@ -186,7 +186,7 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
   </samlp:Status>
 ```
 
-### <a name="assertion"></a>állítás
+### <a name="assertion"></a>Állítás
 
 A `ID`, `IssueInstant` és `Version`mellett az Azure AD az alábbi elemeket állítja be a válasz `Assertion` elemében.
 
@@ -242,7 +242,7 @@ A `NotBefore` és `NotOnOrAfter` attribútumok határozzák meg azt az időközt
 * A `NotBefore` attribútum értéke a `Assertion` elem `IssueInstant` attribútumának értékeként vagy valamivel kisebb (egy másodpercnél rövidebb) értékkel egyenlő. Az Azure AD nem veszi figyelembe a saját maga és a felhőalapú szolgáltatás (szolgáltató) közötti időeltérést, és nem ad hozzá puffert ehhez az időponthoz.
 * A `NotOnOrAfter` attribútum értéke 70 perccel későbbi, mint a `NotBefore` attribútum értéke.
 
-#### <a name="audience"></a>Közönség
+#### <a name="audience"></a>Célközönség
 
 Ez egy olyan URI-t tartalmaz, amely a célközönséget azonosítja. Az Azure AD az elem értékét a bejelentkezést kezdeményező `AuthnRequest` `Issuer` elemének értékére állítja be. Az `Audience` érték kiértékeléséhez használja az alkalmazás regisztrációja során megadott `App ID URI` értékét.
 

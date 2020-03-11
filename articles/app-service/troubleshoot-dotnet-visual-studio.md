@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
 ms.openlocfilehash: 3305cfb81980984574961b2a84a056f5d1879ead
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227896"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373776"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibakeresése Azure App Service a Visual Studióval
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag azt mutatja be, hogyan használható a Visual Studio Tools a [app Service](https://go.microsoft.com/fwlink/?LinkId=529714)alkalmazás hibakeresési [módban](https://docs.microsoft.com/visualstudio/debugger/) történő futtatásával, vagy az alkalmazás-naplók és a webkiszolgáló-naplók megtekintésével.
 
-A következőket sajátíthatja el:
+A következőket fogja megtanulni:
 
 * Az App Management funkciói a Visual Studióban érhetők el.
 * A Visual Studio távoli nézetének használata a gyors módosítások végrehajtásához egy távoli alkalmazásban.

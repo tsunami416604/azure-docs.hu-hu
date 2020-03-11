@@ -4,11 +4,11 @@ description: Ismerje meg, hogyan adatokat is módosítható előtt előrejelzés
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 5547724a6333d248a7ba4e9aeecaaa8f331feb7d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148266"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361130"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Az ALTER utterance (kifejezés) adatok előtt vagy közben előrejelzése
 A LUIS segítségével kezelheti az utterance (kifejezés) előtt vagy közben az előrejelzési módszert biztosít. Ezek közé tartozik a [helyesírás javítása](luis-tutorial-bing-spellcheck.md), valamint az előre elkészített [datetimeV2](luis-reference-prebuilt-datetimev2.md)időzóna-problémáinak javítása.
@@ -35,7 +35,7 @@ A végpont két paraméterei a helyesírási javításokkal működéséhez szü
 
 Ha [Bing Spell Check API v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) hibát észlel, az eredeti kimaradás és a korrigált Kimondás a végponton lévő előrejelzések mellett történik.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 ```JSON
 {
@@ -49,7 +49,7 @@ Ha [Bing Spell Check API v7](https://azure.microsoft.com/services/cognitive-serv
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
 ```JSON
 {
@@ -85,7 +85,7 @@ Az időzóna kijavítása úgy történik, hogy a felhasználó időzónáját h
 ### <a name="daylight-savings-example"></a>Nyári időszámítás – megtakarítási példa
 Ha a visszaadott előre elkészített datetimeV2 szeretné beállítani a nyári időszámítást, akkor a querystring paramétert a [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) lekérdezéséhez percben kell `timezoneOffset` használni.
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 előrejelzési végpont kérése](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[V2 előrejelzési végpont kérése](#tab/V2)
 
 Adja hozzá a 60 perc:
 
@@ -95,7 +95,7 @@ https://{Region}. API. kognitív. microsoft. com/Luis/v 2.0/apps/{appId}? q = a 
 
 https://{Region}. API. kognitív. microsoft. com/Luis/v 2.0/apps/{appId}? q = a fények bekapcsolása? **timezoneOffset =-60**& részletesen = {boolean} & helyesírás = {boolean} &-előkészítés = {boolean} & Bing-Spell-Check-előfizetés-Key = {string} & log = {Boolean}
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 előrejelzési végpont kérése](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[V3 előrejelzési végpont kérése](#tab/V3)
 
 Adja hozzá a 60 perc:
 

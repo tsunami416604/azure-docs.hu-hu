@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169591"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379044"
 ---
 # <a name="configure-the-review-tool"></a>A felülvizsgálati eszköz konfigurálása
 
@@ -95,9 +95,9 @@ A munkafolyamat létrehozásakor az alapértelmezett összekötő az Content Mod
 A [felülvizsgálati eszköz](./human-in-the-loop.md) a következő összekötőket tartalmazza:
 
 - Érzelemfelismerés
-- Face
+- Arcfelismerés
 - PhotoDNA Cloud Service
-- Text Analytics
+- Szövegelemzés
 
 ### <a name="add-a-connector"></a>Összekötő hozzáadása
 

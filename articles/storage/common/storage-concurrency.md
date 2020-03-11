@@ -11,13 +11,13 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 9879f98e72e22fc0745a9e91f29216cbe74ab8fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460487"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373672"
 ---
-# <a name="managing-concurrency-in-microsoft-azure-storage"></a>A párhuzamosság kezelése a Microsoft Azure Storage szolgáltatásban
+# <a name="managing-concurrency-in-microsoft-azure-storage"></a>Egyidejűség kezelése Microsoft Azure Storage
 
 A modern internetalapú alkalmazások általában több felhasználóval is megtekintik és frissítik az adatfeldolgozást. Ehhez az alkalmazás-fejlesztőknek körültekintően kell megfontolniuk, hogyan biztosíthat kiszámítható felhasználói élményt a végfelhasználók számára, különösen olyan helyzetekben, ahol több felhasználó is frissítheti ugyanazt az információt. Három fő adatpárhuzamossági stratégia létezik, amelyeket a fejlesztők általában figyelembe vesznek:  
 
@@ -106,17 +106,17 @@ A következő táblázat összefoglalja azokat a blob-műveleteket, amelyek elfo
 
 | Művelet | ETag értéket ad vissza. | Feltételes fejlécek elfogadása |
 |:--- |:--- |:--- |
-| BLOB elhelyezése |Igen |Igen |
+| Put Blob |Igen |Igen |
 | BLOB beolvasása |Igen |Igen |
 | BLOB tulajdonságainak beolvasása |Igen |Igen |
 | BLOB tulajdonságainak beállítása |Igen |Igen |
 | BLOB metaadatainak beolvasása |Igen |Igen |
 | BLOB metaadatainak beállítása |Igen |Igen |
 | Címbérleti blob (*) |Igen |Igen |
-| Pillanatkép-blob |Igen |Igen |
-| BLOB másolása |Igen |Igen (a forrás és a cél blob esetében) |
+| Snapshot Blob |Igen |Igen |
+| Blob másolása |Igen |Igen (a forrás és a cél blob esetében) |
 | BLOB másolásának megszakítása |Nem |Nem |
-| BLOB törlése |Nem |Igen |
+| Delete Blob |Nem |Igen |
 | Put blokk |Nem |Nem |
 | Tiltási lista |Igen |Igen |
 | Tiltási lista lekérése |Igen |Nem |
@@ -164,13 +164,13 @@ Ha a bérlet AZONOSÍTÓjának átadása nélkül próbál meg írási művelete
 
 A következő blob-műveletek használhatnak címbérleteket a pesszimista Egyidejűség kezeléséhez:  
 
-* BLOB elhelyezése
+* Put Blob
 * BLOB beolvasása
 * BLOB tulajdonságainak beolvasása
 * BLOB tulajdonságainak beállítása
 * BLOB metaadatainak beolvasása
 * BLOB metaadatainak beállítása
-* BLOB törlése
+* Delete Blob
 * Put blokk
 * Tiltási lista
 * Tiltási lista lekérése
@@ -179,7 +179,7 @@ A következő blob-műveletek használhatnak címbérleteket a pesszimista Egyid
 * Pillanatkép-blob – a bérlet azonosítója nem kötelező, ha létezik bérlet
 * A blob-bérlet AZONOSÍTÓjának másolása szükséges, ha a cél blobon van egy bérlet
 * A Blobok másolásának megszakítása akkor szükséges, ha a cél blobon létezik végtelen bérlet
-* Blobbérlet  
+* Címbérleti blob  
 
 ### <a name="pessimistic-concurrency-for-containers"></a>A tárolók pesszimista egyidejűsége
 
@@ -195,11 +195,11 @@ A következő tároló-műveletek használhatnak címbérleteket a pesszimista E
 * Tároló ACL beállítása
 * Bérlet tárolója  
 
-További információ eléréséhez lásd:  
+További információkért lásd:  
 
-* [Feltételes fejlécek megadása Blob Service-műveletekhez](https://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [A blob Service-műveletek feltételes fejlécének megadása](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Bérlet tárolója](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Blobbérlet](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Címbérleti blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-table-storage"></a>A Egyidejűség kezelése a Table Storage-ban
 
@@ -256,7 +256,7 @@ Vegye figyelembe, hogy a **INSERT vagy replace entitás** és az **INSERT vagy M
 
 A táblázatokat használó általános fejlesztőknek optimista párhuzamosságot kell alkalmazniuk a méretezhető alkalmazások fejlesztésekor. Ha pesszimista zárolásra van szükség, az egyik módszer a fejlesztők számára is igénybe vehet, ha a táblákhoz való hozzáféréskor egy kijelölt blobot rendel hozzá az egyes táblákhoz, és a táblán való működés előtt megpróbál bérletet készíteni a blobon. Ehhez a megközelítéshez az alkalmazásnak meg kell győződnie arról, hogy az összes adatelérési útvonal beszerezze a bérletet a táblán való működés előtt. Azt is vegye figyelembe, hogy a minimális bérleti idő 15 másodperc, ami alapos megfontolást igényel a méretezhetőség érdekében.  
 
-További információ eléréséhez lásd:  
+További információkért lásd:  
 
 * [Entitások műveletei](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
@@ -266,9 +266,9 @@ Egy olyan forgatókönyv, amelyben a párhuzamosság a várólista-kezelési szo
 
 A várólista-szolgáltatás nem támogatja az optimista vagy a pesszimista párhuzamosságot, és emiatt az ügyfelek várólistából beolvasott üzenetek feldolgozásával biztosítaniuk kell, hogy az üzenetek idempotens módon legyenek feldolgozva. A legutóbbi író WINS-stratégia olyan frissítési műveletekhez használható, mint például a SetQueueServiceProperties, a SetQueueMetaData, a SetQueueACL és a UpdateMessage.  
 
-További információ eléréséhez lásd:  
+További információkért lásd:  
 
-* [A Queue szolgáltatás REST API-ja](https://msdn.microsoft.com/library/azure/dd179363.aspx)
+* [Üzenetsor-szolgáltatás REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Üzenetek beolvasása](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
 ## <a name="managing-concurrency-in-azure-files"></a>Egyidejűség kezelése Azure Files
@@ -277,7 +277,7 @@ A file Service két különböző protokoll-végponttal (SMB és REST) érhető 
 
 Amikor egy SMB-ügyfél egy fájlt nyit meg a törléshez, az a fájlt függőben lévő törlésként jelöli meg, amíg az összes többi SMB-ügyfél nem nyitja meg a fájlt. Míg a fájl függőben lévő törlésként van megjelölve, a fájl REST művelete a 409 (ütközés) állapotkódot fogja visszaadni a hibakód SMBDeletePending. Az 404-as állapotkód (nem található) nem lesz visszaadva, mert lehetséges, hogy az SMB-ügyfél el szeretné távolítani a függőben lévő törlési jelzőt a fájl bezárása előtt. Más szóval a 404 (nem található) állapotkód csak a fájl eltávolításakor várt. Vegye figyelembe, hogy amíg egy fájl egy, az SMB függőben lévő törlési állapotban van, nem fog szerepelni a fájlok listájának eredményei között. Azt is vegye figyelembe, hogy a REST delete fájl-és REST-törlési műveleteit a rendszer atomian véglegesíti, és nem eredményez függőben lévő törlési állapotot.  
 
-További információ eléréséhez lásd:  
+További információkért lásd:  
 
 * [Fájlok zárolásának kezelése](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 

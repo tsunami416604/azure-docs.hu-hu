@@ -9,11 +9,11 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 3d5f3ade3ef3b79ddb3996b5bf2d609b11aff8a5
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748557"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356757"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -468,17 +468,17 @@ Ennek a hibának a leggyakoribb oka az ügyfél leválasztása, mielőtt lejár 
 ### <a name="the-client-is-receiving-403-messages"></a>Az ügyfél HTTP 403 (tiltott) üzeneteket kap
 Ha az ügyfélalkalmazás HTTP 403 (Tiltott) hibákat jelez, annak egyik valószínű oka lehet, hogy az ügyfél egy lejárt közös hozzáférésű jogosultságkódot (SAS-t) használ, amikor tárolási kérelmet küld (egyéb lehetséges okok lehetnek még az óraeltérés, az érvénytelen kulcsok és az üres fejlécek). Ha egy lejárt SAS-kulcs a hiba oka, akkor nem fog bejegyzéseket látni a kiszolgálóoldali Storage naplózási szolgáltatásának naplóadataiban. Az alábbi táblázat a Storage ügyféloldali kódtár által létrehozott ügyféloldali naplóból származó mintát mutatja be, amely a problémát szemlélteti:
 
-| Forrás | Részletesség | Részletesség | Ügyfélkérelem azonosítója | Művelet szövege |
+| Forrás | Részletességi | Részletességi | Ügyfélkérelem azonosítója | Művelet szövege |
 | --- | --- | --- | --- | --- |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |A művelet megkezdése az elsődleges hellyel (Location Mode) PrimaryOnly. |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |Szinkron kérelem indítása <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |Várakozás a válaszra. |
-| Microsoft. Azure. Storage |Figyelmeztetés |2 |85d077ab-... |Kivétel történt a válaszra való várakozás közben: a távoli kiszolgáló a következő hibát adta vissza: (403) tiltott. |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |Válasz érkezett. Állapotkód = 403, kérelem azonosítója = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, tartalom-MD5 =, ETag =. |
-| Microsoft. Azure. Storage |Figyelmeztetés |2 |85d077ab-... |Kivétel történt a művelet során: a távoli kiszolgáló a következő hibát adta vissza: (403) tiltott.. |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |Annak ellenőrzése, hogy a műveletet újra kell-e próbálni. Újrapróbálkozás száma = 0, HTTP-állapotkód = 403, kivétel = a távoli kiszolgáló hibát adott vissza: (403) tiltott.. |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |A következő hely az elsődleges értékre van állítva, a hely mód alapján. |
-| Microsoft. Azure. Storage |Hiba |1 |85d077ab-... |Az újrapróbálkozási szabályzat nem engedélyezte az újrapróbálkozást. A távoli kiszolgáló meghibásodása hibát adott vissza: (403) tiltott. |
+| Microsoft.Azure.Storage |Információ |3 |85d077ab-… |A művelet megkezdése az elsődleges hellyel (Location Mode) PrimaryOnly. |
+| Microsoft.Azure.Storage |Információ |3 |85d077ab -… |Szinkron kérelem indítása <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
+| Microsoft.Azure.Storage |Információ |3 |85d077ab -… |Várakozás a válaszra. |
+| Microsoft.Azure.Storage |Figyelmeztetés |2 |85d077ab -… |Kivétel történt a válaszra való várakozás közben: a távoli kiszolgáló a következő hibát adta vissza: (403) tiltott. |
+| Microsoft.Azure.Storage |Információ |3 |85d077ab -… |Válasz érkezett. Állapotkód = 403, kérelem azonosítója = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, tartalom-MD5 =, ETag =. |
+| Microsoft.Azure.Storage |Figyelmeztetés |2 |85d077ab -… |Kivétel történt a művelet során: a távoli kiszolgáló a következő hibát adta vissza: (403) tiltott.. |
+| Microsoft.Azure.Storage |Információ |3 |85d077ab -… |Annak ellenőrzése, hogy a műveletet újra kell-e próbálni. Újrapróbálkozás száma = 0, HTTP-állapotkód = 403, kivétel = a távoli kiszolgáló hibát adott vissza: (403) tiltott.. |
+| Microsoft.Azure.Storage |Információ |3 |85d077ab -… |A következő hely az elsődleges értékre van állítva, a hely mód alapján. |
+| Microsoft.Azure.Storage |Hiba |1 |85d077ab -… |Az újrapróbálkozási szabályzat nem engedélyezte az újrapróbálkozást. A távoli kiszolgáló meghibásodása hibát adott vissza: (403) tiltott. |
 
 Ebben az esetben meg kell vizsgálnia, hogy miért jár le az SAS-token, mielőtt az ügyfél elküldi a jogkivonatot a kiszolgálónak:
 
@@ -506,35 +506,35 @@ A Storage ügyféloldali kódtár ügyféloldali naplójának használatával r�
 
 A Storage ügyféloldali kódtár által létrehozott következő ügyféloldali napló szemlélteti a problémát, ha az ügyfél nem találja a létrehozandó blob tárolóját. Ez a napló a következő tárolási műveletek részleteit tartalmazza:
 
-| Kérelemazonosító | Művelet |
+| Kérés azonosítója | Művelet |
 | --- | --- |
 | 07b26a5d-... |**Deleteifexists paranccsal** metódus a blob-tároló törléséhez. Vegye figyelembe, hogy ez a művelet egy **Head** kérést tartalmaz a tároló létezésének ellenőrzéséhez. |
-| e2d06d78... |**Createifnotexists metódust** metódus a blob-tároló létrehozásához. Vegye figyelembe, hogy ez a művelet egy **Head** kérést tartalmaz, amely ellenőrzi a tároló létezését. A **fej** 404 üzenetet ad vissza, de folytatja. |
+| e2d06d78… |**Createifnotexists metódust** metódus a blob-tároló létrehozásához. Vegye figyelembe, hogy ez a művelet egy **Head** kérést tartalmaz, amely ellenőrzi a tároló létezését. A **fej** 404 üzenetet ad vissza, de folytatja. |
 | de8b1c3c-... |**UploadFromStream** metódus a blob létrehozásához. A **put** kérelem 404 üzenettel meghiúsul |
 
 Naplóbejegyzések:
 
-| Kérelemazonosító | Művelet szövege |
+| Kérés azonosítója | Művelet szövege |
 | --- | --- |
 | 07b26a5d-... |Szinkron kérés indítása https://domemaildist.blob.core.windows.net/azuremmblobcontainer. |
-| 07b26a5d-... |StringToSign = HEAD.............. x-MS-Client-Request-ID: 07b26a5d-.... x-MS-Date: kedd, 03 jún 2014 10:33:11 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. RESTYPE: tároló. |
+| 07b26a5d-... |StringToSign = HEAD............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:11 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |Várakozás a válaszra. |
 | 07b26a5d-... |Válasz érkezett. Állapotkód = 200, kérelem azonosítója = eeead849-... Content-MD5 =, ETag = &quot;0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |A válasz fejlécei sikeresen feldolgozva, a művelet többi részével folytatva. |
 | 07b26a5d-... |Válasz törzsének letöltése. |
 | 07b26a5d-... |A művelet sikeresen befejeződött. |
 | 07b26a5d-... |Szinkron kérés indítása https://domemaildist.blob.core.windows.net/azuremmblobcontainer. |
-| 07b26a5d-... |StringToSign = DELETE......... x-MS-Client-Request-ID: 07b26a5d-.... x-MS-Date: kedd, 03 jún 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. RESTYPE: tároló. |
+| 07b26a5d-... |StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |Várakozás a válaszra. |
 | 07b26a5d-... |Válasz érkezett. Állapotkód = 202, kérelem azonosítója = 6ab2a4cf-..., Content-MD5 =, ETag =. |
 | 07b26a5d-... |A válasz fejlécei sikeresen feldolgozva, a művelet többi részével folytatva. |
 | 07b26a5d-... |Válasz törzsének letöltése. |
 | 07b26a5d-... |A művelet sikeresen befejeződött. |
 | e2d06d78-... |Aszinkron kérelem indítása https://domemaildist.blob.core.windows.net/azuremmblobcontainer.</td> |
-| e2d06d78-... |StringToSign = HEAD.............. x-MS-Client-Request-ID: e2d06d78-.... x-MS-Date: kedd, 03 jún 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. RESTYPE: tároló. |
+| e2d06d78-... |StringToSign = HEAD............x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |Várakozás a válaszra. |
 | de8b1c3c-... |Szinkron kérés indítása https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt. |
-| de8b1c3c-... |StringToSign = PUT... 64. qCmF + TQLPhq/YYK50mP9ZQ = =........ x-MS-blob-Type: BlockBlob. x-MS-Client-Request-ID: de8b1c3c-.... x-MS-Date: kedd, 03 jún 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer/blobCreated. txt. |
+| de8b1c3c-... |StringToSign = PUT...64.qCmF+TQLPhq/YYK50mP9ZQ==........x-ms-blob-type:BlockBlob.x-ms-client-request-id:de8b1c3c-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |A kérések adatbevitelének előkészítése. |
 | e2d06d78-... |Kivétel történt a válaszra való várakozás közben: a távoli kiszolgáló a következő hibát adta vissza: (404) nem található.. |
 | e2d06d78-... |Válasz érkezett. Állapotkód = 404, kérelem azonosítója = 353ae3bc-..., Content-MD5 =, ETag =. |
@@ -542,7 +542,7 @@ Naplóbejegyzések:
 | e2d06d78-... |Válasz törzsének letöltése. |
 | e2d06d78-... |A művelet sikeresen befejeződött. |
 | e2d06d78-... |Aszinkron kérelem indítása https://domemaildist.blob.core.windows.net/azuremmblobcontainer. |
-| e2d06d78-... |StringToSign = PUT... 0......... x-MS-Client-Request-ID: e2d06d78-.... x-MS-Date: kedd, 03 jún 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. RESTYPE: tároló. |
+| e2d06d78-... |StringToSign = PUT...0.........x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |Várakozás a válaszra. |
 | de8b1c3c-... |Kérelemre vonatkozó adatírás. |
 | de8b1c3c-... |Várakozás a válaszra. |
@@ -562,9 +562,9 @@ Ha az ügyfélalkalmazás olyan SAS-kulcsot próbál használni, amely nem tarta
 
 A következő táblázat a tárolási naplózási naplófájlban található példa kiszolgálóoldali naplófájlt jeleníti meg:
 
-| Név | Value (Díj) |
+| Name (Név) | Érték |
 | --- | --- |
-| Kérelem kezdési ideje | 2014-05-30T06:17:48.4473697 Z |
+| Kérelem kezdési ideje | 2014-05-30T06:17:48.4473697Z |
 | Művelet típusa     | GetBlobProperties            |
 | Kérelem állapota     | SASAuthorizationError        |
 | HTTP-állapotkód   | 404                          |
@@ -629,10 +629,10 @@ Az alábbi táblázat a kiszolgálóoldali napló kivonatát mutatja be két üg
 
 | Időbélyeg | Művelet | Eredmény | Tárolónév | Ügyfélkérelem azonosítója |
 | --- | --- | --- | --- | --- |
-| 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
-| 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |
-| 05:10:13.8987407 |GetContainerProperties |404 |mmcont |bc881924-... |
-| 05:10:14.2147723 |CreateContainer |409 |mmcont |bc881924-... |
+| 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
+| 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |
+| 05:10:13.8987407 |GetContainerProperties |404 |mmcont |bc881924-… |
+| 05:10:14.2147723 |CreateContainer |409 |mmcont |bc881924-… |
 
 Az ügyfélalkalmazás kódja törli, majd azonnal újból létrehozza a BLOB-tárolót ugyanazzal a névvel: a **createifnotexists metódust** metódus (az ügyfél-kérelem azonosítója bc881924-...) végül a http 409 (ütközés) hibával meghiúsul. Ha egy ügyfél blobtárolókat, táblázatokat vagy üzenetsorokat töröl, egy rövid ideig nem lesz elérhető ugyanaz a név.
 
@@ -739,7 +739,7 @@ Az alábbi eljárás bemutatja, hogyan rögzíthet részletes csomagokat a helyi
 4. Vegyen fel egy szűrőt a **rögzítési szűrő** szövegmezőbe. A **gazdagép contosoemaildist.table.Core.Windows.net** például úgy konfigurálja a Wireshark-t, hogy csak a **contosoemaildist** -fiókban lévő Table Service-végponton vagy onnan küldött csomagokat rögzítsen. Tekintse meg a [rögzítési szűrők teljes listáját](https://wiki.wireshark.org/CaptureFilters).
 
    ![][6]
-5. Kattintson az **Indítás**gombra. A Wireshark most rögzíti az összes olyan csomagot, amelyet a tábla szolgáltatási végpontja küld, vagy amelyről az ügyfélalkalmazás a helyi gépen való használatakor kerül.
+5. Kattintson a **Start** gombra. A Wireshark most rögzíti az összes olyan csomagot, amelyet a tábla szolgáltatási végpontja küld, vagy amelyről az ügyfélalkalmazás a helyi gépen való használatakor kerül.
 6. Ha elkészült, a főmenün kattintson a **rögzítés** , majd a **Leállítás**lehetőségre.
 7. A rögzített Wireshark-rögzítési fájlban lévő fájlok mentéséhez a főmenüben kattintson a **fájl** , majd a **Mentés**elemre.
 

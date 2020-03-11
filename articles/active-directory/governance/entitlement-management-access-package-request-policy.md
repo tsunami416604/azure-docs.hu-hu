@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 493ba6396a7ceb11b917fbda5dd6c37c070f2fee
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897612"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376620"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomagra vonatkozó kérelem és jóváhagyási beállítások módosítása az Azure AD-jogosultságok kezelésében
 
@@ -35,7 +35,7 @@ Azt határozza meg, hogy ki kérheti a hozzáférési csomag igénylését egy s
 
 ![Több házirend egy hozzáférési csomagban](./media/entitlement-management-access-package-request-policy/access-package-policy.png)
 
-| Alkalmazási helyzet | Szabályzatok száma |
+| Forgatókönyv | Szabályzatok száma |
 | --- | --- |
 | Szeretném, hogy a címtárban lévő összes felhasználó ugyanazzal a kéréssel és jóváhagyási beállításokkal rendelkezzen a hozzáférési csomaghoz | Egy |
 | Azt szeretném, hogy az egyes csatlakoztatott szervezetek összes felhasználója hozzáférhessen egy hozzáférési csomag igényléséhez | Egy |

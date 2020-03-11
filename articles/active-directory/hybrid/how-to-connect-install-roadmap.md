@@ -14,11 +14,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cddf2ab36b2372ce93ae8a2a6230ccb02ae30117
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721029"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375984"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Az Azure AD Connect és az Azure AD Connect Health telepítési ütemterve
 
@@ -169,7 +169,7 @@ Az Azure AD Connect Health portálon riasztásokat, teljesítményfigyelési ada
    - Az Azure AD-címtárból származó **adatokhoz való hozzáférés** csak hibaelhárítási célból a Microsoft számára: Ha ez a beállítás engedélyezve van, a Microsoft ugyanazokat az adatokhoz férhet hozzá, amelyet a felhasználó megtekint. Ezek az információk hasznosak lehetnek a hibaelhárításhoz és a szükséges segítség biztosításához. Ez a beállítás alapértelmezés szerint le van tiltva
 * A **Szerepköralapú hozzáférés-vezérlés (IAM)** szakasz ismerteti a Connect Health adatokhoz való hozzáférés felügyeletét szerepkör alapban. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 
 - [Gyorsbeállítások](how-to-connect-install-express.md)

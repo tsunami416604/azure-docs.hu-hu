@@ -12,11 +12,11 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: a4c90ed12c8023e0b9ebc509b20d8d9224b49f1b
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566250"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365473"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg felismerése
 
@@ -92,6 +92,6 @@ A szöveges felismerési műveletek pontossága a képek minőségétől függ. 
 * Túlméretezett vagy hiányzó nagybetűk a szavak elején.
 * Felső vagy alsó indexben lévő, vagy áthúzott szöveg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szöveges felismerés egyszerű C# alkalmazásban való megvalósításához kövesse a [szöveg kinyerése (olvasás)](./QuickStarts/CSharp-hand-text.md) rövid útmutatót.

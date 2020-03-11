@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931724"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365828"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>A StorSimple Snapshot Manager használata a StorSimple-eszközök csatlakoztatásához és kezeléséhez
 ## <a name="overview"></a>Áttekintés
@@ -33,10 +33,10 @@ A **nézet** kiválasztásának függvényében az **eredmények** ablaktábla a
 
 | Eredmények oszlop | Leírás |
 |:--- |:--- |
-| Név |A klasszikus Azure portálon konfigurált eszköz neve |
+| Name (Név) |A klasszikus Azure portálon konfigurált eszköz neve |
 | Modell |Az eszköz modellje |
 | Verzió |Az eszközre telepített szoftver verziója |
-| Állapot |Az eszköz elérhető-e |
+| status |Az eszköz elérhető-e |
 | Legutóbb szinkronizálva |Az eszköz legutóbbi szinkronizálásának dátuma és időpontja |
 | Sorozatszám. |Az eszköz sorozatszáma |
 
@@ -140,7 +140,7 @@ Az alábbi eljárással megtekintheti a StorSimple-eszközök részleteit, és s
 * Az eszköz szinkronizálásához kattintson az **Újraszinkronizálás** elemre.
 * A párbeszédpanel bezárásához kattintson **az OK** vagy a **Mégse** gombra.
   
-  ![Eszközadatok](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Device_details.png) 
+  ![Eszköz adatai](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Device_details.png) 
 
 ## <a name="refresh-an-individual-device"></a>Egyéni eszköz frissítése
 A következő eljárással újraszinkronizálhatja az egyes StorSimple-eszközöket a StorSimple Snapshot Manager használatával.
@@ -190,7 +190,7 @@ Ha egy StorSimple-eszköz meghibásodik, és egy készenléti (feladatátvételi
 
 1. Állítsa le a Microsoft StorSimple-kezelő szolgáltatást:
    
-   1. Indítsa el a Kiszolgálókezelőt.
+   1. Indítsa el a Kiszolgálókezelő alkalmazást.
    2. A Kiszolgálókezelő irányítópult **eszközök** menüjében válassza a **szolgáltatások**lehetőséget.
    3. A **szolgáltatások** ablakban válassza ki a **Microsoft StorSimple-kezelő szolgáltatást**.
    4. A jobb oldali ablaktábla **Microsoft StorSimple-kezelő szolgáltatása**területén kattintson **a szolgáltatás leállítása**elemre.

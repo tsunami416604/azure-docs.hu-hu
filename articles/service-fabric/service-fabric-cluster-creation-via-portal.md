@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan állíthat be biztonságos Service Fabric-fürt
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452283"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363381"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Service Fabric-fürt létrehozása az Azure-ban a Azure Portal használatával
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portalra](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -68,7 +68,7 @@ Ahhoz, hogy az alkalmazás igényeinek megfelelő üzemi fürtöt hozzon létre,
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>A Service Fabric fürterőforrás keresése
 
-Jelentkezzen be az [Azure portálra][azure-portal].
+Jelentkezzen be az [Azure Portal][azure-portal].
 Az új erőforrás-sablon hozzáadásához kattintson az **erőforrás létrehozása** elemre. A piactéren megkeresheti az Service Fabric-fürtöt a **piactéren** **.**
 Válassza ki **Service Fabric fürtöt** a listából.
 
@@ -173,7 +173,7 @@ Most már készen áll a fürt üzembe helyezésére. Mielőtt ezt megtenné, t�
 
 A fürt létrehozásának befejezéséhez kattintson a **Létrehozás**gombra. Igény szerint letöltheti a sablont.
 
-![Összefoglalás]
+![Összegzés]
 
 A létrehozás folyamatát az értesítésekben követheti nyomon. (Kattintson a "harang" ikonra a képernyő jobb felső sarkában található állapotjelző sáv közelében.) Ha a fürt létrehozásakor a **rögzítés a kezdőpulton** elemre kattintott, akkor a **Service Fabric-fürt üzembe helyezése** a **kezdőképernyőn** rögzített állapotban jelenik meg. Ez a folyamat hosszabb időt is igénybe vehet. 
 

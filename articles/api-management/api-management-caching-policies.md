@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: 06c4ede12f939e48973d3e0b502d90b848d199bb
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072611"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374335"
 ---
 # <a name="api-management-caching-policies"></a>API Management gyorsítótárazási házirendek
 Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -26,15 +26,15 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 ## <a name="CachingPolicies"></a>Gyorsítótárazási házirendek
 
 - Válasz gyorsítótárazási házirendjei
-    - [](api-management-caching-policies.md#GetFromCache) Beolvasás gyorsítótárból – a gyorsítótár végrehajtása megkeresi és érvényes gyorsítótárazott válaszokat ad vissza, ha elérhető.
-    - [Tárolás](api-management-caching-policies.md#StoreToCache) a gyorsítótárba – a gyorsítótárak a megadott gyorsítótár-vezérlési konfigurációnak megfelelően gyorsítótárazzák a válaszokat.
+    - [Beolvasás gyorsítótárból](api-management-caching-policies.md#GetFromCache) – a gyorsítótár végrehajtása megkeresi és érvényes gyorsítótárazott válaszokat ad vissza, ha elérhető.
+    - [Tárolás a gyorsítótárba](api-management-caching-policies.md#StoreToCache) – a gyorsítótárak a megadott gyorsítótár-vezérlési konfigurációnak megfelelően gyorsítótárazzák a válaszokat.
 - Érték gyorsítótárazási házirendjei
     - [Érték lekérése a gyorsítótárból](#GetFromCacheByKey) – a gyorsítótárazott elemek kulcs szerinti beolvasása.
     - [Tárolási érték](#StoreToCacheByKey) a gyorsítótárban – a gyorsítótárban lévő elemek tárolása kulcs alapján.
-    - [Érték eltávolítása](#RemoveCacheByKey) a gyorsítótárból – a kulcsban lévő elem eltávolítása a gyorsítótárból.
+    - [Érték eltávolítása a gyorsítótárból](#RemoveCacheByKey) – a kulcsban lévő elem eltávolítása a gyorsítótárból.
 
 ## <a name="GetFromCache"></a>Beolvasás a gyorsítótárból
-A házirend `cache-lookup` használatával hajtsa végre a gyorsítótár megkeresését, és ha elérhető, érvényes gyorsítótárazott választ ad vissza. Ezt a szabályzatot olyan esetekben lehet alkalmazni, amikor a válasz tartalma egy adott időszakban statikus marad. A válasz gyorsítótárazása csökkenti a háttér-webkiszolgálón kiszabott sávszélesség-és feldolgozási követelményeket, és csökkenti az API-felhasználók által észlelt késéseket.
+A `cache-lookup` házirend használatával hajtsa végre a gyorsítótár megkeresését, és ha elérhető, érvényes gyorsítótárazott választ ad vissza. Ezt a szabályzatot olyan esetekben lehet alkalmazni, amikor a válasz tartalma egy adott időszakban statikus marad. A válasz gyorsítótárazása csökkenti a háttér-webkiszolgálón kiszabott sávszélesség-és feldolgozási követelményeket, és csökkenti az API-felhasználók által észlelt késéseket.
 
 > [!NOTE]
 > Ennek a szabályzatnak megfelelő tárolóval kell rendelkeznie a [gyorsítótárazási](api-management-caching-policies.md#StoreToCache) házirendhez.
@@ -76,7 +76,7 @@ A házirend `cache-lookup` használatával hajtsa végre a gyorsítótár megker
 ```
 
 #### <a name="example-using-policy-expressions"></a>Példa házirend-kifejezések használatával
-Ez a példa bemutatja, hogyan konfigurálhatja API Management válasz gyorsítótárazási időtartamát, amely megfelel a háttérrendszer által a `Cache-Control` háttérrendszer által megadott irányelv által meghatározott válasz-gyorsítótárazásnak. A szabályzat konfigurálásával és használatával kapcsolatos bemutatóért lásd [: a Cloud Cover 177-es epizódja: További API Management a Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 25:25-es gyors előretekerési funkciók.
+Ez a példa azt mutatja be, hogyan konfigurálhatja API Management válasz gyorsítótárazási időtartamát, amely megfelel a háttérrendszer által a támogatott `Cache-Control` direktíva által megadott válasz-gyorsítótárazásnak. A szabályzat konfigurálásának és használatának bemutatását lásd: a [Cloud Cover 177-es epizódja: további API Management szolgáltatások a Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 25:25-es gyors előretekeréssel.
 
 ```xml
 <!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->
@@ -110,15 +110,15 @@ További információ: [Policy Expressions](api-management-policy-expressions.md
 
 | Name (Név)                           | Leírás                                                                                                                                                                                                                                                                                                                                                 | Kötelező | Alapértelmezett           |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| allow-private-response-caching | Ha a értékre `true`van állítva, lehetővé teszi az engedélyezési fejlécet tartalmazó kérelmek gyorsítótárazását.                                                                                                                                                                                                                                                                        | Nem       | false             |
-| gyorsítótárazás – típus               | Válasszon az attribútum következő értékei közül:<br />- `internal`a beépített API Management cache használatához<br />- `external`a külső gyorsítótár használata a [külső Azure cache használata az Azure-beli Redis-ben](api-management-howto-cache-external.md)című témakörben leírtak szerint, API Management<br />- `prefer-external`Ha a külső gyorsítótárat más módon konfigurált vagy belső gyorsítótárral szeretné használni. | Nem       | `prefer-external` |
-| alsóbb réteg – gyorsítótárazási típus        | Ezt az attribútumot az alábbi értékek egyikére kell beállítani.<br /><br /> -nincs – az alsóbb rétegbeli gyorsítótárazás nem engedélyezett.<br />– a privát alsóbb rétegbeli magánhálózati gyorsítótárazás engedélyezett.<br />– a nyilvános és a megosztott alsóbb rétegbeli gyorsítótárazás engedélyezett.                                                                                                          | Nem       | nincs              |
-| újra kell érvényesíteni                | Ha az alsóbb rétegbeli gyorsítótárazás engedélyezve van, ez az attribútum `must-revalidate` be-vagy kikapcsolja az átjáróra adott válaszokban lévő Cache Control direktívát.                                                                                                                                                                                                                      | Nem       | true              |
-| változó – fejlesztő              | Állítsa az `true` értékre a válaszok gyorsítótárazására egy [előfizetési kulcson](https://docs.microsoft.com/azure/api-management/api-management-subscriptions).                                                                                                                                                                                                                                                                                                         | Igen      |         False (Hamis)          |
-| változó – fejlesztői csoportok       | A `true` beállítás értékeként a rendszer [felhasználói csoportonként](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups)gyorsítótárazza a válaszokat.                                                                                                                                                                                                                                                                                                             | Igen      |       False (Hamis)            |
+| allow-private-response-caching | Ha a `true`értékre van állítva, lehetővé teszi az engedélyezési fejlécet tartalmazó kérelmek gyorsítótárazását.                                                                                                                                                                                                                                                                        | Nem       | false             |
+| gyorsítótárazás – típus               | Válasszon az attribútum következő értékei közül:<br />- `internal` a beépített API Management cache használatára,<br />- `external` a külső gyorsítótár használatához a külső [Azure cache használata az Azure-ban történő Redis az Azure-ban API Management](api-management-howto-cache-external.md),<br />Ha más módon konfigurált vagy belső gyorsítótárat használ, - `prefer-external` külső gyorsítótár használatára. | Nem       | `prefer-external` |
+| alsóbb réteg – gyorsítótárazási típus        | Ezt az attribútumot az alábbi értékek egyikére kell beállítani.<br /><br /> -nincs – az alsóbb rétegbeli gyorsítótárazás nem engedélyezett.<br />– a privát alsóbb rétegbeli magánhálózati gyorsítótárazás engedélyezett.<br />– a nyilvános és a megosztott alsóbb rétegbeli gyorsítótárazás engedélyezett.                                                                                                          | Nem       | Nincs              |
+| újra kell érvényesíteni                | Ha az alsóbb rétegbeli gyorsítótárazás engedélyezve van, ez az attribútum be-és kikapcsolja az átjáróra adott válaszok `must-revalidate` Cache Control direktívát.                                                                                                                                                                                                                      | Nem       | true              |
+| változó – fejlesztő              | Az [előfizetési kulcsra](https://docs.microsoft.com/azure/api-management/api-management-subscriptions)vonatkozó válaszok gyorsítótárazásához állítsa `true` értékre.                                                                                                                                                                                                                                                                                                         | Igen      |         False (Hamis)          |
+| változó – fejlesztői csoportok       | Állítsa `true` értékre a válaszok gyorsítótárazása felhasználónkénti [csoportonként](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups).                                                                                                                                                                                                                                                                                                             | Igen      |       False (Hamis)            |
 
 ### <a name="usage"></a>Használat
-Ez a szabályzat a következő házirend-részekben [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
+Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
 - **Házirend fejezetei:** bejövő
 - **Házirend-hatókörök:** az összes hatókör
@@ -127,7 +127,7 @@ Ez a szabályzat a következő házirend-részekben [](https://azure.microsoft.c
 A `cache-store` házirend a megadott gyorsítótár-beállításoknak megfelelően gyorsítótárazza a válaszokat. Ezt a szabályzatot olyan esetekben lehet alkalmazni, amikor a válasz tartalma egy adott időszakban statikus marad. A válasz gyorsítótárazása csökkenti a háttér-webkiszolgálón kiszabott sávszélesség-és feldolgozási követelményeket, és csökkenti az API-felhasználók által észlelt késéseket.
 
 > [!NOTE]
-> Ennek a szabályzatnak szerepelnie kell egy megfelelő beolvasási [gyorsítótár-](api-management-caching-policies.md#GetFromCache) házirenddel.
+> Ennek a szabályzatnak szerepelnie kell egy megfelelő [beolvasási gyorsítótár-](api-management-caching-policies.md#GetFromCache) házirenddel.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
 
@@ -155,7 +155,7 @@ A `cache-store` házirend a megadott gyorsítótár-beállításoknak megfelelő
 ```
 
 #### <a name="example-using-policy-expressions"></a>Példa házirend-kifejezések használatával
-Ez a példa bemutatja, hogyan konfigurálhatja API Management válasz gyorsítótárazási időtartamát, amely megfelel a háttérrendszer által a `Cache-Control` háttérrendszer által megadott irányelv által meghatározott válasz-gyorsítótárazásnak. A szabályzat konfigurálásával és használatával kapcsolatos bemutatóért lásd [: a Cloud Cover 177-es epizódja: További API Management a Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 25:25-es gyors előretekerési funkciók.
+Ez a példa azt mutatja be, hogyan konfigurálhatja API Management válasz gyorsítótárazási időtartamát, amely megfelel a háttérrendszer által a támogatott `Cache-Control` direktíva által megadott válasz-gyorsítótárazásnak. A szabályzat konfigurálásának és használatának bemutatását lásd: a [Cloud Cover 177-es epizódja: további API Management szolgáltatások a Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 25:25-es gyors előretekeréssel.
 
 ```xml
 <!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->
@@ -187,19 +187,19 @@ További információ: [Policy Expressions](api-management-policy-expressions.md
 
 | Name (Név)             | Leírás                                                                                                                                                                                                                                                                                                                                                 | Kötelező | Alapértelmezett           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| duration         | A gyorsítótárazott bejegyzések a másodpercben megadott élettartama.                                                                                                                                                                                                                                                                                                   | Igen      | –               |
+| duration         | A gyorsítótárazott bejegyzések a másodpercben megadott élettartama.                                                                                                                                                                                                                                                                                                   | Igen      | N/A               |
 
 ### <a name="usage"></a>Használat
-Ez a szabályzat a következő házirend-részekben [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
+Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
 - **Házirend fejezetei:** kimenő
 - **Házirend-hatókörök:** az összes hatókör
 
 ## <a name="GetFromCacheByKey"></a>Érték lekérése a gyorsítótárból
-A `cache-lookup-value` házirend használatával hajtsa végre a kulcsok gyorsítótárbeli keresését, és egy gyorsítótárazott értéket ad vissza. A kulcs tetszőleges karakterlánc-értékkel rendelkezhet, és általában egy házirend-kifejezés használatával adható meg.
+A `cache-lookup-value` házirend használatával hajtsa végre a gyorsítótár-keresést kulcs alapján, és egy gyorsítótárazott értéket ad vissza. A kulcs tetszőleges karakterlánc-értékkel rendelkezhet, és általában egy házirend-kifejezés használatával adható meg.
 
 > [!NOTE]
-> Ennek a szabályzatnak megfelelő tárolási értékkel kell rendelkeznie [a gyorsítótár-](#StoreToCacheByKey) házirendben.
+> Ennek a szabályzatnak megfelelő [tárolási értékkel kell rendelkeznie a gyorsítótár-](#StoreToCacheByKey) házirendben.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
 
@@ -230,22 +230,22 @@ A szabályzattal kapcsolatos további információkért és példákért tekints
 
 | Name (Név)             | Leírás                                                                                                                                                                                                                                                                                                                                                 | Kötelező | Alapértelmezett           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| gyorsítótárazás – típus | Válasszon az attribútum következő értékei közül:<br />- `internal`a beépített API Management cache használatához<br />- `external`a külső gyorsítótár használata a [külső Azure cache használata az Azure-beli Redis-ben](api-management-howto-cache-external.md)című témakörben leírtak szerint, API Management<br />- `prefer-external`Ha a külső gyorsítótárat más módon konfigurált vagy belső gyorsítótárral szeretné használni. | Nem       | `prefer-external` |
-| alapértelmezett érték    | Egy érték, amely akkor lesz hozzárendelve a változóhoz, ha a gyorsítótár kulcsának keresése kihagyott eredményt eredményezett. Ha ez az attribútum nincs megadva, `null` a hozzá van rendelve.                                                                                                                                                                                                           | Nem       | `null`            |
-| key              | A kereséshez használni kívánt gyorsítótár-kulcs értéke.                                                                                                                                                                                                                                                                                                                       | Igen      | –               |
-| változó – név    | Annak a [környezeti változónak](api-management-policy-expressions.md#ContextVariables) a neve, amelyhez a keresett érték hozzá lesz rendelve, ha a keresés sikeres. Ha a keresés kimarad, a változó az `default-value` attribútum értékét fogja hozzárendelni, vagy `null`ha az `default-value` attribútum nincs megadva.                                       | Igen      | –               |
+| gyorsítótárazás – típus | Válasszon az attribútum következő értékei közül:<br />- `internal` a beépített API Management cache használatára,<br />- `external` a külső gyorsítótár használatához a külső [Azure cache használata az Azure-ban történő Redis az Azure-ban API Management](api-management-howto-cache-external.md),<br />Ha más módon konfigurált vagy belső gyorsítótárat használ, - `prefer-external` külső gyorsítótár használatára. | Nem       | `prefer-external` |
+| alapértelmezett érték    | Egy érték, amely akkor lesz hozzárendelve a változóhoz, ha a gyorsítótár kulcsának keresése kihagyott eredményt eredményezett. Ha nincs megadva ez az attribútum, `null` lesz hozzárendelve.                                                                                                                                                                                                           | Nem       | `null`            |
+| kulcs              | A kereséshez használni kívánt gyorsítótár-kulcs értéke.                                                                                                                                                                                                                                                                                                                       | Igen      | N/A               |
+| változó – név    | Annak a [környezeti változónak](api-management-policy-expressions.md#ContextVariables) a neve, amelyhez a keresett érték hozzá lesz rendelve, ha a keresés sikeres. Ha a keresés kimarad, a változó a `default-value` attribútum vagy `null`értékét fogja hozzárendelni, ha a `default-value` attribútum nincs megadva.                                       | Igen      | N/A               |
 
 ### <a name="usage"></a>Használat
-Ez a szabályzat a következő házirend-részekben [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
+Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
 - **Házirend fejezetei:** bejövő, kimenő, háttérbeli, hiba esetén
 - **Házirend-hatókörök:** az összes hatókör
 
 ## <a name="StoreToCacheByKey"></a>Tárolási érték a gyorsítótárban
-A `cache-store-value` gyorsítótár-tárolást végez a kulcs alapján. A kulcs tetszőleges karakterlánc-értékkel rendelkezhet, és általában egy házirend-kifejezés használatával adható meg.
+A `cache-store-value` kulcs alapján hajtja végre a gyorsítótár-tárolást. A kulcs tetszőleges karakterlánc-értékkel rendelkezhet, és általában egy házirend-kifejezés használatával adható meg.
 
 > [!NOTE]
-> Ennek a szabályzatnak megfelelő Get értékkel kell rendelkeznie [a gyorsítótár-](#GetFromCacheByKey) házirendből.
+> Ennek a szabályzatnak megfelelő [Get értékkel kell rendelkeznie a gyorsítótár-](#GetFromCacheByKey) házirendből.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
 
@@ -273,12 +273,12 @@ A szabályzattal kapcsolatos további információkért és példákért tekints
 
 | Name (Név)             | Leírás                                                                                                                                                                                                                                                                                                                                                 | Kötelező | Alapértelmezett           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| gyorsítótárazás – típus | Válasszon az attribútum következő értékei közül:<br />- `internal`a beépített API Management cache használatához<br />- `external`a külső gyorsítótár használata a [külső Azure cache használata az Azure-beli Redis-ben](api-management-howto-cache-external.md)című témakörben leírtak szerint, API Management<br />- `prefer-external`Ha a külső gyorsítótárat más módon konfigurált vagy belső gyorsítótárral szeretné használni. | Nem       | `prefer-external` |
-| duration         | Az érték a megadott időtartamnál (másodpercben) lesz gyorsítótárazva.                                                                                                                                                                                                                                                                                 | Igen      | –               |
-| key              | Gyorsítótár-kulcs az érték a alatt lesz tárolva.                                                                                                                                                                                                                                                                                                                   | Igen      | –               |
-| value            | A gyorsítótárazni kívánt érték.                                                                                                                                                                                                                                                                                                                                     | Igen      | –               |
+| gyorsítótárazás – típus | Válasszon az attribútum következő értékei közül:<br />- `internal` a beépített API Management cache használatára,<br />- `external` a külső gyorsítótár használatához a külső [Azure cache használata az Azure-ban történő Redis az Azure-ban API Management](api-management-howto-cache-external.md),<br />Ha más módon konfigurált vagy belső gyorsítótárat használ, - `prefer-external` külső gyorsítótár használatára. | Nem       | `prefer-external` |
+| duration         | Az érték a megadott időtartamnál (másodpercben) lesz gyorsítótárazva.                                                                                                                                                                                                                                                                                 | Igen      | N/A               |
+| kulcs              | Gyorsítótár-kulcs az érték a alatt lesz tárolva.                                                                                                                                                                                                                                                                                                                   | Igen      | N/A               |
+| érték            | A gyorsítótárazni kívánt érték.                                                                                                                                                                                                                                                                                                                                     | Igen      | N/A               |
 ### <a name="usage"></a>Használat
-Ez a szabályzat a következő házirend-részekben [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
+Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
 - **Házirend fejezetei:** bejövő, kimenő, háttérbeli, hiba esetén
 - **Házirend-hatókörök:** az összes hatókör
@@ -312,16 +312,16 @@ A `cache-remove-value` törli a kulcsával azonosított gyorsítótárazott elem
 
 | Name (Név)             | Leírás                                                                                                                                                                                                                                                                                                                                                 | Kötelező | Alapértelmezett           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| gyorsítótárazás – típus | Válasszon az attribútum következő értékei közül:<br />- `internal`a beépített API Management cache használatához<br />- `external`a külső gyorsítótár használata a [külső Azure cache használata az Azure-beli Redis-ben](api-management-howto-cache-external.md)című témakörben leírtak szerint, API Management<br />- `prefer-external`Ha a külső gyorsítótárat más módon konfigurált vagy belső gyorsítótárral szeretné használni. | Nem       | `prefer-external` |
-| key              | A korábban gyorsítótárazott, a gyorsítótárból eltávolítandó érték kulcsa.                                                                                                                                                                                                                                                                                        | Igen      | –               |
+| gyorsítótárazás – típus | Válasszon az attribútum következő értékei közül:<br />- `internal` a beépített API Management cache használatára,<br />- `external` a külső gyorsítótár használatához a külső [Azure cache használata az Azure-ban történő Redis az Azure-ban API Management](api-management-howto-cache-external.md),<br />Ha más módon konfigurált vagy belső gyorsítótárat használ, - `prefer-external` külső gyorsítótár használatára. | Nem       | `prefer-external` |
+| kulcs              | A korábban gyorsítótárazott, a gyorsítótárból eltávolítandó érték kulcsa.                                                                                                                                                                                                                                                                                        | Igen      | N/A               |
 
 #### <a name="usage"></a>Használat
-Ez a szabályzat a következő házirend-részekben [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) használható.
+Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) használható.
 
 - **Házirend fejezetei:** bejövő, kimenő, háttérbeli, hiba esetén
 - **Házirend-hatókörök:** az összes hatókör
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a házirendek használatáról:
 

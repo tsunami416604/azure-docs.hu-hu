@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277115"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365832"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>A StorSimple 8600-eszköz kicsomagolása, rack-csatlakoztatása és kábele
 
@@ -200,8 +200,8 @@ A redundáns vezérlő feladatátvételének támogatásához a következő lép
    
    | Címke | Leírás |
    | --- | --- |
-   |   0, 1, 4, 5 |1 GbE hálózati adapterek |
-   |   2, 3 |10 GbE hálózati adapter |
+   |   0,1,4,5 |1 GbE hálózati adapterek |
+   |   2,3 |10 GbE hálózati adapter |
    |   6 |Soros portok |
 2. Tekintse meg a hálózati kábelezés következő ábráját. (A minimális hálózati konfigurációt a folytonos kék vonalak mutatják. A magas rendelkezésre állás és a teljesítmény érdekében a további szükséges beállításokat a pontozott vonalak mutatják.)
 
@@ -213,13 +213,13 @@ A redundáns vezérlő feladatátvételének támogatásához a következő lép
 | --- | --- |
 | A |Helyi Internet-hozzáféréssel rendelkező LAN |
 | B |Vezérlő 0 |
-| C# |PCM 0 |
+| C |PCM 0 |
 | D |Vezérlő 1 |
 | E |PCM 1 |
 | F |EBOD vezérlő 0 |
 | G |1\. EBOD-vezérlő |
-| H, I |Gazdagépek (például fájlkiszolgálók) |
-| 0-5 |Hálózati kapcsolatok |
+| H,I |Gazdagépek (például fájlkiszolgálók) |
+| 0-5 |Hálózati illesztők |
 | 6 |Elsődleges ház |
 | 7 |EBOD ház |
 

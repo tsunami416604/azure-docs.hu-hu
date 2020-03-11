@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: 21b46ba0012b71ed0e09dc09d041ceb020824843
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967457"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375395"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management – gyakori kérdések
 Választ kaphat az Azure API Management gyakori kérdéseire, mintáinak és ajánlott eljárásaira.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="contact-us"></a>Kapcsolatfelvétel
+## <a name="contact-us"></a>Kapcsolat
 * [Hogyan kérhetem le a Microsoft Azure API Management a csapatot?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
@@ -59,7 +59,7 @@ A következő lehetőségek egyikének használatával felveheti velünk a kapcs
 Ha egy funkció előzetes verzióban érhető el, az azt jelenti, hogy aktívan keresünk visszajelzést arról, hogy a szolgáltatás hogyan működik. Az előzetes verzióban egy funkció működik, de lehetséges, hogy a vásárlói visszajelzésekre adott válaszként feltörhető változást teszünk elérhetővé. Azt javasoljuk, hogy ne függjön az éles környezetben előzetes verzióban elérhető szolgáltatástól. Ha visszajelzést szeretne küldeni az előzetes verziójú szolgáltatásokról, tudassa velünk az egyik kapcsolatfelvételi lehetőséggel, [hogy hogyan kérhetem a Microsoft Azure API Management a csapatot? című témakört](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question).
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>Hogyan biztosíthatom a kapcsolatot a API Management átjáró és a saját háttérbeli szolgáltatások között?
-Több lehetőség áll rendelkezésére a kapcsolat biztonságossá tételéhez a API Management-átjáró és a háttér-szolgáltatások között. Előnyök:
+Több lehetőség áll rendelkezésére a kapcsolat biztonságossá tételéhez a API Management-átjáró és a háttér-szolgáltatások között. A következőket teheti:
 
 * HTTP alapszintű hitelesítés használata. További információ: [az első API importálása és közzététele](import-and-publish.md).
 * SSL kölcsönös hitelesítés használata a következő témakörben ismertetett módon: a [háttér-szolgáltatások biztonságossá tétele az ügyféltanúsítvány-alapú hitelesítés használatával az Azure API Managementban](api-management-howto-mutual-certificates.md).
@@ -67,13 +67,13 @@ Több lehetőség áll rendelkezésére a kapcsolat biztonságossá tételéhez 
 * API Management példányának összekapcsolásához Azure-Virtual Network.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Hogyan másolja a API Management Service-példányt egy új példányra?
-Több lehetőség is rendelkezésre áll, ha API Management példányt szeretne másolni egy új példányra. Előnyök:
+Több lehetőség is rendelkezésre áll, ha API Management példányt szeretne másolni egy új példányra. A következőket teheti:
 
 * Használja a API Management biztonsági mentési és visszaállítási függvényt. További információ: a vész- [helyreállítás megvalósítása a szolgáltatás biztonsági mentésével és visszaállításával az Azure API Managementban](api-management-howto-disaster-recovery-backup-restore.md).
 * Hozza létre saját biztonsági mentési és visszaállítási funkcióját a [API Management REST API](/rest/api/apimanagement/)használatával. A REST API használatával mentse és állítsa vissza az entitásokat a kívánt szolgáltatás-példányból.
 * Töltse le a szolgáltatás konfigurációját a git használatával, majd töltse fel egy új példányba. További információ: [a API Management szolgáltatás konfigurációjának mentése és konfigurálása a git használatával](api-management-configuration-repository-git.md).
 
-### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Módosíthatom programozottan az API Management-példányomat?
+### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Kezelhetem a API Management-példányt programozott módon?
 Igen, API Management programozott módon felügyelheti a használatával:
 
 * A [API Management REST API](/rest/api/apimanagement/).
@@ -83,7 +83,7 @@ Igen, API Management programozott módon felügyelheti a használatával:
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Hogyan adjon hozzá egy felhasználót a rendszergazdák csoporthoz?
 A következőképpen adhat hozzá felhasználókat a rendszergazdák csoporthoz:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Lépjen a frissíteni kívánt API Management-példánnyal rendelkező erőforráscsoporthoz.
 3. A API Management-ben rendelje hozzá az **API Management szolgáltatás közreműködői** szerepkört a felhasználóhoz.
 
@@ -98,12 +98,12 @@ Az újonnan hozzáadott közreműködő mostantól Azure PowerShell [parancsmago
 Ha a hozzáadni kívánt szabályzat szürkén vagy árnyékolva jelenik meg a házirend-szerkesztőben, ügyeljen arra, hogy a szabályzat megfelelő hatóköre legyen. Minden házirend-utasítás meghatározott hatókörökben és házirend-szakaszban való használatra készült. A szabályzatok szabályzat-szakaszainak és hatókörének áttekintéséhez tekintse meg a házirend használatáról szóló szakaszt [API Management házirendek](/azure/api-management/api-management-policies)részben.
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Hogyan több környezetet is beállíthat egyetlen API-ban?
-Több környezet (például egy tesztkörnyezet és egy éles környezet) egyetlen API-ban való beállításához két lehetőség közül választhat. Előnyök:
+Több környezet (például egy tesztkörnyezet és egy éles környezet) egyetlen API-ban való beállításához két lehetőség közül választhat. A következőket teheti:
 
 * Különböző API-k üzemeltetése ugyanazon a bérlőn.
 * Ugyanazon API-k üzemeltetése különböző bérlők esetében.
 
-### <a name="can-i-use-soap-with-api-management"></a>Használhatok SOAP protokollt az API Managementtel?
+### <a name="can-i-use-soap-with-api-management"></a>Használhatom a SOAP-t a API Management?
 A [SOAP pass-through](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) támogatás mostantól elérhető. A rendszergazdák importálhatók a SOAP-szolgáltatáshoz tartozó WSDL-t, az Azure API Management pedig létrehoz egy SOAP-előtérben. A fejlesztői portál dokumentációja, a tesztelési konzol, a szabályzatok és az elemzések mind elérhetők a SOAP-szolgáltatásokhoz.
 
 ### <a name="can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security"></a>Konfigurálható a OAuth 2,0-es engedélyezési kiszolgáló AD FS biztonsággal?

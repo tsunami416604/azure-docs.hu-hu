@@ -13,11 +13,11 @@ ms.reviewer: vanto, carlrab
 ms.date: 02/05/2020
 tags: azure-synapse
 ms.openlocfilehash: 818337f478a506f80ba87979aa1915d54e6457cf
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78193781"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374043"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Azure Active Directory hitelesítés használata SQL-alapú hitelesítéshez
 
@@ -144,7 +144,7 @@ Az Azure AD Server-rendszerbiztonsági tag (Logins) (**nyilvános előzetes**ver
 - Az Azure AD-hitelesítést a Azure Portal **importálási adatbázis** és az adatbázis-lapok **exportálása** SQL Database támogatja. Az Azure AD-hitelesítéssel történő Importálás és exportálás is támogatott a PowerShell-parancsban.   
 - Az Azure AD-hitelesítés a parancssori felület használatával SQL Database, felügyelt példány és Azure szinapszis esetén támogatott. További információ: [Azure Active Directory hitelesítés konfigurálása és kezelése SQL Database vagy Azure szinapszis](sql-database-aad-authentication-configure.md) és [SQL Server – az SQL Server](https://docs.microsoft.com/cli/azure/sql/server)segítségével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure AD létrehozásával és feltöltésével, valamint az Azure AD Azure SQL Database vagy az Azure szinapszis használatával történő konfigurálásával kapcsolatban lásd: [Azure Active Directory hitelesítés konfigurálása és kezelése SQL Database, felügyelt példány vagy Azure szinapszis](sql-database-aad-authentication-configure.md)használatával.
 - Az Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések) felügyelt példányokkal való használatával kapcsolatos oktatóanyagért lásd: az [Azure ad Server rendszerbiztonsági tagjai (bejelentkezések) felügyelt példányokkal](sql-database-managed-instance-aad-security-tutorial.md)

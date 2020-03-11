@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954358"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362875"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>A VMware virtuális gép/fizikai kiszolgáló vész-helyreállítási konfigurációs kiszolgálójának kezelése
 
@@ -71,7 +71,7 @@ Ha kihagyta a hitelesítő adatok hozzáadását a konfigurációs kiszolgáló 
 
 1. [Bejelentkezés](#access-configuration-server)után válassza a **virtuális gép hitelesítő adatainak kezelése**lehetőséget.
 2. Kattintson a **virtuális gép hitelesítő adatainak hozzáadása**lehetőségre.
-    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![Add-Mobility-hitelesítő adatok](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Adja meg az új hitelesítő adatokat, és kattintson a **Hozzáadás**gombra.
 
 A CSPSConfigtool. exe használatával is hozzáadhat hitelesítő adatokat.

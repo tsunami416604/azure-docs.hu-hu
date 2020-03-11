@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
 ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665068"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373396"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Webhook meghívása klasszikus metrikai riasztással Azure Monitor
 
@@ -84,7 +84,7 @@ A POST művelet a következő JSON-adattartalmat és sémát tartalmazza az öss
 | threshold |Metrikus riasztások esetén | |Az a küszöbérték, amelyen a riasztás aktiválva van. |
 | windowSize |Metrikus riasztások esetén | |A riasztási tevékenység küszöbérték alapján történő figyeléséhez használt időtartam. Az értéknek 5 perc és 1 nap közé kell esnie. Az értéknek ISO 8601 időtartam formátumúnak kell lennie. |
 | timeAggregation |Metrikus riasztások esetén |Átlag, utolsó, maximum, minimum, none, összesen |Az összegyűjtött adatok időbeli összevonása. Az alapértelmezett érték az átlag. Lásd az [engedélyezett értékeket](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
-| operátor |Metrikus riasztások esetén | |Az aktuális metrikai adatok meghatározott küszöbértékhez való összehasonlításához használt operátor. |
+| operator |Metrikus riasztások esetén | |Az aktuális metrikai adatok meghatározott küszöbértékhez való összehasonlításához használt operátor. |
 | subscriptionId |I | |Az Azure-előfizetés azonosítója. |
 | resourceGroupName |I | |Az érintett erőforráshoz tartozó erőforráscsoport neve. |
 | resourceName |I | |Az érintett erőforrás neve. |

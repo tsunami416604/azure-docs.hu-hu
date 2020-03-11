@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: f21bbf4777aa74e84ffb8c1af903f90608d5551f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276908"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365830"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Cserélje le a Backup akkumulátor-modult a StorSimple-eszközön
 

@@ -12,11 +12,11 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
 ms.openlocfilehash: a2bf15c8778a6ff549284b1053cf0978d182b802
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116900"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355329"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Gépi tanulási kísérletek létrehozása, megismerése és üzembe helyezése Azure Machine Learning Studióval
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -190,13 +190,13 @@ Időbeli adatsorozat-konzisztencia|**Telt** <br><br><br><br> **Rögzített** |<b
 
 ## <a name="run-experiment-and-view-results"></a>Kísérlet futtatása és eredmények megtekintése
 
-A kísérlet futtatásához kattintson a **Befejezés** gombra. A kísérlet előkészítési folyamata akár 10 percet is igénybe vehet. A betanítási feladatok további 2-3 percet is igénybe vehetnek az egyes folyamatok futtatásának befejezéséhez.
+A kísérlet futtatásához kattintson a **Befejezés** gombra. A kísérlet előkészítése akár 10 percet is igénybe vehet. A betanítási feladatok és az egyes folyamatok futtatásának befejezése további 2-3 percet is igénybe vehet.
 
 ### <a name="view-experiment-details"></a>Kísérlet részleteinek megtekintése
 
 Megnyílik a **Futtatás részletei** képernyő a **részletek** lapon. Ez a képernyő a kísérlet futtatásának összegzését jeleníti meg, beleértve a futtatási szám melletti állapotsort is. 
 
-A **models (modellek** ) lapon a metrika pontszám alapján rendezett modellek listája látható. Alapértelmezés szerint a kiválasztott metrika alapján a legmagasabb pontszám a lista tetején található. Mivel a betanítási feladatok további modelleket próbálnak ki, azok hozzáadódnak a listához. Ezzel a lépéssel gyorsan összehasonlíthatja az eddig létrehozott modellek metrikáit.
+A **Modellek** lapon a létrehozott modellek listája található metrikaérték szerint rendezve. Alapértelmezés szerint az a modell, amely a kiválasztott metrika alapján a legmagasabb értékű, a lista tetején jelenik meg. A betanítási feladat több modellt is kipróbál, amelyek sorra felkerülnek a listára. Ennek segítségével gyorsan összehasonlíthatja az addig létrehozott modellek metrikáját.
 
 [![Futtatás részletei irányítópult](media/how-to-create-portal-experiments/run-details.png)](media/how-to-create-portal-experiments/run-details-expanded.png#lightbox)
 

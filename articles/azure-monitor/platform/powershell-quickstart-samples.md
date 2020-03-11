@@ -5,11 +5,11 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 2/14/2018
 ms.openlocfilehash: 9f039f71954998ef561d1efd1e559318740c86ab
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659298"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373398"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor PowerShell – gyors üzembe helyezési minták
 Ebből a cikkből megtudhatja, hogyan érheti el Azure Monitor szolgáltatásait a PowerShell-parancsok segítségével.
@@ -153,7 +153,7 @@ A következő táblázat a riasztások metrika használatával történő létre
 | ResourceGroup |legtöbbször |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
 | A létrehozott riasztás MetricName |\PhysicalDisk (_Total) \ írás gyakorisága (művelet/s). Tekintse meg a `Get-MetricDefinitions` parancsmagot a pontos metrikák nevének beolvasásáról |
-| operátor |GreaterThan |
+| operator |GreaterThan |
 | Küszöbérték (darabszám/mp a metrika esetében) |1 |
 | WindowSize (óó: PP: SS formátum) |00:05:00 |
 | gyűjtő (a metrika statisztikája, amely az átlagot használja, ebben az esetben) |Átlag |

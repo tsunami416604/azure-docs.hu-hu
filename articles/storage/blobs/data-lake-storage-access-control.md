@@ -9,11 +9,11 @@ ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: 6507c2a2d1100d480c879c73861c02e477d38416
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026132"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381909"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés Azure Data Lake Storage Gen2
 
@@ -65,7 +65,7 @@ A fájl-és könyvtári szintű engedélyek megadásához tekintse meg a követk
 |Java|[A Java segítségével kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-java.md)|
 |Python|[A Python használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md)|
 |PowerShell|[A PowerShell használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md)|
-|Azure parancssori felület (CLI)|[Könyvtárak, fájlok és ACL-ek kezelése az Azure CLI használatával Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md)|
+|Azure CLI|[Könyvtárak, fájlok és ACL-ek kezelése az Azure CLI használatával Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md)|
 |REST API |[Elérési út – frissítés](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
@@ -88,7 +88,7 @@ A hozzáférési ACL-ek és az alapértelmezett ACL-ek azonos struktúrával ren
 
 A Container objektumokra vonatkozó engedélyek a következők: **olvasás**, **írás**és **végrehajtás**, és a fájlokon és könyvtárakon is használhatók az alábbi táblázatban látható módon:
 
-|            |    File     |   Könyvtár |
+|            |    Fájl     |   Címtár |
 |------------|-------------|----------|
 | **Olvasás (R)** | Olvashatja a fájl tartalmát | **Olvasás** és **végrehajtás** szükséges a könyvtár tartalmának listázásához |
 | **Írás (W)** | Írhatja a fájlt vagy hozzáfűzhet a fájlhoz | **Írás** és **végrehajtás** szükséges az alárendelt elemek létrehozásához egy címtárban |
@@ -116,7 +116,7 @@ Az Data Lake Storage Gen2 által használt POSIX stílusú modellben az elemhez 
 
 A következő táblázat felsorolja azokat a gyakori forgatókönyveket, amelyekkel megtudhatja, hogy mely engedélyek szükségesek bizonyos műveletek elvégzéséhez egy Storage-fiókon.
 
-|    Művelet             |    /    | Oregon | Portland | A. txt fájl     |
+|    Művelet             |    /    | Oregon | Portland / | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
 | Az adatgyűjtés. txt fájl olvasása            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | Hozzáfűzés az adat. txt fájlhoz       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
@@ -244,15 +244,15 @@ Fájl vagy könyvtár létrehozásakor a rendszer a umask használatával módos
 
 A umask, amely a 007-re beállított állandó érték Azure Data Lake Storage Gen2. Ez az érték a következőre van lefordítva:
 
-| umask-összetevő     | Numerikus alak | Rövid alak | Jelentés |
+| umask összetevő     | Numerikus alak | Rövid alak | Jelentés |
 |---------------------|--------------|------------|---------|
-| umask. owning_user   |    0         |   `---`      | A tulajdonos felhasználó számára másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
-| umask. owning_group  |    0         |   `---`      | A tulajdonos csoport esetében másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
-| umask. other         |    7         |   `RWX`      | Egyéb esetben távolítsa el az összes engedélyt a gyermek hozzáférési ACL-jéhez |
+| umask.owning_user   |    0         |   `---`      | A tulajdonos felhasználó számára másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
+| umask.owning_group  |    0         |   `---`      | A tulajdonos csoport esetében másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
+| umask.Other         |    7         |   `RWX`      | Egyéb esetben távolítsa el az összes engedélyt a gyermek hozzáférési ACL-jéhez |
 
 Az Azure Data Lake Storage Gen2 által használt umask-érték azt jelenti, hogy a **többi** esetében az érték soha nem kerül be alapértelmezés szerint az új gyermekekre, függetlenül attól, hogy az alapértelmezett ACL mit jelez. 
 
-Az alábbi pseudocode azt szemlélteti, hogyan történik a umask alkalmazása az ACL-ek egy alárendelt tételhez való létrehozásakor.
+A következő pseudocode bemutatja, hogyan kell alkalmazni az umask a hozzáférés-vezérlési egy gyermek-konfigurációelem létrehozása során.
 
 ```
 def set_default_acls_for_new_child(parent, child):
@@ -286,7 +286,7 @@ Mindig az Azure AD-beli biztonsági csoportokat használja a hozzárendelt rends
 
 - A hívó "felügyelői" engedéllyel rendelkezik,
 
-vagy
+Vagy
 
 - A szülő könyvtárnak írási és végrehajtási engedélyekkel kell rendelkeznie.
 - A törlendő könyvtár és a benne található összes címtár olvasás + írás + végrehajtás engedélyre van szükség.
@@ -302,7 +302,7 @@ Egy fájl vagy könyvtár létrehozója lesz a tulajdonos. A gyökérkönyvtár 
 
 A tulajdonos csoportot a szülő könyvtár tulajdonos csoportjából másolja a rendszer, amelyben az új fájlt vagy könyvtárat létrehozták.
 
-### <a name="i-am-the-owning-user-of-a-file-but-i-dont-have-the-rwx-permissions-i-need-what-do-i-do"></a>Én vagyok egy fájl tulajdonosa, de nem rendelkezem a szükséges RWX-engedéllyel. Mi a teendő?
+### <a name="i-am-the-owning-user-of-a-file-but-i-dont-have-the-rwx-permissions-i-need-what-do-i-do"></a>Én vagyok egy fájl tulajdonosa, de nem rendelkezem a szükséges RWX-engedéllyel. Mit tegyek?
 
 A tulajdonos módosíthatja a fájlhoz tartozó engedélyeket, így bármilyen szükséges RWX-engedélyt megadhat saját magának.
 
@@ -340,6 +340,6 @@ Az ACL-ek nem öröklik az öröklést. Az alapértelmezett ACL-ek azonban az al
 * [POSIX ACL Ubuntu rendszeren](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [Hozzáférés-vezérlési listákat használó ACL Linux rendszeren](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [A Azure Data Lake Storage Gen2 áttekintése](../blobs/data-lake-storage-introduction.md)

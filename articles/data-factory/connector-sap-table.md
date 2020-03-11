@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: fd363f7b685db5e309827a0c5e635264e676b388
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926178"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357189"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Adatok másolása SAP-táblából Azure Data Factory használatával
 
@@ -62,7 +62,7 @@ Az SAP Table Connector használatához a következőket kell tennie:
   - A Remote Function Call (RFC) célhelyek használatának engedélyezése.
   - A S_SDSAUTH engedélyezési objektum végrehajtási tevékenységének engedélyei.
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -72,7 +72,7 @@ A következő szakaszokban részletesen ismertetjük az SAP Table connectorra je
 
 A SAP BW Open hub társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | `type` | A `type` tulajdonságot `SapTable`értékre kell beállítani. | Igen |
 | `server` | Annak a kiszolgálónak a neve, amelyen az SAP-példány található.<br/>A használatával csatlakozhat egy SAP-alkalmazáskiszolgáló eléréséhez. | Nem |
@@ -180,7 +180,7 @@ Az adatkészletek definiálásához szükséges csoportok és tulajdonságok tel
 
 Az adatoknak a és a SAP BW Open hub társított szolgáltatásba való másolásához a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | `type` | A `type` tulajdonságot `SapTableResource`értékre kell beállítani. | Igen |
 | `tableName` | Annak az SAP-táblának a neve, amelyből az adatok másolása megtörténjen. | Igen |
@@ -212,7 +212,7 @@ A tevékenységek definiálási szakaszainak és tulajdonságainak teljes listá
 
 Az adatok SAP-táblából történő másolásához a következő tulajdonságok támogatottak:
 
-| Tulajdonság                         | Leírás                                                  | Szükséges |
+| Tulajdonság                         | Leírás                                                  | Kötelező |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | A `type` tulajdonságot `SapTableSource`értékre kell beállítani.         | Igen      |
 | `rowCount`                         | A beolvasandó sorok száma.                              | Nem       |
@@ -238,10 +238,10 @@ Az adatok SAP-táblából történő másolásához a következő tulajdonságok
 | :------- | :------- |
 | `EQ` | Egyenlő |
 | `NE` | Nem egyenlő |
-| `LT` | Kisebb mint |
+| `LT` | Kisebb, mint |
 | `LE` | Kisebb, vagy egyenlő |
-| `GT` | Nagyobb mint |
-| `GE` | Nagyobb vagy egyenlő, mint |
+| `GT` | Nagyobb, mint |
+| `GE` | Nagyobb, vagy egyenlő |
 | `LIKE` | Ahogy a `LIKE 'Emma%'` |
 
 ### <a name="example"></a>Példa
@@ -287,7 +287,7 @@ Az adatok SAP-táblából történő másolásához a következő tulajdonságok
 
 Az adatok SAP-táblából való másolása során a rendszer a következő leképezéseket használja az SAP Table adattípusokból a Azure Data Factory köztes adattípusokra. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadóra, tekintse meg a [séma-és adattípus-leképezéseket](copy-activity-schema-and-type-mapping.md)
 
-| SAP ABAP-típus | Data Factory időközi adattípus |
+| SAP ABAP-típus | Data Factory közbenső adattípus |
 |:--- |:--- |
 | `C` (karakterlánc) | `String` |
 | `I` (egész szám) | `Int32` |

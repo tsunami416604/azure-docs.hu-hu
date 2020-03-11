@@ -7,11 +7,11 @@ ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75728752"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373824"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Key Vault referenciák használata App Service és Azure Functions
 
@@ -187,7 +187,7 @@ A beépített érzékelők egyikét is használhatja további információk megs
 ### <a name="using-the-detector-for-app-service"></a>A App Service detektorának használata
 
 1. A portálon navigáljon az alkalmazáshoz.
-2. Válassza a **Problémák diagnosztizálása és megoldása** lehetőséget.
+2. Válassza **a diagnosztizálás és problémák megoldása**lehetőséget.
 3. Válassza a **rendelkezésre állás és teljesítmény** lehetőséget, majd válassza a **webalkalmazás lehetőséget.**
 4. Keresse meg **Key Vault az Alkalmazásbeállítások diagnosztikát** , és kattintson a **További információ**elemre.
 
@@ -196,6 +196,6 @@ A beépített érzékelők egyikét is használhatja további információk megs
 
 1. A portálon navigáljon az alkalmazáshoz.
 2. Navigáljon a **platform szolgáltatásaihoz.**
-3. Válassza a **Problémák diagnosztizálása és megoldása** lehetőséget.
+3. Válassza **a diagnosztizálás és problémák megoldása**lehetőséget.
 4. Válassza a **rendelkezésre állás és teljesítmény** lehetőséget, majd válassza a **Function app Down vagy a jelentéskészítési hibák lehetőséget.**
 5. Kattintson **Key Vault alkalmazás-beállítások diagnosztika** elemre.

@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988345"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359458"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Videó-és hangfájlok elemzése Azure Media Services
 
@@ -32,7 +32,7 @@ Ha Media Services v3-es előkészletekből szeretné elemezni a tartalmakat, hoz
 
 Fontos megjegyezni, hogy meg kell felelnie a Video Indexer használatának összes vonatkozó törvényének, és előfordulhat, hogy nem használja Video Indexer vagy bármely más Azure-szolgáltatást olyan módon, amely sérti mások jogait, vagy más személyeknek is ártalmas lehet. Mielőtt bármilyen videót feltölt, beleértve a biometrikus adatokat is a Video Indexer szolgáltatásba feldolgozásra és tárolásra, az összes megfelelő jogosultsággal kell rendelkeznie, beleértve a megfelelő hozzájárulásokat is a videóban szereplő személy (ek) hoz. A megfelelőségről, az adatvédelemről és a biztonságról Video Indexer a Microsoft [Cognitive Services feltételeiben](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)olvashat. A Microsoft adatvédelmi kötelezettségei és az adatok kezelése érdekében tekintse át a Microsoft [adatvédelmi nyilatkozatát](https://privacy.microsoft.com/PrivacyStatement), az [online szolgáltatások használati feltételeit](https://www.microsoft.com/licensing/product-licensing/products) ("Ost") és az [adatfeldolgozási kiegészítést](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Az adatmegőrzéssel, törléssel és megsemmisítéssel kapcsolatos további adatvédelmi információk az OST-ben és [itt](../video-indexer/faq.md)érhetők el. Video Indexer használatával Ön vállalja, hogy az Cognitive Services feltételek, az OST, a DPA és az adatvédelmi nyilatkozat köti magát.
 
-## <a name="built-in-presets"></a>Beépített beállításkészletek
+## <a name="built-in-presets"></a>Beépített készletek
 
 A Media Services jelenleg a következő beépített analizátor-beállításkészleteket támogatja:  
 
@@ -72,7 +72,7 @@ A kimenet tartalmaz egy JSON-fájlt (megállapítások. JSON) a videóban vagy a
 |id|A sor azonosítója.|
 |szöveg|Maga a átirat.|
 |language|A átirat nyelve. Az olyan átiratok támogatását célozza, ahol az egyes sorok más nyelven is rendelkezhetnek.|
-|példányok|Az időtartományok listája, ahol ez a sor megjelent. Ha a példány átirat, akkor csak 1 példánya lesz.|
+|esetben|Az időtartományok listája, ahol ez a sor megjelent. Ha a példány átirat, akkor csak 1 példánya lesz.|
 
 Példa:
 
@@ -111,7 +111,7 @@ Példa:
 |szöveg|Az OCR szövege.|
 |megbízhatósági|Az elismerés megbízhatósága.|
 |language|Az OCR nyelve.|
-|példányok|Azon időtartományok listája, amelyekben ez az OCR megjelent (ugyanaz az OCR többször is megjelenhet).|
+|esetben|Azon időtartományok listája, amelyekben ez az OCR megjelent (ugyanaz az OCR többször is megjelenhet).|
 
 ```json
 "ocr": [
@@ -160,7 +160,7 @@ Példa:
 |referenceType|Jelenleg csak Bing.|
 |Cím|A cím (ha ez egy híresség – például "a Microsoft VEZÉRIGAZGATÓJA").|
 |imageUrl|A képurl-cím, ha a híresség.|
-|példányok|Azok a példányok, amelyeken az arc szerepelt a megadott időtartományban. Minden példányhoz tartozik egy thumbnailsId is. |
+|esetben|Azok a példányok, amelyeken az arc szerepelt a megadott időtartományban. Minden példányhoz tartozik egy thumbnailsId is. |
 
 ```json
 "faces": [{
@@ -197,7 +197,7 @@ Példa:
 |---|---|
 |id|A shot azonosítója.|
 |Kulcsképek|A shot keretén belüli kulcstárolók listája (mindegyik rendelkezik egy AZONOSÍTÓval és egy példányok időtartományával). A kulcstároló-példányok egy thumbnailId-mezővel rendelkeznek, amely a kulcs miniatűrjét AZONOSÍTÓval rendelkezik.|
-|példányok|A lövés időtartományának listája (a felvételek csak 1 példányt tartalmazhatnak).|
+|esetben|A lövés időtartományának listája (a felvételek csak 1 példányt tartalmazhatnak).|
 
 ```json
 "Shots": [
@@ -267,7 +267,7 @@ Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/
 |---|---|
 |id|Az érzelmi azonosító.|
 |averageScore |Az adott érzelmi típus összes példányának átlaga – pozitív/semleges/negatív|
-|példányok|Azon időtartományok listája, amelyekben ez a hangulat megjelent.|
+|esetben|Azon időtartományok listája, amelyekben ez a hangulat megjelent.|
 |sentimentType |A típus "pozitív", "semleges" vagy "negatív" lehet.|
 
 ```json
@@ -296,14 +296,14 @@ Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/
 ]
 ```
 
-### <a name="labels"></a>Címkék
+### <a name="labels"></a>címkék
 
 |Name (Név)|Leírás|
 |---|---|
 |id|A címke azonosítója|
 |név|A címke neve (például "számítógép", "TV").|
 |language|A címke nevének nyelve (fordításkor). BCP-47|
-|példányok|Azon időtartományok listája, amelyekben ez a címke megjelent (a címke többször is megjelenhet). Minden példány megbízhatósági mezővel rendelkezik. |
+|esetben|Azon időtartományok listája, amelyekben ez a címke megjelent (a címke többször is megjelenhet). Minden példány megbízhatósági mezővel rendelkezik. |
 
 ```json
 "labels": [
@@ -354,7 +354,7 @@ Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/
   ] 
 ```
 
-### <a name="keywords"></a>Kulcsszavak
+### <a name="keywords"></a>a kulcsszavak
 
 |Name (Név)|Leírás|
 |---|---|
@@ -362,7 +362,7 @@ Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/
 |szöveg|A kulcsszó szövege.|
 |megbízhatósági|A kulcsszó felismerési megbízhatósága.|
 |language|A kulcsszó nyelve (fordításkor).|
-|példányok|Azon időtartományok listája, amelyekben ez a kulcsszó megjelent (a kulcsszó többször is megjelenhet).|
+|esetben|Azon időtartományok listája, amelyekben ez a kulcsszó megjelent (a kulcsszó többször is megjelenhet).|
 
 ```json
 "keywords": [
@@ -412,7 +412,7 @@ A felnőtt vagy zamatos tartalmat tartalmazó videók csak privát nézethez ér
 |id|A vizuális tartalom moderálásának azonosítója.|
 |adultScore|A felnőtt pontszám (a tartalom moderátora).|
 |racyScore|A zamatos pontszám (a tartalom moderálása alapján).|
-|példányok|Azon időtartományok listája, amelyekben a vizualizációs tartalom moderálása megmutatkozott.|
+|esetben|Azon időtartományok listája, amelyekben a vizualizációs tartalom moderálása megmutatkozott.|
 
 ```json
 "VisualContentModeration": [

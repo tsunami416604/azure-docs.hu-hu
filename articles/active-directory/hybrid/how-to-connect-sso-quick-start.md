@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888668"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376139"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezés
 
@@ -115,7 +115,7 @@ Alapértelmezés szerint a böngésző automatikusan kiszámítja a megfelelő z
 
 A felhasználók intranetes zónájának beállításai kétféleképpen módosíthatók:
 
-| Lehetőség | Rendszergazdai megfontolás | Felhasználói feladatok |
+| Beállítás | Rendszergazdai megfontolás | Felhasználói élmény |
 | --- | --- | --- |
 | Csoportházirend | A rendszergazda lezárja az intranetes zóna beállításainak szerkesztését | A felhasználók nem módosíthatják a saját beállításait |
 | Csoportházirend-beállítások |  A rendszergazda engedélyezi az intranetes zóna beállításainak szerkesztését | A felhasználók módosíthatják a saját beállításait |
@@ -140,7 +140,7 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
    > Ha szeretné letiltani egyes felhasználók számára a zökkenőmentes egyszeri bejelentkezést (például ha ezek a felhasználók megosztott kioszkokra jelentkeznek be), állítsa a fenti értékeket **4**értékre. Ez a művelet hozzáadja az Azure AD URL-címét a korlátozott zónához, és minden alkalommal sikertelen lesz a zökkenőmentes egyszeri bejelentkezés.
    >
 
-5. Válassza az **OK**, majd újra az **OK** elemet.
+5. Kattintson **az OK gombra**, majd kattintson ismét **az OK gombra** .
 
     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso7.png)
 

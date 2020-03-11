@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516815"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365608"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple virtuális tömb üzembe helyezése – iSCSI-kiszolgálóként való beállítása Azure Portalon keresztül
 
@@ -37,20 +37,20 @@ Az itt ismertetett eljárások elvégzése körülbelül 30 percet vesz igénybe
 
 A StorSimple virtuális tömb konfigurálása és beállítása előtt győződjön meg az alábbiakról:
 
-* Létrehozta a virtuális tömböt, és csatlakoztatta azt a következő témakörben leírtak szerint: virtuális tömb [üzembe helyezése a Hyper-V](storsimple-ova-deploy2-provision-hyperv.md) -ben vagy a [StorSimple virtuális tömb üzembe helyezése –](storsimple-virtual-array-deploy2-provision-vmware.md)virtuális tömb kiépítése a VMware-ben – StorSimple.
-* A StorSimple virtuális tömbök kezeléséhez létrehozott Eszközkezelő StorSimple-szolgáltatás regisztrációs kulcsával rendelkezik. További információ **: 2. lépés: Szerezze be a szolgáltatás regisztrációs** kulcsát a [StorSimple virtuális tömb üzembe helyezése – készítse elő a portált](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
-* Ha ez a második vagy az azt követő virtuális tömb, amelyet egy meglévő StorSimple Eszközkezelő szolgáltatáshoz regisztrál, rendelkeznie kell a szolgáltatás adattitkosítási kulcsával. Ez a kulcs akkor jött létre, amikor az első eszközt sikeresen regisztrálták ezzel a szolgáltatással. Ha elvesztette a kulcsot, tekintse meg **a szolgáltatás adattitkosítási kulcsának** beszerzése a [webes felhasználói felületen a StorSimple virtuális tömb felügyeletéhez](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)című témakört.
+* Létrehozta a virtuális tömböt, és csatlakoztatta azt a következő témakörben leírtak szerint: virtuális tömb [üzembe helyezése a Hyper-V](storsimple-ova-deploy2-provision-hyperv.md) -ben vagy a [StorSimple virtuális tömb üzembe helyezése – virtuális tömb kiépítése a VMware](storsimple-virtual-array-deploy2-provision-vmware.md)-ben – StorSimple.
+* A StorSimple virtuális tömbök kezeléséhez létrehozott Eszközkezelő StorSimple-szolgáltatás regisztrációs kulcsával rendelkezik. További információ: 2. **lépés: a szolgáltatás regisztrációs kulcsának beszerzése** a [StorSimple virtuális tömb üzembe helyezése – felkészülés a portálra](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
+* Ha ez a második vagy az azt követő virtuális tömb, amelyet egy meglévő StorSimple Eszközkezelő szolgáltatáshoz regisztrál, rendelkeznie kell a szolgáltatás adattitkosítási kulcsával. Ez a kulcs akkor jött létre, amikor az első eszközt sikeresen regisztrálták ezzel a szolgáltatással. Ha elvesztette a kulcsot, tekintse meg **a szolgáltatás adattitkosítási kulcsának beszerzése** a [webes felhasználói felületen a StorSimple virtuális tömb felügyeletéhez](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)című témakört.
 
 ## <a name="step-by-step-setup"></a>Lépésenkénti beállítás
 
 A StorSimple virtuális tömb beállításához és konfigurálásához használja a következő lépésenkénti útmutatót:
 
-* [1. lépés: A helyi webes felhasználói felület beállításának befejezése és az eszköz regisztrálása](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
-* 2\. lépés: A szükséges eszköz telepítésének befejezése
-* [3. lépés: Kötet hozzáadása](#step-3-add-a-volume)
-* [4. lépés: Kötet csatlakoztatása, inicializálása és formázása](#step-4-mount-initialize-and-format-a-volume)
+* [1. lépés: a helyi webes felhasználói felület beállításának befejezése és az eszköz regisztrálása](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
+* 2\. lépés: a szükséges eszköz telepítésének befejezése
+* [3. lépés: kötet hozzáadása](#step-3-add-a-volume)
+* [4. lépés: kötet csatlakoztatása, inicializálása és formázása](#step-4-mount-initialize-and-format-a-volume)
 
-## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>1\. lépés: A helyi webes felhasználói felület beállításának befejezése és az eszköz regisztrálása
+## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>1\. lépés: a helyi webes felhasználói felület beállításának befejezése és az eszköz regisztrálása
 
 #### <a name="to-complete-the-setup-and-register-the-device"></a>A telepítés befejezése és az eszköz regisztrálása
 
@@ -58,18 +58,18 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
    
     `https://<ip-address of network interface>`
    
-    Használja az előző lépésben feljegyzett kapcsolatok URL-címét. A rendszer hibaüzenetet küld arról, hogy probléma merült fel a webhely biztonsági tanúsítványával kapcsolatban. Kattintson **a folytatás erre**a weblapra gombra.
+    Használja az előző lépésben feljegyzett kapcsolatok URL-címét. A rendszer hibaüzenetet küld arról, hogy probléma merült fel a webhely biztonsági tanúsítványával kapcsolatban. Kattintson **a folytatás erre a weblapra**gombra.
    
     ![biztonsági tanúsítvány hibája](./media/storsimple-virtual-array-deploy3-iscsi-setup/image3.png)
-2. Jelentkezzen be a virtuális eszköz webes felhasználói felületére **StorSimpleAdmin**néven. Adja meg a 3. lépésben módosított eszköz rendszergazdai jelszavát: A virtuális eszköz elindítása a [StorSimple Virtual Array üzembe helyezése – virtuális eszköz kiépítése a Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) -ben vagy a [StorSimple virtuális tömb üzembe helyezése – virtuális eszköz kiépítése a VMware-ben](storsimple-virtual-array-deploy2-provision-vmware.md).
+2. Jelentkezzen be a virtuális eszköz webes felhasználói felületére **StorSimpleAdmin**néven. Adja meg a 3. lépésben módosított eszköz rendszergazdai jelszavát: indítsa el a virtuális eszközt a [StorSimple virtuális tömb üzembe helyezése – virtuális eszköz kiépítése a Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) -ben vagy a [StorSimple virtuális tömb üzembe helyezése – virtuális eszköz kiépítése a VMware](storsimple-virtual-array-deploy2-provision-vmware.md)-ben.
    
     ![Bejelentkezési oldal](./media/storsimple-virtual-array-deploy3-iscsi-setup/image4.png)
-3. Ekkor megnyílik a **Kezdőlap** . Ez a lap a virtuális eszköz StorSimple Eszközkezelő szolgáltatással való konfigurálásához és regisztrálásához szükséges különböző beállításokat ismerteti. Vegye figyelembe, hogy a **hálózati beállítások**, a webproxy **beállításai**és az időbeállítások megadása nem kötelező. Az egyetlen szükséges beállítás az **eszközbeállítások** és a **felhő beállításai**.
+3. Ekkor megnyílik a **Kezdőlap** . Ez a lap a virtuális eszköz StorSimple Eszközkezelő szolgáltatással való konfigurálásához és regisztrálásához szükséges különböző beállításokat ismerteti. Vegye figyelembe, hogy a **hálózati beállítások**, a **webproxy beállításai**és az **időbeállítások** megadása nem kötelező. Az egyetlen szükséges beállítás az **eszközbeállítások** és a **felhő beállításai**.
    
     ![Kezdőlap](./media/storsimple-virtual-array-deploy3-iscsi-setup/image5.png)
 4. A hálózati **adapterek** **hálózati beállítások** lapján a 0. adat automatikusan be lesz állítva. Az egyes hálózati adapterek alapértelmezés szerint az IP-címek automatikus beszerzésére (DHCP) vannak beállítva. Ezért a rendszer automatikusan hozzárendeli az IP-címet, az alhálózatot és az átjárót (az IPv4 és az IPv6 esetében egyaránt).
    
-    Ahogy azt tervezi, hogy az eszközt iSCSI-kiszolgálóként telepíti (a blokkos tárolás kiépítéséhez), javasoljuk, hogy tiltsa le az **IP-cím automatikus** beolvasása beállítást, és konfigurálja a statikus IP-címeket.
+    Ahogy azt tervezi, hogy az eszközt iSCSI-kiszolgálóként telepíti (a blokkos tárolás kiépítéséhez), javasoljuk, hogy tiltsa le az **IP-cím automatikus beolvasása** beállítást, és konfigurálja a statikus IP-címeket.
    
     ![Hálózati beállítások lap](./media/storsimple-virtual-array-deploy3-iscsi-setup/image6.png)
    
@@ -81,10 +81,10 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
 6. Az **eszközbeállítások** lapon:
    
    1. Rendeljen egyedi **nevet** az eszközhöz. Ez a név 1-15 karakterből állhat, és tartalmazhat betűt, számot és kötőjelet.
-   2. Kattintson az **iSCSI** -kiszolgáló ![ikonra iSCSI-](./media/storsimple-virtual-array-deploy3-iscsi-setup/image7.png) kiszolgáló ikonra a létrehozandó eszköz típusához. Az iSCSI-kiszolgálók lehetővé teszik a blokkoló tárolók kiépítését.
+   2. Kattintson az **iSCSI-kiszolgáló** ikonra ![iSCSI-kiszolgáló ikon](./media/storsimple-virtual-array-deploy3-iscsi-setup/image7.png) a létrehozandó eszköz **típusához** . Az iSCSI-kiszolgálók lehetővé teszik a blokkoló tárolók kiépítését.
    3. Itt adhatja meg, hogy szeretné-e, hogy az eszköz tartományhoz legyen csatlakoztatva. Ha az eszköz egy iSCSI-kiszolgáló, akkor a tartományhoz való csatlakozás nem kötelező. Ha úgy dönt, hogy nem csatlakoztatja az iSCSI-kiszolgálót egy tartományhoz, kattintson az **alkalmaz**gombra, várjon, amíg a beállítások érvénybe lépnek, majd ugorjon a következő lépésre.
       
-       Ha az eszközt tartományhoz kívánja csatlakoztatni. Adja mega tartománynevet, majd kattintson az **alkalmaz**gombra.
+       Ha az eszközt tartományhoz kívánja csatlakoztatni. Adja meg a **tartománynevet**, majd kattintson az **alkalmaz**gombra.
       
       > [!NOTE]
       > Ha az iSCSI-kiszolgálót egy tartományhoz csatlakoztatja, győződjön meg arról, hogy a virtuális tömb a saját szervezeti egységében (OU) van Microsoft Azure Active Directory, és nincs alkalmazva csoportházirend-objektum (GPO).
@@ -100,24 +100,24 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
    
     A **webproxy** lapon:
    
-   1. Adja meg a **webproxy URL** -címét a következő formátumban: *http\/:/host-IP cím* vagy *FQDN: portszám*. Vegye figyelembe, hogy a HTTPS URL-címek nem támogatottak.
+   1. Adja meg a **webproxy URL-címét** a következő formátumban: *http:\//Host-IP cím* vagy *FQDN: portszám*. Vegye figyelembe, hogy a HTTPS URL-címek nem támogatottak.
    2. A **hitelesítést** a **Basic** vagy a **none**értékre kell beállítani.
    3. Ha hitelesítést használ, meg kell adnia egy **felhasználónevet** és egy **jelszót**is.
    4. Kattintson az **Alkalmaz** gombra. Ez a művelet érvényesíti és alkalmazza a konfigurált webproxy-beállításokat.
 8. (Opcionálisan) konfigurálhatja az eszköz időbeállítását, például az időzónát és az elsődleges és másodlagos NTP-kiszolgálókat. Az NTP-kiszolgálókra azért van szükség, mert az eszköznek szinkronizálnia kell az időt ahhoz, hogy hitelesíteni lehessen a felhőalapú szolgáltatóktól.
    
-    ![Időbeállítások](./media/storsimple-virtual-array-deploy3-iscsi-setup/image10.png)
+    ![Idő beállításai](./media/storsimple-virtual-array-deploy3-iscsi-setup/image10.png)
    
     Az **időbeállítások** lapon:
    
-   1. A legördülő listában válassza ki az időzónát azon földrajzi hely alapján, amelyben az eszközt üzembe helyezi. Az eszköz alapértelmezett időzónája a PST. Az eszköz minden ütemezett művelethez ezt az időzónát használja.
-   2. Adja meg az eszköz **Elsődleges NTP** -kiszolgálóját, vagy fogadja el az Time.Windows.com alapértelmezett értékét. Győződjön meg arról, hogy a hálózat engedélyezi az adatközpont és az internet közötti NTP-adatforgalmat.
+   1. A legördülő listában válassza ki az **időzónát** azon földrajzi hely alapján, amelyben az eszközt üzembe helyezi. Az eszköz alapértelmezett időzónája a PST. Az eszköz minden ütemezett művelethez ezt az időzónát használja.
+   2. Adja meg az eszköz **Elsődleges NTP-kiszolgálóját** , vagy fogadja el az Time.Windows.com alapértelmezett értékét. Győződjön meg arról, hogy a hálózat engedélyezi az adatközpont és az internet közötti NTP-adatforgalmat.
    3. Opcionálisan megadhat egy **másodlagos NTP-kiszolgálót** az eszközhöz.
    4. Kattintson az **Alkalmaz** gombra. Ezzel a művelettel érvényesítheti és alkalmazhatja a beállított időértékeket.
 9. Adja meg az eszközhöz tartozó felhő beállításait. Ebben a lépésben elvégzi a helyi eszköz konfigurációját, majd regisztrálja az eszközt a StorSimple Eszközkezelő szolgáltatásával.
    
-   1. Adja meg a **szolgáltatás regisztrációs kulcsát** , amelyet **a 2. lépésben kapott: Szerezze be a szolgáltatás regisztrációs** kulcsát a [StorSimple virtuális tömb üzembe helyezése – készítse elő a portált](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
-   2. Ha nem ez az első eszköz, amelyet a szolgáltatással regisztrál, meg kell adnia a **szolgáltatás adattitkosítási kulcsát**. Erre a kulcsra a szolgáltatás regisztrációs kulcsának használatakor van szükség további eszközök regisztrálásához a StorSimple Eszközkezelő szolgáltatással. További információt a [szolgáltatás adattitkosítási kulcsának](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) beszerzése a helyi webes felhasználói felületen című témakörben talál.
+   1. Adja meg a **szolgáltatás regisztrációs kulcsát** , amelyet a **2. lépésben kapott: a szolgáltatás regisztrációs kulcsának beszerzése** a [StorSimple virtuális tömb üzembe helyezése – a portál előkészítése](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
+   2. Ha nem ez az első eszköz, amelyet a szolgáltatással regisztrál, meg kell adnia a **szolgáltatás adattitkosítási kulcsát**. Erre a kulcsra a szolgáltatás regisztrációs kulcsának használatakor van szükség további eszközök regisztrálásához a StorSimple Eszközkezelő szolgáltatással. További információt a [szolgáltatás adattitkosítási kulcsának beszerzése](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) a helyi webes felhasználói felületen című témakörben talál.
    3. Kattintson a **regisztrálás**gombra. Ekkor a rendszer újraindítja az eszközt. Előfordulhat, hogy várnia kell 2-3 percet, mielőtt az eszköz regisztrálása sikeresen megtörtént. Az eszköz újraindítása után megnyílik a bejelentkezési oldal.
       
       ![Eszköz regisztrálása](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
@@ -127,7 +127,7 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
     
     ![Eszköz regisztrálása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
-## <a name="step-2-configure-the-device-as-iscsi-server"></a>2\. lépés: Az eszköz konfigurálása iSCSI-kiszolgálóként
+## <a name="step-2-configure-the-device-as-iscsi-server"></a>2\. lépés: az eszköz konfigurálása iSCSI-kiszolgálóként
 
 A szükséges eszköz telepítésének befejezéséhez hajtsa végre a következő lépéseket a Azure Portal.
 
@@ -154,9 +154,9 @@ A szükséges eszköz telepítésének befejezéséhez hajtsa végre a következ
    
     ![Eszköz konfigurálása iSCSI-kiszolgálóként](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
 
-## <a name="step-3-add-a-volume"></a>3\. lépés: Kötet hozzáadása
+## <a name="step-3-add-a-volume"></a>3\. lépés: kötet hozzáadása
 
-1. Az **eszközök** panelen válassza ki az imént iSCSI-kiszolgálóként konfigurált eszközt. Kattintson a **.** .. (másik lehetőségként kattintson a jobb gombbal erre a sorra), majd a helyi menüben válassza a **kötet hozzáadása**elemet. A menüsávban kattintson a **+ kötet hozzáadása** lehetőségre. Ekkor megnyílik a **kötet hozzáadása** panel.
+1. Az **eszközök** panelen válassza ki az imént iSCSI-kiszolgálóként konfigurált eszközt. Kattintson a **...** (másik lehetőségre a jobb gombbal kattintva ebben a sorban), majd a helyi menüben válassza a **kötet hozzáadása**elemet. A menüsávban kattintson a **+ kötet hozzáadása** lehetőségre. Ekkor megnyílik a **kötet hozzáadása** panel.
    
     ![Kötet hozzáadása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis10m.png)
 2. A **kötet hozzáadása** panelen tegye a következőket:
@@ -171,7 +171,7 @@ A szükséges eszköz telepítésének befejezéséhez hajtsa végre a következ
      
      ![Kötet hozzáadása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
    * Kattintson a **csatlakoztatott gazdagépek**elemre, jelölje ki a kötethez csatlakozni kívánt iSCSI-kezdeményezőhöz tartozó hozzáférés-vezérlési REKORDOT (ACR), majd kattintson a **kiválasztás**gombra. <br><br> 
-3. Új csatlakoztatott gazdagép hozzáadásához kattintson az **új hozzáadása**lehetőségre, adja meg a gazdagép nevét és az iSCSI minősített nevét (IQN), majd kattintson a **Hozzáadás**gombra. Ha nem rendelkezik a IQN, ugorjon [az a függelékre: Egy Windows Server-gazdagép](#appendix-a-get-the-iqn-of-a-windows-server-host)IQN beolvasása.
+3. Új csatlakoztatott gazdagép hozzáadásához kattintson az **új hozzáadása**lehetőségre, adja meg a gazdagép nevét és az iSCSI minősített nevét (IQN), majd kattintson a **Hozzáadás**gombra. Ha nem rendelkezik a IQN, ugorjon a " [a" függelékre: a Windows Server-GAZDAGÉP IQN beszerzése](#appendix-a-get-the-iqn-of-a-windows-server-host).
    
       ![Kötet hozzáadása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
 4. Ha befejezte a kötet konfigurálását, kattintson **az OK**gombra. A rendszer létrehoz egy kötetet a megadott beállításokkal, és értesítést fog látni. Alapértelmezés szerint a rendszer engedélyezi a figyelést és a biztonsági mentést a köteten.
@@ -181,7 +181,7 @@ A szükséges eszköz telepítésének befejezéséhez hajtsa végre a következ
    
    ![Kötet hozzáadása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
 
-## <a name="step-4-mount-initialize-and-format-a-volume"></a>4\. lépés: Kötet csatlakoztatása, inicializálása és formázása
+## <a name="step-4-mount-initialize-and-format-a-volume"></a>4\. lépés: kötet csatlakoztatása, inicializálása és formázása
 
 A következő lépések végrehajtásával csatlakoztassa, inicializálja és formázza a StorSimple-köteteket egy Windows Server-gazdagépen.
 
@@ -194,7 +194,7 @@ A következő lépések végrehajtásával csatlakoztassa, inicializálja és fo
 3. A **Tárolókapu felderítése** párbeszédablakban adja meg az iSCSI-kompatibilis hálózati adaptert, majd kattintson az **OK** gombra.
    
     ![IP-cím](./media/storsimple-virtual-array-deploy3-iscsi-setup/image23.png)
-4. Az **iSCSI-kezdeményező tulajdonságai** ablakban a **Tárolók** lapon keresse meg a **Felderített tárolók** elemet. (Minden kötet felderített cél lesz.) Az eszköznek **Inaktív** állapotúnak kell lennie.
+4. Az **iSCSI-kezdeményező tulajdonságai** ablakban a **Tárolók** lapon keresse meg a **Felderített tárolók** elemet. (Minden kötet felderített cél lesz.) Az eszköz állapota **inaktívként**jelenik meg.
    
     ![felderített célok](./media/storsimple-virtual-array-deploy3-iscsi-setup/image24.png)
 5. Jelölje ki a kívánt eszközt, majd kattintson a **Csatlakoztatás**gombra. Az eszköz csatlakoztatása után az állapotnak **Csatlakoztatva** állapotra kell módosulnia. (A Microsoft iSCSI-kezdeményező használatával kapcsolatos további információkért lásd: a [Microsoft iSCSI-kezdeményező telepítése és konfigurálása][1].
@@ -228,11 +228,11 @@ A következő lépések végrehajtásával csatlakoztassa, inicializálja és fo
     
     ![online kötetek](./media/storsimple-virtual-array-deploy3-iscsi-setup/image33.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan használhatja a helyi webes felhasználói felületet a [StorSimple virtuális tömb felügyeletére](storsimple-ova-web-ui-admin.md).
 
-## <a name="appendix-a-get-the-iqn-of-a-windows-server-host"></a>A függelék: Egy Windows Server-állomás IQN-nevének lekérése
+## <a name="appendix-a-get-the-iqn-of-a-windows-server-host"></a>A függelék: a Windows Server-gazdagép IQN beolvasása
 
 Hajtsa végre a következő lépéseket egy Windows Server 2012 rendszert futtató Windows-állomás iSCSI minősített nevének (IQN) lekéréséhez.
 
