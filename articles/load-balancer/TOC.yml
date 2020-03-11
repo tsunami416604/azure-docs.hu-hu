@@ -12,7 +12,8 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Load Balancer létrehozása – PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Load Balancer létrehozása – sablon
+    - name: Load Balancer létrehozása – ARM-sablon
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
   expanded: true
 - name: Oktatóanyagok
