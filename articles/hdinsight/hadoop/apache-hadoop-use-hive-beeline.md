@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 13c51f0db468c1591ca29de17f1744752589a1c8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/09/2020
+ms.openlocfilehash: 77a451cb9f6598bbe7013f4215cfa7cab40186bd
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663745"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037545"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Használja az Apache Beeline-ügyfelet Apache Hive
 
@@ -54,6 +54,12 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD
 ```
 
 Cserélje le a `<username>`t egy olyan fiók nevére, amely a fürt eléréséhez szükséges engedélyekkel rendelkezik. A `<AAD-DOMAIN>` helyére írja be annak a Azure Active Directorynak (HRE) a nevét, amelyhez a fürt csatlakozik. Használjon nagybetűs karakterláncot a `<AAD-DOMAIN>` értékhez, ellenkező esetben a hitelesítő adat nem található. Szükség esetén ellenőrizze `/etc/krb5.conf` a tartománynevek nevét.
+
+A Ambari-ből származó JDBC URL-cím megkeresése:
+
+1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`, ahol a `CLUSTERNAME` a fürt neve. Győződjön meg arról, hogy a HiveServer2 fut.
+
+1. A HiveServer2 JDBC URL-cím másolásához használja a vágólapot.
 
 ---
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: e4fc3555d7d880dcbd4f76d8f507300e98c237db
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5f481ebf219eea8ae31e9802144bbf771a24e8b8
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718363"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081777"
 ---
 # <a name="limits-and-quotas"></a>Korlátok és kvóták
 
@@ -25,7 +25,7 @@ A betanítási lemezképek száma projektenként és címkék szerint projektenk
 
 ||**F0**|**S0**|
 |-----|-----|-----|
-|projektek|2|100|
+|Projektek|2|100|
 |Képek betanítása projektenként |5000|100 000|
 |Előrejelzések/hónap|10,000 |Korlátlan|
 |Címkék/projekt|50|500|
@@ -42,8 +42,8 @@ A betanítási lemezképek száma projektenként és címkék szerint projektenk
 |Maximális képméret/szélesség képpontban|korlátlan|korlátlan|
 |Maximális képméret (betanítási képfeltöltés) |6 MB|6 MB|
 |Maximális képméret (előrejelzés)|4 MB|4 MB|
-|Objektumok maximális száma objektum-észlelési betanítási képen|200|200|
-|Címkék maximális száma besorolási képenként|30|30|
+|Objektumok maximális száma objektum-észlelési betanítási képen|300|300|
+|Címkék maximális száma besorolási képenként|100|100|
 
 > [!NOTE]
 > Az 256 képpontnál kisebb méretű képek is el lesznek fogadva, a méretük pedig nagyobb.

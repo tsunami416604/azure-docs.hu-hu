@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: d39ac40e8e29c7ff90e2accc3a519449571c1d58
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.date: 03/10/2020
+ms.openlocfilehash: 2e12952c04373fe47eaebb24b61a4fc563121185
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917407"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037114"
 ---
 # <a name="execute-r-script"></a>R-szkript végrehajtása
 
@@ -67,11 +67,43 @@ azureml_main <- function(dataframe1, dataframe2){
  > [!NOTE]
   > Győződjön meg arról, hogy a csomag már létezik a telepítés előtt, hogy elkerülje az ismételt telepítést. Például a fenti mintakód `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")`. Előfordulhat, hogy a telepítés megismétlése webszolgáltatási kérés időtúllépését okozhatja.     
 
+## <a name="upload-files"></a>Fájlok feltöltése
+Az **r-szkript végrehajtása** támogatja a fájlok feltöltését Azure Machine learning R SDK használatával.
+
+Az alábbi példa bemutatja, hogyan tölthet fel egy képfájlt az **R-szkript végrehajtása**során:
+```R
+
+# R version: 3.5.1
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
+
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a R DataFrame
+#   Param<dataframe2>: a R DataFrame
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+
+  # Generate a jpeg graph
+  img_file_name <- "rect.jpg"
+  jpeg(file=img_file_name)
+  example(rect)
+  dev.off()
+
+  upload_files_to_run(names = list(file.path("graphic", img_file_name)), paths=list(img_file_name))
+
+
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
+A folyamat sikeres elküldését követően megtekintheti a képet a modul jobb oldali paneljén, ![feltöltött-kép](media/module/upload-image-in-r-script.png)
+
 ## <a name="how-to-configure-execute-r-script"></a>Az R-szkript végrehajtásának konfigurálása
 
 Az **R-szkript végrehajtása** modul olyan mintakód-kódot tartalmaz, amelyet kiindulási pontként használhat. Az R- **parancsfájl végrehajtása** modul konfigurálásához adja meg a végrehajtandó bemeneteket és kódokat.
 
-![R-modul](media/module/execute-r-script.png)
+![R-modul](media/module/upload-image-in-r-script.png)
 
 A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek konvertálva, ha ezzel a modullal vannak feltöltve.
 
@@ -345,7 +377,7 @@ A használható előre telepített R-csomagok aktuális listája:
 | prettyunits  | 1.0.2      | 
 | processx     | 3.3.1      | 
 | prodlim      | 2018.04.18 | 
-| Haladás     | 1.2.2      | 
+| haladás     | 1.2.2      | 
 | PS           | 1.3.0      | 
 | a dorombolás        | 0.3.2      | 
 | quadprog     | 1.5 – 7      | 

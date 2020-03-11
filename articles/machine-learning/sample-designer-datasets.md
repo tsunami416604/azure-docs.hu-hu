@@ -9,12 +9,12 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.date: 03/03/2020
-ms.openlocfilehash: 7c5087a15210dff7c2a51aa5af38b8f7c26e28cc
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 943e23aa9d83df33bbe636ce7aee62e6e5a2950e
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673469"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037301"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-designer-preview"></a>A minta adatkészletek használata a Azure Machine Learning Designerben (előzetes verzió)
 
@@ -40,8 +40,8 @@ A minta adatkészletek az **Adatkészletek**-**minták** kategóriában érhető
 |Időjárási adatkészlet|A NOAA-ből származó, óránkénti szárazföld-alapú időjárási megfigyelések ([201304 és 201310 közötti egyesített adatok](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)).<br/>Az időjárási adatok a repülőtéri meteorológiai állomások megfigyeléseit fedik le, amely az 2013. április-október időszakra vonatkozik. A tervezőbe való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva:    <br/> – A meteorológiai állomások azonosítói a megfelelő repülőtéri azonosítóra vannak leképezve    <br/> – A 70-es legforgalmasabb repülőtérhez nem társított meteorológiai állomások kiszűrése megtörtént    <br/> -A Date oszlop külön évre, hónapra és napi oszlopokra van bontva    <br/> -A következő oszlopok lettek kiválasztva: AirportID, év, hónap, nap, idő, időzóna, SkyCondition, láthatóság, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, Szélsebesség, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, rekordtípus, HourlyPrecip, magasságmérő|
 |Wikipedia SP 500 adatkészlet|Az adatok a wikipedia-ből származnak (https://www.wikipedia.org/) az összes S & P 500 vállalat cikkei alapján, amelyek XML-adatként vannak tárolva.    <br/>A tervezőbe való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva:    <br/> -Szöveges tartalom kinyerése minden egyes vállalatnál    <br/> – Wiki formázásának eltávolítása    <br/> – Nem alfanumerikus karakterek eltávolítása    <br/> – Az összes szöveg konvertálása kisbetűsre    <br/> – Ismert vállalati kategóriák lettek hozzáadva    <br/>Vegye figyelembe, hogy egyes vállalatok esetében nem található cikk, így a rekordok száma kevesebb, mint 500.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A prediktív elemzés és a gépi tanulás alapjai a [bemutatóban: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)
 
-* Az [adatimportálási](./algorithm-module-reference/import-data.md) modul használata minta adatkészletek importálásához
+* Megtudhatja, hogyan módosíthatja a meglévő [tervezői mintákat](samples-designer.md) az igényeinek megfelelően.

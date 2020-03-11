@@ -1,5 +1,5 @@
 - name: Docker – dokumentáció
-  href: index.md
+  href: index.yml
 - name: Első lépések
   expanded: true
   items:

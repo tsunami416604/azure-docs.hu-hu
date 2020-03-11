@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7018100c830f22c3ed5e924b5096911b1f8135cb
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: c3ea40ed02fd6b585cfdc9c30fe59bd4e247395c
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942331"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081828"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált ML-kísérletek konfigurálása a Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,7 +43,7 @@ Mielőtt elkezdené a kísérlethez, meg kell határoznia a megoldandó, machine
 
 Automatizált machine learning az automatizálás és a hangolási folyamat során a következő algoritmusokat támogatja. Felhasználójaként van, nem szükséges, hogy adja meg az algoritmus.
 
-Besorolás | Regresszió | Idősorozat-előrejelzés
+Osztályozás | Regresszió | Idősorozat-előrejelzés
 |-- |-- |--
 [Logisztikai regresszió](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
 [Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
@@ -130,8 +130,8 @@ Használjon egyéni ellenőrzési adatkészletet, ha a véletlenszerű felosztá
 ## <a name="compute-to-run-experiment"></a>Számítási kísérlet futtatása
 
 Ezután határozza meg, hol kell betanítani a modellt. Egy automatizált machine learning betanítási kísérlet futtassa a következő számítási lehetőségek:
-*   A helyi gépen, például a helyi számítógépen vagy laptopon – általában amikor rendelkezik kisméretű adatkészlet, és továbbra is a feltárás fázisban.
-*   Egy távoli gép a felhőben – [Azure Machine learning felügyelt számítás](concept-compute-target.md#amlcompute) egy felügyelt szolgáltatás, amely lehetővé teszi a gépi tanulási modellek betanítását az Azure-beli virtuális gépek fürtjén.
+*    A helyi gépen, például a helyi számítógépen vagy laptopon – általában amikor rendelkezik kisméretű adatkészlet, és továbbra is a feltárás fázisban.
+*    Egy távoli gép a felhőben – [Azure Machine learning felügyelt számítás](concept-compute-target.md#amlcompute) egy felügyelt szolgáltatás, amely lehetővé teszi a gépi tanulási modellek betanítását az Azure-beli virtuális gépek fürtjén.
 
     Tekintse meg ezt a [GitHub-webhelyet](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) a helyi és távoli számítási célokkal rendelkező jegyzetfüzetek példáinak megtekintéséhez.
 
@@ -147,7 +147,7 @@ Többféle módon használhatja az automatikus machine learning-kísérlet konfi
 
 Néhány példa:
 
-1.  A besorolási kísérlet az elsődleges metrika és a kísérlet időkorlátja alapján AUC súlyozottan 30 percre van beállítva, a két kereszt-ellenőrzési hajtogatás pedig 2.
+1.    A besorolási kísérlet az elsődleges metrika és a kísérlet időkorlátja alapján AUC súlyozottan 30 percre van beállítva, a két kereszt-ellenőrzési hajtogatás pedig 2.
 
     ```python
     automl_classifier=AutoMLConfig(
@@ -159,7 +159,7 @@ Néhány példa:
         label_column_name=label,
         n_cross_validations=2)
     ```
-2.  Az alábbi példa egy olyan regressziós kísérletre van beállítva, amely 60 perc után fejeződik be, és öt ellenőrző kereszttel rendelkezik.
+2.    Az alábbi példa egy olyan regressziós kísérletre van beállítva, amely 60 perc után fejeződik be, és öt ellenőrző kereszttel rendelkezik.
 
     ```python
     automl_regressor = AutoMLConfig(
@@ -179,7 +179,7 @@ Az automatikus ML érvényesítési szolgáltatás teljesítményszámláló meg
 ### <a name="primary-metric"></a>Elsődleges metrika
 Az elsődleges metrika határozza meg, hogy milyen mérőszámot kell használni az optimalizáláshoz a modell betanításakor. A kiválasztható mérőszámokat a kiválasztott feladattípus határozza meg, az alábbi táblázat pedig az egyes feladattípusok érvényes elsődleges metrikáit tartalmazza.
 
-|Besorolás | Regresszió | Idősorozat-előrejelzés
+|Osztályozás | Regresszió | Idősorozat-előrejelzés
 |-- |-- |--
 |accuracy| spearman_correlation | spearman_correlation
 |AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
@@ -309,7 +309,7 @@ project_folder = './sample_projects/automl-classification'
 experiment = Experiment(ws, experiment_name)
 ```
 
-Küldje el a kísérlet futtatásához és a egy modell létrehozása. Adja át a `AutoMLConfig`t a `submit` metódusnak a modell létrehozásához.
+Küldje el a kísérletet futtatásra, és hozzon létre egy modellt. Adja át a `AutoMLConfig`t a `submit` metódusnak a modell létrehozásához.
 
 ```python
 run = experiment.submit(automl_config, show_output=True)
@@ -521,7 +521,7 @@ Tekintse meg az [útmutató](how-to-machine-learning-interpretability-automl.md)
 
 Általános információk arról, hogy a modell magyarázatait és funkcióinak fontosságát az SDK más területein is engedélyezheti az automatikus gépi tanuláson kívül: a [koncepcióról](how-to-machine-learning-interpretability.md) szóló cikk értelmezése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [modellek telepítéséről és helyéről](how-to-deploy-and-where.md).
 

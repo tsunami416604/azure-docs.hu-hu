@@ -3,17 +3,17 @@ title: Több Node-készlet használata az Azure Kubernetes szolgáltatásban (ak
 description: Ismerje meg, hogyan hozhat létre és kezelhet több Node-készletet egy fürthöz az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
-ms.date: 02/14/2020
-ms.openlocfilehash: 3e0890a0e8600526da2047cabc0b50af8177ea37
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: cf127cc75377c3ca3a18cdeaedbc1d450d6c3826
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374506"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081893"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Fürthöz tartozó több Node-készlet létrehozása és kezelése az Azure Kubernetes szolgáltatásban (ak)
 
-Az Azure Kubernetes szolgáltatásban (ak) az azonos konfiguráció csomópontjai a *csomópont-készletekbe*vannak csoportosítva. Ezek a csomópont-készletek az alkalmazásokat futtató mögöttes virtuális gépeket tartalmazzák. A csomópontok kezdeti száma és a mérete (SKU) definiálása akkor történik meg, amikor létrehoz egy *alapértelmezett csomópont-készletet*, amely létrehoz egy AK-fürtöt. A különböző számítási vagy tárolási igényekkel rendelkező alkalmazások támogatásához további csomópont-készleteket is létrehozhat. Ezekkel a további csomópont-készletekkel például GPU-ket biztosíthat a számítási igényű alkalmazások számára, vagy hozzáférhet a nagy teljesítményű SSD-tárolóhoz.
+Az Azure Kubernetes szolgáltatásban (ak) az azonos konfiguráció csomópontjai a *csomópont-készletekbe*vannak csoportosítva. Ezek a csomópont-készletek az alkalmazásokat futtató mögöttes virtuális gépeket tartalmazzák. A csomópontok kezdeti száma és a mérete (SKU) akkor van meghatározva, amikor egy AK-fürtöt hoz létre, amely létrehoz egy *alapértelmezett csomópont-készletet*. A különböző számítási vagy tárolási igényekkel rendelkező alkalmazások támogatásához további csomópont-készleteket is létrehozhat. Ezekkel a további csomópont-készletekkel például GPU-ket biztosíthat a számítási igényű alkalmazások számára, vagy hozzáférhet a nagy teljesítményű SSD-tárolóhoz.
 
 > [!NOTE]
 > Ez a funkció lehetővé teszi a több csomópontos készlet létrehozását és kezelését. Ennek eredményeképpen külön parancsok szükségesek a létrehozás/frissítés/törlés számára. Korábban a fürt műveletei `az aks create` vagy `az aks update` használták a managedCluster API-t, és az egyetlen lehetőség a vezérlési sík és egyetlen csomópontos készlet módosítására. Ez a funkció az agentPool API-n keresztül egy külön műveleti készletet tesz elérhetővé az ügynökök számára, és a `az aks nodepool` parancs használatát igényli egy adott csomópont-készlet műveleteinek végrehajtásához.
@@ -33,8 +33,8 @@ A több csomópontot támogató AK-fürtök létrehozásakor és kezelésekor a 
 * Az AK-fürtnek a standard SKU Load balancert kell használnia több Node-készlet használatához, a szolgáltatás alapszintű SKU-terheléselosztó esetén nem támogatott.
 * Az AK-fürtnek virtuálisgép-méretezési csoportokat kell használnia a csomópontokhoz.
 * A csomópontok készletének neve csak kisbetűket és kisbetűs karaktereket tartalmazhat. A Linux-csomópontok készletei esetében a hossznak 1 és 12 karakter közöttinek kell lennie, a Windows-csomópontok esetében a hossznak 1 és 6 karakter közöttinek kell lennie.
-* Az összes csomópont-készletnek ugyanabban a vnet és alhálózatban kell lennie.
-* Ha több csomópont-készletet hoz létre a fürt létrehozásakor, a csomópontok által használt összes Kubernetes-verziónak meg kell egyeznie a vezérlési síkon beállított verzióval. Ezt azután frissítheti, ha a fürtöt csomópont-készletezési műveletek használatával állították ki.
+* Az összes csomópont-készletnek ugyanabban a virtuális hálózaton és alhálózaton kell lennie.
+* Ha több csomópont-készletet hoz létre a fürt létrehozásakor, a csomópontok által használt összes Kubernetes-verziónak meg kell egyeznie a vezérlési síkon beállított verzióval. Ez a verzió akkor frissíthető, ha a fürtöt Node Pool-műveletekkel kiépített.
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
@@ -195,11 +195,11 @@ Az AK-fürtök két fürterőforrás-objektummal rendelkeznek, amelyek Kubernete
 
 A vezérlő síkja egy vagy több csomópont-készletet képez le. A frissítési művelet viselkedése attól függ, hogy melyik Azure CLI-parancsot használja a rendszer.
 
-Az AK-vezérlési sík frissítéséhez `az aks upgrade`t kell használnia. Ez frissíti a vezérlő síkja és a fürt összes csomópont-készletét. 
+Az AK-vezérlési sík frissítéséhez `az aks upgrade`t kell használnia. Ez a parancs frissíti a vezérlési sík verzióját és a fürt összes csomópont-készletét.
 
 A `az aks upgrade` parancsnak a `--control-plane-only` jelzővel való kiállítása csak a fürt vezérlő síkjait frissíti. A fürthöz társított csomópont-készletek egyike sincs módosítva.
 
-Az egyes csomópont-készletek frissítéséhez `az aks nodepool upgrade`t kell használni. Ez csak a cél csomópont-készletet frissíti a megadott Kubernetes-verzióval
+Az egyes csomópont-készletek frissítéséhez `az aks nodepool upgrade`t kell használni. Ez a parancs csak a cél csomópont-készletet frissíti a megadott Kubernetes-verzióval.
 
 ### <a name="validation-rules-for-upgrades"></a>A frissítésekre vonatkozó érvényesítési szabályok
 
@@ -212,7 +212,7 @@ A fürt Kubernetes és a csomópont-készletek érvényes frissítéseit az alá
 
 * A frissítési művelet elküldésére vonatkozó szabályok:
    * A vezérlő síkja vagy a Node Pool Kubernetes verziója nem minősíthető vissza.
-   * Ha nincs megadva a csomópont-készlet Kubernetes verziója, a viselkedés a használt ügyféltől függ. A Resource Manager-sablonokban található deklaráció visszaesik a csomópont-készlethez definiált meglévő verzióra, ha a nincs beállítva, a vezérlő síkja a verzióra való visszaeséshez használatos.
+   * Ha nincs megadva a csomópont-készlet Kubernetes verziója, a viselkedés a használt ügyféltől függ. A Resource Manager-sablonokban szereplő deklaráció visszakerül a csomópont-készlethez definiált meglévő verzióra, ha a nincs beállítva, ha a vezérlési sík verziója visszaesik.
    * Egy adott időpontban frissítheti vagy méretezheti a vezérlési síkot vagy a csomópont-készletet, nem küldhet egyszerre több műveletet egyetlen vezérlő síkon vagy Node Pool-erőforráson.
 
 ## <a name="scale-a-node-pool-manually"></a>Csomópont-készlet manuális skálázása
@@ -449,12 +449,50 @@ Events:
 
 A *gpunodepool*csomópontjain csak azok a hüvelyek ütemezhetők, amelyeken az adott adatszennyező alkalmazva van. Minden egyéb Pod a *nodepool1* csomópont-készletben lesz ütemezve. Ha további csomópont-készleteket hoz létre, további megterhelések és a megromlások használatával korlátozhatja, hogy milyen hüvelyek ütemezhetők a csomópont-erőforrásokon.
 
-## <a name="specify-a-tag-for-a-node-pool"></a>Válasszon címkét egy csomópont-készlethez
+## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Válassza ki a csomópont-készlethez tartozó Taint, címkét vagy címkét
 
-Egy Azure-címkét alkalmazhat a Node-készletekre az AK-fürtben. A csomópont-készletre alkalmazott címkéket a rendszer a csomóponton belüli összes csomópontra alkalmazza, és a frissítésekkel megőrzi őket. A címkék a csomópont-készlethez hozzáadott új csomópontokra is vonatkoznak a kiskálázási műveletek során. A címkék hozzáadásával olyan feladatok segíthetnek, mint például a szabályzatok nyomon követése vagy a költségbecslés.
+A csomópontok létrehozásakor megadhatja az adott csomópont-készlethez tartozó adatterületeket, címkéket vagy címkéket. Ha egy Taint, címkét vagy címkét ad hozzá, az adott csomóponton belüli összes csomópont a megromlást, címkét vagy címkét is megkapja.
+
+Ha a csomópontot szennyező elemekkel szeretné létrehozni, használja [az az AK nodepool Add][az-aks-nodepool-add]. Adja meg a *taintnp* nevet, és a `--node-taints` paraméterrel adja meg az *SKU = GPU:* a Taint a szennyező adataihoz.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name taintnp \
+    --node-count 1 \
+    --node-taints sku=gpu:NoSchedule \
+    --no-wait
+```
+
+Az az [AK nodepool List][az-aks-nodepool-list] parancs kimenetének következő példája azt mutatja, hogy a *Taintnp* csomópontokat *hoz létre* a megadott *nodeTaints*:
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "taintnp",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "nodeTaints":  {
+      "sku": "gpu:NoSchedule"
+    },
+    ...
+  },
+ ...
+]
+```
+
+A szennyező adatok láthatók a Kubernetes a csomópontok ütemezési szabályainak kezelésére.
 
 > [!IMPORTANT]
-> Ha használni szeretné a csomópont-készlet címkéit, szüksége lesz az *AK-előnézeti CLI-* bővítmény 0.4.29 vagy újabb verziójára. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg a rendelkezésre álló frissítéseket:
+> A csomópont-címkék és címkék használatához a CLI *-előnézet CLI-* bővítményének 0.4.35 vagy újabb verziójára van szükség. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg a rendelkezésre álló frissítéseket:
 > 
 > ```azurecli-interactive
 > # Install the aks-preview extension
@@ -464,7 +502,51 @@ Egy Azure-címkét alkalmazhat a Node-készletekre az AK-fürtben. A csomópont-
 > az extension update --name aks-preview
 > ```
 
-Hozzon létre egy csomópont-készletet az az [AK Node Pool Add][az-aks-nodepool-add]paranccsal. Adja meg a *tagnodepool* nevet, és a `--tag` paraméter használatával adja meg a *dept = it* és a *costcenter = 9999* címkét.
+A csomópont-készlet létrehozása során címkéket is hozzáadhat egy csomópont-készlethez. A csomópont-készleten beállított címkéket a rendszer hozzáadja a csomópont-készlet minden egyes csomópontjára. Ezek a [címkék láthatók a Kubernetes][kubernetes-labels] a csomópontok ütemezési szabályainak kezelésére.
+
+Ha címkével rendelkező csomópont-készletet szeretne létrehozni, használja [az az AK nodepool Add][az-aks-nodepool-add]. Adja meg a *labelnp* nevet, és a `--labels` paraméterrel adja meg a *dept = it* és a *costcenter = 9999* címkét.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name labelnp \
+    --node-count 1 \
+    --labels dept=IT costcenter=9999 \
+    --no-wait
+```
+
+> [!NOTE]
+> A csomópont-készlet létrehozásakor csak a csomópont-készletek esetében lehet beállítani a címkét. A címkéknek is kulcs/érték pároknak kell lenniük, és [érvényes szintaxissal][kubernetes-label-syntax]kell rendelkezniük.
+
+Az az [AK nodepool List][az-aks-nodepool-list] parancs kimenetének következő példája azt mutatja, hogy a *Labelnp* csomópontokat *hoz létre* a megadott *nodeLabels*:
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "labelnp",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "nodeLabels":  {
+      "dept": "IT",
+      "costcenter": "9999"
+    },
+    ...
+  },
+ ...
+]
+```
+
+Egy Azure-címkét alkalmazhat a Node-készletekre az AK-fürtben. A csomópont-készletre alkalmazott címkéket a rendszer a csomóponton belüli összes csomópontra alkalmazza, és a frissítésekkel megőrzi őket. A címkéket a rendszer a csomópont-készlethez hozzáadott új csomópontokra is alkalmazza a kibővíthető műveletek során. A címkék hozzáadásával olyan feladatok segíthetnek, mint például a szabályzatok nyomon követése vagy a költségbecslés.
+
+Hozzon létre egy csomópont-készletet az az [AK nodepool Add][az-aks-nodepool-add]paranccsal. Adja meg a *tagnodepool* nevet, és a `--tag` paraméter használatával adja meg a *dept = it* és a *costcenter = 9999* címkét.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -617,13 +699,13 @@ A Resource Manager-sablonban definiált csomópont-készlet beállításaitól �
 > [!WARNING]
 > A nyilvános IP-címek/csomópontok kiosztásának előnézete során a rendszer nem használhatja a *standard Load BALANCER SKU-t az AK-ban* , mert lehetséges terheléselosztó-szabályok ütköznek a virtuális gépek üzembe helyezésével. Ennek a korlátozásnak az eredményeképpen a Windows-ügynök készletei nem támogatottak ehhez az előzetes verziójú szolgáltatáshoz. Az előzetes verzióban az *Alapszintű Load BALANCER SKU* -t kell használnia, ha csomópontként kell hozzárendelni egy nyilvános IP-címet.
 
-Az AK-csomópontok nem igénylik a saját nyilvános IP-címeiket a kommunikációhoz. Bizonyos esetekben azonban előfordulhat, hogy a csomópontok csomópontjain a saját nyilvános IP-címeiket kell megadni. Egy példa a játékra, ahol a konzolnak közvetlen csatlakoznia kell egy felhőalapú virtuális géphez a ugrások minimalizálásához. Ezt úgy érheti el, ha regisztrál egy külön előzetes verziójú szolgáltatásra, a Node nyilvános IP-címére (előzetes verzió).
+Az AK-csomópontok nem igénylik a saját nyilvános IP-címeiket a kommunikációhoz. Bizonyos esetekben azonban előfordulhat, hogy a csomópontok csomópontjain a saját nyilvános IP-címeiket kell megadni. Egy példa a játékra, ahol a konzolnak közvetlen csatlakoznia kell egy felhőalapú virtuális géphez a ugrások minimalizálásához. Ez a forgatókönyv egy külön előzetes verziójú funkció, a Node nyilvános IP-cím (előzetes verzió) regisztrálásával érhető el.
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-A sikeres regisztráció után helyezzen üzembe egy Azure Resource Manager sablont a [fenti](#manage-node-pools-using-a-resource-manager-template) utasítások alapján, és adja hozzá a Boolean Value (logikai érték) tulajdonságot, `enableNodePublicIP` a agentPoolProfiles. `true` alapértelmezett értékként állítsa be az értéket `false` ha nincs megadva. Ez egy csak létrehozási idő tulajdonság, és legalább 2019-06-01-es API-verziót igényel. Ez a Linux-és a Windows-csomópont-készletekre is alkalmazható.
+A sikeres regisztráció után helyezzen üzembe egy Azure Resource Manager sablont a [fenti](#manage-node-pools-using-a-resource-manager-template) utasítások alapján, és adja hozzá a Boolean Value (logikai érték) tulajdonságot, `enableNodePublicIP` a agentPoolProfiles. `true` alapértelmezett értékként állítsa be az értéket `false` ha nincs megadva. Ez a tulajdonság csak létrehozási idő tulajdonság, és legalább 2019-06-01-es API-verziót igényel. Ez a Linux-és a Windows-csomópont-készletekre is alkalmazható.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -652,6 +734,8 @@ A Windows Server Container Node-készletek létrehozásához és használatához
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-taint]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#taint
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[kubernetes-labels]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+[kubernetes-label-syntax]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 
 <!-- INTERNAL LINKS -->
 [aks-windows]: windows-container-cli.md

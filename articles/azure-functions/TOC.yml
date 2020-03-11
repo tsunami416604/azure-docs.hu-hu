@@ -138,7 +138,7 @@
       displayName: best practice
     - name: A tárterülettel kapcsolatos szempontok
       href: storage-considerations.md
-      displayName: 'encryption, keys'
+      displayName: 'encryption, keys, mount, files'
     - name: Functions-proxyk
       href: functions-proxies.md
     - name: Hálózatkezelési lehetőségek

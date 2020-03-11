@@ -4,23 +4,22 @@ description: Ismerje meg, hogyan hozhat létre egy hagyományos metrikai riaszt�
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
-ms.date: 4/27/2018
+ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: c25886308b4f9560b336982b87bd4b38b306bcb2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 4f840d3771c2520e239d8ff3416722429f9502f3
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668043"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037227"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
-Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablont](../../azure-resource-manager/templates/template-syntax.md) az Azure metrikai riasztások konfigurálásához. Ez lehetővé teszi a riasztások automatikus beállítását az erőforrásokon a létrehozásuk során, így biztosítva, hogy az összes erőforrás megfelelően legyen figyelve.
-
-> [!NOTE]
+> [!WARNING]
 > 
-> Ez a cikk a **klasszikus metrikai riasztások** Resource Manager-sablonok használatával történő létrehozását ismerteti. Ha a sablonok használatával szeretne [újabb metrikai riasztásokat](../../azure-monitor/platform/alerts-metric-near-real-time.md) létrehozni, [Ez a cikk](alerts-metric-create-templates.md) a részleteket ismerteti.
+> Ez a cikk a **klasszikus metrikai riasztások** Resource Manager-sablonok használatával történő létrehozását ismerteti. A klasszikus riasztások 2019 augusztusában lettek kivezetve, és a beállítás értéke teljes mértékben elavulttá válik a 2020 júniusában. Nem hozhat létre új klasszikus riasztásokat a nyilvános Azure-ban. Előfordulhat, hogy az Azure egyes regionális verziói még mindig rendelkeznek a lehetőséggel, de javasoljuk, hogy hozzon létre [újabb metrikai riasztásokat](../../azure-monitor/platform/alerts-metric-near-real-time.md) a sablonok használatával, ha ez egyáltalán lehetséges. [Ez a cikk](alerts-metric-create-templates.md) a részleteket ismerteti.
 >
 
+Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablont](../../azure-resource-manager/templates/template-syntax.md) a klasszikus Azure metrikus riasztások konfigurálásához. Ez lehetővé teszi a riasztások automatikus beállítását az erőforrásokon a létrehozásuk során, így biztosítva, hogy az összes erőforrás megfelelően legyen figyelve.
 
 Az alapszintű lépések a következők:
 

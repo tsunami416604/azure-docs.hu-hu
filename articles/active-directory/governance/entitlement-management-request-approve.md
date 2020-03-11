@@ -16,12 +16,12 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 634e3532e13fcba5c9b802bd77c9530c0a831eb8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 20ec63efe16f1120ca6e7d07c8917d8ad2b3a0e0
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376567"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968016"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Hozzáférési kérelmek jóváhagyása vagy elutasítása az Azure AD-jogosultságok kezelésében
 
@@ -43,7 +43,7 @@ A hozzáférési kérelmek jóváhagyásának vagy megtagadásának első lépé
 
 Ha nem rendelkezik az e-mail-címmel, a következő lépésekkel megtalálhatja a jóváhagyásra váró hozzáférési kérelmeket.
 
-1. Jelentkezzen be a saját hozzáférési portálra a [https://myaccess.microsoft.com](https://myaccess.microsoft.com)címen.
+1. Jelentkezzen be a saját hozzáférési portálra a [https://myaccess.microsoft.com](https://myaccess.microsoft.com)címen.  (Az USA kormánya számára a saját hozzáférési portál hivatkozásában található tartomány `myaccess.microsoft.us`lesz.)
 
 1. A bal oldali menüben kattintson a **jóváhagyások** elemre, hogy megtekintse a hozzáférési kérelmek függőben lévő jóváhagyásának listáját.
 

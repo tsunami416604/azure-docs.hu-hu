@@ -1,21 +1,17 @@
 ---
 title: Ubuntu Linux VHD létrehozása és feltöltése az Azure-ban
 description: Megtudhatja, hogyan hozhat létre és tölthet fel egy Ubuntu Linux operációs rendszert tartalmazó Azure-beli virtuális merevlemezt (VHD-t).
-services: virtual-machines-linux
-documentationcenter: ''
 author: mimckitt
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 1b343fef13127f2b74da92e6b2c5b51767e6e325
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: cbb10d544cb299e15022ae47f00d3887d03619c0
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251683"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970288"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Ubuntu virtuális gép előkészítése az Azure-hoz
 

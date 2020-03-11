@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: 54a2aac3db47d60f02a45adae9aaa6077d675a43
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: bfbaa03469ee04ff900a215aadd8c814efcba761
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716895"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037523"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>A Docker Compose használata több tároló üzembe helyezéséhez
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan helyezhet üzembe több Azure Cognitive Services-tá
 
 > A [Docker-összeállítás](https://docs.docker.com/compose/) egy olyan eszköz, amely több tárolós Docker-alkalmazások definiálására és futtatására szolgál. Az összeállítás során YAML-fájlt használ az alkalmazás szolgáltatásainak konfigurálásához. Ezután egyetlen parancs futtatásával hozza létre és indítsa el az összes szolgáltatást a konfigurációból.
 
-Hasznos lehet több tároló lemezképének összehangolása egyetlen gazdagépen. Ebben a cikkben a szövegfelismerés és az űrlap-felismerő tárolókat fogjuk egyesíteni.
+Hasznos lehet több tároló lemezképének összehangolása egyetlen gazdagépen. Ebben a cikkben az olvasási és űrlap-felismerő tárolókat fogjuk egyesíteni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -70,11 +70,11 @@ services:
       - "5010:5000"
 
   ocr:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text"
+    image: "containerpreview.azurecr.io/microsoft/cognitive-services-read"
     environment:
       eula: accept
-      apikey: # < Your recognize text API key >
-      billing: # < Your recognize text billing URL >
+      apikey: # < Your computer vision API key >
+      billing: # < Your computer vision billing URL >
     ports:
       - "5021:5000"
 ```
@@ -87,9 +87,9 @@ services:
 A Docker-összeállítási fájlok lehetővé teszik a megadott szolgáltatás életciklusának minden szakaszának kezelését: a szolgáltatások elindítása, leállítása és újraépítése; a szolgáltatás állapotának megtekintése; és a log streaming. Nyisson meg egy parancssori felületet a projekt könyvtárában (ahol a Docker-levélírás. YAML fájl található).
 
 > [!NOTE]
-> A hibák elkerülése érdekében győződjön meg arról, hogy a gazdagép megfelelően osztja meg a meghajtókat a Docker Engine használatával. Ha például a E:\publicpreview a Docker-levélírás. YAML fájlban található könyvtárként használja, ossza meg az E meghajtót a Docker használatával.
+> A hibák elkerülése érdekében győződjön meg arról, hogy a gazdagép megfelelően osztja meg a meghajtókat a Docker Engine használatával. Ha például a *E:\publicpreview* a *Docker-levélírás. YAML* fájlban található könyvtárként használja, ossza meg az **E** meghajtót a Docker használatával.
 
-A parancssori felületen hajtsa végre a következő parancsot a Docker-levélírás. YAML fájlban definiált összes szolgáltatás elindításához (vagy újraindításához):
+A parancssori felületen hajtsa végre a következő parancsot a *Docker-levélírás. YAML* fájlban definiált összes szolgáltatás elindításához (vagy újraindításához):
 
 ```console
 docker-compose up
@@ -113,8 +113,8 @@ fd93b5f95865: Pull complete
 ef41dcbc5857: Pull complete
 4d05c86a4178: Pull complete
 34e811d37201: Pull complete
-Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:)...
-latest: Pulling from microsoft/cognitive-services-recognize-text
+Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-read:)...
+latest: Pulling from microsoft/cognitive-services-read
 f476d66f5408: Already exists
 8882c27f669e: Already exists
 d9af21273955: Already exists
@@ -167,18 +167,12 @@ ocr_1    | Application started. Press Ctrl+C to shut down.
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
 2ce533f88e80        containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer   latest
-4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text    latest
+4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-read              latest
 ```
 
-### <a name="test-the-recognize-text-container"></a>A szövegfelismerés tároló tesztelése
+### <a name="test-containers"></a>Tárolók tesztelése
 
-Nyisson meg egy böngészőt a gazdagépen, és nyissa meg a **localhost** -ot a Docker-levélírás. YAML fájl megadott portjának használatával, például http://localhost:5021/swagger/index.html. Az szövegfelismerés-végpont teszteléséhez használhatja az API "kipróbálás" funkcióját.
-
-![szövegfelismerés tároló](media/recognize-text-swagger-page.png)
-
-### <a name="test-the-form-recognizer-container"></a>Az űrlap-felismerő tároló tesztelése
-
-Nyisson meg egy böngészőt a gazdagépen, és nyissa meg a **localhost** -ot a Docker-levélírás. YAML fájl megadott portjának használatával, például http://localhost:5010/swagger/index.html. A "kipróbálás" funkció az API-ban az űrlap-felismerő végpont tesztelésére használható.
+Nyisson meg egy böngészőt a gazdagépen, és nyissa meg a **localhost** -ot a *Docker-levélírás. YAML* fájl megadott portjának használatával, például http://localhost:5021/swagger/index.html. Az API **kipróbálás** funkciójának használatával például tesztelheti az űrlap-felismerő végpontot. Mindkét tárolónak elérhetőnek és tesztelhető kell lennie.
 
 ![Űrlap-felismerő tároló](media/form-recognizer-swagger-page.png)
 

@@ -1,6 +1,6 @@
 - name: Cloud Foundry – dokumentáció
-  href: index.md
-- name: Gyors útmutatók
+  href: index.yml
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Marketplace-sablon

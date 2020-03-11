@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 60ff8769192191ba112008e7baee23740147dfe9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: bd9e916d1e50d9d5bc0717a1d283b3dcf5d383c9
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367033"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037012"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Oktatóanyag: a helyszíni SharePoint-integráció Azure Active Directory
 
@@ -206,7 +206,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a  **Create** (Létrehozás) gombra.
 
 ### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Azure AD biztonsági csoport létrehozása a Azure Portalban
 
@@ -271,7 +271,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 10. Konfigurálja a AzureCP a helyszíni SharePoint-farmon vagy egy alternatív egyéni jogcím-szolgáltatói megoldáson.  Ebben a példában a AzureCP-t használjuk.
 
     > [!NOTE]
-    > Vegye figyelembe, hogy a AzureCP nem Microsoft-termék, vagy nem támogatott a Microsoft technikai támogatási szolgálata. AzureCP letöltése, telepítése és konfigurálása a helyszíni SharePoint-farmon https://yvand.github.io/AzureCP/ 
+    > Vegye figyelembe, hogy a AzureCP nem Microsoft-termék, vagy nem támogatott a Microsoft technikai támogatási szolgálata. AzureCP letöltése, telepítése és konfigurálása a helyszíni SharePoint-farmon [https://yvand.github.io/AzureCP/](https://yvand.github.io/AzureCP/) 
 
 11. **Hozzáférés biztosítása a Azure Active Directory biztonsági csoporthoz a helyszíni SharePointban** : – a csoportoknak hozzáférést kell biztosítani az alkalmazáshoz a helyszíni SharePointban.  A következő lépésekkel állíthatja be a webalkalmazás eléréséhez szükséges engedélyeket.
 

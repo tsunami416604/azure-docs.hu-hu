@@ -1,25 +1,17 @@
 ---
 title: Az IBM DB2-pureScale üzembe helyezése az Azure-ban
 description: Megtudhatja, hogyan helyezhet üzembe egy közelmúltbeli példát a vállalatnak az IBM DB2-környezetből, amely a z/OS-ben fut az Azure-ban az IBM DB2-pureScale.
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
-manager: edprice
-editor: edprice
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: c4db27b938934aafa350866991ff174cbdbed0ac
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291549"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968892"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Az IBM DB2-pureScale üzembe helyezése az Azure-ban
 
@@ -27,7 +19,7 @@ Ez a cikk azt ismerteti, hogyan lehet üzembe helyezni egy olyan [példa archite
 
 Az áttelepítéshez használt lépések követéséhez tekintse meg a [DB2onAzure](https://aka.ms/db2onazure) adattár telepítési parancsfájljait a githubon. Ezek a parancsfájlok egy tipikus, közepes méretű online tranzakció-feldolgozási (OLTP) munkaterhelés architektúráján alapulnak.
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Első lépések
 
 Az architektúra üzembe helyezéséhez töltse le és futtassa a [DB2onAzure](https://aka.ms/db2onazure) -tárházban található Deploy.sh-parancsfájlt a githubon.
 
@@ -79,11 +71,11 @@ A GitHub-tárház tartalmazza a DB2server. RSP, a Response (. RSP) fájlt, amely
 > [!NOTE]
 > A DB2server. RSP egy minta válaszfájlt tartalmaz a GitHubon található [DB2onAzure](https://aka.ms/db2onazure) -tárházban. Ha ezt a fájlt használja, szerkesztenie kell, mielőtt működni fog a környezetben.
 
-| Képernyő neve               | Mező                                        | Value (Díj)                                                                                                 |
+| Képernyő neve               | Mező                                        | Érték                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Üdvözöljük                   |                                              | Új telepítés                                                                                           |
+| Üdvözlőképernyő                   |                                              | Új telepítés                                                                                           |
 | Termék kiválasztása          |                                              | A DB2 verziója 11.1.3.3. Kiszolgálói kiadások DB2 pureScale                                              |
-| Konfiguráció             | Könyvtár                                    | /data1/opt/ibm/db2/V11.1                                                                              |
+| Konfiguráció             | Címtár                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | A telepítés típusának kiválasztása                 | Tipikus                                                                                               |
 |                           | Elfogadom az IBM használati feltételeit                     | Bejelölve                                                                                               |
 | Példány tulajdonosa            | Meglévő felhasználó, példány, Felhasználónév        | DB2sdin1                                                                                              |

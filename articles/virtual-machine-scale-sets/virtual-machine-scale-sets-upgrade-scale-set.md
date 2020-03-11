@@ -1,19 +1,19 @@
 ---
 title: Azure virtuálisgép-méretezési csoport módosítása
 description: Ismerje meg, hogyan módosítható és frissíthető egy Azure virtuálisgép-méretezési csoport a REST API-kkal, a Azure PowerShell és az Azure CLI-vel
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 02/14/2018
-ms.author: manayar
-ms.openlocfilehash: 49327ff0c3aeab25de02fc67c049f24597215d45
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.author: mimckitt
+ms.openlocfilehash: af5998a4207521d49ea4fd7956256aa6c880e6e9
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390411"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082638"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport módosítása
 
@@ -311,7 +311,7 @@ A meglévő virtuális gépek frissítéséhez minden létező virtuális gép "
 >[!NOTE]
 > Service Fabric-fürtök csak az *automatikus* módot használhatják, de a frissítést másképp kezelik. További információ: [Service Fabric alkalmazások frissítései](../service-fabric/service-fabric-application-upgrade.md).
 
-A globális méretezési csoport tulajdonságainak egyik típusa nem követi a frissítési szabályzatot. A méretezési csoport operációsrendszer-profiljának (például a rendszergazdai Felhasználónév és a jelszó) módosításai csak az API *2017-12-01* -es vagy újabb verzióiban változtathatók meg. Ezek a módosítások csak a méretezési csoport modelljének módosítása után létrehozott virtuális gépekre vonatkoznak. Ahhoz, hogy a meglévő virtuális gépek naprakészek legyenek, minden meglévő virtuális gép "rendszerképét" kell végrehajtania. Ezt a rendszerképet a következő paranccsal teheti meg:
+A globális méretezési csoport tulajdonságainak egyik típusa nem követi a frissítési szabályzatot. A méretezési csoport operációs rendszerének és az adatlemez-profil (például a rendszergazdai Felhasználónév és a jelszó) módosításai csak az API *2017-12-01* -es vagy újabb verzióiban módosíthatók. Ezek a módosítások csak a méretezési csoport modelljének módosítása után létrehozott virtuális gépekre vonatkoznak. Ahhoz, hogy a meglévő virtuális gépek naprakészek legyenek, minden meglévő virtuális gép "rendszerképét" kell végrehajtania. Ezt a rendszerképet a következő paranccsal teheti meg:
 
 - REST API a [számítás/virtualmachinescalesets/rendszerkép](/rest/api/compute/virtualmachinescalesets/reimage) a következőképpen:
 

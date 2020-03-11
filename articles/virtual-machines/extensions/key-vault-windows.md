@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d0491a5178331c53248d9c764d9ff1c6a6970683
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 3de4baa4eafe26cff18d9b1bcfb59398439994b0
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425782"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969772"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>A Windows rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -77,7 +77,7 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 | linkOnRenewal | false | logikai |
 | certificateStoreLocation  | LocalMachine | sztring |
 | requiredInitialSync | true | logikai |
-| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | karakterlánc-tömb
+| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | Karakterlánc-tömb
 
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
@@ -101,6 +101,7 @@ A virtuálisgép-bővítmények JSON-konfigurációját a sablon virtuálisgép-
       "typeHandlerVersion": "1.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
+        "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
           "certificateStoreName": <certificate store name, e.g.: "MY">,
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,

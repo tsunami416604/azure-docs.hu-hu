@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8e170c27923d2bb091c4121e350809b85e4c48a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f56717c086f005b1155988e2041ff2e717e047f2
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452108"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081692"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>A Service Fabric-fürt kiegyensúlyozása
 A Service Fabric fürterőforrás-kezelő támogatja a dinamikus betöltési változásokat, a csomópontok vagy szolgáltatások hozzáadására és eltávolítására való reagálást. Emellett automatikusan kijavította a megkötések megsértését, és proaktív módon kiegyensúlyozza a fürtöt. Milyen gyakran történtek ezek a műveletek, és mi váltja ki őket?
@@ -83,7 +83,7 @@ A kiegyensúlyozás kiváltásának fő vezérlője a kiegyensúlyozó küszöb�
 
 Az egyensúlyi küszöbértékek meghatározása a fürt definíciójának részeként, metrikus alapon történik. A metrikákkal kapcsolatos további információkért tekintse meg [ezt a cikket](service-fabric-cluster-resource-manager-metrics.md).
 
-ClusterManifest. XML
+ClusterManifest.xml
 
 ```xml
     <Section Name="MetricBalancingThresholds">
@@ -144,7 +144,7 @@ Tegyük fel, hogy megtartjuk a jelen metrika három értékének kiegyensúlyoz�
 
 Az elosztási küszöbértékekhez hasonlóan a tevékenység küszöbértékei a fürt definíciója szerint vannak definiálva a metrikán keresztül:
 
-ClusterManifest. XML
+ClusterManifest.xml
 
 ``` xml
     <Section Name="MetricActivityThresholds">
@@ -205,6 +205,7 @@ A fürterőforrás-kezelő automatikusan kiszámítja, hogy mely szolgáltatáso
 * A metrikák azt jelentik, hogyan kezeli a Service Fabric fürterőforrás-kezelő a fürtben a felhasználást és a kapacitást. A metrikákkal és azok konfigurálásával kapcsolatos további tudnivalókért tekintse meg [ezt a cikket](service-fabric-cluster-resource-manager-metrics.md)
 * A szállítási költség az egyik módja annak, hogy a fürterőforrás-kezelőnek jelezze, hogy bizonyos szolgáltatások drágábbak a többinél. További információ a mozgási díjakról: [ebben a cikkben](service-fabric-cluster-resource-manager-movement-cost.md)
 * A fürterőforrás-kezelő több szabályozást is tartalmaz, amelyekkel lelassíthatja a forgalom változását a fürtben. Általában nem szükségesek, de ha [szüksége van rájuk, megismerheti őket](service-fabric-cluster-resource-manager-advanced-throttling.md)
+* A fürterőforrás-kezelő felismeri és kezeli az alfürtözést (ez a helyzet akkor fordul elő, ha elhelyezési megkötéseket és kiegyensúlyozást használ). Ha szeretné megtudni, hogy az alfürtözés hogyan befolyásolhatja az egyensúlyt, és hogyan kezelheti azt, tekintse meg [a következőt](service-fabric-cluster-resource-manager-subclustering.md) :
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

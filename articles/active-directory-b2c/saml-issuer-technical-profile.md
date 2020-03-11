@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f038868e80b600c805a1f33a54f9d0032e81dab8
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: c35f85b9ec5d86d1cd61f165b891c576c06a03db
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933192"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967269"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Az SAML-token kiállítójának műszaki profiljának meghatározása egy Azure Active Directory B2C egyéni házirendben
 
@@ -70,6 +70,12 @@ A CryptographicKeys elem a következő attribútumokat tartalmazza:
 ## <a name="session-management"></a>Munkamenet-kezelés
 
 Az Azure AD B2C SAML-munkamenetek a függő entitások közötti konfigurálásához a `UseTechnicalProfileForSessionManagement` elem attribútuma, amely a [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) SSO-munkamenetre hivatkozik.
+
+## <a name="next-steps"></a>Következő lépések
+
+A következő cikkből megtudhatja, hogyan használhatja az SAML kiállítói technikai profilt:
+
+- [SAML-alkalmazás regisztrálása Azure AD B2C](connect-with-saml-service-providers.md)
 
 
 

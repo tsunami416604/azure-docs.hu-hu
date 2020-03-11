@@ -79,6 +79,8 @@
       href: sample-designer-datasets.md
     - name: Teljes körű MLOps-példák
       href: 'https://github.com/microsoft/MLOps'
+    - name: Fejlesztői folyamatok
+      href: samples-designer.md
 - name: Alapelvek
   items:
     - name: Munkaterület
@@ -216,30 +218,6 @@
           href: how-to-cicd-data-ingestion.md
     - name: Modellek betanítása
       items:
-        - name: A tervező használata
-          displayName: sample designer experiments
-          items:
-            - name: Ár előrejelzése
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-basic.md
-            - name: Ár előrejelzése (speciális)
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
-            - name: Bevétel előrejelzése
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-predict-income.md
-            - name: Hitelkockázat előrejelzése (speciális)
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
-            - name: Forgalom előrejelzése
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-churn.md
-            - name: Repülőjáratok késéseinek előrejelzése
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-flight-delay.md
-            - name: Szövegbesorolás
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-text-classification.md
         - name: Becslők használata gépi tanuláshoz
           items:
             - name: Becslők létrehozása a betanítás során

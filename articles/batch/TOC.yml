@@ -51,6 +51,8 @@
       href: batch-api-basics.md
     - name: API-k és eszközök
       href: batch-apis-tools.md
+    - name: A Batch szolgáltatás hibáinak észlelése és kezelése
+      href: batch-retry-after-errors.md
     - name: Ajánlott eljárások
       href: best-practices.md
     - name: Kvóták és korlátok
@@ -131,8 +133,6 @@
           href: batch-job-schedule.md
         - name: Hibakeresés feladatokban és tevékenységekben
           href: batch-job-task-error-checking.md
-        - name: A Batch szolgáltatás hibáinak észlelése és kezelése
-          href: batch-retry-after-errors.md
     - name: Feladatok és tevékenységek kimenetének megőrzése
       href: batch-task-output.md
       items:

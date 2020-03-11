@@ -1,25 +1,17 @@
 ---
 title: Azure-beli virtuális gép rendszerképének előkészítése a Cloud-init használatával
 description: Meglévő Azure-beli virtuálisgép-rendszerkép előkészítése a Cloud-init használatával történő üzembe helyezéshez
-services: virtual-machines-linux
-documentationcenter: ''
 author: danis
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: a75bceebe584522ee999f86664b8afb9fa00f17b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 73df3a12ebea3b94563d02eda8f1211401d1ae3f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036754"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969179"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Meglévő linuxos Azure VM-rendszerkép előkészítése a Cloud-init használatával
 Ebből a cikkből megtudhatja, hogyan készíthet meglévő Azure-beli virtuális gépet, és hogyan készítheti elő újra az üzembe helyezést, és készen áll a Cloud-init használatára. Az eredményül kapott lemezkép új virtuális gép vagy virtuálisgép-méretezési csoportok üzembe helyezésére használható, amelyek ezt követően a Cloud-init használatával további testre szabhatók a telepítési időpontnál.  Ezek a felhő-init parancsfájlok az első rendszerindítás során futnak az Azure-beli erőforrások kiépítés után. További információ arról, hogyan működik a Cloud-init natív módon az Azure-ban és a támogatott Linux-disztribúciókban: a [Cloud-init áttekintése](using-cloud-init.md)

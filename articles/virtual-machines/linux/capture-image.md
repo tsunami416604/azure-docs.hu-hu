@@ -1,30 +1,19 @@
 ---
-title: Linux rendszerű virtuális gép lemezképének rögzítése az Azure CLI használatával
+title: Linux rendszerű virtuális gép lemezképének rögzítése az Azure CLI-vel
 description: Az Azure CLI használatával rögzítheti az Azure-beli virtuális gép lemezképét, amelyet tömeges üzembe helyezéshez használhat.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: ed7d45fb9148bd441a3798c48be8b25e1da2b8c1
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
-ms.translationtype: HT
+ms.openlocfilehash: 77f6244651551763f5460432655d66267775a256
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78675691"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968240"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Virtuális gép vagy VHD rendszerképének létrehozása
-
-<!-- generalize, image - extended version of the tutorial-->
 
 Ha egy virtuális gép (VM) több példányát szeretné létrehozni az Azure-ban való használatra, rögzítsen egy rendszerképet a virtuális gépről vagy az operációs rendszer VHD-ről. A rendszerkép központi telepítéshez való létrehozásához el kell távolítania a személyes fiókadatok adatait. A következő lépésekben kiépít egy meglévő virtuális gépet, felszabadítja azt, és létrehoz egy rendszerképet. Ezt a rendszerképet használhatja arra, hogy virtuális gépeket hozzon létre az előfizetésében található bármely erőforráscsoporthoz.
 

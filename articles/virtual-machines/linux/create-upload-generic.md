@@ -1,25 +1,17 @@
 ---
-title: Linuxos virtuális merevlemez létrehozása és feltöltése az Azure-ban
+title: Linuxos virtuális merevlemez létrehozása és feltöltése
 description: Megtudhatja, hogyan hozhat létre és tölthet fel egy Linux operációs rendszert tartalmazó Azure-beli virtuális merevlemezt (VHD-t).
-services: virtual-machines-linux
-documentationcenter: ''
 author: mimckitt
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager,azure-service-management
-ms.assetid: d351396c-95a0-4092-b7bf-c6aae0bbd112
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mimckitt
-ms.openlocfilehash: 7f2422df3a2449999e086e74e9446d125ffecbda
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 9a0332da060c4a094090c4ea1f5033a889496596
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385034"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967874"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Nem támogatott disztribúciók adatai
 

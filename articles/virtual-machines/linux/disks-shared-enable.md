@@ -2,17 +2,17 @@
 title: Megosztott lemezek engedélyezése az Azure Managed Disks szolgáltatásban
 description: Egy megosztott lemezzel (előzetes verzió) rendelkező Azure felügyelt lemez konfigurálása, amely több virtuális gépen is megosztható
 author: roygara
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 4562567aea667dd7efadbcfb033e782ec9418e3f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 0e925abf151abc1a229b57bb035775430fa5332f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472060"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970375"
 ---
 # <a name="enable-shared-disk"></a>Megosztott lemez engedélyezése
 

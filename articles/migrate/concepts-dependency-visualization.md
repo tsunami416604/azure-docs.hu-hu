@@ -3,12 +3,12 @@ title: Függőségek vizualizációja az Azure Migrate-ben
 description: Áttekintést nyújt az értékelési számításokról a Azure Migrate Server Assessment Service-ben
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: f24656d02e19f422ff26e6b06d1631a9128dff43
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: fd069ed98fa34fd6f281c98a061925f96c7bb2cd
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361982"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081909"
 ---
 # <a name="dependency-visualization"></a>Függőségek vizualizációja
 
@@ -55,7 +55,7 @@ A függőségi vizualizáció üzembe helyezésének két lehetősége van:
 **Támogatott operációs rendszerek** | Tekintse át az ügynök nélküli vizualizációhoz támogatott [operációs rendszereket](migrate-support-matrix-vmware.md#agentless-dependency-visualization) .
 **Virtuális gépek** | **Vmware-eszközök**: az elemezni kívánt virtuális gépeken telepíteni és futtatni kell a VMware-eszközöket.<br/><br/> **Fiók**: a Azure Migrate készüléken hozzá kell adnia egy olyan felhasználói fiókot, amely használható a virtuális gépek elemzéshez való eléréséhez.<br/><br/> **Windows rendszerű virtuális gépek**: a felhasználói fióknak helyi vagy tartományi rendszergazdának kell lennie a gépen.<br/><br/> **Linuxos virtuális gépek**: a fiókhoz rendszergazdai jogosultság szükséges. A felhasználói fióknak ezt a két funkciót kell megadnia a/bin/netstat és a/bin/ls fájlokhoz: CAP_DAC_READ_SEARCH és CAP_SYS_PTRACE. | [Ismerkedjen meg](migrate-appliance.md) az Azure Migrate berendezéssel.
 **VMware** | **vCenter**: a készüléknek szüksége van egy vCenter Server fiókra, amely csak olvasási hozzáféréssel rendelkezik, és Virtual Machines > vendég műveletekhez engedélyezett jogosultságokkal rendelkezik.<br/><br/> **ESXi-gazdagépek**: az elemezni kívánt virtuális gépeket futtató ESXi-gazdagépeken a Azure Migrate készüléknek képesnek kell lennie csatlakozni a 443-es TCP-porthoz.
-**Összegyűjtött adatok** |  Az ügynök nélküli függőségi vizualizáció úgy működik, hogy a TCP-kapcsolatok adatait rögzíti a gépekről, amelyeken engedélyezve van. A függőségi felderítés elindítása után a készülék öt percenként gyűjti össze ezeket az adatokat a gépekről:<br/> – TCP-kapcsolatok.<br/> – Aktív kapcsolatokkal rendelkező folyamatok neve.<br/> -A folyamatot futtató telepített alkalmazások nevei aktív kapcsolatokkal.<br/> – Az összes lekérdezési időszakban észlelt kapcsolatok száma.
+**Összegyűjtött adatok** |  Az ügynök nélküli függőség elemzése úgy működik, hogy a TCP-kapcsolatok adatait olyan gépekről rögzíti, amelyeken engedélyezve van. A függőségi felderítés engedélyezése után a készülék 5 percenként gyűjti a TCP-kapcsolatok adatait a vendég virtuális gépekről. Ezek az adatok a vendég virtuális gépekről vCenter Server a vSphere API-k használatával kerülnek begyűjtésre. A rendszer feldolgozza az összegyűjtött adatokat a készüléken a függőségi információk leforgása és a Azure Migrate 6 óránként történő elküldéséhez. A következő adatokat gyűjti össze az egyes gépekről: <br/> – Aktív kapcsolatokkal rendelkező folyamatok neve.<br/> -Az aktív kapcsolatokkal rendelkező folyamatot futtató alkalmazások nevei.<br/> – A cél port az aktív kapcsolatokon.
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -1,24 +1,17 @@
 ---
-title: DNS-névfeloldási lehetőségek Linux rendszerű virtuális gépekhez az Azure-ban
+title: DNS-névfeloldási beállítások Linux rendszerű virtuális gépekhez
 description: A Linux rendszerű virtuális gépek névfeloldási forgatókönyvei az Azure IaaS, beleértve a megadott DNS-szolgáltatásokat, a hibrid külső DNS-t és a saját DNS-kiszolgálóját.
-services: virtual-machines
-documentationcenter: na
 author: RicksterCDN
-manager: gwallace
-editor: tysonn
-ms.assetid: 787a1e04-cebf-4122-a1b4-1fcf0a2bbf5f
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 16dc7d16b3e8f2a4c95e93f9b85c74027291ce19
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084042"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969321"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>DNS-névfeloldási lehetőségek Linux rendszerű virtuális gépekhez az Azure-ban
 Az Azure alapértelmezés szerint DNS-névfeloldást biztosít az egyetlen virtuális hálózatban lévő összes virtuális géphez. Saját DNS-névfeloldási megoldást is alkalmazhat saját DNS-szolgáltatásainak konfigurálásával az Azure-gazdagépeken futó virtuális gépeken. A következő forgatókönyvek segíthetnek kiválasztani az adott helyzetnek megfelelőt.
@@ -30,7 +23,7 @@ A használt névfeloldás típusa attól függ, hogy a virtuális gépek és a s
 
 Az alábbi táblázat a forgatókönyveket és a hozzájuk tartozó névfeloldási megoldásokat szemlélteti:
 
-| **Forgatókönyv** | **Megoldás** | **Suffix** |
+| **Forgatókönyv** | **Megoldás** | **Utótag** |
 | --- | --- | --- |
 | Az azonos virtuális hálózatban lévő szerepkör-példányok vagy virtuális gépek közötti névfeloldás |Az Azure által biztosított névfeloldás |állomásnév vagy teljes tartománynév (FQDN) |
 | Névfeloldás a különböző virtuális hálózatokban lévő szerepkör-példányok vagy virtuális gépek között |Ügyfél által felügyelt DNS-kiszolgálók, amelyek a virtuális hálózatok közötti lekérdezéseket továbbítják az Azure (DNS-proxy) általi feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-using-your-own-dns-server). |Csak FQDN |
@@ -57,7 +50,7 @@ A nyilvános DNS-nevek feloldásával együtt az Azure belső névfeloldást biz
 * A WINS és a NetBIOS nem támogatott.
 * Az állomásnévnek DNS-kompatibilisnek kell lennie.
     A névnek csak 0-9, a-z és '-' értékkel kell rendelkeznie, és nem kezdődhet vagy végződhet "-" értékkel. Lásd: RFC 3696, 2. szakasz.
-* A DNS-lekérdezési forgalom szabályozása minden egyes virtuális gép esetében szabályozható. A szabályozás nem befolyásolja a legtöbb alkalmazást.  Ha a kérelmek szabályozása megfigyelhető, győződjön meg arról, hogy az ügyféloldali gyorsítótárazás engedélyezve van.  További információ: [Az Azure által biztosított névfeloldás](#getting-the-most-from-name-resolution-that-azure-provides)legtöbbje.
+* A DNS-lekérdezési forgalom szabályozása minden egyes virtuális gép esetében szabályozható. A szabályozás nem befolyásolja a legtöbb alkalmazást.  Ha a kérelmek szabályozása megfigyelhető, győződjön meg arról, hogy az ügyféloldali gyorsítótárazás engedélyezve van.  További információ: [Az Azure által biztosított névfeloldás legtöbbje](#getting-the-most-from-name-resolution-that-azure-provides).
 
 ### <a name="getting-the-most-from-name-resolution-that-azure-provides"></a>Az Azure által biztosított névfeloldás legtöbbje
 **Ügyféloldali gyorsítótárazás:**
@@ -75,7 +68,7 @@ Számos különböző DNS-gyorsítótárazási csomag (például DNSMasq) érhet
 1. Telepítse a DNSMasq csomagot ("sudo Zypper install DNSMasq").
 2. Engedélyezze a DNSMasq szolgáltatást ("systemctl engedélyezése DNSMasq. Service").
 3. Indítsa el a DNSMasq szolgáltatást ("systemctl Start DNSMasq. Service").
-4. Szerkessze a "/etc/sysconfig/network/config" kifejezést, és módosítsa a NETCONFIG_DNS_FORWARDER = "" kifejezést a "DNSMasq" értékre.
+4. Szerkessze a "/etc/sysconfig/network/config" kifejezést, és módosítsa NETCONFIG_DNS_FORWARDER = "" kifejezést "DNSMasq" értékre.
 5. Frissítse a resolv. conf fájlt ("netconfig Update") a gyorsítótár helyi DNS-feloldóként való beállításához.
 
 **CentOS by Rogue Wave Software (korábban OpenLogic; hálózatkezelő használ)**
@@ -86,7 +79,7 @@ Számos különböző DNS-gyorsítótárazási csomag (például DNSMasq) érhet
 5. A hálózati szolgáltatás ("a szolgáltatás hálózati újraindítása") újraindítása a gyorsítótár helyi DNS-feloldóként való beállításához
 
 > [!NOTE]
-> : A "DNSMasq" csomag csak a Linux rendszeren elérhető számos DNS-gyorsítótár egyike. Használat előtt tekintse át az igényeinek megfelelő megfelelőségét, valamint azt, hogy nincs-e telepítve más gyorsítótár.
+> : A "DNSMasq" csomag csak a Linux rendszerhez elérhető számos DNS-gyorsítótár egyike. Használat előtt tekintse át az igényeinek megfelelő megfelelőségét, valamint azt, hogy nincs-e telepítve más gyorsítótár.
 >
 >
 
@@ -103,7 +96,7 @@ Ha szeretné megtekinteni a Linux rendszerű virtuális gépek aktuális beáll�
 
 A resolv. conf fájl automatikusan jön létre, és nem szerkeszthető. A "beállítások" sort hozzáadó konkrét lépések eloszlás szerint változnak:
 
-**Ubuntu** (resolvconf használ)
+**Ubuntu** (resolvconf-t használ)
 1. Adja hozzá a Options sort a következőhöz: "/etc/resolveconf/resolv.conf.d/Head".
 2. A frissítéshez futtassa a "resolvconf-u" parancsot.
 
@@ -111,7 +104,7 @@ A resolv. conf fájl automatikusan jön létre, és nem szerkeszthető. A "beál
 1. Adja hozzá a "timeout: 1 kísérlet: 5" értéket a NETCONFIG_DNS_RESOLVER_OPTIONS = "" paraméterhez a következőben: "/etc/sysconfig/network/config".
 2. A frissítéshez futtassa a "netconfig Update" parancsot.
 
-**CentOS by Rogue Wave Software (korábban OpenLogic)** (hálózatkezelő használ)
+**CentOS by Rogue Wave Software (korábban OpenLogic) (a** hálózatkezelő-t használja)
 1. Adja hozzá a "RES_OPTIONS =" időtúllépés: 1 kísérlet: 5 "" értéket a "/etc/sysconfig/network" értékhez.
 2. A frissítéshez futtassa a "Service Network restart" parancsot.
 
@@ -126,7 +119,7 @@ A DNS-továbbítás a virtuális hálózatok közötti DNS-feloldást is lehető
 
 Ha az Azure által biztosított névfeloldást használ, a belső DNS-utótagot a rendszer DHCP használatával adja meg az egyes virtuális gépek számára. Ha saját névfeloldási megoldást használ, ezt az utótagot a rendszer nem adja meg a virtuális gépek számára, mert az utótag más DNS-architektúrákkal is ütközik. Ha a gépeket teljes tartománynévvel vagy a virtuális gépek utótagjának konfigurálásával szeretné megtekinteni, a PowerShell vagy az API használatával határozhatja meg az utótagot:
 
-* Azure Resource Manager által felügyelt virtuális hálózatok esetében az utótag a [hálózati kártya](https://msdn.microsoft.com/library/azure/mt163668.aspx) erőforrásán keresztül érhető el. A `azure network public-ip show <resource group> <pip name>` parancs futtatásával is megjelenítheti a nyilvános IP-cím részleteit, beleértve a hálózati adapter teljes tartománynevét is.
+* Azure Resource Manager által felügyelt virtuális hálózatok esetében az utótag a [hálózati kártya](https://msdn.microsoft.com/library/azure/mt163668.aspx) erőforrásán keresztül érhető el. A `azure network public-ip show <resource group> <pip name>` parancs futtatásával megjelenítheti a nyilvános IP-cím részleteit, beleértve a hálózati adapter teljes tartománynevét is.
 
 Ha az Azure-ba irányuló lekérdezések továbbítása nem felel meg az igényeinek, meg kell adnia a saját DNS-megoldását.  A DNS-megoldásnak a következőket kell tennie:
 

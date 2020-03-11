@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/28/2020
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: 2a670c7bce113de8854b33e407c7de2236edd794
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: ffbac18b3172dd0cd3d430bae5060be0a8d1bb21
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393488"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082014"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez
 
@@ -31,7 +31,7 @@ Ez a cikk a Azure Media Services v3 verzióban bevezetett változásokat ismerte
 Ha az [örökölt Media Services v2 API](../previous/media-services-overview.md)-kra épülő videó-szolgáltatást már ma fejlesztette ki, tekintse át a következő irányelveket és szempontokat a V3 API-kra való Migrálás előtt. A V3 API számos előnnyel és új funkcióval rendelkezik, amelyek javítják a Media Services fejlesztői élményét és képességeit. Azonban a jelen cikk [ismert problémák](#known-issues) című szakaszában leírtak szerint az API-verziók változásai miatt bizonyos korlátozások is fennállnak. Ez az oldal továbbra is érvényben marad, mivel a Media Services csapat tovább fejleszti a V3 API-kat, és megjavítja a verziók közötti hézagokat. 
 
 > [!NOTE]
-> Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](media-services-apis-overview.md#sdks).
+> A [Azure Portal](https://portal.azure.com/) segítségével kezelheti a v3 [élő eseményeket](live-events-outputs-concept.md), megtekintheti (nem kezelheti) a v3-es [eszközöket](assets-concept.md), információt kaphat az API-k eléréséről. További részletekért tekintse meg a [Gyakori kérdések](frequently-asked-questions.md#can-i-use-the-azure-portal-to-manage-v3-resources)című témakört. 
 
 ## <a name="benefits-of-media-services-v3"></a>A Media Services v3 előnyei
   
@@ -131,7 +131,13 @@ Az alábbi táblázat a v2 és v3 kód közötti különbségeket mutatja be a g
 
 ## <a name="known-issues"></a>Ismert problémák
 
-* Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [Rest APIt](https://aka.ms/ams-v3-rest-sdk), a CLI-t vagy az egyik támogatott SDK-t.
+*  Jelenleg a [Azure Portal](https://portal.azure.com/) a következőket használhatja:
+
+    * Media Services v3 [élő események](live-events-outputs-concept.md)kezelése 
+    * v3- [eszközök](assets-concept.md)megtekintése (nem felügyelt) 
+    * [az API-k elérésére vonatkozó információk beolvasása](access-api-portal.md). 
+
+Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](https://aka.ms/ams-v3-rest-ref), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
 * A Media szolgáltatás számára fenntartott egységeket (MRUs-ket) a fiókjában kell kiépíteni a feladatok párhuzamosságának és teljesítményének szabályozása érdekében, különösen a videó-vagy hangelemzést is beleértve. További információért lásd a [médiafeldolgozás skálázását](../previous/media-services-scale-media-processing-overview.md) ismertető cikket. A MRUs a parancssori felület 2,0-es verziójával kezelheti [Media Services v3](media-reserved-units-cli-how-to.md)esetén, a [Azure Portal](../previous/media-services-portal-scale-media-processing.md)vagy a [v2 API](../previous/media-services-dotnet-encoding-units.md)-k használatával. MRUs kell kiépíteni, függetlenül attól, hogy Media Services v2 vagy V3 API-t használ.
 * Media Services a V3 API-val létrehozott entitásokat nem lehet a v2 API-val felügyelni.  
 * A v2 API-ban lévő összes entitás automatikusan megjelenik a V3 API-ban.  A következő példa a két, nem kompatibilis verzióban található entitásokra mutat példát:  

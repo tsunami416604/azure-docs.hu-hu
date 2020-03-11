@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 64f285ea27bde4565d051a84a65c5b4d7b8e9e8c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396520"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967821"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Hivatkozás – IoT Hub kvóták és szabályozás
 
@@ -105,7 +105,7 @@ IoT Hub érvényesíti a többi működési korlátot:
 | A felhőből az eszközre irányuló üzenetkezelés<sup>1</sup> | Az üzenet maximális mérete 64 KB. A kézbesítésre váró üzenetek maximális száma 50 eszközönként. |
 | <sup>1</sup> . közvetlen módszer | A közvetlen metódusok maximális hasznos mérete 128 KB. |
 | Automatikus eszköz-és modul-konfigurációk<sup>1</sup> | 100 konfiguráció/fizetős SKU-hub. 20 konfiguráció egy ingyenes SKU-hubhoz. |
-| Automatikus központi telepítések IoT Edge<sup>1</sup> | 20 modul üzembe helyezése. 100 üzemelő példányok (beleértve a rétegzett központi telepítéseket) fizetett SKU-hubhoz. 10 üzemelő példány ingyenes SKU-hubhoz. |
+| Automatikus központi telepítések IoT Edge<sup>1</sup> | 50 modul üzembe helyezése. 100 üzemelő példányok (beleértve a rétegzett központi telepítéseket) fizetett SKU-hubhoz. 10 üzemelő példány ingyenes SKU-hubhoz. |
 | Ikrek<sup>1</sup> | A kívánt tulajdonságok maximális mérete és a jelentett tulajdonságok rész 32 KB. A címkék maximális mérete 8 KB. |
 | Megosztott elérési házirendek | A megosztott hozzáférési házirendek maximális száma 16 |
 

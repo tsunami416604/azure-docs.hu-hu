@@ -213,6 +213,8 @@
               items:
                 - name: Ügyféloldali JavaScript
                   href: app/javascript.md
+                - name: Forrástérkép JavaScripthez
+                  href: app/source-map-support.md
             - name: Application Insights API összefoglalója
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -1005,6 +1007,8 @@
               href: platform/alerts-activity-log.md
             - name: Migráláskezelési események tevékenységnapló-riasztásokra
               href: platform/migrate-management-alerts.md
+            - name: Webhookséma
+              href: platform/activity-log-alerts-webhook.md
         - name: Szolgáltatás állapotával kapcsolatos riasztások a tevékenységnaplóban
           items:
             - name: Értesítések megtekintése
@@ -1023,8 +1027,6 @@
               href: platform/alerts-common-schema-definitions.md
             - name: A gyakori riasztási séma és a Logic Apps integrálása
               href: platform/alerts-common-schema-integrations.md
-            - name: Webhookséma
-              href: platform/activity-log-alerts-webhook.md
             - name: Az SMS-riasztás viselkedése
               href: platform/alerts-sms-behavior.md
             - name: Az értesítési arány korlátozása

@@ -8,12 +8,12 @@ ms.date: 03/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: f19e4e34b2ec8cebc9e1841f277f26fba941bb89
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: bb78536326885e043279de1ff77e6e8efcd95193
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673982"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037156"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint (előzetes verzió) használatával
 
@@ -73,6 +73,9 @@ Tartsa meg az alapértelmezett beállításokat.
 ## <a name="create-your-web-app-and-private-endpoint"></a>Webalkalmazás és privát végpont létrehozása
 
 Ebben a szakaszban egy magánhálózati webalkalmazást hoz létre egy privát végpont használatával.
+
+> [!Note]
+>A privát végpont funkció csak a prémium v2-hez és a külső bevezetési SKU-hoz való elkülönítéshez érhető el
 
 ### <a name="web-app"></a>Webalkalmazás
 
@@ -179,7 +182,7 @@ Ha elkészült a privát végponttal, a webalkalmazással és a virtuális gépp
 1. Válassza az erőforráscsoport törlése lehetőséget.
 1. Írja be a Ready-RG értéket az ERŐFORRÁSCSOPORT nevének beírásához, majd válassza a Törlés lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy webalkalmazáson és egy privát végponton. Csatlakozik egy virtuális géphez az internetről, és biztonságosan kommunikál a webalkalmazással a privát hivatkozás használatával. További információ a privát végpontról: [Mi az az Azure Private Endpoint][privateendpoint].
 

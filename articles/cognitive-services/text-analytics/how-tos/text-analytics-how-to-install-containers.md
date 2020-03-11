@@ -9,20 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: 6e05dc2136211bcd15a9f0583358b05ccbf96f5a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 65033f9b6599d690b1097b4b78aa01148a40fc39
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383159"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037505"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>A Text Analytics-tárolók telepítése és futtatása
 
 A tárolók lehetővé teszik a szöveges elemzési API-k futtatását a saját környezetében, és kiválóan használhatók az adott biztonsági és adatirányítási követelményekhez. A Text Analytics tárolók fejlett természetes nyelvi feldolgozást biztosítanak a nyers szövegeken, és három fő funkciót tartalmaznak: a hangulat elemzését, a kulcsfontosságú kifejezés kinyerését és a nyelvfelismerés. Az entitások csatolása jelenleg nem támogatott egy tárolóban.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+> [!IMPORTANT]
+> Az ingyenes fiók havonta 5 000 tranzakcióra van korlátozva, és csak az **ingyenes** és a **standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">szintű <span class="docon docon-navigate-external x-hidden-focus"></span> díjszabás</a> érvényes a tárolók esetében. A tranzakciós kérelmek díjszabásával kapcsolatos további információkért lásd az [Adatkorlátokat](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)ismertető témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,15 +51,15 @@ Szövegelemzés tárolók használata előtt a következő előfeltételeknek ke
 
 A következő táblázat ismerteti a minimális és ajánlott, processzormagot legalább 2.6-os gigahertz (GHz) vagy gyorsabb, és a memória (gigabájtban), minden egyes Szövegelemzés tároló lefoglalása.
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Kulcsszókeresés](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[Kulcsszókeresés](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
 
-# <a name="language-detectiontablanguage"></a>[Nyelvfelismerés](#tab/language)
+# <a name="language-detection"></a>[Nyelvfelismerés](#tab/language)
 
 [!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Hangulatelemzés](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Hangulatelemzés](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
 
@@ -71,15 +74,15 @@ Az alap és a memória a `docker run` parancs részeként használt `--cpus` és
 
 A Text Analytics tároló lemezképei a Microsoft Container Registry érhetők el.
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Kulcsszókeresés](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[Kulcsszókeresés](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-repository](../includes/key-phrase-extraction-container-repository.md)]
 
-# <a name="language-detectiontablanguage"></a>[Nyelvfelismerés](#tab/language)
+# <a name="language-detection"></a>[Nyelvfelismerés](#tab/language)
 
 [!INCLUDE [language-detection-container-repository](../includes/language-detection-container-repository.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Hangulatelemzés](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Hangulatelemzés](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-repository](../includes/sentiment-analysis-container-repository.md)]
 
@@ -89,15 +92,15 @@ A Text Analytics tároló lemezképei a Microsoft Container Registry érhetők e
 
 ### <a name="docker-pull-for-the-text-analytics-containers"></a>Docker-lekérés a Text Analytics tárolók számára
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Kulcsszókeresés](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[Kulcsszókeresés](#tab/keyphrase)
 
 [!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-# <a name="language-detectiontablanguage"></a>[Nyelvfelismerés](#tab/language)
+# <a name="language-detection"></a>[Nyelvfelismerés](#tab/language)
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Hangulatelemzés](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Hangulatelemzés](#tab/sentiment)
 
 [!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
@@ -116,15 +119,15 @@ A három tároló bármelyikének futtatásához használja a [Docker Run](https
 
 A `docker run` parancs [példái](../text-analytics-resource-container-config.md#example-docker-run-commands) elérhetők.
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Kulcsszókeresés](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[Kulcsszókeresés](#tab/keyphrase)
 
 [!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-# <a name="language-detectiontablanguage"></a>[Nyelvfelismerés](#tab/language)
+# <a name="language-detection"></a>[Nyelvfelismerés](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Hangulatelemzés](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Hangulatelemzés](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
@@ -149,7 +152,7 @@ A tároló API-khoz használja a gazdagépet (`http://localhost:5000`).
 
 [!INCLUDE [How to stop the container](../../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Ha a tárolót egy kimeneti [csatlakoztatással](../text-analytics-resource-container-config.md#mount-settings) futtatja, és a naplózás engedélyezve van, a tároló olyan naplófájlokat hoz létre, amelyek hasznosak a tároló indításakor vagy futtatásakor felmerülő problémák elhárításához.
 
@@ -167,7 +170,7 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 
 [!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta, fogalmak és letöltése, telepítése és futtatása a Text Analytics tárolók munkafolyamatokat. Összegezve:
 

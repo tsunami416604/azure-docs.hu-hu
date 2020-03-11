@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d383acae83f0f42f9c16fcb5d4ea7efbdf2b5f8
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: ccc64fb8dd8bd8abc198d9bfc9d643ef618188ea
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493976"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967780"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Oktatóanyag: Azure Active Directory önkiszolgáló jelszó-visszaállítási visszaírási engedélyezése helyszíni környezetbe
 
@@ -42,6 +42,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
     * Ha szükséges, [fejezze be az előző oktatóanyagot az Azure ad-SSPR engedélyezéséhez](tutorial-enable-sspr.md).
 * Egy meglévő helyszíni AD DS-környezet, amely a Azure AD Connect aktuális verziójával van konfigurálva.
     * Ha szükséges, konfigurálja Azure AD Connect az [expressz](../hybrid/how-to-connect-install-express.md) vagy az [Egyéni](../hybrid/how-to-connect-install-custom.md) beállítások használatával.
+    * A jelszó-visszaírási használatához a tartományvezérlőknek Windows Server 2008 R2 vagy újabb verziójúnak kell lenniük.
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>Fiók engedélyeinek konfigurálása Azure AD Connecthoz
 

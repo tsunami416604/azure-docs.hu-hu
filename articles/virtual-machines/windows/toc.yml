@@ -337,7 +337,8 @@
               href: spot-portal.md
             - name: PowerShell
               href: spot-powershell.md
-            - name: Sablon
+            - name: ARM-sablon
+              displayName: Azure Resource Manager
               href: ../linux/spot-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: Hibakódok
               href: ../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
@@ -349,16 +350,17 @@
               href: create-vm-specialized-portal.md
             - name: PowerShell
               href: create-vm-specialized.md
-        - name: 'Sablon használata a C#-vel'
+        - name: 'ARM-sablon használata a C#-vel'
           href: csharp-template.md
+          displayName: Azure Resource Manager
         - name: Virtuális gép létrehozása Chef használatával
           href: ../../chef/chef-automation.md
         - name: Java használata
           href: java.md
         - name: A Python használata
           href: python.md
-        - name: Sablon használata
-          displayName: 'Azure Resource Manager template, ARM'
+        - name: ARM-sablon használata
+          displayName: Azure Resource Manager template
           href: ps-template.md
         - name: Kapcsolódás virtuális géphez
           href: connect-logon.md
@@ -473,7 +475,8 @@
           href: change-drive-letter.md
         - name: Rendelkezésre állási csoport módosítása
           href: change-availability-set.md
-        - name: Sablon letöltése
+        - name: ARM-sablon exportálása
+          displayName: Azure Resource Manager
           href: download-template.md
         - name: Azure virtuálisgép-ügynök
           href: ../extensions/agent-windows.md
@@ -543,7 +546,8 @@
               href: image-builder-gallery-update-image-version.md
             - name: Szkriptek tárolása
               href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Sablonreferencia
+            - name: ARM-sablon referenciája
+              displayName: Azure Resource Manager
               href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Hibaelhárítás
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
@@ -620,7 +624,8 @@
               href: attach-managed-disk-portal.md
         - name: Lemez leválasztása
           href: detach-disk.md
-        - name: Lemezek üzembe helyezése sablonnal
+        - name: Lemezek üzembe helyezése ARM-sablonnal
+          displayName: Azure Resource Manager
           href: using-managed-disks-template-deployments.md
         - name: Megosztott lemezek engedélyezése
           href: disks-shared-enable.md
@@ -690,6 +695,7 @@
         - name: PowerShell
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
         - name: Azure Resource Manager-sablon
+          displayName: ARM
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
         - name: REST
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?context=azure/virtual-machines/windows/context/windows-vm-context
@@ -743,7 +749,8 @@
       href: /azure/templates/microsoft.compute/allversions
 - name: További források
   items:
-    - name: Szerzői sablonok
+    - name: ARM-sablonok létrehozása
+      displayName: Azure Resource Manager
       href: ../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Fejlessze a készségeit a Microsoft Learnnel
       href: /learn/browse/?products=azure-virtual-machines

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: bb3a18af89b0baa532309ac76905aa5550af98e5
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 817ff90c10a29d7db7037d89f3c3d51e7f997175
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78398169"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037168"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning adatkészletek létrehozása
 
@@ -33,8 +33,7 @@ Azure Machine Learning adatkészletek esetében a következőket teheti:
 * Az adatmegosztás és együttműködés más felhasználókkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
-
-Az adatkészletek létrehozásához és működéséhez a következőkre lesz szüksége:
+"Az adatkészletek létrehozásához és működéséhez a következőkre lesz szüksége:
 
 * Azure-előfizetés. Ha még nem rendelkezik ilyennel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
@@ -44,6 +43,16 @@ Az adatkészletek létrehozásához és működéséhez a következőkre lesz sz
 
 > [!NOTE]
 > Egyes adatkészlet-osztályok függőségei vannak a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomagon. A Linux-felhasználók esetében ezek az osztályok csak a következő disztribúciókban támogatottak: Red Hat Enterprise Linux, Ubuntu, Fedora és CentOS.
+
+## <a name="compute-size-guidance"></a>Számítási méretre vonatkozó útmutató
+
+Adatkészlet létrehozásakor tekintse át a számítási feldolgozási teljesítményt és az adatok méretét a memóriában. A tárolóban tárolt adatai mérete nem egyezik meg a dataframe lévő adatmérettel. Például a CSV-fájlokban lévő adat akár 10x-re is kiterjeszthető egy dataframe, így egy 1 GB-os CSV-fájl 10 GB-nyi lehet egy dataframe. 
+
+A fő tényező, hogy mekkora az adatkészlet memóriában lévő mérete, például dataframe. Javasoljuk, hogy a számítási méret és a feldolgozási teljesítmény a RAM méretének 2x-re legyen. Tehát ha a dataframe 10 GB-nyi, a számítási célt 20 + GB RAM-mal szeretné biztosítani, hogy a dataframe kényelmesen illeszkedjen a memóriába, és feldolgozza azokat. Ha tömöríti az adatait, tovább bővíthető. a tömörített parketta-formátumban tárolt 20 GB-os viszonylag ritka adat a memóriában is kiterjeszthető ~ 800 GB-ra. Mivel a Parquet-fájlok oszlopos formátumban tárolják az adattárolást, ha csak az oszlopok felét kell megadnia, akkor a memóriában csak a ~ 400 GB-ot kell betölteni.
+ 
+Ha a Pandat használja, nincs ok arra, hogy több mint 1 vCPU, mivel ez minden, amit használni fog. A Modin és a Dask/Ray használatával egyszerűen integrálással számos vCPU egyetlen Azure Machine Learning számítási példányon/csomóponton keresztül, és szükség esetén egy nagy fürtre is kibővíthető, ha egyszerűen a `import modin.pandas as pd`re módosítja a `import pandas as pd`. 
+ 
+Ha nem kap elég nagy méretű virtuálist az adatokhoz, két lehetőség közül választhat: például Spark-vagy Dask-keretrendszer használata a "memóriából" adatok feldolgozásának elvégzéséhez, azaz a dataframe a partíció és a feldolgozás során a RAM-partícióba töltődik be, a végső eredmény pedig összegyűjtve Ed végén. Ha túl lassú, a Spark vagy a Dask lehetővé teszi a méretezést egy olyan fürtre, amely továbbra is interaktív módon használható. 
 
 ## <a name="dataset-types"></a>Adathalmazok típusai
 
@@ -57,9 +66,9 @@ További információ a közelgő API-változásokról: [ADATKÉSZLET API-válto
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 
-Adatkészlet létrehozásával az adatforrás helyére mutató hivatkozást, valamint a hozzá tartozó metaadatok másolatát is létrehozhatja. Mivel az adattárolók a meglévő helyükön maradnak, nincs szükség további tárolási költségekre. A Python SDK-val vagy a https://ml.azure.comhasználatával is létrehozhat `TabularDataset` és `FileDataset` adatkészleteket.
+Adatkészlet létrehozásával az adatforrás helyére mutató hivatkozást, valamint a hozzá tartozó metaadatok másolatát is létrehozhatja. Mivel az adattárolók a meglévő helyükön maradnak, nincs szükség további tárolási költségekre. A Python SDK-val vagy a https://ml.azure.com-vel is létrehozhat `TabularDataset` és `FileDataset` adatkészleteket.
 
-Ahhoz, hogy az adatok elérhetők legyenek Azure Machine Learning számára, az adatkészleteket az [Azure](how-to-access-data.md) -adattárolók vagy nyilvános webes URL-címek elérési útjaiból kell létrehozni.
+Ahhoz, hogy az adatok elérhetők legyenek Azure Machine Learning számára, az adatkészleteket az [Azure](how-to-access-data.md) -adattárolók vagy nyilvános webes URL-címek elérési útjaiból kell létrehozni. 
 
 ### <a name="use-the-sdk"></a>Az SDK használata
 
@@ -70,7 +79,6 @@ Adatkészletek létrehozása Azure- [adattárból](how-to-access-data.md) a Pyth
 2. Hozza létre az adatkészletet az adattár elérési útjaira hivatkozó hivatkozásokkal.
 > [!Note]
 > Több adattárból is létrehozhat adatkészletet több adattárolóban. Az adatkészletek létrehozásához használt fájlok vagy adatméretek száma nem korlátozott. Az egyes adatelérési útvonalak esetében azonban a rendszer néhány kérelmet küld a tárolási szolgáltatásnak, hogy meggyőződjön róla, hogy egy fájlra vagy mappára mutat. Ez a terhelés csökkentheti a teljesítményt vagy a hibát. Egy 1000-fájlon belüli, egy mappára hivatkozó adatkészlet egy adatútvonalra hivatkozik. Javasoljuk, hogy az optimális teljesítmény érdekében az adattárolókban kevesebb mint 100 útvonalra hivatkozó adatkészletet hozzon létre.
-
 
 #### <a name="create-a-tabulardataset"></a>TabularDataset létrehozása
 

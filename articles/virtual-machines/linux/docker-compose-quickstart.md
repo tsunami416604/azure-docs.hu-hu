@@ -1,26 +1,17 @@
 ---
-title: Docker-összeállítás használata Linux rendszerű virtuális gépen az Azure-ban
-description: A Docker telepítése és használata Linux rendszerű virtuális gépeken az Azure CLI-vel
-services: virtual-machines-linux
-documentationcenter: ''
+title: A Docker Compose használata
+description: A Docker telepítése és használata Linux rendszerű virtuális gépeken az Azure CLI használatával.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 02ab8cf9-318d-4a28-9d0c-4a31dccc2a84
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 4f2f12e0124743ad31e083cf4ece83bcb608bce0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036268"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970302"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Ismerkedés a Docker és a levélírás használatával többtárolós alkalmazások definiálásához és futtatásához az Azure-ban
 Az [összeállítás](https://github.com/docker/compose)során egy egyszerű szövegfájl használatával határozhat meg egy több Docker-tárolóból álló alkalmazást. Ezután elindíthatja az alkalmazást egyetlen parancsban, amely mindent megtesz a definiált környezet üzembe helyezéséhez. Ebből a cikkből megtudhatja, hogyan hozhat létre gyorsan egy WordPress-blogot egy háttérbeli MariaDB az SQL Database-ben egy Ubuntu rendszerű virtuális gépen. Az összeállítás segítségével összetettebb alkalmazásokat is beállíthat.

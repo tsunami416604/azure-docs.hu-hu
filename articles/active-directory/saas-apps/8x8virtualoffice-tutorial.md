@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f49c2b445af9acb0761d01b731250e068cb96a36
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 9c598222978a1c831be6f5e9db9eb87b2d6b6b96
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562317"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968642"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a 8x8
 
@@ -30,7 +30,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a 8x8 a Azure Acti
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a 8x8 az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -86,20 +86,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta egyikének használatával:
+    a. Az **azonosító** szövegmezőbe írja be a következő URL-címet: `https://sso.8x8.com/saml2`
 
-    |||
-    |-|-|
-    | `https://sso.8x8.com/saml2`|
-    | `https://sso.8x8pilot.com/saml2`|
-
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta egyikének használatával:
-
-    |||
-    |-|-|
-    | `https://sso.8x8.com/saml2`|
-    | `https://sso.8x8pilot.com/saml2`|
-
+    b. A **Válasz URL-címe** szövegmezőbe írja be a következő URL-címet: `https://sso.8x8.com/saml2`
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre. A tanúsítványt később a **8X8 SSO konfigurálása** szakaszban található oktatóanyagban fogja használni.
 
@@ -119,7 +108,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -151,9 +140,15 @@ Az oktatóanyag következő része attól függ, hogy milyen típusú előfizet�
 
 1. A kezdőlapon kattintson az **Identitáskezelés**elemre.
 
+    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure1.png)
+
 1. Jelölje be **az egyszeri bejelentkezés (SSO)** jelölőnégyzetet, majd válassza a **Microsoft Azure ad**lehetőséget.
 
+    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure2.png)
+
 1. Másolja ki a három URL-címet és az aláírási tanúsítványt az Azure AD-beli **SAML-alapú egyszeri bejelentkezés beállítása** a 8x8 CONFIGURATION Manager **Microsoft Azure ad SAML-beállítások** szakaszában.
+
+    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure3.png)
 
     a. Másolja a **bejelentkezési URL-címet** a **identitásszolgáltató bejelentkezési URL-címére**.
 
@@ -171,15 +166,27 @@ Az oktatóanyag következő része attól függ, hogy milyen típusú előfizet�
 
 1. Válassza ki a **Virtual Office-fiókhoz tartozó Mgr** alkalmazást az alkalmazás panelen.
 
+    ![Konfigurálás az alkalmazás oldalán](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
+
 1. Válassza a kezelendő **üzleti** fiók elemet, majd kattintson **a bejelentkezés** gombra.
+
+    ![Konfigurálás az alkalmazás oldalán](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
 1. Kattintson a **fiókok** fülre a menü listában.
 
+    ![Konfigurálás az alkalmazás oldalán](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
+
 1. Kattintson az **egyszeri bejelentkezés** elemre a fiókok listájában.
+
+    ![Konfigurálás az alkalmazás oldalán](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
 1. Válassza az **egyszeri bejelentkezés** lehetőséget a hitelesítési módszerek területen, majd kattintson az **SAML**elemre.
 
+    ![Konfigurálás az alkalmazás oldalán](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
+
 1. Az **SAML egyszeri bejelentkezés** szakaszban hajtsa végre a következő lépéseket:
+
+    ![Konfigurálás az alkalmazás oldalán](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
 
     a. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-cím** értéket, amelyet a Azure Portal másolt.
 
@@ -205,7 +212,7 @@ Ha a hozzáférési panelen a 8x8 csempére kattint, automatikusan be kell jelen
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

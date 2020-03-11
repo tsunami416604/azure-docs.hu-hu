@@ -1,39 +1,141 @@
 ---
-title: Adatforgalom leképezésének összevonása átalakítás
-description: Azure Data Factory leképezési adatfolyamok összeolvasztásának átalakítása
+title: Átalakítás összeolvasztása a leképezési adatfolyamban
+description: Hierarchikus adatai denormalizálása a összeolvasztási transzformáció használatával
 author: kromerm
 ms.author: makromer
+ms.review: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 415a093fd8a8fbe27e1d240b061548e18f2ca6b6
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
-ms.translationtype: MT
+ms.date: 03/09/2020
+ms.openlocfilehash: 9b09771f51c8b7e6762dac23cc7390d75f47a387
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164729"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969119"
 ---
-# <a name="azure-data-factory-flatten-transformation"></a>Azure Data Factory az átalakítás összeolvasztása
+# <a name="flatten-transformation-in-mapping-data-flow"></a>Átalakítás összeolvasztása a leképezési adatfolyamban
 
-A összeolvasztási transzformáció használatával egy hierarchikus struktúrán belüli tömb értékeket lehet új sorokba felvenni, ami lényegében az adatok normalizálása.
+A összeolvasztási transzformáció használatával a tömb értékeit hierarchikus struktúrákba, például JSON-ba helyezheti el, és lefordíthatja őket különálló sorokba. Ez a folyamat denormalizálás néven ismert.
 
-![Átalakítási eszközkészlet](media/data-flow/flatten5.png "Átalakítási eszközkészlet")
+## <a name="configuration"></a>Konfiguráció
 
-![1. átalakítás összeolvasztása](media/data-flow/flatten7.png "1\. átalakítás összeolvasztása")
+A összeolvasztási transzformáció a következő konfigurációs beállításokat tartalmazza
 
-## <a name="unroll-by"></a>Legördülő
+![Beállítások összeolvasztása](media/data-flow/flatten1.png "Beállítások összeolvasztása")
 
-Először válassza ki azt a tömb oszlopot, amelyet el szeretne távolítani, majd a kimutatást.
+### <a name="unroll-by"></a>Legördülő
 
-![Átalakítási beállítások összeolvasztása](media/data-flow/flatten1.png "Átalakítási beállítások összeolvasztása")
+Válasszon ki egy tömböt a legördülő listából. A kimeneti adatokat minden tömbben egy sor fogja tartalmazni. Ha a bemeneti sorban lévő unroll by tömb null értékű vagy üres, akkor egyetlen kimeneti sor lesz NULL értékként megadva.
 
-## <a name="unroll-root"></a>Legördülő gyökér
+### <a name="unroll-root"></a>Legördülő gyökér
 
-Alapértelmezés szerint az ADF leállítja a szerkezetet a fent kiválasztott unroll tömbben. Másik lehetőségként kiválaszthatja a hierarchia egy másik részét a kilépéshez. A "unroll root" egy opcionális beállítás.
+Alapértelmezés szerint a összeolvasztási transzformáció leállítja a tömböt a-hierarchia tetejére. Kiválaszthat egy tömböt a legördülő gyökérként. A legördülő főtanúsítványnak olyan összetett objektumok tömbje kell, amelyek vagy a unroll by tömböt tartalmazzák. Ha a legördülő főtanúsítvány ki van választva, a kimeneti adatok legalább egy sort tartalmaznak a legördülő főtanúsítványban. Ha a bemeneti sorban nincsenek elemek a legördülő főgyökérben, a rendszer elveti a kimeneti adatokból. A legördülő főtanúsítványok kiválasztásakor a rendszer mindig kisebb vagy egyenlő számú sort ad eredményül, mint az alapértelmezett viselkedés.
 
-## <a name="input-columns"></a>Bemeneti oszlopok
+### <a name="flatten-mapping"></a>Lelapul leképezés
 
-Végül válassza ki az új struktúra vetületét a bejövő mezők alapján, valamint az Ön által kiváltott normalizált oszlopot.
+A Select transzformációhoz hasonlóan válassza ki az új struktúra kivetítését a bejövő mezőkből és a denormalizált tömbből. Ha egy denormalizált tömb le van képezve, a kimeneti oszlop a tömb adattípusa lesz. Ha az unroll by tömb olyan összetett objektumok tömbje, amelyek altömböket tartalmaznak, az adott subarry egy elemének leképezése kimenetként egy tömböt fog kiszolgálni.
+
+A leképezési kimenet ellenőrzéséhez tekintse meg a vizsgálat lapot és az adatelőnézett.
+
+## <a name="examples"></a>Példák
+
+Tekintse meg a következő JSON-objektumot az alábbi példákban a lelapul átalakításhoz
+
+``` json
+{
+  "name":"MSFT","location":"Redmond", "satellites": ["Bay Area", "Shanghai"],
+  "goods": {
+    "trade":true, "customers":["government", "distributer", "retail"],
+    "orders":[
+        {"orderId":1,"orderTotal":123.34,"shipped":{"orderItems":[{"itemName":"Laptop","itemQty":20},{"itemName":"Charger","itemQty":2}]}},
+        {"orderId":2,"orderTotal":323.34,"shipped":{"orderItems":[{"itemName":"Mice","itemQty":2},{"itemName":"Keyboard","itemQty":1}]}}
+    ]}}
+{"name":"Company1","location":"Seattle", "satellites": ["New York"],
+  "goods":{"trade":false, "customers":["store1", "store2"],
+  "orders":[
+      {"orderId":4,"orderTotal":123.34,"shipped":{"orderItems":[{"itemName":"Laptop","itemQty":20},{"itemName":"Charger","itemQty":3}]}},
+      {"orderId":5,"orderTotal":343.24,"shipped":{"orderItems":[{"itemName":"Chair","itemQty":4},{"itemName":"Lamp","itemQty":2}]}}
+    ]}}
+{"name": "Company2", "location": "Bellevue",
+  "goods": {"trade": true, "customers":["Bank"], "orders": [{"orderId": 4, "orderTotal": 123.34}]}}
+{"name": "Company3", "location": "Kirkland"}
+```
+
+### <a name="no-unroll-root-with-string-array"></a>Nincs legördülő gyökér karakterlánc-tömbvel
+
+| Legördülő | Legördülő gyökér | Vetület |
+| --------- | ----------- | ---------- |
+| termékek. ügyfelek | Nincs | név <br> ügyfél = termékek. ügyfél |
+
+#### <a name="output"></a>Kimenet
+
+```
+{ 'MSFT', 'government'},
+{ 'MSFT', 'distributer'},
+{ 'MSFT', 'retail'},
+{ 'Company1', 'store'},
+{ 'Company1', 'store2'},
+{ 'Company2', 'Bank'},
+{ 'Company3', null}
+```
+
+### <a name="no-unroll-root-with-complex-array"></a>Nincs legördülő gyökér összetett tömbvel
+
+| Legördülő | Legördülő gyökér | Vetület |
+| --------- | ----------- | ---------- |
+| áruk. Orders. szállított. orderItems | Nincs | név <br> Rendeléskód = termékek. Orders. Rendeléskód <br> itemName = termékek. Orders. szállított. orderItems. itemName <br> itemQty = termékek. Orders. szállított. orderItems. itemQty <br> hely = hely |
+
+#### <a name="output"></a>Kimenet
+
+```
+{ 'MSFT', 1, 'Laptop', 20, 'Redmond'},
+{ 'MSFT', 1, 'Charger', 2, 'Redmond'},
+{ 'MSFT', 2, 'Mice', 2, 'Redmond'},
+{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'},
+{ 'Company1', 4, 'Laptop', 20, 'Seattle'},
+{ 'Company1', 4, 'Charger', 3, 'Seattle'},
+{ 'Company1', 5, 'Chair', 4, 'Seattle'},
+{ 'Company1', 5, 'Lamp', 2, 'Seattle'},
+{ 'Company2', 4, null, null, 'Bellevue'},
+{ 'Company3', null, null, null, 'Kirkland'}
+```
+
+### <a name="same-root-as-unroll-array"></a>Ugyanaz a gyökér, mint a legördülő tömb
+
+| Legördülő | Legördülő gyökér | Vetület |
+| --------- | ----------- | ---------- |
+| termékek. megrendelések | termékek. megrendelések | név <br> áruk. Orders. szállított. orderItems. itemName <br> termékek. ügyfelek <br> location |
+
+#### <a name="output"></a>Kimenet
+
+```
+{ 'MSFT', ['Laptop','Charger'], ['government','distributer','retail'], 'Redmond'},
+{ 'MSFT', ['Mice', 'Keyboard'], ['government','distributer','retail'], 'Redmond'},
+{ 'Company1', ['Laptop','Charger'], ['store', 'store2'], 'Seattle'},
+{ 'Company1', ['Chair', 'Lamp'], ['store', 'store2'], 'Seattle'},
+{ 'Company2', null, ['Bank'], 'Bellevue'}
+```
+
+### <a name="unroll-root-with-complex-array"></a>Gyökér kivonása összetett tömbvel
+
+| Legördülő | Legördülő gyökér | Vetület |
+| --------- | ----------- | ---------- |
+| áruk. Orders. szállított. orderItem | termékek. megrendelések |név <br> Rendeléskód = termékek. Orders. Rendeléskód <br> itemName = termékek. Orders. szállított. orderItems. itemName <br> itemQty = termékek. Orders. szállított. orderItems. itemQty <br> hely = hely |
+
+#### <a name="output"></a>Kimenet
+
+```
+{ 'MSFT', 1, 'Laptop', 20, 'Redmond'},
+{ 'MSFT', 1, 'Charger', 2, 'Redmond'},
+{ 'MSFT', 2, 'Mice', 2, 'Redmond'},
+{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'},
+{ 'Company1', 4, 'Laptop', 20, 'Seattle'},
+{ 'Company1', 4, 'Charger', 3, 'Seattle'},
+{ 'Company1', 5, 'Chair', 4, 'Seattle'},
+{ 'Company1', 5, 'Lamp', 2, 'Seattle'},
+{ 'Company2', 4, null, null, 'Bellevue'}
+```
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
@@ -53,25 +155,16 @@ foldDown(unroll(<unroll cols>),
 ### <a name="example"></a>Példa
 
 ```
-source(output(
-        name as string,
-        location as string,
-        satellites as string[],
-        goods as (trade as boolean, customers as string[], orders as (orderId as string, orderTotal as double, shipped as (orderItems as (itemName as string, itemQty as string)[]))[])
-    ),
-    allowSchemaDrift: true,
-    validateSchema: false) ~> source2
-source2 foldDown(unroll(goods.orders.shipped.orderItems),
+source foldDown(unroll(goods.orders.shipped.orderItems, goods.orders),
     mapColumn(
         name,
-        each(goods.orders, match(type == 'integer')),
-        each(goods.orders.shipped.orderItems, match(true())),
-        location
-    )) ~> Flatten1
-Flatten1 sink(allowSchemaDrift: true,
-    validateSchema: false,
-    skipDuplicateMapInputs: true,
-    skipDuplicateMapOutputs: true) ~> sink1
+        orderId = goods.orders.orderId,
+        itemName = goods.orders.shipped.orderItems.itemName,
+        itemQty = goods.orders.shipped.orderItems.itemQty,
+        location = location
+    ),
+    skipDuplicateMapInputs: false,
+    skipDuplicateMapOutputs: false) 
 ```    
 
 ## <a name="next-steps"></a>Következő lépések

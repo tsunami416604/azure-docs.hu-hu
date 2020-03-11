@@ -7,17 +7,20 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: ARO, openshift, az ARO, Red Hat, CLI
-ms.openlocfilehash: 81f8edb42be1f73692062d36440890ef5a1e7c9a
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 3c336a1fbfb9f991ff824e8deafe84f3d899771d
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899307"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082829"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Azure Red Hat OpenShift 4,3-fürt létrehozása, elérése és kezelése
 
 > [!IMPORTANT]
-> Az Azure Red Hat OpenShift (ARO) 4,3 előzetes verzióban érhető el. Az előzetes verziójú funkciók önkiszolgálást biztosítanak, és a rendelkezésre álló és elérhető módon érhetők el, és nem tartoznak a szolgáltatói szerződéssel (SLA) és a korlátozott jótállással. A funkciók ezért nem használhatók éles környezetben.
+> Vegye figyelembe, hogy az Azure Red Hat OpenShift 4,3 jelenleg csak privát előzetes verzióban érhető el az USA keleti régiójában. A privát előzetes verzió elfogadása csak meghívóval történik. Ügyeljen arra, hogy regisztrálja az előfizetését a funkció engedélyezése előtt: [Azure Red Hat OpenShift Private Preview regisztráció](https://aka.ms/aro-preview-register)
+
+> [!NOTE]
+> Az előzetes verziójú funkciók önkiszolgálást biztosítanak, és a rendelkezésre álló és elérhető módon érhetők el, és nem tartoznak a szolgáltatói szerződéssel (SLA) és a korlátozott jótállással. A funkciók ezért nem használhatók éles környezetben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/27/2019
-ms.openlocfilehash: 72006f907a1c1641308c8ee43e7a405765410789
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 03/09/2020
+ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770883"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082880"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>A fürt teljesítményének figyelése az Azure HDInsight
 
@@ -30,10 +30,10 @@ Ha magas szintű áttekintést szeretne kapni a fürt csomópontjairól és bet�
 | Szín | Leírás |
 | --- | --- |
 | Piros | A gazdagépen legalább egy fő összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
-| Orange | A gazdagépen legalább egy másodlagos összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
+| Narancssárga | A gazdagépen legalább egy másodlagos összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
 | Sárga | A Ambari-kiszolgáló több mint 3 percen belül nem kapott szívverést a gazdagépről. |
 | Zöld | Normál Futási állapot. |
- 
+
 Emellett az egyes gazdagépek magok számát és a RAM mennyiségét, valamint a lemezek kihasználtságát és a terhelés átlagát ábrázoló oszlopokat is láthat.
 
 ![Apache Ambari-gazdagépek lapja – áttekintés](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
@@ -52,7 +52,7 @@ A fonal a JobTracker, az erőforrás-kezelés és a feladatok ütemezésének é
 
 A Resource Manager egy *tiszta ütemező*, és kizárólag az összes versengő alkalmazás között a rendelkezésre álló erőforrások egyeztetését. A Resource Manager biztosítja, hogy minden erőforrás mindig használatban legyen, optimalizálja a különböző állandókat, például a SLA-kat, a kapacitási garanciákat és így tovább. A ApplicationMaster egyezteti az erőforrásokat a Resource Managerben, és együttműködik a NodeManager (ok) val a tárolók és az erőforrások felhasználásának végrehajtásához és figyeléséhez.
 
-Ha több bérlő is osztozik egy nagy fürtön, a fürt erőforrásainak versenye van. A CapacityScheduler egy csatlakoztatható ütemező, amely a kérések várólistára helyezésével segíti az erőforrások megosztását. A CapacityScheduler a *hierarchikus várólistákat* is támogatja annak biztosítására, hogy az erőforrások meg legyenek osztva egy szervezet alvárólisták között, mielőtt más alkalmazások várólistái is használhatják az ingyenes erőforrásokat.
+Ha több bérlő is osztozik egy nagy fürtön, a fürt erőforrásainak versenye van. A CapacityScheduler egy csatlakoztatható ütemező, amely a kérések várólistára helyezésével segíti az erőforrások megosztását. A CapacityScheduler támogatja a *hierarchikus várólistákat* is, amelyek biztosítják, hogy az erőforrások megosztva legyenek a szervezet alvárólistái között, mielőtt más alkalmazások várólistái is használhatják az ingyenes erőforrásokat.
 
 A fonal lehetővé teszi, hogy erőforrásokat foglaljon le ezekhez a várólistákhoz, és megjeleníti, hogy az összes rendelkezésre álló erőforrás hozzá van-e rendelve. A várólistákkal kapcsolatos információk megtekintéséhez jelentkezzen be a Ambari webes felhasználói felületére, majd a felső menüben válassza a **fonal Queue Manager** lehetőséget.
 
@@ -81,6 +81,46 @@ Ha a fürtön lévő tároló Azure Data Lake Storage (ADLS), akkor a sávszéle
 * [Teljesítmény-finomhangolási útmutató a HDInsight és a Azure Data Lake Storage Apache Hive](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [Teljesítmény-finomhangolási útmutató a HDInsight és Azure Data Lake Storage MapReduce](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
 * [Teljesítmény-finomhangolási útmutató a HDInsight és a Azure Data Lake Storage Apache Storm](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+
+## <a name="troubleshoot-sluggish-node-performance"></a>A csomópontok lassú működésével kapcsolatos hibák megoldása
+
+Bizonyos esetekben előfordulhat, hogy a fürtön kevés a szabad lemezterület. Vizsgálja meg a következő lépéseket:
+
+1. Az [SSH-parancs](./hdinsight-hadoop-linux-use-ssh-unix.md) használatával csatlakozzon az egyes csomópontokhoz.
+
+1. A lemezhasználat ellenőrzéséhez futtassa a következő parancsok egyikét:
+
+    ```bash
+    df -h
+    du -h --max-depth=1 / | sort -h
+    ```
+
+1. Tekintse át a kimenetet, és ellenőrizze, hogy vannak-e nagyméretű fájlok a `mnt` mappában vagy más mappákban. A `usercache`és a `appcache` (mnt/Resource/Hadoop/fonal/local/usercache/kaptár/AppCache/) mappák általában nagyméretű fájlokat tartalmaznak.
+
+1. Ha nagy fájlok vannak, akkor a jelenlegi feladatokban a fájl növekedése vagy egy sikertelen előző feladatokkal kapcsolatos probléma is hozzájárulhat. Annak ellenőrzéséhez, hogy ezt a viselkedést egy aktuális feladatok okozzák-e, futtassa a következő parancsot:
+
+    ```bash
+    sudo du -h --max-depth=1 /mnt/resource/hadoop/yarn/local/usercache/hive/appcache/
+    ```
+
+1. Ha a parancs egy adott feladatot jelez, dönthet úgy, hogy leállítja a feladatot egy olyan parancs használatával, amely a következőhöz hasonló:
+
+    ```bash
+    yarn application -kill -applicationId <application_id>
+    ```
+
+    Cserélje le a `application_id`t az alkalmazás-AZONOSÍTÓra. Ha nincs megadva adott feladat, folytassa a következő lépéssel.
+
+1. A fenti parancs befejezése után, vagy ha nincsenek megadva adott feladatok, törölje az azonosított nagyméretű fájlokat egy olyan parancs futtatásával, amely a következőhöz hasonló:
+
+    ```bash
+    rm -rf filecache usercache
+    ```
+
+A lemezterülettel kapcsolatos problémákkal kapcsolatos további információkért tekintse [meg a](./hadoop/hdinsight-troubleshoot-out-disk-space.md)lemezterületet.
+
+> [!NOTE]  
+> Ha nagy méretű fájlokat szeretne megőrizni, de hozzájárul a kevés lemezterülettel kapcsolatos probléma megoldásához, fel kell mérnie a HDInsight-fürtöt, és újra kell indítania a szolgáltatásokat. Miután elvégezte ezt az eljárást, és néhány percet várni fog, megfigyelheti, hogy a tárterület fel van szabadítva, és a rendszer visszaállítja a csomópont szokásos teljesítményét.
 
 ## <a name="next-steps"></a>Következő lépések
 

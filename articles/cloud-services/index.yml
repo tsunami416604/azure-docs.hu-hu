@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure Cloud Services – dokumentáció
+summary: Megismerheti, hogy a felhőszolgáltatások hogyan használható nagy rendelkezésre állású és skálázható felhőalkalmazások és API-k futtatására. Bemutatja, hogyan kezelheti a virtuális gépek gazdagépét, és hogyan konfigurálhatja, javíthatja és telepítheti a szoftvereket.
+metadata:
+  title: Azure Cloud Services – dokumentáció
+  description: Ismerteti, hogy a Cloud Services hogyan használható nagy rendelkezésre állású és skálázható felhőalkalmazások és API-k futtatására.
+  ms.service: cloud-services
+  service: cloud-services
+  ms.topic: landing-page
+  author: tgore03
+  ms.author: tagore
+  ms.date: 03/06/2020
+  ms.openlocfilehash: 11699a28ab3b5863812c9c171428896aeaaefec1
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943177"
+landingContent:
+- title: A Cloud Services ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a Cloud Services?
+      url: cloud-services-choose-me.md
+  - linkListType: video
+    links:
+    - text: Cloud Services – videotár
+      url: https://azure.microsoft.com/documentation/videos/index/?services=cloud-services
+- title: Bevezetés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ASP.NET
+      url: cloud-services-dotnet-get-started.md
+    - text: Python for Visual Studio
+      url: cloud-services-python-ptvs.md
+- title: Fejlesztés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Webes és feldolgozói PHP-szerepkörök létrehozása
+      url: ../cloud-services-php-create-web-role.md
+    - text: Node.js-alkalmazás fejlesztése és üzembe helyezése
+      url: cloud-services-nodejs-develop-deploy-app.md
+    - text: Node.js-webalkalmazás fejlesztése és üzembe helyezése az Express használatával
+      url: cloud-services-nodejs-develop-deploy-express-app.md
+- title: Üzembe helyezés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Felhőszolgáltatás létrehozása és üzembe helyezése a portálon
+      url: cloud-services-how-to-create-deploy-portal.md
+    - text: Üres felhőszolgáltatás-tároló létrehozása PowerShellben
+      url: cloud-services-powershell-create-cloud-container.md
+- title: Kezelés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Általános kezelési feladatok
+      url: cloud-services-how-to-manage-portal.md
+    - text: Felhőszolgáltatás konfigurálása
+      url: cloud-services-how-to-configure-portal.md

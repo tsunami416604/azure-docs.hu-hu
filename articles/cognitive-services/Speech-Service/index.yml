@@ -11,14 +11,14 @@ metadata:
   manager: nitinme
   ms.service: speech-service
   ms.topic: hub-page
-  ms.date: 02/11/2020
+  ms.date: 03/04/2020
   ms.author: dapine
-  ms.openlocfilehash: 26979b2d9ffdd80676ca9162b30ae17db20b1129
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 0071d4da31e4739ccf53e9570bc7d0ed61c01bc4
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77563023"
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943320"
 highlightedContent:
   items:
   - title: Mi az a beszédszolgáltatás?
@@ -38,14 +38,14 @@ conceptualContent:
   - title: Diktálás
     links:
     - itemType: quickstart
-      text: Beszéd felismerése mikrofonbemenettel
+      text: Beszéd felismerése mikrofonból
       url: quickstarts/speech-to-text-from-microphone.md
     - itemType: quickstart
-      text: Beszéd felismerése hangfájlból
-      url: quickstarts/speech-to-text-from-file.md
-    - itemType: quickstart
-      text: Blobtárolóban tárolt beszéd felismerése
-      url: quickstarts/from-blob.md
+      text: Beszéd felismerése kötegelt módban
+      url: batch-transcription.md
+    - itemType: how-to-guide
+      text: A beszédfelismerés testreszabása az alkalmazásokhoz
+      url: how-to-custom-speech.md
     footerLink:
       text: Részletek
       url: index-speech-to-text.yml
@@ -58,8 +58,8 @@ conceptualContent:
       text: Beszédszintézis egy hangfájlba
       url: quickstarts/text-to-speech-audio-file.md
     - itemType: quickstart
-      text: Beszédszintézis hosszú formátumú hangokkal
-      url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+      text: A beszédszintézis testreszabása az alkalmazásokhoz
+      url: how-to-custom-voice.md
     footerLink:
       text: Részletek
       url: index-text-to-speech.yml

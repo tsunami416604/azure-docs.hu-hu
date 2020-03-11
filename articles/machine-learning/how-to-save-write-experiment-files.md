@@ -11,13 +11,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 197e93946a52303f312912e4ebd2487f8c1360b2
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 03/10/2020
+ms.openlocfilehash: 12a38b08fd429280f34b4eb02d4b72187b622261
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536732"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078431"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Fájlok mentése és írása Azure Machine Learning kísérletekhez
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ A képzés indításakor a [számítási célra](how-to-set-up-training-targets.
 
 Mielőtt kísérletet kezdeményezzen egy számítási célra vagy a helyi gépre, gondoskodnia kell arról, hogy a szükséges fájlok elérhetők legyenek a számítási cél számára, például a függőségi fájlok és az adatfájlok, amelyeket a kódnak futtatnia kell.
 
-Azure Machine Learning futtatja a betanítási parancsfájlokat úgy, hogy a teljes parancsfájl-mappát átmásolja a cél számítási környezetbe, majd pillanatképet készít. A kísérletek pillanatképeinél a tárhelykorlát 300 MB és/vagy 2000 fájl.
+Azure Machine Learning futtatja a betanítási parancsfájlokat úgy, hogy a teljes parancsfájl-mappát átmásolja a cél számítási környezetbe, majd pillanatképet készít. A kísérleti Pillanatképek tárolási korlátja 300 MB és/vagy 2000 fájl.
 
 Ezért javasoljuk, hogy:
 

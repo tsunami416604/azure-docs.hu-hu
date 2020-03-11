@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f7a6c5872c5e2b7e1b47b40e32ddb047641e8b2e
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: a621165210702e075f15fb61bd615e157f997fe1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944214"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078855"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -64,13 +64,13 @@ Meglévő felhasználói fiók olvasásához, frissítéséhez vagy törléséhe
 
 Új felhasználói fiók létrehozásához a bemeneti jogcím olyan kulcs, amely egyedileg azonosít egy helyi vagy összevont fiókot. Például: helyi fiók: **signInNames. emailAddress**vagy **signInNames. username**. Összevont fiók esetén: a **alternativeSecurityId**.
 
-A InputClaimsTransformations elem olyan bemeneti jogcím-átalakítási elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosításához vagy újak létrehozásához használatosak.
+A [InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations) elem olyan bemeneti jogcím-átalakítási elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosításához vagy újak létrehozásához használatosak.
 
 ## <a name="outputclaims"></a>OutputClaims
 
 A **OutputClaims** elem az Azure ad technikai profil által visszaadott jogcímek listáját tartalmazza. Előfordulhat, hogy le kell képeznie a szabályzatban definiált jogcím nevét a Azure Active Directoryban definiált névre. Olyan jogcímeket is tartalmazhat, amelyeket a Azure Active Directory nem ad vissza, ha a `DefaultValue` attribútumot állítja be.
 
-A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
+A [OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations) elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
 
 Például a **HRE-UserWriteUsingLogonEmail** technikai profil egy helyi fiókot hoz létre, és a következő jogcímeket adja vissza:
 
@@ -92,7 +92,7 @@ Például a **HRE-UserWriteUsingLogonEmail** technikai profil egy helyi fiókot 
 
 ## <a name="persistedclaims"></a>PersistedClaims
 
-A **PersistedClaims** elem tartalmazza az összes olyan értéket, amelyet az Azure ad a szabályzat és az Azure ad-attribútum neve ClaimsSchema szakaszában már definiált jogcím-típus közötti lehetséges leképezési információval kell megőrizni.
+A **PersistedClaims** elem tartalmazza az összes olyan értéket, amelyet az Azure ad a szabályzat és az Azure ad-attribútum neve [ClaimsSchema](claimsschema.md) szakaszában már definiált jogcím-típus közötti lehetséges leképezési információval kell megőrizni.
 
 A **HRE-UserWriteUsingLogonEmail** technikai profil, amely új helyi fiókot hoz létre, a következő jogcímeket tartja fenn:
 
@@ -121,11 +121,9 @@ A jogcím neve az Azure AD attribútum neve, kivéve, ha meg van adva a **Partne
 
 ## <a name="azure-ad-technical-provider-operations"></a>Azure AD technikai szolgáltatói műveletek
 
-### <a name="read"></a>Olvassa el
+### <a name="read"></a>Olvasás
 
-Az **olvasási** művelet egyetlen felhasználói fiók adatait olvassa be. A felhasználói adatok olvasásához bemeneti jogcímként meg kell adnia egy kulcsot, például **objectId**, **userPrincipalName**, **signInNames** (bármilyen típusú, Felhasználónév és e-mail-alapú fiók) vagy **alternativeSecurityId**.
-
-A következő technikai profil egy felhasználói fiók adatait olvassa be a felhasználó objectId használatával:
+Az **olvasási** művelet egyetlen felhasználói fiók adatait olvassa be. A következő technikai profil egy felhasználói fiók adatait olvassa be a felhasználó objectId használatával:
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
@@ -155,9 +153,7 @@ A következő technikai profil egy felhasználói fiók adatait olvassa be a fel
 
 ### <a name="write"></a>Írás
 
-Az **írási** művelet egyetlen felhasználói fiókot hoz létre vagy frissít. Felhasználói fiók írásához olyan kulcsot kell megadnia bemeneti jogcímként, mint például a **objectId**, a **userPrincipalName**, a **SignInNames. emailAddress**vagy a **alternativeSecurityId**.
-
-A következő technikai profil új közösségi fiókot hoz létre:
+Az **írási** művelet egyetlen felhasználói fiókot hoz létre vagy frissít. A következő technikai profil új közösségi fiókot hoz létre:
 
 ```XML
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
@@ -197,9 +193,7 @@ A következő technikai profil új közösségi fiókot hoz létre:
 
 ### <a name="deleteclaims"></a>DeleteClaims
 
-A **DeleteClaims** művelet törli az adatokat egy adott jogcímek listájáról. Ha adatokat szeretne törölni a jogcímek közül, meg kell adnia egy kulcsot bemeneti jogcímként, például **objectId**, **userPrincipalName**, **signInNames. emailAddress** vagy **alternativeSecurityId**.
-
-A következő technikai profil törli a jogcímeket:
+A **DeleteClaims** művelet törli az adatokat egy adott jogcímek listájáról. A következő technikai profil törli a jogcímeket:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
@@ -220,9 +214,7 @@ A következő technikai profil törli a jogcímeket:
 
 ### <a name="deleteclaimsprincipal"></a>DeleteClaimsPrincipal
 
-A **DeleteClaimsPrincipal** művelet egyetlen felhasználói fiókot töröl a címtárból. Felhasználói fiók törléséhez bemeneti jogcímként meg kell adnia egy kulcsot, például **objectId**, **userPrincipalName**, **signInNames. emailAddress** vagy **alternativeSecurityId**.
-
-A következő technikai profil törli a felhasználói fiókot a címtárból az egyszerű felhasználónév használatával:
+A **DeleteClaimsPrincipal** művelet egyetlen felhasználói fiókot töröl a címtárból. A következő technikai profil törli a felhasználói fiókot a címtárból az egyszerű felhasználónév használatával:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
@@ -253,16 +245,30 @@ A következő technikai profil töröl egy közösségi felhasználói fiókot a
 ```
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Művelet | Igen | A végrehajtandó művelet. Lehetséges értékek: `Read`, `Write`, `DeleteClaims`vagy `DeleteClaimsPrincipal`. |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Nem | Hiba, ha a felhasználói objektum nem létezik a címtárban. Lehetséges értékek: `true` vagy `false`. |
-| UserMessageIfClaimsPrincipalDoesNotExist | Nem | Ha hiba lép fel (lásd a RaiseErrorIfClaimsPrincipalDoesNotExist attribútum leírását), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum nem létezik. Az érték [honosítható](localization.md).|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Nem | Hiba, ha a felhasználói objektum már létezik. Lehetséges értékek: `true` vagy `false`.|
-| UserMessageIfClaimsPrincipalAlreadyExists | Nem | Ha hiba lép fel (lásd: RaiseErrorIfClaimsPrincipalAlreadyExists-attribútum leírása), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum már létezik. Az érték [honosítható](localization.md).|
 | ApplicationObjectId | Nem | A bővítmény attribútumaihoz tartozó alkalmazásobjektum-azonosító. Value: egy alkalmazás ObjectId. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md). |
 | ClientID | Nem | A bérlő harmadik fél számára való elérésének ügyfél-azonosítója. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md) |
 | IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true`vagy `false` (alapértelmezett). Ha a technikai profilban egy jogcímet feloldót szeretne használni, állítsa be `true`ra. |
+
+### <a name="error-messages"></a>Hibaüzenetek
+ 
+A következő beállításokkal megadhatja a hiba esetén megjelenő hibaüzenetet. A metaadatokat az [önérvényesített](self-asserted-technical-profile.md) technikai profilban kell konfigurálni. A hibaüzenetek [honosítható](localization.md).
+
+| Attribútum | Kötelező | Leírás |
+| --------- | -------- | ----------- |
+| UserMessageIfClaimsPrincipalAlreadyExists | Nem | Ha hiba lép fel (lásd: RaiseErrorIfClaimsPrincipalAlreadyExists-attribútum leírása), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum már létezik. |
+| UserMessageIfClaimsPrincipalDoesNotExist | Nem | Ha hiba lép fel (lásd a RaiseErrorIfClaimsPrincipalDoesNotExist attribútum leírását), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum nem létezik. |
+
+
+## <a name="next-steps"></a>Következő lépések
+
+Tekintse meg az alábbi cikket, például az Azure AD technikai profiljának használatát:
+
+- [Jogcímek hozzáadása és felhasználói bevitel testreszabása Egyéni házirendek használatával Azure Active Directory B2C](custom-policy-configure-user-input.md)
 
 
 

@@ -1,7 +1,7 @@
 ---
-title: Build & automatikus ML-modellek üzembe helyezése
+title: Modellek létrehozása a autoML használatával & üzembe helyezése
 titleSuffix: Azure Machine Learning
-description: Gépi tanulási kísérletek létrehozása, kezelése és üzembe helyezése Azure Machine Learning Studióban.
+description: Automatizált gépi tanulási modellek létrehozása, áttekintése és üzembe helyezése Azure Machine Learningokkal.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,22 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 02/04/2020
-ms.openlocfilehash: a2bf15c8778a6ff549284b1053cf0978d182b802
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: 706b67216d1037440fd1641d9bc82deee2c43109
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355329"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078440"
 ---
-# <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Gépi tanulási kísérletek létrehozása, megismerése és üzembe helyezése Azure Machine Learning Studióval
+# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatizált gépi tanulási modellek létrehozása, áttekintése és üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
- Ebből a cikkből megtudhatja, hogyan hozhat létre, vizsgálhat és helyezhet üzembe automatizált gépi tanulási kísérleteket Azure Machine Learning Studióban, egyetlen sor kód nélkül. Az automatizált gépi tanulás automatizálja az adott adataihoz használandó legjobb algoritmus kiválasztásának folyamatát, így gyorsan létrehozhat egy gépi tanulási modellt. [További információ az automatizált gépi tanulásról](concept-automated-ml.md).
+Ebből a cikkből megtudhatja, hogyan hozhat létre, vizsgálhat és helyezhet üzembe automatizált gépi tanulási modelleket anélkül, hogy a Azure Machine Learning Studio felületén egyetlen soros kódot kellene létrehoznia. Az automatizált gépi tanulás az a folyamat, amelyben az adott adataihoz használandó legjobb gépi tanulási algoritmus van kiválasztva. Ez a folyamat lehetővé teszi a gépi tanulási modellek gyors létrehozását. [További információ az automatizált gépi tanulásról](concept-automated-ml.md).
+ 
+A végpontok közötti példaként próbálja ki az [oktatóanyagot a besorolási modell létrehozásához Azure Machine learning automatikus ml-felületével](tutorial-first-experiment-automated-ml.md). 
 
- Ha több kód alapú felhasználói élményt szeretne, a Pythonban az [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val is [konfigurálhatja az automatizált gépi tanulási kísérleteket](how-to-configure-auto-train.md) .
+Python-kód alapú felhasználói felület esetén [konfigurálja az automatizált gépi tanulási kísérleteket](how-to-configure-auto-train.md) az Azure Machine learning SDK-val.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +35,7 @@ ms.locfileid: "78355329"
 
 ## <a name="get-started"></a>Első lépések
 
-1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com). 
+1. Jelentkezzen be Azure Machine Learningra https://ml.azure.comcímen. 
 
 1. Válassza ki az előfizetést és a munkaterületet. 
 
@@ -184,8 +186,8 @@ Guardrail|status|&nbsp;trigger feltétele&nbsp;
 ---|---|---
 Hiányzó&nbsp;érték&nbsp;imputálási |**Telt** <br> <br> **Rögzített**|    Nincs hiányzó érték a bemeneti&nbsp;oszlopaiban <br> <br> Egyes oszlopokban hiányoznak értékek
 Keresztellenőrzés|**Tenni**|Ha nincs megadva explicit ellenőrzési készlet
-Magas&nbsp;kardinális&nbsp;funkció&nbsp;észlelése|  **Telt** <br> <br>**Tenni**|   A rendszer nem észlelt magas szintű sarkalatos funkciókat <br><br> A rendszer a magas kardinális bemeneti oszlopokat észlelte
-Osztályok egyenlegének észlelése |**Telt** <br><br><br>**Riasztást kap** |Az osztályok a betanítási adatként vannak kiegyenlítettek; Az adatkészletek akkor tekinthetők kiegyensúlyozottnak, ha az egyes osztályok jó ábrázolással rendelkeznek az adatkészletben, a minták számának és arányának alapján mérve <br> <br> A betanítási adatkészletek osztályai kiegyensúlyozva vannak
+Magas&nbsp;kardinális&nbsp;funkció&nbsp;észlelése|    **Telt** <br> <br>**Tenni**|    A rendszer nem észlelt magas szintű sarkalatos funkciókat <br><br> A rendszer a magas kardinális bemeneti oszlopokat észlelte
+Osztályok egyenlegének észlelése    |**Telt** <br><br><br>**Riasztást kap** |Az osztályok a betanítási adatként vannak kiegyenlítettek; Az adatkészletek akkor tekinthetők kiegyensúlyozottnak, ha az egyes osztályok jó ábrázolással rendelkeznek az adatkészletben, a minták számának és arányának alapján mérve <br> <br> A betanítási adatkészletek osztályai kiegyensúlyozva vannak
 Időbeli adatsorozat-konzisztencia|**Telt** <br><br><br><br> **Rögzített** |<br> A kiválasztott {Horizon, lag, Rolling Window} érték elemzése megtörtént, és a rendszer nem észlelt memóriabeli problémákat. <br> <br>A kiválasztott {Horizon, lag, Rolling Window} értékek elemzése megtörtént, és a kísérlet valószínűleg kifogy a memóriából. A késés vagy a legördülő ablak ki van kapcsolva.
 
 ## <a name="run-experiment-and-view-results"></a>Kísérlet futtatása és eredmények megtekintése
@@ -240,7 +242,6 @@ Most már rendelkezik egy olyan operatív webszolgáltatással, amely előrejelz
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Próbálja ki az [első AUTOMATIZÁLT ml-kísérlet Azure Machine learning Studióval való létrehozásához szükséges teljes körű oktatóanyagot](tutorial-first-experiment-automated-ml.md). 
-* [További információ az automatikus gépi tanulásról és a](concept-automated-ml.md) Azure Machine Learningról.
-* Az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md).
 * [Ismerje meg, hogyan használhat webszolgáltatásokat](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).
+* Az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md).
+* [További információ az automatikus gépi tanulásról és a](concept-automated-ml.md) Azure Machine Learningról.

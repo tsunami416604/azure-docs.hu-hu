@@ -12,20 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/23/2020
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: dac5f75216a8addcaa65407d945a06363e4cbf9d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d408a862c18038f64b816bb54fc235d1b9d84179
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359504"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968231"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dinamikus csomagolás a Media Services v3-ban
 
 A Microsoft Azure Media Services számos médiafájl-formátum kódolására használható. A szolgáltatás különböző streaming protokollokon keresztül érhető el, tartalom védelme nélkül vagy anélkül, hogy elérje az összes jelentős eszközt (például az iOS és az Android rendszerű eszközöket). Ezek az ügyfelek megismerhetik a különböző protokollokat. Az iOS esetében például HTTP Live Streaming (HLS) formátumban kell továbbítani a streameket, és az Android-eszközök támogatják a HLS, valamint az MPEG DASH-t.
 
 Media Services a streaming- [végpont](streaming-endpoint-concept.md) egy dinamikus (igény szerinti) csomagolási és forrás-szolgáltatást jelent, amely az élő és az igény szerinti tartalmat közvetlenül az ügyfélalkalmazás számára teszi elérhetővé. A következő szakaszban említett Common Streaming Media-protokollok egyikét használja. A dinamikus csomagolási funkciót minden Streamvégpont tartalmazza (a standard és a prémium szintűek egyaránt).
+
+> [!NOTE]
+> A [Azure Portal](https://portal.azure.com/) a v3 [élő események](live-events-outputs-concept.md)kezelésére, a v3- [eszközök](assets-concept.md)megtekintésére, az API-k elérésére vonatkozó információk beszerzésére használható. Az összes többi felügyeleti feladathoz (például átalakításokhoz és feladatokhoz) használja a [REST API](https://aka.ms/ams-v3-rest-ref), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
 
 ## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>a forrásfájlok szállításra való előkészítéséhez
 
@@ -302,7 +305,4 @@ A támogatási jegyet az [új támogatási kérelemre](https://portal.azure.com/
 
 ## <a name="next-steps"></a>Következő lépések
 
-> [!NOTE]
-> Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](media-services-apis-overview.md#sdks).
-
-Megtudhatja, hogyan [tölthet fel, kódolhat és továbbíthat videókat](stream-files-tutorial-with-api.md).
+[Videók feltöltése, kódolása és streamelése](stream-files-tutorial-with-api.md)

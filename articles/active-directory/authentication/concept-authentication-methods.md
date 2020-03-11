@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 03/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee0dd0cd83ab27dd728a7572b6fcd69c40bb1b00
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5a82c69575e82a7cf397955f08c3f114e449ba6b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848748"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968772"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -35,7 +35,7 @@ A Microsoft nagymértékben javasolja a rendszergazdáknak, hogy a minimálisan 
 | A hardver-token ESKÜje | Az MFA és a SSPR nyilvános előzetes verziója |
 | SMS | MFA és SSPR |
 | Hanghívás | MFA és SSPR |
-| Alkalmazásjelszók | MFA csak bizonyos esetekben |
+| Alkalmazás jelszavai | MFA csak bizonyos esetekben |
 
 ![A bejelentkezési képernyőn használt hitelesítési módszerek](media/concept-authentication-methods/overview-login.png)
 
@@ -129,7 +129,7 @@ A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/
 > A felhasználók nem regisztrálhatják a mobil alkalmazásaikat az önkiszolgáló jelszó-visszaállításhoz való regisztráláskor. Ehelyett a felhasználók [https://aka.ms/mfasetup](https://aka.ms/mfasetup) vagy a biztonsági adatok regisztrációjának előzetes verziójában regisztrálhatják a mobil alkalmazást [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)címen.
 >
 
-### <a name="notification-through-mobile-app"></a>Értesítés mobilalkalmazásban
+### <a name="notification-through-mobile-app"></a>Értesítés a Mobile App használatával
 
 A Microsoft Authenticator alkalmazás segít megakadályozni a fiókok jogosulatlan elérését, és letilthatja a csalárd tranzakciókat, ha értesítéseket küld az okostelefonra vagy a táblaszámítógépre. A felhasználók megtekinthetik az értesítést, és ha ez jogos, válassza az ellenőrzés lehetőséget. Ellenkező esetben a Megtagadás lehetőséget is kiválaszthatja.
 
@@ -146,7 +146,7 @@ Ha engedélyezi mindkét értesítés használatát a Mobile App és az ellenőr
 
 ### <a name="verification-code-from-mobile-app"></a>Ellenőrző kód a Mobile appből
 
-A Microsoft Authenticator alkalmazás vagy más külső féltől származó alkalmazások szoftver-tokenként használhatók eskü-ellenőrző kód létrehozásához. A Felhasználónév és a jelszó megadása után adja meg az alkalmazás által a bejelentkezési képernyőn megadott kódot. Az ellenőrzőkód egy második hitelesítési módként szolgál.
+A Microsoft Authenticator alkalmazás vagy más külső féltől származó alkalmazások szoftver-tokenként használhatók eskü-ellenőrző kód létrehozásához. A Felhasználónév és a jelszó megadása után adja meg az alkalmazás által a bejelentkezési képernyőn megadott kódot. Az ellenőrző kód a hitelesítés második formáját biztosítja.
 
 > [!WARNING]
 > Az önkiszolgáló jelszó-visszaállításhoz, ha csak egy módszerre van szükség az ellenőrző kód alaphelyzetbe állításához, az egyetlen lehetőség a felhasználók számára a **legmagasabb szintű biztonság biztosításához**.
@@ -156,25 +156,25 @@ Előfordulhat, hogy a felhasználók legfeljebb öt olyan hardver-tokent vagy hi
 
 ## <a name="oath-hardware-tokens-public-preview"></a>A hardver-tokenek ESKÜje (nyilvános előzetes verzió)
 
-Az eskü egy nyílt szabvány, amely meghatározza, hogy az egyszeri jelszavas (OTP) kódok hogyan jönnek létre. Az Azure AD támogatja az eskü-TOTP SHA-1 tokenek használatát a 30 másodperces vagy a 60-Second fajta esetében. Ezek a jogkivonatok a választott gyártótól származnak. A titkos kulcsok legfeljebb 128 karakterből állhatnak, amelyek nem kompatibilisek az összes jogkivonattal. A titkos kulcsokat kódolni kell a Base32-ben.
+Az eskü egy nyílt szabvány, amely meghatározza, hogy az egyszeri jelszavas (OTP) kódok hogyan jönnek létre. Az Azure AD támogatja az eskü-TOTP SHA-1 tokenek használatát a 30 másodperces vagy a 60-Second fajta esetében. Ezek a jogkivonatok a választott gyártótól származnak. A titkos kulcsok legfeljebb 128 karakterből állhatnak, amelyek nem kompatibilisek az összes jogkivonattal. A titkos kulcs csak az *a-z* , a-z és *a-z* , valamint a *1-7*karakterből állhat, és a Base32-ben kell kódolni.
 
-![ESKÜ-tokenek feltöltése az MFA-kiszolgálói eskü-tokenek panelre](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+![ESKÜ-tokenek feltöltése az MFA-eskü tokenek paneljére](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
-A rendszer a nyilvános előzetes verzió részeként támogatja a hardveres tokenek használatát. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+A nyilvános előzetes verzió részeként a rendszer a hardveres jogkivonatokat is támogatja. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-A jogkivonatok beszerzése után a rendszer az alábbi példában látható módon, vesszővel tagolt (CSV) fájlformátumban kell feltöltenie őket, beleértve az UPN-t, a sorozatszámot, a titkos kulcsot, az időintervallumot, a gyártót és a modellt.
+A jogkivonatok beszerzése után a következő példában látható módon fel kell tölteni egy vesszővel tagolt (CSV) fájlformátumot, beleértve az UPN-t, a sorozatszámot, a titkos kulcsot, az időintervallumot, a gyártót és a modellt.
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
+Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 ```
 
 > [!NOTE]
-> Ügyeljen rá, hogy a fejlécsort a fent látható módon adja meg a CSV-fájlban.
+> Ügyeljen rá, hogy a fejlécsor szerepeljen a CSV-fájlban.
 
-Miután megfelelően formázott CSV-fájlként, a rendszergazda bejelentkezhet a Azure Portalba, és megkeresheti **Azure Active Directory**, **MFA-kiszolgálót**, **eskü-tokeneket**, és FELTÖLTheti az eredményül kapott CSV-fájlt.
+Miután megfelelően formázott CSV-fájlként, a rendszergazda bejelentkezhet a Azure Portalba, és megnyithatja **Azure Active Directory** > **biztonsági** > **MFA** > **eskü-tokeneket**, és feltöltheti az eredményül kapott CSV-fájlt.
 
-A CSV-fájl méretétől függően a folyamat eltarthat néhány percig. Kattintson a **frissítés** gombra az aktuális állapot lekéréséhez. Ha a fájlban hibák merülnek fel, lehetősége lesz letölteni egy CSV-fájlt, amely felsorolja a feloldható hibákat.
+A CSV-fájl méretétől függően a folyamat eltarthat néhány percig. Kattintson a **frissítés** gombra az aktuális állapot lekéréséhez. Ha a fájlban hibák merülnek fel, lehetősége lesz letölteni egy CSV-fájlt, amely felsorolja a feloldható hibákat. A letöltött CSV-fájl mezőinek neve eltér a feltöltött verziótól.
 
 A hibák elhárítása után a rendszergazda ezután aktiválhatja az egyes kulcsokat, ha a jogkivonat aktiválása elemre kattint, és beírja a tokenen megjelenített egyszeri **jelszavas** azonosítót.
 

@@ -251,8 +251,8 @@
       items:
         - name: A parancssori felület (CLI) használata
           href: create-cli-complete.md
-        - name: Sablon használata
-          displayName: 'Azure Resource Manager, ARM'
+        - name: ARM-sablon használata
+          displayName: Azure Resource Manager
           href: create-ssh-secured-vm-from-template.md
         - name: A REST API használata
           href: create-vm-rest-api.md
@@ -270,8 +270,9 @@
               href: spot-cli.md
             - name: Portál
               href: ../windows/spot-portal.md?toc=/azure/virtual-machines/linux/toc.json
-            - name: Sablon
+            - name: ARM-sablon
               href: spot-template.md
+              displayName: Azure Resource Manager
             - name: Hibakódok
               href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
     - name: Áttelepítés a klasszikusból Azure Resource Manager-alapú környezetbe
@@ -462,8 +463,9 @@
               href: image-builder-overview.md
             - name: Az Azure parancssori felület használatával
               href: image-builder.md
-            - name: Sablonreferencia
+            - name: ARM-sablon referenciája
               href: image-builder-json.md
+              displayName: 'ARM,Resource Manager'
             - name: Buildelés rendszerkép-katalógusokhoz
               href: image-builder-gallery.md
             - name: Meglévő rendszerkép frissítése
@@ -631,7 +633,7 @@
               href: attach-disk-portal.md
         - name: Lemez leválasztása
           href: detach-disk.md
-        - name: Lemezek üzembe helyezése sablonnal
+        - name: Lemezek üzembe helyezése ARM-sablonnal
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
         - name: Megosztott lemezek engedélyezése
@@ -757,9 +759,10 @@
       href: /rest/api/compute
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.compute/allversions
+      displayName: ARM
 - name: További források
   items:
-    - name: Szerzői sablonok
+    - name: ARM-sablonok létrehozása
       displayName: 'Azure Resource Manager, ARM'
       href: /azure/azure-resource-manager/
     - name: Fejlessze a készségeit a Microsoft Learnnel

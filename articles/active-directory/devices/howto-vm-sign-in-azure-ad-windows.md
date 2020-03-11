@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8fe33f78b96dbfe780c94fbddfc5c8821148279
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: ffb0f7cdb320d009eb1549efabac60d7710b9b0e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672593"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080084"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -152,7 +152,8 @@ Most, hogy létrehozta a virtuális gépet, konfigurálnia kell az Azure RBAC-sz
 
 > [!NOTE]
 > Annak engedélyezéséhez, hogy a felhasználó RDP-en keresztül jelentkezzen be a virtuális GÉPRE, hozzá kell rendelnie a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési szerepkörét. Egy virtuális géphez hozzárendelt tulajdonosi vagy közreműködői szerepkörökkel rendelkező Azure-felhasználó nem jogosult automatikusan a virtuális gépre RDP-kapcsolaton keresztül bejelentkezni. Ez a virtuális gépeket vezérlő személyek, illetve a virtuális gépeket elérő személyek között naplózható elkülönítést biztosít.
-' A virtuális gép szerepkör-hozzárendelései több módon is konfigurálhatók:
+
+A virtuális gép szerepkör-hozzárendelései több módon is konfigurálhatók:
 
 - Az Azure AD portál felületének használata
 - A Azure Cloud Shell felület használata
@@ -194,7 +195,7 @@ Az Azure-előfizetések erőforrásaihoz való hozzáférés RBAC használatáva
 - [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és az Azure CLI használatával](/azure/role-based-access-control/role-assignments-cli)
 - [Azure-erőforrásokhoz való hozzáférés kezelése az RBAC és az Azure Portal használatával](/azure/role-based-access-control/role-assignments-portal)
 - [Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure PowerShell használatával](/azure/role-based-access-control/role-assignments-powershell).
-'
+
 ## <a name="using-conditional-access"></a>Feltételes hozzáférés használata
 
 A feltételes hozzáférési szabályzatok, például a többtényezős hitelesítés vagy a felhasználói bejelentkezés kockázatának érvényesítése előtt engedélyezheti a hozzáférést az Azure-beli Windows rendszerű virtuális gépekhez, amelyek engedélyezve vannak az Azure AD-bejelentkezéssel. A feltételes hozzáférési szabályzat alkalmazásához ki kell választania az "Azure Windows VM-bejelentkezés" alkalmazást a Cloud apps vagy a műveletek hozzárendelési beállításból, majd a bejelentkezési kockázatot feltételként kell használnia, és/vagy a többtényezős hitelesítést kell megadni hozzáférés-vezérlésként. 
@@ -223,7 +224,7 @@ Most bejelentkezett a Windows Server 2019 Azure-beli virtuális gépre a hozzár
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-### <a name="troubleshoot-deployment-issues"></a>Üzembe helyezés hibáinak elhárítása
+### <a name="troubleshoot-deployment-issues"></a>Üzembe helyezési problémák elhárítása
 
 A AADLoginForWindows-bővítményt sikeresen kell telepíteni ahhoz, hogy a virtuális gép végre lehessen hajtani az Azure AD JOIN folyamatát. Ha a virtuálisgép-bővítményt nem sikerül megfelelően telepíteni, hajtsa végre a következő lépéseket.
 
@@ -362,5 +363,6 @@ Ha még nem telepítette a vállalati Windows Hello szolgáltatást, és ha ez n
 
 Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse a problémát az [Azure ad visszajelzési fórumának](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)használatával.
 
-## <a name="next-steps"></a>További lépések
-További információ a Azure Active Directoryről: [Mi az a Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)
+## <a name="next-steps"></a>Következő lépések
+
+További információ a Azure Active Directoryről: [Mi az Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)

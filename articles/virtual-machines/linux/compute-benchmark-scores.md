@@ -1,26 +1,16 @@
 ---
 title: Az Azure Linux rendszerű virtuális gépek számítási teljesítményteszt-pontszámai
 description: Összehasonlíthatja a Linux rendszerű Azure-beli virtuális gépekhez tartozó, az összevetéssel kapcsolatos számítási teljesítménymutatókat
-services: virtual-machines-linux
-documentationcenter: ''
-author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 93e812c1-79dd-40c5-b97b-aa79f5cd7d76
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 04/09/2018
-ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 6662f109f9a8227ec45d44a730abc91ebcd8dd70
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 71413e9a1e0b368bf5d3ae26bbc97d7d78da9422
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650844"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969748"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>A Linux rendszerű virtuális gépek számítási teljesítményteszt-pontszámai
 Az alábbi összehasonlító teljesítménytesztek eredményei az Azure nagy teljesítményű virtuálisgép-felállásának számítási teljesítményét mutatják be Ubuntu rendszeren. A számítási teljesítménytesztek pontszámai a [Windows rendszerű virtuális gépek](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)esetében is elérhetők.

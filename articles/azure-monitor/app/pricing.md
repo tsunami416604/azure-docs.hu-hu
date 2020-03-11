@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 1549a26022b8d593412a666228b07f05272d640c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
-ms.translationtype: HT
+ms.openlocfilehash: b782477fd29b34eda70813fc2aff29157f02acb3
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945638"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968061"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>A Application Insights használatának és költségeinek kezelése
 
@@ -125,7 +125,6 @@ dependencies
 | render barchart  
 ```
 
-
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Application Insights használatának megtekintése az Azure-számlán
 
 Az Azure nagyszerű hasznos funkciókat biztosít a [Azure Cost Management + számlázási](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) központban. A "Cost Analysis" funkció például lehetővé teszi az Azure-erőforrások költségeinek megtekintését. Ha erőforrás-típus alapján (a Microsoft. bepillantások/összetevők Application Insights) egy szűrőt ad hozzá, lehetővé teszi a kiadások nyomon követését.
@@ -174,6 +173,14 @@ A napi korlát módosításához a Application Insights erőforrás **Konfigurá
 ![A napi telemetria mennyiségi korlátjának módosítása](./media/pricing/pricing-003.png)
 
 A [napi korlát Azure Resource Manageron keresztüli módosításához](../../azure-monitor/app/powershell.md)a módosítandó tulajdonság a `dailyQuota`.  Azure Resource Manager a `dailyQuotaResetTime` és a napi korlát `warningThreshold`is beállítható.
+
+### <a name="create-alerts-for-the-daily-cap"></a>Riasztások létrehozása a napi korláthoz
+
+A napi Application Insights sapka létrehoz egy eseményt az Azure-tevékenység KOG, amikor a betöltött adatmennyiség eléri a figyelmeztetési szintet vagy a napi korlátot.  [Ezek a műveletnapló-események alapján létrehozhatók riasztások](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal). A következő eseményekhez tartozó jelek nevei:
+
+* Application Insights összetevő napi korlátjának figyelmeztetési küszöbértéke elérte
+
+* Application Insights összetevő napi korlátja elérve
 
 ## <a name="sampling"></a>Mintavételezés
 A [mintavétel](../../azure-monitor/app/sampling.md) olyan módszer, amely csökkenti a telemetria az alkalmazásba való küldésének mértékét, miközben megőrzi a kapcsolódó események keresésének lehetőségét a diagnosztikai keresések során. Megőrzi a helyes események számát is.
@@ -275,11 +282,11 @@ Mivel ez a csomag csak az Operations Management Suite-előfizetéssel rendelkez�
   * Ha az alkalmazás az SDK-val állítja be a **roleInstance** egyéni értékre, alapértelmezés szerint ugyanazt az értéket használja a csomópontok számának meghatározásához.
   * Ha egy új SDK-verziót használ az ügyfélgépekről vagy mobileszközökön futó alkalmazással, a csomópontok száma nagy (az ügyfélszámítógépek és a mobileszközök nagy száma miatt).
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatizálás
 
 Írhat egy parancsfájlt az árképzési csomag beállításához az Azure Erőforrás-kezelés használatával. [További tudnivalókat itt talál](powershell.md#price).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mintavételezés](../../azure-monitor/app/sampling.md)
 

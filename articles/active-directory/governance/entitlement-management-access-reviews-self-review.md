@@ -16,12 +16,12 @@ ms.date: 11/01/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89a346f48856ea33ae5e27e3537f53dfa1ca3ae3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 45da1170705bab1206a98c59e02c7616c25ce502
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608812"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967776"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag önálló felülvizsgálata az Azure AD-jogosultságok kezelésében
 
@@ -37,7 +37,7 @@ A hozzáférési felülvizsgálat elvégzéséhez először meg kell nyitnia a h
 
 1. Kattintson a **hozzáférés áttekintése** hivatkozásra.
 
-1. Ha nem kap e-mailt, a függőben lévő hozzáférési felülvizsgálatok megkereséséhez közvetlenül https://myaccess.microsoft.com is megkeresheti.
+1. Ha nem kap e-mailt, a függőben lévő hozzáférési felülvizsgálatok megkereséséhez közvetlenül https://myaccess.microsoft.com is megkeresheti.  (Az USA kormánya számára Ehelyett használja a `https://myaccess.microsoft.us`.)
 
 1. A bal oldali navigációs sávon kattintson a **hozzáférési felülvizsgálatok** lehetőségre az Önhöz rendelt hozzáférési felülvizsgálatok listájának megtekintéséhez.
 
@@ -56,10 +56,10 @@ A hozzáférési felülvizsgálat megnyitása után láthatja a hozzáférést. 
 
 1.  Ha az **Igen**gombra kattintott, előfordulhat, hogy az **OK** mezőben szerepelnie kell egy indoklási utasításnak.
 
-1.  Kattintson a **Submit (Küldés**) gombra.
+1.  Kattintson a **Küldés** gombra.
 
 Visszatérhet a felülvizsgálathoz, ha meggondolja magát, és úgy dönt, hogy megváltoztatja a választ a felülvizsgálat vége előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési csomagok hozzáférésének áttekintése](entitlement-management-access-reviews-review-access.md) 

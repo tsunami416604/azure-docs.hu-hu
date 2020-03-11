@@ -5,12 +5,12 @@ author: shsha
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
-ms.openlocfilehash: 350718e4ce890fcbfaa7f2b10cc4c47dfac4da90
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614706"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969032"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Titkosítási tanúsítvány beállítása és a titkok titkosítása Linux-fürtökön
 Ez a cikk bemutatja, hogyan állíthat be titkosítási tanúsítványt, és hogyan titkosíthatja a titkokat a Linux-fürtökön. Windows-fürtök esetén lásd: [titkosítási tanúsítvány beállítása és a titkok titkosítása Windows-fürtökön][secret-management-windows-specific-link].
@@ -36,7 +36,7 @@ A titkos kód titkosításához a következő kódrészlet használható. Ez a k
 
 ```console
 user@linux:$ echo "Hello World!" > plaintext.txt
-user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
+user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 Az eredményül kapott Base-64 kódolású karakterlánc kimenete titkosítva. txt tartalmazza a titkos rejtjelezett, valamint a titkosításhoz használt tanúsítvánnyal kapcsolatos információkat is. Az érvényességét az OpenSSL-vel való visszafejtéssel ellenőrizheti.

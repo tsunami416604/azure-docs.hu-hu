@@ -118,6 +118,8 @@
                   href: traffic-analytics-faq.md
                 - name: Séma- és adataggregáció
                   href: traffic-analytics-schema.md
+                - name: Sémafrissítés (2019. augusztus)
+                  href: traffic-analytics-schema-update.md
             - name: A Power BI használata
               href: network-watcher-visualize-nsg-flow-logs-power-bi.md
             - name: Elastic Stack használata

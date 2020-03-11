@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 03/09/2020
 ms.author: dapine
-ms.openlocfilehash: 34b4664ec13f7ba1871433e37d86170b2207a17a
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: dd5a531e4a979cba9c2a766c7774762a0427ad02
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816577"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037329"
 ---
 # <a name="configure-speech-service-containers"></a>Beszédfelismerési szolgáltatás tárolóinak konfigurálása
 
@@ -30,7 +30,7 @@ A **beszédfelismerési** tároló futásidejű környezete a `docker run` paran
 > [!IMPORTANT]
 > A [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)és [`Eula`](#eula-setting) beállításokat a rendszer együtt használja, és mindhárom esetben érvényes értékeket kell megadnia. Ellenkező esetben a tároló nem indul el. A tárolók létrehozásához szükséges konfigurációs beállításokkal kapcsolatos további információkért lásd: [számlázás](speech-container-howto.md#billing).
 
-## <a name="apikey-configuration-setting"></a>ApiKey konfigurációs beállítás
+## <a name="apikey-configuration-setting"></a>Konfigurációs beállítás apikey tulajdonsággal végzett tesztelése
 
 A `ApiKey` beállítás megadja a tároló számlázási adatainak nyomon követéséhez használt Azure-erőforrás kulcsát. Meg kell adnia egy értéket a ApiKey, és az értéknek érvényes kulcsnak kell lennie a [`Billing`](#billing-configuration-setting) konfigurációs beállításhoz megadott _beszédfelismerési_ erőforráshoz.
 
@@ -38,7 +38,7 @@ Ez a beállítás a következő helyen érhető el:
 
 - Azure Portal: a **beszédfelismerés** erőforrás-kezelése a **kulcsok** területen
 
-## <a name="applicationinsights-setting"></a>ApplicationInsights-beállítás
+## <a name="applicationinsights-setting"></a>Applicationinsights – beállítás
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
@@ -50,15 +50,15 @@ Ez a beállítás a következő helyen érhető el:
 
 - Azure Portal: a **beszédfelismerés** áttekintése, címkézett `Endpoint`
 
-| Szükséges | Név | Data type | Leírás |
+| Kötelező | Name (Név) | Adattípus | Leírás |
 | -------- | ---- | --------- | ----------- |
 | Igen | `Billing` | Sztring | Számlázási végpont URI-ja. A számlázási URI beszerzésével kapcsolatos további információkért lásd: a [szükséges paraméterek összegyűjtése](speech-container-howto.md#gathering-required-parameters). További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../cognitive-services-custom-subdomains.md). |
 
-## <a name="eula-setting"></a>Végfelhasználói licencszerződés beállítása
+## <a name="eula-setting"></a>Licencfeltételek beállítása
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Fluent beállítások
+## <a name="fluentd-settings"></a>Fluentd beállításai
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
@@ -72,16 +72,16 @@ Ez a beállítás a következő helyen érhető el:
 
 ## <a name="mount-settings"></a>Csatlakoztatási beállítások
 
-A tárolóban lévő és onnan érkező adatok olvasására és írására a kötési csatlakoztatások használhatók. Adja meg a bemeneti csatlakoztatást vagy a kimeneti csatlakoztatást úgy, hogy megadja a `--mount` lehetőséget a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsban.
+Kötés használatát csatlakoztatja az adatok olvasását és írását, és a tárolóból. Adja meg a bemeneti csatlakoztatást vagy a kimeneti csatlakoztatást úgy, hogy megadja a `--mount` lehetőséget a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsban.
 
 A normál beszédfelismerési tárolók nem használnak bemeneti vagy kimeneti csatlakoztatásokat a képzési és a szolgáltatási adatok tárolására. Az egyéni beszédfelismerési tárolók azonban a kötetek csatlakoztatására támaszkodnak.
 
-A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](speech-container-howto.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek.
+A gazdagép csatlakoztatási helye a pontos szintaxisa a gazdagép operációs rendszere függően változik. Emellett előfordulhat, hogy a [gazdaszámítógép](speech-container-howto.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek.
 
-| Választható | Név | Data type | Leírás |
+| Optional | Name (Név) | Adattípus | Leírás |
 | -------- | ---- | --------- | ----------- |
 | Nem engedélyezett | `Input` | Sztring | A normál beszédfelismerési tárolók nem használják ezt. Az egyéni beszédfelismerési tárolók a [mennyiségi csatlakoztatásokat](#volume-mount-settings)használják.                                                                                    |
-| Választható | `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték 0.`/output` Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output` |
+| Optional | `Output` | Sztring | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`. Ez az a hely a naplófájlok. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output` |
 
 ## <a name="volume-mount-settings"></a>Kötet csatlakoztatási beállításai
 
@@ -106,16 +106,16 @@ Ez a parancs a gazdagépek _C:\input_ könyvtárat csatlakoztatja a tárolók _/
 > [!IMPORTANT]
 > A mennyiségi csatlakoztatási beállítások csak a **Custom Speech szövegre** és az **egyéni szöveg-beszéd** tárolóra vonatkoznak. A normál **beszéd – szöveg** és szöveg – **beszéd** tárolók nem használnak mennyiségi csatlakoztatást.
 
-## <a name="example-docker-run-commands"></a>Példa Docker-futtatási parancsokra
+## <a name="example-docker-run-commands"></a>Példa docker-parancsok futtatása
 
 A következő példák a konfigurációs beállításokat használják a `docker run` parancsok írására és használatára. A rendszer futtatása után a tároló továbbra is futni fog, amíg [le nem állítja](speech-container-howto.md#stop-the-container) .
 
-- **Vonal-folytatási karakter**: a következő szakaszban lévő Docker-parancsok a háttér perjelet (`\`) használják vonal-folytatási karakterként. Cserélje le vagy távolítsa el a gazdagép operációs rendszerének követelményei alapján.
+- **Vonal-folytatási karakter**: a következő szakaszban lévő Docker-parancsok a háttér perjelet (`\`) használják vonal-folytatási karakterként. Cserélje le, vagy távolítsa el ezt a gazdagép operációs rendszerre vonatkozó követelmények alapján.
 - **Argumentumok sorrendje**: ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
 
 Cserélje le a {_argument_name_} értéket a saját értékeire:
 
-| Helyőrző | Value (Díj) | Formátum vagy példa |
+| Helyőrző | Érték | Formátum vagy példa |
 | ----------- | ----- | ----------------- |
 | **{API_KEY}** | Az `Speech` erőforrás Endpoint kulcsa az Azure `Speech` kulcsok lapon.   | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`                                                                                  |
 | **{ENDPOINT_URI}** | A számlázási végpont értéke elérhető az Azure `Speech` – áttekintés oldalon. | Lásd az explicit példákhoz [szükséges paraméterek összegyűjtését](speech-container-howto.md#gathering-required-parameters) ismertető témakört. |
@@ -130,7 +130,7 @@ Cserélje le a {_argument_name_} értéket a saját értékeire:
 
 A következő Docker-példák a beszédfelismerési tárolóra vonatkoznak.
 
-## <a name="speech-to-texttabstt"></a>[Beszédfelismerés](#tab/stt)
+## <a name="speech-to-text"></a>[Beszédfelismerés](#tab/stt)
 
 ### <a name="basic-example-for-speech-to-text"></a>Alapszintű példa a beszédfelismerési szövegre
 
@@ -153,7 +153,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-speech-to-texttabcstt"></a>[Custom Speech – szöveg](#tab/cstt)
+## <a name="custom-speech-to-text"></a>[Custom Speech – szöveg](#tab/cstt)
 
 ### <a name="basic-example-for-custom-speech-to-text"></a>Alapszintű példa Custom Speech-szövegre
 
@@ -180,7 +180,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="text-to-speechtabtss"></a>[Szövegfelolvasás](#tab/tss)
+## <a name="text-to-speech"></a>[Szövegfelolvasás](#tab/tss)
 
 ### <a name="basic-example-for-text-to-speech"></a>Alapszintű példa szövegről beszédre
 
@@ -203,7 +203,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-text-to-speechtabctts"></a>[Egyéni szöveg – beszéd](#tab/ctts)
+## <a name="custom-text-to-speech"></a>[Egyéni szöveg – beszéd](#tab/ctts)
 
 ### <a name="basic-example-for-custom-text-to-speech"></a>Alapszintű példa egyéni szöveg-beszéd átalakításra
 

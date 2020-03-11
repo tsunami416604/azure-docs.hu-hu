@@ -1,7 +1,7 @@
 ---
-title: Az első automatizált ML-kísérlet létrehozása
+title: Automatizált ML besorolási modellek létrehozása
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan lehet betanítani és üzembe helyezni egy besorolási modellt a Azure Machine Learning Studióban található automatizált gépi tanulással.
+description: Ismerje meg, hogyan taníthatja & a besorolási modellek üzembe helyezését Azure Machine Learning automatikus gépi tanulási (automatikus ML) felületével.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 84d539f35919293522f05abdeabeca936138c140
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048282"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081624"
 ---
-# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: az első besorolási modell létrehozása automatizált gépi tanulással
+# <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Oktatóanyag: besorolási modell létrehozása automatizált ML-vel Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhatja létre első automatizált gépi tanulási kísérletét Azure Machine Learning Studióval anélkül, hogy egyetlen sor kódot kellene írnia. Ez a példa egy besorolási modellt hoz létre, amely azt jelzi, hogy az ügyfél egy pénzügyi intézmény által rögzített értékű letétbe kerül.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy alapszintű besorolási modellt anélkül, hogy egyetlen sor kódot kellene írnia a Azure Machine Learning automatikus gépi tanulási felületén keresztül. Ez a besorolási modell azt jelzi, hogy az ügyfél előfizet-e a pénzügyi intézménnyel kötött, rögzített időre szóló befizetésre.
 
 Az automatizált gépi tanulás segítségével automatizálhatja az időigényes feladatokat. Az automatizált gépi tanulás gyorsan megismétli az algoritmusok és hiperparaméterek beállítása számos kombinációját, így könnyebben megtalálhatja a legjobb modellt a választott sikerességi mérőszám alapján.
 
@@ -42,7 +42,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő fe
 
 Az Azure Machine Learning munkaterület a felhőben található alapvető erőforrás, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használható. Az Azure-előfizetést és az erőforráscsoportot egy könnyen felhasználható objektumhoz fűzi a szolgáltatásban. 
 
-A munkaterületet az Azure-erőforrások kezeléséhez használható webalapú konzolon, a Azure Machine Learning Studio használatával hozhatja létre.
+A munkaterületet az Azure-erőforrások kezeléséhez használható webalapú konzolon Azure Portal segítségével hozhatja létre.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
@@ -51,9 +51,9 @@ A munkaterületet az Azure-erőforrások kezeléséhez használható webalapú k
 
 ## <a name="create-and-run-the-experiment"></a>A kísérlet létrehozása és futtatása
 
-A következő kísérletet a Azure Machine Learning Studióban, egy összevont felületen végezheti el, amely magában foglalja a gépi tanulási eszközöket, amelyekkel adatelemzési forgatókönyvek végezhetők el az összes képzettségi szinthez tartozó adatelemző szakemberek számára. A Studio nem támogatott az Internet Explorer böngészőben.
+A következő kísérletet az Azure Machine learning szolgáltatásban, a https://ml.azure.comon, egy összevont webes felületen végezheti el, amely a gépi tanulási eszközöket tartalmazza, amelyekkel adatelemzési forgatókönyvek készíthetők az összes képzettségi szint adatelemző szakemberek számára. Ez az interfész nem támogatott az Internet Explorer böngészőben.
 
-1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com).
+1. Jelentkezzen be Azure Machine Learningra https://ml.azure.comcímen.
 
 1. Válassza ki az előfizetését és a létrehozott munkaterületet.
 
@@ -63,13 +63,13 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
 
    Mivel ez az első automatizált ML-kísérlet, egy üres lista jelenik meg, amely a dokumentációra mutató hivatkozásokat tartalmaz.
 
-   ![Azure Machine Learning Studio](./media/tutorial-first-experiment-automated-ml/get-started.png)
+   ![Első lépések lap](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
 1. Válassza az **új automatikus ml Futtatás**lehetőséget. 
 
 1. Hozzon létre egy új adatkészletet a **helyi fájlok** lehetőség kiválasztásával a **+ adatkészlet létrehozása** legördülő menüből. 
 
-    1. Az **alapszintű információ** űrlapon adja meg az adatkészlet nevét, és adjon meg egy opcionális leírást. Az automatikus ml Azure Machine learning Studióban jelenleg csak táblázatos adatkészleteket támogat, ezért az adatkészlet típusának alapértelmezett értékének táblázatos kell lennie.
+    1. Az **alapszintű információ** űrlapon adja meg az adatkészlet nevét, és adjon meg egy opcionális leírást. Az automatikus ml felület jelenleg csak a TabularDatasets támogatja, ezért az adatkészlet típusának alapértelmezett értékének *táblázatos*kell lennie.
 
     1. Kattintson a **Next (tovább) gombra** a bal alsó sarokban
 
@@ -163,9 +163,9 @@ A következő lépésekkel navigálhat a **modell részletein** és a **vizualiz
 
 ![Iteráció részleteinek futtatása](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
-## <a name="deploy-the-model"></a>A modell üzembe helyezése
+## <a name="deploy-the-best-model"></a>A legjobb modell üzembe helyezése
 
-A Azure Machine Learning Studióban található automatizált gépi tanulás lehetővé teszi a legjobb modell üzembe helyezését webszolgáltatásként néhány lépésben. Az üzembe helyezés a modell integrációja, így előre jelezhető az új adatmennyiség, és azonosíthatók a lehetséges lehetőségek is. 
+Az automatizált gépi tanulási felület lehetővé teszi a legjobb modell üzembe helyezését webszolgáltatásként néhány lépésben. Az üzembe helyezés a modell integrációja, így előre jelezhető az új adatmennyiség, és azonosíthatók a lehetséges lehetőségek is. 
 
 Ebben a kísérletben a webszolgáltatások üzembe helyezése azt jelenti, hogy a pénzügyi intézmény immár egy iterációs és méretezhető webes megoldást kínál a lehetséges rögzített lejáratú ügyfelek azonosítására. 
 
@@ -201,9 +201,9 @@ Az üzembe helyezési fájlok nagyobb méretűek, mint az adatmennyiség és a k
 
 ### <a name="delete-the-deployment-instance"></a>A központi telepítési példány törlése
 
-Törölje a központi telepítési példányt a Azure Machine Learning studióból, ha meg szeretné tartani az erőforráscsoportot és a munkaterületet más oktatóanyagok és feltárás céljából. 
+Csak a központi telepítési példányt törölje Azure Machine Learningról https://ml.azure.com/, ha meg szeretné őrizni az erőforráscsoportot és a munkaterületet más oktatóanyagok és feltárás céljából. 
 
-1. Nyissa meg a [Azure Machine learning studiót](https://ml.azure.com/). Navigáljon a munkaterülethez, és a bal oldalon az **eszközök** ablaktáblán válassza a **végpontok**lehetőséget. 
+1. Lépjen Azure Machine Learning a https://ml.azure.com/címen. Navigáljon a munkaterülethez, és a bal oldalon az **eszközök** ablaktáblán válassza a **végpontok**lehetőséget. 
 
 1. Válassza ki a törölni kívánt központi telepítést, és válassza a **Törlés**lehetőséget. 
 
@@ -215,15 +215,15 @@ Törölje a központi telepítési példányt a Azure Machine Learning studiób�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az automatizált gépi tanulási oktatóanyagban a Azure Machine Learning Studio használatával létrehozhatja és üzembe helyezheti a besorolási modellt. További információkat és további lépéseket a következő cikkekben talál:
+Ebben az automatizált gépi tanulási oktatóanyagban a besorolási modell létrehozásához és üzembe helyezéséhez Azure Machine Learning automatikus ML-interfészét használta. További információkat és további lépéseket a következő cikkekben talál:
 
 > [!div class="nextstepaction"]
 > [Webszolgáltatás felhasználása](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ További információ a [featurization](how-to-create-portal-experiments.md#featurization).
-+ További információ az [adatprofilkészítésről](how-to-create-portal-experiments.md#profile).
 + További információ az [automatizált gépi tanulásról](concept-automated-ml.md).
-+ A besorolási metrikákkal és diagramokkal kapcsolatos további információkért tekintse meg az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md#classification) című cikket.
++ A besorolási metrikákkal és diagramokkal kapcsolatos további információkért tekintse meg az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md#classification) című cikket. További információ a [featurization](how-to-create-portal-experiments.md#featurization).
++ További információ az [adatprofilkészítésről](how-to-create-portal-experiments.md#profile).
+
 
 >[!NOTE]
 > Ezt a bank marketing-adatkészletet a [Creative Commons (CCO: Public Domain) licence](https://creativecommons.org/publicdomain/zero/1.0/)keretében lehet elérni. Az adatbázis egyéni tartalmában minden jogosultság az [adatbázis tartalma licenc](https://creativecommons.org/publicdomain/zero/1.0/) alatt érhető el, és elérhető a [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset)-on. Ez az adatkészlet eredetileg az [UCI Machine learning adatbázisban](https://archive.ics.uci.edu/ml/datasets/bank+marketing)volt elérhető.<br><br>

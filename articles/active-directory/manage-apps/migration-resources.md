@@ -1,6 +1,6 @@
 ---
-title: Erőforrások áttelepítése az Azure Active Directory-alkalmazások |} A Microsoft Docs
-description: Forrásanyagok az Azure Active Directory (Azure AD-) alkalmazás-hozzáférés és a hitelesítési át.
+title: Az alkalmazások Azure Active Directoryba való áttelepítéséhez szükséges erőforrások | Microsoft Docs
+description: Az alkalmazások hozzáférésének és hitelesítésének Azure Active Directory (Azure AD) szolgáltatásba való áttelepíteni kívánt erőforrások.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -8,30 +8,30 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/19/2018
+ms.date: 02/29/2020
 ms.author: mimart
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b39704b25c26998e16ca8080c4e44dd1adf6965c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b30469858a5dd83f7f5f707f74466302b3000510
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108217"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968724"
 ---
-# <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Erőforrások áttelepítése az Azure Active Directory-alkalmazások
+# <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Az alkalmazások Azure Active Directoryba való áttelepítéséhez szükséges erőforrások
 
-Forrásanyagok az Azure Active Directory (Azure AD-) alkalmazás-hozzáférés és a hitelesítési át. Ez a rövid kérdőívet (https://aka.ms/AppsMigrationFeedback) visszajelzést élmény áttelepítése alkalmazásait az Azure AD (blockers áttelepítése, beleértve a szükséges eszközkészlet / útmutatást, vagy a helyszíni Identitásszolgáltató megőrzése okai). 
+Az alkalmazások hozzáférésének és hitelesítésének Azure Active Directory (Azure AD) szolgáltatásba való áttelepíteni kívánt erőforrások. Ezt a rövid kérdőívet (https://aka.ms/AppsMigrationFeedback), hogy visszajelzést kapjon az alkalmazások Azure AD-be való áttelepítésével kapcsolatban (beleértve az áttelepítésre szolgáló blokkokat, a szükséges eszközöket és útmutatást, illetve a helyszíni IDENTITÁSSZOLGÁLTATÓ megőrzésének okait). 
 
-| Resource  | Leírás  |
+| Erőforrás  | Leírás  |
 |:-----------|:-------------|
-|[Az alkalmazások az Azure AD-be való migrálása](https://aka.ms/migrateapps/whitepaper) | Ez a tanulmány bemutatja a migrálás előnyeit, és ismerteti, hogyan lehet egyértelműen vázolt tételéhez négy fázisban áttelepítés tervezése: felderítés, besorolás, áttelepítési és folyamatos felügyeletét. Gondolja át a folyamat és a projekt könnyen feldolgozható darabokra felosztania rendszer végigvezeti. A dokumentum segítséget nyújt a vizualizáción fontos erőforrásokra mutató hivatkozásokat is. |
-|[Megoldási útmutató: Az Active Directory összevonási szolgáltatások (AD FS) áttelepítése alkalmazásokat az Azure ad-hez](https://aka.ms/migrateapps/adfssolutionguide) | Ez a megoldási útmutató végigvezeti tervezési és a egy magasabb szintű az áttelepítés tanulmányban leírtak áttelepítési projektet végrehajtása azonos négy fázisa. Ebben az útmutatóban megismerheti, hogyan a alkalmazni ezeket a fázisokat adott célja az alkalmazások áthelyezése az Azure Directory összevont szolgáltatások (AD FS) az Azure AD fog.|
-| [Eszköz: Az Active Directory összevonási szolgáltatások áttelepítési készültségi parancsfájl](https://aka.ms/migrateapps/adfstools) | Ez a parancsfájl futtatása meghatározni a migrálás az Azure AD-alkalmazások készen áll-e a helyszíni Active Directory összevonási szolgáltatások (AD FS) kiszolgálón.|
-| [Telepítési terv: Áttelepítés az AD FS-ről Jelszókivonat-szinkronizálás](https://aka.ms/ADFSTOPHSDPDownload) | A Jelszókivonat-szinkronizálás a felhasználói jelszavak kivonatait vannak szinkronizálva a helyszíni Active Directoryból az Azure AD. Ez lehetővé teszi az Azure AD-felhasználók hitelesítése anélkül, hogy a helyszíni Active Directoryval való interakcióhoz.| 
-| [Telepítési terv: Áttelepítés az AD FS-ről átmenő hitelesítéshez](https://aka.ms/ADFSTOPTADPDownload)|Az Azure AD átmenő hitelesítésének segít a felhasználóknak, jelentkezzen be a helyszíni és felhőalapú alkalmazások is ugyanazt a jelszót. Ez a szolgáltatás a felhasználók a jobb felhasználói élményt biztosít, mivel kevesebb ne feledje, hogy egyetlen jelszóval rendelkeznek. Mivel a felhasználók kevésbé valószínű, hogy hogyan jelentkezhet be, amikor csak szükségük van egy jelszó megjegyzése elfelejtette is kevesebb informatikai ügyfélszolgálati kiadásokat. Az Azure AD-vel való bejelentkezéskor a szolgáltatás közvetlenül a helyszíni Active Directoryban tárolt adatok alapján érvényesíti a felhasználói jelszavakat.|
-| [Telepítési terv: Egyszeri bejelentkezés SaaS-alkalmazásokhoz az Azure AD-vel engedélyezése](https://aka.ms/SSODPDownload) | Egyszeri bejelentkezés (SSO) segítségével fér hozzá az alkalmazások és erőforrások kell tennie az üzleti, miközben csak egyszer, egyetlen felhasználói fiókkal jelentkezik be. Például egy felhasználó jelentkezett be, miután a felhasználó áthelyezheti a Microsoft Office, SalesForce, Box másodszor (például írja be a jelszót) hitelesítése nélkül. 
-| [Telepítési terv: Alkalmazások kiterjesztése az Azure AD-alkalmazásproxyval](https://aka.ms/AppProxyDPDownload)| Az alkalmazott laptopok hozzáférést és egyéb eszközöket a helyszíni alkalmazások hagyományosan van szó, virtuális magánhálózatok (VPN) vagy demilitarizált zóna (DMZ). Ezeket a megoldásokat azonban nem csupán nagyon nehéz és komplex dolog védelemmel ellátni, hanem a beállításuk és az üzemeltetésük is nagyon költséges. Az Azure AD-alkalmazásproxy megkönnyíti a helyszíni alkalmazásokat. |
-| [Központi telepítési csomagok](../fundamentals/active-directory-deployment-plans.md) | Több központi telepítési csomagok központi telepítése a multi-factor authentication, feltételes hozzáférés, felhasználókiépítés, zökkenőmentes egyszeri bejelentkezési, önkiszolgáló jelszó-visszaállítás, és más funkciókat keresése! |
+|[Alkalmazások áttelepítése az Azure AD-be](https://aka.ms/migrateapps/whitepaper) | Ez a tanulmány az áttelepítés előnyeit mutatja be, és leírja, hogyan tervezze meg az áttelepítést négy jól tagolt fázisban: felderítés, besorolás, áttelepítés és folyamatos felügyelet. Útmutatást kaphat arról, hogyan gondolhatja át a folyamatot, és hogyan bontják le a projektet könnyen felhasználható darabokra. A dokumentum teljes egészében olyan fontos erőforrásokra mutató hivatkozásokat talál, amelyek segítenek az Ön számára. |
+|[Megoldási útmutató: alkalmazások áttelepítése Active Directory összevonási szolgáltatások (AD FS)ról (AD FS) az Azure AD-be](https://aka.ms/migrateapps/adfssolutionguide) | Ez a megoldási útmutató végigvezeti az áttelepítési tanulmány magasabb szintjén ismertetett alkalmazás-áttelepítési projekt tervezésének és végrehajtásának négy fázisán. Ebből az útmutatóból megtudhatja, hogyan alkalmazhatja ezeket a fázisokat arra a célra, amely az alkalmazások Azure Directory összevont szolgáltatásokból (AD FS) az Azure AD-ba való áthelyezésének konkrét céljára vonatkozik.|
+| [Eszköz: Active Directory összevonási szolgáltatások (AD FS) Migration Readiness script](https://aka.ms/migrateapps/adfstools) | Ez egy parancsfájl, amely a helyszíni Active Directory összevonási szolgáltatások (AD FS) (AD FS) kiszolgálón futtatható az Azure AD-ba való áttelepítéshez használható alkalmazások készültségének meghatározásához.|
+| [Központi telepítési terv: áttelepítés AD FSról jelszó-kivonatolási szinkronizálásra](https://aka.ms/ADFSTOPHSDPDownload) | A jelszó-kivonatolási szinkronizálással a felhasználói jelszavak kivonatait a helyszíni Active Directoryról az Azure AD-be szinkronizálja a rendszer. Ez lehetővé teszi, hogy az Azure AD hitelesítse a felhasználókat a helyszíni Active Directory való interakció nélkül.| 
+| [Központi telepítési terv: áttelepítés AD FSról átmenő hitelesítésre](https://aka.ms/ADFSTOPTADPDownload)|Az Azure AD átmenő hitelesítés használatával a felhasználók ugyanazzal a jelszóval jelentkezhetnek be a helyszíni és a felhőalapú alkalmazásokba. Ez a funkció jobb felhasználói élményt nyújt a felhasználóknak, hiszen kevesebb jelszót kell megjegyeznünk. Emellett csökkenti az informatikai támogatási szolgálat költségeit, mivel a felhasználók kevésbé valószínű, hogy hogyan jelentkezhetnek be, amikor csak egy jelszót kell megjegyezni. Az Azure AD-vel való bejelentkezéskor a szolgáltatás közvetlenül a helyszíni Active Directoryban tárolt adatok alapján érvényesíti a felhasználói jelszavakat.|
+| [Üzembe helyezési terv: egyszeri bejelentkezés engedélyezése SaaS-alkalmazásba az Azure AD-vel](https://aka.ms/SSODPDownload) | Az egyszeri bejelentkezés (SSO) segítséget nyújt az összes olyan alkalmazás és erőforrás eléréséhez, amelyet üzleti tevékenységhez szükséges, és csak egyszer kell bejelentkeznie egyetlen felhasználói fiók használatával. Ha például egy felhasználó bejelentkezett, a felhasználó áttérhet a Microsoft Officeról a SalesForce-be a hitelesítés nélkül (például egy jelszó beírása). 
+| [Üzembe helyezési terv: alkalmazások kiterjesztése az Azure AD-be alkalmazásproxy használatával](https://aka.ms/AppProxyDPDownload)| Az alkalmazottaktól származó laptopok és más eszközök hozzáférésének biztosítása a helyszíni alkalmazásokhoz hagyományosan a virtuális magánhálózatok (VPN) vagy a vagy demilitarizált zónák (DMZ-EK) használatával érhető el. Ezeket a megoldásokat azonban nem csupán nagyon nehéz és komplex dolog védelemmel ellátni, hanem a beállításuk és az üzemeltetésük is nagyon költséges. Az Azure AD Application Proxy megkönnyíti a helyszíni alkalmazások elérését. |
+| [Üzembe helyezési csomagok](../fundamentals/active-directory-deployment-plans.md) | További központi telepítési terveket találhat olyan funkciók üzembe helyezéséhez, mint a többtényezős hitelesítés, a feltételes hozzáférés, a felhasználók kiépítése, a zökkenőmentes egyszeri bejelentkezés, az önkiszolgáló jelszó-visszaállítás és egyebek. |
 
 

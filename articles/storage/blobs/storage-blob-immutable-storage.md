@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 55dbcc15afb12c03c98fb8d6e4e7f4acb269f620
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365374"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968319"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval
 
@@ -68,7 +68,7 @@ A kinyitott időalapú adatmegőrzési szabályzat csak a szolgáltatások teszt
 Az adatmegőrzési szabályokra az alábbi korlátozások vonatkoznak:
 
 - A Storage-fiók esetében a zárolt, időalapú, rögzített házirendekkel rendelkező tárolók maximális száma 10 000.
-- A minimális megőrzési időköz egy nap. A maximális érték 146 000 nap (400 év).
+- A minimális megőrzési időköz 1 nap. A maximális érték 146 000 nap (400 év).
 - Tároló esetén a zárolt időalapú megváltoztathatatlan házirendek megőrzési időtartamának meghosszabbítására szolgáló szerkesztési adatok maximális száma 5.
 - Tároló esetén a zárolt szabályzatok számára legfeljebb hét időalapú adatmegőrzési szabály van megtartva.
 
@@ -84,15 +84,7 @@ Tegyük fel például, hogy egy felhasználó időalapú adatmegőrzési szabál
 
 A zárolt időalapú adatmegőrzési házirendek lehetővé teszik a `allowProtectedAppendWrites` beállítás engedélyezését és letiltását. Az időalapú adatmegőrzési szabály zárolása után a `allowProtectedAppendWrites` beállítás nem módosítható.
 
-A jogszabályi szabályok nem engedélyezhetik `allowProtectedAppendWrites` és nem engedélyezik az új blokkok hozzáfűzését a Blobok hozzáfűzéséhez. Ha a jogi megtartást olyan időalapú adatmegőrzési szabályzatra alkalmazza, amelynek `allowProtectedAppendWrites` engedélyezve van, akkor a *AppendBlock* API nem fog működni, amíg meg nem szünteti a jogi megtartást.
-
-> [!IMPORTANT] 
-> A védett hozzáfűzési Blobok írási beállításának engedélyezése az időalapú megőrzés alatt jelenleg a következő régiókban érhető el:
-> - USA keleti régiója
-> - USA déli középső régiója
-> - USA nyugati régiója, 2.
->
-> Jelenleg erősen ajánljuk, hogy ne engedélyezze a `allowProtectedAppendWrites`t más régiókban a megadott feltételek mellett, mivel ez időszakos hibákat okozhat, és hatással lehet a hozzáfűzési Blobok megfelelőségére. Az időalapú adatmegőrzési szabályzatok beállításával és zárolásával kapcsolatos további információkért lásd: a [védett hozzáfűző Blobok írásának](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)engedélyezése.
+A jogi megtartási szabályzatok nem engedélyezhetik a `allowProtectedAppendWrites`t, és a jogcímek megsemmisítik a "allowProtectedAppendWrites" tulajdonságot. Ha a jogi megtartást olyan időalapú adatmegőrzési szabályzatra alkalmazza, amelynek `allowProtectedAppendWrites` engedélyezve van, akkor a *AppendBlock* API nem fog működni, amíg meg nem szünteti a jogi megtartást.
 
 ## <a name="legal-holds"></a>Jogi célú visszatartások
 
@@ -140,7 +132,7 @@ Nem, a már meglévő vagy újonnan létrehozott általános célú v1-, által�
 
 **Alkalmazhatok jogi és időalapú adatmegőrzési szabályzatot is?**
 
-Igen, a tároló egyszerre rendelkezhet jogi és időalapú adatmegőrzési házirenddel is. A tárolóban lévő összes blob a megváltoztathatatlan állapotban marad mindaddig, amíg az összes jogi tartalékot nem törlik, még akkor is, ha a hatályos megőrzési idő lejárt. Ezzel szemben a Blobok nem módosítható állapotban maradnak, amíg a hatályos megőrzési idő le nem jár, még akkor is, ha az összes jogi tartalék törölve lett.
+Igen, a tároló egyszerre rendelkezhet jogi és időalapú adatmegőrzési házirenddel is. a "allowProtectedAppendWrites" beállítás azonban addig nem érvényes, amíg a jogi megtartást nem törlik. A tárolóban lévő összes blob a megváltoztathatatlan állapotban marad mindaddig, amíg az összes jogi tartalékot nem törlik, még akkor is, ha a hatályos megőrzési idő lejárt. Ezzel szemben a Blobok nem módosítható állapotban maradnak, amíg a hatályos megőrzési idő le nem jár, még akkor is, ha az összes jogi tartalék törölve lett. 
 
 **Csak bírósági eljáráshoz vagy más felhasználási helyzetekben van jogi szabályozás?**
 
@@ -164,7 +156,7 @@ Igen, a blob-rétegek beállítása paranccsal áthelyezheti az adategységeket 
 
 **Mi történik, ha elmulasztok fizetni, és a megőrzési időtartam még nem járt le?**
 
-Nem fizetés esetén a normál adatmegőrzési szabályzatok a Microsofttal kötött szerződés feltételei és kikötései szerint lesznek érvényesek.
+Nem fizetés esetén a normál adatmegőrzési szabályzatok a Microsofttal kötött szerződés feltételei és kikötései szerint lesznek érvényesek. Általános információk: az [adatkezelés a Microsoftnál](https://www.microsoft.com/en-us/trust-center/privacy/data-management). 
 
 **Létezik a funkció kipróbálására lehetőséget biztosító ingyenes próba- vagy türelmi időszak?**
 

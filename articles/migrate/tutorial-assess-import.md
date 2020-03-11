@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 060399952545c903fec8ecf08d99e438883c9fd1
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 91b9c71e7c735fca08f71ca37ed28734c8d634a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902540"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079857"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Kiszolgálók felmérése importált adatai alapján
 
@@ -32,7 +32,7 @@ Vegye figyelembe a következő pontokat:
 - A kiszolgálói információk több alkalommal is feltölthetők a kiszolgálói felmérésbe CSV használatával.
 - Az alkalmazásadatok összegyűjtése hasznos a helyszíni környezet áttelepítésre való kiértékeléséhez. A kiszolgáló értékelése azonban jelenleg nem hajtja végre az alkalmazás szintű értékelést, vagy az értékelés létrehozásakor figyelembe veszi az alkalmazásokat.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Azure Migrate projekt beállítása.
 > * Töltsön ki egy CSV-fájlt a kiszolgáló adataival.
@@ -66,7 +66,7 @@ Az Azure-fióknak engedélyre van szüksége Azure Migrate projekt létrehozás�
 
 4. Az **első lépések**területen válassza a **Hozzáadás eszköz (ek)** elemet.
 5. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.
-6. A **Project DEtails**(projekt részletei) mezőben adja meg a projekt nevét és a földrajzot, amelyben létre kívánja hozni a projektet. További információ:
+6. A **Project DEtails**(projekt részletei) mezőben adja meg a projekt nevét és a földrajzot, amelyben létre kívánja hozni a projektet. További információk:
 
     - Tekintse át a [támogatott földrajzi](migrate-support-matrix.md#supported-geographies)régiókat. A projekt helye csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál.
     - Migrálás futtatása során bármilyen célrégiót választhat.
@@ -103,13 +103,13 @@ Gyűjtsön kiszolgáló adatokat, és adja hozzá a CSV-fájlhoz.
 
 A következő táblázat összefoglalja a kitöltendő fájl mezőket:
 
-**Mező neve** | **Kötelező** | **Részletek**
+**Mezőnév** | **Kötelező** | **Részletek**
 --- | --- | ---
 **Kiszolgálónév** | Igen | Javasoljuk, hogy adja meg a teljes tartománynevet (FQDN).
 **IP-cím** | Nem | Kiszolgáló címe.
 **Mag** | Igen | A kiszolgáló számára lefoglalt processzor-magok száma.
 **Memória** | Igen | A kiszolgálóhoz lefoglalt összes memória (MB).
-**Operációs rendszer neve** | Igen | Kiszolgálói operációs rendszer.
+**Operációs rendszer neve** | Igen | Kiszolgálói operációs rendszer. <br/> Az értékelés felismeri azokat az operációs rendszerek neveit, amelyek megfelelnek vagy tartalmazzák [a listában szereplő](#supported-operating-system-names) neveket.
 **Operációs rendszer verziója** | Nem | Kiszolgáló operációs rendszerének verziója.
 **Lemezek száma** | Nem | Nem szükséges, ha az egyes lemezek adatait megadja.
 **1. lemez mérete**  | Nem | A lemez maximális mérete GB-ban.<br/>A sablon [oszlopainak hozzáadásával](#add-multiple-disks) további lemezeket is hozzáadhat. Legfeljebb nyolc lemezt adhat hozzá.
@@ -179,7 +179,7 @@ Ha például egy második alkalmazás összes mezőjét meg szeretné adni, adja
 Miután hozzáadta az adatokat a CSV-sablonhoz, importálja a kiszolgálókat az értékelésbe.
 
 1. Azure Migrate a **gépek felderítése**területen lépjen a befejezett sablonra.
-2. Kattintson az **Importálás** gombra.
+2. Válassza az **Importálás**lehetőséget.
 3. Megjelenik az importálás állapota.
     - Ha figyelmeztetések jelennek meg az állapotában, megjavíthatja őket, vagy folytathatja a kezelés nélkül.
     - Az értékelés pontosságának javítása érdekében a figyelmeztetésekben javasolt módon javítsa a kiszolgáló adatait.
@@ -216,7 +216,7 @@ A kiszolgálók értékelése során két típusú értékelést hozhat létre.
 1. Tekintse át az értékelések létrehozásával kapcsolatos [ajánlott eljárásokat](best-practices-assessment.md) .
 2. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén válassza az **értékelés**lehetőséget.
 
-    ![Értékelés](./media/tutorial-assess-physical/assess.png)
+    ![Kiértékelés](./media/tutorial-assess-physical/assess.png)
 
 3. A **kiszolgálók értékelése**lapon adja meg az értékelés nevét.
 4. A **felderítési forrás**területen válassza ki a **Azure Migrate importálásával hozzáadott gépeket**.
@@ -261,7 +261,7 @@ Az értékelés a következőket írja le:
 
 ### <a name="review-cost-details"></a>A Cost részleteinek áttekintése
 
-Ez a nézet az Azure-ban futó virtuális gépek becsült számítási és tárolási költségeit jeleníti meg. Előnyök:
+Ez a nézet az Azure-ban futó virtuális gépek becsült számítási és tárolási költségeit jeleníti meg. A következőket teheti:
 
 - Tekintse át a havi számítási és tárolási költségeket. A költségek összesítése az összes kiszolgáló számára a vizsgált csoportban történik.
 
@@ -409,7 +409,7 @@ Ez a nézet az Azure-ban futó virtuális gépek becsült számítási és táro
       Windows 10<br/>
       Windows 2000<br/>
       Windows 3<br/>
-      Windows 7 rendszeren<br/>
+      Windows 7<br/>
       Windows 8<br/>
       Windows 95<br/>
       Windows 98<br/>
@@ -418,7 +418,7 @@ Ez a nézet az Azure-ban futó virtuális gépek becsült számítási és táro
       Windows Server 2003
    :::column-end:::
    :::column span="":::
-      Windows Server 2008 rendszeren<br/>
+      Windows Server 2008<br/>
       Windows Server 2008 R2<br/>
       Windows Server 2012<br/>
       Windows Server 2012 R2<br/>
@@ -433,7 +433,7 @@ Ez a nézet az Azure-ban futó virtuális gépek becsült számítási és táro
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Ebben az oktatóanyagban az alábbiakat végezte el:
 
 > [!div class="checklist"]
 > * Importált kiszolgálók Azure Migrateba: kiszolgáló értékelése CSV használatával.

@@ -6,12 +6,12 @@ manager: sridmad
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: chrpap
-ms.openlocfilehash: d8ee2327f65332d32038806f2d2416cac190875b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 330b455a61c45ccdb59e5aef8162fd1b04859a00
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661976"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969405"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Service Fabric csomópont típusának eltávolítása
 Ez a cikk azt ismerteti, hogyan méretezhető egy Azure Service Fabric-fürt egy meglévő csomópont-típus fürtből való eltávolításával. A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A virtuálisgép-méretezési csoportok egy Azure-beli számítási erőforrás, amely készletként telepíti és felügyeli a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni. Service Fabric-fürt létrehozása után vízszintesen méretezheti a fürtöt egy csomópont-típus (virtuálisgép-méretezési csoport) és annak összes csomópontjának eltávolításával.  A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.  A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
@@ -31,7 +31,7 @@ Service Fabric "összehangolja" a mögöttes változásokat és frissítéseket,
 
 A bronz típusú csomópontok eltávolításakor a csomópont összes csomópontja azonnal leáll. A Service Fabric nem rendelkezik a bronz csomópontok méretezési csoportjának frissítéseivel, így az összes virtuális gép azonnal leáll. Ha a csomópontok állapota nem megfelelő, az adat elvész. Most még ha állapot nélküli is volt, a Service Fabric összes csomópontja részt vesz a gyűrűn, így a teljes környék elvész, ami a fürt destabilizálása lehet.
 
-## <a name="remove-a-non-primary-node-type"></a>Nem elsődleges csomópont típusának eltávolítása
+## <a name="remove-a-node-type"></a>Csomóponttípus eltávolítása
 
 1. A folyamat megkezdése előtt ügyeljen erre az előfeltételekre.
 
@@ -122,7 +122,7 @@ A bronz típusú csomópontok eltávolításakor a csomópont összes csomópont
     - Keresse meg az üzembe helyezéshez használt Azure Resource Manager sablont.
     - Keresse meg a csomópont típusával kapcsolatos szakaszt a Service Fabric szakaszban.
     - Távolítsa el a csomópont típusának megfelelő szakaszt.
-    - Az ezüst és a magasabb tartósságú fürtök esetében frissítse a fürt erőforrását a sablonban, és állítsa be az állapotfigyelő házirendeket a háló:/rendszeralkalmazási állapot mellőzéséhez az alább megadott `applicationDeltaHealthPolicies` hozzáadásával. Az alábbi házirend figyelmen kívül hagyja a meglévő hibákat, de nem engedélyezi az új állapotú hibákat. 
+    - Csak ezüst és magasabb tartósságú fürtök esetén frissítse a sablonban lévő fürterőforrás-erőforrást, és konfigurálja az állapotfigyelő házirendeket a háló:/rendszeralkalmazási állapot mellőzéséhez `applicationDeltaHealthPolicies` hozzáadásával a fürterőforrás-`properties` az alább megadott módon. Az alábbi házirend figyelmen kívül hagyja a meglévő hibákat, de nem engedélyezi az új állapotú hibákat. 
  
  
      ```json
@@ -158,7 +158,7 @@ A bronz típusú csomópontok eltávolításakor a csomópont összes csomópont
     },
     ```
 
-    Telepítse a módosított Azure Resource Manager sablont. \* * Ez a lépés eltarthat egy ideig, általában akár két óráig is. Ez a frissítés megváltoztatja a beállításokat a InfrastructureService, ezért szükség van a csomópontok újraindítására. Ebben az esetben a `forceRestart` figyelmen kívül lesz hagyva. 
+    - Telepítse a módosított Azure Resource Manager sablont. \* * Ez a lépés eltarthat egy ideig, általában akár két óráig is. Ez a frissítés megváltoztatja a beállításokat a InfrastructureService, ezért szükség van a csomópontok újraindítására. Ebben az esetben a `forceRestart` figyelmen kívül lesz hagyva. 
     Az `upgradeReplicaSetCheckTimeout` paraméter azt a maximális időtartamot határozza meg, ameddig a Service Fabric megvárja, amíg egy partíció biztonságos állapotba kerül, ha még nem biztonságos állapotban van. Miután a biztonsági ellenőrzés egy csomóponton lévő összes partícióra kiterjed, Service Fabric folytatja a frissítést a csomóponton.
     A `upgradeTimeout` paraméter értéke 6 órára csökkenthető, de a maximális biztonság érdekében 12 órát kell használni.
 

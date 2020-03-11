@@ -1,22 +1,17 @@
 ---
-title: CentOS-alapú Linux virtuális merevlemez létrehozása és feltöltése az Azure-ban
+title: CentOS-alapú linuxos virtuális merevlemez létrehozása és feltöltése
 description: Megtudhatja, hogyan hozhat létre és tölthet fel egy CentOS-alapú Linux operációs rendszert tartalmazó Azure-beli virtuális merevlemezt (VHD-t).
-services: virtual-machines-linux
-documentationcenter: ''
 author: mimckitt
-manager: gwallace
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/25/2019
 ms.author: mimckitt
-ms.openlocfilehash: dff90df255d6b7e050fad9a278666f81fade500c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 84dfb3a24d3b3440cb929fa6c7e7f70983051a72
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246140"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969511"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>CentOS-alapú virtuális gép előkészítése az Azure-hoz
 

@@ -1,26 +1,19 @@
 ---
 title: Fájlok áthelyezése Azure-beli linuxos virtuális gépekről és az SCP használatával
 description: A fájlokat biztonságosan helyezheti át az Azure-ban lévő Linux rendszerű virtuális gépekre az SCP és egy SSH-kulcspár használatával.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: d78a8e59a55718048df2022cec75c7a2b56f1a6b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a0837790b70de42073338bf085ee0f3976b866f6
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036600"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969603"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Fájlok áthelyezése Linux rendszerű virtuális gépről SCP használatával
 
@@ -72,7 +65,7 @@ A következő parancs fájlokat másol az Azure-beli virtuális gép */Home/azur
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-Az `-r` CLI-jelző arra utasítja az SCP-t, hogy rekurzív módon másolja a fájlokat és a címtárakat a parancsban felsorolt könyvtár pontjából.  Azt is figyelje meg, hogy a parancssori szintaxis hasonló egy `cp` Copy parancshoz.
+A `-r` jelző arra utasítja az SCP-t, hogy rekurzív módon másolja a fájlokat és a címtárakat a parancsban felsorolt könyvtár pontjából.  Azt is figyelje meg, hogy a parancssori szintaxis hasonló egy `cp` Copy parancshoz.
 
 ## <a name="next-steps"></a>Következő lépések
 

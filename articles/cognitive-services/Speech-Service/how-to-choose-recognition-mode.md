@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 03/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 51bf005bdad4197120fed96894ac1cdd150738ee
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: d997cb592d9d648998f2b44d9f61f465f05faeb0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75935226"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079827"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>Beszédfelismerési mód kiválasztása
 
@@ -33,7 +33,7 @@ Az egyik felismertség végén a szolgáltatás leállítja a hang feldolgozás�
 További információ a `RecognizeOnceAsync` függvény használatáról: [.net SPEECH SDK docs](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync).
 
 ```csharp
-var result = await recognizer.RecognizeOnceAsync().ConfigureAwait(false);
+var result = await recognizer.RecognizeOnceAsync();
 ```
 
 ::: zone-end
@@ -72,7 +72,7 @@ További nyelvek: [beszédfelismerési SDK-dokumentáció](speech-to-text.md#spe
 
 ## <a name="continuous"></a>Folyamatos
 
-Ha hosszú ideig futó felismerésre van szüksége, használja a Start és a megfelelő leállítás függvényt a folyamatos felismeréshez. A Start függvény elindítja és folytatja az összes hosszúságú kimondott szöveg feldolgozását, amíg meg nem hívja a leállítási függvényt, vagy amíg a csendben túl sok idő el nem telik. A folyamatos mód használatakor ügyeljen arra, hogy regisztrálja azokat a különböző eseményeket, amelyek az előforduláskor tüzet fognak. Például a "felismert" esemény akkor következik be, amikor beszédfelismerés történik. Az elismerés kezeléséhez egy eseménykezelőre van szükség. A beszédfelismerési szolgáltatás az összes beszédfelismerési idő 10 perces korlátját kikényszeríti.
+Ha hosszú ideig futó felismerésre van szüksége, használja a Start és a megfelelő leállítás függvényt a folyamatos felismeréshez. A Start függvény elindítja és folytatja az összes hosszúságú kimondott szöveg feldolgozását, amíg meg nem hívja a leállítási függvényt, vagy amíg a csendben túl sok idő el nem telik. A folyamatos mód használatakor ügyeljen arra, hogy regisztrálja azokat a különböző eseményeket, amelyek az előforduláskor tüzet fognak. Például a "felismert" esemény akkor következik be, amikor beszédfelismerés történik. Az elismerés kezeléséhez egy eseménykezelőre van szükség.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -88,10 +88,10 @@ recognizer.Recognized += (s, e) =>
 };
 
 // Start continuous speech recognition
-await recognizer.StartContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StartContinuousRecognitionAsync();
 
 // Stop continuous speech recognition
-await recognizer.StopContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StopContinuousRecognitionAsync();
 ```
 
 ::: zone-end

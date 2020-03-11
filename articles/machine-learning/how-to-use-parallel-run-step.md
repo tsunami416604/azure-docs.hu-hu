@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 01/15/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: ff366468c994d8ba151dd476a5bcccc52bb7309f
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 313ba2c02fd65a967ab1969b6f99893de9a3bdb4
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122851"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037344"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-következtetés futtatása nagy mennyiségű adattal a Azure Machine Learning használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Ez a cikk a következő feladatokat ismerteti:
 
 * A saját környezetének és függőségeinek kezeléséhez tekintse meg a saját környezet konfigurálásának [útmutatója](how-to-configure-environment.md) című témakört. Futtassa `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` a környezetben a szükséges függőségek letöltéséhez.
 
-## <a name="set-up-machine-learning-resources"></a>Gépi tanulási erőforrások beállítása
+## <a name="set-up-machine-learning-resources"></a>Állítsa be a machine learning-erőforrások
 
 A következő műveletek a Batch-következtetési folyamat futtatásához szükséges erőforrásokat határozzák meg:
 
@@ -85,7 +85,7 @@ Most be kell állítania az adatbemeneteket és kimeneteket, beleértve a követ
 - A címkéket tartalmazó könyvtár.
 - A kimenet könyvtára.
 
-a `Dataset` egy olyan osztály, amely a Azure Machine Learningban lévő adatelemzést, átalakítást és felügyeletet végzi. Ennek az osztálynak két típusa van: `TabularDataset` és `FileDataset`. Ebben a példában a `FileDataset` fogja használni bemenetként a Batch következtetési folyamatának lépéséhez. 
+a [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) egy olyan osztály, amely a Azure Machine Learningban lévő adatelemzést, átalakítást és felügyeletet végzi. Ennek az osztálynak két típusa van: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) és [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py). Ebben a példában a `FileDataset` fogja használni bemenetként a Batch következtetési folyamatának lépéséhez. 
 
 > [!NOTE] 
 > a Batch-következtetések `FileDataset` támogatása jelenleg az Azure Blob Storage-ra korlátozódik. 
@@ -94,7 +94,7 @@ Az egyéni következtetési parancsfájlban más adatkészletekre is hivatkozhat
 
 További információ a Azure Machine Learning adatkészletekről: [adatkészletek létrehozása és elérése (előzetes verzió)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
 
-a köztes adatátviteli folyamat lépései között `PipelineData` objektumok használhatók. Ebben a példában a következtetést a kimenetek megjelenítéséhez használja.
+a köztes adatátviteli folyamat lépései között [`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) objektumok használhatók. Ebben a példában a következtetést a kimenetek megjelenítéséhez használja.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -190,7 +190,7 @@ A parancsfájlnak két függvényt *kell tartalmaznia* :
 - `init()`: használja ezt a funkciót bármilyen költséges vagy közös felkészüléshez a későbbi következtetésekhez. Használhatja például a modell betöltését egy globális objektumba. Ezt a függvényt a rendszer csak egyszer hívja meg a folyamat elején.
 -  `run(mini_batch)`: a függvény minden egyes `mini_batch` példánynál futni fog.
     -  `mini_batch`: a párhuzamos futtatási lépés meghívja a Run metódust, és egy listát vagy pandák DataFrame ad át argumentumként a metódusnak. Min_batch minden bejegyzése – egy fájl elérési útja, ha a bemenet egy FileDataset, egy Panda DataFrame, ha a bemenet TabularDataset.
-    -  `response`: a Run () metódusnak egy Panda DataFrame vagy egy tömböt kell visszaadnia. Append_row output_action esetében ezek a visszaadott elemek a közös kimeneti fájlba vannak hozzáfűzve. Summary_only esetén a rendszer figyelmen kívül hagyja az elemek tartalmát. Az összes kimeneti művelet esetében minden visszaadott kimeneti elem a bemeneti elem egy sikeres futtatását jelzi a bemenet mini-batchben. A felhasználónak meg kell győződnie arról, hogy a Futtatás eredményében elegendő adat található a kimenet leképezve értékre való leképezéséhez. A Futtatás kimenete kimeneti fájlban lesz megírva, és nem garantált, hogy sorrendben legyenek, a felhasználónak a kimenetben lévő egyes kulcsokat kell használnia a bemenethez való leképezéshez.
+    -  `response`: a Run () metódusnak egy Panda DataFrame vagy egy tömböt kell visszaadnia. Append_row output_action esetében ezek a visszaadott elemek a közös kimeneti fájlba vannak hozzáfűzve. Summary_only esetén a rendszer figyelmen kívül hagyja az elemek tartalmát. Az összes kimeneti művelet esetében minden visszaadott kimeneti elem a bemeneti elem egy sikeres futtatását jelzi a bemenet mini-batchben. Győződjön meg arról, hogy elegendő adat szerepel a futtatási eredményben, hogy leképezi a bemenetet az eredmény futtatásához. A futtatási kimenet a kimeneti fájlban lesz megírva, és nem garantált, hogy sorrendben legyenek, a kimenetben lévő egyes kulcsokat kell használnia a bemenethez való leképezéshez.
 
 ```python
 # Snippets from a sample script.
@@ -301,7 +301,7 @@ parallel_run_config = ParallelRunConfig(
     node_count=4)
 ```
 
-### <a name="create-the-pipeline-step"></a>A folyamat lépésének létrehozása
+### <a name="create-the-pipeline-step"></a>A folyamat lépés létrehozása
 
 Hozza létre a folyamat lépéseit a parancsfájl, a környezeti konfiguráció és a paraméterek használatával. Adja meg a munkaterülethez már csatolt számítási célt a parancsfájl végrehajtásának céljaként. A `ParallelRunStep` használatával hozza létre a Batch következtetési folyamatának lépését, amely a következő paramétereket veszi figyelembe:
 - `name`: a lépés neve a következő elnevezési korlátozásokkal: Unique, 3-32 karakter és regex ^\[a-z\]([-a-Z0-9] * [a-Z0-9])? $.
@@ -331,7 +331,7 @@ parallelrun_step = ParallelRunStep(
 
 ### <a name="run-the-pipeline"></a>A folyamat futtatása
 
-Most futtassa a folyamatot. Először hozzon létre egy `Pipeline` objektumot a munkaterület-hivatkozás és a létrehozott folyamat lépés használatával. A `steps` paraméter a lépések tömbje. Ebben az esetben a Batch pontozásnak csak egy lépése van. Több lépésből álló folyamatok létrehozásához helyezze a lépéseket sorrendben ebben a tömbben.
+Most futtassa a folyamatot. Először hozzon létre egy [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) objektumot a munkaterület-hivatkozás és a létrehozott folyamat lépés használatával. A `steps` paraméter a lépések tömbje. Ebben az esetben a Batch pontozásnak csak egy lépése van. Több lépésből álló folyamatok létrehozásához helyezze a lépéseket sorrendben ebben a tömbben.
 
 Ezután a `Experiment.submit()` függvénnyel küldje el a folyamatot végrehajtásra.
 
@@ -347,7 +347,7 @@ pipeline_run = Experiment(ws, 'digit_identification').submit(pipeline)
 
 A Batch-következtetési feladatok végrehajtása hosszú időt is igénybe vehet. Ez a példa egy Jupyter Widget használatával figyeli a folyamat előrehaladását. A feladatok előrehaladását a használatával is kezelheti:
 
-* Azure Machine Learning Studio. 
+* Az Azure Machine Learning Studióban. 
 * Konzol kimenete a [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) objektumból.
 
 ```python

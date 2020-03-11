@@ -1,25 +1,18 @@
 ---
 title: A Cloud-init használata a swap-partíciók Linux rendszerű virtuális gépen való konfigurálásához
 description: A Cloud-init használata a swap-partíció konfigurálásához Linux rendszerű virtuális gépen az Azure CLI-vel való létrehozás során
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: fad73a7dbed9351d684ef2464cf2fa6fa3489290
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1247652e536042ee249054d86aed3c3f8e7aa7bf
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036760"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969201"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>A Cloud-init használata a swap-partíciók Linux rendszerű virtuális gépen való konfigurálásához
 Ez a cikk bemutatja, hogyan konfigurálhatja a swap partíciót különböző Linux-disztribúciókban a [Cloud-init](https://cloudinit.readthedocs.io) használatával. A swap-partíciót hagyományosan a Linux-ügynök (WALA) állította be, amely alapján a disztribúciók közül egy szükséges.  Ez a dokumentum felvázolja a swap-partíció igény szerinti felépítési folyamatát a üzembe helyezés ideje alatt a Cloud-init használatával.  További információ arról, hogyan működik a Cloud-init natív módon az Azure-ban és a támogatott Linux-disztribúciókban: a [Cloud-init áttekintése](using-cloud-init.md)

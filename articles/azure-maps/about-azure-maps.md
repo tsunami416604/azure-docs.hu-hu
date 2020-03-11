@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 411ffb9c05b0f6b4d8b7d37a11d0838c8734ec5e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443711"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079806"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 
@@ -170,6 +170,8 @@ A Azure Maps egy egyszerű programozási modellel is kényelmes [JavaScript-lek�
 A Azure Maps szolgáltatásokhoz való hozzáférés a [Azure Portal](https://portal.azure.com) és egy Azure Maps fiók létrehozása.
 
 Az Azure Maps kulcsalapú hitelesítési sémát használ. A fiókja két, már létrehozott kulccsal rendelkezik, a kulcsok használatával. Kezdje el integrálni ezeket a tartózkodási helyeket az alkalmazásban, és tegyen kéréseket a Azure Maps-szolgáltatásoknak.
+
+Megjegyzés: a Azure Maps az ügyfél által megadott címek/helyek lekérdezéseket ("lekérdezések") a harmadik féltől származó TomTom-t használja a leképezési funkciókhoz. A lekérdezések nem kapcsolódnak az ügyfelekhez vagy a végfelhasználóhoz, ha a TomTom megosztva van, és nem használható az egyéni felhasználók azonosítására. A Microsoft jelenleg folyamatban van a TomTom hozzáadásának folyamata az Online Services alvállalkozói listához. Vegye figyelembe, hogy a Moovit és az AccuWeather szolgáltatással való integrációt magában foglaló mobilitási és időjárási szolgáltatások jelenleg [előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhetők el.
 
 ## <a name="supported-regions"></a>Támogatott régiók
 

@@ -6,17 +6,20 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
-ms.openlocfilehash: 1a372ef12ef7b0afb06ed3c540daaee5e38c3374
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: a784fc070400995c56d16a3bc264d589bcb1f64e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899164"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082846"
 ---
 # <a name="azure-monitor-integration-for-azure-red-hat-openshift-43"></a>Azure Monitor integráció az Azure Red Hat OpenShift 4,3
 
-> [!IMPORTANT]
-> Az Azure Red Hat OpenShift 4,3 előzetes verzióban érhető el. Az előzetes verziójú funkciók önkiszolgálást biztosítanak, és a rendelkezésre álló és elérhető módon érhetők el, és nem tartoznak a szolgáltatói szerződéssel (SLA) és a korlátozott jótállással. A funkciók ezért nem használhatók éles környezetben. 
+> [!IMPORTANT] 
+> Vegye figyelembe, hogy az Azure Red Hat OpenShift 4,3 jelenleg csak privát előzetes verzióban érhető el az USA keleti régiójában. A privát előzetes verzió elfogadása csak meghívóval történik. Ügyeljen arra, hogy regisztrálja az előfizetését a funkció engedélyezése előtt: [Azure Red Hat OpenShift Private Preview regisztráció](https://aka.ms/aro-preview-register)
+
+> [!NOTE]
+> Az előzetes verziójú funkciók önkiszolgálást biztosítanak, és a rendelkezésre álló és elérhető módon érhetők el, és nem tartoznak a szolgáltatói szerződéssel (SLA) és a korlátozott jótállással. A funkciók ezért nem használhatók éles környezetben.
 
 Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for containers for OpenShift 4,3-fürtök privát előzetes verziója a helyszíni vagy bármilyen felhőalapú környezetben. Ugyanezek az utasítások vonatkoznak az Azure Red Hat OpenShift (ARO) 4,3-fürtök figyelésének engedélyezésére is.  
 
@@ -89,7 +92,7 @@ További információ a támogatott szolgáltatásokról és funkciókról: a [C
 
 Visszajelzések és kérdések a askcoin@microsoft.comon keresztül léphetnek kapcsolatba velünk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A figyeléssel kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 - [A Container-információk áttekintése](../azure-monitor/insights/container-insights-overview.md)

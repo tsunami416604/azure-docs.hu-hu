@@ -1,5 +1,5 @@
 - name: Cloud Services – dokumentáció
-  href: index.md
+  href: index.yml
 - name: Áttekintés
   items:
     - name: Mi az a Cloud Services?

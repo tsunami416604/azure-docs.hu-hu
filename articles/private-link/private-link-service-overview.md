@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 97515b308323452e88cf6fd8a517c1f169c9ba6f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 2cc6c577abdb3698ef6aca1f1f04d239f09d119c
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587413"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082965"
 ---
 # <a name="what-is-azure-private-link-service"></a>Mi az az Azure Private link Service?
 
@@ -112,7 +112,7 @@ Egyéni TLV-részletek:
 |  |4        |A privát végpont LINKID-UINT32 (4 bájt). Kódolása kis endian formátumban.|
 
  > [!NOTE]
- > A szolgáltató feladata annak biztosítása, hogy a standard Load Balancer mögötti szolgáltatás úgy legyen konfigurálva, hogy a proxy protokoll fejlécét a [specifikáció](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) szerint elemezze, ha a proxy protokoll engedélyezve van a Private link Service-ben. A kérelem sikertelen lesz, ha a proxy protokoll beállítása engedélyezve van a Private link Service szolgáltatásban, és a szolgáltatás nincs konfigurálva a fejléc értelmezésére. Hasonlóképpen a kérés sikertelen lesz, ha a szolgáltatás proxy protokoll fejlécét várja, amíg a beállítás nincs engedélyezve a magánhálózati kapcsolat szolgáltatásban. Ha a proxy protokoll beállítása engedélyezve van, a proxy protokoll fejléce a gazdagépről a háttérbeli virtuális gépekre irányuló HTTP-/TCP-állapot-mintavételben is szerepelni fog, még akkor is, ha a fejlécben nem szerepelnek ügyfél-információ. 
+ > A szolgáltató feladata annak biztosítása, hogy a standard Load Balancer mögötti szolgáltatás úgy legyen konfigurálva, hogy a proxy protokoll fejlécét a [specifikáció](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) szerint elemezze, ha a proxy protokoll engedélyezve van a Private link Service-ben. A kérelem sikertelen lesz, ha a proxy protokoll beállítása engedélyezve van a Private link Service szolgáltatásban, de a szolgáltató szolgáltatás nincs konfigurálva a fejléc elemzésére. Hasonlóképpen, a kérés sikertelen lesz, ha a szolgáltató szolgáltatás proxy protokoll fejlécét várja, amíg a beállítás nincs engedélyezve a magánhálózati kapcsolat szolgáltatásban. Ha a proxy protokoll beállítása engedélyezve van, a proxy protokoll fejléce a gazdagépről a háttérbeli virtuális gépekre irányuló HTTP-/TCP-állapot-mintavételben is szerepelni fog, még akkor is, ha a fejlécben nem szerepelnek ügyfél-információ. 
 
 ## <a name="limitations"></a>Korlátozások
 

@@ -1,19 +1,19 @@
 ---
 title: Kereskedelmi piactér-fiók létrehozása a partner Centerben
 description: Megtudhatja, hogyan hozhat létre kereskedelmi Piactéri fiókot a partner Centerben.
-author: ChJenk
+author: qianw211
 manager: evansma
-ms.author: v-chjen
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-ms.date: 09/26/2019
-ms.openlocfilehash: df857fb938ade329a971578ac206f16f1357d7e5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 03/10/2020
+ms.openlocfilehash: 59f37585dfea08e9343cf052f680fd6e9531852b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838754"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968827"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Kereskedelmi piactér-fiók létrehozása a partner Centerben
 
@@ -22,7 +22,7 @@ Az ajánlatok [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en v
 >[!IMPORTANT]
 >Ha van olyan fiókja a [Cloud Partner Portal (CPP)](https://cloudpartner.azure.com) , amelyet a partner központba helyeztek át, nem kell új fiókot létrehoznia. További információkért lásd: [a CPP-ről áthelyezett közzétevők](#publishers-moving-from-cpp) .
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ha fiókot szeretne létrehozni a partner Centerben, ellenőrizze, hogy rendelkezik-e az alábbiakkal:
 
@@ -50,7 +50,7 @@ Akkor használja ezt a módszert, ha még nem ismeri a partner centert, és ninc
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>Regisztráljon a partner Center beléptetési oldalán
 
-Tekintse át az [**üdvözli a Microsoft partner Center**](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) beléptetési lapján található információkat, majd regisztráljon egy fiókra.
+Tekintse át az [**üdvözli a Microsoft partner Center**](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) beléptetési lapján található információkat, majd regisztráljon egy fiókra.
 
 ### <a name="sign-in-with-a-work-account"></a>Bejelentkezés munkahelyi fiókkal
 

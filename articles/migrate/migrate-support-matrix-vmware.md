@@ -3,12 +3,12 @@ title: VMware Assessment-támogatás a Azure Migrate
 description: Ismerkedjen meg az Azure Migrate VMware Assessment támogatásával.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: b887508fb8e422bd83aa9d13e42085d7a6bd2283
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361959"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080384"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
@@ -43,6 +43,7 @@ A gépek felderítése mellett Azure Migrate: a kiszolgáló értékelése a gé
 **vCenter hitelesítő adatai** | Egy vCenter Server fiók írásvédett hozzáféréssel, valamint a Virtual Machines > vendég műveletekhez engedélyezett jogosultságokkal.
 **Virtuális gép hitelesítő adatai** | A jelenleg egyetlen hitelesítő adat használatát támogatja az összes Windows-kiszolgálón, valamint egy hitelesítő adatot az összes Linux-kiszolgáló számára.<br/><br/> Létrehoz egy vendég felhasználói fiókot a Windows rendszerű virtuális gépekhez, valamint egy normál/normál felhasználói fiókot (nem sudo hozzáférés) az összes Linux rendszerű virtuális géphez.
 **VMware-eszközök** | A felderíteni kívánt virtuális gépeken telepíteni és futtatni kell a VMware-eszközöket. <br/> Ha a VMware-eszközök verziószáma 9,10 – 10.2.0, győződjön meg róla, hogy frissítenie kell a 10.2.0-re.
+**PowerShell** | A virtuális gépeknek a 2,0-es vagy újabb verziójú PowerShell-lel kell rendelkezniük
 **Port-hozzáférés** | A felderíteni kívánt virtuális gépeket futtató ESXi-gazdagépeken a Azure Migrate készüléknek képesnek kell lennie csatlakozni a 443-es TCP-porthoz.
 **Korlátok** | Az App-Discovery esetében akár 10000 is felderíthető. 
 
@@ -100,6 +101,7 @@ Ez az opció jelenleg csak előzetes verzióban érhető el. [További informác
 **Linux-fiók** | A vizualizációhoz rendszergazdai jogosultsággal rendelkező felhasználói fiókra van szükség.<br/><br/> Másik lehetőségként a felhasználói fióknak szüksége van ezekre az engedélyekre a/bin/netstat és a/bin/ls fájlokra: CAP_DAC_READ_SEARCH és CAP_SYS_PTRACE.
 **VM-ügynökök** | Nincs szükség ügynökre a virtuális gépeken.
 **VMware-eszközök** | A VMware-eszközöket az elemezni kívánt virtuális gépeken kell telepíteni és futtatni. <br/> Ha a VMware-eszközök verziószáma 9,10 – 10.2.0, győződjön meg róla, hogy frissítenie kell a 10.2.0-re.
+**PowerShell** | A virtuális gépeknek a 2,0-es vagy újabb verziójú PowerShell-lel kell rendelkezniük
 **vCenter hitelesítő adatai** | Egy vCenter Server fiók írásvédett hozzáféréssel, valamint a Virtual Machines > vendég műveletekhez engedélyezett jogosultságokkal.
 **Port-hozzáférés** | Az elemezni kívánt virtuális gépeket futtató ESXi-gazdagépeken a Azure Migrate készüléknek képesnek kell lennie csatlakozni a 443-es TCP-porthoz.
 

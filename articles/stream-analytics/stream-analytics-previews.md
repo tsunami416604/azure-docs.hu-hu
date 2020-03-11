@@ -1,26 +1,26 @@
 ---
-title: A Azure Stream Analytics előzetes verziójának funkciói
-description: Ez a cikk a jelenleg előzetes verzióban elérhető Azure Stream Analytics-szolgáltatásokat sorolja fel.
+title: Az Azure Stream Analytics előzetes verziójú funkciók
+description: Ez a cikk, amely jelenleg előzetes verzióban az Azure Stream Analytics szolgáltatásokat sorolja fel.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 2/1/2020
-ms.openlocfilehash: aaff56ba1de69485d1c3b93bc7ed95ce1a3cbd88
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 3/9/2020
+ms.openlocfilehash: 3e99263f6bf472c256e1747b8567249bbd62a445
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983549"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969623"
 ---
-# <a name="azure-stream-analytics-preview-features"></a>A Azure Stream Analytics előzetes verziójának funkciói
+# <a name="azure-stream-analytics-preview-features"></a>Az Azure Stream Analytics előzetes verziójú funkciók
 
-Ez a cikk az összes olyan funkciót összegzi, amely jelenleg előzetes verzióban érhető el a Azure Stream Analytics. Az előzetes verziójú funkciók éles környezetben való használata nem ajánlott.
+Ez a cikk összefoglalja a jelenleg az Azure Stream Analytics előzetes verzióban elérhető összes funkciót. Előzetes verziójú funkciók használata az éles környezetben nem ajánlott.
 
 ## <a name="public-previews"></a>Nyilvános előzetes verziók
 
-A következő funkciók nyilvános előzetes verzióban érhetők el. Ezeket a funkciókat még ma is kihasználhatja, de nem használhatja azokat az éles környezetben.
+A következő funkciók vannak a nyilvános előzetes verzióban érhető el. Kihasználhatja ezeket a szolgáltatásokat még ma, de ne használja éles környezetben.
 
 ### <a name="online-scaling"></a>Online skálázás
 
@@ -33,13 +33,6 @@ A fejlesztők kihasználhatják a Azure Stream Analytics hatékonyságát, hogy 
 
 A felhőben vagy IoT Edge Stream Analytics modulokat létrehozó fejlesztők írhatnak vagy felhasználhatnak egyéni C# függvényeket, és közvetlenül a lekérdezésben hívhatják őket [felhasználó által definiált függvények](stream-analytics-edge-csharp-udf-methods.md)használatával.
 
-### <a name="managed-identity-authentication-with-power-bi"></a>Felügyelt identitások hitelesítése Power BI
-
-A Azure Stream Analytics teljes körű támogatást nyújt a felügyelt identitás-alapú hitelesítéshez, és a Power BI dinamikus irányítópult-kialakítási élményt biztosít.
-
-### <a name="anomaly-detection"></a>Anomáliadetektálás
-
-A gépi tanulási modellek a két irányú, lassú és lassú negatív trendek észlelése mellett a *Spike* és a *dips* észlelését is támogatják. Azure stream Analytics További információ [: anomáliák észlelése Azure stream Analyticsban](stream-analytics-machine-learning-anomaly-detection.md).
 
 ### <a name="debug-query-steps-in-visual-studio"></a>Lekérdezési lépések hibakeresése a Visual Studióban
 
@@ -54,19 +47,19 @@ A feladatokat az Azure-ba való elküldés előtt tesztelheti a helyi gépen él
 Azure Stream Analytics feladatokat a Visual Studio Code-ban lehet létrehozni. Tekintse meg a [vs Code – első lépéseket ismertető oktatóanyagot](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code).
 
 
-### <a name="integration-with-azure-machine-learning"></a>Integráció a Azure Machine Learning
+### <a name="integration-with-azure-machine-learning"></a>Az Azure Machine Learning-integráció
 
-Stream Analytics feladatokat Machine Learning (ML) függvények segítségével méretezheti. Ha többet szeretne megtudni arról, hogyan használható az Stream Analytics-feladatban az ML függvények használata, látogasson el [a stream Analytics-feladatok méretezése Azure Machine learning függvényekkel](stream-analytics-scale-with-machine-learning-functions.md)című témakörre. Tekintse meg a valós forgatókönyveket, amelyekkel [Azure stream Analytics és Azure Machine learning használatával is elvégezheti a hangulat elemzését](stream-analytics-machine-learning-integration-tutorial.md).
-
-
-### <a name="live-data-testing-in-visual-studio"></a>Élő adattesztelés a Visual Studióban
-
-A Visual Studio Tools for Azure Stream Analytics fokozza a helyi tesztelési funkciót, amely lehetővé teszi, hogy tesztelje a Felhőbeli forrásokból, például az Event hub-ból vagy az IoT hub-ból származó élő esemény-adatfolyamokat. Ismerje meg, hogyan [tesztelheti helyileg az élő információkat a Visual studióhoz készült Azure stream Analytics Tools használatával](stream-analytics-live-data-local-testing.md).
+Stream Analytics-feladatok a Machine Learning (gépi tanulás) functions skálázhatja. Ha többet szeretne megtudni arról, hogyan használható az Stream Analytics-feladatban az ML függvények használata, látogasson el [a stream Analytics-feladatok méretezése Azure Machine learning függvényekkel](stream-analytics-scale-with-machine-learning-functions.md)című témakörre. Tekintse meg a valós forgatókönyveket, amelyekkel [Azure stream Analytics és Azure Machine learning használatával is elvégezheti a hangulat elemzését](stream-analytics-machine-learning-integration-tutorial.md).
 
 
-### <a name="net-user-defined-functions-on-iot-edge"></a>.NET-felhasználó által definiált függvények IoT Edge
+### <a name="live-data-testing-in-visual-studio"></a>Élő adatok tesztelése a Visual Studióban
 
-A .NET Standard felhasználó által definiált függvények használatával a folyamatos átviteli folyamat részeként futtathatja a .NET Standard szintű kódot. Létrehozhat egyszerű C# osztályokat, illetve importálhatja a teljes projektet és a kódtárakat is. A Visual Studióban a teljes authoring és hibakeresési élmény támogatott. További információért látogasson el [a .NET szabványú, felhasználó által definiált függvények fejlesztése Azure stream Analytics Edge-feladatokhoz](stream-analytics-edge-csharp-udf-methods.md)című témakörben.
+Az Azure Stream Analytics Visual Studio-eszközök javíthatja a helyi tesztelési funkciója, amely lehetővé teszi, hogy tesztelje, az élő esemény Streamek felhőbeli forrásokból, például az Event Hub vagy az IoT hub-lekérdezéseket. Ismerje meg, hogyan [tesztelheti helyileg az élő információkat a Visual studióhoz készült Azure stream Analytics Tools használatával](stream-analytics-live-data-local-testing.md).
+
+
+### <a name="net-user-defined-functions-on-iot-edge"></a>.NET felhasználó által definiált függvények az IoT Edge-ben
+
+.NET standard felhasználó által definiált függvények .NET Standard kódot futtathat a streamelési folyamat részeként. Egyszerű C# osztály létrehozása, vagy a teljes projekt és a szalagtárak importálása. Teljes szerzői műveletek, és felület hibakeresése a Visual Studio használata támogatott. További információért látogasson el [a .NET szabványú, felhasználó által definiált függvények fejlesztése Azure stream Analytics Edge-feladatokhoz](stream-analytics-edge-csharp-udf-methods.md)című témakörben.
 
 ## <a name="other-previews"></a>Egyéb előzetes verziók
 

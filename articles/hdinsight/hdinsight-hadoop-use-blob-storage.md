@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: f496f6c06d36f817b0a933bdc68d5c53f308e3f2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e62f6f8df51c6acf4e2ad8e28e431d264c2c99e8
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192625"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037245"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Az Azure Storage és az Azure HDInsight-fürtök együttes használata
 
@@ -25,11 +25,11 @@ Ebből a cikkből megtudhatja, hogyan használható az Azure Storage a HDInsight
 > [!IMPORTANT]  
 > A Storage-fiók típusa **BlobStorage** csak másodlagos tárolóként használhatók a HDInsight-fürtökhöz.
 
-| Storage-fiók típusa | Támogatott szolgáltatások | Támogatott teljesítményszint | Támogatott hozzáférési szintek |
-|----------------------|--------------------|-----------------------------|------------------------|
-| StorageV2 (általános célú v2)  | Blob     | Standard                    | Gyakori, ritka elérésű, archív\*   |
-| Storage (általános célú v1)   | Blob     | Standard                    | –                    |
-| BlobStorage                    | Blob     | Standard                    | Gyakori, ritka elérésű, archív\*   |
+| Storage-fiók típusa | Támogatott szolgáltatások | Támogatott teljesítményszint |Nem támogatott teljesítményszint| Támogatott hozzáférési szintek |
+|----------------------|--------------------|-----------------------------|---|------------------------|
+| StorageV2 (általános célú v2)  | Blob     | Standard                    |Premium| Gyakori, ritka elérésű, archív\*   |
+| Storage (általános célú v1)   | Blob     | Standard                    |Premium| N/A                    |
+| BlobStorage                    | Blob     | Standard                    |Premium| Gyakori, ritka elérésű, archív\*   |
 
 Nem javasoljuk, hogy az üzleti adattároláshoz használja az alapértelmezett BLOB-tárolót. Az alapértelmezett blobtárolót ajánlatos törölni minden egyes használat után. Az alapértelmezett tároló alkalmazás-és rendszernaplókat tartalmaz. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
 
@@ -162,7 +162,7 @@ HDInsight-fürt létrehozásakor meg kell adnia azt az Azure Storage-fiókot, am
 > [!WARNING]  
 > A rendszer nem támogatja további tárfiókok használatát a HDInsight-fürtön kívül eső helyeken.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtanulta, hogyan használhat HDFS-kompatibilis Azure-tárolót a HDInsighttal. Ez lehetővé teszi a skálázható, hosszú távú adatarchiváló beszerzési megoldások kiépítését, valamint hogy a HDInsighttal kinyerje a strukturált és strukturálatlan tárolt adatokban lévő információkat.
 

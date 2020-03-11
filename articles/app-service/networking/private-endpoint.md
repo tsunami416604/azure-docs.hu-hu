@@ -1,6 +1,6 @@
 ---
-title: Privát kapcsolat létrehozása webalkalmazásokhoz és az Azure Private Endpoint használatával történő biztonságos kiszűrése
-description: Privát kapcsolat létrehozása webalkalmazásokhoz és az Azure Private Endpoint használatával történő biztonságos kiszűrése
+title: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint használatával
+description: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint használatával
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
@@ -8,24 +8,23 @@ ms.date: 03/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: aa1fd341e60a71ad1ffbb535120e63db5a8bfd0b
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: 893a7a2c7483fccc3bbc7bd198929f65917457b3
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851232"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79036952"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privát végpontok használata az Azure Web App-hoz (előzetes verzió)
 
-Az Azure-webalkalmazás privát végpontjának használatával engedélyezheti a magánhálózaton található ügyfelek számára, hogy biztonságosan hozzáférjenek az alkalmazáshoz privát kapcsolaton keresztül. A privát végpont az Azure VNet IP-címét használja. A magánhálózaton lévő ügyfél és a webalkalmazás közötti hálózati forgalom a vnet és a Microsoft gerinc hálózatán található privát kapcsolaton keresztül történik, ami kiküszöböli a nyilvános internetről való kitettséget. A privát végponttal letilthatja a kimenő hálózati folyamatokat az alhálózatról a NSG, és megkerülheti az adatszivárgás kockázatát.
+Az Azure-webalkalmazás privát végpontjának használatával engedélyezheti a magánhálózaton található ügyfelek számára, hogy biztonságosan hozzáférjenek az alkalmazáshoz privát kapcsolaton keresztül. A privát végpont az Azure VNet IP-címét használja. A magánhálózaton lévő ügyfél és a webalkalmazás közötti hálózati forgalom a vnet és a Microsoft gerinc hálózatán található privát kapcsolaton keresztül történik, ami kiküszöböli a nyilvános internetről való kitettséget.
 
 A webalkalmazás privát végpontjának használata lehetővé teszi a következőket:
 
 - A webalkalmazás biztonságossá tétele a szolgáltatási végpont konfigurálásával, a nyilvános kitettség megszüntetésével
-- Növelje a vnet biztonságát azáltal, hogy letiltja az adatok kiszűrése a vnet
 - Biztonságosan csatlakozhat a webalkalmazáshoz olyan helyszíni hálózatokból, amelyek VPN-vagy ExpressRoute-alapú privát kapcsolattal csatlakoznak a vnet.
 
-Ha csak biztonságos kapcsolatra van szüksége a vnet és a webalkalmazás között, a szolgáltatás végpontja a legegyszerűbb megoldás. Ha védenie kell az adatok kiszűrése vagy a helyszíni elérést, a magánhálózati végpont a megoldás.
+Ha csak biztonságos kapcsolatra van szüksége a vnet és a webalkalmazás között, a szolgáltatás végpontja a legegyszerűbb megoldás. Ha a webalkalmazást a helyszíni Azure-átjárón keresztül is el kell érnie, egy regionálisan felhasználható vnet vagy egy globálisan megválasztott vnet, a magánhálózati végpont a megoldás.  
 
 További információ a [szolgáltatási végpontról][serviceendpoint]
 
@@ -36,20 +35,24 @@ Amikor létrehoz egy privát végpontot a webalkalmazáshoz, biztonságos kapcso
 A magánhálózati végpont és a webalkalmazás közötti kapcsolat biztonságos [privát hivatkozást][privatelink]használ. A magánhálózati végpont csak a webalkalmazásba érkező bejövő folyamatokhoz használható. A kimenő folyamatok nem fogják használni ezt a magánhálózati végpontot, de a kimenő folyamatokat egy másik alhálózaton is beinjektálhatja a [vnet-integrációs szolgáltatáson][vnetintegrationfeature]keresztül.
 
 Az alhálózatot, amelyhez a privát végpontot csatlakoztatja, más erőforrásokkal is rendelkezhet, nincs szükség dedikált üres alhálózatra.
+A privát végpontokat a webalkalmazástól eltérő régióban is telepítheti. 
+
 > [!Note]
 >A vnet integrációs funkciója nem használhatja ugyanazt az alhálózatot, mint a privát végpont, ez a vnet-integrációs szolgáltatás korlátozása.
 
 A biztonsági szempontból:
 
 - Ha engedélyezi a szolgáltatási végpontot a webalkalmazáshoz, az összes nyilvános hozzáférés le van tiltva
-- Több privát végpont is engedélyezhető más virtuális hálózatok és alhálózatokban
+- Több privát végpont is engedélyezhető más virtuális hálózatok és alhálózatokban, beleértve a virtuális hálózatok más régiókban is
+- A magánhálózati végpont hálózati adapterének IP-címének dinamikusnak kell lennie, de csak akkor marad, ha törli a privát végpontot.
 - A privát végpont hálózati adapteréhez nem tartozhat NSG társítva
-- A privát végpontot futtató alhálózathoz NSG társítható, de a magánhálózati házirendek kényszerítését le kell tiltania a privát végponton. lásd [ezt a cikket] [disablesecuritype]. Ennek eredményeképpen egyetlen NSG sem tudja szűrni a privát végponthoz való hozzáférést.
+- A privát végpontot futtató alhálózathoz NSG társítható, de a magánhálózati házirendek kényszerítését le kell tiltania a privát végponton. lásd [ezt a cikket][disablesecuritype]. Ennek eredményeképpen egyetlen NSG sem tudja szűrni a privát végponthoz való hozzáférést.
 - Ha engedélyezi a privát végpontot a webalkalmazáshoz, a rendszer nem értékeli ki a webalkalmazás [hozzáférési korlátozásait][accessrestrictions] .
+- Csökkentheti az adatok kiszűrése kockázatát a vnet az összes olyan NSG-szabály eltávolításával, ahol a cél az Internet vagy az Azure-szolgáltatások címkéje. Ha azonban egy webes App Service végpontot ad hozzá az alhálózathoz, azzal lehetővé teszi, hogy elérje az azonos bélyegzőben üzemeltetett webalkalmazásokat, és az interneten keresztül is elérhetővé válik.
 
-A webalkalmazás privát végpontja a standard szintű, a PremiumV2 és a külső kiegészítő szolgáltatással elkülönített.
+A webalkalmazás privát végpontja elérhető a PremiumV2, és egy külső kiegészítő szolgáltatással elkülönítették.
 
-A webalkalmazás webes http-naplóiban megtudhatja, hogy tisztában van az ügyfél forrásának IP-címével. Megvalósítjuk a TCP-proxy protokollt, és a webalkalmazásnak az ügyfél IP-címére való továbbítása történik. További információkért tekintse meg [ezt a cikket][tcpproxy].
+A webalkalmazás webes http-naplóiban megtalálja az ügyfél forrásának IP-címét. Megvalósítjuk a TCP-proxy protokollt, amely a webalkalmazásnak az ügyfél IP-tulajdonságával való továbbítását. További információkért tekintse meg [ezt a cikket][tcpproxy].
 
 ![Globális áttekintés][1]
 
@@ -66,7 +69,7 @@ A díjszabással kapcsolatos információkért lásd: az [Azure Private link dí
 
 Rendszeresen fejlesztjük a privát kapcsolat funkciót és a privát végpontot, és a korlátozásokról a [jelen cikkben][pllimitations] tájékozódhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Privát végpont üzembe helyezése a webalkalmazáshoz a portálon keresztül: a [webalkalmazásokhoz való magánhálózati kapcsolódás][howtoguide]
 

@@ -185,47 +185,29 @@
         - name: Modellek létrehozása és betanítása
           items:
             - name: Algoritmusok kiválasztása
-              href: /azure/machine-learning/studio/algorithm-choice?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: /azure/machine-learning/how-to-select-algorithms?context=azure/machine-learning/team-data-science-process/context/ml-context
             - name: Algoritmus-adatlap
-              href: /azure/machine-learning/studio/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
     - name: Modellek üzembe helyezése éles környezetben
       href: deploy-models-in-production.md
 - name: Kapcsolódó témakörök
   items:
     - name: Azure Machine Learning
       href: ../
-    - name: Azure AI katalógus
-      href: 'https://gallery.azure.ai'
-    - name: Cortana Analytics
+    - name: Cognitive Services
+      href: 'https://docs.microsoft.com/azure/cognitive-services/'
+    - name: Rendellenességek észlelése
+      href: apps-anomaly-detection-api.md
+    - name: Prediktív karbantartás
       items:
-        - name: Rendellenességek észlelése
-          href: apps-anomaly-detection-api.md
-        - name: Cognitive Services
-          href: 'https://docs.microsoft.com/azure/cognitive-services/'
-        - name: Prediktív karbantartás
-          items:
-            - name: Áttekintés
-              href: cortana-analytics-playbook-predictive-maintenance.md
-            - name: Architektúra
-              href: cortana-analytics-architecture-predictive-maintenance.md
-            - name: Műszaki útmutató
-              href: cortana-analytics-technical-guide-predictive-maintenance.md
+        - name: Áttekintés
+          href: predictive-maintenance-playbook.md
+        - name: Architektúra
+          href: predictive-maintenance-architecture.md
+        - name: Műszaki útmutató
+          href: predictive-maintenance-technical-guide.md
 - name: További források
   items:
-    - name: Blogok
-      items:
-        - name: A TDSP legutóbbi frissítései
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/10/09/the-microsoft-team-data-science-process-tdsp-recent-updates/'
-        - name: TDSP használata az Azure Machine Learningben
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/09/25/using-the-team-data-science-process-tdsp-in-azure-machine-learning/'
-        - name: A TDSP adatelemzési segédprogramjainak 0.11-es verziója
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/01/11/announcing-data-science-utilities-version-0-11-for-the-team-data-science-process/'
-        - name: A TDSP legújabb segédprogramjai
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/04/05/latest-rev-of-utilities-for-microsoft-team-data-science-process-tdsp-now-available/'
-        - name: Adatelemzési projektek tervezősablonja
-          href: 'https://blogs.msdn.microsoft.com/buckwoody/2017/10/24/a-data-science-microsoft-project-template-you-can-use-in-your-solutions/'
-        - name: Cortana Intelligence and Machine Learning blog
-          href: 'https://blogs.technet.microsoft.com/machinelearning/'
     - name: TDSP-t használó szervezetek
       items:
         - name: Új aláírás

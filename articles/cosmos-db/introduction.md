@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 7fee3a1e2c26bc9fa89a4766c771a3715398b1a2
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 2a09d5af013e804f33327855fb7b9f2104bc225c
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673359"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082380"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
 A mai alkalmazások nagyon rugalmasak és mindig online állapotban vannak. Az alacsony késés és a magas rendelkezésre állás érdekében ezeknek az alkalmazásoknak a példányait a felhasználókhoz közel lévő adatközpontokban kell központilag telepíteni. Az alkalmazásoknak valós időben kell válaszolniuk a használat nagy változásaira a csúcsidőben, az egyre növekvő mennyiségű adatmennyiséget kell tárolniuk, és ezeket az adatokat a felhasználók számára elérhetővé kell tenniük ezredmásodpercben.
 
-Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Egy gombnyomással a Cosmos DB lehetővé teszi, hogy rugalmasan és egymástól függetlenül méretezheti az átviteli sebességet és a tárterületet a globálisan tetszőleges számú Azure-régióban. Rugalmasan méretezheti az átviteli sebességet és a tárterületet, és kihasználhatja az olyan gyors, egyszámjegyű ezredmásodperces adatelérést, amely a kedvenc API-ját, például az SQL, a MongoDB, a Cassandra, a Tables vagy a Gremlin. A Cosmos DB átfogó [szolgáltatói szerződéseket](https://aka.ms/acdbsla) (SLA-kat) biztosít az átviteli sebesség, a késés, a rendelkezésre állás és a konzisztencia garantálása érdekében, ami semmilyen más adatbázis-szolgáltatást sem biztosít.
+Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Egy gombnyomással a Cosmos DB lehetővé teszi, hogy rugalmasan és egymástól függetlenül méretezheti az átviteli sebességet és a tárterületet a globálisan tetszőleges számú Azure-régióban. Rugalmasan méretezheti az átviteli sebességet és a tárterületet, és kihasználhatja az olyan gyors, egyszámjegyű ezredmásodperces adatelérés előnyeit, mint például az SQL, a MongoDB, a Cassandra, a Tables vagy a Gremlin. A Cosmos DB átfogó [szolgáltatói szerződéseket](https://aka.ms/acdbsla) (SLA-kat) biztosít az átviteli sebesség, a késés, a rendelkezésre állás és a konzisztencia garantálása érdekében, ami semmilyen más adatbázis-szolgáltatást sem biztosít.
 
 Ha ingyenes Azure-előfizetéssel, díjmentesen, vagy a [Azure Cosmos db ingyenes](optimize-dev-test.md#azure-cosmos-db-free-tier) szinten szeretné [kipróbálni a Azure Cosmos DBT](https://azure.microsoft.com/try/cosmosdb/) , akkor az első 400 ru/s és 5 GB tárhellyel rendelkező fiókot is igénybe veheti.
 
@@ -91,7 +91,7 @@ A Cosmos DB API-k közül választhat a Cosmos-adatbázisban tárolt adataival v
 
 Az olyan [webes, mobil-, játék-és IoT-alkalmazások](use-cases.md) , amelyek nagy mennyiségű adatot, olvasási és írási műveleteket igényelnek [globális szinten](distribute-data-globally.md) , a különböző adatokhoz közel valós válaszidő esetén, Cosmos db [garantált magas rendelkezésre állást](https://azure.microsoft.com/support/legal/sla/cosmos-db/), magas átviteli sebességet, kis késést és hangolt konzisztenciát biztosítanak. Ismerje meg, hogyan használhatók a Azure Cosmos DB a [IoT és a telematika](use-cases.md#iot-and-telematics), a [kiskereskedelmi és a marketing](use-cases.md#retail-and-marketing), a [játékok](use-cases.md#gaming) és a [webes és mobil alkalmazások](use-cases.md#web-and-mobile-applications)létrehozásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Cosmos DB alapfogalmai: [kulcsrakész globális terjesztés](distribute-data-globally.md) , [particionálás](partitioning-overview.md) és [kiépített átviteli sebesség](request-units.md).
 

@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544317"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080360"
 ---
 # <a name="encrypt-deployment-data"></a>Üzembehelyezési adatok titkosítása
 
@@ -41,6 +41,10 @@ A dokumentum többi része ismerteti azokat a lépéseket, amelyek szükségesek
 
 Első lépésként győződjön meg arról, hogy az [Azure-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) rendelkezik a Azure Container instances szolgáltatás engedélyeinek megadásához hozzárendelt egyszerű szolgáltatással. 
 
+> [!IMPORTANT]
+> A következő parancs futtatásához és az egyszerű szolgáltatás létrehozásához ellenőrizze, hogy rendelkezik-e jogosultsággal a szolgáltatásbeli egyszerű szolgáltatások létrehozásához a bérlőben.
+>
+
 Az alábbi CLI-parancs beállítja az ACI SP-t az Azure-környezetben:
 
 ```azurecli-interactive
@@ -48,6 +52,10 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ```
 
 A parancs futtatásának kimenete olyan egyszerű szolgáltatásnevet mutat be, amely a "displayName": "Azure Container instance Service" beállítással lett beállítva.
+
+Ha nem tudja sikeresen létrehozni a szolgáltatásnevet:
+* Ellenőrizze, hogy rendelkezik-e engedéllyel a bérlőn
+* Ellenőrizze, hogy már létezik-e egy egyszerű szolgáltatásnév a bérlőben az ACI-hoz való üzembe helyezéshez. Ezt úgy teheti meg, hogy `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` futtatja, és az egyszerű szolgáltatást használja helyette
 
 ### <a name="create-a-key-vault-resource"></a>Key Vault erőforrás létrehozása
 

@@ -1,25 +1,17 @@
 ---
-title: Részletes lépések – SSH-kulcspár Azure Linux rendszerű virtuális gépekhez
+title: SSH kulcspár létrehozásának részletes lépései
 description: Megtudhatja, hogyan hozhat létre és kezelhet egy nyilvános és titkos SSH-kulcspárt a Linux rendszerű virtuális gépek számára az Azure-ban.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: eea078a4fb8287a4f07db478adf059eecce9ed82
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c34a88c39104d3af2c5747d1cd6d3dea6929379a
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929715"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969541"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Részletes lépések: SSH-kulcsok létrehozása és kezelése az Azure-beli linuxos virtuális gépek hitelesítéséhez 
 A Secure Shell (SSH) kulcspár használatával létrehozhat egy Linux rendszerű virtuális gépet az Azure-ban, amely alapértelmezés szerint SSH-kulcsokat használ a hitelesítéshez, így nincs szükség a bejelentkezéshez szükséges jelszavakra. A Azure Portal, az Azure CLI, a Resource Manager-sablonok vagy más eszközök segítségével létrehozott virtuális gépek tartalmazhatják a nyilvános SSH-kulcsot az üzembe helyezés részeként, amely beállítja az SSH-kulcsos hitelesítést az SSH-kapcsolatokhoz. 
@@ -30,8 +22,8 @@ Az SSH-kulcsok Windows-számítógépen való létrehozásával és használatá
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
-### <a name="private-key-passphrase"></a>Titkos kulcshoz tartozó jelszó
-A titkos SSH-kulcsnak nagyon biztonságos jelszóval kell rendelkeznie a védelme érdekében. Ez a jelszó csak a titkos SSH-kulcsfájl elérésére szolgál, és *nem* a felhasználói fiók jelszava. Amikor jelszót ad hozzá az SSH-kulcshoz, az a 128 bites AES eljárással titkosítja a titkos kulcsot, így a titkos kulcs használhatatlan az azt visszafejtő jelszó nélkül. Ha egy támadó ellopta a titkos kulcsot, és a kulcs nem rendelkezik hozzáférési kóddal, a titkos kulcs használatával bejelentkezhet bármely olyan kiszolgálóra, amely rendelkezik a megfelelő nyilvános kulccsal. Ha a titkos kulcsot jelszó védi, azt nem használhatja a támadó, így további biztonsági réteget biztosíthat az Azure-beli infrastruktúra számára.
+### <a name="private-key-passphrase"></a>Titkos kulcs jelszava
+A titkos SSH-kulcsnak nagyon biztonságos jelszóval kell rendelkeznie a védelme érdekében. Ez a jelszó csak a titkos SSH-kulcsfájl elérésére szolgál, és *nem* a felhasználói fiók jelszava. Ha jelszót ad hozzá az SSH-kulcshoz, az titkosítja a titkos kulcsot a 128 bites AES használatával, hogy a titkos kulcs használhatatlan legyen a jelszó visszafejtése nélkül. Ha egy támadó ellopta a titkos kulcsot, és a kulcs nem rendelkezik hozzáférési kóddal, a titkos kulcs használatával bejelentkezhet bármely olyan kiszolgálóra, amely rendelkezik a megfelelő nyilvános kulccsal. Ha a titkos kulcsot jelszó védi, azt nem használhatja a támadó, így további biztonsági réteget biztosíthat az Azure-beli infrastruktúra számára.
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 

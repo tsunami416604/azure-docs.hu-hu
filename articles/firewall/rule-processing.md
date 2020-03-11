@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/26/2020
+ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 69c0c13c7027707cdadb2f1f1de9cc1655c9c625
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396045"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082473"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Az Azure Firewall szabályfeldolgozási logikája
 Megadhatja a NAT-szabályokat, a hálózati szabályokat és az alkalmazásokra vonatkozó szabályokat a Azure Firewall. A szabályok feldolgozása a szabály típusa szerint történik. 
@@ -24,7 +24,7 @@ Megadhatja a NAT-szabályokat, a hálózati szabályokat és az alkalmazásokra 
 
 ### <a name="network-rules-and-applications-rules"></a>Hálózati szabályok és alkalmazások szabályai
 
-A hálózati szabályok és az alkalmazás szabályainak konfigurálásakor a hálózati szabályok prioritási sorrendben lesznek alkalmazva az alkalmazás szabályai előtt. A szabályok leállnak. Így ha a rendszer egyezést talál egy hálózati szabályban, a rendszer nem dolgozza fel más szabályokat.  Ha nincs megfelelő hálózati szabály, és ha a protokoll HTTP, HTTPS vagy MSSQL, akkor a rendszer az alkalmazás-szabályok alapján értékeli ki a csomagot a prioritási sorrendben. Ha még mindig nem található egyezés, akkor a rendszer kiértékeli a csomagot az [infrastruktúra-szabálygyűjtemény](infrastructure-fqdns.md)alapján. És ha továbbra sincs egyezés, a tűzfal a csomagot alapértelmezés szerint elutasítja.
+A hálózati szabályok és az alkalmazás szabályainak konfigurálásakor a hálózati szabályok prioritási sorrendben lesznek alkalmazva az alkalmazás szabályai előtt. A szabályok leállnak. Így ha a rendszer egyezést talál egy hálózati szabályban, a rendszer nem dolgozza fel más szabályokat.  Ha nincs megfelelő hálózati szabály, és ha a protokoll HTTP, HTTPS vagy MSSQL, akkor a rendszer a csomagot prioritási sorrendben értékeli ki az alkalmazás szabályai alapján. Ha még mindig nem található egyezés, akkor a rendszer kiértékeli a csomagot az [infrastruktúra-szabálygyűjtemény](infrastructure-fqdns.md)alapján. És ha továbbra sincs egyezés, a tűzfal a csomagot alapértelmezés szerint elutasítja.
 
 ## <a name="inbound"></a>Bejövő
 
@@ -32,7 +32,7 @@ A hálózati szabályok és az alkalmazás szabályainak konfigurálásakor a h�
 
 A bejövő internetkapcsolatot a célként megadott hálózati címfordítás (DNAT) konfigurálásával engedélyezheti [az oktatóanyag: a bejövő forgalom szűrése Azure Firewall DNAT a Azure Portal használatával](tutorial-firewall-dnat.md). A NAT-szabályok prioritásban lesznek alkalmazva a hálózati szabályok előtt. Ha talál egyezést, egy implicit megfelelő hálózati szabályt ad hozzá a lefordított forgalom engedélyezéséhez. Ezt a viselkedést felülírhatja, ha explicit módon hozzáad egy hálózatiszabály-készletet, amely megtagadja azokat a szabályokat, amelyek a lefordított adatforgalomhoz tartoznak.
 
-A bejövő kapcsolatok esetében nem alkalmazhatók az alkalmazási szabályok. Ha tehát a bejövő HTTP/S forgalmat szeretné szűrni, használja a webalkalmazási tűzfalat (WAF). További információ: [Mi az az Azure webalkalmazási tűzfal?](../web-application-firewall/overview.md)
+Az alkalmazás szabályai nem alkalmazhatók a bejövő kapcsolatokra. Ha tehát a bejövő HTTP/S forgalmat szeretné szűrni, használja a webalkalmazási tűzfalat (WAF). További információ: [Mi az az Azure webalkalmazási tűzfal?](../web-application-firewall/overview.md)
 
 ## <a name="examples"></a>Példák
 
@@ -90,6 +90,10 @@ Az SSH-forgalmat a rendszer megtagadja, mert egy magasabb prioritású hálózat
 **Találat**
 
 Az SSH-kapcsolatok megtagadva, mert egy magasabb prioritású hálózati szabálygyűjtemény blokkolja azt. Ezen a ponton a szabályok feldolgozása leáll.
+
+## <a name="rule-changes"></a>Szabály módosításai
+
+Ha módosít egy szabályt a korábban engedélyezett forgalom megtagadására, a rendszer minden kapcsolódó meglévő munkamenetet elvet.
 
 ## <a name="next-steps"></a>Következő lépések
 

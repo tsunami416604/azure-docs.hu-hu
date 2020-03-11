@@ -1,0 +1,52 @@
+### YamlMime:Landing
+title: Cloud Foundry on Azure – dokumentáció
+summary: A Cloud Foundry egy olyan nyílt forráskódú „szolgáltatásként nyújtott platform” (PaaS), amely különböző nyelveken és keretrendszerekben fejlesztett, 12 faktoros alkalmazások létrehozását, telepítését és üzemeltetését teszi lehetővé.
+metadata:
+  title: Cloud Foundry on Azure – dokumentáció
+  description: A Cloud Foundry egy olyan nyílt forráskódú „szolgáltatásként nyújtott platform” (PaaS), amely különböző nyelveken és keretrendszerekben fejlesztett, 12 faktoros alkalmazások létrehozását, telepítését és üzemeltetését teszi lehetővé.
+  services: multiple
+  ms.service: multiple
+  ms.devlang: devops
+  ms.topic: landing-page
+  author: georgewallace
+  ms.author: gwallace
+  ms.date: 03/08/2020
+  ms.openlocfilehash: 5c2ad3d9e471c339223ad21092b89e6aee64995d
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943163"
+landingContent:
+- title: A Cloud Foundry on Azure ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: A Cloud Foundry on Azure áttekintése
+      url: ../virtual-machines/linux/cloudfoundry-get-started.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: A Cloud Foundry on Azure üzembe helyezése
+      url: https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry
+  - linkListType: how-to-guide
+    links:
+    - text: Az első alkalmazás üzembe helyezése
+      url: ../virtual-machines/linux/cloudfoundry-deploy-your-first-app.md
+- title: További források
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Pivotal Cloud Foundry on Azure
+      url: https://pivotal.io/partners/microsoft
+    - text: A Cloud Foundry Azure-ral való integrálása
+      url: how-cloud-foundry-integrates-with-azure.md
+    - text: A Cloud Foundry on Azure telepítése
+      url: https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html
+    - text: Azure DevOps beépülő modul a Cloud Foundryhoz
+      url: https://github.com/Microsoft/vsts-cloudfoundry
+    - text: Microsoft Log Analytics Nozzle a Cloud Foundryhoz
+      url: https://github.com/Azure/oms-log-analytics-firehose-nozzle
+    - text: A Cloud Foundry ismertetése
+      url: https://docs.cloudfoundry.org/

@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/05/2020
+ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: c5a1aaac0edea1e5ab2e6cdf35f91f61eed23db5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 62e8c174cd10a003657093b805291e003a9ede1b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374913"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968048"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: [azure Virtual Network – áttekintés](../virtual-network/virtual-networks-overview.md).
@@ -113,16 +113,16 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 | * / 80, 443                  | Bejövő            | TCP                | INTERNET/VIRTUAL_NETWORK            | Ügyfél-kommunikáció API Management                      | Külső             |
 | * / 3443                     | Bejövő            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Felügyeleti végpont a Azure Portal és a PowerShell számára         | Külső & belső  |
 | * / 80, 443                  | Kimenő           | TCP                | VIRTUAL_NETWORK/tárterület             | **Függőség az Azure Storage-ban**                             | Külső & belső  |
-| * / 80, 443                  | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureActiveDirectory | Azure Active Directory (ha van ilyen)                   | Külső & belső  |
+| * / 80, 443                  | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) (ha van ilyen)                   | Külső & belső  |
 | * / 1433                     | Kimenő           | TCP                | VIRTUAL_NETWORK/SQL                 | **Hozzáférés az Azure SQL-végpontokhoz**                           | Külső & belső  |
-| */5671, 5672, 443          | Kimenő           | TCP                | VIRTUAL_NETWORK/EventHub            | Az Event hub-házirend és a figyelési ügynök közötti függőség | Külső & belső  |
-| * / 445                      | Kimenő           | TCP                | VIRTUAL_NETWORK/tárterület             | Függőség a GIT-hez készült Azure-Fájlmegosztástól                      | Külső & belső  |
+| */5671, 5672, 443          | Kimenő           | TCP                | VIRTUAL_NETWORK/EventHub            | Az [Event hub-házirend](api-management-howto-log-event-hubs.md) és a figyelési ügynök közötti függőség | Külső & belső  |
+| * / 445                      | Kimenő           | TCP                | VIRTUAL_NETWORK/tárterület             | Függőség a [git](api-management-configuration-repository-git.md) -hez készült Azure-fájlmegosztástól                      | Külső & belső  |
 | * / 1886                     | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | A Resource Health állapotának közzétételéhez szükséges.          | Külső & belső  |
-| */443                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | Diagnosztikai naplók és mérőszámok közzététele                        | Külső & belső  |
+| */443                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | [Diagnosztikai naplók és mérőszámok](api-management-howto-use-azure-monitor.md) közzététele                       | Külső & belső  |
 | */25                       | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
 | */587                      | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
 | * / 25028                    | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
-| * / 6381 - 6383              | Bejövő & kimenő | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Az Azure cache elérése a Redis-példányok között a RoleInstances között          | Külső & belső  |
+| * / 6381 - 6383              | Bejövő & kimenő | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | A Redis szolgáltatás elérése a számítógépek közötti [díjszabási korlátozási](api-management-access-restriction-policies.md#LimitCallRateByKey) házirendekhez         | Külső & belső  |
 | * / *                        | Bejövő            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Azure-infrastruktúra Load Balancer                          | Külső & belső  |
 
 >[!IMPORTANT]
@@ -136,9 +136,12 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 
     | Azure-környezet | Végpontok                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure Public      | <ul><li>gcs.prod.monitoring.core.windows.net (**új**)</li><li>prod.warmpath.msftcloudes.com (**elavultnak kell lennie**)</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com, ahol a `East US 2` eastus2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure Public      | <ul><li>gcs.prod.monitoring.core.windows.net (**új**)</li><li>prod.warmpath.msftcloudes.com (**elavultnak kell lennie**)</li><li>shoebox2.metrics.microsoftmetrics.com (**új**)</li><li>shoebox2.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod3.metrics.microsoftmetrics.com (**új**)</li><li>prod3.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod3-black.prod3.metrics.microsoftmetrics.com (**új**)</li><li>prod3-black.prod3.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod3-red.prod3.metrics.microsoftmetrics.com (**új**)</li><li>prod3-red.prod3.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com, ahol a `East US 2` eastus2.warm.ingestion.msftcloudes.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com (**új**)</li><li>shoebox2.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod3.metrics.microsoftmetrics.com (**új**)</li><li>prod3.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com (**új**)</li><li>shoebox2.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod3.metrics.microsoftmetrics.com (**új**)</li><li>prod3.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+
+>[!IMPORTANT]
+> A DNS-zónák felett lévő fürtök változása. a **nsatc.net** a **. microsoftmetrics.com** -re általában egy DNS-változás. A fürt IP-címe nem változik.
 
 + **SMTP-továbbító**: kimenő hálózati kapcsolat az SMTP-továbbító számára, amely a gazdagép `smtpi-co1.msn.com`, `smtpi-ch1.msn.com`, `smtpi-db3.msn.com`, `smtpi-sin.msn.com` és `ies.global.microsoft.com` alatt oldható fel.
 

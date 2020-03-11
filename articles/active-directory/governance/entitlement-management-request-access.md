@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a49c69b0f96add61501d9e2c5fc00ba564eba2a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 4b1ccde2f1f92237978ab4e68acaa26393bbb9d8
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376555"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968063"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomaghoz való hozzáférés kérése az Azure AD-jogosultságok kezelésében
 
@@ -35,7 +35,7 @@ Első lépésként jelentkezzen be a saját hozzáférési portálra, ahol hozz�
 
 **Előfeltételként szükséges szerepkör:** Kérelmező
 
-1. Keressen egy e-mailt vagy egy üzenetet a projektből vagy a Business managerből, amelyen dolgozik. Az e-mailnek tartalmaznia kell a hozzáférési csomagra mutató hivatkozást, amelyre szüksége lesz. A hivatkozás `myaccess`vel kezdődik, tartalmaz egy könyvtári hivatkozást, és egy hozzáférési csomag azonosítójával végződik.
+1. Keressen egy e-mailt vagy egy üzenetet a projektből vagy a Business managerből, amelyen dolgozik. Az e-mailnek tartalmaznia kell a hozzáférési csomagra mutató hivatkozást, amelyre szüksége lesz. A hivatkozás `myaccess`vel kezdődik, tartalmaz egy könyvtári hivatkozást, és egy hozzáférési csomag azonosítójával végződik.  (Az USA kormányzati szervei számára a tartományt `https://myaccess.microsoft.us` helyette lehet.)
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 

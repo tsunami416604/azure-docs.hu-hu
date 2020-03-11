@@ -1,25 +1,17 @@
 ---
 title: Linuxos virtuális merevlemez letöltése az Azure-ból
 description: Töltsön le egy linuxos virtuális merevlemezt az Azure CLI és a Azure Portal használatával.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 257f3f723fc8a971b8253699f4beb002cf46ce52
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 02c3ee483e6a31960fd5123070a49f568ac4c690
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036295"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968801"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Linuxos virtuális merevlemez letöltése az Azure-ból
 
@@ -56,7 +48,7 @@ Ha a virtuális merevlemezt képként szeretné használni más virtuális gépe
 
 Ha a virtuális merevlemezt lemezként szeretné használni egy meglévő virtuális gép vagy adatlemez új példánya számára, hajtsa végre a következő lépéseket:
 
-1.  Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1.  Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2.  A bal oldali menüben válassza a **Virtual Machines**lehetőséget.
 3.  Válassza ki a virtuális gépet a listából.
 4.  A virtuális gép lapján válassza a **Leállítás**lehetőséget.

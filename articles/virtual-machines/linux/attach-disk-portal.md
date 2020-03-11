@@ -1,26 +1,18 @@
 ---
 title: Adatlemez csatolása Linux rendszerű virtuális géphez
 description: A portál használatával új vagy meglévő adatlemezt csatolhat egy linuxos virtuális géphez.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 5e1c6212-976c-4962-a297-177942f90907
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 3071effeb2d5eeaafc48fd742559b093a0517c1c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 746cef8dfe026c731a677cbf77f729d36342f007
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851672"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969356"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Adatlemez csatlakoztatása Linux rendszerű virtuális géphez a portál használatával 
 Ez a cikk bemutatja, hogyan csatolhat új és meglévő lemezeket egy linuxos virtuális géphez a Azure Portal keresztül. [Adatlemezt a Azure Portal egy Windows rendszerű virtuális géphez is csatolhat](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -108,7 +100,7 @@ Particionálja a lemezt az `fdisk` használatával. Ha a lemez mérete 2 tebibá
 sudo fdisk /dev/sdc
 ```
 
-Az `n` paranccsal adhat hozzá egy új partíciót. Ebben a példában az elsődleges partíció `p` is választjuk, és elfogadjuk a többi alapértelmezett értéket. A kimenet az alábbi példához hasonló lesz:
+Új partíció hozzáadásához használja a `n` parancsot. Ebben a példában az elsődleges partíció `p` is választjuk, és elfogadjuk a többi alapértelmezett értéket. A kimenet a következő példához hasonló lesz:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -204,7 +196,7 @@ A fájlrendszer csatlakoztatásához használja a `mount`. Az alábbi példa a *
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Annak biztosítása érdekében, hogy a meghajtó újracsatlakoztatása újraindítás után automatikusan megtörténjen, hozzá kell adni az */etc/fstab* fájlhoz. Emellett erősen ajánlott az UUID (univerzálisan egyedi azonosító) használata az */etc/fstab* -ben a meghajtóra, nem csak az eszköz neve (például */dev/sdc1*). Ha indítás közben az operációs rendszer lemezhibát észlel, az UUID használatával elkerülhető egy nem megfelelő lemez a megadott helyre történő csatolása. A többi adatlemez ettől még ugyanazokat az eszközazonosítókat kapja. Az új meghajtó UUID-jének megkereséséhez használja a `blkid` segédprogramot:
+Annak biztosítása érdekében, hogy a meghajtó újracsatlakoztatása újraindítás után automatikusan megtörténjen, hozzá kell adni az */etc/fstab* fájlhoz. Emellett erősen ajánlott az UUID (univerzálisan egyedi azonosító) használata az */etc/fstab* -ben a meghajtóra, nem csak az eszköz neve (például */dev/sdc1*). Ha az operációs rendszer lemezes hibát észlel a rendszerindítás során, az UUID használatával elkerülhető, hogy a helytelen lemez csatlakoztatva legyen egy adott helyhez. A fennmaradó adatlemezek ezután ugyanahhoz az eszköz-azonosítóhoz lesznek rendelve. Az új meghajtó UUID azonosítójának megkereséséhez használja a `blkid` segédprogramot:
 
 ```bash
 sudo -i blkid
@@ -219,7 +211,7 @@ A kimenet a következő példához hasonlóan néz ki:
 ```
 
 > [!NOTE]
-> Az **/etc/fstab** fájl nem megfelelő szerkesztése nem indítható rendszert eredményezhet. Ha nem biztos a dolgában, a fájl megfelelő szerkesztésével kapcsolatos információkért olvassa el a disztribúció dokumentációját. Azt is javasoljuk, hogy a Szerkesztés előtt hozza létre az/etc/fstab fájl biztonsági másolatát.
+> Az **/etc/fstab** fájl nem megfelelő szerkesztése nem indítható rendszert eredményezhet. Ha nem biztos, tekintse meg a terjesztés dokumentációját a fájl megfelelő szerkesztésével kapcsolatos információkért. Azt is javasoljuk, hogy a Szerkesztés előtt hozza létre az/etc/fstab fájl biztonsági másolatát.
 
 Ezután nyissa meg az */etc/fstab* fájlt egy szövegszerkesztőben a következőképpen:
 

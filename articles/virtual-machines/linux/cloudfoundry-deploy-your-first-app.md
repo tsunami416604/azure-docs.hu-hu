@@ -1,26 +1,18 @@
 ---
 title: Az első alkalmazás üzembe helyezése Cloud Foundry on Microsoft Azure
 description: Alkalmazás üzembe helyezése az Azure-ban Cloud Foundry
-services: virtual-machines-linux
-documentationcenter: ''
 author: seanmck
-manager: gwallace
-editor: ''
-tags: ''
-keywords: ''
-ms.assetid: 8fa04a58-56ad-4e6c-bef4-d02c80d4b60f
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: b1f9ab5289a41aacb5514e954f1ca01f6ad66152
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 45ae8979a2617d4f380e417e3f0910182ebe145e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036828"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970075"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Az első alkalmazás üzembe helyezése Cloud Foundry on Microsoft Azure
 
@@ -39,7 +31,7 @@ Az Azure-ban több lehetőség is létezik Cloud Foundry környezet létrehozás
 
 ## <a name="connect-to-the-cloud-controller"></a>Kapcsolódás a felhőalapú vezérlőhöz
 
-A felhőalapú vezérlő az alkalmazások üzembe helyezésére és kezelésére szolgáló Cloud Foundry környezet elsődleges belépési pontja. Az alapszintű Cloud Controller API (CCAPI) egy REST API, de különböző eszközökön keresztül érhető el. Ebben az esetben a [Cloud FOUNDRY CLI][cf-cli]-n keresztül kommunikálunk vele. Telepítheti a CLI-t Linux, MacOS vagy Windows rendszerre, de ha nem szeretné, hogy egyáltalán ne telepítse, a [Azure Cloud Shell][cloudshell-docs]előre telepítve lesz.
+A felhőalapú vezérlő az alkalmazások üzembe helyezésére és kezelésére szolgáló Cloud Foundry környezet elsődleges belépési pontja. Az alapszintű Cloud Controller API (CCAPI) egy REST API, de különböző eszközökön keresztül érhető el. Ebben az esetben a [Cloud FOUNDRY CLI][cf-cli]-n keresztül kommunikálunk vele. Telepítheti a CLI-t Linux, macOS vagy Windows rendszerre, de ha nem szeretné, hogy egyáltalán ne telepítse, a [Azure Cloud Shell][cloudshell-docs]előre telepítve lesz.
 
 A bejelentkezéshez a `api` a piactér-telepítésből beszerzett SYSTEMDOMAINURL. Mivel az alapértelmezett telepítés önaláírt tanúsítványt használ, meg kell adnia a `skip-ssl-validation` kapcsolót is.
 

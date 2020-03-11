@@ -1,37 +1,55 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Red Hat OpenShift Service
+### YamlMime:Landing
+title: Az Azure Red Hat OpenShift dokumentációja
+summary: Az Azure Red Hat OpenShift egybérlős, magas rendelkezésre állású Kubernetes-fürtöket biztosít az Azure-ban, a Red Hat és Microsoft támogatásával.
 metadata:
-  title: 'Az Azure Red Hat OpenShift Service dokumentációja – oktatóanyagok, API-referencia'
-  meta.description: Microsoft Azure Red Hat OpenShift allows you to quickly deploy a production ready Red Hat OpenShift cluster in Azure. Learn how to use Azure Red Hat OpenShift with these tutorials and how-to guides.
-  services: container-service
-  author: tylermsft
+  title: Az Azure Red Hat OpenShift dokumentációja
+  description: A Microsoft Azure Red Hat OpenShift lehetővé teszi egy üzemkész Red Hat OpenShift-fürt gyors üzembe helyezését az Azure-ban. Ismerje meg oktatóanyagainkból és útmutatóinkból az Azure Red Hat OpenShift használatát.
   ms.service: container-service
+  services: container-service
   ms.topic: landing-page
-  ms.date: 05-06-2019
-  ms.author: twhitney
-abstract:
-  description: 'Az Azure Red Hat OpenShift egybérlős, magas rendelkezésre állású Kubernetes-fürtöket biztosít az Azure-ban, a Red Hat és Microsoft támogatásával.'
-sections:
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: Megismerheti az Azure Red Hat OpenShift-fürtök létrehozását és felügyeletét.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/openshift/tutorial-create-cluster">Azure Red Hat OpenShift-fürt létrehozása</a>
-          - html: <a href="/azure/openshift/tutorial-scale-cluster">Azure Red Hat OpenShift-fürt skálázása</a>
-          - html: <a href="/azure/openshift/tutorial-delete-cluster">Azure Red Hat OpenShift-fürt törlése</a>
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/cli/azure/openshift">Azure CLI</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/openshift">REST API</a></p>
-          - title: Red Hat-dokumentáció
-            html: '<p><a href="https://docs.openshift.com/aro/welcome/index.html">Red Hat OpenShift-dokumenumok</a></p>'
+  author: jimzim
+  ms.author: jzim
+  ms.date: 03/06/2020
+  ms.openlocfilehash: ec40ff9af0b2c09db32e40536009cd0db684f030
+  ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/10/2020
+  ms.locfileid: "79037043"
+landingContent:
+- title: AZ Azure Red Hat OpenShift bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Red Hat OpenShift?
+      url: intro-openshift.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure Red Hat OpenShift-fürt létrehozása
+      url: tutorial-create-cluster.md
+    - text: Azure Red Hat OpenShift-fürt skálázása
+      url: tutorial-scale-cluster.md
+    - text: Azure Red Hat OpenShift-fürt törlése
+      url: tutorial-delete-cluster.md
+- title: Beállítás
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure Red Hat OpenShift fejlesztői környezetének beállítása
+      url: howto-setup-environment.md
+    - text: Azure AD-bérlő létrehozása
+      url: howto-create-tenant.md
+    - text: Azure AD-alkalmazásobjektum és -felhasználó létrehozása
+      url: howto-aad-app-configuration.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/openshift
+    - text: REST API
+      url: /rest/api/openshift
+    - text: Red Hat OpenShift-dokumentumok
+      url: https://docs.openshift.com/aro/welcome/index.html

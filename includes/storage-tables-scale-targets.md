@@ -2,22 +2,29 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 06/20/2019
+ms.date: 03/09/2020
 ms.author: tamram
-ms.openlocfilehash: 5ab03b682dd0ed1dc7b198e89c86e7a74c6275cd
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
-ms.translationtype: MT
+ms.openlocfilehash: 27617da97ced9ac775beae71e4c25202944b2aba
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67457374"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78941012"
 ---
-| Resource | Target |
+Az alábbi táblázat a kapacitás-, méretezhetőség- és teljesítménycélokat ismerteti a Table Storage esetében.
+
+| Erőforrás | Cél |
 |----------|---------------|
-| Egyetlen tábla maximális mérete | 500 TiB |
-| Egy tábla entitás maximális mérete | 1 MiB |
-| Tulajdonságok maximális száma egy tábla entitásban | 255, amely három rendszertulajdonságot tartalmaz: PartitionKey, RowKey és timestamp |
-| Az entitásokban lévő tulajdonságértékek maximális teljes mérete | 1 MiB |
-| Az entitásban lévő egyes tulajdonságok maximális teljes mérete | A tulajdonság típusa szerint változhat. További információ: **Property types** ( [a Table Service adatmodell ismertetése](/rest/api/storageservices/understanding-the-table-service-data-model)). |
-| Tárolt hozzáférési szabályzatok maximális száma táblában | 5 |
-| Kérelmek maximális száma Storage-fiókban | 20 000 tranzakció/másodperc, amely egy 1 – KiB értékű entitás méretét feltételezi |
-| Cél átviteli sebesség egyetlen tábla partícióhoz (1 KiB – entitások) | Legfeljebb 2 000 entitás másodpercenként |
+| Az Azure-tárfiókban található táblázatok száma | Csak a tárfiók kapacitása korlátozza |
+| A partíciók száma a táblázatban | Csak a tárfiók kapacitása korlátozza |
+| Entitások száma egy partíción belül | Csak a tárfiók kapacitása korlátozza |
+| Egyetlen táblázat maximális mérete | 500 TiB |
+| Egyetlen entitás maximális mérete, az összes tulajdonságértéket beleértve | 1 MiB |
+| Tulajdonságok maximális száma egy táblázatentitásban | 255 (a három rendszertulajdonságot – **PartitionKey**, **RowKey** és **Timestamp** – is beleértve) |
+| Egyedi tulajdonság maximális teljes mérete egy entitásban | Tulajdonságtípustól függően változik. További információt a [Table Service adatmodelljét](/rest/api/storageservices/understanding-the-table-service-data-model) ismertető témakör **tulajdonságtípusokkal** foglalkozó részében talál. |
+| A **PartitionKey** mérete | Legfeljebb 1 KiB méretű sztring |
+| A **RowKey** mérete | Legfeljebb 1 KiB méretű sztring |
+| Az entitáscsoport-tranzakció mérete | Egy tranzakció legfeljebb 100 entitást tartalmazhat, és a hasznos adat méretének 4 MiB értéknél kisebbnek kell lennie. Egy entitáscsoport-tranzakció egy entitást legfeljebb egyszer frissíthet. |
+| Tárolt hozzáférési szabályzatok táblázatonkénti maximális száma | 5 |
+| Maximális kérelemmennyiség tárfiókonként | 20 000 tranzakció másodpercenként, 1 KiB entitásméretet feltételezve |
+| Az átviteli sebesség célértéke egyetlen táblázat-partíció esetében (1 KiB méretű entitások) | Legfeljebb 2000 entitás másodpercenként |
