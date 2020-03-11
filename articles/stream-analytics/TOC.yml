@@ -223,6 +223,9 @@
       href: stream-analytics-scale-with-machine-learning-functions.md
 - name: A Stream Analytics lekérdezési nyelve
   items:
+    - name: A Stream Analytics lekérdezési nyelve – áttekintés
+      href: /stream-analytics-query/stream-analytics-query-language-reference
+      maintainContext: true
     - name: Beépített függvények
       items:
         - name: Beépített függvények áttekintése
