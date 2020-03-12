@@ -12,17 +12,6 @@
       href: quick-create-powershell.md
     - name: Virtuális hálózat létrehozása – Azure CLI
       href: quick-create-cli.md
-    - name: NAT
-      items:
-        - name: NAT-átjáró létrehozása – Portál
-          href: quickstart-create-nat-gateway-portal.md
-        - name: NAT-átjáró létrehozása – PowerShell
-          href: quickstart-create-nat-gateway-powershell.md
-        - name: NAT-átjáró létrehozása – CLI
-          href: quickstart-create-nat-gateway-cli.md
-        - name: NAT-átjáró létrehozása – ARM-sablon
-          displayname: Resource Manager
-          href: quickstart-create-nat-gateway-template.md
   expanded: true
 - name: Oktatóanyagok
   items:
@@ -36,6 +25,15 @@
       href: tutorial-connect-virtual-networks-portal.md
     - name: NAT
       items:
+        - name: NAT-átjáró létrehozása – Portál
+          href: quickstart-create-nat-gateway-portal.md
+        - name: NAT-átjáró létrehozása – PowerShell
+          href: quickstart-create-nat-gateway-powershell.md
+        - name: NAT-átjáró létrehozása – CLI
+          href: quickstart-create-nat-gateway-cli.md
+        - name: NAT-átjáró létrehozása – ARM-sablon
+          displayname: Resource Manager
+          href: quickstart-create-nat-gateway-template.md
         - name: NAT-átjáró létrehozása és ellenőrzése – Portál
           href: tutorial-create-validate-nat-gateway-portal.md
         - name: NAT-átjáró létrehozása és ellenőrzése – PowerShell

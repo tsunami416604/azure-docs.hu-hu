@@ -182,9 +182,13 @@
             - name: A felhasználói felület testreszabása
               href: custom-policy-ui-customization.md
               displayName: 'ux, input, cors, html, css'
+            - name: Nyelv testreszabása
+              href: custom-policy-localization.md
             - name: Egyéni e-mail-cím
               href: custom-email.md
               displayName: verification
+            - name: E-mailes ellenőrzés letiltása
+              href: custom-policy-disable-email-verification.md
             - name: JavaScript engedélyezése
               href: javascript-samples.md
             - name: Jelszó bonyolultsága
