@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5657a2d2c348b371f81aed74c92e52b5199cdc61
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 51a456a05e1d41057e80b92e44f997e1b52cb132
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377418"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128511"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)
 
@@ -28,6 +28,9 @@ Ez az útmutató bemutatja, hogyan használható a JavaScript egyoldalas alkalma
 - Bejelentkezés személyes fiókokba, valamint munkahelyi és iskolai fiókokba 
 - Hozzáférési jogkivonat beszerzése
 - Hívja meg az Microsoft Graph API-t vagy más API-kat, amelyek hozzáférési jogkivonatokat igényelnek a *Microsoft Identity platform végpontján*
+
+>[!NOTE]
+> Ha még nem ismeri a Microsoft Identity platformot, javasoljuk, hogy kezdje a [bejelentkezési felhasználókat, és szerezzen be egy hozzáférési jogkivonatot egy JavaScript Spa-](quickstart-v2-javascript.md)útmutatóban.
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Az útmutató által létrehozott minta alkalmazás működése
 

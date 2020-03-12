@@ -4,16 +4,16 @@ titleSuffix: Azure Data Science Virtual Machine
 description: A Linux (Ubuntu) Data Science Virtual Machine konfigurálása és létrehozása az elemzéshez és a gépi tanuláshoz.
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: gvashishtha
-ms.author: gopalv
+author: lobrien
+ms.author: laobri
 ms.topic: quickstart
-ms.date: 12/31/2019
-ms.openlocfilehash: 5d139cbd59b1b3e63786ae22bbd3b934de37cd49
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: f7629b4724e85f93a8dfe3e37ac2b2155288d235
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360624"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128686"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Gyors útmutató: a Linux Data Science Virtual Machine beállítása (Ubuntu)
 
@@ -29,7 +29,7 @@ Vegye figyelembe, hogy az ingyenes Azure-fiókok nem támogatják a GPU-t haszn�
 Az alábbi lépéseket követve hozhatja létre a Data Science Virtual Machine Ubuntu 18,04-példányát:
 
 1. Ha még nem jelentkezett be, lépjen a [Azure Portalba](https://portal.azure.com) , ahol a rendszer kérni fogja, hogy jelentkezzen be az Azure-fiókjába.
-1. Keresse meg a virtuális gép listáját az "adatelemzési virtuális gép" beírásával, és válassza a "Data Science Virtual Machine-Ubuntu 18,04 Preview" lehetőséget.
+1. Keresse meg a virtuális gép listáját az "adatelemzési virtuális gép" beírásával, és válassza a "Data Science Virtual Machine-Ubuntu 18,04" lehetőséget.
 
 1. A következő ablakban válassza a **Létrehozás**lehetőséget.
 
@@ -118,13 +118,14 @@ Az Ubuntu DSVM egy többfelhasználós Jupyter-kiszolgálót futtat [JupyterHub]
       ![Ubuntu gép IP-címe](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
 
    1. A helyi gépen nyisson meg egy webböngészőt, és navigáljon a https:\//Your-VM-IP: 8000 értékre, és cserélje le a "Your-VM-IP" kifejezést a korábban jegyzett IP-címre.
+   1. A böngésző valószínűleg nem fogja tudni megnyitni a lapot közvetlenül, jelezve, hogy hiba történt a tanúsítványban. A DSVM egy önaláírt tanúsítványon keresztül biztosítja a biztonságot. A legtöbb böngésző lehetővé teszi, hogy a figyelmeztetést követően kattintson ide. Számos böngésző továbbra is biztosít valamilyen vizuális figyelmeztetést a tanúsítványról a webes munkamenet során.
    1. Adja meg a virtuális gép létrehozásához használt felhasználónevet és jelszót, majd jelentkezzen be. 
 
       ![Adja meg a Jupyter-bejelentkezést](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
    1. Böngésszen a rendelkezésre álló számos jegyzetfüzetben.
 
-JupyterLab, a Jupyter-notebookok és JupyterHub, következő generációja érhető el. A hozzáféréshez jelentkezzen be a JupyterHub, majd keresse meg a https:\//Your-VM-IP: 8000/User/your-username/Lab URL-címet, és cserélje le a "your-username" kifejezést a virtuális gép konfigurálásakor kiválasztott felhasználónévre.
+JupyterLab, a Jupyter-notebookok és JupyterHub, következő generációja érhető el. A hozzáféréshez jelentkezzen be a JupyterHub, majd keresse meg a https:\//Your-VM-IP: 8000/User/your-username/Lab URL-címet, és cserélje le a "your-username" kifejezést a virtuális gép konfigurálásakor kiválasztott felhasználónévre. Előfordulhat, hogy a rendszer eredetileg nem fér hozzá a helyhez a tanúsítvány hibája miatt.
 
 A JupyterLab alapértelmezett jegyzetfüzet-kiszolgálóként is beállíthatja, ha hozzáadja ezt a sort a `/etc/jupyterhub/jupyterhub_config.py`hoz:
 

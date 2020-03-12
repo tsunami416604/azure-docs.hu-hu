@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b3cd858653d54ae622758d218bb887d94bceb697
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378128"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086379"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Meglévő NPS-infrastruktúra integrálása az Azure Multi-Factor Authentication
 
@@ -250,9 +250,9 @@ Dönthet úgy, hogy létrehozza ezt a kulcsot, és FALSE (hamis) értékre áll�
 
 ### <a name="nps-extension-health-check-script"></a>NPS-bővítmény állapot-ellenőrzési parancsfájlja
 
-A következő parancsfájl a TechNet Gallery webhelyen érhető el, amely alapszintű állapot-ellenőrzési lépéseket hajt végre a hálózati házirend-kiszolgáló bővítményének hibaelhárításakor.
+A következő szkripttel végezheti el az alapszintű állapot-ellenőrzési lépéseket a hálózati házirend-kiszolgáló bővítményének hibaelhárításakor.
 
-[MFA_NPS_Troubleshooter. ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
+[MFA_NPS_Troubleshooter. ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -334,6 +334,8 @@ Javasoljuk, hogy a régebbi és a gyengébb titkosítási csomagokat tiltsa le, 
 További hibaelhárítási útmutató és lehetséges megoldások találhatók az [Azure-multi-Factor Authentication hálózati házirend-kiszolgáló bővítményében található hibaüzenetek feloldása](howto-mfa-nps-extension-errors.md)című cikkben.
 
 ## <a name="next-steps"></a>Következő lépések
+
+- [A hálózati házirend-kiszolgáló áttekintése és konfigurálása a Windows Server rendszerben](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
 
 - Konfiguráljon alternatív azonosítókat a bejelentkezéshez, vagy állítson be olyan IP-címekre vonatkozó kivételeket, amelyek nem hajtják végre a kétlépéses ellenőrzést a [hálózati házirend-kiszolgáló bővítményének speciális konfigurációs beállításaiban multi-Factor Authentication](howto-mfa-nps-extension-advanced.md)
 

@@ -5,17 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 1d91813e0f39207bcf7768de89600a6bdee0fc53
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/11/2020
+ms.openlocfilehash: f48106be67763c093a183be01098cab74391752e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358819"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126971"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Az integrációs szolgáltatási környezet (ISE) kezelése Azure Logic Apps
 
-Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) hálózati állapotának vizsgálatához és az ISE-ben létező logikai alkalmazások, kapcsolatok, integrációs fiókok és összekötők kezeléséhez kövesse a jelen témakör lépéseit. Az összetevők az ISE-ben való hozzáadásával kapcsolatban lásd: összetevők [hozzáadása az integrációs szolgáltatási környezethez](../logic-apps/add-artifacts-integration-service-environment-ise.md).
+Ez a cikk bemutatja, hogyan végezheti el az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)felügyeleti feladatait, például:
+
+* Kezelheti az ISE-ban lévő erőforrásokat, például a Logic appst, a kapcsolatokat, az integrációs fiókokat és az összekötőket.
+* Keresse meg az ISE hálózati állapotát.
+* Adja hozzá a kapacitást, indítsa újra az ISE-t, vagy törölje az ISE-t, kövesse a jelen témakör lépéseit. Az összetevők az ISE-ben való hozzáadásával kapcsolatban lásd: összetevők [hozzáadása az integrációs szolgáltatási környezethez](../logic-apps/add-artifacts-integration-service-environment-ise.md).
 
 ## <a name="view-your-ise"></a>Az ISE megtekintése
 
@@ -97,6 +101,83 @@ Megtekintheti és kezelheti az ISE-ben üzembe helyezett egyéni összekötőket
 
 1. Ha már nincs rá szükség az integrációs fiókok eltávolítására az ISE-ből, válassza ki ezeket az integrációs fiókokat, majd válassza a **Törlés**lehetőséget.
 
+<a name="add-capacity"></a>
+
+## <a name="add-ise-capacity"></a>ISE-kapacitás hozzáadása
+
+A prémium ISE alapegység rögzített kapacitással rendelkezik, így ha több átviteli sebességre van szüksége, akkor akár a létrehozáskor, akár utána több skálázási egységet is hozzáadhat. A fejlesztői SKU nem tartalmazza a méretezési egységek hozzáadásának képességét.
+
+1. A [Azure Portal](https://portal.azure.com)lépjen az ISE elemre.
+
+1. Az ISE használati és teljesítmény-metrikáinak áttekintéséhez az ISE menüben válassza az **Áttekintés**lehetőséget.
+
+   ![Az ISE használatának megtekintése](./media/ise-manage-integration-service-environment/integration-service-environment-usage.png)
+
+1. A **Beállítások**területen válassza a **felskálázás**lehetőséget. A **Konfigurálás** ablaktáblán válasszon a következő lehetőségek közül:
+
+   * [**Manuális méretezés**](#manual-scale): méretezés a használni kívánt feldolgozási egységek számától függően.
+   * [**Egyéni autoscale**](#custom-autoscale): méretezés teljesítmény-mérőszámok alapján, különböző feltételek kiválasztásával és a feltételek teljesítéséhez szükséges küszöbértékek megadásával.
+
+   ![Válassza ki a kívánt skálázási típust](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
+
+<a name="manual-scale"></a>
+
+### <a name="manual-scale"></a>Manuális méretezés
+
+1. A **manuális méretezés**kiválasztása után a **további kapacitáshoz**válassza ki a használni kívánt skálázási egységek számát.
+
+   ![Válassza ki a kívánt skálázási típust](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
+
+1. Amikor elkészült, válassza a **Mentés** lehetőséget.
+
+<a name="custom-autoscale"></a>
+
+### <a name="custom-autoscale"></a>Egyéni méretezés
+
+1. Miután kiválasztotta az **Egyéni autoskálázást**, az **autoskálázási beállítás neve**mezőben adja meg a beállítás nevét, és szükség esetén válassza ki azt az Azure-erőforráscsoportot, amelyben a beállítás tartozik.
+
+   ![Adja meg az autoskálázási beállítás nevét, majd válassza az erőforráscsoport lehetőséget.](./media/ise-manage-integration-service-environment/select-custom-autoscale.png)
+
+1. Az **alapértelmezett feltétel beállításnál** válassza ki a **skála alapján mérőszámot** vagy **méretezést egy adott példányszámra**.
+
+   * Ha a példány-alapú lehetőséget választja, adja meg a feldolgozási egységek számát, amely a 0 és 10 közötti érték.
+
+   * Ha a metrika-alapú elemet választja, kövesse az alábbi lépéseket:
+
+     1. A **szabályok** szakaszban válassza a **szabály hozzáadása**elemet.
+
+     1. A **skálázási szabály** ablaktáblán állítsa be a feltételek és a művelet végrehajtását, ha a szabály eseményindítót végez.
+
+     1. A **példányokra vonatkozó korlátokat**a következő értékek megadásával adhatja meg:
+
+        * **Minimum**: a használandó feldolgozó egységek minimális száma
+        * **Maximum**: a használni kívánt feldolgozási egységek maximális száma
+        * **Alapértelmezett**: Ha bármilyen probléma merül fel az erőforrás-metrikák olvasása közben, és az aktuális kapacitás az alapértelmezett kapacitás alatt van, az automatikus skálázás az alapértelmezett számú feldolgozási egységre lesz kibővítve. Ha azonban az aktuális kapacitás meghaladja az alapértelmezett kapacitást, az automatikus skálázás nem méretezhető a-ben.
+
+1. Egy másik feltétel hozzáadásához válassza a **skálázási feltétel hozzáadása**lehetőséget.
+
+1. Ha elkészült az autoskálázási beállításokkal, mentse a módosításokat.
+
+<a name="restart-ISE"></a>
+
+## <a name="restart-ise"></a>ISE újraindítása
+
+Ha módosítja a DNS-kiszolgáló vagy a DNS-kiszolgáló beállításait, újra kell indítania az ISE-t, hogy az ISE fel tudja venni a módosításokat. A prémium SKU ISE újraindítása nem eredményez leállást a redundancia és az újraindítást végző összetevők miatt. A fejlesztői SKU ISE azonban állásidőt tapasztal, mert nem létezik redundancia. További információ: [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)-i.
+
+1. A [Azure Portal](https://portal.azure.com)lépjen az ISE elemre.
+
+1. Az ISE menüben válassza az **Áttekintés**lehetőséget. Az áttekintő eszköztáron **indítsa újra**a következőt:.
+
+   ![Integrációs szolgáltatási környezet újraindítása](./media/connect-virtual-network-vnet-isolated-environment/restart-integration-service-environment.png)
+
+<a name="delete-ise"></a>
+
+## <a name="delete-ise"></a>ISE törlése
+
+Mielőtt töröl egy olyan ISE-t, amelyhez már nincs szüksége, vagy egy olyan Azure-erőforráscsoport, amely egy ISE-t tartalmaz, győződjön meg arról, hogy nincsenek szabályzatok vagy zárolások az Azure-erőforráscsoport számára, amely tartalmazza ezeket az erőforrásokat vagy az Azure Virtual Network szolgáltatást, mert ezek az elemek letilthatják a törlést.
+
+Az ISE törlése után előfordulhat, hogy az Azure-beli virtuális hálózat vagy alhálózatok törlése előtt legfeljebb 9 órát kell várnia.
+
 ## <a name="next-steps"></a>Következő lépések
 
-* Megtudhatja, hogyan [csatlakozhat az elkülönített logikai alkalmazásokból származó Azure-beli virtuális hálózatokhoz](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
+* [Erőforrások hozzáadása az integrációs szolgáltatási környezetekhez](../logic-apps/add-artifacts-integration-service-environment-ise.md)

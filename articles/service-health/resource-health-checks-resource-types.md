@@ -3,12 +3,12 @@ title: Támogatott erőforrástípusok a Azure Resource Healthon keresztül | Mi
 description: Támogatott erőforrástípusok az Azure Resource Health használatával
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: ec194287e8a8e06d3bb14c4b202cc2f11063d1dd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 3ba7b308c0c7671df8a652194830cb910cb89acc
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78925148"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128505"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapot-ellenőrzések az Azure Resource Health-ben
 Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes ellenőrzés teljes listáját tartalmazza.
@@ -188,6 +188,11 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>Az ügyfelek a felhasználó által generált Service Bus hibákat észleltek?</li><li>A felhasználók a Service Bus névtér frissítése miatt átmeneti hibákat tapasztalnak?</li></ul>|
+
+## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/clusters
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>Működik a Service Fabric-fürt?</li><li>Kezelhető-e a Service Fabric-fürt a Azure Resource Manager használatával?</li></ul>|
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/managedInstances/adatbázisok
 |Végrehajtott ellenőrzések|

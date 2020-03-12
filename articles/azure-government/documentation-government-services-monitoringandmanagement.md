@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: azure-government
 ms.date: 12/11/2019
 ms.author: gsacavdm
-ms.openlocfilehash: b6f395964c286aca1bc8a1c190edeea00ba6e15c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 38eb44e6355ddcb5ac78f5d8bb2008ea5a0f0cdf
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362038"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127940"
 ---
 # <a name="azure-government-monitoring--management"></a>Azure Government Monitoring és felügyelet
 Ez a cikk a Azure Government-környezet monitorozási és felügyeleti szolgáltatásainak változatait és szempontjait ismerteti.
@@ -179,6 +179,9 @@ A második generációs riasztások felhasználói felületén jelenleg támogat
 - Microsoft.Web/sites
 - Microsoft.Web/sites/slots
 
+> [!NOTE]
+> A többerőforrásos metrika riasztási szabályainak létrehozása Virtual Machineson **jelenleg nem támogatott**. Ez a cikk azonnal frissülni fog, amint a funkció elérhetővé válik.
+
 A [klasszikus riasztások](../azure-monitor/platform/alerts-classic.overview.md) továbbra is használhatók a riasztások második generációjában még nem elérhető erőforrásokhoz. 
 
 Ha PowerShell-/ARM/Rest-hívásokat használ metrikai riasztások létrehozásához, be kell állítania a metrikus riasztás "helyét" a "USA Korm. Virginia" vagy "USA Korm. Iowa" értékre. A beállítás példája a következő:
@@ -190,6 +193,7 @@ Add-AzMetricAlertRule -Name vmcpu_gt_1 -Location "USGov Virginia" -ResourceGroup
 ```
 
 A PowerShell használatával kapcsolatos további információkért tekintse meg a [nyilvános dokumentációt](../azure-monitor/platform/powershell-quickstart-samples.md).
+
 
 ## <a name="application-insights"></a>Application Insights
 
@@ -446,7 +450,7 @@ A Azure Monitor naplók URL-címei eltérnek a Azure Governmentban:
 | api.loganalytics.io |api.loganalytics.us |Speciális elemzési portál – [tűzfalbeállítások konfigurálása](../azure-monitor/log-query/portals.md) |
 | docs.loganalytics.io |docs.loganalytics.us |Speciális elemzési portál – [tűzfalbeállítások konfigurálása](../azure-monitor/log-query/portals.md) |
 | \*.azure-automation.net |\*. azure-automation.us |Azure Automation – [tűzfalbeállítások konfigurálása](../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements) |
-| N.A. | *. usgovtrafficmanager.net | Azure Traffic Manager – [tűzfalbeállítások konfigurálása](../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements) |
+| N/A | *. usgovtrafficmanager.net | Azure Traffic Manager – [tűzfalbeállítások konfigurálása](../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements) |
 
 A következő Azure Monitor-naplók funkciói eltérően viselkednek a Azure Governmentban:
 

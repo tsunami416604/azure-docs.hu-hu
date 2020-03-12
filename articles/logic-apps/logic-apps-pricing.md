@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 6c7112b6b5944042036fd3e7af6ec6f6dfbde0c0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 795acd67a8d4a9f8b8b7d78799a92134f249cf8d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358770"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126941"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>A Azure Logic Apps díjszabási modellje
 
@@ -64,7 +64,7 @@ Az [ *integrációs szolgáltatási környezet* (ISE)](../logic-apps/connect-vir
 
   További információ az integrációs fiók korlátairól: [Logic apps korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Az [integrációs fiók szintjeiről és azok díjszabási modelljéről](#integration-accounts) a jelen témakör későbbi részében olvashat bővebben.
 
-Ha a prémium ISE SKU-t választja, az alapegység kapacitása rögzített. Ha több átviteli sebességre van szüksége, [több skálázási egységet is hozzáadhat](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)a létrehozás vagy utána. A fejlesztői ISE SKU nem képes további skálázási egységek hozzáadására. Az ISE-ben futó logikai alkalmazások nem vállalnak adatmegőrzési költségeket.
+Ha a prémium ISE SKU-t választja, az alapegység kapacitása rögzített. Ha több átviteli sebességre van szüksége, [több skálázási egységet is hozzáadhat](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)a létrehozás vagy utána. A fejlesztői ISE SKU nem képes további skálázási egységek hozzáadására. Az ISE-ben futó logikai alkalmazások nem vállalnak adatmegőrzési költségeket.
 
 A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps).
 

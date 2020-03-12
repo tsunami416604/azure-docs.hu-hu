@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6b36694c2fe1bf264c876944b054d39371db616c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 7ae5f59a1bd96362d5466b2f6363185ba168d942
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674272"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130072"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -61,7 +61,7 @@ A következő táblázat azt mutatja be, hogy milyen típusú Storage-fiókok t�
 
 |    Tárfiók típusa    |    Támogatott régiók    |    Támogatott szolgáltatások    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Általános célú v2<sup>1</sup>    | Délkelet-Ázsia<br /> Észak-Európa<br />  Nyugat-Európa<br /> Közép-Franciaország<br /> Kelet-Japán<br /> Az Egyesült Királyság déli régiója<br /> USA középső régiója<br /> USA keleti régiója<br /> USA 2. keleti régiója<br /> USA 2. nyugati régiója    |    Blokkblobok<br /> <sup>2</sup> . oldal Blobok<br /> Fájlmegosztás (standard)<br /> Táblák<br /> Üzenetsorok<br /> |
+|    Általános célú v2<sup>1</sup>    | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Észak-Európa<br />  Nyugat-Európa<br /> Közép-Franciaország<br /> Kelet-Japán<br /> Dél-Afrika északi régiója<br /> Az Egyesült Királyság déli régiója<br /> USA középső régiója<br /> USA keleti régiója<br /> USA 2. keleti régiója<br /> USA 2. nyugati régiója    |    Blokkblobok<br /> <sup>2</sup> . oldal Blobok<br /> Fájlmegosztás (standard)<br /> Táblák<br /> Üzenetsorok<br /> |
 |    <sup>1</sup> . BlockBlobStorage    | Nyugat-Európa<br /> USA keleti régiója    |    Csak Blobok letiltása    |
 |    FileStorage    | Nyugat-Európa<br /> USA keleti régiója    |    Csak Azure Files    |
 
@@ -109,10 +109,12 @@ A GZRS és az RA-GZRS jelenleg előzetes verzióként érhető el a következő 
 - Délkelet-Ázsia
 - Észak-Európa
 - Nyugat-Európa
+- Kelet-Japán
 - Az Egyesült Királyság déli régiója
 - USA keleti régiója
 - USA 2. keleti régiója
 - USA középső régiója
+- USA 2. nyugati régiója
 
 A Microsoft továbbra is engedélyezi a GZRS és az RA-GZRS további Azure-régiókban. A támogatott régiókkal kapcsolatos információkért olvassa el rendszeresen az [Azure szolgáltatás frissítéseinek](https://azure.microsoft.com/updates/) oldalát.
 

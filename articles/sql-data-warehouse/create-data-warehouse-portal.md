@@ -1,6 +1,6 @@
 ---
-title: Adattárház létrehozása és lekérdezése (Azure Portal)
-description: Azure szinapszis Analytics SQL-készlet létrehozása és lekérdezése az Azure Portal használatával
+title: Szinapszis SQL-készlet létrehozása és lekérdezése (Azure Portal)
+description: Szinapszis SQL-készlet létrehozása és lekérdezése a Azure Portal használatával
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7a3dbe5d74dc1e88d0615937b8c6e6d2a77b64a7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6966932e95ff538de4b2f9be1ac06516311a0919
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381092"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128835"
 ---
-# <a name="quickstart-create-and-query-an-azure-synapse-analytics-sql-pool-using-the-azure-portal"></a>Rövid útmutató: Azure szinapszis Analytics SQL-készlet létrehozása és lekérdezése az Azure Portal használatával
+# <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Rövid útmutató: szinapszis SQL-készlet létrehozása és lekérdezése a Azure Portal használatával
 
-Az adatraktár gyors létrehozása és lekérdezése az SQL-készletnek az Azure szinapszis Analyticsben (korábbi nevén SQL DW) való kiépítés az Azure Portal használatával.
+Gyorsan létrehozhat és lekérdezheti a szinapszis SQL-készletet (adattárházat) az Azure szinapszis Analyticsben (korábban SQL DW) a Azure Portal használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,7 +39,7 @@ Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 Az adattárházak létrehozása az SQL-készlet használatával történik az Azure szinapszis Analyticsben. A rendszer létrehoz egy SQL-készletet a [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/management/overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-servers.md) jön létre.
 
-Az alábbi lépéseket követve hozzon létre egy adattárházat, amely tartalmazza a **AdventureWorksDW** .
+Az alábbi lépéseket követve létrehozhat egy SQL-készletet, amely tartalmazza a **AdventureWorksDW** .
 
 1. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában.
 
@@ -55,7 +55,7 @@ Az alábbi lépéseket követve hozzon létre egy adattárházat, amely tartalma
    | :------ | :-------------- | :---------- |
    | **Előfizetés** | Az Ön előfizetése | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
    | **Erőforráscsoport** | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
-   | **Adatraktár neve** | Bármely globálisan egyedi név (például *mySampleDataWarehouse*) | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers) ismertető cikket. Megjegyzés: Az adattárház az adatbázisok egy típusa. |
+   | **SQL-készlet neve** | Bármely globálisan egyedi név (például *mySampleDataWarehouse*) | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers) ismertető cikket. Vegye figyelembe, hogy egy SQL-készlet egy adatbázis-típus. |
    | **Kiszolgáló** | Bármely globálisan egyedi név | Válasszon ki egy meglévő kiszolgálót, vagy hozzon létre egy új kiszolgálónevet, és válassza az **új létrehozása**lehetőséget. Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
 
    ![adatraktár alapszintű adatainak létrehozása](media/create-data-warehouse-portal/create-sql-pool-basics.png)
@@ -66,7 +66,7 @@ Az alábbi lépéseket követve hozzon létre egy adattárházat, amely tartalma
 
    A teljesítménnyel kapcsolatos további információkért lásd: [számítások kezelése Azure SQL Data Warehouseban](sql-data-warehouse-manage-compute-overview.md).
 
-5. Most, hogy végrehajtotta az Azure szinapszis Analytics űrlapjának alapismeretek lapját, válassza a **felülvizsgálat + létrehozás** lehetőséget **, majd hozza létre az** adattárházat az SQL-készletben. Az üzembe helyezés eltarthat néhány percig.
+5. Most, hogy végrehajtotta az Azure szinapszis Analytics űrlapjának alapismeretek lapját, válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget az SQL-készlet létrehozásához. Az üzembe helyezés eltarthat néhány percig.
 
    ![Válassza a felülvizsgálat + létrehozás lehetőséget](media/create-data-warehouse-portal/create-sql-pool-review-create.png)
 
@@ -105,7 +105,7 @@ Az Azure szinapszis szolgáltatás egy tűzfalat hoz létre a kiszolgáló szint
 
 8. kattintson **az OK gombra** , majd a **tűzfalbeállítások** oldal bezárásához.
 
-Mostantól csatlakozhat az SQL-kiszolgálóhoz és annak adattárházaihoz erről az IP-címről. A csatlakozás az SQL Server Management Studio vagy más, választott eszköz használatával lehetséges. A csatlakozáskor használja a korábban létrehozott ServerAdmin-fiókot.
+Most már csatlakozhat az SQL Serverhez és az SQL-készletekhez ezen az IP-címen keresztül. A csatlakozás az SQL Server Management Studio vagy más, választott eszköz használatával lehetséges. A csatlakozáskor használja a korábban létrehozott ServerAdmin-fiókot.
 
 > [!IMPORTANT]
 > Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. Válassza **ki** ezt a lapot, majd a **Mentés** gombra kattintva tiltsa le a tűzfalat az összes Azure-szolgáltatáshoz.
@@ -116,7 +116,7 @@ Kérje le az SQL-kiszolgáló teljes kiszolgálónevét az Azure Portalon. Kés�
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
-2. Válassza ki az **Azure szinapszis Analytics** elemet a bal oldali menüben, és válassza ki az adattárházat az **Azure szinapszis Analytics** oldalán.
+2. Válassza ki az **Azure szinapszis Analytics** elemet a bal oldali menüben, és válassza ki az **Azure szinapszis Analytics** -oldalát.
 
 3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljes név sqlpoolservername.database.windows.net.
 
@@ -174,21 +174,21 @@ Az SQL Data Warehouse a T-SQL nyelvet használja lekérdezési nyelvként. A lek
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az adatraktár-egységek és az adattárházban tárolt adatforgalomért kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
+Az adatraktár-egységek és az SQL-készletben tárolt adatmennyiség után kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
 
-- Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. A számítás felfüggesztésével csak az adattárolás díját számítjuk fel. Bármikor folytathatja a számítást, amikor készen áll az adatokkal való együttműködésre.
+- Ha meg szeretné őrizni az adatok tárolását, szüneteltetheti a számítást, ha nem használja az SQL-készletet. A számítás felfüggesztésével csak az adattárolás díját számítjuk fel. Bármikor folytathatja a számítást, amikor készen áll az adatokkal való együttműködésre.
 
-- Ha szeretné megelőzni a jövőbeli kiadásokat, az adattárházat törölheti is.
+- Ha el szeretné távolítani a jövőbeli díjakat, törölheti az SQL-készletet.
 
 Kövesse az alábbi lépéseket a már nem szükséges erőforrások törléséhez.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az adattárházat.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az SQL-készletet.
 
    ![Az erőforrások eltávolítása](media/create-data-warehouse-portal/clean-up-resources.png)
 
-2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az adatraktár szüneteltetve van, a **Folytatás** gomb jelenik meg. A számítás folytatásához válassza a **Folytatás**lehetőséget.
+2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az SQL-készlet fel van függesztve, a **Folytatás** gomb jelenik meg. A számítás folytatásához válassza a **Folytatás**lehetőséget.
 
-3. Ha el szeretné távolítani az adattárházat, hogy ne számítson fel számítási vagy tárolási díjat, válassza a **Törlés**lehetőséget.
+3. Ha el szeretné távolítani az SQL-készletet, hogy a számítás vagy a tárolás ne legyen felszámítva, válassza a **Törlés**lehetőséget.
 
 4. A létrehozott SQL-kiszolgáló eltávolításához válassza a **sqlpoolservername.database.Windows.net** lehetőséget az előző képen, majd válassza a **Törlés**lehetőséget. A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
 
@@ -196,7 +196,4 @@ Kövesse az alábbi lépéseket a már nem szükséges erőforrások törléséh
 
 ## <a name="next-steps"></a>Következő lépések
 
-Létrehozott egy adattárházat, létrehozott egy tűzfalszabályot, kapcsolódott az adattárházhoz, és futtat néhány lekérdezést. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
-
-> [!div class="nextstepaction"]
-> [Az adatSQL Data Warehouseba való betöltés](load-data-from-azure-blob-storage-using-polybase.md)
+Ha többet szeretne megtudni az SQL-készletbe való betöltésről, folytassa az [adatgyűjtés az SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md) című cikket. 

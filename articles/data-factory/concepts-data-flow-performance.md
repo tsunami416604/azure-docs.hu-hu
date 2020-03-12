@@ -6,19 +6,22 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 02/24/2020
-ms.openlocfilehash: cca22c499efde74bb1469222d2f8a6e576452aa2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/11/2020
+ms.openlocfilehash: 1a6b50456a5dc3ff89fe7b513f406dc68bd2401e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381973"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128988"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
 A Azure Data Factory adatforgalmának leképezése egy kód nélküli felületet biztosít az adatátalakítások méretekben történő megtervezéséhez, üzembe helyezéséhez és előkészítéséhez. Ha nem ismeri a leképezési adatfolyamatokat, tekintse meg a [leképezési adatfolyam áttekintése](concepts-data-flow-overview.md)című témakört.
 
 Az ADF UX-ből származó adatfolyamatok tervezésekor és tesztelésekor ügyeljen arra, hogy a hibakeresési módot váltson át úgy, hogy valós időben hajtsa végre az adatfolyamatokat anélkül, hogy a fürt bemelegítésére kellene várnia. További információ: [hibakeresési mód](concepts-data-flow-debug-mode.md).
+
+Ebből a videóból megtekintheti az adatfolyamatokkal való adatátalakítással kapcsolatos néhány minta időzítést:
+> [!VIDEO https://www.youtube.com/watch?v=6CSbWm4lRhw]
 
 ## <a name="monitoring-data-flow-performance"></a>Az adatfolyam teljesítményének figyelése
 

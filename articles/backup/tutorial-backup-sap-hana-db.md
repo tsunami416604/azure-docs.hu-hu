@@ -3,12 +3,12 @@ title: Oktatóanyag – SAP HANA-adatbázisok biztonsági mentése Azure-beli vi
 description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági másolatot az Azure-beli virtuális gépen futó SAP HANA-adatbázisokról egy Azure Backup Recovery Services-tárolóra.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 6273b4d5745b3c13b48622cde842c0222a47c5d4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 435668dedc7efa33fd5fbfeea8671f05d070a385
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382418"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129355"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen
 
@@ -96,7 +96,23 @@ Az előzetes regisztrációs parancsfájl futtatása a következő funkciókat h
 
 * Telepíti vagy frissíti a Azure Backup ügynök által a terjesztéshez szükséges szükséges csomagokat.
 * Kimenő hálózati kapcsolati ellenőrzéseket hajt végre Azure Backup-kiszolgálókkal és függő szolgáltatásokkal (például Azure Active Directory és Azure Storage).
-* Bejelentkezik a HANA rendszerbe az [Előfeltételek](#prerequisites)részeként felsorolt felhasználói kulccsal. Ezzel a kulccsal biztonsági mentési felhasználót (AZUREWLBACKUPHANAUSER) hozhat létre a HANA-rendszeren, és az előzetes regisztrációs parancsfájl sikeres futtatása után törölhető. Ez a biztonsági mentési felhasználó (AZUREWLBACKUPHANAUSER) lehetővé teszi a biztonsági mentési ügynök számára a HANA-rendszer adatbázisainak felderítését, biztonsági mentését és visszaállítását.
+* Bejelentkezik a HANA rendszerbe az [Előfeltételek](#prerequisites)részeként felsorolt felhasználói kulccsal. A felhasználói kulcs használatával biztonsági mentési felhasználó (AZUREWLBACKUPHANAUSER) hozható létre a HANA-rendszeren, és a felhasználói kulcs törölhető az előzetes regisztrációs parancsfájl sikeres futtatása után.
+* A AZUREWLBACKUPHANAUSER a szükséges szerepköröket és engedélyeket rendeli hozzá:
+  * ADATBÁZIS-rendszergazda: új adatbázisok létrehozása a visszaállítás során.
+  * Katalógus OLVASása: a biztonsági mentési katalógus beolvasása.
+  * SAP_INTERNAL_HANA_SUPPORT: néhány privát tábla eléréséhez.
+* A parancsfájl egy kulcsot hoz létre a HANA beépülő modulhoz tartozó AZUREWLBACKUPHANAUSER **hdbuserstore** az összes művelet (adatbázis-lekérdezések, visszaállítási műveletek, a biztonsági mentés konfigurálása és futtatása) kezeléséhez.
+
+A kulcs létrehozásának megerősítéséhez futtassa a HDBSQL parancsot a HANA gépen a SIDADM hitelesítő adataival:
+
+```hdbsql
+hdbuserstore list
+```
+
+A parancs kimenetének meg kell jelennie a {SID} {DBNAME} kulcsnak, amely a felhasználó AZUREWLBACKUPHANAUSER jelenik meg.
+
+>[!NOTE]
+> Győződjön meg arról, hogy a SSFS-fájlok egyedi készlete van a `/usr/sap/{SID}/home/.hdb/`alatt. Ezen az elérési úton csak egy mappa lehet.
 
 ## <a name="create-a-recovery-service-vault"></a>Recovery Service-tároló létrehozása
 

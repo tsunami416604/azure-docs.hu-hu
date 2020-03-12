@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 03/10/2020
 ms.author: helohr
-ms.openlocfilehash: 9c907052f10fa7d1cfd1ff79e981fdccef874ee5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+manager: lizross
+ms.openlocfilehash: ce85fb70e1480ad285eee78fe20faa8d77b9a147
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383646"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127947"
 ---
 # <a name="identify-and-diagnose-issues"></a>Problémák azonosítása és diagnosztizálása
 
@@ -34,23 +35,66 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 A Windows rendszerű virtuális asztali diagnosztika csak egy PowerShell-parancsmagot használ, de számos opcionális paramétert tartalmaz, amelyek segítenek a problémák szűkítéséhez és elkülönítésében. A következő részben azokat a parancsmagokat sorolja fel, amelyeket a problémák diagnosztizálásához futtathat. A legtöbb szűrő együtt is alkalmazható. A zárójelekben felsorolt értékeket, például a `<tenantName>`okat, az adott helyzetre érvényes értékekkel kell helyettesíteni.
 
-### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>Diagnosztikai tevékenységek beolvasása a bérlőben
+>[!IMPORTANT]
+>A diagnosztikai funkció az egyfelhasználós hibaelhárításhoz használható. A PowerShellt használó összes lekérdezésnek tartalmaznia kell a *-username* vagy a *-tevékenységazonosító* paramétert. A figyelési képességekhez használja a Log Analytics. A diagnosztikai adatok munkaterületre való küldésével kapcsolatos további információkért tekintse meg [a log Analytics használata a diagnosztikai szolgáltatáshoz](diagnostics-log-analytics.md) című témakört. 
 
-A **Get-RdsDiagnosticActivities** parancsmag beírásával lekérhet diagnosztikai tevékenységeket. A következő példa parancsmag a diagnosztikai tevékenységek listáját fogja visszaadni, a legtöbbet a legrégebbiig rendezve.
+### <a name="filter-diagnostic-activities-by-user"></a>Diagnosztikai tevékenységek szűrése felhasználó szerint
 
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName>
-```
-
-A többi Windowsos virtuális asztali PowerShell-parancsmaghoz hasonlóan a **-TenantName** paramétert kell használnia a lekérdezéshez használni kívánt bérlő nevének megadásához. A bérlő neve majdnem az összes diagnosztikai tevékenységre vonatkozó lekérdezésre alkalmazható.
-
-### <a name="retrieve-detailed-diagnostic-activities"></a>Részletes diagnosztikai tevékenységek beolvasása
-
-A **-Detailed** paraméter további részleteket tartalmaz a visszaadott diagnosztikai tevékenységekről. Az egyes tevékenységek formátuma a tevékenység típusától függően változik. A **-Detailed** paraméter bármely **Get-RdsDiagnosticActivities** lekérdezéshez hozzáadható, ahogy az az alábbi példában is látható.
+A **-username** paraméter a megadott felhasználó által kezdeményezett diagnosztikai tevékenységek listáját adja vissza, ahogy az az alábbi példában is látható.
 
 ```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Detailed
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
 ```
+
+A **-username** paraméter más nem kötelező szűrési paraméterekkel is kombinálható.
+
+### <a name="filter-diagnostic-activities-by-time"></a>Diagnosztikai tevékenységek szűrése idő szerint
+
+A visszaadott diagnosztikai tevékenységek listáját a **-kezdő** és a **-** záró paraméterekkel szűrheti. A **-** Kezdődátum paraméter egy megadott dátumtól kezdődő diagnosztikai tevékenységek listáját fogja visszaadni, ahogy az az alábbi példában is látható.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018"
+```
+
+A **-befejezési** paramétert hozzáadhatja egy parancsmaghoz a **-kezdő** paraméterrel egy adott időszak megadásához, amelynek eredményét meg szeretné kapni. Az alábbi példában szereplő parancsmag a diagnosztikai tevékenységek listáját augusztus 1-től és augusztus 10-én fogja visszaadni.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018" -EndTime "08/10/2018"
+```
+
+A **-kezdő** és **a** záró paraméter is kombinálható más opcionális szűrési paraméterekkel.
+
+### <a name="filter-diagnostic-activities-by-activity-type"></a>Diagnosztikai tevékenységek szűrése tevékenység típusa szerint
+
+A diagnosztikai tevékenységeket tevékenység típusa szerint is szűrheti a **-activityType** paraméterrel. A következő parancsmag a végfelhasználói kapcsolatok listáját fogja visszaadni:
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -ActivityType Connection
+```
+
+A következő parancsmag a rendszergazdai felügyeleti feladatok listáját fogja visszaadni:
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
+```
+
+A **Get-RdsDiagnosticActivities** parancsmag jelenleg nem támogatja a hírcsatorna activityType való megadását.
+
+### <a name="filter-diagnostic-activities-by-outcome"></a>Diagnosztikai tevékenységek szűrése eredmény alapján
+
+A visszaadott diagnosztikai tevékenységek listáját a **-eredmény** paraméterrel szűrheti eredményként. A következő példa parancsmag a sikeres diagnosztikai tevékenységek listáját fogja visszaadni.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -Outcome Success
+```
+
+A következő példa parancsmag a sikertelen diagnosztikai tevékenységek listáját fogja visszaadni.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
+```
+
+A **-végeredmény** paraméter más opcionális szűrési paraméterekkel is kombinálható.
 
 ### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>Adott diagnosztikai tevékenység lekérése tevékenység-azonosító alapján
 
@@ -68,63 +112,13 @@ A sikertelen tevékenységhez tartozó hibaüzenetek megtekintéséhez a **-Deta
 Get-RdsDiagnosticActivities -TenantName <tenantname> -ActivityId <ActivityGuid> -Detailed | Select-Object -ExpandProperty Errors
 ```
 
-### <a name="filter-diagnostic-activities-by-user"></a>Diagnosztikai tevékenységek szűrése felhasználó szerint
+### <a name="retrieve-detailed-diagnostic-activities"></a>Részletes diagnosztikai tevékenységek beolvasása
 
-A **-username** paraméter a megadott felhasználó által kezdeményezett diagnosztikai tevékenységek listáját adja vissza, ahogy az az alábbi példában is látható.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
-```
-
-A **-username** paraméter más nem kötelező szűrési paraméterekkel is kombinálható.
-
-### <a name="filter-diagnostic-activities-by-time"></a>Diagnosztikai tevékenységek szűrése idő szerint
-
-A visszaadott diagnosztikai tevékenységek listáját a **-kezdő** és a **-** záró paraméterekkel szűrheti. A **-** Kezdődátum paraméter egy megadott dátumtól kezdődő diagnosztikai tevékenységek listáját fogja visszaadni, ahogy az az alábbi példában is látható.
+A **-Detailed** paraméter további részleteket tartalmaz a visszaadott diagnosztikai tevékenységekről. Az egyes tevékenységek formátuma a tevékenység típusától függően változik. A **-Detailed** paraméter bármely **Get-RdsDiagnosticActivities** lekérdezéshez hozzáadható, ahogy az az alábbi példában is látható.
 
 ```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018"
+Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> -Detailed
 ```
-
-A **-befejezési** paramétert hozzáadhatja egy parancsmaghoz a **-kezdő** paraméterrel egy adott időszak megadásához, amelynek eredményét meg szeretné kapni. Az alábbi példában szereplő parancsmag a diagnosztikai tevékenységek listáját augusztus 1-től és augusztus 10-én fogja visszaadni.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018" -EndTime "08/10/2018"
-```
-
-A **-kezdő** és **a** záró paraméter is kombinálható más opcionális szűrési paraméterekkel.
-
-### <a name="filter-diagnostic-activities-by-activity-type"></a>Diagnosztikai tevékenységek szűrése tevékenység típusa szerint
-
-A diagnosztikai tevékenységeket tevékenység típusa szerint is szűrheti a **-activityType** paraméterrel. A következő parancsmag a végfelhasználói kapcsolatok listáját fogja visszaadni:
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Connection
-```
-
-A következő parancsmag a rendszergazdai felügyeleti feladatok listáját fogja visszaadni:
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
-```
-
-A **Get-RdsDiagnosticActivities** parancsmag jelenleg nem támogatja a hírcsatorna activityType való megadását.
-
-### <a name="filter-diagnostic-activities-by-outcome"></a>Diagnosztikai tevékenységek szűrése eredmény alapján
-
-A visszaadott diagnosztikai tevékenységek listáját a **-eredmény** paraméterrel szűrheti eredményként. A következő példa parancsmag a sikeres diagnosztikai tevékenységek listáját fogja visszaadni.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Success
-```
-
-A következő példa parancsmag a sikertelen diagnosztikai tevékenységek listáját fogja visszaadni.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
-```
-
-A **-végeredmény** paraméter más opcionális szűrési paraméterekkel is kombinálható.
 
 ## <a name="common-error-scenarios"></a>Gyakori hibák forgatókönyvei
 

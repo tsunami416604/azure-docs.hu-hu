@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 388f1cf0231d0a7eae7b059656186b067f537d2e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 025ea1e23b3587d333ecfcda27f80fcedad66ed5
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355237"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096173"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -182,8 +182,6 @@ A modell szolgáltatásként való üzembe helyezéséhez a következő összete
     >   A forgatókönyvnek megfelelő alternatív megoldás a Batch- [Előrejelzés](how-to-use-parallel-run-step.md), amely hozzáférést biztosít az adattárakhoz a pontozás során.
 
 * **Következtetési konfiguráció**. A következtetési konfiguráció a modell szolgáltatásként való futtatásához szükséges környezeti konfigurációt, bejegyzést és egyéb összetevőket határozza meg.
-
-Ha rendelkezik a szükséges összetevőkkel, megtekintheti azt a szolgáltatást, amely a modell üzembe helyezésének eredményeképpen jön létre a CPU-és memória-követelmények megismerése érdekében.
 
 ### <a id="script"></a>1. adja meg a bejegyzési parancsfájlt és a függőségeket
 
@@ -522,82 +520,6 @@ Ebben a példában a konfiguráció a következő beállításokat adja meg:
 
 További információ a következtetési konfigurációval rendelkező egyéni Docker-rendszerképek használatáról: [modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md).
 
-### <a id="profilemodel"></a>3. a modell profiljának meghatározása az erőforrás-használat meghatározásához
-
-Miután regisztrálta a modelljét, és előkészítette az üzembe helyezéséhez szükséges egyéb összetevőket, megadhatja, hogy a telepített szolgáltatásnak milyen PROCESSZORral és memóriával kell rendelkeznie. A profilkészítés a modellt futtató szolgáltatást teszteli, és olyan információkat ad vissza, mint például a CPU-használat, a memóriahasználat és a válasz késése. Emellett javaslatot tesz a processzor és a memória számára az erőforrás-használat alapján.
-
-A modell profiljának megkezdéséhez a következőkre lesz szüksége:
-* Egy regisztrált modell.
-* A beléptetési parancsfájl és a környezeti környezet definíciója alapján megjelenő következtetési konfiguráció.
-* Egyoszlopos táblázatos adatkészlet, amelyben minden sor tartalmaz egy minta típusú kérelmeket jelölő karakterláncot.
-
-> [!IMPORTANT]
-> Ezen a ponton csak olyan szolgáltatások profilkészítését támogatjuk, amelyek a kérési adatok karakterláncnak számítanak, például: karakterlánc szerializált JSON, szöveg, karakterlánc szerializált rendszerkép stb. Az adatkészlet (string) egyes sorainak tartalmát a rendszer a HTTP-kérelem törzsébe helyezi el, és elküldi a modellnek a pontozást tartalmazó szolgáltatásnak.
-
-Az alábbi példa bemutatja, hogyan hozhat létre egy bemeneti adatkészletet olyan szolgáltatás profiljához, amely a beérkező kérések adatait szerializált JSON-ként várja. Ebben az esetben létrehoztunk egy adatkészleten alapuló 100-példányt az azonos kérelem adattartalmából. A valós forgatókönyvekben azt javasoljuk, hogy használjon nagyobb adatkészleteket, amelyek különböző bemeneteket tartalmaznak, különösen akkor, ha a modell Erőforrás-kihasználtsága/viselkedése a bemenettől függ.
-
-```python
-import json
-from azureml.core import Datastore
-from azureml.core.dataset import Dataset
-from azureml.data import dataset_type_definitions
-
-input_json = {'data': [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                       [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
-# create a string that can be utf-8 encoded and
-# put in the body of the request
-serialized_input_json = json.dumps(input_json)
-dataset_content = []
-for i in range(100):
-    dataset_content.append(serialized_input_json)
-dataset_content = '\n'.join(dataset_content)
-file_name = 'sample_request_data.txt'
-f = open(file_name, 'w')
-f.write(dataset_content)
-f.close()
-
-# upload the txt file created above to the Datastore and create a dataset from it
-data_store = Datastore.get_default(ws)
-data_store.upload_files(['./' + file_name], target_path='sample_request_data')
-datastore_path = [(data_store, 'sample_request_data' +'/' + file_name)]
-sample_request_data = Dataset.Tabular.from_delimited_files(
-    datastore_path, separator='\n',
-    infer_column_types=True,
-    header=dataset_type_definitions.PromoteHeadersBehavior.NO_HEADERS)
-sample_request_data = sample_request_data.register(workspace=ws,
-                                                   name='sample_request_data',
-                                                   create_new_version=True)
-```
-
-Ha már rendelkezik a mintavételi adatokat tartalmazó adatkészlettel, hozzon létre egy következtetési konfigurációt. A következtetési konfiguráció a score.py és a környezeti definíción alapul. Az alábbi példa bemutatja, hogyan hozhatja létre a következtetési konfigurációt, és hogyan futtathatja a profilkészítést:
-
-```python
-from azureml.core.model import InferenceConfig, Model
-from azureml.core.dataset import Dataset
-
-
-model = Model(ws, id=model_id)
-inference_config = InferenceConfig(entry_script='path-to-score.py',
-                                   environment=myenv)
-input_dataset = Dataset.get_by_name(workspace=ws, name='sample_request_data')
-profile = Model.profile(ws,
-            'unique_name',
-            [model],
-            inference_config,
-            input_dataset=input_dataset)
-
-profile.wait_for_completion(True)
-
-# see the result
-details = profile.get_details()
-```
-
-A következő parancs bemutatja, hogyan lehet profilt felvenni a parancssori felület használatával:
-
-```azurecli-interactive
-az ml model profile -g <resource-group-name> -w <workspace-name> --inference-config-file <path-to-inf-config.json> -m <model-id> --idi <input-dataset-id> -n <unique-name>
-```
-
 ## <a name="deploy-to-target"></a>Üzembe helyezés célhelyre
 
 Az üzemelő példány a konfiguráció központi telepítési konfigurációjának használatával helyezi üzembe a modelleket. A telepítési folyamat a számítási céltól függetlenül hasonló. Az AK-ra való üzembe helyezés némileg eltérő, mert meg kell adnia egy hivatkozást az AK-fürthöz.
@@ -618,7 +540,7 @@ Az alábbi táblázat az egyes számítási célkitűzések központi telepíté
 
 | Számítási cél | Üzembe helyezési konfiguráció – példa |
 | ----- | ----- |
-| Helyi: | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| Helyi | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
@@ -670,7 +592,7 @@ Az alábbi táblázat a különböző szolgáltatás-állapotokat ismerteti:
 | Webszolgáltatás állapota | Leírás | Végső állapot?
 | ----- | ----- | ----- |
 | Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | Nem |
-| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | Nem |
+| Sérült | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | Nem |
 | Unschedulable | A szolgáltatás jelenleg nem telepíthető az erőforrások hiánya miatt. | Nem |
 | Sikertelen | Hiba vagy összeomlás miatt nem sikerült telepíteni a szolgáltatást. | Igen |
 | Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Igen |

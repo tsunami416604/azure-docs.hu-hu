@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
 ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
-ms.translationtype: MT
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121743"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117163"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
 
@@ -67,7 +67,7 @@ A [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sha
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
-Ebben az ábrán a *manageRuleNS*, a *SendRuleNS*és a *listenRuleNS* engedélyezési szabályok mind a "Q1", mind a "T1" témakörre érvényesek, míg a *listenRuleQ* és a *sendRuleQ* csak a Q1-es és a sendRuleT-re vonatkozik, és a csak a (
+Ebben az ábrán a *manageRuleNS*, a *SendRuleNS*és a *listenRuleNS* engedélyezési szabályok mind a "Q1", mind a "T1" témakörre érvényesek, míg a *listenRuleQ* és a *sendRuleQ* csak a Q1-es és a sendRuleT-re vonatkozik, és a *sendRuleT* csak a (
 
 ## <a name="generate-a-shared-access-signature-token"></a>Közös hozzáférésű aláírási jogkivonat létrehozása
 
@@ -269,7 +269,7 @@ A következő táblázat a Service Bus erőforrásokon végzett különféle mű
 | Privát szabályzatok enumerálása |Kezelés |Bármely névtér címe |
 | Névtér figyelésének megkezdése |Figyelés |Bármely névtér címe |
 | Üzenetek küldése egy figyelőnek egy névtérben |Küldés |Bármely névtér címe |
-| **Üzenetsor** | | |
+| **Várólista** | | |
 | Üzenetsor létrehozása |Kezelés |Bármely névtér címe |
 | Üzenetsor törlése |Kezelés |Bármely érvényes várólista-címe |
 | Várólisták enumerálása |Kezelés |/$Resources/Queues |
@@ -292,18 +292,18 @@ A következő táblázat a Service Bus erőforrásokon végzett különféle mű
 | Küldés a következő témakörbe |Küldés |Bármely érvényes témakör címe |
 | **Előfizetés** | | |
 | Előfizetés létrehozása |Kezelés |Bármely névtér címe |
-| Előfizetés törlése |Kezelés |.. /myTopic/Subscriptions/mySubscription |
-| Előfizetések számbavétele |Kezelés |.. /myTopic/Subscriptions |
-| Előfizetés lekérése – Leírás |Kezelés |.. /myTopic/Subscriptions/mySubscription |
-| Üzenetek megszakítása vagy befejezése az üzenet betekintés-zárolási módban való fogadása után |Figyelés |.. /myTopic/Subscriptions/mySubscription |
-| Üzenet késleltetése későbbi lekéréshez |Figyelés |.. /myTopic/Subscriptions/mySubscription |
-| Üzenet kézbesítetlen levelek |Figyelés |.. /myTopic/Subscriptions/mySubscription |
-| A témakör-munkamenethez társított állapot beolvasása |Figyelés |.. /myTopic/Subscriptions/mySubscription |
-| Témakör-munkamenethez társított állapot beállítása |Figyelés |.. /myTopic/Subscriptions/mySubscription |
+| Előfizetés törlése |Kezelés |../myTopic/Subscriptions/mySubscription |
+| Előfizetések számbavétele |Kezelés |../myTopic/Subscriptions |
+| Előfizetés lekérése – Leírás |Kezelés |../myTopic/Subscriptions/mySubscription |
+| Üzenetek megszakítása vagy befejezése az üzenet betekintés-zárolási módban való fogadása után |Figyelés |../myTopic/Subscriptions/mySubscription |
+| Üzenet késleltetése későbbi lekéréshez |Figyelés |../myTopic/Subscriptions/mySubscription |
+| Üzenet kézbesítetlen levelek |Figyelés |../myTopic/Subscriptions/mySubscription |
+| A témakör-munkamenethez társított állapot beolvasása |Figyelés |../myTopic/Subscriptions/mySubscription |
+| Témakör-munkamenethez társított állapot beállítása |Figyelés |../myTopic/Subscriptions/mySubscription |
 | **Szabályok** | | |
-| Szabály létrehozása |Kezelés |.. /myTopic/Subscriptions/mySubscription |
-| Szabály törlése |Kezelés |.. /myTopic/Subscriptions/mySubscription |
-| Szabályok számbavétele |Kezelés vagy figyelés |.. /myTopic/Subscriptions/mySubscription/Rules
+| Szabály létrehozása |Kezelés |../myTopic/Subscriptions/mySubscription |
+| Szabály törlése |Kezelés |../myTopic/Subscriptions/mySubscription |
+| Szabályok enumerálása |Kezelés vagy figyelés |../myTopic/Subscriptions/mySubscription/Rules
 
 ## <a name="next-steps"></a>Következő lépések
 

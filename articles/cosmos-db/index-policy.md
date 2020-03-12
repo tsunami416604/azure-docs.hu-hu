@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 886d17098259ddbb78698a3c1280f797e370c714
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 86dbcee7150adacd0e961dbe07cf66ad117d2041
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386959"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128683"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Szabályzatok indexelése a Azure Cosmos DBban
 
@@ -34,7 +34,7 @@ A Azure Cosmos DB két indexelési módot támogat:
 
 Alapértelmezés szerint az indexelési házirend `automatic`értékre van állítva. Ez úgy érhető el, hogy az indexelési házirendben az `automatic` tulajdonságot `true`re állítja. Ha ezt a tulajdonságot úgy állítja be, hogy `true`, az Azure CosmosDB automatikusan indexeli a dokumentumokat írásuk szerint.
 
-## <a name="including-and-excluding-property-paths"></a>Tulajdonságok elérési útjának belefoglalása és kizárása
+## <a id="include-exclude-paths"></a>Tulajdonságok elérési útjának belefoglalása és kizárása
 
 Az egyéni indexelési házirend megadhatja az indexelésből explicit módon befoglalt vagy kizárt tulajdonságokat. Az indexelt elérési utak számának optimalizálásával csökkentheti a tároló által használt tárterület méretét, és javíthatja az írási műveletek késését. Ezek az elérési utak az [indexelés áttekintése szakaszban leírt módszer](index-overview.md#from-trees-to-property-paths) szerint vannak meghatározva, a következő kiegészítésekkel:
 
@@ -75,7 +75,7 @@ Az indexelési házirendnek tartalmaznia kell a gyökér elérési útját `/*` 
 
 - A normál karaktereket tartalmazó elérési utak esetében: alfanumerikus karakterek és _ (aláhúzás), nem kell elmenekülnie az elérésiút-karakterláncot idézőjelek közé (például "/Path/?"). Más speciális karaktereket tartalmazó elérési utak esetén el kell kerülnie az elérésiút-karakterláncot az idézőjelek között (például: "/\"Path-ABC\"/?"). Ha az elérési úton speciális karaktereket vár, a biztonság érdekében minden elérési utat eljuthat. Funkcionálisan nem tesz különbséget, ha minden elérési utat és csak a speciális karaktereket tartalmazó útvonalat használ.
 
-- A "ETAG" rendszertulajdonság alapértelmezés szerint ki van zárva az indexelésből, kivéve, ha a ETAG hozzá lett adva a befoglalt útvonalhoz az indexeléshez.
+- A (z) "_etag" rendszertulajdonság alapértelmezés szerint ki van zárva az indexelésből, kivéve, ha a ETAG hozzá lett adva a befoglalt elérési úthoz az indexeléshez.
 
 Az útvonalak belefoglalása és kizárása esetén a következő attribútumok jelenhetnek meg:
 

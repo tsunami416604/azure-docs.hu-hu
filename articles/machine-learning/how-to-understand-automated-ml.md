@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: 69cf79f8258f85f2fb5e787f91aa843837d0a3a1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: c5f12da3606361b504d4581916d9645fa3cd24f0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393351"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129681"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Az automatizált gépi tanulás eredményeinek megismerése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ További információk:
 * Hozzon létre egy kísérletet az automatizált gépi tanuláshoz, vagy az SDK-val vagy a Azure Machine Learning Studióban.
 
     * Az SDK használata [besorolási modell](how-to-auto-train-remote.md) vagy [regressziós modell](tutorial-auto-train-models.md) létrehozásához
-    * A megfelelő adatfeltöltés használatával hozzon létre egy besorolási vagy regressziós modellt a [Azure Machine learning Studióval](how-to-create-portal-experiments.md) .
+    * A megfelelő adatfeltöltés használatával hozzon létre egy besorolási vagy regressziós modellt a [Azure Machine learning Studióval](how-to-use-automated-ml-for-ml-models.md) .
 
 ## <a name="view-the-run"></a>A Futtatás megtekintése
 
@@ -89,7 +89,7 @@ balanced_accuracy|Elosztott terhelésű pontosságát az egyes osztályok vissza
 f1_score_macro|F1 pontszám: közepének pontosság és a visszahívás. A makró az F1 pontszám számtani középértéke az egyes osztályokhoz.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|átlagos = "makra."|
 f1_score_micro|F1 pontszám: közepének pontosság és a visszahívás. A Micro kiszámításának alapja a teljes valódi pozitív, a hamis negatív és a téves pozitív érték számítása.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|átlagos = "micro"|
 f1_score_weighted|F1 pontszám: közepének pontosság és a visszahívás. Súlyozott átlag által az egyes osztályok F1 pontszám osztály gyakorisága|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|átlagos = "súlyozott"|
-log_loss|Ez az a veszteség függvény a logisztikai regressziós (multinomial) és -bővítmények, például a Neurális hálózatokat definiálva a valószínűségi besorolás előrejelzéseket megadott igaz címkék negatív log valószínűségét, használt. Egyetlen olyan minta esetében, amelynél az {0,1} és a következő a valószínűsége: a YT = 1, a log P (YT&#124;YP) =-(YT-napló (YP) + (1-YT) napló (1-YP)|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|Nincs|
+log_loss|Ez a (MULTINOMIAL) logisztikai regresszió és bővítmények (például neurális hálózatok) által használt veszteséges függvény, amely negatív naplózási valószínűséggel van meghatározva az igaz címkék valószínűsége alapján, az osztályozó jóslatai. Egyetlen olyan minta esetében, amelynél az {0,1} és a következő a valószínűsége: a YT = 1, a log P (YT&#124;YP) =-(YT-napló (YP) + (1-YT) napló (1-YP)|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|Nincs|
 norm_macro_recall|Normalizált makró visszahívása makró ne felejtse el, hogy a véletlenszerű teljesítmény 0 pontszámot pedig tökéletes teljesítmény 1 pontszámot normalized. Ezt a norm_macro_recall: = (recall_score_macro-R)/(1-R) értékekkel érheti el, ahol az R az recall_score_macro várt értéke a véletlenszerű előrejelzések esetében (pl. R = 0,5 a bináris besoroláshoz és R = (1/C) a C osztályú besorolási problémákhoz).|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|átlag = "makró" |
 precision_score_macro|A pontosság a megfelelő címkével ellátott, pozitívan megjósolt elemek százaléka. A makró az egyes osztályok pontosságának számtani középértéke.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|átlagos = "makra."|
 precision_score_micro|A pontosság a megfelelő címkével ellátott, pozitívan megjósolt elemek százaléka. A Micro kiszámításának alapja a teljes valódi pozitív és a hamis pozitív eredmény.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|átlagos = "micro"|
@@ -190,7 +190,7 @@ jelentős nyereségű besorolási modellt ![](./media/how-to-understand-automate
 ### <a name="calibration-chart"></a>Kalibrációs diagram
 
 #### <a name="what-is-a-calibration-chart"></a>Mi az a kalibrációs diagram?
-Hitelesítési rajzot a prediktív modellek magabiztosan megjelenítésére szolgál. Ezt nem: Megjeleníti az előre jelzett valószínűség és a tényleges valószínűsége közötti kapcsolat, ahol "valószínűség" jelenti a valószínűsége, hogy az adott példány néhány címke alatt tartozik.
+Hitelesítési rajzot a prediktív modellek magabiztosan megjelenítésére szolgál. Ez az előre jelzett valószínűség és a tényleges valószínűség közötti kapcsolat bemutatásával történik, ahol a "valószínűség" azt jelzi, hogy egy adott példány egy adott címkéhez tartozik-e.
 #### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>Mit tesz a kalibrációs diagramon az automatikus ML?
 Az összes besorolási kapcsolatos problémák esetén a hitelesítési sor micro – átlag, a makró-átlagos és a egy adott prediktív modellt az egyes osztályok tekintheti meg.
 

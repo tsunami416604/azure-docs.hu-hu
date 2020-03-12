@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: db64a2f64c592a62f621355047a7bc9844d66457
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b72abf4e208c57987375a105865046f194460058
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375074"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126542"
 ---
 # <a name="api-management-cross-domain-policies"></a>Az API Management tartományközi házirendjei
 Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -127,7 +127,7 @@ Ez a példa azt mutatja be, hogyan lehet támogatni a repülés előtti kérelme
 |CORS|Gyökérelem.|Igen|N/A|
 |engedélyezett – eredetek|Olyan `origin` elemeket tartalmaz, amelyek leírják a tartományok közötti kérelmek engedélyezett eredetét. a `allowed-origins` tartalmazhat egyetlen `origin` elemet is, amely meghatározza, hogy az egyes forrásokhoz, illetve egy vagy több `origin` URI-t tartalmazó elemhez `*` adjon meg.|Igen|N/A|
 |forrás|Az érték lehet `*` az összes eredet engedélyezéséhez, vagy egy olyan URI-t, amely egyetlen forrást határoz meg. Az URI-nak tartalmaznia kell egy sémát, egy gazdagépet és egy portot.|Igen|Ha a portot kihagyja egy URI-ban, a 80-es portot használja a rendszer a HTTP protokollhoz, és a 443-es portot használja a HTTPS protokollhoz.|
-|engedélyezett – metódusok|Ez az elem akkor szükséges, ha a GET vagy a POST metódustól eltérő módszerek engedélyezettek. A támogatott HTTP-műveleteket megadó `method` elemeket tartalmazza.|Nem|Ha ez a szakasz nem létezik, a GET és a POST is támogatott.|
+|engedélyezett – metódusok|Ez az elem akkor szükséges, ha a GET vagy a POST metódustól eltérő módszerek engedélyezettek. A támogatott HTTP-műveleteket megadó `method` elemeket tartalmazza. Az érték `*` az összes metódust jelzi.|Nem|Ha ez a szakasz nem létezik, a GET és a POST is támogatott.|
 |method|HTTP-műveletet ad meg.|Legalább egy `method` elemet meg kell adni, ha a `allowed-methods` szakasz megtalálható.|N/A|
 |engedélyezett – fejlécek|Ez az elem `header` elemeket tartalmaz, amelyek megadják a kérésben szereplő fejlécek nevét.|Nem|N/A|
 |fejlécek közzététele|Ez az elem `header` elemeket tartalmaz, amelyek megadják az ügyfél által elérhető fejlécek nevét.|Nem|N/A|

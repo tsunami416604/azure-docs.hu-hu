@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 31ad7a9d1108adc9071812454419252a813cb93e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e7a64776cba00a6840af70cecad5bf9c02b3f38e
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364476"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128630"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Átviteli sebesség kiosztása tárolókra és adatbázisokra
 
@@ -87,11 +87,11 @@ A két modellt kombinálhatja. Az adatátviteli sebesség az adatbázison és a 
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>Adatbázis vagy tároló adatforgalmának frissítése
 
-Miután létrehozta az Azure Cosmos-tárolót vagy egy adatbázist, frissítheti a kiosztott átviteli sebességet. Az adatbázison vagy a tárolón konfigurálható maximális kiépített átviteli sebességnek nincs korlátja. A minimálisan kiosztott átviteli sebesség a következő tényezőktől függ: 
+Miután létrehozta az Azure Cosmos-tárolót vagy egy adatbázist, frissítheti a kiosztott átviteli sebességet. Az adatbázison vagy a tárolón konfigurálható maximális kiépített átviteli sebességnek nincs korlátja. A [minimálisan kiosztott átviteli sebesség](concepts-limits.md#storage-and-throughput) a következő tényezőktől függ: 
 
 * A tárolóban korábban tárolt adatmennyiség maximális mérete
 * A tárolón korábban kiépített maximális átviteli sebesség
-* A megosztott átviteli sebességgel rendelkező adatbázisban korábban létrehozott Azure Cosmos-tárolók maximális száma. 
+* A megosztott átviteli sebességgel rendelkező adatbázisban található Azure Cosmos-tárolók aktuális száma. 
 
 Egy tároló vagy egy adatbázis minimális átviteli sebességét programozott módon lekérheti az SDK-k használatával, vagy megtekintheti a Azure Portal értékét. A .NET SDK használatakor a [DocumentClient. ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) metódus lehetővé teszi a kiépített átviteli sebesség méretezését. A Java SDK használatakor a [RequestOptions. setOfferThroughput](sql-api-java-samples.md#offer-examples) metódus lehetővé teszi a kiépített átviteli sebesség méretezését. 
 

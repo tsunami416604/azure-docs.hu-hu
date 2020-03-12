@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 02/28/2020
-ms.openlocfilehash: 9739c0a6b66099a2bebb1d42922d8653a92e650b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 501158ffa8d05bc34dd39c21680012b1f3308def
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396444"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127195"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
@@ -95,9 +95,9 @@ Az automatizált gépi tanulási kísérletek során az adatok automatikusan mé
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Speciális előfeldolgozás: opcionális featurization
 
-További speciális előfeldolgozási és featurization is elérhetők, például az adatguardrails, a kódolás és az átalakítások. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#featurization). A beállítás engedélyezése a következővel:
+További speciális előfeldolgozási és featurization is elérhetők, például az adatguardrails, a kódolás és az átalakítások. [További információ arról, hogy milyen featurization tartalmaz](how-to-use-automated-ml-for-ml-models.md#featurization). A beállítás engedélyezése a következővel:
 
-+ Azure Machine Learning Studio: engedélyezze az **automatikus featurization** a **további konfiguráció megtekintése** szakaszban [ezekkel a lépésekkel](how-to-create-portal-experiments.md#create-and-run-experiment).
++ Azure Machine Learning Studio: engedélyezze az **automatikus featurization** a **további konfiguráció megtekintése** szakaszban [ezekkel a lépésekkel](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
 + Python SDK: `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` megadása a [`AutoMLConfig` osztályhoz](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
@@ -153,7 +153,7 @@ A **C** modell a túlzott illesztések egyértelmű esetét jelöli. a betanít�
 
 ## <a name="classification--regression"></a>Besorolás & regresszió
 
-A besorolás és a regresszió a gépi tanulási feladatok leggyakoribb típusai. Mindkettő olyan felügyelt tanulás típusai, amelyekben a modellek bemutatják a betanítási információkat, és ezeket a tanulókat az új adatmennyiségre alkalmazzák. Azure Machine Learning a featurizations kifejezetten ezekhez a feladatokhoz, például a Deep neurális hálózati szöveg featurizers a besoroláshoz. További információ a [featurization beállításairól](how-to-create-portal-experiments.md#featurization). 
+A besorolás és a regresszió a gépi tanulási feladatok leggyakoribb típusai. Mindkettő olyan felügyelt tanulás típusai, amelyekben a modellek bemutatják a betanítási információkat, és ezeket a tanulókat az új adatmennyiségre alkalmazzák. Azure Machine Learning a featurizations kifejezetten ezekhez a feladatokhoz, például a Deep neurális hálózati szöveg featurizers a besoroláshoz. További információ a [featurization beállításairól](how-to-use-automated-ml-for-ml-models.md#featurization). 
 
 A besorolási modellek fő célja, hogy megjósolja, hogy az új adatok milyen kategóriákba esnek a betanítási adatokból származó tanulások alapján. Gyakori besorolási példák például a csalások észlelése, a kézírás-felismerés és az objektumok észlelése.  További információk: az [automatikus gépi tanulásra vonatkozó besorolási](tutorial-train-models-with-aml.md)példa.
 
@@ -286,7 +286,7 @@ Tekintse át a példákat, és Ismerje meg, hogyan hozhat létre modelleket auto
 + Kövesse az [oktatóanyagot: regressziós modell automatikus betanítása Azure Machine learning](tutorial-auto-train-models.md)
 
 + Konfigurálja az automatikus betanítási kísérlet beállításait:
-  + A Azure Machine Learning Studióban [kövesse ezeket a lépéseket](how-to-create-portal-experiments.md).
+  + A Azure Machine Learning Studióban [kövesse ezeket a lépéseket](how-to-use-automated-ml-for-ml-models.md).
   + A Python SDK használatával hajtsa [végre az alábbi lépéseket](how-to-configure-auto-train.md).
 
 + Ismerje meg, hogyan [végezheti](how-to-auto-train-forecast.md)el az automatikus betanítást az idősorozat-adatkészletek használatával.

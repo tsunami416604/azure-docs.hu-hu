@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 719a1985aeb0db7b0cf7f55a10762bf3ebb3e045
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363076"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128595"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows rendszerű VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez
 
@@ -267,7 +267,13 @@ Győződjön meg arról, hogy a következő beállítások megfelelően vannak k
    ```PowerShell
    Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -Enabled True
    ``` 
-5. Ha a virtuális gép egy tartomány részévé válik, ellenőrizze az alábbi Azure AD-házirendeket, és győződjön meg arról, hogy a korábbi beállítások nem lettek visszaállítva. 
+5. Hozzon létre egy szabályt az Azure platform Network számára:
+
+   ```PowerShell
+    New-NetFirewallRule -DisplayName "AzurePlatform" -Direction Inbound -RemoteAddress 168.63.129.16 -Profile Any -Action Allow -EdgeTraversalPolicy Allow
+    New-NetFirewallRule -DisplayName "AzurePlatform" -Direction Outbound -RemoteAddress 168.63.129.16 -Profile Any -Action Allow
+   ``` 
+6. Ha a virtuális gép egy tartomány részévé válik, ellenőrizze az alábbi Azure AD-házirendeket, és győződjön meg arról, hogy a korábbi beállítások nem lettek visszaállítva. 
 
     | Cél                                 | Szabályzat                                                                                                                                                  | Érték                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|

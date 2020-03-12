@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 171542c89b900eb8bf282156c79303a1deb5a5f7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 58a1ee13afa76b152723cb71d4037f9c31cc8d4e
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364473"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128525"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Az indexelési szabályzatok kezelése a Azure Cosmos DBban
 
@@ -19,7 +19,7 @@ Azure Cosmos DB a rendszer az egyes tárolók számára definiált [indexelési 
 
 ## <a name="indexing-policy-examples"></a>Példák indexelési házirendre
 
-Az alábbiakban néhány példát láthat a JSON-formátumában látható indexelési házirendekre, így azok elérhetővé válnak a Azure Portal. Ugyanezen paraméterek állíthatók be az Azure CLI-n vagy bármely SDK-n keresztül.
+Az alábbiakban néhány példát láthat a [JSON-formátumában](index-policy.md#include-exclude-paths)látható indexelési házirendekre, így azok elérhetővé válnak a Azure Portal. Ugyanezen paraméterek állíthatók be az Azure CLI-n vagy bármely SDK-n keresztül.
 
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Letiltási szabályzat a tulajdonságok egyes elérési útjai szelektív kizárásához
 
@@ -153,7 +153,7 @@ Ez az indexelési házirend egyenértékű az alább láthatóval, amely manuál
     ],
     "excludedPaths": [
         {
-            "path": "/\"_etag\"/?"
+            "path": "/_etag/?"
         }
     ],
     "spatialIndexes": [

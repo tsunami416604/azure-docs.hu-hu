@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 12/03/2019
-ms.openlocfilehash: 750d08f3667317e9e1e396cff50884101d7ff55d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 3/11/2020
+ms.openlocfilehash: 5c36dbfbe63314ef97edfa3dfbaae34667db002d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359831"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128626"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 
@@ -148,6 +148,10 @@ Ha egy kiszolgáló nélküli adatbázis szüneteltetve van, akkor az első beje
 ### <a name="latency"></a>Késés
 
 Az automatikus folytatáshoz és az automatikus szüneteltetéshez a kiszolgáló nélküli adatbázisok késése általában 1 percet vesz igénybe az automatikus folytatáshoz, és 1-10 percet az automatikus szüneteltetéshez.
+
+### <a name="customer-managed-transparent-data-encryption-byok"></a>Ügyfél által felügyelt transzparens adattitkosítás (BYOK)
+
+Ha az [ügyfél által felügyelt transzparens adattitkosítást](transparent-data-encryption-byok-azure-sql.md) (BYOK) használja, és a kiszolgáló nélküli adatbázis automatikusan szünetel a kulcs törlése vagy visszavonása során, akkor az adatbázis az automatikusan szüneteltetett állapotban marad.  Ebben az esetben, amikor a folytatás folyamatban van, a rendszer szünetelteti az adatbázist, amíg az állapota körülbelül 10 perc vagy kevesebb idő elteltével elérhetetlenné válik.  Ha az adatbázis elérhetetlenné válik, a helyreállítási folyamat ugyanaz, mint a kiépített számítási adatbázisokhoz.  Ha a kiszolgáló nélküli adatbázis a kulcs törlése vagy visszavonása esetén online állapotú, akkor az adatbázis a kiépített számítási adatbázisok esetében is körülbelül 10 perc vagy annál kevesebb idő elteltével elérhetetlenné válik.
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>A kiszolgáló nélküli számítási szintek bevezetése
 

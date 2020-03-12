@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: cf2aa9bc1234f8bc92829b107d1a788b75d56a6b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 144c59c8bc24e8e10584702ec6cd48f7aa8c15c1
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384687"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128689"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Oktatóanyag: a Azure Data Box Edge összekapcsolása, beállítása és aktiválása 
 
@@ -101,6 +101,11 @@ Az irányítópulton a fizikai eszköz a Data Box Edge szolgáltatással való k
    c. Ha hitelesítést használ, adjon meg egy felhasználónevet és egy jelszót.
 
    d. A konfigurált Webproxy-beállítások érvényesítéséhez és alkalmazásához válassza a **Beállítások alkalmazása**lehetőséget.
+   
+   > [!NOTE]
+   > A proxy-Auto config (PAC) fájlok nem támogatottak. A PAC-fájlok azt határozzák meg, hogy a böngészők és más felhasználói ügynökök hogyan tudják automatikusan kiválasztani a megfelelő proxykiszolgálót (hozzáférési módszer) egy adott URL beolvasásához.
+   > Azok a proxyk, amelyek megpróbálják feltartóztatni és beolvasni az összes forgalmat (majd újra aláírni a saját tanúsítvánnyal), nem kompatibilisek, mert a proxy tanúsítványa nem megbízható.
+   > Általában az átlátszó proxyk jól működnek Azure Data Box Edge.
 
 4. Választható A bal oldali panelen válassza az **időbeállítások**lehetőséget, majd konfigurálja az adott eszközhöz tartozó időzónát és az elsődleges és másodlagos NTP-kiszolgálókat.  
     Az NTP-kiszolgálókra azért van szükség, mert az eszköznek szinkronizálnia kell az időt ahhoz, hogy hitelesíteni lehessen a felhőalapú szolgáltatóktól.

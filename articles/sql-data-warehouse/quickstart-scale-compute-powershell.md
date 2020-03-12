@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: a számítások méretezése – PowerShell '
-description: Számítások méretezése az SQL-készletben a PowerShellben. Felskálázással a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők.
+title: Méretezési számítás a szinapszis SQL-készlethez (Azure PowerShell)
+description: A szinapszis SQL-készlet (adattárház) számítási felskálázását Azure PowerShell használatával végezheti el.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5952f17c83b778e8713488b5c53c9f210c84a146
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 2b8aef37e9e7a3022ffc799bba80e8944330b8f1
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390507"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128881"
 ---
-# <a name="quickstart-scale-compute-in-in-azure-synapse-analytics-sql-pool-using-azure-powershell"></a>Gyors útmutató: a számítások méretezése az Azure szinapszis Analytics SQL-készletben Azure PowerShell használatával
+# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>Gyors útmutató: a Azure PowerShell
 
-Számítások méretezése az SQL-készletben Azure PowerShell használatával. [Bővítéssel](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, szűkítéssel a költségek csökkenthetők.
+A szinapszis SQL-készlet (adattárház) számítási felskálázását Azure PowerShell használatával végezheti el. [Bővítéssel](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, szűkítéssel a költségek csökkenthetők. 
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 

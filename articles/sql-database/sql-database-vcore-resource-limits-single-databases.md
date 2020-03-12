@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 01/22/2020
-ms.openlocfilehash: 267779afc749fccba41935741630a759576d6e77
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/11/2020
+ms.openlocfilehash: a8f62a24ff2c6571b5267fdbf4f23bd9e05ee499
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359836"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129049"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Az virtuális mag beszerzési modellt használó önálló adatbázisok erőforrás-korlátai
 
@@ -102,6 +102,7 @@ Az i/o-méretek maximális értékének \* 8 KB és 64 KB között kell lennie. 
 |TempDB maximális adatméret (GB)|32|64|96|128|160|192|
 |Tárolási típus| [1. Megjegyzés](#notes) |[1. Megjegyzés](#notes)|[1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |
 |Maximális adatmennyiség IOPS *|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|
+|Maximális naplózási arány (MBps)|105 |105 |105 |105 |105 |105 |
 |IO-késés (becsült)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|
 |Egyidejű feldolgozók maximális száma (kérelem)|200|400|600|800|1000|1200|
 |Egyidejű munkamenetek maximális száma|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -126,6 +127,7 @@ Az i/o-méretek maximális értékének \* 8 KB és 64 KB között kell lennie. 
 |TempDB maximális adatméret (GB)|224|256|288|320|512|768|
 |Tárolási típus| [1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |
 |Maximális adatmennyiség IOPS *|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|
+|Maximális naplózási arány (MBps)|105 |105 |105 |105 |105 |105 |
 |IO-késés (becsült)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|
 |Egyidejű feldolgozók maximális száma (kérelem)|1400|1600|1800|2000|3200|4800|
 |Egyidejű munkamenetek maximális száma|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -154,6 +156,7 @@ Az i/o-méretek maximális értékének \* 8 KB és 64 KB között kell lennie. 
 |TempDB maximális adatméret (GB)|64|128|192|256|320|384|448|
 |Tárolási típus| [1. Megjegyzés](#notes) |[1. Megjegyzés](#notes)|[1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |
 |Maximális adatmennyiség IOPS *|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|
+|Maximális naplózási arány (MBps)|105 |105 |105 |105 |105 |105 |105 |
 |IO-késés (becsült)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|
 |Egyidejű feldolgozók maximális száma (kérelem)|200|400|600|800|1000|1200|1400|
 |Egyidejű munkamenetek maximális száma|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -180,6 +183,7 @@ Az i/o-méretek maximális értékének \* 8 KB és 64 KB között kell lennie. 
 |TempDB maximális adatméret (GB)|512|576|640|768|1024|1280|2560|
 |Tárolási típus| [1. Megjegyzés](#notes) |[1. Megjegyzés](#notes)|[1. Megjegyzés](#notes)|[1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |
 |Maximális adatmennyiség IOPS *|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|
+|Maximális naplózási arány (MBps)|105 |105 |105 |105 |105 |105 |105 |
 |IO-késés (becsült)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|[3. Megjegyzés](#notes)|
 |Egyidejű feldolgozók maximális száma (kérelem)|1600|1800|2000|2400|3200|4000|8000|
 |Egyidejű munkamenetek maximális száma|30,000|30,000|30,000|30,000|30,000|30,000|30,000|

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2019
+ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: a6a1371553ccd9b810ba4649af448fb8847d0ed8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1d8a42a4ec106418b481ac705d3ce1b33f58a312
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380720"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086479"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Biztonsági javaslatok – útmutató
 
@@ -25,7 +25,10 @@ Ez a cikk a Azure Security Centerban esetlegesen megjelenő javaslatokat sorolja
 
 Ha többet szeretne megtudni ezekről a javaslatokról, tekintse meg a [Azure Security Center javaslatainak szervizelésével](security-center-remediate-recommendations.md)foglalkozó témakört.
 
-A biztonságos pontszám azon alapul, hogy hány Security Center javasolt javaslat. Az első megoldáshoz szükséges javaslatok rangsorolása érdekében vegye figyelembe az egyes problémák súlyosságát.
+A biztonságos pontszám a befejezett Security Center javaslatok számán alapul. Annak eldöntéséhez, hogy mely ajánlásokat kell elsőként feloldani, tekintse meg a súlyosságát, és annak lehetséges hatását a biztonságos pontszámra.
+
+>[!TIP]
+> Ha egy javaslat leírása "nincs kapcsolódó szabályzat", ez általában azért van, mert a javaslat egy másik javaslattól és *annak* házirendjétől függ. Tegyük fel például, hogy "az Endpoint Protection állapotával kapcsolatos hibák elhárítása szükséges..." arra a javaslatra támaszkodik, amely ellenőrzi, hogy az Endpoint Protection-megoldás még *telepítve* van-e ("Endpoint Protection-megoldás telepítése..."). Az alapul szolgáló *javaslat szabályzattal rendelkezik.* A házirendek csak az alapszintű javaslatokra való korlátozása egyszerűsíti a házirendek kezelését.
 
 ## <a name="recs-network"></a>Hálózati javaslatok
 
@@ -106,7 +109,7 @@ A biztonságos pontszám azon alapul, hogy hány Security Center javasolt javasl
 |**A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni**|Amelynek a sebezhetőség-felmérési 3. fél megoldás üzembe helyezett virtuális gépek folyamatosan értékelni alatt álló alkalmazás és az operációs rendszer biztonsági rések ellen. Minden alkalommal, amikor kivédeni találhatók, ezek érhetők el további információ az ajánlás része.<br>(Kapcsolódó házirend: a biztonsági réseket a sebezhetőségi felmérési megoldásnak kell szervizelni)|Magas|N|Gép|
 |**A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell**|A biztonsági rések támadások elleni védelem érdekében a gépeken biztonsági beállításokkal.<br>(Kapcsolódó szabályzat: a számítógépeken a biztonsági beállításokban található biztonsági réseket szervizelni kell)|Alacsony|N|Gép|
 |**A tároló biztonsági konfigurációjában található biztonsági réseket szervizelni kell**|Biztonsági rések eltávolítása a telepített Dockerrel rendelkező gépek biztonsági konfigurációjából a támadások elleni védekezés céljából.<br>(Kapcsolódó szabályzat: a tároló biztonsági konfigurációjában lévő biztonsági réseket szervizelni kell)|Magas|N|Gép|
-|**Az Endpoint Protection állapotával kapcsolatos problémákat fel kell oldani a gépeken**|A Security Center teljes védelem, figyelési ügynök problémák megoldásához a gépeken a hibaelhárítási útmutató utasításait követve.<br>(Nincs kapcsolódó szabályzat – az Endpoint Protection megoldás telepítése a gépeken)|Közepes|N|Gép|
+|**Az Endpoint Protection állapotával kapcsolatos problémákat fel kell oldani a gépeken**|A Security Center teljes védelem, figyelési ügynök problémák megoldásához a gépeken a hibaelhárítási útmutató utasításait követve.<br>(Ez a javaslat a "Endpoint Protection-megoldás telepítése a gépeken" és a hozzá tartozó házirend alapján függ)|Közepes|N|Gép|
 ||||||
 
 
