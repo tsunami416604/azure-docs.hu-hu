@@ -6,16 +6,18 @@ author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 11b469425a80d588462e0332c973260cc3b56992
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596181"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126602"
 ---
-# <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Az Azure Kubernetes Service (ak) diagnosztika áttekintése
+# <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Az Azure Kubernetes Service Diagnostics (előzetes verzió) áttekintése
 
 Az Azure Kubernetes Service (ak) fürtökkel kapcsolatos hibák elhárítása fontos része a fürt karbantartásának, különösen akkor, ha a fürt kritikus fontosságú számítási feladatokat futtat. Az AK-diagnosztika egy intelligens, öndiagnosztikai felület, amely segítséget nyújt a fürtben felmerülő problémák azonosításában és megoldásában. Az AK-diagnosztika a felhőben natív, és további konfiguráció vagy számlázási díj nélkül is felhasználható.
+
+Ez a funkció már nyilvános előzetes verzióban érhető el.
 
 ## <a name="open-aks-diagnostics"></a>AK-diagnosztika megnyitása
 

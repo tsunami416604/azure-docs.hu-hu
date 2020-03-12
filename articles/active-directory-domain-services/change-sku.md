@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 18395f2b839aef88491f71aeed660eb2ce011e2c
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b65310569e95173b88dd0aa0dfe1dbacd86cc8fc
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614239"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126705"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>Meglévő Azure AD Domain Services felügyelt tartomány SKU-jának módosítása
 
-Azure Active Directory Domain Services (Azure AD DS) esetében a rendelkezésre álló teljesítmény és szolgáltatások az SKU típusán alapulnak. A szolgáltatásbeli különbségek közé tartozik a biztonsági mentés gyakorisága vagy az egyirányú kimenő erdő megbízhatósági kapcsolatainak maximális száma (jelenleg előzetes verzióban érhető el). A felügyelt tartomány létrehozásakor ki kell választania egy SKU-t, és az üzleti igényeknek megfelelően válthat a SKU-ra a felügyelt tartomány telepítése után. Az üzleti követelmények változásai több gyakori biztonsági mentésre vagy további erdőszintű megbízhatósági kapcsolatok létrehozására is igénybe vehetnek. A különböző SKU-i korlátokkal és díjszabással kapcsolatos további információkért lásd az [azure AD DS SKU-fogalmakat][concepts-sku] és az [Azure AD DS díjszabási][pricing] oldalát.
+Azure Active Directory Domain Services (Azure AD DS) esetében a rendelkezésre álló teljesítmény és szolgáltatások az SKU típusán alapulnak. A szolgáltatásbeli különbségek közé tartozik a biztonsági mentés gyakorisága vagy az egyirányú kimenő erdő megbízhatósági kapcsolatainak maximális száma (jelenleg előzetes verzióban érhető el). A felügyelt tartomány létrehozásakor ki kell választania egy SKU-t, és az üzleti igényeknek megfelelően át lehet váltani a SKU-ra a felügyelt tartomány telepítése után. Az üzleti követelmények változásai több gyakori biztonsági mentésre vagy további erdőszintű megbízhatósági kapcsolatok létrehozására is igénybe vehetnek. A különböző SKU-i korlátokkal és díjszabással kapcsolatos további információkért lásd az [azure AD DS SKU-fogalmakat][concepts-sku] és az [Azure AD DS díjszabási][pricing] oldalát.
 
 Ez a cikk bemutatja, hogyan módosíthatja az SKU-t egy meglévő Azure AD DS felügyelt tartományhoz a Azure Portal használatával.
 
@@ -36,9 +36,12 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 
 ## <a name="sku-change-limitations"></a>SKU-változások korlátai
 
-Ha erőforrás-erdőt (jelenleg előzetes verzióban) használ, az SKU-változási művelethez bizonyos korlátozások vonatkoznak, és egyirányú kimenő erdőszintű megbízhatósági kapcsolatot hoztak létre az Azure AD DS egy helyszíni AD DS-környezetbe. A *prémium* és a *vállalati* SKU korlátozza a létrehozható megbízhatósági kapcsolatok számát. Nem válthat olyan SKU-ra, amelynek a maximális korlátja alacsonyabb, mint a jelenleg konfigurálva.
+Az SKU-t az Azure AD DS felügyelt tartomány üzembe helyezése után felfelé vagy lefelé módosíthatja. Ha azonban egy erőforrás-erdőt (jelenleg előzetes verzióban) használ, és egyirányú kimenő erdőszintű megbízhatósági kapcsolatot hozott létre az Azure AD DS egy helyszíni AD DS-környezetbe, bizonyos korlátozások vonatkoznak az SKU-módosítási műveletre. A *prémium* és a *vállalati* SKU korlátozza a létrehozható megbízhatósági kapcsolatok számát. Nem válthat olyan SKU-ra, amelynek a maximális korlátja alacsonyabb, mint a jelenleg konfigurálva.
 
-Ha például két erdőszintű megbízhatósági kapcsolatot hozott létre a *prémium* SKU-ra, akkor nem lehet a *standard* SKU-ra váltani. A *standard* SKU nem támogatja az erdőszintű megbízhatósági kapcsolatot. Ha pedig hét megbízhatósági kapcsolatot hozott létre a *prémium* SKU-ra, akkor nem módosítható a *vállalati* SKU-ra. A *vállalati* SKU legfeljebb öt megbízhatósági kapcsolatot támogat.
+Például:
+
+* Ha két erdőszintű megbízhatósági kapcsolatot hozott létre a *prémium* SKU-ra, akkor nem lehet a *standard* SKU-ra váltani. A *standard* SKU nem támogatja az erdőszintű megbízhatósági kapcsolatot.
+* Ha pedig hét megbízhatósági kapcsolatot hozott létre a *prémium* SKU-ra, akkor nem módosítható a *vállalati* SKU-ra. A *vállalati* SKU legfeljebb öt megbízhatósági kapcsolatot támogat.
 
 További információ ezekről a korlátokról: [Azure AD DS SKU-funkciók és korlátozások][concepts-sku].
 

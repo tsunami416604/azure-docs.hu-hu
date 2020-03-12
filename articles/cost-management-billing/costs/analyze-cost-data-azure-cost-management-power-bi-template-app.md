@@ -4,16 +4,16 @@ description: Ez a cikk ismerteti az Azure Cost Management Power BI-alkalmazás t
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/05/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 4a50ce5c386f1b928e9f767891840c84534938a9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: bc676910a05dbec97ae05578399029f85f71e1ef
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169694"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399624"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Az Azure költségeinek elemzése a Nagyvállalati Szerződésekhez (EA) készült Azure Cost Management Power BI-alkalmazással
 
@@ -43,7 +43,7 @@ Az alkalmazás telepítése:
   ![Bevezetés az új alkalmazás használatába – Csatlakozás](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
 9. A megjelenő párbeszédablakban adja meg EA regisztrációs számát a **BillingProfileIdOrEnrollmentNumber** értékeként. Adja meg, hogy hány hónapnyi adatot kíván lekérni. Hagyja meg a **Regisztrációs szám** alapértelmezett **Hatókör** értékét, majd válassza a **Következő** lehetőséget.  
   ![EA regisztrációs adatok megadása](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. A következő párbeszédablak csatlakozik az Azure-hoz, és beolvassa a fenntartott példányokra vonatkozó javaslatokhoz szükséges adatokat. Hagyja meg az alapértelmezett értékek konfigurációját, majd válassza a **Bejelentkezés** lehetőséget.  
+10. A következő párbeszédablak csatlakozik az Azure-hoz, és beolvassa a fenntartott példányokra vonatkozó javaslatokhoz szükséges adatokat. *Hagyja meg az alapértelmezett értékek konfigurációját*, majd válassza a **Bejelentkezés** lehetőséget.  
   ![Csatlakozás az Azure-hoz](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. A telepítés utolsó lépésében csatlakozni kell az EA-regisztrációhoz, amihez [vállalati rendszergazdai](../manage/understand-ea-roles.md) fiók szükséges. Válassza a **Bejelentkezés** elemet az EA-regisztrációval való hitelesítéshez. Ez a lépés egy adatfrissítési műveletet is elindít a Power BI-ban.  
   ![Csatlakozás EA-regisztrációhoz](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
@@ -124,6 +124,50 @@ A jelentés használatának részleteiről a [VM RI-lefedettség (megosztott jav
 **RI-vásárlások** – A jelentés a megadott időszakra vonatkozó RI-vásárlásokat jeleníti meg.
 
 **Árlista** – A jelentés a számlázási fiókra vagy az EA-regisztrációra vonatkozó részletes árlistát jeleníti meg.
+
+## <a name="troubleshoot-problems"></a>Problémák elhárítása
+
+Amennyiben problémái adódtak a Power BI alkalmazással, az alábbi hibaelhárítási információk a segítségére lehetnek.
+
+### <a name="budgetamount-error"></a>BudgetAmount hiba
+
+A következő hibaüzenet jelenhet meg:
+
+```
+Something went wrong
+There was an error when processing the data in the dataset.
+Please try again later or contact support. If you contact support, please provide these details.
+Data source error: The 'budgetAmount' column does not exist in the rowset. Table: Budgets.
+```
+
+#### <a name="cause"></a>Ok
+
+Ez a hiba az alapul szolgáló metaadatok hibája miatt következik be. A probléma azért merül fel, mert nincs elérhető költségvetés a **Cost Management > Költségvetés** alatt az Azure Portalon. A hiba javítása folyamatban van a Power BI Desktop és a Power BI szolgáltatásban. 
+
+#### <a name="solution"></a>Megoldás
+
+- Amíg a hiba nincs kijavítva, megkerülheti a problémát egy tesztköltségvetés hozzáadásával az Azure Portalon a számlázási fiók/EA-regisztráció szintjén. A tesztköltségvetés megszünteti a Power BI-kapcsolat blokkolását. A költségvetés létrehozásával kapcsolatos további információkért lásd: [Oktatóanyag: Azure-költségvetések létrehozása és kezelése](tutorial-acm-create-budgets.md).
+
+
+### <a name="invalid-credentials-for-azureblob-error"></a>Érvénytelen hitelesítő adatok az AzureBlobhoz hiba
+
+A következő hibaüzenet jelenhet meg:
+
+```
+Failed to update data source credentials: The credentials provided for the AzureBlobs source are invalid.
+```
+
+#### <a name="cause"></a>Ok
+
+Ez a hiba akkor fordul elő, ha módosítja az AutoFitComboMeter blobkapcsolat hitelesítési módszerét.
+
+#### <a name="solution"></a>Megoldás
+
+1. Csatlakozzon az adatokhoz.
+1. Az EA-regisztráció és a hónapok számának megadása után bizonyosodjon meg arról, hogy az alapértelmezett **Névtelen** érték van beállítva a Hitelesítési módszerhez, és a **Nincs** érték az Adatvédelmi szinthez.  
+  ![Csatlakozás az Azure-hoz](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+1. A következő oldalon állítsa be az **OAuth2** értéket a Hitelesítési módszerhez, és a **Nincs** értéket az Adatvédelmi szinthez. Majd jelentkezzen be a regisztrációval való hitelesítéshez. Ez a lépés egy Power BI-adatfrissítési műveletet is elindít.
+
 
 ## <a name="data-reference"></a>Adatreferencia
 

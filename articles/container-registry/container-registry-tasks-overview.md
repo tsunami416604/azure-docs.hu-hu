@@ -3,12 +3,12 @@ title: Az ACR-feladatok áttekintése
 description: Az ACR-feladatok, a Azure Container Registry szolgáltatásainak egyik csomagja, amely biztonságos, automatizált tároló-rendszerképek készítését, kezelését és javítását teszi lehetővé a felhőben.
 ms.topic: article
 ms.date: 01/22/2020
-ms.openlocfilehash: cb5f0a71c31c26d679efd8a17b360dab2ad0862b
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615949"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087277"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>A tárolók rendszerképének fejlesztése és karbantartása ACR-feladatokkal
 
@@ -124,15 +124,11 @@ Alapértelmezés szerint az ACR-feladatok lemezképeket készítenek a Linux ope
 | Linux | amd64<br/>kar<br/>arm64<br/>386 |
 | Windows | amd64 |
 
-## <a name="view-task-logs"></a>Feladatütemezés megtekintése
+## <a name="view-task-output"></a>A tevékenység kimenetének megtekintése
 
-Minden feladat futtatásakor a rendszer naplózza a napló kimenetét, amely alapján megállapíthatja, hogy a feladat lépései sikeresen futottak-e. Ha az az [ACR Build](/cli/azure/acr#az-acr-build), [az ACR Run](/cli/azure/acr#az-acr-run)vagy [az ACR Task Run](/cli/azure/acr/task#az-acr-task-run) parancsot használja a feladat elindításához, a rendszer továbbítja a feladat futtatásának naplózási kimenetét a konzolra, és a későbbi lekéréshez is tárolja. Ha egy feladat automatikusan aktiválódik, például a forráskód-végrehajtás vagy egy alaprendszerkép frissítése esetén, a rendszer csak a feladat naplóit tárolja. Tekintse meg a Azure Portalben futtatott feladatok naplóit, vagy használja az az [ACR Task logs](/cli/azure/acr/task#az-acr-task-logs) parancsot.
+Minden feladat futtatásakor a rendszer naplózza a napló kimenetét, amely alapján megállapíthatja, hogy a feladat lépései sikeresen futottak-e. Ha a feladatot manuálisan indítja el, a rendszer a feladat futtatásának naplózását továbbítja a konzolon, és a későbbi lekéréshez is tárolja. Ha egy feladat automatikusan aktiválódik, például a forráskód-végrehajtás vagy egy alaprendszerkép frissítése esetén, a rendszer csak a feladat naplóit tárolja. Tekintse meg a futtatási naplókat a Azure Portal, vagy használja az az [ACR Task logs](/cli/azure/acr/task#az-acr-task-logs) parancsot.
 
-Alapértelmezés szerint a rendszer a beállításjegyzékben futtatott feladatok adatait és naplóit 30 napig őrzi meg, majd automatikusan kiüríti. Ha archiválni szeretné a feladatok futtatásához szükséges adatok archiválását, engedélyezze az az [ACR Task Update-Run](/cli/azure/acr/task#az-acr-task-update-run) paranccsal történő archiválást. A következő példa engedélyezi az archiválást a feladat futtatási *CF11* a beállításjegyzék *myregistry*.
-
-```azurecli
-az acr task update-run --registry myregistry --run-id cf11 --no-archive false
-```
+További információ a [naplók megtekintéséről és kezeléséről](container-registry-tasks-logs.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -6,16 +6,19 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 7b9ce8be4ffc306417dd836e28127641f6100321
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899190"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127275"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Erőforrások hozzáadása az integrációs szolgáltatási környezethez (ISE) Azure Logic Apps
 
 Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)létrehozása után olyan erőforrásokat adhat hozzá, mint például a Logic apps, az integrációs fiókok és az összekötők, hogy hozzáférhessenek az Azure-beli virtuális hálózatban található erőforrásokhoz. Az ISE létrehozása után elérhető felügyelt ISE-összekötők például nem jelennek meg automatikusan a Logic app Designerben. Az ISE-összekötők használata előtt ezeket az [összekötőket manuálisan kell hozzáadnia és telepítenie az ISE](#add-ise-connectors-environment) -ben, hogy azok megjelenjenek a Logic app Designerben.
+
+> [!IMPORTANT]
+> Ahhoz, hogy a Logic apps és az integrációs fiókok együtt működjenek az ISE-ben, mindkettőnek *ugyanazt az ISE* -t kell használnia, mint a helyük.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -128,6 +131,6 @@ Ha az ISE-ben egyéni összekötőket szeretne használni, hozza létre ezeket a
 
 1. Az ISE-ben lévő egyéni összekötők kezeléséhez lásd: [az integrációs szolgáltatási környezet kezelése](../logic-apps/ise-manage-integration-service-environment.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Integrációs szolgáltatási környezetek kezelése](../logic-apps/ise-manage-integration-service-environment.md)

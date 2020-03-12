@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 03/03/2020
+ms.date: 03/06/2020
 ms.author: banders
-ms.openlocfilehash: ca1064ce3414f4a796110c022125b68c0674e0d6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 5de6baf81f67ef6bee43b54e7aa0d62088c15be9
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270192"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898636"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Az Azure Nagyvállalati Szerződés számlájának ismertetése
 
@@ -118,7 +118,7 @@ A következő lista számba veszi a számlákon és az Enterprise Portal **Haszn
 
 Az alábbi szakasz kizárólag az Ausztráliában, Japánban vagy Szingapúrban tevékenykedő ügyfelekre vonatkozik.
 
-Hasonlítsa össze az Azure Marketplace-re vonatkozó teljes összeget a piactéri számlájával az Enterprise Portal **Jelentések** > **Használat összefoglalása** lapján. A piactéri számlán csak az Azure Marketplace-beli vásárlások és használat szerepel. A **Használati összefoglalásának** összegei az adót nem tartalmazzák.
+Hasonlítsa össze az Azure Marketplace-re vonatkozó teljes összeget a piactéri számlájával az Enterprise Portal **Jelentések** > **Használat összefoglalása** lapján. A piactéri számlán csak az Azure Marketplace-beli vásárlások és használat szerepel. A **Használati összefoglalásának** összegei már tartalmazzák az adót, amelyet a közzétevő határoz meg.
 
 Jelentkezzen be az [Enterprise Portalra](https://ea.azure.com), majd válassza a **Jelentések**lehetőséget. A képernyő jobb felső sarkában módosítsa a nézetet **M**-ről **C**-re, majd válassza ki a számlán szereplő időszakot.  
 

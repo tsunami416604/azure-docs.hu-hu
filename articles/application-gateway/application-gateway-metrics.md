@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 2d1e6e484fd704669951bd37b17356fd3689cc91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 8b63233aa2b20862e4654c89f1a6dd5d00c78940
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485182"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096070"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway metrikái
 
@@ -125,10 +125,6 @@ Application Gateway esetén a következő metrikák érhetők el:
 
    A Application Gateway által kiszolgált sikeres kérelmek száma. A kérelmek száma tovább szűrhető úgy, hogy megjelenjenek az egyes/specifikus backend-készletek száma – a http-beállítások kombinációja.
 
-- **Webalkalmazási tűzfal egyeztetett szabályai**
-
-- **Webalkalmazási tűzfal által aktivált szabályok**
-
 ### <a name="backend-metrics"></a>Háttérbeli metrikák
 
 Application Gateway esetén a következő metrikák érhetők el:
@@ -180,9 +176,9 @@ Application Gateway esetén a következő metrikák érhetők el:
 
   A Application Gateway által kiszolgált sikeres kérelmek száma. A kérelmek száma tovább szűrhető úgy, hogy megjelenjenek az egyes/specifikus backend-készletek száma – a http-beállítások kombinációja.
 
-- **Webalkalmazási tűzfal egyeztetett szabályai**
-
-- **Webalkalmazási tűzfal által aktivált szabályok**
+- **Webalkalmazási tűzfal letiltott kérelmek száma**
+- **Webalkalmazási tűzfal letiltott kérelmek eloszlása**
+- **Webalkalmazási tűzfal teljes szabályának eloszlása**
 
 ### <a name="backend-metrics"></a>Háttérbeli metrikák
 

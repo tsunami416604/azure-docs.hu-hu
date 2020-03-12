@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: f712d1be76a9bb3dc4856b9f1fa7c7b805296dea
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: ba40e610e31a1215ac90baf63a04b435b636d68a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970761"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127694"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Virtuális gépek üzembe helyezése dedikált gazdagépeken az Azure CLI használatával
  
@@ -24,7 +24,7 @@ Győződjön meg arról, hogy telepítette az Azure CLI 2.0.70 vagy újabb verzi
 ## <a name="limitations"></a>Korlátozások
 
 - A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
-- A kezdeti kiadás a következő virtuálisgép-sorozatot támogatja: DSv3, ESv3, FSv2, LSv2 és MSv2. 
+- A dedikált gazdagépek számára elérhető méretek és hardver típusok régiónként eltérőek. További információért tekintse meg a gazdagép [díjszabását ismertető oldalt](https://aka.ms/ADHPricing) .
  
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása 
@@ -77,7 +77,7 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>Gazdagép létrehozása 
 
-Most hozzon létre egy dedikált gazdagépet a gazdagép csoportban. A gazdagép neve mellett meg kell adnia a gazdagéphez tartozó SKU-t is. A gazdagép SKU rögzíti a támogatott virtuálisgép-sorozatot, valamint a dedikált gazdagép hardveres generációját.  A következő SKU-értékek támogatottak: DSv3_Type1 és ESv3_Type1.
+Most hozzon létre egy dedikált gazdagépet a gazdagép csoportban. A gazdagép neve mellett meg kell adnia a gazdagéphez tartozó SKU-t is. A gazdagép SKU rögzíti a támogatott virtuálisgép-sorozatot, valamint a dedikált gazdagép hardveres generációját.  
 
 A gazdagép SKU-ról és a díjszabásról további információt az [Azure dedikált gazdagép díjszabása](https://aka.ms/ADHPricing)című témakörben talál.
 

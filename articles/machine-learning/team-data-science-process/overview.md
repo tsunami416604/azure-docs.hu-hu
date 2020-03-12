@@ -7,16 +7,16 @@ manager: marktab
 editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
-ms.topic: article
+ms.topic: overview
 ms.date: 1/10/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e9d98f03b2c97245517e3fbb6d7dc7624cfb724d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 10d6e562301e089700940ac5dfb212bcc4e09653
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721387"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79088079"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Mi a csoportos adatelemzési folyamat?
 
@@ -86,7 +86,7 @@ A könyvtár szerkezete a [githubról](https://github.com/Azure/Azure-TDSP-Proje
 Tdsp-vel megosztott analytics és a tárolási infrastruktúra kezelése ajánlásokat:
 
 - felhőbeli fájlrendszerek adatkészletek tárolására. 
-- adatbázis
+- adatbázisok
 - a big data (Hadoop és Spark) fürtök 
 - Machine learning szolgáltatás 
 
@@ -99,7 +99,7 @@ Az elemzési és tárolási infrastruktúrát, ahol a nyers és a feldolgozott a
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Eszközöket és segédprogramokat tehet projekt végrehajtása
 
-A szervezetek folyamatok nagyobb kihívást jelent. Megvalósítása adatok adatelemzési folyamat- és életciklus segítségével csökkentheti az akadályok és azok elfogadását konzisztenciájának biztosított eszközökkel. TDSP-eszközök és parancsfájlok TDSP a bevezetést a csapat gyorsan elindíthatja a kezdeti készletét nyújtja. Emellett elősegíti a adattudományi életciklus adatáttekintés és modellezés alapkonfiguráció például a gyakran előforduló feladatok némelyikének automatizálását. Nincs jól definiált szerkezetben vannak meghatározott személyek számára, hogy a megosztott eszközök és segédprogramok csapatuk megosztott kódtárban való közreműködéshez. A csapata vagy a szervezeten belül más projektek majd is javítható ezeket az erőforrásokat. Tdsp-vel is tervek eszközök és segédprogramok használatával a teljes közösségi hozzájárulások engedélyezéséhez. A TDSP segédprogramok klónozása a [githubról](https://github.com/Azure/Azure-TDSP-Utilities)lehetséges.
+A szervezetek folyamatok nagyobb kihívást jelent. Megvalósítása adatok adatelemzési folyamat- és életciklus segítségével csökkentheti az akadályok és azok elfogadását konzisztenciájának biztosított eszközökkel. TDSP-eszközök és parancsfájlok TDSP a bevezetést a csapat gyorsan elindíthatja a kezdeti készletét nyújtja. Emellett elősegíti a adattudományi életciklus adatáttekintés és modellezés alapkonfiguráció például a gyakran előforduló feladatok némelyikének automatizálását. Egy jól definiált struktúra van megadva, hogy a felhasználók közösen használják a megosztott eszközöket és segédprogramokat a csapatuk megosztott kódjának tárházában. A csapata vagy a szervezeten belül más projektek majd is javítható ezeket az erőforrásokat. Tdsp-vel is tervek eszközök és segédprogramok használatával a teljes közösségi hozzájárulások engedélyezéséhez. A TDSP segédprogramok klónozása a [githubról](https://github.com/Azure/Azure-TDSP-Utilities)lehetséges.
 
 
 ## <a name="next-steps"></a>Következő lépések

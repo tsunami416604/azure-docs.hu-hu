@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/05/2019
-ms.openlocfilehash: 24ecf90c2ffc88415afbf84f54af3efa7d5f4a39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/10/2020
+ms.openlocfilehash: a72753d5553e79a8ed28c3afcc7e54af6c2d230c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435427"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117239"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Hálózati biztonsági csoport (NSG) szolgáltatás címkéi az Azure HDInsight
 
@@ -40,7 +40,7 @@ A HDInsight-fürthöz tartozó szolgáltatási címkék használatának legegysz
 
 1. A **forrás szolgáltatás címkéje** legördülő listában válassza a **HDInsight**lehetőséget.
 
-    ![Azure Portal szolgáltatási címke hozzáadása](./media/hdinisght-service-tags/azure-portal-add-service-tag.png)
+    ![Azure Portal szolgáltatási címke hozzáadása](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
 Ez a címke tartalmazza az állapot-és felügyeleti szolgáltatások IP-címeit az összes olyan régióban, ahol a HDInsight elérhető, és biztosítja, hogy a fürt a létrehozásuk helyétől függetlenül képes legyen kommunikálni a szükséges egészségügyi és felügyeleti szolgáltatásokkal.
 
@@ -54,15 +54,15 @@ Ha szeretné megtudni, hogy mely szolgáltatási címkéket szeretné hozzáadni
 
 Ha a Service címke második lehetőségét részesíti előnyben, és a fürt a táblázatban felsorolt egyik régióban található, akkor csak egyetlen regionális szolgáltatási címkét kell hozzáadnia a hálózati biztonsági csoportjához.
 
-| Ország/régió | Region (Régió) | Szolgáltatás címkéje |
+| Ország | Régió | Szolgáltatás címkéje |
 | ---- | ---- | ---- |
-| Ausztrália | Ausztrália keleti régiója | HDInsight. AustraliaEast |
+| Ausztrália | Kelet-Ausztrália | HDInsight. AustraliaEast |
 | &nbsp; | Délkelet-Ausztrália | HDInsight. AustraliaSoutheast |
 | &nbsp; | Ausztrália középső régiója | HDInsight. AustraliaCentral |
-| Kína | Kína 2. keleti régiója | HDInsight. ChinaEast2 |
-| &nbsp; | Kína 2. északi régiója | HDInsight. ChinaNorth2 |
+| Kína | Kelet-Kína 2 | HDInsight. ChinaEast2 |
+| &nbsp; | Észak-Kína 2 | HDInsight. ChinaNorth2 |
 | Egyesült Államok | USA északi középső régiója | HDInsight. NorthCentralUS |
-| &nbsp; | USA 2. nyugati régiója | HDInsight. WestUS2 |
+| &nbsp; | USA nyugati régiója, 2. | HDInsight. WestUS2 |
 | &nbsp; | USA nyugati középső régiója | HDInsight. WestCentralUS |
 | Kanada | Kelet-Kanada | HDInsight. CanadaEast |
 | Brazília | Dél-Brazília | HDInsight. BrazilSouth |
@@ -72,10 +72,11 @@ Ha a Service címke második lehetőségét részesíti előnyben, és a fürt a
 | &nbsp; | Dél-India | HDInsight. SouthIndia |
 | Japán | Nyugat-Japán | HDInsight. JapanWest |
 | Franciaország | Közép-Franciaország| HDInsight. FranceCentral |
-| Egyesült Királyság | Egyesült Királyság déli régiója | HDInsight. UKSouth |
+| Egyesült Királyság | Az Egyesült Királyság déli régiója | HDInsight. UKSouth |
 | Azure Government | USA középső régiója   | HDInsight. USDoDCentral |
-| &nbsp; | USGov Texas | HDInsight. USGovTexas |
+| &nbsp; | USA Korm. Texas | HDInsight. USGovTexas |
 | &nbsp; | USA keleti régiója | HDInsight. USDoDEast |
+| &nbsp; | USA Korm. Arizona | HDInsight. USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>Több regionális szolgáltatási címke használata
 
@@ -93,7 +94,7 @@ Ha például a fürt a `East US 2` régióban lett létrehozva, akkor a követke
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Ország/régió | Region (Régió) | Szolgáltatás címkéje |
+| Ország | Régió | Szolgáltatás címkéje |
 | ---- | ---- | ---- |
 | Egyesült Államok | USA 2. keleti régiója | HDInsight. EastUS2 |
 | &nbsp; | USA középső régiója | HDInsight. CentralUS |
@@ -106,7 +107,7 @@ Ha például a fürt a `East US 2` régióban lett létrehozva, akkor a követke
 | &nbsp; | Nyugat-Európa| HDInsight. WestEurope |
 | Ázsia | Kelet-Ázsia | HDInsight. EastAsia |
 | &nbsp; | Délkelet-Ázsia | HDInsight. SoutheastAsia |
-| Ausztrália | Ausztrália keleti régiója | HDInsight. AustraliaEast |
+| Ausztrália | Kelet-Ausztrália | HDInsight. AustraliaEast |
 
 #### <a name="group-2"></a>2\. csoport
 

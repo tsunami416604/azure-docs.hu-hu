@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 03/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cfa5e2117b2d6fce525e66b25ec44f696d7d450
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: dd923a47c49bfa7a6ab16e822a80c8e7f4f9a3e0
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484417"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096061"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory átmenő hitelesítés: gyakori kérdések
 
@@ -44,7 +44,7 @@ Nem. Az átmenő hitelesítés csak az Azure AD világméretű példányában é
 Igen. Az összes feltételes hozzáférési képesség, beleértve az Azure Multi-Factor Authentication is, az átmenő hitelesítéssel dolgozhat.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Az áteresztő hitelesítés támogatja a "másodlagos azonosító" nevet a "userPrincipalName" helyett?
-Az átmenő hitelesítés korlátozott mértékben támogatja a helyettesítő azonosító használatát, ha Azure AD Connect konfigurálja a felhasználónevet. Előfeltételként Azure AD Connect kell szinkronizálnia a helyszíni Active Directory `UserPrincipalName` attribútumot az Azure AD-vel. Így a `UserPrincipalName` a helyszíni AD-ben és az Azure AD-ben is megegyező lesz. Ha egy másik attribútummal szeretne szinkronizálni a helyszíni AD-ből az Azure AD-beli egyszerű felhasználónévként, akkor a jelszó-kivonatoló szinkronizálást vagy a AD FSt kell használnia. További információ: [Azure ad Connect egyéni telepítése](how-to-connect-install-custom.md). Nem minden Office 365-alkalmazás támogatja a `Alternate ID`. Tekintse meg az adott alkalmazás dokumentációs támogatási nyilatkozatát.
+A bejelentkezés nem UPN-értékkel, például egy másodlagos e-mail-címmel történik, és jelenleg az átmenő hitelesítés (PTA) és a jelszó-kivonatolási szinkronizálás (PHS) esetében is a privát előzetes verzióban van tesztelve.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>A jelszó-kivonatolási szinkronizálás tartalékként viselkedik az átmenő hitelesítéshez?
 

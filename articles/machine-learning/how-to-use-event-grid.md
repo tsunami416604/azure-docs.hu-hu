@@ -9,26 +9,30 @@ ms.topic: conceptual
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
-ms.date: 03/05/2020
-ms.openlocfilehash: 8a9dc92baf47242af502862edebffe686263dd5d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.date: 03/11/2020
+ms.openlocfilehash: fe6125682f669e453100488b7e0afc4c49409588
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399659"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129739"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>Eseményvezérelt gépi tanulási munkafolyamatok létrehozása (előzetes verzió)
 
-[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) támogatja Azure Machine learning eseményeket. Használhatja például a Futtatás befejezését, a modell regisztrációját, a modell üzembe helyezését és az adateltolódás észlelését egy munkaterületre hatókörön belül.
+[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) támogatja Azure Machine learning eseményeket. Előfizethet és használhat olyan eseményeket, mint például a Futtatás állapota, a Futtatás befejezése, a modell regisztrálása, a modell üzembe helyezése és az adateltolódás észlelése egy munkaterületen belül.
 
-További információ: [Azure Machine learning integráció a Event Grid](concept-event-grid-integration.md) és az [Azure Machine learning Event Grid-sémával](/azure/event-grid/event-schema-machine-learning).
+További információ az események típusairól: [Azure Machine learning integráció a Event Grid](concept-event-grid-integration.md) és az [Azure Machine learning Event Grid sémával](/azure/event-grid/event-schema-machine-learning).
 
 A Event Grid használatával engedélyezze a gyakori forgatókönyveket, például a következőket:
 
-* E-mailek küldése Futtatás befejezésekor
+* E-mailek küldése a futtatási hibákról és a Futtatás befejezéséről
 * Azure-függvény használata a modell regisztrálása után
 * Azure Machine Learning különböző végpontokra irányuló folyamatos átviteli események
 * ML-folyamat elindítása a drift észlelésekor
+
+> [!NOTE] 
+> Jelenleg a runStatusChanged események csak akkor aktiválódnak, ha a futtatási állapot **meghiúsult**
+>
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Közreműködői vagy tulajdonosi hozzáférés az Azure Machine Learning munkaterülethez, amelyekhez eseményeket fog létrehozni.
@@ -43,13 +47,14 @@ A Event Grid használatával engedélyezze a gyakori forgatókönyveket, példá
 
 1. Válassza ki a használni kívánt eseménytípus típusát. Az alábbi képernyőképen például a __regisztrált modell__van kiválasztva, a __modell üzembe helyezése__, a __Futtatás befejeződött__és az __adatkészlet-eltolódás észlelhető__:
 
-    ![hozzáadási esemény típusa](./media/how-to-use-event-grid/add-event-type.png)
+    ![hozzáadási esemény típusa](./media/how-to-use-event-grid/add-event-type-updated.png)
 
 1. Válassza ki azt a végpontot, amelyen közzé kívánja tenni az eseményt. A következő képernyőképen az __Event hub__ a kiválasztott végpont:
 
     ![Select-Event-Handler](./media/how-to-use-event-grid/select-event-handler.png)
 
 Miután megerősítette a kijelölést, kattintson a __Létrehozás__gombra. A konfigurálás után ezeket az eseményeket a rendszer leküldi a végpontnak.
+
 
 ### <a name="configure-eventgrid-using-the-cli"></a>EventGrid konfigurálása a parancssori felület használatával
 
@@ -76,13 +81,17 @@ az eventgrid event-subscription create \
   --subject-begins-with "models/mymodelname"
 ```
 
+## <a name="filter-events"></a>Események szűrése
+
+Az események beállításakor szűrőket alkalmazhat, hogy csak adott esemény adatain aktiválja az eseményindítót. Az alábbi példában a Futtatás állapotának megváltozása események esetében a futtatási típusok alapján szűrhet. Az esemény csak akkor aktiválódik, ha a feltételek teljesülnek. Tekintse át az [Azure Machine learning Event Grid-sémát](/azure/event-grid/event-schema-machine-learning) , ahol megismerheti azokat az események adatait, amelyeket szűrni tud. 
+
+1. Nyissa meg a Azure Portal, válasszon ki egy új előfizetést, vagy egy meglévőt. 
+
+1. Válassza a szűrők fület, és görgessen le a speciális szűrők elemre. A **kulcs** és **érték** részen adja meg a szűréshez használni kívánt tulajdonságokat. Itt láthatja, hogy az esemény csak akkor aktiválódik, ha a futtatási típus folyamat-futtatási vagy folyamati lépés fut.  
+
+    :::image type="content" source="media/how-to-use-event-grid/select-event-filters.png" alt-text="Események szűrése":::
+
 ## <a name="sample-scenarios"></a>Példák a forgatókönyvekre
-
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>A Azure Functions használata a modellek címkék alapján történő üzembe helyezéséhez
-
-Az Azure Machine Learning Model objektum olyan paramétereket tartalmaz, amelyekkel az üzemelő példányok elhelyezhetők, például a modell neve, verziója, címkéje és tulajdonsága. A modell regisztrációs eseménye elindíthat egy végpontot, és használhat egy Azure-függvényt egy modell üzembe helyezéséhez a paraméterek értéke alapján.
-
-Példaként tekintse meg a [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) adattárat, és kövesse a **readme** fájlban található lépéseket.
 
 ### <a name="use-a-logic-app-to-send-email-alerts"></a>E-mail értesítések küldése logikai alkalmazás használatával
 
@@ -100,7 +109,7 @@ Az összes eseményre vonatkozó e-mailek konfigurálásához használja a [Azur
 
     ![Select-Event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
-1. Emellett szűrőket is hozzáadhat, hogy csak a logikai alkalmazást aktiválja az eseménytípus egy részhalmazán. A következő képernyőképen a __/datadriftID/Runs/__ __előtag-szűrőjét__ használja a rendszer.
+1. A fenti szakaszban található szűrési módszer használatával vagy szűrők hozzáadásával csak a logikai alkalmazást aktiválhatja az eseménytípus egy részhalmazán. A következő képernyőképen a __/datadriftID/Runs/__ __előtag-szűrőjét__ használja a rendszer.
 
     ![szűrés – események](./media/how-to-use-event-grid/filtering-events.png)
 
@@ -164,6 +173,11 @@ Ekkor a rendszer a folyamatban lévő adatfeldolgozási folyamatot indítja el a
 
 ![munkaterület megtekintése](./media/how-to-use-event-grid/view-in-workspace.png)
 
+### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>A Azure Functions használata a modellek címkék alapján történő üzembe helyezéséhez
+
+Az Azure Machine Learning Model objektum olyan paramétereket tartalmaz, amelyekkel az üzemelő példányok elhelyezhetők, például a modell neve, verziója, címkéje és tulajdonsága. A modell regisztrációs eseménye elindíthat egy végpontot, és használhat egy Azure-függvényt egy modell üzembe helyezéséhez a paraméterek értéke alapján.
+
+Példaként tekintse meg a [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) adattárat, és kövesse a **readme** fájlban található lépéseket.
 
 ## <a name="next-steps"></a>Következő lépések
 

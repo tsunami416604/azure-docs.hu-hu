@@ -1,23 +1,18 @@
 ---
 title: Az Azure dedikált gazdagépek üzembe helyezése a Azure PowerShell használatával
 description: A virtuális gépeket a Azure PowerShell használatával dedikált gazdagépekre helyezheti üzembe.
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 5cd82635f3aec2cca251e122aadf96f70d377c8a
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 30d15970b00a81ab85cdb85d2c0a27ee23ed1b92
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190519"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130306"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Virtuális gépek üzembe helyezése dedikált gazdagépeken a Azure PowerShell használatával
 
@@ -28,7 +23,7 @@ Győződjön meg arról, hogy telepítette a Azure PowerShell 2.8.0-as vagy úja
 ## <a name="limitations"></a>Korlátozások
 
 - A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
-- A következő virtuálisgép-sorozatok támogatottak: DSv3, ESv3 és Fsv2. 
+- A dedikált gazdagépek számára elérhető méretek és hardver típusok régiónként eltérőek. További információért tekintse meg a gazdagép [díjszabását ismertető oldalt](https://aka.ms/ADHPricing) .
 
 ## <a name="create-a-host-group"></a>Gazdagépcsoport létrehozása
 
@@ -57,7 +52,6 @@ $hostGroup = New-AzHostGroup `
 ## <a name="create-a-host"></a>Gazdagép létrehozása
 
 Most hozzon létre egy dedikált gazdagépet a gazdagép csoportban. A gazdagép neve mellett meg kell adnia a gazdagéphez tartozó SKU-t is. A gazdagép SKU rögzíti a támogatott virtuálisgép-sorozatot, valamint a dedikált gazdagép hardveres generációját.
-
 
 A gazdagép SKU-ról és a díjszabásról további információt az [Azure dedikált gazdagép díjszabása](https://aka.ms/ADHPricing)című témakörben talál.
 

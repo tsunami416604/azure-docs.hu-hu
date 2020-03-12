@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: számítási kapacitás méretezése – Azure Portal '
-description: A számítási kapacitás méretezése az SQL-készletben a Azure Portalban. Horizontális felskálázással a számítások teljesítménye növelhető, szűkítéssel a költségek csökkenthetők.
+title: Méretezési számítás a szinapszis SQL-készlethez (Azure Portal)
+description: A Azure Portal használatával a szinapszis SQL-készlet (adatraktár) számítási felskálázását végezheti el.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7463849223fdf81466237c7d0c912763988e80e6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: df0b21e98812faf99b6e67f262cec6e9c29db2f1
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200343"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130260"
 ---
-# <a name="quickstart-scale-compute-in-azure-synapse-analytics-sql-pool-in-the-azure-portal"></a>Gyors útmutató: a számítási műveletek méretezése az Azure szinapszis Analytics SQL-készletben a Azure Portal
+# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>Gyors útmutató: a szinapszis SQL-készletre vonatkozó számítási méretezés a Azure Portal
 
-A számítási kapacitás méretezése az SQL-készletben a Azure Portalban. [Bővítéssel](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, szűkítéssel a költségek csökkenthetők. 
+A Azure Portal használatával a szinapszis SQL-készlet (adatraktár) számítási felskálázását végezheti el. [Bővítéssel](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, szűkítéssel a költségek csökkenthetők. 
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -30,9 +30,9 @@ Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A már meglévő SQL-készleteket méretezheti, vagy a **mySampleDataWarehouse**nevű SQL-készlet létrehozásához használja a következőt [: Create and csatlakozni-Portal](create-data-warehouse-portal.md) .  A jelen gyors útmutató a **mySampleDataWarehouse** nevű adattárház méretezését mutatja be.
+A már meglévő SQL-készleteket méretezheti, vagy a gyors üzembe helyezési útmutató [: létrehozás és összekapcsolás-Portal](create-data-warehouse-portal.md) használatával hozhat létre egy **mySampleDataWarehouse**nevű SQL-készletet. A jelen gyors útmutató a **mySampleDataWarehouse** nevű adattárház méretezését mutatja be.
 
->[!Note]
+>[!IMPORTANT] 
 >Az SQL-készletnek online állapotban kell lennie a skálázáshoz. 
 
 ## <a name="scale-compute"></a>Számítások méretezése
@@ -51,8 +51,5 @@ Az adattárházegységek számának módosításához:
 
     ![Csúszka mozgatása](media/quickstart-scale-compute-portal/scale-dwu.png)
 
-## <a name="next-steps"></a>További lépések
-Most már megtanulta az SQL-készlet számítási felskálázását. Ha többet szeretne megtudni az SQL-készletről, folytassa a betöltési oktatóanyaggal.
-
-> [!div class="nextstepaction"]
->[Betöltés az SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md)
+## <a name="next-steps"></a>Következő lépések
+Ha többet szeretne megtudni az SQL-készletről, folytassa a [betöltési adatait az SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md) című oktatóanyagban. 

@@ -7,14 +7,15 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: dd9fd135536fc2cb222b908f3d61c1d1430e65b0
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+manager: lizross
+ms.openlocfilehash: 9d07ba42e83d9eec071ab047e9e1e92bac1f1411
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905614"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127487"
 ---
-# <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>A Windows rendszerű virtuális asztali felügyeleti eszköz hibáinak megoldása
+# <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>A Windows Virtual Desktop felügyeleti eszköz hibaelhárítása
 
 Ez a cikk azokat a problémákat ismerteti, amelyek a Windows rendszerű virtuális asztali felügyeleti eszköz telepítésekor és a javításuk során fordulhatnak elő.
 

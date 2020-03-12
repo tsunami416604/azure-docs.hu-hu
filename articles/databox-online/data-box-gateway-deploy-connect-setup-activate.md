@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 33333f8df1e4809a330815e34074d1bca556cd14
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: c2a0dde496d6af66387210ca9b2ebf9cb4bdae7f
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561833"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087947"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Oktatóanyag: csatlakozási, beállítás, aktiválás Azure Data Box Gateway
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet csatlakozni, beállítani és akt
 
 A telepítés és az aktiválási folyamat körülbelül 10 percet vesz igénybe. 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Kapcsolódás virtuális eszközhöz
@@ -93,6 +93,11 @@ Az irányítópulton a virtuális eszköznek a Data Box Gateway szolgáltatássa
    3. Ha hitelesítést használ, adjon meg egy **felhasználónevet** és egy **jelszót**.
    4. A konfigurált Webproxy-beállítások érvényesítéséhez és alkalmazásához kattintson az **alkalmaz**gombra.
 
+   > [!NOTE]
+   > A proxy-Auto config (PAC) fájlok nem támogatottak. A PAC-fájlok azt határozzák meg, hogy a böngészők és más felhasználói ügynökök hogyan tudják automatikusan kiválasztani a megfelelő proxykiszolgálót (hozzáférési módszer) egy adott URL beolvasásához.
+   > Azok a proxyk, amelyek megpróbálják feltartóztatni és beolvasni az összes forgalmat (majd újra aláírni a saját tanúsítvánnyal), nem kompatibilisek, mert a proxy tanúsítványa nem megbízható.
+   > Általában az átlátszó proxyk jól működnek Azure Data Box Gateway.
+
 4. Választható A bal oldali panelen válassza az **időbeállítások**lehetőséget, majd konfigurálja az adott eszközhöz tartozó időzónát és az elsődleges és másodlagos NTP-kiszolgálókat. 
 
     Az NTP-kiszolgálókra azért van szükség, mert az eszköznek szinkronizálnia kell az időt ahhoz, hogy hitelesíteni lehessen a felhőalapú szolgáltatóktól.
@@ -132,7 +137,7 @@ Az irányítópulton a virtuális eszköznek a Data Box Gateway szolgáltatássa
 
 Az eszköz telepítése befejeződött. Mostantól megosztásokat is hozzáadhat az eszközhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

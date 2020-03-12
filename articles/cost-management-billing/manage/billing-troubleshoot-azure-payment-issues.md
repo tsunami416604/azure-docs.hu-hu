@@ -10,20 +10,37 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 03/06/2020
 ms.author: jaserano
-ms.openlocfilehash: 199d32efef256fe3b56dbcf0a5d3ac6351f2d0b3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cd9d17eb365937035919b7e712a4b5824f747bda
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200914"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942583"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Fizetéssel kapcsolatos problémák elhárítása az Azure-ban
 
 Előfordulhat, hogy problémába vagy hibába ütközik fizetési adatai frissítése során a Microsoft Azure Portalon vagy az Azure Fiókközpontban.
 
 A probléma megoldásához válassza ki az alábbi témák közül azt, amelyik leginkább hasonlít a hibára.
+
+## <a name="my-credit-card-was-declined-when-i-tried-to-sign-up-for-azure"></a>A rendszer nem fogadja el a hitelkártyám, amikor az Azure-ra regisztrálok
+
+Elutasított kártyával kapcsolatos hibák elhárításáért tekintse meg [az Azure-regisztráció során elutasított bankkártyával kapcsolatos probléma elhárítását](troubleshoot-declined-card.md) ismertető cikket.
+
+## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>A fiókhoz tartozó előfizetések nem láthatók a fizetési mód frissítése során
+
+Előfordulhat, hogy az előfizetésekhez használttól eltérő e-mail-azonosítót használ.
+
+A hiba elhárításához tekintse meg a [Nem található előfizetés bejelentkezési hiba az Azure Portalon vagy az Azure Fiókközpontban](no-subscriptions-found.md) című témakört.
+
+## <a name="unable-to-use-a-virtual-or-prepaid-credit-or-debit-card-as-a-payment-method"></a>Virtuális hitelkártyák vagy bankkártyák és a feltöltőkártyák nem használhatók fizetési módként.
+
+*   A virtuális hitelkártyák és a feltöltőkártyák nem használhatók fizetőeszközként Azure-előfizetésekhez.
+*   A bankkártyák nem használhatók fizetőeszközként Azure-előfizetésekhez.
+
+További információkért tekintse meg [az Azure-regisztráció során elutasított bankkártyával kapcsolatos problémák elhárítását](troubleshoot-declined-card.md) ismertető cikket.
 
 ## <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Nem sikerült eltávolítani a hitelkártyát egy mentett számlázásos fizetési módból
 
@@ -33,19 +50,11 @@ Ha törölni szeretne egy meglévő kártyát, hozzá kell adnia egy új kárty�
 
 ## <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>Nem lehet törölni a régi fizetési módot egy új hozzáadása után
 
-Előfordulhat, hogy az új fizetési eszköz nincs az előfizetéshez társítva. Segítség a fizetőeszköz előfizetéshez való hozzárendeléséhez: [Hitelkártya vagy bankkártya hozzáadása, frissítése vagy eltávolítása az Azure-ban](change-credit-card.md).
-
-Elutasított kártyával kapcsolatos hibák elhárításáért tekintse meg [az Azure-regisztráció során elutasított bankkártyával kapcsolatos probléma elhárítását](troubleshoot-declined-card.md) ismertető cikket.
+Előfordulhat, hogy az új fizetési eszköz nincs az előfizetéshez társítva. Segítség a fizetőeszköz előfizetéshez való hozzárendeléséhez: [Hitelkártya hozzáadása, frissítése vagy eltávolítása az Azure-ban](change-credit-card.md).
 
 ## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>A fizetési mód törlése meghiúsul a *Nem lehet törölni a fizetési módot* hiba miatt
 
 Ennek oka egy fennálló tartozás. A fizetési mód törlése előtt egyenlítse ki tartozását.
-
-## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>A fiókhoz tartozó előfizetések nem láthatók a fizetési mód frissítése során
-
-Előfordulhat, hogy az előfizetésekhez használttól eltérő e-mail-azonosítót használ.
-
-A hiba elhárításához tekintse meg a [Nem található előfizetés bejelentkezési hiba az Azure Portalon vagy az Azure Fiókközpontban](no-subscriptions-found.md) című témakört.
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>Az előfizetés díjának befizetése meghiúsul
 

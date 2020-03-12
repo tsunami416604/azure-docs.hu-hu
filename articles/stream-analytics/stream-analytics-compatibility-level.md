@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/10/2020
+ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201798"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087858"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Az Azure Stream Analytics-feladatok kompatibilitási szintje
 
@@ -25,11 +25,9 @@ Kompatibilitási szint szabályozza a stream analytics-feladat működését.
 
 A Azure Stream Analytics jelenleg három kompatibilitási szintet támogat:
 
-* 1,0 – korábbi viselkedés
-* 1,1 – alapértelmezett viselkedés
+* 1,0 – az eredeti kompatibilitási szint a Azure Stream Analytics néhány éve általánosan elérhetővé vált.
+* 1,1 – korábbi viselkedés
 * 1,2 – a legújabb fejlemények a legújabb megoldásokkal
-
-Az eredeti 1,0 kompatibilitási szint számos éve Azure Stream Analytics általánosan elérhető.
 
 Amikor új Stream Analytics feladatot hoz létre, ajánlott azt a legújabb kompatibilitási szinttel létrehozni. Indítsa el a feladat kialakítását a legújabb viselkedések alapján, hogy a későbbiekben ne kelljen a változásokhoz és a bonyolultsághoz adni.
 

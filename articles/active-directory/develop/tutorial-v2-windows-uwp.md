@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4a62026ecec2317173361f166adcc3a7981f6d1c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701178"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129883"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Microsoft Graph API meghívása Univerzális Windows-platform alkalmazásból (XAML)
 
@@ -33,6 +33,9 @@ Az útmutató végén az alkalmazás személyes fiókok használatával meghívj
 >[!NOTE]
 > Ehhez az útmutatóhoz telepíteni kell a Visual studiót Univerzális Windows-platform-fejlesztéssel. Az Univerzális Windows-platform alkalmazások fejlesztéséhez tekintse [meg a bevezetés](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) a Visual Studio letöltésére és konfigurálására vonatkozó utasításokat.
 
+>[!NOTE]
+> Ha még nem ismeri a Microsoft Identity platformot, javasoljuk, hogy kezdje a [Microsoft Graph API meghívásával egy univerzális Windows-platform (UWP) alkalmazás](quickstart-v2-uwp.md)rövid útmutatójában.
+
 ## <a name="how-this-guide-works"></a>Az útmutató működése
 
 ![Bemutatja, hogyan működik az oktatóanyag által generált minta alkalmazás](./media/tutorial-v2-windows-uwp/uwp-intro.svg)
@@ -43,7 +46,7 @@ Ez az útmutató egy minta UWP-alkalmazást hoz létre, amely lekérdezi Microso
 
 Ez az útmutató a következő NuGet-csomagot használja:
 
-|Részletes ismertetés|Leírás|
+|Kódtár|Leírás|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
 
@@ -343,7 +346,7 @@ Adja hozzá a következő új metódust a *MainPage.XAML.cs*:
 
 Most regisztrálnia kell az alkalmazást:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki **Azure Active Directory** > **Alkalmazásregisztrációk**.
 1. Válassza az **új regisztráció**lehetőséget. Adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára, például UWP- *app-Calling-MSGraph*.
 1. A **támogatott fióktípus**területen válassza a **fiókok lehetőséget a szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox)** , majd a folytatáshoz válassza a **regisztráció** lehetőséget.

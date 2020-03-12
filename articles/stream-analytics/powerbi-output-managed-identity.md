@@ -1,21 +1,21 @@
 ---
-title: Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI kimenetre (előzetes verzió)
+title: Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI kimenetre
 description: Ez a cikk azt ismerteti, hogyan használhatók a felügyelt identitások a Azure Stream Analytics-feladatok hitelesítéséhez Power BI kimenetre.
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: 264c434849d5d5afb5934873c75d172a3783ac86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/10/2020
+ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459674"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086327"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI (előzetes verzió)
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI
 
-A Power BI kimenetének [felügyelt identitás-hitelesítése](../active-directory/managed-identities-azure-resources/overview.md) előzetes verzióként Azure stream Analytics érhető el. Így Stream Analytics feladatok közvetlen hozzáférést biztosítanak a Power BI fiókjában lévő munkaterületekhez. Ez a funkció lehetővé teszi Stream Analytics feladatok teljes körű automatizálását, mivel már nem szükséges, hogy a felhasználó interaktív módon jelentkezzen be a Power BIba a Azure Portal használatával. Emellett a hosszú ideig futó, Power BI írást végző feladatok már jobban támogatottak, mivel nem kell rendszeresen újraengedélyezni a feladatot.
+A Power BI kimenetének [felügyelt identitás-hitelesítése](../active-directory/managed-identities-azure-resources/overview.md) stream Analytics feladatok közvetlen elérését teszi lehetővé Power bi fiókjában lévő munkaterülethez. Ez a funkció lehetővé teszi Stream Analytics feladatok teljes körű automatizálását, mivel már nem szükséges, hogy a felhasználó interaktív módon jelentkezzen be a Power BIba a Azure Portal használatával. Emellett a hosszú ideig futó, Power BI írást végző feladatok már jobban támogatottak, mivel nem kell rendszeresen újraengedélyezni a feladatot.
 
 Ez a cikk bemutatja, hogyan engedélyezheti a felügyelt identitást egy Stream Analytics-feladatokhoz tartozó Power BI kimenet (ek) számára a Azure Portalon és egy Azure Resource Manager-telepítésen keresztül.
 

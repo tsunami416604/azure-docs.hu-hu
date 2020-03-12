@@ -1,20 +1,15 @@
 ---
 title: Rövid útmutató – Docker-tároló üzembe helyezése a Container instance-portálon
 description: Ebben a rövid útmutatóban a Azure Portal használatával gyorsan üzembe helyezhet egy elkülönített Azure Container-példányon futó tároló-webalkalmazást
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: quickstart
-ms.date: 04/17/2019
-ms.author: danlep
+ms.date: 03/09/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e0c5ba57c7664a64c1b11bed215f419f31630d39
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533529"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087986"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban a Azure Portal használatával
 
@@ -40,15 +35,16 @@ Az **alapvető beállítások** lapon adja meg a következő értékeket az **er
 
 * Erőforráscsoport: **Új létrehozása** > `myresourcegroup`
 * Tárolónév: `mycontainer`
-* Tárolórendszerkép: `mcr.microsoft.com/azuredocs/aci-helloworld`
+* Kép forrása: rövid útmutató **rendszerképek**
+* Tároló képe: `mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
 ![Új tárolópéldány alapbeállításainak konfigurálása az Azure Portalon][aci-portal-03]
 
-Ebben a rövid útmutatóban **a nyilvános Microsoft `aci-helloworld`-lemezkép** üzembe helyezéséhez az alapértelmezett **rendszerkép-típust** kell használnia. Ez a linuxos rendszerkép egy, a Node. js-ben írt kisméretű webalkalmazást csomagol, amely egy statikus HTML-oldalt szolgál ki.
+Ebben a rövid útmutatóban az alapértelmezett beállítások használatával helyezheti üzembe a nyilvános Microsoft `aci-helloworld` rendszerképet. Ez a minta linuxos rendszerkép egy, a Node. js-ben írt kisméretű webalkalmazást csomagol, amely egy statikus HTML-oldalt szolgál ki. Saját tároló-lemezképeket is használhat Azure Container Registry, Docker hub vagy más beállításjegyzékben.
 
-A **hálózatkezelés** lapon adja meg a tároló **DNS-neve címkéjét** . A névnek egyedinek kell lennie azon az Azure-régión belül, ahol létrehozza a Container-példányt. A tároló nyilvánosan elérhető az alábbi helyen: `<dns-name-label>.<region>.azurecontainer.io`. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
+A **hálózatkezelés** lapon adja meg a tároló **DNS-neve címkéjét** . A névnek egyedinek kell lennie azon az Azure-régión belül, ahol létrehozza a Container-példányt. A tároló nyilvánosan elérhető az alábbi helyen: `<dns-name-label>.<region>.azurecontainer.io`. Ha „A DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 
-![Új tárolópéldány konfigurálása az Azure Portalon][aci-portal-04]
+![Új Container-példány hálózati beállításainak konfigurálása a Azure Portal][aci-portal-04]
 
 Hagyja meg a többi beállítást az alapértelmezett értékeken, majd válassza a **felülvizsgálat + létrehozás**elemet.
 
@@ -56,13 +52,13 @@ Miután az érvényesítés befejeződött, egy összefoglalás jelenik meg a t�
 
 ![Új tárolópéldány beállításainak összefoglalása az Azure Portalon][aci-portal-05]
 
-Az üzembe helyezés kezdetekor egy értesítés jelenik meg, amely jelzi, hogy az üzembe helyezés folyamatban van. Amikor a tárolócsoport üzembe helyezése megtörtént, egy újabb értesítés jelenik meg.
+Az üzembe helyezés indításakor megjelenik egy értesítés, amely jelzi, hogy a központi telepítés folyamatban van. Amikor a tárolócsoport üzembe helyezése megtörtént, egy újabb értesítés jelenik meg.
 
 Nyissa meg a tároló csoport áttekintését, ehhez navigáljon az **erőforráscsoportok** > **myresourcegroup** > **mycontainer**. Jegyezze fel a tárolópéldány teljes tartománynevét (**FQDN**) és **Állapotát**.
 
 ![Tárolócsoport áttekintése az Azure Portalon][aci-portal-06]
 
-Ha az **Állapot** *Fut* értékre vált, navigáljon a tároló teljes tartománynevére a böngészőjében.
+Ha az **Állapot***Fut* értékre vált, navigáljon a tároló teljes tartománynevére a böngészőjében.
 
 ![Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben][aci-portal-07]
 

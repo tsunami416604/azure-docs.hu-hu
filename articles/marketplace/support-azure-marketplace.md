@@ -7,14 +7,14 @@ manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 7/25/2019
+ms.date: 3/11/2020
 ms.author: evansma
-ms.openlocfilehash: 40d466bd4e5959453f8c3042c4b14f6c3ef605bf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 80911ce7858308302b1736328b6c7954c0e05a86
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933463"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79095531"
 ---
 # <a name="support-for-the-marketplace"></a>A piactér támogatása  
 Az alábbi lista a piactér támogatási lehetőségeit sorolja fel.  
@@ -23,13 +23,13 @@ Emellett a [C + AI közösségi fórum Marketplace-csatornáján](https://www.mi
 
 ## <a name="onboarding"></a>Előkészítés
 
-Nyisson meg egy jegyet a Microsoft [Marketplace kiadó támogatásával](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820) a bevezetéssel és az első lépések végrehajtásával, vagy a Microsoft [partner támogatási](https://partner.microsoft.com/support) szolgálatával, ha kérdése van a Microsoft Partner Network.
+Nyisson meg egy jegyet a Microsoft [Marketplace kiadó támogatásával](https://aka.ms/marketplacepublishersupport) a bevezetéssel és az első lépésekkel kapcsolatos problémákhoz.
 
 ## <a name="partner-center-or-cloud-partner-portal"></a>Partner központ vagy Cloud Partner Portal  
 
-| Támogatási csatorna | Leírás | Elérhetőség |  
+| Támogatási csatorna | Leírás | Rendelkezésre állás |  
 |:--- |:--- |:--- |  
-| Segítségért látogasson el az incidens létrehozása lapra, amely a [piactér-támogatásban](https://go.microsoft.com/fwlink/?linkid=844975) található.</li> </ul> | A partner központ vagy a Cloud Partner Portal támogatása. | A támogatás 6 – 6 – 6 PST között biztosítható. |  
+| Segítségért látogasson el az incidens létrehozása lapra, amely a [piactér-támogatásban](https://aka.ms/marketplacepublishersupport) található.</li> </ul> | A partner központ vagy a Cloud Partner Portal támogatása. | A támogatás 24x5 van megadva. |  
 
 ## <a name="technical"></a>Technikai  
 
@@ -40,7 +40,7 @@ Nyisson meg egy jegyet a Microsoft [Marketplace kiadó támogatásával](https:/
 
 ## <a name="marketing-resources"></a>Marketing-erőforrások  
 
-| Támogatási csatorna | Leírás | Elérhetőség |  
+| Támogatási csatorna | Leírás | Rendelkezésre állás |  
 |:--- |:--- |:--- |  
 | E-mail: [cosell@microsoft.com](mailto:cosell@microsoft.com) | A közös értékesítési programhoz kapcsolódó bevezetési folyamatok és kérdések támogatása. | A csendes-óceáni időzóna alapján. |  
 | E-mail: [gtm@microsoft.com](mailto:gtm@microsoft.com) | Támogatás a GTM előnyeinek és programjának kérdéseire. | A munkaidő a csendes-óceáni időzónában található. |  

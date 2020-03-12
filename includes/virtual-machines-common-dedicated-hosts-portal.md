@@ -5,20 +5,20 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/09/2020
+ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0e7a814c1607b15e3af0e76a5ae6dfad1594a3b3
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 427117fe47294a1db1fa8d3fa1e46ee1efb91b4d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474261"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128998"
 ---
 ## <a name="limitations"></a>Korlátozások
 
 - A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
-- A kezdeti kiadás a következő virtuálisgép-sorozatot támogatja: DSv3, ESv3, FSv2, LSv2 és MSv2. 
+- A dedikált gazdagépek számára elérhető méretek és hardver típusok régiónként eltérőek. További információért tekintse meg a gazdagép [díjszabását ismertető oldalt](https://aka.ms/ADHPricing) .
 
 ## <a name="create-a-host-group"></a>Gazdagépcsoport létrehozása
 
@@ -36,8 +36,6 @@ Ebben a példában egy 1 rendelkezésre állási zónát és 2 tartalék tartom�
 1. Nyissa meg az Azure [Portalt](https://portal.azure.com).
 1. Válassza az **erőforrás létrehozása** lehetőséget a bal felső sarokban.
 1. Keresse meg a **gazdagépet** , majd válassza az eredmények közül a **gazdagép csoportok** lehetőséget.
-
-    ![A gazdagép-csoportok keresési eredménye.](./media/virtual-machines-common-dedicated-hosts-portal/host-group.png)
 1. A **gazdagép-csoportok** lapon válassza a **Létrehozás**lehetőséget.
 1. Válassza ki a használni kívánt előfizetést, majd válassza az **új létrehozása** lehetőséget egy új erőforráscsoport létrehozásához.
 1. A név mezőbe írja be a *MyDedicatedHostsRG* **nevet** , majd kattintson az **OK gombra**.
@@ -46,8 +44,6 @@ Ebben a példában egy 1 rendelkezésre állási zónát és 2 tartalék tartom�
 1. A **rendelkezésre állási zóna**beállításnál válassza az **1**lehetőséget.
 1. A tartalék **tartományok száma**beállításnál válassza a **2**lehetőséget.
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget, majd várja meg az érvényesítést.
-
-    ![Gazda-csoport beállításai](./media/virtual-machines-common-dedicated-hosts-portal/host-group-settings.png)
 1. Ha megjelenik az **átadott érvényesítési** üzenet, válassza a **Létrehozás** lehetőséget a gazda csoport létrehozásához.
 
 Csak néhány percet vehet igénybe a gazda csoport létrehozásakor.
@@ -62,16 +58,12 @@ Ha a gazdagéphez a tartalék tartományokat állítja be, a rendszer megkéri, 
 
 1. Válassza az **erőforrás létrehozása** lehetőséget a bal felső sarokban.
 1. Keressen rá a **dedikált gazdagépre** , majd válassza ki a **dedikált gazdagépeket** az eredmények közül.
-
-    ![A gazdagép-csoportok keresési eredménye.](./media/virtual-machines-common-dedicated-hosts-portal/host.png)
 1. A **dedikált gazdagépek** lapon válassza a **Létrehozás**lehetőséget.
 1. Válassza ki a használni kívánt előfizetést.
 1. Válassza az *myDedicatedHostsRG* elemet az **erőforráscsoport**elemnél.
 1. A **példány részletei**mezőbe írja be a myHost **nevet** , és válassza az *USA keleti* régiója lehetőséget a helyhez.
-1. A **hardverprofil**területen válassza a *standard Es3 Family-Type 1* elemet a **család méretéhez**, válassza a *MyHostGrup* lehetőséget **, majd válassza** az *1* értéket a tartalék **tartomány**számára. Hagyja meg az alapértelmezett értékeket a többi mezőnél.
+1. A **hardverprofil**területen válassza a *standard Es3 Family-Type 1* elemet a **család méretéhez**, válassza a *MyHostGroup* lehetőséget **, majd válassza** az *1* értéket a tartalék **tartomány**számára. Hagyja meg az alapértelmezett értékeket a többi mezőnél.
 1. Ha elkészült, válassza a **felülvizsgálat + létrehozás** lehetőséget, és várja meg az érvényesítést.
-
-    ![Gazdagép beállításai](./media/virtual-machines-common-dedicated-hosts-portal/host-settings.png)
 1. Ha megjelenik az **átadott érvényesítési** üzenet, válassza a **Létrehozás** lehetőséget a gazdagép létrehozásához.
 
 

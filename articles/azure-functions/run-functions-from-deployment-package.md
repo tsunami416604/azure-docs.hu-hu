@@ -3,12 +3,12 @@ title: Azure Functions futtatása csomagból
 description: A Azure Functions futtatókörnyezettel futtassa a függvényeket a Function app-projektfájlok fájljait tartalmazó központi telepítési csomagfájl csatlakoztatásával.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: a3e11a7c4f3fd91df2fd9dd7a44f3922c4922585
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 3ae287939f22469b03f0e10f184f067274464905
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921113"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087025"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions futtatása csomagfájl
 
@@ -91,6 +91,7 @@ További információt a következő cikkekben talál.
 - A tar és a gzip formátum nem támogatott.
 - Ez a funkció nem a helyi gyorsítótárral együtt működik.
 - A jobb hidegindító teljesítmény érdekében használja a helyi zip-beállítást (`WEBSITE_RUN_FROM_PACKAGE`= 1).
+- A Futtatás a csomagból nem kompatibilis a telepítés testreszabási beállításával (`SCM_DO_BUILD_DURING_DEPLOYMENT=true`), a rendszer figyelmen kívül hagyja a Build lépést az üzembe helyezés során.
 
 ## <a name="next-steps"></a>Következő lépések
 

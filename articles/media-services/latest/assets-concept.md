@@ -1,5 +1,5 @@
 ---
-title: eszközök
+title: Objektumok
 titleSuffix: Azure Media Services
 description: Ismerje meg, hogy milyen eszközöket és hogyan használják a Azure Media Services.
 services: media-services
@@ -10,17 +10,17 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ce32343faefbcf2484ec0b1b39f752654a2d8514
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b04941a5799955097fbd54ad9bdf50eccb87541
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303613"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087910"
 ---
-# <a name="assets-in-azure-media-services"></a>Eszközök a Azure Media Services
+# <a name="assets-in-azure-media-services-v3"></a>Eszközök a Azure Media Services v3-ban
 
 A Azure Media Servicesban az [](https://docs.microsoft.com/rest/api/media/assets) adategység alapvető fogalom. Itt adhatja meg az adathordozót (például feltöltéssel vagy élő betöltéssel), kimeneti adathordozóval (a feladatok kimenetéről), és közzéteheti az adathordozót (adatfolyamként). 
 
@@ -32,44 +32,13 @@ Az **archív** tárolási szint csak olyan nagy méretű forrásfájlok esetébe
 
 ## <a name="naming"></a>Elnevezés 
 
-### <a name="assets"></a>eszközök
+### <a name="assets"></a>Objektumok
 
 Az eszköz nevének egyedinek kell lennie. A (z) Media Services v3-erőforrások neve (például eszközök, feladatok, átalakítások) Azure Resource Manager elnevezési megkötések hatálya alá tartozik. További információ: [elnevezési konvenciók](media-services-apis-overview.md#naming-conventions).
 
 ### <a name="blobs"></a>Blobok
 
 Az eszközön belüli fájlok/Blobok nevének a [blob neve](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) és az [NTFS-név követelményeit](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)is követnie kell. Ennek a követelménynek az oka, hogy a fájlok a blob Storage-ból egy helyi NTFS-lemezre másolhatók feldolgozásra.
-
-## <a name="map-v3-asset-properties-to-v2"></a>V3-eszköz tulajdonságainak hozzárendelése v2-re
-
-A következő táblázat azt mutatja be, hogy az adategység tulajdonságai hogyan jelennek meg az objektumnak [a v2](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)-ben lévő tulajdonságok tulajdonságában.
-
-|v3-tulajdonságok|v2 tulajdonságai|
-|---|---|
-|`id` – (egyedi) a teljes Azure Resource Manager elérési út, lásd: példák az [eszközön](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
-|`name` – (egyedi) – lásd: [elnevezési konvenciók](media-services-apis-overview.md#naming-conventions) ||
-|`alternateId`|`AlternateId`|
-|`assetId`|a `Id`-(egyedi) érték a `nb:cid:UUID:` előtaggal kezdődik.|
-|`created`|`Created`|
-|`description`|`Name`|
-|`lastModified`|`LastModified`|
-|`storageAccountName`|`StorageAccountName`|
-|`storageEncryptionFormat`| `Options` (létrehozási beállítások)|
-|`type`||
-
-## <a name="storage-side-encryption"></a>Storage ügyféloldali titkosítása
-
-Az inaktív eszközök védelmére, titkosítani kell az eszközök által a storage ügyféloldali titkosítása. Az alábbi táblázat a storage ügyféloldali titkosítása működését mutatja a Media Services:
-
-|Titkosítási beállítás|Leírás|Media Services v2|Media Services v3|
-|---|---|---|---|
-|Media Services, tárolás titkosítása|AES-256 titkosítás, Media Services által felügyelt kulcs.|Támogatott<sup>(1)</sup>|Nem támogatott<sup>(2)</sup>|
-|[Inaktív adatok Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, amelyet az Azure vagy az ügyfél kezel.|Támogatott|Támogatott|
-|[Storage ügyféloldali titkosítás](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Az Azure Storage által kínált ügyféloldali titkosítás, amelyet az ügyfél felügyel Key Vaultban.|Nem támogatott|Nem támogatott|
-
-<sup>1</sup> míg a Media Services támogatja a tartalom tiszta/titkosítás nélküli kezelését, ezért nem ajánlott.
-
-<sup>2</sup> Media Services v3-as verzióban a Storage encryption (AES-256 encryption) csak akkor támogatott a visszamenőleges kompatibilitás érdekében, ha az eszközök Media Services v2-mel lettek létrehozva. A v3 azt jelenti, hogy a meglévő tárolók titkosított eszközeivel működik együtt, de nem engedélyezi újak létrehozását.
 
 ## <a name="next-steps"></a>Következő lépések
 

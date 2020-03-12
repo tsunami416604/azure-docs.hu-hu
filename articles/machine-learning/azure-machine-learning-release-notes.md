@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 9407ad09a9b30e11cbf1e3f3debb357df46e316d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: c12a6efd608625b93b1a084de3ceb790a8773eee
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399468"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129801"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -22,9 +22,99 @@ Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hi
 
 Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az ismert problémák listáját](resource-known-issues.md) .
 
+## <a name="2020-03-11"></a>2020-03-11
+
+### <a name="azure-machine-learning-sdk-for-python-v115"></a>Azure Machine Learning SDK a Python v 1.1.5
+
++ **Szolgáltatás elavulása**
+  + **Python 2,7**
+    + A Python 2,7 támogatásának utolsó verziója
+
++ **Változtatások megszakítása**
+  + **Szemantikai verziószámozás 2.0.0**
+    + Az 1,1-es verziótól kezdődően az Azure ML Python SDK a szemantikai verziószámozási 2.0.0 alkalmazza. [További tudnivalók itt](https://semver.org/). Minden további verzió új számozási sémát és szemantikai verziószámozási szerződést fog követni. 
+
++ **Hibajavítások és javítások**
+  + **Azure-CLI-ml**
+    + Módosítsa a végpont CLI-parancsának nevét az "az ml Endpoint AK" értékről az "az ml Endpoint Realtime" értékre a konzisztencia érdekében.
+    + a CLI-telepítési utasítások frissítése a stabil és a kísérleti ág parancssori felületéhez
+    + Az Egypéldányos profilkészítés egy javaslat előállítására lett javítva, és elérhetővé tettük az alap SDK-ban.
+  + **azureml-automl-Core**
+    + Engedélyezve van a Batch Mode következtetés (több sor többszöri elkészítése) a automl ONNX-modellekhez
+    + Javult az adathalmazok gyakoriságának észlelése, az adat hiánya vagy a szabálytalan adatpontokat tartalmazó információk
+    + Hozzáadta az olyan adatpontok eltávolításának lehetőségét, amelyek nem felelnek meg a domináns gyakoriságnak.
+    + Módosította a konstruktor bemenetét, hogy a megfelelő oszlopok imputálási beállításait alkalmazza.
+    + A hiba naplózása javult.
+  + **azureml-automl-futtatókörnyezet**
+    + Kijavítottuk a hibát, amely akkor fordul elő, ha a betanítási készletben nem szereplő gabona szerepel a tesztelési készletben.
+    + Az előrejelzési szolgáltatásra vonatkozó pontozás során eltávolította a y_query követelményt
+    + Kijavítottuk az előrejelzéssel kapcsolatos problémát, ha az adathalmaz rövid, hosszú idejű hézagokat tartalmazó gabonát tartalmaz.
+    + Kijavítottuk a problémát, ha az automatikus maximális horizont be van kapcsolva, és a Date oszlop karakterláncok formájában tartalmaz dátumokat. A rendszer a megfelelő átalakítást és hibaüzeneteket adta hozzá, amikor a dátumra váltás nem lehetséges
+    + Natív NumPy és SciPy használata a FileCacheStore köztes adatközpont szerializálásához és deszerializálásához (a helyi AutoML futtatásához használatos)
+    + Kijavítva a hiba, ahol a gyermek futása meghiúsult a futó állapotban.
+    + Nagyobb sebesség a featurization.
+    + A gyakoriság ellenőrzésének kijavítása a pontozás során – mostantól az előrejelzési feladatok nem igénylik a vonat és a tesztelési készlet szigorú gyakorisági egyenértékűségét.
+    + Módosította a konstruktor bemenetét, hogy a megfelelő oszlopok imputálási beállításait alkalmazza.
+    + A lag típusának kiválasztásával kapcsolatos rögzített hibák.
+    + Az adatkészleteken kiváltott, nem besorolt hiba kijavítva, az egyetlen sorral rendelkező gabonákkal
+    + Javítva lett a probléma a gyakoriság észlelésének lassúságával.
+    + Kijavít egy hibát a AutoML kivételek kezelésére vonatkozóan, ami azt eredményezte, hogy a AttributeError nem helyettesíthetik a betanítási hibák valós okát.
+  + **azureml – CLI – gyakori**
+    + Az Egypéldányos profilkészítés egy javaslat előállítására lett javítva, és elérhetővé tettük az alap SDK-ban.
+  + **azureml – megterhelés – Mir**
+    + Funkciók beolvasása a MirWebservice osztályban a hozzáférési jogkivonat lekéréséhez
+    + A MirWebservice jogkivonat-hitelesítés használata alapértelmezés szerint a MirWebservice. Run () hívása esetén, ha a hívás sikertelen
+    + A Mir webszolgáltatások üzembe helyezéséhez a [Ds2v2, a A2v2 és a F16] helyett megfelelő SKU-ket [Standard_DS2_v2, Standard_F16, Standard_A2_v2] szükséges.
+  + **azureml – egytörzsű folyamatok – lépések**
+    + A nem kötelező paraméter side_inputs hozzáadva a ParallelRunStep-hez. Ezzel a paraméterrel lehet csatlakoztatni a mappát a tárolón. A jelenleg támogatott típusok a következők: DataReference és PipelineData.
+    + A ParallelRunConfig átadott paraméterek felülírása a folyamat paramétereinek átadásával lehetséges. Az új folyamat paraméterei támogatottak aml_mini_batch_size, aml_error_threshold, aml_logging_level, aml_run_invocation_timeout (aml_node_count és aml_process_count_per_node már a korábbi kiadás részét képezik).
+  + **azureml – mag**
+    + A AzureML webszolgáltatások üzembe helyezése mostantól alapértelmezés szerint `INFO` a naplózáshoz. Ezt a `AZUREML_LOG_LEVEL` környezeti változó beállításával szabályozhatja a telepített szolgáltatásban.
+    + A Python SDK a felderítési szolgáltatás használatával "API" végpontot használ a "folyamatok" helyett.
+    + Csere az új útvonalakra az összes SDK-hívásban
+    + A ModelManagementService irányuló hívások átirányításának módosítása egy új egyesített struktúrára
+      + A munkaterület frissítési metódusa nyilvánosan elérhető.
+      + Image_build_compute paraméter hozzáadva a munkaterület-frissítési metódusban, amely lehetővé teszi a felhasználó számára a rendszerkép-létrehozási számítások frissítését.
+    +  Elavult üzeneteket adott hozzá a régi profilkészítési munkafolyamathoz. Rögzített profilkészítési CPU-és memória-korlátok
+    + A RSection hozzáadása a környezet részeként az R-feladatok futtatásához
+    +  Ha az adatkészlet forrása nem érhető el, vagy nem tartalmaz adatokat, a rendszer az ellenőrzéshez hozzáadta a hibát a `Dataset.mount`hoz.
+    + `--grant-workspace-msi-access` hozzáadva további paraméterként az adattár CLI-hez az Azure Blob-tároló regisztrálásához, amely lehetővé teszi a VNet mögötti blob-tároló regisztrálását.
+    + Az Egypéldányos profilkészítés egy javaslat előállítására lett javítva, és elérhetővé tettük az alap SDK-ban.
+    + Kijavítva a problémát a aks.py _deploy
+    + Ellenőrzi a feltöltés alatt álló modellek integritását a csendes tárolási hibák elkerülése érdekében.
+    + A felhasználók mostantól meghatározhatnak egy értéket az Auth kulcshoz a webszolgáltatások kulcsainak újragenerálása során.
+    + Kijavítva a hiba, ahol a nagybetűk nem használhatók adatkészlet bemeneti neveként
+  + **azureml – alapértékek**
+    + a `azureml-dataprep` mostantól `azureml-defaults`részeként települ. Az adatkészletek csatlakoztatásához már nem szükséges a adatelőkészítés [Fuse] manuális telepítése a számítási célokon.
+  + **azureml – értelmezés**
+    + Frissítve azureml – értelmezés a Közösség 0,6. *
+    + Frissített azureml – az értelmezéstől függ a közösségi 0.5.0
+    + azureml-stílusú kivételek hozzáadva a azureml-értelmezéshez
+    + rögzített DeepScoringExplainer szerializálás kerasz-modellekhez
+  + **azureml – mlflow**
+    + Adja hozzá a szuverén felhők támogatását a azureml. mlflow
+  + **azureml – folyamat – mag**
+    + A pipeline batch pontozási jegyzetfüzet mostantól a ParallelRunStep-t használja
+    + Kijavítva egy hiba, ahol a PythonScriptStep-eredmények helytelenül újra felhasználhatók az argumentumok listájának módosításakor
+    + Lehetőség van az oszlopok típusának beállítására, amikor a parse_ * metódusok meghívásakor `PipelineOutputFileDataset`
+  + **azureml – folyamat – lépések**
+    + Áthelyezte a `AutoMLStep` a `azureml-pipeline-steps` csomagba. A `AutoMLStep` elavult a `azureml-train-automl-runtime`on belül.
+    + Dokumentáció hozzáadva példa az adatkészlethez PythonScriptStep-bemenetként
+  + **azureml – tensorboard**
+    + Frissítve azureml-tensorboard a tensorflow 2,0 támogatásához
+    + Helyes portszám megjelenítése, ha egy számítási példányon egyéni Tensorboard-portot használ
+  + **azureml-Train-automl-Client**
+    + Kijavított egy hibát, amelyben bizonyos csomagok a távoli futtatások helytelen verzióiban telepíthetők.
+    + rögzített FeaturizationConfig-felülbírálási probléma, amely az egyéni featurization-konfigurációt szűri.
+  + **azureml-Train-automl-Runtime**
+    + Kijavítottuk a gyakoriság észlelésével kapcsolatos problémát a távoli futtatásokban.
+    + Áthelyezte a `AutoMLStep` a `azureml-pipeline-steps`-csomagban. A `AutoMLStep` elavult a `azureml-train-automl-runtime`on belül.
+  + **azureml-Train-Core**
+    + A PyTorch 1,4-es verziójának támogatása a PyTorch-Kalkulátorban
+  
 ## <a name="2020-03-02"></a>2020-03-02
 
-### <a name="azure-machine-learning-sdk-for-python-v112rc0"></a>Azure Machine Learning SDK for Python v 1.1.2 RC0
+### <a name="azure-machine-learning-sdk-for-python-v112rc0-pre-release"></a>Azure Machine Learning SDK for Python v 1.1.2 RC0 (előzetes verzió)
 
 + **Hibajavítások és javítások**
   + **azureml-automl-Core**
@@ -62,7 +152,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
 
 ## <a name="2020-02-18"></a>2020-02-18
 
-### <a name="azure-machine-learning-sdk-for-python-v111rc0"></a>Azure Machine Learning SDK for Python v 1.1.1 RC0
+### <a name="azure-machine-learning-sdk-for-python-v111rc0-pre-release"></a>Azure Machine Learning SDK for Python v 1.1.1 RC0 (előzetes verzió)
 
 + **Hibajavítások és javítások**
   + **Azure-CLI-ml**
@@ -101,7 +191,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
   
 ## <a name="2020-02-04"></a>2020-02-04
 
-### <a name="azure-machine-learning-sdk-for-python-v110rc0"></a>Azure Machine Learning SDK for Python v 1.1.0 RC0
+### <a name="azure-machine-learning-sdk-for-python-v110rc0-pre-release"></a>Azure Machine Learning SDK for Python v 1.1.0 RC0 (előzetes verzió)
 
 + **Változtatások megszakítása**
   + **Szemantikai verziószámozás 2.0.0**

@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 9f4831fd60038a2265990c0774106a5ea2f98a5a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: f3edbc4fc48abd9c7df92aedcdea50dd77a0fd4b
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672078"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086258"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
 
@@ -128,7 +128,7 @@ A szolgáltatás által definiált változók értékének beszerzésével a Bat
 | $NetworkInBytes |A bejövő bájtok száma. |
 | $NetworkOutBytes |A kimenő bájtok száma. |
 | $SampleNodeCount |A számítási csomópontok száma. |
-| $ActiveTasks |A végrehajtásra kész, de még nem végrehajtó feladatok száma. A $ActiveTasks száma magában foglalja az aktív állapotban lévő összes feladatot, és amelynek függőségei teljesültek. Az aktív állapotú, de a függőségeket nem kielégítő feladatok ki vannak zárva a $ActiveTasks darabszámból.|
+| $ActiveTasks |A végrehajtásra kész, de még nem végrehajtó feladatok száma. A $ActiveTasks száma magában foglalja az aktív állapotban lévő összes feladatot, és amelynek függőségei teljesültek. Az aktív állapotú, de a függőségeket nem kielégítő feladatok ki vannak zárva a $ActiveTasks darabszámból. A többpéldányos feladatok esetében $ActiveTasks a feladatban beállított példányok számát is tartalmazza.|
 | $RunningTasks |A futó állapotú feladatok száma. |
 | $PendingTasks |$ActiveTasks és $RunningTasks összege. |
 | $SucceededTasks |A sikeresen befejeződött feladatok száma. |
@@ -736,7 +736,7 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Azure batch számítási erőforrások használatának maximalizálása egyidejű csomópont-feladatokkal](batch-parallel-node-tasks.md) : részletes információ arról, hogy miként hajtható végre egyszerre több feladat a készlet számítási csomópontjain. Az automatikus skálázás mellett ez a funkció bizonyos munkaterhelések esetében csökkentheti a feladatok időtartamát, így pénzt takaríthat meg.
 * Egy másik hatékonysági emlékeztető esetén győződjön meg arról, hogy a Batch-alkalmazás a legoptimálisabb módon kérdezi le a Batch szolgáltatást. Lásd: [a Azure batch szolgáltatás hatékony lekérdezése](batch-efficient-list-queries.md) , amelyből megtudhatja, hogy miként lehet korlátozni a drótot keresztező adatok mennyiségét, ha egy akár több ezer számítási csomópont vagy feladat állapotát kérdezi le.

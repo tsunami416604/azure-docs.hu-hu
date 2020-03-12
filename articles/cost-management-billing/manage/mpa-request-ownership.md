@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 8e272267ffc8dd2946a390470df78b179ebbdf92
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f8f2db3e81c498757bfc39bf70999ce1e70c09da
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199653"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117180"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Azure-előfizetés számlázási tulajdonjogának beszerzése az MPA-fiókjához
 
@@ -139,7 +139,7 @@ A felhőszolgáltatók (CSP-k) által kezelt előfizetésekhez elérhető Azure 
 
 ### <a name="azure-reservations-transfer"></a>Azure-foglalások átadása
 
-Az Azure-foglalásokat a rendszer nem helyezi át automatikusan. A foglalások áthelyezéséhez [forduljon az Azure ügyfélszolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Az Azure-foglalásokat a rendszer nem helyezi át automatikusan. Megtarthatja a foglalását, vagy [lemondhatja és újra megvásárolhatja a foglalást](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) a CSP-ben. 
 
 ### <a name="access-to-azure-services"></a>Hozzáférés az Azure-szolgáltatásokhoz
 

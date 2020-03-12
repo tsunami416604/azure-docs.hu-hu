@@ -5,29 +5,29 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
-ms.date: 10/08/2019
-ms.openlocfilehash: 96420a3ea4ddc8c3d8210f1b35d6606257eba5ff
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,seodec18
+ms.date: 03/11/2020
+ms.openlocfilehash: 66bfa0d3ee4cb03f1b48e2db24be7a90d97f60d6
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494371"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117215"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Spark strukturált stream használata az Apache Kafkával a HDInsighton
 
-Ez az oktatóanyag azt mutatja be, hogyan használhatók az [Apache Spark strukturált streamek](https://spark.apache.org/docs/latest/structured-streaming-programming-guide) az Azure HDInsight lévő [Apache Kafkaekkel](https://kafka.apache.org/) való adatolvasásra és-írásra.
+Ez az oktatóanyag azt mutatja be, hogyan használhatók az [Apache Spark strukturált streamek](https://spark.apache.org/docs/latest/structured-streaming-programming-guide) az Azure HDInsight lévő [Apache Kafkaekkel](./kafka/apache-kafka-introduction.md) való adatolvasásra és-írásra.
 
 A Spark strukturált streaming egy Spark SQL-re épülő stream-feldolgozó motor. Lehetővé teszi, hogy ugyanúgy fejezze ki a streamszámításokat, mint a kötegelt számításokat a statikus adatok esetében.  
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Fürtök létrehozása Azure Resource Manager sablon használatával
 > * Spark strukturált streaming használata a Kafka használatával
 
-Amikor végzett a dokumentum lépéseivel, ne felejtse el törölni a fürtöket a további díjak elkerülése érdekében.
+Ha elkészült a jelen dokumentumban leírt lépésekkel, ne felejtse el törölni a fürtöket a felesleges költségek elkerülése érdekében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -112,7 +112,7 @@ Az oktatóanyaghoz használt Jupyter Notebook a következő cella tölti be a cs
 
 ## <a name="create-the-clusters"></a>A fürtök létrehozása
 
-Az Apache Kafka on HDInsight nem nyújt hozzáférést a Kafka-közvetítőkhöz a nyilvános interneten keresztül. A Kafkát használó minden eszköznek ugyanabban az Azure virtuális hálózatban kell lennie. Ebben az oktatóanyagban a Kafka- és a Spark-fürtök is ugyanabban az Azure virtuális hálózatban szerepelnek.
+A HDInsight Apache Kafka nem biztosít hozzáférést a Kafka-közvetítők számára a nyilvános interneten keresztül. A Kafkát használó minden eszköznek ugyanabban az Azure virtuális hálózatban kell lennie. Ebben az oktatóanyagban a Kafka- és a Spark-fürtök is ugyanabban az Azure virtuális hálózatban szerepelnek.
 
 Az alábbi ábra a Spark és a Kafka közötti kommunikáció áramlását mutatja be.
 
@@ -142,9 +142,9 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Spark-fürtök 
 
     | Beállítás | Érték |
     | --- | --- |
-    | Előfizetés | Az Azure-előfizetése |
+    | Előfizetést | Az Azure-előfizetése |
     | Erőforráscsoport | Az erőforrásokat tartalmazó erőforráscsoport. |
-    | Földrajzi egység | Az az Azure-régió, amelyben az erőforrások létrejönnek. |
+    | Hely | Az az Azure-régió, amelyben az erőforrások létrejönnek. |
     | Spark-fürt neve | A Spark-fürt neve. Az első hat karakternek a Kafka-fürt nevétől eltérőnek kell lennie. |
     | Kafka-fürt neve | A Kafka-fürt neve. Az első hat karakternek a Spark-fürt nevétől eltérőnek kell lennie. |
     | Fürt bejelentkezési felhasználóneve | A fürtök rendszergazdai felhasználóneve. |
@@ -154,7 +154,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Spark-fürtök 
 
     ![A testreszabott sablon képernyőképe](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
 
-3. Olvassa át a **használati feltételeket**, majd válassza az **Elfogadom a fenti feltételeket és kikötéseket** lehetőséget.
+3. Olvassa el a **használati**feltételeket, majd válassza **az Elfogadom a fenti feltételeket és**kikötéseket lehetőséget.
 
 4. Válassza a **Beszerzés** lehetőséget.
 
@@ -168,23 +168,21 @@ Ez a példa bemutatja, hogyan használható a Spark strukturált Stream és a Ka
 1. A gazdagép adatainak összegyűjtése. A következő curl-és [jQ](https://stedolan.github.io/jq/) -parancsok használatával szerezheti be a Kafka-ZooKeeper és a közvetítő gazdagépeit. A parancsok Windows-parancssorhoz készültek, és más környezetekben kisebb eltérésekre lesz szükség. Cserélje le a `KafkaCluster`t a Kafka-fürt nevére, és `KafkaPassword` a fürt bejelentkezési jelszavával. Továbbá cserélje le a `C:\HDI\jq-win64.exe`t a jQ-telepítés tényleges elérési útjára. Adja meg a parancsokat egy Windows-parancssorban, és mentse a kimenetet a későbbi lépésekben való használatra.
 
     ```cmd
+    REM Enter cluster name in lowercase
+
     set CLUSTERNAME=KafkaCluster
     set PASSWORD=KafkaPassword
-    
+
     curl -u admin:%PASSWORD% -G "https://%CLUSTERNAME%.azurehdinsight.net/api/v1/clusters/%CLUSTERNAME%/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | C:\HDI\jq-win64.exe -r "["""\(.host_components[].HostRoles.host_name):2181"""] | join(""",""")"
-    
+
     curl -u admin:%PASSWORD% -G "https://%CLUSTERNAME%.azurehdinsight.net/api/v1/clusters/%CLUSTERNAME%/services/KAFKA/components/KAFKA_BROKER" | C:\HDI\jq-win64.exe -r "["""\(.host_components[].HostRoles.host_name):9092"""] | join(""",""")"
     ```
 
-2. A webböngészőben csatlakozzon a Spark-fürtön lévő Jupyter notebookhoz. A következő URL-címben cserélje le a `CLUSTERNAME` elemet a __Spark__-fürt nevére.
+1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/jupyter`, ahol a `CLUSTERNAME` a fürt neve. Amikor a rendszer kéri, írja be a fürt létrehozásakor használt bejelentkezési (rendszergazdai) nevet és jelszót.
 
-        https://CLUSTERNAME.azurehdinsight.net/jupyter
+1. Jegyzetfüzet létrehozásához válassza az **új > Spark** elemet.
 
-    Amikor a rendszer kéri, írja be a fürt létrehozásakor használt bejelentkezési (rendszergazdai) nevet és jelszót.
-
-3. Jegyzetfüzet létrehozásához válassza az **új > Spark** elemet.
-
-4. A Spark streaming rendelkezik a batchs szolgáltatással, ami azt jelenti, hogy az adatkötegek és a végrehajtók az adatkötegeken futnak. Ha a végrehajtó üresjárati időkorlátja kisebb, mint a köteg feldolgozásához szükséges idő, akkor a végrehajtókat folyamatosan hozzá kell adni és el kell távolítani. Ha a végrehajtók üresjárati időkorlátja nagyobb, mint a köteg időtartama, a végrehajtó soha nem lesz eltávolítva. Ezért **javasoljuk, hogy a Spark. dynamicAllocation. enabled beállítással tiltsa le a dinamikus foglalást a streaming-alkalmazások futtatásakor.**
+1. A Spark streaming rendelkezik a batchs szolgáltatással, ami azt jelenti, hogy az adatkötegek és a végrehajtók az adatkötegeken futnak. Ha a végrehajtó üresjárati időkorlátja kisebb, mint a köteg feldolgozásához szükséges idő, akkor a végrehajtók folyamatosan lesznek hozzáadva és eltávolítva. Ha a végrehajtók üresjárati időkorlátja nagyobb, mint a köteg időtartama, a végrehajtó soha nem lesz eltávolítva. Ezért **javasoljuk, hogy a Spark. dynamicAllocation. enabled beállítással tiltsa le a dinamikus foglalást a streaming-alkalmazások futtatásakor.**
 
     A notebook által használt csomagok betöltéséhez írja be az alábbi adatokat egy jegyzetfüzet-cellába. Futtassa a parancsot a **CTRL + ENTER billentyűkombinációval**.
 
@@ -199,7 +197,7 @@ Ez a példa bemutatja, hogyan használható a Spark strukturált Stream és a Ka
     }
     ```
 
-5. Hozzon létre egy Kafka-témakört. Szerkessze az alábbi parancsot úgy, hogy lecseréli `YOUR_ZOOKEEPER_HOSTS` az első lépésben kinyert Zookeeper-gazdagépi információkkal. A `tripdata` témakör létrehozásához adja meg a Jupyter Notebook szerkesztett parancsát.
+1. Hozzon létre egy Kafka-témakört. Szerkessze az alábbi parancsot úgy, hogy lecseréli `YOUR_ZOOKEEPER_HOSTS` az első lépésben kinyert Zookeeper-gazdagépi információkkal. A `tripdata` témakör létrehozásához adja meg a Jupyter Notebook szerkesztett parancsát.
 
     ```scala
     %%bash
@@ -208,7 +206,7 @@ Ez a példa bemutatja, hogyan használható a Spark strukturált Stream és a Ka
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic tripdata --zookeeper $KafkaZookeepers
     ```
 
-6. A taxis utakon tárolt adatkérések. Adja meg a parancsot a következő cellában a New York-i taxis utakon tárolt adattöltéshez. A rendszer betölti az adatokat egy dataframe, majd a dataframe megjeleníti a cella kimenetét.
+1. A taxis utakon tárolt adatkérések. Adja meg a parancsot a következő cellában a New York-i taxis utakon tárolt adattöltéshez. A rendszer betölti az adatokat egy dataframe, majd a dataframe megjeleníti a cella kimenetét.
 
     ```scala
     import spark.implicits._
@@ -224,7 +222,7 @@ Ez a példa bemutatja, hogyan használható a Spark strukturált Stream és a Ka
     taxiDF.show()
     ```
 
-7. Adja meg a Kafka-közvetítő gazdagépek adatait. Cserélje le a `YOUR_KAFKA_BROKER_HOSTS`t a közvetítő gazdagépek az 1. lépésben kinyert adatokra.  Adja meg a szerkesztett parancsot a következő Jupyter Notebook cellában.
+1. Adja meg a Kafka-közvetítő gazdagépek adatait. Cserélje le a `YOUR_KAFKA_BROKER_HOSTS`t a közvetítő gazdagépek az 1. lépésben kinyert adatokra.  Adja meg a szerkesztett parancsot a következő Jupyter Notebook cellában.
 
     ```scala
     // The Kafka broker hosts and topic used to write to Kafka
@@ -234,7 +232,7 @@ Ez a példa bemutatja, hogyan használható a Spark strukturált Stream és a Ka
     println("Finished setting Kafka broker and topic configuration.")
     ```
 
-8. Küldje el az adatgyűjtést a Kafka-nek. A következő parancsban az `vendorid` mező lesz a Kafka-üzenet kulcsának értéke. A kulcsot a Kafka az adatparticionáláskor használja. Az összes mezőt a Kafka-üzenetben egy JSON-karakterlánc értékként tárolja a rendszer. Adja meg a következő parancsot a Jupyter-ben, hogy egy batch-lekérdezéssel mentse az adataikat a Kafka-ba.
+1. Küldje el az adatgyűjtést a Kafka-nek. A következő parancsban az `vendorid` mező lesz a Kafka-üzenet kulcsának értéke. A kulcsot a Kafka az adatparticionáláskor használja. Az összes mezőt a Kafka-üzenetben egy JSON-karakterlánc értékként tárolja a rendszer. Adja meg a következő parancsot a Jupyter-ben, hogy egy batch-lekérdezéssel mentse az adataikat a Kafka-ba.
 
     ```scala
     // Select the vendorid as the key and save the JSON string as the value.
@@ -243,7 +241,7 @@ Ez a példa bemutatja, hogyan használható a Spark strukturált Stream és a Ka
     println("Data sent to Kafka")
     ```
 
-9. Séma deklarálása. A következő parancs bemutatja, hogyan használhat sémát JSON-adatok a Kafka-ből való olvasásakor. Adja meg a parancsot a következő Jupyter-cellában.
+1. Séma deklarálása. A következő parancs bemutatja, hogyan használhat sémát JSON-adatok a Kafka-ből való olvasásakor. Adja meg a parancsot a következő Jupyter-cellában.
 
     ```scala
     // Import bits useed for declaring schemas and working with JSON data
@@ -279,7 +277,7 @@ Ez a példa bemutatja, hogyan használható a Spark strukturált Stream és a Ka
     println("Schema declared")
     ```
 
-10. Válassza az adatforrást, és indítsa el az adatfolyamot. A következő parancs azt mutatja be, hogyan lehet lekérdezni a Kafka adatait batch-lekérdezés használatával, majd az eredményeket a Spark-fürtön lévő HDFS írni. Ebben a példában a `select` lekéri az üzenetet (Value mezőt) a Kafka-ből, és a sémát alkalmazza rá. Ezután a rendszer a HDFS (WASB vagy ADL) írja a parketta formátumát. Adja meg a parancsot a következő Jupyter-cellában.
+1. Válassza az adatforrást, és indítsa el az adatfolyamot. A következő parancs azt mutatja be, hogyan lehet lekérdezni a Kafka adatait batch-lekérdezés használatával, majd az eredményeket a Spark-fürtön lévő HDFS írni. Ebben a példában a `select` lekéri az üzenetet (Value mezőt) a Kafka-ből, és a sémát alkalmazza rá. Ezután a rendszer a HDFS (WASB vagy ADL) írja a parketta formátumát. Adja meg a parancsot a következő Jupyter-cellában.
 
     ```scala
     // Read a batch from Kafka
@@ -291,14 +289,14 @@ Ez a példa bemutatja, hogyan használható a Spark strukturált Stream és a Ka
     println("Wrote data to file")
     ```
 
-11. A következő Jupyter-cellában található parancs megadásával ellenőrizheti, hogy a fájlok létrejöttek-e. Felsorolja a `/example/batchtripdata` könyvtárban található fájlokat.
+1. A következő Jupyter-cellában található parancs megadásával ellenőrizheti, hogy a fájlok létrejöttek-e. Felsorolja a `/example/batchtripdata` könyvtárban található fájlokat.
 
     ```scala
     %%bash
     hdfs dfs -ls /example/batchtripdata
     ```
 
-12. Az előző példában egy batch-lekérdezést használtunk, az alábbi parancs azt mutatja be, hogyan végezheti el ugyanezt egy adatfolyam-lekérdezés használatával. Adja meg a parancsot a következő Jupyter-cellában.
+1. Az előző példában egy batch-lekérdezést használtunk, az alábbi parancs azt mutatja be, hogyan végezheti el ugyanezt egy adatfolyam-lekérdezés használatával. Adja meg a parancsot a következő Jupyter-cellában.
 
     ```scala
     // Stream from Kafka
@@ -309,7 +307,7 @@ Ez a példa bemutatja, hogyan használható a Spark strukturált Stream és a Ka
     println("Wrote data to file")
     ```
 
-13. Futtassa a következő cellát annak ellenőrzéséhez, hogy a fájlokat az adatfolyam-lekérdezés írta-e be.
+1. Futtassa a következő cellát annak ellenőrzéséhez, hogy a fájlokat az adatfolyam-lekérdezés írta-e be.
 
     ```scala
     %%bash
@@ -322,7 +320,7 @@ Ha törölni szeretné a jelen oktatóanyag által létrehozott erőforrásokat,
 
 Az erőforráscsoport eltávolítása az Azure Portallal:
 
-1. Az Azure Portalon bontsa ki a bal oldalon a szolgáltatásmenüt, és válassza az __Erőforráscsoportok__ lehetőséget az erőforráscsoportok listájának megjelenítéséhez.
+1. A [Azure Portal](https://portal.azure.com/)bontsa ki a bal oldalon található menüt a szolgáltatások menüjének megnyitásához, majd válassza az __erőforráscsoportok__ lehetőséget az erőforráscsoportok listájának megjelenítéséhez.
 2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő __Továbbiak__ gombra (...).
 3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
 
@@ -331,9 +329,9 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 >
 > A Kafka on HDInsight-fürt törlése a Kafkában tárolt összes adatot is törli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan használhatja [Apache Spark strukturált adatfolyamot](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) a HDInsight-on található [Apache Kafka](https://kafka.apache.org/) adatok írásához és olvasásához. A következő hivatkozásra kattintva megtudhatja, hogyan használhatja a [Apache Stormt](https://storm.apache.org/) a Kafka használatával.
+Ebben az oktatóanyagban megtanulta, hogyan használhatja [Apache Spark strukturált adatfolyamot](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) a HDInsight-on található [Apache Kafka](./kafka/apache-kafka-introduction.md) adatok írásához és olvasásához. A következő hivatkozásra kattintva megtudhatja, hogyan használhatja a [Apache Stormt](./storm/apache-storm-overview.md) a Kafka használatával.
 
 > [!div class="nextstepaction"]
 > [Apache Storm használata a Apache Kafka](hdinsight-apache-storm-with-kafka.md)

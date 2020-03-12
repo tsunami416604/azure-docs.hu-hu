@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 5a6a96f478c4402a830cc522657f56cfd11fa56f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4f30bf112175742566c2957d78154e5a7abd1733
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821828"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096862"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -65,7 +65,7 @@ Az [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md
 |:---------------------------------------------| :-------------- | :----------------|
 | Automatikus feladatátvétel                           |     Nem          |      Igen         |
 | Több adatbázis feladatátvétele egyszerre  |     Nem          |      Igen         |
-| A kapcsolatok karakterláncának frissítése a feladatátvétel után      |     Igen         |      Nem          |
+| A felhasználónak frissítenie kell a kapcsolatok karakterláncát a feladatátvétel után      |     Igen         |      Nem          |
 | Felügyelt példány támogatott                   |     Nem          |      Igen         |
 | Ugyanabban a régióban lehet, mint az elsődleges             |     Igen         |      Nem          |
 | Több replika                            |     Igen         |      Nem          |
@@ -152,6 +152,6 @@ A helyreállítási mechanizmusok végrehajtása után a következő további fe
 
 Időnként előfordulhat, hogy egy alkalmazást a tervezett karbantartás, például egy alkalmazás frissítése miatt offline állapotba kell helyezni. Az [alkalmazások frissítéseinek kezelése](sql-database-manage-application-rolling-upgrade.md) azt ismerteti, hogyan használható az aktív geo-replikálás a Felhőbeli alkalmazások működés közbeni frissítésének engedélyezéséhez, hogy a frissítés során csökkentse az állásidőt, és ha valamilyen hiba történik, helyreállítási útvonalat adjon meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az önálló adatbázisok és a rugalmas készletek alkalmazás-kialakítási szempontjaival kapcsolatban lásd: [alkalmazás tervezése a Felhőbeli vész-helyreállításhoz](sql-database-designing-cloud-solutions-for-disaster-recovery.md) és a [rugalmas készlet vész-helyreállítási stratégiái](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

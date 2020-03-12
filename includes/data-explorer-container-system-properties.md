@@ -2,41 +2,57 @@
 author: orspod
 ms.service: data-explorer
 ms.topic: include
-ms.date: 01/08/2020
+ms.date: 02/27/2020
 ms.author: orspodek
-ms.openlocfilehash: f9788e4623ce60ad55d79558d1d77a17eb2a9f26
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: a2297301a0b9c0540c73c0f50483cccfc3181a0f
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779950"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128752"
 ---
 ### <a name="event-system-properties-mapping"></a>Eseményrendszer tulajdonságai leképezése
 
-Ha a fenti táblázat **adatforrás** szakaszában az **eseményrendszer tulajdonságai** lehetőséget választotta, lépjen a [webes felhasználói felületre](https://dataexplorer.azure.com/) a megfelelő leképezés létrehozásához a megfelelő KQL parancs futtatásához.
+> [!Note]
+> * A Rendszertulajdonságok Egyrekordos események esetén támogatottak.
+> * `csv` leképezés esetén a tulajdonságok a rekord elején lesznek hozzáadva. `json` leképezés esetén a tulajdonságok a legördülő listában megjelenő név szerint lesznek hozzáadva.
 
-   **CSV-megfeleltetéshez:**
+Ha a tábla **adatforrás** szakaszában az **eseményrendszer tulajdonságai** lehetőséget választotta, a táblázat sémájában és a leképezésben a következő tulajdonságokat kell tartalmaznia.
 
-    ```kusto
-    .create table MyTable ingestion csv mapping "CsvMapping1"
+**Példa táblázatos sémára**
+
+Ha az adatai három oszlopot tartalmaznak (`Timespan`, `Metric`és `Value`), és a benne foglalt tulajdonságok `x-opt-enqueued-time` és `x-opt-offset`, a parancs használatával hozza létre vagy módosítsa a tábla sémáját:
+
+```kusto
+    .create-merge table TestTable (TimeStamp: datetime, Metric: string, Value: int, EventHubEnqueuedTime:datetime, EventHubOffset:string)
+```
+
+**Példa CSV-megfeleltetésre**
+
+Az alábbi parancsok futtatásával adja hozzá az adatokhoz a rekord elejét. Megjegyzés sorszámai
+
+```kusto
+    .create table TestTable ingestion csv mapping "CsvMapping1"
     '['
-    '   { "column" : "messageid", "DataType":"string", "Properties":{"Ordinal":"0"}},'
-    '   { "column" : "userid", "DataType":"string", "Properties":{"Ordinal":"1"}},'
-    '   { "column" : "other", "DataType":"int", "Properties":{"Ordinal":"2"}}'
+    '   { "column" : "Timespan", "Properties":{"Ordinal":"2"}},'
+    '   { "column" : "Metric", "Properties":{"Ordinal":"3"}},'
+    '   { "column" : "Value", "Properties":{"Ordinal":"4"}},'
+    '   { "column" : "EventHubEnqueuedTime", "Properties":{"Ordinal":"0"}},'
+    '   { "column" : "EventHubOffset", "Properties":{"Ordinal":"1"}}'
     ']'
-    ```
+```
  
-   **JSON-megfeleltetés esetén:**
+**Példa JSON-megfeleltetésre**
 
-    ```kusto
-    .create table MyTable ingestion json mapping "JsonMapping1"
+A rendszer a Rendszertulajdonságok neveivel adja hozzá az adatforrásokat, ahogy azok megjelennek az **adatkapcsolat** panel **eseményrendszer tulajdonságai** listájában. Futtassa a következő parancsokat:
+
+```kusto
+    .create table TestTable ingestion json mapping "JsonMapping1"
     '['
-    '    { "column" : "messageid", "datatype" : "string", "Properties":{"Path":"$.message-id"}},'
-    '    { "column" : "userid", "Properties":{"Path":"$.user-id"}},'
-    '    { "column" : "other", "Properties":{"Path":"$.other"}}'
+    '    { "column" : "Timespan", "Properties":{"Path":"$.timestamp"}},'
+    '    { "column" : "Metric", "Properties":{"Path":"$.metric"}},'
+    '    { "column" : "Value", "Properties":{"Path":"$.metric_value"}},'
+    '    { "column" : "EventHubEnqueuedTime", "Properties":{"Path":"$.x-opt-enqueued-time"}},'
+    '    { "column" : "EventHubOffset", "Properties":{"Path":"$.x-opt-offset"}}'
     ']'
-    ```
-
-   > [!TIP]
-   > * Az összes kijelölt tulajdonságot meg kell adnia a leképezésben. 
-   > * A tulajdonságok sorrendje fontos a CSV-leképezésben. A rendszertulajdonságokat az összes többi tulajdonság előtt fel kell tüntetni, és ugyanabban a sorrendben kell szerepelniük az **eseményrendszer tulajdonságai** legördülő listában.
+```

@@ -15,11 +15,11 @@ ms.date: 02/16/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: aefd7a55090da7f55404d6f551ab61268582ff5a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394487"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096325"
 ---
 # <a name="configure-a-load-balancer-for-an-availability-group-on-azure-sql-server-vms"></a>Terheléselosztó konfigurálása egy rendelkezésre állási csoport számára az Azure SQL Server virtuális gépeken
 Ez a cikk azt ismerteti, hogyan hozható létre terheléselosztó egy SQL Server always on rendelkezésre állási csoport számára a Azure Resource Manager-t futtató Azure-beli virtuális gépeken. A rendelkezésre állási csoportoknak terheléselosztó szükségesek, ha a SQL Server példányok Azure-beli virtuális gépeken vannak. A terheléselosztó tárolja az IP-címet a rendelkezésre állási csoport figyelője számára. Ha egy rendelkezésre állási csoport több régióra is kiterjed, az egyes régiókban terheléselosztó szükséges.

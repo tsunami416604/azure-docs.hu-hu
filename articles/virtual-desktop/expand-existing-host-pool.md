@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
-ms.openlocfilehash: 354ee312099902372863ce2ea636d2f9f9943d5c
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+manager: lizross
+ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566425"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127896"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Meglévő gazdagép kibontása új munkamenet-gazdagépekkel
 
@@ -76,13 +77,13 @@ Kövesse az [alkalmazáskészlet létrehozása az Azure Marketplace](./create-ho
 
 Az ebben a szakaszban szereplő összes értéknek egyeznie kell azzal, amit a gazdagép és a munkamenet-gazda virtuális gépei első létrehozásakor adott meg, kivéve az *alapértelmezett asztali felhasználók*számára:
 
-1.  Az *előfizetés*mezőben válassza ki azt az előfizetést, amelybe először létrehozta a gazdagép-készletet.
-2.  Az *erőforráscsoport*mezőben válassza ki ugyanazt az erőforráscsoportot, ahol a meglévő gazdagép-készlethez tartozó virtuális gépek találhatók.
-3.  A *régió*mezőben válassza ki azt a régiót, ahol a meglévő gazdagép-munkamenet-gazdagép virtuális gépei találhatók.
-4.  A *Hostpool neve*mezőbe írja be a meglévő címkészlet nevét.
-5.  Az *asztal típusa*mezőben válassza ki azt az asztal-típust, amely megegyezik a meglévő gazdagép-készlettel.
-6.  Az *alapértelmezett asztali felhasználók beállításnál*adja meg azokat a további felhasználókat, akik be kívánnak jelentkezni a Windows rendszerű virtuális asztali ügyfelekbe, és az Azure Marketplace-ajánlat befejezése után férnek hozzá az asztalhoz. Ha például user3@contoso.com és user4@contoso.com hozzáférést szeretne hozzárendelni, adja meg user3@contoso.comuser4@contoso.com.
-7.  Válassza a Next (tovább) lehetőséget **: virtuális gép konfigurálása**.
+1.    Az *előfizetés*mezőben válassza ki azt az előfizetést, amelybe először létrehozta a gazdagép-készletet.
+2.    Az *erőforráscsoport*mezőben válassza ki ugyanazt az erőforráscsoportot, ahol a meglévő gazdagép-készlethez tartozó virtuális gépek találhatók.
+3.    A *régió*mezőben válassza ki azt a régiót, ahol a meglévő gazdagép-munkamenet-gazdagép virtuális gépei találhatók.
+4.    A *Hostpool neve*mezőbe írja be a meglévő címkészlet nevét.
+5.    Az *asztal típusa*mezőben válassza ki azt az asztal-típust, amely megegyezik a meglévő gazdagép-készlettel.
+6.    Az *alapértelmezett asztali felhasználók beállításnál*adja meg azokat a további felhasználókat, akik be kívánnak jelentkezni a Windows rendszerű virtuális asztali ügyfelekbe, és az Azure Marketplace-ajánlat befejezése után férnek hozzá az asztalhoz. Ha például user3@contoso.com és user4@contoso.com hozzáférést szeretne hozzárendelni, adja meg user3@contoso.comuser4@contoso.com.
+7.    Válassza a Next (tovább) lehetőséget **: virtuális gép konfigurálása**.
 
 >[!NOTE]
 >Az *alapértelmezett asztali felhasználók*kivételével minden mezőnek pontosan egyeznie kell a meglévő gazdagép-készletben megadott beállításokkal. Ha eltérés van, akkor az új gazdagépet fog eredményezni.
@@ -122,7 +123,7 @@ Az ebben a szakaszban szereplő összes paraméternek meg kell egyeznie a gazdag
 
 Kövesse a [Azure Resource Manager sablon futtatása új címkészlet kiépítési céljára](./create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool) című témakör utasításait, és adja meg az összes azonos paraméter-értéket, kivéve a *Rdsh-példányok számát*. A sablon futtatása után adja meg a gazdagép-készletben használni kívánt munkamenet-gazda virtuális gépek számát. Ha például öt munkamenet-gazdagépről nyolcra bővíti a gazdagép-készletet, írja be a **8**értéket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy kibontotta a meglévő gazdagép-készletet, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, és tesztelheti őket egy felhasználói munkamenet részeként. Csatlakozhat egy munkamenethez a következő ügyfelek bármelyikével:
 

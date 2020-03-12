@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: c3ea40ed02fd6b585cfdc9c30fe59bd4e247395c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 6f49529b0599f36ae4a26939bbbe171a45a1a53a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79081828"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127222"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált ML-kísérletek konfigurálása a Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Az automatikus machine learningben elérhető konfigurációs lehetőségek:
 * Modell metrikák böngészése
 * Regisztráljon és a modell üzembe helyezése
 
-Ha nem szeretne programkódot felvenni, akkor [Azure Machine learning Studióban is létrehozhatja az automatizált gépi tanulási kísérleteket](how-to-create-portal-experiments.md).
+Ha nem szeretne programkódot felvenni, akkor [Azure Machine learning Studióban is létrehozhatja az automatizált gépi tanulási kísérleteket](how-to-use-automated-ml-for-ml-models.md).
 
 ## <a name="select-your-experiment-type"></a>A kísérlet típusának kiválasztása
 
@@ -174,7 +174,7 @@ Néhány példa:
 
 A három különböző `task` paraméter értéke (a harmadik feladattípus `forecasting`, és egy hasonló algoritmus-készletet használ `regression` feladatokhoz) határozza meg az alkalmazandó modellek listáját. A `whitelist` vagy `blacklist` paraméterekkel további módosításokat is módosíthat az elérhető modellekkel a belefoglaláshoz vagy kizáráshoz. A támogatott modellek listája megtalálható a [SupportedModels osztályban](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) ([besorolás](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [Előrejelzés](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)és [regresszió](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)).
 
-Az automatikus ML érvényesítési szolgáltatás teljesítményszámláló megköveteli, hogy az időtúllépési hibák elkerülése érdekében a `experiment_timeout_minutes` 15 perces minimális időkorlát legyen beállítva.
+Az automatikus ML érvényesítési szolgáltatása megköveteli, hogy az időtúllépési hibák elkerülése érdekében a `experiment_timeout_minutes` 15 perces minimális időkorlát legyen beállítva.
 
 ### <a name="primary-metric"></a>Elsődleges metrika
 Az elsődleges metrika határozza meg, hogy milyen mérőszámot kell használni az optimalizáláshoz a modell betanításakor. A kiválasztható mérőszámokat a kiválasztott feladattípus határozza meg, az alábbi táblázat pedig az egyes feladattípusok érvényes elsődleges metrikáit tartalmazza.
@@ -191,7 +191,7 @@ Ismerje meg a mérőszámok konkrét definícióit az [automatizált gépi tanul
 
 ### <a name="data-featurization"></a>Az adatfeaturization
 
-Minden automatizált gépi tanulási kísérlet során az adatok [automatikusan méretezhetők és normalizálva](concept-automated-ml.md#preprocess) vannak, hogy a különböző léptékű funkciókra *érzékeny algoritmusok* segítségével segítsenek.  Ugyanakkor további featurization is engedélyezhet, például hiányzó értékeket imputálási, kódolást és átalakításokat. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#featurization).
+Minden automatizált gépi tanulási kísérlet során az adatok [automatikusan méretezhetők és normalizálva](concept-automated-ml.md#preprocess) vannak, hogy a különböző léptékű funkciókra *érzékeny algoritmusok* segítségével segítsenek.  Ugyanakkor további featurization is engedélyezhet, például hiányzó értékeket imputálási, kódolást és átalakításokat. [További információ arról, hogy milyen featurization tartalmaz](how-to-use-automated-ml-for-ml-models.md#featurization).
 
 A kísérletek konfigurálásakor engedélyezheti a speciális beállítást `featurization`. A következő táblázat a featurization elfogadott beállításait mutatja be a [`AutoMLConfig` osztályban](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
@@ -199,7 +199,7 @@ A kísérletek konfigurálásakor engedélyezheti a speciális beállítást `fe
 | ------------- | ------------- |
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| Azt jelzi, hogy a testreszabott featurization lépést kell használni. [Megtudhatja, hogyan szabhatja testre a featurization](how-to-configure-auto-train.md#customize-feature-engineering).|
 |`"featurization": 'off'`| Azt jelzi, hogy a featurization lépést nem szabad automatikusan elvégezni.|
-|`"featurization": 'auto'`| Azt jelzi, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](how-to-create-portal-experiments.md#advanced-featurization-options) .|
+|`"featurization": 'auto'`| Azt jelzi, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options) .|
 
 > [!NOTE]
 > Az automatizált gépi tanulás featurization lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos featurization-lépéseket automatikusan alkalmazza a rendszer a bemeneti adatokra.

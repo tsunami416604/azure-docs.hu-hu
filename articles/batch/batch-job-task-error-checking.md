@@ -5,14 +5,14 @@ services: batch
 author: mscurrell
 ms.service: batch
 ms.topic: article
-ms.date: 12/01/2019
+ms.date: 03/10/2019
 ms.author: markscu
-ms.openlocfilehash: c4e36d76bf85b9715a817dbeb7c690aa77f8d978
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4ace0de6d252680eb64990277b9478adf752f54d
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852184"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087015"
 ---
 # <a name="job-and-task-error-checking"></a>Feladat-és feladattal kapcsolatos hibák ellenőrzése
 
@@ -72,6 +72,17 @@ Minden esetben a következő tulajdonságokat kell ellenőrizni a hibákkal és 
 Figyelembe kell venni a feladat meghibásodásának hatását a feladatra és a feladatok függőségeire.  A [exitConditions](https://docs.microsoft.com/rest/api/batchservice/task/add#exitconditions) tulajdonság megadható egy feladathoz, amely egy műveletet konfigurál a függőségekhez és a feladathoz.
 - A függőségek esetében a [DependencyAction](https://docs.microsoft.com/rest/api/batchservice/task/add#dependencyaction) szabályozza, hogy a sikertelen tevékenységtől függő feladatok blokkolva vannak-e vagy futnak-e.
 - A [JobAction](https://docs.microsoft.com/rest/api/batchservice/task/add#jobaction) azt szabályozza, hogy a sikertelen feladat a letiltott, leállított vagy nem módosult feladatot eredményezi-e.
+
+### <a name="task-command-line-failures"></a>Feladat parancssori hibái
+
+A Feladat parancssorának futtatásakor a kimenet `stderr.txt`ba és `stdout.txt`ba íródik. Az alkalmazás Emellett írhat az alkalmazásspecifikus naplófájlokra is.
+
+Ha a készlet olyan csomópontja, amelyen még fut egy feladat, a naplófájlok beszerezhetők és megtekinthetők. Például a Azure Portal listázza és megtekintheti a feladatok vagy a készlet-csomópontok naplófájljait. Több API is lehetővé teszi, hogy a feladatok fájljai megjelenjenek és beszerezhetők legyenek, például [a beolvasás feladatból](https://docs.microsoft.com/rest/api/batchservice/file/getfromtask).
+
+A készletek és a Pool-csomópontok gyakran ideiglenesek, a csomópontok folyamatos hozzáadása és törlése miatt ajánlott a naplófájlok megőrzése. A [feladat kimeneti fájljai](https://docs.microsoft.com/azure/batch/batch-task-output-files) kényelmes módon menthetők a naplófájlok az Azure Storage-ba.
+
+### <a name="output-file-failures"></a>Kimeneti fájlok hibái
+Minden fájl feltöltésekor a Batch két naplófájlt ír a számítási csomópontba, `fileuploadout.txt` és `fileuploaderr.txt`. Megvizsgálhatja ezeket a naplófájlokat, ha többet szeretne megtudni egy adott hibáról. Azokban az esetekben, amikor a fájlfeltöltés soha nem történt meg, például azért, mert maga a feladat nem tudott futni, akkor ezek a naplófájlok nem fognak létezni.  
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/10/2020
 ms.author: helohr
-ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+manager: lizross
+ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201781"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127567"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -159,7 +160,7 @@ Certified Integration partnerként a Liquit a felhőbe való áttérést a RIP �
 
 A login VSI egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója és a Microsoft partner szoftvereket biztosít az alkalmazások teljesítményének teszteléséhez a Windows rendszerű virtuális asztali környezetekben. A helyszíni üzleti szolgáltatásaikat a Windows virtuális asztalra helyező ügyfelek a login VSI Enterprise Edition használatával értékelik és kezelhetik az optimális teljesítményt, méretezhetőséget és rendelkezésre állást a Windows 10 Enterprise multi-session, Windows 10 Enterprise és A Windows 7 az üzleti szempontból kritikus alkalmazásaival van engedélyezve.
 
-- [Lépjen a partner webhelyére](https://www.loginvsi.com).
+- [Lépjen a partner webhelyére](https://www.loginvsi.com/use-cases-initiatives/windows-virtual-desktop).
 
 ## <a name="nerdio"></a>Nerdio
 
@@ -253,6 +254,16 @@ A Tricerat kiváló nyomtatási megoldást kínál a Windows rendszerű virtuál
 A Tricerat esetében a nyomtatás zökkenőmentes a Windows rendszerű virtuális asztal és azon kívül is. A Tricerat szoftver lehetővé teszi a rendszergazdák számára a helyszíni nyomtatók egyszerű összekapcsolását a felhővel, a hagyományos környezetek vállalati nyomtatási felügyeletének bővítését új, modern munkaterületekre.
 
 - [Lépjen a partner webhelyére](https://www.tricerat.com/microsoft-printing).
+
+## <a name="vast-limits"></a>nagy korlátok
+
+![nagy korlátok emblémája](./media/partners/vast-limits.png)
+
+a uberAgent vállalat nagy korlátokat biztosít a Windows rendszerű virtuális asztali környezetekben. A vállalati IT-szoftvereket hoz létre, mert tudja, hogy az informatikai szakemberek miként hiszik és milyen eszközökre van szükségük. Termékei hatékonyabbá teszik az informatikai szakemberek számára, hogy pontosan azt, hogy mire van szükségük a munkájuk elvégzéséhez. nincs több, nem kevesebb.
+
+a uberAgent egy figyelési és elemzési termék, amely a végfelhasználói számítástechnika számára lett kialakítva, amely nem csupán az adatokat gyűjti, így az ügyfelek számára a fontos információk szerepelnek. a uberAgent saját mérőszámokkal rendelkezik, amelyek a felhasználói élmény, az alkalmazások és a végpontok biztonságának kulcsfontosságú szempontjait fedik le, és mindent megtudhat a Windows rendszerű virtuális asztali gépekről, anélkül, hogy ez befolyásolná a rendszerek felhasználói sűrűségét. a uberAgent leegyszerűsíti a hibaelhárítást, segíti a méretezést, és részletes információkkal szolgál az információbiztonság terén.
+
+- [Ugrás a partner webhelyére](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
 
 ## <a name="workspot"></a>Workspot
 

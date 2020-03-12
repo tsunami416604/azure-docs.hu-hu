@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: b2ec9fd70d1eb64c5968de0312941bfbc98d3033
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2a5d1178bd6dbd6f7cfdd2ec2af17b78836a38d7
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670525"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096726"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>A Azure Monitor figyelési adatforrásai
 Azure Monitor egy [közös figyelési adatplatformon](data-platform.md) alapul, amely [naplókat](data-platform-logs.md) és [mérőszámokat](data-platform-metrics.md)tartalmaz. Az adatok ebbe a platformba való gyűjtése lehetővé teszi, hogy a több erőforrásból származó adatok együttesen legyenek elemezve az Azure Monitor-ban lévő eszközök közös eszközkészletének használatával. A figyelési adatokat más helyszínekre is elküldheti bizonyos forgatókönyvek támogatása céljából, és egyes erőforrások a naplókba vagy metrikába való összegyűjtésük előtt más helyszínekre is írhatnak.
@@ -72,8 +72,8 @@ Az [Azure-tevékenység naplója](platform-logs-overview.md) tartalmazza a szolg
 |:---|:---|
 | Tevékenységnapló | A rendszer begyűjti a tevékenység naplóját a saját adattárolójába, amelyet a Azure Monitor menüből tekinthet meg, vagy a használatával tevékenységi naplók létrehozására vonatkozó riasztásokat hozhat létre. | [A tevékenység naplójának lekérdezése a Azure Portal](activity-log-view.md#azure-portal) |
 | Azure Monitor-naplók | Konfigurálja Azure Monitor naplókat a tevékenység naplójának összegyűjtéséhez, hogy elemezze más megfigyelési adatokkal. | [Azure-beli tevékenység-naplók gyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](activity-log-collect.md) |
-| Azure Storage | Exportálja a tevékenység naplóját az Azure Storage-ba archiválás céljából. | [Archiválási tevékenység naplója](activity-log-export.md#archive-activity-log)  |
-| Event Hubs | A tevékenység naplójának továbbítása más helyszínekre Event Hubs használatával | [Adatfolyam-tevékenység naplója az Event hub-](activity-log-export.md#stream-activity-log-to-event-hub)ba. |
+| Azure Storage | Exportálja a tevékenység naplóját az Azure Storage-ba archiválás céljából. | [Archiválási tevékenység naplója](resource-logs-collect-storage.md)  |
+| Event Hubs | A tevékenység naplójának továbbítása más helyszínekre Event Hubs használatával | [Adatfolyam-tevékenység naplója az Event hub-](resource-logs-stream-event-hubs.md)ba. |
 
 ### <a name="azure-service-health"></a>Azure Service Health
 [Azure Service Health](../../service-health/service-health-overview.md) információt nyújt az előfizetésében lévő Azure-szolgáltatások állapotáról, amelyet az alkalmazás és az erőforrások támaszkodnak.

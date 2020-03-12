@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 71a02e47db288890d1392f5423da0ef817ecd690
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303120"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086879"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Adatfeldolgozás a Azure Machine Learningban
 
@@ -26,7 +26,7 @@ Ebből a cikkből megtudhatja, milyen előnyökkel és hátrányokkal jár együ
 
 Az adatfeldolgozás az a folyamat, amelyben a strukturálatlan adatok kinyerése egy vagy több forrásból történik, majd a gépi tanulási modellek előkészítése. Az is időigényes, különösen ha kézzel történik, és ha nagy mennyiségű adattal rendelkezik több forrásból. A tevékenység automatizálása felszabadítja az erőforrásokat, és gondoskodik arról, hogy a modellek a legfrissebb és a vonatkozó adatait használják.
 
-Javasoljuk, hogy először a Azure Data Factory (ADF) használatával értékelje ki, mivel kifejezetten az adatok kinyerésére, betöltésére és átalakítására készült. Ha az ADF használatával nem tudja kielégíteni a követelményeit, használhatja a Python SDK-t egyéni kódú megoldás fejlesztéséhez, illetve az ADF és a Python SDK együttes használatával, hogy az igényeinek megfelelő összesített adatfeldolgozási munkafolyamatot hozzon létre.
+A Azure Data Factory (ADF) kifejezetten az adatok kinyerésére, betöltésére és átalakítására készült, azonban a Python SDK segítségével egyéni kódú megoldást fejleszthet az alapszintű adatfeldolgozási feladatokhoz. Ha egyik sem elég, amire szüksége van, az ADF-t és a Python SDK-t is használhatja egy átfogó adatfeldolgozási munkafolyamat létrehozásához, amely megfelel az igényeinek. 
 
 ## <a name="use-azure-data-factory"></a>Az Azure Data Factory használata
 
@@ -52,6 +52,8 @@ Ezek a lépések és a következő ábra a Azure Data Factory adatfeldolgozási 
 
 
     ![ADF-adatfeldolgozás](media/concept-data-ingestion/data-ingest-option-one.svg)
+    
+Megtudhatja, hogyan hozhat létre adatfeldolgozási folyamatot a [Azure Data Factory](how-to-data-ingest-adf.md)Machine Learninghoz.
 
 ## <a name="use-the-python-sdk"></a>A Python SDK használata 
 

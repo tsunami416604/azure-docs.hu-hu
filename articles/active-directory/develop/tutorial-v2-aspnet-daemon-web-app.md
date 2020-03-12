@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: ec6664e7c55057c29c5b741203b326ce460c6e91
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 635b12cc2ffc4d318eaaa74fffc17e4ce4d58c0b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701229"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129955"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Oktatóanyag: a Microsoft Identity platform-végpontot használó több-bérlős démon létrehozása
 
@@ -39,9 +39,10 @@ Az alkalmazás ASP.NET MVC-alkalmazásként van felépítve. A OWIN OpenID Conne
 
 A minta "démon" összetevője egy API-vezérlő, `SyncController.cs`. A vezérlő hívásakor a rendszer lekéri az ügyfél Azure Active Directory (Azure AD) bérlőben lévő felhasználók listáját a Microsoft Graph. a `SyncController.cs` egy AJAX-hívás indítja el a webalkalmazásban. A .NET- [hez készült Microsoft Authentication Library (MSAL)](msal-overview.md) használatával szerzi be Microsoft Graph hozzáférési jogkivonatát.
 
-Egyszerűbb Console Daemon-alkalmazás esetén lásd a [.net Core Daemon](quickstart-v2-netcore-daemon.md)rövid útmutatóját.
+>[!NOTE]
+> Ha most ismerkedik a Microsoft Identity platformmal, javasoljuk, hogy kezdje a [.net Core Daemon](quickstart-v2-netcore-daemon.md)gyors üzembe helyezésével.
 
-## <a name="scenario"></a>Alkalmazási helyzet
+## <a name="scenario"></a>Forgatókönyv
 
 Mivel az alkalmazás egy több-bérlős alkalmazás a Microsoft üzleti ügyfelei számára, biztosítania kell, hogy az ügyfelek "regisztráljanak" vagy "csatlakozzanak" az alkalmazáshoz a vállalati adatszolgáltatásokhoz. A kapcsolati folyamat során a vállalati rendszergazda először közvetlenül az *alkalmazáshoz ad engedélyeket* , így nem interaktív módon férhet hozzá a vállalati adatbázisokhoz a bejelentkezett felhasználó jelenléte nélkül. A példában szereplő logika többsége azt mutatja be, hogyan valósítható meg ez a kapcsolódási folyamat az Identity platform [rendszergazdai engedélyezési](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) végpontjának használatával.
 
@@ -154,7 +155,7 @@ Tisztítsa meg a megoldást, hozza létre újra a megoldást, futtassa a UserSyn
 
 Amikor bejelentkezik, az alkalmazás először engedélyt kér a bejelentkezésre, és beolvassa a felhasználói profilt. Ez az engedély lehetővé teszi az alkalmazás számára, hogy Ön üzleti felhasználó legyen.
 
-![Felhasználói beleegyezés](./media/tutorial-v2-aspnet-daemon-webapp/firstconsent.png)
+![Felhasználói beleegyezett](./media/tutorial-v2-aspnet-daemon-webapp/firstconsent.png)
 
 Az alkalmazás ezután megpróbálja szinkronizálni az Azure AD-bérlőből származó felhasználók listáját Microsoft Graphon keresztül. Ha nem tudja, megkéri, hogy (a bérlői rendszergazda) csatlakozhasson a bérlőhöz az alkalmazáshoz.
 
@@ -183,12 +184,12 @@ A példához tartozó kód a következő fájlokban található:
 1. Válassza ki a projektet a **megoldáskezelő** ablakban, és válassza ki az **F4** -kulcsot. 
 1. A projekt tulajdonságai között állítsa az **SSL** beállítást **igaz**értékre. Jegyezze fel az adatokat az **SSL URL-címében**. Szüksége lesz rá az alkalmazás regisztrációjának Azure Portal való konfigurálásakor.
 1. Adja hozzá a következő ASP.NET OWIN köztes NuGet-csomagokat: 
-   - Microsoft. Owin. Security. ActiveDirectory
-   - Microsoft. Owin. Security. cookie-k
-   - Microsoft. Owin. host. SystemWeb
-   - Microsoft. IdentityModel. Protocol. Extensions
-   - Microsoft. Owin. Security. OpenIdConnect
-   - Microsoft. Identity. Client 
+   - Microsoft.Owin.Security.ActiveDirectory
+   - Microsoft.Owin.Security.Cookies
+   - Microsoft.Owin.Host.SystemWeb
+   - Microsoft.IdentityModel.Protocol.Extensions
+   - Microsoft.Owin.Security.OpenIdConnect
+   - Microsoft.Identity.Client 
 1. A **App_Start** mappában:
    1. Hozzon létre egy **Startup.auth.cs**nevű osztályt. 
    1. Eltávolítás **. App_Start** a névtér nevéből. 
@@ -215,8 +216,8 @@ A projekt webalkalmazás-és webes API-projektekkel rendelkezik. Az Azure-webhel
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>DotNet-web-Daemon-v2 létrehozása és közzététele egy Azure-webhelyen
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. Válassza az **Erőforrás létrehozása** lehetőséget a bal felső sarokban.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. A bal felső sarokban válassza az **erőforrás létrehozása**lehetőséget.
 1. Válassza a **web** > **webalkalmazás**lehetőséget, majd adja meg a webhely nevét. Adja meg például a **DotNet-web-Daemon-v2-contoso.azurewebsites.net**nevet.
 1. Válassza ki az **előfizetés**, az **erőforráscsoport**és az **app Service-csomag és a hely**adatait. Az **operációs rendszer** **Windows**, és a **Közzététel** **kód**.
 1. Válassza a **Létrehozás** lehetőséget, és várja meg az App Service létrehozását.
@@ -227,7 +228,7 @@ A projekt webalkalmazás-és webes API-projektekkel rendelkezik. Az Azure-webhel
    1. Nyissa meg a **DotNet-web-Daemon-v2** projektet. 
    1. Kattintson a jobb gombbal a projektre Megoldáskezelő, majd válassza a **Közzététel**lehetőséget.
    1. Válassza a **profil importálása** lehetőséget az alsó sávban, és importálja a korábban letöltött közzétételi profilt.
-1. Válassza ki a **Konfigurálás** lehetőséget.
+1. Válassza a **Konfigurálás**lehetőséget.
 1. A **kapcsolat** lapon frissítse a cél URL-címet úgy, hogy a "https"-t használja. Használja például a [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net). Kattintson a **Tovább** gombra.
 1. A **Beállítások** lapon győződjön meg arról, hogy a **szervezeti hitelesítés engedélyezése** jelölőnégyzet nincs bejelölve.  
 1. Kattintson a **Mentés** gombra. Válassza a fő képernyő **Közzététel** elemét.
@@ -247,7 +248,7 @@ A Visual Studio közzéteszi a projektet, és automatikusan megnyit egy böngés
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs rá szükség, törölje az [alkalmazás regisztrálása](#register-your-application) lépésben létrehozott alkalmazás-objektumot.  Az alkalmazás eltávolításához kövesse az [Ön vagy a szervezete által létrehozott alkalmazás eltávolítása](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization)című témakör utasításait.
 
-## <a name="get-help"></a>Segítség
+## <a name="get-help"></a>Segítségkérés
 
 A [stack overflow](http://stackoverflow.com/questions/tagged/msal) segítségével kaphat támogatást a Közösségtől.
 Először Kérdezzen rá Stack Overflow kérdéseire, és Böngésszen a meglévő problémák között, és ellenőrizze, hogy valaki megkérdezte-e a kérdést.
@@ -268,7 +269,7 @@ További információkért tekintse meg a következő fogalmi dokumentációt:
 - [Az Azure AD-alkalmazások hozzájárulási folyamatának ismertetése](application-consent-experience.md)
 - [Jelentkezzen be bármelyik Azure Active Directory felhasználót a több-bérlős alkalmazás mintájának használatával](howto-convert-app-to-be-multi-tenant.md)
 - [A felhasználók és a rendszergazdák beleegyezésének ismertetése](howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
-- [Alkalmazás- és szolgáltatásnév-objektumok az Azure Active Directoryban](app-objects-and-service-principals.md)
+- [Alkalmazás-és egyszerű szolgáltatások objektumai Azure Active Directory](app-objects-and-service-principals.md)
 - [Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal](quickstart-register-app.md)
 - [Gyors útmutató: ügyfélalkalmazás konfigurálása a webes API-k eléréséhez](quickstart-configure-app-access-web-apis.md)
 - [Jogkivonat beszerzése az ügyfél hitelesítő adataival rendelkező alkalmazáshoz](msal-client-applications.md)

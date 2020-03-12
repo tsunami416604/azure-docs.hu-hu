@@ -8,12 +8,12 @@ ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
 ms.date: 03/7/2020
 tags: connectors
-ms.openlocfilehash: 0f62fb835fdd2353557a4aff47128bb94ba91a31
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: d4ab7425c967d3a176c0a576d0be38ece1701b8b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851527"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128413"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-fájlok figyelése, létrehozása és kezelése SSH és Azure Logic Apps használatával
 
@@ -55,9 +55,6 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
   | **Fájl átnevezése** | Nem alkalmazható | Nem alkalmazható |
   | **Fájl frissítése** | Nem | Nem alkalmazható |
   ||||
-
-  > [!NOTE]
-  > Nagyméretű fájlok feltöltéséhez olvasási és írási engedéllyel kell rendelkeznie a gyökérmappa számára az SFTP-kiszolgálón.
 
 * SFTP – az SSH-eseményindítók nem támogatják az üzenetek darabolását. Fájl tartalmának kérésekor az eseményindítók csak a 15 MB vagy annál kisebb fájlokat jelölik ki. A 15 MB-nál nagyobb fájlok lekéréséhez kövesse az alábbi mintát:
 
@@ -225,6 +222,6 @@ Az összekötő részletes technikai részleteiről, például az eseményindít
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

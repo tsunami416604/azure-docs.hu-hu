@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: helohr
-ms.openlocfilehash: 7ef35bdf6c7470d425826d7a30755cc216e69158
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+manager: lizross
+ms.openlocfilehash: a4210947d771768943775a3e62c2558fa2883bd5
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164717"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128191"
 ---
 # <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>Felhasználói kapcsolat késésének meghatározása a Windows rendszerű virtuális asztalon
 

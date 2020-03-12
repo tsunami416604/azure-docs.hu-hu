@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ddc2622a67979f989c030d615c402387e7762d5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3f4084532ac370880df69d825927240c297dd371
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983470"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129899"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a GitHubtal
 
@@ -98,19 +98,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
 7. A **GitHub beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL-cím
+    a. Bejelentkezési URL
 
     b. Azure ad-azonosító
 
-    c. Kijelentkezési URL-cím
+    c. Kijelentkezési URL
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
@@ -120,9 +120,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést a GitHubhoz való hozzáférés biztosításával.
 
@@ -130,7 +130,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Az alkalmazások listában válassza a **GitHub**elemet.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -163,6 +163,8 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
     c. Nyissa meg a letöltött tanúsítványt Azure Portal a Jegyzettömbben, illessze be a tartalmat a **nyilvános tanúsítvány** szövegmezőbe.
 
     d. Kattintson az **Edit (Szerkesztés** ) ikonra **az aláírási módszer** és a **kivonatoló módszer** **RSA-SHA1** és **SHA1** – **RSA-sha256** és **sha256** szerinti szerkesztéséhez az alább látható módon.
+    
+    e. Frissítse az **állítási fogyasztói szolgáltatás URL-címét (válasz URL-címe)** az alapértelmezett URL-címről, hogy a GitHub URL-címe megfeleljen az Azure-alkalmazás REGISZTRÁCIÓjának URL-címének.
 
     ![image](./media/github-tutorial/tutorial_github_sha.png)
 
@@ -185,7 +187,7 @@ A szakasz célja, hogy létrehozzon egy Britta Simon nevű felhasználót a GitH
 
 2. Kattintson a **személyek**elemre.
 
-    ![Személyek](./media/github-tutorial/tutorial_github_config_github_08.png "Emberek")
+    ![Személyek](./media/github-tutorial/tutorial_github_config_github_08.png "People")
 
 3. Kattintson a **tag meghívása**elemre.
 
@@ -206,7 +208,7 @@ A szakasz célja, hogy létrehozzon egy Britta Simon nevű felhasználót a GitH
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
 Amikor a hozzáférési panelen a GitHub csempére kattint, automatikusan be kell jelentkeznie a GitHubba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

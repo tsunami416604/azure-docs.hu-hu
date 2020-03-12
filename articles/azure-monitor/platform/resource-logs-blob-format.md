@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: b90b6f8eabbda229fbed4dcef6a5d863ea721faf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659135"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096779"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Felkészülés a formátum módosítására Azure Monitor a Storage-fiókba archivált platform-naplókra
 
 > [!WARNING]
-> Ha [Azure-erőforrás-naplókat vagy-metrikákat küld egy Storage-fiókba a diagnosztikai beállítások](resource-logs-collect-storage.md) vagy a [tevékenység naplóinak használatával a Storage-fiókba](activity-log-export.md), a Storage-fiókban lévő adatok formátuma a következő: 2018. november 1.,. Az alábbi utasítások ismertetik a hatását, és azt, hogy miként lehet frissíteni az eszközöket az új formátum kezelésére.
+> Ha [Azure-erőforrás-naplókat vagy-metrikákat küld egy Storage-fiókba a diagnosztikai beállítások](resource-logs-collect-storage.md) vagy a [tevékenység naplóinak használatával a Storage-fiókba](resource-logs-collect-storage.md), a Storage-fiókban lévő adatok formátuma a következő: 2018. november 1.,. Az alábbi utasítások ismertetik a hatását, és azt, hogy miként lehet frissíteni az eszközöket az új formátum kezelésére.
 >
 
 ## <a name="what-changed"></a>Mi változott

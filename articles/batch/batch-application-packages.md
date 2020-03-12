@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6cad3b3b01a98462e37a4b4b96ba02a1b61a5f62
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 30301832381bdc7b5f001eec2c449c571f9fd671
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025928"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086225"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások üzembe helyezése számítási csomópontokhoz batch-alkalmazási csomagokkal
 
@@ -90,13 +90,11 @@ A Batch szolgáltatás a társított Storage-fiókot használja az alkalmazáscs
 
 Javasoljuk, hogy hozzon létre egy Storage-fiókot *kifejezetten* a Batch-fiókjával való használatra, és válassza ki itt. Miután létrehozta a Storage-fiókot, a **Storage-fiók** ablakban csatolhatja azt a Batch-fiókjához.
 
-> [!NOTE] 
-> Jelenleg nem használhat olyan Azure Storage-fiókkal rendelkező alkalmazáscsomag-csomagokat, amely [Tűzfalszabályok](../storage/common/storage-network-security.md)használatára van konfigurálva.
-> 
+> [!IMPORTANT] 
+> - Jelenleg nem használhat olyan Azure Storage-fiókkal rendelkező alkalmazáscsomag-csomagokat, amely [Tűzfalszabályok](../storage/common/storage-network-security.md)használatára van konfigurálva.
+> - A **hierarchikus névtérrel** **rendelkező Azure Storage-fiókok** nem használhatók alkalmazás-csomagokhoz.
 
 A Batch szolgáltatás az Azure Storage-t használja az alkalmazáscsomag blokkolási blobként való tárolására. A blob-adatblokkok esetében a [szokásos módon kell fizetni][storage_pricing] , és az egyes csomagok mérete nem haladhatja meg a Blobok maximális méretét. További információ: [Azure Storage skálázhatósági és teljesítménybeli célok a Storage-fiókokhoz](../storage/blobs/scalability-targets.md). Ügyeljen rá, hogy az alkalmazáscsomag mérete és száma, valamint a költségek csökkentése érdekében rendszeresen távolítsa el az elavult csomagokat.
-> 
-> 
 
 ### <a name="view-current-applications"></a>Aktuális alkalmazások megtekintése
 Ha a Batch-fiókban szeretné megtekinteni az alkalmazásokat, kattintson a bal oldali menü **alkalmazások** menüjére, miközben megtekinti a **Batch-fiókot**.
@@ -260,7 +258,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Linux-csomópontokon a formátum némileg eltérő. A pont (.), a kötőjel (-) és a Number Signs (#) a környezeti változóban található aláhúzásra van leképezve. Azt is vegye figyelembe, hogy a rendszer megőrzi az alkalmazás AZONOSÍTÓjának esetét. Példa:
+Linux-csomópontokon a formátum némileg eltérő. A pont (.), a kötőjel (-) és a Number Signs (#) a környezeti változóban található aláhúzásra van leképezve. Azt is vegye figyelembe, hogy a rendszer megőrzi az alkalmazás AZONOSÍTÓjának esetét. Például:
 
 ```
 Linux:

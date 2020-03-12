@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: & szüneteltetésének folytatása – Azure Portal '
+title: A Azure Portal használatával szüneteltetheti és folytathatja a számítást a szinapszis SQL-készletben
 description: A Azure Portal használatával szüneteltetheti az SQL-készlet számítási felszámítását a költségek megtakarítása érdekében. Ha készen áll az adattárház használatára, folytassa a számítást.
 services: sql-data-warehouse
 author: kevinvngo
@@ -11,18 +11,16 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 49684e6844c2d9f58e9b750b12991428218e4426
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3a131c1ebbf2a69f1c738cbc3421635406500d3c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200618"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130361"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-synapse-analytics-sql-pool-in-the-azure-portal"></a>Rövid útmutató: a számítási feladat szüneteltetése és folytatása az Azure szinapszis Analytics SQL-készletben a Azure Portal
+# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Rövid útmutató: a számítások szüneteltetése és folytatása a szinapszis SQL-készletben a Azure Portal használatával
 
-A Azure Portal használatával szüneteltetheti az SQL-készlet számítási felszámítását a költségek megtakarítása érdekében. Ha készen áll az adattárház használatára, [folytassa a számítást](sql-data-warehouse-manage-compute-overview.md) .
-
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+A Azure Portal használatával szüneteltetheti és folytathatja a szinapszis SQL-készlet (adatraktár) számítási erőforrásait. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -34,9 +32,11 @@ A [create és a összekapcsolás-Portal](create-data-warehouse-portal.md) haszn�
 
 ## <a name="pause-compute"></a>Számítás szüneteltetése
 
-A költségek megtakarítása érdekében szüneteltetheti és folytathatja a számítási erőforrások igény szerinti szüneteltetését. Ha például nem fogja használni az adatbázist az éjszaka és a hétvégén, szüneteltetheti ezeket az időpontokban, és a nap folyamán folytathatja. A számítási erőforrásokért nem számítunk fel díjat, amíg az adatbázis szüneteltetve van. Azonban továbbra is a tárterületért kell fizetnie. 
+A költségek csökkentése érdekében igény szerint szüneteltetheti és folytathatja a számítási erőforrásokat. Ha például nem fogja használni az adatbázist az éjszaka és a hétvégén, szüneteltetheti ezeket az időpontokban, és a nap folyamán folytathatja. 
+>[!NOTE]
+>A számítási erőforrásokért nem számítunk fel díjat, amíg az adatbázis szüneteltetve van. Azonban továbbra is a tárterületért kell fizetnie. 
 
-Az SQL-készlet szüneteltetéséhez kövesse az alábbi lépéseket.
+Egy SQL-készlet szüneteltetéséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. Kattintson az **Azure szinapszis Analytics (korábban SQL DW)** elemre a Azure Portal bal oldali navigációs oldalán.
@@ -80,7 +80,7 @@ Az SQL-készlet folytatásához kövesse az alábbi lépéseket.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az adatraktár-egységek és az adattárházban tárolt adatforgalomért kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva. 
+Az adatraktár-egységekért és az SQL-készletben tárolt adatforgalomért kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva. 
 
 - Ha meg szeretné őrizni az adatok tárolását, szüneteltetheti a számítást.
 - Ha el szeretné távolítani a jövőbeli díjakat, törölheti az SQL-készletet. 
@@ -95,14 +95,15 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 2. Ha el szeretné távolítani az SQL-készletet, hogy ne legyen kiszámítva a számítás vagy a tárterület, kattintson a **Törlés**gombra.
 
-3. A létrehozott SQL-kiszolgáló eltávolításához kattintson a **sqlpoolservername.database.Windows.net**elemre, majd a **Törlés**elemre.  A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
+3. A létrehozott SQL-kiszolgáló eltávolításához kattintson a **sqlpoolservername.database.Windows.net**elemre, majd a **Törlés**elemre.  
 
-4. Az erőforráscsoport törléséhez kattintson a **myResourceGroup** elemre, majd az **Erőforráscsoport törlése** parancsra.
+   > [!CAUTION]
+   > A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
+
+5. Az erőforráscsoport törléséhez kattintson a **myResourceGroup** elemre, majd az **Erőforráscsoport törlése** parancsra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ezzel szüneteltette és folytatta a számítást az SQL-készlethez. A következő lépésekhez folytassa a betöltési oktatóanyagot.
+Ezzel szüneteltette és folytatta a számítást az SQL-készlethez. A következő cikkből megtudhatja, hogyan [tölthetők be](load-data-from-azure-blob-storage-using-polybase.md)az információk az SQL-készletbe. A számítási képességek kezelésével kapcsolatos további információkért tekintse meg a [számítás áttekintését](sql-data-warehouse-manage-compute-overview.md) ismertető cikket. 
 
-> [!div class="nextstepaction"]
-> [Betöltés az SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md)

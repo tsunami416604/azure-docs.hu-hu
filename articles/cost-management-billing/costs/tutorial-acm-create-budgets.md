@@ -4,17 +4,17 @@ description: Ez az oktatóanyag segít megtervezni és elszámolni a felhasznál
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f5943e37267a79ad342fbd9afe0256a4ca7182e6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b81236fd63d9289f797056cf7aaceb7d826511af
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251166"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128352"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Azure-költségvetések létrehozása és kezelése
 
@@ -54,7 +54,7 @@ További információ a Cost Management adataihoz való hozzáférés hozzárend
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-- Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+- Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Költségvetés létrehozása az Azure Portalon
 
@@ -164,7 +164,7 @@ New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -Star
 ```
 ## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>Költségvetés létrehozása Azure Resource Manager-sablonnal
 
-Azure Resource Manager-sablonok használatával költségvetést hozhat létre. A sablon segít a költségvetés egy erőforráscsoporton belüli létrehozásában. A sablon csak a Nagyvállalati Szerződéssel rendelkező ügyfelek számára érhető el.
+Azure Resource Manager-sablonok használatával költségvetést hozhat létre. A sablon segít a költségvetés egy erőforráscsoporton belüli létrehozásában. 
 
 Az alábbi képre kattintva jelentkezzen be az Azure Portalra, és nyissa meg a sablont:
 

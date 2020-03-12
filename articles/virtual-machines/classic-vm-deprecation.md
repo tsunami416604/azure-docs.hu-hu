@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 9f3fd59fa040ab46a5fc4ef8272a17cba4c631b8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 764567bffd2a08ebb5beb17e3063998848b3f110
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925773"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127333"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>A IaaS-erőforrások migrálása a Azure Resource Managerra 2023. március 1-től 
 
@@ -23,7 +23,7 @@ ms.locfileid: "77925773"
 
 Napjainkban a IaaS virtuális gépek 90%-a Azure Resource Manager használ. Ha az Azure Service Manager (ASM) használatával IaaS-erőforrásokat használ, kezdje el megtervezni az áttelepítést, és fejezze be azt a 2023-as számú [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/)kihasználása érdekében.
 
-A klasszikus virtuális gépek a [modern életciklus-szabályzatot](https://support.microsoft.com/help/30881/modern-lifecycle-policy) követik az elavultak esetében.
+A klasszikus virtuális gépek a [modern életciklus-szabályzatot](https://support.microsoft.com/help/30881/modern-lifecycle-policy) követik a nyugdíjazáshoz.
 
 ## <a name="how-does-this-affect-me"></a>Hogyan érint ez engem? 
 
@@ -31,7 +31,7 @@ A klasszikus virtuális gépek a [modern életciklus-szabályzatot](https://supp
 2) 2023. március 1-én az ügyfelek többé nem tudják elindítani a IaaS virtuális gépeket az Azure Service Manager használatával, és a továbbra is fut vagy lefoglalt, és fel lesz foglalva. 
 2) 2023. március 1-jén az előfizetéseket, akiket nem telepítettek át Azure Resource Managerre, a többi klasszikus virtuális gép törlésére vonatkozó határidőkkel kapcsolatban tájékoztatni fogjuk.  
 
-Ez a nyugdíjazás **nem** érinti a következő Azure-szolgáltatásokat és-funkciókat: 
+Ez a kivezetés **NEM** érinti az alábbi Azure-szolgáltatásokat és -funkciókat: 
 - Felhőszolgáltatások 
 - A klasszikus virtuális gépek által **nem** használt Storage-fiókok 
 - A klasszikus virtuális gépek **nem** használják a virtuális hálózatokat (virtuális hálózatok). 

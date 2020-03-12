@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5bb480181c244ee03b6ec9c2a2f5f7783c72f394
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: bdc0af39e3f3a06da6c06ddc384efe44dd678ea3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251409"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087927"
 ---
 # <a name="media-services-concepts"></a>Media Services fogalmak
 
@@ -26,7 +26,9 @@ Ez a témakör rövid áttekintést nyújt Azure Media Services terminológiár�
 A fejlesztés megkezdése előtt tekintse át az alábbi témakörökben ismertetett alapvető fogalmakat.
 
 > [!NOTE]
-> Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](media-services-apis-overview.md#sdks).
+> Jelenleg a [Azure Portal](https://portal.azure.com/) használható a következőhöz: Media Services v3 [élő események](live-events-outputs-concept.md), View (nem felügyelt) v3- [eszközök](assets-concept.md)kezelése, az API-k [elérésére vonatkozó információk lekérése](access-api-portal.md). Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](https://aka.ms/ams-v3-rest-ref), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="media-services-v3-terminology"></a>Media Services v3 terminológia
 

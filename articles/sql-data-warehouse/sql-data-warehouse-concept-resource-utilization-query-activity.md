@@ -7,19 +7,19 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 02/04/2020
+ms.date: 03/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47f142a19ac470fb29e9542941cd94a6b29ce240
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 82bf6f9a78a46659cc2e0955895c6e1a6e6eb3aa
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195923"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096623"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Erőforrás-kihasználtság és lekérdezési tevékenységek figyelése az Azure szinapszis Analyticsben
-Az Azure szinapszis Analytics a Azure Portalon belül gazdag monitorozási lehetőségeket biztosít az adattárház számítási feladataihoz. Az Azure Portal az ajánlott eszköz az adattárház figyelésére, mivel konfigurálható megőrzési időt, riasztásokat, javaslatokat és testreszabható diagramokat és irányítópultokat biztosít a metrikák és naplók számára. A portál lehetővé teszi az integrációt más Azure-figyelési szolgáltatásokkal, például az Operations Management Suite (OMS) és a Azure Monitor (naplók) használatával, amelyek átfogó figyelési élményt biztosítanak nemcsak az adattárházhoz, hanem a teljes Azure-elemzéshez is platform az integrált monitorozási élményhez. Ez a dokumentáció ismerteti, hogy milyen figyelési funkciók érhetők el az elemzési platform SQL Analytics szolgáltatással való optimalizálásához és kezeléséhez. 
+Az Azure szinapszis Analytics a Azure Portalon belül gazdag monitorozási lehetőségeket biztosít az adattárház-számítási feladatokra vonatkozóan. Az Azure Portal az ajánlott eszköz az adattárház figyelésére, mivel konfigurálható megőrzési időt, riasztásokat, javaslatokat és testreszabható diagramokat és irányítópultokat biztosít a metrikák és naplók számára. A portál lehetővé teszi a log Analytics szolgáltatással való integrációt a többi Azure monitoring-szolgáltatással, például a Azure Monitor (naplókkal), hogy átfogó figyelési élményt nyújtson a nem csupán az adattárházhoz, hanem a teljes Azure Analytics-platformot az integrált figyelési élmény. Ez a dokumentáció ismerteti, hogy milyen figyelési funkciók érhetők el az elemzési platform SQL Analytics szolgáltatással való optimalizálásához és kezeléséhez. 
 
 ## <a name="resource-utilization"></a>Erőforrás-használat 
 A következő metrikák érhetők el az SQL Analytics Azure Portal. Ezek a metrikák [Azure monitoron](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics)keresztül vannak felszínben.
@@ -41,9 +41,13 @@ A következő metrikák érhetők el az SQL Analytics Azure Portal. Ezek a metri
 | Gyorsítótár találati százaléka    | (gyorsítótárbeli találatok/gyorsítótár-kihagyás) * 100, ahol a gyorsítótár-találatok a helyi SSD-gyorsítótár és a gyorsítótár-kihagyott oszlopcentrikus összes találatának összege az összes csomóponton összefoglalt helyi SSD-gyorsítótárban. | AVG, min, Max    |
 | Gyorsítótár használt százaléka   | (gyorsítótár-használat/gyorsítótár-kapacitás) * 100, ahol a használt gyorsítótár a helyi SSD gyorsítótárban lévő összes bájt összege az összes csomóponton és a gyorsítótár kapacitása a helyi SSD-gyorsítótár tárolási kapacitása az összes csomóponton belül | AVG, min, Max    |
 | Helyi tempdb százalékos aránya | Helyi tempdb kihasználtsága az összes számítási csomóponton – az értékek öt percenként vannak kibocsátva | AVG, min, Max    |
+| Adattárolás mérete | Az adatbázisba betöltött adatmennyiség teljes mérete. Ide tartoznak a KKU-ban és a nem CCI-táblázatokban tárolt adatmennyiségek, amelyekben a nem CCI-táblázatok mérete a teljes adatbázis-fájlméret alapján mérhető | Összeg |
+| Vész-helyreállítási méret | A földrajzi biztonsági mentés 24 óránként végzett teljes mérete | Összeg |
+| Pillanatkép-tároló mérete | Az adatbázis-visszaállítási pontok biztosításához készített pillanatképek teljes mérete. Ez magában foglalja az automatizált és a felhasználó által definiált pillanatképeket is. | Összeg |
 
 A metrikák megtekintésekor megfontolandó szempontok és riasztások beállítása:
 
+- A használt DWU csak az SQL-készletben lévő **használat magas szintű ábrázolását** jelöli, és nem a kihasználtság átfogó mutatója. Annak megállapításához, hogy fel vagy le kell-e skálázást, gondolja át a DWU által befolyásolható összes tényezőt, például a párhuzamosságot, a memóriát, a tempdb és az adaptív gyorsítótárazási kapacitást. Azt javasoljuk, hogy [a számítási feladatokat különböző DWU-beállításokon futtassa](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-compute-overview#finding-the-right-size-of-data-warehouse-units) , hogy megtudja, mi a legmegfelelőbb az üzleti célok teljesítéséhez.
 - Egy adott adattárház esetében nem sikerült a sikertelen és sikeres kapcsolatok jelentése – nem a logikai kiszolgálóhoz
 - A memória százalékos aránya a kihasználtságot is tükrözi, még akkor is, ha az adatraktár tétlen állapotban van – nem tükrözi az aktív munkaterhelés-memória használatát. A metrikák használata és nyomon követése másokkal (tempdb, Gen2 cache), hogy átfogó döntést hozzon, ha a további gyorsítótár-kapacitás skálázása növeli a munkaterhelés teljesítményét a követelmények teljesítése érdekében.
 
@@ -57,7 +61,7 @@ Az SQL Analytics által biztosított DMV listájának megtekintéséhez tekintse
 Mindkét metrika és napló exportálható Azure Monitorba, pontosabban a [Azure monitor naplózó](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) összetevőt, és a [naplózási lekérdezésekkel](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata)programozott módon férhet hozzá. Az SQL Analytics naplózási késése körülbelül 10-15 percet vesz igénybe. A késést befolyásoló tényezőkkel kapcsolatos további információkért látogasson el a következő dokumentációra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő útmutatók ismertetik a gyakori forgatókönyveket és a használati eseteket az adattárház monitorozása és kezelése során:
 
 - [Az adatraktár munkaterhelésének figyelése a DMV](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)

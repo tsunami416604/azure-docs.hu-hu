@@ -11,92 +11,55 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2019
+ms.date: 03/06/2020
 ms.author: memildin
-ms.openlocfilehash: 6b262baddd10c9d0dff4b196b733972b97d99872
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 183b81134b2fe72a539cc6460a05d828342aafbb
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552984"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086486"
 ---
-# <a name="monitor-identity-and-access-preview"></a>Identitás és hozzáférés figyelése (előzetes verzió)
+# <a name="monitor-identity-and-access"></a>Identitás és hozzáférés monitorozása
+
+> [!TIP]
+> Március 2020-én a Azure Security Center identitás-és hozzáférési javaslatai szerepelnek az ingyenes díjszabási szinten található összes előfizetésben. Ha van előfizetése az ingyenes szinten, a rendszer a biztonságos pontszámot fogja érinteni, mivel azokat korábban nem értékelték a személyazonosságuk és a hozzáférésük biztonsága szempontjából. 
+
 Ha Security Center észleli a potenciális biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának lépésein az erőforrások megerősítéséhez és védelméhez.
 
-Ez a cikk a Azure Security Center erőforrás-biztonsági szakaszának **identitás-és elérési** oldalát ismerteti.
+A biztonsági szegély egy hálózati kerületből lett kialakulóban egy identitási peremhálózaton. A biztonság kevesebb információt nyújt a hálózat védelméről és az adatai védelméről, valamint az alkalmazások és a felhasználók biztonságának kezeléséről. Napjainkban egyre több adat és alkalmazás kerül a felhőbe, így az identitás lép a szegélyhálózatok helyére.
 
-Az oldalon megjelenő javaslatok teljes listáját az [identitás-és hozzáférési javaslatok](recommendations-reference.md#recs-identity)című részben tekintheti meg.
+Az identitástevékenységek figyelésével proaktív módon tud cselekedni, mielőtt egy incidens bekövetkezne, illetve reaktív tevékenységekkel leállíthatja a támadási kísérleteket. Példák a Azure Security Center az **identitás és hozzáférés erőforrás-** biztonság szakaszában esetlegesen megjelenő javaslatokra:
 
-> [!NOTE]
-> Az identitás és a hozzáférés figyelése előzetes verzióban érhető el, és csak a standard szintű Security Center érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
->
+- Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
+- Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni
+- Az elavult fiókokat el kell távolítani az előfizetésből
+- Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 
-Az identitásnak a vállalat vezérlő síkja kell lennie, és az identitások védelme elsődleges prioritásnak kell lennie. A biztonsági szegély egy hálózati kerületből lett kialakulóban egy identitási peremhálózaton. A biztonság kevesebb információt nyújt a hálózat védelméről és az adatai védelméről, valamint az alkalmazások és a felhasználók biztonságának kezeléséről. Napjainkban egyre több adat és alkalmazás kerül a felhőbe, így az identitás lép a szegélyhálózatok helyére.
-
-Az identitástevékenységek figyelésével proaktív módon tud cselekedni, mielőtt egy incidens bekövetkezne, illetve reaktív tevékenységekkel leállíthatja a támadási kísérleteket. Az Identity & Access irányítópult a következőkhöz nyújt javaslatokat:
-
-- Az MFA engedélyezése az előfizetés kiemelt jogosultságú fiókjaiban
-- Írási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből
-- Kiemelt jogosultságú külső fiókok eltávolítása az előfizetésből
+Az itt megjelenő javaslatok teljes listáját az [identitás-és hozzáférési javaslatok](recommendations-reference.md#recs-identity)című részben találja.
 
 > [!NOTE]
 > Ha az előfizetése több mint 600-fiókkal rendelkezik, Security Center nem tudja futtatni az identitással kapcsolatos ajánlásokat az előfizetésében. A nem futtatott javaslatok az alábbi "nem elérhető értékelések" alatt találhatók.
 A Security Center nem tudja futtatni az identitásra vonatkozó javaslatokat a Cloud Solution Provider (CSP) partner rendszergazdai ügynökeit.
 >
 
-## <a name="monitor-identity-and-access"></a>Identitás és hozzáférés monitorozása
 
-Nyissa meg az azonosított identitás-és elérési problémák listáját az **identity & Access** ( **erőforrások**alatt) vagy az Áttekintés lapon lévő Security Center oldalsávon. 
+Az összes identitási és hozzáférési javaslat a **javaslatok** oldalon két biztonsági vezérlőn belül érhető el:
 
-Az **identitás & hozzáférés**alatt két lap található:
+- Hozzáférés és engedélyek kezelése 
+- MFA engedélyezése
 
-- **Áttekintés**: Security Center által azonosított javaslatok.
-- **Előfizetések**: az előfizetések és a jelenlegi biztonsági állapotok listája.
+![A két biztonsági ellenőrzés az identitással és hozzáféréssel kapcsolatos javaslatokkal](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
 
-[![Identity & hozzáférés](./media/security-center-identity-access/identity-dashboard.png)](./media/security-center-identity-access/identity-dashboard.png#lightbox)
 
-### <a name="overview-section"></a>Áttekintő szakasz
-Az **Áttekintés**területen a javaslatok listája szerepel. Az első oszlop a javaslatokat sorolja fel. A második oszlop az adott javaslat által érintett előfizetések teljes számát jeleníti meg. A harmadik oszlop a probléma súlyosságát mutatja.
+## <a name="enable-multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA) engedélyezése
 
-1. Válasszon egy javaslatot. Megnyílik a javaslatok ablak, amely a következőket jeleníti meg:
+Az MFA engedélyezéséhez [Azure Active Directory (ad) bérlői engedélyek](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)szükségesek. 
 
-   - A javaslat leírása
-   - Sérült és kifogástalan állapotú előfizetések listája
-   - A sikertelen értékelés miatt nem ellenőrzött erőforrások listája, vagy az erőforrás az ingyenes szinten futó előfizetéshez tartozik, és nincs értékelve.
+- Ha prémium szintű AD-kiadással rendelkezik, engedélyezze az MFA használatát [feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)használatával.
 
-    [![javaslatok ablak](./media/security-center-identity-access/select-subscription.png)](./media/security-center-identity-access/select-subscription.png#lightbox)
+- Az AD Free Edition felhasználói az [ad-dokumentációban](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) leírtak szerint engedélyezhetik a Azure Active Directory **biztonsági alapértelmezéseit** , de az MFA engedélyezésére vonatkozó Security Center-javaslat továbbra is megjelenik.
 
-1. További részletekért válasszon egy előfizetést a listában.
-
-### <a name="subscriptions-section"></a>Előfizetések szakasz
-Az **előfizetések**alatt található az előfizetések listája. Az első oszlop felsorolja az előfizetéseket. A második oszlop az egyes előfizetésekhez tartozó javaslatok teljes számát jeleníti meg. A harmadik oszlop a problémák súlyosságát mutatja.
-
-[![-előfizetések lap](./media/security-center-identity-access/subscriptions.png)](./media/security-center-identity-access/subscriptions.png#lightbox)
-
-1. Válasszon előfizetést. Megnyílik egy összefoglaló nézet három lapból:
-
-   - **Javaslatok**: a sikertelen Security Center által végrehajtott értékelések alapján.
-   - **Átadott értékelések**: az átadott Security Center által elvégzett értékelések listája.
-   - Nem **elérhető értékelések**: azon értékelések listája, amelyeket egy hiba miatt nem sikerült futtatni, vagy mert az előfizetés több mint 600 fiókot tartalmaz.
-
-   A **javaslatok** szakaszban a kiválasztott előfizetésre és az egyes javaslatok súlyosságára vonatkozó javaslatok szerepelnek.
-
-   [az előfizetés kiválasztására vonatkozó javaslatok ![](./media/security-center-identity-access/recommendations.png)](./media/security-center-identity-access/recommendations.png#lightbox)
-
-1. Válassza ki a javaslat leírását, a nem kifogástalan állapotú és az egészséges előfizetések listáját, valamint a nem ellenőrzött erőforrások listáját.
-
-   [![javaslat leírása](./media/security-center-identity-access/designate.png)](./media/security-center-identity-access/designate.png#lightbox)
-
-   Az **átadott értékelések** területen az átadott értékelések listája szerepel.  Az értékelések súlyossága mindig zöld.
-
-   [![átadott értékelések](./media/security-center-identity-access/passed-assessments.png)](./media/security-center-identity-access/passed-assessments.png#lightbox)
-
-1. Válasszon ki egy átadott értékelést a listából az értékelés leírásának és az egészséges előfizetések listájának megtekintéséhez. A nem megfelelő állapotú előfizetések lapján található egy lap, amely felsorolja az összes sikertelen előfizetést.
-
-   [![átadott értékelések](./media/security-center-identity-access/remove.png)](./media/security-center-identity-access/remove.png#lightbox)
-
-> [!NOTE]
-> Ha olyan feltételes hozzáférési szabályzatot hozott létre, amely MFA-t igényel, de kizárások vannak beállítva, akkor a Security Center MFA ajánlási felmérése nem megfelelőnek tekinti a szabályzatot, mivel lehetővé teszi egyes felhasználók számára, hogy MFA nélkül jelentkezzenek be az Azure-ba.
 
 ## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a más Azure-erőforrásokra vonatkozó javaslatokról, tekintse meg a következő cikkeket:

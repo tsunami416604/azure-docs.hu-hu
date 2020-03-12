@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/1/2019
+ms.date: 03/05/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da9aed857524e9b71aad4dfc99f1d2e54306dc9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 72c18e48c27942c7bea47931ec79a31af941064e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272885"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126656"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google hozzáadása identitás-szolgáltatóként a B2B vendég felhasználói számára
 
@@ -39,7 +39,7 @@ Ha a vendég felhasználó a "fejléc túl hosszú" hibaüzenetet látja, megpr�
 
 A csapatok teljes mértékben támogatják a Google vendég felhasználókat minden eszközön. A Google-felhasználók olyan közös végpontból jelentkezhetnek be a csapatba, mint a `https://teams.microsoft.com`.
 
-Előfordulhat, hogy más alkalmazások általános végpontjai nem támogatják a Google-felhasználókat. A Google Guest Users szolgáltatásnak be kell jelentkeznie egy hivatkozással, amely tartalmazza a bérlő adatait. A következő példák:
+Előfordulhat, hogy más alkalmazások általános végpontjai nem támogatják a Google-felhasználókat. A Google Guest Users szolgáltatásnak be kell jelentkeznie egy hivatkozással, amely tartalmazza a bérlő adatait. Alább találhat példákat:
   * `https://myapps.microsoft.com/?tenantid=<your tenant id>`
   * `https://portal.azure.com/<your tenant id>`
   * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
@@ -55,25 +55,24 @@ Először hozzon létre egy új projektet a Google Developers konzolon egy ügyf
    
    ![Képernyőfelvétel: a Google új projekt oldalát jeleníti meg](media/google-federation/google-new-project.png)
 
-3. Győződjön meg arról, hogy az új projekt ki van választva a projekt menüben. Ezután nyissa meg a menüt a bal felső sarokban, és válassza az API-k **& Services** > **hitelesítő adatok**lehetőséget.
+3. Győződjön meg arról, hogy az új projekt ki van választva a projekt menüben. Ezután az **API-k & szolgáltatások**területen válassza a **OAuth-beleegyezési képernyő**lehetőséget.
 
-   ![Képernyőfelvétel a Google API hitelesítő adatai lehetőségről](media/google-federation/google-api.png)
- 
-4. Válassza a **OAuth-beleegyezés képernyő** fület, és adja meg az **alkalmazás nevét**. (Hagyja meg a többi beállítást.)
+4. Válassza a **külső**lehetőséget, majd válassza a **Létrehozás**lehetőséget. 
+5. Az **OAuth-beleegyezés képernyőn**adja meg az **alkalmazás nevét**. (Hagyja meg a többi beállítást.)
 
    ![Képernyőfelvétel a Google OAuth-beleegyezési képernyő beállításáról](media/google-federation/google-oauth-consent-screen.png)
 
-5. Görgessen a **jóváhagyott tartományok** szakaszhoz, és adja meg a microsoftonline.com.
+6. Görgessen a **jóváhagyott tartományok** szakaszhoz, és adja meg a microsoftonline.com.
 
    ![A jogosultsággal rendelkező tartományok szakaszt bemutató képernyőkép](media/google-federation/google-oauth-authorized-domains.png)
 
-6. Kattintson a **Mentés** gombra.
+7. Kattintson a **Mentés** gombra.
 
-7. Válassza a **hitelesítő adatok** fület. A **hitelesítő adatok létrehozása** menüben válassza a **OAUTH ügyfél-azonosító**elemet.
+8. Adja meg a **hitelesítő adatokat**. A **hitelesítő adatok létrehozása** menüben válassza a **OAUTH ügyfél-azonosító**elemet.
 
    ![Képernyőfelvétel a Google API-k hitelesítő adatok létrehozása lehetőségéről](media/google-federation/google-api-credentials.png)
 
-8. Az **alkalmazás típusa**területen válassza a **webalkalmazás**elemet, majd az **engedélyes átirányítási URI**-k területen adja meg a következő URI-ket:
+9. Az **alkalmazás típusa**területen válassza a **webalkalmazás**elemet, majd az **engedélyes átirányítási URI**-k területen adja meg a következő URI-ket:
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(ahol a `<directory id>` a címtár azonosítója)
    
@@ -82,7 +81,7 @@ Először hozzon létre egy új projektet a Google Developers konzolon egy ügyf
 
    ![A jóváhagyott átirányítási URI-k szakaszt ábrázoló képernyőkép](media/google-federation/google-create-oauth-client-id.png)
 
-9. Kattintson a **Létrehozás** gombra. Másolja ki az ügyfél-azonosítót és az ügyfél titkát, amelyet akkor fog használni, amikor hozzáadja az identitás-szolgáltatót az Azure AD-portálon.
+10. Kattintson a **Létrehozás** gombra. Másolja ki az ügyfél-azonosítót és az ügyfél titkát, amelyet akkor fog használni, amikor hozzáadja az identitás-szolgáltatót az Azure AD-portálon.
 
    ![A OAuth ügyfél-AZONOSÍTÓját és az ügyfél titkát ábrázoló képernyőkép](media/google-federation/google-auth-client-id-secret.png)
 
@@ -90,7 +89,7 @@ Először hozzon létre egy új projektet a Google Developers konzolon egy ügyf
 Most be kell állítania a Google ügyfél-azonosítót és az ügyfél titkát, vagy megadhatja azt az Azure AD-portálon vagy a PowerShell használatával. Ügyeljen arra, hogy a Google összevonási konfigurációját egy Gmail-címen hívja meg, és próbálja meg beváltani a meghívót Google-Fiókjával. 
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>A Google Federation konfigurálása az Azure AD-portálon 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). A bal oldali panelen válassza az **Azure Active Directory** gombot. 
 2. Válassza a **szervezeti kapcsolatok**lehetőséget.
 3. Válassza az **identitás-szolgáltatók**lehetőséget, majd kattintson a **Google** gombra.
 4. Adjon meg egy nevet. Ezután adja meg a korábban beszerzett ügyfél-azonosítót és az ügyfél-titkot. Kattintson a **Mentés** gombra. 
@@ -112,7 +111,7 @@ Most be kell állítania a Google ügyfél-azonosítót és az ügyfél titkát,
 A Google összevonási telepítőt törölheti. Ha így tesz, a Google vendég felhasználóinak, akik már beváltották a meghívót, nem tudnak majd bejelentkezni, de ismét hozzáférhetnek az erőforrásokhoz úgy, hogy törlik őket a címtárból, és újra meghívja őket. 
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>A Google Federation törlése az Azure AD-portálon: 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). A bal oldali panelen válassza az **Azure Active Directory** gombot. 
 2. Válassza a **szervezeti kapcsolatok**lehetőséget.
 3. Válassza az **identitás-szolgáltatók**elemet.
 4. A **Google** sorban válassza a helyi menüt ( **...** ), majd válassza a **Törlés**lehetőséget. 

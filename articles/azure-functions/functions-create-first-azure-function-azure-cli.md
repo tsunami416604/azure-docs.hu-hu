@@ -3,13 +3,12 @@ title: Olyan függvény létrehozása az Azure-ban, amely válaszol a HTTP-kére
 description: Ismerje meg, hogyan hozhat létre függvényt a parancssorból, majd hogyan teheti közzé a helyi projektet a Azure Functions kiszolgáló nélküli üzemeltetéséhez.
 ms.date: 01/28/2020
 ms.topic: quickstart
-zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 2a02e1481d975f877508bde02948bc65561b9f13
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: f2ec642a477348923e8f587879d4804c07fff5a0
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272741"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096265"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: olyan függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
 
@@ -23,7 +22,12 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
 + Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell"  
 + A [Azure functions Core Tools](./functions-run-local.md#v2) verziója 2.7.1846 vagy újabb 2. x verzió.
+::: zone-end  
+::: zone pivot="programming-language-python"
++ A Python 3,6-es és 3,7-es verziójának [Azure functions Core Tools](./functions-run-local.md#v2) 2.7.1846 vagy újabb 2. x verziójúnak kell lennie. A Python 3,8-es verziójának a Core Tools [3. x verzióját](./functions-run-local.md#v2) kell megadnia.
+::: zone-end
 
 + Az [Azure CLI](/cli/azure/install-azure-cli) verziója 2.0.76 vagy újabb. 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"
@@ -31,7 +35,7 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-+ [Python 3,7](https://www.python.org/downloads/release/python-375/) vagy [Python 3,6](https://www.python.org/downloads/release/python-368/), amelyet a Azure functions támogat. A Python 3,8-es és újabb verziói még nem támogatottak. 
++ [Python 3,8](https://www.python.org/downloads/release/python-382/), [Python 3,7](https://www.python.org/downloads/release/python-375/), [python 3,6](https://www.python.org/downloads/release/python-368/), amelyet a Azure functions támogat. 
 ::: zone-end
 ::: zone pivot="programming-language-powershell"
 + [PowerShell-mag](/powershell/scripting/install/installing-powershell-core-on-windows)
@@ -51,11 +55,11 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 + Futtassa `node --version` a Node. js-verziók 8. x vagy 10. x verziójának vizsgálatához.
 ::: zone-end
 ::: zone pivot="programming-language-python"
-+ Futtassa `python --version` (Linux/MacOS) vagy `py --version` (Windows) rendszert a Python-verzió jelentéseinek 3.7. x vagy 3.6. x használatával való vizsgálatához.
++ Futtassa `python --version` (Linux/MacOS) vagy `py --version` (Windows) rendszert a Python-verziók 3,8. x, 3.7. x vagy 3.6. x verziójának vizsgálatához.
 
 ## <a name="create-venv"></a>Virtuális környezet létrehozása és aktiválása
 
-Egy megfelelő mappában futtassa a következő parancsokat egy `.venv`nevű virtuális környezet létrehozásához és aktiválásához. Ügyeljen arra, hogy a Azure Functions által támogatott Python 3,7-vagy 3,6-et használja.
+Egy megfelelő mappában futtassa a következő parancsokat egy `.venv`nevű virtuális környezet létrehozásához és aktiválásához. Ügyeljen arra, hogy a Azure Functions által támogatott Python 3,8, 3,7 vagy 3,6-ot használja.
 
 
 # <a name="bash"></a>[bash](#tab/bash)
@@ -268,13 +272,15 @@ Ezen elemek létrehozásához használja az alábbi Azure CLI-parancsokat. Az eg
     
     A Storage-fiók ebben a rövid útmutatóban csak néhány cent (USD) értékkel rendelkezik.
     
-1. Hozza létre a functions alkalmazást az az [functionapp Create](/cli/azure/functionapp#az-functionapp-create) parancs használatával. Az alábbi példában cserélje le a `<STORAGE_NAME>` az előző lépésben használt fiók nevére, és cserélje le a `<APP_NAME>`t az Önnek megfelelő globálisan egyedi névre. Az `<APP_NAME>` egyben a függvényalkalmazás alapértelmezett DNS-tartományaként is szolgál, 
+1. Hozza létre a Function alkalmazást az az [functionapp Create](/cli/azure/functionapp#az-functionapp-create) parancs használatával. Az alábbi példában cserélje le a `<STORAGE_NAME>` az előző lépésben használt fiók nevére, és cserélje le a `<APP_NAME>`t az Önnek megfelelő globálisan egyedi névre. Az `<APP_NAME>` egyben a függvényalkalmazás alapértelmezett DNS-tartományaként is szolgál, 
 
     ::: zone pivot="programming-language-python"  
-    Ha a Python 3,6-et használja, akkor a `--runtime-version`t is módosítsa `3.6`re.
+    Ha a Python 3,8-et használja, a `--runtime-version` módosításával `3.8` és `--functions_version` `3`.
+    
+    Ha a Python 3,6-et használja, módosítsa `--runtime-version` `3.6`re.
 
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 
@@ -283,19 +289,19 @@ Ezen elemek létrehozásához használja az alábbi Azure CLI-parancsokat. Az eg
 
     
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 10 --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 10 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 
     ::: zone pivot="programming-language-csharp"  
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime dotnet --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime dotnet --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
     
     ::: zone pivot="programming-language-powershell"  
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime powershell --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime powershell --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 

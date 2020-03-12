@@ -105,8 +105,10 @@
           href: logic-apps-diagnosing-failures.md
     - name: Azure-beli virtuális hálózatok elérése
       items:
-        - name: Csatlakozás integrációs szolgáltatási környezetekkel rendelkező virtuális hálózatokhoz
+        - name: Integrációs szolgáltatási környezet létrehozása – Azure Portal
           href: connect-virtual-network-vnet-isolated-environment.md
+        - name: Integrációs szolgáltatási környezet létrehozása – REST API
+          href: create-integration-service-environment-rest-api.md
         - name: Több integrációs szolgáltatási környezet hozzáférésének beállítása
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
         - name: Erőforrás hozzáadása integrációs szolgáltatási környezetekhez

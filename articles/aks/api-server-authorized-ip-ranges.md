@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan biztonságossá teheti a fürtöt IP-címtartom
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 80a8504e42eda966554d0151f54668015cf7ee83
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 593f9e0b335e6f4d62c76ce92f833ff4e9143372
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596709"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126622"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Biztonságos hozzáférés az API-kiszolgálóhoz a jogosult IP-címtartományok használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -59,6 +59,8 @@ az aks create \
 > - A tűzfal nyilvános IP-címe
 > - Bármely tartomány, amely azokat a hálózatokat képviseli, amelyekről a fürtöt felügyelni szeretné
 > - Ha az AK-fürtön az Azure dev Spaces szolgáltatást használja, akkor a [régión alapuló további tartományokat][dev-spaces-ranges]is engedélyeznie kell.
+
+> A megadható IP-címtartományok felső határa 3500. 
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>A standard SKU Load Balancer kimenő IP-címeinek megadása
 

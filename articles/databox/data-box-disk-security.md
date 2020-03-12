@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 5db65ab6f1c96ff816252ecaba2170adf358001c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606565"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117269"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Biztonság és adatvédelem Azure Data Box Disk
 
@@ -34,7 +34,7 @@ A következő ábra mutatja az adatok áramlását az Azure Data Box Disk megold
 
 ## <a name="security-features"></a>Biztonsági funkciók
 
-A Data Box Disk biztonságos megoldást kínál az adatok védelmére, mivel garantálja, hogy az adatokat csak a jogosult entitások tekinthetik meg, módosíthatják vagy törölhetik. A megoldás biztonsági szolgáltatásai a lemezekre és a rajtuk tárolt adatokat védő szolgáltatásra is vonatkoznak. 
+A Data Box Disk biztonságos megoldást kínál az adatok védelmére, mivel garantálja, hogy az adatokat csak a jogosult entitások tekinthetik meg, módosíthatják vagy törölhetik. A megoldás biztonsági szolgáltatásai a lemezekre és a rajtuk tárolt adatokat védő szolgáltatásra is vonatkoznak.
 
 ### <a name="data-box-disk-protection"></a>A Data Box Disk védelme
 
@@ -48,7 +48,7 @@ A Data Box Disk biztonságát az alábbi szolgáltatások biztosítják:
 
 A Data Box Disk szolgáltatás bejövő és kimenő adatainak biztonságát az alábbi szolgáltatások biztosítják:
 
-- Az adatok folyamatos BitLocker-titkosítása. 
+- Az adatok folyamatos BitLocker-titkosítása.
 - Az adatok biztonságos törlése a lemezről, miután az Azure-ba való adatfeltöltés befejeződött. Az adatok törlése a NIST 800-88r1 szabványoknak megfelelően történik.
 
 ### <a name="data-box-service-protection"></a>A Data Box szolgáltatás védelme
@@ -56,10 +56,9 @@ A Data Box Disk szolgáltatás bejövő és kimenő adatainak biztonságát az a
 A Data Box szolgáltatás biztonságát az alábbi funkciók biztosítják.
 
 - A Data Box Disk szolgáltatáshoz való hozzáféréshez a szervezetnek olyan Azure-előfizetéssel kell rendelkeznie, amely tartalmazza a Data Box Disket. Az előfizetés szabályozza, hogy az Azure Portal mely szolgáltatásai érhetők el.
-- A Data Box szolgáltatás az Azure-ban üzemel, így az Azure biztonsági funkciói védik. A Microsoft Azure által biztosított biztonsági funkciókról a [Microsoft Azure biztonsági és adatkezelési központban](https://www.microsoft.com/TrustCenter/Security/default.aspx) talál további információt. 
+- A Data Box szolgáltatás az Azure-ban üzemel, így az Azure biztonsági funkciói védik. A Microsoft Azure által biztosított biztonsági funkciókról a [Microsoft Azure biztonsági és adatkezelési központban](https://www.microsoft.com/TrustCenter/Security/default.aspx) talál további információt.
 - A Data Box Disk tárolja a lemezek hozzáférési kulcsát, amellyel a lemezek zárolása a szolgáltatásban feloldható. 
-- A Data Box Disk szolgáltatás tárolja a megrendelések adatait és állapotát a szolgáltatásban. A megrendelés törlésekor ezek az információk is törlődnek. 
-
+- A Data Box Disk szolgáltatás tárolja a megrendelések adatait és állapotát a szolgáltatásban. A megrendelés törlésekor ezek az információk is törlődnek.
 
 ## <a name="managing-personal-data"></a>Személyes adatok kezelése
 
@@ -90,8 +89,8 @@ Az Azure Data Box Disk a szolgáltatás alábbi főbb példányaiban gyűjt és 
 További információkért lásd a Microsoft szabályzatát a [biztonsági és adatkezelési központban](https://www.microsoft.com/trustcenter).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A [Data Box Disk rendszerkövetelményeinek](data-box-disk-system-requirements.md) áttekintése.
+- A [Data Box Disk követelményeinek](data-box-disk-system-requirements.md) áttekintése.
 - A [Data Box Disk korlátainak](data-box-disk-limits.md) megismerése.
 - Az [Azure Data Box Disk](data-box-disk-quickstart-portal.md) gyors üzembe helyezése az Azure Portalon.

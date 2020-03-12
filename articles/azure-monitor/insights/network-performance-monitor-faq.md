@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654433"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096228"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -183,7 +183,7 @@ Előfordulhat, hogy egy ugrás az alábbi forgatókönyvek közül egy vagy töb
 * A hálózati eszközök nem engedélyezik ICMP_TTL_EXCEEDED forgalmat.
 * A tűzfal blokkolja a ICMP_TTL_EXCEEDED választ a hálózati eszközről.
 
-Ha a végpontok egyike az Azure-ban található, a traceroute azonosítatlan ugrásokat jelenít meg, mivel az Azure ndrastructure nem fedi fel az identitást a traceroute számára. 
+Ha a végpontok egyike az Azure-ban található, a traceroute azonosítatlan ugrásokat jelenít meg, mivel az Azure-infrastruktúra nem fedi fel az identitást a traceroute számára. 
 
 ### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Riasztásokat kapok a nem kifogástalan állapotú tesztekhez, de nem látok magas értékeket a NPM elvesztése és késési gráfjában. Hogyan a nem megfelelő állapotú elemek ellenőrzését?
 A NPM riasztást küld, ha a forrás és a cél között a végpontok közötti késés a közöttük lévő bármely útvonal küszöbértékét keresztezi. Egyes hálózatok több elérési úttal rendelkeznek, amelyek ugyanahhoz a forráshoz és célhoz kapcsolódnak. A NPM egy riasztást vált ki, a sérült elérési út nem megfelelő. A gráfokban látható veszteség és késés az összes útvonal átlagos értéke, ezért előfordulhat, hogy nem jeleníti meg egyetlen útvonal pontos értékét. Annak megismeréséhez, hogy a küszöbérték hogyan lett megszegve, keresse meg a riasztás "altípus" oszlopát. Ha a problémát egy elérési út okozta, az altípus értéke NetworkPath lesz (a Teljesítményfigyelő tesztek esetében), a EndpointPath (a Service connectivity monitor tesztek esetében) és a ExpressRoutePath (ExpressRotue-figyelő tesztek esetében). 

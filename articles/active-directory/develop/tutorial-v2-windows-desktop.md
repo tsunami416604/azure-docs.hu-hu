@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1864b4867b8e1367a2397c5ed2ed9a77001dadb4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 422251da25ae0ef911eb723bb0342a84fe99559c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701195"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129926"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>A Microsoft Graph API meghívása egy Windowsos asztali alkalmazásból
 
@@ -30,6 +30,9 @@ Az útmutató befejezése után az alkalmazás képes lesz meghívni egy védett
 
 > [!NOTE]
 > Az útmutatóhoz a Visual Studio 2015 Update 3, a Visual Studio 2017 vagy a Visual Studio 2019 szükséges. Nem rendelkezik ezekkel a verziókkal? [Töltse le ingyen a Visual Studio 2019](https://www.visualstudio.com/downloads/)-es verzióját.
+
+>[!NOTE]
+> Ha még nem ismeri a Microsoft Identity platformot, javasoljuk, hogy kezdje a [token beszerzése és a Microsoft Graph API meghívása egy Windows asztali alkalmazásból](quickstart-v2-windows-desktop.md).
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Az útmutató által létrehozott minta alkalmazás működése
 
@@ -49,7 +52,7 @@ A MSAL kezeli a gyorsítótárazást és a hozzáférési jogkivonatok frissít�
 
 Ez az útmutató a következő NuGet-csomagokat használja:
 
-|Részletes ismertetés|Leírás|
+|Kódtár|Leírás|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL.NET)|
 
@@ -96,7 +99,7 @@ Az alkalmazást gyorsan regisztrálhatja a következő módon:
 ### <a name="option-2-advanced-mode"></a>2\. lehetőség: speciális mód
 
 Az alkalmazása regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való hozzáadásához tegye a következőket:
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiókjával.
 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalára.
 1. Válassza az **új regisztráció**lehetőséget.

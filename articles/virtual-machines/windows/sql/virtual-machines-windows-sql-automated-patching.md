@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b48ccede9ca3330d356fa75d4df34789e31eb916
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 292f3e8819f6f9f4b2989423814e02dfcfb4bfdb
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350753"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127682"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Az SQL Server automatikus javítása az Azure Virtual Machines szolgáltatásban (Resource Manager)
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "75350753"
 Az automatikus javítás karbantartási időszakot hoz létre egy SQL Server rendszert futtató Azure-beli virtuális géphez. Az automatikus frissítéseket csak ebben a karbantartási időszakban lehet telepíteni. Az SQL Server esetén ez a korlátozás gondoskodik róla, hogy a rendszerfrissítésekre és az esetleges újraindításokra az adatbázis számára a lehető legkedvezőbb időpontban kerüljön sor. 
 
 > [!IMPORTANT]
-> A rendszer csak a **fontosként** megjelölt Windows-és SQL Server-frissítéseket telepíti. Az SQL Server további frissítéseit, például az összegző frissítéseket, manuálisan kell telepíteni. 
+> A rendszer csak a **fontos** vagy **kritikus fontosságúként** megjelölt Windows-és SQL Server-frissítéseket telepíti. Az egyéb SQL Server frissítéseket, például a szervizcsomagokat és a nem **fontosként** vagy **kritikusként** megjelölt összesítő frissítéseket manuálisan kell telepíteni. 
 
 Az automatikus javítás az [SQL Server IaaS-ügynök bővítményétől](virtual-machines-windows-sql-server-agent-extension.md) függ.
 
@@ -114,7 +114,7 @@ s set-AzVMSqlServerExtension-AutoPatchingSettings $aps-VMName $vmname-ResourceGr
 
 A jelen példa alapján a következő táblázat ismerteti a cél Azure-beli virtuális gép gyakorlati hatását:
 
-| Paraméter | Következmény |
+| Paraméter | Hatás |
 | --- | --- |
 | **DayOfWeek** |A javítások minden csütörtökön telepítve vannak. |
 | **MaintenanceWindowStartingHour** |A frissítés megkezdése 11:00 órakor. |

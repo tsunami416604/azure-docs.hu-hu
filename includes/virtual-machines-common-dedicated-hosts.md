@@ -5,20 +5,19 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2daaf9bbdf90029f0aad4333ab94e2d1d1d3d7ff
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246214"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129171"
 ---
 ## <a name="limitations"></a>Korlátozások
 
 - A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
-- A következő virtuálisgép-sorozatok támogatottak: DSv3, ESv3 és Fsv2. 
 
 ## <a name="benefits"></a>Előnyök 
 
@@ -101,17 +100,15 @@ További információ: [Azure dedikált gazdagép díjszabása](https://aka.ms/A
 
 A költségeket az [Azure dedikált gazdagépek fenntartott példányával](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)is elvégezheti.
  
-## <a name="vm-families-and-hardware-generations"></a>VM-családok és hardveres generációk
+## <a name="sizes-and-hardware-generations"></a>Méretek és hardveres generációk
 
-Egy gazdagéphez van definiálva SKU, és a virtuális gép mérete adatsorozatot és típust jelöl. A különböző méretű virtuális gépeket egyetlen gazdagépen belül is keverheti, ha azok azonos méretű adatsorozattal rendelkeznek. A típus a jelenleg elérhető hardverek létrehozása a régióban.
+Egy gazdagéphez van definiálva SKU, és a virtuális gép mérete adatsorozatot és típust jelöl. A különböző méretű virtuális gépeket egyetlen gazdagépen belül is keverheti, ha azok azonos méretű adatsorozattal rendelkeznek. 
 
-Ugyanannak a virtuálisgép-sorozatnak különböző `types`ei különböző CPU-szállítóktól származnak, és különböző CPU-generációkkal és magok számával rendelkeznek.
+A *típus* a hardver generációja. Az azonos virtuálisgép-sorozatok különböző típusai különböző CPU-szállítóktól származnak, és különböző CPU-generációkkal és magok számával rendelkeznek. 
 
-További információért tekintse meg a gazdagép [díjszabását ismertető oldalt](https://aka.ms/ADHPricing) .
+A méretek és a hardver típusok régiónként eltérőek. További információért tekintse meg a gazdagép [díjszabását ismertető oldalt](https://aka.ms/ADHPricing) .
 
-A dedikált gazdagépek a következő gazdagép-SKU\types támogatják: DSv3_Type1 és ESv3_Type1
 
- 
 ## <a name="host-life-cycle"></a>Gazdagép életciklusa
 
 

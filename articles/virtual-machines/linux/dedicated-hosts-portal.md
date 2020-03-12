@@ -4,14 +4,15 @@ description: A virtuális gépeket a Azure Portal használatával dedikált gazd
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 01/09/2020
+ms.workload: infrastructure
+ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 5af09cf7ef6c811a239a64c5c6349c3625316177
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
-ms.translationtype: HT
+ms.openlocfilehash: 195a19ef881f235ad8e42f23b53da9e667ef88d0
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970754"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086765"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Virtuális gépek üzembe helyezése dedikált gazdagépeken a portál használatával
 
@@ -38,6 +39,26 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre egy dedikált Azure- [gazdag
 1. Amikor megjelenik az érvényesítés által átadott üzenet, válassza a **Létrehozás**lehetőséget.
 
 A virtuális gép üzembe helyezése eltarthat néhány percig.
+
+## <a name="add-an-existing-vm"></a>Meglévő virtuális gép hozzáadása 
+
+A kilépő virtuális gépet egy dedikált gazdagéphez is hozzáadhatja, de a virtuális gépnek először Stop\Deallocated. kell lennie. Mielőtt áthelyezi a virtuális gépet egy dedikált gazdagépre, győződjön meg arról, hogy a virtuális gép konfigurációja támogatott:
+
+- A virtuális gép méretének azonos méretűnek kell lennie, mint a dedikált gazdagépnek. Ha például a dedikált gazdagép DSv3, akkor a virtuális gép mérete Standard_D4s_v3, de nem lehet Standard_A4_v2. 
+- A virtuális gépnek ugyanabban a régióban kell lennie, ahol a dedikált gazdagép található.
+- A virtuális gép nem lehet a közelségi elhelyezési csoport része. A dedikált gazdagépre való áthelyezés előtt távolítsa el a virtuális gépet a közelségi csoportból. További információ: [virtuális gép áthelyezése a közelségi csoportból](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- A virtuális gép nem lehet rendelkezésre állási készletben.
+- Ha a virtuális gép egy rendelkezésre állási zónában van, akkor a gazdagép-csoporttal megegyező rendelkezésre állási zónának kell lennie. A virtuális gép rendelkezésre állási zónájának beállításai és a gazdagép csoportjának egyeznie kell.
+
+Helyezze át a virtuális gépet egy dedikált gazdagépre a [portál](https://portal.azure.com)használatával.
+
+1. Nyissa meg a virtuális gép lapját.
+1. A virtuális gép stop\deallocate válassza a **Leállítás** lehetőséget.
+1. A bal oldali menüben válassza a **konfiguráció** lehetőséget.
+1. Válasszon ki egy gazdagépet és egy gazdagépet a legördülő menükből.
+1. Ha elkészült, válassza a **Mentés** lehetőséget az oldal tetején.
+1. Miután hozzáadta a virtuális gépet a gazdagéphez, válassza az **Áttekintés** lehetőséget a bal oldali menüben.
+1. A lap tetején kattintson a **Start** gombra a virtuális gép újraindításához.
 
 ## <a name="next-steps"></a>Következő lépések
 

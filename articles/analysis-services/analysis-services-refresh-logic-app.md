@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: a44aa5b355bea675f5d99761d97b8876a9b2a7d7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572342"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127024"
 ---
 # <a name="refresh-with-logic-apps"></a>Frissítés a Logic Apps használatával
 
@@ -26,7 +26,7 @@ Az összes hívást érvényes Azure Active Directory (OAuth 2) jogkivonattal ke
 ## <a name="design-the-logic-app"></a>A logikai alkalmazás megtervezése
 
 > [!IMPORTANT]
-> Az alábbi példák azt feltételezik, hogy a Azure Analysis Services tűzfal le van tiltva.  Ha a tűzfal engedélyezve van, akkor a kérelem kezdeményezője számára engedélyezni kell a nyilvános IP-címet a Azure Analysis Services tűzfalon. A logikai alkalmazások IP-címtartományok régiónként való megismeréséhez tekintse meg [a Azure Logic apps korlátozásait és konfigurációs információit](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses).
+> Az alábbi példák azt feltételezik, hogy a Azure Analysis Services tűzfal le van tiltva. Ha a tűzfal engedélyezve van, a kérelem kezdeményezője számára a nyilvános IP-címet a Azure Analysis Services tűzfalon kell engedélyezni. A Azure Logic Apps IP-címtartományok régiónként való megismeréséhez tekintse meg [a Azure Logic apps korlátai és konfigurációs adatai](../logic-apps/logic-apps-limits-and-config.md#configuration)című témakört.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -64,13 +64,13 @@ Konfigurálja a HTTP-tevékenységet a következőképpen:
 
 |Tulajdonság  |Érték  |
 |---------|---------|
-|**Metódus**     |UTÁNI         |
+|**Metódus**     |POST         |
 |**URI**     | https://*a*/Servers/AAS-*kiszolgáló neve*/models/*az adatbázis neve*/refreshes <br /> <br /> Például: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
-|**Fejlécek**     |   Content-Type, Application/JSON <br /> <br />  ![Fejlécek](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Fejlécek**     |   Content-Type, application/json <br /> <br />  ![Fejlécek](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Törzs**     |   A kérés törzsének kialakításával kapcsolatos további tudnivalókért tekintse meg [az aszinkron frissítés a REST API utáni/refreshes](analysis-services-async-refresh.md#post-refreshes)című témakört. |
 |**Hitelesítés**     |Active Directory OAuth         |
 |**Bérlő**     |Töltse ki a Azure Active Directory TenantId         |
-|**Célközönség**     |https://*. asazure. Windows. net         |
+|**Célközönség**     |https://*.asazure.windows.net         |
 |**Ügyfél-azonosító**     |Adja meg az egyszerű szolgáltatásnév nevét ClientID         |
 |**Hitelesítő adat típusa**     |Titkos         |
 |**Titkos kód**     |Adja meg az egyszerű szolgáltatásnév nevét         |
@@ -113,7 +113,7 @@ Válassza ki a kívánt órát.
 
 Mentse a logikai alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Minták](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

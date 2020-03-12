@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47870410741cf96e289014fab5a9c2eab26759b1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424983"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096415"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Blobok betöltése az Azure Adatkezelőba Event Grid értesítésekre való feliratkozással
 
@@ -118,7 +118,7 @@ Most kapcsolódjon az Azure Adatkezelő Event Grid, hogy a blob-tárolóba áram
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
     | Tábla | *TestTable* | A **TestDatabase** adatbázisban létrehozott tábla. |
-    | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, rendszerállapot-kimutatás, SCSV, TSV és TXT. Támogatott tömörítési beállítások: zip és GZip |
+    | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, rendszerállapot-kimutatás, SCSV, TSV, RAW és TXT. Támogatott tömörítési beállítások: zip és GZip |
     | Oszlopleképezés | *TestMapping* | A **TestDatabase** adatbázisban létrehozott leképezés, amely a bejövő JSON-adatokat leképezi a **TestTable** tábla esetében használt oszlopnevekre és adattípusokra.|
     | | |
     
@@ -150,13 +150,32 @@ Mentse az adatok fájlba, és töltse fel a következő szkripttel:
     az storage container create --name $container_name
 
     echo "Uploading the file..."
-    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name
+    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name --metadata "rawSizeBytes=1024"
 
     echo "Listing the blobs..."
     az storage blob list --container-name $container_name --output table
 
     echo "Done"
 ```
+
+> [!NOTE]
+> A legjobb betöltési teljesítmény elérése érdekében a betöltéshez elküldött tömörített Blobok *tömörítetlen* méretét tájékoztatni kell. Mivel Event Grid értesítések csak alapvető adatokat tartalmaznak, a méretre vonatkozó információkat explicit módon közölni kell. A tömörítetlen méretre vonatkozó információk a blob-metaadatok `rawSizeBytes` tulajdonságának beállításával állíthatók be a *tömörítetlen* adatok mérete bájtban megadva.
+
+### <a name="ingestion-properties"></a>Betöltési tulajdonságok
+
+Megadhatja a blob betöltési [tulajdonságait](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#ingestion-properties) a blob metaadatainak használatával.
+
+Ezek a tulajdonságok megadhatók:
+
+|**Tulajdonság** | **Tulajdonság leírása**|
+|---|---|
+| `rawSizeBytes` | A nyers (tömörítetlen) adatmennyiség mérete. A Avro/ork/parketta esetében ez a méret a formátumra jellemző tömörítés alkalmazása előtt.|
+| `kustoTable` |  A meglévő céltábla neve. Felülbírálja a `Data Connection` panelen beállított `Table`. |
+| `kustoDataFormat` |  Adatformátum. Felülbírálja a `Data Connection` panelen beállított `Data format`. |
+| `kustoIngestionMappingReference` |  A használandó meglévő betöltési leképezés neve. Felülbírálja a `Data Connection` panelen beállított `Column mapping`.|
+| `kustoIgnoreFirstRecord` | Ha `true`értékre van állítva, a Kusto figyelmen kívül hagyja a blob első sorát. Táblázatos formátumú adatokat (CSV, TSV vagy hasonló) használva figyelmen kívül hagyhatja a fejléceket. |
+| `kustoExtentTags` | A [címkét](/azure/kusto/management/extents-overview#extent-tagging) jelölő karakterlánc, amely az adott egységhez lesz csatolva. |
+| `kustoCreationTime` |  Felülbírálja a blob [$IngestionTimeét](/azure/kusto/query/ingestiontimefunction?pivots=azuredataexplorer) ISO 8601-karakterláncként formázva. A visszatöltésére használata. |
 
 > [!NOTE]
 > Az Azure Adatkezelő nem törli a Blobok utáni betöltést.

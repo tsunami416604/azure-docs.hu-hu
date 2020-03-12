@@ -9,12 +9,12 @@ ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 950580048f0496fd8436901938a5b6768c61bab6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e27135d09da7060f2a948e37f6026fe66fbef5b3
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132075"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096608"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>A címtár szintű inaktivitás időkorlátjának beállítása
 
@@ -43,7 +43,7 @@ Annak ellenőrzéséhez, hogy az inaktivitás időtúllépési szabályzata hely
 A beállítás érvénybe lép az új munkamenetek esetében. Azonnal nem lesz érvényes a már bejelentkezett felhasználókra.
 
 > [!NOTE]
-> Ha a rendszergazda címtár-szintű időtúllépési beállítást konfigurált, a felhasználók felülbírálják a szabályzatot, és saját inaktív kijelentkezési időtartamot állíthatnak be. A felhasználónak azonban olyan időintervallumot kell választania, amely kisebb, mint a könyvtár szintjén beállított érték.
+> Ha egy globális rendszergazda konfigurált egy címtár-szintű időtúllépési beállítást, a felhasználók felülbírálják a szabályzatot, és saját inaktív kijelentkezési időtartamot állíthatnak be. A felhasználónak azonban olyan időintervallumot kell választania, amely kisebb, mint a globális rendszergazda által a címtár szintjén beállított érték.
 >
 
 ## <a name="next-steps"></a>Következő lépések

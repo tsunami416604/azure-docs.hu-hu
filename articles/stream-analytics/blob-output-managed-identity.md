@@ -5,17 +5,17 @@ author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: 1854a99cac3ead386f38c1c7fe27a56b672f365c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 03/11/2020
+ms.openlocfilehash: 13f48a9e0bc3ed8f8c4d5f1b7da4b6c03f54cdf8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664305"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129977"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output-preview"></a>Felügyelt identitás használata az Azure Stream Analytics-feladatok hitelesítéséhez az Azure Blob Storage output (előzetes verzió) szolgáltatásban
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Felügyelt identitás használata az Azure Stream Analytics-feladatok hitelesítéséhez az Azure Blob Storage kimenetében
 
-Az Azure Blob Storage-hoz való kimenet [felügyelt identitás-hitelesítése](../active-directory/managed-identities-azure-resources/overview.md) Azure stream Analytics előzetes verzióként érhető el. Ez lehetővé teszi, Stream Analytics a feladatok közvetlen hozzáférést biztosítanak egy Storage-fiókhoz a kapcsolati karakterláncok használata helyett. A fokozott biztonság mellett ez a funkció lehetővé teszi, hogy az Azure-ban egy Virtual Network (VNET) lévő Storage-fiókba írja az adatok.
+Az Azure Blob Storage-hoz való kimenet [felügyelt identitás-hitelesítése](../active-directory/managed-identities-azure-resources/overview.md) lehetővé teszi, hogy stream Analytics feladatok közvetlen hozzáférést biztosítanak a Storage-fiókhoz a kapcsolati karakterláncok használata helyett. A fokozott biztonság mellett ez a funkció lehetővé teszi, hogy az Azure-ban egy Virtual Network (VNET) lévő Storage-fiókba írja az adatok.
 
 Ez a cikk bemutatja, hogyan engedélyezheti a felügyelt identitást egy Stream Analytics-feladatokhoz tartozó blob-kimenet (ek) számára a Azure Portal és egy Azure Resource Manager központi telepítés használatával.
 
@@ -235,7 +235,7 @@ A szolgáltatás jelenlegi korlátai a következők:
 
 4. A [felhasználó által hozzárendelt identitás](../active-directory/managed-identities-azure-resources/overview.md) nem támogatott. Ez azt jelenti, hogy a felhasználó nem tudja megadni a saját egyszerű szolgáltatásnevet, amelyet a Stream Analytics feladataihoz használhatnak. Az egyszerű szolgáltatásnevet Azure Stream Analytics kell létrehozni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Stream Analytics kimenetének megismerése](./stream-analytics-define-outputs.md)
 * [Egyéni blob kimeneti particionálás Azure Stream Analytics](./stream-analytics-custom-path-patterns-blob-storage-output.md)

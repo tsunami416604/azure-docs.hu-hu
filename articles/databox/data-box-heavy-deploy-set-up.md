@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: c96caf7a90f35913bcba04a00553ad1df2689999
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: dbf3531f84d218543b0ab1fb2199a66bdbde2926
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514425"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117255"
 ---
 ::: zone target = "docs"
 
@@ -100,7 +100,7 @@ Végezze el az alábbi lépéseket az eszköz bekábelezéséhez.
 
 Végezze el az alábbi lépéseket az eszköz egyik csomópontján a hálózatba történő bekötéshez.
 
-1. CAT 6 RJ-45 hálózati kábellel (a képen a kék színű kábel) csatlakoztassa a gazdagépet az 1 Gb/s-os felügyeleti porthoz.
+1. CAT 6 RJ-45 hálózati kábellel (az MGMT csatlakozóhoz csatlakoztatott, jobb felső kábel a képen) csatlakoztassa a gazdagépet az 1 Gb/s-os felügyeleti porthoz.
 2. QSFP+ (üvegszálas vagy réz-) kábellel csatlakoztassa legalább az egyik 40 Gb/s-os (előnyben részesítve az 1 Gb/s-ossal szemben) hálózati adaptert az adatforgalom számára. Ha 10 Gb/s-os kapcsolót használ, használjon SFP+ kábelt QSFP+–SFP+ adapterrel (QSA-adapterrel) a 40 Gb/s-os hálózati adapter csatlakoztatásához az adatforgalom számára.
 
     ![A Data Box Heavy portjai bekábelezve](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)

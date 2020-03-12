@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 736a543a6f28697dd4f1ddf85317e97a87b86e78
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 7c684d6f1fbd8128ae020b6fd29da928b286aa18
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227073"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126684"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)
 
@@ -62,7 +62,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 1. A **Microsoft Authenticator**válassza a **telefonos bejelentkezés engedélyezése** lehetőséget a fiók legördülő menüből.
 1. A jelszó nélküli telefonos bejelentkezéshez való regisztráció befejezéséhez kövesse az alkalmazás utasításait. 
 
-A szervezetek arra is rámutatnak a felhasználóknak [, hogy bejelentkeznek a telefonnal, nem](../user-help/microsoft-authenticator-app-phone-signin-faq.md) pedig az Microsoft Authenticator alkalmazásban és a telefonos bejelentkezés engedélyezésével kapcsolatos további segítséghez szükséges jelszava.
+A szervezetek arra is rámutatnak a felhasználóknak [, hogy bejelentkeznek a telefonnal, nem](../user-help/microsoft-authenticator-app-phone-signin-faq.md) pedig az Microsoft Authenticator alkalmazásban és a telefonos bejelentkezés engedélyezésével kapcsolatos további segítséghez szükséges jelszava. A beállítások alkalmazásához ki kell jelentkeznie, majd újra be kell jelentkeznie a bérlőbe. 
 
 ## <a name="sign-in-with-passwordless-credential"></a>Bejelentkezés jelszó nélküli hitelesítő adatokkal
 

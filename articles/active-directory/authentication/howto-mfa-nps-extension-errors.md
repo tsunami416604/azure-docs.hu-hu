@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8d67d1d318bf823145a57d2e55774695d151996
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4f086b7c2f24cfe5d3fe74c25f6f5690b090800
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425305"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086394"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Hibák elhárítása az Azure-beli NPS-bővítményből Multi-Factor Authentication
 
@@ -98,7 +98,7 @@ Ha a felhasználók a [kétlépéses ellenőrzés során problémákba ütközne
 
 ### <a name="health-check-script"></a>Állapot-ellenőrzési parancsfájl
 
-Az [Azure MFA NPS-bővítmény állapot-ellenőrzési parancsfájlja](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb) elérhető a TechNet Galleryben, hogy alapszintű állapot-ellenőrzést végezzen a hálózati házirend-kiszolgáló bővítményének hibaelhárítása során. Futtassa a szkriptet, és válassza a 3. lehetőséget.
+Az [Azure MFA NPS-bővítmény állapot-ellenőrzési szkriptje](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) alapszintű állapot-ellenőrzést hajt végre a hálózati házirend-kiszolgáló bővítményének hibaelhárításakor. Futtassa a szkriptet, és válassza a 3. lehetőséget.
 
 ### <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 

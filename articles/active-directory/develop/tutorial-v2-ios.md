@@ -13,18 +13,21 @@ ms.date: 08/30/2019
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7704779ff605e28358f6f82c22ccda84d371dba9
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: abf083aacbdc643d780a8061b405752f36e27e45
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084373"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129937"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Bejelentkezés a felhasználókba és a Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhat egy iOS-vagy macOS-alkalmazást a Microsoft Identity platformmal. Az alkalmazás bejelentkezik egy felhasználóval, beolvas egy hozzáférési jogkivonatot a Microsoft Graph API meghívásához, és kérelmet készít a Microsoft Graph API-nak.  
 
 Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-fiókok (például a outlook.com, a live.com és mások) és a munkahelyi vagy iskolai fiókok bejelentkezési adatait bármely olyan vállalattól vagy szervezettől, amely Azure Active Directoryt használ.
+
+>[!NOTE]
+> Ha még nem ismeri a Microsoft Identity platformot, javasoljuk, hogy kezdje a [bejelentkezési felhasználókat, és hívja meg a Microsoft Graph API-t egy IOS-vagy MacOS-alkalmazásból](quickstart-v2-ios.md).
 
 ## <a name="how-this-tutorial-works"></a>Az oktatóanyag működése
 

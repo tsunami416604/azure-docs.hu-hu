@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 82866d452289a29dcdcacc12db8048acb7a351ba
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6671b9c83ab71b4a92fe36d647e5a4e4d781154e
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250866"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096177"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: a modell kezelése, üzembe helyezése és figyelése Azure Machine Learning
 
@@ -70,11 +70,6 @@ A regisztrált modelleket a név és a verziószám azonosítja. Ha egy modellt 
 
 Aktív központi telepítésben használt regisztrált modell nem törölhető.
 További információkért lásd a [modellek üzembe helyezése](how-to-deploy-and-where.md#registermodel)című szakaszt a modell regisztrálása szakaszban.
-
-### <a name="profile-models"></a>Profil modelljei
-
-A Azure Machine Learning segítségével megismerheti a szolgáltatás CPU-és memória-követelményeit, amelyeket a rendszer a modell telepítésekor hoz létre. A profilkészítés a modellt futtató szolgáltatást teszteli, és olyan információkat ad vissza, mint például a CPU-használat, a memóriahasználat és a válasz késése. Emellett egy CPU-és memória-javaslatot is biztosít az erőforrás-használat alapján.
-További információért lásd a [modellek üzembe helyezése](how-to-deploy-and-where.md#profilemodel)című szakaszt.
 
 ### <a name="package-and-debug-models"></a>Csomagok és hibakeresési modellek
 

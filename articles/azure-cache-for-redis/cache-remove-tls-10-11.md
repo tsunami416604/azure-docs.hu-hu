@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 77f526470204204ef2a801575bb4e8d7e364ffed
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 6130c934f9a718baab840dae714222e4153bfcf6
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260155"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126356"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>A TLS 1,0-es és 1,1-es verziójának eltávolítása az Azure cache használatával a Redis-hez
 
@@ -19,7 +19,7 @@ A Transport Layer Security (TLS) 1,2-es vagy újabb verziójának kizárólagos 
 
 Ennek a tevékenységnek a részeként a következő módosításokat hajtjuk végre az Azure cache Redis:
 
-* **1. fázis:** Az újonnan létrehozott gyorsítótár-példányok esetében az alapértelmezett minimális TLS-verziót 1,2-re konfigurálja.  Ezen a ponton nem frissülnek a meglévő gyorsítótár-példányok.  Ha szükséges, [megváltoztathatja a TLS minimális verzióját](cache-configure.md#access-ports) 1,0-re vagy 1,1-ra a visszamenőleges kompatibilitás érdekében.  Ezt a változást a Azure Portal vagy más felügyeleti API-k segítségével teheti meg.
+* **1. fázis:** Az újonnan létrehozott gyorsítótár-példányok esetében az alapértelmezett minimális TLS-verziót 1,2-re konfigurálja. (Ez a TLS 1,0 volt.) Ezen a ponton nem frissülnek a meglévő gyorsítótár-példányok. Ha szükséges, [megváltoztathatja a TLS minimális verzióját](cache-configure.md#access-ports) 1,0-re vagy 1,1-ra a visszamenőleges kompatibilitás érdekében. Ezt a változást a Azure Portal vagy más felügyeleti API-k segítségével teheti meg.
 * **2. fázis:** A TLS 1,0-es és 1,1-es verziójának támogatása nem áll le. A módosítás után az alkalmazás a TLS 1,2-es vagy újabb verzióját fogja használni a gyorsítótárral való kommunikációhoz.
 
 Emellett a változás részeként eltávolítja a régebbi, nem biztonságos Cypher-csomagok támogatását.  A támogatott Cypher-csomagok a következőre lesznek korlátozva, ha a gyorsítótár a 1,2-es minimális TLS-verzióval van konfigurálva.
@@ -31,7 +31,7 @@ Ez a cikk általános útmutatást nyújt a korábbi TLS-verziók függőségein
 
 A módosítások érvénybe léptetésének dátuma:
 
-| Felhőbeli               | 1\. fázis kezdési dátuma | 2\. fázis kezdő dátuma |
+| Felhő               | 1\. fázis kezdési dátuma | 2\. fázis kezdő dátuma |
 |---------------------|--------------------|--------------------|
 | Azure (globális)      |  2020. január 13.  | Március 31., 2020     |
 | Azure Government    |  Március 13., 2020    | Május 11., 2020       |
@@ -87,21 +87,27 @@ A Node Redis és a IORedis alapértelmezés szerint a TLS 1,2-et használja.
 
 ### <a name="php"></a>PHP
 
-A PHP 7 Predis nem fog működni, mert a PHP 7 csak a TLS 1,0-et támogatja. A Predis a PHP 7.2.1 vagy korábbi verzióiban alapértelmezés szerint a TLS 1,0 vagy a 1,1 protokollt használja. Az ügyfél-példány létrehozásakor megadhatja a TLS 1,2-et:
+#### <a name="predis"></a>Predis
+ 
+* PHP 7-es verziónál korábbi verziók: a Predis csak a TLS 1,0-et támogatja. Ezek a verziók nem működnek a TLS 1,2; a TLS 1,2 használatára kell frissítenie.
+ 
+* PHP 7,0 – PHP 7.2.1: a Predis alapértelmezés szerint csak a TLS 1,0 vagy 1,1 protokollt használja. A TLS 1,2 használatát a következő megkerülő megoldással végezheti el. A TLS 1,2 megadása az ügyfél példányának létrehozásakor:
 
-``` PHP
-$redis=newPredis\Client([
-    'scheme'=>'tls',
-    'host'=>'host',
-    'port'=>6380,
-    'password'=>'password',
-    'ssl'=>[
-        'crypto_type'=>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
-    ],
-]);
-```
+  ``` PHP
+  $redis=newPredis\Client([
+      'scheme'=>'tls',
+      'host'=>'host',
+      'port'=>6380,
+      'password'=>'password',
+      'ssl'=>[
+          'crypto_type'=>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
+      ],
+  ]);
+  ```
 
-A PHP 7,3-es vagy újabb verzióiban a Predis a legújabb TLS-verziót használja.
+* PHP 7,3 és újabb verziók: a Predis a legújabb TLS-verziót használja.
+
+#### <a name="phpredis"></a>PhpRedis
 
 A PhpRedis nem támogatja a TLS használatát bármilyen PHP-verzióban.
 
@@ -113,6 +119,6 @@ A Redis-másolási szolgáltatás alapértelmezés szerint a TLS 1,2 protokollt 
 
 A Redigo alapértelmezés szerint a TLS 1,2-et használja.
 
-## <a name="additional-information"></a>További információk
+## <a name="additional-information"></a>További információ
 
 - [Az Azure cache konfigurálása a Redis-hez](cache-configure.md)

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 01/14/2020
-ms.openlocfilehash: 6f4e0744aad5f053cdda0a52b382ad3c86982c2f
-ms.sourcegitcommit: d48afd9a09f850b230709826d4a5cd46e57d19fa
+ms.date: 03/11/2020
+ms.openlocfilehash: fa39c8f65b00283044ef31dc7577a4668b3e634b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75904979"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127647"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához
 
@@ -19,9 +19,9 @@ Azure Logic Apps az Azure Storage-ra támaszkodik az adatok tárolására és au
 
 Ha [integrációs szolgáltatási környezetet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) hoz létre a logikai alkalmazások üzemeltetéséhez, és az Azure Storage által használt titkosítási kulcsok hatékonyabb vezérlését szeretné végezni, akkor a [Azure Key Vault](../key-vault/key-vault-overview.md)használatával beállíthatja, használhatja és kezelheti a saját kulcsát. Ezt a képességet "Bring Your Own Key" (BYOK) néven is nevezik, és a kulcs neve "ügyfél által felügyelt kulcs".
 
-Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg saját titkosítási kulcsát, amelyet az ISE létrehozásakor használ. 
+Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg saját titkosítási kulcsát, amelyet az ISE a Logic Apps REST API használatával történő létrehozásakor használ. Az ISE Logic Apps REST API használatával történő létrehozásának általános lépéseiért tekintse meg az [integrációs szolgáltatási környezet (ISE) létrehozása az Logic Apps REST API segítségével](../logic-apps/create-integration-service-environment-rest-api.md)című témakört.
 
-## <a name="considerations"></a>Megfontolandó szempontok
+## <a name="considerations"></a>Megfontolások
 
 * Ebben az esetben az ISE ügyfél által felügyelt kulcsának támogatása csak ezekben az Azure-régiókban érhető el: USA 2. nyugati régiója, USA keleti régiója és az USA déli középső régiója
 
@@ -35,7 +35,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg sajá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
+* Ugyanazok az [Előfeltételek](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) és [követelmények, amelyek lehetővé teszik az ISE hozzáférését](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) , mint amikor egy ISE-t hoz létre a Azure Portal
 
 * Egy olyan Azure Key Vault, amely rendelkezik a helyreállítható **törléssel** , és **nem** törölheti az engedélyezett tulajdonságokat
 
@@ -43,7 +43,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg sajá
 
 * A Key vaultban a következő tulajdonság-értékekkel létrehozott kulcs:
 
-  | Tulajdonság | Value (Díj) |
+  | Tulajdonság | Érték |
   |----------|-------|
   | **Kulcs típusa** | RSA |
   | **RSA-kulcs mérete** | 2048 |
@@ -66,6 +66,15 @@ Az ISE létrehozásához a Logic Apps REST API meghívásával végezze el ezt a
 
 > [!IMPORTANT]
 > A Logic Apps REST API 2019-05-01-es verziójának a saját HTTP PUT-kérelmét kell használnia az ISE-összekötők számára.
+
+Az üzembe helyezés általában két órán belül befejeződik. Alkalmanként az üzembe helyezés akár négy órát is igénybe vehet. A központi telepítés állapotának megtekintéséhez a [Azure Portal](https://portal.azure.com)az Azure eszköztárán válassza az értesítések ikont, amely megnyitja az értesítések panelt.
+
+> [!NOTE]
+> Ha az üzembe helyezés sikertelen, vagy törli az ISE-t, az Azure akár egy órát is igénybe vehet az alhálózatok felszabadítása előtt. Ez azt jelenti, hogy előfordulhat, hogy várnia kell, mielőtt újra felhasználja ezeket az alhálózatokat egy másik ISE-ben.
+>
+> Ha törli a virtuális hálózatot, az Azure általában akár két órával az alhálózatok felszabadítása előtt is eltarthat, de ez a művelet hosszabb időt is igénybe vehet. 
+> A virtuális hálózatok törlésekor győződjön meg arról, hogy egyetlen erőforrás sincs még csatlakoztatva. 
+> Lásd: [virtuális hálózat törlése](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 ### <a name="request-header"></a>Kérelem fejléce
 

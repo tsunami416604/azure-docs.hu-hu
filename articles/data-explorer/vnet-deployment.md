@@ -1,5 +1,5 @@
 ---
-title: Az Azure Adatkezelő üzembe helyezése a Virtual Network (előzetes verzió)
+title: Az Azure Adatkezelő üzembe helyezése a Virtual Network
 description: Ismerje meg, hogyan helyezheti üzembe az Azure Adatkezelőt a Virtual Network
 author: basaba
 ms.author: basaba
@@ -7,14 +7,14 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: e845b44c51b7611cd3f23f8b33e6576aced2d6ca
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: 5a2731e26ba4f371177cf2ae649f0695f27e6304
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851448"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096768"
 ---
-# <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Az Azure Adatkezelő üzembe helyezése a Virtual Network (előzetes verzió)
+# <a name="deploy-azure-data-explorer-into-your-virtual-network"></a>Az Azure Adatkezelő üzembe helyezése a Virtual Network
 
 Ez a cikk ismerteti azokat az erőforrásokat, amelyek akkor jelennek meg, amikor Azure Adatkezelő-fürtöt telepít egy egyéni Azure-Virtual Networkba. Ez az információ segítséget nyújt a fürt üzembe helyezéséhez a Virtual Network (VNet) alhálózatában. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért lásd: [Mi az az azure Virtual Network?](/azure/virtual-network/virtual-networks-overview)
 
@@ -25,9 +25,6 @@ Az Azure Adatkezelő támogatja a fürtök telepítését a Virtual Network (VNe
 * A [hálózati biztonsági csoport](/azure/virtual-network/security-overview) (NSG) szabályainak érvényesítése az Azure adatkezelő-fürt forgalmán.
 * A helyszíni hálózat összekapcsolása az Azure Adatkezelő-fürt alhálózatával.
 * Az adatkapcsolati források ([Event hub](/azure/event-hubs/event-hubs-about) és [Event Grid](/azure/event-grid/overview)) biztonságossá tétele [szolgáltatási végpontokkal](/azure/virtual-network/virtual-network-service-endpoints-overview).
-
-> [!NOTE]
-> A Virtual Network integrációja és üzembe helyezése előzetes módban van. A szolgáltatás engedélyezéséhez nyisson meg egy [támogatási jegyet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 ## <a name="access-your-azure-data-explorer-cluster-in-your-vnet"></a>Az Azure Adatkezelő-fürt elérése a VNet
 
@@ -77,7 +74,7 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 
 | **Használat**   | **A**   | **Címzett**   | **Protocol (Protokoll)**   |
 | --- | --- | --- | --- |
-| Felügyelet  |[ADX-felügyeleti címek](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | ADX alhálózat: 443  | TCP  |
+| Kezelés  |[ADX-felügyeleti címek](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | ADX alhálózat: 443  | TCP  |
 | Állapotfigyelés  | [ADX állapot-figyelési címei](#health-monitoring-addresses)  | ADX alhálózat: 443  | TCP  |
 | Belső kommunikáció ADX  | ADX alhálózat: minden port  | ADX alhálózat: minden port  | Összes  |
 | Azure Load Balancer bejövő (állapotának) engedélyezése  | AzureLoadBalancer  | ADX alhálózat: 80443  | TCP  |
@@ -120,8 +117,8 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | Dél-Franciaország | 40.82.236.24 |
 | Kelet-Japán | 20.43.89.90 |
 | Nyugat-Japán | 40.81.184.86 |
-| Korea középső régiója | 40.82.156.149 |
-| Korea déli régiója | 40.80.234.9 |
+| Dél-Korea középső régiója | 40.82.156.149 |
+| Dél-Korea déli régiója | 40.80.234.9 |
 | USA északi középső régiója | 40.81.45.254 |
 | Észak-Európa | 52.142.91.221 |
 | Dél-Afrika északi régiója | 102.133.129.138 |
@@ -159,8 +156,8 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | Dél-Franciaország | 23.97.212.5 |
 | Kelet-Japán | 138.91.19.129 |
 | Nyugat-Japán | 138.91.19.129 |
-| Korea középső régiója | 138.91.19.129 |
-| Korea déli régiója | 138.91.19.129 |
+| Dél-Korea középső régiója | 138.91.19.129 |
+| Dél-Korea déli régiója | 138.91.19.129 |
 | USA északi középső régiója | 23.96.212.108 |
 | Észak-Európa | 191.235.212.69 
 | Dél-Afrika északi régiója | 104.211.224.189 |
@@ -253,7 +250,7 @@ Azt is meg kell határoznia, hogy az alhálózaton lévő [útválasztási tábl
 
 Az **USA nyugati** régiója esetében például a következő UDR kell definiálni:
 
-| Név | Címelőtag | Következő ugrás |
+| Name (Név) | Címelőtag | Következő ugrás |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | Internet |
 | ADX_Monitoring | 23.99.5.162/32 | Internet |

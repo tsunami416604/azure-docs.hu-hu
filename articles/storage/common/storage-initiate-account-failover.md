@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7529cfbd0ab75d0113e5cea666bc04aa1b15d30b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 76e34736238273f2af3fccae0ac2b5ed0ff491f0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157704"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128343"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Storage-fiók feladatátvételének kezdeményezése (előzetes verzió)
 
@@ -29,9 +29,8 @@ Ez a cikk bemutatja, hogyan kezdeményezheti a fiók feladatátvételét a Stora
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elvégzi a fiók feladatátvételét a Storage-fiókjában, győződjön meg arról, hogy végrehajtotta a következő lépéseket:
+Mielőtt elvégzi a fiók feladatátvételét a Storage-fiókjában, győződjön meg arról, hogy végrehajtotta a következő lépést:
 
-- Regisztráljon a fiók feladatátvételi előzetes verziójára. További információ a regisztrálásáról: [Tudnivalók az előzetes](storage-disaster-recovery-guidance.md#about-the-preview)verzióról.
 - Győződjön meg arról, hogy a Storage-fiókja a Geo-redundáns tárolás (GRS) vagy a Read-Access geo-redundáns tárolás (RA-GRS) használatára van konfigurálva. További információ a földrajzilag redundáns tárolásról: [Azure Storage redundancia](storage-redundancy.md).
 
 ## <a name="important-implications-of-account-failover"></a>A fiók feladatátvételének fontos következményei
@@ -44,7 +43,7 @@ A feladatátvételt követően a rendszer automatikusan átalakítja a Storage-f
 
 Miután újraengedélyezte a GRS a Storage-fiókjához, a Microsoft elkezdi replikálni a fiókjában lévő adatait az új másodlagos régióba. A replikálási idő a replikált adatmennyiségtől függ.  
 
-## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+## <a name="portal"></a>[Portal](#tab/azure-portal)
 
 A fiók feladatátvételének elindításához a Azure Portal hajtsa végre az alábbi lépéseket:
 
@@ -60,7 +59,7 @@ A fiók feladatátvételének elindításához a Azure Portal hajtsa végre az a
 
     ![A fiók feladatátvételének megerősítési párbeszédpanelét bemutató képernyőkép](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Ha a PowerShellt a fiók feladatátvételének elindításához szeretné használni, először telepítenie kell a 6.0.1 előzetes verziójának modulját. A modul telepítéséhez kövesse az alábbi lépéseket:
 
@@ -97,7 +96,7 @@ A következő parancs végrehajtásával kezdeményezheti a fiók feladatátvét
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
 ```
 
-## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Ha az Azure CLI-t szeretné használni a fiók feladatátvételének elindításához, hajtsa végre a következő parancsokat:
 

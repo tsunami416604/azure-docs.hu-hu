@@ -3,12 +3,12 @@ title: Címkék és jegyzékek kiürítése
 description: A kiürítési parancs használatával több címkét és jegyzékfájlt törölhet egy Azure Container registryből az életkor és a címke szűrője alapján, és opcionálisan ütemezhet törlési műveleteket.
 ms.topic: article
 ms.date: 08/14/2019
-ms.openlocfilehash: 0ec1f5f6f5c3c572b8558c971b58e46cce36e3fd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f9d86b628bdd0ce0db3067b02a47517d8aadcba3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923109"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087333"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Lemezképek automatikus törlése az Azure Container registryből
 
@@ -47,7 +47,7 @@ A `acr purge`futtatásakor legalább a következőket kell megadnia:
 
 További paraméterek: `acr purge --help`futtatása. 
 
-`acr purge` támogatja az ACR-feladatok egyéb funkcióit, beleértve a [futtatási változókat](container-registry-tasks-reference-yaml.md#run-variables) és a [tevékenységek futtatására szolgáló naplókat](container-registry-tasks-overview.md#view-task-logs) , amelyeket a rendszer a későbbi lekéréshez is ment.
+`acr purge` támogatja az ACR-feladatok egyéb funkcióit, beleértve a [futtatási változókat](container-registry-tasks-reference-yaml.md#run-variables) és a [tevékenységek futtatására szolgáló naplókat](container-registry-tasks-logs.md) , amelyeket a rendszer a későbbi lekéréshez is ment.
 
 ### <a name="run-in-an-on-demand-task"></a>Futtatás igény szerinti feladatban
 

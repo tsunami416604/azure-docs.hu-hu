@@ -1,17 +1,17 @@
 ---
-title: Az Azure-tevékenység naplójának összegyűjtése diagnosztikai beállításokkal (előzetes verzió) – Azure Monitor | Microsoft Docs
+title: Az Azure-tevékenység naplójának összegyűjtése diagnosztikai beállításokkal – Azure Monitor | Microsoft Docs
 description: Diagnosztikai beállításokkal továbbíthatja az Azure-tevékenységek naplóit Azure Monitor naplókba, az Azure Storage-ba vagy az Azure Event Hubsba.
 author: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: fcf7eef269c9fa8b62217fb64ed792aece1fce4e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 6d4c724c7cfb4c1779f0fc6592a7e61e060755b9
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670338"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096897"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>Frissítés az Azure Activity log-gyűjteményre és-exportálásra
 Az [Azure-tevékenység naplója](platform-logs-overview.md) egy olyan [platform-napló](platform-logs-overview.md) , amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. Az [Event hub-vagy Storage-fiókba](activity-log-export.md) vagy [log Analytics-munkaterületre](activity-log-collect.md) irányuló tevékenység-naplóbejegyzések küldési módszere a [diagnosztikai beállítások](diagnostic-settings.md)használatára változott. Ez a cikk a módszerek közötti különbséget ismerteti, valamint azt, hogy miként lehet törölni a régi beállításokat az előkészítés során a diagnosztikai beállításokra való váltáshoz.
