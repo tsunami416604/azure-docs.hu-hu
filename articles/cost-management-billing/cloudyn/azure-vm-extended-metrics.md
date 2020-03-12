@@ -9,12 +9,12 @@ ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 9f1f60fd16aa830372bd0f5b19e22e7003de496b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770322"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082914"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Kiterjesztett metrikák hozzáadása Azure-beli virtuális gépekhez
 
@@ -34,7 +34,7 @@ Például előfordulhat, hogy szeretné monitorozni az Azure-beli virtuális gé
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Annak meghatározása, hogy engedélyezve vannak-e a kiterjesztett metrikák
 
-1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. A **Virtuális gépek** területen válasszon ki egy virtuális gépet, majd a **Monitorozás** területen válassza a **Metrikák** lehetőséget. Megjelenik az elérhető metrikák listája.
 3. Jelöljön ki néhány metrikát. Egy diagramon megjelennek a hozzájuk tartozó adatok.  
     ![Példametrika – Gazdagép százalékos processzorhasználata](./media/azure-vm-extended-metrics/metric01.png)
